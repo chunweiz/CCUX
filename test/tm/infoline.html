@@ -22,6 +22,7 @@
             
 			
             .uteInfoLine {
+                box-sizing: border-box;
                 display: inline-block;
                 position: relative;
                 min-height: 0;
@@ -29,14 +30,13 @@
                 color: rgb(77, 77, 77); 
                 background-color: rgb(249, 252, 255); 
                 padding: 1em;
-                
-                max-width: 400px;
-                margin: 10px;
             }
             
             .uteInfoLineItemTitle {
                 display: block;
                 cursor: pointer; 
+                font-size: 16px;
+                font-weight: 600;
             }
             
             .uteInfoLineItemContent {
@@ -63,7 +63,7 @@
             .uteInfoLine ul li i {
                 float: right;
                 transform: translate(-6px, 0);
-                padding-top: 0.1em;
+                padding-top: 0.2em;
             }
             
             .uteInfoLine ul li i::before,
@@ -71,17 +71,17 @@
                 content: '';
 		        position: absolute;
 		        background-color: rgb(80, 146, 206);
-		        width: 1px;
-		        height: 20px; 
+		        width: 2px;
+		        height: 10px; 
 		        transition: all 0.25s ease-in-out;
             }
             
             .uteInfoLine ul li i::before {
-                transform: translate(-7px, 0) rotate(45deg); 
+                transform: translate(-3px, 0) rotate(45deg); 
             }
             
             .uteInfoLine ul li i::after {
-                transform: translate(7px, 0) rotate(-45deg); 
+                transform: translate(3px, 0) rotate(-45deg); 
             }
             
             .uteInfoLine ul li input[type=checkbox] {
@@ -101,11 +101,11 @@
 		    }
             
             .uteInfoLine ul li input[type=checkbox]:checked ~ i::before {
-                transform: translate(7px, 0) rotate(45deg);
+                transform: translate(3px, 0) rotate(45deg);
             }
             
             .uteInfoLine ul li input[type=checkbox]:checked ~ i::after {
-                transform: translate(-7px, 0) rotate(-45deg);
+                transform: translate(-3px, 0) rotate(-45deg);
             }
             
             @keyframe flipdown {
@@ -139,19 +139,21 @@
 		</style>
 	</head>
 	<body>
-		<div class="uteInfoLine">
-			<ul>
-				<li>
-                    <input type="checkbox" checked>
-                    <i></i>
-					<div class="uteInfoLineItemTitle">
-                        <span>Title</span>
-                    </div>
-					<div class="uteInfoLineItemContent">
-						Lorem ipsum sit dol mit...
-					</div>
-				</li>
-			</ul>
-		</div>
+        <div style="margin: 2em; max-width: 400px; position: relative;">
+            <div class="uteInfoLine">
+                <ul>
+                    <li>
+                        <input type="checkbox" checked>
+                        <i></i>
+                        <div class="uteInfoLineItemTitle">
+                            <span>Title</span>
+                        </div>
+                        <div class="uteInfoLineItemContent">
+                            Lorem ipsum sit dol mit...
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
 	</body>
 </html>
