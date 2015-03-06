@@ -4,16 +4,15 @@
     position: relative;
     min-height: 0;
     width: 100%;
-    color: rgb(77, 77, 77); 
-    background-color: rgb(249, 252, 255); 
+    color: @uteColorDarkGrey; 
+    background-color: @uteColorBluePearl; 
     padding: 1em;
 }
 
 .uteInfoLineItemTitle {
     display: block;
     cursor: pointer; 
-    font-size: 16px;
-    font-weight: 600;
+    font: @uteSectionTitleFont;
 }
 
 .uteInfoLineItemContent {
@@ -34,7 +33,7 @@
 .uteInfoLine ul li {
     position: relative;
     animation-delay: 1s; 
-    animation: flipdown 0.5s ease both;
+    animation: uteInfoLineflipdown 0.5s ease both;
 }
 
 .uteInfoLine ul li i {
@@ -47,7 +46,7 @@
 .uteInfoLine ul li i::after {
     content: '';
     position: absolute;
-    background-color: rgb(80, 146, 206);
+    background-color: @uteColorBlueLink;
     width: 2px;
     height: 10px; 
     transition: all 0.25s ease-in-out;
@@ -85,7 +84,7 @@
     transform: translate(-3px, 0) rotate(-45deg);
 }
 
-@keyframe flipdown {
+@keyframes uteInfoLineflipdown {
     0% {
       opacity: 0;
       transform-origin: top center;
@@ -112,4 +111,4 @@
       transform-origin: top center;
       transform: rotateX(0deg); 
     }
-}
+} 
