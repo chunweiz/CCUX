@@ -10,10 +10,6 @@ function (Control) {
 					type: 'string',
 					defaultValue: ''
 				},
-				expand: {
-					type: 'boolean',
-					defaultValue: false
-				},
 				maxHeight: {
 					type: 'sap.ui.core.CSSSize',
 					defaultValue: undefined
@@ -24,9 +20,28 @@ function (Control) {
 					multiple: false
 				}
 			},
-			defaultAggregation : 'content'
+			defaultAggregation : 'content',
+			events: {
+				"expand": {}
+			}
 		}
 	});
+
+	InfoLine.prototype.setExpand = function (bExpand) {
+		this._isExpand = bExpand || false;
+
+		if(this._isExpand) {
+			this.fireExpand();
+		}
+	}
+
+	InfoLine.prototype.getExpand = function () {
+		return this._isExpand || false;
+	}
+
+	InfoLine.prototype.onclick = function (oEvent) {
+		this.setExpand(!this.getExpand());
+	}
 
 	return InfoLine;
 

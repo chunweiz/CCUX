@@ -30,7 +30,7 @@ function() {
         oRm.addClass('uteInfoLineItemContent');
         oRm.writeClasses();
 
-        if(oControl.getMaxHeight()) {
+        if (oControl.getMaxHeight()) {
             oRm.addStyle('max-height', oControl.getMaxHeight());
             oRm.writeStyles();
         }

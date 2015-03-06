@@ -11,14 +11,18 @@
         	}'>
 		</script>
 		<script>
-			var oInfoLine = new ute.ui.commons.InfoLine();
-			oInfoLine.setTitle('hung ju was here');
+			var oInfoLine = new ute.ui.commons.InfoLine({
+				expand: function(oEvent) {
+					alert('expanded');
+				}
+			});
+			oInfoLine.setTitle('Infoline title');
 			oInfoLine.setExpand(true);
 			oInfoLine.setMaxHeight('800px');
 			oInfoLine.placeAt('content1');
 
 			var oLabel = new sap.ui.commons.Label();
-			oLabel.setText('i was here');
+			oLabel.setText('this is a content from a label');
 			oInfoLine.setContent(oLabel);
 
 		</script>
