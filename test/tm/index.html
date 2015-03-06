@@ -5,23 +5,25 @@
 		<script id="sap-ui-bootstrap"
 		    src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
 		    data-sap-ui-theme="sap_bluecrystal"
-		    data-sap-ui-libs="ute.ui.commons"
+		    data-sap-ui-libs="ute.ui.commons, sap.ui.commons"
 		    data-sap-ui-resourceroots='{
             	"ute.ui.commons": "../../src/ute/ui/commons"
         	}'>
 		</script>
 		<script>
 			var oInfoLine = new ute.ui.commons.InfoLine();
+			oInfoLine.setTitle('hung ju was here');
+			oInfoLine.setExpand(true);
+			oInfoLine.setMaxHeight('800px');
 			oInfoLine.placeAt('content1');
-			oInfoLine = new ute.ui.commons.InfoLine();
-			oInfoLine.placeAt('content2');
-			oInfoLine = new ute.ui.commons.InfoLine();
-			oInfoLine.placeAt('content3');
+
+			var oLabel = new sap.ui.commons.Label();
+			oLabel.setText('i was here');
+			oInfoLine.setContent(oLabel);
+
 		</script>
 	</head>
-	<body>
+	<body class="uteUiBody">
 		<div id="content1"></div>
-		<div id="content2"></div>
-		<div id="content3"></div>
 	</body>
 </html>

@@ -4,7 +4,27 @@ function (Control) {
 
 	var InfoLine = Control.extend('ute.ui.commons.InfoLine', {
 		metadata: {
-			library: 'ute.ui.commons'
+			library: 'ute.ui.commons',
+			properties: {
+				title: {
+					type: 'string',
+					defaultValue: ''
+				},
+				expand: {
+					type: 'boolean',
+					defaultValue: false
+				},
+				maxHeight: {
+					type: 'sap.ui.core.CSSSize',
+					defaultValue: undefined
+				}
+			},
+			aggregations: {
+				content: {
+					multiple: false
+				}
+			},
+			defaultAggregation : 'content'
 		}
 	});
 

@@ -1,5 +1,5 @@
 sap.ui.define([],
-function(jquery) {
+function() {
 	'use strict';
 
 	var InfoLineRenderer = {};
@@ -14,20 +14,30 @@ function(jquery) {
         oRm.write('<ul>');
         oRm.write('<li>');
 
-        oRm.write('<input type="checkbox" checked />');
+        oControl.getExpand() 
+            ? oRm.write('<input type="checkbox" />')
+            : oRm.write('<input type="checkbox" checked />');
         oRm.write('<i></i>');
 
         oRm.write('<div');
         oRm.addClass('uteInfoLineItemTitle');
         oRm.writeClasses();
         oRm.write('>');
-        oRm.write('Title</div>'); //uteInfoLineItemTitle div
+        oRm.writeEscaped(oControl.getTitle());
+        oRm.write('</div>'); //uteInfoLineItemTitle div
 
         oRm.write('<div');
         oRm.addClass('uteInfoLineItemContent');
         oRm.writeClasses();
+
+        if(oControl.getMaxHeight()) {
+            oRm.addStyle('max-height', oControl.getMaxHeight());
+            oRm.writeStyles();
+        }
+
         oRm.write('>');
-        oRm.write('Lorem ipsum sit dol mit...</div>'); //uteInfoLineItemContent div
+        oRm.renderControl(oControl.getContent());
+        oRm.write('</div>'); //uteInfoLineItemContent div
 
         oRm.write('</li>');
         oRm.write('</ul>');
