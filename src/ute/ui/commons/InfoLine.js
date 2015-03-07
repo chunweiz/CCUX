@@ -22,17 +22,18 @@ function (Control) {
 			},
 			defaultAggregation : 'content',
 			events: {
-				"expand": {}
+				change: {
+					parameters: {
+						expanded: { type: 'boolean' }
+					}
+				}
 			}
 		}
 	});
 
 	InfoLine.prototype.setExpand = function (bExpand) {
 		this._isExpand = bExpand || false;
-
-		if(this._isExpand) {
-			this.fireExpand();
-		}
+		this.fireChange({ expanded: this._isExpand });
 	}
 
 	InfoLine.prototype.getExpand = function () {
@@ -40,7 +41,9 @@ function (Control) {
 	}
 
 	InfoLine.prototype.onclick = function (oEvent) {
-		this.setExpand(!this.getExpand());
+		if(oEvent.target.type === 'checkbox') {
+			this.setExpand(!this.getExpand());
+		}
 	}
 
 	return InfoLine;

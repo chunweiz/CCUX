@@ -12,8 +12,8 @@
 		</script>
 		<script>
 			var oInfoLine = new ute.ui.commons.InfoLine({
-				expand: function(oEvent) {
-					alert('expanded');
+				change: function(oControlEvent) {
+					console.log(oControlEvent.getParameters().expanded);
 				}
 			});
 			oInfoLine.setTitle('Infoline title');
