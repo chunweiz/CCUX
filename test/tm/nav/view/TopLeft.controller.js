@@ -36,7 +36,7 @@
     };
     
     tm.nav.view.TopLeft.prototype._routePatternMatched = function (oEvent) {
-        console.log(oEvent.getParameters());
+        jQuery.sap.log.info('[Controller tm.nav.view.TopLeft] _routePatternMatched');
     };
     
 }());

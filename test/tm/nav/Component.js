@@ -96,7 +96,14 @@
     };
 
     tm.nav.Component.prototype._routeCallback = function (oRoute, oArguments, oConfig, oTargetControl, oView) {
-        
+        switch (oConfig.name) {
+        case 'main001':
+            jQuery.sap.log.info('[Component tm.nav.Component] _routeCallback');
+            break;
+        case 'main004':
+            jQuery.sap.log.info('[Component tm.nav.Component] _routeCallback');
+            break;
+        }
     };
     
 }());
