@@ -6,7 +6,7 @@
     
     jQuery.sap.declare('tm.nav.Router');
     jQuery.sap.require('sap.ui.core.routing.Router');
-    jQuery.sap.require("sap.m.routing.RouteMatchedHandler");
+    jQuery.sap.require('sap.m.routing.RouteMatchedHandler');
     
     sap.ui.core.routing.Router.extend('tm.nav.Router', {
         constructor: function () {
@@ -20,8 +20,8 @@
         }
     });
     
-    tm.nav.Router.prototype.getCrossroads = function () {
-        return this._oRouter;
+    tm.nav.Router.prototype.setGreedy = function (bGreedy) {
+        this._oRouter.greedy = bGreedy || false;
     };
     
 }());

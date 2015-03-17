@@ -71,7 +71,7 @@
         sap.ui.core.UIComponent.prototype.init.apply(this);
         
         var oRouter = this.getRouter();
-        oRouter.getCrossroads().greedy = true;
+        oRouter.setGreedy(true);
         oRouter.initialize();
     };
     

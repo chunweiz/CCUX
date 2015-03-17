@@ -1,4 +1,4 @@
-/*globals sap*/
+/*globals sap, jQuery*/
 
 (function () {
     'use strict';
