@@ -6,6 +6,7 @@
     
     jQuery.sap.declare('tm.nav.Component');
     jQuery.sap.require('tm.nav.Router');
+    jQuery.sap.require('sap.ui.layout.HorizontalLayout');
     
     sap.ui.core.UIComponent.extend('tm.nav.Component', {
         metadata: {
@@ -13,9 +14,14 @@
                 libs: ['sap.m', 'ute.ui.commons']
             },
             
+//            rootView: {
+//                viewName: 'tm.nav.view.App',
+//				type: sap.ui.core.mvc.ViewType.HTML
+//            },
+            
             rootView: {
-                viewName: 'tm.nav.view.App',
-				type: sap.ui.core.mvc.ViewType.HTML
+                viewName: 'tm.nav.view.AppTemplate',
+				type: sap.ui.core.mvc.ViewType.Template
             },
             
             routing: {
