@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="UTF-8">
+        
+		<script id="sap-ui-bootstrap"
+		    src="/resources/sap-ui-core.js"
+		    data-sap-ui-theme="sap_bluecrystal"
+		    data-sap-ui-libs="sap.m, sap.ui.commons, ute.ui.commons"
+			data-sap-ui-xx-bindingSyntax="complex" 
+		    data-sap-ui-resourceroots='{
+            	"sap.ui.demo.myFiori": "/test/hj",
+                "ute.ui.commons": "/src/ute/ui/commons"
+        	}'>
+		</script>
+        
+        <script>
+			new sap.ui.core.ComponentContainer({
+				name : "sap.ui.demo.myFiori"
+			}).placeAt("content");
+		</script>
+        
+	</head>
+	<body class="uteUiBody">
+		<div id="content"></div>
+	</body>
+</html>
