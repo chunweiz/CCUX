@@ -24,15 +24,43 @@ function(jQuery, library, Control, Popup) {
                     group: "Dimension",
                     defaultValue: null
                 },
-				/**
-                *   Not putting a scrollLeft or scrollTop here compare to original UI5 Dialog
-                *   Will add if needed
+				
+                /**
+                *
+                * Scroll position from left to right. "0" means leftmost position.
                 */
+                scrollLeft: {
+                    type: "int",
+                    group: "Behavior",
+                    defaultValue: 0
+                },
+
+                /**
+                *
+                * Scroll position from top to buttom. "0" means topmost position.
+                */
+                scrollTop: {
+                    type: "int",
+                    group: "Behavior",
+                    defaultValue: 0
+                },
+                
                 applyContentPadding: {
                     type: "boolean",
                     group: "Appearance",
                     defaultValue: true
                 },
+                
+                /**
+                *
+                * Displays a close button in the title bar.
+                */
+                showCloseButton: {
+                    type: "boolean",
+                    group: "Behavior",
+                    defaultValue: true
+                },
+                
                 resizable: {
                     type: "boolean",
                     group: "Behavior",
@@ -61,7 +89,17 @@ function(jQuery, library, Control, Popup) {
                 },
                 
                 /**
-                * Specify whether the dialog should be modal, or not. In case of <code>true</code> the focus is kept inside the dialog.
+                *
+                * Border design is theme-dependent.
+                */
+                contentBorderDesign: {
+                    type: "sap.ui.commons.enums.BorderDesign",
+                    group: "Appearance",
+                    defaultValue: sap.ui.commons.enums.BorderDesign.None
+                },
+                
+                /**
+                * Specify whether the dialog should be modal, or not. In case of <code>true</code> the focus is kept inside the                 * dialog.
                 */
                 modal: {
                     type: "boolean",
@@ -527,8 +565,8 @@ function(jQuery, library, Control, Popup) {
         widthFooter = 0,
         heightFooter = 0;
 
-      var oFooterBtns = jQuery(oFooter).children("DIV").get(0);
-      widthFooter = oFooterBtns.offsetWidth;
+    //  var oFooterBtns = jQuery(oFooter).children("DIV").get(0);
+    //  widthFooter = oFooterBtns.offsetWidth;
 
       var addValue = 0;
       // add border and padding of footer...not margin
@@ -547,8 +585,8 @@ function(jQuery, library, Control, Popup) {
         widthFooter = 100;
       }
 
-      heightTitle = oTitle.offsetHeight;
-      heightFooter = oFooter.offsetHeight;
+      //heightTitle = oTitle.offsetHeight;
+      //heightFooter = oFooter.offsetHeight;
       return {
         width: widthFooter,
         height: heightTitle + heightFooter + 36 /* min. height content */
