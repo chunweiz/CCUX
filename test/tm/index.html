@@ -11,28 +11,46 @@
         	}'>
 		</script>
 		<script>
-			var oInfoLine = new ute.ui.commons.InfoLine({
-				change: function(oControlEvent) {
-					console.log(oControlEvent.getParameters().expanded);
-				}
-			});
-			oInfoLine.setTitle('Infoline title');
-			oInfoLine.setExpand(true);
-			oInfoLine.setMaxHeight('800px');
-			oInfoLine.placeAt('content1');
-            
-            var oNestedInfoLine = new ute.ui.commons.InfoLine();
-            oNestedInfoLine.setTitle('Nested InfoLine title');
-            oNestedInfoLine.setExpand(false);
-            
-            var oLabel = new sap.ui.commons.Label();
-			oLabel.setText('this is a content from a label');
-            oNestedInfoLine.setContent(oLabel);
+			sap.ui.getCore().attachInit(function() {
+                var oInfoLine = new ute.ui.commons.InfoLine({
+                    change: function(oControlEvent) {
+                        console.log(oControlEvent.getParameters().expanded);
+                    }
+                });
+                oInfoLine.setTitle('Infoline title');
+                oInfoLine.setExpand(true);
+                oInfoLine.setMaxHeight('800px');
 
-			oInfoLine.setContent(oNestedInfoLine);
+                var oLabel = new sap.ui.commons.Label();
+                oLabel.setText('this is a content from a label');
+                oInfoLine.setContent(oLabel);
+                oInfoLine.placeAt('content');
+                
+                var oDialog = new ute.ui.commons.Dialog();
+                oDialog.setMinHeight('500px');
+                oDialog.setMinWidth('500px');
+                
+                oDialog.addContent(new ute.ui.commons.Badge({
+                    text: 'RHS',
+                    type: ute.ui.commons.BadgeType.Regular
+                }));
+                
+                oDialog.addContent(new ute.ui.commons.Badge({
+                    text: 'CC',
+                    type: ute.ui.commons.BadgeType.Alert
+                }));
+                
+                oDialog.addContent(new ute.ui.commons.Badge({
+                    text: 'LU',
+                    type: ute.ui.commons.BadgeType.Attention
+                }));
+                
+                oDialog.setModal(true);
+                oDialog.open();
+            });
 		</script>
 	</head>
 	<body class="uteUiBody">
-		<div id="content1"></div>
+		<div id="content"></div>
 	</body>
 </html>

@@ -71,10 +71,10 @@
   transform: translate(0, 50%);
 }
 .uteInfoLine ul li input[type=checkbox]:checked ~ i::before {
-  transform: translate(3px, 0) rotate(45deg);
+  transform: translate(-3px, 0) rotate(135deg);
 }
 .uteInfoLine ul li input[type=checkbox]:checked ~ i::after {
-  transform: translate(-3px, 0) rotate(-45deg);
+  transform: translate(3px, 0) rotate(-135deg);
 }
 @keyframes uteInfoLineflipdown {
   0% {
@@ -98,4 +98,64 @@
     transform-origin: top center;
     transform: rotateX(0deg);
   }
+}
+.body {
+  margin: 0 ;
+  background-color: #eaeff4;
+  border-radius: 5px;
+}
+.uteDialog {
+  margin: 0em ;
+  padding: 0em ;
+  background-color: #eaeff4;
+  border-radius: 5px;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  font-family: 700 21pt 'Source Sans Pro', sans-serif;
+}
+.uteDialogHdr {
+  margin: 8px;
+  height: 50px;
+}
+.uteDialogHdr > .uteDialogHdrLeft {
+  margin-left: 10px ;
+}
+.uteUiDlgHdrBtn {
+  margin-top: 10px ;
+  height: 50px;
+}
+.uteUiDlgHdrSep {
+  height: 1px;
+  background-color: #808080;
+}
+.uteUiDlgCont {
+  top: 0px ;
+  margin: 8px ;
+  position: relative;
+  background-color: #eaeff4;
+  font-family: 400 14pt 'Source Sans Pro', sans-serif;
+}
+.uteUiDlgFooter {
+  right: 10px;
+  margin: 8px;
+  background-color: #eaeff4;
+}
+.uteBadge {
+  display: inline-block;
+  position: relative;
+  border-radius: 50%;
+  color: #f9fcff;
+  text-align: center;
+  font: 400 0.75rem 'Source Sans Pro', sans-serif;
+  margin: 2px;
+}
+.uteBadgeAlert {
+  background-color: #c0272d;
+}
+.uteBadgeAttention {
+  background-color: #f2a814;
+}
+.uteBadgeRegular {
+  background-color: #5bc2af;
 }
