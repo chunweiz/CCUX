@@ -83,29 +83,13 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 /**
                  * Specifies the button height. If this property is set, the height which is specified by the underlying theme is not used any longer.
                  */
-                height : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : null},
-
-                /**
-                 * Indicates if the button is styled. If not it is rendered as native HTML-button. In this case a custom styling can be added usig addStyleClass.
-                 */
-                styled : {type : "boolean", group : "Appearance", defaultValue : true},
-
-                /**
-                 * The button is rendered as lite button.
-                 */
-                lite : {type : "boolean", group : "Appearance", defaultValue : false},
-
-                /**
-                 * Style of the button.
-                 * (e.g. emphasized)
-                 */
-                style : {type : "sap.ui.commons.ButtonStyle", group : "Appearance", defaultValue : sap.ui.commons.ButtonStyle.Default},
+                height : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : null},             
                 
                 /**
                 * Added to configure ute style buttons
                 * Designs to choose from: "Button1", "Button2", "Button3", "Button4"
                 */
-                utedesign : {type : "string", group: "Appearance", defaultValue : "Button1"}
+                uteDesign : {type : "string", group: "new", defaultValue : "Button1"}
                 
             },
             associations : {
@@ -140,7 +124,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
          * @public
          * @ui5-metamodel This method also will be described in the UI5 (legacy) designtime metamodel
          */
-
+    
 
         EnabledPropagator.call(Button.prototype);
 
@@ -150,6 +134,11 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
          * @param {jQuery.Event} oEvent
          * @private
          */
+    
+        Button.prototype.getuteDesign = function (oEvent) {
+            return this.getProperty("uteDesign") ;
+        };
+    
         Button.prototype.onclick = function (oEvent) {
             if (this.getEnabled()) {
                 this.firePress({/* no parameters */});
