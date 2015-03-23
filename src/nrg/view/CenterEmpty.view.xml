@@ -4,6 +4,8 @@
     xmlns:ute="ute.ui.commons"
     xmlns:mvc="sap.ui.core.mvc">
     
-    
+    <article>
+        <span>Empty center</span>
+    </article>
     
 </mvc:View>
