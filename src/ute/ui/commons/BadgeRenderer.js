@@ -1,4 +1,4 @@
-/*globals sap*/
+/*globals sap, ute*/
 
 sap.ui.define([],
     function () {
@@ -12,18 +12,18 @@ sap.ui.define([],
             
             oRm.addClass('uteBadge');
             
-            switch(oControl.getType()) {
-                case ute.ui.commons.BadgeType.Alert: 
-                    oRm.addClass('uteBadgeAlert');
-                    break;
-                case ute.ui.commons.BadgeType.Attention: 
-                    oRm.addClass('uteBadgeAttention');
-                    break;
-                case ute.ui.commons.BadgeType.Regular: 
-                    oRm.addClass('uteBadgeRegular');
-                    break;
-                default:
-                    oRm.addClass('uteBadgeRegular');
+            switch (oControl.getType()) {
+            case ute.ui.commons.BadgeType.Alert:
+                oRm.addClass('uteBadgeAlert');
+                break;
+            case ute.ui.commons.BadgeType.Attention:
+                oRm.addClass('uteBadgeAttention');
+                break;
+            case ute.ui.commons.BadgeType.Regular:
+                oRm.addClass('uteBadgeRegular');
+                break;
+            default:
+                oRm.addClass('uteBadgeRegular');
             }
             
             oRm.writeClasses();

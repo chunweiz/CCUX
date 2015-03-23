@@ -6,7 +6,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/library'],
 
 		sap.ui.getCore().initLibrary({
 			name: 'ute.ui.commons',
-			version: '0.0.0.1',
+			version: '1.0.0.0',
 			dependencies: ['sap.ui.core'],
 			types: [
                 'ute.ui.commons.BadgeType'
@@ -16,7 +16,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/library'],
 				'ute.ui.commons.InfoLine',
                 'ute.ui.commons.Dialog',
                 'ute.ui.commons.Badge',
-                'ute.ui.commons.Button'
+                'ute.ui.commons.Button',
+                'ute.ui.commons.BlockDivision',
 			],
 			elements: []
 		});

@@ -15,19 +15,19 @@
         <div class="uteInnerPageLeft">
             <section class="uteInnerPageLeftTop">
                 <article class="uteInnerPageLeftTopContent">
-                    <layout:HorizontalLayout id="idInnerPageLeftTopContent" />
+                    <layout:VerticalLayout id="idInnerPageLeftTopContent" width="100%" />
                 </article>
             </section>
             <section class="uteInnerPageLeftBottom">
                 <article class="uteInnerPageLeftBottomContent">
-                    <layout:HorizontalLayout id="idInnerPageLeftBottomContent" />
+                    <layout:VerticalLayout id="idInnerPageLeftBottomContent" width="100%" />
                 </article>
             </section>
         </div>
         <div class="uteInnerPageCenter">
             <section>
                 <article class="uteInnerPageCenterContent">
-                    <layout:HorizontalLayout id="idInnerPageCenterContent" />
+                    <layout:VerticalLayout id="idInnerPageCenterContent" width="100%" />
                 </article>
             </section>
         </div>
