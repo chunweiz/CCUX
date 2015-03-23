@@ -38,10 +38,24 @@
                 },
                 
                 routes: {
-                    main001: {
+                    empty: {
                         pattern: '',
-                        view: 'TopLeftDefault',
-                        targetControl: 'TopLeftNav',
+                        view: 'CenterEmpty',
+                        targetControl: 'idInnerPageCenterContent',
+                        targetAggregation: 'content',
+                        clearTarget: true
+                    },
+                    emptyLeftTop: {
+                        pattern: '',
+                        view: 'LeftTopEmpty',
+                        targetControl: 'idInnerPageLeftTopContent',
+                        targetAggregation: 'content',
+                        clearTarget: true
+                    },
+                    emptyLeftBottom: {
+                        pattern: '',
+                        view: 'LeftBottomEmpty',
+                        targetControl: 'idInnerPageLeftBottomContent',
                         targetAggregation: 'content',
                         clearTarget: true
                     }
@@ -52,7 +66,19 @@
     
     nrg.comp.retention.Component.prototype.init = function () {
         sap.ui.core.UIComponent.prototype.init.apply(this);
+        this.initRouter();
+        this.initModels();
+    };
+    
+    nrg.comp.retention.Component.prototype.destroy = function () {
+        sap.ui.core.UIComponent.prototype.destory.apply(this, arguments);
+    };
+    
+    nrg.comp.retention.Component.prototype.initModels = function () {
         
+    };
+    
+    nrg.comp.retention.Component.prototype.initRouter = function () {
         var oRoutes = this.getMetadata().getRoutes(),
             oRouter = this.getRouter(),
             sName;
@@ -66,10 +92,6 @@
         
         oRouter.setGreedy(true);
         oRouter.initialize();
-    };
-    
-    nrg.comp.retention.Component.prototype.destroy = function () {
-        sap.ui.core.UIComponent.prototype.destory.apply(this, arguments);
     };
 
     nrg.comp.retention.Component.prototype._routeCallback = function (route, args, config, targetControl, view) {
