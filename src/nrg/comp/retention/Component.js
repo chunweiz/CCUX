@@ -5,12 +5,21 @@
     'use strict';
     
     jQuery.sap.declare('nrg.comp.retention.Component');
-    jQuery.sap.require('nrg.nav.GreedyRouter');
+    jQuery.sap.require('nrg.util.nav.GreedyRouter');
     
     sap.ui.core.UIComponent.extend('nrg.comp.retention.Component', {
         metadata: {
+            name : 'Reliant Interaction Center for Retention Agent',
+            version : '1.0.0.0',
+            
+            includes: ['../../css/baseline.css'],
+            
             dependencies: {
                 libs: ['sap.m', 'sap.ui.layout', 'ute.ui.commons']
+            },
+            
+            config: {
+                
             },
             
             rootView: {
@@ -20,7 +29,7 @@
             
             routing: {
                 config: {
-                    routerClass: nrg.nav.GreedyRouter,
+                    routerClass: nrg.util.nav.GreedyRouter,
                     viewType: sap.ui.core.mvc.ViewType.XML,
                     viewPath : 'nrg.view'
                 },

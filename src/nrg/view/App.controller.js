@@ -5,7 +5,7 @@
     
     sap.ui.core.mvc.Controller.extend('nrg.view.App', {
         onInit: function () {
-            alert('test');
+            
         }
     });
     

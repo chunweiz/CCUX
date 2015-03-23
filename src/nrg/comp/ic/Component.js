@@ -5,12 +5,22 @@
     'use strict';
     
     jQuery.sap.declare('nrg.comp.ic.Component');
-    jQuery.sap.require('nrg.nav.GreedyRouter');
+    jQuery.sap.require('nrg.util.nav.GreedyRouter');
     
     sap.ui.core.UIComponent.extend('nrg.comp.ic.Component', {
         metadata: {
+            name : 'Reliant Interaction Center for Regular Agent',
+            version : '1.0.0.0',
+            includes: ['../../css/nrg.css'],
             dependencies: {
                 libs: ['sap.m', 'sap.ui.layout', 'ute.ui.commons']
+            },
+            
+            config: {
+                oDataService: {
+                    crm: 'www.google.com',
+                    ecc: 'www.utegration.com'
+                }
             },
             
             rootView: {
@@ -20,7 +30,7 @@
             
             routing: {
                 config: {
-                    routerClass: nrg.nav.GreedyRouter,
+                    routerClass: nrg.util.nav.GreedyRouter,
                     viewType: sap.ui.core.mvc.ViewType.XML,
                     viewPath : 'nrg.view'
                 },
@@ -54,6 +64,7 @@
         
         oRouter.setGreedy(true);
         oRouter.initialize();
+        
     };
     
     nrg.comp.ic.Component.prototype.destroy = function () {

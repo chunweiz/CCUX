@@ -4,11 +4,11 @@
 (function () {
     'use strict';
     
-    jQuery.sap.declare('nrg.nav.GreedyRouter');
+    jQuery.sap.declare('nrg.util.nav.GreedyRouter');
     jQuery.sap.require('sap.ui.core.routing.Router');
     jQuery.sap.require('sap.m.routing.RouteMatchedHandler');
     
-    sap.ui.core.routing.Router.extend('nrg.nav.GreedyRouter', {
+    sap.ui.core.routing.Router.extend('nrg.util.nav.GreedyRouter', {
         constructor: function () {
             sap.ui.core.routing.Router.apply(this, arguments);
             this._oRouteMatchedHandler = new sap.m.routing.RouteMatchedHandler(this);
@@ -20,7 +20,7 @@
         }
     });
     
-    nrg.nav.GreedyRouter.prototype.setGreedy = function (bGreedy) {
+    nrg.util.nav.GreedyRouter.prototype.setGreedy = function (bGreedy) {
         this._oRouter.greedy = bGreedy || false;
     };
     
