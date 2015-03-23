@@ -11,15 +11,18 @@
         metadata: {
             name : 'Reliant Interaction Center for Retention Agent',
             version : '1.0.0.0',
-            
-            includes: ['../../css/baseline.css'],
-            
+            includes: ['../../css/nrg.css'],
             dependencies: {
                 libs: ['sap.m', 'sap.ui.layout', 'ute.ui.commons']
             },
             
             config: {
-                
+                service: {
+                    oData: {
+                        crm: 'www.google.com',
+                        ecc: 'www.utegration.com'
+                    }
+                }
             },
             
             rootView: {

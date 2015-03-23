@@ -17,9 +17,11 @@
             },
             
             config: {
-                oDataService: {
-                    crm: 'www.google.com',
-                    ecc: 'www.utegration.com'
+                service: {
+                    oData: {
+                        crm: 'www.google.com',
+                        ecc: 'www.utegration.com'
+                    }
                 }
             },
             
