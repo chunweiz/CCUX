@@ -1,3 +1,65 @@
 * {
     box-sizing: border-box;
 }
+
+.uteInnerPageHdr {
+                
+}
+
+.uteInnerPageMain {
+    position: relative;
+    max-width: 1358px;
+    margin: 65px auto 10px auto;
+    overflow: hidden;
+}
+
+.uteInnerPageTop {
+    margin-bottom: 20px;
+}
+
+.uteInnerPageLeft {
+    float: left;
+    width: 284px;
+    max-height: 686px;
+    margin-right: 14px;
+}
+
+.uteInnerPageLeftTop {
+    width: 100%;
+    max-height: 400px;
+    margin: 0 0 13px 0;
+    border-radius: 2px;
+    background-color: tomato;
+}
+
+.uteInnerPageLeftTopContent {
+    padding: 15px;
+}
+
+.uteInnerPageLeftBottom {
+    width: 100%;
+    max-height: 273px;
+    border-radius: 2px;
+    background-color: gold;
+}
+
+.uteInnerPageLeftBottomContent {
+    padding: 15px;
+}
+
+.uteInnerPageCenter {
+    min-width: 1060px;
+    min-height: 686px;
+    height: 100%;
+    margin-left: 298px;
+    border-radius: 2px;
+    background-color: deepskyblue;
+}
+
+.uteInnerPageCenterContent {
+    padding: 15px;
+}
+
+.uteInnerPageFooter {
+
+}
