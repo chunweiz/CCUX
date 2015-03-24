@@ -54,14 +54,14 @@
 
 .uteInnerPageCenter {
     min-width: 1060px;
-    min-height: 686px;
-    height: 100%;
+    height: 686px;
     margin-left: 298px;
     border-radius: 2px;
     background-color: deepskyblue;
 }
 
 .uteInnerPageCenterContent {
+    position: relative;
     padding: 15px;
 }
 

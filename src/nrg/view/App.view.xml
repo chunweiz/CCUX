@@ -2,8 +2,7 @@
     controllerName="nrg.view.App"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns:layout="sap.ui.layout">
+    xmlns:mvc="sap.ui.core.mvc">
     
     <header class="uteInnerPageHeader">
         <span>header</span>
