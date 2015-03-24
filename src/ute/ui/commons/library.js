@@ -16,7 +16,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/library'],
 				'ute.ui.commons.InfoLine',
                 'ute.ui.commons.Dialog',
                 'ute.ui.commons.Badge',
-                'ute.ui.commons.Button'
+                'ute.ui.commons.Button',
+                'ute.ui.commons.ToggleButton'
 			],
 			elements: []
 		});
