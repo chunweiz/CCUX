@@ -5,7 +5,7 @@ sap.ui.define(['sap/ui/core/Control'],
     function (Control) {
         'use strict';
 
-        var BlockDivision = Control.extend('ute.ui.commons.BlockDivision', {
+        var Div = Control.extend('ute.ui.commons.Div', {
             metadata: {
                 library: 'ute.ui.commons',
                 properties: {
@@ -24,13 +24,15 @@ sap.ui.define(['sap/ui/core/Control'],
                 },
                 aggregations: {
                     content: {
-                        multiple: true
+                        type: 'sap.ui.core.Control',
+                        multiple : true,
+                        singularName : 'content'
                     }
                 },
                 defaultAggregation : 'content'
             }
         });
 
-        return BlockDivision;
+        return Div;
 
     }, true);

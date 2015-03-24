@@ -1,12 +1,14 @@
-/*globals sap, ute*/
+/*globals sap*/
 
 sap.ui.define([],
     function () {
         'use strict';
 
-        var BlockDivisionRenderer = {};
+        var DivRenderer = {};
 
-        BlockDivisionRenderer.render = function (oRm, oControl) {
+        DivRenderer.render = function (oRm, oControl) {
+            var aContent, nContent;
+            
             oRm.write('<div');
             oRm.writeControlData(oControl);
             
@@ -20,14 +22,15 @@ sap.ui.define([],
             oRm.writeStyles();
             
             oRm.write('>');
-            oRm.renderControl(oControl.getContent());
+            
+            aContent = oControl.getContent();
+            for (nContent = 0; nContent < aContent.length; nContent = nContent + 1) {
+                oRm.renderControl(aContent[nContent]);
+            }
+            
             oRm.write('</div>');
         };
 
-        return BlockDivisionRenderer;
+        return DivRenderer;
 
     }, true);
-
-/*
-  
-*/
