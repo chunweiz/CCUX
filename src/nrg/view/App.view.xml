@@ -1,0 +1,37 @@
+<mvc:View
+    controllerName="nrg.view.App"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:mvc="sap.ui.core.mvc">
+    
+    <header class="uteInnerPageHeader">
+        <span>header</span>
+    </header>
+    <main class="uteInnerPageMain">
+        <div class="uteInnerPageTop">
+            <span>PAGE TITLE</span>
+        </div>
+        <div class="uteInnerPageLeft">
+            <section class="uteInnerPageLeftTop">
+                <article class="uteInnerPageLeftTopContent">
+                    <ute:Div id="idInnerPageLeftTopContent" />
+                </article>
+            </section>
+            <section class="uteInnerPageLeftBottom">
+                <article class="uteInnerPageLeftBottomContent">
+                    <ute:Div id="idInnerPageLeftBottomContent" />
+                </article>
+            </section>
+        </div>
+        <div class="uteInnerPageCenter">
+            <section>
+                <article class="uteInnerPageCenterContent">
+                    <ute:Div id="idInnerPageCenterContent" />
+                </article>
+            </section>
+        </div>
+    </main>
+    <footer class="uteInnerPageFooter">
+        <span>footer</span>
+    </footer>
+</mvc:View>

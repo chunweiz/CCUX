@@ -1,0 +1,74 @@
+<mvc:View
+    controllerName="tm.nav.view.App"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    xmlns:ute="ute.ui.commons">
+    
+    <style>
+        .uteInnerPage {
+            position: relative;
+            box-sizing: border-box;
+            margin: 0 auto;
+            width: 80%;
+        }
+        
+        .uteInnerPage header {
+            display: block;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 20px;
+            background-color: gold;
+            z-index: 2;
+        }
+        
+        .uteInnerPage header:hover {
+            height: 100px;
+        }
+        
+        .uteInnerPage footer {
+            display: block;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 20px;
+            background-color: blue;
+        }
+        
+        .uteInnerPage footer:hover {
+            height: 100px;
+        }
+        
+        .uteInnerPage .leftPane {
+            background-color: tomato;
+        }
+        
+        .uteInnerPage .mainPane {
+            background-color: lime;
+        }
+    </style>
+    <div class="uteInnerPage">
+        <header>
+            <span>header !!!</span>
+        </header>
+        <main>
+            <section class="leftPane">
+                <aside>
+                    <layout:HorizontalLayout id="TopLeftNav" />
+                </aside>
+                <aside>
+                    <layout:HorizontalLayout id="BottomLeftNav" />
+                </aside>
+            </section>
+            <section class="mainPane">
+                <article>
+                    <layout:HorizontalLayout id="MainContentNav" />
+                </article>
+            </section>
+        </main>
+        <footer>
+            <span>footer!!!</span>
+        </footer>
+    </div>
+</mvc:View>

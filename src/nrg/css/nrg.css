@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+}
+
+.uteInnerPageHeader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: antiquewhite;
+    z-index: 5;
+}
+
+.uteInnerPageMain {
+    position: relative;
+    max-width: 1358px;
+    margin: 65px auto 10px auto;
+    overflow: hidden;
+}
+
+.uteInnerPageTop {
+    margin-bottom: 20px;
+}
+
+.uteInnerPageLeft {
+    float: left;
+    width: 284px;
+    max-height: 686px;
+    margin-right: 14px;
+}
+
+.uteInnerPageLeftTop {
+    width: 100%;
+    max-height: 400px;
+    margin: 0 0 13px 0;
+    border-radius: 2px;
+    background-color: tomato;
+}
+
+.uteInnerPageLeftTopContent {
+    padding: 15px;
+}
+
+.uteInnerPageLeftBottom {
+    width: 100%;
+    max-height: 273px;
+    border-radius: 2px;
+    background-color: gold;
+}
+
+.uteInnerPageLeftBottomContent {
+    padding: 15px;
+}
+
+.uteInnerPageCenter {
+    min-width: 1060px;
+    height: 686px;
+    margin-left: 298px;
+    border-radius: 2px;
+    background-color: deepskyblue;
+}
+
+.uteInnerPageCenterContent {
+    position: relative;
+    padding: 15px;
+}
+
+.uteInnerPageFooter {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background-color: aquamarine;
+    z-index: 5;
+}

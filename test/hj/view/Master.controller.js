@@ -8,5 +8,9 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
     onButtonClick : function(evt) {
         var oDialogFragment = sap.ui.xmlfragment("sap.ui.demo.myFiori.view.MasterFragment",this);  
         oDialogFragment.open();  
+    },
+    
+    testFunc:function(evt){
+        alert("clicked") ;
     }
 });

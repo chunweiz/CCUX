@@ -35,7 +35,7 @@
             
             .uteHrMenu .uteHrMenuLogo > span {
                 font-size: 12pt;
-                margin-right: 300px;
+                margin-right: 100px;
                 color: dimgray;
             }
             
@@ -124,6 +124,26 @@
             .uteHrMenu .uteHrSubMenuInner::after {
                 clear: both;
             }
+            
+            .uteSubMenuQuickLink {
+                max-width: 770px;
+                margin: 0 auto;
+            }
+            
+            .uteSubMenuQuickLink ul {
+                display: inline-block;
+                min-width: 0;
+                margin: 0 2em;
+            }
+            
+            .uteSubMenuQuickLink ul li {
+                padding: 5px 0;
+            }
+            
+            .uteSubMenuQuickLink ul li:first-child {
+                border-bottom: 1px solid aquamarine;
+            }
+            
         </style>
     </head>
     <body>
@@ -137,9 +157,9 @@
                         <span>Menu</span>
                         <div class="uteHrSubMenu">
                             <div class="uteHrSubMenuInner">
-                                <div class="uteHrSubMenuInnerMenu">
+                                <div class="uteSubMenuQuickLink">
                                     <ul>
-                                        <li>Billing</li>
+                                        <li>Billings</li>
                                         <li>Business Partner</li>
                                     </ul>
                                     <ul>
@@ -147,7 +167,7 @@
                                         <li>Contact Logs</li>
                                     </ul>
                                     <ul>
-                                        <li>Campaign</li>
+                                        <li>Campaigns</li>
                                         <li>High Bill</li>
                                     </ul>
                                     <ul>
@@ -174,7 +194,7 @@
                         <span>Transactions <i class="uteHrMenuArrowDown"></i></span>
                     </li>
                     <li data-ute-type="link" data-ute-href="http://ccrportal.reliant.com/esiidlookup/esiidlogin.jsp?company=Reliant">
-                        <span>ESID</span>
+                        <span href="javascript:void(0)">ESID</span>
                     </li>
                     <li data-ute-type="link" data-ute-href="https://ccpal.nrgenergy.com/ccpal/ssoLogin.do">
                         <span>PALPlus <i class="uteHrMenuArrowDown"></i></span>
@@ -184,6 +204,14 @@
                     </li>
                     <li data-ute-type="action">
                         <span class="uteHrMenuOrange">Clear Account</span>
+                    </li>
+                    <li data-ute-type="submenu">
+                        <span>Messages</span>
+                        <div class="uteHrSubMenu">
+                            <div class="uteHrSubMenuInner">
+                                <div>Message items</div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </nav>

@@ -14,14 +14,9 @@
                 libs: ['sap.m', 'ute.ui.commons']
             },
             
-//            rootView: {
-//                viewName: 'tm.nav.view.App',
-//				type: sap.ui.core.mvc.ViewType.HTML
-//            },
-            
             rootView: {
-                viewName: 'tm.nav.view.AppTemplate',
-				type: sap.ui.core.mvc.ViewType.Template
+                viewName: 'tm.nav.view.App',
+				type: sap.ui.core.mvc.ViewType.XML
             },
             
             routing: {
@@ -53,13 +48,6 @@
                         targetAggregation: 'content',
                         clearTarget: true
                     },
-                    main004: {
-                        pattern: '/bp/{bpNum}/ca/{caNum}',
-                        view: 'TopLeft',
-                        targetControl: 'TopLeftNav',
-                        targetAggregation: 'content',
-                        clearTarget: true
-                    },
                     main005: {
                         pattern: '/bp/{bpNum}/ca/{caNum}',
                         view: 'BottomLeft',
@@ -71,6 +59,13 @@
                         pattern: '/bp/{bpNum}/ca/{caNum}',
                         view: 'MainContent',
                         targetControl: 'MainContentNav',
+                        targetAggregation: 'content',
+                        clearTarget: true
+                    },
+                    main004: {
+                        pattern: '/bp/{bpNum}/ca/{caNum}',
+                        view: 'TopLeft',
+                        targetControl: 'TopLeftNav',
                         targetAggregation: 'content',
                         clearTarget: true
                     }
