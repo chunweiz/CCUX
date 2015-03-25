@@ -63,7 +63,7 @@
             </section>
             <section class="mainPane">
                 <article>
-                    <layout:HorizontalLayout id="MainContentNav" />
+                    <ute:BlockDivision id="MainContentNav" />
                 </article>
             </section>
         </main>

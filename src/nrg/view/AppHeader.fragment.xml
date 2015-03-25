@@ -1,0 +1,12 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:core="sap.ui.core">
+    
+    <ute:Div>
+        <ute:content>
+            <ute:Span text="{i18n>bpPageTitle}" />
+        </ute:content>
+    </ute:Div>
+
+</core:FragmentDefinition>

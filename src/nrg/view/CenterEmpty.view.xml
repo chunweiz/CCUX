@@ -1,5 +1,5 @@
 <mvc:View
-    controllerName="nrg.view.CenterEmpty"
+    controllerName="nrg.controller.CenterEmpty"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
     xmlns:mvc="sap.ui.core.mvc">

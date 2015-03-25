@@ -1,0 +1,10 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tm="tm.control.lib.ui"
+    xmlns:sap="sap.ui.commons">
+    <tm:Division>
+        <tm:content>
+            <sap:Label text="this is a content from a label"/>
+        </tm:content>
+    </tm:Division>
+</mvc:View>

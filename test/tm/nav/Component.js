@@ -6,7 +6,6 @@
     
     jQuery.sap.declare('tm.nav.Component');
     jQuery.sap.require('tm.nav.Router');
-    jQuery.sap.require('sap.ui.layout.HorizontalLayout');
     
     sap.ui.core.UIComponent.extend('tm.nav.Component', {
         metadata: {

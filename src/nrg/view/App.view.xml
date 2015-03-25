@@ -1,40 +1,39 @@
 <mvc:View
-    controllerName="nrg.view.App"
+    controllerName="nrg.controller.App"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
     xmlns:sap="sap.ui.commons"
-    xmlns:mvc="sap.ui.core.mvc">
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core">
     
-    <header class="uteInnerPageHeader">
-        <span>
-            Header
-        </span>
+    <header class="nrgAppHeader">
+        <core:Fragment fragmentName="nrg.view.AppHeader" type="XML" />
     </header>
-    <main class="uteInnerPageMain">
-        <div class="uteInnerPageTop">
-            <span>PAGE TITLE</span>
+    <main class="nrgAppMain">
+        <div class="nrgAppTop">
+            <span>Page Top</span>
         </div>
-        <div class="uteInnerPageLeft">
-            <section class="uteInnerPageLeftTop">
-                <article class="uteInnerPageLeftTopContent">
+        <div class="nrgAppLeft">
+            <section class="nrgAppLeftTop">
+                <article class="nrgAppLeftTopContent">
                     <ute:Div id="idInnerPageLeftTopContent" />
                 </article>
             </section>
-            <section class="uteInnerPageLeftBottom">
-                <article class="uteInnerPageLeftBottomContent">
+            <section class="nrgAppLeftBottom">
+                <article class="nrgAppLeftBottomContent">
                     <ute:Div id="idInnerPageLeftBottomContent" />
                 </article>
             </section>
         </div>
-        <div class="uteInnerPageCenter">
+        <div class="nrgAppCenter">
             <section>
-                <article class="uteInnerPageCenterContent">
+                <article class="nrgAppCenterContent">
                     <ute:Div id="idInnerPageCenterContent" />
                 </article>
             </section>
         </div>
     </main>
-    <footer class="uteInnerPageFooter">
-        <span>footer</span>
+    <footer class="nrgAppFooter">
+        <core:Fragment fragmentName="nrg.view.AppFooter" type="XML" />
     </footer>
 </mvc:View>

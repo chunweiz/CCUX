@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:sap="sap.ui.commons"
+    xmlns:core="sap.ui.core">
+    
+    <ute:Div>
+        <ute:content>
+            <span>Footer in a fragment</span>
+        </ute:content>
+    </ute:Div>
+    
+</core:FragmentDefinition>
