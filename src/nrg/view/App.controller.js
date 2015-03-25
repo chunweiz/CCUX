@@ -1,4 +1,4 @@
-/*globals sap, jQuery*/
+/*globals sap, jQuery, nrg*/
 
 (function () {
     'use strict';
@@ -16,5 +16,9 @@
 
         }
     });
+    
+    nrg.view.App.prototype.onChangeLayout = function (oEvent) {
+        var oViewDom = this.getView().getDomRef();
+    };
     
 }());

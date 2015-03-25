@@ -2,10 +2,13 @@
     controllerName="nrg.view.App"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
+    xmlns:sap="sap.ui.commons"
     xmlns:mvc="sap.ui.core.mvc">
     
     <header class="uteInnerPageHeader">
-        <span>header</span>
+        <span>
+            Header
+        </span>
     </header>
     <main class="uteInnerPageMain">
         <div class="uteInnerPageTop">
