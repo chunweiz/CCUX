@@ -24,6 +24,10 @@ sap.ui.define(['sap/ui/core/Control'],
                     position: {
                         type: 'ute.ui.commons.CSSPosition',
                         defaultValue: null
+                    },
+                    classes: {
+                        type: 'string',
+                        defaultValue: null
                     }
                 },
                 aggregations: {

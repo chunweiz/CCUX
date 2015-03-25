@@ -3,8 +3,8 @@
 (function () {
     'use strict';
     
-    jQuery.sap.require('nrg.controller.Controller');
     jQuery.sap.require('nrg.util.formatter.Locale');
+    jQuery.sap.require('nrg.controller.Controller');
     
     nrg.controller.Controller.extend('nrg.controller.App');
     

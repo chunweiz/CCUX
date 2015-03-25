@@ -7,7 +7,7 @@ sap.ui.define([],
         var DivRenderer = {};
 
         DivRenderer.render = function (oRm, oControl) {
-            var aContent, nContent,
+            var aContent, nContent, aClass, nClass,
                 bAdded = false;
             
             oRm.write('<div');
@@ -35,6 +35,15 @@ sap.ui.define([],
             
             if (bAdded === true) {
                 oRm.writeStyles();
+            }
+            
+            if (oControl.getClasses()) {
+                aClass = oControl.getClasses().replace(/\s/g, '').split('|');
+                for (nClass = 0; nClass < aClass.length; nClass = nClass + 1) {
+                    oRm.addClass(aClass[nClass]);
+                }
+                 
+                oRm.writeClasses();
             }
             
             oRm.write('>');
