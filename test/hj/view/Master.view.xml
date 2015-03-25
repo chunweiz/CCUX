@@ -8,4 +8,11 @@
         uteDesign="Button1"
         enabled="true">
     </u:Button>
+    <u:ToggleButton
+        leftBtnText="TESTL"
+        leftBtnWidth="500px"
+        rightBtnWidth="500px"
+        rightBtnText="TESTR"
+        press="testFunc">
+    </u:ToggleButton>
 </core:View>
