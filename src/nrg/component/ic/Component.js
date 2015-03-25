@@ -76,16 +76,16 @@
     };
     
     nrg.component.ic.Component.prototype.initModels = function () {
-        var mConfig, oRootPath, i18nModel;
+        var mConfig, oRootPath, oModel;
         
         mConfig = this.getMetadata().getConfig();
         oRootPath = jQuery.sap.getModulePath('nrg');
         
         //Set resource bundle
-        i18nModel = new sap.ui.model.resource.ResourceModel({
+        oModel = new sap.ui.model.resource.ResourceModel({
 			bundleUrl : [oRootPath, mConfig.resourceBundle].join('/')
 		});
-		this.setModel(i18nModel, 'i18n');
+		this.setModel(oModel, 'i18n');
     };
     
     nrg.component.ic.Component.prototype.initRouter = function () {

@@ -7,19 +7,35 @@ sap.ui.define([],
         var DivRenderer = {};
 
         DivRenderer.render = function (oRm, oControl) {
-            var aContent, nContent;
+            var aContent, nContent,
+                bAdded = false;
             
             oRm.write('<div');
             oRm.writeControlData(oControl);
             
-            oRm.addStyle('height', oControl.getHeight());
-            oRm.addStyle('width', oControl.getWidth());
-            
-            if (oControl.getInline()) {
-                oRm.addStyle('display', 'inline-block');
+            if (oControl.getHeight()) {
+                oRm.addStyle('height', oControl.getHeight());
+                bAdded = true;
             }
             
-            oRm.writeStyles();
+            if (oControl.getWidth()) {
+                oRm.addStyle('width', oControl.getWidth());
+                bAdded = true;
+            }
+            
+            if (oControl.getDisplay()) {
+                oRm.addStyle('display', oControl.getDisplay());
+                bAdded = true;
+            }
+            
+            if (oControl.getPosition()) {
+                oRm.addStyle('position', oControl.getPosition());
+                bAdded = true;
+            }
+            
+            if (bAdded === true) {
+                oRm.writeStyles();
+            }
             
             oRm.write('>');
             

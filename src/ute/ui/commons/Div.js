@@ -11,15 +11,19 @@ sap.ui.define(['sap/ui/core/Control'],
                 properties: {
                     height: {
                         type: 'sap.ui.core.CSSSize',
-                        defaultValue: '100%'
+                        defaultValue: null
                     },
                     width: {
                         type: 'sap.ui.core.CSSSize',
-                        defaultValue: '100%'
+                        defaultValue: null
                     },
-                    inline: {
-                        type: 'boolean',
-                        defaultValue: false
+                    display: {
+                        type: 'ute.ui.commons.CSSDisplay',
+                        defaultValue: null
+                    },
+                    position: {
+                        type: 'ute.ui.commons.CSSPosition',
+                        defaultValue: null
                     }
                 },
                 aggregations: {

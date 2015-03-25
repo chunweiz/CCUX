@@ -4,11 +4,12 @@
     'use strict';
     
     jQuery.sap.require('nrg.controller.Controller');
+    jQuery.sap.require('nrg.util.formatter.Locale');
     
     nrg.controller.Controller.extend('nrg.controller.App');
     
     nrg.controller.App.prototype.onInit = function () {
-        sap.ui.template();
+        
     };
     
     nrg.controller.App.prototype.onBeforeRendering = function () {
@@ -17,10 +18,6 @@
     
     nrg.controller.App.prototype.onAfterRendering = function () {
         
-    };
-    
-    nrg.controller.App.prototype.onChangeLayout = function (oEvent) {
-        var oViewDom = this.getView().getDomRef();
     };
     
 }());

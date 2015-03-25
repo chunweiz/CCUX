@@ -5,7 +5,8 @@
     
     <ute:Div>
         <ute:content>
-            <ute:Span text="{i18n>bpPageTitle}" />
+            <span>test</span>
+            <div></div>
         </ute:content>
     </ute:Div>
 
