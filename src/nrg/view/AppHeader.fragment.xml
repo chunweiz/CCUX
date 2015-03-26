@@ -3,19 +3,17 @@
     xmlns:ute="ute.ui.commons"
     xmlns:core="sap.ui.core">
     
-    <ute:Div>
+    <ute:Tag type="nav" classes='["nrgHrMenu"]'>
         <ute:content>
-            <style>
-                
-            </style>
             <div>
-            
+                
             </div>
             <ul>
                 <li>
+                    
                 </li>
             </ul>
         </ute:content>
-    </ute:Div>
+    </ute:Tag>
 
 </core:FragmentDefinition>

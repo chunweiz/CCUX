@@ -5,13 +5,21 @@ sap.ui.define(['sap/ui/core/Control'],
     function (Control) {
         'use strict';
 
-        var Span = Control.extend('ute.ui.commons.Span', {
+        var Tag = Control.extend('ute.ui.commons.Tag', {
             metadata: {
                 library: 'ute.ui.commons',
                 properties: {
+                    type: {
+                        type: 'string',
+                        defaultValue: 'div'
+                    },
                     text: {
                         type: 'string',
                         defaultValue: ''
+                    },
+                    classes: {
+                        type: 'string',
+                        defaultValue: '[]'
                     }
                 },
                 aggregations: {
@@ -25,6 +33,6 @@ sap.ui.define(['sap/ui/core/Control'],
             }
         });
 
-        return Span;
+        return Tag;
 
     }, true);

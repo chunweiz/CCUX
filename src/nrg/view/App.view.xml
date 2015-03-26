@@ -16,19 +16,19 @@
         <div class="nrgAppLeft">
             <section class="nrgAppLeftTop">
                 <article class="nrgAppLeftTopContent">
-                    <ute:Div id="idInnerPageLeftTopContent" />
+                    <ute:Tag id="idInnerPageLeftTopContent" />
                 </article>
             </section>
             <section class="nrgAppLeftBottom">
                 <article class="nrgAppLeftBottomContent">
-                    <ute:Div id="idInnerPageLeftBottomContent" />
+                    <ute:Tag id="idInnerPageLeftBottomContent" />
                 </article>
             </section>
         </div>
         <div class="nrgAppCenter">
             <section>
                 <article class="nrgAppCenterContent">
-                    <ute:Div id="idInnerPageCenterContent" />
+                    <ute:Tag id="idInnerPageCenterContent" />
                 </article>
             </section>
         </div>
