@@ -5,12 +5,13 @@
     
     <ute:Tag type="nav" classes='["nrgHrMenu"]'>
         <ute:content>
-            <div>
-                
+            <div class="uteHrMenuLogo">
+                <!-- img src="../../asset/img/nrg-logo.svg" / -->
+                <ute:Tag type="span" text="{i18n>hrMenuIc}"/>
             </div>
             <ul>
                 <li>
-                    
+                        
                 </li>
             </ul>
         </ute:content>
