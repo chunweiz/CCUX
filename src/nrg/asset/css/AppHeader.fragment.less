@@ -1,5 +1,7 @@
 nav.nrgAppHdrMenu {
     @menuHeight: 50px;
+    @menuPadLeft: 50px;
+    @menuPadRight: 50px;
     @menuFontSize: 10pt;
     @menuItemFontSize: @menuFontSize;
     @menuItemPadLeft: 15px;
@@ -13,15 +15,18 @@ nav.nrgAppHdrMenu {
     height: @menuHeight;
     font-size: @menuFontSize;
     border-bottom: 4px solid @uteColorBlueLink;
+    padding-left: @menuPadLeft;
+    padding-right: @menuPadRight;
     
+    /* Begin - Logo */
     & > img {
         display: inline-block;
         max-height: @menuHeight - 10px;
         padding-top: 5px;
-        padding-left: 15px;
         float: left;
-    }
-    
+    } /* End - Logo */
+
+    /* Begin - Title */
     & > h1 {
         display: inline-block;
         vertical-align: middle;
@@ -30,8 +35,9 @@ nav.nrgAppHdrMenu {
         color: @uteColorLightGrey;
         padding-top: 18px;
         padding-left: 15px;
-    }
+    } /* End - Title */
     
+    /* Begin - Menu */
     & > ul {
         display: inline-block;
         margin: 0;
@@ -39,7 +45,8 @@ nav.nrgAppHdrMenu {
         list-style-type: none; 
         float: right;
     }
-
+    
+    & > ul,
     & .nrgAppHdrMenuSubInner {
         max-width: 100%;
         margin: 0 auto;
@@ -106,16 +113,19 @@ nav.nrgAppHdrMenu {
     }
     
     @media screen {
-        @media (max-width: 895px) {
+        @media (max-width: (895px + @menuPadLeft + @menuPadRight)) {
             & > h1 {
                 display: none;
             }
         }
         
-        @media (max-width: 705px) {
+        @media (max-width: (705px + @menuPadLeft + @menuPadRight)) {
             & > img {
                 display: none;
             }
+            
+            padding-left: 0;
+            padding-right: 0;
         }
         
         @media (max-width: 640px) {
@@ -149,9 +159,10 @@ nav.nrgAppHdrMenu {
                 position: relative;
             }
             
-            & .nrgAppHdrMenuOpen .nrgAppHdrMenuSub {
+            & > ul > li.nrgAppHdrMenuOpen {
                 border-bottom: none;
             }
         }
     }
+    /* End - Menu */
 }

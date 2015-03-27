@@ -218,12 +218,19 @@ nav.nrgAppHdrMenu {
   height: 50px;
   font-size: 10pt;
   border-bottom: 4px solid #5092ce;
+  padding-left: 50px;
+  padding-right: 50px;
+  /* Begin - Logo */
+  /* End - Logo */
+  /* Begin - Title */
+  /* End - Title */
+  /* Begin - Menu */
+  /* End - Menu */
 }
 nav.nrgAppHdrMenu > img {
   display: inline-block;
   max-height: 40px;
   padding-top: 5px;
-  padding-left: 15px;
   float: left;
 }
 nav.nrgAppHdrMenu > h1 {
@@ -242,6 +249,7 @@ nav.nrgAppHdrMenu > ul {
   list-style-type: none;
   float: right;
 }
+nav.nrgAppHdrMenu > ul,
 nav.nrgAppHdrMenu .nrgAppHdrMenuSubInner {
   max-width: 100%;
   margin: 0 auto;
@@ -294,12 +302,16 @@ nav.nrgAppHdrMenu .nrgAppHdrMenuSubInner:after {
 nav.nrgAppHdrMenu .nrgAppHdrMenuSubInner:after {
   clear: both;
 }
-@media screen and (max-width: 895px) {
+@media screen and (max-width: 995px) {
   nav.nrgAppHdrMenu > h1 {
     display: none;
   }
 }
-@media screen and (max-width: 705px) {
+@media screen and (max-width: 805px) {
+  nav.nrgAppHdrMenu {
+    padding-left: 0;
+    padding-right: 0;
+  }
   nav.nrgAppHdrMenu > img {
     display: none;
   }
@@ -330,7 +342,7 @@ nav.nrgAppHdrMenu .nrgAppHdrMenuSubInner:after {
   nav.nrgAppHdrMenu .nrgAppHdrMenuSub {
     position: relative;
   }
-  nav.nrgAppHdrMenu .nrgAppHdrMenuOpen .nrgAppHdrMenuSub {
+  nav.nrgAppHdrMenu > ul > li.nrgAppHdrMenuOpen {
     border-bottom: none;
   }
 }
