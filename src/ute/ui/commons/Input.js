@@ -17,9 +17,9 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 		properties : {
 			value : {type : "string", group : "Data", defaultValue : '', bindable : "bindable"},
 			
-            //enabled : {type : "boolean", group : "Behavior", defaultValue : true},
+            enabled : {type : "boolean", group : "Behavior", defaultValue : true},
 			
-            //editable : {type : "boolean", group : "Behavior", defaultValue : true},
+            editable : {type : "boolean", group : "Behavior", defaultValue : true},
 
 			width : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "320px" },
 

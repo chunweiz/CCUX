@@ -44,7 +44,6 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
                 oRm.writeAttribute("name" , oInput.getName() );
                 oRm.writeAttribute("placeholder" , oInput.getPlaceholder() ) ;
                 oRm.addStyle("width", oInput.getWidth() );
-                oRm.addStyle("height", oInput.getHeight() ) ;
                 oRm.addClass( "uteUiInputType1" ) ;
                 oRm.writeStyles();
                 oRm.writeClasses();
