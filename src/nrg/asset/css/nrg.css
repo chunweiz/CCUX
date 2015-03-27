@@ -288,8 +288,7 @@ nav.nrgAppHdrMenu .nrgAppHdrMenuSub {
 }
 nav.nrgAppHdrMenu .nrgAppHdrMenuOpen .nrgAppHdrMenuSub {
   display: block;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 50px 20px 50px;
 }
 nav.nrgAppHdrMenu .nrgAppHdrMenuSubInner > div {
   width: 100%;
