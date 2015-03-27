@@ -20,8 +20,8 @@
                 resourceBundle: 'i18n/messageBundle.properties',
                 service: {
                     oData: {
-                        crm: 'www.google.com',
-                        ecc: 'www.utegration.com'
+                        crm: 'data/crm.json',
+                        ecc: 'data/ecc.json'
                     }
                 }
             },
@@ -76,16 +76,23 @@
     };
     
     nrg.component.retention.Component.prototype.initModels = function () {
-        var mConfig, oRootPath, i18nModel;
+        var mConfig, oRootPath, oModel;
         
         mConfig = this.getMetadata().getConfig();
         oRootPath = jQuery.sap.getModulePath('nrg');
         
         //Set resource bundle
-        i18nModel = new sap.ui.model.resource.ResourceModel({
+        oModel = new sap.ui.model.resource.ResourceModel({
 			bundleUrl: [oRootPath, mConfig.resourceBundle].join('/')
 		});
-		this.setModel(i18nModel, 'i18n');
+		this.setModel(oModel, 'i18n');
+
+        //Set CRM and ECC shared data
+        oModel = new sap.ui.model.json.JSONModel([oRootPath, mConfig.service.oData.crm].join('/'));
+        this.setModel(oModel, 'crm');
+        
+        oModel = new sap.ui.model.json.JSONModel([oRootPath, mConfig.service.oData.ecc].join('/'));
+        this.setModel(oModel, 'ecc');
     };
     
     nrg.component.retention.Component.prototype.initRouter = function () {

@@ -20,8 +20,8 @@
                 resourceBundle: 'i18n/messageBundle.properties',
                 service: {
                     oData: {
-                        crm: 'www.google.com',
-                        ecc: 'www.utegration.com'
+                        crm: 'data/crm.json',
+                        ecc: 'data/ecc.json'
                     }
                 }
             },
@@ -86,6 +86,13 @@
 			bundleUrl : [oRootPath, mConfig.resourceBundle].join('/')
 		});
 		this.setModel(oModel, 'i18n');
+        
+        //Set CRM and ECC shared data
+        oModel = new sap.ui.model.json.JSONModel([oRootPath, mConfig.service.oData.crm].join('/'));
+        this.setModel(oModel, 'crm');
+        
+        oModel = new sap.ui.model.json.JSONModel([oRootPath, mConfig.service.oData.ecc].join('/'));
+        this.setModel(oModel, 'ecc');
     };
     
     nrg.component.ic.Component.prototype.initRouter = function () {

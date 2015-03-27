@@ -1,1 +1,336 @@
-@font-face{font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(font/SourceSansPro-Regular.ttf)}@font-face{font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(font/SourceSansPro-Italic.ttf)}@font-face{font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(font/SourceSansPro-Semibold.ttf)}@font-face{font-family:'Source Sans Pro';font-style:italic;font-weight:600;src:url(font/SourceSansPro-SemiboldItalic.ttf)}@font-face{font-family:'Source Sans Pro';font-style:normal;font-weight:700;src:url(font/SourceSansPro-Bold.ttf)}@font-face{font-family:'Source Sans Pro';font-style:italic;font-weight:700;src:url(font/SourceSansPro-BoldItalic.ttf)}*{box-sizing:border-box}.nrgUiBody{margin:0;padding:0;font-family:'Source Sans Pro',sans-serif}.sap-desktop ::-webkit-scrollbar{width:5px;height:5px;background-color:antiquewhite;padding:10px}.sap-desktop ::-webkit-scrollbar-thumb{background-color:darkseagreen}.sap-desktop ::-webkit-scrollbar-thumb:hover{background-color:goldenrod}.sap-desktop ::-webkit-scrollbar-corner{background-color:antiquewhite}.nrgAppHeader{position:fixed;top:0;width:100%;height:60px;background-color:antiquewhite;z-index:5}.nrgAppMain{position:relative;max-width:1358px;margin:65px auto 10px auto;overflow:hidden}.nrgAppTop{margin-bottom:20px}.nrgAppLeft{float:left;width:284px;max-height:686px;margin-right:14px}.nrgAppLeftTop{width:100%;max-height:400px;margin:0 0 13px 0;border-radius:2px;background-color:tomato}.nrgAppLeftTopContent{padding:15px}.nrgAppLeftBottom{width:100%;max-height:273px;border-radius:2px;background-color:gold}.nrgAppLeftBottomContent{padding:15px}.nrgAppCenter{min-width:1060px;min-height:686px;height:100%;margin-left:298px;border-radius:2px;background-color:deepskyblue}.nrgAppCenterContent{position:relative;padding:15px}.nrgAppFooter{position:fixed;bottom:0;width:100%;height:5px;background-color:aquamarine;z-index:5}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url(font/SourceSansPro-Regular.ttf);
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 400;
+  src: url(font/SourceSansPro-Italic.ttf);
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url(font/SourceSansPro-Semibold.ttf);
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 600;
+  src: url(font/SourceSansPro-SemiboldItalic.ttf);
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: url(font/SourceSansPro-Bold.ttf);
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 700;
+  src: url(font/SourceSansPro-BoldItalic.ttf);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.sap-desktop::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: rgba(234, 239, 244, 0.95);
+}
+.sap-desktop::-webkit-scrollbar-thumb {
+  background-color: #83bbe5;
+}
+.sap-desktop::-webkit-scrollbar-thumb:hover {
+  background-color: #83bbe5;
+}
+.sap-desktop::-webkit-scrollbar-corner {
+  background-color: rgba(234, 239, 244, 0.95);
+}
+.nrgUiBody {
+  font-family: 'Source Sans Pro', sans-serif;
+  line-height: 1;
+}
+.nrgUiBody .blink {
+  -webkit-animation-name: blinker;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: blinker;
+  -moz-animation-duration: 1s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+  animation-name: blinker;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@-moz-keyframes blinker {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+@-webkit-keyframes blinker {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+@keyframes blinker {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+.nrgUiPanel {
+  background-color: rgba(234, 239, 244, 0.95);
+  border-radius: 2px;
+  padding: 10px;
+}
+.nrgApp {
+  position: relative;
+  overflow: scroll;
+  min-width: 1438px;
+}
+.nrgApp > header,
+.nrgApp > footer {
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+}
+.nrgApp > header {
+  top: 0;
+}
+.nrgApp > footer {
+  bottom: 0;
+}
+.nrgApp > main {
+  position: relative;
+  max-width: 1358px;
+  overflow: hidden;
+  margin: 65px auto 10px auto;
+}
+/*
+.nrgAppHeader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: antiquewhite;
+    z-index: 5;
+}
+
+.nrgAppMain {
+    position: relative;
+    max-width: 1358px;
+    margin: 65px auto 10px auto;
+    overflow: hidden;
+}
+
+.nrgAppTop {
+    margin-bottom: 20px;
+}
+
+.nrgAppLeft {
+    float: left;
+    width: 284px;
+    max-height: 686px;
+    margin-right: 14px;
+}
+
+.nrgAppLeftTop {
+    width: 100%;
+    max-height: 400px;
+    margin: 0 0 13px 0;
+    border-radius: 2px;
+    background-color: tomato;
+}
+
+.nrgAppLeftTopContent {
+    padding: 15px;
+}
+
+.nrgAppLeftBottom {
+    width: 100%;
+    max-height: 273px;
+    border-radius: 2px;
+    background-color: gold;
+}
+
+.nrgAppLeftBottomContent {
+    padding: 15px;
+}
+
+.nrgAppCenter {
+    min-width: 1060px;
+    min-height: 686px;
+    height: 100%;
+    margin-left: 298px;
+    border-radius: 2px;
+    background-color: deepskyblue;
+}
+
+.nrgAppCenterContent {
+    position: relative;
+    padding: 15px;
+}
+
+.nrgAppFooter {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background-color: aquamarine;
+    z-index: 5;
+}
+*/
+nav.nrgAppHdrMenu {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 50px;
+  font-size: 10pt;
+  border-bottom: 4px solid #5092ce;
+}
+nav.nrgAppHdrMenu > img {
+  display: inline-block;
+  max-height: 40px;
+  padding-top: 5px;
+  padding-left: 15px;
+  float: left;
+}
+nav.nrgAppHdrMenu > h1 {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12pt;
+  font-weight: 400;
+  color: #989898;
+  padding-top: 18px;
+  padding-left: 15px;
+}
+nav.nrgAppHdrMenu > ul {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  float: right;
+}
+nav.nrgAppHdrMenu .nrgAppHdrMenuSubInner {
+  max-width: 100%;
+  margin: 0 auto;
+}
+nav.nrgAppHdrMenu > ul > li {
+  display: inline-block;
+}
+nav.nrgAppHdrMenu > ul > li > span {
+  display: inline-block;
+  cursor: pointer;
+  padding: 20.33333333px 15px 16.33333333px 15px;
+  color: #4d4d4d;
+}
+nav.nrgAppHdrMenu > ul > li > span:hover {
+  color: #5092ce;
+}
+nav.nrgAppHdrMenu > ul > li > span.nrgAppHdrMenuItemDivider:after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 7.75pt;
+  top: 21px;
+  background-color: #989898;
+  transform: translate(15px, 0);
+}
+nav.nrgAppHdrMenu > ul > li.nrgAppHdrMenuOpen > span {
+  color: #5092ce;
+}
+nav.nrgAppHdrMenu .nrgAppHdrMenuSub {
+  display: none;
+  position: absolute;
+  background-color: #5092ce;
+  border-bottom: 4px solid #4d4d4d;
+  width: 100%;
+  left: 0;
+}
+nav.nrgAppHdrMenu .nrgAppHdrMenuOpen .nrgAppHdrMenuSub {
+  display: block;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+nav.nrgAppHdrMenu .nrgAppHdrMenuSubInner > div {
+  width: 100%;
+}
+nav.nrgAppHdrMenu .nrgAppHdrMenuSubInner:before,
+nav.nrgAppHdrMenu .nrgAppHdrMenuSubInner:after {
+  content: '';
+  display: table;
+}
+nav.nrgAppHdrMenu .nrgAppHdrMenuSubInner:after {
+  clear: both;
+}
+@media screen and (max-width: 895px) {
+  nav.nrgAppHdrMenu > h1 {
+    display: none;
+  }
+}
+@media screen and (max-width: 705px) {
+  nav.nrgAppHdrMenu > img {
+    display: none;
+  }
+}
+@media screen and (max-width: 640px) {
+  nav.nrgAppHdrMenu {
+    border: none;
+  }
+  nav.nrgAppHdrMenu > ul,
+  nav.nrgAppHdrMenu > nrgAppHdrMenuSubInner {
+    width: 100%;
+    padding: 0;
+  }
+  nav.nrgAppHdrMenu > ul {
+    float: none;
+  }
+  nav.nrgAppHdrMenu > ul > li {
+    display: block;
+    border-bottom: 4px solid #5092ce;
+  }
+  nav.nrgAppHdrMenu > ul > li > span {
+    display: block;
+    padding: 1em 3em;
+  }
+  nav.nrgAppHdrMenu > ul > li > span.nrgAppHdrMenuItemDivider:after {
+    display: none;
+  }
+  nav.nrgAppHdrMenu .nrgAppHdrMenuSub {
+    position: relative;
+  }
+  nav.nrgAppHdrMenu .nrgAppHdrMenuOpen .nrgAppHdrMenuSub {
+    border-bottom: none;
+  }
+}

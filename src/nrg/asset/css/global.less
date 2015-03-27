@@ -42,29 +42,76 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+	padding: 0;
+}
+
+.clearfix:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.sap-desktop::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: @uteColorLightPaleBlue;
+}
+
+.sap-desktop::-webkit-scrollbar-thumb {
+    background-color: @uteColorLightBlue;
+}
+
+.sap-desktop::-webkit-scrollbar-thumb:hover {
+    background-color: @uteColorLightBlue;
+}
+
+.sap-desktop::-webkit-scrollbar-corner {
+    background-color: @uteColorLightPaleBlue;
 }
 
 .nrgUiBody {
-	margin: 0;
-	padding: 0;
 	font-family: @uteFontFamily;
+    line-height: 1;
+    
+    .blink {
+        -webkit-animation-name: blinker;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+
+        -moz-animation-name: blinker;
+        -moz-animation-duration: 1s;
+        -moz-animation-timing-function: linear;
+        -moz-animation-iteration-count: infinite;
+
+        animation-name: blinker;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    @-moz-keyframes blinker {  
+        0% { opacity: 1.0; }
+        50% { opacity: 0.0; }
+        100% { opacity: 1.0; }
+    }
+
+    @-webkit-keyframes blinker {  
+        0% { opacity: 1.0; }
+        50% { opacity: 0.0; }
+        100% { opacity: 1.0; }
+    }
+
+    @keyframes blinker {  
+        0% { opacity: 1.0; }
+        50% { opacity: 0.0; }
+        100% { opacity: 1.0; }
+    }
 }
 
-.sap-desktop ::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-    background-color: antiquewhite;
+.nrgUiPanel {
+    background-color: @uteColorLightPaleBlue;
+    border-radius: 2px;
     padding: 10px;
 }
-
-.sap-desktop ::-webkit-scrollbar-thumb {
-    background-color: darkseagreen;
-}
-
-.sap-desktop ::-webkit-scrollbar-thumb:hover {
-    background-color: goldenrod;
-}
-
-.sap-desktop ::-webkit-scrollbar-corner {
-    background-color: antiquewhite;
-} 

@@ -14,7 +14,7 @@
             
             /*
                 Example ...
-                <ute:Span text="{
+                <ute:Tag type="span" text="{
 							parts: [{path: 'i18n>bpPageTitle'},{path: 'data>/firstname'},{path: 'data>/lastname'}],
 							formatter: 'nrg.util.formatter.Locale.getText'
 						}" />

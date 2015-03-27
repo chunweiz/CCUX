@@ -3,17 +3,69 @@
     xmlns:ute="ute.ui.commons"
     xmlns:core="sap.ui.core">
     
-    <ute:Tag type="nav" classes='["nrgHrMenu"]'>
+    <ute:Tag type="nav" id="idAppHdrMenu" classes='["nrgAppHdrMenu"]'>
         <ute:content>
-            <div class="uteHrMenuLogo">
-                <!-- img src="../../asset/img/nrg-logo.svg" / -->
-                <ute:Tag type="span" text="{i18n>hrMenuIc}"/>
-            </div>
             <ul>
-                <li>
-                        
+                <li data-nrg-type="menuitem">
+                    <ute:Tag type="span" classes='["nrgAppHdrMenuItemDivider"]' text="{i18n>nrgAppHeaderMenu}" />
+                    <section class="nrgAppHdrMenuSub">
+                        <article class="nrgAppHdrMenuSubInner">
+                            <div>
+                                <ul>
+                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderBilling}" />
+                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderBp}" />
+                                </ul>
+                                <ul>
+                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderRhs}" />
+                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderContactLogs}" />
+                                </ul>
+                                <ul>
+                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderCampaigns}" />
+                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderHighBill}" />
+                                </ul>
+                                <ul>
+                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderHistory}" />
+                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderSvcOrds}" />
+                                </ul>
+                                <ul>
+                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderBizEnroll}" />
+                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderResEnroll}" />
+                                </ul>
+                            </div>
+                        </article>
+                    </section>
+                </li>
+                <li data-nrg-type="menuitem">
+                    <ute:Tag type="span" classes='["nrgAppHdrMenuItemDivider"]' text="{i18n>nrgAppHeaderIdx}" />
+                </li>
+                <li data-nrg-type="link" data-nrg-href="http://www.nrg.com/">
+                    <ute:Tag type="span" classes='["nrgAppHdrMenuItemDivider"]' text="{i18n>nrgAppHeaderTrans}" />
+                </li>
+                <li data-nrg-type="link" data-nrg-href="http://ccrportal.reliant.com/esiidlookup/esiidlogin.jsp?company=Reliant">
+                    <ute:Tag type="span" classes='["nrgAppHdrMenuItemDivider"]' text="{i18n>nrgAppHeaderEsid}" />
+                </li>
+                <li data-nrg-type="link" data-nrg-href="https://ccpal.nrgenergy.com/ccpal/ssoLogin.do">
+                    <ute:Tag type="span" text="{i18n>nrgAppHeaderPalPlus}" />
+                </li>
+                <li data-nrg-type="action">
+                    <ute:Tag type="span" text="{i18n>nrgAppHeaderRefresh}" />
+                </li>
+                <li data-nrg-type="action">
+                    <ute:Tag type="span" classes='["nrgAppHeaderMenuCaution"]' text="{i18n>nrgAppHeaderClearAcc}" />
+                </li>
+                <li data-nrg-type="menuitem">
+                    <ute:Tag type="span" text="{i18n>nrgAppHeaderMsg}" />
+                    <section class="nrgAppHdrMenuSub">
+                        <article class="nrgAppHdrMenuSubInner">
+                            <div>
+                                Messages!!!!
+                            </div>
+                        </article>
+                    </section>
                 </li>
             </ul>
+            <img src="../../asset/img/nrg-logo.svg" />
+            <ute:Tag type="h1" text="{i18n>nrgAppHeaderIc}" />
         </ute:content>
     </ute:Tag>
 

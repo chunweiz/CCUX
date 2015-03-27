@@ -1,4 +1,157 @@
-.nrgHrMenu {
+nav.nrgAppHdrMenu {
+    @menuHeight: 50px;
+    @menuFontSize: 10pt;
+    @menuItemFontSize: @menuFontSize;
+    @menuItemPadLeft: 15px;
+    @menuItemPadRight: 15px;
+    @menuItemPadTop: ((@menuHeight - @menuItemFontSize) / 2) + 2px;
+    @menuItemPadBottom: ((@menuHeight - @menuItemFontSize) / 2) - 2px;
     
-}
+    display: block;
+    position: relative;
+    width: 100%;
+    height: @menuHeight;
+    font-size: @menuFontSize;
+    border-bottom: 4px solid @uteColorBlueLink;
+    
+    & > img {
+        display: inline-block;
+        max-height: @menuHeight - 10px;
+        padding-top: 5px;
+        padding-left: 15px;
+        float: left;
+    }
+    
+    & > h1 {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 12pt;
+        font-weight: 400;
+        color: @uteColorLightGrey;
+        padding-top: 18px;
+        padding-left: 15px;
+    }
+    
+    & > ul {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        list-style-type: none; 
+        float: right;
+    }
 
+    & .nrgAppHdrMenuSubInner {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    & > ul > li {
+        display: inline-block;
+        
+        & > span {
+            display: inline-block;
+            cursor: pointer;
+            padding: @menuItemPadTop @menuItemPadRight @menuItemPadBottom @menuItemPadLeft;
+            color: @uteColorDarkGrey;
+            
+            &:hover {
+                color: @uteColorBlueLink;
+            }
+            
+            &.nrgAppHdrMenuItemDivider:after {
+                content: '';
+                position: absolute;
+                width: 1px;
+                height: @menuFontSize - 3px;
+                top: @menuItemPadRight + 6px;
+                background-color: @uteColorLightGrey;
+                transform: translate(@menuItemPadRight, 0);
+            }
+        }
+        
+        &.nrgAppHdrMenuOpen > span {
+            color: @uteColorBlueLink;
+        }
+    }
+    
+    & .nrgAppHdrMenuSub {
+        display: none;
+        position: absolute;
+        background-color: @uteColorBlueLink;
+        border-bottom: 4px solid @uteColorDarkGrey;
+        width: 100%;
+        left: 0;
+    }
+    
+    & .nrgAppHdrMenuOpen .nrgAppHdrMenuSub {
+        display: block;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    & .nrgAppHdrMenuSubInner {
+        & > div {
+            width: 100%
+        }
+        
+        &:before,
+        &:after {
+            content: '';
+            display: table;
+        }
+        
+        &:after {
+            clear: both;
+        }
+    }
+    
+    @media screen {
+        @media (max-width: 895px) {
+            & > h1 {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 705px) {
+            & > img {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            border: none;
+            
+            & > ul,
+            & > nrgAppHdrMenuSubInner {
+                width: 100%;
+                padding: 0;
+            }
+            
+            & > ul {
+                float: none;
+            }
+            
+            & > ul > li {
+                display: block;
+                border-bottom: 4px solid @uteColorBlueLink;
+            }
+            
+            & > ul > li > span {
+                display: block;
+                padding: 1em 3em;
+                
+                &.nrgAppHdrMenuItemDivider:after {
+                    display: none;
+                }
+            }
+            
+            & .nrgAppHdrMenuSub {
+                position: relative;
+            }
+            
+            & .nrgAppHdrMenuOpen .nrgAppHdrMenuSub {
+                border-bottom: none;
+            }
+        }
+    }
+}
