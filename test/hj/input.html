@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge' />
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="/src/ute/ui/commons/themes/base/library.css">
+		<!-- script id='sap-ui-bootstrap'
+		    src='https://openui5.hana.ondemand.com/resources/sap-ui-core.js'
+		    data-sap-ui-theme='sap_bluecrystal'
+		    data-sap-ui-libs='sap.m'>
+		</script -->
+        <style type="text/css">
+            .uteUiInputType1{
+                width:200px ;
+                height:40px ;
+                text-indent: 16px ;
+                background-color: rgb(249, 252, 255);
+                border-radius: 5px ;
+                border-width: 1px ;
+                border-style: solid;
+                border-color: rgb(152, 152, 152);
+                outline: none;
+            }
+            .uteUiInputType1:focus{
+                background-color: rgb(255 ,255 ,255);
+                outline: none;
+            }
+            
+            .uteUiInputType2{
+                width:300px ;
+                line-height: 25px;
+                padding 0px;
+                text-indent: 10px ;
+                border-color: rgb(152, 152, 152);
+                border-style: solid; 
+                border-width: 0px 0px 1px 0px; 
+                margin-top: 11px;
+                margin-bottom: 11px;     
+                position: relative;
+                top:3px;
+                outline: none;
+            }
+            .uteUiInputType2Label{
+                display:inline;
+                position: relative;
+                top: 10px;
+                margin-right: 5px;
+            }
+        </style>
+	</head>
+	<body>
+            <Label class="uteUiInputType2Label" for="test"  >Title: </Label>
+            <input name="test" class = "uteUiInputType2" placeholder="Text">
+	</body>
+</html>
