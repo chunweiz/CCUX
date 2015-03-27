@@ -12,5 +12,13 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
     
     testFunc:function(evt){
         alert("clicked") ;
+    },
+    
+    testInputChange: function(evt){
+        alert("yes changed") ;
+    },
+    
+    whyThisWork: function(evt){
+        alert("why why why") ;
     }
 });

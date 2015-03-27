@@ -6,7 +6,8 @@
 	<u:Button
         text="TITLE"
         uteDesign="Button1"
-        enabled="true">
+        enabled="true"
+        press="onButtonClick">
     </u:Button>
     <u:ToggleButton
         leftBtnText="TESTL"
@@ -15,4 +16,10 @@
         rightBtnText="TESTR"
         press="testFunc">
     </u:ToggleButton>
+    <u:Input
+        placeholder="Text"
+        change="testInputChange"
+        fieldType="field2"
+        label="Title">
+    </u:Input>
 </core:View>
