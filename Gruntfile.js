@@ -9,7 +9,10 @@
 
             //JS code quality check with JSHint
             jshint: {
-                all: ['src/**/*.js']
+                all: [
+                    'src/**/*.js',
+                    'Gruntfile.js'
+                ]
             },
 
             //Copy all files to build folder, selected JS files will be prefixed with -dbg for sap-ui-debug=true

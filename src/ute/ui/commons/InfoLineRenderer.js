@@ -1,52 +1,57 @@
+/*globals sap*/
+
 sap.ui.define([],
-function() {
-	'use strict';
+    function () {
+        'use strict';
 
-	var InfoLineRenderer = {};
+        var InfoLineRenderer = {};
 
-	InfoLineRenderer.render = function(oRm, oControl) {
-		oRm.write('<div');
-        oRm.writeControlData(oControl);
+        InfoLineRenderer.render = function (oRm, oControl) {
+            oRm.write('<div');
+            oRm.writeControlData(oControl);
 
-        oRm.addClass('uteInfoLine');
-        oRm.writeClasses();
-        oRm.write('>');
-        oRm.write('<ul>');
-        oRm.write('<li>');
+            oRm.addClass('uteInfoLine');
+            oRm.writeClasses();
+            oRm.write('>');
+            oRm.write('<ul>');
+            oRm.write('<li>');
 
-        oControl.getExpand() 
-            ? oRm.write('<input type="checkbox" />')
-            : oRm.write('<input type="checkbox" checked />');
-        oRm.write('<i></i>');
+            if (oControl.getExpand()) {
+                oRm.write('<input type="checkbox" />');
+            } else {
+                oRm.write('<input type="checkbox" checked />');
+            }
 
-        oRm.write('<div');
-        oRm.addClass('uteInfoLineItemTitle');
-        oRm.writeClasses();
-        oRm.write('>');
-        oRm.writeEscaped(oControl.getTitle());
-        oRm.write('</div>'); //uteInfoLineItemTitle div
+            oRm.write('<i></i>');
 
-        oRm.write('<div');
-        oRm.addClass('uteInfoLineItemContent');
-        oRm.writeClasses();
+            oRm.write('<div');
+            oRm.addClass('uteInfoLineItemTitle');
+            oRm.writeClasses();
+            oRm.write('>');
+            oRm.writeEscaped(oControl.getTitle());
+            oRm.write('</div>'); //uteInfoLineItemTitle div
 
-        if (oControl.getMaxHeight()) {
-            oRm.addStyle('max-height', oControl.getMaxHeight());
-            oRm.writeStyles();
-        }
+            oRm.write('<div');
+            oRm.addClass('uteInfoLineItemContent');
+            oRm.writeClasses();
 
-        oRm.write('>');
-        oRm.renderControl(oControl.getContent());
-        oRm.write('</div>'); //uteInfoLineItemContent div
+            if (oControl.getMaxHeight()) {
+                oRm.addStyle('max-height', oControl.getMaxHeight());
+                oRm.writeStyles();
+            }
 
-        oRm.write('</li>');
-        oRm.write('</ul>');
-        oRm.write('</div>'); //uteInfoLine div
-	}
+            oRm.write('>');
+            oRm.renderControl(oControl.getContent());
+            oRm.write('</div>'); //uteInfoLineItemContent div
 
-	return InfoLineRenderer;
+            oRm.write('</li>');
+            oRm.write('</ul>');
+            oRm.write('</div>'); //uteInfoLine div
+        };
 
-}, true);
+        return InfoLineRenderer;
+
+    }, true);
 
 /*
 <div class="uteInfoLine">
