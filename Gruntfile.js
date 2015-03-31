@@ -48,6 +48,58 @@
                 }
             },
 
+            //Compress javascript files
+            uglify: {
+                target: {
+                    files: [
+                        {
+                            expand: true,
+                            cwd: 'src',
+                            src: '**/*.js',
+                            dest: 'build'
+                        }
+                    ]
+                }
+            },
+
+            //Compile LESS files to compressed CSS files
+            less: {
+                all: {
+                    options: {
+                        compress: true
+                    },
+                    files: {
+                        'build/nrg/asset/css/nrg.css': 'src/nrg/asset/css/nrg.source.less',
+                        'build/ute/ui/commons/themes/base/library.css': 'src/ute/ui/commons/themes/base/library.source.less',
+                        'build/ute/ui/commons/themes/sap_bluecrystal/library.css': 'src/ute/ui/commons/themes/sap_bluecrystal/library.source.less'
+                    }
+                }
+            },
+
+            //Compress HTML and XML files
+            htmlmin: {
+                all: {
+                    options: {
+                        removeComments: true,
+                        collapseWhitespace: true
+                    },
+                    files: [
+                        {
+                            expand: true,
+                            cwd: 'src',
+                            src: '**/*.html',
+                            dest: 'build'
+                        },
+                        {
+                            expand: true,
+                            cwd: 'src',
+                            src: '**/*.xml',
+                            dest: 'build'
+                        }
+                    ]
+                }
+            },
+
             //Create preload for control library and components
             openui5_preload: {
                 lib: {
@@ -80,44 +132,16 @@
                         }
                     }
                 }
-            },
-
-            //Compress javascript files
-            uglify: {
-                target: {
-                    files: [
-                        {
-                            expand: true,
-                            cwd: 'src',
-                            src: '**/*.js',
-                            dest: 'build'
-                        }
-                    ]
-                }
-            },
-
-            //Compile LESS files
-            less: {
-                all: {
-                    options: {
-                        compress: true
-                    },
-                    files: {
-                        'build/nrg/asset/css/nrg.css': 'src/nrg/asset/css/nrg.source.less',
-                        'build/ute/ui/commons/themes/base/library.css': 'src/ute/ui/commons/themes/base/library.source.less',
-                        'build/ute/ui/commons/themes/sap_bluecrystal/library.css': 'src/ute/ui/commons/themes/sap_bluecrystal/library.source.less'
-                    }
-                }
             }
-
         });
 
-        grunt.loadNpmTasks('grunt-contrib-jshint');
         grunt.loadNpmTasks('grunt-openui5');
+        grunt.loadNpmTasks('grunt-contrib-jshint');
         grunt.loadNpmTasks('grunt-contrib-uglify');
         grunt.loadNpmTasks('grunt-contrib-less');
         grunt.loadNpmTasks('grunt-contrib-copy');
-        grunt.registerTask('default', ['jshint', 'copy', 'openui5_preload', 'uglify', 'less']);
-        grunt.registerTask('no_qc', ['copy', 'openui5_preload', 'uglify', 'less']);
+        grunt.loadNpmTasks('grunt-contrib-htmlmin');
+        grunt.registerTask('default', ['jshint', 'copy', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
+        grunt.registerTask('no_qc', ['copy', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
     };
 }());
