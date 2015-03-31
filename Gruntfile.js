@@ -7,12 +7,12 @@
         grunt.initConfig({
             pkg: grunt.file.readJSON('package.json'),
 
-            //Code quality check with JSHint
+            //JS code quality check with JSHint
             jshint: {
                 all: ['src/**/*.js']
             },
 
-            //Copy remaining files to build, JS files will be prefixed with -dbg for sap-ui-debug=true
+            //Copy all files to build folder, selected JS files will be prefixed with -dbg for sap-ui-debug=true
             copy: {
                 all: {
                     files: [
@@ -103,9 +103,9 @@
                         compress: true
                     },
                     files: {
-                        "build/nrg/asset/css/nrg.css": "src/nrg/asset/css/nrg.source.less",
-                        "build/ute/ui/commons/themes/base/library.css": "src/ute/ui/commons/themes/base/library.source.less",
-                        "build/ute/ui/commons/themes/sap_bluecrystal/library.css": "src/ute/ui/commons/themes/sap_bluecrystal/library.source.less"
+                        'build/nrg/asset/css/nrg.css': 'src/nrg/asset/css/nrg.source.less',
+                        'build/ute/ui/commons/themes/base/library.css': 'src/ute/ui/commons/themes/base/library.source.less',
+                        'build/ute/ui/commons/themes/sap_bluecrystal/library.css': 'src/ute/ui/commons/themes/sap_bluecrystal/library.source.less'
                     }
                 }
             }
@@ -118,5 +118,6 @@
         grunt.loadNpmTasks('grunt-contrib-less');
         grunt.loadNpmTasks('grunt-contrib-copy');
         grunt.registerTask('default', ['jshint', 'copy', 'openui5_preload', 'uglify', 'less']);
+        grunt.registerTask('no_qc', ['copy', 'openui5_preload', 'uglify', 'less']);
     };
 }());

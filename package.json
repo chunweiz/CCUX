@@ -1,0 +1,34 @@
+{
+  "name": "nrg-web-redesign",
+  "version": "0.0.1",
+  "description": "NRG Interaction Center Redesign",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/nrgicwebredesign/nrgicwebredesign.git"
+  },
+  "keywords": [
+    "NRG",
+    "IC",
+    "Web",
+    "Redesign"
+  ],
+  "author": {
+    "name": "Utegration Inc",
+    "url": "http://www.utegration.com"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-jshint": "^0.11.1",
+    "grunt-contrib-less": "^1.0.0",
+    "grunt-contrib-uglify": "^0.8.1",
+    "grunt-openui5": "^0.7.0",
+    "grunt-xmlmin": "^0.1.4"
+  }
+}
