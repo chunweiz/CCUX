@@ -1,8 +1,21 @@
-/*globals module*/
+/*globals module, require*/
+/*jshint -W024 */
+
 (function () {
     'use strict';
 
     module.exports = function (grunt) {
+        var LessPluginAutoPrefix = require('less-plugin-autoprefix'),
+            LessPluginCleanCss = require('less-plugin-clean-css'),
+            oLessAutoPrefix = new LessPluginAutoPrefix({
+                browsers: [
+                    'ie >= 9'
+                ]
+            }),
+            oLessCleanCss = new LessPluginCleanCss({
+                advanced: true
+            });
+
 
         grunt.initConfig({
             pkg: grunt.file.readJSON('package.json'),
@@ -52,6 +65,33 @@
                 }
             },
 
+            //Compile LESS files to compressed CSS files with IE9 and above compatibility
+            less: {
+                all: {
+                    options: {
+                        plugins: [
+                            oLessAutoPrefix,
+                            oLessCleanCss
+                        ]
+                    },
+                    files: {
+                        'build/nrg/asset/css/nrg.css': 'src/nrg/asset/css/nrg.source.less',
+                        'build/ute/ui/commons/themes/base/library.css': 'src/ute/ui/commons/themes/base/library.source.less',
+                        'build/ute/ui/commons/themes/sap_bluecrystal/library.css': 'src/ute/ui/commons/themes/sap_bluecrystal/library.source.less'
+                    }
+                }
+            },
+
+            csslint: {
+                strict: {
+                    src: [
+                        'build/nrg/asset/css/nrg.css',
+                        'build/ute/ui/commons/themes/base/library.css',
+                        'build/ute/ui/commons/themes/sap_bluecrystal/library.css'
+                    ]
+                }
+            },
+
             //Compress javascript files
             uglify: {
                 target: {
@@ -63,20 +103,6 @@
                             dest: 'build'
                         }
                     ]
-                }
-            },
-
-            //Compile LESS files to compressed CSS files
-            less: {
-                all: {
-                    options: {
-                        compress: true
-                    },
-                    files: {
-                        'build/nrg/asset/css/nrg.css': 'src/nrg/asset/css/nrg.source.less',
-                        'build/ute/ui/commons/themes/base/library.css': 'src/ute/ui/commons/themes/base/library.source.less',
-                        'build/ute/ui/commons/themes/sap_bluecrystal/library.css': 'src/ute/ui/commons/themes/sap_bluecrystal/library.source.less'
-                    }
                 }
             },
 
@@ -145,6 +171,7 @@
         grunt.loadNpmTasks('grunt-contrib-less');
         grunt.loadNpmTasks('grunt-contrib-copy');
         grunt.loadNpmTasks('grunt-contrib-htmlmin');
+        grunt.loadNpmTasks('grunt-contrib-csslint');
         grunt.registerTask('default', ['jshint', 'copy', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
         grunt.registerTask('no_qc', ['copy', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
     };
