@@ -190,6 +190,8 @@ sap.ui.define(['jquery.sap.global'],
          * @private
          */
         ButtonRenderer._getIconForState = function (oButton, sState) {
+            var sIcon;
+
             if (!oButton.getEnabled()) {
                 sState = "disabled";
             }
@@ -198,7 +200,7 @@ sap.ui.define(['jquery.sap.global'],
             case "blur":
             case "base":
                 if (oButton.$().hasClass("sapUiBtnAct")) {
-                    var sIcon = oButton.getIconSelected() || oButton.getIconHovered();
+                    sIcon = oButton.getIconSelected() || oButton.getIconHovered();
                     return sIcon ? sIcon : oButton.getIcon();
                 } else if (oButton.$().hasClass("sapUiBtnFoc")) {
                     return oButton.getIconHovered() || oButton.getIcon();
@@ -210,11 +212,11 @@ sap.ui.define(['jquery.sap.global'],
                 }
                 return oButton.getIcon();
             case "active":
-                var sIcon = oButton.getIconSelected() || oButton.getIconHovered();
+                sIcon = oButton.getIconSelected() || oButton.getIconHovered();
                 return sIcon ? sIcon : oButton.getIcon();
             case "mouseover":
             case "deactive":
-                var sIcon = oButton.getIconHovered();
+                sIcon = oButton.getIconHovered();
                 return sIcon ? sIcon : oButton.getIcon();
             }
             return oButton.getIcon();
@@ -263,7 +265,7 @@ sap.ui.define(['jquery.sap.global'],
             var aClasses = [];
             var mAttributes = {};
 
-            mAttributes["id"] = oButton.getId() + "-icon";
+            mAttributes.id = oButton.getId() + "-icon";
 
             aClasses.push("sapUiBtnIco");
             if (oButton.getText()) { // only add a distance to the text if there is text

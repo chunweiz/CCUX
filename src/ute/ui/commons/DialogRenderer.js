@@ -28,6 +28,7 @@ sap.ui.define(['jquery.sap.global'],
 	
 		var aButtons = oControl.getButtons();
 		var iButtonCount = aButtons.length;
+        var i = 0;
 	
 	
 		// Root element and classes/styles
@@ -57,7 +58,7 @@ sap.ui.define(['jquery.sap.global'],
 		if (!widthSet) {
 			rm.addClass("sapUiDlgFlexWidth");
 		}
-		if (iButtonCount == 0) {
+		if (iButtonCount === 0) {
 			rm.addClass("sapUiDlgNoButtons");
 		}
 		if (!oControl.getApplyContentPadding()) {
@@ -114,7 +115,7 @@ sap.ui.define(['jquery.sap.global'],
 	
 		// Content
 		var aChildren = oControl.getContent();
-		for (var i = 0; i < aChildren.length; i++) {
+		for (i = 0; i < aChildren.length; i++) {
 			rm.renderControl(aChildren[i]);
 		}
 		rm.write("</div>");
@@ -133,7 +134,7 @@ sap.ui.define(['jquery.sap.global'],
 	
 		// Wave and Buttons
 		rm.write("<div class='sapUiDlgBtns'>");
-		for (var i = 0; i < iButtonCount; i++) {
+		for (i = 0; i < iButtonCount; i++) {
 			rm.renderControl(aButtons[i]);
 		}
 		rm.write("</div><div class='sapUiDlgWave'></div></div>");

@@ -62,7 +62,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
         oEvent.stopPropagation();
         
         this._checkChange(oEvent) ;
-    }
+    };
     
     Input.prototype._checkChange = function(oEvent) {
 		var oInput = this.getInputDomRef(),
@@ -77,7 +77,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
     
     Input.prototype._getRenderOuter = function () {
 
-		if (this.bRenderOuter == undefined) {
+		if (this.bRenderOuter === undefined) {
 			var oRenderer = this.getRenderer();
 			if (oRenderer.renderOuterAttributes || oRenderer.renderOuterContentBefore || oRenderer.renderOuterContent) {
 				this.bRenderOuter = true;

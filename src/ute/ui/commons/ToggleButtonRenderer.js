@@ -72,7 +72,7 @@ sap.ui.define(['jquery.sap.global'],
                 oToggleButton.$().children().first().next().removeClass("uteUiToggleRightButtonSelected");
                 oToggleButton.$().children().first().next().addClass("uteUiToggleRightButton");
             }
-        }
+        };
     
         return ToggleButtonRenderer;
     
