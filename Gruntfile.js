@@ -82,6 +82,7 @@
                 }
             },
 
+            //Linting CSS on demand
             csslint: {
                 strict: {
                     src: [
@@ -172,6 +173,7 @@
         grunt.loadNpmTasks('grunt-contrib-copy');
         grunt.loadNpmTasks('grunt-contrib-htmlmin');
         grunt.loadNpmTasks('grunt-contrib-csslint');
+
         grunt.registerTask('default', ['jshint', 'copy', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
         grunt.registerTask('no_qc', ['copy', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
     };
