@@ -2,9 +2,9 @@
 
 (function () {
     'use strict';
-    
+
     jQuery.sap.require('nrg.controller.BaseController');
-    
-    nrg.controller.BaseController.extend('nrg.controller.LeftBottomEmpty');
-    
+
+    nrg.controller.BaseController.extend('nrg.controller.GeneralEmpty');
+
 }());

@@ -1,0 +1,13 @@
+<mvc:View
+    controllerName="nrg.controller.GeneralEmpty"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <ute:Tag>
+        <ute:content>
+            <span>General Empty</span>
+        </ute:content>
+    </ute:Tag>
+
+</mvc:View>
