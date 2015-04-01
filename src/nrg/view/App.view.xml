@@ -11,18 +11,7 @@
                 <core:Fragment fragmentName="nrg.view.AppHeader" type="XML" />
             </header>
             <main>
-                <ute:Tag type="h1" id="idAppTitle" />
-                <ute:Tag type="aside" id="idAppCursorLeft" />
-                <ute:Tag type="aside" id="idAppCursorRight" />
-                <section>
-                    <ute:Tag type="article" id="idAppSummary" />
-                </section>
-                <section>
-                    <ute:Tag type="article" id="idAppTools" />
-                </section>
-                <section>
-                    <ute:Tag type="article" id="idAppGeneral" />
-                </section>
+                <core:Fragment fragmentName="nrg.view.AppMain" type="XML" />
             </main>
             <footer>
                 <core:Fragment fragmentName="nrg.view.AppFooter" type="XML" />
@@ -30,28 +19,3 @@
         </ute:content>
     </ute:Tag>
 </mvc:View>
-
-<!--main class="nrgAppMain">
-    <div class="nrgAppTop">
-        <span>Page Top</span>
-    </div>
-    <div class="nrgAppLeft">
-        <section class="nrgAppLeftTop">
-            <article class="nrgAppLeftTopContent">
-                <ute:Tag id="idAppSummaryContent" />
-            </article>
-        </section>
-        <section class="nrgAppLeftBottom">
-            <article class="nrgAppLeftBottomContent">
-                <ute:Tag id="idAppToolsContent" />
-            </article>
-        </section>
-    </div>
-    <div class="nrgAppCenter">
-        <section>
-            <article class="nrgAppCenterContent">
-                <ute:Tag id="idAppGeneralContent" />
-            </article>
-        </section>
-    </div>
-</main -->

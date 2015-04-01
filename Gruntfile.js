@@ -120,7 +120,7 @@
                 }
             },
 
-            //Linting CSS on demand
+            //Linting CSS on demand (not part of build)
             csslint: {
                 strict: {
                     src: [

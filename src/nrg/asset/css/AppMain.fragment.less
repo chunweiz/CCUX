@@ -1,13 +1,29 @@
-/*
-.nrgAppHeader {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 60px;
-    background-color: antiquewhite;
-    z-index: 5;
+.nrgAppMain {
+    position: relative;
+    max-width: 1358px;
+    margin: 65px auto 10px auto;
+    overflow: hidden;
+
+    & .nrgAppMainContentLeft {
+        display: inline-block;
+        width: 284px;
+        margin-right: 14px;
+
+        & > section:first-child {
+            margin-bottom: 13px;
+        }
+    }
+
+    & .nrgAppMainContentCenter {
+        display: inline-block;
+        min-width: 1060px;
+        height: 100%;
+        vertical-align: top;
+    }
 }
 
+
+/*
 .nrgAppMain {
     position: relative;
     max-width: 1358px;

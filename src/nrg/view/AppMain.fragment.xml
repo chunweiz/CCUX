@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:core="sap.ui.core">
+
+    <ute:Tag id="idAppMain" classes='["nrgAppMain"]'>
+        <ute:content>
+            <div class="nrgAppMainContentLeft">
+                <section>
+                    <ute:Tag type="article" id="idAppSummary" />
+                </section>
+                <section>
+                    <ute:Tag type="article" id="idAppTools" />
+                </section>
+            </div>
+            <div class="nrgAppMainContentCenter">
+                <section>
+                    <ute:Tag type="article" id="idAppGeneral" />
+                </section>
+            </div>
+        </ute:content>
+    </ute:Tag>
+</core:FragmentDefinition>

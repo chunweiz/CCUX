@@ -1,14 +1,20 @@
 .nrgApp {
-    @nrgAppZIndex: 5;
+    /*
+        Agent screen resolution: 1680 x 1050
+        Wireframe: 1438 x 771
+        Wireframe min: 1358 x 686
+    */
+
+    @hdrFooterZIdx: 500;
     
     position: relative;
-    overflow: scroll;
+    overflow: auto;
     min-width: 1438px;
     
     & > header,
     & > footer {
         position: fixed;
-        z-index: @nrgAppZIndex;
+        z-index: @hdrFooterZIdx;
         width: 100%;
     }
     
@@ -22,8 +28,13 @@
     
     & > main {
         position: relative;
-        max-width: 1358px;
         overflow: hidden;
-        margin: 65px auto 10px auto;
+        margin: 65px auto 15px auto;
+    }
+
+    & .nrgAppPanel {
+        background-color: @uteColorLightPaleBlue;
+        border-radius: 2px;
+        padding: 10px;
     }
 }
