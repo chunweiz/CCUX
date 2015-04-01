@@ -21,10 +21,19 @@
 
             //JS code quality check with JSHint
             jshint: {
-                all: [
-                    'src/**/*.js',
-                    'Gruntfile.js'
-                ]
+                all: {
+                    files: {
+                        cwd: 'src',
+                        src: [
+                            'nrg/component/**/*.js',
+                            'nrg/controller/**/*.js',
+                            'nrg/util/**/*.js',
+                            'nrg/view/**/*.js',
+                            'ute/**/*.js',
+                            'Gruntfile.js'
+                        ]
+                    }
+                }
             },
 
             //Copy everything to build folder
