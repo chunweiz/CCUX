@@ -52,7 +52,14 @@
                             expand: true,
                             cwd: 'src',
                             src: [
-                                '**/*'
+                                'nrg/asset/css/font/**',
+                                'nrg/asset/img/**',
+                                'nrg/component/**',
+                                'nrg/controller/**',
+                                'nrg/data/**',
+                                'nrg/util/**',
+                                'nrg/view/**',
+                                'ute/ui/commons/**/*.js'
                             ],
                             dest: 'build/',
                             filter: 'isFile'
