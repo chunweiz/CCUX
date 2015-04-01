@@ -19,13 +19,6 @@
         grunt.initConfig({
             pkg: grunt.file.readJSON('package.json'),
 
-            //Cleanup build folder
-            clean: {
-                build: [
-                    'build/**'
-                ]
-            },
-
             //JS code quality check with JSHint
             jshint: {
                 all: {
@@ -41,6 +34,13 @@
                         ]
                     }
                 }
+            },
+
+            //Cleanup build folder
+            clean: {
+                build: [
+                    'build/**'
+                ]
             },
 
             //Copy everything to build folder
@@ -225,7 +225,7 @@
         grunt.loadNpmTasks('grunt-contrib-htmlmin');
         grunt.loadNpmTasks('grunt-contrib-csslint');
 
-        grunt.registerTask('default', ['clean', 'jshint', 'copy', 'concat', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
-        grunt.registerTask('no_qc', ['copy', 'concat', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
+        grunt.registerTask('default', ['jshint', 'clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
+        grunt.registerTask('no_qc', ['clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
     };
 }());
