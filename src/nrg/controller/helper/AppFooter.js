@@ -8,7 +8,7 @@
 
     nrg.controller.helper.AppFooter = function (idAppFooter, controller) {
         this._oController = controller;
-        this._oAppHdr = this._oController.getView().byId(idAppFooter);
+        this._oAppFooter = this._oController.getView().byId(idAppFooter);
     };
 
     nrg.controller.helper.AppFooter.prototype.initialize = function () {

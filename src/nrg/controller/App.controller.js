@@ -8,6 +8,7 @@
     jQuery.sap.require('nrg.controller.BaseController');
     jQuery.sap.require('nrg.controller.helper.AppHeader');
     jQuery.sap.require('nrg.controller.helper.AppFooter');
+    jQuery.sap.require('nrg.controller.helper.AppMain');
     
     nrg.controller.BaseController.extend('nrg.controller.App');
     
@@ -27,6 +28,9 @@
 
         this._oAppHeader = new nrg.controller.helper.AppHeader('idAppHdrMenu', this);
         this._oAppHeader.initialize();
+
+        this._oAppMain = new nrg.controller.helper.AppMain('idAppMain', this);
+        this._oAppMain.initialize();
 
         this._oAppFooter = new nrg.controller.helper.AppFooter('idAppFooterMenu', this);
         this._oAppFooter.initialize();
