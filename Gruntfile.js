@@ -1,5 +1,4 @@
 /*globals module, require*/
-/*jshint -W024 */
 
 (function () {
     'use strict';
@@ -93,21 +92,27 @@
                 }
             },
 
-            //Compress javascript files
+            //Compress related javascript files
             uglify: {
-                target: {
+                all: {
                     files: [
                         {
                             expand: true,
                             cwd: 'src',
-                            src: '**/*.js',
+                            src: [
+                                'nrg/component/**/*.js',
+                                'nrg/controller/**/*.js',
+                                'nrg/util/**/*.js',
+                                'nrg/view/**/*.js',
+                                'ute/ui/commons/**/*.js'
+                            ],
                             dest: 'build'
                         }
                     ]
                 }
             },
 
-            //Compress HTML and XML files
+            //Compress related HTML and XML files
             htmlmin: {
                 all: {
                     options: {
@@ -118,13 +123,25 @@
                         {
                             expand: true,
                             cwd: 'src',
-                            src: '**/*.html',
+                            src: [
+                                'nrg/component/**/*.html',
+                                'nrg/controller/**/*.html',
+                                'nrg/util/**/*.html',
+                                'nrg/view/**/*.html',
+                                'ute/ui/commons/**/*.html'
+                            ],
                             dest: 'build'
                         },
                         {
                             expand: true,
                             cwd: 'src',
-                            src: '**/*.xml',
+                            src: [
+                                'nrg/component/**/*.xml',
+                                'nrg/controller/**/*.xml',
+                                'nrg/util/**/*.xml',
+                                'nrg/view/**/*.xml',
+                                'ute/ui/commons/**/*.xml'
+                            ],
                             dest: 'build'
                         }
                     ]
