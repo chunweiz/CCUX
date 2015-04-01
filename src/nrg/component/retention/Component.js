@@ -1,5 +1,5 @@
 /*globals sap, nrg, jQuery*/
-/*jslint nomen: true*/
+/*jslint nomen:true*/
 
 (function () {
     'use strict';
@@ -39,24 +39,24 @@
                 },
                 
                 routes: {
-                    empty: {
+                    emptyGeneral: {
                         pattern: '',
                         view: 'CenterEmpty',
-                        targetControl: 'idInnerPageCenterContent',
+                        targetControl: 'idAppGeneral',
                         targetAggregation: 'content',
                         clearTarget: true
                     },
-                    emptyLeftTop: {
+                    emptySummary: {
                         pattern: '',
                         view: 'LeftTopEmpty',
-                        targetControl: 'idInnerPageLeftTopContent',
+                        targetControl: 'idAppSummary',
                         targetAggregation: 'content',
                         clearTarget: true
                     },
-                    emptyLeftBottom: {
+                    emptyTools: {
                         pattern: '',
                         view: 'LeftBottomEmpty',
-                        targetControl: 'idInnerPageLeftBottomContent',
+                        targetControl: 'idAppTools',
                         targetAggregation: 'content',
                         clearTarget: true
                     }
@@ -100,7 +100,10 @@
             oRouter = this.getRouter(),
             sName;
         
-        //Add a callback to each routes
+        /*
+            Add a callback to each routes for component to intercept each navigation.
+            This allows the component to performs cleanup activities before each navigation.
+        */
         for (sName in oRoutes) {
             if (oRoutes.hasOwnProperty(sName)) {
                 oRoutes[sName].callback = this._routeCallback;

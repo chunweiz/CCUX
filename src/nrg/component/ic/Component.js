@@ -39,24 +39,24 @@
                 },
                 
                 routes: {
-                    empty: {
+                    emptyGeneral: {
                         pattern: '',
                         view: 'CenterEmpty',
-                        targetControl: 'idInnerPageCenterContent',
+                        targetControl: 'idAppGeneral',
                         targetAggregation: 'content',
                         clearTarget: true
                     },
-                    emptyLeftTop: {
+                    emptySummary: {
                         pattern: '',
                         view: 'LeftTopEmpty',
-                        targetControl: 'idInnerPageLeftTopContent',
+                        targetControl: 'idAppSummary',
                         targetAggregation: 'content',
                         clearTarget: true
                     },
-                    emptyLeftBottom: {
+                    emptyTools: {
                         pattern: '',
                         view: 'LeftBottomEmpty',
-                        targetControl: 'idInnerPageLeftBottomContent',
+                        targetControl: 'idAppTools',
                         targetAggregation: 'content',
                         clearTarget: true
                     }
