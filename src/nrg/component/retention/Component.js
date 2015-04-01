@@ -41,21 +41,21 @@
                 routes: {
                     emptyGeneral: {
                         pattern: '',
-                        view: 'CenterEmpty',
+                        view: 'GeneralEmpty',
                         targetControl: 'idAppGeneral',
                         targetAggregation: 'content',
                         clearTarget: true
                     },
                     emptySummary: {
                         pattern: '',
-                        view: 'LeftTopEmpty',
+                        view: 'SummaryEmpty',
                         targetControl: 'idAppSummary',
                         targetAggregation: 'content',
                         clearTarget: true
                     },
                     emptyTools: {
                         pattern: '',
-                        view: 'LeftBottomEmpty',
+                        view: 'ToolsEmpty',
                         targetControl: 'idAppTools',
                         targetAggregation: 'content',
                         clearTarget: true
