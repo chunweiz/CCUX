@@ -73,6 +73,22 @@
                 }
             },
 
+            //Merge all .properties files into a single .properties file
+            concat: {
+                noLang: {
+                    src: [
+                        'src/nrg/i18n/lib/**/*_en_US.properties'
+                    ],
+                    dest: 'build/nrg/i18n/messageBundle.properties'
+                },
+                enUs: {
+                    src: [
+                        'src/nrg/i18n/lib/**/*_en_US.properties'
+                    ],
+                    dest: 'build/nrg/i18n/messageBundle_en_US.properties'
+                }
+            },
+
             //Compile LESS files to compressed CSS files with IE9 and above compatibility
             less: {
                 all: {
@@ -197,10 +213,11 @@
         grunt.loadNpmTasks('grunt-contrib-uglify');
         grunt.loadNpmTasks('grunt-contrib-less');
         grunt.loadNpmTasks('grunt-contrib-copy');
+        grunt.loadNpmTasks('grunt-contrib-concat');
         grunt.loadNpmTasks('grunt-contrib-htmlmin');
         grunt.loadNpmTasks('grunt-contrib-csslint');
 
-        grunt.registerTask('default', ['jshint', 'copy', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
-        grunt.registerTask('no_qc', ['copy', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
+        grunt.registerTask('default', ['jshint', 'copy', 'concat', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
+        grunt.registerTask('no_qc', ['copy', 'concat', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
     };
 }());
