@@ -8,15 +8,15 @@
             <h1></h1>
             <div class="nrgAppMainContentLeft">
                 <section class="nrgAppSummaryContent">
-                    <ute:Tag type="article" id="idAppSummary" />
+                    <ute:Tag elem="article" id="idAppSummary" />
                 </section>
                 <section class="nrgAppToolsContent">
-                    <ute:Tag type="article" id="idAppTools" />
+                    <ute:Tag elem="article" id="idAppTools" />
                 </section>
             </div>
             <div class="nrgAppMainContentCenter">
                 <section>
-                    <ute:Tag type="article" id="idAppGeneral" />
+                    <ute:Tag elem="article" id="idAppGeneral" />
                 </section>
             </div>
         </ute:content>

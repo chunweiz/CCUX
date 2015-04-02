@@ -3,10 +3,15 @@
     xmlns:ute="ute.ui.commons"
     xmlns:core="sap.ui.core">
     
-    <ute:Tag type="nav" id="idAppFooterMenu" classes='["nrgAppFooterMenu"]'>
+    <ute:Tag elem="nav" id="idAppFooterMenu" classes='["nrgAppFooterMenu"]'>
         <ute:content>
-            <span>Footer in a fragment</span>
+            <div class="clearfix">
+                <ute:Tag elem="input" type="checkbox" />
+                <ute:Tag elem="label" />
+            </div>
+            <section>
+                Footer Content !!!
+            </section>
         </ute:content>
     </ute:Tag>
-    
 </core:FragmentDefinition>

@@ -3,27 +3,27 @@
     xmlns:ute="ute.ui.commons"
     xmlns:core="sap.ui.core">
 
-    <ute:Tag type="nav" id="idAppHdrQuickLink" classes='["AppHdrQuickLink"]'>
+    <ute:Tag elem="nav" id="idAppHdrQuickLink" classes='["AppHdrQuickLink"]'>
         <ute:content>
             <ul>
-                <ute:Tag type="li" id="idBilling" text="{i18n>nrgAppHeaderBilling}" />
-                <ute:Tag type="li" id="idBp" text="{i18n>nrgAppHeaderBp}" />
+                <ute:Tag elem="li" id="idBilling" text="{i18n>nrgAppHeaderBilling}" />
+                <ute:Tag elem="li" id="idBp" text="{i18n>nrgAppHeaderBp}" />
             </ul>
             <ul>
-                <ute:Tag type="li" id="idRhs" text="{i18n>nrgAppHeaderRhs}" />
-                <ute:Tag type="li" id="idContactLogs" text="{i18n>nrgAppHeaderContactLogs}" />
+                <ute:Tag elem="li" id="idRhs" text="{i18n>nrgAppHeaderRhs}" />
+                <ute:Tag elem="li" id="idContactLogs" text="{i18n>nrgAppHeaderContactLogs}" />
             </ul>
             <ul>
-                <ute:Tag type="li" id="idCampaigns" text="{i18n>nrgAppHeaderCampaigns}" />
-                <ute:Tag type="li" id="idHighBill" text="{i18n>nrgAppHeaderHighBill}" />
+                <ute:Tag elem="li" id="idCampaigns" text="{i18n>nrgAppHeaderCampaigns}" />
+                <ute:Tag elem="li" id="idHighBill" text="{i18n>nrgAppHeaderHighBill}" />
             </ul>
             <ul>
-                <ute:Tag type="li" id="idHistory" text="{i18n>nrgAppHeaderHistory}" />
-                <ute:Tag type="li" id="idSvcOrds" text="{i18n>nrgAppHeaderSvcOrds}" />
+                <ute:Tag elem="li" id="idHistory" text="{i18n>nrgAppHeaderHistory}" />
+                <ute:Tag elem="li" id="idSvcOrds" text="{i18n>nrgAppHeaderSvcOrds}" />
             </ul>
             <ul>
-                <ute:Tag type="li" id="idBizEnroll" text="{i18n>nrgAppHeaderBizEnroll}" />
-                <ute:Tag type="li" id="idResEnroll" text="{i18n>nrgAppHeaderResEnroll}" />
+                <ute:Tag elem="li" id="idBizEnroll" text="{i18n>nrgAppHeaderBizEnroll}" />
+                <ute:Tag elem="li" id="idResEnroll" text="{i18n>nrgAppHeaderResEnroll}" />
             </ul>
         </ute:content>
     </ute:Tag>

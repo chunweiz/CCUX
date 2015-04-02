@@ -9,9 +9,13 @@ sap.ui.define(['sap/ui/core/Control'],
             metadata: {
                 library: 'ute.ui.commons',
                 properties: {
-                    type: {
+                    elem: {
                         type: 'string',
                         defaultValue: 'div'
+                    },
+                    type: {
+                        type: 'string',
+                        defaultValue: null
                     },
                     text: {
                         type: 'string',

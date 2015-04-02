@@ -10,9 +10,13 @@ sap.ui.define([],
             var aContent, nContent, aClass, nClass,
                 bAdded = false;
             
-            oRm.write('<' + oControl.getType());
+            oRm.write('<' + oControl.getElem());
             oRm.writeControlData(oControl);
             
+            if (oControl.getType()) {
+                oRm.writeAttribute('type', oControl.getType());
+            }
+
             //Add CSS classes
             aClass = JSON.parse(oControl.getClasses());
             
@@ -33,7 +37,7 @@ sap.ui.define([],
                 oRm.renderControl(aContent[nContent]);
             }
             
-            oRm.write('</' + oControl.getType() + '>');
+            oRm.write('</' + oControl.getElem() + '>');
         };
 
         return TagRenderer;

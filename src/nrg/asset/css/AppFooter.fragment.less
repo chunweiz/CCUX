@@ -1,3 +1,46 @@
 nav.nrgAppFooterMenu {
+    position: relative;
 
+    & > div {
+        position: relative;
+        border-bottom: 8px solid @uteColorWhite;
+
+        & > input[type=checkbox] {
+            display: none;
+        }
+
+        & > label {
+            display: block;
+            float: right;
+            width: 80px;
+            height: 15px;
+            cursor: pointer;
+            border-top-left-radius: 4px;
+            background-color: @uteColorWhite;
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                border: 2px solid @uteColorBlueLink;
+                border-bottom: none;
+                border-right: none;
+                transform: translate(35px, 8px) rotate(45deg);
+            }
+        }
+
+        & > input[type=checkbox]:checked + label::before {
+            transform: translate(35px, 2px) rotate(-135deg);
+        }
+    }
+
+    & > section {
+        background-color: @uteColorWhite;
+        height: 0;
+    }
+
+    & > section.nrgAppFooterMenuShow {
+        height: 150px;
+    }
 }
