@@ -207,14 +207,16 @@
                             src: [
                                 'nrg/view/App*.xml',
                                 'nrg/view/*Empty.view.xml',
-                                'nrg/controller/App*.js'
+                                'nrg/controller/App*.js',
+                                'nrg/controller/*Empty.controller.js'
                             ]
                         },
                         'nrg/component/retention': {
                             src: [
                                 'nrg/view/App*.xml',
                                 'nrg/view/*Empty.view.xml',
-                                'nrg/controller/App*.js'
+                                'nrg/controller/App*.js',
+                                'nrg/controller/*Empty.controller.js'
                             ]
                         }
                     }
