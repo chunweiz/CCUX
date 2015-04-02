@@ -4,14 +4,9 @@
     xmlns:ute="ute.ui.commons"
     xmlns:mvc="sap.ui.core.mvc">
 
-    <ute:Tag classes='["nrgGeneralEmpty"]'>
+    <ute:Tag classes='["nrgGeneralEmpty", "nrgAppPanel"]'>
         <ute:content>
-            <ute:Tag classes='["nrgAppPanel"]'>
-                <ute:content>
-                    <span>General Empty</span>
-                </ute:content>
-            </ute:Tag>
-            <ute:Tag classes='["nrgAppPanel"]'>
+            <ute:Tag>
                 <ute:content>
                     <span>General Empty</span>
                 </ute:content>
