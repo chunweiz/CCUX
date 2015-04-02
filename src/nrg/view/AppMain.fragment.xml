@@ -5,7 +5,7 @@
 
     <ute:Tag id="idAppMain" classes='["nrgAppMain"]'>
         <ute:content>
-            <h1>Customer Data</h1>
+            <h1></h1>
             <div class="nrgAppMainContentLeft">
                 <section class="nrgAppSummaryContent">
                     <ute:Tag type="article" id="idAppSummary" />

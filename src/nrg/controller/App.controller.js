@@ -31,6 +31,7 @@
 
         this._oAppMain = new nrg.controller.helper.AppMain('idAppMain', this);
         this._oAppMain.initialize();
+        this._oAppMain.setMainTitle('nrgAppMainCustTitle');
 
         this._oAppFooter = new nrg.controller.helper.AppFooter('idAppFooterMenu', this);
         this._oAppFooter.initialize();
