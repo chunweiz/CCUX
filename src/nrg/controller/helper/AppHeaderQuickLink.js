@@ -23,7 +23,7 @@
             var sQuickLinkId = event.target.id.replace(this._oController.getView().getId() + '--', '');
 
             /*
-                TODO: routing required when the agent picks a quick link!!!
+                TODO: routing when the agent clicks a quick link!!!
             */
 
             this._oHeader.closeSubMenu();
