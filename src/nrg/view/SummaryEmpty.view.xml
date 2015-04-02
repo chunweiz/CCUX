@@ -2,12 +2,11 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
     xmlns:mvc="sap.ui.core.mvc"
-    controllerName="nrg.controller.SummaryEmpty"
-    height="100%">
+    controllerName="nrg.controller.SummaryEmpty">
 
     <ute:Tag classes='["nrgSummaryEmpty", "nrgAppMainSummaryFullPanel"]'>
         <ute:content>
-            <span>Summary Empty</span>
+            <span>Summary Content</span>
         </ute:content>
     </ute:Tag>
 

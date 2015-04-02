@@ -6,7 +6,7 @@
 
     <ute:Tag classes='["nrgGeneralEmpty", "nrgAppMainGeneralFullPanel"]'>
         <ute:content>
-            <span>General Empty</span>
+            <span>General Content</span>
         </ute:content>
     </ute:Tag>
 
