@@ -1,4 +1,8 @@
 .nrgAppMain {
+    @summaryContentMaxHeight: 400px;
+    @toolsContentMaxHeight: 273px;
+    @generalContentMinHeight: 686px;
+
     position: relative;
     max-width: 1358px;
     width: 100%;
@@ -22,11 +26,13 @@
         }
 
         & .nrgAppSummaryContent {
-            max-height: 400px;
+            max-height: @summaryContentMaxHeight;
+            overflow: hidden;
         }
 
         & .nrgAppToolsContent {
-            max-height: 273px;
+            max-height: @toolsContentMaxHeight;
+            overflow: hidden;
         }
 
         & > section > article {
@@ -62,16 +68,14 @@
     }
 
     & .nrgAppMainGeneralFullPanel {
-        min-height: 686px;
+        min-height: @generalContentMinHeight;
     }
 
     & .nrgAppMainSummaryFullPanel {
-        height: 400px;
-        overflow: hidden;
+        height: @summaryContentMaxHeight;
     }
 
     & .nrgAppMainToolsFullPanel {
-        height: 273px;
-        overflow: hidden;
+        height: @toolsContentMaxHeight;
     }
 }
