@@ -3,7 +3,7 @@
     xmlns:ute="ute.ui.commons"
     xmlns:core="sap.ui.core">
 
-    <ute:Tag type="nav">
+    <ute:Tag type="nav" classes='["AppHdrQuickLink"]'>
         <ute:content>
             <ul>
                 <ute:Tag type="li" text="{i18n>nrgAppHeaderBilling}" />
