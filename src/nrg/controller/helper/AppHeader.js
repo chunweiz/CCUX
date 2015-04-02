@@ -4,14 +4,17 @@
 (function () {
     'use strict';
     
+    jQuery.sap.require('nrg.controller.helper.AppHeaderQuickLink');
     jQuery.sap.declare('nrg.controller.helper.AppHeader');
     
-    nrg.controller.helper.AppHeader = function (idAppHdr, controller) {
+    nrg.controller.helper.AppHeader = function (viewId, controller) {
         this._oController = controller;
-        this._oAppHdr = this._oController.getView().byId(idAppHdr);
+        this._oAppHdr = this._oController.getView().byId(viewId.hdr);
+        this._oAppHdrQuickLink = new nrg.controller.helper.AppHeaderQuickLink(viewId.quickLink, this);
     };
     
     nrg.controller.helper.AppHeader.prototype.initialize = function () {
+        //Initialize menu
         this._oNavElem = this._oAppHdr.getDomRef();
         this._aListItem = [].slice.call(this._oNavElem.querySelectorAll('ul > li'));
         this._aMenuItem = [].slice.call(this._oNavElem.querySelectorAll('ul > li > span'));
@@ -24,6 +27,9 @@
         });
 
         this._aMenuItem.forEach(this._addMenuItemListener, this);
+
+        //Initialize submenus
+        this._oAppHdrQuickLink.initialize();
     };
     
     nrg.controller.helper.AppHeader.prototype._addMenuItemListener = function (oElem) {
@@ -72,9 +78,13 @@
         }
     };
     
-    nrg.controller.helper.AppHeader.prototype._closeSubMenu = function (oEvent) {
+    nrg.controller.helper.AppHeader.prototype.closeSubMenu = function () {
         this._aListItem[this._nCurrent].classList.remove('nrgAppHdrMenuOpen');
         this._nCurrent = -1;
     };
     
+    nrg.controller.helper.AppHeader.prototype.getController = function () {
+        return this._oController;
+    };
+
 }());

@@ -26,7 +26,11 @@
             Hence, explicit DOM bindings will take place in this method.
         */
 
-        this._oAppHeader = new nrg.controller.helper.AppHeader('idAppHdrMenu', this);
+        this._oAppHeader = new nrg.controller.helper.AppHeader({
+            hdr: 'idAppHdrMenu',
+            quickLink: 'idAppHdrQuickLink',
+            msg: 'idAppHdrMsg'
+        }, this);
         this._oAppHeader.initialize();
 
         this._oAppMain = new nrg.controller.helper.AppMain('idAppMain', this);
