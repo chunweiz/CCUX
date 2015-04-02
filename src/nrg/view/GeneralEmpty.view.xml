@@ -2,15 +2,13 @@
     controllerName="nrg.controller.GeneralEmpty"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
-    xmlns:mvc="sap.ui.core.mvc">
+    xmlns:mvc="sap.ui.core.mvc"
+    height="100%"
+    displayBlock="true">
 
     <ute:Tag classes='["nrgGeneralEmpty", "nrgAppPanel"]'>
         <ute:content>
-            <ute:Tag>
-                <ute:content>
-                    <span>General Empty</span>
-                </ute:content>
-            </ute:Tag>
+            <span>General Empty</span>
         </ute:content>
     </ute:Tag>
 
