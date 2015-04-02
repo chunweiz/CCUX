@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:core="sap.ui.core">
+
+    <ute:Tag type="nav">
+        <ute:content>
+            <ul>
+                <ute:Tag type="li" text="{i18n>nrgAppHeaderBilling}" />
+                <ute:Tag type="li" text="{i18n>nrgAppHeaderBp}" />
+            </ul>
+            <ul>
+                <ute:Tag type="li" text="{i18n>nrgAppHeaderRhs}" />
+                <ute:Tag type="li" text="{i18n>nrgAppHeaderContactLogs}" />
+            </ul>
+            <ul>
+                <ute:Tag type="li" text="{i18n>nrgAppHeaderCampaigns}" />
+                <ute:Tag type="li" text="{i18n>nrgAppHeaderHighBill}" />
+            </ul>
+            <ul>
+                <ute:Tag type="li" text="{i18n>nrgAppHeaderHistory}" />
+                <ute:Tag type="li" text="{i18n>nrgAppHeaderSvcOrds}" />
+            </ul>
+            <ul>
+                <ute:Tag type="li" text="{i18n>nrgAppHeaderBizEnroll}" />
+                <ute:Tag type="li" text="{i18n>nrgAppHeaderResEnroll}" />
+            </ul>
+        </ute:content>
+    </ute:Tag>
+
+</core:FragmentDefinition>

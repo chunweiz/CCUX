@@ -10,28 +10,7 @@
                     <ute:Tag type="span" classes='["nrgAppHdrMenuItemDivider"]' text="{i18n>nrgAppHeaderMenu}" />
                     <section class="nrgAppHdrMenuSub">
                         <article class="nrgAppHdrMenuSubInner">
-                            <div>
-                                <ul>
-                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderBilling}" />
-                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderBp}" />
-                                </ul>
-                                <ul>
-                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderRhs}" />
-                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderContactLogs}" />
-                                </ul>
-                                <ul>
-                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderCampaigns}" />
-                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderHighBill}" />
-                                </ul>
-                                <ul>
-                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderHistory}" />
-                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderSvcOrds}" />
-                                </ul>
-                                <ul>
-                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderBizEnroll}" />
-                                    <ute:Tag type="li" text="{i18n>nrgAppHeaderResEnroll}" />
-                                </ul>
-                            </div>
+                            <core:Fragment fragmentName="nrg.view.AppHeaderSubMenu" type="XML" />
                         </article>
                     </section>
                 </li>
@@ -57,9 +36,7 @@
                     <ute:Tag type="span" text="{i18n>nrgAppHeaderMsg}" />
                     <section class="nrgAppHdrMenuSub">
                         <article class="nrgAppHdrMenuSubInner">
-                            <div>
-                                Messages!!!!
-                            </div>
+                            <core:Fragment fragmentName="nrg.view.AppHeaderSubMenuMsg" type="XML" />
                         </article>
                     </section>
                 </li>
