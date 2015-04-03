@@ -13,7 +13,7 @@
             version : '1.0.0.0',
             includes: ['../../asset/css/nrg.css'],
             dependencies: {
-                libs: ['sap.m', 'sap.ui.layout', 'ute.ui.commons']
+                libs: ['ute.ui.commons']
             },
             
             config: {
