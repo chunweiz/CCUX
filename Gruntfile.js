@@ -54,6 +54,7 @@
                             src: [
                                 'nrg/asset/css/font/**',
                                 'nrg/asset/img/**',
+                                '!nrg/asset/img/**/*.svg',
                                 'nrg/component/**',
                                 'nrg/controller/**',
                                 'nrg/data/**',
