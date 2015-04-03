@@ -7,8 +7,7 @@
 		    src="../../../../bower_components/openui5-bower/resources/sap-ui-core.js"
             data-sap-ui-xx-bindingSyntax="complex"
             data-sap-ui-resourceroots='{
-                "nrg": "../../",
-                "ute.ui.commons": "../../../ute/ui/commons"
+                "nrg": "../../"
             }'>
 		</script>
 	</head>
@@ -16,7 +15,7 @@
 		<script>
             sap.ui.getCore().attachInit(function () {
                 jQuery.sap.registerModulePath('ute.ui.commons', '../../../ute/ui/commons');
-
+                
                 new sap.ui.core.ComponentContainer({
                     height: '100%',
                     width: '100%',
