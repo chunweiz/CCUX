@@ -271,7 +271,7 @@
         grunt.loadNpmTasks('grunt-svgmin');
         grunt.loadNpmTasks('grunt-contrib-csslint');
 
-        grunt.registerTask('default', ['jshint', 'clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
-        grunt.registerTask('no_qc', ['clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
+        grunt.registerTask('default', ['jshint', 'clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'htmlmin', 'svgmin', 'less']);
+        grunt.registerTask('no_qc', ['clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'htmlmin', 'svgmin', 'less']);
     };
 }());
