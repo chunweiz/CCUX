@@ -16,17 +16,8 @@ sap.ui.define([],
             if (oControl.getType()) {
                 oRm.writeAttribute('type', oControl.getType());
             }
-
-            //Add CSS classes
-            aClass = JSON.parse(oControl.getClasses());
             
-            if (aClass.length > 0) {
-                for (nClass = 0; nClass < aClass.length; nClass = nClass + 1) {
-                    oRm.addClass(aClass[nClass]);
-                }
-                 
-                oRm.writeClasses();
-            }
+            oRm.writeClasses();
             
             oRm.write('>');
             

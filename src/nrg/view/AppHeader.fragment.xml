@@ -3,11 +3,11 @@
     xmlns:ute="ute.ui.commons"
     xmlns:core="sap.ui.core">
     
-    <ute:Tag elem="nav" id="idAppHdrMenu" classes='["nrgAppHdrMenu"]'>
+    <ute:Tag elem="nav" id="idAppHdrMenu" class="nrgAppHdrMenu">
         <ute:content>
             <ul>
                 <li data-nrg-type="menuitem">
-                    <ute:Tag elem="span" classes='["nrgAppHdrMenuItemDivider"]' text="{i18n>nrgAppHeaderMenu}" />
+                    <ute:Tag elem="span" class="nrgAppHdrMenuItemDivider" text="{i18n>nrgAppHeaderMenu}" />
                     <section class="nrgAppHdrMenuSub">
                         <article class="nrgAppHdrMenuSubInner">
                             <core:Fragment fragmentName="nrg.view.AppHeaderQuickLink" type="XML" />
@@ -15,13 +15,13 @@
                     </section>
                 </li>
                 <li data-nrg-type="menuitem">
-                    <ute:Tag elem="span" classes='["nrgAppHdrMenuItemDivider"]' text="{i18n>nrgAppHeaderIdx}" />
+                    <ute:Tag elem="span" class="nrgAppHdrMenuItemDivider" text="{i18n>nrgAppHeaderIdx}" />
                 </li>
                 <li data-nrg-type="link" data-nrg-href="http://www.nrg.com/">
-                    <ute:Tag elem="span" classes='["nrgAppHdrMenuItemDivider"]' text="{i18n>nrgAppHeaderTrans}" />
+                    <ute:Tag elem="span" class="nrgAppHdrMenuItemDivider" text="{i18n>nrgAppHeaderTrans}" />
                 </li>
                 <li data-nrg-type="link" data-nrg-href="http://ccrportal.reliant.com/esiidlookup/esiidlogin.jsp?company=Reliant">
-                    <ute:Tag elem="span" classes='["nrgAppHdrMenuItemDivider"]' text="{i18n>nrgAppHeaderEsid}" />
+                    <ute:Tag elem="span" class="nrgAppHdrMenuItemDivider" text="{i18n>nrgAppHeaderEsid}" />
                 </li>
                 <li data-nrg-type="link" data-nrg-href="https://ccpal.nrgenergy.com/ccpal/ssoLogin.do">
                     <ute:Tag elem="span" text="{i18n>nrgAppHeaderPalPlus}" />
@@ -30,7 +30,7 @@
                     <ute:Tag elem="span" text="{i18n>nrgAppHeaderRefresh}" />
                 </li>
                 <li data-nrg-type="action">
-                    <ute:Tag elem="span" classes='["nrgAppHdrMenuItemCaution"]' text="{i18n>nrgAppHeaderClearAcc}" />
+                    <ute:Tag elem="span" class="nrgAppHdrMenuItemCaution" text="{i18n>nrgAppHeaderClearAcc}" />
                 </li>
                 <li data-nrg-type="menuitem">
                     <ute:Tag elem="span" text="{i18n>nrgAppHeaderMsg}" />

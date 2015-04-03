@@ -153,10 +153,33 @@
 
             //Compress related HTML and XML files
             htmlmin: {
-                all: {
+                html: {
                     options: {
                         removeComments: true,
                         collapseWhitespace: true
+                    },
+                    files: [
+                        {
+                            expand: true,
+                            cwd: 'src',
+                            src: [
+                                'nrg/component/**/*.html',
+                                'nrg/controller/**/*.html',
+                                'nrg/util/**/*.html',
+                                'nrg/view/**/*.html',
+                                'ute/ui/commons/**/*.html'
+                            ],
+                            dest: 'build'
+                        }
+                    ]
+                },
+                xml: {
+                    options: {
+                        removeComments: true,
+                        collapseWhitespace: true,
+                        preventAttributesEscaping: true,
+                        caseSensitive: true,
+                        keepClosingSlash: true
                     },
                     files: [
                         {
