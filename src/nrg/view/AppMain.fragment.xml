@@ -3,7 +3,7 @@
     xmlns:ute="ute.ui.commons"
     xmlns:core="sap.ui.core">
 
-    <ute:Tag id="idAppMain" classes='["nrgAppMain"]'>
+    <ute:Tag id="idAppMain" class="nrgAppMain">
         <ute:content>
             <h1></h1>
             <div class="nrgAppMainContentLeft">

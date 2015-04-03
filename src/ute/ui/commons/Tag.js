@@ -20,10 +20,6 @@ sap.ui.define(['sap/ui/core/Control'],
                     text: {
                         type: 'string',
                         defaultValue: ''
-                    },
-                    classes: {
-                        type: 'string',
-                        defaultValue: '[]'
                     }
                 },
                 aggregations: {

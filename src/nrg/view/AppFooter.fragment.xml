@@ -3,7 +3,7 @@
     xmlns:ute="ute.ui.commons"
     xmlns:core="sap.ui.core">
     
-    <ute:Tag elem="nav" id="idAppFooterMenu" classes='["nrgAppFooterMenu"]'>
+    <ute:Tag elem="nav" id="idAppFooterMenu" class="nrgAppFooterMenu">
         <ute:content>
             <div class="clearfix">
                 <ute:Tag elem="input" type="checkbox" />

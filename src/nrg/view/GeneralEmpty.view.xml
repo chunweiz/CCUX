@@ -4,7 +4,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     controllerName="nrg.controller.GeneralEmpty">
 
-    <ute:Tag classes='["nrgGeneralEmpty", "nrgAppMainGeneralFullPanel"]'>
+    <ute:Tag class="nrgGeneralEmpty nrgAppMainGeneralFullPanel">
         <ute:content>
             <span>General Content</span>
         </ute:content>

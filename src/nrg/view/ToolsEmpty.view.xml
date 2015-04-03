@@ -4,7 +4,7 @@
     xmlns:ute="ute.ui.commons"
     xmlns:mvc="sap.ui.core.mvc">
 
-    <ute:Tag classes='["nrgToolsEmpty", "nrgAppMainToolsFullPanel"]'>
+    <ute:Tag class="nrgToolsEmpty nrgAppMainToolsFullPanel">
         <ute:content>
             <span>Tools Content</span>
         </ute:content>
