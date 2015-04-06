@@ -12,8 +12,13 @@ sap.ui.define(
     function (Controller, AppHeader, AppFooter, AppMain) {
         'use strict';
         
-        var AppController = Controller.extend('nrg.controller.App');
+        var AppController;
 
+        AppController = Controller.extend('nrg.controller.App');
+
+        /*
+            DOM for control is only available after rendering
+        */
         AppController.prototype.onAfterRendering = function () {
             this._oAppHeader = new AppHeader({
                 hdr: 'idAppHdrMenu',

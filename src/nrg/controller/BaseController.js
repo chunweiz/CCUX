@@ -1,5 +1,10 @@
 /*globals sap*/
 
+/*
+    AMD contract
+    https://openui5beta.hana.ondemand.com/#docs/api/symbols/sap.ui.html#.define
+*/
+
 sap.ui.define(
     [
         'sap/ui/core/mvc/Controller'
@@ -17,8 +22,8 @@ sap.ui.define(
                 return sap.ui.core.UIComponent.getRouterFor(this);
             },
 
-            getComponentModel: function (id) {
-                return this.getOwnerComponent().getModel(id);
+            getComponentModel: function (sId) {
+                return this.getOwnerComponent().getModel(sId);
             }
         });
     },
