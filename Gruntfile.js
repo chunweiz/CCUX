@@ -44,7 +44,7 @@
             },
 
             //Copy everything to build folder
-            //Selected UI5 specifc JS files will be recopied with suffix -dbg for sap-ui-debug purpose
+            //Selected UI5 specific JS files will be recopied with suffix -dbg for sap-ui-debug purpose
             copy: {
                 all: {
                     files: [

@@ -1,10 +1,15 @@
-/*globals sap, jQuery, nrg*/
+/*globals sap*/
 
-(function () {
-    'use strict';
+sap.ui.define(
+    [
+        'nrg/controller/BaseController'
+    ],
 
-    jQuery.sap.require('nrg.controller.BaseController');
+    function (Controller) {
+        'use strict';
 
-    nrg.controller.BaseController.extend('nrg.controller.GeneralEmpty');
+        return Controller.extend('nrg.controller.GeneralEmpty');
+    },
 
-}());
+    false
+);

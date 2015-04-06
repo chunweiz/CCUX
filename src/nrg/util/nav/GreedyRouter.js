@@ -1,27 +1,33 @@
-/*globals sap, jQuery, nrg*/
+/*globals sap*/
 /*jslint nomen: true*/
 
-(function () {
-    'use strict';
-    
-    jQuery.sap.declare('nrg.util.nav.GreedyRouter');
-    jQuery.sap.require('sap.ui.core.routing.Router');
-    jQuery.sap.require('sap.m.routing.RouteMatchedHandler');
-    
-    sap.ui.core.routing.Router.extend('nrg.util.nav.GreedyRouter', {
-        constructor: function () {
-            sap.ui.core.routing.Router.apply(this, arguments);
-            this._oRouteMatchedHandler = new sap.m.routing.RouteMatchedHandler(this);
-        },
+sap.ui.define(
+    [
+        'sap/ui/core/routing/Router',
+        'sap/m/routing/RouteMatchedHandler'
+    ],
 
-        destroy: function () {
-            sap.ui.core.routing.Router.prototype.destroy.apply(this, arguments);
+    function (Router, RouteMatchedHandler) {
+        'use strict';
+
+        var GreedyRouter = Router.extend('nrg.util.nav.GreedyRouter');
+
+        GreedyRouter.prototype.constructor = function () {
+            Router.apply(this, arguments);
+            this._oRouteMatchedHandler = new RouteMatchedHandler(this);
+        };
+
+        GreedyRouter.prototype.destory = function () {
+            Router.prototype.destroy.apply(this, arguments);
             this._oRouteMatchedHandler.destroy();
-        }
-    });
+        };
+
+        GreedyRouter.prototype.setGreedy = function (bGreedy) {
+            this._oRouter.greedy = bGreedy || false;
+        };
+
+        return GreedyRouter;
+    },
     
-    nrg.util.nav.GreedyRouter.prototype.setGreedy = function (bGreedy) {
-        this._oRouter.greedy = bGreedy || false;
-    };
-    
-}());
+    false
+);

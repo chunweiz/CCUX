@@ -1,11 +1,17 @@
-/*globals jQuery, nrg*/
+/*globals sap*/
 
-(function () {
-    'use strict';
+sap.ui.define(
+    [
+        'jquery.sap.global'
+    ],
     
-    jQuery.sap.declare('nrg.util.formatter.Locale');
-    
-    nrg.util.formatter.Locale = {
+    function ($) {
+        'use strict';
+
+        var Locale;
+
+        Locale = function () {};
+
         /*
             Replace placeholders with texts .. first entry in the array will be the template with placeholders
 
@@ -16,12 +22,15 @@
                 formatter: 'nrg.util.formatter.Locale.getText'
             }" />
         */
-        getText: function () {
+        Locale.prototype.getText = function () {
             var aArgs = [].slice.call(arguments),
                 sKey = aArgs.shift();
             
-            return jQuery.sap.formatMessage(sKey, aArgs);
-        }
-    };
-    
-}());
+            return $.sap.formatMessage(sKey, aArgs);
+        };
+
+        return new Locale();
+    },
+
+    false
+);

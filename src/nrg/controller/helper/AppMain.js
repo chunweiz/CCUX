@@ -1,29 +1,35 @@
-/*globals jQuery, nrg*/
+/*globals sap*/
 /*jslint nomen:true*/
 
-(function () {
-    'use strict';
+sap.ui.define(
+    function () {
+        'use strict';
 
-    jQuery.sap.declare('nrg.controller.helper.AppMain');
+        var AppMain = function (idAppMain, controller) {
+            this._oController = controller;
+            this._oAppMain = this._oController.getView().byId(idAppMain);
+            return this;
+        };
 
-    nrg.controller.helper.AppMain = function (idAppMain, controller) {
-        this._oController = controller;
-        this._oAppMain = this._oController.getView().byId(idAppMain);
-    };
+        AppMain.prototype.initialize = function () {
+            this._oAppMainElem = this._oAppMain.getDomRef();
+            this._oMainTitle = this._oAppMainElem.querySelector('h1');
+            this._oRscBundle = this._oController.getView().getModel('i18n').getResourceBundle();
+            return this;
+        };
 
-    nrg.controller.helper.AppMain.prototype.initialize = function () {
-        this._oAppMainElem = this._oAppMain.getDomRef();
-        this._oMainTitle = this._oAppMainElem.querySelector('h1');
-        this._oRscBundle = this._oController.getView().getModel('i18n').getResourceBundle();
-    };
+        AppMain.prototype.setMainTitle = function (rscBundleKey) {
+            var sTitle = this._oRscBundle.getText(rscBundleKey) || '';
 
-    nrg.controller.helper.AppMain.prototype.setMainTitle = function (rscBundleKey) {
-        var sTitle = this._oRscBundle.getText(rscBundleKey) || '';
+            if (this._oMainTitle.firstChild) {
+                this._oMainTitle.firstChild.remove();
+            }
+            this._oMainTitle.appendChild(document.createTextNode(sTitle));
+            return this;
+        };
 
-        if (this._oMainTitle.firstChild) {
-            this._oMainTitle.firstChild.remove();
-        }
-        this._oMainTitle.appendChild(document.createTextNode(sTitle));
-    };
+        return AppMain;
+    },
 
-}());
+    false
+);
