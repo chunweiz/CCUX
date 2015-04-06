@@ -1,22 +1,27 @@
-/*globals sap, jQuery*/
+/*globals sap*/
 
-(function () {
-    'use strict';
+sap.ui.define(
+    [
+        'sap/ui/core/mvc/Controller'
+    ],
 
-    jQuery.sap.declare('nrg.controller.BaseController');
+    function (Controller) {
+        'use strict';
 
-    sap.ui.core.mvc.Controller.extend('nrg.controller.BaseController', {
-        getComponentEventBus: function () {
-            return this.getOwnerComponent().getEventBus();
-        },
+        return Controller.extend('nrg.controller.BaseController', {
+            getComponentEventBus: function () {
+                return this.getOwnerComponent().getEventBus();
+            },
 
-        getComponentRouter: function () {
-            return sap.ui.core.UIComponent.getRouterFor(this);
-        },
+            getComponentRouter: function () {
+                return sap.ui.core.UIComponent.getRouterFor(this);
+            },
 
-        getComponentModel: function (id) {
-            return this.getOwnerComponent().getModel(id);
-        }
-    });
+            getComponentModel: function (id) {
+                return this.getOwnerComponent().getModel(id);
+            }
+        });
+    },
 
-}());
+    false
+);

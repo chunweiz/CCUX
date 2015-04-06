@@ -29,9 +29,6 @@
                 <li data-nrg-type="action">
                     <ute:Tag elem="span" text="{i18n>nrgAppHeaderRefresh}" />
                 </li>
-                <li data-nrg-type="action">
-                    <ute:Tag elem="span" class="nrgAppHdrMenuItemCaution" text="{i18n>nrgAppHeaderClearAcc}" />
-                </li>
                 <li data-nrg-type="menuitem">
                     <ute:Tag elem="span" text="{i18n>nrgAppHeaderMsg}" />
                     <section class="nrgAppHdrMenuSub">

@@ -1,44 +1,35 @@
-/*globals sap, jQuery, nrg*/
+/*globals sap*/
 /*jslint nomen:true*/
 
-(function () {
-    'use strict';
+sap.ui.define(
+    [
+        'nrg/controller/BaseController',
+        'nrg/controller/helper/AppHeader',
+        'nrg/controller/helper/AppFooter',
+        'nrg/controller/helper/AppMain'
+    ],
     
-    jQuery.sap.require('nrg.util.formatter.Locale');
-    jQuery.sap.require('nrg.controller.BaseController');
-    jQuery.sap.require('nrg.controller.helper.AppHeader');
-    jQuery.sap.require('nrg.controller.helper.AppFooter');
-    jQuery.sap.require('nrg.controller.helper.AppMain');
-    
-    nrg.controller.BaseController.extend('nrg.controller.App');
-    
-    nrg.controller.App.prototype.onInit = function () {
-    
-    };
-    
-    nrg.controller.App.prototype.onBeforeRendering = function () {
+    function (Controller, AppHeader, AppFooter, AppMain) {
+        'use strict';
         
-    };
+        var AppController = Controller.extend('nrg.controller.App');
+
+        AppController.prototype.onAfterRendering = function () {
+            this._oAppHeader = new AppHeader({
+                hdr: 'idAppHdrMenu',
+                quickLink: 'idAppHdrQuickLink',
+                msg: 'idAppHdrMsg'
+            }, this).initialize();
+
+            this._oAppMain = new AppMain('idAppMain', this)
+                .initialize()
+                .setMainTitle('nrgAppMainCustTitle');
+
+            this._oAppFooter = new AppFooter('idAppFooterMenu', this).initialize();
+        };
+
+        return AppController;
+    },
     
-    nrg.controller.App.prototype.onAfterRendering = function () {
-        /*
-            Controls' DOM will only be available after the controls are rendered.
-            Hence, explicit DOM bindings will take place in this method.
-        */
-
-        this._oAppHeader = new nrg.controller.helper.AppHeader({
-            hdr: 'idAppHdrMenu',
-            quickLink: 'idAppHdrQuickLink',
-            msg: 'idAppHdrMsg'
-        }, this);
-        this._oAppHeader.initialize();
-
-        this._oAppMain = new nrg.controller.helper.AppMain('idAppMain', this);
-        this._oAppMain.initialize();
-        this._oAppMain.setMainTitle('nrgAppMainCustTitle');
-
-        this._oAppFooter = new nrg.controller.helper.AppFooter('idAppFooterMenu', this);
-        this._oAppFooter.initialize();
-    };
-    
-}());
+    false
+);
