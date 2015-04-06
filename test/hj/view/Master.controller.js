@@ -20,5 +20,9 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
     
     whyThisWork: function(evt){
         alert("why why why") ;
+    },
+
+    testCheckBox: function(evt){
+        alert("Checkbox Checked or Unchecked") ;
     }
 });

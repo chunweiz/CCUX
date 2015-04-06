@@ -22,4 +22,10 @@
         fieldType="field2"
         label="Title">
     </u:Input>
+    <u:CheckBox
+        text="oh Check Box!!"
+        change="testCheckBox"
+        name="testCheckBoxName"
+        checked="true">
+    </u:CheckBox>
 </core:View>
