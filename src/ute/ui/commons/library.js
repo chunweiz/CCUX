@@ -21,7 +21,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/DataType', 'sap/ui/core/library
                 'ute.ui.commons.Button',
                 'ute.ui.commons.ToggleButton',
                 'ute.ui.commons.Tag',
-                'ute.ui.commons.Input'
+                'ute.ui.commons.Input',
+                'ute.ui.commons.CheckBox'
 			],
 			elements: []
 		});
