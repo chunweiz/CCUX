@@ -1,7 +1,6 @@
 <mvc:View
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
-    xmlns:sap="sap.ui.commons"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
     controllerName="nrg.controller.App"

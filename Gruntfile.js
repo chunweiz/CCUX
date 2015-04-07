@@ -44,7 +44,7 @@
             },
 
             //Copy everything to build folder
-            //Selected UI5 specifc JS files will be recopied with suffix -dbg for sap-ui-debug purpose
+            //Selected UI5 specific JS files will be recopied with suffix -dbg for sap-ui-debug purpose
             copy: {
                 all: {
                     files: [
@@ -54,6 +54,7 @@
                             src: [
                                 'nrg/asset/css/font/**',
                                 'nrg/asset/img/**',
+                                '!nrg/asset/img/**/*.svg',
                                 'nrg/component/**',
                                 'nrg/controller/**',
                                 'nrg/data/**',
@@ -209,6 +210,19 @@
                     ]
                 }
             },
+            
+            svgmin: {
+                dist: {
+                    files: [
+                        {
+                            expand: true,
+                            cwd: 'src',
+                            src: 'nrg/asset/img/**/*svg',
+                            dest: 'build'
+                        }
+                    ]
+                }
+            },
 
             //Create preload for control library and components
             openui5_preload: {
@@ -255,9 +269,10 @@
         grunt.loadNpmTasks('grunt-contrib-uglify');
         grunt.loadNpmTasks('grunt-contrib-less');
         grunt.loadNpmTasks('grunt-contrib-htmlmin');
+        grunt.loadNpmTasks('grunt-svgmin');
         grunt.loadNpmTasks('grunt-contrib-csslint');
 
-        grunt.registerTask('default', ['jshint', 'clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
-        grunt.registerTask('no_qc', ['clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
+        grunt.registerTask('default', ['jshint', 'clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'htmlmin', 'svgmin', 'less']);
+        grunt.registerTask('no_qc', ['clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'htmlmin', 'svgmin', 'less']);
     };
 }());

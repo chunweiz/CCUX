@@ -1,33 +1,41 @@
-/*globals jQuery, nrg*/
+/*globals sap*/
 /*jslint nomen:true*/
 
-(function () {
-    'use strict';
 
-    jQuery.sap.declare('nrg.controller.helper.AppFooter');
+sap.ui.define(
+    function () {
+        'use strict';
 
-    nrg.controller.helper.AppFooter = function (idAppFooter, controller) {
-        this._oController = controller;
-        this._oAppFooter = this._oController.getView().byId(idAppFooter);
-    };
+        var AppFooter = function (idAppFooter, controller) {
+            this._oController = controller;
+            this._oAppFooter = this._oController.getView().byId(idAppFooter);
 
-    nrg.controller.helper.AppFooter.prototype.initialize = function () {
-        var oCheckbox, oLabel;
+            return this;
+        };
 
-        this._oAppFooterElem = this._oAppFooter.getDomRef();
+        AppFooter.prototype.initialize = function () {
+            var oCheckbox, oLabel;
 
-        //Bind label to checkbox
-        oCheckbox = this._oAppFooterElem.querySelector('div > input');
-        oLabel = this._oAppFooterElem.querySelector('div > label');
-        oLabel.htmlFor = oCheckbox.id;
+            this._oAppFooterElem = this._oAppFooter.getDomRef();
 
-        //Get footer content
-        this._oAppFooterContentElem = this._oAppFooterElem.querySelector('section');
+            //Bind label to checkbox
+            oCheckbox = this._oAppFooterElem.querySelector('div > input');
+            oLabel = this._oAppFooterElem.querySelector('div > label');
+            oLabel.htmlFor = oCheckbox.id;
 
-        //Register to label click event
-        oLabel.addEventListener('click', function (oEvent) {
-            this._oAppFooterContentElem.classList.toggle('nrgAppFooterMenuShow');
-        }.bind(this));
-    };
+            //Get footer content
+            this._oAppFooterContentElem = this._oAppFooterElem.querySelector('section');
 
-}());
+            //Register to label click event
+            oLabel.addEventListener('click', function (oEvent) {
+                this._oAppFooterContentElem.classList.toggle('nrgAppFooterMenuShow');
+            }.bind(this));
+
+            return this;
+        };
+
+        return AppFooter;
+    },
+
+    false
+);

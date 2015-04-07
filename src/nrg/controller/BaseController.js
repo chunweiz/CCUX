@@ -1,22 +1,32 @@
-/*globals sap, jQuery*/
+/*globals sap*/
 
-(function () {
-    'use strict';
+/*
+    AMD contract
+    https://openui5beta.hana.ondemand.com/#docs/api/symbols/sap.ui.html#.define
+*/
 
-    jQuery.sap.declare('nrg.controller.BaseController');
+sap.ui.define(
+    [
+        'sap/ui/core/mvc/Controller'
+    ],
 
-    sap.ui.core.mvc.Controller.extend('nrg.controller.BaseController', {
-        getComponentEventBus: function () {
-            return this.getOwnerComponent().getEventBus();
-        },
+    function (Controller) {
+        'use strict';
 
-        getComponentRouter: function () {
-            return sap.ui.core.UIComponent.getRouterFor(this);
-        },
+        return Controller.extend('nrg.controller.BaseController', {
+            getComponentEventBus: function () {
+                return this.getOwnerComponent().getEventBus();
+            },
 
-        getComponentModel: function (id) {
-            return this.getOwnerComponent().getModel(id);
-        }
-    });
+            getComponentRouter: function () {
+                return sap.ui.core.UIComponent.getRouterFor(this);
+            },
 
-}());
+            getComponentModel: function (sId) {
+                return this.getOwnerComponent().getModel(sId);
+            }
+        });
+    },
+
+    false
+);
