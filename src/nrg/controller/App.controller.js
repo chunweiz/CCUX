@@ -12,9 +12,7 @@ sap.ui.define(
     function (Controller, AppHeader, AppFooter, AppMain) {
         'use strict';
         
-        var AppController;
-
-        AppController = Controller.extend('nrg.controller.App');
+        var AppController = Controller.extend('nrg.controller.App');
 
         //DOM for control is only available after rendering
         AppController.prototype.onAfterRendering = function () {
@@ -24,7 +22,11 @@ sap.ui.define(
                 msg: 'idAppHdrMsg'
             }, this).initialize();
 
-            this._oAppFooter = new AppFooter('idAppFooterMenu', this).initialize();
+            console.log('creating footer ...');
+            this._oAppFooter = new AppFooter('idAppFooterMenu', this);
+            console.log('created footer ...');
+            this._oAppFooter.initialize();
+            console.log('init footer ...');
 
             this._oAppMain = new AppMain('idAppMain', this)
                 .initialize()

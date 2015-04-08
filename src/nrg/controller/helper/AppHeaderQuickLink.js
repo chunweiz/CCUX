@@ -2,14 +2,20 @@
 /*jslint nomen: true*/
 
 sap.ui.define(
-    function () {
+    [
+        'sap/ui/base/Object'
+    ],
+
+    function (BaseObject) {
         'use strict';
 
-        var AppHdrQL = function (viewId, header) {
-            this._oHeader = header;
-            this._oController = this._oHeader.getController();
-            this._oAppHdrQuickLink = this._oController.getView().byId(viewId);
-        };
+        var AppHdrQL = BaseObject.extend('nrg.controller.helper.AppHeaderQuickLink', {
+            constructor: function (viewId, header) {
+                this._oHeader = header;
+                this._oController = this._oHeader.getController();
+                this._oAppHdrQuickLink = this._oController.getView().byId(viewId);
+            }
+        });
 
         AppHdrQL.prototype.initialize = function () {
             this._oAppHdrQuickLinkElem = this._oAppHdrQuickLink.getDomRef();

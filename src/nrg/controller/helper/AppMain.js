@@ -2,18 +2,24 @@
 /*jslint nomen:true*/
 
 sap.ui.define(
-    function () {
+    [
+        'sap/ui/base/Object'
+    ],
+
+    function (BaseObject) {
         'use strict';
 
-        var AppMain = function (idAppMain, controller) {
-            this._oController = controller;
-            this._oAppMain = this._oController.getView().byId(idAppMain);
-            return this;
-        };
+        var AppMain = BaseObject.extend('nrg.controller.helper.AppMain', {
+            constructor: function (idAppMain, controller) {
+                BaseObject.apply(this);
+                this._oController = controller;
+                this._oAppMain = this._oController.getView().byId(idAppMain);
+            }
+        });
 
         AppMain.prototype.initialize = function () {
             this._oAppMainElem = this._oAppMain.getDomRef();
-            this._oMainTitle = this._oAppMainElem.querySelector('h1');
+            this._oMainTitle = this._oAppMainElem.querySelector('.nrgAppMain-title');
             this._oRscBundle = this._oController.getView().getModel('i18n').getResourceBundle();
             return this;
         };
