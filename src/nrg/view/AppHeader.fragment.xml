@@ -3,43 +3,43 @@
     xmlns:ute="ute.ui.commons"
     xmlns:core="sap.ui.core">
     
-    <ute:Tag elem="nav" id="idAppHdrMenu" class="nrgAppHdrMenu">
+    <ute:Tag elem="nav" id="idAppHdrMenu" class="nrgAppHdr nrgU-clearfix">
         <ute:content>
-            <ul>
-                <li data-nrg-type="menuitem">
-                    <ute:Tag elem="span" class="nrgAppHdrMenuItemDivider" text="{i18n>nrgAppHeaderMenu}" />
-                    <section class="nrgAppHdrMenuSub">
-                        <article class="nrgAppHdrMenuSubInner">
+            <div class="nrgAppHdr-logo nrgU-left" />
+            <ute:Tag elem="h1" class="nrgAppHdr-title nrgU-left" text="{i18n>nrgAppHeaderIc}" />
+            <ul class="nrgAppHdr-list nrgU-right">
+                <li class="nrgAppHdr-listItem nrgAppHdr-listItem-divider" data-nrg-type="menuitem">
+                    <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{i18n>nrgAppHeaderMenu}" />
+                    <section class="nrgAppHdr-listItemSub">
+                        <article class="nrgAppHdr-listItemSubInner">
                             <core:Fragment fragmentName="nrg.view.AppHeaderQuickLink" type="XML" />
                         </article>
                     </section>
                 </li>
-                <li data-nrg-type="menuitem">
-                    <ute:Tag elem="span" class="nrgAppHdrMenuItemDivider" text="{i18n>nrgAppHeaderIdx}" />
+                <li class="nrgAppHdr-listItem nrgAppHdr-listItem-divider"
+                    data-nrg-type="link"
+                    data-nrg-href="http://www.nrg.com/">
+                    <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{i18n>nrgAppHeaderIdx}" />
                 </li>
-                <li data-nrg-type="link" data-nrg-href="http://www.nrg.com/">
-                    <ute:Tag elem="span" class="nrgAppHdrMenuItemDivider" text="{i18n>nrgAppHeaderTrans}" />
+                <li class="nrgAppHdr-listItem nrgAppHdr-listItem-divider"
+                    data-nrg-type="link"
+                    data-nrg-href="http://www.nrg.com/">
+                    <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{i18n>nrgAppHeaderTrans}" />
                 </li>
-                <li data-nrg-type="link" data-nrg-href="http://ccrportal.reliant.com/esiidlookup/esiidlogin.jsp?company=Reliant">
-                    <ute:Tag elem="span" class="nrgAppHdrMenuItemDivider" text="{i18n>nrgAppHeaderEsid}" />
+                <li class="nrgAppHdr-listItem nrgAppHdr-listItem-divider"
+                    data-nrg-type="link"
+                    data-nrg-href="http://ccrportal.reliant.com/esiidlookup/esiidlogin.jsp?company=Reliant">
+                    <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{i18n>nrgAppHeaderEsid}" />
                 </li>
-                <li data-nrg-type="link" data-nrg-href="https://ccpal.nrgenergy.com/ccpal/ssoLogin.do">
-                    <ute:Tag elem="span" text="{i18n>nrgAppHeaderPalPlus}" />
+                <li class="nrgAppHdr-listItem nrgAppHdr-listItem-divider"
+                    data-nrg-type="link"
+                    data-nrg-href="https://ccpal.nrgenergy.com/ccpal/ssoLogin.do">
+                    <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{i18n>nrgAppHeaderPalPlus}" />
                 </li>
-                <li data-nrg-type="action">
-                    <ute:Tag elem="span" text="{i18n>nrgAppHeaderRefresh}" />
-                </li>
-                <li data-nrg-type="menuitem">
-                    <ute:Tag elem="span" text="{i18n>nrgAppHeaderMsg}" />
-                    <section class="nrgAppHdrMenuSub">
-                        <article class="nrgAppHdrMenuSubInner">
-                            <core:Fragment fragmentName="nrg.view.AppHeaderMsg" type="XML" />
-                        </article>
-                    </section>
+                <li class="nrgAppHdr-listItem" data-nrg-type="action">
+                    <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{i18n>nrgAppHeaderRefresh}" />
                 </li>
             </ul>
-            <img src="../../asset/img/nrg-logo.svg" />
-            <ute:Tag elem="h1" text="{i18n>nrgAppHeaderIc}" />
         </ute:content>
     </ute:Tag>
 

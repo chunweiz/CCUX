@@ -16,9 +16,7 @@ sap.ui.define(
 
         AppController = Controller.extend('nrg.controller.App');
 
-        /*
-            DOM for control is only available after rendering
-        */
+        //DOM for control is only available after rendering
         AppController.prototype.onAfterRendering = function () {
             this._oAppHeader = new AppHeader({
                 hdr: 'idAppHdrMenu',
@@ -26,11 +24,11 @@ sap.ui.define(
                 msg: 'idAppHdrMsg'
             }, this).initialize();
 
+            this._oAppFooter = new AppFooter('idAppFooterMenu', this).initialize();
+
             this._oAppMain = new AppMain('idAppMain', this)
                 .initialize()
                 .setMainTitle('nrgAppMainCustTitle');
-
-            this._oAppFooter = new AppFooter('idAppFooterMenu', this).initialize();
         };
 
         return AppController;

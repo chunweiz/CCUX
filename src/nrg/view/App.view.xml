@@ -10,13 +10,13 @@
     
     <ute:Tag class="nrgApp">
         <ute:content>
-            <header>
+            <header class="nrgApp-hdr">
                 <core:Fragment fragmentName="nrg.view.AppHeader" type="XML" />
             </header>
-            <main>
+            <main class="nrgApp-main">
                 <core:Fragment fragmentName="nrg.view.AppMain" type="XML" />
             </main>
-            <footer>
+            <footer class="nrgApp-ftr">
                 <core:Fragment fragmentName="nrg.view.AppFooter" type="XML" />
             </footer>
         </ute:content>

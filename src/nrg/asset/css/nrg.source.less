@@ -1,11 +1,19 @@
-@import '../../../ute/ui/commons/themes/base/global.less';
-@import 'global.less';
-@import 'App.view.less';
-@import 'AppHeader.fragment.less';
-@import 'AppHeaderQuickLink.fragment.less';
-@import 'AppHeaderMsg.fragment.less';
-@import 'AppMain.fragment.less';
-@import 'AppFooter.fragment.less';
-@import 'GeneralEmpty.view.less';
-@import 'SummaryEmpty.view.less';
-@import 'ToolsEmpty.view.less';
+// Reset to default styling
+// -----------------------------------------
+@import 'thirdparty/normalize.less';
+
+// Baseline CSS
+// -----------------------------------------
+@import 'core/base.less';
+
+// Application specific CSS
+// -----------------------------------------
+@import 'app/App.view.less';
+@import 'app/AppHeader.fragment.less';
+@import 'app/AppHeaderQuickLink.fragment.less';
+@import 'app/AppHeaderMsg.fragment.less';
+@import 'app/AppMain.fragment.less';
+@import 'app/AppFooter.fragment.less';
+@import 'app/GeneralEmpty.view.less';
+@import 'app/SummaryEmpty.view.less';
+@import 'app/ToolsEmpty.view.less';

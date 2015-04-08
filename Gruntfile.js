@@ -52,7 +52,7 @@
                             expand: true,
                             cwd: 'src',
                             src: [
-                                'nrg/asset/css/font/**',
+                                'nrg/asset/css/core/font/**',
                                 'nrg/asset/img/**',
                                 '!nrg/asset/img/**/*.svg',
                                 'nrg/component/**',
@@ -114,9 +114,9 @@
                         ]
                     },
                     files: {
-                        'build/nrg/asset/css/nrg.css': 'src/nrg/asset/css/nrg.source.less',
                         'build/ute/ui/commons/themes/base/library.css': 'src/ute/ui/commons/themes/base/library.source.less',
-                        'build/ute/ui/commons/themes/sap_bluecrystal/library.css': 'src/ute/ui/commons/themes/sap_bluecrystal/library.source.less'
+                        'build/ute/ui/commons/themes/sap_bluecrystal/library.css': 'src/ute/ui/commons/themes/sap_bluecrystal/library.source.less',
+                        'build/nrg/asset/css/nrg.css': 'src/nrg/asset/css/nrg.source.less'
                     }
                 }
             },

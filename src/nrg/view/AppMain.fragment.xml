@@ -5,19 +5,13 @@
 
     <ute:Tag id="idAppMain" class="nrgAppMain">
         <ute:content>
-            <h1></h1>
-            <div class="nrgAppMainContentLeft">
-                <section class="nrgAppSummaryContent">
-                    <ute:Tag elem="article" id="idAppSummary" />
-                </section>
-                <section class="nrgAppToolsContent">
-                    <ute:Tag elem="article" id="idAppTools" />
-                </section>
+            <h1 class="nrgAppMain-title" />
+            <div class="nrgAppMain-left">
+                <ute:Tag elem="section" id="idAppSummary" class="nrgAppMain-summaryPanel" />
+                <ute:Tag elem="section" id="idAppTools" class="nrgAppMain-toolsPanel" />
             </div>
-            <div class="nrgAppMainContentCenter">
-                <section>
-                    <ute:Tag elem="article" id="idAppGeneral" />
-                </section>
+            <div class="nrgAppMain-center">
+                <ute:Tag elem="section" id="idAppGeneral" class="nrgAppMain-generalPanel" />
             </div>
         </ute:content>
     </ute:Tag>

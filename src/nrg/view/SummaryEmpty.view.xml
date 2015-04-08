@@ -4,7 +4,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     controllerName="nrg.controller.SummaryEmpty">
 
-    <ute:Tag class="nrgSummaryEmpty nrgAppMainSummaryFullPanel">
+    <ute:Tag class="nrgSummaryEmpty nrgAppMain-summaryContent nrgAppMain-summaryContent-full">
         <ute:content>
             <span>Summary Content</span>
         </ute:content>

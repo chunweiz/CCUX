@@ -20,8 +20,8 @@ sap.ui.define(
         AppHdr.prototype.initialize = function () {
             //Initialize menu
             this._oNavElem = this._oAppHdr.getDomRef();
-            this._aListItem = [].slice.call(this._oNavElem.querySelectorAll('ul > li'));
-            this._aMenuItem = [].slice.call(this._oNavElem.querySelectorAll('ul > li > span'));
+            this._aListItem = [].slice.call(this._oNavElem.querySelectorAll('.nrgAppHdr-listItem'));
+            this._aMenuItem = [].slice.call(this._oNavElem.querySelectorAll('.nrgAppHdr-listItemLink'));
             this._nCurrent = -1;
 
             this._aListItem.forEach(function (oElem) {
@@ -63,7 +63,7 @@ sap.ui.define(
             var nIdx;
 
             if (this._nCurrent !== -1) {
-                this._aListItem[this._nCurrent].classList.remove('nrgAppHdrMenuOpen');
+                this._aListItem[this._nCurrent].classList.remove('nrgAppHdr-listItem-open');
             }
 
             for (nIdx = 0; nIdx < this._aListItem.length; nIdx = nIdx + 1) {
@@ -73,17 +73,17 @@ sap.ui.define(
             }
 
             if (this._nCurrent === nIdx) {
-                oEvent.target.parentElement.classList.remove('nrgAppHdrMenuOpen');
+                oEvent.target.parentElement.classList.remove('nrgAppHdr-listItem-open');
                 this._nCurrent = -1;
 
             } else {
-                oEvent.target.parentElement.classList.add('nrgAppHdrMenuOpen');
+                oEvent.target.parentElement.classList.add('nrgAppHdr-listItem-open');
                 this._nCurrent = nIdx;
             }
         };
 
         AppHdr.prototype.closeSubMenu = function () {
-            this._aListItem[this._nCurrent].classList.remove('nrgAppHdrMenuOpen');
+            this._aListItem[this._nCurrent].classList.remove('nrgAppHdr-listItem-open');
             this._nCurrent = -1;
         };
 

@@ -1,7 +1,6 @@
 /*globals sap*/
 /*jslint nomen:true*/
 
-
 sap.ui.define(
     function () {
         'use strict';
@@ -14,21 +13,21 @@ sap.ui.define(
         };
 
         AppFooter.prototype.initialize = function () {
-            var oCheckbox, oLabel;
+            var oCheckbox, oBtn;
 
             this._oAppFooterElem = this._oAppFooter.getDomRef();
 
             //Bind label to checkbox
-            oCheckbox = this._oAppFooterElem.querySelector('div > input');
-            oLabel = this._oAppFooterElem.querySelector('div > label');
-            oLabel.htmlFor = oCheckbox.id;
+            oCheckbox = this._oAppFooterElem.querySelector('.nrgAppFtr-toggleChk');
+            oBtn = this._oAppFooterElem.querySelector('.nrgAppFtr-toggleBtn');
+            oBtn.htmlFor = oCheckbox.id;
 
             //Get footer content
-            this._oAppFooterContentElem = this._oAppFooterElem.querySelector('section');
+            this._oAppFooterContentElem = this._oAppFooterElem.querySelector('.nrgAppFtr-content');
 
             //Register to label click event
-            oLabel.addEventListener('click', function (oEvent) {
-                this._oAppFooterContentElem.classList.toggle('nrgAppFooterMenuShow');
+            oBtn.addEventListener('click', function (oEvent) {
+                this._oAppFooterContentElem.classList.toggle('nrgU-displayNone');
             }.bind(this));
 
             return this;

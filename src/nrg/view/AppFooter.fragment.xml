@@ -3,14 +3,37 @@
     xmlns:ute="ute.ui.commons"
     xmlns:core="sap.ui.core">
     
-    <ute:Tag elem="nav" id="idAppFooterMenu" class="nrgAppFooterMenu">
+    <ute:Tag elem="nav" id="idAppFooterMenu" class="nrgAppFtr">
         <ute:content>
-            <div class="clearfix">
-                <ute:Tag elem="input" type="checkbox" />
-                <ute:Tag elem="label" />
+            <div class="nrgAppFtr-toggle nrgU-clearfix">
+                <ute:Tag elem="input" type="checkbox" class="nrgAppFtr-toggleChk nrgU-displayNone" />
+                <ute:Tag elem="label" class="nrgAppFtr-toggleBtn nrgU-right"/>
             </div>
-            <section>
-                Footer Content !!!
+            <section class="nrgAppFtr-content nrgU-clearfix nrgU-displayNone">
+                <aside class="nrgAppFtr-toolbar nrgU-right">
+                    <div>notes</div>
+                    <div>calc</div>
+                    <div>clog</div>
+                </aside>
+                <article class="nrgAppFtr-offerToolbar nrgU-right">
+                    <button type="button" class="nrgAppFtr-offerBtn">
+                        <ute:Tag class="nrgAppFtr-offerBtnTitle" text="{i18n>nrgAppFooterCustReqOffer}" />
+                        <ute:Tag id="idCustReqOffer" class="nrgAppFtr-offerBtnDesc nrgAppFtr-offerBtnTitle-Ok" text="{i18n>nrgAppFooterEligibile}" />
+                    </button>
+                    <button type="button" class="nrgAppFtr-offerBtn">
+                        <ute:Tag class="nrgAppFtr-offerBtnTitle" text="{i18n>nrgAppFooterAgentReqOffer}" />
+                        <ute:Tag id="idAgentReqOffer" class="nrgAppFtr-offerBtnDesc" text="{i18n>nrgAppFooterNotEligibile}"  />
+                    </button>
+                </article>
+                <article class="nrgAppFtr-offer nrgU-right">
+                    <ute:Tag class="nrgAppFtr-subTitle" text="{i18n>nrgAppFooterOffer}"/>
+                </article>
+                <article class="nrgAppFtr-rhs nrgU-right">
+                    <ute:Tag class="nrgAppFtr-subTitle" text="{i18n>nrgAppFooterRhs}"/>
+                </article>
+                <article class="nrgAppFtr-notif nrgU-left">
+                    <ute:Tag class="nrgAppFtr-subTitle" text="{i18n>nrgAppFooterNotif}"/>
+                </article>
             </section>
         </ute:content>
     </ute:Tag>
