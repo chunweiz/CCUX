@@ -3,19 +3,20 @@
 
 sap.ui.define(
     [
+        'sap/ui/base/Object',
         'nrg/controller/helper/AppHeaderQuickLink'
     ],
     
-    function (AppHdrQL) {
+    function (BaseObject, AppHdrQL) {
         'use strict';
         
-        var AppHdr = function (viewId, controller) {
-            this._oController = controller;
-            this._oAppHdr = this._oController.getView().byId(viewId.hdr);
-            this._oAppHdrQuickLink = new AppHdrQL(viewId.quickLink, this);
-
-            return this;
-        };
+        var AppHdr = BaseObject.extend('nrg.controller.helper.AppHeader', {
+            constructor: function (viewId, controller) {
+                this._oController = controller;
+                this._oAppHdr = this._oController.getView().byId(viewId.hdr);
+                this._oAppHdrQuickLink = new AppHdrQL(viewId.quickLink, this);
+            }
+        });
 
         AppHdr.prototype.initialize = function () {
             //Initialize menu

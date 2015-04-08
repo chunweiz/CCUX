@@ -2,15 +2,20 @@
 /*jslint nomen:true*/
 
 sap.ui.define(
-    function () {
+    [
+        'sap/ui/base/Object'
+    ],
+
+    function (BaseObject) {
         'use strict';
 
-        var AppFooter = function (idAppFooter, controller) {
-            this._oController = controller;
-            this._oAppFooter = this._oController.getView().byId(idAppFooter);
-
-            return this;
-        };
+        var AppFooter = BaseObject.extend('nrg.controller.helper.AppFooter', {
+            constructor: function (idAppFooter, controller) {
+                BaseObject.apply(this);
+                this._oController = controller;
+                this._oAppFooter = this._oController.getView().byId(idAppFooter);
+            }
+        });
 
         AppFooter.prototype.initialize = function () {
             var oCheckbox, oBtn;
