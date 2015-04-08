@@ -19,7 +19,7 @@ sap.ui.define(
 
         AppHdrQL.prototype.initialize = function () {
             this._oAppHdrQuickLinkElem = this._oAppHdrQuickLink.getDomRef();
-            this._aQuickLinkElem = [].slice.call(this._oAppHdrQuickLinkElem.querySelectorAll('ul > li'));
+            this._aQuickLinkElem = [].slice.call(this._oAppHdrQuickLinkElem.querySelectorAll('.nrgAppHdrQLink-link'));
             this._aQuickLinkElem.forEach(this._addQuickLinkListener, this);
         };
 

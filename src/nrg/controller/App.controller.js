@@ -6,10 +6,11 @@ sap.ui.define(
         'nrg/controller/BaseController',
         'nrg/controller/helper/AppHeader',
         'nrg/controller/helper/AppFooter',
-        'nrg/controller/helper/AppMain'
+        'nrg/controller/helper/AppMain',
+        'nrg/controller/helper/AppNav'
     ],
     
-    function (Controller, AppHeader, AppFooter, AppMain) {
+    function (Controller, AppHeader, AppFooter, AppMain, AppNav) {
         'use strict';
         
         var AppController = Controller.extend('nrg.controller.App');
@@ -22,15 +23,17 @@ sap.ui.define(
                 msg: 'idAppHdrMsg'
             }, this).initialize();
 
-            console.log('creating footer ...');
             this._oAppFooter = new AppFooter('idAppFooterMenu', this);
-            console.log('created footer ...');
             this._oAppFooter.initialize();
-            console.log('init footer ...');
 
             this._oAppMain = new AppMain('idAppMain', this)
                 .initialize()
                 .setMainTitle('nrgAppMainCustTitle');
+
+            this._oAppNav = new AppNav({
+                navLeft: 'idNrgAppArrowLeft',
+                navRight: 'idNrgAppArrowRight'
+            }, this).initialize();
         };
 
         return AppController;

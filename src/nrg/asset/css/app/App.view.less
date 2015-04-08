@@ -26,9 +26,58 @@
         bottom: 0;
     }
 
-    & > .nrgApp-main {
+    & > .nrgApp-body {
         position: relative;
         width: 1440px;
         margin: 0 auto;
+        overflow: scroll;
+    }
+
+    & > .nrgApp-body > .nrgApp-navLeft,
+    & > .nrgApp-body > .nrgApp-navRight,
+    & > .nrgApp-body > .nrgApp-main {
+        display: inline-block;
+    }
+
+    & > .nrgApp-body > .nrgApp-navLeft,
+    & > .nrgApp-body > .nrgApp-navRight {
+        position: relative;
+        width: 41px;
+    }
+
+    & > .nrgApp-body > .nrgApp-navLeft > .nrgApp-arrowLeft {
+        position: absolute;
+        top: -550px;
+        left: 18px;
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-right: 15px solid @nrgColor-lightGrey;
+    }
+
+    & > .nrgApp-body > .nrgApp-navRight > .nrgApp-arrowRight {
+        position: absolute;
+        top: -550px;
+        right: 18px;
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid @nrgColor-lightGrey;
+    }
+
+    & > .nrgApp-body > .nrgApp-navLeft > .nrgApp-arrowLeft:hover {
+        border-right: 15px solid @nrgColor-blueLink;
+    }
+
+    & > .nrgApp-body > .nrgApp-navRight > .nrgApp-arrowRight:hover {
+        border-left: 15px solid @nrgColor-blueLink;
+    }
+
+    & > .nrgApp-body > .nrgApp-main {
+        position: relative;
+        display: inline-block;
+        width: 1358px;
     }
 }

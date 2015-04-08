@@ -13,9 +13,17 @@
             <header class="nrgApp-hdr">
                 <core:Fragment fragmentName="nrg.view.AppHeader" type="XML" />
             </header>
-            <main class="nrgApp-main">
-                <core:Fragment fragmentName="nrg.view.AppMain" type="XML" />
-            </main>
+            <div class="nrgApp-body">
+                <aside class="nrgApp-navLeft">
+                    <ute:Tag id="idNrgAppArrowLeft" class="nrgApp-arrowLeft" />
+                </aside>
+                <main class="nrgApp-main">
+                    <core:Fragment fragmentName="nrg.view.AppMain" type="XML" />
+                </main>
+                <aside class="nrgApp-navRight">
+                    <ute:Tag id="idNrgAppArrowRight" class="nrgApp-arrowRight" />
+                </aside>
+            </div>
             <footer class="nrgApp-ftr">
                 <core:Fragment fragmentName="nrg.view.AppFooter" type="XML" />
             </footer>
