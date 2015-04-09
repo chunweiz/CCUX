@@ -78,4 +78,13 @@
         display: inline-block;
         width: 1358px;
     }
+
+    @media screen {
+        @media (max-width:1440px) {
+            & > .nrgApp-ftr {
+                z-index: @nrgZIndex-1--AppFooter;
+                bottom: 18px;
+            }
+        }
+    }
 }

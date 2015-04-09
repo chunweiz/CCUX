@@ -28,11 +28,12 @@ sap.ui.define(
             oBtn.htmlFor = oCheckbox.id;
 
             //Get footer content
-            this._oAppFooterContentElem = this._oAppFooterElem.querySelector('.nrgAppFtr-content');
+            //IE9 doesn't support classList.toggle, fallback to jQuery toggle class
+            this._oAppFooterContent = this._oAppFooter.$().find('.nrgAppFtr-content');
 
             //Register to label click event
             oBtn.addEventListener('click', function (oEvent) {
-                this._oAppFooterContentElem.classList.toggle('nrgU-displayNone');
+                this._oAppFooterContent.toggleClass('nrgU-displayNone');
             }.bind(this));
 
             return this;
