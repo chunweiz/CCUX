@@ -6,7 +6,7 @@
     xmlns:u="ute.ui.commons">
     <u:Tag>
         <u:Tag
-            text="Button1">
+            text="Buttons">
         </u:Tag>
         <u:Button
             text="TITLE"
@@ -20,13 +20,7 @@
             enabled="true"
             press="onButtonClick">
         </u:Button>
-    </u:Tag>
-    <br/>
-
-    <u:Tag>
-        <u:Tag
-            text="Button2">
-        </u:Tag>
+        <u:Tag/>
         <u:Button
             uteDesign="Button2"
             text="TITLE"
@@ -39,13 +33,7 @@
             enabled="true"
             press="onButtonClick">
         </u:Button>
-    </u:Tag>
-    <br/>
-
-    <u:Tag>
-        <u:Tag
-            text="Button3">
-        </u:Tag>
+        <u:Tag/>
         <u:Button
             uteDesign="Button3"
             text="TITLE"
@@ -59,8 +47,8 @@
             press="onButtonClick">
         </u:Button>
     </u:Tag>
-    <br/>
 
+    <br/>
     <u:Tag>
         <u:Tag
             text="Badge">
@@ -77,26 +65,51 @@
             text="LU"
             type="Attention">
         </u:Badge>
+        <u:Tag/>
+        <u:CheckBox
+            text="CheckBox"
+            change="testCheckBox"
+            name="testCheckBoxName"
+            checked="false">
+        </u:CheckBox>
     </u:Tag>
-    <br/>
 
     <u:Tag>
         <u:Tag
             text="ToggleButton">
         </u:Tag>
         <u:ToggleButton
-            leftBtnText="TESTL"
+            leftBtnText="LEFT TITLE"
             leftBtnWidth="500px"
             rightBtnWidth="500px"
-            rightBtnText="TESTR"
+            rightBtnText="RIGHT TITLE"
             press="testFunc">
         </u:ToggleButton>
     </u:Tag>
+
+    <br/>
+    <u:Tag>
+        <u:Tag
+            text="Input">
+        </u:Tag>
+        <u:Input
+            placeholder="Text"
+            change="testInputChange"
+            fieldType="field2"
+            label="Title">
+        </u:Input>
+        <u:Input
+            placeholder="Text"
+            change="testInputChange"
+            fieldType="field1"
+            label="Title">
+        </u:Input>
+    </u:Tag>
+
     <br/>
 
-
     <u:Button
-        uteDesign="Button2"
+        uteDesign="Button1"
         text="to Test Page"
         enabled="true"
         press="onGoToTestPage">
@@ -104,17 +117,6 @@
 
 
 
-        <u:Input
-            placeholder="Text"
-            change="testInputChange"
-            fieldType="field2"
-            label="Title">
-        </u:Input>
-        <u:CheckBox
-            text="oh Check Box!!"
-            change="testCheckBox"
-            name="testCheckBoxName"
-            checked="true">
-        </u:CheckBox>
+
 
 </core:View>
