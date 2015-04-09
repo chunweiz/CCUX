@@ -1,31 +1,120 @@
 <core:View
 	controllerName="sap.ui.demo.myFiori.view.Master"
-	xmlns="sap.ui.commons"
+    xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="sap.ui.commons"
 	xmlns:core="sap.ui.core" 
     xmlns:u="ute.ui.commons">
-	<u:Button
-        text="TITLE"
-        uteDesign="Button1"
+    <u:Tag>
+        <u:Tag
+            text="Button1">
+        </u:Tag>
+        <u:Button
+            text="TITLE"
+            uteDesign="Button1"
+            enabled="true"
+            press="onButtonClick">
+        </u:Button>
+        <u:Button
+            text="TITLE"
+            uteDesign="Button1"
+            enabled="true"
+            press="onButtonClick">
+        </u:Button>
+    </u:Tag>
+    <br/>
+
+    <u:Tag>
+        <u:Tag
+            text="Button2">
+        </u:Tag>
+        <u:Button
+            uteDesign="Button2"
+            text="TITLE"
+            enabled="true"
+            press="onButtonClick">
+        </u:Button>
+        <u:Button
+            uteDesign="Button2"
+            text="TITLE"
+            enabled="true"
+            press="onButtonClick">
+        </u:Button>
+    </u:Tag>
+    <br/>
+
+    <u:Tag>
+        <u:Tag
+            text="Button3">
+        </u:Tag>
+        <u:Button
+            uteDesign="Button3"
+            text="TITLE"
+            enabled="true"
+            press="onButtonClick">
+        </u:Button>
+        <u:Button
+            uteDesign="Button3"
+            text="TITLE"
+            enabled="true"
+            press="onButtonClick">
+        </u:Button>
+    </u:Tag>
+    <br/>
+
+    <u:Tag>
+        <u:Tag
+            text="Badge">
+        </u:Tag>
+        <u:Badge
+            text="RHS"
+            type="Regular">
+        </u:Badge>
+        <u:Badge
+            text="CC"
+            type="Alert">
+        </u:Badge>
+        <u:Badge
+            text="LU"
+            type="Attention">
+        </u:Badge>
+    </u:Tag>
+    <br/>
+
+    <u:Tag>
+        <u:Tag
+            text="ToggleButton">
+        </u:Tag>
+        <u:ToggleButton
+            leftBtnText="TESTL"
+            leftBtnWidth="500px"
+            rightBtnWidth="500px"
+            rightBtnText="TESTR"
+            press="testFunc">
+        </u:ToggleButton>
+    </u:Tag>
+    <br/>
+
+
+    <u:Button
+        uteDesign="Button2"
+        text="to Test Page"
         enabled="true"
-        press="onButtonClick">
+        press="onGoToTestPage">
     </u:Button>
-    <u:ToggleButton
-        leftBtnText="TESTL"
-        leftBtnWidth="500px"
-        rightBtnWidth="500px"
-        rightBtnText="TESTR"
-        press="testFunc">
-    </u:ToggleButton>
-    <u:Input
-        placeholder="Text"
-        change="testInputChange"
-        fieldType="field2"
-        label="Title">
-    </u:Input>
-    <u:CheckBox
-        text="oh Check Box!!"
-        change="testCheckBox"
-        name="testCheckBoxName"
-        checked="true">
-    </u:CheckBox>
+
+
+
+        <u:Input
+            placeholder="Text"
+            change="testInputChange"
+            fieldType="field2"
+            label="Title">
+        </u:Input>
+        <u:CheckBox
+            text="oh Check Box!!"
+            change="testCheckBox"
+            name="testCheckBoxName"
+            checked="true">
+        </u:CheckBox>
+
 </core:View>
