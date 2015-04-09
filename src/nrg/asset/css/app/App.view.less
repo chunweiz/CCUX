@@ -45,25 +45,23 @@
         width: 41px;
     }
 
-    & > .nrgApp-body > .nrgApp-navLeft > .nrgApp-arrowLeft {
+    & > .nrgApp-body > .nrgApp-navLeft > .nrgApp-arrowLeft,
+    & > .nrgApp-body > .nrgApp-navRight > .nrgApp-arrowRight {
         position: absolute;
         top: -550px;
-        left: 18px;
         width: 0;
         height: 0;
         border-top: 15px solid transparent;
         border-bottom: 15px solid transparent;
+    }
+
+    & > .nrgApp-body > .nrgApp-navLeft > .nrgApp-arrowLeft {
+        left: 18px;
         border-right: 15px solid @nrgColor-lightGrey;
     }
 
     & > .nrgApp-body > .nrgApp-navRight > .nrgApp-arrowRight {
-        position: absolute;
-        top: -550px;
         right: 18px;
-        width: 0;
-        height: 0;
-        border-top: 15px solid transparent;
-        border-bottom: 15px solid transparent;
         border-left: 15px solid @nrgColor-lightGrey;
     }
 
