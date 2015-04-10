@@ -1,40 +1,64 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
-		
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<script id="sap-ui-bootstrap"
+		    src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+		    data-sap-ui-theme="sap_bluecrystal"
+		    data-sap-ui-libs="ute.ui.commons, sap.ui.commons"
+		    data-sap-ui-resourceroots='{
+            	"ute.ui.commons": "../../src/ute/ui/commons"
+        	}'>
+		</script>
+		<script>
+			sap.ui.getCore().attachInit(function() {
+//                var oBlockDiv = new ute.ui.commons.BlockDivision();
+//
+//                var oLabel = new sap.ui.commons.Label();
+//                oLabel.setText('this is a content from a label');
+//                oBlockDiv.setContent(oLabel);
+//
+//                oBlockDiv.placeAt('content');
+//
+                var oInfoLine = new ute.ui.commons.InfoLine({
+                    change: function(oControlEvent) {
+                        console.log(oControlEvent.getParameters().expanded);
+                    }
+                });
+                oInfoLine.setTitle('Infoline title');
+                oInfoLine.setExpand(true);
+                oInfoLine.setMaxHeight('800px');
 
-		<script src="resources/sap-ui-core.js"
-				id="sap-ui-bootstrap"
-				data-sap-ui-libs="sap.ui.commons,ute.ui.commons"
-                data-sap-ui-resourceroots='{
-            	"sap.ui.demo.myFiori": "/test/nb",
-                "ute.ui.commons": "/src/ute/ui/commons"}'
-				data-sap-ui-theme="sap_bluecrystal">
-		</script>
-		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+                var oLabel = new sap.ui.commons.Label();
+                oLabel.setText('this is a content from a label');
+                oInfoLine.setContent(oLabel);
+                oInfoLine.placeAt('content');
 
-	    <link rel="stylesheet" href="customIconStyle.css"></head>
-	    
-	   <!-- <script>
-	    jQuery.sap.require("sap.ui.core.IconPool");
-		sap.ui.core.IconPool.addIcon("icon-notification2x", "nrgcustomicons", "icomoon", "e601");
-		sap.ui.core.IconPool.addIcon("icon-badge2x", "nrgcustomicons", "icomoon", "e605");
+//                var oDialog = new ute.ui.commons.Dialog();
+//                oDialog.setMinHeight('500px');
+//                oDialog.setMinWidth('500px');
+//
+//                oDialog.addContent(new ute.ui.commons.Badge({
+//                    text: 'RHS',
+//                    type: ute.ui.commons.BadgeType.Regular
+//                }));
+//
+//                oDialog.addContent(new ute.ui.commons.Badge({
+//                    text: 'CC',
+//                    type: ute.ui.commons.BadgeType.Alert
+//                }));
+//
+//                oDialog.addContent(new ute.ui.commons.Badge({
+//                    text: 'LU',
+//                    type: ute.ui.commons.BadgeType.Attention
+//                }));
+//
+//                oDialog.setModal(true);
+//                oDialog.open();
+            });
 		</script>
-	    
-	    <script>
-	    sap.ui.localResources("customIconsUsingFonts");
-		var view = sap.ui.view({id:"idcustomIconsUsingFonts", viewName:"customIconsUsingFonts.customIconsUsingFonts", type:sap.ui.core.mvc.ViewType.JS});
-		view.placeAt("content");		
-	    </script>-->
-     <script>
-		var d1 = new sap.ui.commons.DropdownBox();
-		d1.placeAt("content");
-		</script>
-	
 	</head>
-	<body class="sapUiBody" role="application">
+	<body class="uteUiBody">
 		<div id="content"></div>
 	</body>
 </html>
