@@ -65,6 +65,11 @@
                 border-radius: 10px;
                 border: 2px solid deepskyblue;
             }
+            .radio >text{
+                position:absolute;
+                box-sizing: border-box;
+                margin-left: 5px;
+            }
         </style>
 	</head>
 	<body>
@@ -75,8 +80,11 @@
         <div class="radio">
             <input type="radio" name="sselect" id="radio1"/>
             <label for="radio1"></label>
+        </div>
+        <div class="radio">
             <input type="radio" name="sselect" id="radio2"/>
             <label for="radio2"></label>
+            <text>test</text>
         </div>
 	</body>
 </html>

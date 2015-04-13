@@ -98,6 +98,7 @@
             fieldType="field2"
             label="Title">
         </u:Input>
+        <u:Tag/>
         <u:Input
             placeholder="Text"
             change="testInputChange"
@@ -115,6 +116,10 @@
         press="onGoToTestPage">
     </u:Button>
 
+    <u:RadioButton
+        groupName="radio1"
+        >
+    </u:RadioButton>
 
 
 

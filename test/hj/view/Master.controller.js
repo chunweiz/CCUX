@@ -28,7 +28,6 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
         alert("Checkbox Checked or Unchecked") ;
     },
     onGoToTestPage: function(evt){
-        alert("test") ;
         this.nav.to("Detail");
     }
 });

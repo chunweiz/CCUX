@@ -31,4 +31,13 @@
     </u:CheckBox>
     </u:Tag>
 
+    <u:RadioButton
+        text="option1"
+        groupName="radio1" >
+    </u:RadioButton>
+     <u:RadioButton
+        text="option2"
+        groupName="radio1" >
+    </u:RadioButton>
+
 </core:View>
