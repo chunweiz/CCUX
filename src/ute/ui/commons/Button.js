@@ -83,7 +83,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 /**
                  * Specifies the button height. If this property is set, the height which is specified by the underlying theme is not used any longer.
                  */
-                height : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : null},             
+                height : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : null},
                 
                 /**
                 * Added to configure ute style buttons
@@ -136,7 +136,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
          */
     
         Button.prototype.getuteDesign = function (oEvent) {
-            return this.getProperty("uteDesign") ;
+            return this.getProperty("uteDesign");
         };
     
         Button.prototype.onclick = function (oEvent) {
