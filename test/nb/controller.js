@@ -1,4 +1,4 @@
-sap.ui.controller("customIconsUsingFonts.customIconsUsingFonts", {
+sap.ui.controller("nb", {
 
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.

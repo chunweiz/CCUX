@@ -1,3 +1,10 @@
+/***
+Please note: Build of this control has not finished yet.
+Found RadioButton itself works without the group control so holding this implementation
+
+HJL
+*/
+
 /*global sap*/
 sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/core/delegate/ItemNavigation'],
 	function (jQuery, library, Control, ItemNavigation) {

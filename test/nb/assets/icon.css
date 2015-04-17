@@ -1,0 +1,25 @@
+.nrgIcon-agent {
+    fill: grey;
+}
+
+.nrgColor-blue {
+    fill: "#5091CD";
+}
+
+.nrgColor-pink {
+    fill: deeppink;
+}
+.nrgColor-red {
+    fill: red;
+}
+.nrgColor-yellow {
+    fill: yellow;
+    width: 100px;
+    height: 100px;
+}
+.nrgColor-blue {
+    fill: blue;
+}
+.nrgSize-large {
+    font-size: 100px;
+}

@@ -30,25 +30,17 @@
         position: relative;
         width: 1440px;
         margin: 0 auto;
-        overflow: scroll;
-    }
-
-    & > .nrgApp-body > .nrgApp-navLeft,
-    & > .nrgApp-body > .nrgApp-navRight,
-    & > .nrgApp-body > .nrgApp-main {
-        display: inline-block;
     }
 
     & > .nrgApp-body > .nrgApp-navLeft,
     & > .nrgApp-body > .nrgApp-navRight {
-        position: relative;
-        width: 41px;
+        width: 30px;
+        height: 300px;
+        padding-top: 250px;
     }
 
     & > .nrgApp-body > .nrgApp-navLeft > .nrgApp-arrowLeft,
     & > .nrgApp-body > .nrgApp-navRight > .nrgApp-arrowRight {
-        position: absolute;
-        top: -550px;
         width: 0;
         height: 0;
         border-top: 15px solid transparent;
@@ -56,17 +48,16 @@
     }
 
     & > .nrgApp-body > .nrgApp-navLeft > .nrgApp-arrowLeft {
-        left: 18px;
+        margin-left: 15px;
         border-right: 15px solid @nrgColor-lightGrey;
-    }
-
-    & > .nrgApp-body > .nrgApp-navRight > .nrgApp-arrowRight {
-        right: 18px;
-        border-left: 15px solid @nrgColor-lightGrey;
     }
 
     & > .nrgApp-body > .nrgApp-navLeft > .nrgApp-arrowLeft:hover {
         border-right: 15px solid @nrgColor-blueLink;
+    }
+
+    & > .nrgApp-body > .nrgApp-navRight > .nrgApp-arrowRight {
+        border-left: 15px solid @nrgColor-lightGrey;
     }
 
     & > .nrgApp-body > .nrgApp-navRight > .nrgApp-arrowRight:hover {
@@ -75,7 +66,16 @@
 
     & > .nrgApp-body > .nrgApp-main {
         position: relative;
-        display: inline-block;
         width: 1358px;
+        margin: 0 auto;
+    }
+
+    @media screen {
+        @media (max-width:1440px) {
+            & > .nrgApp-ftr {
+                z-index: @nrgZIndex-1--AppFooter;
+                bottom: 17px;
+            }
+        }
     }
 }

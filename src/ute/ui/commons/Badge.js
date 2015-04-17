@@ -21,6 +21,7 @@ sap.ui.define(['sap/ui/core/Control'],
                         type: 'sap.ui.core.CSSSize',
                         defaultValue: '2rem'
                     },
+                    /*Type vluae can be 'Alert', 'Attention', and 'Regular'*/
                     type: {
                         type: 'ute.ui.commons.BadgeType',
                         defaultValue: 'ute.ui.commons.BadgeType.Regular'
