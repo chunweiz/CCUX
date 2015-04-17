@@ -3,7 +3,8 @@
     xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:c="sap.ui.commons"
 	xmlns:core="sap.ui.core" 
-    xmlns:u="ute.ui.commons">
+    xmlns:u="ute.ui.commons"
+    xmlns:n="nrg.asset.img.icon">
     <u:Tag>
         <u:Tag
             text="Buttons">
@@ -30,6 +31,11 @@
         <u:Button
             uteDesign="Button2"
             text="TITLE"
+            enabled="true"
+            press="onButtonClick">
+        </u:Button>
+         <u:Button
+            uteDesign="Button4"
             enabled="true"
             press="onButtonClick">
         </u:Button>
