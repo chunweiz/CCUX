@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+<!--[if IE 9]><link  href="css/style.css" type="text/css" rel="stylesheet"/><![endif]-->
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+
+		<script src="resources/sap-ui-core.js" id="sap-ui-bootstrap"
+		data-sap-ui-libs="sap.m" data-sap-ui-theme="sap_bluecrystal">
+		</script>
+			<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+			<!--<link  href="css/style.css" type="text/css" rel="stylesheet"/>-->
+        <style>
+        .Wrapper{
+	border:1px solid black;
+}
+
+.clearfix{
+	display: block;
+}
+
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.menu-items{
+	border:1px solid black;  /* This can be removed for removing the border */
+	border-radius: 4px;
+	height:30px;
+	width:200px;
+	text-align: left;  /*  Text can be aligned center  */
+	position: relative;
+	line-height: 30px;
+	cursor:pointer;
+	background:white;       /*  even this has to be commented for border less combo box */
+   -webkit-box-shadow:0 4px 6px -6px #222;
+   -moz-box-shadow:0 4px 6px -6px #222;
+	box-shadow:0 4px 6px -6px #222;
+}
+
+ul{
+	list-style: none;
+}
+
+ #sub-items li:hover{
+ 	background-color: #819FF7;
+ }
+
+#sub-items{
+	padding: 0px;
+	margin:0px;
+	display: none;
+	text-align:left;
+	background:white;
+
+}
+
+#sub-items li{
+
+	border-right: 1px solid black;
+	border-left: 1px solid black;
+}
+
+#sub-items li:first-child{
+	margin-top: 2px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-top: 1px solid black;
+}
+
+#sub-items li:last-child{
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom: 1px solid black;
+}
+
+#imgdown{
+
+	padding-left: 4%;
+	margin-top: 3%;
+	width:35px;
+	height:20px;
+	float:right;
+}
+
+#arrow{
+	padding-right: 2%;
+	margin-top: 3%;
+	cursor: pointer;
+	width:35px;
+	height:20px;
+	float:right;
+	display:none;
+}
+        </style>
+
+		<script>
+
+		var flag=0;
+		var c = 0;
+			function showToggle(){
+				if (flag==0){
+					flag=1;
+					document.getElementById("sub-items").style.display="block";
+					if(c == 0){
+						document.getElementById('imgdown').src="assets/icon - new/Icon_arrow1_up.svg";
+						c++;
+					}else{
+						document.getElementById('arrow').src="assets/icon - new/Icon_arrow1_up.svg";
+					}
+
+				}
+				else{
+					flag=0;
+					document.getElementById("sub-items").style.display="none";
+				}
+			}
+
+			function liclick(obj){
+
+				var a = document.getElementById(obj).innerHTML;
+				document.getElementById("txtdropdown").innerHTML=a;
+				document.getElementById("txthidden").value=a;
+				document.getElementById("arrow").style.display="block";
+				document.getElementById("sub-items").style.display="none";
+			}
+		</script>
+
+
+</head>
+<body class="sapUiBody" role="application">
+<div id="content"></div>
+	<div>
+		<input type="hidden" id="txthidden"/>
+		<ul>
+			<li class="menu-items" onclick="showToggle()"><div id="txtdropdown">Title<img src="assets/icon - new/Icon_arrow1_down.svg" id="imgdown"></img></div>
+				<ul id="sub-items">
+					<li id="1" onClick="liclick(this.id)">Item1<img src="assets/icon - new/Icon_arrow1_down.svg" id="arrow"></img></li>
+					<li id="2" onClick="liclick(this.id)">Item2<img src="assets/icon - new/Icon_arrow1_down.svg" id="arrow"></img></li>
+					<li id="3" onClick="liclick(this.id)">Item3<img src="assets/icon - new/Icon_arrow1_down.svg" id="arrow"></img></li>
+					<li id="4" onClick="liclick(this.id)">Item4<img src="assets/icon - new/Icon_arrow1_down.svg" id="arrow"></img></li>
+					<li id="5" onClick="liclick(this.id)">Item5<img src="assets/icon - new/Icon_arrow1_down.svg" id="arrow"></img></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
