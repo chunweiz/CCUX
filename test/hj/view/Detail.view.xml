@@ -1,0 +1,43 @@
+<core:View
+	controllerName="sap.ui.demo.myFiori.view.Master"
+	xmlns="sap.ui.commons"
+	xmlns:core="sap.ui.core"
+    xmlns:u="ute.ui.commons">
+    <u:Tag class="nrgApp">
+	<u:Button
+        text="TITLE"
+        uteDesign="Button1"
+        enabled="true"
+        press="onButtonClick">
+    </u:Button>
+    <u:ToggleButton
+        leftBtnText="TESTL"
+        leftBtnWidth="500px"
+        rightBtnWidth="500px"
+        rightBtnText="TESTR"
+        press="testFunc">
+    </u:ToggleButton>
+    <u:Input
+        placeholder="Text"
+        change="testInputChange"
+        fieldType="field2"
+        label="Title">
+    </u:Input>
+    <u:CheckBox
+        text="oh Check Box!!"
+        change="testCheckBox"
+        name="testCheckBoxName"
+        checked="true">
+    </u:CheckBox>
+    </u:Tag>
+
+    <u:RadioButton
+        text="option1"
+        groupName="radio1" >
+    </u:RadioButton>
+     <u:RadioButton
+        text="option2"
+        groupName="radio1" >
+    </u:RadioButton>
+
+</core:View>

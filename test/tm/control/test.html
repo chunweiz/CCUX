@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<script id="sap-ui-bootstrap"
+		    src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+		    data-sap-ui-theme="sap_bluecrystal"
+		    data-sap-ui-libs="tm.control.lib.ui, sap.ui.commons"
+		    data-sap-ui-resourceroots='{
+            	"tm.control.lib.ui": "./lib/ui"
+        	}'>
+		</script>
+		<script>
+			sap.ui.getCore().attachInit(function() {
+                var oDiv = new tm.control.lib.ui.Division();
+                
+                var oLabel = new sap.ui.commons.Label();
+                oLabel.setText('this is a content from a label');
+                oDiv.setContent(oLabel);
+                
+                oDiv.placeAt('content');
+            });
+		</script>
+	</head>
+	<body class="sapUiBody" id="content">
+	</body>
+</html>

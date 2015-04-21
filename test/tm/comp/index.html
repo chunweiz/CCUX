@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<script id="sap-ui-bootstrap"
+		    src="../../../bower_components/openui5-bower/resources/sap-ui-core.js"
+            data-sap-ui-libs="sap.m"
+		    data-sap-ui-theme="sap_bluecrystal"
+            data-sap-ui-xx-bindingSyntax="complex">
+		</script>
+		<script>
+            jQuery.sap.registerModulePath('sap.ui.demo.tdg', './');
+            
+            new sap.ui.core.ComponentContainer({
+                height : "100%",
+                name : "sap.ui.demo.tdg"
+            }).placeAt("content");
+		</script>
+	</head>
+	<body id="content" class="sapUiBody" role="application">
+	</body>
+</html>

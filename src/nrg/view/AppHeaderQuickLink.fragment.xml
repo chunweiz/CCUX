@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:core="sap.ui.core">
+
+    <ute:Tag elem="nav" id="idAppHdrQuickLink" class="nrgAppHdrQLink nrgU-clearfix">
+        <ute:content>
+            <ul class="nrgAppHdrQLink-group">
+                <ute:Tag elem="li" id="idBilling" class="nrgAppHdrQLink-link nrgAppHdrQLink-link-underlined" text="{i18n>nrgAppHeaderBilling}" />
+                <ute:Tag elem="li" id="idBp" class="nrgAppHdrQLink-link" text="{i18n>nrgAppHeaderBp}" />
+            </ul>
+            <ul class="nrgAppHdrQLink-group">
+                <ute:Tag elem="li" id="idRhs" class="nrgAppHdrQLink-link nrgAppHdrQLink-link-underlined" text="{i18n>nrgAppHeaderRhs}" />
+                <ute:Tag elem="li" id="idContactLogs" class="nrgAppHdrQLink-link" text="{i18n>nrgAppHeaderContactLogs}" />
+            </ul>
+            <ul class="nrgAppHdrQLink-group">
+                <ute:Tag elem="li" id="idHighBill" class="nrgAppHdrQLink-link" text="{i18n>nrgAppHeaderHighBill}" />
+                <ute:Tag elem="li" class="nrgAppHdrQLink-link" />
+            </ul>
+            <ul class="nrgAppHdrQLink-group">
+                <ute:Tag elem="li" id="idHistory" class="nrgAppHdrQLink-link nrgAppHdrQLink-link-underlined" text="{i18n>nrgAppHeaderHistory}" />
+                <ute:Tag elem="li" id="idSvcOrds" class="nrgAppHdrQLink-link" text="{i18n>nrgAppHeaderSvcOrds}" />
+            </ul>
+            <ul class="nrgAppHdrQLink-group">
+                <ute:Tag elem="li" id="idBizEnroll" class="nrgAppHdrQLink-link nrgAppHdrQLink-link-underlined" text="{i18n>nrgAppHeaderBizEnroll}" />
+                <ute:Tag elem="li" id="idResEnroll" class="nrgAppHdrQLink-link" text="{i18n>nrgAppHeaderResEnroll}" />
+            </ul>
+        </ute:content>
+    </ute:Tag>
+
+</core:FragmentDefinition>
