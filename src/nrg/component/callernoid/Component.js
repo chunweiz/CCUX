@@ -49,7 +49,7 @@ sap.ui.define(
                             targetAggregation: 'content',
                             clearTarget: true
                         },
-                        emptySummary: {
+                        callerNoIDEnrollment: {
                             pattern: '',
                             view: 'CallerNoIDEnrollment',
                             targetControl: 'idAppSummary',

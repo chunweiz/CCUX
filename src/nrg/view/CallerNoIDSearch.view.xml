@@ -5,7 +5,7 @@
     controllerName="nrg.controller.GeneralEmpty">
 
 
-    <ute:Tag class="nrgCallerNoIDSearch nrgAppMain-generalContent nrgAppMain-generalContent-full nrgCallerNoIDSearchp-Title">
+    <ute:Tag class="nrgCallerNoIDSearch nrgAppMain-generalContent">
         <ute:content>
             <h1 class="nrgCallerNoIDSearch-Alert">
                     Caller was not identified. Please search for data by entering information below
@@ -63,6 +63,16 @@
                     width="48%">
                 </ute:Input>
             </ute:Tag>
+            <ute:Tag class="nrgCallerNoIDSearch-InputArea">
+                <ute:Button
+                    class="nrgCallerNoIDSearch-SButton"
+                    uteDesign="Button1"
+                    text="Search"
+                    enabled="true">
+                </ute:Button>
+            </ute:Tag>
+            <ute:Tag
+                elem="hr"></ute:Tag>
         </ute:content>
     </ute:Tag>
 
