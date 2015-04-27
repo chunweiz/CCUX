@@ -42,6 +42,9 @@ sap.ui.define(['jquery.sap.global'],
             }
             rm.writeStyles();
             rm.writeClasses();
+            if (!oButton.getEnabled()) {
+                rm.write('disabled');
+            }
             rm.write('>');
 
             rm.write(oButton.getText());

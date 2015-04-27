@@ -47,7 +47,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control'],
 
         Button.prototype.onclick = function (oEvent) {
             if (this.getEnabled()) {
-                this.firePress({/* no parameters */});
+                this.firePress({});
             }
 
             oEvent.preventDefault();
