@@ -21,24 +21,30 @@ sap.ui.define(['jquery.sap.global'],
             case 'Save':
                 rm.addClass('uteButton-general uteButton-save');
                 break;
-            case 'Cancael':
+            case 'Cancel':
                 rm.addClass('uteButton-general uteButton-cancel');
                 break;
             case 'Info':
                 rm.addClass('uteButton-general uteButton-info');
                 break;
-            case 'Title':
-                rm.addClass('uteButton-general uteButton-title');
+            case 'Tools':
+                rm.addClass('uteButton-general uteButton-tools');
                 break;
             case 'Inactive':
                 rm.addClass('uteButton-general uteButton-inactive');
                 break;
             }
-
+            if (oButton.getWidth()) {
+                rm.addStyle('width', oButton.getWidth());
+            }
+            if (oButton.getHeight()) {
+                rm.addStyle('height', oButton.getHeight());
+            }
+            rm.writeStyles();
             rm.writeClasses();
             rm.write('>');
 
-            rm.write("TITLE");
+            rm.write(oButton.getText());
             rm.write('</Button>');
             rm.write('</div>');
 

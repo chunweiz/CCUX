@@ -1,16 +1,18 @@
 .uteButton {
     margin: 2px;
 
-    & > .uteButton-general{
+    & > .uteButton-general {
         border-radius: 3px;
         border: none;
         font-family: @uteFontFamily;
         font-weight: @uteFontWeight-regular;
-        font-size: @uteFontSize-base;
-        padding-left: 33px;
-        padding-right: 33px;
-        padding-top: 8px;
-        padding-bottom: 8px;
+        font-size: @uteFontSize-small;
+        width: 110px;
+        height: 36px;
+    }
+
+    & > .uteButton-general:disabled {
+
     }
 
     & > .uteButton-save {
@@ -18,15 +20,19 @@
         background-color: @uteColor-blueLink;
     }
 
-    & > .uteButton-save:hover{
+    & > .uteButton-save:hover {
         color: @uteColor-white;
         background-color: @uteColor-lightBlue;
     }
 
     & > .uteButton-cancel {
+        color: @uteColor-white;
+        background-color: @uteColor-lightGrey;
     }
 
     & > .uteButton-cancel:hover {
+        color: @uteColor-white;
+        background-color: @uteColor-lightBlue;
     }
 
     & > .uteButton-info {
@@ -38,6 +44,18 @@
         color: @uteColor-white;
         background-color: @uteColor-lightBlue;
     }
+
+    & > .uteButton-tools {
+        color: @uteColor-lightBlue;
+        background-color: @uteColor-bluePearl;
+    }
+
+    & > .uteButton-tools:hover {
+        color: @uteColor-white;
+        background-color: @uteColor-lightBlue;
+    }
+
+
 }
 
 /**
