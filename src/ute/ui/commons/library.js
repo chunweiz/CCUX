@@ -13,8 +13,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/DataType', 'sap/ui/core/library
                 'ute.ui.commons.CSSDisplay',
                 'ute.ui.commons.CSSPosition',
 				'ute.ui.commons.HorizontalDividerType',
-				'ute.ui.commons.HorizontalDividerHeight'
-
+				'ute.ui.commons.HorizontalDividerHeight',
+                'ute.ui.commons.ButtonType'
             ],
 			interfaces: [],
 			controls: [
@@ -34,6 +34,14 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/DataType', 'sap/ui/core/library
 			elements: []
 		});
     
+        ute.ui.commons.ButtonType = {
+            Save: 'Save',
+            Cancel: 'Cancel',
+            Info: 'Info',
+            Title: 'Title',
+            Inactive: 'Inactive'
+        };
+
         ute.ui.commons.BadgeType = {
             Alert: 'Alert',
             Attention: 'Attention',
