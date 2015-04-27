@@ -4,22 +4,59 @@ sap.ui.define(['jquery.sap.global'],
 	function (jQuery) {
         "use strict";
     
-        /**
-         * @author SAP SE
-         * @version ${version}
-         * @namespace
-         */
-        var ButtonRenderer = {},
-            bUseIconFont;
-	
-        /**
-         * Renders the HTML for the given control, using the provided {@link sap.ui.core.RenderManager}.
-         *
-         * @param {sap.ui.core.RenderManager} rm The RenderManager that can be used for writing to the render output buffer.
-         * @param {sap.ui.core.Control} oButton An object representation of the control that should be rendered.
-         */
+        var ButtonRenderer = {};
+
         ButtonRenderer.render = function (rm, oButton) {
+            //Add div
+            rm.write('<div');
+            rm.writeControlData(oButton);
+            rm.addClass('uteButton');
+            rm.writeClasses();
+            rm.write('>');
+
+            //Add Button
+            rm.write('<Button');
+            rm.writeControlData(oButton);
+            switch (oButton.getButtonType()) {
+            case 'Save':
+                rm.addClass('uteButton-general uteButton-save');
+                break;
+            case 'Cancel':
+                rm.addClass('uteButton-general uteButton-cancel');
+                break;
+            case 'Info':
+                rm.addClass('uteButton-general uteButton-info');
+                break;
+            case 'Tools':
+                rm.addClass('uteButton-general uteButton-tools');
+                break;
+            case 'Inactive':
+                rm.addClass('uteButton-general uteButton-inactive');
+                break;
+            }
+            if (oButton.getWidth()) {
+                rm.addStyle('width', oButton.getWidth());
+            }
+            if (oButton.getHeight()) {
+                rm.addStyle('height', oButton.getHeight());
+            }
+            rm.writeStyles();
+            rm.writeClasses();
+            if (!oButton.getEnabled()) {
+                rm.write('disabled');
+            }
+            rm.write('>');
+
+            rm.write(oButton.getText());
+            rm.write('</Button>');
+            rm.write('</div>');
+
+        };
+            /*
             rm.addClass("sapUiBtn");
+
+
+
 
             // button is rendered as a "<button>" element
             rm.write("<button type=\"button\""); // otherwise this turns into a submit button in IE8
@@ -100,8 +137,6 @@ sap.ui.define(['jquery.sap.global'],
             if (sap.ui.core.IconPool.isIconURI(oButton.getIcon())) {
                 bUseIconFont = true;
             }
-
-            /*jslint nomen:true*/
             if (oButton.getIconFirst()) {
                 if (bUseIconFont) {
                     this.writeIconHtml(rm, oButton, bImageOnly);
@@ -109,7 +144,6 @@ sap.ui.define(['jquery.sap.global'],
                     this.writeImgHtml(rm, oButton, bImageOnly);
                 }
             }
-            /*jslint nomen:false*/
 
             // write the button label
             if (oButton.getText()) {
@@ -122,7 +156,6 @@ sap.ui.define(['jquery.sap.global'],
                 }
             }
 
-            /*jslint nomen:true*/
             if (!oButton.getIconFirst()) {
                 if (bUseIconFont) {
                     this.writeIconHtml(rm, oButton, bImageOnly);
@@ -130,20 +163,16 @@ sap.ui.define(['jquery.sap.global'],
                     this.writeImgHtml(rm, oButton, bImageOnly);
                 }
             }
-            /*jslint nomen:false*/
 
             if (this.renderButtonContentAfter) {
                 this.renderButtonContentAfter(rm, oButton);
             }
 
-            /***Inducing SVG for the Icon buttons***/
 
-            /*Refresh Icon*/
             if (oButton.getuteDesign() === "Button4") {
 
                 var width = oButton.getUteSvgIconWidth(), height = oButton.getUteSvgIconHeight();
 
-                /*Set the default Width and Height for the Refresh Icon*/
                 if (!width || width === '') {
                     width = "12px";
                 }
@@ -175,26 +204,15 @@ sap.ui.define(['jquery.sap.global'],
         };
 
 
-        /**
-         * Function called by button control on mouse down event.
-         */
-        /*jslint nomen:true*/
         ButtonRenderer.onactive = function (oButton) {
             oButton.$().addClass("sapUiBtnAct").removeClass("sapUiBtnStd");
             oButton.$("img").attr("src", this._getIconForState(oButton, "active"));
         };
-        /**
-         * Function called by button control on mouse up event.
-         */
         ButtonRenderer.ondeactive = function (oButton) {
             oButton.$().addClass("sapUiBtnStd").removeClass("sapUiBtnAct");
             oButton.$("img").attr("src", this._getIconForState(oButton, "deactive"));
         };
-    
 
-        /**
-         * Function called by button control on blur.
-         */
         ButtonRenderer.onblur = function (oButton) {
             oButton.$().removeClass("sapUiBtnFoc");
             oButton.$("img").attr("src", this._getIconForState(oButton, "blur"));
@@ -203,38 +221,26 @@ sap.ui.define(['jquery.sap.global'],
             }
         };
 
-        /**
-         * Function called by button control on focus.
-         */
         ButtonRenderer.onfocus = function (oButton) {
             oButton.$().addClass("sapUiBtnFoc");
             oButton.$("img").attr("src", this._getIconForState(oButton, "focus"));
 
         };
 
-        /**
-         * Function called when mouse leaves button
-         */
         ButtonRenderer.onmouseout = function (oButton) {
             oButton.$().removeClass("sapUiBtnAct");
             oButton.$().addClass("sapUiBtnStd");
             oButton.$("img").attr("src", this._getIconForState(oButton, "mouseout"));
         };
 
-        /**
-         * Function called when mouse enters button
-         * @private
-         */
+
         ButtonRenderer.onmouseover = function (oButton) {
 
             oButton.$("img").attr("src", this._getIconForState(oButton, "mouseover"));
 
         };
 
-        /**
-         * Returns the icon URI for the given button state
-         * @private
-         */
+
         ButtonRenderer._getIconForState = function (oButton, sState) {
             var sIcon;
 
@@ -268,9 +274,7 @@ sap.ui.define(['jquery.sap.global'],
             return oButton.getIcon();
         };
 
-        /**
-         * HTML for icon as image
-         */
+
         ButtonRenderer.writeImgHtml = function (oRenderManager, oButton, bImageOnly) {
             var rm = oRenderManager,
                 iconUrl = this._getIconForState(oButton, "base");
@@ -301,10 +305,6 @@ sap.ui.define(['jquery.sap.global'],
             rm.write("/>");
         };
 
-
-        /**
-         * HTML for icon as icon font
-         */
         ButtonRenderer.writeIconHtml = function (oRenderManager, oButton, bImageOnly) {
 
             var rm = oRenderManager;
@@ -353,8 +353,7 @@ sap.ui.define(['jquery.sap.global'],
 
         };
 
-
-        /*jslint nomen:false*/
+*/
         return ButtonRenderer;
     
     }, /* bExport= */ true);

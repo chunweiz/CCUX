@@ -38,7 +38,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/DataType', 'sap/ui/core/library
             Save: 'Save',
             Cancel: 'Cancel',
             Info: 'Info',
-            Title: 'Title',
+            Tools: 'Tools',
             Inactive: 'Inactive'
         };
 
