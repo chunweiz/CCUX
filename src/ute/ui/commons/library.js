@@ -11,7 +11,10 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/DataType', 'sap/ui/core/library
 			types: [
                 'ute.ui.commons.BadgeType',
                 'ute.ui.commons.CSSDisplay',
-                'ute.ui.commons.CSSPosition'
+                'ute.ui.commons.CSSPosition',
+				'ute.ui.commons.HorizontalDividerType',
+				'ute.ui.commons.HorizontalDividerHeight'
+
             ],
 			interfaces: [],
 			controls: [
@@ -23,7 +26,9 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/DataType', 'sap/ui/core/library
                 'ute.ui.commons.Tag',
                 'ute.ui.commons.Input',
                 'ute.ui.commons.CheckBox',
-                'ute.ui.commons.RadioButton'
+                'ute.ui.commons.RadioButton',
+                'ute.ui.commons.RedCrossSign',
+				'ute.ui.commons.HorizontalDivider'
 			],
 			elements: []
 		});
@@ -34,6 +39,75 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/DataType', 'sap/ui/core/library
             Regular: 'Regular'
             
         };
+		/**
+	 * Enumeration of possible HorizontalDivider types.
+	 *
+	 * @enum {string}
+	 * @public
+	 * @ui5-metamodel This enumeration also will be described in the UI5 (legacy) designtime metamodel
+	 */
+	    ute.ui.commons.HorizontalDividerType = {
+
+		/**
+		 * Type Area
+		 * @public
+		 */
+		    Area : "Area",
+
+		/**
+		 * Type Page
+		 * @public
+		 */
+		    Page : "Page",
+	   /**
+		 * Type Dotted
+		 * @public
+		 */
+
+		    Dotted : "Dotted",
+	   /**
+		 * Type Dashed
+		 * @public
+		 */
+
+		    Dashed : "Dashed"
+	    };
+
+		/**
+	 * Enumeration of possible HorizontalDivider height settings.
+	 *
+	 * @enum {string}
+	 * @public
+	 * @ui5-metamodel This enumeration also will be described in the UI5 (legacy) designtime metamodel
+	 */
+	    ute.ui.commons.HorizontalDividerHeight = {
+
+		/**
+		 * Divider gets no top and bottom margin.
+		 * @public
+		 */
+		    Ruleheight : "Ruleheight",
+
+		/**
+		 * Divider gets a small top and bottom margin.
+		 * @public
+		 */
+		    Small : "Small",
+
+		/**
+		 * Divider gets a medium top and bottom margin.
+		 * @public
+		 */
+		    Medium : "Medium",
+
+		/**
+		 * Divider gets a large top and bottom margin.
+		 * @public
+		 */
+		    Large : "Large"
+
+	    };
+
     
         ute.ui.commons.CSSDisplay = DataType.createType('ute.ui.commons.CSSDisplay', {
             isValid : function (sValue) {

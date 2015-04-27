@@ -28,10 +28,11 @@ sap.ui.define(['jquery.sap.global'],
                 rm.writeAttributeEscaped("title", oButton.getTooltip_AsString());
             }
 
-            if (oButton.getuteDesign() === "Button1") {
-                rm.addClass("uteUiBtns uteUiBtn1");
+            switch (oButton.getuteDesign()) {
 
-                /*If button is disabled*/
+            case "Button1":
+                rm.addClass("uteUiBtns uteUiBtn1");
+                // If button is disabled
                 if (!oButton.getEnabled()) {
                     rm.write(" tabIndex=\"-1\"");
                     rm.addClass("uteUiBtnInact");
@@ -39,20 +40,26 @@ sap.ui.define(['jquery.sap.global'],
                     rm.write(" tabIndex=\"0\"");
                     rm.addClass("uteUiBtns");
                 }
-            } else if (oButton.getuteDesign() === "Button2") {
+                break;
+            case "Button2":
                 rm.addClass("uteUiBtns uteUiBtn2");
-            } else if (oButton.getuteDesign() === "Button3") {
+                break;
+            case "Button3":
                 rm.addClass("uteUiBtns uteUiBtn3");
-            } else if (oButton.getuteDesign() === "Button4") {
+                break;
+            case "Button4":
+                rm.addClass("uteUiBtns uteUiBtn4");
+                break;
+            default:
                 rm.addClass("uteUiBtns uteUiBtn1");
-            } else {rm.addClass("uteUiBtns uteUiBtn1"); }
+            }
+
 
             //ARIA
             rm.writeAccessibilityState(oButton, {
                 role: 'button',
                 disabled: !oButton.getEnabled()
             });
-
 
 
             var bImageOnly = false;
@@ -83,6 +90,7 @@ sap.ui.define(['jquery.sap.global'],
             rm.writeClasses();
 
             rm.write(">");
+
 
             if (this.renderButtonContentBefore) {
                 this.renderButtonContentBefore(rm, oButton);
@@ -128,9 +136,44 @@ sap.ui.define(['jquery.sap.global'],
                 this.renderButtonContentAfter(rm, oButton);
             }
 
+            /***Inducing SVG for the Icon buttons***/
+
+            /*Refresh Icon*/
+            if (oButton.getuteDesign() === "Button4") {
+
+                var width = oButton.getUteSvgIconWidth(), height = oButton.getUteSvgIconHeight();
+
+                /*Set the default Width and Height for the Refresh Icon*/
+                if (!width || width === '') {
+                    width = "12px";
+                }
+                if (!height || height === '') {
+                    height = "25px";
+                }
+
+                // SVG path for the Refresh Icon
+                var svgPath =  "M482.282,440.902L612,291.229h-89.805c-9.978-136.37-123.064-242.805-259.435-242.805                 C116.413,48.424,0,164.837,0,311.185s116.413,262.761,262.761,262.761c59.87,0,113.087-19.956,159.652-56.543l9.979-6.652 l-59.87-63.195l-6.652,6.651c-29.935,23.283-66.521,33.262-103.108,33.262c-96.457,0-176.283-79.827-176.283-176.283 s79.826-176.282,176.283-176.282c89.805,0,166.305,69.848,172.957,156.326h-99.783L482.282,440.902z";
+
+                rm.write("<svg");
+                rm.addClass("uteUiBtn4Icon");
+                rm.writeClasses();
+                rm.writeAttribute("width", width);
+                rm.writeAttribute("height", height);
+                rm.writeAttribute("viewBox", "0 48.424 612 525.521");
+                rm.writeAttribute("xml:space", "preserve");
+                rm.write(">");
+                rm.write("<path");
+                rm.writeAttribute("d", svgPath);
+                rm.write("/>");
+                rm.write("</svg>");
+            }
+
+
+
             // close button
             rm.write("</button>");
         };
+
 
         /**
          * Function called by button control on mouse down event.
@@ -166,6 +209,7 @@ sap.ui.define(['jquery.sap.global'],
         ButtonRenderer.onfocus = function (oButton) {
             oButton.$().addClass("sapUiBtnFoc");
             oButton.$("img").attr("src", this._getIconForState(oButton, "focus"));
+
         };
 
         /**
@@ -182,7 +226,9 @@ sap.ui.define(['jquery.sap.global'],
          * @private
          */
         ButtonRenderer.onmouseover = function (oButton) {
+
             oButton.$("img").attr("src", this._getIconForState(oButton, "mouseover"));
+
         };
 
         /**
@@ -225,7 +271,7 @@ sap.ui.define(['jquery.sap.global'],
         /**
          * HTML for icon as image
          */
-        ButtonRenderer.writeImgHtml = function(oRenderManager, oButton, bImageOnly) {
+        ButtonRenderer.writeImgHtml = function (oRenderManager, oButton, bImageOnly) {
             var rm = oRenderManager,
                 iconUrl = this._getIconForState(oButton, "base");
 
@@ -255,10 +301,11 @@ sap.ui.define(['jquery.sap.global'],
             rm.write("/>");
         };
 
+
         /**
          * HTML for icon as icon font
          */
-        ButtonRenderer.writeIconHtml = function(oRenderManager, oButton, bImageOnly) {
+        ButtonRenderer.writeIconHtml = function (oRenderManager, oButton, bImageOnly) {
 
             var rm = oRenderManager;
             var oIconInfo = sap.ui.core.IconPool.getIconInfo(oButton.getIcon());
@@ -306,7 +353,7 @@ sap.ui.define(['jquery.sap.global'],
 
         };
 
-        
+
         /*jslint nomen:false*/
         return ButtonRenderer;
     

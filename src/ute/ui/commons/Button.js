@@ -89,7 +89,17 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 * Added to configure ute style buttons
                 * Designs to choose from: "Button1", "Button2", "Button3", "Button4"
                 */
-                uteDesign : {type : "string", group: "new", defaultValue : "Button1"}
+                uteDesign : {type : "string", group: "new", defaultValue : "Button1"},
+
+                /**
+                 * Specifies the SVG Icon width
+                 */
+                uteSvgIconWidth : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : null},
+
+                /**
+                 * Specifies the SVG Icon height
+                 */
+                uteSvgIconHeight : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : null}
                 
             },
             associations : {
@@ -139,6 +149,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
             return this.getProperty("uteDesign");
         };
     
+
         Button.prototype.onclick = function (oEvent) {
             if (this.getEnabled()) {
                 this.firePress({/* no parameters */});
