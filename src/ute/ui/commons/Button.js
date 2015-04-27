@@ -26,7 +26,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control'],
                 iconFirst : {type : "boolean", group : "Appearance", defaultValue : true},
                 
                 /*ute.ui.commons.ButtonType*/
-                buttonType : {type: "ute.ui.commons.ButtonType", group: "Appearance", defaultValue: "Info" },
+                buttonType : {type: "ute.ui.commons.ButtonType", group: "Appearance", defaultValue: "Save" },
 
                 /**
                  * Specifies the SVG Icon width
