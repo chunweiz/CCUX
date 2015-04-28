@@ -152,60 +152,92 @@
 .uteBadgeRegular {
   background-color: #5bc2af;
 }
-.uteUiBtns {
+.uteBtn {
   margin: 2px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-radius: 3px;
-  border: 0px;
-  font: 600 14pt 'Source Sans Pro', sans-serif;
 }
-.uteUiBtn1 {
+.uteBtn.uteButton-general {
+  border-radius: 3px;
+  border: none;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  font-size: 10pt;
+  width: 110px;
+  height: 36px;
+}
+.uteBtn > .uteButton-general:disabled {
+  color: #000000;
+  background-color: rgba(234, 239, 244, 0.95);
+}
+.uteBtn > .uteButton-general:disabled:hover {
+  color: #000000;
+  background-color: rgba(234, 239, 244, 0.95);
+}
+.uteBtn > .uteButton-save {
   color: #ffffff;
   background-color: #5092ce;
-  padding-left: 33px;
-  padding-right: 33px;
 }
-.uteUiBtn1:hover {
+.uteBtn > .uteButton-save:hover {
   color: #ffffff;
   background-color: #83bbe5;
 }
-.uteUiBtn2 {
+.uteBtn > .uteButton-cancel {
+  color: #ffffff;
+  background-color: #989898;
+}
+.uteBtn > .uteButton-cancel:hover {
+  color: #ffffff;
+  background-color: #83bbe5;
+}
+.uteBtn > .uteButton-info {
   color: #ffffff;
   background-color: #5bc2af;
-  padding-left: 33px;
-  padding-right: 33px;
 }
-.uteUiBtn2:hover {
+.uteBtn > .uteButton-info:hover {
   color: #ffffff;
   background-color: #83bbe5;
 }
-.uteUiBtn3 {
-  color: #5092ce;
+.uteBtn > .uteButton-tools {
+  color: #83bbe5;
   background-color: #f9fcff;
-  padding-left: 120px;
-  padding-right: 120px;
 }
-.uteUiBtn3:hover {
+.uteBtn > .uteButton-tools:hover {
   color: #ffffff;
   background-color: #83bbe5;
 }
-.uteUiBtn4 {
-  background-color: transparent;
-  outline: initial;
+/**
+
+.uteUiBtn3{
+    color:@uteColorBlueLink;
+    background-color: @uteColorBluePearl ;;
+    padding-left: 120px;
+    padding-right: 120px;
 }
-.uteUiBtn4Icon {
-  fill: #5092ce;
+
+.uteUiBtn3:hover{
+    color:@uteColorWhite;
+    background-color: @uteColorLightBlue;
 }
-.uteUiBtn4Icon:hover {
-  fill: #83bbe5;
+
+.uteUiBtn4{
+    background-color: transparent;
+    outline: initial;
 }
-.uteUiBtnInact {
-  background-color: #f9fcff;
+
+.uteUiBtn4Icon{
+    fill: @uteColor-blueLink;
 }
-.uteUiBtnInact:hover {
-  background-color: #f9fcff;
+
+.uteUiBtn4Icon:hover{
+    fill:@uteColor-lightBlue;
 }
+
+.uteUiBtnInact{
+    background-color: @uteColorBluePearl;
+}
+.uteUiBtnInact:hover{
+    background-color: @uteColorBluePearl;
+}
+**/
 .uteUiToggleButton {
   margin: 10px ;
   padding-top: 1px ;
@@ -360,4 +392,78 @@
   position: absolute;
   box-sizing: border-box;
   margin-left: 5px;
+}
+.uteRedCrossSign {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  border-radius: 4px;
+}
+.uteRedCrossSign::after,
+.uteRedCrossSign::before {
+  position: absolute;
+  top: 9px;
+  left: 0px;
+  content: '';
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: red;
+}
+.uteRedCrossSign::after {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.uteRedCrossSign::before {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.uteUiCommonsHoriDiv {
+  display: block;
+  width: 100%;
+  height: 0px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.uteUiCommonsHoriDivTypePage {
+  border-width: 2px 0px 0px 0px;
+  border-color: #4d4d4d;
+  border-style: solid;
+}
+.uteUiCommonsHoriDivTypeArea {
+  border-width: 1px 0px 0px 0px;
+  border-color: #4d4d4d;
+  border-style: solid;
+}
+.uteUiCommonsHoriDivTypeDashed {
+  border-width: 1px 0px 0px 0px;
+  border-color: #4d4d4d;
+  border-style: dashed;
+}
+.uteUiCommonsHoriDivTypeDotted {
+  border-width: 1px 0px 0px 0px;
+  border-color: #4d4d4d;
+  border-style: dotted;
+}
+.uteUiCommonsHoriDivHeightR {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.uteUiCommonsHoriDivHeightS {
+  margin-top: 1px auto;
+  margin-bottom: 1px auto;
+}
+.uteUiCommonsHoriDivHeightM {
+  margin-top: 6px auto;
+  margin-bottom: 6px auto;
+}
+.uteUiCommonsHoriDivHeightL {
+  margin-top: 13px auto;
+  margin-bottom: 13px auto;
 }
