@@ -31,13 +31,17 @@
                     data-nrg-href="http://ccrportal.reliant.com/esiidlookup/esiidlogin.jsp?company=Reliant">
                     <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{i18n>nrgAppHeaderEsid}" />
                 </li>
-                <li class="nrgAppHdr-listItem nrgAppHdr-listItem-divider"
+                <li class="nrgAppHdr-listItem"
                     data-nrg-type="link"
                     data-nrg-href="https://ccpal.nrgenergy.com/ccpal/ssoLogin.do">
                     <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{i18n>nrgAppHeaderPalPlus}" />
                 </li>
                 <li class="nrgAppHdr-listItem" data-nrg-type="action">
-                    <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{i18n>nrgAppHeaderRefresh}" />
+                    <ute:Tag elem="span" class="nrgAppHdr-listItemLink">
+                        <ute:content>
+                            <core:Icon src="sap-icon://nrg-icon/refresh" class="nrgAppHdr-listItemLinkIcon" />
+                        </ute:content>
+                    </ute:Tag>
                 </li>
             </ul>
         </ute:content>
