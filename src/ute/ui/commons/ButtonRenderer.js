@@ -7,31 +7,22 @@ sap.ui.define(['jquery.sap.global'],
         var ButtonRenderer = {};
 
         ButtonRenderer.render = function (rm, oButton) {
-            //Add div
-            rm.write('<div');
-            rm.writeControlData(oButton);
-            rm.addClass('uteButton');
-            rm.writeClasses();
-            rm.write('>');
-
             //Add Button
             rm.write('<Button');
             rm.writeControlData(oButton);
+            rm.addClass('uteBtn');
             switch (oButton.getButtonType()) {
-            case 'Save':
-                rm.addClass('uteButton-general uteButton-save');
+            case 'GeneralAction':
+                rm.addClass('uteBtn-general uteBtn-general-action');
                 break;
-            case 'Cancel':
-                rm.addClass('uteButton-general uteButton-cancel');
+            case 'GeneralCancel':
+                rm.addClass('uteBtn-general uteBtn-general-cancel');
                 break;
-            case 'Info':
-                rm.addClass('uteButton-general uteButton-info');
+            case 'GeneralInfo':
+                rm.addClass('uteBtn-general uteBtn-general-info');
                 break;
-            case 'Tools':
-                rm.addClass('uteButton-general uteButton-tools');
-                break;
-            case 'Inactive':
-                rm.addClass('uteButton-general uteButton-inactive');
+            case 'SpecialNav':
+                rm.addClass('uteBtn-special uteBtn-general-nav');
                 break;
             }
             if (oButton.getWidth()) {
@@ -49,8 +40,6 @@ sap.ui.define(['jquery.sap.global'],
 
             rm.write(oButton.getText());
             rm.write('</Button>');
-            rm.write('</div>');
-
         };
             /*
             rm.addClass("sapUiBtn");
