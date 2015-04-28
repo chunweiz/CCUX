@@ -34,11 +34,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/DataType', 'sap/ui/core/library
 		});
     
         ute.ui.commons.ButtonType = {
-            Save: 'Save',
-            Cancel: 'Cancel',
-            Info: 'Info',
-            Tools: 'Tools',
-            Inactive: 'Inactive'
+            GeneralAction: 'GeneralAction',
+            GeneralCancel: 'GeneralCancel',
+            GeneralInfo: 'GeneralInfo',
+            SpecialNav: 'SpecialNav',
+            GeneralInactive: 'GeneralInactive'
         };
 
         ute.ui.commons.BadgeType = {
