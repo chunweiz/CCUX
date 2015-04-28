@@ -1,35 +1,74 @@
-.uteUiBtns{
-    margin:2px;
-    padding-top:8px;
-    padding-bottom:8px;
+.uteBtn {
+    margin: 2px;
     border-radius: 3px;
-    border:0px;
-    font: @uteButtonItemFont;
+    border: none;
+    font-family: @uteFontFamily;
+    font-weight: @uteFontWeight-semiBold;
+    font-size: @uteFontSize-small;
+    &.uteBtn-general {
+        min-width: 84px;
+        min-height: 28px;
+    }
+
+    &.uteBtn-general:disabled {
+        color: @uteColor-black;
+        background-color: @uteColor-lightPaleBlue;
+    }
+
+    &.uteBtn-general:disabled:hover {
+        color: @uteColor-black;
+        background-color: @uteColor-lightPaleBlue;
+    }
+
+    &.uteBtn-general.uteBtn-general-action {
+        color: @uteColor-white;
+        background-color: @uteColor-blueLink;
+    }
+
+    &.uteBtn-general.uteBtn-general-action:hover {
+        color: @uteColor-white;
+        background-color: @uteColor-lightBlue;
+    }
+
+    &.uteBtn-general.uteBtn-general-cancel {
+        color: @uteColor-white;
+        background-color: @uteColor-lightGrey;
+    }
+
+    &.uteBtn-general.uteBtn-general-cancel:hover {
+        color: @uteColor-white;
+        background-color: @uteColor-lightBlue;
+    }
+
+    &.uteBtn-general.uteBtn-general-info {
+        color: @uteColor-white;
+        background-color: @uteColor-greenHighlight;
+    }
+
+    &.uteBtn-general.uteBtn-general-info:hover {
+        color: @uteColor-white;
+        background-color: @uteColor-lightBlue;
+    }
+
+    &.uteBtn-special {
+        min-width: 168px;
+        min-height: 28px;
+    }
+
+    &.uteBtn-special.uteBtn-general-nav {
+        color: @uteColor-lightBlue;
+        background-color: @uteColor-bluePearl;
+    }
+
+    &.uteBtn-special.uteBtn-general-nav:hover {
+        color: @uteColor-white;
+        background-color: @uteColor-lightBlue;
+    }
+
 }
 
-.uteUiBtn1{
-    color:@uteColorWhite;
-    background-color: @uteColorBlueLink ;;
-    padding-left: 33px;
-    padding-right: 33px;
-}
 
-.uteUiBtn1:hover{
-    color:@uteColorWhite;
-    background-color: @uteColorLightBlue;
-}
-
-.uteUiBtn2{
-    color:@uteColorWhite;
-    background-color: @uteColorGreenHighlight ;;
-    padding-left: 33px;
-    padding-right: 33px;
-}
-
-.uteUiBtn2:hover{
-    color:@uteColorWhite;
-    background-color: @uteColorLightBlue;
-}
+/**
 
 .uteUiBtn3{
     color:@uteColorBlueLink;
@@ -62,3 +101,4 @@
 .uteUiBtnInact:hover{
     background-color: @uteColorBluePearl;
 }
+**/

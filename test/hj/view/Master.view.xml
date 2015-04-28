@@ -10,11 +10,29 @@
             text="Buttons">
         </u:Tag>
         <u:Button
-            text="TITLE"
-            uteDesign="Button1"
+            text="Action"
             enabled="true"
             press="onButtonClick">
         </u:Button>
+        <u:Button
+            text="Cancel"
+            enabled="true"
+            buttonType="GeneralCancel">
+        </u:Button>
+        <u:Button
+            text="Info"
+            enabled="true"
+            buttonType="GeneralInfo">
+        </u:Button>
+        <u:Button
+            text="Nav"
+            enabled="true"
+            buttonType="SpecialNav"
+            width="300px"
+            height="50px">
+        </u:Button>
+
+        <!--
         <u:Button
             text="TITLE"
             uteDesign="Button1"
@@ -126,8 +144,8 @@
         groupName="radio1"
         >
     </u:RadioButton>
-
-
+-->
+    </u:Tag>
 
 
 </core:View>

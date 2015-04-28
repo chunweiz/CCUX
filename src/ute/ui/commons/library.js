@@ -13,8 +13,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/DataType', 'sap/ui/core/library
                 'ute.ui.commons.CSSDisplay',
                 'ute.ui.commons.CSSPosition',
 				'ute.ui.commons.HorizontalDividerType',
-				'ute.ui.commons.HorizontalDividerHeight'
-
+				'ute.ui.commons.HorizontalDividerHeight',
+                'ute.ui.commons.ButtonType'
             ],
 			interfaces: [],
 			controls: [
@@ -28,11 +28,20 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/DataType', 'sap/ui/core/library
                 'ute.ui.commons.CheckBox',
                 'ute.ui.commons.RadioButton',
                 'ute.ui.commons.RedCrossSign',
-				'ute.ui.commons.HorizontalDivider'
+				'ute.ui.commons.HorizontalDivider',
+                'ute.ui.commons.Dropdown'
 			],
 			elements: []
 		});
     
+        ute.ui.commons.ButtonType = {
+            GeneralAction: 'GeneralAction',
+            GeneralCancel: 'GeneralCancel',
+            GeneralInfo: 'GeneralInfo',
+            SpecialNav: 'SpecialNav',
+            SpecialCalculator: 'SpecialCalculator'
+        };
+
         ute.ui.commons.BadgeType = {
             Alert: 'Alert',
             Attention: 'Attention',

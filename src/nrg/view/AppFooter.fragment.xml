@@ -11,9 +11,15 @@
             </div>
             <section class="nrgAppFtr-content nrgU-clearfix nrgU-displayNone">
                 <aside class="nrgAppFtr-toolbar nrgU-right">
-                    <div>notes</div>
-                    <div>calc</div>
-                    <div>clog</div>
+                    <ute:Tag class="nrgAppFtr-toolbarBtn">
+                        <core:Icon src="sap-icon://nrg-icon/contact-log" class="nrgAppFtr-toolbarBtnIcon" />
+                    </ute:Tag>
+                    <ute:Tag class="nrgAppFtr-toolbarBtn">
+                        <core:Icon src="sap-icon://nrg-icon/calculator" class="nrgAppFtr-toolbarBtnIcon" />
+                    </ute:Tag>
+                    <ute:Tag class="nrgAppFtr-toolbarBtn">
+                        <core:Icon src="sap-icon://nrg-icon/notes" class="nrgAppFtr-toolbarBtnIcon" />
+                    </ute:Tag>
                 </aside>
                 <article class="nrgAppFtr-offerToolbar nrgU-right">
                     <button type="button" class="nrgAppFtr-offerBtn">
