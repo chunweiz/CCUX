@@ -6,8 +6,18 @@
     <ute:Tag elem="nav" id="idAppHdrQuickLink" class="nrgAppHdrQLink nrgU-clearfix">
         <ute:content>
             <ul class="nrgAppHdrQLink-group">
-                <ute:Tag elem="li" id="idBilling" class="nrgAppHdrQLink-link nrgAppHdrQLink-link-underlined" text="{i18n>nrgAppHeaderBilling}" />
-                <ute:Tag elem="li" id="idBp" class="nrgAppHdrQLink-link" text="{i18n>nrgAppHeaderBp}" />
+                <ute:Tag elem="li" id="idBilling" class="nrgAppHdrQLink-link nrgAppHdrQLink-link-underlined">
+                    <ute:content>
+                        <core:Icon src="sap-icon://nrg-icon/billing" class="nrgAppHdrQLink-link-icon" />
+                        <ute:Tag elem="span" text="{i18n>nrgAppHeaderBilling}"/>
+                    </ute:content>
+                </ute:Tag>
+                <ute:Tag elem="li" id="idBp" class="nrgAppHdrQLink-link">
+                    <ute:content>
+                        <core:Icon src="sap-icon://nrg-icon/bp" class="nrgAppHdrQLink-link-icon" />
+                        <ute:Tag elem="span" text="{i18n>nrgAppHeaderBp}"/>
+                    </ute:content>
+                </ute:Tag>
             </ul>
             <ul class="nrgAppHdrQLink-group">
                 <ute:Tag elem="li" id="idRhs" class="nrgAppHdrQLink-link nrgAppHdrQLink-link-underlined" text="{i18n>nrgAppHeaderRhs}" />

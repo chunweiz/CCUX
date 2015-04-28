@@ -4,10 +4,11 @@
 sap.ui.define(
     [
         'sap/ui/core/UIComponent',
-        'nrg/util/nav/GreedyRouter'
+        'nrg/util/nav/GreedyRouter',
+        'nrg/util/Icon'
     ],
     
-    function (Component, GreedyRouter) {
+    function (Component, GreedyRouter, IconUtil) {
         'use strict';
 
         var NRGComponent = Component.extend('nrg.component.retention.Component', {
@@ -72,10 +73,15 @@ sap.ui.define(
             Component.prototype.init.apply(this);
             this.initRouter();
             this.initModels();
+            this.initIcons();
         };
 
         NRGComponent.prototype.destroy = function () {
             Component.prototype.destory.apply(this, arguments);
+        };
+
+        NRGComponent.prototype.initIcons = function () {
+            IconUtil.load();
         };
 
         NRGComponent.prototype.initModels = function () {
