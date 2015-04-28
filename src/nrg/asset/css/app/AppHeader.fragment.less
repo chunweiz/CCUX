@@ -42,19 +42,24 @@
         width: 1px;
         height: 12px;
         background-color: @nrgColor-lightGrey;
-        transform: translate(20px, 36px);
+        transform: translate(20px, 24px);
     }
 
     & > .nrgAppHdr-list > .nrgAppHdr-listItem > .nrgAppHdr-listItemLink {
         display: inline-block;
-        padding-top: 31px;
+        padding-top: 20px;
         padding-bottom: 19px;
         color: @nrgColor-darkGrey;
     }
 
     & > .nrgAppHdr-list > .nrgAppHdr-listItem > .nrgAppHdr-listItemLink:hover {
         color: @nrgColor-blueLink;
-        cursor: pointer;
+        cursor: default;
+    }
+
+    & > .nrgAppHdr-list > .nrgAppHdr-listItem > .nrgAppHdr-listItemLink > .nrgAppHdr-listItemLinkIcon {
+        font-size: 30px;
+        transform: translate(0, 7px);
     }
 
     // List item submenu
@@ -74,7 +79,7 @@
     //List item submenu content
     & .nrgAppHdr-list > .nrgAppHdr-listItem > .nrgAppHdr-listItemSub > .nrgAppHdr-listItemSubInner {
         position: relative;
-        padding: 20px 40px;
+        padding: 10px 40px;
     }
 
     // Hide list when the screen is too small
