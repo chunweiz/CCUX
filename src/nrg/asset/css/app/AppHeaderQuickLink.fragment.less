@@ -10,12 +10,11 @@
         display: inline-block;
         width: 200px;
         list-style-type: none;
+        padding-bottom: 15px;
     }
 
     & > .nrgAppHdrQLink-group > .nrgAppHdrQLink-link {
-        font-size: @nrgFontSize-small;
         color: @nrgColor-darkGrey;
-        padding: 10px;
         text-align: left;
     }
 
@@ -24,12 +23,17 @@
         cursor: pointer;
     }
 
-    & > .nrgAppHdrQLink-group > .nrgAppHdrQLink-link .nrgAppHdrQLink-link-icon {
+    & > .nrgAppHdrQLink-group > .nrgAppHdrQLink-link.nrgAppHdrQLink-link-underlined {
+        border-bottom: 1px solid @nrgColor-lightBlue;
+        padding-bottom: 15px;
+    }
+
+    & > .nrgAppHdrQLink-group > .nrgAppHdrQLink-link > .nrgAppHdrQLink-linkIcon {
         font-size: 30px;
         transform: translate(-8px, 8px);
     }
 
-    & > .nrgAppHdrQLink-group > .nrgAppHdrQLink-link.nrgAppHdrQLink-link-underlined {
-        border-bottom: 1px solid @nrgColor-lightBlue;
+    & > .nrgAppHdrQLink-group > .nrgAppHdrQLink-link > .nrgAppHdrQLink-linkText {
+        font-size: @nrgFontSize-small;
     }
 }
