@@ -1,61 +1,66 @@
 .uteBtn {
     margin: 2px;
-    &.uBtn-general {
-        border-radius: 3px;
-        border: none;
-        font-family: @uteFontFamily;
-        font-weight: @uteFontWeight-semiBold;
-        font-size: @uteFontSize-small;
-        width: 110px;
-        height: 36px;
+    border-radius: 3px;
+    border: none;
+    font-family: @uteFontFamily;
+    font-weight: @uteFontWeight-semiBold;
+    font-size: @uteFontSize-small;
+    &.uteBtn-general {
+        min-width: 84px;
+        min-height: 28px;
     }
 
-    &>.uteBtn-general:disabled {
+    &.uteBtn-general:disabled {
         color: @uteColor-black;
         background-color: @uteColor-lightPaleBlue;
     }
 
-    &>.uteBtn-general:disabled:hover {
+    &.uteBtn-general:disabled:hover {
         color: @uteColor-black;
         background-color: @uteColor-lightPaleBlue;
     }
 
-    &>.uteBtn-general.uteBtn-general-action {
+    &.uteBtn-general.uteBtn-general-action {
         color: @uteColor-white;
         background-color: @uteColor-blueLink;
     }
 
-    &>.uteBtn-general.uteBtn-general-action:hover {
+    &.uteBtn-general.uteBtn-general-action:hover {
         color: @uteColor-white;
         background-color: @uteColor-lightBlue;
     }
 
-    &>.uteBtn-general.uteBtn-general-cancel {
+    &.uteBtn-general.uteBtn-general-cancel {
         color: @uteColor-white;
         background-color: @uteColor-lightGrey;
     }
 
-    &>.uteBtn-general.uteBtn-general-cancel:hover {
+    &.uteBtn-general.uteBtn-general-cancel:hover {
         color: @uteColor-white;
         background-color: @uteColor-lightBlue;
     }
 
-    &>.uteBtn-general.uteButton-general-info {
+    &.uteBtn-general.uteBtn-general-info {
         color: @uteColor-white;
         background-color: @uteColor-greenHighlight;
     }
 
-    &>.uteBtn-general.uteButton-general-info:hover {
+    &.uteBtn-general.uteBtn-general-info:hover {
         color: @uteColor-white;
         background-color: @uteColor-lightBlue;
     }
 
-    & > .uteButton-tools {
+    &.uteBtn-special {
+        min-width: 168px;
+        min-height: 28px;
+    }
+
+    &.uteBtn-special.uteBtn-general-nav {
         color: @uteColor-lightBlue;
         background-color: @uteColor-bluePearl;
     }
 
-    & > .uteButton-tools:hover {
+    &.uteBtn-special.uteBtn-general-nav:hover {
         color: @uteColor-white;
         background-color: @uteColor-lightBlue;
     }
