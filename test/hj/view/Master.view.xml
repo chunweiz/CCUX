@@ -10,24 +10,24 @@
             text="Buttons">
         </u:Tag>
         <u:Button
-            text="GeneralAction"
+            text="Action"
             enabled="true"
             press="onButtonClick">
         </u:Button>
         <u:Button
-            text="GeneralCancel"
+            text="Cancel"
             enabled="true"
-            buttonType="Cancel">
+            buttonType="GeneralCancel">
         </u:Button>
         <u:Button
-            text="GeneralInfo"
+            text="Info"
             enabled="true"
-            buttonType="Info">
+            buttonType="GeneralInfo">
         </u:Button>
         <u:Button
-            text="SpecialNav"
+            text="Nav"
             enabled="true"
-            buttonType="Tools"
+            buttonType="SpecialNav"
             width="300px"
             height="50px">
         </u:Button>

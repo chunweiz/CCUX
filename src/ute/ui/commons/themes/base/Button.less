@@ -1,7 +1,6 @@
-.uteButton {
+.uteBtn {
     margin: 2px;
-
-    & > .uteButton-general {
+    &.uBtn-general {
         border-radius: 3px;
         border: none;
         font-family: @uteFontFamily;
@@ -11,42 +10,42 @@
         height: 36px;
     }
 
-    & > .uteButton-general:disabled {
+    &>.uteBtn-general:disabled {
         color: @uteColor-black;
         background-color: @uteColor-lightPaleBlue;
     }
 
-    & > .uteButton-general:disabled:hover {
+    &>.uteBtn-general:disabled:hover {
         color: @uteColor-black;
         background-color: @uteColor-lightPaleBlue;
     }
 
-    & > .uteButton-save {
+    &>.uteBtn-general.uteBtn-general-action {
         color: @uteColor-white;
         background-color: @uteColor-blueLink;
     }
 
-    & > .uteButton-save:hover {
+    &>.uteBtn-general.uteBtn-general-action:hover {
         color: @uteColor-white;
         background-color: @uteColor-lightBlue;
     }
 
-    & > .uteButton-cancel {
+    &>.uteBtn-general.uteBtn-general-cancel {
         color: @uteColor-white;
         background-color: @uteColor-lightGrey;
     }
 
-    & > .uteButton-cancel:hover {
+    &>.uteBtn-general.uteBtn-general-cancel:hover {
         color: @uteColor-white;
         background-color: @uteColor-lightBlue;
     }
 
-    & > .uteButton-info {
+    &>.uteBtn-general.uteButton-general-info {
         color: @uteColor-white;
         background-color: @uteColor-greenHighlight;
     }
 
-    & > .uteButton-info:hover {
+    &>.uteBtn-general.uteButton-general-info:hover {
         color: @uteColor-white;
         background-color: @uteColor-lightBlue;
     }
@@ -61,8 +60,8 @@
         background-color: @uteColor-lightBlue;
     }
 
-
 }
+
 
 /**
 
