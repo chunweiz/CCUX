@@ -37,8 +37,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/DataType', 'sap/ui/core/library
             GeneralAction: 'GeneralAction',
             GeneralCancel: 'GeneralCancel',
             GeneralInfo: 'GeneralInfo',
-            SpecialNav: 'SpecialNav',
-            GeneralInactive: 'GeneralInactive'
+            SpecialNav: 'SpecialNav'
         };
 
         ute.ui.commons.BadgeType = {
