@@ -24,7 +24,7 @@
                 <article class="nrgAppFtr-offerToolbar nrgU-right">
                     <button type="button" class="nrgAppFtr-offerBtn">
                         <ute:Tag class="nrgAppFtr-offerBtnTitle" text="{i18n>nrgAppFooterCustReqOffer}" />
-                        <ute:Tag id="idCustReqOffer" class="nrgAppFtr-offerBtnDesc nrgAppFtr-offerBtnTitle-Ok" text="{i18n>nrgAppFooterEligibile}" />
+                        <ute:Tag id="idCustReqOffer" class="nrgAppFtr-offerBtnDesc nrgAppFtr-offerBtnTitle-ok" text="{i18n>nrgAppFooterEligibile}" />
                     </button>
                     <button type="button" class="nrgAppFtr-offerBtn">
                         <ute:Tag class="nrgAppFtr-offerBtnTitle" text="{i18n>nrgAppFooterAgentReqOffer}" />

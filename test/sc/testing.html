@@ -3,204 +3,89 @@
 	<head>
 		<meta http-equiv='X-UA-Compatible' content='IE=edge' />
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
-
- 		<style type="text/css">
-.uteUiSizeCompact .uteUiCal, .uteUiSizeCompact.uteUiCal {
-  width: 340px;
-  height: 220px;
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<style type="text/css">
+.nrgCal
+{
+    top: 100px;
+    left: 46px;
+    position: relative;
+    outline: none;
+    padding: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 10pt;
+    width: 340px;
+    height: 220px;
+    border: 1px solid #bfbfbf;
 }
- .uteUiCalHead {
+.nrgCal__head {
   width: 100%;
   height: 18px;
   position: relative;
   text-align: center;
 }
-.uteUiCal[data-sap-ui-popup] {
-  border-color: #bfbfbf;
-  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+.nrgCal__head__button--month {
+  width: 30%;
 }
-.uteUiCal.uteUiShd {
-  border: 1px solid #bfbfbf;
-}
-.uteUiShd {
-  box-shadow: 0 4px 17px rgba(0,0,0,0.4);
-  -webkit-box-shadow: 0 4px 17px rgba(0,0,0,0.4);
-  -moz-box-shadow: 0 4px 17px rgba(0,0,0,0.4);
-}
-.uteUiSizeCompact .uteUiCalHead {
-  height: 25px;
-  padding: 0;
-}
-uteUiCalHead {
-  width: 100%;
-  height: 18px;
-  position: relative;
-  text-align: center;
-}
-.uteUiCalPrev {
-  left: 0;
-}
-.uteUiSizeCompact .uteUiCalMonthPick {
-  width: 22%;
-  margin-right: 0px;
-}
-.uteUiSizeCompact .uteUiCalYearPick {
+.nrgCal__head__button--year {
   width: 18%;
-  margin-left: 0px;
   text-align: left;
 }
-.uteUiSizeCompact .uteUiCalPrev, .uteUiSizeCompact .uteUiCalNext {
-  width: 5%;
-}
-.uteUiSizeCompact .uteUiCalPrev, .uteUiSizeCompact .uteUiCalNext, .uteUiSizeCompact .uteUiCalMonthPick, .uteUiSizeCompact .uteUiCalYearPick {
-  height: 32px;
-}
-.uteUiCalPrev, .uteUiCalNext, .uteUiCalMonthPick, .uteUiCalYearPick, .uteUiCancel {
-  height: 40px;
-  padding: 0;
-  font-size: 12pt;
-  font-weight: bold;
-}
-.uteUiCalPrev, .uteUiCalNext, .uteUiCalMonthPick, .uteUiCalYearPick, .uteUiCancel {
+.nrgCal__head__button--Prev, .nrgCal__head__button--next, .nrgCal__head__button--month, .nrgCal__head__button--year{
   background-color: transparent;
   border: none;
   color: rgb(84,90,106);
   cursor: pointer;
+  height: 18px;
+  font-size: 12pt;
+  font-weight: bold;
+  outline: 0px;
 }
-.uteUiCalWH {
+.nrgCal__calDays__week--head {
   font-size: 10pt;
   font-weight: bold;
-}
-.uteUiCalWH, .uteUiCalDay, .uteUiCalWeekNum {
-  width: 10.5%;
-}
-.uteUiCalDay, .uteUiCalWeekNum, .uteUiCalMonth, .uteUiCalYear {
-  font-size: 12pt;
-}
-.uteUiCalDayNum {
-  box-sizing: border-box;
-}
-.uteUiCalWeekNum {
-  top: -1px;
-}
-.uteUiCalWeekNum {
-  position: absolute;
-  right: 100%;
-  width: 100%;
-  color: #666666;
-  font-size: 11px;
-  cursor: default;
-}
-.uteUiCalWH {
+  color: rgb(175, 177, 191);
   height: 32px;
   line-height: 30px;
 }
-.uteUiCalFirstWDay {
-  clear: both;
-  margin-left: 12.5%;
-  position: relative;
-  overflow: visible;
-}
-.uteUiCalWH {
-  color: rgb(175, 177, 191);
-  white-space: nowrap;
-}
-.uteUiCalDays, .uteUiCalMonths, .uteUiCalYears {
-  display: inline-block;
-  width: 100%;
-}
-.uteUiCalDayNum {
-  box-sizing: border-box;
-}
-.uteUiCalDayNum {
-  width: 100%;
-  height: 100%;
-  display: inline-block;
-}
-.ute-desktop .uteUiCalDaySel:hover, .ute-desktop .uteUiCalDaySel:focus, .ute-desktop .uteUiCalDaySel.uteUiCalDayOtherMonth:hover, .ute-desktop .uteUiCalDaySel.uteUiCalDayOtherMonth:focus, .ute-desktop .uteUiCalMonthSel:hover, .ute-desktop .uteUiCalMonthSel:focus, .ute-desktop .uteUiCalYearSel:hover, .ute-desktop .uteUiCalYearSel:focus {
-  background-color: #005b8d;
-}
-.ute-desktop .uteUiCalDayWeekEnd:hover, .ute-desktop .uteUiCalDayWeekEnd:focus {
-  background-color: #cccccc;
-}
-.ute-desktop .uteUiCalDay:hover, .ute-desktop .uteUiCalDay:focus, .ute-desktop .uteUiCalMonth:hover, .ute-desktop .uteUiCalMonth:focus, .ute-desktop .uteUiCalYear:hover, .ute-desktop .uteUiCalYear:focus {
-  background-color: #d8d8d8;
-}
-.uteUiCalDaySel, .uteUiCalMonthSel, .uteUiCalYearSel {
-  color: #ffffff;
-}
-.uteUiCalDaySel, .uteUiCalMonthSel, .uteUiCalYearSel {
- /* background-color: #007cc0; */
-}
-.uteUiCalDay, .uteUiCalMonth, .uteUiCalYear {
-  color: rgb(136, 138, 149);
+.nrgCal__calDays__Day {
+  font-size: 12pt;
   font-weight: normal;
-  /* background-color: #f2f2f2; */
 }
-.ute-desktop .uteUiCalDay:hover, .ute-desktop .uteUiCalDay:focus, .ute-desktop .uteUiCalMonth:hover, .ute-desktop .uteUiCalMonth:focus, .ute-desktop .uteUiCalYear:hover, .ute-desktop .uteUiCalYear:focus {
-  background-color: #d8d8d8;
-}
-.ute-desktop .uteUiCalDay:focus, .ute-desktop .uteUiCalMonth:focus, .ute-desktop .uteUiCalYear:focus {
-  background-color: #ffffff;
-}
-
-.uteUiCalDay, .uteUiCalWeekNum {
+.nrgCal__calDays__Day {
   height: 28px;
   line-height: 28px;
 }
-.uteUiCalWH, .uteUiCalDay, .uteUiCalMonth, .uteUiCalYear {
-  border: 1px solid #ffffff;
-  box-sizing: border-box;
-}
-.uteUiCalDayWeekEnd {
-
+.nrgCal__calDays__Day--weekend
+{
   color: rgb(182, 184, 191);
   font-weight: bold;
 }
-.uteUiCalDayOtherMonth {
+.nrgCal__calDays__Day--othermonth {
   color: rgb(220, 223, 229);
-  background-color: transparent;
-  cursor:not-allowed !important;
 }
-
-.uteUiCalWH, .uteUiCalDay, .uteUiCalMonth, .uteUiCalYear {
+.nrgCal__calDays__week--head, .nrgCal__calDays__Day {
   display: block;
   overflow: hidden;
   float: left;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;
   cursor: default;
   text-align: center;
   margin-right: 12px;
   margin-top: 1px;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  width: 10.5%;
 }
-.uteUiCal
+
+.nrgCalUiIcon
 {
-    position: absolute;
-    visibility: visible;
-    z-index: 10;
-    display: block;
-    top: 100px;
-    left: 46px;
-    background: none repeat scroll 0 0 #ffffff;
-    width: 14em;
-    overflow: hidden;
-    position: relative;
-    outline: none;
-    padding: 16px;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 10pt;
-}
-.uteUiIcon
-{
-  text-align: center;
   display: inline-block;
-  vertical-align: baseline;
+  outline:0px;
 }
-.uteUiIconRight
+.nrgCalUiIcon--Right
 {
 	width: 0;
 	height: 0;
@@ -208,7 +93,7 @@ uteUiCalHead {
 	border-bottom: 6px solid transparent;
 	border-left: 6px solid #5BC2AF;
 }
-.uteUiIconLeft
+.nrgCalUiIcon--Left
 {
 	width: 0;
 	height: 0;
@@ -216,12 +101,12 @@ uteUiCalHead {
 	border-bottom: 6px solid transparent;
 	border-right: 6px solid #5BC2AF;
 }
-.uteUiCalDay:hover
+.nrgCal__calDays__Day:hover
 {
   border: 2px solid #5092CE;
   border-radius: 6px;
 }
-.uteUiCalDay:focus , .uteUiCalDay:visited
+.nrgCal__calDays__Day:focus , .nrgCal__calDays__Day:visited
 {
   border: 0px;
   border-radius: 6px;
@@ -229,277 +114,173 @@ uteUiCalHead {
   color: #ffffff;
   outline: 0px;
 }
-.uteUiCalDayOtherMonth:hover
+.nrgCal__calDays__Day--othermonth:hover
 {
-  border: 0px !important;
+  border: 0px;
 }
-.uteUiCalDayOtherMonth:focus , .uteUiCalDayOtherMonth:visited
+.nrgCal__calDays__Day--othermonth:focus , .nrgCal__calDays__Day--othermonth:visited
 {
-  border: 0px !important;
-  background-color: #ffffff !important;
-  color: #cccccc;
+  border: 0px;
+  background-color: #ffffff ;
+  color: rgb(220, 223, 229);
   outline: 0px;
 }
-.uteUiCalItems{
+.nrgCal__calDays{
     outline: 0px;
 }
 	</style>
+        <script>
+            var oMonths = ["January","Feburary","March","April","May","June","July","August","September","October","November","December"],
+                oMonthDays = [31,28,31,30,31,30,31,31,30,31,30,31],
+                oPreviousMonthDays = "6",
+                oNextMonthDays = "6",
+                oTotalDays = 31,
+                j=0;
+            var addDiv = (function (oValue,oClass,tabIndexDec)
+                        {
+                            return function (oValue,oClass,tabIndexDec)
+                            {
+                                var $newdiv;
+                                if(tabIndexDec === 0)
+                                {
+                                    $newdiv = $('<div/>', {
+                                                "class": oClass,
+                                                 text: oValue,
+                                                });
+                                }
+                                else
+                                {
+                                    $newdiv = $('<div/>', {
+                                                "class": oClass,
+                                                 text: oValue,
+                                                 tabindex : "-1"
+                                               });
+                                }
+
+                                return $newdiv;
+                            }
+                        })();
+            var createCalendar = (function (oTotalDays,oPreviousMonthDays,oNextMonthDays)
+                        {
+                            return function (oTotalDays,oPreviousMonthDays,oNextMonthDays)
+                            {
+                                var i,tabIndexDec = -1;
+                                $( "#date1-cal-days" ).empty();
+                                for (i = oTotalDays-oPreviousMonthDays; i < oTotalDays; i++)
+                                 {
+                                    oClass = "nrgCal__calDays__Day nrgCal__calDays__Day--othermonth";
+                                    if(j === 7)
+                                        j=0;
+
+                                    if((j === 0)||(j ===6 ))
+                                    {
+                                         oClass = oClass +" "+"nrgCal__calDays__Day--weekend";
+                                    }
+                                    j=j+1;
+                                   $('#date1-cal-days').append(addDiv(i,oClass,tabIndexDec));
+                                }
+                                 for (i = 1; i <= oTotalDays; i++)
+                                 {
+                                    oClass = "nrgCal__calDays__Day";
+                                    if(j === 7)
+                                        j=0;
+
+                                    if((j === 0)||(j ===6 ))
+                                    {
+                                         oClass = oClass +" "+"nrgCal__calDays__Day--weekend";
+                                    }
+                                    j=j+1;
+                                   $('#date1-cal-days').append(addDiv(i,oClass,tabIndexDec));
+                                }
+                                 for (i = 1; i < oNextMonthDays; i++)
+                                 {
+                                    oClass = "nrgCal__calDays__Day nrgCal__calDays__Day--othermonth";
+                                    if(j === 7)
+                                        j=0;
+
+                                    if((j === 0)||(j ===6 ))
+                                    {
+                                         oClass = oClass +" "+"nrgCal__calDays__Day--weekend";
+                                    }
+                                    j=j+1;
+                                   $('#date1-cal-days').append(addDiv(i,oClass,tabIndexDec));
+                                }
+                                return;
+                            }
+                        })();
+             var createWeeks = (function ()
+                        {
+                            return function ()
+                            {
+                                var i,
+                                   oWeeks = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
+                                 oClass = "nrgCal__calDays__week--head";
+                                 $( "#nrgCal__calDays__week" ).empty();
+                                 for (i = 0; i < oWeeks.length; i++)
+                                 {
+                                   $('#nrgCal__calDays__week').append(addDiv(oWeeks[i],oClass,0));
+                                }
+                                return;
+                            }
+                        })();
+            $(document).ready(function()
+            {
+                    createCalendar(oTotalDays,oPreviousMonthDays,oNextMonthDays);
+                    createWeeks();
+                    $( "#date1-cal-prev" ).click(function()
+                    {
+
+                         var oMonthValue = $.trim($("#date1-cal-month").text()),
+                         oSelectedValue = jQuery.inArray( oMonthValue, oMonths );
+                         if(oSelectedValue === 0)
+                         {
+                             oSelectedValue = 11;
+                         }
+                         else
+                         {
+                            oSelectedValue = oSelectedValue -1;
+                         }
+                        $("#date1-cal-month").text(oMonths[oSelectedValue]);
+                         createCalendar(oMonthDays[oSelectedValue],oPreviousMonthDays,oNextMonthDays);
+                    });
+                    $( "#date1-cal-next" ).click(function()
+                    {
+                           var oMonthValue= $.trim($("#date1-cal-month").text());
+                           var oSelectedValue = jQuery.inArray( oMonthValue, oMonths );
+                           if(oSelectedValue === 11)
+                           {
+                              oSelectedValue = 0;
+                           }
+                           else
+                           {
+                              oSelectedValue = oSelectedValue + 1;
+                           }
+                        $("#date1-cal-month").text(oMonths[oSelectedValue]);
+                       createCalendar(oMonthDays[oSelectedValue],oPreviousMonthDays,oNextMonthDays);
+                    });
+            });
+        </script>
 	</head>
-	<body class="sapUiBody" role="application" style="display:block;margin:0px">
-	<div id="date1-cal" data-sap-ui="date1-cal" data-sap-ui-fastnavgroup="true" class="uteUiCal uteUiSizeCompact uteUiShd" tabindex="-1" role="dialog" aria-label="Date Picker">
-        <div class="uteUiCalHead">
-            <button id="date1-cal-prev" class="uteUiCalPrev" tabindex="-1">
-                <span class="uteUiIcon uteUiIconLeft" style="" data-sap-ui-icon-content="">
-                </span>
+	<body>
+	<div id="date1-cal" class="nrgCal" tabindex="-1" role="dialog" aria-label="Date Picker">
+        <div class="nrgCal__head">
+            <button id="date1-cal-prev" class="nrgCal__head__button--Prev">
+                <span class="nrgCalUiIcon nrgCalUiIcon--Left" style="">
             </button>
-            <button id="date1-cal-month" tabindex="-1" class="uteUiCalMonthPick">
+            <button id="date1-cal-month" tabindex="-1" class="nrgCal__head__button--month">
                 January
             </button>
-            <button id="date1-cal-year" tabindex="-1" class="uteUiCalYearPick">
+            <button id="date1-cal-year" tabindex="-1" class="nrgCal__head__button--year">
                 2015
             </button>
-            <button id="date1-cal-next" class="uteUiCalNext" tabindex="-1">
-                <span class="uteUiIcon uteUiIconRight" style="font-family: SAP-icons;" data-sap-ui-icon-content="">
-                </span>
+            <button id="date1-cal-next" class="nrgCal__head__button--next" >
+                <span class="nrgCalUiIcon nrgCalUiIcon--Right" >
             </button>
         </div>
-        <div class="uteUiCalItems">
-            <div id="uteUiCalWeekDays">
-                <div class="uteUiCalWH">
-                    SUN
-                </div>
-                <div class="uteUiCalWH">
-                    MON
-                </div>
-                <div class="uteUiCalWH">
-                    TUE
-                </div>
-                <div class="uteUiCalWH">
-                    WED
-                </div>
-                <div class="uteUiCalWH">
-                    THU
-                </div>
-                <div class="uteUiCalWH">
-                    FRI
-                </div>
-                <div class="uteUiCalWH">
-                    SAT
-                </div>
+        <div class="nrgCal__calDays">
+            <div id="nrgCal__calDays__week">
             </div>
-            <div id="date1-cal-days" class="uteUiCalDays" tabindex="-1">
-                <div id="date1-cal-20091227" tabindex="-1" data-sap-day="20091227" class="uteUiCalDay uteUiCalDayOtherMonth uteUiCalWDay0">
-                    <span class="uteUiCalDayNum">
-                        26
-                    </span>
-                </div>
-                <div id="date1-cal-20091228" tabindex="-1" data-sap-day="20091228" class="uteUiCalDay uteUiCalDayOtherMonth uteUiCalWDay1">
-                    <span class="uteUiCalDayNum">
-                        27
-                    </span>
-                </div>
-                <div id="date1-cal-20091229" tabindex="-1" data-sap-day="20091229" class="uteUiCalDay uteUiCalDayOtherMonth uteUiCalWDay2">
-                    <span class="uteUiCalDayNum">
-                        28
-                    </span>
-                </div>
-                <div id="date1-cal-20091230" tabindex="-1" data-sap-day="20091230" class="uteUiCalDay uteUiCalDayOtherMonth uteUiCalWDay3">
-                    <span class="uteUiCalDayNum">
-                        29
-                    </span>
-                </div>
-                <div id="date1-cal-20091231" tabindex="-1" data-sap-day="20091231" class="uteUiCalDay uteUiCalDayOtherMonth uteUiCalWDay4">
-                    <span class="uteUiCalDayNum">
-                        30
-                    </span>
-                </div>
-                <div id="date1-cal-20100101" tabindex="-1" data-sap-day="20100101" class="uteUiCalDay uteUiCalDaySel uteUiCalWDay5">
-                    <span class="uteUiCalDayNum">
-                       31
-                    </span>
-                </div>
-                <div id="date1-cal-20100102" tabindex="-1" data-sap-day="20100102" class="uteUiCalDay uteUiCalDayWeekEnd uteUiCalWDay6">
-                    <span class="uteUiCalDayNum">
-                       1
-                    </span>
-                </div>
-                <div id="date1-cal-20100103" tabindex="-1" data-sap-day="20100103" class="uteUiCalDay uteUiCalDayWeekEnd uteUiCalWDay0">
-                    <span class="uteUiCalDayNum">
-                       2
-                    </span>
-                </div>
-                <div id="date1-cal-20100104" tabindex="-1" data-sap-day="20100104" class="uteUiCalDay uteUiCalWDay1">
-                    <span class="uteUiCalDayNum">
-                       3
-                    </span>
-                </div>
-             <div id="date1-cal-20100105" tabindex="-1" data-sap-day="20100105" class="uteUiCalDay uteUiCalWDay2">
-                    <span class="uteUiCalDayNum">
-                       4
-                    </span>
-                </div>
-                <div id="date1-cal-20100106" tabindex="-1" data-sap-day="20100106" class="uteUiCalDay uteUiCalWDay3">
-                    <span class="uteUiCalDayNum">
-                       5
-                    </span>
-                </div>
-                <div id="date1-cal-20100107" tabindex="-1" data-sap-day="20100107" class="uteUiCalDay uteUiCalWDay4">
-                    <span class="uteUiCalDayNum">
-                        6
-                    </span>
-                </div>
-                <div id="date1-cal-20100108" tabindex="-1" data-sap-day="20100108" class="uteUiCalDay uteUiCalWDay5">
-                    <span class="uteUiCalDayNum">
-                        7
-                    </span>
-                </div>
-                <div id="date1-cal-20100109" tabindex="-1" data-sap-day="20100109" class="uteUiCalDay uteUiCalDayWeekEnd uteUiCalWDay6">
-                    <span class="uteUiCalDayNum">
-                        8
-                    </span>
-                </div>
-                <div id="date1-cal-20100110" tabindex="-1" data-sap-day="20100110" class="uteUiCalDay uteUiCalDayWeekEnd uteUiCalWDay0">
-                    <span class="uteUiCalDayNum">
-                        9
-                    </span>
-                </div>
-                <div id="date1-cal-20100111" tabindex="-1" data-sap-day="20100111" class="uteUiCalDay uteUiCalWDay1">
-                    <span class="uteUiCalDayNum">
-                        10
-                    </span>
-                </div>
-                <div id="date1-cal-20100112" tabindex="-1" data-sap-day="20100112" class="uteUiCalDay uteUiCalWDay2">
-                    <span class="uteUiCalDayNum">
-                        11
-                    </span>
-                </div>
-                <div id="date1-cal-20100113" tabindex="-1" data-sap-day="20100113" class="uteUiCalDay uteUiCalWDay3">
-                    <span class="uteUiCalDayNum">
-                       12
-                    </span>
-                </div>
-                <div id="date1-cal-20100114" tabindex="-1" data-sap-day="20100114" class="uteUiCalDay uteUiCalWDay4">
-                    <span class="uteUiCalDayNum">
-                        13
-                    </span>
-                </div>
-                <div id="date1-cal-20100115" tabindex="-1" data-sap-day="20100115" class="uteUiCalDay uteUiCalWDay5">
-                    <span class="uteUiCalDayNum">
-                        14
-                    </span>
-                </div>
-                <div id="date1-cal-20100116" tabindex="-1" data-sap-day="20100116" class="uteUiCalDay uteUiCalDayWeekEnd uteUiCalWDay6">
-                    <span class="uteUiCalDayNum">
-                       15
-                    </span>
-                </div>
-                <div id="date1-cal-20100117" tabindex="-1" data-sap-day="20100117" class="uteUiCalDay uteUiCalDayWeekEnd uteUiCalWDay0">
-                    <span class="uteUiCalDayNum">
-                       16
-                    </span>
-                </div>
-                <div id="date1-cal-20100118" tabindex="-1" data-sap-day="20100118" class="uteUiCalDay uteUiCalWDay1">
-                    <span class="uteUiCalDayNum">
-                      17
-                    </span>
-                </div>
-                <div id="date1-cal-20100119" tabindex="-1" data-sap-day="20100119" class="uteUiCalDay uteUiCalWDay2">
-                    <span class="uteUiCalDayNum">
-                      18
-                    </span>
-                </div>
-                <div id="date1-cal-20100120" tabindex="-1" data-sap-day="20100120" class="uteUiCalDay uteUiCalWDay3">
-                    <span class="uteUiCalDayNum">
-                      19
-                    </span>
-                </div>
-                <div id="date1-cal-20100121" tabindex="-1" data-sap-day="20100121" class="uteUiCalDay uteUiCalWDay4">
-                    <span class="uteUiCalDayNum">
-                      20
-                    </span>
-                </div>
-                <div id="date1-cal-20100122" tabindex="-1" data-sap-day="20100122" class="uteUiCalDay uteUiCalWDay5">
-                    <span class="uteUiCalDayNum">
-                      21
-                    </span>
-                </div>
-                <div id="date1-cal-20100123" tabindex="-1" data-sap-day="20100123" class="uteUiCalDay uteUiCalDayWeekEnd uteUiCalWDay6">
-                    <span class="uteUiCalDayNum">
-                      22
-                    </span>
-                </div>
-                <div id="date1-cal-20100124" tabindex="-1" data-sap-day="20100124" class="uteUiCalDay uteUiCalDayWeekEnd uteUiCalWDay0">
-                    <span class="uteUiCalDayNum">
-                        23
-                    </span>
-                </div>
-                <div id="date1-cal-20100125" tabindex="-1" data-sap-day="20100125" class="uteUiCalDay uteUiCalWDay1">
-                    <span class="uteUiCalDayNum">
-                       24
-                    </span>
-                </div>
-                <div id="date1-cal-20100126" tabindex="-1" data-sap-day="20100126" class="uteUiCalDay uteUiCalWDay2">
-                    <span class="uteUiCalDayNum">
-                       25
-                    </span>
-                </div>
-                <div id="date1-cal-20100127" tabindex="-1" data-sap-day="20100127" class="uteUiCalDay uteUiCalWDay3">
-                    <span class="uteUiCalDayNum">
-                      26
-                    </span>
-                </div>
-                <div id="date1-cal-20100128" tabindex="-1" data-sap-day="20100128" class="uteUiCalDay uteUiCalWDay4">
-                    <span class="uteUiCalDayNum">
-                      27
-                    </span>
-                </div>
-                <div id="date1-cal-20100129" tabindex="-1" data-sap-day="20100129" class="uteUiCalDay uteUiCalWDay5">
-                    <span class="uteUiCalDayNum">
-                      28
-                    </span>
-                </div>
-                <div id="date1-cal-20100130" tabindex="-1" data-sap-day="20100130" class="uteUiCalDay uteUiCalDayWeekEnd uteUiCalWDay6">
-                    <span class="uteUiCalDayNum">
-                       29
-                    </span>
-                </div>
-                <div id="date1-cal-20100131" tabindex="-1" data-sap-day="20100131" class="uteUiCalDay uteUiCalDayWeekEnd uteUiCalWDay0">
-                    <span class="uteUiCalDayNum">
-                     30
-                    </span>
-                </div>
-                <div id="date1-cal-20100202" tabindex="-1" data-sap-day="20100202" class="uteUiCalDay uteUiCalDayOtherMonth uteUiCalWDay2">
-                    <span class="uteUiCalDayNum">
-                       1
-                    </span>
-                </div>
-                <div id="date1-cal-20100203" tabindex="-1" data-sap-day="20100203" class="uteUiCalDay uteUiCalDayOtherMonth uteUiCalWDay3">
-                    <span class="uteUiCalDayNum">
-                      2
-                    </span>
-                </div>
-                <div id="date1-cal-20100204" tabindex="-1" data-sap-day="20100204" class="uteUiCalDay uteUiCalDayOtherMonth uteUiCalWDay4">
-                    <span class="uteUiCalDayNum">
-                      3
-                    </span>
-                </div>
-                <div id="date1-cal-20100205" tabindex="-1" data-sap-day="20100205" class="uteUiCalDay uteUiCalDayOtherMonth uteUiCalWDay5">
-                    <span class="uteUiCalDayNum">
-                     4
-                    </span>
-                </div>
-                <div id="date1-cal-20100206" tabindex="-1" data-sap-day="20100206" class="uteUiCalDay uteUiCalDayOtherMonth uteUiCalWDay6">
-                    <span class="uteUiCalDayNum">
-                     5
-                    </span>
-                </div>
-                 <div id="date1-cal-20100206" tabindex="-1" data-sap-day="20100206" class="uteUiCalDay uteUiCalDayOtherMonth uteUiCalWDay6">
-                    <span class="uteUiCalDayNum">
-                    6
-                    </span>
-                </div>
-
-            </div>
+            <div id="date1-cal-days" class="nrgCal__calDays__Days" tabindex="-1"></div>
         </div>
 
     </div>
