@@ -7,38 +7,23 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control'],
             metadata : {
                 library : "ute.ui.commons",
                 properties : {
-                    /**
-                     * Defines the text displayed next to the radio button.
-                     */
+                    /*Text displayed next to the radio button*/
                     text : {type : "string", group : "Data", defaultValue : null},
 
-                    /**
-                     *
-                     * Disabled controls are displayed in another color, depending on the customer settings.
-                     */
-                    enabled : {type : "boolean", group : "Behavior", defaultValue : true},
-
-                    /**
-                     * Specifies the select state of the radio button
-                     */
+                    /*true if the radio button is checked */
                     selected : {type : "boolean", group : "Data", defaultValue : false},
-                    /**
-                     * The control width depends on the text length. Alternatively, CSS-sizes in % or px can be set.
-                     */
-                    width : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : null},
 
-                    /**
-                     * Name of the radio button group the current radio button belongs to. You can define a new name for the group.
-                     * If no new name is specified, this radio button belongs to the sapUiRbDefaultGroup per default. Default behavior of a radio button
-                     * in a group is that when one of the radio buttons in a group is selected, all others are unselected.
-                     */
-                    groupName : {type : "string", group : "Behavior", defaultValue : 'sapUiRbDefaultGroup'}
+                    /*Group name of the radio button*/
+                    groupName : {type : "string", group : "Behavior", defaultValue : "sapUiRbDefaultGroup"},
+
+                    /*Not implemented in renderer, keep the attribute for future use*/
+                    enabled: {type : "boolean", group : "Behabior", defaultValue: "true"},
+
+                    /*Set false for the solid radio button in settings*/
+                    bRegular : {type: "boolean", group: "Apperance", defaultValue: "true"}
                 },
                 events : {
-
-                    /**
-                     * Event is triggered when the user makes a change on the radio button.
-                     */
+                    /* Event is triggered when the user makes a change on the radio button.*/
                     select : {}
                 }
             }
@@ -72,7 +57,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control'],
             // Example: table control needs to catch and handle the event as well
             //oEvent.stopPropagation();
 
-            if (this.getEnabled() && this.getEditable()) {
+            if (this.getEnabled()) {
                 var selected = this.getSelected();
                 if (!selected) {
                     this.setSelected(true);
@@ -93,7 +78,11 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control'],
          */
         RadioButton.prototype.setSelected = function (bSelected) {
 
-            var bSelectedOld = this.getSelected();
+            var bSelectedOld = this.getSelected(),
+                others,
+                i,
+                other,
+                oControl;
 
             this.setProperty("selected", bSelected, true); // No re-rendering
             bSelected = this.getSelected();
@@ -101,21 +90,21 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control'],
             if (bSelected) { // If this radio button is selected, explicitly deselect the other radio buttons of the same group
                 if (this.getGroupName() && (this.getGroupName() !== "")) { // Do it only if groupName is set
                     // TODO: Add control references to some static list when they are constructed, in order to avoid searching every time
-                    var others = document.getElementsByName(this.getGroupName());
-                    for (var i = 0; i < others.length; i++) {
-                        var other = others[i];
+                    others = document.getElementsByName(this.getGroupName());
+                    for (i = 0; i < others.length; i = i + 1) {
+                        other = others[i];
                         // Recommendation is that the HTML radio button has an ID ending with "-RB"
                         if (other.id && (other.id.length > 3) && (other.id.substr(other.id.length - 3) === "-RB")) {
                             // The SAPUI5 control is known by an ID without the "-RB" suffix
-                            var oControl = sap.ui.getCore().getElementById(other.id.substr(0, other.id.length - 3));
-                            if (oControl instanceof RadioButton && (oControl != this)) {
+                            oControl = sap.ui.getCore().getElementById(other.id.substr(0, other.id.length - 3));
+                            if (oControl instanceof RadioButton && (oControl !== this)) {
                                 oControl.setSelected(false);
                             }
                         }
                     }
                 }
             }
-            if ((bSelectedOld != bSelected) && this.getDomRef() && this.getRenderer().setSelected) {
+            if ((bSelectedOld !== bSelected) && this.getDomRef() && this.getRenderer().setSelected) {
                 this.getRenderer().setSelected(this, bSelected);
             }
 
@@ -123,4 +112,4 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control'],
         };
         return RadioButton;
 
-}, /* bExport= */ true);
+    }, /* bExport= */ true);

@@ -42,6 +42,20 @@
             buttonType="SpecialCalculator"
             width="102px">
         </u:Button>
+        <u:tag></u:tag>
+        <u:tag></u:tag>
+        <u:tag></u:tag>
+        <br></br>
+
+        <u:RadioButton
+            groupName="radio1"
+            text="Raio1">
+        </u:RadioButton>
+        <u:RadioButton
+            groupName="radio1"
+            text="Radio2"
+            bRegular="false">
+        </u:RadioButton>
 
         <!--
         <u:Button
