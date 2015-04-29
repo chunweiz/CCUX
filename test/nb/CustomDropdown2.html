@@ -70,6 +70,8 @@
     border-radius: 7px;
     box-shadow: 0px 1px 1px rgb(244, 244, 244);
     padding: 0px;
+       /* border-top-left-radius: 10px;
+                border-top-right-radius: 10px;*/
 
     /*padding-right: 115px;*/
 
@@ -77,6 +79,18 @@
      .wrapper-dropdown-1 .dropdown li{
          display: block; /*To hide the bullets on items*/
      }
+
+  /*  .wrapper-dropdown-1 .dropdown:first-child{
+                margin-top: 2px;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                border-top: 0.1px solid black;
+            }
+            .wrapper-dropdown-1 .dropdown:last-child{
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                border-bottom: 0.1px solid black;
+            }*/
 
     .wrapper-dropdown-1 .dropdown li a {
     display: block;
@@ -95,6 +109,13 @@
     background: #83bbe5;
 }
 
+    .wrapper-dropdown-1 .dropdown li:first-of-type a {
+border-radius: 7px 7px 0 0;
+}
+    .wrapper-dropdown-1 .dropdown li:last-of-type a {
+border: none;
+border-radius: 0 0 7px 7px;
+}
 
     /* Active state */
 
@@ -128,11 +149,15 @@
     <ul class="dropdown">
         <li>
             <a>Male</a>
-        <!-- <div class="item">Male</div>-->
+
         </li>
         <li>
             <a>Female</a>
-           <!-- <div class="item">Female</div>-->
+
+        </li>
+        <li>
+            <a>Unknown</a>
+
         </li>
     </ul>
 </div>
