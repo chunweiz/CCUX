@@ -187,18 +187,6 @@
                             expand: true,
                             cwd: 'src',
                             src: [
-                                'nrg/component/**/*.html',
-                                'nrg/controller/**/*.html',
-                                'nrg/util/**/*.html',
-                                'nrg/view/**/*.html',
-                                'ute/ui/commons/**/*.html'
-                            ],
-                            dest: 'build'
-                        },
-                        {
-                            expand: true,
-                            cwd: 'src',
-                            src: [
                                 'nrg/component/**/*.xml',
                                 'nrg/controller/**/*.xml',
                                 'nrg/util/**/*.xml',
