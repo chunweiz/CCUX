@@ -8,7 +8,7 @@
             LessPluginCleanCss = require('less-plugin-clean-css'),
             oLessAutoPrefix = new LessPluginAutoPrefix({
                 browsers: [
-                    'ie >= 9'
+                    'ie >= 8'
                 ]
             }),
             oLessCleanCss = new LessPluginCleanCss({
