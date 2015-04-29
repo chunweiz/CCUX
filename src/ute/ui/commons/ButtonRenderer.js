@@ -24,6 +24,9 @@ sap.ui.define(['jquery.sap.global'],
             case 'SpecialNav':
                 rm.addClass('uteBtn-special uteBtn-general-nav');
                 break;
+            case 'SpecialCalculator':
+                rm.addClass('uteBtn-special uteBtn-general-calculator');
+                break;
             }
             if (oButton.getWidth()) {
                 rm.addStyle('width', oButton.getWidth());
