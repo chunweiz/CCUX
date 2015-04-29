@@ -11,8 +11,34 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/ValueStateSupport'],
 	 * @param {sap.ui.core.RenderManager} oRenderManager The RenderManager that can be used for writing to the render output buffer.
 	 * @param {sap.ui.commons.RadioButton} oRadioButton The RadioButton control that should be rendered.
 	 */
-        RadioButtonRenderer.render = function(rm, oRadioButton) {
+        RadioButtonRenderer.render = function (rm, oRadioButton) {
 
+            rm.write('<span');
+            rm.addClass('uteRadioBtn');
+            rm.writeClasses();
+            rm.write('>');
+
+            rm.write('<Input type=\"radio\" name="' + oRadioButton.getGroupName() + '\"');
+            rm.writeControlData(oRadioButton);
+            rm.writeAttribute("id", oRadioButton.getId());
+            if (oRadioButton.getBRegular()) {
+                rm.addClass('uteRadioBtn-regular');
+            } else {
+                rm.addClass('uteRadioBtn-solid');
+            }
+            rm.writeClasses();
+            rm.write('>');
+            rm.write('<label');
+            rm.writeAttribute("for", oRadioButton.getId());
+            rm.write('>');
+
+            rm.write('</label>');
+            if (oRadioButton.getText()) {
+                rm.write("<text>" + oRadioButton.getText() + "</text>");
+            }
+            rm.write('</span>');
+
+            /*
             rm.write( "<div" ) ;
             rm.addClass( "uteRadioButton" ) ;
 	        rm.writeClasses() ;
@@ -27,12 +53,13 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/ValueStateSupport'],
             if( oRadioButton.getText() ){
                 rm.write( "<text>" + oRadioButton.getText() + "</text>" ) ;
             }
-            rm.write( "</div>" ) ;
-	   };
+            rm.write( "</div>" ) ;*/
+
+	    };
 
 
 
-        RadioButtonRenderer.setSelected = function(oRadioButton, bSelected) {
+        RadioButtonRenderer.setSelected = function (oRadioButton, bSelected) {
         /*
             oRadioButton.$().toggleClass('sapUiRbSel', bSelected).attr('aria-checked', bSelected);
             var $Dom = oRadioButton.getDomRef("RB");
@@ -47,6 +74,6 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/ValueStateSupport'],
         };
 
 
-	return RadioButtonRenderer;
+	    return RadioButtonRenderer;
 
-}, /* bExport= */ true);
+    }, /* bExport= */ true);
