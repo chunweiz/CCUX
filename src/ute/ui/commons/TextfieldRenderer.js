@@ -8,7 +8,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
         "use strict";
 
 	    var InputRenderer = {};
-	
+
 	/**
 	 * Renders the HTML for the given control, using the provided {@link sap.ui.core.RenderManager}.
 	 *
@@ -17,7 +17,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
 	 *            oTextField The TextField control that should be rendered.
 	 */
 	    InputRenderer.render = function(oRm, oInput) {
-            if( oInput.getFieldType() === "field2" ){   
+            if( oInput.getFieldType() === "field2" ){
                 if( oInput.getLabel() ){
                     oRm.write( "<Label"  ) ;
                     oRm.addClass( "uteUiInputType2Label" ) ;
@@ -49,9 +49,9 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
                 oRm.writeClasses();
                 oRm.write( ">" ) ;
             }
-            
+
         };
-	       
+
 
 	return InputRenderer;
 
