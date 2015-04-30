@@ -14,6 +14,12 @@ sap.ui.define(
                 this._oHeader = header;
                 this._oController = this._oHeader.getController();
                 this._oAppHdrQuickLink = this._oController.getView().byId(viewId);
+            },
+
+            metadata: {
+                publicMethods: [
+                    'initialize'
+                ]
             }
         });
 

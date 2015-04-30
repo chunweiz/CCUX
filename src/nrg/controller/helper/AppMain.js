@@ -14,6 +14,13 @@ sap.ui.define(
                 BaseObject.apply(this);
                 this._oController = controller;
                 this._oAppMain = this._oController.getView().byId(idAppMain);
+            },
+
+            metadata: {
+                publicMethods: [
+                    'initialize',
+                    'setMainTitle'
+                ]
             }
         });
 

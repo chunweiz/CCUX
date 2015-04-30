@@ -14,6 +14,12 @@ sap.ui.define(
                 this._oController = oController;
                 this._oNavLeft = this._oController.getView().byId(mViewId.navLeft);
                 this._oNavRight = this._oController.getView().byId(mViewId.navRight);
+            },
+
+            metadata: {
+                publicMethods: [
+                    'initialize'
+                ]
             }
         });
 

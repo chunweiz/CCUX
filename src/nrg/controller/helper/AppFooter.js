@@ -14,6 +14,12 @@ sap.ui.define(
                 BaseObject.apply(this);
                 this._oController = controller;
                 this._oAppFooter = this._oController.getView().byId(idAppFooter);
+            },
+
+            metadata: {
+                publicMethods: [
+                    'initialize'
+                ]
             }
         });
 

@@ -8,7 +8,7 @@
             LessPluginCleanCss = require('less-plugin-clean-css'),
             oLessAutoPrefix = new LessPluginAutoPrefix({
                 browsers: [
-                    'ie >= 9'
+                    'ie >= 8'
                 ]
             }),
             oLessCleanCss = new LessPluginCleanCss({
@@ -187,18 +187,6 @@
                             expand: true,
                             cwd: 'src',
                             src: [
-                                'nrg/component/**/*.html',
-                                'nrg/controller/**/*.html',
-                                'nrg/util/**/*.html',
-                                'nrg/view/**/*.html',
-                                'ute/ui/commons/**/*.html'
-                            ],
-                            dest: 'build'
-                        },
-                        {
-                            expand: true,
-                            cwd: 'src',
-                            src: [
                                 'nrg/component/**/*.xml',
                                 'nrg/controller/**/*.xml',
                                 'nrg/util/**/*.xml',
@@ -246,7 +234,9 @@
                                 'nrg/view/App*.xml',
                                 'nrg/view/*Empty.view.xml',
                                 'nrg/controller/App*.js',
-                                'nrg/controller/*Empty.controller.js'
+                                'nrg/controller/*Empty.controller.js',
+                                'nrg/controller/BaseController.js',
+                                'nrg/controller/helper/App*.js'
                             ]
                         },
                         'nrg/component/retention': {
@@ -254,7 +244,9 @@
                                 'nrg/view/App*.xml',
                                 'nrg/view/*Empty.view.xml',
                                 'nrg/controller/App*.js',
-                                'nrg/controller/*Empty.controller.js'
+                                'nrg/controller/*Empty.controller.js',
+                                'nrg/controller/BaseController.js',
+                                'nrg/controller/helper/App*.js'
                             ]
                         }
                     }
