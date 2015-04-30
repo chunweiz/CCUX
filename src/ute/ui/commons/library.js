@@ -1,6 +1,12 @@
 /*globals sap, ute*/
 
-sap.ui.define(['jquery.sap.global', 'sap/ui/base/DataType', 'sap/ui/core/library'],
+sap.ui.define(
+    [
+        'jquery.sap.global',
+        'sap/ui/base/DataType',
+        'sap/ui/core/library'
+    ],
+
 	function (jQuery, DataType, Library) {
 		'use strict';
 
@@ -77,4 +83,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/DataType', 'sap/ui/core/library
 
 		return ute.ui.commons;
 		
-	}, false);
+	},
+
+    false
+);
