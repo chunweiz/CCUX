@@ -4,11 +4,10 @@
 sap.ui.define(
     [
         'sap/ui/core/UIComponent',
-        'nrg/util/nav/GreedyRouter',
         'nrg/util/Icon'
     ],
     
-    function (Component, GreedyRouter, IconUtil) {
+    function (Component, IconUtil) {
         'use strict';
 
         var NRGComponent = Component.extend('nrg.component.ic.Component', {
@@ -36,33 +35,51 @@ sap.ui.define(
                 },
 
                 routing: {
-                    config: {
-                        routerClass: nrg.util.nav.GreedyRouter,
-                        viewType: sap.ui.core.mvc.ViewType.XML,
-                        viewPath : 'nrg.view'
-                    },
-
                     routes: {
                         emptyGeneral: {
                             pattern: '',
-                            view: 'GeneralEmpty',
-                            targetControl: 'idAppGeneral',
-                            targetAggregation: 'content',
-                            clearTarget: true
+                            greedy: true,
+                            target: 'empty'
                         },
+
                         emptySummary: {
                             pattern: '',
-                            view: 'SummaryEmpty',
-                            targetControl: 'idAppSummary',
-                            targetAggregation: 'content',
-                            clearTarget: true
+                            greedy: true,
+                            target: 'emptySummary'
                         },
+
                         emptyTools: {
                             pattern: '',
-                            view: 'ToolsEmpty',
-                            targetControl: 'idAppTools',
-                            targetAggregation: 'content',
-                            clearTarget: true
+                            greedy: true,
+                            target: 'emptyTools'
+                        }
+                    },
+                    config: {
+                        routerClass: sap.ui.core.routing.Router,
+                        viewType: sap.ui.core.mvc.ViewType.XML,
+                        viewPath: 'nrg.view'
+                    },
+
+                    targets: {
+                        empty: {
+                            viewName: 'GeneralEmpty',
+                            controlId: 'idAppGeneral',
+                            controlAggregation: 'content',
+                            clearAggregation: true
+                        },
+
+                        emptySummary: {
+                            viewName: 'SummaryEmpty',
+                            controlId: 'idAppSummary',
+                            controlAggregation: 'content',
+                            clearAggregation: true
+                        },
+
+                        emptyTools: {
+                            viewName: 'ToolsEmpty',
+                            controlId: 'idAppTools',
+                            controlAggregation: 'content',
+                            clearAggregation: true
                         }
                     }
                 }
@@ -116,7 +133,6 @@ sap.ui.define(
                 }
             }
 
-            oRouter.setGreedy(true);
             oRouter.initialize();
         };
 
