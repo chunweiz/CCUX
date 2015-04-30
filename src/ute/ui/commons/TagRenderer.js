@@ -9,9 +9,6 @@ sap.ui.define(
         var TagRenderer = {};
 
         TagRenderer.render = function (oRm, oControl) {
-            var aContent, nContent, aClass, nClass,
-                bAdded = false;
-            
             oRm.write('<' + oControl.getElem());
             oRm.writeControlData(oControl);
             
@@ -25,10 +22,9 @@ sap.ui.define(
             
             oRm.writeEscaped(oControl.getText());
             
-            aContent = oControl.getContent();
-            for (nContent = 0; nContent < aContent.length; nContent = nContent + 1) {
-                oRm.renderControl(aContent[nContent]);
-            }
+            oControl.getContent().forEach(function (oContent) {
+                oRm.renderControl(oContent);
+            });
             
             oRm.write('</' + oControl.getElem() + '>');
         };
