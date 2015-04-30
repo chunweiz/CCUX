@@ -6,33 +6,33 @@ sap.ui.define(['jquery.sap.global'],
         "use strict";
 
         var CheckBoxRenderer = {};
+
 	    CheckBoxRenderer.render = function (rm, oCheckBox) {
-            rm.write("<div");
-            rm.writeControlData(oCheckBox);
-            rm.addClass("uteCheckBox");
+            rm.write('<span');
+            rm.addClass('uteChkBox');
             rm.writeClasses();
-            rm.write("><input");
-            rm.writeAttribute("type", "checkbox");
-            rm.writeAttribute("id", oCheckBox.getId());
+            rm.write('><input');
+            rm.writeAttribute('type', 'checkbox');
+            rm.writeAttribute('id', oCheckBox.getId());
+            rm.addClass('uteChkBox-input');
+            rm.writeClasses();
             if (oCheckBox.getName()) {
-                rm.writeAttribute("name", oCheckBox.getName());
+                rm.writeAttribute('name', oCheckBox.getName());
             }
             if (oCheckBox.getChecked()) {
-                rm.write("checked");
+                rm.write('checked');
             }
-            rm.write("/><label");
+            rm.write('/><label');
             rm.writeAttribute("for", oCheckBox.getId());
             rm.write("></label>");
             if (oCheckBox.getText()) {
-                rm.write("<span");
-                rm.addClass("uteCheckBoxText");
+                rm.write('<text');
+                rm.addClass("uteChkBox-text");
                 rm.writeClasses();
-                rm.write(">" + oCheckBox.getText() + "</span>");
+                rm.write(">" + oCheckBox.getText() + "</text>");
             }
-            rm.write("</div>");
+            rm.write("</span>");
 	    };
-
-
 
 	    return CheckBoxRenderer;
 

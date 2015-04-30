@@ -56,7 +56,11 @@
             text="Radio2"
             bRegular="false">
         </u:RadioButton>
-
+        <u:CheckBox
+            text="CheckBox"
+            name="testCheckBoxName"
+            checked="false">
+        </u:CheckBox>
         <!--
         <u:Button
             text="TITLE"

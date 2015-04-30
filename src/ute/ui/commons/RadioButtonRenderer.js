@@ -37,24 +37,6 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/ValueStateSupport'],
                 rm.write("<text>" + oRadioButton.getText() + "</text>");
             }
             rm.write('</span>');
-
-            /*
-            rm.write( "<div" ) ;
-            rm.addClass( "uteRadioButton" ) ;
-	        rm.writeClasses() ;
-            rm.write( "><Input type=\"radio\" name=" + oRadioButton.getGroupName() + "\"" );
-            rm.writeControlData( oRadioButton );
-            rm.writeAttribute("id", oRadioButton.getId());
-            rm.write( "/>" );
-            rm.write( "<label" ) ;
-            rm.writeAttribute("for", oRadioButton.getId());
-            rm.write( "\">" ) ;
-            rm.write( "</label>" ) ;
-            if( oRadioButton.getText() ){
-                rm.write( "<text>" + oRadioButton.getText() + "</text>" ) ;
-            }
-            rm.write( "</div>" ) ;*/
-
 	    };
 
 
