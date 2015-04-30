@@ -12,8 +12,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/DataType', 'sap/ui/core/library
                 'ute.ui.commons.BadgeType',
                 'ute.ui.commons.CSSDisplay',
                 'ute.ui.commons.CSSPosition',
-				'ute.ui.commons.HorizontalDividerType',
-				'ute.ui.commons.HorizontalDividerHeight',
+                'ute.ui.commons.HorizontalDividerType',
+                'ute.ui.commons.HorizontalDividerHeight',
                 'ute.ui.commons.ButtonType'
             ],
 			interfaces: [],
@@ -48,76 +48,21 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/base/DataType', 'sap/ui/core/library
             Regular: 'Regular'
             
         };
-		/**
-	 * Enumeration of possible HorizontalDivider types.
-	 *
-	 * @enum {string}
-	 * @public
-	 * @ui5-metamodel This enumeration also will be described in the UI5 (legacy) designtime metamodel
-	 */
+
 	    ute.ui.commons.HorizontalDividerType = {
-
-		/**
-		 * Type Area
-		 * @public
-		 */
-		    Area : "Area",
-
-		/**
-		 * Type Page
-		 * @public
-		 */
-		    Page : "Page",
-	   /**
-		 * Type Dotted
-		 * @public
-		 */
-
-		    Dotted : "Dotted",
-	   /**
-		 * Type Dashed
-		 * @public
-		 */
-
-		    Dashed : "Dashed"
+		    Area: 'Area',
+		    Page: 'Page',
+		    Dotted: 'Dotted',
+		    Dashed : 'Dashed'
 	    };
 
-		/**
-	 * Enumeration of possible HorizontalDivider height settings.
-	 *
-	 * @enum {string}
-	 * @public
-	 * @ui5-metamodel This enumeration also will be described in the UI5 (legacy) designtime metamodel
-	 */
 	    ute.ui.commons.HorizontalDividerHeight = {
-
-		/**
-		 * Divider gets no top and bottom margin.
-		 * @public
-		 */
-		    Ruleheight : "Ruleheight",
-
-		/**
-		 * Divider gets a small top and bottom margin.
-		 * @public
-		 */
-		    Small : "Small",
-
-		/**
-		 * Divider gets a medium top and bottom margin.
-		 * @public
-		 */
-		    Medium : "Medium",
-
-		/**
-		 * Divider gets a large top and bottom margin.
-		 * @public
-		 */
-		    Large : "Large"
-
+		    Ruleheight: 'Ruleheight',
+		    Small: 'Small',
+		    Medium: 'Medium',
+		    Large: 'Large'
 	    };
 
-    
         ute.ui.commons.CSSDisplay = DataType.createType('ute.ui.commons.CSSDisplay', {
             isValid : function (sValue) {
                 return (/^(inline|block|flex|inline\-block|inline\-flex|inline\-table|list\-item|run\-in|table|table\-caption|table\-column\-group|table\-header\-group|table\-footer\-group|table\-row\-group|table\-cell|table\-column|table\-row|none|initial|inherit)$/).test(sValue);
