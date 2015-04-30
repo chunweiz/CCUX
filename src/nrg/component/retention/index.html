@@ -10,16 +10,14 @@
             data-sap-ui-xx-bindingSyntax="complex"
             data-sap-ui-resourceroots='{
                 "sap.m": "../../../../bower_components/openui5-sap.m/resources/sap/m",
-                "nrg": "../../",
-                "ute.ui.commons": "../../../ute/ui/commons"
+                "ute.ui.commons": "../../../ute/ui/commons",
+                "nrg": "../../"
             }'>
 		</script>
 	</head>
 	<body role="application" class="nrgUiBody" id="content">        
 		<script>
             sap.ui.getCore().attachInit(function () {
-                jQuery.sap.registerModulePath('ute.ui.commons', '../../../ute/ui/commons');
-                
                 new sap.ui.core.ComponentContainer({
                     height: '100%',
                     width: '100%',
