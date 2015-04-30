@@ -14,6 +14,7 @@ sap.ui.define(
 			name: 'ute.ui.commons',
 			version: '1.0.0.0',
 			dependencies: ['sap.ui.core'],
+
 			types: [
                 'ute.ui.commons.BadgeType',
                 'ute.ui.commons.CSSDisplay',
@@ -22,7 +23,7 @@ sap.ui.define(
                 'ute.ui.commons.HorizontalDividerHeight',
                 'ute.ui.commons.ButtonType'
             ],
-			interfaces: [],
+
 			controls: [
 				'ute.ui.commons.InfoLine',
                 'ute.ui.commons.Dialog',
@@ -37,7 +38,9 @@ sap.ui.define(
 				'ute.ui.commons.HorizontalDivider',
                 'ute.ui.commons.Dropdown'
 			],
-			elements: []
+
+			elements: [],
+            interfaces: []
 		});
     
         ute.ui.commons.ButtonType = {
