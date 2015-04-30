@@ -37,5 +37,5 @@ sap.ui.define(
 
     },
 
-    false
+    true
 );
