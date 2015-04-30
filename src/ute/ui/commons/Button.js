@@ -75,12 +75,16 @@ sap.ui.define(
                     /**
                      * Specifies the SVG Icon height
                      */
-                    uteSvgIconHeight : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : null}
-
+                    uteSvgIconHeight: {
+                        type: 'sap.ui.core.CSSSize',
+                        group: 'Dimension',
+                        defaultValue: null
+                    }
                 },
-                events : {
+
+                events: {
                     /*Event onPress*/
-                    press : {}
+                    press: {}
                 }
             }
         });
@@ -95,7 +99,6 @@ sap.ui.define(
         };
 
         return Button;
-
     },
 
     true
