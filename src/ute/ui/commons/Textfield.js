@@ -7,18 +7,18 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 	function(jQuery, library, Control, ValueStateSupport) {
         "use strict";
 
-        var Input = Control.extend("ute.ui.commons.Input", /** @lends sap.ui.commons.TextField.prototype */ 
-        { metadata : {    
+        var Input = Control.extend("ute.ui.commons.Input", /** @lends sap.ui.commons.TextField.prototype */
+        { metadata : {
             interfaces : [
 			"sap.ui.commons.ToolbarItem"
 		],
 		library : "ute.ui.commons",
-        
+
 		properties : {
 			value : {type : "string", group : "Data", defaultValue : '', bindable : "bindable"},
-			
+
             enabled : {type : "boolean", group : "Behavior", defaultValue : true},
-			
+
             editable : {type : "boolean", group : "Behavior", defaultValue : true},
 
 			width : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "320px" },
@@ -28,10 +28,10 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 			name : {type : "string", group : "Misc", defaultValue : null},
 
 			placeholder : {type : "string", group : "Appearance", defaultValue : null},
-            
+
             fieldType : { type: "string" , group: "Appearance", defaultValue: "field1" },
             //Two types of inputs, one is "field1" and the other is "field2""
-            
+
             label: { type: "string" , group: "Appearance" , defaultvalue: null }
 		},
 		events : {
@@ -48,22 +48,22 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 			}
         }
 	}});
-    
+
     Input.prototype.onsapfocusleave = function (oEvent){
-        
+
         this._checkChange(oEvent) ;
-        
+
         oEvent.preventDefault();
         oEvent.stopPropagation();
     };
-    
+
     Input.prototype.onsapenter = function (oEvent){
         oEvent.preventDefault();
         oEvent.stopPropagation();
-        
+
         this._checkChange(oEvent) ;
     };
-    
+
     Input.prototype._checkChange = function(oEvent) {
 		var oInput = this.getInputDomRef(),
 			newVal = oInput && oInput.value,
@@ -74,7 +74,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 			this.fireChange({newValue:newVal}); // oldValue is not that easy in ComboBox and anyway not in API... thus skip it
 		}
 	};
-    
+
     Input.prototype._getRenderOuter = function () {
 
 		if (this.bRenderOuter === undefined) {
@@ -87,7 +87,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 		}
 		return this.bRenderOuter;
 	};
-    
+
     Input.prototype.getInputDomRef = function(){
 
 		if (!this._getRenderOuter()) {
@@ -97,7 +97,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 		}
 
 	};
-    
+
 
 	return Input;
 
