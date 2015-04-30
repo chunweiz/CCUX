@@ -2,4 +2,5 @@
 /node_modules/
 /bower_components/
 /src/ute/ui/commons/themes/sap_bluecrystal/library.css
-/src/ute/ui/commons/library.js
+/src/ute/ui/commons/themes/base/library.css
+/src/nrg/asset/css/nrg.css

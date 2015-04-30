@@ -1,6 +1,8 @@
 /*globals sap*/
 
-sap.ui.define([],
+sap.ui.define(
+    [],
+
     function () {
         'use strict';
 
@@ -33,4 +35,7 @@ sap.ui.define([],
 
         return TagRenderer;
 
-    }, true);
+    },
+
+    true
+);

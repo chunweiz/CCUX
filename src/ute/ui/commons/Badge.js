@@ -1,7 +1,11 @@
 /*globals sap*/
 /*jslint nomen:true*/
 
-sap.ui.define(['sap/ui/core/Control'],
+sap.ui.define(
+    [
+        'sap/ui/core/Control'
+    ],
+
     function (Control) {
         'use strict';
 
@@ -21,7 +25,6 @@ sap.ui.define(['sap/ui/core/Control'],
                         type: 'sap.ui.core.CSSSize',
                         defaultValue: '2rem'
                     },
-                    /*Type vluae can be 'Alert', 'Attention', and 'Regular'*/
                     type: {
                         type: 'ute.ui.commons.BadgeType',
                         defaultValue: 'ute.ui.commons.BadgeType.Regular'
@@ -32,4 +35,7 @@ sap.ui.define(['sap/ui/core/Control'],
 
         return Badge;
 
-    }, true);
+    },
+
+    true
+);

@@ -1,7 +1,11 @@
 /*globals sap*/
 /*jslint nomen:true*/
 
-sap.ui.define(['sap/ui/core/Control'],
+sap.ui.define(
+    [
+        'sap/ui/core/Control'
+    ],
+
     function (Control) {
         'use strict';
 
@@ -35,4 +39,7 @@ sap.ui.define(['sap/ui/core/Control'],
 
         return Tag;
 
-    }, true);
+    },
+
+    true
+);
