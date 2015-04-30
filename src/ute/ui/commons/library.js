@@ -51,6 +51,11 @@ sap.ui.define(
             SpecialCalculator: 'SpecialCalculator'
         };
 
+        ute.ui.commons.TextfeildType = {
+            Regular: 'Regular',
+            Underlined: 'Underlined'
+        };
+
         ute.ui.commons.BadgeType = {
             Alert: 'Alert',
             Attention: 'Attention',
