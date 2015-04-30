@@ -1,8 +1,12 @@
 /*globals sap*/
 
-sap.ui.define(['jquery.sap.global'],
+sap.ui.define(
+    [
+        'jquery.sap.global'
+    ],
+
 	function (jQuery) {
-        "use strict";
+        'use strict';
     
         var ButtonRenderer = {};
 
@@ -44,7 +48,14 @@ sap.ui.define(['jquery.sap.global'],
             rm.write(oButton.getText());
             rm.write('</Button>');
         };
-            /*
+
+        return ButtonRenderer;
+    },
+
+    true
+);
+
+/*
             rm.addClass("sapUiBtn");
 
 
@@ -346,6 +357,3 @@ sap.ui.define(['jquery.sap.global'],
         };
 
 */
-        return ButtonRenderer;
-    
-    }, /* bExport= */ true);
