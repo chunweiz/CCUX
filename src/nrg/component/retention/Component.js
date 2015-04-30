@@ -4,11 +4,10 @@
 sap.ui.define(
     [
         'sap/ui/core/UIComponent',
-        'nrg/util/nav/GreedyRouter',
         'nrg/util/Icon'
     ],
     
-    function (Component, GreedyRouter, IconUtil) {
+    function (Component, IconUtil) {
         'use strict';
 
         var NRGComponent = Component.extend('nrg.component.retention.Component', {
@@ -55,6 +54,7 @@ sap.ui.define(
                             target: 'emptyTools'
                         }
                     },
+
                     config: {
                         routerClass: sap.ui.core.routing.Router,
                         viewType: sap.ui.core.mvc.ViewType.XML,
