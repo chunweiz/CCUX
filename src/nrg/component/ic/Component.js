@@ -54,6 +54,7 @@ sap.ui.define(
                             target: 'emptyTools'
                         }
                     },
+
                     config: {
                         routerClass: sap.ui.core.routing.Router,
                         viewType: sap.ui.core.mvc.ViewType.XML,
