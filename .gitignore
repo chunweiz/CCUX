@@ -2,3 +2,4 @@
 /node_modules/
 /bower_components/
 /src/ute/ui/commons/themes/sap_bluecrystal/library.css
+/src/ute/ui/commons/themes/base/library.css

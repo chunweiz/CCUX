@@ -1,6 +1,8 @@
 /*globals sap, ute*/
 
-sap.ui.define([],
+sap.ui.define(
+    [],
+
     function () {
         'use strict';
 
@@ -14,16 +16,16 @@ sap.ui.define([],
             
             switch (oControl.getType()) {
             case ute.ui.commons.BadgeType.Alert:
-                oRm.addClass('uteBadgeAlert');
+                oRm.addClass('uteBadge-alert');
                 break;
             case ute.ui.commons.BadgeType.Attention:
-                oRm.addClass('uteBadgeAttention');
+                oRm.addClass('uteBadge-attention');
                 break;
             case ute.ui.commons.BadgeType.Regular:
-                oRm.addClass('uteBadgeRegular');
+                oRm.addClass('uteBadge-regular');
                 break;
             default:
-                oRm.addClass('uteBadgeRegular');
+                oRm.addClass('uteBadge-regular');
             }
             
             oRm.writeClasses();
@@ -40,7 +42,10 @@ sap.ui.define([],
 
         return BadgeRenderer;
 
-    }, true);
+    },
+
+    false
+);
 
 /*
 <div class="uteBadge attention">RHS</div>    
