@@ -51,7 +51,7 @@ sap.ui.define(
             SpecialCalculator: 'SpecialCalculator'
         };
 
-        ute.ui.commons.TextfeildType = {
+        ute.ui.commons.TextfieldType = {
             Regular: 'Regular',
             Underlined: 'Underlined'
         };
