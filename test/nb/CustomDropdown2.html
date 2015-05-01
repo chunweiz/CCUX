@@ -8,14 +8,14 @@
 
 <style>
 
-    .uteDropdown {
+    .uteDD {
      /* Size and position */
     position: relative;
     margin: 0 auto;
 
     /* Styles */
     border-radius: 7px;
-    box-shadow: 0px 1px 1px rgb(244, 244, 244);
+    box-shadow: 0px 1px 1px grey;
     cursor: pointer;
     outline: none;
 
@@ -26,23 +26,16 @@
     font-size: 14pt;
 
 }
-    .uteDropdown.whiteBackground {
+    .uteDD-white-background {
            background: #fff;
-          /* border: 1px solid transparent;*/
-     }
-     .uteDropdown.transparentBackground {
-           background: transparent;
-           /*border: 1px solid transparent;*/
-     }
-     .uteDropdown.withBorder {
+    }
+
+     .uteDD-with-border {
            border: 1px solid grey;
-     }
-     .uteDropdown.withoutBorder {
-           border: 1px solid transparent;
      }
 
     /*Arrow triangle*/
-    .uteDropdown:after {
+    .uteDD:after {
     content: "";
     width: 0;
     height: 0;
@@ -50,40 +43,36 @@
     right: 15px;
     top: 50%;
     margin-top: -3px;
-   /* border-width: 6px 6px 0 6px;
-    border-style: solid;*/
-  /*  border-color: #83bbe5 transparent;*/
+
     }
        /*Arrow triangle*/
-    .uteDropdown.solidArrow:after {
+    .ute-solid-arrow:after {
 
     border-width: 6px 6px 0 6px;
     border-style: solid;
   /*  border-color: #83bbe5 transparent;*/
     }
 
-
-
-    .uteDropdown.blueArrow:after{
+    .ute-blue-arrow:after{
        /* border-color: #83bbe5 transparent;*/
-        border-top-color: blue;
+        border-top-color: #5092ce;
         border-right-color: transparent;
         border-bottom-color: #83bbe5;
         border-left-color: transparent;
     }
-    .uteDropdown.greyArrow:after{
+    .ute-grey-arrow:after{
         border-color: grey transparent;
     }
 
-    .uteDropdown .uteDropdownList {
+    .uteDD .uteDD-list {
 	/* Size & position */
     position: absolute;
-    top: 100%; /*Main dd box and List item box spacing*/
+    top: 65%; /*Main dd box and List item box spacing*/
     left: 0; /* Size */
     right: 0; /* Size */
 
     /* Styles */
-    background: #fff;
+   /* background: #fff;*/
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 400;
     font-size: 14pt;
@@ -93,17 +82,26 @@
     pointer-events: none;
 
     /*List Border*/
-    border: 1px solid transparent;
+   /* border: 1px solid grey;*/
     border-radius: 7px;
-    box-shadow: 0px 1px 1px rgb(244, 244, 244);
+    box-shadow: 0px 1px 1px grey;
     padding: 0px;
+    }
 
+    .uteDD-list-with-border {
+    border: 1px solid grey;
      }
-     .uteDropdown .uteDropdownList li{
+
+    .uteDD-list-white-background{
+         background: #fff;
+
+    }
+
+     .uteDD .uteDD-list li{
          display: block; /*To hide the bullets on items*/
      }
 
-    .uteDropdown .uteDropdownList li a {
+    .uteDD .uteDD-list li a {
     display: block;
     color: #4d4d4d;
     padding: 10px 20px;
@@ -111,23 +109,23 @@
     }
 
 /* Hover state */
-   .uteDropdown .uteDropdownList li a:hover {
+   .uteDD .uteDD-list li a:hover {
     background: #83bbe5;
    }
 
-    .uteDropdown .uteDropdownList li:first-of-type a {
+    .uteDD .uteDD-list li:first-of-type a {
         border-radius: 7px 7px 0 0;
     }
-    .uteDropdown .uteDropdownList li:last-of-type a {
+    .uteDD .uteDD-list li:last-of-type a {
         border: none;
         border-radius: 0 0 7px 7px;
     }
 
-    .uteDropdown.active:after {
+    .uteDD.active:after {
         border-width: 0 6px 6px 6px;
     }
 
-    .uteDropdown.active .uteDropdownList {
+    .uteDD.active .uteDD-list {
     opacity: 1;
     pointer-events: auto;
     }
@@ -137,10 +135,10 @@
 </head>
 
 <body>
-    <div style="background-color: #fee">
-    <div id="dd" class="uteDropdown whiteBackground withoutBorder solidArrow blueArrow" style="width: 300px; padding: 10px" tabindex="1">
+    <div style="background-color: lightGrey; padding:200px">
+    <div id="dd" class="uteDD uteDD-with-border uteDD-white-background ute-solid-arrow ute-blue-arrow" style="width: 300px; padding: 10px" tabindex="1">
 	<span>Gender</span>
-    <ul class="uteDropdownList">
+    <ul class="uteDD-list uteDD-list-with-border uteDD-white-background">
         <li><a>Male</a></li>
         <li><a>Female</a></li>
         <li><a>Unknown</a></li>
@@ -153,7 +151,7 @@
 			function DropDown(el) {
 				this.dd = el;
 				this.placeholder = this.dd.children('span');
-				this.opts = this.dd.find('ul.uteDropdownList > li');
+				this.opts = this.dd.find('ul.uteDD-list > li');
 				this.val = '';
 				this.index = -1;
 				this.initEvents();
@@ -186,7 +184,7 @@
 				var dd = new DropDown( $('#dd') );
 				$(document).click(function() {
 					// all dropdowns
-                    $('.wrapper-dropdown-1').removeClass('active');
+                    $('.uteDD').removeClass('active');
 
 				});
 
