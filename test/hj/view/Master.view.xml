@@ -72,14 +72,13 @@
                 fieldType="Underlined"
                 label="Title">
             </u:Textfield>
-            <u:Tag/>
-            <!--
+
             <u:Textfield
                 placeholder="Text"
                 change="testInputChange"
-                fieldType="field1"
+                fieldType="Regular"
                 label="Title">
-            </u:Textfield>-->
+            </u:Textfield>
         </u:Tag>
         <!--
         <u:Button

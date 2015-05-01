@@ -28,27 +28,26 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
                 oRm.writeAttribute('name', oTextfield.getName());
                 oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
                 oRm.addStyle('width', oTextfield.getWidth());
-                oRm.addClass('uteTextfield-underlined-input') ;
+                oRm.addClass('uteTextfield-underlined-input');
                 oRm.writeStyles();
                 oRm.writeClasses();
                 oRm.write('>');
-            }
-            else{       //default situation, so not specified as field type 2 then filed1
-                oRm.write(  "<input" ) ;
-                oRm.writeControlData(oInput) ;
-                oRm.writeAttribute("id", oInput.getId() ) ;
-                oRm.writeAttribute("name" , oInput.getName() );
-                oRm.writeAttribute("placeholder" , oInput.getPlaceholder() ) ;
-                oRm.addStyle("width", oInput.getWidth() );
-                oRm.addClass( "uteUiInputType1" ) ;
+            } else {       //default situation, so not specified as type "underlined"
+                oRm.write('<input');
+                oRm.writeControlData(oTextfield);
+                oRm.writeAttribute('id', oTextfield.getId());
+                oRm.writeAttribute('name', oTextfield.getName());
+                oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
+                oRm.addStyle('width', oTextfield.getWidth());
+                oRm.addClass('uteTextfield-regular');
                 oRm.writeStyles();
                 oRm.writeClasses();
-                oRm.write( ">" ) ;
+                oRm.write('>');
             }
             oRm.write('</span>');
         };
 
 
-	return TextfieldRenderer;
+	    return TextfieldRenderer;
 
-}, /* bExport= */ true);
+    }, /* bExport= */ true);
