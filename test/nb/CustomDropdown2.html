@@ -8,33 +8,34 @@
 
 <style>
 
-    .wrapper-dropdown-1 {
+    .uteDD {
      /* Size and position */
     position: relative;
-    width: 200px;
     margin: 0 auto;
-    padding: 10px;
 
     /* Styles */
-    background: #fff;
     border-radius: 7px;
-    border: 1px solid grey;
-    box-shadow: 0px 1px 1px rgb(244, 244, 244);
+    box-shadow: 0px 1px 1px grey;
     cursor: pointer;
     outline: none;
 
-
     /* Font settings */
     color: #4d4d4d;
-   /* font-weight: bold;*/
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 400;
     font-size: 14pt;
 
 }
+    .uteDD-white-background {
+           background: #fff;
+    }
+
+     .uteDD-with-border {
+           border: 1px solid grey;
+     }
 
     /*Arrow triangle*/
-    .wrapper-dropdown-1:after {
+    .uteDD:after {
     content: "";
     width: 0;
     height: 0;
@@ -42,21 +43,36 @@
     right: 15px;
     top: 50%;
     margin-top: -3px;
+
+    }
+       /*Arrow triangle*/
+    .ute-solid-arrow:after {
+
     border-width: 6px 6px 0 6px;
     border-style: solid;
-    border-color: #83bbe5 transparent;
-}
+  /*  border-color: #83bbe5 transparent;*/
+    }
 
-    .wrapper-dropdown-1 .dropdown {
+    .ute-blue-arrow:after{
+       /* border-color: #83bbe5 transparent;*/
+        border-top-color: #5092ce;
+        border-right-color: transparent;
+        border-bottom-color: #83bbe5;
+        border-left-color: transparent;
+    }
+    .ute-grey-arrow:after{
+        border-color: grey transparent;
+    }
+
+    .uteDD .uteDD-list {
 	/* Size & position */
     position: absolute;
-  /*  top: 100%;*/ /*Main dd box and List item box spacing*/
+    top: 65%; /*Main dd box and List item box spacing*/
     left: 0; /* Size */
     right: 0; /* Size */
 
     /* Styles */
-    background: #fff;
-    /*font-weight: normal;*/ /* Overwrites previous font-weight: bold; */
+   /* background: #fff;*/
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 400;
     font-size: 14pt;
@@ -66,110 +82,76 @@
     pointer-events: none;
 
     /*List Border*/
-    border: 1px solid grey;
+   /* border: 1px solid grey;*/
     border-radius: 7px;
-    box-shadow: 0px 1px 1px rgb(244, 244, 244);
+    box-shadow: 0px 1px 1px grey;
     padding: 0px;
-       /* border-top-left-radius: 10px;
-                border-top-right-radius: 10px;*/
+    }
 
-    /*padding-right: 115px;*/
+    .uteDD-list-with-border {
+    border: 1px solid grey;
+     }
 
-}
-     .wrapper-dropdown-1 .dropdown li{
+    .uteDD-list-white-background{
+         background: #fff;
+
+    }
+
+     .uteDD .uteDD-list li{
          display: block; /*To hide the bullets on items*/
      }
 
-  /*  .wrapper-dropdown-1 .dropdown:first-child{
-                margin-top: 2px;
-                border-top-left-radius: 10px;
-                border-top-right-radius: 10px;
-                border-top: 0.1px solid black;
-            }
-            .wrapper-dropdown-1 .dropdown:last-child{
-                border-bottom-left-radius: 10px;
-                border-bottom-right-radius: 10px;
-                border-bottom: 0.1px solid black;
-            }*/
-
-    .wrapper-dropdown-1 .dropdown li a {
+    .uteDD .uteDD-list li a {
     display: block;
-    /*text-decoration: none;*/
     color: #4d4d4d;
     padding: 10px 20px;
-        /*text-indent: -30px;*/
-        /*text-align: -webkit-match-parent;*/
-}
-/*     .item{
-  text-indent: 10px;
-}*/
+    text-indent: 10px;
+    }
 
 /* Hover state */
-.wrapper-dropdown-1 .dropdown li a:hover {
+   .uteDD .uteDD-list li a:hover {
     background: #83bbe5;
-}
+   }
 
-    .wrapper-dropdown-1 .dropdown li:first-of-type a {
-border-radius: 7px 7px 0 0;
-}
-    .wrapper-dropdown-1 .dropdown li:last-of-type a {
-border: none;
-border-radius: 0 0 7px 7px;
-}
+    .uteDD .uteDD-list li:first-of-type a {
+        border-radius: 7px 7px 0 0;
+    }
+    .uteDD .uteDD-list li:last-of-type a {
+        border: none;
+        border-radius: 0 0 7px 7px;
+    }
 
-    /* Active state */
+    .uteDD.active:after {
+        border-width: 0 6px 6px 6px;
+    }
 
-  /*  .wrapper-dropdown-1.active {
-  background: #8aa8bd;
-  background: linear-gradient(to right, #9bc7de 0%, #9bc7de 78%, #ffffff 78%, #ffffff 100%);
-}*/
-
-.wrapper-dropdown-1.active:after {
-   /* border-color: #8aa8bd transparent;*/
-   border-width: 0 6px 6px 6px;
-   /* margin-top: -3px;*/
-}
-
-    .wrapper-dropdown-1.active .dropdown {
+    .uteDD.active .uteDD-list {
     opacity: 1;
     pointer-events: auto;
-}
+    }
 
 
+  </style>
+</head>
 
-</style>
-
-
-    </head>
-
-    <body>
-
-    <div id="dd" class="wrapper-dropdown-1" tabindex="1">
+<body>
+    <div style="background-color: lightGrey; padding:200px">
+    <div id="dd" class="uteDD uteDD-with-border uteDD-white-background ute-solid-arrow ute-blue-arrow" style="width: 300px; padding: 10px" tabindex="1">
 	<span>Gender</span>
-    <ul class="dropdown">
-        <li>
-            <a>Male</a>
-
-        </li>
-        <li>
-            <a>Female</a>
-
-        </li>
-        <li>
-            <a>Unknown</a>
-
-        </li>
+    <ul class="uteDD-list uteDD-list-with-border uteDD-white-background">
+        <li><a>Male</a></li>
+        <li><a>Female</a></li>
+        <li><a>Unknown</a></li>
     </ul>
-</div>
-
+    </div>
+    </div>
         <!-- jQuery if needed -->
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script type="text/javascript">
-
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">             </script>
+    <script type="text/javascript">
 			function DropDown(el) {
 				this.dd = el;
 				this.placeholder = this.dd.children('span');
-				this.opts = this.dd.find('ul.dropdown > li');
+				this.opts = this.dd.find('ul.uteDD-list > li');
 				this.val = '';
 				this.index = -1;
 				this.initEvents();
@@ -180,7 +162,7 @@ border-radius: 0 0 7px 7px;
 
 					obj.dd.on('click', function(event){
 						$(this).toggleClass('active');
-						return false;
+                        return false;
 					});
 
 					obj.opts.on('click',function(){
@@ -199,12 +181,11 @@ border-radius: 0 0 7px 7px;
 			}
 
 			$(function() {
-
 				var dd = new DropDown( $('#dd') );
-
 				$(document).click(function() {
 					// all dropdowns
-					$('.wrapper-dropdown-1').removeClass('active');
+                    $('.uteDD').removeClass('active');
+
 				});
 
 			});

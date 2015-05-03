@@ -61,6 +61,25 @@
             name="testCheckBoxName"
             checked="false">
         </u:CheckBox>
+
+        <u:Tag>
+            <u:Tag
+                text="Input">
+            </u:Tag>
+            <u:Textfield
+                placeholder="Text"
+                change="testInputChange"
+                fieldType="Underlined"
+                label="Title">
+            </u:Textfield>
+
+            <u:Textfield
+                placeholder="Text"
+                change="testInputChange"
+                fieldType="Regular"
+                label="Title">
+            </u:Textfield>
+        </u:Tag>
         <!--
         <u:Button
             text="TITLE"
