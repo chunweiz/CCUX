@@ -80,6 +80,15 @@
                 label="Title">
             </u:Textfield>
         </u:Tag>
+        <u:Tag>
+            <u:Tag
+                text="ToggleButton">
+            </u:Tag>
+            <u:ToggleButton
+                leftBtnText="LEFT TITLE"
+                rightBtnText="RIGHT TITLE">
+            </u:ToggleButton>
+        </u:Tag>
         <!--
         <u:Button
             text="TITLE"

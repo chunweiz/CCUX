@@ -16,10 +16,10 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 enabled : {type : "boolean", group : "Behavior", defaultValue : true},
 
                 /*Width of the left side button in CSS-size, set at 249px as default */
-                leftBtnWidth : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "249px"},
+                leftBtnWidth : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "262px"},
                 
                 /*Same as left side button width. Left and right side witdth do not have to be the same*/
-                rightBtnWidth : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "249px"},
+                rightBtnWidth : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "262px"},
 
                 /*Specifies the button height. If this property is set, the height which is specified by the underlying theme is not used any longer.*/
                 height : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : null}
