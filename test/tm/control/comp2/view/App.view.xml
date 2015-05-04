@@ -1,5 +1,0 @@
-<mvc:View
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns:tm="tm.control.lib.ui">
-    <tm:Division id="idDivision" />
-</mvc:View>

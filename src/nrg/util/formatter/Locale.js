@@ -30,7 +30,5 @@ sap.ui.define(
         };
 
         return new Locale();
-    },
-
-    false
+    }
 );

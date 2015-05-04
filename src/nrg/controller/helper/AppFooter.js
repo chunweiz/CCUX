@@ -46,7 +46,5 @@ sap.ui.define(
         };
 
         return AppFooter;
-    },
-
-    false
+    }
 );

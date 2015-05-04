@@ -5,7 +5,7 @@ sap.ui.define(
     [
         'sap/ui/core/UIComponent',
         'nrg/util/Icon',
-        
+
         // Not in function arguments
         'sap/ui/core/Popup'
     ],
@@ -92,14 +92,14 @@ sap.ui.define(
         NRGComponent.prototype.initIcons = function () {
             IconUtil.load();
         };
-        
+
         NRGComponent.prototype.initPopup = function () {
             // Set the initial Z-index to 100.
             // Internally, UI5 is doing an increment of 10 for each call.
             // TODO: in 1.30, it is possible to call method setInitialZIndex instead of looping.
-            
+
             var iIdx;
-            
+
             for (iIdx = 0; iIdx < 10; iIdx = iIdx + 1) {
                 sap.ui.core.Popup.getNextZIndex();
             }
