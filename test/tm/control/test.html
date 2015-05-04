@@ -3,26 +3,25 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<script id="sap-ui-bootstrap"
-		    src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
-		    data-sap-ui-theme="sap_bluecrystal"
-		    data-sap-ui-libs="tm.control.lib.ui, sap.ui.commons"
+		    src="../../../bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
+		    data-sap-ui-libs="tm.control.lib.ui"
 		    data-sap-ui-resourceroots='{
+                "sap.ui.layout": "../../../bower_components/openui5-sap.ui.layout/resources/sap/ui/layout",
+                "sap.ui.commons": "../../../bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
             	"tm.control.lib.ui": "./lib/ui"
         	}'>
 		</script>
 		<script>
 			sap.ui.getCore().attachInit(function() {
-                jQuery.sap.require('sap.ui.core.Popup');
-                var oDiv = new tm.control.lib.ui.Division();
-                
-                var oLabel = new sap.ui.commons.Label();
-                oLabel.setText('this is a content from a label');
-                oDiv.setContent(oLabel);
-                
-                oDiv.placeAt('content');
+                var oControl = new tm.control.lib.ui.Button();
+                console.log(oControl);
+
+                oControl.setText('Custom Button');
+                oControl.placeAt('content');
             });
 		</script>
 	</head>
-	<body class="sapUiBody" id="content">
+	<body class="sapUiBody" role="application">
+        <div id="content"></div>
 	</body>
 </html>
