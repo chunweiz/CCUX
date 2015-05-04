@@ -39,22 +39,9 @@ sap.ui.define(
 
                 routing: {
                     routes: {
-                        emptyGeneral: {
+                        empty: {
                             pattern: '',
-                            greedy: true,
-                            target: 'empty'
-                        },
-
-                        emptySummary: {
-                            pattern: '',
-                            greedy: true,
-                            target: 'emptySummary'
-                        },
-
-                        emptyTools: {
-                            pattern: '',
-                            greedy: true,
-                            target: 'emptyTools'
+                            target: [ 'emptyGeneral', 'emptySummary', 'emptyTools' ]
                         }
                     },
 
@@ -65,7 +52,7 @@ sap.ui.define(
                     },
 
                     targets: {
-                        empty: {
+                        emptyGeneral: {
                             viewName: 'GeneralEmpty',
                             controlId: 'idAppGeneral',
                             controlAggregation: 'content',
