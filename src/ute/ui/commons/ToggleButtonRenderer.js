@@ -1,34 +1,26 @@
 /*globals sap*/
-
+/*jslint nomen:true*/
 sap.ui.define(['jquery.sap.global'],
 	function (jQuery) {
         "use strict";
-    
-        /**
-         * @author SAP SE
-         * @version ${version}
-         * @namespace
-         */
+
         var ToggleButtonRenderer = {},
             bUseIconFont;
-	
-        /**
-         * Renders the HTML for the given control, using the provided {@link sap.ui.core.RenderManager}.
-         *
-         * @param {sap.ui.core.RenderManager} rm The RenderManager that can be used for writing to the render output buffer.
-         * @param {sap.ui.core.Control} oButton An object representation of the control that should be rendered.
-         */
+
         ToggleButtonRenderer.render = function (rm, oToggleButton) {
-            rm.write("<div");
+            rm.write('<div');
             rm.writeControlData(oToggleButton);
-            rm.addStyle("width", this._calTotalWidth(oToggleButton) );
-            rm.addClass("uteUiToggleButton") ;
+            rm.addStyle('width', this._calTotalWidth(oToggleButton));
+            if(oToggleButton.getHeight()){
+                rm.addStyle('height', this.getHeight());
+            }
+            rm.addClass('uteToggleBtn');
             rm.writeStyles();
             rm.writeClasses();
             rm.write(">");
             
             rm.write("<input id=\"__leftBt\" type=\"button\" width=\"500px\" value=\"" + oToggleButton.getLeftBtnText() + "\"");
-            rm.addClass("uteUiToggleLeftButtonSelected");
+            rm.addClass('uteToggleBtn-leftBtn');
             rm.addStyle("width", oToggleButton.getLeftBtnWidth() );
             rm.writeStyles();
             rm.writeClasses();

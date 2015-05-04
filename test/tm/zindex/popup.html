@@ -13,15 +13,15 @@
         }'>
 		</script>
 	</head>
-	<body role="application" class="nrgUiBody" id="content">   
+	<body role="application" class="nrgUiBody" id="content">
         <div id="sandpit"></div>
 		<script>
             sap.ui.getCore().attachInit(function () {
                 jQuery.sap.require('sap.ui.core.Popup');
                 jQuery.sap.require('sap.ui.commons.Label');
-                
+
                 sap.ui.core.Popup.getNextZIndex();
-                
+
                 var oPopup = new sap.ui.core.Popup();
                 oPopup.setContent(new sap.ui.commons.Label({
                     text: 'test'
@@ -29,26 +29,26 @@
                 oPopup.setAutoClose(true);
                 oPopup.setDurations(1000, 1000);
                 oPopup.open();
-                
+
             }); //end attachInit
-    
+
 //                jQuery.sap.require('');
-//                
+//
 //                sap.ui.core.Control.extend('', {
 //                    metadata: {
-//                        
+//
 //                    },
-//                    
+//
 //                    init: function () {
-//                        
+//
 //                    },
-//                    
+//
 //                    renderer: function(oRm, oControl) {
-//                        
+//
 //                    },
-//                    
+//
 //                    onAfterRendering: function() {
-//                        
+//
 //                    }
 //                });
 		</script>
