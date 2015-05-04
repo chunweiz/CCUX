@@ -4,22 +4,21 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
 		<script id="sap-ui-bootstrap"
-		    src="../../../bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
-
+		    src="../../../../../bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
 		    data-sap-ui-libs="tm.control.lib.ui"
 		    data-sap-ui-resourceroots='{
-                "sap.ui.layout": "../../../bower_components/openui5-sap.ui.layout/resources/sap/ui/layout",
-                "sap.ui.commons": "../../../bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
-            	"tm.control.lib.ui": "./lib/ui"
+                "sap.ui.layout": "../../../../../bower_components/openui5-sap.ui.layout/resources/sap/ui/layout",
+                "sap.ui.commons": "../../../../../bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
+            	"tm.control.lib.ui": "./"
         	}'>
 		</script>
 		<script>
 			sap.ui.getCore().attachInit(function() {
-
+                var oControl = new tm.control.lib.ui.Button('zzz', {});
+                oControl.placeAt('content');
             });
 		</script>
 	</head>
 	<body class="sapUiBody" role="application" id="content">
-
 	</body>
 </html>
