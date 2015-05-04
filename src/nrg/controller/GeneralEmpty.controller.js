@@ -2,7 +2,7 @@
 
 sap.ui.define(
     [
-        'nrg/controller/BaseController'
+        'sap/ui/core/mvc/Controller'
     ],
 
     function (Controller) {
