@@ -19,25 +19,15 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
             },
             events : {
 
-                /**
-                 * Date selection changed
-                 */
-                select : {},
-
-                /**
-                 * Date selection was cancelled
-                 */
-                cancel : {}
             }
         }});
 	    (function () {
-
             /*
              * Initializes values
              *
              */
             Calendar.prototype.init = function () {
-                this._oFormatYyyymmdd = DateFormat.getInstance({pattern: "yyyyMMdd"});
+                this._oFormatYyyymmdd = DateFormat.getInstance({pattern: "MMddyyyy"});
             };
 
             /*
@@ -96,7 +86,10 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 this._oFocusedDate = new Date(oDate);
 
             };
-
+            /*
+             * Renders months.
+             *
+             */
             function _renderMonth(oThis) {
 
                 oThis._sRenderMonth = undefined; // initialize delayed call
@@ -134,7 +127,9 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                     return;
                 }
                 var that = this,
-                    oFocusedDate = this._getFocusedDate();
+                    oFocusedDate = this._getFocusedDate(),
+                    $Target,
+                    oOldFocusedDate;
 
                 if (jQuery.sap.containsOrEquals(this.getDomRef("next"), oEvent.target) && !this.$("next").attr("disabled")) {
                     switch (this._iMode) {
@@ -151,6 +146,22 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                         _renderMonth(that);
                         break;
                     }
+                } else {
+                    $Target = jQuery(oEvent.target);
+                    if ($Target.hasClass("nrgCal-dayPic-day")) {
+                        oFocusedDate = this._getFocusedDate();
+                        oOldFocusedDate = oFocusedDate;
+                        oFocusedDate = this._oFormatYyyymmdd.parse($Target.attr("data-nrg-day"), true);
+                        this._setFocusedDate(oFocusedDate);
+                        if (oFocusedDate.getTime() !== oOldFocusedDate.getTime()) {
+                            that = this;
+                            if ($Target.hasClass("nrgCal-dayPic-dayOtherMonth")) {
+                                // in other month -> change month
+                                _renderMonth(that);
+                            }
+                        }
+                    }
+
                 }
 
             };
