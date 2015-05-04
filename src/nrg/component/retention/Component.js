@@ -4,7 +4,10 @@
 sap.ui.define(
     [
         'sap/ui/core/UIComponent',
-        'nrg/util/Icon'
+        'nrg/util/Icon',
+
+        // Not in function arguments
+        'sap/ui/core/Popup'
     ],
     
     function (Component, IconUtil) {
@@ -36,22 +39,9 @@ sap.ui.define(
 
                 routing: {
                     routes: {
-                        emptyGeneral: {
+                        empty: {
                             pattern: '',
-                            greedy: true,
-                            target: 'empty'
-                        },
-
-                        emptySummary: {
-                            pattern: '',
-                            greedy: true,
-                            target: 'emptySummary'
-                        },
-
-                        emptyTools: {
-                            pattern: '',
-                            greedy: true,
-                            target: 'emptyTools'
+                            target: [ 'emptyGeneral', 'emptySummary', 'emptyTools' ]
                         }
                     },
 
@@ -62,7 +52,7 @@ sap.ui.define(
                     },
 
                     targets: {
-                        empty: {
+                        emptyGeneral: {
                             viewName: 'GeneralEmpty',
                             controlId: 'idAppGeneral',
                             controlAggregation: 'content',
@@ -92,6 +82,7 @@ sap.ui.define(
             this.initRouter();
             this.initModels();
             this.initIcons();
+            this.initPopup();
         };
 
         NRGComponent.prototype.destroy = function () {
@@ -100,6 +91,18 @@ sap.ui.define(
 
         NRGComponent.prototype.initIcons = function () {
             IconUtil.load();
+        };
+
+        NRGComponent.prototype.initPopup = function () {
+            // Set the initial Z-index to 100.
+            // Internally, UI5 is doing an increment of 10 for each call.
+            // TODO: in 1.30, it is possible to call method setInitialZIndex instead of looping.
+
+            var iIdx;
+
+            for (iIdx = 0; iIdx < 10; iIdx = iIdx + 1) {
+                sap.ui.core.Popup.getNextZIndex();
+            }
         };
 
         NRGComponent.prototype.initModels = function () {
