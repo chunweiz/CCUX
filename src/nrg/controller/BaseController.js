@@ -26,7 +26,5 @@ sap.ui.define(
                 return this.getOwnerComponent().getModel(sId);
             }
         });
-    },
-
-    false
+    }
 );

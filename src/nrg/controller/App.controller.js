@@ -37,7 +37,5 @@ sap.ui.define(
         };
 
         return AppController;
-    },
-    
-    false
+    }
 );

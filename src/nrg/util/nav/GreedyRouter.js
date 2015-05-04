@@ -27,7 +27,5 @@ sap.ui.define(
         };
 
         return GreedyRouter;
-    },
-    
-    false
+    }
 );

@@ -39,7 +39,5 @@ sap.ui.define(
         };
 
         return AppNav;
-    },
-
-    false
+    }
 );

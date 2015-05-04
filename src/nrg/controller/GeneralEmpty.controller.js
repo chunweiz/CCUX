@@ -9,7 +9,5 @@ sap.ui.define(
         'use strict';
 
         return Controller.extend('nrg.controller.GeneralEmpty');
-    },
-
-    false
+    }
 );
