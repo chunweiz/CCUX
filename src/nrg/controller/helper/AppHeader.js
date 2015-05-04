@@ -101,7 +101,5 @@ sap.ui.define(
         };
         
         return AppHdr;
-    },
-    
-    false
+    }
 );

@@ -200,7 +200,5 @@ sap.ui.define(
         };
 
         return new Icon();
-    },
-
-    false
+    }
 );

@@ -42,7 +42,5 @@ sap.ui.define(
         };
 
         return AppMain;
-    },
-
-    false
+    }
 );

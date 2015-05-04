@@ -1,6 +1,0 @@
-<mvc:View
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns:tm="tm.control.lib.ui"
-    xmlns:layout="sap.ui.layout">
-    <layout:VerticalLayout id="idDivision" />
-</mvc:View>
