@@ -2,20 +2,24 @@
     display: inline-block;
     position: relative;
     border-radius: 50%;
-    color: @uteColorBluePearl;
     text-align: center;
-    font: @uteFontWeightRegular 0.75rem @uteFontFamily;
-    margin: 2px;
+    cursor: default;
+
+    &.uteBadge-txt {
+        color: @uteColor-white;
+        font-size: 0.75em;
+        text-transform: uppercase;
+    }
 
     & .uteBadge-alert {
-        background-color: @uteColorRedAlert;
+        background-color: @uteColor-redAlert;
     }
 
     & .uteBadge-attention {
-        background-color: @uteColorRedAlert;
+        background-color: @uteColor-orangeAttention;
     }
 
     & .uteBadge-regular {
-        background-color: @uteColorRedAlert;
+        background-color: @uteColor-greenHighlight;
     }
 }

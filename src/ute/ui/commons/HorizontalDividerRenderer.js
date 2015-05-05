@@ -1,67 +1,32 @@
 /*global sap*/
 
-// Provides default renderer for control sap.ui.commons.HorizontalDivider
-sap.ui.define(['jquery.sap.global'],
-	function (jQuery) {
-	    "use strict";
+sap.ui.define(
+    [],
 
+	function () {
+	    'use strict';
 
-	/**
-	 * HorizontalDivider renderer.
-	 * @namespace
-	 */
-	    var HorizontalDividerRenderer = {
-	        };
-	/**
-	 * Renders the HTML for the given control, using the provided {@link sap.ui.fw.RenderManager}.
-	 *
-	 * @param {sap.ui.fw.RenderManager} oRenderManager The RenderManager that can be used for writing to the Render-Output-Buffer
-	 * @param {sap.ui.fw.Control} oControl An object representation of the control that should be rendered
-	 */
-	    HorizontalDividerRenderer.render = function (oRenderManager, oControl) {
-		    var rm = oRenderManager;
-			rm.write("<div");
-			rm.writeControlData(oControl);
-			rm.writeAttribute("role", "separator"); //ARIA
-			if (oControl.getWidth()) {
-				rm.writeAttribute("style", "width:" + oControl.getWidth() + ";");
-			}
-			rm.addClass("uteUiCommonsHoriDiv");
-			switch (oControl.getType()) {
-			case "Page":
-				rm.addClass("uteUiCommonsHoriDivTypePage");
-				break;
-			case "Area":
-				rm.addClass("uteUiCommonsHoriDivTypeArea");
-				break;
-			case "Dotted":
-				rm.addClass("uteUiCommonsHoriDivTypeDotted");
-				break;
-			case "Dashed":
-				rm.addClass("uteUiCommonsHoriDivTypeDashed");
-				break;
-			default:
-				rm.addClass("uteUiCommonsHoriDivTypePage");
-			}
-			switch (oControl.getHeight()) {
-		    case "Ruleheight":
-				rm.addClass("uteUiCommonsHoriDivHeightR");
-				break;
-			case "Small":
-				rm.addClass("uteUiCommonsHoriDivHeightS");
-				break;
-			case "Large":
-				rm.addClass("uteUiCommonsHoriDivHeightL");
-				break;
-			default:
-				rm.addClass("uteUiCommonsHoriDivHeightM");
-			}
-			rm.writeClasses();
-			rm.write("/>");
-			rm.write("</div>");
+	    var HDivRenderer = {};
+
+	    HDivRenderer.render = function (oRm, oControl) {
+		    oRm.write('<div');
+            oRm.writeControlData(oControl);
+
+            oRm.addStyle('width', oControl.getWidth());
+            oRm.writeStyles();
+
+            oRm.addClass('uteHDiv');
+            oRm.addClass('uteHDiv-height-' + oControl.getHeight().toLowerCase());
+            oRm.addClass('uteHDiv-size-' + oControl.getSize().toLowerCase());
+            oRm.addClass('uteHDiv-design-' + oControl.getDesign().toLowerCase());
+            oRm.writeClasses();
+
+            oRm.write('>');
+            oRm.write('</div>');
 	    };
 
+	    return HDivRenderer;
+    },
 
-	    return HorizontalDividerRenderer;
-
-    }, /* bExport= */ true);
+    true
+);

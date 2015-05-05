@@ -1,5 +1,4 @@
-/*globals sap*/
-/*jslint nomen:true*/
+/*globals sap, ute*/
 
 sap.ui.define(
     [
@@ -12,30 +11,32 @@ sap.ui.define(
         var Badge = Control.extend('ute.ui.commons.Badge', {
             metadata: {
                 library: 'ute.ui.commons',
+
                 properties: {
+                    design: {
+                        type: 'ute.ui.commons.BadgeDesign',
+                        defaultValue: ute.ui.commons.BadgeDesign.Regular
+                    },
                     text: {
                         type: 'string',
                         defaultValue: ''
                     },
-                    height: {
+                    size: {
                         type: 'sap.ui.core.CSSSize',
-                        defaultValue: '2rem'
+                        defaultValue: '20px'
                     },
-                    width: {
+                    textSize: {
                         type: 'sap.ui.core.CSSSize',
-                        defaultValue: '2rem'
-                    },
-                    type: {
-                        type: 'ute.ui.commons.BadgeType',
-                        defaultValue: 'ute.ui.commons.BadgeType.Regular'
+                        defaultValue: null
                     }
                 }
             }
         });
 
         return Badge;
-
     },
 
     true
 );
+
+

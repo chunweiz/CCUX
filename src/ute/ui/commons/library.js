@@ -12,15 +12,16 @@ sap.ui.define(
 
 		sap.ui.getCore().initLibrary({
 			name: 'ute.ui.commons',
-			version: '1.0.0.0',
+			version: '1.0.0',
 			dependencies: ['sap.ui.core'],
 
 			types: [
-                'ute.ui.commons.BadgeType',
+                'ute.ui.commons.BadgeDesign',
                 'ute.ui.commons.CSSDisplay',
                 'ute.ui.commons.CSSPosition',
-                'ute.ui.commons.HorizontalDividerType',
+                'ute.ui.commons.HorizontalDividerDesign',
                 'ute.ui.commons.HorizontalDividerHeight',
+                'ute.ui.commons.HorizontalDividerSize',
                 'ute.ui.commons.ButtonType'
             ],
 
@@ -56,22 +57,26 @@ sap.ui.define(
             Underlined: 'Underlined'
         };
 
-        ute.ui.commons.BadgeType = {
+        ute.ui.commons.BadgeDesign = {
             Alert: 'Alert',
             Attention: 'Attention',
             Regular: 'Regular'
             
         };
 
-	    ute.ui.commons.HorizontalDividerType = {
-		    Area: 'Area',
-		    Page: 'Page',
-		    Dotted: 'Dotted',
-		    Dashed : 'Dashed'
+	    ute.ui.commons.HorizontalDividerDesign = {
+		    Solid: 'Solid',
+            Dotted: 'Dotted'
 	    };
 
 	    ute.ui.commons.HorizontalDividerHeight = {
-		    Ruleheight: 'Ruleheight',
+            None: 'None',
+		    Small: 'Small',
+		    Medium: 'Medium',
+		    Large: 'Large'
+	    };
+
+        ute.ui.commons.HorizontalDividerSize = {
 		    Small: 'Small',
 		    Medium: 'Medium',
 		    Large: 'Large'
@@ -90,8 +95,5 @@ sap.ui.define(
         }, DataType.getType('string'));
 
 		return ute.ui.commons;
-		
-	},
-
-    false
+	}
 );

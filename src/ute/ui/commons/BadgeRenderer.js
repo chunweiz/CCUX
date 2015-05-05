@@ -1,4 +1,4 @@
-/*globals sap, ute*/
+/*globals sap*/
 
 sap.ui.define(
     [],
@@ -10,43 +10,36 @@ sap.ui.define(
 
         BadgeRenderer.render = function (oRm, oControl) {
             oRm.write('<div');
+
             oRm.writeControlData(oControl);
-            
-            oRm.addClass('uteBadge');
-            
-            switch (oControl.getType()) {
-            case ute.ui.commons.BadgeType.Alert:
-                oRm.addClass('uteBadge-alert');
-                break;
-            case ute.ui.commons.BadgeType.Attention:
-                oRm.addClass('uteBadge-attention');
-                break;
-            case ute.ui.commons.BadgeType.Regular:
-                oRm.addClass('uteBadge-regular');
-                break;
-            default:
-                oRm.addClass('uteBadge-regular');
+
+            if (oControl.getTooltip_AsString()) {
+                oRm.writeAttributeEscaped('title', oControl.getTooltip_AsString());
             }
-            
-            oRm.writeClasses();
-            
-            oRm.addStyle('height', oControl.getHeight());
-            oRm.addStyle('line-height', oControl.getHeight());
-            oRm.addStyle('width', oControl.getWidth());
+
+            oRm.addStyle('width', oControl.getSize());
+            oRm.addStyle('height', oControl.getSize());
+            oRm.addStyle('line-height', oControl.getSize());
+
+            if (oControl.getTextSize()) {
+                oRm.addStyle('font-size', oControl.getTextSize());
+            }
+
             oRm.writeStyles();
-            
+
+            oRm.addClass('uteBadge');
+            oRm.addClass('uteBadge-txt');
+            oRm.addClass('uteBadge-' + oControl.getDesign().toLowerCase());
+            oRm.writeClasses();
+
             oRm.write('>');
             oRm.writeEscaped(oControl.getText());
             oRm.write('</div>');
         };
 
         return BadgeRenderer;
-
     },
 
     true
 );
 
-/*
-<div class="uteBadge attention">RHS</div>    
-*/

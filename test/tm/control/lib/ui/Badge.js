@@ -23,7 +23,7 @@ sap.ui.define(
                     },
                     size: {
                         type: 'sap.ui.core.CSSSize',
-                        defaultValue: '2rem'
+                        defaultValue: '20px'
                     },
                     textSize: {
                         type: 'sap.ui.core.CSSSize',

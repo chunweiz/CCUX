@@ -13,8 +13,20 @@ sap.ui.define(
                 library: 'tm.control.lib.ui',
                 properties: {
                     design: {
+                        type: 'tm.control.lib.ui.ButtonDesign',
+                        defaultValue: null
+                    },
+                    text: {
                         type: 'string',
                         defaultValue: ''
+                    },
+                    width: {
+                        type: 'sap.ui.core.CSSSize',
+                        defaultValue: null
+                    },
+                    enabled: {
+                        type: 'boolean',
+                        defaultValue: true
                     }
                 },
                 events: {
