@@ -2,7 +2,7 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
     xmlns:core="sap.ui.core">
-    
+
     <ute:Tag elem="nav" id="idAppHdrMenu" class="nrgAppHdr nrgU-clearfix">
         <ute:content>
             <div class="nrgAppHdr-logo nrgU-left" />
@@ -12,7 +12,7 @@
                     <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{i18n>nrgAppHeaderMenu}" />
                     <section class="nrgAppHdr-listItemSub">
                         <article class="nrgAppHdr-listItemSubInner">
-                            <core:Fragment fragmentName="nrg.view.AppHeaderQuickLink" type="XML" />
+                            <core:Fragment fragmentName="nrg.view.fragment.AppHeaderQuickLink" type="XML" />
                         </article>
                     </section>
                 </li>
