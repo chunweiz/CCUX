@@ -14,11 +14,16 @@
 		</script>
 		<script>
 			sap.ui.getCore().attachInit(function() {
-                var oControl = new tm.control.lib.ui.Button('zzz', {});
+                var oControl = new tm.control.lib.ui.Button();
+                oControl.setTooltip('tooltip');
+                console.log(oControl.getTooltip());
                 oControl.placeAt('content');
             });
 		</script>
 	</head>
 	<body class="sapUiBody" role="application" id="content">
+        <div>
+            <button type="button" title="test tooltip">zz</button>
+        </div>
 	</body>
 </html>

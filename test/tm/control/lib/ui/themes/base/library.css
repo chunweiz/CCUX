@@ -8,3 +8,30 @@
 .uteBtn .uteBtn-txt {
     text-transform: uppercase;
 }
+
+.uteBadge {
+    display: inline-block;
+    position: relative;
+    border-radius: 50%;
+    text-align: center;
+    cursor: default;
+}
+
+.uteBadge.uteBadge-txt {
+    color: white;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 0.75em;
+    text-transform: uppercase;
+}
+
+.uteBadge.uteBadge-alert {
+    background-color: tomato;
+}
+
+.uteBadge.uteBadge-attention {
+    background-color: orange;
+}
+
+.uteBadge.uteBadge-regular {
+    background-color: darkseagreen;
+}
