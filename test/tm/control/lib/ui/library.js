@@ -30,9 +30,9 @@ sap.ui.define(
 		});
 
         tm.control.lib.ui.BadgeDesign = {
-            Alert: 'Alert',
-            Attention: 'Attention',
-            Regular: 'Regular'
+            Alert: 'alert',
+            Attention: 'attention',
+            Regular: 'regular'
         };
 
         tm.control.lib.ui.ButtonDesign = {

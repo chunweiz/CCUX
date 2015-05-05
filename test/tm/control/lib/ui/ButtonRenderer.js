@@ -1,14 +1,9 @@
 /*globals sap, tm*/
 
 sap.ui.define(
-    [
-        'jquery.sap.global',
+    [],
 
-        //Not part of factory function arguments
-        './library'
-    ],
-
-    function (jQuery) {
+    function () {
         'use strict';
 
         var ButtonRenderer = {};
@@ -18,6 +13,11 @@ sap.ui.define(
 
             oRm.writeControlData(oControl);
             oRm.writeAttribute('type', 'button');
+
+            if (oControl.getTooltip_AsString()) {
+                oRm.writeAttributeEscaped('title', oControl.getTooltip_AsString());
+            }
+
             oRm.addClass('uteBtn');
             oRm.writeClasses();
             oRm.write('>');

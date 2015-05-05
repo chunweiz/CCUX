@@ -14,10 +14,17 @@
 		</script>
 		<script>
 			sap.ui.getCore().attachInit(function() {
-
+                var oControl = new tm.control.lib.ui.Badge({
+                    text: 'rhs',
+                    tooltip: 'zzz tpptop',
+                    size: '30px',
+                    textSize: '10px'
+                });
+                oControl.placeAt('content');
             });
 		</script>
 	</head>
 	<body class="sapUiBody" role="application" id="content">
+
 	</body>
 </html>
