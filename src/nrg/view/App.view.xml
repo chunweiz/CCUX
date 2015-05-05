@@ -11,7 +11,7 @@
     <ute:Tag class="nrgApp">
         <ute:content>
             <header class="nrgApp-hdr">
-                <core:Fragment fragmentName="nrg.view.AppHeader" type="XML" />
+                <core:Fragment fragmentName="nrg.view.fragment.AppHeader" type="XML" />
             </header>
             <div class="nrgApp-body nrgU-clearfix">
                 <aside class="nrgApp-navLeft nrgU-left">
@@ -21,11 +21,11 @@
                     <ute:Tag id="idNrgAppArrowRight" class="nrgApp-arrowRight" />
                 </aside>
                 <main class="nrgApp-main">
-                    <core:Fragment fragmentName="nrg.view.AppMain" type="XML" />
+                    <core:Fragment fragmentName="nrg.view.fragment.AppMain" type="XML" />
                 </main>
             </div>
             <footer class="nrgApp-ftr">
-                <core:Fragment fragmentName="nrg.view.AppFooter" type="XML" />
+                <core:Fragment fragmentName="nrg.view.fragment.AppFooter" type="XML" />
             </footer>
         </ute:content>
     </ute:Tag>
