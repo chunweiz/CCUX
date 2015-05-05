@@ -40,38 +40,51 @@ sap.ui.define(
 
                 routing: {
                     routes: {
-                        empty: {
+                        bpFound: {
+                            pattern: 'bp',
+                            target: [ 'generalEmpty', 'summaryBp', 'toolsEmpty' ]
+                        },
+
+                        notFound: {
                             pattern: '',
-                            target: [ 'emptyGeneral', 'emptySummary', 'emptyTools' ]
+                            target: [ 'generalEmpty', 'summaryEmpty', 'toolsEmpty' ],
+                            subroutes: [
+                                {
+                                    pattern: '{all*}',
+                                    target: [ 'generalEmpty', 'summaryEmpty', 'toolsEmpty' ]
+                                }
+                            ]
                         }
                     },
 
                     config: {
                         routerClass: sap.ui.core.routing.Router,
                         viewType: sap.ui.core.mvc.ViewType.XML,
-                        viewPath: 'nrg.view'
+                        viewPath: 'nrg.view',
+                        controlAggregation: 'content',
+                        clearControlAggregation: true
+
                     },
 
                     targets: {
-                        emptyGeneral: {
+                        summaryBp: {
+                            viewName: 'SummaryBP',
+                            controlId: 'idAppSummary'
+                        },
+
+                        generalEmpty: {
                             viewName: 'GeneralEmpty',
-                            controlId: 'idAppGeneral',
-                            controlAggregation: 'content',
-                            clearAggregation: true
+                            controlId: 'idAppGeneral'
                         },
 
-                        emptySummary: {
+                        summaryEmpty: {
                             viewName: 'SummaryEmpty',
-                            controlId: 'idAppSummary',
-                            controlAggregation: 'content',
-                            clearAggregation: true
+                            controlId: 'idAppSummary'
                         },
 
-                        emptyTools: {
+                        toolsEmpty: {
                             viewName: 'ToolsEmpty',
-                            controlId: 'idAppTools',
-                            controlAggregation: 'content',
-                            clearAggregation: true
+                            controlId: 'idAppTools'
                         }
                     }
                 }

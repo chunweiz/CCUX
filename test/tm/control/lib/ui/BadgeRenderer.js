@@ -29,7 +29,7 @@ sap.ui.define(
 
             oRm.addClass('uteBadge');
             oRm.addClass('uteBadge-txt');
-            oRm.addClass('uteBadge-' + oControl.getDesign());
+            oRm.addClass('uteBadge-' + oControl.getDesign().toLowerCase());
             oRm.writeClasses();
 
             oRm.write('>');
