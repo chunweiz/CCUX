@@ -10,13 +10,13 @@ sap.ui.define(
         'nrg/controller/helper/AppNav'
     ],
     
-    function (Controller, AppHeader, AppFooter, AppMain, AppNav) {
+    function (CoreController, AppHeader, AppFooter, AppMain, AppNav) {
         'use strict';
         
-        var AppController = Controller.extend('nrg.controller.App');
+        var Controller = CoreController.extend('nrg.controller.App');
 
         //DOM for control is only available after rendering
-        AppController.prototype.onAfterRendering = function () {
+        Controller.prototype.onAfterRendering = function () {
             this._oAppHeader = new AppHeader({
                 hdr: 'idAppHdrMenu',
                 quickLink: 'idAppHdrQuickLink',
@@ -36,6 +36,6 @@ sap.ui.define(
             }, this).initialize();
         };
 
-        return AppController;
+        return Controller;
     }
 );

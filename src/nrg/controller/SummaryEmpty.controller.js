@@ -5,9 +5,9 @@ sap.ui.define(
         'sap/ui/core/mvc/Controller'
     ],
 
-    function (Controller) {
+    function (CoreController) {
         'use strict';
 
-        return Controller.extend('nrg.controller.SummaryEmpty');
+        return CoreController.extend('nrg.controller.SummaryEmpty');
     }
 );
