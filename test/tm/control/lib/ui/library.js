@@ -13,13 +13,33 @@ sap.ui.define(
 			name: 'tm.control.lib.ui',
 			version: '1.0.0',
 			dependencies: ['sap.ui.core'],
-			interfaces: [],
+
+            types: [
+                'tm.control.lib.ui.BadgeDesign',
+                'tm.control.lib.ui.ButtonDesign'
+            ],
+
 			controls: [
-				'tm.control.lib.ui.Division',
-				'tm.control.lib.ui.Button'
+				'tm.control.lib.ui.Button',
+				'tm.control.lib.ui.TextField',
+				'tm.control.lib.ui.Badge'
 			],
+
+            interfaces: [],
 			elements: []
 		});
+
+        tm.control.lib.ui.BadgeDesign = {
+            Alert: 'Alert',
+            Attention: 'Attention',
+            Regular: 'Regular'
+        };
+
+        tm.control.lib.ui.ButtonDesign = {
+            Alert: 'Alert',
+            Attention: 'Attention',
+            Regular: 'Regular'
+        };
 
 		return tm.control.lib.ui;
 	}

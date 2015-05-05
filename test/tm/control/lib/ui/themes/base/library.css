@@ -1,0 +1,10 @@
+.uteBtn {
+    font-family: "Source Sans Pro", sans-serif;
+    padding: 2px 10px;
+    border-radius: 2px;
+    border-style: none;
+}
+
+.uteBtn .uteBtn-txt {
+    text-transform: uppercase;
+}

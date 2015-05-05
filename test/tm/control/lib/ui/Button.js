@@ -2,13 +2,13 @@
 
 sap.ui.define(
     [
-        'sap/ui/commons/Button'
+        'sap/ui/core/Control'
     ],
 
-    function (SAPBtn) {
+    function (Control) {
         'use strict';
 
-        var Button = SAPBtn.extend('tm.control.lib.ui.Button', {
+        var Button = Control.extend('tm.control.lib.ui.Button', {
             metadata: {
                 library: 'tm.control.lib.ui',
                 properties: {
@@ -16,13 +16,12 @@ sap.ui.define(
                         type: 'string',
                         defaultValue: ''
                     }
+                },
+                events: {
+                    press: {}
                 }
             }
         });
-
-        Button.prototype.init = function () {
-            this.setStyled(false);
-        };
 
         return Button;
     },

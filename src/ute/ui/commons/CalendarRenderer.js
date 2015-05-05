@@ -29,14 +29,14 @@ sap.ui.define([],
 		    // the white empty areas can be clicked without closing the calendar
 		    // by accident.
 		    oRm.writeAttribute("tabindex", "-1");
-            oRm.write(">");
+            oRm.write(">");  // div element
             //Rendering Header and Days separately
             this.renderHeader(oRm, oCal, oDate);
             this.renderDayPicker(oRm, oCal, oDate);
             oRm.write("<div id=\"" + sId + "-dayPic\" class=\"nrgCal-dayPic\">");
             this.renderDays(oRm, oCal, oDate);
-            oRm.write("</div>");
-			oRm.write("</div>");
+            oRm.write("</div>");// div element
+			oRm.write("</div>");// div element
 
         };
         CalendarRenderer.renderHeader = function (oRm, oCal, oDate) {
@@ -77,7 +77,7 @@ sap.ui.define([],
             oRm.write("<button id=\"" + sId + "-next\" class=\"nrgCal-hd-btnNext\" tabindex=\"-1\">");
             oRm.write("<span id=\"" + sId + "-prev\" class=\"UiIcon UiIcon-right\" >");
             oRm.write("</button>");
-            oRm.write("</div>");
+            oRm.write("</div>");// div element
 
         };
         CalendarRenderer.renderDayPicker = function (oRm, oCal, oDate) {
@@ -102,9 +102,9 @@ sap.ui.define([],
                 oRm.writeClasses();
                 oRm.write(">"); // div element
                 oRm.write(aWeekDays[(i + iFirstDayOfWeek) % 7]);
-                oRm.write("</div>");
+                oRm.write("</div>");// div element
             }
-            oRm.write("</div>");
+            oRm.write("</div>");// div element
             // days
         };
         CalendarRenderer.renderDays = function (oRm, oCal, oDate) {
@@ -151,6 +151,7 @@ sap.ui.define([],
                     oRm.addClass("nrgCal-dayPic-dayWeekend");
                 }
                 oRm.writeAttribute("tabindex", "-1");
+                oRm.writeAttribute("data-nrg-day", sYyyymmdd);
                 oRm.writeClasses();
                 oRm.write(">"); // div element
                 oRm.write(oDay.getUTCDate());
