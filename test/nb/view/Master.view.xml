@@ -1,0 +1,31 @@
+<core:View
+	controllerName="sap.ui.demo.myFiori.view.Master"
+    xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="sap.ui.commons"
+	xmlns:core="sap.ui.core"
+    xmlns:u="ute.ui.commons">
+<u:Tag>
+  <u:Dropdown border="true" backgroundcolor="true" title="Title" width="200px" padding="10px" items="{/myData}">
+  <u:items>
+  <core:ListItem text="{text}" key="{key}"/>
+
+      </u:items>
+      </u:Dropdown>
+   <!-- <u:InfoLine title="Test Infoline">
+    </u:InfoLine>-->
+<!--<c:ComboBox items="{/myData}">
+  <c:items>
+  <core:ListItem text="{text}" key="{key}"/>
+
+</c:items>
+    </c:ComboBox>-->
+
+    <!--<u:Calendar text="Test calendar">
+
+    </u:Calendar>-->
+
+
+    </u:Tag>
+
+</core:View>
+
