@@ -26,16 +26,18 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Element', 'sap/ui/core/RenderMa
                 filterProperty : {type : "string", group : "Behavior", defaultValue : null},
 
                 /*Specifies the value of the filter as string (will be converted into the propert data type).*/
-    			filterValue : {type : "string", group : "Behavior", defaultValue : null},
+                filterValue : {type : "string", group : "Behavior", defaultValue : null},
 
-			/**
-			 * Filter operator to use when filtering this column.
-			 * @see sap.ui.model.FilterOperator (default value: "Contains")
-			 */
-			filterOperator : {type : "string", group : "Behavior", defaultValue : null}
-
+                /*Filter operator to use when filtering this column. @see sap.ui.model.FilterOperator (default value: "Contains")*/
+                filterOperator : {type : "string", group : "Behavior", defaultValue : null}
+            },
+            defaultAggregation: 'label',
+            aggreations: {
+                label: {type: 'sap.ui.core.Control', multiple: false}
             }
         }});
+
+
 
         return Column;
 
