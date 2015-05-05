@@ -1,4 +1,5 @@
 /*global sap*/
+/*jslint nomen:true*/
 
 sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control', './Row', './library'],
 	function (jQuery, Control, Row, library) {
@@ -41,6 +42,15 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control', './Row', './library']
                 }
             }
         }});
+
+        Table.prototype._createRows = function () {
+            var aCols = this.getColumns(),
+                oTemplate = new Row(this.getId() + '-rows'),
+                oBinding = this.getBinding('rows'), //function not implemented yet
+                oBindingInfo = this.getBindingInfo('rows'); //function not implemented yet
+
+
+        };
 
         return Table;
     }, true);
