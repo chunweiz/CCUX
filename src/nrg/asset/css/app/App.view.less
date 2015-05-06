@@ -1,0 +1,81 @@
+.nrgApp {
+    /*
+        Agent screen resolution: 1680 x 1050
+        Wireframe: 1438 x 771
+        Wireframe min: 1358 x 686
+    */
+
+    position: relative;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+
+    & > .nrgApp-hdr,
+    & > .nrgApp-ftr {
+        position: fixed;
+        width: 100%;
+    }
+
+    & > .nrgApp-hdr {
+        z-index: @nrgZIndex-1--AppHeader;
+        top: 0;
+    }
+
+    & > .nrgApp-ftr {
+        z-index: @nrgZIndex-1--AppFooter;
+        bottom: 0;
+    }
+
+    & > .nrgApp-body {
+        position: relative;
+        width: 1440px;
+        margin: 0 auto;
+    }
+
+    & > .nrgApp-body > .nrgApp-navLeft,
+    & > .nrgApp-body > .nrgApp-navRight {
+        width: 30px;
+        height: 300px;
+        padding-top: 250px;
+    }
+
+    & > .nrgApp-body > .nrgApp-navLeft > .nrgApp-arrowLeft,
+    & > .nrgApp-body > .nrgApp-navRight > .nrgApp-arrowRight {
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+    }
+
+    & > .nrgApp-body > .nrgApp-navLeft > .nrgApp-arrowLeft {
+        margin-left: 15px;
+        border-right: 15px solid @nrgColor-lightGrey;
+    }
+
+    & > .nrgApp-body > .nrgApp-navLeft > .nrgApp-arrowLeft:hover {
+        border-right: 15px solid @nrgColor-blueLink;
+    }
+
+    & > .nrgApp-body > .nrgApp-navRight > .nrgApp-arrowRight {
+        border-left: 15px solid @nrgColor-lightGrey;
+    }
+
+    & > .nrgApp-body > .nrgApp-navRight > .nrgApp-arrowRight:hover {
+        border-left: 15px solid @nrgColor-blueLink;
+    }
+
+    & > .nrgApp-body > .nrgApp-main {
+        position: relative;
+        width: 1358px;
+        margin: 0 auto;
+    }
+
+    @media screen {
+        @media (max-width:1440px) {
+            & > .nrgApp-ftr {
+                z-index: @nrgZIndex-1--AppFooter;
+                bottom: 17px;
+            }
+        }
+    }
+}

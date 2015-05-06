@@ -1,0 +1,162 @@
+.nrgAppFtr {
+    position: relative;
+
+    & > .nrgAppFtr-toggle {
+        position: relative;
+        border-bottom: 10px solid @nrgColor-white;
+    }
+
+    & > .nrgAppFtr-toggle > .nrgAppFtr-toggleBtn {
+        display: block;
+        width: 80px;
+        height: 15px;
+        cursor: pointer;
+        border-top-left-radius: 4px;
+        background-color: @nrgColor-white;
+    }
+
+    & > .nrgAppFtr-toggle > .nrgAppFtr-toggleBtn::before {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border: 1px solid @nrgColor-blueLink;
+        border-bottom: none;
+        border-right: none;
+        transform: translate(35px, 8px) rotate(45deg);
+    }
+
+    & > .nrgAppFtr-toggle > .nrgAppFtr-toggleChk:checked + .nrgAppFtr-toggleBtn::before {
+        transform: translate(35px, 2px) rotate(-135deg);
+    }
+
+    & > .nrgAppFtr-content {
+        background-color: @nrgColor-white;
+        height: 238px;
+        padding: 5px 0 20px 0;
+        overflow: hidden;
+    }
+
+    & > .nrgAppFtr-content .nrgAppFtr-subTitle {
+        text-transform: uppercase;
+        color: @nrgColor-blueLink;
+        font: @nrgFontWeight-bold @nrgFontSize-small @nrgFontFamily;
+        padding-bottom: 5px;
+    }
+
+    & > .nrgAppFtr-content .nrgAppFtr-subTitle:hover {
+        cursor: pointer;
+        color: @nrgColor-lightBlue;
+    }
+
+    & > .nrgAppFtr-content > .nrgAppFtr-notif,
+    & > .nrgAppFtr-content > .nrgAppFtr-rhs,
+    & > .nrgAppFtr-content > .nrgAppFtr-offer,
+    & > .nrgAppFtr-content > .nrgAppFtr-offerToolbar,
+    & > .nrgAppFtr-content > .nrgAppFtr-toolbar {
+        height: 100%;
+        padding: 0 10px;
+        border-left: 1px solid @nrgColor-lightGrey;
+        overflow: hidden;
+    }
+
+    & > .nrgAppFtr-content > .nrgAppFtr-notif {
+        min-width: 564px;
+        padding: 0 10px 0 40px;
+        border-left: none;
+        overflow: auto;
+    }
+
+    & > .nrgAppFtr-content > .nrgAppFtr-rhs {
+        width: 270px;
+    }
+
+    & > .nrgAppFtr-content > .nrgAppFtr-offer {
+        width: 270px;
+    }
+
+    & > .nrgAppFtr-content > .nrgAppFtr-offerToolbar {
+        border-left: none;
+        width: 256px;
+    }
+
+    & > .nrgAppFtr-content > .nrgAppFtr-offerToolbar > .nrgAppFtr-offerBtn {
+        width: 100%;
+        height: 92px;
+        background-color: @nrgColor-lightPaleBlue;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 2px;
+        outline-style: none;
+    }
+
+    & > .nrgAppFtr-content > .nrgAppFtr-offerToolbar > .nrgAppFtr-offerBtn:hover {
+        background-color: @nrgColor-darkPaleBlue;
+        color: @nrgColor-white;
+    }
+
+    & > .nrgAppFtr-content > .nrgAppFtr-offerToolbar > .nrgAppFtr-offerBtn > .nrgAppFtr-offerBtnTitle {
+        font: @nrgFontWeight-semiBold @nrgFontSize-small @nrgFontFamily;
+        margin-bottom: 10px;
+    }
+
+    & > .nrgAppFtr-content > .nrgAppFtr-offerToolbar > .nrgAppFtr-offerBtn > .nrgAppFtr-offerBtnDesc {
+        font: @nrgFontWeight-bold @nrgFontSize-larger @nrgFontFamily;
+        color: @nrgColor-redAlert;
+        text-transform: uppercase;
+    }
+
+    & > .nrgAppFtr-content > .nrgAppFtr-offerToolbar > .nrgAppFtr-offerBtn > .nrgAppFtr-offerBtnDesc.nrgAppFtr-offerBtnTitle-ok {
+        color: @nrgColor-blueLink;
+    }
+
+    & > .nrgAppFtr-content > .nrgAppFtr-toolbar {
+        width: 80px;
+        text-align: center;
+    }
+
+    & > .nrgAppFtr-content > .nrgAppFtr-toolbar > .nrgAppFtr-toolbarBtn {
+        padding: 15px 5px;
+        cursor: default;
+        color: @nrgColor-blueLink;
+    }
+
+    & > .nrgAppFtr-content > .nrgAppFtr-toolbar > .nrgAppFtr-toolbarBtn:hover {
+        color: @nrgColor-lightBlue;
+    }
+
+    & > .nrgAppFtr-content > .nrgAppFtr-toolbar > .nrgAppFtr-toolbarBtn > .nrgAppFtr-toolbarBtnIcon {
+        font-size: 40px;
+    }
+
+    // Hide some content as the screen gets smaller
+    @media screen {
+        @media (max-width: 1439px) {
+            & > .nrgAppFtr-content > .nrgAppFtr-rhs {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1176px) {
+            & > .nrgAppFtr-content > .nrgAppFtr-offer {
+                display: none;
+            }
+
+            & > .nrgAppFtr-content > .nrgAppFtr-offerToolbar {
+                border-left: 1px solid @nrgColor-lightGrey;
+            }
+        }
+
+        @media (max-width: 920px) {
+            & > .nrgAppFtr-content > .nrgAppFtr-offerToolbar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 645px) {
+            & > .nrgAppFtr-content > .nrgAppFtr-notif {
+                display: none;
+            }
+        }
+    }
+}

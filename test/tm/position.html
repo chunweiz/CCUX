@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                line-height: 1;
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 10pt;
+            }
+
+            header {
+                position: fixed;
+                z-index: 5;
+                width: 100%;
+            }
+
+            header > nav {
+                position: relative;
+                border-bottom: 4px solid deepskyblue;
+                height: 50px;
+            }
+
+            header > nav > img,
+            header > nav > h1,
+            header > nav > ul {
+                display: inline-block;
+            }
+
+            header > nav > img {
+                max-width: 45px;
+                max-height: 50px;
+                height: 100%;
+                vertical-align: middle;
+                float: left;
+            }
+
+            header > nav > h1 {
+                font-size: 12pt;
+                font-weight: 400;
+                color: dimgray;
+                vertical-align: middle;
+                margin-left: 20px;
+                padding-top: 20px;
+            }
+
+            header > nav > ul {
+                list-style-type: none;
+                float: right;
+            }
+
+            header > nav > ul > li > span {
+                display: inline-block;
+                cursor: pointer;
+                padding: 20px;
+            }
+
+            header > nav > ul > li > section {
+                display: block;
+                position: absolute;
+                width: 100%;
+                left: 0;
+            }
+
+            header > nav > ul > li > section > article {
+                max-width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <img src="nrg-logo.svg"/>
+                <h1>reliant interaction center</h1>
+                <ul>
+                    <li>
+                        <span>Menu</span>
+                        <section>
+                            <article>
+                                <div>
+                                    sub menu inner !!!
+                                </div>
+                            </article>
+                        </section>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    </body>
+</html>
