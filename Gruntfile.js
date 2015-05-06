@@ -92,13 +92,13 @@
             concat: {
                 noLang: {
                     src: [
-                        'src/nrg/i18n/lang/**/*_en_US.properties'
+                        'src/nrg/i18n/view/**/*_en_US.properties'
                     ],
                     dest: 'build/nrg/i18n/messageBundle.properties'
                 },
                 enUs: {
                     src: [
-                        'src/nrg/i18n/lang/**/*_en_US.properties'
+                        'src/nrg/i18n/view/**/*_en_US.properties'
                     ],
                     dest: 'build/nrg/i18n/messageBundle_en_US.properties'
                 }

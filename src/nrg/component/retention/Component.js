@@ -15,7 +15,7 @@ sap.ui.define(
 
         var NRGComponent = Component.extend('nrg.component.retention.Component', {
             metadata: {
-                name : 'Reliant Interaction Center for Retention Agent',
+                name : 'NRG Interaction Center - Retention',
                 version : '1.0.0',
                 includes: ['../../asset/css/nrg.css'],
                 dependencies: {
@@ -47,7 +47,7 @@ sap.ui.define(
 
                         empty: {
                             pattern: '',
-                            target: [ 'generalEmpty', 'summaryEmpty', 'toolsEmpty' ],
+                            target: [ 'generalEmpty', 'summaryEmpty', 'toolsEmpty' ]
                         },
 
                         notFound: {
@@ -57,12 +57,10 @@ sap.ui.define(
                     },
 
                     config: {
-                        routerClass: sap.ui.core.routing.Router,
                         viewType: sap.ui.core.mvc.ViewType.XML,
                         viewPath: 'nrg.view',
                         controlAggregation: 'content',
                         clearControlAggregation: true
-
                     },
 
                     targets: {
