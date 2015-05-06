@@ -45,11 +45,15 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 defaultAggregation : "items", aggregations : {
 /**
 
-			 * Getter for aggregation items. Allows setting ListItems (see sap.ui.core.ListBox) that shall be displayed in the list.
-			 */
-			items :
-            {
-                type : "sap.ui.core.ListItem", multiple : true, singularName : "item",             bindable:"bindable"}
+* Getter for aggregation items. Allows setting ListItems (see sap.ui.core.ListBox) that shall be displayed in the list.
+*/
+                items :
+                    {
+                        type : "sap.ui.core.ListItem",
+                        multiple : true,
+                        singularName : "item",
+                        bindable: "bindable"
+                    }
             },
 
                 /*events: {
@@ -59,33 +63,32 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                         }
                     }
                 }*/
-        }
-    });
+                }
+        });
 
 
 
-  Dropdown.prototype.onclick = function (oEvent) {
+    Dropdown.prototype.onclick = function (oEvent) {
 
-      var obj = this;
+        var obj = this;
 
-      $("div.uteDD").toggleClass('active');
+        $("div.uteDD").toggleClass('active');
         //this.opts = $("div").find('ul.uteDD-list > li');
         this.opts = $(oEvent.target).find('ul.uteDD-list > li');
 
-      this.opts.on('click',function(){
+        this.opts.on('click', function () {
 
-                         var opt = $(this);
-                         obj.setTitle(opt.text());
+            var opt = $(this);
+            obj.setTitle(opt.text());
 
-					});
+        });
       /*oEvent.preventDefault();
             oEvent.stopPropagation();      */
 
-
     };
 
-        return Dropdown;
-    },
+    return Dropdown;
+},
 
     true
 );

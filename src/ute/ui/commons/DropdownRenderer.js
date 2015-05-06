@@ -54,10 +54,6 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
 			oRm.write("</ul></div></div>");
             };
 
-           /* DropdownRenderer.setValue = function(oVal) {*/
-
-
-
         return DropdownRenderer;
     },
 
