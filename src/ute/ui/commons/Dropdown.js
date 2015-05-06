@@ -23,7 +23,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                     padding : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "10px" },
 
                    //Placeholder value of a string before the input
-                    placeholder : {type : "string", group : "Appearance", defaultValue : null},
+                    //placeholder : {type : "string", group : "Appearance", defaultValue : null},
 
                 // Color of the dropdown arrow : Possible values - Grey or Blue
                     arrowcolor : {type : "string", group : "Appearance", defaultValue : "" },
@@ -66,22 +66,20 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 
   Dropdown.prototype.onclick = function (oEvent) {
 
+      var obj = this;
+
       $("div.uteDD").toggleClass('active');
         //this.opts = $("div").find('ul.uteDD-list > li');
         this.opts = $(oEvent.target).find('ul.uteDD-list > li');
-       this.itm = $("div").find('ul.uteDD-list > li a');
+
       this.opts.on('click',function(){
-                        alert('item click');
-            /*alert(oEvent.target.g);*/
-						/*var opt = this.opts;
-                        alert((this.itm).text());*/
-						/*$("div.uteDD").val = opt._data
-						$("div.uteDD").index = opt.index();
-						$("div.uteDD").placeholder.text($("div.uteDD").val);*/
+
+                         var opt = $(this);
+                         obj.setTitle(opt.text());
+
 					});
       /*oEvent.preventDefault();
             oEvent.stopPropagation();      */
-
 
 
     };

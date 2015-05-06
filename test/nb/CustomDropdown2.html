@@ -118,10 +118,27 @@
     text-indent: 10px;
     }
 
+    /* Hover state */
+   .uteDD .uteDD-list .uteDD-list-li{
+
+    }
 /* Hover state */
-   .uteDD .uteDD-list li a:hover {
+   .uteDD .uteDD-list .uteDD-list-li .uteDD-list-li-a {
+
+    }
+/* Hover state */
+   .uteDD .uteDD-list .uteDD-list-li .uteDD-list-li-a:hover {
     background: #83bbe5;
     }
+/* Hover state */
+   .uteDD-selected {
+
+    }
+
+/* Hover state */
+  /* .uteDD .uteDD-list li a:hover {
+    background: #83bbe5;
+    }*/
 
     .uteDD .uteDD-list li:first-of-type a {
         border-radius: 7px 7px 0 0;
@@ -147,9 +164,9 @@
     <div id="dd" class="ute-blue-arrow uteDD-with-border uteDD-white-background ute-solid-arrow uteDD" style="width: 300px; padding: 5px">
 	<span>Gender</span>
     <ul class="uteDD-list uteDD-list-with-border uteDD-white-background" style="top: 55%">
-        <li><a>Male</a></li>
-        <li><a>Female</a></li>
-        <li><a>Unknown</a></li>
+        <li class="uteDD-list-li"><a class="uteDD-list-li-a">Male</a></li>
+        <li class="uteDD-list-li"><a class="uteDD-list-li-a">Female</a></li>
+        <li class="uteDD-list-li"><a class="uteDD-list-li-a">Unknown</a></li>
     </ul>
     </div>
     </div>
@@ -172,14 +189,17 @@
 					obj.dd.on('click', function(event){
                        alert('dd click');
 						$(this).toggleClass('active');
+
                         return false;
 					});
 
 					obj.opts.on('click',function(){
                         alert('item click');
 						var opt = $(this);
-                        alert(opt);
+                       // alert(opt);
+                        opt.toggleClass('uteDD-selected');
 						obj.val = opt.text();
+                        alert(opt.text());
 						obj.index = opt.index();
 						obj.placeholder.text(obj.val);
 					});
