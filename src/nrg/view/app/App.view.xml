@@ -3,7 +3,7 @@
     xmlns:ute="ute.ui.commons"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
-    controllerName="nrg.controller.App"
+    controllerName="nrg.view.app.App"
     height="100%"
     width="100%"
     displayBlock="true">
@@ -11,7 +11,7 @@
     <ute:Tag class="nrgApp">
         <ute:content>
             <header class="nrgApp-hdr">
-                <core:Fragment fragmentName="nrg.view.fragment.AppHeader" type="XML" />
+                <core:Fragment fragmentName="nrg.view.app.AppHeader" type="XML" />
             </header>
             <div class="nrgApp-body nrgU-clearfix">
                 <aside class="nrgApp-navLeft nrgU-left">
@@ -21,11 +21,11 @@
                     <ute:Tag id="idNrgAppArrowRight" class="nrgApp-arrowRight" />
                 </aside>
                 <main class="nrgApp-main">
-                    <core:Fragment fragmentName="nrg.view.fragment.AppMain" type="XML" />
+                    <core:Fragment fragmentName="nrg.view.app.AppMain" type="XML" />
                 </main>
             </div>
             <footer class="nrgApp-ftr">
-                <core:Fragment fragmentName="nrg.view.fragment.AppFooter" type="XML" />
+                <core:Fragment fragmentName="nrg.view.app.AppFooter" type="XML" />
             </footer>
         </ute:content>
     </ute:Tag>

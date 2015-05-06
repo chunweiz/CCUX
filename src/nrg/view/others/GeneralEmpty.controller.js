@@ -8,6 +8,6 @@ sap.ui.define(
     function (CoreController) {
         'use strict';
 
-        return CoreController.extend('nrg.controller.SummaryEmpty');
+        return CoreController.extend('nrg.view.others.GeneralEmpty');
     }
 );

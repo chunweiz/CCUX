@@ -34,7 +34,7 @@ sap.ui.define(
                 },
 
                 rootView: {
-                    viewName: 'nrg.view.App',
+                    viewName: 'nrg.view.app.App',
                     type: sap.ui.core.mvc.ViewType.XML
                 },
 
@@ -73,17 +73,17 @@ sap.ui.define(
                         },
 
                         generalEmpty: {
-                            viewName: 'GeneralEmpty',
+                            viewName: 'others.GeneralEmpty',
                             controlId: 'idAppGeneral'
                         },
 
                         summaryEmpty: {
-                            viewName: 'SummaryEmpty',
+                            viewName: 'others.SummaryEmpty',
                             controlId: 'idAppSummary'
                         },
 
                         toolsEmpty: {
-                            viewName: 'ToolsEmpty',
+                            viewName: 'others.ToolsEmpty',
                             controlId: 'idAppTools'
                         }
                     }

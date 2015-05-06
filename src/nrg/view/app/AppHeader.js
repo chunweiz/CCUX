@@ -4,13 +4,13 @@
 sap.ui.define(
     [
         'sap/ui/base/Object',
-        'nrg/controller/helper/AppHeaderQuickLink'
+        'nrg/view/app/AppHeaderQuickLink'
     ],
 
     function (BaseObject, AppHdrQL) {
         'use strict';
 
-        var AppHdr = BaseObject.extend('nrg.controller.helper.AppHeader', {
+        var AppHdr = BaseObject.extend('nrg.view.app.AppHeader', {
             constructor: function (viewId, controller) {
                 this._oController = controller;
                 this._oAppHdr = this._oController.getView().byId(viewId.hdr);
