@@ -1,0 +1,57 @@
+.uteTable{
+    width: 90%;
+    border-collapse: collapse;
+
+    .uteTable-rowHeader{
+        background-color: blue;
+    }
+
+    .uteTable-rowHeader th{
+        padding: 10px;
+        border-right: 1px solid gray;
+    }
+
+    .uteTable-rowHeader :first-child{
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+
+    .uteTable-rowHeader :last-child{
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-right: none;
+    }
+
+    .uteTable-rowOdd{
+        background-color: transparent;
+    }
+
+    .uteTable-rowOdd td{
+        padding: 10px;
+        border-right: 1px solid gray;
+    }
+
+    .uteTable-rowOdd :last-child{
+        border-right: none;
+    }
+
+    .uteTable-rowEven{
+        background-color: aqua;
+    }
+
+    .uteTable-rowEven td{
+        padding: 10px;
+        border-right: 1px solid gray;
+    }
+
+    .uteTable-rowEven :first-child{
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+
+    .uteTable-rowEven :last-child{
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-right: none;
+    }
+}

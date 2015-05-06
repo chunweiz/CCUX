@@ -6,7 +6,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control', './Row', './library']
         "use strict";
 
         var Table = Control.extend("ute.ui.commons.Table", { metadata : {
-            library : "ute.ui.commons.table",
+            library : "ute.ui.commons",
             properties : {
                 /*Width of tabke*/
                 width: {type: 'sap.ui.core.CSSSize', group: 'Dimension', defaultValue: 'auto' },
@@ -21,10 +21,10 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control', './Row', './library']
             defaultAggregation: 'columns',
             aggregations: {
                 /* Columns of the Table*/
-                columns : {type : "sap.ui.table.Column", multiple : true, singularName : "column", bindable : "bindable"},
+                columns : {type : "ute.ui.commons.Column", multiple : true, singularName : "column", bindable : "bindable"},
 
                 /*Rows of the Table*/
-                rows : {type : "sap.ui.table.Row", multiple : true, singularName : "row", bindable : "bindable"}
+                rows : {type : "ute.ui.commons.Row", multiple : true, singularName : "row", bindable : "bindable"}
             },
             events: {
                 /*Might need this*/
@@ -50,13 +50,13 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control', './Row', './library']
                 return oBinding;
             }
         };
-
+/*
         Table.prototype._createRows = function () {
             var aCols = this.getColumns(),
                 oTemplate = new Row(this.getId() + '-rows'),
                 oBinding = this.getBinding('rows'),
                 oBindingInfo = this.getBindingInfo('rows'),
-                aContexts = oBinding.getContext(),
+                //aContexts = oBinding.getContext(),
                 i,
                 oClone;
 
@@ -71,7 +71,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control', './Row', './library']
             }
 
             oTemplate.destroy();
-        };
+        };*/
 
         return Table;
     }, true);

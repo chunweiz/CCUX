@@ -35,7 +35,7 @@
                 controllerName="local.controller.Control"
                 displayBlock="true">
 
-                <ute:Badge text="rhs" tooltip="regular" size="30px" textSize="10px" />
+                <ute:Badge text="{/text}" tooltip="regular" size="30px" textSize="10px" />
                 <ute:Badge text="rhs" tooltip="alert" design="Alert" />
 
             </mvc:View>
@@ -50,10 +50,12 @@
                 });
 
                 sap.ui.xmlview({ viewContent: jQuery('#main').html() })
-//                    .setModel() //If you need to bind to a model
+                    .setModel(new sap.ui.model.json.JSONModel({
+                        text: 'CA'
+                    }))
                     .placeAt('fromxml');
 
-                oControl = new tm.control.lib.ui.Badge({
+                var oControl = new tm.control.lib.ui.Badge({
                     text: 'rhs',
                     tooltip: 'attention',
                     size: '50px',

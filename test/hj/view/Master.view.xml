@@ -4,7 +4,8 @@
 	xmlns:c="sap.ui.commons"
 	xmlns:core="sap.ui.core"
     xmlns:u="ute.ui.commons"
-    xmlns:n="nrg.asset.img.icon">
+    xmlns:n="nrg.asset.img.icon"
+    xmlns:t="sap.ui.table">
     <u:Tag>
         <u:Tag
             text="Buttons">
@@ -89,6 +90,24 @@
                 rightBtnText="RIGHT TITLE">
             </u:ToggleButton>
         </u:Tag>
+        <u:Tag>
+            <u:Table>
+                <u:Column>
+                    <c:Label text="test"></c:Label>
+                </u:Column>
+                <u:Column>
+                    <c:Label text="test"></c:Label>
+                </u:Column>
+            </u:Table>
+        </u:Tag>
+        <!--
+        <u:Tag>
+            <t:Table>
+                <t:Column>
+                    <c:Label text="test"></c:Label>
+                </t:Column>
+            </t:Table>
+        </u:Tag>-->
         <!--
         <u:Button
             text="TITLE"
