@@ -2,11 +2,11 @@
 /*jslint nomen:true*/
 
 
-sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/core/ValueStateSupport'], function (jQuery, library, Control, ValueStateSupport) {
+sap.ui.define(['sap/ui/core/Control'], function (Control) {
     "use strict";
 
-    var Dropdown = Control.extend('ute.ui.commons.Dropdown', {
-            metadata : {library: 'ute.ui.commons',
+    var Dropdown = Control.extend('nb.control.lib.ui.Dropdown', {
+            metadata : {library: 'nb.control.lib.ui',
                 properties: {
                    //Value the textfield bind with
                     value : {type : "string", group : "Data", defaultValue : '', bindable : "bindable"},

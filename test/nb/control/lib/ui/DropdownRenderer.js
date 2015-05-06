@@ -1,7 +1,7 @@
 /*global sap*/
 
-sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueStateSupport'],
-    function (jQuery, Renderer, ValueStateSupport) {
+sap.ui.define([],
+    function () {
         "use strict";
         var DropdownRenderer = {};
 
