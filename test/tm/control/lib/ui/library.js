@@ -12,13 +12,10 @@ sap.ui.define(
 			dependencies: ['sap.ui.core'],
 
             types: [
-                'tm.control.lib.ui.BadgeDesign',
-                'tm.control.lib.ui.ButtonDesign'
+                'tm.control.lib.ui.BadgeDesign'
             ],
 
 			controls: [
-				'tm.control.lib.ui.Button',
-				'tm.control.lib.ui.TextField',
 				'tm.control.lib.ui.Badge'
 			],
 
@@ -30,12 +27,6 @@ sap.ui.define(
             Alert: 'Alert',
             Attention: 'Attention',
             Regular: 'Regular'
-        };
-
-        tm.control.lib.ui.ButtonDesign = {
-            Type001: 'Type001',
-            Type002: 'Type002',
-            Type003: 'Type003'
         };
 
 		return tm.control.lib.ui;

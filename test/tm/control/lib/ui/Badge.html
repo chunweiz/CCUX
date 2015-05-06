@@ -16,8 +16,7 @@
                 height: 100%;
             }
         </style>
-	</head>
-	<body class="sapUiBody" role="application" id="content">
+
         <script id="sap-ui-bootstrap"
 		    src="../../../../../bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
 		    data-sap-ui-libs="tm.control.lib.ui"
@@ -27,33 +26,49 @@
             	"tm.control.lib.ui": "./"
         	}'>
 		</script>
+
+        <script id="main" type="ui5/xmlview">
+            <mvc:View
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ute="tm.control.lib.ui"
+                xmlns:mvc="sap.ui.core.mvc"
+                controllerName="local.controller.Control"
+                displayBlock="true">
+
+                <ute:Badge text="{/text}" tooltip="regular" size="30px" textSize="10px" />
+                <ute:Badge text="rhs" tooltip="alert" design="Alert" />
+
+            </mvc:View>
+        </script>
+
 		<script>
 			sap.ui.getCore().attachInit(function() {
+                sap.ui.controller('local.controller.Control', {
+                    onInit: function () {
+                        alert('hey it worked!!');
+                    }
+                });
+
+                sap.ui.xmlview({ viewContent: jQuery('#main').html() })
+                    .setModel(new sap.ui.model.json.JSONModel({
+                        text: 'CA'
+                    }))
+                    .placeAt('fromxml');
+
                 var oControl = new tm.control.lib.ui.Badge({
-                    text: 'rhs',
-                    tooltip: 'regular',
-                    size: '30px',
-                    textSize: '10px'
-                });
-                oControl.placeAt('content');
-
-                oControl = new tm.control.lib.ui.Badge({
-                    text: 'rhs',
-                    tooltip: 'alert',
-                    design: 'Alert'
-                });
-                oControl.placeAt('content');
-
-                oControl = new tm.control.lib.ui.Badge({
                     text: 'rhs',
                     tooltip: 'attention',
                     size: '50px',
                     textSize: '25px',
                     design: tm.control.lib.ui.BadgeDesign.Attention
                 });
-                oControl.placeAt('content');
+                oControl.placeAt('fromjs');
 
             });
 		</script>
+	</head>
+	<body class="sapUiBody" role="application" id="content">
+        <div id="fromxml"></div>
+        <div id="fromjs"></div>
 	</body>
 </html>
