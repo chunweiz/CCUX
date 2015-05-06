@@ -41,8 +41,8 @@ sap.ui.define(
                 routing: {
                     routes: {
                         bpFound: {
-                            pattern: 'bp',
-                            target: [ 'generalEmpty', 'summaryBp', 'toolsEmpty' ]
+                            pattern: 'bp/{bpNum}',
+                            target: [ 'generalEmpty', 'summaryDashboardBp', 'toolsEmpty' ]
                         },
 
                         notFound: {
@@ -67,8 +67,8 @@ sap.ui.define(
                     },
 
                     targets: {
-                        summaryBp: {
-                            viewName: 'SummaryBP',
+                        summaryDashboardBp: {
+                            viewName: 'dashboard.SummaryBP',
                             controlId: 'idAppSummary'
                         },
 
