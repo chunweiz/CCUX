@@ -100,14 +100,36 @@
                 </u:Column>
             </u:Table>
         </u:Tag>
-        <!--
+
         <u:Tag>
-            <t:Table>
-                <t:Column>
-                    <c:Label text="test"></c:Label>
-                </t:Column>
+            <t:Table
+                rows="{
+                      path: 'modelData>/test',
+                      parameters: {
+                            select: 'lastName, gender'
+                        }
+                      }"
+                    >
+                <t:columns>
+                    <t:Column>
+                        <t:label>
+                            <c:Label text="test"></c:Label>
+                        </t:label>
+                        <t:template>
+                            <c:TextField value="{modelData>lastName}"></c:TextField>
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <t:label>
+                            <c:Label text="test"></c:Label>
+                        </t:label>
+                        <t:template>
+                            <c:TextField value="{modelData>gender}"></c:TextField>
+                        </t:template>
+                    </t:Column>
+                </t:columns>
             </t:Table>
-        </u:Tag>-->
+        </u:Tag>
         <!--
         <u:Button
             text="TITLE"
