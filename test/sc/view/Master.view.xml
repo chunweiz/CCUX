@@ -6,15 +6,14 @@
     xmlns:u="ute.ui.commons"
     xmlns:n="nrg.asset.img.icon">
     <u:Tag>
-		<u:HorizontalDivider
+	 <!--	<u:HorizontalDivider
 			width="50%"
 			type="Dashed"
 			height="Large">
-		</u:HorizontalDivider>
+		</u:HorizontalDivider>-->
       <!--  <u:RedCrossSign press="onButtonClick"></u:RedCrossSign> -->
-		<u:DatePicker></u:DatePicker>
-        <c:DatePicker></c:DatePicker>
-<!--        <u:Tag
+		<u:Calendar></u:Calendar>
+    <!--        <u:Tag
             text="Buttons">
         </u:Tag>
         <u:Button
@@ -137,7 +136,4 @@
     </u:RadioButton>
 
 -->
-
-
-
 </core:View>
