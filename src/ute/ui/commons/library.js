@@ -37,7 +37,10 @@ sap.ui.define(
                 'ute.ui.commons.RadioButton',
                 'ute.ui.commons.RedCrossSign',
 				'ute.ui.commons.HorizontalDivider',
-                'ute.ui.commons.Dropdown'
+                'ute.ui.commons.Dropdown',
+                'ute.ui.commons.Table',
+                'ute.ui.commons.Column',
+                'ute.ui.commons.Row'
 			],
 
 			elements: [],

@@ -92,13 +92,13 @@
             concat: {
                 noLang: {
                     src: [
-                        'src/nrg/i18n/lang/**/*_en_US.properties'
+                        'src/nrg/i18n/view/**/*_en_US.properties'
                     ],
                     dest: 'build/nrg/i18n/messageBundle.properties'
                 },
                 enUs: {
                     src: [
-                        'src/nrg/i18n/lang/**/*_en_US.properties'
+                        'src/nrg/i18n/view/**/*_en_US.properties'
                     ],
                     dest: 'build/nrg/i18n/messageBundle_en_US.properties'
                 }
@@ -234,7 +234,6 @@
                                 'nrg/view/app/App*.xml',
                                 'nrg/view/others/*Empty.view.xml',
                                 'nrg/view/app/App*.js',
-                                'nrg/view/app/helper/App*.js',
                                 'nrg/view/others/*Empty.controller.js'
                             ]
                         },
@@ -243,7 +242,6 @@
                                 'nrg/view/app/App*.xml',
                                 'nrg/view/others/*Empty.view.xml',
                                 'nrg/view/app/App*.js',
-                                'nrg/view/app/helper/App*.js',
                                 'nrg/view/others/*Empty.controller.js'
                             ]
                         }

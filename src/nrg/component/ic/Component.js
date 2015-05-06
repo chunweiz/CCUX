@@ -15,7 +15,7 @@ sap.ui.define(
 
         var NRGComponent = Component.extend('nrg.component.ic.Component', {
             metadata: {
-                name : 'Reliant Interaction Center for Regular Agent',
+                name : 'NRG Interaction Center',
                 version : '1.0.0',
                 includes: ['../../asset/css/nrg.css'],
                 dependencies: {
@@ -40,35 +40,32 @@ sap.ui.define(
 
                 routing: {
                     routes: {
+                        empty: {
+                            pattern: '',
+                            target: [ 'generalEmpty', 'summaryEmpty', 'toolsEmpty' ]
+                        },
+
                         bpFound: {
-                            pattern: 'bp',
-                            target: [ 'generalEmpty', 'summaryBp', 'toolsEmpty' ]
+                            pattern: 'bp/{bpNum}',
+                            target: [ 'generalEmpty', 'summaryDashboardBp', 'toolsEmpty' ]
                         },
 
                         notFound: {
-                            pattern: '',
-                            target: [ 'generalEmpty', 'summaryEmpty', 'toolsEmpty' ],
-                            subroutes: [
-                                {
-                                    pattern: '{all*}',
-                                    target: [ 'generalEmpty', 'summaryEmpty', 'toolsEmpty' ]
-                                }
-                            ]
+                            pattern: '{all*}',
+                            target: [ 'generalEmpty', 'summaryEmpty', 'toolsEmpty' ]
                         }
                     },
 
                     config: {
-                        routerClass: sap.ui.core.routing.Router,
                         viewType: sap.ui.core.mvc.ViewType.XML,
                         viewPath: 'nrg.view',
                         controlAggregation: 'content',
                         clearControlAggregation: true
-
                     },
 
                     targets: {
-                        summaryBp: {
-                            viewName: 'SummaryBP',
+                        summaryDashboardBp: {
+                            viewName: 'dashboard.SummaryBP',
                             controlId: 'idAppSummary'
                         },
 
