@@ -40,14 +40,14 @@ sap.ui.define(
 
                 routing: {
                     routes: {
-                        bpFound: {
-                            pattern: 'bp/{bpNum}',
-                            target: [ 'generalEmpty', 'summaryDashboardBp', 'toolsEmpty' ]
-                        },
-
                         empty: {
                             pattern: '',
                             target: [ 'generalEmpty', 'summaryEmpty', 'toolsEmpty' ]
+                        },
+
+                        bpFound: {
+                            pattern: 'bp/{bpNum}',
+                            target: [ 'generalEmpty', 'summaryDashboardBp', 'toolsEmpty' ]
                         },
 
                         notFound: {
