@@ -3,8 +3,8 @@
 	xmlns="sap.ui.commons"
 	xmlns:core="sap.ui.core"
     xmlns:u="ute.ui.commons">
-    <u:Tag class="nrgApp">
-	<u:Button
+    <!--u:Tag class="nrgApp">
+	<-u:Button
         text="TITLE"
         uteDesign="Button1"
         enabled="true"
@@ -38,6 +38,6 @@
      <u:RadioButton
         text="option2"
         groupName="radio1" >
-    </u:RadioButton>
+    </u:RadioButton-->
 
 </core:View>

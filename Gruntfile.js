@@ -231,22 +231,20 @@
                     components: {
                         'nrg/component/ic': {
                             src: [
-                                'nrg/view/App*.xml',
-                                'nrg/view/*Empty.view.xml',
-                                'nrg/controller/App*.js',
-                                'nrg/controller/*Empty.controller.js',
-                                'nrg/controller/BaseController.js',
-                                'nrg/controller/helper/App*.js'
+                                'nrg/view/app/App*.xml',
+                                'nrg/view/others/*Empty.view.xml',
+                                'nrg/view/app/App*.js',
+                                'nrg/view/app/helper/App*.js',
+                                'nrg/view/others/*Empty.controller.js'
                             ]
                         },
                         'nrg/component/retention': {
                             src: [
-                                'nrg/view/App*.xml',
-                                'nrg/view/*Empty.view.xml',
-                                'nrg/controller/App*.js',
-                                'nrg/controller/*Empty.controller.js',
-                                'nrg/controller/BaseController.js',
-                                'nrg/controller/helper/App*.js'
+                                'nrg/view/app/App*.xml',
+                                'nrg/view/others/*Empty.view.xml',
+                                'nrg/view/app/App*.js',
+                                'nrg/view/app/helper/App*.js',
+                                'nrg/view/others/*Empty.controller.js'
                             ]
                         }
                     }

@@ -1,6 +1,5 @@
 /*global sap*/
 /*jslint nomen: true */
-/*jslint plusplus: true */
 
 sap.ui.define([],
     function () {
@@ -96,7 +95,7 @@ sap.ui.define([],
             oRm.addClass("nrgCal-dayPic-week");
             oRm.writeClasses();
             oRm.write(">"); // div element
-            for (i = 0; i < 7; i++) {
+            for (i = 0; i < 7; i = i + 1) {
                 oRm.write("<div");
                 oRm.addClass("nrgCal-dayPic-weekHead");
                 oRm.writeClasses();

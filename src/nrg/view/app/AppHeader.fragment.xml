@@ -12,7 +12,7 @@
                     <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{i18n>nrgAppHeaderMenu}" />
                     <section class="nrgAppHdr-listItemSub">
                         <article class="nrgAppHdr-listItemSubInner">
-                            <core:Fragment fragmentName="nrg.view.fragment.AppHeaderQuickLink" type="XML" />
+                            <core:Fragment fragmentName="nrg.view.app.AppHeaderQuickLink" type="XML" />
                         </article>
                     </section>
                 </li>

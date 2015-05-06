@@ -4,13 +4,13 @@
 sap.ui.define(
     [
         'sap/ui/base/Object',
-        'nrg/controller/helper/AppHeaderQuickLink'
+        'nrg/view/app/helper/AppHeaderQuickLink'
     ],
-    
+
     function (BaseObject, AppHdrQL) {
         'use strict';
-        
-        var AppHdr = BaseObject.extend('nrg.controller.helper.AppHeader', {
+
+        var AppHdr = BaseObject.extend('nrg.view.app.helper.AppHeader', {
             constructor: function (viewId, controller) {
                 this._oController = controller;
                 this._oAppHdr = this._oController.getView().byId(viewId.hdr);
@@ -45,7 +45,7 @@ sap.ui.define(
             this._oAppHdrQuickLink.initialize();
             return this;
         };
-        
+
         AppHdr.prototype._addMenuItemListener = function (oElem) {
             oElem.addEventListener('click', function (oEvent) {
                 if (oElem.parentElement.dataset.nrgType === 'menuitem') {
@@ -99,7 +99,7 @@ sap.ui.define(
         AppHdr.prototype.getController = function () {
             return this._oController;
         };
-        
+
         return AppHdr;
     }
 );
