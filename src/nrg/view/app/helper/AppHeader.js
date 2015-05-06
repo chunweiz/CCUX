@@ -10,11 +10,7 @@ sap.ui.define(
     function (BaseObject, AppHdrQL) {
         'use strict';
 
-<<<<<<< HEAD:src/nrg/view/app/helper/AppHeader.js
         var AppHdr = BaseObject.extend('nrg.view.app.helper.AppHeader', {
-=======
-        var AppHdr = BaseObject.extend('nrg.controller.helper.AppHeader', {
->>>>>>> nrg/master:src/nrg/controller/helper/AppHeader.js
             constructor: function (viewId, controller) {
                 this._oController = controller;
                 this._oAppHdr = this._oController.getView().byId(viewId.hdr);

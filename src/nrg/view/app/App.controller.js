@@ -13,11 +13,7 @@ sap.ui.define(
     function (CoreController, AppHeader, AppFooter, AppMain, AppNav) {
         'use strict';
 
-<<<<<<< HEAD:src/nrg/view/app/App.controller.js
         var Controller = CoreController.extend('nrg.view.app.App');
-=======
-        var Controller = CoreController.extend('nrg.controller.App');
->>>>>>> nrg/master:src/nrg/controller/App.controller.js
 
         //DOM for control is only available after rendering
         Controller.prototype.onAfterRendering = function () {
