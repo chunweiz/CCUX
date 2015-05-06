@@ -14,7 +14,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/theming/Parameters'],
                 oColumn;
 
 
-            oTable._createRows();
+        //    oTable._createRows();
 
             rm.write('<div><table');
             rm.addClass('uteTable');
@@ -41,5 +41,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/theming/Parameters'],
             rm.write('</table></div>');
 
         };
+
+        return TableRenderer;
 
     }, true);

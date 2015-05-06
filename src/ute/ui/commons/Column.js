@@ -14,7 +14,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Element', 'sap/ui/core/RenderMa
                 sorte: {type: 'boolean', group: 'Appearance', defaultValue: false},
 
                 /* Sort order for this column. @see sap.ui.table.SortOrder (default value: "Ascending")*/
-                sortOrder: {type: 'sap.ui.table.SortOrder', group: 'Appearance', defaultValue: sap.ui.table.SortOrder.Ascending},
+        /*        sortOrder: {type: 'sap.ui.table.SortOrder', group: 'Appearance', defaultValue: sap.ui.table.SortOrder.Ascending},*/
 
                 /*Specifies the binding property on which the column will sort.*/
                 sortProperty: {type: 'string', group: 'Behavior', defaultValue: null},
@@ -32,7 +32,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Element', 'sap/ui/core/RenderMa
                 filterOperator : {type : "string", group : "Behavior", defaultValue : null}
             },
             defaultAggregation: 'label',
-            aggreations: {
+            aggregations: {
                 label: {type: 'sap.ui.core.Control', multiple: false}
             }
         }});
