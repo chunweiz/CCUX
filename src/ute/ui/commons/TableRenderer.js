@@ -10,7 +10,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/theming/Parameters'],
         TableRenderer.render = function (rm, oTable) {
             var aCols = oTable.getColumns(),
                 iColumnCount = aCols.length,
-                i;
+                i,
+                oColumn;
 
 
             oTable._createRows();
@@ -26,9 +27,12 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/theming/Parameters'],
             rm.writeClasses();
             rm.write('>');
             for (i = 0; i < iColumnCount; i = i + 1) {
-
+                oColumn = aCols[i];
+                rm.write('<th');
+                rm.addStyle('width', oColumn.getWidth());
+                rm.writeStyles();
+                rm.renderControl(oColumn.getLabel());
             }
-
             rm.write('</tr>');
             //End rendering column
 
