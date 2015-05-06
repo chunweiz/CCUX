@@ -45,15 +45,14 @@ sap.ui.define(
                             target: [ 'generalEmpty', 'summaryDashboardBp', 'toolsEmpty' ]
                         },
 
-                        notFound: {
+                        empty: {
                             pattern: '',
                             target: [ 'generalEmpty', 'summaryEmpty', 'toolsEmpty' ],
-                            subroutes: [
-                                {
-                                    pattern: '{all*}',
-                                    target: [ 'generalEmpty', 'summaryEmpty', 'toolsEmpty' ]
-                                }
-                            ]
+                        },
+
+                        notFound: {
+                            pattern: '{all*}',
+                            target: [ 'generalEmpty', 'summaryEmpty', 'toolsEmpty' ]
                         }
                     },
 
