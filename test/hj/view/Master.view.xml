@@ -2,7 +2,7 @@
 	controllerName="sap.ui.demo.myFiori.view.Master"
     xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:c="sap.ui.commons"
-	xmlns:core="sap.ui.core" 
+	xmlns:core="sap.ui.core"
     xmlns:u="ute.ui.commons"
     xmlns:n="nrg.asset.img.icon">
     <u:Tag>

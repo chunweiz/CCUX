@@ -8,39 +8,39 @@
                 margin: 0;
                 padding: 0;
             }
-            
+
             body {
                 background-color: rgb(234, 239, 244);
                 font-family: 'Source Sans Pro', sans-serif;
                 font-size: 10pt;
                 color: rgb(17, 32, 55);
             }
-            
+
             .utePageHdr {
                 display: block;
             }
-            
+
             .utePageHdrTop {
                 display: block;
                 position: relative;
-                background-color: white;  
+                background-color: white;
                 height: 50px;
                 vertical-align: middle;
                 line-height: 50px;
             }
-            
+
             .utePageHdrTop h1 {
                 display: inline-block;
                 position: relative;
                 height: 100%;
             }
-            
+
             .utePageHdrTop h1 img {
                 max-height: 60%;
                 vertical-align: middle;
                 margin-left: 30px;
             }
-            
+
             .utePageHdrTop h1 span {
                 display: inline-block;
                 margin-left: 15px;
@@ -49,24 +49,24 @@
                 font-size: 12pt;
                 font-weight: 400;
             }
-            
+
             .utePageHdrTop ul {
                 display: inline-block;
                 position: relative;
                 list-style-type: none;
             }
-            
+
             .utePageHdrTop ul li {
                 display: inline-block;
                 padding: 0 5px 0 5px;
                 cursor: pointer;
             }
-            
+
             .utePageHdrTop ul li:hover,
             .utePageHdrTop ul li.utePageHdrTopSelected {
                 color: cornflowerblue;
             }
-            
+
             .utePageHdrMenu {
                 display: none;
                 overflow: hidden;
@@ -74,19 +74,19 @@
                 transition: height ease 0.3s;
                 width: 100%;
             }
-            
+
             .utePageHdrMenu ul {
                 display: inline-block;
                 margin: 5px;
                 min-width: 120px;
                 list-style-type: none;
             }
-            
+
             .utePageHdrMenu ul li:first-child {
                 border-bottom: 1px solid aqua;
                 padding-bottom: 5px;
             }
-            
+
             .utePageHdrMenu .show {
                 display: block;
             }
@@ -132,22 +132,22 @@
                 </ul>
             </nav>
         </header>
-        
+
         <script type="text/javascript">
             Array.prototype.slice.call(document.querySelectorAll('#idUtePageHdr .utePageHdrTop ul > li')).forEach(function (oElem) {
                 oElem.addEventListener('click', function (oEvent) {
                     var oSelectedElem = oElem.parentElement.querySelector('li.utePageHdrTopSelected');
-                    
+
                     if (oSelectedElem) {
-                        oSelectedElem.classList.remove('utePageHdrTopSelected');   
+                        oSelectedElem.classList.remove('utePageHdrTopSelected');
                     }
-                    
+
                     if (oSelectedElem === oElem) {
                         //document.querySelector('#idUtePageHdr .utePage');
                     } else {
                         oElem.classList.add('utePageHdrTopSelected');
                     }
-                    
+
                 });
             });
         </script>

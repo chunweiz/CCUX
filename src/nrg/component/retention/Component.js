@@ -9,7 +9,7 @@ sap.ui.define(
         // Not in function arguments
         'sap/ui/core/Popup'
     ],
-    
+
     function (Component, IconUtil) {
         'use strict';
 
@@ -90,7 +90,7 @@ sap.ui.define(
                 }
             }
         });
-        
+
         NRGComponent.prototype.init = function () {
             Component.prototype.init.apply(this);
             this.initRouter();
@@ -157,9 +157,9 @@ sap.ui.define(
         NRGComponent.prototype._routeCallback = function (route, args, config, targetControl, view) {
 
         };
-        
+
         return NRGComponent;
     },
-    
+
     false
 );

@@ -43,7 +43,7 @@ sap.ui.define(
 			elements: [],
             interfaces: []
 		});
-    
+
         ute.ui.commons.ButtonType = {
             GeneralAction: 'GeneralAction',
             GeneralCancel: 'GeneralCancel',
@@ -61,7 +61,7 @@ sap.ui.define(
             Alert: 'Alert',
             Attention: 'Attention',
             Regular: 'Regular'
-            
+
         };
 
 	    ute.ui.commons.HorizontalDividerDesign = {
@@ -87,7 +87,7 @@ sap.ui.define(
                 return (/^(inline|block|flex|inline\-block|inline\-flex|inline\-table|list\-item|run\-in|table|table\-caption|table\-column\-group|table\-header\-group|table\-footer\-group|table\-row\-group|table\-cell|table\-column|table\-row|none|initial|inherit)$/).test(sValue);
             }
         }, DataType.getType('string'));
-    
+
         ute.ui.commons.CSSPosition = DataType.createType('ute.ui.commons.CSSPosition', {
             isValid : function (sValue) {
                 return (/^(static|absolute|fixed|relative|initial|inherit)$/).test(sValue);

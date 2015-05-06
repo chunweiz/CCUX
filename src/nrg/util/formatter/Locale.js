@@ -4,7 +4,7 @@ sap.ui.define(
     [
         'jquery.sap.global'
     ],
-    
+
     function ($) {
         'use strict';
 
@@ -25,7 +25,7 @@ sap.ui.define(
         Locale.prototype.getText = function () {
             var aArgs = [].slice.call(arguments),
                 sKey = aArgs.shift();
-            
+
             return $.sap.formatMessage(sKey, aArgs);
         };
 

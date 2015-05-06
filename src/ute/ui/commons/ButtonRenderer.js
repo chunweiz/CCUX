@@ -7,7 +7,7 @@ sap.ui.define(
 
 	function (jQuery) {
         'use strict';
-    
+
         var ButtonRenderer = {};
 
         ButtonRenderer.render = function (rm, oButton) {

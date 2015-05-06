@@ -3,7 +3,7 @@
 
 (function () {
     'use strict';
-    
+
     jQuery.sap.require("sap.m.routing.RouteMatchedHandler");
     jQuery.sap.require("sap.ui.core.routing.Router");
     jQuery.sap.declare("sap.ui.demo.tdg.MyRouter");
@@ -18,7 +18,7 @@
         /**
          * Navigates back in the browser history, if the entry was created by this app.
          * If not, it navigates to a route passed to this function.
-         * 
+         *
          * @public
          * @param {string} sRoute the name of the route if there is no history entry
          * @param {object} mData the parameters of the route, if the route does not need parameters, it may be ommited.
@@ -39,7 +39,7 @@
 
         /**
          * Changes the view without changing the hash
-         * 
+         *
          * @param {object} oOptions must have the following properties
          * <ul>
          *      <li> currentView : the view you start the navigation from.</li>
@@ -82,5 +82,5 @@
         }
 
     });
-    
+
 }());

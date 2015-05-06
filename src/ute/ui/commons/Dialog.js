@@ -3,7 +3,7 @@
 sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/core/Popup'],
     function (jQuery, library, Control, Popup) {
         "use strict";
-    
+
         var Dialog = Control.extend('ute.ui.commons.Dialog', {
             metadata: {
                 interfaces: [
@@ -209,7 +209,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 }
             }
         });
-    
+
         /**
          * Initialization hook for the dialog.
          * It creates the instance of the Popup helper service and does some basic configuration for it.
@@ -221,7 +221,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
             this.oPopup = new Popup(this, true, true);
             var eDock = Popup.Dock;
             this.oPopup.setPosition(eDock.CenterCenter, eDock.CenterCenter, window);
-            
+
             /*jslint nomen: true*/
             this._minWidth = 64; // the technical minWidth, not the one set via API; will be calculated after rendering
             this._minHeight = 48; // the technical minHeight, not the one set via API; will be calculated after rendering
@@ -301,7 +301,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 dialogBottom = this.getDomRef().offsetHeight;
                 if (footerBottom < dialogBottom) {
                     this.$().removeClass("sapUiDlgFlexHeight");
-                } // else normal case: Dialog content pushes its height to or beyond its minimum height - this works fine 
+                } // else normal case: Dialog content pushes its height to or beyond its minimum height - this works fine
               //with "sapUiDlgFlexHeight"
                     }
 
@@ -324,7 +324,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
             switch (oEvent.target.id) {
             case this.getId() + "-close":
                 this.close();
-                oEvent.preventDefault(); // avoid onbeforeunload event which happens at least in IE9 because of the javascript:void(0); 
+                oEvent.preventDefault(); // avoid onbeforeunload event which happens at least in IE9 because of the javascript:void(0);
                                        // link target
                 break;
             }
@@ -353,11 +353,11 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 this.oPopup.setAutoClose(this.getAutoClose());
                 this.oPopup.open(400);
                 this._bOpen = true;
-            
+
             }
             /*jslint nomen:false*/
         };
-    
+
     /**
      * @private
      */
@@ -401,7 +401,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 this._handleOpened();
             }
         };
-    
+
     /**
      * Closes the dialog control instance.
      *
@@ -441,7 +441,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
       // Make sure the dom content is not shown any more (in the static area)
             this.$().hide();
         };
-    
+
     /**
      * restore the focus when the dialog was closed to the control which opened the dialog.
      * This is independent of the dialogs modal state. The popup also restores focus when using modal popups/dialogs.
@@ -476,7 +476,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 this.fireClosed(this._oRect);
             }
             this.oPopup = null;
-            
+
             delete this._mParameters;
         };
 
@@ -709,7 +709,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 oActElement,
                 oCtrl,
                 outerDoc;
-            
+
 
             this._bRtlMode = sap.ui.getCore().getConfiguration().getRTL(); // remember the RTL mode for the starting resize operation
 
@@ -808,7 +808,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 oDomRef,
                 iLeft,
                 iTop;
-            
+
             if (!this.sDragMode) {
                 return;
             }
@@ -821,7 +821,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 deltaY = event.screenY - this.startDragY;
                 w = (this._bRtlMode ? this.originalRectangle.width - deltaX : this.originalRectangle.width + deltaX);
                 h = this.originalRectangle.height + deltaY;
-                        
+
 
                 w = Math.max(w, this._minWidth);
                 h = Math.max(h, this._minHeight);

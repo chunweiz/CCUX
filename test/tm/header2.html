@@ -9,72 +9,72 @@
                 padding: 0;
                 box-sizing: border-box;
             }
-            
+
             body {
                 background-color: rgb(234, 239, 244);
                 font-family: 'Source Sans Pro', sans-serif;
                 font-size: 10pt;
             }
-            
+
             .uteHrMenu {
                 width: 100%;
                 border-bottom: 4px solid #47a3da;
                 background-color: white;
             }
-            
+
             .uteHrMenu .uteHrMenuLogo {
                 display: inline-block;
                 position: relative;
             }
-            
+
             .uteHrMenu .uteHrMenuLogo > img {
                 max-width: 45px;
                 vertical-align: middle;
                 margin: 5px 10px 15px 30px;
             }
-            
+
             .uteHrMenu .uteHrMenuLogo > span {
                 font-size: 12pt;
                 margin-right: 100px;
                 color: dimgray;
             }
-            
+
             .uteHrMenu ul {
                 display: inline-block;
                 list-style-type: none;
                 min-width: 770px;
             }
-            
+
             .uteHrMenu > ul,
             .uteHrMenu .uteHrSubMenuInner {
                 margin: 0 auto;
                 padding: 0 1.875em;
             }
-            
+
             .uteHrMenu > ul > li {
                 display: inline-block;
             }
-            
+
             .uteHrMenu > ul > li > span {
                 display: inline-block;
                 position: relative;
                 padding: 1.5em 2em;
                 color: dimgray;
             }
-            
+
             .uteHrMenu > ul > li > span:hover {
                 color: #47a3da;
                 cursor: pointer;
             }
-            
+
             .uteHrMenu > ul > li.uteHrMenuOpen span {
                 color: #47a3da;
             }
-            
+
             .uteHrMenu > ul > li > span.uteHrMenuOrange {
                 color: darkorange;
             }
-            
+
             .uteHrMenu > ul > li > span i.uteHrMenuArrowDown::before,
             .uteHrMenu > ul > li > span i.uteHrMenuArrowDown::after {
                 content: '';
@@ -86,15 +86,15 @@
                 background-color: #47a3da;
                 transform: translate(-20px, 0);
             }
-            
+
             .uteHrMenu > ul > li > span i.uteHrMenuArrowDown::before {
                 transform: translate(-10px, 0) rotate(135deg);
             }
-            
+
             .uteHrMenu > ul > li > span i.uteHrMenuArrowDown::after {
                 transform: translate(-6px, 0) rotate(-135deg);
             }
-            
+
             .uteHrMenu .uteHrSubMenu {
                 display: none;
                 position: absolute;
@@ -103,47 +103,47 @@
                 left: 0;
                 border-bottom: 4px solid darkslategray;
             }
-            
+
             .uteHrMenuOpen .uteHrSubMenu {
                 display: block;
                 padding-top: 1em;
                 padding-bottom: 1em;
             }
-            
+
             .uteHrMenu .uteHrSubMenuInner > div {
                 width: 90%;
                 margin: 0 auto;
             }
-            
+
             .uteHrMenu .uteHrSubMenuInner::before,
             .uteHrMenu .uteHrSubMenuInner::after {
                 content: '';
                 display: table;
             }
-            
+
             .uteHrMenu .uteHrSubMenuInner::after {
                 clear: both;
             }
-            
+
             .uteSubMenuQuickLink {
                 max-width: 770px;
                 margin: 0 auto;
             }
-            
+
             .uteSubMenuQuickLink ul {
                 display: inline-block;
                 min-width: 0;
                 margin: 0 2em;
             }
-            
+
             .uteSubMenuQuickLink ul li {
                 padding: 5px 0;
             }
-            
+
             .uteSubMenuQuickLink ul li:first-child {
                 border-bottom: 1px solid aquamarine;
             }
-            
+
         </style>
     </head>
     <body>
@@ -216,28 +216,28 @@
                 </ul>
             </nav>
         </header>
-        
+
         <script type="text/javascript">
             (function () {
                 'use strict';
-                
+
                 var UteHrMenu = function(oUteHrMenuElem) {
                     this._oUteHrMenuElem = oUteHrMenuElem;
                     this._aListItem = [].slice.call(this._oUteHrMenuElem.querySelectorAll('ul > li'));
                     this._aMenuItem = [].slice.call(this._oUteHrMenuElem.querySelectorAll('ul > li > span'));
                     this._nCurrent = -1;
                 };
-                
-                UteHrMenu.prototype.init = function () {                    
+
+                UteHrMenu.prototype.init = function () {
                     this._aListItem.forEach(function (oElem) {
                         oElem.addEventListener('click', function (oEvent) {
                             oEvent.stopPropagation();
                         });
                     });
-                    
+
                     this._aMenuItem.forEach(this._addMenuItemListener, this);
                 };
-                
+
                 UteHrMenu.prototype._addMenuItemListener = function (oElem) {
                     var self = this;
                     oElem.addEventListener('click', function (oEvent) {
@@ -252,46 +252,46 @@
                         }
                     });
                 };
-                
+
                 UteHrMenu.prototype.openLink = function (oEvent) {
                     window.open(oEvent.target.parentElement.dataset.uteHref);
                 };
-                
+
                 UteHrMenu.prototype.execAction = function (oEvent) {
-                    alert('action');  
+                    alert('action');
                 };
-                
+
                 UteHrMenu.prototype.openSubMenu = function (oEvent) {
                     var nIdx;
-                    
+
                     if (this._nCurrent !== -1) {
                         this._aListItem[this._nCurrent].classList.remove('uteHrMenuOpen');
                     }
-                    
+
                     for (nIdx = 0; nIdx < this._aListItem.length; nIdx = nIdx + 1) {
                         if (this._aListItem[nIdx] === oEvent.target.parentElement) {
                             break;
                         }
                     }
-                    
+
                     if (this._nCurrent === nIdx) {
                         oEvent.target.parentElement.classList.remove('uteHrMenuOpen');
-                        this._nCurrent = -1;  
-                    } 
+                        this._nCurrent = -1;
+                    }
                     else {
                         oEvent.target.parentElement.classList.add('uteHrMenuOpen');
                         this._nCurrent = nIdx;
                     }
                 };
-                
+
                 UteHrMenu.prototype.close = function (oEvent) {
                     this._aListItem[this._nCurrent].classList.remove('uteHrMenuOpen');
                     this._nCurrent = -1;
                 };
-                
+
                 var oUteHrMenu = new UteHrMenu(document.querySelector('#idUteHrMenu'));
                 oUteHrMenu.init();
-                
+
             }());
         </script>
     </body>

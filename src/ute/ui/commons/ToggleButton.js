@@ -8,16 +8,16 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
             properties : {
                 /*Left side button text*/
                 leftBtnText : {type : "string", group : "Appearance", defaultValue : ''},
-                
+
                 /*Right side button text*/
                 rightBtnText : {type : "string", group : "Appearance", defaultValue : ''},
-                
+
                 /*Boolean property to enable the control (default is true).*/
                 enabled : {type : "boolean", group : "Behavior", defaultValue : true},
 
                 /*Width of the left side button in CSS-size, set at 249px as default */
                 leftBtnWidth : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "262px"},
-                
+
                 /*Same as left side button width. Left and right side witdth do not have to be the same*/
                 rightBtnWidth : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "262px"},
 
@@ -46,7 +46,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
             if (this.getEnabled()) {
                 this.firePress({/* no parameters */});
                 this.getRenderer().toggle(this);
-                    
+
             }
             oEvent.preventDefault();
             oEvent.stopPropagation();

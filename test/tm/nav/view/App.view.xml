@@ -4,7 +4,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:layout="sap.ui.layout"
     xmlns:ute="ute.ui.commons">
-    
+
     <style>
         .uteInnerPage {
             position: relative;
@@ -12,7 +12,7 @@
             margin: 0 auto;
             width: 80%;
         }
-        
+
         .uteInnerPage header {
             display: block;
             position: fixed;
@@ -22,11 +22,11 @@
             background-color: gold;
             z-index: 2;
         }
-        
+
         .uteInnerPage header:hover {
             height: 100px;
         }
-        
+
         .uteInnerPage footer {
             display: block;
             position: fixed;
@@ -35,15 +35,15 @@
             height: 20px;
             background-color: blue;
         }
-        
+
         .uteInnerPage footer:hover {
             height: 100px;
         }
-        
+
         .uteInnerPage .leftPane {
             background-color: tomato;
         }
-        
+
         .uteInnerPage .mainPane {
             background-color: lime;
         }

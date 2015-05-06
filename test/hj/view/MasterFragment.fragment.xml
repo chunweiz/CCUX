@@ -8,8 +8,8 @@
     <content>
         <b:TextView text="Donec id nisl eu mi tempus dapibus. Proin a congue metus, sit amet pharetra turpis. "/>
         <b:TextView text="Quisque metus erat, viverra sed interdum id, sodales at lacus.
-                        - Quisque ut ﬁnibus justo, et fermentum lacus. 
-                        - Proin fringilla viverra ullamcorper. Aenean tellus nibh, laoreet. 
+                        - Quisque ut ﬁnibus justo, et fermentum lacus.
+                        - Proin fringilla viverra ullamcorper. Aenean tellus nibh, laoreet.
                         - Sed ullamcorper sagittis erat nec dictum. In at cursus purus, ac varius "/>
     </content>
     <buttons>
