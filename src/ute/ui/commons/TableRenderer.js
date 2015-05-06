@@ -31,6 +31,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/theming/Parameters'],
                 rm.write('<th');
                 rm.addStyle('width', oColumn.getWidth());
                 rm.writeStyles();
+                rm.write('>');
                 rm.renderControl(oColumn.getLabel());
             }
             rm.write('</tr>');

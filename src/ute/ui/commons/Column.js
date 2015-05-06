@@ -33,7 +33,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Element', 'sap/ui/core/RenderMa
             },
             defaultAggregation: 'label',
             aggregations: {
-                label: {type: 'sap.ui.core.Control', multiple: false}
+                label: {type: 'sap.ui.core.Control', multiple: false},
             }
         }});
 
