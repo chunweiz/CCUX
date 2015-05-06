@@ -4,10 +4,10 @@
 sap.ui.define(
     [
         'sap/ui/core/mvc/Controller',
-        'nrg/view/app/helper/AppHeader',
-        'nrg/view/app/helper/AppFooter',
-        'nrg/view/app/helper/AppMain',
-        'nrg/view/app/helper/AppNav'
+        'nrg/view/app/AppHeader',
+        'nrg/view/app/AppFooter',
+        'nrg/view/app/AppMain',
+        'nrg/view/app/AppNav'
     ],
 
     function (CoreController, AppHeader, AppFooter, AppMain, AppNav) {

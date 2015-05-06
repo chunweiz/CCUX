@@ -234,7 +234,6 @@
                                 'nrg/view/app/App*.xml',
                                 'nrg/view/others/*Empty.view.xml',
                                 'nrg/view/app/App*.js',
-                                'nrg/view/app/helper/App*.js',
                                 'nrg/view/others/*Empty.controller.js'
                             ]
                         },
@@ -243,7 +242,6 @@
                                 'nrg/view/app/App*.xml',
                                 'nrg/view/others/*Empty.view.xml',
                                 'nrg/view/app/App*.js',
-                                'nrg/view/app/helper/App*.js',
                                 'nrg/view/others/*Empty.controller.js'
                             ]
                         }
