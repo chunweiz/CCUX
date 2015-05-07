@@ -20,7 +20,10 @@ sap.ui.define(
                 includes: ['../../asset/css/nrg.css'],
                 dependencies: {
                     ui5version: '1.28.5',
-                    libs: ['ute.ui.commons']
+                    libs: [
+                        'ute.ui.commons',
+                        'sap.m'
+                    ]
                 },
 
                 config: {
