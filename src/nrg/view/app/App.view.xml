@@ -9,24 +9,22 @@
     displayBlock="true">
 
     <ute:Tag class="nrgApp">
-        <ute:content>
-            <header class="nrgApp-hdr">
-                <core:Fragment fragmentName="nrg.view.app.AppHeader" type="XML" />
-            </header>
-            <div class="nrgApp-body nrgU-clearfix">
-                <aside class="nrgApp-navLeft nrgU-left">
-                    <ute:Tag id="idNrgAppArrowLeft" class="nrgApp-arrowLeft" />
-                </aside>
-                <aside class="nrgApp-navRight nrgU-right">
-                    <ute:Tag id="idNrgAppArrowRight" class="nrgApp-arrowRight" />
-                </aside>
-                <main class="nrgApp-main">
-                    <core:Fragment fragmentName="nrg.view.app.AppMain" type="XML" />
-                </main>
-            </div>
-            <footer class="nrgApp-ftr">
-                <core:Fragment fragmentName="nrg.view.app.AppFooter" type="XML" />
-            </footer>
-        </ute:content>
+        <header class="nrgApp-hdr">
+            <core:Fragment fragmentName="nrg.view.app.AppHeader" type="XML" />
+        </header>
+        <div class="nrgApp-body nrgU-clearfix">
+            <aside class="nrgApp-navLeft nrgU-left">
+                <ute:Tag id="idNrgAppArrowLeft" class="nrgApp-arrowLeft" />
+            </aside>
+            <aside class="nrgApp-navRight nrgU-right">
+                <ute:Tag id="idNrgAppArrowRight" class="nrgApp-arrowRight" />
+            </aside>
+            <main class="nrgApp-main">
+                <core:Fragment fragmentName="nrg.view.app.AppMain" type="XML" />
+            </main>
+        </div>
+        <footer class="nrgApp-ftr">
+            <core:Fragment fragmentName="nrg.view.app.AppFooter" type="XML" />
+        </footer>
     </ute:Tag>
 </mvc:View>

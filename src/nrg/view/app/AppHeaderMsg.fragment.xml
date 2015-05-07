@@ -4,9 +4,7 @@
     xmlns:core="sap.ui.core">
 
     <ute:Tag>
-        <ute:content>
-            <span>Messages!!!</span>
-        </ute:content>
+        <span>Messages!!!</span>
     </ute:Tag>
 
 </core:FragmentDefinition>

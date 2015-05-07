@@ -16,7 +16,8 @@ sap.ui.define(
             ],
 
 			controls: [
-				'tm.control.lib.ui.Badge'
+				'tm.control.lib.ui.Badge',
+				'tm.control.lib.ui.Infoline'
 			],
 
             interfaces: [],

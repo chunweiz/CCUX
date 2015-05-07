@@ -35,38 +35,31 @@
                 controllerName="local.controller.Control"
                 displayBlock="true">
 
-                <ute:Badge text="{/text}" tooltip="regular" size="30px" textSize="10px" />
-                <ute:Badge text="rhs" tooltip="alert" design="Alert" />
+                <ute:Infoline>
+                    <ute:header>
+
+                    </ute:header>
+                    <ute:content>
+
+                    </ute:content>
+                </ute:Infoline>
 
             </mvc:View>
         </script>
 
 		<script>
-			sap.ui.getCore().attachInit(function() {
+			sap.ui.getCore().attachInit(function () {
                 sap.ui.controller('local.controller.Control', {
                     onInit: function () {}
                 });
 
                 sap.ui.xmlview({ viewContent: jQuery('#main').html() })
-                    .setModel(new sap.ui.model.json.JSONModel({
-                        text: 'CA'
-                    }))
+                    .setModel(new sap.ui.model.json.JSONModel({}))
                     .placeAt('fromxml');
-
-//                var oControl = new tm.control.lib.ui.Badge({
-//                    text: 'rhs',
-//                    tooltip: 'attention',
-//                    size: '50px',
-//                    textSize: '25px',
-//                    design: tm.control.lib.ui.BadgeDesign.Attention
-//                });
-//                oControl.placeAt('fromjs');
-
             });
 		</script>
 	</head>
 	<body class="sapUiBody" role="application" id="content">
         <div id="fromxml"></div>
-        <div id="fromjs"></div>
 	</body>
 </html>
