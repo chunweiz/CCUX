@@ -54,22 +54,55 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control', './Row', './library']
         Table.prototype._createRows = function () {
             var aCols = this.getColumns(),
                 oTemplate = new Row(this.getId() + '-rows'),
-                oBinding = this.getBinding('rows'),
-                oBindingInfo = this.getBindingInfo('rows'),
-                //aContexts = oBinding.getContext(),
                 i,
-                oClone;
+                oColTemplate,
+                oClone,
+                aContexts,
+                oBinding,
+                oBindingInfo;
 
+            //Build Row template first so that later on we can create rows using the tempalte
             for (i = 0; i < aCols.length; i = i + 1) {
+                oColTemplate = aCols[i].getTemplate();
+                if (oColTemplate) {
+                    oClone = oColTemplate.clone('col' + i);
+                    oClone.data('sap-ui-colindex', i);
+                    oTemplate.addCell(oClone);
+                }
+            }
+
+            //Creating rows for table
+            this.destroyAggregation("rows", true); //Destroy first to initialize
+            oBinding = this.getBinding('rows');
+            oBindingInfo = this.mBindingInfos.rows;
+            if (oBinding) {
+                aContexts = oBinding.getContext();
+            }
+            for (i = 0; i < aContexts.length; i = i + 1) {
+                oClone = oTemplate.clone('row' + 1);
+                if (aContexts && aContexts[i]) {
+                    oClone.setBindingContext(aContexts[i], oBindingInfo.model);
+                } else {
+                    if (oBindingInfo) {
+                        oClone.setBindingContext(null, oBindingInfo.model);
+                    } else {
+                        oClone.setBindingContext(null);
+                    }
+                }
+            }
+
+
+
+            for (i = 0; i < aContexts.length; i = i + 1) {
                 if (aContexts && aContexts[i]) {
                     oClone = oTemplate.clone('row' + i);
                     oClone.setBindingContext(aContexts[i], oBindingInfo.model);
                 } else {
                     oClone.setBindingContext(null);
                 }
+                //Add the
                 this.addAggregation('rows', oClone, true);
             }
-
             oTemplate.destroy();
         };
 
