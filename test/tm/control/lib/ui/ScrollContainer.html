@@ -37,23 +37,24 @@
                 controllerName="local.controller.Control"
                 displayBlock="true">
 
-                <ute:ScrollContainer width="100px" height="100px" horizontal="true" vertical="true">
-                    <div>long long text</div>
-                    <div>long long text</div>
-                    <div>long long text</div>
-                    <div>long long text</div>
-                    <div>long long text</div>
-                    <div>long long text</div>
-                    <div>long long text</div>
-                    <div>long long text</div>
-                    <div>long long text</div>
-                    <div>long long text</div>
-                    <div>long long text</div>
-                    <div>long long text</div>
-                    <div>long long text</div>
-                    <div>long long text</div>
-                    <div>long long text</div>
-                    <div>long long text</div>
+                <ute:ScrollContainer id="testControl" width="200px" height="200px" horizontal="true" vertical="true">
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
+                    <div style="width: 300px;">test test test test test test test test test test test</div>
                 </ute:ScrollContainer>
 
             </mvc:View>
@@ -65,6 +66,12 @@
                     onInit: function () {
 
 
+                    },
+
+                    onAfterRendering: function () {
+                        var iScroll = this.byId('testControl').getScrollDelegate()._scroller;
+                        iScroll.options.hideScrollbar = false;
+                        iScroll.refresh();
                     }
                 });
 
