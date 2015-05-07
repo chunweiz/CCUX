@@ -15,13 +15,14 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Element', './library'],
 
         Row.prototype.getIndex = function () {
             var oTable = this.getParent(),
-                iRowIndex = oTable.indexOfRow(this);
+                iRowIndex;
 
             if (oTable) {
                 iRowIndex = oTable.indexOfRow(this);
                 return iRowIndex;
+            } else {
+                return -1;
             }
-            return -1;
         };
 
         return Row;
