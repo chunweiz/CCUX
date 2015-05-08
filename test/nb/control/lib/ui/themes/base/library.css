@@ -1,27 +1,30 @@
- .uteDD {
+  .uteDD {
      /* Size and position */
     position: relative;
     margin: 0 auto;
 
+
     /* Styles */
     border-radius: 7px;
-    box-shadow: 0px 1px 1px @uteColor-darkGrey;
+    box-shadow: 0px 1px 1px grey;
     cursor: pointer;
     outline: none;
 
     /* Font settings */
-    color: #4d4d4d;
+    color: #000;
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 400;
     font-size: 14pt;
 
+
     }
+
     .uteDD-white-background {
-           background: @uteColor-white;
+           background: #fff;
     }
 
      .uteDD-with-border {
-           border: 1px solid @uteColor-darkGrey;
+           border: 1px solid grey;
     }
 
     /*Arrow triangle*/
@@ -33,17 +36,22 @@
     right: 15px;
     top: 50%;
     margin-top: -3px;
-        border-width: 6px 6px 0 6px;
+    border-width: 6px 6px 0 6px;
     border-style: solid;
 
     }
+
+    .uteDD.active:after {
+        border-width: 0 6px 6px 6px;
+    }
+
        /*Arrow triangle*/
-    .uteDD-solid-arrow:after {
+ /*   .ute-solid-arrow {
 
     border-width: 6px 6px 0 6px;
     border-style: solid;
-  /*  border-color: #83bbe5 transparent;*/
-    }
+    border-color: #83bbe5 transparent;
+    }*/
 
     .uteDD-blue-arrow:after{
        /* border-color: #83bbe5 transparent;*/
@@ -53,7 +61,7 @@
         border-left-color: transparent;
     }
     .uteDD-grey-arrow:after{
-        border-color: @uteColor-darkGrey transparent;
+        border-color: grey transparent;
     }
 
     .uteDD .uteDD-list {
@@ -85,7 +93,7 @@
     }
 
     .uteDD-list-white-background{
-         background: @uteColor-white;
+         background: #fff;
 
     }
 
@@ -100,9 +108,18 @@
     text-indent: 10px;
     }
 
+ /*.uteDD-list-hover-blue{
+ }
+     .uteDD-list-hover-grey{
+ }*/
+
 /* Hover state */
-   .uteDD .uteDD-list li a:hover {
+   .uteDD .uteDD-list .uteDD-list-hover-blue a:hover {
     background: #83bbe5;
+    }
+    /* Hover state */
+   .uteDD .uteDD-list .uteDD-list-hover-grey a:hover {
+    background: grey;
     }
 
     .uteDD .uteDD-list li:first-of-type a {
@@ -113,15 +130,9 @@
         border-radius: 0 0 7px 7px;
     }
 
-    .uteDD.active:after {
-        border-width: 0 6px 6px 6px;
-    }
 
 
     .uteDD.active .uteDD-list {
     opacity: 1;
     pointer-events: auto;
     }
-
-.uteDD-selected{
-}

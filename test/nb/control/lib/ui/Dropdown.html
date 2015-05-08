@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
-        <style>
+       <!-- <style>
             * {
                 box-sizing: border-box;
                 margin: 0;
@@ -16,7 +16,7 @@
                 height: 100%;
             }
         </style>
-
+-->
         <script id="sap-ui-bootstrap"
 		    src="../../../../../bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
 		    data-sap-ui-libs="nb.control.lib.ui"
@@ -30,22 +30,19 @@
         <script id="main" type="ui5/xmlview">
             <mvc:View
                 xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ute="nb.control.lib.ui"
+                xmlns:u="nb.control.lib.ui"
                 xmlns:mvc="sap.ui.core.mvc"
+                xmlns:core="sap.ui.core"
                 controllerName="local.controller.Control"
                 displayBlock="true">
 
-                <u:Dropdown
-                   border="true"
-                   backgroundcolor="true"
-                   title="Title"
-                   width="200px"
-                   padding="10px"
-                   items="{/myData}">
-                   <u:items>
-                        <core:ListItem text="{text}" key="{key}"/>
-                   </u:items>
-                </u:Dropdown>
+
+  <u:Dropdown  arrowcolor="Grey" enabled="true" whitebackground="true"  title="Title" width="200px" padding="10px" items="{/myData}">
+  <u:items>
+  <core:ListItem text="{text}" key="{key}"/>
+
+      </u:items>
+      </u:Dropdown>
 
             </mvc:View>
         </script>
@@ -54,12 +51,13 @@
 			sap.ui.getCore().attachInit(function() {
                 sap.ui.controller('local.controller.Control', {
                     onInit: function () {
-                        alert('hey it worked!!');
+                       // alert('hey it worked!!');
                     }
                 });
 
+
                 sap.ui.xmlview({ viewContent: jQuery('#main').html() })
-//                    .setModel() //If you need to bind to a model
+                    .setModel(new sap.ui.model.json.JSONModel("mock.json")) //If you need to bind to a model
                     .placeAt('fromxml');
 
               /*  oControl = new nb.control.lib.ui.Dropdown({
@@ -69,15 +67,22 @@
                    width:"200px",
                    padding:"10px",
                    items:"{/myData}",
-                   new sap.ui.core.ListItem({text="{text}" key="{key}"})
-                });
-                oControl.placeAt('fromjs');*/
+                    new sap.ui.core.ListItem({text="{text}" key="{key}"})
+                    new sap.ui.core.ListItem({text="{text}" key="{key}"})
+                    new sap.ui.core.ListItem({text="{text}" key="{key}"})
 
+                });
+
+                oLi = new sap.ui.core.ListItem({text="{text}" key="{key}"})
+                oControl.placeAt('fromjs');
+*/
             });
 		</script>
 	</head>
 	<body class="sapUiBody" role="application" id="content">
+        <div style="background-color: lightGrey; padding:200px">
         <div id="fromxml"></div>
-        <div id="fromjs"></div>
+        </div>
+     <!--   <div id="fromjs"></div>-->
 	</body>
 </html>
