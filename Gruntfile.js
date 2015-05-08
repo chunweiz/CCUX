@@ -152,9 +152,28 @@
                 }
             },
 
+            //Merge related json files - right now, it is only for manifest routing
+            'merge-json': {
+                'manifest-routing-ic': {
+                    src: [
+                        'src/nrg/component/ic/manifest.json',
+                        'src/nrg/view/**/routing.json'
+                    ],
+                    dest: 'build/nrg/component/ic/manifest.json'
+                },
+                'manifest-routing-retention': {
+                    src: [
+                        'src/nrg/component/retention/manifest.json',
+                        'src/nrg/view/**/routing.json'
+                    ],
+                    dest: 'build/nrg/component/retention/manifest.json'
+                }
+            },
+
+            //Compress related json files - right now, it is only for manifest
             'json-minify': {
                 build: {
-                    files: 'build/nrg/component/**/*.json'
+                    files: 'build/nrg/component/**/manifest.json'
                 }
             },
 
@@ -268,8 +287,9 @@
 //        grunt.loadNpmTasks('grunt-contrib-csslint');
         grunt.loadNpmTasks('grunt-contrib-uglify');
         grunt.loadNpmTasks('grunt-json-minify');
+        grunt.loadNpmTasks('grunt-merge-json');
 
-        grunt.registerTask('default', ['jshint', 'clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'json-minify', 'htmlmin', 'less']);
-        grunt.registerTask('no_qc', ['clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'json-minify', 'htmlmin', 'less']);
+        grunt.registerTask('default', ['jshint', 'clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'merge-json', 'json-minify', 'htmlmin', 'less']);
+        grunt.registerTask('no_qc', ['clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'merge-json', 'json-minify', 'htmlmin', 'less']);
     };
 }());

@@ -48,16 +48,6 @@
 
         "routing": {
             "routes": {
-                "empty": {
-                    "pattern": "",
-                    "target": [ "others.GeneralEmpty", "others.SummaryEmpty", "others.ToolsEmpty" ]
-                },
-
-                "bpFound": {
-                    "pattern": "bp/{bpNum}",
-                    "target": [ "others.GeneralEmpty", "dashboard.SummaryBP", "others.ToolsEmpty" ]
-                },
-
                 "notFound": {
                     "pattern": "{all*}",
                     "target": [ "others.GeneralEmpty", "others.SummaryEmpty", "others.ToolsEmpty" ]
@@ -72,11 +62,6 @@
             },
 
             "targets": {
-                "dashboard.SummaryBP": {
-                    "viewName": "dashboard.SummaryBP",
-                    "controlId": "idAppSummary"
-                },
-
                 "others.GeneralEmpty": {
                     "viewName": "others.GeneralEmpty",
                     "controlId": "idAppGeneral"
