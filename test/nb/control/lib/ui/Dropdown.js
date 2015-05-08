@@ -77,7 +77,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
     Dropdown.prototype.onclick = function (oEvent) {
 
         var obj = this;
-         alert('onclick');
+
 
         if(this.getEnabled()){
 

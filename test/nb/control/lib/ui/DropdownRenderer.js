@@ -79,7 +79,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
                 totalTop;
 
             totalTop = String((top + 55)) + "%";
-          alert(totalTop);
+
             return totalTop;
         };
 

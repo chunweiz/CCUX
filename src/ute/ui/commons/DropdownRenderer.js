@@ -79,8 +79,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
             var top = parseInt(oDropdown.getPadding().replace(/\D/g, ''), 10),
                 totalTop;
 
-            totalTop = String((top + 55)) + "%";
-          alert(totalTop);
+            totalTop = String((top + 75)) + "%";
+
             return totalTop;
         };
 
