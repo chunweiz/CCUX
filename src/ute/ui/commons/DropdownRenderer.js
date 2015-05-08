@@ -22,13 +22,14 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
                 oRm.addClass('uteDD-grey-background');
             }
            }
-
-            oRm.addClass('uteDD-solid-arrow');
+          //  oRm.addClass('uteDD-solid-arrow');
+         //   oRm.addClass('uteDD-solid-arrow');
             if (oDropdown.getArrowcolor() === "Blue") {
                 oRm.addClass('uteDD-blue-arrow');
             } else {
                 oRm.addClass('uteDD-grey-arrow');
             }
+
             oRm.writeClasses();
             if (oDropdown.getWidth()) {
                 oRm.addStyle('width', oDropdown.getWidth());
