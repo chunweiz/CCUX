@@ -8,7 +8,7 @@ sap.ui.define(
     function (ScrollContainer) {
         'use strict';
 
-        return ScrollContainer.extend('ute.ui.commons.ScrollContainer')
+        return ScrollContainer.extend('ute.ui.commons.ScrollContainer');
     },
 
     true

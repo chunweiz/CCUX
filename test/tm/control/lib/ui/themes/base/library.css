@@ -1,3 +1,7 @@
+/*=========================================
+** Badge
+=========================================*/
+
 .uteBadge {
     display: inline-block;
     position: relative;
@@ -26,6 +30,16 @@
     background-color: darkseagreen;
 }
 
+/*=========================================
+** Infoline
+=========================================*/
+
+
+
+/*=========================================
+** Scroll Container
+=========================================*/
+
 .sapMScrollCont {
 	overflow: hidden;
 	position: relative; /* to make the iScroll scrollbars appear at the correct position, if enabled */
@@ -38,7 +52,6 @@
 .sapMScrollContV .sapMScrollContScroll {
 	display: block; /* when there is only vertical scrolling, the whole available width should be consumed */
 }
-
 
 .uteScrollContainerH {
     position: absolute;
