@@ -153,18 +153,20 @@
             },
 
             //Merge related json files - right now, it is only for manifest routing
+            //Sequence is important for routes!
+            //Make sure manifest.json is last in src because catchall route needs to be last
             'merge-json': {
                 'manifest-routing-ic': {
                     src: [
-                        'src/nrg/component/ic/manifest.json',
-                        'src/nrg/view/**/routing.json'
+                        'src/nrg/view/**/routing.json',
+                        'src/nrg/component/ic/manifest.json'
                     ],
                     dest: 'build/nrg/component/ic/manifest.json'
                 },
                 'manifest-routing-retention': {
                     src: [
-                        'src/nrg/component/retention/manifest.json',
-                        'src/nrg/view/**/routing.json'
+                        'src/nrg/view/**/routing.json',
+                        'src/nrg/component/retention/manifest.json'
                     ],
                     dest: 'build/nrg/component/retention/manifest.json'
                 }
@@ -289,7 +291,7 @@
         grunt.loadNpmTasks('grunt-json-minify');
         grunt.loadNpmTasks('grunt-merge-json');
 
-        grunt.registerTask('default', ['jshint', 'clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'merge-json', 'json-minify', 'htmlmin', 'less']);
+        grunt.registerTask('default', ['jshint', 'clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'merge-json', 'htmlmin', 'less']);
         grunt.registerTask('no_qc', ['clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'merge-json', 'json-minify', 'htmlmin', 'less']);
     };
 }());

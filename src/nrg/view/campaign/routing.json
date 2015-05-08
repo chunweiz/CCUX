@@ -2,11 +2,17 @@
     "sap.ui5": {
         "routing": {
             "routes": {
-                //Register your path
+                "campaign": {
+                    "pattern": "bp/{bpNum}/ca/{caNum}/campaign",
+                    "target": [ "campaign.General", "dashboard.SummaryBP", "others.ToolsEmpty" ]
+                }
             },
 
             "targets": {
-                //Register your view
+                "campaign.General": {
+                    "viewName": "campaign.General",
+                    "controlId": "idAppGeneral"
+                }
             }
         }
     }

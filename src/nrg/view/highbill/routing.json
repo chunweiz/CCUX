@@ -2,11 +2,17 @@
     "sap.ui5": {
         "routing": {
             "routes": {
-                //Register your path
+                "highbill": {
+                    "pattern": "bp/{bpNum}/ca/{caNum}/highbill",
+                    "target": [ "highbill.General", "dashboard.SummaryBP", "others.ToolsEmpty" ]
+                }
             },
 
             "targets": {
-                //Register your view
+                "highbill.General": {
+                    "viewName": "highbill.General",
+                    "controlId": "idAppGeneral"
+                }
             }
         }
     }

@@ -2,11 +2,24 @@
     "sap.ui5": {
         "routing": {
             "routes": {
-                //Register your path
+
             },
 
             "targets": {
-                //Register your view
+                "others.GeneralEmpty": {
+                    "viewName": "others.GeneralEmpty",
+                    "controlId": "idAppGeneral"
+                },
+
+                "others.SummaryEmpty": {
+                    "viewName": "others.SummaryEmpty",
+                    "controlId": "idAppSummary"
+                },
+
+                "others.ToolsEmpty": {
+                    "viewName": "others.ToolsEmpty",
+                    "controlId": "idAppTools"
+                }
             }
         }
     }

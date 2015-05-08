@@ -2,11 +2,17 @@
     "sap.ui5": {
         "routing": {
             "routes": {
-                //Register your path
+                "contactlog": {
+                    "pattern": "bp/{bpNum}/ca/{caNum}/contactlog",
+                    "target": [ "contactlog.General", "dashboard.SummaryBP", "others.ToolsEmpty" ]
+                }
             },
 
             "targets": {
-                //Register your view
+                "contactlog.General": {
+                    "viewName": "contactlog.General",
+                    "controlId": "idAppGeneral"
+                }
             }
         }
     }

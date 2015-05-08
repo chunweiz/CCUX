@@ -53,29 +53,11 @@
                     "target": [ "others.GeneralEmpty", "others.SummaryEmpty", "others.ToolsEmpty" ]
                 }
             },
-
             "config": {
                 "viewType": "XML",
                 "viewPath": "nrg.view",
                 "controlAggregation": "content",
                 "clearControlAggregation": true
-            },
-
-            "targets": {
-                "others.GeneralEmpty": {
-                    "viewName": "others.GeneralEmpty",
-                    "controlId": "idAppGeneral"
-                },
-
-                "others.SummaryEmpty": {
-                    "viewName": "others.SummaryEmpty",
-                    "controlId": "idAppSummary"
-                },
-
-                "others.ToolsEmpty": {
-                    "viewName": "others.ToolsEmpty",
-                    "controlId": "idAppTools"
-                }
             }
         }
     }
