@@ -9,7 +9,7 @@ sap.ui.define(
     function (CoreController) {
         'use strict';
 
-        var Controller = CoreController.extend('nrg.view.bp.General');
+        var Controller = CoreController.extend('nrg.view.bupa.General');
 
         //TODO: Implementation required
 
