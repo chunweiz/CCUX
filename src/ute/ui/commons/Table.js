@@ -50,7 +50,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control', './Row', './library']
                 return oBinding;
             }
         };
-/*
+
         Table.prototype._createRows = function () {
             var aCols = this.getColumns(),
                 oTemplate = new Row(this.getId() + '-rows'),
@@ -71,7 +71,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control', './Row', './library']
             }
 
             oTemplate.destroy();
-        };*/
+        };
 
         return Table;
     }, true);

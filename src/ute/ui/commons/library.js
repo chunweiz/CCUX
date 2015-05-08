@@ -40,7 +40,8 @@ sap.ui.define(
                 'ute.ui.commons.Dropdown',
                 'ute.ui.commons.Table',
                 'ute.ui.commons.Column',
-                'ute.ui.commons.Row'
+                'ute.ui.commons.Row',
+                'ute.ui.commons.ScrollContainer'
 			],
 
 			elements: [],

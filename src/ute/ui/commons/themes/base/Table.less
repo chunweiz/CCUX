@@ -1,14 +1,16 @@
 .uteTable{
+    margin: 2px;
     width: 90%;
     border-collapse: collapse;
 
     .uteTable-rowHeader{
-        background-color: blue;
+        font-family: @uteFontFamily;
+        background-color: @uteColor-blueLink;
     }
 
     .uteTable-rowHeader th{
         padding: 10px;
-        border-right: 1px solid gray;
+        border-right: 1px solid @uteColor-lightGrey;
     }
 
     .uteTable-rowHeader :first-child{

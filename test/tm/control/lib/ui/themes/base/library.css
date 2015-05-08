@@ -1,3 +1,7 @@
+/*=========================================
+** Badge
+=========================================*/
+
 .uteBadge {
     display: inline-block;
     position: relative;
@@ -9,7 +13,8 @@
 .uteBadge.uteBadge-txt {
     color: white;
     font-family: "Source Sans Pro", sans-serif;
-    font-size: 0.75em;
+    font-size: 0.5em;
+    font-weight: 600;
     text-transform: uppercase;
 }
 
@@ -23,4 +28,54 @@
 
 .uteBadge.uteBadge-regular {
     background-color: darkseagreen;
+}
+
+/*=========================================
+** Infoline
+=========================================*/
+
+
+
+/*=========================================
+** Scroll Container
+=========================================*/
+
+.sapMScrollCont {
+	overflow: hidden;
+	position: relative; /* to make the iScroll scrollbars appear at the correct position, if enabled */
+}
+
+.sapMScrollContScroll {
+	display: inline-block; /* to make this content wrapper as large as its content */
+}
+
+.sapMScrollContV .sapMScrollContScroll {
+	display: block; /* when there is only vertical scrolling, the whole available width should be consumed */
+}
+
+.uteScrollContainerH {
+    position: absolute;
+	height: 5px;
+	bottom: 1px;
+	left: 1px;
+	right: 7px;
+}
+
+.uteScrollContainerH > div {
+    height:100%;
+    background-color: dodgerblue;
+    border-radius: 2px;
+}
+
+.uteScrollContainerV {
+    position: absolute;
+	width: 5px;
+    bottom: 7px;
+    top: 5px;
+    right: 1px;
+}
+
+.uteScrollContainerV > div {
+	background-color: dodgerblue;
+    border-radius: 2px;
 }
