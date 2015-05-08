@@ -18,7 +18,8 @@ sap.ui.define(
 			controls: [
 				'tm.control.lib.ui.Badge',
 				'tm.control.lib.ui.Infoline',
-                'tm.control.lib.ui.ScrollContainer'
+                'tm.control.lib.ui.ScrollContainer',
+                'tm.control.lib.ui.Page'
 			],
 
             interfaces: [],

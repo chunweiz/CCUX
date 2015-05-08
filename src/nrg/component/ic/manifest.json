@@ -50,17 +50,17 @@
             "routes": {
                 "empty": {
                     "pattern": "",
-                    "target": [ "generalEmpty", "summaryEmpty", "toolsEmpty" ]
+                    "target": [ "others.GeneralEmpty", "others.SummaryEmpty", "others.ToolsEmpty" ]
                 },
 
                 "bpFound": {
                     "pattern": "bp/{bpNum}",
-                    "target": [ "generalEmpty", "summaryDashboardBp", "toolsEmpty" ]
+                    "target": [ "others.GeneralEmpty", "dashboard.SummaryBP", "others.ToolsEmpty" ]
                 },
 
                 "notFound": {
                     "pattern": "{all*}",
-                    "target": [ "generalEmpty", "summaryEmpty", "toolsEmpty" ]
+                    "target": [ "others.GeneralEmpty", "others.SummaryEmpty", "others.ToolsEmpty" ]
                 }
             },
 
@@ -72,22 +72,22 @@
             },
 
             "targets": {
-                "summaryDashboardBp": {
+                "dashboard.SummaryBP": {
                     "viewName": "dashboard.SummaryBP",
                     "controlId": "idAppSummary"
                 },
 
-                "generalEmpty": {
+                "others.GeneralEmpty": {
                     "viewName": "others.GeneralEmpty",
                     "controlId": "idAppGeneral"
                 },
 
-                "summaryEmpty": {
+                "others.SummaryEmpty": {
                     "viewName": "others.SummaryEmpty",
                     "controlId": "idAppSummary"
                 },
 
-                "toolsEmpty": {
+                "others.ToolsEmpty": {
                     "viewName": "others.ToolsEmpty",
                     "controlId": "idAppTools"
                 }
