@@ -39,13 +39,9 @@ sap.ui.define(
 				'ute.ui.commons.HorizontalDivider',
                 'ute.ui.commons.Dropdown',
                 'ute.ui.commons.Table',
-                'ute.ui.commons.Column',
-                'ute.ui.commons.Row',
-<<<<<<< HEAD
-                'ute.ui.commons.AllColumn'
-=======
+                'ute.ui.commons.TableColumn',
+                'ute.ui.commons.TableRow',
                 'ute.ui.commons.ScrollContainer'
->>>>>>> nrgicwebredesign/master
 			],
 
 			elements: [],
