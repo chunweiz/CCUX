@@ -1,15 +1,14 @@
 /*global sap*/
 
-sap.ui.define(['jquery.sap.global', 'sap/ui/core/Element', './library'],
-	function (jQuery, Element, library) {
+sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control', './library'],
+	function (jQuery, Control, library) {
         "use strict";
 
-        var Row = Element.extend('ute.ui.commons.Row', { metadata : {
-            library: 'ute.ui.commons.table',
-            defaultAggregation: 'cells',
-            aggregations: {
-                /*The controls for the cells.*/
-                cells: {type : 'sap.ui.core.Control', multiple: true, singularName: 'cell'}
+        var Row = Control.extend('ute.ui.commons.Row', { metadata : {
+            library: 'ute.ui.commons',
+            properties: {
+                iIndex: {type: 'int', group: 'data', defaultValue: null},
+                bindingData: {}
             }
         }});
 

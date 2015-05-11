@@ -21,10 +21,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control', './Row', './library']
             defaultAggregation: 'columns',
             aggregations: {
                 /* Columns of the Table*/
+                //allcolumns: {type: 'ute.ui.commons.AllColumn', multiple: true, singularName: 'AllColumn', bindable: 'bindable'},
                 columns : {type : "ute.ui.commons.Column", multiple : true, singularName : "column", bindable : "bindable"},
 
                 /*Rows of the Table*/
-                rows : {type : "ute.ui.commons.Row", multiple : true, singularName : "row", bindable : "bindable"}
+                rows : {type : "sap.ui.table.Row", multiple : true, singularName : "row", bindable : "bindable"}
             },
             events: {
                 /*Might need this*/
@@ -43,12 +44,22 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control', './Row', './library']
             }
         }});
 
+        Table.getMetadata().getAggregation("rows")._doesNotRequireFactory = true;
+
         Table.prototype.getBinding = function (sName) {
             var oBinding;
             if (sName === 'rows') {
                 oBinding = sap.ui.core.Element.prototype.getBinding.call(this, sName);
                 return oBinding;
             }
+        };
+
+        Table.prototype.init = function() {
+            //alert("test");
+        };
+
+        Table.prototype.onAfterRendering = function() {
+
         };
 
         Table.prototype._createRows = function () {

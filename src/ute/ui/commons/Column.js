@@ -8,7 +8,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Element', 'sap/ui/core/RenderMa
             library: 'ute.ui.commons.table',
             properties: {
                 /* Width of the column.*/
-                width: {type: 'sap.ui.core.CSSSize', group: 'Dimension', defaultValue: null},
+                width: {type: 'sap.ui.core.CSSSize', group: 'Dimension', defaultValue: null}
 
 
             },
@@ -18,7 +18,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Element', 'sap/ui/core/RenderMa
                 label: {type: 'sap.ui.core.Control', multiple: false},
 
                 /*The data template to put in the column*/
-                template: {type: 'sap.io.core.Control', multiple: false}
+                template: {type: 'sap.ui.core.Control', multiple: false}
             }
         }});
 
