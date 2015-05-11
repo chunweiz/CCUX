@@ -29,24 +29,6 @@ sap.ui.define(
             }
         });
 
-        Element.prototype.init = function () {
-            this.mSkipPropagation = {
-                template: true
-            };
-        };
-
-//        Element.prototype.setTemplate = function (vTemplate) {
-//            this.setAggregation('template', vTemplate);
-//            this.invalidate();
-//            return this;
-//        };
-//
-//        Element.prototype.invalidate = function (oOrigin) {
-//            if (oOrigin !== this.getTemplate()) {
-//                Element.prototype.invalidate.apply(this, arguments);
-//            }
-//        };
-
         return Element;
     },
 
