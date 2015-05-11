@@ -15,76 +15,7 @@ sap.ui.define(
 
         var NRGComponent = Component.extend('nrg.component.ic.Component', {
             metadata: {
-                name : 'NRG Interaction Center',
-                version : '1.0.0',
-                includes: ['../../asset/css/nrg.css'],
-                dependencies: {
-                    ui5version: '1.28.5',
-                    libs: ['ute.ui.commons']
-                },
-
-                config: {
-                    resourceBundle: 'i18n/messageBundle.properties',
-                    service: {
-                        oData: {
-                            crm: 'data/crm.json',
-                            ecc: 'data/ecc.json'
-                        }
-                    }
-                },
-
-                rootView: {
-                    viewName: 'nrg.view.app.App',
-                    type: sap.ui.core.mvc.ViewType.XML
-                },
-
-                routing: {
-                    routes: {
-                        empty: {
-                            pattern: '',
-                            target: [ 'generalEmpty', 'summaryEmpty', 'toolsEmpty' ]
-                        },
-
-                        bpFound: {
-                            pattern: 'bp/{bpNum}',
-                            target: [ 'generalEmpty', 'summaryDashboardBp', 'toolsEmpty' ]
-                        },
-
-                        notFound: {
-                            pattern: '{all*}',
-                            target: [ 'generalEmpty', 'summaryEmpty', 'toolsEmpty' ]
-                        }
-                    },
-
-                    config: {
-                        viewType: sap.ui.core.mvc.ViewType.XML,
-                        viewPath: 'nrg.view',
-                        controlAggregation: 'content',
-                        clearControlAggregation: true
-                    },
-
-                    targets: {
-                        summaryDashboardBp: {
-                            viewName: 'dashboard.SummaryBP',
-                            controlId: 'idAppSummary'
-                        },
-
-                        generalEmpty: {
-                            viewName: 'others.GeneralEmpty',
-                            controlId: 'idAppGeneral'
-                        },
-
-                        summaryEmpty: {
-                            viewName: 'others.SummaryEmpty',
-                            controlId: 'idAppSummary'
-                        },
-
-                        toolsEmpty: {
-                            viewName: 'others.ToolsEmpty',
-                            controlId: 'idAppTools'
-                        }
-                    }
-                }
+                manifest: 'json'
             }
         });
 

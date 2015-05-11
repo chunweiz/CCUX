@@ -2,7 +2,7 @@
 /*jslint nomen:true*/
 
 
-sap.ui.define(['sap/ui/core/Control'], function (Control) {
+sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/core/ValueStateSupport'], function (jQuery, library, Control, ValueStateSupport) {
     "use strict";
 
     var Dropdown = Control.extend('nb.control.lib.ui.Dropdown', {
@@ -22,17 +22,14 @@ sap.ui.define(['sap/ui/core/Control'], function (Control) {
                     //CSS type width of the Textfield, the min width is set to 168px.
                     padding : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "10px" },
 
-                   //Placeholder value of a string before the input
-                    //placeholder : {type : "string", group : "Appearance", defaultValue : null},
-
                 // Color of the dropdown arrow : Possible values - Grey or Blue
                     arrowcolor : {type : "string", group : "Appearance", defaultValue : "" },
 
-                // Color of the dropdown arrow : Possible values - Grey or Blue
-                    backgroundcolor : {type : "string", group : "Appearance", defaultValue : "" },
+                // Background Color: If true then white background otherwise transparent
+                    whitebackground : {type : "boolean", group : "Behavior", defaultValue : false },
 
                 //If the dropdownfield has border ( border color - grey )
-                    border : {type : "boolean", group : "Behavior", defaultValue : true},
+                    border : {type : "boolean", group : "Behavior", defaultValue : false},
 
                     /**
 * The property is “true” when the control is toggled. The default state of this property is "false".
@@ -42,7 +39,8 @@ sap.ui.define(['sap/ui/core/Control'], function (Control) {
 
                 },
 
-                defaultAggregation : "items", aggregations : {
+                defaultAggregation : "items",
+                aggregations : {
 /**
 
 * Getter for aggregation items. Allows setting ListItems (see sap.ui.core.ListBox) that shall be displayed in the list.
@@ -55,6 +53,14 @@ sap.ui.define(['sap/ui/core/Control'], function (Control) {
                         bindable: "bindable"
                     }
             },
+            associations : {
+
+			/**
+			 * Using this method, you provide a listbox control. This allows reuse of item lists in different controls. Either a control id can be used as new target, or a control instance.
+			 * The ListBox must not be rendered somewhere in the UI. But if you want to bind the ListBox Items to a model it must be in the control tree. So we suggest to add it as dependent somewhere (e.g. to the view or the first used ComboBox). If it is not set as child or dependant to an other control it will be automatically set as dependent to the first ComboBox where it is assigned.
+			 */
+			listBox : {type : "sap.ui.commons.ListBox", multiple : false}
+		}
 
                 /*events: {
                     press: {
@@ -63,14 +69,17 @@ sap.ui.define(['sap/ui/core/Control'], function (Control) {
                         }
                     }
                 }*/
-                }
-        });
+
+     }});
 
 
 
     Dropdown.prototype.onclick = function (oEvent) {
 
         var obj = this;
+
+
+        if(this.getEnabled()){
 
         $("div.uteDD").toggleClass('active');
         //this.opts = $("div").find('ul.uteDD-list > li');
@@ -81,10 +90,11 @@ sap.ui.define(['sap/ui/core/Control'], function (Control) {
             var opt = $(this);
             obj.setTitle(opt.text());
 
+
         });
       /*oEvent.preventDefault();
             oEvent.stopPropagation();      */
-
+        }
     };
 
     return Dropdown;

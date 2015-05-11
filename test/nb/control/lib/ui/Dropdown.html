@@ -6,7 +6,7 @@
         <style>
             * {
                 box-sizing: border-box;
-                margin: 0;
+                /*margin: 0;*/
                 padding: 0;
             }
 
@@ -30,22 +30,19 @@
         <script id="main" type="ui5/xmlview">
             <mvc:View
                 xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ute="nb.control.lib.ui"
+                xmlns:u="nb.control.lib.ui"
                 xmlns:mvc="sap.ui.core.mvc"
+                xmlns:core="sap.ui.core"
                 controllerName="local.controller.Control"
                 displayBlock="true">
 
-                <u:Dropdown
-                   border="true"
-                   backgroundcolor="true"
-                   title="Title"
-                   width="200px"
-                   padding="10px"
-                   items="{/myData}">
-                   <u:items>
-                        <core:ListItem text="{text}" key="{key}"/>
-                   </u:items>
-                </u:Dropdown>
+
+  <u:Dropdown  arrowcolor="Grey" enabled="true" whitebackground="false" border="true" title="Title" width="200px" padding="20px" items="{/myData}">
+  <u:items>
+  <core:ListItem text="{text}" key="{key}"/>
+
+      </u:items>
+      </u:Dropdown>
 
             </mvc:View>
         </script>
@@ -54,30 +51,54 @@
 			sap.ui.getCore().attachInit(function() {
                 sap.ui.controller('local.controller.Control', {
                     onInit: function () {
-                        alert('hey it worked!!');
+                       // alert('hey it worked!!');
                     }
                 });
 
-                sap.ui.xmlview({ viewContent: jQuery('#main').html() })
-//                    .setModel() //If you need to bind to a model
-                    .placeAt('fromxml');
+             /*   var oModel = new sap.ui.model.json.JSONModel("mock.json");
 
-              /*  oControl = new nb.control.lib.ui.Dropdown({
-                   border:"true",
-                   backgroundcolor:"true",
-                   title:"Title" ,
-                   width:"200px",
-                   padding:"10px",
-                   items:"{/myData}",
-                   new sap.ui.core.ListItem({text="{text}" key="{key}"})
+                sap.ui.xmlview({ viewContent: jQuery('#main').html() })
+                    .setModel(oModel) //If you need to bind to a model
+                    .placeAt('fromxml');*/
+                // Create JSON data model
+var oModel = new sap.ui.model.json.JSONModel("mock.json");
+
+//sap.ui.getCore().setModel(oModel);
+
+
+                oControl = new nb.control.lib.ui.Dropdown({
+                  arrowcolor:"Grey",
+                  enabled:true,
+                  whitebackground:true,
+                  title:"Title",
+                  width:"200px",
+                  padding:"10px"
+
+
                 });
-                oControl.placeAt('fromjs');*/
+
+                oControl.setModel(oModel);
+                oControl.bindAggregation('items', '/myData', new sap.ui.core.ListItem({
+                    text: '{text}',
+                    key: '{key}'
+                }));
+
+//                oLi = new sap.ui.core.ListItem();
+//                oLi.bindProperty("text","text");
+//                oLi.bindProperty("key","key");
+//
+//                oControl.addItem(oLi);
+//                oControl.bindItems("/myData",oLi);
+
+                oControl.placeAt('fromjs');
 
             });
 		</script>
 	</head>
 	<body class="sapUiBody" role="application" id="content">
+       <!-- <div style="background-color: lightGrey; padding:200px">-->
         <div id="fromxml"></div>
+
         <div id="fromjs"></div>
 	</body>
 </html>

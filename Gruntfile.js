@@ -122,15 +122,15 @@
             },
 
             //Linting CSS on demand (not part of build)
-            csslint: {
-                strict: {
-                    src: [
-                        'build/nrg/asset/css/nrg.css',
-                        'build/ute/ui/commons/themes/base/library.css',
-                        'build/ute/ui/commons/themes/sap_bluecrystal/library.css'
-                    ]
-                }
-            },
+//            csslint: {
+//                strict: {
+//                    src: [
+//                        'build/nrg/asset/css/nrg.css',
+//                        'build/ute/ui/commons/themes/base/library.css',
+//                        'build/ute/ui/commons/themes/sap_bluecrystal/library.css'
+//                    ]
+//                }
+//            },
 
             //Compress related javascript files
             uglify: {
@@ -149,6 +149,33 @@
                             dest: 'build'
                         }
                     ]
+                }
+            },
+
+            //Merge related json files - right now, it is only for manifest routing
+            //Sequence is important for routes!
+            //Make sure manifest.json is last in src because catchall route needs to be last
+            'merge-json': {
+                'manifest-routing-ic': {
+                    src: [
+                        'src/nrg/view/**/routing.json',
+                        'src/nrg/component/ic/manifest.json'
+                    ],
+                    dest: 'build/nrg/component/ic/manifest.json'
+                },
+                'manifest-routing-retention': {
+                    src: [
+                        'src/nrg/view/**/routing.json',
+                        'src/nrg/component/retention/manifest.json'
+                    ],
+                    dest: 'build/nrg/component/retention/manifest.json'
+                }
+            },
+
+            //Compress related json files - right now, it is only for manifest
+            'json-minify': {
+                build: {
+                    files: 'build/nrg/component/**/manifest.json'
                 }
             },
 
@@ -200,18 +227,18 @@
             },
             
             //Compress svg files
-            svgmin: {
-                dist: {
-                    files: [
-                        {
-                            expand: true,
-                            cwd: 'src',
-                            src: 'nrg/asset/img/**/*svg',
-                            dest: 'build'
-                        }
-                    ]
-                }
-            },
+//            svgmin: {
+//                dist: {
+//                    files: [
+//                        {
+//                            expand: true,
+//                            cwd: 'src',
+//                            src: 'nrg/asset/img/**/*svg',
+//                            dest: 'build'
+//                        }
+//                    ]
+//                }
+//            },
 
             //Create preload for control library and components
             openui5_preload: {
@@ -258,10 +285,13 @@
         grunt.loadNpmTasks('grunt-contrib-uglify');
         grunt.loadNpmTasks('grunt-contrib-less');
         grunt.loadNpmTasks('grunt-contrib-htmlmin');
-        grunt.loadNpmTasks('grunt-svgmin');
-        grunt.loadNpmTasks('grunt-contrib-csslint');
+//        grunt.loadNpmTasks('grunt-svgmin');
+//        grunt.loadNpmTasks('grunt-contrib-csslint');
+        grunt.loadNpmTasks('grunt-contrib-uglify');
+        grunt.loadNpmTasks('grunt-json-minify');
+        grunt.loadNpmTasks('grunt-merge-json');
 
-        grunt.registerTask('default', ['jshint', 'clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
-        grunt.registerTask('no_qc', ['clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'htmlmin', 'less']);
+        grunt.registerTask('default', ['jshint', 'clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'merge-json', 'json-minify', 'htmlmin', 'less']);
+        grunt.registerTask('no_qc', ['clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'merge-json', 'json-minify', 'htmlmin', 'less']);
     };
 }());
