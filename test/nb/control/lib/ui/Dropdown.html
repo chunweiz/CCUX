@@ -78,13 +78,17 @@ var oModel = new sap.ui.model.json.JSONModel("mock.json");
                 });
 
                 oControl.setModel(oModel);
+                oControl.bindAggregation('items', '/myData', new sap.ui.core.ListItem({
+                    text: '{text}',
+                    key: '{key}'
+                }));
 
-                oLi = new sap.ui.core.ListItem();
-                oLi.bindProperty("text","text");
-                oLi.bindProperty("key","key");
-
-                oControl.addItem(oLi);
-                oControl.bindItems("/myData",oLi);
+//                oLi = new sap.ui.core.ListItem();
+//                oLi.bindProperty("text","text");
+//                oLi.bindProperty("key","key");
+//
+//                oControl.addItem(oLi);
+//                oControl.bindItems("/myData",oLi);
 
                 oControl.placeAt('fromjs');
 
