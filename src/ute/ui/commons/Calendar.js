@@ -1,21 +1,21 @@
 /*globals sap */
 /*jslint nomen: true */
-// Provides control sap.ui.commons.Calendar.
+// Provides control ute.ui.commons.Calendar.
 sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/core/LocaleData', 'sap/ui/core/format/DateFormat'],
 	function (jQuery, library, Control, LocaleData, DateFormat) {
-	    "use strict";
+	    'use strict';
 
-        var Calendar = Control.extend("ute.ui.commons.Calendar", /** @lends sap.ui.commons.Button.prototype */ { metadata : {
-            library : "ute.ui.commons",
+        var Calendar = Control.extend('ute.ui.commons.Calendar', /** @lends sap.ui.commons.Button.prototype */ { metadata : {
+            library : 'ute.ui.commons',
             properties : {
                 /*Calendar text*/
-                text : {type : "string", group : "Appearance", defaultValue : ''},
+                text : {type : 'string', group : 'Appearance', defaultValue : ''},
 
                 /*Calendar Width*/
-                width : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "340px"},
+                width : {type : 'sap.ui.core.CSSSize', group : 'Dimension', defaultValue : '340px'},
 
                 /*Calendar height*/
-                height : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "220px"}
+                height : {type : 'sap.ui.core.CSSSize', group : 'Dimension', defaultValue : '220px'}
             },
             events : {
 
@@ -27,7 +27,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
              *
              */
             Calendar.prototype.init = function () {
-                this._oFormatYyyymmdd = DateFormat.getInstance({pattern: "MMddyyyy"});
+                this._oFormatYyyymmdd = DateFormat.getInstance({pattern: 'MMddyyyy'});
             };
 
             /*
@@ -95,7 +95,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 oThis._sRenderMonth = undefined; // initialize delayed call
 
                 var oDate = oThis._getFocusedDate(),
-                    $Container = oThis.$("dayPic"),
+                    $Container = oThis.$('dayPic'),
                     oRm,
                     aMonthNames = [];
 
@@ -108,12 +108,12 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 
                 // change month and year
                 if (oThis._bLongMonth || !oThis._bNamesLengthChecked) {
-                    aMonthNames = oThis.getLocaleData().getMonthsStandAlone("wide");
+                    aMonthNames = oThis.getLocaleData().getMonthsStandAlone('wide');
                 } else {
-                    aMonthNames = oThis.getLocaleData().getMonthsStandAlone("abbreviated");
+                    aMonthNames = oThis.getLocaleData().getMonthsStandAlone('abbreviated');
                 }
-                oThis.$("month").text(aMonthNames[oDate.getUTCMonth()]);
-                oThis.$("year").text(oDate.getUTCFullYear());
+                oThis.$('month').text(aMonthNames[oDate.getUTCMonth()]);
+                oThis.$('year').text(oDate.getUTCFullYear());
 
             }
 
@@ -123,7 +123,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
              */
             Calendar.prototype.onclick = function (oEvent) {
 
-                if (oEvent.isMarked("delayedMouseEvent")) {
+                if (oEvent.isMarked('delayedMouseEvent')) {
                     return;
                 }
                 var that = this,
@@ -131,14 +131,14 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                     $Target,
                     oOldFocusedDate;
 
-                if (jQuery.sap.containsOrEquals(this.getDomRef("next"), oEvent.target) && !this.$("next").attr("disabled")) {
+                if (jQuery.sap.containsOrEquals(this.getDomRef('next'), oEvent.target) && !this.$('next').attr('disabled')) {
                     switch (this._iMode) {
                     case 0: // day picker
                         oFocusedDate.setUTCMonth(oFocusedDate.getUTCMonth() + 1, 1);
                         _renderMonth(that);
                         break;
                     }
-                } else if (jQuery.sap.containsOrEquals(this.getDomRef("prev"), oEvent.target) && !this.$("prev").attr("disabled")) {
+                } else if (jQuery.sap.containsOrEquals(this.getDomRef('prev'), oEvent.target) && !this.$('prev').attr('disabled')) {
                     switch (this._iMode) {
                     case 0: // day picker
                         oFocusedDate.setUTCDate(1);
@@ -148,14 +148,14 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                     }
                 } else {
                     $Target = jQuery(oEvent.target);
-                    if ($Target.hasClass("nrgCal-dayPic-day")) {
+                    if ($Target.hasClass('uteCal-dayPic-day')) {
                         oFocusedDate = this._getFocusedDate();
                         oOldFocusedDate = oFocusedDate;
-                        oFocusedDate = this._oFormatYyyymmdd.parse($Target.attr("data-nrg-day"), true);
+                        oFocusedDate = this._oFormatYyyymmdd.parse($Target.attr('data-nrg-day'), true);
                         this._setFocusedDate(oFocusedDate);
                         if (oFocusedDate.getTime() !== oOldFocusedDate.getTime()) {
                             that = this;
-                            if ($Target.hasClass("nrgCal-dayPic-dayOtherMonth")) {
+                            if ($Target.hasClass('uteCal-dayPic-dayOtherMonth')) {
                                 // in other month -> change month
                                 _renderMonth(that);
                             }
