@@ -21,10 +21,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control', './Row', './library']
             defaultAggregation: 'columns',
             aggregations: {
                 /* Columns of the Table*/
+                //allcolumns: {type: 'ute.ui.commons.AllColumn', multiple: true, singularName: 'AllColumn', bindable: 'bindable'},
                 columns : {type : "ute.ui.commons.Column", multiple : true, singularName : "column", bindable : "bindable"},
 
                 /*Rows of the Table*/
-                rows : {type : "ute.ui.commons.Row", multiple : true, singularName : "row", bindable : "bindable"}
+                rows : {type : "sap.ui.table.Row", multiple : true, singularName : "row", bindable : "bindable"}
             },
             events: {
                 /*Might need this*/
@@ -43,6 +44,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control', './Row', './library']
             }
         }});
 
+        Table.getMetadata().getAggregation("rows")._doesNotRequireFactory = true;
+
         Table.prototype.getBinding = function (sName) {
             var oBinding;
             if (sName === 'rows') {
@@ -51,25 +54,66 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control', './Row', './library']
             }
         };
 
+        Table.prototype.init = function() {
+            //alert("test");
+        };
+
+        Table.prototype.onAfterRendering = function() {
+
+        };
+
         Table.prototype._createRows = function () {
             var aCols = this.getColumns(),
                 oTemplate = new Row(this.getId() + '-rows'),
-                oBinding = this.getBinding('rows'),
-                oBindingInfo = this.getBindingInfo('rows'),
-                //aContexts = oBinding.getContext(),
                 i,
-                oClone;
+                oColTemplate,
+                oClone,
+                aContexts,
+                oBinding,
+                oBindingInfo;
 
+            //Build Row template first so that later on we can create rows using the tempalte
             for (i = 0; i < aCols.length; i = i + 1) {
+                oColTemplate = aCols[i].getTemplate();
+                if (oColTemplate) {
+                    oClone = oColTemplate.clone('col' + i);
+                    oClone.data('sap-ui-colindex', i);
+                    oTemplate.addCell(oClone);
+                }
+            }
+
+            //Creating rows for table
+            this.destroyAggregation("rows", true); //Destroy first to initialize
+            oBinding = this.getBinding('rows');
+            oBindingInfo = this.mBindingInfos.rows;
+            if (oBinding) {
+                aContexts = oBinding.getContext();
+            }
+            for (i = 0; i < aContexts.length; i = i + 1) {
+                oClone = oTemplate.clone('row' + 1);
+                if (aContexts && aContexts[i]) {
+                    oClone.setBindingContext(aContexts[i], oBindingInfo.model);
+                } else {
+                    if (oBindingInfo) {
+                        oClone.setBindingContext(null, oBindingInfo.model);
+                    } else {
+                        oClone.setBindingContext(null);
+                    }
+                }
+            }
+
+
+
+            for (i = 0; i < aContexts.length; i = i + 1) {
                 if (aContexts && aContexts[i]) {
                     oClone = oTemplate.clone('row' + i);
                     oClone.setBindingContext(aContexts[i], oBindingInfo.model);
                 } else {
                     oClone.setBindingContext(null);
                 }
+                //Add the
                 this.addAggregation('rows', oClone, true);
             }
-
             oTemplate.destroy();
         };
 

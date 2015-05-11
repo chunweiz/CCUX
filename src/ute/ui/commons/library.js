@@ -41,7 +41,11 @@ sap.ui.define(
                 'ute.ui.commons.Table',
                 'ute.ui.commons.Column',
                 'ute.ui.commons.Row',
+<<<<<<< HEAD
+                'ute.ui.commons.AllColumn'
+=======
                 'ute.ui.commons.ScrollContainer'
+>>>>>>> nrgicwebredesign/master
 			],
 
 			elements: [],
