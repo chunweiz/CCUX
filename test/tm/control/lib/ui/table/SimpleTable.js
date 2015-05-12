@@ -6,7 +6,7 @@ sap.ui.define(
         'sap/ui/core/Control'
     ],
 
-    function (CoreControl, Row) {
+    function (CoreControl) {
         'use strict';
 
         var Control = CoreControl.extend('tm.control.lib.ui.table.SimpleTable', {

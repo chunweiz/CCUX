@@ -23,13 +23,15 @@ sap.ui.define(
                 'tm.control.lib.ui.table.Table',
                 'tm.control.lib.ui.table.SimpleTable',
                 'tm.control.lib.ui.table.SimpleColumn',
-                'tm.control.lib.ui.table.SimpleRow'
+                'tm.control.lib.ui.table.SimpleRow',
+                'tm.control.lib.ui.selopt.Select'
 			],
 
             interfaces: [],
 			elements: [
                 'tm.control.lib.ui.table.Column',
-                'tm.control.lib.ui.table.Row'
+                'tm.control.lib.ui.table.Row',
+                'tm.control.lib.ui.selopt.Option'
             ]
 		});
 
