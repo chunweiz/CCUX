@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font: 400 12pt "Source Sans Pro", sans-serif;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+
+        <script id="sap-ui-bootstrap"
+		    src="../../../../../bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
+		    data-sap-ui-libs="sc.control.lib.ui"
+		    data-sap-ui-resourceroots='{
+                "sap.ui.layout": "../../../../../bower_components/openui5-sap.ui.layout/resources/sap/ui/layout",
+                "ute.ui.commons": "/build/ute/ui/commons",
+                "sap.ui.commons": "../../../../../bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
+                "sap.ui.unified": "../../../../../bower_components/openui5-sap.ui.unified/resources/sap/ui/unified",
+            	"sc.control.lib.ui": "./"
+         	}'>
+		</script>
+
+        <script id="main" type="ui5/xmlview">
+            <mvc:View
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:u="sc.control.lib.ui"
+                xmlns:mvc="sap.ui.core.mvc"
+                controllerName="local.controller.Control"
+                displayBlock="true">
+               <u:DatePicker></u:DatePicker>
+
+            </mvc:View>
+        </script>
+
+		<script>
+			sap.ui.getCore().attachInit(function() {
+                sap.ui.controller('local.controller.Control', {
+                    onInit: function ()
+                    {
+                    }
+                });
+
+                var oControl = new sc.control.lib.ui.DatePicker();
+                oControl.setDefaultDate("05122015");
+                oControl.placeAt('fromjs');
+
+            });
+		</script>
+	</head>
+	<body class="sapUiBody" role="application" id="content">
+        <div id="fromxml"></div>
+        <div id="fromjs"></div>
+	</body>
+</html>
