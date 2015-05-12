@@ -19,7 +19,7 @@
 
         <script id="sap-ui-bootstrap"
 		    src="../../../../../bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
-		    data-sap-ui-libs="nb.control.lib.ui"
+		    data-sap-ui-libs="nb.control.lib.ui,sap.ui.commons,sap.ui.layout"
 		    data-sap-ui-resourceroots='{
                 "sap.ui.layout": "../../../../../bower_components/openui5-sap.ui.layout/resources/sap/ui/layout",
                 "sap.ui.commons": "../../../../../bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
@@ -62,8 +62,8 @@
                     .placeAt('fromxml');*/
                 // Create JSON data model
 var oModel = new sap.ui.model.json.JSONModel("mock.json");
+                var oModel2 = new sap.ui.model.json.JSONModel("mock.json");
 
-//sap.ui.getCore().setModel(oModel);
 
 
                 oControl = new nb.control.lib.ui.Dropdown({
@@ -72,7 +72,8 @@ var oModel = new sap.ui.model.json.JSONModel("mock.json");
                   whitebackground:true,
                   title:"Title",
                   width:"200px",
-                  padding:"10px"
+                  padding:"10px",
+             //   "association:listBox": oListBox1
 
 
                 });
@@ -83,6 +84,28 @@ var oModel = new sap.ui.model.json.JSONModel("mock.json");
                     key: '{key}'
                 }));
 
+                 oControl2 = new nb.control.lib.ui.Dropdown({
+                  arrowcolor:"Blue",
+                  enabled:true,
+                  whitebackground:true,
+                  title:"Title",
+                  width:"200px",
+                  padding:"10px",
+             //   "association:listBox": oListBox1
+
+
+                });
+
+                oControl2.setModel(oModel2);
+                oControl2.bindAggregation('items', '/myData', new sap.ui.core.ListItem({
+                    text: '{text}',
+                    key: '{key}'
+                }));
+
+                var oLayout = new sap.ui.layout.VerticalLayout({
+	content: [oControl, oControl2]
+});
+
 //                oLi = new sap.ui.core.ListItem();
 //                oLi.bindProperty("text","text");
 //                oLi.bindProperty("key","key");
@@ -90,7 +113,7 @@ var oModel = new sap.ui.model.json.JSONModel("mock.json");
 //                oControl.addItem(oLi);
 //                oControl.bindItems("/myData",oLi);
 
-                oControl.placeAt('fromjs');
+                oLayout.placeAt('fromjs');
 
             });
 		</script>

@@ -59,7 +59,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 			 * Using this method, you provide a listbox control. This allows reuse of item lists in different controls. Either a control id can be used as new target, or a control instance.
 			 * The ListBox must not be rendered somewhere in the UI. But if you want to bind the ListBox Items to a model it must be in the control tree. So we suggest to add it as dependent somewhere (e.g. to the view or the first used ComboBox). If it is not set as child or dependant to an other control it will be automatically set as dependent to the first ComboBox where it is assigned.
 			 */
-			listBox : {type : "sap.ui.commons.ListBox", multiple : false}
+			listBox : {type : "sap.ui.commons.ListBox", multiple : false, bindable: "bindable"}
 		}
 
                 /*events: {
@@ -81,7 +81,10 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 
         if(this.getEnabled()){
 
-        $("div.uteDD").toggleClass('active');
+     //   $("div.uteDD").toggleClass('active');
+            $(document.getElementById(this.sId)).toggleClass('active');
+
+
         //this.opts = $("div").find('ul.uteDD-list > li');
         this.opts = $(oEvent.target).find('ul.uteDD-list > li');
 
