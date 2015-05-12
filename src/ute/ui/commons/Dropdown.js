@@ -89,7 +89,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
         this.opts.on('click', function () {
 
             var opt = $(this);
-            obj.setTitle(opt.text());
+            obj.setValue(opt.text());
 
 
         });
