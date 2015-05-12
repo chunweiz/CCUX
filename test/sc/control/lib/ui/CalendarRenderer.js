@@ -5,7 +5,13 @@ sap.ui.define([],
     function () {
         'use strict';
 
-        var CalendarRenderer = {};
+        var CalendarRenderer = [];
+
+        /*
+         * Main render method for the Calendar control which will call Header method and Days method separately.
+         *
+         *
+         */
         CalendarRenderer.render = function (oRm, oCal) {
             var sId = oCal.getId(),
                 oDate = oCal.getCurrentDate();
@@ -13,7 +19,7 @@ sap.ui.define([],
             oRm.write('<div');
             oRm.writeControlData(oCal);
             // Adding CSS classes to Calendar
-			oRm.addClass('nrgCal');
+			oRm.addClass('uteCal');
 			oRm.writeClasses();
 
             // Adding CSS styles to Calendar
@@ -31,13 +37,19 @@ sap.ui.define([],
             oRm.write('>');  // div element
             //Rendering Header and Days separately
             this.renderHeader(oRm, oCal, oDate);
-            this.renderDayPicker(oRm, oCal, oDate);
+            this.renderWeekHead(oRm, oCal, oDate);
             oRm.write('<div id=\'' + sId + '-dayPic\' class=\'uteCal-dayPic\'>');
             this.renderDays(oRm, oCal, oDate);
             oRm.write('</div>');// div element
 			oRm.write('</div>');// div element
 
         };
+
+        /*
+         * renderHeader method will display buttons like Prev,Next and Month and Year fields.
+         *
+         *
+         */
         CalendarRenderer.renderHeader = function (oRm, oCal, oDate) {
 
             var oLocaleData = oCal.getLocaleData(),
@@ -79,7 +91,13 @@ sap.ui.define([],
             oRm.write('</div>');// div element
 
         };
-        CalendarRenderer.renderDayPicker = function (oRm, oCal, oDate) {
+
+        /*
+         * renderWeekHead method will display header information like Monday,Tuesday,Wednesday etc.
+         *
+         *
+         */
+        CalendarRenderer.renderWeekHead = function (oRm, oCal, oDate) {
 
             var oLocaleData = oCal.getLocaleData(),
                 iFirstDayOfWeek = oLocaleData.getFirstDayOfWeek(),
@@ -106,6 +124,12 @@ sap.ui.define([],
             oRm.write('</div>');// div element
             // days
         };
+
+        /*
+         * renderDays method will display dates based on the Month selected/ Current Month.
+         *
+         *
+         */
         CalendarRenderer.renderDays = function (oRm, oCal, oDate) {
             if (!oDate) {
 			    oDate = oCal.getCurrentDate();

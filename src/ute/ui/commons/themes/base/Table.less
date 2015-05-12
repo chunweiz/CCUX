@@ -1,14 +1,55 @@
-.uteTable{
-    margin: 2px;
-    width: 90%;
+.uteTb{
+    margin: 10px;
+    //width: 90%;
     border-collapse: collapse;
+    font-family: @uteFontFamily;
 
-    .uteTable-rowHeader{
-        font-family: @uteFontFamily;
+    & > tbody > .uteTb-column{
+        border-bottom: dashed;
+        border-bottom-width: 1px;
+        border-bottom-color: @uteColor-lightGrey;
+        margin-bottom: 6px;
+    }
+    & > tbody > .uteTb-row{
+    }
+
+    & > tbody > .uteTb-column-invoice{
+    }
+    & > tbody > .uteTb-column-invoice > th > label{
+        background-color: transparent;
+        padding-bottom: 12px;
+        font-size: @uteFontSize-small;
+        font-weight: @uteFontWeight-semiBold;
+    }
+
+    & > tbody > .uteTb-row-invoice{
+        font-size: @uteFontSize-small;
+        font-weight: @uteFontWeight-semiBold;
+    }
+    & > tbody > .uteTb-row-invoice:nth-child(even) {
+        background-color: @uteColor-bluePearl;
+    }
+    & > tbody > .uteTb-row-invoice:nth-child(odd) {
+        background-color: transparent;
+    }
+    & > tbody > .uteTb-row-invoice > td > label {
+        margin: 6px;
+    }
+
+
+    & > tbody > .uteTb-column-aa{
+
         background-color: @uteColor-blueLink;
     }
 
-    .uteTable-rowHeader th{
+    & > tbody > .uteTb-column-aa > th{
+        padding: 10px;
+        border-right: 1px solid @uteColor-lightGrey;
+    }
+
+    /*
+
+    .uteTable-column th{
         padding: 10px;
         border-right: 1px solid @uteColor-lightGrey;
     }
@@ -55,5 +96,5 @@
         border-top-right-radius: 3px;
         border-bottom-right-radius: 3px;
         border-right: none;
-    }
+    }*/
 }

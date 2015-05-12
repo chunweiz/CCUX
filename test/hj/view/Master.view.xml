@@ -91,12 +91,12 @@
             </u:ToggleButton>
         </u:Tag>
        <u:Tag>
-            <u:Table
+            <u:Table width="90%"
                 rows="{modelData>/test}" >
                 <u:columns>
-                    <u:TableColumn>
-                        <c:Label text="Last Name"/>
-                        <c:Label text="Gender"/>
+                    <u:TableColumn width="100%">
+                        <c:Label width="20%" text="Last Name"/>
+                        <c:Label width="60%" text="Gender"/>
                     </u:TableColumn>
                 </u:columns>
                 <u:rows>

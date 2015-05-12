@@ -1,21 +1,18 @@
-/*globals sap */
+/*globals sap, sc */
 /*jslint nomen: true */
 // Provides control ute.ui.commons.Calendar.
 sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/core/LocaleData', 'sap/ui/core/format/DateFormat'],
 	function (jQuery, library, Control, LocaleData, DateFormat) {
 	    'use strict';
 
-        var Calendar = Control.extend('ute.ui.commons.Calendar', /** @lends sap.ui.commons.Button.prototype */ { metadata : {
-            library : 'ute.ui.commons',
+        var Calendar = Control.extend('sc.control.lib.ui.Calendar', /** @lends sap.ui.commons.Button.prototype */ { metadata : {
+            library : 'sc.control.lib.ui',
             properties : {
-                /*Calendar text*/
-                text : {type : 'string', group : 'Appearance', defaultValue : ''},
-
                 /*Calendar Width*/
                 width : {type : 'sap.ui.core.CSSSize', group : 'Dimension', defaultValue : '340px'},
 
                 /*Calendar height*/
-                height : {type : 'sap.ui.core.CSSSize', group : 'Dimension', defaultValue : '220px'}
+                height : {type : 'sap.ui.core.CSSSize', group : 'Dimension', defaultValue : '250px'}
             },
             events : {
 
@@ -23,11 +20,12 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
         }});
 	    (function () {
             /*
-             * Initializes values
+             * Initializes Calendar Values
+             * 1) Assuming Default Date format is MM/dd/yyyy for NRG.
              *
              */
             Calendar.prototype.init = function () {
-                this._oFormatYyyymmdd = DateFormat.getInstance({pattern: 'MMddyyyy'});
+                this._oFormatYyyymmdd = DateFormat.getInstance({pattern: 'MM/dd/yyyy'});
             };
 
             /*
@@ -70,6 +68,10 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 this._oFocusedDate = _createUTCDate(new Date());
                 return _createUTCDate(this._oFocusedDate);
             };
+            /*
+             * The following method will gives current focussed date for the session.
+             *
+             */
             Calendar.prototype._getFocusedDate = function () {
 
                 if (!this._oFocusedDate) {
@@ -80,14 +82,17 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 return this._oFocusedDate;
 
             };
-
+            /*
+             * The following method is to set focus the date for the session.
+             *
+             */
             Calendar.prototype._setFocusedDate = function (oDate) {
 
                 this._oFocusedDate = new Date(oDate);
 
             };
             /*
-             * Renders months.
+             * _renderMonth will render the previous and next months when the user selected to toggle.
              *
              */
             function _renderMonth(oThis) {
@@ -117,9 +122,10 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 
             }
 
-            /*
-             * onClick Functionality
-             *
+            /*  onClick event will have three functionality.
+             *  1) when user is toggling between months.
+             *  2) when user selected previous month and next month date so that function will render respective month.
+             *  3) User selected a particular date in the calendar, which will populate in to textfield.
              */
             Calendar.prototype.onclick = function (oEvent) {
 
@@ -132,32 +138,31 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                     oOldFocusedDate;
 
                 if (jQuery.sap.containsOrEquals(this.getDomRef('next'), oEvent.target) && !this.$('next').attr('disabled')) {
-                    switch (this._iMode) {
-                    case 0: // day picker
-                        oFocusedDate.setUTCMonth(oFocusedDate.getUTCMonth() + 1, 1);
-                        _renderMonth(that);
-                        break;
-                    }
+                    oFocusedDate.setUTCMonth(oFocusedDate.getUTCMonth() + 1, 1);
+                    _renderMonth(that);
                 } else if (jQuery.sap.containsOrEquals(this.getDomRef('prev'), oEvent.target) && !this.$('prev').attr('disabled')) {
-                    switch (this._iMode) {
-                    case 0: // day picker
-                        oFocusedDate.setUTCDate(1);
-                        oFocusedDate.setUTCDate(oFocusedDate.getUTCDate() - 1);
-                        _renderMonth(that);
-                        break;
-                    }
+                    oFocusedDate.setUTCDate(1);
+                    oFocusedDate.setUTCDate(oFocusedDate.getUTCDate() - 1);
+                    _renderMonth(that);
                 } else {
                     $Target = jQuery(oEvent.target);
                     if ($Target.hasClass('uteCal-dayPic-day')) {
                         oFocusedDate = this._getFocusedDate();
                         oOldFocusedDate = oFocusedDate;
-                        oFocusedDate = this._oFormatYyyymmdd.parse($Target.attr('data-nrg-day'), true);
+                        oFocusedDate = this._oFormatYyyymmdd.parse($Target.attr('data-nrg-day'), false);
                         this._setFocusedDate(oFocusedDate);
                         if (oFocusedDate.getTime() !== oOldFocusedDate.getTime()) {
                             that = this;
                             if ($Target.hasClass('uteCal-dayPic-dayOtherMonth')) {
                                 // in other month -> change month
                                 _renderMonth(that);
+                                oEvent.stopPropagation();
+					            oEvent.preventDefault();
+                            } else {
+                                this.fireEvent("select");
+                                //to prevent bubbling into input field if in DatePicker
+					            oEvent.stopPropagation();
+					            oEvent.preventDefault();
                             }
                         }
                     }
@@ -180,8 +185,6 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 return this._sLocale;
 
             };
-
-
         }());
         return Calendar;
 

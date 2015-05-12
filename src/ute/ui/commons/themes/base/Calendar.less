@@ -1,4 +1,4 @@
-.nrgCal {
+.uteCal {
     outline: none;
     padding: 16px;
     font-family: @uteFontFamily;
@@ -6,19 +6,19 @@
     width: 340px;
     height: 220px;
     background-color: @uteColorWhite;
-    & > .nrgCal-hd {
+    & > .uteCal-hd {
           width: 100%;
           height: 20px;
           text-align: center;
-
-            & > .nrgCal-hd-btnMonth {
+        }
+    & > .uteCal-hd > .uteCal-hd-btnMonth {
                   width: 30%;
              }
-            & > .nrgCal-hd-btnYear {
+    & > .uteCal-hd > .uteCal-hd-btnYear {
                   width: 18%;
                   text-align: left;
              }
-            & > .nrgCal-hd-btnPrev, .nrgCal-hd-btnNext, .nrgCal-hd-btnMonth, .nrgCal-hd-btnYear {
+    & > .uteCal-hd > .uteCal-hd-btnPrev, .uteCal-hd-btnNext, .uteCal-hd-btnMonth, .uteCal-hd-btnYear {
                   background-color: transparent;
                   border: none;
                   color: @uteColorDarkGrey;
@@ -28,63 +28,61 @@
                   font-weight: @uteFontWeightSemiBold;
                   outline: 0px;
              }
-        }
-    & > .nrgCal-dayPic{
+
+    & > .uteCal-dayPic{
           outline: 0px;
-            & > .nrgCal-dayPic-day {
+        }
+    & > .uteCal-dayPic > .uteCal-dayPic-day {
                   font-size: @uteControlFontSize;
                   font-weight: @uteFontWeightRegular;
                   height: 28px;
                   line-height: 28px;
                   color:  @uteColorLightGrey;
                   border: 2px solid transparent;
-             }
-            & > .nrgCal-dayPic-day:focus , .nrgCal-dayPic-day:visited {
-                  border: 2px solid transparent;
-                  border-radius: 6px;
-                  background-color: #5092CE;
-                  color: #ffffff;
-                  outline: 0px;
-             }
-            & > .nrgCal-dayPic-day:hover {
-                      border: 2px solid #5092CE;
-                      border-radius: 6px;
-              }
-            & > .nrgCal-dayPic-dayWeekend {
-                  color: @uteColorDarkGrey;
-                  font-weight: @uteFontWeightSemiBold;
-             }
-            & > .nrgCal-dayPic-dayOtherMonth {
-                  color: rgb(220, 223, 229);
-             }
-            & > .nrgCal-dayPic-dayOtherMonth:focus ,  :visited {
-                  border: 2px solid transparent;
-                  background-color: @uteColorWhite;
-                  color: rgb(220, 223, 229);
-                  outline: 0px;
-             }
-            & > .nrgCal-dayPic-dayOtherMonth:hover {
-                  border: 2px solid transparent;
-             }
-            & > .nrgCal-dayPic-day {
                   float: left;
                   cursor: default;
                   text-align: center;
-                  margin-right: 12px;
+                  margin-right: 10px;
                   margin-top: 1px;
                   box-sizing: border-box;
                   width: 10.5%;
                   & > :not(span), :before, :after { box-sizing: inherit; }
              }
-
-        }
-    & > .nrgCal-dayPic-week{
+    & > .uteCal-dayPic > .uteCal-dayPic-day:focus , .uteCal-dayPic-day:visited {
+                  border: 2px solid transparent;
+                  border-radius: 6px;
+                  background-color: @uteColorBlueLink;
+                  color: #ffffff;
+                  outline: 0px;
+             }
+    & > .uteCal-dayPic > .uteCal-dayPic-day:hover {
+                      border: 2px solid @uteColorBlueLink;
+                      border-radius: 6px;
+              }
+    & > .uteCal-dayPic > .uteCal-dayPic-dayWeekend {
+                  color: @uteColorDarkGrey;
+                  font-weight: @uteFontWeightSemiBold;
+             }
+    & > .uteCal-dayPic > .uteCal-dayPic-dayOtherMonth {
+                  color: @uteColorLightPaleBlue;
+             }
+    & > .uteCal-dayPic > .uteCal-dayPic-dayOtherMonth:focus ,  :visited {
+                  border: 2px solid transparent;
+                  background-color: @uteColorWhite;
+                  color: @uteColorLightPaleBlue;
+                  outline: 0px;
+             }
+    & > .uteCal-dayPic > .uteCal-dayPic-dayOtherMonth:hover {
+                  border: 2px solid transparent;
+             }
+    & > .uteCal-dayPic-week{
           outline: 0px;
-          & > .nrgCal-dayPic-weekHead {
+         }
+    & > .uteCal-dayPic-week > .uteCal-dayPic-weekHead {
                   float: left;
                   cursor: default;
                   text-align: center;
-                  margin-right: 12px;
+                  margin-right: 10px;
                   margin-top: 1px;
                   width: 10.5%;
                   font-size: @uteControlFontSize;
@@ -93,7 +91,7 @@
                   height: 32px;
                   line-height: 30px;
             }
-    }
+
     &  .UiIcon {
           display: inline-block;
           outline:0px;

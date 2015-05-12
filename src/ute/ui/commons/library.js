@@ -48,6 +48,14 @@ sap.ui.define(
             interfaces: []
 		});
 
+        ute.ui.commons.TableType = {
+            InvoiceTable: 'InvoiceTable',
+            CheckbookTable: 'CheckbookTable',
+            DppTable: 'DppTable',
+            DppDeniedTable: 'DppDeniedTable',
+            CampaignTable: 'CampaignTable'
+        };
+
         ute.ui.commons.ButtonType = {
             GeneralAction: 'GeneralAction',
             GeneralCancel: 'GeneralCancel',

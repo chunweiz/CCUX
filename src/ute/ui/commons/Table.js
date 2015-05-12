@@ -13,6 +13,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control'],
                     type: 'sap.ui.core.CSSSize',
                     group: 'Dimension',
                     defaultValue: 'auto'
+                },
+                tableType: {
+                    type: 'ute.ui.commons.TableType',
+                    group: 'Appearance',
+                    defaultValue: 'InvoiceTable'
                 }
             },
             aggregations: {

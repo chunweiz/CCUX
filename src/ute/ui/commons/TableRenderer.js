@@ -10,7 +10,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/theming/Parameters'],
         TableRenderer.render = function (oRm, oTable) {
             oRm.write('<table');
             oRm.writeControlData(oTable);
-            oRm.write('>');
+            oRm.addClass('uteTb');
+            oRm.writeClasses();
+            oRm.addStyle('width', oTable.getWidth());
+            oRm.writeStyles();
+            oRm.write('><tbody>');
 
             //Render columns aggregation
             oTable.getColumns().forEach(function (oColumn) {
@@ -22,9 +26,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/theming/Parameters'],
                 oRm.renderControl(oRow);
             });
 
-            oRm.write('</table>');
+            oRm.write('</tbody></table>');
 
         };
+
+
 
         return TableRenderer;
 

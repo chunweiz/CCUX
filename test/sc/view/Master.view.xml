@@ -13,7 +13,7 @@
 		</u:HorizontalDivider>-->
       <!--  <u:RedCrossSign press="onButtonClick"></u:RedCrossSign> -->
 		<u:Calendar></u:Calendar>
-    <!--        <u:Tag
+     <!--        <u:Tag
             text="Buttons">
         </u:Tag>
         <u:Button

@@ -40,7 +40,12 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
             oRm.writeStyles();
             oRm.write('>');
             oRm.write('<span>');
-            oRm.writeEscaped(oDropdown.getTitle());
+           // oRm.writeEscaped(oDropdown.getTitle());
+             if(oDropdown.getValue() === ''){
+             oRm.writeEscaped(oDropdown.getTitle());
+            } else {
+                oRm.writeEscaped(oDropdown.getValue());
+            }
             oRm.write('</span>');
             oRm.write('<ul');
             oRm.addClass('uteDD-list');

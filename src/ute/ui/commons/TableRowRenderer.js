@@ -10,13 +10,15 @@ sap.ui.define(['jquery.sap.global'],
         TableRowRenderer.render = function (oRm, oTableRow) {
             oRm.write('<tr');
             oRm.writeControlData(oTableRow);
+            oRm.addClass('uteTb-row-invoice');
+            oRm.writeClasses();
             oRm.write('>');
 
             //Render columns aggregation
             oTableRow.getCells().forEach(function (oCell) {
-                oRm.write('<th>');
+                oRm.write('<td>');
                 oRm.renderControl(oCell);
-                oRm.write('</th>');
+                oRm.write('</td>');
             });
 
             oRm.write('</tr>');
