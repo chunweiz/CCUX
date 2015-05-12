@@ -39,8 +39,8 @@ sap.ui.define(
 				'ute.ui.commons.HorizontalDivider',
                 'ute.ui.commons.Dropdown',
                 'ute.ui.commons.Table',
-                'ute.ui.commons.Column',
-                'ute.ui.commons.Row',
+                'ute.ui.commons.TableColumn',
+                'ute.ui.commons.TableRow',
                 'ute.ui.commons.ScrollContainer'
 			],
 

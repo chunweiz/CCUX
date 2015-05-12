@@ -90,13 +90,31 @@
                 rightBtnText="RIGHT TITLE">
             </u:ToggleButton>
         </u:Tag>
-        <u:Tag>
-            <u:Table>
+        <!--u:Tag>
+            <u:AllTable>
+                <u:AllColumn
+                    label="ttttt">
+                </u:AllColumn>
+            </u:AllTable>
+        </u:Tag-->
+       <u:Tag>
+            <u:Table
+                rows="{modelData>/test}" >
                 <u:Column>
-                    <c:Label text="test"></c:Label>
+                    <u:label>
+                        <c:Label text="test"></c:Label>
+                    </u:label>
+                    <u:template>
+                        <c:TextField value="{modelData>lastName}"></c:TextField>
+                    </u:template>
                 </u:Column>
                 <u:Column>
-                    <c:Label text="test"></c:Label>
+                    <u:label>
+                        <c:Label text="test"></c:Label>
+                    </u:label>
+                    <u:template>
+                        <c:TextField value="{modelData>gender}"></c:TextField>
+                    </u:template>
                 </u:Column>
             </u:Table>
         </u:Tag>

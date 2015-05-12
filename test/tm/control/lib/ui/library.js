@@ -19,11 +19,18 @@ sap.ui.define(
 				'tm.control.lib.ui.Badge',
 				'tm.control.lib.ui.Infoline',
                 'tm.control.lib.ui.ScrollContainer',
-                'tm.control.lib.ui.Page'
+                'tm.control.lib.ui.Page',
+                'tm.control.lib.ui.table.Table',
+                'tm.control.lib.ui.table.SimpleTable',
+                'tm.control.lib.ui.table.SimpleColumn',
+                'tm.control.lib.ui.table.SimpleRow'
 			],
 
             interfaces: [],
-			elements: []
+			elements: [
+                'tm.control.lib.ui.table.Column',
+                'tm.control.lib.ui.table.Row'
+            ]
 		});
 
         tm.control.lib.ui.BadgeDesign = {
