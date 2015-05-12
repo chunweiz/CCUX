@@ -80,7 +80,9 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 
         if(this.getEnabled()){
 
-        $("div.uteDD").toggleClass('active');
+       // $("div.uteDD").toggleClass('active');
+          $(document.getElementById(this.sId)).toggleClass('active');
+
         //this.opts = $("div").find('ul.uteDD-list > li');
         this.opts = $(oEvent.target).find('ul.uteDD-list > li');
 

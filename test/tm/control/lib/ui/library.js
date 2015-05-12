@@ -29,7 +29,7 @@ sap.ui.define(
             interfaces: [],
 			elements: [
                 'tm.control.lib.ui.table.Column',
-                'tm.control.lib.ui.table.Row',
+                'tm.control.lib.ui.table.Row'
             ]
 		});
 
