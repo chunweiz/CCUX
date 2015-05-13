@@ -8,7 +8,16 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control'],
             library: 'ute.ui.commons',
             properties: {
                 /* Width of the column.*/
-                width: {type: 'sap.ui.core.CSSSize', group: 'Dimension', defaultValue: null}
+                width: {
+                    type: 'sap.ui.core.CSSSize',
+                    group: 'Dimension',
+                    defaultValue: null
+                },
+                sortable: {
+                    typr: 'boolean',
+                    group: 'Behavior',
+                    defaultValue: false
+                }
             },
             defaultAggregation: 'cells',
             aggregations: {
@@ -18,9 +27,22 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control'],
                     multiple: true,
                     singularName: 'cell'
                 }
+            },
+            events: {
+                /*Event onPress*/
+                press: {}
             }
         }});
 
+
+        TableColumn.prototype.onclick = function (oEvent) {
+            if (this.getortable()) {
+                this.firePress({});
+            }
+
+            oEvent.preventDefault();
+            oEvent.stopPropagation();
+        };
 
 
         return TableColumn;

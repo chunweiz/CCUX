@@ -22,6 +22,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control'],
             },
             aggregations: {
                 /* Columns of the Table*/
+                /*For each column please provide with one <TableColumn> delaration in XML view, it is required for each column head's onclick event*/
                 columns : {
                     type : "ute.ui.commons.TableColumn",
                     multiple : true,

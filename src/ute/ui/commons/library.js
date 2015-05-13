@@ -50,7 +50,6 @@ sap.ui.define(
 
         ute.ui.commons.TableType = {
             InvoiceTable: 'InvoiceTable',
-            CheckbookTable: 'CheckbookTable',
             DppTable: 'DppTable',
             DppDeniedTable: 'DppDeniedTable',
             CampaignTable: 'CampaignTable'
