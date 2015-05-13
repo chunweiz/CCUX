@@ -213,7 +213,7 @@ sap.ui.define(
                 if (sValue !== oThis.$("input").val()) {
                     oThis._checkChange(); // to prove is something was typed in manually
                 }
-                oThis._oCalendar.setSelectedDate(oThis.getDefaultDate());
+                oThis._oCalendar.addSelectedDate(oThis.getDefaultDate());
             }
 
             oThis._oPopup.setAutoCloseAreas([oThis.getDomRef()]);
@@ -310,7 +310,7 @@ sap.ui.define(
 
                 this._checkChange(oEvent);
 
-                if (that._oPopup || that._oPopup.isOpen()) {
+                if ((that._oPopup !== undefined) && (that._oPopup.isOpen())) {
                     that._oPopup.close();
                     that.focus();
                 }

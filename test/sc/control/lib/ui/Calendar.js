@@ -307,7 +307,18 @@ sap.ui.define(
             this.setProperty('selectedDate', this._oFormatYyyymmdd.format(oFocusedDate), true);
             this._renderMonth();
         };
+       /**
+         * Change the selectedDate
+         * only for internal use
+         * @return {string} oSelectedDate
+         *
+         */
+        Calendar.prototype.addSelectedDate = function (oSelectedDate) {
 
+            this.setProperty('selectedDate', oSelectedDate, true);
+            this._oFocusedDate = this._oFormatYyyymmdd.parse(oSelectedDate);
+            this._renderMonth();
+        };
         return Calendar;
 
     },

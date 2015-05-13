@@ -55,9 +55,7 @@ sap.ui.define(
                 oRm.writeAttribute('id', oTextfield.getId());
                 oRm.writeAttribute('name', oTextfield.getName());
                 oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
-                oRm.write(' value=\'');
-				oRm.writeEscaped(oTextfield.getValue());
-                oRm.write('\'');
+                oRm.writeAttributeEscaped('value', oTextfield.getValue());
                 oRm.addStyle('width', oTextfield.getWidth());
                 oRm.addClass('uteTextfield-regular');
                 oRm.writeStyles();
