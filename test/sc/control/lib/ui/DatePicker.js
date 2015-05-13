@@ -111,7 +111,6 @@ sap.ui.define(['jquery.sap.global', './library', 'ute/ui/commons/Textfield', 'sa
                     $Input,
                     sOutputValue = "";
                 this.setProperty("value", sNewValue, true);
-                this._bValueSet = false;
                 sYyyymmdd = this._oFormatYyyymmdd.format(this._oCalendar._getFocusedDate());
                // this.setProperty("yyyymmdd", sYyyymmdd, true);
                 // set inputs value after properties because of placeholder logic for IE
@@ -140,10 +139,15 @@ sap.ui.define(['jquery.sap.global', './library', 'ute/ui/commons/Textfield', 'sa
                 }
                 if (!oThis._oCalendar) {
                     oThis._oCalendar = new Calendar(oThis.getId() + "-cal");
+                    oThis._oCalendar.setSelectedDate(oThis.getDefaultDate());
                     oThis._oCalendar.attachEvent("select", oThis._selectDate, oThis);
                     oThis._oPopup.setContent(oThis._oCalendar);
                     oThis._oCalendar.setParent(oThis, undefined, true); // don't invalidate DatePicker
+                } else {
+                    oThis._oCalendar.setSelectedDate(oThis.getDefaultDate());
                 }
+
+                oThis._oPopup.setAutoCloseAreas([oThis.getDomRef()]);
                 var eDock = sap.ui.core.Popup.Dock;
                 oThis._oPopup.open(0, eDock.BeginTop, eDock.BeginBottom, oThis, null, null, true);
 
@@ -200,6 +204,7 @@ sap.ui.define(['jquery.sap.global', './library', 'ute/ui/commons/Textfield', 'sa
 
                 if (this._oDate) {
                     sValue = this._oFormatYyyymmdd.format(this._oDate);
+                    this.setProperty("defaultDate", defaultDate, true);
                 }
                 this.setProperty("value", sValue, true);
                 if (this.getDomRef()) {
@@ -213,6 +218,21 @@ sap.ui.define(['jquery.sap.global', './library', 'ute/ui/commons/Textfield', 'sa
 
                 return this;
 
+            };
+
+            /*
+             * Event is triggered when focus is out of Date Picker control.
+             *
+             *
+             */
+            DatePicker.prototype.onsapfocusleave = function (oEvent) {
+
+                // Ignore event if DatePicker is opening or clicked on opener.
+                if (this._oCalendar && oEvent.relatedControlId &&
+                        (jQuery.sap.containsOrEquals(this._oCalendar.getDomRef(), sap.ui.getCore().byId(oEvent.relatedControlId).getFocusDomRef()) ||
+                        this.getId() === oEvent.relatedControlId)) {
+                    return;
+                }
             };
         }());
         return DatePicker;

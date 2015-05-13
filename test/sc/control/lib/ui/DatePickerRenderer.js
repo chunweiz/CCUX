@@ -55,7 +55,6 @@ sap.ui.define(['jquery.sap.global', './DatePicker', 'ute/ui/commons/TextfieldRen
                 oRm.writeClasses();
                 oRm.write('>');
             }
-
             if (this.renderOuterContentBefore) {
                 this.renderOuterContentBefore(oRm, oTextfield);
             }

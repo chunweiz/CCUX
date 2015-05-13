@@ -12,7 +12,10 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 width : {type : 'sap.ui.core.CSSSize', group : 'Dimension', defaultValue : '340px'},
 
                 /*Calendar height*/
-                height : {type : 'sap.ui.core.CSSSize', group : 'Dimension', defaultValue : '250px'}
+                height : {type : 'sap.ui.core.CSSSize', group : 'Dimension', defaultValue : '250px'},
+
+                /*Calendar selected Date*/
+                selectedDate : {type : "string", defaultValue : ''}
             },
             events : {
 
@@ -121,7 +124,27 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 oThis.$('year').text(oDate.getUTCFullYear());
 
             }
+            function _selectDay(oThis, oDate) {
 
+                var aSelectedDates = oThis.getSelectedDate(),
+                    aDomRefs = oThis.$("dayPic").children(".uteCal-dayPic-day"),
+                    $DomRef,
+                    sYyyymmdd,
+                    i = 0,
+                    temp;
+                // single day selection or start a new interval
+                sYyyymmdd = oThis._oFormatYyyymmdd.format(oDate, true);
+                for (i = 0; i < aDomRefs.length; i = i + 1) {
+                    $DomRef = jQuery(aDomRefs[i]);
+                    temp = $DomRef.attr("data-nrg-day");
+                    if (!$DomRef.hasClass("uteCal-dayPic-dayOtherMonth") && $DomRef.attr("data-nrg-day") === sYyyymmdd) {
+                        $DomRef.addClass("uteCal-dayPic-daySelected");
+                    } else if ($DomRef.hasClass("uteCal-dayPic-daySelected")) {
+                        $DomRef.removeClass("uteCal-dayPic-daySelected");
+                    }
+                }
+                oThis.setProperty("selectedDate", sYyyymmdd, true);
+            }
             /*  onClick event will have three functionality.
              *  1) when user is toggling between months.
              *  2) when user selected previous month and next month date so that function will render respective month.
@@ -152,13 +175,14 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                         oFocusedDate = this._oFormatYyyymmdd.parse($Target.attr('data-nrg-day'), false);
                         this._setFocusedDate(oFocusedDate);
                         if (oFocusedDate.getTime() !== oOldFocusedDate.getTime()) {
-                            that = this;
                             if ($Target.hasClass('uteCal-dayPic-dayOtherMonth')) {
                                 // in other month -> change month
                                 _renderMonth(that);
                                 oEvent.stopPropagation();
 					            oEvent.preventDefault();
                             } else {
+
+                                _selectDay(that, that._getFocusedDate());
                                 this.fireEvent("select");
                                 //to prevent bubbling into input field if in DatePicker
 					            oEvent.stopPropagation();
@@ -183,8 +207,33 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 }
 
                 return this._sLocale;
-
             };
+            /*
+             * Checks if a date is selected and what kind of selected
+             * @return {int} iSelected 0: not selected; 1: single day selected
+             * @private
+             */
+            Calendar.prototype._checkDateSelected = function (oDate) {
+
+                if (!(oDate instanceof Date)) {
+                    throw new Error("Date must be a JavaScript date object; " + this);
+                }
+                var iSelected = 0,
+                    aSelectedDate = this.getSelectedDate(),
+                    oDateTimeStamp = oDate.getTime(),
+                    oTmpDateTimeStamp,
+                    oTmpDate;
+                aSelectedDate = this._oFormatYyyymmdd.parse(aSelectedDate, false);
+                oTmpDate = _createUTCDate(aSelectedDate);
+                if (oTmpDate) {
+                    oTmpDateTimeStamp = oTmpDate.getTime();
+                }
+                if (oTmpDateTimeStamp === oDateTimeStamp) {
+                    iSelected = 1; // single day selected
+                }
+                return iSelected;
+            };
+
         }());
         return Calendar;
 
