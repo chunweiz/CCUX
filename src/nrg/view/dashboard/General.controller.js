@@ -11,7 +11,9 @@ sap.ui.define(
 
         var Controller = CoreController.extend('nrg.view.dashboard.General');
 
-        //TODO: Implementation required
+        Controller.prototype.onInit = function () {
+
+        };
 
         return Controller;
     }

@@ -1,0 +1,12 @@
+{
+    "sap.ui5": {
+        "config": {
+            "mock": {
+                "dashboard": {
+                    "mockDataBaseUrl": "data/dashboard/",
+                    "generateMissingMockData": true
+                }
+            }
+        }
+    }
+}
