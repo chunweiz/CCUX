@@ -8,6 +8,8 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/theming/Parameters'],
         var TableRenderer = {};
 
         TableRenderer.render = function (oRm, oTable) {
+            var bRenderDummyRow = false;
+
             oRm.write('<table');
             oRm.writeControlData(oTable);
             oRm.addClass('uteTb');
@@ -17,9 +19,38 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/theming/Parameters'],
             oRm.write('><tbody>');
 
             //Render columns aggregation
+            oRm.write('<tr');
+            //oRm.addStyle('width', oTableColumn.getWidth());
+            //oRm.addClass('uteTb-column');
+            switch (oTable.getTableType()) {
+            case 'InvoiceTable':
+                oRm.addClass('uteTb-column-invoice');
+                bRenderDummyRow = true;
+                break;
+            case 'CheckbookTable':
+                break;
+            case 'DppTable':
+                break;
+            case 'DppDeniedTable':
+                break;
+            case 'CampaignTable':
+                break;
+            }
+            oRm.writeStyles();
+            oRm.writeClasses();
+            oRm.write('>');
+
             oTable.getColumns().forEach(function (oColumn) {
                 oRm.renderControl(oColumn);
             });
+            oRm.write('</tr>');
+            if (bRenderDummyRow) {
+                oRm.write('</tr>');
+                oRm.write('<tr');
+                oRm.addClass('uteTb-row-dummyRow');
+                oRm.writeClasses();
+                oRm.write('><td></td></tr>');
+            }
 
             //Render rows aggregation
             oTable.getRows().forEach(function (oRow) {
