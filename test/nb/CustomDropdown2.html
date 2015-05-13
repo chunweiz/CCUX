@@ -109,6 +109,9 @@
 
      .uteDD .uteDD-list li{
          display: block; /*To hide the bullets on items*/
+          color: #4d4d4d;
+    padding: 10px 20px;
+    text-indent: 10px;
     }
 
     .uteDD .uteDD-list li a {
@@ -124,11 +127,11 @@
  }*/
 
 /* Hover state */
-   .uteDD .uteDD-list .uteDD-list-hover-blue a:hover {
+   .uteDD .uteDD-list .uteDD-list-hover-blue label:hover {
     background: #83bbe5;
     }
     /* Hover state */
-   .uteDD .uteDD-list .uteDD-list-hover-grey a:hover {
+   .uteDD .uteDD-list .uteDD-list-hover-grey label:hover {
     background: grey;
     }
 
@@ -155,11 +158,35 @@
     <div style="background-color: lightGrey; padding:200px">
     <div id="dd" class="ute-blue-arrow uteDD-with-border uteDD-white-background uteDD" style="width: 100px; padding: 10px">
 	<span>Gender</span>
-    <ul class="uteDD-list uteDD-list-with-border uteDD-white-background" style="top: 55%">
+   <!-- <ul class="uteDD-list uteDD-list-with-border uteDD-white-background" style="top: 55%">
         <li class="uteDD-list-hover-blue"><a>Male</a></li>
         <li class="uteDD-list-hover-blue"><a>Female</a></li>
         <li class="uteDD-list-hover-grey"><a>Unknown</a></li>
-    </ul>
+    </ul>-->
+        <Select class="uteDD-list uteDD-list-with-border uteDD-white-background" style="top: 55%">
+                    <option class="uteDD-list-hover-blue">
+                        <label>Tau ming</label>
+                        <button style"color:#000"></button>
+                        <label>hung Ju</label>
+
+                    </option>
+                </Select>
+<!--         <ul class="uteDD-list uteDD-list-with-border uteDD-white-background" style="top: 55%">
+        <li class="uteDD-list-hover-blue">
+
+            <label>Male</label>
+            <label> Gender</label>
+
+        </li>
+        <li class="uteDD-list-hover-blue">
+            <label>FeMale</label>
+            <label>Gender</label>
+        </li>
+            <li class="uteDD-list-hover-blue">
+            <label>Unknown</label>
+                <label>Gender</label>
+        </li>
+    </ul>-->
     </div>
     </div>
         <!-- jQuery if needed -->

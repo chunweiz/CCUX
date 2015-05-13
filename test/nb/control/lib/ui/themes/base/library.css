@@ -1,4 +1,5 @@
-  .uteDD {
+@import url('font-awesome.css');
+.uteDD {
      /* Size and position */
     position: relative;
     margin: 0 auto;
@@ -67,7 +68,7 @@
     .uteDD .uteDD-list {
 	/* Size & position */
     position: absolute;
-    top: 65%; /*Main dd box and List item box spacing*/
+    top: 120%; /*Main dd box and List item box spacing*/
     left: 0; /* Size */
     right: 0; /* Size */
 
@@ -99,6 +100,7 @@
 
      .uteDD .uteDD-list li{
          display: block; /*To hide the bullets on items*/
+
     }
 
     .uteDD .uteDD-list li a {
@@ -136,3 +138,7 @@
     opacity: 1;
     pointer-events: auto;
     }
+
+   .uteDD-value {
+        text-decoration: none;
+   }
