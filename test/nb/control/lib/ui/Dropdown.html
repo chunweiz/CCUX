@@ -33,38 +33,47 @@
                 xmlns:u="nb.control.lib.ui"
                 xmlns:mvc="sap.ui.core.mvc"
                 xmlns:core="sap.ui.core"
+                xmlns:sap="sap.ui.commons"
                 controllerName="local.controller.Control"
                 displayBlock="true">
 
 
-  <u:Dropdown  arrowcolor="Grey" enabled="true" whitebackground="false" border="true" title="Title" width="200px" padding="20px" items="{/myData}">
-  <u:items>
-  <core:ListItem text="{text}" key="{key}"/>
-
-      </u:items>
-      </u:Dropdown>
+  <u:Dropdown  arrowcolor="Grey" enabled="true" whitebackground="false" border="true" title="Title" width="200px" padding="20px" DropdownListItems="{/myData}">
+ <u:DropdownListItems>
+ <u:DropdownListItem key="{lastName}">
+                        <sap:Label text="{firstName}" />
+                        <sap:Label text="{lastName}" />
+</u:DropdownListItem>
+</u:DropdownListItems>
+   </u:Dropdown>
 
             </mvc:View>
         </script>
 
 		<script>
-			sap.ui.getCore().attachInit(function() {
+		sap.ui.getCore().attachInit(function() {
                 sap.ui.controller('local.controller.Control', {
                     onInit: function () {
-                       // alert('hey it worked!!');
+
+                    },
+
+                    onAfterRendering: function () {
+
                     }
                 });
 
-             /*   var oModel = new sap.ui.model.json.JSONModel("mock.json");
-
                 sap.ui.xmlview({ viewContent: jQuery('#main').html() })
-                    .setModel(oModel) //If you need to bind to a model
-                    .placeAt('fromxml');*/
+                    .setModel(new sap.ui.model.json.JSONModel({
+                        myData: [
+                            { firstName: 'tau ming', lastName: 'hew' },
+                            { firstName: 'hung ju', lastName: 'lin' },
+                            { firstName: 'navya', lastName: 'basavaraju' }
+                        ]
+                    }))
+                    .placeAt('fromxml');
+
                 // Create JSON data model
-var oModel = new sap.ui.model.json.JSONModel("mock.json");
-                var oModel2 = new sap.ui.model.json.JSONModel("mock.json");
-
-
+/*var oModel = new sap.ui.model.json.JSONModel("mock.json");
 
                 oControl = new nb.control.lib.ui.Dropdown({
                   arrowcolor:"Grey",
@@ -73,8 +82,7 @@ var oModel = new sap.ui.model.json.JSONModel("mock.json");
                   title:"Title",
                   width:"200px",
                   padding:"10px",
-             //   "association:listBox": oListBox1
-
+                  value:"Australia"
 
                 });
 
@@ -84,42 +92,14 @@ var oModel = new sap.ui.model.json.JSONModel("mock.json");
                     key: '{key}'
                 }));
 
-                 oControl2 = new nb.control.lib.ui.Dropdown({
-                  arrowcolor:"Blue",
-                  enabled:true,
-                  whitebackground:true,
-                  title:"Title",
-                  width:"200px",
-                  padding:"10px",
-             //   "association:listBox": oListBox1
 
-
-                });
-
-                oControl2.setModel(oModel2);
-                oControl2.bindAggregation('items', '/myData', new sap.ui.core.ListItem({
-                    text: '{text}',
-                    key: '{key}'
-                }));
-
-                var oLayout = new sap.ui.layout.VerticalLayout({
-	content: [oControl, oControl2]
-});
-
-//                oLi = new sap.ui.core.ListItem();
-//                oLi.bindProperty("text","text");
-//                oLi.bindProperty("key","key");
-//
-//                oControl.addItem(oLi);
-//                oControl.bindItems("/myData",oLi);
-
-                oLayout.placeAt('fromjs');
+                oControl.placeAt('fromjs');*/
 
             });
 		</script>
 	</head>
 	<body class="sapUiBody" role="application" id="content">
-       <!-- <div style="background-color: lightGrey; padding:200px">-->
+
         <div id="fromxml"></div>
 
         <div id="fromjs"></div>

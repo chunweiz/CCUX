@@ -8,30 +8,15 @@ sap.ui.define(['jquery.sap.global'],
         var TableColumnRenderer = {};
 
         TableColumnRenderer.render = function (oRm, oTableColumn) {
-            oRm.write('<tr');
-            oRm.writeControlData(oTableColumn);
-            oRm.addStyle('width', oTableColumn.getWidth());
-            oRm.addClass('uteTb-column');
-            switch (oTableColumn.getParent().getTableType()) {
-            case 'InvoiceTable':
-                oRm.addClass('uteTb-column-invoice');
-                break;
-            case 'CheckbookTable':
-                break;
-            case 'DppTable':
-                break;
-            case 'DppDeniedTable':
-                break;
-            case 'CampaignTable':
-                break;
-            }
-            oRm.writeStyles();
-            oRm.writeClasses();
-            oRm.write('>');
+
+
+            /*oRm.write('<tr');
+            */
 
             //Render columns aggregation
             oTableColumn.getCells().forEach(function (oCell) {
                 oRm.write('<th');
+                oRm.writeControlData(oTableColumn);
                 oRm.addStyle('width', oCell.getWidth());
                 oRm.writeStyles();
                 oRm.write('>');
@@ -40,8 +25,7 @@ sap.ui.define(['jquery.sap.global'],
                 oRm.write('</th>');
             });
 
-            oRm.write('</tr>');
-            oRm.write('<div></div>');
+
         };
 
 
