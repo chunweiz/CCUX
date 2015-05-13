@@ -14,10 +14,12 @@ sap.ui.define(
             oRm.write('>');
 
             oControl.getOptions().forEach(function (oOption) {
-                oRm.write('<option>');
+                oRm.write('<option');
+                oRm.writeAttribute('value', oOption.getKey());
+                oRm.write('>');
 
                 oOption.getContent().forEach(function (oContent) {
-                   oRm.renderControl(oContent);
+                    oRm.renderControl(oContent);
                 });
 
                 oRm.write('</option>');

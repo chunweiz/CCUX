@@ -38,13 +38,10 @@
                 controllerName="local.controller.Control"
                 displayBlock="true">
 
-                <ute:Select>
-                    <ute:Option key="key001">
-                        <sap:Label text="Option first half" />
-                        <sap:Label text="Option second half" />
-                    </ute:Option>
-                    <ute:Option key="key002">
-                        <sap:Label text="Option 2" />
+                <ute:Select options="{/modelData}">
+                    <ute:Option key="{lastName}">
+                        <sap:Label text="{firstName}" />
+                        <sap:Label text="{lastName}" />
                     </ute:Option>
                 </ute:Select>
 
