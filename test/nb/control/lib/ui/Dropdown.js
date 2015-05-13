@@ -29,46 +29,32 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                     whitebackground : {type : "boolean", group : "Behavior", defaultValue : false },
 
                 //If the dropdownfield has border ( border color - grey )
-                    border : {type : "boolean", group : "Behavior", defaultValue : false},
+                    border : {type : 'boolean', group : 'Behavior', defaultValue : false},
 
                     /**
 * The property is “true” when the control is toggled. The default state of this property is "false".
 */
-                    clicked : {type : "boolean", group : "Data", defaultValue : false}
+                    clicked : {type : 'boolean', group : 'Data', defaultValue : false}
 
 
                 },
 
-                defaultAggregation : "items",
+                defaultAggregation : 'DropdownListItems',
                 aggregations : {
 /**
 
 * Getter for aggregation items. Allows setting ListItems (see sap.ui.core.ListBox) that shall be displayed in the list.
 */
-                items :
+                DropdownListItems :
                     {
-                        type : "sap.ui.core.ListItem",
+                      // type : "sap.ui.core.ListItem",
+                       type : "nb.control.lib.ui.DropdownListItem",
                         multiple : true,
-                        singularName : "item",
-                        bindable: "bindable"
+                        singularName : 'DropdownListItem',
+                        bindable: 'bindable'
                     }
             },
-            associations : {
 
-			/**
-			 * Using this method, you provide a listbox control. This allows reuse of item lists in different controls. Either a control id can be used as new target, or a control instance.
-			 * The ListBox must not be rendered somewhere in the UI. But if you want to bind the ListBox Items to a model it must be in the control tree. So we suggest to add it as dependent somewhere (e.g. to the view or the first used ComboBox). If it is not set as child or dependant to an other control it will be automatically set as dependent to the first ComboBox where it is assigned.
-			 */
-			listBox : {type : "sap.ui.commons.ListBox", multiple : false, bindable: "bindable"}
-		}
-
-                /*events: {
-                    press: {
-                        parameters: {
-                            expanded: { type: 'boolean' }
-                        }
-                    }
-                }*/
 
      }});
 
@@ -91,7 +77,8 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
         this.opts.on('click', function () {
 
             var opt = $(this);
-            obj.setTitle(opt.text());
+             obj.setValue(opt.text());
+             $(this).parents('.uteDD').find('.uteDD-value').html(opt.html());
 
 
         });

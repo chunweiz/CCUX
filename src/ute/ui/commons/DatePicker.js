@@ -5,15 +5,15 @@ sap.ui.define(
     [
         'jquery.sap.global',
         './library',
-        'ute/ui/commons/Textfield',
+        './Textfield',
         'sap/ui/model/type/Date',
         './Calendar'
     ],
 	function (jQuery, library, TextField, Date1, Calendar) {
 	    'use strict';
 
-        var DatePicker = TextField.extend('sc.control.lib.ui.DatePicker', { metadata : {
-            library : 'sc.control.lib.ui',
+        var DatePicker = TextField.extend('ute.ui.commons.DatePicker', { metadata : {
+            library : 'ute.ui.commons',
             properties : {
                 defaultDate : {type : 'string', group : 'Misc', defaultValue : null}
             },
@@ -289,7 +289,7 @@ sap.ui.define(
                 sOutputValue = sValue;
                 $Input.val(sOutputValue);
             }
-            return this;
+
         };
 
         /**

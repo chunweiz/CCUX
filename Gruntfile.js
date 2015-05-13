@@ -79,7 +79,7 @@
                             filter: 'isFile',
                             rename: function (dest, src) {
                                 var aSrc = src.split('.');
-                                aSrc[aSrc.length - 2] = aSrc[aSrc.length - 2] + '-dbg';
+                                aSrc[0] = aSrc[0] + '-dbg';
                                 dest = dest + aSrc.join('.');
                                 return dest;
                             }
@@ -152,19 +152,21 @@
                 }
             },
 
-            //Merge related json files - right now, it is only for manifest routing
+            //Merge related json files
             //Sequence is important for routes!
             //Make sure manifest.json is last in src because catchall route needs to be last
             'merge-json': {
-                'manifest-routing-ic': {
+                'manifest-ic': {
                     src: [
+                        'src/nrg/data/**/mock.json',
                         'src/nrg/view/**/routing.json',
                         'src/nrg/component/ic/manifest.json'
                     ],
                     dest: 'build/nrg/component/ic/manifest.json'
                 },
-                'manifest-routing-retention': {
+                'manifest-retention': {
                     src: [
+                        'src/nrg/data/**/mock.json',
                         'src/nrg/view/**/routing.json',
                         'src/nrg/component/retention/manifest.json'
                     ],
