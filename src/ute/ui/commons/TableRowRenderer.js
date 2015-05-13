@@ -10,7 +10,18 @@ sap.ui.define(['jquery.sap.global'],
         TableRowRenderer.render = function (oRm, oTableRow) {
             oRm.write('<tr');
             oRm.writeControlData(oTableRow);
-            oRm.addClass('uteTb-row-invoice');
+            switch (oTableRow.getParent().getTableType()) {
+            case 'InvoiceTable':
+                oRm.addClass('uteTb-row-invoice');
+                break;
+            case 'DppTable':
+                oRm.addClass('uteTb-row-dpp');
+                break;
+            case 'DppDeniedTable':
+                break;
+            case 'CampaignTable':
+                break;
+            }
             oRm.writeClasses();
             oRm.write('>');
 

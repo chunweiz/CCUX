@@ -15,11 +15,11 @@
     <nav>
     <ul id="dd" class="ute-blue-arrow uteDD-with-border uteDD-white-background uteDD" style="width: 200px; padding: 10px">
 	<!--<span>Gender</span>-->
-        <a href="#" class="dropdown-toggle">Menu</a>
+        <a class="dropdown-toggle">Menu</a>
 
 
     <ul class="uteDD-list uteDD-list-with-border uteDD-white-background" style="top: 120%">
-        <li class="uteDD-list-hover-blue">
+        <!--<li class="uteDD-list-hover-blue">
             <a>
            <i class="icon-user"></i>
             Male
@@ -29,7 +29,21 @@
              <i class="icon-user"></i>
             Female</a></li>
         <li class="uteDD-list-hover-grey"><a> <i class="icon-user"></i>
-            Unknown</a></li>
+            Unknown</a></li>-->
+         <li class="uteDD-list-hover-blue">
+
+            <label>Male</label>
+            <input type="checkbox" style="width:150px"></input>
+
+        </li>
+        <li class="uteDD-list-hover-blue">
+            <label>FeMale</label>
+            <input type="checkbox" style="width:110px"></input>
+        </li>
+            <li class="uteDD-list-hover-blue">
+            <label>Unknown</label>
+            <input type="checkbox" style="width:80px"></input>
+        </li>
     </ul>
     </ul>
     </nav>
@@ -62,11 +76,11 @@
 						var opt = $(this);
                        // alert(opt);
                         opt.toggleClass('uteDD-selected');
-
-  $(this).parents('.uteDD').find('.dropdown-toggle').html(opt.html());
+               alert(opt.text());
+               $(this).parents('.uteDD').find('.dropdown-toggle').html(opt.html());
                     //    alert(opt.text());
-						obj.index = opt.index();
-						obj.placeholder.text(obj.val);
+						/*obj.index = opt.index();
+						obj.placeholder.text(obj.val);*/
 					});
 				},
 				/*getValue : function() {

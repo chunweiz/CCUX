@@ -4,15 +4,16 @@
     border-collapse: collapse;
     font-family: @uteFontFamily;
 
+    & > tbody > .uteTb-row-dummyRow > td{
+        height: 12px;
+    }
+
+    /**Invoice Table =======================================================**/
     & > tbody > .uteTb-column-invoice{
         border-bottom: dashed;
         border-bottom-width: 1px;
         border-bottom-color: @uteColor-lightGrey;
         margin-bottom: 6px;
-    }
-
-    & > tbody > .uteTb-row-dummyRow > td{
-        height: 12px;
     }
 
     & > tbody > .uteTb-column-invoice > th
@@ -29,33 +30,76 @@
         font-size: @uteFontSize-small;
         font-weight: @uteFontWeight-semiBold;
     }
+
     & > tbody > .uteTb-row-invoice:nth-child(odd) {
         background-color: @uteColor-bluePearl;
     }
+
     & > tbody > .uteTb-row-invoice:nth-child(even) {
         background-color: transparent;
     }
+
     & > tbody > .uteTb-row-invoice > td > label {
         margin: 6px;
     }
+    /**=====================================================================**/
 
-
-    & > tbody > .uteTb-column-aa{
-
+    /**DPP Table ===========================================================**/
+    & > tbody > .uteTb-column-dpp{
         background-color: @uteColor-blueLink;
+        line-height: 30px;
     }
 
-    & > tbody > .uteTb-column-aa > th{
-        padding: 10px;
-        border-right: 1px solid @uteColor-lightGrey;
+    & > tbody > .uteTb-column-dpp :first-child,
+    & > tbody > .uteTb-row-dpp :first-child {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        box-shadow: none;
     }
+
+    & > tbody > .uteTb-column-dpp :last-child,
+    & > tbody > .uteTb-row-dpp :last-child{
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-right: none;
+    }
+
+    & > tbody > .uteTb-column-dpp *,
+    & > tbody > .uteTb-row-dpp *{
+        vertical-align: middle;
+        padding-left: 6px;
+        text-align: left;
+    }
+
+    & > tbody > .uteTb-column-dpp > th{
+        border-right: 1px solid @uteColor-lightGrey;
+        box-shadow: inset 2px 0px rgba(234, 239, 244, 0.95);
+    }
+
+    & > tbody > .uteTb-column-dpp > th *{
+        color: white;
+    }
+
+    & > tbody > .uteTb-row-dpp{
+        line-height: 30px;
+        font-size: @uteFontSize-small;
+        font-weight: @uteFontWeight-semiBold;
+    }
+
+    & > tbody > .uteTb-row-dpp > td{
+        border-right: 1px solid @uteColor-lightGrey;
+        box-shadow: inset 2px 0px rgba(234, 239, 244, 0.95);
+    }
+
+    & > tbody > .uteTb-row-dpp:nth-child(odd) {
+        background-color: @uteColor-bluePearl;
+    }
+    & > tbody > .uteTb-row-dpp:nth-child(even) {
+        background-color: transparent;
+    }
+    /**=====================================================================**/
 
     /*
-
-    .uteTable-column th{
-        padding: 10px;
-        border-right: 1px solid @uteColor-lightGrey;
-    }
 
     .uteTable-rowHeader :first-child{
         border-top-left-radius: 3px;

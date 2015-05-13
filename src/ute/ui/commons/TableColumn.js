@@ -36,7 +36,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control'],
 
 
         TableColumn.prototype.onclick = function (oEvent) {
-            if (this.getortable()) {
+            if (this.getSortable()) {
                 this.firePress({});
             }
 

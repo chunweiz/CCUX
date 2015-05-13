@@ -17,7 +17,7 @@ sap.ui.define(['jquery.sap.global'],
             oTableColumn.getCells().forEach(function (oCell) {
                 oRm.write('<th');
                 oRm.writeControlData(oTableColumn);
-                oRm.addStyle('width', oCell.getWidth());
+                oRm.addStyle('width', oTableColumn.getWidth());
                 oRm.writeStyles();
                 oRm.write('>');
                 oCell.setWidth('');

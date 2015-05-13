@@ -5,7 +5,7 @@
 	xmlns:core="sap.ui.core"
     xmlns:u="ute.ui.commons">
 <u:Tag>
-  <u:Dropdown  arrowcolor="Grey" enabled="true" whitebackground="true"  title="Title" width="200px" padding="10px" items="{/myData}">
+  <u:Dropdown  arrowcolor="Grey" enabled="true" whitebackground="true"  title="Title" width="200px" padding="10px" items="{/myData}" value="Title">
   <u:items>
   <core:ListItem text="{text}" key="{key}"/>
 

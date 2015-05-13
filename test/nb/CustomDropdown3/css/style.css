@@ -116,11 +116,11 @@
  }*/
 
 /* Hover state */
-   .uteDD .uteDD-list .uteDD-list-hover-blue a:hover {
+   .uteDD .uteDD-list .uteDD-list-hover-blue label:hover {
     background: #83bbe5;
     }
     /* Hover state */
-   .uteDD .uteDD-list .uteDD-list-hover-grey a:hover {
+   .uteDD .uteDD-list .uteDD-list-hover-grey label:hover {
     background: grey;
     }
 
