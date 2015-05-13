@@ -4,18 +4,21 @@
     border-collapse: collapse;
     font-family: @uteFontFamily;
 
-    & > tbody > .uteTb-column{
+    & > tbody > .uteTb-column-invoice{
         border-bottom: dashed;
         border-bottom-width: 1px;
         border-bottom-color: @uteColor-lightGrey;
         margin-bottom: 6px;
     }
-    & > tbody > .uteTb-row{
+
+    & > tbody > .uteTb-row-dummyRow > td{
+        height: 12px;
     }
 
-    & > tbody > .uteTb-column-invoice{
-    }
-    & > tbody > .uteTb-column-invoice > th > label{
+    & > tbody > .uteTb-column-invoice > th
+    {
+        padding-left: 6px;
+        text-align: left;
         background-color: transparent;
         padding-bottom: 12px;
         font-size: @uteFontSize-small;
@@ -26,10 +29,10 @@
         font-size: @uteFontSize-small;
         font-weight: @uteFontWeight-semiBold;
     }
-    & > tbody > .uteTb-row-invoice:nth-child(even) {
+    & > tbody > .uteTb-row-invoice:nth-child(odd) {
         background-color: @uteColor-bluePearl;
     }
-    & > tbody > .uteTb-row-invoice:nth-child(odd) {
+    & > tbody > .uteTb-row-invoice:nth-child(even) {
         background-color: transparent;
     }
     & > tbody > .uteTb-row-invoice > td > label {
