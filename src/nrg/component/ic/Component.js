@@ -1,4 +1,4 @@
-/*globals sap, nrg, jQuery*/
+/*globals sap, jQuery*/
 /*jslint nomen: true*/
 
 sap.ui.define(
@@ -109,7 +109,7 @@ sap.ui.define(
             oModel = new sap.ui.model.resource.ResourceModel({
                 bundleUrl : [oRootPath, mConfig.resourceBundle].join('/')
             });
-            this.setModel(oModel, 'i18n');
+            this.setModel(oModel, 'comp-i18n');
 
             if (this._aMockServerRegistry) {
                 this._aMockServerRegistry.forEach(function (oEntry) {
