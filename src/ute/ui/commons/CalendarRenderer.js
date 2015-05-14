@@ -2,8 +2,8 @@
 /*jslint nomen: true */
 
 sap.ui.define(
-    [
-    ],
+    [],
+
     function () {
         'use strict';
 
@@ -110,7 +110,6 @@ sap.ui.define(
          */
 
         CalendarRenderer.renderWeekHead = function (oRm, oCal, oDate) {
-
             var oLocaleData = oCal._getLocaleData(),
                 iFirstDayOfWeek = oLocaleData.getFirstDayOfWeek(),
                 sId = oCal.getId(),
@@ -207,8 +206,8 @@ sap.ui.define(
 
             } while (oDay.getUTCMonth() !== iNextMonth || oDay.getUTCDay() !== iFirstDayOfWeek);
         };
-        return CalendarRenderer;
 
+        return CalendarRenderer;
     },
 
     true

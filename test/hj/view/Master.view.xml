@@ -92,7 +92,7 @@
         </u:Tag>
        <u:Tag>
             <u:Table width="50%"
-                     tableType="DppTable"
+                     tableType="CampaignTable"
                 rows="{modelData>/test}" >
                 <u:columns>
                     <u:TableColumn

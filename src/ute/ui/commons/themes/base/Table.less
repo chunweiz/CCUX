@@ -8,6 +8,50 @@
         height: 12px;
     }
 
+
+
+    /**Campaign Table ======================================================**/
+    & > tbody > .uteTb-column-campaign{
+        background-color: @uteColor-lightGrey;
+        line-height: 30px;
+    }
+
+    & > tbody > .uteTb-row-campaign:nth-child(odd){
+        background-color: @uteColor-lightGrey;
+    }
+    & > tbody > .uteTb-row-campaign:nth-child(even){
+        background-color: transparent;
+        line-height: 30px;
+    }
+
+    & > tbody > .uteTb-column-campaign :first-child,
+    & > tbody > .uteTb-row-campaign :first-child {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        box-shadow: none;
+    }
+
+    & > tbody > .uteTb-column-campaign :last-child,
+    & > tbody > .uteTb-row-campaign :last-child {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-right: none;
+    }
+
+    & > tbody > .uteTb-column-campaign > th,
+    & > tbody > .uteTb-row-campaign > td{
+        border-right: 1px solid @uteColor-lightGrey;
+        box-shadow: inset 2px 0px @uteColor-lightPaleBlue;
+    }
+
+    & > tbody > .uteTb-column-campaign *,
+    & > tbody > .uteTb-row-campaign *{
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    /**=====================================================================**/
+
     /**Invoice Table =======================================================**/
     & > tbody > .uteTb-column-invoice{
         border-bottom: dashed;
@@ -73,7 +117,7 @@
 
     & > tbody > .uteTb-column-dpp > th{
         border-right: 1px solid @uteColor-lightGrey;
-        box-shadow: inset 2px 0px rgba(234, 239, 244, 0.95);
+        box-shadow: inset 2px 0px @uteColor-lightPaleBlue;
     }
 
     & > tbody > .uteTb-column-dpp > th *{
@@ -88,13 +132,23 @@
 
     & > tbody > .uteTb-row-dpp > td{
         border-right: 1px solid @uteColor-lightGrey;
-        box-shadow: inset 2px 0px rgba(234, 239, 244, 0.95);
+        box-shadow: inset 2px 0px @uteColor-lightPaleBlue;
     }
 
     & > tbody > .uteTb-row-dpp:nth-child(odd) {
-        background-color: @uteColor-bluePearl;
+        background-color: @uteColor-paleBlue;
     }
     & > tbody > .uteTb-row-dpp:nth-child(even) {
+        background-color: transparent;
+    }
+    /**=====================================================================**/
+
+    /**DPP Denied===========================================================**/
+        /*Only change background color from DPP table*/
+    & > tbody > .uteTb-row-dpp-denied:nth-child(odd) {
+        background-color: @uteColor-paleBlue;
+    }
+    & > tbody > .uteTb-row-dpp-denied:nth-child(even) {
         background-color: transparent;
     }
     /**=====================================================================**/
