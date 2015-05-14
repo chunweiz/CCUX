@@ -5,34 +5,34 @@ sap.ui.define([
     'sap/ui/core/Control'
 ],
     function (Control) {
-        "use strict";
+        'use strict';
 
         var Dropdown = Control.extend('ute.ui.commons.Dropdown', {
             metadata : {library: 'ute.ui.commons',
                 properties: {
                 //Value the textfield
-                    value : {type : "string", group : "Data", defaultValue : '', bindable : "bindable"},
+                    value : {type : 'string', group : 'Data', defaultValue : '', bindable : 'bindable'},
 
                 //Initial text when no option has been selected
                     title: {type: 'string', defaultValue: ''},
 
                 //Not implemented, if enabled = flase will grey out
-                    enabled : {type : "boolean", group : "Behavior", defaultValue : true},
+                    enabled : {type : 'boolean', group : 'Behavior', defaultValue : true},
 
 //CSS type width of the Dropdown field, the min width is set to 200px.
-                    width : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "200px" },
+                    width : {type : 'sap.ui.core.CSSSize', group : 'Dimension', defaultValue : '200px' },
 
                     //CSS type padding of the Dropdown field, the min width is set to 10px.
-                    padding : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "10px" },
+                    padding : {type : 'sap.ui.core.CSSSize', group : 'Dimension', defaultValue : '10px' },
 
                 // Color of the dropdown arrow : Possible values - Grey or Blue
-                    arrowcolor : {type : "string", group : "Appearance", defaultValue : "" },
+                    arrowcolor : {type : 'string', group : 'Appearance', defaultValue : '' },
 
                 // Background Color: If true then white background otherwise transparent
-                    whitebackground : {type : "boolean", group : "Behavior", defaultValue : false },
+                    whitebackground : {type : 'boolean', group : 'Behavior', defaultValue : false },
 
                 //If the dropdownfield has border ( border color - grey )
-                    border : {type : "boolean", group : "Behavior", defaultValue : false}
+                    border : {type : 'boolean', group : 'Behavior', defaultValue : false}
                 },
 
                 defaultAggregation : 'DropdownListItems',
@@ -43,10 +43,10 @@ sap.ui.define([
 */
                     DropdownListItems :
                         {
-                            type : "ute.ui.commons.DropdownListItem",
+                            type : 'ute.ui.commons.DropdownListItem',
                             multiple : true,
-                            singularName : "DropdownListItem",
-                            bindable: "bindable"
+                            singularName : 'DropdownListItem',
+                            bindable: 'bindable'
                         }
                 }
                 }

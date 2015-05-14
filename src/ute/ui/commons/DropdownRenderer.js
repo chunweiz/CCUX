@@ -1,6 +1,6 @@
 /*global sap*/
 
-sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueStateSupport'],
+sap.ui.define([],
     function () {
         "use strict";
         var DropdownRenderer = {},
@@ -14,7 +14,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
             oRm.write('<nav>');
             oRm.write('<ul');
             oRm.writeControlData(oDropdown);
-            oRm.writeAttributeEscaped("id", 'dd');
+            oRm.writeAttributeEscaped('id', 'dd');
             oRm.addClass('uteDD');
             if (oDropdown.getBorder()) {
                 oRm.addClass('uteDD-with-border');
@@ -27,8 +27,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
                 }
             }
 
-           // oRm.addClass('uteDD-solid-arrow');
-            if (oDropdown.getArrowcolor() === "Blue") {
+            if (oDropdown.getArrowcolor() === 'Blue') {
                 oRm.addClass('uteDD-blue-arrow');
             } else {
                 oRm.addClass('uteDD-grey-arrow');
@@ -42,9 +41,6 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
             }
             oRm.writeStyles();
             oRm.write('>');
-           /* oRm.write('<span>');
-            oRm.writeEscaped(oDropdown.getTitle());
-            oRm.write('</span>');*/
             oRm.write('<a');
             oRm.addClass('uteDD-value');
             oRm.write('>');
@@ -56,7 +52,6 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
             oRm.write('</a>');
             oRm.write('<ul');
             oRm.addClass('uteDD-list');
-
             oRm.addStyle('top', this.calTop(oDropdown));
             oRm.writeStyles();
             if (oDropdown.getBorder()) {
@@ -65,57 +60,37 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
             if (oDropdown.getWhitebackground()) {
                 oRm.addClass('uteDD-list-white-background');
             }
-
-
             oRm.writeClasses();
-
             oRm.write('>');
             for (i = 0; i < oDropdown.getDropdownListItems().length; i += 1) {
                 oItem = oDropdown.getDropdownListItems()[i];
-                oRm.write("<li");
-                if (oDropdown.getArrowcolor() === "Blue") {
+                oRm.write('<li');
+                if (oDropdown.getArrowcolor() === 'Blue') {
                     oRm.addClass('uteDD-list-hover-blue');
                 } else {
                     oRm.addClass('uteDD-list-hover-grey');
                 }
                 oRm.writeClasses();
                 oRm.write('>');
-
-               /* oRm.write('<a>');
-                oRm.writeEscaped(oItem.getText());
-                oRm.write('</a>');*/
                 oRm.write('<a>');
-               /* oItem.getContent().forEach(function (oContent) {
-
-                    oRm.renderControl(oContent);
-
-                });*/
                 for (j = 0; j < oItem.getContent().length; j += 1) {
                     oContent = oItem.getContent()[j];
                     oRm.renderControl(oContent);
                 }
                 oRm.write('</a>');
-
                 oRm.write('</li>');
             }
-            oRm.write("</ul></ul>");
+            oRm.write('</ul></ul>');
             oRm.write('</nav>');
-
-
-
         };
         DropdownRenderer.calTop = function (oDropdown) {
             var top = parseInt(oDropdown.getPadding().replace(/\D/g, ''), 10),
                 totalTop;
-
-            totalTop = String((top + 110)) + "%";
-
+            totalTop = String((top + 110)) + '%';
             return totalTop;
         };
-
         return DropdownRenderer;
     },
-
     true
     );
 
