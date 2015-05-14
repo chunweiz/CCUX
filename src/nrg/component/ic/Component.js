@@ -25,7 +25,11 @@ sap.ui.define(
             Component.prototype.init.apply(this);
             this.initIcons();
             this.initPopup();
-            this.initMockServers();
+
+            if(this.getComponentData().config.mock) {
+                this.initMockServers();
+            }
+
             this.initModels();
             this.initRouter();
         };
