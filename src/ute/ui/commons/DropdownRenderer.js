@@ -1,13 +1,18 @@
 /*global sap*/
 
 sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueStateSupport'],
-    function (jQuery, Renderer, ValueStateSupport) {
+    function () {
         "use strict";
-        var DropdownRenderer = {};
+        var DropdownRenderer = {},
+            i,
+            j,
+            oItem,
+            oContent;
 
         DropdownRenderer.render = function (oRm, oDropdown) {
 
-            oRm.write('<div');
+            oRm.write('<nav>');
+            oRm.write('<ul');
             oRm.writeControlData(oDropdown);
             oRm.writeAttributeEscaped("id", 'dd');
             oRm.addClass('uteDD');
@@ -17,19 +22,17 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
             if (oDropdown.getEnabled()) {
                 if (oDropdown.getWhitebackground()) {
                     oRm.addClass('uteDD-white-background');
+                } else {
+                    oRm.addClass('uteDD-grey-background');
                 }
-            else {
-                oRm.addClass('uteDD-grey-background');
             }
-           }
-          //  oRm.addClass('uteDD-solid-arrow');
-         //   oRm.addClass('uteDD-solid-arrow');
+
+           // oRm.addClass('uteDD-solid-arrow');
             if (oDropdown.getArrowcolor() === "Blue") {
                 oRm.addClass('uteDD-blue-arrow');
             } else {
                 oRm.addClass('uteDD-grey-arrow');
             }
-
             oRm.writeClasses();
             if (oDropdown.getWidth()) {
                 oRm.addStyle('width', oDropdown.getWidth());
@@ -39,18 +42,22 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
             }
             oRm.writeStyles();
             oRm.write('>');
-            oRm.write('<span>');
-           // oRm.writeEscaped(oDropdown.getTitle());
-             if(oDropdown.getValue() === ''){
-             oRm.writeEscaped(oDropdown.getTitle());
+           /* oRm.write('<span>');
+            oRm.writeEscaped(oDropdown.getTitle());
+            oRm.write('</span>');*/
+            oRm.write('<a');
+            oRm.addClass('uteDD-value');
+            oRm.write('>');
+            if (oDropdown.getValue() === '') {
+                oRm.writeEscaped(oDropdown.getTitle());
             } else {
                 oRm.writeEscaped(oDropdown.getValue());
             }
-            oRm.write('</span>');
+            oRm.write('</a>');
             oRm.write('<ul');
             oRm.addClass('uteDD-list');
 
-            oRm.addStyle('top', this._calTop(oDropdown));
+            oRm.addStyle('top', this.calTop(oDropdown));
             oRm.writeStyles();
             if (oDropdown.getBorder()) {
                 oRm.addClass('uteDD-list-with-border');
@@ -63,28 +70,45 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
             oRm.writeClasses();
 
             oRm.write('>');
-            for (var i = 0; i < oDropdown.getItems().length; i++) {
-				var oItem = oDropdown.getItems()[i];
-				oRm.write("<li");
-                if(oDropdown.getArrowcolor() === "Blue"){
-                oRm.addClass('uteDD-list-hover-blue');
+            for (i = 0; i < oDropdown.getDropdownListItems().length; i += 1) {
+                oItem = oDropdown.getDropdownListItems()[i];
+                oRm.write("<li");
+                if (oDropdown.getArrowcolor() === "Blue") {
+                    oRm.addClass('uteDD-list-hover-blue');
                 } else {
                     oRm.addClass('uteDD-list-hover-grey');
                 }
                 oRm.writeClasses();
-                oRm.write("><a>");
+                oRm.write('>');
+
+               /* oRm.write('<a>');
                 oRm.writeEscaped(oItem.getText());
-                oRm.write("</a></li>");
+                oRm.write('</a>');*/
+                oRm.write('<a>');
+               /* oItem.getContent().forEach(function (oContent) {
+
+                    oRm.renderControl(oContent);
+
+                });*/
+                for (j = 0; j < oItem.getContent().length; j += 1) {
+                    oContent = oItem.getContent()[j];
+                    oRm.renderControl(oContent);
+                }
+                oRm.write('</a>');
+
+                oRm.write('</li>');
             }
-			oRm.write("</ul></div></div>");
+            oRm.write("</ul></ul>");
+            oRm.write('</nav>');
 
 
-            };
-      DropdownRenderer._calTop = function (oDropdown) {
+
+        };
+        DropdownRenderer.calTop = function (oDropdown) {
             var top = parseInt(oDropdown.getPadding().replace(/\D/g, ''), 10),
                 totalTop;
 
-            totalTop = String((top + 75)) + "%";
+            totalTop = String((top + 110)) + "%";
 
             return totalTop;
         };
@@ -93,6 +117,6 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
     },
 
     true
-);
+    );
 
 

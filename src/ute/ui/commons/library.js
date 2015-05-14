@@ -7,15 +7,15 @@ sap.ui.define(
         'sap/ui/core/library'
     ],
 
-	function (jQuery, DataType, Library) {
-		'use strict';
+    function (jQuery, DataType, Library) {
+        'use strict';
 
-		sap.ui.getCore().initLibrary({
-			name: 'ute.ui.commons',
-			version: '1.0.0',
-			dependencies: ['sap.ui.core'],
+        sap.ui.getCore().initLibrary({
+            name: 'ute.ui.commons',
+            version: '1.0.0',
+            dependencies: ['sap.ui.core'],
 
-			types: [
+            types: [
                 'ute.ui.commons.BadgeDesign',
                 'ute.ui.commons.CSSDisplay',
                 'ute.ui.commons.CSSPosition',
@@ -25,8 +25,8 @@ sap.ui.define(
                 'ute.ui.commons.ButtonType'
             ],
 
-			controls: [
-				'ute.ui.commons.InfoLine',
+            controls: [
+                'ute.ui.commons.InfoLine',
                 'ute.ui.commons.Dialog',
                 'ute.ui.commons.Badge',
                 'ute.ui.commons.Button',
@@ -36,17 +36,18 @@ sap.ui.define(
                 'ute.ui.commons.CheckBox',
                 'ute.ui.commons.RadioButton',
                 'ute.ui.commons.RedCrossSign',
-				'ute.ui.commons.HorizontalDivider',
+                'ute.ui.commons.HorizontalDivider',
                 'ute.ui.commons.Dropdown',
                 'ute.ui.commons.Table',
                 'ute.ui.commons.TableColumn',
                 'ute.ui.commons.TableRow',
-                'ute.ui.commons.ScrollContainer'
-			],
+                'ute.ui.commons.ScrollContainer',
+                'ute.ui.commons.DropdownListItem'
+            ],
 
-			elements: [],
+            elements: [],
             interfaces: []
-		});
+        });
 
         ute.ui.commons.TableType = {
             InvoiceTable: 'InvoiceTable',
@@ -75,23 +76,23 @@ sap.ui.define(
 
         };
 
-	    ute.ui.commons.HorizontalDividerDesign = {
-		    Solid: 'Solid',
+        ute.ui.commons.HorizontalDividerDesign = {
+            Solid: 'Solid',
             Dotted: 'Dotted'
-	    };
+        };
 
-	    ute.ui.commons.HorizontalDividerHeight = {
+        ute.ui.commons.HorizontalDividerHeight = {
             None: 'None',
-		    Small: 'Small',
-		    Medium: 'Medium',
-		    Large: 'Large'
-	    };
+            Small: 'Small',
+            Medium: 'Medium',
+            Large: 'Large'
+        };
 
         ute.ui.commons.HorizontalDividerSize = {
-		    Small: 'Small',
-		    Medium: 'Medium',
-		    Large: 'Large'
-	    };
+            Small: 'Small',
+            Medium: 'Medium',
+            Large: 'Large'
+        };
 
         ute.ui.commons.CSSDisplay = DataType.createType('ute.ui.commons.CSSDisplay', {
             isValid : function (sValue) {
@@ -105,6 +106,6 @@ sap.ui.define(
             }
         }, DataType.getType('string'));
 
-		return ute.ui.commons;
-	}
+        return ute.ui.commons;
+    }
 );

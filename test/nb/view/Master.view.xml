@@ -5,11 +5,19 @@
 	xmlns:core="sap.ui.core"
     xmlns:u="ute.ui.commons">
 <u:Tag>
-  <u:Dropdown  arrowcolor="Grey" enabled="true" whitebackground="true"  title="Title" width="200px" padding="10px" items="{/myData}" value="Title">
-  <u:items>
+  <u:Dropdown  arrowcolor="Blue" enabled="true" whitebackground="true"  title="Title" width="200px" padding="10px" DropdownListItems="{/myData}" value="Title">
+  <!--<u:items>
   <core:ListItem text="{text}" key="{key}"/>
 
-      </u:items>
+      </u:items>-->
+
+<u:DropdownListItems>
+ <u:DropdownListItem key="{text}">
+    <c:Label text="{key}"/>
+    <c:Label text="{key}"/>
+</u:DropdownListItem>
+</u:DropdownListItems>
+
       </u:Dropdown>
 
 
