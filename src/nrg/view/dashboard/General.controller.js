@@ -12,7 +12,7 @@ sap.ui.define(
         var Controller = CoreController.extend('nrg.view.dashboard.General');
 
         Controller.prototype.onInit = function () {
-
+            this.getOwnerComponent().getModel('comp-dashboard').read('/ProductSet');
         };
 
         return Controller;

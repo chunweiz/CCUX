@@ -110,7 +110,7 @@ sap.ui.define(
             if (this._aMockServerRegistry) {
                 this._aMockServerRegistry.forEach(function (oEntry) {
                     oModel = new ODataModel(oEntry.oMockServer.getRootUri(), true);
-                    this.setModel(oModel, oEntry.sKey);
+                    this.setModel(oModel, 'comp-' + oEntry.sKey);
                 }.bind(this));
             }
         };
