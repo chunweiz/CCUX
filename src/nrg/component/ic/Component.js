@@ -105,7 +105,7 @@ sap.ui.define(
 
             //Set resource bundle
             oModel = new sap.ui.model.resource.ResourceModel({
-                bundleUrl : [oRootPath, mConfig.resourceBundle].join('/')
+                bundleUrl: [oRootPath, mConfig.resourceBundle].join('/')
             });
             this.setModel(oModel, 'comp-i18n');
 
