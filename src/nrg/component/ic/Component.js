@@ -23,15 +23,15 @@ sap.ui.define(
 
         NRGComponent.prototype.init = function () {
             Component.prototype.init.apply(this);
-            this.initIcons();
-            this.initPopup();
+            this._initIcons();
+            this._initPopup();
 
             if (this.getComponentData().config.mock) {
-                this.initMockServers();
+                this._initMockServers();
             }
 
-            this.initModels();
-            this.initRouter();
+            this._initModels();
+            this._initRouter();
         };
 
         NRGComponent.prototype.destroy = function () {
@@ -40,11 +40,11 @@ sap.ui.define(
             Component.prototype.destory.apply(this, arguments);
         };
 
-        NRGComponent.prototype.initIcons = function () {
+        NRGComponent.prototype._initIcons = function () {
             IconUtil.load();
         };
 
-        NRGComponent.prototype.initPopup = function () {
+        NRGComponent.prototype._initPopup = function () {
             // Set the initial Z-index to 100.
             // Internally, UI5 is doing an increment of 10 for each call.
             // TODO: in 1.30, it is possible to call method setInitialZIndex instead of looping.
@@ -56,7 +56,7 @@ sap.ui.define(
             }
         };
 
-        NRGComponent.prototype.initMockServers = function () {
+        NRGComponent.prototype._initMockServers = function () {
             var mConfig, mMock, sKey, oMockServer, sRootPath, sRootUri;
 
             this._aMockServerRegistry = [];
@@ -92,14 +92,14 @@ sap.ui.define(
             }
         };
 
-        NRGComponent.prototype.destroyMockServers = function () {
+        NRGComponent.prototype._destroyMockServers = function () {
             //Stop all the mock servers
             this._aMockServerRegistry.forEach(function (oMockServer) {
                 oMockServer.stop();
             });
         };
 
-        NRGComponent.prototype.initModels = function () {
+        NRGComponent.prototype._initModels = function () {
             var mConfig, oRootPath, oModel;
 
             mConfig = this.getMetadata().getConfig();
@@ -119,7 +119,7 @@ sap.ui.define(
             }
         };
 
-        NRGComponent.prototype.initRouter = function () {
+        NRGComponent.prototype._initRouter = function () {
             var oRoutes = this.getMetadata().getRoutes(),
                 oRouter = this.getRouter(),
                 sName;
