@@ -26,7 +26,7 @@ sap.ui.define(
             this.initIcons();
             this.initPopup();
 
-            if(this.getComponentData().config.mock) {
+            if (this.getComponentData().config.mock) {
                 this.initMockServers();
             }
 
