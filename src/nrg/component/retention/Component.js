@@ -7,12 +7,10 @@ sap.ui.define(
         'nrg/util/Icon',
         'sap/ui/core/util/MockServer',
         'sap/ui/model/odata/v2/ODataModel',
-
-        // Not in function arguments
         'sap/ui/core/Popup'
     ],
 
-    function (Component, IconUtil, MockServer, ODataModel) {
+    function (Component, IconUtil, MockServer, ODataModel, Popup) {
         'use strict';
 
         var NRGComponent = Component.extend('nrg.component.retention.Component', {
@@ -52,7 +50,7 @@ sap.ui.define(
             var iIdx;
 
             for (iIdx = 0; iIdx < 10; iIdx = iIdx + 1) {
-                sap.ui.core.Popup.getNextZIndex();
+                Popup.getNextZIndex();
             }
         };
 
