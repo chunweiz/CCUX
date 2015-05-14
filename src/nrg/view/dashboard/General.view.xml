@@ -7,6 +7,6 @@
     width="100%"
     displayBlock="true">
 
-    <ute:Tag text="{comp-dashboard>/ProductSet('ProductID 1')/Category}"/>
+    <ute:Tag text="{comp-dashboard>/ProductSet('HT-1000')/Category}"/>
 
 </mvc:View>
