@@ -1,16 +1,16 @@
-/*globals sap, nrg, jQuery*/
+/*globals sap, jQuery*/
 /*jslint nomen: true*/
 
 sap.ui.define(
     [
         'sap/ui/core/UIComponent',
         'nrg/util/Icon',
-
-        // Not in function arguments
+        'sap/ui/core/util/MockServer',
+        'sap/ui/model/odata/v2/ODataModel',
         'sap/ui/core/Popup'
     ],
 
-    function (Component, IconUtil) {
+    function (Component, IconUtil, MockServer, ODataModel, Popup) {
         'use strict';
 
         var NRGComponent = Component.extend('nrg.component.retention.Component', {
@@ -21,21 +21,28 @@ sap.ui.define(
 
         NRGComponent.prototype.init = function () {
             Component.prototype.init.apply(this);
-            this.initRouter();
-            this.initModels();
-            this.initIcons();
-            this.initPopup();
+            this._initIcons();
+            this._initPopup();
+
+            if (this.getComponentData().config.mock) {
+                this._initMockServers();
+            }
+
+            this._initModels();
+            this._initRouter();
         };
 
         NRGComponent.prototype.destroy = function () {
+            this.destroyMockServers();
+
             Component.prototype.destory.apply(this, arguments);
         };
 
-        NRGComponent.prototype.initIcons = function () {
+        NRGComponent.prototype._initIcons = function () {
             IconUtil.load();
         };
 
-        NRGComponent.prototype.initPopup = function () {
+        NRGComponent.prototype._initPopup = function () {
             // Set the initial Z-index to 100.
             // Internally, UI5 is doing an increment of 10 for each call.
             // TODO: in 1.30, it is possible to call method setInitialZIndex instead of looping.
@@ -43,11 +50,54 @@ sap.ui.define(
             var iIdx;
 
             for (iIdx = 0; iIdx < 10; iIdx = iIdx + 1) {
-                sap.ui.core.Popup.getNextZIndex();
+                Popup.getNextZIndex();
             }
         };
 
-        NRGComponent.prototype.initModels = function () {
+        NRGComponent.prototype._initMockServers = function () {
+            var mConfig, mMock, sKey, oMockServer, sRootPath, sRootUri;
+
+            this._aMockServerRegistry = [];
+            mConfig = this.getMetadata().getConfig();
+            mMock = mConfig.mock || {};
+            sRootPath = jQuery.sap.getModulePath('nrg');
+
+            for (sKey in mMock) {
+                if (mMock.hasOwnProperty(sKey)) {
+                    //Create root URI
+                    sRootUri = [sRootPath, mMock[sKey].mockDataBaseUrl].join('/');
+
+                    //Create an instance of mock server based on module
+                    oMockServer = new MockServer({
+                        rootUri: sRootUri
+                    });
+
+                    //Configure mock server simulation
+                    oMockServer.simulate(sRootUri + 'metadata.xml', {
+                        sMockdataBaseUrl: sRootUri,
+                        bGenerateMissingMockData: mMock[sKey].generateMissingMockData
+                    });
+
+                    //Start mock server
+                    oMockServer.start();
+
+                    //Add mock server to registry
+                    this._aMockServerRegistry.push({
+                        sKey: sKey,
+                        oMockServer: oMockServer
+                    });
+                }
+            }
+        };
+
+        NRGComponent.prototype._destroyMockServers = function () {
+            //Stop all the mock servers
+            this._aMockServerRegistry.forEach(function (oMockServer) {
+                oMockServer.stop();
+            });
+        };
+
+        NRGComponent.prototype._initModels = function () {
             var mConfig, oRootPath, oModel;
 
             mConfig = this.getMetadata().getConfig();
@@ -57,17 +107,17 @@ sap.ui.define(
             oModel = new sap.ui.model.resource.ResourceModel({
                 bundleUrl : [oRootPath, mConfig.resourceBundle].join('/')
             });
-            this.setModel(oModel, 'i18n');
+            this.setModel(oModel, 'comp-i18n');
 
-            //Set CRM and ECC shared data
-            oModel = new sap.ui.model.json.JSONModel([oRootPath, mConfig.service.oData.crm].join('/'));
-            this.setModel(oModel, 'crm');
-
-            oModel = new sap.ui.model.json.JSONModel([oRootPath, mConfig.service.oData.ecc].join('/'));
-            this.setModel(oModel, 'ecc');
+            if (this._aMockServerRegistry) {
+                this._aMockServerRegistry.forEach(function (oEntry) {
+                    oModel = new ODataModel(oEntry.oMockServer.getRootUri(), true);
+                    this.setModel(oModel, 'comp-' + oEntry.sKey);
+                }.bind(this));
+            }
         };
 
-        NRGComponent.prototype.initRouter = function () {
+        NRGComponent.prototype._initRouter = function () {
             var oRoutes = this.getMetadata().getRoutes(),
                 oRouter = this.getRouter(),
                 sName;

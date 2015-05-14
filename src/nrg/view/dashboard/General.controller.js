@@ -11,7 +11,14 @@ sap.ui.define(
 
         var Controller = CoreController.extend('nrg.view.dashboard.General');
 
-        //TODO: Implementation required
+        Controller.prototype.onInit = function () {
+            var oModel;
+
+            oModel = this.getOwnerComponent().getModel('comp-dashboard');
+            if (oModel) {
+                oModel.read('/ProductSet');
+            }
+        };
 
         return Controller;
     }

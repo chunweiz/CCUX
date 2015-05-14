@@ -5,12 +5,28 @@ sap.ui.define(['jquery.sap.global'],
 	function (jQuery) {
         "use strict";
 
-        var TableRowRenderer = {};
+        var TableRowRenderer = {},
+            bRenderExtraLine = false;
 
         TableRowRenderer.render = function (oRm, oTableRow) {
             oRm.write('<tr');
             oRm.writeControlData(oTableRow);
-            oRm.addClass('uteTb-row-invoice');
+            switch (oTableRow.getParent().getTableType()) {
+            case 'InvoiceTable':
+                oRm.addClass('uteTb-row-invoice');
+                break;
+            case 'DppTable':
+                oRm.addClass('uteTb-row-dpp');
+                break;
+            case 'DppDeniedTable':
+                oRm.addClass('uteTb-row-dpp');
+                oRm.addClass('uteTb-row-dpp-denied');
+                break;
+            case 'CampaignTable':
+                oRm.addClass('uteTb-row-campaign');
+                bRenderExtraLine = true;
+                break;
+            }
             oRm.writeClasses();
             oRm.write('>');
 
@@ -22,6 +38,18 @@ sap.ui.define(['jquery.sap.global'],
             });
 
             oRm.write('</tr>');
+
+            if (bRenderExtraLine) {
+                oRm.write('<tr');
+                oRm.addClass('uteTb-row-campaign');
+                oRm.writeClasses();
+                oRm.write('>');
+                oTableRow.getCells().forEach(function (oCell) {
+                    oRm.write('<td>');
+                    oRm.write('</td>');
+                });
+                oRm.write('</tr>');
+            }
         };
 
         return TableRowRenderer;

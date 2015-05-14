@@ -1,34 +1,42 @@
-/*globals sap, sc */
+/*globals sap*/
 /*jslint nomen: true */
-// Provides control ute.ui.commons.Calendar.
 
 sap.ui.define(
     [
         'jquery.sap.global',
-        './library',
         'sap/ui/core/Control',
+        'sap/ui/core/Locale',
         'sap/ui/core/LocaleData',
         'sap/ui/core/format/DateFormat'
     ],
-	function (jQuery, library, Control, LocaleData, DateFormat) {
+
+	function (jQuery, Control, Locale, LocaleData, DateFormat) {
 	    'use strict';
 
-        var Calendar = Control.extend('sc.control.lib.ui.Calendar', { metadata : {
-            library : 'sc.control.lib.ui',
-            properties : {
-                /*Calendar Width*/
-                width : {type : 'sap.ui.core.CSSSize', group : 'Dimension', defaultValue : '340px'},
+        var Calendar = Control.extend('sc.control.lib.ui.Calendar', {
+            metadata: {
+                library: 'sc.control.lib.ui',
+                properties: {
+                    /*Calendar Width*/
+                    width: {
+                        type: 'sap.ui.core.CSSSize',
+                        defaultValue: '340px'
+                    },
 
-                /*Calendar height*/
-                height : {type : 'sap.ui.core.CSSSize', group : 'Dimension', defaultValue : '250px'},
+                    /*Calendar height*/
+                    height: {
+                        type : 'sap.ui.core.CSSSize',
+                        defaultValue : '250px'
+                    },
 
-                /*Calendar selected Date*/
-                selectedDate : {type : 'string', defaultValue : ''}
-            },
-            events : {
-
+                    /*Calendar selected Date*/
+                    selectedDate: {
+                        type : 'string',
+                        defaultValue : ''
+                    }
+                }
             }
-        }});
+        });
 
         /**
          * Initialization hook for the dialog.
@@ -37,7 +45,9 @@ sap.ui.define(
          * @private
          */
         Calendar.prototype.init = function () {
-            this._oFormatYyyymmdd = DateFormat.getInstance({pattern: 'MM/dd/yyyy'});
+            this._oFormatYyyymmdd = DateFormat.getInstance({
+                pattern: 'MM/dd/yyyy'
+            });
         };
 
         /**
@@ -47,15 +57,15 @@ sap.ui.define(
          * @private
          */
         Calendar.prototype._getLocaleData = function () {
-
             var sLocale, oLocale;
+
             if (!this._oLocaleData) {
                 sLocale = this._getLocale();
-                oLocale = new sap.ui.core.Locale(sLocale);
+                oLocale = new Locale(sLocale);
                 this._oLocaleData = LocaleData.getInstance(oLocale);
             }
-            return this._oLocaleData;
 
+            return this._oLocaleData;
         };
 
         /**
@@ -66,17 +76,17 @@ sap.ui.define(
          */
 
         Calendar.prototype._createUTCDate =  function (oDate) {
-
             var oUTCDate;
 
             if (oDate) {
                 oUTCDate = new Date(Date.UTC(oDate.getFullYear(), oDate.getMonth(), oDate.getDate()));
+
                 if (oDate.getFullYear() < 1000) {
                     oUTCDate.setUTCFullYear(oDate.getFullYear());
                 }
+
                 return oUTCDate;
             }
-
         };
 
         /**
@@ -87,10 +97,8 @@ sap.ui.define(
          */
 
         Calendar.prototype._getCurrentDate = function () {
-
             this._oFocusedDate = this._createUTCDate(new Date());
             return this._createUTCDate(this._oFocusedDate);
-
         };
 
         /**
@@ -101,20 +109,17 @@ sap.ui.define(
          */
 
         Calendar.prototype._getFocusedDate = function () {
-
-            var that = this,
-                aSelectedDate = that.getSelectedDate();
+            var aSelectedDate = this.getSelectedDate();
 
             if (!this._oFocusedDate) {
-
                 if (aSelectedDate) {
                     this._oFocusedDate = this._oFormatYyyymmdd.parse(aSelectedDate);
                 } else {
                     this._getCurrentDate();
                 }
             }
-            return this._oFocusedDate;
 
+            return this._oFocusedDate;
         };
 
         /**
@@ -136,30 +141,28 @@ sap.ui.define(
          */
 
         Calendar.prototype._renderMonth = function () {
-
-            var oThis = this,
-                oDate = oThis._getFocusedDate(),
-                $Container = oThis.$('dayPic'),
+            var oDate = this._getFocusedDate(),
+                $Container = this.$('dayPic'),
                 oRm,
                 aMonthNames = [];
-            oThis._sRenderMonth = undefined; // initialize delayed call
+
+            this._sRenderMonth = undefined; // initialize delayed call
 
             if ($Container.length > 0) {
                 oRm = sap.ui.getCore().createRenderManager();
-                oThis.getRenderer().renderDays(oRm, oThis, oDate);
+                this.getRenderer().renderDays(oRm, this, oDate);
                 oRm.flush($Container[0]);
                 oRm.destroy();
             }
 
             // change month and year
-            if (oThis._bLongMonth || !oThis._bNamesLengthChecked) {
-                aMonthNames = oThis._getLocaleData().getMonthsStandAlone('wide');
+            if (this._bLongMonth || !this._bNamesLengthChecked) {
+                aMonthNames = this._getLocaleData().getMonthsStandAlone('wide');
             } else {
-                aMonthNames = oThis._getLocaleData().getMonthsStandAlone('abbreviated');
+                aMonthNames = this._getLocaleData().getMonthsStandAlone('abbreviated');
             }
-            oThis.$('month').text(aMonthNames[oDate.getUTCMonth()]);
-            oThis.$('year').text(oDate.getUTCFullYear());
-
+            this.$('month').text(aMonthNames[oDate.getUTCMonth()]);
+            this.$('year').text(oDate.getUTCFullYear());
         };
 
         /**
@@ -170,15 +173,14 @@ sap.ui.define(
          */
 
         Calendar.prototype._selectDay = function (oDate) {
-
-            var oThis = this,
-                aSelectedDates = oThis.getSelectedDate(),
-                aDomRefs = oThis.$('dayPic').children('.uteCal-dayPic-day'),
+            var aSelectedDates = this.getSelectedDate(),
+                aDomRefs = this.$('dayPic').children('.uteCal-dayPic-day'),
                 $DomRef,
                 sYyyymmdd,
                 i = 0,
                 temp;
-            sYyyymmdd = oThis._oFormatYyyymmdd.format(oDate, true);
+
+            sYyyymmdd = this._oFormatYyyymmdd.format(oDate, true);
             for (i = 0; i < aDomRefs.length; i = i + 1) {
                 $DomRef = jQuery(aDomRefs[i]);
                 temp = $DomRef.attr('data-nrg-day');
@@ -188,7 +190,7 @@ sap.ui.define(
                     $DomRef.removeClass('uteCal-dayPic-daySelected');
                 }
             }
-            oThis.setProperty('selectedDate', sYyyymmdd, true);
+            this.setProperty('selectedDate', sYyyymmdd, true);
 
         };
 
@@ -202,22 +204,20 @@ sap.ui.define(
          */
 
         Calendar.prototype.onclick = function (oEvent) {
-
-            var that = this,
-                oFocusedDate = this._getFocusedDate(),
+            var oFocusedDate = this._getFocusedDate(),
                 $Target,
                 oOldFocusedDate;
 
             if (jQuery.sap.containsOrEquals(this.getDomRef('next'), oEvent.target) && !this.$('next').attr('disabled')) {
 
                 oFocusedDate.setUTCMonth(oFocusedDate.getUTCMonth() + 1, 1);
-                that._renderMonth();
+                this._renderMonth();
 
             } else if (jQuery.sap.containsOrEquals(this.getDomRef('prev'), oEvent.target) && !this.$('prev').attr('disabled')) {
 
                 oFocusedDate.setUTCDate(1);
                 oFocusedDate.setUTCDate(oFocusedDate.getUTCDate() - 1);
-                that._renderMonth();
+                this._renderMonth();
 
             } else {
 
@@ -233,12 +233,12 @@ sap.ui.define(
                         if ($Target.hasClass('uteCal-dayPic-dayOtherMonth')) {
 
                             // in other month -> change month
-                            that._renderMonth();
+                            this._renderMonth();
                             oEvent.stopPropagation();
                             oEvent.preventDefault();
                         } else {
 
-                            this._selectDay(that._getFocusedDate());
+                            this._selectDay(this._getFocusedDate());
                             this.fireEvent('select');
                             //to prevent bubbling into input field if in DatePicker
                             oEvent.stopPropagation();
@@ -261,7 +261,6 @@ sap.ui.define(
 
 
         Calendar.prototype._getLocale = function () {
-
             if (!this._sLocale) {
                 this._sLocale = sap.ui.getCore().getConfiguration().getFormatSettings().getFormatLocale().toString();
             }
@@ -276,11 +275,11 @@ sap.ui.define(
          * @private
          */
         Calendar.prototype._checkDateSelected = function (oDate) {
-
             var iSelected = 0,
                 oSelectedDate = this.getSelectedDate(),
                 oDateTimeStamp = oDate.getTime(),
                 oSelectedDateTimeStamp;
+
             if (!(oDate instanceof Date)) {
                 throw new Error('Date must be a JavaScript date object; ' + this);
             }
@@ -292,6 +291,7 @@ sap.ui.define(
             if (oSelectedDateTimeStamp === oDateTimeStamp) {
                 iSelected = 1; // single day selected
             }
+
             return iSelected;
         };
 
@@ -302,16 +302,24 @@ sap.ui.define(
          * @private
          */
         Calendar.prototype.focusDate = function (oFocusedDate) {
-
             this._setFocusedDate(oFocusedDate);
             this.setProperty('selectedDate', this._oFormatYyyymmdd.format(oFocusedDate), true);
             this._renderMonth();
         };
+       /**
+         * Change the selectedDate
+         * only for internal use
+         * @return {string} oSelectedDate
+         *
+         */
+        Calendar.prototype.addSelectedDate = function (oSelectedDate) {
+            this.setProperty('selectedDate', oSelectedDate, true);
+            this._oFocusedDate = this._oFormatYyyymmdd.parse(oSelectedDate);
+            this._renderMonth();
+        };
 
         return Calendar;
-
     },
 
     true
-
 );

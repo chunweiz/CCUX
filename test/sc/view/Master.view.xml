@@ -12,7 +12,7 @@
 			height="Large">
 		</u:HorizontalDivider>-->
       <!--  <u:RedCrossSign press="onButtonClick"></u:RedCrossSign> -->
-		<u:Calendar></u:Calendar>
+		<u:DatePicker></u:DatePicker>
      <!--        <u:Tag
             text="Buttons">
         </u:Tag>

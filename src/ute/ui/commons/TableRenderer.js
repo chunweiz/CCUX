@@ -27,13 +27,14 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/theming/Parameters'],
                 oRm.addClass('uteTb-column-invoice');
                 bRenderDummyRow = true;
                 break;
-            case 'CheckbookTable':
-                break;
             case 'DppTable':
+                oRm.addClass('uteTb-column-dpp');
                 break;
             case 'DppDeniedTable':
+                oRm.addClass('uteTb-column-dpp');
                 break;
             case 'CampaignTable':
+                oRm.addClass('uteTb-column-campaign');
                 break;
             }
             oRm.writeStyles();

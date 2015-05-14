@@ -1,7 +1,6 @@
 /*global sap*/
 /*jslint nomen: true */
 
-
 sap.ui.define(
     [
         'jquery.sap.global',
@@ -22,9 +21,7 @@ sap.ui.define(
          * @param {sap.ui.core.RenderManager} oRm the RenderManager that can be used for writing to the render output buffer
          * @param {ute.ui.commons.Textfield} oTextfield an object representation of the control that should be rendered
          */
-
         TextFieldRenderer.render = function (oRm, oTextfield) {
-
             oRm.write('<span');
             oRm.addClass('uteTextfield');
             oRm.writeClasses();
@@ -55,9 +52,7 @@ sap.ui.define(
                 oRm.writeAttribute('id', oTextfield.getId());
                 oRm.writeAttribute('name', oTextfield.getName());
                 oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
-                oRm.write(' value=\'');
-				oRm.writeEscaped(oTextfield.getValue());
-                oRm.write('\'');
+                oRm.writeAttributeEscaped('value', oTextfield.getValue());
                 oRm.addStyle('width', oTextfield.getWidth());
                 oRm.addClass('uteTextfield-regular');
                 oRm.writeStyles();
@@ -77,19 +72,17 @@ sap.ui.define(
          * @param {sap.ui.core.RenderManager} oRm the RenderManager that can be used for writing to the render output buffer
          * @param {ute.ui.commons.DatePicker} oDatePicker an object representation of the control that should be rendered
          */
-
-        DatePickerRenderer.renderOuterContentBefore = function (rm, oDatePicker) {
-
-            rm.write('<div');
-            rm.writeControlData(oDatePicker);
-            rm.writeAttribute('tabindex', '-1'); // to do not close popup by click on it
-            rm.addClass('uteDatePicIcon');
-            rm.writeClasses();
-            rm.write('></div>'); //No Symbol for HCB Theme, as done by ComboBox.
+        DatePickerRenderer.renderOuterContentBefore = function (oRm, oDatePicker) {
+            oRm.write('<div');
+            oRm.writeControlData(oDatePicker);
+            oRm.writeAttribute('tabindex', '-1'); // to do not close popup by click on it
+            oRm.addClass('uteDatePicIcon');
+            oRm.writeClasses();
+            oRm.write('></div>'); //No Symbol for HCB Theme, as done by ComboBox.
 
         };
-        return DatePickerRenderer;
 
+        return DatePickerRenderer;
     },
 
     true
