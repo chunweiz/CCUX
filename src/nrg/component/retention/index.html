@@ -19,18 +19,16 @@
 	<body role="application" class="nrgUiBody" id="content">
 		<script>
             sap.ui.getCore().attachInit(function () {
-                var oComponentData = {};
-
-                oComponentData.config = {
-                    mock: jQuery.sap.getUriParameters().get('nrg-mock') === 'true' ? true : false
-                };
-
                 new sap.ui.core.ComponentContainer({
                     height: '100%',
                     width: '100%',
                     name: 'nrg.component.retention',
                     settings: {
-                        componentData: oComponentData
+                        componentData: {
+                            config: {
+                                mock: jQuery.sap.getUriParameters().get('nrg-mock') === 'true' ? true : false
+                            }
+                        }
                     }
                 }).placeAt('content');
             });

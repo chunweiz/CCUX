@@ -1,26 +1,27 @@
-/*globals sap, sc */
+/*globals sap*/
 /*jslint nomen: true */
 // Provides control ute.ui.commons.DatePicker.
 sap.ui.define(
     [
         'jquery.sap.global',
-        './library',
-        './Textfield',
+        'ute/ui/commons/Textfield',
         'sap/ui/model/type/Date',
         './Calendar'
     ],
-	function (jQuery, library, TextField, Date1, Calendar) {
+	function (jQuery, TextField, Date1, Calendar) {
 	    'use strict';
 
-        var DatePicker = TextField.extend('ute.ui.commons.DatePicker', { metadata : {
-            library : 'ute.ui.commons',
-            properties : {
-                defaultDate : {type : 'string', group : 'Misc', defaultValue : null}
-            },
-            events : {
-
+        var DatePicker = TextField.extend('sc.control.lib.ui.DatePicker', {
+            metadata: {
+                library: 'sc.control.lib.ui',
+                properties: {
+                    defaultDate: {
+                        type: 'string',
+                        defaultValue : null
+                    }
+                }
             }
-        }});
+        });
 
         /**
          * Initialization hook for the DatePicker.
@@ -31,12 +32,13 @@ sap.ui.define(
          * @private
          */
         DatePicker.prototype.init = function () {
-
-            this._oFormatYyyymmdd = sap.ui.core.format.DateFormat.getInstance({pattern: 'MM/dd/yyyy', strictParsing: true});
+            this._oFormatYyyymmdd = sap.ui.core.format.DateFormat.getInstance({
+                pattern: 'MM/dd/yyyy',
+                strictParsing: true
+            });
             this._oMinDate = new Date(1, 0, 1);
             this._oMinDate.setFullYear(1); // otherwise year 1 will be converted to year 1901
             this._oMaxDate = new Date(9999, 11, 31);
-
         };
 
          /*
@@ -47,7 +49,6 @@ sap.ui.define(
          *@private
          */
         DatePicker.prototype.exit = function () {
-
             this._oDate = undefined;
             this._oLocale = undefined;
 
@@ -71,87 +72,10 @@ sap.ui.define(
          * @return {string} sLocale
          * @private
          */
-
         DatePicker.prototype._getLocale = function () {
             var oLocale = sap.ui.getCore().getConfiguration().getFormatSettings().getFormatLocale();
             return oLocale;
-
         };
-
-
-       /**
-         * gets Date formatter based on the locale.
-         * only for internal use
-         * @return {string} _oFormat
-         * @private
-         */
-
-        DatePicker.prototype._getFormatter = function () {
-
-            var sPattern = '',
-                bRelative = false,
-                oThis = this,
-                oBinding = oThis.getBinding('value'),
-                oLocale,
-                oLocaleData;
-
-            if (oBinding && oBinding.oType && (oBinding.oType instanceof Date1)) {
-                sPattern = oBinding.oType.getOutputPattern();
-                bRelative = !!oBinding.oType.oOutputFormat.oFormatOptions.relative;
-            }
-
-            if (!sPattern) {
-                // no databinding is used -> use pattern from locale
-                oLocale = this._getLocale(oThis);
-                oLocaleData = sap.ui.core.LocaleData.getInstance(oLocale);
-                sPattern = oLocaleData.getDatePattern('medium');
-            }
-
-            if (sPattern !== oThis._sUsedPattern) {
-                oThis._sUsedPattern = sPattern;
-
-                if (sPattern === 'short' || sPattern === 'medium' || sPattern === 'long') {
-                    oThis._oFormat = sap.ui.core.format.DateFormat.getInstance({style: sPattern, strictParsing: true, relative: bRelative}, oLocale);
-                } else {
-                    oThis._oFormat = sap.ui.core.format.DateFormat.getInstance({pattern: sPattern, strictParsing: true, relative: bRelative}, oLocale);
-                }
-            }
-
-            return oThis._oFormat;
-
-        };
-
-       /**
-         * Formats the date Value.
-         * only for internal use
-         * @param {Date} object
-         * @return {string} sValue
-         * @private
-         */
-        DatePicker.prototype._formatValue = function (oDate) {
-
-            var that = this,
-                oFormat = this._getFormatter(that),
-                sValue = oFormat.format(oDate);
-            return sValue;
-
-        };
-
-       /**
-         * Parses the date Value.
-         * only for internal use
-         * @param {Date} object
-         * @return {string} sValue
-         * @private
-         */
-        DatePicker.prototype._parseValue = function (sValue) {
-
-			var that = this,
-                oFormat = this._getFormatter(that),
-                oDate = oFormat.parse(sValue);
-			return oDate;
-
-		};
        /**
          * when user selected particular date in Calendar control that need to be displayed in the Date picker field.
          *
@@ -160,9 +84,9 @@ sap.ui.define(
          * @private
          */
         DatePicker.prototype._selectDate = function (oEvent) {
-
             var sNewValue = this._oFormatYyyymmdd.format(this._oCalendar._getFocusedDate()),
                 $Input;
+
             this._oPopup.close();
             this.focus();
             // do not call this._checkChange(); because we already have the date object and no wrong entry is possible
@@ -187,38 +111,36 @@ sap.ui.define(
          * @private
          */
         DatePicker.prototype._open = function () {
+            var sValue = '',
+                eDock;
 
-            var sValue = "",
-                eDock,
-                oThis = this;
-
-            if (!oThis._oPopup) {
+            if (!this._oPopup) {
                 jQuery.sap.require('sap.ui.core.Popup');
-                oThis._oPopup = new sap.ui.core.Popup();
-                oThis._oPopup.setAutoClose(true);
-                oThis._oPopup.setDurations(0, 0); // no animations
+                this._oPopup = new sap.ui.core.Popup();
+                this._oPopup.setAutoClose(true);
+                this._oPopup.setDurations(0, 0); // no animations
                 //oThis._oPopup.attachClosed(_handleClosed, oThis);
             }
-            if (!oThis._oCalendar) {
-                oThis._oCalendar = new Calendar(oThis.getId() + '-cal');
-                oThis._oCalendar.setSelectedDate(oThis.getDefaultDate());
-                oThis._oCalendar.attachEvent('select', oThis._selectDate, oThis);
-                oThis._oPopup.setContent(oThis._oCalendar);
-                oThis._oCalendar.setParent(oThis, undefined, true); // don't invalidate DatePicker
+            if (!this._oCalendar) {
+                this._oCalendar = new Calendar(this.getId() + '-cal');
+                this._oCalendar.setSelectedDate(this.getDefaultDate());
+                this._oCalendar.attachEvent('select', this._selectDate, this);
+                this._oPopup.setContent(this._oCalendar);
+                this._oCalendar.setParent(this, undefined, true); // don't invalidate DatePicker
             } else {
 
-                if (oThis.getDefaultDate()) {
-                    sValue = oThis.getDefaultDate();
+                if (this.getDefaultDate()) {
+                    sValue = this.getDefaultDate();
                 }
-                if (sValue !== oThis.$("input").val()) {
-                    oThis._checkChange(); // to prove is something was typed in manually
+                if (sValue !== this.$("input").val()) {
+                    this._checkChange(); // to prove is something was typed in manually
                 }
-                oThis._oCalendar.addSelectedDate(oThis.getDefaultDate());
+                this._oCalendar.addSelectedDate(this.getDefaultDate());
             }
 
-            oThis._oPopup.setAutoCloseAreas([oThis.getDomRef()]);
+            this._oPopup.setAutoCloseAreas([this.getDomRef()]);
             eDock = sap.ui.core.Popup.Dock;
-            oThis._oPopup.open(0, eDock.BeginTop, eDock.BeginBottom, oThis, null, null, true);
+            this._oPopup.open(0, eDock.BeginTop, eDock.BeginBottom, this, null, null, true);
 
         };
 
@@ -244,8 +166,7 @@ sap.ui.define(
          */
         DatePicker.prototype.onclick = function (oEvent) {
             if (jQuery(oEvent.target).hasClass('uteDatePicIcon')) {
-                var that = this;
-                this._open(that);
+                this._open(this);
             }
         };
 
@@ -257,14 +178,15 @@ sap.ui.define(
          *
          */
         DatePicker.prototype.setDefaultDate = function (defaultDate) {
-
             var sOldDefaultDate = this.getDefaultDate(),
                 sValue = '',
                 sOutputValue = '',
                 $Input;
+
             if (defaultDate === sOldDefaultDate) {
                 return this;
             }
+
             if (defaultDate) {
                 this._oDate = this._oFormatYyyymmdd.parse(defaultDate);
                 if (!this._oDate || this._oDate.getTime() < this._oMinDate.getTime() || this._oDate.getTime() > this._oMaxDate.getTime()) {
@@ -280,7 +202,9 @@ sap.ui.define(
                 this.setProperty('defaultDate', defaultDate, true);
 
             }
+
             this.setProperty('value', sValue, true);
+
             if (this.getDomRef()) {
                 // update value in input field
                 sOutputValue = '';
@@ -290,6 +214,7 @@ sap.ui.define(
                 $Input.val(sOutputValue);
             }
 
+            return this;
         };
 
         /**
@@ -300,7 +225,6 @@ sap.ui.define(
          *
          */
         DatePicker.prototype.onsapfocusleave = function (oEvent) {
-            var that = this;
             // Ignore event if DatePicker is opening or clicked on opener.
             if (this._oCalendar && oEvent.relatedControlId &&
                     (jQuery.sap.containsOrEquals(this._oCalendar.getDomRef(), sap.ui.getCore().byId(oEvent.relatedControlId).getFocusDomRef()) ||
@@ -310,10 +234,11 @@ sap.ui.define(
 
                 this._checkChange(oEvent);
 
-                if ((that._oPopup !== undefined) && (that._oPopup.isOpen())) {
-                    that._oPopup.close();
-                    that.focus();
+                if ((this._oPopup !== undefined) && (this._oPopup.isOpen())) {
+                    this._oPopup.close();
+                    this.focus();
                 }
+
                 oEvent.preventDefault();
                 oEvent.stopPropagation();
             }
@@ -333,7 +258,7 @@ sap.ui.define(
 
             if (this.getEditable() && this.getEnabled() && (oldVal !== sNewValue)) {
 
-                if (sNewValue !== "") {
+                if (sNewValue !== '') {
 
                     this._oDate = this._oFormatYyyymmdd.parse(sNewValue);
                     if (!this._oDate || this._oDate.getTime() < this._oMinDate.getTime() || this._oDate.getTime() > this._oMaxDate.getTime()) {
@@ -345,20 +270,24 @@ sap.ui.define(
                         // just format date to right pattern, because maybe a fallback pattern is used in the parsing
                         sNewValue = this._oFormatYyyymmdd.format(this._oDate);
                         oInput.val(sNewValue);
-                        this.setProperty("value", sNewValue, true); // suppress rerendering
-                        this.setProperty("defaultDate", sNewValue, true); // suppress rerendering
-                        this.fireChange({newValue: sNewValue}); // oldValue is not that easy in ComboBox and anyway not in API... thus skip it
+
+                        this.setProperty('value', sNewValue, true); // suppress rerendering
+                        this.setProperty('defaultDate', sNewValue, true); // suppress rerendering
+
+                        this.fireChange({
+                            newValue: sNewValue
+                        }); // oldValue is not that easy in ComboBox and anyway not in API... thus skip it
 
                         if (this._oPopup && this._oPopup.isOpen()) {
                             this._oCalendar.focusDate(this._oDate);
                         }
 				    }
                 }
-
             }
         };
-        return DatePicker;
 
+        return DatePicker;
     },
+
     true
 );

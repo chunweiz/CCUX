@@ -1,4 +1,4 @@
-/*globals sap, nrg, jQuery*/
+/*globals sap, jQuery*/
 /*jslint nomen: true*/
 
 sap.ui.define(
@@ -7,12 +7,10 @@ sap.ui.define(
         'nrg/util/Icon',
         'sap/ui/core/util/MockServer',
         'sap/ui/model/odata/v2/ODataModel',
-
-        // Not in function arguments
         'sap/ui/core/Popup'
     ],
 
-    function (Component, IconUtil, MockServer, ODataModel) {
+    function (Component, IconUtil, MockServer, ODataModel, Popup) {
         'use strict';
 
         var NRGComponent = Component.extend('nrg.component.ic.Component', {
@@ -23,15 +21,15 @@ sap.ui.define(
 
         NRGComponent.prototype.init = function () {
             Component.prototype.init.apply(this);
-            this.initIcons();
-            this.initPopup();
+            this._initIcons();
+            this._initPopup();
 
             if (this.getComponentData().config.mock) {
-                this.initMockServers();
+                this._initMockServers();
             }
 
-            this.initModels();
-            this.initRouter();
+            this._initModels();
+            this._initRouter();
         };
 
         NRGComponent.prototype.destroy = function () {
@@ -40,11 +38,11 @@ sap.ui.define(
             Component.prototype.destory.apply(this, arguments);
         };
 
-        NRGComponent.prototype.initIcons = function () {
+        NRGComponent.prototype._initIcons = function () {
             IconUtil.load();
         };
 
-        NRGComponent.prototype.initPopup = function () {
+        NRGComponent.prototype._initPopup = function () {
             // Set the initial Z-index to 100.
             // Internally, UI5 is doing an increment of 10 for each call.
             // TODO: in 1.30, it is possible to call method setInitialZIndex instead of looping.
@@ -52,11 +50,11 @@ sap.ui.define(
             var iIdx;
 
             for (iIdx = 0; iIdx < 10; iIdx = iIdx + 1) {
-                sap.ui.core.Popup.getNextZIndex();
+                Popup.getNextZIndex();
             }
         };
 
-        NRGComponent.prototype.initMockServers = function () {
+        NRGComponent.prototype._initMockServers = function () {
             var mConfig, mMock, sKey, oMockServer, sRootPath, sRootUri;
 
             this._aMockServerRegistry = [];
@@ -92,14 +90,14 @@ sap.ui.define(
             }
         };
 
-        NRGComponent.prototype.destroyMockServers = function () {
+        NRGComponent.prototype._destroyMockServers = function () {
             //Stop all the mock servers
             this._aMockServerRegistry.forEach(function (oMockServer) {
                 oMockServer.stop();
             });
         };
 
-        NRGComponent.prototype.initModels = function () {
+        NRGComponent.prototype._initModels = function () {
             var mConfig, oRootPath, oModel;
 
             mConfig = this.getMetadata().getConfig();
@@ -109,7 +107,7 @@ sap.ui.define(
             oModel = new sap.ui.model.resource.ResourceModel({
                 bundleUrl : [oRootPath, mConfig.resourceBundle].join('/')
             });
-            this.setModel(oModel, 'i18n');
+            this.setModel(oModel, 'comp-i18n');
 
             if (this._aMockServerRegistry) {
                 this._aMockServerRegistry.forEach(function (oEntry) {
@@ -119,7 +117,7 @@ sap.ui.define(
             }
         };
 
-        NRGComponent.prototype.initRouter = function () {
+        NRGComponent.prototype._initRouter = function () {
             var oRoutes = this.getMetadata().getRoutes(),
                 oRouter = this.getRouter(),
                 sName;
