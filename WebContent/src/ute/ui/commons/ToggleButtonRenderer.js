@@ -43,7 +43,7 @@ sap.ui.define(['jquery.sap.global'],
                 widthUnit =  oToggleButton.getLeftBtnWidth().replace(/[^A-Za-z]/g, ""),
                 totalWidth;
 
-            totalWidth = String((leftButtonNum + rightButtonNum + 3)) + widthUnit;
+            totalWidth = String((leftButtonNum + rightButtonNum + 5)) + widthUnit;
             return totalWidth;
         };
 
