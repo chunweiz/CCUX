@@ -1,4 +1,4 @@
-@import url('font-awesome.css');
+/*@import url('font-awesome.css');*/
 .uteDD {
      /* Size and position */
     position: relative;
@@ -20,8 +20,12 @@
 
     }
 
-    .uteDD-white-background {
+    .uteDD-background-white {
            background: #fff;
+    }
+
+    .uteDD-background-grey {
+           background: grey;
     }
 
      .uteDD-with-border {
@@ -29,7 +33,7 @@
     }
 
     /*Arrow triangle*/
-    .uteDD:after {
+    .uteDD-arrow-solid:after {
     content: "";
     width: 0;
     height: 0;
@@ -42,31 +46,43 @@
 
     }
 
-    .uteDD.active:after {
+    .uteDD-arrow-solid.active:after {
         border-width: 0 6px 6px 6px;
     }
 
-       /*Arrow triangle*/
- /*   .ute-solid-arrow {
+    /*Arrow triangle*/
+    .uteDD-arrow-hollow:after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 160px;
+    /*top: 50%;*/
+  /*  margin-top: -3px;*/
+    border: 1px solid #5092ce;
+    border-bottom: none;
+    border-right: none;
+    transform: translate(135px,8px)rotate(45deg);
 
-    border-width: 6px 6px 0 6px;
-    border-style: solid;
-    border-color: #83bbe5 transparent;
-    }*/
+    }
 
-    .uteDD-blue-arrow:after{
+    .uteDD-arrow-hollow.active:after {
+        transform: translate(135px,4px)rotate(-135deg);
+    }
+
+    .uteDD-arrow-blue:after{
        /* border-color: #83bbe5 transparent;*/
         border-top-color: #5092ce;
         border-right-color: transparent;
         border-bottom-color: #83bbe5;
         border-left-color: transparent;
     }
-    .uteDD-grey-arrow:after{
+    .uteDD-arrow-grey:after{
         border-color: grey transparent;
     }
 
     .uteDD .uteDD-list {
-	/* Size & position */
+                /* Size & position */
     position: absolute;
     top: 120%; /*Main dd box and List item box spacing*/
     left: 0; /* Size */
@@ -93,7 +109,7 @@
     border: 1px solid grey;
     }
 
-    .uteDD-list-white-background{
+    .uteDD-list-background-white{
          background: #fff;
 
     }
@@ -110,10 +126,10 @@
     text-indent: 10px;
     }
 
- /*.uteDD-list-hover-blue{
- }
+/*.uteDD-list-hover-blue{
+}
      .uteDD-list-hover-grey{
- }*/
+}*/
 
 /* Hover state */
    .uteDD .uteDD-list .uteDD-list-hover-blue a:hover {
@@ -125,14 +141,12 @@
     }
 
     .uteDD .uteDD-list li:first-of-type a {
-        border-radius: 7px 7px 0 0;
+        border-radius: 5.5px 5.5px 0 0;
     }
     .uteDD .uteDD-list li:last-of-type a {
         border: none;
-        border-radius: 0 0 7px 7px;
+        border-radius: 0 0 5.5px 5.5px;
     }
-
-
 
     .uteDD.active .uteDD-list {
     opacity: 1;

@@ -12,24 +12,51 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
             oRm.writeControlData(oDropdown);
             oRm.writeAttributeEscaped("id", 'dd');
             oRm.addClass('uteDD');
-            if (oDropdown.getBorder()) {
-                oRm.addClass('uteDD-with-border');
-            }
-            if (oDropdown.getEnabled()) {
-                if (oDropdown.getWhitebackground()) {
-                    oRm.addClass('uteDD-white-background');
-                } else {
-                    oRm.addClass('uteDD-grey-background');
-                }
+
+            switch (oDropdown.getArrowType()) {
+             case 'Solid':
+                oRm.addClass('uteDD-arrow-solid');
+                break;
+             case 'Hollow':
+                oRm.addClass('uteDD-arrow-hollow');
+                break;
             }
 
-           // oRm.addClass('uteDD-solid-arrow');
-            if (oDropdown.getArrowcolor() === "Blue") {
-                oRm.addClass('uteDD-blue-arrow');
-            } else {
-                oRm.addClass('uteDD-grey-arrow');
+            switch (oDropdown.getBorder()) {
+             case 'All':
+                oRm.addClass('uteDD-with-border');
+                break;
+             case 'Bottom':
+                oRm.addClass('uteDD-with-border-bottom');
+                break;
+             case 'None':
+                oRm.addClass('uteDD-with-border-none');
+                break;
             }
+
+            if (oDropdown.getEnabled()) {
+            switch (oDropdown.getBackground()) {
+             case 'White':
+                oRm.addClass('uteDD-background-white');
+                break;
+             case 'Transparent':
+                break;
+            }
+            } else {
+                oRm.addClass('uteDD-background-grey');
+            }
+
+            switch (oDropdown.getArrowcolor()) {
+             case 'Blue':
+                oRm.addClass('uteDD-arrow-blue');
+                break;
+             case 'Grey':
+                oRm.addClass('uteDD-arrow-grey');
+                break;
+            }
+
             oRm.writeClasses();
+
             if (oDropdown.getWidth()) {
                 oRm.addStyle('width', oDropdown.getWidth());
             }
@@ -38,9 +65,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
             }
             oRm.writeStyles();
             oRm.write('>');
-           /* oRm.write('<span>');
-            oRm.writeEscaped(oDropdown.getTitle());
-            oRm.write('</span>');*/
+
             oRm.write('<a');
             oRm.addClass('uteDD-value');
             oRm.write('>');
@@ -50,46 +75,65 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
                 oRm.writeEscaped(oDropdown.getValue());
             }
             oRm.write('</a>');
+            if (oDropdown.getEnabled()) {
+
             oRm.write('<ul');
             oRm.addClass('uteDD-list');
 
             oRm.addStyle('top', this._calTop(oDropdown));
             oRm.writeStyles();
-            if (oDropdown.getBorder()) {
+            if (oDropdown.getBorder() === 'All') {
                 oRm.addClass('uteDD-list-with-border');
             }
-            if (oDropdown.getWhitebackground()) {
-                oRm.addClass('uteDD-list-white-background');
+            switch (oDropdown.getBorder()) {
+            case 'All':
+                oRm.addClass('uteDD-list-with-border');
+                break;
+            case 'Bottom':
+            case 'None':
+                break;
             }
 
+            switch (oDropdown.getBackground()) {
+             case 'White':
+                oRm.addClass('uteDD-list-white-background');
+                break;
+             case 'Transparent':
+                break;
+            }
 
             oRm.writeClasses();
 
             oRm.write('>');
             for (var i = 0; i < oDropdown.getDropdownListItems().length; i++) {
-				var oItem = oDropdown.getDropdownListItems()[i];
-				oRm.write("<li");
-                if(oDropdown.getArrowcolor() === "Blue"){
+                                                                var oItem = oDropdown.getDropdownListItems()[i];
+                                                                oRm.write("<li");
+
+           switch (oDropdown.getArrowcolor()) {
+             case 'Blue':
                 oRm.addClass('uteDD-list-hover-blue');
-                } else {
-                    oRm.addClass('uteDD-list-hover-grey');
-                }
+                break;
+             case 'Grey':
+                oRm.addClass('uteDD-list-hover-grey');
+                break;
+            }
                 oRm.writeClasses();
                 oRm.write('>');
 
-               /* oRm.write('<a>');
-                oRm.writeEscaped(oItem.getText());
-                oRm.write('</a>');*/
+                oRm.write('<a>');
 
-                oItem.getContent().forEach(function (oContent) {
-
+                for (var j = 0; j < oItem.getContent().length; j++) {
+                    var oContent = oItem.getContent()[j];
                     oRm.renderControl(oContent);
-
-                });
+                }
+               oRm.write('</a>')
 
                 oRm.write('</li>');
             }
-			oRm.write("</ul></ul>");
+                                                oRm.write("</ul>");
+
+            }
+            oRm.write("</ul>");
             oRm.write('</nav>');
 
             };
@@ -107,5 +151,3 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
 
     true
 );
-
-
