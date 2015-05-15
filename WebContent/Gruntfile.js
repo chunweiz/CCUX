@@ -4,23 +4,13 @@
     'use strict';
 
     module.exports = function (grunt) {
-        var LessPluginAutoPrefix = require('less-plugin-autoprefix'),
-            LessPluginCleanCss = require('less-plugin-clean-css'),
-            oLessAutoPrefix = new LessPluginAutoPrefix({
-                browsers: [
-                    'ie >= 8'
-                ]
-            }),
-            oLessCleanCss = new LessPluginCleanCss({
-                advanced: true
-            });
+        var config = {};
 
-
-        grunt.initConfig({
-            pkg: grunt.file.readJSON('package.json'),
-
+        //Task configuration for jshint
+        config.jshint = (function initJshint(grunt) {
             //JS code quality check with JSHint
-            jshint: {
+
+            return {
                 all: {
                     files: {
                         cwd: 'src',
@@ -34,18 +24,26 @@
                         ]
                     }
                 }
-            },
+            };
+        }(grunt));
 
+        //Task configuration for clean
+        config.clean = (function initClean(grunt) {
             //Cleanup build folder
-            clean: {
+
+            return {
                 build: [
                     'build/**'
                 ]
-            },
+            };
+        }(grunt));
 
+        //Task configuration for copy
+        config.copy = (function initCopy(grunt) {
             //Copy everything to build folder
             //Selected UI5 specific JS files will be recopied with suffix -dbg for sap-ui-debug purpose
-            copy: {
+
+            return {
                 all: {
                     files: [
                         {
@@ -86,10 +84,14 @@
                         }
                     ]
                 }
-            },
+            };
+        }(grunt));
 
+        //Task configuration for concat
+        config.concat = (function initConcat(grunt) {
             //Merge all .properties files into a single .properties file
-            concat: {
+
+            return {
                 noLang: {
                     src: [
                         'src/nrg/i18n/view/**/*_en_US.properties'
@@ -102,10 +104,29 @@
                     ],
                     dest: 'build/nrg/i18n/messageBundle_en_US.properties'
                 }
-            },
+            };
+        }(grunt));
 
+        //Task configuration for less
+        config.less = (function initLess(grunt) {
             //Compile LESS files to compressed CSS files with IE9 and above compatibility
-            less: {
+
+            var LessPluginAutoPrefix, LessPluginCleanCss, oLessAutoPrefix, oLessCleanCss;
+
+            LessPluginAutoPrefix = require('less-plugin-autoprefix');
+            LessPluginCleanCss = require('less-plugin-clean-css');
+
+            oLessAutoPrefix = new LessPluginAutoPrefix({
+                browsers: [
+                    'ie >= 8'
+                ]
+            });
+
+            oLessCleanCss = new LessPluginCleanCss({
+                advanced: true
+            });
+
+            return {
                 all: {
                     options: {
                         plugins: [
@@ -119,21 +140,14 @@
                         'build/nrg/asset/css/nrg.css': 'src/nrg/asset/css/nrg.source.less'
                     }
                 }
-            },
+            };
 
-            //Linting CSS on demand (not part of build)
-//            csslint: {
-//                strict: {
-//                    src: [
-//                        'build/nrg/asset/css/nrg.css',
-//                        'build/ute/ui/commons/themes/base/library.css',
-//                        'build/ute/ui/commons/themes/sap_bluecrystal/library.css'
-//                    ]
-//                }
-//            },
+        }(grunt));
 
-            //Compress related javascript files
-            uglify: {
+        //Task configuration for uglify
+        //Compress related javascript files
+        config.uglify = (function initUglify(grunt) {
+            return {
                 all: {
                     files: [
                         {
@@ -150,12 +164,15 @@
                         }
                     ]
                 }
-            },
+            };
+        }(grunt));
 
-            //Merge related json files
-            //Sequence is important for routes!
-            //Make sure manifest.json is last in src because catchall route needs to be last
-            'merge-json': {
+        //Task configuration for merge-json
+        //Merge related json files
+        //Sequence is important for routes!
+        //Make sure manifest.json is last in src because catchall route needs to be last
+        config.mergeJson = (function initMergeJson(grunt) {
+            return {
                 'manifest-ic': {
                     src: [
                         'src/nrg/data/**/mock.json',
@@ -172,17 +189,23 @@
                     ],
                     dest: 'build/nrg/component/retention/manifest.json'
                 }
-            },
+            };
+        }(grunt));
 
-            //Compress related json files - right now, it is only for manifest
-            'json-minify': {
+        //Task configuration for json-minify
+        //Compress related json files - right now, it is only for manifest
+        config.jsonMinify = (function initJsonMinify(grunt) {
+            return {
                 build: {
                     files: 'build/nrg/component/**/manifest.json'
                 }
-            },
+            };
+        }(grunt));
 
-            //Compress related HTML and XML files
-            htmlmin: {
+        //Task configuration for htmlmin
+        //Compress related HTML and XML files
+        config.htmlMin = (function initHtmlMin(grunt) {
+            return {
                 html: {
                     options: {
                         removeComments: true,
@@ -226,24 +249,13 @@
                         }
                     ]
                 }
-            },
-            
-            //Compress svg files
-//            svgmin: {
-//                dist: {
-//                    files: [
-//                        {
-//                            expand: true,
-//                            cwd: 'src',
-//                            src: 'nrg/asset/img/**/*svg',
-//                            dest: 'build'
-//                        }
-//                    ]
-//                }
-//            },
+            };
+        }(grunt));
 
-            //Create preload for control library and components
-            openui5_preload: {
+        //Task configuration for openui5_preload
+        //Create preload for control library and components
+        config.openui5Preload = (function initOpenui5Preload(grunt) {
+            return {
                 lib: {
                     options: {
                         resources: 'src',
@@ -276,7 +288,53 @@
                         }
                     }
                 }
-            }
+            };
+        }(grunt));
+
+        //Task configuration for csslint
+        config.csslint = (function initCsslint(grunt) {
+            return {
+//                strict: {
+//                    src: [
+//                        'build/nrg/asset/css/nrg.css',
+//                        'build/ute/ui/commons/themes/base/library.css',
+//                        'build/ute/ui/commons/themes/sap_bluecrystal/library.css'
+//                    ]
+//                }
+            };
+        }(grunt));
+
+        //Task configuration for svgmin
+        //Compress svg files
+        config.svgmin = (function initSvgmin(grunt) {
+            return {
+//                dist: {
+//                    files: [
+//                        {
+//                            expand: true,
+//                            cwd: 'src',
+//                            src: 'nrg/asset/img/**/*svg',
+//                            dest: 'build'
+//                        }
+//                    ]
+//                }
+            };
+        }(grunt));
+
+        grunt.initConfig({
+            pkg: grunt.file.readJSON('package.json'),
+            jshint: config.jshint,
+            clean: config.clean,
+            copy: config.copy,
+            concat: config.concat,
+            less: config.less,
+            csslint: config.csslint,
+            uglify: config.uglify,
+            'merge-json': config.mergeJson,
+            'json-minify': config.jsonMinify,
+            htmlmin: config.htmlMin,
+            svgmin: config.svgmin,
+            openui5_preload: config.openui5Preload
         });
 
         grunt.loadNpmTasks('grunt-openui5');
@@ -294,6 +352,5 @@
         grunt.loadNpmTasks('grunt-merge-json');
 
         grunt.registerTask('default', ['jshint', 'clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'merge-json', 'json-minify', 'htmlmin', 'less']);
-        grunt.registerTask('no_qc', ['clean', 'copy', 'concat', 'openui5_preload', 'uglify', 'merge-json', 'json-minify', 'htmlmin', 'less']);
     };
 }());
