@@ -77,81 +77,6 @@ sap.ui.define(
             return oLocale;
         };
 
-
-       /**
-         * gets Date formatter based on the locale.
-         * only for internal use
-         * @return {string} _oFormat
-         * @private
-         */
-        DatePicker.prototype._getFormatter = function () {
-            var sPattern = '',
-                bRelative = false,
-                oBinding = this.getBinding('value'),
-                oLocale,
-                oLocaleData;
-
-            if (oBinding && oBinding.oType && (oBinding.oType instanceof Date1)) {
-                sPattern = oBinding.oType.getOutputPattern();
-                bRelative = !!oBinding.oType.oOutputFormat.oFormatOptions.relative;
-            }
-
-            if (!sPattern) {
-                // no databinding is used -> use pattern from locale
-                oLocale = this._getLocale(this);
-                oLocaleData = sap.ui.core.LocaleData.getInstance(oLocale);
-                sPattern = oLocaleData.getDatePattern('medium');
-            }
-
-            if (sPattern !== this._sUsedPattern) {
-                this._sUsedPattern = sPattern;
-
-                if (sPattern === 'short' || sPattern === 'medium' || sPattern === 'long') {
-                    this._oFormat = sap.ui.core.format.DateFormat.getInstance({
-                        style: sPattern,
-                        strictParsing: true,
-                        relative: bRelative
-                    }, oLocale);
-
-                } else {
-                    this._oFormat = sap.ui.core.format.DateFormat.getInstance({
-                        pattern: sPattern,
-                        strictParsing: true,
-                        relative: bRelative
-                    }, oLocale);
-                }
-            }
-
-            return this._oFormat;
-        };
-
-       /**
-         * Formats the date Value.
-         * only for internal use
-         * @param {Date} object
-         * @return {string} sValue
-         * @private
-         */
-        DatePicker.prototype._formatValue = function (oDate) {
-            var oFormat = this._getFormatter(this),
-                sValue = oFormat.format(oDate);
-
-            return sValue;
-        };
-
-       /**
-         * Parses the date Value.
-         * only for internal use
-         * @param {Date} object
-         * @return {string} sValue
-         * @private
-         */
-        DatePicker.prototype._parseValue = function (sValue) {
-			var oFormat = this._getFormatter(this),
-                oDate = oFormat.parse(sValue);
-
-			return oDate;
-		};
        /**
          * when user selected particular date in Calendar control that need to be displayed in the Date picker field.
          *
@@ -228,8 +153,7 @@ sap.ui.define(
          *
          */
         DatePicker.prototype.onsapshow = function (oEvent) {
-            var that = this;
-            this._open(that);
+            this._open();
             oEvent.preventDefault(); // otherwise IE opens the address bar history
         };
 
@@ -242,7 +166,7 @@ sap.ui.define(
          */
         DatePicker.prototype.onclick = function (oEvent) {
             if (jQuery(oEvent.target).hasClass('uteDatePicIcon')) {
-                this._open(this);
+                this._open();
             }
         };
 

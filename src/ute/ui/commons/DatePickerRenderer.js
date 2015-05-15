@@ -5,7 +5,7 @@ sap.ui.define(
     [
         'jquery.sap.global',
         './DatePicker',
-        'ute/ui/commons/TextfieldRenderer'
+        './TextfieldRenderer'
     ],
 	function (jQuery, DatePicker, TextFieldRenderer) {
         'use strict';

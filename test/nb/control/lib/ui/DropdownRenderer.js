@@ -80,12 +80,17 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
                /* oRm.write('<a>');
                 oRm.writeEscaped(oItem.getText());
                 oRm.write('</a>');*/
-
-                oItem.getContent().forEach(function (oContent) {
+                oRm.write('<a>');
+               /* oItem.getContent().forEach(function (oContent) {
 
                     oRm.renderControl(oContent);
 
-                });
+                });*/
+                for (var j = 0; j < oItem.getContent().length; j++) {
+                    var oContent = oItem.getContent()[j];
+                    oRm.renderControl(oContent);
+                }
+                oRm.write('</a>')
 
                 oRm.write('</li>');
             }

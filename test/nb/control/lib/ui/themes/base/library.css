@@ -1,4 +1,4 @@
-@import url('font-awesome.css');
+/*@import url('font-awesome.css');*/
 .uteDD {
      /* Size and position */
     position: relative;
@@ -131,8 +131,6 @@
         border: none;
         border-radius: 0 0 7px 7px;
     }
-
-
 
     .uteDD.active .uteDD-list {
     opacity: 1;
