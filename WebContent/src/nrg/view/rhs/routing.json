@@ -1,0 +1,19 @@
+{
+    "sap.ui5": {
+        "routing": {
+            "routes": {
+                "rhs": {
+                    "pattern": "bp/{bpNum}/ca/{caNum}/rhs",
+                    "target": [ "rhs.General", "dashboard.SummaryBP", "others.ToolsEmpty" ]
+                }
+            },
+
+            "targets": {
+                "rhs.General": {
+                    "viewName": "rhs.General",
+                    "controlId": "idAppGeneral"
+                }
+            }
+        }
+    }
+}
