@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                <head>
+                                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
         <style>
             * {
@@ -18,14 +18,14 @@
         </style>
 
         <script id="sap-ui-bootstrap"
-		    src="../../../../../bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
-		    data-sap-ui-libs="nb.control.lib.ui,sap.ui.commons,sap.ui.layout"
-		    data-sap-ui-resourceroots='{
+                                    src="../../../../../bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
+                                    data-sap-ui-libs="nb.control.lib.ui,sap.ui.commons,sap.ui.layout"
+                                    data-sap-ui-resourceroots='{
                 "sap.ui.layout": "../../../../../bower_components/openui5-sap.ui.layout/resources/sap/ui/layout",
                 "sap.ui.commons": "../../../../../bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
-            	"nb.control.lib.ui": "./"
-        	}'>
-		</script>
+                "nb.control.lib.ui": "./"
+                }'>
+                                </script>
 
         <script id="main" type="ui5/xmlview">
             <mvc:View
@@ -38,11 +38,11 @@
                 displayBlock="true">
 
 
-  <u:Dropdown  arrowcolor="Grey" enabled="true" whitebackground="false" border="true" title="Title" width="200px" padding="20px" DropdownListItems="{/myData}">
- <u:DropdownListItems>
- <u:DropdownListItem key="{lastName}">
-                        <sap:Label text="{firstName}" />
-                        <sap:Label text="{lastName}" />
+  <u:Dropdown  arrowcolor="Blue" enabled="true" background="White" border="All" title="Title" width="200px" padding="20px" DropdownListItems="{/myData}">
+<u:DropdownListItems>
+<u:DropdownListItem key="{lastName}">
+                        <sap:Label text="{firstName}"/>
+                        <sap:CheckBox checked="true"/>
 </u:DropdownListItem>
 </u:DropdownListItems>
    </u:Dropdown>
@@ -50,8 +50,8 @@
             </mvc:View>
         </script>
 
-		<script>
-		sap.ui.getCore().attachInit(function() {
+                                <script>
+                                sap.ui.getCore().attachInit(function() {
                 sap.ui.controller('local.controller.Control', {
                     onInit: function () {
 
@@ -96,12 +96,12 @@
                 oControl.placeAt('fromjs');*/
 
             });
-		</script>
-	</head>
-	<body class="sapUiBody" role="application" id="content">
+                                </script>
+                </head>
+                <body class="sapUiBody" role="application" id="content">
 
         <div id="fromxml"></div>
 
         <div id="fromjs"></div>
-	</body>
+                </body>
 </html>

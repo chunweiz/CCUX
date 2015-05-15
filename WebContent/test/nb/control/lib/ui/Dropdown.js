@@ -8,35 +8,69 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
     var Dropdown = Control.extend('nb.control.lib.ui.Dropdown', {
             metadata : {library: 'nb.control.lib.ui',
                 properties: {
-                   //Value the textfield bind with
-                    value : {type : "string", group : "Data", defaultValue : '', bindable : "bindable"},
+                /*Value of  the dropdown field*/
+                    value : {
+                        type : 'string',
+                        group : 'Data',
+                        defaultValue : '',
+                        bindable : 'bindable'
+                    },
 
-                    title: {type: 'string', defaultValue: ''},
+                /*Initial text when no option has been selected*/
+                    title: {
+                        type: 'string',
+                        defaultValue: ''
+                    },
 
-                //Not implemented, if enabled = flase will grey out
-                    enabled : {type : "boolean", group : "Behavior", defaultValue : true},
+                /*If enabled = flase, will grey out*/
+                    enabled : {
+                        type : 'boolean',
+                        group : 'Behavior',
+                        defaultValue : true
+                    },
 
-//CSS type width of the Textfield, the min width is set to 168px.
-                    width : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "200px" },
+               /*CSS type width of the Dropdown field, the min width is set to 200px.*/
+                    width : {
+                        type : 'sap.ui.core.CSSSize',
+                        group : 'Dimension',
+                        defaultValue : '200px'
+                    },
 
-                    //CSS type width of the Textfield, the min width is set to 168px.
-                    padding : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "10px" },
+              /*CSS type padding of the Dropdown field, the min width is set to 10px.*/
+                    padding : {
+                        type : 'sap.ui.core.CSSSize',
+                        group : 'Dimension',
+                        defaultValue : '10px'
+                    },
 
-                // Color of the dropdown arrow : Possible values - Grey or Blue
-                    arrowcolor : {type : "string", group : "Appearance", defaultValue : "" },
+             /*Color of the dropdown arrow, check the enumeration DropdownArrowColor for possible values*/
+                    arrowcolor : {
+                        type : 'nb.control.lib.ui.DropdownArrowColor',
+                        group : 'Appearance',
+                        defaultValue : 'Grey'
+                    },
+            /*Color of the dropdown arrow, check the enumeration DropdownArrowColor for possible values*/
+                    arrowType : {
+                        type : 'nb.control.lib.ui.DropdownArrowType',
+                        group : 'Appearance',
+                        defaultValue : 'Solid'
+                    },
 
-                // Background Color: If true then white background otherwise transparent
-                    whitebackground : {type : "boolean", group : "Behavior", defaultValue : false },
+                /* Background Color of the dropdown field and the dropdown list,
+                    check the enumeration    DropdownBackground  for possible values*/
+                    background : {
+                        type : 'nb.control.lib.ui.DropdownBackground',
+                        group : 'Appearance',
+                        defaultValue : 'Transparent'
+                    },
 
-                //If the dropdownfield has border ( border color - grey )
-                    border : {type : 'boolean', group : 'Behavior', defaultValue : false},
-
-                    /**
-* The property is “true” when the control is toggled. The default state of this property is "false".
-*/
-                    clicked : {type : 'boolean', group : 'Data', defaultValue : false}
-
-
+                /*Decides if the Dropdwon field should have border,
+                    check the enumeration DropdownBorder for possible values*/
+                    border : {
+                        type : 'nb.control.lib.ui.DropdownBorder',
+                        group : 'Appearance',
+                        defaultValue : 'All'
+                    }
                 },
 
                 defaultAggregation : 'DropdownListItems',
