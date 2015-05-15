@@ -14,9 +14,14 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control'],
                     defaultValue: null
                 },
                 sortable: {
-                    typr: 'boolean',
-                    group: 'Behavior',
+                    type: 'boolean',
+                    group: 'Appearance',
                     defaultValue: false
+                },
+                sortDescend: {
+                    type: 'boolean',
+                    group: 'Appearance',
+                    defaultValue: true
                 }
             },
             defaultAggregation: 'cells',
@@ -37,6 +42,14 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control'],
 
         TableColumn.prototype.onclick = function (oEvent) {
             if (this.getSortable()) {
+                //var test = oEvent.currentTarget;
+                //var test1 = test.attributes[0].value;
+                if (this.getSortDescend()) {
+                    this.setSortDescend(false);
+                    //jQuery('span.uteTb-column-sortingArrowDown').toggleClass('uteTb-column-sortingArrowDown', 'uteTb-column-sortingArrowUp');
+                } else {
+                    this.setSortDescend(true);
+                }
                 this.firePress({});
             }
 

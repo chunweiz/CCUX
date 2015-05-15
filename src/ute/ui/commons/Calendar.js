@@ -13,9 +13,9 @@ sap.ui.define(
 	function (jQuery, Control, Locale, LocaleData, DateFormat) {
 	    'use strict';
 
-        var Calendar = Control.extend('sc.control.lib.ui.Calendar', {
+        var Calendar = Control.extend('ute.ui.commons.Calendar', {
             metadata: {
-                library: 'sc.control.lib.ui',
+                library: 'ute.ui.commons',
                 properties: {
                     /*Calendar Width*/
                     width: {

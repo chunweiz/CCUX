@@ -8,7 +8,39 @@
         height: 12px;
     }
 
+    /**Sorting Arrow========================================================**/
+    & > tbody > .uteTb-column-campaign > th > .uteTb-column-sortingArrowUp,
+    & > tbody > .uteTb-column-invoice > th > .uteTb-column-sortingArrowUp,
+    & > tbody > .uteTb-column-dpp > th > .uteTb-column-sortingArrowUp,
+    & > tbody > .uteTb-row-dpp-denied > th > .uteTb-column-sortingArrowUp
+    {
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+    	border-right: 6px solid transparent;
+        border-bottom: 6px solid;
+        padding: 0px;
+        position: relative;
+        bottom: 9px;
+        left: 8px;
+    }
 
+    & > tbody > .uteTb-column-campaign > th > .uteTb-column-sortingArrowDown,
+    & > tbody > .uteTb-column-invoice > th > .uteTb-column-sortingArrowDown,
+    & > tbody > .uteTb-column-dpp > th > .uteTb-column-sortingArrowDown,
+    & > tbody > .uteTb-row-dpp-denied > th > .uteTb-column-sortingArrowDown
+    {
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+    	border-right: 6px solid transparent;
+        border-top: 6px solid;
+        padding: 0px;
+        position: relative;
+        top: 11px;
+        left: 8px;
+    }
+    /**=====================================================================**/
 
     /**Campaign Table ======================================================**/
     & > tbody > .uteTb-column-campaign{

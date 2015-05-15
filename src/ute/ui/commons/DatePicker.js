@@ -4,16 +4,16 @@
 sap.ui.define(
     [
         'jquery.sap.global',
-        'ute/ui/commons/Textfield',
+        './Textfield',
         'sap/ui/model/type/Date',
         './Calendar'
     ],
 	function (jQuery, TextField, Date1, Calendar) {
 	    'use strict';
 
-        var DatePicker = TextField.extend('sc.control.lib.ui.DatePicker', {
+        var DatePicker = TextField.extend('ute.ui.commons.DatePicker', {
             metadata: {
-                library: 'sc.control.lib.ui',
+                library: 'ute.ui.commons',
                 properties: {
                     defaultDate: {
                         type: 'string',
@@ -76,6 +76,7 @@ sap.ui.define(
             var oLocale = sap.ui.getCore().getConfiguration().getFormatSettings().getFormatLocale();
             return oLocale;
         };
+
        /**
          * when user selected particular date in Calendar control that need to be displayed in the Date picker field.
          *
@@ -152,8 +153,7 @@ sap.ui.define(
          *
          */
         DatePicker.prototype.onsapshow = function (oEvent) {
-            var that = this;
-            this._open(that);
+            this._open();
             oEvent.preventDefault(); // otherwise IE opens the address bar history
         };
 
@@ -166,7 +166,7 @@ sap.ui.define(
          */
         DatePicker.prototype.onclick = function (oEvent) {
             if (jQuery(oEvent.target).hasClass('uteDatePicIcon')) {
-                this._open(this);
+                this._open();
             }
         };
 

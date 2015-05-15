@@ -22,10 +22,19 @@ sap.ui.define(['jquery.sap.global'],
                 oRm.write('>');
                 oCell.setWidth('');
                 oRm.renderControl(oCell);
+                if (oTableColumn.getSortable()) {
+                    oRm.write('<span');
+                    oRm.writeControlData(oTableColumn);
+                    if (oTableColumn.getSortDescend()) {
+                        oRm.addClass('uteTb-column-sortingArrowDown');
+                    } else {
+                        oRm.addClass('uteTb-column-sortingArrowUp');
+                    }
+                    oRm.writeClasses();
+                    oRm.write('></span>');
+                }
                 oRm.write('</th>');
             });
-
-
         };
 
 
