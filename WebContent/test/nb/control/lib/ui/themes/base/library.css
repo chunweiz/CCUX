@@ -45,6 +45,17 @@
     border-style: solid;
 
     }
+ .uteDD-arrow-blue:after{
+       /* border-color: #83bbe5 transparent;*/
+        border-top-color: #5092ce;
+        border-right-color: transparent;
+        border-bottom-color: #83bbe5;
+        border-left-color: transparent;
+    }
+    .uteDD-arrow-grey:after{
+        border-color: grey transparent;
+    }
+
 
     .uteDD-arrow-solid.active:after {
         border-width: 0 6px 6px 6px;
@@ -70,16 +81,6 @@
         transform: translate(135px,4px)rotate(-135deg);
     }
 
-    .uteDD-arrow-blue:after{
-       /* border-color: #83bbe5 transparent;*/
-        border-top-color: #5092ce;
-        border-right-color: transparent;
-        border-bottom-color: #83bbe5;
-        border-left-color: transparent;
-    }
-    .uteDD-arrow-grey:after{
-        border-color: grey transparent;
-    }
 
     .uteDD .uteDD-list {
                 /* Size & position */
