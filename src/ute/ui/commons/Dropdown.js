@@ -10,29 +10,63 @@ sap.ui.define([
         var Dropdown = Control.extend('ute.ui.commons.Dropdown', {
             metadata : {library: 'ute.ui.commons',
                 properties: {
-                //Value the textfield
-                    value : {type : 'string', group : 'Data', defaultValue : '', bindable : 'bindable'},
+                /*Value of  the dropdown field*/
+                    value : {
+                        type : 'string',
+                        group : 'Data',
+                        defaultValue : '',
+                        bindable : 'bindable'
+                    },
 
-                //Initial text when no option has been selected
-                    title: {type: 'string', defaultValue: ''},
+                /*Initial text when no option has been selected*/
+                    title: {
+                        type: 'string',
+                        defaultValue: ''
+                    },
 
-                //Not implemented, if enabled = flase will grey out
-                    enabled : {type : 'boolean', group : 'Behavior', defaultValue : true},
+                /*If enabled = flase, will grey out*/
+                    enabled : {
+                        type : 'boolean',
+                        group : 'Behavior',
+                        defaultValue : true
+                    },
 
-//CSS type width of the Dropdown field, the min width is set to 200px.
-                    width : {type : 'sap.ui.core.CSSSize', group : 'Dimension', defaultValue : '200px' },
+               /*CSS type width of the Dropdown field, the min width is set to 200px.*/
+                    width : {
+                        type : 'sap.ui.core.CSSSize',
+                        group : 'Dimension',
+                        defaultValue : '200px'
+                    },
 
-                    //CSS type padding of the Dropdown field, the min width is set to 10px.
-                    padding : {type : 'sap.ui.core.CSSSize', group : 'Dimension', defaultValue : '10px' },
+              /*CSS type padding of the Dropdown field, the min width is set to 10px.*/
+                    padding : {
+                        type : 'sap.ui.core.CSSSize',
+                        group : 'Dimension',
+                        defaultValue : '10px'
+                    },
 
-                // Color of the dropdown arrow : Possible values - Grey or Blue
-                    arrowcolor : {type : 'string', group : 'Appearance', defaultValue : '' },
+             /*Color of the dropdown arrow, check the enumeration DropdownArrowColor for possible values*/
+                    arrowcolor : {
+                        type : 'ute.ui.commons.DropdownArrowColor',
+                        group : 'Appearance',
+                        defaultValue : 'Grey'
+                    },
 
-                // Background Color: If true then white background otherwise transparent
-                    whitebackground : {type : 'boolean', group : 'Behavior', defaultValue : false },
+                /* Background Color of the dropdown field and the dropdown list,
+                    check the enumeration    DropdownBackground  for possible values*/
+                    background : {
+                        type : 'ute.ui.commons.DropdownBackground',
+                        group : 'Appearance',
+                        defaultValue : 'Transparent'
+                    },
 
-                //If the dropdownfield has border ( border color - grey )
-                    border : {type : 'boolean', group : 'Behavior', defaultValue : false}
+                /*Decides if the Dropdwon field should have border,
+                    check the enumeration DropdownBorder for possible values*/
+                    border : {
+                        type : 'ute.ui.commons.DropdownBorder',
+                        group : 'Appearance',
+                        defaultValue : 'All'
+                    }
                 },
 
                 defaultAggregation : 'DropdownListItems',

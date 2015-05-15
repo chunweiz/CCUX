@@ -2,12 +2,10 @@
 
 sap.ui.define(
     [
-        'jquery.sap.global',
-        'sap/ui/base/DataType',
-        'sap/ui/core/library'
+        'sap/ui/base/DataType'
     ],
 
-    function (jQuery, DataType, Library) {
+    function (DataType) {
         'use strict';
 
         sap.ui.getCore().initLibrary({
@@ -38,11 +36,11 @@ sap.ui.define(
                 'ute.ui.commons.RedCrossSign',
                 'ute.ui.commons.HorizontalDivider',
                 'ute.ui.commons.Dropdown',
+                'ute.ui.commons.DropdownListItem',
                 'ute.ui.commons.Table',
                 'ute.ui.commons.TableColumn',
                 'ute.ui.commons.TableRow',
-                'ute.ui.commons.ScrollContainer',
-                'ute.ui.commons.DropdownListItem'
+                'ute.ui.commons.ScrollContainer'
             ],
 
             elements: [],
@@ -92,6 +90,19 @@ sap.ui.define(
             Small: 'Small',
             Medium: 'Medium',
             Large: 'Large'
+        };
+        ute.ui.commons.DropdownArrowColor = {
+            Blue: 'Blue',
+            Grey: 'Grey'
+        };
+        ute.ui.commons.DropdownBorder = {
+            All: 'All',
+            None: 'None',
+            Bottom: 'Bottom'
+        };
+        ute.ui.commons.DropdownBackground = {
+            White: 'White',
+            Transparent: 'Transparent'
         };
 
         ute.ui.commons.CSSDisplay = DataType.createType('ute.ui.commons.CSSDisplay', {

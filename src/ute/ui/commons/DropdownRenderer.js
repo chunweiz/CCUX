@@ -16,11 +16,11 @@ sap.ui.define([],
             oRm.writeControlData(oDropdown);
             oRm.writeAttributeEscaped('id', 'dd');
             oRm.addClass('uteDD');
-            if (oDropdown.getBorder()) {
+            if (oDropdown.getBorder() === 'All') {
                 oRm.addClass('uteDD-with-border');
             }
             if (oDropdown.getEnabled()) {
-                if (oDropdown.getWhitebackground()) {
+                if (oDropdown.getBackground() === 'White') {
                     oRm.addClass('uteDD-white-background');
                 } else {
                     oRm.addClass('uteDD-grey-background');
@@ -54,10 +54,10 @@ sap.ui.define([],
             oRm.addClass('uteDD-list');
             oRm.addStyle('top', this.calTop(oDropdown));
             oRm.writeStyles();
-            if (oDropdown.getBorder()) {
+            if (oDropdown.getBorder() === 'All') {
                 oRm.addClass('uteDD-list-with-border');
             }
-            if (oDropdown.getWhitebackground()) {
+            if (oDropdown.getBackground() === 'White') {
                 oRm.addClass('uteDD-list-white-background');
             }
             oRm.writeClasses();
