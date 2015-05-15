@@ -87,7 +87,9 @@
             </u:Tag>
             <u:ToggleButton
                 leftBtnText="LEFT TITLE"
-                rightBtnText="RIGHT TITLE">
+                rightBtnText="RIGHT TITLE"
+                leftBtnWidth="300px"
+                rightBtnWidth="300px">
             </u:ToggleButton>
         </u:Tag>
        <u:Tag>
