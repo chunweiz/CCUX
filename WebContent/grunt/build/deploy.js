@@ -4,6 +4,8 @@
     'use strict';
 
     module.exports = function (grunt) {
+        grunt.log.writeln('running deploy build ...');
+
         var config = {};
 
         //Task configuration for jshint
