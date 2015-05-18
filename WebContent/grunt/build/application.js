@@ -1,19 +1,19 @@
-/*globals module, require*/
+/*global module, require*/
 
 (function () {
     'use strict';
 
     module.exports = function (grunt) {
-        var oGruntConfig;
+        grunt.log.writeln('running application mode ...');
 
-        oGruntConfig = {};
+        var oGruntConfig = {};
 
-        //Perform javascript linting on all application javascript files
+        //Perform javascript linting on all source files
         oGruntConfig.jshint = (function (grunt) {
             var oConfig;
 
             oConfig = {
-                app: {
+                deploy: {
                     files: {
                         cwd: 'src',
                         src: [
@@ -26,12 +26,12 @@
             return oConfig;
         }(grunt));
 
-        //Clean application folder in build
+        //Clean up entire build folder
         oGruntConfig.clean = (function (grunt) {
             var oConfig;
 
             oConfig = {
-                app: [
+                deploy: [
                     'build/nrg/**'
                 ]
             };
@@ -39,20 +39,21 @@
             return oConfig;
         }(grunt));
 
-        //Copy relevant application files to build.
+        //Copy relevant files files to build.
         //Javascript files will be copied with suffix -dbg
         oGruntConfig.copy = (function (grunt) {
             var oConfig;
 
             oConfig = {
-                control: {
+                deploy: {
                     files: [
                         {
                             expand: true,
                             cwd: 'src',
                             src: [
                                 'nrg/asset/css/core/font/**',
-                                'nrg/asset/img/**/*.png'
+                                'nrg/asset/img/**/*.png',
+                                'nrg/data/**/*.json'
                             ],
                             dest: 'build/',
                             filter: 'isFile'
@@ -79,68 +80,12 @@
             return oConfig;
         }(grunt));
 
-        //Merge all module properties files into relevant locale files.
-        oGruntConfig.concat = (function (grunt) {
-            var oConfig;
-
-            oConfig =  {
-                noLang: {
-                    src: [
-                        'src/nrg/i18n/view/**/*_en_US.properties'
-                    ],
-                    dest: 'build/nrg/i18n/messageBundle.properties'
-                },
-                enUs: {
-                    src: [
-                        'src/nrg/i18n/view/**/*_en_US.properties'
-                    ],
-                    dest: 'build/nrg/i18n/messageBundle_en_US.properties'
-                }
-            };
-
-            return oConfig;
-        }(grunt));
-
-        //Compile LESS files to compressed CSS files with IE10 and above compatibility
-        oGruntConfig.less = (function (grunt) {
-            var oConfig, LessPluginAutoPrefix, LessPluginCleanCss, oLessAutoPrefix, oLessCleanCss;
-
-            LessPluginAutoPrefix = require('less-plugin-autoprefix');
-            LessPluginCleanCss = require('less-plugin-clean-css');
-
-            oLessAutoPrefix = new LessPluginAutoPrefix({
-                browsers: [
-                    'ie >= 10'
-                ]
-            });
-
-            oLessCleanCss = new LessPluginCleanCss({
-                advanced: true
-            });
-
-            oConfig = {
-                app: {
-                    options: {
-                        plugins: [
-                            oLessAutoPrefix,
-                            oLessCleanCss
-                        ]
-                    },
-                    files: {
-                        'build/nrg/asset/css/nrg.css': 'src/nrg/asset/css/nrg.source.less'
-                    }
-                }
-            };
-
-            return oConfig;
-        }(grunt));
-
         //Mangle and compress control javascript files
         oGruntConfig.uglify = (function (grunt) {
             var oConfig;
 
             oConfig = {
-                app: {
+                deploy: {
                     files: [
                         {
                             expand: true,
@@ -151,45 +96,6 @@
                             dest: 'build'
                         }
                     ]
-                }
-            };
-
-            return oConfig;
-        }(grunt));
-
-        //Merge related json files
-        //Sequence is important for routes!
-        //Make sure manifest.json is last in src because catchall route needs to be last
-        oGruntConfig['merge-json'] = (function (grunt) {
-            var oConfig;
-
-            oConfig =  {
-                'manifest-ic': {
-                    src: [
-                        'src/nrg/view/**/routing.json',
-                        'src/nrg/component/ic/manifest.json'
-                    ],
-                    dest: 'build/nrg/component/ic/manifest.json'
-                },
-                'manifest-retention': {
-                    src: [
-                        'src/nrg/view/**/routing.json',
-                        'src/nrg/component/retention/manifest.json'
-                    ],
-                    dest: 'build/nrg/component/retention/manifest.json'
-                }
-            };
-
-            return oConfig;
-        }(grunt));
-
-        //Compress related json files - right now, it is only for manifest
-        oGruntConfig['json-minify'] = (function (grunt) {
-            var oConfig;
-
-            oConfig = {
-                app: {
-                    files: 'build/nrg/component/**/manifest.json'
                 }
             };
 
@@ -230,11 +136,100 @@
                             expand: true,
                             cwd: 'src',
                             src: [
-                                'nrg/view/**/*.xml'
+                                'nrg/**/*.xml'
                             ],
                             dest: 'build'
                         }
                     ]
+                }
+            };
+
+            return oConfig;
+        }(grunt));
+
+        //Compile LESS files to compressed CSS files with IE10 and above compatibility
+        oGruntConfig.less = (function (grunt) {
+            var oConfig, LessPluginAutoPrefix, LessPluginCleanCss, oLessAutoPrefix, oLessCleanCss;
+
+            LessPluginAutoPrefix = require('less-plugin-autoprefix');
+            LessPluginCleanCss = require('less-plugin-clean-css');
+
+            oLessAutoPrefix = new LessPluginAutoPrefix({
+                browsers: [
+                    'ie >= 10'
+                ]
+            });
+
+            oLessCleanCss = new LessPluginCleanCss({
+                advanced: true
+            });
+
+            oConfig = {
+                deploy: {
+                    options: {
+                        plugins: [
+                            oLessAutoPrefix,
+                            oLessCleanCss
+                        ]
+                    },
+                    files: {
+                        'build/nrg/asset/css/nrg.css': 'src/nrg/asset/css/nrg.source.less'
+                    }
+                }
+            };
+
+            return oConfig;
+        }(grunt));
+
+        //Merge all properties files into relevant locale files.
+        oGruntConfig.concat = (function (grunt) {
+            var oConfig;
+
+            oConfig =  {
+                noLang: {
+                    src: [
+                        'src/nrg/i18n/view/**/*_en_US.properties'
+                    ],
+                    dest: 'build/nrg/i18n/messageBundle.properties'
+                },
+                enUs: {
+                    src: [
+                        'src/nrg/i18n/view/**/*_en_US.properties'
+                    ],
+                    dest: 'build/nrg/i18n/messageBundle_en_US.properties'
+                }
+            };
+
+            return oConfig;
+        }(grunt));
+
+        //Merge related json files
+        //Sequence is important for routes!
+        //Make sure manifest.json is last in src because catchall route needs to be last
+        oGruntConfig['merge-json'] = (function (grunt) {
+            var oConfig;
+
+            oConfig = {
+                'manifest-ic': {
+                    src: [
+                        'src/nrg/view/**/routing.json',
+                        'src/nrg/data/**/mock.json',
+                        'src/nrg/component/ic/manifest.json'
+                    ],
+                    dest: 'build/nrg/component/ic/manifest.json'
+                }
+            };
+
+            return oConfig;
+        }(grunt));
+
+        //Compress related json files - right now, it is only for manifest
+        oGruntConfig['json-minify'] = (function (grunt) {
+            var oConfig;
+
+            oConfig = {
+                deploy: {
+                    files: 'build/nrg/**/*.json'
                 }
             };
 
@@ -246,14 +241,6 @@
             var oConfig;
 
             oConfig = {
-                lib: {
-                    options: {
-                        resources: 'src',
-                        dest: 'build'
-                    },
-                    libraries: true
-                },
-
                 comp: {
                     options: {
                         resources: 'src',
@@ -261,14 +248,6 @@
                     },
                     components: {
                         'nrg/component/ic': {
-                            src: [
-                                'nrg/view/app/App*.xml',
-                                'nrg/view/others/*Empty.view.xml',
-                                'nrg/view/app/App*.js',
-                                'nrg/view/others/*Empty.controller.js'
-                            ]
-                        },
-                        'nrg/component/retention': {
                             src: [
                                 'nrg/view/app/App*.xml',
                                 'nrg/view/others/*Empty.view.xml',
@@ -283,8 +262,6 @@
             return oConfig;
         }(grunt));
 
-
-
         grunt.initConfig(oGruntConfig);
 
         grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -297,7 +274,6 @@
         grunt.loadNpmTasks('grunt-json-minify');
         grunt.loadNpmTasks('grunt-contrib-htmlmin');
         grunt.loadNpmTasks('grunt-openui5');
-
 
         grunt.registerTask('default', [
             'jshint',
@@ -312,5 +288,4 @@
             'openui5_preload'
         ]);
     };
-
 }());
