@@ -54,7 +54,8 @@
                             expand: true,
                             cwd: 'src',
                             src: [
-                                'nrg/data/<%= buildModule %>/**/*.json'
+                                'nrg/data/<%= buildModule %>/**/*.json',
+                                '!nrg/data/<%= buildModule %>/**/mock.json'
                             ],
                             dest: 'build/',
                             filter: 'isFile'
