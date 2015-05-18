@@ -6,7 +6,7 @@
     module.exports = function (grunt) {
         var BuildTask, oBuildTask, sBuild;
 
-        sBuild = grunt.option('build') || 'deploy';
+        sBuild = grunt.option('build') || 'project';
 
         if (grunt.option('dev')) {
             sBuild = 'dev/' + sBuild;
