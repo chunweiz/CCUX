@@ -22,7 +22,11 @@ sap.ui.define(
                 'ute.ui.commons.HorizontalDividerDesign',
                 'ute.ui.commons.HorizontalDividerHeight',
                 'ute.ui.commons.HorizontalDividerSize',
-                'ute.ui.commons.ButtonType'
+                'ute.ui.commons.ButtonType',
+                'ute.ui.commons.DropdownArrowColor',
+                'ute.ui.commons.DropdownArrowType ',
+                'ute.ui.commons.DropdownBorder',
+                'ute.ui.commons.DropdownBackground'
             ],
 
 			controls: [
@@ -38,6 +42,7 @@ sap.ui.define(
                 'ute.ui.commons.RedCrossSign',
 				'ute.ui.commons.HorizontalDivider',
                 'ute.ui.commons.Dropdown',
+                'ute.ui.commons.DropdownListItem',
                 'ute.ui.commons.Table',
                 'ute.ui.commons.TableColumn',
                 'ute.ui.commons.TableRow',
@@ -92,6 +97,24 @@ sap.ui.define(
 		    Medium: 'Medium',
 		    Large: 'Large'
 	    };
+        ute.ui.commons.DropdownArrowColor = {
+            Blue: 'Blue',
+            Grey: 'Grey'
+        };
+        ute.ui.commons.DropdownArrowType = {
+            Solid: 'Solid',
+            Hollow: 'Hollow'
+        };
+        ute.ui.commons.DropdownBorder = {
+            All: 'All',
+            None: 'None',
+            Bottom: 'Bottom'
+        };
+        ute.ui.commons.DropdownBackground = {
+            White: 'White',
+            Transparent: 'Transparent',
+            Inactive: 'Inactive'
+        };
 
         ute.ui.commons.CSSDisplay = DataType.createType('ute.ui.commons.CSSDisplay', {
             isValid : function (sValue) {

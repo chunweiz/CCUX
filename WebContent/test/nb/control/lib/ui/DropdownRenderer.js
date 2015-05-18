@@ -126,7 +126,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
                     var oContent = oItem.getContent()[j];
                     oRm.renderControl(oContent);
                 }
-               oRm.write('</a>')
+               oRm.write('</a>');
 
                 oRm.write('</li>');
             }

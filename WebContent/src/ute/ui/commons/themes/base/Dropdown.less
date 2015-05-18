@@ -1,34 +1,45 @@
- .uteDD {
+.uteDD {
      /* Size and position */
     position: relative;
     margin: 0 auto;
 
     /* Styles */
     border-radius: 7px;
-    box-shadow: 0px 1px 1px @uteColor-darkGrey;
+    box-shadow: 0px 1px 1px grey;
     cursor: pointer;
     outline: none;
 
     /* Font settings */
-    color: @uteColor-inactiveGrey;
-    font-family: "Source Sans Pro", sans-serif;
+    color: #000;
+    font-family: @uteFontFamily;
     font-weight: 400;
     font-size: 14pt;
 
-    }
-    .uteDD-white-background {
-           background: @uteColor-white;
-    }
-     .uteDD-grey-background {
-           background: @uteColor-inactiveGrey;
+
     }
 
-     .uteDD-with-border {
+.uteDD-background-white {
+           background: @uteColor-white;
+    }
+
+.uteDD-background-grey {
+           background: @uteColor-lightGrey;
+    }
+
+ .uteDD-with-border {
            border: 1px solid @uteColor-darkGrey;
+    }
+.uteDD-with-border-bottom {
+        box-shadow: none;
+        border-top: none;
+        border-left:none;
+        border-right:none;
+        border-bottom: 1px solid @uteColor-darkGrey;
+        border-radius: 0px;
     }
 
     /*Arrow triangle*/
-    .uteDD:after {
+.uteDD-arrow-solid:after {
     content: "";
     width: 0;
     height: 0;
@@ -36,99 +47,106 @@
     right: 15px;
     top: 50%;
     margin-top: -3px;
-        border-width: 6px 6px 0 6px;
-    border-style: solid;
-
-    }
-       /*Arrow triangle*/
-    .uteDD-solid-arrow:after {
-
     border-width: 6px 6px 0 6px;
     border-style: solid;
-  /*  border-color: #83bbe5 transparent;*/
-    }
 
-    .uteDD-blue-arrow:after{
-       /* border-color: #83bbe5 transparent;*/
+    }
+ .uteDD-arrow-blue:after{
         border-top-color: @uteColor-blueLink;
         border-right-color: transparent;
         border-bottom-color: @uteColor-lightBlue;
         border-left-color: transparent;
     }
-    .uteDD-grey-arrow:after{
+.uteDD-arrow-grey:after{
         border-color: @uteColor-darkGrey transparent;
     }
+.uteDD-arrow-solid.active:after {
+        border-width: 0 6px 6px 6px;
+    }
 
-    .uteDD .uteDD-list {
-	/* Size & position */
+    /*Arrow triangle*/
+.uteDD-arrow-hollow:after {
+    content: "";
+    width: 10px;
+    height: 10px;
     position: absolute;
-   // top: 75%; /*Main dd box and List item box spacing*/
+    right: 160px;
+    border: 1px solid @uteColor-blueLink;
+    border-bottom: none;
+    border-right: none;
+    transform: translate(135px,8px)rotate(-135deg);
+
+    }
+
+.uteDD-arrow-hollow.active:after {
+        transform: translate(135px,8px)rotate(45deg);
+    }
+
+
+.uteDD .uteDD-list {
+                /* Size & position */
+    position: absolute;
+    top: 120%; /*Main dd box and List item box spacing*/
     left: 0; /* Size */
     right: 0; /* Size */
 
     /* Styles */
-   /* background: #fff;*/
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: @uteFontFamily;
     font-weight: 400;
     font-size: 14pt;
 
     /* Hiding */
     opacity: 0;
     pointer-events: none;
-
-    /*List Border*/
-   /* border: 1px solid grey;*/
-    border-radius: 7px;
-    box-shadow: 0px 1px 1px @uteColor-lightGrey;
     padding: 0px;
     }
 
-    .uteDD-list-with-border {
-    border: 1px solid @uteColor-lightGrey;
+.uteDD-list-with-border {
+    border: 1px solid @uteColor-darkGrey;
+    border-radius: 7px;
+    box-shadow: 0px 1px 1px @uteColor-lightGrey;
     }
 
-    .uteDD-list-white-background{
+
+.uteDD-list-background-white{
          background: @uteColor-white;
-
     }
 
-     .uteDD .uteDD-list li{
+.uteDD .uteDD-list li{
          display: block; /*To hide the bullets on items*/
+
     }
 
-    .uteDD .uteDD-list li a {
+.uteDD .uteDD-list li a {
     display: block;
     color: @uteColor-darkGrey;
     padding: 10px 20px;
     text-indent: 10px;
     }
 
+
 /* Hover state */
-   .uteDD .uteDD-list .uteDD-list-hover-blue a:hover {
+.uteDD .uteDD-list .uteDD-list-hover-blue a:hover {
     background: @uteColor-lightBlue;
     }
-     .uteDD .uteDD-list .uteDD-list-hover-grey a:hover {
+    /* Hover state */
+.uteDD .uteDD-list .uteDD-list-hover-grey a:hover {
     background: @uteColor-lightGrey;
     }
 
-
-
-    .uteDD .uteDD-list li:first-of-type a {
-        border-radius: 7px 7px 0 0;
+.uteDD .uteDD-list li:first-of-type a {
+        border-radius: 5.5px 5.5px 0 0;
     }
-    .uteDD .uteDD-list li:last-of-type a {
+.uteDD .uteDD-list li:last-of-type a {
         border: none;
-        border-radius: 0 0 7px 7px;
+        border-radius: 0 0 5.5px 5.5px;
     }
 
-    .uteDD.active:after {
-        border-width: 0 6px 6px 6px;
-    }
-
-
-    .uteDD.active .uteDD-list {
+.uteDD.active .uteDD-list {
     opacity: 1;
     pointer-events: auto;
     }
 
-
+.uteDD-value {
+        text-decoration: none;
+   }
