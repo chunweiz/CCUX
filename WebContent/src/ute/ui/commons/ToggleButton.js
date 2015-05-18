@@ -22,7 +22,11 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 rightBtnWidth : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "262px"},
 
                 /*Specifies the button height. If this property is set, the height which is specified by the underlying theme is not used any longer.*/
-                height : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : null}
+                height : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : null},
+
+                /*ute.ui.commons.ToggleButtonType*/
+                toggleButtonType : {type : "ute.ui.commons.ToggleButtonType", group : "Appearance", defaultValue : "ToggleDesign1"}
+
             },
             events : {
                 /*Event is fired when the user presses the control.*/

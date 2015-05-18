@@ -26,7 +26,8 @@ sap.ui.define(
                 'ute.ui.commons.DropdownArrowColor',
                 'ute.ui.commons.DropdownArrowType ',
                 'ute.ui.commons.DropdownBorder',
-                'ute.ui.commons.DropdownBackground'
+                'ute.ui.commons.DropdownBackground',
+                'ute.ui.commons.ToggleButtonType'
             ],
 
 			controls: [
@@ -68,6 +69,11 @@ sap.ui.define(
             SpecialCalculator: 'SpecialCalculator'
         };
 
+        ute.ui.commons.ToggleButtonType = {
+            ToggleDesign1: 'ToggleDesign1',
+            ToggleDesign2: 'ToggleDesign2'
+        };
+
         ute.ui.commons.TextfieldType = {
             Regular: 'Regular',
             Underlined: 'Underlined'
@@ -79,8 +85,7 @@ sap.ui.define(
             Regular: 'Regular'
 
         };
-
-	    ute.ui.commons.HorizontalDividerDesign = {
+        ute.ui.commons.HorizontalDividerDesign = {
 		    Solid: 'Solid',
             Dotted: 'Dotted'
 	    };
