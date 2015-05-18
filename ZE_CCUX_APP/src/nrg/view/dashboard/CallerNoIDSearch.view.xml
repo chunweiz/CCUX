@@ -1,0 +1,79 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="nrg.view.others.GeneralEmpty">
+
+
+    <ute:Tag class="nrgCallerNoIDSearch nrgAppMain-generalContent">
+        <ute:content>
+            <h1 class="nrgCallerNoIDSearch-Alert">
+                    Caller was not identified. Please search for data by entering information below
+            </h1>
+            <ute:Tag class="nrgCallerNoIDSearch-InputArea">
+                <ute:Input class="nrgCallerNoIDSearch-InputLeft"
+                    placeholder="Contract Account #"
+                    change="testInputChange"
+                    fieldType="field1"
+                    label="Title"
+                    width="48%">
+                </ute:Input>
+                <ute:Input class="nrgCallerNoIDSearch-InputRight"
+                    placeholder="SSN"
+                    change="testInputChange"
+                    fieldType="field1"
+                    label="Title"
+                    width="48%">
+                </ute:Input>
+                <ute:Input class="nrgCallerNoIDSearch-InputLeft"
+                    placeholder="DL"
+                    change="testInputChange"
+                    fieldType="field1"
+                    label="Title"
+                    width="48%">
+                </ute:Input>
+            </ute:Tag>
+            <ute:Tag class="nrgCallerNoIDSearch-InputArea">
+                <ute:Input class="nrgCallerNoIDSearch-InputLeft"
+                    placeholder="Organization Name"
+                    change="testInputChange"
+                    fieldType="field1"
+                    label="Title"
+                    width="48%">
+                </ute:Input>
+                <ute:Input class="nrgCallerNoIDSearch-InputRight"
+                    placeholder="BP #"
+                    change="testInputChange"
+                    fieldType="field1"
+                    label="Title"
+                    width="48%">
+                </ute:Input>
+                <ute:Input class="nrgCallerNoIDSearch-InputLeft"
+                    placeholder="Federal Tax ID"
+                    change="testInputChange"
+                    fieldType="field1"
+                    label="Title"
+                    width="48%">
+                </ute:Input>
+                <ute:Input class="nrgCallerNoIDSearch-InputRight"
+                    placeholder="SSN"
+                    change="ESID"
+                    fieldType="field1"
+                    label="Title"
+                    width="48%">
+                </ute:Input>
+            </ute:Tag>
+            <ute:Tag class="nrgCallerNoIDSearch-InputArea">
+                <ute:Button
+                    class="nrgCallerNoIDSearch-SButton"
+                    uteDesign="Button1"
+                    text="Search"
+                    enabled="true">
+                </ute:Button>
+            </ute:Tag>
+            <ute:Tag
+                elem="hr"></ute:Tag>
+        </ute:content>
+    </ute:Tag>
+
+</mvc:View>

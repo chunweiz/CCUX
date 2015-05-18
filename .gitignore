@@ -1,9 +1,4 @@
-/WebContent/build/
-/WebContent/node_modules/
-/WebContent/bower_components/
-/WebContent/src/ute/ui/commons/themes/sap_bluecrystal/library.css
-/WebContent/src/ute/ui/commons/themes/base/library.css
-/WebContent/src/nrg/asset/css/nrg.css
-/bower_components/
-/build/
+/ZE_CCUX_LIB/bower_components/
+/ZE_CCUX_APP/build/
+/ZE_CCUX_APP/node_modules/
 /node_modules/

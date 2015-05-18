@@ -1,0 +1,19 @@
+{
+    "sap.ui5": {
+        "routing": {
+            "routes": {
+                "history": {
+                    "pattern": "bp/{bpNum}/ca/{caNum}/history",
+                    "target": [ "history.General", "dashboard.SummaryBP", "others.ToolsEmpty" ]
+                }
+            },
+
+            "targets": {
+                "history.General": {
+                    "viewName": "history.General",
+                    "controlId": "idAppGeneral"
+                }
+            }
+        }
+    }
+}

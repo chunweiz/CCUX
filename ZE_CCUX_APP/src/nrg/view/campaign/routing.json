@@ -1,0 +1,19 @@
+{
+    "sap.ui5": {
+        "routing": {
+            "routes": {
+                "campaign": {
+                    "pattern": "bp/{bpNum}/ca/{caNum}/campaign",
+                    "target": [ "campaign.General", "dashboard.SummaryBP", "others.ToolsEmpty" ]
+                }
+            },
+
+            "targets": {
+                "campaign.General": {
+                    "viewName": "campaign.General",
+                    "controlId": "idAppGeneral"
+                }
+            }
+        }
+    }
+}

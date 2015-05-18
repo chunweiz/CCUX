@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font: 400 12pt "Source Sans Pro", sans-serif;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+
+        <script id="sap-ui-bootstrap"
+		    src="../../../../../../bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
+		    data-sap-ui-libs="tm.control.lib.ui, sap.m, sap.ui.commons"
+		    data-sap-ui-resourceroots='{
+                "sap.ui.layout": "../../../../../../bower_components/openui5-sap.ui.layout/resources/sap/ui/layout",
+                "sap.ui.commons": "../../../../../../bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
+                "sap.m": "../../../../../../bower_components/openui5-sap.m/resources/sap/m",
+            	"tm.control.lib.ui": "../"
+        	}'>
+		</script>
+
+        <script id="main" type="ui5/xmlview">
+            <mvc:View
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ute="tm.control.lib.ui.selopt"
+                xmlns:sap="sap.ui.commons"
+                xmlns:mvc="sap.ui.core.mvc"
+                xmlns:m="sap.m"
+                controllerName="local.controller.Control"
+                displayBlock="true">
+
+                <ute:Select options="{/modelData}">
+                    <ute:Option key="{lastName}">
+                        <sap:Label text="{firstName}" />
+                        <sap:Label text="{lastName}" />
+                    </ute:Option>
+                </ute:Select>
+
+            </mvc:View>
+        </script>
+
+		<script>
+			sap.ui.getCore().attachInit(function() {
+                sap.ui.controller('local.controller.Control', {
+                    onInit: function () {
+
+                    },
+
+                    onAfterRendering: function () {
+
+                    }
+                });
+
+                sap.ui.xmlview({ viewContent: jQuery('#main').html() })
+                    .setModel(new sap.ui.model.json.JSONModel({
+                        modelData: [
+                            { firstName: 'tau ming', lastName: 'hew' },
+                            { firstName: 'hung ju', lastName: 'lin' },
+                            { firstName: 'navya', lastName: 'basavaraju' }
+                        ]
+                    }))
+                    .placeAt('fromxml');
+            });
+		</script>
+	</head>
+	<body class="sapUiBody" role="application" id="content">
+        <div id="fromxml"></div>
+        <div id="fromjs"></div>
+	</body>
+</html>
