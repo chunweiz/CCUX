@@ -1,19 +1,19 @@
-/*globals module, require*/
+/*global module, require*/
 
 (function () {
     'use strict';
 
     module.exports = function (grunt) {
-        var oGruntConfig;
+        grunt.log.writeln('running control library mode ...');
 
-        oGruntConfig = {};
+        var oGruntConfig = {};
 
-        //Perform javascript linting on all control javascript files
+        //Perform javascript linting on all source files
         oGruntConfig.jshint = (function (grunt) {
             var oConfig;
 
             oConfig = {
-                control: {
+                deploy: {
                     files: {
                         cwd: 'src',
                         src: [
@@ -26,12 +26,12 @@
             return oConfig;
         }(grunt));
 
-        //Clean control folder from build
+        //Clean up entire build folder
         oGruntConfig.clean = (function (grunt) {
             var oConfig;
 
             oConfig = {
-                control: [
+                deploy: [
                     'build/ute/**'
                 ]
             };
@@ -39,12 +39,13 @@
             return oConfig;
         }(grunt));
 
-        //Copy entire control javascript to build with suffix -dbg
+        //Copy relevant files files to build.
+        //Javascript files will be copied with suffix -dbg
         oGruntConfig.copy = (function (grunt) {
             var oConfig;
 
             oConfig = {
-                control: {
+                deploy: {
                     files: [
                         {
                             expand: true,
@@ -60,6 +61,28 @@
                                 dest = dest + aSrc.join('.');
                                 return dest;
                             }
+                        }
+                    ]
+                }
+            };
+
+            return oConfig;
+        }(grunt));
+
+        //Mangle and compress control javascript files
+        oGruntConfig.uglify = (function (grunt) {
+            var oConfig;
+
+            oConfig = {
+                deploy: {
+                    files: [
+                        {
+                            expand: true,
+                            cwd: 'src',
+                            src: [
+                                'ute/**/*.js'
+                            ],
+                            dest: 'build'
                         }
                     ]
                 }
@@ -86,7 +109,7 @@
             });
 
             oConfig = {
-                control: {
+                deploy: {
                     options: {
                         plugins: [
                             oLessAutoPrefix,
@@ -103,22 +126,17 @@
             return oConfig;
         }(grunt));
 
-        //Mangle and compress control javascript files
-        oGruntConfig.uglify = (function (grunt) {
+        //Create preload for control library and components
+        oGruntConfig.openui5_preload = (function (grunt) {
             var oConfig;
 
             oConfig = {
-                control: {
-                    files: [
-                        {
-                            expand: true,
-                            cwd: 'src',
-                            src: [
-                                'ute/**/*.js'
-                            ],
-                            dest: 'build'
-                        }
-                    ]
+                lib: {
+                    options: {
+                        resources: 'src',
+                        dest: 'build'
+                    },
+                    libraries: true
                 }
             };
 
@@ -132,14 +150,15 @@
         grunt.loadNpmTasks('grunt-contrib-copy');
         grunt.loadNpmTasks('grunt-contrib-less');
         grunt.loadNpmTasks('grunt-contrib-uglify');
+        grunt.loadNpmTasks('grunt-openui5');
 
         grunt.registerTask('default', [
             'jshint',
             'clean',
             'copy',
             'less',
-            'uglify'
+            'uglify',
+            'openui5_preload'
         ]);
     };
-
 }());

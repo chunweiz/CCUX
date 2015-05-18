@@ -4,9 +4,10 @@
     'use strict';
 
     module.exports = function (grunt) {
-        grunt.log.writeln('running application mode ...');
+        grunt.log.writeln('running module development mode ...');
 
         var oGruntConfig = {};
+        oGruntConfig.buildModule = grunt.option('module');
 
         //Perform javascript linting on all source files
         oGruntConfig.jshint = (function (grunt) {
@@ -17,7 +18,7 @@
                     files: {
                         cwd: 'src',
                         src: [
-                            'nrg/**/*.js'
+                            'nrg/view/<%= buildModule %>/**/*.js'
                         ]
                     }
                 }
@@ -32,7 +33,9 @@
 
             oConfig = {
                 deploy: [
-                    'build/nrg/**'
+                    'build/nrg/view/<%= buildModule %>/**',
+                    'build/nrg/data/<%= buildModule %>/**',
+                    'build/nrg/component/ic/manifest.json'
                 ]
             };
 
@@ -51,9 +54,8 @@
                             expand: true,
                             cwd: 'src',
                             src: [
-                                'nrg/asset/css/core/font/**',
-                                'nrg/asset/img/**/*.png',
-                                'nrg/data/**/*.json'
+                                'nrg/data/<%= buildModule %>/**/*.json',
+                                '!nrg/data/<%= buildModule %>/**/mock.json'
                             ],
                             dest: 'build/',
                             filter: 'isFile'
@@ -62,7 +64,7 @@
                             expand: true,
                             cwd: 'src',
                             src: [
-                                'nrg/**/*.js'
+                                'nrg/view/<%= buildModule %>/**/*.js'
                             ],
                             dest: 'build/',
                             filter: 'isFile',
@@ -91,7 +93,7 @@
                             expand: true,
                             cwd: 'src',
                             src: [
-                                'nrg/**/*.js'
+                                'nrg/view/<%= buildModule %>/**/*.js'
                             ],
                             dest: 'build'
                         }
@@ -107,22 +109,6 @@
             var oConfig;
 
             oConfig =  {
-                html: {
-                    options: {
-                        removeComments: true,
-                        collapseWhitespace: true
-                    },
-                    files: [
-                        {
-                            expand: true,
-                            cwd: 'src',
-                            src: [
-                                'nrg/**/*.html'
-                            ],
-                            dest: 'build'
-                        }
-                    ]
-                },
                 xml: {
                     options: {
                         removeComments: true,
@@ -136,7 +122,7 @@
                             expand: true,
                             cwd: 'src',
                             src: [
-                                'nrg/**/*.xml'
+                                'nrg/view/<%= buildModule %>/**/*.xml'
                             ],
                             dest: 'build'
                         }
@@ -228,34 +214,11 @@
             var oConfig;
 
             oConfig = {
-                deploy: {
-                    files: 'build/nrg/**/*.json'
-                }
-            };
-
-            return oConfig;
-        }(grunt));
-
-        //Create preload for control library and components
-        oGruntConfig.openui5_preload = (function (grunt) {
-            var oConfig;
-
-            oConfig = {
-                comp: {
-                    options: {
-                        resources: 'src',
-                        dest: 'build'
-                    },
-                    components: {
-                        'nrg/component/ic': {
-                            src: [
-                                'nrg/view/app/App*.xml',
-                                'nrg/view/others/*Empty.view.xml',
-                                'nrg/view/app/App*.js',
-                                'nrg/view/others/*Empty.controller.js'
-                            ]
-                        }
-                    }
+                data: {
+                    files: 'build/nrg/data/<%= buildModule %>/**/*.json'
+                },
+                manifest: {
+                    files: 'build/nrg/component/ic/manifest.json'
                 }
             };
 
@@ -273,7 +236,6 @@
         grunt.loadNpmTasks('grunt-merge-json');
         grunt.loadNpmTasks('grunt-json-minify');
         grunt.loadNpmTasks('grunt-contrib-htmlmin');
-        grunt.loadNpmTasks('grunt-openui5');
 
         grunt.registerTask('default', [
             'jshint',
@@ -284,8 +246,7 @@
             'uglify',
             'merge-json',
             'json-minify',
-            'htmlmin',
-            'openui5_preload'
+            'htmlmin'
         ]);
     };
 }());
