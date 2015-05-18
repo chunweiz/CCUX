@@ -33,7 +33,7 @@ sap.ui.define(
         };
 
         NRGComponent.prototype.destroy = function () {
-            this.destroyMockServers();
+            this._destroyMockServers();
 
             Component.prototype.destory.apply(this, arguments);
         };
