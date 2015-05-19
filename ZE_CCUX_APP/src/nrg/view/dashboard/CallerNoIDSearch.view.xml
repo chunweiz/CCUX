@@ -11,62 +11,54 @@
                     Caller was not identified. Please search for data by entering information below
             </h1>
             <ute:Tag class="nrgCallerNoIDSearch-InputArea">
-                <ute:Input class="nrgCallerNoIDSearch-InputLeft"
+                <ute:Textfield class="nrgCallerNoIDSearch-InputLeft"
                     placeholder="Contract Account #"
                     change="testInputChange"
-                    fieldType="field1"
                     label="Title"
                     width="48%">
-                </ute:Input>
-                <ute:Input class="nrgCallerNoIDSearch-InputRight"
+                </ute:Textfield>
+                <ute:Textfield class="nrgCallerNoIDSearch-InputRight"
                     placeholder="SSN"
                     change="testInputChange"
-                    fieldType="field1"
                     label="Title"
                     width="48%">
-                </ute:Input>
-                <ute:Input class="nrgCallerNoIDSearch-InputLeft"
+                </ute:Textfield>
+                <ute:Textfield class="nrgCallerNoIDSearch-InputLeft"
                     placeholder="DL"
                     change="testInputChange"
-                    fieldType="field1"
                     label="Title"
                     width="48%">
-                </ute:Input>
+                </ute:Textfield>
             </ute:Tag>
             <ute:Tag class="nrgCallerNoIDSearch-InputArea">
-                <ute:Input class="nrgCallerNoIDSearch-InputLeft"
+                <ute:Textfield class="nrgCallerNoIDSearch-InputLeft"
                     placeholder="Organization Name"
                     change="testInputChange"
-                    fieldType="field1"
                     label="Title"
                     width="48%">
-                </ute:Input>
-                <ute:Input class="nrgCallerNoIDSearch-InputRight"
+                </ute:Textfield>
+                <ute:Textfield class="nrgCallerNoIDSearch-InputRight"
                     placeholder="BP #"
                     change="testInputChange"
-                    fieldType="field1"
                     label="Title"
                     width="48%">
-                </ute:Input>
-                <ute:Input class="nrgCallerNoIDSearch-InputLeft"
+                </ute:Textfield>
+                <ute:Textfield class="nrgCallerNoIDSearch-InputLeft"
                     placeholder="Federal Tax ID"
                     change="testInputChange"
-                    fieldType="field1"
                     label="Title"
                     width="48%">
-                </ute:Input>
-                <ute:Input class="nrgCallerNoIDSearch-InputRight"
+                </ute:Textfield>
+                <ute:Textfield class="nrgCallerNoIDSearch-InputRight"
                     placeholder="SSN"
                     change="ESID"
-                    fieldType="field1"
                     label="Title"
                     width="48%">
-                </ute:Input>
+                </ute:Textfield>
             </ute:Tag>
             <ute:Tag class="nrgCallerNoIDSearch-InputArea">
                 <ute:Button
                     class="nrgCallerNoIDSearch-SButton"
-                    uteDesign="Button1"
                     text="Search"
                     enabled="true">
                 </ute:Button>
