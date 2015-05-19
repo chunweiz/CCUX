@@ -84,7 +84,9 @@
         <u:Tag>
 
             <u:TextView
-                text="I am a text view">
+                text="I am a text view"
+                width="10px"
+                design="Small">
             </u:TextView>
 
 

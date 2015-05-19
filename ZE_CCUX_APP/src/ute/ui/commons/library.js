@@ -27,7 +27,9 @@ sap.ui.define(
                 'ute.ui.commons.DropdownArrowColor',
                 'ute.ui.commons.DropdownArrowType ',
                 'ute.ui.commons.DropdownBorder',
-                'ute.ui.commons.DropdownBackground'
+                'ute.ui.commons.DropdownBackground',
+                'ute.ui.commons.TextViewDesign',
+                'ute.ui.commons.TextViewColor'
             ],
 
 			controls: [
@@ -122,6 +124,27 @@ sap.ui.define(
             Transparent: 'Transparent',
             Inactive: 'Inactive'
         };
+
+   /*Designs for TextView.*/
+
+	   ute.ui.commons.TextViewDesign = {
+
+        Small: "Small",
+        Base : "Base",
+        Large: "Large"
+
+	   };
+    /**
+	 * Semantic Colors of a text.
+	 */
+	ute.ui.commons.TextViewColor = {
+
+		Default : "Default"
+		/*Positive : "Positive",
+		Negative : "Negative",
+		Critical : "Critical"*/
+
+	};
 
         ute.ui.commons.CSSDisplay = DataType.createType('ute.ui.commons.CSSDisplay', {
             isValid : function (sValue) {

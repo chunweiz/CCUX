@@ -1,48 +1,66 @@
 // Provides default renderer for control sap.ui.commons.TextView
 sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer'],
-	function(jQuery, Renderer) {
-	"use strict";
+	function (jQuery, Renderer) {
+	    "use strict";
 
 
 	/**
 	 * TextView renderer.
-	 * @author SAP SE
-	 * @namespace
+	 * @author UTE
+	 *
 	 */
-	var TextViewRenderer = {
-	};
+	    var TextViewRenderer = {
+	        };
 
 	/**
 	 * Renders the HTML for the given control, using the provided {@link sap.ui.core.RenderManager}.
 	 *
-	 * @param {sap.ui.core.RenderManager} oRenderManager The RenderManager that can be used for writing to the render output buffer.
-	 * @param {sap.ui.core.Control} oTextView An object representation of the control that should be rendered.
+	 *
 	 */
-	TextViewRenderer.render = function(oRenderManager, oTextView) {
-		var rm = oRenderManager;
-		var r = TextViewRenderer;
+	    TextViewRenderer.render = function (oRenderManager, oTextView) {
+		    var rm = oRenderManager,
+		        r = TextViewRenderer,
+                TextViewDesign =  sap.ui.commons.TextViewDesign,
+                TextViewColor  =  sap.ui.commons.TextViewColor,
+                oDesign = oTextView.getDesign(),
+                oColor  = oTextView.getSemanticColor();
+
+
+// Styles
+            switch (oDesign) {
+            case TextViewDesign.Small:
+                rm.addClass('uteTv-Small');
+                break;
+            case TextViewDesign.Bold:
+                rm.addClass('uteTv-Base');
+                break;
+             case TextViewDesign.Large:
+                rm.addClass('uteTv-Large');
+                break;
+            }
 
 
 
-		if (oTextView.getWidth() && oTextView.getWidth() !== '') {
+            rm.write("<div");
+            rm.write(">");
+		    rm.write("<span");
+		    rm.writeControlData(oTextView);
+            rm.addClass("uteUiTv");
+            if (oTextView.getWidth() && oTextView.getWidth() !== '') {
 			rm.addStyle("width", oTextView.getWidth());
-		}
-
-		rm.write("<span");
-		rm.writeControlData(oTextView);
-
-
+		    }
 			rm.writeAttributeEscaped("title", oTextView.getText());
 
-		rm.writeClasses();
-		rm.writeStyles();
-		rm.write(">");
-		rm.writeEscaped(oTextView.getText(), true);
-		rm.write("</span>");
+		    rm.writeClasses();
+		    rm.writeStyles();
+		    rm.write(">");
+		    rm.writeEscaped(oTextView.getText(), true);
+		    rm.write("</span>");
+            rm.write("</div>");
 
-	};
+	    };
 
 
-	return TextViewRenderer;
+	    return TextViewRenderer;
 
-}, /* bExport= */ true);
+    }, /* bExport= */ true);
