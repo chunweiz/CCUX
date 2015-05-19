@@ -2,15 +2,16 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
     xmlns:mvc="sap.ui.core.mvc"
-    controllerName="nrg.view.others.GeneralEmpty">
+    controllerName="nrg.view.others.GeneralEmpty"
+    class="nrgAppMain-generalContent nrgDashboard">
 
 
-    <ute:Tag class="nrgCallerNoIDSearch nrgAppMain-generalContent">
+    <ute:Tag class="nrgDashBoard-calrNoIDSearch">
         <ute:content>
-            <h1 class="nrgCallerNoIDSearch-Alert">
+            <h1 class="nrgDashBoard-calrNoIDSearch-title">
                     Caller was not identified. Please search for data by entering information below
             </h1>
-            <ute:Tag class="nrgCallerNoIDSearch-InputArea">
+            <ute:Tag class="nrgDashBoard-calrNoIDSearch-textfield">
                 <ute:Textfield class="nrgCallerNoIDSearch-InputLeft"
                     placeholder="Contract Account #"
                     change="testInputChange"
