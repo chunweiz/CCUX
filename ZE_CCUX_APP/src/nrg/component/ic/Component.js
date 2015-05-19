@@ -24,16 +24,18 @@ sap.ui.define(
             this._initIcons();
             this._initPopup();
 
+            this._initResourceBundles();
+            this._initModels();
+
             if (this.getComponentData().config.mock) {
-                this._initMockServers();
+                this._initMockModels();
             }
 
-            this._initModels();
             this._initRouter();
         };
 
         NRGComponent.prototype.destroy = function () {
-            this._destroyMockServers();
+            this._stopMockServers();
 
             Component.prototype.destory.apply(this, arguments);
         };
@@ -54,12 +56,13 @@ sap.ui.define(
             }
         };
 
-        NRGComponent.prototype._initMockServers = function () {
-            var mConfig, mMock, sKey, oMockServer, sRootPath, sRootUri;
+        NRGComponent.prototype._initMockModels = function () {
+            var mConfig, mMock, sKey, oMockServer, sRootPath, sRootUri, oModel;
 
             this._aMockServerRegistry = [];
             mConfig = this.getMetadata().getConfig();
-            mMock = mConfig.mock || {};
+            mMock = mConfig.data || {};
+            mMock = mMock.mock || {};
             sRootPath = jQuery.sap.getModulePath('nrg');
 
             for (sKey in mMock) {
@@ -88,16 +91,23 @@ sap.ui.define(
                     });
                 }
             }
+
+            if (this._aMockServerRegistry) {
+                this._aMockServerRegistry.forEach(function (oEntry) {
+                    oModel = new ODataModel(oEntry.oMockServer.getRootUri(), true);
+                    this.setModel(oModel, 'comp-' + oEntry.sKey);
+                }.bind(this));
+            }
         };
 
-        NRGComponent.prototype._destroyMockServers = function () {
+        NRGComponent.prototype._stopMockServers = function () {
             //Stop all the mock servers
             this._aMockServerRegistry.forEach(function (oMockServer) {
                 oMockServer.stop();
             });
         };
 
-        NRGComponent.prototype._initModels = function () {
+        NRGComponent.prototype._initResourceBundles = function () {
             var mConfig, oRootPath, oModel;
 
             mConfig = this.getMetadata().getConfig();
@@ -108,12 +118,21 @@ sap.ui.define(
                 bundleUrl: [oRootPath, mConfig.resourceBundle].join('/')
             });
             this.setModel(oModel, 'comp-i18n');
+        };
 
-            if (this._aMockServerRegistry) {
-                this._aMockServerRegistry.forEach(function (oEntry) {
-                    oModel = new ODataModel(oEntry.oMockServer.getRootUri(), true);
-                    this.setModel(oModel, 'comp-' + oEntry.sKey);
-                }.bind(this));
+        NRGComponent.prototype._initModels = function () {
+            var mConfig, mReal, oRootPath, oModel, sKey;
+
+            mConfig = this.getMetadata().getConfig();
+            mReal = mConfig.data || {};
+            mReal = mReal.real || {};
+            oRootPath = jQuery.sap.getModulePath('nrg');
+
+            for (sKey in mReal) {
+                if (mReal.hasOwnProperty(sKey)) {
+                    oModel = new ODataModel(mReal[sKey].url, true);
+                    this.setModel(oModel, 'comp-' + sKey);
+                }
             }
         };
 

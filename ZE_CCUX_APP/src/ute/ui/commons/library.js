@@ -38,6 +38,7 @@ sap.ui.define(
                 'ute.ui.commons.ToggleButton',
                 'ute.ui.commons.Tag',
                 'ute.ui.commons.Textfield',
+                'ute.ui.commons.TextView',
                 'ute.ui.commons.CheckBox',
                 'ute.ui.commons.RadioButton',
                 'ute.ui.commons.RedCrossSign',

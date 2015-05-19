@@ -55,7 +55,7 @@
                             cwd: 'src',
                             src: [
                                 'nrg/data/<%= buildModule %>/**/*.json',
-                                '!nrg/data/<%= buildModule %>/**/mock.json'
+                                '!nrg/data/<%= buildModule %>/**/data.json'
                             ],
                             dest: 'build/',
                             filter: 'isFile'
@@ -199,7 +199,7 @@
                 'manifest-ic': {
                     src: [
                         'src/nrg/view/**/routing.json',
-                        'src/nrg/data/**/mock.json',
+                        'src/nrg/data/**/data.json',
                         'src/nrg/component/ic/manifest.json'
                     ],
                     dest: 'build/nrg/component/ic/manifest.json'
