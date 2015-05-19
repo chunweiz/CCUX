@@ -28,19 +28,34 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
             /**
 			 * Defines the visual appearance of the control.
 			 */
-			        design : {type : "ute.ui.commons.TextViewDesign", group : "Data", defaultValue : ute.ui.commons.TextViewDesign.Base},
+			        design : {type : "ute.ui.commons.TextViewDesign", group : "Data", defaultValue : ute.ui.commons.TextViewDesign.Base}
 
             /**
 			 * Semantic color of the text View
 			 */
-			     /*  semanticColor : {type : "ute.ui.commons.TextViewColor", group : "Appearance", defaultValue : ute.ui.commons.TextViewColor.Default},
+			     //  semanticColor : {type : "ute.ui.commons.TextViewColor", group : "Appearance", defaultValue : ute.ui.commons.TextViewColor.Default},
 
 
-		        }*/
+		        }
 
-	        }});
+	        }
+                });
 
+        TextView.prototype.setText = function (sText) {
+		    this.setProperty("text", sText, true); // no re-rendering!
+		    var oDomRef = this.getDomRef();
+		    if (oDomRef) {
+			// in case of
+			    sText = this.getText(); // the default value '' ensures valid text string
+			    oDomRef.innerHTML = jQuery.sap.encodeHTML(sText).replace(/&#xa;/g, "<br>");
+			// when no tooltip is applied use the text as tooltip
+			    if (!this.getTooltip_AsString()) {
+				    oDomRef.title = sText; // IE8 doesn't like HTML encoded attribute values
+			    }
+		    }
 
+		    return this;
+	    };
 
 
 	    return TextView;
