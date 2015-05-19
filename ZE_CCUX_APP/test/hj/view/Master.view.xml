@@ -82,6 +82,14 @@
             </u:Textfield>
         </u:Tag>
         <u:Tag>
+
+            <u:TextView
+                text="I am a text view">
+            </u:TextView>
+
+
+        </u:Tag>
+        <u:Tag>
             <u:Tag
                 text="ToggleButton">
             </u:Tag>
