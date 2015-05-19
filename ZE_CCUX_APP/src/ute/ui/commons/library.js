@@ -23,6 +23,7 @@ sap.ui.define(
                 'ute.ui.commons.HorizontalDividerHeight',
                 'ute.ui.commons.HorizontalDividerSize',
                 'ute.ui.commons.ButtonType',
+                'ute.ui.commons.ToggleButtonType',
                 'ute.ui.commons.DropdownArrowColor',
                 'ute.ui.commons.DropdownArrowType ',
                 'ute.ui.commons.DropdownBorder',
@@ -66,6 +67,11 @@ sap.ui.define(
             GeneralInfo: 'GeneralInfo',
             SpecialNav: 'SpecialNav',
             SpecialCalculator: 'SpecialCalculator'
+        };
+
+        ute.ui.commons.ToggleButtonType = {
+            ToggleCampaign: 'ToggleCampaign',
+            ToggleDashboard: 'ToggleDashboard'
         };
 
         ute.ui.commons.TextfieldType = {
