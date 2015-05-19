@@ -3,11 +3,12 @@
 
 sap.ui.define(
     [
+        'jquery.sap.global',
         'sap/ui/base/Object',
         'nrg/view/app/AppHeaderQuickLink'
     ],
 
-    function (BaseObject, AppHdrQL) {
+    function (jQuery, BaseObject, AppHdrQL) {
         'use strict';
 
         var AppHdr = BaseObject.extend('nrg.view.app.AppHeader', {
@@ -48,15 +49,19 @@ sap.ui.define(
 
         AppHdr.prototype._addMenuItemListener = function (oElem) {
             oElem.addEventListener('click', function (oEvent) {
-                if (oElem.parentElement.dataset.nrgType === 'menuitem') {
+
+                switch (jQuery(oElem.parentElement).attr('data-nrg-type')) {
+                case 'menuitem':
                     this._openSubMenu(oEvent);
-
-                } else if (oElem.parentElement.dataset.nrgType === 'link') {
+                    break;
+                case 'link':
                     this._openLink(oEvent);
-
-                } else if (oElem.parentElement.dataset.nrgType === 'action') {
+                    break;
+                case 'action':
                     this._execAction(oEvent);
+                    break;
                 }
+
             }.bind(this));
         };
 
