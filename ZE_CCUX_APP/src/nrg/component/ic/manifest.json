@@ -16,6 +16,8 @@
     },
 
     "sap.ui5": {
+        "handleValidation": true,
+
         "resources": {
             "css": [
                 { "uri": "../../asset/css/nrg.css" }
@@ -23,10 +25,11 @@
         },
 
         "dependencies": {
-            "minUI5Version": "1.28.5",
+            "minUI5Version": "1.28.6",
             "libs": {
-                "sap.ui.core": { "minVersion": "1.28.5" },
-                "sap.m": { "minVersion": "1.28.5" },
+                "sap.ui.core": { "minVersion": "1.28.6" },
+                "sap.m": { "minVersion": "1.28.6" },
+                "sap.ui.commons": { "minVersion": "1.28.6" },
                 "ute.ui.commons": { "minVersion": "1.0.0" }
             }
         },
