@@ -1,5 +1,4 @@
-# https://git-scm.com/docs/gitignore
-# https://help.github.com/articles/ignoring-files
-# Example .gitignore files: https://github.com/github/gitignore
-/bower_components/
+/ZE_CCUX_LIB/bower_components/
+/ZE_CCUX_APP/build/
+/ZE_CCUX_APP/node_modules/
 /node_modules/
