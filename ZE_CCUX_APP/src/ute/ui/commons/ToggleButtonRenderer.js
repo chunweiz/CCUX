@@ -15,7 +15,7 @@ sap.ui.define(['jquery.sap.global'],
             if (oToggleButton.getHeight()) {
                 rm.addStyle('height', this.getHeight());
             }
-            switch (oToggleButton.getToggleButtonType()) {
+            switch (oToggleButton.getDesign()) {
             case 'ToggleCampaign':
                 rm.addClass('uteToggleBtn1');
                 rm.writeStyles();
@@ -48,7 +48,7 @@ sap.ui.define(['jquery.sap.global'],
                 rm.writeClasses();
                 rm.write(">");
                 rm.write("<input id=\"__rightBt\" type=\"button\" value=\"" + oToggleButton.getRightBtnText() + "\"");
-                rm.addClass("uteToggleBtn2-rightBtn1");
+                rm.addClass("uteToggleBtn2-rightBtn");
                 rm.addStyle("width", oToggleButton.getRightBtnWidth());
                 rm.writeStyles();
                 rm.writeClasses();
@@ -74,7 +74,7 @@ sap.ui.define(['jquery.sap.global'],
 
         ToggleButtonRenderer.toggle = function (oToggleButton) {
 
-            switch (oToggleButton.getToggleButtonType()) {
+            switch (oToggleButton.getDesign()) {
             case 'ToggleCampaign':
                 if (oToggleButton.$().children().first().attr('class') === "uteToggleBtn1-leftBtn-selected") {
 
