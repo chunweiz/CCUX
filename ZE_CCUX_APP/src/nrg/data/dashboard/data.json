@@ -1,0 +1,19 @@
+{
+    "sap.ui5": {
+        "config": {
+            "data": {
+                "real": {
+                    "dashboard": {
+                        "url": ""
+                    }
+                },
+                "mock": {
+                    "dashboard": {
+                        "mockDataBaseUrl": "data/dashboard/dummy",
+                        "generateMissingMockData": true
+                    }
+                }
+            }
+        }
+    }
+}

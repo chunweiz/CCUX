@@ -1,0 +1,10 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:core="sap.ui.core">
+
+    <ute:Tag>
+        <span>Messages!!!</span>
+    </ute:Tag>
+
+</core:FragmentDefinition>

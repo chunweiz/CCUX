@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<script id="sap-ui-bootstrap"
+		    src="../../../bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
+            data-sap-ui-xx-bindingSyntax="complex"
+            data-sap-ui-libs="sap.ui.commons"
+            data-sap-ui-resourceroots='{
+                "sap.ui.commons": "../../../bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
+                "sap.ui.layout": "../../../bower_components/openui5-sap.ui.layout/resources/sap/ui/layout"
+        }'>
+		</script>
+	</head>
+	<body role="application" class="nrgUiBody" id="content">
+        <div id="sandpit"></div>
+		<script>
+            sap.ui.getCore().attachInit(function () {
+                jQuery.sap.require('sap.ui.core.Popup');
+                jQuery.sap.require('sap.ui.commons.Label');
+
+                sap.ui.core.Popup.getNextZIndex();
+
+                var oPopup = new sap.ui.core.Popup();
+                oPopup.setContent(new sap.ui.commons.Label({
+                    text: 'test'
+                }).setTooltip('label tooltip'));
+                oPopup.setAutoClose(true);
+                oPopup.setDurations(1000, 1000);
+                oPopup.open();
+
+            }); //end attachInit
+
+//                jQuery.sap.require('');
+//
+//                sap.ui.core.Control.extend('', {
+//                    metadata: {
+//
+//                    },
+//
+//                    init: function () {
+//
+//                    },
+//
+//                    renderer: function(oRm, oControl) {
+//
+//                    },
+//
+//                    onAfterRendering: function() {
+//
+//                    }
+//                });
+		</script>
+	</body>
+</html>
+
