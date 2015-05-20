@@ -25,7 +25,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 height : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : null},
 
                  /*ute.ui.commons.ToggleButtonType*/
-                toggleButtonType : {type : "ute.ui.commons.ToggleButtonType", group : "Appearance", defaultValue : "ToggleCampaign"}
+                design : {type : "ute.ui.commons.ToggleButtonDesign", group : "Appearance", defaultValue : "ToggleCampaign"}
 
             },
             events : {
