@@ -9,7 +9,7 @@
 
                 "dasgboard.SearchNoID": {
                     "pattern": "searchNoID",
-                    "target": [ "dashboard.CallerNoIDSearch", "dashboard.CallerNoIDEnrollment", "dashboard.Tools" ]
+                    "target": [ "dashboard.CallerNoIDSearch", "dashboard.CallerNoIDEnrollment", "" ]
                 },
 
                 "dashboard.Bp": {
