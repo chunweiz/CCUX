@@ -1,4 +1,6 @@
-/ZE_CCUX_LIB/bower_components/
-/ZE_CCUX_APP/build/
-/ZE_CCUX_APP/node_modules/
 /node_modules/
+/ZE_CCUX_APP/node_modules/
+/ZE_CCUX_APP/build/
+/ZE_CCUX_CTRL/node_modules/
+/ZE_CCUX_CTRL/build/
+/ZE_CCUX_LIB/bower_components/

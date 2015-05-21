@@ -4,7 +4,7 @@
     'use strict';
 
     module.exports = function (grunt) {
-        grunt.log.writeln('running deploy mode ...');
+        grunt.log.writeln('running application mode ...');
 
         var oGruntConfig = {};
 
@@ -17,8 +17,7 @@
                     files: {
                         cwd: 'src',
                         src: [
-                            'nrg/**/*.js',
-                            'ute/**/*.js'
+                            'nrg/**/*.js'
                         ]
                     }
                 }
@@ -33,7 +32,7 @@
 
             oConfig = {
                 deploy: [
-                    'build/**'
+                    'build/nrg/**'
                 ]
             };
 
@@ -63,8 +62,7 @@
                             expand: true,
                             cwd: 'src',
                             src: [
-                                'nrg/**/*.js',
-                                'ute/**/*.js'
+                                'nrg/**/*.js'
                             ],
                             dest: 'build/',
                             filter: 'isFile',
@@ -93,8 +91,7 @@
                             expand: true,
                             cwd: 'src',
                             src: [
-                                'nrg/**/*.js',
-                                'ute/**/*.js'
+                                'nrg/**/*.js'
                             ],
                             dest: 'build'
                         }
@@ -176,9 +173,7 @@
                         ]
                     },
                     files: {
-                        'build/nrg/asset/css/nrg.css': 'src/nrg/asset/css/nrg.source.less',
-                        'build/ute/ui/commons/themes/base/library.css': 'src/ute/ui/commons/themes/base/library.source.less',
-                        'build/ute/ui/commons/themes/sap_bluecrystal/library.css': 'src/ute/ui/commons/themes/sap_bluecrystal/library.source.less'
+                        'build/nrg/asset/css/nrg.css': 'src/nrg/asset/css/nrg.source.less'
                     }
                 }
             };
@@ -246,14 +241,6 @@
             var oConfig;
 
             oConfig = {
-                lib: {
-                    options: {
-                        resources: 'src',
-                        dest: 'build'
-                    },
-                    libraries: true
-                },
-
                 comp: {
                     options: {
                         resources: 'src',
