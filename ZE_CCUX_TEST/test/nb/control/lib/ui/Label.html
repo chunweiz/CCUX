@@ -15,19 +15,56 @@
                 width: 100%;
                 height: 100%;
             }
+
+   @font-face {
+       font-family: 'nrg-icon';
+       src:url('icon.eot');
+       src:url('icon.eot?') format('embedded-opentype'),
+              url('icon.woff') format('woff'),
+              url('icon.ttf') format('truetype'),
+              url('icon.svg') format('svg');
+       font-weight: normal;
+       font-style: normal;
+
+}
+
+[class^="icon-"], [class*=" icon-"] {
+       font-family: 'nrg-icon';
+       speak: none;
+       font-style: normal;
+       font-weight: normal;
+       font-variant: normal;
+       text-transform: none;
+       line-height: 1;
+
+       /* Better Font Rendering =========== */
+       -webkit-font-smoothing: antialiased;
+       -moz-osx-font-smoothing: grayscale;
+
+       font-size: 20px
+}
+
+.icon-bulb:before {
+
+       content: "\e603";
+}
+
+
         </style>
 
-           <script id="sap-ui-bootstrap"
+        <script id="sap-ui-bootstrap"
                                     src="../../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
                                     data-sap-ui-libs="ute.ui.commons,sap.ui.commons,sap.ui.layout"
                                     data-sap-ui-resourceroots='{
-                "ute.ui.commons": "/ZE_CCUX_CTRL/build/ute/ui/commons",
+                "ute.ui.commons": "/../../../../ZE_CCUX_APP/build/ute/ui/commons",
                 "sap.ui.commons":"/ZE_CCUX_LIB/bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
                 "sap.ui.layout":"/ZE_CCUX_LIB/bower_components/openui5-sap.ui.layout/resources/sap/ui/layout"
                 }'>
-                                </script>
+
+        </script>
 
         <script id="main" type="ui5/xmlview">
+
             <mvc:View
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:u="ute.ui.commons"
@@ -38,39 +75,43 @@
                 displayBlock="true">
 
 
-  <u:Dropdown  arrowcolor="Blue" arrowType="Solid" enabled="true" background="Transparent" border="Bottom" title="Title" width="200px" padding="20px" DropdownListItems="{/myData}">
-<u:DropdownListItems>
-<u:DropdownListItem key="{lastName}">
-                        <sap:Label text="{firstName}"/>
-                        <sap:CheckBox checked="true"/>
-</u:DropdownListItem>
-</u:DropdownListItems>
-   </u:Dropdown>
+      <u:Tag>
+            <sap:Label
+                text='TestIconLabel'
+                icon='sap-icon://nrg-icons/bulb'>
+
+            </sap:Label>
+
+      </u:Tag>
 
             </mvc:View>
         </script>
 
-                                <script>
-                                sap.ui.getCore().attachInit(function() {
+        <script>
+                sap.ui.getCore().attachInit(function() {
                 sap.ui.controller('local.controller.Control', {
-                    onInit: function () {
 
-                    },
+                onInit: function () {
+                    jQuery.sap.require("sap.ui.core.IconPool");
 
-                    onAfterRendering: function () {
+                        sap.ui.core.IconPool.addIcon('bulb', 'nrg-icon', {
+                            fontFamily: 'nrg-icon',
+                            content: '\e603'
+                        });
 
-                    }
-                });
 
-                sap.ui.xmlview({ viewContent: jQuery('#main').html() })
-                    .setModel(new sap.ui.model.json.JSONModel({
+
+                }});
+
+               sap.ui.xmlview({ viewContent: jQuery('#main').html() })
+                /*    .setModel(new sap.ui.model.json.JSONModel({
                         myData: [
                             { firstName: 'tau ming', lastName: 'hew' },
                             { firstName: 'hung ju', lastName: 'lin' },
                             { firstName: 'navya', lastName: 'basavaraju' }
                         ]
-                    }))
-                    .placeAt('fromxml');
+                    }))*/
+                   .placeAt('fromxml');
 
                 // Create JSON data model
 /*var oModel = new sap.ui.model.json.JSONModel("mock.json");
@@ -90,13 +131,21 @@
                 oControl.bindAggregation('items', '/myData', new sap.ui.core.ListItem({
                     text: '{text}',
                     key: '{key}'
-                }));
+                }));*/
+           /*       oControl = new sap.ui.commons.Label({
+                      text: "test label",
+                      icon:"bulb.svg",
+                      width: "100px",
+                      textDirection: "RTL"
+
+
+                });
 
 
                 oControl.placeAt('fromjs');*/
 
             });
-                                </script>
+            </script>
                 </head>
                 <body class="sapUiBody" role="application" id="content">
 

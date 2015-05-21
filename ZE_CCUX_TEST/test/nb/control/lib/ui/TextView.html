@@ -17,11 +17,11 @@
             }
         </style>
 
-           <script id="sap-ui-bootstrap"
+        <script id="sap-ui-bootstrap"
                                     src="../../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
                                     data-sap-ui-libs="ute.ui.commons,sap.ui.commons,sap.ui.layout"
                                     data-sap-ui-resourceroots='{
-                "ute.ui.commons": "/ZE_CCUX_CTRL/build/ute/ui/commons",
+                "ute.ui.commons": "/../../../../ZE_CCUX_APP/build/ute/ui/commons",
                 "sap.ui.commons":"/ZE_CCUX_LIB/bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
                 "sap.ui.layout":"/ZE_CCUX_LIB/bower_components/openui5-sap.ui.layout/resources/sap/ui/layout"
                 }'>
@@ -38,14 +38,15 @@
                 displayBlock="true">
 
 
-  <u:Dropdown  arrowcolor="Blue" arrowType="Solid" enabled="true" background="Transparent" border="Bottom" title="Title" width="200px" padding="20px" DropdownListItems="{/myData}">
-<u:DropdownListItems>
-<u:DropdownListItem key="{lastName}">
-                        <sap:Label text="{firstName}"/>
-                        <sap:CheckBox checked="true"/>
-</u:DropdownListItem>
-</u:DropdownListItems>
-   </u:Dropdown>
+
+
+            <u:TextView
+                text="I am a text view"
+                width="10px"
+                design="Small">
+            </u:TextView>
+
+
 
             </mvc:View>
         </script>

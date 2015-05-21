@@ -21,7 +21,7 @@
                                     src="../../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
                                     data-sap-ui-libs="ute.ui.commons,sap.ui.commons,sap.ui.layout"
                                     data-sap-ui-resourceroots='{
-                "ute.ui.commons": "/ZE_CCUX_CTRL/build/ute/ui/commons",
+                "ute.ui.commons": "/../../../../ZE_CCUX_APP/build/ute/ui/commons",
                 "sap.ui.commons":"/ZE_CCUX_LIB/bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
                 "sap.ui.layout":"/ZE_CCUX_LIB/bower_components/openui5-sap.ui.layout/resources/sap/ui/layout"
                 }'>
@@ -38,14 +38,18 @@
                 displayBlock="true">
 
 
-  <u:Dropdown  arrowcolor="Blue" arrowType="Solid" enabled="true" background="Transparent" border="Bottom" title="Title" width="200px" padding="20px" DropdownListItems="{/myData}">
-<u:DropdownListItems>
-<u:DropdownListItem key="{lastName}">
-                        <sap:Label text="{firstName}"/>
-                        <sap:CheckBox checked="true"/>
-</u:DropdownListItem>
-</u:DropdownListItems>
-   </u:Dropdown>
+         <u:Tag>
+            <u:Tag
+                text="ToggleButton">
+            </u:Tag>
+            <u:ToggleButton
+                leftBtnText="LEFT TITLE"
+                rightBtnText="RIGHT TITLE"
+                leftBtnWidth="300px"
+                rightBtnWidth="300px"
+                design="ToggleDashboard">
+            </u:ToggleButton>
+        </u:Tag>
 
             </mvc:View>
         </script>
@@ -63,13 +67,13 @@
                 });
 
                 sap.ui.xmlview({ viewContent: jQuery('#main').html() })
-                    .setModel(new sap.ui.model.json.JSONModel({
+                /*    .setModel(new sap.ui.model.json.JSONModel({
                         myData: [
                             { firstName: 'tau ming', lastName: 'hew' },
                             { firstName: 'hung ju', lastName: 'lin' },
                             { firstName: 'navya', lastName: 'basavaraju' }
                         ]
-                    }))
+                    }))*/
                     .placeAt('fromxml');
 
                 // Create JSON data model

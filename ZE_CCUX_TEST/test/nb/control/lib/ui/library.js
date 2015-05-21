@@ -19,7 +19,10 @@ sap.ui.define(
 
                                                 controls: [
                                                                 'nb.control.lib.ui.Dropdown',
-                'nb.control.lib.ui.DropdownListItem'
+                                                                'nb.control.lib.ui.DropdownListItem',
+                                                                'nb.control.lib.ui.ToggleButton',
+                                                                'nb.control.lib.ui.TextView',
+                                                                'nb.control.lib.ui.Label'
                                                 ],
 
             interfaces: [],
