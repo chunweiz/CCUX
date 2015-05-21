@@ -10,7 +10,7 @@ sap.ui.define(
 
         var MSGComponent = UIComponent.extend('tm.message.validation.Component', {
             metadata: {
-                handleValidation: true,
+                handleValidation: false,
 
                 dependencies: {
                     libs: [
