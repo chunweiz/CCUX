@@ -1,0 +1,58 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:m="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:tm="tm.control.lib.ui"
+    controllerName="tm.message.validation.view.App"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <m:ScrollContainer
+        height="100px"
+        width="100%"
+        horizontal="true"
+        vertical="true"
+        focusable="true"
+        content="{comp-message>/}" >
+
+        <m:content>
+            <l:VerticalLayout>
+                <m:Label text="{comp-message>message}" />
+            </l:VerticalLayout>
+        </m:content>
+
+    </m:ScrollContainer>
+
+    <m:Button text="Press me" press=".onPress" />
+    <m:Input
+        id="nameInput"
+        type="Text"
+        placeholder="standard type"
+        valueStateText="Name must not be empty. Maximum 10 characters."
+        value="{
+          path: '/name',
+          type: 'sap.ui.model.type.String',
+          constraints : {
+            minLength: 1,
+            maxLength: 10
+          }
+        }" />
+
+    <m:Input
+        id="anotherNameInput"
+        type="Text"
+        placeholder="custom formatter"
+        valueStateText="Name must not be empty. Maximum 10 characters."
+        value="{
+          path: '/name',
+          type: 'sap.ui.model.type.String',
+          constraints : {
+            minLength: 1,
+            maxLength: 10
+          }
+        }" />
+
+</mvc:View>

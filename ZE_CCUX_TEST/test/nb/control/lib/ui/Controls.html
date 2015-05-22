@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+                <head>
+                                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+        <style>
+            * {
+                box-sizing: border-box;
+                /*margin: 0;*/
+                padding: 0;
+            }
+
+            body {
+                font: 400 12pt "Source Sans Pro", sans-serif;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+
+           <script id="sap-ui-bootstrap"
+                                    src="../../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
+                                    data-sap-ui-libs="ute.ui.commons,sap.ui.commons,sap.ui.layout"
+                                    data-sap-ui-resourceroots='{
+                "ute.ui.commons": "/ZE_CCUX_CTRL/build/ute/ui/commons",
+                "nb.control.lib.ui": "/ZE_CCUX_TEST/test/nb/control/lib/ui",
+                "sap.ui.commons":"/ZE_CCUX_LIB/bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
+                "sap.ui.layout":"/ZE_CCUX_LIB/bower_components/openui5-sap.ui.layout/resources/sap/ui/layout"
+                }'>
+                                </script>
+
+        <script id="main" type="ui5/xmlview">
+            <mvc:View
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:u="ute.ui.commons"
+                xmlns:nb="nb.control.lib.ui"
+                xmlns:mvc="sap.ui.core.mvc"
+                xmlns:c="sap.ui.core"
+                xmlns:sap="sap.ui.commons"
+                controllerName="local.controller.Control"
+                displayBlock="true">
+
+   <nb:Tag>
+        <nb:Tag
+            text="Buttons">
+        </nb:Tag>
+        <nb:Button
+            text="Action"
+            enabled="true"
+            press="onButtonClick">
+        </nb:Button>
+        <nb:Button
+            text="Cancel"
+            enabled="true"
+            buttonType="GeneralCancel">
+        </nb:Button>
+        <nb:Button
+            text="Info"
+            enabled="true"
+            buttonType="GeneralInfo">
+        </nb:Button>
+        <nb:Button
+            text="Nav"
+            enabled="true"
+            buttonType="SpecialNav"
+            width="300px"
+            height="50px">
+        </nb:Button>
+        <nb:Button
+            text="1"
+            enabled="true"
+            buttonType="SpecialCalculator">
+        </nb:Button>
+        <nb:Button
+            text="0"
+            enabled="true"
+            buttonType="SpecialCalculator"
+            width="102px">
+        </nb:Button>
+        <nb:tag></nb:tag>
+        <nb:tag></nb:tag>
+        <nb:tag></nb:tag>
+        <br></br>
+
+        <nb:RadioButton
+            groupName="radio1"
+            text="Raio1">
+        </nb:RadioButton>
+        <nb:RadioButton
+            groupName="radio1"
+            text="Radio2"
+            bRegular="false">
+        </nb:RadioButton>
+        <nb:CheckBox
+            text="CheckBox"
+            name="testCheckBoxName"
+            checked="false">
+        </nb:CheckBox>
+
+        <nb:Tag>
+            <nb:Tag
+                text="Input">
+            </nb:Tag>
+            <nb:Textfield
+                placeholder="Text"
+                change="testInputChange"
+                fieldType="Underlined"
+                label="Title">
+            </nb:Textfield>
+
+            <nb:Textfield
+                placeholder="Text"
+                change="testInputChange"
+                fieldType="Regular"
+                label="Title">
+            </nb:Textfield>
+        </nb:Tag>
+        <nb:Tag>
+
+            <nb:TextView
+                text="I am a text view"
+                width="10px"
+                design="Small">
+            </nb:TextView>
+
+
+        </nb:Tag>
+        <nb:Tag>
+            <nb:Tag
+                text="ToggleButton">
+            </nb:Tag>
+            <nb:ToggleButton
+                leftBtnText="LEFT TITLE"
+                rightBtnText="RIGHT TITLE"
+                leftBtnWidth="300px"
+                rightBtnWidth="300px">
+            </nb:ToggleButton>
+        </nb:Tag>
+       <nb:Tag>
+            <nb:Table width="50%"
+                     tableType="CampaignTable"
+                rows="{modelData>/test}" >
+                <nb:columns>
+                    <nb:TableColumn
+                        width="50%"
+                        sortable="true"
+                        press="onButtonClick">
+                        <sap:Label text="Last Name"/>
+                    </nb:TableColumn>
+                    <nb:TableColumn width="50%">
+                        <sap:Label text="Gender"/>
+                    </nb:TableColumn>
+                </nb:columns>
+                <nb:rows>
+                    <nb:TableRow>
+                        <sap:Label text="{modelData>lastName}"/>
+                        <sap:Label text="{modelData>gender}"/>
+                    </nb:TableRow>
+                </nb:rows>
+            </nb:Table>
+        </nb:Tag>
+
+            </mvc:View>
+        </script>
+
+                                <script>
+                                sap.ui.getCore().attachInit(function() {
+                sap.ui.controller('local.controller.Control', {
+                    onInit: function () {
+
+                    },
+
+                    onAfterRendering: function () {
+
+                    }
+                });
+
+                sap.ui.xmlview({ viewContent: jQuery('#main').html() })
+                  /*  .setModel(new sap.ui.model.json.JSONModel({
+                        myData: [
+                            { firstName: 'tau ming', lastName: 'hew' },
+                            { firstName: 'hung ju', lastName: 'lin' },
+                            { firstName: 'navya', lastName: 'basavaraju' }
+                        ]
+                    }))*/
+                    .placeAt('fromxml');
+
+                // Create JSON data model
+/*var oModel = new sap.ui.model.json.JSONModel("mock.json");
+
+                oControl = new nb.control.lib.ui.Dropdown({
+                  arrowcolor:"Grey",
+                  enabled:true,
+                  whitebackground:true,
+                  title:"Title",
+                  width:"200px",
+                  padding:"10px",
+                  value:"Australia"
+
+                });
+
+                oControl.setModel(oModel);
+                oControl.bindAggregation('items', '/myData', new sap.ui.core.ListItem({
+                    text: '{text}',
+                    key: '{key}'
+                }));
+
+
+                oControl.placeAt('fromjs');*/
+
+            });
+                                </script>
+                </head>
+                <body class="sapUiBody" role="application" id="content">
+
+        <div id="fromxml"></div>
+
+        <div id="fromjs"></div>
+                </body>
+</html>
