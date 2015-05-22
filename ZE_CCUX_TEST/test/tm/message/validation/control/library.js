@@ -1,9 +1,11 @@
 /*global sap, tm*/
 
 sap.ui.define(
-    [],
+    [
+        'jquery.sap.global'
+    ],
 
-	function () {
+	function (jQuery) {
 		'use strict';
 
 		sap.ui.getCore().initLibrary({
@@ -24,6 +26,13 @@ sap.ui.define(
             interfaces: [],
 			elements: []
 		});
+
+        jQuery.sap.require('sap.ui.core.IconPool');
+
+        sap.ui.core.IconPool.addIcon('notification', 'nrg-icon', {
+            fontFamily: 'nrg-icon',
+            content: 'e616'
+        });
 
         tm.message.control.LabelDesign = {
             Error: 'Error',
