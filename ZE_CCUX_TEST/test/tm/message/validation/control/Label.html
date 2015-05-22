@@ -34,12 +34,33 @@
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:tm="tm.message.control"
                 xmlns:mvc="sap.ui.core.mvc"
-                xmlns:sap="sap.ui.commons"
                 controllerName="local.controller.Control"
                 displayBlock="true">
 
-                <tm:Label text="test label" icon="sap-icon://nrg-icon/notification"/>
-                <sap:Label icon="sap-icon://nrg-icon/agent" text="zzz" />
+                <tm:Label
+                    text="This is an information message"
+                    icon="sap-icon://nrg-icon/notification"
+                    design="Information"/>
+
+                <tm:Label
+                    text="This is a success message"
+                    icon="sap-icon://nrg-icon/notification"
+                    design="Success"/>
+
+                <tm:Label
+                    text="This is a warning message"
+                    icon="sap-icon://nrg-icon/notification"
+                    design="Warning"/>
+
+                <tm:Label
+                    text="This is a error message"
+                    icon="sap-icon://nrg-icon/notification"
+                    design="Error"/>
+
+                <tm:Label
+                    text="This is a notification message"
+                    icon="sap-icon://nrg-icon/notification"
+                    design="None"/>
 
             </mvc:View>
         </script>
@@ -47,11 +68,6 @@
 		<script>
 			sap.ui.getCore().attachInit(function () {
                 jQuery.sap.require('sap.ui.core.IconPool');
-
-                sap.ui.core.IconPool.addIcon('agent', 'nrg-icon', {
-                    fontFamily: 'nrg-icon',
-                    content: 'e600'
-                });
 
                 sap.ui.core.IconPool.addIcon('notification', 'nrg-icon', {
                     fontFamily: 'nrg-icon',
@@ -67,14 +83,10 @@
                         text: 'CA'
                     }))
                     .placeAt('fromxml');
-
-
-
             });
 		</script>
 	</head>
 	<body class="sapUiBody" role="application" id="content">
         <div id="fromxml"></div>
-        <div id="fromjs"></div>
 	</body>
 </html>

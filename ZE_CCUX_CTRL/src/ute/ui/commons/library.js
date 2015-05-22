@@ -89,62 +89,62 @@ sap.ui.define(
 
         };
 
-	    ute.ui.commons.HorizontalDividerDesign = {
-		    Solid: 'Solid',
+        ute.ui.commons.HorizontalDividerDesign = {
+            Solid: 'Solid',
             Dotted: 'Dotted'
-	    };
+        };
 
-	    ute.ui.commons.HorizontalDividerHeight = {
+        ute.ui.commons.HorizontalDividerHeight = {
             None: 'None',
-		    Small: 'Small',
-		    Medium: 'Medium',
-		    Large: 'Large'
-	    };
+            Small: 'Small',
+            Medium: 'Medium',
+            Large: 'Large'
+        };
 
         ute.ui.commons.HorizontalDividerSize = {
-		    Small: 'Small',
-		    Medium: 'Medium',
-		    Large: 'Large'
-	    };
+            Small: 'Small',
+            Medium: 'Medium',
+            Large: 'Large'
+        };
+
         ute.ui.commons.DropdownArrowColor = {
             Blue: 'Blue',
             Grey: 'Grey'
         };
+
         ute.ui.commons.DropdownArrowType = {
             Solid: 'Solid',
             Hollow: 'Hollow'
         };
+
         ute.ui.commons.DropdownBorder = {
             All: 'All',
             None: 'None',
             Bottom: 'Bottom'
         };
+
         ute.ui.commons.DropdownBackground = {
             White: 'White',
             Transparent: 'Transparent',
             Inactive: 'Inactive'
         };
 
-   /*Designs for TextView.*/
+       /*Designs for TextView.*/
 
-	   ute.ui.commons.TextViewDesign = {
-
-        Small: "Small",
-        Base : "Base",
-        Large: "Large"
-
-	   };
-    /**
-	 * Semantic Colors of a text.
-	 */
-	ute.ui.commons.TextViewColor = {
-
-		Default : "Default"
-		/*Positive : "Positive",
-		Negative : "Negative",
-		Critical : "Critical"*/
-
-	};
+        ute.ui.commons.TextViewDesign = {
+            Small: "Small",
+            Base : "Base",
+            Large: "Large"
+        };
+        /**
+         * Semantic Colors of a text.
+         */
+        ute.ui.commons.TextViewColor = {
+            Default : "Default"
+            /*Positive : "Positive",
+            Negative : "Negative",
+            Critical : "Critical"*/
+        };
 
         ute.ui.commons.CSSDisplay = DataType.createType('ute.ui.commons.CSSDisplay', {
             isValid : function (sValue) {

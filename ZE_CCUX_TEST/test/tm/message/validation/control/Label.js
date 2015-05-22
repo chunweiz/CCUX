@@ -1,4 +1,4 @@
-/*global sap*/
+/*global sap, tm*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -17,6 +17,10 @@ sap.ui.define(
                 library: 'tm.message.control',
 
                 properties: {
+                    design: {
+                        type: 'tm.message.control.LabelDesign',
+                        defaultValue: tm.message.control.LabelDesign.None
+                    },
                     icon: {
                         type: 'sap.ui.core.URI',
                         defaultValue: null

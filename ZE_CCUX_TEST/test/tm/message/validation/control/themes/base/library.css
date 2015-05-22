@@ -1,0 +1,19 @@
+.tmLabel-icon-none {
+    color: darkgrey;
+}
+
+.tmLabel-icon-success {
+    color: darkgreen;
+}
+
+.tmLabel-icon-warning {
+    color: darkgoldenrod;
+}
+
+.tmLabel-icon-error {
+    color: crimson;
+}
+
+.tmLabel-icon-information {
+    color: cornflowerblue;
+}

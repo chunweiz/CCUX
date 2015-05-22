@@ -13,7 +13,9 @@ sap.ui.define(
                 'sap.ui.core'
             ],
 
-            types: [],
+            types: [
+                'tm.message.control.LabelDesign'
+            ],
 
 			controls: [
                 'tm.message.control.Label'
@@ -22,6 +24,14 @@ sap.ui.define(
             interfaces: [],
 			elements: []
 		});
+
+        tm.message.control.LabelDesign = {
+            Error: 'Error',
+            Warning: 'Warning',
+            None: 'None',
+            Information: 'Information',
+            Success: 'Success'
+        };
 
 		return tm.message.control;
 	}
