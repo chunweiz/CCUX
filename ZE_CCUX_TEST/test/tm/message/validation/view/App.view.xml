@@ -19,7 +19,7 @@
         content="{comp-message>/}" >
 
         <m:content>
-            <tm:Label text="{comp-message>message}" design="{comp-message>type}" icon="sap-icon://nrg-icon/notification"/>
+            <tm:Label text="{comp-message>message}" design="{comp-message>type}" icon="sap-icon://nrg-icon/notification" />
         </m:content>
 
     </m:ScrollContainer>
