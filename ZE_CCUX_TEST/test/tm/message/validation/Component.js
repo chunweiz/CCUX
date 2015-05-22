@@ -15,7 +15,7 @@ sap.ui.define(
                 dependencies: {
                     libs: [
                         'sap.m',
-                        'tm.control.lib.ui'
+                        'tm.message.control'
                     ]
                 },
 
