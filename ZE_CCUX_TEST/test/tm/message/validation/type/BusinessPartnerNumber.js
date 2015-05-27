@@ -13,18 +13,14 @@ sap.ui.define(
     function ($, SimpleType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = SimpleType.extend('tm.message.validation.type.ContractAccountNumber', {
+        var CustomType = SimpleType.extend('tm.message.validation.type.BusinessPartnerNumber', {
             constructor: function (oFormatOptions, oConstraints) {
                 SimpleType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'tm.message.validation.type.ContractAccountNumber';
-        };
-
-        CustomType.prototype.setFormatOptions = function (oFormatOptions) {
-            this.oFormatOptions = oFormatOptions;
+            return 'tm.message.validation.type.BusinessPartnerNumber';
         };
 
         CustomType.prototype.setConstraints = function (oConstraints) {
@@ -37,47 +33,40 @@ sap.ui.define(
             }
         };
 
-        // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
-            console.log('parseValue ... ' + oValue);
-
             if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 
             if (isNaN(oValue)) {
-                throw new ParseException('Invalid contract account number');
+                throw new ParseException('Invalid business partner number');
             }
 
             return oValue.replace(/^(0+)/g, '');
         };
 
-        // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
-            console.log('validateValue ... [' + oValue + ']');
-
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
-                throw new ValidateException('Contract account number cannot be empty');
+                throw new ValidateException('Business partner number cannot be empty');
             }
 
-            if (oValue.length < 1 || oValue.length > 12) {
-                throw new ValidateException('Invalid contract account number');
+            if (oValue.length < 1 || oValue.length > 10) {
+                throw new ValidateException('Invalid business partner number');
             }
 
             return oValue;
         };
 
-        // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
-            console.log('formatValue ... ' + oValue);
-
             if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 
+            if (isNaN(oValue)) {
+                throw new ParseException('Invalid business partner number');
+            }
+
             return oValue.replace(/^(0+)/g, '');
         };
-
-        return CustomType;
     }
 );
