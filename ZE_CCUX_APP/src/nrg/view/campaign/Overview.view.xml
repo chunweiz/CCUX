@@ -1,0 +1,60 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:c="sap.ui.commons"
+    controllerName="nrg.view.campaign.Overview"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+    <ute:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
+            <h3 class="nrgOverview-Title">OVERVIEW</h3>
+            <ute:Tag>
+                <ute:ToggleButton
+                    leftBtnText="{comp-i18n>nrgCampaignCurrent}"
+                    leftBtnWidth="400px"
+                    rightBtnWidth="400px"
+                    rightBtnText="{comp-i18n>nrgCampaignPending}"
+                    toggleButtonType="ToggleCampaign"
+                    press="testFunc">
+                </ute:ToggleButton>
+                 <c:Label text="Title" icon="sap-icon://nrg-icon/tag"/>
+                 <c:Label text="Customer Average Usage" icon="sap-icon://nrg-icon/bulb"/>
+                 <c:Label text="Price" icon="sap-icon://nrg-icon/dollar"/>
+            </ute:Tag>
+           <!-- <ute:Tag class="nrgAppFtr-toolbarBtn">
+                <core:Icon src="sap-icon://nrg-icon/tag" class="nrgAppFtr-toolbarBtnIcon" />
+                <h4 class="nrgOverview-Title">Title</h4>
+            </ute:Tag>
+            <ute:Tag class="nrgAppFtr-toolbarBtn">
+                <core:Icon src="sap-icon://nrg-icon/bulb" class="nrgAppFtr-toolbarBtnIcon" />
+                <h4 class="nrgOverview-Title">Customer Average Usage</h4>
+            </ute:Tag>
+            <ute:Tag class="nrgAppFtr-toolbarBtn">
+                <core:Icon src="sap-icon://nrg-icon/dollar" class="nrgAppFtr-toolbarBtnIcon" />
+                <h4 class="nrgOverview-Title">Price</h4>
+            </ute:Tag>
+            <ute:Table width="50%"
+            tableType="CampaignTable"
+            rows="{modelData>/test}" >
+                <ute:columns>
+                    <ute:TableColumn
+                    width="50%"
+                    sortable="true"
+                    press="onButtonClick">
+                        <c:Label text="Last Name"/>
+                    </ute:TableColumn>
+                    <ute:TableColumn width="50%">
+                        <c:Label text="Gender"/>
+                    </ute:TableColumn>
+                </ute:columns>
+                <ute:rows>
+                    <ute:TableRow>
+                        <c:Label text="{modelData>lastName}"/>
+                        <c:Label text="{modelData>gender}"/>
+                    </ute:TableRow>
+                </ute:rows>
+            </ute:Table> -->
+    </ute:Tag>
+</mvc:View>
