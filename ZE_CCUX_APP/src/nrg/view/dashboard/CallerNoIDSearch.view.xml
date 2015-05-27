@@ -2,7 +2,7 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
     xmlns:mvc="sap.ui.core.mvc"
-    controllerName="nrg.view.others.GeneralEmpty">
+    controllerName="nrg.view.dashboard.CallerNoIDSearch">
 
 
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
