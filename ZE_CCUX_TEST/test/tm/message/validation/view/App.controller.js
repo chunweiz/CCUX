@@ -18,7 +18,7 @@ sap.ui.define(
             var oModel, oMessageManager, oControlMessageProcessor;
 
             oModel = sap.ui.model.json.JSONModel({
-                name: 'ypyp'
+                name: '001234567abc'
             });
 
             this.getView().setModel(oModel);
@@ -27,6 +27,63 @@ sap.ui.define(
                 var oMessageManager, oControlMessageProcessor, oMessage, vMsg;
 
                 vMsg = 'message from attachValidationError';
+
+                oMessageManager = sap.ui.getCore().getMessageManager();
+                oControlMessageProcessor = new CoreControlMessageProcessor();
+                oMessageManager.registerMessageProcessor(oControlMessageProcessor);
+
+                oMessage = new CoreMessage({
+                    message: vMsg,
+                    type: sap.ui.core.MessageType.Error,
+                    persistent: false,
+                    processor: oControlMessageProcessor
+                });
+
+                oMessageManager.addMessages(oMessage);
+            });
+
+            this.getView().attachValidationSuccess(function (oEvent) {
+                var oMessageManager, oControlMessageProcessor, oMessage, vMsg;
+
+                vMsg = 'message from attachValidationSuccess';
+
+                oMessageManager = sap.ui.getCore().getMessageManager();
+                oControlMessageProcessor = new CoreControlMessageProcessor();
+                oMessageManager.registerMessageProcessor(oControlMessageProcessor);
+
+                oMessage = new CoreMessage({
+                    message: vMsg,
+                    type: sap.ui.core.MessageType.Success,
+                    persistent: false,
+                    processor: oControlMessageProcessor
+                });
+
+                oMessageManager.addMessages(oMessage);
+            });
+
+            this.getView().attachParseError(function (oEvent) {
+                var oMessageManager, oControlMessageProcessor, oMessage, vMsg;
+
+                vMsg = 'message from attachParseError';
+
+                oMessageManager = sap.ui.getCore().getMessageManager();
+                oControlMessageProcessor = new CoreControlMessageProcessor();
+                oMessageManager.registerMessageProcessor(oControlMessageProcessor);
+
+                oMessage = new CoreMessage({
+                    message: vMsg,
+                    type: sap.ui.core.MessageType.Error,
+                    persistent: false,
+                    processor: oControlMessageProcessor
+                });
+
+                oMessageManager.addMessages(oMessage);
+            });
+
+            this.getView().attachFormatError(function (oEvent) {
+                var oMessageManager, oControlMessageProcessor, oMessage, vMsg;
+
+                vMsg = 'message from attachFormatError';
 
                 oMessageManager = sap.ui.getCore().getMessageManager();
                 oControlMessageProcessor = new CoreControlMessageProcessor();

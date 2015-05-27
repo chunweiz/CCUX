@@ -50,11 +50,8 @@
         value="{
           path: '/name',
           type: 'tm.message.validation.type.ContractAccountNumber',
-          formatOptions: {
-            testFormat: 123
-          },
           constraints: {
-            zzlength: 12
+            mandatory: true
           }
         }" />
 
