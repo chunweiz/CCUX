@@ -5,7 +5,8 @@ sap.ui.define(
     [
         'sap/ui/core/mvc/Controller',
         'sap/ui/core/message/Message',
-        'sap/ui/core/message/ControlMessageProcessor'
+        'sap/ui/core/message/ControlMessageProcessor',
+        'tm/message/validation/type/ContractAccountNumber'
     ],
 
     function (CoreController, CoreMessage, CoreControlMessageProcessor) {
