@@ -33,44 +33,50 @@ sap.ui.define(
 
             if ($.isEmptyObject(this.oConstraints)) {
                 this.oConstraints = {
-                    padding: false,
-                    optional: false
+                    mandatory: false
                 };
             }
-
-            this._oNumberFormat = NumberFormat.getIntegerInstance({
-                minIntegerDigits: 1,
-                maxIntegerDigits: 12
-            });
         };
 
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
             console.log('parseValue ... ' + oValue);
 
-            var iResult;
+            if (oValue === undefined || oValue === null) {
+                return oValue;
+            }
 
-            iResult = this._oNumberFormat.parse(oValue);
-
-            if (isNaN(iResult)) {
+            if (isNaN(oValue)) {
                 throw new ParseException('Invalid contract account number');
             }
+
+            return oValue.replace(/^(0+)/g, '');
         };
 
         // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
-            console.log('validateValue ... ' + oValue);
+            console.log('validateValue ... [' + oValue + ']');
 
-            if ((oValue === undefined || oValue === null) && !this.oConstraints.optional) {
+            if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
                 throw new ValidateException('Contract account number cannot be empty');
             }
+
+            return oValue;
         };
 
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
             console.log('formatValue ... ' + oValue);
 
-            return oValue;
+            if (oValue === undefined || oValue === null) {
+                return oValue;
+            }
+
+            if (isNaN(oValue)) {
+                throw new FormatException('Invalid contract account number');
+            }
+
+            return oValue.replace(/^(0+)/g, '');
         };
 
         return CustomType;
