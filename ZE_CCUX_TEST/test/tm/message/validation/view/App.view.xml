@@ -32,30 +32,18 @@
         id="idCaNum"
         type="Text"
         placeholder="contract account number"
-        value="{
-          path: '/caNum',
-          type: 'tm.message.validation.type.ContractAccountNumber',
-          constraints: {
-            mandatory: true
-          }
-        }" />
+        value="{path: '/caNum', type: 'tm.message.validation.type.ContractAccountNumber', constraints: { mandatory: true }}" />
 
     <m:Input
         id="idBpNum"
         type="Text"
         placeholder="business partner number"
-        value="{
-          path: '/bpNum',
-          type: 'tm.message.validation.type.BusinessPartnerNumber'
-        }" />
+        value="{path: '/bpNum', type: 'tm.message.validation.type.BusinessPartnerNumber'}" />
 
     <m:Input
         id="idPrice"
         type="Text"
         placeholder="price"
-        value="{
-          path: '/price',
-          type: 'tm.message.validation.type.Price'
-        }" />
+        value="{path: '/price', type: 'tm.message.validation.type.Price'}" />
 
 </mvc:View>

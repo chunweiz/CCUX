@@ -47,11 +47,11 @@ sap.ui.define(
 
             this.getView().setModel(oModel);
 
-            this.getView().attachValidationError(function (oControlEvent) {
+            this.getView().attachValidationError(function (oEvent) {
                 this._addMessage(oEvent, 'attachValidationError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
             }.bind(this));
 
-            this.getView().attachValidationSuccess(function (oControlEvent) {
+            this.getView().attachValidationSuccess(function (oEvent) {
                 var oMessageManager, aMessage;
 
                 oMessageManager = sap.ui.getCore().getMessageManager();
@@ -65,11 +65,11 @@ sap.ui.define(
                 }
             });
 
-            this.getView().attachParseError(function (oControlEvent) {
+            this.getView().attachParseError(function (oEvent) {
                 this._addMessage(oEvent, 'attachParseError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
             }.bind(this));
 
-            this.getView().attachFormatError(function (oControlEvent) {
+            this.getView().attachFormatError(function (oEvent) {
                 this._addMessage(oEvent, 'attachFormatError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
             }.bind(this));
 
