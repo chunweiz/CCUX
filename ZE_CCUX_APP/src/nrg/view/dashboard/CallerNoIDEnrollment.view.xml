@@ -11,9 +11,9 @@
                 <h2 class="nrgDashboard-calrNoIDEnrol-title">Actions:</h2>
                 <ul class="nrgDashboard-calrNoIDEnrol-list">
                     <li class="nrgDashboard-calrNoIDEnrol-listitem">
-                        <a class="nrgCallerNoIDEnrollment-ListItemLink" href="#">
+                        <span class="nrgCallerNoIDEnrollment-ListItemLink">
                             Start Business Enrollment
-                        </a>
+                        </span>
                     </li>
                     <li class="nrgDashboard-calrNoIDEnrol-listitem">
                         <a class="nrgCallerNoIDEnrollment-ListItemLink" href="#">
