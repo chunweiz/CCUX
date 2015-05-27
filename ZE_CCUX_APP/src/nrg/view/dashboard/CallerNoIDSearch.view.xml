@@ -8,7 +8,7 @@
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
         <ute:content>
             <h1 class="nrgDashboard-calrNoIDSearch-title">
-                    Caller was not identified. Please search for data by entering information below
+                    {comp-i18n>nrgDashboardCallerNoIDSearchTitle}
             </h1>
             <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
                 <ute:Textfield

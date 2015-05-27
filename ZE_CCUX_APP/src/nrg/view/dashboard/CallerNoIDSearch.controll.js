@@ -9,15 +9,15 @@ sap.ui.define(
     function (CoreController) {
         'use strict';
 
-        var Controller = CoreController.extend('nrg.view.dashboard.CallerNoIDEnrollment');
+        var Controller = CoreController.extend('nrg.view.dashboard.CallerNoIDSearch');
 
         Controller.prototype.onInit = function () {
             var oModel;
 
-            oModel = this.getOwnerComponent().getModel('comp-dashboard');
+            /*oModel = this.getOwnerComponent().getModel('comp-dashboard');
             if (oModel) {
                 oModel.read('/ProductSet');
-            }
+            }*/
         };
 
         return Controller;
