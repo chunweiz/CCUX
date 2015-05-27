@@ -54,6 +54,11 @@
                     "controlId": "idAppGeneral"
                 },
 
+                "dashboard.CallerNoIDSearchREBS": {
+                    "viewName": "dashboard.CallerNoIDSearchREBS",
+                    "controlId": "idAppGeneral"
+                },
+
                 "dashboard.CallerNoIDEnrollment": {
                     "viewName": "dashboard.CallerNoIDEnrollment",
                     "controlId": "idAppSummary"
