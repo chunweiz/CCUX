@@ -42,6 +42,10 @@ sap.ui.define(
 
         NRGComponent.prototype._initIcons = function () {
             IconUtil.load();
+
+            jQuery.sap.setIcons({
+                favicon: '../../img/nrg-favicon.png'
+            });
         };
 
         NRGComponent.prototype._initPopup = function () {
