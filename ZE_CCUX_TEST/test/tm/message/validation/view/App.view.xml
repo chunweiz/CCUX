@@ -25,10 +25,10 @@
                 icon="sap-icon://nrg-icon/notification" />
         </m:content>
 
-    </m:ScrollContainer>
+    </m:ScrollContainer><br/>
 
-    <m:Button text="Press me" press=".onPress" />
-    <m:Input
+    <m:Button text="Press me" press=".onPress" /><br/>
+    <!--m:Input
         id="nameInput"
         type="Text"
         placeholder="standard type"
@@ -40,19 +40,21 @@
             minLength: 1,
             maxLength: 10
           }
-        }" />
+        }" /-->
 
     <m:Input
         id="anotherNameInput"
         type="Text"
-        placeholder="custom formatter"
-        valueStateText="Name must not be empty. Maximum 10 characters."
+        placeholder="contract account number"
+        valueStateText="custom type - contract account number"
         value="{
           path: '/name',
-          type: 'sap.ui.model.type.String',
-          constraints : {
-            minLength: 1,
-            maxLength: 10
+          type: 'tm.message.validation.type.ContractAccountNumber',
+          formatOptions: {
+            testFormat: 123
+          },
+          constraints: {
+            zzlength: 12
           }
         }" />
 
