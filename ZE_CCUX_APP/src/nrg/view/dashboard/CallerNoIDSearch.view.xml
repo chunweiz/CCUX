@@ -67,5 +67,11 @@
                 elem="hr"></ute:Tag>
         </ute:content>
     </ute:Tag>
+    <ute:Tag class="nrgAppMain-generalContent">
+        <ute:Tag>
+            something
+        </ute:Tag>
+    </ute:Tag>
+
 
 </mvc:View>
