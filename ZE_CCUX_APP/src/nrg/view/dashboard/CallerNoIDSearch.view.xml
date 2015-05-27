@@ -7,9 +7,9 @@
 
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
         <ute:content>
-            <h1 class="nrgDashboard-calrNoIDSearch-title">
-                    {comp-i18n>nrgDashboardCallerNoIDSearchTitle}
-            </h1>
+            <ute:Tag class="nrgDashboard-calrNoIDSearch-title"
+                     text="{comp-i18n>nrgDashboardCallerNoIDSearchTitle}">
+            </ute:Tag>
             <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
                 <ute:Textfield
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
@@ -74,10 +74,10 @@
     <ute:Tag class="nrgDashboard-calrNoIDSearch nrgDashboard-calrNoIDSearch-transSpace">
 
     </ute:Tag>
-    <ute:Tag class="nrgAppMain-generalContent">
-        <h1 class="nrgDashboard-calrNoIDSearch-title">
-                    Caller was not identified. Please search for data by entering information below
-        </h1>
+    <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
+        <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTitle"
+                 text="{comp-i18n>nrgDashboardCallerNoIDSearchResultTitle}">
+            </ute:Tag>
         <ute:Tag>
             <p>something</p>
         </ute:Tag>
