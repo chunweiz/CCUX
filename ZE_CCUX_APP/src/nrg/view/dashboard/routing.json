@@ -7,9 +7,14 @@
                     "target": [ "dashboard.General", "dashboard.Summary", "dashboard.Tools" ]
                 },
 
-                "dasgboard.SearchNoID": {
+                "dashboard.SearchNoID": {
                     "pattern": "searchNoID",
                     "target": [ "dashboard.CallerNoIDSearch", "dashboard.CallerNoIDEnrollment", "" ]
+                },
+
+                "dashboard.SearchNoIDREBS": {
+                    "pattern": "searchNoIDREBS",
+                    "target": [ "dashboard.CallerNoIDSearchREBS", "dashboard.CallerNoIDEnrollment", "" ]
                 },
 
                 "dashboard.Bp": {
