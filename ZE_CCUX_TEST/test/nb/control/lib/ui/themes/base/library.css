@@ -347,6 +347,91 @@ font-size: @uteFontSize-large;
 	margin-top: 0;
 	line-height: @sapUiLineHeight;
 }*/
-.nrgicon{
+@font-face {
+	font-family: 'nrg-icon';
+	src:url('icon.eot?');
+	src:url('icon.eot?#iefix') format('embedded-opentype'),
+		url('icon.woff?') format('woff'),
+		url('icon.ttf?') format('truetype'),
+		url('icon.svg?#nrg-icon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+},
+.uteLabel-color-none {
+    color: darkgrey;
 
 }
+.uteLabel-color-white {
+    color: white;
+}
+.uteLabel-color-black {
+    color: black;
+}
+
+.uteLabel-color-yellownotification {
+    color: darkgoldenrod;
+
+}
+
+.uteLabel-color-rednotification{
+    color: crimson;
+}
+
+.uteLabel-color-bluenotification {
+    color: cornflowerblue;
+    }
+.uteLabel-design-bold{
+    font-weight: bold;
+
+}
+.uteLabel-design-semibold{
+    font-weight: bolder;
+}
+.uteLabel-resize-small{
+    font-size: 10pt;
+}
+.uteLabel-resize-base{
+    font-size: 12pt;
+}
+.uteLabel-resize-large{
+    font-size: 14pt;
+}
+.uteLabel-padding{
+    padding: 10px;
+}
+.uteIcoLabel-padding{
+    padding: 10px;
+}
+.uteIcoLabel-design-notification{
+    font-size: 4pt;
+}
+.uteIcoLabel-design-campaign{
+    font-size: 12pt;
+}
+.uteIcoLabel-design-dashboardWeather{
+    font-size: 12pt;
+    font-weight: bolder;
+}
+.uteIcoLabel-design-appHeader{
+    font-size: 10pt;
+}
+.uteIcoLabel-notification-information{
+    color: cornflowerblue;
+}
+.uteIcoLabel-notification-warning{
+    color: darkgoldenrod;
+}
+.uteIcoLabel-notification-error{
+    color: crimson;
+}
+.uteIcoLabel-campaign-grey{
+    color: grey;
+}
+.uteIcoLabel-campaign-black{
+    color: black;
+}
+
+
+
+
+
