@@ -26,17 +26,17 @@ sap.ui.define(
             sPaddingClass = 'uteIcoLabel-padding';
             sDesignClass = 'utIcoLabel-design-' + oIcoLabel.getDesign().toLowerCase();
 
-            oRm.addClass('sPaddingClass');
-            oRm.addClass('sDesignClass');
+            oRm.addClass(sPaddingClass);
+            oRm.addClass(sDesignClass);
 
             switch (oIcoLabel.getDesign()) {
              case 'Notification':
                 sNotificationClass = 'uteIcoLabel-notification-' + oIcoLabel.getNotificationDesign().toLowerCase();
-                oRm.addClass('sNotificationClass');
+                oRm.addClass(sNotificationClass);
                 break;
              case 'Campaign':
                 sCampaignClass = 'uteIcoLabel-campaign-' + oIcoLabel.getCampaignDesign().toLowerCase();
-                oRm.addClass('sCampaignClass');
+                oRm.addClass(sCampaignClass);
                 break;
              case 'DashboardWeather':
                 break;
@@ -61,15 +61,15 @@ sap.ui.define(
             oImage = oIcoLabel._getImage(oIcoLabel.getIcon());
 
             sDesignClass = 'utIcoLabel-design-' + oIcoLabel.getDesign().toLowerCase();
-            oImage.addStyleClass('sDesignClass');
+            oImage.addStyleClass(sDesignClass);
             switch (oIcoLabel.getDesign()) {
              case 'Notification':
                 sNotificationClass = 'uteIcoLabel-notification-' + oIcoLabel.getNotificationDesign().toLowerCase();
-                oImage.addStyleClass('sNotificationClass');
+                oImage.addStyleClass(sNotificationClass);
                 break;
              case 'Campaign':
                 sCampaignClass = 'uteIcoLabel-campaign-' + oIcoLabel.getCampaignDesign().toLowerCase();
-                oImage.addStyleClass('sCampaignClass');
+                oImage.addStyleClass(sCampaignClass);
                 break;
              case 'DashboardWeather':
                 break;

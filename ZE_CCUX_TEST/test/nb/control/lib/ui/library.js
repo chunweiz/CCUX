@@ -178,7 +178,7 @@ sap.ui.define(
             Large: 'Large'
         };
 
-    nb.control.lib.ui.LabelDesign = {
+    nb.control.lib.ui.LabelDesign2 = {
         Notification: 'Notification',
         Campaign: 'Campaign',
         DashboardWeather: 'DashboardWeather',

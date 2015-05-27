@@ -23,7 +23,7 @@ sap.ui.define(
                         defaultValue: null
                     },
                     design: {
-                        type: 'nb.control.lib.ui.LabelDesign',
+                        type: 'nb.control.lib.ui.LabelDesign2',
                         defaultValue: nb.control.lib.ui.LabelDesign.AppHeader
                     },
                     notificationDesign: {
