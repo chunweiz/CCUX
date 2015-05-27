@@ -42,16 +42,16 @@ sap.ui.define(
             oModel = sap.ui.model.json.JSONModel({
                 caNum: '000123456789',
                 bpNum: '1234567890',
-                price: 12.3
+                price: 12.35
             });
 
             this.getView().setModel(oModel);
 
-            this.getView().attachValidationError(function (oEvent) {
+            this.getView().attachValidationError(function (oControlEvent) {
                 this._addMessage(oEvent, 'attachValidationError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
             }.bind(this));
 
-            this.getView().attachValidationSuccess(function (oEvent) {
+            this.getView().attachValidationSuccess(function (oControlEvent) {
                 var oMessageManager, aMessage;
 
                 oMessageManager = sap.ui.getCore().getMessageManager();
@@ -65,11 +65,11 @@ sap.ui.define(
                 }
             });
 
-            this.getView().attachParseError(function (oEvent) {
+            this.getView().attachParseError(function (oControlEvent) {
                 this._addMessage(oEvent, 'attachParseError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
             }.bind(this));
 
-            this.getView().attachFormatError(function (oEvent) {
+            this.getView().attachFormatError(function (oControlEvent) {
                 this._addMessage(oEvent, 'attachFormatError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
             }.bind(this));
 
