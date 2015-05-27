@@ -4,7 +4,7 @@
             "routes": {
                 "campaign": {
                     "pattern": "bp/{bpNum}/ca/{caNum}/campaign",
-                    "target": [ "campaign.General", "dashboard.SummaryBP", "others.ToolsEmpty" ]
+                    "target": [ "campaign.Overview", "dashboard.SummaryBP", "campaign.Tools" ]
                 }
             },
 
@@ -12,6 +12,14 @@
                 "campaign.General": {
                     "viewName": "campaign.General",
                     "controlId": "idAppGeneral"
+                },
+                "campaign.Overview": {
+                    "viewName": "campaign.Overview",
+                    "controlId": "idAppGeneral"
+                },
+                "campaign.Tools": {
+                    "viewName": "campaign.Tools",
+                    "controlId": "idAppTools"
                 }
             }
         }

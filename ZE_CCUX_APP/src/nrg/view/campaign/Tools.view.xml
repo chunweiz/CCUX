@@ -1,0 +1,22 @@
+<mvc:View
+    controllerName="nrg.view.campaign.Tools"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <ute:Tag class="nrgToolsEmpty nrgAppMain-toolsContent nrgAppMain-toolsContent-full">
+        <ute:content>
+            <span>Tools</span>
+            <ute:Tag>
+                <ute:Button
+                    text="Campaign History"
+                    enabled="true">
+                </ute:Button>
+                <ute:Button
+                    text="Change Campaign - Cancel"
+                    enabled="true">
+                </ute:Button>
+            </ute:Tag>
+        </ute:content>
+    </ute:Tag>
+</mvc:View>
