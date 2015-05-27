@@ -12,7 +12,7 @@ sap.ui.define(
     function (CoreControl, CoreEnabledPropagator, CoreIconPool) {
         'use strict';
 
-        var Control = CoreControl.extend('nb.control.lib.ui.Label', {
+        var Control = CoreControl.extend('nb.control.lib.ui.Label2', {
             metadata: {
                 library: 'nb.control.lib.ui',
 
@@ -22,23 +22,22 @@ sap.ui.define(
                         type: 'sap.ui.core.URI',
                         defaultValue: null
                     },
-                    design: {
-                        type: 'nb.control.lib.ui.LabelDesign',
-                        defaultValue: nb.control.lib.ui.LabelDesign.AppHeader
+                    color: {
+                        type: 'nb.control.lib.ui.LabelColor',
+                        defaultValue: nb.control.lib.ui.LabelColor.None
                     },
-                    notificationDesign: {
-                        type: 'nb.control.lib.ui.LabelNotificationDesign',
-                        defaultValue: nb.control.lib.ui.LabelNotificationDesign.Grey
-                    },
-                    campaignDesign: {
-                        type: 'nb.control.lib.ui.LabelCampaignDesign',
-                        defaultValue: nb.control.lib.ui.LabelCampaignDesign.Grey
+                    resize: {
+                        type: 'nb.control.lib.ui.LabelResize',
+                        defaultValue: nb.control.lib.ui.LabelResize.Small
                     },
                     text: {
                         type: 'string',
                         defaultValue: ''
                     },
-
+                   design: {
+                        type: 'nb.control.lib.ui.LabelDesign',
+                        defaultValue: nb.control.lib.ui.LabelDesign.Regular
+                    },
                 }
             }
         });

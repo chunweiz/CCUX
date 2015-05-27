@@ -38,13 +38,35 @@
                 controllerName="local.controller.Control"
                 displayBlock="true">
 
-                <nb:Label
+                <nb:Label2
                     text="This is an information message"
                     icon="sap-icon://nrg-icon/notification"
-                    design="Notification"
-                    notificationDesign="Information"/>
+                    color="BlueNotification"
+                    class="uteLabel"/>
 
+                <nb:Label2
+                    text="This is a warning message"
+                    icon="sap-icon://nrg-icon/notification"
+                    color="YellowNotification"
+                    resize="Small"
+                    design="Bold"/>
 
+                <nb:Label2
+                    text="This is a error message"
+                    icon="sap-icon://nrg-icon/notification"
+                    color="RedNotification"/>
+
+                <nb:Label2
+                    text="This is a notification message"
+                    icon="sap-icon://nrg-icon/notification"
+                    color="None"/>
+
+                <sap:Label
+                    text="This is a notification message"
+                    icon="sap-icon://nrg-icon/notification"
+                    textAlign="End"
+                    class="uteLabel"
+                    />
 
             </mvc:View>
         </script>

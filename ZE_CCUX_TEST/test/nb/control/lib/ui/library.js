@@ -26,7 +26,10 @@ sap.ui.define(
                 'nb.control.lib.ui.DropdownBorder',
                 'nb.control.lib.ui.DropdownBackground',
                 'nb.control.lib.ui.TextViewDesign',
-                'nb.control.lib.ui.TextViewColor'
+                'nb.control.lib.ui.TextViewColor',
+                'nb.control.lib.ui.LabelDesign',
+                'nb.control.lib.ui.LabelNotificationDesign',
+                'nb.control.lib.ui.LabelCampaignDesign'
 
             ],
 
@@ -48,7 +51,10 @@ sap.ui.define(
                 'nb.control.lib.ui.Table',
                 'nb.control.lib.ui.TableColumn',
                 'nb.control.lib.ui.TableRow',
-                'nb.control.lib.ui.ScrollContainer'
+                'nb.control.lib.ui.ScrollContainer',
+                'nb.control.lib.ui.Label',
+                'nb.control.lib.ui.Label2'
+
 
 
 			],
@@ -77,7 +83,7 @@ sap.ui.define(
             ToggleDashboard: 'ToggleDashboard'
         };
 
-        ute.ui.commons.TextfieldType = {
+        nb.control.lib.ui.TextfieldType = {
             Regular: 'Regular',
             Underlined: 'Underlined'
         };
@@ -145,8 +151,50 @@ sap.ui.define(
 		Critical : "Critical"*/
 
 	};
+    jQuery.sap.require('sap.ui.core.IconPool');
 
-        nb.control.lib.ui.CSSDisplay = DataType.createType('nb.control.lib.ui.CSSDisplay', {
+    sap.ui.core.IconPool.addIcon('notification', 'nrg-icon', {
+            fontFamily: 'nrg-icon',
+            content: 'e616'
+        });
+
+    nb.control.lib.ui.LabelColor = {
+            None: 'None',
+            RedNotification: 'RedNotification',
+            YellowNotification: 'YellowNotification',
+            BlueNotification: 'BlueNotification',
+            White: 'White',
+            Black: 'Black'
+
+        };
+    nb.control.lib.ui.LabelDesign = {
+            Regular: 'Standard',
+            SemiBold: 'SemiBold',
+            Bold:   'Bold'
+        };
+     nb.control.lib.ui.LabelResize = {
+            Small: 'Small',
+            Base: 'Base',
+            Large: 'Large'
+        };
+
+    nb.control.lib.ui.LabelDesign = {
+        Notification: 'Notification',
+        Campaign: 'Campaign',
+        DashboardWeather: 'DashboardWeather',
+        AppHeader: 'AppHeader'
+    };
+    nb.control.lib.ui.LabelNotificationDesign = {
+        Information: 'Information',
+        Warning: 'Warning',
+        Error: 'Error'
+    };
+    nb.control.lib.ui.LabelCampaignDesign = {
+        Grey: 'Grey',
+        Black: 'Black'
+    };
+
+    nb.control.lib.ui.CSSDisplay = DataType.createType('nb.control.lib.ui.CSSDisplay', {
             isValid : function (sValue) {
                 return (/^(inline|block|flex|inline\-block|inline\-flex|inline\-table|list\-item|run\-in|table|table\-caption|table\-column\-group|table\-header\-group|table\-footer\-group|table\-row\-group|table\-cell|table\-column|table\-row|none|initial|inherit)$/).test(sValue);
             }
