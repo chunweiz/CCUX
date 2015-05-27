@@ -28,34 +28,34 @@
     </m:ScrollContainer><br/>
 
     <m:Button text="Press me" press=".onPress" /><br/>
-    <!--m:Input
-        id="nameInput"
-        type="Text"
-        placeholder="standard type"
-        valueStateText="Name must not be empty. Maximum 10 characters."
-        value="{
-          path: '/name',
-          type: 'sap.ui.model.type.String',
-          constraints : {
-            minLength: 1,
-            maxLength: 10
-          }
-        }" /-->
-
     <m:Input
-        id="anotherNameInput"
+        id="idCaNum"
         type="Text"
         placeholder="contract account number"
-        valueStateText="custom type - contract account number"
         value="{
-          path: '/name',
+          path: '/caNum',
           type: 'tm.message.validation.type.ContractAccountNumber',
-          formatOptions: {
-            testFormat: 123
-          },
           constraints: {
-            zzlength: 12
+            mandatory: true
           }
+        }" />
+
+    <m:Input
+        id="idBpNum"
+        type="Text"
+        placeholder="business partner number"
+        value="{
+          path: '/bpNum',
+          type: 'tm.message.validation.type.BusinessPartnerNumber'
+        }" />
+
+    <m:Input
+        id="idPrice"
+        type="Text"
+        placeholder="price"
+        value="{
+          path: '/price',
+          type: 'tm.message.validation.type.Price'
         }" />
 
 </mvc:View>

@@ -3,44 +3,75 @@
 
 sap.ui.define(
     [
+        'jquery.sap.global',
         'sap/ui/core/mvc/Controller',
         'sap/ui/core/message/Message',
         'sap/ui/core/message/ControlMessageProcessor',
-        'tm/message/validation/type/ContractAccountNumber'
+        'tm/message/validation/type/ContractAccountNumber',
+        'tm/message/validation/type/BusinessPartnerNumber',
+        'tm/message/validation/type/Price'
     ],
 
-    function (CoreController, CoreMessage, CoreControlMessageProcessor) {
+    function ($, CoreController, CoreMessage, CoreControlMessageProcessor) {
         'use strict';
 
         var Controller = CoreController.extend('tm.message.validation.view.App');
+
+        Controller.prototype._getMessageProcessor = function () {
+            if (!this._oControlMessageProcessor) {
+                this._oControlMessageProcessor = new CoreControlMessageProcessor();
+            }
+
+            return this._oControlMessageProcessor;
+        };
+
+        Controller.prototype._addMessage = function (oEvent, sMsg, sType) {
+            var oMsg = new CoreMessage({
+                message: sMsg,
+                type: sType,
+                target: [oEvent.getParameter('id'), oEvent.getParameter('property')].join('/'),
+                processor: this._getMessageProcessor()
+            });
+
+            sap.ui.getCore().getMessageManager().addMessages(oMsg);
+        };
 
         Controller.prototype.onInit = function () {
             var oModel, oMessageManager, oControlMessageProcessor;
 
             oModel = sap.ui.model.json.JSONModel({
-                name: 'ypyp'
+                caNum: '000123456789',
+                bpNum: '1234567890',
+                price: 12.3
             });
 
             this.getView().setModel(oModel);
 
             this.getView().attachValidationError(function (oEvent) {
-                var oMessageManager, oControlMessageProcessor, oMessage, vMsg;
+                this._addMessage(oEvent, 'attachValidationError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
+            }.bind(this));
 
-                vMsg = 'message from attachValidationError';
+            this.getView().attachValidationSuccess(function (oEvent) {
+                var oMessageManager, aMessage;
 
                 oMessageManager = sap.ui.getCore().getMessageManager();
-                oControlMessageProcessor = new CoreControlMessageProcessor();
-                oMessageManager.registerMessageProcessor(oControlMessageProcessor);
-
-                oMessage = new CoreMessage({
-                    message: vMsg,
-                    type: sap.ui.core.MessageType.Error,
-                    persistent: false,
-                    processor: oControlMessageProcessor
-                });
-
-                oMessageManager.addMessages(oMessage);
+                aMessage = oMessageManager.getMessageModel().getData();
+                if (aMessage && !$.isEmptyObject(aMessage)) {
+                    aMessage.forEach(function (oMessage) {
+                        if (oMessage.target === [oEvent.getParameter('id'), oEvent.getParameter('property')].join('/')) {
+                            oMessageManager.removeMessages(oMessage);
+                        }
+                    }.bind(this))
+                }
             });
+
+            this.getView().attachParseError(function (oEvent) {
+                this._addMessage(oEvent, 'attachParseError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
+            }.bind(this));
+
+            this.getView().attachFormatError(function (oEvent) {
+                this._addMessage(oEvent, 'attachFormatError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
+            }.bind(this));
 
         };
 
