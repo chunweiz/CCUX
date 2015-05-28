@@ -3,7 +3,8 @@
 
 sap.ui.define(
     [
-        'sap/ui/core/mvc/Controller'
+        'nrg/util/view/BaseController'
+        //'sap/ui/core/mvc/Controller'
     ],
 
     function (CoreController) {
@@ -14,10 +15,10 @@ sap.ui.define(
         Controller.prototype.onInit = function () {
             var oModel;
 
-            /*oModel = this.getOwnerComponent().getModel('comp-dashboard');
+            oModel = this.getOwnerComponent().getModel('comp-dashboard');
             if (oModel) {
-                oModel.read('/ProductSet');
-            }*/
+                oModel.read('/BpSearchs');
+            }
         };
 
         return Controller;
