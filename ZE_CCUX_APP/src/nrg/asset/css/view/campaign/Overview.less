@@ -1,0 +1,53 @@
+.nrgCamOvr {
+    font-family: @nrgFontFamily;
+
+    & > .nrgCamOvr-title {
+        margin-left: 8px;
+        font-size: @nrgFontSize-base;
+        font-weight: @nrgFontWeight-semiBold;
+    }
+    &  .nrgCamOvr-lbl {
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-inactiveGrey;
+    }
+    &  .nrgCamOvr-left {
+         margin-left: 22px;
+     }
+    &  .nrgCamOvr-mtx{
+        font-family: @nrgFontFamily;
+    }
+    & > .nrgCamOvr-offerToolbar {
+        margin-top: 10px;
+        width: 100%;
+    }
+    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn {
+       // width: 100%;
+        height: 92px;
+        background-color: @nrgColor-lightBlue;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 2px;
+        outline-style: none;
+    }
+
+    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn:hover {
+        background-color: @nrgColor-darkPaleBlue;
+        color: @nrgColor-white;
+    }
+
+    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn > .nrgCamOvr-offerBtnTitle {
+        font: @nrgFontWeight-semiBold @nrgFontSize-small @nrgFontFamily;
+        margin-bottom: 10px;
+    }
+
+    & > .nrgCamOvr-offerToolbar> .nrgCamOvr-offerBtn > .nrgCamOvr-offerBtnDesc {
+        font: @nrgFontWeight-bold @nrgFontSize-larger @nrgFontFamily;
+        color: @nrgColor-redAlert;
+        text-transform: uppercase;
+    }
+
+    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn > .nrgCamOvr-offerBtnDesc.nrgCamOvr-offerBtnTitle-ok {
+        color: @nrgColor-blueLink;
+    }
+
+}
