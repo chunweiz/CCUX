@@ -198,9 +198,34 @@ sap.ui.define(
                 content: 'e624'
             });
 
-            IconPool.addIcon('website', 'nrg-icon', {
+            IconPool.addIcon('person', 'nrg-icon', {
                 fontFamily: 'nrg-icon',
                 content: 'e625'
+            });
+
+            IconPool.addIcon('calendar', 'nrg-icon', {
+                fontFamily: 'nrg-icon',
+                content: 'e628'
+            });
+
+            IconPool.addIcon('verified', 'nrg-icon', {
+                fontFamily: 'nrg-icon',
+                content: 'e629'
+            });
+
+            IconPool.addIcon('trashcan', 'nrg-icon', {
+                fontFamily: 'nrg-icon',
+                content: 'e62a'
+            });
+
+            IconPool.addIcon('search', 'nrg-icon', {
+                fontFamily: 'nrg-icon',
+                content: 'e62b'
+            });
+
+            IconPool.addIcon('not-verified', 'nrg-icon', {
+                fontFamily: 'nrg-icon',
+                content: 'e62c'
             });
         };
 
