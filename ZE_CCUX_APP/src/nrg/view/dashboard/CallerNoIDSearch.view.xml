@@ -2,6 +2,8 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.commons.layout"
+    xmlns:c="sap.ui.commons"
     controllerName="nrg.view.dashboard.CallerNoIDSearch">
 
 
@@ -77,6 +79,27 @@
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
         <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTitle"
                  text="{comp-i18n>nrgDashboardCallerNoIDSearchResultTitle}">
+        </ute:Tag>
+
+        <ute:Tag>
+        <l:MatrixLayout
+            width="100%"
+            columns="3"
+            rows="{comp-dashboard>/BpSearchs}">
+            <l:rows>
+                <l:MatrixLayoutRow>
+                    <l:MatrixLayoutCell>
+                        <c:TextView text="{comp-dashboard>PartnerID}"></c:TextView>
+                    </l:MatrixLayoutCell>
+                    <l:MatrixLayoutCell>
+                        <c:TextView text="{comp-dashboard>DL}"></c:TextView>
+                    </l:MatrixLayoutCell>
+                    <l:MatrixLayoutCell>
+                        <c:TextView text="{comp-dashboard>TaxID}"></c:TextView>
+                    </l:MatrixLayoutCell>
+                </l:MatrixLayoutRow>
+            </l:rows>
+        </l:MatrixLayout>
         </ute:Tag>
 
         <ute:Tag
