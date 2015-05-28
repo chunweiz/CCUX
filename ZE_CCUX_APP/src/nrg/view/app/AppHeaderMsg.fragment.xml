@@ -1,10 +1,13 @@
 <core:FragmentDefinition
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
-    xmlns:core="sap.ui.core">
+    xmlns:core="sap.ui.core"
+    xmlns:m="sap.m">
 
-    <ute:Tag>
+    <m:ScrollContainer
+        height="300px"
+        vertical="true">
         <span>Messages!!!</span>
-    </ute:Tag>
+    </m:ScrollContainer>
 
 </core:FragmentDefinition>

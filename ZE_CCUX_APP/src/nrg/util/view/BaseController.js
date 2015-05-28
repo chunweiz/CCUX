@@ -18,14 +18,18 @@ sap.ui.define(
             }
         });
 
-        BaseController.prototype.getEventBus = function () {
-            this.getOwnerComponent().getEventBus();
+        BaseController.prototype._getRouter = function () {
+            if(!this._oRouter) {
+                this._oRouter = this.getOwnerComponent().getRouter();
+            }
+
+            return this._oRouter;
         };
 
         BaseController.prototype.navTo = function (sName, oParameters, bReplace) {
             var oRouter, oRouteParams, bHistReplace;
 
-            oRouter = this.getOwnerComponent().getRouter();
+            oRouter = this._getRouter();
             oRouteParams = oParameters || {};
             bHistReplace = bReplace || false;
 
