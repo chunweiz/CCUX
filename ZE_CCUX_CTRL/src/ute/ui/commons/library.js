@@ -140,10 +140,20 @@ sap.ui.define(
          * Semantic Colors of a text.
          */
         ute.ui.commons.TextViewColor = {
-            Default : "Default"
-            /*Positive : "Positive",
-            Negative : "Negative",
-            Critical : "Critical"*/
+            White: 'White',
+            DarkGrey: 'DarkGrey',
+            InactiveGrey: 'InactiveGrey',
+            LightGrey: 'LightGrey',
+            Black: 'Black',
+            LightBlue: 'LightBlue',
+            BlueLink: 'BlueLink',
+            BluePearl: 'BluePearl',
+            PaleBlue: 'PaleBlue',
+            LightPaleBlue: 'LightPaleBlue',
+            DarkPaleBlue: 'DarkPaleBlue',
+            GreenHighlight:'GreenHighlight',
+            RedAlert: 'RedAlert',
+            OrangeAttention: 'OrangeAttention'
         };
 
         ute.ui.commons.CSSDisplay = DataType.createType('ute.ui.commons.CSSDisplay', {

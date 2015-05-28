@@ -28,12 +28,12 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
             /**
 			 * Defines the visual appearance of the control.
 			 */
-			        design : {type : "ute.ui.commons.TextViewDesign", group : "Data", defaultValue : ute.ui.commons.TextViewDesign.Base}
+			        design : {type : "ute.ui.commons.TextViewDesign", group : "Data", defaultValue : ute.ui.commons.TextViewDesign.Base},
 
             /**
 			 * Semantic color of the text View
 			 */
-			     //  semanticColor : {type : "ute.ui.commons.TextViewColor", group : "Appearance", defaultValue : ute.ui.commons.TextViewColor.Default},
+			        color : {type : "ute.ui.commons.TextViewColor", group : "Appearance", defaultValue : ute.ui.commons.TextViewColor.Black}
 
 
 		        }
