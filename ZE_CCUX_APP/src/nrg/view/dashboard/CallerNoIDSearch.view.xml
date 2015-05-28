@@ -79,6 +79,9 @@
                  text="{comp-i18n>nrgDashboardCallerNoIDSearchResultTitle}">
         </ute:Tag>
 
+        <ute:Tag
+            text="{comp-dashboard>/BpSearchs('PartnerID 1')/ESID}">
+        </ute:Tag>
     </ute:Tag>
 
 </mvc:View>
