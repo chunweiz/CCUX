@@ -9,7 +9,7 @@
                 },
                 "mock": {
                     "dashboard": {
-                        "mockDataBaseUrl": "data/dashboard/dummy/",
+                        "mockDataBaseUrl": "data/dashboard/devtest/",
                         "generateMissingMockData": true
                     }
                 }

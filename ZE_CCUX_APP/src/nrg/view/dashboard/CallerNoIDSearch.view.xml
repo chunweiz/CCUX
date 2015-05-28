@@ -77,11 +77,19 @@
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
         <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTitle"
                  text="{comp-i18n>nrgDashboardCallerNoIDSearchResultTitle}">
-            </ute:Tag>
-        <ute:Tag>
-            <p>something</p>
         </ute:Tag>
+
     </ute:Tag>
 
-
+    <ute:Table width="50%"
+                     tableType="CampaignTable" >
+                <u:columns>
+                    <u:TableColumn width="50%">
+                        <c:Label text="Last Name"/>
+                    </u:TableColumn>
+                    <u:TableColumn width="50%">
+                        <c:Label text="Gender"/>
+                    </u:TableColumn>
+                </u:columns>
+            </ute:Table>
 </mvc:View>
