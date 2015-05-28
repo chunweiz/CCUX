@@ -19,7 +19,7 @@ sap.ui.define(
         });
 
         BaseController.prototype._getRouter = function () {
-            if(!this._oRouter) {
+            if (!this._oRouter) {
                 this._oRouter = this.getOwnerComponent().getRouter();
             }
 
