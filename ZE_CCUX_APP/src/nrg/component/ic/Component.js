@@ -138,6 +138,8 @@ sap.ui.define(
                     this.setModel(oModel, 'comp-' + sKey);
                 }
             }
+
+            this.setModel(sap.ui.getCore().getMessageManager().getMessageModel(), 'comp-message');
         };
 
         NRGComponent.prototype._initRouter = function () {

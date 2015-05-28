@@ -50,6 +50,10 @@ sap.ui.define(
                 throw new ValidateException('Business partner number cannot be empty');
             }
 
+            if (oValue.trim() === '') {
+                return oValue;
+            }
+
             if (oValue.length < 1 || oValue.length > 10) {
                 throw new ValidateException('Invalid business partner number');
             }

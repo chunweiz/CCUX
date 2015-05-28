@@ -42,7 +42,7 @@ sap.ui.define(
             oModel = sap.ui.model.json.JSONModel({
                 caNum: '000123456789',
                 bpNum: '1234567890',
-                price: 12.3
+                price: 12.35
             });
 
             this.getView().setModel(oModel);
