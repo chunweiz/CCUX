@@ -6,8 +6,11 @@
 
     <m:ScrollContainer
         height="300px"
-        vertical="true">
-        <span>Messages!!!</span>
+        vertical="true"
+        content="{comp-message>/}">
+
+        <ute:Tag text="{comp-message>message}" />
+
     </m:ScrollContainer>
 
 </core:FragmentDefinition>
