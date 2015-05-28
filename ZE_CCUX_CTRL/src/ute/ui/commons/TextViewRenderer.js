@@ -17,38 +17,19 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer'],
 	 *
 	 *
 	 */
-	    TextViewRenderer.render = function (oRenderManager, oTextView) {
-		    var rm = oRenderManager,
-		        r = TextViewRenderer,
-                TextViewDesign =  sap.ui.commons.TextViewDesign,
-                TextViewColor  =  sap.ui.commons.TextViewColor,
-                oDesign = oTextView.getDesign(),
-                oColor  = oTextView.getSemanticColor();
-
-
-// Styles
-            switch (oDesign) {
-            case TextViewDesign.Small:
-                rm.addClass('uteTv-Small');
-                break;
-            case TextViewDesign.Bold:
-                rm.addClass('uteTv-Base');
-                break;
-             case TextViewDesign.Large:
-                rm.addClass('uteTv-Large');
-                break;
-            }
-
-
+	    TextViewRenderer.render = function (rm, oTextView) {
 
             rm.write("<div");
+            rm.writeClasses();
             rm.write(">");
 		    rm.write("<span");
 		    rm.writeControlData(oTextView);
-            rm.addClass("uteUiTv");
+            rm.addClass("uteTv");
             if (oTextView.getWidth() && oTextView.getWidth() !== '') {
-			rm.addStyle("width", oTextView.getWidth());
+			    rm.addStyle("width", oTextView.getWidth());
 		    }
+            rm.addClass('uteTv-design-' + oTextView.getDesign().toLowerCase());
+            rm.addClass('uteTv-color-' + oTextView.getColor().toLowerCase());
 			rm.writeAttributeEscaped("title", oTextView.getText());
 
 		    rm.writeClasses();
