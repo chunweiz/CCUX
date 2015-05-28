@@ -48,13 +48,17 @@ sap.ui.define(
             return this._oMessageManager;
         };
 
+        BaseController.prototype._getTargetFromControlEvent = function (oControlEvent) {
+            return [oControlEvent.getParameter('id'), oControlEvent.getParameter('property')].join('/');
+        };
+
         BaseController.prototype.addControlMessage = function (sMessage, sType, oTarget) {
             var oMessage, sMsgType, sTarget;
 
             sMsgType = sType || sap.ui.core.MessageType.None;
 
             if (oTarget instanceof sap.ui.base.Event) {
-                sTarget = [oTarget.getParameter('id'), oTarget.getParameter('property')].join('/');
+                sTarget = this._getTargetFromControlEvent(oTarget);
             } else {
                 sTarget = oTarget;
             }
@@ -93,7 +97,7 @@ sap.ui.define(
             aMessage = oMessageManager.getMessageModel().getData();
 
             if (oTarget instanceof sap.ui.base.Event) {
-                sTarget = [oTarget.getParameter('id'), oTarget.getParameter('property')].join('/');
+                sTarget = this._getTargetFromControlEvent(oTarget);
             } else {
                 sTarget = oTarget;
             }
