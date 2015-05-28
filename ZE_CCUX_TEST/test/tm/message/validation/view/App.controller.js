@@ -61,7 +61,7 @@ sap.ui.define(
                         if (oMessage.target === [oEvent.getParameter('id'), oEvent.getParameter('property')].join('/')) {
                             oMessageManager.removeMessages(oMessage);
                         }
-                    }.bind(this))
+                    }.bind(this));
                 }
             });
 
