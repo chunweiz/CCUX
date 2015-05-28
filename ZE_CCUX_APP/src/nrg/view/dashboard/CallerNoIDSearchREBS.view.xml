@@ -13,21 +13,21 @@
             <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
                 <ute:Textfield
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="Contract Account #"
+                    placeholder="{comp-i18n>nrgDashboardClrNid_CaNumPh}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="SSN"
+                    placeholder="{comp-i18n>nrgDashboardClrNid_Ssn}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="DL"
+                    placeholder="{comp-i18n>nrgDashboardClrNid_Dl}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
@@ -36,58 +36,72 @@
             <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
                 <ute:Textfield
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="Organization Name"
+                    placeholder="{comp-i18n>nrgDashboardClrNid_CaName}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="BP #"
+                    placeholder="{comp-i18n>nrgDashboardClrNid_BpNum}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="Federal Tax ID"
-                    change="testInputChange"
-                    label="Title"
-                    width="48%">
-                </ute:Textfield>
-                <ute:Textfield
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="SSN"
+                    placeholder="{comp-i18n>nrgDashboardClrNid_FedTaxId}"
                     change="ESID"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
+                <ute:Textfield
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n>nrgDashboardClrNid_Esid}"
+                    change="testInputChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
             </ute:Tag>
             <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
                 <ute:Textfield
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="Organization Name"
+                    placeholder="{comp-i18n>nrgDashboardClrNid_HouseNum}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="BP #"
+                    placeholder="{comp-i18n>nrgDashboardClrNid_Street}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="Federal Tax ID"
+                    placeholder="{comp-i18n>nrgDashboardClrNid_UnitNum}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="SSN"
+                    placeholder="{comp-i18n>nrgDashboardClrNid_City}"
+                    change="testInputChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n>nrgDashboardClrNid_State}"
+                    change="testInputChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n>nrgDashboardClrNid_ZipCode}"
                     change="ESID"
                     label="Title"
                     width="48%">
