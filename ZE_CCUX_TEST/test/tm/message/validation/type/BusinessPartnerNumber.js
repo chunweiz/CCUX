@@ -51,14 +51,12 @@ sap.ui.define(
             }
 
             if (oValue.trim() === '') {
-                return oValue;
+                return;
             }
 
             if (oValue.length < 1 || oValue.length > 10) {
                 throw new ValidateException('Invalid business partner number');
             }
-
-            return oValue;
         };
 
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
