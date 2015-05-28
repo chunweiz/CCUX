@@ -13,7 +13,7 @@
             <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
                 <ute:Textfield
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="Contract Account #"
+                    placeholder="{comp-i18n>nrgDashboardClrNid_CaNumPh}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
