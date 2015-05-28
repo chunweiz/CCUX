@@ -8,7 +8,7 @@
                 },
 
                 "dashboard.SearchNoID": {
-                    "pattern": "searchNoID?sap-ui-debug=true",
+                    "pattern": "searchNoID",
                     "target": [ "dashboard.CallerNoIDSearch", "dashboard.CallerNoIDEnrollment", "" ]
                 },
 

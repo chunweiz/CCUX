@@ -81,15 +81,4 @@
 
     </ute:Tag>
 
-    <ute:Table width="50%"
-                     tableType="CampaignTable" >
-                <u:columns>
-                    <u:TableColumn width="50%">
-                        <c:Label text="Last Name"/>
-                    </u:TableColumn>
-                    <u:TableColumn width="50%">
-                        <c:Label text="Gender"/>
-                    </u:TableColumn>
-                </u:columns>
-            </ute:Table>
 </mvc:View>
