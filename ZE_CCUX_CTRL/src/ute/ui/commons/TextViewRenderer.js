@@ -30,9 +30,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer'],
 		    }
             rm.addClass('uteTv-design-' + oTextView.getDesign().toLowerCase());
             rm.addClass('uteTv-color-' + oTextView.getColor().toLowerCase());
-			rm.writeAttributeEscaped("title", oTextView.getText());
-
-		    rm.writeClasses();
+            rm.writeClasses();
 		    rm.writeStyles();
 		    rm.write(">");
 		    rm.writeEscaped(oTextView.getText(), true);
