@@ -46,7 +46,7 @@ sap.ui.define(
                 return oValue;
             }
 
-            var emailRegex = /.+@.+\..+/i;
+            var emailRegex = /^[^.\s()\[\],;:@][^\s()\[\],;:@]+[^.\s()\[\],;:@]@[a-zA-Z0-9]+\..+/i;
             if (!(emailRegex.test(oValue))) {
                 throw new ParseException('Invalid email');
             }
@@ -60,6 +60,10 @@ sap.ui.define(
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
                 throw new ValidateException('Email cannot be empty');
+            }
+
+             if (oValue.length < 1 || oValue.length > 241) {
+                throw new ValidateException('Email Address length exceeds(allowed upto 241 char)');
             }
 
             return oValue;
