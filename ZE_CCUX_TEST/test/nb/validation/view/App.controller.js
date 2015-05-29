@@ -10,7 +10,8 @@ sap.ui.define(
         'tm/message/validation/type/ContractAccountNumber',
         'tm/message/validation/type/BusinessPartnerNumber',
         'tm/message/validation/type/Price',
-        'tm/message/validation/type/EmailAddress'
+        'tm/message/validation/type/EmailAddress',
+        'tm/message/validation/type/SocialSecurityNumber'
 
     ],
 
@@ -45,7 +46,8 @@ sap.ui.define(
                 caNum: '000123456789',
                 bpNum: '1234567890',
                 price: 12.35,
-                email: 'test@test.com'
+                email: 'test@test.com',
+                ssn: '123-45-6789'
             });
 
             this.getView().setModel(oModel);
