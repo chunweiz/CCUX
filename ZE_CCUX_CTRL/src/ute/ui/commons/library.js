@@ -154,7 +154,7 @@ sap.ui.define(
             PaleBlue: 'PaleBlue',
             LightPaleBlue: 'LightPaleBlue',
             DarkPaleBlue: 'DarkPaleBlue',
-            GreenHighlight:'GreenHighlight',
+            GreenHighlight: 'GreenHighlight',
             RedAlert: 'RedAlert',
             OrangeAttention: 'OrangeAttention'
         };
