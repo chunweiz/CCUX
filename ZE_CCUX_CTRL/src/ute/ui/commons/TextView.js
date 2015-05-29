@@ -49,9 +49,9 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 			    sText = this.getText(); // the default value '' ensures valid text string
 			    oDomRef.innerHTML = jQuery.sap.encodeHTML(sText).replace(/&#xa;/g, "<br>");
 			// when no tooltip is applied use the text as tooltip
-			    if (!this.getTooltip_AsString()) {
+			   /* if (!this.getTooltip_AsString()) {
 				    oDomRef.title = sText; // IE8 doesn't like HTML encoded attribute values
-			    }
+			    }*/
 		    }
 
 		    return this;
