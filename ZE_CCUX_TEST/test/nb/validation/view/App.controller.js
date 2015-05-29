@@ -45,7 +45,7 @@ sap.ui.define(
                 caNum: '000123456789',
                 bpNum: '1234567890',
                 price: 12.35,
-                email: 'TEST@test.com'
+                email: 'test@test.com'
             });
 
             this.getView().setModel(oModel);

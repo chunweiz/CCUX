@@ -41,7 +41,8 @@ sap.ui.define(
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
             console.log('parseValue ... ' + oValue);
 
-            if (oValue === undefined || oValue === null) {
+
+            if (oValue === undefined || oValue === null || oValue.trim() === '') {
                 return oValue;
             }
 
@@ -67,6 +68,7 @@ sap.ui.define(
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
             console.log('formatValue ... ' + oValue);
+
 
             return oValue;
 
