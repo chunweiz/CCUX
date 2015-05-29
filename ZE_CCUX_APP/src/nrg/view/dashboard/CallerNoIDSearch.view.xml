@@ -81,30 +81,50 @@
                  text="{comp-i18n>nrgDashboardCallerNoIDSearchResultTitle}">
         </ute:Tag>
 
-        <ute:Tag>
+        <ute:Tag class="testtest">
         <l:MatrixLayout
             width="100%"
-            columns="3"
+            columns="8"
+	        widths="20px,220px,120px,220px,120px,120px,90px,100px"
             rows="{comp-dashboard>/BpSearchs}">
             <l:rows>
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
+                        <c:TextView text="1)"></c:TextView>
+                    </l:MatrixLayoutCell>
+                    <l:MatrixLayoutCell>
+                        <c:TextView
+                            text="{comp-dashboard>FirstName} {comp-dashboard>LastName}">
+                        </c:TextView>
+                    </l:MatrixLayoutCell>
+                    <l:MatrixLayoutCell>
                         <c:TextView text="{comp-dashboard>PartnerID}"></c:TextView>
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
-                        <c:TextView text="{comp-dashboard>DL}"></c:TextView>
+                        <c:TextView
+                            text="{comp-dashboard>HouseNumber} {comp-dashboard>Street}">
+                        </c:TextView>
+                    </l:MatrixLayoutCell>
+                    <l:MatrixLayoutCell>
+                        <c:TextView text="{comp-dashboard>UnitNumber}"></c:TextView>
+                    </l:MatrixLayoutCell>
+                    <l:MatrixLayoutCell>
+                        <c:TextView
+                            text="{comp-dashboard>City} {comp-dashboard>State}">
+                        </c:TextView>
+                    </l:MatrixLayoutCell>
+                    <l:MatrixLayoutCell>
+                        <c:TextView text="{comp-dashboard>ZipCode}"></c:TextView>
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
                         <c:TextView text="{comp-dashboard>TaxID}"></c:TextView>
                     </l:MatrixLayoutCell>
+
                 </l:MatrixLayoutRow>
             </l:rows>
         </l:MatrixLayout>
         </ute:Tag>
 
-        <ute:Tag
-            text="{comp-dashboard>/BpSearchs('PartnerID 1')/ESID}">
-        </ute:Tag>
     </ute:Tag>
 
 </mvc:View>
