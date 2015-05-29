@@ -9,7 +9,9 @@ sap.ui.define(
         'sap/ui/core/message/ControlMessageProcessor',
         'tm/message/validation/type/ContractAccountNumber',
         'tm/message/validation/type/BusinessPartnerNumber',
-        'tm/message/validation/type/Price'
+        'tm/message/validation/type/Price',
+        'tm/message/validation/type/EmailAddress'
+
     ],
 
     function ($, CoreController, CoreMessage, CoreControlMessageProcessor) {
@@ -42,7 +44,8 @@ sap.ui.define(
             oModel = sap.ui.model.json.JSONModel({
                 caNum: '000123456789',
                 bpNum: '1234567890',
-                price: 12.35
+                price: 12.35,
+                email: 'test@test.com'
             });
 
             this.getView().setModel(oModel);
@@ -99,7 +102,7 @@ sap.ui.define(
 
             oMessageManager.addMessages(oMessage);
 
-            oMessage = new CoreMessage({
+        /*    oMessage = new CoreMessage({
                 message: vMsg,
                 type: sap.ui.core.MessageType.Information,
                 processor: oControlMessageProcessor
@@ -129,7 +132,7 @@ sap.ui.define(
                 processor: oControlMessageProcessor
             });
 
-            oMessageManager.addMessages(oMessage);
+            oMessageManager.addMessages(oMessage);*/
         };
 
         return Controller;
