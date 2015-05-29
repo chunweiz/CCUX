@@ -46,4 +46,10 @@
         placeholder="price"
         value="{path: '/price', type: 'tm.message.validation.type.Price'}" />
 
+     <m:Input
+        id="idEmail"
+        type="Text"
+        placeholder="email"
+        value="{path: '/email', type: 'tm.message.validation.type.EmailAddress', constraints: { mandatory: true }}" />
+
 </mvc:View>
