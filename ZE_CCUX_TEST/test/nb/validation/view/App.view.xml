@@ -52,4 +52,10 @@
         placeholder="email"
         value="{path: '/email', type: 'tm.message.validation.type.EmailAddress', constraints: { mandatory: true }}" />
 
+      <m:Input
+        id="idSSN"
+        type="Text"
+        placeholder="SSN"
+        value="{path: '/ssn', type: 'tm.message.validation.type.SocialSecurityNumber', constraints: { mandatory: true }}" />
+
 </mvc:View>
