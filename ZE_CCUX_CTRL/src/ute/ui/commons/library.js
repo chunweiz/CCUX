@@ -52,8 +52,7 @@ sap.ui.define(
                 'ute.ui.commons.TableColumn',
                 'ute.ui.commons.TableRow',
                 'ute.ui.commons.Tag',
-                'ute.ui.commons.ScrollContainer',
-                'ute.ui.commons.Label'
+                'ute.ui.commons.ScrollContainer'
 			],
 
 			elements: [],
