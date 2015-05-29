@@ -121,11 +121,62 @@
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
         <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTitle"
                  text="{comp-i18n>nrgDashboardCallerNoIDSearchResultTitle}">
-            </ute:Tag>
-        <ute:Tag>
-            <p>something</p>
         </ute:Tag>
-    </ute:Tag>
 
+        <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTable">
+        <ute:ScrollContainer
+            height="180px"
+            width="100%"
+            horizontal="false"
+            vertical="true">
+            <l:MatrixLayout
+                width="100%"
+                columns="8"
+                widths="2%,18%,10%,24%,13%,13%,10%,10%"
+                rows="{comp-dashboard>/BpSearchs}">
+                <l:rows>
+                    <l:MatrixLayoutRow>
+                        <l:MatrixLayoutCell>
+                            <c:TextView text="1)"></c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView
+                                text="{comp-dashboard>FirstName} {comp-dashboard>LastName}">
+                            </c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView text="{comp-dashboard>PartnerID}"></c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView
+                                text="{comp-dashboard>HouseNumber} {comp-dashboard>Street}">
+                            </c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView text="{comp-dashboard>UnitNumber}"></c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView
+                                text="{comp-dashboard>City} {comp-dashboard>State}">
+                            </c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView text="{comp-dashboard>ZipCode}"></c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <ute:Button
+                                buttonType="GeneralInfo"
+                                text="Select"
+                                enabled="true">
+                        </ute:Button>
+                        </l:MatrixLayoutCell>
+
+                    </l:MatrixLayoutRow>
+                </l:rows>
+            </l:MatrixLayout>
+        </ute:ScrollContainer>
+        </ute:Tag>
+
+    </ute:Tag>
 
 </mvc:View>
