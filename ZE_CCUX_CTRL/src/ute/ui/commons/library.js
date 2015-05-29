@@ -13,7 +13,9 @@ sap.ui.define(
 		sap.ui.getCore().initLibrary({
 			name: 'ute.ui.commons',
 			version: '1.0.0',
-			dependencies: ['sap.ui.core'],
+			dependencies: [
+                'sap.ui.core'
+            ],
 
 			types: [
                 'ute.ui.commons.BadgeDesign',
@@ -38,7 +40,6 @@ sap.ui.define(
                 'ute.ui.commons.Badge',
                 'ute.ui.commons.Button',
                 'ute.ui.commons.ToggleButton',
-                'ute.ui.commons.Tag',
                 'ute.ui.commons.Textfield',
                 'ute.ui.commons.TextView',
                 'ute.ui.commons.CheckBox',
@@ -50,7 +51,9 @@ sap.ui.define(
                 'ute.ui.commons.Table',
                 'ute.ui.commons.TableColumn',
                 'ute.ui.commons.TableRow',
-                'ute.ui.commons.ScrollContainer'
+                'ute.ui.commons.Tag',
+                'ute.ui.commons.ScrollContainer',
+                'ute.ui.commons.Label'
 			],
 
 			elements: [],
