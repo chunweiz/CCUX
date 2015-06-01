@@ -13,15 +13,14 @@ sap.ui.define(
     function ($, FloatType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = FloatType.extend('tm.message.validation.type.Price', {
+        var CustomType = FloatType.extend('nrg.util.type.Price', {
             constructor: function (oFormatOptions, oConstraints) {
-                FloatType.apply(this, arguments);
+                FloatType.prototype.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            this.sName = 'tm.message.validation.type.Price';
-            return this.sName;
+            return 'nrg.util.type.Price';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {
@@ -32,9 +31,27 @@ sap.ui.define(
                     minFractionDigits: 2,
                     maxFractionDigits: 2
                 };
+            } else {
+                defaultFormatOptions = oFormatOptions;
             }
 
             FloatType.prototype.setFormatOptions.call(this, defaultFormatOptions);
         };
+
+        CustomType.prototype.setConstraints = function (oConstraints) {
+            var defaultConstraints;
+
+            if ($.isEmptyObject(oConstraints)) {
+                defaultConstraints = {
+                    mandatory: false
+                };
+            } else {
+                defaultConstraints = oConstraints;
+            }
+
+            FloatType.prototype.setConstraints.call(this, defaultConstraints);
+        };
+
+        return CustomType;
     }
 );

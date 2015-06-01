@@ -58,4 +58,17 @@
         placeholder="SSN"
         value="{path: '/ssn', type: 'tm.message.validation.type.SocialSecurityNumber', constraints: { mandatory: true }}" />
 
+     <m:Input
+        id="idDL"
+        type="Text"
+        placeholder="Driving License Number"
+        value="{path: '/dl', type: 'tm.message.validation.type.DrivingLicenseNumber', constraints: { mandatory: true }}" />
+     <m:Input
+        id="idCNum"
+        type="Text"
+        placeholder="contract number"
+        value="{path: '/cNum', type: 'tm.message.validation.type.ContractNumber', constraints: { mandatory: true }}" />
+
+
+
 </mvc:View>

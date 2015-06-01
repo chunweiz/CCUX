@@ -1,5 +1,7 @@
 /*global sap*/
-/*jslint nomen:true*/
+/*jslint vars: true, plusplus: true, devel: true, nomen: true, indent: 4, maxerr: 50 regexp: true */
+/*global define */
+
 
 sap.ui.define(
     [
@@ -13,14 +15,14 @@ sap.ui.define(
     function ($, SimpleType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = SimpleType.extend('tm.message.validation.type.SocialSecurityNumber', {
+        var CustomType = SimpleType.extend('tm.message.validation.type.DrivingLicenseNumber', {
             constructor: function (oFormatOptions, oConstraints) {
                 SimpleType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'tm.message.validation.type.SocialSecurityNumber';
+            return 'tm.message.validation.type.DrivingLicenseNumber';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {
@@ -41,13 +43,18 @@ sap.ui.define(
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
             console.log('parseValue ... ' + oValue);
 
-          var ssnRegex = /.{1,12}/;
-            if (!(ssnRegex.test(oValue))) {
-                throw new ParseException('Invalid SSN');
+
+            if (oValue === undefined || oValue === null || oValue.trim() === '') {
+                return oValue;
             }
 
+            //var dlRegex = /^(.*[0-9]){8}$/;
+              var dlRegex = /^.{1,13}$/;
+            if (!(dlRegex.test(oValue))) {
+                throw new ParseException('Invalid Driving License');
+            }
 
-            return oValue;
+            return oValue.toLowerCase();
         };
 
         // Model value meets constraint requirements
@@ -55,7 +62,7 @@ sap.ui.define(
             console.log('validateValue ... [' + oValue + ']');
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
-                throw new ValidateException('SSN cannot be empty');
+                throw new ValidateException('Driving License cannot be empty');
             }
 
             return oValue;
@@ -64,11 +71,10 @@ sap.ui.define(
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
             console.log('formatValue ... ' + oValue);
-             if (oValue === undefined || oValue === null || oValue.trim() === '') {
-                 return oValue;
-             }
-            /*No formatting added as the masking should be done at server level itself to  protect from hacking*/
-
+            var zero ='0',
+             pattern = "[0-9a-zA-Z]",
+            re = new RegExp(pattern, "g");
+             oValue = oValue.replace(re,zero)
             return oValue;
 
         };
