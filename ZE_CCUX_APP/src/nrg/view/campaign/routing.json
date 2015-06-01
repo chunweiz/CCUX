@@ -9,6 +9,10 @@
                 "campaignchg": {
                     "pattern": "bp/{bpNum}/ca/{caNum}/cmpchg",
                     "target": [ "campaign.Change", "dashboard.SummaryBP", "campaign.Tools" ]
+                },
+                "campaignSS": {
+                    "pattern": "bp/{bpNum}/ca/{caNum}/cmpss",
+                    "target": [ "campaign.SalesScript", "dashboard.SummaryBP", "campaign.Tools" ]
                 }
             },
             "targets": {
@@ -22,6 +26,10 @@
                 },
                 "campaign.History": {
                     "viewName": "campaign.History",
+                    "controlId": "idAppGeneral"
+                },
+                "campaign.SalesScript": {
+                    "viewName": "campaign.SalesScript",
                     "controlId": "idAppGeneral"
                 },
                 "campaign.Change": {
