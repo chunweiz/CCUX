@@ -1,8 +1,6 @@
 /*global sap*/
-/*jslint vars: true, plusplus: true, devel: true, nomen: true, indent: 4, maxerr: 50 regexp: true */
-/*global define */
+/*jslint nomen:true*/
 
-/*
 sap.ui.define(
     [
         'jquery.sap.global',
@@ -83,4 +81,3 @@ sap.ui.define(
         return CustomType;
     }
 );
-*/
