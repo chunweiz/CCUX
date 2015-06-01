@@ -1,8 +1,8 @@
 @import url('icon.css');
 .uteDD {
      /* Size and position */
-    position: relative;
-    margin: 0 auto;
+    position: absolute;
+
 
 
     /* Styles */

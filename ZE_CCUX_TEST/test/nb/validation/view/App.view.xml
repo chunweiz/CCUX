@@ -77,9 +77,11 @@
         id="idMnum"
         type="Text"
         placeholder="mnum"
-        value="{path: '/esid', type: 'tm.message.validation.type.MeterNumber', constraints: { mandatory: true }}" />
-
-
-
+        value="{path: '/mnum', type: 'tm.message.validation.type.MeterNumber', constraints: { mandatory: true }}" />
+    <m:Input
+        id="idCellNum"
+        type="Text"
+        placeholder="cellNum"
+        value="{path: '/cellnum', type: 'tm.message.validation.type.CellPhoneNumber', constraints: { mandatory: true }}" />
 
 </mvc:View>
