@@ -14,7 +14,7 @@ sap.ui.define(
             ],
 
 			types: [
-
+                'ute.ui.main.ButtonDesign'
             ],
 
 			controls: [
@@ -24,6 +24,13 @@ sap.ui.define(
 			elements: [],
             interfaces: []
         });
+
+        ute.ui.main.ButtonDesign = {
+            None: 'None',
+            Default: 'Default'
+        };
+
+        return ute.ui.main;
     },
 
     true

@@ -1,4 +1,4 @@
-/*global sap*/
+/*global sap, ute*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -10,9 +10,15 @@ sap.ui.define(
         var CustomRenderer = {};
 
         CustomRenderer.render = function (oRm, oCustomControl) {
-            oRm.write('<button');
+            oRm.write('<span');
             oRm.writeControlData(oCustomControl);
+
             oRm.addClass('uteMBtn');
+
+            if (oCustomControl.getDesign() !== ute.ui.main.ButtonDesign.None) {
+                oRm.addClass('uteMBtn-design-' + oCustomControl.getDesign().toLowerCase());
+            }
+
             oRm.writeClasses();
             oRm.write('>');
 
@@ -24,7 +30,7 @@ sap.ui.define(
                 oCustomControl._addHtmlContent(oRm);
             }
 
-            oRm.write('</button>');
+            oRm.write('</span>');
         };
 
         return CustomRenderer;
