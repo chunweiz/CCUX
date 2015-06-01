@@ -1,6 +1,7 @@
 /*global sap*/
 /*jslint nomen:true*/
 
+
 sap.ui.define(
     [
         'jquery.sap.global',
@@ -13,14 +14,14 @@ sap.ui.define(
     function ($, SimpleType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = SimpleType.extend('nrg.util.type.CellPhoneNumber', {
+        var CustomType = SimpleType.extend('tm.message.validation.type.CellPhoneNumber', {
             constructor: function (oFormatOptions, oConstraints) {
-                SimpleType.prototype.apply(this, arguments);
+                SimpleType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'nrg.util.type.CellPhoneNumber';
+            return 'tm.message.validation.type.CellPhoneNumber';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {
@@ -39,12 +40,13 @@ sap.ui.define(
 
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
+            console.log('parseValue ... ' + oValue);
 
             if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 
-            if (oValue.match(/[^\d\-]/i)) {
+            if (oValue.match(/[^\d\-]/i)){
                 throw new ParseException('Invalid Cell phone number');
             }
 
@@ -53,6 +55,7 @@ sap.ui.define(
 
         // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
+            console.log('validateValue ... [' + oValue + ']');
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
                 throw new ValidateException('Cell phone number cannot be empty');
@@ -66,7 +69,7 @@ sap.ui.define(
 
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
-
+            console.log('formatValue ... ' + oValue);
             if (oValue === undefined || oValue === null || oValue.trim() === '') {
                 return oValue;
             }
@@ -74,7 +77,7 @@ sap.ui.define(
             return oValue;
 
         };
-
         return CustomType;
     }
 );
+
