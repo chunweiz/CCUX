@@ -70,7 +70,10 @@ sap.ui.define(
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
             console.log('formatValue ... ' + oValue);
-
+            var zero = '0',
+                pattern = "[0-9a-zA-Z]",
+                regex = new RegExp(pattern, "g");
+            oValue = oValue.replace(regex, zero);
 
             return oValue;
 
