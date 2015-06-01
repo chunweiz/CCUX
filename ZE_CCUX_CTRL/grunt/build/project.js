@@ -118,7 +118,9 @@
                     },
                     files: {
                         'build/ute/ui/commons/themes/base/library.css': 'src/ute/ui/commons/themes/base/library.source.less',
-                        'build/ute/ui/commons/themes/sap_bluecrystal/library.css': 'src/ute/ui/commons/themes/sap_bluecrystal/library.source.less'
+                        'build/ute/ui/commons/themes/sap_bluecrystal/library.css': 'src/ute/ui/commons/themes/sap_bluecrystal/library.source.less',
+                        'build/ute/ui/main/themes/base/library.css': 'src/ute/ui/main/themes/base/library.less',
+                        'build/ute/ui/main/themes/sap_bluecrystal/library.css': 'src/ute/ui/main/themes/sap_bluecrystal/library.less'
                     }
                 }
             };

@@ -1,0 +1,33 @@
+{
+    "name": "test.tm.ze_ccux_ctrl.Component",
+
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "test.tm.ze_ccux_ctrl.view.App",
+            "type": "XML"
+        },
+
+        "routing": {
+            "routes": {
+                "Button": {
+                    "pattern": "Button",
+                    "target": [ "Button" ]
+                }
+            },
+
+            "config": {
+                "viewType": "XML",
+                "viewPath": "test.tm.ze_ccux_ctrl.view",
+                "controlAggregation": "content",
+                "clearControlAggregation": true
+            },
+
+            "targets": {
+                "Button": {
+                    "viewName": "Button",
+                    "controlId": "idAppContent"
+                }
+            }
+        }
+    }
+}
