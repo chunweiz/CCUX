@@ -11,6 +11,7 @@
     <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
         <style>
             .custom {
+                width: 100%;
                 background-color: tomato;
                 color: gold;
             }
@@ -20,8 +21,8 @@
                 color: tomato;
             }
 
-            .customBtnClass[data-disabled="true"] .custom {
-                background-color: green;
+            .uteMBtn[data-disabled="true"] .custom {
+                color: green;
             }
         </style>
 
@@ -29,7 +30,13 @@
         <um:Button design="None" text="this is a new button" press=".onPressed" />
 
         <div>Default button</div>
-        <um:Button text="this is a new button" press=".onPressed" />
+        <um:Button text="button" press=".onPressed" />
+
+        <div>Highlight button</div>
+        <um:Button design="Highlight" text="button" press=".onPressed" />
+
+        <div>Invert button</div>
+        <um:Button design="Invert" text="button" press=".onPressed" />
 
         <br/><div>Default disabled button</div>
         <um:Button text="this is a new button" press=".onPressed" disabled="true" />
@@ -41,12 +48,12 @@
         </um:Button>
 
         <br/><div>Custom button styling</div>
-        <um:Button design="None" class="custom" disabled="true" press=".onPressed">
+        <um:Button design="None" class="custom" press=".onPressed">
             <div>haisda</div>
         </um:Button>
 
         <br/><div>Substyling standard button with stuffing</div>
-        <um:Button class="customBtnClass" disabled="true" press=".onPressed">
+        <um:Button disabled="true" press=".onPressed">
             <div>haisda</div>
             <div class="custom" >hzzz</div>
         </um:Button>

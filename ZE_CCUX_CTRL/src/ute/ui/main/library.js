@@ -27,7 +27,9 @@ sap.ui.define(
 
         ute.ui.main.ButtonDesign = {
             None: 'None',
-            Default: 'Default'
+            Default: 'Default',
+            Highlight: 'Highlight',
+            Invert: 'Invert'
         };
 
         return ute.ui.main;
