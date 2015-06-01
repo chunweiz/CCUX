@@ -20,7 +20,10 @@ sap.ui.define(
                 this.writeImgHtml(oRm, oControl);
             }
 
-
+            oRm.write('<div');
+            oRm.addStyle('margin-top','-25px');
+            oRm.writeStyles();
+            oRm.write('>');
             oRm.write('<label');
 
             sPaddingClass = 'uteLabel-padding';
@@ -40,6 +43,7 @@ sap.ui.define(
 
 
             oRm.write('</label>');
+            oRm.write('</div>');
 
             oRm.write('</div>');
         };
@@ -51,6 +55,7 @@ sap.ui.define(
             sResizeClass = 'uteLabel-resize-' + oControl.getResize().toLowerCase();
             sDesignClass = 'uteLabel-design-' + oControl.getDesign().toLowerCase();
             oImage = oControl._getImage(oControl.getIcon());
+            oImage.addStyleClass(sColorClass);
             oImage.addStyleClass(sDesignClass);
             oImage.addStyleClass(sResizeClass);
 

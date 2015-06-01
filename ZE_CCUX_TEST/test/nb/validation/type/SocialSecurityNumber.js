@@ -41,17 +41,13 @@ sap.ui.define(
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
             console.log('parseValue ... ' + oValue);
 
-
-            if (oValue === undefined || oValue === null || oValue.trim() === '') {
-                return oValue;
-            }
-
-            var ssnRegex = /^\d{3}-?\d{2}-?\d{4}$/;
+          var ssnRegex = /.{1,12}/;
             if (!(ssnRegex.test(oValue))) {
                 throw new ParseException('Invalid SSN');
             }
 
-            return oValue.toLowerCase();
+
+            return oValue;
         };
 
         // Model value meets constraint requirements
@@ -68,7 +64,10 @@ sap.ui.define(
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
             console.log('formatValue ... ' + oValue);
-
+             if (oValue === undefined || oValue === null || oValue.trim() === '') {
+                 return oValue;
+             }
+            /*No formatting added as the masking should be done at server level itself to  protect from hacking*/
 
             return oValue;
 

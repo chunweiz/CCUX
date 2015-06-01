@@ -368,24 +368,28 @@ font-size: @uteFontSize-large;
     color: black;
 }
 
-.uteLabel-color-yellownotification {
+.uteLabel-color-yellow {
     color: darkgoldenrod;
 
 }
 
-.uteLabel-color-rednotification{
+.uteLabel-color-red{
     color: crimson;
 }
 
-.uteLabel-color-bluenotification {
+.uteLabel-color-blue {
     color: cornflowerblue;
+
     }
-.uteLabel-design-bold{
-    font-weight: bold;
+.uteLabel-design-regular{
+    font-weight: 400;
+}
+.uteLabel-design-semibold {
+    font-weight: 600;
 
 }
-.uteLabel-design-semibold{
-    font-weight: bolder;
+.uteLabel-design-bold{
+    font-weight: 700;
 }
 .uteLabel-resize-small{
     font-size: 10pt;
@@ -397,7 +401,7 @@ font-size: @uteFontSize-large;
     font-size: 14pt;
 }
 .uteLabel-padding{
-    padding: 10px;
+    padding: 20px;
 }
 .uteIcoLabel-padding{
     padding: 10px;

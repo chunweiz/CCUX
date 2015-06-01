@@ -1,5 +1,6 @@
 /*global sap*/
-/*jslint nomen:true*/
+/*jslint vars: true, plusplus: true, devel: true, nomen: true, indent: 4, maxerr: 50 regexp: true */
+/*global define */
 
 sap.ui.define(
     [
@@ -23,16 +24,59 @@ sap.ui.define(
             return 'nrg.util.type.ContractAccountNumber';
         };
 
-        CustomType.prototype.formatValue = function (oValue, sInternalType) {
-            throw new FormatException('');
+        CustomType.prototype.setFormatOptions = function (oFormatOptions) {
+            this.oFormatOptions = oFormatOptions;
         };
 
+        CustomType.prototype.setConstraints = function (oConstraints) {
+            this.oConstraints = oConstraints;
+
+            if ($.isEmptyObject(this.oConstraints)) {
+                this.oConstraints = {
+                    mandatory: false
+                };
+            }
+        };
+
+        // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
-            throw new ParseException('');
+            console.log('parseValue ... ' + oValue);
+
+            if (oValue === undefined || oValue === null) {
+                return oValue;
+            }
+
+            if (isNaN(oValue)) {
+                throw new ParseException('Invalid contract account number');
+            }
+
+            return oValue.replace(/^(0+)/g, '');
         };
 
+        // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
-            throw new ValidateException('');
+            console.log('validateValue ... [' + oValue + ']');
+
+            if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                throw new ValidateException('Contract account number cannot be empty');
+            }
+
+            if (oValue.length < 1 || oValue.length > 12) {
+                throw new ValidateException('Invalid contract account number');
+            }
+
+            return oValue;
+        };
+
+        // Model to Output
+        CustomType.prototype.formatValue = function (oValue, sInternalType) {
+            console.log('formatValue ... ' + oValue);
+
+            if (oValue === undefined || oValue === null) {
+                return oValue;
+            }
+
+            return oValue.replace(/^(0+)/g, '');
         };
 
         return CustomType;

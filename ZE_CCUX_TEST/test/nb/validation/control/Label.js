@@ -1,4 +1,4 @@
-/*global sap, nb*/
+/*global sap, tm*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -12,12 +12,15 @@ sap.ui.define(
     function (CoreControl, CoreEnabledPropagator, CoreIconPool) {
         'use strict';
 
-        var Control = CoreControl.extend('nb.control.lib.ui.Label2', {
+        var Control = CoreControl.extend('tm.message.control.Label', {
             metadata: {
-                library: 'nb.control.lib.ui',
+                library: 'tm.message.control',
 
                 properties: {
-
+                    design: {
+                        type: 'tm.message.control.LabelDesign',
+                        defaultValue: tm.message.control.LabelDesign.None
+                    },
                     icon: {
                         type: 'sap.ui.core.URI',
                         defaultValue: null
@@ -25,24 +28,7 @@ sap.ui.define(
                     text: {
                         type: 'string',
                         defaultValue: ''
-                    },
-                    design: {
-                        type: 'nb.control.lib.ui.LabelDesign',
-                        defaultValue: nb.control.lib.ui.LabelDesign.Regular
-                    },
-                    color: {
-                        type: 'nb.control.lib.ui.LabelColor',
-                        defaultValue: nb.control.lib.ui.LabelColor.None
-                    },
-                    resize: {
-                        type: 'nb.control.lib.ui.LabelResize',
-                        defaultValue: nb.control.lib.ui.LabelResize.Small
-                    },
-                    textAlign: {
-                        type: 'nb.control.lib.ui.LabelTtextAlign',
-                        defaultValue: nb.control.lib.ui.LabelResize.Small
-                    },
-
+                    }
                 }
             }
         });

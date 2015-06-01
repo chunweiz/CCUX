@@ -1,5 +1,6 @@
 /*global sap*/
-/*jslint nomen:true*/
+/*jslint vars: true, plusplus: true, devel: true, nomen: true, indent: 4, maxerr: 50 regexp: true */
+/*global define */
 
 sap.ui.define(
     [
@@ -47,6 +48,7 @@ sap.ui.define(
             }
 
             var emailRegex = /^[^.\s()\[\],;:@][^\s()\[\],;:@]+[^.\s()\[\],;:@]@[a-zA-Z0-9]+\..+/i;
+           // var emailRegex = /^[\d\w\W!#$%&''*+- \/=?\^_`{}|~@"][\d\w\W!#$%&''*+- \/=?\^_`{}|~@.]+[\d\w\W!#$%&''*+- \/=?\^_`{}|~@]@[a-zA-Z0-9]+\..+/i;
             if (!(emailRegex.test(oValue))) {
                 throw new ParseException('Invalid email');
             }
@@ -62,7 +64,7 @@ sap.ui.define(
                 throw new ValidateException('Email cannot be empty');
             }
 
-             if (oValue.length < 1 || oValue.length > 241) {
+            if (oValue.length < 1 || oValue.length > 241) {
                 throw new ValidateException('Email Address length exceeds(allowed upto 241 char)');
             }
 
