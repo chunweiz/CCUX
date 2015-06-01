@@ -1,3 +1,38 @@
 .uteMBtn {
-
+    display: inline-block;
+    min-width: 82px;
+    min-height: 28px;
+    border-radius: 2px;
 }
+
+.uteMBtn:hover {
+    cursor: pointer;
+}
+
+.uteMBtn-text {
+    font-size: @uteFontSize-small;
+}
+
+
+/*
+** Button design - default
+*/
+.uteMBtn-design-default {
+    background-color: @uteColor-lightBlue-500;
+    color: @uteColor-white;
+}
+
+.uteMBtn-design-default:hover {
+    background-color: @uteColor-lightBlue-200;
+}
+
+.uteMBtn-design-default[data-disabled="true"] {
+    background-color: @uteColor-grey-500;
+    color: @uteColor-grey-200;
+}
+
+.uteMBtn-design-default[data-disabled="true"]:hover {
+    background-color: @uteColor-grey-500;
+    cursor: default;
+}
+

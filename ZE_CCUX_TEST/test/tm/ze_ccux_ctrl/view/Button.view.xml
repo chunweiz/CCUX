@@ -9,11 +9,37 @@
     displayBlock="true">
 
     <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
-        <um:Button text="this is a new button">
-            <div>hidden text</div>
-            <div>hidden text</div>
+        <style>
+            .custom {
+                background-color: tomato;
+            }
+
+            .customBtnClass[data-disabled="true"] .custom {
+                background-color: green;
+            }
+        </style>
+
+        <div>Vanilla button</div>
+        <um:Button design="None" text="this is a new button" press=".onPressed" />
+
+        <div>Default button</div>
+        <um:Button text="this is a new button" press=".onPressed" />
+
+        <br/><div>Default disabled button</div>
+        <um:Button text="this is a new button" press=".onPressed" disabled="true" />
+
+        <br/><div>Button with stuffing</div>
+        <um:Button press=".onPressed">
+            <div>Another text</div>
+            <div>Yet another text</div>
         </um:Button>
 
+        <br/><div>Vanilla button with stuffing</div>
+        <um:Button design="Default" class="customBtnClass" disabled="true" press=".onPressed">
+            <div>haisda</div>
+            <div class="custom" >hzzz</div>
+        </um:Button>
 
     </sm:ScrollContainer>
 </mvc:View>
+
