@@ -3,6 +3,7 @@
 /*global define */
 
 
+/*
 sap.ui.define(
     [
         'jquery.sap.global',
@@ -48,12 +49,7 @@ sap.ui.define(
                 return oValue;
             }
 
-            var dlRegex = /^.{1,13}$/;
-            if (!(dlRegex.test(oValue))) {
-                throw new ParseException('Invalid Driving License');
-            }
-
-            return oValue.toLowerCase();
+            return oValue;
         };
 
         // Model value meets constraint requirements
@@ -63,6 +59,9 @@ sap.ui.define(
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
                 throw new ValidateException('Driving License cannot be empty');
             }
+            if (oValue.length < 1 || oValue.length > 20) {
+                throw new ValidateException('DL length exceeds(allowed upto 20 char)');
+            }
 
             return oValue;
         };
@@ -71,6 +70,7 @@ sap.ui.define(
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
             console.log('formatValue ... ' + oValue);
 
+            /*No formatting added to mask the original DL as the masking should be done at server level itself to  protect from hacking*/
 
             return oValue;
 
@@ -79,3 +79,4 @@ sap.ui.define(
         return CustomType;
     }
 );
+*/

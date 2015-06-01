@@ -15,6 +15,9 @@
                 width: 100%;
                 height: 100%;
             }
+            .myclass{
+                margin-left: 10px;
+            }
         </style>
 
            <script id="sap-ui-bootstrap"
@@ -116,11 +119,24 @@
         </nb:Tag>
         <nb:Tag>
 
-            <nb:TextView
+            <u:TextView
                 text="I am a text view"
                 width="10px"
-                design="Small">
-            </nb:TextView>
+                design="Small"
+                class="myclass">
+            </u:TextView>
+
+
+
+        </nb:Tag>
+         <nb:Tag>
+
+          <u:Infoline title="Description">
+                 <u:Tag>wygdjhdsgjsbxcvjgsvcxsahjvxcjygsavxhasv</u:Tag>
+
+                </u:Infoline>
+
+
 
 
         </nb:Tag>
@@ -138,7 +154,7 @@
        <nb:Tag>
             <nb:Table width="50%"
                      tableType="CampaignTable"
-                rows="{modelData>/test}" >
+                rows="{myData>/test}" >
                 <nb:columns>
                     <nb:TableColumn
                         width="50%"
@@ -152,8 +168,8 @@
                 </nb:columns>
                 <nb:rows>
                     <nb:TableRow>
-                        <sap:Label text="{modelData>lastName}"/>
-                        <sap:Label text="{modelData>gender}"/>
+                        <sap:Label text="{myData>lastName}"/>
+                        <sap:Label text="{myData>gender}"/>
                     </nb:TableRow>
                 </nb:rows>
             </nb:Table>
@@ -175,13 +191,33 @@
                 });
 
                 sap.ui.xmlview({ viewContent: jQuery('#main').html() })
-                  /*  .setModel(new sap.ui.model.json.JSONModel({
+                    .setModel(new sap.ui.model.json.JSONModel({
                         myData: [
-                            { firstName: 'tau ming', lastName: 'hew' },
-                            { firstName: 'hung ju', lastName: 'lin' },
-                            { firstName: 'navya', lastName: 'basavaraju' }
-                        ]
-                    }))*/
+
+	{lastName: "Dente", name: "Al", checked: true, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person1.gif", gender: "male", rating: 4},
+	{lastName: "Friese", name: "Andy", checked: true, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person2.gif", gender: "male", rating: 2},
+	{lastName: "Mann", name: "Anita", checked: false, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person1.gif", gender: "female", rating: 3},
+	{lastName: "Schutt", name: "Doris", checked: true, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person1.gif", gender: "female", rating: 4},
+	{lastName: "Open", name: "Doris", checked: true, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person1.gif", gender: "female", rating: 2},
+	{lastName: "Dewit", name: "Kenya", checked: false, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person1.gif", gender: "female", rating: 3},
+	{lastName: "Zar", name: "Lou", checked: true, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person1.gif", gender: "male", rating: 1},
+	{lastName: "Burr", name: "Tim", checked: true, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person2.gif", gender: "male", rating: 2},
+	{lastName: "Hughes", name: "Tish", checked: true, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person1.gif", gender: "male", rating: 5},
+	{lastName: "Town", name: "Mo", checked: true, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person1.gif", gender: "male", rating: 3},
+	{lastName: "Case", name: "Justin", checked: false, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person1.gif", gender: "male", rating: 3},
+	{lastName: "Time", name: "Justin", checked: true, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person1.gif", gender: "male", rating: 4},
+	{lastName: "Barr", name: "Sandy", checked: true, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person1.gif", gender: "male", rating: 2},
+	{lastName: "Poole", name: "Gene", checked: true, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person2.gif", gender: "male", rating: 1},
+	{lastName: "Ander", name: "Corey", checked: false, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person1.gif", gender: "male", rating: 5},
+	{lastName: "Early", name: "Brighton", checked: true, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person1.gif", gender: "male", rating: 3},
+	{lastName: "Noring", name: "Constance", checked: true, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person1.gif", gender: "female", rating: 4},
+	{lastName: "O'Lantern", name: "Jack", checked: true, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person1.gif", gender: "male", rating: 2},
+	{lastName: "Tress", name: "Matt", checked: true, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person2.gif", gender: "male", rating: 4},
+	{lastName: "Turner", name: "Paige", checked: true, linkText: "www.sap.com", href: "http://www.sap.com", src: "images/person1.gif", gender: "female", rating: 3}
+        ]
+
+
+                    }))
                     .placeAt('fromxml');
 
                 // Create JSON data model

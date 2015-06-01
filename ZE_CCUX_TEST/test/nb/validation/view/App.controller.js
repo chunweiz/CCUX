@@ -9,9 +9,12 @@ sap.ui.define(
         'sap/ui/core/message/ControlMessageProcessor',
         'tm/message/validation/type/ContractAccountNumber',
         'tm/message/validation/type/BusinessPartnerNumber',
+        'tm/message/validation/type/ContractNumber',
         'tm/message/validation/type/Price',
         'tm/message/validation/type/EmailAddress',
-        'tm/message/validation/type/SocialSecurityNumber'
+        'tm/message/validation/type/SocialSecurityNumber',
+        'tm/message/validation/type/DrivingLicenseNumber',
+        'tm/message/validation/type/ESID'
 
     ],
 
@@ -47,7 +50,10 @@ sap.ui.define(
                 bpNum: '1234567890',
                 price: 12.35,
                 email: 'test@test.com',
-                ssn: '123-45-6789'
+                dl: 'NGLT21OU-9592',
+                cNum: '0027914550',
+                esid: '20443720006324100'
+
             });
 
             this.getView().setModel(oModel);

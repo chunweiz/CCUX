@@ -5,18 +5,21 @@
     xmlns:mvc="sap.ui.core.mvc">
 
     <ute:Tag class="nrgToolsEmpty nrgAppMain-toolsContent nrgAppMain-toolsContent-full">
-        <ute:content>
-            <span>Tools</span>
-            <ute:Tag>
+        <ute:Tag class="nrgCamToolsT" >
+            <ute:Tag class="nrgCamToolsTitleT" text="{comp-i18n&gt;nrgCmpToolsTtl}" />
+            <ute:Tag class="nrgCamToolsBtnT nrgCamTools-top" >
                 <ute:Button
-                    text="Campaign History"
+                    id="idnrgCamToolsBtn-H"
+                    text="{comp-i18n&gt;nrgCmpToolsBtnHis}"
                     enabled="true">
                 </ute:Button>
                 <ute:Button
-                    text="Change Campaign - Cancel"
-                    enabled="true">
+                    id="idnrgCamToolsBtn-C"
+                    text="{comp-i18n&gt;nrgCmpToolsBtnCan}"
+                    enabled="true"
+                    class="nrgCamTools-top">
                 </ute:Button>
             </ute:Tag>
-        </ute:content>
+        </ute:Tag>
     </ute:Tag>
 </mvc:View>

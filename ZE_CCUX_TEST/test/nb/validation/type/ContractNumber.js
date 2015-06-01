@@ -2,7 +2,6 @@
 /*jslint vars: true, plusplus: true, devel: true, nomen: true, indent: 4, maxerr: 50 regexp: true */
 /*global define */
 
-/*
 sap.ui.define(
     [
         'jquery.sap.global',
@@ -15,14 +14,14 @@ sap.ui.define(
     function ($, SimpleType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = SimpleType.extend('nrg.util.type.ContractAccountNumber', {
+        var CustomType = SimpleType.extend('tm.message.validation.type.ContractNumber', {
             constructor: function (oFormatOptions, oConstraints) {
-                SimpleType.prototype.apply(this, arguments);
+                SimpleType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'nrg.util.type.ContractAccountNumber';
+            return 'tm.message.validation.type.ContractNumber';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {
@@ -48,7 +47,7 @@ sap.ui.define(
             }
 
             if (isNaN(oValue)) {
-                throw new ParseException('Invalid contract account number');
+                throw new ParseException('Invalid contract number');
             }
 
             return oValue.replace(/^(0+)/g, '');
@@ -59,11 +58,11 @@ sap.ui.define(
             console.log('validateValue ... [' + oValue + ']');
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
-                throw new ValidateException('Contract account number cannot be empty');
+                throw new ValidateException('Contract number cannot be empty');
             }
 
-            if (oValue.length < 1 || oValue.length > 12) {
-                throw new ValidateException('Invalid contract account number');
+            if (oValue.length < 1 || oValue.length > 10) {
+                throw new ValidateException('Invalid contract number');
             }
 
             return oValue;
@@ -83,4 +82,3 @@ sap.ui.define(
         return CustomType;
     }
 );
-*/
