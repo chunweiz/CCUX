@@ -3,17 +3,18 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:sm="sap.m"
     xmlns:um="ute.ui.main"
-    controllerName="test.tm.ze_ccux_ctrl.view.Button"
+    controllerName="test.tm.ze_ccux_ctrl.view.Label"
     height="100%"
     width="100%"
     displayBlock="true">
 
     <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
-        <um:Button text="this is a new button">
-            <div>hidden text</div>
-            <div>hidden text</div>
-        </um:Button>
 
+        <um:Label text="this is a new label" /><br/>
+        <um:Label>
+            <span>icon </span>
+            <span>text</span>
+        </um:Label>
 
     </sm:ScrollContainer>
 </mvc:View>

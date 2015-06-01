@@ -10,9 +10,9 @@ sap.ui.define(
         var CustomRenderer = {};
 
         CustomRenderer.render = function (oRm, oCustomControl) {
-            oRm.write('<button');
+            oRm.write('<label');
             oRm.writeControlData(oCustomControl);
-            oRm.addClass('uteMBtn');
+            oRm.addClass('uteMLbl');
             oRm.writeClasses();
             oRm.write('>');
 
@@ -24,7 +24,7 @@ sap.ui.define(
                 oCustomControl._addHtmlContent(oRm);
             }
 
-            oRm.write('</button>');
+            oRm.write('</label>');
         };
 
         return CustomRenderer;

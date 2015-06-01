@@ -9,10 +9,8 @@
 
         "routing": {
             "routes": {
-                "Button": {
-                    "pattern": "Button",
-                    "target": [ "Button" ]
-                }
+                "Button": { "pattern": "Button", "target": [ "Button" ] },
+                "Label": { "pattern": "Label", "target": [ "Label" ] }
             },
 
             "config": {
@@ -23,10 +21,8 @@
             },
 
             "targets": {
-                "Button": {
-                    "viewName": "Button",
-                    "controlId": "idAppContent"
-                }
+                "Button": { "viewName": "Button", "controlId": "idAppContent" },
+                "Label": { "viewName": "Label", "controlId": "idAppContent" }
             }
         }
     }

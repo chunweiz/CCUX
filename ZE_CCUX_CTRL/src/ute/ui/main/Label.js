@@ -3,15 +3,20 @@
 
 sap.ui.define(
     [
-        'sap/ui/core/Control'
+        'sap/ui/core/Control',
+        'sap/ui/core/LabelEnablement'
     ],
 
-    function (Control) {
+    function (Control, LabelEnablement) {
         'use strict';
 
-        var CustomControl = Control.extend('ute.ui.main.Button', {
+        var CustomControl = Control.extend('ute.ui.main.Label', {
             metadata: {
                 library: 'ute.ui.main',
+
+                interfaces: [
+                    'sap.ui.core.Label'
+                ],
 
                 properties: {
                     text: {
@@ -28,9 +33,18 @@ sap.ui.define(
                     }
                 },
 
-                defaultAggregation: 'content'
+                defaultAggregation: 'content',
+
+                associations: {
+                    labelFor: {
+                        multiple: false,
+                        type: 'sap.ui.core.Control'
+                    }
+                }
             }
         });
+
+        LabelEnablement.enrich(CustomControl.prototype);
 
         CustomControl.prototype._addHtmlText = function (oRm) {
             oRm.write('<span>');
