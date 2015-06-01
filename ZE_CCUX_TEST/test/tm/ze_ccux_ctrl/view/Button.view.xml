@@ -12,6 +12,12 @@
         <style>
             .custom {
                 background-color: tomato;
+                color: gold;
+            }
+
+            .custom:hover {
+                background-color: gold;
+                color: tomato;
             }
 
             .customBtnClass[data-disabled="true"] .custom {
@@ -34,8 +40,13 @@
             <div>Yet another text</div>
         </um:Button>
 
-        <br/><div>Vanilla button with stuffing</div>
-        <um:Button design="Default" class="customBtnClass" disabled="true" press=".onPressed">
+        <br/><div>Custom button styling</div>
+        <um:Button design="None" class="custom" disabled="true" press=".onPressed">
+            <div>haisda</div>
+        </um:Button>
+
+        <br/><div>Substyling standard button with stuffing</div>
+        <um:Button class="customBtnClass" disabled="true" press=".onPressed">
             <div>haisda</div>
             <div class="custom" >hzzz</div>
         </um:Button>
