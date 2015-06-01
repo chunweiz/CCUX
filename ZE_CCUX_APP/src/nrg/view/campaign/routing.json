@@ -5,9 +5,12 @@
                 "campaign": {
                     "pattern": "bp/{bpNum}/ca/{caNum}/campaign",
                     "target": [ "campaign.Overview", "dashboard.SummaryBP", "campaign.Tools" ]
+                },
+                "campaignchg": {
+                    "pattern": "bp/{bpNum}/ca/{caNum}/cmpchg",
+                    "target": [ "campaign.Change", "dashboard.SummaryBP", "campaign.Tools" ]
                 }
             },
-
             "targets": {
                 "campaign.General": {
                     "viewName": "campaign.General",
@@ -15,6 +18,14 @@
                 },
                 "campaign.Overview": {
                     "viewName": "campaign.Overview",
+                    "controlId": "idAppGeneral"
+                },
+                "campaign.History": {
+                    "viewName": "campaign.History",
+                    "controlId": "idAppGeneral"
+                },
+                "campaign.Change": {
+                    "viewName": "campaign.Change",
                     "controlId": "idAppGeneral"
                 },
                 "campaign.Tools": {
