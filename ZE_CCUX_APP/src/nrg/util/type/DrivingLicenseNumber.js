@@ -39,8 +39,6 @@ sap.ui.define(
 
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
-            console.log('parseValue ... ' + oValue);
-
 
             if (oValue === undefined || oValue === null || oValue.trim() === '') {
                 return oValue;
@@ -51,7 +49,6 @@ sap.ui.define(
 
         // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
-            console.log('validateValue ... [' + oValue + ']');
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
                 throw new ValidateException('Driving License cannot be empty');
@@ -65,7 +62,6 @@ sap.ui.define(
 
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
-            console.log('formatValue ... ' + oValue);
 
             /*No formatting added to mask the original DL as the masking should be done at server level itself to  protect from hacking*/
 
