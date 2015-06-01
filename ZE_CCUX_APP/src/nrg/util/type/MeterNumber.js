@@ -23,16 +23,52 @@ sap.ui.define(
             return 'nrg.util.type.MeterNumber';
         };
 
-        CustomType.prototype.formatValue = function (oValue, sInternalType) {
-            throw new FormatException('');
+        CustomType.prototype.setFormatOptions = function (oFormatOptions) {
+            this.oFormatOptions = oFormatOptions;
         };
 
+        CustomType.prototype.setConstraints = function (oConstraints) {
+            this.oConstraints = oConstraints;
+
+            if ($.isEmptyObject(this.oConstraints)) {
+                this.oConstraints = {
+                    mandatory: false
+                };
+            }
+        };
+
+        // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
-            throw new ParseException('');
+
+            if (oValue === undefined || oValue === null) {
+                return oValue;
+            }
+
+            return oValue.replace(/^(0+)/g, '');
         };
 
+        // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
-            throw new ValidateException('');
+
+            if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                throw new ValidateException('MeterNumber cannot be empty');
+            }
+            if (oValue.length < 1 || oValue.length > 18) {
+                throw new ValidateException('MeterNumber length exceeds(allowed upto 18 char)');
+            }
+
+            return oValue;
+        };
+
+        // Model to Output
+        CustomType.prototype.formatValue = function (oValue, sInternalType) {
+
+            if (oValue === undefined || oValue === null || oValue.trim() === '') {
+                return oValue;
+            }
+
+            return oValue.replace(/^(0+)/g, '');
+
         };
 
         return CustomType;

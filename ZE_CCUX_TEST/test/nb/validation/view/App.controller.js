@@ -52,7 +52,8 @@ sap.ui.define(
                 email: 'test@test.com',
                 dl: 'NGLT21OU-9592',
                 cNum: '0027914550',
-                esid: '20443720006324100'
+                esid: '20443720006324100',
+                mnum: '029545116GE'
 
             });
 
