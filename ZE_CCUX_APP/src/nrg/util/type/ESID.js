@@ -20,21 +20,60 @@ sap.ui.define(
         });
 
         CustomType.prototype.getName = function () {
-            return 'nrg.util.type.ESID';
+            return 'tm.message.validation.type.ESID';
         };
 
-        CustomType.prototype.formatValue = function (oValue, sInternalType) {
-            throw new FormatException('');
+        CustomType.prototype.setFormatOptions = function (oFormatOptions) {
+            this.oFormatOptions = oFormatOptions;
         };
 
+        CustomType.prototype.setConstraints = function (oConstraints) {
+            this.oConstraints = oConstraints;
+
+            if ($.isEmptyObject(this.oConstraints)) {
+                this.oConstraints = {
+                    mandatory: false
+                };
+            }
+        };
+
+        // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
-            throw new ParseException('');
+
+            if (oValue === undefined || oValue === null) {
+                return oValue;
+            }
+
+            if (isNaN(oValue)) {
+                throw new ParseException('Invalid ESID');
+            }
+            return oValue;
         };
 
+        // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
-            throw new ValidateException('');
+
+            if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                throw new ValidateException('ESID cannot be empty');
+            }
+            if (oValue.length < 1 || oValue.length > 50) {
+                throw new ValidateException('ESID length exceeds(allowed upto 50 char)');
+            }
+
+            return oValue;
         };
 
+        // Model to Output
+        CustomType.prototype.formatValue = function (oValue, sInternalType) {
+
+            if (oValue === undefined || oValue === null || oValue.trim() === '') {
+                return oValue;
+            }
+
+            return oValue;
+
+        };
         return CustomType;
     }
 );
+

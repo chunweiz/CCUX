@@ -5,65 +5,45 @@
           xmlns:core="sap.ui.core"
           xmlns:u="ute.ui.commons"
           xmlns:l="sap.ui.commons.layout"
-          controllerName="nrg.view.campaign.Overview"
+          controllerName="nrg.view.campaign.History"
           height="100%"
           width="100%"
           displayBlock="true">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
-      <u:Tag class="nrgCamOvrT">
-         <u:Tag class="nrgCamOvrTitleT" text="{comp-i18n&gt;nrgCmpOvrTtl}" />
-            <article class="nrgCamOvr-offerToolbar nrgCamOvr-top">
-                <button id="idCamCustReqOfferBtn" type="button" class="nrgCamOvr-offerBtn">
-                    <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n&gt;nrgAppFooterCustReqOffer}" />
-                    <u:Tag id="idCamCustReqOffer" class="nrgCamOvr-offerBtnDesc nrgCamOvr-offerBtnTitle-ok" text="{comp-i18n&gt;nrgAppFooterEligibile}" />
-                </button>
-                <button id="idCamAgtReqOfferBtn" type="button" class="nrgCamOvr-offerBtn">
-                    <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n&gt;nrgAppFooterAgentReqOffer}" />
-                    <u:Tag id="idCamAgentReqOffer" class="nrgCamOvr-offerBtnDesc" text="{comp-i18n&gt;nrgAppFooterNotEligibile}" />
-                </button>
-            </article>
-            <u:Tag class="nrgCamToggleT">
-                <u:ToggleButton
-                    id="idCamToggleBtn"
-                    leftBtnText="{comp-i18n&gt;nrgCmpOvrCt}"
-                    leftBtnWidth="400px"
-                    rightBtnWidth="400px"
-                    rightBtnText="{comp-i18n&gt;nrgCmpOvrPg}"
-                    design="ToggleCampaign" press="testFunc"
-                    class="nrgCamOvr-top nrgCamToggle-Btn"/>
-            </u:Tag>
-            <l:MatrixLayout class="nrgCamOvrMtx nrgCamOvr-top">
+      <u:Tag class="nrgCamHisT">
+         <u:Tag class="nrgCamHisTtlT" text="{comp-i18n&gt;nrgCmpHisTtl}" />
+            <l:MatrixLayout class="nrgCamHisMtx nrgCamHis-top">
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <c:Label id="idCamTitleLbl" text="{comp-i18n&gt;nrgCmpOvrTtllbl}" icon="sap-icon://nrg-icon/tag" class="nrgCamOvr-lbl"  labelFor="idCamTitleTv"  />
+                        <c:Label id="idCamHisTtlLbl" text="{comp-i18n&gt;nrgCmpHisTtllbl}" icon="sap-icon://nrg-icon/tag" class="nrgCamHis-lbl"  labelFor="idCamHisTtlTv"  />
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
-                        <c:Label id="idCamAvgUsgLbl" text="{comp-i18n&gt;nrgCmpOvrAUlbl}" icon="sap-icon://nrg-icon/bulb" class="nrgCamOvr-lbl" labelFor="idCamAvgUsgTv"  />
+                        <c:Label id="idCamHisAULbl" text="{comp-i18n&gt;nrgCmpHisAUlbl}" icon="sap-icon://nrg-icon/bulb" class="nrgCamHis-lbl" labelFor="idCamHisAUTv"  />
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <u:TextView id="idCamTitleTv" text="CNP AVG@2000=11.3 Secure Advantage 24"
-                                                    class="nrgCamOvr-left"
+                        <u:TextView id="idCamHisTtlTv" text="CNP AVG@2000=11.3 Secure Advantage 24"
+                                                    class="nrgCamHis-left"
                                                     color="DarkGrey"
                                                     design="Base"/>
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
-                        <u:TextView id="idCamAvgUsgTv"
+                        <u:TextView id="idCamHisAUTv"
                                     text="~2300kWh per Month"
-                                    class="nrgCamOvr-left"
+                                    class="nrgCamHis-left"
                                     color="DarkGrey"
                                     design="Base"/>
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>
-            <u:Tag class="nrgCamPriceT">
-                <c:Label id="idCamPrcLbl" text="{comp-i18n&gt;nrgCmpOvrPrclbl}" icon="sap-icon://nrg-icon/dollar" class="nrgCamOvr-lbl nrgCamOvr-top" labelFor="idCamPriceTbl"  />
+            <u:Tag class="nrgCamHisPrcT">
+                <c:Label id="idCamPrcLbl" text="{comp-i18n&gt;nrgCmpHisPrcbl}" icon="sap-icon://nrg-icon/dollar" class="nrgCamHis-lbl nrgCamHis-top" labelFor="idCamHisPrcTbl"  />
                 <u:Table width="60%"
-                    id="idCamPriceTbl"
+                    id="idCamHisPrcTbl"
                     tableType="CampaignTable"
-                    class="nrgCamOvr-left nrgCamOvr-top"
-                    rows="{modelData>/priceData}" >
+                    class="nrgCamHis-left nrgCamHis-top"
+                    rows="{historyData>/priceData}" >
                         <u:columns>
                             <u:TableColumn width="33%" >
                                 <c:Label text="EFL@500"/>
@@ -77,23 +57,23 @@
                         </u:columns>
                         <u:rows>
                             <u:TableRow>
-                                <c:Label text="{modelData>EFL500}"/>
-                                <c:Label text="{modelData>EFL1000}"/>
-                                <c:Label text="{modelData>EFL2000}"/>
+                                <c:Label text="{historyData>EFL500}"/>
+                                <c:Label text="{historyData>EFL1000}"/>
+                                <c:Label text="{historyData>EFL2000}"/>
                             </u:TableRow>
                         </u:rows>
                 </u:Table>
             </u:Tag>
-            <u:Tag class="nrgCamDescT">
-                    <c:Label id="idCamDescLbl"
-                        text="{comp-i18n&gt;nrgCmpOvrDsclbl}"
+            <u:Tag class="nrgCamHisDscT">
+                    <c:Label id="idCamHisDscLbl"
+                        text="{comp-i18n&gt;nrgCmpHisDscbl}"
                         icon="sap-icon://nrg-icon/description"
-                        class="nrgCamOvr-lbl nrgCamOvr-top nrgCamOvr-desc"
+                        class="nrgCamHis-lbl nrgCamHis-top nrgCamHis-desc"
                         labelFor="idCamDescTv" />
                     <u:TextView
-                        id="idCamDescTv"
+                        id="idCamHisDscTv"
                         color="DarkGrey"
-                        class="nrgCamOvr-left nrgCamOvr-top"
+                        class="nrgCamHis-left nrgCamHis-top"
                         design="Base"
                         text="You have agreed to purchase:
 
@@ -118,10 +98,10 @@
                         Great! Thank you so much." />
             </u:Tag>
             <u:Table width="100%"
-                     id="idCamInfoTbl"
-                     class="nrgCamOvr-top"
+                     id="idCamHisInfTbl"
+                     class="nrgCamHis-top"
                      tableType="CampaignTable"
-                     rows="{modelData>/campaignData}" >
+                     rows="{historyData>/campaignData}" >
                 <u:columns>
                     <u:TableColumn>
                         <c:Label text="Promo Code"/>
@@ -147,13 +127,13 @@
                 </u:columns>
                 <u:rows>
                     <u:TableRow>
-                            <c:Label text="{modelData>PromoCode}"/>
-                            <c:Label text="{modelData>OfferCode}"/>
-                            <c:Label text="{modelData>TermLength}"/>
-                            <c:Label text="{modelData>StartDate}"/>
-                            <c:Label text="{modelData>EndDate}"/>
-                            <c:Label text="{modelData>CancellationFee}"/>
-                            <c:Label text="{modelData>Incentive}"/>
+                            <c:Label text="{historyData>PromoCode}"/>
+                            <c:Label text="{historyData>OfferCode}"/>
+                            <c:Label text="{historyData>TermLength}"/>
+                            <c:Label text="{historyData>StartDate}"/>
+                            <c:Label text="{historyData>EndDate}"/>
+                            <c:Label text="{historyData>CancellationFee}"/>
+                            <c:Label text="{historyData>Incentive}"/>
                     </u:TableRow>
                 </u:rows>
             </u:Table>

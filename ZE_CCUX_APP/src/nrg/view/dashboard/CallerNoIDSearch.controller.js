@@ -4,7 +4,6 @@
 sap.ui.define(
     [
         'nrg/util/view/BaseController'
-        //'sap/ui/core/mvc/Controller'
     ],
 
     function (CoreController) {
@@ -15,10 +14,13 @@ sap.ui.define(
         Controller.prototype.onInit = function () {
             var oModel;
 
-            oModel = this.getOwnerComponent().getModel('comp-dashboard');
+            /*oModel = this.getOwnerComponent().getModel('comp-dashboard');
             if (oModel) {
-                oModel.read('/BpSearchs');
-            }
+                var aFilter = [];
+                var oFilter= new sap.ui.model.Filter("PartnerID", sap.ui.model.FilterOperator.EQ, "PartnerID 1");
+                aFilter.push(oFilter);
+                var test = oModel.read('/BpSearchs', aFilter);
+            }*/
         };
 
         return Controller;

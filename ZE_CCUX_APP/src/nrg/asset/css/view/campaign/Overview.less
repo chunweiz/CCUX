@@ -1,7 +1,7 @@
-.nrgCamOvr {
+.nrgCamOvrT {
     font-family: @nrgFontFamily;
 
-    & > .nrgCamOvr-title {
+    & > .nrgCamOvrTitleT {
         margin-left: 8px;
         font-size: @nrgFontSize-base;
         font-weight: @nrgFontWeight-semiBold;
@@ -13,21 +13,25 @@
     &  .nrgCamOvr-left {
          margin-left: 22px;
      }
-    &  .nrgCamOvr-mtx{
+    &  .nrgCamOvr-top {
+        margin-top: 20px;
+    }
+    & > .nrgCamOvrMtx{
         font-family: @nrgFontFamily;
     }
     & > .nrgCamOvr-offerToolbar {
-        margin-top: 10px;
         width: 100%;
+        margin-left: 20px;
     }
     & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn {
-       // width: 100%;
-        height: 92px;
+        height: 50px;
         background-color: @nrgColor-lightBlue;
-        margin-bottom: 20px;
         border: none;
         border-radius: 2px;
         outline-style: none;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-right: 50px;
     }
 
     & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn:hover {
@@ -41,7 +45,7 @@
     }
 
     & > .nrgCamOvr-offerToolbar> .nrgCamOvr-offerBtn > .nrgCamOvr-offerBtnDesc {
-        font: @nrgFontWeight-bold @nrgFontSize-larger @nrgFontFamily;
+        font: @nrgFontWeight-semiBold @nrgFontSize-small @nrgFontFamily;
         color: @nrgColor-redAlert;
         text-transform: uppercase;
     }
@@ -51,3 +55,4 @@
     }
 
 }
+

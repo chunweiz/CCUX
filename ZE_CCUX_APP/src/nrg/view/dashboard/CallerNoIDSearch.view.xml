@@ -4,7 +4,8 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:l="sap.ui.commons.layout"
     xmlns:c="sap.ui.commons"
-    controllerName="nrg.view.dashboard.CallerNoIDSearch">
+    controllerName="nrg.view.dashboard.CallerNoIDSearch"
+    displayBlock="true">
 
 
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
@@ -79,6 +80,10 @@
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
         <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTitle"
                  text="{comp-i18n>nrgDashboardCallerNoIDSearchResultTitle}">
+        </ute:Tag>
+
+        <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTitle"
+                 text="{comp-dashboard>/BpSearchs('1121')/PartnerID}">
         </ute:Tag>
 
         <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTable">

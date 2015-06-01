@@ -1,5 +1,7 @@
 /*global sap*/
-/*jslint nomen:true*/
+/*jslint vars: true, plusplus: true, devel: true, nomen: true, indent: 4, maxerr: 50 regexp: true */
+/*global define */
+
 
 sap.ui.define(
     [
@@ -13,18 +15,14 @@ sap.ui.define(
     function ($, SimpleType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = SimpleType.extend('nrg.util.type.ContractNumber', {
+        var CustomType = SimpleType.extend('tm.message.validation.type.DrivingLicenseNumber', {
             constructor: function (oFormatOptions, oConstraints) {
-                SimpleType.prototype.apply(this, arguments);
+                SimpleType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'nrg.util.type.ContractNumber';
-        };
-
-        CustomType.prototype.getName = function () {
-            return 'tm.message.validation.type.ContractNumber';
+            return 'tm.message.validation.type.DrivingLicenseNumber';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {
@@ -43,27 +41,28 @@ sap.ui.define(
 
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
+            console.log('parseValue ... ' + oValue);
 
-            if (oValue === undefined || oValue === null) {
+
+            if (oValue === undefined || oValue === null || oValue.trim() === '') {
                 return oValue;
             }
 
-            if (isNaN(oValue)) {
-                throw new ParseException('Invalid contract number');
+            //var dlRegex = /^(.*[0-9]){8}$/;
+              var dlRegex = /^.{1,13}$/;
+            if (!(dlRegex.test(oValue))) {
+                throw new ParseException('Invalid Driving License');
             }
 
-            return oValue.replace(/^(0+)/g, '');
+            return oValue.toLowerCase();
         };
 
         // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
+            console.log('validateValue ... [' + oValue + ']');
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
-                throw new ValidateException('Contract number cannot be empty');
-            }
-
-            if (oValue.length < 1 || oValue.length > 10) {
-                throw new ValidateException('Invalid contract number');
+                throw new ValidateException('Driving License cannot be empty');
             }
 
             return oValue;
@@ -71,14 +70,14 @@ sap.ui.define(
 
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
+            console.log('formatValue ... ' + oValue);
+            var zero ='0',
+             pattern = "[0-9a-zA-Z]",
+            re = new RegExp(pattern, "g");
+             oValue = oValue.replace(re,zero)
+            return oValue;
 
-            if (oValue === undefined || oValue === null) {
-                return oValue;
-            }
-
-            return oValue.replace(/^(0+)/g, '');
         };
-
 
         return CustomType;
     }

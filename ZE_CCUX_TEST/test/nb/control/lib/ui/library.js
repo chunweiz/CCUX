@@ -155,20 +155,20 @@ sap.ui.define(
 
     sap.ui.core.IconPool.addIcon('notification', 'nrg-icon', {
             fontFamily: 'nrg-icon',
-            content: 'e616'
+            content: 'e628'
         });
 
     nb.control.lib.ui.LabelColor = {
             None: 'None',
-            RedNotification: 'RedNotification',
-            YellowNotification: 'YellowNotification',
-            BlueNotification: 'BlueNotification',
+            Red: 'Red',
+            Yellow: 'Yellow',
+            Blue: 'Blue',
             White: 'White',
-            Black: 'Black'
+            Black: 'Black',
 
         };
     nb.control.lib.ui.LabelDesign = {
-            Regular: 'Standard',
+            Regular: 'Regular',
             SemiBold: 'SemiBold',
             Bold:   'Bold'
         };

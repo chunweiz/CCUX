@@ -1,5 +1,6 @@
 /*global sap*/
-/*jslint nomen:true*/
+/*jslint vars: true, plusplus: true, devel: true, nomen: true, indent: 4, maxerr: 50 regexp: true */
+/*global define */
 
 sap.ui.define(
     [
@@ -13,18 +14,14 @@ sap.ui.define(
     function ($, SimpleType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = SimpleType.extend('nrg.util.type.ContractNumber', {
+        var CustomType = SimpleType.extend('tm.message.validation.type.ESID', {
             constructor: function (oFormatOptions, oConstraints) {
-                SimpleType.prototype.apply(this, arguments);
+                SimpleType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'nrg.util.type.ContractNumber';
-        };
-
-        CustomType.prototype.getName = function () {
-            return 'tm.message.validation.type.ContractNumber';
+            return 'tm.message.validation.type.ESID';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {
@@ -43,27 +40,27 @@ sap.ui.define(
 
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
+            console.log('parseValue ... ' + oValue);
 
             if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 
             if (isNaN(oValue)) {
-                throw new ParseException('Invalid contract number');
+                throw new ParseException('Invalid ESID');
             }
-
-            return oValue.replace(/^(0+)/g, '');
+            return oValue;
         };
 
         // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
+            console.log('validateValue ... [' + oValue + ']');
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
-                throw new ValidateException('Contract number cannot be empty');
+                throw new ValidateException('ESID cannot be empty');
             }
-
-            if (oValue.length < 1 || oValue.length > 10) {
-                throw new ValidateException('Invalid contract number');
+            if (oValue.length < 1 || oValue.length > 50) {
+                throw new ValidateException('ESID length exceeds(allowed upto 50 char)');
             }
 
             return oValue;
@@ -71,15 +68,15 @@ sap.ui.define(
 
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
-
-            if (oValue === undefined || oValue === null) {
+            console.log('formatValue ... ' + oValue);
+            if (oValue === undefined || oValue === null || oValue.trim() === '') {
                 return oValue;
             }
 
-            return oValue.replace(/^(0+)/g, '');
+                      return oValue;
+
         };
-
-
         return CustomType;
     }
 );
+
