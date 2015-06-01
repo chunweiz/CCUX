@@ -13,55 +13,59 @@
       <u:Tag class="nrgCamOvr">
          <u:Tag class="nrgCamOvr-title" text="OVERVIEW" />
          <u:content>
-            <article class="nrgCamOvr-offerToolbar">
-               <button type="button" class="nrgCamOvr-offerBtn">
+            <article class="nrgCamOvr-offerToolbar nrgCamOvr-top">
+               <button id="idCamCustReqOfferBtn" type="button" class="nrgCamOvr-offerBtn">
                   <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n&gt;nrgAppFooterCustReqOffer}" />
                   <u:Tag id="idCamCustReqOffer" class="nrgCamOvr-offerBtnDesc nrgCamOvr-offerBtnTitle-ok" text="{comp-i18n&gt;nrgAppFooterEligibile}" />
                </button>
-               <button type="button" class="nrgCamOvr-offerBtn">
+               <button id="idCamAgtReqOfferBtn" type="button" class="nrgCamOvr-offerBtn">
                   <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n&gt;nrgAppFooterAgentReqOffer}" />
                   <u:Tag id="idCamAgentReqOffer" class="nrgCamOvr-offerBtnDesc" text="{comp-i18n&gt;nrgAppFooterNotEligibile}" />
                </button>
             </article>
             <u:ToggleButton
+                    id="idCamToggleBtn"
                     leftBtnText="{comp-i18n&gt;nrgCampaignCurrent}"
                     leftBtnWidth="400px"
                     rightBtnWidth="400px"
                     rightBtnText="{comp-i18n&gt;nrgCampaignPending}"
-                    design="ToggleCampaign" press="testFunc" />
-            <l:MatrixLayout class="nrgCamOvr-mtx">
+                    design="ToggleCampaign" press="testFunc"
+                    class="nrgCamOvr-top"/>
+            <l:MatrixLayout class="nrgCamOvr-mtx nrgCamOvr-top">
                 <l:MatrixLayoutRow>
-                    <l:MatrixLayoutCell><c:Label text="Title" icon="sap-icon://nrg-icon/tag" class="nrgCamOvr-lbl" /></l:MatrixLayoutCell>
-                    <l:MatrixLayoutCell><c:Label text="Customer Average Usage" icon="sap-icon://nrg-icon/bulb" class="nrgCamOvr-lbl" /></l:MatrixLayoutCell>
+                    <l:MatrixLayoutCell><c:Label id="idCamTitleLbl" text="Title" icon="sap-icon://nrg-icon/tag" class="nrgCamOvr-lbl"  labelFor="idCamTitleTv"  /></l:MatrixLayoutCell>
+                    <l:MatrixLayoutCell><c:Label id="idCamAvgUsgLbl" text="Customer Average Usage" icon="sap-icon://nrg-icon/bulb" class="nrgCamOvr-lbl" labelFor="idCamAvgUsgTv"  /></l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <u:TextView text="CNP AVG@2000=11.3 Secure Advantage 24"
+                        <u:TextView id="idCamTitleTv" text="CNP AVG@2000=11.3 Secure Advantage 24"
                                                     class="nrgCamOvr-left"
                                                     color="DarkGrey"
                                                     design="Base"/>
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
-                        <u:TextView text="~2300kWh per Month"
+                        <u:TextView id="idCamAvgUsgTv"
+                                    text="~2300kWh per Month"
                                     class="nrgCamOvr-left"
                                     color="DarkGrey"
                                     design="Base"/>
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>
-           <c:Label text="Price" icon="sap-icon://nrg-icon/dollar" class="nrgCamOvr-lbl" />
+           <c:Label id="idCamPrcLbl" text="Price" icon="sap-icon://nrg-icon/dollar" class="nrgCamOvr-lbl nrgCamOvr-top" labelFor="idCamPriceTbl"  />
             <u:Table width="60%"
+                     id="idCamPriceTbl"
                      tableType="CampaignTable"
-                     class="nrgCamOvr-left"
+                     class="nrgCamOvr-left nrgCamOvr-top"
                 rows="{modelData>/priceData}" >
                 <u:columns>
-                    <u:TableColumn>
+                    <u:TableColumn width="33%" >
                         <c:Label text="EFL@500"/>
                     </u:TableColumn>
-                    <u:TableColumn>
+                    <u:TableColumn width="33%" >
                          <c:Label text="EFL@1000"/>
                     </u:TableColumn>
-                    <u:TableColumn>
+                    <u:TableColumn width="33%" >
                          <c:Label text="EFL@2000"/>
                     </u:TableColumn>
                 </u:columns>
@@ -73,11 +77,15 @@
                     </u:TableRow>
                 </u:rows>
             </u:Table>
-            <c:Label text="Description" icon="sap-icon://nrg-icon/popup" class="nrgCamOvr-lbl" />
+            <c:Label id="idCamDescLbl"
+                     text="Description"
+                     icon="sap-icon://nrg-icon/description"
+                     class="nrgCamOvr-lbl nrgCamOvr-top nrgCamOvr-desc"
+                     labelFor="idCamDescTv" />
             <u:TextView
-                        tooltip="Description"
+                        id="idCamDescTv"
                         color="DarkGrey"
-                        class="nrgCamOvr-left"
+                        class="nrgCamOvr-left nrgCamOvr-top"
                         design="Base"
                         text="You have agreed to purchase:
 
@@ -102,6 +110,8 @@
                 Great! Thank you so much." />
 
             <u:Table width="100%"
+                     id="idCamInfoTbl"
+                     class="nrgCamOvr-top"
                      tableType="CampaignTable"
                      rows="{modelData>/campaignData}" >
                 <u:columns>
