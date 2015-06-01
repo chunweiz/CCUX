@@ -47,7 +47,7 @@ sap.ui.define(
             if (oValue === undefined || oValue === null || oValue.trim() === '') {
                 return oValue;
             }
-
+            //Check the length of the Dl
             var dlRegex = /^.{1,13}$/;
             if (!(dlRegex.test(oValue))) {
                 throw new ParseException('Invalid Driving License');
@@ -70,10 +70,12 @@ sap.ui.define(
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
             console.log('formatValue ... ' + oValue);
-            var zero = '0',
+           /* var zero = '0',
                 pattern = "[0-9a-zA-Z]",
                 regex = new RegExp(pattern, "g");
-            oValue = oValue.replace(regex, zero);
+            oValue = oValue.replace(regex, zero);*/
+
+            /*No formatting added as the masking should be done at server level itself to  protect from hacking*/
 
             return oValue;
 
