@@ -1,7 +1,7 @@
-.nrgCamOvr {
+.nrgCamOvrT {
     font-family: @nrgFontFamily;
 
-    & > .nrgCamOvr-title {
+    & > .nrgCamOvrTitleT {
         margin-left: 8px;
         font-size: @nrgFontSize-base;
         font-weight: @nrgFontWeight-semiBold;
@@ -16,7 +16,7 @@
     &  .nrgCamOvr-top {
         margin-top: 20px;
     }
-    &  .nrgCamOvr-mtx{
+    & > .nrgCamOvrMtx{
         font-family: @nrgFontFamily;
     }
     & > .nrgCamOvr-offerToolbar {
@@ -24,7 +24,6 @@
         margin-left: 20px;
     }
     & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn {
-       // width: 100%;
         height: 50px;
         background-color: @nrgColor-lightBlue;
         border: none;
@@ -53,31 +52,6 @@
 
     & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn > .nrgCamOvr-offerBtnDesc.nrgCamOvr-offerBtnTitle-ok {
         color: @nrgColor-blueLink;
-    }
-    &   .nrgCamOvr-desc:after {
-        content:"";
-        width: 10px;
-        height: 10px;
-        position: absolute;
-        border-top: 2px solid #a9a9a9;
-        border-left: 2px solid #a9a9a9;
-        border-right: 0px;
-        transform: rotate(45deg) skew(0deg);
-        margin-left:20px;
-        margin-top: 5px;
-    }
-
-    &   .nrgCamOvr-desc:active:after {
-        content:"";
-        width: 10px;
-        height: 10px;
-        position: absolute;
-        border-top: 2px solid #a9a9a9;
-        border-right: 2px solid #a9a9a9;
-        border-left: 0px;
-        transform: rotate(135deg) skew(0deg);
-        margin-left:20px;
-        margin-top: 0px;
     }
 
 }

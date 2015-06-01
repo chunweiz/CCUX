@@ -3,7 +3,7 @@
 
 sap.ui.define(
     [
-        'sap/ui/core/mvc/Controller'
+        'nrg/util/view/BaseController'
     ],
 
     function (CoreController) {

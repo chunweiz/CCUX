@@ -3,7 +3,7 @@
 
 sap.ui.define(
     [
-        'sap/ui/core/mvc/Controller'
+        'nrg/util/view/BaseController'
     ],
 
     function (CoreController) {
@@ -29,16 +29,11 @@ sap.ui.define(
         };
                     //TODO: Implementation required
         Controller.prototype.onAfterRendering = function () {
-            var descLabel = sap.ui.getCore().byId("idCamDescLbl");
 
 
+
         };
-        Controller.prototype.testFunc = function (evt) {
-            //alert("clicked");
-        };
-        Controller.prototype.displayDescription = function (evt) {
-            alert("displayDescription");
-        };
+
 
         return Controller;
     }
