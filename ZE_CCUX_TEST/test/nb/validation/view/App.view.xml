@@ -68,6 +68,11 @@
         type="Text"
         placeholder="contract number"
         value="{path: '/cNum', type: 'tm.message.validation.type.ContractNumber', constraints: { mandatory: true }}" />
+    <m:Input
+        id="idESID"
+        type="Text"
+        placeholder="ESID"
+        value="{path: '/esid', type: 'tm.message.validation.type.ESID', constraints: { mandatory: true }}" />
 
 
 

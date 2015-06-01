@@ -2,7 +2,6 @@
 /*jslint vars: true, plusplus: true, devel: true, nomen: true, indent: 4, maxerr: 50 regexp: true */
 /*global define */
 
-
 sap.ui.define(
     [
         'jquery.sap.global',
@@ -15,14 +14,14 @@ sap.ui.define(
     function ($, SimpleType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = SimpleType.extend('nrg.util.type.DrivingLicenseNumber', {
+        var CustomType = SimpleType.extend('tm.message.validation.type.ESID', {
             constructor: function (oFormatOptions, oConstraints) {
-                SimpleType.prototype.apply(this, arguments);
+                SimpleType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'nrg.util.type.DrivingLicenseNumber';
+            return 'tm.message.validation.type.ESID';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {
@@ -43,11 +42,13 @@ sap.ui.define(
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
             console.log('parseValue ... ' + oValue);
 
-
-            if (oValue === undefined || oValue === null || oValue.trim() === '') {
+            if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 
+            if (isNaN(oValue)) {
+                throw new ParseException('Invalid ESID');
+            }
             return oValue;
         };
 
@@ -56,10 +57,10 @@ sap.ui.define(
             console.log('validateValue ... [' + oValue + ']');
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
-                throw new ValidateException('Driving License cannot be empty');
+                throw new ValidateException('ESID cannot be empty');
             }
-            if (oValue.length < 1 || oValue.length > 20) {
-                throw new ValidateException('DL length exceeds(allowed upto 20 char)');
+            if (oValue.length < 1 || oValue.length > 50) {
+                throw new ValidateException('ESID length exceeds(allowed upto 50 char)');
             }
 
             return oValue;
@@ -68,13 +69,14 @@ sap.ui.define(
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
             console.log('formatValue ... ' + oValue);
+            if (oValue === undefined || oValue === null || oValue.trim() === '') {
+                return oValue;
+            }
 
-            /*No formatting added to mask the original DL as the masking should be done at server level itself to  protect from hacking*/
-
-            return oValue;
+                      return oValue;
 
         };
-
         return CustomType;
     }
 );
+

@@ -13,7 +13,8 @@ sap.ui.define(
         'tm/message/validation/type/Price',
         'tm/message/validation/type/EmailAddress',
         'tm/message/validation/type/SocialSecurityNumber',
-        'tm/message/validation/type/DrivingLicenseNumber'
+        'tm/message/validation/type/DrivingLicenseNumber',
+        'tm/message/validation/type/ESID'
 
     ],
 
@@ -50,7 +51,8 @@ sap.ui.define(
                 price: 12.35,
                 email: 'test@test.com',
                 dl: 'NGLT21OU-9592',
-                cNum: '0027914550'
+                cNum: '0027914550',
+                esid: '20443720006324100'
 
             });
 

@@ -42,11 +42,6 @@ sap.ui.define(
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
             console.log('parseValue ... ' + oValue);
 
-            //Check the length of the SSN
-            var ssnRegex = /.{1,12}/;
-            if (!(ssnRegex.test(oValue))) {
-                throw new ParseException('Invalid SSN');
-            }
             return oValue;
         };
 
@@ -56,6 +51,10 @@ sap.ui.define(
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
                 throw new ValidateException('SSN cannot be empty');
+            }
+
+            if (oValue.length < 1 || oValue.length > 12) {
+                throw new ValidateException('SSN length exceeds(allowed upto 12 char)');
             }
 
             return oValue;
