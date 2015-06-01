@@ -8,5 +8,6 @@
     displayBlock="true">
 
     <ute:Tag text="{comp-dashboard>/ProductSet('HT-1000')/Category}"/>
+    <!--ute:Tag text="{comp-dashboard>/BpSearchs('1121')/PartnerID}"/-->
 
 </mvc:View>
