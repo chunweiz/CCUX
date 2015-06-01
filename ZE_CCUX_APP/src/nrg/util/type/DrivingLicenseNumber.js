@@ -3,6 +3,7 @@
 /*global define */
 
 
+/*
 sap.ui.define(
     [
         'jquery.sap.global',
@@ -78,3 +79,4 @@ sap.ui.define(
         return CustomType;
     }
 );
+*/

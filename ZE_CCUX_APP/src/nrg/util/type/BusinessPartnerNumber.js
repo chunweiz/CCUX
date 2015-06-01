@@ -1,6 +1,7 @@
 /*global sap*/
 /*jslint nomen:true*/
 
+/*
 sap.ui.define(
     [
         'jquery.sap.global',
@@ -70,3 +71,4 @@ sap.ui.define(
         };
     }
 );
+*/
