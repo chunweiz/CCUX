@@ -10,7 +10,7 @@
                 "mock": {
                     "dashboard": {
                         "mockDataBaseUrl": "data/dashboard/devtest/",
-                        "generateMissingMockData": true
+                        "generateMissingMockData": false
                     }
                 }
             }
