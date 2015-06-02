@@ -46,8 +46,26 @@ sap.ui.define(
 
         LabelEnablement.enrich(CustomControl.prototype);
 
+        CustomControl.prototype._addLabelForRendering = function (oRm) {
+            var oFor = sap.ui.getCore().byId(this.getLabelForRendering());
+
+            oRm.write(' for="');
+
+            // for some controls the label must point to a special HTML element, not the outer one.
+			if (oFor && oFor.getIdForLabel) {
+				oRm.write(oFor.getIdForLabel());
+			} else {
+				oRm.write(this.getLabelForRendering());
+			}
+
+            oRm.write('"');
+        };
+
         CustomControl.prototype._addHtmlText = function (oRm) {
-            oRm.write('<span>');
+            oRm.write('<span');
+            oRm.addClass('uteMLbl-text');
+            oRm.writeClasses();
+            oRm.write('>');
             oRm.writeEscaped(this.getText());
             oRm.write('</span>');
         };

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="CampaignView">
+            <EntityType Name="CustomerEligibility">
+                <Key>
+                    <PropertyRef Name="Contract"/>
+                </Key>
+                <Property Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property Name="AgentEligFlag" Type="Edm.String"/>
+                <Property Name="CustomerEligFlag" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="CampaignView">
+                <Key>
+                    <PropertyRef Name="Contract"/>
+                </Key>
+                <Property Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property Name="CampaignID" Type="Edm.String"/>
+                <Property Name="CampaignTitle" Type="Edm.String"/>
+                <Property Name="AverageUsage" Type="Edm.String"/>
+                <Property Name="EFL500" Type="Edm.String"/>
+                <Property Name="EFL1000" Type="Edm.String"/>
+                <Property Name="EFL2000" Type="Edm.String"/>
+                <Property Name="Description" Type="Edm.String"/>
+                <Property Name="PromoCode" Type="Edm.String"/>
+                <Property Name="OfferCode" Type="Edm.String"/>
+                <Property Name="TermLength" Type="Edm.String"/>
+                <Property Name="StartDate" Type="Edm.DateTime"/>
+                <Property Name="EndDate" Type="Edm.DateTime"/>
+                <Property Name="CancellationFee" Type="Edm.String"/>
+                <Property Name="Incentive" Type="Edm.String"/>
+                <Property Name="DispositionReasons" Type="Edm.String"/>
+                <Property Name="MandatoryDisclosure" Nullable="false" Type="CampaignView.Scripts"/>
+                <Property Name="OverviewScript" Nullable="false" Type="CampaignView.Scripts"/>
+            </EntityType>
+            <EntityType Name="CampaignChangeTiles">
+                <Key>
+                    <PropertyRef Name="Contract"/>
+                </Key>
+                <Property Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property Name="RequestedType" Type="Edm.String"/>
+                <Property Name="CurrentFlag" Type="Edm.Boolean"/>
+                <Property Name="Tier" Type="Edm.String"/>
+                <Property Name="CampaignID" Type="Edm.String"/>
+                <Property Name="CampaignTitle" Type="Edm.String"/>
+                <Property Name="AverageUsage" Type="Edm.String"/>
+                <Property Name="EFL500" Type="Edm.String"/>
+                <Property Name="EFL1000" Type="Edm.String"/>
+                <Property Name="EFL2000" Type="Edm.String"/>
+                <Property Name="PromoCode" Type="Edm.String"/>
+                <Property Name="OfferCode" Type="Edm.String"/>
+                <Property Name="TermLength" Type="Edm.String"/>
+                <Property Name="StartDate" Type="Edm.String"/>
+                <Property Name="EndDate" Type="Edm.String"/>
+                <Property Name="CancellationFee" Type="Edm.String"/>
+                <Property Name="Incentive" Type="Edm.String"/>
+                <Property Name="CurrInvoiceAmount" Type="Edm.String"/>
+                <Property Name="CurrConsumption" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="CampaignComparebyInvoice">
+                <Key>
+                    <PropertyRef Name="Contract"/>
+                    <PropertyRef Name="SelectedCampaignID"/>
+                </Key>
+                <Property Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property Name="SelectedCampaignID" Nullable="false" Type="Edm.String"/>
+                <Property Name="EstimatedInvoice" Type="Edm.String"/>
+                <Property Name="EstimatedcentsperkWh" Type="Edm.String"/>
+                <Property Name="ActualCurrentConsumption" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="CampaignComparebyUsage">
+                <Key>
+                    <PropertyRef Name="Contract"/>
+                    <PropertyRef Name="SelectedCampaignID"/>
+                </Key>
+                <Property Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property Name="SelectedCampaignID" Nullable="false" Type="Edm.String"/>
+                <Property Name="CurrentCampaignID" Type="Edm.String"/>
+                <Property Name="EnteredConsumption" Type="Edm.String"/>
+                <Property Name="SimCurrentInvoice" Type="Edm.String"/>
+                <Property Name="EstimatedInvoice" Type="Edm.String"/>
+                <Property Name="EstimatedcentsperkWh" Type="Edm.String"/>
+                <Property Name="ActualCurrentConsumption" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="CampaignChangeCheck">
+                <Key>
+                    <PropertyRef Name="Contract"/>
+                </Key>
+                <Property Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property Name="StatusFlag" Type="Edm.String"/>
+                <Property Name="Message" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="CampaignChangeCancel">
+                <Key>
+                    <PropertyRef Name="Contract"/>
+                </Key>
+                <Property Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property Name="PendingCampaignID" Type="Edm.String"/>
+            </EntityType>
+            <ComplexType Name="Scripts">
+                <Property Name="language" Type="Edm.String"/>
+                <Property Name="Description" Type="Edm.String"/>
+            </ComplexType>
+            <EntityContainer Name="default" m:IsDefaultEntityContainer="true">
+                <EntitySet EntityType="CampaignView.CustomerEligibility" Name="CustomerEligibilitySet"/>
+                <EntitySet EntityType="CampaignView.CampaignChangeTiles" Name="CampaignChangeTilesSet"/>
+                <EntitySet EntityType="CampaignView.CampaignComparebyInvoice" Name="CampaignComparebyInvoiceSet"/>
+                <EntitySet EntityType="CampaignView.CampaignComparebyUsage" Name="CampaignComparebyUsageSet"/>
+                <EntitySet EntityType="CampaignView.CampaignView" Name="CampaignCurrent"/>
+                <EntitySet EntityType="CampaignView.CampaignView" Name="CampaignPending"/>
+                <EntitySet EntityType="CampaignView.CampaignView" Name="CampaignHistory"/>
+                <EntitySet EntityType="CampaignView.CampaignView" Name="CampaignChangeDisplayLegalDoc"/>
+                <EntitySet EntityType="CampaignView.CampaignChangeCheck" Name="CampaignChangeCheckSet"/>
+                <EntitySet EntityType="CampaignView.CampaignChangeCancel" Name="CampaignChangeCancelSet"/>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

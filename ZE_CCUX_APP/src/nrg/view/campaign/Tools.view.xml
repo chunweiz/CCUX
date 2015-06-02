@@ -6,16 +6,16 @@
 
     <ute:Tag class="nrgToolsEmpty nrgAppMain-toolsContent nrgAppMain-toolsContent-full">
         <ute:Tag class="nrgCamToolsT" >
-            <ute:Tag class="nrgCamToolsTitleT" text="{comp-i18n&gt;nrgCmpToolsTtl}" />
+            <ute:Tag class="nrgCamToolsTitleT" text="{comp-i18n>nrgCmpToolsTtl}" />
             <ute:Tag class="nrgCamToolsBtnT nrgCamTools-top" >
                 <ute:Button
                     id="idnrgCamToolsBtn-H"
-                    text="{comp-i18n&gt;nrgCmpToolsBtnHis}"
+                    text="{comp-i18n>nrgCmpToolsBtnHis}"
                     enabled="true">
                 </ute:Button>
                 <ute:Button
                     id="idnrgCamToolsBtn-C"
-                    text="{comp-i18n&gt;nrgCmpToolsBtnCan}"
+                    text="{comp-i18n>nrgCmpToolsBtnCan}"
                     enabled="true"
                     class="nrgCamTools-top">
                 </ute:Button>

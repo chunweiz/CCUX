@@ -14,6 +14,11 @@ sap.ui.define(
             oRm.writeControlData(oCustomControl);
             oRm.addClass('uteMLbl');
             oRm.writeClasses();
+
+            if (oCustomControl.getLabelForRendering()) {
+                oCustomControl._addLabelForRendering(oRm);
+            }
+
             oRm.write('>');
 
             if (oCustomControl.getText()) {

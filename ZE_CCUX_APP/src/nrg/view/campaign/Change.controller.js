@@ -14,9 +14,7 @@ sap.ui.define(
             //TODO: Implementation required
         Controller.prototype.onBeforeRendering = function () {
             var aPriceData, aCampaignData, aDescription;
-            aPriceData = [
-                {EFL500: "14.4000000", EFL1000: "13.4000000", EFL2000: "12.9000000" }
-            ];
+            aPriceData = {EFL500: "14.4000000", EFL1000: "13.4000000", EFL2000: "12.9000000" };
             aCampaignData = [
                 {PromoCode: "MAOPRJ", OfferCode: "50124832", TermLength: "$0.00", StartDate: "09/01/2014", EndDate: "09/01/2015", CancellationFee: "$200.00", Incentive: "$20.00" }
             ];

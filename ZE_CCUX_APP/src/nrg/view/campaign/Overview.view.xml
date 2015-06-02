@@ -11,46 +11,46 @@
           displayBlock="true">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
       <u:Tag class="nrgCamOvrT">
-         <u:Tag class="nrgCamOvrTitleT" text="{comp-i18n&gt;nrgCmpOvrTtl}" />
+         <u:Tag class="nrgCamOvrTitleT" text="{comp-i18n>nrgCmpOvrTtl}" />
             <article class="nrgCamOvr-offerToolbar nrgCamOvr-top">
                 <button id="idCamCustReqOfferBtn" type="button" class="nrgCamOvr-offerBtn">
-                    <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n&gt;nrgAppFooterCustReqOffer}" />
-                    <u:Tag id="idCamCustReqOffer" class="nrgCamOvr-offerBtnDesc nrgCamOvr-offerBtnTitle-ok" text="{comp-i18n&gt;nrgAppFooterEligibile}" />
+                    <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n>nrgAppFooterCustReqOffer}" />
+                    <u:Tag id="idCamCustReqOffer" class="nrgCamOvr-offerBtnDesc nrgCamOvr-offerBtnTitle-ok" text="{comp-i18n>nrgAppFooterEligibile}" />
                 </button>
                 <button id="idCamAgtReqOfferBtn" type="button" class="nrgCamOvr-offerBtn">
-                    <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n&gt;nrgAppFooterAgentReqOffer}" />
-                    <u:Tag id="idCamAgentReqOffer" class="nrgCamOvr-offerBtnDesc" text="{comp-i18n&gt;nrgAppFooterNotEligibile}" />
+                    <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n>nrgAppFooterAgentReqOffer}" />
+                    <u:Tag id="idCamAgentReqOffer" class="nrgCamOvr-offerBtnDesc" text="{comp-i18n>nrgAppFooterNotEligibile}" />
                 </button>
             </article>
             <u:Tag class="nrgCamToggleT">
                 <u:ToggleButton
                     id="idCamToggleBtn"
-                    leftBtnText="{comp-i18n&gt;nrgCmpOvrCt}"
+                    leftBtnText="{comp-i18n>nrgCmpOvrCt}"
                     leftBtnWidth="400px"
                     rightBtnWidth="400px"
-                    rightBtnText="{comp-i18n&gt;nrgCmpOvrPg}"
+                    rightBtnText="{comp-i18n>nrgCmpOvrPg}"
                     design="ToggleCampaign" press="testFunc"
                     class="nrgCamOvr-top nrgCamToggle-Btn"/>
             </u:Tag>
             <l:MatrixLayout class="nrgCamOvrMtx nrgCamOvr-top">
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <c:Label id="idCamTitleLbl" text="{comp-i18n&gt;nrgCmpOvrTtllbl}" icon="sap-icon://nrg-icon/tag" class="nrgCamOvr-lbl"  labelFor="idCamTitleTv"  />
+                        <c:Label id="idCamTitleLbl" text="{comp-i18n>nrgCmpOvrTtllbl}" icon="sap-icon://nrg-icon/tag" class="nrgCamOvr-lbl"  labelFor="idCamTitleTv"  />
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
-                        <c:Label id="idCamAvgUsgLbl" text="{comp-i18n&gt;nrgCmpOvrAUlbl}" icon="sap-icon://nrg-icon/bulb" class="nrgCamOvr-lbl" labelFor="idCamAvgUsgTv"  />
+                        <c:Label id="idCamAvgUsgLbl" text="{comp-i18n>nrgCmpOvrAUlbl}" icon="sap-icon://nrg-icon/bulb" class="nrgCamOvr-lbl" labelFor="idCamAvgUsgTv"  />
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <u:TextView id="idCamTitleTv" text="CNP AVG@2000=11.3 Secure Advantage 24"
+                        <u:TextView id="idCamTitleTv" text="{comp-campaign>/CampaignCurrent('1121')/CampaignTitle}"
                                                     class="nrgCamOvr-left"
                                                     color="DarkGrey"
                                                     design="Base"/>
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
                         <u:TextView id="idCamAvgUsgTv"
-                                    text="~2300kWh per Month"
+                                    text="{comp-campaign>/CampaignCurrent('1121')/AverageUsage}"
                                     class="nrgCamOvr-left"
                                     color="DarkGrey"
                                     design="Base"/>
@@ -58,12 +58,11 @@
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>
             <u:Tag class="nrgCamPriceT">
-                <c:Label id="idCamPrcLbl" text="{comp-i18n&gt;nrgCmpOvrPrclbl}" icon="sap-icon://nrg-icon/dollar" class="nrgCamOvr-lbl nrgCamOvr-top" labelFor="idCamPriceTbl"  />
+                <c:Label id="idCamPrcLbl" text="{comp-i18n>nrgCmpOvrPrclbl}" icon="sap-icon://nrg-icon/dollar" class="nrgCamOvr-lbl nrgCamOvr-top" labelFor="idCamPriceTbl"  />
                 <u:Table width="60%"
                     id="idCamPriceTbl"
                     tableType="CampaignTable"
-                    class="nrgCamOvr-left nrgCamOvr-top"
-                    rows="{modelData>/priceData}" >
+                    class="nrgCamOvr-left nrgCamOvr-top"  >
                         <u:columns>
                             <u:TableColumn width="33%" >
                                 <c:Label text="EFL@500"/>
@@ -77,16 +76,16 @@
                         </u:columns>
                         <u:rows>
                             <u:TableRow>
-                                <c:Label text="{modelData>EFL500}"/>
-                                <c:Label text="{modelData>EFL1000}"/>
-                                <c:Label text="{modelData>EFL2000}"/>
+                                <c:Label text="{comp-campaign>/CampaignCurrent('1121')/EFL500}"/>
+                                <c:Label text="{comp-campaign>/CampaignCurrent('1121')/EFL1000}"/>
+                                <c:Label text="{comp-campaign>/CampaignCurrent('1121')/EFL2000}"/>
                             </u:TableRow>
                         </u:rows>
                 </u:Table>
             </u:Tag>
             <u:Tag class="nrgCamDescT">
                     <c:Label id="idCamDescLbl"
-                        text="{comp-i18n&gt;nrgCmpOvrDsclbl}"
+                        text="{comp-i18n>nrgCmpOvrDsclbl}"
                         icon="sap-icon://nrg-icon/description"
                         class="nrgCamOvr-lbl nrgCamOvr-top nrgCamOvr-desc"
                         labelFor="idCamDescTv" />
@@ -95,33 +94,12 @@
                         color="DarkGrey"
                         class="nrgCamOvr-left nrgCamOvr-top"
                         design="Base"
-                        text="You have agreed to purchase:
-
-                        A  thermostat for $94.99, and your final purchase price will be $
-                        102.83 with tax.
-
-                        This is a one-time purchase and has nothing to do with your electric
-                        service or any other services that Reliant or its affiliates may
-                        be providing you for which you make periodic payments. The credit card
-                        you provided will be charged a one-time fee for this
-                        purchase.
-
-                        A restocking fee may apply for returned devices.
-
-                        Your NRG thermostat is compatible with most HVAC systems. Check
-                        compatibility at reliant.com/connectsupport. A limited one year
-                        manufacturer's warranty is provided by Building36.
-
-                        Mr/Ms. LAST NAME, I'd like to confirm that you are purchasing NRG
-                        thermostat, is that correct?
-
-                        Great! Thank you so much." />
+                        text="{comp-campaign>/CampaignCurrent('1121')/Description}" />
             </u:Tag>
             <u:Table width="100%"
                      id="idCamInfoTbl"
                      class="nrgCamOvr-top"
-                     tableType="CampaignTable"
-                     rows="{modelData>/campaignData}" >
+                     tableType="CampaignTable" >
                 <u:columns>
                     <u:TableColumn>
                         <c:Label text="Promo Code"/>
@@ -147,13 +125,13 @@
                 </u:columns>
                 <u:rows>
                     <u:TableRow>
-                            <c:Label text="{modelData>PromoCode}"/>
-                            <c:Label text="{modelData>OfferCode}"/>
-                            <c:Label text="{modelData>TermLength}"/>
-                            <c:Label text="{modelData>StartDate}"/>
-                            <c:Label text="{modelData>EndDate}"/>
-                            <c:Label text="{modelData>CancellationFee}"/>
-                            <c:Label text="{modelData>Incentive}"/>
+                            <c:Label text="{comp-campaign>/CampaignCurrent('1121')/PromoCode}"/>
+                            <c:Label text="{comp-campaign>/CampaignCurrent('1121')/OfferCode}"/>
+                            <c:Label text="{comp-campaign>/CampaignCurrent('1121')/TermLength}"/>
+                            <c:Label text="{comp-campaign>/CampaignCurrent('1121')/PromoCode}"/>
+                            <c:Label text="{comp-campaign>/CampaignCurrent('1121')/PromoCode}"/>
+                            <c:Label text="{comp-campaign>/CampaignCurrent('1121')/CancellationFee}"/>
+                            <c:Label text="{comp-campaign>/CampaignCurrent('1121')/Incentive}"/>
                     </u:TableRow>
                 </u:rows>
             </u:Table>
