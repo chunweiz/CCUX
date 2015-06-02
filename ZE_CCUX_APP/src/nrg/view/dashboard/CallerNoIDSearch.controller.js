@@ -4,8 +4,8 @@
 sap.ui.define(
     [
         'nrg/util/view/BaseController',
-        'sap.ui.model.Filter',
-        'sap.ui.model.FilterOperator'
+        'sap/ui/model/Filter',
+        'sap/ui/model/FilterOperator'
     ],
 
     function (CoreController, Filter, FilterOperator) {
@@ -14,12 +14,6 @@ sap.ui.define(
         var Controller = CoreController.extend('nrg.view.dashboard.CallerNoIDSearch');
 
         Controller.prototype.onInit = function () {
-            var oSearchBpODataModel,
-                oParameters,
-                oFilter,
-                aFilter;
-
-
 
             /*Models in the controller*/
 
@@ -27,11 +21,26 @@ sap.ui.define(
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oSearchBpODataModel');
             //JSON model for search result
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBpSearchResult');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSearchFilters');
 
 
         };
 
+        Controller.prototype.onTextFieldChange = function (oControlEvent) {
+            var iIdIndex = oControlEvent.getParameters().id.indexOf('--'),
+                sChangedItem = oControlEvent.getParameters().id.substring(iIdIndex + 1);
+
+            switch (sChangedItem) {
+            case 'idSearchCa':
+                break;
+            case 'idSearchSsn':
+                break;
+            }
+
+        };
+
         Controller.prototype.onSearch = function () {
+
             this._searchBP('/BpSearchs', this._createSearchParameters());
         };
 
