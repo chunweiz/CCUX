@@ -42,8 +42,7 @@
                 <u:Table width="60%"
                     id="idCamChgPrcTbl"
                     tableType="CampaignTable"
-                    class="nrgCamChg-left nrgCamChg-top"
-                    rows="{ChangeData>/priceData}" >
+                    class="nrgCamChg-left nrgCamChg-top">
                         <u:columns>
                             <u:TableColumn width="33%" >
                                 <c:Label text="EFL@500"/>
@@ -57,9 +56,9 @@
                         </u:columns>
                         <u:rows>
                             <u:TableRow>
-                                <c:Label text="{ChangeData>EFL500}"/>
-                                <c:Label text="{ChangeData>EFL1000}"/>
-                                <c:Label text="{ChangeData>EFL2000}"/>
+                                <c:Label text="{ChangeData>/priceData/EFL500}"/>
+                                <c:Label text="{ChangeData>/priceData/EFL1000}"/>
+                                <c:Label text="{ChangeData>/priceData/EFL2000}"/>
                             </u:TableRow>
                         </u:rows>
                 </u:Table>

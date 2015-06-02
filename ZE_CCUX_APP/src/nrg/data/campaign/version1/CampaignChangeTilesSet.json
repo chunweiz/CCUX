@@ -1,0 +1,25 @@
+[ {
+                "Contract":"1121",
+                "RequestedType":"A",
+                "CampaignID":"1",
+                "CurrentFlag":"YES",
+                "Tier":"Proactive",
+                "CampaignTitle":"CNP AVG@2000=11.3 Secure Advantage 24",
+                "AverageUsage":"~2300kWh per Month",
+                "EFL500":"14.4000000",
+                "EFL1000":"13.4000000",
+                "EFL2000":"12.9000000",
+                "PromoCode":"MAOPRJ",
+                "OfferCode":"50124832",
+                "TermLength":"$0.00",
+                "CancellationFee":"$200.00",
+                "CurrInvoiceAmount":"85$",
+                "CurrConsumption":"1200",
+                "Incentive":"$20.00",
+                "__metadata":{
+                    "id":"../../data/campaign/version1/CampaignChangeTilesSet('Contract 1121')",
+                    "type":"CampaignView.CampaignChangeTilesSet",
+                    "uri":"../../data/campaign/version1/CampaignChangeTilesSet('Contract 1121')"
+                }
+            }
+]

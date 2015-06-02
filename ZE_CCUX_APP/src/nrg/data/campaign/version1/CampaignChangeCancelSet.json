@@ -1,0 +1,11 @@
+[ {
+                "Contract":"1121",
+                "PendingCampaignID":"1",
+                "__metadata":{
+                    "id":"../../data/campaign/version1/CampaignChangeCancelSet('Contract 1121')",
+                    "type":"CampaignView.CampaignChangeCancelSet",
+                    "uri":"../../data/campaign/version1/CampaignChangeCancelSet('Contract 1121')"
+                }
+            }
+
+]

@@ -1,0 +1,22 @@
+[ {
+                "Contract":"1121",
+                "CampaignID":"1",
+                "CampaignTitle":"CNP AVG@2000=11.3 Secure Advantage 24",
+                "AverageUsage":"~2300kWh per Month",
+                "EFL500":"14.4000000",
+                "EFL1000":"13.4000000",
+                "EFL2000":"12.9000000",
+                "Description":"You have agreed to purchase: A thermostat for $94.99, and your final purchase price will be $ 102.83 with tax. This is a one-time purchase and has nothing to do with your electric service or any other services that Reliant or its affiliates may be providing you for which you make periodic payments. The credit card you provided will be charged a one-time fee for this purchase. A restocking fee may apply for returned devices. Your NRG thermostat is compatible with most HVAC systems. Check compatibility at reliant.com/connectsupport. A limited one year manufacturer's warranty is provided by Building36. Mr/Ms. LAST NAME, I'd like to confirm that you are purchasing NRG thermostat, is that correct? Great! Thank you so much.",
+                "PromoCode":"MAOPRJ",
+                "OfferCode":"50124832",
+                "TermLength":"$0.00",
+                "CancellationFee":"$200.00",
+                "Incentive":"$20.00",
+                "__metadata":{
+                    "id":"../../data/campaign/version1/CampaignHistory('Contract 1121')",
+                    "type":"CampaignView.CampaignCurrent",
+                    "uri":"../../data/campaign/version1/CampaignHistory('Contract 1121')"
+                }
+            }
+
+]
