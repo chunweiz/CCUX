@@ -15,7 +15,10 @@
             </ute:Tag>
             <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
                 <ute:Textfield
-                    id="textFieldCa"
+                    value="{
+                        path:'oFilters>/searchTextFields/sCaNum',
+                        type:'nrg.util.type.ContractAccountNumber'}"
+                    id="idSearchCa"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n>nrgDashboardClrNid_CaNumPh}"
                     change="onTextFieldChange"
@@ -23,7 +26,10 @@
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
-                    id="text_field_SSN"
+                    value="{
+                        path:'oFilters>/searchTextFields/sSsn',
+                        type:'nrg.util.type.SocialSecurityNumber'}"
+                    id="idSearchSsn"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n>nrgDashboardClrNid_Ssn}"
                     change="testInputChange"
@@ -31,6 +37,10 @@
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
+                    value="{
+                        path:'oFilters>/searchTextFields/sDl',
+                        type:'nrg.util.type.DriverLicenseNumber'}"
+                    id="idSearchDl"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n>nrgDashboardClrNid_Dl}"
                     change="testInputChange"
@@ -40,6 +50,9 @@
             </ute:Tag>
             <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
                 <ute:Textfield
+                    value="{
+                        path:'oFilters>/searchTextFields/sContAccName'}"
+                    id="idSearchCaName"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n>nrgDashboardClrNid_CaName}"
                     change="testInputChange"
@@ -47,6 +60,10 @@
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
+                    value="{
+                        path:'oFilters>/searchTextFields/sBpNum',
+                        type:'nrg.util.type.BusinessPartnerNumber'}"
+                    id="idSearchBp"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n>nrgDashboardClrNid_BpNum}"
                     change="testInputChange"
@@ -54,6 +71,9 @@
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
+                    value="{
+                        path:'oFilters>/searchTextFields/sFedTid}"
+                    id="idSearchFedTid"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n>nrgDashboardClrNid_FedTaxId}"
                     change="ESID"
@@ -61,6 +81,10 @@
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
+                    value="{
+                        path:'oFilters>/searchTextFields/sEsid',
+                        type:'nrg.util.type.ESID'}"
+                    id="idSearchEsid"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n>nrgDashboardClrNid_Esid}"
                     change="testInputChange"

@@ -23,11 +23,25 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBpSearchResult');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSearchFilters');
 
+            this._initSearchFilterModel();
+        };
 
+        Controller.prototype._initSearchFilterModel = function () {
+            var oFilters = {
+                sCaNum : null,
+                sSsn : null,
+                sDl : null,
+                sContAccName : null,
+                sBpNum : null,
+                sFedTid : null,
+                sEsid : null
+            };
+
+            this.getView().getModel('oSearchFilters').setData('searchTextFields', oFilters);
         };
 
         Controller.prototype.onTextFieldChange = function (oControlEvent) {
-            var iIdIndex = oControlEvent.getParameters().id.indexOf('--'),
+            /*var iIdIndex = oControlEvent.getParameters().id.indexOf('--'),
                 sChangedItem = oControlEvent.getParameters().id.substring(iIdIndex + 1);
 
             switch (sChangedItem) {
@@ -35,7 +49,19 @@ sap.ui.define(
                 break;
             case 'idSearchSsn':
                 break;
-            }
+            case 'idSearchDl':
+                break;
+            case 'idSearchCaName':
+                break;
+            case 'idSearchBp':
+                break;
+            case 'idSearchFedTid':
+                break;
+            case '':
+                break;
+            case 'idSearchEsid':
+                break;
+            }*/
 
         };
 
