@@ -3,24 +3,37 @@
 
 sap.ui.define(
     [
-        'nrg/util/view/BaseController'
+        'nrg/util/view/BaseController',
+        'jquery.sap.global'
     ],
 
-    function (CoreController) {
+    function (CoreController, JQuery) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.view.dashboard.CallerNoIDSearch');
 
         Controller.prototype.onInit = function () {
-            var oModel;
+            //var oResultModel = new sap.ui.model.json.JSONModel('bpSearchResult'),
+            var oModel,
+                oFilter;
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'bpSearchResult');
 
-            /*oModel = this.getOwnerComponent().getModel('comp-dashboard');
+            oModel = this.getOwnerComponent().getModel('comp-dashboard');
+
             if (oModel) {
-                var aFilter = [];
-                var oFilter= new sap.ui.model.Filter("PartnerID", sap.ui.model.FilterOperator.EQ, "PartnerID 1");
-                aFilter.push(oFilter);
-                var test = oModel.read('/BpSearchs', aFilter);
-            }*/
+                oFilter = new sap.ui.model.Filter("PartnerID", sap.ui.model.FilterOperator.EQ, "1121");
+                oModel.read('/BpSearchs', [oFilter, '$format=json'], {
+                    fnSuccess: JQuery.proxy(function (oData) {
+                        if (oData) {
+                            this.getView().getModel('bpSearchResult').setData(oData);
+                        }
+                    }, this),
+
+                    fnError: JQuery.proxy(function (oError) {
+                        //alert('error');
+                    }, this)
+                });
+            }
         };
 
         return Controller;

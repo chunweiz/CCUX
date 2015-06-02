@@ -83,7 +83,7 @@
         </ute:Tag>
 
         <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTitle"
-                 text="{comp-dashboard>/BpSearchs('1121')/PartnerID}">
+                 text="{bpSearchResult>/BpSearchs('1121')/PartnerID}">
         </ute:Tag>
 
         <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTable">
@@ -96,7 +96,7 @@
                 width="100%"
                 columns="8"
                 widths="2%,18%,10%,24%,13%,13%,10%,10%"
-                rows="{comp-dashboard>/BpSearchs}">
+                rows="{bpSearchResult>/BpSearchs}">
                 <l:rows>
                     <l:MatrixLayoutRow>
                         <l:MatrixLayoutCell>
@@ -104,27 +104,27 @@
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
                             <c:TextView
-                                text="{comp-dashboard>FirstName} {comp-dashboard>LastName}">
+                                text="{bpSearchResult>FirstName} {bpSearchResult>LastName}">
                             </c:TextView>
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
-                            <c:TextView text="{comp-dashboard>PartnerID}"></c:TextView>
+                            <c:TextView text="{bpSearchResult>PartnerID}"></c:TextView>
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
                             <c:TextView
-                                text="{comp-dashboard>HouseNumber} {comp-dashboard>Street}">
+                                text="{bpSearchResult>HouseNumber} {bpSearchResult>Street}">
                             </c:TextView>
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
-                            <c:TextView text="{comp-dashboard>UnitNumber}"></c:TextView>
+                            <c:TextView text="{bpSearchResult>UnitNumber}"></c:TextView>
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
                             <c:TextView
-                                text="{comp-dashboard>City} {comp-dashboard>State}">
+                                text="{bpSearchResult>City} {bpSearchResult>State}">
                             </c:TextView>
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
-                            <c:TextView text="{comp-dashboard>ZipCode}"></c:TextView>
+                            <c:TextView text="{bpSearchResult>ZipCode}"></c:TextView>
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
                             <ute:Button

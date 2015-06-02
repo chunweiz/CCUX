@@ -7,7 +7,12 @@
     width="100%"
     displayBlock="true">
 
-    <ute:Tag text="{comp-dashboard>/ProductSet('HT-1000')/Category}"/>
+    <!--ute:Tag text="{comp-dashboard>/ProductSet('HT-1000')/Category}"/-->
     <!--ute:Tag text="{comp-dashboard>/BpSearchs('1121')/PartnerID}"/-->
+
+
+    <ute:Tag
+        text="{comp-dashboard>/BpSearchs('1121')/PartnerID}">
+    </ute:Tag>
 
 </mvc:View>
