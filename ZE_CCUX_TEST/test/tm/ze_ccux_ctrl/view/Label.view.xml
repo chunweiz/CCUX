@@ -15,11 +15,13 @@
         <br/>
 
         <um:Label>
-            <core:Icon src="sap-icon://nrg-icon/high-bill" /><span> Label with stuffing</span>
+            <core:Icon src="sap-icon://nrg-icon/high-bill" />
+            <span> Label with stuffing</span>
         </um:Label>
         <br/>
 
-        <input id="idTestLabelCheckBox001" type="checkbox" /><um:Label labelFor="idTestLabelCheckBox001" text="This is a label for checkbox" />
+        <input id="idTestLabelCheckBox001" type="checkbox" />
+        <um:Label labelFor="idTestLabelCheckBox001" text="This is a label for checkbox" />
 
     </sm:ScrollContainer>
 </mvc:View>
