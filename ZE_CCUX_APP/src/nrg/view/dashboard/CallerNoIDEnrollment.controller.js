@@ -3,7 +3,7 @@
 
 sap.ui.define(
     [
-        'sap/ui/core/mvc/Controller'
+        'nrg/util/view/BaseController'
     ],
 
     function (CoreController) {
@@ -12,12 +12,6 @@ sap.ui.define(
         var Controller = CoreController.extend('nrg.view.dashboard.CallerNoIDEnrollment');
 
         Controller.prototype.onInit = function () {
-            var oModel;
-
-            //oModel = this.getOwnerComponent().getModel('comp-dashboard');
-            /*if (oModel) {
-                oModel.read('/ProductSet');
-            }*/
         };
 
         return Controller;
