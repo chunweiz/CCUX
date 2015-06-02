@@ -44,7 +44,7 @@ sap.ui.define(
                 return oValue;
             }
 
-            if (oValue.match(/[^\d\-]/i)) {
+            if (!oValue.match(/[\d\-]/i)) {
                 throw new ParseException('Invalid Cell phone number');
             }
 
@@ -71,8 +71,14 @@ sap.ui.define(
                 return oValue;
             }
 
-            return oValue;
+            oValue = oValue.replace(/-/g, '');
+            oValue = oValue.replace(' ', '');
 
+            if (oValue.indexOf("+1") > -1) {
+                return (oValue.substr(0, 2) + ' ' + oValue.substr(2, 3) + '-' + oValue.substr(5, 3) + '-' + oValue.substr(8, 4) + ' ' + oValue.substr(12));
+            } else {
+                return (oValue.substr(0, 3) + '-' + oValue.substr(3, 3) + '-' + oValue.substr(6, 4) + ' ' + oValue.substr(10));
+            }
         };
 
         return CustomType;
