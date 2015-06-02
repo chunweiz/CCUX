@@ -51,9 +51,11 @@ sap.ui.define(
         CustomType.prototype.validateValue = function (oValue) {
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: MeterNumber cannot be empty', oValue);
                 throw new ValidateException('MeterNumber cannot be empty');
             }
             if (oValue.length < 1 || oValue.length > 18) {
+                jQuery.sap.log.error('Validate Exception: MeterNumber length exceeds(allowed upto 18 char)', oValue);
                 throw new ValidateException('MeterNumber length exceeds(allowed upto 18 char)');
             }
 

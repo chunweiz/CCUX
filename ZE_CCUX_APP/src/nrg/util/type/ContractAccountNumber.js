@@ -45,6 +45,7 @@ sap.ui.define(
             }
 
             if (isNaN(oValue)) {
+                jQuery.sap.log.error('Parse Exception: Invalid contract account number', oValue);
                 throw new ParseException('Invalid contract account number');
             }
 
@@ -55,11 +56,13 @@ sap.ui.define(
         CustomType.prototype.validateValue = function (oValue) {
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: Contract account number cannot be empty', oValue);
                 throw new ValidateException('Contract account number cannot be empty');
             }
 
-            if (oValue.length < 1 || oValue.length > 12) {
-                throw new ValidateException('Invalid contract account number');
+            if (oValue.length > 12) {
+                jQuery.sap.log.error('Validate Exception: Contract account number length exceeds(allowed upto 12 char)', oValue);
+                throw new ValidateException('Contract account number length exceeds(allowed upto 12 char)');
             }
 
             return oValue;

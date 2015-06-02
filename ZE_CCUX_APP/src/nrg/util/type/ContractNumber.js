@@ -49,6 +49,7 @@ sap.ui.define(
             }
 
             if (isNaN(oValue)) {
+                jQuery.sap.log.error('Parse Exception: Invalid contract number', oValue);
                 throw new ParseException('Invalid contract number');
             }
 
@@ -59,11 +60,13 @@ sap.ui.define(
         CustomType.prototype.validateValue = function (oValue) {
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: Contract number cannot be empty', oValue);
                 throw new ValidateException('Contract number cannot be empty');
             }
 
-            if (oValue.length < 1 || oValue.length > 10) {
-                throw new ValidateException('Invalid contract number');
+            if (oValue.length > 10) {
+                jQuery.sap.log.error('Validate Exception: Contract number length exceeds(allowed upto 10 char)', oValue);
+                throw new ValidateException('Contract number length exceeds(allowed upto 10 char)');
             }
 
             return oValue;

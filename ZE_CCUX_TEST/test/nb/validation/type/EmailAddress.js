@@ -64,7 +64,7 @@ sap.ui.define(
                 throw new ValidateException('Email cannot be empty');
             }
 
-            if (oValue.length < 1 || oValue.length > 241) {
+            if ( oValue.length > 241) {
                 throw new ValidateException('Email Address length exceeds(allowed upto 241 char)');
             }
 
