@@ -96,7 +96,7 @@
                 width="100%"
                 columns="8"
                 widths="2%,18%,10%,24%,13%,13%,10%,10%"
-                rows="{bpSearchResult>/BpSearchs}">
+                rows="{bpSearchResult>/}">
                 <l:rows>
                     <l:MatrixLayoutRow>
                         <l:MatrixLayoutCell>

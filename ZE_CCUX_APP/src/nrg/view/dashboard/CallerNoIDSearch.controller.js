@@ -3,8 +3,7 @@
 
 sap.ui.define(
     [
-        'nrg/util/view/BaseController',
-        'jquery.sap.global'
+        'nrg/util/view/BaseController'
     ],
 
     function (CoreController, JQuery) {
@@ -15,24 +14,29 @@ sap.ui.define(
         Controller.prototype.onInit = function () {
             //var oResultModel = new sap.ui.model.json.JSONModel('bpSearchResult'),
             var oModel,
-                oFilter;
+                oParameters,
+                oFilter,
+                aFilter;
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'bpSearchResult');
 
             oModel = this.getOwnerComponent().getModel('comp-dashboard');
 
             if (oModel) {
                 oFilter = new sap.ui.model.Filter("PartnerID", sap.ui.model.FilterOperator.EQ, "1121");
-                oModel.read('/BpSearchs', [oFilter, '$format=json'], {
-                    fnSuccess: JQuery.proxy(function (oData) {
-                        if (oData) {
-                            this.getView().getModel('bpSearchResult').setData(oData);
+                aFilter = [];
+                aFilter.push(oFilter);
+                oParameters = {
+                    filters : aFilter,
+                    success : function (oData) {
+                        if (oData.results) {
+                            this.getView().getModel('bpSearchResult').setData(oData.results);
                         }
-                    }, this),
-
-                    fnError: JQuery.proxy(function (oError) {
-                        //alert('error');
-                    }, this)
-                });
+                    }.bind(this),
+                    error: function (oError) {
+                        this.getView().getModel('bpSearchResult').setData(null);
+                    }
+                };
+                oModel.read('/BpSearchs', oParameters);
             }
         };
 
