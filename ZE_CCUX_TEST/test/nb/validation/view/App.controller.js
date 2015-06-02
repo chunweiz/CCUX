@@ -14,7 +14,9 @@ sap.ui.define(
         'tm/message/validation/type/EmailAddress',
         'tm/message/validation/type/SocialSecurityNumber',
         'tm/message/validation/type/DrivingLicenseNumber',
-        'tm/message/validation/type/ESID'
+        'tm/message/validation/type/ESID',
+        'tm/message/validation/type/MeterNumber',
+        'tm/message/validation/type/CellPhoneNumber'
 
     ],
 
@@ -52,7 +54,9 @@ sap.ui.define(
                 email: 'test@test.com',
                 dl: 'NGLT21OU-9592',
                 cNum: '0027914550',
-                esid: '20443720006324100'
+                esid: '20443720006324100',
+                mnum: '029545116GE',
+                cellnum: '777-777-7777'
 
             });
 
