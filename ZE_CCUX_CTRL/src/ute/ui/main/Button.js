@@ -52,12 +52,12 @@ sap.ui.define(
         };
 
         CustomControl.prototype._addHtmlText = function (oRm) {
-            oRm.write('<span');
+            oRm.write('<div');
             oRm.addClass('uteMBtn-text');
             oRm.writeClasses();
             oRm.write('>');
             oRm.writeEscaped(this.getText());
-            oRm.write('</span>');
+            oRm.write('</div>');
         };
 
         CustomControl.prototype._addHtmlContent = function (oRm) {

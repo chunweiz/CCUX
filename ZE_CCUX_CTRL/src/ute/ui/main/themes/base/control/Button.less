@@ -1,38 +1,92 @@
 .uteMBtn {
     display: inline-block;
-    min-width: 82px;
-    min-height: 28px;
+    position: relative;
     border-radius: 2px;
+    padding: 3px 5px;
 }
 
 .uteMBtn:hover {
     cursor: pointer;
 }
 
-.uteMBtn-text {
-    font-size: @uteFontSize-small;
+.uteMBtn[data-disabled="true"]:hover {
+    cursor: default;
 }
 
+.uteMBtn-text {
+    font-size: @uteFontSize-small;
+    vertical-align: middle;
+    text-align: center;
+}
 
 /*
 ** Button design - default
 */
 .uteMBtn-design-default {
-    background-color: @uteColor-lightBlue-500;
+    min-width: 82px;
+    min-height: 28px;
+    background-color: @uteColor-blue-600;
     color: @uteColor-white;
 }
 
 .uteMBtn-design-default:hover {
-    background-color: @uteColor-lightBlue-200;
+    background-color: @uteColor-blue-200;
 }
 
 .uteMBtn-design-default[data-disabled="true"] {
+    background-color: @uteColor-lightBlue-50;
+    color: @uteColor-grey-800;
+}
+
+.uteMBtn-design-default[data-disabled="true"]:hover {
+    background-color: @uteColor-lightBlue-50;
+}
+
+/*
+** Button design - highlight
+*/
+.uteMBtn-design-highlight {
+    min-width: 82px;
+    min-height: 28px;
+    background-color: @uteColor-green-500;
+    color: @uteColor-white;
+}
+
+.uteMBtn-design-highlight:hover {
+    background-color: @uteColor-blue-200;
+}
+
+.uteMBtn-design-highlight[data-disabled="true"] {
     background-color: @uteColor-grey-500;
     color: @uteColor-grey-200;
 }
 
-.uteMBtn-design-default[data-disabled="true"]:hover {
+.uteMBtn-design-highlight[data-disabled="true"]:hover {
     background-color: @uteColor-grey-500;
-    cursor: default;
 }
+
+/*
+** Button design - invert
+*/
+.uteMBtn-design-invert {
+    min-width: 82px;
+    min-height: 28px;
+    background-color: @uteColor-white;
+    color: @uteColor-blue-600;
+}
+
+.uteMBtn-design-invert:hover {
+    background-color: @uteColor-blue-200;
+    color: @uteColor-white;
+}
+
+.uteMBtn-design-invert[data-disabled="true"] {
+    background-color: @uteColor-grey-500;
+    color: @uteColor-grey-200;
+}
+
+.uteMBtn-design-invert[data-disabled="true"]:hover {
+    background-color: @uteColor-grey-500;
+}
+
 
