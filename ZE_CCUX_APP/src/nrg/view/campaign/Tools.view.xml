@@ -11,7 +11,8 @@
                 <ute:Button
                     id="idnrgCamToolsBtn-H"
                     text="{comp-i18n>nrgCmpToolsBtnHis}"
-                    enabled="true">
+                    enabled="true"
+                    press="onHistoryPress" >
                 </ute:Button>
                 <ute:Button
                     id="idnrgCamToolsBtn-C"
