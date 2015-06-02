@@ -11,11 +11,11 @@
           displayBlock="true">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
       <u:Tag class="nrgCamSST">
-         <u:Tag class="nrgCamSSTtlT" text="{comp-i18n&gt;nrgCmpSSTtl}" />
+         <u:Tag class="nrgCamSSTtlT" text="{comp-i18n>nrgCmpSSTtl}" />
             <l:MatrixLayout class="nrgCamSSMtx nrgCamSS-top">
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <c:Label id="idCamSSTtlLbl" text="{comp-i18n&gt;nrgCmpSSTtllbl}" icon="sap-icon://nrg-icon/tag" class="nrgCamSS-lbl"  labelFor="idCamSSTtlTv"  />
+                        <c:Label id="idCamSSTtlLbl" text="{comp-i18n>nrgCmpSSTtllbl}" icon="sap-icon://nrg-icon/tag" class="nrgCamSS-lbl"  labelFor="idCamSSTtlTv"  />
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
                 <l:MatrixLayoutRow>
@@ -48,7 +48,7 @@
             </u:Tag>
             <u:Tag class="nrgCamSSDscT">
                     <c:Label id="idCamSSMdLbl"
-                        text="{comp-i18n&gt;nrgCmpSSMdlbl}"
+                        text="{comp-i18n>nrgCmpSSMdlbl}"
                         class="nrgCamSS-lbl nrgCamSS-top nrgCamSS-ManD"
                         labelFor="idCamSSMdTv" />
                     <u:TextView
@@ -100,13 +100,13 @@
             <u:Tag class="nrgCamSSBtnT nrgCamSS-top" >
                 <u:Button
                     id="idnrgCamSSBtn-Ok"
-                    text="{comp-i18n&gt;nrgCmpSSBtnOk}"
+                    text="{comp-i18n>nrgCmpSSBtnOk}"
                     enabled="true"
                     class="nrgCamSSBtn">
                 </u:Button>
                 <u:Button
                     id="idnrgCamSSBtn-Dec"
-                    text="{comp-i18n&gt;nrgCmpSSBtnDec}"
+                    text="{comp-i18n>nrgCmpSSBtnDec}"
                     enabled="true"
                     class="nrgCamSSBtn" >
                 </u:Button>

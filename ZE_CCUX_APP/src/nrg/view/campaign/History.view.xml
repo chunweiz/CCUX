@@ -11,14 +11,14 @@
           displayBlock="true">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
       <u:Tag class="nrgCamHisT">
-         <u:Tag class="nrgCamHisTtlT" text="{comp-i18n&gt;nrgCmpHisTtl}" />
+         <u:Tag class="nrgCamHisTtlT" text="{comp-i18n>nrgCmpHisTtl}" />
             <l:MatrixLayout class="nrgCamHisMtx nrgCamHis-top">
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <c:Label id="idCamHisTtlLbl" text="{comp-i18n&gt;nrgCmpHisTtllbl}" icon="sap-icon://nrg-icon/tag" class="nrgCamHis-lbl"  labelFor="idCamHisTtlTv"  />
+                        <c:Label id="idCamHisTtlLbl" text="{comp-i18n>nrgCmpHisTtllbl}" icon="sap-icon://nrg-icon/tag" class="nrgCamHis-lbl"  labelFor="idCamHisTtlTv"  />
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
-                        <c:Label id="idCamHisAULbl" text="{comp-i18n&gt;nrgCmpHisAUlbl}" icon="sap-icon://nrg-icon/bulb" class="nrgCamHis-lbl" labelFor="idCamHisAUTv"  />
+                        <c:Label id="idCamHisAULbl" text="{comp-i18n>nrgCmpHisAUlbl}" icon="sap-icon://nrg-icon/bulb" class="nrgCamHis-lbl" labelFor="idCamHisAUTv"  />
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
                 <l:MatrixLayoutRow>
@@ -38,7 +38,7 @@
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>
             <u:Tag class="nrgCamHisPrcT">
-                <c:Label id="idCamPrcLbl" text="{comp-i18n&gt;nrgCmpHisPrcbl}" icon="sap-icon://nrg-icon/dollar" class="nrgCamHis-lbl nrgCamHis-top" labelFor="idCamHisPrcTbl"  />
+                <c:Label id="idCamPrcLbl" text="{comp-i18n>nrgCmpHisPrcbl}" icon="sap-icon://nrg-icon/dollar" class="nrgCamHis-lbl nrgCamHis-top" labelFor="idCamHisPrcTbl"  />
                 <u:Table width="60%"
                     id="idCamHisPrcTbl"
                     tableType="CampaignTable"
@@ -66,7 +66,7 @@
             </u:Tag>
             <u:Tag class="nrgCamHisDscT">
                     <c:Label id="idCamHisDscLbl"
-                        text="{comp-i18n&gt;nrgCmpHisDscbl}"
+                        text="{comp-i18n>nrgCmpHisDscbl}"
                         icon="sap-icon://nrg-icon/description"
                         class="nrgCamHis-lbl nrgCamHis-top nrgCamHis-desc"
                         labelFor="idCamDescTv" />

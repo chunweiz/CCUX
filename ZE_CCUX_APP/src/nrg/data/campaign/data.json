@@ -3,10 +3,15 @@
         "config": {
             "data": {
                 "real": {
-
+                    "campaign": {
+                        "url": ""
+                    }
                 },
                 "mock": {
-
+                    "campaign": {
+                        "mockDataBaseUrl": "data/campaign/version1/",
+                        "generateMissingMockData": false
+                    }
                 }
             }
         }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="CampaignView">
+            <EntityType Name="CampaignView">
+                <Key>
+                    <PropertyRef Name="Contract"/>
+                </Key>
+                <Property Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property Name="CampaignID" Type="Edm.String"/>
+                <Property Name="CampaignTitle" Type="Edm.String"/>
+                <Property Name="AverageUsage" Type="Edm.String"/>
+                <Property Name="EFL500" Type="Edm.String"/>
+                <Property Name="EFL1000" Type="Edm.String"/>
+                <Property Name="EFL2000" Type="Edm.String"/>
+                <Property Name="Description" Type="Edm.String"/>
+                <Property Name="PromoCode" Type="Edm.String"/>
+                <Property Name="OfferCode" Type="Edm.String"/>
+                <Property Name="TermLength" Type="Edm.String"/>
+                <Property Name="StartDate" Type="Edm.DateTime"/>
+                <Property Name="EndDate" Type="Edm.DateTime"/>
+                <Property Name="CancellationFee" Type="Edm.String"/>
+                <Property Name="Incentive" Type="Edm.String"/>
+                <Property Name="DispositionReasons" Type="Edm.String"/>
+                <Property Name="MandatoryDisclosure" Nullable="false" Type="CampaignView.Scripts"/>
+                <Property Name="OverviewScript" Nullable="false" Type="CampaignView.Scripts"/>
+            </EntityType>
+            <ComplexType Name="Scripts">
+                <Property Name="language" Type="Edm.String"/>
+                <Property Name="Description" Type="Edm.String"/>
+            </ComplexType>
+            <EntityContainer Name="default" m:IsDefaultEntityContainer="true">
+                <EntitySet EntityType="CampaignView.CampaignView" Name="CampaignCurrent"/>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
