@@ -1,4 +1,5 @@
 /*global sap*/
+/*global jQuery */
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -45,6 +46,7 @@ sap.ui.define(
             }
 
             if (!oValue.match(/[\d\-]/i)) {
+                jQuery.sap.log.error('Parse Exception: Invalid Cell phone number', oValue);
                 throw new ParseException('Invalid Cell phone number');
             }
 
@@ -55,9 +57,11 @@ sap.ui.define(
         CustomType.prototype.validateValue = function (oValue) {
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: Cell phone number cannot be empty', oValue);
                 throw new ValidateException('Cell phone number cannot be empty');
             }
-            if (oValue.length < 1 || oValue.length > 30) {
+            if (oValue.length > 30) {
+                jQuery.sap.log.error('Validate Exception: Cell phone number length exceeds(allowed upto 30 char)', oValue);
                 throw new ValidateException('Cell phone number length exceeds(allowed upto 30 char)');
             }
 

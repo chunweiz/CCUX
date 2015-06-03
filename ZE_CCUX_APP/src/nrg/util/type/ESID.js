@@ -1,4 +1,5 @@
 /*global sap*/
+/*global jQuery */
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -45,6 +46,7 @@ sap.ui.define(
             }
 
             if (isNaN(oValue)) {
+                jQuery.sap.log.error('Parse Exception: Invalid ESID', oValue);
                 throw new ParseException('Invalid ESID');
             }
             return oValue;
@@ -54,9 +56,11 @@ sap.ui.define(
         CustomType.prototype.validateValue = function (oValue) {
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: ESID cannot be empty', oValue);
                 throw new ValidateException('ESID cannot be empty');
             }
-            if (oValue.length < 1 || oValue.length > 50) {
+            if (oValue.length > 50) {
+                jQuery.sap.log.error('Validate Exception: ESID length exceeds(allowed upto 50 char)', oValue);
                 throw new ValidateException('ESID length exceeds(allowed upto 50 char)');
             }
 

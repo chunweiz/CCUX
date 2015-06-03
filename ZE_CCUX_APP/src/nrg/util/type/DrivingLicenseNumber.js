@@ -1,4 +1,5 @@
 /*global sap*/
+/*global jQuery */
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -51,9 +52,11 @@ sap.ui.define(
         CustomType.prototype.validateValue = function (oValue) {
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: Driving License cannot be empty', oValue);
                 throw new ValidateException('Driving License cannot be empty');
             }
-            if (oValue.length < 1 || oValue.length > 20) {
+            if (oValue.length > 20) {
+                jQuery.sap.log.error('Validate Exception: DL length exceeds(allowed upto 20 char)', oValue);
                 throw new ValidateException('DL length exceeds(allowed upto 20 char)');
             }
 

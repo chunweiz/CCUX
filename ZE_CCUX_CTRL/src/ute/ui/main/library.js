@@ -14,11 +14,14 @@ sap.ui.define(
             ],
 
 			types: [
-                'ute.ui.main.ButtonDesign'
+                'ute.ui.main.ButtonDesign',
+                'ute.ui.main.CheckboxDesign'
             ],
 
 			controls: [
-				'ute.ui.main.Button'
+				'ute.ui.main.Button',
+                'ute.ui.main.Label',
+                'ute.ui.main.Checkbox'
 			],
 
 			elements: [],
@@ -30,6 +33,11 @@ sap.ui.define(
             Default: 'Default',
             Highlight: 'Highlight',
             Invert: 'Invert'
+        };
+
+        ute.ui.main.CheckboxDesign = {
+            None: 'None',
+            Default: 'Default'
         };
 
         return ute.ui.main;

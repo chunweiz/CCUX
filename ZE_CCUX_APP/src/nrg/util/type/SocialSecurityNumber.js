@@ -1,4 +1,5 @@
 /*global sap*/
+/*global jQuery */
 /*jslint nomen:true*/
 
 
@@ -48,10 +49,12 @@ sap.ui.define(
         CustomType.prototype.validateValue = function (oValue) {
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: SSN cannot be empty', oValue);
                 throw new ValidateException('SSN cannot be empty');
             }
 
-            if (oValue.length < 1 || oValue.length > 12) {
+            if (oValue.length > 12) {
+                jQuery.sap.log.error('Validate Exception: SSN length exceeds(allowed upto 12 char)', oValue);
                 throw new ValidateException('SSN length exceeds(allowed upto 12 char)');
             }
 
