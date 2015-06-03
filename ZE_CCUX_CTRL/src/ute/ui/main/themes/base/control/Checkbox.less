@@ -1,3 +1,37 @@
 .uteMChkBox {
-
+    display: inline-block;
+    position: relative;
 }
+
+.uteMChkBox-intChk {
+    display: none;
+}
+
+.uteMChkBox-chk {
+    display: inline-block;
+}
+
+/*
+** Default checkbox design
+*/
+.uteMChkBox-design-default .uteMChkBox-chk {
+    border: 1px solid @uteColor-blue-link;
+    width: 15px;
+    height: 15px;
+}
+
+.uteMChkBox-design-default .uteMChkBox-intChk:checked + .uteMChkBox-chk {
+    background-color: @uteColor-blue-link;
+}
+
+.uteMChkBox-design-default .uteMChkBox-intChk:checked + .uteMChkBox-chk::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 10px;
+    border: 2px solid @uteColor-white;
+    border-top: none;
+    border-left: none;
+    transform: translate(3px, 0) rotate(45deg);
+}
+
