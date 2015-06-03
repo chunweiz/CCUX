@@ -75,10 +75,10 @@
                 </ute:Textfield>
                 <ute:Textfield
                     value="{
-                        path:'oSearchFilters>/searchTextFields/sFedTid'}"
-                    id="idSearchFedTid"
+                        path:'oSearchFilters>/searchTextFields/sFiName'}"
+                    id="idSearchFiName"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n>nrgDashboardClrNid_FedTaxId}"
+                    placeholder="{comp-i18n>nrgDashboardClrNid_FiName}"
                     change="onTextFieldChange"
                     width="48%">
                 </ute:Textfield>
@@ -90,6 +90,16 @@
                     id="idSearchEsid"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n>nrgDashboardClrNid_Esid}"
+                    change="onTextFieldChange"
+                    width="48%">
+                </ute:Textfield>
+
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sLaName'}"
+                    id="idSearchLaName"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n>nrgDashboardClrNid_LaName}"
                     change="onTextFieldChange"
                     width="48%">
                 </ute:Textfield>

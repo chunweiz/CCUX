@@ -33,8 +33,9 @@ sap.ui.define(
                 sDl : null,
                 sContAccName : null,
                 sBpNum : null,
-                sFedTid : null,
-                sEsid : null
+                sFiName : null,
+                sEsid : null,
+                sLaName : null
             };
 
             this.getView().getModel('oSearchFilters').setProperty('/searchTextFields', oFilters);
@@ -53,6 +54,18 @@ sap.ui.define(
                 oFilterTemplate = new Filter(),
                 oFilterModel = this.getView().getModel('oSearchFilters');
 
+            if (oFilterModel.getProperty('/searchTextFields/sCaNum')) {
+                oFilterTemplate.sPath = 'PartnerID';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sCaNum');
+                aFilters.push(oFilterTemplate);
+            }
+            if (oFilterModel.getProperty('/searchTextFields/sSsn')) {
+                oFilterTemplate.sPath = 'SSN';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sSsn');
+                aFilters.push(oFilterTemplate);
+            }
             if (oFilterModel.getProperty('/searchTextFields/sCaNum')) {
                 oFilterTemplate.sPath = 'PartnerID';
                 oFilterTemplate.sOperator = FilterOperator.EQ;
