@@ -33,14 +33,16 @@
             }
         </style>
 
-        <um:Checkbox id="zzz" /><br/>
+        <um:Checkbox /><br/>
+
+        <um:Checkbox id="zzz" />
         <um:Label labelFor="zzz-intChk">
             <core:Icon src="sap-icon://nrg-icon/high-bill" />
             <span>Special label for checkbox</span>
         </um:Label>
         <br/>
 
-        <um:Checkbox id="yyy" class="custom" />
+        <um:Checkbox id="yyy" class="custom" design="None" />
         <um:Label labelFor="yyy-intChk">
             <core:Icon src="sap-icon://nrg-icon/high-bill" />
             <span>Special label for custom checkbox</span>
