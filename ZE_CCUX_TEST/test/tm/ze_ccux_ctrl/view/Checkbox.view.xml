@@ -40,7 +40,8 @@
             }
         </style>
 
-        <um:Checkbox checked="true" /><br/>
+        <um:Checkbox disabled="true"/><br/>
+        <um:Checkbox checked="true" disabled="true"/><br/>
 
         <um:Checkbox id="zzz" select=".onSelected" />
         <um:Label labelFor="zzz-intChk">

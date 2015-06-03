@@ -69,6 +69,19 @@ sap.ui.define(
             return this;
         };
 
+        CustomControl.prototype.setDisabled = function (bValue) {
+            bValue = !!bValue;
+
+            if (this.getDisabled() === bValue) {
+                return this;
+            }
+
+            this.$('.uteMChkBox-intChk').prop('disabled', bValue);
+
+            this.setProperty('disabled', bValue, true);
+            return this;
+        };
+
         return CustomControl;
     },
 

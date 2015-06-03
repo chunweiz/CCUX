@@ -1,6 +1,7 @@
 .uteMChkBox {
     display: inline-block;
     position: relative;
+    cursor: pointer;
 }
 
 .uteMChkBox-intChk {
@@ -35,3 +36,14 @@
     transform: translate(3px, 0) rotate(45deg);
 }
 
+.uteMChkBox-design-default .uteMChkBox-intChk[disabled="disabled"] + .uteMChkBox-chk {
+    border-color: @uteColor-blue-pearl;
+}
+
+.uteMChkBox-design-default .uteMChkBox-intChk[disabled="disabled"]:checked + .uteMChkBox-chk {
+    background-color: @uteColor-blue-pearl;
+}
+
+.uteMChkBox-design-default .uteMChkBox-intChk[disabled="disabled"]:checked + .uteMChkBox-chk::before {
+    border-color: @uteColor-grey-dark;
+}
