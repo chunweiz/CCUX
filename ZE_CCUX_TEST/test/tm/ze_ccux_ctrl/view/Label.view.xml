@@ -21,7 +21,8 @@
         <br/>
 
         <input id="idTestLabelCheckBox001" type="checkbox" />
-        <um:Label labelFor="idTestLabelCheckBox001" text="This is a label for checkbox" />
+        <um:Label labelFor="idTestLabelCheckBox001" text="This is a label for html checkbox" />
+        <br/>
 
     </sm:ScrollContainer>
 </mvc:View>

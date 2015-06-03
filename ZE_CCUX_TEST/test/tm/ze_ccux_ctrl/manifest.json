@@ -16,7 +16,8 @@
         "routing": {
             "routes": {
                 "Button": { "pattern": "Button", "target": [ "Button" ] },
-                "Label": { "pattern": "Label", "target": [ "Label" ] }
+                "Label": { "pattern": "Label", "target": [ "Label" ] },
+                "Checkbox": { "pattern": "Checkbox", "target": [ "Checkbox" ] }
             },
 
             "config": {
@@ -28,7 +29,8 @@
 
             "targets": {
                 "Button": { "viewName": "Button", "controlId": "idAppContent" },
-                "Label": { "viewName": "Label", "controlId": "idAppContent" }
+                "Label": { "viewName": "Label", "controlId": "idAppContent" },
+                "Checkbox": { "viewName": "Checkbox", "controlId": "idAppContent" }
             }
         }
     }
