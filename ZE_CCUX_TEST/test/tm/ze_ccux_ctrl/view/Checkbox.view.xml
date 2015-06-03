@@ -24,25 +24,32 @@
             .custom .uteMChkBox-intChk:checked + .uteMChkBox-chk::before {
                 content: '';
                 position: absolute;
-                width: 12px;
-                height: 20px;
-                border: 4px solid gold;
-                border-top: none;
-                border-left: none;
-                transform: translate(7px, 2px) rotate(45deg);
+                width: 4px;
+                height: 24px;
+                background-color: gold;
+                transform: translate(12px, 2px) rotate(45deg);
+            }
+
+            .custom .uteMChkBox-intChk:checked + .uteMChkBox-chk::after {
+                content: '';
+                position: absolute;
+                width: 4px;
+                height: 24px;
+                background-color: gold;
+                transform: translate(12px, 2px) rotate(-45deg);
             }
         </style>
 
-        <um:Checkbox /><br/>
+        <um:Checkbox checked="true" /><br/>
 
-        <um:Checkbox id="zzz" />
+        <um:Checkbox id="zzz" select=".onSelected" />
         <um:Label labelFor="zzz-intChk">
             <core:Icon src="sap-icon://nrg-icon/high-bill" />
             <span>Special label for checkbox</span>
         </um:Label>
         <br/>
 
-        <um:Checkbox id="yyy" class="custom" design="None" />
+        <um:Checkbox id="yyy" class="custom" design="None" checked="true" />
         <um:Label labelFor="yyy-intChk">
             <core:Icon src="sap-icon://nrg-icon/high-bill" />
             <span>Special label for custom checkbox</span>
