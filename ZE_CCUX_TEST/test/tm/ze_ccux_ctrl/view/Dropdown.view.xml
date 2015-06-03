@@ -1,0 +1,17 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:um="ute.ui.main"
+    controllerName="test.tm.ze_ccux_ctrl.view.Dropdown"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+
+
+
+    </sm:ScrollContainer>
+</mvc:View>

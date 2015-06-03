@@ -21,7 +21,8 @@ sap.ui.define(
 			controls: [
 				'ute.ui.main.Button',
                 'ute.ui.main.Label',
-                'ute.ui.main.Checkbox'
+                'ute.ui.main.Checkbox',
+                'ute.ui.main.Dropdown'
 			],
 
 			elements: [],
