@@ -12,11 +12,11 @@ sap.ui.define(
         var Controller = CoreController.extend('nrg.view.campaign.History');
 
         Controller.prototype.onInit = function () {
-            var oModel;
+/*            var oModel;
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             if (oModel) {
                 oModel.read("/CampaignHistory('1121')");
-            }
+            }*/
         };
             //TODO: Implementation required
         Controller.prototype.onBeforeRendering = function () {
