@@ -42,12 +42,16 @@ sap.ui.define(
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
             console.log('parseValue ... ' + oValue);
 
+
+
             if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 
             if (isNaN(oValue)) {
+                jQuery.sap.log.error('Parse Exception: Invalid contract account number', oValue);
                 throw new ParseException('Invalid contract account number');
+
             }
 
             return oValue.replace(/^(0+)/g, '');

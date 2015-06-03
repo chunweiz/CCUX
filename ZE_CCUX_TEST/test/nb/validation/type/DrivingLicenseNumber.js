@@ -34,7 +34,9 @@ sap.ui.define(
 
             if ($.isEmptyObject(this.oConstraints)) {
                 this.oConstraints = {
-                    mandatory: false
+                    mandatory: false,
+                     minLength: 1,
+                    maxLength: 20
                 };
             }
         };
@@ -42,6 +44,7 @@ sap.ui.define(
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
             console.log('parseValue ... ' + oValue);
+            console.log('internal type' + sInternalType);
 
 
             if (oValue === undefined || oValue === null || oValue.trim() === '') {
@@ -49,10 +52,10 @@ sap.ui.define(
             }
 
             //var dlRegex = /^(.*[0-9]){8}$/;
-              var dlRegex = /^.{1,13}$/;
-            if (!(dlRegex.test(oValue))) {
+             // var dlRegex = /^.{1,13}$/;
+          /*  if (!(dlRegex.test(oValue))) {
                 throw new ParseException('Invalid Driving License');
-            }
+            }*/
 
             return oValue.toLowerCase();
         };
@@ -61,8 +64,12 @@ sap.ui.define(
         CustomType.prototype.validateValue = function (oValue) {
             console.log('validateValue ... [' + oValue + ']');
 
-            if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+           if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
                 throw new ValidateException('Driving License cannot be empty');
+            }
+           // if (oValue.length > 20) {
+            if ( oValue.length > this.oConstraints.maxLength) {
+                throw new ValidateException('DL length exceeds(allowed upto 20 char)');
             }
 
             return oValue;

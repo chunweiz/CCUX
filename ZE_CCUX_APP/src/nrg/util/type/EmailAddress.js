@@ -46,7 +46,8 @@ sap.ui.define(
 
             var emailRegex = /^[^.\s()\[\],;:@][^\s()\[\],;:@]+[^.\s()\[\],;:@]@[a-zA-Z0-9]+\..+/i;
             if (!(emailRegex.test(oValue))) {
-                throw new ParseException('Invalid email');
+                jQuery.sap.log.error('Parse Exception: Invalid Email Address', oValue);
+                throw new ParseException('Invalid Email Address');
             }
 
             return oValue.toLowerCase();
@@ -56,10 +57,12 @@ sap.ui.define(
         CustomType.prototype.validateValue = function (oValue) {
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: Email cannot be empty', oValue);
                 throw new ValidateException('Email cannot be empty');
             }
 
-            if (oValue.length < 1 || oValue.length > 241) {
+            if (oValue.length > 241) {
+                jQuery.sap.log.error('Validate Exception: Email Address length exceeds(allowed upto 241 char)', oValue);
                 throw new ValidateException('Email Address length exceeds(allowed upto 241 char)');
             }
 
