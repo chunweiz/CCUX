@@ -10,11 +10,26 @@ sap.ui.define(
         var CustomRenderer = {};
 
         CustomRenderer.render = function (oRm, oCustomControl) {
-            oRm.write('<input type="checkbox"');
-            oRm.writeControlData(oCustomControl);
 
+            /*
+            ** Container to hold the entire checkbox
+            */
+            oRm.write('<div');
+            oRm.writeControlData(oCustomControl);
             oRm.addClass('uteMChkBox');
+
+            if (oCustomControl.getDesign() !== ute.ui.main.CheckboxDesign.None) {
+                oRm.addClass('uteMChkBox-design-' + oCustomControl.getDesign().toLowerCase());
+            }
+
             oRm.writeClasses();
+            oRm.write('>');
+
+            /*
+            ** Actual checkbox, will be hidden away
+            */
+            oRm.write('<input type="checkbox"');
+            oRm.writeAttribute('id', oCustomControl.getId() + '-intChk');
 
             if (oCustomControl.getChecked()) {
                 oRm.writeAttribute('checked', 'checked');
@@ -23,15 +38,23 @@ sap.ui.define(
             if (oCustomControl.getDisabled()) {
                 oRm.writeAttribute('disabled', 'disabled');
             }
-            oRm.write(' />');
+
+            oRm.addClass('uteMChkBox-intChk');
+            oRm.writeClasses();
+            oRm.write('/>');
+
+            /*
+            ** This is the 'checkbox' that the user will interact with
+            */
             oRm.write('<label');
-            oRm.writeAttribute('id', oCustomControl.getId() + '-chk');
-            oRm.writeAttribute('for', oCustomControl.getId());
+            oRm.writeAttribute('id', oCustomControl.getId() + '-extChk');
+            oRm.writeAttribute('for', oCustomControl.getId() + '-intChk');
             oRm.addClass('uteMChkBox-chk');
             oRm.writeClasses();
             oRm.write('>');
-            oRm.write('zzzz');
             oRm.write('</label>');
+
+            oRm.write('</div>');
         };
 
         return CustomRenderer;

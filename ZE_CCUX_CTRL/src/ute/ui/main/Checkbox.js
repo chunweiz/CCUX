@@ -3,11 +3,12 @@
 
 sap.ui.define(
     [
+        'jquery.sap.global',
         'sap/ui/core/Control',
         'sap/ui/core/EnabledPropagator'
     ],
 
-    function (Control, EnabledPropagator) {
+    function (jQuery, Control, EnabledPropagator) {
         'use strict';
 
         var CustomControl = Control.extend('ute.ui.main.Checkbox', {
@@ -32,12 +33,22 @@ sap.ui.define(
 
         EnabledPropagator.call(CustomControl.prototype);
 
-        CustomControl.prototype.ontap = function (oEvent) {
+        CustomControl.prototype.exit = function () {
+            this.$().unbind('change', jQuery.proxy(this.onchange));
+        };
+
+        CustomControl.prototype.onBeforeRendering = function () {
+            this.$().unbind('change', jQuery.proxy(this.onchange));
+        };
+
+        CustomControl.prototype.onAfterRendering = function () {
+            this.$().bind('change', jQuery.proxy(this.onchange, this));
+        };
+
+        CustomControl.prototype.onchange = function (oEvent) {
             if (this.getDisabled()) {
                 return;
             }
-
-            alert('ontap');
 
             this.setChecked(!this.getChecked());
             this.fireSelect({
@@ -52,14 +63,23 @@ sap.ui.define(
                 return this;
             }
 
-            this.$().prop('checked', bValue);
+            this.$('.uteMChkBox-intChk').prop('checked', bValue);
 
             this.setProperty('checked', bValue, true);
             return this;
         };
 
-        CustomControl.prototype.onBeforeRendering = function () {
-            this.$().unbind('change', jQuery.proxy(this.ontap, this));
+        CustomControl.prototype.setDisabled = function (bValue) {
+            bValue = !!bValue;
+
+            if (this.getDisabled() === bValue) {
+                return this;
+            }
+
+            this.$('.uteMChkBox-intChk').prop('disabled', bValue);
+
+            this.setProperty('disabled', bValue, true);
+            return this;
         };
 
         return CustomControl;

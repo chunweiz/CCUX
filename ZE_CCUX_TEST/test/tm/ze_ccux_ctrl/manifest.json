@@ -17,7 +17,8 @@
             "routes": {
                 "Button": { "pattern": "Button", "target": [ "Button" ] },
                 "Label": { "pattern": "Label", "target": [ "Label" ] },
-                "Checkbox": { "pattern": "Checkbox", "target": [ "Checkbox" ] }
+                "Checkbox": { "pattern": "Checkbox", "target": [ "Checkbox" ] },
+                "Dropdown": { "pattern": "Dropdown", "target": [ "Dropdown" ] }
             },
 
             "config": {
@@ -30,7 +31,8 @@
             "targets": {
                 "Button": { "viewName": "Button", "controlId": "idAppContent" },
                 "Label": { "viewName": "Label", "controlId": "idAppContent" },
-                "Checkbox": { "viewName": "Checkbox", "controlId": "idAppContent" }
+                "Checkbox": { "viewName": "Checkbox", "controlId": "idAppContent" },
+                "Dropdown": { "viewName": "Dropdown", "controlId": "idAppContent" }
             }
         }
     }
