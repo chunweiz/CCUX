@@ -892,8 +892,7 @@
 }
 .uteDD {
   /* Size and position */
-  position: relative;
-  margin: 0 auto;
+  position: absolute;
   /* Styles */
   border-radius: 7px;
   box-shadow: 0px 1px 1px grey;
@@ -1033,4 +1032,57 @@
 }
 .uteTextfield > .uteDatePicIcon:after {
   border-color: #4d4d4d transparent;
+}
+.uteTv {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  line-height: 1;
+}
+.uteTv-design-small {
+  font-size: 10pt;
+}
+.uteTv-design-base {
+  font-size: 12pt;
+}
+.uteTv-design-large {
+  font-size: 14pt;
+}
+.uteTv-color-white {
+  color: #ffffff;
+}
+.uteTv-color-darkgrey {
+  color: #4d4d4d;
+}
+.uteTv-color-bluelinks {
+  color: #5092ce;
+}
+.uteTv-color-greenhighlights {
+  color: #5bc2af;
+}
+.uteTv-color-redalert {
+  color: #c0272d;
+}
+.uteTv-color-orangeattention {
+  color: #f2a814;
+}
+.uteTv-color-inactivegrey {
+  color: #808080;
+}
+.uteTv-color-lightgrey {
+  color: #989898;
+}
+.uteTv-color-bluepearl {
+  color: #f9fcff;
+}
+.uteTv-color-black {
+  color: #000000;
+}
+.uteTv-color-paleblue {
+  color: #eaeff4;
+}
+.uteTv-color-lightpaleblue {
+  color: rgba(234, 239, 244, 0.95);
+}
+.uteTv-color-darkpaleblue {
+  color: rgba(17, 34, 55, 0.8);
 }
