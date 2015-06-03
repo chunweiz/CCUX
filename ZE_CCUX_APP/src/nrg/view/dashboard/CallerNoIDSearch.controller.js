@@ -37,50 +37,48 @@ sap.ui.define(
                 sEsid : null
             };
 
-            this.getView().getModel('oSearchFilters').setData('searchTextFields', oFilters);
+            this.getView().getModel('oSearchFilters').setProperty('/searchTextFields', oFilters);
         };
 
         Controller.prototype.onTextFieldChange = function (oControlEvent) {
-            /*var iIdIndex = oControlEvent.getParameters().id.indexOf('--'),
-                sChangedItem = oControlEvent.getParameters().id.substring(iIdIndex + 1);
-
-            switch (sChangedItem) {
-            case 'idSearchCa':
-                break;
-            case 'idSearchSsn':
-                break;
-            case 'idSearchDl':
-                break;
-            case 'idSearchCaName':
-                break;
-            case 'idSearchBp':
-                break;
-            case 'idSearchFedTid':
-                break;
-            case '':
-                break;
-            case 'idSearchEsid':
-                break;
-            }*/
-
+            //Create for future use
         };
 
         Controller.prototype.onSearch = function () {
-
             this._searchBP('/BpSearchs', this._createSearchParameters());
         };
 
+        Controller.prototype._createSearchFilterObject = function () {
+            var aFilters = [],
+                oFilterTemplate = new Filter(),
+                oFilterModel = this.getView().getModel('oSearchFilters');
+
+            if (oFilterModel.getProperty('/searchTextFields/sCaNum')) {
+                oFilterTemplate.sPath = 'PartnerID';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sCaNum');
+                aFilters.push(oFilterTemplate);
+            }
+
+            return aFilters;
+        };
+
         Controller.prototype._createSearchParameters = function () {
-            var oFilter, aFilter, oParameters;
+            //var oFilter, aFilter, oParameters,
+              //  oFilterModel = this.getView().getModel('oSearchFilters');
+
+            var aFilters = this._createSearchFilterObject(),
+                oParameters;
 
 
-            /*This need to be re-written*/
+
+            /*This need to be re-written
             oFilter = new Filter("PartnerID", FilterOperator.EQ, "1121");
             aFilter = [];
-            aFilter.push(oFilter);
+            aFilter.push(oFilter);*/
 
             oParameters = {
-                filters : aFilter,
+                filters : aFilters,
                 success : function (oData) {
                     if (oData.results) {
                         this.getView().getModel('oBpSearchResult').setData(oData.results);

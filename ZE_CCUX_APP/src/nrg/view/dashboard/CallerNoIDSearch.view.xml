@@ -14,10 +14,10 @@
                      text="{comp-i18n>nrgDashboardCallerNoIDSearchTitle}">
             </ute:Tag>
             <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
+                <!--type:'nrg.util.type.ContractAccountNumber'-->
                 <ute:Textfield
                     value="{
-                        path:'oFilters>/searchTextFields/sCaNum',
-                        type:'nrg.util.type.ContractAccountNumber'}"
+                        path:'oSearchFilters>/searchTextFields/sCaNum'}"
                     id="idSearchCa"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n>nrgDashboardClrNid_CaNumPh}"
@@ -25,25 +25,27 @@
                     label="Title"
                     width="48%">
                 </ute:Textfield>
+
+                <!--type:'nrg.util.type.SocialSecurityNumber'-->
                 <ute:Textfield
                     value="{
-                        path:'oFilters>/searchTextFields/sSsn',
-                        type:'nrg.util.type.SocialSecurityNumber'}"
+                        path:'oSearchFilters>/searchTextFields/sSsn'}"
                     id="idSearchSsn"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n>nrgDashboardClrNid_Ssn}"
-                    change="testInputChange"
+                    change="onTextFieldChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
+
+                <!--type:'nrg.util.type.DriverLicenseNumber'-->
                 <ute:Textfield
                     value="{
-                        path:'oFilters>/searchTextFields/sDl',
-                        type:'nrg.util.type.DriverLicenseNumber'}"
+                        path:'oSearchFilters>/searchTextFields/sDl'}"
                     id="idSearchDl"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n>nrgDashboardClrNid_Dl}"
-                    change="testInputChange"
+                    change="onTextFieldChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
@@ -51,44 +53,44 @@
             <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
                 <ute:Textfield
                     value="{
-                        path:'oFilters>/searchTextFields/sContAccName'}"
+                        path:'oSearchFilters>/searchTextFields/sContAccName'}"
                     id="idSearchCaName"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n>nrgDashboardClrNid_CaName}"
-                    change="testInputChange"
+                    change="onTextFieldChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
+
+                <!--type:'nrg.util.type.BusinessPartnerNumber'-->
                 <ute:Textfield
                     value="{
-                        path:'oFilters>/searchTextFields/sBpNum',
-                        type:'nrg.util.type.BusinessPartnerNumber'}"
+                        path:'oSearchFilters>/searchTextFields/sBpNum'}"
                     id="idSearchBp"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n>nrgDashboardClrNid_BpNum}"
-                    change="testInputChange"
+                    change="onTextFieldChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
                     value="{
-                        path:'oFilters>/searchTextFields/sFedTid}"
+                        path:'oSearchFilters>/searchTextFields/sFedTid'}"
                     id="idSearchFedTid"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n>nrgDashboardClrNid_FedTaxId}"
-                    change="ESID"
-                    label="Title"
+                    change="onTextFieldChange"
                     width="48%">
                 </ute:Textfield>
+
+                <!--type:'nrg.util.type.ESID'-->
                 <ute:Textfield
                     value="{
-                        path:'oFilters>/searchTextFields/sEsid',
-                        type:'nrg.util.type.ESID'}"
+                        path:'oSearchFilters>/searchTextFields/sEsid'}"
                     id="idSearchEsid"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n>nrgDashboardClrNid_Esid}"
-                    change="testInputChange"
-                    label="Title"
+                    change="onTextFieldChange"
                     width="48%">
                 </ute:Textfield>
             </ute:Tag>
