@@ -223,9 +223,14 @@ sap.ui.define(
                 content: 'e62b'
             });
 
-            IconPool.addIcon('not-verified', 'nrg-icon', {
+            IconPool.addIcon('ivr', 'nrg-icon', {
                 fontFamily: 'nrg-icon',
                 content: 'e62c'
+            });
+
+            IconPool.addIcon('not-verified', 'nrg-icon', {
+                fontFamily: 'nrg-icon',
+                content: 'e62d'
             });
         };
 
