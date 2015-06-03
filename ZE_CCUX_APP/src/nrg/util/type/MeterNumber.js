@@ -1,5 +1,7 @@
 /*global sap*/
+/*global jQuery */
 /*jslint nomen:true*/
+
 
 sap.ui.define(
     [
