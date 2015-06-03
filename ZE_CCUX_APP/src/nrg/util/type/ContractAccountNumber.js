@@ -1,4 +1,5 @@
 /*global sap*/
+/*global jQuery */
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -71,11 +72,12 @@ sap.ui.define(
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
 
-            if (oValue === undefined || oValue === null) {
+         /*   if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 
-            return oValue.replace(/^(0+)/g, '');
+            return oValue.replace(/^(0+)/g, '');*/
+            return oValue;
         };
 
         return CustomType;
