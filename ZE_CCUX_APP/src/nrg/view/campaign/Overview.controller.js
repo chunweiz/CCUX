@@ -26,13 +26,15 @@ sap.ui.define(
             oParameters = {
                 filters : aFilters,
                 success : function (oData) {
-                    if (oData.results) {
-                        oContext = this.getView().getModel('comp-campaign').getContext("/CpgCurPndSet(CampaignID='CampaignID 1',PromoCode='PromoCode 1')");
-                        this.getView().setBindingContext(oContext, "oCmpCP");
-                        this.getView().bindElement("/CpgCurPndSet(CampaignID='CampaignID 1',PromoCode='PromoCode 1')");
-                        this.getView().bindObject("/CpgCurPndSet(CampaignID='CampaignID 1',PromoCode='PromoCode 1')");
-                        jQuery.sap.log.info("Odata Read Successfully");
-                    }
+                    this.getView().bindObject({
+                        model : "comp-campaign",
+                        path : "/CpgCurPndSet(CampaignID='CampaignID 1',PromoCode='PromoCode 1')"
+                    });
+                    this.getView().bindObject({
+                        model : "comp-product",
+                        path : "/CpgCurPndSet(CampaignID='CampaignID 1',PromoCode='PromoCode 1')"
+                    });
+                    jQuery.sap.log.info("Odata Read Successfully");
                 }.bind(this),
                 error: function (oError) {
                     jQuery.sap.log.info("Some Error");
@@ -41,6 +43,7 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oParameters);
             }
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-campaign'), "comp-product");
 
         };
         Controller.prototype._createSearchFilterObject = function (oContractID, oCurrentFlag) {
