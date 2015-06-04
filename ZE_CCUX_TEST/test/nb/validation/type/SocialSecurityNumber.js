@@ -1,4 +1,5 @@
 /*global sap*/
+/*global jQuery */
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -39,23 +40,21 @@ sap.ui.define(
 
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
-            console.log('parseValue ... ' + oValue);
-
-          var ssnRegex = /.{1,12}/;
-            if (!(ssnRegex.test(oValue))) {
-                throw new ParseException('Invalid SSN');
-            }
-
 
             return oValue;
         };
 
         // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
-            console.log('validateValue ... [' + oValue + ']');
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: SSN cannot be empty', oValue);
                 throw new ValidateException('SSN cannot be empty');
+            }
+
+            if (oValue.length > 12) {
+                jQuery.sap.log.error('Validate Exception: SSN length exceeds(allowed upto 12 char)', oValue);
+                throw new ValidateException('SSN length exceeds(allowed upto 12 char)');
             }
 
             return oValue;
@@ -63,16 +62,16 @@ sap.ui.define(
 
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
-            console.log('formatValue ... ' + oValue);
-             if (oValue === undefined || oValue === null || oValue.trim() === '') {
-                 return oValue;
-             }
+
+            if (oValue === undefined || oValue === null || oValue.trim() === '') {
+                return oValue;
+            }
+
             /*No formatting added as the masking should be done at server level itself to  protect from hacking*/
 
             return oValue;
 
         };
-
         return CustomType;
     }
 );

@@ -38,7 +38,8 @@ sap.ui.define(
                 return oValue;
             }
 
-            if (isNaN(oValue)) {
+            if (/[^\d*+]/i.test(oValue)) {
+                jQuery.sap.log.error('Parse Exception: Invalid business partner number', oValue);
                 throw new ParseException('Invalid business partner number');
             }
 
@@ -47,6 +48,7 @@ sap.ui.define(
 
         CustomType.prototype.validateValue = function (oValue) {
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: Business partner number cannot be empty', oValue);
                 throw new ValidateException('Business partner number cannot be empty');
             }
 
@@ -54,8 +56,9 @@ sap.ui.define(
                 return oValue;
             }
 
-            if (oValue.length < 1 || oValue.length > 10) {
-                throw new ValidateException('Invalid business partner number');
+            if (oValue.length > 10) {
+                jQuery.sap.log.error('Validate Exception: Business partner number exceeds length (allowed upto 10 char)', oValue);
+                throw new ValidateException('Business partner number exceeds length (allowed upto 10 char)');
             }
 
             return oValue;
@@ -67,6 +70,7 @@ sap.ui.define(
             }
 
             if (isNaN(oValue)) {
+                jQuery.sap.log.error('Parse Exception: Invalid business partner number', oValue);
                 throw new ParseException('Invalid business partner number');
             }
 

@@ -5,15 +5,18 @@ sap.ui.define(
     [
         'nrg/util/view/BaseController',
         'sap/ui/model/Filter',
-        'sap/ui/model/FilterOperator'
+        'sap/ui/model/FilterOperator',
+        'sap/ui/core/routing/HashChanger'
     ],
 
-    function (CoreController, Filter, FilterOperator) {
+    function (CoreController, Filter, FilterOperator, HashChanger) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.view.dashboard.CallerNoIDSearch');
 
         Controller.prototype.onInit = function () {
+            //var test = new HashChanger();
+            //var testagian= test.getHash();
 
             /*Models in the controller*/
 
@@ -21,9 +24,16 @@ sap.ui.define(
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oSearchBpODataModel');
             //JSON model for search result
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBpSearchResult');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBpSearchCount');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSearchFilters');
 
             this._initSearchFilterModel();
+            this._initSearchResultModel();
+        };
+
+        Controller.prototype._initSearchResultModel = function () {
+            //Set search result number = 0 first.
+            this.getView().getModel('oBpSearchCount').setProperty('/searchCount', 0);
         };
 
         Controller.prototype._initSearchFilterModel = function () {
@@ -55,7 +65,7 @@ sap.ui.define(
                 oFilterModel = this.getView().getModel('oSearchFilters');
 
             if (oFilterModel.getProperty('/searchTextFields/sCaNum')) {
-                oFilterTemplate.sPath = 'PartnerID';
+                oFilterTemplate.sPath = 'BuagID';
                 oFilterTemplate.sOperator = FilterOperator.EQ;
                 oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sCaNum');
                 aFilters.push(oFilterTemplate);
@@ -79,7 +89,7 @@ sap.ui.define(
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sBpNum')) {
-                oFilterTemplate.sPath = 'BuagID';
+                oFilterTemplate.sPath = 'PartnerID';
                 oFilterTemplate.sOperator = FilterOperator.EQ;
                 oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sBpNum');
                 aFilters.push(oFilterTemplate);
@@ -126,6 +136,7 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData.results) {
                         this.getView().getModel('oBpSearchResult').setData(oData.results);
+                        this.getView().getModel('oBpSearchCount').setProperty('/searchCount', oData.results.length);
                     }
                 }.bind(this),
                 error: function (oError) {

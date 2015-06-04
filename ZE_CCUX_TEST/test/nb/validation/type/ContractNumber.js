@@ -24,7 +24,7 @@ sap.ui.define(
             return 'tm.message.validation.type.ContractNumber';
         };
 
-        CustomType.prototype.setFormatOptions = function (oFormatOptions) {
+          CustomType.prototype.setFormatOptions = function (oFormatOptions) {
             this.oFormatOptions = oFormatOptions;
         };
 
@@ -40,45 +40,52 @@ sap.ui.define(
 
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
-            console.log('parseValue ... ' + oValue);
+
+            alert('Inside parse');
 
             if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 
             if (isNaN(oValue)) {
+                jQuery.sap.log.error('Parse Exception: Invalid contract number', oValue);
                 throw new ParseException('Invalid contract number');
             }
 
             return oValue.replace(/^(0+)/g, '');
+           // return oValue;
         };
 
         // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
-            console.log('validateValue ... [' + oValue + ']');
+            alert('Inside validate');
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: Contract number cannot be empty', oValue);
                 throw new ValidateException('Contract number cannot be empty');
             }
 
-            if (oValue.length < 1 || oValue.length > 10) {
-                throw new ValidateException('Invalid contract number');
+            if (oValue.length > 10) {
+                jQuery.sap.log.error('Validate Exception: Contract number length exceeds(allowed upto 10 char)', oValue);
+                throw new ValidateException('Contract number length exceeds(allowed upto 10 char)');
             }
 
             return oValue;
         };
 
-        // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
-            console.log('formatValue ... ' + oValue);
 
             if (oValue === undefined || oValue === null) {
                 return oValue;
             }
+            alert('Inside format');
 
             return oValue.replace(/^(0+)/g, '');
+            //return oValue;
         };
+
 
         return CustomType;
     }
 );
+

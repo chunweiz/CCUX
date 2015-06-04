@@ -24,6 +24,7 @@ sap.ui.define(
             return 'tm.message.validation.type.MeterNumber';
         };
 
+
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {
             this.oFormatOptions = oFormatOptions;
         };
@@ -40,7 +41,6 @@ sap.ui.define(
 
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
-            console.log('parseValue ... ' + oValue);
 
             if (oValue === undefined || oValue === null) {
                 return oValue;
@@ -51,12 +51,13 @@ sap.ui.define(
 
         // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
-            console.log('validateValue ... [' + oValue + ']');
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: MeterNumber cannot be empty', oValue);
                 throw new ValidateException('MeterNumber cannot be empty');
             }
-            if (oValue.length < 1 || oValue.length > 18) {
+            if (oValue.length > 18) {
+                jQuery.sap.log.error('Validate Exception: MeterNumber length exceeds(allowed upto 18 char)', oValue);
                 throw new ValidateException('MeterNumber length exceeds(allowed upto 18 char)');
             }
 
@@ -65,7 +66,7 @@ sap.ui.define(
 
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
-            console.log('formatValue ... ' + oValue);
+
             if (oValue === undefined || oValue === null || oValue.trim() === '') {
                 return oValue;
             }
@@ -73,6 +74,7 @@ sap.ui.define(
             return oValue.replace(/^(0+)/g, '');
 
         };
+
         return CustomType;
     }
 );

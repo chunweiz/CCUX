@@ -35,7 +35,7 @@ sap.ui.define(
                 return oValue;
             }
 
-            if (isNaN(oValue)) {
+            if (/[^\d*+]/i.test(oValue)) {
                 jQuery.sap.log.error('Parse Exception: Invalid business partner number', oValue);
                 throw new ParseException('Invalid business partner number');
             }
