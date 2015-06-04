@@ -32,12 +32,15 @@ sap.ui.define(
         };
 
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
+
+            var allowed = new RegExp("^[" + "0-9+*" + "]*$");
+
             if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 
             if (this.oConstraints.wildCard) {
-                if (/[^\d*+]/.test(oValue)) {
+                if (!oValue.match(allowed)) {
                     jQuery.sap.log.error('Parse Exception: Invalid business partner number', oValue);
                     throw new ParseException('Invalid business partner number');
                 }

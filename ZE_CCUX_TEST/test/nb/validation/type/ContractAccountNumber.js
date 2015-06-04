@@ -46,10 +46,10 @@ sap.ui.define(
             if (oValue === undefined || oValue === null) {
                 return oValue;
             }
-            var regex = new RegExp("^[" + "\d+*" + "]*$");
+            var allowed = new RegExp("^[" + "0-9+*" + "]*$");
 
-        if (this.oConstraints.wildCard){
-            if (regex.test(oValue)) {
+            if (this.oConstraints.wildCard){
+            if (!oValue.match(allowed)) {
                 jQuery.sap.log.error('Parse Exception: Invalid contract account number', oValue);
                 throw new ParseException('Invalid contract account number');
             }

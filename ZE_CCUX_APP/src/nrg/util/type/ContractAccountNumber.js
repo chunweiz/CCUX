@@ -42,11 +42,13 @@ sap.ui.define(
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
 
+            var allowed = new RegExp("^[" + "0-9+*" + "]*$");
+
             if (oValue === undefined || oValue === null) {
                 return oValue;
             }
             if (this.oConstraints.wildCard) {
-                if (/[^\d*+]/i.test(oValue)) {
+                if (!oValue.match(allowed)) {
                     jQuery.sap.log.error('Parse Exception: Invalid contract account number', oValue);
                     throw new ParseException('Invalid contract account number');
                 }
