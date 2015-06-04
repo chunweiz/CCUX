@@ -57,7 +57,7 @@
         id="idSSN"
         type="Text"
         placeholder="SSN"
-        value="{path: '/ssn', type: 'tm.message.validation.type.SocialSecurityNumber', constraints: { mandatory: true }}" />
+        value="{path: '/ssn', type: 'tm.message.validation.type.SocialSecurityNumber', constraints: { mandatory: true, wildCard: false }}" />
 
      <m:Input
         id="idDL"
