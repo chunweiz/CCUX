@@ -48,13 +48,12 @@ sap.ui.define(
             }
 
             if (oValue.length > 12) {
-                jQuery.sap.log.error('Validate Exception: SSN length exceeds(allowed upto 12 char)', oValue);
-                throw new ValidateException('SSN length exceeds(allowed upto 12 char)');
+                jQuery.sap.log.error('Parse Exception: SSN length exceeds(allowed upto 12 char)', oValue);
+                throw new ParseException('SSN length exceeds(allowed upto 12 char)');
             }
 
 
-
-            return oValue;
+                return oValue;
         };
 
         // Model value meets constraint requirements
@@ -62,7 +61,7 @@ sap.ui.define(
 
 
             var allowedWC = new RegExp("^[" + "0-9a-zA-Z+*/-" + "]*$"),
-                allowed1 = new RegExp("^"+"[0-9a-zA-Z]{3}[/-][0-9a-zA-Z]{2}[/-][0-9]{4}"+"$"),
+                allowed1 = new RegExp("^"+"[0-9a-zA-Z]{3}[\-][0-9a-zA-Z]{2}[\-][0-9]{4}"+"$"),
                 allowed2 = new RegExp("^"+"[0-9a-zA-Z]{3}[0-9a-zA-Z]{2}[0-9]{4}"+"$"),
                 allowed3 = new RegExp("^"+"[0-9a-zA-Z]{7}-[0-9]{4}"+"$"),
                 allowed4 = new RegExp("^"+"[0-9a-zA-Z]{7}[0-9]{4}"+"$");
@@ -72,18 +71,6 @@ sap.ui.define(
                 throw new ValidateException('SSN cannot be empty');
             }
 
-            if (this.oConstraints.wildCard)  {
-                if (!oValue.match(allowedWC)) {
-                    jQuery.sap.log.error('Parse Exception: Invalid SSN', oValue);
-                    throw new ValidateException('Invalid SSN');
-                }
-            } else {
-                if (!oValue.match(allowed1) && !oValue.match(allowed2) && !oValue.match(allowed3) && !oValue.match(allowed4)) {
-                    jQuery.sap.log.error('Parse Exception: Invalid SSN', oValue);
-                    throw new ValidateException('Invalid SSN');
-                }
-
-            }
 
             return oValue;
         };
@@ -91,13 +78,19 @@ sap.ui.define(
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
 
+            var excludeLastFour, lastFour, masked;
+
             if (oValue === undefined || oValue === null || oValue.trim() === '') {
                 return oValue;
             }
 
-            /*No formatting added as the masking should be done at server level itself to  protect from hacking*/
+            oValue =  oValue.replace(/(-+)/g,'');
+            excludeLastFour = oValue.substring(0, oValue.length - 4);
+            lastFour = oValue.substring(oValue.length - 4, oValue.length);
+            masked = excludeLastFour.replace(/[0-9a-z-A-Z]/g,'*');
 
-            return oValue;
+
+            return masked + lastFour;
 
         };
         return CustomType;
