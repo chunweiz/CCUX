@@ -1,11 +1,13 @@
 /*global sap*/
+/*jslint nomen:true*/
 
 sap.ui.define(
     [
-        'sap/ui/core/Control'
+        'sap/ui/core/Control',
+        'sap/ui/core/Popup'
     ],
 
-    function (Control) {
+    function (Control, Popup) {
         'use strict';
 
         var CustomControl = Control.extend('ute.ui.main.Dropdown', {
@@ -26,7 +28,9 @@ sap.ui.define(
             }
         });
 
-
+        CustomControl.prototype.init = function () {
+            this._oPopup = new Popup();
+        };
 
         return CustomControl;
     },
