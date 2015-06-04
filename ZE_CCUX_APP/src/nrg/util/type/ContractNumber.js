@@ -24,9 +24,6 @@ sap.ui.define(
             return 'nrg.util.type.ContractNumber';
         };
 
-        CustomType.prototype.getName = function () {
-            return 'tm.message.validation.type.ContractNumber';
-        };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {
             this.oFormatOptions = oFormatOptions;
@@ -49,7 +46,7 @@ sap.ui.define(
                 return oValue;
             }
 
-            if (isNaN(oValue)) {
+            if (/[^\d*+]/i.test(oValue)) {
                 jQuery.sap.log.error('Parse Exception: Invalid contract number', oValue);
                 throw new ParseException('Invalid contract number');
             }
@@ -73,7 +70,6 @@ sap.ui.define(
             return oValue;
         };
 
-        // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
 
             if (oValue === undefined || oValue === null) {

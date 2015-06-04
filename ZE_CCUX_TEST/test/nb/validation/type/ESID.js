@@ -40,13 +40,13 @@ sap.ui.define(
 
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
-            console.log('parseValue ... ' + oValue);
 
             if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 
-            if (isNaN(oValue)) {
+            if (/[^\d*+]/i.test(oValue)){
+                jQuery.sap.log.error('Parse Exception: Invalid ESID', oValue);
                 throw new ParseException('Invalid ESID');
             }
             return oValue;
@@ -54,12 +54,13 @@ sap.ui.define(
 
         // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
-            console.log('validateValue ... [' + oValue + ']');
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: ESID cannot be empty', oValue);
                 throw new ValidateException('ESID cannot be empty');
             }
-            if (oValue.length < 1 || oValue.length > 50) {
+            if (oValue.length > 50) {
+                jQuery.sap.log.error('Validate Exception: ESID length exceeds(allowed upto 50 char)', oValue);
                 throw new ValidateException('ESID length exceeds(allowed upto 50 char)');
             }
 
@@ -68,12 +69,12 @@ sap.ui.define(
 
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
-            console.log('formatValue ... ' + oValue);
+
             if (oValue === undefined || oValue === null || oValue.trim() === '') {
                 return oValue;
             }
 
-                      return oValue;
+            return oValue;
 
         };
         return CustomType;

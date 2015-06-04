@@ -4,6 +4,7 @@
     xmlns:core="sap.ui.core"
     xmlns:m="sap.m"
     xmlns:l="sap.ui.layout"
+    xmlns:table="sap.ui.table"
     xmlns:tm="tm.message.control"
     controllerName="tm.message.validation.view.App"
     height="100%"
@@ -44,7 +45,7 @@
         id="idPrice"
         type="Text"
         placeholder="price"
-        value="{path: '/price', type: 'tm.message.validation.type.Price'}" />
+        value="{path: '/price', type: 'tm.message.validation.type.Price', formatOptions: {minFractionDigits: 2, maxFractionDigits: 3, groupingEnabled: true}, constraints: { minimum : 1 }}" />
 
      <m:Input
         id="idEmail"
@@ -67,7 +68,8 @@
         id="idCNum"
         type="Text"
         placeholder="contract number"
-        value="{path: '/cNum', type: 'tm.message.validation.type.ContractNumber', constraints: { mandatory: true }}" />
+        value="{parts:[{path: '/cellnum', type: 'tm.message.validation.type.CellPhoneNumber'},{path: '/cNum', type: 'tm.message.validation.type.ContractNumber'}],
+               formatter: '.format'}" />
     <m:Input
         id="idESID"
         type="Text"
@@ -78,10 +80,11 @@
         type="Text"
         placeholder="mnum"
         value="{path: '/mnum', type: 'tm.message.validation.type.MeterNumber', constraints: { mandatory: true }}" />
-    <m:Input
+   <!-- <m:Input
         id="idCellNum"
         type="Text"
         placeholder="cellNum"
-        value="{path: '/cellnum', type: 'tm.message.validation.type.CellPhoneNumber', constraints: { mandatory: true, test: false }}" />
+        value="{path: '/cellnum', type: 'tm.message.validation.type.CellPhoneNumber', constraints: { mandatory: true }}" />-->
+
 
 </mvc:View>

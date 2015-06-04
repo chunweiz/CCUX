@@ -24,7 +24,7 @@ sap.ui.define(
             return 'tm.message.validation.type.EmailAddress';
         };
 
-        CustomType.prototype.setFormatOptions = function (oFormatOptions) {
+      CustomType.prototype.setFormatOptions = function (oFormatOptions) {
             this.oFormatOptions = oFormatOptions;
         };
 
@@ -40,17 +40,15 @@ sap.ui.define(
 
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
-            console.log('parseValue ... ' + oValue);
-
 
             if (oValue === undefined || oValue === null || oValue.trim() === '') {
                 return oValue;
             }
 
             var emailRegex = /^[^.\s()\[\],;:@][^\s()\[\],;:@]+[^.\s()\[\],;:@]@[a-zA-Z0-9]+\..+/i;
-           // var emailRegex = /^[\d\w\W!#$%&''*+- \/=?\^_`{}|~@"][\d\w\W!#$%&''*+- \/=?\^_`{}|~@.]+[\d\w\W!#$%&''*+- \/=?\^_`{}|~@]@[a-zA-Z0-9]+\..+/i;
             if (!(emailRegex.test(oValue))) {
-                throw new ParseException('Invalid email');
+                jQuery.sap.log.error('Parse Exception: Invalid Email Address', oValue);
+                throw new ParseException('Invalid Email Address');
             }
 
             return oValue.toLowerCase();
@@ -58,13 +56,14 @@ sap.ui.define(
 
         // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
-            console.log('validateValue ... [' + oValue + ']');
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: Email cannot be empty', oValue);
                 throw new ValidateException('Email cannot be empty');
             }
 
-            if ( oValue.length > 241) {
+            if (oValue.length > 241) {
+                jQuery.sap.log.error('Validate Exception: Email Address length exceeds(allowed upto 241 char)', oValue);
                 throw new ValidateException('Email Address length exceeds(allowed upto 241 char)');
             }
 
@@ -73,13 +72,12 @@ sap.ui.define(
 
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
-            console.log('formatValue ... ' + oValue);
-
 
             return oValue;
 
         };
-
         return CustomType;
     }
 );
+
+
