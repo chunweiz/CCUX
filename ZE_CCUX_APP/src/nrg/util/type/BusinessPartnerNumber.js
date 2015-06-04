@@ -25,7 +25,8 @@ sap.ui.define(
 
             if ($.isEmptyObject(this.oConstraints)) {
                 this.oConstraints = {
-                    mandatory: false
+                    mandatory: false,
+                    wildCard: false
                 };
             }
         };
@@ -35,9 +36,17 @@ sap.ui.define(
                 return oValue;
             }
 
-            if (/[^\d*+]/i.test(oValue)) {
-                jQuery.sap.log.error('Parse Exception: Invalid business partner number', oValue);
-                throw new ParseException('Invalid business partner number');
+            if (this.oConstraints.wildCard) {
+                if (/[^\d*+]/.test(oValue)) {
+                    jQuery.sap.log.error('Parse Exception: Invalid business partner number', oValue);
+                    throw new ParseException('Invalid business partner number');
+                }
+            } else {
+                if (isNaN(oValue)) {
+                    jQuery.sap.log.error('Parse Exception: Invalid business partner number', oValue);
+                    throw new ParseException('Invalid business partner number');
+                }
+
             }
 
             return oValue.replace(/^(0+)/g, '');

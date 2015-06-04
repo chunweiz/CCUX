@@ -33,7 +33,8 @@ sap.ui.define(
 
             if ($.isEmptyObject(this.oConstraints)) {
                 this.oConstraints = {
-                    mandatory: false
+                    mandatory: false,
+                    wildCard: false
                 };
             }
         };
@@ -45,9 +46,18 @@ sap.ui.define(
                 return oValue;
             }
 
-            if (/[^\d*+]/i.test(oValue)) {
-                jQuery.sap.log.error('Parse Exception: Invalid ESID', oValue);
-                throw new ParseException('Invalid ESID');
+
+            if (this.oConstraints.wildCard) {
+                if (/[^\d*+]/i.test(oValue)) {
+                    jQuery.sap.log.error('Parse Exception: Invalid ESID', oValue);
+                    throw new ParseException('Invalid ESID');
+                }
+            } else {
+                if (isNaN(oValue)) {
+                    jQuery.sap.log.error('Parse Exception: Invalid ESID', oValue);
+                    throw new ParseException('Invalid ESID');
+                }
+
             }
             return oValue;
         };

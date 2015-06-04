@@ -33,7 +33,8 @@ sap.ui.define(
 
             if ($.isEmptyObject(this.oConstraints)) {
                 this.oConstraints = {
-                    mandatory: false
+                    mandatory: false,
+                    wildCard: false
                 };
             }
         };
@@ -44,10 +45,17 @@ sap.ui.define(
             if (oValue === undefined || oValue === null) {
                 return oValue;
             }
+            if (this.oConstraints.wildCard) {
+                if (/[^\d*+]/i.test(oValue)) {
+                    jQuery.sap.log.error('Parse Exception: Invalid contract account number', oValue);
+                    throw new ParseException('Invalid contract account number');
+                }
+            } else {
+                if (isNaN(oValue)) {
+                    jQuery.sap.log.error('Parse Exception: Invalid contract account number', oValue);
+                    throw new ParseException('Invalid contract account number');
+                }
 
-            if (/[^\d*+]/i.test(oValue)) {
-                jQuery.sap.log.error('Parse Exception: Invalid contract account number', oValue);
-                throw new ParseException('Invalid contract account number');
             }
 
             return oValue.replace(/^(0+)/g, '');
