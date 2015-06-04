@@ -31,10 +31,11 @@ sap.ui.define(
                 sCaNum : null,
                 sSsn : null,
                 sDl : null,
-                sContAccName : null,
+                sOrgName : null,
                 sBpNum : null,
-                sFedTid : null,
-                sEsid : null
+                sFiName : null,
+                sEsid : null,
+                sLaName : null
             };
 
             this.getView().getModel('oSearchFilters').setProperty('/searchTextFields', oFilters);
@@ -59,6 +60,49 @@ sap.ui.define(
                 oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sCaNum');
                 aFilters.push(oFilterTemplate);
             }
+            if (oFilterModel.getProperty('/searchTextFields/sSsn')) {
+                oFilterTemplate.sPath = 'SSN';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sSsn');
+                aFilters.push(oFilterTemplate);
+            }
+            if (oFilterModel.getProperty('/searchTextFields/sDl')) {
+                oFilterTemplate.sPath = 'DL';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sDl');
+                aFilters.push(oFilterTemplate);
+            }
+            if (oFilterModel.getProperty('/searchTextFields/sOrgName')) {
+                oFilterTemplate.sPath = 'OrgName';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sOrgName');
+                aFilters.push(oFilterTemplate);
+            }
+            if (oFilterModel.getProperty('/searchTextFields/sBpNum')) {
+                oFilterTemplate.sPath = 'BuagID';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sBpNum');
+                aFilters.push(oFilterTemplate);
+            }
+            if (oFilterModel.getProperty('/searchTextFields/sFiName')) {
+                oFilterTemplate.sPath = 'FirstName';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sFiName');
+                aFilters.push(oFilterTemplate);
+            }
+            if (oFilterModel.getProperty('/searchTextFields/sEsid')) {
+                oFilterTemplate.sPath = 'ESID';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sEsid');
+                aFilters.push(oFilterTemplate);
+            }
+            if (oFilterModel.getProperty('/searchTextFields/sLaName')) {
+                oFilterTemplate.sPath = 'LastName';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sLaName');
+                aFilters.push(oFilterTemplate);
+            }
+
 
             return aFilters;
         };
