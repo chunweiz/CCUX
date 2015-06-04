@@ -1,117 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Version="1.0">
     <edmx:DataServices m:DataServiceVersion="2.0">
-        <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="CampaignView">
-            <EntityType Name="CustomerEligibility">
+        <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:sap="http://www.sap.com/Protocols/SAPData" Namespace="ZE_CCUX_CAMPAIGN_OVW_SRV">
+            <EntityType Name="LegalDoc">
                 <Key>
-                    <PropertyRef Name="Contract"/>
+                    <PropertyRef Name="TextName"/>
+                    <PropertyRef Name="TextLanguage"/>
                 </Key>
-                <Property Name="Contract" Nullable="false" Type="Edm.String"/>
-                <Property Name="AgentEligFlag" Type="Edm.String"/>
-                <Property Name="CustomerEligFlag" Type="Edm.String"/>
+                <Property MaxLength="70" Name="TextName" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="2" Name="TextLanguage" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="10" Name="OfferCode" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="5000" Name="TextLine" Nullable="false" Type="Edm.String" sap:updatable="false"/>
             </EntityType>
-            <EntityType Name="CampaignView">
+            <EntityType Name="CpgChange">
                 <Key>
-                    <PropertyRef Name="Contract"/>
+                    <PropertyRef Name="RequestedType"/>
+                    <PropertyRef Name="CampaignID"/>
                 </Key>
-                <Property Name="Contract" Nullable="false" Type="Edm.String"/>
-                <Property Name="CampaignID" Type="Edm.String"/>
-                <Property Name="CampaignTitle" Type="Edm.String"/>
-                <Property Name="AverageUsage" Type="Edm.String"/>
-                <Property Name="EFL500" Type="Edm.String"/>
-                <Property Name="EFL1000" Type="Edm.String"/>
-                <Property Name="EFL2000" Type="Edm.String"/>
-                <Property Name="Description" Type="Edm.String"/>
-                <Property Name="PromoCode" Type="Edm.String"/>
-                <Property Name="OfferCode" Type="Edm.String"/>
-                <Property Name="TermLength" Type="Edm.String"/>
-                <Property Name="StartDate" Type="Edm.DateTime"/>
-                <Property Name="EndDate" Type="Edm.DateTime"/>
-                <Property Name="CancellationFee" Type="Edm.String"/>
-                <Property Name="Incentive" Type="Edm.String"/>
-                <Property Name="DispositionReasons" Type="Edm.String"/>
-                <Property Name="MandatoryDisclosure" Nullable="false" Type="CampaignView.Scripts"/>
-                <Property Name="OverviewScript" Nullable="false" Type="CampaignView.Scripts"/>
+                <Property MaxLength="10" Name="RequestedType" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="10" Name="CampaignID" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="1" Name="CurrentFlag" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="10" Name="Tier" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property Name="StartDate" Nullable="false" Type="Edm.DateTime" sap:updatable="false"/>
+                <Property Name="EndDate" Nullable="false" Type="Edm.DateTime" sap:updatable="false"/>
+                <Property MaxLength="60" Name="CampaignTitle" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property Name="AverageUsage" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property Name="EFL500" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property Name="EFL1000" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property Name="EFL2000" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property MaxLength="5" Name="PromoCode" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property Name="TermLength" Nullable="false" Type="Edm.Int16" sap:updatable="false"/>
+                <Property Name="CancellationFee" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property Name="Incentive" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property Name="CurrInvAmount" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property Name="CurrConsumption" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
             </EntityType>
-            <EntityType Name="CampaignChangeTiles">
+            <EntityType Name="CgComparebyInvoice">
                 <Key>
-                    <PropertyRef Name="Contract"/>
-                </Key>
-                <Property Name="Contract" Nullable="false" Type="Edm.String"/>
-                <Property Name="RequestedType" Type="Edm.String"/>
-                <Property Name="CurrentFlag" Type="Edm.Boolean"/>
-                <Property Name="Tier" Type="Edm.String"/>
-                <Property Name="CampaignID" Type="Edm.String"/>
-                <Property Name="CampaignTitle" Type="Edm.String"/>
-                <Property Name="AverageUsage" Type="Edm.String"/>
-                <Property Name="EFL500" Type="Edm.String"/>
-                <Property Name="EFL1000" Type="Edm.String"/>
-                <Property Name="EFL2000" Type="Edm.String"/>
-                <Property Name="PromoCode" Type="Edm.String"/>
-                <Property Name="OfferCode" Type="Edm.String"/>
-                <Property Name="TermLength" Type="Edm.String"/>
-                <Property Name="StartDate" Type="Edm.String"/>
-                <Property Name="EndDate" Type="Edm.String"/>
-                <Property Name="CancellationFee" Type="Edm.String"/>
-                <Property Name="Incentive" Type="Edm.String"/>
-                <Property Name="CurrInvoiceAmount" Type="Edm.String"/>
-                <Property Name="CurrConsumption" Type="Edm.String"/>
-            </EntityType>
-            <EntityType Name="CampaignComparebyInvoice">
-                <Key>
-                    <PropertyRef Name="Contract"/>
                     <PropertyRef Name="SelectedCampaignID"/>
+                    <PropertyRef Name="CurrConsumption"/>
                 </Key>
-                <Property Name="Contract" Nullable="false" Type="Edm.String"/>
-                <Property Name="SelectedCampaignID" Nullable="false" Type="Edm.String"/>
-                <Property Name="EstimatedInvoice" Type="Edm.String"/>
-                <Property Name="EstimatedcentsperkWh" Type="Edm.String"/>
-                <Property Name="ActualCurrentConsumption" Type="Edm.String"/>
+                <Property MaxLength="10" Name="SelectedCampaignID" Nullable="false" Type="Edm.String"/>
+                <Property Name="CurrConsumption" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
+                <Property Name="EstimatedInvoice" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="EstimatedcentsperkWh" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
             </EntityType>
-            <EntityType Name="CampaignComparebyUsage">
+            <EntityType Name="CpgEligibility">
                 <Key>
                     <PropertyRef Name="Contract"/>
+                </Key>
+                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="1" Name="AgentEligFlag" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="1" Name="CustomerEligFlag" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="CpgChangeCheck">
+                <Key>
+                    <PropertyRef Name="ContractID"/>
+                </Key>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="1" Name="Status" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="200" Name="Message" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="CpgCancel">
+                <Key>
+                    <PropertyRef Name="PendingCampaignID"/>
+                </Key>
+                <Property MaxLength="10" Name="PendingCampaignID" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="1" Name="ReturnStatus" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="200" Name="ReturnMessage" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="CpgOverview">
+                <Key>
+                    <PropertyRef Name="CampaignID"/>
+                    <PropertyRef Name="PromoCode"/>
+                </Key>
+                <Property MaxLength="10" Name="CampaignID" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="5" Name="PromoCode" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="1" Name="CurrentFlag" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property Name="StartDate" Nullable="false" Type="Edm.DateTime" sap:updatable="false"/>
+                <Property Name="EndDate" Nullable="false" Type="Edm.DateTime" sap:updatable="false"/>
+                <Property MaxLength="60" Name="CampaignTitle" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="1000" Name="Description" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property Name="AverageUsage" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property Name="EFL500" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property Name="EFL1000" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property Name="EFL2000" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property Name="TermLength" Nullable="false" Type="Edm.Int16" sap:updatable="false"/>
+                <Property Name="CancellationFee" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property Name="Incentive" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property MaxLength="50" Name="DispositionReason" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <NavigationProperty FromRole="FromRole_Campaign_LegalDoc" Name="Campaign_LegalDoc_Nav" Relationship="ZE_CCUX_CAMPAIGN_OVW_SRV.Campaign_LegalDoc" ToRole="ToRole_Campaign_LegalDoc"/>
+            </EntityType>
+            <EntityType Name="CpgComparebyConsumption">
+                <Key>
+                    <PropertyRef Name="CurrCampaignID"/>
                     <PropertyRef Name="SelectedCampaignID"/>
+                    <PropertyRef Name="CurrConsumption"/>
                 </Key>
-                <Property Name="Contract" Nullable="false" Type="Edm.String"/>
-                <Property Name="SelectedCampaignID" Nullable="false" Type="Edm.String"/>
-                <Property Name="CurrentCampaignID" Type="Edm.String"/>
-                <Property Name="EnteredConsumption" Type="Edm.String"/>
-                <Property Name="SimCurrentInvoice" Type="Edm.String"/>
-                <Property Name="EstimatedInvoice" Type="Edm.String"/>
-                <Property Name="EstimatedcentsperkWh" Type="Edm.String"/>
-                <Property Name="ActualCurrentConsumption" Type="Edm.String"/>
+                <Property MaxLength="10" Name="CurrCampaignID" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="10" Name="SelectedCampaignID" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property Name="CurrConsumption" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property Name="SimCurrInvoice" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property Name="EstimatedInvoice" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property Name="EstimatedcentsperkWh" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
             </EntityType>
-            <EntityType Name="CampaignChangeCheck">
-                <Key>
-                    <PropertyRef Name="Contract"/>
-                </Key>
-                <Property Name="Contract" Nullable="false" Type="Edm.String"/>
-                <Property Name="StatusFlag" Type="Edm.String"/>
-                <Property Name="Message" Type="Edm.String"/>
-            </EntityType>
-            <EntityType Name="CampaignChangeCancel">
-                <Key>
-                    <PropertyRef Name="Contract"/>
-                </Key>
-                <Property Name="Contract" Nullable="false" Type="Edm.String"/>
-                <Property Name="PendingCampaignID" Type="Edm.String"/>
-            </EntityType>
-            <ComplexType Name="Scripts">
-                <Property Name="language" Type="Edm.String"/>
-                <Property Name="Description" Type="Edm.String"/>
-            </ComplexType>
-            <EntityContainer Name="default" m:IsDefaultEntityContainer="true">
-                <EntitySet EntityType="CampaignView.CustomerEligibility" Name="CustomerEligibilitySet"/>
-                <EntitySet EntityType="CampaignView.CampaignChangeTiles" Name="CampaignChangeTilesSet"/>
-                <EntitySet EntityType="CampaignView.CampaignComparebyInvoice" Name="CampaignComparebyInvoiceSet"/>
-                <EntitySet EntityType="CampaignView.CampaignComparebyUsage" Name="CampaignComparebyUsageSet"/>
-                <EntitySet EntityType="CampaignView.CampaignView" Name="CampaignCurrent"/>
-                <EntitySet EntityType="CampaignView.CampaignView" Name="CampaignPending"/>
-                <EntitySet EntityType="CampaignView.CampaignView" Name="CampaignHistory"/>
-                <EntitySet EntityType="CampaignView.CampaignView" Name="CampaignChangeDisplayLegalDoc"/>
-                <EntitySet EntityType="CampaignView.CampaignChangeCheck" Name="CampaignChangeCheckSet"/>
-                <EntitySet EntityType="CampaignView.CampaignChangeCancel" Name="CampaignChangeCancelSet"/>
+            <Association Name="Campaign_LegalDoc">
+                <End Multiplicity="1" Role="FromRole_Campaign_LegalDoc" Type="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview"/>
+                <End Multiplicity="*" Role="ToRole_Campaign_LegalDoc" Type="ZE_CCUX_CAMPAIGN_OVW_SRV.LegalDoc"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Campaign_LegalDoc">
+                        <PropertyRef Name="CampaignID"/>
+                        <PropertyRef Name="PromoCode"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Campaign_LegalDoc">
+                        <PropertyRef Name="OfferCode"/>
+                        <PropertyRef Name="OfferCode"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZE_CCUX_CAMPAIGN_OVW_SRV_Entities" m:IsDefaultEntityContainer="true">
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgChange" Name="CpgChgTilesSet" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CgComparebyInvoice" Name="CgComparebyInvoiceCollection"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgEligibility" Name="CpgEligSet" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgChangeCheck" Name="CpgChgCheckSet" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgCancel" Name="CpgCncSet" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview" Name="CpgHistSet" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview" Name="CpgCurPndSet" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview" Name="CpgChgDispLglDoc" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgComparebyConsumption" Name="CpgCmpbyInvSet" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgComparebyConsumption" Name="CpgCmpbyConsmpSet" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.LegalDoc" Name="LegalDocSet" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
+                <AssociationSet Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Campaign_LegalDoc" Name="Campaign_CurrentPending">
+                    <End EntitySet="CpgCurPndSet" Role="FromRole_Campaign_LegalDoc"/>
+                    <End EntitySet="LegalDocSet" Role="ToRole_Campaign_LegalDoc"/>
+                </AssociationSet>
+                <AssociationSet Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Campaign_LegalDoc" Name="Campaign_HistorySet">
+                    <End EntitySet="CpgHistSet" Role="FromRole_Campaign_LegalDoc"/>
+                    <End EntitySet="LegalDocSet" Role="ToRole_Campaign_LegalDoc"/>
+                </AssociationSet>
+                <AssociationSet Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Campaign_LegalDoc" Name="Campaign_LegalDocSet">
+                    <End EntitySet="CpgChgDispLglDoc" Role="FromRole_Campaign_LegalDoc"/>
+                    <End EntitySet="LegalDocSet" Role="ToRole_Campaign_LegalDoc"/>
+                </AssociationSet>
             </EntityContainer>
         </Schema>
     </edmx:DataServices>
