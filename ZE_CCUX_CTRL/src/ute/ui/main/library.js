@@ -16,7 +16,7 @@ sap.ui.define(
 			types: [
                 'ute.ui.main.ButtonDesign',
                 'ute.ui.main.CheckboxDesign',
-                'ute.ui.main.InfolineDesign',
+                'ute.ui.main.InfolineDesign'
             ],
 
 			controls: [

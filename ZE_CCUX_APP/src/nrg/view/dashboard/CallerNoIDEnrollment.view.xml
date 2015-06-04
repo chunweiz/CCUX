@@ -1,6 +1,7 @@
 <mvc:View
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
+    xmlns:utmain="ute.ui.main"
     xmlns:mvc="sap.ui.core.mvc"
     controllerName="nrg.view.dashboard.CallerNoIDEnrollment">
 
@@ -9,26 +10,39 @@
                 <h1 class="nrgDashboard-calrNoIDEnrol-hdr">Enrollment</h1>
 
                 <h2 class="nrgDashboard-calrNoIDEnrol-title">Actions:</h2>
+
                 <ul class="nrgDashboard-calrNoIDEnrol-list">
                     <li class="nrgDashboard-calrNoIDEnrol-listitem">
-                        <span class="nrgCallerNoIDEnrollment-ListItemLink">
-                            Start Business Enrollment
-                        </span>
+                        <utmain:Button
+                            design="None"
+                            text="{comp-i18n>nrgDashboardClrNid_EnrollBus}"
+                            press="onEnrollBusiness"
+                            class="nrgCallerNoIDEnrollment-ListItemLink">
+                        </utmain:Button>
                     </li>
                     <li class="nrgDashboard-calrNoIDEnrol-listitem">
-                        <a class="nrgCallerNoIDEnrollment-ListItemLink" href="#">
-                            Start Residential Enrollment
-                        </a>
+                        <utmain:Button
+                            design="None"
+                            text="{comp-i18n>nrgDashboardClrNid_EnrollResident}"
+                            press="onEnrollResident"
+                            class="nrgCallerNoIDEnrollment-ListItemLink">
+                        </utmain:Button>
                     </li>
                     <li class="nrgDashboard-calrNoIDEnrol-listitem">
-                        <a class="nrgCallerNoIDEnrollment-ListItemLink" href="#">
-                            Start RHS Only Enrollment
-                        </a>
+                        <utmain:Button
+                            design="None"
+                            text="{comp-i18n>nrgDashboardClrNid_EnrollRHS}"
+                            press="onEnrollRHS"
+                            class="nrgCallerNoIDEnrollment-ListItemLink">
+                        </utmain:Button>
                     </li>
                     <li class="nrgDashboard-calrNoIDEnrol-listitem">
-                        <a class="nrgCallerNoIDEnrollment-ListItemLink" href="#">
-                            Start NRG Home Security Enrollment
-                        </a>
+                        <utmain:Button
+                            design="None"
+                            text="{comp-i18n>nrgDashboardClrNid_EnrollSecure}"
+                            press="onEnrollHomeSecurity"
+                            class="nrgCallerNoIDEnrollment-ListItemLink">
+                        </utmain:Button>
                     </li>
                 </ul>
         </ute:content>
