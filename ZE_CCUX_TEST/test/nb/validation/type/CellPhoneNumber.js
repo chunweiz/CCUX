@@ -40,13 +40,14 @@ sap.ui.define(
 
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
-            console.log('parseValue ... ' + oValue);
+            alert('Inside parse- cell phone');
 
             if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 
-            if (!oValue.match(/[\d\-]/i)){
+            if (!oValue.match(/[\d\-]/i)) {
+                jQuery.sap.log.error('Parse Exception: Invalid Cell phone number', oValue);
                 throw new ParseException('Invalid Cell phone number');
             }
 
@@ -55,12 +56,14 @@ sap.ui.define(
 
         // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
-            console.log('validateValue ... [' + oValue + ']');
+            alert('Inside validate- cell phone');
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: Cell phone number cannot be empty', oValue);
                 throw new ValidateException('Cell phone number cannot be empty');
             }
-            if (oValue.length < 1 || oValue.length > 30) {
+            if (oValue.length > 30) {
+                jQuery.sap.log.error('Validate Exception: Cell phone number length exceeds(allowed upto 30 char)', oValue);
                 throw new ValidateException('Cell phone number length exceeds(allowed upto 30 char)');
             }
 
@@ -69,7 +72,8 @@ sap.ui.define(
 
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
-            console.log('formatValue ... ' + oValue);
+            alert('Inside format- cell phone');
+
             if (oValue === undefined || oValue === null || oValue.trim() === '') {
                 return oValue;
             }
@@ -77,13 +81,13 @@ sap.ui.define(
             oValue = oValue.replace(/-/g, '');
             oValue = oValue.replace(' ', '');
 
-            if(oValue.indexOf("+1") > -1){
-                return (oValue.substr(0,2) + ' ' + oValue.substr(2,3) + '-' + oValue.substr(5,3) + '-' + oValue.substr(8,4) + ' ' + oValue.substr(12));
-             } else {
-                 return (oValue.substr(0,3) + '-' + oValue.substr(3,3) + '-' + oValue.substr(6,4) + ' ' + oValue.substr(10));
-             }
+            if (oValue.indexOf("+1") > -1) {
+                return (oValue.substr(0, 2) + ' ' + oValue.substr(2, 3) + '-' + oValue.substr(5, 3) + '-' + oValue.substr(8, 4) + ' ' + oValue.substr(12));
+            } else {
+                return (oValue.substr(0, 3) + '-' + oValue.substr(3, 3) + '-' + oValue.substr(6, 4) + ' ' + oValue.substr(10));
+            }
+        };
 
-           };
         return CustomType;
     }
 );

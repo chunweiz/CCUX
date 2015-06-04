@@ -2,16 +2,19 @@
 
 sap.ui.define(
     [
-        'sap/ui/core/mvc/Controller'
+        'sap/ui/core/mvc/Controller',
+        'sap/ui/core/routing/HashChanger'
     ],
 
-    function (Controller) {
+    function (Controller, HashChanger) {
         'use strict';
 
         var CustomController = Controller.extend('test.tm.ze_ccux_ctrl.view.Button');
 
         CustomController.prototype.onPressed = function (oControlEvent) {
-            alert('button pressed');
+            var oHashChanger = HashChanger.getInstance();
+            var oHash = oHashChanger.getHash();
+            console.log(oHashChanger.getHash());
         };
 
         return CustomController;

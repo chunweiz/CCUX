@@ -1,4 +1,5 @@
 /*global sap*/
+/*global jQuery */
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -32,19 +33,25 @@ sap.ui.define(
 
             if ($.isEmptyObject(this.oConstraints)) {
                 this.oConstraints = {
-                    mandatory: false
+                    mandatory: false,
+                    wildCard: false
                 };
             }
         };
 
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
-            console.log('parseValue ... ' + oValue);
 
-          var ssnRegex = /.{1,12}/;
-            if (!(ssnRegex.test(oValue))) {
-                throw new ParseException('Invalid SSN');
+
+            if (oValue === undefined || oValue === null) {
+                return oValue;
             }
+
+            if (oValue.length > 12) {
+                jQuery.sap.log.error('Validate Exception: SSN length exceeds(allowed upto 12 char)', oValue);
+                throw new ValidateException('SSN length exceeds(allowed upto 12 char)');
+            }
+
 
 
             return oValue;
@@ -52,10 +59,30 @@ sap.ui.define(
 
         // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
-            console.log('validateValue ... [' + oValue + ']');
+
+
+            var allowedWC = new RegExp("^[" + "0-9a-zA-Z+*/-" + "]*$"),
+                allowed1 = new RegExp("^"+"[0-9a-zA-Z]{3}[/-][0-9a-zA-Z]{2}[/-][0-9]{4}"+"$"),
+                allowed2 = new RegExp("^"+"[0-9a-zA-Z]{3}[0-9a-zA-Z]{2}[0-9]{4}"+"$"),
+                allowed3 = new RegExp("^"+"[0-9a-zA-Z]{7}-[0-9]{4}"+"$"),
+                allowed4 = new RegExp("^"+"[0-9a-zA-Z]{7}[0-9]{4}"+"$");
 
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: SSN cannot be empty', oValue);
                 throw new ValidateException('SSN cannot be empty');
+            }
+
+            if (this.oConstraints.wildCard)  {
+                if (!oValue.match(allowedWC)) {
+                    jQuery.sap.log.error('Parse Exception: Invalid SSN', oValue);
+                    throw new ValidateException('Invalid SSN');
+                }
+            } else {
+                if (!oValue.match(allowed1) && !oValue.match(allowed2) && !oValue.match(allowed3) && !oValue.match(allowed4)) {
+                    jQuery.sap.log.error('Parse Exception: Invalid SSN', oValue);
+                    throw new ValidateException('Invalid SSN');
+                }
+
             }
 
             return oValue;
@@ -63,16 +90,16 @@ sap.ui.define(
 
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
-            console.log('formatValue ... ' + oValue);
-             if (oValue === undefined || oValue === null || oValue.trim() === '') {
-                 return oValue;
-             }
+
+            if (oValue === undefined || oValue === null || oValue.trim() === '') {
+                return oValue;
+            }
+
             /*No formatting added as the masking should be done at server level itself to  protect from hacking*/
 
             return oValue;
 
         };
-
         return CustomType;
     }
 );

@@ -24,6 +24,11 @@ sap.ui.define(
         'use strict';
 
         var Controller = CoreController.extend('tm.message.validation.view.App');
+        Controller.prototype.format = function (cellnum,cNum) {
+            alert('test');
+          //  oValue = oValue.replace(/^(0+)/g, '9');
+            return cellnum + cNum;
+        }
 
         Controller.prototype._getMessageProcessor = function () {
             if (!this._oControlMessageProcessor) {
@@ -56,7 +61,8 @@ sap.ui.define(
                 cNum: '0027914550',
                 esid: '20443720006324100',
                 mnum: '029545116GE',
-                cellnum: '+17134974384OR74384'
+                cellnum: '+17134974384OR74384',
+                table: {"Test":[{cellnum: '+17134974384OR74384',cNum: '0027914550',email: 'test@test.com'}]}
 
             });
 

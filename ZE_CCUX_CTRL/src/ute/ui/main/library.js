@@ -15,13 +15,15 @@ sap.ui.define(
 
 			types: [
                 'ute.ui.main.ButtonDesign',
-                'ute.ui.main.CheckboxDesign'
+                'ute.ui.main.CheckboxDesign',
+                'ute.ui.main.InfolineDesign'
             ],
 
 			controls: [
 				'ute.ui.main.Button',
                 'ute.ui.main.Label',
                 'ute.ui.main.Checkbox',
+                'ute.ui.main.Infoline',
                 'ute.ui.main.Dropdown'
 			],
 
@@ -37,6 +39,11 @@ sap.ui.define(
         };
 
         ute.ui.main.CheckboxDesign = {
+            None: 'None',
+            Default: 'Default'
+        };
+
+        ute.ui.main.InfolineDesign = {
             None: 'None',
             Default: 'Default'
         };

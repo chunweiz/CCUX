@@ -25,7 +25,7 @@ sap.ui.define(
             return 'tm.message.validation.type.DrivingLicenseNumber';
         };
 
-        CustomType.prototype.setFormatOptions = function (oFormatOptions) {
+         CustomType.prototype.setFormatOptions = function (oFormatOptions) {
             this.oFormatOptions = oFormatOptions;
         };
 
@@ -34,41 +34,30 @@ sap.ui.define(
 
             if ($.isEmptyObject(this.oConstraints)) {
                 this.oConstraints = {
-                    mandatory: false,
-                     minLength: 1,
-                    maxLength: 20
+                    mandatory: false
                 };
             }
         };
 
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
-            console.log('parseValue ... ' + oValue);
-            console.log('internal type' + sInternalType);
-
 
             if (oValue === undefined || oValue === null || oValue.trim() === '') {
                 return oValue;
             }
 
-            //var dlRegex = /^(.*[0-9]){8}$/;
-             // var dlRegex = /^.{1,13}$/;
-          /*  if (!(dlRegex.test(oValue))) {
-                throw new ParseException('Invalid Driving License');
-            }*/
-
-            return oValue.toLowerCase();
+            return oValue;
         };
 
         // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
-            console.log('validateValue ... [' + oValue + ']');
 
-           if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+            if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: Driving License cannot be empty', oValue);
                 throw new ValidateException('Driving License cannot be empty');
             }
-           // if (oValue.length > 20) {
-            if ( oValue.length > this.oConstraints.maxLength) {
+            if (oValue.length > 20) {
+                jQuery.sap.log.error('Validate Exception: DL length exceeds(allowed upto 20 char)', oValue);
                 throw new ValidateException('DL length exceeds(allowed upto 20 char)');
             }
 
@@ -77,11 +66,9 @@ sap.ui.define(
 
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
-            console.log('formatValue ... ' + oValue);
-            var zero ='0',
-             pattern = "[0-9a-zA-Z]",
-            re = new RegExp(pattern, "g");
-             oValue = oValue.replace(re,zero)
+
+            /*No formatting added to mask the original DL as the masking should be done at server level itself to  protect from hacking*/
+
             return oValue;
 
         };

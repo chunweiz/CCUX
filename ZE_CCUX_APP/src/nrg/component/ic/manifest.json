@@ -30,7 +30,8 @@
                 "sap.ui.core": { "minVersion": "1.28.6" },
                 "sap.m": { "minVersion": "1.28.6" },
                 "sap.ui.commons": { "minVersion": "1.28.6" },
-                "ute.ui.commons": { "minVersion": "1.0.0" }
+                "ute.ui.commons": { "minVersion": "1.0.0" },
+                "ute.ui.main": { "minVersion": "1.0.0" }
             }
         },
 

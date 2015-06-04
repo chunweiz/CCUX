@@ -124,6 +124,9 @@
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
         <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTitle"
                  text="{comp-i18n>nrgDashboardCallerNoIDSearchResultTitle}">
+            <ute:Tag elem="span" class="nrgDashboard-calrNoIDSearch-resultCount"
+                text="{comp-i18n>nrgDashboardClrNid_ResultCountStart} {oBpSearchCount>/searchCount} {comp-i18n>nrgDashboardClrNid_ResultCountEnd}" >
+            </ute:Tag>
         </ute:Tag>
 
         <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTitle"

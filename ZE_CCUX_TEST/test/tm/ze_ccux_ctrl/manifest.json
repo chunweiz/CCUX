@@ -18,6 +18,7 @@
                 "Button": { "pattern": "Button", "target": [ "Button" ] },
                 "Label": { "pattern": "Label", "target": [ "Label" ] },
                 "Checkbox": { "pattern": "Checkbox", "target": [ "Checkbox" ] },
+                "Infoline": { "pattern": "Infoline", "target": [ "Infoline" ] },
                 "Dropdown": { "pattern": "Dropdown", "target": [ "Dropdown" ] }
             },
 
@@ -32,6 +33,7 @@
                 "Button": { "viewName": "Button", "controlId": "idAppContent" },
                 "Label": { "viewName": "Label", "controlId": "idAppContent" },
                 "Checkbox": { "viewName": "Checkbox", "controlId": "idAppContent" },
+                "Infoline": { "viewName": "Infoline", "controlId": "idAppContent" },
                 "Dropdown": { "viewName": "Dropdown", "controlId": "idAppContent" }
             }
         }

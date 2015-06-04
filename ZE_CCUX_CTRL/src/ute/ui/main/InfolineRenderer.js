@@ -24,16 +24,36 @@ sap.ui.define(
             /*
             ** Header of infoline
             */
-            oRm.write('<header>');
+            oRm.write('<header');
+            oRm.addClass('uteMIl-hdr');
+            oRm.writeClasses();
+            oRm.write('>');
+
+            /*
+            ** Header's content
+            */
+            oRm.write('<section');
+            oRm.write('>');
             if (oRm.getHeader()) {
                 oCustomControl._addHeader(oRm);
             }
+            oRm.write('</section>');
+
+            /*
+            ** Header's expander icon
+            */
+            oRm.write('<aside>');
+            oRm.write('</aside>');
+
             oRm.write('</header>');
 
             /*
             ** Content of infoline
             */
-            oRm.write('<article>');
+            oRm.write('<article');
+            oRm.addClass('uteMIl-content');
+            oRm.writeClasses();
+            oRm.write('>');
             if (oRm.getContent()) {
                 oCustomControl._addContent(oRm);
             }
