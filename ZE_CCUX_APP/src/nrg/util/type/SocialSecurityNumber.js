@@ -49,7 +49,7 @@ sap.ui.define(
 
             if (oValue.length > 12) {
                 jQuery.sap.log.error('Validate Exception: SSN length exceeds(allowed upto 12 char)', oValue);
-                throw new ValidateException('SSN length exceeds(allowed upto 12 char)');
+                throw new ParseException('SSN length exceeds(allowed upto 12 char)');
             }
 
             return oValue;
