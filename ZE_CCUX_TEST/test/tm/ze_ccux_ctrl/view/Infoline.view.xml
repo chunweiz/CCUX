@@ -10,8 +10,50 @@
     displayBlock="true">
 
     <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+        <style>
+            .uteMIl {
+                display: block;
+                position: relative;
+            }
 
+            .uteMIl .uteMIl-hdr {
+                display: block;
+                position: relative;
+            }
 
+            .uteMIl .uteMIl-hdr .uteMIl-hdrContent {
+                display: inline-block;
+                position: relative;
+            }
+
+            .uteMIl .uteMIl-hdr .uteMIl-hdrExpander {
+                display: inline-block;
+                position: relative;
+            }
+
+            .uteMIl .uteMIl-bodyContent {
+                display: block;
+                position: relative;
+            }
+
+            .uteMIl-util-hidden {
+                display: none;
+            }
+        </style>
+
+        <div class="uteMIl">
+            <header class="uteMIl-hdr">
+                <span class="uteMIl-hdrContent">
+                    <um:Label text="This is the header title" />
+                </span>
+                <span class="uteMIl-hdrExpander">
+                    <um:Checkbox select=".onPressed"/>
+                </span>
+            </header>
+            <article class="uteMIl-bodyContent">
+                <um:Label text="This is the content text" />
+            </article>
+        </div>
 
     </sm:ScrollContainer>
 </mvc:View>
