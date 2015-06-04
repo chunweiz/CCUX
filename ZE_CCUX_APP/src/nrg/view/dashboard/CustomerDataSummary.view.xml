@@ -1,0 +1,29 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:utmain="ute.ui.main"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="nrg.view.dashboard.CustomerDataSummary">
+
+    <ute:Tag class="nrgDashboard-cusDataSum nrgAppMain-summaryContent nrgAppMain-summaryContent-full">
+        <ute:content>
+            <ute:Tag elem="span" class=""
+                text="BP_Name_Here">
+            </ute:Tag>
+            <ute:Tag>
+            <ute:Badge
+                design="Attention" size="30px"
+                text="TT">
+            </ute:Badge>
+            <ute:Badge
+                design="Attention" size="30px"
+                text="TT">
+            </ute:Badge>
+            </ute:Tag>
+
+
+
+        </ute:content>
+    </ute:Tag>
+
+</mvc:View>

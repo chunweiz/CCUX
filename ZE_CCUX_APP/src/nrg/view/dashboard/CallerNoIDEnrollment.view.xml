@@ -7,45 +7,50 @@
 
     <ute:Tag class="nrgDashboard-calrNoIDEnrol nrgAppMain-summaryContent nrgAppMain-summaryContent-full">
         <ute:content>
-                <h1 class="nrgDashboard-calrNoIDEnrol-hdr">Enrollment</h1>
+            <ute:Tag elem="h1"
+                class="nrgDashboard-calrNoIDEnrol-hdr"
+                text="{comp-i18n>nrgDashboardClrNid_EnrolTitle}">
+            </ute:Tag>
 
-                <h2 class="nrgDashboard-calrNoIDEnrol-title">Actions:</h2>
+            <ute:Tag elem="h2"
+                class="nrgDashboard-calrNoIDEnrol-title"
+                text="{comp-i18n>nrgDashboardClrNid_Enrol2ndTitle}">
+            </ute:Tag>
 
-                <ul class="nrgDashboard-calrNoIDEnrol-list">
-                    <li class="nrgDashboard-calrNoIDEnrol-listitem">
-                        <utmain:Button
-                            design="None"
-                            text="{comp-i18n>nrgDashboardClrNid_EnrollBus}"
-                            press="onEnrollBusiness"
-                            class="nrgCallerNoIDEnrollment-ListItemLink">
-                        </utmain:Button>
-                    </li>
-                    <li class="nrgDashboard-calrNoIDEnrol-listitem">
-                        <utmain:Button
-                            design="None"
-                            text="{comp-i18n>nrgDashboardClrNid_EnrollResident}"
-                            press="onEnrollResident"
-                            class="nrgCallerNoIDEnrollment-ListItemLink">
-                        </utmain:Button>
-                    </li>
-                    <li class="nrgDashboard-calrNoIDEnrol-listitem">
-                        <utmain:Button
-                            design="None"
-                            text="{comp-i18n>nrgDashboardClrNid_EnrollRHS}"
-                            press="onEnrollRHS"
-                            class="nrgCallerNoIDEnrollment-ListItemLink">
-                        </utmain:Button>
-                    </li>
-                    <li class="nrgDashboard-calrNoIDEnrol-listitem">
-                        <utmain:Button
-                            design="None"
-                            text="{comp-i18n>nrgDashboardClrNid_EnrollSecure}"
-                            press="onEnrollHomeSecurity"
-                            class="nrgCallerNoIDEnrollment-ListItemLink">
-                        </utmain:Button>
-                    </li>
-                </ul>
+            <ul class="nrgDashboard-calrNoIDEnrol-list">
+                <li class="nrgDashboard-calrNoIDEnrol-listitem">
+                    <utmain:Button
+                        design="None"
+                        text="{comp-i18n>nrgDashboardClrNid_EnrollBus}"
+                        press="onEnrollBusiness"
+                        class="nrgCallerNoIDEnrollment-ListItemLink">
+                    </utmain:Button>
+                </li>
+                <li class="nrgDashboard-calrNoIDEnrol-listitem">
+                    <utmain:Button
+                        design="None"
+                        text="{comp-i18n>nrgDashboardClrNid_EnrollResident}"
+                        press="onEnrollResident"
+                        class="nrgCallerNoIDEnrollment-ListItemLink">
+                    </utmain:Button>
+                </li>
+                <li class="nrgDashboard-calrNoIDEnrol-listitem">
+                    <utmain:Button
+                        design="None"
+                        text="{comp-i18n>nrgDashboardClrNid_EnrollRHS}"
+                        press="onEnrollRHS"
+                        class="nrgCallerNoIDEnrollment-ListItemLink">
+                    </utmain:Button>
+                </li>
+                <li class="nrgDashboard-calrNoIDEnrol-listitem">
+                    <utmain:Button
+                        design="None"
+                        text="{comp-i18n>nrgDashboardClrNid_EnrollSecure}"
+                        press="onEnrollHomeSecurity"
+                        class="nrgCallerNoIDEnrollment-ListItemLink">
+                    </utmain:Button>
+                </li>
+            </ul>
         </ute:content>
     </ute:Tag>
-
 </mvc:View>
