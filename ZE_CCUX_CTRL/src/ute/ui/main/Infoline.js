@@ -25,7 +25,7 @@ sap.ui.define(
                 defaultAggregation: 'content',
 
                 events: {
-                    press: {
+                    expand: {
                         parameters: {
                             expanded: { type: 'boolean' }
                         }
@@ -35,11 +35,21 @@ sap.ui.define(
         });
 
         CustomControl.prototype._addHeader = function (oRm) {
+            var aHeader;
 
+            aHeader = this.getHeader();
+            aHeader.forEach(function (oHeader) {
+                oRm.renderControl(oHeader);
+            }.bind(this));
         };
 
         CustomControl.prototype._addContent = function (oRm) {
+            var aContent;
 
+            aContent = this.getContent();
+            aContent.forEach(function (oContent) {
+                oRm.renderControl(oContent);
+            }.bind(this));
         };
 
         return CustomControl;
