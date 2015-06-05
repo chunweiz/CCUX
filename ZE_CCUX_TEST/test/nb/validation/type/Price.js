@@ -34,6 +34,13 @@ sap.ui.define(
                     currencyAlignment: 'LHS'
                 };
             } else {
+
+                if (!oFormatOptions.minFractionDigits) {
+                    oFormatOptions.minFractionDigits = 2;
+                }
+                if (!oFormatOptions.maxFractionDigits) {
+                    oFormatOptions.maxFractionDigits = 2;
+                }
                 defaultFormatOptions = oFormatOptions;
             }
 
