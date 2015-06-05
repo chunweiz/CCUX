@@ -1,4 +1,4 @@
-/*global sap*/
+/*global sap, ute*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -9,25 +9,25 @@ sap.ui.define(
     function (Control) {
         'use strict';
 
-        var CustomControl = Control.extend('ute.ui.main.SegmentedButton', {
+        var CustomControl = Control.extend('ute.ui.main.ToggleBar', {
             metadata: {
                 library: 'ute.ui.main',
 
                 properties: {
-                    selectedButton: { type: 'string', defaultValue: null },
-                    disabled: { type: 'boolean', defaultValue: false }
+                    design: { type: 'ute.ui.main.ToggleBarDesign', defaultValue: ute.ui.main.ToggleBarDesign.Default },
+                    selectedItem: { type: 'string', defaultValue: null }
                 },
 
                 aggregations: {
-                    content: { multiple: true, singularName: 'content', type: 'ute.ui.main.Button' }
+                    items: { multiple: true, singularName: 'item', type: 'ute.ui.main.ToggleBarItem' }
                 },
 
-                defaultAggregation: 'content',
+                defaultAggregation: 'items',
 
                 event: {
                     select: {
                         parameters: {
-                            oSelectedButton: { type: 'ute.ui.main.Button' }
+                            oItem: { type: 'ute.ui.main.ToggleBarItem' }
                         }
                     }
                 }

@@ -12,7 +12,7 @@ sap.ui.define(
         CustomRenderer.render = function (oRm, oCustomControl) {
             oRm.write('<span');
             oRm.writeControlData(oCustomControl);
-            oRm.addClass('uteMSegBtn');
+            oRm.addClass('uteMTogBar');
             oRm.writeClasses();
             oRm.write('>');
             oRm.write('</span>');

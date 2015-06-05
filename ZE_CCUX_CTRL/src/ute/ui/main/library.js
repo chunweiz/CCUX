@@ -15,21 +15,24 @@ sap.ui.define(
 
 			types: [
                 'ute.ui.main.ButtonDesign',
-                'ute.ui.main.SegmentedButtonDesign',
+                'ute.ui.main.ToggleBarDesign',
                 'ute.ui.main.CheckboxDesign',
                 'ute.ui.main.InfolineDesign'
             ],
 
 			controls: [
 				'ute.ui.main.Button',
-				'ute.ui.main.SegmentedButton',
+				'ute.ui.main.ToggleBar',
                 'ute.ui.main.Label',
                 'ute.ui.main.Checkbox',
                 'ute.ui.main.Infoline',
                 'ute.ui.main.Dropdown'
 			],
 
-			elements: [],
+			elements: [
+                'ute.ui.main.ToggleBarItem'
+            ],
+
             interfaces: []
         });
 
@@ -50,9 +53,10 @@ sap.ui.define(
             Default: 'Default'
         };
 
-        ute.ui.main.SegmentedButtonDesign = {
+        ute.ui.main.ToggleBarDesign = {
             None: 'None',
-            Default: 'Default'
+            Default: 'Default',
+            Invert: 'Invert'
         };
 
         return ute.ui.main;
