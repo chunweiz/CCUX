@@ -34,16 +34,24 @@ sap.ui.define(
             }
         });
 
-        CustomControl.prototype._addHeader = function (oRm) {
-            var aHeader;
+        CustomControl.prototype._addHeaderContent = function (oRm) {
+            oRm.write('<section');
+            oRm.addClass('uteMIl-hdrContent');
+            oRm.writeClasses();
+            oRm.write('>');
 
-            aHeader = this.getHeader();
-            aHeader.forEach(function (oHeader) {
+            this.getHeader().forEach(function (oHeader) {
                 oRm.renderControl(oHeader);
             }.bind(this));
+
+            oRm.write('</section>');
         };
 
-        CustomControl.prototype._addContent = function (oRm) {
+        CustomControl.prototype._addHeaderExpander = function (oRm) {
+
+        };
+
+        CustomControl.prototype._addBody = function (oRm) {
             var aContent;
 
             aContent = this.getContent();
