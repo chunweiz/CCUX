@@ -83,7 +83,6 @@ sap.ui.define(
 
             }
 
-
             return oValue;
         };
 

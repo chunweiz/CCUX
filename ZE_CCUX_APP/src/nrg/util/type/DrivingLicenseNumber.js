@@ -45,7 +45,7 @@ sap.ui.define(
             var allowed   = new RegExp("^[" + "0-9a-zA-Z/-" + "]*$"),
                 allowedWC = new RegExp("^[" + "0-9a-zA-Z+*/-" + "]*$");
 
-            if (oValue === undefined || oValue === null || oValue.trim() === '') {
+            if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 

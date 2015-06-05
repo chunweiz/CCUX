@@ -41,7 +41,7 @@ sap.ui.define(
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
 
-            if (oValue === undefined || oValue === null || oValue.trim() === '') {
+            if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 

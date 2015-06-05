@@ -56,6 +56,7 @@ sap.ui.define(
         };
 
         CustomType.prototype.validateValue = function (oValue) {
+
             if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
                 jQuery.sap.log.error('Validate Exception: Business partner number cannot be empty', oValue);
                 throw new ValidateException('Business partner number cannot be empty');
