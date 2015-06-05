@@ -43,7 +43,7 @@
                 </l:MatrixLayoutRow>
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <u:TextView id="idCamTitleTv" text="{comp-campaign>CampaignTitle}"
+                        <u:TextView id="idCamTitleTv" text="{comp-campaign>OfferTitle}"
                                                     class="nrgCamOvr-left nrgCamOvr-left1"
                                                     color="DarkGrey"
                                                     design="Base"/>
@@ -52,11 +52,6 @@
                     <l:MatrixLayoutCell>
                         <u:TextView id="idCamAvgUsgTv"
                                     text="{comp-campaign>AverageUsage}"
-                                    class="nrgCamOvr-left"
-                                    color="DarkGrey"
-                                    design="Base"/>
-                            <u:TextView id="idCamAvgUsgTv1"
-                                    text="{comp-product>AverageUsage}"
                                     class="nrgCamOvr-left"
                                     color="DarkGrey"
                                     design="Base"/>
@@ -131,13 +126,13 @@
                 </u:columns>
                 <u:rows>
                     <u:TableRow>
-                            <c:Label text="{comp-campaign>PromoCode}"/>
-                            <c:Label text="{comp-campaign>OfferCode}"/>
-                            <c:Label text="{comp-campaign>TermLength}"/>
-                            <c:Label text="{comp-campaign>PromoCode}"/>
-                            <c:Label text="{comp-campaign>PromoCode}"/>
-                            <c:Label text="{comp-campaign>CancellationFee}"/>
-                            <c:Label text="{comp-campaign>Incentive}"/>
+                        <c:Label text="{comp-campaign>PromoCode}"/>
+                        <c:Label text="{comp-campaign>OfferCode}"/>
+                        <c:Label text="{comp-campaign>TermLength}"/>
+                        <c:Label text="{path: 'comp-campaign>StartDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                        <c:Label text="{path: 'comp-campaign>EndDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                        <c:Label text="{comp-campaign>CancellationFee}"/>
+                        <c:Label text="{comp-campaign>Incentive}"/>
                     </u:TableRow>
                 </u:rows>
             </u:Table>
