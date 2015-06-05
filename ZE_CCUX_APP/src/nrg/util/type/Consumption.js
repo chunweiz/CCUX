@@ -13,14 +13,14 @@ sap.ui.define(
     function ($, FloatType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = FloatType.extend('nrg.util.type.Price', {
+        var CustomType = FloatType.extend('tm.message.validation.type.Consumption', {
             constructor: function (oFormatOptions, oConstraints) {
-                FloatType.prototype.apply(this, arguments);
+                FloatType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'nrg.util.type.Price';
+            return 'tm.message.validation.type.Consumption';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {
@@ -30,17 +30,9 @@ sap.ui.define(
                 defaultFormatOptions = {
                     minFractionDigits: 2,
                     maxFractionDigits: 2,
-                    currencySymbol: '$',
-                    currencyAlignment: 'LHS'
+                    unitAlignment: 'RHS'
                 };
             } else {
-
-                if (!oFormatOptions.minFractionDigits) {
-                    oFormatOptions.minFractionDigits = 2;
-                }
-                if (!oFormatOptions.maxFractionDigits) {
-                    oFormatOptions.maxFractionDigits = 2;
-                }
                 defaultFormatOptions = oFormatOptions;
             }
 
@@ -60,42 +52,35 @@ sap.ui.define(
 
             FloatType.prototype.setConstraints.call(this, defaultConstraints);
         };
-
+           // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
 
             if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 
-            oValue = oValue.toString();
-            oValue = oValue.replace(this.oFormatOptions.currencySymbol, '');
-            FloatType.prototype.parseValue.call(this, oValue, sInternalType);
-
-
             return oValue;
-
         };
+
          // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
 
-            if (oValue === undefined || oValue === null || oValue === '') {
+            if (oValue === undefined || oValue === null) {
                 return oValue;
             }
-            oValue = parseFloat(oValue);
-            oValue = FloatType.prototype.formatValue.call(this, oValue, sInternalType);
+            oValue = oValue.toString();
 
-            if (oValue.indexOf(this.oFormatOptions.currencySymbol) < 0) {
-
-                if (this.oFormatOptions.currencyAlignment === 'LHS') {
-                    oValue = this.oFormatOptions.currencySymbol + oValue;
+            if (oValue.indexOf('kWh') < 0) {
+                if (this.oFormatOptions.unitAlignment === 'LHS') {
+                    oValue = 'kWh ' + oValue;
                 } else {
-                    oValue = oValue + this.oFormatOptions.currencySymbol;
+                    oValue = oValue + 'kWh';
                 }
             }
 
             return oValue;
-        };
 
+        };
 
         return CustomType;
     }

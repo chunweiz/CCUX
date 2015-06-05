@@ -19,7 +19,7 @@
                 </l:MatrixLayoutRow>
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <u:TextView id="idCamHisTtlTv" text="{comp-campaign>/CampaignHistory('1121')/CampaignTitle}"
+                        <u:TextView id="idCamHisTtlTv" text="{comp-campaign>OfferTitle}"
                                                     class="nrgCamHis-left"
                                                     color="DarkGrey"
                                                     design="Base"/>
@@ -46,9 +46,9 @@
                         </u:columns>
                         <u:rows>
                             <u:TableRow>
-                                <c:Label text="{comp-campaign>/CampaignHistory('1121')/EFL500}"/>
-                                <c:Label text="{comp-campaign>/CampaignHistory('1121')/EFL1000}"/>
-                                <c:Label text="{comp-campaign>/CampaignHistory('1121')/EFL2000}"/>
+                                <c:Label text="{comp-campaign>EFL500}"/>
+                                <c:Label text="{comp-campaign>EFL1000}"/>
+                                <c:Label text="{comp-campaign>EFL2000}"/>
                             </u:TableRow>
                         </u:rows>
                 </u:Table>
@@ -64,7 +64,7 @@
                         color="DarkGrey"
                         class="nrgCamHis-left nrgCamHis-top"
                         design="Base"
-                        text="{comp-campaign>/CampaignHistory('1121')/Description}" />
+                        text="{comp-campaign>Description}" />
             </u:Tag>
             <u:Table width="100%"
                      id="idCamHisInfTbl"
@@ -96,13 +96,13 @@
                 </u:columns>
                 <u:rows>
                     <u:TableRow>
-                            <c:Label text="{comp-campaign>/CampaignHistory('1121')/PromoCode}"/>
-                            <c:Label text="{comp-campaign>/CampaignHistory('1121')/OfferCode}"/>
-                            <c:Label text="{comp-campaign>/CampaignHistory('1121')/TermLength}"/>
-                            <c:Label text="{comp-campaign>/CampaignHistory('1121')/PromoCode}"/>
-                            <c:Label text="{comp-campaign>/CampaignHistory('1121')/PromoCode}"/>
-                            <c:Label text="{comp-campaign>/CampaignHistory('1121')/CancellationFee}"/>
-                            <c:Label text="{comp-campaign>/CampaignHistory('1121')/Incentive}"/>
+                        <c:Label text="{comp-campaign>PromoCode}"/>
+                        <c:Label text="{comp-campaign>OfferCode}"/>
+                        <c:Label text="{comp-campaign>TermLength}"/>
+                        <c:Label text="{path: 'comp-campaign>StartDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                        <c:Label text="{path: 'comp-campaign>EndDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                        <c:Label text="{comp-campaign>CancellationFee}"/>
+                        <c:Label text="{comp-campaign>Incentive}"/>
                     </u:TableRow>
                 </u:rows>
             </u:Table>

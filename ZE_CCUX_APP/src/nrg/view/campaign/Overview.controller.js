@@ -21,18 +21,14 @@ sap.ui.define(
                 oParameters,
                 aFilters = this._createSearchFilterObject("1121", "Y");
 
-            sPath = "/CpgCurPndSet";
+            sPath = "/CpgCurPndS";
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oParameters = {
                 filters : aFilters,
                 success : function (oData) {
-                    this.getView().bindObject({
+                    this.getView().bindElement({
                         model : "comp-campaign",
-                        path : "/CpgCurPndSet(CampaignID='CampaignID 1',PromoCode='PromoCode 1')"
-                    });
-                    this.getView().bindObject({
-                        model : "comp-product",
-                        path : "/CpgCurPndSet(CampaignID='CampaignID 1',PromoCode='PromoCode 1')"
+                        path : "/CpgCurPndS('C')"
                     });
                     jQuery.sap.log.info("Odata Read Successfully");
                 }.bind(this),
@@ -43,24 +39,16 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oParameters);
             }
-            this.getView().setModel(this.getOwnerComponent().getModel('comp-campaign'), "comp-product");
+
 
         };
         Controller.prototype._createSearchFilterObject = function (oContractID, oCurrentFlag) {
             var aFilters = [],
                 oFilterTemplate = new Filter();
-
-
             oFilterTemplate.sPath = 'ContractID';
             oFilterTemplate.sOperator = FilterOperator.EQ;
             oFilterTemplate.oValue1 = oContractID;
             aFilters.push(oFilterTemplate);
-
-            oFilterTemplate.sPath = 'CurrentFlag';
-            oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = oCurrentFlag;
-            aFilters.push(oFilterTemplate);
-
             return aFilters;
         };
             //TODO: Implementation required
@@ -73,27 +61,11 @@ sap.ui.define(
 
         };
         Controller.prototype.toggleCampaign = function () {
-            var oModel,
-                sPath = "/CpgCurPndSet",
-                oParameters,
-                aFilters = this._createSearchFilterObject("1121", "N");
-            oModel = this.getOwnerComponent().getModel('comp-campaign');
-            oParameters = {
-                filters : aFilters,
-                success : function (oData) {
-                    if (oData.results) {
-                        //this.getView().bindElement('/0');
-                        jQuery.sap.log.info("Odata Read Successfully");
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    jQuery.sap.log.info("Some Error");
-                }.bind(this)
-            };
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
 
+            this.getView().bindObject({
+                model : "comp-campaign",
+                path : "/CpgCurPndS('P')"
+            });
         };
 
         return Controller;
