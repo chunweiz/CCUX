@@ -1,0 +1,15 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:vc="vc.control"
+    controllerName="vc.view.Button"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+        <vc:Button text="This is my first button" press=".onPressed" />
+    </sm:ScrollContainer>
+
+</mvc:View>

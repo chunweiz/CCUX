@@ -15,12 +15,14 @@ sap.ui.define(
 
 			types: [
                 'ute.ui.main.ButtonDesign',
+                'ute.ui.main.SegmentedButtonDesign',
                 'ute.ui.main.CheckboxDesign',
                 'ute.ui.main.InfolineDesign'
             ],
 
 			controls: [
 				'ute.ui.main.Button',
+				'ute.ui.main.SegmentedButton',
                 'ute.ui.main.Label',
                 'ute.ui.main.Checkbox',
                 'ute.ui.main.Infoline',
@@ -44,6 +46,11 @@ sap.ui.define(
         };
 
         ute.ui.main.InfolineDesign = {
+            None: 'None',
+            Default: 'Default'
+        };
+
+        ute.ui.main.SegmentedButtonDesign = {
             None: 'None',
             Default: 'Default'
         };

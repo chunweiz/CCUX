@@ -1,0 +1,9 @@
+.vcBtn {
+    background-color: deepskyblue;
+    color: aliceblue;
+}
+
+.vcBtn:hover {
+    background-color: aliceblue;
+    color: deepskyblue;
+}
