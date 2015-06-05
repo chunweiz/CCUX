@@ -45,6 +45,10 @@ sap.ui.define(
             if (oValue === undefined || oValue === null) {
                 return oValue;
             }
+             if (isNaN(oValue)) {
+                    jQuery.sap.log.error('Parse Exception: Invalid meter number', oValue);
+                    throw new ParseException('Invalid meter number');
+                }
 
             return oValue.replace(/^(0+)/g, '');
         };

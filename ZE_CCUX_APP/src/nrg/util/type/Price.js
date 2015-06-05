@@ -51,6 +51,17 @@ sap.ui.define(
 
             FloatType.prototype.setConstraints.call(this, defaultConstraints);
         };
+         // Model to Output
+        CustomType.prototype.formatValue = function (oValue, sInternalType) {
+
+            if (oValue === undefined || oValue === null || oValue.trim() === '') {
+                return oValue;
+            }
+
+            return oValue.replace(/^(0+)/g, '');
+
+        };
+
 
         return CustomType;
     }
