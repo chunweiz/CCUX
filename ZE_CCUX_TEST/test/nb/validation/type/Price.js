@@ -78,6 +78,10 @@ sap.ui.define(
          // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
 
+             if (oValue === undefined || oValue === null || oValue === '') {
+                return oValue;
+             }
+
             oValue = parseFloat(oValue);
             oValue = FloatType.prototype.formatValue.call(this, oValue, sInternalType);
 
