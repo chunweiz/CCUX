@@ -29,7 +29,9 @@ sap.ui.define(
             if ($.isEmptyObject(oFormatOptions)) {
                 defaultFormatOptions = {
                     minFractionDigits: 2,
-                    maxFractionDigits: 2
+                    maxFractionDigits: 2,
+                    currencySymbol: '$',
+                    currencyAlignment: 'LHS'
                 };
             } else {
                 defaultFormatOptions = oFormatOptions;
@@ -54,12 +56,20 @@ sap.ui.define(
          // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
 
-            if (oValue === undefined || oValue === null || oValue.trim() === '') {
+            if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 
-            return oValue.replace(/^(0+)/g, '');
+            oValue = oValue.toString();
+            oValue = oValue.replace('$', '');
 
+            if (this.oFormatOptions.currencyAlignment === 'LHS') {
+                oValue = this.oFormatOptions.currencySymbol + oValue;
+            } else {
+                oValue = oValue + this.oFormatOptions.currencySymbol;
+            }
+
+            return oValue;
         };
 
 
