@@ -58,7 +58,7 @@ sap.ui.define(
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
 
             oValue = oValue.toString();
-            oValue = oValue.replace('$','');
+            oValue = oValue.replace(this.oFormatOptions.currencySymbol,'');
 
             if (this.oFormatOptions.currencyAlignment === 'LHS') {
             oValue = this.oFormatOptions.currencySymbol + oValue;

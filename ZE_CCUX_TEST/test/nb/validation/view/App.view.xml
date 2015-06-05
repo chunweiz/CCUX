@@ -45,7 +45,7 @@
         id="idPrice"
         type="Text"
         placeholder="price"
-        value="{path: '/price', type: 'tm.message.validation.type.Price', formatOptions: {minFractionDigits: 2, maxFractionDigits: 3, groupingEnabled: true, currencySymbol: '¢', currencyAlignment: 'RHS' }, constraints: { minimum : 1 }}" />
+        value="{path: '/price', type: 'tm.message.validation.type.Price', formatOptions: {currencySymbol: '¢', currencyAlignment: 'RHS' }, constraints: { minimum : 1 }}" />
 
      <m:Input
         id="idEmail"
