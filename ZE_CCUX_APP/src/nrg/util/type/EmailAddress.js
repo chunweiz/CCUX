@@ -1,6 +1,6 @@
 /*global sap*/
-/*global jQuery */
-/*jslint nomen:true*/
+/*global jQuery*/
+/*jslint nomen:true, regexp: true*/
 
 sap.ui.define(
     [
