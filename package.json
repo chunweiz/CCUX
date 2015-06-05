@@ -1,0 +1,27 @@
+{
+  "name": "nrg-web-redesign",
+  "version": "0.0.1",
+  "description": "\"NRG Interaction Center Redesign\"",
+  "main": "webserver.js",
+  "dependencies": {
+    "express": "^4.12.4"
+  },
+  "devDependencies": {
+    "express": "^4.12.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/nrgicwebredesign/nrgicwebredesign.git"
+  },
+  "keywords": [
+    "NRG",
+    "IC",
+    "WEB",
+    "REDESIGN"
+  ],
+  "author": "Utegration Inc",
+  "license": "ISC"
+}

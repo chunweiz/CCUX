@@ -1,0 +1,59 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:um="ute.ui.main"
+    controllerName="test.tm.ze_ccux_ctrl.view.Infoline"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+        <style>
+            .uteMIl {
+                display: block;
+                position: relative;
+            }
+
+            .uteMIl .uteMIl-hdr {
+                display: block;
+                position: relative;
+            }
+
+            .uteMIl .uteMIl-hdr .uteMIl-hdrContent {
+                display: inline-block;
+                position: relative;
+            }
+
+            .uteMIl .uteMIl-hdr .uteMIl-hdrExpander {
+                display: inline-block;
+                position: relative;
+            }
+
+            .uteMIl .uteMIl-bodyContent {
+                display: block;
+                position: relative;
+            }
+
+            .uteMIl-util-hidden {
+                display: none;
+            }
+        </style>
+
+        <div class="uteMIl">
+            <header class="uteMIl-hdr">
+                <span class="uteMIl-hdrContent">
+                    <um:Label text="This is the header title" />
+                </span>
+                <span class="uteMIl-hdrExpander">
+                    <um:Checkbox select=".onPressed"/>
+                </span>
+            </header>
+            <article class="uteMIl-bodyContent">
+                <um:Label text="This is the content text" />
+            </article>
+        </div>
+
+    </sm:ScrollContainer>
+</mvc:View>

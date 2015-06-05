@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html style="height:100%">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>NRG Reliant Interaction Center</title>
+		<script id="sap-ui-bootstrap"
+		    src="../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
+            data-sap-ui-theme="sap_bluecrystal"
+            data-sap-ui-theme-roots='{
+                "sap_bluecrystal": {
+                    "": "../../../../../ZE_CCUX_LIB/bower_components/openui5-themelib_sap_bluecrystal/resources",
+                    "ute.ui.commons": "../../../../../../ZE_CCUX_CTRL/build",
+                    "ute.ui.main": "../../../../../../ZE_CCUX_CTRL/build"
+                }
+            }'
+            data-sap-ui-xx-bindingSyntax="complex"
+            data-sap-ui-libs="sap.ui.layout, sap.ui.commons, sap.m, ute.ui.commons"
+            data-sap-ui-resourceroots='{
+                "sap.ui.layout": "../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.ui.layout/resources/sap/ui/layout",
+                "sap.ui.commons": "../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
+                "sap.m": "../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.m/resources/sap/m",
+                "ute.ui.commons": "../../../../../ZE_CCUX_CTRL/build/ute/ui/commons",
+                "ute.ui.main": "../../../../../ZE_CCUX_CTRL/build/ute/ui/main",
+                "nrg": "../../"
+            }'>
+		</script>
+	</head>
+	<body role="application" class="nrgUiBody" id="content">
+		<script>
+            sap.ui.getCore().attachInit(function () {
+                new sap.ui.core.ComponentContainer({
+                    height: '100%',
+                    width: '100%',
+                    name: 'nrg.component.ic',
+                    settings: {
+                        componentData: {
+                            config: {
+                                mock: jQuery.sap.getUriParameters().get('nrg-mock') === 'true' ? true : false
+                            }
+                        }
+                    }
+                }).placeAt('content');
+            });
+		</script>
+	</body>
+</html>

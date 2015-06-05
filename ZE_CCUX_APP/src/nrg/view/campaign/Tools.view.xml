@@ -1,0 +1,26 @@
+<mvc:View
+    controllerName="nrg.view.campaign.Tools"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <ute:Tag class="nrgToolsEmpty nrgAppMain-toolsContent nrgAppMain-toolsContent-full">
+        <ute:Tag class="nrgCamToolsT" >
+            <ute:Tag class="nrgCamToolsTitleT" text="{comp-i18n>nrgCmpToolsTtl}" />
+            <ute:Tag class="nrgCamToolsBtnT nrgCamTools-top" >
+                <ute:Button
+                    id="idnrgCamToolsBtn-H"
+                    text="{comp-i18n>nrgCmpToolsBtnHis}"
+                    enabled="true"
+                    press="onHistoryPress" >
+                </ute:Button>
+                <ute:Button
+                    id="idnrgCamToolsBtn-C"
+                    text="{comp-i18n>nrgCmpToolsBtnCan}"
+                    enabled="true"
+                    class="nrgCamTools-top">
+                </ute:Button>
+            </ute:Tag>
+        </ute:Tag>
+    </ute:Tag>
+</mvc:View>

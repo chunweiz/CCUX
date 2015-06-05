@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+		<style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                background-color: rgb(234, 239, 244);
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 10pt;
+                color: rgb(17, 32, 55);
+            }
+
+            .utePageHdr {
+                display: block;
+            }
+
+            .utePageHdrTop {
+                display: block;
+                position: relative;
+                background-color: white;
+                height: 50px;
+                vertical-align: middle;
+                line-height: 50px;
+            }
+
+            .utePageHdrTop h1 {
+                display: inline-block;
+                position: relative;
+                height: 100%;
+            }
+
+            .utePageHdrTop h1 img {
+                max-height: 60%;
+                vertical-align: middle;
+                margin-left: 30px;
+            }
+
+            .utePageHdrTop h1 span {
+                display: inline-block;
+                margin-left: 15px;
+                margin-right: 50px;
+                vertical-align: middle;
+                font-size: 12pt;
+                font-weight: 400;
+            }
+
+            .utePageHdrTop ul {
+                display: inline-block;
+                position: relative;
+                list-style-type: none;
+            }
+
+            .utePageHdrTop ul li {
+                display: inline-block;
+                padding: 0 5px 0 5px;
+                cursor: pointer;
+            }
+
+            .utePageHdrTop ul li:hover,
+            .utePageHdrTop ul li.utePageHdrTopSelected {
+                color: cornflowerblue;
+            }
+
+            .utePageHdrMenu {
+                display: none;
+                overflow: hidden;
+                background-color: cornflowerblue;
+                transition: height ease 0.3s;
+                width: 100%;
+            }
+
+            .utePageHdrMenu ul {
+                display: inline-block;
+                margin: 5px;
+                min-width: 120px;
+                list-style-type: none;
+            }
+
+            .utePageHdrMenu ul li:first-child {
+                border-bottom: 1px solid aqua;
+                padding-bottom: 5px;
+            }
+
+            .utePageHdrMenu .show {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <header id="idUtePageHdr" class="utePageHdr">
+            <nav class="utePageHdrTop">
+                <h1>
+                    <img src="nrg-logo.svg" alt="NRG" />
+                    <span>Reliant Interaction Center</span>
+                </h1>
+                <ul>
+                    <li>Menu</li>
+                    <li>Index</li>
+                    <li>Transactions</li>
+                    <li>ESID</li>
+                    <li>PALPlus</li>
+                    <li>Refresh</li>
+                    <li>Clear Account</li>
+                </ul>
+            </nav>
+            <nav class="utePageHdrMenu">
+                <ul>
+                    <li>Billing</li>
+                    <li>Business Partner</li>
+                </ul>
+                <ul>
+                    <li>RHS</li>
+                    <li>Contact Logs</li>
+                </ul>
+                <ul>
+                    <li>Campaigns</li>
+                    <li>High Bill</li>
+                </ul>
+                <ul>
+                    <li>History</li>
+                    <li>Service Orders</li>
+                </ul>
+                <ul>
+                    <li>Business Enrollment</li>
+                    <li>Residential Enrollment</li>
+                </ul>
+            </nav>
+        </header>
+
+        <script type="text/javascript">
+            Array.prototype.slice.call(document.querySelectorAll('#idUtePageHdr .utePageHdrTop ul > li')).forEach(function (oElem) {
+                oElem.addEventListener('click', function (oEvent) {
+                    var oSelectedElem = oElem.parentElement.querySelector('li.utePageHdrTopSelected');
+
+                    if (oSelectedElem) {
+                        oSelectedElem.classList.remove('utePageHdrTopSelected');
+                    }
+
+                    if (oSelectedElem === oElem) {
+                        //document.querySelector('#idUtePageHdr .utePage');
+                    } else {
+                        oElem.classList.add('utePageHdrTopSelected');
+                    }
+
+                });
+            });
+        </script>
+    </body>
+</html>

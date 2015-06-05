@@ -1,0 +1,95 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:m="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:table="sap.ui.table"
+    xmlns:tm="tm.message.control"
+    controllerName="tm.message.validation.view.App"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <m:ScrollContainer
+        height="100px"
+        width="100%"
+        horizontal="true"
+        vertical="true"
+        focusable="true"
+        content="{comp-message>/}" >
+
+        <m:content>
+            <tm:Label
+                text="{comp-message>message}"
+                design="{comp-message>type}"
+                icon="sap-icon://nrg-icon/notification" />
+        </m:content>
+
+    </m:ScrollContainer><br/>
+
+    <m:Button text="Press me" press=".onPress" /><br/>
+    <m:Input
+        id="idCaNum"
+        type="Text"
+        placeholder="contract account number"
+        value="{path: '/caNum', type: 'tm.message.validation.type.ContractAccountNumber', constraints: { mandatory: true, wildCard: true }}" />
+
+    <m:Input
+        id="idBpNum"
+        type="Text"
+        placeholder="business partner number"
+        value="{path: '/bpNum', type: 'tm.message.validation.type.BusinessPartnerNumber', constraints: { mandatory: true, wildCard: true }}" />
+
+    <m:Input
+        id="idPrice"
+        type="Text"
+        placeholder="price"
+        value="{path: '/price', type: 'tm.message.validation.type.Price', formatOptions: {currencySymbol: '¢', currencyAlignment: 'RHS' }, constraints: { minimum : 1 }}" />
+
+     <m:Input
+        id="idEmail"
+        type="Text"
+        placeholder="email"
+        value="{path: '/email', type: 'tm.message.validation.type.EmailAddress', constraints: { mandatory: true }}" />
+
+      <m:Input
+        id="idSSN"
+        type="Text"
+        placeholder="SSN"
+        value="{path: '/ssn', type: 'tm.message.validation.type.SocialSecurityNumber', constraints: { mandatory: true, wildCard: false }}" />
+
+     <m:Input
+        id="idDL"
+        type="Text"
+        placeholder="Driving License Number"
+        value="{path: '/dl', type: 'tm.message.validation.type.DrivingLicenseNumber', constraints: { wildCard: true }}" />
+     <m:Input
+        id="idCNum"
+        type="Text"
+        placeholder="contract number"
+        value="{parts:[{path: '/cellnum', type: 'tm.message.validation.type.CellPhoneNumber'},{path: '/cNum', type: 'tm.message.validation.type.ContractNumber'}],
+               formatter: '.format'}" />
+    <m:Input
+        id="idESID"
+        type="Text"
+        placeholder="ESID"
+        value="{path: '/esid', type: 'tm.message.validation.type.ESID', constraints: { mandatory: true, wildCard: true }}" />
+    <m:Input
+        id="idMnum"
+        type="Text"
+        placeholder="mnum"
+        value="{path: '/mnum', type: 'tm.message.validation.type.MeterNumber', constraints: { mandatory: true }}" />
+   <!-- <m:Input
+        id="idCellNum"
+        type="Text"
+        placeholder="cellNum"
+        value="{path: '/cellnum', type: 'tm.message.validation.type.CellPhoneNumber', constraints: { mandatory: true }}" />-->
+     <m:Input
+        id="idConsumption"
+        type="Text"
+        placeholder="consumption"
+        value="{path: '/consumption', type: 'tm.message.validation.type.Consumption', formatOptions: {minFractionDigits: 2, maxFractionDigits: 3, unitAlignment:'LHS'}}" />
+
+
+</mvc:View>

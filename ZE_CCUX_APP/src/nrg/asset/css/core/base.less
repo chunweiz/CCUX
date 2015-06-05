@@ -1,0 +1,35 @@
+// Baseline
+// ---------------------------------------
+@import 'color.less';
+@import 'typography.less';
+@import 'z-index.less';
+@import 'utility.less';
+
+// General styling for scrollbars
+// Need to investigate IE compatibility
+// ---------------------------------------
+.sap-desktop::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.sap-desktop::-webkit-scrollbar,
+.sap-desktop::-webkit-scrollbar-thumb,
+.sap-desktop::-webkit-scrollbar-thumb:hover,
+.sap-desktop::-webkit-scrollbar-corner {
+    background-color: @nrgColor-blueLink;
+}
+
+// Base styling
+// ---------------------------------------
+* {
+    box-sizing: border-box;
+}
+
+.nrgUiBody {
+	font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
+    background-color: @nrgColor-lightBlue;
+    color: @nrgColor-darkGrey;
+    width: 100%;
+    height: 100%;
+}

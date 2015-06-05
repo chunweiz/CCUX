@@ -1,0 +1,173 @@
+@font-face {
+	font-family: 'nrg-icon';
+	src:url('fonts/icon.eot?');
+	src:url('fonts/icon.eot?#iefix') format('embedded-opentype'),
+		url('fonts/icon.woff?') format('woff'),
+		url('fonts/icon.ttf?') format('truetype'),
+		url('fonts/icon.svg?#nrg-icon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-agent:before {
+	content: "\e600";
+}
+
+.icon-billing:before {
+	content: "\e601";
+}
+
+.icon-bp:before {
+	content: "\e602";
+}
+
+.icon-bulb:before {
+	content: "\e603";
+}
+
+.icon-calculator:before {
+	content: "\e604";
+}
+
+.icon-call-center:before {
+	content: "\e605";
+}
+
+.icon-campaign:before {
+	content: "\e606";
+}
+
+.icon-cc-amex:before {
+	content: "\e607";
+}
+
+.icon-cc-discover:before {
+	content: "\e608";
+}
+
+.icon-cc-mastercard:before {
+	content: "\e609";
+}
+
+.icon-cc-visa:before {
+	content: "\e60a";
+}
+
+.icon-contact-log:before {
+	content: "\e60b";
+}
+
+.icon-dashboard:before {
+	content: "\e60c";
+}
+
+.icon-dollar:before {
+	content: "\e60d";
+}
+
+.icon-enroll-biz:before {
+	content: "\e60e";
+}
+
+.icon-enroll-res:before {
+	content: "\e60f";
+}
+
+.icon-gear:before {
+	content: "\e610";
+}
+
+.icon-high-bill:before {
+	content: "\e611";
+}
+
+.icon-history:before {
+	content: "\e612";
+}
+
+.icon-ivr:before {
+	content: "\e613";
+}
+
+.icon-location:before {
+	content: "\e614";
+}
+
+.icon-notes:before {
+	content: "\e615";
+}
+
+.icon-notification:before {
+	content: "\e616";
+}
+
+.icon-pencil:before {
+	content: "\e617";
+}
+
+.icon-popup:before {
+	content: "\e618";
+}
+
+.icon-refresh:before {
+	content: "\e619";
+}
+
+.icon-rhs:before {
+	content: "\e61a";
+}
+
+.icon-service-order:before {
+	content: "\e61b";
+}
+
+.icon-survey:before {
+	content: "\e61c";
+}
+
+.icon-tag:before {
+	content: "\e61d";
+}
+
+.icon-weather-clouds:before {
+	content: "\e61e";
+}
+
+.icon-weather-rain-sun:before {
+	content: "\e61f";
+}
+
+.icon-weather-rain:before {
+	content: "\e620";
+}
+
+.icon-weather-snow:before {
+	content: "\e621";
+}
+
+.icon-weather-sunny:before {
+	content: "\e622";
+}
+
+.icon-webchat:before {
+	content: "\e623";
+}
+
+.icon-website-grey:before {
+	content: "\e624";
+}
+
