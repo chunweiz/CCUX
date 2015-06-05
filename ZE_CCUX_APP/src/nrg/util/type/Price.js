@@ -53,20 +53,33 @@ sap.ui.define(
 
             FloatType.prototype.setConstraints.call(this, defaultConstraints);
         };
-         // Model to Output
-        CustomType.prototype.formatValue = function (oValue, sInternalType) {
+
+        CustomType.prototype.parseValue = function (oValue, sInternalType) {
 
             if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 
             oValue = oValue.toString();
-            oValue = oValue.replace('$', '');
+            oValue = oValue.replace(this.oFormatOptions.currencySymbol, '');
+            FloatType.prototype.parseValue.call(this, oValue, sInternalType);
 
-            if (this.oFormatOptions.currencyAlignment === 'LHS') {
-                oValue = this.oFormatOptions.currencySymbol + oValue;
-            } else {
-                oValue = oValue + this.oFormatOptions.currencySymbol;
+
+            return oValue;
+
+        };
+         // Model to Output
+        CustomType.prototype.formatValue = function (oValue, sInternalType) {
+            oValue = parseFloat(oValue);
+            oValue = FloatType.prototype.formatValue.call(this, oValue, sInternalType);
+
+            if (oValue.indexOf(this.oFormatOptions.currencySymbol) < 0) {
+
+                if (this.oFormatOptions.currencyAlignment === 'LHS') {
+                    oValue = this.oFormatOptions.currencySymbol + oValue;
+                } else {
+                    oValue = oValue + this.oFormatOptions.currencySymbol;
+                }
             }
 
             return oValue;

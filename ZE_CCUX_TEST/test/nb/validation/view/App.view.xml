@@ -45,7 +45,7 @@
         id="idPrice"
         type="Text"
         placeholder="price"
-        value="{path: '/price', type: 'tm.message.validation.type.Price', formatOptions: {currencySymbol: '¢', currencyAlignment: 'RHS' }, constraints: { minimum : 1 }}" />
+        value="{path: '/price', type: 'tm.message.validation.type.Price', formatOptions: { minFractionDigits: 2, maxFractionDigits: 2, currencySymbol: '¢', currencyAlignment: 'RHS' }, constraints: { minimum : 1 }}" />
 
      <m:Input
         id="idEmail"
@@ -90,6 +90,11 @@
         type="Text"
         placeholder="consumption"
         value="{path: '/consumption', type: 'tm.message.validation.type.Consumption', formatOptions: {minFractionDigits: 2, maxFractionDigits: 3, unitAlignment:'LHS'}}" />
+    <m:Input
+        id="idDate"
+        type="Text"
+        placeholder="date"
+        value="{path: '/date', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'yy/MM/dd' }}" />
 
 
 </mvc:View>
