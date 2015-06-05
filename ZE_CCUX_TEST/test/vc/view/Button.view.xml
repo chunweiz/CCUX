@@ -9,7 +9,9 @@
     displayBlock="true">
 
     <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
-        <vc:Button text="This is my first button" press=".onPressed" />
+        <vc:Button text="This is my first button" press=".onPressed" design="None" />
+        <br/>
+        <vc:Button text="This is my second button" press=".onPressed" />
     </sm:ScrollContainer>
 
 </mvc:View>

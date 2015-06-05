@@ -1,4 +1,4 @@
-/*global sap*/
+/*global sap, vc*/
 
 sap.ui.define(
     [
@@ -13,6 +13,7 @@ sap.ui.define(
                 library: 'vc.control',
 
                 properties: {
+                    design: { type: 'vc.control.ButtonDesign', defaultValue: vc.control.ButtonDesign.Default },
                     text: { type: 'string', defaultValue: null }
                 },
 

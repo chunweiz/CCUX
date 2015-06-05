@@ -1,4 +1,4 @@
-/*global sap*/
+/*global sap, vc*/
 
 sap.ui.define(
     [],
@@ -12,6 +12,11 @@ sap.ui.define(
             oRm.write('<button');
             oRm.writeControlData(oCustomControl);
             oRm.addClass('vcBtn');
+
+            if (oCustomControl.getDesign() !== vc.control.ButtonDesign.None) {
+                oRm.addClass('vcBtn-design-' + oCustomControl.getDesign().toLowerCase());
+            }
+
             oRm.writeClasses();
             oRm.write('>');
 
