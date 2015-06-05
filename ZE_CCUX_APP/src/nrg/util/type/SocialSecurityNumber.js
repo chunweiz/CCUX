@@ -70,6 +70,18 @@ sap.ui.define(
                 jQuery.sap.log.error('Validate Exception: SSN cannot be empty', oValue);
                 throw new ValidateException('SSN cannot be empty');
             }
+            if (this.oConstraints.wildCard) {
+                if (!oValue.match(allowedWC)) {
+                    jQuery.sap.log.error('Parse Exception: Invalid SSN', oValue);
+                    throw new ParseException('Invalid SSN');
+                }
+            } else {
+                if (!oValue.match(allowed1) && !oValue.match(allowed2) && !oValue.match(allowed3) && !oValue.match(allowed4)) {
+                    jQuery.sap.log.error('Parse Exception: Invalid SSN', oValue);
+                    throw new ParseException('Invalid SSN');
+                }
+
+            }
 
 
             return oValue;
