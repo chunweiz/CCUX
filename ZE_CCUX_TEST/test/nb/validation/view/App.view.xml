@@ -63,7 +63,7 @@
         id="idDL"
         type="Text"
         placeholder="Driving License Number"
-        value="{path: '/dl', type: 'tm.message.validation.type.DrivingLicenseNumber'}" />
+        value="{path: '/dl', type: 'tm.message.validation.type.DrivingLicenseNumber', constraints: { wildCard: true }}" />
      <m:Input
         id="idCNum"
         type="Text"
