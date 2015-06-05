@@ -1,0 +1,19 @@
+{
+    "sap.ui5": {
+        "routing": {
+            "routes": {
+                "billing": {
+                    "pattern": "bp/{bpNum}/ca/{caNum}/billing",
+                    "target": [ "billing.General", "dashboard.SummaryBP", "others.ToolsEmpty" ]
+                }
+            },
+
+            "targets": {
+                "billing.General": {
+                    "viewName": "billing.General",
+                    "controlId": "idAppGeneral"
+                }
+            }
+        }
+    }
+}

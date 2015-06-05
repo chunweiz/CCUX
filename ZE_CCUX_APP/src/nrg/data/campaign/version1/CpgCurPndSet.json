@@ -1,0 +1,2806 @@
+{
+   "d":{
+      "results":[
+         {
+            "CampaignID":"CampaignID 1",
+            "PromoCode":"PromoCode 1",
+            "ContractID":"1121",
+            "CurrentFlag":"Y",
+            "StartDate":"/Date(1042304176000)/",
+            "EndDate":"/Date(984412576000)/",
+            "CampaignTitle":"CampaignTitle 1",
+            "Description":"Description 1",
+            "AverageUsage":4224.27,
+            "EFL500":3659.34,
+            "EFL1000":6722.23,
+            "EFL2000":594.71,
+            "TermLength":3118,
+            "CancellationFee":8364.93,
+            "Incentive":9430.88,
+            "DispositionReason":"DispositionReason 1",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 1',PromoCode='PromoCode 1')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 1',PromoCode='PromoCode 1')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 1',PromoCode='PromoCode 1')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 2",
+            "PromoCode":"PromoCode 2",
+            "ContractID":"1121",
+            "CurrentFlag":"N",
+            "StartDate":"/Date(967046176000)/",
+            "EndDate":"/Date(965577376000)/",
+            "CampaignTitle":"CampaignTitle 2",
+            "Description":"Description 2",
+            "AverageUsage":1737.18,
+            "EFL500":1007.52,
+            "EFL1000":3634.09,
+            "EFL2000":1895.79,
+            "TermLength":1407,
+            "CancellationFee":7218.39,
+            "Incentive":6746.44,
+            "DispositionReason":"DispositionReason 2",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 2',PromoCode='PromoCode 2')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 2',PromoCode='PromoCode 2')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 2',PromoCode='PromoCode 2')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 3",
+            "PromoCode":"PromoCode 3",
+            "ContractID":"3",
+            "CurrentFlag":"3",
+            "StartDate":"/Date(1540655776000)/",
+            "EndDate":"/Date(973180576000)/",
+            "CampaignTitle":"CampaignTitle 3",
+            "Description":"Description 3",
+            "AverageUsage":4542.27,
+            "EFL500":8949.06,
+            "EFL1000":1261.83,
+            "EFL2000":1801.4,
+            "TermLength":7787,
+            "CancellationFee":426.82,
+            "Incentive":7136.01,
+            "DispositionReason":"DispositionReason 3",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 3',PromoCode='PromoCode 3')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 3',PromoCode='PromoCode 3')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 3',PromoCode='PromoCode 3')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 4",
+            "PromoCode":"PromoCode 4",
+            "ContractID":"4",
+            "CurrentFlag":"4",
+            "StartDate":"/Date(989682976000)/",
+            "EndDate":"/Date(1020786976000)/",
+            "CampaignTitle":"CampaignTitle 4",
+            "Description":"Description 4",
+            "AverageUsage":9285.15,
+            "EFL500":1959.96,
+            "EFL1000":8449.28,
+            "EFL2000":503.45,
+            "TermLength":8400,
+            "CancellationFee":6980.52,
+            "Incentive":9612.28,
+            "DispositionReason":"DispositionReason 4",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 4',PromoCode='PromoCode 4')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 4',PromoCode='PromoCode 4')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 4',PromoCode='PromoCode 4')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 5",
+            "PromoCode":"PromoCode 5",
+            "ContractID":"5",
+            "CurrentFlag":"5",
+            "StartDate":"/Date(1029167776000)/",
+            "EndDate":"/Date(1025798176000)/",
+            "CampaignTitle":"CampaignTitle 5",
+            "Description":"Description 5",
+            "AverageUsage":6648.58,
+            "EFL500":4941.12,
+            "EFL1000":9881.44,
+            "EFL2000":3708.3,
+            "TermLength":1400,
+            "CancellationFee":6665.99,
+            "Incentive":7546.64,
+            "DispositionReason":"DispositionReason 5",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 5',PromoCode='PromoCode 5')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 5',PromoCode='PromoCode 5')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 5',PromoCode='PromoCode 5')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 6",
+            "PromoCode":"PromoCode 6",
+            "ContractID":"6",
+            "CurrentFlag":"6",
+            "StartDate":"/Date(1318694176000)/",
+            "EndDate":"/Date(1271692576000)/",
+            "CampaignTitle":"CampaignTitle 6",
+            "Description":"Description 6",
+            "AverageUsage":5764.39,
+            "EFL500":1318.26,
+            "EFL1000":8854.31,
+            "EFL2000":1904.72,
+            "TermLength":2410,
+            "CancellationFee":8846.8,
+            "Incentive":7398.4,
+            "DispositionReason":"DispositionReason 6",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 6',PromoCode='PromoCode 6')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 6',PromoCode='PromoCode 6')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 6',PromoCode='PromoCode 6')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 7",
+            "PromoCode":"PromoCode 7",
+            "ContractID":"7",
+            "CurrentFlag":"7",
+            "StartDate":"/Date(1278604576000)/",
+            "EndDate":"/Date(1110560176000)/",
+            "CampaignTitle":"CampaignTitle 7",
+            "Description":"Description 7",
+            "AverageUsage":3138.71,
+            "EFL500":9239.62,
+            "EFL1000":9083.63,
+            "EFL2000":9076.93,
+            "TermLength":7983,
+            "CancellationFee":4917.48,
+            "Incentive":3818.96,
+            "DispositionReason":"DispositionReason 7",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 7',PromoCode='PromoCode 7')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 7',PromoCode='PromoCode 7')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 7',PromoCode='PromoCode 7')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 8",
+            "PromoCode":"PromoCode 8",
+            "ContractID":"8",
+            "CurrentFlag":"8",
+            "StartDate":"/Date(1245081376000)/",
+            "EndDate":"/Date(1046451376000)/",
+            "CampaignTitle":"CampaignTitle 8",
+            "Description":"Description 8",
+            "AverageUsage":5025.7,
+            "EFL500":2590.5,
+            "EFL1000":7820.31,
+            "EFL2000":396.79,
+            "TermLength":5166,
+            "CancellationFee":4375.58,
+            "Incentive":924.85,
+            "DispositionReason":"DispositionReason 8",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 8',PromoCode='PromoCode 8')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 8',PromoCode='PromoCode 8')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 8',PromoCode='PromoCode 8')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 9",
+            "PromoCode":"PromoCode 9",
+            "ContractID":"9",
+            "CurrentFlag":"9",
+            "StartDate":"/Date(1316015776000)/",
+            "EndDate":"/Date(1437839776000)/",
+            "CampaignTitle":"CampaignTitle 9",
+            "Description":"Description 9",
+            "AverageUsage":7201.38,
+            "EFL500":2450.96,
+            "EFL1000":1107.91,
+            "EFL2000":4093.48,
+            "TermLength":5665,
+            "CancellationFee":3431.1,
+            "Incentive":4134.91,
+            "DispositionReason":"DispositionReason 9",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 9',PromoCode='PromoCode 9')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 9',PromoCode='PromoCode 9')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 9',PromoCode='PromoCode 9')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 10",
+            "PromoCode":"PromoCode 10",
+            "ContractID":"10",
+            "CurrentFlag":"10",
+            "StartDate":"/Date(1054828576000)/",
+            "EndDate":"/Date(1510937776000)/",
+            "CampaignTitle":"CampaignTitle 10",
+            "Description":"Description 10",
+            "AverageUsage":9471.39,
+            "EFL500":9571.76,
+            "EFL1000":100.42,
+            "EFL2000":2896.5,
+            "TermLength":2540,
+            "CancellationFee":4854.15,
+            "Incentive":590.31,
+            "DispositionReason":"DispositionReason 10",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 10',PromoCode='PromoCode 10')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 10',PromoCode='PromoCode 10')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 10',PromoCode='PromoCode 10')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 11",
+            "PromoCode":"PromoCode 11",
+            "ContractID":"11",
+            "CurrentFlag":"11",
+            "StartDate":"/Date(1105376176000)/",
+            "EndDate":"/Date(1498319776000)/",
+            "CampaignTitle":"CampaignTitle 11",
+            "Description":"Description 11",
+            "AverageUsage":7185.34,
+            "EFL500":559.71,
+            "EFL1000":3230.49,
+            "EFL2000":4955.37,
+            "TermLength":4798,
+            "CancellationFee":5334.91,
+            "Incentive":7364.59,
+            "DispositionReason":"DispositionReason 11",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 11',PromoCode='PromoCode 11')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 11',PromoCode='PromoCode 11')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 11',PromoCode='PromoCode 11')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 12",
+            "PromoCode":"PromoCode 12",
+            "ContractID":"12",
+            "CurrentFlag":"12",
+            "StartDate":"/Date(1140108976000)/",
+            "EndDate":"/Date(1568390176000)/",
+            "CampaignTitle":"CampaignTitle 12",
+            "Description":"Description 12",
+            "AverageUsage":1194.1,
+            "EFL500":9823.01,
+            "EFL1000":8983.27,
+            "EFL2000":8974.36,
+            "TermLength":9176,
+            "CancellationFee":6206.67,
+            "Incentive":8695.17,
+            "DispositionReason":"DispositionReason 12",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 12',PromoCode='PromoCode 12')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 12',PromoCode='PromoCode 12')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 12',PromoCode='PromoCode 12')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 13",
+            "PromoCode":"PromoCode 13",
+            "ContractID":"13",
+            "CurrentFlag":"13",
+            "StartDate":"/Date(1195318576000)/",
+            "EndDate":"/Date(1441814176000)/",
+            "CampaignTitle":"CampaignTitle 13",
+            "Description":"Description 13",
+            "AverageUsage":7939.7,
+            "EFL500":3137.09,
+            "EFL1000":3275.91,
+            "EFL2000":5510.02,
+            "TermLength":5276,
+            "CancellationFee":2119.57,
+            "Incentive":5059.61,
+            "DispositionReason":"DispositionReason 13",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 13',PromoCode='PromoCode 13')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 13',PromoCode='PromoCode 13')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 13',PromoCode='PromoCode 13')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 14",
+            "PromoCode":"PromoCode 14",
+            "ContractID":"14",
+            "CurrentFlag":"14",
+            "StartDate":"/Date(1186674976000)/",
+            "EndDate":"/Date(1312818976000)/",
+            "CampaignTitle":"CampaignTitle 14",
+            "Description":"Description 14",
+            "AverageUsage":5462.94,
+            "EFL500":5911.42,
+            "EFL1000":4179.66,
+            "EFL2000":8640.77,
+            "TermLength":3819,
+            "CancellationFee":6654.93,
+            "Incentive":7377.37,
+            "DispositionReason":"DispositionReason 14",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 14',PromoCode='PromoCode 14')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 14',PromoCode='PromoCode 14')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 14',PromoCode='PromoCode 14')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 15",
+            "PromoCode":"PromoCode 15",
+            "ContractID":"15",
+            "CurrentFlag":"15",
+            "StartDate":"/Date(1246290976000)/",
+            "EndDate":"/Date(1259513776000)/",
+            "CampaignTitle":"CampaignTitle 15",
+            "Description":"Description 15",
+            "AverageUsage":5256.86,
+            "EFL500":2674.59,
+            "EFL1000":3773.03,
+            "EFL2000":5909.87,
+            "TermLength":3451,
+            "CancellationFee":8359.97,
+            "Incentive":8734.31,
+            "DispositionReason":"DispositionReason 15",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 15',PromoCode='PromoCode 15')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 15',PromoCode='PromoCode 15')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 15',PromoCode='PromoCode 15')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 16",
+            "PromoCode":"PromoCode 16",
+            "ContractID":"16",
+            "CurrentFlag":"16",
+            "StartDate":"/Date(1039107376000)/",
+            "EndDate":"/Date(1551891376000)/",
+            "CampaignTitle":"CampaignTitle 16",
+            "Description":"Description 16",
+            "AverageUsage":6874.74,
+            "EFL500":1345.02,
+            "EFL1000":612.69,
+            "EFL2000":6276.11,
+            "TermLength":8116,
+            "CancellationFee":6914.01,
+            "Incentive":28.77,
+            "DispositionReason":"DispositionReason 16",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 16',PromoCode='PromoCode 16')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 16',PromoCode='PromoCode 16')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 16',PromoCode='PromoCode 16')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 17",
+            "PromoCode":"PromoCode 17",
+            "ContractID":"17",
+            "CurrentFlag":"17",
+            "StartDate":"/Date(1540050976000)/",
+            "EndDate":"/Date(1139158576000)/",
+            "CampaignTitle":"CampaignTitle 17",
+            "Description":"Description 17",
+            "AverageUsage":6126.93,
+            "EFL500":7635.53,
+            "EFL1000":9715.37,
+            "EFL2000":8436.59,
+            "TermLength":4290,
+            "CancellationFee":4930.95,
+            "Incentive":4905.16,
+            "DispositionReason":"DispositionReason 17",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 17',PromoCode='PromoCode 17')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 17',PromoCode='PromoCode 17')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 17',PromoCode='PromoCode 17')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 18",
+            "PromoCode":"PromoCode 18",
+            "ContractID":"18",
+            "CurrentFlag":"18",
+            "StartDate":"/Date(951584176000)/",
+            "EndDate":"/Date(1092758176000)/",
+            "CampaignTitle":"CampaignTitle 18",
+            "Description":"Description 18",
+            "AverageUsage":4238.74,
+            "EFL500":6172.22,
+            "EFL1000":5574.77,
+            "EFL2000":2565.42,
+            "TermLength":4030,
+            "CancellationFee":1583.74,
+            "Incentive":5394.93,
+            "DispositionReason":"DispositionReason 18",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 18',PromoCode='PromoCode 18')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 18',PromoCode='PromoCode 18')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 18',PromoCode='PromoCode 18')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 19",
+            "PromoCode":"PromoCode 19",
+            "ContractID":"19",
+            "CurrentFlag":"19",
+            "StartDate":"/Date(948732976000)/",
+            "EndDate":"/Date(1044032176000)/",
+            "CampaignTitle":"CampaignTitle 19",
+            "Description":"Description 19",
+            "AverageUsage":5378.96,
+            "EFL500":1186.8,
+            "EFL1000":7248.59,
+            "EFL2000":1415.37,
+            "TermLength":9000,
+            "CancellationFee":2039.96,
+            "Incentive":2729.75,
+            "DispositionReason":"DispositionReason 19",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 19',PromoCode='PromoCode 19')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 19',PromoCode='PromoCode 19')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 19',PromoCode='PromoCode 19')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 20",
+            "PromoCode":"PromoCode 20",
+            "ContractID":"20",
+            "CurrentFlag":"20",
+            "StartDate":"/Date(1335714976000)/",
+            "EndDate":"/Date(1417452976000)/",
+            "CampaignTitle":"CampaignTitle 20",
+            "Description":"Description 20",
+            "AverageUsage":9906.14,
+            "EFL500":7966.04,
+            "EFL1000":9766.88,
+            "EFL2000":8419.64,
+            "TermLength":6175,
+            "CancellationFee":8996.93,
+            "Incentive":5575.12,
+            "DispositionReason":"DispositionReason 20",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 20',PromoCode='PromoCode 20')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 20',PromoCode='PromoCode 20')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 20',PromoCode='PromoCode 20')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 21",
+            "PromoCode":"PromoCode 21",
+            "ContractID":"21",
+            "CurrentFlag":"21",
+            "StartDate":"/Date(1066406176000)/",
+            "EndDate":"/Date(1457283376000)/",
+            "CampaignTitle":"CampaignTitle 21",
+            "Description":"Description 21",
+            "AverageUsage":4831.58,
+            "EFL500":3378.96,
+            "EFL1000":3008.89,
+            "EFL2000":1047.06,
+            "TermLength":9285,
+            "CancellationFee":6607.24,
+            "Incentive":519.31,
+            "DispositionReason":"DispositionReason 21",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 21',PromoCode='PromoCode 21')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 21',PromoCode='PromoCode 21')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 21',PromoCode='PromoCode 21')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 22",
+            "PromoCode":"PromoCode 22",
+            "ContractID":"22",
+            "CurrentFlag":"22",
+            "StartDate":"/Date(1205510176000)/",
+            "EndDate":"/Date(1089474976000)/",
+            "CampaignTitle":"CampaignTitle 22",
+            "Description":"Description 22",
+            "AverageUsage":4032.43,
+            "EFL500":3542.46,
+            "EFL1000":9281.15,
+            "EFL2000":7510.07,
+            "TermLength":9129,
+            "CancellationFee":2202.5,
+            "Incentive":2750.39,
+            "DispositionReason":"DispositionReason 22",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 22',PromoCode='PromoCode 22')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 22',PromoCode='PromoCode 22')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 22',PromoCode='PromoCode 22')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 23",
+            "PromoCode":"PromoCode 23",
+            "ContractID":"23",
+            "CurrentFlag":"23",
+            "StartDate":"/Date(972748576000)/",
+            "EndDate":"/Date(1460217376000)/",
+            "CampaignTitle":"CampaignTitle 23",
+            "Description":"Description 23",
+            "AverageUsage":775.12,
+            "EFL500":4040.96,
+            "EFL1000":6423.59,
+            "EFL2000":6680.22,
+            "TermLength":4786,
+            "CancellationFee":7463.11,
+            "Incentive":536.17,
+            "DispositionReason":"DispositionReason 23",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 23',PromoCode='PromoCode 23')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 23',PromoCode='PromoCode 23')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 23',PromoCode='PromoCode 23')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 24",
+            "PromoCode":"PromoCode 24",
+            "ContractID":"24",
+            "CurrentFlag":"24",
+            "StartDate":"/Date(1371225376000)/",
+            "EndDate":"/Date(1190217376000)/",
+            "CampaignTitle":"CampaignTitle 24",
+            "Description":"Description 24",
+            "AverageUsage":3980.29,
+            "EFL500":5999.44,
+            "EFL1000":8439.69,
+            "EFL2000":8291.73,
+            "TermLength":338,
+            "CancellationFee":8851.08,
+            "Incentive":3860.69,
+            "DispositionReason":"DispositionReason 24",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 24',PromoCode='PromoCode 24')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 24',PromoCode='PromoCode 24')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 24',PromoCode='PromoCode 24')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 25",
+            "PromoCode":"PromoCode 25",
+            "ContractID":"25",
+            "CurrentFlag":"25",
+            "StartDate":"/Date(1564674976000)/",
+            "EndDate":"/Date(1437926176000)/",
+            "CampaignTitle":"CampaignTitle 25",
+            "Description":"Description 25",
+            "AverageUsage":7125.63,
+            "EFL500":5173.89,
+            "EFL1000":5531.18,
+            "EFL2000":8210.22,
+            "TermLength":418,
+            "CancellationFee":1440.99,
+            "Incentive":9316.01,
+            "DispositionReason":"DispositionReason 25",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 25',PromoCode='PromoCode 25')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 25',PromoCode='PromoCode 25')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 25',PromoCode='PromoCode 25')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 26",
+            "PromoCode":"PromoCode 26",
+            "ContractID":"26",
+            "CurrentFlag":"26",
+            "StartDate":"/Date(1379346976000)/",
+            "EndDate":"/Date(1118332576000)/",
+            "CampaignTitle":"CampaignTitle 26",
+            "Description":"Description 26",
+            "AverageUsage":6791.02,
+            "EFL500":1652.8,
+            "EFL1000":9678.72,
+            "EFL2000":6512.3,
+            "TermLength":9406,
+            "CancellationFee":4278.15,
+            "Incentive":6851.42,
+            "DispositionReason":"DispositionReason 26",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 26',PromoCode='PromoCode 26')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 26',PromoCode='PromoCode 26')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 26',PromoCode='PromoCode 26')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 27",
+            "PromoCode":"PromoCode 27",
+            "ContractID":"27",
+            "CurrentFlag":"27",
+            "StartDate":"/Date(983552176000)/",
+            "EndDate":"/Date(1109177776000)/",
+            "CampaignTitle":"CampaignTitle 27",
+            "Description":"Description 27",
+            "AverageUsage":241.72,
+            "EFL500":8239.48,
+            "EFL1000":7186.16,
+            "EFL2000":8131.29,
+            "TermLength":8524,
+            "CancellationFee":8523.09,
+            "Incentive":1119.68,
+            "DispositionReason":"DispositionReason 27",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 27',PromoCode='PromoCode 27')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 27',PromoCode='PromoCode 27')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 27',PromoCode='PromoCode 27')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 28",
+            "PromoCode":"PromoCode 28",
+            "ContractID":"28",
+            "CurrentFlag":"28",
+            "StartDate":"/Date(1427126176000)/",
+            "EndDate":"/Date(1473004576000)/",
+            "CampaignTitle":"CampaignTitle 28",
+            "Description":"Description 28",
+            "AverageUsage":5078.22,
+            "EFL500":472.81,
+            "EFL1000":4489.85,
+            "EFL2000":252.1,
+            "TermLength":6151,
+            "CancellationFee":2066.75,
+            "Incentive":3398.81,
+            "DispositionReason":"DispositionReason 28",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 28',PromoCode='PromoCode 28')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 28',PromoCode='PromoCode 28')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 28',PromoCode='PromoCode 28')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 29",
+            "PromoCode":"PromoCode 29",
+            "ContractID":"29",
+            "CurrentFlag":"29",
+            "StartDate":"/Date(1553874976000)/",
+            "EndDate":"/Date(1438962976000)/",
+            "CampaignTitle":"CampaignTitle 29",
+            "Description":"Description 29",
+            "AverageUsage":9770.63,
+            "EFL500":4061.26,
+            "EFL1000":4802.66,
+            "EFL2000":1116.77,
+            "TermLength":4307,
+            "CancellationFee":8295.8,
+            "Incentive":3482.76,
+            "DispositionReason":"DispositionReason 29",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 29',PromoCode='PromoCode 29')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 29',PromoCode='PromoCode 29')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 29',PromoCode='PromoCode 29')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 30",
+            "PromoCode":"PromoCode 30",
+            "ContractID":"30",
+            "CurrentFlag":"30",
+            "StartDate":"/Date(1236527776000)/",
+            "EndDate":"/Date(1275321376000)/",
+            "CampaignTitle":"CampaignTitle 30",
+            "Description":"Description 30",
+            "AverageUsage":6882.15,
+            "EFL500":3737.06,
+            "EFL1000":544.85,
+            "EFL2000":2668.21,
+            "TermLength":6927,
+            "CancellationFee":8885.19,
+            "Incentive":1933.41,
+            "DispositionReason":"DispositionReason 30",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 30',PromoCode='PromoCode 30')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 30',PromoCode='PromoCode 30')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 30',PromoCode='PromoCode 30')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 31",
+            "PromoCode":"PromoCode 31",
+            "ContractID":"31",
+            "CurrentFlag":"31",
+            "StartDate":"/Date(1549904176000)/",
+            "EndDate":"/Date(1567612576000)/",
+            "CampaignTitle":"CampaignTitle 31",
+            "Description":"Description 31",
+            "AverageUsage":6636.74,
+            "EFL500":965.75,
+            "EFL1000":3915.41,
+            "EFL2000":5022.79,
+            "TermLength":1000,
+            "CancellationFee":9731.18,
+            "Incentive":2731.77,
+            "DispositionReason":"DispositionReason 31",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 31',PromoCode='PromoCode 31')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 31',PromoCode='PromoCode 31')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 31',PromoCode='PromoCode 31')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 32",
+            "PromoCode":"PromoCode 32",
+            "ContractID":"32",
+            "CurrentFlag":"32",
+            "StartDate":"/Date(1181750176000)/",
+            "EndDate":"/Date(1262278576000)/",
+            "CampaignTitle":"CampaignTitle 32",
+            "Description":"Description 32",
+            "AverageUsage":4839.56,
+            "EFL500":8498.17,
+            "EFL1000":1666.77,
+            "EFL2000":3255.1,
+            "TermLength":8196,
+            "CancellationFee":4939.31,
+            "Incentive":7293.46,
+            "DispositionReason":"DispositionReason 32",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 32',PromoCode='PromoCode 32')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 32',PromoCode='PromoCode 32')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 32',PromoCode='PromoCode 32')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 33",
+            "PromoCode":"PromoCode 33",
+            "ContractID":"33",
+            "CurrentFlag":"33",
+            "StartDate":"/Date(1026834976000)/",
+            "EndDate":"/Date(1429631776000)/",
+            "CampaignTitle":"CampaignTitle 33",
+            "Description":"Description 33",
+            "AverageUsage":9911.39,
+            "EFL500":2290.02,
+            "EFL1000":9379.93,
+            "EFL2000":9917.05,
+            "TermLength":5949,
+            "CancellationFee":3194.95,
+            "Incentive":5418.01,
+            "DispositionReason":"DispositionReason 33",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 33',PromoCode='PromoCode 33')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 33',PromoCode='PromoCode 33')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 33',PromoCode='PromoCode 33')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 34",
+            "PromoCode":"PromoCode 34",
+            "ContractID":"34",
+            "CurrentFlag":"34",
+            "StartDate":"/Date(1337010976000)/",
+            "EndDate":"/Date(1076864176000)/",
+            "CampaignTitle":"CampaignTitle 34",
+            "Description":"Description 34",
+            "AverageUsage":742.96,
+            "EFL500":5670.11,
+            "EFL1000":546.41,
+            "EFL2000":3462.72,
+            "TermLength":2216,
+            "CancellationFee":7049.14,
+            "Incentive":5932.92,
+            "DispositionReason":"DispositionReason 34",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 34',PromoCode='PromoCode 34')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 34',PromoCode='PromoCode 34')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 34',PromoCode='PromoCode 34')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 35",
+            "PromoCode":"PromoCode 35",
+            "ContractID":"35",
+            "CurrentFlag":"35",
+            "StartDate":"/Date(1129996576000)/",
+            "EndDate":"/Date(1368114976000)/",
+            "CampaignTitle":"CampaignTitle 35",
+            "Description":"Description 35",
+            "AverageUsage":4604.98,
+            "EFL500":8231.83,
+            "EFL1000":828.68,
+            "EFL2000":1061.74,
+            "TermLength":2797,
+            "CancellationFee":9048.78,
+            "Incentive":39.99,
+            "DispositionReason":"DispositionReason 35",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 35',PromoCode='PromoCode 35')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 35',PromoCode='PromoCode 35')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 35',PromoCode='PromoCode 35')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 36",
+            "PromoCode":"PromoCode 36",
+            "ContractID":"36",
+            "CurrentFlag":"36",
+            "StartDate":"/Date(1140800176000)/",
+            "EndDate":"/Date(1371657376000)/",
+            "CampaignTitle":"CampaignTitle 36",
+            "Description":"Description 36",
+            "AverageUsage":3319.66,
+            "EFL500":2756.3,
+            "EFL1000":5110.47,
+            "EFL2000":9846.66,
+            "TermLength":6490,
+            "CancellationFee":3285.44,
+            "Incentive":7004.47,
+            "DispositionReason":"DispositionReason 36",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 36',PromoCode='PromoCode 36')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 36',PromoCode='PromoCode 36')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 36',PromoCode='PromoCode 36')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 37",
+            "PromoCode":"PromoCode 37",
+            "ContractID":"37",
+            "CurrentFlag":"37",
+            "StartDate":"/Date(974307376000)/",
+            "EndDate":"/Date(1330102576000)/",
+            "CampaignTitle":"CampaignTitle 37",
+            "Description":"Description 37",
+            "AverageUsage":1572.3,
+            "EFL500":8370.03,
+            "EFL1000":9793.82,
+            "EFL2000":2734.68,
+            "TermLength":8978,
+            "CancellationFee":3484.92,
+            "Incentive":3454.56,
+            "DispositionReason":"DispositionReason 37",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 37',PromoCode='PromoCode 37')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 37',PromoCode='PromoCode 37')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 37',PromoCode='PromoCode 37')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 38",
+            "PromoCode":"PromoCode 38",
+            "ContractID":"38",
+            "CurrentFlag":"38",
+            "StartDate":"/Date(1219679776000)/",
+            "EndDate":"/Date(960566176000)/",
+            "CampaignTitle":"CampaignTitle 38",
+            "Description":"Description 38",
+            "AverageUsage":3182.62,
+            "EFL500":2144.39,
+            "EFL1000":2922.37,
+            "EFL2000":799.9,
+            "TermLength":2383,
+            "CancellationFee":5080.69,
+            "Incentive":3267.92,
+            "DispositionReason":"DispositionReason 38",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 38',PromoCode='PromoCode 38')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 38',PromoCode='PromoCode 38')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 38',PromoCode='PromoCode 38')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 39",
+            "PromoCode":"PromoCode 39",
+            "ContractID":"39",
+            "CurrentFlag":"39",
+            "StartDate":"/Date(974220976000)/",
+            "EndDate":"/Date(1416329776000)/",
+            "CampaignTitle":"CampaignTitle 39",
+            "Description":"Description 39",
+            "AverageUsage":9331.18,
+            "EFL500":1400.99,
+            "EFL1000":964.15,
+            "EFL2000":2212.23,
+            "TermLength":6578,
+            "CancellationFee":3101.87,
+            "Incentive":7383.42,
+            "DispositionReason":"DispositionReason 39",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 39',PromoCode='PromoCode 39')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 39',PromoCode='PromoCode 39')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 39',PromoCode='PromoCode 39')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 40",
+            "PromoCode":"PromoCode 40",
+            "ContractID":"40",
+            "CurrentFlag":"40",
+            "StartDate":"/Date(1178466976000)/",
+            "EndDate":"/Date(1528646176000)/",
+            "CampaignTitle":"CampaignTitle 40",
+            "Description":"Description 40",
+            "AverageUsage":8594.25,
+            "EFL500":4873.45,
+            "EFL1000":8901.97,
+            "EFL2000":1244.51,
+            "TermLength":907,
+            "CancellationFee":8737.81,
+            "Incentive":2656.74,
+            "DispositionReason":"DispositionReason 40",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 40',PromoCode='PromoCode 40')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 40',PromoCode='PromoCode 40')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 40',PromoCode='PromoCode 40')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 41",
+            "PromoCode":"PromoCode 41",
+            "ContractID":"41",
+            "CurrentFlag":"41",
+            "StartDate":"/Date(1113148576000)/",
+            "EndDate":"/Date(1549558576000)/",
+            "CampaignTitle":"CampaignTitle 41",
+            "Description":"Description 41",
+            "AverageUsage":624.32,
+            "EFL500":5235.38,
+            "EFL1000":2459.98,
+            "EFL2000":2885.32,
+            "TermLength":2354,
+            "CancellationFee":9440.95,
+            "Incentive":398.83,
+            "DispositionReason":"DispositionReason 41",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 41',PromoCode='PromoCode 41')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 41',PromoCode='PromoCode 41')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 41',PromoCode='PromoCode 41')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 42",
+            "PromoCode":"PromoCode 42",
+            "ContractID":"42",
+            "CurrentFlag":"42",
+            "StartDate":"/Date(1019490976000)/",
+            "EndDate":"/Date(1078246576000)/",
+            "CampaignTitle":"CampaignTitle 42",
+            "Description":"Description 42",
+            "AverageUsage":4473.77,
+            "EFL500":1563.26,
+            "EFL1000":4110.56,
+            "EFL2000":1169.23,
+            "TermLength":516,
+            "CancellationFee":7494.96,
+            "Incentive":1602.52,
+            "DispositionReason":"DispositionReason 42",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 42',PromoCode='PromoCode 42')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 42',PromoCode='PromoCode 42')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 42',PromoCode='PromoCode 42')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 43",
+            "PromoCode":"PromoCode 43",
+            "ContractID":"43",
+            "CurrentFlag":"43",
+            "StartDate":"/Date(1255881376000)/",
+            "EndDate":"/Date(1121788576000)/",
+            "CampaignTitle":"CampaignTitle 43",
+            "Description":"Description 43",
+            "AverageUsage":3424.61,
+            "EFL500":5693.28,
+            "EFL1000":9460.5,
+            "EFL2000":3465.69,
+            "TermLength":6941,
+            "CancellationFee":8455.61,
+            "Incentive":4671.33,
+            "DispositionReason":"DispositionReason 43",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 43',PromoCode='PromoCode 43')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 43',PromoCode='PromoCode 43')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 43',PromoCode='PromoCode 43')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 44",
+            "PromoCode":"PromoCode 44",
+            "ContractID":"44",
+            "CurrentFlag":"44",
+            "StartDate":"/Date(1343750176000)/",
+            "EndDate":"/Date(1291740976000)/",
+            "CampaignTitle":"CampaignTitle 44",
+            "Description":"Description 44",
+            "AverageUsage":7035.27,
+            "EFL500":7539.74,
+            "EFL1000":2236.99,
+            "EFL2000":4075.03,
+            "TermLength":3085,
+            "CancellationFee":2320.81,
+            "Incentive":3236.32,
+            "DispositionReason":"DispositionReason 44",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 44',PromoCode='PromoCode 44')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 44',PromoCode='PromoCode 44')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 44',PromoCode='PromoCode 44')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 45",
+            "PromoCode":"PromoCode 45",
+            "ContractID":"45",
+            "CurrentFlag":"45",
+            "StartDate":"/Date(1553702176000)/",
+            "EndDate":"/Date(1212940576000)/",
+            "CampaignTitle":"CampaignTitle 45",
+            "Description":"Description 45",
+            "AverageUsage":4629.81,
+            "EFL500":4169.25,
+            "EFL1000":1209.29,
+            "EFL2000":4087.42,
+            "TermLength":5646,
+            "CancellationFee":539.12,
+            "Incentive":1400.69,
+            "DispositionReason":"DispositionReason 45",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 45',PromoCode='PromoCode 45')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 45',PromoCode='PromoCode 45')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 45',PromoCode='PromoCode 45')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 46",
+            "PromoCode":"PromoCode 46",
+            "ContractID":"46",
+            "CurrentFlag":"46",
+            "StartDate":"/Date(1155398176000)/",
+            "EndDate":"/Date(1454864176000)/",
+            "CampaignTitle":"CampaignTitle 46",
+            "Description":"Description 46",
+            "AverageUsage":8875.73,
+            "EFL500":9878.94,
+            "EFL1000":8021.05,
+            "EFL2000":176.84,
+            "TermLength":800,
+            "CancellationFee":8134.61,
+            "Incentive":7293.39,
+            "DispositionReason":"DispositionReason 46",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 46',PromoCode='PromoCode 46')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 46',PromoCode='PromoCode 46')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 46',PromoCode='PromoCode 46')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 47",
+            "PromoCode":"PromoCode 47",
+            "ContractID":"47",
+            "CurrentFlag":"47",
+            "StartDate":"/Date(1520182576000)/",
+            "EndDate":"/Date(1173974176000)/",
+            "CampaignTitle":"CampaignTitle 47",
+            "Description":"Description 47",
+            "AverageUsage":4834.52,
+            "EFL500":5577.72,
+            "EFL1000":7220.6,
+            "EFL2000":6410.03,
+            "TermLength":2701,
+            "CancellationFee":3796.62,
+            "Incentive":2346.99,
+            "DispositionReason":"DispositionReason 47",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 47',PromoCode='PromoCode 47')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 47',PromoCode='PromoCode 47')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 47',PromoCode='PromoCode 47')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 48",
+            "PromoCode":"PromoCode 48",
+            "ContractID":"48",
+            "CurrentFlag":"48",
+            "StartDate":"/Date(1373385376000)/",
+            "EndDate":"/Date(1162482976000)/",
+            "CampaignTitle":"CampaignTitle 48",
+            "Description":"Description 48",
+            "AverageUsage":4809,
+            "EFL500":8038.83,
+            "EFL1000":667.86,
+            "EFL2000":1286.33,
+            "TermLength":2459,
+            "CancellationFee":9047.83,
+            "Incentive":689.23,
+            "DispositionReason":"DispositionReason 48",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 48',PromoCode='PromoCode 48')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 48',PromoCode='PromoCode 48')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 48',PromoCode='PromoCode 48')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 49",
+            "PromoCode":"PromoCode 49",
+            "ContractID":"49",
+            "CurrentFlag":"49",
+            "StartDate":"/Date(1365782176000)/",
+            "EndDate":"/Date(1487955376000)/",
+            "CampaignTitle":"CampaignTitle 49",
+            "Description":"Description 49",
+            "AverageUsage":1410.22,
+            "EFL500":6649.27,
+            "EFL1000":4921.65,
+            "EFL2000":7733.19,
+            "TermLength":125,
+            "CancellationFee":1834.31,
+            "Incentive":1725.12,
+            "DispositionReason":"DispositionReason 49",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 49',PromoCode='PromoCode 49')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 49',PromoCode='PromoCode 49')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 49',PromoCode='PromoCode 49')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 50",
+            "PromoCode":"PromoCode 50",
+            "ContractID":"50",
+            "CurrentFlag":"50",
+            "StartDate":"/Date(1082044576000)/",
+            "EndDate":"/Date(1383234976000)/",
+            "CampaignTitle":"CampaignTitle 50",
+            "Description":"Description 50",
+            "AverageUsage":4278.27,
+            "EFL500":9295.77,
+            "EFL1000":1824,
+            "EFL2000":7168.89,
+            "TermLength":5485,
+            "CancellationFee":659.97,
+            "Incentive":274.78,
+            "DispositionReason":"DispositionReason 50",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 50',PromoCode='PromoCode 50')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 50',PromoCode='PromoCode 50')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 50',PromoCode='PromoCode 50')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 51",
+            "PromoCode":"PromoCode 51",
+            "ContractID":"51",
+            "CurrentFlag":"51",
+            "StartDate":"/Date(1078073776000)/",
+            "EndDate":"/Date(1543683376000)/",
+            "CampaignTitle":"CampaignTitle 51",
+            "Description":"Description 51",
+            "AverageUsage":5726.83,
+            "EFL500":6400.23,
+            "EFL1000":6216.63,
+            "EFL2000":6756.77,
+            "TermLength":5811,
+            "CancellationFee":2525.96,
+            "Incentive":4295.96,
+            "DispositionReason":"DispositionReason 51",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 51',PromoCode='PromoCode 51')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 51',PromoCode='PromoCode 51')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 51',PromoCode='PromoCode 51')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 52",
+            "PromoCode":"PromoCode 52",
+            "ContractID":"52",
+            "CurrentFlag":"52",
+            "StartDate":"/Date(1383670576000)/",
+            "EndDate":"/Date(1108659376000)/",
+            "CampaignTitle":"CampaignTitle 52",
+            "Description":"Description 52",
+            "AverageUsage":249.27,
+            "EFL500":3020.15,
+            "EFL1000":1020.67,
+            "EFL2000":3337.93,
+            "TermLength":1898,
+            "CancellationFee":847,
+            "Incentive":9458.46,
+            "DispositionReason":"DispositionReason 52",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 52',PromoCode='PromoCode 52')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 52',PromoCode='PromoCode 52')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 52',PromoCode='PromoCode 52')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 53",
+            "PromoCode":"PromoCode 53",
+            "ContractID":"53",
+            "CurrentFlag":"53",
+            "StartDate":"/Date(1326041776000)/",
+            "EndDate":"/Date(1040489776000)/",
+            "CampaignTitle":"CampaignTitle 53",
+            "Description":"Description 53",
+            "AverageUsage":4964.52,
+            "EFL500":1640.38,
+            "EFL1000":6332.26,
+            "EFL2000":826.37,
+            "TermLength":9271,
+            "CancellationFee":8942.11,
+            "Incentive":8760.82,
+            "DispositionReason":"DispositionReason 53",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 53',PromoCode='PromoCode 53')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 53',PromoCode='PromoCode 53')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 53',PromoCode='PromoCode 53')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 54",
+            "PromoCode":"PromoCode 54",
+            "ContractID":"54",
+            "CurrentFlag":"54",
+            "StartDate":"/Date(1443714976000)/",
+            "EndDate":"/Date(1242230176000)/",
+            "CampaignTitle":"CampaignTitle 54",
+            "Description":"Description 54",
+            "AverageUsage":3723.12,
+            "EFL500":6467.88,
+            "EFL1000":4429.08,
+            "EFL2000":6939.85,
+            "TermLength":6711,
+            "CancellationFee":6164.91,
+            "Incentive":4199.26,
+            "DispositionReason":"DispositionReason 54",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 54',PromoCode='PromoCode 54')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 54',PromoCode='PromoCode 54')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 54',PromoCode='PromoCode 54')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 55",
+            "PromoCode":"PromoCode 55",
+            "ContractID":"55",
+            "CurrentFlag":"55",
+            "StartDate":"/Date(1194018976000)/",
+            "EndDate":"/Date(1195836976000)/",
+            "CampaignTitle":"CampaignTitle 55",
+            "Description":"Description 55",
+            "AverageUsage":3891.91,
+            "EFL500":3476.53,
+            "EFL1000":741.55,
+            "EFL2000":8841.31,
+            "TermLength":7897,
+            "CancellationFee":1452.11,
+            "Incentive":2208.2,
+            "DispositionReason":"DispositionReason 55",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 55',PromoCode='PromoCode 55')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 55',PromoCode='PromoCode 55')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 55',PromoCode='PromoCode 55')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 56",
+            "PromoCode":"PromoCode 56",
+            "ContractID":"56",
+            "CurrentFlag":"56",
+            "StartDate":"/Date(1078592176000)/",
+            "EndDate":"/Date(1537718176000)/",
+            "CampaignTitle":"CampaignTitle 56",
+            "Description":"Description 56",
+            "AverageUsage":3616.01,
+            "EFL500":6265.44,
+            "EFL1000":6361.88,
+            "EFL2000":5823.79,
+            "TermLength":2510,
+            "CancellationFee":8178.81,
+            "Incentive":2848.77,
+            "DispositionReason":"DispositionReason 56",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 56',PromoCode='PromoCode 56')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 56',PromoCode='PromoCode 56')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 56',PromoCode='PromoCode 56')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 57",
+            "PromoCode":"PromoCode 57",
+            "ContractID":"57",
+            "CurrentFlag":"57",
+            "StartDate":"/Date(1198601776000)/",
+            "EndDate":"/Date(1445529376000)/",
+            "CampaignTitle":"CampaignTitle 57",
+            "Description":"Description 57",
+            "AverageUsage":4397.7,
+            "EFL500":606.61,
+            "EFL1000":7069.61,
+            "EFL2000":4145.49,
+            "TermLength":2699,
+            "CancellationFee":4657.35,
+            "Incentive":1638.16,
+            "DispositionReason":"DispositionReason 57",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 57',PromoCode='PromoCode 57')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 57',PromoCode='PromoCode 57')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 57',PromoCode='PromoCode 57')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 58",
+            "PromoCode":"PromoCode 58",
+            "ContractID":"58",
+            "CurrentFlag":"58",
+            "StartDate":"/Date(1247759776000)/",
+            "EndDate":"/Date(1151164576000)/",
+            "CampaignTitle":"CampaignTitle 58",
+            "Description":"Description 58",
+            "AverageUsage":4872.18,
+            "EFL500":5737.49,
+            "EFL1000":7695.13,
+            "EFL2000":2560.57,
+            "TermLength":6576,
+            "CancellationFee":183.72,
+            "Incentive":4205.51,
+            "DispositionReason":"DispositionReason 58",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 58',PromoCode='PromoCode 58')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 58',PromoCode='PromoCode 58')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 58',PromoCode='PromoCode 58')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 59",
+            "PromoCode":"PromoCode 59",
+            "ContractID":"59",
+            "CurrentFlag":"59",
+            "StartDate":"/Date(1249574176000)/",
+            "EndDate":"/Date(1192809376000)/",
+            "CampaignTitle":"CampaignTitle 59",
+            "Description":"Description 59",
+            "AverageUsage":5419.13,
+            "EFL500":6796.52,
+            "EFL1000":893.64,
+            "EFL2000":2660.84,
+            "TermLength":4968,
+            "CancellationFee":5739.62,
+            "Incentive":6237.73,
+            "DispositionReason":"DispositionReason 59",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 59',PromoCode='PromoCode 59')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 59',PromoCode='PromoCode 59')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 59',PromoCode='PromoCode 59')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 60",
+            "PromoCode":"PromoCode 60",
+            "ContractID":"60",
+            "CurrentFlag":"60",
+            "StartDate":"/Date(1332950176000)/",
+            "EndDate":"/Date(1268927776000)/",
+            "CampaignTitle":"CampaignTitle 60",
+            "Description":"Description 60",
+            "AverageUsage":892.21,
+            "EFL500":6669.77,
+            "EFL1000":6185.66,
+            "EFL2000":8345.56,
+            "TermLength":877,
+            "CancellationFee":1464.16,
+            "Incentive":7618.42,
+            "DispositionReason":"DispositionReason 60",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 60',PromoCode='PromoCode 60')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 60',PromoCode='PromoCode 60')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 60',PromoCode='PromoCode 60')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 61",
+            "PromoCode":"PromoCode 61",
+            "ContractID":"61",
+            "CurrentFlag":"61",
+            "StartDate":"/Date(977504176000)/",
+            "EndDate":"/Date(1153670176000)/",
+            "CampaignTitle":"CampaignTitle 61",
+            "Description":"Description 61",
+            "AverageUsage":5353.23,
+            "EFL500":7585.52,
+            "EFL1000":7122.05,
+            "EFL2000":2464.43,
+            "TermLength":3188,
+            "CancellationFee":656.89,
+            "Incentive":4619.51,
+            "DispositionReason":"DispositionReason 61",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 61',PromoCode='PromoCode 61')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 61',PromoCode='PromoCode 61')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 61',PromoCode='PromoCode 61')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 62",
+            "PromoCode":"PromoCode 62",
+            "ContractID":"62",
+            "CurrentFlag":"62",
+            "StartDate":"/Date(1508601376000)/",
+            "EndDate":"/Date(1022946976000)/",
+            "CampaignTitle":"CampaignTitle 62",
+            "Description":"Description 62",
+            "AverageUsage":3334.31,
+            "EFL500":6963.13,
+            "EFL1000":4586.43,
+            "EFL2000":3521.72,
+            "TermLength":8026,
+            "CancellationFee":5723.24,
+            "Incentive":9954.01,
+            "DispositionReason":"DispositionReason 62",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 62',PromoCode='PromoCode 62')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 62',PromoCode='PromoCode 62')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 62',PromoCode='PromoCode 62')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 63",
+            "PromoCode":"PromoCode 63",
+            "ContractID":"63",
+            "CurrentFlag":"63",
+            "StartDate":"/Date(991151776000)/",
+            "EndDate":"/Date(1286294176000)/",
+            "CampaignTitle":"CampaignTitle 63",
+            "Description":"Description 63",
+            "AverageUsage":3579.05,
+            "EFL500":535.64,
+            "EFL1000":7555.13,
+            "EFL2000":8315.93,
+            "TermLength":7529,
+            "CancellationFee":2759.3,
+            "Incentive":1291.71,
+            "DispositionReason":"DispositionReason 63",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 63',PromoCode='PromoCode 63')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 63',PromoCode='PromoCode 63')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 63',PromoCode='PromoCode 63')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 64",
+            "PromoCode":"PromoCode 64",
+            "ContractID":"64",
+            "CurrentFlag":"64",
+            "StartDate":"/Date(1525794976000)/",
+            "EndDate":"/Date(1382716576000)/",
+            "CampaignTitle":"CampaignTitle 64",
+            "Description":"Description 64",
+            "AverageUsage":5696.22,
+            "EFL500":2911.54,
+            "EFL1000":6444.72,
+            "EFL2000":8780.72,
+            "TermLength":7256,
+            "CancellationFee":8311.33,
+            "Incentive":4912.26,
+            "DispositionReason":"DispositionReason 64",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 64',PromoCode='PromoCode 64')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 64',PromoCode='PromoCode 64')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 64',PromoCode='PromoCode 64')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 65",
+            "PromoCode":"PromoCode 65",
+            "ContractID":"65",
+            "CurrentFlag":"65",
+            "StartDate":"/Date(1436716576000)/",
+            "EndDate":"/Date(1208879776000)/",
+            "CampaignTitle":"CampaignTitle 65",
+            "Description":"Description 65",
+            "AverageUsage":8942.78,
+            "EFL500":8062.42,
+            "EFL1000":5483.69,
+            "EFL2000":643.03,
+            "TermLength":4895,
+            "CancellationFee":5632.51,
+            "Incentive":4903.67,
+            "DispositionReason":"DispositionReason 65",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 65',PromoCode='PromoCode 65')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 65',PromoCode='PromoCode 65')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 65',PromoCode='PromoCode 65')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 66",
+            "PromoCode":"PromoCode 66",
+            "ContractID":"66",
+            "CurrentFlag":"66",
+            "StartDate":"/Date(1126799776000)/",
+            "EndDate":"/Date(1028130976000)/",
+            "CampaignTitle":"CampaignTitle 66",
+            "Description":"Description 66",
+            "AverageUsage":9057.08,
+            "EFL500":9309.37,
+            "EFL1000":7991.91,
+            "EFL2000":4548.73,
+            "TermLength":4268,
+            "CancellationFee":9440.78,
+            "Incentive":8173.99,
+            "DispositionReason":"DispositionReason 66",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 66',PromoCode='PromoCode 66')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 66',PromoCode='PromoCode 66')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 66',PromoCode='PromoCode 66')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 67",
+            "PromoCode":"PromoCode 67",
+            "ContractID":"67",
+            "CurrentFlag":"67",
+            "StartDate":"/Date(1526745376000)/",
+            "EndDate":"/Date(1226076976000)/",
+            "CampaignTitle":"CampaignTitle 67",
+            "Description":"Description 67",
+            "AverageUsage":1811.28,
+            "EFL500":8703.68,
+            "EFL1000":6645.75,
+            "EFL2000":3651.47,
+            "TermLength":7079,
+            "CancellationFee":8306.15,
+            "Incentive":1324.07,
+            "DispositionReason":"DispositionReason 67",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 67',PromoCode='PromoCode 67')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 67',PromoCode='PromoCode 67')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 67',PromoCode='PromoCode 67')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 68",
+            "PromoCode":"PromoCode 68",
+            "ContractID":"68",
+            "CurrentFlag":"68",
+            "StartDate":"/Date(1228150576000)/",
+            "EndDate":"/Date(1503935776000)/",
+            "CampaignTitle":"CampaignTitle 68",
+            "Description":"Description 68",
+            "AverageUsage":798.25,
+            "EFL500":3078.48,
+            "EFL1000":4865.98,
+            "EFL2000":2577.6,
+            "TermLength":3927,
+            "CancellationFee":8310.16,
+            "Incentive":1987.15,
+            "DispositionReason":"DispositionReason 68",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 68',PromoCode='PromoCode 68')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 68',PromoCode='PromoCode 68')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 68',PromoCode='PromoCode 68')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 69",
+            "PromoCode":"PromoCode 69",
+            "ContractID":"69",
+            "CurrentFlag":"69",
+            "StartDate":"/Date(989682976000)/",
+            "EndDate":"/Date(1418835376000)/",
+            "CampaignTitle":"CampaignTitle 69",
+            "Description":"Description 69",
+            "AverageUsage":6020.93,
+            "EFL500":7978.7,
+            "EFL1000":7044.31,
+            "EFL2000":9481.12,
+            "TermLength":5243,
+            "CancellationFee":8961.55,
+            "Incentive":7049.95,
+            "DispositionReason":"DispositionReason 69",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 69',PromoCode='PromoCode 69')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 69',PromoCode='PromoCode 69')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 69',PromoCode='PromoCode 69')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 70",
+            "PromoCode":"PromoCode 70",
+            "ContractID":"70",
+            "CurrentFlag":"70",
+            "StartDate":"/Date(1045673776000)/",
+            "EndDate":"/Date(1555948576000)/",
+            "CampaignTitle":"CampaignTitle 70",
+            "Description":"Description 70",
+            "AverageUsage":213.38,
+            "EFL500":6977.62,
+            "EFL1000":5088.02,
+            "EFL2000":6587.61,
+            "TermLength":4464,
+            "CancellationFee":3495.37,
+            "Incentive":2042.9,
+            "DispositionReason":"DispositionReason 70",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 70',PromoCode='PromoCode 70')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 70',PromoCode='PromoCode 70')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 70',PromoCode='PromoCode 70')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 71",
+            "PromoCode":"PromoCode 71",
+            "ContractID":"71",
+            "CurrentFlag":"71",
+            "StartDate":"/Date(1163696176000)/",
+            "EndDate":"/Date(1000396576000)/",
+            "CampaignTitle":"CampaignTitle 71",
+            "Description":"Description 71",
+            "AverageUsage":6264.44,
+            "EFL500":8001.51,
+            "EFL1000":7034.11,
+            "EFL2000":5159.75,
+            "TermLength":9648,
+            "CancellationFee":7245.31,
+            "Incentive":3217.71,
+            "DispositionReason":"DispositionReason 71",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 71',PromoCode='PromoCode 71')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 71',PromoCode='PromoCode 71')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 71',PromoCode='PromoCode 71')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 72",
+            "PromoCode":"PromoCode 72",
+            "ContractID":"72",
+            "CurrentFlag":"72",
+            "StartDate":"/Date(1312300576000)/",
+            "EndDate":"/Date(1511196976000)/",
+            "CampaignTitle":"CampaignTitle 72",
+            "Description":"Description 72",
+            "AverageUsage":4066.32,
+            "EFL500":8057.48,
+            "EFL1000":6105.02,
+            "EFL2000":3363.82,
+            "TermLength":994,
+            "CancellationFee":233.06,
+            "Incentive":1294.51,
+            "DispositionReason":"DispositionReason 72",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 72',PromoCode='PromoCode 72')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 72',PromoCode='PromoCode 72')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 72',PromoCode='PromoCode 72')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 73",
+            "PromoCode":"PromoCode 73",
+            "ContractID":"73",
+            "CurrentFlag":"73",
+            "StartDate":"/Date(1470671776000)/",
+            "EndDate":"/Date(972057376000)/",
+            "CampaignTitle":"CampaignTitle 73",
+            "Description":"Description 73",
+            "AverageUsage":2876.53,
+            "EFL500":4291.88,
+            "EFL1000":2659.38,
+            "EFL2000":8391.46,
+            "TermLength":8006,
+            "CancellationFee":5656.38,
+            "Incentive":4940.42,
+            "DispositionReason":"DispositionReason 73",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 73',PromoCode='PromoCode 73')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 73',PromoCode='PromoCode 73')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 73',PromoCode='PromoCode 73')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 74",
+            "PromoCode":"PromoCode 74",
+            "ContractID":"74",
+            "CurrentFlag":"74",
+            "StartDate":"/Date(1308066976000)/",
+            "EndDate":"/Date(1096473376000)/",
+            "CampaignTitle":"CampaignTitle 74",
+            "Description":"Description 74",
+            "AverageUsage":5077.51,
+            "EFL500":9583.91,
+            "EFL1000":8984.49,
+            "EFL2000":917.84,
+            "TermLength":697,
+            "CancellationFee":301.17,
+            "Incentive":8229.9,
+            "DispositionReason":"DispositionReason 74",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 74',PromoCode='PromoCode 74')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 74',PromoCode='PromoCode 74')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 74',PromoCode='PromoCode 74')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 75",
+            "PromoCode":"PromoCode 75",
+            "ContractID":"75",
+            "CurrentFlag":"75",
+            "StartDate":"/Date(1195836976000)/",
+            "EndDate":"/Date(1126194976000)/",
+            "CampaignTitle":"CampaignTitle 75",
+            "Description":"Description 75",
+            "AverageUsage":5019.82,
+            "EFL500":6753.87,
+            "EFL1000":3210.21,
+            "EFL2000":755.22,
+            "TermLength":6372,
+            "CancellationFee":4137.72,
+            "Incentive":4949.92,
+            "DispositionReason":"DispositionReason 75",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 75',PromoCode='PromoCode 75')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 75',PromoCode='PromoCode 75')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 75',PromoCode='PromoCode 75')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 76",
+            "PromoCode":"PromoCode 76",
+            "ContractID":"76",
+            "CurrentFlag":"76",
+            "StartDate":"/Date(1339343776000)/",
+            "EndDate":"/Date(995644576000)/",
+            "CampaignTitle":"CampaignTitle 76",
+            "Description":"Description 76",
+            "AverageUsage":9336.85,
+            "EFL500":2155.01,
+            "EFL1000":7196.72,
+            "EFL2000":6287.38,
+            "TermLength":3514,
+            "CancellationFee":8185.81,
+            "Incentive":9678.19,
+            "DispositionReason":"DispositionReason 76",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 76',PromoCode='PromoCode 76')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 76',PromoCode='PromoCode 76')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 76',PromoCode='PromoCode 76')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 77",
+            "PromoCode":"PromoCode 77",
+            "ContractID":"77",
+            "CurrentFlag":"77",
+            "StartDate":"/Date(953135776000)/",
+            "EndDate":"/Date(1370274976000)/",
+            "CampaignTitle":"CampaignTitle 77",
+            "Description":"Description 77",
+            "AverageUsage":6973.12,
+            "EFL500":6465.28,
+            "EFL1000":8553.49,
+            "EFL2000":784.96,
+            "TermLength":4318,
+            "CancellationFee":3536.84,
+            "Incentive":318,
+            "DispositionReason":"DispositionReason 77",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 77',PromoCode='PromoCode 77')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 77',PromoCode='PromoCode 77')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 77',PromoCode='PromoCode 77')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 78",
+            "PromoCode":"PromoCode 78",
+            "ContractID":"78",
+            "CurrentFlag":"78",
+            "StartDate":"/Date(1216914976000)/",
+            "EndDate":"/Date(1010422576000)/",
+            "CampaignTitle":"CampaignTitle 78",
+            "Description":"Description 78",
+            "AverageUsage":5364.24,
+            "EFL500":7197.3,
+            "EFL1000":8175.02,
+            "EFL2000":5359.27,
+            "TermLength":8478,
+            "CancellationFee":5163.67,
+            "Incentive":1575.85,
+            "DispositionReason":"DispositionReason 78",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 78',PromoCode='PromoCode 78')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 78',PromoCode='PromoCode 78')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 78',PromoCode='PromoCode 78')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 79",
+            "PromoCode":"PromoCode 79",
+            "ContractID":"79",
+            "CurrentFlag":"79",
+            "StartDate":"/Date(1135011376000)/",
+            "EndDate":"/Date(1105030576000)/",
+            "CampaignTitle":"CampaignTitle 79",
+            "Description":"Description 79",
+            "AverageUsage":5669.95,
+            "EFL500":7730.87,
+            "EFL1000":9064.39,
+            "EFL2000":2015.76,
+            "TermLength":5312,
+            "CancellationFee":3183.08,
+            "Incentive":652.43,
+            "DispositionReason":"DispositionReason 79",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 79',PromoCode='PromoCode 79')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 79',PromoCode='PromoCode 79')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 79',PromoCode='PromoCode 79')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 80",
+            "PromoCode":"PromoCode 80",
+            "ContractID":"80",
+            "CurrentFlag":"80",
+            "StartDate":"/Date(1091721376000)/",
+            "EndDate":"/Date(1296838576000)/",
+            "CampaignTitle":"CampaignTitle 80",
+            "Description":"Description 80",
+            "AverageUsage":5634.73,
+            "EFL500":2462.54,
+            "EFL1000":9765.01,
+            "EFL2000":1140.36,
+            "TermLength":2102,
+            "CancellationFee":1294.01,
+            "Incentive":412.45,
+            "DispositionReason":"DispositionReason 80",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 80',PromoCode='PromoCode 80')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 80',PromoCode='PromoCode 80')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 80',PromoCode='PromoCode 80')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 81",
+            "PromoCode":"PromoCode 81",
+            "ContractID":"81",
+            "CurrentFlag":"81",
+            "StartDate":"/Date(1357577776000)/",
+            "EndDate":"/Date(1217001376000)/",
+            "CampaignTitle":"CampaignTitle 81",
+            "Description":"Description 81",
+            "AverageUsage":1395.19,
+            "EFL500":5428.05,
+            "EFL1000":7386.65,
+            "EFL2000":2381.68,
+            "TermLength":2132,
+            "CancellationFee":5360.47,
+            "Incentive":8825.74,
+            "DispositionReason":"DispositionReason 81",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 81',PromoCode='PromoCode 81')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 81',PromoCode='PromoCode 81')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 81',PromoCode='PromoCode 81')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 82",
+            "PromoCode":"PromoCode 82",
+            "ContractID":"82",
+            "CurrentFlag":"82",
+            "StartDate":"/Date(1487264176000)/",
+            "EndDate":"/Date(1065369376000)/",
+            "CampaignTitle":"CampaignTitle 82",
+            "Description":"Description 82",
+            "AverageUsage":8593.25,
+            "EFL500":6537.99,
+            "EFL1000":1302.35,
+            "EFL2000":2946.51,
+            "TermLength":5251,
+            "CancellationFee":4721.81,
+            "Incentive":3329.57,
+            "DispositionReason":"DispositionReason 82",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 82',PromoCode='PromoCode 82')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 82',PromoCode='PromoCode 82')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 82',PromoCode='PromoCode 82')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 83",
+            "PromoCode":"PromoCode 83",
+            "ContractID":"83",
+            "CurrentFlag":"83",
+            "StartDate":"/Date(1057420576000)/",
+            "EndDate":"/Date(1090166176000)/",
+            "CampaignTitle":"CampaignTitle 83",
+            "Description":"Description 83",
+            "AverageUsage":4094.16,
+            "EFL500":7919.04,
+            "EFL1000":810.73,
+            "EFL2000":9090.05,
+            "TermLength":2306,
+            "CancellationFee":1781.48,
+            "Incentive":423.86,
+            "DispositionReason":"DispositionReason 83",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 83',PromoCode='PromoCode 83')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 83',PromoCode='PromoCode 83')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 83',PromoCode='PromoCode 83')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 84",
+            "PromoCode":"PromoCode 84",
+            "ContractID":"84",
+            "CurrentFlag":"84",
+            "StartDate":"/Date(976380976000)/",
+            "EndDate":"/Date(1297011376000)/",
+            "CampaignTitle":"CampaignTitle 84",
+            "Description":"Description 84",
+            "AverageUsage":4050.73,
+            "EFL500":2598.9,
+            "EFL1000":8865.93,
+            "EFL2000":1345.16,
+            "TermLength":3911,
+            "CancellationFee":6348.14,
+            "Incentive":7571.77,
+            "DispositionReason":"DispositionReason 84",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 84',PromoCode='PromoCode 84')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 84',PromoCode='PromoCode 84')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 84',PromoCode='PromoCode 84')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 85",
+            "PromoCode":"PromoCode 85",
+            "ContractID":"85",
+            "CurrentFlag":"85",
+            "StartDate":"/Date(1572800176000)/",
+            "EndDate":"/Date(1145202976000)/",
+            "CampaignTitle":"CampaignTitle 85",
+            "Description":"Description 85",
+            "AverageUsage":8775.1,
+            "EFL500":4497.02,
+            "EFL1000":1840.76,
+            "EFL2000":8476.32,
+            "TermLength":7425,
+            "CancellationFee":268.35,
+            "Incentive":8581.75,
+            "DispositionReason":"DispositionReason 85",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 85',PromoCode='PromoCode 85')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 85',PromoCode='PromoCode 85')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 85',PromoCode='PromoCode 85')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 86",
+            "PromoCode":"PromoCode 86",
+            "ContractID":"86",
+            "CurrentFlag":"86",
+            "StartDate":"/Date(1466265376000)/",
+            "EndDate":"/Date(1125676576000)/",
+            "CampaignTitle":"CampaignTitle 86",
+            "Description":"Description 86",
+            "AverageUsage":6822.61,
+            "EFL500":1818.18,
+            "EFL1000":1944.48,
+            "EFL2000":8527.98,
+            "TermLength":7346,
+            "CancellationFee":6928.31,
+            "Incentive":8425.75,
+            "DispositionReason":"DispositionReason 86",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 86',PromoCode='PromoCode 86')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 86',PromoCode='PromoCode 86')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 86',PromoCode='PromoCode 86')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 87",
+            "PromoCode":"PromoCode 87",
+            "ContractID":"87",
+            "CurrentFlag":"87",
+            "StartDate":"/Date(1474732576000)/",
+            "EndDate":"/Date(1499097376000)/",
+            "CampaignTitle":"CampaignTitle 87",
+            "Description":"Description 87",
+            "AverageUsage":3751.77,
+            "EFL500":4208.33,
+            "EFL1000":5264.65,
+            "EFL2000":1668.57,
+            "TermLength":5379,
+            "CancellationFee":9842.05,
+            "Incentive":1278.45,
+            "DispositionReason":"DispositionReason 87",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 87',PromoCode='PromoCode 87')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 87',PromoCode='PromoCode 87')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 87',PromoCode='PromoCode 87')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 88",
+            "PromoCode":"PromoCode 88",
+            "ContractID":"88",
+            "CurrentFlag":"88",
+            "StartDate":"/Date(1043600176000)/",
+            "EndDate":"/Date(951152176000)/",
+            "CampaignTitle":"CampaignTitle 88",
+            "Description":"Description 88",
+            "AverageUsage":2144.03,
+            "EFL500":6941.14,
+            "EFL1000":8092,
+            "EFL2000":8657.93,
+            "TermLength":3025,
+            "CancellationFee":5127.06,
+            "Incentive":9797.28,
+            "DispositionReason":"DispositionReason 88",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 88',PromoCode='PromoCode 88')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 88',PromoCode='PromoCode 88')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 88',PromoCode='PromoCode 88')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 89",
+            "PromoCode":"PromoCode 89",
+            "ContractID":"89",
+            "CurrentFlag":"89",
+            "StartDate":"/Date(1262624176000)/",
+            "EndDate":"/Date(1274025376000)/",
+            "CampaignTitle":"CampaignTitle 89",
+            "Description":"Description 89",
+            "AverageUsage":1797.21,
+            "EFL500":4280.68,
+            "EFL1000":8776.68,
+            "EFL2000":2379.37,
+            "TermLength":1247,
+            "CancellationFee":8633.81,
+            "Incentive":6459.35,
+            "DispositionReason":"DispositionReason 89",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 89',PromoCode='PromoCode 89')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 89',PromoCode='PromoCode 89')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 89',PromoCode='PromoCode 89')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 90",
+            "PromoCode":"PromoCode 90",
+            "ContractID":"90",
+            "CurrentFlag":"90",
+            "StartDate":"/Date(1222271776000)/",
+            "EndDate":"/Date(1022082976000)/",
+            "CampaignTitle":"CampaignTitle 90",
+            "Description":"Description 90",
+            "AverageUsage":4072.92,
+            "EFL500":5040.66,
+            "EFL1000":2929.01,
+            "EFL2000":9896.67,
+            "TermLength":5519,
+            "CancellationFee":7670.26,
+            "Incentive":4061.5,
+            "DispositionReason":"DispositionReason 90",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 90',PromoCode='PromoCode 90')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 90',PromoCode='PromoCode 90')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 90',PromoCode='PromoCode 90')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 91",
+            "PromoCode":"PromoCode 91",
+            "ContractID":"91",
+            "CurrentFlag":"91",
+            "StartDate":"/Date(1572191776000)/",
+            "EndDate":"/Date(1338652576000)/",
+            "CampaignTitle":"CampaignTitle 91",
+            "Description":"Description 91",
+            "AverageUsage":6449.51,
+            "EFL500":4604.24,
+            "EFL1000":5266.14,
+            "EFL2000":9289.22,
+            "TermLength":3795,
+            "CancellationFee":403.46,
+            "Incentive":5110.52,
+            "DispositionReason":"DispositionReason 91",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 91',PromoCode='PromoCode 91')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 91',PromoCode='PromoCode 91')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 91',PromoCode='PromoCode 91')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 92",
+            "PromoCode":"PromoCode 92",
+            "ContractID":"92",
+            "CurrentFlag":"92",
+            "StartDate":"/Date(1056815776000)/",
+            "EndDate":"/Date(1464191776000)/",
+            "CampaignTitle":"CampaignTitle 92",
+            "Description":"Description 92",
+            "AverageUsage":6020.73,
+            "EFL500":3464.13,
+            "EFL1000":8483.18,
+            "EFL2000":1674.69,
+            "TermLength":6311,
+            "CancellationFee":1175.77,
+            "Incentive":9421.6,
+            "DispositionReason":"DispositionReason 92",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 92',PromoCode='PromoCode 92')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 92',PromoCode='PromoCode 92')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 92',PromoCode='PromoCode 92')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 93",
+            "PromoCode":"PromoCode 93",
+            "ContractID":"93",
+            "CurrentFlag":"93",
+            "StartDate":"/Date(1006966576000)/",
+            "EndDate":"/Date(1491753376000)/",
+            "CampaignTitle":"CampaignTitle 93",
+            "Description":"Description 93",
+            "AverageUsage":4370.93,
+            "EFL500":7736.86,
+            "EFL1000":6002.26,
+            "EFL2000":1745.26,
+            "TermLength":6664,
+            "CancellationFee":129.73,
+            "Incentive":319.29,
+            "DispositionReason":"DispositionReason 93",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 93',PromoCode='PromoCode 93')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 93',PromoCode='PromoCode 93')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 93',PromoCode='PromoCode 93')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 94",
+            "PromoCode":"PromoCode 94",
+            "ContractID":"94",
+            "CurrentFlag":"94",
+            "StartDate":"/Date(1289840176000)/",
+            "EndDate":"/Date(1358268976000)/",
+            "CampaignTitle":"CampaignTitle 94",
+            "Description":"Description 94",
+            "AverageUsage":2004.24,
+            "EFL500":6502.5,
+            "EFL1000":8469.46,
+            "EFL2000":4906.18,
+            "TermLength":366,
+            "CancellationFee":5137.74,
+            "Incentive":1647.01,
+            "DispositionReason":"DispositionReason 94",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 94',PromoCode='PromoCode 94')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 94',PromoCode='PromoCode 94')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 94',PromoCode='PromoCode 94')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 95",
+            "PromoCode":"PromoCode 95",
+            "ContractID":"95",
+            "CurrentFlag":"95",
+            "StartDate":"/Date(1245254176000)/",
+            "EndDate":"/Date(969378976000)/",
+            "CampaignTitle":"CampaignTitle 95",
+            "Description":"Description 95",
+            "AverageUsage":9124.88,
+            "EFL500":1243.12,
+            "EFL1000":3457.12,
+            "EFL2000":615.41,
+            "TermLength":6378,
+            "CancellationFee":5892.27,
+            "Incentive":7785.29,
+            "DispositionReason":"DispositionReason 95",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 95',PromoCode='PromoCode 95')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 95',PromoCode='PromoCode 95')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 95',PromoCode='PromoCode 95')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 96",
+            "PromoCode":"PromoCode 96",
+            "ContractID":"96",
+            "CurrentFlag":"96",
+            "StartDate":"/Date(1498492576000)/",
+            "EndDate":"/Date(1044377776000)/",
+            "CampaignTitle":"CampaignTitle 96",
+            "Description":"Description 96",
+            "AverageUsage":8644.53,
+            "EFL500":9147.95,
+            "EFL1000":9902.6,
+            "EFL2000":4525.71,
+            "TermLength":9369,
+            "CancellationFee":2448.66,
+            "Incentive":436.83,
+            "DispositionReason":"DispositionReason 96",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 96',PromoCode='PromoCode 96')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 96',PromoCode='PromoCode 96')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 96',PromoCode='PromoCode 96')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 97",
+            "PromoCode":"PromoCode 97",
+            "ContractID":"97",
+            "CurrentFlag":"97",
+            "StartDate":"/Date(1204908976000)/",
+            "EndDate":"/Date(1085154976000)/",
+            "CampaignTitle":"CampaignTitle 97",
+            "Description":"Description 97",
+            "AverageUsage":8193.5,
+            "EFL500":7361.92,
+            "EFL1000":7454.64,
+            "EFL2000":7179.78,
+            "TermLength":2366,
+            "CancellationFee":2461.76,
+            "Incentive":5110.14,
+            "DispositionReason":"DispositionReason 97",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 97',PromoCode='PromoCode 97')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 97',PromoCode='PromoCode 97')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 97',PromoCode='PromoCode 97')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 98",
+            "PromoCode":"PromoCode 98",
+            "ContractID":"98",
+            "CurrentFlag":"98",
+            "StartDate":"/Date(1230310576000)/",
+            "EndDate":"/Date(1205337376000)/",
+            "CampaignTitle":"CampaignTitle 98",
+            "Description":"Description 98",
+            "AverageUsage":6055.83,
+            "EFL500":5787.23,
+            "EFL1000":4898.79,
+            "EFL2000":4822.23,
+            "TermLength":3495,
+            "CancellationFee":4892.42,
+            "Incentive":8642.89,
+            "DispositionReason":"DispositionReason 98",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 98',PromoCode='PromoCode 98')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 98',PromoCode='PromoCode 98')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 98',PromoCode='PromoCode 98')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 99",
+            "PromoCode":"PromoCode 99",
+            "ContractID":"99",
+            "CurrentFlag":"99",
+            "StartDate":"/Date(1109609776000)/",
+            "EndDate":"/Date(1411228576000)/",
+            "CampaignTitle":"CampaignTitle 99",
+            "Description":"Description 99",
+            "AverageUsage":4009.55,
+            "EFL500":4201.16,
+            "EFL1000":6031.14,
+            "EFL2000":741.58,
+            "TermLength":2295,
+            "CancellationFee":3147.88,
+            "Incentive":4304.2,
+            "DispositionReason":"DispositionReason 99",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 99',PromoCode='PromoCode 99')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 99',PromoCode='PromoCode 99')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 99',PromoCode='PromoCode 99')/Campaign_LegalDoc_Nav"
+               }
+            }
+         },
+         {
+            "CampaignID":"CampaignID 100",
+            "PromoCode":"PromoCode 100",
+            "ContractID":"100",
+            "CurrentFlag":"100",
+            "StartDate":"/Date(1325177776000)/",
+            "EndDate":"/Date(1291827376000)/",
+            "CampaignTitle":"CampaignTitle 100",
+            "Description":"Description 100",
+            "AverageUsage":9712.33,
+            "EFL500":4044.59,
+            "EFL1000":4910.27,
+            "EFL2000":679.69,
+            "TermLength":5016,
+            "CancellationFee":9058.72,
+            "Incentive":9475.9,
+            "DispositionReason":"DispositionReason 100",
+            "__metadata":{
+               "id":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 100',PromoCode='PromoCode 100')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
+               "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 100',PromoCode='PromoCode 100')"
+            },
+            "Campaign_LegalDoc_Nav":{
+               "__deferred":{
+                  "uri":"../../data/campaign/version1/CpgCurPndSet(CampaignID='CampaignID 100',PromoCode='PromoCode 100')/Campaign_LegalDoc_Nav"
+               }
+            }
+         }
+      ]
+   }
+}

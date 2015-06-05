@@ -1,0 +1,441 @@
+@import url('icon.css');
+.uteDD {
+     /* Size and position */
+    position: absolute;
+
+
+
+    /* Styles */
+    border-radius: 7px;
+    box-shadow: 0px 1px 1px grey;
+    cursor: pointer;
+    outline: none;
+
+    /* Font settings */
+    color: #000;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 400;
+    font-size: 14pt;
+
+
+    }
+
+    .uteDD-background-white {
+           background: #fff;
+    }
+
+    .uteDD-background-grey {
+           background: grey;
+    }
+
+     .uteDD-with-border {
+           border: 1px solid grey;
+    }
+    .uteDD-with-border-bottom {
+        box-shadow: none;
+        border-top: none;
+        border-left:none;
+        border-right:none;
+        border-bottom: 1px solid grey;
+        border-radius: 0px;
+    }
+
+    /*Arrow triangle*/
+    .uteDD-arrow-solid:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -3px;
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+
+    }
+ .uteDD-arrow-blue:after{
+        border-top-color: #5092ce;
+        border-right-color: transparent;
+        border-bottom-color: #83bbe5;
+        border-left-color: transparent;
+    }
+    .uteDD-arrow-grey:after{
+        border-color: grey transparent;
+    }
+
+
+    .uteDD-arrow-solid.active:after {
+        border-width: 0 6px 6px 6px;
+    }
+
+    /*Arrow triangle*/
+    .uteDD-arrow-hollow:after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 160px;
+    border: 1px solid #5092ce;
+    border-bottom: none;
+    border-right: none;
+    transform: translate(135px,8px)rotate(45deg);
+
+    }
+
+    .uteDD-arrow-hollow.active:after {
+        transform: translate(135px,4px)rotate(-135deg);
+    }
+
+
+    .uteDD .uteDD-list {
+                /* Size & position */
+    position: absolute;
+    top: 120%; /*Main dd box and List item box spacing*/
+    left: 0; /* Size */
+    right: 0; /* Size */
+
+    /* Styles */
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 400;
+    font-size: 14pt;
+
+    /* Hiding */
+    opacity: 0;
+    pointer-events: none;
+    padding: 0px;
+    }
+
+    .uteDD-list-with-border {
+    border: 1px solid grey;
+         border-radius: 7px;
+    box-shadow: 0px 1px 1px grey;
+    }
+
+
+    .uteDD-list-background-white{
+         background: #fff;
+
+    }
+
+     .uteDD .uteDD-list li{
+         display: block; /*To hide the bullets on items*/
+
+    }
+
+    .uteDD .uteDD-list li a {
+    display: block;
+    color: #4d4d4d;
+    padding: 10px 20px;
+    text-indent: 10px;
+    }
+
+
+/* Hover state */
+   .uteDD .uteDD-list .uteDD-list-hover-blue a:hover {
+    background: #83bbe5;
+    }
+    /* Hover state */
+   .uteDD .uteDD-list .uteDD-list-hover-grey a:hover {
+    background: grey;
+    }
+
+    .uteDD .uteDD-list li:first-of-type a {
+        border-radius: 5.5px 5.5px 0 0;
+    }
+    .uteDD .uteDD-list li:last-of-type a {
+        border: none;
+        border-radius: 0 0 5.5px 5.5px;
+    }
+
+    .uteDD.active .uteDD-list {
+    opacity: 1;
+    pointer-events: auto;
+    }
+
+   .uteDD-value {
+        text-decoration: none;
+   }
+
+.uteToggleBtn1{
+    margin: 10px ;
+    padding-top: 1px ;
+    padding-bottom: 1px ;
+    padding-right: 1px ;
+    background-color: @uteColor-white;
+    border-radius: 8px;
+    border: 0;
+    font-family: @uteFontFamily;
+    font-size: @uteFontSize-small;
+    //height: 27px;
+    box-sizing: border-box;
+
+
+    & > .uteToggleBtn1-leftBtn{
+        height: 22px;
+        margin-left: 2px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        margin-right: 0px;
+        padding: 5px;
+        background-color: transparent;
+        border-radius: 8px;
+        border: 0 ;
+        outline: none;
+        color: @uteColorBlueLink;
+
+
+    }
+
+    & > .uteToggleBtn1-rightBtn{
+        height: 22px;
+        margin-left: 1px;
+        margin-top: 1px;
+        margin-right: 1px ;
+        margin-bottom: 1px;
+        padding: 5px;
+        background-color: transparent;
+        border-radius: 8px;
+        border: 0 ;
+        outline: none;
+        color: @uteColorBlueLink;
+
+    }
+
+    & > .uteToggleBtn1-leftBtn-selected{
+        margin-left: 2px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        margin-right: 0px;
+        padding: 5px;
+        background-color: @uteColorBlueLink;
+        border-radius: 8px;
+        border: 0 ;
+        outline: none;
+        color: @uteColor-white;
+
+    }
+
+    & > .uteToggleBtn1-rightBtn-selected{
+        margin-left: 1px;
+        margin-top: 1px;
+        margin-right: 1px ;
+        margin-bottom: 1px;
+        padding: 5px;
+        background-color: @uteColorBlueLink ;
+        border-radius: 8px;
+        border: 0 ;
+        outline: none;
+        color: @uteColor-white;
+
+    }
+
+}
+.uteToggleBtn2{
+    margin: 10px ;
+    padding-top: 1px ;
+    padding-bottom: 1px ;
+    padding-right: 1px ;
+    background-color: @uteColorBlueLink;
+    border-radius: 18px;
+    border: 0;
+    font-family: @uteFontFamily;
+    font-size: @uteFontSize-small;
+    //height: 27px;
+    box-sizing: border-box;
+
+
+    & > .uteToggleBtn2-leftBtn{
+        height: 22px;
+        margin-left: 2px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        margin-right: 0px;
+        padding: 5px;
+        background-color: transparent;
+        border-radius: 18px;
+        border: 0 ;
+        outline: none;
+        color: @uteColor-white;
+
+    }
+
+    & > .uteToggleBtn2-rightBtn{
+        height: 22px;
+        margin-left: 1px;
+        margin-top: 1px;
+        margin-right: 1px ;
+        margin-bottom: 1px;
+        padding: 5px;
+        background-color: transparent;
+        border-radius: 18px;
+        border: 0 ;
+        outline: none;
+        color: @uteColor-white;
+
+    }
+
+    & > .uteToggleBtn2-leftBtn-selected{
+        margin-left: 2px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        margin-right: 0px;
+        padding: 5px;
+        background-color: @uteColorPaleBlue;
+        border-radius: 18px;
+        border: 0 ;
+        outline: none;
+        color: @uteColor-black;
+
+    }
+
+    & > .uteToggleBtn2-rightBtn-selected{
+        margin-left: 1px;
+        margin-top: 1px;
+        margin-right: 1px ;
+        margin-bottom: 1px;
+        padding: 5px;
+        background-color: @uteColorPaleBlue;
+        border-radius: 18px;
+        border: 0 ;
+        outline: none;
+        color: @uteColor-black;
+
+    }
+
+}
+.uteTv {
+	font-family: @uteFontFamily;
+	//font-size: @uteFontSize-small;
+    font-weight: 700;
+	//vertical-align: top;
+	line-height: @uteLineHeight-base;
+	//display: inline-block;
+
+}
+
+.uteTv-Small {
+    font-size: @uteFontSize-small;
+}
+
+.uteTv-Base {
+font-size: @uteFontSize-base;
+}
+
+.uteTv-Large {
+font-size: @uteFontSize-large;
+}
+
+.uteLbl {
+	vertical-align: top;
+	line-height: @uteLineHeight-base;
+	display: inline-block;
+}
+/*
+.sapUiLblIco {
+	vertical-align: top;
+	margin: 3px 0 0 0;
+}
+*/
+/* icon at begin of label (which is on the left in LTR mode and right in RTL mode) */
+/*.sapUiLblIcoL {
+	margin-right: 5px; //will be transformed to margin-left automatically in RTL mode
+}*/
+/*.sapUiLblIcoR {
+	margin-left: 5px;
+}*/
+/*span.sapUiLblIco {  icon font
+	margin-top: 0;
+	line-height: @sapUiLineHeight;
+}*/
+@font-face {
+	font-family: 'nrg-icon';
+	src:url('icon.eot?');
+	src:url('icon.eot?#iefix') format('embedded-opentype'),
+		url('icon.woff?') format('woff'),
+		url('icon.ttf?') format('truetype'),
+		url('icon.svg?#nrg-icon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+},
+.uteLabel-color-none {
+    color: darkgrey;
+
+}
+.uteLabel-color-white {
+    color: white;
+}
+.uteLabel-color-black {
+    color: black;
+}
+
+.uteLabel-color-yellow {
+    color: darkgoldenrod;
+
+}
+
+.uteLabel-color-red{
+    color: crimson;
+}
+
+.uteLabel-color-blue {
+    color: cornflowerblue;
+
+    }
+.uteLabel-design-regular{
+    font-weight: 400;
+}
+.uteLabel-design-semibold {
+    font-weight: 600;
+
+}
+.uteLabel-design-bold{
+    font-weight: 700;
+}
+.uteLabel-resize-small{
+    font-size: 10pt;
+}
+.uteLabel-resize-base{
+    font-size: 12pt;
+}
+.uteLabel-resize-large{
+    font-size: 14pt;
+}
+.uteLabel-padding{
+    padding: 20px;
+}
+.uteIcoLabel-padding{
+    padding: 10px;
+}
+.uteIcoLabel-design-notification{
+    font-size: 4pt;
+}
+.uteIcoLabel-design-campaign{
+    font-size: 12pt;
+}
+.uteIcoLabel-design-dashboardWeather{
+    font-size: 12pt;
+    font-weight: bolder;
+}
+.uteIcoLabel-design-appHeader{
+    font-size: 10pt;
+}
+.uteIcoLabel-notification-information{
+    color: cornflowerblue;
+}
+.uteIcoLabel-notification-warning{
+    color: darkgoldenrod;
+}
+.uteIcoLabel-notification-error{
+    color: crimson;
+}
+.uteIcoLabel-campaign-grey{
+    color: grey;
+}
+.uteIcoLabel-campaign-black{
+    color: black;
+}
+
+
+
+
+
