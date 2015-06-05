@@ -45,7 +45,7 @@
         id="idPrice"
         type="Text"
         placeholder="price"
-        value="{path: '/price', type: 'tm.message.validation.type.Price', formatOptions: {minFractionDigits: 2, maxFractionDigits: 3, groupingEnabled: true}, constraints: { minimum : 1 }}" />
+        value="{path: '/price', type: 'tm.message.validation.type.Price', formatOptions: {minFractionDigits: 2, maxFractionDigits: 3, groupingEnabled: true, currencyContext: 'standard', currencyCode: true}, constraints: { minimum : 1 }}" />
 
      <m:Input
         id="idEmail"
@@ -85,6 +85,11 @@
         type="Text"
         placeholder="cellNum"
         value="{path: '/cellnum', type: 'tm.message.validation.type.CellPhoneNumber', constraints: { mandatory: true }}" />-->
+     <m:Input
+        id="idConsumption"
+        type="Text"
+        placeholder="consumption"
+        value="{path: '/consumption', type: 'tm.message.validation.type.Consumption', formatOptions: {minFractionDigits: 2, maxFractionDigits: 3, unitAlignment:'LHS'}}" />
 
 
 </mvc:View>

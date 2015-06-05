@@ -16,7 +16,8 @@ sap.ui.define(
         'tm/message/validation/type/DrivingLicenseNumber',
         'tm/message/validation/type/ESID',
         'tm/message/validation/type/MeterNumber',
-        'tm/message/validation/type/CellPhoneNumber'
+        'tm/message/validation/type/CellPhoneNumber',
+        'tm/message/validation/type/Consumption'
 
     ],
 
@@ -62,7 +63,8 @@ sap.ui.define(
                 esid: '20443720006324100',
                 mnum: '029545116GE',
                 cellnum: '+17134974384OR74384',
-                table: {"Test":[{cellnum: '+17134974384OR74384',cNum: '0027914550',email: 'test@test.com'}]}
+                table: {"Test":[{cellnum: '+17134974384OR74384',cNum: '0027914550',email: 'test@test.com'}]},
+                consumption: 1200
 
             });
 
