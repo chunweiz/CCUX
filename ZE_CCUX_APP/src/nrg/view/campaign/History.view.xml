@@ -5,6 +5,8 @@
           xmlns:core="sap.ui.core"
           xmlns:u="ute.ui.commons"
           xmlns:l="sap.ui.commons.layout"
+          xmlns:m="sap.m"
+          xmlns:um="ute.ui.main"
           controllerName="nrg.view.campaign.History"
           height="100%"
           width="100%"
@@ -106,6 +108,30 @@
                     </u:TableRow>
                 </u:rows>
             </u:Table>
+                <u:Table width="60%"
+                    id="idCamHisPrcTbl2"
+                    tableType="CampaignTable"
+                    class="nrgCamHis-left nrgCamHis-top"
+                    rows="{comp-campaign>/CpgHistS}">
+                        <u:columns>
+                            <u:TableColumn width="33%" >
+                                <c:Label text="EFL@500"/>
+                            </u:TableColumn>
+                            <u:TableColumn width="33%" >
+                                <c:Label text="EFL@1000"/>
+                            </u:TableColumn>
+                            <u:TableColumn width="33%" >
+                                <c:Label text="EFL@2000"/>
+                            </u:TableColumn>
+                        </u:columns>
+                        <u:rows>
+                            <u:TableRow>
+                                <c:Label text="{comp-campaign>EFL500}"/>
+                                <c:Label text="{comp-campaign>EFL1000}"/>
+                                <c:Label text="{comp-campaign>EFL2000}"/>
+                            </u:TableRow>
+                        </u:rows>
+                </u:Table>
       </u:Tag>
    </u:Tag>
 </mvc:View>

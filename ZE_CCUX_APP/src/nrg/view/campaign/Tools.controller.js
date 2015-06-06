@@ -38,6 +38,11 @@ sap.ui.define(
                         model : "comp-campaign",
                         path : "/CpgHistS('H')"
                     });
+/*                    var id = sap.ui.getCore().byId("idCamHisPrcTbl2");
+                    id.bindRows("/CpgHistS", {
+                        model : "comp-campaign",
+                        path : "/CpgHistS"
+                    });*/
                     jQuery.sap.log.info("Odata Read Successfully");
                 }.bind(this),
                 error: function (oError) {
@@ -54,7 +59,7 @@ sap.ui.define(
                 viewName: "nrg.view.campaign.History"
             });
             aDialog = new ute.ui.commons.Dialog({
-                title: '{comp-i18n>nrgCmpHisTtl}',
+                title: 'Campaign History',
                 width: '750px',
                 height: 'auto',
                 modal: true,

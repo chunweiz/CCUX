@@ -19,6 +19,7 @@ sap.ui.define(
         };
                     //TODO: Implementation required
         Controller.prototype.onAfterRendering = function () {
+
         };
         //TODO: Implementation required
 
