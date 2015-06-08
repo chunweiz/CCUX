@@ -14,14 +14,14 @@ sap.ui.define(
     function ($, SimpleType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = SimpleType.extend('tm.message.validation.type.ZipCode', {
+        var CustomType = SimpleType.extend('nrg.util.type.ZipCode', {
             constructor: function (oFormatOptions, oConstraints) {
                 SimpleType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'tm.message.validation.type.ZipCode';
+            return 'nrg.util.type.ZipCode';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {
@@ -33,7 +33,8 @@ sap.ui.define(
 
             if ($.isEmptyObject(this.oConstraints)) {
                 this.oConstraints = {
-                    mandatory: false
+                    mandatory: false,
+                    test: false
                 };
             }
         };
