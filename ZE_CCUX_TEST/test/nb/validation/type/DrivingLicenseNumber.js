@@ -34,7 +34,8 @@ sap.ui.define(
 
             if ($.isEmptyObject(this.oConstraints)) {
                 this.oConstraints = {
-                    mandatory: false
+                    mandatory: false,
+                    wildCard: false
                 };
             }
         };
@@ -42,11 +43,27 @@ sap.ui.define(
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
 
+            var allowed   = new RegExp("^[" + "0-9a-zA-Z/-" + "]*$"),
+                allowedWC = new RegExp("^[" + "0-9a-zA-Z+*/-" + "]*$");
+
             if (oValue === undefined || oValue === null || oValue.trim() === '') {
                 return oValue;
             }
 
-            return oValue;
+            if (this.oConstraints.wildCard){
+            if (!oValue.match(allowedWC)) {
+                jQuery.sap.log.error('Parse Exception: Invalid DL', oValue);
+                throw new ParseException('Invalid DL');
+            }
+            } else {
+                if ( !oValue.match(allowed) ){
+                jQuery.sap.log.error('Parse Exception: Invalid DL', oValue);
+                throw new ParseException('Invalid DL');
+                }
+
+            }
+
+            return oValue.toUpperCase();
         };
 
         // Model value meets constraint requirements

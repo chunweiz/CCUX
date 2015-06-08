@@ -1,6 +1,6 @@
 /*global sap*/
-/*global jQuery */
-/*jslint nomen:true*/
+/*global jQuery*/
+/*jslint nomen:true, regexp: true*/
 
 sap.ui.define(
     [
@@ -41,7 +41,7 @@ sap.ui.define(
         // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
 
-            if (oValue === undefined || oValue === null || oValue.trim() === '') {
+            if (oValue === undefined || oValue === null) {
                 return oValue;
             }
 
@@ -73,7 +73,7 @@ sap.ui.define(
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
 
-            return oValue;
+            return oValue.toLowerCase();
 
         };
         return CustomType;

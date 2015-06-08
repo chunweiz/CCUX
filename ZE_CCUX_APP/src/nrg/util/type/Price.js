@@ -29,9 +29,18 @@ sap.ui.define(
             if ($.isEmptyObject(oFormatOptions)) {
                 defaultFormatOptions = {
                     minFractionDigits: 2,
-                    maxFractionDigits: 2
+                    maxFractionDigits: 2,
+                    currencySymbol: '$',
+                    currencyAlignment: 'LHS'
                 };
             } else {
+
+                if (!oFormatOptions.minFractionDigits) {
+                    oFormatOptions.minFractionDigits = 2;
+                }
+                if (!oFormatOptions.maxFractionDigits) {
+                    oFormatOptions.maxFractionDigits = 2;
+                }
                 defaultFormatOptions = oFormatOptions;
             }
 
@@ -51,6 +60,42 @@ sap.ui.define(
 
             FloatType.prototype.setConstraints.call(this, defaultConstraints);
         };
+
+        CustomType.prototype.parseValue = function (oValue, sInternalType) {
+
+            if (oValue === undefined || oValue === null) {
+                return oValue;
+            }
+
+            oValue = oValue.toString();
+            oValue = oValue.replace(this.oFormatOptions.currencySymbol, '');
+            FloatType.prototype.parseValue.call(this, oValue, sInternalType);
+
+
+            return oValue;
+
+        };
+         // Model to Output
+        CustomType.prototype.formatValue = function (oValue, sInternalType) {
+
+            if (oValue === undefined || oValue === null || oValue === '') {
+                return oValue;
+            }
+            oValue = parseFloat(oValue);
+            oValue = FloatType.prototype.formatValue.call(this, oValue, sInternalType);
+
+            if (oValue.indexOf(this.oFormatOptions.currencySymbol) < 0) {
+
+                if (this.oFormatOptions.currencyAlignment === 'LHS') {
+                    oValue = this.oFormatOptions.currencySymbol + oValue;
+                } else {
+                    oValue = oValue + this.oFormatOptions.currencySymbol;
+                }
+            }
+
+            return oValue;
+        };
+
 
         return CustomType;
     }

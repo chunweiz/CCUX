@@ -5,6 +5,8 @@
           xmlns:core="sap.ui.core"
           xmlns:u="ute.ui.commons"
           xmlns:l="sap.ui.commons.layout"
+          xmlns:m="sap.m"
+          xmlns:um="ute.ui.main"
           controllerName="nrg.view.campaign.History"
           height="100%"
           width="100%"
@@ -19,7 +21,7 @@
                 </l:MatrixLayoutRow>
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <u:TextView id="idCamHisTtlTv" text="{comp-campaign>/CampaignHistory('1121')/CampaignTitle}"
+                        <u:TextView id="idCamHisTtlTv" text="{overview-camp>OfferTitle}"
                                                     class="nrgCamHis-left"
                                                     color="DarkGrey"
                                                     design="Base"/>
@@ -46,9 +48,9 @@
                         </u:columns>
                         <u:rows>
                             <u:TableRow>
-                                <c:Label text="{comp-campaign>/CampaignHistory('1121')/EFL500}"/>
-                                <c:Label text="{comp-campaign>/CampaignHistory('1121')/EFL1000}"/>
-                                <c:Label text="{comp-campaign>/CampaignHistory('1121')/EFL2000}"/>
+                                <c:Label text="{overview-camp>EFL500}"/>
+                                <c:Label text="{overview-camp>EFL1000}"/>
+                                <c:Label text="{overview-camp>EFL2000}"/>
                             </u:TableRow>
                         </u:rows>
                 </u:Table>
@@ -64,7 +66,7 @@
                         color="DarkGrey"
                         class="nrgCamHis-left nrgCamHis-top"
                         design="Base"
-                        text="{comp-campaign>/CampaignHistory('1121')/Description}" />
+                        text="{overview-camp>Description}" />
             </u:Tag>
             <u:Table width="100%"
                      id="idCamHisInfTbl"
@@ -96,16 +98,28 @@
                 </u:columns>
                 <u:rows>
                     <u:TableRow>
-                            <c:Label text="{comp-campaign>/CampaignHistory('1121')/PromoCode}"/>
-                            <c:Label text="{comp-campaign>/CampaignHistory('1121')/OfferCode}"/>
-                            <c:Label text="{comp-campaign>/CampaignHistory('1121')/TermLength}"/>
-                            <c:Label text="{comp-campaign>/CampaignHistory('1121')/PromoCode}"/>
-                            <c:Label text="{comp-campaign>/CampaignHistory('1121')/PromoCode}"/>
-                            <c:Label text="{comp-campaign>/CampaignHistory('1121')/CancellationFee}"/>
-                            <c:Label text="{comp-campaign>/CampaignHistory('1121')/Incentive}"/>
+                        <c:Label text="{overview-camp>PromoCode}"/>
+                        <c:Label text="{overview-camp>OfferCode}"/>
+                        <c:Label text="{overview-camp>TermLength}"/>
+                        <c:Label text="{path: 'overview-camp>StartDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                        <c:Label text="{path: 'overview-camp>EndDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                        <c:Label text="{overview-camp>CancellationFee}"/>
+                        <c:Label text="{overview-camp>Incentive}"/>
                     </u:TableRow>
                 </u:rows>
             </u:Table>
+                <m:List
+                    id="idCamHislis"
+                    items="{overview-campList>/}">
+                    <m:CustomListItem class="nrgCamHislis-Item">
+                        <um:Button press=".onPressed" text="{overview-campList>OfferTitle}">
+                                <u:Tag class="nrgCamHisBut" text="{path: 'overview-campList>StartDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                                <u:Tag class="nrgCamHisBut" text="{path: 'overview-campList>EndDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                                <u:Tag class="nrgCamHisBut" text="{overview-campList>OfferTitle}" />
+                                <u:Tag class="nrgCamHisBut" text="{overview-campList>EFL2000}" />
+                        </um:Button>
+                     </m:CustomListItem>
+                </m:List>
       </u:Tag>
    </u:Tag>
 </mvc:View>

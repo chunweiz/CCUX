@@ -1,6 +1,7 @@
 /*global sap*/
-/*jslint vars: true, plusplus: true, devel: true, nomen: true, indent: 4, maxerr: 50 regexp: true */
+/*jslint nomen: true */
 /*global define */
+/*global jQuery */
 
 sap.ui.define(
     [
@@ -24,7 +25,7 @@ sap.ui.define(
             return 'tm.message.validation.type.EmailAddress';
         };
 
-      CustomType.prototype.setFormatOptions = function (oFormatOptions) {
+        CustomType.prototype.setFormatOptions = function (oFormatOptions) {
             this.oFormatOptions = oFormatOptions;
         };
 
@@ -46,7 +47,7 @@ sap.ui.define(
             }
 
             var emailRegex = /^[^.\s()\[\],;:@][^\s()\[\],;:@]+[^.\s()\[\],;:@]@[a-zA-Z0-9]+\..+/i;
-            if (!(emailRegex.test(oValue))) {
+            if (!(oValue.match(emailRegex))) {
                 jQuery.sap.log.error('Parse Exception: Invalid Email Address', oValue);
                 throw new ParseException('Invalid Email Address');
             }
@@ -73,7 +74,7 @@ sap.ui.define(
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
 
-            return oValue;
+            return oValue.toLowerCase();
 
         };
         return CustomType;

@@ -29,35 +29,23 @@ sap.ui.define(
             oRm.writeClasses();
             oRm.write('>');
 
-            /*
-            ** Header's content
-            */
-            oRm.write('<section');
-            oRm.write('>');
-            if (oRm.getHeader()) {
-                oCustomControl._addHeader(oRm);
-            }
-            oRm.write('</section>');
+            oCustomControl._addHeaderExpander(oRm);
 
-            /*
-            ** Header's expander icon
-            */
-            oRm.write('<aside>');
-            oRm.write('</aside>');
+//            if (oCustomControl.getHeader()) {
+//                oCustomControl._addHeader(oRm);
+//            }
 
             oRm.write('</header>');
 
             /*
             ** Content of infoline
             */
-            oRm.write('<article');
-            oRm.addClass('uteMIl-content');
+            oRm.write('<section');
+            oRm.addClass('uteMIl-body');
             oRm.writeClasses();
             oRm.write('>');
-            if (oRm.getContent()) {
-                oCustomControl._addContent(oRm);
-            }
-            oRm.write('</article>');
+            oCustomControl._addContent(oRm);
+            oRm.write('</section>');
 
             oRm.write('</div>');
         };

@@ -3,10 +3,13 @@
 
 sap.ui.define(
     [
-        'sap/ui/core/Control'
+        'sap/ui/core/Control',
+        'sap/ui/core/EnabledPropagator',
+        './Label',
+        './Checkbox'
     ],
 
-    function (Control) {
+    function (Control, EnabledPropagator, Label, Checkbox) {
         'use strict';
 
         var CustomControl = Control.extend('ute.ui.main.Infoline', {
@@ -18,14 +21,14 @@ sap.ui.define(
                 },
 
                 aggregations: {
-                    header: { type: 'sap.ui.core.Control', multiple: true, singularName: 'header' },
+                    headerContent: { type: 'sap.ui.core.Control', multiple: true, singularName: 'headerContent', visibility: 'hidden' },
                     content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' }
                 },
 
                 defaultAggregation: 'content',
 
                 events: {
-                    expand: {
+                    press: {
                         parameters: {
                             expanded: { type: 'boolean' }
                         }
@@ -34,21 +37,31 @@ sap.ui.define(
             }
         });
 
-        CustomControl.prototype._addHeader = function (oRm) {
-            var aHeader;
+        EnabledPropagator.call(CustomControl.prototype);
 
-            aHeader = this.getHeader();
-            aHeader.forEach(function (oHeader) {
-                oRm.renderControl(oHeader);
+        CustomControl.prototype.init = function () {
+            this.addAggregation('headerContent', new Checkbox());
+        };
+
+        CustomControl.prototype._addHeader = function (oRm) {
+//            this._oHdrContent = new Label({
+//                labelFor: this.getId() + '-hdrExpander'
+//            });
+//
+//            this._oHdrContent.addStyleClass('uteMIl-hdrContent');
+//
+//            oRm.renderControl(this._oHdrContent);
+        };
+
+        CustomControl.prototype._addHeaderExpander = function (oRm) {
+            this.getAggregation('headerContent').forEach(function(oControl) {
+                oRm.renderControl(oControl);
             }.bind(this));
         };
 
         CustomControl.prototype._addContent = function (oRm) {
-            var aContent;
-
-            aContent = this.getContent();
-            aContent.forEach(function (oContent) {
-                oRm.renderControl(oContent);
+            this.getContent().forEach(function(oControl) {
+                oRm.renderControl(oControl);
             }.bind(this));
         };
 

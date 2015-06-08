@@ -29,7 +29,7 @@
                     leftBtnWidth="400px"
                     rightBtnWidth="400px"
                     rightBtnText="{comp-i18n>nrgCmpOvrPg}"
-                    design="ToggleCampaign" press="testFunc"
+                    design="ToggleCampaign" press="toggleCampaign"
                     class="nrgCamOvr-top nrgCamToggle-Btn"/>
             </u:Tag>
             <l:MatrixLayout class="nrgCamOvrMtx nrgCamOvr-top">
@@ -43,14 +43,15 @@
                 </l:MatrixLayoutRow>
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <u:TextView id="idCamTitleTv" text="{comp-campaign>/CampaignCurrent('1121')/CampaignTitle}"
-                                                    class="nrgCamOvr-left"
+                        <u:TextView id="idCamTitleTv" text="{comp-campaign>OfferTitle}"
+                                                    class="nrgCamOvr-left nrgCamOvr-left1"
                                                     color="DarkGrey"
                                                     design="Base"/>
+
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
                         <u:TextView id="idCamAvgUsgTv"
-                                    text="{comp-campaign>/CampaignCurrent('1121')/AverageUsage}"
+                                    text="{comp-campaign>AverageUsage}"
                                     class="nrgCamOvr-left"
                                     color="DarkGrey"
                                     design="Base"/>
@@ -76,9 +77,9 @@
                         </u:columns>
                         <u:rows>
                             <u:TableRow>
-                                <c:Label text="{comp-campaign>/CampaignCurrent('1121')/EFL500}"/>
-                                <c:Label text="{comp-campaign>/CampaignCurrent('1121')/EFL1000}"/>
-                                <c:Label text="{comp-campaign>/CampaignCurrent('1121')/EFL2000}"/>
+                                <c:Label text="{comp-campaign>EFL500}"/>
+                                <c:Label text="{comp-campaign>EFL1000}"/>
+                                <c:Label text="{comp-campaign>EFL2000}"/>
                             </u:TableRow>
                         </u:rows>
                 </u:Table>
@@ -94,7 +95,7 @@
                         color="DarkGrey"
                         class="nrgCamOvr-left nrgCamOvr-top"
                         design="Base"
-                        text="{comp-campaign>/CampaignCurrent('1121')/Description}" />
+                        text="{comp-campaign>Description}" />
             </u:Tag>
             <u:Table width="100%"
                      id="idCamInfoTbl"
@@ -125,16 +126,29 @@
                 </u:columns>
                 <u:rows>
                     <u:TableRow>
-                            <c:Label text="{comp-campaign>/CampaignCurrent('1121')/PromoCode}"/>
-                            <c:Label text="{comp-campaign>/CampaignCurrent('1121')/OfferCode}"/>
-                            <c:Label text="{comp-campaign>/CampaignCurrent('1121')/TermLength}"/>
-                            <c:Label text="{comp-campaign>/CampaignCurrent('1121')/PromoCode}"/>
-                            <c:Label text="{comp-campaign>/CampaignCurrent('1121')/PromoCode}"/>
-                            <c:Label text="{comp-campaign>/CampaignCurrent('1121')/CancellationFee}"/>
-                            <c:Label text="{comp-campaign>/CampaignCurrent('1121')/Incentive}"/>
+                        <c:Label text="{comp-campaign>PromoCode}"/>
+                        <c:Label text="{comp-campaign>OfferCode}"/>
+                        <c:Label text="{comp-campaign>TermLength}"/>
+                        <c:Label text="{path: 'comp-campaign>StartDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                        <c:Label text="{path: 'comp-campaign>EndDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                        <c:Label text="{comp-campaign>CancellationFee}"/>
+                        <c:Label text="{comp-campaign>Incentive}"/>
                     </u:TableRow>
                 </u:rows>
             </u:Table>
+          <List
+            id="ProductList"
+            items="{/ProductCollection}"
+            mode="SingleSelect"
+            includeItemInSelection="true">
+            <StandardListItem
+              title="{Name}"
+              description="{ProductId}"
+              icon="{ProductPicUrl}"
+              iconDensityAware="false"
+              iconInset="false" >
+              </StandardListItem>
+          </List>
       </u:Tag>
    </u:Tag>
 </mvc:View>

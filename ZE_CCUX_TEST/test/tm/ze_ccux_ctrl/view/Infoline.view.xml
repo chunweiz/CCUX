@@ -11,7 +11,11 @@
 
     <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
 
-
+        <um:Infoline>
+            <um:content>
+                <um:Checkbox id="zzz" /><um:Label text="content label" labelFor="zzz-intChk" />
+            </um:content>
+        </um:Infoline>
 
     </sm:ScrollContainer>
 </mvc:View>

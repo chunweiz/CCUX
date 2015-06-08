@@ -16,7 +16,8 @@ sap.ui.define(
         'tm/message/validation/type/DrivingLicenseNumber',
         'tm/message/validation/type/ESID',
         'tm/message/validation/type/MeterNumber',
-        'tm/message/validation/type/CellPhoneNumber'
+        'tm/message/validation/type/CellPhoneNumber',
+        'tm/message/validation/type/Consumption'
 
     ],
 
@@ -55,14 +56,15 @@ sap.ui.define(
             oModel = sap.ui.model.json.JSONModel({
                 caNum: '000123456789',
                 bpNum: '1234567890',
-                price: 12.35,
+                price: 12.358,
                 email: 'test@test.com',
                 dl: 'NGLT21OU-9592',
                 cNum: '0027914550',
                 esid: '20443720006324100',
                 mnum: '029545116GE',
                 cellnum: '+17134974384OR74384',
-                table: {"Test":[{cellnum: '+17134974384OR74384',cNum: '0027914550',email: 'test@test.com'}]}
+                table: {"Test":[{cellnum: '+17134974384OR74384',cNum: '0027914550',email: 'test@test.com'}]},
+                consumption: 12.36
 
             });
 
