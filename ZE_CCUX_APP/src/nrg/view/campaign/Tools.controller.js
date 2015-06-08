@@ -28,21 +28,21 @@ sap.ui.define(
                 oParameters,
                 aHistoryView,
                 aDialog,
+                CamHisPrcTbl,
                 aFilters = this.createSearchFilterObject("1121");
             sPath = "/CpgHistS";
             oModel = this.getOwnerComponent().getModel('comp-campaign');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'overview-camp');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'overview-campList');
             oParameters = {
                 filters : aFilters,
                 success : function (oData) {
+                    this.getView().getModel('overview-camp').setData(oData.results);
+                    this.getView().getModel('overview-campList').setData(oData.results);
                     this.getView().bindElement({
-                        model : "comp-campaign",
-                        path : "/CpgHistS('H')"
+                        model : "overview-camp",
+                        path : "/0"
                     });
-/*                    var id = sap.ui.getCore().byId("idCamHisPrcTbl2");
-                    id.bindRows("/CpgHistS", {
-                        model : "comp-campaign",
-                        path : "/CpgHistS"
-                    });*/
                     jQuery.sap.log.info("Odata Read Successfully");
                 }.bind(this),
                 error: function (oError) {
@@ -52,7 +52,6 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oParameters);
             }
-
             jQuery.sap.require("ute.ui.commons.Dialog");
             aHistoryView = sap.ui.view({
                 type: sap.ui.core.mvc.ViewType.XML,
