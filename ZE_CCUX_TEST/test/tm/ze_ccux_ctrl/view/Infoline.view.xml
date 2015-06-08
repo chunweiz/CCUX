@@ -24,9 +24,81 @@
 
         <um:Infoline expanded="true" press=".onPressed">
             <um:headerContent>
-                <div class="customHeader">this is full size header</div>
+                <div class="customHeader">this is a custom header</div>
             </um:headerContent>
             <um:content>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+            </um:content>
+        </um:Infoline>
+        <um:Infoline expanded="true" press=".onPressed">
+            <um:headerContent>
+                <div class="customHeader">this is a another custom header</div>
+                <div class="customHeader">this is a another custom header</div>
+                <div class="customHeader">this is a another custom header</div>
+                <div class="customHeader">this is a another custom header</div>
+                <div class="customHeader">this is a another custom header</div>
+            </um:headerContent>
+            <um:content>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
                 <div class="customBody">this is full size body</div>
             </um:content>
         </um:Infoline>

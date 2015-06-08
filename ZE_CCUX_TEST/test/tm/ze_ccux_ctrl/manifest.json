@@ -19,7 +19,8 @@
                 "Label": { "pattern": "Label", "target": [ "Label" ] },
                 "Checkbox": { "pattern": "Checkbox", "target": [ "Checkbox" ] },
                 "Infoline": { "pattern": "Infoline", "target": [ "Infoline" ] },
-                "Dropdown": { "pattern": "Dropdown", "target": [ "Dropdown" ] }
+                "Dropdown": { "pattern": "Dropdown", "target": [ "Dropdown" ] },
+                "ToggleBar": { "pattern": "ToggleBar", "target": [ "ToggleBar" ] }
             },
 
             "config": {
@@ -34,7 +35,8 @@
                 "Label": { "viewName": "Label", "controlId": "idAppContent" },
                 "Checkbox": { "viewName": "Checkbox", "controlId": "idAppContent" },
                 "Infoline": { "viewName": "Infoline", "controlId": "idAppContent" },
-                "Dropdown": { "viewName": "Dropdown", "controlId": "idAppContent" }
+                "Dropdown": { "viewName": "Dropdown", "controlId": "idAppContent" },
+                "ToggleBar": { "viewName": "ToggleBar", "controlId": "idAppContent" }
             }
         }
     }
