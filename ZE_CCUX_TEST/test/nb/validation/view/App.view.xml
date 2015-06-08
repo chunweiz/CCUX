@@ -50,7 +50,7 @@
         id="idPrice"
         type="Text"
         placeholder="price"
-        value="{path: '/price', type: 'nrg.util.type.Price', formatOptions: { currencySymbol: 'c', currencyAlignment: 'LHS' }}" />
+        value="{path: '/price', type: 'nrg.util.type.Price', formatOptions: { currencySymbol: 'cent', currencyAlignment: 'LHS' }}" />
 
      <m:Input
         id="idEmail"
@@ -117,7 +117,7 @@
         id="idPrice1"
         type="Text"
         placeholder="price"
-        value="{path: '/price', type: 'tm.message.validation.type.Price', formatOptions: { currencySymbol: 'c', currencyAlignment: 'LHS' }}" />
+        value="{path: '/price', type: 'tm.message.validation.type.Price', formatOptions: { currencySymbol: 'cent', currencyAlignment: 'LHS' }}" />
 
      <m:Input
         id="idEmail1"
