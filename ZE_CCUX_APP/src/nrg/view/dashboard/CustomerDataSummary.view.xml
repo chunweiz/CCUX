@@ -3,23 +3,62 @@
     xmlns:ute="ute.ui.commons"
     xmlns:utmain="ute.ui.main"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.commons"
+    xmlns:l="sap.ui.layout"
     controllerName="nrg.view.dashboard.CustomerDataSummary">
 
     <ute:Tag class="nrgDashboard-cusDataSum nrgAppMain-summaryContent nrgAppMain-summaryContent-full">
         <ute:content>
-            <ute:Tag elem="span" class=""
-                text="BP_Name_Here">
-            </ute:Tag>
-            <ute:Tag>
+            <ute:TextView
+                class="nrgDashboard-cusDataSum-bpName"
+                design="Large" text="BP_Name_Here">
+            </ute:TextView>
             <ute:Badge
+                class="nrgDashboard-cusDataSum-badge"
                 design="Attention" size="30px"
                 text="TT">
             </ute:Badge>
             <ute:Badge
-                design="Attention" size="30px"
+                class="nrgDashboard-cusDataSum-badge"
+                design="Alert" size="30px"
                 text="TT">
             </ute:Badge>
+            <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">
+                <utmain:Label
+                    class="nrgDashboard-cusDataSum-bpLabel"
+                    text="BP #"
+                    labelFor="db_verify_BP">
+                </utmain:Label>
+                <ute:Tag elem="span"
+                    id="db_verify_BP"
+                    text="00000000">
+                </ute:Tag>
             </ute:Tag>
+            <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">
+                <utmain:Label
+                    class="nrgDashboard-cusDataSum-bpLabel"
+                    text="CA #"
+                    labelFor="db_verify_CA">
+                </utmain:Label>
+                <ute:Tag elem="span"
+                    id="db_verify_CA"
+                    text="00000000">
+                </ute:Tag>
+            </ute:Tag>
+
+            <ute:HorizontalDivider class="nrgDashboard-cusDataSum-horiLine"/>
+
+            <l:HorizontalLayout>
+                <c:content>
+                    <ute:Tag width="20%">
+                        <ute:TextView text="test"/>
+                    </ute:Tag>
+                    <ute:Tag width="80%">
+                        <ute:TextView text="test"/>
+                        <ute:TextView text="test"/>
+                    </ute:Tag>
+                </c:content>
+            </l:HorizontalLayout>
 
 
 
