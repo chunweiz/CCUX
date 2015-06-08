@@ -16,7 +16,7 @@ sap.ui.define(
 
         var CustomType = SimpleType.extend('nrg.util.type.CellPhoneNumber', {
             constructor: function (oFormatOptions, oConstraints) {
-                SimpleType.prototype.apply(this, arguments);
+                SimpleType.apply(this, arguments);
             }
         });
 
@@ -77,9 +77,10 @@ sap.ui.define(
 
             oValue = oValue.replace(/-/g, '');
             oValue = oValue.replace(' ', '');
+            oValue = oValue.replace('+', '');
 
-            if (oValue.indexOf("+1") > -1) {
-                return (oValue.substr(0, 2) + ' ' + oValue.substr(2, 3) + '-' + oValue.substr(5, 3) + '-' + oValue.substr(8, 4) + ' ' + oValue.substr(12));
+            if (oValue.indexOf("+1") > -1 || oValue.indexOf("1") > -1) {
+                return ('+' + oValue.substr(0, 1) + ' ' + oValue.substr(1, 3) + '-' + oValue.substr(4, 3) + '-' + oValue.substr(7, 4) + ' ');
             } else {
                 return (oValue.substr(0, 3) + '-' + oValue.substr(3, 3) + '-' + oValue.substr(6, 4) + ' ' + oValue.substr(10));
             }

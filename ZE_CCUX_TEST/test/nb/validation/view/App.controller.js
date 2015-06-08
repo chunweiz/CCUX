@@ -18,8 +18,19 @@ sap.ui.define(
         'tm/message/validation/type/MeterNumber',
         'tm/message/validation/type/CellPhoneNumber',
         'tm/message/validation/type/Consumption',
-        'tm/message/validation/type/ZipCode'
-
+        'tm/message/validation/type/ZipCode',
+        'nrg/util/type/ContractAccountNumber',
+        'nrg/util/type/BusinessPartnerNumber',
+        'nrg/util/type/ContractNumber',
+        'nrg/util/type/Price',
+        'nrg/util/type/EmailAddress',
+        'nrg/util/type/SocialSecurityNumber',
+        'nrg/util/type/DrivingLicenseNumber',
+        'nrg/util/type/ESID',
+        'nrg/util/type/MeterNumber',
+        'nrg/util/type/CellPhoneNumber',
+        'nrg/util/type/Consumption',
+        'nrg/util/type/ZipCode'
     ],
 
     function ($, CoreController, CoreMessage, CoreControlMessageProcessor) {

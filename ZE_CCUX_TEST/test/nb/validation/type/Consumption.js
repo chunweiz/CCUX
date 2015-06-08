@@ -71,15 +71,16 @@ sap.ui.define(
             }
 
             oValue = oValue.toString();
+            oValue = oValue.replace(/[kwh]/ig, '');
 
-            if ( oValue.indexOf('kWh') < 0 ) {
+           // if ( !oValue.match(/[kwh]/i) ) {
 
             if (this.oFormatOptions.unitAlignment === 'LHS') {
             oValue = 'kWh ' + oValue;
             } else {
                 oValue = oValue + 'kWh';
             }
-            }
+           // }
 
             return oValue;
 

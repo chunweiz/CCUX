@@ -13,14 +13,14 @@ sap.ui.define(
     function ($, FloatType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = FloatType.extend('tm.message.validation.type.Consumption', {
+        var CustomType = FloatType.extend('nrg.util.type.Consumption', {
             constructor: function (oFormatOptions, oConstraints) {
                 FloatType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'tm.message.validation.type.Consumption';
+            return 'nrg.util.type.Consumption';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {
@@ -69,13 +69,12 @@ sap.ui.define(
                 return oValue;
             }
             oValue = oValue.toString();
+            oValue = oValue.replace(/[kwh]/ig, '');
 
-            if (oValue.indexOf('kWh') < 0) {
-                if (this.oFormatOptions.unitAlignment === 'LHS') {
-                    oValue = 'kWh ' + oValue;
-                } else {
-                    oValue = oValue + 'kWh';
-                }
+            if (this.oFormatOptions.unitAlignment === 'LHS') {
+                oValue = 'kWh ' + oValue;
+            } else {
+                oValue = oValue + 'kWh';
             }
 
             return oValue;

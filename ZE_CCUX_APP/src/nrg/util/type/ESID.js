@@ -16,12 +16,12 @@ sap.ui.define(
 
         var CustomType = SimpleType.extend('nrg.util.type.ESID', {
             constructor: function (oFormatOptions, oConstraints) {
-                SimpleType.prototype.apply(this, arguments);
+                SimpleType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'tm.message.validation.type.ESID';
+            return 'nrg.util.type.ESID';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {

@@ -16,7 +16,7 @@ sap.ui.define(
 
         var CustomType = SimpleType.extend('nrg.util.type.ContractNumber', {
             constructor: function (oFormatOptions, oConstraints) {
-                SimpleType.prototype.apply(this, arguments);
+                SimpleType.apply(this, arguments);
             }
         });
 

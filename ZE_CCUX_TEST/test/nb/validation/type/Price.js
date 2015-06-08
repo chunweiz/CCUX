@@ -67,6 +67,7 @@ sap.ui.define(
             }
 
             oValue = oValue.toString();
+               alert(this.oFormatOptions.currencySymbol);
             oValue = oValue.replace(this.oFormatOptions.currencySymbol,'');
             FloatType.prototype.parseValue.call(this, oValue, sInternalType);
 

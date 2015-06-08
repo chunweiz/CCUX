@@ -17,7 +17,7 @@ sap.ui.define(
 
         var CustomType = SimpleType.extend('nrg.util.type.MeterNumber', {
             constructor: function (oFormatOptions, oConstraints) {
-                SimpleType.prototype.apply(this, arguments);
+                SimpleType.apply(this, arguments);
             }
         });
 
@@ -46,8 +46,8 @@ sap.ui.define(
                 return oValue;
             }
             if (isNaN(oValue)) {
-                jQuery.sap.log.error('Parse Exception: Invalid contract number', oValue);
-                throw new ParseException('Invalid contract number');
+                jQuery.sap.log.error('Parse Exception: Invalid Meter number', oValue);
+                throw new ParseException('Invalid Meter number');
             }
 
             return oValue.replace(/^(0+)/g, '');
