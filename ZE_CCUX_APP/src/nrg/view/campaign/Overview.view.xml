@@ -136,6 +136,19 @@
                     </u:TableRow>
                 </u:rows>
             </u:Table>
+          <List
+            id="ProductList"
+            items="{/ProductCollection}"
+            mode="SingleSelect"
+            includeItemInSelection="true">
+            <StandardListItem
+              title="{Name}"
+              description="{ProductId}"
+              icon="{ProductPicUrl}"
+              iconDensityAware="false"
+              iconInset="false" >
+              </StandardListItem>
+          </List>
       </u:Tag>
    </u:Tag>
 </mvc:View>

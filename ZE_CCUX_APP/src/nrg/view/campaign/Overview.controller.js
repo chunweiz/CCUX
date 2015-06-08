@@ -21,14 +21,14 @@ sap.ui.define(
                 oParameters,
                 aFilters = this._createSearchFilterObject("1121", "Y");
 
-            sPath = "/CpgCurPndS";
+            sPath = this.getOwnerComponent().getModel("comp-i18n").getProperty("nrgCurrentPendingSet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oParameters = {
                 filters : aFilters,
                 success : function (oData) {
                     this.getView().bindElement({
                         model : "comp-campaign",
-                        path : "/CpgCurPndS('C')"
+                        path : this.getView().getModel("comp-i18n").getProperty("nrgCurrentView")
                     });
                     jQuery.sap.log.info("Odata Read Successfully");
                 }.bind(this),
@@ -54,14 +54,10 @@ sap.ui.define(
             //TODO: Implementation required
         Controller.prototype.onBeforeRendering = function () {
         };
-                    //TODO: Implementation required
+        //TODO: Implementation required
         Controller.prototype.onAfterRendering = function () {
-            var oModel;
-            oModel = this.getView().getModel('OV-cmp');
-
         };
         Controller.prototype.toggleCampaign = function () {
-
             this.getView().bindObject({
                 model : "comp-campaign",
                 path : "/CpgCurPndS('P')"
