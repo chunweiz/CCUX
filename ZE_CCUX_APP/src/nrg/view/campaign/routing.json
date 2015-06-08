@@ -7,11 +7,11 @@
                     "target": [ "campaign.Overview", "dashboard.SummaryBP", "campaign.Tools" ]
                 },
                 "campaignchg": {
-                    "pattern": "bp/{bpNum}/ca/{caNum}/cmpchg",
+                    "pattern": "bp/{bpNum}/ca/{caNum}/campaign/cmpchg",
                     "target": [ "campaign.Change", "dashboard.SummaryBP", "campaign.Tools" ]
                 },
                 "campaignSS": {
-                    "pattern": "bp/{bpNum}/ca/{caNum}/cmpss",
+                    "pattern": "bp/{bpNum}/ca/{caNum}/campaign/cmpss",
                     "target": [ "campaign.SalesScript", "dashboard.SummaryBP", "campaign.Tools" ]
                 }
             },

@@ -5,10 +5,11 @@ sap.ui.define(
         'nrg/util/view/BaseController',
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
-        'jquery.sap.global'
+        'jquery.sap.global',
+        'nrg/util/type/Price'
     ],
 
-    function (CoreController, Filter, FilterOperator, jQuery) {
+    function (CoreController, Filter, FilterOperator, jQuery, price) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.view.campaign.Tools');
@@ -62,17 +63,9 @@ sap.ui.define(
                 width: '750px',
                 height: 'auto',
                 modal: true,
-                content: aHistoryView,
-                beginButton: new sap.m.Button({
-                    text: 'Close',
-                    press: function () {
-                        aDialog.close();
-                    }
-                }),
-                afterClose: function () {
-                    aDialog.destroy();
-                }
+                content: aHistoryView
             });
+            aDialog.addStyleClass("nrgCamHisTDialog");
             //to get access to the global model
             this.getView().addDependent(aDialog);
             aDialog.open();

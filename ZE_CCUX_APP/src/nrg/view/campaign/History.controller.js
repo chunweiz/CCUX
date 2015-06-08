@@ -11,29 +11,18 @@ sap.ui.define(
 
         var Controller = CoreController.extend('nrg.view.campaign.History');
 
-        Controller.prototype.onInit = function () {
-
-        };
-        //TODO: Implementation required
-        Controller.prototype.onBeforeRendering = function () {
-        };
-                    //TODO: Implementation required
-        Controller.prototype.onAfterRendering = function () {
-/*            var CamHisPrcTbl = this.getView().byId("idCamHisPrcTbl2");
-            CamHisPrcTbl.bindElement({
-                model : "overview-campList",
-                path : "/"
-            });*/
-        };
-        //TODO: Implementation required
         Controller.prototype.onPressed = function (oEvent) {
-            var sPath = oEvent.getSource().getParent().getBindingContextPath();
+            var sPath = oEvent.getSource().getBindingContext("overview-campList").sPath;
             this.getView().bindElement({
                 model : "overview-camp",
                 path : sPath
             });
-            jQuery.sap.log.info("Odata Read Successfully" + oEvent.getSource().getParent().getBindingContextPath());
         };
+
+        Controller.prototype.formatTileDate = function (startDate, endDate) {
+            return startDate + "-" + endDate;
+        };
+
         return Controller;
     }
 );

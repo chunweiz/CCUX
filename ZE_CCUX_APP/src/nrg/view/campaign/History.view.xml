@@ -16,11 +16,6 @@
             <l:MatrixLayout class="nrgCamHisMtx nrgCamHis-top">
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <c:Label id="idCamHisTtlLbl" text="{comp-i18n>nrgCmpHisTtllbl}" icon="sap-icon://nrg-icon/tag" class="nrgCamHis-lbl"  labelFor="idCamHisTtlTv"  />
-                    </l:MatrixLayoutCell>
-                </l:MatrixLayoutRow>
-                <l:MatrixLayoutRow>
-                    <l:MatrixLayoutCell>
                         <u:TextView id="idCamHisTtlTv" text="{overview-camp>OfferTitle}"
                                                     class="nrgCamHis-left"
                                                     color="DarkGrey"
@@ -29,12 +24,10 @@
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>
             <u:Tag class="nrgCamHisPrcT">
-                <c:Label id="idCamPrcLbl" text="{comp-i18n>nrgCmpHisPrcbl}" icon="sap-icon://nrg-icon/dollar" class="nrgCamHis-lbl nrgCamHis-top" labelFor="idCamHisPrcTbl"  />
                 <u:Table width="60%"
                     id="idCamHisPrcTbl"
                     tableType="CampaignTable"
-                    class="nrgCamHis-left nrgCamHis-top"
-                    >
+                    class="nrgCamHis-left nrgCamHis-top">
                         <u:columns>
                             <u:TableColumn width="33%" >
                                 <c:Label text="EFL@500"/>
@@ -56,11 +49,6 @@
                 </u:Table>
             </u:Tag>
             <u:Tag class="nrgCamHisDscT">
-                    <c:Label id="idCamHisDscLbl"
-                        text="{comp-i18n>nrgCmpHisDscbl}"
-                        icon="sap-icon://nrg-icon/description"
-                        class="nrgCamHis-lbl nrgCamHis-top nrgCamHis-desc"
-                        labelFor="idCamDescTv" />
                     <u:TextView
                         id="idCamHisDscTv"
                         color="DarkGrey"
@@ -108,18 +96,31 @@
                     </u:TableRow>
                 </u:rows>
             </u:Table>
-                <m:List
-                    id="idCamHislis"
-                    items="{overview-campList>/}">
-                    <m:CustomListItem class="nrgCamHislis-Item">
-                        <um:Button press=".onPressed" text="{overview-campList>OfferTitle}">
-                                <u:Tag class="nrgCamHisBut" text="{path: 'overview-campList>StartDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
-                                <u:Tag class="nrgCamHisBut" text="{path: 'overview-campList>EndDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
-                                <u:Tag class="nrgCamHisBut" text="{overview-campList>OfferTitle}" />
-                                <u:Tag class="nrgCamHisBut" text="{overview-campList>EFL2000}" />
-                        </um:Button>
-                     </m:CustomListItem>
-                </m:List>
+            <m:ScrollContainer
+            height="135px"
+            width="100%"
+            horizontal="false"
+            vertical="true"
+            focusable="true"
+            class="nrgCamHisScroll"
+            content="{overview-campList>/}">
+                    <um:Button press=".onPressed" text="{overview-campList>Notitle}" class="nrgCamHisBut" design="None">
+                            <u:Tag class="nrgCamHisBut-Date" text="{parts:[{path:'overview-campList>StartDate',
+                                                                                type: 'sap.ui.model.type.Date',
+                                                                                formatOptions:{pattern: 'MM/dd/yyyy'} },
+                                                                           {path: 'overview-campList>EndDate',
+                                                                                type: 'sap.ui.model.type.Date',
+                                                                                formatOptions:{pattern: 'MM/dd/yyyy'} }],
+                                                                    formatter:'.formatTileDate'}" />
+                            <u:Tag></u:Tag>
+                            <u:Tag class="nrgCamHisBut-Title" text="{overview-campList>OfferTitle}" />
+                            <u:Tag class="nrgCamHisBut-Price" text="{path: 'overview-campList>EFL2000',
+                                                                    type: 'nrg.util.type.Price',
+                                                                    formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
+                            <u:Tag class="nrgCamHisBut-PriceLbl" text="{comp-i18n>nrgCmpHiskWhDisc}" />
+
+                    </um:Button>
+          </m:ScrollContainer>
       </u:Tag>
    </u:Tag>
 </mvc:View>
