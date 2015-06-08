@@ -23,6 +23,7 @@ sap.ui.define(
 
             sPath = this.getOwnerComponent().getModel("comp-i18n").getProperty("nrgCurrentPendingSet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
+
             oParameters = {
                 filters : aFilters,
                 success : function (oData) {
@@ -30,7 +31,8 @@ sap.ui.define(
                         model : "comp-campaign",
                         path : this.getView().getModel("comp-i18n").getProperty("nrgCurrentView")
                     });
-                    jQuery.sap.log.info("Odata Read Successfully");
+
+                    jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
                 error: function (oError) {
                     jQuery.sap.log.info("Some Error");
