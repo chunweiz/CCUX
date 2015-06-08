@@ -1,3 +1,13 @@
+.nrgCamHisTDialog {
+    & > .uteDialogHdr {
+          margin: 4px;
+          height: 40px;
+    }
+    & > .uteUiDlgCont {
+        margin: 0px;
+    }
+}
+
 .nrgCamHisT {
     font-family: @nrgFontFamily;
 
@@ -23,6 +33,35 @@
           width: 84px;
           height: auto;
           float: left;
+    }
+    & .nrgCamHisBut {
+        width: 268px;
+        height:126px;
+        margin:3px 3px 3px 3px;
+        background-color: @nrgColor-grey-highlight;
+    }
+    & .nrgCamHisScroll{
+        overflow: auto;
+        text-align: center;
+        outline: 0px;
+    }
+    & .nrgCamHisBut-Date{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-regular;
+        text-align: left;
+        padding-left: 10px;
+    }
+    & .nrgCamHisBut-Title{
+        font-size: @nrgFontSize-base;
+        font-weight: @nrgFontWeight-semiBold;
+    }
+    & .nrgCamHisBut-Price{
+        font-size: @nrgFontSize-largest;
+        font-weight: @nrgFontWeight-bold;
+    }
+    & .nrgCamHisBut-PriceLbl{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-regular;
     }
 }
 

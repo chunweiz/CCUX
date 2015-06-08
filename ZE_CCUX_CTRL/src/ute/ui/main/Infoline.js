@@ -5,11 +5,10 @@ sap.ui.define(
     [
         'sap/ui/core/Control',
         'sap/ui/core/EnabledPropagator',
-        './Label',
         './Checkbox'
     ],
 
-    function (Control, EnabledPropagator, Label, Checkbox) {
+    function (Control, EnabledPropagator, Checkbox) {
         'use strict';
 
         var CustomControl = Control.extend('ute.ui.main.Infoline', {
@@ -17,12 +16,15 @@ sap.ui.define(
                 library: 'ute.ui.main',
 
                 properties: {
-                    design: { type: 'ute.ui.main.InfolineDesign', defaultValue: ute.ui.main.InfolineDesign.Default }
+                    design: { type: 'ute.ui.main.InfolineDesign', defaultValue: ute.ui.main.InfolineDesign.Default },
+                    expanded: { type: 'boolean', defaultValue: false }
                 },
 
                 aggregations: {
-                    headerContent: { type: 'sap.ui.core.Control', multiple: true, singularName: 'headerContent', visibility: 'hidden' },
-                    content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' }
+                    headerContent: { type: 'sap.ui.core.Control', multiple: true, singularName: 'headerContent' },
+                    content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' },
+
+                    _headerExpander: { type: 'sap.ui.core.Control', multiple: false, visibility: 'hidden' }
                 },
 
                 defaultAggregation: 'content',
@@ -37,32 +39,38 @@ sap.ui.define(
             }
         });
 
-        EnabledPropagator.call(CustomControl.prototype);
+        CustomControl.prototype.onBeforeRendering = function () {
+            if (this._oHdrExpander) {
+                return;
+            }
 
-        CustomControl.prototype.init = function () {
-            this.addAggregation('headerContent', new Checkbox());
+            this._oHdrExpander = new Checkbox({
+                design: ute.ui.main.CheckboxDesign.None,
+                select: jQuery.proxy(this._onHdrExpanderSelected, this),
+                checked: this.getExpanded()
+            });
+
+            this.setAggregation('_headerExpander', this._oHdrExpander);
         };
 
-        CustomControl.prototype._addHeader = function (oRm) {
-//            this._oHdrContent = new Label({
-//                labelFor: this.getId() + '-hdrExpander'
-//            });
-//
-//            this._oHdrContent.addStyleClass('uteMIl-hdrContent');
-//
-//            oRm.renderControl(this._oHdrContent);
+        CustomControl.prototype._onHdrExpanderSelected = function (oControlEvent) {
+            var bExpand = oControlEvent.getParameter('checked');
+            this.setExpanded(bExpand);
+            this.firePress({ expanded: bExpand });
         };
 
-        CustomControl.prototype._addHeaderExpander = function (oRm) {
-            this.getAggregation('headerContent').forEach(function(oControl) {
-                oRm.renderControl(oControl);
-            }.bind(this));
+        CustomControl.prototype.setExpanded = function (bValue) {
+            this.$('.uteMIl-body').toggleClass('uteMIl-body-hidden');
+
+            this.setProperty('expanded', bValue);
+            return this;
         };
 
-        CustomControl.prototype._addContent = function (oRm) {
-            this.getContent().forEach(function(oControl) {
-                oRm.renderControl(oControl);
-            }.bind(this));
+        CustomControl.prototype.exit = function () {
+            if (this._oHdrExpander) {
+                this._oHdrExpander.destroy();
+                this._oHdrExpander = null;
+            }
         };
 
         return CustomControl;
