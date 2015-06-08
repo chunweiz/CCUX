@@ -68,14 +68,18 @@ sap.ui.define(
             }
 
             oValue = oValue.toString();
-            oValue = oValue.replace(this.oFormatOptions.currencySymbol, '');
+            var regex = /[+\-]?\d+(\.\d+)?/g;
+
+            oValue = oValue.match(regex).map(function (v) { return parseFloat(v); });
+            oValue = oValue[0];
             FloatType.prototype.parseValue.call(this, oValue, sInternalType);
 
 
-            return oValue;
+            return oValue.toString();
 
         };
-         // Model to Output
+
+           // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
 
             if (oValue === undefined || oValue === null || oValue === '') {
@@ -95,7 +99,6 @@ sap.ui.define(
 
             return oValue;
         };
-
 
         return CustomType;
     }
