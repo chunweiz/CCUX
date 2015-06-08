@@ -1,0 +1,131 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:utmain="ute.ui.main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.commons"
+    xmlns:l="sap.ui.commons.layout"
+    xmlns:core="sap.ui.core"
+    controllerName="nrg.view.dashboard.CustomerDataSummary">
+
+    <ute:Tag class="nrgDashboard-cusDataSum nrgAppMain-summaryContent nrgAppMain-summaryContent-full">
+        <ute:content>
+            <ute:TextView
+                class="nrgDashboard-cusDataSum-bpName"
+                design="Large" text="BP_Name_Here">
+            </ute:TextView>
+            <ute:Badge
+                class="nrgDashboard-cusDataSum-badge"
+                design="Attention" size="30px"
+                text="TT">
+            </ute:Badge>
+            <ute:Badge
+                class="nrgDashboard-cusDataSum-badge"
+                design="Alert" size="30px"
+                text="TT">
+            </ute:Badge>
+            <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">
+                <utmain:Label
+                    class="nrgDashboard-cusDataSum-bpLabel"
+                    text="BP #"
+                    labelFor="db_verify_BP">
+                </utmain:Label>
+                <ute:Tag elem="span"
+                    id="db_verify_BP"
+                    text="00000000">
+                </ute:Tag>
+            </ute:Tag>
+            <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">
+                <utmain:Label
+                    class="nrgDashboard-cusDataSum-bpLabel"
+                    text="CA #"
+                    labelFor="db_verify_CA">
+                </utmain:Label>
+                <ute:Tag elem="span"
+                    id="db_verify_CA"
+                    text="00000000">
+                </ute:Tag>
+            </ute:Tag>
+
+            <ute:HorizontalDivider class="nrgDashboard-cusDataSum-horiLine"/>
+
+            <l:MatrixLayout widths="20%,80%" columns="2" width="100%">
+                <l:rows>
+                    <l:MatrixLayoutRow>
+                        <l:cells>
+                            <l:MatrixLayoutCell>
+                                <core:Icon src="sap-icon://nrg-icon/weather-cloud"/>
+                            </l:MatrixLayoutCell>
+                            <l:MatrixLayoutCell>
+                                <ute:TextView text="Houston, TX"/>
+                                <ute:TextView text="72 F"/>
+                            </l:MatrixLayoutCell>
+                        </l:cells>
+                    </l:MatrixLayoutRow>
+                </l:rows>
+            </l:MatrixLayout>
+
+            <ute:HorizontalDivider class="nrgDashboard-cusDataSum-horiLine"/>
+
+            <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">
+                <ute:TextView
+                    text="CA Name">
+                </ute:TextView>
+                <ute:TextView
+                    text="#$^#$#$^#$">
+                </ute:TextView>
+            </ute:Tag>
+
+
+            <ute:HorizontalDivider class="nrgDashboard-cusDataSum-horiLine"/>
+
+            <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">
+                <utmain:Label
+                    text="Customer Segmentation:"
+                    labelFor="cs_seg">
+                </utmain:Label>
+                <ute:Tag elem="span"
+                    id="cs_seg"
+                    text="Priority One">
+                </ute:Tag>
+            </ute:Tag>
+
+            <utmain:Button
+                design="None"
+                text="Assigned Account"
+                class="nrgCallerNoIDEnrollment-ListItemLink">
+            </utmain:Button>
+
+            <!--l:Grid>
+                <l:content>
+                    <c:TextView text="test">
+                        <c:layoutData>
+                            <l:GridData indentSmall="0" indentMedium="0" indentLarge="0" spanSmall="0" spanMedium="0" spanLarge="0" indentS="0" indentM="0" indentL="0" spanS="0" spanM="0" spanL="0" span="L3 M6 S12"/>
+                        </c:layoutData>
+                    </c:TextView>
+                    <c:TextView text="test">
+                        <c:layoutData>
+                            <l:GridData indentSmall="0" indentMedium="0" indentLarge="0" spanSmall="0" spanMedium="0" spanLarge="0" indentS="0" indentM="0" indentL="0" spanS="0" spanM="0" spanL="0" span="L9 M6 S12"/>
+                        </c:layoutData>
+                    </c:TextView>
+                </l:content>
+            </l:Grid-->
+
+            <!--l:HorizontalLayout>
+                    <ute:Tag class="nrgDashboard-cusDataSum-weatherLeft">
+                        <ute:TextView text="test"/>
+                    </ute:Tag>
+                    <ute:Tag class="nrgDashboard-cusDataSum-weatherRight">
+                        <ute:TextView text="test"/>
+                        <ute:TextView text="test"/>
+                    </ute:Tag>
+            </l:HorizontalLayout-->
+
+
+
+
+
+        </ute:content>
+    </ute:Tag>
+
+</mvc:View>

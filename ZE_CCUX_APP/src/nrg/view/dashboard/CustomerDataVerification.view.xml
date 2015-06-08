@@ -1,1 +1,11 @@
 <!--Routing Pattern: customerDataVerification/bp/{bpNum}-->
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:utmain="ute.ui.main"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="nrg.view.dashboard.CallerNoIDEnrollment">
+
+    <ute:Tag class="nrgDashboard-calrNoIDEnrol nrgAppMain-summaryContent nrgAppMain-summaryContent-full">
+    </ute:Tag>
+</mvc:View>
