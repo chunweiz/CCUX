@@ -4,7 +4,7 @@
     xmlns:utmain="ute.ui.main"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:c="sap.ui.commons"
-    xmlns:l="sap.ui.layout"
+    xmlns:l="sap.ui.commons.layout"
     controllerName="nrg.view.dashboard.CustomerDataSummary">
 
     <ute:Tag class="nrgDashboard-cusDataSum nrgAppMain-summaryContent nrgAppMain-summaryContent-full">
@@ -48,17 +48,79 @@
 
             <ute:HorizontalDivider class="nrgDashboard-cusDataSum-horiLine"/>
 
-            <l:HorizontalLayout>
-                <c:content>
-                    <ute:Tag width="20%">
+            <l:MatrixLayout widths="20%,80%" columns="2" width="100%">
+                <l:rows>
+                    <l:MatrixLayoutRow>
+                        <l:cells>
+                            <l:MatrixLayoutCell>
+                                <ute:TextView text="test"/>
+                            </l:MatrixLayoutCell>
+                            <l:MatrixLayoutCell>
+                                <ute:TextView text="Houston, TX"/>
+                                <ute:TextView text="72 F"/>
+                            </l:MatrixLayoutCell>
+                        </l:cells>
+                    </l:MatrixLayoutRow>
+                </l:rows>
+            </l:MatrixLayout>
+
+            <ute:HorizontalDivider class="nrgDashboard-cusDataSum-horiLine"/>
+
+            <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">
+                <ute:TextView
+                    text="CA Name">
+                </ute:TextView>
+                <ute:TextView
+                    text="#$^#$#$^#$">
+                </ute:TextView>
+            </ute:Tag>
+
+
+            <ute:HorizontalDivider class="nrgDashboard-cusDataSum-horiLine"/>
+
+            <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">
+                <utmain:Label
+                    text="Customer Segmentation:"
+                    labelFor="cs_seg">
+                </utmain:Label>
+                <ute:Tag elem="span"
+                    id="cs_seg"
+                    text="Priority One">
+                </ute:Tag>
+            </ute:Tag>
+
+            <utmain:Button
+                design="None"
+                text="Assigned Account"
+                class="nrgCallerNoIDEnrollment-ListItemLink">
+            </utmain:Button>
+
+            <!--l:Grid>
+                <l:content>
+                    <c:TextView text="test">
+                        <c:layoutData>
+                            <l:GridData indentSmall="0" indentMedium="0" indentLarge="0" spanSmall="0" spanMedium="0" spanLarge="0" indentS="0" indentM="0" indentL="0" spanS="0" spanM="0" spanL="0" span="L3 M6 S12"/>
+                        </c:layoutData>
+                    </c:TextView>
+                    <c:TextView text="test">
+                        <c:layoutData>
+                            <l:GridData indentSmall="0" indentMedium="0" indentLarge="0" spanSmall="0" spanMedium="0" spanLarge="0" indentS="0" indentM="0" indentL="0" spanS="0" spanM="0" spanL="0" span="L9 M6 S12"/>
+                        </c:layoutData>
+                    </c:TextView>
+                </l:content>
+            </l:Grid-->
+
+            <!--l:HorizontalLayout>
+                    <ute:Tag class="nrgDashboard-cusDataSum-weatherLeft">
                         <ute:TextView text="test"/>
                     </ute:Tag>
-                    <ute:Tag width="80%">
+                    <ute:Tag class="nrgDashboard-cusDataSum-weatherRight">
                         <ute:TextView text="test"/>
                         <ute:TextView text="test"/>
                     </ute:Tag>
-                </c:content>
-            </l:HorizontalLayout>
+            </l:HorizontalLayout-->
+
+
 
 
 
