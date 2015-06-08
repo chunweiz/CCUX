@@ -17,7 +17,8 @@ sap.ui.define(
         'tm/message/validation/type/ESID',
         'tm/message/validation/type/MeterNumber',
         'tm/message/validation/type/CellPhoneNumber',
-        'tm/message/validation/type/Consumption'
+        'tm/message/validation/type/Consumption',
+        'tm/message/validation/type/ZipCode'
 
     ],
 
@@ -64,7 +65,8 @@ sap.ui.define(
                 mnum: '029545116GE',
                 cellnum: '+17134974384OR74384',
                 table: {"Test":[{cellnum: '+17134974384OR74384',cNum: '0027914550',email: 'test@test.com'}]},
-                consumption: 12.36
+                consumption: 12.36,
+                zipcode: '76543-1234'
 
             });
 

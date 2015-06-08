@@ -95,6 +95,11 @@
         type="Text"
         placeholder="date"
         value="{path: '/date', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'yy/MM/dd' }}" />
+    <m:Input
+        id="idZip"
+        type="Text"
+        placeholder="zip code"
+        value="{path: '/zipcode', type: 'tm.message.validation.type.ZipCode'}" />
 
 
 </mvc:View>
