@@ -15,7 +15,7 @@ sap.ui.define(
 
         var CustomType = FloatType.extend('nrg.util.type.Price', {
             constructor: function (oFormatOptions, oConstraints) {
-                FloatType.prototype.apply(this, arguments);
+                FloatType.apply(this, arguments);
             }
         });
 
