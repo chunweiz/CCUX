@@ -70,7 +70,7 @@ sap.ui.define(['jquery.sap.global'],
 		rm.writeAttribute("aria-labelledby", oControl.getId() + "-lbl " + oControl.getId() + "-acc");
 		rm.writeAttribute("role", oControl.getAccessibleRole().toLowerCase());
 		rm.writeAttribute("tabindex", "-1");
-		rm.write("><span style='display:none;' id='", oControl.getId(), "-acc'>", rb.getText("DIALOG_CLOSE_HELP"), "</span>");
+		rm.write("><span style='display:none;' id='", oControl.getId(), "-acc'>", rb.getText("To close dialog, press ESC"), "</span>");
 
 		// Header
 		rm.write("<span id='" + oControl.getId() + "-fhfe' tabIndex='0'></span><div id='" + oControl.getId() + "-hdr' class='sapUiDlgHdr uteDialogHdr'>");
@@ -100,8 +100,8 @@ sap.ui.define(['jquery.sap.global'],
 			rm.write("<a id='", oControl.getId(), "-close' class='sapUiDlgCloseBtn' href='javascript:void(0)'");
 			rm.write(" tabIndex='-1'"); // according to accessibility experts (O.K. and M.J.), the 'x' should not be tab-able
 			rm.writeAttribute("role","button");
-			rm.writeAttributeEscaped("aria-label", rb.getText("DIALOG_CLOSE_HELP"));
-			rm.writeAttributeEscaped("title", rb.getText("DIALOG_CLOSE_TEXT"));
+			rm.writeAttributeEscaped("aria-label", rb.getText("To close dialog, press ESC"));
+			rm.writeAttributeEscaped("title", rb.getText("Close"));
 			rm.write(">X</a>");
 		}
 		rm.write("</span></div>");
