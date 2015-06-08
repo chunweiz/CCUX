@@ -15,7 +15,7 @@
         <br/>
 
         <um:Label>
-            <core:Icon src="sap-icon://nrg-icon/high-bill" />
+            <core:Icon src="sap-icon://nrg-icon/weather-cloud" />
             <span> Label with stuffing</span>
         </um:Label>
         <br/>
