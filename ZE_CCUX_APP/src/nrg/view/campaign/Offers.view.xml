@@ -7,20 +7,21 @@
           xmlns:l="sap.ui.commons.layout"
           xmlns:m="sap.m"
           xmlns:um="ute.ui.main"
-          controllerName="nrg.view.campaign.offers"
+          controllerName="nrg.view.campaign.Offers"
           height="100%"
           width="100%"
           displayBlock="true">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
     <u:Tag class="nrgCmpOffT">
          <u:Tag class="nrgCamOffTtlT" text="{comp-i18n>nrgCmpOffTtl}" />
-        <l:MatrixLayout class="nrgCamOffMtx">
-                <l:MatrixLayoutRow>
-                    <l:MatrixLayoutCell class="nrgCmpOffCell-Tier">
-                        <u:Tag class="nrgCmpOffT"></u:Tag>
-                    </l:MatrixLayoutCell>
-                    <l:MatrixLayoutCell class="nrgCmpOffCell-Tiles">
-                        <m:ScrollContainer
+            <u:Tag class="nrgCmpOffTiers">
+                    <u:Tag class="nrgCmpOffTier" text="{comp-i18n>nrgCmpOffTProactive}" />
+                    <u:Tag class="nrgCmpOffTier" text="{comp-i18n>nrgCmpOffTReactive}" />
+                    <u:Tag class="nrgCmpOffTier" text="{comp-i18n>nrgCmpOffTSave}" />
+                    <u:Tag class="nrgCmpOffTier" text="{comp-i18n>nrgCmpOffTFinalSave}" />
+            </u:Tag>
+            <u:Tag class="nrgCmpOffTiles">
+                    <m:ScrollContainer
                         height="267px"
                         width="100%"
                         horizontal="false"
@@ -30,27 +31,27 @@
                         id="idnrgCamOffScroll"
                         content="{offers-cpg>/}">
                                 <um:Button press=".onPressed" text="{offers-cpg>Notitle}" class="nrgCamOffBt" design="None">
-                                        <l:MatrixLayout class="nrgCamOffBtMtx">
-                                            <l:MatrixLayoutRow>
-                                                <l:MatrixLayoutCell class="nrgCamOffBtT" >
-                                                         <u:Tag class="nrgCamOffBt-Ttl" text="{offers-cpg>OfferTitle}" />
-                                                </l:MatrixLayoutCell>
-                                                <l:MatrixLayoutCell class="nrgCamOffBtI">
-                                                        <u:Tag class="nrgCamOffBt-CF" text="{offers-cpg>CancellationFee}" />
-                                                        <u:Tag class="nrgCamOffBt-IC" text="{offers-cpg>Incentive}" />
-                                                        <u:Tag class="nrgCamOffBt-PC" text="{offers-cpg>PromoCode}" />
-                                                </l:MatrixLayoutCell>
-                                                </l:MatrixLayoutRow>
-                                        </l:MatrixLayout>
+                                           <u:Tag class="nrgCamOffBtinfo">
+                                                <u:Tag class="nrgCamOffBt-CF" text="{parts:[{path:'offers-cpg>CancellationFee',
+                                                                                type: 'nrg.util.type.Price',
+                                                                                formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' }},
+                                                                           {path: 'offers-cpg>Incentive',
+                                                                                type: 'nrg.util.type.Price',
+                                                                                formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' } }],
+                                                                    formatter:'.formatCancelFee'}" />
+
+                                                <u:Tag class="nrgCamOffBt-PC"
+                                                       text="{parts:[{path:'offers-cpg>PromoCode'}],
+                                                                    formatter:'.formatPromo'}"/>
+                                            </u:Tag>
+                                        <u:Tag class="nrgCamOffBt-Ttl" text="{offers-cpg>OfferTitle}" />
                                         <u:Tag class="nrgCamOffBt-Prc" text="{path: 'offers-cpg>EFL2000',
                                                                                 type: 'nrg.util.type.Price',
                                                                                 formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
                                         <u:Tag class="nrgCamOffBt-PrcLbl" text="{comp-i18n>nrgCmpOffkWhDisc}" />
                                </um:Button>
                       </m:ScrollContainer>
-                    </l:MatrixLayoutCell>
-                </l:MatrixLayoutRow>
-            </l:MatrixLayout>
+                </u:Tag>
        </u:Tag>
    </u:Tag>
 </mvc:View>

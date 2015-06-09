@@ -16,7 +16,7 @@
                 },
                 "campaignoffers": {
                     "pattern": "bp/{bpNum}/ca/{caNum}/campaign/offers",
-                    "target": [ "campaign.offers", "dashboard.SummaryBP", "campaign.Tools" ]
+                    "target": [ "campaign.Offers", "dashboard.SummaryBP", "campaign.Tools" ]
                 }
             },
             "targets": {
@@ -36,8 +36,8 @@
                     "viewName": "campaign.SalesScript",
                     "controlId": "idAppGeneral"
                 },
-                "campaign.offers": {
-                    "viewName": "campaign.offers",
+                "campaign.Offers": {
+                    "viewName": "campaign.Offers",
                     "controlId": "idAppGeneral"
                 },
                 "campaign.Change": {

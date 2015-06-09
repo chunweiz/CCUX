@@ -6,10 +6,23 @@
         font-size: @nrgFontSize-base;
         font-weight: @nrgFontWeight-semiBold;
     }
-    &  .nrgCmpOffCell-Tier{
+    & > .nrgCmpOffTiers{
         width:10%;
+        float:left;
+        display:inline-block;
     }
-    &  .nrgCmpOffCell-Tiles > .nrgCamOffScroll{
+    & > .nrgCmpOffTiers > .nrgCmpOffTier{
+          margin-bottom: 10px;
+          margin-top: 10px;
+          color: @nrgColor-blueLink;
+          font-size: @nrgFontSize-base;
+          font-weight: @nrgFontWeight-semiBold;
+    }
+    & > .nrgCmpOffTiles{
+        width:90%;
+        display:inline-block;
+    }
+    &  .nrgCmpOffTiles > .nrgCamOffScroll{
         overflow: auto;
         text-align: center;
         outline: 0px;
@@ -21,10 +34,11 @@
         margin:3px 3px 3px 3px;
         background-color: @nrgColor-grey-highlight;
     }
-    &  .nrgCamOffBtT > .nrgCamOffBt-Ttl{
+    &  .nrgCamOffBt > .nrgCamOffBt-Ttl {
         font-size: @nrgFontSize-small;
         font-weight: @nrgFontWeight-semiBold;
         padding-top: 5px;
+        width: 75%;
     }
     &  .nrgCamOffBt-Prc{
         font-size: @nrgFontSize-largest;
@@ -39,28 +53,20 @@
         text-align: right;
     }
     &  .nrgCamOffBt-CF{
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-regular;
-        text-align: right;
-    }
-    &  .nrgCamOffBt-IC{
-        font-size: @nrgFontSize-small;
+        font-size: @nrgFontSize-smaller;
         font-weight: @nrgFontWeight-regular;
         text-align: right;
     }
     &  .nrgCamOffBt-PC{
-        font-size: @nrgFontSize-small;
+        font-size: @nrgFontSize-smaller;
         font-weight: @nrgFontWeight-regular;
         text-align: right;
     }
-    &  .nrgCamOffScroll > .sapMScrollContScroll > .nrgCamOffBt-Selected {
+    &  .nrgCamOffScroll> .sapMScrollContScroll > .nrgCamOffBt-Selected {
         background-color: @nrgColor-grey-light;
         color:@nrgColor-white;
     }
-    & .nrgCamOffBtI {
-        vertical-align: top;
-    }
-    & .nrgCamOffBtT{
-        width:75%;
+    & .nrgCamOffBt{
+        color:@nrgColor-grey-dark;
     }
 }

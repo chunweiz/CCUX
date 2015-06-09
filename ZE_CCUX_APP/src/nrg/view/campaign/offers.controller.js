@@ -12,7 +12,7 @@ sap.ui.define(
     function (CoreController, Filter, FilterOperator, jQuery, price) {
         'use strict';
 
-        var Controller = CoreController.extend('nrg.view.campaign.offers');
+        var Controller = CoreController.extend('nrg.view.campaign.Offers');
 
         //TODO: Implementation required
         Controller.prototype.onInit = function () {
@@ -57,17 +57,26 @@ sap.ui.define(
 
             aChildren = oEvent.getSource().getParent().findElements();
             for (i = 0; i < aChildren.length; i = i + 1) {
-                if (aChildren[i].hasStyleClass("nrgCamOffBut-Selected")) {
-                    aChildren[i].removeStyleClass("nrgCamOffBut-Selected");
+                if (aChildren[i].hasStyleClass("nrgCamOffBt-Selected")) {
+                    aChildren[i].removeStyleClass("nrgCamOffBt-Selected");
                 }
             }
-            oEvent.getSource().addStyleClass("nrgCamOffBut-Selected");
+            oEvent.getSource().addStyleClass("nrgCamOffBt-Selected");
             sPath = oEvent.getSource().getBindingContext("offers-cpg").sPath;
             this.getView().bindElement({
                 model : "overview-camp",
                 path : sPath
             });
         };
+        Controller.prototype.formatCancelFee = function (aCancellationFee, aIncentive) {
+
+            return "Canc: " + aCancellationFee + " / " + "Inc: " + aIncentive;
+
+        };
+        Controller.prototype.formatPromo = function (aPromoCode) {
+            return "Promo: " + aPromoCode;
+        };
+
         return Controller;
     }
 );
