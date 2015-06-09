@@ -17,7 +17,8 @@ sap.ui.define(
                 'nb.ui.main.ButtonDesign',
                 'nb.ui.main.ToggleBarDesign',
                 'nb.ui.main.CheckboxDesign',
-                'nb.ui.main.InfolineDesign'
+                'nb.ui.main.InfolineDesign',
+                'nb.ui.main.DropdownDesign'
             ],
 
 			controls: [
@@ -57,6 +58,11 @@ sap.ui.define(
             None: 'None',
             Default: 'Default',
             Invert: 'Invert'
+        };
+
+         ute.ui.main.DropdownDesign = {
+            None: 'None',
+            Default: 'Default'
         };
 
         return nb.ui.main;

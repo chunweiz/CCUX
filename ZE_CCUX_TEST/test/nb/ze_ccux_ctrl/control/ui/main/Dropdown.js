@@ -15,7 +15,7 @@ sap.ui.define(
                 library: 'nb.ui.main',
 
                 properties: {
-                    design: { type: 'nb.ui.main.InfolineDesign', defaultValue: nb.ui.main.InfolineDesign.Default },
+                    design: { type: 'nb.ui.main.DropdownDesign', defaultValue: nb.ui.main.DropdownDesign.Default },
                     expanded: { type: 'boolean', defaultValue: false }
                 },
                  aggregations: {
@@ -37,6 +37,7 @@ sap.ui.define(
 
         CustomControl.prototype.init = function () {
             this._oPopup = new Popup();
+            alert('test');
         };
 
         return CustomControl;

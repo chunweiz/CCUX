@@ -1,5 +1,5 @@
 {
-    "name": "test.tm.ze_ccux_ctrl.Component",
+    "name": "test.nb.ze_ccux_ctrl.Component",
 
     "sap.ui5": {
         "resources": {
@@ -9,7 +9,7 @@
         },
 
         "rootView": {
-            "viewName": "test.tm.ze_ccux_ctrl.view.App",
+            "viewName": "test.nb.ze_ccux_ctrl.view.App",
             "type": "XML"
         },
 
@@ -25,7 +25,7 @@
 
             "config": {
                 "viewType": "XML",
-                "viewPath": "test.tm.ze_ccux_ctrl.view",
+                "viewPath": "test.nb.ze_ccux_ctrl.view",
                 "controlAggregation": "content",
                 "clearControlAggregation": true
             },
