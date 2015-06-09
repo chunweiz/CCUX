@@ -16,7 +16,7 @@ sap.ui.define(
 			types: [
                 'nb.ui.main.ButtonDesign',
                 'nb.ui.main.ToggleBarDesign',
-                'nb.ui.main.CheckboxDesign',
+               // 'nb.ui.main.CheckboxDesign',
                 'nb.ui.main.InfolineDesign',
                 'nb.ui.main.DropdownDesign'
             ],
@@ -25,7 +25,7 @@ sap.ui.define(
 				'nb.ui.main.Button',
 				'nb.ui.main.ToggleBar',
                 'nb.ui.main.Label',
-                'nb.ui.main.Checkbox',
+               // 'nb.ui.main.Checkbox',
                 'nb.ui.main.Infoline',
                 'nb.ui.main.Dropdown'
 			],
@@ -37,30 +37,30 @@ sap.ui.define(
             interfaces: []
         });
 
-        ute.ui.main.ButtonDesign = {
+        nb.ui.main.ButtonDesign = {
             None: 'None',
             Default: 'Default',
             Highlight: 'Highlight',
             Invert: 'Invert'
         };
 
-        ute.ui.main.CheckboxDesign = {
+        nb.ui.main.CheckboxDesign = {
             None: 'None',
             Default: 'Default'
         };
 
-        ute.ui.main.InfolineDesign = {
+        nb.ui.main.InfolineDesign = {
             None: 'None',
             Default: 'Default'
         };
 
-        ute.ui.main.ToggleBarDesign = {
+        nb.ui.main.ToggleBarDesign = {
             None: 'None',
             Default: 'Default',
             Invert: 'Invert'
         };
 
-         ute.ui.main.DropdownDesign = {
+         nb.ui.main.DropdownDesign = {
             None: 'None',
             Default: 'Default'
         };
