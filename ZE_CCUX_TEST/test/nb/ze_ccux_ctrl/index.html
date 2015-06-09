@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html style="height:100%">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>ute.ui.main control catalog</title>
+		<script id="sap-ui-bootstrap"
+		    src="../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
+            data-sap-ui-theme="sap_bluecrystal"
+            data-sap-ui-theme-roots='{
+                "sap_bluecrystal": {
+                    "": "../../../../../ZE_CCUX_LIB/bower_components/openui5-themelib_sap_bluecrystal/resources",
+                    "ute.ui.main": "../../../../../../ZE_CCUX_CTRL/build"
+                }
+            }'
+            data-sap-ui-xx-bindingSyntax="complex"
+            data-sap-ui-libs="sap.ui.layout, sap.m, ute.ui.main, nb.ui.main"
+            data-sap-ui-resourceroots='{
+                "sap.ui.layout": "../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.ui.layout/resources/sap/ui/layout",
+                "sap.m": "../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.m/resources/sap/m",
+                "ute.ui.main": "../../../../../ZE_CCUX_CTRL/build/ute/ui/main",
+                "nb.ui.main": "./control/ui/main",
+                "test": "../../"
+            }'>
+		</script>
+	</head>
+	<body role="application" id="content" class="uteUiBody">
+		<script>
+            sap.ui.getCore().attachInit(function () {
+                new sap.ui.core.ComponentContainer({
+                    height: '100%',
+                    width: '100%',
+                    name: 'test.nb.ze_ccux_ctrl'
+                }).placeAt('content');
+            });
+		</script>
+	</body>
+</html>
