@@ -17,11 +17,14 @@ sap.ui.define(
         Controller.prototype.onInit = function () {
             var oModel,
                 oContext,
-                sPath,
+                sCurrentPath,
+                sEligibilityPath,
                 oParameters,
+                sEligibilityModel,
                 aFilters = this._createSearchFilterObject("1121", "Y");
 
-            sPath = this.getOwnerComponent().getModel("comp-i18n").getProperty("nrgCurrentPendingSet");
+            sCurrentPath = this.getOwnerComponent().getModel("comp-i18n").getProperty("nrgCurrentPendingSet");
+            sEligibilityPath = this.getOwnerComponent().getModel("comp-i18n").getProperty("nrgEligibilitySet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
 
             oParameters = {
@@ -39,10 +42,29 @@ sap.ui.define(
                 }.bind(this)
             };
             if (oModel) {
-                oModel.read(sPath, oParameters);
+                oModel.read(sCurrentPath, oParameters);
             }
-
-
+            oParameters = {
+                filters : aFilters,
+                success : function (oData) {
+                    this.getView().byId("idCamCustReqOfferBtn").bindElement({
+                        model : "Overview-elig",
+                        path : "/CpgEligS('1121')"
+                    });
+                    this.getView().byId("idCamAgtReqOfferBtn").bindElement({
+                        model : "Overview-elig",
+                        path : "/CpgEligS('1121')"
+                    });
+                    jQuery.sap.log.info("Odata Read Successfully:::");
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Some Error");
+                }.bind(this)
+            };
+            if (oModel) {
+                oModel.read(sEligibilityPath, oParameters);
+            }
+            this.getView().setModel(oModel, "Overview-elig");
         };
         Controller.prototype._createSearchFilterObject = function (oContractID, oCurrentFlag) {
             var aFilters = [],
@@ -64,6 +86,21 @@ sap.ui.define(
                 model : "comp-campaign",
                 path : "/CpgCurPndS('P')"
             });
+        };
+        Controller.prototype.onOffers = function () {
+            this.getView().bindObject({
+                model : "comp-campaign",
+                path : "/CpgCurPndS('P')"
+            });
+        };
+        Controller.prototype.formatEligibility = function (aEligibilityValue) {
+
+            if ((aEligibilityValue !== undefined) && ((aEligibilityValue === "x") || (aEligibilityValue === "X"))) {
+                return "Eligible";
+            } else {
+                return "Not Eligible";
+            }
+
         };
 
         return Controller;

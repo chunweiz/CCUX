@@ -48,9 +48,9 @@
             </EntityType>
             <EntityType Name="CpgEligibility">
                 <Key>
-                    <PropertyRef Name="Contract"/>
+                    <PropertyRef Name="ContractID"/>
                 </Key>
-                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1" Name="AgentEligFlag" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1" Name="CustomerEligFlag" Nullable="false" Type="Edm.String"/>
             </EntityType>
