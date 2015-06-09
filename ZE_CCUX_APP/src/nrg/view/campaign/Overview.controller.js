@@ -88,7 +88,10 @@ sap.ui.define(
             });
         };
         Controller.prototype.onOffers = function (oEvent) {
+            var oParameters = {
 
+            };
+            this.navTo("campaignoffers", {bpNum: "123", caNum: "1234"});
         };
         return Controller;
     }
