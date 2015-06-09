@@ -13,6 +13,10 @@
                 "campaignSS": {
                     "pattern": "bp/{bpNum}/ca/{caNum}/campaign/cmpss",
                     "target": [ "campaign.SalesScript", "dashboard.SummaryBP", "campaign.Tools" ]
+                },
+                "campaignoffers": {
+                    "pattern": "bp/{bpNum}/ca/{caNum}/campaign/offers",
+                    "target": [ "campaign.offers", "dashboard.SummaryBP", "campaign.Tools" ]
                 }
             },
             "targets": {
@@ -30,6 +34,10 @@
                 },
                 "campaign.SalesScript": {
                     "viewName": "campaign.SalesScript",
+                    "controlId": "idAppGeneral"
+                },
+                "campaign.offers": {
+                    "viewName": "campaign.offers",
                     "controlId": "idAppGeneral"
                 },
                 "campaign.Change": {

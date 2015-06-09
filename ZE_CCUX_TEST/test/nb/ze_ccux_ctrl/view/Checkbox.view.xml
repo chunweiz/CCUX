@@ -1,0 +1,62 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:um="ute.ui.main"
+    xmlns:nb="nb.ui.main"
+    controllerName="test.nb.ze_ccux_ctrl.view.Checkbox"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+        <style>
+            .custom .uteMChkBox-chk {
+                border: 1px solid tomato;
+                width: 30px;
+                height: 30px;
+            }
+
+            .custom .uteMChkBox-intChk:checked + .uteMChkBox-chk {
+                background-color: tomato;
+            }
+
+            .custom .uteMChkBox-intChk:checked + .uteMChkBox-chk::before {
+                content: '';
+                position: absolute;
+                width: 4px;
+                height: 24px;
+                background-color: gold;
+                transform: translate(12px, 2px) rotate(45deg);
+            }
+
+            .custom .uteMChkBox-intChk:checked + .uteMChkBox-chk::after {
+                content: '';
+                position: absolute;
+                width: 4px;
+                height: 24px;
+                background-color: gold;
+                transform: translate(12px, 2px) rotate(-45deg);
+            }
+        </style>
+
+        <nb:Checkbox disabled="true"/><br/>
+        <nb:Checkbox checked="true" disabled="true"/><br/>
+
+        <nb:Checkbox id="zzz" select=".onSelected" />
+        <nb:Label labelFor="zzz-intChk">
+            <core:Icon src="sap-icon://nrg-icon/high-bill" />
+            <span>Special label for checkbox</span>
+        </nb:Label>
+        <br/>
+
+        <nb:Checkbox id="yyy" class="custom" design="None" checked="true" />
+        <nb:Label labelFor="yyy-intChk">
+            <core:Icon src="sap-icon://nrg-icon/high-bill" />
+            <span>Special label for custom checkbox</span>
+        </nb:Label>
+        <br/>
+
+    </sm:ScrollContainer>
+</mvc:View>

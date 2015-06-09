@@ -33,12 +33,14 @@
         padding-right: 10px;
         margin-right: 50px;
     }
-
-    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn:hover {
+   & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn:hover {
         background-color: @nrgColor-darkPaleBlue;
         color: @nrgColor-white;
     }
-
+    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn[data-disabled="true"]:hover {
+        background-color: @nrgColor-lightBlue;
+        color: @nrgColor-grey-dark;
+    }
     & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn > .nrgCamOvr-offerBtnTitle {
         font: @nrgFontWeight-semiBold @nrgFontSize-small @nrgFontFamily;
         margin-bottom: 10px;
@@ -49,9 +51,8 @@
         color: @nrgColor-redAlert;
         text-transform: uppercase;
     }
-
-    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn > .nrgCamOvr-offerBtnDesc.nrgCamOvr-offerBtnTitle-ok {
-        color: @nrgColor-blueLink;
+    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn > .nrgCamOvr-offerBtnDesc[data-flag="X"] {
+         color: @nrgColor-blueLink;
     }
 
 }

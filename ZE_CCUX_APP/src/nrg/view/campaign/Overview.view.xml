@@ -5,6 +5,8 @@
           xmlns:core="sap.ui.core"
           xmlns:u="ute.ui.commons"
           xmlns:l="sap.ui.commons.layout"
+          xmlns:um="ute.ui.main"
+          xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
           controllerName="nrg.view.campaign.Overview"
           height="100%"
           width="100%"
@@ -13,14 +15,34 @@
       <u:Tag class="nrgCamOvrT">
          <u:Tag class="nrgCamOvrTitleT" text="{comp-i18n>nrgCmpOvrTtl}" />
             <article class="nrgCamOvr-offerToolbar nrgCamOvr-top">
-                <button id="idCamCustReqOfferBtn" type="button" class="nrgCamOvr-offerBtn">
+                <um:Button id="idCamCustReqOfferBtn"
+                           press=".onOffers"
+                           text="{Overview-elig>Notitle}"
+                           class="nrgCamOvr-offerBtn"
+                           design="None"
+                           disabled="{= ${Overview-elig>CustomerEligFlag} === '' }">
                     <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n>nrgAppFooterCustReqOffer}" />
-                    <u:Tag id="idCamCustReqOffer" class="nrgCamOvr-offerBtnDesc nrgCamOvr-offerBtnTitle-ok" text="{comp-i18n>nrgAppFooterEligibile}" />
-                </button>
-                <button id="idCamAgtReqOfferBtn" type="button" class="nrgCamOvr-offerBtn">
+                    <u:Tag id="idCamCustReqOffer" class="nrgCamOvr-offerBtnDesc"
+                           text="{= ${Overview-elig>CustomerEligFlag} === '' ? ${comp-i18n>nrgCmpOvrNotElg} : ${comp-i18n>nrgCmpOvrElg} }" >
+                        <u:customData>
+                          <core:CustomData key="flag" value="{Overview-elig>CustomerEligFlag}" writeToDom="true" />
+                        </u:customData>
+                    </u:Tag>
+                </um:button>
+                <um:Button id="idCamAgtReqOfferBtn"
+                           press=".onOffers"
+                           text="{Overview-elig>Notitle}"
+                           class="nrgCamOvr-offerBtn"
+                           design="None"
+                           disabled="{= ${Overview-elig>AgentEligFlag} === '' }">
                     <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n>nrgAppFooterAgentReqOffer}" />
-                    <u:Tag id="idCamAgentReqOffer" class="nrgCamOvr-offerBtnDesc" text="{comp-i18n>nrgAppFooterNotEligibile}" />
-                </button>
+                    <u:Tag id="idCamAgentReqOffer" class="nrgCamOvr-offerBtnDesc"
+                           text="{= ${Overview-elig>AgentEligFlag} === '' ? ${comp-i18n>nrgCmpOvrNotElg} : ${comp-i18n>nrgCmpOvrElg} }" >
+                        <u:customData>
+                          <core:CustomData key="flag" value="{Overview-elig>AgentEligFlag}" writeToDom="true" />
+                        </u:customData>
+                    </u:Tag>
+                </um:button>
             </article>
             <u:Tag class="nrgCamToggleT">
                 <u:ToggleButton
@@ -136,19 +158,6 @@
                     </u:TableRow>
                 </u:rows>
             </u:Table>
-          <List
-            id="ProductList"
-            items="{/ProductCollection}"
-            mode="SingleSelect"
-            includeItemInSelection="true">
-            <StandardListItem
-              title="{Name}"
-              description="{ProductId}"
-              icon="{ProductPicUrl}"
-              iconDensityAware="false"
-              iconInset="false" >
-              </StandardListItem>
-          </List>
       </u:Tag>
    </u:Tag>
 </mvc:View>
