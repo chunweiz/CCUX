@@ -3,6 +3,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:sm="sap.m"
     xmlns:um="ute.ui.main"
+    xmlns:um="nb.ui.main"
     controllerName="test.nb.ze_ccux_ctrl.view.Button"
     height="100%"
     width="100%"
@@ -59,5 +60,6 @@
         </um:Button>
 
     </sm:ScrollContainer>
+
 </mvc:View>
 
