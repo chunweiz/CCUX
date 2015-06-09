@@ -87,22 +87,9 @@ sap.ui.define(
                 path : "/CpgCurPndS('P')"
             });
         };
-        Controller.prototype.onOffers = function () {
-            this.getView().bindObject({
-                model : "comp-campaign",
-                path : "/CpgCurPndS('P')"
-            });
-        };
-        Controller.prototype.formatEligibility = function (aEligibilityValue) {
-
-            if ((aEligibilityValue !== undefined) && ((aEligibilityValue === "x") || (aEligibilityValue === "X"))) {
-                return "Eligible";
-            } else {
-                return "Not Eligible";
-            }
+        Controller.prototype.onOffers = function (oEvent) {
 
         };
-
         return Controller;
     }
 

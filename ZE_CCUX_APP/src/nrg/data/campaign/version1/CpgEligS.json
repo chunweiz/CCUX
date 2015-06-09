@@ -3,8 +3,8 @@
       "results":[
          {
             "ContractID":"1121",
-            "AgentEligFlag":"X",
-            "CustomerEligFlag":"",
+            "AgentEligFlag":"",
+            "CustomerEligFlag":"X",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgEligS('1121')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgEligibility",
