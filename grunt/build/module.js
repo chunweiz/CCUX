@@ -13,6 +13,7 @@
 
         grunt.log.writeln('module name: ' + oGruntConfig.moduleName);
         grunt.log.writeln('module folder: ' + oGruntConfig.moduleFolder);
+        grunt.log.writeln('module path: ' + oGruntConfig.modulePath);
 
         /*
         ** Perform javascript linting on all source files
@@ -231,7 +232,6 @@
         grunt.loadNpmTasks('grunt-contrib-concat');
         grunt.loadNpmTasks('grunt-contrib-less');
         grunt.loadNpmTasks('grunt-contrib-uglify');
-        grunt.loadNpmTasks('grunt-merge-json');
         grunt.loadNpmTasks('grunt-json-minify');
         grunt.loadNpmTasks('grunt-contrib-htmlmin');
 

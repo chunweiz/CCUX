@@ -3,12 +3,13 @@
 
 sap.ui.define(
     [
+        'jquery.sap.global',
         'sap/ui/core/Control',
         'sap/ui/core/EnabledPropagator',
         './Checkbox'
     ],
 
-    function (Control, EnabledPropagator, Checkbox) {
+    function (jQuery, Control, EnabledPropagator, Checkbox) {
         'use strict';
 
         var CustomControl = Control.extend('ute.ui.main.Infoline', {

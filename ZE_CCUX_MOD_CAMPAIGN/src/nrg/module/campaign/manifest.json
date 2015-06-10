@@ -3,7 +3,7 @@
         "config": {
             "module": {
                 "campaign": {
-                    "css": [
+                    "stylesheet": [
                         "nrg/module/campaign/asset/css/module.css"
                     ],
 

@@ -21,7 +21,6 @@ sap.ui.define(
             oRm.writeClasses();
             oRm.write('>');
 
-            console.log('infoline render: ' + oCustomControl.getExpanded());
             this._addHeader(oRm, oCustomControl);
             this._addContent(oRm, oCustomControl);
 
