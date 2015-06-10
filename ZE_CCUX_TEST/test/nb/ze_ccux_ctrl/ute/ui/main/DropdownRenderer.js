@@ -1,4 +1,4 @@
-/*global sap, ute*/
+/*global sap*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -12,25 +12,23 @@ sap.ui.define(
         CustomRenderer.render = function (oRm, oCustomControl) {
             oRm.write('<div');
             oRm.writeControlData(oCustomControl);
-            oRm.addClass('uteMIl');
+            oRm.addClass('uteMDd');
 
-            if (oCustomControl.getDesign() !== ute.ui.main.InfolineDesign.None) {
-                oRm.addClass('uteMIl-design-' + oCustomControl.getDesign().toLowerCase());
+            if (oCustomControl.getDesign() !== nb.ui.main.DropdownDesign.None) {
+                oRm.addClass('uteMDd-design-' + oCustomControl.getDesign().toLowerCase());
             }
-
             oRm.writeClasses();
             oRm.write('>');
 
-            console.log('infoline render: ' + oCustomControl.getExpanded());
+            console.log('Dropdown render: ' + oCustomControl.getExpanded());
             this._addHeader(oRm, oCustomControl);
             this._addContent(oRm, oCustomControl);
-
             oRm.write('</div>');
         };
 
-        CustomRenderer._addHeader = function (oRm, oCustomControl) {
+         CustomRenderer._addHeader = function (oRm, oCustomControl) {
             oRm.write('<header');
-            oRm.addClass('uteMIl-hdr');
+            oRm.addClass('uteMDd-hdr');
             oRm.writeClasses();
             oRm.write('>');
 
@@ -40,27 +38,11 @@ sap.ui.define(
             oRm.write('</header>');
         };
 
-        CustomRenderer._addHeaderExpander = function (oRm, oCustomControl) {
-            var oHdrExpander;
-
-            oRm.write('<aside');
-            oRm.addClass('uteMIl-hdrExpander');
-            oRm.writeClasses();
-            oRm.write('>');
-
-            oHdrExpander = oCustomControl.getAggregation('_headerExpander');
-            oHdrExpander.addStyleClass('uteMIl-hdrExpanderDesign-' + oCustomControl.getDesign().toLowerCase());
-
-            oRm.renderControl(oHdrExpander);
-
-            oRm.write('</aside>');
-        };
-
         CustomRenderer._addHeaderContent = function (oRm, oCustomControl) {
             var aHdrContent;
 
             oRm.write('<article');
-            oRm.addClass('uteMIl-hdrContent');
+            oRm.addClass('uteMDd-hdrContent');
             oRm.writeClasses();
             oRm.write('>');
 
@@ -74,14 +56,30 @@ sap.ui.define(
             oRm.write('</article>');
         };
 
+          CustomRenderer._addHeaderExpander = function (oRm, oCustomControl) {
+            var oHdrExpander;
+
+            oRm.write('<aside');
+            oRm.addClass('uteMDd-hdrExpander');
+            oRm.writeClasses();
+            oRm.write('>');
+
+            oHdrExpander = oCustomControl.getAggregation('_headerExpander');
+            oHdrExpander.addStyleClass('uteMDd-hdrExpanderDesign-' + oCustomControl.getDesign().toLowerCase());
+
+            oRm.renderControl(oHdrExpander);
+
+            oRm.write('</aside>');
+        };
+
         CustomRenderer._addContent = function (oRm, oCustomControl) {
             var aContent;
 
             oRm.write('<section');
-            oRm.addClass('uteMIl-body');
+            oRm.addClass('uteMDd-body');
 
             if (!oCustomControl.getExpanded()) {
-                oRm.addClass('uteMIl-body-hidden');
+                oRm.addClass('uteMDd-body-hidden');
             }
 
             oRm.writeClasses();
@@ -97,7 +95,9 @@ sap.ui.define(
             oRm.write('</section>');
         };
 
+
         return CustomRenderer;
+
     },
 
     true

@@ -18,7 +18,7 @@ sap.ui.define(
             oRm.writeControlData(oCustomControl);
             oRm.addClass('uteMChkBox');
 
-            if (oCustomControl.getDesign() !== ute.ui.main.CheckboxDesign.None) {
+            if (oCustomControl.getDesign() !== nb.ui.main.CheckboxDesign.None) {
                 oRm.addClass('uteMChkBox-design-' + oCustomControl.getDesign().toLowerCase());
             }
 

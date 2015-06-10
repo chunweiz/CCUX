@@ -11,8 +11,28 @@
     displayBlock="true">
 
     <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+         <style>
+            .customHeader {
 
-        <um:Dropdown id="idDdzz"></um:Dropdown>
+                width: 100px;
+            }
+
+            .customBody {
+
+                width: 100px;
+            }
+        </style>
+
+        <nb:Dropdown id="idDdzz">
+        <nb:headerContent>
+                <div class="customHeader">Title</div>
+            </nb:headerContent>
+            <nb:content>
+                <div class="customBody">Item1</div>
+                <div class="customBody">Item2</div>
+
+            </nb:content>
+        </nb:Dropdown>
 
     </sm:ScrollContainer>
 </mvc:View>
