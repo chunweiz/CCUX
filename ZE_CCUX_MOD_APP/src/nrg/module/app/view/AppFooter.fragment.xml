@@ -22,22 +22,22 @@
             </aside>
             <article class="nrgAppFtr-offerToolbar nrgU-right">
                 <button type="button" class="nrgAppFtr-offerBtn">
-                    <ute:Tag class="nrgAppFtr-offerBtnTitle" text="{comp-i18n>nrgAppFooterCustReqOffer}" />
-                    <ute:Tag id="idCustReqOffer" class="nrgAppFtr-offerBtnDesc nrgAppFtr-offerBtnTitle-ok" text="{comp-i18n>nrgAppFooterEligibile}" />
+                    <ute:Tag class="nrgAppFtr-offerBtnTitle" text="{comp-i18n-app>nrgAppFooterCustReqOffer}" />
+                    <ute:Tag id="idCustReqOffer" class="nrgAppFtr-offerBtnDesc nrgAppFtr-offerBtnTitle-ok" text="{comp-i18n-app>nrgAppFooterEligibile}" />
                 </button>
                 <button type="button" class="nrgAppFtr-offerBtn">
-                    <ute:Tag class="nrgAppFtr-offerBtnTitle" text="{comp-i18n>nrgAppFooterAgentReqOffer}" />
-                    <ute:Tag id="idAgentReqOffer" class="nrgAppFtr-offerBtnDesc" text="{comp-i18n>nrgAppFooterNotEligibile}"  />
+                    <ute:Tag class="nrgAppFtr-offerBtnTitle" text="{comp-i18n-app>nrgAppFooterAgentReqOffer}" />
+                    <ute:Tag id="idAgentReqOffer" class="nrgAppFtr-offerBtnDesc" text="{comp-i18n-app>nrgAppFooterNotEligibile}"  />
                 </button>
             </article>
             <article class="nrgAppFtr-offer nrgU-right">
-                <ute:Tag class="nrgAppFtr-subTitle" text="{comp-i18n>nrgAppFooterOffer}"/>
+                <ute:Tag class="nrgAppFtr-subTitle" text="{comp-i18n-app>nrgAppFooterOffer}"/>
             </article>
             <article class="nrgAppFtr-rhs nrgU-right">
-                <ute:Tag class="nrgAppFtr-subTitle" text="{comp-i18n>nrgAppFooterRhs}"/>
+                <ute:Tag class="nrgAppFtr-subTitle" text="{comp-i18n-app>nrgAppFooterRhs}"/>
             </article>
             <article class="nrgAppFtr-notif nrgU-left">
-                <ute:Tag class="nrgAppFtr-subTitle" text="{comp-i18n>nrgAppFooterNotif}"/>
+                <ute:Tag class="nrgAppFtr-subTitle" text="{comp-i18n-app>nrgAppFooterNotif}"/>
             </article>
         </section>
     </ute:Tag>

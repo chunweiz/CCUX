@@ -11,7 +11,9 @@ sap.ui.define(
 
         var CustomController = Controller.extend('test.nb.ze_ccux_ctrl.view.Dropdown');
 
-
+ CustomController.prototype.onPressed = function (oControlEvent) {
+            alert(oControlEvent.getParameter('expanded'));
+        };
 
         return CustomController;
     }

@@ -27,7 +27,7 @@ sap.ui.define(
         AppMain.prototype.initialize = function () {
             this._oAppMainElem = this._oAppMain.getDomRef();
             this._oMainTitle = this._oAppMainElem.querySelector('.nrgAppMain-title');
-            this._oRscBundle = this._oController.getView().getModel('comp-i18n').getResourceBundle();
+            this._oRscBundle = this._oController.getView().getModel('comp-i18n-app').getResourceBundle();
             return this;
         };
 
