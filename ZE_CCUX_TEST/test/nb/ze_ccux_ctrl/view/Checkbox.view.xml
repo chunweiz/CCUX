@@ -13,31 +13,36 @@
     <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
         <style>
             .custom .uteMChkBox-chk {
-                border: 1px solid tomato;
-                width: 30px;
-                height: 30px;
+                <!--border: 1px solid tomato;-->
+              width: 0;
+	height: 0;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+
+	border-top: 20px solid #f00;
+
             }
 
             .custom .uteMChkBox-intChk:checked + .uteMChkBox-chk {
-                background-color: tomato;
+                <!--background-color: tomato;-->
             }
 
             .custom .uteMChkBox-intChk:checked + .uteMChkBox-chk::before {
-                content: '';
+               <!-- content: '';
                 position: absolute;
                 width: 4px;
                 height: 24px;
                 background-color: gold;
-                transform: translate(12px, 2px) rotate(45deg);
+                transform: translate(12px, 2px) rotate(45deg);-->
             }
 
             .custom .uteMChkBox-intChk:checked + .uteMChkBox-chk::after {
-                content: '';
+                <!--content: '';
                 position: absolute;
                 width: 4px;
                 height: 24px;
                 background-color: gold;
-                transform: translate(12px, 2px) rotate(-45deg);
+                transform: translate(12px, 2px) rotate(-45deg);-->
             }
         </style>
 
