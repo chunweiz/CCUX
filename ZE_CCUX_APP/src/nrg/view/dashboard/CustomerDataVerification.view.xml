@@ -16,7 +16,81 @@
                 <l:MatrixLayoutRow>
                     <l:cells>
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-l">
-                            <ute:TextView text="area1"/>
+                            <ute:Tag class="nrgDashboard-cusDataVerify-l-div">
+                                <ute:TextView text="Active"/>
+
+                                <ute:HorizontalDivider
+                                    class="nrgDashboard-cusDataVerify-horDvi"/>
+
+                                <utmain:Label text="TDSP"
+                                              labelFor="tdsp"/>
+                                <ute:TextView id="tdsp"
+                                              text="CENTERPOINT ENERGY"/>
+
+                                <ute:HorizontalDivider />
+
+                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                    <l:MatrixLayoutRow>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label text="METER. #"
+                                              labelFor="meter"/>
+                                            <ute:TextView id="meter"
+                                              text="123235457"/>
+                                        </l:MatrixLayoutCell>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label text="DESCRIPTION"
+                                              labelFor="desp"/>
+                                            <ute:TextView id="desp"
+                                              text="Non interval"/>
+                                        </l:MatrixLayoutCell>
+                                    </l:MatrixLayoutRow>
+                                </l:MatrixLayout>
+
+                                <ute:HorizontalDivider/>
+
+                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                    <l:MatrixLayoutRow>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label text="CONTRACT ACC"
+                                              labelFor="contacc"/>
+                                            <ute:TextView id="contacc"
+                                              text="0000000"/>
+                                        </l:MatrixLayoutCell>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label text="RATE CLASS"
+                                              labelFor="rtcls"/>
+                                            <ute:TextView id="rtcls"
+                                              text="RES"/>
+                                        </l:MatrixLayoutCell>
+                                    </l:MatrixLayoutRow>
+                                </l:MatrixLayout>
+
+                                <ute:HorizontalDivider/>
+
+                                <utmain:Label text="ESID"
+                                              labelFor="esid"/>
+                                <ute:TextView id="esid"
+                                              text="1234567891234567891234"/>
+
+                                <ute:HorizontalDivider/>
+
+                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                    <l:MatrixLayoutRow>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label text="DL #"
+                                              labelFor="dl"/>
+                                            <ute:TextView id="dl"
+                                              text="0000000000"/>
+                                        </l:MatrixLayoutCell>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label text="SS #"
+                                              labelFor="ssn"/>
+                                            <ute:TextView id="ssn"
+                                              text="*****1234"/>
+                                        </l:MatrixLayoutCell>
+                                    </l:MatrixLayoutRow>
+                                </l:MatrixLayout>
+                            </ute:Tag>
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-m">
                             <ute:TextView text="area2"/>
