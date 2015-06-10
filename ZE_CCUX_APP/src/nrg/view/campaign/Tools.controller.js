@@ -20,6 +20,11 @@ sap.ui.define(
             oFilterTemplate.sOperator = FilterOperator.EQ;
             oFilterTemplate.oValue1 = oContractID;
             aFilters.push(oFilterTemplate);
+
+            oFilterTemplate.sPath = 'Type';
+            oFilterTemplate.sOperator = FilterOperator.EQ;
+            oFilterTemplate.oValue1 = 'H';
+            aFilters.push(oFilterTemplate);
             return aFilters;
         };
         Controller.prototype.onHistoryPress = function (oEvent) {
@@ -30,33 +35,29 @@ sap.ui.define(
                 aHistoryView,
                 aDialog,
                 CamHisPrcTbl,
+                aScrollContainer,
+                oScrollTemplate,
+                aContent,
                 aFilters = this.createSearchFilterObject("1121");
             sPath = "/CpgHistS";
-            oModel = this.getOwnerComponent().getModel('comp-campaign');
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'overview-camp');
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'overview-campList');
-            oParameters = {
-                filters : aFilters,
-                success : function (oData) {
-                    this.getView().getModel('overview-camp').setData(oData.results);
-                    this.getView().getModel('overview-campList').setData(oData.results);
-                    this.getView().bindElement({
-                        model : "overview-camp",
-                        path : "/0"
-                    });
-                    jQuery.sap.log.info("Odata Read Successfully");
-                }.bind(this),
-                error: function (oError) {
-                    jQuery.sap.log.info("Some Error");
-                }.bind(this)
-            };
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
             jQuery.sap.require("ute.ui.commons.Dialog");
             aHistoryView = sap.ui.view({
                 type: sap.ui.core.mvc.ViewType.XML,
                 viewName: "nrg.view.campaign.History"
+            });
+            aScrollContainer = aHistoryView.byId("idnrgCamHisScroll");
+            oScrollTemplate = aHistoryView.byId("idnrgCamHisBut").clone();
+            oParameters = {
+                model : "comp-campaign",
+                path : sPath,
+                template : oScrollTemplate,
+                filters : aFilters
+            };
+            aScrollContainer.bindAggregation("content", oParameters);
+
+            this.getView().bindElement({
+                model : "comp-campaign",
+                path : sPath
             });
             aDialog = new ute.ui.commons.Dialog({
                 title: 'Campaign History',
