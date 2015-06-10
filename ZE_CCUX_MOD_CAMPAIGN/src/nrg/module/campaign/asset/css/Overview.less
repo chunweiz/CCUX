@@ -1,0 +1,59 @@
+.nrgCamOvrT {
+    font-family: @nrgFontFamily;
+
+    & > .nrgCamOvrTitleT {
+        margin-left: 8px;
+        font-size: @nrgFontSize-base;
+        font-weight: @nrgFontWeight-semiBold;
+    }
+    &  .nrgCamOvr-lbl {
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-inactiveGrey;
+    }
+    &  .nrgCamOvr-left {
+         margin-left: 22px;
+     }
+    &  .nrgCamOvr-top {
+        margin-top: 20px;
+    }
+    & > .nrgCamOvrMtx{
+        font-family: @nrgFontFamily;
+    }
+    & > .nrgCamOvr-offerToolbar {
+        width: 100%;
+        margin-left: 20px;
+    }
+    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn {
+        height: 50px;
+        background-color: @nrgColor-lightBlue;
+        border: none;
+        border-radius: 2px;
+        outline-style: none;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-right: 50px;
+    }
+   & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn:hover {
+        background-color: @nrgColor-darkPaleBlue;
+        color: @nrgColor-white;
+    }
+    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn[data-disabled="true"]:hover {
+        background-color: @nrgColor-lightBlue;
+        color: @nrgColor-grey-dark;
+    }
+    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn > .nrgCamOvr-offerBtnTitle {
+        font: @nrgFontWeight-semiBold @nrgFontSize-small @nrgFontFamily;
+        margin-bottom: 10px;
+    }
+
+    & > .nrgCamOvr-offerToolbar> .nrgCamOvr-offerBtn > .nrgCamOvr-offerBtnDesc {
+        font: @nrgFontWeight-semiBold @nrgFontSize-small @nrgFontFamily;
+        color: @nrgColor-redAlert;
+        text-transform: uppercase;
+    }
+    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn > .nrgCamOvr-offerBtnDesc[data-flag="X"] {
+         color: @nrgColor-blueLink;
+    }
+
+}
+

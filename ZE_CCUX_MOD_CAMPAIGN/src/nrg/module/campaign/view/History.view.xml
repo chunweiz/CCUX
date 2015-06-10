@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:c="sap.ui.commons"
+          xmlns:core="sap.ui.core"
+          xmlns:u="ute.ui.commons"
+          xmlns:l="sap.ui.commons.layout"
+          xmlns:m="sap.m"
+          xmlns:um="ute.ui.main"
+          controllerName="nrg.view.campaign.History"
+          height="100%"
+          width="100%"
+          displayBlock="true">
+   <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
+      <u:Tag class="nrgCamHisT">
+            <l:MatrixLayout class="nrgCamHisMtx nrgCamHis-top">
+                <l:MatrixLayoutRow>
+                    <l:MatrixLayoutCell>
+                        <u:TextView id="idCamHisTtlTv" text="{overview-camp>OfferTitle}"
+                                                    class="nrgCamHis-left"
+                                                    color="DarkGrey"
+                                                    design="Base"/>
+                    </l:MatrixLayoutCell>
+                </l:MatrixLayoutRow>
+            </l:MatrixLayout>
+            <u:Tag class="nrgCamHisPrcT">
+                <u:Table width="60%"
+                    id="idCamHisPrcTbl"
+                    tableType="CampaignTable"
+                    class="nrgCamHis-left nrgCamHis-top">
+                        <u:columns>
+                            <u:TableColumn width="33%" >
+                                <c:Label text="EFL@500"/>
+                            </u:TableColumn>
+                            <u:TableColumn width="33%" >
+                                <c:Label text="EFL@1000"/>
+                            </u:TableColumn>
+                            <u:TableColumn width="33%" >
+                                <c:Label text="EFL@2000"/>
+                            </u:TableColumn>
+                        </u:columns>
+                        <u:rows>
+                            <u:TableRow>
+                                <c:Label text="{overview-camp>EFL500}"/>
+                                <c:Label text="{overview-camp>EFL1000}"/>
+                                <c:Label text="{overview-camp>EFL2000}"/>
+                            </u:TableRow>
+                        </u:rows>
+                </u:Table>
+            </u:Tag>
+            <u:Tag class="nrgCamHisDscT">
+                    <u:TextView
+                        id="idCamHisDscTv"
+                        color="DarkGrey"
+                        class="nrgCamHis-left nrgCamHis-top"
+                        design="Base"
+                        text="{overview-camp>Description}" />
+            </u:Tag>
+            <u:Table width="99%"
+                     id="idnrgCamHisInfTbl"
+                     class="nrgCamHisInfTbl nrgCamHis-top"
+                     tableType="CampaignTable"
+                     >
+                <u:columns>
+                    <u:TableColumn width="14%" >
+                        <c:Label text="Promo Code"/>
+                    </u:TableColumn>
+                    <u:TableColumn width="14%" >
+                         <c:Label text="Offer Code"/>
+                    </u:TableColumn>
+                    <u:TableColumn width="14%" >
+                         <c:Label text="Term Length"/>
+                    </u:TableColumn>
+                    <u:TableColumn width="14%" >
+                        <c:Label text="Start Date"/>
+                    </u:TableColumn>
+                    <u:TableColumn width="14%" >
+                         <c:Label text="End Date"/>
+                    </u:TableColumn>
+                    <u:TableColumn width="14%" >
+                         <c:Label text="Cancellation Fee"/>
+                    </u:TableColumn>
+                    <u:TableColumn width="14%" >
+                         <c:Label text="Incentive"/>
+                    </u:TableColumn>
+                </u:columns>
+                <u:rows>
+                    <u:TableRow>
+                        <c:Label text="{overview-camp>PromoCode}"/>
+                        <c:Label text="{overview-camp>OfferCode}"/>
+                        <c:Label text="{overview-camp>TermLength}"/>
+<!--                        <c:Label text="{path: 'overview-camp>StartDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                        <c:Label text="{path: 'overview-camp>EndDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />-->
+                        <c:Label text="{overview-camp>CancellationFee}"/>
+<!--                        <c:Label text="{overview-camp>Incentive}"/>-->
+                    </u:TableRow>
+                </u:rows>
+            </u:Table>
+            <u:Tag class="nrgCamHisDiv"></u:Tag>
+            <m:ScrollContainer
+            height="135px"
+            width="100%"
+            horizontal="false"
+            vertical="true"
+            focusable="true"
+            class="nrgCamHisScroll"
+            id="idnrgCamHisScroll"
+            content="{overview-campList>/}">
+                    <um:Button press=".onPressed" text="{overview-campList>Notitle}" class="nrgCamHisBut" design="None">
+                            <u:Tag class="nrgCamHisBut-Date" text="{parts:[{path:'overview-campList>StartDate',
+                                                                                type: 'sap.ui.model.type.Date',
+                                                                                formatOptions:{pattern: 'MM/dd/yyyy'} },
+                                                                           {path: 'overview-campList>EndDate',
+                                                                                type: 'sap.ui.model.type.Date',
+                                                                                formatOptions:{pattern: 'MM/dd/yyyy'} }],
+                                                                    formatter:'.formatTileDate'}" />
+                            <u:Tag class="nrgCamHisBut-Title" text="{overview-campList>OfferTitle}" />
+                            <u:Tag class="nrgCamHisBut-Price" text="{path: 'overview-campList>EFL2000',
+                                                                    type: 'nrg.util.type.Price',
+                                                                    formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
+                            <u:Tag class="nrgCamHisBut-PriceLbl" text="{comp-i18n>nrgCmpHiskWhDisc}" />
+
+                    </um:Button>
+          </m:ScrollContainer>
+      </u:Tag>
+   </u:Tag>
+</mvc:View>

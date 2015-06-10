@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZE_CCUX_CAMPAIGN_OVW_SRV">
+            <EntityType Name="LegalDoc">
+                <Key>
+                    <PropertyRef Name="TextName"/>
+                    <PropertyRef Name="TextLang"/>
+                </Key>
+                <Property MaxLength="70" Name="TextName" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="2" Name="TextLang" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="OfferCode" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="5000" Name="TextLine" Nullable="false" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="CpgChange">
+                <Key>
+                    <PropertyRef Name="ContractID"/>
+                </Key>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="RequestedType" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="OfferCode" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="1" Name="Type" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="Tier" Nullable="false" Type="Edm.String"/>
+                <Property Name="StartDate" Nullable="false" Type="Edm.DateTime"/>
+                <Property Name="EndDate" Nullable="false" Type="Edm.DateTime"/>
+                <Property MaxLength="60" Name="OfferTitle" Nullable="false" Type="Edm.String"/>
+                <Property Name="AverageUsage" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="EFL500" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="EFL1000" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="EFL2000" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property MaxLength="5" Name="PromoCode" Nullable="false" Type="Edm.String"/>
+                <Property Name="TermLength" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="CancellationFee" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="Incentive" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="CurrInvAmount" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="CurrConsumption" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+            </EntityType>
+            <EntityType Name="CpgCmpbyInv">
+                <Key>
+                    <PropertyRef Name="SelectedCampaignID"/>
+                    <PropertyRef Name="CurrConsumption"/>
+                </Key>
+                <Property MaxLength="10" Name="SelectedCampaignID" Nullable="false" Type="Edm.String"/>
+                <Property Name="CurrConsumption" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
+                <Property Name="EstimatedInvoice" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="EstimatedcentsperkWh" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+            </EntityType>
+            <EntityType Name="CpgEligibility">
+                <Key>
+                    <PropertyRef Name="ContractID"/>
+                </Key>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="1" Name="AgentEligFlag" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="1" Name="CustomerEligFlag" Nullable="false" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="CpgChgCheck">
+                <Key>
+                    <PropertyRef Name="ContractID"/>
+                </Key>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="1" Name="Status" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="200" Name="Message" Nullable="false" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="CpgCancel">
+                <Key>
+                    <PropertyRef Name="PndgOfferCode"/>
+                </Key>
+                <Property MaxLength="10" Name="PndgOfferCode" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="1" Name="ReturnStatus" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="200" Name="ReturnMessage" Nullable="false" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="CpgOverview">
+                <Key>
+                    <PropertyRef Name="Type"/>
+                </Key>
+                <Property MaxLength="1" Name="Type" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="OfferCode" Nullable="false" Type="Edm.String"/>
+                <Property Name="StartDate" Nullable="false" Type="Edm.DateTime"/>
+                <Property Name="EndDate" Nullable="false" Type="Edm.DateTime"/>
+                <Property MaxLength="60" Name="OfferTitle" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="1000" Name="Description" Nullable="false" Type="Edm.String"/>
+                <Property Name="AverageUsage" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="EFL500" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="EFL1000" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="EFL2000" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property MaxLength="5" Name="PromoCode" Nullable="false" Type="Edm.String"/>
+                <Property Name="TermLength" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="CancellationFee" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="Incentive" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property MaxLength="50" Name="DispositionReason" Nullable="false" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="CpgCmpbyCons">
+                <Key>
+                    <PropertyRef Name="CurrOfferCode"/>
+                    <PropertyRef Name="SelectedOfferCode"/>
+                    <PropertyRef Name="CurrConsumption"/>
+                </Key>
+                <Property MaxLength="10" Name="CurrOfferCode" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="SelectedOfferCode" Nullable="false" Type="Edm.String"/>
+                <Property Name="CurrConsumption" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
+                <Property Name="SimCurrInvoice" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="EstimatedInvoice" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="EstimatedcentsperkWh" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+            </EntityType>
+            <EntityContainer Name="ZE_CCUX_CAMPAIGN_OVW_SRV_Entities" m:IsDefaultEntityContainer="true">
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.LegalDoc" Name="LegalDocS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgChange" Name="CpgChgTilesS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgCmpbyInv" Name="CpgCmpbyInvS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgEligibility" Name="CpgEligS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgChgCheck" Name="CpgChgCheckS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgCancel" Name="CpgCancelS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview" Name="CpgHistS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview" Name="CpgCurPndS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview" Name="CpgChgDispLglDocS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgCmpbyCons" Name="CpgCmpbyConsmpS"/>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

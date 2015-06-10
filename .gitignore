@@ -4,3 +4,11 @@
 /ZE_CCUX_CTRL/node_modules/
 /ZE_CCUX_CTRL/build/
 /ZE_CCUX_LIB/bower_components/
+/ZE_CCUX_BASE/build/
+/ZE_CCUX_COMP_IC/build/
+/ZE_CCUX_CTRL_MAIN/build/
+/ZE_CCUX_CTRL_COMMONS/build/
+/ZE_CCUX_MOD_APP/build/
+/ZE_CCUX_MOD_OTHERS/build/
+/ZE_CCUX_MOD_DASHBOARD/build/
+/ZE_CCUX_MOD_CAMPAIGN/build/

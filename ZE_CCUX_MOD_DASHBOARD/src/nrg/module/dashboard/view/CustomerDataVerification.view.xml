@@ -1,0 +1,32 @@
+<!--Routing Pattern: customerDataVerification/bp/{bpNum}-->
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:utmain="ute.ui.main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.commons"
+    xmlns:l="sap.ui.commons.layout"
+    controllerName="nrg.view.dashboard.CallerNoIDEnrollment">
+
+    <ute:Tag class="nrgAppMain-generalContent nrgDashboard-cusDataVerify">
+        <l:MatrixLayout
+            class="nrgDashboard-cusDataVerify-layout"
+            widths="288px,534px,84px" columns="3" width="100%">
+            <l:rows>
+                <l:MatrixLayoutRow>
+                    <l:cells>
+                        <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-l">
+                            <ute:TextView text="area1"/>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-m">
+                            <ute:TextView text="area2"/>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-r">
+                            <ute:TextView text="area3"/>
+                        </l:MatrixLayoutCell>
+                    </l:cells>
+                </l:MatrixLayoutRow>
+            </l:rows>
+        </l:MatrixLayout>
+    </ute:Tag>
+</mvc:View>

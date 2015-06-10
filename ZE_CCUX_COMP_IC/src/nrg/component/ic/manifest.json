@@ -1,0 +1,62 @@
+{
+    "name": "nrg.component.ic.Component",
+
+    "sap.app": {
+        "id": "nrg.component.ic.Component",
+        "type": "application",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "Reliant Interaction Center",
+        "description": "Reliant Interaction Center"
+    },
+
+    "sap.ui": {
+        "technology": "UI5"
+    },
+
+    "sap.ui5": {
+        "handleValidation": true,
+
+        "resources": {
+            "css": [
+                { "uri": "../../asset/css/nrg.css" }
+            ]
+        },
+
+        "dependencies": {
+            "minUI5Version": "1.28.6",
+            "libs": {
+                "sap.ui.core": { "minVersion": "1.28.6" },
+                "sap.m": { "minVersion": "1.28.6" },
+                "sap.ui.commons": { "minVersion": "1.28.6" },
+                "ute.ui.commons": { "minVersion": "1.0.0" },
+                "ute.ui.main": { "minVersion": "1.0.0" }
+            }
+        },
+
+        "config": {
+            "resourceBundle": "i18n/messageBundle.properties"
+        },
+
+        "rootView": {
+            "viewName": "nrg.view.app.App",
+            "type": "XML"
+        },
+
+        "routing": {
+            "routes": {
+                "notFound": {
+                    "pattern": "{all*}",
+                    "target": [ "others.GeneralEmpty", "others.SummaryEmpty", "others.ToolsEmpty" ]
+                }
+            },
+            "config": {
+                "viewType": "XML",
+                "viewPath": "nrg.view",
+                "controlAggregation": "content",
+                "clearControlAggregation": true
+            }
+        }
+    }
+}
