@@ -14,13 +14,14 @@ sap.ui.define(
             oRm.writeControlData(oCustomControl);
             oRm.addClass('uteMIl');
 
-            if (oCustomControl.getDesign() !== ute.ui.main.InfolineDesign.None) {
+            if (oCustomControl.getDesign() !== nb.ui.main.InfolineDesign.None) {
                 oRm.addClass('uteMIl-design-' + oCustomControl.getDesign().toLowerCase());
             }
 
             oRm.writeClasses();
             oRm.write('>');
 
+            console.log('infoline render: ' + oCustomControl.getExpanded());
             this._addHeader(oRm, oCustomControl);
             this._addContent(oRm, oCustomControl);
 

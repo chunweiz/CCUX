@@ -3,12 +3,12 @@
         "config": {
             "module": {
                 "others": {
-                    "css": [
-                        "nrg/module/others/asset/css/module.css"
+                    "stylesheet": [
+                        "asset/css/module.css"
                     ],
 
                     "resourceBundle": {
-                        "comp-i18n-others": "nrg/module/others/i18n/module.properties"
+                        "comp-i18n-others": "i18n/module.properties"
                     }
                 }
             }

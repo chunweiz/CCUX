@@ -20,7 +20,8 @@
 
         "resources": {
             "css": [
-                { "uri": "../../asset/css/nrg.css" }
+                { "uri": "../../../../../ZE_CCUX_LIB/bower_components/normalize.css/normalize.css" },
+                { "uri": "../../../../../ZE_CCUX_BASE/build/nrg/base/asset/css/base.css" }
             ]
         },
 
@@ -35,12 +36,8 @@
             }
         },
 
-        "config": {
-            "resourceBundle": "i18n/messageBundle.properties"
-        },
-
         "rootView": {
-            "viewName": "nrg.view.app.App",
+            "viewName": "nrg.module.app.view.App",
             "type": "XML"
         },
 
@@ -53,7 +50,6 @@
             },
             "config": {
                 "viewType": "XML",
-                "viewPath": "nrg.view",
                 "controlAggregation": "content",
                 "clearControlAggregation": true
             }

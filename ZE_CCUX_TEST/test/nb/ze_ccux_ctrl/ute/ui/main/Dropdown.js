@@ -3,21 +3,20 @@
 
 sap.ui.define(
     [
-        'jquery.sap.global',
         'sap/ui/core/Control',
         'sap/ui/core/EnabledPropagator',
         './Checkbox'
     ],
 
-    function (jQuery, Control, EnabledPropagator, Checkbox) {
+    function (Control, EnabledPropagator, Checkbox) {
         'use strict';
 
-        var CustomControl = Control.extend('ute.ui.main.Infoline', {
+        var CustomControl = Control.extend('nb.ui.main.Dropdown', {
             metadata: {
-                library: 'ute.ui.main',
+                library: 'nb.ui.main',
 
                 properties: {
-                    design: { type: 'ute.ui.main.InfolineDesign', defaultValue: ute.ui.main.InfolineDesign.Default },
+                    design: { type: 'nb.ui.main.DropdownDesign', defaultValue: nb.ui.main.DropdownDesign.Default },
                     expanded: { type: 'boolean', defaultValue: false }
                 },
 
@@ -46,7 +45,7 @@ sap.ui.define(
             }
 
             this._oHdrExpander = new Checkbox({
-                design: ute.ui.main.CheckboxDesign.None,
+                design: nb.ui.main.DropdownDesign.None,
                 select: jQuery.proxy(this._onHdrExpanderSelected, this),
                 checked: this.getExpanded()
             });
@@ -61,7 +60,7 @@ sap.ui.define(
         };
 
         CustomControl.prototype.setExpanded = function (bValue) {
-            this.$('.uteMIl-body').toggleClass('uteMIl-body-hidden');
+            this.$('.uteMDd-body').toggleClass('uteMDd-body-hidden');
 
             this.setProperty('expanded', bValue);
             return this;

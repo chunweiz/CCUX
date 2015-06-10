@@ -16,7 +16,7 @@ sap.ui.define(
 			types: [
                 'nb.ui.main.ButtonDesign',
                 'nb.ui.main.ToggleBarDesign',
-               // 'nb.ui.main.CheckboxDesign',
+                'nb.ui.main.CheckboxDesign',
                 'nb.ui.main.InfolineDesign',
                 'nb.ui.main.DropdownDesign'
             ],
@@ -25,7 +25,7 @@ sap.ui.define(
 				'nb.ui.main.Button',
 				'nb.ui.main.ToggleBar',
                 'nb.ui.main.Label',
-               // 'nb.ui.main.Checkbox',
+                'nb.ui.main.Checkbox',
                 'nb.ui.main.Infoline',
                 'nb.ui.main.Dropdown'
 			],

@@ -10,7 +10,7 @@
         ** Determine which build to use
         */
         sBuild = grunt.option('build');
-        sCompName = grunt.option('componentName')
+        sCompName = grunt.option('componentName');
 
         if (sBuild === 'component') {
             BuildTask = require('./grunt/build/component/' + sCompName);

@@ -7,47 +7,47 @@
         <ul class="nrgAppHdrQLink-group">
             <ute:Tag elem="li" id="idBilling" class="nrgAppHdrQLink-link nrgAppHdrQLink-link-underlined">
                 <core:Icon src="sap-icon://nrg-icon/billing" class="nrgAppHdrQLink-linkIcon" />
-                <ute:Tag elem="span" text="{comp-i18n>nrgAppHeaderBilling}" class="nrgAppHdrQLink-linkText" />
+                <ute:Tag elem="span" text="{comp-i18n-app>nrgAppHeaderBilling}" class="nrgAppHdrQLink-linkText" />
             </ute:Tag>
             <ute:Tag elem="li" id="idBp" class="nrgAppHdrQLink-link">
                 <core:Icon src="sap-icon://nrg-icon/bp" class="nrgAppHdrQLink-linkIcon" />
-                <ute:Tag elem="span" text="{comp-i18n>nrgAppHeaderBp}" class="nrgAppHdrQLink-linkText" />
+                <ute:Tag elem="span" text="{comp-i18n-app>nrgAppHeaderBp}" class="nrgAppHdrQLink-linkText" />
             </ute:Tag>
         </ul>
         <ul class="nrgAppHdrQLink-group">
             <ute:Tag elem="li" id="idRhs" class="nrgAppHdrQLink-link nrgAppHdrQLink-link-underlined">
                 <core:Icon src="sap-icon://nrg-icon/rhs" class="nrgAppHdrQLink-linkIcon" />
-                <ute:Tag elem="span" text="{comp-i18n>nrgAppHeaderRhs}" class="nrgAppHdrQLink-linkText" />
+                <ute:Tag elem="span" text="{comp-i18n-app>nrgAppHeaderRhs}" class="nrgAppHdrQLink-linkText" />
             </ute:Tag>
             <ute:Tag elem="li" id="idContactLogs" class="nrgAppHdrQLink-link">
                 <core:Icon src="sap-icon://nrg-icon/pencil" class="nrgAppHdrQLink-linkIcon" />
-                <ute:Tag elem="span" text="{comp-i18n>nrgAppHeaderContactLogs}" class="nrgAppHdrQLink-linkText" />
+                <ute:Tag elem="span" text="{comp-i18n-app>nrgAppHeaderContactLogs}" class="nrgAppHdrQLink-linkText" />
             </ute:Tag>
         </ul>
         <ul class="nrgAppHdrQLink-group">
             <ute:Tag elem="li" id="idHighBill" class="nrgAppHdrQLink-link">
                 <core:Icon src="sap-icon://nrg-icon/high-bill" class="nrgAppHdrQLink-linkIcon" />
-                <ute:Tag elem="span" text="{comp-i18n>nrgAppHeaderHighBill}" class="nrgAppHdrQLink-linkText" />
+                <ute:Tag elem="span" text="{comp-i18n-app>nrgAppHeaderHighBill}" class="nrgAppHdrQLink-linkText" />
             </ute:Tag>
         </ul>
         <ul class="nrgAppHdrQLink-group">
             <ute:Tag elem="li" id="idHistory" class="nrgAppHdrQLink-link nrgAppHdrQLink-link-underlined">
                 <core:Icon src="sap-icon://nrg-icon/history" class="nrgAppHdrQLink-linkIcon" />
-                <ute:Tag elem="span" text="{comp-i18n>nrgAppHeaderHistory}" class="nrgAppHdrQLink-linkText" />
+                <ute:Tag elem="span" text="{comp-i18n-app>nrgAppHeaderHistory}" class="nrgAppHdrQLink-linkText" />
             </ute:Tag>
             <ute:Tag elem="li" id="idSvcOrds" class="nrgAppHdrQLink-link">
                 <core:Icon src="sap-icon://nrg-icon/service-order" class="nrgAppHdrQLink-linkIcon" />
-                <ute:Tag elem="span" text="{comp-i18n>nrgAppHeaderSvcOrds}" class="nrgAppHdrQLink-linkText" />
+                <ute:Tag elem="span" text="{comp-i18n-app>nrgAppHeaderSvcOrds}" class="nrgAppHdrQLink-linkText" />
             </ute:Tag>
         </ul>
         <ul class="nrgAppHdrQLink-group">
             <ute:Tag elem="li" id="idBizEnroll" class="nrgAppHdrQLink-link nrgAppHdrQLink-link-underlined">
                 <core:Icon src="sap-icon://nrg-icon/enroll-biz" class="nrgAppHdrQLink-linkIcon" />
-                <ute:Tag elem="span" text="{comp-i18n>nrgAppHeaderBizEnroll}" class="nrgAppHdrQLink-linkText" />
+                <ute:Tag elem="span" text="{comp-i18n-app>nrgAppHeaderBizEnroll}" class="nrgAppHdrQLink-linkText" />
             </ute:Tag>
             <ute:Tag elem="li" id="idResEnroll" class="nrgAppHdrQLink-link">
                 <core:Icon src="sap-icon://nrg-icon/enroll-res" class="nrgAppHdrQLink-linkIcon" />
-                <ute:Tag elem="span" text="{comp-i18n>nrgAppHeaderResEnroll}" class="nrgAppHdrQLink-linkText" />
+                <ute:Tag elem="span" text="{comp-i18n-app>nrgAppHeaderResEnroll}" class="nrgAppHdrQLink-linkText" />
             </ute:Tag>
         </ul>
     </ute:Tag>
