@@ -22,7 +22,7 @@
                     files: {
                         cwd: '<%= baseFolder %>/src',
                         src: [
-                            'nrg/**/*.js'
+                            'nrg/base/**/*.js'
                         ]
                     }
                 }
@@ -58,19 +58,20 @@
                     files: [
                         {
                             expand: true,
-                            cwd: '<%= baseFolder %>/src/nrg',
+                            cwd: '<%= baseFolder %>/src/nrg/base',
                             src: [
                                 'asset/css/font/**',
-                                'asset/img/**/*.png'
+                                'asset/img/**/*.png',
+                                'component/**/*.json'
                             ],
-                            dest: '<%= baseFolder %>/build/nrg/',
+                            dest: '<%= baseFolder %>/build/nrg/base/',
                             filter: 'isFile'
                         },
                         {
                             expand: true,
                             cwd: '<%= baseFolder %>/src',
                             src: [
-                                'nrg/**/*.js'
+                                'nrg/base/**/*.js'
                             ],
                             dest: '<%= baseFolder %>/build/',
                             filter: 'isFile',
@@ -82,6 +83,22 @@
                             }
                         }
                     ]
+                }
+            };
+
+            return oConfig;
+        }(grunt));
+
+        /*
+        ** Compress all json files
+        */
+        oGruntConfig['json-minify'] = (function (grunt) {
+            var oConfig;
+
+            oConfig = {
+                deploy: {
+                    files: '<%= baseFolder %>/build/nrg/base/**/*.json'
+
                 }
             };
 
@@ -101,7 +118,7 @@
                             expand: true,
                             cwd: '<%= baseFolder %>/src',
                             src: [
-                                'nrg/**/*.js'
+                                'nrg/base/**/*.js'
                             ],
                             dest: '<%= baseFolder %>/build'
                         }
@@ -140,7 +157,7 @@
                         ]
                     },
                     files: {
-                        '<%= baseFolder %>/build/nrg/asset/css/base.css': '<%= baseFolder %>/src/nrg/asset/css/base.less'
+                        '<%= baseFolder %>/build/nrg/base/asset/css/base.css': '<%= baseFolder %>/src/nrg/base/asset/css/base.less'
                     }
                 }
             };
@@ -155,13 +172,15 @@
         grunt.loadNpmTasks('grunt-contrib-copy');
         grunt.loadNpmTasks('grunt-contrib-less');
         grunt.loadNpmTasks('grunt-contrib-uglify');
+        grunt.loadNpmTasks('grunt-json-minify');
 
         grunt.registerTask('default', [
             'jshint',
             'clean',
             'copy',
             'less',
-            'uglify'
+            'uglify',
+            'json-minify'
         ]);
     };
 
