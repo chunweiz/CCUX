@@ -10,10 +10,10 @@
     width="100%"
     displayBlock="true">
 
-    <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+   <div>
          <style>
             .customHeader {
-
+                border: 5px;
                 width: 100px;
             }
 
@@ -33,6 +33,6 @@
 
             </nb:content>
         </nb:Dropdown>
+</div>
 
-    </sm:ScrollContainer>
 </mvc:View>

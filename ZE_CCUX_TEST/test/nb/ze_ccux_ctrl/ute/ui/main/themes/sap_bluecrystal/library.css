@@ -220,11 +220,14 @@
 .uteMDd {
     display: block;
     position: relative;
+
     }
 
 .uteMDd .uteMDd-hdr {
     display: block;
     position: relative;
+     border: 2px solid grey;
+    border-radius: 4px;
 }
 
 .uteMDd .uteMDd-hdr .uteMDd-hdrContent {
@@ -240,6 +243,9 @@
 .uteMDd .uteMDd-body {
     display: block;
     position: relative;
+    top: 5px;
+     border: 2px solid grey;
+    border-radius: 4px;
 }
 
 .uteMDd .uteMDd-body.uteMDd-body-hidden {
