@@ -14,11 +14,60 @@
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
     <u:Tag class="nrgCmpOffT">
          <u:Tag class="nrgCamOffTtlT" text="{comp-i18n-campaign>nrgCmpOffTtl}" />
+
+            <u:Tag class="nrgCmpOffCompare">
+                <u:Tag class="nrgCamOffCmpTitle" text="{comp-i18n-campaign>nrgCmpOffCompareBy}" />
+                <um:Button id="idCamToggleBtn-I"
+                    press=".toggleTier"
+                    text="{comp-i18n-campaign>nrgCmpOffCpInvoice}"
+                    class="nrgCamOvr-offerBtn"
+                    design="None">
+                </um:button>
+                <um:Button id="idCamToggleBtn-C"
+                    press=".toggleTier"
+                    text="{comp-i18n-campaign>nrgCmpOffCpConsumption}"
+                    class="nrgCamOvr-offerBtn"
+                    design="None">
+                </um:button>
+            </u:Tag>
+            <u:Tag class="nrgCmpOffDisplay-1">
+            </u:Tag>
+            <u:Tag class="nrgCmpOffDisplay-2">
+            </u:Tag>
+
             <u:Tag class="nrgCmpOffTiers">
-                    <u:Tag class="nrgCmpOffTier" text="{comp-i18n-campaign>nrgCmpOffTProactive}" />
-                    <u:Tag class="nrgCmpOffTier" text="{comp-i18n-campaign>nrgCmpOffTReactive}" />
-                    <u:Tag class="nrgCmpOffTier" text="{comp-i18n-campaign>nrgCmpOffTSave}" />
-                    <u:Tag class="nrgCmpOffTier" text="{comp-i18n-campaign>nrgCmpOffTFinalSave}" />
+                    <u:Tag class="nrgCmpOffTier">
+                            <um:Button id="idCamToggleBtn-P"
+                            press=".toggleTier"
+                            text="{comp-i18n-campaign>nrgCmpOffTProactive}"
+                            class="nrgCamOvr-offerBtn"
+                            design="None">
+                            </um:button>
+                    </u:Tag>
+                    <u:Tag class="nrgCmpOffTier">
+                            <um:Button id="idCamToggleBtn-R"
+                            press=".toggleTier"
+                            text="{comp-i18n-campaign>nrgCmpOffTReactive}"
+                            class="nrgCamOvr-offerBtn"
+                            design="None">
+                            </um:button>
+                    </u:Tag>
+                    <u:Tag class="nrgCmpOffTier">
+                            <um:Button id="idCamToggleBtn-S"
+                            press=".toggleTier"
+                            text="{comp-i18n-campaign>nrgCmpOffTSave}"
+                            class="nrgCamOvr-offerBtn"
+                            design="None">
+                            </um:button>
+                    </u:Tag>
+                    <u:Tag class="nrgCmpOffTier">
+                            <um:Button id="idCamToggleBtn-FS"
+                            press=".toggleTier"
+                            text="{comp-i18n-campaign>nrgCmpOffTFinalSave}"
+                            class="nrgCamOvr-offerBtn"
+                            design="None">
+                            </um:button>
+                    </u:Tag>
             </u:Tag>
             <u:Tag class="nrgCmpOffTiles">
                     <m:ScrollContainer
