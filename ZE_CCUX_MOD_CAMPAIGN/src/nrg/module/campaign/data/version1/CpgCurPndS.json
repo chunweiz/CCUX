@@ -17,7 +17,7 @@
             "TermLength":9387,
             "CancellationFee":6816.34,
             "Incentive":9636.09,
-            "DispositionReason":"DispositionReason 1",
+            "label":"Current Campaign",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type C')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -40,7 +40,7 @@
             "TermLength":6042,
             "CancellationFee":282.92,
             "Incentive":2312.38,
-            "DispositionReason":"DispositionReason 2",
+            "label":"Pending Campaign",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type P')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -49,7 +49,7 @@
          },
          {
             "Type":"H",
-            "ContractID":"1121",
+            "ContractID":"Contract",
             "OfferCode":"CND AVG@2000=12.1 Secure Advantage 24",
             "StartDate":"/Date(1017774369000)/",
             "EndDate":"/Date(1419624369000)/",
@@ -63,7 +63,7 @@
             "TermLength":9168,
             "CancellationFee":84.79,
             "Incentive":9416.11,
-            "DispositionReason":"DispositionReason 3",
+            "label":"label 3",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type H')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -86,7 +86,7 @@
             "TermLength":7411,
             "CancellationFee":5779.15,
             "Incentive":9460.23,
-            "DispositionReason":"DispositionReason 4",
+            "label":"label 4",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 4')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -109,7 +109,7 @@
             "TermLength":1567,
             "CancellationFee":1730.05,
             "Incentive":3079.53,
-            "DispositionReason":"DispositionReason 5",
+            "label":"label 5",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 5')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -132,7 +132,7 @@
             "TermLength":7682,
             "CancellationFee":8391.22,
             "Incentive":3885.95,
-            "DispositionReason":"DispositionReason 6",
+            "label":"label 6",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 6')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -155,7 +155,7 @@
             "TermLength":7693,
             "CancellationFee":5965.94,
             "Incentive":6957.17,
-            "DispositionReason":"DispositionReason 7",
+            "label":"label 7",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 7')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -178,7 +178,7 @@
             "TermLength":3717,
             "CancellationFee":3442.54,
             "Incentive":9936.13,
-            "DispositionReason":"DispositionReason 8",
+            "label":"label 8",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 8')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -201,7 +201,7 @@
             "TermLength":1064,
             "CancellationFee":4926.25,
             "Incentive":8731.59,
-            "DispositionReason":"DispositionReason 9",
+            "label":"label 9",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 9')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -224,7 +224,7 @@
             "TermLength":6936,
             "CancellationFee":2369.08,
             "Incentive":6413.47,
-            "DispositionReason":"DispositionReason 10",
+            "label":"label 10",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 10')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -247,7 +247,7 @@
             "TermLength":3908,
             "CancellationFee":3634.1,
             "Incentive":2693.97,
-            "DispositionReason":"DispositionReason 11",
+            "label":"label 11",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 11')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -270,7 +270,7 @@
             "TermLength":466,
             "CancellationFee":4144.32,
             "Incentive":1624.82,
-            "DispositionReason":"DispositionReason 12",
+            "label":"label 12",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 12')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -293,7 +293,7 @@
             "TermLength":963,
             "CancellationFee":3585.96,
             "Incentive":2517.26,
-            "DispositionReason":"DispositionReason 13",
+            "label":"label 13",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 13')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -316,7 +316,7 @@
             "TermLength":9086,
             "CancellationFee":550.37,
             "Incentive":3181.73,
-            "DispositionReason":"DispositionReason 14",
+            "label":"label 14",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 14')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -339,7 +339,7 @@
             "TermLength":9768,
             "CancellationFee":3294.85,
             "Incentive":8478.17,
-            "DispositionReason":"DispositionReason 15",
+            "label":"label 15",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 15')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -362,7 +362,7 @@
             "TermLength":3148,
             "CancellationFee":3269.65,
             "Incentive":2715.55,
-            "DispositionReason":"DispositionReason 16",
+            "label":"label 16",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 16')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -385,7 +385,7 @@
             "TermLength":4864,
             "CancellationFee":3391.09,
             "Incentive":359.54,
-            "DispositionReason":"DispositionReason 17",
+            "label":"label 17",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 17')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -408,7 +408,7 @@
             "TermLength":1510,
             "CancellationFee":1192.25,
             "Incentive":5226.01,
-            "DispositionReason":"DispositionReason 18",
+            "label":"label 18",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 18')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -431,7 +431,7 @@
             "TermLength":1827,
             "CancellationFee":5348.84,
             "Incentive":9653.83,
-            "DispositionReason":"DispositionReason 19",
+            "label":"label 19",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 19')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -454,7 +454,7 @@
             "TermLength":8063,
             "CancellationFee":9877.73,
             "Incentive":5788.15,
-            "DispositionReason":"DispositionReason 20",
+            "label":"label 20",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 20')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -477,7 +477,7 @@
             "TermLength":4252,
             "CancellationFee":8209.9,
             "Incentive":4564.51,
-            "DispositionReason":"DispositionReason 21",
+            "label":"label 21",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 21')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -500,7 +500,7 @@
             "TermLength":165,
             "CancellationFee":1472.09,
             "Incentive":482.87,
-            "DispositionReason":"DispositionReason 22",
+            "label":"label 22",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 22')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -523,7 +523,7 @@
             "TermLength":9307,
             "CancellationFee":8188.91,
             "Incentive":6295.44,
-            "DispositionReason":"DispositionReason 23",
+            "label":"label 23",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 23')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -546,7 +546,7 @@
             "TermLength":6823,
             "CancellationFee":3409.92,
             "Incentive":2042.53,
-            "DispositionReason":"DispositionReason 24",
+            "label":"label 24",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 24')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -569,7 +569,7 @@
             "TermLength":1958,
             "CancellationFee":1594.01,
             "Incentive":9152.9,
-            "DispositionReason":"DispositionReason 25",
+            "label":"label 25",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 25')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -592,7 +592,7 @@
             "TermLength":6568,
             "CancellationFee":3600.93,
             "Incentive":6424.02,
-            "DispositionReason":"DispositionReason 26",
+            "label":"label 26",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 26')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -615,7 +615,7 @@
             "TermLength":9963,
             "CancellationFee":5365.62,
             "Incentive":4519.59,
-            "DispositionReason":"DispositionReason 27",
+            "label":"label 27",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 27')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -638,7 +638,7 @@
             "TermLength":5398,
             "CancellationFee":453.1,
             "Incentive":9678.31,
-            "DispositionReason":"DispositionReason 28",
+            "label":"label 28",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 28')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -661,7 +661,7 @@
             "TermLength":3483,
             "CancellationFee":2274.97,
             "Incentive":7997.95,
-            "DispositionReason":"DispositionReason 29",
+            "label":"label 29",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 29')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -684,7 +684,7 @@
             "TermLength":4112,
             "CancellationFee":8700.58,
             "Incentive":2255.6,
-            "DispositionReason":"DispositionReason 30",
+            "label":"label 30",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 30')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -707,7 +707,7 @@
             "TermLength":9696,
             "CancellationFee":8370.39,
             "Incentive":282.41,
-            "DispositionReason":"DispositionReason 31",
+            "label":"label 31",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 31')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -730,7 +730,7 @@
             "TermLength":3262,
             "CancellationFee":2465.67,
             "Incentive":6886.85,
-            "DispositionReason":"DispositionReason 32",
+            "label":"label 32",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 32')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -753,7 +753,7 @@
             "TermLength":4112,
             "CancellationFee":5992.18,
             "Incentive":9171.49,
-            "DispositionReason":"DispositionReason 33",
+            "label":"label 33",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 33')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -776,7 +776,7 @@
             "TermLength":800,
             "CancellationFee":1166,
             "Incentive":1831.49,
-            "DispositionReason":"DispositionReason 34",
+            "label":"label 34",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 34')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -799,7 +799,7 @@
             "TermLength":20,
             "CancellationFee":2394.13,
             "Incentive":5700.77,
-            "DispositionReason":"DispositionReason 35",
+            "label":"label 35",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 35')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -822,7 +822,7 @@
             "TermLength":571,
             "CancellationFee":4441.76,
             "Incentive":3663.98,
-            "DispositionReason":"DispositionReason 36",
+            "label":"label 36",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 36')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -845,7 +845,7 @@
             "TermLength":9756,
             "CancellationFee":946.47,
             "Incentive":5376.44,
-            "DispositionReason":"DispositionReason 37",
+            "label":"label 37",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 37')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -868,7 +868,7 @@
             "TermLength":4342,
             "CancellationFee":8262.24,
             "Incentive":8237.08,
-            "DispositionReason":"DispositionReason 38",
+            "label":"label 38",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 38')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -891,7 +891,7 @@
             "TermLength":2200,
             "CancellationFee":272.81,
             "Incentive":6927.64,
-            "DispositionReason":"DispositionReason 39",
+            "label":"label 39",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 39')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -914,7 +914,7 @@
             "TermLength":6210,
             "CancellationFee":2137.02,
             "Incentive":1699.88,
-            "DispositionReason":"DispositionReason 40",
+            "label":"label 40",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 40')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -937,7 +937,7 @@
             "TermLength":4011,
             "CancellationFee":4898.8,
             "Incentive":4333.66,
-            "DispositionReason":"DispositionReason 41",
+            "label":"label 41",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 41')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -960,7 +960,7 @@
             "TermLength":4150,
             "CancellationFee":8639.25,
             "Incentive":6299.77,
-            "DispositionReason":"DispositionReason 42",
+            "label":"label 42",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 42')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -983,7 +983,7 @@
             "TermLength":4973,
             "CancellationFee":4217.73,
             "Incentive":6172.74,
-            "DispositionReason":"DispositionReason 43",
+            "label":"label 43",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 43')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1006,7 +1006,7 @@
             "TermLength":4193,
             "CancellationFee":9059.1,
             "Incentive":4751.91,
-            "DispositionReason":"DispositionReason 44",
+            "label":"label 44",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 44')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1029,7 +1029,7 @@
             "TermLength":4495,
             "CancellationFee":9864.7,
             "Incentive":957.99,
-            "DispositionReason":"DispositionReason 45",
+            "label":"label 45",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 45')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1052,7 +1052,7 @@
             "TermLength":3819,
             "CancellationFee":3521.08,
             "Incentive":4060.11,
-            "DispositionReason":"DispositionReason 46",
+            "label":"label 46",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 46')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1075,7 +1075,7 @@
             "TermLength":4385,
             "CancellationFee":2325.59,
             "Incentive":1630.87,
-            "DispositionReason":"DispositionReason 47",
+            "label":"label 47",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 47')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1098,7 +1098,7 @@
             "TermLength":3430,
             "CancellationFee":1379.87,
             "Incentive":9680.7,
-            "DispositionReason":"DispositionReason 48",
+            "label":"label 48",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 48')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1121,7 +1121,7 @@
             "TermLength":571,
             "CancellationFee":1451.27,
             "Incentive":6436.77,
-            "DispositionReason":"DispositionReason 49",
+            "label":"label 49",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 49')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1144,7 +1144,7 @@
             "TermLength":8552,
             "CancellationFee":8290.96,
             "Incentive":6613.31,
-            "DispositionReason":"DispositionReason 50",
+            "label":"label 50",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 50')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1167,7 +1167,7 @@
             "TermLength":8019,
             "CancellationFee":2805.07,
             "Incentive":6774.31,
-            "DispositionReason":"DispositionReason 51",
+            "label":"label 51",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 51')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1190,7 +1190,7 @@
             "TermLength":2414,
             "CancellationFee":6711.76,
             "Incentive":3173.38,
-            "DispositionReason":"DispositionReason 52",
+            "label":"label 52",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 52')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1213,7 +1213,7 @@
             "TermLength":9458,
             "CancellationFee":3768.47,
             "Incentive":7992.64,
-            "DispositionReason":"DispositionReason 53",
+            "label":"label 53",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 53')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1236,7 +1236,7 @@
             "TermLength":8204,
             "CancellationFee":1674.09,
             "Incentive":5229.98,
-            "DispositionReason":"DispositionReason 54",
+            "label":"label 54",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 54')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1259,7 +1259,7 @@
             "TermLength":9796,
             "CancellationFee":9233.87,
             "Incentive":9122.31,
-            "DispositionReason":"DispositionReason 55",
+            "label":"label 55",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 55')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1282,7 +1282,7 @@
             "TermLength":4940,
             "CancellationFee":6482.14,
             "Incentive":3372.96,
-            "DispositionReason":"DispositionReason 56",
+            "label":"label 56",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 56')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1305,7 +1305,7 @@
             "TermLength":1775,
             "CancellationFee":1046.81,
             "Incentive":3443.9,
-            "DispositionReason":"DispositionReason 57",
+            "label":"label 57",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 57')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1328,7 +1328,7 @@
             "TermLength":7182,
             "CancellationFee":8206.56,
             "Incentive":4845.22,
-            "DispositionReason":"DispositionReason 58",
+            "label":"label 58",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 58')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1351,7 +1351,7 @@
             "TermLength":9867,
             "CancellationFee":9008.13,
             "Incentive":7425.57,
-            "DispositionReason":"DispositionReason 59",
+            "label":"label 59",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 59')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1374,7 +1374,7 @@
             "TermLength":3236,
             "CancellationFee":9722.58,
             "Incentive":6530.99,
-            "DispositionReason":"DispositionReason 60",
+            "label":"label 60",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 60')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1397,7 +1397,7 @@
             "TermLength":78,
             "CancellationFee":5085.74,
             "Incentive":3422.23,
-            "DispositionReason":"DispositionReason 61",
+            "label":"label 61",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 61')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1420,7 +1420,7 @@
             "TermLength":9006,
             "CancellationFee":2699.91,
             "Incentive":1497.02,
-            "DispositionReason":"DispositionReason 62",
+            "label":"label 62",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 62')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1443,7 +1443,7 @@
             "TermLength":5250,
             "CancellationFee":7379.41,
             "Incentive":277.15,
-            "DispositionReason":"DispositionReason 63",
+            "label":"label 63",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 63')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1466,7 +1466,7 @@
             "TermLength":8127,
             "CancellationFee":5176.68,
             "Incentive":5327.9,
-            "DispositionReason":"DispositionReason 64",
+            "label":"label 64",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 64')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1489,7 +1489,7 @@
             "TermLength":6327,
             "CancellationFee":7193.76,
             "Incentive":5163.21,
-            "DispositionReason":"DispositionReason 65",
+            "label":"label 65",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 65')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1512,7 +1512,7 @@
             "TermLength":9162,
             "CancellationFee":892.48,
             "Incentive":1302.43,
-            "DispositionReason":"DispositionReason 66",
+            "label":"label 66",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 66')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1535,7 +1535,7 @@
             "TermLength":9290,
             "CancellationFee":1852.76,
             "Incentive":7136.59,
-            "DispositionReason":"DispositionReason 67",
+            "label":"label 67",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 67')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1558,7 +1558,7 @@
             "TermLength":7726,
             "CancellationFee":5365.51,
             "Incentive":1153.11,
-            "DispositionReason":"DispositionReason 68",
+            "label":"label 68",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 68')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1581,7 +1581,7 @@
             "TermLength":8271,
             "CancellationFee":6170.61,
             "Incentive":6421.4,
-            "DispositionReason":"DispositionReason 69",
+            "label":"label 69",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 69')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1604,7 +1604,7 @@
             "TermLength":7290,
             "CancellationFee":5178.36,
             "Incentive":5360.13,
-            "DispositionReason":"DispositionReason 70",
+            "label":"label 70",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 70')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1627,7 +1627,7 @@
             "TermLength":748,
             "CancellationFee":3922.2,
             "Incentive":6014.1,
-            "DispositionReason":"DispositionReason 71",
+            "label":"label 71",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 71')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1650,7 +1650,7 @@
             "TermLength":6369,
             "CancellationFee":7341.69,
             "Incentive":1048.5,
-            "DispositionReason":"DispositionReason 72",
+            "label":"label 72",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 72')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1673,7 +1673,7 @@
             "TermLength":276,
             "CancellationFee":9819.72,
             "Incentive":8205.23,
-            "DispositionReason":"DispositionReason 73",
+            "label":"label 73",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 73')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1696,7 +1696,7 @@
             "TermLength":9537,
             "CancellationFee":3661.59,
             "Incentive":9451.23,
-            "DispositionReason":"DispositionReason 74",
+            "label":"label 74",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 74')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1719,7 +1719,7 @@
             "TermLength":5119,
             "CancellationFee":2482.81,
             "Incentive":5527.57,
-            "DispositionReason":"DispositionReason 75",
+            "label":"label 75",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 75')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1742,7 +1742,7 @@
             "TermLength":4193,
             "CancellationFee":526.8,
             "Incentive":8156.8,
-            "DispositionReason":"DispositionReason 76",
+            "label":"label 76",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 76')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1765,7 +1765,7 @@
             "TermLength":1181,
             "CancellationFee":8111.6,
             "Incentive":1972.95,
-            "DispositionReason":"DispositionReason 77",
+            "label":"label 77",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 77')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1788,7 +1788,7 @@
             "TermLength":4872,
             "CancellationFee":3374.81,
             "Incentive":8739,
-            "DispositionReason":"DispositionReason 78",
+            "label":"label 78",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 78')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1811,7 +1811,7 @@
             "TermLength":1909,
             "CancellationFee":5340.92,
             "Incentive":6615.92,
-            "DispositionReason":"DispositionReason 79",
+            "label":"label 79",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 79')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1834,7 +1834,7 @@
             "TermLength":8082,
             "CancellationFee":5324.6,
             "Incentive":3940.35,
-            "DispositionReason":"DispositionReason 80",
+            "label":"label 80",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 80')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1857,7 +1857,7 @@
             "TermLength":3123,
             "CancellationFee":24.19,
             "Incentive":5542.61,
-            "DispositionReason":"DispositionReason 81",
+            "label":"label 81",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 81')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1880,7 +1880,7 @@
             "TermLength":3440,
             "CancellationFee":272.61,
             "Incentive":4517.86,
-            "DispositionReason":"DispositionReason 82",
+            "label":"label 82",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 82')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1903,7 +1903,7 @@
             "TermLength":1882,
             "CancellationFee":313.05,
             "Incentive":3146.6,
-            "DispositionReason":"DispositionReason 83",
+            "label":"label 83",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 83')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1926,7 +1926,7 @@
             "TermLength":2275,
             "CancellationFee":4344.17,
             "Incentive":3390.62,
-            "DispositionReason":"DispositionReason 84",
+            "label":"label 84",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 84')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1949,7 +1949,7 @@
             "TermLength":2963,
             "CancellationFee":2809.97,
             "Incentive":3420.71,
-            "DispositionReason":"DispositionReason 85",
+            "label":"label 85",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 85')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1972,7 +1972,7 @@
             "TermLength":8188,
             "CancellationFee":2945.88,
             "Incentive":6141.48,
-            "DispositionReason":"DispositionReason 86",
+            "label":"label 86",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 86')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -1995,7 +1995,7 @@
             "TermLength":5353,
             "CancellationFee":9567.57,
             "Incentive":4686.41,
-            "DispositionReason":"DispositionReason 87",
+            "label":"label 87",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 87')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -2018,7 +2018,7 @@
             "TermLength":6208,
             "CancellationFee":5556.08,
             "Incentive":6933.82,
-            "DispositionReason":"DispositionReason 88",
+            "label":"label 88",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 88')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -2041,7 +2041,7 @@
             "TermLength":9765,
             "CancellationFee":7332.3,
             "Incentive":4162.25,
-            "DispositionReason":"DispositionReason 89",
+            "label":"label 89",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 89')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -2064,7 +2064,7 @@
             "TermLength":9761,
             "CancellationFee":9930.96,
             "Incentive":6409.91,
-            "DispositionReason":"DispositionReason 90",
+            "label":"label 90",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 90')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -2087,7 +2087,7 @@
             "TermLength":7003,
             "CancellationFee":6153.1,
             "Incentive":2440.32,
-            "DispositionReason":"DispositionReason 91",
+            "label":"label 91",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 91')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -2110,7 +2110,7 @@
             "TermLength":2576,
             "CancellationFee":4468.78,
             "Incentive":1170.82,
-            "DispositionReason":"DispositionReason 92",
+            "label":"label 92",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 92')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -2133,7 +2133,7 @@
             "TermLength":4205,
             "CancellationFee":2267.15,
             "Incentive":7887.57,
-            "DispositionReason":"DispositionReason 93",
+            "label":"label 93",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 93')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -2156,7 +2156,7 @@
             "TermLength":3284,
             "CancellationFee":8131.26,
             "Incentive":7451.13,
-            "DispositionReason":"DispositionReason 94",
+            "label":"label 94",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 94')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -2179,7 +2179,7 @@
             "TermLength":8201,
             "CancellationFee":7258.83,
             "Incentive":7672.98,
-            "DispositionReason":"DispositionReason 95",
+            "label":"label 95",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 95')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -2202,7 +2202,7 @@
             "TermLength":9346,
             "CancellationFee":9163.75,
             "Incentive":3465.22,
-            "DispositionReason":"DispositionReason 96",
+            "label":"label 96",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 96')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -2225,7 +2225,7 @@
             "TermLength":938,
             "CancellationFee":4236.71,
             "Incentive":6206.33,
-            "DispositionReason":"DispositionReason 97",
+            "label":"label 97",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 97')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -2248,7 +2248,7 @@
             "TermLength":3983,
             "CancellationFee":4772.21,
             "Incentive":3614.42,
-            "DispositionReason":"DispositionReason 98",
+            "label":"label 98",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 98')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -2271,7 +2271,7 @@
             "TermLength":8230,
             "CancellationFee":7990.53,
             "Incentive":9491.35,
-            "DispositionReason":"DispositionReason 99",
+            "label":"label 99",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 99')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
@@ -2294,7 +2294,7 @@
             "TermLength":263,
             "CancellationFee":8506.4,
             "Incentive":8970.64,
-            "DispositionReason":"DispositionReason 100",
+            "label":"label 100",
             "__metadata":{
                "id":"../../data/campaign/version1/CpgCurPndS('Type 100')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",

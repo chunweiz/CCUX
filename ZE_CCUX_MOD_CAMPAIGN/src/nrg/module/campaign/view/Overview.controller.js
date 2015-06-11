@@ -21,13 +21,23 @@ sap.ui.define(
                 sEligibilityPath,
                 oParameters,
                 sEligibilityModel,
+                aToggleContainer,
+                aToggleTemplate,
                 aFilters = this._createSearchFilterObject("1121", "Y");
 
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
             sEligibilityPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgEligibilitySet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
-
+            aToggleContainer = this.getView().byId("idnrgCamToggleT");
+            aToggleTemplate = this.getView().byId("idCamToggleBtn").clone();
             oParameters = {
+                model : "comp-campaign",
+                path : sCurrentPath,
+                template : aToggleTemplate,
+                filters : aFilters
+            };
+            aToggleContainer.bindAggregation("content", oParameters);
+/*            oParameters = {
                 filters : aFilters,
                 success : function (oData) {
                     this.getView().bindElement({
@@ -43,7 +53,7 @@ sap.ui.define(
             };
             if (oModel) {
                 oModel.read(sCurrentPath, oParameters);
-            }
+            }*/
             oParameters = {
                 filters : aFilters,
                 success : function (oData) {
@@ -78,13 +88,30 @@ sap.ui.define(
             //TODO: Implementation required
         Controller.prototype.onBeforeRendering = function () {
         };
-        //TODO: Implementation required
         Controller.prototype.onAfterRendering = function () {
+            var aContent, abinding, sPath, that = this,
+                aToggleContainer = this.getView().byId("idnrgCamToggleT"),
+                handler = function () {
+                    aContent = aToggleContainer.getContent();
+                    if ((aContent !== undefined) && (aContent.length > 0)) {
+                        sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                       // aContent[0].addStyleClass("nrgCamHisBut-Selected");
+                        that.getView().bindElement({
+                            model : "comp-campaign",
+                            path : sPath
+                        });
+                    }
+                    abinding.detachDataReceived(handler);
+                };
+            abinding = aToggleContainer.getBinding("content");
+            abinding.attachDataReceived(handler);
         };
-        Controller.prototype.toggleCampaign = function () {
-            this.getView().bindObject({
+        Controller.prototype.toggleCampaign = function (oEvent) {
+            var sPath;
+            sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
+            this.getView().bindElement({
                 model : "comp-campaign",
-                path : "/CpgCurPndS('P')"
+                path : sPath
             });
         };
         Controller.prototype.onOffers = function (oEvent) {
