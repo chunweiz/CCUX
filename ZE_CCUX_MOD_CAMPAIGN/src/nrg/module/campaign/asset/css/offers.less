@@ -6,65 +6,104 @@
             font-size: @nrgFontSize-base;
             font-weight: @nrgFontWeight-semiBold;
     }
-    & > .nrgCmpOffTiers{
+    & > .nrgCmpOffPart-Tiles {
+            display: inline-block;
+            white-space: nowrap;
+    }
+    & > .nrgCmpOffPart-Tiles > .nrgCmpOffTiers{
             width:10%;
             float:left;
             display:inline-block;
     }
-    & > .nrgCmpOffTiers > .nrgCmpOffTier{
+    & > .nrgCmpOffPart-Tiles > .nrgCmpOffTiers > .nrgCmpOffTier{
             margin-bottom: 10px;
             margin-top: 10px;
             color: @nrgColor-blueLink;
             font-size: @nrgFontSize-base;
             font-weight: @nrgFontWeight-semiBold;
     }
-    & > .nrgCmpOffTiles{
+    & > .nrgCmpOffPart-Tiles > .nrgCmpOffTiles{
             width:90%;
             display:inline-block;
+            white-space: normal;
     }
-    & > .nrgCmpOffTiles > .nrgCamOffScroll{
+    & > .nrgCmpOffPart-Tiles > .nrgCmpOffTiles > .nrgCamOffScroll{
             overflow: auto;
             text-align: center;
             outline: 0px;
             margin-top: 10px;
     }
-    & > .nrgCmpOffTiles > .nrgCamOffScroll > .sapMScrollContScroll > .nrgCamOffBt {
+    & > .nrgCmpOffPart-Tiles > .nrgCmpOffTiles > .nrgCamOffScroll > .sapMScrollContScroll > .nrgCamOffBt {
             width: 268px;
             height:126px;
             margin:3px 3px 3px 3px;
             background-color: @nrgColor-grey-highlight;
             color:@nrgColor-grey-dark;
     }
-    & > .nrgCmpOffTiles > .nrgCamOffScroll > .sapMScrollContScroll > .nrgCamOffBt > .nrgCamOffBt-Ttl {
+    & > .nrgCmpOffPart-Tiles > .nrgCmpOffTiles > .nrgCamOffScroll > .sapMScrollContScroll > .nrgCamOffBt > .nrgCamOffBt-Ttl {
             font-size: @nrgFontSize-small;
             font-weight: @nrgFontWeight-semiBold;
             padding-top: 5px;
             width: 75%;
     }
-    & > .nrgCmpOffTiles > .nrgCamOffScroll > .sapMScrollContScroll > .nrgCamOffBt > .nrgCamOffBt-Prc{
+    & > .nrgCmpOffPart-Tiles > .nrgCmpOffTiles > .nrgCamOffScroll > .sapMScrollContScroll > .nrgCamOffBt > .nrgCamOffBt-Prc{
             font-size: @nrgFontSize-largest;
             font-weight: @nrgFontWeight-regular;
             margin-left: 10px;
             margin-top: 10px;
             text-align: left;
     }
-    & > .nrgCmpOffTiles > .nrgCamOffScroll > .sapMScrollContScroll > .nrgCamOffBt > .nrgCamOffBt-PrcLbl{
+    & > .nrgCmpOffPart-Tiles > .nrgCmpOffTiles > .nrgCamOffScroll > .sapMScrollContScroll > .nrgCamOffBt > .nrgCamOffBt-PrcLbl{
             font-size: @nrgFontSize-small;
             font-weight: @nrgFontWeight-regular;
             text-align: right;
     }
-    & > .nrgCmpOffTiles > .nrgCamOffScroll > .sapMScrollContScroll > .nrgCamOffBt > .nrgCamOffBtinfo > .nrgCamOffBt-CF{
+    & > .nrgCmpOffPart-Tiles > .nrgCmpOffTiles > .nrgCamOffScroll > .sapMScrollContScroll > .nrgCamOffBt > .nrgCamOffBtinfo > .nrgCamOffBt-CF{
             font-size: @nrgFontSize-smaller;
             font-weight: @nrgFontWeight-regular;
             text-align: right;
     }
-    & > .nrgCmpOffTiles > .nrgCamOffScroll > .sapMScrollContScroll > .nrgCamOffBt > .nrgCamOffBtinfo > .nrgCamOffBt-PC{
+    & > .nrgCmpOffPart-Tiles > .nrgCmpOffTiles > .nrgCamOffScroll > .sapMScrollContScroll > .nrgCamOffBt > .nrgCamOffBtinfo > .nrgCamOffBt-PC{
             font-size: @nrgFontSize-smaller;
             font-weight: @nrgFontWeight-regular;
             text-align: right;
     }
-    & > .nrgCmpOffTiles > .nrgCamOffScroll > .sapMScrollContScroll > .nrgCamOffBt-Selected {
+    & > .nrgCmpOffPart-Tiles > .nrgCmpOffTiles > .nrgCamOffScroll > .sapMScrollContScroll > .nrgCamOffBt-Selected {
             background-color: @nrgColor-grey-light;
             color:@nrgColor-white;
     }
+    & > .nrgCmpOffPart-Display {
+            white-space: normal;
+    }
+    & > .nrgCmpOffPart-Display > .nrgCmpOffCompare{
+            width:10%;
+            display:inline-block;
+            background-color: @nrgColor-blue-pearl;
+            margin-right: 20px;
+    }
+    &  > .nrgCmpOffPart-Display > .nrgCmpOffDisplay-1 {
+            width:40%;
+            display:inline-block;
+            background-color: @nrgColor-blue-pearl;
+            margin-right: 20px;
+    }
+    &  > .nrgCmpOffPart-Display > .nrgCmpOffDisplay-2 {
+            width:40%;
+            display:inline-block;
+            background-color: @nrgColor-blue-pearl;
+    }
+    & > .nrgCmpOffPart-Display > .nrgCmpOffDisplay-1 > .nrgCamOffPrcTbl{
+        margin: 0px;
+    }
+    & > .nrgCmpOffPart-Display > .nrgCmpOffDisplay-2 > .nrgCamOffPrcTbl{
+        margin: 0px;
+    }
+    & > .nrgCmpOffPart-Display > .nrgCmpOffCompare >.nrgCamOffCmpBtn{
+            margin-bottom: 10px;
+            margin-top: 10px;
+            color: @nrgColor-blueLink;
+            font-size: @nrgFontSize-base;
+            font-weight: @nrgFontWeight-semiBold;
+    }
+
 }

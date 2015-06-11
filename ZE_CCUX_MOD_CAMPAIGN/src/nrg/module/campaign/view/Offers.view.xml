@@ -11,65 +11,125 @@
           height="100%"
           width="100%"
           displayBlock="true">
-   <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
-    <u:Tag class="nrgCmpOffT">
-         <u:Tag class="nrgCamOffTtlT" text="{comp-i18n-campaign>nrgCmpOffTtl}" />
+    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
+        <u:Tag class="nrgCmpOffT">
+            <u:Tag class="nrgCamOffTtlT" text="{comp-i18n-campaign>nrgCmpOffTtl}" />
+            <u:Tag class="nrgCmpOffPart-Display">
+                <u:Tag class="nrgCmpOffCompare">
+                    <u:Tag class="nrgCamOffTtlT" text="{comp-i18n-campaign>nrgCmpOffCompareBy}" />
+                    <u:Tag class="nrgCamOffCmpBtn">
+                        <um:Button id="idnrgCamOffCmpBtn-I"
+                            press=".toggleTier"
+                            text="{comp-i18n-campaign>nrgCmpOffCpInvoice}"
+                            class="nrgCamOffBtn"
+                            design="None">
+                        </um:button>
+                    </u:Tag>
+                    <u:Tag class="nrgCamOffCmpBtn">
+                        <um:Button id="idnrgCamOffCmpBtn-C"
+                            press=".toggleTier"
+                            text="{comp-i18n-campaign>nrgCmpOffCpConsumption}"
+                            class="nrgCamOffBtn"
+                            design="None">
+                        </um:button>
+                    </u:Tag>
+                </u:Tag>
+                <u:Tag class="nrgCmpOffDisplay-1">
+                    <u:TextView id="idCamOffDisTit-1" text="CND AVG@2000=11.1 Secure Advantage 24"
+                            class="nrgCamOvr-left nrgCamOvr-left"
+                            color="DarkGrey"
+                            design="Base"/>
+                    <u:Table width="100%"
+                        id="idCamOffPriceTbl1"
+                        tableType="CampaignTable"
+                        class="nrgCamOffPrcTbl"  >
+                            <u:columns>
+                                <u:TableColumn width="33%" >
+                                    <c:Label text="EFL@500"/>
+                                </u:TableColumn>
+                                <u:TableColumn width="33%" >
+                                    <c:Label text="EFL@1000"/>
+                                </u:TableColumn>
+                                <u:TableColumn width="33%" >
+                                    <c:Label text="EFL@2000"/>
+                                </u:TableColumn>
+                            </u:columns>
+                            <u:rows>
+                                <u:TableRow>
+                                    <c:Label text="14.4"/>
+                                    <c:Label text="12.4"/>
+                                    <c:Label text="13.4"/>
+                                </u:TableRow>
+                            </u:rows>
+                    </u:Table>
+                </u:Tag>
 
-            <u:Tag class="nrgCmpOffCompare">
-                <u:Tag class="nrgCamOffCmpTitle" text="{comp-i18n-campaign>nrgCmpOffCompareBy}" />
-                <um:Button id="idCamToggleBtn-I"
-                    press=".toggleTier"
-                    text="{comp-i18n-campaign>nrgCmpOffCpInvoice}"
-                    class="nrgCamOvr-offerBtn"
-                    design="None">
-                </um:button>
-                <um:Button id="idCamToggleBtn-C"
-                    press=".toggleTier"
-                    text="{comp-i18n-campaign>nrgCmpOffCpConsumption}"
-                    class="nrgCamOvr-offerBtn"
-                    design="None">
-                </um:button>
+                <u:Tag class="nrgCmpOffDisplay-2">
+                    <u:TextView id="idCamOffDisTit-2" text="CND AVG@2000=11.1 Secure Advantage 24"
+                            class="nrgCamOvr-left"
+                            color="DarkGrey"
+                            design="Base"/>
+                    <u:Table width="100%"
+                        id="idCamOffPriceTbl2"
+                        tableType="CampaignTable"
+                        class="nrgCamOffPrcTbl"  >
+                            <u:columns>
+                                <u:TableColumn width="33%" >
+                                    <c:Label text="EFL@500"/>
+                                </u:TableColumn>
+                                <u:TableColumn width="33%" >
+                                    <c:Label text="EFL@1000"/>
+                                </u:TableColumn>
+                                <u:TableColumn width="33%" >
+                                    <c:Label text="EFL@2000"/>
+                                </u:TableColumn>
+                            </u:columns>
+                            <u:rows>
+                                <u:TableRow>
+                                    <c:Label text="14.4"/>
+                                    <c:Label text="12.4"/>
+                                    <c:Label text="13.4"/>
+                                </u:TableRow>
+                            </u:rows>
+                    </u:Table>
+                </u:Tag>
             </u:Tag>
-            <u:Tag class="nrgCmpOffDisplay-1">
-            </u:Tag>
-            <u:Tag class="nrgCmpOffDisplay-2">
-            </u:Tag>
-
-            <u:Tag class="nrgCmpOffTiers">
+            <u:Tag class="nrgCmpOffPart-Tiles">
+                <u:Tag class="nrgCmpOffTiers">
                     <u:Tag class="nrgCmpOffTier">
-                            <um:Button id="idCamToggleBtn-P"
+                        <um:Button id="idCamToggleBtn-P"
                             press=".toggleTier"
                             text="{comp-i18n-campaign>nrgCmpOffTProactive}"
                             class="nrgCamOvr-offerBtn"
                             design="None">
-                            </um:button>
+                        </um:button>
                     </u:Tag>
                     <u:Tag class="nrgCmpOffTier">
-                            <um:Button id="idCamToggleBtn-R"
+                        <um:Button id="idCamToggleBtn-R"
                             press=".toggleTier"
                             text="{comp-i18n-campaign>nrgCmpOffTReactive}"
                             class="nrgCamOvr-offerBtn"
                             design="None">
-                            </um:button>
+                        </um:button>
                     </u:Tag>
                     <u:Tag class="nrgCmpOffTier">
-                            <um:Button id="idCamToggleBtn-S"
+                        <um:Button id="idCamToggleBtn-S"
                             press=".toggleTier"
                             text="{comp-i18n-campaign>nrgCmpOffTSave}"
                             class="nrgCamOvr-offerBtn"
                             design="None">
-                            </um:button>
+                        </um:button>
                     </u:Tag>
                     <u:Tag class="nrgCmpOffTier">
-                            <um:Button id="idCamToggleBtn-FS"
+                        <um:Button id="idCamToggleBtn-FS"
                             press=".toggleTier"
                             text="{comp-i18n-campaign>nrgCmpOffTFinalSave}"
                             class="nrgCamOvr-offerBtn"
                             design="None">
-                            </um:button>
+                        </um:button>
                     </u:Tag>
-            </u:Tag>
-            <u:Tag class="nrgCmpOffTiles">
+                </u:Tag>
+                <u:Tag class="nrgCmpOffTiles">
                     <m:ScrollContainer
                         height="267px"
                         width="100%"
@@ -78,28 +138,29 @@
                         focusable="true"
                         class="nrgCamOffScroll"
                         id="idnrgCamOffScroll" >
-                                <um:Button press=".onPressed" text="{comp-campaign>Notitle}" class="nrgCamOffBt" id="idnrgCamOffBt" design="None">
-                                           <u:Tag class="nrgCamOffBtinfo">
-                                                <u:Tag class="nrgCamOffBt-CF" text="{parts:[{path:'comp-campaign>CancellationFee',
-                                                                                type: 'nrg.util.type.Price',
-                                                                                formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' }},
-                                                                           {path: 'comp-campaign>Incentive',
-                                                                                type: 'nrg.util.type.Price',
-                                                                                formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' } }],
-                                                                    formatter:'.formatCancelFee'}" />
+                        <um:Button press=".onPressed" text="{comp-campaign>Notitle}" class="nrgCamOffBt" id="idnrgCamOffBt" design="None">
+                            <u:Tag class="nrgCamOffBtinfo">
+                                <u:Tag class="nrgCamOffBt-CF" text="{parts:[{path:'comp-campaign>CancellationFee',
+                                                                type: 'nrg.util.type.Price',
+                                                                formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' }},
+                                                           {path: 'comp-campaign>Incentive',
+                                                                type: 'nrg.util.type.Price',
+                                                                formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' } }],
+                                                    formatter:'.formatCancelFee'}" />
 
-                                                <u:Tag class="nrgCamOffBt-PC"
-                                                       text="{parts:[{path:'comp-campaign>PromoCode'}],
-                                                                    formatter:'.formatPromo'}"/>
-                                            </u:Tag>
-                                        <u:Tag class="nrgCamOffBt-Ttl" text="{comp-campaign>OfferTitle}" />
-                                        <u:Tag class="nrgCamOffBt-Prc" text="{path: 'comp-campaign>EFL2000',
-                                                                                type: 'nrg.util.type.Price',
-                                                                                formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
-                                        <u:Tag class="nrgCamOffBt-PrcLbl" text="{comp-i18n-campaign>nrgCmpOffkWhDisc}" />
-                               </um:Button>
-                      </m:ScrollContainer>
+                                <u:Tag class="nrgCamOffBt-PC"
+                                       text="{parts:[{path:'comp-campaign>PromoCode'}],
+                                                    formatter:'.formatPromo'}"/>
+                            </u:Tag>
+                            <u:Tag class="nrgCamOffBt-Ttl" text="{comp-campaign>OfferTitle}" />
+                            <u:Tag class="nrgCamOffBt-Prc" text="{path: 'comp-campaign>EFL2000',
+                                                                type: 'nrg.util.type.Price',
+                                                                formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
+                            <u:Tag class="nrgCamOffBt-PrcLbl" text="{comp-i18n-campaign>nrgCmpOffkWhDisc}" />
+                        </um:Button>
+                    </m:ScrollContainer>
                 </u:Tag>
-       </u:Tag>
-   </u:Tag>
+            </u:Tag>
+        </u:Tag>
+    </u:Tag>
 </mvc:View>
