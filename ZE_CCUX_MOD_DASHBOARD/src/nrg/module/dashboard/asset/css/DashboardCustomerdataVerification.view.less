@@ -26,10 +26,34 @@
         padding-right: 28px;
     }
 
-     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mContact{
-          background-color: @nrgColor-bluePearl;
-        border-radius: 2px;
-        height: 300px;
+     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mContent{
+         background-color: @nrgColor-bluePearl;
+         border-radius: 2px;
+         height: 300px;
+         padding: 8px;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-r{
+        //bottom: 28px;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-r > .nrgDashboard-cusDataVerify-rContent{
+        position: relative;
+        height: 344px;
+        margin: 0;
+        padding: 0;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-r > .nrgDashboard-cusDataVerify-rContent > .nrgDashboard-cusDataVerify-rContent-vBtn {
+        bottom: 48px;
+        right: 0px;
+        position: absolute;
+    }
+
+     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-r > .nrgDashboard-cusDataVerify-rContent > .nrgDashboard-cusDataVerify-rContent-uBtn {
+        bottom: 0px;
+        right: 0px;
+        position: absolute;
     }
 
     /*Starting from here are for text style and alignment*/
@@ -92,6 +116,12 @@
         font-weight: @nrgFontWeight-semiBold;
         color: @nrgColor-grey-inactive;
         line-height: 24px;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-add > span{
+        font-size: @nrgFontSize-large;
+        font-weight: @nrgFontWeight-bold;
+        color: @nrgColor-grey-dark;
     }
 
 }
