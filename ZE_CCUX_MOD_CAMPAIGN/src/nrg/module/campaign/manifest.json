@@ -13,12 +13,12 @@
 
                     "odata": {
                         "real": {
-                            "campaign": {
+                            "comp-campaign": {
                                 "url": ""
                             }
                         },
                         "mock": {
-                            "campaign": {
+                            "comp-campaign": {
                                 "mockDataBaseUrl": "data/version1/",
                                 "generateMissingMockData": true
                             }
