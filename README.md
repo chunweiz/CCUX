@@ -9,15 +9,16 @@ To get started:
 1. Download a copy of the repository
 2. Install [Node.js](https://nodejs.org/)
 3. Go to your local repository root folder in command prompt.
-4. **npm install -g bower**
-5. **npm install -g grunt-cli**
-6. **npm install -g less**
-7. **npm install** 
+4. Type **npm install -g bower**
+5. Type **npm install -g grunt-cli**
+6. Type **npm install -g less**
+7. Type **npm install** 
 8. Go to your local ZE_CCUX_LIB folder in command prompt.
-9. **bower install**
+9. Type **bower install**
 10. Go back to your local repository root folder in command prompt.
-11. **node webserver** 
-12. Go to [Main IC Component](http://localhost:3000/ZE_CCUX_COMP_IC/build/nrg/component/ic/)
+11. Type **build**
+12. Type **node webserver** 
+13. Go to [Main IC Component](http://localhost:3000/ZE_CCUX_COMP_IC/build/nrg/component/ic/)
 
 ## Baseline ##
 
