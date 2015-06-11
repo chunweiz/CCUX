@@ -1,21 +1,15 @@
-# README #
+# NRG IC Web Redesign #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This repository contains the source code for the entire new NRG UI5 IC Web IC application.
+Each ZE* folder is designed to be uploaded as an independepent ABAP repository.
 
-### What is this repository for? ###
-
-* Quick summary
-* Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
-### How do I get set up? ###
+## Base ##
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+ZE_CCUX_BASE
+
+This is the base 
 
 ### Contribution guidelines ###
 
