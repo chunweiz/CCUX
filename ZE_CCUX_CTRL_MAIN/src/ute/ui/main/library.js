@@ -17,6 +17,7 @@ sap.ui.define(
                 'ute.ui.main.ButtonDesign',
                 'ute.ui.main.ToggleBarDesign',
                 'ute.ui.main.CheckboxDesign',
+                'ute.ui.main.RadioButtonDesign',
                 'ute.ui.main.InfolineDesign'
             ],
 
@@ -25,13 +26,11 @@ sap.ui.define(
 				'ute.ui.main.ToggleBar',
                 'ute.ui.main.Label',
                 'ute.ui.main.Checkbox',
-                'ute.ui.main.Infoline',
-                'ute.ui.main.Dropdown'
+                'ute.ui.main.RadioButton',
+                'ute.ui.main.Infoline'
 			],
 
-			elements: [
-                'ute.ui.main.ToggleBarItem'
-            ],
+			elements: [],
 
             interfaces: []
         });
@@ -48,15 +47,14 @@ sap.ui.define(
             Default: 'Default'
         };
 
-        ute.ui.main.InfolineDesign = {
+        ute.ui.main.RadioButtonDesign = {
             None: 'None',
             Default: 'Default'
         };
 
-        ute.ui.main.ToggleBarDesign = {
+        ute.ui.main.InfolineDesign = {
             None: 'None',
-            Default: 'Default',
-            Invert: 'Invert'
+            Default: 'Default'
         };
 
         return ute.ui.main;

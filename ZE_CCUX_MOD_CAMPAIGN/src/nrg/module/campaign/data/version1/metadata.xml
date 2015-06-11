@@ -91,7 +91,7 @@
                 <Property Name="TermLength" Nullable="false" Type="Edm.Int16"/>
                 <Property Name="CancellationFee" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
                 <Property Name="Incentive" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
-                <Property MaxLength="50" Name="DispositionReason" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="label" Nullable="false" Type="Edm.String"/>
             </EntityType>
             <EntityType Name="CpgCmpbyCons">
                 <Key>

@@ -21,7 +21,7 @@
                            class="nrgCamOvr-offerBtn"
                            design="None"
                            disabled="{= ${Overview-elig>CustomerEligFlag} === '' }">
-                    <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n-app>nrgAppFooterCustReqOffer}" />
+                    <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n-appFtr>nrgAppFooterCustReqOffer}" />
                     <u:Tag id="idCamCustReqOffer" class="nrgCamOvr-offerBtnDesc"
                            text="{= ${Overview-elig>CustomerEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
                         <u:customData>
@@ -35,7 +35,7 @@
                            class="nrgCamOvr-offerBtn"
                            design="None"
                            disabled="{= ${Overview-elig>AgentEligFlag} === '' }">
-                    <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n-app>nrgAppFooterAgentReqOffer}" />
+                    <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n-appFtr>nrgAppFooterAgentReqOffer}" />
                     <u:Tag id="idCamAgentReqOffer" class="nrgCamOvr-offerBtnDesc"
                            text="{= ${Overview-elig>AgentEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
                         <u:customData>
@@ -44,15 +44,13 @@
                     </u:Tag>
                 </um:button>
             </article>
-            <u:Tag class="nrgCamToggleT">
-                <u:ToggleButton
-                    id="idCamToggleBtn"
-                    leftBtnText="{comp-i18n-campaign>nrgCmpOvrCt}"
-                    leftBtnWidth="400px"
-                    rightBtnWidth="400px"
-                    rightBtnText="{comp-i18n-campaign>nrgCmpOvrPg}"
-                    design="ToggleCampaign" press="toggleCampaign"
-                    class="nrgCamOvr-top nrgCamToggle-Btn"/>
+            <u:Tag class="nrgCamToggleT nrgCamOvr-left nrgCamOvr-top" id="idnrgCamToggleT">
+                <um:Button id="idCamToggleBtn"
+                           press=".toggleCampaign"
+                           text="{comp-campaign>label}"
+                           class="nrgCamOvr-offerBtn"
+                           design="Default">
+                </um:button>
             </u:Tag>
             <l:MatrixLayout class="nrgCamOvrMtx nrgCamOvr-top">
                 <l:MatrixLayoutRow>

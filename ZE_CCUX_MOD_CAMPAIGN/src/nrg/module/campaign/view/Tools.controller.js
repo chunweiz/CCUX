@@ -34,11 +34,8 @@ sap.ui.define(
                 oParameters,
                 aHistoryView,
                 aDialog,
-                CamHisPrcTbl,
                 aScrollContainer,
                 oScrollTemplate,
-                aContent,
-                oBinding,
                 aFilters = this.createSearchFilterObject("1121");
             sPath = "/CpgHistS";
             jQuery.sap.require("ute.ui.commons.Dialog");
@@ -56,10 +53,6 @@ sap.ui.define(
                 filters : aFilters
             };
             aScrollContainer.bindAggregation("content", oParameters);
-            this.getView().bindElement({
-                model : "comp-campaign",
-                path : sPath
-            });
             aDialog = new ute.ui.commons.Dialog({
                 title: 'Campaign History',
                 width: '750px',

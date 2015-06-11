@@ -28,24 +28,23 @@
                         vertical="true"
                         focusable="true"
                         class="nrgCamOffScroll"
-                        id="idnrgCamOffScroll"
-                        content="{offers-cpg>/}">
-                                <um:Button press=".onPressed" text="{offers-cpg>Notitle}" class="nrgCamOffBt" design="None">
+                        id="idnrgCamOffScroll" >
+                                <um:Button press=".onPressed" text="{comp-campaign>Notitle}" class="nrgCamOffBt" id="idnrgCamOffBt" design="None">
                                            <u:Tag class="nrgCamOffBtinfo">
-                                                <u:Tag class="nrgCamOffBt-CF" text="{parts:[{path:'offers-cpg>CancellationFee',
+                                                <u:Tag class="nrgCamOffBt-CF" text="{parts:[{path:'comp-campaign>CancellationFee',
                                                                                 type: 'nrg.util.type.Price',
                                                                                 formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' }},
-                                                                           {path: 'offers-cpg>Incentive',
+                                                                           {path: 'comp-campaign>Incentive',
                                                                                 type: 'nrg.util.type.Price',
                                                                                 formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' } }],
                                                                     formatter:'.formatCancelFee'}" />
 
                                                 <u:Tag class="nrgCamOffBt-PC"
-                                                       text="{parts:[{path:'offers-cpg>PromoCode'}],
+                                                       text="{parts:[{path:'comp-campaign>PromoCode'}],
                                                                     formatter:'.formatPromo'}"/>
                                             </u:Tag>
-                                        <u:Tag class="nrgCamOffBt-Ttl" text="{offers-cpg>OfferTitle}" />
-                                        <u:Tag class="nrgCamOffBt-Prc" text="{path: 'offers-cpg>EFL2000',
+                                        <u:Tag class="nrgCamOffBt-Ttl" text="{comp-campaign>OfferTitle}" />
+                                        <u:Tag class="nrgCamOffBt-Prc" text="{path: 'comp-campaign>EFL2000',
                                                                                 type: 'nrg.util.type.Price',
                                                                                 formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
                                         <u:Tag class="nrgCamOffBt-PrcLbl" text="{comp-i18n-campaign>nrgCmpOffkWhDisc}" />
