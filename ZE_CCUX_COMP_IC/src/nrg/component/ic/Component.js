@@ -7,10 +7,12 @@ sap.ui.define(
         'sap/ui/core/UIComponent',
         'nrg/base/component/ResourceBundleManager',
         'nrg/base/component/StylesheetManager',
-        'nrg/base/component/IconManager'
+        'nrg/base/component/IconManager',
+        'nrg/base/component/MockDataManager',
+        'nrg/base/component/RealDataManager'
     ],
 
-    function (jQuery, Component, ResourceBundleManager, StylesheetManager, IconManager) {
+    function (jQuery, Component, ResourceBundleManager, StylesheetManager, IconManager, MockDataManager, RealDataManager) {
         'use strict';
 
         var CustomComponent = Component.extend('nrg.component.ic.Component', {
@@ -25,7 +27,15 @@ sap.ui.define(
             this._initStylesheets();
             this._initResourceBundles();
             this._initIcons();
+            this._initRealData();
+            this._initMockData();
             this._initRouter();
+        };
+
+        CustomComponent.prototype.destroy = function () {
+            this._oMockDataManager.stopMockServers();
+
+            Component.prototype.destory.apply(this, arguments);
         };
 
         CustomComponent.prototype._initResourceBundles = function () {
@@ -41,6 +51,17 @@ sap.ui.define(
         CustomComponent.prototype._initIcons = function () {
             this._oIconManager = new IconManager(this);
             this._oIconManager.addIcons();
+        };
+
+        CustomComponent.prototype._initMockData = function () {
+            this._oMockDataManager = new MockDataManager(this);
+            this._oMockDataManager.startMockServers();
+            this._oMockDataManager.addMockODataModels();
+        };
+
+        CustomComponent.prototype._initRealData = function () {
+            this._oRealDataManager = new RealDataManager(this);
+            this._oRealDataManager.addODataModels();
         };
 
         CustomComponent.prototype._initRouter = function () {
