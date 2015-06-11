@@ -8,12 +8,12 @@ To get started:
 
 1. Download a copy of the repository
 2. Install [Node.js](https://nodejs.org/)
-3. Install [Bower](http://bower.io/)
-4. Install [Grunt](http://gruntjs.com/getting-started)
-5. Install [{less}](http://lesscss.org/)
-6. At your local repository root, do a *npm install* 
-7. Go to ZE_CCUX_LIB folder, do a *bower install*
-8. At your local repository root, do a *node webserver* 
+3. **npm install -g bower**
+4. **npm install -g grunt-cli**
+5. **npm install -g less**
+6. **npm install** 
+7. **bower install** at your local ZE_CCUX_LIB folder.
+8. **node webserver** 
 9. Go to [Main IC Component](http://localhost:3000/ZE_CCUX_COMP_IC/build/nrg/component/ic/)
 
 ## Baseline ##
