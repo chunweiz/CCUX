@@ -4,6 +4,10 @@ This repository contains the source code for the entire new NRG UI5 IC Web IC ap
 
 Each ZE* folder is designed to be uploaded as an independepent ABAP repository.
 
+To get started:
+* Download a copy of the repository
+* Install Node.js 
+
 ## Baseline ##
 
 ### ZE_CCUX_BASE ###
