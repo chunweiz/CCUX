@@ -14,8 +14,12 @@
 
         </style>
 
-        <um:RadioButton name="rb001" checked="true" disabled="true" select=".onSelected" />
-        <um:RadioButton name="rb001" select=".onSelected" />
+        <div style="background-color: gold; padding: 10px;">
+            <um:RadioButton name="rb001" id="idRb001" checked="true" /><br/>
+            <um:RadioButton name="rb001" id="idRb002" /><um:Label text="Radio button label #2" labelFor="idRb002-intRb" /><br/>
+            <um:RadioButton disabled="true" /><br/>
+            <um:RadioButton disabled="true" checked="true" /><br/>
+        </div>
 
     </sm:ScrollContainer>
 </mvc:View>
