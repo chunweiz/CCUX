@@ -116,7 +116,7 @@
                         <!--Area Left Ends-->
                         <!--Area Middle (service address/mailing address)-->
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-m">
-                            <ute:ToggleButton
+                            <ute:ToggleButton design="ToggleDashboard"
                                 leftBtnText="SERVICE ADDRESS"
                                 rightBtnText="MAILING ADDRESS">
 
