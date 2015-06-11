@@ -118,10 +118,10 @@
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-m">
                             <ute:ToggleButton
                                 leftBtnText="SERVICE ADDRESS"
-                                rightBtnText="MAILING ADDRESS"
-                                desgin="ToggleDashboard"
-                                press="onTogglePressed">
+                                rightBtnText="MAILING ADDRESS">
+
                             </ute:ToggleButton>
+
                             <ute:Tag class="nrgDashboard-cusDataVerify-mContact">
                             </ute:Tag>
                         </l:MatrixLayoutCell>
