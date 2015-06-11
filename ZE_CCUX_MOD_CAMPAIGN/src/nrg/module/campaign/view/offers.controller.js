@@ -51,7 +51,6 @@ sap.ui.define(
             var aChildren,
                 sPath,
                 i;
-
             aChildren = oEvent.getSource().getParent().findElements();
             for (i = 0; i < aChildren.length; i = i + 1) {
                 if (aChildren[i].hasStyleClass("nrgCamOffBt-Selected")) {
@@ -59,11 +58,6 @@ sap.ui.define(
                 }
             }
             oEvent.getSource().addStyleClass("nrgCamOffBt-Selected");
-            sPath = oEvent.getSource().getBindingContext("offers-cpg").sPath;
-            this.getView().bindElement({
-                model : "overview-camp",
-                path : sPath
-            });
         };
         Controller.prototype.formatCancelFee = function (aCancellationFee, aIncentive) {
 

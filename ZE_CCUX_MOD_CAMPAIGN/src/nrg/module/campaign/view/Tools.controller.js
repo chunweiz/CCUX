@@ -53,10 +53,6 @@ sap.ui.define(
                 filters : aFilters
             };
             aScrollContainer.bindAggregation("content", oParameters);
-/*            this.getView().bindElement({
-                model : "comp-campaign",
-                path : sPath
-            });*/
             aDialog = new ute.ui.commons.Dialog({
                 title: 'Campaign History',
                 width: '750px',
