@@ -38,6 +38,7 @@ sap.ui.define(
                 aScrollContainer,
                 oScrollTemplate,
                 aContent,
+                oBinding,
                 aFilters = this.createSearchFilterObject("1121");
             sPath = "/CpgHistS";
             jQuery.sap.require("ute.ui.commons.Dialog");
@@ -47,6 +48,7 @@ sap.ui.define(
             });
             aScrollContainer = aHistoryView.byId("idnrgCamHisScroll");
             oScrollTemplate = aHistoryView.byId("idnrgCamHisBut").clone();
+
             oParameters = {
                 model : "comp-campaign",
                 path : sPath,
@@ -54,7 +56,6 @@ sap.ui.define(
                 filters : aFilters
             };
             aScrollContainer.bindAggregation("content", oParameters);
-
             this.getView().bindElement({
                 model : "comp-campaign",
                 path : sPath
@@ -70,7 +71,12 @@ sap.ui.define(
             //to get access to the global model
             this.getView().addDependent(aDialog);
             aDialog.open();
+
+        };
+        Controller.prototype.onAfterRendering = function () {
+
         };
         return Controller;
     }
+
 );
