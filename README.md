@@ -2,20 +2,22 @@
 
 This repository contains the source code for the entire new NRG UI5 IC Web IC application.
 
-Each ZE* folder is designed to be uploaded as an independepent ABAP repository.
+Each ZE* folder is designed to be uploaded as an independent ABAP repository.
 
 To get started:
 
 1. Download a copy of the repository
 2. Install [Node.js](https://nodejs.org/)
 3. Go to your local repository root folder in command prompt.
-3. **npm install -g bower**
-4. **npm install -g grunt-cli**
-5. **npm install -g less**
-6. **npm install** 
-7. **bower install** at your local ZE_CCUX_LIB folder.
-8. **node webserver** 
-9. Go to [Main IC Component](http://localhost:3000/ZE_CCUX_COMP_IC/build/nrg/component/ic/)
+4. **npm install -g bower**
+5. **npm install -g grunt-cli**
+6. **npm install -g less**
+7. **npm install** 
+8. Go to your local ZE_CCUX_LIB folder in command prompt.
+9. **bower install**
+10. Go back to your local repository root folder in command prompt.
+11. **node webserver** 
+12. Go to [Main IC Component](http://localhost:3000/ZE_CCUX_COMP_IC/build/nrg/component/ic/)
 
 ## Baseline ##
 
