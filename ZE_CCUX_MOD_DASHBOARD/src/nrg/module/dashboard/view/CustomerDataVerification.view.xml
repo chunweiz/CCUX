@@ -125,9 +125,11 @@
                                              text="temp_Server Add"/>
                             <ute:RadioButton id="mailing" groupName="ServiceMailing"
                                              text="temp_Mailing Add"/>
-                            <ute:Tag class="nrgDashboard-cusDataVerify-mContact">
-                                <ute:TextView text="123 Main St., APT A123"/>
-                                <ute:TextView text="Houston, TX 77777"/>
+                            <ute:Tag class="nrgDashboard-cusDataVerify-mContent">
+                                <ute:TextView text="123 Main St., APT A123"
+                                    class="nrgDashboard-cusDataVerify-mContent-add"/>
+                                <ute:TextView text="Houston, TX 77777"
+                                    class="nrgDashboard-cusDataVerify-mContent-add"/>
 
                                 <utmain:Label text="CONTRACT #:" labelFor="contractNum"/>
                                 <input id="contractNum"/>
@@ -177,23 +179,29 @@
                                 <l:MatrixLayout widths="50%,50%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="EMAIL:" labelFor="email1"/>
-                                            <input id="email1"/>
+                                            <utmain:Button text="SMS"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="EMAIL 2:" labelFor="email2"/>
-                                            <input id="email2"/>
+                                            <utmain:Label text="EMAIL:" labelFor="email2"/>
+                                            <input id="email"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
 
-
                             </ute:Tag>
                         </l:MatrixLayoutCell>
                         <!--Area Middle Ends-->
+
                         <!--Area Right (Only 2 buttons )-->
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-r">
-                            <ute:TextView text="area3"/>
+                            <ute:Tag class="nrgDashboard-cusDataVerify-rContent">
+                                <utmain:Button
+                                    class="nrgDashboard-cusDataVerify-rContent-vBtn"
+                                    text="CONFIRM"/>
+                                <utmain:Button
+                                    class="nrgDashboard-cusDataVerify-rContent-uBtn"
+                                    design="Invert" text="UPDATE"/>
+                            </ute:Tag>
                         </l:MatrixLayoutCell>
                     </l:cells>
                 </l:MatrixLayoutRow>
