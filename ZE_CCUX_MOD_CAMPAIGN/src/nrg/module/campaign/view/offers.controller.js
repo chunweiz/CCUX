@@ -6,7 +6,7 @@ sap.ui.define(
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
         'jquery.sap.global',
-        'nrg/util/type/Price'
+        'nrg/base/type/Price'
     ],
 
     function (CoreController, Filter, FilterOperator, jQuery, price) {
@@ -22,24 +22,21 @@ sap.ui.define(
                 sEligibilityPath,
                 oParameters,
                 sEligibilityModel,
-                aFilters = this.createSearchFilterObject("1121");
+                aFilters = this.createSearchFilterObject("1121"),
+                aTileContainer,
+                aTileTemplate;
 
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCpgChangeOffSet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'offers-cpg');
+            aTileContainer = this.getView().byId("idnrgCamOffScroll");
+            aTileTemplate = this.getView().byId("idnrgCamOffBt").clone();
             oParameters = {
-                filters : aFilters,
-                success : function (oData) {
-                    this.getView().getModel('offers-cpg').setData(oData.results);
-                    jQuery.sap.log.info("Odata Read Successfully:::");
-                }.bind(this),
-                error: function (oError) {
-                    jQuery.sap.log.info("Some Error");
-                }.bind(this)
+                model : "comp-campaign",
+                path : sCurrentPath,
+                template : aTileTemplate,
+                filters : aFilters
             };
-            if (oModel) {
-                oModel.read(sCurrentPath, oParameters);
-            }
+            aTileContainer.bindAggregation("content", oParameters);
         };
         Controller.prototype.createSearchFilterObject = function (oContractID, oCurrentFlag) {
             var aFilters = [],

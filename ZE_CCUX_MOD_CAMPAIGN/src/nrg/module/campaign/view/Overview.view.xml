@@ -44,7 +44,7 @@
                     </u:Tag>
                 </um:button>
             </article>
-            <u:Tag class="nrgCamToggleT" id="idnrgCamToggleT">
+            <u:Tag class="nrgCamToggleT nrgCamOvr-left nrgCamOvr-top" id="idnrgCamToggleT">
                 <um:Button id="idCamToggleBtn"
                            press=".toggleCampaign"
                            text="{comp-campaign>label}"

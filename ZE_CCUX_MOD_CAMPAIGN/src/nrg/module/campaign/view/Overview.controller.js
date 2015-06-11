@@ -37,23 +37,6 @@ sap.ui.define(
                 filters : aFilters
             };
             aToggleContainer.bindAggregation("content", oParameters);
-/*            oParameters = {
-                filters : aFilters,
-                success : function (oData) {
-                    this.getView().bindElement({
-                        model : "comp-campaign",
-                        path : this.getView().getModel("comp-i18n-campaign").getProperty("nrgCurrentView")
-                    });
-
-                    jQuery.sap.log.info("Odata Read Successfully:::");
-                }.bind(this),
-                error: function (oError) {
-                    jQuery.sap.log.info("Some Error");
-                }.bind(this)
-            };
-            if (oModel) {
-                oModel.read(sCurrentPath, oParameters);
-            }*/
             oParameters = {
                 filters : aFilters,
                 success : function (oData) {
@@ -76,6 +59,7 @@ sap.ui.define(
             }
             this.getView().setModel(oModel, "Overview-elig");
         };
+
         Controller.prototype._createSearchFilterObject = function (oContractID, oCurrentFlag) {
             var aFilters = [],
                 oFilterTemplate = new Filter();
@@ -85,9 +69,7 @@ sap.ui.define(
             aFilters.push(oFilterTemplate);
             return aFilters;
         };
-            //TODO: Implementation required
-        Controller.prototype.onBeforeRendering = function () {
-        };
+
         Controller.prototype.onAfterRendering = function () {
             var aContent, abinding, sPath, that = this,
                 aToggleContainer = this.getView().byId("idnrgCamToggleT"),
@@ -106,6 +88,7 @@ sap.ui.define(
             abinding = aToggleContainer.getBinding("content");
             abinding.attachDataReceived(handler);
         };
+
         Controller.prototype.toggleCampaign = function (oEvent) {
             var sPath;
             sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
@@ -114,6 +97,7 @@ sap.ui.define(
                 path : sPath
             });
         };
+
         Controller.prototype.onOffers = function (oEvent) {
             var oParameters = {
 
