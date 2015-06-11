@@ -71,28 +71,16 @@
                     <u:TableColumn width="14%" >
                          <c:Label text="Term Length"/>
                     </u:TableColumn>
-<!--                    <u:TableColumn width="14%" >
-                        <c:Label text="Start Date"/>
-                    </u:TableColumn>
-                    <u:TableColumn width="14%" >
-                         <c:Label text="End Date"/>
-                    </u:TableColumn>-->
                     <u:TableColumn width="14%" >
                          <c:Label text="Cancellation Fee"/>
                     </u:TableColumn>
-<!--                    <u:TableColumn width="14%" >
-                         <c:Label text="Incentive"/>
-                    </u:TableColumn>-->
                 </u:columns>
                 <u:rows>
                     <u:TableRow>
                         <c:Label text="{comp-campaign>PromoCode}"/>
                         <c:Label text="{comp-campaign>OfferCode}"/>
                         <c:Label text="{comp-campaign>TermLength}"/>
-<!--                        <c:Label text="{path: 'comp-campaign>StartDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
-                        <c:Label text="{path: 'comp-campaign>EndDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />-->
                         <c:Label text="{comp-campaign>CancellationFee}"/>
-<!--                        <c:Label text="{comp-campaign>Incentive}"/>-->
                     </u:TableRow>
                 </u:rows>
             </u:Table>
