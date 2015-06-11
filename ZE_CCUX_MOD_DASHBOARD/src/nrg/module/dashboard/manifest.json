@@ -4,11 +4,11 @@
             "module": {
                 "dashboard": {
                     "stylesheet": [
-                        "nrg/module/dashboard/asset/css/module.css"
+                        "asset/css/module.css"
                     ],
 
                     "resourceBundle": {
-                        "comp-i18n-dashboard": "nrg/module/dashboard/i18n/module.properties"
+                        "comp-i18n-dashboard": "i18n/module.properties"
                     },
 
                     "odata": {
@@ -19,7 +19,7 @@
                         },
                         "mock": {
                             "comp-dashboard": {
-                                "mockDataBaseUrl": "nrg/module/dashboard/data/devtest/",
+                                "mockDataBaseUrl": "data/devtest/",
                                 "generateMissingMockData": false
                             }
                         }

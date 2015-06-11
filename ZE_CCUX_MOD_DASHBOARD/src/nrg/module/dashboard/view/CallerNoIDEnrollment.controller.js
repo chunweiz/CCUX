@@ -3,13 +3,13 @@
 
 sap.ui.define(
     [
-        'nrg/util/view/BaseController'
+        'nrg/base/view/BaseController'
     ],
 
     function (CoreController) {
         'use strict';
 
-        var Controller = CoreController.extend('nrg.view.dashboard.CallerNoIDEnrollment');
+        var Controller = CoreController.extend('nrg.module.dashboard.view.CallerNoIDEnrollment');
 
         Controller.prototype.onInit = function () {
         };

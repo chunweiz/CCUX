@@ -4,22 +4,22 @@
             "module": {
                 "campaign": {
                     "stylesheet": [
-                        "nrg/module/campaign/asset/css/module.css"
+                        "asset/css/module.css"
                     ],
 
                     "resourceBundle": {
-                        "comp-i18n-campaign": "nrg/module/campaign/i18n/module.properties"
+                        "comp-i18n-campaign": "i18n/module.properties"
                     },
 
                     "odata": {
                         "real": {
-                            "comp-campaign": {
+                            "campaign": {
                                 "url": ""
                             }
                         },
                         "mock": {
-                            "comp-campaign": {
-                                "mockDataBaseUrl": "nrg/module/campaign/data/version1/",
+                            "campaign": {
+                                "mockDataBaseUrl": "data/version1/",
                                 "generateMissingMockData": true
                             }
                         }

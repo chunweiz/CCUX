@@ -32,7 +32,7 @@ sap.ui.define(
             var oModule, sModule, sMock, oMock, sMockPath, oMockServer;
 
             this._aMockServers = [];
-            if (jQuery.sap.getUriParameters().get('nrg-mock') === 'true') {
+            if (jQuery.sap.getUriParameters().get('nrg-mock') !== 'true') {
                 return;
             }
 

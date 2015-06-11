@@ -3,7 +3,7 @@
 
 sap.ui.define(
     [
-        'nrg/util/view/BaseController',
+        'nrg/base/view/BaseController',
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
         'jquery.sap.global'
@@ -12,7 +12,7 @@ sap.ui.define(
     function (CoreController, Filter, FilterOperator, jQuery) {
         'use strict';
 
-        var Controller = CoreController.extend('nrg.view.campaign.Overview');
+        var Controller = CoreController.extend('nrg.module.campaign.view.Overview');
 
         Controller.prototype.onInit = function () {
             var oModel,
@@ -23,8 +23,8 @@ sap.ui.define(
                 sEligibilityModel,
                 aFilters = this._createSearchFilterObject("1121", "Y");
 
-            sCurrentPath = this.getOwnerComponent().getModel("comp-i18n").getProperty("nrgCurrentPendingSet");
-            sEligibilityPath = this.getOwnerComponent().getModel("comp-i18n").getProperty("nrgEligibilitySet");
+            sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
+            sEligibilityPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgEligibilitySet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
 
             oParameters = {
@@ -32,7 +32,7 @@ sap.ui.define(
                 success : function (oData) {
                     this.getView().bindElement({
                         model : "comp-campaign",
-                        path : this.getView().getModel("comp-i18n").getProperty("nrgCurrentView")
+                        path : this.getView().getModel("comp-i18n-campaign").getProperty("nrgCurrentView")
                     });
 
                     jQuery.sap.log.info("Odata Read Successfully:::");

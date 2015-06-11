@@ -156,6 +156,8 @@
                     src: [
                         'ZE_CCUX_MOD_APP/src/nrg/module/app/manifest.json',
                         'ZE_CCUX_MOD_OTHERS/src/nrg/module/others/manifest.json',
+                        'ZE_CCUX_MOD_DASHBOARD/src/nrg/module/dashboard/manifest.json',
+                        'ZE_CCUX_MOD_CAMPAIGN/src/nrg/module/campaign/manifest.json',
                         '<%= compFolder %>/src/<%= compPath %>/manifest.json'
                     ],
                     dest: '<%= compFolder %>/build/<%= compPath %>/manifest.json'

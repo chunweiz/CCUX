@@ -3,13 +3,13 @@
 
 sap.ui.define(
     [
-        'nrg/util/view/BaseController'
+        'nrg/base/view/BaseController'
     ],
 
     function (CoreController) {
         'use strict';
 
-        var Controller = CoreController.extend('nrg.view.campaign.Change');
+        var Controller = CoreController.extend('nrg.module.campaign.view.Change');
         Controller.prototype.onInit = function () {
             var oModel;
             oModel = this.getOwnerComponent().getModel('comp-campaign');

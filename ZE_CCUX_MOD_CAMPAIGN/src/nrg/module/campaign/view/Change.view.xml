@@ -5,20 +5,20 @@
           xmlns:core="sap.ui.core"
           xmlns:u="ute.ui.commons"
           xmlns:l="sap.ui.commons.layout"
-          controllerName="nrg.view.campaign.Change"
+          controllerName="nrg.module.campaign.view.Change"
           height="100%"
           width="100%"
           displayBlock="true">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
       <u:Tag class="nrgCamChgT">
-         <u:Tag class="nrgCamChgTtlT" text="{comp-i18n>nrgCmpChgTtl}" />
+         <u:Tag class="nrgCamChgTtlT" text="{comp-i18n-campaign>nrgCmpChgTtl}" />
             <l:MatrixLayout class="nrgCamChgMtx nrgCamChg-top">
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <c:Label id="idCamChgTtlLbl" text="{comp-i18n>nrgCmpChgTtllbl}" icon="sap-icon://nrg-icon/tag" class="nrgCamChg-lbl"  labelFor="idCamChgTtlTv"  />
+                        <c:Label id="idCamChgTtlLbl" text="{comp-i18n-campaign>nrgCmpChgTtllbl}" icon="sap-icon://nrg-icon/tag" class="nrgCamChg-lbl"  labelFor="idCamChgTtlTv"  />
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
-                        <c:Label id="idCamChgAULbl" text="{comp-i18n>nrgCmpChgAUlbl}" icon="sap-icon://nrg-icon/bulb" class="nrgCamChg-lbl" labelFor="idCamChgAUTv"  />
+                        <c:Label id="idCamChgAULbl" text="{comp-i18n-campaign>nrgCmpChgAUlbl}" icon="sap-icon://nrg-icon/bulb" class="nrgCamChg-lbl" labelFor="idCamChgAUTv"  />
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
                 <l:MatrixLayoutRow>
@@ -38,7 +38,7 @@
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>
             <u:Tag class="nrgCamChgPrcT">
-                <c:Label id="idCamPrcLbl" text="{comp-i18n>nrgCmpChgPrcbl}" icon="sap-icon://nrg-icon/dollar" class="nrgCamChg-lbl nrgCamChg-top" labelFor="idCamChgPrcTbl"  />
+                <c:Label id="idCamPrcLbl" text="{comp-i18n-campaign>nrgCmpChgPrcbl}" icon="sap-icon://nrg-icon/dollar" class="nrgCamChg-lbl nrgCamChg-top" labelFor="idCamChgPrcTbl"  />
                 <u:Table width="60%"
                     id="idCamChgPrcTbl"
                     tableType="CampaignTable"
@@ -65,7 +65,7 @@
             </u:Tag>
             <u:Tag class="nrgCamChgDscT">
                     <c:Label id="idCamChgDscLbl"
-                        text="{comp-i18n>nrgCmpChgDscbl}"
+                        text="{comp-i18n-campaign>nrgCmpChgDscbl}"
                         icon="sap-icon://nrg-icon/description"
                         class="nrgCamChg-lbl nrgCamChg-top nrgCamChg-desc"
                         labelFor="idCamDescTv" />
@@ -119,13 +119,13 @@
             <u:Tag class="nrgCamChgBtnT nrgCamChg-top" >
                 <u:Button
                     id="idnrgCamChgBtn-Ok"
-                    text="{comp-i18n>nrgCmpChgBtnOk}"
+                    text="{comp-i18n-campaign>nrgCmpChgBtnOk}"
                     enabled="true"
                     class="nrgCamChgBtn">
                 </u:Button>
                 <u:Button
                     id="idnrgCamChgBtn-Dec"
-                    text="{comp-i18n>nrgCmpChgBtnDec}"
+                    text="{comp-i18n-campaign>nrgCmpChgBtnDec}"
                     enabled="true"
                     class="nrgCamChgBtn" >
                 </u:Button>

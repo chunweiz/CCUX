@@ -2,7 +2,7 @@
 
 sap.ui.define(
     [
-        'nrg/util/view/BaseController',
+        'nrg/base/view/BaseController',
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
         'jquery.sap.global',
@@ -12,7 +12,7 @@ sap.ui.define(
     function (CoreController, Filter, FilterOperator, jQuery, price) {
         'use strict';
 
-        var Controller = CoreController.extend('nrg.view.campaign.Offers');
+        var Controller = CoreController.extend('nrg.module.campaign.view.Offers');
 
         //TODO: Implementation required
         Controller.prototype.onInit = function () {
@@ -24,7 +24,7 @@ sap.ui.define(
                 sEligibilityModel,
                 aFilters = this.createSearchFilterObject("1121");
 
-            sCurrentPath = this.getOwnerComponent().getModel("comp-i18n").getProperty("nrgCpgChangeOffSet");
+            sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCpgChangeOffSet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'offers-cpg');
             oParameters = {

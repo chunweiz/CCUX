@@ -7,18 +7,18 @@
           xmlns:l="sap.ui.commons.layout"
           xmlns:m="sap.m"
           xmlns:um="ute.ui.main"
-          controllerName="nrg.view.campaign.Offers"
+          controllerName="nrg.module.campaign.view.Offers"
           height="100%"
           width="100%"
           displayBlock="true">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
     <u:Tag class="nrgCmpOffT">
-         <u:Tag class="nrgCamOffTtlT" text="{comp-i18n>nrgCmpOffTtl}" />
+         <u:Tag class="nrgCamOffTtlT" text="{comp-i18n-campaign>nrgCmpOffTtl}" />
             <u:Tag class="nrgCmpOffTiers">
-                    <u:Tag class="nrgCmpOffTier" text="{comp-i18n>nrgCmpOffTProactive}" />
-                    <u:Tag class="nrgCmpOffTier" text="{comp-i18n>nrgCmpOffTReactive}" />
-                    <u:Tag class="nrgCmpOffTier" text="{comp-i18n>nrgCmpOffTSave}" />
-                    <u:Tag class="nrgCmpOffTier" text="{comp-i18n>nrgCmpOffTFinalSave}" />
+                    <u:Tag class="nrgCmpOffTier" text="{comp-i18n-campaign>nrgCmpOffTProactive}" />
+                    <u:Tag class="nrgCmpOffTier" text="{comp-i18n-campaign>nrgCmpOffTReactive}" />
+                    <u:Tag class="nrgCmpOffTier" text="{comp-i18n-campaign>nrgCmpOffTSave}" />
+                    <u:Tag class="nrgCmpOffTier" text="{comp-i18n-campaign>nrgCmpOffTFinalSave}" />
             </u:Tag>
             <u:Tag class="nrgCmpOffTiles">
                     <m:ScrollContainer
@@ -48,7 +48,7 @@
                                         <u:Tag class="nrgCamOffBt-Prc" text="{path: 'offers-cpg>EFL2000',
                                                                                 type: 'nrg.util.type.Price',
                                                                                 formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
-                                        <u:Tag class="nrgCamOffBt-PrcLbl" text="{comp-i18n>nrgCmpOffkWhDisc}" />
+                                        <u:Tag class="nrgCamOffBt-PrcLbl" text="{comp-i18n-campaign>nrgCmpOffkWhDisc}" />
                                </um:Button>
                       </m:ScrollContainer>
                 </u:Tag>

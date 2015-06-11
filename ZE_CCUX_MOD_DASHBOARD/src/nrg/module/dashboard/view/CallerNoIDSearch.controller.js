@@ -3,7 +3,7 @@
 
 sap.ui.define(
     [
-        'nrg/util/view/BaseController',
+        'nrg/base/view/BaseController',
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
         'sap/ui/core/routing/HashChanger'
@@ -12,7 +12,7 @@ sap.ui.define(
     function (CoreController, Filter, FilterOperator, HashChanger) {
         'use strict';
 
-        var Controller = CoreController.extend('nrg.view.dashboard.CallerNoIDSearch');
+        var Controller = CoreController.extend('nrg.module.dashboard.view.CallerNoIDSearch');
 
         Controller.prototype.onInit = function () {
             //var test = new HashChanger();

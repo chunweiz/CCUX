@@ -5,7 +5,7 @@
     xmlns:l="sap.ui.commons.layout"
     xmlns:c="sap.ui.commons"
     xmlns:core="sap.ui.core"
-    controllerName="nrg.view.dashboard.CallerNoIDSearch"
+    controllerName="nrg.module.dashboard.view.CallerNoIDSearch"
     displayBlock="true">
 
 
@@ -15,7 +15,7 @@
                 <core:Icon src="sap-icon://nrg-icon/notification"
                            class="nrgDashboard-calrNoIDSearch-titleIcon"/>
                 <ute:Tag elem="span" class="nrgDashboard-calrNoIDSearch-titleSpan"
-                     text="{comp-i18n>nrgDashboardCallerNoIDSearchTitle}">
+                     text="{comp-i18n-dashboard>nrgDashboardCallerNoIDSearchTitle}">
                 </ute:Tag>
             </ute:Tag>
             <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
@@ -25,7 +25,7 @@
                         path:'oSearchFilters>/searchTextFields/sCaNum'}"
                     id="idSearchCa"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n>nrgDashboardClrNid_CaNumPh}"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_CaNumPh}"
                     change="onTextFieldChange"
                     label="Title"
                     width="48%">
@@ -37,7 +37,7 @@
                         path:'oSearchFilters>/searchTextFields/sSsn'}"
                     id="idSearchSsn"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n>nrgDashboardClrNid_Ssn}"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_Ssn}"
                     change="onTextFieldChange"
                     label="Title"
                     width="48%">
@@ -49,7 +49,7 @@
                         path:'oSearchFilters>/searchTextFields/sDl'}"
                     id="idSearchDl"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n>nrgDashboardClrNid_Dl}"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_Dl}"
                     change="onTextFieldChange"
                     label="Title"
                     width="48%">
@@ -61,7 +61,7 @@
                         path:'oSearchFilters>/searchTextFields/sOrgName'}"
                     id="idSearchOrgName"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n>nrgDashboardClrNid_OrgName}"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_OrgName}"
                     change="onTextFieldChange"
                     label="Title"
                     width="48%">
@@ -73,7 +73,7 @@
                         path:'oSearchFilters>/searchTextFields/sBpNum'}"
                     id="idSearchBp"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n>nrgDashboardClrNid_BpNum}"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_BpNum}"
                     change="onTextFieldChange"
                     label="Title"
                     width="48%">
@@ -83,7 +83,7 @@
                         path:'oSearchFilters>/searchTextFields/sFiName'}"
                     id="idSearchFiName"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n>nrgDashboardClrNid_FiName}"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_FiName}"
                     change="onTextFieldChange"
                     width="48%">
                 </ute:Textfield>
@@ -94,7 +94,7 @@
                         path:'oSearchFilters>/searchTextFields/sEsid'}"
                     id="idSearchEsid"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n>nrgDashboardClrNid_Esid}"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_Esid}"
                     change="onTextFieldChange"
                     width="48%">
                 </ute:Textfield>
@@ -104,7 +104,7 @@
                         path:'oSearchFilters>/searchTextFields/sLaName'}"
                     id="idSearchLaName"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n>nrgDashboardClrNid_LaName}"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_LaName}"
                     change="onTextFieldChange"
                     width="48%">
                 </ute:Textfield>
@@ -123,9 +123,9 @@
     </ute:Tag>
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
         <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTitle"
-                 text="{comp-i18n>nrgDashboardCallerNoIDSearchResultTitle}">
+                 text="{comp-i18n-dashboard>nrgDashboardCallerNoIDSearchResultTitle}">
             <ute:Tag elem="span" class="nrgDashboard-calrNoIDSearch-resultCount"
-                text="{comp-i18n>nrgDashboardClrNid_ResultCountStart} {oBpSearchCount>/searchCount} {comp-i18n>nrgDashboardClrNid_ResultCountEnd}" >
+                text="{comp-i18n-dashboard>nrgDashboardClrNid_ResultCountStart} {oBpSearchCount>/searchCount} {comp-i18n-dashboard>nrgDashboardClrNid_ResultCountEnd}" >
             </ute:Tag>
         </ute:Tag>
 

@@ -3,13 +3,13 @@
 
 sap.ui.define(
     [
-        'nrg/util/view/BaseController'
+        'nrg/base/view/BaseController'
     ],
 
     function (CoreController) {
         'use strict';
 
-        var Controller = CoreController.extend('nrg.view.campaign.General');
+        var Controller = CoreController.extend('nrg.module.campaign.view.General');
 
         //TODO: Implementation required
 

@@ -3,13 +3,13 @@
 
 sap.ui.define(
     [
-        'nrg/util/view/BaseController'
+        'nrg/base/view/BaseController'
     ],
 
     function (CoreController) {
         'use strict';
 
-        var Controller = CoreController.extend('nrg.view.campaign.SalesScript');
+        var Controller = CoreController.extend('nrg.module.campaign.view.SalesScript');
 
             //TODO: Implementation required
         Controller.prototype.onBeforeRendering = function () {

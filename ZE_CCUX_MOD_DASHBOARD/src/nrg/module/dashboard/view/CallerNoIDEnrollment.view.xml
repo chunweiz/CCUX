@@ -3,25 +3,25 @@
     xmlns:ute="ute.ui.commons"
     xmlns:utmain="ute.ui.main"
     xmlns:mvc="sap.ui.core.mvc"
-    controllerName="nrg.view.dashboard.CallerNoIDEnrollment">
+    controllerName="nrg.module.dashboard.view.CallerNoIDEnrollment">
 
     <ute:Tag class="nrgDashboard-calrNoIDEnrol nrgAppMain-summaryContent nrgAppMain-summaryContent-full">
         <ute:content>
             <ute:Tag elem="h1"
                 class="nrgDashboard-calrNoIDEnrol-hdr"
-                text="{comp-i18n>nrgDashboardClrNid_EnrolTitle}">
+                text="{comp-i18n-dashboard>nrgDashboardClrNid_EnrolTitle}">
             </ute:Tag>
 
             <ute:Tag elem="h2"
                 class="nrgDashboard-calrNoIDEnrol-title"
-                text="{comp-i18n>nrgDashboardClrNid_Enrol2ndTitle}">
+                text="{comp-i18n-dashboard>nrgDashboardClrNid_Enrol2ndTitle}">
             </ute:Tag>
 
             <ul class="nrgDashboard-calrNoIDEnrol-list">
                 <li class="nrgDashboard-calrNoIDEnrol-listitem">
                     <utmain:Button
                         design="None"
-                        text="{comp-i18n>nrgDashboardClrNid_EnrollBus}"
+                        text="{comp-i18n-dashboard>nrgDashboardClrNid_EnrollBus}"
                         press="onEnrollBusiness"
                         class="nrgCallerNoIDEnrollment-ListItemLink">
                     </utmain:Button>
@@ -29,7 +29,7 @@
                 <li class="nrgDashboard-calrNoIDEnrol-listitem">
                     <utmain:Button
                         design="None"
-                        text="{comp-i18n>nrgDashboardClrNid_EnrollResident}"
+                        text="{comp-i18n-dashboard>nrgDashboardClrNid_EnrollResident}"
                         press="onEnrollResident"
                         class="nrgCallerNoIDEnrollment-ListItemLink">
                     </utmain:Button>
@@ -37,7 +37,7 @@
                 <li class="nrgDashboard-calrNoIDEnrol-listitem">
                     <utmain:Button
                         design="None"
-                        text="{comp-i18n>nrgDashboardClrNid_EnrollRHS}"
+                        text="{comp-i18n-dashboard>nrgDashboardClrNid_EnrollRHS}"
                         press="onEnrollRHS"
                         class="nrgCallerNoIDEnrollment-ListItemLink">
                     </utmain:Button>
@@ -45,7 +45,7 @@
                 <li class="nrgDashboard-calrNoIDEnrol-listitem">
                     <utmain:Button
                         design="None"
-                        text="{comp-i18n>nrgDashboardClrNid_EnrollSecure}"
+                        text="{comp-i18n-dashboard>nrgDashboardClrNid_EnrollSecure}"
                         press="onEnrollHomeSecurity"
                         class="nrgCallerNoIDEnrollment-ListItemLink">
                     </utmain:Button>

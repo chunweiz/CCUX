@@ -73,6 +73,7 @@
             </EntityType>
             <EntityType Name="CpgOverview">
                 <Key>
+                    <PropertyRef Name="PromoCode"/>
                     <PropertyRef Name="Type"/>
                 </Key>
                 <Property MaxLength="1" Name="Type" Nullable="false" Type="Edm.String"/>
