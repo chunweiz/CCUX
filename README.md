@@ -20,6 +20,8 @@ To get started:
 12. Type **node webserver** 
 13. Go to [Main IC Component](http://localhost:3000/ZE_CCUX_COMP_IC/build/nrg/component/ic/)
 
+You are free to use code editor of your choice but we are recommending [Brackets](http://brackets.io/) with [Git extension](https://github.com/zaggino/brackets-git) and [Monokai Dark Soda theme](https://github.com/rainje/Monokai-Dark-Soda).
+
 ## Baselines ##
 
 ### ZE_CCUX_BASE ###

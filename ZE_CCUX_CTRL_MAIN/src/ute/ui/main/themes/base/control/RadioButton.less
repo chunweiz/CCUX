@@ -3,6 +3,46 @@
     position: relative;
 }
 
-.uteMRb-design-default {
+.uteMRb-intRb {
+    display: none;
+}
 
+.uteMRb-rb {
+    display: inline-block;
+}
+
+/*
+** Default radio button design
+*/
+.uteMRb-design-default .uteMRb-rb {
+    border: 1px solid @uteColor-blue-link;
+    width: 15px;
+    height: 15px;
+}
+
+.uteMRb-design-default .uteMRb-intRb:checked + .uteMRb-rb {
+    background-color: @uteColor-blue-link;
+}
+
+.uteMRb-design-default .uteMRb-intRb:checked + .uteMRb-rb::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 10px;
+    border: 2px solid @uteColor-white;
+    border-top: none;
+    border-left: none;
+    transform: translate(3px, 0) rotate(45deg);
+}
+
+.uteMRb-design-default .uteMRb-intRb[disabled="disabled"] + .uteMRb-rb {
+    border-color: @uteColor-blue-pearl;
+}
+
+.uteMRb-design-default .uteMRb-intRb[disabled="disabled"]:checked + .uteMRb-rb {
+    background-color: @uteColor-blue-pearl;
+}
+
+.uteMRb-design-default .uteMRb-intRb[disabled="disabled"]:checked + .uteMRb-rb::before {
+    border-color: @uteColor-grey-dark;
 }
