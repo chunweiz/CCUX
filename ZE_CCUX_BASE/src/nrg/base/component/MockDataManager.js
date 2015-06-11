@@ -99,9 +99,6 @@ sap.ui.define(
         Manager.prototype._startModuleMockServer = function (sMock, oMock, sMockPath) {
             var oMockServer;
 
-            console.log('mock: ' + sMock);
-            console.log('mock path: ' + sMockPath);
-
             oMockServer = new MockServer({
                 rootUri: sMockPath
             });
