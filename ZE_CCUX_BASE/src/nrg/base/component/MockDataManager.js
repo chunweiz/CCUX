@@ -91,7 +91,7 @@ sap.ui.define(
         Manager.prototype._getModuleMockDataPath = function (sModule, sMockDataBaseUrl) {
             var sModulePath;
 
-            sModulePath = jQuery.sap.getModulePath('nrg.module.' + sModule);
+            sModulePath = jQuery.sap.getModulePath(sModule);
 
             return [ sModulePath, sMockDataBaseUrl ].join('/');
         };

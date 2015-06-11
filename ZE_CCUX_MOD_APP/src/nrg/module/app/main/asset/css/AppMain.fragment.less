@@ -1,0 +1,86 @@
+.nrgAppMain {
+    @maxHeight-summaryPanel: 400px;
+    @maxHeight-toolsPanel: 273px;
+    @minHeight-generalPanel: 686px;
+
+    position: relative;
+    max-width: 1358px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+
+    & > .nrgAppMain-title {
+        font: @nrgFontWeight-semiBold @nrgFontSize-larger @nrgFontFamily;
+        color: @nrgColor-darkPaleBlue;
+        text-transform: uppercase;
+        margin-top: 96px;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    & > .nrgAppMain-left,
+    & > .nrgAppMain-center {
+        display: inline-block;
+        height: 100%;
+    }
+
+    & > .nrgAppMain-left {
+        width: 284px;
+        margin-right: 14px;
+    }
+
+    & > .nrgAppMain-left > section:first-child {
+        margin-bottom: 13px;
+    }
+
+    & > .nrgAppMain-center {
+        width: 1060px;
+        vertical-align: top;
+    }
+
+    & .nrgAppMain-summaryPanel,
+    & .nrgAppMain-toolsPanel,
+    & .nrgAppMain-generalPanel {
+        height: 100%;
+    }
+
+    & .nrgAppMain-summaryPanel {
+        max-height: @maxHeight-summaryPanel;
+        overflow: hidden;
+    }
+
+    & .nrgAppMain-toolsPanel {
+        max-height: @maxHeight-toolsPanel;
+        overflow: hidden;
+    }
+
+    & .nrgAppMain-generalContent,
+    & .nrgAppMain-summaryContent,
+    & .nrgAppMain-toolsContent {
+        width: 100%;
+        border-radius: 2px;
+        background-color: @nrgColor-lightPaleBlue;
+        padding: 25px 14px 20px 14px;
+    }
+
+    & .nrgAppMain-generalContent {
+        padding: 25px 28px 28px 28px;
+    }
+
+    & .nrgAppMain-generalContent:last-child {
+        margin-bottom: 30px;
+    }
+
+    & .nrgAppMain-generalContent.nrgAppMain-generalContent-full {
+        min-height: @minHeight-generalPanel;
+        height: 100%;
+    }
+
+    & .nrgAppMain-summaryContent.nrgAppMain-summaryContent-full {
+        height: @maxHeight-summaryPanel;
+    }
+
+    & .nrgAppMain-toolsContent.nrgAppMain-toolsContent-full {
+        height: @maxHeight-toolsPanel;
+    }
+}

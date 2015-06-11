@@ -37,7 +37,7 @@
         },
 
         "rootView": {
-            "viewName": "nrg.module.app.view.App",
+            "viewName": "nrg.module.app.main.view.App",
             "type": "XML"
         },
 

@@ -43,7 +43,7 @@ sap.ui.define(
             var aStylesheet, sModulePath, sStylesheetPath;
 
             aStylesheet = oModule[sModule].stylesheet || [];
-            sModulePath = jQuery.sap.getModulePath('nrg.module.' + sModule);
+            sModulePath = jQuery.sap.getModulePath(sModule);
 
             aStylesheet.forEach(function (sStylesheet) {
                 sStylesheetPath = [ sModulePath, sStylesheet ].join('/');

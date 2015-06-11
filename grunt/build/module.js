@@ -43,7 +43,7 @@
 
             oConfig = {
                 deploy: [
-                    '<%= moduleFolder %>/build/**'
+                    '<%= moduleFolder %>/build/<%= modulePath %>/**'
                 ]
             };
 

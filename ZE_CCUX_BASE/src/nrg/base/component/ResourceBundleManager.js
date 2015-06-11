@@ -44,7 +44,7 @@ sap.ui.define(
             var oResourceBundle, sResourceBundle, sModulePath, sResourcePath, oModel;
 
             oResourceBundle = oModule[sModule].resourceBundle || {};
-            sModulePath = jQuery.sap.getModulePath('nrg.module.' + sModule);
+            sModulePath = jQuery.sap.getModulePath(sModule);
 
             for (sResourceBundle in oResourceBundle) {
                 if (oResourceBundle.hasOwnProperty(sResourceBundle)) {
