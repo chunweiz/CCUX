@@ -8,6 +8,7 @@ To get started:
 
 1. Download a copy of the repository
 2. Install [Node.js](https://nodejs.org/)
+3. Go to your local repository root folder in command prompt.
 3. **npm install -g bower**
 4. **npm install -g grunt-cli**
 5. **npm install -g less**
