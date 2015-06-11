@@ -12,9 +12,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 /*Right side button text*/
                 rightBtnText : {type : "string", group : "Appearance", defaultValue : ''},
 
-                leftSelected : {type : "Boolean", group: "Behavior", defaultValue: true},
-
-                rightSelected : {type : "Boolean", group: "Behavior", defaultValue: false},
+                leftSelected : {type : "boolean", group: "Behavior", defaultValue: true},
 
                 /*Boolean property to enable the control (default is true).*/
                 enabled : {type : "boolean", group : "Behavior", defaultValue : true},
@@ -53,18 +51,16 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
         ToggleButton.prototype.onclick = function (oEvent) {
             if (this.getEnabled()) {
                 this.firePress({/* no parameters */});
-                if (this.getLeftSelected()) {
-                    this.setLeftSelected(false);
-                    this.setRightSelected(true);
+                if (this.leftSelected) {
+                    this.leftSelected = false;
                 } else {
-                    this.setLeftSelected(true);
-                    this.setRightSelected(false);
+                    this.leftSelected = true;
                 }
                 this.getRenderer().toggle(this);
-
+                oEvent.preventDefault();
+                oEvent.stopPropagation();
             }
-            oEvent.preventDefault();
-            oEvent.stopPropagation();
+
         };
 
         return ToggleButton;

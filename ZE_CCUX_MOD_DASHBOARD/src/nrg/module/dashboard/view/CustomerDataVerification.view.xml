@@ -121,8 +121,73 @@
                                 rightBtnText="MAILING ADDRESS">
 
                             </ute:ToggleButton>
-
+                            <ute:RadioButton id="service" groupName="ServiceMailing"
+                                             text="temp_Server Add"/>
+                            <ute:RadioButton id="mailing" groupName="ServiceMailing"
+                                             text="temp_Mailing Add"/>
                             <ute:Tag class="nrgDashboard-cusDataVerify-mContact">
+                                <ute:TextView text="123 Main St., APT A123"/>
+                                <ute:TextView text="Houston, TX 77777"/>
+
+                                <utmain:Label text="CONTRACT #:" labelFor="contractNum"/>
+                                <input id="contractNum"/>
+
+                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                    <l:MatrixLayoutRow>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label text="CELL:" labelFor="cell1"/>
+                                            <input id="cell1"/>
+                                        </l:MatrixLayoutCell>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label text="CELL 2:" labelFor="cell2"/>
+                                            <input id="cell2"/>
+                                        </l:MatrixLayoutCell>
+                                    </l:MatrixLayoutRow>
+                                </l:MatrixLayout>
+                                <ute:HorizontalDivider
+                                    class="nrgDashboard-cusDataVerify-horDvi"/>
+                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                    <l:MatrixLayoutRow>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label text="DAY:" labelFor="dayPhn"/>
+                                            <input id="dayPhn"/>
+                                        </l:MatrixLayoutCell>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label text="TYPE:" labelFor="dayPhnType"/>
+                                            <input id="dayPhnType"/>
+                                        </l:MatrixLayoutCell>
+                                    </l:MatrixLayoutRow>
+                                </l:MatrixLayout>
+                                <ute:HorizontalDivider
+                                    class="nrgDashboard-cusDataVerify-horDvi"/>
+                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                    <l:MatrixLayoutRow>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label text="EVENING:" labelFor="evnPhn"/>
+                                            <input id="day_phone"/>
+                                        </l:MatrixLayoutCell>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label text="TYPE:" labelFor="evnPhnType"/>
+                                            <input id="evnPhnType"/>
+                                        </l:MatrixLayoutCell>
+                                    </l:MatrixLayoutRow>
+                                </l:MatrixLayout>
+                                <ute:HorizontalDivider
+                                    class="nrgDashboard-cusDataVerify-horDvi"/>
+                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                    <l:MatrixLayoutRow>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label text="EMAIL:" labelFor="email1"/>
+                                            <input id="email1"/>
+                                        </l:MatrixLayoutCell>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label text="EMAIL 2:" labelFor="email2"/>
+                                            <input id="email2"/>
+                                        </l:MatrixLayoutCell>
+                                    </l:MatrixLayoutRow>
+                                </l:MatrixLayout>
+
+
                             </ute:Tag>
                         </l:MatrixLayoutCell>
                         <!--Area Middle Ends-->
