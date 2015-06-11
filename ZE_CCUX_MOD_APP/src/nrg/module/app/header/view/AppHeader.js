@@ -5,13 +5,13 @@ sap.ui.define(
     [
         'jquery.sap.global',
         'sap/ui/base/Object',
-        'nrg/module/app/view/AppHeaderQuickLink'
+        'nrg/module/app/header/view/AppHeaderQuickLink'
     ],
 
     function (jQuery, BaseObject, AppHdrQL) {
         'use strict';
 
-        var AppHdr = BaseObject.extend('nrg.module.app.view.AppHeader', {
+        var AppHdr = BaseObject.extend('nrg.module.app.header.view.AppHeader', {
             constructor: function (viewId, controller) {
                 this._oController = controller;
                 this._oAppHdr = this._oController.getView().byId(viewId.hdr);

@@ -9,7 +9,7 @@ sap.ui.define(
     function (BaseObject) {
         'use strict';
 
-        var AppNav = BaseObject.extend('nrg.module.app.view.AppNav', {
+        var AppNav = BaseObject.extend('nrg.module.app.main.view.AppNav', {
             constructor: function (mViewId, oController) {
                 this._oController = oController;
                 this._oNavLeft = this._oController.getView().byId(mViewId.navLeft);

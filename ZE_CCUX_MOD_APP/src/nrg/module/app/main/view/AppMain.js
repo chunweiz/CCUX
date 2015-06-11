@@ -9,7 +9,7 @@ sap.ui.define(
     function (BaseObject) {
         'use strict';
 
-        var AppMain = BaseObject.extend('nrg.module.app.view.AppMain', {
+        var AppMain = BaseObject.extend('nrg.module.app.main.view.AppMain', {
             constructor: function (idAppMain, controller) {
                 BaseObject.apply(this);
                 this._oController = controller;
@@ -27,7 +27,7 @@ sap.ui.define(
         AppMain.prototype.initialize = function () {
             this._oAppMainElem = this._oAppMain.getDomRef();
             this._oMainTitle = this._oAppMainElem.querySelector('.nrgAppMain-title');
-            this._oRscBundle = this._oController.getView().getModel('comp-i18n-app').getResourceBundle();
+            this._oRscBundle = this._oController.getView().getModel('comp-i18n-appMain').getResourceBundle();
             return this;
         };
 

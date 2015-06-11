@@ -2,7 +2,7 @@
     "sap.ui5": {
         "config": {
             "module": {
-                "others": {
+                "nrg.module.others": {
                     "stylesheet": [
                         "asset/css/module.css"
                     ],

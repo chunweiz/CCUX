@@ -9,7 +9,7 @@ sap.ui.define(
     function (BaseObject) {
         'use strict';
 
-        var AppFooter = BaseObject.extend('nrg.module.app.view.AppFooter', {
+        var AppFooter = BaseObject.extend('nrg.module.app.footer.view.AppFooter', {
             constructor: function (idAppFooter, controller) {
                 BaseObject.apply(this);
                 this._oController = controller;

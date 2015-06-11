@@ -4,16 +4,16 @@
 sap.ui.define(
     [
         'sap/ui/core/mvc/Controller',
-        'nrg/module/app/view/AppHeader',
-        'nrg/module/app/view/AppFooter',
-        'nrg/module/app/view/AppMain',
-        'nrg/module/app/view/AppNav'
+        'nrg/module/app/header/view/AppHeader',
+        'nrg/module/app/footer/view/AppFooter',
+        'nrg/module/app/main/view/AppMain',
+        'nrg/module/app/main/view/AppNav'
     ],
 
     function (Controller, AppHeader, AppFooter, AppMain, AppNav) {
         'use strict';
 
-        var CustomController = Controller.extend('nrg.module.app.view.App');
+        var CustomController = Controller.extend('nrg.module.app.main.view.App');
 
         //DOM for control is only available after rendering
         CustomController.prototype.onAfterRendering = function () {

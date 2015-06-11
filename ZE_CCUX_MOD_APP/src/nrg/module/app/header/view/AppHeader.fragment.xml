@@ -8,38 +8,38 @@
         <ute:Tag elem="h1" class="nrgAppHdr-title nrgU-left" text="{comp-i18n>nrgAppHeaderIc}" />
         <ul class="nrgAppHdr-list nrgU-right">
             <li class="nrgAppHdr-listItem nrgAppHdr-listItem-divider" data-nrg-type="menuitem">
-                <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{comp-i18n-app>nrgAppHeaderMenu}" />
+                <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{comp-i18n-appHdr>nrgAppHeaderMenu}" />
                 <section class="nrgAppHdr-listItemSub">
                     <article class="nrgAppHdr-listItemSubInner">
-                        <core:Fragment fragmentName="nrg.module.app.view.AppHeaderQuickLink" type="XML" />
+                        <core:Fragment fragmentName="nrg.module.app.header.view.AppHeaderQuickLink" type="XML" />
                     </article>
                 </section>
             </li>
             <li class="nrgAppHdr-listItem nrgAppHdr-listItem-divider"
                 data-nrg-type="link"
                 data-nrg-href="http://www.nrg.com/">
-                <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{comp-i18n-app>nrgAppHeaderIdx}" />
+                <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{comp-i18n-appHdr>nrgAppHeaderIdx}" />
             </li>
             <li class="nrgAppHdr-listItem nrgAppHdr-listItem-divider"
                 data-nrg-type="link"
                 data-nrg-href="http://www.nrg.com/">
-                <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{comp-i18n-app>nrgAppHeaderTrans}" />
+                <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{comp-i18n-appHdr>nrgAppHeaderTrans}" />
             </li>
             <li class="nrgAppHdr-listItem nrgAppHdr-listItem-divider"
                 data-nrg-type="link"
                 data-nrg-href="http://ccrportal.reliant.com/esiidlookup/esiidlogin.jsp?company=Reliant">
-                <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{comp-i18n-app>nrgAppHeaderEsid}" />
+                <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{comp-i18n-appHdr>nrgAppHeaderEsid}" />
             </li>
             <li class="nrgAppHdr-listItem nrgAppHdr-listItem-divider"
                 data-nrg-type="link"
                 data-nrg-href="https://ccpal.nrgenergy.com/ccpal/ssoLogin.do">
-                <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{comp-i18n-app>nrgAppHeaderPalPlus}" />
+                <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{comp-i18n-appHdr>nrgAppHeaderPalPlus}" />
             </li>
             <li class="nrgAppHdr-listItem" data-nrg-type="menuitem">
-                <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{comp-i18n-app>nrgAppHeaderMessage}" />
+                <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{comp-i18n-appHdr>nrgAppHeaderMessage}" />
                 <section class="nrgAppHdr-listItemSub">
                     <article class="nrgAppHdr-listItemSubInner">
-                        <core:Fragment fragmentName="nrg.module.app.view.AppHeaderMsg" type="XML" />
+                        <core:Fragment fragmentName="nrg.module.app.header.view.AppHeaderMsg" type="XML" />
                     </article>
                 </section>
             </li>

@@ -2,7 +2,7 @@
     "sap.ui5": {
         "config": {
             "module": {
-                "campaign": {
+                "nrg.module.campaign": {
                     "stylesheet": [
                         "asset/css/module.css"
                     ],

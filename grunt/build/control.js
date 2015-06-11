@@ -43,7 +43,7 @@
 
             oConfig = {
                 deploy: [
-                    '<%= controlFolder %>/build/**'
+                    '<%= controlFolder %>/build/<%= controlLibPath %>/**'
                 ]
             };
 
@@ -152,7 +152,10 @@
             oConfig = {
                 lib: {
                     options: {
-                        resources: '<%= controlFolder %>/src',
+                        resources: {
+                            cwd: '<%= controlFolder %>/src',
+                            src: '<%= controlLibPath %>/**'
+                        },
                         dest: '<%= controlFolder %>/build'
                     },
                     libraries: true
