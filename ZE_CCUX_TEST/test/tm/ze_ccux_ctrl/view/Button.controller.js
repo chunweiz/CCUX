@@ -12,9 +12,15 @@ sap.ui.define(
         var CustomController = Controller.extend('test.tm.ze_ccux_ctrl.view.Button');
 
         CustomController.prototype.onPressed = function (oControlEvent) {
-            var oHashChanger = HashChanger.getInstance();
-            var oHash = oHashChanger.getHash();
-            console.log(oHashChanger.getHash());
+            alert('onPressed');
+        };
+
+        CustomController.prototype.onBeforeRendering = function () {
+            alert('onBeforeRendering');
+        };
+
+        CustomController.prototype.onAfterRendering = function () {
+            alert('onAfterRendering');
         };
 
         return CustomController;
