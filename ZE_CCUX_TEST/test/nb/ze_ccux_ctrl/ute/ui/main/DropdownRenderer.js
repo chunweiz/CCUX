@@ -27,7 +27,7 @@ sap.ui.define(
         };
 
          CustomRenderer._addHeader = function (oRm, oCustomControl) {
-            oRm.write('<header');
+            oRm.write('<ul');
             oRm.addClass('uteMDd-hdr');
             oRm.writeClasses();
             oRm.write('>');
@@ -35,7 +35,7 @@ sap.ui.define(
             this._addHeaderContent(oRm, oCustomControl);
             this._addHeaderExpander(oRm, oCustomControl);
 
-            oRm.write('</header>');
+            oRm.write('</ul>');
         };
 
         CustomRenderer._addHeaderContent = function (oRm, oCustomControl) {
@@ -52,6 +52,7 @@ sap.ui.define(
                     oRm.renderControl(oHdrContent);
                 });
             }
+            oRm.write(oCustomControl.getSelected());
 
             oRm.write('</article>');
         };
@@ -75,7 +76,7 @@ sap.ui.define(
         CustomRenderer._addContent = function (oRm, oCustomControl) {
             var aContent;
 
-            oRm.write('<section');
+            oRm.write('<li');
             oRm.addClass('uteMDd-body');
 
             if (!oCustomControl.getExpanded()) {
@@ -86,13 +87,14 @@ sap.ui.define(
             oRm.write('>');
 
             aContent = oCustomControl.getContent();
+            //aContent = oCustomControl.getDropdownListItem();
             if (aContent) {
                 aContent.forEach(function (oContent) {
                     oRm.renderControl(oContent);
                 });
             }
 
-            oRm.write('</section>');
+            oRm.write('</li>');
         };
 
 

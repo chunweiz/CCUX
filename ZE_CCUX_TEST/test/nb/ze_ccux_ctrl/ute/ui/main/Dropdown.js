@@ -5,10 +5,11 @@ sap.ui.define(
     [
         'sap/ui/core/Control',
         'sap/ui/core/EnabledPropagator',
-        './Checkbox'
+        './Checkbox',
+        'sap/ui/core/Popup',
     ],
 
-    function (Control, EnabledPropagator, Checkbox) {
+    function (Control, EnabledPropagator, Checkbox, Popup) {
         'use strict';
 
         var CustomControl = Control.extend('nb.ui.main.Dropdown', {
@@ -17,13 +18,14 @@ sap.ui.define(
 
                 properties: {
                     design: { type: 'nb.ui.main.DropdownDesign', defaultValue: nb.ui.main.DropdownDesign.Default },
-                    expanded: { type: 'boolean', defaultValue: false }
+                    expanded: { type: 'boolean', defaultValue: false },
+                    key: { type: 'string', defaultValue: null },
+                    selected: { type: 'boolean', defaultValue: false }
                 },
 
                 aggregations: {
                     headerContent: { type: 'sap.ui.core.Control', multiple: true, singularName: 'headerContent' },
                     content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' },
-
                     _headerExpander: { type: 'sap.ui.core.Control', multiple: false, visibility: 'hidden' }
                 },
 
@@ -45,7 +47,7 @@ sap.ui.define(
             }
 
             this._oHdrExpander = new Checkbox({
-                design: nb.ui.main.DropdownDesign.None,
+                design: nb.ui.main.CheckboxDesign.None,
                 select: jQuery.proxy(this._onHdrExpanderSelected, this),
                 checked: this.getExpanded()
             });
@@ -63,6 +65,7 @@ sap.ui.define(
             this.$('.uteMDd-body').toggleClass('uteMDd-body-hidden');
 
             this.setProperty('expanded', bValue);
+
             return this;
         };
 
@@ -71,6 +74,30 @@ sap.ui.define(
                 this._oHdrExpander.destroy();
                 this._oHdrExpander = null;
             }
+        };
+         CustomControl.prototype.onclick = function (oEvent) {
+
+           // this.opts = oEvent.target
+
+            $(oEvent.target).on('click', function() {
+                if (oEvent.target.className === "uteMDd-body"){
+                    alert(oEvent.target.innerHTML);
+              }
+            });
+
+
+            return this;
+        };
+
+
+        CustomControl.prototype.init = function () {
+
+          this._dropdownPopup = new sap.ui.core.Popup(/*{
+        content : [ this ], //complete calendar control which should be displayed on the popup
+
+    }*/);
+
+
         };
 
         return CustomControl;
