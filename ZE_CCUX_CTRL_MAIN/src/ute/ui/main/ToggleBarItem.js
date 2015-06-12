@@ -33,6 +33,15 @@ sap.ui.define(
             }
         });
 
+        CustomElement.prototype.ontap = function (oEvent) {
+            if (!this.getEnabled()) {
+                return;
+            }
+
+            this.firePress({
+                selectedKey: this.getKey()
+            });
+        };
 
         return CustomElement;
     },
