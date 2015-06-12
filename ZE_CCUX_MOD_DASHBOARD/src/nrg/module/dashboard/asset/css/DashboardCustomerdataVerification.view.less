@@ -17,20 +17,35 @@
      & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div{
         background-color: @nrgColor-bluePearl;
         border-radius: 2px;
-        height: 350px;
+        //height: 350px;
         padding: 10px;
      }
 
     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m{
         padding-left: 32px;
         padding-right: 28px;
+        vertical-align: top !important;
     }
 
-     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mContent{
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv{
+        top: 0px;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mTgBtn{
+        margin-top: 0px;
+    }
+
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn{
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
+     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent{
          background-color: @nrgColor-bluePearl;
          border-radius: 2px;
-         height: 300px;
-         padding: 8px;
+         //height: 300px;
+         padding: 16px;
     }
 
     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-r{
@@ -118,10 +133,58 @@
         line-height: 24px;
     }
 
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-add > span{
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-add > span{
         font-size: @nrgFontSize-large;
         font-weight: @nrgFontWeight-bold;
         color: @nrgColor-grey-dark;
     }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-fLbl{
+        margin-top: 28px;
+        margin-bottom: 28px;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-fLbl > span{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-blue-link;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-fInput{
+        border: 0;
+        outline: 0;
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-grey-dark;
+        margin-left: 8px;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td{
+        padding: 0;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-fInput:focus{
+        background-color: @nrgColor-blue-link;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hLbl > span{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-grey-inactive;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hInput{
+        border: 0;
+        outline: 0;
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-grey-dark;
+        margin-left: 8px;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hInput:focus{
+        background-color: @nrgColor-blue-link;
+    }
+
 
 }

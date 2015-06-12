@@ -262,15 +262,6 @@
     width: 20px;
     height: 15px;
     cursor: pointer;
-
- /*   display: inline-block;
-    width: 0;
-	height: 0;
-	border-left: 6px solid transparent;
-	border-right: 6px solid transparent;
-    border-top: 6px solid grey;*/
-
-
 }
 
 /*.uteMDd-hdrExpanderDesign-default .uteMChkBox-intChk + .uteMChkBox-chk {
@@ -285,6 +276,7 @@
 }*/
 
 .uteMDd-hdrExpanderDesign-default .uteMChkBox-intChk + .uteMChkBox-chk {
+
     display: inline-block;
     width: 0;
 	height: 0;

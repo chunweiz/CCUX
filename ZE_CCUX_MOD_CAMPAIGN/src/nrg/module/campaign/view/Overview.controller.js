@@ -63,7 +63,7 @@ sap.ui.define(
         Controller.prototype._createSearchFilterObject = function (oContractID, oCurrentFlag) {
             var aFilters = [],
                 oFilterTemplate = new Filter();
-            oFilterTemplate.sPath = 'ContractID';
+            oFilterTemplate.sPath = 'Contract';
             oFilterTemplate.sOperator = FilterOperator.EQ;
             oFilterTemplate.oValue1 = oContractID;
             aFilters.push(oFilterTemplate);
