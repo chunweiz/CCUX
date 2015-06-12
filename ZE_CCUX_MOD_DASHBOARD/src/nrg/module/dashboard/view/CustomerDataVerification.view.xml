@@ -149,7 +149,8 @@
                                                 value="123 456 7890"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="CELL 2:" labelFor="cell2"/>
+                                            <utmain:Label text="CELL 2:" labelFor="cell2"
+                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <input id="cell2"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"
                                                 value="123 456 7890"/>
@@ -161,12 +162,18 @@
                                 <l:MatrixLayout widths="50%,50%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="DAY:" labelFor="dayPhn"/>
-                                            <input id="dayPhn"/>
+                                            <utmain:Label text="DAY:" labelFor="dayPhn"
+                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                            <input id="dayPhn"
+                                                value="222 333 4444"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="TYPE:" labelFor="dayPhnType"/>
-                                            <input id="dayPhnType"/>
+                                            <utmain:Label text="TYPE:" labelFor="dayPhnType"
+                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                            <input id="dayPhnType"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput"
+                                                value="LANDLINE"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
@@ -175,12 +182,17 @@
                                 <l:MatrixLayout widths="50%,50%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="EVENING:" labelFor="evnPhn"/>
-                                            <input id="day_phone"/>
+                                            <utmain:Label text="EVENING:" labelFor="evnPhn"
+                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                            <input id="evnPhn"
+                                                value="555 666 7777"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="TYPE:" labelFor="evnPhnType"/>
-                                            <input id="evnPhnType"/>
+                                            <utmain:Label text="TYPE:" labelFor="evnPhnType"
+                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                            <input id="evnPhnType" value="LANDLINE"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
@@ -192,8 +204,11 @@
                                             <utmain:Button text="SMS"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="EMAIL:" labelFor="email2"/>
-                                            <input id="email"/>
+                                            <utmain:Label text="EMAIL:" labelFor="email"
+                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                            <input id="email"
+                                                value="INFO2@UMAIL.COM"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
