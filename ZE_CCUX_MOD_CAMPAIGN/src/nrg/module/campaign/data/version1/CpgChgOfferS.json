@@ -3,7 +3,7 @@
       "results":[
          {
             "RequestedType":"A",
-            "Type":"",
+            "Type":"P",
             "Tier":"Save",
             "ContractID":"1121",
             "OfferCode":"OfferCode 1",
@@ -20,15 +20,10 @@
             "Incentive":10.00,
             "CurrInvAmount":"85.00",
             "CurrConsumption":"1200",
-            "__metadata":{
-               "id":"../../data/campaign/version1/CpgHistS('Type H')",
-               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
-               "uri":"../../data/campaign/version1/CpgHistS('Type H')"
-            }
          },
          {
             "RequestedType":"A",
-            "Type":"",
+            "Type":"R",
             "Tier":"Save",
             "ContractID":"1121",
             "OfferCode":"OfferCode 1",
@@ -45,15 +40,10 @@
             "Incentive":10.00,
             "CurrInvAmount":"85.00",
             "CurrConsumption":"1200",
-            "__metadata":{
-               "id":"../../data/campaign/version1/CpgHistS('Type H')",
-               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
-               "uri":"../../data/campaign/version1/CpgHistS('Type H')"
-            }
          },
          {
             "RequestedType":"A",
-            "Type":"",
+            "Type":"S",
             "Tier":"Save",
             "ContractID":"1121",
             "OfferCode":"OfferCode 1",
@@ -70,15 +60,10 @@
             "Incentive":10.00,
             "CurrInvAmount":"85.00",
             "CurrConsumption":"1200",
-            "__metadata":{
-               "id":"../../data/campaign/version1/CpgHistS('Type H')",
-               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
-               "uri":"../../data/campaign/version1/CpgHistS('Type H')"
-            }
          },
          {
             "RequestedType":"A",
-            "Type":"",
+            "Type":"F",
             "Tier":"Save",
             "ContractID":"1121",
             "OfferCode":"OfferCode 1",
@@ -95,15 +80,10 @@
             "Incentive":10.00,
             "CurrInvAmount":"85.00",
             "CurrConsumption":"1200",
-            "__metadata":{
-               "id":"../../data/campaign/version1/CpgHistS('Type H')",
-               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
-               "uri":"../../data/campaign/version1/CpgHistS('Type H')"
-            }
          },
          {
             "RequestedType":"A",
-            "Type":"",
+            "Type":"P",
             "Tier":"Save",
             "ContractID":"1121",
             "OfferCode":"OfferCode 1",
@@ -120,15 +100,10 @@
             "Incentive":10.00,
             "CurrInvAmount":"85.00",
             "CurrConsumption":"1200",
-            "__metadata":{
-               "id":"../../data/campaign/version1/CpgHistS('Type H')",
-               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
-               "uri":"../../data/campaign/version1/CpgHistS('Type H')"
-            }
          },
          {
             "RequestedType":"A",
-            "Type":"",
+            "Type":"R",
             "Tier":"Save",
             "ContractID":"1121",
             "OfferCode":"OfferCode 1",
@@ -145,15 +120,10 @@
             "Incentive":10.00,
             "CurrInvAmount":"85.00",
             "CurrConsumption":"1200",
-            "__metadata":{
-               "id":"../../data/campaign/version1/CpgHistS('Type H')",
-               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
-               "uri":"../../data/campaign/version1/CpgHistS('Type H')"
-            }
          },
          {
             "RequestedType":"A",
-            "Type":"",
+            "Type":"S",
             "Tier":"Save",
             "ContractID":"1121",
             "OfferCode":"OfferCode 1",
@@ -170,15 +140,10 @@
             "Incentive":10.00,
             "CurrInvAmount":"85.00",
             "CurrConsumption":"1200",
-            "__metadata":{
-               "id":"../../data/campaign/version1/CpgHistS('Type H')",
-               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
-               "uri":"../../data/campaign/version1/CpgHistS('Type H')"
-            }
          },
          {
             "RequestedType":"A",
-            "Type":"",
+            "Type":"F",
             "Tier":"Save",
             "ContractID":"1121",
             "OfferCode":"OfferCode 1",
@@ -195,15 +160,10 @@
             "Incentive":10.00,
             "CurrInvAmount":"85.00",
             "CurrConsumption":"1200",
-            "__metadata":{
-               "id":"../../data/campaign/version1/CpgHistS('Type H')",
-               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
-               "uri":"../../data/campaign/version1/CpgHistS('Type H')"
-            }
          },
          {
             "RequestedType":"A",
-            "Type":"",
+            "Type":"P",
             "Tier":"Save",
             "ContractID":"1121",
             "OfferCode":"OfferCode 1",
@@ -220,15 +180,10 @@
             "Incentive":10.00,
             "CurrInvAmount":"85.00",
             "CurrConsumption":"1200",
-            "__metadata":{
-               "id":"../../data/campaign/version1/CpgHistS('Type H')",
-               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
-               "uri":"../../data/campaign/version1/CpgHistS('Type H')"
-            }
          },
          {
             "RequestedType":"A",
-            "Type":"",
+            "Type":"R",
             "Tier":"Save",
             "ContractID":"1121",
             "OfferCode":"OfferCode 1",
@@ -245,15 +200,10 @@
             "Incentive":10.00,
             "CurrInvAmount":"85.00",
             "CurrConsumption":"1200",
-            "__metadata":{
-               "id":"../../data/campaign/version1/CpgHistS('Type H')",
-               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
-               "uri":"../../data/campaign/version1/CpgHistS('Type H')"
-            }
          },
          {
             "RequestedType":"A",
-            "Type":"",
+            "Type":"S",
             "Tier":"Save",
             "ContractID":"1121",
             "OfferCode":"OfferCode 1",
@@ -270,15 +220,10 @@
             "Incentive":10.00,
             "CurrInvAmount":"85.00",
             "CurrConsumption":"1200",
-            "__metadata":{
-               "id":"../../data/campaign/version1/CpgHistS('Type H')",
-               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
-               "uri":"../../data/campaign/version1/CpgHistS('Type H')"
-            }
          },
          {
             "RequestedType":"A",
-            "Type":"",
+            "Type":"F",
             "Tier":"Save",
             "ContractID":"1121",
             "OfferCode":"OfferCode 1",
@@ -295,15 +240,10 @@
             "Incentive":10.00,
             "CurrInvAmount":"85.00",
             "CurrConsumption":"1200",
-            "__metadata":{
-               "id":"../../data/campaign/version1/CpgHistS('Type H')",
-               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
-               "uri":"../../data/campaign/version1/CpgHistS('Type H')"
-            }
          },
          {
             "RequestedType":"A",
-            "Type":"",
+            "Type":"P",
             "Tier":"Save",
             "ContractID":"1121",
             "OfferCode":"OfferCode 1",
@@ -320,15 +260,10 @@
             "Incentive":10.00,
             "CurrInvAmount":"85.00",
             "CurrConsumption":"1200",
-            "__metadata":{
-               "id":"../../data/campaign/version1/CpgHistS('Type H')",
-               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
-               "uri":"../../data/campaign/version1/CpgHistS('Type H')"
-            }
          },
          {
             "RequestedType":"A",
-            "Type":"",
+            "Type":"R",
             "Tier":"Save",
             "ContractID":"1121",
             "OfferCode":"OfferCode 1",
@@ -345,15 +280,10 @@
             "Incentive":10.00,
             "CurrInvAmount":"85.00",
             "CurrConsumption":"1200",
-            "__metadata":{
-               "id":"../../data/campaign/version1/CpgHistS('Type H')",
-               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
-               "uri":"../../data/campaign/version1/CpgHistS('Type H')"
-            }
          },
          {
             "RequestedType":"A",
-            "Type":"",
+            "Type":"S",
             "Tier":"Save",
             "ContractID":"1121",
             "OfferCode":"OfferCode 1",
@@ -370,11 +300,6 @@
             "Incentive":10.00,
             "CurrInvAmount":"85.00",
             "CurrConsumption":"1200",
-            "__metadata":{
-               "id":"../../data/campaign/version1/CpgHistS('Type H')",
-               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.CpgOverview",
-               "uri":"../../data/campaign/version1/CpgHistS('Type H')"
-            }
          }
       ]
    }

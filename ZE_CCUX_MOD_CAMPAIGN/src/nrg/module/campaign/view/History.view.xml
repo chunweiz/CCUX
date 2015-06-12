@@ -77,10 +77,10 @@
                 </u:columns>
                 <u:rows>
                     <u:TableRow>
-                        <c:Label text="{comp-campaign>PromoCode}"/>
+                        <c:Label text="{comp-campaign>Promo}"/>
                         <c:Label text="{comp-campaign>OfferCode}"/>
-                        <c:Label text="{comp-campaign>TermLength}"/>
-                        <c:Label text="{comp-campaign>CancellationFee}"/>
+                        <c:Label text="{comp-campaign>Term}"/>
+                        <c:Label text="{comp-campaign>CncFee}"/>
                     </u:TableRow>
                 </u:rows>
             </u:Table>

@@ -76,13 +76,14 @@
             white-space: normal;
             margin-top: 15px;
     }
-    & > .nrgCmpOffPart-Display > .nrgCmpOffCompare{
+    & > .nrgCmpOffPart-Display > .nrgCmpOffCompare {
             width: 12%;
             display: inline-block;
             background-color: #f9fcff;
             margin-right: 20px;
             float: left;
-            padding: 10px 10px 10px 10px;
+            text-align: center;
+            height: 16rem;
     }
     &  > .nrgCmpOffPart-Display > .nrgCmpOffDisplay-1 {
             width:40%;
@@ -91,23 +92,30 @@
             margin-right: 20px;
             padding: 10px 10px 10px 10px;
     }
-    &  > .nrgCmpOffPart-Display > .nrgCmpOffDisplay-1 > .nrgCamOffFormRow > .nrgCamOffTtlT {
-            display:inline-block;
-            width: 50%;
-    }
     &  > .nrgCmpOffPart-Display > .nrgCmpOffDisplay-2 {
             width:40%;
             display:inline-block;
             background-color: @nrgColor-blue-pearl;
             padding: 10px 10px 10px 10px;
     }
-    & > .nrgCmpOffPart-Display > .nrgCmpOffDisplay-1 > .nrgCamOffPrcTbl{
+    & > .nrgCmpOffPart-Display > .nrgCmpOffDisplay-1 > .nrgCamOffPrcTbl {
             margin:10px 0px 0px 0px;
     }
-    & > .nrgCmpOffPart-Display > .nrgCmpOffDisplay-2 > .nrgCamOffPrcTbl{
+    & > .nrgCmpOffPart-Display > .nrgCmpOffDisplay-2 > .nrgCamOffPrcTbl {
             margin:10px 0px 0px 0px;
     }
-    & > .nrgCmpOffPart-Display > .nrgCmpOffCompare >.nrgCamOffCmpBtn{
+    & > .nrgCmpOffPart-Display > .nrgCmpOffCompare> .nrgCamOffTtlC {
+            margin-top: 10px;
+            font-size: @nrgFontSize-small;
+    }
+    & > .nrgCmpOffPart-Display > .nrgCmpOffCompare >.nrgCamOffCmpBtnI {
+            margin-bottom: 10px;
+            margin-top: 3rem;
+            color: @nrgColor-blueLink;
+            font-size: @nrgFontSize-base;
+            font-weight: @nrgFontWeight-semiBold;
+    }
+    & > .nrgCmpOffPart-Display > .nrgCmpOffCompare >.nrgCamOffCmpBtnC {
             margin-bottom: 10px;
             margin-top: 10px;
             color: @nrgColor-blueLink;
@@ -128,17 +136,21 @@
     }
     &   .nrgCamOffMtxRow {
             border-bottom:  1px dashed @nrgColor-grey-highlight;
+            line-height: 25px;
     }
     & > .nrgCamOffDisc{
             font-size: @nrgFontSize-smaller;
             font-weight: @nrgFontWeight-semiBold;
             width: 86%;
             margin-top: 2px;
+            margin-left: 15%;
     }
     & > .nrgCamOffSearch {
             background: transparent;
             border-bottom: 1px solid @nrgColor-grey-highlight;
-
+            margin-left: 45%;
+            width: 50%;
+            height: 1.5rem;
     }
     & > .nrgCamOffSearch > form {
             background: transparent;
@@ -146,5 +158,14 @@
             font-family: @nrgFontFamily;
             font-size: @nrgFontSize-small;
             font-weight: @nrgFontWeight-regular;
-   }
+            line-height: 0px;
+            height: 1.5rem;
+    }
+    & > .nrgCamOffSearch > form > input {
+            height: 1.5rem;
+    }
+    & > .nrgCamOffSearch > form > div {
+            height: 1.5rem;
+            line-height: 1.5rem;
+    }
 }

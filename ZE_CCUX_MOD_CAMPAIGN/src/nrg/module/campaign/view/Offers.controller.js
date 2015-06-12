@@ -22,7 +22,7 @@ sap.ui.define(
                 sEligibilityPath,
                 oParameters,
                 sEligibilityModel,
-                aFilters = this.createSearchFilterObject("1121"),
+                aFilters = this.createSearchFilterObject("1121", "P"),
                 aTileContainer,
                 aTileTemplate;
 
@@ -45,6 +45,12 @@ sap.ui.define(
             oFilterTemplate.sOperator = FilterOperator.EQ;
             oFilterTemplate.oValue1 = oContractID;
             aFilters.push(oFilterTemplate);
+
+            oFilterTemplate.sPath = 'Type';
+            oFilterTemplate.sOperator = FilterOperator.EQ;
+            oFilterTemplate.oValue1 = 'P';
+            aFilters.push(oFilterTemplate);
+
             return aFilters;
         };
         Controller.prototype.onPressed = function (oEvent) {
@@ -59,6 +65,38 @@ sap.ui.define(
             }
             oEvent.getSource().addStyleClass("nrgCamOffBt-Selected");
         };
+        Controller.prototype.toggleTier = function (oEvent) {
+            var aChildren,
+                sPath,
+                i,
+                aButtonText,
+                aFilters;
+/*            aChildren = oEvent.getSource().getParent().findElements();
+            for (i = 0; i < aChildren.length; i = i + 1) {
+                if (aChildren[i].hasStyleClass("nrgCamOffBt-Selected")) {
+                    aChildren[i].removeStyleClass("nrgCamOffBt-Selected");
+                }
+            }
+            oEvent.getSource().addStyleClass("nrgCamOffBt-Selected");*/
+            aButtonText = oEvent.getSource().getId();
+            aButtonText = aButtonText.substring(aButtonText.length - 1, aButtonText.length);
+            switch (aButtonText) {
+            case "P":
+                aFilters = this.createSearchFilterObject("1121", "P");
+                break;
+            case "R":
+                aFilters = this.createSearchFilterObject("1121", "R");
+                break;
+            case "S":
+                aFilters = this.createSearchFilterObject("1121", "S");
+                break;
+            case "F":
+                aFilters = this.createSearchFilterObject("1121", "S");
+                break;
+
+            }
+        };
+
         Controller.prototype.formatCancelFee = function (aCancellationFee, aIncentive) {
 
             return "Canc: " + aCancellationFee + " / " + "Inc: " + aIncentive;

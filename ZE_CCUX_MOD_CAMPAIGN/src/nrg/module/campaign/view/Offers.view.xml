@@ -16,8 +16,8 @@
             <u:Tag class="nrgCamOffTtlT" text="{comp-i18n-campaign>nrgCmpOffTtl}" />
             <u:Tag class="nrgCmpOffPart-Display">
                 <u:Tag class="nrgCmpOffCompare">
-                    <u:Tag class="nrgCamOffTtlT" text="{comp-i18n-campaign>nrgCmpOffCompareBy}" />
-                    <u:Tag class="nrgCamOffCmpBtn">
+                    <u:Tag class="nrgCamOffTtlC" text="{comp-i18n-campaign>nrgCmpOffCompareBy}" />
+                    <u:Tag class="nrgCamOffCmpBtnI">
                         <um:Button id="idnrgCamOffCmpBtn-I"
                             press=".toggleTier"
                             text="{comp-i18n-campaign>nrgCmpOffCpInvoice}"
@@ -25,7 +25,7 @@
                             design="None">
                         </um:button>
                     </u:Tag>
-                    <u:Tag class="nrgCamOffCmpBtn">
+                    <u:Tag class="nrgCamOffCmpBtnC">
                         <um:Button id="idnrgCamOffCmpBtn-C"
                             press=".toggleTier"
                             text="{comp-i18n-campaign>nrgCmpOffCpConsumption}"
@@ -62,10 +62,10 @@
                     <l:MatrixLayout class="nrgCamOffMtx nrgCamOff-Top">
                         <l:MatrixLayoutRow class="nrgCamOffMtxRow">
                             <l:MatrixLayoutCell class="nrgCamOffMtxFstCell">
-                                <c:Label text="September Invoice" class="nrgCamOvr-lbl" />
+                                <c:Label text="September Invoice" class="nrgCamOff-lbl" />
                             </l:MatrixLayoutCell>
                             <l:MatrixLayoutCell class="nrgCamOffMtxSndCell">
-                                <c:Label text="$85.00" class="nrgCamOvr-lbl"  />
+                                <c:Label text="$85.00" class="nrgCamOff-lbl"  />
                             </l:MatrixLayoutCell>
                         </l:MatrixLayoutRow>
                         <l:MatrixLayoutRow class="nrgCamOffMtxRow">
@@ -73,7 +73,7 @@
                                 <c:Label text="September Invoice @ Campaign Estimation" />
                             </l:MatrixLayoutCell>
                            <l:MatrixLayoutCell class="nrgCamOffMtxSndCell">
-                                <c:Label text="$65.00" class="nrgCamOvr-lbl" />
+                                <c:Label text="$65.00" class="nrgCamOff-lbl" />
                             </l:MatrixLayoutCell>
                         </l:MatrixLayoutRow>
                         <l:MatrixLayoutRow class="nrgCamOffMtxRow">
@@ -122,10 +122,10 @@
                     <l:MatrixLayout class="nrgCamOffMtx nrgCamOff-Top">
                         <l:MatrixLayoutRow class="nrgCamOffMtxRow">
                             <l:MatrixLayoutCell class="nrgCamOffMtxFstCell">
-                                <c:Label text="September Invoice" class="nrgCamOvr-lbl" />
+                                <c:Label text="September Invoice" class="nrgCamOff-lbl" />
                             </l:MatrixLayoutCell>
                             <l:MatrixLayoutCell class="nrgCamOffMtxSndCell">
-                                <c:Label text="$85.00" class="nrgCamOvr-lbl"  />
+                                <c:Label text="$85.00" class="nrgCamOff-lbl"  />
                             </l:MatrixLayoutCell>
                         </l:MatrixLayoutRow>
                        <l:MatrixLayoutRow class="nrgCamOffMtxRow">
@@ -133,7 +133,7 @@
                                 <c:Label text="September Invoice @ Campaign Estimation" />
                             </l:MatrixLayoutCell>
                            <l:MatrixLayoutCell class="nrgCamOffMtxSndCell">
-                                <c:Label text="$65.00" class="nrgCamOvr-lbl" />
+                                <c:Label text="$65.00" class="nrgCamOff-lbl" />
                             </l:MatrixLayoutCell>
                         </l:MatrixLayoutRow>
                         <l:MatrixLayoutRow class="nrgCamOffMtxRow">
@@ -156,7 +156,7 @@
                 </u:Tag>
             </u:Tag>
             <u:Tag class="nrgCamOffDisc" text="{comp-i18n-campaign>nrgCmpOffDisclosure}" />
-            <m:SearchField width="90%" class="nrgCamOffSearch" placeholder="Search Ex:Campaign Name, Promo Code, Price"/>
+            <m:SearchField width="50%" class="nrgCamOffSearch" placeholder="Search Ex:Campaign Name, Promo Code, Price"/>
             <u:Tag class="nrgCmpOffPart-Tiles">
                 <u:Tag class="nrgCmpOffTiers">
                     <u:Tag class="nrgCmpOffTier">

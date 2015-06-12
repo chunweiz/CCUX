@@ -20,12 +20,12 @@
                            text="{Overview-elig>Notitle}"
                            class="nrgCamOvr-offerBtn"
                            design="None"
-                           disabled="{= ${Overview-elig>CustomerEligFlag} === '' }">
+                           disabled="{= ${Overview-elig>CustEligFlag} === '' }">
                     <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n-appFtr>nrgAppFooterCustReqOffer}" />
                     <u:Tag id="idCamCustReqOffer" class="nrgCamOvr-offerBtnDesc"
-                           text="{= ${Overview-elig>CustomerEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
+                           text="{= ${Overview-elig>CustEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
                         <u:customData>
-                          <core:CustomData key="flag" value="{Overview-elig>CustomerEligFlag}" writeToDom="true" />
+                          <core:CustomData key="flag" value="{Overview-elig>CustEligFlag}" writeToDom="true" />
                         </u:customData>
                     </u:Tag>
                 </um:button>
@@ -34,12 +34,12 @@
                            text="{Overview-elig>Notitle}"
                            class="nrgCamOvr-offerBtn"
                            design="None"
-                           disabled="{= ${Overview-elig>AgentEligFlag} === '' }">
+                           disabled="{= ${Overview-elig>AgntEligFlag} === '' }">
                     <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n-appFtr>nrgAppFooterAgentReqOffer}" />
                     <u:Tag id="idCamAgentReqOffer" class="nrgCamOvr-offerBtnDesc"
-                           text="{= ${Overview-elig>AgentEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
+                           text="{= ${Overview-elig>AgntEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
                         <u:customData>
-                          <core:CustomData key="flag" value="{Overview-elig>AgentEligFlag}" writeToDom="true" />
+                          <core:CustomData key="flag" value="{Overview-elig>AgntEligFlag}" writeToDom="true" />
                         </u:customData>
                     </u:Tag>
                 </um:button>
@@ -71,7 +71,7 @@
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
                         <u:TextView id="idCamAvgUsgTv"
-                                    text="{comp-campaign>AverageUsage}"
+                                    text="{comp-campaign>AvgUsage}"
                                     class="nrgCamOvr-left"
                                     color="DarkGrey"
                                     design="Base"/>
@@ -146,12 +146,12 @@
                 </u:columns>
                 <u:rows>
                     <u:TableRow>
-                        <c:Label text="{comp-campaign>PromoCode}"/>
+                        <c:Label text="{comp-campaign>Promo}"/>
                         <c:Label text="{comp-campaign>OfferCode}"/>
-                        <c:Label text="{comp-campaign>TermLength}"/>
+                        <c:Label text="{comp-campaign>Term}"/>
                         <c:Label text="{path: 'comp-campaign>StartDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
                         <c:Label text="{path: 'comp-campaign>EndDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
-                        <c:Label text="{comp-campaign>CancellationFee}"/>
+                        <c:Label text="{comp-campaign>CncFee}"/>
                         <c:Label text="{comp-campaign>Incentive}"/>
                     </u:TableRow>
                 </u:rows>
