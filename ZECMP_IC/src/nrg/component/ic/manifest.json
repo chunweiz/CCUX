@@ -20,8 +20,8 @@
 
         "resources": {
             "css": [
-                { "uri": "../../../../../ZE_CCUX_LIB/bower_components/normalize.css/normalize.css" },
-                { "uri": "../../../../../ZE_CCUX_BASE/build/nrg/base/asset/css/base.css" }
+                { "uri": "../../../../../ZELIB/bower_components/normalize.css/normalize.css" },
+                { "uri": "../../../../../ZEBASE/build/nrg/base/asset/css/base.css" }
             ]
         },
 
