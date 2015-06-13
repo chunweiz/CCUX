@@ -8,7 +8,6 @@
 
         sBuild = grunt.option('build');
         sDeploy = grunt.option('deploy');
-        grunt.log.writeln(sDeploy);
 
         if (sBuild) {
             /*
