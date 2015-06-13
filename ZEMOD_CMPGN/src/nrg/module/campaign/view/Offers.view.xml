@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:c="sap.ui.commons"
+          xmlns:core="sap.ui.core"
+          xmlns:u="ute.ui.commons"
+          xmlns:l="sap.ui.commons.layout"
+          xmlns:m="sap.m"
+          xmlns:um="ute.ui.main"
+          controllerName="nrg.module.campaign.view.Offers"
+          height="100%"
+          width="100%"
+          displayBlock="true">
+    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
+        <u:Tag class="nrgCmpOffT">
+            <u:Tag class="nrgCamOffTtlT" text="{comp-i18n-campaign>nrgCmpOffTtl}" />
+            <u:Tag class="nrgCmpOffPart-Display">
+                <u:Tag class="nrgCmpOffCompare">
+                    <u:Tag class="nrgCamOffTtlC" text="{comp-i18n-campaign>nrgCmpOffCompareBy}" />
+                    <u:Tag class="nrgCamOffCmpBtnI">
+                        <um:Button id="idnrgCamOffCmpBtn-I"
+                            press=".toggleTier"
+                            text="{comp-i18n-campaign>nrgCmpOffCpInvoice}"
+                            class="nrgCamOffBtn"
+                            design="None">
+                        </um:button>
+                    </u:Tag>
+                    <u:Tag class="nrgCamOffCmpBtnC">
+                        <um:Button id="idnrgCamOffCmpBtn-C"
+                            press=".toggleTier"
+                            text="{comp-i18n-campaign>nrgCmpOffCpConsumption}"
+                            class="nrgCamOffBtn"
+                            design="None">
+                        </um:button>
+                    </u:Tag>
+                </u:Tag>
+                <u:Tag class="nrgCmpOffDisplay-1">
+                    <c:Label id="idCamOffDisTit-1" text="CND AVG@2000=11.1 Secure Advantage 24" icon="sap-icon://nrg-icon/tag" class="nrgCamOff-Top"  />
+                    <u:Table width="100%"
+                        id="idCamOffPriceTbl1"
+                        tableType="CampaignTable"
+                        class="nrgCamOffPrcTbl"  >
+                            <u:columns>
+                                <u:TableColumn width="33%" >
+                                    <c:Label text="EFL@500"/>
+                                </u:TableColumn>
+                                <u:TableColumn width="33%" >
+                                    <c:Label text="EFL@1000"/>
+                                </u:TableColumn>
+                                <u:TableColumn width="33%" >
+                                    <c:Label text="EFL@2000"/>
+                                </u:TableColumn>
+                            </u:columns>
+                            <u:rows>
+                                <u:TableRow>
+                                    <c:Label text="14.4"/>
+                                    <c:Label text="12.4"/>
+                                    <c:Label text="13.4"/>
+                                </u:TableRow>
+                            </u:rows>
+                    </u:Table>
+                    <l:MatrixLayout class="nrgCamOffMtx nrgCamOff-Top">
+                        <l:MatrixLayoutRow class="nrgCamOffMtxRow">
+                            <l:MatrixLayoutCell class="nrgCamOffMtxFstCell">
+                                <c:Label text="September Invoice" class="nrgCamOff-lbl" />
+                            </l:MatrixLayoutCell>
+                            <l:MatrixLayoutCell class="nrgCamOffMtxSndCell">
+                                <c:Label text="$85.00" class="nrgCamOff-lbl"  />
+                            </l:MatrixLayoutCell>
+                        </l:MatrixLayoutRow>
+                        <l:MatrixLayoutRow class="nrgCamOffMtxRow">
+                           <l:MatrixLayoutCell class="nrgCamOffMtxFstCell">
+                                <c:Label text="September Invoice @ Campaign Estimation" />
+                            </l:MatrixLayoutCell>
+                           <l:MatrixLayoutCell class="nrgCamOffMtxSndCell">
+                                <c:Label text="$65.00" class="nrgCamOff-lbl" />
+                            </l:MatrixLayoutCell>
+                        </l:MatrixLayoutRow>
+                        <l:MatrixLayoutRow class="nrgCamOffMtxRow">
+                            <l:MatrixLayoutCell class="nrgCamOffMtxFstCell">
+                                <c:Label text="Estimated Difference"  />
+                            </l:MatrixLayoutCell>
+                            <l:MatrixLayoutCell class="nrgCamOffMtxSndCell">
+                                <c:Label text="$20.00" />
+                            </l:MatrixLayoutCell>
+                        </l:MatrixLayoutRow>
+                        <l:MatrixLayoutRow class="nrgCamOffMtxRow">
+                            <l:MatrixLayoutCell class="nrgCamOffMtxFstCell">
+                                <c:Label text="Estimated Cents per kWh"  />
+                            </l:MatrixLayoutCell>
+                            <l:MatrixLayoutCell class="nrgCamOffMtxSndCell">
+                                <c:Label text="02.00¢/kWh" />
+                            </l:MatrixLayoutCell>
+                        </l:MatrixLayoutRow>
+                    </l:MatrixLayout>
+                </u:Tag>
+                <u:Tag class="nrgCmpOffDisplay-2">
+                    <c:Label id="idCamOffDisTit-2" text="CND AVG@2000=11.1 Secure Advantage 24" icon="sap-icon://nrg-icon/tag" class="nrgCamOff-Top"  />
+                    <u:Table width="100%"
+                        id="idCamOffPriceTbl2"
+                        tableType="CampaignTable"
+                        class="nrgCamOffPrcTbl"  >
+                            <u:columns>
+                                <u:TableColumn width="33%" >
+                                    <c:Label text="EFL@500"/>
+                                </u:TableColumn>
+                                <u:TableColumn width="33%" >
+                                    <c:Label text="EFL@1000"/>
+                                </u:TableColumn>
+                                <u:TableColumn width="33%" >
+                                    <c:Label text="EFL@2000"/>
+                                </u:TableColumn>
+                            </u:columns>
+                            <u:rows>
+                                <u:TableRow>
+                                    <c:Label text="14.4"/>
+                                    <c:Label text="12.4"/>
+                                    <c:Label text="13.4"/>
+                                </u:TableRow>
+                            </u:rows>
+                    </u:Table>
+                    <l:MatrixLayout class="nrgCamOffMtx nrgCamOff-Top">
+                        <l:MatrixLayoutRow class="nrgCamOffMtxRow">
+                            <l:MatrixLayoutCell class="nrgCamOffMtxFstCell">
+                                <c:Label text="September Invoice" class="nrgCamOff-lbl" />
+                            </l:MatrixLayoutCell>
+                            <l:MatrixLayoutCell class="nrgCamOffMtxSndCell">
+                                <c:Label text="$85.00" class="nrgCamOff-lbl"  />
+                            </l:MatrixLayoutCell>
+                        </l:MatrixLayoutRow>
+                       <l:MatrixLayoutRow class="nrgCamOffMtxRow">
+                           <l:MatrixLayoutCell class="nrgCamOffMtxFstCell">
+                                <c:Label text="September Invoice @ Campaign Estimation" />
+                            </l:MatrixLayoutCell>
+                           <l:MatrixLayoutCell class="nrgCamOffMtxSndCell">
+                                <c:Label text="$65.00" class="nrgCamOff-lbl" />
+                            </l:MatrixLayoutCell>
+                        </l:MatrixLayoutRow>
+                        <l:MatrixLayoutRow class="nrgCamOffMtxRow">
+                            <l:MatrixLayoutCell class="nrgCamOffMtxFstCell">
+                                <c:Label text="Estimated Difference"  />
+                            </l:MatrixLayoutCell>
+                            <l:MatrixLayoutCell class="nrgCamOffMtxSndCell">
+                                <c:Label text="$20.00" />
+                            </l:MatrixLayoutCell>
+                        </l:MatrixLayoutRow>
+                        <l:MatrixLayoutRow class="nrgCamOffMtxRow">
+                            <l:MatrixLayoutCell class="nrgCamOffMtxFstCell">
+                                <c:Label text="Estimated Cents per kWh"  />
+                            </l:MatrixLayoutCell>
+                            <l:MatrixLayoutCell class="nrgCamOffMtxSndCell">
+                                <c:Label text="02.00¢/kWh" />
+                            </l:MatrixLayoutCell>
+                        </l:MatrixLayoutRow>
+                    </l:MatrixLayout>
+                </u:Tag>
+            </u:Tag>
+            <u:Tag class="nrgCamOffDisc" text="{comp-i18n-campaign>nrgCmpOffDisclosure}" />
+            <m:SearchField width="50%" class="nrgCamOffSearch" placeholder="Search Ex:Campaign Name, Promo Code, Price"/>
+            <u:Tag class="nrgCmpOffPart-Tiles">
+                <u:Tag class="nrgCmpOffTiers">
+                    <u:Tag class="nrgCmpOffTier">
+                        <um:Button id="idCamToggleBtn-P"
+                            press=".toggleTier"
+                            text="{comp-i18n-campaign>nrgCmpOffTProactive}"
+                            class="nrgCamOvr-offerBtn"
+                            design="None">
+                        </um:button>
+                    </u:Tag>
+                    <u:Tag class="nrgCmpOffTier">
+                        <um:Button id="idCamToggleBtn-R"
+                            press=".toggleTier"
+                            text="{comp-i18n-campaign>nrgCmpOffTReactive}"
+                            class="nrgCamOvr-offerBtn"
+                            design="None">
+                        </um:button>
+                    </u:Tag>
+                    <u:Tag class="nrgCmpOffTier">
+                        <um:Button id="idCamToggleBtn-S"
+                            press=".toggleTier"
+                            text="{comp-i18n-campaign>nrgCmpOffTSave}"
+                            class="nrgCamOvr-offerBtn"
+                            design="None">
+                        </um:button>
+                    </u:Tag>
+                    <u:Tag class="nrgCmpOffTier">
+                        <um:Button id="idCamToggleBtn-FS"
+                            press=".toggleTier"
+                            text="{comp-i18n-campaign>nrgCmpOffTFinalSave}"
+                            class="nrgCamOvr-offerBtn"
+                            design="None">
+                        </um:button>
+                    </u:Tag>
+                </u:Tag>
+                <u:Tag class="nrgCmpOffTiles">
+                    <m:ScrollContainer
+                        height="267px"
+                        width="100%"
+                        horizontal="false"
+                        vertical="true"
+                        focusable="true"
+                        class="nrgCamOffScroll"
+                        id="idnrgCamOffScroll" >
+                        <um:Button press=".onPressed" text="{comp-campaign>Notitle}" class="nrgCamOffBt" id="idnrgCamOffBt" design="None">
+                            <u:Tag class="nrgCamOffBtinfo">
+                                <u:Tag class="nrgCamOffBt-CF" text="{parts:[{path:'comp-campaign>CancellationFee',
+                                                                type: 'nrg.util.type.Price',
+                                                                formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' }},
+                                                           {path: 'comp-campaign>Incentive',
+                                                                type: 'nrg.util.type.Price',
+                                                                formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' } }],
+                                                    formatter:'.formatCancelFee'}" />
+
+                                <u:Tag class="nrgCamOffBt-PC"
+                                       text="{parts:[{path:'comp-campaign>PromoCode'}],
+                                                    formatter:'.formatPromo'}"/>
+                            </u:Tag>
+                            <u:Tag class="nrgCamOffBt-Ttl" text="{comp-campaign>OfferTitle}" />
+                            <u:Tag class="nrgCamOffBt-Prc" text="{path: 'comp-campaign>EFL2000',
+                                                                type: 'nrg.util.type.Price',
+                                                                formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
+                            <u:Tag class="nrgCamOffBt-PrcLbl" text="{comp-i18n-campaign>nrgCmpOffkWhDisc}" />
+                        </um:Button>
+                    </m:ScrollContainer>
+                </u:Tag>
+            </u:Tag>
+        </u:Tag>
+    </u:Tag>
+</mvc:View>

@@ -1,0 +1,53 @@
+.uteMRb {
+    display: inline-block;
+    position: relative;
+}
+
+.uteMRb-intRb {
+    display: none;
+}
+
+.uteMRb-rb {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.uteMRb-intRb[disabled="disabled"] + .uteMRb-rb {
+    cursor: default;
+}
+
+/*
+** Default radio button design
+*/
+.uteMRb-design-default .uteMRb-rb {
+    border: 1px solid @uteColor-blue-link;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.uteMRb-design-default .uteMRb-intRb:checked + .uteMRb-rb {
+    background-color: @uteColor-blue-link;
+}
+
+.uteMRb-design-default .uteMRb-intRb:checked + .uteMRb-rb::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: @uteColor-white;
+    border-radius: 50%;
+    transform: translate(3.5px, 3.5px);
+}
+
+.uteMRb-design-default .uteMRb-intRb[disabled="disabled"] + .uteMRb-rb {
+    border-color: @uteColor-blue-pearl;
+}
+
+.uteMRb-design-default .uteMRb-intRb[disabled="disabled"]:checked + .uteMRb-rb {
+    background-color: @uteColor-blue-pearl;
+}
+
+.uteMRb-design-default .uteMRb-intRb[disabled="disabled"]:checked + .uteMRb-rb::before {
+    background-color: @uteColor-grey-dark;
+}
