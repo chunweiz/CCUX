@@ -154,12 +154,12 @@
             oConfig = {
                 deploy: {
                     src: [
-                        'ZE_CCUX_MOD_APP/src/nrg/module/app/header/manifest.json',
-                        'ZE_CCUX_MOD_APP/src/nrg/module/app/footer/manifest.json',
-                        'ZE_CCUX_MOD_APP/src/nrg/module/app/main/manifest.json',
-                        'ZE_CCUX_MOD_OTHERS/src/nrg/module/others/manifest.json',
-                        'ZE_CCUX_MOD_DASHBOARD/src/nrg/module/dashboard/manifest.json',
-                        'ZE_CCUX_MOD_CAMPAIGN/src/nrg/module/campaign/manifest.json',
+                        'ZEMOD_APP/src/nrg/module/app/header/manifest.json',
+                        'ZEMOD_APP/src/nrg/module/app/footer/manifest.json',
+                        'ZEMOD_APP/src/nrg/module/app/main/manifest.json',
+                        'ZEMOD_OTHERS/src/nrg/module/others/manifest.json',
+                        'ZEMOD_DSHB/src/nrg/module/dashboard/manifest.json',
+                        'ZEMOD_CMPGN/src/nrg/module/campaign/manifest.json',
                         '<%= compFolder %>/src/<%= compPath %>/manifest.json'
                     ],
                     dest: '<%= compFolder %>/build/<%= compPath %>/manifest.json'
