@@ -29,7 +29,7 @@
                         force: true
                     },
                     src: [
-                        '<%= eclipseProjectPath %>/build/<%= basePath %>/**'
+                        '<%= eclipseProjectPath %>/WebContent/build/<%= basePath %>/**'
                     ]
                 }
             };
@@ -52,7 +52,7 @@
                             src: [
                                 '<%= basePath %>/**'
                             ],
-                            dest: '<%= eclipseProjectPath %>/build/',
+                            dest: '<%= eclipseProjectPath %>/WebContent/build/',
                             filter: 'isFile'
                         }
                     ]
