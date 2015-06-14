@@ -158,8 +158,8 @@
                         'ZEMOD_APP/src/nrg/module/app/footer/manifest.json',
                         'ZEMOD_APP/src/nrg/module/app/main/manifest.json',
                         'ZEMOD_OTHERS/src/nrg/module/others/manifest.json',
-                        'ZEMOD_DASHBOARD/src/nrg/module/dashboard/manifest.json',
-                        'ZEMOD_CAMPAIGN/src/nrg/module/campaign/manifest.json',
+                        'ZEMOD_DSHB/src/nrg/module/dashboard/manifest.json',
+                        'ZEMOD_CMPGN/src/nrg/module/campaign/manifest.json',
                         '<%= compFolder %>/src/<%= compPath %>/manifest.json'
                     ],
                     dest: '<%= compFolder %>/build/<%= compPath %>/manifest.json'
