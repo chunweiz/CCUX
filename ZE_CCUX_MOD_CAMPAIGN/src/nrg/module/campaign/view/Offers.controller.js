@@ -24,12 +24,15 @@ sap.ui.define(
                 sEligibilityModel,
                 aFilters = this.createSearchFilterObject("1121", "P"),
                 aTileContainer,
-                aTileTemplate;
+                aTileTemplate,
+                json;
 
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCpgChangeOffSet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             aTileContainer = this.getView().byId("idnrgCamOffScroll");
+
             aTileTemplate = this.getView().byId("idnrgCamOffBt").clone();
+            this.myTemplate = aTileTemplate;
             oParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,
@@ -38,7 +41,7 @@ sap.ui.define(
             };
             aTileContainer.bindAggregation("content", oParameters);
         };
-        Controller.prototype.createSearchFilterObject = function (oContractID, oCurrentFlag) {
+        Controller.prototype.createSearchFilterObject = function (oContractID, oFlag) {
             var aFilters = [],
                 oFilterTemplate = new Filter();
             oFilterTemplate.sPath = 'ContractID';
@@ -48,7 +51,7 @@ sap.ui.define(
 
             oFilterTemplate.sPath = 'Type';
             oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = 'P';
+            oFilterTemplate.oValue1 = oFlag;
             aFilters.push(oFilterTemplate);
 
             return aFilters;
@@ -70,7 +73,12 @@ sap.ui.define(
                 sPath,
                 i,
                 aButtonText,
-                aFilters;
+                aFilters,
+                aTileContainer,
+                aTileTemplate,
+                oParameters,
+                sCurrentPath,
+                aContent;
 /*            aChildren = oEvent.getSource().getParent().findElements();
             for (i = 0; i < aChildren.length; i = i + 1) {
                 if (aChildren[i].hasStyleClass("nrgCamOffBt-Selected")) {
@@ -91,12 +99,34 @@ sap.ui.define(
                 aFilters = this.createSearchFilterObject("1121", "S");
                 break;
             case "F":
-                aFilters = this.createSearchFilterObject("1121", "S");
+                aFilters = this.createSearchFilterObject("1121", "F");
                 break;
-
+            default:
+                aFilters = this.createSearchFilterObject("1121", "F");
             }
+            aTileContainer = this.getView().byId("idnrgCamOffScroll");
+            aContent = aTileContainer.getContent();
+            //aTileTemplate = aContent[0].clone();
+            aTileTemplate = this.myTemplate;
+            sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCpgChangeOffSet");
+            oParameters = {
+                model : "comp-campaign",
+                path : sCurrentPath,
+                template : aTileTemplate,
+                filters : aFilters
+            };
+            aTileContainer.bindAggregation("content", oParameters);
         };
 
+        Controller.prototype.toggleComparision = function (oEvent) {
+            var aDisplay1 = this.getView().byId("idnrgCmpOffDisplay-1"),
+                aDisplay2 = this.getView().byId("idnrgCmpOffDisplay-2"),
+                aFragment = sap.ui.xmlfragment("nrg.module.campaign.view.Cons");
+            aDisplay1.addContent(aFragment);
+            aDisplay2.addContent(aFragment);
+
+
+        };
         Controller.prototype.formatCancelFee = function (aCancellationFee, aIncentive) {
 
             return "Canc: " + aCancellationFee + " / " + "Inc: " + aIncentive;
