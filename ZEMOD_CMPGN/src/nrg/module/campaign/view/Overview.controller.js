@@ -26,6 +26,22 @@ sap.ui.define(
 		/* lifecycle method- After Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
+            var aContent, obinding, sPath, that = this,
+                aToggleContainer = this.getView().byId("idnrgCamToggleT"),
+                handler = function () {
+                    aContent = aToggleContainer.getContent();
+                    if ((aContent !== undefined) && (aContent.length > 0)) {
+                        sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                       // aContent[0].addStyleClass("nrgCamHisBut-Selected");
+                        that.getView().bindElement({
+                            model : "comp-campaign",
+                            path : sPath
+                        });
+                    }
+                    obinding.detachDataReceived(handler);
+                };
+            obinding = aToggleContainer.getBinding("content");
+            obinding.attachDataReceived(handler);
         };
 		/**
 		 * Binds the view to the object path and expands the aggregated line items.

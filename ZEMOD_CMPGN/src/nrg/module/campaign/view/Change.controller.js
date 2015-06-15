@@ -18,7 +18,7 @@ sap.ui.define(
 		/* lifecycle method- Init                                     */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
-            this.getOwnerComponent().getRouter().getRoute("campaign").attachPatternMatched(this._onObjectMatched, this);
+            this.getOwnerComponent().getRouter().getRoute("campaignchg").attachPatternMatched(this._onObjectMatched, this);
 
         };
 
@@ -38,27 +38,21 @@ sap.ui.define(
         Controller.prototype._onObjectMatched = function (oEvent) {
             var oModel,
                 sCurrentPath,
-                sEligibilityPath,
                 mParameters,
-                oToggleContainer,
-                oToggleTemplate,
-                aFilters = this._createSearchFilterObject("1121", "Y");
+                aFilters = this._createSearchFilterObject("1121", "50124832"),
+                sPath;
 
-            sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
-            sEligibilityPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgEligibilitySet");
+            //sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
+            sCurrentPath = "/CpgChgSaveS";
+            sPath = "/CpgChgSaveS(OfferCode='50124832',Type='P')";
             oModel = this.getOwnerComponent().getModel('comp-campaign');
-            oToggleContainer = this.getView().byId("idnrgCamToggleT");
-            oToggleTemplate = this.getView().byId("idCamToggleBtn").clone();
             mParameters = {
-                model : "comp-campaign",
-                path : sCurrentPath,
-                template : oToggleTemplate,
-                filters : aFilters
-            };
-            oToggleContainer.bindAggregation("content", mParameters);
-            mParameters = {
-                filters : aFilters,
+                //filters : aFilters,
                 success : function (oData) {
+                    this.getView().bindElement({
+                        model : "comp-campaign",
+                        path : sPath
+                    });
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
                 error: function (oError) {
@@ -66,9 +60,8 @@ sap.ui.define(
                 }.bind(this)
             };
             if (oModel) {
-                oModel.read(sEligibilityPath, mParameters);
+                oModel.read(sPath, mParameters);
             }
-
 		};
 
         /**
@@ -90,17 +83,17 @@ sap.ui.define(
          * @param {OfferCode} Filter Offer Code to determine the current selection
 		 * @private
 		 */
-        Controller.prototype._createSearchFilterObject = function (oContractID, oOfferCode) {
+        Controller.prototype._createSearchFilterObject = function (sContractID, sOfferCode) {
             var aFilters = [],
                 oFilterTemplate = new Filter();
             oFilterTemplate.sPath = 'Contract';
             oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = oContractID;
+            oFilterTemplate.oValue1 = sContractID;
             aFilters.push(oFilterTemplate);
 
             oFilterTemplate.sPath = 'OfferCode';
             oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = oContractID;
+            oFilterTemplate.oValue1 = sOfferCode;
             aFilters.push(oFilterTemplate);
             return aFilters;
         };
