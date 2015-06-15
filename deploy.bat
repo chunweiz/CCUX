@@ -47,7 +47,6 @@
 
 @IF EXIST %ECLIPSE_WORKSPACE_PATH%\ZECMP_IC (
     @CALL grunt --deploy=component --componentName=nrg.component.ic --componentFolder=ZECMP_IC --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\ZECMP_IC
-
 ) ELSE (
     @ECHO Path %ECLIPSE_WORKSPACE_PATH%\ZECMP_IC does not exists.
 )
