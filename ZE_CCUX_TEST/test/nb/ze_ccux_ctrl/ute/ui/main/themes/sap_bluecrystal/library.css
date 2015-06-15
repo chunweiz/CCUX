@@ -95,6 +95,8 @@
     display: inline-block;
     position: relative;
     cursor: pointer;
+    padding-left: 165px;
+    padding-top: 5px;
 }
 
 .uteMChkBox-intChk {
@@ -228,15 +230,13 @@
 
 .uteMDd .uteMDd-hdr .uteMDd-hdrContent {
     display: inline-block;
-  /*  padding-left: 10px;*/
+    padding-left: 10px;
 }
 
 .uteMDd .uteMDd-hdr .uteMDd-hdrExpander {
     display: inline-block;
     vertical-align: top;
     margin: 0 10px;
-
-
 }
 
 .uteMDd .uteMDd-body {
@@ -247,12 +247,25 @@
     border-radius: 4px;
 }
 .uteMDd .uteMDd-body .uteMDd-body-list {
-    display: block;
-  color:coral;
+   display: block;
+  margin-left: -40px;
+  position: relative;
 }
 .uteMDd .uteMDd-body .uteMDd-body-list:hover {
    background-color: aqua;
 }
+.uteMDd .uteMDd-body .uteMDd-body-list-item {
+    display: block;
+    margin-left: 20px;
+}
+.uteMDd .uteMDd-body li:first-of-type a{
+        border-radius: 7px 7px 0 0;
+    }
+.uteMDd .uteMDd-body li:last-of-type a {
+        border: none;
+        border-radius: 0 0 7px 7px;
+    }
+
 .uteMDd .uteMDd-body.uteMDd-body-hidden {
     display: none;
 }
@@ -305,8 +318,4 @@
 
 }
 
-/*.uteMDd-hdrExpanderDesign-default .uteMChkBox-intChk:checked + .uteMChkBox-chk::after {
 
-
-
-}*/
