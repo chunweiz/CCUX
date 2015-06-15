@@ -1,0 +1,92 @@
+.uteMBtn {
+    display: inline-block;
+    position: relative;
+    border-radius: 2px;
+    padding: 3px 5px;
+}
+
+.uteMBtn:hover {
+    cursor: pointer;
+}
+
+.uteMBtn[data-disabled="true"]:hover {
+    cursor: default;
+}
+
+.uteMBtn-text {
+    font-size: @uteFontSize-small;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/*
+** Button design - default
+*/
+.uteMBtn-design-default {
+    min-width: 82px;
+    min-height: 28px;
+    background-color: @uteColor-blue-link;
+    color: @uteColor-white;
+}
+
+.uteMBtn-design-default:hover {
+    background-color: @uteColor-blue-light;
+}
+
+.uteMBtn-design-default[data-disabled="true"] {
+    background-color: @uteColor-blue-pearl;
+    color: @uteColor-grey-dark;
+}
+
+.uteMBtn-design-default[data-disabled="true"]:hover {
+    background-color: @uteColor-blue-pearl;
+}
+
+/*
+** Button design - highlight
+*/
+.uteMBtn-design-highlight {
+    min-width: 82px;
+    min-height: 28px;
+    background-color: @uteColor-green-highlight;
+    color: @uteColor-white;
+}
+
+.uteMBtn-design-highlight:hover {
+    background-color: @uteColor-blue-light;
+}
+
+.uteMBtn-design-highlight[data-disabled="true"] {
+    background-color: @uteColor-blue-pearl;
+    color: @uteColor-grey-dark;
+}
+
+.uteMBtn-design-highlight[data-disabled="true"]:hover {
+    background-color: @uteColor-blue-pearl;
+}
+
+/*
+** Button design - invert
+*/
+.uteMBtn-design-invert {
+    min-width: 82px;
+    min-height: 28px;
+    background-color: @uteColor-blue-pearl;
+    color: @uteColor-blue-link;
+}
+
+.uteMBtn-design-invert:hover {
+    background-color: @uteColor-blue-light;
+    color: @uteColor-white;
+}
+
+.uteMBtn-design-invert[data-disabled="true"] {
+    background-color: @uteColor-blue-pearl;
+    color: @uteColor-grey-dark;
+}
+
+.uteMBtn-design-invert[data-disabled="true"]:hover {
+    background-color: @uteColor-blue-pearl;
+}
+
+

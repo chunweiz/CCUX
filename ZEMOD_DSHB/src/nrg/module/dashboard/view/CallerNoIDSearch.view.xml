@@ -1,0 +1,192 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.commons.layout"
+    xmlns:c="sap.ui.commons"
+    xmlns:core="sap.ui.core"
+    controllerName="nrg.module.dashboard.view.CallerNoIDSearch"
+    displayBlock="true">
+
+
+    <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
+        <ute:content>
+            <ute:Tag class="nrgDashboard-calrNoIDSearch-title">
+                <core:Icon src="sap-icon://nrg-icon/notification"
+                           class="nrgDashboard-calrNoIDSearch-titleIcon"/>
+                <ute:Tag elem="span" class="nrgDashboard-calrNoIDSearch-titleSpan"
+                     text="{comp-i18n-dashboard>nrgDashboardCallerNoIDSearchTitle}">
+                </ute:Tag>
+            </ute:Tag>
+            <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
+                <!--type:'nrg.util.type.ContractAccountNumber'-->
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sCaNum'}"
+                    id="idSearchCa"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_CaNumPh}"
+                    change="onTextFieldChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+
+                <!--type:'nrg.util.type.SocialSecurityNumber'-->
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sSsn'}"
+                    id="idSearchSsn"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_Ssn}"
+                    change="onTextFieldChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+
+                <!--type:'nrg.util.type.DriverLicenseNumber'-->
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sDl'}"
+                    id="idSearchDl"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_Dl}"
+                    change="onTextFieldChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+            </ute:Tag>
+            <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sOrgName'}"
+                    id="idSearchOrgName"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_OrgName}"
+                    change="onTextFieldChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+
+                <!--type:'nrg.util.type.BusinessPartnerNumber'-->
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sBpNum'}"
+                    id="idSearchBp"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_BpNum}"
+                    change="onTextFieldChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sFiName'}"
+                    id="idSearchFiName"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_FiName}"
+                    change="onTextFieldChange"
+                    width="48%">
+                </ute:Textfield>
+
+                <!--type:'nrg.util.type.ESID'-->
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sEsid'}"
+                    id="idSearchEsid"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_Esid}"
+                    change="onTextFieldChange"
+                    width="48%">
+                </ute:Textfield>
+
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sLaName'}"
+                    id="idSearchLaName"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_LaName}"
+                    change="onTextFieldChange"
+                    width="48%">
+                </ute:Textfield>
+            </ute:Tag>
+            <ute:Tag class="nrgCallerNoIDSearch-sbtn">
+                <ute:Button
+                    press="onSearch"
+                    text="Search"
+                    enabled="true">
+                </ute:Button>
+            </ute:Tag>
+        </ute:content>
+    </ute:Tag>
+    <ute:Tag class="nrgDashboard-calrNoIDSearch nrgDashboard-calrNoIDSearch-transSpace">
+
+    </ute:Tag>
+    <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
+        <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTitle"
+                 text="{comp-i18n-dashboard>nrgDashboardCallerNoIDSearchResultTitle}">
+            <ute:Tag elem="span" class="nrgDashboard-calrNoIDSearch-resultCount"
+                text="{comp-i18n-dashboard>nrgDashboardClrNid_ResultCountStart} {oBpSearchCount>/searchCount} {comp-i18n-dashboard>nrgDashboardClrNid_ResultCountEnd}" >
+            </ute:Tag>
+        </ute:Tag>
+
+        <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTitle"
+                 text="{oBpSearchResult>/BpSearchs('1121')/PartnerID}">
+        </ute:Tag>
+
+        <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTable">
+        <ute:ScrollContainer
+            height="180px"
+            width="100%"
+            horizontal="false"
+            vertical="true">
+            <l:MatrixLayout
+                width="100%"
+                columns="8"
+                widths="2%,18%,10%,24%,13%,13%,10%,10%"
+                rows="{oBpSearchResult>/}">
+                <l:rows>
+                    <l:MatrixLayoutRow>
+                        <l:MatrixLayoutCell>
+                            <c:TextView text="1)"></c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView
+                                text="{oBpSearchResult>FirstName} {oBpSearchResult>LastName}">
+                            </c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView text="{oBpSearchResult>PartnerID}"></c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView
+                                text="{oBpSearchResult>HouseNumber} {oBpSearchResult>Street}">
+                            </c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView text="{oBpSearchResult>UnitNumber}"></c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView
+                                text="{oBpSearchResult>City} {oBpSearchResult>State}">
+                            </c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView text="{oBpSearchResult>ZipCode}"></c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <ute:Button
+                                buttonType="GeneralInfo"
+                                text="Select"
+                                enabled="true">
+                        </ute:Button>
+                        </l:MatrixLayoutCell>
+
+                    </l:MatrixLayoutRow>
+                </l:rows>
+            </l:MatrixLayout>
+        </ute:ScrollContainer>
+        </ute:Tag>
+
+    </ute:Tag>
+
+</mvc:View>

@@ -1,0 +1,38 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:um="ute.ui.main"
+    xmlns:nb="nb.ui.main"
+    controllerName="test.nb.ze_ccux_ctrl.view.Dropdown"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+   <div>
+         <style>
+            .customHeader {
+                border: 5px;
+                width: 100px;
+            }
+
+            .customBody {
+
+                width: 100px;
+            }
+        </style>
+
+        <nb:Dropdown id="idDdzz">
+        <nb:headerContent>
+                <div class="customHeader">Title</div>
+            </nb:headerContent>
+            <nb:content>
+                <div class="customBody">Item1</div>
+                <div class="customBody">Item2</div>
+
+            </nb:content>
+        </nb:Dropdown>
+</div>
+
+</mvc:View>

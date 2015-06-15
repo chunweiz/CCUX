@@ -1,0 +1,49 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:m="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:tm="tm.message.control"
+    controllerName="tm.message.validation.view.App"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <m:ScrollContainer
+        height="100px"
+        width="100%"
+        horizontal="true"
+        vertical="true"
+        focusable="true"
+        content="{comp-message>/}" >
+
+        <m:content>
+            <tm:Label
+                text="{comp-message>message}"
+                design="{comp-message>type}"
+                icon="sap-icon://nrg-icon/notification" />
+        </m:content>
+
+    </m:ScrollContainer><br/>
+
+    <m:Button text="Press me" press=".onPress" /><br/>
+    <m:Input
+        id="idCaNum"
+        type="Text"
+        placeholder="contract account number"
+        value="{path: '/caNum', type: 'tm.message.validation.type.ContractAccountNumber', constraints: { mandatory: true }}" />
+
+    <m:Input
+        id="idBpNum"
+        type="Text"
+        placeholder="business partner number"
+        value="{path: '/bpNum', type: 'tm.message.validation.type.BusinessPartnerNumber'}" />
+
+    <m:Input
+        id="idPrice"
+        type="Text"
+        placeholder="price"
+        value="{path: '/price', type: 'tm.message.validation.type.Price'}" />
+
+</mvc:View>
