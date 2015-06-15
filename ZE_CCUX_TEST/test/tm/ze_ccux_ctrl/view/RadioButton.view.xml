@@ -45,5 +45,7 @@
             <um:RadioButton disabled="true" checked="true" /><br/>
         </div>
 
+        <sm:RadioButton />
+
     </sm:ScrollContainer>
 </mvc:View>

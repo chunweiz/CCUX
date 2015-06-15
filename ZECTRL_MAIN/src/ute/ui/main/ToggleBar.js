@@ -3,11 +3,10 @@
 
 sap.ui.define(
     [
-        'sap/ui/core/Control',
-        'sap/ui/core/EnabledPropagator'
+        'sap/ui/core/Control'
     ],
 
-    function (Control, EnabledPropagator) {
+    function (Control) {
         'use strict';
 
         var CustomControl = Control.extend('ute.ui.main.ToggleBar', {
@@ -34,8 +33,6 @@ sap.ui.define(
                 }
             }
         });
-
-        EnabledPropagator.call(CustomControl.prototype);
 
         CustomControl.prototype._handleToggleBarItemPressed = function (oControlEvent) {
 
