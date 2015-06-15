@@ -14,7 +14,17 @@
 
         </style>
 
-
+        <um:ToggleBarItem design="None" key="tb001" name="rb001" press=".onPressed">
+            <div>This is a toggle bar item</div>
+        </um:ToggleBarItem>
+        <br/>
+        <um:ToggleBarItem key="tb001" name="rb001" press=".onPressed">
+            <div>Service Address</div>
+        </um:ToggleBarItem>
+        <br/>
+        <um:ToggleBarItem design="Invert" key="tb002" name="rb001" press=".onPressed">
+            <div>Mailing Address</div>
+        </um:ToggleBarItem>
 
     </sm:ScrollContainer>
 </mvc:View>

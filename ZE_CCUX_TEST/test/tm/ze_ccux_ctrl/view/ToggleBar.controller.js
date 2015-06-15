@@ -11,8 +11,8 @@ sap.ui.define(
 
         var CustomController = Controller.extend('test.tm.ze_ccux_ctrl.view.ToggleBar');
 
-        CustomController.prototype.onSelected = function (oControlEvent) {
-            jQuery.sap.log(oControlEvent.parameters('checked'));
+        CustomController.prototype.onPressed = function (oControlEvent) {
+            console.log(oControlEvent.getParameter('selectedKey'));
         };
 
         return CustomController;
