@@ -87,7 +87,7 @@
                         focusable="true"
                         class="nrgCamOffScroll"
                         id="idnrgCamOffScroll" >
-                        <um:Button press=".onPressed" text="{comp-campaign>Notitle}" class="nrgCamOffBt" id="idnrgCamOffBt" design="None">
+                        <um:Button press=".onOfferSelected" text="{comp-campaign>Notitle}" class="nrgCamOffBt" id="idnrgCamOffBt" design="None">
                             <u:Tag class="nrgCamOffBtinfo">
                                 <u:Tag class="nrgCamOffBt-CF" text="{parts:[{path:'comp-campaign>CancellationFee',
                                                                 type: 'nrg.util.type.Price',

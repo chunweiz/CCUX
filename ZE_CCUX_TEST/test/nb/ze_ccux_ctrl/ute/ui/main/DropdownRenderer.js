@@ -78,6 +78,7 @@ sap.ui.define(
 
             oRm.write('<li');
             oRm.addClass('uteMDd-body');
+            //oRm.addClass('uteMDd-body-hover');
 
             if (!oCustomControl.getExpanded()) {
                 oRm.addClass('uteMDd-body-hidden');
@@ -86,6 +87,11 @@ sap.ui.define(
             oRm.writeClasses();
             oRm.write('>');
 
+         /*   oRm.write('<a');
+            oRm.addClass('uteMDd-body-hover');
+            oRm.writeClasses();
+            oRm.write('>');*/
+
             aContent = oCustomControl.getContent();
             //aContent = oCustomControl.getDropdownListItem();
             if (aContent) {
@@ -93,6 +99,7 @@ sap.ui.define(
                     oRm.renderControl(oContent);
                 });
             }
+            oRm.write('</a>');
 
             oRm.write('</li>');
         };
