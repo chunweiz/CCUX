@@ -1,26 +1,26 @@
-.uteMTbItem {
+.uteMTabItem {
     display: inline-block;
     position: relative;
 }
 
-.uteMTbItem-int {
+.uteMTabItem-int {
     display: none;
 }
 
-.uteMTbItem-content {
+.uteMTabItem-content {
     display: inline-block;
     position: relative;
     cursor: pointer;
 }
 
-.uteMTbItem-int[disabled="disabled"] + .uteMTbItem-content {
+.uteMTabItem-int[disabled="disabled"] + .uteMTabItem-content {
     cursor: default;
 }
 
 /*
 ** Default design
 */
-.uteMTbItem-design-default .uteMTbItem-content {
+.uteMTabItem-design-default .uteMTabItem-content {
     border-radius: 6px;
     padding: 2px 6px;
     text-align: center;
@@ -29,17 +29,17 @@
     background-color: @uteColor-blue-pearl;
 }
 
-.uteMTbItem-design-default .uteMTbItem-content:hover {
+.uteMTabItem-design-default .uteMTabItem-content:hover {
     color: @uteColor-white;
     background-color: @uteColor-blue-link;
 }
 
-.uteMTbItem-design-default .uteMTbItem-int:checked + .uteMTbItem-content {
+.uteMTabItem-design-default .uteMTabItem-int:checked + .uteMTabItem-content {
     color: @uteColor-white;
     background-color: @uteColor-blue-link;
 }
 
-.uteMTbItem-design-default .uteMTbItem-int[disabled="disabled"] + .uteMTbItem-content {
+.uteMTabItem-design-default .uteMTabItem-int[disabled="disabled"] + .uteMTabItem-content {
     color: @uteColor-white;
     background-color: @uteColor-grey-lighter;
 }
@@ -47,7 +47,7 @@
 /*
 ** Default invert
 */
-.uteMTbItem-design-invert .uteMTbItem-content {
+.uteMTabItem-design-invert .uteMTabItem-content {
     border-radius: 6px;
     padding: 2px 6px;
     text-align: center;
@@ -56,17 +56,17 @@
     background-color: @uteColor-blue-link;
 }
 
-.uteMTbItem-design-invert .uteMTbItem-content:hover {
+.uteMTabItem-design-invert .uteMTabItem-content:hover {
     color: @uteColor-grey-dark;
     background-color: @uteColor-blue-pearl;
 }
 
-.uteMTbItem-design-invert .uteMTbItem-int:checked + .uteMTbItem-content {
+.uteMTabItem-design-invert .uteMTabItem-int:checked + .uteMTabItem-content {
     color: @uteColor-grey-dark;
     background-color: @uteColor-blue-pearl;
 }
 
-.uteMTbItem-design-invert .uteMTbItem-int[disabled="disabled"] + .uteMTbItem-content {
+.uteMTabItem-design-invert .uteMTabItem-int[disabled="disabled"] + .uteMTabItem-content {
     color: @uteColor-white;
     background-color: @uteColor-grey-lighter;
 }
