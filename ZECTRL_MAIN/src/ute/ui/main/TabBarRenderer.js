@@ -21,7 +21,15 @@ sap.ui.define(
             oRm.writeClasses();
             oRm.write('>');
 
+            /*
+            ** Tab bar item
+            */
+            oRm.write('<div');
+            oRm.addClass('uteMTab-content');
+            oRm.writeClasses();
+            oRm.write('>');
             this._renderContent(oRm, oCustomControl);
+            oRm.write('</div>');
 
             oRm.write('</div>');
         };
@@ -34,7 +42,13 @@ sap.ui.define(
             aContent.forEach(function (oContent) {
                 oContent.setName(oCustomControl.getId() + '--grp');
                 oContent.setDesign(oCustomControl.getDesign());
+
+                oRm.write('<span');
+                oRm.addClass('uteMTab-contentItem');
+                oRm.writeClasses();
+                oRm.write('>');
                 oRm.renderControl(oContent);
+                oRm.write('</span>');
             });
         };
 
