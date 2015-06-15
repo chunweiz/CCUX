@@ -2,19 +2,21 @@
 
 sap.ui.define(
     [
-        'sap/ui/core/Element'
+        'sap/ui/core/Control',
+        'sap/ui/core/EnabledPropagator'
     ],
 
-    function (Element) {
+    function (Control, EnabledPropagator) {
         'use strict';
 
-        var CustomElement = Element.extend('ute.ui.main.ToggleBarItem', {
+        var CustomControl = Control.extend('ute.ui.main.ToggleBarItem', {
             metadata: {
                 library: 'ute.ui.main',
 
                 properties: {
                     key: { type: 'string', defaultValue: null },
-                    enabled: { type: 'boolean', defaultValue: true }
+                    name: { type: 'string', defaultValue: null },
+                    selected: { type: 'boolean', defaultValue: false }
                 },
 
                 aggregations: {
@@ -33,7 +35,9 @@ sap.ui.define(
             }
         });
 
-        CustomElement.prototype.ontap = function (oEvent) {
+        EnabledPropagator.call(CustomControl.prototype);
+
+        CustomControl.prototype.ontap = function (oEvent) {
             if (!this.getEnabled()) {
                 return;
             }
@@ -43,7 +47,7 @@ sap.ui.define(
             });
         };
 
-        return CustomElement;
+        return CustomControl;
     },
 
     true

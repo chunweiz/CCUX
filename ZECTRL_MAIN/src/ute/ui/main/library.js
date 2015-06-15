@@ -25,15 +25,14 @@ sap.ui.define(
 			controls: [
 				'ute.ui.main.Button',
 				'ute.ui.main.ToggleBar',
+				'ute.ui.main.ToggleBarItem',
                 'ute.ui.main.Label',
                 'ute.ui.main.Checkbox',
                 'ute.ui.main.RadioButton',
                 'ute.ui.main.Infoline'
 			],
 
-			elements: [
-                'ute.ui.main.ToggleBarItem'
-            ],
+			elements: [],
 
             interfaces: []
         });
