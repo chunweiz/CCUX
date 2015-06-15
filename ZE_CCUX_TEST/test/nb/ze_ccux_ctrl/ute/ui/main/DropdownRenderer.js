@@ -95,7 +95,12 @@ sap.ui.define(
             oRm.addClass('uteMDd-body-list');
             oRm.writeClasses();
             oRm.write('>');
+                                 oRm.write('<a');
+            oRm.addClass('uteMDd-body-list-item');
+            oRm.writeClasses();
+            oRm.write('>');
             oRm.renderControl(oContent);
+                    oRm.write('</a>');
             oRm.write('</li>');
                 });
             }

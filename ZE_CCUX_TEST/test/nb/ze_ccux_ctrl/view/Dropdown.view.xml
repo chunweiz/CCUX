@@ -25,7 +25,7 @@
 
         <nb:Dropdown id="idDdzz">
         <nb:headerContent>
-                <div class="customHeader">Title</div>
+                <div>Title</div>
             </nb:headerContent>
             <nb:content>
                 <div class="customBody">Item1</div>
