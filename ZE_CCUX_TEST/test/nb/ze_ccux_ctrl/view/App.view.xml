@@ -1,0 +1,14 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:um="ute.ui.main"
+    controllerName="test.nb.ze_ccux_ctrl.view.App"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <sm:ScrollContainer id="idAppContent" height="100%" width="100%" horizontal="true" vertical="true">
+    </sm:ScrollContainer>
+
+</mvc:View>

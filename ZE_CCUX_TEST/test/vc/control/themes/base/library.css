@@ -1,0 +1,14 @@
+.vcBtn {
+
+}
+
+.vcBtn-design-default {
+    border-style: none;
+    background-color: deepskyblue;
+    color: aliceblue;
+}
+
+.vcBtn-design-default:hover {
+    background-color: aliceblue;
+    color: deepskyblue;
+}

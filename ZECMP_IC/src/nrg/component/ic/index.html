@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html style="height:100%">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>NRG Reliant Interaction Center</title>
+		<script id="sap-ui-bootstrap"
+		    src="../../../../../ZELIB/bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
+            data-sap-ui-theme="sap_bluecrystal"
+            data-sap-ui-theme-roots='{
+                "sap_bluecrystal": {
+                    "": "../../../../../ZELIB/bower_components/openui5-themelib_sap_bluecrystal/resources",
+                    "ute.ui.commons": "../../../../../ZECTRL_COMMONS/build",
+                    "ute.ui.main": "../../../../../ZECTRL_MAIN/build"
+                }
+            }'
+            data-sap-ui-xx-bindingSyntax="complex"
+            data-sap-ui-libs="sap.ui.layout, sap.ui.commons, sap.m, ute.ui.commons, ute.ui.main"
+            data-sap-ui-resourceroots='{
+                "sap.ui.layout": "../../../../../ZELIB/bower_components/openui5-sap.ui.layout/resources/sap/ui/layout",
+                "sap.ui.commons": "../../../../../ZELIB/bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
+                "sap.m": "../../../../../ZELIB/bower_components/openui5-sap.m/resources/sap/m",
+                "ute.ui.commons": "../../../../../ZECTRL_COMMONS/build/ute/ui/commons",
+                "ute.ui.main": "../../../../../ZECTRL_MAIN/build/ute/ui/main",
+                "nrg.component.ic": "./",
+                "nrg.base": "../../../../../ZEBASE/build/nrg/base",
+                "nrg.module.app.header": "../../../../../ZEMOD_APP/build/nrg/module/app/header",
+                "nrg.module.app.footer": "../../../../../ZEMOD_APP/build/nrg/module/app/footer",
+                "nrg.module.app.main": "../../../../../ZEMOD_APP/build/nrg/module/app/main",
+                "nrg.module.others": "../../../../../ZEMOD_OTHERS/build/nrg/module/others",
+                "nrg.module.dashboard": "../../../../../ZEMOD_DSHB/build/nrg/module/dashboard",
+                "nrg.module.campaign": "../../../../../ZEMOD_CMPGN/build/nrg/module/campaign"
+            }'>
+		</script>
+        <script>
+            sap.ui.getCore().attachInit(function () {
+                new sap.ui.core.ComponentContainer({
+                    height: '100%',
+                    width: '100%',
+                    name: 'nrg.component.ic'
+                }).placeAt('content');
+            });
+		</script>
+	</head>
+	<body role="application" class="nrgUiBody" id="content">
+	</body>
+</html>

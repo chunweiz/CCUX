@@ -1,0 +1,108 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:um="ute.ui.main"
+    xmlns:nb="nb.ui.main"
+    controllerName="test.nb.ze_ccux_ctrl.view.Infoline"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+        <style>
+            .customHeader {
+                background-color: gold;
+                width: 250px;
+            }
+
+            .customBody {
+                background-color: tomato;
+                width: 500px;
+            }
+        </style>
+
+        <nb:Infoline expanded="true" press=".onPressed">
+            <nb:headerContent>
+                <div class="customHeader">this is a custom header</div>
+            </nb:headerContent>
+            <nb:content>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+            </nb:content>
+        </nb:Infoline>
+        <nb:Infoline expanded="true" press=".onPressed">
+            <nb:headerContent>
+                <div class="customHeader">this is a another custom header</div>
+                <div class="customHeader">this is a another custom header</div>
+                <div class="customHeader">this is a another custom header</div>
+                <div class="customHeader">this is a another custom header</div>
+                <div class="customHeader">this is a another custom header</div>
+            </nb:headerContent>
+            <nb:content>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+            </nb:content>
+        </nb:Infoline>
+
+    </sm:ScrollContainer>
+</mvc:View>

@@ -1,0 +1,12 @@
+{
+   "d":{
+      "results":[
+         {
+            "Contract":"1121",
+            "AgntEligFlag":"",
+            "CustEligFlag":"X",
+            "FirstBill":"X"
+         }
+      ]
+    }
+}
