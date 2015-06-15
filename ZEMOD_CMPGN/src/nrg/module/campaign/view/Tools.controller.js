@@ -22,17 +22,17 @@ sap.ui.define(
          * @param {oFlag} Filter flag to determine the Agent Requested and Customer Requested
 		 * @private
 		 */
-        Controller.prototype.createSearchFilterObject = function (oContractID, oFlag) {
+        Controller.prototype.createSearchFilterObject = function (sContractID, sFlag) {
             var aFilters = [],
                 oFilterTemplate = new Filter();
             oFilterTemplate.sPath = 'ContractID';
             oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = oContractID;
+            oFilterTemplate.oValue1 = sContractID;
             aFilters.push(oFilterTemplate);
 
             oFilterTemplate.sPath = 'Type';
             oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = oFlag;
+            oFilterTemplate.oValue1 = sFlag;
             aFilters.push(oFilterTemplate);
             return aFilters;
         };
