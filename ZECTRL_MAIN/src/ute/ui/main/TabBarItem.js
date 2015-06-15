@@ -11,12 +11,12 @@ sap.ui.define(
     function (jQuery, Control, EnabledPropagator) {
         'use strict';
 
-        var CustomControl = Control.extend('ute.ui.main.ToggleBarItem', {
+        var CustomControl = Control.extend('ute.ui.main.TabBarItem', {
             metadata: {
                 library: 'ute.ui.main',
 
                 properties: {
-                    design: { type: 'ute.ui.main.ToggleBarItemDesign', defaultValue: ute.ui.main.ToggleBarItemDesign.Default },
+                    design: { type: 'ute.ui.main.TabBarItemDesign', defaultValue: ute.ui.main.TabBarItemDesign.Default },
                     key: { type: 'string', defaultValue: null },
                     name: { type: 'string', defaultValue: null },
                     selected: { type: 'boolean', defaultValue: false },
@@ -65,13 +65,13 @@ sap.ui.define(
         };
 
         CustomControl.prototype.setSelected = function (bSelected) {
-            this.$('.uteMTb-int').prop('checked', bSelected);
+            this.$('.uteMTabItem-int').prop('checked', bSelected);
             this.setProperty('selected', bSelected);
             return this;
         };
 
         CustomControl.prototype.setEnabled = function (bEnabled) {
-            this.$('.uteMTb-int').prop('disabled', bEnabled);
+            this.$('.uteMTabItem-int').prop('disabled', bEnabled);
             this.setProperty('enabled', bEnabled);
             return this;
         };
