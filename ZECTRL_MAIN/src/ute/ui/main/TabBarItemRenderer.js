@@ -12,10 +12,10 @@ sap.ui.define(
         CustomRenderer.render = function (oRm, oCustomControl) {
             oRm.write('<span');
             oRm.writeControlData(oCustomControl);
-            oRm.addClass('uteMTbItem');
+            oRm.addClass('uteMTabItem');
 
-            if (oCustomControl.getDesign() !== ute.ui.main.ToggleBarItemDesign.None) {
-                oRm.addClass('uteMTbItem-design-' + oCustomControl.getDesign().toLowerCase());
+            if (oCustomControl.getDesign() !== ute.ui.main.TabBar.None) {
+                oRm.addClass('uteMTabItem-design-' + oCustomControl.getDesign().toLowerCase());
             }
 
             oRm.writeClasses();
@@ -39,7 +39,7 @@ sap.ui.define(
                 oRm.writeAttribute('disabled', 'disabled');
             }
 
-            oRm.addClass('uteMTbItem-int');
+            oRm.addClass('uteMTabItem-int');
             oRm.writeClasses();
             oRm.write('/>');
 
@@ -49,7 +49,7 @@ sap.ui.define(
             oRm.write('<label');
             oRm.writeAttribute('id', oCustomControl.getId() + '-ext');
             oRm.writeAttribute('for', oCustomControl.getId() + '-int');
-            oRm.addClass('uteMTbItem-content');
+            oRm.addClass('uteMTabItem-content');
             oRm.writeClasses();
             oRm.write('>');
 

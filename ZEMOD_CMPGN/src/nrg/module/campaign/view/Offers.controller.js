@@ -32,17 +32,17 @@ sap.ui.define(
          * @param {oFlag} Filter flag to determine the Agent Requested and Customer Requested
 		 * @private
 		 */
-        Controller.prototype._createSearchFilterObject = function (oContractID, oFlag) {
+        Controller.prototype._createSearchFilterObject = function (sContractID, sFlag) {
             var aFilters = [],
                 oFilterTemplate = new Filter();
             oFilterTemplate.sPath = 'ContractID';
             oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = oContractID;
+            oFilterTemplate.oValue1 = sContractID;
             aFilters.push(oFilterTemplate);
 
             oFilterTemplate.sPath = 'Type';
             oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = oFlag;
+            oFilterTemplate.oValue1 = sFlag;
             aFilters.push(oFilterTemplate);
 
             return aFilters;
@@ -163,14 +163,14 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.toggleComparision = function (oEvent) {
-            var aDisplay1 = this.getView().byId("idnrgCmpOffDisplay-1"),
-                aDisplay2 = this.getView().byId("idnrgCmpOffDisplay-2"),
-                aFragment1 = sap.ui.xmlfragment("nrg.module.campaign.view.Cons"),
-                aFragment2 = sap.ui.xmlfragment("nrg.module.campaign.view.Cons");
-            aDisplay1.removeAllContent();
-            aDisplay2.removeAllContent();
-            aDisplay1.addContent(aFragment1);
-            aDisplay2.addContent(aFragment2);
+            var oDisplay1 = this.getView().byId("idnrgCmpOffDisplay-1"),
+                oDisplay2 = this.getView().byId("idnrgCmpOffDisplay-2"),
+                oFragment1 = sap.ui.xmlfragment("nrg.module.campaign.view.Cons"),
+                oFragment2 = sap.ui.xmlfragment("nrg.module.campaign.view.Cons");
+            oDisplay1.removeAllContent();
+            oDisplay2.removeAllContent();
+            oDisplay1.addContent(oFragment1);
+            oDisplay2.addContent(oFragment2);
         };
 
         /**
@@ -188,25 +188,25 @@ sap.ui.define(
 		 * Formats the Cancellation fee and Incentive values
 		 *
 		 * @function
-		 * @param {aCancellationFee} CancellationFee value from the binding
-         * @param {aIncentive} Incentive value from the binding
+		 * @param {sCancellationFee} CancellationFee value from the binding
+         * @param {sIncentive} Incentive value from the binding
 		 *
 		 */
-        Controller.prototype.formatCancelFee = function (aCancellationFee, aIncentive) {
+        Controller.prototype.formatCancelFee = function (sCancellationFee, sIncentive) {
 
-            return "Canc: " + aCancellationFee + " / " + "Inc: " + aIncentive;
+            return "Canc: " + sCancellationFee + " / " + "Inc: " + sIncentive;
 
         };
         /**
 		 * Formats the Promo Code binding value
 		 *
 		 * @function
-		 * @param {aPromoCode} Promo Code value from the binding
+		 * @param {sPromoCode} Promo Code value from the binding
          *
 		 *
 		 */
-        Controller.prototype.formatPromo = function (aPromoCode) {
-            return "Promo: " + aPromoCode;
+        Controller.prototype.formatPromo = function (sPromoCode) {
+            return "Promo: " + sPromoCode;
         };
 
         return Controller;
