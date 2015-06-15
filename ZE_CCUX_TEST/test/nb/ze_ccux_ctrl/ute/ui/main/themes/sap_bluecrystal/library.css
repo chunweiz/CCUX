@@ -228,7 +228,7 @@
 
 .uteMDd .uteMDd-hdr .uteMDd-hdrContent {
     display: inline-block;
-    padding-left: 10px;
+  /*  padding-left: 10px;*/
 }
 
 .uteMDd .uteMDd-hdr .uteMDd-hdrExpander {
@@ -242,14 +242,17 @@
 .uteMDd .uteMDd-body {
     display: block;
     position: relative;
-    top: -10px;
+    top: 10px;
      border: 2px solid grey;
     border-radius: 4px;
 }
-.uteMDd .uteMDd-body .uteMDd-body-hover:hover {
+.uteMDd .uteMDd-body .uteMDd-body-list {
+    display: block;
+  color:coral;
+}
+.uteMDd .uteMDd-body .uteMDd-body-list:hover {
    background-color: aqua;
 }
-
 .uteMDd .uteMDd-body.uteMDd-body-hidden {
     display: none;
 }
