@@ -213,6 +213,12 @@
                     ],
                     dest: '<%= moduleFolder %>/build/<%= modulePath %>/i18n/module.properties'
                 },
+                en: {
+                    src: [
+                        '<%= moduleFolder %>/src/<%= modulePath %>/i18n/**/*_en_US.properties'
+                    ],
+                    dest: '<%= moduleFolder %>/build/<%= modulePath %>/i18n/module_en.properties'
+                },
                 enUs: {
                     src: [
                         '<%= moduleFolder %>/src/<%= modulePath %>/i18n/**/*_en_US.properties'
