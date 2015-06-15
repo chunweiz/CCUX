@@ -1,0 +1,30 @@
+@font-face {
+	font-family: 'nrg-icon';
+	src:url('icon.eot?');
+	src:url('icon.eot?#iefix') format('embedded-opentype'),
+		url('icon.woff?') format('woff'),
+		url('icon.ttf?') format('truetype'),
+		url('icon.svg?#nrg-icon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.tmLabel-icon-none {
+    color: darkgrey;
+}
+
+.tmLabel-icon-success {
+    color: darkgreen;
+}
+
+.tmLabel-icon-warning {
+    color: darkgoldenrod;
+}
+
+.tmLabel-icon-error {
+    color: crimson;
+}
+
+.tmLabel-icon-information {
+    color: cornflowerblue;
+}

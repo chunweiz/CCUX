@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+                <head>
+                                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+        <style>
+            * {
+                box-sizing: border-box;
+                /*margin: 0;*/
+                padding: 0;
+            }
+
+            body {
+                font: 400 12pt "Source Sans Pro", sans-serif;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+
+           <script id="sap-ui-bootstrap"
+                                    src="../../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
+                                    data-sap-ui-libs="ute.ui.commons,sap.ui.commons,sap.ui.layout"
+                                    data-sap-ui-resourceroots='{
+                "ute.ui.commons": "/ZE_CCUX_CTRL/build/ute/ui/commons",
+                "nb.control.lib.ui": "/ZE_CCUX_TEST/test/nb/control/lib/ui",
+                "sap.ui.commons":"/ZE_CCUX_LIB/bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
+                "sap.ui.layout":"/ZE_CCUX_LIB/bower_components/openui5-sap.ui.layout/resources/sap/ui/layout"
+                }'>
+                                </script>
+
+        <script id="main" type="ui5/xmlview">
+            <mvc:View
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:u="ute.ui.commons"
+                xmlns:nb="nb.control.lib.ui"
+                xmlns:mvc="sap.ui.core.mvc"
+                xmlns:core="sap.ui.core"
+                xmlns:sap="sap.ui.commons"
+                controllerName="local.controller.Control"
+                displayBlock="true">
+
+
+  <nb:Dropdown  arrowcolor="Blue" arrowType="Solid" enabled="true" background="Transparent" border="Bottom"  width="200px" padding="20px" DropdownListItems="{/myData}">
+<nb:DropdownListItems>
+<nb:DropdownListItem key="{lastName}">
+                        <sap:Label text="{firstName}"/>
+                        <sap:CheckBox checked="true"/>
+</nb:DropdownListItem>
+</nb:DropdownListItems>
+   </nb:Dropdown>
+
+            </mvc:View>
+        </script>
+
+                                <script>
+                                sap.ui.getCore().attachInit(function() {
+                sap.ui.controller('local.controller.Control', {
+                    onInit: function () {
+
+                    },
+
+                    onAfterRendering: function () {
+
+                    }
+                });
+
+                sap.ui.xmlview({ viewContent: jQuery('#main').html() })
+                    .setModel(new sap.ui.model.json.JSONModel({
+                        myData: [
+                            { firstName: 'tau ming', lastName: 'hew' },
+                            { firstName: 'hung ju', lastName: 'lin' },
+                            { firstName: 'navya', lastName: 'basavaraju' }
+                        ]
+                    }))
+                    .placeAt('fromxml');
+
+                // Create JSON data model
+/*var oModel = new sap.ui.model.json.JSONModel("mock.json");
+
+                oControl = new nb.control.lib.ui.Dropdown({
+                  arrowcolor:"Grey",
+                  enabled:true,
+                  whitebackground:true,
+                  title:"Title",
+                  width:"200px",
+                  padding:"10px",
+                  value:"Australia"
+
+                });
+
+                oControl.setModel(oModel);
+                oControl.bindAggregation('items', '/myData', new sap.ui.core.ListItem({
+                    text: '{text}',
+                    key: '{key}'
+                }));
+
+
+                oControl.placeAt('fromjs');*/
+
+            });
+                                </script>
+                </head>
+                <body class="sapUiBody" role="application" id="content">
+
+        <div id="fromxml"></div>
+
+        <div id="fromjs"></div>
+                </body>
+</html>

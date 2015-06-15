@@ -1,0 +1,75 @@
+{
+   "d":{
+      "results":[
+         {
+            "Type":"H",
+            "Contract":"1121",
+            "OfferCode":"OfferCode 1",
+            "StartDate":"/Date(1498763169000)/",
+            "EndDate":"/Date(1215630369000)/",
+            "OfferTitle":"CND AVG@2000=12.1 Secure Advantage 24",
+            "Description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id mi velit.Ut accumsan vitae neque ut lacinia. Donec id nisl eu mi tempus dapibus. Proin a congue metus, sit amet pharetra turpis. Quisque metus erat, viverra sed interdum id, sodales at lacus. Nullam bibendum velit et augue tempor luctus. ut Volutpat, augue sed mollis cursus, quam lectus viverra urna, at consequat tellus velit non erat. Etiam vulputate sem pulvinar suscipit laoreet.Quisque ut finibus justo, et fermentus lacus. Proin fringilla viverra ullamcorper. Aenean tellus nibh, laoreet et nibh vitae, tristique pretium mi. Sed ullamcorper sagittis erat nec dictum. In at cursus purus, ac varius metus. Quisque condimentum urna sed tempor accumsan.",
+            "AvgUsage":7365.58,
+            "EFL500":12.1,
+            "EFL1000":12.3,
+            "EFL2000":12.4,
+            "Promo":"Promo 1",
+            "Term":9387,
+            "CncFee":6816.34,
+            "Incentive":9636.09
+         },
+         {
+            "Type":"H",
+            "Contract":"1121",
+            "OfferCode":"OfferCode 2",
+            "StartDate":"/Date(965415969000)/",
+            "EndDate":"/Date(1187377569000)/",
+            "OfferTitle":"CND AVG@2000=13.1 Secure Advantage 24",
+            "Description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id mi velit.Ut accumsan vitae neque ut lacinia. Donec id nisl eu mi tempus dapibus. Proin a congue metus, sit amet pharetra turpis. Quisque metus erat, viverra sed interdum id, sodales at lacus. Nullam bibendum velit et augue tempor luctus. ut Volutpat, augue sed mollis cursus, quam lectus viverra urna, at consequat tellus velit non erat. Etiam vulputate sem pulvinar suscipit laoreet.Quisque ut finibus justo, et fermentus lacus. Proin fringilla viverra ullamcorper. Aenean tellus nibh, laoreet et nibh vitae, tristique pretium mi. Sed ullamcorper sagittis erat nec dictum. In at cursus purus, ac varius metus. Quisque condimentum urna sed tempor accumsan.",
+            "AvgUsage":7846.25,
+            "EFL500":13.1,
+            "EFL1000":13.2,
+            "EFL2000":13.3,
+            "Promo":"Promo 2",
+            "Term":6042,
+            "CncFee":282.92,
+            "Incentive":2312.38
+
+         },
+         {
+            "Type":"H",
+            "Contract":"1121",
+            "OfferCode":"OfferCode 3",
+            "StartDate":"/Date(1017774369000)/",
+            "EndDate":"/Date(1419624369000)/",
+            "OfferTitle":"CND AVG@2000=14.1 Secure Advantage 24",
+            "Description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id mi velit.Ut accumsan vitae neque ut lacinia. Donec id nisl eu mi tempus dapibus. Proin a congue metus, sit amet pharetra turpis. Quisque metus erat, viverra sed interdum id, sodales at lacus. Nullam bibendum velit et augue tempor luctus. ut Volutpat, augue sed mollis cursus, quam lectus viverra urna, at consequat tellus velit non erat. Etiam vulputate sem pulvinar suscipit laoreet.Quisque ut finibus justo, et fermentus lacus. Proin fringilla viverra ullamcorper. Aenean tellus nibh, laoreet et nibh vitae, tristique pretium mi. Sed ullamcorper sagittis erat nec dictum. In at cursus purus, ac varius metus. Quisque condimentum urna sed tempor accumsan.",
+            "AvgUsage":4136.14,
+            "EFL500":14.1,
+            "EFL1000":14.2,
+            "EFL2000":14.3,
+            "Promo":"Promo 3",
+            "Term":9168,
+            "CncFee":84.79,
+            "Incentive":9416.11
+         },
+         {
+            "Type":"4",
+            "Contract":"1121",
+            "OfferCode":"OfferCode 4",
+            "StartDate":"/Date(1021489569000)/",
+            "EndDate":"/Date(1030043169000)/",
+            "OfferTitle":"CND AVG@2000=14.1 Secure Advantage 24",
+            "Description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id mi velit.Ut accumsan vitae neque ut lacinia. Donec id nisl eu mi tempus dapibus. Proin a congue metus, sit amet pharetra turpis. Quisque metus erat, viverra sed interdum id, sodales at lacus. Nullam bibendum velit et augue tempor luctus. ut Volutpat, augue sed mollis cursus, quam lectus viverra urna, at consequat tellus velit non erat. Etiam vulputate sem pulvinar suscipit laoreet.Quisque ut finibus justo, et fermentus lacus. Proin fringilla viverra ullamcorper. Aenean tellus nibh, laoreet et nibh vitae, tristique pretium mi. Sed ullamcorper sagittis erat nec dictum. In at cursus purus, ac varius metus. Quisque condimentum urna sed tempor accumsan.",
+            "AvgUsage":7421.07,
+            "EFL500":15.1,
+            "EFL1000":15.2,
+            "EFL2000":15.3,
+            "Promo":"Promo 4",
+            "Term":7411,
+            "CncFee":5779.15,
+            "Incentive":9460.23
+         }
+      ]
+   }
+}

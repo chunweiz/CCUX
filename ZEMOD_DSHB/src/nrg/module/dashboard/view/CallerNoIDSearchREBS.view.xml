@@ -1,0 +1,182 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="nrg.module.dashboard.view.CallerNoIDSearchREBS">
+
+
+    <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
+        <ute:content>
+            <ute:Tag class="nrgDashboard-calrNoIDSearch-title"
+                     text="{comp-i18n-dashboard>nrgDashboardCallerNoIDSearchTitle}">
+            </ute:Tag>
+            <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
+                <ute:Textfield
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_CaNumPh}"
+                    change="testInputChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_Ssn}"
+                    change="testInputChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_Dl}"
+                    change="testInputChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+            </ute:Tag>
+            <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
+                <ute:Textfield
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_CaName}"
+                    change="testInputChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_BpNum}"
+                    change="testInputChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_FedTaxId}"
+                    change="ESID"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_Esid}"
+                    change="testInputChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+            </ute:Tag>
+            <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
+                <ute:Textfield
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_HouseNum}"
+                    change="testInputChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_Street}"
+                    change="testInputChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_UnitNum}"
+                    change="testInputChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_City}"
+                    change="testInputChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_State}"
+                    change="testInputChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_ZipCode}"
+                    change="ESID"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+            </ute:Tag>
+            <ute:Tag class="nrgCallerNoIDSearch-sbtn">
+                <ute:Button
+                    text="Search"
+                    enabled="true">
+                </ute:Button>
+            </ute:Tag>
+        </ute:content>
+    </ute:Tag>
+    <ute:Tag class="nrgDashboard-calrNoIDSearch nrgDashboard-calrNoIDSearch-transSpace">
+
+    </ute:Tag>
+    <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
+        <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTitle"
+                 text="{comp-i18n-dashboard>nrgDashboardCallerNoIDSearchResultTitle}">
+        </ute:Tag>
+
+        <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTable">
+        <ute:ScrollContainer
+            height="180px"
+            width="100%"
+            horizontal="false"
+            vertical="true">
+            <l:MatrixLayout
+                width="100%"
+                columns="8"
+                widths="2%,18%,10%,24%,13%,13%,10%,10%"
+                rows="{comp-dashboard>/BpSearchs}">
+                <l:rows>
+                    <l:MatrixLayoutRow>
+                        <l:MatrixLayoutCell>
+                            <c:TextView text="1)"></c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView
+                                text="{comp-dashboard>FirstName} {comp-dashboard>LastName}">
+                            </c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView text="{comp-dashboard>PartnerID}"></c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView
+                                text="{comp-dashboard>HouseNumber} {comp-dashboard>Street}">
+                            </c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView text="{comp-dashboard>UnitNumber}"></c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView
+                                text="{comp-dashboard>City} {comp-dashboard>State}">
+                            </c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView text="{comp-dashboard>ZipCode}"></c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <ute:Button
+                                buttonType="GeneralInfo"
+                                text="Select"
+                                enabled="true">
+                        </ute:Button>
+                        </l:MatrixLayoutCell>
+
+                    </l:MatrixLayoutRow>
+                </l:rows>
+            </l:MatrixLayout>
+        </ute:ScrollContainer>
+        </ute:Tag>
+
+    </ute:Tag>
+
+</mvc:View>

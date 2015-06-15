@@ -1,0 +1,17 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="nrg.module.dashboard.view.SummaryBP">
+
+    <ute:Tag>
+        <ute:content>
+            <div class="nrgAppMain-summaryContent nrgAppMain-summaryContent-full">
+                <div>Test</div>
+                <ute:HorizontalDivider />
+                <div>Test</div>
+            </div>
+        </ute:content>
+    </ute:Tag>
+
+</mvc:View>

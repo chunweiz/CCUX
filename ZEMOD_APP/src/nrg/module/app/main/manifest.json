@@ -1,0 +1,17 @@
+{
+    "sap.ui5": {
+        "config": {
+            "module": {
+                "nrg.module.app.main": {
+                    "stylesheet": [
+                        "asset/css/module.css"
+                    ],
+
+                    "resourceBundle": {
+                        "comp-i18n-appMain": "i18n/module.properties"
+                    }
+                }
+            }
+        }
+    }
+}
