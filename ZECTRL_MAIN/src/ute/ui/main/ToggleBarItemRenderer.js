@@ -1,4 +1,4 @@
-/*global sap*/
+/*global sap, ute*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -12,15 +12,20 @@ sap.ui.define(
         CustomRenderer.render = function (oRm, oCustomControl) {
             oRm.write('<span');
             oRm.writeControlData(oCustomControl);
-            oRm.addClass('uteMTb-item');
+            oRm.addClass('uteMTbItem');
+
+            if (oCustomControl.getDesign() !== ute.ui.main.ToggleBarItemDesign.None) {
+                oRm.addClass('uteMTbItem-design-' + oCustomControl.getDesign().toLowerCase());
+            }
+
             oRm.writeClasses();
             oRm.write('>');
 
             /*
-            ** Actual radio button, will be hide away
+            ** Internal radio button for state management
             */
             oRm.write('<input type="radio"');
-            oRm.writeAttribute('id', oCustomControl.getId() + '-intRb');
+            oRm.writeAttribute('id', oCustomControl.getId() + '-int');
 
             if (oCustomControl.getName()) {
                 oRm.writeAttributeEscaped('name', oCustomControl.getName());
@@ -34,11 +39,23 @@ sap.ui.define(
                 oRm.writeAttribute('disabled', 'disabled');
             }
 
-            oRm.addClass('uteMTbItem-intRb');
+            oRm.addClass('uteMTbItem-int');
             oRm.writeClasses();
             oRm.write('/>');
 
+            /*
+            ** This is the content that the user will interact with
+            */
+            oRm.write('<label');
+            oRm.writeAttribute('id', oCustomControl.getId() + '-ext');
+            oRm.writeAttribute('for', oCustomControl.getId() + '-int');
+            oRm.addClass('uteMTbItem-content');
+            oRm.writeClasses();
+            oRm.write('>');
+
             this._renderContent(oRm, oCustomControl);
+
+            oRm.write('</label>');
 
             oRm.write('</span>');
         };

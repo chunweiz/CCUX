@@ -13,13 +13,14 @@
                 <Property MaxLength="10" Name="ReqType" Nullable="false" Type="Edm.String"/>
                 <Property Name="StartDate" Nullable="false" Type="Edm.DateTime"/>
                 <Property Name="EndDate" Nullable="false" Type="Edm.DateTime"/>
-                <Property MaxLength="10" Name="OfferTitle" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="60" Name="Description" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="60" Name="OfferTitle" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="1000" Name="Description" Nullable="false" Type="Edm.String"/>
                 <Property Name="AvgUsage" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
                 <Property Name="EFL500" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
                 <Property Name="EFL1000" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
                 <Property Name="EFL2000" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
-                <Property MaxLength="5" Name="Promo" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="CampaignCode" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="PromoCode" Nullable="false" Type="Edm.String"/>
                 <Property Name="Term" Nullable="false" Type="Edm.Int16"/>
                 <Property Name="CncFee" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
                 <Property Name="Incentive" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
@@ -29,13 +30,19 @@
             </EntityType>
             <EntityType Name="Script">
                 <Key>
-                    <PropertyRef Name="OfferCode"/>
+                    <PropertyRef Name="NewOfferCode"/>
                     <PropertyRef Name="TxtName"/>
                     <PropertyRef Name="TxtLang"/>
                 </Key>
-                <Property MaxLength="10" Name="OfferCode" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="NewOfferCode" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="70" Name="TxtName" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="2" Name="TxtLang" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="PartnerID" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="CurrOfferCode" Nullable="false" Type="Edm.String"/>
+                <Property Name="EffectiveDate" Nullable="false" Type="Edm.DateTime"/>
+                <Property Name="CampaignCode" Nullable="false" Type="Edm.String"/>
+                <Property Name="PromoCode" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="5000" Name="TxtLine" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="Type" Nullable="false" Type="Edm.String"/>
             </EntityType>
@@ -75,20 +82,20 @@
             </EntityType>
             <EntityType Name="PendSwap">
                 <Key>
-                    <PropertyRef Name="Vertrag"/>
+                    <PropertyRef Name="Contract"/>
                     <PropertyRef Name="SwapType"/>
-                    <PropertyRef Name="IdocNumber"/>
-                    <PropertyRef Name="HistoryNumber"/>
+                    <PropertyRef Name="IdocNo"/>
+                    <PropertyRef Name="HistoryNo"/>
                 </Key>
-                <Property MaxLength="10" Name="Vertrag" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="4" Name="SwapType" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="16" Name="IdocNumber" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="16" Name="HistoryNumber" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="8" Name="OfferCode" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="150" Name="OfferCellDesc" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="10" Name="PromoCode" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="10" Name="CampaignCode" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="15" Name="ProductCode" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="16" Name="IdocNo" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="16" Name="HistoryNo" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="8" Name="Offer" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="150" Name="OfferDesc" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="Promo" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="Campaign" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="15" Name="Product" Nullable="false" Type="Edm.String"/>
                 <Property Name="DatStartPen" Nullable="false" Precision="7" Type="Edm.DateTime"/>
                 <Property Name="DatEndPen" Nullable="false" Precision="7" Type="Edm.DateTime"/>
                 <Property Name="DateSigned" Nullable="false" Precision="7" Type="Edm.DateTime"/>
@@ -112,7 +119,7 @@
                     </Principal>
                     <Dependent Role="ToRole_Cpg_Script">
                         <PropertyRef Name="Type"/>
-                        <PropertyRef Name="OfferCode"/>
+                        <PropertyRef Name="NewOfferCode"/>
                     </Dependent>
                 </ReferentialConstraint>
             </Association>

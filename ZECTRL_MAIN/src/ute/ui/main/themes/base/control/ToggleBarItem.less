@@ -1,3 +1,72 @@
 .uteMTbItem {
+    display: inline-block;
+    position: relative;
+}
 
+.uteMTbItem-int {
+    display: none;
+}
+
+.uteMTbItem-content {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.uteMTbItem-int[disabled="disabled"] + .uteMTbItem-content {
+    cursor: default;
+}
+
+/*
+** Default design
+*/
+.uteMTbItem-design-default .uteMTbItem-content {
+    border-radius: 6px;
+    padding: 2px 6px;
+    text-align: center;
+    color: @uteColor-grey-dark;
+    font-size: @uteFontSize-base;
+    background-color: @uteColor-blue-pearl;
+}
+
+.uteMTbItem-design-default .uteMTbItem-content:hover {
+    color: @uteColor-white;
+    background-color: @uteColor-blue-link;
+}
+
+.uteMTbItem-design-default .uteMTbItem-int:checked + .uteMTbItem-content {
+    color: @uteColor-white;
+    background-color: @uteColor-blue-link;
+}
+
+.uteMTbItem-design-default .uteMTbItem-int[disabled="disabled"] + .uteMTbItem-content {
+    color: @uteColor-white;
+    background-color: @uteColor-grey-lighter;
+}
+
+/*
+** Default invert
+*/
+.uteMTbItem-design-invert .uteMTbItem-content {
+    border-radius: 6px;
+    padding: 2px 6px;
+    text-align: center;
+    color: @uteColor-white;
+    font-size: @uteFontSize-base;
+    background-color: @uteColor-blue-link;
+}
+
+.uteMTbItem-design-invert .uteMTbItem-content:hover {
+    color: @uteColor-grey-dark;
+    background-color: @uteColor-blue-pearl;
+}
+
+.uteMTbItem-design-invert .uteMTbItem-int:checked + .uteMTbItem-content {
+    color: @uteColor-grey-dark;
+    background-color: @uteColor-blue-pearl;
+}
+
+.uteMTbItem-design-invert .uteMTbItem-int[disabled="disabled"] + .uteMTbItem-content {
+    color: @uteColor-white;
+    background-color: @uteColor-grey-lighter;
 }

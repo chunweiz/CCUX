@@ -16,6 +16,7 @@ sap.ui.define(
 			types: [
                 'ute.ui.main.ButtonDesign',
                 'ute.ui.main.ToggleBarDesign',
+                'ute.ui.main.ToggleBarItemDesign',
                 'ute.ui.main.CheckboxDesign',
                 'ute.ui.main.RadioButtonDesign',
                 'ute.ui.main.InfolineDesign',
@@ -45,6 +46,12 @@ sap.ui.define(
         };
 
         ute.ui.main.ToggleBarDesign = {
+            None: 'None',
+            Default: 'Default',
+            Invert: 'Invert'
+        };
+
+        ute.ui.main.ToggleBarItemDesign = {
             None: 'None',
             Default: 'Default',
             Invert: 'Invert'
