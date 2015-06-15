@@ -4,6 +4,7 @@
           xmlns:c="sap.ui.commons"
           xmlns:core="sap.ui.core"
           xmlns:u="ute.ui.commons"
+          xmlns:um="ute.ui.main"
           xmlns:l="sap.ui.commons.layout"
           controllerName="nrg.module.campaign.view.Change"
           height="100%"
@@ -117,18 +118,18 @@
                 </u:rows>
             </u:Table>
             <u:Tag class="nrgCamChgBtnT nrgCamChg-top" >
-                <u:Button
-                    id="idnrgCamChgBtn-Ok"
-                    text="{comp-i18n-campaign>nrgCmpChgBtnOk}"
-                    enabled="true"
-                    class="nrgCamChgBtn">
-                </u:Button>
-                <u:Button
-                    id="idnrgCamChgBtn-Dec"
-                    text="{comp-i18n-campaign>nrgCmpChgBtnDec}"
-                    enabled="true"
-                    class="nrgCamChgBtn" >
-                </u:Button>
+                <um:Button id="idnrgCamChgBtn-Ok"
+                           press=".onAcceptCampaign"
+                           text="{comp-i18n-campaign>nrgCmpChgBtnOk}"
+                           class="nrgCamChgBtn"
+                           design="Default">
+                </um:button>
+                <um:Button id="idnrgCamChgBtn-Dec"
+                           press=".onDeclineCampaign"
+                           text="{comp-i18n-campaign>nrgCmpChgBtnDec}"
+                           class="nrgCamChgBtn"
+                           design="Default">
+                </um:button>
             </u:Tag>
       </u:Tag>
    </u:Tag>
