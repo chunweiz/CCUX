@@ -80,9 +80,9 @@ sap.ui.define(
            // this.opts = oEvent.target
 
             $(oEvent.target).on('click', function() {
-                if (oEvent.target.className === "uteMDd-body"){
+
                     alert(oEvent.target.innerHTML);
-              }
+
             });
 
 
