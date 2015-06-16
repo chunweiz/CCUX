@@ -148,7 +148,7 @@ sap.ui.define(
 		 */
         Controller.prototype.onOffers = function (oEvent) {
 
-            this.navTo("campaignoffers", {bpNum: "123", caNum: "1234"});
+            this.navTo("campaignoffers", {coNum: "123"});
         };
         return Controller;
     }
