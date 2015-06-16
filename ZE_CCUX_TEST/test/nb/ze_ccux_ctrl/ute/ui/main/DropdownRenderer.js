@@ -105,7 +105,6 @@ sap.ui.define(
                 });
             }
 
-         //   oRm.write('</li>');
             oRm.write('</ul>')
         };
 
