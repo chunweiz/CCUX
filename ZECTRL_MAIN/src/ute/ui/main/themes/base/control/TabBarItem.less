@@ -1,0 +1,82 @@
+.uteMTabItem {
+    display: inline-block;
+    position: relative;
+}
+
+.uteMTabItem-int {
+    display: none;
+}
+
+.uteMTabItem-content {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.uteMTabItem-int[disabled="disabled"] + .uteMTabItem-content {
+    cursor: default;
+}
+
+/*
+** Default design
+*/
+.uteMTabItem-design-default .uteMTabItem-content {
+    border-radius: 6px;
+    padding: 2px 6px;
+    text-align: center;
+    color: @uteColor-grey-dark;
+    font-size: @uteFontSize-base;
+    background-color: @uteColor-blue-pearl;
+}
+
+.uteMTabItem-design-default .uteMTabItem-content:hover {
+    color: @uteColor-white;
+    background-color: @uteColor-blue-link;
+}
+
+.uteMTabItem-design-default .uteMTabItem-int:checked + .uteMTabItem-content {
+    color: @uteColor-white;
+    background-color: @uteColor-blue-link;
+}
+
+.uteMTabItem-design-default .uteMTabItem-int:checked + .uteMTabItem-content:hover {
+    color: @uteColor-white;
+    background-color: @uteColor-blue-link;
+}
+
+.uteMTabItem-design-default .uteMTabItem-int[disabled="disabled"] + .uteMTabItem-content {
+    color: @uteColor-white;
+    background-color: @uteColor-grey-lighter;
+}
+
+/*
+** Default invert
+*/
+.uteMTabItem-design-invert .uteMTabItem-content {
+    border-radius: 6px;
+    padding: 2px 6px;
+    text-align: center;
+    color: @uteColor-white;
+    font-size: @uteFontSize-base;
+    background-color: @uteColor-blue-link;
+}
+
+.uteMTabItem-design-invert .uteMTabItem-content:hover {
+    color: @uteColor-grey-dark;
+    background-color: @uteColor-blue-pearl;
+}
+
+.uteMTabItem-design-invert .uteMTabItem-int:checked + .uteMTabItem-content {
+    color: @uteColor-grey-dark;
+    background-color: @uteColor-blue-pearl;
+}
+
+.uteMTabItem-design-invert .uteMTabItem-int:checked + .uteMTabItem-content:hover {
+    color: @uteColor-grey-dark;
+    background-color: @uteColor-blue-pearl;
+}
+
+.uteMTabItem-design-invert .uteMTabItem-int[disabled="disabled"] + .uteMTabItem-content {
+    color: @uteColor-white;
+    background-color: @uteColor-grey-lighter;
+}

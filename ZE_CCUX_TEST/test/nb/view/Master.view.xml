@@ -1,0 +1,20 @@
+<core:View
+	controllerName="sap.ui.demo.myFiori.view.Master"
+    xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="sap.ui.commons"
+	xmlns:core="sap.ui.core"
+    xmlns:u="ute.ui.commons">
+<u:Tag>
+  <u:Dropdown  arrowcolor="Grey" arrowType="Hollow" enabled="true" background="Transparent" border="Bottom" title="Title" width="200px" padding="20px" DropdownListItems="{/myData}">
+<u:DropdownListItems>
+<u:DropdownListItem key="{text}">
+                        <c:Label text="{text}"/>
+                        <c:CheckBox checked="true"/>
+</u:DropdownListItem>
+</u:DropdownListItems>
+   </u:Dropdown>
+
+    </u:Tag>
+
+</core:View>
+

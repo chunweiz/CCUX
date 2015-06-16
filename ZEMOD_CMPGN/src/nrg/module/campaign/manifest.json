@@ -1,0 +1,82 @@
+{
+    "sap.ui5": {
+        "config": {
+            "module": {
+                "nrg.module.campaign": {
+                    "stylesheet": [
+                        "asset/css/module.css"
+                    ],
+
+                    "resourceBundle": {
+                        "comp-i18n-campaign": "i18n/module.properties"
+                    },
+
+                    "odata": {
+                        "real": {
+                            "comp-campaign": {
+                                "url": ""
+                            }
+                        },
+                        "mock": {
+                            "comp-campaign": {
+                                "mockDataBaseUrl": "data/version1/",
+                                "generateMissingMockData": true
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "routing": {
+           "routes": {
+                "campaign": {
+                    "pattern": "bp/{bpNum}/ca/{caNum}/campaign",
+                    "target": [ "campaign.Overview", "dashboard.SummaryBP", "campaign.Tools" ]
+                },
+                "campaignchg": {
+                    "pattern": "bp/{bpNum}/ca/{caNum}/campaign/cmpchg",
+                    "target": [ "campaign.Change", "dashboard.SummaryBP", "campaign.Tools" ]
+                },
+                "campaignSS": {
+                    "pattern": "bp/{bpNum}/ca/{caNum}/campaign/cmpss",
+                    "target": [ "campaign.SalesScript", "dashboard.SummaryBP", "campaign.Tools" ]
+                },
+                "campaignoffers": {
+                    "pattern": "bp/{bpNum}/ca/{caNum}/campaign/offers",
+                    "target": [ "campaign.Offers", "dashboard.SummaryBP", "campaign.Tools" ]
+                }
+            },
+            "targets": {
+                "campaign.General": {
+                    "viewName": "nrg.module.campaign.view.General",
+                    "controlId": "idAppGeneral"
+                },
+                "campaign.Overview": {
+                    "viewName": "nrg.module.campaign.view.Overview",
+                    "controlId": "idAppGeneral"
+                },
+                "campaign.History": {
+                    "viewName": "nrg.module.campaign.view.History",
+                    "controlId": "idAppGeneral"
+                },
+                "campaign.SalesScript": {
+                    "viewName": "nrg.module.campaign.view.SalesScript",
+                    "controlId": "idAppGeneral"
+                },
+                "campaign.Offers": {
+                    "viewName": "nrg.module.campaign.view.Offers",
+                    "controlId": "idAppGeneral"
+                },
+                "campaign.Change": {
+                    "viewName": "nrg.module.campaign.view.Change",
+                    "controlId": "idAppGeneral"
+                },
+                "campaign.Tools": {
+                    "viewName": "nrg.module.campaign.view.Tools",
+                    "controlId": "idAppTools"
+                }
+            }
+        }
+    }
+}

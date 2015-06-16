@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="../asset/nrg.css">
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font: 400 12pt "Source Sans Pro", sans-serif;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+
+        <script id="sap-ui-bootstrap"
+		    src="../../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
+		    data-sap-ui-libs="sap.ui.layout, sap.ui.commons, sap.m, tm.message.control"
+		    data-sap-ui-resourceroots='{
+                "sap.ui.layout": "../../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.ui.layout/resources/sap/ui/layout",
+                "sap.ui.commons": "../../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
+                "sap.m": "../../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.m/resources/sap/m",
+            	"tm.message.control": "./"
+        	}'>
+		</script>
+
+        <script id="main" type="ui5/xmlview">
+            <mvc:View
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:tm="tm.message.control"
+                xmlns:mvc="sap.ui.core.mvc"
+                controllerName="local.controller.Control"
+                displayBlock="true">
+
+                <tm:Label
+                    text="This is an information message"
+                    icon="sap-icon://nrg-icon/notification"
+                    design="Information"/>
+
+                <tm:Label
+                    text="This is a success message"
+                    icon="sap-icon://nrg-icon/notification"
+                    design="Success"/>
+
+                <tm:Label
+                    text="This is a warning message"
+                    icon="sap-icon://nrg-icon/notification"
+                    design="Warning"/>
+
+                <tm:Label
+                    text="This is a error message"
+                    icon="sap-icon://nrg-icon/notification"
+                    design="Error"/>
+
+                <tm:Label
+                    text="This is a notification message"
+                    icon="sap-icon://nrg-icon/notification"
+                    design="None"/>
+
+            </mvc:View>
+        </script>
+
+		<script>
+			sap.ui.getCore().attachInit(function () {
+                jQuery.sap.require('sap.ui.core.IconPool');
+
+                sap.ui.core.IconPool.addIcon('notification', 'nrg-icon', {
+                    fontFamily: 'nrg-icon',
+                    content: 'e616'
+                });
+
+                sap.ui.controller('local.controller.Control', {
+                    onInit: function () {}
+                });
+
+                sap.ui.xmlview({ viewContent: jQuery('#main').html() })
+                    .setModel(new sap.ui.model.json.JSONModel({
+                        text: 'CA'
+                    }))
+                    .placeAt('fromxml');
+            });
+		</script>
+	</head>
+	<body class="sapUiBody" role="application" id="content">
+        <div id="fromxml"></div>
+	</body>
+</html>

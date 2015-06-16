@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:c="sap.ui.commons"
+          xmlns:core="sap.ui.core"
+          xmlns:u="ute.ui.commons"
+          xmlns:l="sap.ui.commons.layout"
+          xmlns:um="ute.ui.main"
+          xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+          controllerName="nrg.module.campaign.view.Overview"
+          height="100%"
+          width="100%"
+          displayBlock="true">
+   <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
+      <u:Tag class="nrgCamOvrT">
+         <u:Tag class="nrgCamOvrTitleT" text="{comp-i18n-campaign>nrgCmpOvrTtl}" />
+            <article class="nrgCamOvr-offerToolbar nrgCamOvr-top">
+                <um:Button id="idCamCustReqOfferBtn"
+                           press=".onOffers"
+                           text="{Overview-elig>Notitle}"
+                           class="nrgCamOvr-offerBtn"
+                           design="None"
+                           disabled="{= ${Overview-elig>CustEligFlag} === '' }">
+                    <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n-appFtr>nrgAppFooterCustReqOffer}" />
+                    <u:Tag id="idCamCustReqOffer" class="nrgCamOvr-offerBtnDesc"
+                           text="{= ${Overview-elig>CustEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
+                        <u:customData>
+                          <core:CustomData key="flag" value="{Overview-elig>CustEligFlag}" writeToDom="true" />
+                        </u:customData>
+                    </u:Tag>
+                </um:button>
+                <um:Button id="idCamAgtReqOfferBtn"
+                           press=".onOffers"
+                           text="{Overview-elig>Notitle}"
+                           class="nrgCamOvr-offerBtn"
+                           design="None"
+                           disabled="{= ${Overview-elig>AgntEligFlag} === '' }">
+                    <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n-appFtr>nrgAppFooterAgentReqOffer}" />
+                    <u:Tag id="idCamAgentReqOffer" class="nrgCamOvr-offerBtnDesc"
+                           text="{= ${Overview-elig>AgntEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
+                        <u:customData>
+                          <core:CustomData key="flag" value="{Overview-elig>AgntEligFlag}" writeToDom="true" />
+                        </u:customData>
+                    </u:Tag>
+                </um:button>
+            </article>
+            <u:Tag class="nrgCamToggleT nrgCamOvr-left nrgCamOvr-top" id="idnrgCamToggleT">
+                <um:Button id="idCamToggleBtn"
+                           press=".toggleCampaign"
+                           text="{comp-campaign>label}"
+                           class="nrgCamOvr-offerBtn"
+                           design="Default">
+                </um:button>
+            </u:Tag>
+            <l:MatrixLayout class="nrgCamOvrMtx nrgCamOvr-top">
+                <l:MatrixLayoutRow>
+                    <l:MatrixLayoutCell>
+                        <c:Label id="idCamTitleLbl" text="{comp-i18n-campaign>nrgCmpOvrTtllbl}" icon="sap-icon://nrg-icon/tag" class="nrgCamOvr-lbl"  labelFor="idCamTitleTv"  />
+                    </l:MatrixLayoutCell>
+                    <l:MatrixLayoutCell>
+                        <c:Label id="idCamAvgUsgLbl" text="{comp-i18n-campaign>nrgCmpOvrAUlbl}" icon="sap-icon://nrg-icon/bulb" class="nrgCamOvr-lbl" labelFor="idCamAvgUsgTv"  />
+                    </l:MatrixLayoutCell>
+                </l:MatrixLayoutRow>
+                <l:MatrixLayoutRow>
+                    <l:MatrixLayoutCell>
+                        <u:TextView id="idCamTitleTv" text="{comp-campaign>OfferTitle}"
+                                                    class="nrgCamOvr-left nrgCamOvr-left1"
+                                                    color="DarkGrey"
+                                                    design="Base"/>
+
+                    </l:MatrixLayoutCell>
+                    <l:MatrixLayoutCell>
+                        <u:TextView id="idCamAvgUsgTv"
+                                    text="{comp-campaign>AvgUsage}"
+                                    class="nrgCamOvr-left"
+                                    color="DarkGrey"
+                                    design="Base"/>
+                    </l:MatrixLayoutCell>
+                </l:MatrixLayoutRow>
+            </l:MatrixLayout>
+            <u:Tag class="nrgCamPriceT">
+                <c:Label id="idCamPrcLbl" text="{comp-i18n-campaign>nrgCmpOvrPrclbl}" icon="sap-icon://nrg-icon/dollar" class="nrgCamOvr-lbl nrgCamOvr-top" labelFor="idCamPriceTbl"  />
+                <u:Table width="60%"
+                    id="idCamPriceTbl"
+                    tableType="CampaignTable"
+                    class="nrgCamOvr-left nrgCamOvr-top"  >
+                        <u:columns>
+                            <u:TableColumn width="33%" >
+                                <c:Label text="EFL@500"/>
+                            </u:TableColumn>
+                            <u:TableColumn width="33%" >
+                                <c:Label text="EFL@1000"/>
+                            </u:TableColumn>
+                            <u:TableColumn width="33%" >
+                                <c:Label text="EFL@2000"/>
+                            </u:TableColumn>
+                        </u:columns>
+                        <u:rows>
+                            <u:TableRow>
+                                <c:Label text="{comp-campaign>EFL500}"/>
+                                <c:Label text="{comp-campaign>EFL1000}"/>
+                                <c:Label text="{comp-campaign>EFL2000}"/>
+                            </u:TableRow>
+                        </u:rows>
+                </u:Table>
+            </u:Tag>
+            <u:Tag class="nrgCamDescT">
+                    <c:Label id="idCamDescLbl"
+                        text="{comp-i18n-campaign>nrgCmpOvrDsclbl}"
+                        icon="sap-icon://nrg-icon/description"
+                        class="nrgCamOvr-lbl nrgCamOvr-top nrgCamOvr-desc"
+                        labelFor="idCamDescTv" />
+                    <u:TextView
+                        id="idCamDescTv"
+                        color="DarkGrey"
+                        class="nrgCamOvr-left nrgCamOvr-top"
+                        design="Base"
+                        text="{comp-campaign>Description}" />
+            </u:Tag>
+            <u:Table width="100%"
+                     id="idCamInfoTbl"
+                     class="nrgCamOvr-top"
+                     tableType="CampaignTable" >
+                <u:columns>
+                    <u:TableColumn>
+                        <c:Label text="Promo Code"/>
+                    </u:TableColumn>
+                    <u:TableColumn>
+                         <c:Label text="Offer Code"/>
+                    </u:TableColumn>
+                    <u:TableColumn>
+                         <c:Label text="Term Length"/>
+                    </u:TableColumn>
+                    <u:TableColumn>
+                        <c:Label text="Start Date"/>
+                    </u:TableColumn>
+                    <u:TableColumn>
+                         <c:Label text="End Date"/>
+                    </u:TableColumn>
+                    <u:TableColumn>
+                         <c:Label text="Cancellation Fee"/>
+                    </u:TableColumn>
+                    <u:TableColumn>
+                         <c:Label text="Incentive"/>
+                    </u:TableColumn>
+                </u:columns>
+                <u:rows>
+                    <u:TableRow>
+                        <c:Label text="{comp-campaign>Promo}"/>
+                        <c:Label text="{comp-campaign>OfferCode}"/>
+                        <c:Label text="{comp-campaign>Term}"/>
+                        <c:Label text="{path: 'comp-campaign>StartDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                        <c:Label text="{path: 'comp-campaign>EndDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                        <c:Label text="{comp-campaign>CncFee}"/>
+                        <c:Label text="{comp-campaign>Incentive}"/>
+                    </u:TableRow>
+                </u:rows>
+            </u:Table>
+      </u:Tag>
+   </u:Tag>
+</mvc:View>

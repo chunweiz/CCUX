@@ -1,0 +1,107 @@
+{
+    "sap.ui5": {
+        "config": {
+            "module": {
+                "nrg.module.dashboard": {
+                    "stylesheet": [
+                        "asset/css/module.css"
+                    ],
+
+                    "resourceBundle": {
+                        "comp-i18n-dashboard": "i18n/module.properties"
+                    },
+
+                    "odata": {
+                        "real": {
+                            "comp-dashboard": {
+                                "url": ""
+                            }
+                        },
+                        "mock": {
+                            "comp-dashboard": {
+                                "mockDataBaseUrl": "data/devtest/",
+                                "generateMissingMockData": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "routing": {
+            "routes": {
+                "dashboard": {
+                    "pattern": "",
+                    "target": [ "dashboard.General", "dashboard.Summary", "dashboard.Tools" ]
+                },
+
+                "dashboard.SearchNoID": {
+                    "pattern": "searchNoID",
+                    "target": [ "dashboard.CallerNoIDSearch", "dashboard.CallerNoIDEnrollment", "" ]
+                },
+
+                "dashboard.SearchNoIDREBS": {
+                    "pattern": "searchNoIDREBS",
+                    "target": [ "dashboard.CallerNoIDSearchREBS", "dashboard.CallerNoIDEnrollment", "" ]
+                },
+
+                "dashboard.Bp": {
+                    "pattern": "bp/{bpNum}",
+                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "" ]
+                },
+
+                "dashboard.BpCa": {
+                    "pattern": "bp/{bpNum}/ca/{caNum}",
+                    "target": [ "others.GeneralEmpty", "dashboard.SummaryBP", "others.ToolsEmpty" ]
+                }
+            },
+
+            "targets": {
+                "dashboard.General": {
+                    "viewName": "nrg.module.dashboard.view.General",
+                    "controlId": "idAppGeneral"
+                },
+
+                "dashboard.Summary": {
+                    "viewName": "nrg.module.dashboard.view.Summary",
+                    "controlId": "idAppSummary"
+                },
+
+                "dashboard.Tools": {
+                    "viewName": "nrg.module.dashboard.view.Tools",
+                    "controlId": "idAppTools"
+                },
+
+                "dashboard.SummaryBP": {
+                    "viewName": "nrg.module.dashboard.view.SummaryBP",
+                    "controlId": "idAppSummary"
+                },
+
+                "dashboard.CallerNoIDSearch": {
+                    "viewName": "nrg.module.dashboard.view.CallerNoIDSearch",
+                    "controlId": "idAppGeneral"
+                },
+
+                "dashboard.CallerNoIDSearchREBS": {
+                    "viewName": "nrg.module.dashboard.view.CallerNoIDSearchREBS",
+                    "controlId": "idAppGeneral"
+                },
+
+                "dashboard.CallerNoIDEnrollment": {
+                    "viewName": "nrg.module.dashboard.view.CallerNoIDEnrollment",
+                    "controlId": "idAppSummary"
+                },
+
+                "dashboard.CustomerDataSummary": {
+                    "viewName": "nrg.module.dashboard.view.CustomerDataSummary",
+                    "controlId": "idAppSummary"
+                },
+
+                "dashboard.CustomerDataVerification": {
+                    "viewName": "nrg.module.dashboard.view.CustomerDataVerification",
+                    "controlId": "idAppGeneral"
+                }
+            }
+        }
+    }
+}

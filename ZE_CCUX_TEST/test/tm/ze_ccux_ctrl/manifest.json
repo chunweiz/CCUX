@@ -1,0 +1,45 @@
+{
+    "name": "test.tm.ze_ccux_ctrl.Component",
+
+    "sap.ui5": {
+        "resources": {
+            "css": [
+                { "uri": "asset/nrg.css" }
+            ]
+        },
+
+        "rootView": {
+            "viewName": "test.tm.ze_ccux_ctrl.view.App",
+            "type": "XML"
+        },
+
+        "routing": {
+            "routes": {
+                "Button": { "pattern": "Button", "target": [ "Button" ] },
+                "Label": { "pattern": "Label", "target": [ "Label" ] },
+                "Checkbox": { "pattern": "Checkbox", "target": [ "Checkbox" ] },
+                "Infoline": { "pattern": "Infoline", "target": [ "Infoline" ] },
+                "Dropdown": { "pattern": "Dropdown", "target": [ "Dropdown" ] },
+                "RadioButton": { "pattern": "RadioButton", "target": [ "RadioButton" ] },
+                "TabBar": { "pattern": "TabBar", "target": [ "TabBar" ] }
+            },
+
+            "config": {
+                "viewType": "XML",
+                "viewPath": "test.tm.ze_ccux_ctrl.view",
+                "controlAggregation": "content",
+                "clearControlAggregation": true
+            },
+
+            "targets": {
+                "Button": { "viewName": "Button", "controlId": "idAppContent" },
+                "Label": { "viewName": "Label", "controlId": "idAppContent" },
+                "Checkbox": { "viewName": "Checkbox", "controlId": "idAppContent" },
+                "Infoline": { "viewName": "Infoline", "controlId": "idAppContent" },
+                "Dropdown": { "viewName": "Dropdown", "controlId": "idAppContent" },
+                "RadioButton": { "viewName": "RadioButton", "controlId": "idAppContent" },
+                "TabBar": { "viewName": "TabBar", "controlId": "idAppContent" }
+            }
+        }
+    }
+}

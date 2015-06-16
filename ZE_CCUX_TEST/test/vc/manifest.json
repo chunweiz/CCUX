@@ -1,0 +1,27 @@
+{
+    "name": "vc.Component",
+
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "vc.view.App",
+            "type": "XML"
+        },
+
+        "routing": {
+            "routes": {
+                "Button": { "pattern": "Button", "target": [ "Button" ] }
+            },
+
+            "config": {
+                "viewType": "XML",
+                "viewPath": "vc.view",
+                "controlAggregation": "content",
+                "clearControlAggregation": true
+            },
+
+            "targets": {
+                "Button": { "viewName": "Button", "controlId": "idAppContent" }
+            }
+        }
+    }
+}
