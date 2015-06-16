@@ -38,21 +38,15 @@ sap.ui.define(
         Controller.prototype._onObjectMatched = function (oEvent) {
             var oModel,
                 sCurrentPath,
-                mParameters,
-                aFilters = this._createSearchFilterObject("1121", "50124832"),
-                sPath;
+                mParameters;
 
-            //sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
-            sCurrentPath = "/CpgChgSaveS";
-            sPath = "/CpgChgSaveS(OfferCode='50124832',Type='P')";
+            sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
+            sCurrentPath = sCurrentPath + "(OfferCode='50124832',Type='P')";
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             mParameters = {
                 //filters : aFilters,
                 success : function (oData) {
-                    this.getView().bindElement({
-                        model : "comp-campaign",
-                        path : sPath
-                    });
+                    this._bindView(sCurrentPath);
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
                 error: function (oError) {
@@ -60,12 +54,12 @@ sap.ui.define(
                 }.bind(this)
             };
             if (oModel) {
-                oModel.read(sPath, mParameters);
+                oModel.read(sCurrentPath, mParameters);
             }
 		};
 
         /**
-		 * Binds the view to the object path. Makes sure that detail view displays
+		 * Binds the view to the object path. Makes sure that view displays
 		 * a busy indicator while data for the corresponding element binding is loaded.
 		 *
 		 * @function
@@ -73,6 +67,10 @@ sap.ui.define(
 		 * @private
 		 */
 		Controller.prototype._bindView = function (sObjectPath) {
+            this.getView().bindElement({
+                model : "comp-campaign",
+                path : sObjectPath
+            });
 
         };
         /**
@@ -96,6 +94,30 @@ sap.ui.define(
             oFilterTemplate.oValue1 = sOfferCode;
             aFilters.push(oFilterTemplate);
             return aFilters;
+        };
+        /**
+		 * Event function for Accept Campaign
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onAcceptCampaign = function (oEvent) {
+            this.navTo("campaignSS", {bpNum: "123", caNum: "1234"});
+        };
+
+        /**
+		 * Event function for Decline Campaign
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onDeclineCampaign = function (oEvent) {
+            var sPath;
+            sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
+            this.getView().bindElement({
+                model : "comp-campaign",
+                path : sPath
+            });
         };
         return Controller;
     }

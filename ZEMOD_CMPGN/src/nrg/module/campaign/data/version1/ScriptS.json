@@ -1,0 +1,46 @@
+{
+   "d":{
+      "results":[
+         {
+            "NewOfferCode":"A",
+            "TxtName":"TxtName",
+            "TxtLang":"TxtLang",
+            "PartnerID":"1121",
+            "OfferCode":"OfferCode 1",
+            "Contract":"/Date(1498763169000)/",
+            "CurrOfferCode":"OfferCode",
+            "EffectiveDate":"/Date(1215630369000)/",
+            "CampaignCode":7365.58,
+            "TxtLine":12.1,
+            "Type":12.3,
+         },
+         {
+            "NewOfferCode":"A",
+            "TxtName":"TxtName",
+            "TxtLang":"TxtLang",
+            "PartnerID":"1121",
+            "OfferCode":"OfferCode 1",
+            "Contract":"/Date(1498763169000)/",
+            "CurrOfferCode":"OfferCode",
+            "EffectiveDate":"/Date(1215630369000)/",
+            "CampaignCode":7365.58,
+            "TxtLine":12.1,
+            "Type":12.3,
+         },
+         {
+            "NewOfferCode":"A",
+            "TxtName":"TxtName",
+            "TxtLang":"TxtLang",
+            "PartnerID":"1121",
+            "OfferCode":"OfferCode 1",
+            "Contract":"/Date(1498763169000)/",
+            "CurrOfferCode":"OfferCode",
+            "EffectiveDate":"/Date(1215630369000)/",
+            "CampaignCode":7365.58,
+            "TxtLine":12.1,
+            "Type":12.3,
+         }
+
+      ]
+   }
+}
