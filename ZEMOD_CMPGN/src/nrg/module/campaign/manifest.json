@@ -39,7 +39,7 @@
                     "target": [ "campaign.Change", "dashboard.SummaryBP", "campaign.Tools" ]
                 },
                 "campaignSS": {
-                    "pattern": "co/{coNum}/campaign/cmpss",
+                    "pattern": "sPath/{sPath}/campaign/cmpss",
                     "target": [ "campaign.SalesScript", "dashboard.SummaryBP", "campaign.Tools" ]
                 },
                 "campaignoffers": {

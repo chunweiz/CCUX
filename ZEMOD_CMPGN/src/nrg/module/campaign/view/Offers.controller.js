@@ -68,10 +68,10 @@ sap.ui.define(
             oEvent.getSource().addStyleClass("nrgCamOff-btn-selected");
         };
         /**
-		 * Binds the view to the object path and expands the aggregated line items.
+		 * Binds the view to the object path
 		 *
 		 * @function
-		 * @param {sap.ui.base.Event} oEvent pattern match event in route 'object'
+		 * @param {sap.ui.base.Event} oEvent pattern match event
 		 * @private
 		 */
         Controller.prototype._onObjectMatched = function (oEvent) {

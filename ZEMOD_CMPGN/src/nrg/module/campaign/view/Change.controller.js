@@ -29,10 +29,10 @@ sap.ui.define(
         };
 
 		/**
-		 * Binds the view to the object path and expands the aggregated line items.
+		 * Binds the view to the object path
 		 *
 		 * @function
-		 * @param {sap.ui.base.Event} oEvent pattern match event in route 'object'
+		 * @param {sap.ui.base.Event} oEvent pattern match event
 		 * @private
 		 */
         Controller.prototype._onObjectMatched = function (oEvent) {
@@ -102,7 +102,8 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onAcceptCampaign = function (oEvent) {
-            this.navTo("campaignSS", {coNum: "123"});
+            var oContext = this.getView().getBindingContext("comp-campaign");
+            this.navTo("campaignSS", {sPath: "test"});
         };
 
         /**

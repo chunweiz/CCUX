@@ -24,7 +24,7 @@
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
                         <u:TextView id="idCamSSTtlTv"
-                                    text="CNP AVG@2000=11.3 Secure Advantage 24"
+                                    text="CND AVG@2000=12.1 Secure Advantage 24"
                                     class="nrgCamSS-left"
                                     color="DarkGrey"
                                     design="Base"/>
@@ -38,14 +38,14 @@
                             arrowType="Hollow"
                             enabled="true"
                             background="Transparent"
-                            title="{comp-campaign>/languageData/0/language}"
+                            title="{comp-campaign>TxtLang}"
                             border="Bottom"
                             width="100px"
                             padding="5px"
                             DropdownListItems="{comp-campaign>/languageData}">
                     <u:DropdownListItems>
-                        <u:DropdownListItem key="{comp-campaign>language}">
-                            <c:Label text="{comp-campaign>language}"/>
+                        <u:DropdownListItem key="{comp-campaign>TxtLang}">
+                            <c:Label text="{comp-campaign>TxtLang}"/>
                         </u:DropdownListItem>
                     </u:DropdownListItems>
                 </u:Dropdown>

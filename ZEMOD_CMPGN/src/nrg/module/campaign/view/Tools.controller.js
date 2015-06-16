@@ -13,7 +13,6 @@ sap.ui.define(
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.Tools');
-
        /**
 		 * Assign the filter objects based on the input selection
 		 *
@@ -75,15 +74,13 @@ sap.ui.define(
                 modal: true,
                 content: oHistoryView
             });
-            oDialog.addStyleClass("nrgCamHisTDialog");
+            oDialog.addStyleClass("nrgCamHis-dialog");
             //to get access to the global model
             this.getView().addDependent(oDialog);
             oDialog.open();
 
         };
-        Controller.prototype.onAfterRendering = function () {
 
-        };
         return Controller;
     }
 
