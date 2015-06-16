@@ -102,7 +102,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onAcceptCampaign = function (oEvent) {
-            this.navTo("campaignSS", {bpNum: "123", caNum: "1234"});
+            this.navTo("campaignSS", {coNum: "123"});
         };
 
         /**

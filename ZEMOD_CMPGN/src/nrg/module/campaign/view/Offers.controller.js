@@ -181,7 +181,7 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.selectCampaign = function (oEvent) {
-            this.navTo("campaignchg", {bpNum: "123", caNum: "1234"});
+            this.navTo("campaignchg", {coNum: "123"});
 
         };
         /**
