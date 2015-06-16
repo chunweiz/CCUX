@@ -14,20 +14,18 @@
 
         </style>
 
-        <um:TabBar>
-            <um:TabBarItem key="tb001" press=".onPressed">
-                <div>Service Address</div>
-            </um:TabBarItem>
-            <um:TabBarItem key="tb002" press=".onPressed" selected="true">
-                <div>Mailing Address</div>
-            </um:TabBarItem>
-            <um:TabBarItem key="tb003" press=".onPressed">
-                <div>New Address</div>
-            </um:TabBarItem>
-            <um:TabBarItem key="tb004" press=".onPressed">
-                <div>Yet Another Address</div>
-            </um:TabBarItem>
-        </um:TabBar>
+        <um:TabBarItem name="grp001" key="tb001" press=".onPressed">
+            <div>Service Address</div>
+        </um:TabBarItem>
+        <um:TabBarItem name="grp001" key="tb002" press=".onPressed" selected="true">
+            <div>Mailing Address</div>
+        </um:TabBarItem>
+        <um:TabBarItem name="grp001" key="tb003" press=".onPressed">
+            <div>New Address</div>
+        </um:TabBarItem>
+        <um:TabBarItem name="grp001" key="tb004" press=".onPressed">
+            <div>Yet Another Address</div>
+        </um:TabBarItem>
 
 
     </sm:ScrollContainer>

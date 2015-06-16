@@ -13,7 +13,6 @@ sap.ui.define(
 
         CustomController.prototype.onPressed = function (oControlEvent) {
             console.log(oControlEvent.getParameter('selectedKey'));
-            console.log(oControlEvent.getSource());
         };
 
         return CustomController;

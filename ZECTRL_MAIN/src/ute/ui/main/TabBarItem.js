@@ -58,10 +58,6 @@ sap.ui.define(
                 return;
             }
 
-            if (this.getSelected()) {
-                return;
-            }
-
             this.setSelected(!this.getSelected());
             this.firePress({
                 selectedKey: this.getKey()
@@ -69,7 +65,14 @@ sap.ui.define(
         };
 
         CustomControl.prototype.setSelected = function (bSelected) {
+            bSelected = !!bSelected;
+
+            if (this.getSelected() === bSelected) {
+                return this;
+            }
+
             this.$('.uteMTabItem-int').prop('checked', bSelected);
+
             this.setProperty('selected', bSelected);
             return this;
         };
