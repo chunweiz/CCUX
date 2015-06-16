@@ -12,12 +12,12 @@
           width="100%"
           displayBlock="true">
     <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
-        <u:Tag class="nrgCmpOffT">
-            <u:Tag class="nrgCamOffTtlT" text="{comp-i18n-campaign>nrgCmpOffTtl}" />
-            <u:Tag class="nrgCmpOffPart-Display">
-                <u:Tag class="nrgCmpOffCompare">
-                    <u:Tag class="nrgCamOffTtlC" text="{comp-i18n-campaign>nrgCmpOffCompareBy}" />
-                    <u:Tag class="nrgCamOffCmpBtnI">
+        <u:Tag class="nrgCmpOff">
+            <u:Tag class="nrgCamOff-ttl" text="{comp-i18n-campaign>nrgCmpOffTtl}" />
+            <u:Tag class="nrgCmpOff-partDisplay">
+                <u:Tag class="nrgCmpOff-compare">
+                    <u:Tag class="nrgCamOff-ttlC" text="{comp-i18n-campaign>nrgCmpOffCompareBy}" />
+                    <u:Tag class="nrgCamOff-cmpBtnI">
                         <um:Button id="idnrgCamOffCmpBtn-I"
                             press=".toggleComparision"
                             text="{comp-i18n-campaign>nrgCmpOffCpInvoice}"
@@ -25,71 +25,74 @@
                             design="None">
                         </um:button>
                     </u:Tag>
-                    <u:Tag class="nrgCamOffCmpBtnC">
+                    <u:Tag class="nrgCamOff-cmpBtnC">
                         <um:Button id="idnrgCamOffCmpBtn-C"
                             press=".toggleComparision"
                             text="{comp-i18n-campaign>nrgCmpOffCpConsumption}"
-                            class="nrgCamOffBtn"
+                            class="nrgCamOff-btn"
                             design="None">
                         </um:button>
                     </u:Tag>
                 </u:Tag>
-                <u:Tag class="nrgCmpOffDisplay-1" id="idnrgCmpOffDisplay-1">
+                <u:Tag class="nrgCmpOff-display-1" id="idnrgCmpOffDisplay-1">
                      <core:Fragment fragmentName="nrg.module.campaign.view.Invoice" type="XML" />
                 </u:Tag>
-                <u:Tag class="nrgCmpOffDisplay-2" id="idnrgCmpOffDisplay-2">
+                <u:Tag class="nrgCmpOff-display-2" id="idnrgCmpOffDisplay-2">
                     <core:Fragment fragmentName="nrg.module.campaign.view.Invoice" type="XML" />
                </u:Tag>
             </u:Tag>
-            <u:Tag class="nrgCamOffDisc" text="{comp-i18n-campaign>nrgCmpOffDisclosure}" />
-            <m:SearchField width="50%" class="nrgCamOffSearch" placeholder="Search Ex:Campaign Name, Promo Code, Price"/>
-            <u:Tag class="nrgCmpOffPart-Tiles">
-                <u:Tag class="nrgCmpOffTiers">
-                    <u:Tag class="nrgCmpOffTier">
+            <u:Tag class="nrgCamOff-disc" text="{comp-i18n-campaign>nrgCmpOffDisclosure}" />
+            <m:SearchField width="50%" class="nrgCamOff-search" placeholder="Search Ex:Campaign Name, Promo Code, Price"/>
+            <u:Tag class="nrgCmpOff-partTiles">
+                <u:Tag class="nrgCmpOff-tiers">
+                    <u:Tag class="nrgCmpOff-tier">
                         <um:Button id="idCamToggleBtn-P"
                             press=".toggleTier"
                             text="{comp-i18n-campaign>nrgCmpOffTProactive}"
-                            class="nrgCamOvr-offerBtn"
+                            class="nrgCamOff-offerBtn"
                             design="None">
                         </um:button>
                     </u:Tag>
-                    <u:Tag class="nrgCmpOffTier">
+                    <u:Tag class="nrgCmpOff-tier">
                         <um:Button id="idCamToggleBtn-R"
                             press=".toggleTier"
                             text="{comp-i18n-campaign>nrgCmpOffTReactive}"
-                            class="nrgCamOvr-offerBtn"
+                            class="nrgCamOff-offerBtn"
                             design="None">
                         </um:button>
                     </u:Tag>
-                    <u:Tag class="nrgCmpOffTier">
+                    <u:Tag class="nrgCmpOff-tier">
                         <um:Button id="idCamToggleBtn-S"
                             press=".toggleTier"
                             text="{comp-i18n-campaign>nrgCmpOffTSave}"
-                            class="nrgCamOvr-offerBtn"
+                            class="nrgCamOff-offerBtn"
                             design="None">
                         </um:button>
                     </u:Tag>
-                    <u:Tag class="nrgCmpOffTier">
+                    <u:Tag class="nrgCmpOff-tier">
                         <um:Button id="idCamToggleBtn-F"
                             press=".toggleTier"
                             text="{comp-i18n-campaign>nrgCmpOffTFinalSave}"
-                            class="nrgCamOvr-offerBtn"
+                            class="nrgCamOff-offerBtn"
                             design="None">
                         </um:button>
                     </u:Tag>
                 </u:Tag>
-                <u:Tag class="nrgCmpOffTiles">
+                <u:Tag class="nrgCmpOff-tiles">
                     <m:ScrollContainer
                         height="267px"
                         width="100%"
                         horizontal="false"
                         vertical="true"
                         focusable="true"
-                        class="nrgCamOffScroll"
+                        class="nrgCamOff-scroll"
                         id="idnrgCamOffScroll" >
-                        <um:Button press=".onOfferSelected" text="{comp-campaign>Notitle}" class="nrgCamOffBt" id="idnrgCamOffBt" design="None">
-                            <u:Tag class="nrgCamOffBtinfo">
-                                <u:Tag class="nrgCamOffBt-CF" text="{parts:[{path:'comp-campaign>CancellationFee',
+                        <um:Button press=".onOfferSelected"
+                                   text="{comp-campaign>Notitle}"
+                                   class="nrgCamOff-btn"
+                                   id="idnrgCamOffBt" design="None">
+                            <u:Tag class="nrgCamOff-btnInfo">
+                                <u:Tag class="nrgCamOff-btnCF" text="{parts:[{path:'comp-campaign>CancellationFee',
                                                                 type: 'nrg.util.type.Price',
                                                                 formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' }},
                                                            {path: 'comp-campaign>Incentive',
@@ -97,15 +100,15 @@
                                                                 formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' } }],
                                                     formatter:'.formatCancelFee'}" />
 
-                                <u:Tag class="nrgCamOffBt-PC"
+                                <u:Tag class="nrgCamOff-btnPC"
                                        text="{parts:[{path:'comp-campaign>PromoCode'}],
                                                     formatter:'.formatPromo'}"/>
                             </u:Tag>
-                            <u:Tag class="nrgCamOffBt-Ttl" text="{comp-campaign>OfferTitle}" />
-                            <u:Tag class="nrgCamOffBt-Prc" text="{path: 'comp-campaign>EFL2000',
+                            <u:Tag class="nrgCamOff-btnTtl" text="{comp-campaign>OfferTitle}" />
+                            <u:Tag class="nrgCamOff-btnPrc" text="{path: 'comp-campaign>EFL2000',
                                                                 type: 'nrg.util.type.Price',
                                                                 formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
-                            <u:Tag class="nrgCamOffBt-PrcLbl" text="{comp-i18n-campaign>nrgCmpOffkWhDisc}" />
+                            <u:Tag class="nrgCamOff-btnPrcLbl" text="{comp-i18n-campaign>nrgCmpOffkWhDisc}" />
                         </um:Button>
                     </m:ScrollContainer>
                 </u:Tag>

@@ -28,7 +28,7 @@ sap.ui.define(
                     aContent = oScrollContainer.getContent();
                     if ((aContent !== undefined) && (aContent.length > 0)) {
                         sPath = aContent[0].getBindingContext("comp-campaign").getPath();
-                        aContent[0].addStyleClass("nrgCamHisBut-Selected");
+                        aContent[0].addStyleClass("nrgCamHis-but-selected");
                         that.getView().bindElement({
                             model : "comp-campaign",
                             path : sPath
@@ -56,11 +56,11 @@ sap.ui.define(
             aContent = oScrollContainer.getContent();
             aChildren = oEvent.getSource().getParent().findElements();
             for (i = 0; i < aChildren.length; i = i + 1) {
-                if (aChildren[i].hasStyleClass("nrgCamHisBut-Selected")) {
-                    aChildren[i].removeStyleClass("nrgCamHisBut-Selected");
+                if (aChildren[i].hasStyleClass("nrgCamHis-but-selected")) {
+                    aChildren[i].removeStyleClass("nrgCamHis-but-selected");
                 }
             }
-            oEvent.getSource().addStyleClass("nrgCamHisBut-Selected");
+            oEvent.getSource().addStyleClass("nrgCamHis-but-selected");
             sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
             this.getView().bindElement({
                 model : "comp-campaign",
