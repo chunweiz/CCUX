@@ -10,20 +10,24 @@
           width="100%"
           displayBlock="true">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
-      <u:Tag class="nrgCamSST">
-         <u:Tag class="nrgCamSSTtlT" text="{comp-i18n-campaign>nrgCmpSSTtl}" />
-            <l:MatrixLayout class="nrgCamSSMtx nrgCamSS-top">
+      <u:Tag class="nrgCamSS">
+         <u:Tag class="nrgCamSS-ttl" text="{comp-i18n-campaign>nrgCmpSSTtl}" />
+            <l:MatrixLayout class="nrgCamSS-mtx nrgCamSS-top">
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <c:Label id="idCamSSTtlLbl" text="{comp-i18n-campaign>nrgCmpSSTtllbl}" icon="sap-icon://nrg-icon/tag" class="nrgCamSS-lbl"  labelFor="idCamSSTtlTv"  />
+                        <c:Label text="{comp-i18n-campaign>nrgCmpSSTtllbl}"
+                                 icon="sap-icon://nrg-icon/tag"
+                                 class="nrgCamSS-lbl"
+                                 labelFor="idCamSSTtlTv"  />
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <u:TextView id="idCamSSTtlTv" text="CNP AVG@2000=11.3 Secure Advantage 24"
-                                                    class="nrgCamSS-left"
-                                                    color="DarkGrey"
-                                                    design="Base"/>
+                        <u:TextView id="idCamSSTtlTv"
+                                    text="CNP AVG@2000=11.3 Secure Advantage 24"
+                                    class="nrgCamSS-left"
+                                    color="DarkGrey"
+                                    design="Base"/>
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>
@@ -47,10 +51,9 @@
                 </u:Dropdown>
             </u:Tag>
             <u:Tag class="nrgCamSSDscT">
-                    <c:Label id="idCamSSMdLbl"
-                        text="{comp-i18n-campaign>nrgCmpSSMdlbl}"
-                        class="nrgCamSS-lbl nrgCamSS-top nrgCamSS-ManD"
-                        labelFor="idCamSSMdTv" />
+                    <c:Label text="{comp-i18n-campaign>nrgCmpSSMdlbl}"
+                             class="nrgCamSS-lbl nrgCamSS-top"
+                             labelFor="idCamSSMdTv" />
                     <u:TextView
                         id="idCamSSMdTv"
                         color="DarkGrey"
@@ -58,7 +61,7 @@
                         design="Base"
                         text="{comp-campaign>TxtLine}" />
             </u:Tag>
-            <u:Tag class="nrgCamSSDisRn">
+            <u:Tag>
                 <u:Dropdown
                             id="idnrgCamSSDisRn"
                             arrowcolor="Grey"
@@ -77,18 +80,18 @@
                     </u:DropdownListItems>
                 </u:Dropdown>
             </u:Tag>
-            <u:Tag class="nrgCamSSBtnT nrgCamSS-top" >
+            <u:Tag class="nrgCamSS-btnTag nrgCamSS-top" >
                 <u:Button
                     id="idnrgCamSSBtn-Ok"
                     text="{comp-i18n-campaign>nrgCmpSSBtnOk}"
                     enabled="true"
-                    class="nrgCamSSBtn">
+                    class="nrgCamSS-btn">
                 </u:Button>
                 <u:Button
                     id="idnrgCamSSBtn-Dec"
                     text="{comp-i18n-campaign>nrgCmpSSBtnDec}"
                     enabled="true"
-                    class="nrgCamSSBtn" >
+                    class="nrgCamSS-btn" >
                 </u:Button>
             </u:Tag>
       </u:Tag>
