@@ -69,10 +69,19 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
             oRm.write('<a');
             oRm.addClass('uteDD-value');
             oRm.write('>');
-            if (oDropdown.getValue() === '') {
+          /*  if (oDropdown.getValue() === '') {
                 oRm.writeEscaped(oDropdown.getTitle());
             } else {
                 oRm.writeEscaped(oDropdown.getValue());
+            }*/
+            if (oDropdown.getValue() === '') {
+                oRm.writeEscaped(oDropdown.getTitle());
+            } else {
+                var oItem1 = oDropdown.getDropdownListItems()[1];
+                 for (var j = 0; j < oItem1.getContent().length; j++) {
+                    var oContent = oItem1.getContent()[j];
+                    oRm.renderControl(oContent);
+                }
             }
             oRm.write('</a>');
             if (oDropdown.getEnabled()) {
@@ -81,6 +90,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
             oRm.addClass('uteDD-list');
 
             oRm.addStyle('top', this._calTop(oDropdown));
+            oRm.addStyle('overflow-x', 'hidden');
+                var height = oDropdown.getMaxItems();
+                 height = (height*100/3);
+                    var scrollHeight = (height.toString()).concat('px');
+                  oRm.addStyle('height', scrollHeight);
             oRm.writeStyles();
             if (oDropdown.getBorder() === 'All') {
                 oRm.addClass('uteDD-list-with-border');
@@ -130,7 +144,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
 
                 oRm.write('</li>');
             }
-                                                oRm.write("</ul>");
+            oRm.write("</ul>");
 
             }
             oRm.write("</ul>");

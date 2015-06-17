@@ -36,10 +36,6 @@
 
         <br/>
 
-        <um:TabPanel tabPanelFor="nrgTabBar">
-
-        </um:TabPanel>
-
         <um:TabBarItem group="grp001" key="tb001" press=".onPressed">
             <div>Service Address</div>
         </um:TabBarItem>
@@ -52,6 +48,23 @@
         <um:TabBarItem group="grp001" key="tb004" press=".onPressed">
             <div>Yet Another Address</div>
         </um:TabBarItem>
+
+        <br/>
+
+        <um:TabPanel tabPanelFor="nrgTabBar">
+            <um:TabPanelItem key="tb001">
+                <div>Panel for tb001</div>
+            </um:TabPanelItem>
+            <um:TabPanelItem key="tb002">
+                <div>Panel for tb002</div>
+            </um:TabPanelItem>
+            <um:TabPanelItem key="tb003">
+                <div>Panel for tb003</div>
+            </um:TabPanelItem>
+            <um:TabPanelItem key="tb004">
+                <div>Panel for tb004</div>
+            </um:TabPanelItem>
+        </um:TabPanel>
 
     </sm:ScrollContainer>
 </mvc:View>

@@ -3,18 +3,19 @@
 
 sap.ui.define(
     [
-        'sap/ui/core/Element'
+        'sap/ui/core/Control'
     ],
 
-    function (Element) {
+    function (Control) {
         'use strict';
 
-        var CustomElement = Element.extend('ute.ui.main.TabPanelItem', {
+        var CustomControl = Control.extend('ute.ui.main.TabPanelItem', {
             metadata: {
                 library: 'ute.ui.main',
 
                 properties: {
                     design: { type: 'ute.ui.main.TabPanelItemDesign', defaultValue: ute.ui.main.TabPanelItemDesign.Default },
+                    key: { type: 'string', defaultValue: null },
                     hidden: { type: 'boolean', defaultValue: true }
                 },
 
@@ -26,14 +27,18 @@ sap.ui.define(
             }
         });
 
-        CustomElement.prototype.setHidden = function (bValue) {
-
+        CustomControl.prototype.setHidden = function (bValue) {
+            if (bValue) {
+                this.$().addClass('uteMTabPanelItem-hidden');
+            } else {
+                this.$().removeClass('uteMTabPanelItem-hidden');
+            }
 
             this.setProperty('hidden', bValue);
             return this;
         };
 
-        return CustomElement;
+        return CustomControl;
     },
 
     true

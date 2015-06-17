@@ -18,13 +18,13 @@
         </style>
 
            <script id="sap-ui-bootstrap"
-                                    src="../../../../../../ZE_CCUX_LIB/bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
+                                    src="../../../../../../ZELIB/bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
                                     data-sap-ui-libs="ute.ui.commons,sap.ui.commons,sap.ui.layout"
                                     data-sap-ui-resourceroots='{
-                "ute.ui.commons": "/ZE_CCUX_CTRL/build/ute/ui/commons",
+                "ute.ui.commons": "/ZECTRL_COMMONS/build/ute/ui/commons",
                 "nb.control.lib.ui": "/ZE_CCUX_TEST/test/nb/control/lib/ui",
-                "sap.ui.commons":"/ZE_CCUX_LIB/bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
-                "sap.ui.layout":"/ZE_CCUX_LIB/bower_components/openui5-sap.ui.layout/resources/sap/ui/layout"
+                "sap.ui.commons":"/ZELIB/bower_components/openui5-sap.ui.commons/resources/sap/ui/commons",
+                "sap.ui.layout":"/ZELIB/bower_components/openui5-sap.ui.layout/resources/sap/ui/layout"
                 }'>
                                 </script>
 
@@ -40,7 +40,7 @@
                 displayBlock="true">
 
 
-  <nb:Dropdown  arrowcolor="Blue" arrowType="Solid" enabled="true" background="Transparent" border="Bottom"  width="200px" padding="20px" DropdownListItems="{/myData}">
+  <nb:Dropdown  arrowcolor="Blue" arrowType="Hollow" enabled="true" background="Transparent" border="All"  width="200px" padding="20px" maxItems="6" DropdownListItems="{/myData}">
 <nb:DropdownListItems>
 <nb:DropdownListItem key="{lastName}">
                         <sap:Label text="{firstName}"/>
@@ -68,6 +68,18 @@
                     .setModel(new sap.ui.model.json.JSONModel({
                         myData: [
                             { firstName: 'tau ming', lastName: 'hew' },
+                            { firstName: 'hung ju', lastName: 'lin' },
+                            { firstName: 'navya', lastName: 'basavaraju' },
+                             { firstName: 'tau ming', lastName: 'hew' },
+                            { firstName: 'hung ju', lastName: 'lin' },
+                            { firstName: 'navya', lastName: 'basavaraju' },
+                             { firstName: 'tau ming', lastName: 'hew' },
+                            { firstName: 'hung ju', lastName: 'lin' },
+                            { firstName: 'navya', lastName: 'basavaraju' },
+                             { firstName: 'tau ming', lastName: 'hew' },
+                            { firstName: 'hung ju', lastName: 'lin' },
+                            { firstName: 'navya', lastName: 'basavaraju' },
+                             { firstName: 'tau ming', lastName: 'hew' },
                             { firstName: 'hung ju', lastName: 'lin' },
                             { firstName: 'navya', lastName: 'basavaraju' }
                         ]
