@@ -16,7 +16,7 @@
             }
         </style>
 
-        <um:TabBar design="Invert" select=".onSelected">
+        <um:TabBar id="nrgTabBar" design="Invert" select=".onSelected">
             <um:TabBarItem design="Invert" key="tb001" press=".onPressed">
                 <div>Service Address</div>
             </um:TabBarItem>
@@ -35,6 +35,10 @@
         </um:TabBar>
 
         <br/>
+
+        <um:TabPanel tabPanelFor="nrgTabBar">
+
+        </um:TabPanel>
 
         <um:TabBarItem group="grp001" key="tb001" press=".onPressed">
             <div>Service Address</div>

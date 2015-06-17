@@ -29,14 +29,15 @@ sap.ui.define(
 				'ute.ui.main.TabBar',
 				'ute.ui.main.TabBarItem',
                 'ute.ui.main.TabPanel',
-                'ute.ui.main.TabPanelItem',
                 'ute.ui.main.Label',
                 'ute.ui.main.Checkbox',
                 'ute.ui.main.RadioButton',
                 'ute.ui.main.Infoline'
 			],
 
-			elements: [],
+			elements: [
+                'ute.ui.main.TabPanelItem'
+            ],
 
             interfaces: []
         });
