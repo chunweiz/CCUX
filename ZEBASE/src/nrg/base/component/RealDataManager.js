@@ -36,7 +36,7 @@ sap.ui.define(
                     oData = oModule[sModule].odata || {};
                     oDataReal = oData.real || {};
 
-                    if (oModule[sModule].data) {
+                    if (oModule[sModule].odata) {
                         this._addModuleODataModels(oDataReal);
                     }
                 }

@@ -51,7 +51,7 @@ sap.ui.define(
                 return;
             }
 
-            this.setSelected(true);
+            this.setChecked(true);
 
             this.fireSelect({
                 checked: this.getChecked()
