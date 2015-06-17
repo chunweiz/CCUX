@@ -28,7 +28,7 @@ sap.ui.define(
         });
 
         CustomControl.prototype.setHidden = function (bValue) {
-            if(bValue) {
+            if (bValue) {
                 this.$().addClass('uteMTabPanelItem-hidden');
             } else {
                 this.$().removeClass('uteMTabPanelItem-hidden');
