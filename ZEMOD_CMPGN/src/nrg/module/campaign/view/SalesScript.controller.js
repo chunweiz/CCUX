@@ -15,7 +15,7 @@ sap.ui.define(
         var Controller = CoreController.extend('nrg.module.campaign.view.SalesScript');
 
         /* =========================================================== */
-		/* lifecycle method- Init                                     */
+		/* lifecycle method- Init                                      */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
             this.getOwnerComponent().getRouter().getRoute("campaignSS").attachPatternMatched(this._onObjectMatched, this);
@@ -23,7 +23,7 @@ sap.ui.define(
         };
 
         /* =========================================================== */
-		/* lifecycle method- After Rendering                          */
+		/* lifecycle method- After Rendering                           */
 		/* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
         };
