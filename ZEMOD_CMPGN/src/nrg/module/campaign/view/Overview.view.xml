@@ -20,7 +20,7 @@
                            text="{Overview-elig>Notitle}"
                            class="nrgCamOvr-offerBtn"
                            design="None"
-                           disabled="{= ${Overview-elig>CustEligFlag} === '' }">
+                           enabled="{= ${Overview-elig>CustEligFlag} !== '' }">
                     <u:Tag class="nrgCamOvr-offerBtnTitle"
                            text="{comp-i18n-appFtr>nrgAppFooterCustReqOffer}" />
                     <u:Tag id="idCamCustReqOffer"
@@ -36,7 +36,7 @@
                            text="{Overview-elig>Notitle}"
                            class="nrgCamOvr-offerBtn"
                            design="None"
-                           disabled="{= ${Overview-elig>AgntEligFlag} === '' }">
+                           enabled="{= ${Overview-elig>AgntEligFlag} !== '' }">
                     <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n-appFtr>nrgAppFooterAgentReqOffer}" />
                     <u:Tag id="idCamAgentReqOffer" class="nrgCamOvr-offerBtnDesc"
                            text="{= ${Overview-elig>AgntEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
@@ -48,15 +48,11 @@
                     </u:Tag>
                 </um:button>
             </article>
-            <u:Tag class="nrgCamOvr-left nrgCamOvr-top"
-                   id="idnrgCamToggleT">
-                <um:Button id="idCamToggleBtn"
-                           press=".toggleCampaign"
-                           text="{comp-campaign>label}"
-                           class="nrgCamOvr-offerBtn"
-                           design="Default">
-                </um:button>
-            </u:Tag>
+            <um:TabBar id="idnrgCamOvr-TabBar" design="None">
+                <um:TabBarItem design="Default" key="tb001" press=".toggleCampaign" >
+                    <u:Tag text="{comp-campaign>Type}" />
+                </um:TabBarItem>
+            </um:TabBar>
             <l:MatrixLayout class="nrgCamOvrMtx nrgCamOvr-top">
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
