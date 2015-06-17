@@ -19,7 +19,7 @@ sap.ui.define(
                     design: { type: 'ute.ui.main.RadioButtonDesign', defaultValue: ute.ui.main.RadioButtonDesign.Default },
                     name: { type: 'string', defaultValue: null },
                     checked: { type: 'boolean', defaultValue: false },
-                    disabled: { type: 'boolean', defaultValue: false }
+                    enabled: { type: 'boolean', defaultValue: true }
                 },
 
                 events: {
@@ -70,16 +70,16 @@ sap.ui.define(
             return this;
         };
 
-        CustomControl.prototype.setDisabled = function (bValue) {
+        CustomControl.prototype.setEnabled = function (bValue) {
             bValue = !!bValue;
 
-            if (this.getDisabled() === bValue) {
+            if (this.getEnabled() === bValue) {
                 return this;
             }
 
-            this.$('.uteMRb-intRb').prop('disabled', bValue);
+            this.$('.uteMRb-intRb').prop('disabled', !bValue);
 
-            this.setProperty('disabled', bValue, true);
+            this.setProperty('enabled', bValue, true);
             return this;
         };
 
