@@ -83,6 +83,10 @@ sap.ui.define(
 
                     alert(oEvent.target.innerHTML);
 
+            var opt = $(this);
+             //this.setValue(oEvent.target.innerHTML);
+             $(this).parents('.uteMDd').find('.uteMDd-hdrContent').html(opt.html());
+
             });
 
 
