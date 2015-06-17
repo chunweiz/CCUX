@@ -14,10 +14,24 @@ sap.ui.define(
                 library: 'ute.ui.main',
 
                 properties: {
-                    design: { type: 'ute.ui.main.TabPanelItemDesign', defaultValue: ute.ui.main.TabPanelItemDesign.Default }
-                }
+                    design: { type: 'ute.ui.main.TabPanelItemDesign', defaultValue: ute.ui.main.TabPanelItemDesign.Default },
+                    hidden: { type: 'boolean', defaultValue: true }
+                },
+
+                aggregations: {
+                    content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' }
+                },
+
+                defaultAggregation: 'content'
             }
         });
+
+        CustomElement.prototype.setHidden = function (bValue) {
+
+
+            this.setProperty('hidden', bValue);
+            return this;
+        };
 
         return CustomElement;
     },
