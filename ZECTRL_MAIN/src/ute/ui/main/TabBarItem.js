@@ -71,14 +71,14 @@ sap.ui.define(
                 return this;
             }
 
-            this.$('.uteMTabItem-int').prop('checked', bSelected);
+            this.$('.uteMTabBarItem-int').prop('checked', bSelected);
 
             this.setProperty('selected', bSelected);
             return this;
         };
 
         CustomControl.prototype.setEnabled = function (bEnabled) {
-            this.$('.uteMTabItem-int').prop('disabled', bEnabled);
+            this.$('.uteMTabBarItem-int').prop('disabled', bEnabled);
             this.setProperty('enabled', bEnabled);
             return this;
         };

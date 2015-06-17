@@ -21,7 +21,11 @@ sap.ui.define(
                     content: { type: 'ute.ui.main.TabPanelItem', multiple: true, singularName: 'content' }
                 },
 
-                defaultAggregation: 'content'
+                defaultAggregation: 'content',
+
+                associations: {
+                    tabPanelFor: { type: 'ute.ui.main.TabBar', multiple: false }
+                }
             }
         });
 
