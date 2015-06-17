@@ -11,8 +11,30 @@
 
     <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
         <style>
+            .custom {
 
+            }
         </style>
+
+        <um:TabBar design="Invert" select=".onSelected">
+            <um:TabBarItem design="Invert" key="tb001" press=".onPressed">
+                <div>Service Address</div>
+            </um:TabBarItem>
+            <br/>
+            <um:TabBarItem design="Invert" key="tb002" press=".onPressed" selected="true">
+                <div>Mailing Address</div>
+            </um:TabBarItem>
+            <br/>
+            <um:TabBarItem design="Invert" key="tb003" press=".onPressed">
+                <div>New Address</div>
+            </um:TabBarItem>
+            <br/>
+            <um:TabBarItem design="Invert" key="tb004" press=".onPressed">
+                <div>Yet Another Address</div>
+            </um:TabBarItem>
+        </um:TabBar>
+
+        <br/>
 
         <um:TabBarItem group="grp001" key="tb001" press=".onPressed">
             <div>Service Address</div>
@@ -24,21 +46,6 @@
             <div>New Address</div>
         </um:TabBarItem>
         <um:TabBarItem group="grp001" key="tb004" press=".onPressed">
-            <div>Yet Another Address</div>
-        </um:TabBarItem>
-
-        <br/>
-
-        <um:TabBarItem design="Invert" group="grp002" key="tb001" press=".onPressed">
-            <div>Service Address</div>
-        </um:TabBarItem>
-        <um:TabBarItem design="Invert" group="grp002" key="tb002" press=".onPressed" selected="true">
-            <div>Mailing Address</div>
-        </um:TabBarItem>
-        <um:TabBarItem design="Invert" group="grp002" key="tb003" press=".onPressed">
-            <div>New Address</div>
-        </um:TabBarItem>
-        <um:TabBarItem design="Invert" group="grp002" key="tb004" press=".onPressed">
             <div>Yet Another Address</div>
         </um:TabBarItem>
 

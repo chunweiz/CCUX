@@ -15,6 +15,7 @@ sap.ui.define(
 
 			types: [
                 'ute.ui.main.ButtonDesign',
+                'ute.ui.main.TabBarDesign',
                 'ute.ui.main.TabBarItemDesign',
                 'ute.ui.main.TabPanelDesign',
                 'ute.ui.main.TabPanelItemDesign',
@@ -25,6 +26,7 @@ sap.ui.define(
 
 			controls: [
 				'ute.ui.main.Button',
+				'ute.ui.main.TabBar',
 				'ute.ui.main.TabBarItem',
                 'ute.ui.main.TabPanel',
                 'ute.ui.main.TabPanelItem',
@@ -46,11 +48,13 @@ sap.ui.define(
             Invert: 'Invert'
         };
 
-        ute.ui.main.TabBarItemDesign = {
+        ute.ui.main.TabBarDesign = {
             None: 'None',
             Default: 'Default',
             Invert: 'Invert'
         };
+
+        ute.ui.main.TabBarItemDesign = ute.ui.main.TabBarDesign;
 
         ute.ui.main.TabPanelDesign = {
             None: 'None',
