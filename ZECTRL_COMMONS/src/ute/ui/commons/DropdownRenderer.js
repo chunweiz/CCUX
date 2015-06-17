@@ -6,7 +6,9 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
         var DropdownRenderer = {},
             i,
             j,
-            oContent;
+            oContent,
+            height,
+            scrollHeight;
 
         DropdownRenderer.render = function (oRm, oDropdown) {
 
@@ -84,6 +86,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
                 oRm.addClass('uteDD-list');
 
                 oRm.addStyle('top', this.calTop(oDropdown));
+                oRm.addStyle('overflow-x', 'hidden');
+                height = oDropdown.getMaxItems();
+                height = (height * 100 / 2) - 50;
+                scrollHeight = (height.toString()).concat('px');
+                oRm.addStyle('height', scrollHeight);
                 oRm.writeStyles();
                 if (oDropdown.getBorder() === 'All') {
                     oRm.addClass('uteDD-list-with-border');

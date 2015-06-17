@@ -1,4 +1,5 @@
 /*global sap*/
+/*global $*/
 /*jslint nomen:true*/
 
 
@@ -70,6 +71,13 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                         type : 'ute.ui.commons.DropdownBorder',
                         group : 'Appearance',
                         defaultValue : 'All'
+                    },
+                     /*Maximum items displayed */
+                    maxItems : {
+                        type : 'int',
+                        group : 'Dimension',
+                        defaultValue: 5
+
                     }
                 },
 
@@ -95,7 +103,9 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 }
         });
 
-
+  /*  Dropdown.prototype.init = function () {
+      oDropdown.getMaxItems()
+    }*/
     Dropdown.prototype.onclick = function (oEvent) {
 
         var obj = this;
