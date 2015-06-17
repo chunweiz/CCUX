@@ -36,6 +36,21 @@
 
         <br/>
 
+        <um:TabBarItem group="grp001" key="tb001" press=".onPressed">
+            <div>Service Address</div>
+        </um:TabBarItem>
+        <um:TabBarItem group="grp001" key="tb002" press=".onPressed" selected="true">
+            <div>Mailing Address</div>
+        </um:TabBarItem>
+        <um:TabBarItem group="grp001" key="tb003" press=".onPressed">
+            <div>New Address</div>
+        </um:TabBarItem>
+        <um:TabBarItem group="grp001" key="tb004" press=".onPressed">
+            <div>Yet Another Address</div>
+        </um:TabBarItem>
+
+        <br/>
+
         <um:TabPanel tabPanelFor="nrgTabBar">
             <um:TabPanelItem key="tb001">
                 <div>Panel for tb001</div>
@@ -50,21 +65,6 @@
                 <div>Panel for tb004</div>
             </um:TabPanelItem>
         </um:TabPanel>
-
-        <br/>
-
-        <um:TabBarItem group="grp001" key="tb001" press=".onPressed">
-            <div>Service Address</div>
-        </um:TabBarItem>
-        <um:TabBarItem group="grp001" key="tb002" press=".onPressed" selected="true">
-            <div>Mailing Address</div>
-        </um:TabBarItem>
-        <um:TabBarItem group="grp001" key="tb003" press=".onPressed">
-            <div>New Address</div>
-        </um:TabBarItem>
-        <um:TabBarItem group="grp001" key="tb004" press=".onPressed">
-            <div>Yet Another Address</div>
-        </um:TabBarItem>
 
     </sm:ScrollContainer>
 </mvc:View>
