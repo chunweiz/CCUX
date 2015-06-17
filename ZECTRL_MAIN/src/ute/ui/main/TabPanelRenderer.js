@@ -32,23 +32,23 @@ sap.ui.define(
             if (oCustomControl.getTabPanelFor()) {
                 oTabBar = sap.ui.getCore().byId(oCustomControl.getTabPanelFor());
                 if (oTabBar) {
+                    // Get selected key from tab bar
                     sTabBarSelectedKey = this._getSelectedKeyFromTabBar(oTabBar);
+
+                    // Listen to select event from tab bar
+                    oTabBar.attachSelect(jQuery.proxy(oCustomControl._onTabBarSelected), oCustomControl);
                 }
             }
 
             aContent = oCustomControl.getContent() || [];
 
             aContent.forEach(function (oContent) {
-                oRm.write('<div');
-                oRm.addClass();
-
                 if (sTabBarSelectedKey && oContent.getKey() === sTabBarSelectedKey) {
-
+                    oContent.setHidden(false);
                 }
 
-                oRm.write('>');
-
                 oRm.renderControl(oContent);
+
             }.bind(this));
         };
 

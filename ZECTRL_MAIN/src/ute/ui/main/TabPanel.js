@@ -29,6 +29,21 @@ sap.ui.define(
             }
         });
 
+        CustomControl.prototype._onTabBarSelected = function (oControlEvent) {
+            var sSelectedKey, aContent;
+
+            sSelectedKey = oControlEvent.getParameter('selectedKey');
+            aContent = this.getContent() || [];
+
+            aContent.forEach(function (oContent) {
+                if (oContent.getKey() === sSelectedKey) {
+                    oContent.setHidden(false);
+                } else {
+                    oContent.setHidden(true);
+                }
+            });
+        };
+
         return CustomControl;
     },
 
