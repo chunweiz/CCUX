@@ -48,7 +48,7 @@ sap.ui.define(
 
             for (sDataReal in oDataReal) {
                 if (oDataReal.hasOwnProperty(sDataReal)) {
-                    oModel = new ODataModel(oDataReal[sDataReal], true);
+                    oModel = new ODataModel(oDataReal[sDataReal].url, true);
                     this._oComponent.setModel(oModel, sDataReal);
                 }
             }

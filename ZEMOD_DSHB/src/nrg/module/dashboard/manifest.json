@@ -14,7 +14,7 @@
                     "odata": {
                         "real": {
                             "comp-dashboard": {
-                                "url": "../../../../../../../../../opu/odata/sap/ZE_CCUX_SRV/BpSearchs/"
+                                "url": "../../../../../../../../opu/odata/sap/ZE_CCUX_SRV/"
                             }
                         },
                         "mock": {
