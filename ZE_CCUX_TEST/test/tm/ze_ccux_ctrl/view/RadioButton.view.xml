@@ -41,8 +41,8 @@
 
 
 
-            <um:RadioButton disabled="true" /><br/>
-            <um:RadioButton disabled="true" checked="true" /><br/>
+            <um:RadioButton enabled="false" /><br/>
+            <um:RadioButton enabled="false" checked="true" /><br/>
         </div>
 
         <sm:RadioButton />
