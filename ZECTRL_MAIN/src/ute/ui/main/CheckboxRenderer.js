@@ -35,7 +35,7 @@ sap.ui.define(
                 oRm.writeAttribute('checked', 'checked');
             }
 
-            if (oCustomControl.getDisabled()) {
+            if (!oCustomControl.getEnabled()) {
                 oRm.writeAttribute('disabled', 'disabled');
             }
 
