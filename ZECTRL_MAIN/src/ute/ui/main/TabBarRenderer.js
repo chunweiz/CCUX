@@ -32,17 +32,12 @@ sap.ui.define(
             var aContent = oCustomControl.getContent() || [];
 
             aContent.forEach(function (oContent) {
-                oRm.write('<span');
-                oRm.addClass('uteMTabBar-item');
-                oRm.writeClasses();
-                oRm.write('>');
-
-                oContent.setGroup(oCustomControl.getId() + '--grp');
-                oCustomControl._attachItemPress(oContent);
+                if (oContent instanceof ute.ui.main.TabBarItem) {
+                    oContent.setGroup(oCustomControl.getId() + '--grp');
+                    oCustomControl._attachItemPress(oContent);
+                }
 
                 oRm.renderControl(oContent);
-
-                oRm.write('</span>');
             });
         };
 

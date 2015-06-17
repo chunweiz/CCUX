@@ -19,7 +19,7 @@ sap.ui.define(
                 },
 
                 aggregations: {
-                    content: { type: 'ute.ui.main.TabBarItem', multiple: true, singularName: 'content' }
+                    content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' }
                 },
 
                 defaultAggregation: 'content',
