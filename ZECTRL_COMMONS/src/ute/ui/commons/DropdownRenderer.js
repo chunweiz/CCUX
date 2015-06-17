@@ -88,7 +88,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
                 oRm.addStyle('top', this.calTop(oDropdown));
                 oRm.addStyle('overflow-x', 'hidden');
                 height = oDropdown.getMaxItems();
-                height = (height * 100 / 2) - 50;
+                height = (height*100/3);
                 scrollHeight = (height.toString()).concat('px');
                 oRm.addStyle('height', scrollHeight);
                 oRm.writeStyles();
