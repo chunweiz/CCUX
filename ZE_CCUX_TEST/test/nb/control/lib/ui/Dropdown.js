@@ -70,6 +70,12 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                         type : 'nb.control.lib.ui.DropdownBorder',
                         group : 'Appearance',
                         defaultValue : 'All'
+                    },
+                       maxItems : {
+                        type : 'int',
+                        group : 'Dimension',
+                           default: 5
+
                     }
                 },
 
@@ -120,6 +126,16 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
             oEvent.stopPropagation();      */
         }
     };
+
+    $(window).on("load resize",function() {
+    var winHeight = $(window).height();
+   /* $('#scrollerCa').css({
+        'max-height' : (winHeight)-100 + "px",
+        'overflow-y' : "auto",
+        'overflow-x' : "hidden",
+    });*/
+        alert(winHeight);
+});
 
     return Dropdown;
 },

@@ -96,7 +96,7 @@
 
     /* Styles */
     font-family: "Source Sans Pro", sans-serif;
-    font-weight: 400;
+    font-weight: 200;
     font-size: 14pt;
 
     /* Hiding */
@@ -119,6 +119,7 @@
 
      .uteDD .uteDD-list li{
          display: block; /*To hide the bullets on items*/
+         margin: -10px;
 
     }
 
@@ -150,6 +151,11 @@
     .uteDD.active .uteDD-list {
     opacity: 1;
     pointer-events: auto;
+        overflow-x: hidden;
+  /* overflow-y: scroll; */
+  height: 100px;
+        float: left;
+        display: block;
     }
 
    .uteDD-value {
@@ -166,7 +172,7 @@
     border: 0;
     font-family: @uteFontFamily;
     font-size: @uteFontSize-small;
-    //height: 27px;
+    /*height: 27px;*/
     box-sizing: border-box;
 
 
