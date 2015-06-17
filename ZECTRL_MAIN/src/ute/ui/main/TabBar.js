@@ -27,7 +27,7 @@ sap.ui.define(
                 events: {
                     select: {
                         parameters: {
-                            selectedKey: { type: 'string' }
+                            selectedItem: { type: 'ute.ui.main.TabBarItem' }
                         }
                     }
                 }
@@ -40,7 +40,7 @@ sap.ui.define(
 
         CustomControl.prototype._onItemPress = function (oControlEvent) {
             this.fireSelect({
-                selectedKey: oControlEvent.getSource().getKey()
+                selectedItem: oControlEvent.getSource()
             });
         };
 
