@@ -14,19 +14,33 @@
 
         </style>
 
-        <um:TabBarItem name="grp001" key="tb001" press=".onPressed">
+        <um:TabBarItem group="grp001" key="tb001" press=".onPressed">
             <div>Service Address</div>
         </um:TabBarItem>
-        <um:TabBarItem name="grp001" key="tb002" press=".onPressed" selected="true">
+        <um:TabBarItem group="grp001" key="tb002" press=".onPressed" selected="true">
             <div>Mailing Address</div>
         </um:TabBarItem>
-        <um:TabBarItem name="grp001" key="tb003" press=".onPressed">
+        <um:TabBarItem group="grp001" key="tb003" press=".onPressed">
             <div>New Address</div>
         </um:TabBarItem>
-        <um:TabBarItem name="grp001" key="tb004" press=".onPressed">
+        <um:TabBarItem group="grp001" key="tb004" press=".onPressed">
             <div>Yet Another Address</div>
         </um:TabBarItem>
 
+        <br/>
+
+        <um:TabBarItem design="Invert" group="grp002" key="tb001" press=".onPressed">
+            <div>Service Address</div>
+        </um:TabBarItem>
+        <um:TabBarItem design="Invert" group="grp002" key="tb002" press=".onPressed" selected="true">
+            <div>Mailing Address</div>
+        </um:TabBarItem>
+        <um:TabBarItem design="Invert" group="grp002" key="tb003" press=".onPressed">
+            <div>New Address</div>
+        </um:TabBarItem>
+        <um:TabBarItem design="Invert" group="grp002" key="tb004" press=".onPressed">
+            <div>Yet Another Address</div>
+        </um:TabBarItem>
 
     </sm:ScrollContainer>
 </mvc:View>

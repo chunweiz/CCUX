@@ -18,7 +18,7 @@ sap.ui.define(
                 properties: {
                     design: { type: 'ute.ui.main.TabBarItemDesign', defaultValue: ute.ui.main.TabBarItemDesign.Default },
                     key: { type: 'string', defaultValue: null },
-                    name: { type: 'string', defaultValue: null },
+                    group: { type: 'string', defaultValue: null },
                     selected: { type: 'boolean', defaultValue: false },
                     enabled: { type: 'boolean', defaultValue: true }
                 },

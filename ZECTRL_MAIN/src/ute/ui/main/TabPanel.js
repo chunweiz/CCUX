@@ -9,16 +9,16 @@ sap.ui.define(
     function (Control) {
         'use strict';
 
-        var CustomControl = Control.extend('ute.ui.main.TabBar', {
+        var CustomControl = Control.extend('ute.ui.main.TabPanel', {
             metadata: {
                 library: 'ute.ui.main',
 
                 properties: {
-                    design: { type: 'ute.ui.main.TabBarDesign', defaultValue: ute.ui.main.TabBarDesign.Default }
+                    design: { type: 'ute.ui.main.TabPanelDesign', defaultValue: ute.ui.main.TabPanelDesign.Default }
                 },
 
                 aggregations: {
-                    content: { type: 'ute.ui.main.TabBarItem', multiple: true, singularName: 'content' }
+                    content: { type: 'ute.ui.main.TabPanelItem', multiple: true, singularName: 'content' }
                 },
 
                 defaultAggregation: 'content'

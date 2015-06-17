@@ -14,7 +14,7 @@ sap.ui.define(
             oRm.writeControlData(oCustomControl);
             oRm.addClass('uteMTabItem');
 
-            if (oCustomControl.getDesign() !== ute.ui.main.TabBar.None) {
+            if (oCustomControl.getDesign() !== ute.ui.main.TabBarItem.None) {
                 oRm.addClass('uteMTabItem-design-' + oCustomControl.getDesign().toLowerCase());
             }
 
@@ -27,8 +27,8 @@ sap.ui.define(
             oRm.write('<input type="radio"');
             oRm.writeAttribute('id', oCustomControl.getId() + '-int');
 
-            if (oCustomControl.getName()) {
-                oRm.writeAttributeEscaped('name', oCustomControl.getName());
+            if (oCustomControl.getGroup()) {
+                oRm.writeAttributeEscaped('name', oCustomControl.getGroup());
             }
 
             if (oCustomControl.getSelected()) {
