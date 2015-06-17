@@ -27,7 +27,7 @@ sap.ui.define(
 		/* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
             var aContent, obinding, sPath, that = this,
-                aToggleContainer = this.getView().byId("idnrgCamToggleT"),
+                aToggleContainer = this.getView().byId("idnrgCamOvr-TabBar"),
                 handler = function () {
                     aContent = aToggleContainer.getContent();
                     if ((aContent !== undefined) && (aContent.length > 0)) {
@@ -57,13 +57,15 @@ sap.ui.define(
                 mParameters,
                 oToggleContainer,
                 oToggleTemplate,
+                aContent,
                 aFilters = this._createSearchFilterObject("1121", "Y");
 
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
             sEligibilityPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgEligibilitySet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
-            oToggleContainer = this.getView().byId("idnrgCamToggleT");
-            oToggleTemplate = this.getView().byId("idCamToggleBtn").clone();
+            oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar");
+            aContent = oToggleContainer.getContent();
+            oToggleTemplate = aContent[0];
             mParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,
