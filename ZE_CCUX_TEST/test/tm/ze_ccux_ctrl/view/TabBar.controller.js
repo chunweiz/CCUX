@@ -1,4 +1,4 @@
-/*global sap*/
+/*global sap, ute*/
 
 sap.ui.define(
     [
@@ -12,13 +12,17 @@ sap.ui.define(
         var CustomController = Controller.extend('test.tm.ze_ccux_ctrl.view.TabBar');
 
         CustomController.prototype.onPressed = function (oControlEvent) {
-            console.log("onPressed");
-            console.log(oControlEvent.getParameter('selectedKey'));
+            console.log("onPressed ... " + oControlEvent.getSource().getSelected());
         };
 
         CustomController.prototype.onSelected = function (oControlEvent) {
-            console.log("onSelected");
-            console.log(oControlEvent.getParameter('selectedKey'));
+            var aContent = oControlEvent.getSource().getContent();
+
+            aContent.forEach(function (oContent) {
+                if (oContent instanceof ute.ui.main.TabBarItem) {
+                    console.log(oContent.getId() + ' ... ' + oContent.getSelected());
+                }
+            });
         };
 
         return CustomController;
