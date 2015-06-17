@@ -18,6 +18,7 @@ sap.ui.define(
                         type: 'string',
                         defaultValue: null
                     }
+
                 },
 
                 defaultAggregation: 'content',
