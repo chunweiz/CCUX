@@ -38,13 +38,13 @@
                             arrowType="Hollow"
                             enabled="true"
                             background="Transparent"
-                            title="{comp-campaign>TxtLang}"
+                            title="Language"
                             border="Bottom"
                             width="100px"
                             padding="5px"
                             DropdownListItems="{comp-campaign>/languageData}">
                     <u:DropdownListItems>
-                        <u:DropdownListItem key="{comp-campaign>TxtLang}">
+                        <u:DropdownListItem id="idnrgCamSSLngLtIt" key="{comp-campaign>TxtLang}">
                             <c:Label text="{comp-campaign>TxtLang}"/>
                         </u:DropdownListItem>
                     </u:DropdownListItems>
@@ -61,25 +61,6 @@
                         design="Base"
                         text="{comp-campaign>TxtLine}" />
             </u:Tag>
-            <u:Tag>
-                <u:Dropdown
-                            id="idnrgCamSSDisRn"
-                            arrowcolor="Grey"
-                            arrowType="Hollow"
-                            enabled="true"
-                            background="Transparent"
-                            border="Bottom"
-                            title="{comp-campaign>/dispoistionData/0/Reason}"
-                            width="300px"
-                            padding="5px"
-                            DropdownListItems="{comp-campaign>/dispoistionData}">
-                    <u:DropdownListItems>
-                        <u:DropdownListItem key="{comp-campaign>Reason}">
-                            <c:Label text="{comp-campaign>Reason}"/>
-                        </u:DropdownListItem>
-                    </u:DropdownListItems>
-                </u:Dropdown>
-            </u:Tag>
             <u:Tag class="nrgCamSS-btnTag nrgCamSS-top" >
                 <u:Button
                     id="idnrgCamSSBtn-Ok"
@@ -87,12 +68,24 @@
                     enabled="true"
                     class="nrgCamSS-btn">
                 </u:Button>
-                <u:Button
-                    id="idnrgCamSSBtn-Dec"
-                    text="{comp-i18n-campaign>nrgCmpSSBtnDec}"
-                    enabled="true"
-                    class="nrgCamSS-btn" >
-                </u:Button>
+                <u:Dropdown
+                            id="idnrgCamSSDisRn"
+                            class="nrgCamSS-DisRn"
+                            arrowcolor="Grey"
+                            arrowType="Hollow"
+                            enabled="true"
+                            title="Select"
+                            background="Transparent"
+                            border="Bottom"
+                            width="300px"
+                            padding="5px"
+                            DropdownListItems="{comp-campaign>/RejectionReasonS}">
+                    <u:DropdownListItems>
+                        <u:DropdownListItem key="{comp-campaign>RejectionCode}">
+                            <c:Label text="{comp-campaign>Description}"/>
+                        </u:DropdownListItem>
+                    </u:DropdownListItems>
+                </u:Dropdown>
             </u:Tag>
       </u:Tag>
    </u:Tag>
