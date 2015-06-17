@@ -47,11 +47,12 @@ sap.ui.define(
         };
 
         CustomControl.prototype.onchange = function (oEvent) {
-            if (this.getDisabled()) {
+            if (!this.getEnabled()) {
                 return;
             }
 
-            this.setChecked(!this.getChecked());
+            this.setSelected(true);
+
             this.fireSelect({
                 checked: this.getChecked()
             });

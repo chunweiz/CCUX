@@ -58,7 +58,8 @@ sap.ui.define(
                 return;
             }
 
-            this.setSelected(!this.getSelected());
+            this.setSelected(true);
+
             this.firePress({
                 selectedKey: this.getKey()
             });
