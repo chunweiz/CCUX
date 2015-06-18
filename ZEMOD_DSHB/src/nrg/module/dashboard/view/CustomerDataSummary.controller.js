@@ -16,8 +16,13 @@ sap.ui.define(
 
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
+
             //Model to keep information to show
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryBpInf');
+
+            //Model to leep segmentation information
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryBpSegInf');
+
 
             this._initRetrBpInf();
 
@@ -31,6 +36,16 @@ sap.ui.define(
             sPath = 'Buag(\'' + aSplitHash[iSplitHashL - 1] + '\')';
 
             this._retrBpInf(sPath);
+        };
+
+        Controller.prototype._initRetrBpSegInf = function () {
+            var sPath, aSplitHash, iSplitHashL;
+
+            aSplitHash = (this._retrUrlHash()).split('/');
+            iSplitHashL = aSplitHash.length;
+            sPath = 'Buag(\'' + aSplitHash[iSplitHashL - 1] + '\')';
+
+            this._retrBpSegInf(sPath);
         };
 
         Controller.prototype._retrUrlHash = function () {
@@ -49,6 +64,26 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData.results) {
                         this.getView().getModel('oSmryBpInf').setData(oData.results);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrBpSegInf = function (sPath) {
+            var oModel = this.getView().getModel('oSearchBpODataModel'),
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData.results) {
+                        this.getView().getModel('oSmryBpSegInf').setData(oData.results);
                     }
                 }.bind(this),
                 error: function (oError) {
