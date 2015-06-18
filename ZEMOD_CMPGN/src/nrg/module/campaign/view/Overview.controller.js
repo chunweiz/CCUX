@@ -32,6 +32,7 @@ sap.ui.define(
                     aContent = aToggleContainer.getContent();
                     if ((aContent !== undefined) && (aContent.length > 0)) {
                         sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                        aContent[0].setSelected(true);
                        // aContent[0].addStyleClass("nrgCamHisBut-Selected");
                         that.getView().bindElement({
                             model : "comp-campaign",
@@ -65,7 +66,7 @@ sap.ui.define(
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar");
             aContent = oToggleContainer.getContent();
-            oToggleTemplate = aContent[0];
+            oToggleTemplate = aContent[0].clone();
             mParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,
@@ -151,6 +152,24 @@ sap.ui.define(
         Controller.prototype.onOffers = function (oEvent) {
 
             this.navTo("campaignoffers", {coNum: "123"});
+        };
+        /**
+		 * Formats the Type value to display "Current Campaign" or "Pending Campaign"
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.formatType = function (sType) {
+
+            if (sType === "C") {
+                return "Current Campaign";
+
+            } else {
+                return "Pending Campaign";
+            }
+
         };
         return Controller;
     }
