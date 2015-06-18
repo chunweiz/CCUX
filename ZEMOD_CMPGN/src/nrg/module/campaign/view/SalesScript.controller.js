@@ -6,10 +6,11 @@ sap.ui.define(
         'nrg/base/view/BaseController',
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
-        'jquery.sap.global'
+        'jquery.sap.global',
+        'ute/ui/commons/Dialog'
     ],
 
-    function (CoreController, Filter, FilterOperator, jQuery) {
+    function (CoreController, Filter, FilterOperator, jQuery, Dialog) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.SalesScript');
@@ -112,6 +113,23 @@ sap.ui.define(
             oFilterTemplate.oValue1 = sOfferCode;
             aFilters.push(oFilterTemplate);
             return aFilters;
+        };
+        /**
+		 * Action to be taken when the User clicks on Accept of Sales Script
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onAccept = function (oEvent) {
+
+            var oDialog = sap.ui.xmlfragment("nrg.module.campaign.view.OverviewScript");
+            oDialog.setWidth("750px");
+            oDialog.setHeight("auto");
+            oDialog.setTitle("OVERVIEW SCRIPT");
+            oDialog.setModal(true);
+            oDialog.addStyleClass("nrgCamOvs-dialog");
+            this.getView().addDependent(oDialog);
+            oDialog.open();
         };
         return Controller;
     }
