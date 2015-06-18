@@ -6,10 +6,11 @@ sap.ui.define(
         'nrg/base/view/BaseController',
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
-        'jquery.sap.global'
+        'jquery.sap.global',
+        'ute/ui/commons/Dialog'
     ],
 
-    function (CoreController, Filter, FilterOperator, jQuery) {
+    function (CoreController, Filter, FilterOperator, jQuery, Dialog) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.SalesScript');
@@ -58,7 +59,7 @@ sap.ui.define(
 			var sObjectPath = oEvent.getParameter("arguments").sPath,
                 oModel = this.getOwnerComponent().getModel('comp-campaign'),
                 mParameters,
-                aFilters = this._createSearchFilterObject("1121", "A"),
+                aFilters = this._createSearchFilterObject("1121", "A", "MD"),
                 sCurrentPath,
                 oDropDownList,
                 oDropDownListItemTemplate;
@@ -72,7 +73,7 @@ sap.ui.define(
                 filters : aFilters
             };
             oDropDownList.bindAggregation("DropdownListItems", mParameters);
-
+            aFilters = this._createSearchFilterObject("1121", "A", "OS");
 			//this._bindView(sObjectPath);
 		};
 
@@ -99,7 +100,7 @@ sap.ui.define(
          * @param {OfferCode} Filter Offer Code to determine the current selection
 		 * @private
 		 */
-        Controller.prototype._createSearchFilterObject = function (sContractID, sOfferCode) {
+        Controller.prototype._createSearchFilterObject = function (sContractID, sOfferCode, sTextname) {
             var aFilters = [],
                 oFilterTemplate = new Filter();
             oFilterTemplate.sPath = 'Contract';
@@ -111,7 +112,64 @@ sap.ui.define(
             oFilterTemplate.sOperator = FilterOperator.EQ;
             oFilterTemplate.oValue1 = sOfferCode;
             aFilters.push(oFilterTemplate);
+
+            oFilterTemplate.sPath = 'TxtName';
+            oFilterTemplate.sOperator = FilterOperator.EQ;
+            oFilterTemplate.oValue1 = sTextname;
+            aFilters.push(oFilterTemplate);
             return aFilters;
+        };
+        /**
+		 * Action to be taken when the User clicks on Accept of Sales Script
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onAccept = function (oEvent) {
+
+            var oDialog = this.getView().byId("idnrgCamOvsDialog"),
+                sCurrentPath,
+                oDropDownList,
+                oDropDownListItemTemplate,
+                mParameters,
+                aFilters = this._createSearchFilterObject("1121", "A", "OS"),
+                aContent,
+                obinding,
+                sPath,
+                that = this,
+                handler,
+                oOverScriptTV = this.getView().byId("idnrgCamOvsOvTv");
+            sCurrentPath = "/ScriptS";
+            oDialog.setWidth("750px");
+            oDialog.setHeight("auto");
+            oDialog.setTitle("OVERVIEW SCRIPT");
+            oDialog.setModal(true);
+            oDialog.addStyleClass("nrgCamOvs-dialog");
+            oDropDownList = this.getView().byId("idnrgCamOvsDdL");
+            aContent = oDropDownList.getDropdownListItems();
+            oDropDownListItemTemplate = aContent[0].clone();
+            mParameters = {
+                model : "comp-campaign",
+                path : sCurrentPath,
+                template : oDropDownListItemTemplate,
+                filters : aFilters
+            };
+            oDropDownList.bindAggregation("DropdownListItems", mParameters);
+            handler = function () {
+                aContent = oDropDownList.getDropdownListItems();
+                if ((aContent !== undefined) && (aContent.length > 0)) {
+                    sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                    oOverScriptTV.bindElement({
+                        model : "comp-campaign",
+                        path : sPath
+                    });
+                }
+                obinding.detachDataReceived(handler);
+            };
+            obinding = oDropDownList.getBinding("DropdownListItems");
+            obinding.attachDataReceived(handler);
+            this.getView().addDependent(oDialog);
+            oDialog.open();
         };
         return Controller;
     }

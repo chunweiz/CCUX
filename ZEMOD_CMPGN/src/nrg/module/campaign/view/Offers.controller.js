@@ -181,7 +181,7 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.selectCampaign = function (oEvent) {
-            this.navTo("campaignchg", {coNum: "123"});
+            this.navTo("campaignchg", {coNum: "1121", offercodeNum: "50124832"});
 
         };
         /**

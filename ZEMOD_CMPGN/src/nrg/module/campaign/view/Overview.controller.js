@@ -22,6 +22,7 @@ sap.ui.define(
             this.getOwnerComponent().getRouter().getRoute("campaign").attachPatternMatched(this._onObjectMatched, this);
 
         };
+
         /* =========================================================== */
 		/* lifecycle method- After Rendering                          */
 		/* =========================================================== */
@@ -44,6 +45,7 @@ sap.ui.define(
             obinding = aToggleContainer.getBinding("content");
             obinding.attachDataReceived(handler);
         };
+
 		/**
 		 * Binds the view to the object path
 		 *
@@ -59,14 +61,17 @@ sap.ui.define(
                 oToggleContainer,
                 oToggleTemplate,
                 aContent,
-                aFilters = this._createSearchFilterObject("1121", "Y");
-
+                aFilters,
+                sContract;
+            sContract = oEvent.getParameter("arguments").coNum;
+            aFilters = this._createSearchFilterObject(sContract);
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
             sEligibilityPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgEligibilitySet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar");
             aContent = oToggleContainer.getContent();
             oToggleTemplate = aContent[0].clone();
+            sEligibilityPath = sEligibilityPath + "('" + sContract + "')";
             mParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,
@@ -79,11 +84,11 @@ sap.ui.define(
                 success : function (oData) {
                     this.getView().byId("idCamCustReqOfferBtn").bindElement({
                         model : "Overview-elig",
-                        path : "/CpgEligS('1121')"
+                        path : sEligibilityPath
                     });
                     this.getView().byId("idCamAgtReqOfferBtn").bindElement({
                         model : "Overview-elig",
-                        path : "/CpgEligS('1121')"
+                        path : sEligibilityPath
                     });
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
@@ -118,7 +123,7 @@ sap.ui.define(
          * @param {sCurrentFlag} Filter flag to determine the current
 		 * @private
 		 */
-        Controller.prototype._createSearchFilterObject = function (sContractID, sCurrentFlag) {
+        Controller.prototype._createSearchFilterObject = function (sContractID) {
             var aFilters = [],
                 oFilterTemplate = new Filter();
             oFilterTemplate.sPath = 'Contract';
@@ -150,9 +155,19 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onOffers = function (oEvent) {
+            var sContract = oEvent.getSource().getBindingContext("Overview-elig").getProperty("Contract"),
+                sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill");
 
-            this.navTo("campaignoffers", {coNum: "123"});
+            if (sFirstMonthBill === "X") {
+                sap.ui.commons.MessageBox.alert("Customer has to completed atleast One Month Invoice");
+            } else {
+                this.navTo("campaignoffers", {coNum: sContract});
+            }
+
+
+
         };
+
         /**
 		 * Formats the Type value to display "Current Campaign" or "Pending Campaign"
 		 *
@@ -162,14 +177,11 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.formatType = function (sType) {
-
             if (sType === "C") {
-                return "Current Campaign";
-
+                return this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCmpOvrCt");
             } else {
-                return "Pending Campaign";
+                return this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCmpOvrPg");
             }
-
         };
         return Controller;
     }

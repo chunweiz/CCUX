@@ -52,7 +52,7 @@
             </u:Tag>
             <u:Tag class="nrgCamSS-Dsc">
                     <c:Label text="{comp-i18n-campaign>nrgCmpSSMdlbl}"
-                             class="nrgCamSS-lbl nrgCamSS-top"
+                             class="nrgCamSS-mdlbl nrgCamSS-top nrgCamSS-left"
                              labelFor="idCamSSMdTv" />
                     <u:TextView
                         id="idCamSSMdTv"
@@ -66,7 +66,8 @@
                     id="idnrgCamSSBtn-Ok"
                     text="{comp-i18n-campaign>nrgCmpSSBtnOk}"
                     enabled="true"
-                    class="nrgCamSS-btn">
+                    class="nrgCamSS-btn"
+                    press=".onAccept">
                 </u:Button>
                 <u:Dropdown
                             id="idnrgCamSSDisRn"
@@ -87,6 +88,48 @@
                     </u:DropdownListItems>
                 </u:Dropdown>
             </u:Tag>
+          <u:Dialog id="idnrgCamOvsDialog">
+            <u:Tag class="nrgCamOVS-DdL">
+                <u:Dropdown
+                            id="idnrgCamOvsDdL"
+                            arrowcolor="Grey"
+                            arrowType="Hollow"
+                            enabled="true"
+                            background="Transparent"
+                            title="Language"
+                            border="Bottom"
+                            width="100px"
+                            padding="5px">
+                    <u:DropdownListItems>
+                        <u:DropdownListItem id="idnrgCamOvsLngLtIt" key="{comp-campaign>TxtLang}">
+                            <c:Label text="{comp-campaign>TxtLang}"/>
+                        </u:DropdownListItem>
+                    </u:DropdownListItems>
+                </u:Dropdown>
+            </u:Tag>
+            <u:Tag class="nrgCamOvs-Dsc">
+                    <u:TextView
+                        id="idnrgCamOvsOvTv"
+                        color="DarkGrey"
+                        class="nrgCamOvs-left nrgCamOvs-top"
+                        design="Base"
+                        text="{comp-campaign>TxtLine}" />
+            </u:Tag>
+            <u:Tag class="nrgCamOvs-btnTag nrgCamOvs-top" >
+                <u:Button
+                    id="idnrgCamOvsBtn-Ok"
+                    text="{comp-i18n-campaign>nrgCmpSSBtnOk}"
+                    enabled="true"
+                    class="nrgCamOvs-btn">
+                </u:Button>
+                <u:Button
+                    id="idnrgCamOvsBtn-Dec"
+                    text="{comp-i18n-campaign>nrgCmpSSBtnDec}"
+                    enabled="true"
+                    class="nrgCamOvs-btn">
+                </u:Button>
+            </u:Tag>
+          </u:Dialog>
       </u:Tag>
    </u:Tag>
 </mvc:View>

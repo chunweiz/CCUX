@@ -1,0 +1,48 @@
+<u:Dialog
+    xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:c="sap.ui.commons"
+          xmlns:core="sap.ui.core"
+          xmlns:u="ute.ui.commons"
+          xmlns:um="ute.ui.main"
+          xmlns:l="sap.ui.commons.layout">
+            <u:Tag class="nrgCamOVS-DdL">
+                <u:Dropdown
+                            id="idnrgCamOvsDdL"
+                            arrowcolor="Grey"
+                            arrowType="Hollow"
+                            enabled="true"
+                            background="Transparent"
+                            title="Language"
+                            border="Bottom"
+                            width="100px"
+                            padding="5px">
+                    <u:DropdownListItems>
+                        <u:DropdownListItem id="idnrgCamOvsLngLtIt" key="{comp-campaign>TxtLang}">
+                            <c:Label text="{comp-campaign>TxtLang}"/>
+                        </u:DropdownListItem>
+                    </u:DropdownListItems>
+                </u:Dropdown>
+            </u:Tag>
+            <u:Tag class="nrgCamOvs-Dsc">
+                    <u:TextView
+                        id="idnrgCamOvsMdTv"
+                        color="DarkGrey"
+                        class="nrgCamOvs-left nrgCamOvs-top"
+                        design="Base"
+                        text="{comp-campaign>TxtLine}" />
+            </u:Tag>
+            <u:Tag class="nrgCamOvs-btnTag nrgCamOvs-top" >
+                <u:Button
+                    id="idnrgCamOvsBtn-Ok"
+                    text="{comp-i18n-campaign>nrgCmpSSBtnOk}"
+                    enabled="true"
+                    class="nrgCamOvs-btn">
+                </u:Button>
+                <u:Button
+                    id="idnrgCamOvsBtn-Dec"
+                    text="{comp-i18n-campaign>nrgCmpSSBtnDec}"
+                    enabled="true"
+                    class="nrgCamOvs-btn">
+                </u:Button>
+            </u:Tag>
+</u:Dialog>
