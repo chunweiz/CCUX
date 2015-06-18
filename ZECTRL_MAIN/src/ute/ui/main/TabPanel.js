@@ -32,7 +32,7 @@ sap.ui.define(
         CustomControl.prototype._onTabBarSelected = function (oControlEvent) {
             var sSelectedKey, aContent;
 
-            sSelectedKey = oControlEvent.getParameter('selectedKey');
+            sSelectedKey = oControlEvent.getParameter('selectedItem').getKey();
             aContent = this.getContent() || [];
 
             aContent.forEach(function (oContent) {
