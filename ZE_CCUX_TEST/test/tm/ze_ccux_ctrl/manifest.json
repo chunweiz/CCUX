@@ -21,7 +21,8 @@
                 "Infoline": { "pattern": "Infoline", "target": [ "Infoline" ] },
                 "Dropdown": { "pattern": "Dropdown", "target": [ "Dropdown" ] },
                 "RadioButton": { "pattern": "RadioButton", "target": [ "RadioButton" ] },
-                "TabBar": { "pattern": "TabBar", "target": [ "TabBar" ] }
+                "TabBar": { "pattern": "TabBar", "target": [ "TabBar" ] },
+                "Dialog": { "pattern": "Dialog", "target": [ "Dialog" ] }
             },
 
             "config": {
@@ -38,7 +39,8 @@
                 "Infoline": { "viewName": "Infoline", "controlId": "idAppContent" },
                 "Dropdown": { "viewName": "Dropdown", "controlId": "idAppContent" },
                 "RadioButton": { "viewName": "RadioButton", "controlId": "idAppContent" },
-                "TabBar": { "viewName": "TabBar", "controlId": "idAppContent" }
+                "TabBar": { "viewName": "TabBar", "controlId": "idAppContent" },
+                "Dialog": { "viewName": "Dialog", "controlId": "idAppContent" }
             }
         }
     }
