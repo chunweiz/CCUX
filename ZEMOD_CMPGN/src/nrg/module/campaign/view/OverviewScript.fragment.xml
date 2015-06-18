@@ -15,8 +15,7 @@
                             title="Language"
                             border="Bottom"
                             width="100px"
-                            padding="5px"
-                            DropdownListItems="{comp-campaign>/languageData}">
+                            padding="5px">
                     <u:DropdownListItems>
                         <u:DropdownListItem id="idnrgCamOvsLngLtIt" key="{comp-campaign>TxtLang}">
                             <c:Label text="{comp-campaign>TxtLang}"/>

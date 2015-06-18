@@ -27,7 +27,7 @@
             <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">
                 <utmain:Label
                     class="nrgDashboard-cusDataSum-bpLabel"
-                    text="BP #"
+                    text="{comp-i18n-dashboard>nrgDashboardCusDatSum_BpNum}"
                     labelFor="db_verify_BP">
                 </utmain:Label>
                 <ute:Tag elem="span"
@@ -38,7 +38,7 @@
             <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">
                 <utmain:Label
                     class="nrgDashboard-cusDataSum-bpLabel"
-                    text="CA #"
+                    text="{comp-i18n-dashboard>nrgDashboardCusDatSum_CaNum}"
                     labelFor="db_verify_CA">
                 </utmain:Label>
                 <ute:Tag elem="span"
@@ -75,7 +75,7 @@
             <ute:Tag class="nrgDashboard-cusDataSum-caName">
                 <ute:TextView
                     class="nrgDashboard-cusDataSum-caNameTitle"
-                    text="CONTRACT ACCOUNT NAME / DBA">
+                    text="{comp-i18n-dashboard>nrgDashboardCusDatSum_CaName}">
                 </ute:TextView>
                 <ute:TextView
                     class="nrgDashboard-cusDataSum-caNameVal"
