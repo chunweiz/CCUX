@@ -42,7 +42,7 @@ sap.ui.define(
                 sContract,
                 sNewOfferCode;
             sContract = oEvent.getParameter("arguments").coNum;
-            sNewOfferCode = oEvent.getParameter("arguments").offercode;
+            sNewOfferCode = oEvent.getParameter("arguments").offercodeNum;
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
             sCurrentPath = sCurrentPath + "(OfferCode='" + sNewOfferCode + "',Type='P')";
             oModel = this.getOwnerComponent().getModel('comp-campaign');

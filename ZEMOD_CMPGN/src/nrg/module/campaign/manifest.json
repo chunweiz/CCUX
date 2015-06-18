@@ -35,7 +35,7 @@
                     "target": [ "campaign.Overview", "dashboard.SummaryBP", "campaign.Tools" ]
                 },
                 "campaignchg": {
-                    "pattern": "co/{coNum}/offercode/{offercode}/campaign/cmpchg",
+                    "pattern": "co/{coNum}/offercode/{offercodeNum}/campaign/cmpchg",
                     "target": [ "campaign.Change", "dashboard.SummaryBP", "campaign.Tools" ]
                 },
                 "campaignSS": {
