@@ -59,7 +59,7 @@ sap.ui.define(
 			var sObjectPath = oEvent.getParameter("arguments").sPath,
                 oModel = this.getOwnerComponent().getModel('comp-campaign'),
                 mParameters,
-                aFilters = this._createSearchFilterObject("1121", "A"),
+                aFilters = this._createSearchFilterObject("1121", "A", "MD"),
                 sCurrentPath,
                 oDropDownList,
                 oDropDownListItemTemplate;
@@ -73,7 +73,7 @@ sap.ui.define(
                 filters : aFilters
             };
             oDropDownList.bindAggregation("DropdownListItems", mParameters);
-
+            aFilters = this._createSearchFilterObject("1121", "A", "OS");
 			//this._bindView(sObjectPath);
 		};
 
@@ -100,7 +100,7 @@ sap.ui.define(
          * @param {OfferCode} Filter Offer Code to determine the current selection
 		 * @private
 		 */
-        Controller.prototype._createSearchFilterObject = function (sContractID, sOfferCode) {
+        Controller.prototype._createSearchFilterObject = function (sContractID, sOfferCode, sTextname) {
             var aFilters = [],
                 oFilterTemplate = new Filter();
             oFilterTemplate.sPath = 'Contract';
@@ -112,6 +112,11 @@ sap.ui.define(
             oFilterTemplate.sOperator = FilterOperator.EQ;
             oFilterTemplate.oValue1 = sOfferCode;
             aFilters.push(oFilterTemplate);
+
+            oFilterTemplate.sPath = 'TxtName';
+            oFilterTemplate.sOperator = FilterOperator.EQ;
+            oFilterTemplate.oValue1 = sTextname;
+            aFilters.push(oFilterTemplate);
             return aFilters;
         };
         /**
@@ -122,12 +127,47 @@ sap.ui.define(
 		 */
         Controller.prototype.onAccept = function (oEvent) {
 
-            var oDialog = sap.ui.xmlfragment("nrg.module.campaign.view.OverviewScript");
+            var oDialog = this.getView().byId("idnrgCamOvsDialog"),
+                sCurrentPath,
+                oDropDownList,
+                oDropDownListItemTemplate,
+                mParameters,
+                aFilters = this._createSearchFilterObject("1121", "A", "OS"),
+                aContent,
+                obinding,
+                sPath,
+                that = this,
+                handler,
+                oOverScriptTV = this.getView().byId("idnrgCamOvsOvTv");
+            sCurrentPath = "/ScriptS";
             oDialog.setWidth("750px");
             oDialog.setHeight("auto");
             oDialog.setTitle("OVERVIEW SCRIPT");
             oDialog.setModal(true);
             oDialog.addStyleClass("nrgCamOvs-dialog");
+            oDropDownList = this.getView().byId("idnrgCamOvsDdL");
+            aContent = oDropDownList.getDropdownListItems();
+            oDropDownListItemTemplate = aContent[0].clone();
+            mParameters = {
+                model : "comp-campaign",
+                path : sCurrentPath,
+                template : oDropDownListItemTemplate,
+                filters : aFilters
+            };
+            oDropDownList.bindAggregation("DropdownListItems", mParameters);
+            handler = function () {
+                aContent = oDropDownList.getDropdownListItems();
+                if ((aContent !== undefined) && (aContent.length > 0)) {
+                    sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                    oOverScriptTV.bindElement({
+                        model : "comp-campaign",
+                        path : sPath
+                    });
+                }
+                obinding.detachDataReceived(handler);
+            };
+            obinding = oDropDownList.getBinding("DropdownListItems");
+            obinding.attachDataReceived(handler);
             this.getView().addDependent(oDialog);
             oDialog.open();
         };
