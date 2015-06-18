@@ -48,9 +48,10 @@
                     </u:Tag>
                 </um:button>
             </article>
-            <um:TabBar id="idnrgCamOvr-TabBar" design="None">
+            <um:TabBar id="idnrgCamOvr-TabBar" design="None" class="nrgCamOvr-TabBar nrgCamOvr-top" >
                 <um:TabBarItem design="Default" key="tb001" press=".toggleCampaign" >
-                    <u:Tag text="{comp-campaign>Type}" />
+                    <u:Tag text="{parts:[{path:'comp-campaign>Type'}],
+                                                    formatter:'.formatType'}" />
                 </um:TabBarItem>
             </um:TabBar>
             <l:MatrixLayout class="nrgCamOvrMtx nrgCamOvr-top">
@@ -112,7 +113,6 @@
                         </u:rows>
                 </u:Table>
             </u:Tag>
-
             <um:Infoline expanded="true">
                 <um:headerContent>
                     <c:Label

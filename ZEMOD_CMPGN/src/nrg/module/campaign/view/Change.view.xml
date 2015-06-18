@@ -68,18 +68,22 @@
                         </u:rows>
                 </u:Table>
             </u:Tag>
-            <u:Tag>
+            <um:Infoline expanded="true">
+                <um:headerContent>
                     <c:Label id="idCamChgDscLbl"
                         text="{comp-i18n-campaign>nrgCmpChgDscbl}"
                         icon="sap-icon://nrg-icon/description"
-                        class="nrgCamChg-lbl nrgCamChg-top"
+                        class="nrgCamChg-lbl"
                         labelFor="idCamDescTv" />
+                </um:headerContent>
+                <um:content>
                     <u:TextView
                         color="DarkGrey"
                         class="nrgCamChg-left nrgCamChg-top"
                         design="Base"
                         text="{comp-campaign>Description}"/>
-            </u:Tag>
+                </um:content>
+            </um:Infoline>
             <u:Table width="100%"
                      class="nrgCamChg-top"
                      tableType="CampaignTable">
@@ -125,12 +129,24 @@
                            class="nrgCamChg-btn"
                            design="Default">
                 </um:button>
-                <um:Button id="idnrgCamChgBtn-Dec"
-                           press=".onDeclineCampaign"
-                           text="{comp-i18n-campaign>nrgCmpChgBtnDec}"
-                           class="nrgCamChg-btn"
-                           design="Default">
-                </um:button>
+                <u:Dropdown
+                            id="idnrgCamChgDisRn"
+                            class="nrgCamChg-DisRn"
+                            arrowcolor="Grey"
+                            arrowType="Hollow"
+                            enabled="true"
+                            title="{comp-i18n-campaign>nrgCmpChgDisResTtl}"
+                            background="Transparent"
+                            border="Bottom"
+                            width="300px"
+                            padding="5px"
+                            DropdownListItems="{comp-campaign>/RejectionReasonS}">
+                    <u:DropdownListItems>
+                        <u:DropdownListItem key="{comp-campaign>RejectionCode}">
+                            <c:Label text="{comp-campaign>Description}"/>
+                        </u:DropdownListItem>
+                    </u:DropdownListItems>
+                </u:Dropdown>
             </u:Tag>
       </u:Tag>
    </u:Tag>

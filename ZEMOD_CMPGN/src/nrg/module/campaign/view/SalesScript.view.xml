@@ -74,7 +74,7 @@
                             arrowcolor="Grey"
                             arrowType="Hollow"
                             enabled="true"
-                            title="Select"
+                            title="{comp-i18n-campaign>nrgCmpChgDisResTtl}"
                             background="Transparent"
                             border="Bottom"
                             width="300px"
