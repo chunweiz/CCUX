@@ -26,7 +26,7 @@
                 <div>Mailing Address</div>
             </um:TabBarItem>
             <br/>
-            <um:TabBarItem design="Invert" key="tb002" press=".onPressed">
+            <um:TabBarItem design="Invert" key="tb003" press=".onPressed">
                 <div>New Address</div>
             </um:TabBarItem>
             <br/>

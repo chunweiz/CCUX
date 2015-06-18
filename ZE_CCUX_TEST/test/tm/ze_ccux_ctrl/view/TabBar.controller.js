@@ -15,30 +15,6 @@ sap.ui.define(
 
         CustomController.prototype.onInit = function () {
 
-            var oTabBar = this.getView().byId('nrgTabBar');
-
-
-
-            var oLabel = new Label({ text: 'this is a label' });
-            var oItem = new TabBarItem({
-                content: oLabel,
-                press: function (oControlEvent) {
-                    alert('try me');
-                }
-            });
-
-            oTabBar.addContent(oItem);
-
-            oLabel = new Label({ text: 'this is another label' });
-            oItem = new TabBarItem({
-                content: oLabel,
-                press: function (oControlEvent) {
-                    alert('try another me');
-                }
-            });
-
-            oTabBar.addContent(oItem);
-
         };
 
         CustomController.prototype.onPressed = function (oControlEvent) {
