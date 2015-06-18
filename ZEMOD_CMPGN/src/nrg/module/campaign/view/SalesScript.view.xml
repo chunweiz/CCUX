@@ -52,7 +52,7 @@
             </u:Tag>
             <u:Tag class="nrgCamSS-Dsc">
                     <c:Label text="{comp-i18n-campaign>nrgCmpSSMdlbl}"
-                             class="nrgCamSS-lbl nrgCamSS-top"
+                             class="nrgCamSS-mdlbl nrgCamSS-top nrgCamSS-left"
                              labelFor="idCamSSMdTv" />
                     <u:TextView
                         id="idCamSSMdTv"
@@ -66,7 +66,8 @@
                     id="idnrgCamSSBtn-Ok"
                     text="{comp-i18n-campaign>nrgCmpSSBtnOk}"
                     enabled="true"
-                    class="nrgCamSS-btn">
+                    class="nrgCamSS-btn"
+                    press=".onAccept">
                 </u:Button>
                 <u:Dropdown
                             id="idnrgCamSSDisRn"
