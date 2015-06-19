@@ -20,7 +20,7 @@
                         "mock": {
                             "comp-dashboard": {
                                 "mockDataBaseUrl": "data/devtest/",
-                                "generateMissingMockData": false
+                                "generateMissingMockData": true
                             }
                         }
                     }
