@@ -43,7 +43,7 @@ sap.ui.define(
 
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
-            sPath = 'Buag(\'' + aSplitHash[iSplitHashL - 1] + '\')';
+            sPath = '/Buag(\'' + aSplitHash[iSplitHashL - 1] + '\')';
 
             this._retrBpSegInf(sPath);
         };
@@ -57,7 +57,7 @@ sap.ui.define(
         };
 
         Controller.prototype._retrBpInf = function (sPath) {
-            var oModel = this.getView().getModel('oSearchBpODataModel'),
+            var oModel = this.getView().getModel('oODataSvc'),
                 oParameters;
 
             oParameters = {
@@ -72,12 +72,12 @@ sap.ui.define(
             };
 
             if (oModel) {
-                oModel.read(sPath, oParameters);
+                oModel.read("/BpSearchs('PartnerID 2')/Partner", oParameters);
             }
         };
 
         Controller.prototype._retrBpSegInf = function (sPath) {
-            var oModel = this.getView().getModel('oSearchBpODataModel'),
+            var oModel = this.getView().getModel('oODataSvc'),
                 oParameters;
 
             oParameters = {
