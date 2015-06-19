@@ -105,8 +105,9 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onAcceptCampaign = function (oEvent) {
-            var oContext = this.getView().getBindingContext("comp-campaign");
-            this.navTo("campaignSS", oContext);
+            var sOfferCode = this.getView().getBindingContext("comp-campaign").getProperty("OfferCode"),
+                sType = this.getView().getBindingContext("comp-campaign").getProperty("Type");
+            this.navTo("campaignSS", {offercodeNum : sOfferCode, typeV : sType });
         };
 
         /**

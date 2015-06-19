@@ -39,7 +39,7 @@
                     "target": [ "campaign.Change", "dashboard.SummaryBP", "campaign.Tools" ]
                 },
                 "campaignSS": {
-                    "pattern": "campaign/cmpss",
+                    "pattern": "offercode/{offercodeNum}/type/{typeV}/campaign/cmpss",
                     "target": [ "campaign.SalesScript", "dashboard.SummaryBP", "campaign.Tools" ]
                 },
                 "campaignoffers": {
