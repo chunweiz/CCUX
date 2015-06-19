@@ -140,7 +140,7 @@
                             border="Bottom"
                             width="300px"
                             padding="5px"
-                            DropdownListItems="{comp-campaign>/RejectionReasonS}">
+                            DropdownListItems="{comp-campaign>/RejectRsnS}">
                     <u:DropdownListItems>
                         <u:DropdownListItem key="{comp-campaign>RejectionCode}">
                             <c:Label text="{comp-campaign>Description}"/>

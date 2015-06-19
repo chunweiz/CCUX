@@ -24,7 +24,7 @@
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
                         <u:TextView id="idCamSSTtlTv"
-                                    text="CND AVG@2000=12.1 Secure Advantage 24"
+                                    text="{comp-campaign>OfferTitle}"
                                     class="nrgCamSS-left"
                                     color="DarkGrey"
                                     design="Base"/>
@@ -80,7 +80,7 @@
                             border="Bottom"
                             width="300px"
                             padding="5px"
-                            DropdownListItems="{comp-campaign>/RejectionReasonS}">
+                            DropdownListItems="{comp-campaign>/RejectRsnS}">
                     <u:DropdownListItems>
                         <u:DropdownListItem key="{comp-campaign>RejectionCode}">
                             <c:Label text="{comp-campaign>Description}"/>

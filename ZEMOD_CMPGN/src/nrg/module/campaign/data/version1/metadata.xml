@@ -9,40 +9,42 @@
                 </Key>
                 <Property MaxLength="8" Name="OfferCode" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="Type" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="10" Name="ReqType" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="ReqType" Type="Edm.String"/>
                 <Property Name="StartDate" Nullable="false" Type="Edm.DateTime"/>
                 <Property Name="EndDate" Nullable="false" Type="Edm.DateTime"/>
                 <Property MaxLength="60" Name="OfferTitle" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="1000" Name="Description" Nullable="false" Type="Edm.String"/>
-                <Property Name="AvgUsage" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property MaxLength="1000" Name="Description" Type="Edm.String"/>
+                <Property Name="AvgUsage" Precision="23" Scale="4" Type="Edm.Decimal"/>
                 <Property Name="EFL500" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
                 <Property Name="EFL1000" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
                 <Property Name="EFL2000" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
-                <Property MaxLength="10" Name="CampaignCode" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="10" Name="PromoCode" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="Campaign" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="Promo" Nullable="false" Type="Edm.String"/>
                 <Property Name="Term" Nullable="false" Type="Edm.Int16"/>
                 <Property Name="CncFee" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
                 <Property Name="Incentive" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
-                <Property Name="CurrInvAmt" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
-                <Property Name="CurrCons" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="CurrInvAmt" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="CurrCons" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property MaxLength="2" Name="Disposition" Type="Edm.String"/>
                 <NavigationProperty FromRole="FromRole_Cpg_Script" Name="CpqScript_N" Relationship="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" ToRole="ToRole_Cpg_Script"/>
             </EntityType>
             <EntityType Name="Script">
                 <Key>
-                    <PropertyRef Name="NewOfferCode"/>
+                    <PropertyRef Name="OfferCode"/>
                     <PropertyRef Name="TxtName"/>
                     <PropertyRef Name="TxtLang"/>
                 </Key>
-                <Property MaxLength="10" Name="NewOfferCode" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="OfferCode" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="70" Name="TxtName" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="2" Name="TxtLang" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="10" Name="PartnerID" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="Partner" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="10" Name="CurrOfferCode" Nullable="false" Type="Edm.String"/>
-                <Property Name="EffectiveDate" Nullable="false" Type="Edm.DateTime"/>
-                <Property Name="CampaignCode" Nullable="false" Type="Edm.String"/>
-                <Property Name="PromoCode" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="CurrOffer" Nullable="false" Type="Edm.String"/>
+                <Property Name="StartDate" Nullable="false" Type="Edm.DateTime"/>
+                <Property Name="Campaign" Nullable="false" Type="Edm.String"/>
+                <Property Name="Promo" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="5000" Name="TxtLine" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="Type" Nullable="false" Type="Edm.String"/>
             </EntityType>
@@ -102,7 +104,7 @@
                 <Property MaxLength="60" Name="ReqName" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="50" Name="ReqNumber" Nullable="false" Type="Edm.String"/>
             </EntityType>
-            <EntityType Name="RejectionReason">
+            <EntityType Name="RejectRsn">
                 <Key>
                     <PropertyRef Name="RejectionCode"/>
                 </Key>
@@ -114,27 +116,34 @@
                 <End Multiplicity="*" Role="ToRole_Cpg_Script" Type="ZE_CCUX_CAMPAIGN_OVW_SRV.Script"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_Cpg_Script">
-                        <PropertyRef Name="Type"/>
                         <PropertyRef Name="OfferCode"/>
+                        <PropertyRef Name="Type"/>
                     </Principal>
                     <Dependent Role="ToRole_Cpg_Script">
+                        <PropertyRef Name="OfferCode"/>
                         <PropertyRef Name="Type"/>
-                        <PropertyRef Name="NewOfferCode"/>
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
             <EntityContainer Name="ZE_CCUX_CAMPAIGN_OVW_SRV_Entities" m:IsDefaultEntityContainer="true">
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" Name="CpgHistS"/>
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" Name="CpgOvwS"/>
-                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" Name="CpgChgSaveS"/>
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Script" Name="ScriptS"/>
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgCmpbyInv" Name="CpgCmpbyInvS"/>
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgElig" Name="CpgEligS"/>
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgCmpbyCons" Name="CpgCmpbyConsS"/>
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.PendSwap" Name="PendSwapS"/>
-                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.RejectionReason" Name="RejectionReasonS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.RejectRsn" Name="RejectRsnS"/>
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" Name="CpgChgOfferS"/>
-                <AssociationSet Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" Name="Cpg_Script_AssocSet">
+                <AssociationSet Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" Name="OvwS_ScriptS">
+                    <End EntitySet="CpgOvwS" Role="FromRole_Cpg_Script"/>
+                    <End EntitySet="ScriptS" Role="ToRole_Cpg_Script"/>
+                </AssociationSet>
+                <AssociationSet Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" Name="HistS_ScriptS">
+                    <End EntitySet="CpgHistS" Role="FromRole_Cpg_Script"/>
+                    <End EntitySet="ScriptS" Role="ToRole_Cpg_Script"/>
+                </AssociationSet>
+                <AssociationSet Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" Name="CpgS_ScriptS">
                     <End EntitySet="CpgChgOfferS" Role="FromRole_Cpg_Script"/>
                     <End EntitySet="ScriptS" Role="ToRole_Cpg_Script"/>
                 </AssociationSet>

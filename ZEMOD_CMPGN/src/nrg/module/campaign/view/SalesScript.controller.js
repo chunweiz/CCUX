@@ -26,13 +26,14 @@ sap.ui.define(
 		/* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
             var aContent, obinding, sPath, that = this,
+                oMandDiscloureTV = this.getView().byId("idCamSSMdTv"),
                 oDropDownList = this.getView().byId("idnrgCamSSDdL"),
                 handler = function () {
                     aContent = oDropDownList.getDropdownListItems();
                     if ((aContent !== undefined) && (aContent.length > 0)) {
                         sPath = aContent[0].getBindingContext("comp-campaign").getPath();
                        // aContent[0].addStyleClass("nrgCamHisBut-Selected");
-                        that.getView().bindElement({
+                        oMandDiscloureTV.bindElement({
                             model : "comp-campaign",
                             path : sPath
                         });
@@ -59,22 +60,30 @@ sap.ui.define(
 			var sObjectPath = oEvent.getParameter("arguments").sPath,
                 oModel = this.getOwnerComponent().getModel('comp-campaign'),
                 mParameters,
-                aFilters = this._createSearchFilterObject("1121", "A", "MD"),
+                aFilters,
                 sCurrentPath,
                 oDropDownList,
-                oDropDownListItemTemplate;
-            sCurrentPath = "/ScriptS";
+                oDropDownListItemTemplate,
+                sType,
+                sOfferCode;
+            sType = oEvent.getParameter("arguments").typeV;
+            sOfferCode = oEvent.getParameter("arguments").offercodeNum;
+            sCurrentPath = "/CpgChgOfferS";
+            sCurrentPath = sCurrentPath + "(OfferCode='" + sOfferCode + "',Type='P')";
+            aFilters = this._createSearchFilterObject("1121", "A", "MD");
+           //sCurrentPath = sCurrentPath + "/ScriptS";
             oDropDownList = this.getView().byId("idnrgCamSSDdL");
             oDropDownListItemTemplate = this.getView().byId("idnrgCamSSLngLtIt").clone();
             mParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,
                 template : oDropDownListItemTemplate,
-                filters : aFilters
+               // filters : aFilters,
+                parameters: {expand: "CpqScript_N"}
+
             };
             oDropDownList.bindAggregation("DropdownListItems", mParameters);
-            aFilters = this._createSearchFilterObject("1121", "A", "OS");
-			//this._bindView(sObjectPath);
+            //this._bindView(sObjectPath);
 		};
 
         /**
