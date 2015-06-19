@@ -26,13 +26,14 @@ sap.ui.define(
 		/* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
             var aContent, obinding, sPath, that = this,
+                oMandDiscloureTV = this.getView().byId("idCamSSMdTv"),
                 oDropDownList = this.getView().byId("idnrgCamSSDdL"),
                 handler = function () {
                     aContent = oDropDownList.getDropdownListItems();
                     if ((aContent !== undefined) && (aContent.length > 0)) {
                         sPath = aContent[0].getBindingContext("comp-campaign").getPath();
                        // aContent[0].addStyleClass("nrgCamHisBut-Selected");
-                        that.getView().bindElement({
+                        oMandDiscloureTV.bindElement({
                             model : "comp-campaign",
                             path : sPath
                         });

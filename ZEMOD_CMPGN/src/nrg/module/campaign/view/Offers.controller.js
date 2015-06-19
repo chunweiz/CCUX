@@ -21,7 +21,6 @@ sap.ui.define(
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
             this.getOwnerComponent().getRouter().getRoute("campaignoffers").attachPatternMatched(this._onObjectMatched, this);
-
         };
 
         /**
@@ -182,8 +181,8 @@ sap.ui.define(
 		 */
         Controller.prototype.selectCampaign = function (oEvent) {
             this.navTo("campaignchg", {coNum: "1121", offercodeNum: "50124832"});
-
         };
+
         /**
 		 * Formats the Cancellation fee and Incentive values
 		 *
@@ -193,10 +192,9 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.formatCancelFee = function (sCancellationFee, sIncentive) {
-
             return "Canc: " + sCancellationFee + " / " + "Inc: " + sIncentive;
-
         };
+
         /**
 		 * Formats the Promo Code binding value
 		 *

@@ -106,7 +106,7 @@ sap.ui.define(
 		 */
         Controller.prototype.onAcceptCampaign = function (oEvent) {
             var oContext = this.getView().getBindingContext("comp-campaign");
-            this.navTo("campaignSS", {sPath: "test"});
+            this.navTo("campaignSS", oContext);
         };
 
         /**

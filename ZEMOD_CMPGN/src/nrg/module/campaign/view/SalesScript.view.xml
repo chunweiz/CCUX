@@ -24,7 +24,7 @@
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
                         <u:TextView id="idCamSSTtlTv"
-                                    text="CND AVG@2000=12.1 Secure Advantage 24"
+                                    text="{comp-campaign>OfferTitle}"
                                     class="nrgCamSS-left"
                                     color="DarkGrey"
                                     design="Base"/>
