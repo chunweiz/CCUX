@@ -1,24 +1,65 @@
 <mvc:View
     xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ute="ute.ui.commons"
+    xmlns:u="ute.ui.commons"
+    xmlns:c="sap.ui.commons"
     xmlns:mvc="sap.ui.core.mvc"
     controllerName="nrg.module.campaign.view.Tools">
 
-    <ute:Tag class="nrgToolsEmpty nrgAppMain-toolsContent nrgAppMain-toolsContent-full">
-        <ute:Tag class="nrgCamTls" >
-            <ute:Tag class="nrgCamTls-ttl" text="{comp-i18n-campaign>nrgCmpToolsTtl}" />
-            <ute:Tag class="nrgCamTls-btn nrgCamTls-top" >
-                <ute:Button
+    <u:Tag class="nrgToolsEmpty nrgAppMain-toolsContent nrgAppMain-toolsContent-full">
+        <u:Tag class="nrgCamTls" >
+            <u:Tag class="nrgCamTls-ttl" text="{comp-i18n-campaign>nrgCmpToolsTtl}" />
+            <u:Tag class="nrgCamTls-btn nrgCamTls-top" >
+                <u:Button
                     text="{comp-i18n-campaign>nrgCmpToolsBtnHis}"
                     enabled="true"
-                    press="onHistoryPress" >
-                </ute:Button>
-                <ute:Button
+                    press=".onHistoryPress" >
+                </u:Button>
+                <u:Button
                     text="{comp-i18n-campaign>nrgCmpToolsBtnCan}"
                     enabled="true"
-                    class="nrgCamTls-top">
-                </ute:Button>
-            </ute:Tag>
-        </ute:Tag>
-    </ute:Tag>
+                    class="nrgCamTls-top"
+                    press=".onCancelPress">
+                </u:Button>
+            </u:Tag>
+        </u:Tag>
+        <u:Dialog id="idnrgCamTlsDialog">
+          <u:Tag class="nrgCamTls-Table">
+                <u:Table width="60%"
+                    id="idnrgCamTls-pendTable"
+                    class="nrgCamOvr-left nrgCamOvr-top"
+                    rows="{comp-campaign>/PendSwapS}">
+                        <u:columns>
+                            <u:TableColumn width="auto" >
+                                <c:Label text="Offer Description"/>
+                            </u:TableColumn>
+                            <u:TableColumn width="auto" >
+                                <c:Label text="Campaign Code"/>
+                            </u:TableColumn>
+                            <u:TableColumn width="auto" >
+                                <c:Label text="Promo Code"/>
+                            </u:TableColumn>
+                            <u:TableColumn width="auto" >
+                                <c:Label text="Product Code"/>
+                            </u:TableColumn>
+                            <u:TableColumn width="auto" >
+                                <c:Label text="Signed Dt"/>
+                            </u:TableColumn>
+                            <u:TableColumn width="auto" >
+                                <c:Label text="Offer Code"/>
+                            </u:TableColumn>
+                        </u:columns>
+                        <u:rows>
+                            <u:TableRow id="idnrgCamTls-pendRow">
+                                <c:Label text="{comp-campaign>OfferDesc}"/>
+                                <c:Label text="{comp-campaign>Campaign}"/>
+                                <c:Label text="{comp-campaign>Promo}"/>
+                                <c:Label text="{comp-campaign>Product}"/>
+                                <c:Label text="{path: 'comp-campaign>DateSigned', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                                <c:Label text="{comp-campaign>Offer}"/>
+                            </u:TableRow>
+                        </u:rows>
+                </u:Table>
+            </u:Tag>
+       </u:Dialog>
+    </u:Tag>
 </mvc:View>

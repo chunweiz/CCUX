@@ -14,7 +14,7 @@
                     "odata": {
                         "real": {
                             "comp-campaign": {
-                                "url": ""
+                                "url": "sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/"
                             }
                         },
                         "mock": {
