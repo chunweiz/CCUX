@@ -17,6 +17,10 @@
             <!--Badge-->
             <ute:Badge id="idBadgeCI" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
+                visible="{
+                    path:'oSearchFilters>/searchTextFields/sCaNum',
+                    formatter:'.formatBadge'
+                }"
                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CIClr}"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CITxt}">
             </ute:Badge>

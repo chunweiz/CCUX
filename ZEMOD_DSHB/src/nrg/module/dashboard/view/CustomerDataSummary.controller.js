@@ -12,6 +12,22 @@ sap.ui.define(
 
         var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataSummary');
 
+
+        Controller.prototype._formatBadge = function (cIndicator) {
+            /*if( cIndicator === 'x' || cIndicator === 'X'){
+                return true;
+            } else{
+                return false;
+            }*/
+
+            /*Temp Code for Testing for mock server data*/
+            if (cIndicator) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
         Controller.prototype.onInit = function () {
 
 
@@ -33,7 +49,7 @@ sap.ui.define(
 
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
-            sPath = 'Buag(\'' + aSplitHash[iSplitHashL - 1] + '\')';
+            sPath = '/BpSearchs' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')/Partner';
 
             this._retrBpInf(sPath);
         };
@@ -43,7 +59,7 @@ sap.ui.define(
 
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
-            sPath = '/Buag(\'' + aSplitHash[iSplitHashL - 1] + '\')';
+            sPath = '/BpSearchs' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')/Partner';
 
             this._retrBpSegInf(sPath);
         };
@@ -62,8 +78,8 @@ sap.ui.define(
 
             oParameters = {
                 success : function (oData) {
-                    if (oData.results) {
-                        this.getView().getModel('oSmryBpInf').setData(oData.results);
+                    if (oData) {
+                        this.getView().getModel('oSmryBpInf').setData(oData);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -72,7 +88,7 @@ sap.ui.define(
             };
 
             if (oModel) {
-                oModel.read("/BpSearchs('PartnerID 2')/Partner", oParameters);
+                oModel.read(sPath, oParameters);
             }
         };
 
