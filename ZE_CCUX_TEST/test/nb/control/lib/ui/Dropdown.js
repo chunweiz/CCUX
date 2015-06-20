@@ -134,7 +134,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
         'overflow-y' : "auto",
         'overflow-x' : "hidden",
     });*/
-        alert(winHeight);
+       // alert(winHeight);
 });
 
     return Dropdown;

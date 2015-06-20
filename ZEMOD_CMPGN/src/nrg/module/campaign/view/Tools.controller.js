@@ -37,18 +37,17 @@ sap.ui.define(
          * @param {oFlag} Filter flag to determine the Agent Requested and Customer Requested
 		 * @private
 		 */
-        Controller.prototype.createSearchFilterObject = function (sContractID, sFlag) {
+        Controller.prototype.createSearchFilterObject = function (aFilterIds, aFilterValues) {
             var aFilters = [],
-                oFilterTemplate = new Filter();
-            oFilterTemplate.sPath = 'ContractID';
-            oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = sContractID;
-            aFilters.push(oFilterTemplate);
+                oFilterTemplate = new Filter(),
+                iCount;
 
-            oFilterTemplate.sPath = 'Type';
-            oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = sFlag;
-            aFilters.push(oFilterTemplate);
+            for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
+                oFilterTemplate.sPath = aFilterIds[iCount];
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = aFilterValues[iCount];
+                aFilters.push(oFilterTemplate);
+            }
             return aFilters;
         };
 
@@ -66,7 +65,12 @@ sap.ui.define(
                 oDialog,
                 oScrollContainer,
                 oScrollTemplate,
-                aFilters = this.createSearchFilterObject(Controller.sContract, "H");
+                aFilters,
+                aFilterIds,
+                aFilterValues;
+            aFilterIds = ["ContractID", "Type"];
+            aFilterValues = [Controller.sContract, "H"];
+            aFilters = this.createSearchFilterObject(aFilterIds, aFilterValues);
             sPath = "/CpgHistS";
             jQuery.sap.require("ute.ui.commons.Dialog");
             oHistoryView = sap.ui.view({
@@ -95,6 +99,46 @@ sap.ui.define(
             this.getView().addDependent(oDialog);
             oDialog.open();
 
+        };
+        /**
+		 * Display History View when user clicked on Campaign History Button
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onCancelPress = function (oEvent) {
+            var oModel,
+                sPath,
+                mParameters,
+                oHistoryView,
+                oDialog,
+                oPendingSwapsTable,
+                oScrollTemplate,
+                aFilters,
+                aFilterIds,
+                aFilterValues,
+                oPendingSwapsTemplate;
+            aFilterIds = ["Contract"];
+            aFilterValues = [Controller.sContract];
+            aFilters = this.createSearchFilterObject(aFilterIds, aFilterValues);
+            sPath = "/PendSwapS";
+            oPendingSwapsTable = this.getView().byId("idnrgCamTls-pendTable");
+            oPendingSwapsTemplate = this.getView().byId("idnrgCamTls-pendRow");
+            mParameters = {
+                model : "comp-campaign",
+                path : sPath,
+                filters : aFilters,
+                template : oPendingSwapsTemplate
+            };
+            //to get access to the global model
+            //oPendingSwapsTable.bindRows(mParameters);
+            oDialog = this.getView().byId("idnrgCamTlsDialog");
+            oDialog.setWidth("750px");
+            oDialog.setHeight("auto");
+            oDialog.setTitle("PENDING SWAPS");
+            oDialog.setModal(true);
+            this.getView().addDependent(oDialog);
+            oDialog.open();
         };
 
         return Controller;
