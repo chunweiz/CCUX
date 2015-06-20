@@ -12,9 +12,9 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
 
         DropdownRenderer.render = function (oRm, oDropdown) {
 
-            /*oRm.write('<nav');
+            oRm.write('<div');
             oRm.writeClasses();
-            oRm.write('>');*/
+            oRm.write('>');
             oRm.write('<ul');
             oRm.writeControlData(oDropdown);
             oRm.writeAttributeEscaped("id", 'dd');
@@ -146,7 +146,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
 
             }
             oRm.write("</ul>");
-          /*  oRm.write('</nav>');*/
+            oRm.write('</div>');
 
 
         };
