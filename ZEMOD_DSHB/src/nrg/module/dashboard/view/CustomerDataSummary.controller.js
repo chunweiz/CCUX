@@ -41,6 +41,7 @@ sap.ui.define(
 
 
             this._initRetrBpInf();
+            this._initRetrBpSegInf();
 
         };
 
@@ -59,7 +60,7 @@ sap.ui.define(
 
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
-            sPath = '/BpSearchs' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')/Partner';
+            sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')/BpSegs';
 
             this._retrBpSegInf(sPath);
         };
@@ -98,7 +99,7 @@ sap.ui.define(
 
             oParameters = {
                 success : function (oData) {
-                    if (oData.results) {
+                    if (oData) {
                         this.getView().getModel('oSmryBpSegInf').setData(oData.results);
                     }
                 }.bind(this),
