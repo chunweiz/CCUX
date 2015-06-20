@@ -14,13 +14,13 @@
                     "odata": {
                         "real": {
                             "comp-dashboard": {
-                                "url": ""
+                                "url": "sap/opu/odata/sap/ZE_CCUX_SRV/"
                             }
                         },
                         "mock": {
                             "comp-dashboard": {
                                 "mockDataBaseUrl": "data/devtest/",
-                                "generateMissingMockData": false
+                                "generateMissingMockData": true
                             }
                         }
                     }

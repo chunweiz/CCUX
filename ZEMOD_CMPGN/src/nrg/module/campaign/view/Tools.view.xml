@@ -5,20 +5,18 @@
     controllerName="nrg.module.campaign.view.Tools">
 
     <ute:Tag class="nrgToolsEmpty nrgAppMain-toolsContent nrgAppMain-toolsContent-full">
-        <ute:Tag class="nrgCamToolsT" >
-            <ute:Tag class="nrgCamToolsTitleT" text="{comp-i18n-campaign>nrgCmpToolsTtl}" />
-            <ute:Tag class="nrgCamToolsBtnT nrgCamTools-top" >
+        <ute:Tag class="nrgCamTls" >
+            <ute:Tag class="nrgCamTls-ttl" text="{comp-i18n-campaign>nrgCmpToolsTtl}" />
+            <ute:Tag class="nrgCamTls-btn nrgCamTls-top" >
                 <ute:Button
-                    id="idnrgCamToolsBtn-H"
                     text="{comp-i18n-campaign>nrgCmpToolsBtnHis}"
                     enabled="true"
                     press="onHistoryPress" >
                 </ute:Button>
                 <ute:Button
-                    id="idnrgCamToolsBtn-C"
                     text="{comp-i18n-campaign>nrgCmpToolsBtnCan}"
                     enabled="true"
-                    class="nrgCamTools-top">
+                    class="nrgCamTls-top">
                 </ute:Button>
             </ute:Tag>
         </ute:Tag>

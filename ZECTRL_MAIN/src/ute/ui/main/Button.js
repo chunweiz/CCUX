@@ -17,7 +17,7 @@ sap.ui.define(
                 properties: {
                     design: { type: 'ute.ui.main.ButtonDesign', defaultValue: ute.ui.main.ButtonDesign.Default },
                     text: { type: 'string', defaultValue: null },
-                    disabled: { type: 'boolean', defaultValue: false }
+                    enabled: { type: 'boolean', defaultValue: true }
                 },
 
                 aggregations: {
@@ -34,19 +34,19 @@ sap.ui.define(
 
         EnabledPropagator.call(CustomControl.prototype);
 
-        CustomControl.prototype.setDisabled = function (oValue) {
+        CustomControl.prototype.setEnabled = function (oValue) {
             if (oValue) {
-                this.data('disabled', 'true', true);
+                 this.data('disabled', null);
             } else {
-                this.data('disabled', null);
+                this.data('disabled', 'true', true);
             }
 
-            this.setProperty('disabled', oValue);
+            this.setProperty('enabled', oValue);
             return this;
         };
 
         CustomControl.prototype.ontap = function (oEvent) {
-            if (!this.getDisabled()) {
+            if (this.getEnabled()) {
                 this.firePress();
             }
         };

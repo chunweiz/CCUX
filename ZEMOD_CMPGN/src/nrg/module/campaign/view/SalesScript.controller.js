@@ -3,39 +3,183 @@
 
 sap.ui.define(
     [
-        'nrg/base/view/BaseController'
+        'nrg/base/view/BaseController',
+        'sap/ui/model/Filter',
+        'sap/ui/model/FilterOperator',
+        'jquery.sap.global',
+        'ute/ui/commons/Dialog'
     ],
 
-    function (CoreController) {
+    function (CoreController, Filter, FilterOperator, jQuery, Dialog) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.SalesScript');
 
-            //TODO: Implementation required
+        /* =========================================================== */
+		/* lifecycle method- Init                                      */
+		/* =========================================================== */
+        Controller.prototype.onInit = function () {
+            this.getOwnerComponent().getRouter().getRoute("campaignSS").attachPatternMatched(this._onObjectMatched, this);
+        };
+       /* =========================================================== */
+		/* lifecycle method- After Rendering                           */
+		/* =========================================================== */
+        Controller.prototype.onAfterRendering = function () {
+            var aContent, obinding, sPath, that = this,
+                oMandDiscloureTV = this.getView().byId("idCamSSMdTv"),
+                oDropDownList = this.getView().byId("idnrgCamSSDdL"),
+                handler = function () {
+                    aContent = oDropDownList.getDropdownListItems();
+                    if ((aContent !== undefined) && (aContent.length > 0)) {
+                        sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                       // aContent[0].addStyleClass("nrgCamHisBut-Selected");
+                        oMandDiscloureTV.bindElement({
+                            model : "comp-campaign",
+                            path : sPath
+                        });
+                    }
+                    obinding.detachDataReceived(handler);
+                };
+            obinding = oDropDownList.getBinding("DropdownListItems");
+            obinding.attachDataReceived(handler);
+        };
+
+        /* =========================================================== */
+		/* lifecycle method- Before Rendering                          */
+		/* =========================================================== */
         Controller.prototype.onBeforeRendering = function () {
-            var aLanguageData, aDispositionData;
-            aLanguageData = [
-                {language: "English" },
-                {language: "Spanish" }
-            ];
-            aDispositionData = [
-                {Reason: "MAOPRJ" },
-                {Reason: "MAOPRJ" },
-                {Reason: "MAOPRJ" },
-                {Reason: "MAOPRJ" },
-                {Reason: "MAOPRJ" },
-                {Reason: "MAOPRJ" },
-                {Reason: "MAOPRJ" }
-            ];
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), "SalesScriptData");
-            this.getView().getModel("SalesScriptData").setProperty("/languageData", aLanguageData);
-            this.getView().getModel("SalesScriptData").setProperty("/dispoistionData", aDispositionData);
+        };
+		/**
+		 * Binds the view to the object path
+		 *
+		 * @function
+		 * @param {sap.ui.base.Event} oEvent pattern match event
+		 * @private
+		 */
+        Controller.prototype._onObjectMatched = function (oEvent) {
+			var sObjectPath = oEvent.getParameter("arguments").sPath,
+                oModel = this.getOwnerComponent().getModel('comp-campaign'),
+                mParameters,
+                aFilters,
+                sCurrentPath,
+                oDropDownList,
+                oDropDownListItemTemplate,
+                sType,
+                sOfferCode;
+            sType = oEvent.getParameter("arguments").typeV;
+            sOfferCode = oEvent.getParameter("arguments").offercodeNum;
+            sCurrentPath = "/CpgChgOfferS";
+            sCurrentPath = sCurrentPath + "(OfferCode='" + sOfferCode + "',Type='P')";
+            aFilters = this._createSearchFilterObject("1121", "A", "MD");
+           //sCurrentPath = sCurrentPath + "/ScriptS";
+            oDropDownList = this.getView().byId("idnrgCamSSDdL");
+            oDropDownListItemTemplate = this.getView().byId("idnrgCamSSLngLtIt").clone();
+            mParameters = {
+                model : "comp-campaign",
+                path : sCurrentPath,
+                template : oDropDownListItemTemplate,
+               // filters : aFilters,
+                parameters: {expand: "CpqScript_N"}
+
+            };
+            oDropDownList.bindAggregation("DropdownListItems", mParameters);
+            //this._bindView(sObjectPath);
+		};
+
+        /**
+		 * Binds the view to the object path. Makes sure that view displays
+		 * a busy indicator while data for the corresponding element binding is loaded.
+		 *
+		 * @function
+		 * @param {string} sObjectPath path to the object to be bound
+		 * @private
+		 */
+		Controller.prototype._bindView = function (sObjectPath) {
+            this.getView().bindElement({
+                model : "comp-campaign",
+                path : sObjectPath
+            });
 
         };
-                    //TODO: Implementation required
-        Controller.prototype.onAfterRendering = function () {
+        /**
+		 * Assign the filter objects based on the input selection
+		 *
+		 * @function
+		 * @param {oContractID} Contract to be used aa a filter
+         * @param {OfferCode} Filter Offer Code to determine the current selection
+		 * @private
+		 */
+        Controller.prototype._createSearchFilterObject = function (sContractID, sOfferCode, sTextname) {
+            var aFilters = [],
+                oFilterTemplate = new Filter();
+            oFilterTemplate.sPath = 'Contract';
+            oFilterTemplate.sOperator = FilterOperator.EQ;
+            oFilterTemplate.oValue1 = sContractID;
+            aFilters.push(oFilterTemplate);
+
+            oFilterTemplate.sPath = 'NewOfferCode';
+            oFilterTemplate.sOperator = FilterOperator.EQ;
+            oFilterTemplate.oValue1 = sOfferCode;
+            aFilters.push(oFilterTemplate);
+
+            oFilterTemplate.sPath = 'TxtName';
+            oFilterTemplate.sOperator = FilterOperator.EQ;
+            oFilterTemplate.oValue1 = sTextname;
+            aFilters.push(oFilterTemplate);
+            return aFilters;
         };
-        //TODO: Implementation required
+        /**
+		 * Action to be taken when the User clicks on Accept of Sales Script
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onAccept = function (oEvent) {
+
+            var oDialog = this.getView().byId("idnrgCamOvsDialog"),
+                sCurrentPath,
+                oDropDownList,
+                oDropDownListItemTemplate,
+                mParameters,
+                aFilters = this._createSearchFilterObject("1121", "A", "OS"),
+                aContent,
+                obinding,
+                sPath,
+                that = this,
+                handler,
+                oOverScriptTV = this.getView().byId("idnrgCamOvsOvTv");
+            sCurrentPath = "/ScriptS";
+            oDialog.setWidth("750px");
+            oDialog.setHeight("auto");
+            oDialog.setTitle("OVERVIEW SCRIPT");
+            oDialog.setModal(true);
+            oDialog.addStyleClass("nrgCamOvs-dialog");
+            oDropDownList = this.getView().byId("idnrgCamOvsDdL");
+            aContent = oDropDownList.getDropdownListItems();
+            oDropDownListItemTemplate = aContent[0].clone();
+            mParameters = {
+                model : "comp-campaign",
+                path : sCurrentPath,
+                template : oDropDownListItemTemplate,
+                filters : aFilters
+            };
+            oDropDownList.bindAggregation("DropdownListItems", mParameters);
+            handler = function () {
+                aContent = oDropDownList.getDropdownListItems();
+                if ((aContent !== undefined) && (aContent.length > 0)) {
+                    sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                    oOverScriptTV.bindElement({
+                        model : "comp-campaign",
+                        path : sPath
+                    });
+                }
+                obinding.detachDataReceived(handler);
+            };
+            obinding = oDropDownList.getBinding("DropdownListItems");
+            obinding.attachDataReceived(handler);
+            this.getView().addDependent(oDialog);
+            oDialog.open();
+        };
         return Controller;
     }
 );

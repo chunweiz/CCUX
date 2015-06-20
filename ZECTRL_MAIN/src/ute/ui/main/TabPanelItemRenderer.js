@@ -1,12 +1,10 @@
-/*global sap, ute */
+/*global sap, ute*/
 /*jslint nomen:true*/
 
 sap.ui.define(
-    [
-        'jquery.sap.global'
-    ],
+    [],
 
-    function (jQuery) {
+    function () {
         'use strict';
 
         var CustomRenderer = {};
@@ -14,10 +12,14 @@ sap.ui.define(
         CustomRenderer.render = function (oRm, oCustomControl) {
             oRm.write('<div');
             oRm.writeControlData(oCustomControl);
-            oRm.addClass('uteMTabBar');
+            oRm.addClass('uteMTabPanelItem');
 
-            if (oCustomControl.getDesign() !== ute.ui.main.TabBar.None) {
-                oRm.addClass('uteMTabBar-design-' + oCustomControl.getDesign().toLowerCase());
+            if (oCustomControl.getDesign() !== ute.ui.main.TabPanelItem.None) {
+                oRm.addClass('uteMTabPanelItem-design-' + oCustomControl.getDesign().toLowerCase());
+            }
+
+            if (oCustomControl.getHidden()) {
+                oRm.addClass('uteMTabPanelItem-hidden');
             }
 
             oRm.writeClasses();
@@ -32,12 +34,14 @@ sap.ui.define(
             var aContent = oCustomControl.getContent() || [];
 
             aContent.forEach(function (oContent) {
-                if (oContent instanceof ute.ui.main.TabBarItem) {
-                    oContent.setGroup(oCustomControl.getId() + '--grp');
-                    oCustomControl._attachItemPress(oContent);
-                }
+                oRm.write('<div');
+                oRm.addClass('uteMTabPanelItem-content');
+                oRm.writeClasses();
+                oRm.write('>');
 
                 oRm.renderControl(oContent);
+
+                oRm.write('</div>');
             });
         };
 

@@ -21,7 +21,6 @@ sap.ui.define(
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
             this.getOwnerComponent().getRouter().getRoute("campaignoffers").attachPatternMatched(this._onObjectMatched, this);
-
         };
 
         /**
@@ -61,17 +60,17 @@ sap.ui.define(
                 i;
             aChildren = oEvent.getSource().getParent().findElements();
             for (i = 0; i < aChildren.length; i = i + 1) {
-                if (aChildren[i].hasStyleClass("nrgCamOffBt-Selected")) {
-                    aChildren[i].removeStyleClass("nrgCamOffBt-Selected");
+                if (aChildren[i].hasStyleClass("nrgCamOff-btn-selected")) {
+                    aChildren[i].removeStyleClass("nrgCamOff-btn-selected");
                 }
             }
-            oEvent.getSource().addStyleClass("nrgCamOffBt-Selected");
+            oEvent.getSource().addStyleClass("nrgCamOff-btn-selected");
         };
         /**
-		 * Binds the view to the object path and expands the aggregated line items.
+		 * Binds the view to the object path
 		 *
 		 * @function
-		 * @param {sap.ui.base.Event} oEvent pattern match event in route 'object'
+		 * @param {sap.ui.base.Event} oEvent pattern match event
 		 * @private
 		 */
         Controller.prototype._onObjectMatched = function (oEvent) {
@@ -127,19 +126,19 @@ sap.ui.define(
             sButtonText = sButtonText.substring(sButtonText.length - 1, sButtonText.length);
             switch (sButtonText) {
             case "P":
-                aFilters = this.createSearchFilterObject("1121", "P");
+                aFilters = this._createSearchFilterObject("1121", "P");
                 break;
             case "R":
-                aFilters = this.createSearchFilterObject("1121", "R");
+                aFilters = this._createSearchFilterObject("1121", "R");
                 break;
             case "S":
-                aFilters = this.createSearchFilterObject("1121", "S");
+                aFilters = this._createSearchFilterObject("1121", "S");
                 break;
             case "F":
-                aFilters = this.createSearchFilterObject("1121", "F");
+                aFilters = this._createSearchFilterObject("1121", "F");
                 break;
             default:
-                aFilters = this.createSearchFilterObject("1121", "F");
+                aFilters = this._createSearchFilterObject("1121", "F");
             }
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
             aContent = oTileContainer.getContent();
@@ -181,9 +180,9 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.selectCampaign = function (oEvent) {
-            this.navTo("campaignchg", {coNum: "123"});
-
+            this.navTo("campaignchg", {coNum: "1121", offercodeNum: "50124832"});
         };
+
         /**
 		 * Formats the Cancellation fee and Incentive values
 		 *
@@ -193,10 +192,9 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.formatCancelFee = function (sCancellationFee, sIncentive) {
-
             return "Canc: " + sCancellationFee + " / " + "Inc: " + sIncentive;
-
         };
+
         /**
 		 * Formats the Promo Code binding value
 		 *

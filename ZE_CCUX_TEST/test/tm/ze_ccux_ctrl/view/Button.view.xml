@@ -39,7 +39,7 @@
         <um:Button design="Invert" text="button" press=".onPressed" />
 
         <br/><div>Default disabled button</div>
-        <um:Button text="this is a new button" press=".onPressed" disabled="true" />
+        <um:Button text="this is a new button" press=".onPressed" enabled="false" />
 
         <br/><div>Button with stuffing</div>
         <um:Button press=".onPressed">
@@ -53,7 +53,7 @@
         </um:Button>
 
         <br/><div>Substyling standard button with stuffing</div>
-        <um:Button disabled="true" press=".onPressed">
+        <um:Button enabled="false" press=".onPressed">
             <div>haisda</div>
             <div class="custom" >hzzz</div>
         </um:Button>

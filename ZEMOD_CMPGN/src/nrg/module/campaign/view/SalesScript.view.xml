@@ -10,47 +10,50 @@
           width="100%"
           displayBlock="true">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
-      <u:Tag class="nrgCamSST">
-         <u:Tag class="nrgCamSSTtlT" text="{comp-i18n-campaign>nrgCmpSSTtl}" />
-            <l:MatrixLayout class="nrgCamSSMtx nrgCamSS-top">
+      <u:Tag class="nrgCamSS">
+         <u:Tag class="nrgCamSS-ttl" text="{comp-i18n-campaign>nrgCmpSSTtl}" />
+            <l:MatrixLayout class="nrgCamSS-mtx nrgCamSS-top">
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <c:Label id="idCamSSTtlLbl" text="{comp-i18n-campaign>nrgCmpSSTtllbl}" icon="sap-icon://nrg-icon/tag" class="nrgCamSS-lbl"  labelFor="idCamSSTtlTv"  />
+                        <c:Label text="{comp-i18n-campaign>nrgCmpSSTtllbl}"
+                                 icon="sap-icon://nrg-icon/tag"
+                                 class="nrgCamSS-lbl"
+                                 labelFor="idCamSSTtlTv"  />
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <u:TextView id="idCamSSTtlTv" text="CNP AVG@2000=11.3 Secure Advantage 24"
-                                                    class="nrgCamSS-left"
-                                                    color="DarkGrey"
-                                                    design="Base"/>
+                        <u:TextView id="idCamSSTtlTv"
+                                    text="{comp-campaign>OfferTitle}"
+                                    class="nrgCamSS-left"
+                                    color="DarkGrey"
+                                    design="Base"/>
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>
-            <u:Tag class="nrgCamSSDdL">
+            <u:Tag class="nrgCamSS-DdL">
                 <u:Dropdown
                             id="idnrgCamSSDdL"
                             arrowcolor="Grey"
                             arrowType="Hollow"
                             enabled="true"
                             background="Transparent"
-                            title="{comp-campaign>/languageData/0/language}"
+                            title="Language"
                             border="Bottom"
                             width="100px"
                             padding="5px"
                             DropdownListItems="{comp-campaign>/languageData}">
                     <u:DropdownListItems>
-                        <u:DropdownListItem key="{comp-campaign>language}">
-                            <c:Label text="{comp-campaign>language}"/>
+                        <u:DropdownListItem id="idnrgCamSSLngLtIt" key="{comp-campaign>TxtLang}">
+                            <c:Label text="{comp-campaign>TxtLang}"/>
                         </u:DropdownListItem>
                     </u:DropdownListItems>
                 </u:Dropdown>
             </u:Tag>
-            <u:Tag class="nrgCamSSDscT">
-                    <c:Label id="idCamSSMdLbl"
-                        text="{comp-i18n-campaign>nrgCmpSSMdlbl}"
-                        class="nrgCamSS-lbl nrgCamSS-top nrgCamSS-ManD"
-                        labelFor="idCamSSMdTv" />
+            <u:Tag class="nrgCamSS-Dsc">
+                    <c:Label text="{comp-i18n-campaign>nrgCmpSSMdlbl}"
+                             class="nrgCamSS-mdlbl nrgCamSS-top nrgCamSS-left"
+                             labelFor="idCamSSMdTv" />
                     <u:TextView
                         id="idCamSSMdTv"
                         color="DarkGrey"
@@ -58,39 +61,75 @@
                         design="Base"
                         text="{comp-campaign>TxtLine}" />
             </u:Tag>
-            <u:Tag class="nrgCamSSDisRn">
-                <u:Dropdown
-                            id="idnrgCamSSDisRn"
-                            arrowcolor="Grey"
-                            arrowType="Hollow"
-                            enabled="true"
-                            background="Transparent"
-                            border="Bottom"
-                            title="{comp-campaign>/dispoistionData/0/Reason}"
-                            width="300px"
-                            padding="5px"
-                            DropdownListItems="{comp-campaign>/dispoistionData}">
-                    <u:DropdownListItems>
-                        <u:DropdownListItem key="{comp-campaign>Reason}">
-                            <c:Label text="{comp-campaign>Reason}"/>
-                        </u:DropdownListItem>
-                    </u:DropdownListItems>
-                </u:Dropdown>
-            </u:Tag>
-            <u:Tag class="nrgCamSSBtnT nrgCamSS-top" >
+            <u:Tag class="nrgCamSS-btnTag nrgCamSS-top" >
                 <u:Button
                     id="idnrgCamSSBtn-Ok"
                     text="{comp-i18n-campaign>nrgCmpSSBtnOk}"
                     enabled="true"
-                    class="nrgCamSSBtn">
+                    class="nrgCamSS-btn"
+                    press=".onAccept">
+                </u:Button>
+                <u:Dropdown
+                            id="idnrgCamSSDisRn"
+                            class="nrgCamSS-DisRn"
+                            arrowcolor="Grey"
+                            arrowType="Hollow"
+                            enabled="true"
+                            title="{comp-i18n-campaign>nrgCmpChgDisResTtl}"
+                            background="Transparent"
+                            border="Bottom"
+                            width="300px"
+                            padding="5px"
+                            DropdownListItems="{comp-campaign>/RejectRsnS}">
+                    <u:DropdownListItems>
+                        <u:DropdownListItem key="{comp-campaign>RejectionCode}">
+                            <c:Label text="{comp-campaign>Description}"/>
+                        </u:DropdownListItem>
+                    </u:DropdownListItems>
+                </u:Dropdown>
+            </u:Tag>
+          <u:Dialog id="idnrgCamOvsDialog">
+            <u:Tag class="nrgCamOVS-DdL">
+                <u:Dropdown
+                            id="idnrgCamOvsDdL"
+                            arrowcolor="Grey"
+                            arrowType="Hollow"
+                            enabled="true"
+                            background="Transparent"
+                            title="Language"
+                            border="Bottom"
+                            width="100px"
+                            padding="5px">
+                    <u:DropdownListItems>
+                        <u:DropdownListItem id="idnrgCamOvsLngLtIt" key="{comp-campaign>TxtLang}">
+                            <c:Label text="{comp-campaign>TxtLang}"/>
+                        </u:DropdownListItem>
+                    </u:DropdownListItems>
+                </u:Dropdown>
+            </u:Tag>
+            <u:Tag class="nrgCamOvs-Dsc">
+                    <u:TextView
+                        id="idnrgCamOvsOvTv"
+                        color="DarkGrey"
+                        class="nrgCamOvs-left nrgCamOvs-top"
+                        design="Base"
+                        text="{comp-campaign>TxtLine}" />
+            </u:Tag>
+            <u:Tag class="nrgCamOvs-btnTag nrgCamOvs-top" >
+                <u:Button
+                    id="idnrgCamOvsBtn-Ok"
+                    text="{comp-i18n-campaign>nrgCmpSSBtnOk}"
+                    enabled="true"
+                    class="nrgCamOvs-btn">
                 </u:Button>
                 <u:Button
-                    id="idnrgCamSSBtn-Dec"
+                    id="idnrgCamOvsBtn-Dec"
                     text="{comp-i18n-campaign>nrgCmpSSBtnDec}"
                     enabled="true"
-                    class="nrgCamSSBtn" >
+                    class="nrgCamOvs-btn">
                 </u:Button>
             </u:Tag>
+          </u:Dialog>
       </u:Tag>
    </u:Tag>
 </mvc:View>

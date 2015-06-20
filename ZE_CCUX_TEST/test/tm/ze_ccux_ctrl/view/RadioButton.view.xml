@@ -38,11 +38,8 @@
 
         <div style="background-color: gold; padding: 10px;">
             <um:RadioButton name="rb001" id="idRb001" checked="true" /><br/>
-
-
-
-            <um:RadioButton disabled="true" /><br/>
-            <um:RadioButton disabled="true" checked="true" /><br/>
+            <um:RadioButton enabled="false" /><br/>
+            <um:RadioButton enabled="false" checked="true" /><br/>
         </div>
 
         <sm:RadioButton />

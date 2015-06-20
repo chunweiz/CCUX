@@ -18,7 +18,7 @@ sap.ui.define(
                 properties: {
                     design: { type: 'ute.ui.main.TabBarItemDesign', defaultValue: ute.ui.main.TabBarItemDesign.Default },
                     key: { type: 'string', defaultValue: null },
-                    name: { type: 'string', defaultValue: null },
+                    group: { type: 'string', defaultValue: null },
                     selected: { type: 'boolean', defaultValue: false },
                     enabled: { type: 'boolean', defaultValue: true }
                 },
@@ -58,24 +58,28 @@ sap.ui.define(
                 return;
             }
 
-            if (this.getSelected()) {
-                return;
-            }
+            this.setSelected(true);
 
-            this.setSelected(!this.getSelected());
             this.firePress({
                 selectedKey: this.getKey()
             });
         };
 
         CustomControl.prototype.setSelected = function (bSelected) {
-            this.$('.uteMTabItem-int').prop('checked', bSelected);
+            bSelected = !!bSelected;
+
+            if (this.getSelected() === bSelected) {
+                return this;
+            }
+
+            this.$('.uteMTabBarItem-int').prop('checked', bSelected);
+
             this.setProperty('selected', bSelected);
             return this;
         };
 
         CustomControl.prototype.setEnabled = function (bEnabled) {
-            this.$('.uteMTabItem-int').prop('disabled', bEnabled);
+            this.$('.uteMTabBarItem-int').prop('disabled', bEnabled);
             this.setProperty('enabled', bEnabled);
             return this;
         };

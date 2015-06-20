@@ -13,7 +13,22 @@ sap.ui.define(
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.Tools');
-
+        /* =========================================================== */
+		/* lifecycle method- Init                                     */
+		/* =========================================================== */
+        Controller.prototype.onInit = function () {
+            this.getOwnerComponent().getRouter().attachRoutePatternMatched(this._onObjectMatched, this);
+        };
+		/**
+		 * Binds the view to the object path
+		 *
+		 * @function
+		 * @param {sap.ui.base.Event} oEvent pattern match event
+		 * @private
+		 */
+        Controller.prototype._onObjectMatched = function (oEvent) {
+            Controller.sContract = oEvent.getParameter("arguments").coNum;
+		};
        /**
 		 * Assign the filter objects based on the input selection
 		 *
@@ -51,7 +66,7 @@ sap.ui.define(
                 oDialog,
                 oScrollContainer,
                 oScrollTemplate,
-                aFilters = this.createSearchFilterObject("1121", "H");
+                aFilters = this.createSearchFilterObject(Controller.sContract, "H");
             sPath = "/CpgHistS";
             jQuery.sap.require("ute.ui.commons.Dialog");
             oHistoryView = sap.ui.view({
@@ -75,15 +90,13 @@ sap.ui.define(
                 modal: true,
                 content: oHistoryView
             });
-            oDialog.addStyleClass("nrgCamHisTDialog");
+            oDialog.addStyleClass("nrgCamHis-dialog");
             //to get access to the global model
             this.getView().addDependent(oDialog);
             oDialog.open();
 
         };
-        Controller.prototype.onAfterRendering = function () {
 
-        };
         return Controller;
     }
 

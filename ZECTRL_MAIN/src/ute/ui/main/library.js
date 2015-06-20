@@ -17,20 +17,25 @@ sap.ui.define(
                 'ute.ui.main.ButtonDesign',
                 'ute.ui.main.TabBarDesign',
                 'ute.ui.main.TabBarItemDesign',
+                'ute.ui.main.TabPanelDesign',
+                'ute.ui.main.TabPanelItemDesign',
                 'ute.ui.main.CheckboxDesign',
                 'ute.ui.main.RadioButtonDesign',
                 'ute.ui.main.InfolineDesign',
-                'ute.ui.main.TabPanelDesign'
+                'ute.ui.main.PopupDesign'
             ],
 
 			controls: [
 				'ute.ui.main.Button',
 				'ute.ui.main.TabBar',
 				'ute.ui.main.TabBarItem',
+                'ute.ui.main.TabPanel',
+                'ute.ui.main.TabPanelItem',
                 'ute.ui.main.Label',
                 'ute.ui.main.Checkbox',
                 'ute.ui.main.RadioButton',
-                'ute.ui.main.Infoline'
+                'ute.ui.main.Infoline',
+                'ute.ui.main.Popup'
 			],
 
 			elements: [],
@@ -53,6 +58,13 @@ sap.ui.define(
 
         ute.ui.main.TabBarItemDesign = ute.ui.main.TabBarDesign;
 
+        ute.ui.main.TabPanelDesign = {
+            None: 'None',
+            Default: 'Default'
+        };
+
+        ute.ui.main.TabPanelItemDesign = ute.ui.main.TabPanelDesign;
+
         ute.ui.main.CheckboxDesign = {
             None: 'None',
             Default: 'Default'
@@ -64,6 +76,11 @@ sap.ui.define(
         };
 
         ute.ui.main.InfolineDesign = {
+            None: 'None',
+            Default: 'Default'
+        };
+
+        ute.ui.main.PopupDesign = {
             None: 'None',
             Default: 'Default'
         };

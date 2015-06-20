@@ -14,32 +14,20 @@ sap.ui.define(
             metadata: {
                 library: 'ute.ui.main',
 
-                interfaces: [
-                    'sap.ui.core.Label'
-                ],
+                interfaces: [ 'sap.ui.core.Label' ],
 
                 properties: {
-                    text: {
-                        type: 'string',
-                        defaultValue: null
-                    }
+                    text: { type: 'string', defaultValue: null }
                 },
 
                 aggregations: {
-                    content: {
-                        multiple: true,
-                        singularName: 'content',
-                        type: 'sap.ui.core.Control'
-                    }
+                    content: { multiple: true, singularName: 'content', type: 'sap.ui.core.Control' }
                 },
 
                 defaultAggregation: 'content',
 
                 associations: {
-                    labelFor: {
-                        multiple: false,
-                        type: 'sap.ui.core.Control'
-                    }
+                    labelFor: { multiple: false, type: 'sap.ui.core.Control' }
                 }
             }
         });

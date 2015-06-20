@@ -22,16 +22,18 @@ sap.ui.define(
             this.getOwnerComponent().getRouter().getRoute("campaign").attachPatternMatched(this._onObjectMatched, this);
 
         };
+
         /* =========================================================== */
 		/* lifecycle method- After Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
             var aContent, obinding, sPath, that = this,
-                aToggleContainer = this.getView().byId("idnrgCamToggleT"),
+                aToggleContainer = this.getView().byId("idnrgCamOvr-TabBar"),
                 handler = function () {
                     aContent = aToggleContainer.getContent();
                     if ((aContent !== undefined) && (aContent.length > 0)) {
                         sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                        aContent[0].setSelected(true);
                        // aContent[0].addStyleClass("nrgCamHisBut-Selected");
                         that.getView().bindElement({
                             model : "comp-campaign",
@@ -43,11 +45,12 @@ sap.ui.define(
             obinding = aToggleContainer.getBinding("content");
             obinding.attachDataReceived(handler);
         };
+
 		/**
-		 * Binds the view to the object path and expands the aggregated line items.
+		 * Binds the view to the object path
 		 *
 		 * @function
-		 * @param {sap.ui.base.Event} oEvent pattern match event in route 'object'
+		 * @param {sap.ui.base.Event} oEvent pattern match event
 		 * @private
 		 */
         Controller.prototype._onObjectMatched = function (oEvent) {
@@ -57,13 +60,18 @@ sap.ui.define(
                 mParameters,
                 oToggleContainer,
                 oToggleTemplate,
-                aFilters = this._createSearchFilterObject("1121", "Y");
-
+                aContent,
+                aFilters,
+                sContract;
+            sContract = oEvent.getParameter("arguments").coNum;
+            aFilters = this._createSearchFilterObject(sContract);
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
             sEligibilityPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgEligibilitySet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
-            oToggleContainer = this.getView().byId("idnrgCamToggleT");
-            oToggleTemplate = this.getView().byId("idCamToggleBtn").clone();
+            oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar");
+            aContent = oToggleContainer.getContent();
+            oToggleTemplate = aContent[0].clone();
+            sEligibilityPath = sEligibilityPath + "('" + sContract + "')";
             mParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,
@@ -76,11 +84,11 @@ sap.ui.define(
                 success : function (oData) {
                     this.getView().byId("idCamCustReqOfferBtn").bindElement({
                         model : "Overview-elig",
-                        path : "/CpgEligS('1121')"
+                        path : sEligibilityPath
                     });
                     this.getView().byId("idCamAgtReqOfferBtn").bindElement({
                         model : "Overview-elig",
-                        path : "/CpgEligS('1121')"
+                        path : sEligibilityPath
                     });
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
@@ -115,7 +123,7 @@ sap.ui.define(
          * @param {sCurrentFlag} Filter flag to determine the current
 		 * @private
 		 */
-        Controller.prototype._createSearchFilterObject = function (sContractID, sCurrentFlag) {
+        Controller.prototype._createSearchFilterObject = function (sContractID) {
             var aFilters = [],
                 oFilterTemplate = new Filter();
             oFilterTemplate.sPath = 'Contract';
@@ -147,8 +155,33 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onOffers = function (oEvent) {
+            var sContract = oEvent.getSource().getBindingContext("Overview-elig").getProperty("Contract"),
+                sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill");
 
-            this.navTo("campaignoffers", {coNum: "123"});
+            if (sFirstMonthBill === "X") {
+                sap.ui.commons.MessageBox.alert("Customer has to completed atleast One Month Invoice");
+            } else {
+                this.navTo("campaignoffers", {coNum: sContract});
+            }
+
+
+
+        };
+
+        /**
+		 * Formats the Type value to display "Current Campaign" or "Pending Campaign"
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.formatType = function (sType) {
+            if (sType === "C") {
+                return this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCmpOvrCt");
+            } else {
+                return this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCmpOvrPg");
+            }
         };
         return Controller;
     }

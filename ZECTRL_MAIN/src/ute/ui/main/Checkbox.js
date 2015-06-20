@@ -18,7 +18,7 @@ sap.ui.define(
                 properties: {
                     design: { type: 'ute.ui.main.CheckboxDesign', defaultValue: ute.ui.main.CheckboxDesign.Default },
                     checked: { type: 'boolean', defaultValue: false },
-                    disabled: { type: 'boolean', defaultValue: false }
+                    enabled: { type: 'boolean', defaultValue: true }
                 },
 
                 events: {
@@ -46,7 +46,7 @@ sap.ui.define(
         };
 
         CustomControl.prototype.onchange = function (oEvent) {
-            if (this.getDisabled()) {
+            if (!this.getEnabled()) {
                 return;
             }
 
@@ -69,16 +69,16 @@ sap.ui.define(
             return this;
         };
 
-        CustomControl.prototype.setDisabled = function (bValue) {
+        CustomControl.prototype.setEnabled = function (bValue) {
             bValue = !!bValue;
 
-            if (this.getDisabled() === bValue) {
+            if (this.getEnabled() === bValue) {
                 return this;
             }
 
-            this.$('.uteMChkBox-intChk').prop('disabled', bValue);
+            this.$('.uteMChkBox-intChk').prop('disabled', !bValue);
 
-            this.setProperty('disabled', bValue, true);
+            this.setProperty('enabled', bValue, true);
             return this;
         };
 

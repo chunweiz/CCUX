@@ -14,20 +14,47 @@
                 class="nrgDashboard-cusDataSum-bpName"
                 design="Large" text="BP_Name_Here">
             </ute:TextView>
-            <ute:Badge
+            <!--Badge-->
+            <ute:Badge id="idBadgeCI" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
-                design="Attention" size="30px"
-                text="TT">
+                design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CIClr}"
+                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CITxt}">
             </ute:Badge>
-            <ute:Badge
+            <ute:Badge id="idBadgeCC" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
-                design="Alert" size="30px"
-                text="TT">
+                design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CCClr}"
+                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CCTxt}">
             </ute:Badge>
+            <ute:Badge id="idBadgeSN" size="30px"
+                class="nrgDashboard-cusDataSum-badge"
+                design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SNClr}"
+                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SNTxt}">
+            </ute:Badge>
+            <ute:Badge id="idBadgeRS" size="30px"
+                class="nrgDashboard-cusDataSum-badge"
+                design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RSClr}"
+                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RSTxt}">
+            </ute:Badge>
+            <ute:Badge id="idBadgeBC" size="30px"
+                class="nrgDashboard-cusDataSum-badge"
+                design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_BCClr}"
+                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_BCTxt}">
+            </ute:Badge>
+            <ute:Badge id="idBadgeRHS" size="30px"
+                class="nrgDashboard-cusDataSum-badge"
+                design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RHSClr}"
+                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RHSTxt}">
+            </ute:Badge>
+            <ute:Badge id="idBadgeSS" size="30px"
+                class="nrgDashboard-cusDataSum-badge"
+                design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SSClr}"
+                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SSTxt}">
+            </ute:Badge>
+            <!--Badges End-->
             <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">
                 <utmain:Label
                     class="nrgDashboard-cusDataSum-bpLabel"
-                    text="BP #"
+                    text="{comp-i18n-dashboard>nrgDashboardCusDatSum_BpNum}"
                     labelFor="db_verify_BP">
                 </utmain:Label>
                 <ute:Tag elem="span"
@@ -38,7 +65,7 @@
             <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">
                 <utmain:Label
                     class="nrgDashboard-cusDataSum-bpLabel"
-                    text="CA #"
+                    text="{comp-i18n-dashboard>nrgDashboardCusDatSum_CaNum}"
                     labelFor="db_verify_CA">
                 </utmain:Label>
                 <ute:Tag elem="span"
@@ -75,7 +102,7 @@
             <ute:Tag class="nrgDashboard-cusDataSum-caName">
                 <ute:TextView
                     class="nrgDashboard-cusDataSum-caNameTitle"
-                    text="CONTRACT ACCOUNT NAME / DBA">
+                    text="{comp-i18n-dashboard>nrgDashboardCusDatSum_CaName}">
                 </ute:TextView>
                 <ute:TextView
                     class="nrgDashboard-cusDataSum-caNameVal"

@@ -11,27 +11,32 @@
           width="100%"
           displayBlock="true">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
-      <u:Tag class="nrgCamChgT">
-         <u:Tag class="nrgCamChgTtlT" text="{comp-i18n-campaign>nrgCmpChgTtl}" />
-            <l:MatrixLayout class="nrgCamChgMtx nrgCamChg-top">
+      <u:Tag class="nrgCamChg">
+         <u:Tag class="nrgCamChg-ttl" text="{comp-i18n-campaign>nrgCmpChgTtl}" />
+            <l:MatrixLayout class="nrgCamChg-mtx nrgCamChg-top">
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <c:Label id="idCamChgTtlLbl" text="{comp-i18n-campaign>nrgCmpChgTtllbl}" icon="sap-icon://nrg-icon/tag" class="nrgCamChg-lbl"  labelFor="idCamChgTtlTv"  />
+                        <c:Label text="{comp-i18n-campaign>nrgCmpChgTtllbl}"
+                                 icon="sap-icon://nrg-icon/tag"
+                                 class="nrgCamChg-lbl"
+                                 labelFor="idCamChgTtlTv"  />
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
-                        <c:Label id="idCamChgAULbl" text="{comp-i18n-campaign>nrgCmpChgAUlbl}" icon="sap-icon://nrg-icon/bulb" class="nrgCamChg-lbl" labelFor="idCamChgAUTv"  />
+                        <c:Label text="{comp-i18n-campaign>nrgCmpChgAUlbl}"
+                                 icon="sap-icon://nrg-icon/bulb"
+                                 class="nrgCamChg-lbl"
+                                 labelFor="idCamChgAUTv"  />
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
-                        <u:TextView id="idCamChgTtlTv" text="{comp-campaign>OfferTitle}"
-                                                    class="nrgCamChg-left"
-                                                    color="DarkGrey"
-                                                    design="Base"/>
+                        <u:TextView text="{comp-campaign>OfferTitle}"
+                                    class="nrgCamChg-left"
+                                    color="DarkGrey"
+                                    design="Base"/>
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
-                        <u:TextView id="idCamChgAUTv"
-                                    text="{comp-campaign>AvgUsage}"
+                        <u:TextView text="{comp-campaign>AvgUsage}"
                                     class="nrgCamChg-left"
                                     color="DarkGrey"
                                     design="Base"/>
@@ -41,9 +46,8 @@
             <u:Tag class="nrgCamChgPrcT">
                 <c:Label id="idCamPrcLbl" text="{comp-i18n-campaign>nrgCmpChgPrcbl}" icon="sap-icon://nrg-icon/dollar" class="nrgCamChg-lbl nrgCamChg-top" labelFor="idCamChgPrcTbl"  />
                 <u:Table width="60%"
-                    id="idCamChgPrcTbl"
-                    tableType="CampaignTable"
-                    class="nrgCamChg-left nrgCamChg-top">
+                         tableType="CampaignTable"
+                         class="nrgCamChg-left nrgCamChg-top">
                         <u:columns>
                             <u:TableColumn width="33%" >
                                 <c:Label text="EFL@500"/>
@@ -64,24 +68,25 @@
                         </u:rows>
                 </u:Table>
             </u:Tag>
-            <u:Tag class="nrgCamChgDscT">
+            <um:Infoline expanded="true">
+                <um:headerContent>
                     <c:Label id="idCamChgDscLbl"
                         text="{comp-i18n-campaign>nrgCmpChgDscbl}"
                         icon="sap-icon://nrg-icon/description"
-                        class="nrgCamChg-lbl nrgCamChg-top nrgCamChg-desc"
+                        class="nrgCamChg-lbl"
                         labelFor="idCamDescTv" />
+                </um:headerContent>
+                <um:content>
                     <u:TextView
-                        id="idCamChgDscTv"
                         color="DarkGrey"
                         class="nrgCamChg-left nrgCamChg-top"
                         design="Base"
                         text="{comp-campaign>Description}"/>
-            </u:Tag>
+                </um:content>
+            </um:Infoline>
             <u:Table width="100%"
-                     id="idCamChgInfTbl"
                      class="nrgCamChg-top"
-                     tableType="CampaignTable"
-                     >
+                     tableType="CampaignTable">
                 <u:columns>
                     <u:TableColumn>
                         <c:Label text="Promo Code"/>
@@ -117,19 +122,31 @@
                     </u:TableRow>
                 </u:rows>
             </u:Table>
-            <u:Tag class="nrgCamChgBtnT nrgCamChg-top" >
+            <u:Tag class="nrgCamChg-btnTag nrgCamChg-top" >
                 <um:Button id="idnrgCamChgBtn-Ok"
                            press=".onAcceptCampaign"
                            text="{comp-i18n-campaign>nrgCmpChgBtnOk}"
-                           class="nrgCamChgBtn"
+                           class="nrgCamChg-btn"
                            design="Default">
                 </um:button>
-                <um:Button id="idnrgCamChgBtn-Dec"
-                           press=".onDeclineCampaign"
-                           text="{comp-i18n-campaign>nrgCmpChgBtnDec}"
-                           class="nrgCamChgBtn"
-                           design="Default">
-                </um:button>
+                <u:Dropdown
+                            id="idnrgCamChgDisRn"
+                            class="nrgCamChg-DisRn"
+                            arrowcolor="Grey"
+                            arrowType="Hollow"
+                            enabled="true"
+                            title="{comp-i18n-campaign>nrgCmpChgDisResTtl}"
+                            background="Transparent"
+                            border="Bottom"
+                            width="300px"
+                            padding="5px"
+                            DropdownListItems="{comp-campaign>/RejectRsnS}">
+                    <u:DropdownListItems>
+                        <u:DropdownListItem key="{comp-campaign>RejectionCode}">
+                            <c:Label text="{comp-campaign>Description}"/>
+                        </u:DropdownListItem>
+                    </u:DropdownListItems>
+                </u:Dropdown>
             </u:Tag>
       </u:Tag>
    </u:Tag>

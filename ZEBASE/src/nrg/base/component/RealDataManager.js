@@ -36,7 +36,7 @@ sap.ui.define(
                     oData = oModule[sModule].odata || {};
                     oDataReal = oData.real || {};
 
-                    if (oModule[sModule].data) {
+                    if (oModule[sModule].odata) {
                         this._addModuleODataModels(oDataReal);
                     }
                 }
@@ -44,11 +44,13 @@ sap.ui.define(
         };
 
         Manager.prototype._addModuleODataModels = function (oDataReal) {
-            var sDataReal, oModel;
+            var sDataReal, oModel, sRelativeToSicf;
+
+            sRelativeToSicf = '../../../../../../../../../';
 
             for (sDataReal in oDataReal) {
                 if (oDataReal.hasOwnProperty(sDataReal)) {
-                    oModel = new ODataModel(oDataReal[sDataReal], true);
+                    oModel = new ODataModel(sRelativeToSicf + oDataReal[sDataReal].url, true);
                     this._oComponent.setModel(oModel, sDataReal);
                 }
             }

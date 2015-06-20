@@ -6,11 +6,15 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
         var DropdownRenderer = {},
             i,
             j,
-            oContent;
+            oContent,
+            height,
+            scrollHeight;
 
         DropdownRenderer.render = function (oRm, oDropdown) {
 
-            oRm.write('<nav>');
+            /*oRm.write('<nav');
+            oRm.writeClasses();
+            oRm.write('>');*/
             oRm.write('<ul');
             oRm.writeControlData(oDropdown);
             oRm.writeAttributeEscaped("id", 'dd');
@@ -84,6 +88,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
                 oRm.addClass('uteDD-list');
 
                 oRm.addStyle('top', this.calTop(oDropdown));
+                oRm.addStyle('overflow-x', 'hidden');
+                height = oDropdown.getMaxItems();
+                height = (height * 100 / 3);
+                scrollHeight = (height.toString()).concat('px');
+                oRm.addStyle('height', scrollHeight);
                 oRm.writeStyles();
                 if (oDropdown.getBorder() === 'All') {
                     oRm.addClass('uteDD-list-with-border');
@@ -137,7 +146,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer', 'sap/ui/core/ValueSt
 
             }
             oRm.write("</ul>");
-            oRm.write('</nav>');
+          /*  oRm.write('</nav>');*/
 
 
         };

@@ -1,12 +1,13 @@
-/*global sap, ute*/
+/*global sap, ute */
 /*jslint nomen:true*/
 
 sap.ui.define(
     [
+        'jquery.sap.global',
         'sap/ui/core/Control'
     ],
 
-    function (Control) {
+    function (jQuery, Control) {
         'use strict';
 
         var CustomControl = Control.extend('ute.ui.main.TabBar', {
@@ -18,12 +19,30 @@ sap.ui.define(
                 },
 
                 aggregations: {
-                    content: { type: 'ute.ui.main.TabBarItem', multiple: true, singularName: 'content' }
+                    content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' }
                 },
 
-                defaultAggregation: 'content'
+                defaultAggregation: 'content',
+
+                events: {
+                    select: {
+                        parameters: {
+                            selectedItem: { type: 'ute.ui.main.TabBarItem' }
+                        }
+                    }
+                }
             }
         });
+
+        CustomControl.prototype._attachItemPress = function (oItem) {
+            oItem.attachPress(jQuery.proxy(this._onItemPress, this));
+        };
+
+        CustomControl.prototype._onItemPress = function (oControlEvent) {
+            this.fireSelect({
+                selectedItem: oControlEvent.getSource()
+            });
+        };
 
         return CustomControl;
     },

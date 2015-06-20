@@ -7,7 +7,7 @@
           xmlns:l="sap.ui.commons.layout"
           >
     <u:Tag class="nrgCamOffInvoiceF">
-            <c:Label text="CND AVG@2000=11.1 Secure Advantage 24" icon="sap-icon://nrg-icon/tag" class="nrgCamOff-Top"  />
+            <c:Label text="CND AVG@2000=11.1 Secure Advantage 24" icon="sap-icon://nrg-icon/tag" class="nrgCamOff-top"  />
             <um:Button press=".selectCampaign"
                        text="Select"
                        class="nrgCamOvr-selectBtn"
@@ -15,7 +15,7 @@
             </um:button>
             <u:Table width="100%"
                 tableType="CampaignTable"
-                class="nrgCamOffPrcTbl"  >
+                class="nrgCamOff-prcTbl"  >
                     <u:columns>
                         <u:TableColumn width="33%" >
                             <c:Label text="EFL@500"/>
@@ -35,36 +35,36 @@
                         </u:TableRow>
                     </u:rows>
             </u:Table>
-            <l:MatrixLayout class="nrgCamOffMtx nrgCamOff-Top">
-                <l:MatrixLayoutRow class="nrgCamOffMtxRow">
-                    <l:MatrixLayoutCell class="nrgCamOffMtxFstCell">
+            <l:MatrixLayout class="nrgCamOff-mtx nrgCamOff-top">
+                <l:MatrixLayoutRow class="nrgCamOff-mtxRow">
+                    <l:MatrixLayoutCell class="nrgCamOff-mtxFstCell">
                         <c:Label text="September Invoice" class="nrgCamOff-lbl" />
                     </l:MatrixLayoutCell>
-                    <l:MatrixLayoutCell class="nrgCamOffMtxSndCell">
+                    <l:MatrixLayoutCell class="nrgCamOff-mtxSndCell">
                         <c:Label text="$85.00" class="nrgCamOff-lbl"  />
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
-               <l:MatrixLayoutRow class="nrgCamOffMtxRow">
-                   <l:MatrixLayoutCell class="nrgCamOffMtxFstCell">
+               <l:MatrixLayoutRow class="nrgCamOff-mtxRow">
+                   <l:MatrixLayoutCell class="nrgCamOff-mtxFstCell">
                         <c:Label text="September Invoice @ Campaign Estimation" />
                     </l:MatrixLayoutCell>
-                   <l:MatrixLayoutCell class="nrgCamOffMtxSndCell">
+                   <l:MatrixLayoutCell class="nrgCamOff-mtxSndCell">
                         <c:Label text="$65.00" class="nrgCamOff-lbl" />
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
-                <l:MatrixLayoutRow class="nrgCamOffMtxRow">
-                    <l:MatrixLayoutCell class="nrgCamOffMtxFstCell">
+                <l:MatrixLayoutRow class="nrgCamOff-mtxRow">
+                    <l:MatrixLayoutCell class="nrgCamOff-mtxFstCell">
                         <c:Label text="Estimated Difference"  />
                     </l:MatrixLayoutCell>
-                    <l:MatrixLayoutCell class="nrgCamOffMtxSndCell">
+                    <l:MatrixLayoutCell class="nrgCamOff-mtxSndCell">
                         <c:Label text="$20.00" />
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
-                <l:MatrixLayoutRow class="nrgCamOffMtxRow">
-                    <l:MatrixLayoutCell class="nrgCamOffMtxFstCell">
+                <l:MatrixLayoutRow class="nrgCamOff-mtxRow">
+                    <l:MatrixLayoutCell class="nrgCamOff-mtxFstCell">
                         <c:Label text="Estimated Cents per kWh"  />
                     </l:MatrixLayoutCell>
-                    <l:MatrixLayoutCell class="nrgCamOffMtxSndCell">
+                    <l:MatrixLayoutCell class="nrgCamOff-mtxSndCell">
                         <c:Label text="02.00¢/kWh" />
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>

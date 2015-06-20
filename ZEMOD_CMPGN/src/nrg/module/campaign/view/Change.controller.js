@@ -29,19 +29,22 @@ sap.ui.define(
         };
 
 		/**
-		 * Binds the view to the object path and expands the aggregated line items.
+		 * Binds the view to the object path
 		 *
 		 * @function
-		 * @param {sap.ui.base.Event} oEvent pattern match event in route 'object'
+		 * @param {sap.ui.base.Event} oEvent pattern match event
 		 * @private
 		 */
         Controller.prototype._onObjectMatched = function (oEvent) {
             var oModel,
                 sCurrentPath,
-                mParameters;
-
+                mParameters,
+                sContract,
+                sNewOfferCode;
+            sContract = oEvent.getParameter("arguments").coNum;
+            sNewOfferCode = oEvent.getParameter("arguments").offercodeNum;
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
-            sCurrentPath = sCurrentPath + "(OfferCode='50124832',Type='P')";
+            sCurrentPath = sCurrentPath + "(OfferCode='" + sNewOfferCode + "',Type='P')";
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             mParameters = {
                 //filters : aFilters,
@@ -102,7 +105,9 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onAcceptCampaign = function (oEvent) {
-            this.navTo("campaignSS", {coNum: "123"});
+            var sOfferCode = this.getView().getBindingContext("comp-campaign").getProperty("OfferCode"),
+                sType = this.getView().getBindingContext("comp-campaign").getProperty("Type");
+            this.navTo("campaignSS", {offercodeNum : sOfferCode, typeV : sType });
         };
 
         /**
