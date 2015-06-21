@@ -1,6 +1,7 @@
 <mvc:View
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:u="ute.ui.commons"
+    xmlns:um="ute.ui.main"
     xmlns:c="sap.ui.commons"
     xmlns:mvc="sap.ui.core.mvc"
     controllerName="nrg.module.campaign.view.Tools">
@@ -22,7 +23,8 @@
                 </u:Button>
             </u:Tag>
         </u:Tag>
-        <u:Dialog id="idnrgCamTlsDialog">
+        <u:Dialog id="idnrgCamTlsDialog" class="nrgCamTls-dialog">
+            <u:Tag class="nrgCamTls-ttl" text="You have pending request(s). Would you like to cancel any pending requests?" />
           <u:Tag class="nrgCamTls-Table">
                 <u:Table width="60%"
                     id="idnrgCamTls-pendTable"
@@ -59,6 +61,36 @@
                             </u:TableRow>
                         </u:rows>
                 </u:Table>
+              <u:Tag>
+                <u:Tag class="nrgCamTls-top nrgCamTls-font">
+                    <u:Textfield
+                        placeholder=""
+                        change="testInputChange"
+                        fieldType="Underlined"
+                        label="Requestor's Name">
+                    </u:Textfield>
+                    <c:Label text="No Phone" class="nrgCamTls-left "/>
+                    <um:Checkbox id="idnrgCamTlsNoPhone" select=".onSelected" class="nrgCamTls-left"/>
+                </u:Tag>
+                <u:Tag class="nrgCamTls-top">
+                    <u:Textfield
+                        placeholder=""
+                        change="testInputChange"
+                        fieldType="Underlined"
+                        label="Requestor's Number">
+                    </u:Textfield>
+                </u:Tag>
+                <u:Tag class="nrgCamTls-top">
+                    <u:Button
+                        text="Proceed with Cancel"
+                        enabled="true">
+                    </u:Button>
+                    <u:Button
+                        text="Continue without Cancel"
+                        enabled="true">
+                    </u:Button>
+                </u:Tag>
+              </u:Tag>
             </u:Tag>
        </u:Dialog>
     </u:Tag>
