@@ -61,7 +61,7 @@ sap.ui.define(
                 return this;
             }
 
-            this._oDialog.removeContent(this);
+            this._oDialog.removeAllContent();
             this._oDialog.addContent(this);
             this._oDialog.open();
 
