@@ -1,3 +1,4 @@
+/*
 .uteMTogBar {
     display: inline-block;
     position: relative;
@@ -36,9 +37,7 @@
 
 }
 
-/*
 ** Default design for expander
-*/
 .uteMDd-hdrExpanderDesign-default .uteMChkBox-chk {
     width: 20px;
     height: 15px;
@@ -71,3 +70,4 @@
 .uteMDd-hdrExpanderDesign-default .uteMChkBox-intChk:checked + .uteMChkBox-chk::after {
     transform: translate(5px, 4px) rotate(45deg);
 }
+*/

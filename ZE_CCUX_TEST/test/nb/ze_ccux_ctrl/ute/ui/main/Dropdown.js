@@ -17,7 +17,7 @@ sap.ui.define(
                 library: 'nb.ui.main',
 
                 properties: {
-                    design: { type: 'nb.ui.main.DropdownDesign', defaultValue: nb.ui.main.DropdownDesign.Default },
+                    design: { type: 'nb.ui.main.DropdownDesign', defaultValue: nb.ui.main.DropdownDesign.Default},
                     expanded: { type: 'boolean', defaultValue: false },
                     key: { type: 'string', defaultValue: null },
                     selected: { type: 'boolean', defaultValue: false }
@@ -100,11 +100,6 @@ sap.ui.define(
         content : [ this ], //complete calendar control which should be displayed on the popup
 
     }*/);
-
-
-
-
-
 
         };
 

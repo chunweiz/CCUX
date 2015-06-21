@@ -16,23 +16,23 @@
                 "State":"State 1",
                 "ZipCode":"ZipCode 1",
                 "__metadata":{
-                    "id":"../../data/dashboard/devtest/BpSearchs('PartnerID 1')",
+                    "id":"../../data/dashboard/devtest/BpSearchs('1121')",
                     "type":"ZE_CCUX_SRV.BpSearch",
-                    "uri":"../../data/dashboard/devtest/BpSearchs('PartnerID 1')"
+                    "uri":"../../data/dashboard/devtest/BpSearchs('1121')"
                 },
                 "Buag":{
                     "__deferred":{
-                        "uri":"../../data/dashboard/devtest/BpSearchs('PartnerID 1')/Buag"
+                        "uri":"../../data/dashboard/devtest/BpSearchs('1121')/Buag"
                     }
                 },
                 "Contract":{
                     "__deferred":{
-                        "uri":"../../data/dashboard/devtest/BpSearchs('PartnerID 1')/Contract"
+                        "uri":"../../data/dashboard/devtest/BpSearchs('1121')/Contract"
                     }
                 },
                 "Partner":{
                     "__deferred":{
-                        "uri":"../../data/dashboard/devtest/BpSearchs('PartnerID 1')/Partner"
+                        "uri":"../../data/dashboard/devtest/BpSearchs('1121')/Partner"
                     }
                 }
             },

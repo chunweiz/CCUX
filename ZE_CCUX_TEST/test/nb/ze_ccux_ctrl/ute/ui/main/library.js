@@ -62,7 +62,8 @@ sap.ui.define(
 
          nb.ui.main.DropdownDesign = {
             None: 'None',
-            Default: 'Default'
+            Default: 'Default',
+            Harrow: 'Harrow'
         };
 
         return nb.ui.main;

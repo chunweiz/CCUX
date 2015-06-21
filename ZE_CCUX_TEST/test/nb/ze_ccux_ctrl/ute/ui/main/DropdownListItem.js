@@ -9,20 +9,20 @@ sap.ui.define(
     function (jQuery, Control, EnabledPropagator) {
         'use strict';
 
-        var Element = CoreElement.extend('nb.control.lib.ui.DropdownListItem', {
+        var Element = CoreElement.extend('nb.ui.main.DropdownListItem', {
             metadata: {
-                library: 'nb.control.lib.ui',
+                library: 'nb.ui.main',
 
                 properties: {
-               key: {
+                  /*  key: {
                         type: 'string',
                         defaultValue: null
-                    }
-                    /*design: { type: 'ute.ui.main.DropdownListItemDesign', defaultValue: ute.ui.main.DropdownListItemDesign.Default },
+                    }*/
+                    design: { type: 'nb.ui.main.DropdownListItemDesign', defaultValue: nb.ui.main.DropdownListItemDesign.Default },
                     key: { type: 'string', defaultValue: null },
                     group: { type: 'string', defaultValue: null },
                     selected: { type: 'boolean', defaultValue: false },
-                    enabled: { type: 'boolean', defaultValue: true }*/
+                    enabled: { type: 'boolean', defaultValue: true }
 
                 },
 
@@ -38,7 +38,6 @@ sap.ui.define(
             }
         });
 
-/*
         EnabledPropagator.call(CustomControl.prototype);
 
         CustomControl.prototype.exit = function () {
@@ -82,7 +81,6 @@ sap.ui.define(
             this.setProperty('enabled', bEnabled);
             return this;
         };
-*/
 
         return Element;
     },

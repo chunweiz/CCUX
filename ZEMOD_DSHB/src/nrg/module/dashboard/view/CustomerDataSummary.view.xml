@@ -12,41 +12,69 @@
         <ute:content>
             <ute:TextView
                 class="nrgDashboard-cusDataSum-bpName"
-                design="Large" text="BP_Name_Here">
+                design="Large" text="{'oSmryBpInf>/FullName'}">
             </ute:TextView>
             <!--Badge-->
             <ute:Badge id="idBadgeCI" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
+                visible="{
+                    parts:['oSmryBpInf>/BadgeCI'],
+                    formatter:'._formatBadge'
+                }"
                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CIClr}"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CITxt}">
             </ute:Badge>
             <ute:Badge id="idBadgeCC" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
+                visible="{
+                    parts:['oSmryBpInf>/BadgeCC'],
+                    formatter:'._formatBadge'
+                }"
                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CCClr}"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CCTxt}">
             </ute:Badge>
             <ute:Badge id="idBadgeSN" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
+                visible="{
+                    parts:['oSmryBpInf>/BadgeSN'],
+                    formatter:'._formatBadge'
+                }"
                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SNClr}"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SNTxt}">
             </ute:Badge>
             <ute:Badge id="idBadgeRS" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
+                visible="{
+                    parts:['oSmryBpInf>/BadgeRS'],
+                    formatter:'._formatBadge'
+                }"
                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RSClr}"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RSTxt}">
             </ute:Badge>
             <ute:Badge id="idBadgeBC" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
+                visible="{
+                    parts:['oSmryBpInf>/BadgeBC'],
+                    formatter:'._formatBadge'
+                }"
                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_BCClr}"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_BCTxt}">
             </ute:Badge>
             <ute:Badge id="idBadgeRHS" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
+                visible="{
+                    parts:['oSmryBpInf>/BadgeRXS'],
+                    formatter:'._formatBadge'
+                }"
                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RHSClr}"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RHSTxt}">
             </ute:Badge>
             <ute:Badge id="idBadgeSS" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
+                visible="{
+                    parts:['oSmryBpInf>/BadgeSS'],
+                    formatter:'._formatBadge'
+                }"
                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SSClr}"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SSTxt}">
             </ute:Badge>
@@ -59,7 +87,7 @@
                 </utmain:Label>
                 <ute:Tag elem="span"
                     id="db_verify_BP"
-                    text="00000000">
+                    text="{oSmryBpInf>/PartnerID}">
                 </ute:Tag>
             </ute:Tag>
             <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">
