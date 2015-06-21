@@ -23,7 +23,7 @@
                 </u:Button>
             </u:Tag>
         </u:Tag>
-        <um:Dialog id="idnrgCamTlsDialog" class="nrgCamTls-dialog">
+        <u:Dialog id="idnrgCamTlsDialog" class="nrgCamTls-dialog">
             <u:Tag class="nrgCamTls-ttl" text="You have pending request(s). Would you like to cancel any pending requests?" />
           <u:Tag class="nrgCamTls-Table">
                 <u:Table width="60%"
