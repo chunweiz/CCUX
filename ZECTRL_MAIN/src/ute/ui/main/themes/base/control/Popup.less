@@ -1,11 +1,65 @@
 .uteMPopup {
-    display: inline-block;
-    position: relative;
+
 }
 
 /*
 ** Design default
 */
 .uteMPopup-design-default {
+    border-radius: 4px;
+    background-color: @uteColor-blue-lightPale;
+}
 
+.uteMPopup-design-default .sapUiDlgHdr > .sapUiDlgHdrLeft {
+	font-weight: @uteFontWeight-bold;
+    color: @uteColor-grey-dark;
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	padding-right: 20px;
+	text-overflow: ellipsis;
+}
+
+.uteMPopup-design-default .sapUiDlgHdr .sapUiDlgHdrBtns > .sapUiDlgCloseBtn {
+    background-image: none;
+}
+
+.uteMPopup-design-default .sapUiDlgHdr .sapUiDlgHdrBtns > .sapUiDlgCloseBtn:hover {
+    background-color: transparent;
+}
+
+.uteMPopup-design-default .sapUiDlgHdr .sapUiDlgHdrBtns > .sapUiDlgCloseBtn::before {
+    content: '';
+    position: absolute;
+    height: 18px;
+    width: 1px;
+    background-color: @uteColor-grey-dark;
+    transform: translate(8px, 0) rotate(45deg);
+}
+
+.uteMPopup-design-default .sapUiDlgHdr .sapUiDlgHdrBtns:hover > .sapUiDlgCloseBtn::before {
+    background-color: @uteColor-grey-light;
+}
+
+.uteMPopup-design-default .sapUiDlgHdr .sapUiDlgHdrBtns > .sapUiDlgCloseBtn::after {
+    content: '';
+    position: absolute;
+    height: 18px;
+    width: 1px;
+    background-color: @uteColor-grey-dark;
+    transform: rotate(-45deg);
+}
+
+.uteMPopup-design-default .sapUiDlgHdr .sapUiDlgHdrBtns:hover > .sapUiDlgCloseBtn::after {
+    background-color: @uteColor-grey-light;
+}
+
+.uteMPopup-design-default .sapUiDlgHdrSep {
+    height: 1px;
+	background-color: @uteColor-grey-dark;
+}
+
+.uteMPopup-design-default .sapUiDlgCont {
+    background-color: @uteColor-blue-lightPale;
+    margin: 10px;
 }

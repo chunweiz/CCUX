@@ -81,7 +81,6 @@ sap.ui.define(
         };
 
         ute.ui.main.PopupDesign = {
-            None: 'None',
             Default: 'Default'
         };
 

@@ -3,26 +3,20 @@
 
 sap.ui.define(
     [
-        'jquery.sap.global',
         'sap/ui/core/Control',
-        'sap/ui/core/Popup',
-        'sap/ui/core/OpenState',
-        'sap/ui/core/delegate/ScrollEnablement'
+        'sap/ui/commons/Dialog'
     ],
 
-    function (jQuery, Control, CorePopup, OpenState, ScrollEnablement) {
+    function (Control, Dialog) {
         'use strict';
 
         var CustomControl = Control.extend('ute.ui.main.Popup', {
             metadata: {
                 library: 'ute.ui.main',
 
-                interfaces: [
-                    'sap.ui.core.PopupInterface'
-                ],
-
                 properties: {
-                    design: { type: 'ute.ui.main.PopupDesign', defaultValue: ute.ui.main.PopupDesign.Default }
+                    design: { type: 'ute.ui.main.PopupDesign', defaultValue: ute.ui.main.PopupDesign.Default },
+                    title: { type: 'string', defaultValue: null }
                 },
 
                 aggregations: {
@@ -32,26 +26,21 @@ sap.ui.define(
                 defaultAggregation: 'content',
 
                 events: {
-                    beforeOpen: {},
-                    afterOpen: {},
-                    beforeClose: {},
-                    afterClose: {}
+                    close: {}
                 }
             }
         });
 
         CustomControl.prototype.init = function () {
-            this._oCorePopup = new CorePopup();
+            this._oDialog = new Dialog({
+                applyContentPadding: false,
+                modal: true,
+                resizable: true
+            });
 
-
-        };
-
-        CustomControl.prototype.onBeforeRendering = function () {
-
-        };
-
-        CustomControl.prototype.onAfterRendering = function () {
-
+            this._oDialog.addStyleClass('uteMPopup');
+            this._oDialog.addStyleClass('uteMPopup-design-default');
+            this._oDialog.attachClosed(jQuery.proxy(this._handleDialogClosed, this));
         };
 
         CustomControl.prototype.exit = function () {
@@ -59,45 +48,30 @@ sap.ui.define(
         };
 
         CustomControl.prototype.open = function () {
-            if (this._oCorePopup.isOpen()) {
+            if (this._oDialog.isOpen()) {
                 return this;
             }
 
-            this.fireBeforeOpen();
+            this._oDialog.removeContent(this);
+            this._oDialog.addContent(this);
+            this._oDialog.open();
 
-            this._oCorePopup.attachOpened(this._onCorePopupOpened, this);
-            this._oCorePopup.setContent(this);
-            this._oCorePopup.setPosition(CorePopup.Dock.CenterCenter, CorePopup.Dock.CenterCenter, window, '0 0', 'fit');
-            this._oCorePopup.setModal(true);
-
-            this._oCorePopup.open();
             return this;
         };
 
         CustomControl.prototype.close = function () {
-            var eOpenState = this._oCorePopup.getOpenState();
-
-            if (!(eOpenState === OpenState.CLOSED || eOpenState === OpenState.CLOSING)) {
-                this.fireBeforeClose();
-                this._oCorePopup.attachClosed(this._onCorePopupClosed, this);
-                this._oCorePopup.close();
-            }
-
+            this._oDialog.close();
             return this;
         };
 
-        CustomControl.prototype.isOpen = function () {
-            return this._oCorePopup && this._oCorePopup.isOpen();
+        CustomControl.prototype._handleDialogClosed = function (oControlEvent) {
+            this.fireClose();
         };
 
-        CustomControl.prototype._onCorePopupOpened = function () {
-            this._oCorePopup.detachOpened(this._onCorePopupOpened, this);
-            this.fireAfterOpen();
-        };
-
-        CustomControl.prototype._onCorePopupClosed = function () {
-            this._oCorePopup.detachClosed(this._onCorePopupClosed, this);
-            this.fireAfterClose();
+        CustomControl.prototype.setTitle = function (sValue) {
+            this._oDialog.setTitle(sValue);
+            this.setProperty('title', sValue);
+            return this;
         };
 
         return CustomControl;
