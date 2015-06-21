@@ -180,6 +180,15 @@ sap.ui.define(
             this.getView().addDependent(oDialog);
             oDialog.open();
         };
+        /**
+		 * Back to Overview page function
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.backToOverview = function (oEvent) {
+            this.navTo("campaign", {coNum : "1121"});
+        };
         return Controller;
     }
 );
