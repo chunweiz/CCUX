@@ -130,6 +130,9 @@ sap.ui.define(
             Transparent: 'Transparent',
             Inactive: 'Inactive'
         };
+        nb.control.lib.ui.DropdownDesign = {
+          Default: 'Default'
+        };
 
    /*Designs for TextView.*/
 

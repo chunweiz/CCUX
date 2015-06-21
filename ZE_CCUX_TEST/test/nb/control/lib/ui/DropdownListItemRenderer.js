@@ -1,6 +1,7 @@
 /*global sap, ute*/
 /*jslint nomen:true*/
 
+/*
 sap.ui.define(
     [],
 
@@ -20,10 +21,12 @@ sap.ui.define(
 
             oRm.writeClasses();
             oRm.write('>');
+*/
 
             /*
             ** Internal radio button for state management
             */
+/*
             oRm.write('<input type="radio"');
             oRm.writeAttribute('id', oCustomControl.getId() + '-int');
 
@@ -42,10 +45,12 @@ sap.ui.define(
             oRm.addClass('uteMDdListItem-int');
             oRm.writeClasses();
             oRm.write('/>');
+*/
 
             /*
             ** This is the content that the user will interact with
             */
+/*
             oRm.write('<label');
             oRm.writeAttribute('id', oCustomControl.getId() + '-ext');
             oRm.writeAttribute('for', oCustomControl.getId() + '-int');
@@ -74,3 +79,4 @@ sap.ui.define(
 
     true
 );
+*/
