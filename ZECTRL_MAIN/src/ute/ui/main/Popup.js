@@ -36,7 +36,7 @@ sap.ui.define(
             this._oDialog = new Dialog({
                 applyContentPadding: false,
                 modal: true,
-                resizable: true
+                resizable: false
             });
 
             this._oDialog.addStyleClass('uteMPopup');
@@ -45,7 +45,15 @@ sap.ui.define(
         };
 
         CustomControl.prototype.exit = function () {
+            if (!this._oDialog) {
+                return;
+            }
 
+            if (this._oDialog.isOpen()) {
+                this._oDialog.close();
+            }
+
+            this._oDialog.destroy();
         };
 
         CustomControl.prototype.open = function () {
