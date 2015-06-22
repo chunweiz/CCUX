@@ -213,7 +213,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.backToOverview = function (oEvent) {
-            this.navTo("campaign", {coNum : "1121"});
+            this.navTo("campaign", {coNum : "34805112", typeV : "C"});
         };
 
         return Controller;
