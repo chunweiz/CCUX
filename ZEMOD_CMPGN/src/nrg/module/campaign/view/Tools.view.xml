@@ -4,7 +4,9 @@
     xmlns:um="ute.ui.main"
     xmlns:c="sap.ui.commons"
     xmlns:mvc="sap.ui.core.mvc"
-    controllerName="nrg.module.campaign.view.Tools">
+    controllerName="nrg.module.campaign.view.Tools"
+    busy="{appView>/busy}"
+    busyIndicatorDelay="{appView>/delay}">
 
     <u:Tag class="nrgToolsEmpty nrgAppMain-toolsContent nrgAppMain-toolsContent-full">
         <u:Tag class="nrgCamTls" >

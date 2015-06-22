@@ -10,7 +10,9 @@
           controllerName="nrg.module.campaign.view.Offers"
           height="100%"
           width="100%"
-          displayBlock="true">
+          displayBlock="true"
+          busy="{appView>/busy}"
+	      busyIndicatorDelay="{appView>/delay}">
     <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
         <u:Tag class="nrgCmpOff">
             <u:Tag class="nrgCamOff-ttl" text="{comp-i18n-campaign>nrgCmpOffTtl}" />

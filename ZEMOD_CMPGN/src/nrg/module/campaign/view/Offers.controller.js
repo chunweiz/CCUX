@@ -7,10 +7,11 @@ sap.ui.define(
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
         'jquery.sap.global',
-        'nrg/base/type/Price'
+        'nrg/base/type/Price',
+        "sap/ui/model/json/JSONModel"
     ],
 
-    function (CoreController, Filter, FilterOperator, jQuery, price) {
+    function (CoreController, Filter, FilterOperator, jQuery, price, JSONModel) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.Offers');
@@ -80,8 +81,14 @@ sap.ui.define(
                 mParameters,
                 aFilters = this._createSearchFilterObject("1121", "P"),
                 oTileContainer,
-                oTileTemplate;
-
+                oTileTemplate,
+                oViewModel,
+                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay();
+            oViewModel = new JSONModel({
+				busy : true,
+				delay : 0
+			});
+            this.getView().setModel(oViewModel, "appView");
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCpgChangeOffSet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
@@ -95,6 +102,7 @@ sap.ui.define(
                 filters : aFilters
             };
             oTileContainer.bindAggregation("content", mParameters);
+            this.getView().getModel("appView").setProperty("/busy", false);
 
         };
         /**

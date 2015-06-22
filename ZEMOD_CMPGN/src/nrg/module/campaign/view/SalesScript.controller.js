@@ -7,10 +7,11 @@ sap.ui.define(
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
         'jquery.sap.global',
-        'ute/ui/commons/Dialog'
+        'ute/ui/commons/Dialog',
+        "sap/ui/model/json/JSONModel"
     ],
 
-    function (CoreController, Filter, FilterOperator, jQuery, Dialog) {
+    function (CoreController, Filter, FilterOperator, jQuery, Dialog, JSONModel) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.SalesScript');
@@ -38,6 +39,7 @@ sap.ui.define(
                             path : sPath
                         });
                     }
+                    that.getView().getModel("appView").setProperty("/busy", false);
                     obinding.detachDataReceived(handler);
                 };
             obinding = oDropDownList.getBinding("DropdownListItems");
@@ -65,7 +67,14 @@ sap.ui.define(
                 oDropDownList,
                 oDropDownListItemTemplate,
                 sType,
-                sOfferCode;
+                sOfferCode,
+                oViewModel,
+                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay();
+            oViewModel = new JSONModel({
+				busy : true,
+				delay : 0
+			});
+            this.getView().setModel(oViewModel, "appView");
             sType = oEvent.getParameter("arguments").typeV;
             sOfferCode = oEvent.getParameter("arguments").offercodeNum;
             sCurrentPath = "/CpgChgOfferS";

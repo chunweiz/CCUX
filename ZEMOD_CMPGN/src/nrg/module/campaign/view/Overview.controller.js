@@ -33,7 +33,7 @@ sap.ui.define(
                 handler = function () {
                     aContent = aToggleContainer.getContent();
                     if ((aContent !== undefined) && (aContent.length > 0)) {
-                        if (aContent.length === 1) { // As backend data is null, show only current campaign data irrespective of the flag
+                        if (aContent.length === 1) { // show only current campaign data irrespective of the flag
                             sTempValue = aContent[0].getBindingContext("comp-campaign").getProperty("Type");
                             if (sTempValue === that.sFlag) {
                                 sPath = aContent[0].getBindingContext("comp-campaign").getPath();
@@ -191,9 +191,6 @@ sap.ui.define(
             } else {
                 this.navTo("campaignoffers", {coNum: sContract});
             }
-
-
-
         };
 
         /**
