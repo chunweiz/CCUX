@@ -38,6 +38,23 @@ sap.ui.define(
 
         };
 
+        CustomControl.prototype.onBeforeRendering = function () {
+
+        };
+
+        CustomControl.prototype.onAfterRendering = function () {
+            var aContent = this.getContent() || [];
+
+            aContent.forEach(function (oContent) {
+                oContent.detachPress(this._handleItemPressed);
+                oContent.attachPress(this._handleItemPressed);
+            }.bind(this));
+        };
+
+        CustomControl.prototype.exit = function () {
+
+        };
+
         CustomControl.prototype._handleItemPressed = function (oControlEvent) {
             this.fireSelect({
                 selectedItem: oControlEvent.getSource()
