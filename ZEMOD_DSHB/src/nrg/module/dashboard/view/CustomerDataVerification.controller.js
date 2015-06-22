@@ -7,7 +7,7 @@ sap.ui.define(
         'sap/ui/core/routing/HashChanger'
     ],
 
-    function (CoreController, Filter, FilterOperator, HashChanger) {
+    function (CoreController, HashChanger) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataVerification');
@@ -27,10 +27,6 @@ sap.ui.define(
 
             this._initDtaVrfRetr();
 
-            //Get the hash to retrieve bp #
-            /*var oHashChanger = new HashChanger(),
-                sUrlHash = oHashChanger.getHash();*/
-
             /*var eventBus = sap.ui.getCore().getEventBus();
 
             eventBus.publish("channel1", "event1",
@@ -40,12 +36,22 @@ sap.ui.define(
             );*/
         };
 
+        Controller.prototype._retrUrlHash = function () {
+            //Get the hash to retrieve bp #
+            var oHashChanger = new HashChanger(),
+                sUrlHash = oHashChanger.getHash();
+
+            return sUrlHash;
+        };
+
         Controller.prototype._initDtaVrfRetr = function () {
             var sPath, aSplitHash, iSplitHashL;
 
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
             sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')' + '?$expand=Buags,Contracts';
+
+            this._retrDataVrf(sPath);
 
         };
 
@@ -56,7 +62,7 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     if (oData) {
-                        this.getView().getModel('oSmryBpSegInf').setData(oData.results);
+                        this.getView().getModel('oDtaVrfyBP').setData(oData.results);
                     }
                 }.bind(this),
                 error: function (oError) {

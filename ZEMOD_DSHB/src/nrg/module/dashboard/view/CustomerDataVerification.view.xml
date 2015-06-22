@@ -6,7 +6,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:c="sap.ui.commons"
     xmlns:l="sap.ui.commons.layout"
-    controllerName="nrg.module.dashboard.view.CallerNoIDEnrollment">
+    controllerName="nrg.module.dashboard.view.CustomerDataVerification">
 
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-cusDataVerify">
         <l:MatrixLayout
