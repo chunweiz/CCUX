@@ -24,6 +24,8 @@ sap.ui.define(
         Controller.prototype.onAfterRendering = function () {
             var aContent, obinding, sPath, that = this,
                 oScrollContainer = this.getView().byId("idnrgCamHisScroll"),
+                oDataTag = this.getView().byId("idnrgCamHis"),
+                oNoDataTag = this.getView().byId("idnrgCamHisNoData"),
                 handler = function () {
                     aContent = oScrollContainer.getContent();
                     if ((aContent !== undefined) && (aContent.length > 0)) {
@@ -33,7 +35,11 @@ sap.ui.define(
                             model : "comp-campaign",
                             path : sPath
                         });
+                    } else {
+                        oDataTag.addStyleClass("nrgCamHis-hide");
+                        oNoDataTag.removeStyleClass("nrgCamHis-hide");
                     }
+
                     obinding.detachDataReceived(handler);
                 };
             obinding = oScrollContainer.getBinding("content");

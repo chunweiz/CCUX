@@ -22,7 +22,9 @@ sap.ui.define(
                 'ute.ui.main.CheckboxDesign',
                 'ute.ui.main.RadioButtonDesign',
                 'ute.ui.main.InfolineDesign',
-                'ute.ui.main.PopupDesign'
+                'ute.ui.main.PopupDesign',
+                'ute.ui.main.DropdownDesign',
+                'ute.ui.main.DropdownItemDesign'
             ],
 
 			controls: [
@@ -35,7 +37,9 @@ sap.ui.define(
                 'ute.ui.main.Checkbox',
                 'ute.ui.main.RadioButton',
                 'ute.ui.main.Infoline',
-                'ute.ui.main.Popup'
+                'ute.ui.main.Popup',
+                'ute.ui.main.Dropdown',
+                'ute.ui.main.DropdownItem'
 			],
 
 			elements: [],
@@ -83,6 +87,14 @@ sap.ui.define(
         ute.ui.main.PopupDesign = {
             Default: 'Default'
         };
+
+        ute.ui.main.DropdownDesign = {
+            None: 'None',
+            Default: 'Default',
+            Plain: 'Plain'
+        };
+
+        ute.ui.main.DropdownItemDesign = ute.ui.main.DropdownDesign;
 
         return ute.ui.main;
     },
