@@ -84,6 +84,14 @@ sap.ui.define(
             return this;
         };
 
+        CustomControl._getRadioButtonGroupRegistry = function () {
+            if (!this._oRadioButtonGroupRegistry) {
+                this._oRadioButtonGroupRegistry = [];
+            }
+
+            return this._oRadioButtonGroupRegistry;
+        };
+
         return CustomControl;
     },
 
