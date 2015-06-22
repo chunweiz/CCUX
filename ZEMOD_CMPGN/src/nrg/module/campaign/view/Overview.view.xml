@@ -49,7 +49,7 @@
                 </um:button>
             </article>
             <um:TabBar id="idnrgCamOvr-TabBar" design="None" class="nrgCamOvr-TabBar nrgCamOvr-top" >
-                <um:TabBarItem design="Default" key="tb001" press=".toggleCampaign" >
+                <um:TabBarItem design="Default" key="tb001" press=".toggleCampaign" enabled="{= ${comp-campaign>OfferCode} !== '' }">
                     <u:Tag text="{parts:[{path:'comp-campaign>Type'}],
                                                     formatter:'.formatType'}" />
                 </um:TabBarItem>

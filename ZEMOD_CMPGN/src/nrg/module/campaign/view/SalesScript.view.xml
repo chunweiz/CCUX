@@ -4,6 +4,7 @@
           xmlns:c="sap.ui.commons"
           xmlns:core="sap.ui.core"
           xmlns:u="ute.ui.commons"
+          xmlns:um="ute.ui.main"
           xmlns:l="sap.ui.commons.layout"
           controllerName="nrg.module.campaign.view.SalesScript"
           height="100%"
