@@ -90,7 +90,8 @@ sap.ui.define(
 
         ute.ui.main.DropdownDesign = {
             None: 'None',
-            Default: 'Default'
+            Default: 'Default',
+            Plain: 'Plain'
         };
 
         ute.ui.main.DropdownItemDesign = ute.ui.main.DropdownDesign;
