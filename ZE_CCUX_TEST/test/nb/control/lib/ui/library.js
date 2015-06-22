@@ -29,7 +29,10 @@ sap.ui.define(
                 'nb.control.lib.ui.TextViewColor',
                 'nb.control.lib.ui.LabelDesign',
                 'nb.control.lib.ui.LabelNotificationDesign',
-                'nb.control.lib.ui.LabelCampaignDesign'
+                'nb.control.lib.ui.LabelCampaignDesign',
+                'nb.control.lib.ui.DropdownDesign',
+                'nb.control.lib.ui.DropdownListItemDesign'
+
 
             ],
 
@@ -54,8 +57,6 @@ sap.ui.define(
                 'nb.control.lib.ui.ScrollContainer',
                 'nb.control.lib.ui.Label',
                 'nb.control.lib.ui.Label2'
-
-
 
 			],
 
@@ -131,6 +132,9 @@ sap.ui.define(
             Inactive: 'Inactive'
         };
         nb.control.lib.ui.DropdownDesign = {
+          Default: 'Default'
+        };
+        nb.control.lib.ui.DropdownListItemDesign = {
           Default: 'Default'
         };
 

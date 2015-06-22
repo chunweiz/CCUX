@@ -28,8 +28,8 @@
           <u:Tag class="nrgCamTls-Table">
                 <u:Table width="60%"
                     id="idnrgCamTls-pendTable"
-                    class="nrgCamOvr-left nrgCamOvr-top"
-                    rows="{comp-campaign>/PendSwapS}">
+                    class="nrgCamOvr-left nrgCamOvr-top">
+                    <!--rows="{comp-campaign>/PendSwapS}">-->
                         <u:columns>
                             <u:TableColumn width="auto" >
                                 <c:Label text="Offer Description"/>
