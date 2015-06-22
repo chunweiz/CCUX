@@ -20,7 +20,7 @@
          },
         {
             "Type":"PE",
-            "Contract":"34805112",
+            "Contract":"1",
             "OfferCode":"",
             "StartDate":"",
             "EndDate":"",
@@ -37,7 +37,7 @@
          },
          {
             "Type":"PE",
-            "Contract":"Contract",
+            "Contract":"34805112",
             "OfferCode":"OfferCode 2",
             "StartDate":"/Date(965415969000)/",
             "EndDate":"/Date(1187377569000)/",

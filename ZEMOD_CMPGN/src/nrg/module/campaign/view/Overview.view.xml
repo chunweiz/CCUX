@@ -10,7 +10,9 @@
           controllerName="nrg.module.campaign.view.Overview"
           height="100%"
           width="100%"
-          displayBlock="true">
+          displayBlock="true"
+	      busy="{appView>/busy}"
+	      busyIndicatorDelay="{appView>/delay}">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
       <u:Tag class="nrgCamOvrT">
          <u:Tag class="nrgCamOvr-Title" text="{comp-i18n-campaign>nrgCmpOvrTtl}" />
@@ -19,8 +21,7 @@
                            press=".onOffers"
                            text="{Overview-elig>Notitle}"
                            class="nrgCamOvr-offerBtn"
-                           design="None"
-                           enabled="{= ${Overview-elig>CustEligFlag} !== '' }">
+                           design="None">
                     <u:Tag class="nrgCamOvr-offerBtnTitle"
                            text="{comp-i18n-appFtr>nrgAppFooterCustReqOffer}" />
                     <u:Tag id="idCamCustReqOffer"

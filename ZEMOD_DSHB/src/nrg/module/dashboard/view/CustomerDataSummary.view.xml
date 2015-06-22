@@ -12,7 +12,7 @@
         <ute:content>
             <ute:TextView
                 class="nrgDashboard-cusDataSum-bpName"
-                design="Large" text="{'oSmryBpInf>/FullName'}">
+                design="Large" text="{oSmryBpInf>/FullName}">
             </ute:TextView>
             <!--Badge-->
             <ute:Badge id="idBadgeCI" size="30px"

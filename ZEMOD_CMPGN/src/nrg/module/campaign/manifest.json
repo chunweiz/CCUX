@@ -31,7 +31,7 @@
         "routing": {
            "routes": {
                 "campaign": {
-                    "pattern": "campaign/co/{coNum}",
+                    "pattern": "campaign/co/{coNum}/type/{typeV}",
                     "target": [ "campaign.Overview", "dashboard.SummaryBP", "campaign.Tools" ]
                 },
                 "campaignchg": {

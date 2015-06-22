@@ -6,10 +6,11 @@ sap.ui.define(
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
         'jquery.sap.global',
-        'nrg/base/type/Price'
+        'nrg/base/type/Price',
+        "sap/ui/model/json/JSONModel"
     ],
 
-    function (CoreController, Filter, FilterOperator, jQuery, price) {
+    function (CoreController, Filter, FilterOperator, jQuery, price, JSONModel) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.Tools');
@@ -27,6 +28,14 @@ sap.ui.define(
 		 * @private
 		 */
         Controller.prototype._onObjectMatched = function (oEvent) {
+            var oViewModel,
+                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay();
+            oViewModel = new JSONModel({
+				busy : true,
+				delay : 0
+			});
+            this.getView().setModel(oViewModel, "appView");
+            this.getView().getModel("appView").setProperty("/busy", false);
             Controller.sContract = oEvent.getParameter("arguments").coNum;
 		};
        /**
@@ -143,7 +152,6 @@ sap.ui.define(
             this.getView().addDependent(oDialog);
             oDialog.open();
         };
-
         return Controller;
     }
 

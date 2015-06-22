@@ -6,10 +6,11 @@ sap.ui.define(
         'nrg/base/view/BaseController',
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
-        'jquery.sap.global'
+        'jquery.sap.global',
+        "sap/ui/model/json/JSONModel"
     ],
 
-    function (CoreController, Filter, FilterOperator, jQuery) {
+    function (CoreController, Filter, FilterOperator, jQuery, JSONModel) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.Change');
@@ -40,7 +41,14 @@ sap.ui.define(
                 sCurrentPath,
                 mParameters,
                 sContract,
-                sNewOfferCode;
+                sNewOfferCode,
+                oViewModel,
+                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay();
+            oViewModel = new JSONModel({
+				busy : true,
+				delay : 0
+			});
+            this.getView().setModel(oViewModel, "appView");
             sContract = oEvent.getParameter("arguments").coNum;
             sNewOfferCode = oEvent.getParameter("arguments").offercodeNum;
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
@@ -59,6 +67,7 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sCurrentPath, mParameters);
             }
+            this.getView().getModel("appView").setProperty("/busy", false);
 		};
 
         /**
@@ -74,6 +83,7 @@ sap.ui.define(
                 model : "comp-campaign",
                 path : sObjectPath
             });
+
 
         };
         /**
@@ -131,7 +141,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.backToOverview = function (oEvent) {
-            this.navTo("campaign", {coNum : "1121"});
+            this.navTo("campaign", {coNum : "34805112", typeV : "C"});
         };
         return Controller;
     }
