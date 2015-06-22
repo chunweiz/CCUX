@@ -79,7 +79,7 @@ sap.ui.define(
                 path : sCurrentPath,
                 template : oDropDownListItemTemplate,
                // filters : aFilters,
-                parameters: {expand: "CpqScript_N"}
+                parameters: {expand: "Cpg_Script"}
 
             };
             oDropDownList.bindAggregation("DropdownListItems", mParameters);

@@ -39,14 +39,17 @@ sap.ui.define(
 		 */
         Controller.prototype.createSearchFilterObject = function (aFilterIds, aFilterValues) {
             var aFilters = [],
-                oFilterTemplate = new Filter(),
+                oFilterTemplate,
                 iCount;
 
             for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
+                oFilterTemplate = new Filter();
                 oFilterTemplate.sPath = aFilterIds[iCount];
                 oFilterTemplate.sOperator = FilterOperator.EQ;
                 oFilterTemplate.oValue1 = aFilterValues[iCount];
+
                 aFilters.push(oFilterTemplate);
+
             }
             return aFilters;
         };
