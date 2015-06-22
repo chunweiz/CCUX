@@ -29,8 +29,6 @@ sap.ui.define(
         };
 
         Controller.prototype.onInit = function () {
-
-
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
             //Model to keep information to show
@@ -43,6 +41,18 @@ sap.ui.define(
             this._initRetrBpInf();
             this._initRetrBpSegInf();
 
+        };
+
+        Controller.prototype.onAfterRendering = function () {
+            var oEventBus = sap.ui.getCore().getEventBus();
+            oEventBus.subscribe("nrg.module.dashoard", "eBuagChanged", this._handleBuagChanged, this);
+            oEventBus.subscribe("nrg.module.dashoard", "eContractChanged", this._handleContractChanged, this);
+        };
+
+        Controller.prototype._handleBuagChanged = function (channel, event, data) {
+        };
+
+        Controller.prototype._handleContractChanged = function (channel, event, data) {
         };
 
         Controller.prototype._initRetrBpInf = function () {
