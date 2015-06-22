@@ -4,10 +4,12 @@
 sap.ui.define(
     [
         'nrg/base/view/BaseController',
+        'sap/ui/model/Filter',
+        'sap/ui/model/FilterOperator',
         'sap/ui/core/routing/HashChanger'
     ],
 
-    function (CoreController, HashChanger) {
+    function (CoreController, Filter, FilterOperator, HashChanger) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataVerification');
@@ -49,7 +51,7 @@ sap.ui.define(
 
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
-            sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')' + '?$expand=Buags,Contracts';
+            sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')';
 
             this._retrDataVrf(sPath);
 
@@ -60,9 +62,18 @@ sap.ui.define(
                 oParameters;
 
             oParameters = {
+                urlParameters: {"$expand": "Buags,Contracts"},
                 success : function (oData) {
                     if (oData) {
-                        this.getView().getModel('oDtaVrfyBP').setData(oData.results);
+                        this.getView().getModel('oDtaVrfyBP').setData(oData);
+                        if (oData.Buags.results[0]) {
+                            //Set the first Contract Account info to load to to verification screen first
+                            this.getView().getModel('oDtaVrfyBuags').setData(oData.Buags.results[0]);
+                        }
+                        if (oData.Contracts.results[0]) {
+                            //Again if there's first record of Contracts, load as default to display
+                            this.getView().getModel('oDtaVrfyContracts').setData(oData.Contracts.results[0]);
+                        }
                     }
                 }.bind(this),
                 error: function (oError) {

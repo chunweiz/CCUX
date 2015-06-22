@@ -18,15 +18,17 @@
                         <!--Area Left (active)-->
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-l">
                             <ute:Tag class="nrgDashboard-cusDataVerify-l-div">
-                                <ute:TextView text="ACTIVE"
+                                <ute:TextView text="{oDtaVrfyContracts>/ContractStatus}"
                                     class="nrgDashboard-cusDataVerify-l-div-title"/>
 
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
 
-                                <utmain:Label text="TDSP" labelFor="tdsp"
+                                <utmain:Label labelFor="tdsp"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TdspLbl}"
                                     class="nrgDashboard-cusDataVerify-l-div-tdspLabl"/>
-                                <ute:TextView id="tdsp" text="CENTERPOINT ENERGY"
+                                <ute:TextView id="tdsp"
+                                    text="{oDtaVrfyContracts>/TdspName}"
                                     class="nrgDashboard-cusDataVerify-l-div-tdspVal"/>
 
                                 <ute:HorizontalDivider
@@ -36,20 +38,20 @@
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell
                                             class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label text="METER. #"
-                                                labelFor="meter"
+                                            <utmain:Label labelFor="meter_num"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_MtrNum}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halflabl"/>
-                                            <ute:TextView id="meter"
-                                                text="123235457"
+                                            <ute:TextView id="meter_num"
+                                                text="{oDtaVrfyContracts>/MeterNumber}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell
-                                            class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label text="DESCRIPTION"
-                                                labelFor="desp"
+                                            class="{comp-i18n-dashboard>nrgDashboard-cusDataVerify-l-div-cell}">
+                                            <utmain:Label labelFor="desp_txt"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Desc}"
                                                 class="nrgDashboard-cusDataVerify-l-div-ritelabl"/>
-                                            <ute:TextView id="desp"
-                                                text="Non interval"
+                                            <ute:TextView id="desp_txt"
+                                                text="{oDtaVrfyContracts>/MeterDescription}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
@@ -62,20 +64,20 @@
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell
                                             class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label text="CONTRACT ACC"
-                                                labelFor="contacc"
+                                            <utmain:Label labelFor="contacc"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_ContAcc}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halflabl"/>
                                             <ute:TextView id="contacc"
-                                                text="0000000"
+                                                text="{oDtaVrfyContracts>/ContractAccountID}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell
                                             class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label text="RATE CLASS"
-                                                labelFor="rtcls"
+                                            <utmain:Label labelFor="rtcls_lbl"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RtCls}"
                                                 class="nrgDashboard-cusDataVerify-l-div-ritelabl"/>
-                                            <ute:TextView id="rtcls"
-                                                text="RES"
+                                            <ute:TextView id="rtcls_lbl"
+                                                text="{oDtaVrfyContracts>/RateClass}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
@@ -84,11 +86,12 @@
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
 
-                                <utmain:Label text="ESID" labelFor="esid"
+                                <utmain:Label  labelFor="esid_lbl"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_ESID}"
                                     class="nrgDashboard-cusDataVerify-l-div-esidLabl"/>
-                                <ute:TextView id="esid"
+                                <ute:TextView id="esid_lbl"
                                               class="nrgDashboard-cusDataVerify-l-div-tdspVal"
-                                              text="1234567891234567891234"/>
+                                              text="{oDtaVrfyContracts>/ESID}"/>
 
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
@@ -97,16 +100,20 @@
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell
                                             class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label text="DL #" labelFor="dl"
+                                            <utmain:Label labelFor="dl_lbl"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DlNum}"
                                                 class="nrgDashboard-cusDataVerify-l-div-ritelabl"/>
-                                            <ute:TextView id="dl" text="0000000000"
+                                            <ute:TextView id="dl_lbl"
+                                                text="{oDtaVrfyBP>/DL}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell
                                             class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label text="SS #" labelFor="ssn"
+                                            <utmain:Label labelFor="ssn_lbl"
+                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SSNum}"
                                                 class="nrgDashboard-cusDataVerify-l-div-ritelabl"/>
-                                            <ute:TextView id="ssn" text="*****1234"
+                                            <ute:TextView id="ssn_lbl"
+                                                text="{oDtaVrfyBP>/SSN}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
