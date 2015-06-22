@@ -15,7 +15,7 @@ sap.ui.define(
                 library: 'nb.control.lib.ui',
 
                 properties: {
-                    design: { type: 'nb.control.lib.ui.Dropdown', defaultValue: nb.control.lib.ui.DropdownDesign.Default }
+                    design: { type: 'nb.control.lib.ui.DropdownDesign', defaultValue: nb.control.lib.ui.DropdownDesign.Default}
                 },
 
                 aggregations: {
