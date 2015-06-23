@@ -15,114 +15,116 @@
 	      busyIndicatorDelay="{appView>/delay}">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
       <u:Tag id="idnrgCamHis" class="nrgCamHis">
-            <l:MatrixLayout class="nrgCamHis-Mtx nrgCamHis-top">
-                <l:MatrixLayoutRow>
-                    <l:MatrixLayoutCell>
-                        <u:TextView text="{comp-campaign>OfferTitle}"
-                                    class="nrgCamHis-left"
-                                    color="DarkGrey"
-                                    design="Base"/>
-                    </l:MatrixLayoutCell>
-                </l:MatrixLayoutRow>
-            </l:MatrixLayout>
-            <u:Tag>
-                <u:Table width="60%"
-                         tableType="CampaignTable"
-                         class="nrgCamHis-left nrgCamHis-top">
-                        <u:columns>
-                            <u:TableColumn width="33%" >
-                                <c:Label text="EFL@500"/>
-                            </u:TableColumn>
-                            <u:TableColumn width="33%" >
-                                <c:Label text="EFL@1000"/>
-                            </u:TableColumn>
-                            <u:TableColumn width="33%" >
-                                <c:Label text="EFL@2000"/>
-                            </u:TableColumn>
-                        </u:columns>
-                        <u:rows>
-                            <u:TableRow>
-                                <c:Label text="{comp-campaign>EFL500}"/>
-                                <c:Label text="{comp-campaign>EFL1000}"/>
-                                <c:Label text="{comp-campaign>EFL2000}"/>
-                            </u:TableRow>
-                        </u:rows>
-                </u:Table>
-            </u:Tag>
-            <u:Tag>
+              <u:Tag id="idnrgCamHisData">
+                <l:MatrixLayout class="nrgCamHis-Mtx nrgCamHis-top">
+                    <l:MatrixLayoutRow>
+                        <l:MatrixLayoutCell>
+                            <u:TextView text="{comp-campaign>OfferTitle}"
+                                        class="nrgCamHis-left"
+                                        color="DarkGrey"
+                                        design="Base"/>
+                        </l:MatrixLayoutCell>
+                    </l:MatrixLayoutRow>
+                </l:MatrixLayout>
+                <u:Tag>
+                    <u:Table width="60%"
+                             tableType="CampaignTable"
+                             class="nrgCamHis-left nrgCamHis-top">
+                            <u:columns>
+                                <u:TableColumn width="33%" >
+                                    <c:Label text="EFL@500"/>
+                                </u:TableColumn>
+                                <u:TableColumn width="33%" >
+                                    <c:Label text="EFL@1000"/>
+                                </u:TableColumn>
+                                <u:TableColumn width="33%" >
+                                    <c:Label text="EFL@2000"/>
+                                </u:TableColumn>
+                            </u:columns>
+                            <u:rows>
+                                <u:TableRow>
+                                    <c:Label text="{comp-campaign>EFL500}"/>
+                                    <c:Label text="{comp-campaign>EFL1000}"/>
+                                    <c:Label text="{comp-campaign>EFL2000}"/>
+                                </u:TableRow>
+                            </u:rows>
+                    </u:Table>
+                </u:Tag>
+                <u:Tag>
                     <u:TextView color="DarkGrey"
-                                class="nrgCamHis-left nrgCamHis-top"
-                                design="Base"
-                                text="{comp-campaign>Description}" />
+                                    class="nrgCamHis-left nrgCamHis-top"
+                                    design="Base"
+                                    text="{comp-campaign>Description}" />
+                </u:Tag>
+                <u:Table width="96%"
+                         class="nrgCamHis-top nrgCamHis-infoTable"
+                         tableType="CampaignTable">
+                    <u:columns>
+                        <u:TableColumn width="14%" >
+                            <c:Label text="Promo Code"/>
+                        </u:TableColumn>
+                        <u:TableColumn width="14%" >
+                             <c:Label text="Offer Code"/>
+                        </u:TableColumn>
+                        <u:TableColumn width="14%" >
+                             <c:Label text="Term Length"/>
+                        </u:TableColumn>
+                        <u:TableColumn width="14%" >
+                             <c:Label text="Cancellation Fee"/>
+                        </u:TableColumn>
+                    </u:columns>
+                    <u:rows>
+                        <u:TableRow>
+                            <c:Label text="{comp-campaign>Promo}"/>
+                            <c:Label text="{comp-campaign>OfferCode}"/>
+                            <c:Label text="{comp-campaign>Term}"/>
+                            <c:Label text="{comp-campaign>CncFee}"/>
+                        </u:TableRow>
+                    </u:rows>
+                </u:Table>
+                <u:Tag class="nrgCamHis-Div"></u:Tag>
+                <m:ScrollContainer
+                    height="135px"
+                    width="99%"
+                    horizontal="false"
+                    vertical="true"
+                    focusable="true"
+                    class="nrgCamHis-scroll"
+                    id="idnrgCamHisScroll" >
+                </m:ScrollContainer>
+           </u:Tag>
+           <u:Tag id="idnrgCamHisNoData" class="nrgCamHis-hide">
+                <u:TextView text="{comp-i18n-campaign>nrgCmpHisNoData}"
+                                        class="nrgCamHis-noData"
+                                        color="DarkGrey"
+                                        design="Base"/>
+           </u:Tag>
+            <!-- Place holder for templates to reuse for Bind Aggregation method. Below will be always Display:none -->
+            <u:Tag class="nrgCamHis-hide">
+                        <um:Button press=".onPressed"
+                                   text="{comp-campaign>Notitle}"
+                                   class="nrgCamHis-but"
+                                   id="idnrgCamHisBut"
+                                   design="None">
+                                <u:Tag class="nrgCamHis-but-Date"
+                                       text="{parts:[{path:'comp-campaign>StartDate',
+                                       type: 'sap.ui.model.type.Date',
+                                       formatOptions:{pattern: 'MM/dd/yyyy'} },
+                                       {path: 'comp-campaign>EndDate',
+                                       type: 'sap.ui.model.type.Date',
+                                       formatOptions:{pattern: 'MM/dd/yyyy'} }],
+                                       formatter:'.formatTileDate'}" />
+                                <u:Tag class="nrgCamHis-but-title"
+                                       text="{comp-campaign>OfferTitle}" />
+                                <u:Tag class="nrgCamHis-but-price"
+                                       text="{path: 'comp-campaign>EFL2000',
+                                       type: 'nrg.util.type.Price',
+                                       formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
+                                <u:Tag class="nrgCamHis-but-priceLbl"
+                                       text="{comp-i18n-campaign>nrgCmpHiskWhDisc}" />
+                        </um:Button>
             </u:Tag>
-            <u:Table width="99%"
-                     class="nrgCamHis-top"
-                     tableType="CampaignTable">
-                <u:columns>
-                    <u:TableColumn width="14%" >
-                        <c:Label text="Promo Code"/>
-                    </u:TableColumn>
-                    <u:TableColumn width="14%" >
-                         <c:Label text="Offer Code"/>
-                    </u:TableColumn>
-                    <u:TableColumn width="14%" >
-                         <c:Label text="Term Length"/>
-                    </u:TableColumn>
-                    <u:TableColumn width="14%" >
-                         <c:Label text="Cancellation Fee"/>
-                    </u:TableColumn>
-                </u:columns>
-                <u:rows>
-                    <u:TableRow>
-                        <c:Label text="{comp-campaign>Promo}"/>
-                        <c:Label text="{comp-campaign>OfferCode}"/>
-                        <c:Label text="{comp-campaign>Term}"/>
-                        <c:Label text="{comp-campaign>CncFee}"/>
-                    </u:TableRow>
-                </u:rows>
-            </u:Table>
-            <u:Tag class="nrgCamHis-Div"></u:Tag>
-          <m:ScrollContainer
-            height="135px"
-            width="100%"
-            horizontal="false"
-            vertical="true"
-            focusable="true"
-            class="nrgCamHis-scroll"
-            id="idnrgCamHisScroll" >
-          </m:ScrollContainer>
-      </u:Tag>
-       <u:Tag id="idnrgCamHisNoData" class="nrgCamHis-Hide">
-            <u:TextView text="{comp-i18n-campaign>nrgCmpHisNoData}"
-                                    class="nrgCamHis-noData"
-                                    color="DarkGrey"
-                                    design="Base"/>
-       </u:Tag>
-        <!-- Place holder for templates to reuse for Bind Aggregation method. Below will be always Display:none -->
-        <u:Tag class="nrgCamHis-hide">
-                    <um:Button press=".onPressed"
-                               text="{comp-campaign>Notitle}"
-                               class="nrgCamHis-but"
-                               id="idnrgCamHisBut"
-                               design="None">
-                            <u:Tag class="nrgCamHis-but-Date"
-                                   text="{parts:[{path:'comp-campaign>StartDate',
-                                   type: 'sap.ui.model.type.Date',
-                                   formatOptions:{pattern: 'MM/dd/yyyy'} },
-                                   {path: 'comp-campaign>EndDate',
-                                   type: 'sap.ui.model.type.Date',
-                                   formatOptions:{pattern: 'MM/dd/yyyy'} }],
-                                   formatter:'.formatTileDate'}" />
-                            <u:Tag class="nrgCamHis-but-title"
-                                   text="{comp-campaign>OfferTitle}" />
-                            <u:Tag class="nrgCamHis-but-price"
-                                   text="{path: 'comp-campaign>EFL2000',
-                                   type: 'nrg.util.type.Price',
-                                   formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
-                            <u:Tag class="nrgCamHis-but-priceLbl"
-                                   text="{comp-i18n-campaign>nrgCmpHiskWhDisc}" />
-                    </um:Button>
-        </u:Tag>
-           <!-- Place holder for templates to reuse for Bind Aggregation method. Above will be always Display:none -->
+               <!-- Place holder for templates to reuse for Bind Aggregation method. Above will be always Display:none -->
+     </u:Tag>
    </u:Tag>
 </mvc:View>

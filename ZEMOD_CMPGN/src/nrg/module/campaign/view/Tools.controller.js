@@ -7,10 +7,11 @@ sap.ui.define(
         'sap/ui/model/FilterOperator',
         'jquery.sap.global',
         'nrg/base/type/Price',
-        "sap/ui/model/json/JSONModel"
+        "sap/ui/model/json/JSONModel",
+        'ute/ui/main/Popup'
     ],
 
-    function (CoreController, Filter, FilterOperator, jQuery, price, JSONModel) {
+    function (CoreController, Filter, FilterOperator, jQuery, price, JSONModel, Popup) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.Tools');
@@ -20,6 +21,7 @@ sap.ui.define(
         Controller.prototype.onInit = function () {
             this.getOwnerComponent().getRouter().attachRoutePatternMatched(this._onObjectMatched, this);
         };
+
 		/**
 		 * Binds the view to the object path
 		 *
@@ -47,19 +49,12 @@ sap.ui.define(
          * @param {Array} aFilterValues for each sPath
 		 * @private
 		 */
-        Controller.prototype.createSearchFilterObject = function (aFilterIds, aFilterValues) {
+        Controller.prototype._createSearchFilterObject = function (aFilterIds, aFilterValues) {
             var aFilters = [],
-                oFilterTemplate,
                 iCount;
 
             for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
-                oFilterTemplate = new Filter();
-                oFilterTemplate.sPath = aFilterIds[iCount];
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = aFilterValues[iCount];
-
-                aFilters.push(oFilterTemplate);
-
+                aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
             }
             return aFilters;
         };
@@ -81,7 +76,7 @@ sap.ui.define(
                 aFilters,
                 aFilterIds,
                 aFilterValues;
-            aFilterIds = ["ContractID", "Type"];
+            aFilterIds = ["Contract", "Type"];
             aFilterValues = [Controller.sContract, "H"];
             aFilters = this.createSearchFilterObject(aFilterIds, aFilterValues);
             sPath = "/CpgHistS";
@@ -100,11 +95,12 @@ sap.ui.define(
                 filters : aFilters
             };
             oScrollContainer.bindAggregation("content", mParameters);
-            oDialog = new ute.ui.commons.Dialog({
+            oDialog = new Popup({
                 title: 'Campaign History',
                 width: '750px',
                 height: 'auto',
                 modal: true,
+                close: this._handleDialogClosed,
                 content: oHistoryView
             });
             oDialog.addStyleClass("nrgCamHis-dialog");
@@ -113,6 +109,7 @@ sap.ui.define(
             oDialog.open();
 
         };
+
         /**
 		 * Display History View when user clicked on Campaign History Button
 		 *
@@ -146,12 +143,19 @@ sap.ui.define(
             //to get access to the global model
             //oPendingSwapsTable.bindRows(mParameters);
             oDialog = this.getView().byId("idnrgCamTlsDialog");
-            oDialog.setWidth("750px");
-            oDialog.setHeight("auto");
             oDialog.setTitle("PENDING SWAPS");
-            oDialog.setModal(true);
             this.getView().addDependent(oDialog);
             oDialog.open();
+        };
+
+        /**
+		 * Handler Function for the History Popup close
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype._handleDialogClosed = function (oControlEvent) {
+
         };
         return Controller;
     }

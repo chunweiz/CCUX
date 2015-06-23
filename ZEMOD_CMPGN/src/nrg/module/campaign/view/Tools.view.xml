@@ -25,12 +25,12 @@
                 </u:Button>
             </u:Tag>
         </u:Tag>
-        <u:Dialog id="idnrgCamTlsDialog" class="nrgCamTls-dialog">
+        <um:Popup id="idnrgCamTlsDialog" class="nrgCamTls-dialog">
             <u:Tag class="nrgCamTls-ttl" text="{comp-i18n-campaign>nrgCmpTlsPendSwapTtl}" />
           <u:Tag class="nrgCamTls-Table">
                 <u:Table width="60%"
                     id="idnrgCamTls-pendTable"
-                    class="nrgCamOvr-left nrgCamOvr-top">
+                    class="nrgCamOvr-left nrgCamOvr-top" >
                     <!--rows="{comp-campaign>/PendSwapS}">-->
                         <u:columns>
                             <u:TableColumn width="auto" >
@@ -95,6 +95,6 @@
                 </u:Tag>
               </u:Tag>
             </u:Tag>
-       </u:Dialog>
+       </um:Popup>
     </u:Tag>
 </mvc:View>

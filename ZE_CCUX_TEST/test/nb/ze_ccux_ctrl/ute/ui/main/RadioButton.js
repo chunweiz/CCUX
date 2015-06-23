@@ -33,6 +33,7 @@ sap.ui.define(
 
         CustomControl.prototype.exit = function () {
             this.$().unbind('change', jQuery.proxy(this.onchange));
+            this._removeFromGroup();
         };
 
         CustomControl.prototype.onBeforeRendering = function () {
@@ -101,18 +102,10 @@ sap.ui.define(
             return this;
         };
 
-   /*     CustomControl._getRadioButtonGroupRegistry = function () {
-            if (!this._oRadioButtonGroupRegistry) {
-                this._oRadioButtonGroupRegistry = [];
-            }
-
-            return this._oRadioButtonGroupRegistry;
-        };*/
-
         CustomControl.prototype.setGroup = function (sGroup) {
             this._changeGroup(sGroup, this.getGroup());
 
-            this.setProperty('group', sGroup, true);
+            this.setProperty('group', sGroup);
             return this;
         };
 
@@ -133,6 +126,18 @@ sap.ui.define(
 
             if (aOldGroup && aOldGroup.indexOf(this) !== -1) {
                 aOldGroup.splice(aOldGroup.indexOf(this), 1);
+            }
+        };
+
+        CustomControl.prototype._removeFromGroup = function () {
+            var sGroup, aControlsInGroup, iGroupIndex;
+
+            sGroup = this.getGroup();
+            aControlsInGroup = this._groupNames[sGroup];
+            iGroupIndex = aControlsInGroup && aControlsInGroup.indexOf(this);
+
+            if (iGroupIndex && iGroupIndex !== -1) {
+                aControlsInGroup.splice(iGroupIndex, 1);
             }
         };
 
