@@ -157,16 +157,10 @@ sap.ui.define(
 		 */
         Controller.prototype._createSearchFilterObject = function (aFilterIds, aFilterValues) {
             var aFilters = [],
-                oFilterTemplate,
                 iCount;
 
             for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
-                oFilterTemplate = new Filter();
-                oFilterTemplate.sPath = aFilterIds[iCount];
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = aFilterValues[iCount];
-
-                aFilters.push(oFilterTemplate);
+                aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
             }
             return aFilters;
         };

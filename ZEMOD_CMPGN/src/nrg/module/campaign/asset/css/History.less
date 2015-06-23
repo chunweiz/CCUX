@@ -10,34 +10,37 @@
 
 .nrgCamHis {
             font-family: @nrgFontFamily;
+            width:750px;
+            height:auto;
     &   .nrgCamHis-left {
             margin-left: 15px;
      }
     &   .nrgCamHis-top {
             margin-top: 20px;
     }
-    & > .nrgCamHis-Div {
+    & > div > .nrgCamHis-Div {
             margin-top: 10px;
             margin-bottom: 10px;
             border: 1px solid @nrgColor-grey-highlight;
     }
-    & > .nrgCamHis-Mtx{
+    & > div > .nrgCamHis-Mtx{
             font-family: @nrgFontFamily;
     }
-    & > .nrgCamHis-scroll{
+    & > div > .nrgCamHis-scroll{
             overflow: auto;
-            text-align: center;
             outline: 0px;
-            margin-top: 10px;
+            display: inline-block;
+            margin: auto;
     }
-    & > .nrgCamHis-scroll > .sapMScrollContScroll > .nrgCamHis-but {
+    & > div > .nrgCamHis-scroll > .sapMScrollContScroll > .nrgCamHis-but {
             width: 268px;
             height:126px;
             margin:3px 3px 3px 3px;
             background-color: @nrgColor-grey-highlight;
             float:left;
+            margin-left: 3rem;
     }
-    & > .nrgCamHis-scroll > .sapMScrollContScroll > .nrgCamHis-but > .nrgCamHis-but-date{
+    & > div > .nrgCamHis-scroll > .sapMScrollContScroll > .nrgCamHis-but > .nrgCamHis-but-date{
             font-size: @nrgFontSize-small;
             font-weight: @nrgFontWeight-regular;
             text-align: left;
@@ -45,30 +48,34 @@
             border-bottom: 0.1rem dashed @nrgColor-bluePearl;
             padding-bottom: 5px
     }
-    & > .nrgCamHis-scroll > .sapMScrollContScroll > .nrgCamHis-but > .nrgCamHis-but-title{
+    & > div > .nrgCamHis-scroll > .sapMScrollContScroll > .nrgCamHis-but > .nrgCamHis-but-title{
             font-size: @nrgFontSize-small;
             font-weight: @nrgFontWeight-semiBold;
             width: 50%;
             padding-top: 5px;
     }
-    & > .nrgCamHis-scroll > .sapMScrollContScroll > .nrgCamHis-but > .nrgCamHis-but-price{
+    & > div > .nrgCamHis-scroll > .sapMScrollContScroll > .nrgCamHis-but > .nrgCamHis-but-price{
             font-size: @nrgFontSize-largest;
             font-weight: @nrgFontWeight-regular;
             margin-left: 10px;
             margin-top: 10px;
             text-align: left;
     }
-    & > .nrgCamHis-scroll > .sapMScrollContScroll > .nrgCamHis-but > .nrgCamHis-but-priceLbl{
+    & > div > .nrgCamHis-scroll > .sapMScrollContScroll > .nrgCamHis-but > .nrgCamHis-but-priceLbl{
             font-size: @nrgFontSize-small;
             font-weight: @nrgFontWeight-regular;
             text-align: right;
     }
-    & > .nrgCamHis-scroll > .sapMScrollContScroll > .nrgCamHis-but-selected {
+    & > div > .nrgCamHis-scroll > .sapMScrollContScroll > .nrgCamHis-but-selected {
             background-color: @nrgColor-grey-light;
             color:@nrgColor-white;
     }
-}
-.nrgCamHis-hide {
+    & > div > .nrgCamHis-infoTable {
+            display:inline-block;
+    }
+    &  .nrgCamHis-hide {
             display:none;
+    }
 }
+
 

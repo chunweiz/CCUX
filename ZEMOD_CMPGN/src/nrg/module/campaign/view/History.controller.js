@@ -30,7 +30,7 @@ sap.ui.define(
         Controller.prototype.onAfterRendering = function () {
             var aContent, obinding, sPath, that = this,
                 oScrollContainer = this.getView().byId("idnrgCamHisScroll"),
-                oDataTag = this.getView().byId("idnrgCamHis"),
+                oDataTag = this.getView().byId("idnrgCamHisData"),
                 oNoDataTag = this.getView().byId("idnrgCamHisNoData"),
                 handler = function () {
                     aContent = oScrollContainer.getContent();
