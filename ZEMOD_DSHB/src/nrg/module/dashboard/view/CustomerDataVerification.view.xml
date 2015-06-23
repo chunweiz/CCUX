@@ -136,15 +136,16 @@
                                      text="temp_Mailing Add"/>
                             </ute:Tag>
                             <ute:Tag class="nrgDashboard-cusDataVerify-mContent">
-                                <ute:TextView text="123 Main St., APT A123"
-                                    class="nrgDashboard-cusDataVerify-mContent-add"/>
-                                <ute:TextView text="Houston, TX 77777"
-                                    class="nrgDashboard-cusDataVerify-mContent-add"/>
+                                <ute:TextView class="nrgDashboard-cusDataVerify-mContent-add"
+                                    text="{oDtaVrfyContracts>/HouseNum1} {oDtaVrfyContracts>/Street},"/>
+                                <ute:TextView class="nrgDashboard-cusDataVerify-mContent-add"
+                                    text="{oDtaVrfyContracts>/City1}, {oDtaVrfyContracts>/Region} {oDtaVrfyContracts>/PostCode1}"/>
 
                                 <utmain:Label  labelFor="contractNum"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CaNum}"
                                     class="nrgDashboard-cusDataVerify-mContent-fLbl"/>
-                                <input id="contractNum" value="123 456 7890"
+                                <ute:Textfield id="contractNum"
+                                    value="{oDtaVrfyContracts>/ContractID}"
                                     class="nrgDashboard-cusDataVerify-mContent-fInput"/>
 
                                 <l:MatrixLayout widths="50%,50%" columns="2">
@@ -155,7 +156,7 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <input id="cell_num"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"
-                                                value="123 456 7890"/>
+                                                value="{oDtaVrfyBP>/Cell}"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
                                             <utmain:Label labelFor="fax_num"
@@ -163,7 +164,7 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <input id="fax_num"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"
-                                                value="123 456 7890"/>
+                                                value="{oDtaVrfyBP>/Fax}"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
@@ -176,7 +177,7 @@
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <input id="dayPhn"
-                                                value="222 333 4444"
+                                                value="{oDtaVrfyBP>/DayPhone}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
@@ -198,7 +199,7 @@
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <input id="evnPhn"
-                                                value="555 666 7777"
+                                                value="{oDtaVrfyBP>/EveningPhone}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
@@ -222,7 +223,7 @@
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Email}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <input id="email_lbl"
-                                                value="INFO2@UMAIL.COM"
+                                                value="{oDtaVrfyBP>/Email}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>

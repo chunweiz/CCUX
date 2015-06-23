@@ -32,7 +32,11 @@ sap.ui.define(
                 oRm.writeControlData(oTextfield);
                 oRm.writeAttribute('id', oTextfield.getId());
                 oRm.writeAttribute('name', oTextfield.getName());
-                oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
+                if (oTextfield.getValue()) {
+                    oRm.writeAttribute('value', oTextfield.getValue());
+                } else {
+                    oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
+                }
                 oRm.addStyle('width', oTextfield.getWidth());
                 oRm.addClass('uteTextfield-underlined-input');
                 oRm.writeStyles();
