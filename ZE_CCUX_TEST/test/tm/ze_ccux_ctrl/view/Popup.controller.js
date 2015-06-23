@@ -18,6 +18,7 @@ sap.ui.define(
                 close: this._handleDialogClosed,
                 title: 'This is the title for Popup'
             });
+
             this._oPopup.open();
         };
 

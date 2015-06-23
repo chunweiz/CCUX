@@ -23,9 +23,7 @@
             <um:DropdownItem key="key001">
                 <span>yoyoyoyo</span>
             </um:DropdownItem>
-            <um:DropdownItem key="key002">
-                <span>yoyoyoyo</span>
-            </um:DropdownItem>
+
         </um:Dropdown>
 
     </sm:ScrollContainer>
