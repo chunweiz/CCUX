@@ -4,14 +4,14 @@
 sap.ui.define(
     [
         'jquery.sap.global',
-        'sap/ui/core/Control',
+        'sap/ui/core/Element',
         'sap/ui/commons/Dialog'
     ],
 
-    function (jQuery, Control, Dialog) {
+    function (jQuery, Element, Dialog) {
         'use strict';
 
-        var CustomControl = Control.extend('ute.ui.main.Popup', {
+        var CustomControl = Element.extend('ute.ui.main.Popup', {
             metadata: {
                 library: 'ute.ui.main',
 
@@ -62,7 +62,11 @@ sap.ui.define(
             }
 
             this._oDialog.removeAllContent();
-            this._oDialog.addContent(this);
+
+            this.getContent().forEach(function (oContent) {
+                this._oDialog.addContent(oContent);
+            }.bind(this));
+
             this._oDialog.open();
 
             return this;
