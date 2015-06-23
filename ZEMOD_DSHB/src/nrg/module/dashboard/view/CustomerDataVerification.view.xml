@@ -144,7 +144,7 @@
                                 <utmain:Label  labelFor="contractNum"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CaNum}"
                                     class="nrgDashboard-cusDataVerify-mContent-fLbl"/>
-                                <ute:Textfield id="contractNum"
+                                <ute:Textfield id="contractNum" fieldType="Noborder"
                                     value="{oDtaVrfyContracts>/ContractID}"
                                     class="nrgDashboard-cusDataVerify-mContent-fInput"/>
 

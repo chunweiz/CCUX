@@ -13,9 +13,12 @@ sap.ui.define(
 	    var TextfieldRenderer = {};
 
 	    TextfieldRenderer.render = function (oRm, oTextfield) {
-
             oRm.write('<span');
+            oRm.writeControlData(oTextfield);
             oRm.addClass('uteTextfield');
+            if (oTextfield.getFieldType() === 'Noborder') {
+                oRm.addClass('uteTextfield-noBorder');
+            }
             oRm.writeClasses();
             oRm.write('>');
 
@@ -39,6 +42,20 @@ sap.ui.define(
                 }
                 oRm.addStyle('width', oTextfield.getWidth());
                 oRm.addClass('uteTextfield-underlined-input');
+                oRm.writeStyles();
+                oRm.writeClasses();
+                oRm.write('>');
+            } else if (oTextfield.getFieldType() === 'Noborder') {
+                oRm.write('<input');
+                oRm.writeControlData(oTextfield);
+                oRm.writeAttribute('name', oTextfield.getName());
+                if (oTextfield.getValue()) {
+                    oRm.writeAttribute('value', oTextfield.getValue());
+                } else {
+                    oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
+                }
+                oRm.addStyle('width', oTextfield.getWidth());
+                oRm.addClass('uteTextfield-noBorder-input');
                 oRm.writeStyles();
                 oRm.writeClasses();
                 oRm.write('>');

@@ -74,6 +74,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
             }
 	    };
 
+    /*
         Textfield.prototype._getRenderOuter = function () {
 
             if (this.bRenderOuter === undefined) {
@@ -85,7 +86,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 }
             }
             return this.bRenderOuter;
-        };
+        };*/
 
         Textfield.prototype.getInputDomRef = function () {
 
