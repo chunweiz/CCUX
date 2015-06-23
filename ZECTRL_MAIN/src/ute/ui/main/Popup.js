@@ -4,14 +4,14 @@
 sap.ui.define(
     [
         'jquery.sap.global',
-        'sap/ui/core/Element',
+        'sap/ui/core/Control',
         'sap/ui/commons/Dialog'
     ],
 
-    function (jQuery, Element, Dialog) {
+    function (jQuery, Control, Dialog) {
         'use strict';
 
-        var CustomControl = Element.extend('ute.ui.main.Popup', {
+        var CustomControl = Control.extend('ute.ui.main.Popup', {
             metadata: {
                 library: 'ute.ui.main',
 

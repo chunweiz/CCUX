@@ -37,13 +37,12 @@ sap.ui.define(
                 'ute.ui.main.Checkbox',
                 'ute.ui.main.RadioButton',
                 'ute.ui.main.Infoline',
+                'ute.ui.main.Popup',
                 'ute.ui.main.Dropdown',
                 'ute.ui.main.DropdownItem'
 			],
 
-			elements: [
-                'ute.ui.main.Popup'
-            ],
+			elements: [],
 
             interfaces: []
         });
