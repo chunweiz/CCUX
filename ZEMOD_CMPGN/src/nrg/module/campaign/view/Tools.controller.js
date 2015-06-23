@@ -117,7 +117,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onCancelPress = function (oEvent) {
-            var oModel,
+/*            var oModel,
                 sPath,
                 mParameters,
                 oHistoryView,
@@ -129,23 +129,25 @@ sap.ui.define(
                 aFilterValues,
                 oPendingSwapsTemplate;
             aFilterIds = ["Contract"];
-            aFilterValues = [Controller.sContract];
-            aFilters = this.createSearchFilterObject(aFilterIds, aFilterValues);
-            sPath = "/PendSwapS";
+            aFilterValues = [Controller.sContract];*/
+            //aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+/*            sPath = "/PendSwapS";
             oPendingSwapsTable = this.getView().byId("idnrgCamTls-pendTable");
             oPendingSwapsTemplate = this.getView().byId("idnrgCamTls-pendRow");
             mParameters = {
                 model : "comp-campaign",
-                path : sPath,
-                filters : aFilters,
-                template : oPendingSwapsTemplate
+                path : sPath
+                //filters : aFilters,
+                //template : oPendingSwapsTemplate
             };
             //to get access to the global model
-            //oPendingSwapsTable.bindRows(mParameters);
+            oPendingSwapsTable.bindRows("comp-campaign>/PendSwapS");
             oDialog = this.getView().byId("idnrgCamTlsDialog");
             oDialog.setTitle("PENDING SWAPS");
             this.getView().addDependent(oDialog);
-            oDialog.open();
+            oDialog.open();*/
+            var oDialogFragment = sap.ui.xmlfragment("nrg.module.campaign.view.PendingSwaps");
+            oDialogFragment.open();
         };
 
         /**
