@@ -6,6 +6,18 @@
     min-height: 28px;
     padding-right: 6px;
 
+    &.uteTextfield-noBorder {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    &.uteTextfield-noBorder > .uteTextfield-noBorder-input {
+        outline: 0;
+        border: none;
+        font-size: @uteFontSize-base;
+        background-color: transparent;
+    }
+
     & > .uteTextfield-regular {
         text-indent: 12px;
         min-height: 30px;

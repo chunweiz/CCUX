@@ -81,7 +81,8 @@ sap.ui.define(
 
         ute.ui.commons.TextfieldType = {
             Regular: 'Regular',
-            Underlined: 'Underlined'
+            Underlined: 'Underlined',
+            Noborder: 'Noborder'  //Added for data varification by HL
         };
 
         ute.ui.commons.BadgeDesign = {
