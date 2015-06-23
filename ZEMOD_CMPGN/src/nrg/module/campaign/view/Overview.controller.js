@@ -86,7 +86,8 @@ sap.ui.define(
                 oViewModel,
                 iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
                 aFilterIds,
-                aFilterValues;
+                aFilterValues,
+                oTemplatesView;
             oViewModel = new JSONModel({
 				busy : true,
 				delay : 0
@@ -101,8 +102,7 @@ sap.ui.define(
             sEligibilityPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgEligibilitySet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar");
-            aContent = oToggleContainer.getContent();
-            oToggleTemplate = aContent[0].clone();
+            oToggleTemplate = this.getView().byId("idnrgCamOvr-TabItem").clone();
             sEligibilityPath = sEligibilityPath + "('" + this.sContract + "')";
             mParameters = {
                 model : "comp-campaign",
