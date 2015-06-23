@@ -34,6 +34,8 @@ sap.ui.define(
             //Model to keep information to show
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryBpInf');
 
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryBuagInf');
+
             //Model to leep segmentation information
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryBpSegInf');
 
@@ -60,7 +62,7 @@ sap.ui.define(
 
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
-            sPath = '/BpSearchs' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')/Partner';
+            sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')';
 
             this._retrBpInf(sPath);
         };
@@ -88,9 +90,13 @@ sap.ui.define(
                 oParameters;
 
             oParameters = {
+                urlParameters: {"$expand": "Buags"},
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oSmryBpInf').setData(oData);
+                        if (oData.Buags.results[0]) {
+                            this.getView().getModel('oSmryBuagInf').setData(oData.Buags.results[0]);
+                        }
                     }
                 }.bind(this),
                 error: function (oError) {

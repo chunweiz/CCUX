@@ -54,7 +54,7 @@ sap.ui.define(
                 } else {
                     oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
                 }
-                oRm.addStyle('width', oTextfield.getWidth());
+                oRm.addStyle('width', 'auto');
                 oRm.addClass('uteTextfield-noBorder-input');
                 oRm.writeStyles();
                 oRm.writeClasses();
