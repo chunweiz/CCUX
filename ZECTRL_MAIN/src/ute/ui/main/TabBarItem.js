@@ -110,7 +110,7 @@ sap.ui.define(
         CustomControl.prototype.setGroup = function (sGroup) {
             this._changeGroup(sGroup, this.getGroup());
 
-            this.setProperty('group', sGroup, true);
+            this.setProperty('group', sGroup);
             return this;
         };
 
