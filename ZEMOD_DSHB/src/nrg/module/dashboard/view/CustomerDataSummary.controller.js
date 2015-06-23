@@ -48,7 +48,7 @@ sap.ui.define(
         Controller.prototype.onAfterRendering = function () {
             var oEventBus = sap.ui.getCore().getEventBus();
             oEventBus.subscribe("nrg.module.dashoard", "eBuagChanged", this._handleBuagChanged, this);
-            oEventBus.subscribe("nrg.module.dashoard", "eContractChanged", this._handleContractChanged, this);
+            //oEventBus.subscribe("nrg.module.dashoard", "eContractChanged", this._handleContractChanged, this);
         };
 
         Controller.prototype._handleBuagChanged = function (channel, event, data) {
