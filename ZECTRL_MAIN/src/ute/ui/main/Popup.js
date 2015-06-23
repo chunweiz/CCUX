@@ -57,13 +57,14 @@ sap.ui.define(
         };
 
         CustomControl.prototype.open = function () {
+            var aContent;
+
             if (this._oDialog.isOpen()) {
                 return this;
             }
 
-            this._oDialog.removeAllContent();
-
-            this.getContent().forEach(function (oContent) {
+            aContent = this.getContent() || [];
+            aContent.forEach(function (oContent) {
                 this._oDialog.addContent(oContent);
             }.bind(this));
 
