@@ -90,6 +90,16 @@
             focusable="true"
             class="nrgCamHis-scroll"
             id="idnrgCamHisScroll" >
+          </m:ScrollContainer>
+      </u:Tag>
+       <u:Tag id="idnrgCamHisNoData" class="nrgCamHis-Hide">
+            <u:TextView text="{comp-i18n-campaign>nrgCmpHisNoData}"
+                                    class="nrgCamHis-noData"
+                                    color="DarkGrey"
+                                    design="Base"/>
+       </u:Tag>
+        <!-- Place holder for templates to reuse for Bind Aggregation method. Below will be always Display:none -->
+        <u:Tag class="nrgCamHis-hide">
                     <um:Button press=".onPressed"
                                text="{comp-campaign>Notitle}"
                                class="nrgCamHis-but"
@@ -112,13 +122,7 @@
                             <u:Tag class="nrgCamHis-but-priceLbl"
                                    text="{comp-i18n-campaign>nrgCmpHiskWhDisc}" />
                     </um:Button>
-          </m:ScrollContainer>
-      </u:Tag>
-       <u:Tag id="idnrgCamHisNoData" class="nrgCamHis-Hide">
-            <u:TextView text="{comp-i18n-campaign>nrgCmpHisNoData}"
-                                    class="nrgCamHis-noData"
-                                    color="DarkGrey"
-                                    design="Base"/>
-       </u:Tag>
+        </u:Tag>
+           <!-- Place holder for templates to reuse for Bind Aggregation method. Above will be always Display:none -->
    </u:Tag>
 </mvc:View>

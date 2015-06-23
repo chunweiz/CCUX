@@ -5,10 +5,11 @@ sap.ui.define(
     [
         'jquery.sap.global',
         'sap/ui/base/Object',
-        'sap/ui/model/odata/v2/ODataModel'
+        'sap/ui/model/odata/v2/ODataModel',
+        'sap/ui/model/odata/CountMode'
     ],
 
-    function (jQuery, Object, ODataModel) {
+    function (jQuery, Object, ODataModel, CountMode) {
         'use strict';
 
         var Manager = Object.extend('nrg.base.component.RealDataManager', {
@@ -44,13 +45,18 @@ sap.ui.define(
         };
 
         Manager.prototype._addModuleODataModels = function (oDataReal) {
-            var sDataReal, oModel, sRelativeToSicf;
+            var sDataReal, oModel, sRelativeToSicf, sServiceUrl;
 
             sRelativeToSicf = '../../../../../../../../../';
 
             for (sDataReal in oDataReal) {
                 if (oDataReal.hasOwnProperty(sDataReal)) {
-                    oModel = new ODataModel(sRelativeToSicf + oDataReal[sDataReal].url, true);
+                    sServiceUrl = sRelativeToSicf + oDataReal[sDataReal].url;
+
+                    oModel = new ODataModel(sServiceUrl, {
+                        defaultCountMode: CountMode.None
+                    });
+
                     this._oComponent.setModel(oModel, sDataReal);
                 }
             }

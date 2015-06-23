@@ -36,6 +36,10 @@ sap.ui.define(
             this.firePress();
         };
 
+        CustomControl.prototype.setSelected = function (bSelected) {
+
+        };
+
         return CustomControl;
     },
 

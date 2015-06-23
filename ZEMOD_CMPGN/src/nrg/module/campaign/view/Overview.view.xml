@@ -168,6 +168,15 @@
                     </u:TableRow>
                 </u:rows>
             </u:Table>
+          <!-- Place holder for templates to reuse for Bind Aggregation method. Below will be always Display:none -->
+            <u:Tag class="nrgCamOvr-hide">
+                <um:TabBarItem design="Default" key="tb001" press=".toggleCampaign" enabled="{= ${comp-campaign>OfferCode} !== '' }" id="idnrgCamOvr-TabItem" >
+                    <u:Tag text="{parts:[{path:'comp-campaign>Type'}],
+                                                    formatter:'.formatType'}" />
+                </um:TabBarItem>
+            </u:Tag>
+           <!-- Place holder for templates to reuse for Bind Aggregation method. Above will be always Display:none -->
       </u:Tag>
+
    </u:Tag>
 </mvc:View>
