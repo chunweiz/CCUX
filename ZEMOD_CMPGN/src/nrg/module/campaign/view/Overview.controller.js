@@ -84,7 +84,9 @@ sap.ui.define(
                 aContent,
                 aFilters,
                 oViewModel,
-                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay();
+                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
+                aFilterIds,
+                aFilterValues;
             oViewModel = new JSONModel({
 				busy : true,
 				delay : 0
@@ -92,7 +94,9 @@ sap.ui.define(
             this.getView().setModel(oViewModel, "appView");
             this.sContract = oEvent.getParameter("arguments").coNum;
             this.sFlag = oEvent.getParameter("arguments").typeV.toUpperCase();
-            aFilters = this._createSearchFilterObject(this.sContract);
+            aFilterIds = ["Contract"];
+            aFilterValues = [this.sContract];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
             sEligibilityPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgEligibilitySet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
@@ -143,21 +147,27 @@ sap.ui.define(
 
         };
 
-        /**
+       /**
 		 * Assign the filter objects based on the input selection
 		 *
 		 * @function
-		 * @param {sContractID} Contract to be used aa a filter
-         * @param {sCurrentFlag} Filter flag to determine the current
+		 * @param {Array} aFilterIds to be used as sPath for Filters
+         * @param {Array} aFilterValues for each sPath
 		 * @private
 		 */
-        Controller.prototype._createSearchFilterObject = function (sContractID) {
+        Controller.prototype._createSearchFilterObject = function (aFilterIds, aFilterValues) {
             var aFilters = [],
+                oFilterTemplate,
+                iCount;
+
+            for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
                 oFilterTemplate = new Filter();
-            oFilterTemplate.sPath = 'Contract';
-            oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = sContractID;
-            aFilters.push(oFilterTemplate);
+                oFilterTemplate.sPath = aFilterIds[iCount];
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = aFilterValues[iCount];
+
+                aFilters.push(oFilterTemplate);
+            }
             return aFilters;
         };
 

@@ -38,12 +38,13 @@ sap.ui.define(
             this.getView().getModel("appView").setProperty("/busy", false);
             Controller.sContract = oEvent.getParameter("arguments").coNum;
 		};
+
        /**
 		 * Assign the filter objects based on the input selection
 		 *
 		 * @function
-		 * @param {oContractID} Contract to be used aa a filter
-         * @param {oFlag} Filter flag to determine the Agent Requested and Customer Requested
+		 * @param {Array} aFilterIds to be used as sPath for Filters
+         * @param {Array} aFilterValues for each sPath
 		 * @private
 		 */
         Controller.prototype.createSearchFilterObject = function (aFilterIds, aFilterValues) {

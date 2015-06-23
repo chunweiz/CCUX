@@ -40,7 +40,6 @@ sap.ui.define(
             var oModel,
                 sCurrentPath,
                 mParameters,
-                sContract,
                 sNewOfferCode,
                 oViewModel,
                 iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay();
@@ -49,13 +48,12 @@ sap.ui.define(
 				delay : 0
 			});
             this.getView().setModel(oViewModel, "appView");
-            sContract = oEvent.getParameter("arguments").coNum;
+            this.sContract = oEvent.getParameter("arguments").coNum;
             sNewOfferCode = oEvent.getParameter("arguments").offercodeNum;
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
             sCurrentPath = sCurrentPath + "(OfferCode='" + sNewOfferCode + "',Type='P')";
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             mParameters = {
-                //filters : aFilters,
                 success : function (oData) {
                     this._bindView(sCurrentPath);
                     jQuery.sap.log.info("Odata Read Successfully:::");
@@ -83,31 +81,8 @@ sap.ui.define(
                 model : "comp-campaign",
                 path : sObjectPath
             });
-
-
         };
-        /**
-		 * Assign the filter objects based on the input selection
-		 *
-		 * @function
-		 * @param {oContractID} Contract to be used aa a filter
-         * @param {OfferCode} Filter Offer Code to determine the current selection
-		 * @private
-		 */
-        Controller.prototype._createSearchFilterObject = function (sContractID, sOfferCode) {
-            var aFilters = [],
-                oFilterTemplate = new Filter();
-            oFilterTemplate.sPath = 'Contract';
-            oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = sContractID;
-            aFilters.push(oFilterTemplate);
 
-            oFilterTemplate.sPath = 'OfferCode';
-            oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = sOfferCode;
-            aFilters.push(oFilterTemplate);
-            return aFilters;
-        };
         /**
 		 * Event function for Accept Campaign
 		 *
@@ -134,6 +109,7 @@ sap.ui.define(
                 path : sPath
             });
         };
+
         /**
 		 * Back to Overview page function
 		 *
@@ -141,7 +117,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.backToOverview = function (oEvent) {
-            this.navTo("campaign", {coNum : "34805112", typeV : "C"});
+            this.navTo("campaign", {coNum : this.sContract, typeV : "C"});
         };
         return Controller;
     }

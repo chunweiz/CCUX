@@ -22,6 +22,7 @@ sap.ui.define(
         Controller.prototype.onInit = function () {
             this.getOwnerComponent().getRouter().getRoute("campaignSS").attachPatternMatched(this._onObjectMatched, this);
         };
+
        /* =========================================================== */
 		/* lifecycle method- After Rendering                           */
 		/* =========================================================== */
@@ -51,6 +52,7 @@ sap.ui.define(
 		/* =========================================================== */
         Controller.prototype.onBeforeRendering = function () {
         };
+
 		/**
 		 * Binds the view to the object path
 		 *
@@ -75,19 +77,18 @@ sap.ui.define(
 				delay : 0
 			});
             this.getView().setModel(oViewModel, "appView");
+            this.sContract = oEvent.getParameter("arguments").coNum;
             sType = oEvent.getParameter("arguments").typeV;
             sOfferCode = oEvent.getParameter("arguments").offercodeNum;
             sCurrentPath = "/CpgChgOfferS";
             sCurrentPath = sCurrentPath + "(OfferCode='" + sOfferCode + "',Type='P')";
-            aFilters = this._createSearchFilterObject("1121", "A", "MD");
-           //sCurrentPath = sCurrentPath + "/ScriptS";
+            //sCurrentPath = sCurrentPath + "/ScriptS";
             oDropDownList = this.getView().byId("idnrgCamSSDdL");
             oDropDownListItemTemplate = this.getView().byId("idnrgCamSSLngLtIt").clone();
             mParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,
                 template : oDropDownListItemTemplate,
-               // filters : aFilters,
                 parameters: {expand: "Cpg_Script"}
 
             };
@@ -110,33 +111,32 @@ sap.ui.define(
             });
 
         };
-        /**
+
+       /**
 		 * Assign the filter objects based on the input selection
 		 *
 		 * @function
-		 * @param {oContractID} Contract to be used aa a filter
-         * @param {OfferCode} Filter Offer Code to determine the current selection
+		 * @param {Array} aFilterIds to be used as sPath for Filters
+         * @param {Array} aFilterValues for each sPath
 		 * @private
 		 */
-        Controller.prototype._createSearchFilterObject = function (sContractID, sOfferCode, sTextname) {
+        Controller.prototype._createSearchFilterObject = function (aFilterIds, aFilterValues) {
             var aFilters = [],
+                oFilterTemplate,
+                iCount;
+
+            for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
                 oFilterTemplate = new Filter();
-            oFilterTemplate.sPath = 'Contract';
-            oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = sContractID;
-            aFilters.push(oFilterTemplate);
+                oFilterTemplate.sPath = aFilterIds[iCount];
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = aFilterValues[iCount];
 
-            oFilterTemplate.sPath = 'NewOfferCode';
-            oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = sOfferCode;
-            aFilters.push(oFilterTemplate);
+                aFilters.push(oFilterTemplate);
 
-            oFilterTemplate.sPath = 'TxtName';
-            oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = sTextname;
-            aFilters.push(oFilterTemplate);
+            }
             return aFilters;
         };
+
         /**
 		 * Action to be taken when the User clicks on Accept of Sales Script
 		 *
@@ -150,13 +150,18 @@ sap.ui.define(
                 oDropDownList,
                 oDropDownListItemTemplate,
                 mParameters,
-                aFilters = this._createSearchFilterObject("1121", "A", "OS"),
+                aFilters,
                 aContent,
                 obinding,
                 sPath,
                 that = this,
                 handler,
-                oOverScriptTV = this.getView().byId("idnrgCamOvsOvTv");
+                oOverScriptTV = this.getView().byId("idnrgCamOvsOvTv"),
+                aFilterIds,
+                aFilterValues;
+            aFilterIds = ["ContractID", "NewOfferCode", "TxtName"];
+            aFilterValues = [this.sContract, "A", "OS"];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sCurrentPath = "/ScriptS";
             oDialog.setWidth("750px");
             oDialog.setHeight("auto");
@@ -189,6 +194,7 @@ sap.ui.define(
             this.getView().addDependent(oDialog);
             oDialog.open();
         };
+
         /**
 		 * Back to Overview page function
 		 *
