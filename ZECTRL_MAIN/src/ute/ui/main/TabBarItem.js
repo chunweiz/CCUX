@@ -39,6 +39,7 @@ sap.ui.define(
 
         CustomControl.prototype.exit = function () {
             this.$().unbind('change', jQuery.proxy(this._onchange));
+            this._removeFromGroup();
         };
 
         CustomControl.prototype.onBeforeRendering = function () {
@@ -129,6 +130,18 @@ sap.ui.define(
 
             if (aOldGroup && aOldGroup.indexOf(this) !== -1) {
                 aOldGroup.splice(aOldGroup.indexOf(this), 1);
+            }
+        };
+
+        CustomControl.prototype._removeFromGroup = function () {
+            var sGroup, aControlsInGroup, iGroupIndex;
+
+            sGroup = this.getGroup();
+            aControlsInGroup = this._groupNames[sGroup];
+            iGroupIndex = aControlsInGroup && aControlsInGroup.indexOf(this);
+
+            if (iGroupIndex && iGroupIndex !== -1) {
+                aControlsInGroup.splice(iGroupIndex, 1);
             }
         };
 
