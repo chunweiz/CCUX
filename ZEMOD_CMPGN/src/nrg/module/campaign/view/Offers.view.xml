@@ -95,6 +95,12 @@
                         focusable="true"
                         class="nrgCamOff-scroll"
                         id="idnrgCamOffScroll" >
+
+                    </m:ScrollContainer>
+                </u:Tag>
+            </u:Tag>
+            <!-- Place holder for templates to reuse for Bind Aggregation method. Below will be always Display:none -->
+            <u:Tag class="nrgCamOff-hide">
                         <um:Button press=".onOfferSelected"
                                    text="{comp-campaign>Notitle}"
                                    class="nrgCamOff-btn"
@@ -118,9 +124,8 @@
                                                                 formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
                             <u:Tag class="nrgCamOff-btnPrcLbl" text="{comp-i18n-campaign>nrgCmpOffkWhDisc}" />
                         </um:Button>
-                    </m:ScrollContainer>
-                </u:Tag>
             </u:Tag>
+           <!-- Place holder for templates to reuse for Bind Aggregation method. Above will be always Display:none -->
         </u:Tag>
     </u:Tag>
 </mvc:View>

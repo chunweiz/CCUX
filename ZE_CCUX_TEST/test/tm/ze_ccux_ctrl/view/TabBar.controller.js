@@ -18,7 +18,7 @@ sap.ui.define(
         };
 
         CustomController.prototype.onItemSelected = function (oControlEvent) {
-            console.log("onItemSelected ... " + oControlEvent.getSource().getSelected());
+            console.log("onItemSelected ... " + oControlEvent.getSource().getKey() + ' ... ' + oControlEvent.getSource().getSelected());
         };
 
         CustomController.prototype.onSelected = function (oControlEvent) {
