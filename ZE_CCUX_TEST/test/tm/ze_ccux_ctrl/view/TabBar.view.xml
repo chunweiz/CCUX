@@ -18,35 +18,35 @@
         </style>
 
         <um:TabBar id="nrgTabBar" design="Invert" select=".onSelected">
-            <um:TabBarItem design="Invert" key="tb001" press=".onPressed">
+            <um:TabBarItem design="Invert" key="tb001" select=".onItemSelected">
                 <uc:Tag text="fweiubfiuwhir" />
             </um:TabBarItem>
             <br/>
-            <um:TabBarItem design="Invert" key="tb002" press=".onPressed" selected="true">
+            <um:TabBarItem design="Invert" key="tb002" select=".onItemSelected" selected="true">
                 <div>Mailing Address</div>
             </um:TabBarItem>
             <br/>
-            <um:TabBarItem design="Invert" key="tb003" press=".onPressed">
+            <um:TabBarItem design="Invert" key="tb003" select=".onItemSelected" enabled="false">
                 <div>New Address</div>
             </um:TabBarItem>
             <br/>
-            <um:TabBarItem design="Invert" key="tb004" press=".onPressed">
+            <um:TabBarItem design="Invert" key="tb004" select=".onItemSelected">
                 <div>Yet Another Address</div>
             </um:TabBarItem>
         </um:TabBar>
 
         <br/>
 
-        <um:TabBarItem group="grp001" key="tb001" press=".onPressed">
+        <um:TabBarItem group="grp001" key="tb001" select=".onItemSelected">
             <div>Service Address</div>
         </um:TabBarItem>
-        <um:TabBarItem group="grp001" key="tb002" press=".onPressed" selected="true">
+        <um:TabBarItem group="grp001" key="tb002" select=".onItemSelected" selected="true">
             <div>Mailing Address</div>
         </um:TabBarItem>
-        <um:TabBarItem group="grp001" key="tb003" press=".onPressed">
+        <um:TabBarItem group="grp001" key="tb003" select=".onItemSelected">
             <div>New Address</div>
         </um:TabBarItem>
-        <um:TabBarItem group="grp001" key="tb004" press=".onPressed">
+        <um:TabBarItem group="grp001" key="tb004" select=".onItemSelected">
             <div>Yet Another Address</div>
         </um:TabBarItem>
 

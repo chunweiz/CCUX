@@ -30,16 +30,12 @@ sap.ui.define(
                 defaultAggregation: 'content',
 
                 events: {
-                    press: {
-                        parameters: {
-                            selectedKey: { type: 'string' }
-                        }
-                    }
+                    select: {}
                 }
             }
         });
 
-        EnabledPropagator.call(CustomControl.prototype);
+        CustomControl.prototype._groupNames = {};
 
         CustomControl.prototype.exit = function () {
             this.$().unbind('change', jQuery.proxy(this._onchange));
@@ -58,30 +54,82 @@ sap.ui.define(
                 return;
             }
 
-            this.setSelected(true);
-
-            this.firePress({
-                selectedKey: this.getKey()
-            });
+            this.setSelected(this.getDomRef('int').checked);
+            this.fireSelect();
         };
 
         CustomControl.prototype.setSelected = function (bSelected) {
-            bSelected = !!bSelected;
+            var bSelectedOld, sGroup, aControlsInGroup;
 
-            if (this.getSelected() === bSelected) {
-                return this;
+            bSelectedOld = this.getSelected();
+            sGroup = this.getGroup();
+            aControlsInGroup = this._groupNames[sGroup] || [];
+
+            this.setProperty('selected', bSelected, true);
+            this._changeGroup(sGroup);
+
+            if (bSelected && sGroup && sGroup !== '') {
+                aControlsInGroup.forEach(function (oControlInGroup) {
+                    if (oControlInGroup instanceof CustomControl && oControlInGroup !== this && oControlInGroup.getSelected()) {
+                        oControlInGroup.setSelected(false);
+                    }
+                }.bind(this));
             }
 
-            this.$('.uteMTabBarItem-int').prop('checked', bSelected);
+            if (bSelectedOld !== bSelected && this.getDomRef()) {
+                if (bSelected) {
+                    this.getDomRef('int').checked = true;
+                    this.getDomRef('int').setAttribute('checked', 'checked');
 
-            this.setProperty('selected', bSelected);
+                } else {
+                    this.getDomRef('int').checked = false;
+				    this.getDomRef('int').removeAttribute('checked');
+                }
+            }
+
             return this;
         };
 
         CustomControl.prototype.setEnabled = function (bEnabled) {
-            this.$('.uteMTabBarItem-int').prop('disabled', bEnabled);
+            if (this.getDomRef()) {
+                if (bEnabled) {
+                    this.getDomRef('int').disabled = false;
+                    this.getDomRef('int').removeAttribute('disabled');
+                } else {
+                    this.getDomRef('int').disabled = true;
+                    this.getDomRef('int').setAttribute('disabled', 'disabled');
+                }
+            }
+
             this.setProperty('enabled', bEnabled);
             return this;
+        };
+
+        CustomControl.prototype.setGroup = function (sGroup) {
+            this._changeGroup(sGroup, this.getGroup());
+
+            this.setProperty('group', sGroup, true);
+            return this;
+        };
+
+        CustomControl.prototype._changeGroup = function (sNewGroup, sOldGroup) {
+            var aNewGroup, aOldGroup;
+
+            aNewGroup = this._groupNames[sNewGroup];
+            aOldGroup = this._groupNames[sOldGroup];
+
+            if (!aNewGroup) {
+                this._groupNames[sNewGroup] = [];
+                aNewGroup = this._groupNames[sNewGroup];
+            }
+
+            if (aNewGroup.indexOf(this) === -1) {
+                aNewGroup.push(this);
+            }
+
+            if (aOldGroup && aOldGroup.indexOf(this) !== -1) {
+                aOldGroup.splice(aOldGroup.indexOf(this), 1);
+            }
         };
 
         return CustomControl;

@@ -17,12 +17,12 @@ sap.ui.define(
 
         };
 
-        CustomController.prototype.onPressed = function (oControlEvent) {
-            console.log("onPressed ... " + oControlEvent.getSource().getSelected());
+        CustomController.prototype.onItemSelected = function (oControlEvent) {
+            console.log("onItemSelected ... " + oControlEvent.getSource().getSelected());
         };
 
         CustomController.prototype.onSelected = function (oControlEvent) {
-            console.log(oControlEvent.getParameter('selectedItem').getKey());
+            console.log("onSelected ... " + oControlEvent.getParameter('selectedItem').getKey());
         };
 
         return CustomController;
