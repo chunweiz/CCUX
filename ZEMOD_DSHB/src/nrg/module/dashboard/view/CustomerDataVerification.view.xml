@@ -125,8 +125,8 @@
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-m">
                             <ute:Tag class="nrgDashboard-cusDataVerify-mDiv">
                             <ute:ToggleButton design="ToggleDashboard"
-                                leftBtnText="SERVICE ADDRESS"
-                                rightBtnText="MAILING ADDRESS"
+                                leftBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TglBtnLTxt}"
+                                rightBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TglBtnRTxt}"
                                 class="nrgDashboard-cusDataVerify-mTgBtn">
                             </ute:ToggleButton>
                             <ute:Tag class="nrgDashboard-cusDataVerify-mRdBtn">
@@ -141,7 +141,8 @@
                                 <ute:TextView text="Houston, TX 77777"
                                     class="nrgDashboard-cusDataVerify-mContent-add"/>
 
-                                <utmain:Label text="CONTRACT #:" labelFor="contractNum"
+                                <utmain:Label  labelFor="contractNum"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CaNum}"
                                     class="nrgDashboard-cusDataVerify-mContent-fLbl"/>
                                 <input id="contractNum" value="123 456 7890"
                                     class="nrgDashboard-cusDataVerify-mContent-fInput"/>
@@ -149,16 +150,18 @@
                                 <l:MatrixLayout widths="50%,50%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="CELL:" labelFor="cell1"
+                                            <utmain:Label  labelFor="cell_num"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CellNum}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <input id="cell1"
+                                            <input id="cell_num"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"
                                                 value="123 456 7890"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="CELL 2:" labelFor="cell2"
+                                            <utmain:Label labelFor="fax_num"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FaxNum}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <input id="cell2"
+                                            <input id="fax_num"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"
                                                 value="123 456 7890"/>
                                         </l:MatrixLayoutCell>
@@ -169,14 +172,16 @@
                                 <l:MatrixLayout widths="50%,50%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="DAY:" labelFor="dayPhn"
+                                            <utmain:Label  labelFor="dayPhn"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <input id="dayPhn"
                                                 value="222 333 4444"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="TYPE:" labelFor="dayPhnType"
+                                            <utmain:Label labelFor="dayPhnType"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <input id="dayPhnType"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"
@@ -189,14 +194,16 @@
                                 <l:MatrixLayout widths="50%,50%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="EVENING:" labelFor="evnPhn"
+                                            <utmain:Label labelFor="evnPhn"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <input id="evnPhn"
                                                 value="555 666 7777"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="TYPE:" labelFor="evnPhnType"
+                                            <utmain:Label labelFor="evnPhnType"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTypTxt}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <input id="evnPhnType" value="LANDLINE"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
@@ -211,9 +218,10 @@
                                             <utmain:Button text="SMS"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="EMAIL:" labelFor="email"
+                                            <utmain:Label labelFor="email_lbl"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Email}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <input id="email"
+                                            <input id="email_lbl"
                                                 value="INFO2@UMAIL.COM"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
@@ -230,10 +238,11 @@
                             <ute:Tag class="nrgDashboard-cusDataVerify-rContent">
                                 <utmain:Button
                                     class="nrgDashboard-cusDataVerify-rContent-vBtn"
-                                    text="CONFIRM"/>
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Confirm}"/>
                                 <utmain:Button
                                     class="nrgDashboard-cusDataVerify-rContent-uBtn"
-                                    design="Invert" text="UPDATE"/>
+                                    design="Invert"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Update}"/>
                             </ute:Tag>
                         </l:MatrixLayoutCell>
                     </l:cells>
