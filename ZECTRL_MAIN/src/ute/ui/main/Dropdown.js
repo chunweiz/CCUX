@@ -3,13 +3,15 @@
 
 sap.ui.define(
     [
+        'jquery.sap.global',
         'sap/ui/core/Control',
+        'ute/ui/main/Checkbox',
         'sap/m/Popover',
         'sap/m/PlacementType',
         'sap/m/ScrollContainer'
     ],
 
-    function (Control, Popover, PlacementType, ScrollContainer) {
+    function (jQuery, Control, Checkbox, Popover, PlacementType, ScrollContainer) {
         'use strict';
 
         var CustomControl = Control.extend('ute.ui.main.Dropdown', {
@@ -23,7 +25,9 @@ sap.ui.define(
 
                 aggregations: {
                     content: { type: 'ute.ui.main.DropdownItem', multiple: true, singularName: 'content' },
-                    picker: { type: 'sap.m.Popover', multiple: false, visibility: 'hidden' }
+
+                    _expander: { type: 'ute.ui.main.Checkbox', multiple: false, visibility: 'hidden' },
+                    _picker: { type: 'sap.m.Popover', multiple: false, visibility: 'hidden' }
                 },
 
                 defaultAggregation: 'content',
@@ -59,6 +63,29 @@ sap.ui.define(
 
         };
 
+        CustomControl.prototype._getExpander = function () {
+            var oExpander;
+
+            oExpander = this.getAggregation('_expander');
+            if (oExpander) {
+                return oExpander;
+            }
+
+            oExpander = new Checkbox({
+                design: ute.ui.main.CheckboxDesign.None,
+                select: jQuery.proxy(this._onExpanderSelected, this),
+                checked: false
+            });
+
+            this.setAggregation('_expander', oExpander, true);
+
+            return oExpander;
+        };
+
+        CustomControl.prototype._onExpanderSelected = function (oControlEvent) {
+
+        };
+
         CustomControl.prototype._handleItemPressed = function (oControlEvent) {
             this.fireSelect({
                 selectedItem: oControlEvent.getSource()
@@ -68,7 +95,7 @@ sap.ui.define(
         CustomControl.prototype._getPicker = function () {
             var oPicker, self;
 
-            oPicker = this.getAggregation('picker');
+            oPicker = this.getAggregation('_picker');
             if (oPicker) {
                 return oPicker;
             }
@@ -117,7 +144,7 @@ sap.ui.define(
             oPicker.addStyleClass('uteMDd-picker');
 
             /*
-            ** Listen to the picker
+            ** Add listeners to the picker
             */
             oPicker.attachBeforeOpen(this._onBeforeOpenPicker, this);
             oPicker.attachAfterOpen(this._onAfterOpenPicker, this);
@@ -130,7 +157,7 @@ sap.ui.define(
             /*
             ** Add the picker as part of control lifecycle
             */
-            this.setAggregation('picker', oPicker, true);
+            this.setAggregation('_picker', oPicker, true);
 
             return oPicker;
         };
