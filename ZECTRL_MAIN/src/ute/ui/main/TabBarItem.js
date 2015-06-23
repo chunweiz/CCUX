@@ -73,6 +73,7 @@ sap.ui.define(
                 aControlsInGroup.forEach(function (oControlInGroup) {
                     if (oControlInGroup instanceof CustomControl && oControlInGroup !== this && oControlInGroup.getSelected()) {
                         oControlInGroup.setSelected(false);
+                        oControlInGroup.fireSelect();
                     }
                 }.bind(this));
             }
