@@ -174,7 +174,9 @@
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
                             <ute:Button
+                                press="._onBpSelect"
                                 buttonType="GeneralInfo"
+                                info="{oBpSearchResult>PartnerID}"
                                 text="Select"
                                 enabled="true">
                         </ute:Button>

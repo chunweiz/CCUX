@@ -158,7 +158,11 @@ sap.ui.define(
             }
         };
 
-        //Controller.prototype.
+        Controller.prototype._onBpSelect = function (oEvent) {
+            //var test = oEvent.getSource().getBindingContext();
+            //Make "select" text bind to JSON Model first
+            return;
+        };
 
         return Controller;
     }
