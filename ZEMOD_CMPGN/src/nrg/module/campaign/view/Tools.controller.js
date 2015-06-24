@@ -77,7 +77,7 @@ sap.ui.define(
                 aFilterIds,
                 aFilterValues;
             aFilterIds = ["Contract", "Type"];
-            aFilterValues = [Controller.sContract, "H"];
+            aFilterValues = ["32253375", "H"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sPath = "/CpgHistS";
             jQuery.sap.require("ute.ui.commons.Dialog");
@@ -94,7 +94,7 @@ sap.ui.define(
                 filters : aFilters
             };
             oScrollContainer.bindAggregation("content", mParameters);
-            oDialog = new Popup({
+            oDialog = new ute.ui.commons.Dialog({
                 title: 'Campaign History',
                 close: this._handleDialogClosed,
                 content: oHistoryView
@@ -125,15 +125,15 @@ sap.ui.define(
                 aFilterValues,
                 oPendingSwapsTemplate;
             aFilterIds = ["Contract"];
-            aFilterValues = [Controller.sContract];
+            aFilterValues = ['34805112'];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             if (!this._oDialogFragment) {
                 this._oDialogFragment = sap.ui.xmlfragment("nrg.module.campaign.view.PendingSwaps");
             }
             this.getView().addDependent(this._oDialogFragment);
             sPath = "/PendSwapS";
-            oPendingSwapsTable = this._oDialogFragment.byId("idnrgCamTls-pendTable");
-            oPendingSwapsTemplate = this._oDialogFragment.byId("idnrgCamTls-pendRow");
+            //oPendingSwapsTable = this._oDialogFragment.byId("idnrgCamTls-pendTable");
+            //oPendingSwapsTemplate = this._oDialogFragment.byId("idnrgCamTls-pendRow");
             mParameters = {
                 model : "comp-campaign",
                 path : sPath,
@@ -141,8 +141,7 @@ sap.ui.define(
                 template : oPendingSwapsTemplate
             };
             //to get access to the global model
-            oPendingSwapsTable.bindRows(mParameters);
-
+            //oPendingSwapsTable.bindRows(mParameters);
             this._oDialogFragment.open();
         };
 
