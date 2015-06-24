@@ -102,18 +102,18 @@ sap.ui.define(
         ** Create popup based on style guide
         */
         ute.ui.main.Popup = {};
-        ute.ui.main.Popup.create = function () {
+        ute.ui.main.Popup.create = function (arg1, arg2) {
             var oDialog, sId, mParams;
 
             if (arguments.length === 1) {
-                if (typeof arguments[0] === 'string') {
-                    sId = arguments[0];
-                } else if (typeof arguments[0] === 'object') {
-                    mParams = arguments[0];
+                if (typeof arg1 === 'string') {
+                    sId = arg1;
+                } else if (typeof arg1 === 'object') {
+                    mParams = arg1;
                 }
             } else if (arguments.length >= 2) {
-                sId = arguments[0];
-                mParams = arguments[1];
+                sId = arg1;
+                mParams = arg2;
             }
 
             if (sId) {
