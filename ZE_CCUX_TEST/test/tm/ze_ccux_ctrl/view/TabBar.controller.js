@@ -20,9 +20,9 @@ sap.ui.define(
         CustomController.prototype.onItemSelected = function (oControlEvent) {
             console.log("onItemSelected ... " + oControlEvent.getSource().getKey() + ' ... ' + oControlEvent.getSource().getSelected());
 
-            if (oControlEvent.getSource().getKey() === 'tb004') {
-                oControlEvent.getSource().setGroup('thisIsANewGroup');
-            }
+//            if (oControlEvent.getSource().getKey() === 'tb004') {
+//                oControlEvent.getSource().setGroup('thisIsANewGroup');
+//            }
         };
 
         CustomController.prototype.onSelected = function (oControlEvent) {

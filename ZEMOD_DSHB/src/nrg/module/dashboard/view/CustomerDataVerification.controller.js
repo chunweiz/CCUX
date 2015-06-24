@@ -28,14 +28,12 @@ sap.ui.define(
 
 
             this._initDtaVrfRetr();
+        };
 
-            /*var eventBus = sap.ui.getCore().getEventBus();
-
-            eventBus.publish("channel1", "event1",
-                {
-                    listItem : columnListItem
-                }
-            );*/
+        Controller.prototype._onBuagChange = function () {
+            var eventBus = sap.ui.getCore().getEventBus(),
+                newBuagNum = "1234";
+            eventBus.publish("nrg.module.dashoard", "eBuagChanged", newBuagNum);
         };
 
         Controller.prototype._retrUrlHash = function () {
