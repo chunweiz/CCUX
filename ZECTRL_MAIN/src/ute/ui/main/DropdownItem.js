@@ -15,8 +15,7 @@ sap.ui.define(
 
                 properties: {
                     design: { type: 'ute.ui.main.DropdownItemDesign', defaultValue: ute.ui.main.DropdownItemDesign.Default },
-                    key: { type: 'string', defaultValue: null },
-                    selected: { type: 'boolean', defaultValue: false }
+                    key: { type: 'string', defaultValue: null }
                 },
 
                 aggregations: {

@@ -20,13 +20,15 @@ sap.ui.define(
 
                 properties: {
                     design: { type: 'ute.ui.main.DropdownDesign', defaultValue: ute.ui.main.DropdownDesign.Default },
-                    enabled: { type: 'boolean', defaultValue: true }
+                    enabled: { type: 'boolean', defaultValue: true },
+                    selectedKey: { type: 'string', defaultValue: null }
                 },
 
                 aggregations: {
                     content: { type: 'ute.ui.main.DropdownItem', multiple: true, singularName: 'content' },
 
-                    _expander: { type: 'ute.ui.main.Checkbox', multiple: false, visibility: 'hidden' },
+                    _headerContent: { type: 'sap.ui.core.Control', multiple: true, visibility: 'hidden' },
+                    _headerExpander: { type: 'ute.ui.main.Checkbox', multiple: false, visibility: 'hidden' },
                     _picker: { type: 'sap.m.Popover', multiple: false, visibility: 'hidden' }
                 },
 

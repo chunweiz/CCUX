@@ -33,18 +33,38 @@ sap.ui.define(
             oRm.writeClasses();
             oRm.write('>');
 
-
+            this._renderHeaderContent(oRm, oCustomControl);
+            this._renderHeaderExpander(oRm, oCustomControl);
 
             oRm.write('</div>');
         };
 
-        CustomRenderer._renderExpander = function (oRm, oCustomControl) {
-            oRm.write('<div');
-            oRm.addClass('uteMDd-expander');
+        CustomRenderer._renderHeaderContent = function (oRm, oCustomControl) {
+            var aContent = oCustomControl.getAggregation('_headerContent') || [];
+
+            oRm.write('<label');
+            oRm.addClass('uteMDd-hdrContent');
             oRm.writeClasses();
             oRm.write('>');
 
+            aContent.forEach(function (oContent) {
+                oRm.renderControl(oContent);
+            });
 
+            oRm.write('</label>');
+        };
+
+        CustomRenderer._renderHeaderExpander = function (oRm, oCustomControl) {
+            var oHeaderExpander;
+
+            oHeaderExpander = oCustomControl.getAggregation('_headerExpander');
+
+            oRm.write('<div');
+            oRm.addClass('uteMDd-hdrExpander');
+            oRm.writeClasses();
+            oRm.write('>');
+
+            oRm.renderControl(oHeaderExpander);
 
             oRm.write('</div>');
         };
