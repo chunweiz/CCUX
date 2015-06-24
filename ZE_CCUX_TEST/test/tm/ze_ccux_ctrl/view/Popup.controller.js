@@ -3,17 +3,16 @@
 sap.ui.define(
     [
         'sap/ui/core/mvc/Controller',
-        'ute/ui/main/Popup',
         'ute/ui/main/Button'
     ],
 
-    function (Controller, Popup, Button) {
+    function (Controller, Button) {
         'use strict';
 
         var CustomController = Controller.extend('test.tm.ze_ccux_ctrl.view.Popup');
 
         CustomController.prototype.onInit = function () {
-            this._oPopup = new Popup({
+            this._oPopup = ute.ui.main.Popup.create({
                 content: new Button({ text: 'Close the dialog', press: jQuery.proxy(this._onPressed, this) }),
                 close: this._handleDialogClosed,
                 title: 'This is the title for Popup'
