@@ -18,7 +18,7 @@ sap.ui.define(
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
             var oViewModel = new JSONModel({
-				busy : true,
+				busy : false,
 				delay : 0
 			});
             this.getView().setModel(oViewModel, "appView");

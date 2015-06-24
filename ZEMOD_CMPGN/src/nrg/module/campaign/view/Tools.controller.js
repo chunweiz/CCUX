@@ -78,7 +78,7 @@ sap.ui.define(
                 aFilterValues;
             aFilterIds = ["Contract", "Type"];
             aFilterValues = [Controller.sContract, "H"];
-            aFilters = this.createSearchFilterObject(aFilterIds, aFilterValues);
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sPath = "/CpgHistS";
             jQuery.sap.require("ute.ui.commons.Dialog");
             oHistoryView = sap.ui.view({
@@ -87,7 +87,6 @@ sap.ui.define(
             });
             oScrollContainer = oHistoryView.byId("idnrgCamHisScroll");
             oScrollTemplate = oHistoryView.byId("idnrgCamHisBut").clone();
-
             mParameters = {
                 model : "comp-campaign",
                 path : sPath,
@@ -97,9 +96,6 @@ sap.ui.define(
             oScrollContainer.bindAggregation("content", mParameters);
             oDialog = new Popup({
                 title: 'Campaign History',
-                width: '750px',
-                height: 'auto',
-                modal: true,
                 close: this._handleDialogClosed,
                 content: oHistoryView
             });
@@ -117,7 +113,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onCancelPress = function (oEvent) {
-/*            var oModel,
+            var oModel,
                 sPath,
                 mParameters,
                 oHistoryView,
@@ -129,25 +125,25 @@ sap.ui.define(
                 aFilterValues,
                 oPendingSwapsTemplate;
             aFilterIds = ["Contract"];
-            aFilterValues = [Controller.sContract];*/
-            //aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-/*            sPath = "/PendSwapS";
-            oPendingSwapsTable = this.getView().byId("idnrgCamTls-pendTable");
-            oPendingSwapsTemplate = this.getView().byId("idnrgCamTls-pendRow");
+            aFilterValues = [Controller.sContract];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            if (!this._oDialogFragment) {
+                this._oDialogFragment = sap.ui.xmlfragment("nrg.module.campaign.view.PendingSwaps");
+            }
+            this.getView().addDependent(this._oDialogFragment);
+            sPath = "/PendSwapS";
+            oPendingSwapsTable = this._oDialogFragment.byId("idnrgCamTls-pendTable");
+            oPendingSwapsTemplate = this._oDialogFragment.byId("idnrgCamTls-pendRow");
             mParameters = {
                 model : "comp-campaign",
-                path : sPath
-                //filters : aFilters,
-                //template : oPendingSwapsTemplate
+                path : sPath,
+                filters : aFilters,
+                template : oPendingSwapsTemplate
             };
             //to get access to the global model
-            oPendingSwapsTable.bindRows("comp-campaign>/PendSwapS");
-            oDialog = this.getView().byId("idnrgCamTlsDialog");
-            oDialog.setTitle("PENDING SWAPS");
-            this.getView().addDependent(oDialog);
-            oDialog.open();*/
-            var oDialogFragment = sap.ui.xmlfragment("nrg.module.campaign.view.PendingSwaps");
-            oDialogFragment.open();
+            oPendingSwapsTable.bindRows(mParameters);
+
+            this._oDialogFragment.open();
         };
 
         /**
