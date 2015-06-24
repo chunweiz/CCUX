@@ -30,8 +30,8 @@ sap.ui.define(
             oRm.write('<input type="radio"');
             oRm.writeAttribute('id', oCustomControl.getId() + '-intRb');
 
-            if (oCustomControl.getName()) {
-                oRm.writeAttributeEscaped('name', oCustomControl.getName());
+            if (oCustomControl.getGroup()) {
+                oRm.writeAttributeEscaped('name', oCustomControl.getGroup());
             }
 
             if (oCustomControl.getChecked()) {
