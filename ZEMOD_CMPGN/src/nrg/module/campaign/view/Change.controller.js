@@ -48,7 +48,7 @@ sap.ui.define(
 				delay : 0
 			});
             this.getView().setModel(oViewModel, "appView");
-            this.sContract = oEvent.getParameter("arguments").coNum;
+            this._sContract = oEvent.getParameter("arguments").coNum;
             sNewOfferCode = oEvent.getParameter("arguments").offercodeNum;
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
             sCurrentPath = sCurrentPath + "(OfferCode='" + sNewOfferCode + "',Type='P')";
@@ -117,7 +117,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.backToOverview = function (oEvent) {
-            this.navTo("campaign", {coNum : this.sContract, typeV : "C"});
+            this.navTo("campaign", {coNum : this._sContract, typeV : "C"});
         };
         return Controller;
     }

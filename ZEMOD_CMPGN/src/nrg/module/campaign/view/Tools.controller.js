@@ -7,11 +7,10 @@ sap.ui.define(
         'sap/ui/model/FilterOperator',
         'jquery.sap.global',
         'nrg/base/type/Price',
-        "sap/ui/model/json/JSONModel",
-        'ute/ui/main/Popup'
+        "sap/ui/model/json/JSONModel"
     ],
 
-    function (CoreController, Filter, FilterOperator, jQuery, price, JSONModel, Popup) {
+    function (CoreController, Filter, FilterOperator, jQuery, price, JSONModel) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.Tools');
@@ -94,7 +93,7 @@ sap.ui.define(
                 filters : aFilters
             };
             oScrollContainer.bindAggregation("content", mParameters);
-            oDialog = new ute.ui.commons.Dialog({
+            oDialog = new ute.ui.main.Popup.create({
                 title: 'Campaign History',
                 close: this._handleDialogClosed,
                 content: oHistoryView
@@ -117,7 +116,6 @@ sap.ui.define(
                 sPath,
                 mParameters,
                 oHistoryView,
-                oDialog,
                 oPendingSwapsTable,
                 oScrollTemplate,
                 aFilters,
@@ -128,21 +126,29 @@ sap.ui.define(
             aFilterValues = ['34805112'];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             if (!this._oDialogFragment) {
-                this._oDialogFragment = sap.ui.xmlfragment("nrg.module.campaign.view.PendingSwaps");
+                this._oDialogFragment = sap.ui.xmlfragment("PendingSwaps", "nrg.module.campaign.view.PendingSwaps");
             }
-            this.getView().addDependent(this._oDialogFragment);
+            if (!this._oDialog) {
+                this._oDialog = ute.ui.main.Popup.create({
+                    title: 'Campaign History',
+                    close: this._handleDialogClosed,
+                    content: this._oDialogFragment
+                });
+            }
             sPath = "/PendSwapS";
-            //oPendingSwapsTable = this._oDialogFragment.byId("idnrgCamTls-pendTable");
-            //oPendingSwapsTemplate = this._oDialogFragment.byId("idnrgCamTls-pendRow");
+            oPendingSwapsTable = sap.ui.core.Fragment.byId("PendingSwaps", "idnrgCamTls-pendTable");
+            oPendingSwapsTemplate = sap.ui.core.Fragment.byId("PendingSwaps", "idnrgCamTls-pendRow");
             mParameters = {
                 model : "comp-campaign",
                 path : sPath,
                 filters : aFilters,
                 template : oPendingSwapsTemplate
             };
+            this.getView().addDependent(this._oDialog);
             //to get access to the global model
-            //oPendingSwapsTable.bindRows(mParameters);
-            this._oDialogFragment.open();
+            this._oDialog.addStyleClass("nrgCamHis-dialog");
+           // oPendingSwapsTable.bindRows(mParameters);
+            this._oDialog.open();
         };
 
         /**

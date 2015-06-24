@@ -85,9 +85,9 @@ sap.ui.define(
 				busy : true,
 				delay : 0
 			});
-            this.sContract = oEvent.getParameter("arguments").coNum;
+            this._sContract = oEvent.getParameter("arguments").coNum;
             aFilterIds = ["Contract", "Type"];
-            aFilterValues = [this.sContract, "P"];
+            aFilterValues = [this._sContract, "P"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             this.getView().setModel(oViewModel, "appView");
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCpgChangeOffSet");
@@ -130,19 +130,19 @@ sap.ui.define(
             aFilterIds = ["Contract", "Type"];
             switch (sButtonText) {
             case "P":
-                aFilterValues = [this.sContract, "P"];
+                aFilterValues = [this._sContract, "P"];
                 break;
             case "R":
-                aFilterValues = [this.sContract, "R"];
+                aFilterValues = [this._sContract, "R"];
                 break;
             case "S":
-                aFilterValues = [this.sContract, "S"];
+                aFilterValues = [this._sContract, "S"];
                 break;
             case "F":
-                aFilterValues = [this.sContract, "F"];
+                aFilterValues = [this._sContract, "F"];
                 break;
             default:
-                aFilterValues = [this.sContract, "F"];
+                aFilterValues = [this._sContract, "F"];
             }
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
@@ -166,7 +166,7 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.selectCampaign = function (oEvent) {
-            this.navTo("campaignchg", {coNum: this.sContract, offercodeNum: "50124832"});
+            this.navTo("campaignchg", {coNum: this._sContract, offercodeNum: "50124832"});
         };
 
         /**
@@ -200,7 +200,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.backToOverview = function (oEvent) {
-            this.navTo("campaign", {coNum : this.sContract, typeV : "C"});
+            this.navTo("campaign", {coNum : this._sContract, typeV : "C"});
         };
 
         return Controller;

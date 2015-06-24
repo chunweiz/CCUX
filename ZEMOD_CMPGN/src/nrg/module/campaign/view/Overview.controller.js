@@ -93,17 +93,17 @@ sap.ui.define(
 				delay : 0
 			});
             this.getView().setModel(oViewModel, "appView");
-            this.sContract = oEvent.getParameter("arguments").coNum;
-            this.sFlag = oEvent.getParameter("arguments").typeV.toUpperCase();
+            this._sContract = oEvent.getParameter("arguments").coNum;
+            this._sFlag = oEvent.getParameter("arguments").typeV.toUpperCase();
             aFilterIds = ["Contract"];
-            aFilterValues = [this.sContract];
+            aFilterValues = [this._sContract];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
             sEligibilityPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgEligibilitySet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar");
             oToggleTemplate = this.getView().byId("idnrgCamOvr-TabItem").clone();
-            sEligibilityPath = sEligibilityPath + "('" + this.sContract + "')";
+            sEligibilityPath = sEligibilityPath + "('" + this._sContract + "')";
             mParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,
