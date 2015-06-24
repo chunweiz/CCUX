@@ -71,7 +71,6 @@
                 <ute:Textfield
                     value="{
                         path:'oSearchFilters>/searchTextFields/sBpNum'}"
-                    id="idSearchBp"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_BpNum}"
                     change="onTextFieldChange"

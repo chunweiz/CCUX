@@ -60,6 +60,9 @@ sap.ui.define(
         };
 
         Controller.prototype._createSearchFilterObject = function () {
+            //var test = this.getView().byId('idSearchBp');
+
+
             var aFilters = [],
                 oFilterTemplate = new Filter(),
                 oFilterModel = this.getView().getModel('oSearchFilters');

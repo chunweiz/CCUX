@@ -70,11 +70,11 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 
             if (this.getEditable() && this.getEnabled() && (oldVal !== newVal)) {
                 this.setProperty("value", newVal, true); // suppress rerendering
+                //console.log(this.getValue());
                 this.fireChange({newValue: newVal}); // oldValue is not that easy in ComboBox and anyway not in API... thus skip it
             }
 	    };
 
-    /*
         Textfield.prototype._getRenderOuter = function () {
 
             if (this.bRenderOuter === undefined) {
@@ -86,16 +86,16 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 }
             }
             return this.bRenderOuter;
-        };*/
+        };
 
         Textfield.prototype.getInputDomRef = function () {
-
+            /*
             if (!this._getRenderOuter()) {
                 return this.getDomRef() || null;
             } else {
                 return this.getDomRef("input") || null;
-            }
-
+            }*/
+            return this.getDomRef("input") || null;
         };
 
 

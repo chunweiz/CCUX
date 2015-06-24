@@ -12,7 +12,11 @@ sap.ui.define(
 
 	    var TextfieldRenderer = {};
 
+
 	    TextfieldRenderer.render = function (oRm, oTextfield) {
+            //var bRenderOuter = oTextField._getRenderOuter();
+
+
             oRm.write('<span');
             oRm.writeControlData(oTextfield);
             oRm.addClass('uteTextfield');
@@ -32,8 +36,9 @@ sap.ui.define(
                     oRm.write('</label>');
                 }
                 oRm.write('<input');
-                oRm.writeControlData(oTextfield);
-                oRm.writeAttribute('id', oTextfield.getId());
+                //oRm.writeControlData(oTextfield);
+                oRm.writeAttribute('id', oTextfield.getId() + '-input');
+                //oRm.writeAttribute('id', oTextfield.getId());
                 oRm.writeAttribute('name', oTextfield.getName());
                 if (oTextfield.getValue()) {
                     oRm.writeAttribute('value', oTextfield.getValue());
@@ -47,7 +52,8 @@ sap.ui.define(
                 oRm.write('>');
             } else if (oTextfield.getFieldType() === 'Noborder') {
                 oRm.write('<input');
-                oRm.writeControlData(oTextfield);
+                //oRm.writeControlData(oTextfield);
+                oRm.writeAttribute('id', oTextfield.getId() + '-input');
                 oRm.writeAttribute('name', oTextfield.getName());
                 if (oTextfield.getValue()) {
                     oRm.writeAttribute('value', oTextfield.getValue());
@@ -61,8 +67,9 @@ sap.ui.define(
                 oRm.write('>');
             } else {       //default situation, so not specified as type "underlined"
                 oRm.write('<input');
-                oRm.writeControlData(oTextfield);
-                oRm.writeAttribute('id', oTextfield.getId());
+                //oRm.writeControlData(oTextfield);
+                oRm.writeAttribute('id', oTextfield.getId() + '-input');
+                //oRm.writeAttribute('id', oTextfield.getId());
                 oRm.writeAttribute('name', oTextfield.getName());
                 if (oTextfield.getValue()) {
                     oRm.writeAttribute('value', oTextfield.getValue());
