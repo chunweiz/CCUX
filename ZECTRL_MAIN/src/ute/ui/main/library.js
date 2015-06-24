@@ -1,9 +1,11 @@
 /*global sap, ute*/
 
 sap.ui.define(
-    [],
+    [
+        'sap/ui/commons/Dialog'
+    ],
 
-    function () {
+    function (Dialog) {
         'use strict';
 
         sap.ui.getCore().initLibrary({
@@ -37,7 +39,6 @@ sap.ui.define(
                 'ute.ui.main.Checkbox',
                 'ute.ui.main.RadioButton',
                 'ute.ui.main.Infoline',
-                'ute.ui.main.Popup',
                 'ute.ui.main.Dropdown',
                 'ute.ui.main.DropdownItem'
 			],
@@ -85,6 +86,7 @@ sap.ui.define(
         };
 
         ute.ui.main.PopupDesign = {
+            None: 'None',
             Default: 'Default'
         };
 
@@ -95,6 +97,59 @@ sap.ui.define(
         };
 
         ute.ui.main.DropdownItemDesign = ute.ui.main.DropdownDesign;
+
+        /*
+        ** Create popup based on style guide
+        */
+        ute.ui.main.Popup = {};
+        ute.ui.main.Popup.create = function () {
+            var oDialog, sId, mParams;
+
+            if (arguments.length === 1) {
+                if (typeof arguments[0] === 'string') {
+                    sId = arguments[0];
+                } else if (typeof arguments[0] === 'object') {
+                    mParams = arguments[0];
+                }
+            } else if (arguments.length >= 2) {
+                sId = arguments[0];
+                mParams = arguments[1];
+            }
+
+            if (sId) {
+                oDialog = new Dialog(sId);
+            } else {
+                oDialog = new Dialog();
+            }
+
+            oDialog.addStyleClass('uteMPopup');
+            oDialog.setModal(true);
+            oDialog.setResizable(false);
+
+            if (mParams) {
+                if (mParams.design) {
+                    if (mParams.design !== ute.ui.main.PopupDesign.None) {
+                        oDialog.addStyleClass('uteMPopup-design-' + mParams.design.toLowerCase());
+                    }
+                } else {
+                    oDialog.addStyleClass('uteMPopup-design-default');
+                }
+
+                if (mParams.title) {
+                    oDialog.setTitle(mParams.title);
+                }
+
+                if (mParams.content) {
+                    oDialog.addContent(mParams.content);
+                }
+
+                if (mParams.close) {
+                    oDialog.attachClosed(mParams.close);
+                }
+            }
+
+            return oDialog;
+        };
 
         return ute.ui.main;
     },
