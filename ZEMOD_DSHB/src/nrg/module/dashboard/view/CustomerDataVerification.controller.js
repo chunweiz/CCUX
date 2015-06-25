@@ -131,15 +131,12 @@ sap.ui.define(
                 oParameters,
                 i;
 
-            sPath = '/BuagMailingAddr' + '('
-                  + 'PartnerID=\'' + sBpNum + '\''
-                  + ',ContractAccountID=\'' + sBuagNum + '\''
-                  + ',FixedAddressID=\'' + sFixedAddressID + '\')';
+            sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
 
             oParameters = {
                 success : function (oData) {
                     if (oData) {
-                        var test = oData;
+                        this.getView().getModel('oDtaVrfyMailingTempAddr').setData(oData);
                     }
                 }.bind(this),
                 error: function (oError) {
