@@ -113,6 +113,7 @@ sap.ui.define(
             };
             oToggleContainer.bindAggregation("content", mParameters);
             mParameters = {
+                batchGroupId : "myId1",
                 filters : aFilters,
                 success : function (oData) {
                     this.getView().byId("idCamCustReqOfferBtn").bindElement({
@@ -126,7 +127,7 @@ sap.ui.define(
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
                 error: function (oError) {
-                    jQuery.sap.log.info("Some Error");
+                    jQuery.sap.log.info("Eligibility Error occured");
                 }.bind(this)
             };
             if (oModel) {

@@ -42,8 +42,8 @@ sap.ui.define(
             oViewModel = new JSONModel({
 				busy : true,
 				delay : 0,
-                history : true,
-                cancel : true
+                history : false,
+                cancel : false
 			});
             aFilterIds = ["Contract", "Type"];
             aFilterValues = ["32253375", "H"];
@@ -54,12 +54,13 @@ sap.ui.define(
             Controller.sContract = oEvent.getParameter("arguments").coNum;
             sCurrentPath = sCurrentPath + "/$count";
             mParameters = {
+                batchGroupId : "myId3",
                 filters : aFilters,
                 success : function (oData) {
-                    if (oData.results) {
+                    if (oData) {
                         jQuery.sap.log.info("Odata Read Successfully:::");
-                        if (oData.results.length > 0) {
-                            this.getView().getModel("appView").setProperty("/history", false);
+                        if ((parseInt(oData, 10)) > 0) {
+                            this.getView().getModel("appView").setProperty("/history", true);
                         }
                     }
                 }.bind(this),
@@ -77,12 +78,13 @@ sap.ui.define(
             aFilterValues = ['34805112'];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             mParameters = {
+                batchGroupId : "myId4",
                 filters : aFilters,
                 success : function (oData) {
-                    if (oData.results) {
+                    if (oData) {
                         jQuery.sap.log.info("Odata Read Successfully:::");
-                        if (oData.results.length > 0) {
-                            this.getView().getModel("appView").setProperty("/cancel", false);
+                        if ((parseInt(oData, 10)) > 0) {
+                            this.getView().getModel("appView").setProperty("/cancel", true);
                         }
                     }
                 }.bind(this),
@@ -134,7 +136,6 @@ sap.ui.define(
             aFilterValues = ["32253375", "H"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sPath = this._i18NModel.getProperty("nrgHistorySet");
-            jQuery.sap.require("ute.ui.commons.Dialog");
             oHistoryView = sap.ui.view({
                 type: sap.ui.core.mvc.ViewType.XML,
                 viewName: "nrg.module.campaign.view.History"
@@ -148,13 +149,11 @@ sap.ui.define(
                 filters : aFilters
             };
             oScrollContainer.bindAggregation("content", mParameters);
-            if (!this._oHistoryDialog) {
-                this._oHistoryDialog = new ute.ui.main.Popup.create({
-                    title: 'Campaign History',
-                    close: this._handleDialogClosed,
-                    content: oHistoryView
-                });
-            }
+            this._oHistoryDialog = new ute.ui.main.Popup.create({
+                title: 'Campaign History',
+                close: this._handleDialogClosed,
+                content: oHistoryView
+            });
             this._oHistoryDialog.addStyleClass("nrgCamHis-dialog");
             //to get access to the global model
             this.getView().addDependent(this._oHistoryDialog);
@@ -185,7 +184,7 @@ sap.ui.define(
             if (!this._oDialogFragment) {
                 this._oDialogFragment = sap.ui.xmlfragment("PendingSwaps", "nrg.module.campaign.view.PendingSwaps");
             }
-            if (!this._oCancelDialog) {
+            if (this._oCancelDialog === undefined) {
                 this._oCancelDialog = new ute.ui.main.Popup.create({
                     title: 'Campaign History',
                     close: this._handleDialogClosed,
