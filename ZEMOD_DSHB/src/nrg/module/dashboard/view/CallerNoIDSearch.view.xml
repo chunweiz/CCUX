@@ -146,7 +146,7 @@
                 <l:rows>
                     <l:MatrixLayoutRow>
                         <l:MatrixLayoutCell>
-                            <c:TextView text="1)"></c:TextView>
+                            <c:TextView text="{oBpSearchResult>iId}"></c:TextView>
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
                             <c:TextView
@@ -176,8 +176,7 @@
                             <ute:Button
                                 press="._onBpSelect"
                                 buttonType="GeneralInfo"
-                                info="{oBpSearchResult>PartnerID}"
-                                text="Select"
+                                text="{oBpSearchResult>Select}"
                                 enabled="true">
                         </ute:Button>
                         </l:MatrixLayoutCell>

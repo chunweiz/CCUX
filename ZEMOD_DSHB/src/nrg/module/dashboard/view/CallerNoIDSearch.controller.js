@@ -125,7 +125,8 @@ sap.ui.define(
               //  oFilterModel = this.getView().getModel('oSearchFilters');
 
             var aFilters = this._createSearchFilterObject(),
-                oParameters;
+                oParameters,
+                i;
 
 
 
@@ -138,6 +139,10 @@ sap.ui.define(
                 filters : aFilters,
                 success : function (oData) {
                     if (oData.results) {
+                        for (i = 0; i < oData.results.length; i = i + 1) {
+                            oData.results[i].iId = i + 1;
+                            oData.results[i].Select = "Select";
+                        }
                         this.getView().getModel('oBpSearchResult').setData(oData.results);
                         this.getView().getModel('oBpSearchCount').setProperty('/searchCount', oData.results.length);
                     }
@@ -159,8 +164,14 @@ sap.ui.define(
         };
 
         Controller.prototype._onBpSelect = function (oEvent) {
-            //var test = oEvent.getSource().getBindingContext();
-            //Make "select" text bind to JSON Model first
+            var sSelectedId = oEvent.getParameters().id,
+                aSelectedId = sSelectedId.split('-'),
+                iSelectedId = aSelectedId[2],
+                sSelectedBpNum = this.getView().getModel('oBpSearchResult').oData[iSelectedId].PartnerID,
+                oRouter = this.getOwnerComponent().getRouter();
+
+            oRouter.navTo('dashboard.Bp', {bpNum: sSelectedBpNum});
+
             return;
         };
 
