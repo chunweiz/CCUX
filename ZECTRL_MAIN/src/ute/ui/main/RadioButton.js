@@ -87,7 +87,6 @@ sap.ui.define(
         };
 
         CustomControl.prototype.setEnabled = function (bEnabled) {
-
             if (this.getDomRef()) {
                 if (bEnabled) {
                     this.getDomRef('intRb').disabled = false;
