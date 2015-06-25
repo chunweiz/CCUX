@@ -1,4 +1,5 @@
 /*global sap*/
+/*global jQuery*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -52,11 +53,23 @@ sap.ui.define(
 
             FloatType.prototype.setConstraints.call(this, defaultConstraints);
         };
-           // Expected model type
+
+        // Expected model type
         CustomType.prototype.parseValue = function (oValue, sInternalType) {
 
-            if (oValue === undefined || oValue === null) {
+          /*  if (oValue === undefined || oValue === null) {
                 return oValue;
+            }*/
+
+            return oValue;
+        };
+
+        // Model value meets constraint requirements
+        CustomType.prototype.validateValue = function (oValue) {
+
+            if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+                jQuery.sap.log.error('Validate Exception: Consumption cannot be empty', oValue);
+                throw new ValidateException('Consumption cannot be empty');
             }
 
             return oValue;

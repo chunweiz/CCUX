@@ -73,6 +73,9 @@ sap.ui.define(
         // Model to Output
         CustomType.prototype.formatValue = function (oValue, sInternalType) {
 
+            if (oValue === undefined || oValue === null) {
+                return oValue;
+            }
             return oValue.toLowerCase();
 
         };
