@@ -1,0 +1,147 @@
+<!--Routing Pattern: PrePD-->
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:utmain="ute.ui.main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.commons"
+    xmlns:l="sap.ui.commons.layout"
+    controllerName="nrg.module.dashboard.view.CallerNoIDEnrollment">
+
+    <ute:Tag class="nrgAppMain-generalContent nrgDashboard-cusDataBilling">
+        <ute:Tag elem="span" class="nrgDashboard-cusDataBil-scrnTitle" text="ACCOUNT BALANCE" />
+
+        <ute:Tag elem="span" class="nrgDashboard-cusDataPrePD-r-btn">
+            <utmain:Button design="None" class="nrgDashboard-cusDataBil-CommBtn" press="onPayNow">
+                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-PayBalBtn-text" text="Communication Preferences" />
+            </utmain:Button>
+        </ute:Tag>
+
+        <l:MatrixLayout
+            class="nrgDashboard-cusDataPrePD-layout"
+            widths="242px,768px" columns="2" width="100%">
+            <l:rows>
+                <l:MatrixLayoutRow>
+                    <l:cells>
+                        <!--Area Left-->
+                        <l:MatrixLayoutCell class="nrgDashboard-cusDataPrePD-l">
+                            <ute:Tag class="nrgDashboard-cusDataPrePD-l-div">
+                                <utmain:Button design="None" class="nrgDashboard-cusDataBil-PayBalBtn" press="onPayNow">
+                                    <ute:Tag elem="div" class="nrgDashboard-cusDataBil-PayBalBtn-amount" text="$00.00" />
+                                    <ute:Tag elem="div" class="nrgDashboard-cusDataBil-PayBalBtn-text" text="PAY NOW" />
+                                </utmain:Button>
+
+                                <utmain:Label text="REFER TO:" labelFor="referrer"
+                                   class="nrgDashboard-cusDataBil-referer-lbl"/>
+                                <select id="referer" class="nrgDashboard-cusDataBil-referer-dropdown">
+                                    <option value="checkbook1">Checkbook</option>
+                                    <option value="checkbook2">Checkbook</option>
+                                    <option value="checkbook3">Checkbook</option>
+                                    <option value="checkbook4">Checkbook</option>
+                                </select>
+                                <!--ute:Tag id="referer" elem="Select"
+                                         class="nrgDashboard-cusDataBil-referer-dropdown">
+                                </ute:Tag-->
+                                <!--ute:Dropdown id="referrer" arrowcolor="Blue" arrowType="Solid"
+                                              enabled="true" background="Transparent" border="None"
+                                              width="100px"
+                                              class="nrgDashboard-cusDataBil-referer-dropdown"/-->
+
+                                <ute:Tag class="nrgDashboard-cusDataPrePD-date">
+                                    <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-date-label" text="BILLING DATE" />
+
+                                    <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-date-value" text="10/28/2014" />
+
+                                    <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-date-label" text="# OF DAYS REMAINING" />
+
+                                    <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-date-value" text="18" />
+
+                                    <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-date-label" text="DPP BALANCE" />
+
+                                    <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-date-value" text="$0.00" />
+                                </ute:Tag>
+                            </ute:Tag>
+                        </l:MatrixLayoutCell>
+
+                        <!--Area Right-->
+                        <l:MatrixLayoutCell class="nrgDashboard-cusDataPrePD-r">
+                            <ute:Tag class="nrgDashboard-cusDataPrePD-r-div">
+
+                                <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-r-text-amntexpln" text="AMOUNT EXPLANATION" />
+                                <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-r-text-autopayinfo" text="AUTOMATIC PAYMENT INFORMATION" />
+
+                                <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-r-matrix">
+                                    <l:MatrixLayout widths="50%,50%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-r-content-lbl" text="Payment Type Desc. :" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-r-content-cnt" text="N/A" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <ute:HorizontalDivider
+                                        class="nrgDashboard-cusDataPrePD-horDvi"/>
+                                    <l:MatrixLayout widths="50%,50%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-r-content-lbl2" text="Threshold Amount:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-r-content-cnt" text="$0.00" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <ute:HorizontalDivider
+                                        class="nrgDashboard-cusDataPrePD-horDvi"/>
+                                    <l:MatrixLayout widths="50%,50%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-r-content-lbl2" text="Reload Amount:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-r-content-cnt" text="$0.00" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <ute:HorizontalDivider
+                                        class="nrgDashboard-cusDataPrePD-horDvi"/>
+                                    <l:MatrixLayout widths="50%,50%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-r-content-lbl3" text="Account Balance:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-r-content-cnt3" text="$47.61" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </ute:Tag>
+
+                                <ute:HorizontalDivider
+                                    class="nrgDashboard-cusDataPrePD-horDvi-long"/>
+
+                                <ute:Tag elem="span" class="nrgDashboard-cusDataPrePD-btm-label1" text="Average Daily Usage:" />
+
+                                <ute:Tag elem="span" class="nrgDashboard-cusDataPrePD-btm-value" text="$2.56" />
+
+                                <ute:Tag elem="span" class="nrgDashboard-cusDataPrePD-btm-label2" text="Automatic Payment Dates - Start:" />
+
+                                <ute:Tag elem="span" class="nrgDashboard-cusDataPrePD-btm-value" text="00/00/0000" />
+
+                                <ute:Tag elem="span" class="nrgDashboard-cusDataPrePD-btm-label3" text="End:" />
+
+                                <ute:Tag elem="span" class="nrgDashboard-cusDataPrePD-btm-value" text="00/00/0000" />
+
+
+                            </ute:Tag>
+                        </l:MatrixLayoutCell>
+
+                    </l:cells>
+                </l:MatrixLayoutRow>
+            </l:rows>
+        </l:MatrixLayout>
+    </ute:Tag>
+
+</mvc:View>
