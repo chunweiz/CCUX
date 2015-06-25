@@ -21,6 +21,7 @@ sap.ui.define(
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
             this.getOwnerComponent().getRouter().getRoute("campaignSS").attachPatternMatched(this._onObjectMatched, this);
+            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
         };
 
        /* =========================================================== */
@@ -80,7 +81,7 @@ sap.ui.define(
             this.sContract = oEvent.getParameter("arguments").coNum;
             sType = oEvent.getParameter("arguments").typeV;
             sOfferCode = oEvent.getParameter("arguments").offercodeNum;
-            sCurrentPath = "/CpgChgOfferS";
+            sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
             sCurrentPath = sCurrentPath + "(OfferCode='" + sOfferCode + "',Type='P')";
             //sCurrentPath = sCurrentPath + "/ScriptS";
             oDropDownList = this.getView().byId("idnrgCamSSDdL");
