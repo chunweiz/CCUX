@@ -8,7 +8,7 @@
     xmlns:l="sap.ui.commons.layout"
     controllerName="nrg.module.dashboard.view.CallerNoIDEnrollment">
 
-    <ute:Tag class="nrgAppMain-generalContent nrgDashboard-cusDataBilling">
+    <ute:Tag class="nrgAppMain-generalContent nrgDashboard-cusDataPrePD">
         <ute:Tag elem="span" class="nrgDashboard-cusDataBil-scrnTitle" text="ACCOUNT BALANCE" />
 
         <ute:Tag elem="span" class="nrgDashboard-cusDataPrePD-r-btn">
