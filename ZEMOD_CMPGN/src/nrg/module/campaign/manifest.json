@@ -31,19 +31,19 @@
         "routing": {
            "routes": {
                 "campaign": {
-                    "pattern": "co/{coNum}/campaign",
+                    "pattern": "campaign/co/{coNum}/type/{typeV}",
                     "target": [ "campaign.Overview", "dashboard.SummaryBP", "campaign.Tools" ]
                 },
                 "campaignchg": {
-                    "pattern": "co/{coNum}/offercode/{offercodeNum}/campaign/cmpchg",
+                    "pattern": "campaign/cmpchg/co/{coNum}/offercode/{offercodeNum}",
                     "target": [ "campaign.Change", "dashboard.SummaryBP", "campaign.Tools" ]
                 },
                 "campaignSS": {
-                    "pattern": "offercode/{offercodeNum}/type/{typeV}/campaign/cmpss",
+                    "pattern": "campaign/cmpss/offercode/{offercodeNum}/type/{typeV}",
                     "target": [ "campaign.SalesScript", "dashboard.SummaryBP", "campaign.Tools" ]
                 },
                 "campaignoffers": {
-                    "pattern": "co/{coNum}/campaign/offers",
+                    "pattern": "campaign/offers/co/{coNum}",
                     "target": [ "campaign.Offers", "dashboard.SummaryBP", "campaign.Tools" ]
                 }
             },

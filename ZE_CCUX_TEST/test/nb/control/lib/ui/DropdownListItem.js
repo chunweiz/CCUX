@@ -14,15 +14,15 @@ sap.ui.define(
                 library: 'nb.control.lib.ui',
 
                 properties: {
-                  /*  key: {
+               key: {
                         type: 'string',
                         defaultValue: null
-                    }*/
-                    design: { type: 'ute.ui.main.DropdownListItemDesign', defaultValue: ute.ui.main.DropdownListItemDesign.Default },
+                    }
+                    /*design: { type: 'ute.ui.main.DropdownListItemDesign', defaultValue: ute.ui.main.DropdownListItemDesign.Default },
                     key: { type: 'string', defaultValue: null },
                     group: { type: 'string', defaultValue: null },
                     selected: { type: 'boolean', defaultValue: false },
-                    enabled: { type: 'boolean', defaultValue: true }
+                    enabled: { type: 'boolean', defaultValue: true }*/
 
                 },
 
@@ -38,6 +38,7 @@ sap.ui.define(
             }
         });
 
+/*
         EnabledPropagator.call(CustomControl.prototype);
 
         CustomControl.prototype.exit = function () {
@@ -81,6 +82,7 @@ sap.ui.define(
             this.setProperty('enabled', bEnabled);
             return this;
         };
+*/
 
         return Element;
     },

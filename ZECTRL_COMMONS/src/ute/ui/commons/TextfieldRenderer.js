@@ -12,10 +12,17 @@ sap.ui.define(
 
 	    var TextfieldRenderer = {};
 
+
 	    TextfieldRenderer.render = function (oRm, oTextfield) {
+            //var bRenderOuter = oTextField._getRenderOuter();
+
 
             oRm.write('<span');
+            oRm.writeControlData(oTextfield);
             oRm.addClass('uteTextfield');
+            if (oTextfield.getFieldType() === 'Noborder') {
+                oRm.addClass('uteTextfield-noBorder');
+            }
             oRm.writeClasses();
             oRm.write('>');
 
@@ -29,21 +36,46 @@ sap.ui.define(
                     oRm.write('</label>');
                 }
                 oRm.write('<input');
-                oRm.writeControlData(oTextfield);
-                oRm.writeAttribute('id', oTextfield.getId());
+                //oRm.writeControlData(oTextfield);
+                oRm.writeAttribute('id', oTextfield.getId() + '-input');
+                //oRm.writeAttribute('id', oTextfield.getId());
                 oRm.writeAttribute('name', oTextfield.getName());
-                oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
+                if (oTextfield.getValue()) {
+                    oRm.writeAttribute('value', oTextfield.getValue());
+                } else {
+                    oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
+                }
                 oRm.addStyle('width', oTextfield.getWidth());
                 oRm.addClass('uteTextfield-underlined-input');
                 oRm.writeStyles();
                 oRm.writeClasses();
                 oRm.write('>');
+            } else if (oTextfield.getFieldType() === 'Noborder') {
+                oRm.write('<input');
+                //oRm.writeControlData(oTextfield);
+                oRm.writeAttribute('id', oTextfield.getId() + '-input');
+                oRm.writeAttribute('name', oTextfield.getName());
+                if (oTextfield.getValue()) {
+                    oRm.writeAttribute('value', oTextfield.getValue());
+                } else {
+                    oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
+                }
+                oRm.addStyle('width', 'auto');
+                oRm.addClass('uteTextfield-noBorder-input');
+                oRm.writeStyles();
+                oRm.writeClasses();
+                oRm.write('>');
             } else {       //default situation, so not specified as type "underlined"
                 oRm.write('<input');
-                oRm.writeControlData(oTextfield);
-                oRm.writeAttribute('id', oTextfield.getId());
+                //oRm.writeControlData(oTextfield);
+                oRm.writeAttribute('id', oTextfield.getId() + '-input');
+                //oRm.writeAttribute('id', oTextfield.getId());
                 oRm.writeAttribute('name', oTextfield.getName());
-                oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
+                if (oTextfield.getValue()) {
+                    oRm.writeAttribute('value', oTextfield.getValue());
+                } else {
+                    oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
+                }
                 oRm.addStyle('width', oTextfield.getWidth());
                 oRm.addClass('uteTextfield-regular');
                 oRm.writeStyles();

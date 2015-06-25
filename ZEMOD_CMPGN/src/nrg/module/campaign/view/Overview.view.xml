@@ -10,7 +10,9 @@
           controllerName="nrg.module.campaign.view.Overview"
           height="100%"
           width="100%"
-          displayBlock="true">
+          displayBlock="true"
+	      busy="{appView>/busy}"
+	      busyIndicatorDelay="{appView>/delay}">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
       <u:Tag class="nrgCamOvrT">
          <u:Tag class="nrgCamOvr-Title" text="{comp-i18n-campaign>nrgCmpOvrTtl}" />
@@ -19,8 +21,7 @@
                            press=".onOffers"
                            text="{Overview-elig>Notitle}"
                            class="nrgCamOvr-offerBtn"
-                           design="None"
-                           enabled="{= ${Overview-elig>CustEligFlag} !== '' }">
+                           design="None">
                     <u:Tag class="nrgCamOvr-offerBtnTitle"
                            text="{comp-i18n-appFtr>nrgAppFooterCustReqOffer}" />
                     <u:Tag id="idCamCustReqOffer"
@@ -49,7 +50,7 @@
                 </um:button>
             </article>
             <um:TabBar id="idnrgCamOvr-TabBar" design="None" class="nrgCamOvr-TabBar nrgCamOvr-top" >
-                <um:TabBarItem design="Default" key="tb001" press=".toggleCampaign" >
+                <um:TabBarItem design="Default" key="tb001" select=".toggleCampaign" enabled="{= ${comp-campaign>OfferCode} !== '' }">
                     <u:Tag text="{parts:[{path:'comp-campaign>Type'}],
                                                     formatter:'.formatType'}" />
                 </um:TabBarItem>
@@ -167,6 +168,15 @@
                     </u:TableRow>
                 </u:rows>
             </u:Table>
+          <!-- Place holder for templates to reuse for Bind Aggregation method. Below will be always Display:none -->
+            <u:Tag class="nrgCamOvr-hide">
+                <um:TabBarItem design="Default" key="tb001" select=".toggleCampaign" enabled="{= ${comp-campaign>OfferCode} !== '' }" id="idnrgCamOvr-TabItem" >
+                    <u:Tag text="{parts:[{path:'comp-campaign>Type'}],
+                                                    formatter:'.formatType'}" />
+                </um:TabBarItem>
+            </u:Tag>
+           <!-- Place holder for templates to reuse for Bind Aggregation method. Above will be always Display:none -->
       </u:Tag>
+
    </u:Tag>
 </mvc:View>

@@ -3,10 +3,11 @@
 sap.ui.define(
     [
         'nrg/base/view/BaseController',
-        'jquery.sap.global'
+        'jquery.sap.global',
+        "sap/ui/model/json/JSONModel"
     ],
 
-    function (CoreController, jQuery) {
+    function (CoreController, jQuery, JSONModel) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.History');
@@ -16,6 +17,11 @@ sap.ui.define(
 		/* lifecycle method- Init                                     */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
+            var oViewModel = new JSONModel({
+				busy : false,
+				delay : 0
+			});
+            this.getView().setModel(oViewModel, "appView");
         };
 
         /* =========================================================== */
@@ -24,6 +30,8 @@ sap.ui.define(
         Controller.prototype.onAfterRendering = function () {
             var aContent, obinding, sPath, that = this,
                 oScrollContainer = this.getView().byId("idnrgCamHisScroll"),
+                oDataTag = this.getView().byId("idnrgCamHisData"),
+                oNoDataTag = this.getView().byId("idnrgCamHisNoData"),
                 handler = function () {
                     aContent = oScrollContainer.getContent();
                     if ((aContent !== undefined) && (aContent.length > 0)) {
@@ -33,7 +41,11 @@ sap.ui.define(
                             model : "comp-campaign",
                             path : sPath
                         });
+                    } else {
+                        oDataTag.addStyleClass("nrgCamHis-hide");
+                        oNoDataTag.removeStyleClass("nrgCamHis-hide");
                     }
+                    that.getView().getModel("appView").setProperty("/busy", false);
                     obinding.detachDataReceived(handler);
                 };
             obinding = oScrollContainer.getBinding("content");

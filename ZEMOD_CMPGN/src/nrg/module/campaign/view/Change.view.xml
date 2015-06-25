@@ -9,10 +9,17 @@
           controllerName="nrg.module.campaign.view.Change"
           height="100%"
           width="100%"
-          displayBlock="true">
+          displayBlock="true"
+          busy="{appView>/busy}"
+	      busyIndicatorDelay="{appView>/delay}">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
       <u:Tag class="nrgCamChg">
          <u:Tag class="nrgCamChg-ttl" text="{comp-i18n-campaign>nrgCmpChgTtl}" />
+             <um:Button press=".backToOverview"
+                        text="{comp-i18n-campaign>nrgCmpBckOverview}"
+                        class="nrgCamOff-Back"
+                        design="None">
+            </um:button>
             <l:MatrixLayout class="nrgCamChg-mtx nrgCamChg-top">
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>

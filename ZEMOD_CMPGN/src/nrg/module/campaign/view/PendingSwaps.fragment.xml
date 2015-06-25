@@ -1,0 +1,98 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:c="sap.ui.commons"
+          xmlns:core="sap.ui.core"
+          xmlns:u="ute.ui.commons"
+          xmlns:um="ute.ui.main">
+<!--<u:Tag class="nrgCamTls-ttl" text="{comp-i18n-campaign>nrgCmpTlsPendSwapTtl}" />
+  <u:Tag class="nrgCamTls-Table">
+        <u:Table width="60%"
+            id="idnrgCamTls-pendTable"
+            class="nrgCamOvr-left nrgCamOvr-top" >
+            rows="{comp-campaign>/PendSwapS}">
+                <u:columns>
+                    <u:TableColumn width="auto" >
+                        <c:Label text="Offer Description"/>
+                    </u:TableColumn>
+                    <u:TableColumn width="auto" >
+                        <c:Label text="Campaign Code"/>
+                    </u:TableColumn>
+                    <u:TableColumn width="auto" >
+                        <c:Label text="Promo Code"/>
+                    </u:TableColumn>
+                    <u:TableColumn width="auto" >
+                        <c:Label text="Product Code"/>
+                    </u:TableColumn>
+                    <u:TableColumn width="auto" >
+                        <c:Label text="Signed Dt"/>
+                    </u:TableColumn>
+                    <u:TableColumn width="auto" >
+                        <c:Label text="Offer Code"/>
+                    </u:TableColumn>
+                </u:columns>
+
+        </u:Table>
+      <u:Tag>
+        <u:Tag class="nrgCamTls-top nrgCamTls-font">
+            <u:Textfield
+                placeholder=""
+                change="testInputChange"
+                fieldType="Underlined"
+                label="Requestor's Name">
+            </u:Textfield>
+            <c:Label text="No Phone" class="nrgCamTls-left "/>
+            <um:Checkbox id="idnrgCamTlsNoPhone" select=".onSelected" class="nrgCamTls-left"/>
+        </u:Tag>
+        <u:Tag class="nrgCamTls-top">
+            <u:Textfield
+                placeholder=""
+                change="testInputChange"
+                fieldType="Underlined"
+                label="Requestor's Number">
+            </u:Textfield>
+        </u:Tag>
+        <u:Tag class="nrgCamTls-top">
+            <u:Button
+                text="Proceed with Cancel"
+                enabled="true">
+            </u:Button>
+            <u:Button
+                text="Continue without Cancel"
+                enabled="true">
+            </u:Button>
+        </u:Tag>
+      </u:Tag>
+    </u:Tag>
+    <u:Tag class="nrgCamTls-hide">
+         <u:Table width="60%"
+            id="idnrgCamTls-pendTable1"
+            class="nrgCamOvr-left nrgCamOvr-top" >
+                <u:rows>
+                <u:TableRow id="idnrgCamTls-pendRow">
+                    <c:Label text="{comp-campaign>OfferDesc}"/>
+                    <c:Label text="{comp-campaign>Campaign}"/>
+                    <c:Label text="{comp-campaign>Promo}"/>
+                    <c:Label text="{comp-campaign>Product}"/>
+                    <c:Label text="{path: 'comp-campaign>DateSigned',
+                                   type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                    <c:Label text="{comp-campaign>Offer}"/>
+                </u:TableRow>
+            </u:rows>
+            </u:Table>
+    </u:Tag>-->
+         <u:Table width="60%"
+            id="idnrgCamTls-pendTable1"
+            class="nrgCamOvr-left nrgCamOvr-top" >
+                <u:rows>
+                <u:TableRow id="idnrgCamTls-pendRow">
+                    <c:Label text="{comp-campaign>OfferDesc}"/>
+                    <c:Label text="{comp-campaign>Campaign}"/>
+                    <c:Label text="{comp-campaign>Promo}"/>
+                    <c:Label text="{comp-campaign>Product}"/>
+                    <c:Label text="{path: 'comp-campaign>DateSigned',
+                                   type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                    <c:Label text="{comp-campaign>Offer}"/>
+                </u:TableRow>
+            </u:rows>
+            </u:Table>
+</core:FragmentDefinition>

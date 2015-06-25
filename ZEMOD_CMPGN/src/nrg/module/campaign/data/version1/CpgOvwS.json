@@ -3,7 +3,7 @@
       "results":[
          {
             "Type":"C",
-            "Contract":"1121",
+            "Contract":"34805112",
             "OfferCode":"50124832",
             "StartDate":"/Date(1498763169000)/",
             "EndDate":"/Date(1215630369000)/",
@@ -18,9 +18,26 @@
             "CncFee":6816.34,
             "Incentive":9636.09,
          },
+        {
+            "Type":"PE",
+            "Contract":"1",
+            "OfferCode":"",
+            "StartDate":"",
+            "EndDate":"",
+            "OfferTitle":"",
+            "Description":"",
+            "AvgUsage":"",
+            "EFL500":"",
+            "EFL1000":"",
+            "EFL2000":"",
+            "Promo":"",
+            "Term":"",
+            "CncFee":"",
+            "Incentive":""
+         },
          {
-            "Type":"P",
-            "Contract":"1121",
+            "Type":"PE",
+            "Contract":"34805112",
             "OfferCode":"OfferCode 2",
             "StartDate":"/Date(965415969000)/",
             "EndDate":"/Date(1187377569000)/",

@@ -3,10 +3,10 @@
 
 sap.ui.define(
     [
-        'jquery.sap.global'
+        'ute/ui/main/TabBarItem'
     ],
 
-    function (jQuery) {
+    function (TabBarItem) {
         'use strict';
 
         var CustomRenderer = {};
@@ -32,9 +32,9 @@ sap.ui.define(
             var aContent = oCustomControl.getContent() || [];
 
             aContent.forEach(function (oContent) {
-                if (oContent instanceof ute.ui.main.TabBarItem) {
+                if (oContent instanceof TabBarItem) {
                     oContent.setGroup(oCustomControl.getId() + '--grp');
-                    oCustomControl._attachItemPress(oContent);
+                    oCustomControl._attachItemSelect(oContent);
                 }
 
                 oRm.renderControl(oContent);

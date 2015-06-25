@@ -6,7 +6,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:c="sap.ui.commons"
     xmlns:l="sap.ui.commons.layout"
-    controllerName="nrg.module.dashboard.view.CallerNoIDEnrollment">
+    controllerName="nrg.module.dashboard.view.CustomerDataVerification">
 
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-cusDataVerify">
         <l:MatrixLayout
@@ -18,15 +18,17 @@
                         <!--Area Left (active)-->
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-l">
                             <ute:Tag class="nrgDashboard-cusDataVerify-l-div">
-                                <ute:TextView text="ACTIVE"
+                                <ute:TextView text="{oDtaVrfyContracts>/ContractStatus}"
                                     class="nrgDashboard-cusDataVerify-l-div-title"/>
 
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
 
-                                <utmain:Label text="TDSP" labelFor="tdsp"
+                                <utmain:Label labelFor="tdsp"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TdspLbl}"
                                     class="nrgDashboard-cusDataVerify-l-div-tdspLabl"/>
-                                <ute:TextView id="tdsp" text="CENTERPOINT ENERGY"
+                                <ute:TextView id="tdsp"
+                                    text="{oDtaVrfyContracts>/TdspName}"
                                     class="nrgDashboard-cusDataVerify-l-div-tdspVal"/>
 
                                 <ute:HorizontalDivider
@@ -36,20 +38,20 @@
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell
                                             class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label text="METER. #"
-                                                labelFor="meter"
+                                            <utmain:Label labelFor="meter_num"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_MtrNum}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halflabl"/>
-                                            <ute:TextView id="meter"
-                                                text="123235457"
+                                            <ute:TextView id="meter_num"
+                                                text="{oDtaVrfyContracts>/MeterNumber}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell
-                                            class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label text="DESCRIPTION"
-                                                labelFor="desp"
+                                            class="{comp-i18n-dashboard>nrgDashboard-cusDataVerify-l-div-cell}">
+                                            <utmain:Label labelFor="desp_txt"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Desc}"
                                                 class="nrgDashboard-cusDataVerify-l-div-ritelabl"/>
-                                            <ute:TextView id="desp"
-                                                text="Non interval"
+                                            <ute:TextView id="desp_txt"
+                                                text="{oDtaVrfyContracts>/MeterDescription}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
@@ -62,20 +64,20 @@
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell
                                             class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label text="CONTRACT ACC"
-                                                labelFor="contacc"
+                                            <utmain:Label labelFor="contacc"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_ContAcc}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halflabl"/>
                                             <ute:TextView id="contacc"
-                                                text="0000000"
+                                                text="{oDtaVrfyContracts>/ContractAccountID}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell
                                             class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label text="RATE CLASS"
-                                                labelFor="rtcls"
+                                            <utmain:Label labelFor="rtcls_lbl"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RtCls}"
                                                 class="nrgDashboard-cusDataVerify-l-div-ritelabl"/>
-                                            <ute:TextView id="rtcls"
-                                                text="RES"
+                                            <ute:TextView id="rtcls_lbl"
+                                                text="{oDtaVrfyContracts>/RateClass}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
@@ -84,11 +86,12 @@
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
 
-                                <utmain:Label text="ESID" labelFor="esid"
+                                <utmain:Label  labelFor="esid_lbl"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_ESID}"
                                     class="nrgDashboard-cusDataVerify-l-div-esidLabl"/>
-                                <ute:TextView id="esid"
+                                <ute:TextView id="esid_lbl"
                                               class="nrgDashboard-cusDataVerify-l-div-tdspVal"
-                                              text="1234567891234567891234"/>
+                                              text="{oDtaVrfyContracts>/ESID}"/>
 
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
@@ -97,16 +100,20 @@
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell
                                             class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label text="DL #" labelFor="dl"
+                                            <utmain:Label labelFor="dl_lbl"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DlNum}"
                                                 class="nrgDashboard-cusDataVerify-l-div-ritelabl"/>
-                                            <ute:TextView id="dl" text="0000000000"
+                                            <ute:TextView id="dl_lbl"
+                                                text="{oDtaVrfyBP>/DL}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell
                                             class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label text="SS #" labelFor="ssn"
+                                            <utmain:Label labelFor="ssn_lbl"
+                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SSNum}"
                                                 class="nrgDashboard-cusDataVerify-l-div-ritelabl"/>
-                                            <ute:TextView id="ssn" text="*****1234"
+                                            <ute:TextView id="ssn_lbl"
+                                                text="{oDtaVrfyBP>/SSN}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
@@ -118,8 +125,8 @@
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-m">
                             <ute:Tag class="nrgDashboard-cusDataVerify-mDiv">
                             <ute:ToggleButton design="ToggleDashboard"
-                                leftBtnText="SERVICE ADDRESS"
-                                rightBtnText="MAILING ADDRESS"
+                                leftBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TglBtnLTxt}"
+                                rightBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TglBtnRTxt}"
                                 class="nrgDashboard-cusDataVerify-mTgBtn">
                             </ute:ToggleButton>
                             <ute:Tag class="nrgDashboard-cusDataVerify-mRdBtn">
@@ -129,31 +136,35 @@
                                      text="temp_Mailing Add"/>
                             </ute:Tag>
                             <ute:Tag class="nrgDashboard-cusDataVerify-mContent">
-                                <ute:TextView text="123 Main St., APT A123"
-                                    class="nrgDashboard-cusDataVerify-mContent-add"/>
-                                <ute:TextView text="Houston, TX 77777"
-                                    class="nrgDashboard-cusDataVerify-mContent-add"/>
+                                <ute:TextView class="nrgDashboard-cusDataVerify-mContent-add"
+                                    text="{oDtaVrfyContracts>/HouseNum1} {oDtaVrfyContracts>/Street},"/>
+                                <ute:TextView class="nrgDashboard-cusDataVerify-mContent-add"
+                                    text="{oDtaVrfyContracts>/City1}, {oDtaVrfyContracts>/Region} {oDtaVrfyContracts>/PostCode1}"/>
 
-                                <utmain:Label text="CONTRACT #:" labelFor="contractNum"
+                                <utmain:Label  labelFor="contractNum"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CaNum}"
                                     class="nrgDashboard-cusDataVerify-mContent-fLbl"/>
-                                <input id="contractNum" value="123 456 7890"
+                                <ute:Textfield id="contractNum" fieldType="Noborder"
+                                    value="{oDtaVrfyContracts>/ContractID}"
                                     class="nrgDashboard-cusDataVerify-mContent-fInput"/>
 
                                 <l:MatrixLayout widths="50%,50%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="CELL:" labelFor="cell1"
+                                            <utmain:Label  labelFor="cell_num"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CellNum}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <input id="cell1"
-                                                class="nrgDashboard-cusDataVerify-mContent-hInput"
-                                                value="123 456 7890"/>
+                                            <ute:Textfield id="cell_num" fieldType="Noborder"
+                                                value="{oDtaVrfyBP>/Cell}"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="CELL 2:" labelFor="cell2"
+                                            <utmain:Label labelFor="fax_num"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FaxNum}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <input id="cell2"
-                                                class="nrgDashboard-cusDataVerify-mContent-hInput"
-                                                value="123 456 7890"/>
+                                            <ute:Textfield id="fax_num" fieldType="Noborder"
+                                                value="{oDtaVrfyBP>/Fax}"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
@@ -162,18 +173,20 @@
                                 <l:MatrixLayout widths="50%,50%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="DAY:" labelFor="dayPhn"
+                                            <utmain:Label  labelFor="dayPhn"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <input id="dayPhn"
-                                                value="222 333 4444"
+                                            <ute:Textfield id="dayPhn" fieldType="Noborder"
+                                                value="{oDtaVrfyBP>/DayPhone}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="TYPE:" labelFor="dayPhnType"
+                                            <utmain:Label labelFor="dayPhnType"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <input id="dayPhnType"
-                                                class="nrgDashboard-cusDataVerify-mContent-hInput"
-                                                value="LANDLINE"/>
+                                            <ute:Textfield id="dayPhnType" fieldType="Noborder"
+                                                value="{oDtaVrfyBP>/DayPhoneType}"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
@@ -182,16 +195,19 @@
                                 <l:MatrixLayout widths="50%,50%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="EVENING:" labelFor="evnPhn"
+                                            <utmain:Label labelFor="evnPhn"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <input id="evnPhn"
-                                                value="555 666 7777"
+                                            <ute:Textfield id="evnPhn" fieldType="Noborder"
+                                                value="123"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="TYPE:" labelFor="evnPhnType"
+                                            <utmain:Label labelFor="evnPhnType"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTypTxt}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <input id="evnPhnType" value="LANDLINE"
+                                            <ute:Textfield id="evnPhnType" fieldType="Noborder"
+                                                value="{oDtaVrfyBP>/EveningPhoneType}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
@@ -204,10 +220,11 @@
                                             <utmain:Button text="SMS"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Label text="EMAIL:" labelFor="email"
+                                            <utmain:Label labelFor="email_lbl"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Email}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <input id="email"
-                                                value="INFO2@UMAIL.COM"
+                                            <ute:Textfield id="email_lbl" fieldType="Noborder"
+                                                value="{oDtaVrfyBP>/Email}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
@@ -221,12 +238,16 @@
                         <!--Area Right (Only 2 buttons )-->
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-r">
                             <ute:Tag class="nrgDashboard-cusDataVerify-rContent">
-                                <utmain:Button
+                                <utmain:Button visible="false"
                                     class="nrgDashboard-cusDataVerify-rContent-vBtn"
-                                    text="CONFIRM"/>
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnConfitm}"/>
+                                <utmain:Button visible="true"
+                                    class="nrgDashboard-cusDataVerify-rContent-vBtn"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnUnConfirm}"/>
                                 <utmain:Button
                                     class="nrgDashboard-cusDataVerify-rContent-uBtn"
-                                    design="Invert" text="UPDATE"/>
+                                    design="Invert"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnUpdate}"/>
                             </ute:Tag>
                         </l:MatrixLayoutCell>
                     </l:cells>

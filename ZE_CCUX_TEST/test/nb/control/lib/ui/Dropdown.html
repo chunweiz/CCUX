@@ -19,7 +19,7 @@
 
            <script id="sap-ui-bootstrap"
                                     src="../../../../../../ZELIB/bower_components/openui5-sap.ui.core/resources/sap-ui-core.js"
-                                    data-sap-ui-libs="ute.ui.commons,sap.ui.commons,sap.ui.layout"
+                                    data-sap-ui-libs="ute.ui.commons,sap.ui.commons,sap.ui.layout,nb.control.lib.ui"
                                     data-sap-ui-resourceroots='{
                 "ute.ui.commons": "/ZECTRL_COMMONS/build/ute/ui/commons",
                 "nb.control.lib.ui": "/ZE_CCUX_TEST/test/nb/control/lib/ui",
@@ -42,14 +42,11 @@
 
 
 
-     <u:Dropdown  arrowcolor="Blue" arrowType="Hollow" enabled="true" background="Transparent" border="All"  width="200px" padding="20px" maxItems="6" DropdownListItems="{/myData}">
-<u:DropdownListItems>
-<u:DropdownListItem key="{lastName}">
-                        <sap:Label text="{firstName}"/>
-                        <sap:CheckBox checked="true"/>
-</u:DropdownListItem>
-</u:DropdownListItems>
-   </u:Dropdown>
+ <nb:Dropdown  design="Default">
+
+
+
+   </nb:Dropdown>
 
             </mvc:View>
         </script>

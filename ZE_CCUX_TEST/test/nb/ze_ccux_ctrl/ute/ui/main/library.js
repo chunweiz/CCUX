@@ -18,7 +18,8 @@ sap.ui.define(
                 'nb.ui.main.ToggleBarDesign',
                 'nb.ui.main.CheckboxDesign',
                 'nb.ui.main.InfolineDesign',
-                'nb.ui.main.DropdownDesign'
+                'nb.ui.main.DropdownDesign',
+                'ute.ui.main.RadioButtonDesign'
             ],
 
 			controls: [
@@ -27,7 +28,8 @@ sap.ui.define(
                 'nb.ui.main.Label',
                 'nb.ui.main.Checkbox',
                 'nb.ui.main.Infoline',
-                'nb.ui.main.Dropdown'
+                'nb.ui.main.Dropdown',
+                'nb.ui.main.RadioButton'
 			],
 
 			elements: [
@@ -64,6 +66,10 @@ sap.ui.define(
             None: 'None',
             Default: 'Default',
             Harrow: 'Harrow'
+        };
+         nb.ui.main.RadioButtonDesign = {
+            None: 'None',
+            Default: 'Default'
         };
 
         return nb.ui.main;

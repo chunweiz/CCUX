@@ -10,36 +10,44 @@
           controllerName="nrg.module.campaign.view.Offers"
           height="100%"
           width="100%"
-          displayBlock="true">
+          displayBlock="true"
+          busy="{appView>/busy}"
+	      busyIndicatorDelay="{appView>/delay}">
     <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
         <u:Tag class="nrgCmpOff">
             <u:Tag class="nrgCamOff-ttl" text="{comp-i18n-campaign>nrgCmpOffTtl}" />
+             <um:Button press=".backToOverview"
+                        text="{comp-i18n-campaign>nrgCmpBckOverview}"
+                        class="nrgCamOff-Back"
+                        design="None">
+            </um:button>
             <u:Tag class="nrgCmpOff-partDisplay">
                 <u:Tag class="nrgCmpOff-compare">
                     <u:Tag class="nrgCamOff-ttlC" text="{comp-i18n-campaign>nrgCmpOffCompareBy}" />
-                    <u:Tag class="nrgCamOff-cmpBtnI">
-                        <um:Button id="idnrgCamOffCmpBtn-I"
-                            press=".toggleComparision"
-                            text="{comp-i18n-campaign>nrgCmpOffCpInvoice}"
-                            class="nrgCamOffBtn"
-                            design="None">
-                        </um:button>
-                    </u:Tag>
-                    <u:Tag class="nrgCamOff-cmpBtnC">
-                        <um:Button id="idnrgCamOffCmpBtn-C"
-                            press=".toggleComparision"
-                            text="{comp-i18n-campaign>nrgCmpOffCpConsumption}"
-                            class="nrgCamOff-btn"
-                            design="None">
-                        </um:button>
-                    </u:Tag>
+                    <um:TabBar id="nrgTabBar" design="None" select=".onSelected" class="nrgCamOff-tabBar">
+                        <um:TabBarItem key="tb001" design="None" press=".onPressed" selected="true" class="nrgCamOff-tabBarItem">
+                            <u:Tag text="{comp-i18n-campaign>nrgCmpOffCpInvoice}" />
+                        </um:TabBarItem>
+                        <br/>
+                        <um:TabBarItem key="tb002"  design="None" press=".onPressed" class="nrgCamOff-tabBarItem">
+                            <u:Tag text="{comp-i18n-campaign>nrgCmpOffCpConsumption}" />
+                        </um:TabBarItem>
+                    </um:TabBar>
                 </u:Tag>
-                <u:Tag class="nrgCmpOff-display-1" id="idnrgCmpOffDisplay-1">
-                     <core:Fragment fragmentName="nrg.module.campaign.view.Invoice" type="XML" />
-                </u:Tag>
-                <u:Tag class="nrgCmpOff-display-2" id="idnrgCmpOffDisplay-2">
-                    <core:Fragment fragmentName="nrg.module.campaign.view.Invoice" type="XML" />
-               </u:Tag>
+                <um:TabPanel tabPanelFor="nrgTabBar" design="None" class="nrgCmpOff-tabPanel">
+                    <um:TabPanelItem key="tb001" class="nrgCmpOff-tabPanelItem">
+                        <u:Tag class="nrgCmpOff-display-invoice" id="idnrgCmpOffDisplay-1">
+                             <core:Fragment fragmentName="nrg.module.campaign.view.Invoice" type="XML" />
+                             <core:Fragment fragmentName="nrg.module.campaign.view.Invoice" type="XML" />
+                        </u:Tag>
+                    </um:TabPanelItem>
+                    <um:TabPanelItem key="tb002" class="nrgCmpOff-tabPanelItem">
+                        <u:Tag class="nrgCmpOff-display-consumption" id="idnrgCmpOffDisplay-2">
+                            <core:Fragment fragmentName="nrg.module.campaign.view.Cons" type="XML" />
+                            <core:Fragment fragmentName="nrg.module.campaign.view.Cons" type="XML" />
+                       </u:Tag>
+                    </um:TabPanelItem>
+                </um:TabPanel>
             </u:Tag>
             <u:Tag class="nrgCamOff-disc" text="{comp-i18n-campaign>nrgCmpOffDisclosure}" />
             <m:SearchField width="50%" class="nrgCamOff-search" placeholder="Search Ex:Campaign Name, Promo Code, Price"/>
@@ -87,6 +95,12 @@
                         focusable="true"
                         class="nrgCamOff-scroll"
                         id="idnrgCamOffScroll" >
+
+                    </m:ScrollContainer>
+                </u:Tag>
+            </u:Tag>
+            <!-- Place holder for templates to reuse for Bind Aggregation method. Below will be always Display:none -->
+            <u:Tag class="nrgCamOff-hide">
                         <um:Button press=".onOfferSelected"
                                    text="{comp-campaign>Notitle}"
                                    class="nrgCamOff-btn"
@@ -110,9 +124,8 @@
                                                                 formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
                             <u:Tag class="nrgCamOff-btnPrcLbl" text="{comp-i18n-campaign>nrgCmpOffkWhDisc}" />
                         </um:Button>
-                    </m:ScrollContainer>
-                </u:Tag>
             </u:Tag>
+           <!-- Place holder for templates to reuse for Bind Aggregation method. Above will be always Display:none -->
         </u:Tag>
     </u:Tag>
 </mvc:View>

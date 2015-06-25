@@ -12,10 +12,10 @@ sap.ui.define(
         CustomRenderer.render = function (oRm, oCustomControl) {
             oRm.write('<div');
             oRm.writeControlData(oCustomControl);
-            oRm.addClass('uteMPopup');
+            oRm.addClass('uteMDdItem');
 
-            if (oCustomControl.getDesign() !== ute.ui.main.DialogDesign.None) {
-                oRm.addClass('uteMPopup-design-' + oCustomControl.getDesign().toLowerCase());
+            if (oCustomControl.getDesign() !== ute.ui.main.DropdownItemDesign.None) {
+                oRm.addClass('uteMDdItem-design-' + oCustomControl.getDesign().toLowerCase());
             }
 
             oRm.writeClasses();
@@ -30,7 +30,7 @@ sap.ui.define(
             var aContent = oCustomControl.getContent() || [];
 
             aContent.forEach(function (oContent) {
-                oRm.renderControl(aContent);
+                oRm.renderControl(oContent);
             });
         };
 

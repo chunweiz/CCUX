@@ -6,10 +6,11 @@ sap.ui.define(
         'nrg/base/view/BaseController',
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
-        'jquery.sap.global'
+        'jquery.sap.global',
+        "sap/ui/model/json/JSONModel"
     ],
 
-    function (CoreController, Filter, FilterOperator, jQuery) {
+    function (CoreController, Filter, FilterOperator, jQuery, JSONModel) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.Overview');
@@ -27,19 +28,39 @@ sap.ui.define(
 		/* lifecycle method- After Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
-            var aContent, obinding, sPath, that = this,
+            var aContent, obinding, sPath, that = this, sTempValue,
                 aToggleContainer = this.getView().byId("idnrgCamOvr-TabBar"),
                 handler = function () {
                     aContent = aToggleContainer.getContent();
                     if ((aContent !== undefined) && (aContent.length > 0)) {
-                        sPath = aContent[0].getBindingContext("comp-campaign").getPath();
-                        aContent[0].setSelected(true);
+                        if (aContent.length === 1) { // show only current campaign data irrespective of the flag
+                            sTempValue = aContent[0].getBindingContext("comp-campaign").getProperty("Type");
+                            if (sTempValue === that.sFlag) {
+                                sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                                aContent[0].setSelected(true);
+                            } else {
+                                sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                                aContent[0].setSelected(true);
+                                //Temporarily show exiting acontent[0] data but in the future decide based on business requirement
+                            }
+                        }
+                        if (aContent.length === 2) {
+                            sTempValue = aContent[0].getBindingContext("comp-campaign").getProperty("Type");
+                            if (sTempValue === that.sFlag) { //Populate view with Current Campaign or Pending Campaign depends on the flag came from dashboard
+                                sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                                aContent[0].setSelected(true);
+                            } else {
+                                sPath = aContent[1].getBindingContext("comp-campaign").getPath();
+                                aContent[1].setSelected(true);
+                            }
+                        }
                        // aContent[0].addStyleClass("nrgCamHisBut-Selected");
                         that.getView().bindElement({
                             model : "comp-campaign",
                             path : sPath
                         });
                     }
+                    that.getView().getModel("appView").setProperty("/busy", false);
                     obinding.detachDataReceived(handler);
                 };
             obinding = aToggleContainer.getBinding("content");
@@ -62,16 +83,27 @@ sap.ui.define(
                 oToggleTemplate,
                 aContent,
                 aFilters,
-                sContract;
-            sContract = oEvent.getParameter("arguments").coNum;
-            aFilters = this._createSearchFilterObject(sContract);
+                oViewModel,
+                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
+                aFilterIds,
+                aFilterValues,
+                oTemplatesView;
+            oViewModel = new JSONModel({
+				busy : true,
+				delay : 0
+			});
+            this.getView().setModel(oViewModel, "appView");
+            this._sContract = oEvent.getParameter("arguments").coNum;
+            this._sFlag = oEvent.getParameter("arguments").typeV.toUpperCase();
+            aFilterIds = ["Contract"];
+            aFilterValues = [this._sContract];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
             sEligibilityPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgEligibilitySet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar");
-            aContent = oToggleContainer.getContent();
-            oToggleTemplate = aContent[0].clone();
-            sEligibilityPath = sEligibilityPath + "('" + sContract + "')";
+            oToggleTemplate = this.getView().byId("idnrgCamOvr-TabItem").clone();
+            sEligibilityPath = sEligibilityPath + "('" + this._sContract + "')";
             mParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,
@@ -115,21 +147,21 @@ sap.ui.define(
 
         };
 
-        /**
+       /**
 		 * Assign the filter objects based on the input selection
 		 *
 		 * @function
-		 * @param {sContractID} Contract to be used aa a filter
-         * @param {sCurrentFlag} Filter flag to determine the current
+		 * @param {Array} aFilterIds to be used as sPath for Filters
+         * @param {Array} aFilterValues for each sPath
 		 * @private
 		 */
-        Controller.prototype._createSearchFilterObject = function (sContractID) {
+        Controller.prototype._createSearchFilterObject = function (aFilterIds, aFilterValues) {
             var aFilters = [],
-                oFilterTemplate = new Filter();
-            oFilterTemplate.sPath = 'Contract';
-            oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = sContractID;
-            aFilters.push(oFilterTemplate);
+                iCount;
+
+            for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
+                aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
+            }
             return aFilters;
         };
 
@@ -163,9 +195,6 @@ sap.ui.define(
             } else {
                 this.navTo("campaignoffers", {coNum: sContract});
             }
-
-
-
         };
 
         /**

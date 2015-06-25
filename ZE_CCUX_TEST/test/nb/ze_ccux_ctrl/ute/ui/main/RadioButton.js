@@ -11,81 +11,75 @@ sap.ui.define(
     function (jQuery, Control, EnabledPropagator) {
         'use strict';
 
-        var CustomControl = Control.extend('ute.ui.main.TabBarItem', {
+        var CustomControl = Control.extend('nb.ui.main.RadioButton', {
             metadata: {
-                library: 'ute.ui.main',
+                library: 'nb.ui.main',
 
                 properties: {
-                    design: { type: 'ute.ui.main.TabBarItemDesign', defaultValue: ute.ui.main.TabBarItemDesign.Default },
-                    key: { type: 'string', defaultValue: null },
+                    design: { type: 'nb.ui.main.RadioButtonDesign', defaultValue: nb.ui.main.RadioButtonDesign.Default },
+                    checked: { type: 'boolean', defaultValue: false },
                     group: { type: 'string', defaultValue: null },
-                    selected: { type: 'boolean', defaultValue: false },
                     enabled: { type: 'boolean', defaultValue: true }
                 },
 
-                aggregations: {
-                    content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' }
-                },
-
-                defaultAggregation: 'content',
-
-                events: {
+               events: {
                     select: {}
                 }
             }
         });
 
+      //  EnabledPropagator.call(CustomControl.prototype);
         CustomControl.prototype._groupNames = {};
 
         CustomControl.prototype.exit = function () {
-            this.$().unbind('change', jQuery.proxy(this._onchange));
+            this.$().unbind('change', jQuery.proxy(this.onchange));
             this._removeFromGroup();
         };
 
         CustomControl.prototype.onBeforeRendering = function () {
-            this.$().unbind('change', jQuery.proxy(this._onchange));
+            this.$().unbind('change', jQuery.proxy(this.onchange));
         };
 
         CustomControl.prototype.onAfterRendering = function () {
-            this.$().bind('change', jQuery.proxy(this._onchange, this));
+            this.$().bind('change', jQuery.proxy(this.onchange, this));
         };
 
-        CustomControl.prototype._onchange = function (oEvent) {
+        CustomControl.prototype.onchange = function (oEvent) {
             if (!this.getEnabled()) {
                 return;
             }
 
-            this.setSelected(this.getDomRef('int').checked);
+         this.setChecked(this.getDomRef('intRb').checked);
             this.fireSelect();
         };
 
-        CustomControl.prototype.setSelected = function (bSelected) {
+        CustomControl.prototype.setChecked = function (bChecked) {
+
             var bSelectedOld, sGroup, aControlsInGroup;
 
-            bSelectedOld = this.getSelected();
+            bSelectedOld = this.getChecked();
             sGroup = this.getGroup();
             aControlsInGroup = this._groupNames[sGroup] || [];
 
-            this.setProperty('selected', bSelected, true);
+            this.setProperty('checked', bChecked, true);
             this._changeGroup(sGroup);
 
-            if (bSelected && sGroup && sGroup !== '') {
+            if (bChecked && sGroup && sGroup !== '') {
                 aControlsInGroup.forEach(function (oControlInGroup) {
-                    if (oControlInGroup instanceof CustomControl && oControlInGroup !== this && oControlInGroup.getSelected()) {
-                        oControlInGroup.setSelected(false);
-                        oControlInGroup.fireSelect();
+                    if (oControlInGroup instanceof CustomControl && oControlInGroup !== this && oControlInGroup.getChecked()) {
+                        oControlInGroup.setChecked(false);
                     }
                 }.bind(this));
             }
 
-            if (bSelectedOld !== bSelected && this.getDomRef()) {
-                if (bSelected) {
-                    this.getDomRef('int').checked = true;
-                    this.getDomRef('int').setAttribute('checked', 'checked');
+            if (bSelectedOld !== bChecked && this.getDomRef()) {
+                if (bChecked) {
+                    this.getDomRef('intRb').checked = true;
+                    this.getDomRef('intRb').setAttribute('checked', 'checked');
 
                 } else {
-                    this.getDomRef('int').checked = false;
-				    this.getDomRef('int').removeAttribute('checked');
+                    this.getDomRef('intRb').checked = false;
+				    this.getDomRef('intRb').removeAttribute('checked');
                 }
             }
 
@@ -93,13 +87,14 @@ sap.ui.define(
         };
 
         CustomControl.prototype.setEnabled = function (bEnabled) {
+
             if (this.getDomRef()) {
                 if (bEnabled) {
-                    this.getDomRef('int').disabled = false;
-                    this.getDomRef('int').removeAttribute('disabled');
+                    this.getDomRef('intRb').disabled = false;
+                    this.getDomRef('intRb').removeAttribute('disabled');
                 } else {
-                    this.getDomRef('int').disabled = true;
-                    this.getDomRef('int').setAttribute('disabled', 'disabled');
+                    this.getDomRef('intRb').disabled = true;
+                    this.getDomRef('intRb').setAttribute('disabled', 'disabled');
                 }
             }
 

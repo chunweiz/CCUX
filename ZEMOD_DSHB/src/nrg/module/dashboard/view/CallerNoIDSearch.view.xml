@@ -71,7 +71,6 @@
                 <ute:Textfield
                     value="{
                         path:'oSearchFilters>/searchTextFields/sBpNum'}"
-                    id="idSearchBp"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_BpNum}"
                     change="onTextFieldChange"
@@ -175,7 +174,9 @@
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
                             <ute:Button
+                                press="._onBpSelect"
                                 buttonType="GeneralInfo"
+                                info="{oBpSearchResult>PartnerID}"
                                 text="Select"
                                 enabled="true">
                         </ute:Button>

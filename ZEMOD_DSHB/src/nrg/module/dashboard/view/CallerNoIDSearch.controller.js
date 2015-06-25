@@ -60,6 +60,9 @@ sap.ui.define(
         };
 
         Controller.prototype._createSearchFilterObject = function () {
+            //var test = this.getView().byId('idSearchBp');
+
+
             var aFilters = [],
                 oFilterTemplate = new Filter(),
                 oFilterModel = this.getView().getModel('oSearchFilters');
@@ -155,7 +158,11 @@ sap.ui.define(
             }
         };
 
-        //Controller.prototype.
+        Controller.prototype._onBpSelect = function (oEvent) {
+            //var test = oEvent.getSource().getBindingContext();
+            //Make "select" text bind to JSON Model first
+            return;
+        };
 
         return Controller;
     }

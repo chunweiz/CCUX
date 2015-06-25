@@ -17,25 +17,24 @@ sap.ui.define(
 
                 properties: {
                     design: { type: 'ute.ui.main.RadioButtonDesign', defaultValue: ute.ui.main.RadioButtonDesign.Default },
-                    name: { type: 'string', defaultValue: null },
+                    group: { type: 'string', defaultValue: null },
                     checked: { type: 'boolean', defaultValue: false },
                     enabled: { type: 'boolean', defaultValue: true }
                 },
 
                 events: {
-                    select: {
-                        parameters: {
-                            checked: { type: 'boolean' }
-                        }
-                    }
+                    select: {}
                 }
             }
         });
 
-        EnabledPropagator.call(CustomControl.prototype);
+       // EnabledPropagator.call(CustomControl.prototype);
+
+        CustomControl.prototype._groupNames = {};
 
         CustomControl.prototype.exit = function () {
             this.$().unbind('change', jQuery.proxy(this.onchange));
+            this._removeFromGroup();
         };
 
         CustomControl.prototype.onBeforeRendering = function () {
@@ -51,37 +50,96 @@ sap.ui.define(
                 return;
             }
 
-            this.setChecked(true);
-
-            this.fireSelect({
-                checked: this.getChecked()
-            });
+            this.setChecked(this.getDomRef('intRb').checked);
+            this.fireSelect();
         };
 
-        CustomControl.prototype.setChecked = function (bValue) {
-            bValue = !!bValue;
+        CustomControl.prototype.setChecked = function (bChecked) {
 
-            if (this.getChecked() === bValue) {
-                return this;
+            var bSelectedOld, sGroup, aControlsInGroup;
+
+            bSelectedOld = this.getChecked();
+            sGroup = this.getGroup();
+            aControlsInGroup = this._groupNames[sGroup] || [];
+
+            this.setProperty('checked', bChecked, true);
+            this._changeGroup(sGroup);
+
+            if (bChecked && sGroup && sGroup !== '') {
+                aControlsInGroup.forEach(function (oControlInGroup) {
+                    if (oControlInGroup instanceof CustomControl && oControlInGroup !== this && oControlInGroup.getChecked()) {
+                        oControlInGroup.setChecked(false);
+                    }
+                }.bind(this));
             }
 
-            this.$('.uteMRb-intRb').prop('checked', bValue);
+            if (bSelectedOld !== bChecked && this.getDomRef()) {
+                if (bChecked) {
+                    this.getDomRef('intRb').checked = true;
+                    this.getDomRef('intRb').setAttribute('checked', 'checked');
 
-            this.setProperty('checked', bValue, true);
+                } else {
+                    this.getDomRef('intRb').checked = false;
+				    this.getDomRef('intRb').removeAttribute('checked');
+                }
+            }
+
             return this;
         };
 
-        CustomControl.prototype.setEnabled = function (bValue) {
-            bValue = !!bValue;
+        CustomControl.prototype.setEnabled = function (bEnabled) {
 
-            if (this.getEnabled() === bValue) {
-                return this;
+            if (this.getDomRef()) {
+                if (bEnabled) {
+                    this.getDomRef('intRb').disabled = false;
+                    this.getDomRef('intRb').removeAttribute('disabled');
+                } else {
+                    this.getDomRef('intRb').disabled = true;
+                    this.getDomRef('intRb').setAttribute('disabled', 'disabled');
+                }
             }
 
-            this.$('.uteMRb-intRb').prop('disabled', !bValue);
-
-            this.setProperty('enabled', bValue, true);
+            this.setProperty('enabled', bEnabled);
             return this;
+        };
+
+        CustomControl.prototype.setGroup = function (sGroup) {
+            this._changeGroup(sGroup, this.getGroup());
+
+            this.setProperty('group', sGroup);
+            return this;
+        };
+
+        CustomControl.prototype._changeGroup = function (sNewGroup, sOldGroup) {
+            var aNewGroup, aOldGroup;
+
+            aNewGroup = this._groupNames[sNewGroup];
+            aOldGroup = this._groupNames[sOldGroup];
+
+            if (!aNewGroup) {
+                this._groupNames[sNewGroup] = [];
+                aNewGroup = this._groupNames[sNewGroup];
+            }
+
+            if (aNewGroup.indexOf(this) === -1) {
+                aNewGroup.push(this);
+            }
+
+            if (aOldGroup && aOldGroup.indexOf(this) !== -1) {
+                aOldGroup.splice(aOldGroup.indexOf(this), 1);
+            }
+        };
+
+        CustomControl.prototype._removeFromGroup = function () {
+            var sGroup, aControlsInGroup, iGroupIndex;
+
+            sGroup = this.getGroup();
+            aControlsInGroup = this._groupNames[sGroup];
+            iGroupIndex = aControlsInGroup && aControlsInGroup.indexOf(this);
+
+            if (iGroupIndex && iGroupIndex !== -1) {
+                aControlsInGroup.splice(iGroupIndex, 1);
+            }
         };
 
         return CustomControl;

@@ -7,10 +7,11 @@ sap.ui.define(
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
         'jquery.sap.global',
-        'nrg/base/type/Price'
+        'nrg/base/type/Price',
+        "sap/ui/model/json/JSONModel"
     ],
 
-    function (CoreController, Filter, FilterOperator, jQuery, price) {
+    function (CoreController, Filter, FilterOperator, jQuery, price, JSONModel) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.Offers');
@@ -23,27 +24,21 @@ sap.ui.define(
             this.getOwnerComponent().getRouter().getRoute("campaignoffers").attachPatternMatched(this._onObjectMatched, this);
         };
 
-        /**
+       /**
 		 * Assign the filter objects based on the input selection
 		 *
 		 * @function
-		 * @param {oContractID} Contract to be used aa a filter
-         * @param {oFlag} Filter flag to determine the Agent Requested and Customer Requested
+		 * @param {Array} aFilterIds to be used as sPath for Filters
+         * @param {Array} aFilterValues for each sPath
 		 * @private
 		 */
-        Controller.prototype._createSearchFilterObject = function (sContractID, sFlag) {
+        Controller.prototype._createSearchFilterObject = function (aFilterIds, aFilterValues) {
             var aFilters = [],
-                oFilterTemplate = new Filter();
-            oFilterTemplate.sPath = 'ContractID';
-            oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = sContractID;
-            aFilters.push(oFilterTemplate);
+                iCount;
 
-            oFilterTemplate.sPath = 'Type';
-            oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = sFlag;
-            aFilters.push(oFilterTemplate);
-
+            for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
+                aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
+            }
             return aFilters;
         };
 
@@ -66,6 +61,7 @@ sap.ui.define(
             }
             oEvent.getSource().addStyleClass("nrgCamOff-btn-selected");
         };
+
         /**
 		 * Binds the view to the object path
 		 *
@@ -78,14 +74,25 @@ sap.ui.define(
                 sCurrentPath,
                 sEligibilityPath,
                 mParameters,
-                aFilters = this._createSearchFilterObject("1121", "P"),
+                aFilters,
                 oTileContainer,
-                oTileTemplate;
-
+                oTileTemplate,
+                oViewModel,
+                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
+                aFilterIds,
+                aFilterValues;
+            oViewModel = new JSONModel({
+				busy : true,
+				delay : 0
+			});
+            this._sContract = oEvent.getParameter("arguments").coNum;
+            aFilterIds = ["Contract", "Type"];
+            aFilterValues = [this._sContract, "P"];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            this.getView().setModel(oViewModel, "appView");
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCpgChangeOffSet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
-
             oTileTemplate = this.getView().byId("idnrgCamOffBt").clone();
             this.myTemplate = oTileTemplate;
             mParameters = {
@@ -95,8 +102,9 @@ sap.ui.define(
                 filters : aFilters
             };
             oTileContainer.bindAggregation("content", mParameters);
-
+            this.getView().getModel("appView").setProperty("/busy", false);
         };
+
         /**
 		 * Binds the view based on the Tier selected like Proactive, Reactive, Save and Final Save
 		 *
@@ -114,35 +122,31 @@ sap.ui.define(
                 oTileTemplate,
                 mParameters,
                 sCurrentPath,
-                aContent;
-/*            aChildren = oEvent.getSource().getParent().findElements();
-            for (i = 0; i < aChildren.length; i = i + 1) {
-                if (aChildren[i].hasStyleClass("nrgCamOffBt-Selected")) {
-                    aChildren[i].removeStyleClass("nrgCamOffBt-Selected");
-                }
-            }
-            oEvent.getSource().addStyleClass("nrgCamOffBt-Selected");*/
+                aContent,
+                aFilterIds,
+                aFilterValues;
             sButtonText = oEvent.getSource().getId();
             sButtonText = sButtonText.substring(sButtonText.length - 1, sButtonText.length);
+            aFilterIds = ["Contract", "Type"];
             switch (sButtonText) {
             case "P":
-                aFilters = this._createSearchFilterObject("1121", "P");
+                aFilterValues = [this._sContract, "P"];
                 break;
             case "R":
-                aFilters = this._createSearchFilterObject("1121", "R");
+                aFilterValues = [this._sContract, "R"];
                 break;
             case "S":
-                aFilters = this._createSearchFilterObject("1121", "S");
+                aFilterValues = [this._sContract, "S"];
                 break;
             case "F":
-                aFilters = this._createSearchFilterObject("1121", "F");
+                aFilterValues = [this._sContract, "F"];
                 break;
             default:
-                aFilters = this._createSearchFilterObject("1121", "F");
+                aFilterValues = [this._sContract, "F"];
             }
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
             aContent = oTileContainer.getContent();
-            //oTileTemplate = aContent[0].clone();
             oTileTemplate = this.myTemplate;
             sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCpgChangeOffSet");
             mParameters = {
@@ -155,24 +159,6 @@ sap.ui.define(
         };
 
         /**
-		 * Displays and renders comparision view based on the user selection of Invoice and Consumption
-		 *
-		 * @function
-		 * @param {sap.ui.base.Event} oEvent pattern match event
-		 *
-		 */
-        Controller.prototype.toggleComparision = function (oEvent) {
-            var oDisplay1 = this.getView().byId("idnrgCmpOffDisplay-1"),
-                oDisplay2 = this.getView().byId("idnrgCmpOffDisplay-2"),
-                oFragment1 = sap.ui.xmlfragment("nrg.module.campaign.view.Cons"),
-                oFragment2 = sap.ui.xmlfragment("nrg.module.campaign.view.Cons");
-            oDisplay1.removeAllContent();
-            oDisplay2.removeAllContent();
-            oDisplay1.addContent(oFragment1);
-            oDisplay2.addContent(oFragment2);
-        };
-
-        /**
 		 * Move to Campaign details view when the user selected a particular campaign
 		 *
 		 * @function
@@ -180,7 +166,7 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.selectCampaign = function (oEvent) {
-            this.navTo("campaignchg", {coNum: "1121", offercodeNum: "50124832"});
+            this.navTo("campaignchg", {coNum: this._sContract, offercodeNum: "50124832"});
         };
 
         /**
@@ -205,6 +191,16 @@ sap.ui.define(
 		 */
         Controller.prototype.formatPromo = function (sPromoCode) {
             return "Promo: " + sPromoCode;
+        };
+
+        /**
+		 * Back to Overview page function
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.backToOverview = function (oEvent) {
+            this.navTo("campaign", {coNum : this._sContract, typeV : "C"});
         };
 
         return Controller;

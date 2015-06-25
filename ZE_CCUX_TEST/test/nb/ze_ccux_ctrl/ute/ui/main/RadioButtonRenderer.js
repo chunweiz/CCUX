@@ -17,7 +17,7 @@ sap.ui.define(
             oRm.writeControlData(oCustomControl);
             oRm.addClass('uteMRb');
 
-            if (oCustomControl.getDesign() !== ute.ui.main.RadioButtonDesign.None) {
+            if (oCustomControl.getDesign() !== nb.ui.main.RadioButtonDesign.None) {
                 oRm.addClass('uteMRb-design-' + oCustomControl.getDesign().toLowerCase());
             }
 

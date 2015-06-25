@@ -12,7 +12,7 @@
         <ute:content>
             <ute:TextView
                 class="nrgDashboard-cusDataSum-bpName"
-                design="Large" text="{'oSmryBpInf>/FullName'}">
+                design="Large" text="{oSmryBpInf>/FullName}">
             </ute:TextView>
             <!--Badge-->
             <ute:Badge id="idBadgeCI" size="30px"
@@ -98,7 +98,7 @@
                 </utmain:Label>
                 <ute:Tag elem="span"
                     id="db_verify_CA"
-                    text="00000000">
+                    text="{oSmryBuagInf>/ContractAccountID}">
                 </ute:Tag>
             </ute:Tag>
 
@@ -134,7 +134,7 @@
                 </ute:TextView>
                 <ute:TextView
                     class="nrgDashboard-cusDataSum-caNameVal"
-                    text="Taco Bell. Store 132">
+                    text="{oSmryBuagInf>/BusinessAgreementName}">
                 </ute:TextView>
             </ute:Tag>
 

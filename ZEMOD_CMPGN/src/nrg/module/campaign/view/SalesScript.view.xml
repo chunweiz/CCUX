@@ -4,14 +4,22 @@
           xmlns:c="sap.ui.commons"
           xmlns:core="sap.ui.core"
           xmlns:u="ute.ui.commons"
+          xmlns:um="ute.ui.main"
           xmlns:l="sap.ui.commons.layout"
           controllerName="nrg.module.campaign.view.SalesScript"
           height="100%"
           width="100%"
-          displayBlock="true">
+          displayBlock="true"
+          busy="{appView>/busy}"
+	      busyIndicatorDelay="{appView>/delay}">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
       <u:Tag class="nrgCamSS">
          <u:Tag class="nrgCamSS-ttl" text="{comp-i18n-campaign>nrgCmpSSTtl}" />
+             <um:Button press=".backToOverview"
+                        text="{comp-i18n-campaign>nrgCmpBckOverview}"
+                        class="nrgCamOff-Back"
+                        design="None">
+            </um:button>
             <l:MatrixLayout class="nrgCamSS-mtx nrgCamSS-top">
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>

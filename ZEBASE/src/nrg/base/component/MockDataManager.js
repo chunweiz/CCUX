@@ -6,10 +6,11 @@ sap.ui.define(
         'jquery.sap.global',
         'sap/ui/base/Object',
         'sap/ui/core/util/MockServer',
-        'sap/ui/model/odata/v2/ODataModel'
+        'sap/ui/model/odata/v2/ODataModel',
+        'sap/ui/model/odata/CountMode'
     ],
 
-    function (jQuery, Object, MockServer, ODataModel) {
+    function (jQuery, Object, MockServer, ODataModel, CountMode) {
         'use strict';
 
         var Manager = Object.extend('nrg.base.component.MockDataManager', {
@@ -66,7 +67,10 @@ sap.ui.define(
             this._aMockServers.forEach(function (oEntry) {
                 var oModel;
 
-                oModel = new ODataModel(oEntry.oMockServer.getRootUri(), true);
+                oModel = new ODataModel(oEntry.oMockServer.getRootUri(), {
+                    defaultCountMode: CountMode.None
+                });
+
                 this._oComponent.setModel(oModel, oEntry.sMock);
 
             }.bind(this));

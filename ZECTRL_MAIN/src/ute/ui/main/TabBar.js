@@ -34,14 +34,16 @@ sap.ui.define(
             }
         });
 
-        CustomControl.prototype._attachItemPress = function (oItem) {
-            oItem.attachPress(jQuery.proxy(this._onItemPress, this));
+        CustomControl.prototype._attachItemSelect = function (oItem) {
+            oItem.attachSelect(this._onItemSelect, this);
         };
 
-        CustomControl.prototype._onItemPress = function (oControlEvent) {
-            this.fireSelect({
-                selectedItem: oControlEvent.getSource()
-            });
+        CustomControl.prototype._onItemSelect = function (oControlEvent) {
+            if (oControlEvent.getSource().getSelected()) {
+                this.fireSelect({
+                    selectedItem: oControlEvent.getSource()
+                });
+            }
         };
 
         return CustomControl;
