@@ -50,12 +50,13 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
         /*Function is called when button is clicked.*/
         ToggleButton.prototype.onclick = function (oEvent) {
             if (this.getEnabled()) {
-                this.firePress({/* no parameters */});
+
                 if (this.leftSelected) {
                     this.leftSelected = false;
                 } else {
                     this.leftSelected = true;
                 }
+                this.firePress({/* no parameters */});
                 this.getRenderer().toggle(this);
                 oEvent.preventDefault();
                 oEvent.stopPropagation();

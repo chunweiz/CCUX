@@ -134,5 +134,16 @@ sap.ui.define(
             sNewSelectedBuagIndex = oEvent.getSource().getSelectedKey();
             this._retrBuag(sNewSelectedBuagIndex);
         };
+
+        Controller.prototype._onToggleButtonPress = function (oEvent) {
+            if( this.getView().byId('mailadd_area').getVisible() ){
+                this.getView().byId('mailadd_area').setVisible(false);
+                this.getView().byId('serviceadd_area').setVisible(true);
+            } else {
+                this.getView().byId('serviceadd_area').setVisible(false);
+                this.getView().byId('mailadd_area').setVisible(true);
+            }
+
+        };
     }
 );
