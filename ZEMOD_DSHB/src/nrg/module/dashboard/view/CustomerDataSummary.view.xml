@@ -142,7 +142,23 @@
             <ute:HorizontalDivider class="nrgDashboard-cusDataSum-horiLine"/>
 
             <ute:Tag class="nrgDashboard-cusDataSum-cusSeg">
-                <utmain:Label
+                <l:MatrixLayout
+                    width="100%"
+                    columns="2"
+                    widths="60%,40%"
+                    rows="{oSmryBpSegInf>/}">
+                <l:rows>
+                    <l:MatrixLayoutRow>
+                        <l:MatrixLayoutCell>
+                            <c:TextView text="{comp-i18n-dashboard>nrgDashboardCusDatSum_CusSeg}"></c:TextView>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <c:TextView text="{oSmryBpSegInf>CustomerSeg}"></c:TextView>
+                        </l:MatrixLayoutCell>
+                    </l:MatrixLayoutRow>
+                </l:rows>
+                </l:MatrixLayout>
+                <!--<utmain:Label
                     class="nrgDashboard-cusDataSum-cusSeg-label"
                     text="Customer Segmentation:"
                     labelFor="cs_seg">
@@ -171,7 +187,7 @@
                     class="nrgDashboard-cusDataSum-cusSeg-val"
                     id="cs_seg2"
                     text="Priority One">
-                </ute:Tag>
+                </ute:Tag>-->
             </ute:Tag>
 
             <utmain:Button
