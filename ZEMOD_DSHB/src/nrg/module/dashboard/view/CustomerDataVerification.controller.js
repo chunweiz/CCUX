@@ -26,6 +26,11 @@ sap.ui.define(
             //Model to hold Contract
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyContracts');
 
+            //Model to hold all Buags
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllBuags');
+
+            //Model to hold all Contracts of selected Buag
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllContractsofBuag');
 
             this._initDtaVrfRetr();
         };
@@ -44,7 +49,7 @@ sap.ui.define(
             return sUrlHash;
         };
 
-        Controller.prototype._initDtaVrfRetr = function () {
+        Controller.prototype._initDtaVrfRetr = function () {        //Only called once when entering the verification page
             var sPath, aSplitHash, iSplitHashL;
 
             aSplitHash = (this._retrUrlHash()).split('/');
@@ -60,18 +65,17 @@ sap.ui.define(
                 oParameters;
 
             oParameters = {
-                urlParameters: {"$expand": "Buags,Contracts"},
+                urlParameters: {"$expand": "Buags"},
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oDtaVrfyBP').setData(oData);
                         if (oData.Buags.results[0]) {
                             //Set the first Contract Account info to load to to verification screen first
                             this.getView().getModel('oDtaVrfyBuags').setData(oData.Buags.results[0]);
+                            this._retrBuag(oData.Buags.results[0].ContractAccountID);
                         }
-                        if (oData.Contracts.results[0]) {
-                            //Again if there's first record of Contracts, load as default to display
-                            this.getView().getModel('oDtaVrfyContracts').setData(oData.Contracts.results[0]);
-                        }
+                        this.getView().getModel('oAllBuags').setData(oData.Buags.results);
+
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -82,6 +86,53 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oParameters);
             }
+        };
+
+        Controller.prototype._retrBuag = function (sBuagNum) {      //will be called whenever a different Buag is selected
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters,
+                i;
+
+            sPath = '/Buags' + '(\'' + sBuagNum + '\')';
+            oParameters = {
+                urlParameters: {"$expand": "Contracts"},
+                success : function (oData) {
+                    if (oData) {
+                        if (oData.Contracts.results[0]) {
+                            //Again if there's first record of Contracts, load as default to display
+                            this.getView().getModel('oDtaVrfyContracts').setData(oData.Contracts.results[0]);
+                        }
+                        for (i = 0; i < oData.Contracts.results.length; i = i + 1) {
+                            oData.Contracts.results[0].iIndex = i;
+                        }
+                        this.getView().getModel('oAllContractsofBuag').setData(oData.Contracts.results);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+
+
+        };
+
+        Controller.prototype._onContractChange = function (oEvent) {
+            var sNewSelectedContractIndex;
+
+            sNewSelectedContractIndex = oEvent.getSource().getSelectedKey();
+            this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[sNewSelectedContractIndex]);
+        };
+
+        Controller.prototype._onBuagChange = function (oEvent) {
+            var sNewSelectedBuagIndex;
+
+            sNewSelectedBuagIndex = oEvent.getSource().getSelectedKey();
+            this._retrBuag(sNewSelectedBuagIndex);
         };
     }
 );
