@@ -246,7 +246,87 @@
 
                             </ute:Tag>
                             <ute:Tag id="mailadd_area" visible="false" class="nrgDashboard-cusDataVerify-mContent">
-                                <utmain:Button text="test"/>
+                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                    <l:MatrixLayoutRow>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label  labelFor="cell_num"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CellNum}"
+                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                            <ute:Textfield id="cell_num" fieldType="Noborder"
+                                                value="{oDtaVrfyBP>/Cell}"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
+                                        </l:MatrixLayoutCell>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label labelFor="fax_num"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FaxNum}"
+                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                            <ute:Textfield id="fax_num" fieldType="Noborder"
+                                                value="{oDtaVrfyBP>/Fax}"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
+                                        </l:MatrixLayoutCell>
+                                    </l:MatrixLayoutRow>
+                                </l:MatrixLayout>
+                                <ute:HorizontalDivider
+                                    class="nrgDashboard-cusDataVerify-horDvi"/>
+                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                    <l:MatrixLayoutRow>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label  labelFor="dayPhn"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"
+                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                            <ute:Textfield id="dayPhn" fieldType="Noborder"
+                                                value="{oDtaVrfyBP>/DayPhone}"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
+                                        </l:MatrixLayoutCell>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label labelFor="dayPhnType"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
+                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                            <ute:Textfield id="dayPhnType" fieldType="Noborder"
+                                                value="{oDtaVrfyBP>/DayPhoneType}"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
+                                        </l:MatrixLayoutCell>
+                                    </l:MatrixLayoutRow>
+                                </l:MatrixLayout>
+                                <ute:HorizontalDivider
+                                    class="nrgDashboard-cusDataVerify-horDvi"/>
+                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                    <l:MatrixLayoutRow>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label labelFor="evnPhn"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"
+                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                            <ute:Textfield id="evnPhn" fieldType="Noborder"
+                                                value="123"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
+                                        </l:MatrixLayoutCell>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label labelFor="evnPhnType"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTypTxt}"
+                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                            <ute:Textfield id="evnPhnType" fieldType="Noborder"
+                                                value="{oDtaVrfyBP>/EveningPhoneType}"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
+                                        </l:MatrixLayoutCell>
+                                    </l:MatrixLayoutRow>
+                                </l:MatrixLayout>
+                                <ute:HorizontalDivider
+                                    class="nrgDashboard-cusDataVerify-horDvi"/>
+                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                    <l:MatrixLayoutRow>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Button text="SMS"/>
+                                        </l:MatrixLayoutCell>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Label labelFor="email_lbl"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Email}"
+                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                            <ute:Textfield id="email_lbl" fieldType="Noborder"
+                                                value="{oDtaVrfyBP>/Email}"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
+                                        </l:MatrixLayoutCell>
+                                    </l:MatrixLayoutRow>
+                                </l:MatrixLayout>
                             </ute:Tag>
                             </ute:Tag>
 

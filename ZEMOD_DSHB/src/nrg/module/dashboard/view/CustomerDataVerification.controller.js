@@ -32,6 +32,9 @@ sap.ui.define(
             //Model to hold all Contracts of selected Buag
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllContractsofBuag');
 
+            //Model to hold mailing/temp address
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');
+
             this._initDtaVrfRetr();
         };
 
@@ -73,6 +76,7 @@ sap.ui.define(
                             //Set the first Contract Account info to load to to verification screen first
                             this.getView().getModel('oDtaVrfyBuags').setData(oData.Buags.results[0]);
                             this._retrBuag(oData.Buags.results[0].ContractAccountID);
+                            this._retrBuagMailingAddr(oData.Buags.results[0].PartnerID, oData.Buags.results[0].ContractAccountID, oData.Buags.results[0].FixedAddressID);
                         }
                         this.getView().getModel('oAllBuags').setData(oData.Buags.results);
 
@@ -121,6 +125,34 @@ sap.ui.define(
 
         };
 
+        Controller.prototype._retrBuagMailingAddr = function (sBpNum, sBuagNum, sFixedAddressID) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters,
+                i;
+
+            sPath = '/BuagMailingAddr' + '('
+                  + 'PartnerID=\'' + sBpNum + '\''
+                  + ',ContractAccountID=\'' + sBuagNum + '\''
+                  + ',FixedAddressID=\'' + sFixedAddressID + '\')';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        var test = oData;
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+
         Controller.prototype._onContractChange = function (oEvent) {
             var sNewSelectedContractIndex;
 
@@ -136,7 +168,7 @@ sap.ui.define(
         };
 
         Controller.prototype._onToggleButtonPress = function (oEvent) {
-            if( this.getView().byId('mailadd_area').getVisible() ){
+            if (this.getView().byId('mailadd_area').getVisible()) {
                 this.getView().byId('mailadd_area').setVisible(false);
                 this.getView().byId('serviceadd_area').setVisible(true);
             } else {
