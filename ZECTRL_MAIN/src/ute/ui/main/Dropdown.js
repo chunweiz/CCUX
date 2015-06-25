@@ -5,13 +5,10 @@ sap.ui.define(
     [
         'jquery.sap.global',
         'sap/ui/core/Control',
-        'ute/ui/main/Checkbox',
-        'sap/m/Popover',
-        'sap/m/PlacementType',
-        'sap/m/ScrollContainer'
+        'ute/ui/main/Checkbox'
     ],
 
-    function (jQuery, Control, Checkbox, Popover, PlacementType, ScrollContainer) {
+    function (jQuery, Control, Checkbox) {
         'use strict';
 
         var CustomControl = Control.extend('ute.ui.main.Dropdown', {
@@ -48,143 +45,41 @@ sap.ui.define(
 
         };
 
-        CustomControl.prototype.onBeforeRendering = function () {
+        CustomControl.prototype._getHeaderExpander = function () {
+            var oExpander = this.getAggregation('_headerExpander');
 
-        };
-
-        CustomControl.prototype.onAfterRendering = function () {
-            var aContent = this.getContent() || [];
-
-            aContent.forEach(function (oContent) {
-                oContent.detachPress(this._handleItemPressed);
-                oContent.attachPress(this._handleItemPressed);
-            }.bind(this));
-        };
-
-        CustomControl.prototype.exit = function () {
-
-        };
-
-        CustomControl.prototype._getExpander = function () {
-            var oExpander;
-
-            oExpander = this.getAggregation('_expander');
             if (oExpander) {
                 return oExpander;
             }
 
-            oExpander = new Checkbox({
+            oExpander = new Checkbox(this.getId() + '-hdrExpander', {
                 design: ute.ui.main.CheckboxDesign.None,
-                select: jQuery.proxy(this._onExpanderSelected, this),
                 checked: false
             });
 
-            this.setAggregation('_expander', oExpander, true);
+            oExpander.attachSelect(this._onHeaderExpanderSelect, this);
 
+            this.setAggregation('_headerExpander', oExpander);
             return oExpander;
         };
 
-        CustomControl.prototype._onExpanderSelected = function (oControlEvent) {
-
-        };
-
-        CustomControl.prototype._handleItemPressed = function (oControlEvent) {
-            this.fireSelect({
-                selectedItem: oControlEvent.getSource()
-            });
+        CustomControl.prototype._onHeaderExpanderSelect = function (oControlEvent) {
+            /*
+            ** TODO: Show picker
+            */
         };
 
         CustomControl.prototype._getPicker = function () {
-            var oPicker, self;
+            var oPicker = this.getAggregation('_picker');
 
-            oPicker = this.getAggregation('_picker');
             if (oPicker) {
                 return oPicker;
             }
 
-            self = this;
 
-            /*
-            ** Create a new picker
-            */
-            oPicker = new Popover({
-                showHeader: false,
-                placement: PlacementType.Vertical,
-                offsetX: 0,
-                offsetY: 0,
-                initialFocus: this,
-                bounce: false
-            });
 
-            /*
-            ** Enhancing picker
-            */
-            oPicker._setArrowPosition = function () {};
-
-            oPicker._removeArrow = function () {
-                this._marginTop = 0;
-				this._marginLeft = 0;
-				this._marginRight = 0;
-				this._marginBottom = 0;
-				this._arrowOffset = 0;
-				this._offsets = ['0 0', '0 0', '0 0', '0 0'];
-            };
-
-            oPicker._setPosition = function () {
-				this._myPositions = ['begin bottom', 'begin center', 'begin top', 'end center'];
-				this._atPositions = ['begin top', 'end center', 'begin bottom', 'begin center'];
-			};
-
-            oPicker.open = function () {
-				return this.openBy(self.getFocusDomRef());
-			};
-
-            /*
-            ** Configure picker
-            */
-            oPicker.setHorizontalScrolling(false);
-            oPicker.addStyleClass('uteMDd-picker');
-
-            /*
-            ** Add listeners to the picker
-            */
-            oPicker.attachBeforeOpen(this._onBeforeOpenPicker, this);
-            oPicker.attachAfterOpen(this._onAfterOpenPicker, this);
-            oPicker.attachBeforeClose(this._onBeforeClosePicker, this);
-            oPicker.attachAfterClose(this._onAfterClosePicker, this);
-            oPicker.addEventDelegate({
-                onAfterRendering: this._onAfterRenderingPicker
-            });
-
-            /*
-            ** Add the picker as part of control lifecycle
-            */
-            this.setAggregation('_picker', oPicker, true);
-
+            this.setAggregation('_picker', oPicker);
             return oPicker;
-        };
-
-        CustomControl.prototype._onAfterRenderingPicker = function () {
-            var oPicker = this._getPicker();
-
-			oPicker._removeArrow();
-			oPicker._setPosition();
-        };
-
-        CustomControl.prototype._onBeforeOpenPicker = function (oControlEvent) {
-
-        };
-
-        CustomControl.prototype._onAfterOpenPicker = function (oControlEvent) {
-
-        };
-
-        CustomControl.prototype._onBeforeClosePicker = function (oControlEvent) {
-
-        };
-
-        CustomControl.prototype._onAfterClosePicker = function (oControlEvent) {
-
         };
 
         return CustomControl;

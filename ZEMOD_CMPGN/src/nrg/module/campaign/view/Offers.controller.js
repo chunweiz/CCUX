@@ -22,6 +22,7 @@ sap.ui.define(
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
             this.getOwnerComponent().getRouter().getRoute("campaignoffers").attachPatternMatched(this._onObjectMatched, this);
+            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
         };
 
        /**
@@ -90,7 +91,7 @@ sap.ui.define(
             aFilterValues = [this._sContract, "P"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             this.getView().setModel(oViewModel, "appView");
-            sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCpgChangeOffSet");
+            sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
             oTileTemplate = this.getView().byId("idnrgCamOffBt").clone();
@@ -148,7 +149,7 @@ sap.ui.define(
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
             aContent = oTileContainer.getContent();
             oTileTemplate = this.myTemplate;
-            sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCpgChangeOffSet");
+            sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
             mParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,

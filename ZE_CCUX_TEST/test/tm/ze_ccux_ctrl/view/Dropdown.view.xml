@@ -11,14 +11,6 @@
 
     <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
 
-        <sm:ComboBox>
-            <core:Item key="key001" text="text 001" />
-            <core:Item key="key002" text="text 002" />
-            <core:Item key="key003" text="text 003" />
-            <core:Item key="key004" text="text 004" />
-            <core:Item key="key005" text="text 005" />
-        </sm:ComboBox>
-
         <um:Dropdown>
             <um:DropdownItem key="key001">
                 <span>yoyoyoyo</span>
