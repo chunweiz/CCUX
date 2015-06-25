@@ -53,6 +53,11 @@
                 "dashboard.BpCa": {
                     "pattern": "bp/{bpNum}/ca/{caNum}",
                     "target": [ "others.GeneralEmpty", "dashboard.SummaryBP", "others.ToolsEmpty" ]
+                },
+
+                "dashboard.PrePD": {
+                    "pattern": "prepd",
+                    "target": [ "dashboard.CustomerDataPrePD", "dashboard.CustomerDataSummary", "" ]
                 }
             },
 
@@ -99,6 +104,11 @@
 
                 "dashboard.CustomerDataVerification": {
                     "viewName": "nrg.module.dashboard.view.CustomerDataVerification",
+                    "controlId": "idAppGeneral"
+                },
+
+                "dashboard.CustomerDataPrePD": {
+                    "viewName": "nrg.module.dashboard.view.CustomerDataPrePD",
                     "controlId": "idAppGeneral"
                 }
             }
