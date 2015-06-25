@@ -7,24 +7,23 @@
     controllerName="nrg.module.campaign.view.Tools"
     busy="{appView>/busy}"
     busyIndicatorDelay="{appView>/delay}">
-
     <u:Tag class="nrgToolsEmpty nrgAppMain-toolsContent nrgAppMain-toolsContent-full">
         <u:Tag class="nrgCamTls" >
             <u:Tag class="nrgCamTls-ttl" text="{comp-i18n-campaign>nrgCmpTlsTtl}" />
-            <u:Tag class="nrgCamTls-btn nrgCamTls-top" >
+            <u:Tag class="nrgCamTls-btnTag nrgCamTls-top" >
                 <u:Button
+                    class="nrgCamTls-btn"
                     text="{comp-i18n-campaign>nrgCmpTlsBtnHis}"
-                    enabled="true"
-                    press=".onHistoryPress" >
+                    enabled="{appView>/history}"
+                    press=".onHistoryPress">
                 </u:Button>
                 <u:Button
                     text="{comp-i18n-campaign>nrgCmpTlsBtnCan}"
-                    enabled="true"
-                    class="nrgCamTls-top"
+                    enabled="{appView>/cancel}"
+                    class="nrgCamTls-top nrgCamTls-btn"
                     press=".onCancelPress">
                 </u:Button>
             </u:Tag>
         </u:Tag>
-
     </u:Tag>
 </mvc:View>

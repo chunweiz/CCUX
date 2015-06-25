@@ -21,6 +21,7 @@ sap.ui.define(
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
             this.getOwnerComponent().getRouter().getRoute("campaign").attachPatternMatched(this._onObjectMatched, this);
+            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
 
         };
 
@@ -35,7 +36,7 @@ sap.ui.define(
                     if ((aContent !== undefined) && (aContent.length > 0)) {
                         if (aContent.length === 1) { // show only current campaign data irrespective of the flag
                             sTempValue = aContent[0].getBindingContext("comp-campaign").getProperty("Type");
-                            if (sTempValue === that.sFlag) {
+                            if (sTempValue === that._sFlag) {
                                 sPath = aContent[0].getBindingContext("comp-campaign").getPath();
                                 aContent[0].setSelected(true);
                             } else {
@@ -46,7 +47,7 @@ sap.ui.define(
                         }
                         if (aContent.length === 2) {
                             sTempValue = aContent[0].getBindingContext("comp-campaign").getProperty("Type");
-                            if (sTempValue === that.sFlag) { //Populate view with Current Campaign or Pending Campaign depends on the flag came from dashboard
+                            if (sTempValue === that._sFlag) { //Populate view with Current Campaign or Pending Campaign depends on the flag came from dashboard
                                 sPath = aContent[0].getBindingContext("comp-campaign").getPath();
                                 aContent[0].setSelected(true);
                             } else {
@@ -98,8 +99,8 @@ sap.ui.define(
             aFilterIds = ["Contract"];
             aFilterValues = [this._sContract];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-            sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
-            sEligibilityPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgEligibilitySet");
+            sCurrentPath = this._i18NModel.getProperty("nrgCurrentPendingSet");
+            sEligibilityPath = this._i18NModel.getProperty("nrgEligibilitySet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar");
             oToggleTemplate = this.getView().byId("idnrgCamOvr-TabItem").clone();
@@ -207,9 +208,9 @@ sap.ui.define(
 		 */
         Controller.prototype.formatType = function (sType) {
             if (sType === "C") {
-                return this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCmpOvrCt");
+                return this._i18NModel.getProperty("nrgCmpOvrCt");
             } else {
-                return this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCmpOvrPg");
+                return this._i18NModel.getProperty("nrgCmpOvrPg");
             }
         };
         return Controller;
