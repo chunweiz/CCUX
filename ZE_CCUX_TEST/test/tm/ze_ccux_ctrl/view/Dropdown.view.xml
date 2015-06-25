@@ -15,8 +15,15 @@
             <um:DropdownItem key="key001">
                 <span>yoyoyoyo</span>
             </um:DropdownItem>
-
         </um:Dropdown>
+
+        <br/><br/>
+
+        <sm:ComboBox>
+            <core:Item key="key001" text="text001" />
+            <core:Item key="key002" text="text002" />
+            <core:Item key="key003" text="text003" />
+        </sm:ComboBox>
 
     </sm:ScrollContainer>
 </mvc:View>
