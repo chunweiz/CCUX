@@ -28,7 +28,7 @@ sap.ui.define(
             }
         });
 
-       // EnabledPropagator.call(CustomControl.prototype);
+        EnabledPropagator.call(CustomControl.prototype);
 
         CustomControl.prototype._groupNames = {};
 
@@ -55,7 +55,6 @@ sap.ui.define(
         };
 
         CustomControl.prototype.setChecked = function (bChecked) {
-
             var bSelectedOld, sGroup, aControlsInGroup;
 
             bSelectedOld = this.getChecked();
