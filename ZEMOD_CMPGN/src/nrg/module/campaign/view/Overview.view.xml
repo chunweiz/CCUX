@@ -28,7 +28,9 @@
                            class="nrgCamOvr-offerBtnDesc"
                             text="{= ${Overview-elig>CustEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
                         <u:customData>
-                          <core:CustomData key="flag" value="{Overview-elig>CustEligFlag}" writeToDom="true" />
+                          <core:CustomData key="flag"
+                                           value="{= ${Overview-elig>CustEligFlag} === '' ? 'Y' : 'X' }"
+                                           writeToDom="true" />
                         </u:customData>
                     </u:Tag>
                 </um:button>
@@ -43,7 +45,7 @@
                            text="{= ${Overview-elig>AgntEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
                         <u:customData>
                           <core:CustomData key="flag"
-                                           value="{Overview-elig>AgntEligFlag}"
+                                           value="{= ${Overview-elig>CustEligFlag}  === '' ? 'Y' : 'X' }"
                                            writeToDom="true" />
                         </u:customData>
                     </u:Tag>

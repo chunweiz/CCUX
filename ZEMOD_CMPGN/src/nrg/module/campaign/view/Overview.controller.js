@@ -29,7 +29,7 @@ sap.ui.define(
 		/* lifecycle method- After Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
-            var aContent, obinding, sPath, that = this, sTempValue,
+/*            var aContent, obinding, sPath, that = this, sTempValue,
                 aToggleContainer = this.getView().byId("idnrgCamOvr-TabBar"),
                 handler = function () {
                     aContent = aToggleContainer.getContent();
@@ -65,7 +65,7 @@ sap.ui.define(
                     obinding.detachDataReceived(handler);
                 };
             obinding = aToggleContainer.getBinding("content");
-            obinding.attachDataReceived(handler);
+            obinding.attachDataReceived(handler);*/
         };
 
 		/**
@@ -88,7 +88,12 @@ sap.ui.define(
                 iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
                 aFilterIds,
                 aFilterValues,
-                oTemplatesView;
+                oTemplatesView,
+                oBinding,
+                handler,
+                that = this,
+                sTempValue,
+                sPath;
             oViewModel = new JSONModel({
 				busy : true,
 				delay : 0
@@ -109,9 +114,10 @@ sap.ui.define(
                 model : "comp-campaign",
                 path : sCurrentPath,
                 template : oToggleTemplate,
-                filters : aFilters
+                filters : aFilters,
+                events: {dataReceived : this._TabBarHandler}
             };
-            oToggleContainer.bindAggregation("content", mParameters);
+            oBinding = oToggleContainer.bindAggregation("content", mParameters);
             mParameters = {
                 batchGroupId : "myId1",
                 filters : aFilters,
@@ -134,7 +140,6 @@ sap.ui.define(
                 oModel.read(sEligibilityPath, mParameters);
             }
             this.getView().setModel(oModel, "Overview-elig");
-
 		};
 
         /**
@@ -213,6 +218,54 @@ sap.ui.define(
             } else {
                 return this._i18NModel.getProperty("nrgCmpOvrPg");
             }
+        };
+
+        /**
+		 * Handler Function for the History Popup close
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype._TabBarHandler = function (oControlEvent) {
+/*            var aContent,
+                oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar"),
+                sTempValue,
+                sPath,
+                oBinding;
+            aContent = oToggleContainer.getContent();
+            if ((aContent !== undefined) && (aContent.length > 0)) {
+                if (aContent.length === 1) { // show only current campaign data irrespective of the flag
+                    sTempValue = aContent[0].getBindingContext("comp-campaign").getProperty("Type");
+                    if (sTempValue === this._sFlag) {
+                        sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                        aContent[0].setSelected(true);
+                    } else {
+                        sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                        aContent[0].setSelected(true);
+                        //Temporarily show exiting acontent[0] data but in the future decide based on business requirement
+                    }
+                }
+                if (aContent.length === 2) {
+                    sTempValue = aContent[0].getBindingContext("comp-campaign").getProperty("Type");
+                    if (sTempValue === this._sFlag) { //Populate view with Current Campaign or Pending Campaign depends on the flag came from dashboard
+                        sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                        aContent[0].setSelected(true);
+                    } else {
+                        sPath = aContent[1].getBindingContext("comp-campaign").getPath();
+                        aContent[1].setSelected(true);
+                    }
+                }
+                // aContent[0].addStyleClass("nrgCamHisBut-Selected");
+                this.getView().bindElement({
+                    model : "comp-campaign",
+                    path : sPath
+                });
+            }
+            this.getView().getModel("appView").setProperty("/busy", false);
+            oBinding = oToggleContainer.getBinding("content");
+            oBinding.detachDataReceived(this._TabBarHandler);*/
+            jQuery.sap.log.info("Came in to Tab handler");
+
         };
         return Controller;
     }
