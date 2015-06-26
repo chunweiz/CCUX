@@ -44,8 +44,7 @@ sap.ui.define(
             oRm.write('<label');
             oRm.addClass('uteMDd-hdrContent');
             oRm.writeClasses();
-            oRm.writeAttribute('for', oCustomControl.getId() + '-hdrExpander-intChk');
-            oRm.write('>this is a long long label');
+            oRm.write('>');
 
             aContent.forEach(function (oContent) {
                 oRm.renderControl(oContent);
