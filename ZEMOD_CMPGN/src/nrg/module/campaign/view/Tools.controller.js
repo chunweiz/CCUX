@@ -42,6 +42,7 @@ sap.ui.define(
             oViewModel = new JSONModel({
 				busy : true,
 				delay : 0,
+                selected : 0,
                 history : false,
                 cancel : false
 			});
@@ -208,7 +209,7 @@ sap.ui.define(
             aFilterValues = ['34805112'];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             if (!this._oDialogFragment) {
-                this._oDialogFragment = sap.ui.xmlfragment("PendingSwaps", "nrg.module.campaign.view.PendingSwaps");
+                this._oDialogFragment = sap.ui.xmlfragment("PendingSwaps", "nrg.module.campaign.view.PendingSwaps", this);
             }
             if (this._oCancelDialog === undefined) {
                 this._oCancelDialog = new ute.ui.main.Popup.create({
@@ -242,6 +243,40 @@ sap.ui.define(
         Controller.prototype._handleDialogClosed = function (oControlEvent) {
 
         };
+
+        /**
+		 * Handler Function for the History Popup close
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onPendingSwapsSelected = function (oEvent) {
+            var iSelected = this.getView().getModel("appView").getProperty("/selected");
+            if (oEvent.getSource().getChecked()) {
+                iSelected = iSelected + 1;
+            } else {
+                iSelected = iSelected - 1;
+            }
+            this.getView().getModel("appView").setProperty("/selected", iSelected);
+
+        };
+
+        /**
+		 * Handler Function for the History Popup close
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onSelected = function (oEvent) {
+            var iSelected = this.getView().getModel("appView").getProperty("/selected");
+            if (oEvent.getSource().getChecked()) {
+                iSelected = iSelected + 1;
+            } else {
+                iSelected = iSelected - 1;
+            }
+
+        };
+
         return Controller;
     }
 

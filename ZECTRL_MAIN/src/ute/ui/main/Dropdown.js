@@ -8,11 +8,10 @@ sap.ui.define(
         'ute/ui/main/Checkbox',
         'sap/m/Popover',
         'ute/ui/main/TabBar',
-        'ute/ui/main/TabBarItem',
-        'ute/ui/main/Label'
+        'ute/ui/main/TabBarItem'
     ],
 
-    function (jQuery, Control, Checkbox, Popover, TabBar, TabBarItem, Label) {
+    function (jQuery, Control, Checkbox, Popover, TabBar, TabBarItem) {
         'use strict';
 
         var CustomControl = Control.extend('ute.ui.main.Dropdown', {
@@ -22,15 +21,17 @@ sap.ui.define(
                 properties: {
                     design: { type: 'ute.ui.main.DropdownDesign', defaultValue: ute.ui.main.DropdownDesign.Default },
                     enabled: { type: 'boolean', defaultValue: true },
-                    selectedKey: { type: 'string', defaultValue: null }
+                    placeholder: { type: 'string', defaultValue: null }
                 },
 
                 aggregations: {
-                    content: { type: 'ute.ui.main.DropdownItem', multiple: true, singularName: 'content' },
+                    content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' },
 
                     _headerContent: { type: 'sap.ui.core.Control', multiple: true, visibility: 'hidden' },
                     _headerExpander: { type: 'ute.ui.main.Checkbox', multiple: false, visibility: 'hidden' },
-                    _picker: { type: 'sap.m.Popover', multiple: false, visibility: 'hidden' }
+
+                    _picker: { type: 'sap.m.Popover', multiple: false, visibility: 'hidden' },
+                    _selectedItem: { type: 'ute.ui.main.TabBarItem' }
                 },
 
                 defaultAggregation: 'content',
@@ -102,9 +103,25 @@ sap.ui.define(
         };
 
         CustomControl.prototype._getPickerList = function () {
-            var oPickList = new TabBar({
-                select: this._onPickerListSelect
-            });
+            var oPickList = new TabBar();
+
+            oPickList.attachSelect(this._onPickerListSelect, this);
+
+            oPickList.addContent(new TabBarItem({
+                selected: true,
+                key: 'key001',
+                content: new sap.ui.core.HTML({ content: '<span>value001</span>' })
+            }));
+
+            oPickList.addContent(new TabBarItem({
+                key: 'key002',
+                content: new sap.ui.core.HTML({ content: '<span>value002</span>' })
+            }));
+
+            oPickList.addContent(new TabBarItem({
+                key: 'key003',
+                content: new sap.ui.core.HTML({ content: '<span>value003</span>' })
+            }));
 
             return oPickList;
         };
@@ -170,7 +187,9 @@ sap.ui.define(
         };
 
         CustomControl.prototype.onBeforeRendering = function () {
-
+//            this.synchronizeSelection();
+//			this._clearList();
+//			this._fillList(this.getItems());
         };
 
         return CustomControl;

@@ -50,7 +50,7 @@ sap.ui.define(
                 return;
             }
 
-            this.setChecked(!this.getChecked());
+            this.setChecked(this.getDomRef('intChk').checked);
             this.fireSelect({
                 checked: this.getChecked()
             });
@@ -63,7 +63,13 @@ sap.ui.define(
                 return this;
             }
 
-            this.$('.uteMChkBox-intChk').prop('checked', bValue);
+            if (bValue) {
+                this.getDomRef('intChk').checked = true;
+                this.getDomRef('intChk').setAttribute('checked', 'checked');
+            } else {
+                this.getDomRef('intChk').checked = false;
+                this.getDomRef('intChk').removeAttribute('checked');
+            }
 
             this.setProperty('checked', bValue);
             return this;
