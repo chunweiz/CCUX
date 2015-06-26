@@ -65,7 +65,7 @@ sap.ui.define(
 
             this.$('.uteMChkBox-intChk').prop('checked', bValue);
 
-            this.setProperty('checked', bValue, true);
+            this.setProperty('checked', bValue);
             return this;
         };
 
@@ -78,7 +78,7 @@ sap.ui.define(
 
             this.$('.uteMChkBox-intChk').prop('disabled', !bValue);
 
-            this.setProperty('enabled', bValue, true);
+            this.setProperty('enabled', bValue);
             return this;
         };
 

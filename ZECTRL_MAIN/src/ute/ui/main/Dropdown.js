@@ -6,10 +6,13 @@ sap.ui.define(
         'jquery.sap.global',
         'sap/ui/core/Control',
         'ute/ui/main/Checkbox',
-        'sap/m/Popover'
+        'sap/m/Popover',
+        'ute/ui/main/TabBar',
+        'ute/ui/main/TabBarItem',
+        'ute/ui/main/Label'
     ],
 
-    function (jQuery, Control, Checkbox, Popover) {
+    function (jQuery, Control, Checkbox, Popover, TabBar, TabBarItem, Label) {
         'use strict';
 
         var CustomControl = Control.extend('ute.ui.main.Dropdown', {
@@ -84,18 +87,34 @@ sap.ui.define(
 				placement: sap.m.PlacementType.Vertical,
 				offsetX: 0,
 				offsetY: 0,
-				initialFocus: this,
 				bounce: false
             });
 
             oPicker.setHorizontalScrolling(false);
             oPicker.addStyleClass('uteMDd-picker');
+            oPicker.addContent(this._getPickerList());
 
             this._enhancePicker(oPicker);
             this._listenToPicker(oPicker);
 
             this.setAggregation('_picker', oPicker);
             return oPicker;
+        };
+
+        CustomControl.prototype._getPickerList = function () {
+            var oPickList = new TabBar({
+                select: this._onPickerListSelect
+            });
+
+            return oPickList;
+        };
+
+        CustomControl.prototype._onPickerListSelect = function (oControlEvent) {
+            var oPicker = this._getPicker();
+
+            if (oPicker.isOpen()) {
+                oPicker.close();
+            }
         };
 
         CustomControl.prototype._enhancePicker = function (oPicker) {
@@ -124,9 +143,7 @@ sap.ui.define(
 
         CustomControl.prototype._listenToPicker = function (oPicker) {
             oPicker.attachBeforeOpen(this._onBeforeOpenPicker, this);
-            oPicker.attachAfterOpen(this._onAfterOpenPicker, this);
             oPicker.attachBeforeClose(this._onBeforeClosePicker, this);
-            oPicker.attachAfterClose(this._onAfterClosePicker, this);
 
             oPicker.addEventDelegate({
                 onAfterRendering: this._onAfterRenderingPicker
@@ -144,15 +161,15 @@ sap.ui.define(
 
         };
 
-        CustomControl.prototype._onAfterOpenPicker = function () {
-
-        };
-
         CustomControl.prototype._onBeforeClosePicker = function () {
+            var oHdrExpander = this._getHeaderExpander();
 
+            if (oHdrExpander.getChecked()) {
+                oHdrExpander.setChecked(false);
+            }
         };
 
-        CustomControl.prototype._onAfterClosePicker = function () {
+        CustomControl.prototype.onBeforeRendering = function () {
 
         };
 
