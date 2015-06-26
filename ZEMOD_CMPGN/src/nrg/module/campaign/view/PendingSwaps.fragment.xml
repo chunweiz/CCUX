@@ -6,30 +6,30 @@
           xmlns:um="ute.ui.main">
 <u:Tag class="nrgCamPds-root">
     <u:Tag class="nrgCamTls-ttl" text="{comp-i18n-campaign>nrgCmpTlsPendSwapTtl}" />
+    <u:Tag class="nrgCamTls-ttl" text="{='You have selected '+ ${appView>/selected} + ' records'}" />
     <u:Table width="auto"
              id="idnrgCamPds-pendTable"
-             class="nrgCamOvr-left nrgCamOvr-top nrgCamPds-pendTable"
-             tableType="CampaignTable">
-                    <u:columns class="nrgCamPds-tableHdC">
-                        <u:TableColumn width="auto" class="nrgCamPds-tableHdC">
+             class="nrgCamOvr-left nrgCamTls-top nrgCamPds-pendTable">
+                    <u:columns>
+                        <u:TableColumn width="8%" class="nrgCamPds-th">
                             <c:Label text="Select"/>
                         </u:TableColumn>
-                        <u:TableColumn width="auto" >
+                        <u:TableColumn width="33%" class="nrgCamPds-th">
                             <c:Label text="Offer Description"/>
                         </u:TableColumn>
-                        <u:TableColumn width="auto" >
+                        <u:TableColumn width="14%" class="nrgCamPds-th">
                             <c:Label text="Campaign Code"/>
                         </u:TableColumn>
-                        <u:TableColumn width="auto" >
+                        <u:TableColumn width="11%" class="nrgCamPds-th">
                             <c:Label text="Promo Code"/>
                         </u:TableColumn>
-                        <u:TableColumn width="auto" >
+                        <u:TableColumn width="13%" class="nrgCamPds-th">
                             <c:Label text="Product Code"/>
                         </u:TableColumn>
-                        <u:TableColumn width="auto" >
+                        <u:TableColumn width="10%" class="nrgCamPds-th">
                             <c:Label text="Signed Dt"/>
                         </u:TableColumn>
-                        <u:TableColumn width="auto" >
+                        <u:TableColumn width="11%" class="nrgCamPds-th">
                             <c:Label text="Offer Code"/>
                         </u:TableColumn>
                     </u:columns>
@@ -71,7 +71,7 @@
                 class="nrgCamOvr-left nrgCamOvr-top" >
                     <u:rows>
                     <u:TableRow id="idnrgCamPds-pendRow" class="nrgCamPds-pendRow" >
-                        <um:Checkbox id="idPds" select=".onSelected" />
+                        <um:Checkbox id="idPds" select="onPendingSwapsSelected" />
                         <c:Label text="{comp-campaign>OfferDesc}"/>
                         <c:Label text="{comp-campaign>Campaign}"/>
                         <c:Label text="{comp-campaign>Promo}"/>
