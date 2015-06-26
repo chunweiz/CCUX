@@ -54,8 +54,6 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 
             oEvent.preventDefault();
             oEvent.stopPropagation();
-
-            this.getRenderer().render();
         };
 
         Textfield.prototype.onsapenter = function (oEvent) {

@@ -194,6 +194,7 @@
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <ute:Textfield id="dayPhn" fieldType="Noborder"
+                                                editable="{oCfrmStatus>/bEditable}"
                                                 value="{oDtaVrfyBP>/DayPhone}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
@@ -202,6 +203,7 @@
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <ute:Textfield id="dayPhnType" fieldType="Noborder"
+                                                editable="{oCfrmStatus>/bEditable}"
                                                 value="{oDtaVrfyBP>/DayPhoneType}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
@@ -216,7 +218,8 @@
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <ute:Textfield id="evnPhn" fieldType="Noborder"
-                                                value="123"
+                                                value="{oDtaVrfyBP>/EveningPhone}"
+                                                editable="{oCfrmStatus>/bEditable}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
@@ -225,6 +228,7 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <ute:Textfield id="evnPhnType" fieldType="Noborder"
                                                 value="{oDtaVrfyBP>/EveningPhoneType}"
+                                                editable="{oCfrmStatus>/bEditable}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
@@ -242,6 +246,7 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <ute:Textfield id="email_lbl" fieldType="Noborder"
                                                 value="{oDtaVrfyBP>/Email}"
+                                                editable="{oCfrmStatus>/bEditable}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
@@ -259,6 +264,7 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-fLbl"/>
                                             <ute:Textfield id="mail_FixedAddr" fieldType="Noborder"
                                                 value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ShortForm}"
+                                                editable="{oCfrmStatus>/bEditable}"
                                                 class="nrgDashboard-cusDataVerify-mContent-fInput"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
@@ -267,6 +273,7 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-fLbl"/>
                                             <ute:Textfield id="mail_TempAddr" fieldType="Noborder"
                                                 value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/ShortForm}"
+                                                editable="{oCfrmStatus>/bEditable}"
                                                 class="nrgDashboard-cusDataVerify-mContent-fInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
@@ -280,6 +287,7 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <ute:Textfield id="cell_num_mail" fieldType="Noborder"
                                                 value="{oDtaVrfyBP>/Cell}"
+                                                editable="{oCfrmStatus>/bEditable}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
@@ -288,6 +296,7 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <ute:Textfield id="fax_num_mail" fieldType="Noborder"
                                                 value="{oDtaVrfyBP>/Fax}"
+                                                editable="{oCfrmStatus>/bEditable}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
@@ -302,6 +311,7 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <ute:Textfield id="dayPhn_mail" fieldType="Noborder"
                                                 value="{oDtaVrfyBP>/DayPhone}"
+                                                editable="{oCfrmStatus>/bEditable}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
@@ -323,7 +333,8 @@
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <ute:Textfield id="evnPhn_mail" fieldType="Noborder"
-                                                value="123"
+                                                value="{oDtaVrfyBP>/EveningPhone}"
+                                                editable="{oCfrmStatus>/bEditable}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
@@ -332,6 +343,7 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <ute:Textfield id="evnPhnType_mail" fieldType="Noborder"
                                                 value="{oDtaVrfyBP>/EveningPhoneType}"
+                                                editable="{oCfrmStatus>/bEditable}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
@@ -349,6 +361,7 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <ute:Textfield id="email_lbl_mail" fieldType="Noborder"
                                                 value="{oDtaVrfyBP>/Email}"
+                                                editable="{oCfrmStatus>/bEditable}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
