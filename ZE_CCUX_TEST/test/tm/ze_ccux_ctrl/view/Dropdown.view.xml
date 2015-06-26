@@ -12,18 +12,38 @@
     <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
 
         <um:Dropdown>
-            <um:DropdownItem key="key001">
-                <span>yoyoyoyo</span>
+            <um:DropdownItem key="key001" selected="true">
+                <span>value001</span>
+            </um:DropdownItem>
+            <um:DropdownItem key="key002">
+                <span>value002</span>
+            </um:DropdownItem>
+            <um:DropdownItem key="key003">
+                <span>value003</span>
             </um:DropdownItem>
         </um:Dropdown>
-
-        <br/><br/>
-
-        <sm:ComboBox>
-            <core:Item key="key001" text="text001" />
-            <core:Item key="key002" text="text002" />
-            <core:Item key="key003" text="text003" />
-        </sm:ComboBox>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
+        <div>text text text text text text text text text text text text text text text text text text text text </div>
 
     </sm:ScrollContainer>
 </mvc:View>
