@@ -28,7 +28,9 @@
                            class="nrgCamOvr-offerBtnDesc"
                             text="{= ${Overview-elig>CustEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
                         <u:customData>
-                          <core:CustomData key="flag" value="{Overview-elig>CustEligFlag}" writeToDom="true" />
+                          <core:CustomData key="flag"
+                                           value="{= ${Overview-elig>CustEligFlag} === '' ? 'Y' : 'X' }"
+                                           writeToDom="true" />
                         </u:customData>
                     </u:Tag>
                 </um:button>
@@ -43,7 +45,7 @@
                            text="{= ${Overview-elig>AgntEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
                         <u:customData>
                           <core:CustomData key="flag"
-                                           value="{Overview-elig>AgntEligFlag}"
+                                           value="{= ${Overview-elig>CustEligFlag}  === '' ? 'Y' : 'X' }"
                                            writeToDom="true" />
                         </u:customData>
                     </u:Tag>
@@ -134,9 +136,9 @@
                      class="nrgCamOvr-top"
                      tableType="CampaignTable" >
                 <u:columns>
-                    <u:TableColumn>
+<!--                    <u:TableColumn>
                         <c:Label text="Promo Code"/>
-                    </u:TableColumn>
+                    </u:TableColumn>-->
                     <u:TableColumn>
                          <c:Label text="Offer Code"/>
                     </u:TableColumn>
@@ -158,7 +160,7 @@
                 </u:columns>
                 <u:rows>
                     <u:TableRow>
-                        <c:Label text="{comp-campaign>Promo}"/>
+<!--                        <c:Label text="{comp-campaign>Promo}"/>-->
                         <c:Label text="{comp-campaign>OfferCode}"/>
                         <c:Label text="{comp-campaign>Term}"/>
                         <c:Label text="{path: 'comp-campaign>StartDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />

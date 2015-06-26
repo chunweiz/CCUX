@@ -28,21 +28,21 @@ sap.ui.define(
             }
         });
 
-       // EnabledPropagator.call(CustomControl.prototype);
+        EnabledPropagator.call(CustomControl.prototype);
 
         CustomControl.prototype._groupNames = {};
 
         CustomControl.prototype.exit = function () {
-            this.$().unbind('change', jQuery.proxy(this.onchange));
+            this.$().unbind('change', this.onchange);
             this._removeFromGroup();
         };
 
         CustomControl.prototype.onBeforeRendering = function () {
-            this.$().unbind('change', jQuery.proxy(this.onchange));
+            this.$().unbind('change', this.onchange);
         };
 
         CustomControl.prototype.onAfterRendering = function () {
-            this.$().bind('change', jQuery.proxy(this.onchange, this));
+            this.$().bind('change', this.onchange);
         };
 
         CustomControl.prototype.onchange = function (oEvent) {
@@ -55,7 +55,6 @@ sap.ui.define(
         };
 
         CustomControl.prototype.setChecked = function (bChecked) {
-
             var bSelectedOld, sGroup, aControlsInGroup;
 
             bSelectedOld = this.getChecked();
@@ -88,7 +87,6 @@ sap.ui.define(
         };
 
         CustomControl.prototype.setEnabled = function (bEnabled) {
-
             if (this.getDomRef()) {
                 if (bEnabled) {
                     this.getDomRef('intRb').disabled = false;

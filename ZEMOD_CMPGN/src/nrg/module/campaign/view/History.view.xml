@@ -60,9 +60,9 @@
                          class="nrgCamHis-top nrgCamHis-infoTable"
                          tableType="CampaignTable">
                     <u:columns>
-                        <u:TableColumn width="14%" >
+<!--                        <u:TableColumn width="14%" >
                             <c:Label text="Promo Code"/>
-                        </u:TableColumn>
+                        </u:TableColumn>-->
                         <u:TableColumn width="14%" >
                              <c:Label text="Offer Code"/>
                         </u:TableColumn>
@@ -75,7 +75,7 @@
                     </u:columns>
                     <u:rows>
                         <u:TableRow>
-                            <c:Label text="{comp-campaign>Promo}"/>
+<!--                            <c:Label text="{comp-campaign>Promo}"/>-->
                             <c:Label text="{comp-campaign>OfferCode}"/>
                             <c:Label text="{comp-campaign>Term}"/>
                             <c:Label text="{comp-campaign>CncFee}"/>

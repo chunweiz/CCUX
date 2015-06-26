@@ -22,7 +22,6 @@ sap.ui.define(
             oRm.write('>');
 
             this._renderHeader(oRm, oCustomControl);
-            this._renderExpander(oRm, oCustomControl);
 
             oRm.write('</div>');
         };
@@ -45,7 +44,8 @@ sap.ui.define(
             oRm.write('<label');
             oRm.addClass('uteMDd-hdrContent');
             oRm.writeClasses();
-            oRm.write('>');
+            oRm.writeAttribute('for', oCustomControl.getId() + '-hdrExpander-intChk');
+            oRm.write('>this is a long long label');
 
             aContent.forEach(function (oContent) {
                 oRm.renderControl(oContent);
@@ -55,16 +55,21 @@ sap.ui.define(
         };
 
         CustomRenderer._renderHeaderExpander = function (oRm, oCustomControl) {
-            var oHeaderExpander;
+            var oHdrExpander;
 
-            oHeaderExpander = oCustomControl.getAggregation('_headerExpander');
+            oHdrExpander = oCustomControl._getHeaderExpander();
 
             oRm.write('<div');
             oRm.addClass('uteMDd-hdrExpander');
+
+            if (oCustomControl.getDesign() !== ute.ui.main.DropdownDesign.None) {
+                oHdrExpander.addStyleClass('uteMDd-hdrExpanderDesign-' + oCustomControl.getDesign().toLowerCase());
+            }
+
             oRm.writeClasses();
             oRm.write('>');
 
-            oRm.renderControl(oHeaderExpander);
+            oRm.renderControl(oHdrExpander);
 
             oRm.write('</div>');
         };

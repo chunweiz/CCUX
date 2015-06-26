@@ -21,6 +21,7 @@ sap.ui.define(
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
             this.getOwnerComponent().getRouter().getRoute("campaign").attachPatternMatched(this._onObjectMatched, this);
+            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
 
         };
 
@@ -28,14 +29,14 @@ sap.ui.define(
 		/* lifecycle method- After Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
-            var aContent, obinding, sPath, that = this, sTempValue,
+/*            var aContent, obinding, sPath, that = this, sTempValue,
                 aToggleContainer = this.getView().byId("idnrgCamOvr-TabBar"),
                 handler = function () {
                     aContent = aToggleContainer.getContent();
                     if ((aContent !== undefined) && (aContent.length > 0)) {
                         if (aContent.length === 1) { // show only current campaign data irrespective of the flag
                             sTempValue = aContent[0].getBindingContext("comp-campaign").getProperty("Type");
-                            if (sTempValue === that.sFlag) {
+                            if (sTempValue === that._sFlag) {
                                 sPath = aContent[0].getBindingContext("comp-campaign").getPath();
                                 aContent[0].setSelected(true);
                             } else {
@@ -46,7 +47,7 @@ sap.ui.define(
                         }
                         if (aContent.length === 2) {
                             sTempValue = aContent[0].getBindingContext("comp-campaign").getProperty("Type");
-                            if (sTempValue === that.sFlag) { //Populate view with Current Campaign or Pending Campaign depends on the flag came from dashboard
+                            if (sTempValue === that._sFlag) { //Populate view with Current Campaign or Pending Campaign depends on the flag came from dashboard
                                 sPath = aContent[0].getBindingContext("comp-campaign").getPath();
                                 aContent[0].setSelected(true);
                             } else {
@@ -64,7 +65,7 @@ sap.ui.define(
                     obinding.detachDataReceived(handler);
                 };
             obinding = aToggleContainer.getBinding("content");
-            obinding.attachDataReceived(handler);
+            obinding.attachDataReceived(handler);*/
         };
 
 		/**
@@ -87,7 +88,12 @@ sap.ui.define(
                 iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
                 aFilterIds,
                 aFilterValues,
-                oTemplatesView;
+                oTemplatesView,
+                oBinding,
+                handler,
+                that = this,
+                sTempValue,
+                sPath;
             oViewModel = new JSONModel({
 				busy : true,
 				delay : 0
@@ -98,8 +104,8 @@ sap.ui.define(
             aFilterIds = ["Contract"];
             aFilterValues = [this._sContract];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-            sCurrentPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCurrentPendingSet");
-            sEligibilityPath = this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgEligibilitySet");
+            sCurrentPath = this._i18NModel.getProperty("nrgCurrentPendingSet");
+            sEligibilityPath = this._i18NModel.getProperty("nrgEligibilitySet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar");
             oToggleTemplate = this.getView().byId("idnrgCamOvr-TabItem").clone();
@@ -108,10 +114,12 @@ sap.ui.define(
                 model : "comp-campaign",
                 path : sCurrentPath,
                 template : oToggleTemplate,
-                filters : aFilters
+                filters : aFilters,
+                events: {dataReceived : this._TabBarHandler}
             };
-            oToggleContainer.bindAggregation("content", mParameters);
+            oBinding = oToggleContainer.bindAggregation("content", mParameters);
             mParameters = {
+                batchGroupId : "myId1",
                 filters : aFilters,
                 success : function (oData) {
                     this.getView().byId("idCamCustReqOfferBtn").bindElement({
@@ -125,14 +133,13 @@ sap.ui.define(
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
                 error: function (oError) {
-                    jQuery.sap.log.info("Some Error");
+                    jQuery.sap.log.info("Eligibility Error occured");
                 }.bind(this)
             };
             if (oModel) {
                 oModel.read(sEligibilityPath, mParameters);
             }
             this.getView().setModel(oModel, "Overview-elig");
-
 		};
 
         /**
@@ -207,10 +214,58 @@ sap.ui.define(
 		 */
         Controller.prototype.formatType = function (sType) {
             if (sType === "C") {
-                return this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCmpOvrCt");
+                return this._i18NModel.getProperty("nrgCmpOvrCt");
             } else {
-                return this.getOwnerComponent().getModel("comp-i18n-campaign").getProperty("nrgCmpOvrPg");
+                return this._i18NModel.getProperty("nrgCmpOvrPg");
             }
+        };
+
+        /**
+		 * Handler Function for the History Popup close
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype._TabBarHandler = function (oControlEvent) {
+/*            var aContent,
+                oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar"),
+                sTempValue,
+                sPath,
+                oBinding;
+            aContent = oToggleContainer.getContent();
+            if ((aContent !== undefined) && (aContent.length > 0)) {
+                if (aContent.length === 1) { // show only current campaign data irrespective of the flag
+                    sTempValue = aContent[0].getBindingContext("comp-campaign").getProperty("Type");
+                    if (sTempValue === this._sFlag) {
+                        sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                        aContent[0].setSelected(true);
+                    } else {
+                        sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                        aContent[0].setSelected(true);
+                        //Temporarily show exiting acontent[0] data but in the future decide based on business requirement
+                    }
+                }
+                if (aContent.length === 2) {
+                    sTempValue = aContent[0].getBindingContext("comp-campaign").getProperty("Type");
+                    if (sTempValue === this._sFlag) { //Populate view with Current Campaign or Pending Campaign depends on the flag came from dashboard
+                        sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                        aContent[0].setSelected(true);
+                    } else {
+                        sPath = aContent[1].getBindingContext("comp-campaign").getPath();
+                        aContent[1].setSelected(true);
+                    }
+                }
+                // aContent[0].addStyleClass("nrgCamHisBut-Selected");
+                this.getView().bindElement({
+                    model : "comp-campaign",
+                    path : sPath
+                });
+            }
+            this.getView().getModel("appView").setProperty("/busy", false);
+            oBinding = oToggleContainer.getBinding("content");
+            oBinding.detachDataReceived(this._TabBarHandler);*/
+            jQuery.sap.log.info("Came in to Tab handler");
+
         };
         return Controller;
     }
