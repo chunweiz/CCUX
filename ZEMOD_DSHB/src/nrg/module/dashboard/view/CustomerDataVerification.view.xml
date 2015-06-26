@@ -57,6 +57,35 @@
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
+                                <ute:Tag class="nrgDashboard-cusDataVerify-l-div-chb">
+                                    <utmain:CheckBox id="chk_advMtr"
+                                        class="nrgDashboard-cusDataVerify-l-div-chbox"
+                                        checked="{
+                                            parts:['oDtaVrfyContracts>/AdvMeter'],
+                                            formatter:'._formatChecked'}"/>
+                                    <utmain:Label labelFor="chk_advMtr">
+                                        <ute:Tag elem="span" text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_AdvMtrChk}"/>
+                                    </utmain:Label>
+
+                                    <utmain:CheckBox id="chk_rmoMtr"
+                                        class="nrgDashboard-cusDataVerify-l-div-chbox"
+                                        checked="{
+                                            parts:['oDtaVrfyContracts>/RemoteMeter'],
+                                            formatter:'._formatChecked'}"/>
+                                    <utmain:Label labelFor="rmo_advMtr">
+                                        <ute:Tag elem="span" text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RmoMtrChk}"/>
+                                    </utmain:Label>
+
+                                    <utmain:CheckBox id="chk_proMtr"
+                                        class="nrgDashboard-cusDataVerify-l-div-chbox"
+                                        checked="{
+                                            parts:['oDtaVrfyContracts>/ProvisionMeter'],
+                                            formatter:'._formatChecked'}"/>
+                                    <utmain:Label labelFor="pro_advMtr">
+                                        <ute:Tag elem="span" text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_ProvMtrChk}"/>
+                                    </utmain:Label>
+
+                                </ute:Tag>
 
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
