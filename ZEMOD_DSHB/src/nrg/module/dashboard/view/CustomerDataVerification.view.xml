@@ -159,6 +159,7 @@
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CaNum}"
                                     class="nrgDashboard-cusDataVerify-mContent-fLbl"/>
                                 <ute:Textfield id="contractNum" fieldType="Noborder"
+                                    editable="{oCfrmStatus>/bEditable}"
                                     value="{oDtaVrfyContracts>/ContractID}"
                                     class="nrgDashboard-cusDataVerify-mContent-fInput"/>
 
@@ -169,6 +170,7 @@
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CellNum}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <ute:Textfield id="cell_num" fieldType="Noborder"
+                                                editable="{oCfrmStatus>/bEditable}"
                                                 value="{oDtaVrfyBP>/Cell}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
@@ -178,6 +180,7 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <ute:Textfield id="fax_num" fieldType="Noborder"
                                                 value="{oDtaVrfyBP>/Fax}"
+                                                editable="{oCfrmStatus>/bEditable}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
@@ -359,15 +362,18 @@
                         <!--Area Right (Only 2 buttons )-->
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-r">
                             <ute:Tag class="nrgDashboard-cusDataVerify-rContent">
-                                <utmain:Button visible="false"
+                                <utmain:Button id="id_confmBtn" visible="true"
                                     class="nrgDashboard-cusDataVerify-rContent-vBtn"
+                                    press="._handleConfirm"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnConfitm}"/>
-                                <utmain:Button visible="true"
+                                <utmain:Button id="id_unConfmBtn" visible="false"
                                     class="nrgDashboard-cusDataVerify-rContent-vBtn"
+                                    press="._handleUnConfirm"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnUnConfirm}"/>
-                                <utmain:Button
+                                <utmain:Button id="id_updtBtn"
                                     class="nrgDashboard-cusDataVerify-rContent-uBtn"
                                     design="Invert"
+                                    press="._handleUpdate"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnUpdate}"/>
                             </ute:Tag>
                         </l:MatrixLayoutCell>

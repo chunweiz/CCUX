@@ -35,7 +35,15 @@ sap.ui.define(
             //Model to hold mailing/temp address
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');
 
+            //Model to track "Confirm" or not status
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCfrmStatus');
+
             this._initDtaVrfRetr();
+            this._initCfrmStatus();
+        };
+
+        Controller.prototype._initCfrmStatus = function () {
+            this.getView().getModel('oCfrmStatus').setProperty('/bEditable', true);
         };
 
         Controller.prototype._onBuagChange = function () {
@@ -173,6 +181,31 @@ sap.ui.define(
                 this.getView().byId('mailadd_area').setVisible(true);
             }
 
+        };
+
+        Controller.prototype._handleConfirm = function () {
+            var oStatusModel = this.getView().getModel('oCfrmStatus');
+            this.getView().byId('id_confmBtn').setVisible(false);
+            this.getView().byId('id_unConfmBtn').setVisible(true);
+
+            //Set the 'Editable' for all input to false to prevent changing after "Confirmed"
+            if (oStatusModel.getProperty('/bEditable')) {
+                oStatusModel.setProperty('/bEditable', false);
+            }
+        };
+
+        Controller.prototype._handleUnConfirm = function () {
+            var oStatusModel = this.getView().getModel('oCfrmStatus');
+            this.getView().byId('id_confmBtn').setVisible(true);
+            this.getView().byId('id_unConfmBtn').setVisible(false);
+
+            if (!oStatusModel.getProperty('/bEditable')) {
+                oStatusModel.setProperty('/bEditable', true);
+            }
+        };
+
+        Controller.prototype._handleUpdate = function () {
+            //Update infos
         };
     }
 );
