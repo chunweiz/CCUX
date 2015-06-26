@@ -211,7 +211,7 @@ sap.ui.define(
                 sPath,
                 oParameters;
 
-            sPath = '/Partners' + '(\'' + this.getView().getModel('oDtaVrfyBP').PartnerID + '\')';
+            sPath = '/Partners' + '(\'' + this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID') + '\')';
             oParameters = {
                 urlParameters: {},
                 success : function (oData) {
@@ -223,12 +223,17 @@ sap.ui.define(
             };
 
             if (oModel) {
-                oModel.Update(sPath, this.getView().getModel('oDtaVrfyBP'), oParameters);
+                oModel.update(sPath, this.getView().getModel('oDtaVrfyBP').oData, oParameters);
             }
 
 
         };
 
+        Controller.prototype._formatChecked = function (sIndicator) {
+            if (sIndicator === 'x' || sIndicator === 'X') {
+                return true;
+            }
+        };
 
     }
 );
