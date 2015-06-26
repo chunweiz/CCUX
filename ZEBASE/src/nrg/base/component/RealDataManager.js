@@ -54,7 +54,8 @@ sap.ui.define(
                     sServiceUrl = sRelativeToSicf + oDataReal[sDataReal].url;
 
                     oModel = new ODataModel(sServiceUrl, {
-                        defaultCountMode: CountMode.None
+                        defaultCountMode: CountMode.None,
+                        useBatch: false
                     });
 
                     this._oComponent.setModel(oModel, sDataReal);
