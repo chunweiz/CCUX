@@ -218,8 +218,8 @@ sap.ui.define(
                 });
             }
             sPath = this._i18NModel.getProperty("nrgPendingSwapsSet");
-            oPendingSwapsTable = sap.ui.core.Fragment.byId("PendingSwaps", "idnrgCamTls-pendTable");
-            oPendingSwapsTemplate = sap.ui.core.Fragment.byId("PendingSwaps", "idnrgCamTls-pendRow");
+            oPendingSwapsTable = sap.ui.core.Fragment.byId("PendingSwaps", "idnrgCamPds-pendTable");
+            oPendingSwapsTemplate = sap.ui.core.Fragment.byId("PendingSwaps", "idnrgCamPds-pendRow");
             mParameters = {
                 model : "comp-campaign",
                 path : sPath,
@@ -229,7 +229,7 @@ sap.ui.define(
             this.getView().addDependent(this._oCancelDialog);
             //to get access to the global model
             this._oCancelDialog.addStyleClass("nrgCamHis-dialog");
-           // oPendingSwapsTable.bindRows(mParameters);
+            oPendingSwapsTable.bindRows(mParameters);
             this._oCancelDialog.open();
         };
 
