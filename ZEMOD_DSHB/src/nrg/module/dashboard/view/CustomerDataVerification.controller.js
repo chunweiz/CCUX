@@ -187,6 +187,7 @@ sap.ui.define(
             var oStatusModel = this.getView().getModel('oCfrmStatus');
             this.getView().byId('id_confmBtn').setVisible(false);
             this.getView().byId('id_unConfmBtn').setVisible(true);
+            this.getView().byId('id_updtBtn').setEnabled(false);
 
             //Set the 'Editable' for all input to false to prevent changing after "Confirmed"
             if (oStatusModel.getProperty('/bEditable')) {
@@ -198,6 +199,7 @@ sap.ui.define(
             var oStatusModel = this.getView().getModel('oCfrmStatus');
             this.getView().byId('id_confmBtn').setVisible(true);
             this.getView().byId('id_unConfmBtn').setVisible(false);
+            this.getView().byId('id_updtBtn').setEnabled(true);
 
             if (!oStatusModel.getProperty('/bEditable')) {
                 oStatusModel.setProperty('/bEditable', true);
@@ -205,7 +207,28 @@ sap.ui.define(
         };
 
         Controller.prototype._handleUpdate = function () {
-            //Update infos
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/Partners' + '(\'' + this.getView().getModel('oDtaVrfyBP').PartnerID + '\')';
+            oParameters = {
+                urlParameters: {},
+                success : function (oData) {
+                    sap.ui.commons.MessageBox.alert("Update Success");
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Update Failed");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.Update(sPath, this.getView().getModel('oDtaVrfyBP'), oParameters);
+            }
+
+
         };
+
+
     }
 );

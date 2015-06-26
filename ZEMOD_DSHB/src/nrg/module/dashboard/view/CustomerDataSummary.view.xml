@@ -145,7 +145,7 @@
                 <l:MatrixLayout
                     width="100%"
                     columns="2"
-                    widths="50%,50%"
+                    widths="55%,45%"
                     rows="{oSmryBpSegInf>/}">
                 <l:rows>
                     <l:MatrixLayoutRow>
