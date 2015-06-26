@@ -131,7 +131,12 @@ sap.ui.define(
                 oScrollTemplate,
                 aFilters,
                 aFilterIds,
-                aFilterValues;
+                aFilterValues,
+                oDataTag,
+                oNoDataTag,
+                fnRecievedHandler,
+                aContent,
+                that = this;
             aFilterIds = ["Contract", "Type"];
             aFilterValues = ["32253375", "H"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -142,11 +147,32 @@ sap.ui.define(
             });
             oScrollContainer = oHistoryView.byId("idnrgCamHisScroll");
             oScrollTemplate = oHistoryView.byId("idnrgCamHisBut").clone();
+            oDataTag = this.getView().byId("idnrgCamHisData");
+            oNoDataTag = this.getView().byId("idnrgCamHisNoData");
+            fnRecievedHandler = function () {
+                var oBinding;
+                aContent = oScrollContainer.getContent();
+                if ((aContent !== undefined) && (aContent.length > 0)) {
+                    sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                    aContent[0].addStyleClass("nrgCamHis-but-selected");
+                    that.getView().bindElement({
+                        model : "comp-campaign",
+                        path : sPath
+                    });
+                } else {
+                    oDataTag.addStyleClass("nrgCamHis-hide");
+                    oNoDataTag.removeStyleClass("nrgCamHis-hide");
+                }
+                that.getView().getModel("appView").setProperty("/busy", false);
+                oBinding = oScrollContainer.getBinding("content");
+                oBinding.detachDataReceived(fnRecievedHandler);
+            };
             mParameters = {
                 model : "comp-campaign",
                 path : sPath,
                 template : oScrollTemplate,
-                filters : aFilters
+                filters : aFilters,
+                events: {dataReceived : fnRecievedHandler}
             };
             oScrollContainer.bindAggregation("content", mParameters);
             this._oHistoryDialog = new ute.ui.main.Popup.create({

@@ -149,7 +149,7 @@ sap.ui.define(
                 obinding,
                 sPath,
                 that = this,
-                handler,
+                fnRecievedHandler,
                 oOverScriptTV = this.getView().byId("idnrgCamOvsOvTv"),
                 aFilterIds,
                 aFilterValues;
@@ -169,10 +169,11 @@ sap.ui.define(
                 model : "comp-campaign",
                 path : sCurrentPath,
                 template : oDropDownListItemTemplate,
-                filters : aFilters
+                filters : aFilters,
+                events: {dataReceived : fnRecievedHandler}
             };
             oDropDownList.bindAggregation("DropdownListItems", mParameters);
-            handler = function () {
+            fnRecievedHandler = function () {
                 aContent = oDropDownList.getDropdownListItems();
                 if ((aContent !== undefined) && (aContent.length > 0)) {
                     sPath = aContent[0].getBindingContext("comp-campaign").getPath();
@@ -181,10 +182,9 @@ sap.ui.define(
                         path : sPath
                     });
                 }
-                obinding.detachDataReceived(handler);
+                obinding.detachDataReceived(fnRecievedHandler);
             };
             obinding = oDropDownList.getBinding("DropdownListItems");
-            obinding.attachDataReceived(handler);
             this.getView().addDependent(oDialog);
             oDialog.open();
         };

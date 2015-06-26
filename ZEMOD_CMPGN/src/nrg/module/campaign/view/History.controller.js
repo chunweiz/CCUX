@@ -24,34 +24,6 @@ sap.ui.define(
             this.getView().setModel(oViewModel, "appView");
         };
 
-        /* =========================================================== */
-		/* lifecycle method- After Rendering                          */
-		/* =========================================================== */
-        Controller.prototype.onAfterRendering = function () {
-            var aContent, obinding, sPath, that = this,
-                oScrollContainer = this.getView().byId("idnrgCamHisScroll"),
-                oDataTag = this.getView().byId("idnrgCamHisData"),
-                oNoDataTag = this.getView().byId("idnrgCamHisNoData"),
-                handler = function () {
-                    aContent = oScrollContainer.getContent();
-                    if ((aContent !== undefined) && (aContent.length > 0)) {
-                        sPath = aContent[0].getBindingContext("comp-campaign").getPath();
-                        aContent[0].addStyleClass("nrgCamHis-but-selected");
-                        that.getView().bindElement({
-                            model : "comp-campaign",
-                            path : sPath
-                        });
-                    } else {
-                        oDataTag.addStyleClass("nrgCamHis-hide");
-                        oNoDataTag.removeStyleClass("nrgCamHis-hide");
-                    }
-                    that.getView().getModel("appView").setProperty("/busy", false);
-                    obinding.detachDataReceived(handler);
-                };
-            obinding = oScrollContainer.getBinding("content");
-            obinding.attachDataReceived(handler);
-        };
-
          /**
 		 * When the user choosed to select a Campaign for comparision
 		 *
