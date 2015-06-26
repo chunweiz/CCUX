@@ -25,13 +25,12 @@ sap.ui.define(
                 },
 
                 aggregations: {
-                    content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' },
+                    content: { type: 'ute.ui.main.DropdownItem', multiple: true, singularName: 'content' },
 
-                    _headerContent: { type: 'sap.ui.core.Control', multiple: true, visibility: 'hidden' },
                     _headerExpander: { type: 'ute.ui.main.Checkbox', multiple: false, visibility: 'hidden' },
-
+                    _headerContent: { type: 'sap.ui.core.Control', multiple: true, visibility: 'hidden' },
                     _picker: { type: 'sap.m.Popover', multiple: false, visibility: 'hidden' },
-                    _selectedItem: { type: 'ute.ui.main.TabBarItem' }
+                    _pickList: { type: 'ute.ui.main.TabBar', multiple: false, visibility: 'hidden' }
                 },
 
                 defaultAggregation: 'content',
@@ -93,45 +92,13 @@ sap.ui.define(
 
             oPicker.setHorizontalScrolling(false);
             oPicker.addStyleClass('uteMDd-picker');
-            oPicker.addContent(this._getPickerList());
+            oPicker.addContent(this._getPickList());
 
             this._enhancePicker(oPicker);
             this._listenToPicker(oPicker);
 
             this.setAggregation('_picker', oPicker);
             return oPicker;
-        };
-
-        CustomControl.prototype._getPickerList = function () {
-            var oPickList = new TabBar();
-
-            oPickList.attachSelect(this._onPickerListSelect, this);
-
-            oPickList.addContent(new TabBarItem({
-                selected: true,
-                key: 'key001',
-                content: new sap.ui.core.HTML({ content: '<span>value001</span>' })
-            }));
-
-            oPickList.addContent(new TabBarItem({
-                key: 'key002',
-                content: new sap.ui.core.HTML({ content: '<span>value002</span>' })
-            }));
-
-            oPickList.addContent(new TabBarItem({
-                key: 'key003',
-                content: new sap.ui.core.HTML({ content: '<span>value003</span>' })
-            }));
-
-            return oPickList;
-        };
-
-        CustomControl.prototype._onPickerListSelect = function (oControlEvent) {
-            var oPicker = this._getPicker();
-
-            if (oPicker.isOpen()) {
-                oPicker.close();
-            }
         };
 
         CustomControl.prototype._enhancePicker = function (oPicker) {
@@ -187,9 +154,62 @@ sap.ui.define(
         };
 
         CustomControl.prototype.onBeforeRendering = function () {
-//            this.synchronizeSelection();
-//			this._clearList();
-//			this._fillList(this.getItems());
+			this._clearPickList();
+			this._fillPickList();
+        };
+
+        CustomControl.prototype._getPickList = function () {
+            var oPickList = this.getAggregation('_pickList');
+
+            if (oPickList) {
+                return oPickList;
+            }
+
+            oPickList = new TabBar();
+            oPickList.attachSelect(this._onPickListSelect, this);
+
+            this.setAggregation('_pickList', oPickList);
+            return oPickList;
+        };
+
+        CustomControl.prototype._clearPickList = function () {
+            var oPickList = this._getPickList();
+
+            oPickList.destroyAggregation('content', true);
+        };
+
+        CustomControl.prototype._fillPickList = function () {
+            var oPickList, aDropdownItem, oDropdownItem, oTabBarItem, aContent;
+
+            oPickList = this._getPickList();
+            aDropdownItem = this.getContent() || [];
+
+            aDropdownItem.forEach(function (oDropdownItem) {
+                oPickList.addContent(this._mapPickListItem(oDropdownItem));
+            }.bind(this));
+        };
+
+        CustomControl.prototype._mapPickListItem = function (oDropdownItem) {
+            var oPickListItem, aContent;
+
+            oPickListItem = new TabBarItem({
+                key: oDropdownItem.getKey()
+            });
+
+            aContent = oDropdownItem.getContent() || [];
+            aContent.forEach(function (oContent) {
+                oPickListItem.addContent(oContent, true);
+            }.bind(this));
+
+            return oPickListItem;
+        };
+
+        CustomControl.prototype._onPickListSelect = function (oControlEvent) {
+            var oPicker = this._getPicker();
+
+            if (oPicker.isOpen()) {
+                oPicker.close();
+            }
         };
 
         return CustomControl;
