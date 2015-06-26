@@ -22,7 +22,6 @@ sap.ui.define(
         Controller.prototype.onInit = function () {
             this.getOwnerComponent().getRouter().getRoute("campaign").attachPatternMatched(this._onObjectMatched, this);
             this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
-
         };
 
         /**
