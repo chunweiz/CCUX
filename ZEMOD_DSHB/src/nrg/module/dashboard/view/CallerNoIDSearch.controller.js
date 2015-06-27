@@ -45,7 +45,14 @@ sap.ui.define(
                 sBpNum : null,
                 sFiName : null,
                 sEsid : null,
-                sLaName : null
+                sLaName : null,
+                sPhnNum : null,
+                sHousNum : null,
+                sStreetNum: null,
+                sUnitNum: null,
+                sCityNum: null,
+                sStateNum: null,
+                sZipNum: null
             };
 
             this.getView().getModel('oSearchFilters').setProperty('/searchTextFields', oFilters);
@@ -67,6 +74,49 @@ sap.ui.define(
                 oFilterTemplate = new Filter(),
                 oFilterModel = this.getView().getModel('oSearchFilters');
 
+            /*
+            if (oFilterModel.getProperty('/searchTextFields/sHousNum')) {
+                oFilterTemplate.sPath = '';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sHousNum');
+                aFilters.push(oFilterTemplate);
+            }
+            if (oFilterModel.getProperty('/searchTextFields/sStreetNum')) {
+                oFilterTemplate.sPath = '';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sStreetNum');
+                aFilters.push(oFilterTemplate);
+            }
+            if (oFilterModel.getProperty('/searchTextFields/sUnitNum')) {
+                oFilterTemplate.sPath = '';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sUnitNum');
+                aFilters.push(oFilterTemplate);
+            }
+            if (oFilterModel.getProperty('/searchTextFields/sCityNum')) {
+                oFilterTemplate.sPath = '';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sCityNum');
+                aFilters.push(oFilterTemplate);
+            }
+            if (oFilterModel.getProperty('/searchTextFields/sStateNum')) {
+                oFilterTemplate.sPath = '';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sStateNum');
+                aFilters.push(oFilterTemplate);
+            }
+            if (oFilterModel.getProperty('/searchTextFields/sZipNum')) {
+                oFilterTemplate.sPath = '';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sZipNum');
+                aFilters.push(oFilterTemplate);
+            }*/
+            if (oFilterModel.getProperty('/searchTextFields/sPhnNum')) {
+                oFilterTemplate.sPath = 'DayPhone';
+                oFilterTemplate.sOperator = FilterOperator.EQ;
+                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sPhnNum');
+                aFilters.push(oFilterTemplate);
+            }
             if (oFilterModel.getProperty('/searchTextFields/sCaNum')) {
                 oFilterTemplate.sPath = 'BuagID';
                 oFilterTemplate.sOperator = FilterOperator.EQ;

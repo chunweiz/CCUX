@@ -19,6 +19,17 @@
                 </ute:Tag>
             </ute:Tag>
             <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
+                <!--type:'nrg.util.type.BusinessPartnerNumber'-->
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sBpNum'}"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_BpNum}"
+                    change="onTextFieldChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+
                 <!--type:'nrg.util.type.ContractAccountNumber'-->
                 <ute:Textfield
                     value="{
@@ -56,37 +67,6 @@
                 </ute:Textfield>
             </ute:Tag>
             <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
-                <ute:Textfield
-                    value="{
-                        path:'oSearchFilters>/searchTextFields/sOrgName'}"
-                    id="idSearchOrgName"
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_OrgName}"
-                    change="onTextFieldChange"
-                    label="Title"
-                    width="48%">
-                </ute:Textfield>
-
-                <!--type:'nrg.util.type.BusinessPartnerNumber'-->
-                <ute:Textfield
-                    value="{
-                        path:'oSearchFilters>/searchTextFields/sBpNum'}"
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_BpNum}"
-                    change="onTextFieldChange"
-                    label="Title"
-                    width="48%">
-                </ute:Textfield>
-                <ute:Textfield
-                    value="{
-                        path:'oSearchFilters>/searchTextFields/sFiName'}"
-                    id="idSearchFiName"
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_FiName}"
-                    change="onTextFieldChange"
-                    width="48%">
-                </ute:Textfield>
-
                 <!--type:'nrg.util.type.ESID'-->
                 <ute:Textfield
                     value="{
@@ -100,11 +80,90 @@
 
                 <ute:Textfield
                     value="{
+                        path:'oSearchFilters>/searchTextFields/sPhnNum'}"
+                    id="idSearchPhnNum"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_PhnNum}"
+                    change="onTextFieldChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sFiName'}"
+                    id="idSearchFiName"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_FiName}"
+                    change="onTextFieldChange"
+                    width="48%">
+                </ute:Textfield>
+
+                <ute:Textfield
+                    value="{
                         path:'oSearchFilters>/searchTextFields/sLaName'}"
                     id="idSearchLaName"
                     class="nrgDashboard-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_LaName}"
                     change="onTextFieldChange"
+                    width="48%">
+                </ute:Textfield>
+            </ute:Tag>
+
+            <!--Add Address Search-->
+            <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sHousNum'}"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_HouseNum}"
+                    change="onTextFieldChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sStreetNum'}"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_Street}"
+                    change="onTextFieldChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sUnitNum'}"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_UnitNum}"
+                    change="onTextFieldChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sCityNum'}"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_City}"
+                    change="onTextFieldChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sStateNum'}"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_State}"
+                    change="onTextFieldChange"
+                    label="Title"
+                    width="48%">
+                </ute:Textfield>
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sZipNum'}"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_ZipCode}"
+                    change="onTextFieldChange"
+                    label="Title"
                     width="48%">
                 </ute:Textfield>
             </ute:Tag>
