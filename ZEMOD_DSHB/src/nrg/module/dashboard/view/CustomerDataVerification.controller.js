@@ -80,13 +80,18 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oDtaVrfyBP').setData(oData);
+                        if (oData.PartnerID) {
+                            this._retrBuag(oData.PartnerID);
+                            this._retrContracts(oData.PartnerID);
+                        }
+                        /*
                         if (oData.Buags.results[0]) {
                             //Set the first Contract Account info to load to to verification screen first
                             this.getView().getModel('oDtaVrfyBuags').setData(oData.Buags.results[0]);
                             this._retrBuag(oData.Buags.results[0].ContractAccountID);
                             this._retrBuagMailingAddr(oData.Buags.results[0].PartnerID, oData.Buags.results[0].ContractAccountID, oData.Buags.results[0].FixedAddressID);
                         }
-                        this.getView().getModel('oAllBuags').setData(oData.Buags.results);
+                        this.getView().getModel('oAllBuags').setData(oData.Buags.results);*/
 
                     }
                 }.bind(this),
@@ -100,15 +105,14 @@ sap.ui.define(
             }
         };
 
-        Controller.prototype._retrBuag = function (sBuagNum) {      //will be called whenever a different Buag is selected
+        Controller.prototype._retrBuag = function (sBpNum) {      //will be called whenever a different Buag is selected
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
                 i;
 
-            sPath = '/Buags' + '(\'' + sBuagNum + '\')';
+            sPath = '/Partner' + '(\'' + sBpNum + '\')/Buags/';
             oParameters = {
-                urlParameters: {"$expand": "Contracts"},
                 success : function (oData) {
                     if (oData) {
                         if (oData.Contracts.results[0]) {
