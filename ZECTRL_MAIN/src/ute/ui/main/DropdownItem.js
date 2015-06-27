@@ -30,13 +30,9 @@ sap.ui.define(
             }
         });
 
-        CustomControl.prototype.ontap = function (oEvent) {
-            this.setSelected(true);
+        CustomControl.prototype.onclick = function (oEvent) {
+            console.log('firing press from ... ' + this.getKey());
             this.firePress();
-        };
-
-        CustomControl.prototype.setSelected = function (bSelected) {
-
         };
 
         return CustomControl;

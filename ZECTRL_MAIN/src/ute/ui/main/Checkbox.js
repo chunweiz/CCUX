@@ -63,12 +63,14 @@ sap.ui.define(
                 return this;
             }
 
-            if (bValue) {
-                this.getDomRef('intChk').checked = true;
-                this.getDomRef('intChk').setAttribute('checked', 'checked');
-            } else {
-                this.getDomRef('intChk').checked = false;
-                this.getDomRef('intChk').removeAttribute('checked');
+            if (this.getDomRef()) {
+                if (bValue) {
+                    this.getDomRef('intChk').checked = true;
+                    this.getDomRef('intChk').setAttribute('checked', 'checked');
+                } else {
+                    this.getDomRef('intChk').checked = false;
+                    this.getDomRef('intChk').removeAttribute('checked');
+                }
             }
 
             this.setProperty('checked', bValue);

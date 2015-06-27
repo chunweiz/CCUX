@@ -4,6 +4,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:sm="sap.m"
     xmlns:um="ute.ui.main"
+    xmlns:uc="ute.ui.commons"
     controllerName="test.tm.ze_ccux_ctrl.view.Dropdown"
     height="100%"
     width="100%"
@@ -11,15 +12,9 @@
 
     <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
 
-        <um:Dropdown selectedKey="key002">
-            <um:DropdownItem key="key001">
-               <span>value001</span>
-            </um:DropdownItem>
-            <um:DropdownItem key="key002">
-                <span>value002</span>
-            </um:DropdownItem>
-            <um:DropdownItem key="key003">
-                <span>value003</span>
+        <um:Dropdown id="dd001" content="{data>/dropdown}" selectedKey="{data>/selectedKey}">
+            <um:DropdownItem key="{data>key}">
+               <uc:Tag text="{data>value}" />
             </um:DropdownItem>
         </um:Dropdown>
         <div>text text text text text text text text text text text text text text text text text text text text </div>

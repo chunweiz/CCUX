@@ -36,7 +36,7 @@ sap.ui.define(
 
         CustomControl.prototype.setEnabled = function (oValue) {
             if (oValue) {
-                 this.data('disabled', null);
+                this.data('disabled', null);
             } else {
                 this.data('disabled', 'true', true);
             }

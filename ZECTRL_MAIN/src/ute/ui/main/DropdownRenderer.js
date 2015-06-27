@@ -22,6 +22,7 @@ sap.ui.define(
             oRm.write('>');
 
             this._renderHeader(oRm, oCustomControl);
+            this._renderPicker(oRm, oCustomControl);
 
             oRm.write('</div>');
         };
@@ -44,6 +45,7 @@ sap.ui.define(
             oRm.write('<label');
             oRm.addClass('uteMDd-hdrContent');
             oRm.writeClasses();
+            oRm.writeAttribute('for', oCustomControl.getId() + '-hdrExpander-intChk');
             oRm.write('>');
 
             aContent.forEach(function (oContent) {
@@ -69,6 +71,21 @@ sap.ui.define(
             oRm.write('>');
 
             oRm.renderControl(oHdrExpander);
+
+            oRm.write('</div>');
+        };
+
+        CustomRenderer._renderPicker = function (oRm, oCustomControl) {
+            var aContent = oCustomControl.getContent() || [];
+
+            oRm.write('<div');
+            oRm.addClass('uteMDd-picker');
+            oRm.writeClasses();
+            oRm.write('>');
+
+            aContent.forEach(function (oContent) {
+                oRm.renderControl(oContent);
+            });
 
             oRm.write('</div>');
         };
