@@ -40,6 +40,9 @@ sap.ui.define(
                 oRm.writeAttribute('id', oTextfield.getId() + '-input');
                 //oRm.writeAttribute('id', oTextfield.getId());
                 oRm.writeAttribute('name', oTextfield.getName());
+                if (!oTextfield.getEditable()) {
+                    oRm.writeAttribute('readonly', '');
+                }
                 if (oTextfield.getValue()) {
                     oRm.writeAttribute('value', oTextfield.getValue());
                 } else {
@@ -60,6 +63,9 @@ sap.ui.define(
                 } else {
                     oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
                 }
+                if (!oTextfield.getEditable()) {
+                    oRm.writeAttribute('readonly', '');
+                }
                 oRm.addStyle('width', 'auto');
                 oRm.addClass('uteTextfield-noBorder-input');
                 oRm.writeStyles();
@@ -75,6 +81,9 @@ sap.ui.define(
                     oRm.writeAttribute('value', oTextfield.getValue());
                 } else {
                     oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
+                }
+                if (!oTextfield.getEditable()) {
+                    oRm.writeAttribute('readonly', '');
                 }
                 oRm.addStyle('width', oTextfield.getWidth());
                 oRm.addClass('uteTextfield-regular');

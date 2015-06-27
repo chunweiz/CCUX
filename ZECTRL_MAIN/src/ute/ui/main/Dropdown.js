@@ -6,10 +6,12 @@ sap.ui.define(
         'jquery.sap.global',
         'sap/ui/core/Control',
         'ute/ui/main/Checkbox',
-        'sap/m/Popover'
+        'sap/m/Popover',
+        'ute/ui/main/TabBar',
+        'ute/ui/main/TabBarItem'
     ],
 
-    function (jQuery, Control, Checkbox, Popover) {
+    function (jQuery, Control, Checkbox, Popover, TabBar, TabBarItem) {
         'use strict';
 
         var CustomControl = Control.extend('ute.ui.main.Dropdown', {
@@ -19,15 +21,16 @@ sap.ui.define(
                 properties: {
                     design: { type: 'ute.ui.main.DropdownDesign', defaultValue: ute.ui.main.DropdownDesign.Default },
                     enabled: { type: 'boolean', defaultValue: true },
-                    selectedKey: { type: 'string', defaultValue: null }
+                    placeholder: { type: 'string', defaultValue: null }
                 },
 
                 aggregations: {
                     content: { type: 'ute.ui.main.DropdownItem', multiple: true, singularName: 'content' },
 
-                    _headerContent: { type: 'sap.ui.core.Control', multiple: true, visibility: 'hidden' },
                     _headerExpander: { type: 'ute.ui.main.Checkbox', multiple: false, visibility: 'hidden' },
-                    _picker: { type: 'sap.m.Popover', multiple: false, visibility: 'hidden' }
+                    _headerContent: { type: 'sap.ui.core.Control', multiple: true, visibility: 'hidden' },
+                    _picker: { type: 'sap.m.Popover', multiple: false, visibility: 'hidden' },
+                    _pickList: { type: 'ute.ui.main.TabBar', multiple: false, visibility: 'hidden' }
                 },
 
                 defaultAggregation: 'content',
@@ -84,12 +87,12 @@ sap.ui.define(
 				placement: sap.m.PlacementType.Vertical,
 				offsetX: 0,
 				offsetY: 0,
-				initialFocus: this,
 				bounce: false
             });
 
             oPicker.setHorizontalScrolling(false);
             oPicker.addStyleClass('uteMDd-picker');
+            oPicker.addContent(this._getPickList());
 
             this._enhancePicker(oPicker);
             this._listenToPicker(oPicker);
@@ -124,9 +127,7 @@ sap.ui.define(
 
         CustomControl.prototype._listenToPicker = function (oPicker) {
             oPicker.attachBeforeOpen(this._onBeforeOpenPicker, this);
-            oPicker.attachAfterOpen(this._onAfterOpenPicker, this);
             oPicker.attachBeforeClose(this._onBeforeClosePicker, this);
-            oPicker.attachAfterClose(this._onAfterClosePicker, this);
 
             oPicker.addEventDelegate({
                 onAfterRendering: this._onAfterRenderingPicker
@@ -144,16 +145,71 @@ sap.ui.define(
 
         };
 
-        CustomControl.prototype._onAfterOpenPicker = function () {
-
-        };
-
         CustomControl.prototype._onBeforeClosePicker = function () {
+            var oHdrExpander = this._getHeaderExpander();
 
+            if (oHdrExpander.getChecked()) {
+                oHdrExpander.setChecked(false);
+            }
         };
 
-        CustomControl.prototype._onAfterClosePicker = function () {
+        CustomControl.prototype.onBeforeRendering = function () {
+			this._clearPickList();
+			this._fillPickList();
+        };
 
+        CustomControl.prototype._getPickList = function () {
+            var oPickList = this.getAggregation('_pickList');
+
+            if (oPickList) {
+                return oPickList;
+            }
+
+            oPickList = new TabBar();
+            oPickList.attachSelect(this._onPickListSelect, this);
+
+            this.setAggregation('_pickList', oPickList);
+            return oPickList;
+        };
+
+        CustomControl.prototype._clearPickList = function () {
+            var oPickList = this._getPickList();
+
+            oPickList.destroyAggregation('content', true);
+        };
+
+        CustomControl.prototype._fillPickList = function () {
+            var oPickList, aDropdownItem, oDropdownItem, oTabBarItem, aContent;
+
+            oPickList = this._getPickList();
+            aDropdownItem = this.getContent() || [];
+
+            aDropdownItem.forEach(function (oDropdownItem) {
+                oPickList.addContent(this._mapPickListItem(oDropdownItem));
+            }.bind(this));
+        };
+
+        CustomControl.prototype._mapPickListItem = function (oDropdownItem) {
+            var oPickListItem, aContent;
+
+            oPickListItem = new TabBarItem({
+                key: oDropdownItem.getKey()
+            });
+
+            aContent = oDropdownItem.getContent() || [];
+            aContent.forEach(function (oContent) {
+                oPickListItem.addContent(oContent, true);
+            }.bind(this));
+
+            return oPickListItem;
+        };
+
+        CustomControl.prototype._onPickListSelect = function (oControlEvent) {
+            var oPicker = this._getPicker();
+
+            if (oPicker.isOpen()) {
+                oPicker.close();
+            }
         };
 
         return CustomControl;

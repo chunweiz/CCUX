@@ -68,7 +68,8 @@ sap.ui.define(
                 var oModel;
 
                 oModel = new ODataModel(oEntry.oMockServer.getRootUri(), {
-                    defaultCountMode: CountMode.None
+                    defaultCountMode: CountMode.None,
+                    useBatch: false
                 });
 
                 this._oComponent.setModel(oModel, oEntry.sMock);

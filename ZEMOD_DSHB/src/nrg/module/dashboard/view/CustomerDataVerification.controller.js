@@ -35,7 +35,15 @@ sap.ui.define(
             //Model to hold mailing/temp address
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');
 
+            //Model to track "Confirm" or not status
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCfrmStatus');
+
             this._initDtaVrfRetr();
+            this._initCfrmStatus();
+        };
+
+        Controller.prototype._initCfrmStatus = function () {
+            this.getView().getModel('oCfrmStatus').setProperty('/bEditable', true);
         };
 
         Controller.prototype._onBuagChange = function () {
@@ -174,5 +182,58 @@ sap.ui.define(
             }
 
         };
+
+        Controller.prototype._handleConfirm = function () {
+            var oStatusModel = this.getView().getModel('oCfrmStatus');
+            this.getView().byId('id_confmBtn').setVisible(false);
+            this.getView().byId('id_unConfmBtn').setVisible(true);
+            this.getView().byId('id_updtBtn').setEnabled(false);
+
+            //Set the 'Editable' for all input to false to prevent changing after "Confirmed"
+            if (oStatusModel.getProperty('/bEditable')) {
+                oStatusModel.setProperty('/bEditable', false);
+            }
+        };
+
+        Controller.prototype._handleUnConfirm = function () {
+            var oStatusModel = this.getView().getModel('oCfrmStatus');
+            this.getView().byId('id_confmBtn').setVisible(true);
+            this.getView().byId('id_unConfmBtn').setVisible(false);
+            this.getView().byId('id_updtBtn').setEnabled(true);
+
+            if (!oStatusModel.getProperty('/bEditable')) {
+                oStatusModel.setProperty('/bEditable', true);
+            }
+        };
+
+        Controller.prototype._handleUpdate = function () {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/Partners' + '(\'' + this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID') + '\')';
+            oParameters = {
+                urlParameters: {},
+                success : function (oData) {
+                    sap.ui.commons.MessageBox.alert("Update Success");
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Update Failed");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.update(sPath, this.getView().getModel('oDtaVrfyBP').oData, oParameters);
+            }
+
+
+        };
+
+        Controller.prototype._formatChecked = function (sIndicator) {
+            if (sIndicator === 'x' || sIndicator === 'X') {
+                return true;
+            }
+        };
+
     }
 );
