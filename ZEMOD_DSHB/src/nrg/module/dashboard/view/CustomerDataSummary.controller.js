@@ -129,6 +129,10 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._onAssignedAccountClick = function () {
+            sap.ui.commons.MessageBox.alert("Assigned Account Link Clicked");
+        };
+
         return Controller;
     }
 );
