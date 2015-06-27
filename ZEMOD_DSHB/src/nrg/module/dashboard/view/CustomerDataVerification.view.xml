@@ -7,6 +7,7 @@
     xmlns:c="sap.ui.commons"
     xmlns:l="sap.ui.commons.layout"
     xmlns:core="sap.ui.core"
+    xmlns:m="sap.m"
     controllerName="nrg.module.dashboard.view.CustomerDataVerification">
 
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-cusDataVerify">
@@ -161,6 +162,17 @@
                                 press="._onToggleButtonPress">
                             </ute:ToggleButton>
                             <ute:Tag class="nrgDashboard-cusDataVerify-mRdBtn">
+                                <utmain:RadioButton group="service_mail_radio"/>
+                                <m:ScrollContainer height="100%" width="100%" vertical="true">
+                                <utmain:Dropdown
+                                    content="{oAllContractsofBuag>/}" >
+                                    <utmain:DropdownItem
+                                        key="{oAllContractsofBuag>iIndex}">
+                                        <ute:Tag elem="span"
+                                            text="{oAllContractsofBuag>HouseNum1} {oAllContractsofBuag>Street}, {oAllContractsofBuag>City1}"/>
+                                    </utmain:DropdownItem>
+                                </utmain:Dropdown>
+                                </m:ScrollContainer>
                                 <c:DropdownBox
                                     items="{oAllContractsofBuag>/}" change="._onContractChange">
                                     <c:items>
@@ -169,6 +181,8 @@
                                             text="{oAllContractsofBuag>HouseNum1} {oAllContractsofBuag>Street}, {oAllContractsofBuag>City1}"/>
                                     </c:items>
                                 </c:DropdownBox>
+                                <utmain:RadioButton group="service_mail_radio"
+                                    class="nrgDashboard-cusDataVerify-mRdBtn-rdBtn"/>
                                 <c:DropdownBox
                                     items="{oAllBuags>/}" change="._onBuagChange">
                                     <c:items>
