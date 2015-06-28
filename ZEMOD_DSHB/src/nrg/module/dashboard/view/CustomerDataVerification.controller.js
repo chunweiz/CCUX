@@ -82,17 +82,7 @@ sap.ui.define(
                         this.getView().getModel('oDtaVrfyBP').setData(oData);
                         if (oData.PartnerID) {
                             this._retrBuag(oData.PartnerID);
-                            this._retrContracts(oData.PartnerID);
                         }
-                        /*
-                        if (oData.Buags.results[0]) {
-                            //Set the first Contract Account info to load to to verification screen first
-                            this.getView().getModel('oDtaVrfyBuags').setData(oData.Buags.results[0]);
-                            this._retrBuag(oData.Buags.results[0].ContractAccountID);
-                            this._retrBuagMailingAddr(oData.Buags.results[0].PartnerID, oData.Buags.results[0].ContractAccountID, oData.Buags.results[0].FixedAddressID);
-                        }
-                        this.getView().getModel('oAllBuags').setData(oData.Buags.results);*/
-
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -108,18 +98,47 @@ sap.ui.define(
         Controller.prototype._retrBuag = function (sBpNum) {      //will be called whenever a different Buag is selected
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
-                oParameters,
-                i;
+                oParameters;
 
-            sPath = '/Partner' + '(\'' + sBpNum + '\')/Buags/';
+            sPath = '/Partners' + '(\'' + sBpNum + '\')/Buags/';
             oParameters = {
                 success : function (oData) {
                     if (oData) {
                         if (oData.Contracts.results[0]) {
                             //Again if there's first record of Contracts, load as default to display
                             this.getView().getModel('oDtaVrfyContracts').setData(oData.Contracts.results[0]);
+                            this._retrContracts(oData.ContractAccountID);
                         }
-                        for (i = 0; i < oData.Contracts.results.length; i = i + 1) {
+                        this.getView().getModel('oAllBuags').setData(oData.results);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrContracts = function (sBuagNum) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters,
+                i;
+
+            sPath = '/Buags' + '(\'' + sBuagNum + '\')/Contracts/';
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        if (oData.results[0]) {
+                            //Again if there's first record of Contracts, load as default to display
+                            this.getView().getModel('oDtaVrfyContracts').setData(oData.Contracts.results[0]);
+                        }
+                        this.getView().getModel('oAllBuags').setData(oData.results);
+
+                        for (i = 0; i < oData.results.length; i = i + 1) {
                             oData.Contracts.results[0].iIndex = i;
                         }
                         this.getView().getModel('oAllContractsofBuag').setData(oData.Contracts.results);
@@ -133,10 +152,7 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oParameters);
             }
-
-
         };
-
         Controller.prototype._retrBuagMailingAddr = function (sBpNum, sBuagNum, sFixedAddressID) {
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
