@@ -18,21 +18,32 @@
     position: relative;
 }
 
-div.uteMDd-picker {
-	box-shadow: none;
-	border: none;
-	min-width: 0;
+.uteMDd-picker {
+    display: none;
+	position: absolute;
 }
 
-.uteMDd-picker .sapMPopoverArr {
-    display: none;
+.uteMDd-picker.uteMDd-picker-active {
+    display: block;
 }
 
 /*
 ** Design default
 */
-.uteMDd-design-default {
+.uteMDd-design-default .uteMDd-hdr {
+    border-radius: 4px;
+    border: 1px solid @uteColor-grey-dark;
+    margin-bottom: 4px;
+}
 
+.uteMDd-design-default .uteMDd-hdr .uteMDd-hdrContent {
+    padding-right: 5px;
+}
+
+.uteMDd-design-default .uteMDd-picker {
+    background-color: @uteColor-white;
+    border-radius: 4px;
+    border: 1px solid @uteColor-grey-dark;
 }
 
 .uteMDd-hdrExpanderDesign-default .uteMChkBox-chk {

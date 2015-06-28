@@ -74,43 +74,43 @@ sap.ui.define(
                 oFilterTemplate = new Filter(),
                 oFilterModel = this.getView().getModel('oSearchFilters');
 
-            /*
+
             if (oFilterModel.getProperty('/searchTextFields/sHousNum')) {
-                oFilterTemplate.sPath = '';
+                oFilterTemplate.sPath = 'HouseNumber';
                 oFilterTemplate.sOperator = FilterOperator.EQ;
                 oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sHousNum');
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sStreetNum')) {
-                oFilterTemplate.sPath = '';
+                oFilterTemplate.sPath = 'Street';
                 oFilterTemplate.sOperator = FilterOperator.EQ;
                 oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sStreetNum');
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sUnitNum')) {
-                oFilterTemplate.sPath = '';
+                oFilterTemplate.sPath = 'UnitNumber';
                 oFilterTemplate.sOperator = FilterOperator.EQ;
                 oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sUnitNum');
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sCityNum')) {
-                oFilterTemplate.sPath = '';
+                oFilterTemplate.sPath = 'City';
                 oFilterTemplate.sOperator = FilterOperator.EQ;
                 oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sCityNum');
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sStateNum')) {
-                oFilterTemplate.sPath = '';
+                oFilterTemplate.sPath = 'State';
                 oFilterTemplate.sOperator = FilterOperator.EQ;
                 oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sStateNum');
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sZipNum')) {
-                oFilterTemplate.sPath = '';
+                oFilterTemplate.sPath = 'ZipCode';
                 oFilterTemplate.sOperator = FilterOperator.EQ;
                 oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sZipNum');
                 aFilters.push(oFilterTemplate);
-            }*/
+            }
             if (oFilterModel.getProperty('/searchTextFields/sPhnNum')) {
                 oFilterTemplate.sPath = 'DayPhone';
                 oFilterTemplate.sOperator = FilterOperator.EQ;

@@ -197,7 +197,8 @@
             <utmain:Button
                 class="nrgDashboard-cusDataSum-assignedAccBtn"
                 design="None"
-                text="Assigned Account">
+                press="._onAssignedAccountClick"
+                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssignedAccount}">
             </utmain:Button>
 
         </ute:content>

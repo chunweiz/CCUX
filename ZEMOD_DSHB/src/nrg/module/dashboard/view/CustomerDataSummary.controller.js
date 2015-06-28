@@ -65,6 +65,7 @@ sap.ui.define(
             sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')';
 
             this._retrBpInf(sPath);
+            this._initRetrCaInf(aSplitHash[iSplitHashL - 1]);  //Should be triggered in Success call back of BP retriev
         };
 
         Controller.prototype._initRetrBpSegInf = function () {
@@ -77,12 +78,41 @@ sap.ui.define(
             this._retrBpSegInf(sPath);
         };
 
+        Controller.prototype._initRetrCaInf = function (BpNum) {
+            var sPath;
+
+            sPath = '/Partners' + '(\'' + BpNum + '\')/Buags';
+            this._retrCaInf(sPath);
+        };
+
+
+
         Controller.prototype._retrUrlHash = function () {
             //Get the hash to retrieve bp #
             var oHashChanger = new HashChanger(),
                 sUrlHash = oHashChanger.getHash();
 
             return sUrlHash;
+        };
+
+        Controller.prototype._retrCaInf = function (sPath) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData.results) {
+                        this.getView().getModel('oSmryBuagInf').setData(oData.results[0]);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
         };
 
         Controller.prototype._retrBpInf = function (sPath) {
@@ -127,6 +157,10 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oParameters);
             }
+        };
+
+        Controller.prototype._onAssignedAccountClick = function () {
+            sap.ui.commons.MessageBox.alert("Assigned Account Link Clicked");
         };
 
         return Controller;

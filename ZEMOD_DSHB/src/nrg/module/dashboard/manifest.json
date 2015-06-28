@@ -58,6 +58,11 @@
                 "dashboard.PrePD": {
                     "pattern": "prepd",
                     "target": [ "dashboard.CustomerDataPrePD", "dashboard.CustomerDataSummary", "" ]
+                },
+
+                "dashboard.BillingInfo": {
+                    "pattern": "billinginfo",
+                    "target": [ "dashboard.CustomerDataBillingInfo", "dashboard.CustomerDataSummary", "" ]
                 }
             },
 
@@ -109,6 +114,11 @@
 
                 "dashboard.CustomerDataPrePD": {
                     "viewName": "nrg.module.dashboard.view.CustomerDataPrePD",
+                    "controlId": "idAppGeneral"
+                },
+
+                "dashboard.CustomerDataBillingInfo": {
+                    "viewName": "nrg.module.dashboard.view.CustomerDataBillingInfo",
                     "controlId": "idAppGeneral"
                 }
             }
