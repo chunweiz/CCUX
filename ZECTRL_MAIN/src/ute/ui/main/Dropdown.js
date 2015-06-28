@@ -26,7 +26,7 @@ sap.ui.define(
                     content: { type: 'ute.ui.main.DropdownItem', multiple: true, singularName: 'content' },
 
                     _headerExpander: { type: 'ute.ui.main.Checkbox', multiple: false, visibility: 'hidden' },
-                    _headerContent: { type: 'ute.ui.main.DropdownItem', multiple: true, visibility: 'hidden' }
+                    _headerContent: { type: 'ute.ui.main.DropdownItem', multiple: false, visibility: 'hidden' }
                 },
 
                 defaultAggregation: 'content',
@@ -40,22 +40,6 @@ sap.ui.define(
                 }
             }
         });
-
-//        CustomControl.prototype.init = function () {
-//            jQuery.sap.require('sap.ui.core.delegate.ScrollEnablement');
-//
-//            this._oScroller = new sap.ui.core.delegate.ScrollEnablement(this, this.getId() + '-picker', {
-//                horizontal: true,
-//                vertical: true
-//            });
-//        };
-//
-//        CustomControl.prototype.exit = function () {
-//            if (this._oScroller) {
-//                this._oScroller.destroy();
-//                this._oScroller = null;
-//            }
-//        };
 
         CustomControl.prototype._autoClose = function (oEvent) {
             this.$().find('.uteMDd-picker').removeClass('uteMDd-picker-active');
@@ -103,6 +87,8 @@ sap.ui.define(
             });
 
             this.setProperty('selectedKey', sKey);
+            this._syncHeaderContent();
+
             return this;
         };
 
@@ -127,6 +113,19 @@ sap.ui.define(
                     selectedKey: this.getSelectedKey()
                 });
             }
+        };
+
+        CustomControl.prototype._syncHeaderContent = function () {
+            var aContent = this.getContent() || [];
+
+            this.removeAggregation('_headerContent');
+
+            aContent.forEach(function (oContent) {
+                if (oContent.getKey() === this.getSelectedKey()) {
+                    this.setAggregation('_headerContent', oContent);
+                }
+
+            }.bind(this));
         };
 
         return CustomControl;

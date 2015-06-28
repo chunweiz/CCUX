@@ -40,17 +40,17 @@ sap.ui.define(
         };
 
         CustomRenderer._renderHeaderContent = function (oRm, oCustomControl) {
-            var aContent = oCustomControl.getAggregation('_headerContent') || [];
+            var oContent = oCustomControl.getAggregation('_headerContent');
 
             oRm.write('<label');
             oRm.addClass('uteMDd-hdrContent');
             oRm.writeClasses();
-            oRm.writeAttribute('for', oCustomControl.getId() + '-hdrExpander-intChk');
+//            oRm.writeAttribute('for', oCustomControl.getId() + '-hdrExpander-intChk');
             oRm.write('>');
 
-            aContent.forEach(function (oContent) {
+            if(oContent) {
                 oRm.renderControl(oContent);
-            });
+            }
 
             oRm.write('</label>');
         };

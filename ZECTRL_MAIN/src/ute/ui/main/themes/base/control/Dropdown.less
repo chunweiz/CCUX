@@ -21,18 +21,25 @@
 .uteMDd-picker {
     display: none;
 	position: absolute;
-    max-height: 80px;
-    overflow-y: scroll;
 }
 
 .uteMDd-picker.uteMDd-picker-active {
     display: block;
 }
 
-
 /*
 ** Design default
 */
+.uteMDd-design-default .uteMDd-hdr {
+    border-radius: 4px;
+    border: 1px solid @uteColor-grey-dark;
+    margin-bottom: 4px;
+}
+
+.uteMDd-design-default .uteMDd-hdr .uteMDd-hdrContent {
+    padding-right: 5px;
+}
+
 .uteMDd-design-default .uteMDd-picker {
     background-color: @uteColor-white;
     border-radius: 4px;
