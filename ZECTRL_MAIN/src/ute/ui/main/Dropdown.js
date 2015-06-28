@@ -34,23 +34,32 @@ sap.ui.define(
                 events: {
                     select: {
                         parameters: {
-                            selectedItem: { type: 'ute.ui.main.DropdownItem' }
+                            selectedKey: { type: 'string' }
                         }
                     }
                 }
             }
         });
 
-        CustomControl.prototype.init = function () {
-            jQuery(document).on('touchstart mousedown', jQuery.proxy(this._autoClose, this));
-        };
-
-        CustomControl.prototype.exit = function () {
-            jQuery(document).off('touchstart mousedown', this._autoClose);
-        };
+//        CustomControl.prototype.init = function () {
+//            jQuery.sap.require('sap.ui.core.delegate.ScrollEnablement');
+//
+//            this._oScroller = new sap.ui.core.delegate.ScrollEnablement(this, this.getId() + '-picker', {
+//                horizontal: true,
+//                vertical: true
+//            });
+//        };
+//
+//        CustomControl.prototype.exit = function () {
+//            if (this._oScroller) {
+//                this._oScroller.destroy();
+//                this._oScroller = null;
+//            }
+//        };
 
         CustomControl.prototype._autoClose = function (oEvent) {
             this.$().find('.uteMDd-picker').removeClass('uteMDd-picker-active');
+            jQuery(document).off('click', this._autoClose);
             this._getHeaderExpander().setChecked(false);
         };
 
@@ -75,8 +84,10 @@ sap.ui.define(
         CustomControl.prototype._onHeaderExpanderSelect = function (oControlEvent) {
             if (oControlEvent.getSource().getChecked()) {
                 this.$().find('.uteMDd-picker').addClass('uteMDd-picker-active');
+                jQuery(document).on('click', jQuery.proxy(this._autoClose, this));
             } else {
                 this.$().find('.uteMDd-picker').removeClass('uteMDd-picker-active');
+                jQuery(document).off('click', this._autoClose);
             }
         };
 
@@ -110,7 +121,12 @@ sap.ui.define(
         };
 
         CustomControl.prototype._onDropdownItemPress = function (oControlEvent) {
-            console.log(oControlEvent.getSource().getKey());
+            if (this.getSelectedKey() !== oControlEvent.getSource().getKey()) {
+                this.setSelectedKey(oControlEvent.getSource().getKey());
+                this.fireSelect({
+                    selectedKey: this.getSelectedKey()
+                });
+            }
         };
 
         return CustomControl;

@@ -31,7 +31,6 @@ sap.ui.define(
         });
 
         CustomControl.prototype.onclick = function (oEvent) {
-            console.log('firing press from ... ' + this.getKey());
             this.firePress();
         };
 

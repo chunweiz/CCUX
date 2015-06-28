@@ -79,6 +79,11 @@ sap.ui.define(
             var aContent = oCustomControl.getContent() || [];
 
             oRm.write('<div');
+
+            /*
+            ** In case stacking order is messed up,
+            ** get the next z-index from sap.ui.core.Popup and add it as style here
+            */
             oRm.addClass('uteMDd-picker');
             oRm.writeClasses();
             oRm.write('>');

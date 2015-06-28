@@ -10,35 +10,33 @@
     width="100%"
     displayBlock="true">
 
-    <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
 
-        <um:Dropdown id="dd001" content="{data>/dropdown}" selectedKey="{data>/selectedKey}">
-            <um:DropdownItem key="{data>key}">
-               <uc:Tag text="{data>value}" />
-            </um:DropdownItem>
-        </um:Dropdown>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
-        <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <um:Dropdown id="dd001" content="{data>/dropdown}" selectedKey="{data>/selectedKey}" select=".onSelected">
+        <um:DropdownItem key="{data>key}">
+           <uc:Tag text="{data>value}" />
+        </um:DropdownItem>
+    </um:Dropdown>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
 
-    </sm:ScrollContainer>
 </mvc:View>
