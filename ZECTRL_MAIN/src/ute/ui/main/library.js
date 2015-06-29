@@ -25,8 +25,7 @@ sap.ui.define(
                 'ute.ui.main.RadioButtonDesign',
                 'ute.ui.main.InfolineDesign',
                 'ute.ui.main.PopupDesign',
-                'ute.ui.main.DropdownDesign',
-                'ute.ui.main.DropdownItemDesign'
+                'ute.ui.main.DropdownDesign'
             ],
 
 			controls: [
@@ -95,8 +94,6 @@ sap.ui.define(
             Default: 'Default',
             Plain: 'Plain'
         };
-
-        ute.ui.main.DropdownItemDesign = ute.ui.main.DropdownDesign;
 
         /*
         ** Create popup based on style guide

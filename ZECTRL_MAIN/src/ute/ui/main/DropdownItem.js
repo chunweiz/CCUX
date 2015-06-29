@@ -14,7 +14,6 @@ sap.ui.define(
                 library: 'ute.ui.main',
 
                 properties: {
-                    design: { type: 'ute.ui.main.DropdownItemDesign', defaultValue: ute.ui.main.DropdownItemDesign.Default },
                     key: { type: 'string', defaultValue: null }
                 },
 

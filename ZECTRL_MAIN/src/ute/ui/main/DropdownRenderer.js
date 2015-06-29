@@ -2,9 +2,11 @@
 /*jslint nomen:true*/
 
 sap.ui.define(
-    [],
+    [
+        'sap/ui/core/Popup'
+    ],
 
-    function () {
+    function (Popup) {
         'use strict';
 
         var CustomRenderer = {};
@@ -67,12 +69,12 @@ sap.ui.define(
 
             oRm.write('<div');
 
-            /*
-            ** In case stacking order is messed up,
-            ** call sap.ui.core.Popup.getNextZIndex() and the z-index value here as style
-            */
             oRm.addClass('uteMDd-picker');
             oRm.writeClasses();
+
+            oRm.addStyle('z-index', Popup.getNextZIndex());
+            oRm.writeStyles();
+
             oRm.write('>');
 
             aContent.forEach(function (oContent) {
