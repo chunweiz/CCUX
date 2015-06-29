@@ -10,6 +10,12 @@
     width="100%"
     displayBlock="true">
 
+    <style>
+        .custom .uteMDd-hdr .uteMDd-hdrContent,
+        .custom .uteMDdItem {
+            width: 130px;
+        }
+    </style>
 
     <um:Dropdown id="dd001" content="{data>/dropdown}" selectedKey="{data>/selectedKey}" select=".onSelected">
         <um:DropdownItem key="{data>key}">
@@ -17,9 +23,9 @@
         </um:DropdownItem>
     </um:Dropdown>
     <br/>
-    <um:Dropdown id="dd002" design="Plain" content="{data>/dropdown}" selectedKey="{data>/selectedKey}" select=".onSelected">
-        <um:DropdownItem key="{data>key}">
-           <uc:Tag text="{data>value}" />
+    <um:Dropdown id="dd002" design="Plain" class="custom" content="{cc>/dropdown}" selectedKey="{cc>/selectedKey}" select=".onSelected">
+        <um:DropdownItem key="{cc>key}">
+            <core:Icon src="{cc>icon}" /><uc:Tag elem="span" text="{cc>value}" />
         </um:DropdownItem>
     </um:Dropdown>
     <div>text text text text text text text text text text text text text text text text text text text text </div>
