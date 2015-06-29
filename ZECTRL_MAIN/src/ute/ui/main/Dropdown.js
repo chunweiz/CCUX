@@ -5,11 +5,12 @@ sap.ui.define(
     [
         'jquery.sap.global',
         'sap/ui/core/Control',
+        'sap/ui/core/Popup',
         'ute/ui/main/Checkbox',
         'ute/ui/main/DropdownItem'
     ],
 
-    function (jQuery, Control, Checkbox, DropdownItem) {
+    function (jQuery, Control, Popup, Checkbox, DropdownItem) {
         'use strict';
 
         var CustomControl = Control.extend('ute.ui.main.Dropdown', {
@@ -44,17 +45,34 @@ sap.ui.define(
             oEvent.stopPropagation();
 
             if (this.$().hasClass('uteMDd-active')) {
+                this.$().removeClass('uteMDd-active');
                 jQuery(document).off('click', this._autoClose);
-            } else {
-                jQuery(document).on('click', jQuery.proxy(this._autoClose, this));
-            }
 
-            this.$().toggleClass('uteMDd-active');
+            } else {
+                if (this.getEnabled() && this._hasContent()) {
+                    this.$().addClass('uteMDd-active');
+                    this.$('picker').css('z-index', Popup.getNextZIndex());
+                    jQuery(document).on('click', jQuery.proxy(this._autoClose, this));
+                }
+            }
         };
 
         CustomControl.prototype._autoClose = function (oEvent) {
             jQuery(document).off('click', this._autoClose);
             this.$().removeClass('uteMDd-active');
+        };
+
+        CustomControl.prototype.setEnabled = function (bEnabled) {
+            bEnabled = !!bEnabled;
+
+            if (bEnabled) {
+                this.data('disabled', null);
+            } else {
+                this.data('disabled', 'disabled', true);
+            }
+
+            this.setProperty('enabled', bEnabled);
+            return this;
         };
 
         CustomControl.prototype.setSelectedKey = function (sKey) {
@@ -95,6 +113,11 @@ sap.ui.define(
                     selectedKey: this.getSelectedKey()
                 });
             }
+        };
+
+        CustomControl.prototype._hasContent = function () {
+            var aContent = this.getContent() || [];
+            return aContent.length > 0;
         };
 
         CustomControl.prototype._syncHeaderContent = function () {

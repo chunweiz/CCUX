@@ -2,9 +2,7 @@
 /*jslint nomen:true*/
 
 sap.ui.define(
-    [
-        'sap/ui/core/Popup'
-    ],
+    [],
 
     function (Popup) {
         'use strict';
@@ -69,11 +67,10 @@ sap.ui.define(
 
             oRm.write('<div');
 
+            oRm.writeAttribute('id', oCustomControl.getId() + '-picker');
+
             oRm.addClass('uteMDd-picker');
             oRm.writeClasses();
-
-            oRm.addStyle('z-index', Popup.getNextZIndex());
-            oRm.writeStyles();
 
             oRm.write('>');
 
