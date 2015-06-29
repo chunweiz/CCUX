@@ -42,12 +42,17 @@
                                 <ute:tag elem="div">
                                     <utmain:Label text="{comp-i18n-dashboard>nrgDashboard-cusDataPrePD-l-div-REFER_TO}:" labelFor="referrer"
                                        class="nrgDashboard-cusDataBil-referer-lbl"/>
-                                    <select id="referer" class="nrgDashboard-cusDataBil-referer-dropdown">
+                                    <utmain:Dropdown id="referer" design="Default" class="nrgDashboard-cusDataBil-referer-dropdown" content="{data>/dropdown}" selectedKey="{data>/selectedKey}" select=".onSelected">
+                                        <utmain:DropdownItem key="{data>key}">
+                                           <ute:Tag text="{data>value}" />
+                                        </utmain:DropdownItem>
+                                    </utmain:Dropdown>
+                                    <!--select id="referer" class="nrgDashboard-cusDataBil-referer-dropdown">
                                         <option value="checkbook1">Checkbook</option>
                                         <option value="checkbook2">Checkbook</option>
                                         <option value="checkbook3">Checkbook</option>
                                         <option value="checkbook4">Checkbook</option>
-                                    </select>
+                                    </select-->
                                 </ute:tag>
 
                                 <ute:Tag class="nrgDashboard-cusDataBil-date">

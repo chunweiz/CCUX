@@ -14,6 +14,20 @@ sap.ui.define(
         var CustomController = Controller.extend('nrg.module.dashboard.view.CustomerDataBillingInfo');
 
         CustomController.prototype.onInit = function () {
+            var oModel;
+
+            oModel = new JSONModel({
+                selectedKey: 'key003',
+                dropdown: [
+                    { key: 'key001', value: 'value001' },
+                    { key: 'key002', value: 'value002' },
+                    { key: 'key003', value: 'Checkbook' },
+                    { key: 'key004', value: 'value004' },
+                    { key: 'key005', value: 'value005' }
+                ]
+            });
+
+            this.getView().setModel(oModel, 'data');
         };
 
         CustomController.prototype.onBeforeRendering = function () {

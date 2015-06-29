@@ -33,24 +33,11 @@
 
                                 <utmain:Label text="{comp-i18n-dashboard>nrgDashboard-cusDataPrePD-l-div-REFER_TO}:" labelFor="referrer"
                                    class="nrgDashboard-cusDataBil-referer-lbl"/>
-                                <!--utmain:Dropdown design="Plain" class="nrgDashboard-cusDataBil-dropdown" content="{checkBook>/dropdown}" selectedKey="{checkBook>/selectedKey}" select=".oncheckbookSelected">
-                                    <utmain:DropdownItem key="{checkBook>key}">
-                                        <uc:Tag text="{checkBook>value}" />
+                                <utmain:Dropdown id="referer" design="Default" class="nrgDashboard-cusDataBil-referer-dropdown" content="{data>/dropdown}" selectedKey="{data>/selectedKey}" select=".onSelected">
+                                    <utmain:DropdownItem key="{data>key}">
+                                       <ute:Tag text="{data>value}" />
                                     </utmain:DropdownItem>
-                                </utmain:Dropdown-->
-                                <select id="referer" class="nrgDashboard-cusDataBil-referer-dropdown">
-                                    <option value="checkbook1">Checkbook</option>
-                                    <option value="checkbook2">Checkbook</option>
-                                    <option value="checkbook3">Checkbook</option>
-                                    <option value="checkbook4">Checkbook</option>
-                                </select>
-                                <!--ute:Tag id="referer" elem="Select"
-                                         class="nrgDashboard-cusDataBil-referer-dropdown">
-                                </ute:Tag-->
-                                <!--ute:Dropdown id="referrer" arrowcolor="Blue" arrowType="Solid"
-                                              enabled="true" background="Transparent" border="None"
-                                              width="100px"
-                                              class="nrgDashboard-cusDataBil-referer-dropdown"/-->
+                                </utmain:Dropdown>
 
                                 <ute:Tag class="nrgDashboard-cusDataPrePD-date">
                                     <ute:Tag elem="div" class="nrgDashboard-cusDataPrePD-date-label" text="{comp-i18n-dashboard>nrgDashboard-cusDataPrePD-l-div-BILLING_DATE}" />
