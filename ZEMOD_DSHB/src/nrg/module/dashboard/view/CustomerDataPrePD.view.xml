@@ -6,7 +6,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:c="sap.ui.commons"
     xmlns:l="sap.ui.commons.layout"
-    controllerName="nrg.module.dashboard.view.CallerNoIDEnrollment">
+    controllerName="nrg.module.dashboard.view.CustomerDataPrePD">
 
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-cusDataPrePD">
         <ute:Tag elem="span" class="nrgDashboard-cusDataBil-scrnTitle" text="{comp-i18n-dashboard>nrgDashboard-cusDataPrePD-l-div-ACCOUNT_BALANCE}" />
@@ -33,6 +33,11 @@
 
                                 <utmain:Label text="{comp-i18n-dashboard>nrgDashboard-cusDataPrePD-l-div-REFER_TO}:" labelFor="referrer"
                                    class="nrgDashboard-cusDataBil-referer-lbl"/>
+                                <!--utmain:Dropdown design="Plain" class="nrgDashboard-cusDataBil-dropdown" content="{checkBook>/dropdown}" selectedKey="{checkBook>/selectedKey}" select=".oncheckbookSelected">
+                                    <utmain:DropdownItem key="{checkBook>key}">
+                                        <uc:Tag text="{checkBook>value}" />
+                                    </utmain:DropdownItem>
+                                </utmain:Dropdown-->
                                 <select id="referer" class="nrgDashboard-cusDataBil-referer-dropdown">
                                     <option value="checkbook1">Checkbook</option>
                                     <option value="checkbook2">Checkbook</option>

@@ -7,7 +7,7 @@
     xmlns:c="sap.ui.commons"
     xmlns:l="sap.ui.commons.layout"
     xmlns:core="sap.ui.core"
-    controllerName="nrg.module.dashboard.view.CallerNoIDEnrollment">
+    controllerName="nrg.module.dashboard.view.CustomerDataBillingInfo">
 
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-cusDataBillingInfo">
         <ute:Tag elem="span" class="nrgDashboard-cusDataBil-scrnTitle" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-l-div-CURRENT_AMNT_DUE}" />
