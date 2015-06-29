@@ -163,22 +163,25 @@
                             </ute:ToggleButton>
                             <ute:Tag class="nrgDashboard-cusDataVerify-mRdBtn">
                                 <utmain:Dropdown
+                                    selectedKey="{oAllContractsofBuag>/selectedKey}"
                                     content="{oAllContractsofBuag>/}"
                                     select="._onContractSelect" >
                                     <utmain:DropdownItem
                                         key="{oAllContractsofBuag>iIndex}">
                                         <ute:Tag elem="span"
-                                            text="{oAllContractsofBuag>HouseNum1} {oAllContractsofBuag>Street}, {oAllContractsofBuag>City1}"/>
+                                            text="{oAllContractsofBuag>DisplayName}"/>
                                     </utmain:DropdownItem>
                                 </utmain:Dropdown>
-                                <c:DropdownBox
-                                    items="{oAllContractsofBuag>/}" change="._onContractChange">
-                                    <c:items>
-                                        <core:ListItem
-                                            key="{oAllContractsofBuag>iIndex}"
-                                            text="{oAllContractsofBuag>HouseNum1} {oAllContractsofBuag>Street}, {oAllContractsofBuag>City1}"/>
-                                    </c:items>
-                                </c:DropdownBox>
+                                <utmain:Dropdown
+                                    selectedKey="{oAllBuags>/selectedKey}"
+                                    content="{oAllBuags>/}"
+                                    select="._onBuagSelect" >
+                                    <utmain:DropdownItem
+                                        key="{oAllBuags>iIndex}">
+                                        <ute:Tag elem="span"
+                                            text="{oAllBuags>DisplayName}"/>
+                                    </utmain:DropdownItem>
+                                </utmain:Dropdown>
                                 <c:DropdownBox
                                     items="{oAllBuags>/}" change="._onBuagChange">
                                     <c:items>

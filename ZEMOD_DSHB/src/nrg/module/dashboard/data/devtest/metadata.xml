@@ -22,12 +22,13 @@
 <Property Name="City" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="City of BP standard Address" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
 <Property Name="State" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="State of BP standard Address" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
 <Property Name="ZipCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="ZipCode of BP standard Address" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-<NavigationProperty Name="Buags" Relationship="ZE_CCUX_SRV.BpSearch_Buags" FromRole="FromRole_BpSearch_Buags" ToRole="ToRole_BpSearch_Buags"/>
-<NavigationProperty Name="Contract" Relationship="ZE_CCUX_SRV.BpSearch_Contracts" FromRole="FromRole_BpSearch_Contracts" ToRole="ToRole_BpSearch_Contracts"/>
-<NavigationProperty Name="BpAlert" Relationship="ZE_CCUX_SRV.BpSearch_BpAlert" FromRole="FromRole_BpSearch_BpAlert" ToRole="ToRole_BpSearch_BpAlert"/>
-<NavigationProperty Name="Partner" Relationship="ZE_CCUX_SRV.BpSearch_Partner" FromRole="FromRole_BpSearch_Partner" ToRole="ToRole_BpSearch_Partner"/>
-<NavigationProperty Name="BuagAlerts" Relationship="ZE_CCUX_SRV.BpSearch_BuagAlerts" FromRole="FromRole_BpSearch_BuagAlerts" ToRole="ToRole_BpSearch_BuagAlerts"/>
+<Property Name="TelePhone" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Telephone Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <NavigationProperty Name="BuagMsgAlrets" Relationship="ZE_CCUX_SRV.BpSearch_BuagMsgAlerts" FromRole="FromRole_BpSearch_BuagMsgAlerts" ToRole="ToRole_BpSearch_BuagMsgAlerts"/>
+<NavigationProperty Name="BuagAlerts" Relationship="ZE_CCUX_SRV.BpSearch_BuagAlerts" FromRole="FromRole_BpSearch_BuagAlerts" ToRole="ToRole_BpSearch_BuagAlerts"/>
+<NavigationProperty Name="Partner" Relationship="ZE_CCUX_SRV.BpSearch_Partner" FromRole="FromRole_BpSearch_Partner" ToRole="ToRole_BpSearch_Partner"/>
+<NavigationProperty Name="BpAlert" Relationship="ZE_CCUX_SRV.BpSearch_BpAlert" FromRole="FromRole_BpSearch_BpAlert" ToRole="ToRole_BpSearch_BpAlert"/>
+<NavigationProperty Name="Contract" Relationship="ZE_CCUX_SRV.BpSearch_Contracts" FromRole="FromRole_BpSearch_Contracts" ToRole="ToRole_BpSearch_Contracts"/>
+<NavigationProperty Name="Buags" Relationship="ZE_CCUX_SRV.BpSearch_Buags" FromRole="FromRole_BpSearch_Buags" ToRole="ToRole_BpSearch_Buags"/>
 </EntityType>
 <EntityType Name="Buag" sap:label="ContractAccount" sap:content-version="1">
 <Key>
@@ -47,16 +48,17 @@
 <Property Name="RHSColor" Type="Edm.String" Nullable="false" MaxLength="5" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="DisplayName" Type="Edm.String" Nullable="false" MaxLength="100" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="CheckDigit" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<NavigationProperty Name="Notifycations" Relationship="ZE_CCUX_SRV.Buag_BuagAlerts" FromRole="FromRole_Buag_BuagAlerts" ToRole="ToRole_Buag_BuagAlerts"/>
-<NavigationProperty Name="BuagAddrDetail" Relationship="ZE_CCUX_SRV.Buag_BuagAddrDetail" FromRole="FromRole_Buag_BuagAddrDetail" ToRole="ToRole_Buag_BuagAddrDetail"/>
-<NavigationProperty Name="BuagDetailSet" Relationship="ZE_CCUX_SRV.Buag_BuagDetails" FromRole="FromRole_Buag_BuagDetails" ToRole="ToRole_Buag_BuagDetails"/>
-<NavigationProperty Name="Payment" Relationship="ZE_CCUX_SRV.Buag_Payment" FromRole="FromRole_Buag_Payment" ToRole="ToRole_Buag_Payment"/>
-<NavigationProperty Name="BillingInfo" Relationship="ZE_CCUX_SRV.Buag_BillingInfo" FromRole="FromRole_Buag_BillingInfo" ToRole="ToRole_Buag_BillingInfo"/>
 <NavigationProperty Name="BuagMsgAlrets" Relationship="ZE_CCUX_SRV.Buag_BuagMsgAlerts" FromRole="FromRole_Buag_BuagMsgAlerts" ToRole="ToRole_Buag_BuagMsgAlerts"/>
 <NavigationProperty Name="BuagMailingAddrSet" Relationship="ZE_CCUX_SRV.Buag_BuagMailingAddr" FromRole="FromRole_Buag_BuagMailingAddr" ToRole="ToRole_Buag_BuagMailingAddr"/>
 <NavigationProperty Name="BpAssigns" Relationship="ZE_CCUX_SRV.Buag_BpAssigns" FromRole="FromRole_Buag_BpAssigns" ToRole="ToRole_Buag_BpAssigns"/>
 <NavigationProperty Name="Contracts" Relationship="ZE_CCUX_SRV.Buag_Contracts" FromRole="FromRole_Buag_Contracts" ToRole="ToRole_Buag_Contracts"/>
 <NavigationProperty Name="Partner" Relationship="ZE_CCUX_SRV.Partner_Buags" FromRole="ToRole_Partner_Buags" ToRole="FromRole_Partner_Buags"/>
+<NavigationProperty Name="BillingInfo" Relationship="ZE_CCUX_SRV.Buag_BillingInfo" FromRole="FromRole_Buag_BillingInfo" ToRole="ToRole_Buag_BillingInfo"/>
+<NavigationProperty Name="Payment" Relationship="ZE_CCUX_SRV.Buag_Payment" FromRole="FromRole_Buag_Payment" ToRole="ToRole_Buag_Payment"/>
+<NavigationProperty Name="BuagDetailSet" Relationship="ZE_CCUX_SRV.Buag_BuagDetails" FromRole="FromRole_Buag_BuagDetails" ToRole="ToRole_Buag_BuagDetails"/>
+<NavigationProperty Name="BuagAddrDetail" Relationship="ZE_CCUX_SRV.Buag_BuagAddrDetail" FromRole="FromRole_Buag_BuagAddrDetail" ToRole="ToRole_Buag_BuagAddrDetail"/>
+<NavigationProperty Name="Notifycations" Relationship="ZE_CCUX_SRV.Buag_BuagAlerts" FromRole="FromRole_Buag_BuagAlerts" ToRole="ToRole_Buag_BuagAlerts"/>
+<NavigationProperty Name="ContactLogs" Relationship="ZE_CCUX_SRV.Buag_ContactLogs" FromRole="FromRole_Buag_ContactLogs" ToRole="ToRole_Buag_ContactLogs"/>
 </EntityType>
 <EntityType Name="Offer" sap:label="Campaigns" sap:content-version="1">
 <Key>
@@ -210,6 +212,68 @@
 <Property Name="BankKey" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Bank Key" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="BankAccNum" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Bank Acc Number" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 </EntityType>
+<EntityType Name="BankDraftPost" sap:content-version="1">
+<Key>
+<PropertyRef Name="PartnerID"/>
+<PropertyRef Name="ContractAccountID"/>
+</Key>
+<Property Name="PartnerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+<Property Name="ContractAccountID" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+<Property Name="BankKey" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Bank Key" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="BankAccNum" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Bank Acc Number" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="PaymentAmount" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="PaymentDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Time Stamp" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+</EntityType>
+<EntityType Name="ContactLog" sap:content-version="1">
+<Key>
+<PropertyRef Name="PartnerID"/>
+<PropertyRef Name="ContractAccountID"/>
+</Key>
+<Property Name="PartnerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="ContractAccountID" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Date" Type="Edm.DateTime" Nullable="false" Precision="8" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+<Property Name="Channel" Type="Edm.String" Nullable="false" MaxLength="20" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+<Property Name="Activity" Type="Edm.String" Nullable="false" MaxLength="50" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="AgentName" Type="Edm.String" Nullable="false" MaxLength="80" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+<Property Name="Notes" Type="Edm.String" Nullable="false" MaxLength="132" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="StartDate" Type="Edm.DateTime" Precision="8" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+<Property Name="EndDate" Type="Edm.DateTime" Precision="8" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+<NavigationProperty Name="Partner" Relationship="ZE_CCUX_SRV.Partner_ContactLogs" FromRole="ToRole_Partner_ContactLogs" ToRole="FromRole_Partner_ContactLogs"/>
+<NavigationProperty Name="Buag" Relationship="ZE_CCUX_SRV.Buag_ContactLogs" FromRole="ToRole_Buag_ContactLogs" ToRole="FromRole_Buag_ContactLogs"/>
+</EntityType>
+<EntityType Name="CreditCardPendingList" sap:content-version="1">
+<Key>
+<PropertyRef Name="PartnerID"/>
+<PropertyRef Name="ContractAccountID"/>
+</Key>
+<Property Name="PartnerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+<Property Name="ContractAccountID" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+<Property Name="CardID" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="ScheduledDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="CardNumber" Type="Edm.String" Nullable="false" MaxLength="25" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="CardExpDate" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="ZipCode" Type="Edm.String" Nullable="false" MaxLength="5" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="PaymentAmount" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="CurrentStatus" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="AuthType" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+</EntityType>
+<EntityType Name="BankDraftPendingList" sap:content-version="1">
+<Key>
+<PropertyRef Name="PartnerID"/>
+<PropertyRef Name="ContractAccountID"/>
+</Key>
+<Property Name="PartnerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+<Property Name="ContractAccountID" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+<Property Name="TrackingId" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="ScheduledDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="BankKey" Type="Edm.String" Nullable="false" MaxLength="15" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="BankAccNum" Type="Edm.String" Nullable="false" MaxLength="18" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="PaymentAmount" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="CurrentStatus" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Opbel" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Number of Contract Accts Rec. & Payable Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+</EntityType>
 <EntityType Name="Partner" sap:label="BP details" sap:content-version="1">
 <Key>
 <PropertyRef Name="PartnerID"/>
@@ -242,18 +306,19 @@
 <Property Name="EveningPhone" Type="Edm.String" Nullable="false" MaxLength="30" sap:sortable="false" sap:filterable="false"/>
 <Property Name="EveningPhoneExt" Type="Edm.String" Nullable="false" MaxLength="10" sap:sortable="false" sap:filterable="false"/>
 <Property Name="EveningPhoneType" Type="Edm.String" Nullable="false" MaxLength="20" sap:sortable="false" sap:filterable="false"/>
+<NavigationProperty Name="ContactLogs" Relationship="ZE_CCUX_SRV.Partner_ContactLogs" FromRole="FromRole_Partner_ContactLogs" ToRole="ToRole_Partner_ContactLogs"/>
+<NavigationProperty Name="Notifycations" Relationship="ZE_CCUX_SRV.Partner_BuagAlerts" FromRole="FromRole_Partner_BuagAlerts" ToRole="ToRole_Partner_BuagAlerts"/>
+<NavigationProperty Name="BpPersonal" Relationship="ZE_CCUX_SRV.Partner_BpPersonal" FromRole="FromRole_Partner_BpPersonal" ToRole="ToRole_Partner_BpPersonal"/>
+<NavigationProperty Name="Contracts" Relationship="ZE_CCUX_SRV.Partner_Contracts" FromRole="FromRole_Partner_Contracts" ToRole="ToRole_Partner_Contracts"/>
+<NavigationProperty Name="BuagMsgAlrets" Relationship="ZE_CCUX_SRV.Partner_BuagMsgAlerts" FromRole="FromRole_Partner_BuagMsgAlerts" ToRole="ToRole_Partner_BuagMsgAlerts"/>
+<NavigationProperty Name="BpAlert" Relationship="ZE_CCUX_SRV.Partner_BpAlert" FromRole="FromRole_Partner_BpAlert" ToRole="ToRole_Partner_BpAlert"/>
+<NavigationProperty Name="BuagMailingAddrSet" Relationship="ZE_CCUX_SRV.Partner_BuagMailingAddrs" FromRole="FromRole_Partner_BuagMailingAddrs" ToRole="ToRole_Partner_BuagMailingAddrs"/>
+<NavigationProperty Name="BpMarkPreferSet" Relationship="ZE_CCUX_SRV.Partner_BpMarkPrefer" FromRole="FromRole_Partner_BpMarkPrefer" ToRole="ToRole_Partner_BpMarkPrefer"/>
+<NavigationProperty Name="BpContact" Relationship="ZE_CCUX_SRV.Partner_BpContact" FromRole="FromRole_Partner_BpContact" ToRole="ToRole_Partner_BpContact"/>
+<NavigationProperty Name="BpAddress" Relationship="ZE_CCUX_SRV.Partner_BpAddress" FromRole="FromRole_Partner_BpAddress" ToRole="ToRole_Partner_BpAddress"/>
 <NavigationProperty Name="Buags" Relationship="ZE_CCUX_SRV.Partner_Buags" FromRole="FromRole_Partner_Buags" ToRole="ToRole_Partner_Buags"/>
 <NavigationProperty Name="BpSegs" Relationship="ZE_CCUX_SRV.Partner_BpSegs" FromRole="FromRole_Partner_BpSegs" ToRole="ToRole_Partner_BpSegs"/>
 <NavigationProperty Name="BpTitle" Relationship="ZE_CCUX_SRV.Partner_BpTitle" FromRole="FromRole_Partner_BpTitle" ToRole="ToRole_Partner_BpTitle"/>
-<NavigationProperty Name="BpAddress" Relationship="ZE_CCUX_SRV.Partner_BpAddress" FromRole="FromRole_Partner_BpAddress" ToRole="ToRole_Partner_BpAddress"/>
-<NavigationProperty Name="BpContact" Relationship="ZE_CCUX_SRV.Partner_BpContact" FromRole="FromRole_Partner_BpContact" ToRole="ToRole_Partner_BpContact"/>
-<NavigationProperty Name="BpMarkPreferSet" Relationship="ZE_CCUX_SRV.Partner_BpMarkPrefer" FromRole="FromRole_Partner_BpMarkPrefer" ToRole="ToRole_Partner_BpMarkPrefer"/>
-<NavigationProperty Name="BuagMailingAddrSet" Relationship="ZE_CCUX_SRV.Partner_BuagMailingAddrs" FromRole="FromRole_Partner_BuagMailingAddrs" ToRole="ToRole_Partner_BuagMailingAddrs"/>
-<NavigationProperty Name="BpAlert" Relationship="ZE_CCUX_SRV.Partner_BpAlert" FromRole="FromRole_Partner_BpAlert" ToRole="ToRole_Partner_BpAlert"/>
-<NavigationProperty Name="BuagMsgAlrets" Relationship="ZE_CCUX_SRV.Partner_BuagMsgAlerts" FromRole="FromRole_Partner_BuagMsgAlerts" ToRole="ToRole_Partner_BuagMsgAlerts"/>
-<NavigationProperty Name="Contracts" Relationship="ZE_CCUX_SRV.Partner_Contracts" FromRole="FromRole_Partner_Contracts" ToRole="ToRole_Partner_Contracts"/>
-<NavigationProperty Name="BpPersonal" Relationship="ZE_CCUX_SRV.Partner_BpPersonal" FromRole="FromRole_Partner_BpPersonal" ToRole="ToRole_Partner_BpPersonal"/>
-<NavigationProperty Name="Notifycations" Relationship="ZE_CCUX_SRV.Partner_BuagAlerts" FromRole="FromRole_Partner_BuagAlerts" ToRole="ToRole_Partner_BuagAlerts"/>
 </EntityType>
 <EntityType Name="Contract" sap:label="Contract" sap:content-version="1">
 <Key>
@@ -282,11 +347,11 @@
 <Property Name="Region" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="State" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="PostCode1" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Postal Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="DisplayName" Type="Edm.String" Nullable="false" MaxLength="100" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<NavigationProperty Name="Buag" Relationship="ZE_CCUX_SRV.Buag_Contracts" FromRole="ToRole_Buag_Contracts" ToRole="FromRole_Buag_Contracts"/>
-<NavigationProperty Name="Campaigns" Relationship="ZE_CCUX_SRV.Contract_Campaign" FromRole="FromRole_Contract_Campaign" ToRole="ToRole_Contract_Campaign"/>
-<NavigationProperty Name="StatusViews" Relationship="ZE_CCUX_SRV.Contract_StatusViews" FromRole="FromRole_Contract_StatusViews" ToRole="ToRole_Contract_StatusViews"/>
-<NavigationProperty Name="Partner" Relationship="ZE_CCUX_SRV.Partner_Contracts" FromRole="ToRole_Partner_Contracts" ToRole="FromRole_Partner_Contracts"/>
 <NavigationProperty Name="Premise" Relationship="ZE_CCUX_SRV.Premise_Contracts" FromRole="ToRole_Premise_Contracts" ToRole="FromRole_Premise_Contracts"/>
+<NavigationProperty Name="Partner" Relationship="ZE_CCUX_SRV.Partner_Contracts" FromRole="ToRole_Partner_Contracts" ToRole="FromRole_Partner_Contracts"/>
+<NavigationProperty Name="StatusViews" Relationship="ZE_CCUX_SRV.Contract_StatusViews" FromRole="FromRole_Contract_StatusViews" ToRole="ToRole_Contract_StatusViews"/>
+<NavigationProperty Name="Campaigns" Relationship="ZE_CCUX_SRV.Contract_Campaign" FromRole="FromRole_Contract_Campaign" ToRole="ToRole_Contract_Campaign"/>
+<NavigationProperty Name="Buag" Relationship="ZE_CCUX_SRV.Buag_Contracts" FromRole="ToRole_Buag_Contracts" ToRole="FromRole_Buag_Contracts"/>
 </EntityType>
 <EntityType Name="Premise" sap:label="Premise" sap:content-version="1">
 <Key>
@@ -296,8 +361,8 @@
 <Property Name="PremiseID" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Premise ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="PremiseType" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Premise Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Description of Premise" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<NavigationProperty Name="Installations" Relationship="ZE_CCUX_SRV.Premise_Installations" FromRole="FromRole_Premise_Installations" ToRole="ToRole_Premise_Installations"/>
 <NavigationProperty Name="Contracts" Relationship="ZE_CCUX_SRV.Premise_Contracts" FromRole="FromRole_Premise_Contracts" ToRole="ToRole_Premise_Contracts"/>
+<NavigationProperty Name="Installations" Relationship="ZE_CCUX_SRV.Premise_Installations" FromRole="FromRole_Premise_Installations" ToRole="ToRole_Premise_Installations"/>
 </EntityType>
 <EntityType Name="Installation" sap:label="Installation" sap:content-version="1">
 <Key>
@@ -342,8 +407,8 @@
 <Property Name="AverageUsage" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="CurrentUsage" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Tier" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<NavigationProperty Name="Contract" Relationship="ZE_CCUX_SRV.Contract_Campaign" FromRole="ToRole_Contract_Campaign" ToRole="FromRole_Contract_Campaign"/>
 <NavigationProperty Name="EFLs" Relationship="ZE_CCUX_SRV.Campaign_EFL" FromRole="FromRole_Campaign_EFL" ToRole="ToRole_Campaign_EFL"/>
+<NavigationProperty Name="Contract" Relationship="ZE_CCUX_SRV.Contract_Campaign" FromRole="ToRole_Contract_Campaign" ToRole="FromRole_Contract_Campaign"/>
 </EntityType>
 <EntityType Name="BpTitle" sap:content-version="1">
 <Key>
@@ -419,8 +484,8 @@
 <Property Name="PartnerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="ContractAccountID" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="FixedAddressID" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<NavigationProperty Name="BuagAddrDetail" Relationship="ZE_CCUX_SRV.BuagDetail_BuagAddrDetail" FromRole="FromRole_BuagDetail_BuagAddrDetail" ToRole="ToRole_BuagDetail_BuagAddrDetail"/>
 <NavigationProperty Name="Buag" Relationship="ZE_CCUX_SRV.Buag_BuagDetails" FromRole="ToRole_Buag_BuagDetails" ToRole="FromRole_Buag_BuagDetails"/>
+<NavigationProperty Name="BuagAddrDetail" Relationship="ZE_CCUX_SRV.BuagDetail_BuagAddrDetail" FromRole="FromRole_BuagDetail_BuagAddrDetail" ToRole="ToRole_BuagDetail_BuagAddrDetail"/>
 </EntityType>
 <EntityType Name="BuagAddrDetail" sap:content-version="1">
 <Key>
@@ -470,17 +535,23 @@
 <Property Name="DisplayText" Type="Edm.String" Nullable="false" MaxLength="100" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <NavigationProperty Name="Contract" Relationship="ZE_CCUX_SRV.Contract_StatusViews" FromRole="ToRole_Contract_StatusViews" ToRole="FromRole_Contract_StatusViews"/>
 </EntityType>
-<EntityType Name="BankDraftPost" sap:content-version="1">
+<EntityType Name="CreditCardPost" sap:content-version="1">
 <Key>
 <PropertyRef Name="PartnerID"/>
 <PropertyRef Name="ContractAccountID"/>
 </Key>
 <Property Name="PartnerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
 <Property Name="ContractAccountID" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-<Property Name="BankKey" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Bank Key" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="BankAccNum" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Bank Acc Number" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="PaymentAmount" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="PaymentDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Time Stamp" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="PaymentAmount" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="CardType" Type="Edm.String" Nullable="false" MaxLength="4" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="CardNumber" Type="Edm.String" Nullable="false" MaxLength="25" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="NameOnCard" Type="Edm.String" Nullable="false" MaxLength="40" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="CardValidFrom" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Time Stamp" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="CardValidTo" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Time Stamp" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="CardExpDate" Type="Edm.String" Nullable="false" MaxLength="4" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="ZipCode" Type="Edm.String" Nullable="false" MaxLength="5" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Cvval" Type="Edm.String" Nullable="false" MaxLength="6" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 </EntityType>
 <ComplexType Name="LongText">
 <Property Name="TdFormat" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -683,6 +754,18 @@
 </Dependent>
 </ReferentialConstraint>
 </Association>
+<Association Name="Partner_ContactLogs" sap:content-version="1">
+<End Type="ZE_CCUX_SRV.Partner" Multiplicity="1" Role="FromRole_Partner_ContactLogs"/>
+<End Type="ZE_CCUX_SRV.ContactLog" Multiplicity="*" Role="ToRole_Partner_ContactLogs"/>
+<ReferentialConstraint>
+<Principal Role="FromRole_Partner_ContactLogs">
+<PropertyRef Name="PartnerID"/>
+</Principal>
+<Dependent Role="ToRole_Partner_ContactLogs">
+<PropertyRef Name="PartnerID"/>
+</Dependent>
+</ReferentialConstraint>
+</Association>
 <Association Name="Buag_Contracts" sap:content-version="1">
 <End Type="ZE_CCUX_SRV.Buag" Multiplicity="1" Role="FromRole_Buag_Contracts"/>
 <End Type="ZE_CCUX_SRV.Contract" Multiplicity="*" Role="ToRole_Buag_Contracts"/>
@@ -787,6 +870,18 @@
 <PropertyRef Name="ContractAccountID"/>
 </Principal>
 <Dependent Role="ToRole_Buag_BuagAlerts">
+<PropertyRef Name="ContractAccountID"/>
+</Dependent>
+</ReferentialConstraint>
+</Association>
+<Association Name="Buag_ContactLogs" sap:content-version="1">
+<End Type="ZE_CCUX_SRV.Buag" Multiplicity="1" Role="FromRole_Buag_ContactLogs"/>
+<End Type="ZE_CCUX_SRV.ContactLog" Multiplicity="*" Role="ToRole_Buag_ContactLogs"/>
+<ReferentialConstraint>
+<Principal Role="FromRole_Buag_ContactLogs">
+<PropertyRef Name="ContractAccountID"/>
+</Principal>
+<Dependent Role="ToRole_Buag_ContactLogs">
 <PropertyRef Name="ContractAccountID"/>
 </Dependent>
 </ReferentialConstraint>
@@ -940,6 +1035,10 @@
 <EntitySet Name="CreditCardSet" EntityType="ZE_CCUX_SRV.CreditCard" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
 <EntitySet Name="BillingInfos" EntityType="ZE_CCUX_SRV.BillingInfo" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
 <EntitySet Name="BankDraftSet" EntityType="ZE_CCUX_SRV.BankDraft" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+<EntitySet Name="BankDraftPostSet" EntityType="ZE_CCUX_SRV.BankDraftPost" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+<EntitySet Name="ContactLogs" EntityType="ZE_CCUX_SRV.ContactLog" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+<EntitySet Name="CreditCardPendingListS" EntityType="ZE_CCUX_SRV.CreditCardPendingList" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+<EntitySet Name="BankDraftPendingListS" EntityType="ZE_CCUX_SRV.BankDraftPendingList" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
 <EntitySet Name="Partners" EntityType="ZE_CCUX_SRV.Partner" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
 <EntitySet Name="Contracts" EntityType="ZE_CCUX_SRV.Contract" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
 <EntitySet Name="Premises" EntityType="ZE_CCUX_SRV.Premise" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
@@ -955,7 +1054,7 @@
 <EntitySet Name="BuagAddressDetails" EntityType="ZE_CCUX_SRV.BuagAddrDetail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
 <EntitySet Name="BuagMsgAlrets" EntityType="ZE_CCUX_SRV.BuagMsgAlert" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
 <EntitySet Name="StatusViews" EntityType="ZE_CCUX_SRV.StatusView" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
-<EntitySet Name="BankDraftPostSet" EntityType="ZE_CCUX_SRV.BankDraftPost" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+<EntitySet Name="CreditCardPostSet" EntityType="ZE_CCUX_SRV.CreditCardPost" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
 <EntitySet Name="BpSearchs" EntityType="ZE_CCUX_SRV.BpSearch" sap:label="BpSearch entity set" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:pageable="false" sap:addressable="false" sap:requires-filter="true" sap:content-version="1"/>
 <AssociationSet Name="Buag_ContractsSet" Association="ZE_CCUX_SRV.Buag_Contracts" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
 <End EntitySet="Buags" Role="FromRole_Buag_Contracts"/>
@@ -988,6 +1087,10 @@
 <AssociationSet Name="Partner_ContractsSet" Association="ZE_CCUX_SRV.Partner_Contracts" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
 <End EntitySet="Partners" Role="FromRole_Partner_Contracts"/>
 <End EntitySet="Contracts" Role="ToRole_Partner_Contracts"/>
+</AssociationSet>
+<AssociationSet Name="Buag_ContactLogsSet" Association="ZE_CCUX_SRV.Buag_ContactLogs" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+<End EntitySet="Buags" Role="FromRole_Buag_ContactLogs"/>
+<End EntitySet="ContactLogs" Role="ToRole_Buag_ContactLogs"/>
 </AssociationSet>
 <AssociationSet Name="Partner_BuagAlertsSet" Association="ZE_CCUX_SRV.Partner_BuagAlerts" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
 <End EntitySet="Partners" Role="FromRole_Partner_BuagAlerts"/>
@@ -1052,6 +1155,10 @@
 <AssociationSet Name="Buag_BuagMailingAddrSet" Association="ZE_CCUX_SRV.Buag_BuagMailingAddr" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
 <End EntitySet="Buags" Role="FromRole_Buag_BuagMailingAddr"/>
 <End EntitySet="BuagMailingAddrs" Role="ToRole_Buag_BuagMailingAddr"/>
+</AssociationSet>
+<AssociationSet Name="Partner_ContactLogsSet" Association="ZE_CCUX_SRV.Partner_ContactLogs" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+<End EntitySet="Partners" Role="FromRole_Partner_ContactLogs"/>
+<End EntitySet="ContactLogs" Role="ToRole_Partner_ContactLogs"/>
 </AssociationSet>
 <AssociationSet Name="Partner_BpAlertSet" Association="ZE_CCUX_SRV.Partner_BpAlert" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
 <End EntitySet="Partners" Role="FromRole_Partner_BpAlert"/>
