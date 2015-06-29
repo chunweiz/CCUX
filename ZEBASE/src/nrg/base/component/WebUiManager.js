@@ -33,20 +33,30 @@ sap.ui.define(
         };
 
         Manager.prototype.postMessage = function (sEvent, oData) {
-            var oParent = window.parent;
+            var oParent, sMessage;
 
+            oParent = window.parent;
             if (!oParent || oParent === window) {
-                jQuery.sap.log.warn('This component is not embedded in any window');
+                jQuery.sap.log.warn('Unable to post message because this component is not embedded in any parent window');
                 return this;
             }
 
+            sMessage = JSON.stringify({
+                event: sEvent,
+                payload: oData
+            });
 
+            oParent.postMessage(sMessage, this._getDomain());
 
             return this;
         };
 
         Manager.prototype._fromWebUi = function (oEvent) {
 
+        };
+
+        Manager.prototype._getDomain = function () {
+            return window.location.protocol + '//' + window.location.host;
         };
 
         return Manager;
