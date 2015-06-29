@@ -42,36 +42,23 @@ sap.ui.define(
         CustomRenderer._renderHeaderContent = function (oRm, oCustomControl) {
             var oContent = oCustomControl.getAggregation('_headerContent');
 
-            oRm.write('<label');
+            oRm.write('<div');
             oRm.addClass('uteMDd-hdrContent');
             oRm.writeClasses();
-//            oRm.writeAttribute('for', oCustomControl.getId() + '-hdrExpander-intChk');
             oRm.write('>');
 
-            if(oContent) {
+            if (oContent) {
                 oRm.renderControl(oContent);
             }
 
-            oRm.write('</label>');
+            oRm.write('</div>');
         };
 
         CustomRenderer._renderHeaderExpander = function (oRm, oCustomControl) {
-            var oHdrExpander;
-
-            oHdrExpander = oCustomControl._getHeaderExpander();
-
             oRm.write('<div');
             oRm.addClass('uteMDd-hdrExpander');
-
-            if (oCustomControl.getDesign() !== ute.ui.main.DropdownDesign.None) {
-                oHdrExpander.addStyleClass('uteMDd-hdrExpanderDesign-' + oCustomControl.getDesign().toLowerCase());
-            }
-
             oRm.writeClasses();
             oRm.write('>');
-
-            oRm.renderControl(oHdrExpander);
-
             oRm.write('</div>');
         };
 
@@ -82,7 +69,7 @@ sap.ui.define(
 
             /*
             ** In case stacking order is messed up,
-            ** get the next z-index from sap.ui.core.Popup and add it as style here
+            ** call sap.ui.core.Popup.getNextZIndex() and the z-index value here as style
             */
             oRm.addClass('uteMDd-picker');
             oRm.writeClasses();

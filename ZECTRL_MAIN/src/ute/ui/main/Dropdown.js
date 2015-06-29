@@ -25,7 +25,6 @@ sap.ui.define(
                 aggregations: {
                     content: { type: 'ute.ui.main.DropdownItem', multiple: true, singularName: 'content' },
 
-                    _headerExpander: { type: 'ute.ui.main.Checkbox', multiple: false, visibility: 'hidden' },
                     _headerContent: { type: 'ute.ui.main.DropdownItem', multiple: false, visibility: 'hidden' }
                 },
 
@@ -41,38 +40,21 @@ sap.ui.define(
             }
         });
 
-        CustomControl.prototype._autoClose = function (oEvent) {
-            this.$().find('.uteMDd-picker').removeClass('uteMDd-picker-active');
-            jQuery(document).off('click', this._autoClose);
-            this._getHeaderExpander().setChecked(false);
-        };
+        CustomControl.prototype.onclick = function (oEvent) {
+            oEvent.stopPropagation();
 
-        CustomControl.prototype._getHeaderExpander = function () {
-            var oExpander = this.getAggregation('_headerExpander');
-
-            if (oExpander) {
-                return oExpander;
-            }
-
-            oExpander = new Checkbox(this.getId() + '-hdrExpander', {
-                design: ute.ui.main.CheckboxDesign.None,
-                checked: false
-            });
-
-            oExpander.attachSelect(this._onHeaderExpanderSelect, this);
-
-            this.setAggregation('_headerExpander', oExpander);
-            return oExpander;
-        };
-
-        CustomControl.prototype._onHeaderExpanderSelect = function (oControlEvent) {
-            if (oControlEvent.getSource().getChecked()) {
-                this.$().find('.uteMDd-picker').addClass('uteMDd-picker-active');
-                jQuery(document).on('click', jQuery.proxy(this._autoClose, this));
-            } else {
-                this.$().find('.uteMDd-picker').removeClass('uteMDd-picker-active');
+            if (this.$().hasClass('uteMDd-active')) {
                 jQuery(document).off('click', this._autoClose);
+            } else {
+                jQuery(document).on('click', jQuery.proxy(this._autoClose, this));
             }
+
+            this.$().toggleClass('uteMDd-active');
+        };
+
+        CustomControl.prototype._autoClose = function (oEvent) {
+            jQuery(document).off('click', this._autoClose);
+            this.$().removeClass('uteMDd-active');
         };
 
         CustomControl.prototype.setSelectedKey = function (sKey) {
@@ -122,7 +104,7 @@ sap.ui.define(
 
             aContent.forEach(function (oContent) {
                 if (oContent.getKey() === this.getSelectedKey()) {
-                    this.setAggregation('_headerContent', oContent);
+                    this.setAggregation('_headerContent', oContent.clone());
                 }
 
             }.bind(this));
