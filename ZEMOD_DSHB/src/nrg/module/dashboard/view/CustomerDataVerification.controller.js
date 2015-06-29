@@ -76,7 +76,7 @@ sap.ui.define(
                 oParameters;
 
             oParameters = {
-                urlParameters: {"$expand": "Buags"},
+                /*urlParameters: {"$expand": "Buags"},*/
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oDtaVrfyBP').setData(oData);
