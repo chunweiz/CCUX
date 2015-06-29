@@ -162,16 +162,15 @@
                                 press="._onToggleButtonPress">
                             </ute:ToggleButton>
                             <ute:Tag class="nrgDashboard-cusDataVerify-mRdBtn">
-                                <utmain:RadioButton group="service_mail_radio"/>
-                                <!--
                                 <utmain:Dropdown
-                                    content="{oAllContractsofBuag>/}" >
+                                    content="{oAllContractsofBuag>/}"
+                                    select="._onContractSelect" >
                                     <utmain:DropdownItem
                                         key="{oAllContractsofBuag>iIndex}">
                                         <ute:Tag elem="span"
                                             text="{oAllContractsofBuag>HouseNum1} {oAllContractsofBuag>Street}, {oAllContractsofBuag>City1}"/>
                                     </utmain:DropdownItem>
-                                </utmain:Dropdown>-->
+                                </utmain:Dropdown>
                                 <c:DropdownBox
                                     items="{oAllContractsofBuag>/}" change="._onContractChange">
                                     <c:items>
@@ -180,8 +179,6 @@
                                             text="{oAllContractsofBuag>HouseNum1} {oAllContractsofBuag>Street}, {oAllContractsofBuag>City1}"/>
                                     </c:items>
                                 </c:DropdownBox>
-                                <utmain:RadioButton group="service_mail_radio"
-                                    class="nrgDashboard-cusDataVerify-mRdBtn-rdBtn"/>
                                 <c:DropdownBox
                                     items="{oAllBuags>/}" change="._onBuagChange">
                                     <c:items>
