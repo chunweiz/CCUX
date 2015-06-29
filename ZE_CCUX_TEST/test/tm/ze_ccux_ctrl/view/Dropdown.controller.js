@@ -46,18 +46,6 @@ sap.ui.define(
             jQuery.sap.log.info(oControlEvent.getParameter('selectedKey'));
         };
 
-        CustomController.prototype.onBeforeRendering = function () {
-
-        };
-
-        CustomController.prototype.onAfterRendering = function () {
-
-        };
-
-        CustomController.onExit = function () {
-
-        };
-
         return CustomController;
     }
 );
