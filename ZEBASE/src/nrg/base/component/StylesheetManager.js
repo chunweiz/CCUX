@@ -49,10 +49,8 @@ sap.ui.define(
                 sStylesheetPath = [ sModulePath, sStylesheet ].join('/');
                 jQuery.sap.includeStyleSheet(sStylesheetPath);
             }.bind(this));
-
-
-
-
         };
+
+        return Manager;
     }
 );
