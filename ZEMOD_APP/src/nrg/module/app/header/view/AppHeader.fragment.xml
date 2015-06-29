@@ -5,7 +5,7 @@
 
     <ute:Tag elem="nav" id="idAppHdrMenu" class="nrgAppHdr nrgU-clearfix">
         <div class="nrgAppHdr-logo nrgU-left" />
-        <ute:Tag elem="h1" class="nrgAppHdr-title nrgU-left" text="{comp-i18n>nrgAppHeaderIc}" />
+        <ute:Tag elem="h1" class="nrgAppHdr-title nrgU-left" text="{comp-i18n-appHdr>nrgAppHeaderIc}" />
         <ul class="nrgAppHdr-list nrgU-right">
             <li class="nrgAppHdr-listItem nrgAppHdr-listItem-divider" data-nrg-type="menuitem">
                 <ute:Tag elem="span" class="nrgAppHdr-listItemLink" text="{comp-i18n-appHdr>nrgAppHeaderMenu}" />

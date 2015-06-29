@@ -1,28 +1,51 @@
-/*global sap*/
+/*global sap, window*/
 /*jslint nomen:true*/
 
 sap.ui.define(
     [
-        'sap/ui/base/ManagedObject'
+        'jquery.sap.global',
+        'sap/ui/base/Object'
     ],
 
-    function (ManagedObject) {
+    function (jQuery, Object) {
         'use strict';
 
-        var Manager = ManagedObject.extend('nrg.base.component.WebUiManager', {
+        var Manager = Object.extend('nrg.base.component.WebUiManager', {
             constructor: function (oComponent) {
-                ManagedObject.apply(this, arguments);
+                Object.apply(this);
                 this._oComponent = oComponent;
             },
 
             metadata: {
                 publicMethods: [
-                    'start'
+                    'start',
+                    'postMessage'
                 ]
             }
         });
 
         Manager.prototype.start = function () {
+            if (window.addEventListener) {
+                window.addEventListener('message', jQuery.proxy(this._fromWebUi, this), false);
+            } else {
+                window.attachEvent('onmessage', jQuery.proxy(this._fromWebUi, this));
+            }
+        };
+
+        Manager.prototype.postMessage = function (sEvent, oData) {
+            var oParent = window.parent;
+
+            if (!oParent || oParent === window) {
+                jQuery.sap.log.warn('This component is not embedded in any window');
+                return this;
+            }
+
+
+
+            return this;
+        };
+
+        Manager.prototype._fromWebUi = function (oEvent) {
 
         };
 

@@ -15,6 +15,12 @@
         .custom .uteMDdItem {
             width: 130px;
         }
+
+        .custom .uteMDd-hdr {
+            border: none;
+            margin-bottom: 4px;
+            cursor: pointer;
+        }
     </style>
 
     <um:Dropdown id="dd001" content="{data>/dropdown}" selectedKey="{data>/selectedKey}" select=".onSelected">
@@ -33,7 +39,7 @@
     <div>text text text text text text text text text text text text text text text text text text text text </div>
     <div>text text text text text text text text text text text text text text text text text text text text </div>
     <br/>
-    <um:Dropdown id="dd002" design="Plain" class="custom" content="{cc>/dropdown}" selectedKey="{cc>/selectedKey}" select=".onSelected">
+    <um:Dropdown id="dd002" design="Default" class="custom" content="{cc>/dropdown}" selectedKey="{cc>/selectedKey}" select=".onSelected">
         <um:DropdownItem key="{cc>key}">
             <core:Icon src="{cc>icon}" /><uc:Tag elem="span" text="{cc>value}" />
         </um:DropdownItem>
