@@ -76,7 +76,7 @@ sap.ui.define(
                 oParameters;
 
             oParameters = {
-                urlParameters: {"$expand": "Buags"},
+                /*urlParameters: {"$expand": "Buags"},*/
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oDtaVrfyBP').setData(oData);
@@ -98,18 +98,24 @@ sap.ui.define(
         Controller.prototype._retrBuag = function (sBpNum) {      //will be called whenever a different Buag is selected
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
-                oParameters;
+                oParameters,
+                i;
 
             sPath = '/Partners' + '(\'' + sBpNum + '\')/Buags/';
             oParameters = {
                 success : function (oData) {
                     if (oData) {
-                        if (oData.Contracts.results[0]) {
-                            //Again if there's first record of Contracts, load as default to display
-                            this.getView().getModel('oDtaVrfyContracts').setData(oData.Contracts.results[0]);
-                            this._retrContracts(oData.ContractAccountID);
+                        if (oData.results[0]) {
+                            //If there's first record of Buags, load as default to display
+                            this.getView().getModel('oDtaVrfyBuags').setData(oData.results[0]);
+                            this._retrContracts(oData.results[0].ContractAccountID);
+                            this._retrBuagMailingAddr(sBpNum, oData.results[0].ContractAccountID, oData.results[0].FixedAddressID);
+                        }
+                        for (i = 0; i < oData.results.length; i = i + 1) {
+                            oData.results[i].iIndex = i;
                         }
                         this.getView().getModel('oAllBuags').setData(oData.results);
+                        this.getView().getModel('oAllBuags').setProperty('/selectedKey', '0');
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -134,14 +140,15 @@ sap.ui.define(
                     if (oData) {
                         if (oData.results[0]) {
                             //Again if there's first record of Contracts, load as default to display
-                            this.getView().getModel('oDtaVrfyContracts').setData(oData.Contracts.results[0]);
+                            this.getView().getModel('oDtaVrfyContracts').setData(oData.results[0]);
+                            //oData.results.selectedKey = '0';
                         }
-                        this.getView().getModel('oAllBuags').setData(oData.results);
 
                         for (i = 0; i < oData.results.length; i = i + 1) {
-                            oData.Contracts.results[0].iIndex = i;
+                            oData.results[i].iIndex = i;
                         }
-                        this.getView().getModel('oAllContractsofBuag').setData(oData.Contracts.results);
+                        this.getView().getModel('oAllContractsofBuag').setData(oData.results);
+                        this.getView().getModel('oAllContractsofBuag').setProperty('/selectedKey', '0');
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -177,12 +184,22 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._onContractSelect = function (oEvent) {
+            var sSelectedKey = oEvent.getParameters().selectedKey,
+                iSelectedIndex = parseInt(sSelectedKey, 10);
 
-        Controller.prototype._onContractChange = function (oEvent) {
-            var sNewSelectedContractIndex;
+            this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
+            delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+        };
 
-            sNewSelectedContractIndex = oEvent.getSource().getSelectedKey();
-            this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[sNewSelectedContractIndex]);
+        Controller.prototype._onBuagSelect = function (oEvent) {
+            var sSelectedKey = oEvent.getParameters().selectedKey,
+                iSelectedIndex = parseInt(sSelectedKey, 10);
+
+            this.getView().getModel('oDtaVrfyBuags').setData(this.getView().getModel('oAllBuags').oData[iSelectedIndex]);
+            delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+
+            this._retrContracts(this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'));
         };
 
         Controller.prototype._onBuagChange = function (oEvent) {

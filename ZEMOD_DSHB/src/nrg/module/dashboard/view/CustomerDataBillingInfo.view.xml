@@ -39,17 +39,6 @@
                                     <core:Icon src="sap-icon://nrg-icon/calendar" class="nrgDashboard-cusDataBil-Icon" />
                                 </ute:tag>
 
-                                <ute:tag elem="div">
-                                    <utmain:Label text="{comp-i18n-dashboard>nrgDashboard-cusDataPrePD-l-div-REFER_TO}:" labelFor="referrer"
-                                       class="nrgDashboard-cusDataBil-referer-lbl"/>
-                                    <select id="referer" class="nrgDashboard-cusDataBil-referer-dropdown">
-                                        <option value="checkbook1">Checkbook</option>
-                                        <option value="checkbook2">Checkbook</option>
-                                        <option value="checkbook3">Checkbook</option>
-                                        <option value="checkbook4">Checkbook</option>
-                                    </select>
-                                </ute:tag>
-
                                 <ute:Tag class="nrgDashboard-cusDataBil-date">
                                     <ute:Tag elem="div" class="nrgDashboard-cusDataBil-date-label" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-l-div-BILLING_DATE}" />
 
@@ -59,6 +48,16 @@
 
                                     <ute:Tag elem="div" class="nrgDashboard-cusDataBil-date-value" text="11/10/2014" />
                                 </ute:Tag>
+
+                                <ute:tag elem="div">
+                                    <utmain:Label text="{comp-i18n-dashboard>nrgDashboard-cusDataPrePD-l-div-REFER_TO}:" labelFor="referrer"
+                                       class="nrgDashboard-cusDataBil-referer-lbl"/>
+                                    <utmain:Dropdown id="referer" design="Default" class="nrgDashboard-cusDataBil-referer-dropdown" content="{data>/dropdown}" selectedKey="{data>/selectedKey}" select=".onSelected">
+                                        <utmain:DropdownItem key="{data>key}">
+                                           <ute:Tag text="{data>value}" />
+                                        </utmain:DropdownItem>
+                                    </utmain:Dropdown>
+                                </ute:tag>
 
                             </ute:Tag>
                         </l:MatrixLayoutCell>
@@ -175,6 +174,18 @@
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
                                             <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-cnt" text="11/20/2014" />
+                                        </l:MatrixLayoutCell>
+                                    </l:MatrixLayoutRow>
+                                </l:MatrixLayout>
+                                <ute:HorizontalDivider
+                                    class="nrgDashboard-cusDataBil-horDvi"/>
+                                <l:MatrixLayout widths="60%,40%" columns="2">
+                                    <l:MatrixLayoutRow>
+                                        <l:MatrixLayoutCell>
+                                            <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-r-div-DISCONN_DATE}:" />
+                                        </l:MatrixLayoutCell>
+                                        <l:MatrixLayoutCell>
+                                            <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-cnt" text="01/20/2015" />
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
