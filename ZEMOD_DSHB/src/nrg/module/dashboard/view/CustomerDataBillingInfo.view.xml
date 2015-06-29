@@ -104,7 +104,7 @@
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell class="nrgDashboard-cusDataBil-r-content-arrange-status">
                                                 <ute:Tag elem="span">
-                                                    <core:Icon src="sap-icon://nrg-icon/calendar" class="nrgDashboard-cusDataBil-r-content-cnt-icon" />
+                                                    <core:Icon src="sap-icon://nrg-icon/notification" class="nrgDashboard-cusDataBil-r-content-cnt-icon" />
                                                     <ute:Tag elem="span" class="nrgDashboard-cusDataBil-r-content-cnt-dpp" text="DPP" />
                                                 </ute:Tag>
                                             </l:MatrixLayoutCell>
