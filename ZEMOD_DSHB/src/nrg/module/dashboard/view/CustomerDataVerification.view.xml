@@ -182,14 +182,6 @@
                                             text="{oAllBuags>DisplayName}"/>
                                     </utmain:DropdownItem>
                                 </utmain:Dropdown>
-                                <c:DropdownBox
-                                    items="{oAllBuags>/}" change="._onBuagChange">
-                                    <c:items>
-                                        <core:ListItem
-                                            key="{oAllBuags>ContractAccountID}"
-                                            text="{oAllBuags>ContractAccountID}"/>
-                                    </c:items>
-                                </c:DropdownBox>
                             </ute:Tag>
                             <ute:Tag id="serviceadd_area" visible="true" class="nrgDashboard-cusDataVerify-mContent">
                                 <ute:TextView class="nrgDashboard-cusDataVerify-mContent-add"
