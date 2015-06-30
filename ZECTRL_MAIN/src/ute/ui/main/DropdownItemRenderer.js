@@ -13,11 +13,6 @@ sap.ui.define(
             oRm.write('<div');
             oRm.writeControlData(oCustomControl);
             oRm.addClass('uteMDdItem');
-
-            if (oCustomControl.getDesign() !== ute.ui.main.DropdownItemDesign.None) {
-                oRm.addClass('uteMDdItem-design-' + oCustomControl.getDesign().toLowerCase());
-            }
-
             oRm.writeClasses();
             oRm.write('>');
 

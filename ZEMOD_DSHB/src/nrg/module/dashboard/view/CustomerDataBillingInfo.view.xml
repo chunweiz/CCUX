@@ -7,14 +7,14 @@
     xmlns:c="sap.ui.commons"
     xmlns:l="sap.ui.commons.layout"
     xmlns:core="sap.ui.core"
-    controllerName="nrg.module.dashboard.view.CallerNoIDEnrollment">
+    controllerName="nrg.module.dashboard.view.CustomerDataBillingInfo">
 
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-cusDataBillingInfo">
-        <ute:Tag elem="span" class="nrgDashboard-cusDataBil-scrnTitle" text="CURRENT AMOUNT DUE" />
+        <ute:Tag elem="span" class="nrgDashboard-cusDataBil-scrnTitle" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-l-div-CURRENT_AMNT_DUE}" />
 
         <ute:Tag elem="span" class="nrgDashboard-cusDataBil-r-btn">
             <utmain:Button design="None" class="nrgDashboard-cusDataBil-CommBtn" press="onPayNow">
-                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-PayBalBtn-text" text="Fee Adjustments" />
+                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-PayBalBtn-text" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-r-div-FEE_ADJ}" />
             </utmain:Button>
         </ute:Tag>
 
@@ -29,36 +29,35 @@
                             <ute:Tag class="nrgDashboard-cusDataBil-l-div">
                                 <utmain:Button design="None" class="nrgDashboard-cusDataBil-PayBalBtn" press="onPayNow">
                                     <ute:Tag elem="div" class="nrgDashboard-cusDataBil-PayBalBtn-amount" text="$200.00" />
-                                    <ute:Tag elem="div" class="nrgDashboard-cusDataBil-PayBalBtn-text" text="PAY NOW" />
+                                    <ute:Tag elem="div" class="nrgDashboard-cusDataBil-PayBalBtn-text" text="{comp-i18n-dashboard>nrgDashboard-cusDataPrePD-l-div-PAY_NOW}" />
                                 </utmain:Button>
 
-                                <utmain:Label text="INVOICE #:" labelFor="invoice"
+                                <utmain:Label text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-l-div-INVOICE} #:" labelFor="invoice"
                                    class="nrgDashboard-cusDataBil-invoice-lbl"/>
                                 <ute:tag id="invoice" elem="span">
                                     <ute:Tag elem="span" class="nrgDashboard-cusDataBil-invoice-id" text="000 000 000 000" />
                                     <core:Icon src="sap-icon://nrg-icon/calendar" class="nrgDashboard-cusDataBil-Icon" />
                                 </ute:tag>
 
-                                <ute:tag elem="div">
-                                    <utmain:Label text="REFER TO:" labelFor="referrer"
-                                       class="nrgDashboard-cusDataBil-referer-lbl"/>
-                                    <select id="referer" class="nrgDashboard-cusDataBil-referer-dropdown">
-                                        <option value="checkbook1">Checkbook</option>
-                                        <option value="checkbook2">Checkbook</option>
-                                        <option value="checkbook3">Checkbook</option>
-                                        <option value="checkbook4">Checkbook</option>
-                                    </select>
-                                </ute:tag>
-
                                 <ute:Tag class="nrgDashboard-cusDataBil-date">
-                                    <ute:Tag elem="div" class="nrgDashboard-cusDataBil-date-label" text="BILLING DATE" />
+                                    <ute:Tag elem="div" class="nrgDashboard-cusDataBil-date-label" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-l-div-BILLING_DATE}" />
 
                                     <ute:Tag elem="div" class="nrgDashboard-cusDataBil-date-value" text="10/28/2014" />
 
-                                    <ute:Tag elem="div" class="nrgDashboard-cusDataBil-date-label" text="DUE DATE" />
+                                    <ute:Tag elem="div" class="nrgDashboard-cusDataBil-date-label" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-l-div-DUE_DATE}" />
 
                                     <ute:Tag elem="div" class="nrgDashboard-cusDataBil-date-value" text="11/10/2014" />
                                 </ute:Tag>
+
+                                <ute:tag elem="div">
+                                    <utmain:Label text="{comp-i18n-dashboard>nrgDashboard-cusDataPrePD-l-div-REFER_TO}:" labelFor="referrer"
+                                       class="nrgDashboard-cusDataBil-referer-lbl"/>
+                                    <utmain:Dropdown id="referer" design="Default" class="nrgDashboard-cusDataBil-referer-dropdown" content="{data>/dropdown}" selectedKey="{data>/selectedKey}" select=".onSelected">
+                                        <utmain:DropdownItem key="{data>key}">
+                                           <ute:Tag text="{data>value}" />
+                                        </utmain:DropdownItem>
+                                    </utmain:Dropdown>
+                                </ute:tag>
 
                             </ute:Tag>
                         </l:MatrixLayoutCell>
@@ -66,14 +65,14 @@
                         <!--Area Middle-->
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataBil-m">
                             <ute:Tag class="nrgDashboard-cusDataBil-m-div">
-                                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-m-text-amntexpln" text="AMOUNT EXPLANATION" />
-                                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-m-text-current" text="CURRENT" />
+                                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-m-text-amntexpln" text="{comp-i18n-dashboard>nrgDashboard-cusDataPrePD-r-div-AMNT_EXP}" />
+                                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-m-text-current" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-m-div-CURRENT}" />
 
                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBil-m-matrix">
                                     <l:MatrixLayout widths="50%,50%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl" text="Consumption Electric:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-m-div-CONSUM_ELEC}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-cnt" text="$80.00" />
@@ -85,7 +84,7 @@
                                     <l:MatrixLayout widths="50%,50%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl" text="RHS:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-m-div-RHS}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-cnt" text="$20.89" />
@@ -97,14 +96,14 @@
                                     <l:MatrixLayout widths="50%,25%,25%" columns="3">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl" text="Arrangement:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-m-div-ARRANGEMENT}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-cnt" text="$99.11" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell class="nrgDashboard-cusDataBil-r-content-arrange-status">
                                                 <ute:Tag elem="span">
-                                                    <core:Icon src="sap-icon://nrg-icon/calendar" class="nrgDashboard-cusDataBil-r-content-cnt-icon" />
+                                                    <core:Icon src="sap-icon://nrg-icon/notification" class="nrgDashboard-cusDataBil-r-content-cnt-icon" />
                                                     <ute:Tag elem="span" class="nrgDashboard-cusDataBil-r-content-cnt-dpp" text="DPP" />
                                                 </ute:Tag>
                                             </l:MatrixLayoutCell>
@@ -115,7 +114,7 @@
                                     <l:MatrixLayout widths="50%,50%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl2" text="INVOICE AMOUNT:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl2" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-m-div-INVOICE_AMNT}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-cnt2" text="$200.00" />
@@ -126,11 +125,11 @@
                                     <ute:HorizontalDivider
                                         class="nrgDashboard-cusDataBil-horDvi-long"/>
 
-                                    <ute:Tag elem="span" class="nrgDashboard-cusDataBil-btm-label1" text="Last Payment:" />
+                                    <ute:Tag elem="span" class="nrgDashboard-cusDataBil-btm-label1" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-m-div-LAST_PATMENT}:" />
 
                                     <ute:Tag elem="span" class="nrgDashboard-cusDataBil-btm-value" text="$120.00" />
 
-                                    <ute:Tag elem="span" class="nrgDashboard-cusDataBil-btm-label2" text="On date:" />
+                                    <ute:Tag elem="span" class="nrgDashboard-cusDataBil-btm-label2" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-m-div-ON_DATE}:" />
 
                                     <ute:Tag elem="span" class="nrgDashboard-cusDataBil-btm-value" text="08/15/2014" />
 
@@ -142,12 +141,12 @@
                         <!--Area Right-->
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataBil-r">
                             <ute:Tag class="nrgDashboard-cusDataBil-r-div">
-                                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-text-disconnect" text="DISCONNECT" />
+                                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-text-disconnect" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-r-div-DISCON}" />
 
                                 <l:MatrixLayout widths="60%,40%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
-                                            <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl1" text="Disconnect notive amount:" />
+                                            <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl1" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-r-div-DISCON_NOTICE_AMNT}:" />
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
                                             <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-cnt1" text="$130.00" />
@@ -159,7 +158,7 @@
                                 <l:MatrixLayout widths="60%,40%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
-                                            <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl" text="Net amount:" />
+                                            <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-r-div-NET_AMNT}:" />
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
                                             <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-cnt" text="$110.00" />
@@ -171,10 +170,22 @@
                                 <l:MatrixLayout widths="60%,40%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
-                                            <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl" text="Due Date:" />
+                                            <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-r-div-DUE_DATE}:" />
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
                                             <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-cnt" text="11/20/2014" />
+                                        </l:MatrixLayoutCell>
+                                    </l:MatrixLayoutRow>
+                                </l:MatrixLayout>
+                                <ute:HorizontalDivider
+                                    class="nrgDashboard-cusDataBil-horDvi"/>
+                                <l:MatrixLayout widths="60%,40%" columns="2">
+                                    <l:MatrixLayoutRow>
+                                        <l:MatrixLayoutCell>
+                                            <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-r-div-DISCONN_DATE}:" />
+                                        </l:MatrixLayoutCell>
+                                        <l:MatrixLayoutCell>
+                                            <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-cnt" text="01/20/2015" />
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>

@@ -5,11 +5,12 @@ sap.ui.define(
     [
         'jquery.sap.global',
         'sap/ui/core/Control',
+        'sap/ui/core/Popup',
         'ute/ui/main/Checkbox',
         'ute/ui/main/DropdownItem'
     ],
 
-    function (jQuery, Control, Checkbox, DropdownItem) {
+    function (jQuery, Control, Popup, Checkbox, DropdownItem) {
         'use strict';
 
         var CustomControl = Control.extend('ute.ui.main.Dropdown', {
@@ -25,7 +26,6 @@ sap.ui.define(
                 aggregations: {
                     content: { type: 'ute.ui.main.DropdownItem', multiple: true, singularName: 'content' },
 
-                    _headerExpander: { type: 'ute.ui.main.Checkbox', multiple: false, visibility: 'hidden' },
                     _headerContent: { type: 'ute.ui.main.DropdownItem', multiple: false, visibility: 'hidden' }
                 },
 
@@ -41,38 +41,38 @@ sap.ui.define(
             }
         });
 
-        CustomControl.prototype._autoClose = function (oEvent) {
-            this.$().find('.uteMDd-picker').removeClass('uteMDd-picker-active');
-            jQuery(document).off('click', this._autoClose);
-            this._getHeaderExpander().setChecked(false);
-        };
+        CustomControl.prototype.onclick = function (oEvent) {
+            oEvent.stopPropagation();
 
-        CustomControl.prototype._getHeaderExpander = function () {
-            var oExpander = this.getAggregation('_headerExpander');
-
-            if (oExpander) {
-                return oExpander;
-            }
-
-            oExpander = new Checkbox(this.getId() + '-hdrExpander', {
-                design: ute.ui.main.CheckboxDesign.None,
-                checked: false
-            });
-
-            oExpander.attachSelect(this._onHeaderExpanderSelect, this);
-
-            this.setAggregation('_headerExpander', oExpander);
-            return oExpander;
-        };
-
-        CustomControl.prototype._onHeaderExpanderSelect = function (oControlEvent) {
-            if (oControlEvent.getSource().getChecked()) {
-                this.$().find('.uteMDd-picker').addClass('uteMDd-picker-active');
-                jQuery(document).on('click', jQuery.proxy(this._autoClose, this));
-            } else {
-                this.$().find('.uteMDd-picker').removeClass('uteMDd-picker-active');
+            if (this.$().hasClass('uteMDd-active')) {
+                this.$().removeClass('uteMDd-active');
                 jQuery(document).off('click', this._autoClose);
+
+            } else {
+                if (this.getEnabled() && this._hasContent()) {
+                    this.$().addClass('uteMDd-active');
+                    this.$('picker').css('z-index', Popup.getNextZIndex());
+                    jQuery(document).on('click', jQuery.proxy(this._autoClose, this));
+                }
             }
+        };
+
+        CustomControl.prototype._autoClose = function (oEvent) {
+            jQuery(document).off('click', this._autoClose);
+            this.$().removeClass('uteMDd-active');
+        };
+
+        CustomControl.prototype.setEnabled = function (bEnabled) {
+            bEnabled = !!bEnabled;
+
+            if (bEnabled) {
+                this.data('disabled', null);
+            } else {
+                this.data('disabled', 'disabled', true);
+            }
+
+            this.setProperty('enabled', bEnabled);
+            return this;
         };
 
         CustomControl.prototype.setSelectedKey = function (sKey) {
@@ -115,6 +115,11 @@ sap.ui.define(
             }
         };
 
+        CustomControl.prototype._hasContent = function () {
+            var aContent = this.getContent() || [];
+            return aContent.length > 0;
+        };
+
         CustomControl.prototype._syncHeaderContent = function () {
             var aContent = this.getContent() || [];
 
@@ -122,7 +127,7 @@ sap.ui.define(
 
             aContent.forEach(function (oContent) {
                 if (oContent.getKey() === this.getSelectedKey()) {
-                    this.setAggregation('_headerContent', oContent);
+                    this.setAggregation('_headerContent', oContent.clone());
                 }
 
             }.bind(this));
