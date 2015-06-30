@@ -43,6 +43,11 @@
                                             <utmain:Label labelFor="meter_num"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_MtrNum}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halflabl"/>
+                                            <utmain:Checkbox id="chk_advMtr" enabled="false"
+                                                class="nrgDashboard-cusDataVerify-l-div-chb"
+                                                checked="{
+                                                    parts:['oDtaVrfyContracts>/SmartMeter'],
+                                                    formatter:'._formatChecked'}"/>
                                             <ute:TextView id="meter_num"
                                                 text="{oDtaVrfyContracts>/MeterNumber}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
@@ -58,35 +63,6 @@
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
-                                <ute:Tag class="nrgDashboard-cusDataVerify-l-div-chb">
-                                    <utmain:Checkbox id="chk_advMtr"
-                                        class="nrgDashboard-cusDataVerify-l-div-chbox"
-                                        checked="{
-                                            parts:['oDtaVrfyContracts>/AdvMeter'],
-                                            formatter:'._formatChecked'}"/>
-                                    <utmain:Label labelFor="chk_advMtr">
-                                        <ute:Tag elem="span" text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_AdvMtrChk}"/>
-                                    </utmain:Label>
-
-                                    <utmain:Checkbox id="chk_rmoMtr"
-                                        class="nrgDashboard-cusDataVerify-l-div-chbox"
-                                        checked="{
-                                            parts:['oDtaVrfyContracts>/RemoteMeter'],
-                                            formatter:'._formatChecked'}"/>
-                                    <utmain:Label labelFor="rmo_advMtr">
-                                        <ute:Tag elem="span" text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RmoMtrChk}"/>
-                                    </utmain:Label>
-
-                                    <utmain:Checkbox id="chk_proMtr"
-                                        class="nrgDashboard-cusDataVerify-l-div-chbox"
-                                        checked="{
-                                            parts:['oDtaVrfyContracts>/ProvisionMeter'],
-                                            formatter:'._formatChecked'}"/>
-                                    <utmain:Label labelFor="pro_advMtr">
-                                        <ute:Tag elem="span" text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_ProvMtrChk}"/>
-                                    </utmain:Label>
-
-                                </ute:Tag>
 
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
@@ -184,10 +160,25 @@
                                 </utmain:Dropdown>
                             </ute:Tag>
                             <ute:Tag id="serviceadd_area" visible="true" class="nrgDashboard-cusDataVerify-mContent">
-                                <ute:TextView class="nrgDashboard-cusDataVerify-mContent-add"
-                                    text="{oDtaVrfyContracts>/HouseNum1} {oDtaVrfyContracts>/Street},"/>
-                                <ute:TextView class="nrgDashboard-cusDataVerify-mContent-add"
-                                    text="{oDtaVrfyContracts>/City1}, {oDtaVrfyContracts>/Region} {oDtaVrfyContracts>/PostCode1}"/>
+                                <l:MatrixLayout widths="70%,30%" columns="2">
+                                    <l:MatrixLayoutRow>
+                                        <l:MatrixLayoutCell>
+                                            <ute:Tag class="nrgDashboard-cusDataVerify-mContent-add-up">
+                                            <ute:Badge id="idBadgeCI" size="30px"
+                                                class="nrgDashboard-cusDataVerify-mContent-badge"
+                                                visible="{oDtaVrfyContracts>/JointAcc}"
+                                                design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RHSClr}"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_JABadge}">
+                                            </ute:Badge>
+                                            <ute:TextView
+                                                class="nrgDashboard-cusDataVerify-mContent-add"
+                                                text="{oDtaVrfyContracts>/HouseNum1} {oDtaVrfyContracts>/Street}, {oDtaVrfyContracts>/City1}, {oDtaVrfyContracts>/Region} {oDtaVrfyContracts>/PostCode1}"/>
+                                                </ute:Tag>
+                                        </l:MatrixLayoutCell>
+                                        <l:MatrixLayoutCell>
+                                        </l:MatrixLayoutCell>
+                                    </l:MatrixLayoutRow>
+                                </l:MatrixLayout>
 
                                 <utmain:Label  labelFor="contractNum"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CaNum}"

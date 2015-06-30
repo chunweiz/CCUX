@@ -25,10 +25,10 @@
         padding: 10px;
      }
 
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > .nrgDashboard-cusDataVerify-l-div-chb > label{
-        padding-right: 5px;
-        bottom: 3px;
-        left: 2px;
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > .nrgDashboard-cusDataVerify-l-div-cell > .nrgDashboard-cusDataVerify-l-div-chb > label{
+        margin-left: 12px;
+        margin-bottom: -3px;
+        border-color: @nrgColor-grey-dark;
     }
 
     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m{
@@ -145,8 +145,21 @@
         line-height: 22px;
     }
 
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-add > span{
-        font-size: @nrgFontSize-large;
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up {
+        display: table-row;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up > .nrgDashboard-cusDataVerify-mContent-badge {
+        top: 5px;
+        margin-right: 6px;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up > .nrgDashboard-cusDataVerify-mContent-add{
+        display: table-cell;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up > .nrgDashboard-cusDataVerify-mContent-add > span{
+        font-size: @nrgFontSize-base;
         font-weight: @nrgFontWeight-bold;
         color: @nrgColor-grey-dark;
     }
