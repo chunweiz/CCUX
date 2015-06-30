@@ -19,6 +19,11 @@
         .custom .icon {
             padding-right: 10px;
         }
+
+        .custom:hover {
+            color: tomato;
+            font-size: 32pt;
+        }
     </style>
 
     <uc:Tag elem="span" content="{nrgIcon>/icon}">
