@@ -70,10 +70,6 @@ sap.ui.define(
             Component.prototype.destory.apply(this, arguments);
         };
 
-        CustomComponent.prototype.getWebUiManager = function () {
-            return this._oWebUiManager;
-        };
-
         CustomComponent.prototype._initWebUiConnection = function () {
             this._oWebUiManager = new WebUiManager(this);
             this._oWebUiManager.start();

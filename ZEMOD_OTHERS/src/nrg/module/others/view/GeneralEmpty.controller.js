@@ -2,12 +2,24 @@
 
 sap.ui.define(
     [
-        'sap/ui/core/mvc/Controller'
+        'sap/ui/core/mvc/Controller',
+        'nrg/base/component/WebUiManager'
     ],
 
-    function (Controller) {
+    function (Controller, WebUiManager) {
         'use strict';
 
-        return Controller.extend('nrg.module.others.view.GeneralEmpty');
+        var CustomController = Controller.extend('nrg.module.others.view.GeneralEmpty');
+
+        CustomController.prototype.onPressed = function (oControlEvent) {
+            var oEventBus = sap.ui.getCore().getEventBus();
+
+            oEventBus.publish(WebUiManager.EventBus.Publish.Channel, 'BPCONFIRMED', {
+                BP: '0123456789',
+                CA: '9876543210'
+            });
+        };
+
+        return CustomController;
     }
 );
