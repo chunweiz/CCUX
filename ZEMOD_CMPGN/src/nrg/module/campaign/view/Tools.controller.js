@@ -137,6 +137,8 @@ sap.ui.define(
                 oNoDataTag,
                 fnRecievedHandler,
                 aContent,
+                oPricingTable,
+                oPricingTemplate,
                 that = this;
             aFilterIds = ["Contract", "Type"];
             aFilterValues = ["32253375", "H"];
@@ -150,11 +152,23 @@ sap.ui.define(
             oScrollTemplate = oHistoryView.byId("idnrgCamHisBut").clone();
             oDataTag = this.getView().byId("idnrgCamHisData");
             oNoDataTag = this.getView().byId("idnrgCamHisNoData");
+            oPricingTable = oHistoryView.byId("idnrgCamHis-prcTable");
+            oPricingTemplate = oHistoryView.byId("idnrgCamHis-prcRow");
             fnRecievedHandler = function () {
                 var oBinding;
                 aContent = oScrollContainer.getContent();
                 if ((aContent !== undefined) && (aContent.length > 0)) {
                     sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                    // Development for Pricing Table binding..........................................
+                    mParameters = {
+                        urlParameters: {"$expand": "CpgEFL_N"},
+                        model : "comp-campaign",
+                        path : sPath,
+                        template : oPricingTemplate
+                    };
+                    oPricingTable.bindRows(mParameters);
+
+                    // Development for Pricing Table binding..........................................
                     aContent[0].addStyleClass("nrgCamHis-but-selected");
                     that.getView().bindElement({
                         model : "comp-campaign",
@@ -169,6 +183,7 @@ sap.ui.define(
                 oBinding.detachDataReceived(fnRecievedHandler);
             };
             mParameters = {
+                urlParameters: {"$expand": "CpgEFL_N"},
                 model : "comp-campaign",
                 path : sPath,
                 template : oScrollTemplate,
