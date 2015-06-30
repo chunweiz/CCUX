@@ -138,8 +138,11 @@ sap.ui.define(
                 fnRecievedHandler,
                 aContent,
                 oPricingTable,
-                oPricingTemplate,
-                that = this;
+                oPricingRowTemplate,
+                oPricingColTemplate,
+                that = this,
+                fnRecieved,
+                fnChange;
             aFilterIds = ["Contract", "Type"];
             aFilterValues = ["32253375", "H"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -153,20 +156,27 @@ sap.ui.define(
             oDataTag = this.getView().byId("idnrgCamHisData");
             oNoDataTag = this.getView().byId("idnrgCamHisNoData");
             oPricingTable = oHistoryView.byId("idnrgCamHis-prcTable");
-            oPricingTemplate = oHistoryView.byId("idnrgCamHis-prcRow");
+            oPricingColTemplate = oHistoryView.byId("idnrgCamHis-prcCol");
+            oPricingRowTemplate = oHistoryView.byId("idnrgCamHis-prcRow");
             fnRecievedHandler = function () {
                 var oBinding;
                 aContent = oScrollContainer.getContent();
                 if ((aContent !== undefined) && (aContent.length > 0)) {
                     sPath = aContent[0].getBindingContext("comp-campaign").getPath();
                     // Development for Pricing Table binding..........................................
-                    mParameters = {
-                        urlParameters: {"$expand": "CpgEFL_N"},
-                        model : "comp-campaign",
-                        path : sPath,
-                        template : oPricingTemplate
+                    fnRecieved = function (oEvent) {
+                        jQuery.sap.log.info("oPricingTable fnRecieved Read Successfully:::");
                     };
-                    oPricingTable.bindRows(mParameters);
+                    fnChange = function (oEvent) {
+                        jQuery.sap.log.info("function change called successfully:::");
+                    };
+                    mParameters = {
+                        model : "comp-campaign",
+                        path : sPath + "/CpgEFL_N",
+                        template : oPricingColTemplate,
+                        events: {dataReceived : fnRecieved, change : fnChange}
+                    };
+                    oPricingTable.bindColumns(mParameters);
 
                     // Development for Pricing Table binding..........................................
                     aContent[0].addStyleClass("nrgCamHis-but-selected");
@@ -183,7 +193,7 @@ sap.ui.define(
                 oBinding.detachDataReceived(fnRecievedHandler);
             };
             mParameters = {
-                urlParameters: {"$expand": "CpgEFL_N"},
+                parameters : {expand: "CpgEFL_N"},
                 model : "comp-campaign",
                 path : sPath,
                 template : oScrollTemplate,

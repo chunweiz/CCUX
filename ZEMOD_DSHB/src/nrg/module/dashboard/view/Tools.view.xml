@@ -7,6 +7,8 @@
     width="100%"
     displayBlock="true">
 
-    <div>Tools Dashboard</div>
+    <ute:Tag class="nrgAppMain-generalContent nrgDashboard-Tools">
+        <ute:Tag elem="span" class="nrgDashboard-Tools-scrnTitle" text="Tools" />
+    </ute:Tag>
 
 </mvc:View>
