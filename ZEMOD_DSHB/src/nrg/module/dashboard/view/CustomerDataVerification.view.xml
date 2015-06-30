@@ -138,7 +138,7 @@
                                 press="._onToggleButtonPress">
                             </ute:ToggleButton>
                             <ute:Tag class="nrgDashboard-cusDataVerify-mRdBtn">
-                                <utmain:Dropdown
+                                <utmain:Dropdown class="nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom"
                                     selectedKey="{oAllContractsofBuag>/selectedKey}"
                                     content="{oAllContractsofBuag>/}"
                                     select="._onContractSelect" >
@@ -148,7 +148,7 @@
                                             text="{oAllContractsofBuag>DisplayName}"/>
                                     </utmain:DropdownItem>
                                 </utmain:Dropdown>
-                                <utmain:Dropdown
+                                <utmain:Dropdown class="nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom"
                                     selectedKey="{oAllBuags>/selectedKey}"
                                     content="{oAllBuags>/}"
                                     select="._onBuagSelect" >
@@ -177,11 +177,13 @@
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-mContent-pag">
                                             <utmain:Button design="None"
+                                                visible="{oCoPageModel>/threeLarger}"
                                                 class="nrgDashboard-cusDataVerify-mContent-pagBtn"
                                                 press="._onConFirst"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgFirst}">
                                             </utmain:Button>
                                             <utmain:Button design="None"
+                                                visible="{oCoPageModel>/threeLarger}"
                                                 class="nrgDashboard-cusDataVerify-mContent-pagBtn"
                                                 press="._onConLeft"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgLeft}">
@@ -205,11 +207,13 @@
                                                 text="{oCoPageModel>/paging/2/co_ind}">
                                             </utmain:Button>
                                             <utmain:Button design="None"
+                                                visible="{oCoPageModel>/threeLarger}"
                                                 class="nrgDashboard-cusDataVerify-mContent-pagBtn"
                                                 press="._onConRite"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgRite}">
                                             </utmain:Button>
                                             <utmain:Button design="None"
+                                                visible="{oCoPageModel>/threeLarger}"
                                                 class="nrgDashboard-cusDataVerify-mContent-pagBtn"
                                                 press="._onConLast"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgLast}">
