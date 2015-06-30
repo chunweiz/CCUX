@@ -38,8 +38,24 @@ sap.ui.define(
             //Model to track "Confirm" or not status
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCfrmStatus');
 
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCoPageModel');
+
             this._initDtaVrfRetr();
             this._initCfrmStatus();
+            //this._initCoPageModel();
+        };
+
+        Controller.prototype._initCoPageModel = function () {
+            var oModel = this.getView().getModel('oCoPageModel'),
+                page = [],
+                oTemp,
+                i;
+
+            for (i = 0; i < 3; i = i + 1) {
+                oTemp = {exist: false, con_ind: 0, index: i};
+                page.push(oTemp);
+            }
+            oModel.setProperty('/paging', page);
         };
 
         Controller.prototype._initCfrmStatus = function () {
@@ -130,6 +146,8 @@ sap.ui.define(
 
         Controller.prototype._retrContracts = function (sBuagNum) {
             var oModel = this.getView().getModel('oODataSvc'),
+                oPageModel = this.getView().getModel('oCoPageModel'),
+                oPage,
                 sPath,
                 oParameters,
                 i;
@@ -144,9 +162,16 @@ sap.ui.define(
                             //oData.results.selectedKey = '0';
                         }
 
+                        this._initCoPageModel();
+                        oPage = oPageModel.getProperty('/paging');
                         for (i = 0; i < oData.results.length; i = i + 1) {
                             oData.results[i].iIndex = i;
+                            if (i < 3) {
+                                oPage[i].exist = true;
+                                oPage[i].co_ind = i + 1;
+                            }
                         }
+                        oPageModel.setProperty('/paging', oPage);
                         this.getView().getModel('oAllContractsofBuag').setData(oData.results);
                         this.getView().getModel('oAllContractsofBuag').setProperty('/selectedKey', '0');
                     }
@@ -272,5 +297,28 @@ sap.ui.define(
             }
         };
 
+        /********************************************************************************************/
+        /*Contract Page Handlers*/
+        Controller.prototype._onConFirst = function () {
+            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
+                iSelectedIndex = oPage[0].co_ind - 1;
+
+            this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
+            delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+        };
+        Controller.prototype._onConLeft = function () {
+        };
+        Controller.prototype._onConPone = function () {
+        };
+        Controller.prototype._onConPtwo = function () {
+        };
+        Controller.prototype._onConPthree = function () {
+        };
+        Controller.prototype._onConRite = function () {
+        };
+        Controller.prototype._onConLast = function () {
+        };
+        /*Ends Here*/
+        /********************************************************************************************/
     }
 );
