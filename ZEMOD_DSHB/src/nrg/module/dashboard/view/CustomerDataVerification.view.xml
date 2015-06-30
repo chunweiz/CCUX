@@ -160,13 +160,13 @@
                                 </utmain:Dropdown>
                             </ute:Tag>
                             <ute:Tag id="serviceadd_area" visible="true" class="nrgDashboard-cusDataVerify-mContent">
-                                <l:MatrixLayout widths="70%,30%" columns="2">
+                                <l:MatrixLayout widths="65%,35%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
                                             <ute:Tag class="nrgDashboard-cusDataVerify-mContent-add-up">
                                             <ute:Badge id="idBadgeCI" size="30px"
                                                 class="nrgDashboard-cusDataVerify-mContent-badge"
-                                                visible="{oDtaVrfyContracts>/JointAcc}"
+                                                visible="true"
                                                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RHSClr}"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_JABadge}">
                                             </ute:Badge>
@@ -175,7 +175,45 @@
                                                 text="{oDtaVrfyContracts>/HouseNum1} {oDtaVrfyContracts>/Street}, {oDtaVrfyContracts>/City1}, {oDtaVrfyContracts>/Region} {oDtaVrfyContracts>/PostCode1}"/>
                                                 </ute:Tag>
                                         </l:MatrixLayoutCell>
-                                        <l:MatrixLayoutCell>
+                                        <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-mContent-pag">
+                                            <utmain:Button design="None"
+                                                class="nrgDashboard-cusDataVerify-mContent-pagBtn"
+                                                press="._onConFirst"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgFirst}">
+                                            </utmain:Button>
+                                            <utmain:Button design="None"
+                                                class="nrgDashboard-cusDataVerify-mContent-pagBtn"
+                                                press="._onConLeft"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgLeft}">
+                                            </utmain:Button>
+                                            <utmain:Button design="None"
+                                                visible="{oCoPageModel>/paging/0/exist}"
+                                                class="nrgDashboard-cusDataVerify-mContent-pagBtn"
+                                                press="._onConPone"
+                                                text="{oCoPageModel>/paging/0/co_ind}">
+                                            </utmain:Button>
+                                            <utmain:Button design="None"
+                                                visible="{oCoPageModel>/paging/1/exist}"
+                                                class="nrgDashboard-cusDataVerify-mContent-pagBtn"
+                                                press="._onConPtwo"
+                                                text="{oCoPageModel>/paging/1/co_ind}">
+                                            </utmain:Button>
+                                            <utmain:Button design="None"
+                                                visible="{oCoPageModel>/paging/2/exist}"
+                                                class="nrgDashboard-cusDataVerify-mContent-pagBtn"
+                                                press="._onConPthree"
+                                                text="{oCoPageModel>/paging/2/co_ind}">
+                                            </utmain:Button>
+                                            <utmain:Button design="None"
+                                                class="nrgDashboard-cusDataVerify-mContent-pagBtn"
+                                                press="._onConRite"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgRite}">
+                                            </utmain:Button>
+                                            <utmain:Button design="None"
+                                                class="nrgDashboard-cusDataVerify-mContent-pagBtn"
+                                                press="._onConLast"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgLast}">
+                                            </utmain:Button>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
