@@ -49,7 +49,8 @@ sap.ui.define(
                 fnRecievedHandler,
                 that = this,
                 sTempValue,
-                sPath;
+                sPath,
+                oMetaContext;
             oViewModel = new JSONModel({
 				busy : true,
 				delay : 0

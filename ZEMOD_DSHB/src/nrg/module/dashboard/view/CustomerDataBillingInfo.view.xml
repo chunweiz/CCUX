@@ -13,7 +13,7 @@
         <ute:Tag elem="span" class="nrgDashboard-cusDataBil-scrnTitle" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-l-div-CURRENT_AMNT_DUE}" />
 
         <ute:Tag elem="span" class="nrgDashboard-cusDataBil-r-btn">
-            <utmain:Button design="None" class="nrgDashboard-cusDataBil-CommBtn" press="onPayNow">
+            <utmain:Button design="None" class="nrgDashboard-cusDataBil-CommBtn" press="onFeeAdj">
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBil-PayBalBtn-text" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-r-div-FEE_ADJ}" />
             </utmain:Button>
         </ute:Tag>
