@@ -63,6 +63,11 @@
                 "dashboard.BillingInfo": {
                     "pattern": "billinginfo",
                     "target": [ "dashboard.CustomerDataBillingInfo", "dashboard.CustomerDataSummary", "" ]
+                },
+
+                "dashboard.BpInfo": {
+                    "pattern": "bpinfo/{bpNum}",
+                    "target": [ "dashboard.CustomerDataBpInfo", "dashboard.CustomerDataSummary", "dashboard.Tools" ]
                 }
             },
 
@@ -119,6 +124,11 @@
 
                 "dashboard.CustomerDataBillingInfo": {
                     "viewName": "nrg.module.dashboard.view.CustomerDataBillingInfo",
+                    "controlId": "idAppGeneral"
+                },
+
+                "dashboard.CustomerDataBpInfo": {
+                    "viewName": "nrg.module.dashboard.view.CustomerDataBpInfo",
                     "controlId": "idAppGeneral"
                 }
             }

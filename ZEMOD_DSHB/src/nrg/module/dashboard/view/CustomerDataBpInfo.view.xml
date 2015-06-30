@@ -1,0 +1,77 @@
+<!--Routing Pattern: BpInfo/{bpNum}-->
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:utmain="ute.ui.main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.commons"
+    xmlns:l="sap.ui.commons.layout"
+    xmlns:core="sap.ui.core"
+    controllerName="nrg.module.dashboard.view.CustomerDataBpInfo">
+
+    <ute:Tag class="nrgAppMain-generalContent nrgDashboard-cusDataBpInfo">
+        <ute:Tag elem="span" class="nrgDashboard-cusDataBpInfo-scrnTitle" text="BUSINESS PARTNER #1234567" />
+
+        <ute:Tag elem="span" class="nrgDashboard-cusDataBpInfo-r-btn">
+            <utmain:Button design="None" class="nrgDashboard-cusDataBpInfo-CommBtn" press="onBackToDashboard">
+                <core:Icon src="sap-icon://slim-arrow-left" class="nrgDashboard-cusDataBpInfo-Icon" />
+                <ute:Tag elem="span" class="nrgDashboard-cusDataBpInfo-btn-text" text="Back To Dashboard" />
+            </utmain:Button>
+        </ute:Tag>
+
+        <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-horiLine-div">
+            <ute:HorizontalDivider width="16%" class="nrgDashboard-cusDataBpInfo-horiLine"/>
+        </ute:Tag>
+
+        <utmain:Infoline class="nrgDashboard-cusDataBpInfo-infoLine-first" expanded="true" press=".onTitlePressed">
+            <utmain:headerContent>
+                <div class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt">TITLE/NAME</div>
+            </utmain:headerContent>
+            <utmain:content>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+            </utmain:content>
+        </utmain:Infoline>
+
+        <utmain:Infoline class="nrgDashboard-cusDataBpInfo-infoLine" expanded="true" press=".onAddressPressed">
+            <utmain:headerContent>
+                <div class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt">ADDRESS</div>
+            </utmain:headerContent>
+            <utmain:content>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+            </utmain:content>
+        </utmain:Infoline>
+
+        <utmain:Infoline class="nrgDashboard-cusDataBpInfo-infoLine" expanded="true" press=".onPersonalInfoPressed">
+            <utmain:headerContent>
+                <div class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt">PERSONAL INFO</div>
+            </utmain:headerContent>
+            <utmain:content>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+            </utmain:content>
+        </utmain:Infoline>
+
+        <utmain:Infoline class="nrgDashboard-cusDataBpInfo-infoLine" expanded="true" press=".onContactInfoPressed">
+            <utmain:headerContent>
+                <div class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt">CONTACT INFO</div>
+            </utmain:headerContent>
+            <utmain:content>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+            </utmain:content>
+        </utmain:Infoline>
+
+        <utmain:Infoline class="nrgDashboard-cusDataBpInfo-infoLine" expanded="true" press=".onMarketPrefPressed">
+            <utmain:headerContent>
+                <div class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt">MARKETING PREFERENCES</div>
+            </utmain:headerContent>
+            <utmain:content>
+                <div class="customBody">this is full size body</div>
+                <div class="customBody">this is full size body</div>
+            </utmain:content>
+        </utmain:Infoline>
+
+    </ute:Tag>
+</mvc:View>
