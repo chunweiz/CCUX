@@ -96,6 +96,8 @@ sap.ui.define(
                 PAYLOAD: oPayload
             });
 
+            jQuery.sap.log.info('[WebUiManager]: _notifyWebUi - message: ' + sMessage);
+
             window.parent.postMessage(sMessage, this._getDomain());
 
             return this;
@@ -104,7 +106,7 @@ sap.ui.define(
         Manager.prototype._fromWebUi = function (oEvent) {
             var oData, oEventBus;
 
-            jQuery.sap.log.info(oEvent.data);
+            jQuery.sap.log.info('[WebUiManager]: _fromWebUi - message: ' + oEvent.data);
 
             if (oEvent.origin !== this._getDomain()) {
                 return;
