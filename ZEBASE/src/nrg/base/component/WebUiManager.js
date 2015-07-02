@@ -7,12 +7,12 @@ sap.ui.define(
         'sap/ui/base/Object'
     ],
 
-    function (jQuery, Object) {
+    function (jQuery, BaseObject) {
         'use strict';
 
-        var Manager = Object.extend('nrg.base.component.WebUiManager', {
+        var Manager = BaseObject.extend('nrg.base.component.WebUiManager', {
             constructor: function (oComponent) {
-                Object.apply(this);
+                BaseObject.apply(this);
                 this._oComponent = oComponent;
             },
 
@@ -39,7 +39,7 @@ sap.ui.define(
             Subscribe: {
                 Channel: 'nrg.webui.subscribe',
                 _aEvent: [
-                    'ENDCONTACT'
+                    'NAVIGATE'
                 ]
             }
         };
@@ -96,7 +96,6 @@ sap.ui.define(
                 PAYLOAD: oPayload
             });
 
-            jQuery.sap.log.info(sMessage);
             window.parent.postMessage(sMessage, this._getDomain());
 
             return this;
@@ -112,7 +111,7 @@ sap.ui.define(
             }
 
             oData = JSON.parse(event.data);
-            if (!oData || !oData.event || Manager.EventBus.Subscribe._aEvent.indexOf(oData.EVENT) === -1) {
+            if (!oData || !oData.EVENT || Manager.EventBus.Subscribe._aEvent.indexOf(oData.EVENT) === -1) {
                 return;
             }
 
@@ -126,6 +125,7 @@ sap.ui.define(
 
         Manager.prototype.destroy = function () {
             this._deregisterEventBus();
+            BaseObject.prototype.destroy.apply(this, arguments);
         };
 
         return Manager;
