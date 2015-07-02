@@ -14,6 +14,8 @@ sap.ui.define(
         var CustomController = Controller.extend('nrg.module.dashboard.view.CustomerDataBpInfo');
 
         CustomController.prototype.onInit = function () {
+            //Model to track page edit/save status
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPageStatus');
 
         };
 
@@ -28,6 +30,17 @@ sap.ui.define(
         CustomController.prototype.onExit = function () {
 
         };
+
+
+
+
+
+
+
+
+
+
+
 
         return CustomController;
     }
