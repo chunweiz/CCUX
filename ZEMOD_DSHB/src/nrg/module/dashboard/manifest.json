@@ -37,17 +37,17 @@
 
                 "dashboard.SearchNoID": {
                     "pattern": "searchNoID",
-                    "target": [ "dashboard.CallerNoIDSearch", "dashboard.CallerNoIDEnrollment", "" ]
+                    "target": [ "dashboard.CallerNoIDSearch", "dashboard.CallerNoIDEnrollment" ]
                 },
 
                 "dashboard.SearchNoIDREBS": {
                     "pattern": "searchNoIDREBS",
-                    "target": [ "dashboard.CallerNoIDSearchREBS", "dashboard.CallerNoIDEnrollment", "" ]
+                    "target": [ "dashboard.CallerNoIDSearchREBS", "dashboard.CallerNoIDEnrollment" ]
                 },
 
                 "dashboard.Bp": {
                     "pattern": "bp/{bpNum}",
-                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "" ]
+                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary" ]
                 },
 
                 "dashboard.BpCa": {
@@ -57,12 +57,12 @@
 
                 "dashboard.PrePD": {
                     "pattern": "prepd",
-                    "target": [ "dashboard.CustomerDataPrePD", "dashboard.CustomerDataSummary", "" ]
+                    "target": [ "dashboard.CustomerDataPrePD", "dashboard.CustomerDataSummary" ]
                 },
 
                 "dashboard.BillingInfo": {
                     "pattern": "billinginfo",
-                    "target": [ "dashboard.CustomerDataBillingInfo", "dashboard.CustomerDataSummary", "" ]
+                    "target": [ "dashboard.CustomerDataBillingInfo", "dashboard.CustomerDataSummary" ]
                 },
 
                 "dashboard.BpInfo": {
