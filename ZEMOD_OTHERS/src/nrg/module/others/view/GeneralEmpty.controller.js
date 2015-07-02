@@ -15,8 +15,8 @@ sap.ui.define(
             var oEventBus = sap.ui.getCore().getEventBus();
 
             oEventBus.publish(WebUiManager.EventBus.Publish.Channel, 'BPCONFIRMED', {
-                BP: '0123456789',
-                CA: '9876543210'
+                bpNum: '0123456789',
+                caNum: '9876543210'
             });
         };
 

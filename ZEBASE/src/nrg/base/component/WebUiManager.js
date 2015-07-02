@@ -28,25 +28,42 @@ sap.ui.define(
         */
         Manager.EventBus = {
             Publish: {
-                Channel: 'nrg.webui.publish',
-                _aEvent: [
-                    'BPCONFIRMED',
-                    'BUAGCONFIRMED',
-                    'BUAGRESET'
-                ]
+                Channel: 'nrg.webui.publish'
             },
 
             Subscribe: {
-                Channel: 'nrg.webui.subscribe',
-                _aEvent: [
-                    'NAVIGATE'
-                ]
+                Channel: 'nrg.webui.subscribe'
             }
         };
 
         Manager.prototype.start = function () {
+            this._readEventMetadata();
             this._addDomEventListener();
             this._registerEventBus();
+        };
+
+        Manager.prototype._readEventMetadata = function () {
+            var oConfig, oWebUi, sEventName;
+
+            oConfig = this._oComponent.getMetadata().getConfig() || {};
+            oWebUi = oConfig.webUi || {};
+            oWebUi.events = oWebUi.events || {};
+            oWebUi.events.publish = oWebUi.events.publish || {};
+            oWebUi.events.subscribe = oWebUi.events.subscribe || {};
+
+            this._aPublishEvent = [];
+            for (sEventName in oWebUi.events.publish) {
+                if (oWebUi.events.publish.hasOwnProperty(sEventName)) {
+                    this._aPublishEvent.push(sEventName);
+                }
+            }
+
+            this._aSubscribeEvent = [];
+            for (sEventName in oWebUi.events.subscribe) {
+                if (oWebUi.events.subscribe.hasOwnProperty(sEventName)) {
+                    this._aSubscribeEvent.push(sEventName);
+                }
+            }
         };
 
         Manager.prototype._addDomEventListener = function () {
@@ -58,23 +75,17 @@ sap.ui.define(
         };
 
         Manager.prototype._registerEventBus = function () {
-            var oWebUiEvent, oEventBus;
+            var oEventBus = sap.ui.getCore().getEventBus();
 
-            oEventBus = sap.ui.getCore().getEventBus();
-            oWebUiEvent = Manager.EventBus.Publish._aEvent;
-
-            oWebUiEvent.forEach(function (sEvent) {
+            this._aPublishEvent.forEach(function (sEvent) {
                 oEventBus.subscribe(Manager.EventBus.Publish.Channel, sEvent, this._onEventBusSubscribed, this);
             }.bind(this));
         };
 
         Manager.prototype._deregisterEventBus = function () {
-            var oWebUiEvent, oEventBus;
+            var oEventBus = sap.ui.getCore().getEventBus();
 
-            oEventBus = sap.ui.getCore().getEventBus();
-            oWebUiEvent = Manager.EventBus.Publish._aEvent;
-
-            oWebUiEvent.forEach(function (sEvent) {
+            this._aPublishEvent.forEach(function (sEvent) {
                 oEventBus.unsubscribe(Manager.EventBus.Publish.Channel, sEvent, this._onEventBusSubscribed, this);
             }.bind(this));
         };
@@ -92,9 +103,11 @@ sap.ui.define(
             }
 
             sMessage = JSON.stringify({
-                EVENT: sEvent,
-                PAYLOAD: oPayload
+                event: sEvent,
+                payload: oPayload
             });
+
+            jQuery.sap.log.info('[WebUiManager]: _notifyWebUi - message: ' + sMessage);
 
             window.parent.postMessage(sMessage, this._getDomain());
 
@@ -104,19 +117,19 @@ sap.ui.define(
         Manager.prototype._fromWebUi = function (oEvent) {
             var oData, oEventBus;
 
-            jQuery.sap.log.info(oEvent.data);
+            jQuery.sap.log.info('[WebUiManager]: _fromWebUi - message: ' + oEvent.data);
 
             if (oEvent.origin !== this._getDomain()) {
                 return;
             }
 
             oData = JSON.parse(event.data);
-            if (!oData || !oData.EVENT || Manager.EventBus.Subscribe._aEvent.indexOf(oData.EVENT) === -1) {
+            if (!oData || !oData.event || this._aSubscribeEvent.indexOf(oData.event) === -1) {
                 return;
             }
 
             oEventBus = sap.ui.getCore().getEventBus();
-            oEventBus.publish(Manager.EventBus.Subscribe.Channel, oData.EVENT, oData.PAYLOAD);
+            oEventBus.publish(Manager.EventBus.Subscribe.Channel, oData.event, oData.payload);
         };
 
         Manager.prototype._getDomain = function () {
