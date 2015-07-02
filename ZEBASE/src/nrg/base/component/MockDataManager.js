@@ -10,12 +10,12 @@ sap.ui.define(
         'sap/ui/model/odata/CountMode'
     ],
 
-    function (jQuery, Object, MockServer, ODataModel, CountMode) {
+    function (jQuery, BaseObject, MockServer, ODataModel, CountMode) {
         'use strict';
 
-        var Manager = Object.extend('nrg.base.component.MockDataManager', {
+        var Manager = BaseObject.extend('nrg.base.component.MockDataManager', {
             constructor: function (oComponent) {
-                Object.apply(this);
+                BaseObject.apply(this);
 
                 this._oComponent = oComponent;
             },
@@ -116,6 +116,11 @@ sap.ui.define(
             oMockServer.start();
 
             return oMockServer;
+        };
+
+        Manager.prototype.destroy = function () {
+            this.stopMockServers();
+            BaseObject.prototype.destroy.apply(this, arguments);
         };
 
         return Manager;
