@@ -53,6 +53,24 @@
                 "controlAggregation": "content",
                 "clearControlAggregation": true
             }
+        },
+
+        "config": {
+            "webUi": {
+                "events": {
+                    "publish": {
+                        "PING": {},
+                        "BPCONFIRMED": {},
+                        "BUAGCONFIRMED": {},
+                        "BUAGRESET": {}
+                    },
+
+                    "subscribe": {
+                        "PING": {},
+                        "NAVIGATE": {}
+                    }
+                }
+            }
         }
     }
 }
