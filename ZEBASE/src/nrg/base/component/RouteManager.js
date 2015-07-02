@@ -57,7 +57,7 @@ sap.ui.define(
         Manager.prototype._registerRouteCallback = function () {
             var oRoute, sRouteName;
 
-            oRoute = this._oComponent.getRoutes();
+            oRoute = this._oComponent.getMetadata().getRoutes();
             for (sRouteName in oRoute) {
                 if (oRoute.hasOwnProperty(sRouteName)) {
                     oRoute[sRouteName].callback = this._onRouteCallback.bind(this);
