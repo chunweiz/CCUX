@@ -92,8 +92,8 @@ sap.ui.define(
             }
 
             sMessage = JSON.stringify({
-                EVENT: sEvent,
-                PAYLOAD: oPayload
+                event: sEvent,
+                payload: oPayload
             });
 
             jQuery.sap.log.info('[WebUiManager]: _notifyWebUi - message: ' + sMessage);
@@ -113,12 +113,12 @@ sap.ui.define(
             }
 
             oData = JSON.parse(event.data);
-            if (!oData || !oData.EVENT || Manager.EventBus.Subscribe._aEvent.indexOf(oData.EVENT) === -1) {
+            if (!oData || !oData.event || Manager.EventBus.Subscribe._aEvent.indexOf(oData.event) === -1) {
                 return;
             }
 
             oEventBus = sap.ui.getCore().getEventBus();
-            oEventBus.publish(Manager.EventBus.Subscribe.Channel, oData.EVENT, oData.PAYLOAD);
+            oEventBus.publish(Manager.EventBus.Subscribe.Channel, oData.event, oData.payload);
         };
 
         Manager.prototype._getDomain = function () {
