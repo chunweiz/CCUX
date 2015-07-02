@@ -28,8 +28,98 @@
                 <div class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt">TITLE/NAME</div>
             </utmain:headerContent>
             <utmain:content>
-                <div class="customBody">this is full size body</div>
-                <div class="customBody">this is full size body</div>
+                <l:MatrixLayout
+                    class="nrgDashboard-cusDataBpInfo-layout"
+                    widths="500px,500px" columns="2" width="100%">
+                    <l:rows>
+                        <l:MatrixLayoutRow>
+                            <l:cells>
+                                <!--Area Left-->
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Title:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="N/A" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Acdemic Title:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="N/A" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="First Name:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="Jeremiah" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Last Name:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="Clendenning" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+
+                            <!--Area right-->
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Maiden Name:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="N/A" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Middle Name:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="N/A" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Suffix:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="N/A" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+                            </l:cells>
+                        </l:MatrixLayoutRow>
+                    </l:rows>
+                </l:MatrixLayout>
+
+                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onTitleEdit" visible="true" text="Edit"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onTitleSave" visible="false" text="Save"/>
+                </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
 
@@ -38,8 +128,138 @@
                 <div class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt">ADDRESS</div>
             </utmain:headerContent>
             <utmain:content>
-                <div class="customBody">this is full size body</div>
-                <div class="customBody">this is full size body</div>
+                <l:MatrixLayout
+                    class="nrgDashboard-cusDataBil-layout"
+                    widths="700px,300px" columns="2" width="100%">
+                    <l:rows>
+                        <l:MatrixLayoutRow>
+                            <l:cells>
+                                <!--Area Left-->
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="16.5%,83.5%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Street Name:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="Long Title Main st." />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+
+                                <!--Area right-->
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="50%,50%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Street Number:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="123" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+                            </l:cells>
+                        </l:MatrixLayoutRow>
+                    </l:rows>
+                </l:MatrixLayout>
+
+                <l:MatrixLayout
+                    class="nrgDashboard-cusDataBil-layout"
+                    widths="400px,600px" columns="2" width="100%">
+                    <l:rows>
+                        <l:MatrixLayoutRow>
+                            <l:cells>
+                                <!--Area Left-->
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="30%,70%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="App./Unit:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="A123" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+
+                                <!--Area right-->
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="12%,88%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="PO Box:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="N/A" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+                            </l:cells>
+                        </l:MatrixLayoutRow>
+                    </l:rows>
+                </l:MatrixLayout>
+
+                <l:MatrixLayout
+                    class="nrgDashboard-cusDataBil-layout"
+                    widths="400px,200px,400px" columns="3" width="100%">
+                    <l:rows>
+                        <l:MatrixLayoutRow>
+                            <l:cells>
+                                <!--Area Left-->
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="30%,70%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="City:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="Houston" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+
+                                <!--Area middle-->
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="30%,70%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="State:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="TX" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+
+                                <!--Area right-->
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="20%,80%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Zip Code:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="77777" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+                            </l:cells>
+                        </l:MatrixLayoutRow>
+                    </l:rows>
+                </l:MatrixLayout>
+
+                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onAddrEdit" visible="true" text="Edit"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onAddrSave" visible="false" text="Save"/>
+                </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
 
@@ -48,8 +268,68 @@
                 <div class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt">PERSONAL INFO</div>
             </utmain:headerContent>
             <utmain:content>
-                <div class="customBody">this is full size body</div>
-                <div class="customBody">this is full size body</div>
+                <l:MatrixLayout
+                    class="nrgDashboard-cusDataBil-layout"
+                    widths="500px,500px" columns="2" width="100%">
+                    <l:rows>
+                        <l:MatrixLayoutRow>
+                            <l:cells>
+
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="DOB:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="11/20/1976" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Language:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="English, Spanish" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+
+
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="15%,85%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="SS#:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="000000000" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <l:MatrixLayout widths="15%,85%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="DL#:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="000000000" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+                            </l:cells>
+                        </l:MatrixLayoutRow>
+                    </l:rows>
+                </l:MatrixLayout>
+
+                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onPersonalInfoEdit" visible="true" text="Edit"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onPersonalInfoSave" visible="false" text="Save"/>
+                </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
 
@@ -58,8 +338,90 @@
                 <div class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt">CONTACT INFO</div>
             </utmain:headerContent>
             <utmain:content>
-                <div class="customBody">this is full size body</div>
-                <div class="customBody">this is full size body</div>
+                <l:MatrixLayout
+                    class="nrgDashboard-cusDataBil-layout"
+                    widths="500px,500px" columns="2" width="100%">
+                    <l:rows>
+                        <l:MatrixLayoutRow>
+                            <l:cells>
+                                <!--Area Left-->
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="30%,70%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Cell Phone:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="123 456 7890" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <l:MatrixLayout widths="30%,40%,10%,20%" columns="4">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Day Phone:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="123 456 7890" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Ext.:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="789" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <l:MatrixLayout widths="30%,40%,10%,20%" columns="4">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Evening Ph:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="123 456 7890" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Ext.:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="789" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+
+                            <!--Area right-->
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="30%,70%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Email:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="info@info.com" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <l:MatrixLayout widths="30%,70%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="2nd Email:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="infoname2@info.com" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+                            </l:cells>
+                        </l:MatrixLayoutRow>
+                    </l:rows>
+                </l:MatrixLayout>
+
+                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onContactInfoEdit" visible="true" text="Edit"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onContactInfoSave" visible="false" text="Save"/>
+                </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
 
@@ -68,8 +430,63 @@
                 <div class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt">MARKETING PREFERENCES</div>
             </utmain:headerContent>
             <utmain:content>
-                <div class="customBody">this is full size body</div>
-                <div class="customBody">this is full size body</div>
+                <l:MatrixLayout
+                    class="nrgDashboard-cusDataBil-layout"
+                    widths="700px,300px" columns="2" width="100%">
+                    <l:rows>
+                        <l:MatrixLayoutRow>
+                            <l:cells>
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="70%,30%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Phone Preferences - New Products:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="info@info.com" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <l:MatrixLayout widths="70%,30%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Email Preferences - Energy Efficiency:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="infoname2@info.com" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <l:MatrixLayout widths="70%,30%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Email Perferences - Marketing Promotions:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="infoname2@info.com" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <l:MatrixLayout widths="70%,30%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Email Perferences - Offer:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="infoname2@info.com" />
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+                            </l:cells>
+                        </l:MatrixLayoutRow>
+                    </l:rows>
+                </l:MatrixLayout>
+
+                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onMarketprefEdit" visible="true" text="Edit"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onMarketPrefSave" visible="false" text="Save"/>
+                </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
 
