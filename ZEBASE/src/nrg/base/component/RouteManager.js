@@ -43,30 +43,26 @@ sap.ui.define(
         Manager.prototype._onWebUiEvent = function (sChannelId, sEventId, oData) {
             var oRouter, sRouteName, oRouteParams;
 
-            if (!oData || !oData.ROUTE) {
+            if (!oData || !oData.route) {
                 return;
             }
 
-            sRouteName = oData.ROUTE;
-            oRouteParams = oData.PARAMS || null;
+            sRouteName = oData.route;
+            oRouteParams = oData.params || null;
 
             oRouter = this._oComponent.getRouter();
             oRouter.navTo(sRouteName, oRouteParams, false);
         };
 
         Manager.prototype._registerRouteCallback = function () {
-            var oRoute, sRouteName;
-
-            oRoute = this._oComponent.getMetadata().getRoutes();
-            for (sRouteName in oRoute) {
-                if (oRoute.hasOwnProperty(sRouteName)) {
-                    oRoute[sRouteName].callback = this._onRouteCallback.bind(this);
-                }
-            }
+            var oRouter = this._oComponent.getRouter();
+            oRouter.attachRouteMatched(this._onRouteMatched, this);
         };
 
-        Manager.prototype._onRouteCallback = function (route, args, config, targetControl, view) {
-            jQuery.sap.log.info('Navigating to route ' + route);
+        Manager.prototype._onRouteMatched = function (oEvent) {
+            var oRoute = oEvent.getParameters();
+
+            //TODO: Intercept routing
         };
 
         Manager.prototype.destroy = function () {
