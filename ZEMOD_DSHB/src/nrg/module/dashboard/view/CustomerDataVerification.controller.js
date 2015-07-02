@@ -340,10 +340,50 @@ sap.ui.define(
             }
         };
         Controller.prototype._onConPone = function () {
+            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
+                oContracts = this.getView().getModel('oAllContractsofBuag'),
+                iSelectedIndex = parseInt(oPage[0].co_ind, 10) - 1,
+                i;
+
+            if (iSelectedIndex === 0) {
+                for (i = 0; i < oPage.length; i = i + 1) {
+                    oPage[i].co_ind = i + 1;
+                }
+            } else {
+                for (i = 0; i < oPage.length; i = i + 1) {
+                    oPage[i].co_ind = iSelectedIndex + i;
+                }
+            }
+            this.getView().getModel('oCoPageModel').getProperty('/paging', oPage);
         };
         Controller.prototype._onConPtwo = function () {
+            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
+                oContracts = this.getView().getModel('oAllContractsofBuag'),
+                iSelectedIndex = parseInt(oPage[1].co_ind, 10) - 1,
+                i;
+
+            for (i = 0; i < oPage.length; i = i + 1) {
+                oPage[i].co_ind = iSelectedIndex + i;
+            }
+
+            this.getView().getModel('oCoPageModel').getProperty('/paging', oPage);
         };
         Controller.prototype._onConPthree = function () {
+            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
+                oContracts = this.getView().getModel('oAllContractsofBuag'),
+                iSelectedIndex = parseInt(oPage[2].co_ind, 10) - 1,
+                i;
+
+            if (iSelectedIndex === oContracts.length - 1) {
+                for (i = 0; i < oPage.length; i = i + 1) {
+                    oPage[i].co_ind = oContracts.length - 3 + i + 1;
+                }
+            } else {
+                for (i = 0; i < oPage.length; i = i + 1) {
+                    oPage[i].co_ind = iSelectedIndex + i + 1;
+                }
+            }
+            this.getView().getModel('oCoPageModel').getProperty('/paging', oPage);
         };
         Controller.prototype._onConRite = function () {
             var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
@@ -372,10 +412,16 @@ sap.ui.define(
         };
         Controller.prototype._onConLast = function () {
             var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
-                iSelectedIndex = parseInt(oPage[0].co_ind, 10) - 1;
+                iSelectedIndex = parseInt(oPage[0].co_ind, 10) - 1,
+                i;
 
             this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
             delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+
+            for (i = 0; i < 3; i = i + 1) {
+                oPage[i].con_ind = iSelectedIndex + 1 - 3 + i;
+            }
+            this.getView().getModel('oCoPageModel').getProperty('/paging', oPage);
         };
         /*Ends Here*/
         /********************************************************************************************/
