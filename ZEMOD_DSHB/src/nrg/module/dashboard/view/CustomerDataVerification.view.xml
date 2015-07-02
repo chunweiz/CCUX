@@ -189,7 +189,7 @@
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgLeft}">
                                             </utmain:Button>
                                             <utmain:Button design="None"
-                                                visible="{oCoPageModel>/paging/0/exist}"
+                                                visible="{oCoPageModel>/paging/1/exist}"
                                                 class="nrgDashboard-cusDataVerify-mContent-pagBtn"
                                                 press="._onConPone"
                                                 text="{oCoPageModel>/paging/0/co_ind}">

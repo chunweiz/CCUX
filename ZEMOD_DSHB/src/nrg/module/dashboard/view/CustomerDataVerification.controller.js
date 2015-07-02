@@ -43,6 +43,7 @@ sap.ui.define(
             this._initDtaVrfRetr();
             this._initCfrmStatus();
             //this._initCoPageModel();
+
         };
 
         Controller.prototype._initCoPageModel = function () {
@@ -170,6 +171,7 @@ sap.ui.define(
                             if (i < 3) {
                                 oPage[i].exist = true;
                                 oPage[i].co_ind = i + 1;
+                                oPageModel.setProperty('/threeLarger', false);
                             } else {
                                 oPageModel.setProperty('/threeLarger', true);
                             }
@@ -303,38 +305,26 @@ sap.ui.define(
         /********************************************************************************************/
         /*Contract Page Handlers*/
         Controller.prototype._onConFirst = function () {
-            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
-                i;
+            var oContracts = this.getView().getModel('oAllContractsofBuag'),
+                iSelectedIndex = 0;
 
-            this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[0]);
+            this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
             delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
 
-            for (i = 0; i < 3; i = i + 1) {
-                oPage[i].con_ind = i;
-            }
-            this.getView().getModel('oCoPageModel').getProperty('/paging', oPage);
+            oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
+            this._refreshPaging();
         };
         Controller.prototype._onConLeft = function () {
             var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
                 oContracts = this.getView().getModel('oAllContractsofBuag'),
-                iSelectedIndex = parseInt(oPage[0].co_ind, 10) - 1,
-                i;
+                iSel_Ind = parseInt(oContracts.getProperty('/selectedKey'), 10) - 1;  //Selected is the new selected index
 
-            if (iSelectedIndex - 1 > -1) {
-                iSelectedIndex = iSelectedIndex - 1;
-                this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSelectedIndex]);
+            if (iSel_Ind > -1) {
+                this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSel_Ind]);
                 delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
 
-                if (iSelectedIndex === 0) {
-                    for (i = 0; i < oPage.length; i = i + 1) {
-                        oPage[i].co_ind = i + 1;
-                    }
-                } else {
-                    for (i = 0; i < oPage.length; i = i + 1) {
-                        oPage[i].co_ind = iSelectedIndex + i;
-                    }
-                }
-                this.getView().getModel('oCoPageModel').getProperty('/paging', oPage);
+                oContracts.setProperty('/selectedKey', iSel_Ind.toString());
+                this._refreshPaging();
             } else {
                 return; //do nothing if it's invalid
             }
@@ -342,86 +332,85 @@ sap.ui.define(
         Controller.prototype._onConPone = function () {
             var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
                 oContracts = this.getView().getModel('oAllContractsofBuag'),
-                iSelectedIndex = parseInt(oPage[0].co_ind, 10) - 1,
-                i;
+                iSelectedIndex = oPage[0].co_ind - 1;
 
-            if (iSelectedIndex === 0) {
-                for (i = 0; i < oPage.length; i = i + 1) {
-                    oPage[i].co_ind = i + 1;
-                }
-            } else {
-                for (i = 0; i < oPage.length; i = i + 1) {
-                    oPage[i].co_ind = iSelectedIndex + i;
-                }
-            }
-            this.getView().getModel('oCoPageModel').getProperty('/paging', oPage);
+            this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSelectedIndex]);
+            delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+
+            oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
+            this._refreshPaging();
         };
         Controller.prototype._onConPtwo = function () {
             var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
                 oContracts = this.getView().getModel('oAllContractsofBuag'),
-                iSelectedIndex = parseInt(oPage[1].co_ind, 10) - 1,
+                iSelectedIndex = oPage[1].co_ind - 1,
                 i;
 
-            for (i = 0; i < oPage.length; i = i + 1) {
-                oPage[i].co_ind = iSelectedIndex + i;
-            }
+            this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSelectedIndex]);
+            delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
 
-            this.getView().getModel('oCoPageModel').getProperty('/paging', oPage);
+            oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
+            this._refreshPaging();
         };
         Controller.prototype._onConPthree = function () {
             var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
                 oContracts = this.getView().getModel('oAllContractsofBuag'),
-                iSelectedIndex = parseInt(oPage[2].co_ind, 10) - 1,
-                i;
+                iSelectedIndex = oPage[2].co_ind - 1;
 
-            if (iSelectedIndex === oContracts.length - 1) {
-                for (i = 0; i < oPage.length; i = i + 1) {
-                    oPage[i].co_ind = oContracts.length - 3 + i + 1;
-                }
-            } else {
-                for (i = 0; i < oPage.length; i = i + 1) {
-                    oPage[i].co_ind = iSelectedIndex + i + 1;
-                }
-            }
-            this.getView().getModel('oCoPageModel').getProperty('/paging', oPage);
+            this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSelectedIndex]);
+            delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+
+            oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
+            this._refreshPaging();
         };
         Controller.prototype._onConRite = function () {
             var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
                 oContracts = this.getView().getModel('oAllContractsofBuag'),
-                iSelectedIndex = parseInt(oPage[0].co_ind, 10) - 1,
-                i;
+                iSel_Ind = parseInt(oContracts.getProperty('/selectedKey'), 10) + 1;  //Selected is the new selected index
 
-            if (iSelectedIndex < oContracts.length) {
-                iSelectedIndex = iSelectedIndex + 1;
-                this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSelectedIndex]);
+
+            if (iSel_Ind < oContracts.oData.length) {
+                this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSel_Ind]);
                 delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
 
-                if (iSelectedIndex === oContracts.length - 1) {
-                    for (i = 0; i < oPage.length; i = i + 1) {
-                        oPage[i].co_ind = oContracts.length - 3 + i + 1;
-                    }
-                } else {
-                    for (i = 0; i < oPage.length; i = i + 1) {
-                        oPage[i].co_ind = iSelectedIndex + i;
-                    }
-                }
-                this.getView().getModel('oCoPageModel').getProperty('/paging', oPage);
+                oContracts.setProperty('/selectedKey', iSel_Ind.toString());
+                this._refreshPaging();
             } else {
                 return; //do nothing if it's invalid
             }
         };
         Controller.prototype._onConLast = function () {
-            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
-                iSelectedIndex = parseInt(oPage[0].co_ind, 10) - 1,
-                i;
+            var oContracts = this.getView().getModel('oAllContractsofBuag'),
+                iSelectedIndex = oContracts.oData.length - 1;
 
             this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
             delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
 
-            for (i = 0; i < 3; i = i + 1) {
-                oPage[i].con_ind = iSelectedIndex + 1 - 3 + i;
+            oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
+            this._refreshPaging();
+        };
+
+        Controller.prototype._refreshPaging = function () {
+            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
+                oContracts = this.getView().getModel('oAllContractsofBuag'),
+                iSel_Ind = parseInt(oContracts.getProperty('/selectedKey'), 10),
+                i;
+
+            if (iSel_Ind === 0) {
+                for (i = 0; i < 3; i = i + 1) {
+                    oPage[i].co_ind = i + 1;
+                }
+            } else if (iSel_Ind === (oContracts.oData.length - 1)) {
+                for (i = 0; i < 3; i = i + 1) {
+                    oPage[i].co_ind = iSel_Ind + 1 - 3 + i;
+                }
+            } else {
+                for (i = 0; i < 3; i = i + 1) {
+                    oPage[i].co_ind = iSel_Ind + i;
+                }
             }
-            this.getView().getModel('oCoPageModel').getProperty('/paging', oPage);
+
+            this.getView().getModel('oCoPageModel').setProperty('/paging', oPage);
         };
         /*Ends Here*/
         /********************************************************************************************/
