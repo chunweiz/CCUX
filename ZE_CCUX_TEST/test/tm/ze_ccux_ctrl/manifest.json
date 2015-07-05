@@ -23,7 +23,8 @@
                 "RadioButton": { "pattern": "RadioButton", "target": [ "RadioButton" ] },
                 "TabBar": { "pattern": "TabBar", "target": [ "TabBar" ] },
                 "Popup": { "pattern": "Popup", "target": [ "Popup" ] },
-                "Icon": { "pattern": "Icon", "target": [ "Icon" ] }
+                "Icon": { "pattern": "Icon", "target": [ "Icon" ] },
+                "XMLTemplate": { "pattern": "XMLTemplate", "target": [ "XMLTemplate" ] }
             },
 
             "config": {
@@ -42,7 +43,8 @@
                 "RadioButton": { "viewName": "RadioButton", "controlId": "idAppContent" },
                 "TabBar": { "viewName": "TabBar", "controlId": "idAppContent" },
                 "Popup": { "viewName": "Popup", "controlId": "idAppContent" },
-                "Icon": { "viewName": "Icon", "controlId": "idAppContent" }
+                "Icon": { "viewName": "Icon", "controlId": "idAppContent" },
+                "XMLTemplate": { "viewName": "XMLView", "controlId": "idAppContent" }
             }
         }
     }

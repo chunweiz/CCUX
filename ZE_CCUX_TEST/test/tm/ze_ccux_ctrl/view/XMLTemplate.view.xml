@@ -1,0 +1,16 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+
+    <template:if test="{tmpl>/meta/showNrg}">
+        <template:then>
+            <sm:Label text="{comp-test>/data/title/nrg}"/>
+        </template:then>
+        <template:else>
+            <sm:Label text="{comp-test>/data/title/ute}"/>
+        </template:else>
+    </template:if>
+
+</mvc:View>

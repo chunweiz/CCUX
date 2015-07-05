@@ -1,0 +1,12 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    controllerName="test.tm.ze_ccux_ctrl.view.XMLView"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <sm:ScrollContainer id="viewContent" height="100%" width="100%" horizontal="true" vertical="true">
+    </sm:ScrollContainer>
+
+</mvc:View>
