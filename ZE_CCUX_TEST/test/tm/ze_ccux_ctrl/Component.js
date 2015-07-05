@@ -3,10 +3,11 @@
 sap.ui.define(
     [
         'sap/ui/core/UIComponent',
-        './Icon'
+        './Icon',
+        'sap/ui/model/json/JSONModel'
     ],
 
-    function (UIComponent, Icon) {
+    function (UIComponent, Icon, JSONModel) {
         'use strict';
 
         var CustomComponent = UIComponent.extend('test.tm.ze_ccux_ctrl.Component', {
@@ -20,6 +21,17 @@ sap.ui.define(
 
             this.getRouter().initialize();
             Icon.load();
+
+            var oModel = new JSONModel({
+                data: {
+                    title: {
+                        nrg: 'NRG Reliant Interaction Center',
+                        ute: 'Utegration Inc'
+                    }
+                }
+            });
+
+            this.setModel(oModel, 'comp-test');
         };
 
         return CustomComponent;

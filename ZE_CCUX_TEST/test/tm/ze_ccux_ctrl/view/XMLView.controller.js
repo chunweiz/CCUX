@@ -14,18 +14,6 @@ sap.ui.define(
         CustomController.prototype.onInit = function () {
             var oCompModel, oTemplateModel, oViewTemplate;
 
-            //Simulate model at component level
-            oCompModel = new JSONModel({
-                data: {
-                    title: {
-                        nrg: 'NRG Reliant Interaction Center',
-                        ute: 'Utegration Inc'
-                    }
-                }
-            });
-
-            this.getView().setModel(oCompModel, 'comp-test');
-
             oTemplateModel = new JSONModel({
                 meta: {
                     showNrg: false
