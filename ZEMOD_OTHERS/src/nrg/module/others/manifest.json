@@ -11,6 +11,13 @@
                         "comp-i18n-others": "i18n/module.properties"
                     }
                 }
+            },
+            "webUi": {
+                "events": {
+                    "publish": {
+                        "bpConfirmed": {}
+                    }
+                }
             }
         },
 

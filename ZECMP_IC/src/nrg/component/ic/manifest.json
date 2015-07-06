@@ -59,15 +59,12 @@
             "webUi": {
                 "events": {
                     "publish": {
-                        "PING": {},
-                        "BPCONFIRMED": {},
-                        "BUAGCONFIRMED": {},
-                        "BUAGRESET": {}
+                        "ping": {}
                     },
 
                     "subscribe": {
-                        "PING": {},
-                        "NAVIGATE": {}
+                        "ping": {},
+                        "navigate": {}
                     }
                 }
             }
