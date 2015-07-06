@@ -42,7 +42,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Title:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="N/A" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/titleEditable}" value="N/A"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -52,7 +52,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Acdemic Title:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="N/A" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/titleEditable}" value="N/A"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -62,7 +62,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="First Name:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="Jeremiah" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/titleEditable}" value="Jeremiah"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -72,7 +72,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Last Name:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="Clendenning" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/titleEditable}" value="Clendenning"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -86,7 +86,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Maiden Name:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="N/A" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/titleEditable}" value="N/A"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -96,7 +96,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Middle Name:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="N/A" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/titleEditable}" value="N/A"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -106,7 +106,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Suffix:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="N/A" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/titleEditable}" value="N/A"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -117,8 +117,8 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onTitleEdit" visible="true" text="Edit"/>
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onTitleSave" visible="false" text="Save"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onTitleEdit" visible="{oBpInfoConfig>/titleEditVisible}" text="Edit"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onTitleSave" visible="{oBpInfoConfig>/titleSaveVisible}" text="Save"/>
                 </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
@@ -142,7 +142,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Street Name:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="Long Title Main st." />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/addrEditable}" value="Long Title Main st."/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -156,7 +156,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Street Number:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="123" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/addrEditable}" value="123"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -180,7 +180,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="App./Unit:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="A123" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/addrEditable}" value="A123"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -194,7 +194,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="PO Box:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="N/A" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/addrEditable}" value="N/A"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -218,7 +218,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="City:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="Houston" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/addrEditable}" value="Houston"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -232,7 +232,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="State:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="TX" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/addrEditable}" value="TX"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -246,7 +246,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Zip Code:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="77777" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/addrEditable}" value="77777"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -257,8 +257,8 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onAddrEdit" visible="true" text="Edit"/>
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onAddrSave" visible="false" text="Save"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onAddrEdit" visible="{oBpInfoConfig>/addrEditVisible}" text="Edit"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onAddrSave" visible="{oBpInfoConfig>/addrSaveVisible}" text="Save"/>
                 </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
@@ -282,7 +282,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="DOB:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="11/20/1976" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/personalInfoEditable}" value="11/20/1976"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -292,7 +292,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Language:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="English, Spanish" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/personalInfoEditable}" value="English, Spanish"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -306,7 +306,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="SS#:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="000000000" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/personalInfoEditable}" value="000000000"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -316,7 +316,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="DL#:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="000000000" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/personalInfoEditable}" value="000000000"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -327,8 +327,8 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onPersonalInfoEdit" visible="true" text="Edit"/>
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onPersonalInfoSave" visible="false" text="Save"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onPersonalInfoEdit" visible="{oBpInfoConfig>/personalInfoEditVisible}" text="Edit"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onPersonalInfoSave" visible="{oBpInfoConfig>/personalInfoSaveVisible}" text="Save"/>
                 </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
@@ -352,7 +352,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Cell Phone:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="123 456 7890" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/contactInfoEditable}" value="123 456 7890"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -362,13 +362,13 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Day Phone:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="123 456 7890" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/contactInfoEditable}" value="123 456 7890"/>
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Ext.:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="789" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/contactInfoEditable}" value="789"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -378,13 +378,13 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Evening Ph:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="123 456 7890" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/contactInfoEditable}" value="123 456 7890"/>
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Ext.:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="789" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/contactInfoEditable}" value="789"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -398,7 +398,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Email:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="info@info.com" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/contactInfoEditable}" value="info@info.com"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -408,7 +408,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="2nd Email:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="infoname2@info.com" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/contactInfoEditable}" value="info@info.com"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -419,8 +419,8 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onContactInfoEdit" visible="true" text="Edit"/>
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onContactInfoSave" visible="false" text="Save"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onContactInfoEdit" visible="{oBpInfoConfig>/contactInfoEditVisible}" text="Edit"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onContactInfoSave" visible="{oBpInfoConfig>/contactInfoSaveVisible}" text="Save"/>
                 </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
@@ -443,7 +443,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Phone Preferences - New Products:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="info@info.com" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/mktPrfEditable}" value="info@info.com"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -453,7 +453,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Email Preferences - Energy Efficiency:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="infoname2@info.com" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/mktPrfEditable}" value="infoname2@info.com"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -463,7 +463,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Email Perferences - Marketing Promotions:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="infoname2@info.com" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/mktPrfEditable}" value="infoname2@info.com"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -473,7 +473,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Email Perferences - Offer:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-cnt" text="infoname2@info.com" />
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/mktPrfEditable}" value="infoname2@info.com"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -484,8 +484,8 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onMarketprefEdit" visible="true" text="Edit"/>
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onMarketPrefSave" visible="false" text="Save"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onMarketPrefEdit" visible="{oBpInfoConfig>/marketPrefEditVisible}" text="Edit"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onMarketPrefSave" visible="{oBpInfoConfig>/marketPrefSaveVisible}" text="Save"/>
                 </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
