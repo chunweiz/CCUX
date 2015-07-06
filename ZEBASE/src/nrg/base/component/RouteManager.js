@@ -52,6 +52,7 @@ sap.ui.define(
             oRouteParams = oData.params || null;
 
             oRouter = this._oComponent.getRouter();
+            jQuery.sap.log.info('Navigating to ' + sRouteName, '[RouteManager._onWebUiNavigate()]');
             oRouter.navTo(sRouteName, oRouteParams, false);
         };
 

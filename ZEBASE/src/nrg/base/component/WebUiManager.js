@@ -54,7 +54,7 @@ sap.ui.define(
         };
 
         Manager.prototype._fromWebUi = function (oEvent) {
-            var oData, oEventBus;
+            var oData;
 
             if (oEvent.origin !== this._getDomain()) {
                 return;
