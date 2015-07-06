@@ -110,6 +110,10 @@ sap.ui.define(
             this._oRouteManager.init();
         };
 
+        CustomComponent.prototype.getWebUiManager = function () {
+            return this._oWebUiManager;
+        };
+
         return CustomComponent;
     }
 );

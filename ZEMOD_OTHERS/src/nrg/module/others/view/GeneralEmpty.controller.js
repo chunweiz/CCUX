@@ -12,12 +12,19 @@ sap.ui.define(
         var CustomController = Controller.extend('nrg.module.others.view.GeneralEmpty');
 
         CustomController.prototype.onPressed = function (oControlEvent) {
-            var oEventBus = sap.ui.getCore().getEventBus();
+            var oWebUiManager = this.getOwnerComponent().getWebUiManager();
 
-            oEventBus.publish(WebUiManager.EventBus.Publish.Channel, 'bpConfirmed', {
+            oWebUiManager.notifyWebUi('bpConfirmed', {
                 bpNum: '0123456789',
                 caNum: '9876543210'
             });
+
+//            var oEventBus = sap.ui.getCore().getEventBus();
+//
+//            oEventBus.publish(WebUiManager.EventBus.Publish.Channel, 'bpConfirmed', {
+//                bpNum: '0123456789',
+//                caNum: '9876543210'
+//            });
         };
 
         return CustomController;

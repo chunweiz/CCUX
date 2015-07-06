@@ -31,18 +31,19 @@ sap.ui.define(
         };
 
         Manager.prototype._subscribeWebUi = function () {
-            var oEventBus = sap.ui.getCore().getEventBus();
-            oEventBus.subscribe(WebUiManager.EventBus.Subscribe.Channel, 'navigate', this._onWebUiEvent, this);
+            var oWebUiManager = this._oComponent.getWebUiManager();
+            oWebUiManager.attachEvent('navigate', this._onWebUiNavigate, this);
         };
 
         Manager.prototype._unsubscribeWebUi = function () {
-            var oEventBus = sap.ui.getCore().getEventBus();
-            oEventBus.unsubscribe(WebUiManager.EventBus.Subscribe.Channel, 'navigate', this._onWebUiEvent, this);
+            var oWebUiManager = this._oComponent.getWebUiManager();
+            oWebUiManager.detachEvent('navigate', this._onWebUiNavigate, this);
         };
 
-        Manager.prototype._onWebUiEvent = function (sChannelId, sEventId, oData) {
-            var oRouter, sRouteName, oRouteParams;
+        Manager.prototype._onWebUiNavigate = function (oEvent) {
+            var oData, oRouter, sRouteName, oRouteParams;
 
+            oData = oEvent.getParameters();
             if (!oData || !oData.route) {
                 return;
             }

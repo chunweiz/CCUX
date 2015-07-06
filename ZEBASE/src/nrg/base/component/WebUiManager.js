@@ -4,101 +4,41 @@
 sap.ui.define(
     [
         'jquery.sap.global',
-        'sap/ui/base/Object'
+        'sap/ui/base/Object',
+        'sap/ui/base/EventProvider'
     ],
 
-    function (jQuery, BaseObject) {
+    function (jQuery, BaseObject, EventProvider) {
         'use strict';
 
-        var Manager = BaseObject.extend('nrg.base.component.WebUiManager', {
+        var Manager = EventProvider.extend('nrg.base.component.WebUiManager', {
             constructor: function (oComponent) {
-                BaseObject.apply(this);
+                EventProvider.apply(this);
                 this._oComponent = oComponent;
             },
 
             metadata: {
                 publicMethods: [
-                    'start'
+                    'start',
+                    'notifyWebUi'
                 ]
             }
         });
 
-        /*
-        ** Event bus channels
-        */
-        Manager.EventBus = {
-            Publish: {
-                Channel: 'nrg.webui.publish'
-            },
-
-            Subscribe: {
-                Channel: 'nrg.webui.subscribe'
-            }
-        };
-
         Manager.prototype.start = function () {
-            this._readEventMetadata();
             this._addDomEventListener();
-            this._registerEventBus();
         };
 
-        Manager.prototype._readEventMetadata = function () {
-            var oConfig, oWebUi, sEventName;
-
-            oConfig = this._oComponent.getMetadata().getConfig() || {};
-            oWebUi = oConfig.webUi || {};
-            oWebUi.events = oWebUi.events || {};
-            oWebUi.events.publish = oWebUi.events.publish || {};
-            oWebUi.events.subscribe = oWebUi.events.subscribe || {};
-
-            this._aPublishEvent = [];
-            for (sEventName in oWebUi.events.publish) {
-                if (oWebUi.events.publish.hasOwnProperty(sEventName)) {
-                    this._aPublishEvent.push(sEventName);
-                }
-            }
-
-            this._aSubscribeEvent = [];
-            for (sEventName in oWebUi.events.subscribe) {
-                if (oWebUi.events.subscribe.hasOwnProperty(sEventName)) {
-                    this._aSubscribeEvent.push(sEventName);
-                }
-            }
-        };
-
-        Manager.prototype._addDomEventListener = function () {
-            if (window.addEventListener) {
-                window.addEventListener('message', jQuery.proxy(this._fromWebUi, this), false);
-            } else {
-                window.attachEvent('onmessage', jQuery.proxy(this._fromWebUi, this));
-            }
-        };
-
-        Manager.prototype._registerEventBus = function () {
-            var oEventBus = sap.ui.getCore().getEventBus();
-
-            this._aPublishEvent.forEach(function (sEvent) {
-                oEventBus.subscribe(Manager.EventBus.Publish.Channel, sEvent, this._onEventBusSubscribed, this);
-            }.bind(this));
-        };
-
-        Manager.prototype._deregisterEventBus = function () {
-            var oEventBus = sap.ui.getCore().getEventBus();
-
-            this._aPublishEvent.forEach(function (sEvent) {
-                oEventBus.unsubscribe(Manager.EventBus.Publish.Channel, sEvent, this._onEventBusSubscribed, this);
-            }.bind(this));
-        };
-
-        Manager.prototype._onEventBusSubscribed = function (sChannel, sEvent, oData) {
-            this._notifyWebUi(sEvent, oData);
-        };
-
-        Manager.prototype._notifyWebUi = function (sEvent, oPayload) {
+        Manager.prototype.notifyWebUi = function (sEvent, oPayload) {
             var sMessage;
 
             if (window.parent === window) {
-                jQuery.sap.log.warning('Unable to post message because this component is not embedded in any parent window');
+                jQuery.sap.log.error('Unable to post message because this component is not embedded in any parent window', '[WebUiManager.notifyWebUi()]');
+                return this;
+            }
+
+            if (!sEvent) {
+                jQuery.sap.log.error('Event name is not provided', '[WebUiManager.notifyWebUi()]');
                 return this;
             }
 
@@ -107,8 +47,7 @@ sap.ui.define(
                 payload: oPayload
             });
 
-            jQuery.sap.log.info('[WebUiManager]: _notifyWebUi - message: ' + sMessage);
-
+            jQuery.sap.log.info(sMessage, '[WebUiManager.notifyWebUi()]');
             window.parent.postMessage(sMessage, this._getDomain());
 
             return this;
@@ -117,28 +56,30 @@ sap.ui.define(
         Manager.prototype._fromWebUi = function (oEvent) {
             var oData, oEventBus;
 
-            jQuery.sap.log.info('[WebUiManager]: _fromWebUi - message: ' + oEvent.data);
-
             if (oEvent.origin !== this._getDomain()) {
                 return;
             }
 
-            oData = JSON.parse(event.data);
-            if (!oData || !oData.event || this._aSubscribeEvent.indexOf(oData.event) === -1) {
+            oData = JSON.parse(oEvent.data);
+            if (!oData || !oData.event) {
                 return;
             }
 
-            oEventBus = sap.ui.getCore().getEventBus();
-            oEventBus.publish(Manager.EventBus.Subscribe.Channel, oData.event, oData.payload);
+            jQuery.sap.log.info(oEvent.data, '[WebUiManager._fromWebUi()]');
+
+            this.fireEvent(oData.event, oData.payload);
         };
 
         Manager.prototype._getDomain = function () {
             return window.location.protocol + '//' + window.location.host;
         };
 
-        Manager.prototype.destroy = function () {
-            this._deregisterEventBus();
-            BaseObject.prototype.destroy.apply(this, arguments);
+        Manager.prototype._addDomEventListener = function () {
+            if (window.addEventListener) {
+                window.addEventListener('message', jQuery.proxy(this._fromWebUi, this), false);
+            } else {
+                window.attachEvent('onmessage', jQuery.proxy(this._fromWebUi, this));
+            }
         };
 
         return Manager;
