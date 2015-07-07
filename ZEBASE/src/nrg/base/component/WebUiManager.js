@@ -29,8 +29,8 @@ sap.ui.define(
             this._addDomEventListener();
         };
 
-        Manager.prototype.notifyWebUi = function (sEvent, oPayload) {
-            var sMessage;
+        Manager.prototype.notifyWebUi = function (sEvent, oPayload, fnCallback, oListener) {
+            var sMessage, oData;
 
             if (window.parent === window) {
                 jQuery.sap.log.error('Unable to post message because this component is not embedded in any parent window', '[WebUiManager.notifyWebUi()]');
@@ -42,10 +42,16 @@ sap.ui.define(
                 return this;
             }
 
-            sMessage = JSON.stringify({
-                event: sEvent,
-                payload: oPayload
-            });
+            oData = {};
+            oData.event = sEvent;
+            oData.payload = oPayload;
+
+            if (fnCallback) {
+                oData.sid = this._getUniqueId();
+                this.attachEventOnce([ oData.event, oData.sid ].join('-'), fnCallback, oListener);
+            }
+
+            sMessage = JSON.stringify(oData);
 
             jQuery.sap.log.info(sMessage, '[WebUiManager.notifyWebUi()]');
             window.parent.postMessage(sMessage, this._getDomain());
@@ -67,7 +73,11 @@ sap.ui.define(
 
             jQuery.sap.log.info(oEvent.data, '[WebUiManager._fromWebUi()]');
 
-            this.fireEvent(oData.event, oData.payload);
+            if (oData.sid) {
+                this.fireEvent([ oData.event, oData.sid ].join('-'), oData.payload);
+            } else {
+                this.fireEvent(oData.event, oData.payload);
+            }
         };
 
         Manager.prototype._getDomain = function () {
@@ -80,6 +90,10 @@ sap.ui.define(
             } else {
                 window.attachEvent('onmessage', jQuery.proxy(this._fromWebUi, this));
             }
+        };
+
+        Manager.prototype._getUniqueId = function () {
+            return +new Date();
         };
 
         return Manager;
