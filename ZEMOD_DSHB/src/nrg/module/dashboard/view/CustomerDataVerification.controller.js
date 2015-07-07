@@ -221,7 +221,7 @@ sap.ui.define(
             if (sSelectedKey) {
                 iSelectedIndex = parseInt(sSelectedKey, 10);
                 this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
-                delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+                //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
                 this._refreshPaging();
             }
         };
@@ -231,7 +231,7 @@ sap.ui.define(
                 iSelectedIndex = parseInt(sSelectedKey, 10);
 
             this.getView().getModel('oDtaVrfyBuags').setData(this.getView().getModel('oAllBuags').oData[iSelectedIndex]);
-            delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+            //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
 
             this._retrContracts(this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'));
         };
@@ -313,7 +313,7 @@ sap.ui.define(
                 iSelectedIndex = 0;
 
             this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
-            delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+            //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
 
             oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
             this._refreshPaging();
@@ -325,7 +325,7 @@ sap.ui.define(
 
             if (iSel_Ind > -1) {
                 this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSel_Ind]);
-                delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+                //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
 
                 oContracts.setProperty('/selectedKey', iSel_Ind.toString());
                 this._refreshPaging();
@@ -339,7 +339,7 @@ sap.ui.define(
                 iSelectedIndex = oPage[0].co_ind - 1;
 
             this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSelectedIndex]);
-            delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+            //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
 
             oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
             this._refreshPaging();
@@ -351,7 +351,7 @@ sap.ui.define(
                 i;
 
             this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSelectedIndex]);
-            delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+            //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
 
             oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
             this._refreshPaging();
@@ -362,7 +362,7 @@ sap.ui.define(
                 iSelectedIndex = oPage[2].co_ind - 1;
 
             this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSelectedIndex]);
-            delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+            //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
 
             oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
             this._refreshPaging();
@@ -375,7 +375,7 @@ sap.ui.define(
 
             if (iSel_Ind < oContracts.oData.length) {
                 this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSel_Ind]);
-                delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+                //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
 
                 oContracts.setProperty('/selectedKey', iSel_Ind.toString());
                 this._refreshPaging();
@@ -388,7 +388,7 @@ sap.ui.define(
                 iSelectedIndex = oContracts.oData.length - 1;
 
             this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
-            delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+            //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
 
             oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
             this._refreshPaging();
