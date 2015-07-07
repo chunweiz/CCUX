@@ -62,5 +62,23 @@
     <div>text text text text text text text text text text text text text text text text text text text text </div>
     <div>text text text text text text text text text text text text text text text text text text text text </div>
     <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <br/>
+    <um:Dropdown id="dd003" content="{cc2>/dropdown}" select=".onSelected" placeholder="Choose a credit card ...">
+        <um:DropdownItem key="{cc2>key}">
+            <core:Icon src="{cc2>icon}" /><uc:Tag elem="span" text="{cc2>value}" />
+        </um:DropdownItem>
+    </um:Dropdown>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
 
 </mvc:View>
