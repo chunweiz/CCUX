@@ -93,7 +93,9 @@ sap.ui.define(
         };
 
         Manager.prototype._getUniqueId = function () {
-            return +new Date();
+            var sId = +new Date();
+
+            return sId.toString();
         };
 
         return Manager;
