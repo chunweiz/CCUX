@@ -49,6 +49,16 @@ sap.ui.define(
 
             if (oContent) {
                 oRm.renderControl(oContent);
+
+            } else if (oCustomControl.getPlaceholder()) {
+                oRm.write('<span');
+                oRm.addClass('uteMDd-hdrContent-placeholder');
+                oRm.writeClasses();
+                oRm.write('>');
+
+                oRm.writeEscaped(oCustomControl.getPlaceholder());
+
+                oRm.write('</span>');
             }
 
             oRm.write('</div>');

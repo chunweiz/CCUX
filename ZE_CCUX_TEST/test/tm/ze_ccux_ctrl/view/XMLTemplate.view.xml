@@ -13,4 +13,8 @@
         </template:else>
     </template:if>
 
+    <template:with test="{tmpl>/meta/showNrg}  var="zz" >
+
+   </template:with>
+
 </mvc:View>

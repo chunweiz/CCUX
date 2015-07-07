@@ -40,6 +40,17 @@ sap.ui.define(
             });
 
             this.getView().setModel(oModel, 'cc');
+
+            oModel = new JSONModel({
+                dropdown: [
+                    { key: 'amex', value: 'American Express', icon: 'sap-icon://nrg-icon/cc-amex' },
+                    { key: 'discover', value: 'Discover', icon: 'sap-icon://nrg-icon/cc-discover' },
+                    { key: 'mastercard', value: 'Mastercard', icon: 'sap-icon://nrg-icon/cc-mastercard' },
+                    { key: 'visa', value: 'Visa', icon: 'sap-icon://nrg-icon/cc-visa' }
+                ]
+            });
+
+            this.getView().setModel(oModel, 'cc2');
         };
 
         CustomController.prototype.onSelected = function (oControlEvent) {
