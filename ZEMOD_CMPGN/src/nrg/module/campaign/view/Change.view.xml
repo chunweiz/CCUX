@@ -136,7 +136,12 @@
                            class="nrgCamChg-btn"
                            design="Default">
                 </um:button>
-                <u:Dropdown
+                <um:Dropdown id="dd001" content="{comp-campaign>/RejectRsnS}" selectedKey="2" select=".onSelected">
+                    <um:DropdownItem key="{comp-campaign>RejectionCode}">
+                        <u:Tag text="{comp-campaign>Description}" />
+                    </um:DropdownItem>
+                </um:Dropdown>
+<!--                <u:Dropdown
                             id="idnrgCamChgDisRn"
                             class="nrgCamChg-DisRn"
                             arrowcolor="Grey"
@@ -153,7 +158,7 @@
                             <c:Label text="{comp-campaign>Description}"/>
                         </u:DropdownListItem>
                     </u:DropdownListItems>
-                </u:Dropdown>
+                </u:Dropdown>-->
             </u:Tag>
       </u:Tag>
    </u:Tag>

@@ -40,7 +40,12 @@
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>
             <u:Tag class="nrgCamSS-DdL">
-                <u:Dropdown
+                <um:Dropdown id="idnrgCamSSDdL" content="{comp-campaign>/languageData}" selectedKey="2" select=".onSelected">
+                    <um:DropdownItem key="{comp-campaign>TxtLang}" id="idnrgCamSSLngLtIt">
+                        <u:Tag text="{comp-campaign>TxtLang}" />
+                    </um:DropdownItem>
+                </um:Dropdown>
+<!--                <u:Dropdown
                             id="idnrgCamSSDdL"
                             arrowcolor="Grey"
                             arrowType="Hollow"
@@ -56,7 +61,7 @@
                             <c:Label text="{comp-campaign>TxtLang}"/>
                         </u:DropdownListItem>
                     </u:DropdownListItems>
-                </u:Dropdown>
+                </u:Dropdown>-->
             </u:Tag>
             <u:Tag class="nrgCamSS-Dsc">
                     <c:Label text="{comp-i18n-campaign>nrgCmpSSMdlbl}"
@@ -77,7 +82,12 @@
                     class="nrgCamSS-btn"
                     press=".onAccept">
                 </u:Button>
-                <u:Dropdown
+                <um:Dropdown id="dd001" content="{comp-campaign>/RejectRsnS}" selectedKey="2" select=".onSelected">
+                    <um:DropdownItem key="{comp-campaign>RejectionCode}">
+                        <u:Tag text="{comp-campaign>Description}" />
+                    </um:DropdownItem>
+                </um:Dropdown>
+<!--                <u:Dropdown
                             id="idnrgCamSSDisRn"
                             class="nrgCamSS-DisRn"
                             arrowcolor="Grey"
@@ -94,7 +104,7 @@
                             <c:Label text="{comp-campaign>Description}"/>
                         </u:DropdownListItem>
                     </u:DropdownListItems>
-                </u:Dropdown>
+                </u:Dropdown>-->
             </u:Tag>
           <u:Dialog id="idnrgCamOvsDialog">
             <u:Tag class="nrgCamOVS-DdL">

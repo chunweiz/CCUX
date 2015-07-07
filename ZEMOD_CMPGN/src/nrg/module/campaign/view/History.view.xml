@@ -106,7 +106,7 @@
                         <u:Tag class="nrgCamHis-but-priceLbl"
                                text="{comp-i18n-campaign>nrgCmpHiskWhDisc}" />
                 </um:Button>
-                <u:Table width="60%"
+                <u:Table width="auto"
                          tableType="CampaignTable"
                          class="nrgCamHis-left nrgCamHis-top">
                          <u:columns>
