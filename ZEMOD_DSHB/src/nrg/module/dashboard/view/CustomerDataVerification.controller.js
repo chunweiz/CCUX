@@ -130,7 +130,7 @@ sap.ui.define(
                             this._retrBuagMailingAddr(sBpNum, oData.results[0].ContractAccountID, oData.results[0].FixedAddressID);
                         }
                         for (i = 0; i < oData.results.length; i = i + 1) {
-                            oData.results[i].iIndex = i;
+                            oData.results[i].iIndex = i.toString();
                         }
                         this.getView().getModel('oAllBuags').setData(oData.results);
                         this.getView().getModel('oAllBuags').setProperty('/selectedKey', '0');
@@ -167,7 +167,7 @@ sap.ui.define(
                         this._initCoPageModel();
                         oPage = oPageModel.getProperty('/paging');
                         for (i = 0; i < oData.results.length; i = i + 1) {
-                            oData.results[i].iIndex = i;
+                            oData.results[i].iIndex = i.toString();
                             if (i < 3) {
                                 oPage[i].exist = true;
                                 oPage[i].co_ind = i + 1;
@@ -216,10 +216,14 @@ sap.ui.define(
 
         Controller.prototype._onContractSelect = function (oEvent) {
             var sSelectedKey = oEvent.getParameters().selectedKey,
-                iSelectedIndex = parseInt(sSelectedKey, 10);
+                iSelectedIndex;
 
-            this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
-            delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+            if (sSelectedKey) {
+                iSelectedIndex = parseInt(sSelectedKey, 10);
+                this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
+                delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
+                this._refreshPaging();
+            }
         };
 
         Controller.prototype._onBuagSelect = function (oEvent) {
@@ -402,7 +406,7 @@ sap.ui.define(
                 }
             } else if (iSel_Ind === (oContracts.oData.length - 1)) {
                 for (i = 0; i < 3; i = i + 1) {
-                    oPage[i].co_ind = iSel_Ind + 1 - 3 + i;
+                    oPage[i].co_ind = iSel_Ind + 1 - 2 + i;
                 }
             } else {
                 for (i = 0; i < 3; i = i + 1) {
