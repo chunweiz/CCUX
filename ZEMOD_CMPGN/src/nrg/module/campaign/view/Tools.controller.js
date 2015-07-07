@@ -142,7 +142,9 @@ sap.ui.define(
                 oPricingColTemplate,
                 that = this,
                 fnRecieved,
-                fnChange;
+                fnChange,
+                oTemplateView,
+                oMetaModel;
             aFilterIds = ["Contract", "Type"];
             aFilterValues = ["32253375", "H"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -151,6 +153,7 @@ sap.ui.define(
                 type: sap.ui.core.mvc.ViewType.XML,
                 viewName: "nrg.module.campaign.view.History"
             });
+            oModel = this.getOwnerComponent().getModel('comp-campaign');
             oScrollContainer = oHistoryView.byId("idnrgCamHisScroll");
             oScrollTemplate = oHistoryView.byId("idnrgCamHisBut").clone();
             oDataTag = this.getView().byId("idnrgCamHisData");
@@ -170,6 +173,7 @@ sap.ui.define(
                     fnChange = function (oEvent) {
                         jQuery.sap.log.info("function change called successfully:::");
                     };
+                    oMetaModel = oModel.getMetaModel();
                     mParameters = {
                         model : "comp-campaign",
                         path : sPath + "/CpgEFL_N",

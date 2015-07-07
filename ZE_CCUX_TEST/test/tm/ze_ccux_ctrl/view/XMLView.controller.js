@@ -16,7 +16,7 @@ sap.ui.define(
 
             oTemplateModel = new JSONModel({
                 meta: {
-                    showNrg: false
+                    showNrg: true
                 }
             });
 

@@ -1,0 +1,12 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+
+    <Label text="This is loaded.........." />
+    <template:repeat list="{meta>/}" var="field">
+      <Label text="{path: 'field>OfferCode', formatter: 'sap.ui.model.odata.AnnotationHelper'}" />
+      <Text text="{path: 'field>OfferCode', formatter: 'sap.ui.model.odata.AnnotationHelper'}" />
+    </template:repeat>
+
+</core:FragmentDefinition>
