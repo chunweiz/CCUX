@@ -43,11 +43,18 @@
                                             <utmain:Label labelFor="meter_num"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_MtrNum}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halflabl"/>
+                                            <utmain:Label labelFor="meter_num"
+                                                visible="{
+                                                    parts:['oDtaVrfyContracts>/SmartMeter'],
+                                                    formatter:'._formatChecked'}"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RmtMtr}"
+                                                class="nrgDashboard-cusDataVerify-l-div-chb"/>
+                                            <!--
                                             <utmain:Checkbox id="chk_advMtr" enabled="false"
                                                 class="nrgDashboard-cusDataVerify-l-div-chb"
                                                 checked="{
                                                     parts:['oDtaVrfyContracts>/SmartMeter'],
-                                                    formatter:'._formatChecked'}"/>
+                                                    formatter:'._formatChecked'}"/>-->
                                             <ute:TextView id="meter_num"
                                                 text="{oDtaVrfyContracts>/MeterNumber}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>

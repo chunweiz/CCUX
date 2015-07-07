@@ -303,6 +303,8 @@ sap.ui.define(
         Controller.prototype._formatChecked = function (sIndicator) {
             if (sIndicator === 'x' || sIndicator === 'X') {
                 return true;
+            } else {
+                return false;
             }
         };
 
