@@ -1,4 +1,5 @@
 /*globals sap*/
+/*jslint nomen:true*/
 
 sap.ui.define(
     [
@@ -15,16 +16,18 @@ sap.ui.define(
             var oWebUiManager = this.getOwnerComponent().getWebUiManager();
 
             oWebUiManager.notifyWebUi('bpConfirmed', {
-                bpNum: '0123456789',
-                caNum: '9876543210'
-            });
+                bpNum: '0002955761'
+            }, this._handleBpConfirmed, this);
+        };
 
-//            var oEventBus = sap.ui.getCore().getEventBus();
-//
-//            oEventBus.publish(WebUiManager.EventBus.Publish.Channel, 'bpConfirmed', {
-//                bpNum: '0123456789',
-//                caNum: '9876543210'
-//            });
+        CustomController.prototype._handleBpConfirmed = function (oEvent) {
+            var oRouter, oRouteInfo;
+
+            oRouteInfo = oEvent.getParameters();
+            oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo('dashboard.Bp', {
+                bpNum: oRouteInfo.bpNum
+            });
         };
 
         return CustomController;
