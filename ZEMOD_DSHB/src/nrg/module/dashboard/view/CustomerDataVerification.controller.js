@@ -247,9 +247,11 @@ sap.ui.define(
             if (this.getView().byId('mailadd_area').getVisible()) {
                 this.getView().byId('mailadd_area').setVisible(false);
                 this.getView().byId('serviceadd_area').setVisible(true);
+                this.getView().byId('idContractDropdown').setVisible(true);
             } else {
                 this.getView().byId('serviceadd_area').setVisible(false);
                 this.getView().byId('mailadd_area').setVisible(true);
+                this.getView().byId('idContractDropdown').setVisible(false);
             }
 
         };
@@ -420,5 +422,20 @@ sap.ui.define(
         };
         /*Ends Here*/
         /********************************************************************************************/
+
+        Controller.prototype._formatVrfyMark = function (sIndicator) {
+            if (sIndicator === 'x' || sIndicator === 'X') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        Controller.prototype._formatVrfyMarkRedX = function (sIndicator) {
+            if (sIndicator === 'x' || sIndicator === 'X') {
+                return false;
+            } else {
+                return true;
+            }
+        };
     }
 );
