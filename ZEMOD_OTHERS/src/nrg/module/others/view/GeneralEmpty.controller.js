@@ -24,10 +24,12 @@ sap.ui.define(
             var oRouter, oRouteInfo;
 
             oRouteInfo = oEvent.getParameters();
-            oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo('dashboard.Bp', {
-                bpNum: oRouteInfo.bpNum
-            });
+            if (oRouteInfo.confirmed && oRouteInfo.confirmed === 'X') {
+                oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo('dashboard.Bp', {
+                    bpNum: oRouteInfo.bpNum
+                });
+            }
         };
 
         return CustomController;
