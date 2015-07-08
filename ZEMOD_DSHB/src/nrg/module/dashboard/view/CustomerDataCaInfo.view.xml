@@ -31,7 +31,7 @@
                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-infoline-div">
                     <utmain:Dropdown id="referer" design="Default" class="nrgDashboard-cusDataCaInfo-dropdown" content="{data>/dropdown}" selectedKey="{data>/selectedKey}" select=".onSelected">
                         <utmain:DropdownItem key="{data>key}">
-                           <ute:Tag text="{data>value}" />
+                           <ute:Tag text="{data>value}"/>
                         </utmain:DropdownItem>
                     </utmain:Dropdown>
 
@@ -323,7 +323,7 @@
                     </l:rows>
                 </l:MatrixLayout>
 
-                <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-btn">
+                <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-bt">
                     <utmain:Label labelFor="startDate"
                         text="Start Date:"
                         class="nrgDashboard-cusDataVerify-l-div-halflabl"/>
