@@ -68,6 +68,11 @@
                 "dashboard.BpInfo": {
                     "pattern": "bpinfo/{bpNum}",
                     "target": [ "dashboard.CustomerDataBpInfo", "dashboard.CustomerDataSummary", "dashboard.Tools" ]
+                },
+
+                "dashboard.CaInfo": {
+                    "pattern": "cainfo/{bpNum}",
+                    "target": [ "dashboard.CustomerDataCaInfo", "dashboard.CustomerDataSummary", "dashboard.Tools" ]
                 }
             },
 
@@ -129,6 +134,11 @@
 
                 "dashboard.CustomerDataBpInfo": {
                     "viewName": "nrg.module.dashboard.view.CustomerDataBpInfo",
+                    "controlId": "idAppGeneral"
+                },
+
+                "dashboard.CustomerDataCaInfo": {
+                    "viewName": "nrg.module.dashboard.view.CustomerDataCaInfo",
                     "controlId": "idAppGeneral"
                 }
             }

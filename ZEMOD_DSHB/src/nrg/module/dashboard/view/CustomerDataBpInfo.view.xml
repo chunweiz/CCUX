@@ -10,12 +10,12 @@
     controllerName="nrg.module.dashboard.view.CustomerDataBpInfo">
 
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-cusDataBpInfo">
-        <ute:Tag elem="span" class="nrgDashboard-cusDataBpInfo-scrnTitle" text="BUSINESS PARTNER #1234567" />
+        <ute:Tag elem="span" class="nrgDashboard-cusDataBpInfo-scrnTitle" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-BUSINESS_PARTNER} #1234567" />
 
         <ute:Tag elem="span" class="nrgDashboard-cusDataBpInfo-r-btn">
             <utmain:Button design="None" class="nrgDashboard-cusDataBpInfo-CommBtn" press="onBackToDashboard">
                 <core:Icon src="sap-icon://slim-arrow-left" class="nrgDashboard-cusDataBpInfo-Icon" />
-                <ute:Tag elem="span" class="nrgDashboard-cusDataBpInfo-btn-text" text="Back To Dashboard" />
+                <ute:Tag elem="span" class="nrgDashboard-cusDataBpInfo-btn-text" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-BACK}" />
             </utmain:Button>
         </ute:Tag>
 
@@ -25,7 +25,7 @@
 
         <utmain:Infoline class="nrgDashboard-cusDataBpInfo-infoLine-first" expanded="true" press=".onTitlePressed">
             <utmain:headerContent>
-                <div class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt">TITLE/NAME</div>
+                <ute:TextView class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-TITLE_NAME}"/>
             </utmain:headerContent>
             <utmain:content>
                 <l:MatrixLayout
@@ -39,7 +39,7 @@
                                     <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Title:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-TITLE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/titleEditable}" value="N/A"/>
@@ -49,7 +49,7 @@
                                     <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Acdemic Title:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-ACDEMIC_TITLE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/titleEditable}" value="N/A"/>
@@ -59,7 +59,7 @@
                                     <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="First Name:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-FIRST_NAME}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/titleEditable}" value="Jeremiah"/>
@@ -69,7 +69,7 @@
                                     <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Last Name:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-LAST_NAME}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/titleEditable}" value="Clendenning"/>
@@ -83,7 +83,7 @@
                                     <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Maiden Name:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-MAIDEN_NAME}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/titleEditable}" value="N/A"/>
@@ -93,7 +93,7 @@
                                     <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Middle Name:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-MIDDLE_NAME}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/titleEditable}" value="N/A"/>
@@ -103,7 +103,7 @@
                                     <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Suffix:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SUFFIX}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/titleEditable}" value="N/A"/>
@@ -117,15 +117,15 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onTitleEdit" visible="{oBpInfoConfig>/titleEditVisible}" text="Edit"/>
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onTitleSave" visible="{oBpInfoConfig>/titleSaveVisible}" text="Save"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onTitleEdit" visible="{oBpInfoConfig>/titleEditVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EDIT}"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onTitleSave" visible="{oBpInfoConfig>/titleSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SAVE}"/>
                 </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
 
         <utmain:Infoline class="nrgDashboard-cusDataBpInfo-infoLine" expanded="true" press=".onAddressPressed">
             <utmain:headerContent>
-                <div class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt">ADDRESS</div>
+                <ute:TextView class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-ADDRESS}"/>
             </utmain:headerContent>
             <utmain:content>
                 <l:MatrixLayout
@@ -139,7 +139,7 @@
                                     <l:MatrixLayout widths="16.5%,83.5%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Street Name:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-STREET_NAME}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/addrEditable}" value="Long Title Main st."/>
@@ -153,7 +153,7 @@
                                     <l:MatrixLayout widths="50%,50%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Street Number:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-STREET_NUMBER}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/addrEditable}" value="123"/>
@@ -177,7 +177,7 @@
                                     <l:MatrixLayout widths="30%,70%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="App./Unit:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-APP_UNIT}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/addrEditable}" value="A123"/>
@@ -191,7 +191,7 @@
                                     <l:MatrixLayout widths="12%,88%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="PO Box:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-PO_BOX}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/addrEditable}" value="N/A"/>
@@ -215,7 +215,7 @@
                                     <l:MatrixLayout widths="30%,70%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="City:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-CITY}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/addrEditable}" value="Houston"/>
@@ -229,7 +229,7 @@
                                     <l:MatrixLayout widths="30%,70%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="State:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-STATE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/addrEditable}" value="TX"/>
@@ -243,7 +243,7 @@
                                     <l:MatrixLayout widths="20%,80%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Zip Code:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-ZIP_CODE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/addrEditable}" value="77777"/>
@@ -257,15 +257,15 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onAddrEdit" visible="{oBpInfoConfig>/addrEditVisible}" text="Edit"/>
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onAddrSave" visible="{oBpInfoConfig>/addrSaveVisible}" text="Save"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onAddrEdit" visible="{oBpInfoConfig>/addrEditVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EDIT}"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onAddrSave" visible="{oBpInfoConfig>/addrSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SAVE}"/>
                 </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
 
         <utmain:Infoline class="nrgDashboard-cusDataBpInfo-infoLine" expanded="true" press=".onPersonalInfoPressed">
             <utmain:headerContent>
-                <div class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt">PERSONAL INFO</div>
+                <ute:TextView class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-PERSONAL_INFO}"/>
             </utmain:headerContent>
             <utmain:content>
                 <l:MatrixLayout
@@ -279,7 +279,7 @@
                                     <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="DOB:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-DOB}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/personalInfoEditable}" value="11/20/1976"/>
@@ -289,7 +289,7 @@
                                     <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Language:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-LANGUAGE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/personalInfoEditable}" value="English, Spanish"/>
@@ -303,7 +303,7 @@
                                     <l:MatrixLayout widths="15%,85%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="SS#:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SS}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/personalInfoEditable}" value="000000000"/>
@@ -313,7 +313,7 @@
                                     <l:MatrixLayout widths="15%,85%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="DL#:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-DL}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/personalInfoEditable}" value="000000000"/>
@@ -327,15 +327,15 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onPersonalInfoEdit" visible="{oBpInfoConfig>/personalInfoEditVisible}" text="Edit"/>
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onPersonalInfoSave" visible="{oBpInfoConfig>/personalInfoSaveVisible}" text="Save"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onPersonalInfoEdit" visible="{oBpInfoConfig>/personalInfoEditVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EDIT}"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onPersonalInfoSave" visible="{oBpInfoConfig>/personalInfoSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SAVE}"/>
                 </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
 
         <utmain:Infoline class="nrgDashboard-cusDataBpInfo-infoLine" expanded="true" press=".onContactInfoPressed">
             <utmain:headerContent>
-                <div class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt">CONTACT INFO</div>
+                <ute:TextView class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-CONTACT_INFO}"/>
             </utmain:headerContent>
             <utmain:content>
                 <l:MatrixLayout
@@ -346,42 +346,42 @@
                             <l:cells>
                                 <!--Area Left-->
                                 <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
-                                    <l:MatrixLayout widths="30%,70%" columns="2">
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Cell Phone:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-CELL_PHONE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/contactInfoEditable}" value="123 456 7890"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
-                                    <l:MatrixLayout widths="30%,40%,10%,20%" columns="4">
+                                    <l:MatrixLayout widths="25%,45%,10%,20%" columns="4">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Day Phone:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-DAY_PHONE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/contactInfoEditable}" value="123 456 7890"/>
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Ext.:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EXT}.:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/contactInfoEditable}" value="789"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
-                                    <l:MatrixLayout widths="30%,40%,10%,20%" columns="4">
+                                    <l:MatrixLayout widths="25%,45%,10%,20%" columns="4">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Evening Ph:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EVENING_PH}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/contactInfoEditable}" value="123 456 7890"/>
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Ext.:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EXT}.:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/contactInfoEditable}" value="789"/>
@@ -392,20 +392,20 @@
 
                             <!--Area right-->
                                 <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
-                                    <l:MatrixLayout widths="30%,70%" columns="2">
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Email:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EMAIL}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/contactInfoEditable}" value="info@info.com"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
-                                    <l:MatrixLayout widths="30%,70%" columns="2">
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="2nd Email:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SECOND_EMAIL}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/contactInfoEditable}" value="info@info.com"/>
@@ -419,15 +419,15 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onContactInfoEdit" visible="{oBpInfoConfig>/contactInfoEditVisible}" text="Edit"/>
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onContactInfoSave" visible="{oBpInfoConfig>/contactInfoSaveVisible}" text="Save"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onContactInfoEdit" visible="{oBpInfoConfig>/contactInfoEditVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EDIT}"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onContactInfoSave" visible="{oBpInfoConfig>/contactInfoSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SAVE}"/>
                 </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
 
         <utmain:Infoline class="nrgDashboard-cusDataBpInfo-infoLine" expanded="true" press=".onMarketPrefPressed">
             <utmain:headerContent>
-                <div class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt">MARKETING PREFERENCES</div>
+                <ute:TextView class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-MARKET_PREF}"/>
             </utmain:headerContent>
             <utmain:content>
                 <l:MatrixLayout
@@ -437,40 +437,40 @@
                         <l:MatrixLayoutRow>
                             <l:cells>
                                 <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
-                                    <l:MatrixLayout widths="70%,30%" columns="2">
+                                    <l:MatrixLayout widths="50%,50%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Phone Preferences - New Products:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-PHONE_PREF}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/mktPrfEditable}" value="info@info.com"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
-                                    <l:MatrixLayout widths="70%,30%" columns="2">
+                                    <l:MatrixLayout widths="50%,50%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Email Preferences - Energy Efficiency:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EMAIL_PREF_ENERGY}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/mktPrfEditable}" value="infoname2@info.com"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
-                                    <l:MatrixLayout widths="70%,30%" columns="2">
+                                    <l:MatrixLayout widths="50%,50%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Email Perferences - Marketing Promotions:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EMAIL_PREF_MKT_PROM}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/mktPrfEditable}" value="infoname2@info.com"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
-                                    <l:MatrixLayout widths="70%,30%" columns="2">
+                                    <l:MatrixLayout widths="50%,50%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="Email Perferences - Offer:" />
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EMAIL_PREF_OFFER}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/mktPrfEditable}" value="infoname2@info.com"/>
@@ -484,8 +484,8 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onMarketPrefEdit" visible="{oBpInfoConfig>/marketPrefEditVisible}" text="Edit"/>
-                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onMarketPrefSave" visible="{oBpInfoConfig>/marketPrefSaveVisible}" text="Save"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onMarketPrefEdit" visible="{oBpInfoConfig>/marketPrefEditVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EDIT}"/>
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onMarketPrefSave" visible="{oBpInfoConfig>/marketPrefSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SAVE}"/>
                 </ute:Tag>
             </utmain:content>
         </utmain:Infoline>

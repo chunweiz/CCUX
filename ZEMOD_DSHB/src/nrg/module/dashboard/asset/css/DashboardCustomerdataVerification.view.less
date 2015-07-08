@@ -25,10 +25,12 @@
         padding: 10px;
      }
 
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > .nrgDashboard-cusDataVerify-l-div-cell > .nrgDashboard-cusDataVerify-l-div-chb > label{
-        margin-left: 12px;
-        margin-bottom: -3px;
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-chb > span{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
         border-color: @nrgColor-grey-dark;
+        line-height: 24px;
+        margin-left: 12px;
     }
 
     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m{
@@ -138,6 +140,21 @@
         line-height: 22px;
     }
 
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-redX > span{
+        font-size: @nrgFontSize-base;
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-red-pale;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-halChb > label{
+        border-color: @nrgColor-green-highlight;
+        margin-left: 6px;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-halChb > label::before{
+        border-color: @nrgColor-green-highlight;
+    }
+
     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > .nrgDashboard-cusDataVerify-l-div-esidLabl > span{
         font-size: @nrgFontSize-small;
         font-weight: @nrgFontWeight-semiBold;
@@ -208,7 +225,7 @@
         color: @nrgColor-grey-inactive;
     }
 
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hInput{
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hInput > input{
         border: 0;
         outline: 0;
         font-size: @nrgFontSize-small;
@@ -217,7 +234,7 @@
         margin-left: 8px;
     }
 
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hInput:focus{
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hInput > input:focus{
         background-color: @nrgColor-blue-link;
     }
 
