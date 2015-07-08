@@ -40,7 +40,7 @@
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>
             <u:Tag class="nrgCamSS-DdL">
-                <um:Dropdown id="idnrgCamSSDdL" content="{comp-campaign>/languageData}" selectedKey="2" select=".onSelected">
+                <um:Dropdown id="idnrgCamSSDdL" selectedKey="2" select=".onSelected">
                     <um:DropdownItem key="{comp-campaign>TxtLang}" id="idnrgCamSSLngLtIt">
                         <u:Tag text="{comp-campaign>TxtLang}" />
                     </um:DropdownItem>
@@ -108,7 +108,7 @@
             </u:Tag>
           <u:Dialog id="idnrgCamOvsDialog">
             <u:Tag class="nrgCamOVS-DdL">
-                <u:Dropdown
+<!--                <u:Dropdown
                             id="idnrgCamOvsDdL"
                             arrowcolor="Grey"
                             arrowType="Hollow"
@@ -123,7 +123,12 @@
                             <c:Label text="{comp-campaign>TxtLang}"/>
                         </u:DropdownListItem>
                     </u:DropdownListItems>
-                </u:Dropdown>
+                </u:Dropdown>-->
+                <um:Dropdown selectedKey="0" id="idnrgCamOvsDdL">
+                    <um:DropdownItem key="{comp-campaign>TxtLang}" id="idnrgCamOvsLngLtIt">
+                        <u:Tag text="{comp-campaign>TxtLang}" />
+                    </um:DropdownItem>
+                </um:Dropdown>
             </u:Tag>
             <u:Tag class="nrgCamOvs-Dsc">
                     <u:TextView
