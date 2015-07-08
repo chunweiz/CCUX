@@ -12,11 +12,16 @@ sap.ui.define(
         var CustomController = Controller.extend('test.tm.ze_ccux_ctrl.view.XMLView');
 
         CustomController.prototype.onInit = function () {
-            var oCompModel, oTemplateModel, oViewTemplate;
+            var oCompModel, oTemplateModel, oViewTemplate, oDataTemplateModel;
 
             oTemplateModel = new JSONModel({
                 meta: {
-                    showNrg: true
+                    showNrg: true,
+                    testRepeat: [
+                        { value: 'value001' },
+                        { value: 'value002' },
+                        { value: 'value003' }
+                    ]
                 }
             });
 
@@ -33,6 +38,16 @@ sap.ui.define(
             });
 
             this.getView().byId('viewContent').addContent(oViewTemplate);
+        };
+
+        CustomController.prototype.onAfterRendering = function () {
+            var oModel = this.getOwnerComponent().getModel('comp-odata');
+
+            oModel.read('/BusinessPartnerSet', {
+                success: function (oData) {
+
+                }
+            });
         };
 
         return CustomController;

@@ -4,10 +4,12 @@ sap.ui.define(
     [
         'sap/ui/core/UIComponent',
         './Icon',
-        'sap/ui/model/json/JSONModel'
+        'sap/ui/model/json/JSONModel',
+        'sap/ui/core/util/MockServer',
+        'sap/ui/model/odata/v2/ODataModel'
     ],
 
-    function (UIComponent, Icon, JSONModel) {
+    function (UIComponent, Icon, JSONModel, MockServer, ODataModel) {
         'use strict';
 
         var CustomComponent = UIComponent.extend('test.tm.ze_ccux_ctrl.Component', {
@@ -32,6 +34,23 @@ sap.ui.define(
             });
 
             this.setModel(oModel, 'comp-test');
+
+            var oMockServer = new MockServer({
+                rootUri: 'data/'
+            });
+
+            oMockServer.simulate('data/metadata.xml', {
+                sMockdataBaseUrl: 'data/',
+                bGenerateMissingMockData: true
+            });
+
+            oMockServer.start();
+
+            var oDataModel = new ODataModel(oMockServer.getRootUri(), {
+                useBatch: false
+            });
+
+            this.setModel(oDataModel, 'comp-odata');
         };
 
         return CustomComponent;
