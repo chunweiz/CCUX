@@ -45,7 +45,7 @@
                            text="{= ${Overview-elig>AgntEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
                         <u:customData>
                           <core:CustomData key="flag"
-                                           value="{= ${Overview-elig>CustEligFlag}  === '' ? 'Y' : 'X' }"
+                                           value="{= ${Overview-elig>AgntEligFlag}  === '' ? 'Y' : 'X' }"
                                            writeToDom="true" />
                         </u:customData>
                     </u:Tag>

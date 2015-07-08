@@ -69,29 +69,7 @@ sap.ui.define(
             oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar");
             oToggleTemplate = this.getView().byId("idnrgCamOvr-TabItem").clone();
             sEligibilityPath = sEligibilityPath + "('" + this._sContract + "')";
-            // Leveraging XML Templates..........................................
-            oMetaModel = oModel.getMetaModel();
-            oMetaModel.loaded().then(function () {
-                oTemplateView = sap.ui.view({
-                    preprocessors: {
-                        xml: {
-                            bindingContexts: {
-                                meta: oMetaModel.getMetaContext(sEligibilityPath)
-                            },
-                            models: {
-                                meta: oMetaModel
-                            }
-                        }
-                    },
-                    type: sap.ui.core.mvc.ViewType.XML,
-                    viewName: "nrg.module.campaign.view.EFLData"
-                });
-                oTemplateView.setModel(oModel);
-                oTemplateView.bindElement(sPath);
-                that.getView.addContent(oTemplateView);
-            });
 
-            // Leveraging XML Templates..........................................
             // Handler function for Tab Bar Item.
             fnRecievedHandler = function (oEvent) {
                 aContent = oToggleContainer.getContent();
@@ -158,7 +136,31 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sEligibilityPath, mParameters);
             }
-            this.getView().setModel(oModel, "Overview-elig");
+
+            // Leveraging XML Templates..........................................
+            oMetaModel = oModel.getMetaModel();
+            oMetaModel.loaded().then(function () {
+                oTemplateView = sap.ui.view({
+                    preprocessors: {
+                        xml: {
+                            bindingContexts: {
+                                meta: oMetaModel.getMetaContext(sEligibilityPath)
+                            },
+                            models: {
+                                meta: oMetaModel
+                            }
+                        }
+                    },
+                    type: sap.ui.core.mvc.ViewType.XML,
+                    viewName: "nrg.module.campaign.view.EFLData"
+                });
+                //oTemplateView.setModel(oModel);
+                //oTemplateView.bindElement(sPath);
+                this.getView().byId('viewContent').addContent(oTemplateView);
+            });
+
+            // Leveraging XML Templates..........................................
+
 		};
 
         /**

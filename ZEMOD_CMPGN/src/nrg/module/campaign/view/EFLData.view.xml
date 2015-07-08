@@ -1,12 +1,24 @@
-<core:FragmentDefinition
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core"
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
     xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
 
-    <Label text="This is loaded.........." />
-    <template:repeat list="{meta>/}" var="field">
-      <Label text="{path: 'field>OfferCode', formatter: 'sap.ui.model.odata.AnnotationHelper'}" />
-      <Text text="{path: 'field>OfferCode', formatter: 'sap.ui.model.odata.AnnotationHelper'}" />
-    </template:repeat>
 
-</core:FragmentDefinition>
+<!--    <template:if test="{meta>CustEligFlag}">
+        <template:then>
+            <sm:Label text="Customer Requested Flag::::"/>
+            <sm:Label text="{meta>CustEligFlag}"/>
+        </template:then>
+        <template:else>
+            <sm:Label text="Agent Requested Flag::::"/>
+            <sm:Label text="{meta>AgntEligFlag}"/>
+        </template:else>
+    </template:if>-->
+        <template:repeat list="{comp-campaign>}" var="field">
+                <Label text="{field>/AgntEligFlag}" />
+                <Text text="{field>/CustEligFlag}" />
+                <Label text="{field>AgntEligFlag}" />
+                <Text text="{field>CustEligFlag}" />
+        </template:repeat>
+</mvc:View>
