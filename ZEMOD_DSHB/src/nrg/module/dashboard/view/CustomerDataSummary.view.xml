@@ -142,63 +142,43 @@
             <ute:HorizontalDivider class="nrgDashboard-cusDataSum-horiLine"/>
 
             <ute:Tag class="nrgDashboard-cusDataSum-cusSeg">
+                <c:TextView
+                   text="{comp-i18n-dashboard>nrgDashboardCusDatSum_CusSeg}"
+                   class="nrgDashboard-cusDataSum-cusSeg-label"/>
                 <l:MatrixLayout
                     width="100%"
                     columns="2"
-                    widths="55%,45%"
+                    widths="95%,5%"
                     rows="{oSmryBpSegInf>/}">
                 <l:rows>
                     <l:MatrixLayoutRow>
                         <l:MatrixLayoutCell>
                             <c:TextView
-                                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_CusSeg}"
-                                class="nrgDashboard-cusDataSum-cusSeg-label"/>
-                        </l:MatrixLayoutCell>
-                        <l:MatrixLayoutCell>
-                            <c:TextView
                                 class="nrgDashboard-cusDataSum-cusSeg-val"
                                 text="{oSmryBpSegInf>CustomerSeg}"/>
+                        </l:MatrixLayoutCell>
+                        <l:MatrixLayoutCell>
+                            <utmain:Button
+                                class="nrgDashboard-cusDataSum-assignedAccBtn"
+                                design="None"
+                                press="._onExpandSegInfoClick"
+                                text=">"
+                                visible="true">
+                            </utmain:Button>
                         </l:MatrixLayoutCell>
                     </l:MatrixLayoutRow>
                 </l:rows>
                 </l:MatrixLayout>
-                <!--<utmain:Label
-                    class="nrgDashboard-cusDataSum-cusSeg-label"
-                    text="Customer Segmentation:"
-                    labelFor="cs_seg">
-                </utmain:Label>
-                <ute:Tag elem="span"
-                    class="nrgDashboard-cusDataSum-cusSeg-val"
-                    id="cs_seg"
-                    text="Priority One">
-                </ute:Tag>
-                <utmain:Label
-                    class="nrgDashboard-cusDataSum-cusSeg-label"
-                    text="Customer Segmentation:"
-                    labelFor="cs_seg1">
-                </utmain:Label>
-                <ute:Tag elem="span"
-                    class="nrgDashboard-cusDataSum-cusSeg-val"
-                    id="cs_seg1"
-                    text="Priority One">
-                </ute:Tag>
-                <utmain:Label
-                    class="nrgDashboard-cusDataSum-cusSeg-label"
-                    text="Customer Segmentation:"
-                    labelFor="cs_seg2">
-                </utmain:Label>
-                <ute:Tag elem="span"
-                    class="nrgDashboard-cusDataSum-cusSeg-val"
-                    id="cs_seg2"
-                    text="Priority One">
-                </ute:Tag>-->
             </ute:Tag>
 
             <utmain:Button
                 class="nrgDashboard-cusDataSum-assignedAccBtn"
                 design="None"
                 press="._onAssignedAccountClick"
-                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssignedAccount}">
+                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssignedAccount}"
+                visible="{
+                    parts:['oDtaVrfyBP>/SSNVerification'],
+                    formatter:'._formatVrfyMarkRedX'}">
             </utmain:Button>
 
         </ute:content>

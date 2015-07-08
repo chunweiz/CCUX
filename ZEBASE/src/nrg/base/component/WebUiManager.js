@@ -33,12 +33,12 @@ sap.ui.define(
             var sMessage, oData;
 
             if (window.parent === window) {
-                jQuery.sap.log.error('Unable to post message because this component is not embedded in any parent window', '[WebUiManager.notifyWebUi()]');
+                jQuery.sap.log.error('[WebUiManager.notifyWebUi()]', 'Unable to post message because this component is not embedded in any parent window');
                 return this;
             }
 
             if (!sEvent) {
-                jQuery.sap.log.error('Event name is not provided', '[WebUiManager.notifyWebUi()]');
+                jQuery.sap.log.error('[WebUiManager.notifyWebUi()]', 'Event name is not provided');
                 return this;
             }
 
@@ -53,7 +53,7 @@ sap.ui.define(
 
             sMessage = JSON.stringify(oData);
 
-            jQuery.sap.log.info(sMessage, '[WebUiManager.notifyWebUi()]');
+            jQuery.sap.log.info('[WebUiManager.notifyWebUi()]', sMessage);
             window.parent.postMessage(sMessage, this._getDomain());
 
             return this;
@@ -71,7 +71,7 @@ sap.ui.define(
                 return;
             }
 
-            jQuery.sap.log.info(oEvent.data, '[WebUiManager._fromWebUi()]');
+            jQuery.sap.log.info('[WebUiManager._fromWebUi()]', oEvent.data);
 
             if (oData.sid) {
                 this.fireEvent([ oData.event, oData.sid ].join('-'), oData.payload);

@@ -242,7 +242,7 @@ sap.ui.define(
             }
             if (this._oCancelDialog === undefined) {
                 this._oCancelDialog = new ute.ui.main.Popup.create({
-                    title: 'Campaign History',
+                    title: 'Change Campaign - Cancel',
                     close: this._handleDialogClosed,
                     content: this._oDialogFragment
                 });
