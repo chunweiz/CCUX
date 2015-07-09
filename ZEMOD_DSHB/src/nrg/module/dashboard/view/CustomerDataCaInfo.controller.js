@@ -28,10 +28,13 @@ sap.ui.define(
             });
 
             this.getView().setModel(oModel, 'data');
+
+            //Model to track page edit/save status
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCaInfoConfig');
         };
 
         CustomController.prototype.onBeforeRendering = function () {
-
+            this._initCaInfoConfigModel();
         };
 
         CustomController.prototype.onAfterRendering = function () {
@@ -40,6 +43,16 @@ sap.ui.define(
 
         CustomController.prototype.onExit = function () {
 
+        };
+
+        CustomController.prototype._initCaInfoConfigModel = function () {
+            var oModel = this.getView().getModel('oCaInfoConfig');
+            oModel.setProperty('/mailAddrUpdateVisible', true);
+            oModel.setProperty('/mailAddrAddnewVisible', true);
+            oModel.setProperty('/mailAddrSaveVisible', false);
+
+            oModel.setProperty('/tempAddrAddnewVisible', true);
+            oModel.setProperty('/tempAddrSaveVisible', false);
         };
 
 
