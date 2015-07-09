@@ -165,6 +165,11 @@ sap.ui.define(
 
         Controller.prototype._onExpandSegInfoClick = function () {
             //pop up start
+            this._oPopup = ute.ui.main.Popup.create({
+                content: this.getView().byId("idTestFrag"),
+                title: 'SEGMENTATION'
+            });
+            this._oPopup.open();
         };
 
         return Controller;

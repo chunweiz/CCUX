@@ -184,4 +184,9 @@
         </ute:content>
     </ute:Tag>
 
+    <ute:Tag id="idTestFrag">
+        <ute:TextView
+            text="AAAAA"/>
+    </ute:Tag>
+
 </mvc:View>
