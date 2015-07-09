@@ -45,6 +45,9 @@ sap.ui.define(
             //Model to keep Segmentation Info if it's more than 3 segmentations
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryBpAllSegInf');
 
+            //Model to keep Assainged Accounts
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryAssignedAccounts');
+
 
             this._initRetrBpInf();
             this._initRetrBpSegInf();
@@ -92,6 +95,32 @@ sap.ui.define(
             this._retrCaInf(sPath);
         };
 
+        Controller.prototype._initRetrAssignedAccount = function (CaNum) {
+            var sPath;
+
+            sPath = '/Buags' + '(\'' + CaNum + '\')/BpAssigns';
+            this._retrAssignedAccount(sPath);
+        };
+
+        Controller.prototype._retrAssignedAccount = function (sPath) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData.results) {
+                        this.getView().getModel('oSmryAssignedAccounts').setData(oData.results);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
 
 
         Controller.prototype._retrUrlHash = function () {
@@ -110,6 +139,7 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData.results) {
                         this.getView().getModel('oSmryBuagInf').setData(oData.results[0]);
+                        this._initRetrAssignedAccount(this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID'));
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -126,6 +156,7 @@ sap.ui.define(
             if (this.getView().getModel('oSmryAllBuags').getProperty('results').length >= iIndex) {
                 this.getView().getModel('oSmryBuagInf').setData(this.getView().getModel('oSmryAllBuags').getProperty('results')[iIndex]);
                 this.getView().getModel('oSmryAllBuags').setProperty('/selectedIndex', iIndex);
+                this._initRetrAssignedAccount(this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID'));
             }
         };
 
