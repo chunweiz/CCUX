@@ -159,11 +159,11 @@
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
                             <utmain:Button
-                                class="nrgDashboard-cusDataSum-assignedAccBtn"
+                                class="nrgDashboard-cusDataSum-segExpBtn"
                                 design="None"
                                 press="._onExpandSegInfoClick"
-                                text=">"
-                                visible="true">
+                                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_SegExpand}"
+                                visible="{oSmryBpSegInf>moreThanThree}">
                             </utmain:Button>
                         </l:MatrixLayoutCell>
                     </l:MatrixLayoutRow>
@@ -184,9 +184,30 @@
         </ute:content>
     </ute:Tag>
 
-    <ute:Tag id="idTestFrag">
+    <ute:Tag id="idAssignedAccs" class="nrgDashboard-cusDataSumAccFrgmt">
         <ute:TextView
             text="AAAAA"/>
+    </ute:Tag>
+
+    <ute:Tag id="idThreeSegs" class="nrgDashboard-cusDataSumSegFrgmt">
+        <c:TextView
+            text="{comp-i18n-dashboard>nrgDashboardCusDatSum_CusSeg}"
+            class="nrgDashboard-cusDataSumSegFrgmt-Title"/>
+                <l:MatrixLayout
+                    width="50%"
+                    columns="1"
+                    widths="100%"
+                    rows="{oSmryBpAllSegInf>/}">
+                <l:rows>
+                    <l:MatrixLayoutRow>
+                        <l:MatrixLayoutCell>
+                            <c:TextView
+                                text="{oSmryBpAllSegInf>CustomerSeg}"
+                                class="nrgDashboard-cusDataSumSegFrgmt-SegItm"/>
+                        </l:MatrixLayoutCell>
+                    </l:MatrixLayoutRow>
+                </l:rows>
+                </l:MatrixLayout>
     </ute:Tag>
 
 </mvc:View>
