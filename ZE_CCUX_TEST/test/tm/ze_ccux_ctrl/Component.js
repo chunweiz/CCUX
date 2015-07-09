@@ -21,10 +21,12 @@ sap.ui.define(
         CustomComponent.prototype.init = function () {
             UIComponent.prototype.init.apply(this, arguments);
 
+            var oModel, oMockServer, oDataModel;
+
             this.getRouter().initialize();
             Icon.load();
 
-            var oModel = new JSONModel({
+            oModel = new JSONModel({
                 data: {
                     title: {
                         nrg: 'NRG Reliant Interaction Center',
@@ -35,7 +37,7 @@ sap.ui.define(
 
             this.setModel(oModel, 'comp-test');
 
-            var oMockServer = new MockServer({
+            oMockServer = new MockServer({
                 rootUri: 'data/'
             });
 
@@ -46,7 +48,7 @@ sap.ui.define(
 
             oMockServer.start();
 
-            var oDataModel = new ODataModel(oMockServer.getRootUri(), {
+            oDataModel = new ODataModel(oMockServer.getRootUri(), {
                 useBatch: false
             });
 
