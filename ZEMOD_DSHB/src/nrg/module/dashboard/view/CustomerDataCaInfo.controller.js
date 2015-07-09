@@ -50,13 +50,49 @@ sap.ui.define(
             oModel.setProperty('/mailAddrUpdateVisible', true);
             oModel.setProperty('/mailAddrAddnewVisible', true);
             oModel.setProperty('/mailAddrSaveVisible', false);
+            oModel.setProperty('/mailAddrEditable', false);
 
             oModel.setProperty('/tempAddrAddnewVisible', true);
             oModel.setProperty('/tempAddrSaveVisible', false);
         };
 
+        CustomController.prototype.onMailAddrUpdate = function () {
+            var oModel = this.getView().getModel('oCaInfoConfig');
+            oModel.setProperty('/mailAddrUpdateVisible', false);
+            oModel.setProperty('/mailAddrAddnewVisible', false);
+            oModel.setProperty('/mailAddrSaveVisible', true);
+            oModel.setProperty('/mailAddrEditable', true);
+        };
 
+        CustomController.prototype.onMailAddrAddnew = function () {
+            var oModel = this.getView().getModel('oCaInfoConfig');
+            oModel.setProperty('/mailAddrUpdateVisible', false);
+            oModel.setProperty('/mailAddrAddnewVisible', false);
+            oModel.setProperty('/mailAddrSaveVisible', true);
+            oModel.setProperty('/mailAddrEditable', true);
+        };
 
+        CustomController.prototype.onMailAddrSave = function () {
+            var oModel = this.getView().getModel('oCaInfoConfig');
+            oModel.setProperty('/mailAddrUpdateVisible', true);
+            oModel.setProperty('/mailAddrAddnewVisible', true);
+            oModel.setProperty('/mailAddrSaveVisible', false);
+            oModel.setProperty('/mailAddrEditable', false);
+        };
+
+        CustomController.prototype.onTempAddrUpdate = function () {
+            var oModel = this.getView().getModel('oCaInfoConfig');
+            oModel.setProperty('/tempAddrAddnewVisible', false);
+            oModel.setProperty('/tempAddrSaveVisible', true);
+            oModel.setProperty('/tempAddrEditable', true);
+        };
+
+        CustomController.prototype.onTempAddrSave = function () {
+            var oModel = this.getView().getModel('oCaInfoConfig');
+            oModel.setProperty('/tempAddrAddnewVisible', true);
+            oModel.setProperty('/tempAddrSaveVisible', false);
+            oModel.setProperty('/tempAddrEditable', false);
+        };
 
         return CustomController;
     }
