@@ -11,9 +11,15 @@
     displayBlock="true">
 
     <style>
-        .custom .uteMDd-hdr .uteMDd-hdrContent,
+        .custom .uteMDd-hdr .uteMDd-hdrContent .uteMDdItem {
+            width: 50px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipse;
+        }
+
         .custom .uteMDdItem {
-            width: 130px;
+            width: 200px;
         }
 
         .custom .uteMDd-hdr {
@@ -39,9 +45,44 @@
     <div>text text text text text text text text text text text text text text text text text text text text </div>
     <div>text text text text text text text text text text text text text text text text text text text text </div>
     <br/>
-    <um:Dropdown id="dd002" design="Default" class="custom" content="{cc>/dropdown}" selectedKey="{cc>/selectedKey}" select=".onSelected">
+    <um:Dropdown id="dd002" design="Plain" class="custom" content="{cc>/dropdown}" selectedKey="{cc>/selectedKey}" select=".onSelected">
         <um:DropdownItem key="{cc>key}">
             <core:Icon src="{cc>icon}" /><uc:Tag elem="span" text="{cc>value}" />
+        </um:DropdownItem>
+    </um:Dropdown>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <br/>
+    <um:Dropdown id="dd003" content="{cc2>/dropdown}" select=".onSelected" placeholder="Choose a credit card ...">
+        <um:DropdownItem key="{cc2>key}">
+            <core:Icon src="{cc2>icon}" /><uc:Tag elem="span" text="{cc2>value}" />
+        </um:DropdownItem>
+    </um:Dropdown>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <div>text text text text text text text text text text text text text text text text text text text text </div>
+    <um:Dropdown id="dd004" content="{comp-odata>/BusinessPartnerSet}" select=".onSelected" placeholder="Choose a business partner ...">
+        <um:DropdownItem key="{comp-odata>BusinessPartnerID}">
+            <uc:Tag elem="span" text="{comp-odata>CompanyName}" />
         </um:DropdownItem>
     </um:Dropdown>
     <div>text text text text text text text text text text text text text text text text text text text text </div>

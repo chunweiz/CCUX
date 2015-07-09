@@ -10,10 +10,11 @@ sap.ui.define(
         'nrg/base/component/IconManager',
         'nrg/base/component/MockDataManager',
         'nrg/base/component/RealDataManager',
-        'nrg/base/component/WebUiManager'
+        'nrg/base/component/WebUiManager',
+        'nrg/base/component/RouteManager'
     ],
 
-    function (jQuery, Component, ResourceBundleManager, StylesheetManager, IconManager, MockDataManager, RealDataManager, WebUiManager) {
+    function (jQuery, Component, ResourceBundleManager, StylesheetManager, IconManager, MockDataManager, RealDataManager, WebUiManager, RouteManager) {
         'use strict';
 
         var CustomComponent = Component.extend('nrg.component.ic.Component', {
@@ -35,8 +36,6 @@ sap.ui.define(
         };
 
         CustomComponent.prototype.destroy = function () {
-            this._oMockDataManager.stopMockServers();
-
             if (this._oWebUiManager) {
                 this._oWebUiManager.destroy();
                 this._oWebUiManager = null;
@@ -67,11 +66,12 @@ sap.ui.define(
                 this._oRealDataManager = null;
             }
 
-            Component.prototype.destory.apply(this, arguments);
-        };
+            if (this._oRouteManager) {
+                this._oRouteManager.destroy();
+                this._oRouteManager = null;
+            }
 
-        CustomComponent.prototype.getWebUiManager = function () {
-            return this._oWebUiManager;
+            Component.prototype.destroy.apply(this, arguments);
         };
 
         CustomComponent.prototype._initWebUiConnection = function () {
@@ -106,22 +106,12 @@ sap.ui.define(
         };
 
         CustomComponent.prototype._initRouter = function () {
-            var oRoutes = this.getMetadata().getRoutes(),
-                oRouter = this.getRouter(),
-                sName;
-
-            //Add a callback to each routes
-            for (sName in oRoutes) {
-                if (oRoutes.hasOwnProperty(sName)) {
-                    oRoutes[sName].callback = this._routeCallback;
-                }
-            }
-
-            oRouter.initialize();
+            this._oRouteManager = new RouteManager(this);
+            this._oRouteManager.init();
         };
 
-        CustomComponent.prototype._routeCallback = function (route, args, config, targetControl, view) {
-
+        CustomComponent.prototype.getWebUiManager = function () {
+            return this._oWebUiManager;
         };
 
         return CustomComponent;

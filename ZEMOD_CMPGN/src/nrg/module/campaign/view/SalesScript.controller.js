@@ -32,7 +32,7 @@ sap.ui.define(
                 oMandDiscloureTV = this.getView().byId("idCamSSMdTv"),
                 oDropDownList = this.getView().byId("idnrgCamSSDdL"),
                 handler = function () {
-                    aContent = oDropDownList.getDropdownListItems();
+                    aContent = oDropDownList.getContent();
                     if ((aContent !== undefined) && (aContent.length > 0)) {
                         sPath = aContent[0].getBindingContext("comp-campaign").getPath();
                        // aContent[0].addStyleClass("nrgCamHisBut-Selected");
@@ -44,7 +44,7 @@ sap.ui.define(
                     that.getView().getModel("appView").setProperty("/busy", false);
                     obinding.detachDataReceived(handler);
                 };
-            obinding = oDropDownList.getBinding("DropdownListItems");
+            obinding = oDropDownList.getBinding("content");
             obinding.attachDataReceived(handler);
         };
 
@@ -82,6 +82,7 @@ sap.ui.define(
             sType = oEvent.getParameter("arguments").typeV;
             sOfferCode = oEvent.getParameter("arguments").offercodeNum;
             sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
+            sCurrentPath = "/ScriptS";
             sCurrentPath = sCurrentPath + "(OfferCode='" + sOfferCode + "',Type='P')";
             //sCurrentPath = sCurrentPath + "/ScriptS";
             oDropDownList = this.getView().byId("idnrgCamSSDdL");
@@ -89,11 +90,11 @@ sap.ui.define(
             mParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,
-                template : oDropDownListItemTemplate,
-                parameters: {expand: "Cpg_Script"}
-
+                template : oDropDownListItemTemplate
+ /*               parameters: {expand: "Cpg_Script"}
+*/
             };
-            oDropDownList.bindAggregation("DropdownListItems", mParameters);
+            oDropDownList.bindAggregation("content", mParameters);
             //this._bindView(sObjectPath);
 		};
 
@@ -163,7 +164,7 @@ sap.ui.define(
             oDialog.setModal(true);
             oDialog.addStyleClass("nrgCamOvs-dialog");
             oDropDownList = this.getView().byId("idnrgCamOvsDdL");
-            aContent = oDropDownList.getDropdownListItems();
+            aContent = oDropDownList.getContent();
             oDropDownListItemTemplate = aContent[0].clone();
             mParameters = {
                 model : "comp-campaign",
@@ -172,9 +173,9 @@ sap.ui.define(
                 filters : aFilters,
                 events: {dataReceived : fnRecievedHandler}
             };
-            oDropDownList.bindAggregation("DropdownListItems", mParameters);
+            oDropDownList.bindAggregation("content", mParameters);
             fnRecievedHandler = function () {
-                aContent = oDropDownList.getDropdownListItems();
+                aContent = oDropDownList.getContent();
                 if ((aContent !== undefined) && (aContent.length > 0)) {
                     sPath = aContent[0].getBindingContext("comp-campaign").getPath();
                     oOverScriptTV.bindElement({
@@ -184,7 +185,7 @@ sap.ui.define(
                 }
                 obinding.detachDataReceived(fnRecievedHandler);
             };
-            obinding = oDropDownList.getBinding("DropdownListItems");
+            obinding = oDropDownList.getBinding("content");
             this.getView().addDependent(oDialog);
             oDialog.open();
         };

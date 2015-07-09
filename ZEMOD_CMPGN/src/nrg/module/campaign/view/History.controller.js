@@ -36,7 +36,13 @@ sap.ui.define(
                 sPath,
                 i,
                 aContent,
-                oScrollContainer = this.getView().byId("idnrgCamHisScroll");
+                oPricingTable,
+                oPricingRowTemplate,
+                oPricingColTemplate,
+                oScrollContainer = this.getView().byId("idnrgCamHisScroll"),
+                mParameters,
+                fnRecieved,
+                fnChange;
             aContent = oScrollContainer.getContent();
             aChildren = oEvent.getSource().getParent().findElements();
             for (i = 0; i < aChildren.length; i = i + 1) {
@@ -46,10 +52,43 @@ sap.ui.define(
             }
             oEvent.getSource().addStyleClass("nrgCamHis-but-selected");
             sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
+            oPricingTable = this.getView().byId("idnrgCamHis-prcTable");
+            oPricingRowTemplate = this.getView().byId("idnrgCamHis-prcRow");
+            oPricingColTemplate = this.getView().byId("idnrgCamHis-prcCol");
             this.getView().bindElement({
                 model : "comp-campaign",
                 path : sPath
             });
+            // Development for Pricing Table binding..........................................
+            fnRecieved = function (oEvent) {
+                jQuery.sap.log.info("oPricingTable fnRecieved Read Successfully:::");
+            };
+            fnChange = function (oEvent) {
+                jQuery.sap.log.info("function change called successfully:::");
+            };
+            mParameters = {
+                model : "comp-campaign",
+                path : sPath + "/CpgEFL_N",
+                template : oPricingColTemplate,
+                events: {dataReceived : fnRecieved, change : fnChange}
+            };
+            oPricingTable.bindColumns(mParameters);
+            mParameters = {
+                model : "comp-campaign",
+                path : sPath + "/CpgEFL_N",
+                template : oPricingRowTemplate,
+                events: {dataReceived : fnRecieved, change : fnChange}
+            };
+            oPricingTable.bindRows(mParameters);
+            mParameters = {
+                model : "comp-campaign",
+                path : sPath + "/CpgEFL_N",
+                template : oPricingRowTemplate,
+                events: {dataReceived : fnRecieved, change : fnChange}
+            };
+            oPricingTable.bindRows(mParameters);
+
+            // Development for Pricing Table binding..........................................
         };
 
          /**
@@ -63,6 +102,19 @@ sap.ui.define(
         Controller.prototype.formatTileDate = function (startDate, endDate) {
             return startDate + " - " + endDate;
         };
+
+        /**
+		 * To Format EFL Column Name
+		 *
+		 * @function
+		 * @param {String} EFL Interval value
+         *
+         * @private
+		 */
+        Controller.prototype.formatEFLType = function (eflLevel) {
+            return "EFL@" + eflLevel;
+        };
+
 
         return Controller;
     }

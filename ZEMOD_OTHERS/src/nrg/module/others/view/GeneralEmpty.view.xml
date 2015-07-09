@@ -1,13 +1,14 @@
 <mvc:View
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
+    xmlns:um="ute.ui.main"
     xmlns:mvc="sap.ui.core.mvc"
     controllerName="nrg.module.others.view.GeneralEmpty">
 
     <ute:Tag class="nrgGeneralEmpty">
         <ute:content>
             <div class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
-                General Content
+                <um:Button text="CONFIRM" press=".onPressed" />
             </div>
         </ute:content>
     </ute:Tag>

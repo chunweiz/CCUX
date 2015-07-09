@@ -49,7 +49,10 @@ sap.ui.define(
                 fnRecievedHandler,
                 that = this,
                 sTempValue,
-                sPath;
+                sPath,
+                oMetaContext,
+                oTemplateView,
+                oMetaModel;
             oViewModel = new JSONModel({
 				busy : true,
 				delay : 0
@@ -133,7 +136,31 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sEligibilityPath, mParameters);
             }
-            this.getView().setModel(oModel, "Overview-elig");
+
+            // Leveraging XML Templates..........................................
+            oMetaModel = oModel.getMetaModel();
+            oMetaModel.loaded().then(function () {
+                oTemplateView = sap.ui.view({
+                    preprocessors: {
+                        xml: {
+                            bindingContexts: {
+                                meta: oMetaModel.getMetaContext(sEligibilityPath)
+                            },
+                            models: {
+                                meta: oMetaModel
+                            }
+                        }
+                    },
+                    type: sap.ui.core.mvc.ViewType.XML,
+                    viewName: "nrg.module.campaign.view.EFLData"
+                });
+                //oTemplateView.setModel(oModel);
+                //oTemplateView.bindElement(sPath);
+                this.getView().byId('viewContent').addContent(oTemplateView);
+            });
+
+            // Leveraging XML Templates..........................................
+
 		};
 
         /**

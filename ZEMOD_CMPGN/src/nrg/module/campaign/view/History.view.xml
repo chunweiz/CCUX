@@ -28,26 +28,9 @@
                 </l:MatrixLayout>
                 <u:Tag>
                     <u:Table width="60%"
+                             id="idnrgCamHis-prcTable"
                              tableType="CampaignTable"
                              class="nrgCamHis-left nrgCamHis-top">
-                            <u:columns>
-                                <u:TableColumn width="33%" >
-                                    <c:Label text="EFL@500"/>
-                                </u:TableColumn>
-                                <u:TableColumn width="33%" >
-                                    <c:Label text="EFL@1000"/>
-                                </u:TableColumn>
-                                <u:TableColumn width="33%" >
-                                    <c:Label text="EFL@2000"/>
-                                </u:TableColumn>
-                            </u:columns>
-                            <u:rows>
-                                <u:TableRow>
-                                    <c:Label text="{comp-campaign>EFL500}"/>
-                                    <c:Label text="{comp-campaign>EFL1000}"/>
-                                    <c:Label text="{comp-campaign>EFL2000}"/>
-                                </u:TableRow>
-                            </u:rows>
                     </u:Table>
                 </u:Tag>
                 <u:Tag>
@@ -101,29 +84,45 @@
            </u:Tag>
             <!-- Place holder for templates to reuse for Bind Aggregation method. Below will be always Display:none -->
             <u:Tag class="nrgCamHis-hide">
-                        <um:Button press=".onPressed"
-                                   text="{comp-campaign>Notitle}"
-                                   class="nrgCamHis-but"
-                                   id="idnrgCamHisBut"
-                                   design="None">
-                                <u:Tag class="nrgCamHis-but-Date"
-                                       text="{parts:[{path:'comp-campaign>StartDate',
-                                       type: 'sap.ui.model.type.Date',
-                                       formatOptions:{pattern: 'MM/dd/yyyy'} },
-                                       {path: 'comp-campaign>EndDate',
-                                       type: 'sap.ui.model.type.Date',
-                                       formatOptions:{pattern: 'MM/dd/yyyy'} }],
-                                       formatter:'.formatTileDate'}" />
-                                <u:Tag class="nrgCamHis-but-title"
-                                       text="{comp-campaign>OfferTitle}" />
-                                <u:Tag class="nrgCamHis-but-price"
-                                       text="{path: 'comp-campaign>EFL2000',
-                                       type: 'nrg.util.type.Price',
-                                       formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
-                                <u:Tag class="nrgCamHis-but-priceLbl"
-                                       text="{comp-i18n-campaign>nrgCmpHiskWhDisc}" />
-                        </um:Button>
+                <um:Button press=".onPressed"
+                           text="{comp-campaign>Notitle}"
+                           class="nrgCamHis-but"
+                           id="idnrgCamHisBut"
+                           design="None">
+                        <u:Tag class="nrgCamHis-but-Date"
+                               text="{parts:[{path:'comp-campaign>StartDate',
+                               type: 'sap.ui.model.type.Date',
+                               formatOptions:{pattern: 'MM/dd/yyyy'} },
+                               {path: 'comp-campaign>EndDate',
+                               type: 'sap.ui.model.type.Date',
+                               formatOptions:{pattern: 'MM/dd/yyyy'} }],
+                               formatter:'.formatTileDate'}" />
+                        <u:Tag class="nrgCamHis-but-title"
+                               text="{comp-campaign>OfferTitle}" />
+                        <u:Tag class="nrgCamHis-but-price"
+                               text="{path: 'comp-campaign>EFL2000',
+                               type: 'nrg.util.type.Price',
+                               formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
+                        <u:Tag class="nrgCamHis-but-priceLbl"
+                               text="{comp-i18n-campaign>nrgCmpHiskWhDisc}" />
+                </um:Button>
+                <u:Table width="auto"
+                         tableType="CampaignTable"
+                         class="nrgCamHis-left nrgCamHis-top">
+                         <u:columns>
+                                <u:TableColumn id="idnrgCamHis-prcCol">
+                                    <c:Label text="{parts:[{path:'comp-campaign>EFLLevel'}],
+                                                    formatter:'.formatEFLType'}"/>
+                                </u:TableColumn>
+                        </u:columns>
+                        <u:rows>
+                            <u:TableRow id="idnrgCamHis-prcRow">
+                                <c:Label text="{comp-campaign>EFLPrice}"/>
+                            </u:TableRow>
+                        </u:rows>
+                </u:Table>
             </u:Tag>
+
                <!-- Place holder for templates to reuse for Bind Aggregation method. Above will be always Display:none -->
      </u:Tag>
    </u:Tag>

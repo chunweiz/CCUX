@@ -137,7 +137,14 @@ sap.ui.define(
                 oNoDataTag,
                 fnRecievedHandler,
                 aContent,
-                that = this;
+                oPricingTable,
+                oPricingRowTemplate,
+                oPricingColTemplate,
+                that = this,
+                fnRecieved,
+                fnChange,
+                oTemplateView,
+                oMetaModel;
             aFilterIds = ["Contract", "Type"];
             aFilterValues = ["32253375", "H"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -146,15 +153,36 @@ sap.ui.define(
                 type: sap.ui.core.mvc.ViewType.XML,
                 viewName: "nrg.module.campaign.view.History"
             });
+            oModel = this.getOwnerComponent().getModel('comp-campaign');
             oScrollContainer = oHistoryView.byId("idnrgCamHisScroll");
             oScrollTemplate = oHistoryView.byId("idnrgCamHisBut").clone();
             oDataTag = this.getView().byId("idnrgCamHisData");
             oNoDataTag = this.getView().byId("idnrgCamHisNoData");
+            oPricingTable = oHistoryView.byId("idnrgCamHis-prcTable");
+            oPricingColTemplate = oHistoryView.byId("idnrgCamHis-prcCol");
+            oPricingRowTemplate = oHistoryView.byId("idnrgCamHis-prcRow");
             fnRecievedHandler = function () {
                 var oBinding;
                 aContent = oScrollContainer.getContent();
                 if ((aContent !== undefined) && (aContent.length > 0)) {
                     sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                    // Development for Pricing Table binding..........................................
+                    fnRecieved = function (oEvent) {
+                        jQuery.sap.log.info("oPricingTable fnRecieved Read Successfully:::");
+                    };
+                    fnChange = function (oEvent) {
+                        jQuery.sap.log.info("function change called successfully:::");
+                    };
+                    oMetaModel = oModel.getMetaModel();
+                    mParameters = {
+                        model : "comp-campaign",
+                        path : sPath + "/CpgEFL_N",
+                        template : oPricingColTemplate,
+                        events: {dataReceived : fnRecieved, change : fnChange}
+                    };
+                    oPricingTable.bindColumns(mParameters);
+
+                    // Development for Pricing Table binding..........................................
                     aContent[0].addStyleClass("nrgCamHis-but-selected");
                     that.getView().bindElement({
                         model : "comp-campaign",
@@ -169,6 +197,7 @@ sap.ui.define(
                 oBinding.detachDataReceived(fnRecievedHandler);
             };
             mParameters = {
+                parameters : {expand: "CpgEFL_N"},
                 model : "comp-campaign",
                 path : sPath,
                 template : oScrollTemplate,
@@ -213,7 +242,7 @@ sap.ui.define(
             }
             if (this._oCancelDialog === undefined) {
                 this._oCancelDialog = new ute.ui.main.Popup.create({
-                    title: 'Campaign History',
+                    title: 'Change Campaign - Cancel',
                     close: this._handleDialogClosed,
                     content: this._oDialogFragment
                 });

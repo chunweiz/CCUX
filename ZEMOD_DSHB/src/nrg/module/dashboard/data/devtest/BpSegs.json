@@ -1,0 +1,14 @@
+[
+    {
+        PartnerID: "PartnerID 2",
+        CustomerSeg: "PRIORITY ONE ONE ONE ONE"
+    },
+    {
+        PartnerID: "PartnerID 2",
+        CustomerSeg: "PRIORITY ONE"
+    },
+    {
+        PartnerID: "PartnerID 2",
+        CustomerSeg: "PRIORITY ONE"
+    }
+]

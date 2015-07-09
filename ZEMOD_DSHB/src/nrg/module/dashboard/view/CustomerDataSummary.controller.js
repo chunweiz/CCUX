@@ -14,18 +14,18 @@ sap.ui.define(
 
 
         Controller.prototype._formatBadge = function (cIndicator) {
-            /*if( cIndicator === 'x' || cIndicator === 'X'){
-                return true;
-            } else{
-                return false;
-            }*/
-
-            /*Temp Code for Testing for mock server data*/
-            if (cIndicator) {
+            if (cIndicator === 'x' || cIndicator === 'X') {
                 return true;
             } else {
                 return false;
             }
+
+            /*Temp Code for Testing for mock server data
+            if (cIndicator) {
+                return true;
+            } else {
+                return false;
+            }*/
         };
 
         Controller.prototype.onInit = function () {
@@ -161,6 +161,10 @@ sap.ui.define(
 
         Controller.prototype._onAssignedAccountClick = function () {
             sap.ui.commons.MessageBox.alert("Assigned Account Link Clicked");
+        };
+
+        Controller.prototype._onExpandSegInfoClick = function () {
+            //pop up start
         };
 
         return Controller;

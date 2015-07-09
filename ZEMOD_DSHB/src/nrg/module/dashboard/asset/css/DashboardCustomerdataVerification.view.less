@@ -25,10 +25,12 @@
         padding: 10px;
      }
 
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > .nrgDashboard-cusDataVerify-l-div-chb > label{
-        padding-right: 5px;
-        bottom: 3px;
-        left: 2px;
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-chb > span{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        border-color: @nrgColor-grey-dark;
+        line-height: 24px;
+        margin-left: 12px;
     }
 
     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m{
@@ -138,6 +140,21 @@
         line-height: 22px;
     }
 
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-redX > span{
+        font-size: @nrgFontSize-base;
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-red-pale;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-halChb > label{
+        border-color: @nrgColor-green-highlight;
+        margin-left: 6px;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-halChb > label::before{
+        border-color: @nrgColor-green-highlight;
+    }
+
     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > .nrgDashboard-cusDataVerify-l-div-esidLabl > span{
         font-size: @nrgFontSize-small;
         font-weight: @nrgFontWeight-semiBold;
@@ -145,8 +162,31 @@
         line-height: 22px;
     }
 
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-add > span{
-        font-size: @nrgFontSize-large;
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > .nrgDashboard-cusDataVerify-mContent-pag{
+        vertical-align: top !important;
+        text-align: right;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-pagBtn > div {
+        color: @nrgColor-blue-link;
+        padding-right: 3px;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up {
+        display: table-row;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up > .nrgDashboard-cusDataVerify-mContent-badge {
+        top: 5px;
+        margin-right: 6px;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up > .nrgDashboard-cusDataVerify-mContent-add{
+        display: table-cell;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up > .nrgDashboard-cusDataVerify-mContent-add > span{
+        font-size: @nrgFontSize-base;
         font-weight: @nrgFontWeight-bold;
         color: @nrgColor-grey-dark;
     }
@@ -185,7 +225,7 @@
         color: @nrgColor-grey-inactive;
     }
 
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hInput{
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hInput > input{
         border: 0;
         outline: 0;
         font-size: @nrgFontSize-small;
@@ -194,9 +234,34 @@
         margin-left: 8px;
     }
 
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hInput:focus{
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hInput > input:focus{
         background-color: @nrgColor-blue-link;
     }
 
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .uteMDd-hdr .uteMDd-hdrContent {
+        width: 230px;
+        height: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .uteMDd-hdr .uteMDd-hdrExpander{
+        margin-bottom: 4px;
+     }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .uteMDdItem{
+        width: auto;
+        padding: 3px 0 3px 0;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .uteMDd-hdr{
+        margin-right: 5px;
+    }
+    /*
+        & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .custom .uteMDd-hdr {
+            border: none;
+            margin-bottom: 4px;
+            cursor: pointer;
+        }*/
 
 }

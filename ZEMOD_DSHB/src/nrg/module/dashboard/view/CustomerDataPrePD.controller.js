@@ -38,7 +38,7 @@ sap.ui.define(
 
         };
 
-        CustomController.onExit = function () {
+        CustomController.prototype.onExit = function () {
 
         };
 
