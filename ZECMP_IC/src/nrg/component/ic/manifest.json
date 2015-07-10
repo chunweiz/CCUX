@@ -20,7 +20,7 @@
 
         "resources": {
             "css": [
-                { "uri": "../../../../../ZELIB/bower_components/normalize.css/normalize.css" },
+                { "uri": "../../../../../ZELIB/normalize.css/normalize.css" },
                 { "uri": "../../../../../ZEBASE/build/nrg/base/asset/css/base.css" }
             ]
         },
