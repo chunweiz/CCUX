@@ -117,6 +117,7 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onTitleCancel" visible="{oBpInfoConfig>/titleSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-CANCEL}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onTitleEdit" visible="{oBpInfoConfig>/titleEditVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EDIT}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onTitleSave" visible="{oBpInfoConfig>/titleSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SAVE}"/>
                 </ute:Tag>
@@ -257,6 +258,7 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onAddrCancel" visible="{oBpInfoConfig>/addrSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-CANCEL}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onAddrEdit" visible="{oBpInfoConfig>/addrEditVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EDIT}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onAddrSave" visible="{oBpInfoConfig>/addrSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SAVE}"/>
                 </ute:Tag>
@@ -327,6 +329,7 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onPersonalInfoCancel" visible="{oBpInfoConfig>/personalInfoSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-CANCEL}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onPersonalInfoEdit" visible="{oBpInfoConfig>/personalInfoEditVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EDIT}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onPersonalInfoSave" visible="{oBpInfoConfig>/personalInfoSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SAVE}"/>
                 </ute:Tag>
@@ -419,6 +422,7 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onContactInfoCancel" visible="{oBpInfoConfig>/contactInfoSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-CANCEL}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onContactInfoEdit" visible="{oBpInfoConfig>/contactInfoEditVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EDIT}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onContactInfoSave" visible="{oBpInfoConfig>/contactInfoSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SAVE}"/>
                 </ute:Tag>
@@ -443,7 +447,10 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-PHONE_PREF}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/mktPrfEditable}" value="info@info.com"/>
+                                                <utmain:Checkbox id="zzz1" select=".onYesSelected" enabled="true" class="nrgDashboard-cusDataBpInfo-chb"/>
+                                                <utmain:Label labelFor="zzz1-intChk" text="Yes" class="nrgDashboard-cusDataBpInfo-chb-lbl"/>
+                                                <utmain:Checkbox id="zz1" select=".onNoSelected" enabled="true" class="nrgDashboard-cusDataBpInfo-chb"/>
+                                                <utmain:Label labelFor="zz1-intChk" text="No" class="nrgDashboard-cusDataBpInfo-chb-lbl"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -453,7 +460,10 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EMAIL_PREF_ENERGY}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/mktPrfEditable}" value="infoname2@info.com"/>
+                                                <utmain:Checkbox id="zzz2" select=".onYesSelected" enabled="true" class="nrgDashboard-cusDataBpInfo-chb"/>
+                                                <utmain:Label labelFor="zzz2-intChk" text="Yes" class="nrgDashboard-cusDataBpInfo-chb-lbl"/>
+                                                <utmain:Checkbox id="zz2" select=".onNoSelected" enabled="true" class="nrgDashboard-cusDataBpInfo-chb"/>
+                                                <utmain:Label labelFor="zz2-intChk" text="No" class="nrgDashboard-cusDataBpInfo-chb-lbl"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -463,7 +473,10 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EMAIL_PREF_MKT_PROM}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/mktPrfEditable}" value="infoname2@info.com"/>
+                                                <utmain:Checkbox id="zzz3" select=".onYesSelected" enabled="true" class="nrgDashboard-cusDataBpInfo-chb"/>
+                                                <utmain:Label labelFor="zzz3-intChk" text="Yes" class="nrgDashboard-cusDataBpInfo-chb-lbl"/>
+                                                <utmain:Checkbox id="zz3" select=".onNoSelected" enabled="true" class="nrgDashboard-cusDataBpInfo-chb"/>
+                                                <utmain:Label labelFor="zz3-intChk" text="No" class="nrgDashboard-cusDataBpInfo-chb-lbl"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -473,7 +486,10 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EMAIL_PREF_OFFER}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/mktPrfEditable}" value="infoname2@info.com"/>
+                                                <utmain:Checkbox id="zzz4" select=".onYesSelected" enabled="true" class="nrgDashboard-cusDataBpInfo-chb"/>
+                                                <utmain:Label labelFor="zzz4-intChk" text="Yes" class="nrgDashboard-cusDataBpInfo-chb-lbl"/>
+                                                <utmain:Checkbox id="zz4" select=".onNoSelected" enabled="true" class="nrgDashboard-cusDataBpInfo-chb"/>
+                                                <utmain:Label labelFor="zz4-intChk" text="No" class="nrgDashboard-cusDataBpInfo-chb-lbl"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -484,6 +500,7 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onMarketPrefCancel" visible="{oBpInfoConfig>/marketPrefSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-CANCEL}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onMarketPrefEdit" visible="{oBpInfoConfig>/marketPrefEditVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EDIT}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onMarketPrefSave" visible="{oBpInfoConfig>/marketPrefSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SAVE}"/>
                 </ute:Tag>
