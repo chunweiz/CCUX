@@ -194,10 +194,10 @@
                 <ute:TableColumn width="10%">
                     <c:Label text="Sales Rep ID"/>
                 </ute:TableColumn>
-                <ute:TableColumn width="15%">
+                <ute:TableColumn width="12%">
                     <c:Label text="Last Name"/>
                 </ute:TableColumn>
-                <ute:TableColumn width="15%">
+                <ute:TableColumn width="12%">
                     <c:Label text="First Name"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="10%">
@@ -212,7 +212,7 @@
                 <ute:TableColumn width="10%">
                     <c:Label text="Phone"/>
                 </ute:TableColumn>
-                <ute:TableColumn width="10%">
+                <ute:TableColumn width="16%">
                     <c:Label text="Email Address"/>
                 </ute:TableColumn>
             </ute:columns>
