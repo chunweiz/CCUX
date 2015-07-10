@@ -360,19 +360,29 @@
                                             <utmain:Label  labelFor="mail_FixedAddr"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FAddr}"
                                                 class="nrgDashboard-cusDataVerify-mContent-fLbl"/>
-                                            <ute:Textfield id="mail_FixedAddr" fieldType="Noborder"
+                                            <ute:Tag id="mail_FixedAddr">
+                                                <utmain:Button  design="None"
+                                                    class="nrgDashboard-cusDataVerify-mContent-fBtn"
+                                                    text="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ShortForm}"/>
+                                            </ute:Tag>
+                                            <!--<ute:Textfield id="mail_FixedAddr" fieldType="Noborder"
                                                 value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ShortForm}"
                                                 editable="{oCfrmStatus>/bEditable}"
-                                                class="nrgDashboard-cusDataVerify-mContent-fInput"/>
+                                                class="nrgDashboard-cusDataVerify-mContent-fInput"/>-->
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
                                             <utmain:Label  labelFor="mail_TempAddr"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TAddr}"
                                                 class="nrgDashboard-cusDataVerify-mContent-fLbl"/>
-                                            <ute:Textfield id="mail_TempAddr" fieldType="Noborder"
+                                            <ute:Tag id="mail_TempAddr">
+                                                <utmain:Button  design="None"
+                                                    class="nrgDashboard-cusDataVerify-mContent-fBtn"
+                                                    text="{oDtaVrfyMailingTempAddr>/TempAddrInfo/ShortForm}"/>
+                                            </ute:Tag>
+                                            <!--<ute:Textfield id="mail_TempAddr" fieldType="Noborder"
                                                 value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/ShortForm}"
                                                 editable="{oCfrmStatus>/bEditable}"
-                                                class="nrgDashboard-cusDataVerify-mContent-fInput"/>
+                                                class="nrgDashboard-cusDataVerify-mContent-fInput"/>-->
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
@@ -493,4 +503,25 @@
             </l:rows>
         </l:MatrixLayout>
     </ute:Tag>
+
+  <!--  <ute:Tag id="idThreeSegs" class="nrgDashboard-cusDataSumSegFrgmt">
+        <c:TextView
+            text="{comp-i18n-dashboard>nrgDashboardCusDatSum_CusSeg}"
+            class="nrgDashboard-cusDataSumSegFrgmt-Title"/>
+                <l:MatrixLayout
+                    width="50%"
+                    columns="1"
+                    widths="100%"
+                    rows="{oSmryBpAllSegInf>/}">
+                <l:rows>
+                    <l:MatrixLayoutRow>
+                        <l:MatrixLayoutCell>
+                            <c:TextView
+                                text="{oSmryBpAllSegInf>CustomerSeg}"
+                                class="nrgDashboard-cusDataSumSegFrgmt-SegItm"/>
+                        </l:MatrixLayoutCell>
+                    </l:MatrixLayoutRow>
+                </l:rows>
+                </l:MatrixLayout>
+    </ute:Tag>-->
 </mvc:View>
