@@ -25,10 +25,7 @@
                         force: true
                     },
                     src: [
-                        '<%= eclipseProjectPath %>/<%= eclipseProjectName %>/grunt/**',
-                        '<%= eclipseProjectPath %>/<%= eclipseProjectName %>/readme/**',
-                        '<%= eclipseProjectPath %>/<%= eclipseProjectName %>/.gitignore',
-                        '<%= eclipseProjectPath %>/<%= eclipseProjectName %>/*.*'
+                        '<%= eclipseProjectPath %>/<%= eclipseProjectName %>/ZELIB/**'
                     ]
                 }
             };
@@ -37,7 +34,7 @@
         }(grunt));
 
         /*
-        ** Copy relevant files files to build.
+        ** Copy relevant files to eclipse project.
         */
         oGruntConfig.copy = (function (grunt) {
             var oConfig;
@@ -48,11 +45,7 @@
                         {
                             expand: true,
                             src: [
-                                'grunt/**',
-                                'readme/**',
-                                '.gitignore',
-                                '*.*'
-
+                                'ZELIB/**'
                             ],
                             dest: '<%= eclipseProjectPath %>/<%= eclipseProjectName %>/',
                             filter: 'isFile'
