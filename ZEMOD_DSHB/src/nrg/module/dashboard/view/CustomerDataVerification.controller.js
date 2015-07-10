@@ -1,4 +1,5 @@
 /*global sap*/
+/*globals ute*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -446,5 +447,23 @@ sap.ui.define(
                 return true;
             }
         };
+
+        Controller.prototype._onEditMailAddrClick = function (oEvent) {
+            this._oMailEditPopup = ute.ui.main.Popup.create({
+                content: this.getView().byId("idAddrUpdatePopup"),
+                title: 'Edit Mailing Address'
+            });
+            this._oMailEditPopup.open();
+        };
+
+        Controller.prototype._onEditTempAddrClick = function (oEvent) {
+            this._oTempMailEditPopup = ute.ui.main.Popup.create({
+                content: this.getView().byId("idTempAddrUpdatePopup"),
+                title: 'Edit Temparory Mailing Address'
+            });
+            this._oTempMailEditPopup.open();
+        };
+
+        return Controller;
     }
 );

@@ -363,7 +363,8 @@
                                             <ute:Tag id="mail_FixedAddr">
                                                 <utmain:Button  design="None"
                                                     class="nrgDashboard-cusDataVerify-mContent-fBtn"
-                                                    text="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ShortForm}"/>
+                                                    text="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ShortForm}"
+                                                    press="._onEditMailAddrClick"/>
                                             </ute:Tag>
                                             <!--<ute:Textfield id="mail_FixedAddr" fieldType="Noborder"
                                                 value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ShortForm}"
@@ -377,7 +378,8 @@
                                             <ute:Tag id="mail_TempAddr">
                                                 <utmain:Button  design="None"
                                                     class="nrgDashboard-cusDataVerify-mContent-fBtn"
-                                                    text="{oDtaVrfyMailingTempAddr>/TempAddrInfo/ShortForm}"/>
+                                                    text="{oDtaVrfyMailingTempAddr>/TempAddrInfo/ShortForm}"
+                                                    press="._onEditTempAddrClick"/>
                                             </ute:Tag>
                                             <!--<ute:Textfield id="mail_TempAddr" fieldType="Noborder"
                                                 value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/ShortForm}"
@@ -504,24 +506,16 @@
         </l:MatrixLayout>
     </ute:Tag>
 
-  <!--  <ute:Tag id="idThreeSegs" class="nrgDashboard-cusDataSumSegFrgmt">
+    <ute:Tag id="idAddrUpdatePopup" class="">
         <c:TextView
-            text="{comp-i18n-dashboard>nrgDashboardCusDatSum_CusSeg}"
+            text="{AAAAA}"
             class="nrgDashboard-cusDataSumSegFrgmt-Title"/>
-                <l:MatrixLayout
-                    width="50%"
-                    columns="1"
-                    widths="100%"
-                    rows="{oSmryBpAllSegInf>/}">
-                <l:rows>
-                    <l:MatrixLayoutRow>
-                        <l:MatrixLayoutCell>
-                            <c:TextView
-                                text="{oSmryBpAllSegInf>CustomerSeg}"
-                                class="nrgDashboard-cusDataSumSegFrgmt-SegItm"/>
-                        </l:MatrixLayoutCell>
-                    </l:MatrixLayoutRow>
-                </l:rows>
-                </l:MatrixLayout>
-    </ute:Tag>-->
+    </ute:Tag>
+
+    <ute:Tag id="idTempAddrUpdatePopup" class="">
+        <c:TextView
+            text="{AAAAA}"
+            class="nrgDashboard-cusDataSumSegFrgmt-Title"/>
+    </ute:Tag>
+
 </mvc:View>
