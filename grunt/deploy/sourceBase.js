@@ -52,7 +52,6 @@
                                 'readme/**',
                                 '.gitignore',
                                 '*.*'
-
                             ],
                             dest: '<%= eclipseProjectPath %>/<%= eclipseProjectName %>/',
                             filter: 'isFile'
