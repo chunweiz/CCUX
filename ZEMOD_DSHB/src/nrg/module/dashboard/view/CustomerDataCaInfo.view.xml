@@ -178,7 +178,7 @@
                     </l:rows>
                 </l:MatrixLayout>
 
-                <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-btn">
+                <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-btn clearfix">
                     <utmain:Button class="nrgDashboard-cusDataCaInfo-CommBtn" press="onMailAddrUpdate" visible="{oCaInfoConfig>/mailAddrUpdateVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-UPDATE}"/>
                     <utmain:Button class="nrgDashboard-cusDataCaInfo-CommBtn" press="onMailAddrAddnew" visible="{oCaInfoConfig>/mailAddrAddnewVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-ADD_NEW}"/>
                     <utmain:Button class="nrgDashboard-cusDataCaInfo-CommBtn" press="onMailAddrSave" visible="{oCaInfoConfig>/mailAddrSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-SAVE}"/>
@@ -365,7 +365,7 @@
                     </l:rows>
                 </l:MatrixLayout>
 
-                <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-btn">
+                <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-btn clearfix">
                     <utmain:Button class="nrgDashboard-cusDataCaInfo-CommBtn" press="onTempAddrUpdate" visible="{oCaInfoConfig>/tempAddrAddnewVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-UPDATE}"/>
                     <utmain:Button class="nrgDashboard-cusDataCaInfo-CommBtn" press="onTempAddrSave" visible="{oCaInfoConfig>/tempAddrSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-SAVE}"/>
                 </ute:Tag>
