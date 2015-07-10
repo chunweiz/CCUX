@@ -54,6 +54,13 @@ sap.ui.define(
             oModel.setProperty('/mktPrfEditable', false);
         };
 
+        CustomController.prototype.onTitleCancel = function () {
+            var oModel = this.getView().getModel('oBpInfoConfig');
+            oModel.setProperty('/titleEditVisible', true);
+            oModel.setProperty('/titleSaveVisible', false);
+            oModel.setProperty('/titleEditable', false);
+        };
+
         CustomController.prototype.onTitleEdit = function () {
             var oModel = this.getView().getModel('oBpInfoConfig');
             oModel.setProperty('/titleEditVisible', false);
@@ -66,6 +73,13 @@ sap.ui.define(
             oModel.setProperty('/titleEditVisible', true);
             oModel.setProperty('/titleSaveVisible', false);
             oModel.setProperty('/titleEditable', false);
+        };
+
+        CustomController.prototype.onAddrCancel = function () {
+            var oModel = this.getView().getModel('oBpInfoConfig');
+            oModel.setProperty('/addrEditVisible', true);
+            oModel.setProperty('/addrSaveVisible', false);
+            oModel.setProperty('/addrEditable', false);
         };
 
         CustomController.prototype.onAddrEdit = function () {
@@ -82,6 +96,13 @@ sap.ui.define(
             oModel.setProperty('/addrEditable', false);
         };
 
+        CustomController.prototype.onPersonalInfoCancel = function () {
+            var oModel = this.getView().getModel('oBpInfoConfig');
+            oModel.setProperty('/personalInfoEditVisible', true);
+            oModel.setProperty('/personalInfoSaveVisible', false);
+            oModel.setProperty('/personalInfoEditable', false);
+        };
+
         CustomController.prototype.onPersonalInfoEdit = function () {
             var oModel = this.getView().getModel('oBpInfoConfig');
             oModel.setProperty('/personalInfoEditVisible', false);
@@ -96,6 +117,13 @@ sap.ui.define(
             oModel.setProperty('/personalInfoEditable', false);
         };
 
+        CustomController.prototype.onContactInfoCancel = function () {
+            var oModel = this.getView().getModel('oBpInfoConfig');
+            oModel.setProperty('/contactInfoEditVisible', true);
+            oModel.setProperty('/contactInfoSaveVisible', false);
+            oModel.setProperty('/contactInfoEditable', false);
+        };
+
         CustomController.prototype.onContactInfoEdit = function () {
             var oModel = this.getView().getModel('oBpInfoConfig');
             oModel.setProperty('/contactInfoEditVisible', false);
@@ -108,6 +136,13 @@ sap.ui.define(
             oModel.setProperty('/contactInfoEditVisible', true);
             oModel.setProperty('/contactInfoSaveVisible', false);
             oModel.setProperty('/contactInfoEditable', false);
+        };
+
+        CustomController.prototype.onMarketPrefCancel = function () {
+            var oModel = this.getView().getModel('oBpInfoConfig');
+            oModel.setProperty('/marketPrefEditVisible', true);
+            oModel.setProperty('/marketPrefSaveVisible', false);
+            oModel.setProperty('/mktPrfEditable', false);
         };
 
         CustomController.prototype.onMarketPrefEdit = function () {

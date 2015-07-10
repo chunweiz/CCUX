@@ -117,6 +117,7 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onTitleCancel" visible="{oBpInfoConfig>/titleSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-CANCEL}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onTitleEdit" visible="{oBpInfoConfig>/titleEditVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EDIT}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onTitleSave" visible="{oBpInfoConfig>/titleSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SAVE}"/>
                 </ute:Tag>
@@ -257,6 +258,7 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onAddrCancel" visible="{oBpInfoConfig>/addrSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-CANCEL}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onAddrEdit" visible="{oBpInfoConfig>/addrEditVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EDIT}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onAddrSave" visible="{oBpInfoConfig>/addrSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SAVE}"/>
                 </ute:Tag>
@@ -327,6 +329,7 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onPersonalInfoCancel" visible="{oBpInfoConfig>/personalInfoSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-CANCEL}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onPersonalInfoEdit" visible="{oBpInfoConfig>/personalInfoEditVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EDIT}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onPersonalInfoSave" visible="{oBpInfoConfig>/personalInfoSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SAVE}"/>
                 </ute:Tag>
@@ -419,6 +422,7 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onContactInfoCancel" visible="{oBpInfoConfig>/contactInfoSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-CANCEL}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onContactInfoEdit" visible="{oBpInfoConfig>/contactInfoEditVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EDIT}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onContactInfoSave" visible="{oBpInfoConfig>/contactInfoSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SAVE}"/>
                 </ute:Tag>
@@ -496,6 +500,7 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                    <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onMarketPrefCancel" visible="{oBpInfoConfig>/marketPrefSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-CANCEL}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnEdit" press="onMarketPrefEdit" visible="{oBpInfoConfig>/marketPrefEditVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EDIT}"/>
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave" press="onMarketPrefSave" visible="{oBpInfoConfig>/marketPrefSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SAVE}"/>
                 </ute:Tag>
