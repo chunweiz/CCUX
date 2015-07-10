@@ -4,6 +4,17 @@
 
     font-family: @nrgFontFamily;
 
+    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .clearfix:before{
+        display: table;
+        content: '';
+    }
+
+    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .clearfix:after{
+        display: table;
+        clear: both;
+        content: '';
+    }
+
     & > .nrgDashboard-cusDataCaInfo-scrnTitle{
         font: @nrgFontWeight-semiBold @nrgFontSize-large @nrgFontFamily;
         color: @nrgColor-grey-dark;
@@ -42,7 +53,7 @@
 
     & > .nrgDashboard-cusDataCaInfo-infoLine{
         margin: 30px 0 0 0;
-        overflow: auto;
+//        overflow: auto;
     }
 
     & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-hdr > .uteMIl-hdrContent > .nrgDashboard-cusDataCaInfo-infoLineHeader-txt > span{
@@ -105,7 +116,6 @@
     }
 
     & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-checkBox-div > .nrgDashboard-cusDataCaInfo-chb > .uteMChkBox-chk{
-//        margin-top: 15px;
         vertical-align: middle;
     }
 
@@ -147,12 +157,12 @@
     }
 
     & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-btn {
-        float: right;
         margin-top: 15px;
         overflow: auto;
     }
 
     & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-btn > .nrgDashboard-cusDataCaInfo-CommBtn{
+        float: right;
         margin: 0;
         padding: 0;
         width: 110px;
