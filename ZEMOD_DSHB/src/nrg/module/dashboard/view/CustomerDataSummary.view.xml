@@ -191,13 +191,13 @@
                 <ute:TableColumn width="10%">
                     <c:Label text="Contract"/>
                 </ute:TableColumn>
-                <ute:TableColumn width="20%">
+                <ute:TableColumn width="10%">
                     <c:Label text="Sales Rep ID"/>
                 </ute:TableColumn>
-                <ute:TableColumn width="10%">
+                <ute:TableColumn width="15%">
                     <c:Label text="Last Name"/>
                 </ute:TableColumn>
-                <ute:TableColumn width="10%">
+                <ute:TableColumn width="15%">
                     <c:Label text="First Name"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="10%">

@@ -114,6 +114,10 @@ sap.ui.define(
             return this._oWebUiManager;
         };
 
+        CustomComponent.prototype.getRootView = function () {
+            return this.getAggregation('rootControl');
+        };
+
         return CustomComponent;
     }
 );
