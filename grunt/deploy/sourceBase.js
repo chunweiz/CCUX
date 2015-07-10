@@ -27,7 +27,6 @@
                     src: [
                         '<%= eclipseProjectPath %>/<%= eclipseProjectName %>/grunt/**',
                         '<%= eclipseProjectPath %>/<%= eclipseProjectName %>/readme/**',
-                        '<%= eclipseProjectPath %>/<%= eclipseProjectName %>/ZELIB/**',
                         '<%= eclipseProjectPath %>/<%= eclipseProjectName %>/.gitignore',
                         '<%= eclipseProjectPath %>/<%= eclipseProjectName %>/*.*'
                     ]
@@ -51,10 +50,8 @@
                             src: [
                                 'grunt/**',
                                 'readme/**',
-                                'ZELIB/bower.json',
                                 '.gitignore',
                                 '*.*'
-
                             ],
                             dest: '<%= eclipseProjectPath %>/<%= eclipseProjectName %>/',
                             filter: 'isFile'
