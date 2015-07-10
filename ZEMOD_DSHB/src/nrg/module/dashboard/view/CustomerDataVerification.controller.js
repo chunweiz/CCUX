@@ -65,9 +65,11 @@ sap.ui.define(
         };
 
         Controller.prototype._onBuagChange = function (iNewBuagIndex) {
-            var eventBus = sap.ui.getCore().getEventBus();
+            var eventBus = sap.ui.getCore().getEventBus(),
+                oPayload = {iIndex: iNewBuagIndex};
 
-            eventBus.publish("nrg.module.dashoard", "eBuagChanged", iNewBuagIndex);
+
+            eventBus.publish("nrg.module.dashoard", "eBuagChanged", oPayload);
         };
 
         Controller.prototype._retrUrlHash = function () {
@@ -231,7 +233,7 @@ sap.ui.define(
                 iSelectedIndex = parseInt(sSelectedKey, 10);
 
             //Trigger Buag Change event
-            this._onBuagChange(this.getView().getModel('oAllBuags').oData[iSelectedIndex].ContractAccountID);
+            //this._onBuagChange(this.getView().getModel('oAllBuags').oData[iSelectedIndex].ContractAccountID);
 
             this.getView().getModel('oDtaVrfyBuags').setData(this.getView().getModel('oAllBuags').oData[iSelectedIndex]);
             //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
@@ -243,12 +245,12 @@ sap.ui.define(
             this._retrContracts(this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'));
         };
 
-        Controller.prototype._onBuagChange = function (oEvent) {
+        /*Controller.prototype._onBuagChange = function (oEvent) {
             var sNewSelectedBuagIndex;
 
             sNewSelectedBuagIndex = oEvent.getSource().getSelectedKey();
             this._retrBuag(sNewSelectedBuagIndex);
-        };
+        };*/
 
         Controller.prototype._onToggleButtonPress = function (oEvent) {
             if (this.getView().byId('mailadd_area').getVisible()) {

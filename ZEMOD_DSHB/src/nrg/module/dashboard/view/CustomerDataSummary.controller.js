@@ -61,7 +61,7 @@ sap.ui.define(
         };
 
         Controller.prototype._handleBuagChanged = function (channel, event, data) {
-            this._selectBuag(data);
+            this._selectBuag(data.iIndex);
         };
 
         Controller.prototype._handleContractChanged = function (channel, event, data) {
@@ -153,8 +153,8 @@ sap.ui.define(
         };
 
         Controller.prototype._selectBuag = function (iIndex) {
-            if (this.getView().getModel('oSmryAllBuags').getProperty('results').length >= iIndex) {
-                this.getView().getModel('oSmryBuagInf').setData(this.getView().getModel('oSmryAllBuags').getProperty('results')[iIndex]);
+            if (this.getView().getModel('oSmryAllBuags').getProperty('/results').length >= iIndex) {
+                this.getView().getModel('oSmryBuagInf').setData(this.getView().getModel('oSmryAllBuags').getProperty('/results')[iIndex]);
                 this.getView().getModel('oSmryAllBuags').setProperty('/selectedIndex', iIndex);
                 this._initRetrAssignedAccount(this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID'));
             }
