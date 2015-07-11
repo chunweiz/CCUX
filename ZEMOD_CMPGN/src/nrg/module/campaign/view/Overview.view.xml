@@ -93,6 +93,10 @@
                          icon="sap-icon://nrg-icon/dollar"
                          class="nrgCamOvr-lbl nrgCamOvr-top"
                          labelFor="idCamPriceTbl"  />
+                <u:Tag class="nrgCamOvrPriceT" id="idnrgCamOvrPriceT">
+                    <!-- EFL Data Table is dynamically inserted here with XML templating -->
+                </u:Tag>
+
             </u:Tag>
             <um:Infoline expanded="true">
                 <um:headerContent>

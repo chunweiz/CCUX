@@ -42,7 +42,13 @@ sap.ui.define(
                 oScrollContainer = this.getView().byId("idnrgCamHisScroll"),
                 mParameters,
                 fnRecieved,
-                fnChange;
+                fnChange,
+                oTemplateView,
+                oTemplateModel,
+                aEFLDatapaths,
+                iCount,
+                oEFLJson = {},
+                aResults = [];
             aContent = oScrollContainer.getContent();
             aChildren = oEvent.getSource().getParent().findElements();
             for (i = 0; i < aChildren.length; i = i + 1) {
@@ -52,7 +58,8 @@ sap.ui.define(
             }
             oEvent.getSource().addStyleClass("nrgCamHis-but-selected");
             sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
-            oPricingTable = this.getView().byId("idnrgCamHis-prcTable");
+            oPricingTable = this.getView().byId("idnrgCamHisPriceT");
+            oPricingTable.removeAllAggregation("content");
             oPricingRowTemplate = this.getView().byId("idnrgCamHis-prcRow");
             oPricingColTemplate = this.getView().byId("idnrgCamHis-prcCol");
             this.getView().bindElement({
@@ -60,33 +67,29 @@ sap.ui.define(
                 path : sPath
             });
             // Development for Pricing Table binding..........................................
-            fnRecieved = function (oEvent) {
-                jQuery.sap.log.info("oPricingTable fnRecieved Read Successfully:::");
-            };
-            fnChange = function (oEvent) {
-                jQuery.sap.log.info("function change called successfully:::");
-            };
-            mParameters = {
-                model : "comp-campaign",
-                path : sPath + "/CpgEFL_N",
-                template : oPricingColTemplate,
-                events: {dataReceived : fnRecieved, change : fnChange}
-            };
-            oPricingTable.bindColumns(mParameters);
-            mParameters = {
-                model : "comp-campaign",
-                path : sPath + "/CpgEFL_N",
-                template : oPricingRowTemplate,
-                events: {dataReceived : fnRecieved, change : fnChange}
-            };
-            oPricingTable.bindRows(mParameters);
-            mParameters = {
-                model : "comp-campaign",
-                path : sPath + "/CpgEFL_N",
-                template : oPricingRowTemplate,
-                events: {dataReceived : fnRecieved, change : fnChange}
-            };
-            oPricingTable.bindRows(mParameters);
+           // Adding EFL Table to History view as XML templating-- start
+            oTemplateModel = new sap.ui.model.json.JSONModel();
+            aEFLDatapaths = this.getView().getModel("comp-campaign").getProperty(sPath + "/EFLs");
+            if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
+                for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
+                    aResults.push(this.getView().getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
+                }
+            }
+            oTemplateModel.setData(this.convertEFLJson(aResults));
+            oTemplateView = sap.ui.view({
+                preprocessors: {
+                    xml: {
+                        models: {
+                            tmpl : oTemplateModel
+                        }
+                    }
+                },
+                type: sap.ui.core.mvc.ViewType.XML,
+                viewName: "nrg.module.campaign.view.EFLData"
+            });
+            oPricingTable.addContent(oTemplateView);
+
+            // Adding EFL Table to History view as XML templating--end
 
             // Development for Pricing Table binding..........................................
         };
@@ -150,12 +153,14 @@ sap.ui.define(
                         }
                         if (continueFlag) {
                             continueFlag = false;
+                        } else {
+                            tempColumns.push(temp.EFLLevel);
+                            columns.push({
+                                "EFLLevel": temp.EFLLevel
+                            });
                         }
                     }
-                    tempColumns.push(temp.EFLLevel);
-                    columns.push({
-                        "EFLLevel": temp.EFLLevel
-                    });
+
                     // Columns Assignment.
                 }
             }

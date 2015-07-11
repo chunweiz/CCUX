@@ -144,7 +144,11 @@ sap.ui.define(
                 fnRecieved,
                 fnChange,
                 oTemplateView,
-                oMetaModel;
+                oTemplateModel,
+                aEFLDatapaths,
+                iCount,
+                oEFLJson = {},
+                aResults = [];
             aFilterIds = ["Contract", "Type"];
             aFilterValues = ["32253375", "H"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -158,29 +162,41 @@ sap.ui.define(
             oScrollTemplate = oHistoryView.byId("idnrgCamHisBut").clone();
             oDataTag = this.getView().byId("idnrgCamHisData");
             oNoDataTag = this.getView().byId("idnrgCamHisNoData");
-            oPricingTable = oHistoryView.byId("idnrgCamHis-prcTable");
             oPricingColTemplate = oHistoryView.byId("idnrgCamHis-prcCol");
             oPricingRowTemplate = oHistoryView.byId("idnrgCamHis-prcRow");
+            oPricingTable = oHistoryView.byId("idnrgCamHisPriceT");
+            oTemplateModel = new sap.ui.model.json.JSONModel();
+
+            // Function received handler is used to update the view with first History campaign.---start
             fnRecievedHandler = function () {
                 var oBinding;
                 aContent = oScrollContainer.getContent();
                 if ((aContent !== undefined) && (aContent.length > 0)) {
                     sPath = aContent[0].getBindingContext("comp-campaign").getPath();
-                    // Development for Pricing Table binding..........................................
-                    fnRecieved = function (oEvent) {
-                        jQuery.sap.log.info("oPricingTable fnRecieved Read Successfully:::");
-                    };
-                    fnChange = function (oEvent) {
-                        jQuery.sap.log.info("function change called successfully:::");
-                    };
-                    oMetaModel = oModel.getMetaModel();
-                    mParameters = {
-                        model : "comp-campaign",
-                        path : sPath + "/CpgEFL_N",
-                        template : oPricingColTemplate,
-                        events: {dataReceived : fnRecieved, change : fnChange}
-                    };
-                    oPricingTable.bindColumns(mParameters);
+
+                   // Adding EFL Table to History view as XML templating-- start
+                    aEFLDatapaths = this.getModel("comp-campaign").getProperty(sPath + "/EFLs");
+                    if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
+                        for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
+                            aResults.push(this.getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
+                        }
+                    }
+                    oTemplateModel.setData(that.convertEFLJson(aResults));
+                    that._oEFLModel = oTemplateModel;
+                    oTemplateView = sap.ui.view({
+                        preprocessors: {
+                            xml: {
+                                models: {
+                                    tmpl : that._oEFLModel
+                                }
+                            }
+                        },
+                        type: sap.ui.core.mvc.ViewType.XML,
+                        viewName: "nrg.module.campaign.view.EFLData"
+                    });
+                    oPricingTable.addContent(oTemplateView);
+                    // Adding EFL Table to History view as XML templating--end
+
 
                     // Development for Pricing Table binding..........................................
                     aContent[0].addStyleClass("nrgCamHis-but-selected");
@@ -196,8 +212,11 @@ sap.ui.define(
                 oBinding = oScrollContainer.getBinding("content");
                 oBinding.detachDataReceived(fnRecievedHandler);
             };
+            // Function received handler is used to update the view with first History campaign.---end
+
+
             mParameters = {
-                parameters : {expand: "CpgEFL_N"},
+                parameters : {expand: "EFLs"},
                 model : "comp-campaign",
                 path : sPath,
                 template : oScrollTemplate,

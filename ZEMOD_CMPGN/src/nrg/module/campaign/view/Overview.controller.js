@@ -52,7 +52,6 @@ sap.ui.define(
                 sPath,
                 oMetaContext,
                 oTemplateView,
-                oMetaModel,
                 oTemplateModel,
                 aEFLDatapaths,
                 iCount,
@@ -103,7 +102,7 @@ sap.ui.define(
 
 
                    // aContent[0].addStyleClass("nrgCamHisBut-Selected");
-/*                    aEFLDatapaths = this.getModel("comp-campaign").getProperty(sPath + "/EFLs");
+                    aEFLDatapaths = this.getModel("comp-campaign").getProperty(sPath + "/EFLs");
                     if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
                         for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
                             aResults.push(this.getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
@@ -122,7 +121,7 @@ sap.ui.define(
                         type: sap.ui.core.mvc.ViewType.XML,
                         viewName: "nrg.module.campaign.view.EFLData"
                     });
-                    that.getView().byId('nrgCamPriceT').addContent(oTemplateView);*/
+                    that.getView().byId('idnrgCamOvrPriceT').addContent(oTemplateView);
                     that.getView().bindElement({
                         model : "comp-campaign",
                         path : sPath
@@ -205,17 +204,34 @@ sap.ui.define(
             var sPath,
                 aEFLDatapaths,
                 iCount,
-                aResults,
-                that = this;
+                aResults = [],
+                that = this,
+                oTemplateView,
+                oTemplateModel;
             sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
+            oTemplateModel = new sap.ui.model.json.JSONModel();
             // aContent[0].addStyleClass("nrgCamHisBut-Selected");
+            that.getView().byId('idnrgCamOvrPriceT').removeAllAggregation("content");
             aEFLDatapaths = this.getView().getModel("comp-campaign").getProperty(sPath + "/EFLs");
             if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
                 for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
-                    aResults.push(this.getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
+                    aResults.push(this.getView().getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
                 }
             }
-            that._oEFLModel.setData(that.convertEFLJson(aResults));
+            oTemplateModel.setData(that.convertEFLJson(aResults));
+            oTemplateView = sap.ui.view({
+                preprocessors: {
+                    xml: {
+                        models: {
+                            tmpl : oTemplateModel
+                        }
+                    }
+                },
+                type: sap.ui.core.mvc.ViewType.XML,
+                viewName: "nrg.module.campaign.view.EFLData"
+            });
+
+            that.getView().byId('idnrgCamOvrPriceT').addContent(oTemplateView);
             this.getView().bindElement({
                 model : "comp-campaign",
                 path : sPath
@@ -289,12 +305,14 @@ sap.ui.define(
                         }
                         if (continueFlag) {
                             continueFlag = false;
+                        } else {
+                            tempColumns.push(temp.EFLLevel);
+                            columns.push({
+                                "EFLLevel": temp.EFLLevel
+                            });
                         }
                     }
-                    tempColumns.push(temp.EFLLevel);
-                    columns.push({
-                        "EFLLevel": temp.EFLLevel
-                    });
+
                     // Columns Assignment.
                 }
             }
