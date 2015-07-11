@@ -52,7 +52,7 @@
                 </um:button>
             </article>
             <um:TabBar id="idnrgCamOvr-TabBar" design="None" class="nrgCamOvr-TabBar nrgCamOvr-top" >
-                <um:TabBarItem design="Default" key="tb001" select=".toggleCampaign" enabled="{= ${comp-campaign>OfferCode} !== '' }">
+                <um:TabBarItem design="Default" key="tb001" select=".toggleCampaign" enabled="{= ${comp-campaign>OfferCode} !== '00000000' }">
                     <u:Tag text="{parts:[{path:'comp-campaign>Type'}],
                                                     formatter:'.formatType'}" />
                 </um:TabBarItem>
@@ -88,33 +88,11 @@
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>
-            <u:Tag class="nrgCamPriceT">
+            <u:Tag class="nrgCamPriceT" id="nrgCamPriceT">
                 <c:Label text="{comp-i18n-campaign>nrgCmpOvrPrclbl}"
                          icon="sap-icon://nrg-icon/dollar"
                          class="nrgCamOvr-lbl nrgCamOvr-top"
                          labelFor="idCamPriceTbl"  />
-                <u:Table width="60%"
-                    tableType="CampaignTable"
-                    class="nrgCamOvr-left nrgCamOvr-top"  >
-                        <u:columns>
-                            <u:TableColumn width="33%" >
-                                <c:Label text="EFL@500"/>
-                            </u:TableColumn>
-                            <u:TableColumn width="33%" >
-                                <c:Label text="EFL@1000"/>
-                            </u:TableColumn>
-                            <u:TableColumn width="33%" >
-                                <c:Label text="EFL@2000"/>
-                            </u:TableColumn>
-                        </u:columns>
-                        <u:rows>
-                            <u:TableRow>
-                                <c:Label text="{comp-campaign>EFL500}"/>
-                                <c:Label text="{comp-campaign>EFL1000}"/>
-                                <c:Label text="{comp-campaign>EFL2000}"/>
-                            </u:TableRow>
-                        </u:rows>
-                </u:Table>
             </u:Tag>
             <um:Infoline expanded="true">
                 <um:headerContent>

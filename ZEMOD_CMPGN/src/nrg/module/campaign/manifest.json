@@ -32,7 +32,7 @@
            "routes": {
                 "campaign": {
                     "pattern": "campaign/co/{coNum}/type/{typeV}",
-                    "target": [ "campaign.General", "dashboard.SummaryBP", "campaign.Tools" ]
+                    "target": [ "campaign.Overview", "dashboard.SummaryBP", "campaign.Tools" ]
                 },
                 "campaignchg": {
                     "pattern": "campaign/cmpchg/co/{coNum}/offercode/{offercodeNum}",

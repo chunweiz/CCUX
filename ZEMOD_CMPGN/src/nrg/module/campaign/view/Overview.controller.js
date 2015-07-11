@@ -52,7 +52,12 @@ sap.ui.define(
                 sPath,
                 oMetaContext,
                 oTemplateView,
-                oMetaModel;
+                oMetaModel,
+                oTemplateModel,
+                aEFLDatapaths,
+                iCount,
+                oEFLJson = {},
+                aResults = [];
             oViewModel = new JSONModel({
 				busy : true,
 				delay : 0
@@ -69,7 +74,7 @@ sap.ui.define(
             oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar");
             oToggleTemplate = this.getView().byId("idnrgCamOvr-TabItem").clone();
             sEligibilityPath = sEligibilityPath + "('" + this._sContract + "')";
-
+            oTemplateModel = new sap.ui.model.json.JSONModel();
             // Handler function for Tab Bar Item.
             fnRecievedHandler = function (oEvent) {
                 aContent = oToggleContainer.getContent();
@@ -95,7 +100,29 @@ sap.ui.define(
                             aContent[1].setSelected(true);
                         }
                     }
+
+
                    // aContent[0].addStyleClass("nrgCamHisBut-Selected");
+/*                    aEFLDatapaths = this.getModel("comp-campaign").getProperty(sPath + "/EFLs");
+                    if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
+                        for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
+                            aResults.push(this.getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
+                        }
+                    }
+                    oTemplateModel.setData(that.convertEFLJson(aResults));
+                    that._oEFLModel = oTemplateModel;
+                    oTemplateView = sap.ui.view({
+                        preprocessors: {
+                            xml: {
+                                models: {
+                                    tmpl : that._oEFLModel
+                                }
+                            }
+                        },
+                        type: sap.ui.core.mvc.ViewType.XML,
+                        viewName: "nrg.module.campaign.view.EFLData"
+                    });
+                    that.getView().byId('nrgCamPriceT').addContent(oTemplateView);*/
                     that.getView().bindElement({
                         model : "comp-campaign",
                         path : sPath
@@ -112,11 +139,11 @@ sap.ui.define(
                 path : sCurrentPath,
                 template : oToggleTemplate,
                 filters : aFilters,
+                parameters : {expand: "EFLs"},
                 events: {dataReceived : fnRecievedHandler}
             };
             oToggleContainer.bindAggregation("content", mParameters);
             mParameters = {
-                batchGroupId : "myId1",
                 filters : aFilters,
                 success : function (oData) {
                     this.getView().byId("idCamCustReqOfferBtn").bindElement({
@@ -136,31 +163,6 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sEligibilityPath, mParameters);
             }
-
-            // Leveraging XML Templates..........................................
-            oMetaModel = oModel.getMetaModel();
-            oMetaModel.loaded().then(function () {
-                oTemplateView = sap.ui.view({
-                    preprocessors: {
-                        xml: {
-                            bindingContexts: {
-                                meta: oMetaModel.getMetaContext(sEligibilityPath)
-                            },
-                            models: {
-                                meta: oMetaModel
-                            }
-                        }
-                    },
-                    type: sap.ui.core.mvc.ViewType.XML,
-                    viewName: "nrg.module.campaign.view.EFLData"
-                });
-                //oTemplateView.setModel(oModel);
-                //oTemplateView.bindElement(sPath);
-                this.getView().byId('viewContent').addContent(oTemplateView);
-            });
-
-            // Leveraging XML Templates..........................................
-
 		};
 
         /**
@@ -200,8 +202,20 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.toggleCampaign = function (oEvent) {
-            var sPath;
+            var sPath,
+                aEFLDatapaths,
+                iCount,
+                aResults,
+                that = this;
             sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
+            // aContent[0].addStyleClass("nrgCamHisBut-Selected");
+            aEFLDatapaths = this.getView().getModel("comp-campaign").getProperty(sPath + "/EFLs");
+            if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
+                for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
+                    aResults.push(this.getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
+                }
+            }
+            that._oEFLModel.setData(that.convertEFLJson(aResults));
             this.getView().bindElement({
                 model : "comp-campaign",
                 path : sPath
@@ -238,6 +252,82 @@ sap.ui.define(
             } else {
                 return this._i18NModel.getProperty("nrgCmpOvrPg");
             }
+        };
+        /**
+		 * Converts in to EFL Json format required by Template view.
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.convertEFLJson = function (results) {
+            var columns = [],
+                temp,
+                tempColumns = [],
+                continueFlag = false,
+                oBRRow = [],
+                oCERow = [],
+                oBRCells = [],
+                oCECells = [],
+                iCount1,
+                iCount2,
+                aJsonDataNew;
+            for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+
+                temp = results[iCount1];
+                if ((temp !== undefined) && (temp.EFLLevel !== undefined)) {
+
+                  // Columns Assignment.
+                    if (tempColumns !== undefined) {
+
+                        for (iCount2 = 0; iCount2 < tempColumns.length; iCount2  = iCount2 + 1) {
+                            if (temp.EFLLevel === tempColumns[iCount2]) {
+                                continueFlag = true;
+                                break;
+                            }
+                        }
+                        if (continueFlag) {
+                            continueFlag = false;
+                        }
+                    }
+                    tempColumns.push(temp.EFLLevel);
+                    columns.push({
+                        "EFLLevel": temp.EFLLevel
+                    });
+                    // Columns Assignment.
+                }
+            }
+            for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+
+                temp = results[iCount1];
+                if ((temp !== undefined) && (temp.EFLLevel !== undefined)) {
+
+                    if (temp.EFLType === "BR") {
+                        oBRCells.push({
+                            "EFLPrice": temp.EFLPrice
+                        });
+                    }
+
+                    if (temp.EFLType === "CE") {
+                        oCECells.push({
+                            "EFLPrice": temp.EFLPrice
+                        });
+                    }
+                }
+            }
+            aJsonDataNew = {};
+            aJsonDataNew.results = {};
+            aJsonDataNew.results.columns = columns;
+            aJsonDataNew.results.rows = [];
+            aJsonDataNew.results.rows.push({
+                "cells" : oBRCells
+            });
+            aJsonDataNew.results.rows.push({
+                "cells" : oCECells
+            });
+
+            return aJsonDataNew;
         };
 
         return Controller;

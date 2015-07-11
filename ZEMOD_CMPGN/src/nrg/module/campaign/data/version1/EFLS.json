@@ -14,7 +14,7 @@
             "Type":"H",
             "EFLType":"BR",
             "EFLLevel":2000,
-            "EFLPrice":"9.7000000",
+            "EFLPrice":"11.7000000",
             "EFLString":""
          },
          {
@@ -22,55 +22,31 @@
             "Type":"H",
             "EFLType":"BR",
             "EFLLevel":500,
-            "EFLPrice":"11.0000000",
+            "EFLPrice":"12.0000000",
             "EFLString":""
          },
          {
             "OfferCode":"50038473",
             "Type":"H",
-            "EFLType":"BR",
+            "EFLType":"RE",
             "EFLLevel":1000,
-            "EFLPrice":"10.2000000",
+            "EFLPrice":"13.2000000",
             "EFLString":""
          },
          {
             "OfferCode":"50038473",
             "Type":"H",
-            "EFLType":"BR",
+            "EFLType":"RE",
             "EFLLevel":2000,
-            "EFLPrice":"9.7000000",
+            "EFLPrice":"14.7000000",
             "EFLString":""
          },
          {
             "OfferCode":"50038473",
             "Type":"H",
-            "EFLType":"BR",
+            "EFLType":"RE",
             "EFLLevel":500,
-            "EFLPrice":"11.0000000",
-            "EFLString":""
-         },
-         {
-            "OfferCode":"50038473",
-            "Type":"H",
-            "EFLType":"BR",
-            "EFLLevel":1000,
-            "EFLPrice":"7.6000000",
-            "EFLString":""
-         },
-         {
-            "OfferCode":"50038473",
-            "Type":"H",
-            "EFLType":"BR",
-            "EFLLevel":2000,
-            "EFLPrice":"7.1000000",
-            "EFLString":""
-         },
-         {
-            "OfferCode":"50038473",
-            "Type":"H",
-            "EFLType":"BR",
-            "EFLLevel":500,
-            "EFLPrice":"10.5000000",
+            "EFLPrice":"15.0000000",
             "EFLString":""
          }
       ]

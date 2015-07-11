@@ -40,47 +40,33 @@ sap.ui.define(
                 oMetaModel,
                 that = this,
                 mParameters,
-                fnRecievedHandler;
+                fnRecievedHandler,
+                oJsonModel;
 
             // Leveraging XML Templates..........................................
             oModel = this.getOwnerComponent().getModel('comp-campaign');
-            sEligibilityPath = this._i18NModel.getProperty("nrgEligibilitySet");
+            sEligibilityPath = "/EFLS";
 /*            this._sContract = oEvent.getParameter("arguments").coNum;
             sEligibilityPath = sEligibilityPath + "('" + this._sContract + "')";*/
+            oJsonModel = new sap.ui.model.json.JSONModel();
             mParameters = {
                 success : function (oData) {
+                    oJsonModel.setData(oData);
                     oTemplateView = sap.ui.view({
                         preprocessors: {
                             xml: {
-                                bindingContexts: {
-                                    'comp-campaign' : oModel.getContext(sEligibilityPath)
-                                },
+/*                                bindingContexts: {
+                                    meta : oModel.getContext(sEligibilityPath)
+                                },*/
                                 models: {
-                                    'comp-campaign' : oModel
+                                    tmpl : oJsonModel
                                 }
                             }
                         },
                         type: sap.ui.core.mvc.ViewType.XML,
                         viewName: "nrg.module.campaign.view.EFLData"
                     });
-                    mParameters = {
-                        success : function (oData) {
-                            jQuery.sap.log.info("binding successfull");
-                        }.bind(this),
-                        error: function (oError) {
-                            jQuery.sap.log.info("Eligibility Error occured");
-                        }.bind(this)
-                    };
-                    fnRecievedHandler = function (oEvent) {
-                        jQuery.sap.log.info("Data received");
-                    };
-                    //oTemplateView.bindElement(sEligibilityPath);
-                    oTemplateView.bindElement({
-                        model : "comp-campaign",
-                        path : sEligibilityPath,
-                        parameters : mParameters,
-                        events: {dataReceived : fnRecievedHandler}
-                    });
+                    oTemplateView.setModel(oJsonModel, "items");
                     that.getView().byId('viewContent').addContent(oTemplateView);
                 }.bind(this),
                 error: function (oError) {
@@ -110,7 +96,17 @@ sap.ui.define(
             }
             return aFilters;
         };
-
+        /**
+		 * Formats the Type value to display "Current Campaign" or "Pending Campaign"
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.formatEFLType = function (oInterface, vRawValue) {
+            return "EFL@" + vRawValue;
+        };
         return Controller;
     }
 
