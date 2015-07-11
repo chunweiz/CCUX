@@ -17,12 +17,12 @@
     }
 
     & .nrgApp-hdr {
-        z-index: @nrgZIndex-1--AppHeader;
+        z-index: 1;
         top: 0;
     }
 
     & .nrgApp-ftr {
-        z-index: @nrgZIndex-1--AppFooter;
+        z-index: 2;
         bottom: 0;
     }
 
@@ -73,7 +73,7 @@
     @media screen {
         @media (max-width:1440px) {
             & .nrgApp-ftr {
-                z-index: @nrgZIndex-1--AppFooter;
+                z-index: 2;
                 bottom: 17px;
             }
         }

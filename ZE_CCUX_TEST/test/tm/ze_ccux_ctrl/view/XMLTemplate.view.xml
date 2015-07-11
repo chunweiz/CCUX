@@ -12,4 +12,8 @@
             <sm:Label text="{comp-test>/data/title/ute}"/>
         </template:else>
     </template:if>
+
+    <template:repeat list="{tmpl>/results}" var="bp">
+        <br/><sm:Label text="{bp>CompanyName}"/>
+    </template:repeat>
 </mvc:View>

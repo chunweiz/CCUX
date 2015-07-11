@@ -5,10 +5,18 @@
     },
     {
         PartnerID: "PartnerID 2",
-        CustomerSeg: "PRIORITY ONE"
+        CustomerSeg: "PRIORITY 222"
     },
     {
         PartnerID: "PartnerID 2",
-        CustomerSeg: "PRIORITY ONE"
+        CustomerSeg: "PRIORITY 333"
+    },
+    {
+        PartnerID: "PartnerID 2",
+        CustomerSeg: "PRIORITY 444"
+    },
+    {
+        PartnerID: "PartnerID 2",
+        CustomerSeg: "PRIORITY 666"
     }
 ]

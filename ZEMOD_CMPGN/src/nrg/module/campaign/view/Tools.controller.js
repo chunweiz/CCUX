@@ -144,7 +144,11 @@ sap.ui.define(
                 fnRecieved,
                 fnChange,
                 oTemplateView,
-                oMetaModel;
+                oTemplateModel,
+                aEFLDatapaths,
+                iCount,
+                oEFLJson = {},
+                aResults = [];
             aFilterIds = ["Contract", "Type"];
             aFilterValues = ["32253375", "H"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -158,29 +162,41 @@ sap.ui.define(
             oScrollTemplate = oHistoryView.byId("idnrgCamHisBut").clone();
             oDataTag = this.getView().byId("idnrgCamHisData");
             oNoDataTag = this.getView().byId("idnrgCamHisNoData");
-            oPricingTable = oHistoryView.byId("idnrgCamHis-prcTable");
             oPricingColTemplate = oHistoryView.byId("idnrgCamHis-prcCol");
             oPricingRowTemplate = oHistoryView.byId("idnrgCamHis-prcRow");
+            oPricingTable = oHistoryView.byId("idnrgCamHisPriceT");
+            oTemplateModel = new sap.ui.model.json.JSONModel();
+
+            // Function received handler is used to update the view with first History campaign.---start
             fnRecievedHandler = function () {
                 var oBinding;
                 aContent = oScrollContainer.getContent();
                 if ((aContent !== undefined) && (aContent.length > 0)) {
                     sPath = aContent[0].getBindingContext("comp-campaign").getPath();
-                    // Development for Pricing Table binding..........................................
-                    fnRecieved = function (oEvent) {
-                        jQuery.sap.log.info("oPricingTable fnRecieved Read Successfully:::");
-                    };
-                    fnChange = function (oEvent) {
-                        jQuery.sap.log.info("function change called successfully:::");
-                    };
-                    oMetaModel = oModel.getMetaModel();
-                    mParameters = {
-                        model : "comp-campaign",
-                        path : sPath + "/CpgEFL_N",
-                        template : oPricingColTemplate,
-                        events: {dataReceived : fnRecieved, change : fnChange}
-                    };
-                    oPricingTable.bindColumns(mParameters);
+
+                   // Adding EFL Table to History view as XML templating-- start
+                    aEFLDatapaths = this.getModel("comp-campaign").getProperty(sPath + "/EFLs");
+                    if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
+                        for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
+                            aResults.push(this.getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
+                        }
+                    }
+                    oTemplateModel.setData(that.convertEFLJson(aResults));
+                    that._oEFLModel = oTemplateModel;
+                    oTemplateView = sap.ui.view({
+                        preprocessors: {
+                            xml: {
+                                models: {
+                                    tmpl : that._oEFLModel
+                                }
+                            }
+                        },
+                        type: sap.ui.core.mvc.ViewType.XML,
+                        viewName: "nrg.module.campaign.view.EFLData"
+                    });
+                    oPricingTable.addContent(oTemplateView);
+                    // Adding EFL Table to History view as XML templating--end
+
 
                     // Development for Pricing Table binding..........................................
                     aContent[0].addStyleClass("nrgCamHis-but-selected");
@@ -196,8 +212,11 @@ sap.ui.define(
                 oBinding = oScrollContainer.getBinding("content");
                 oBinding.detachDataReceived(fnRecievedHandler);
             };
+            // Function received handler is used to update the view with first History campaign.---end
+
+
             mParameters = {
-                parameters : {expand: "CpgEFL_N"},
+                parameters : {expand: "EFLs"},
                 model : "comp-campaign",
                 path : sPath,
                 template : oScrollTemplate,
@@ -304,6 +323,82 @@ sap.ui.define(
                 iSelected = iSelected - 1;
             }
 
+        };
+        /**
+		 * Converts in to EFL Json format required by Template view.
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.convertEFLJson = function (results) {
+            var columns = [],
+                temp,
+                tempColumns = [],
+                continueFlag = false,
+                oBRRow = [],
+                oCERow = [],
+                oBRCells = [],
+                oCECells = [],
+                iCount1,
+                iCount2,
+                aJsonDataNew;
+            for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+
+                temp = results[iCount1];
+                if ((temp !== undefined) && (temp.EFLLevel !== undefined)) {
+
+                  // Columns Assignment.
+                    if (tempColumns !== undefined) {
+
+                        for (iCount2 = 0; iCount2 < tempColumns.length; iCount2  = iCount2 + 1) {
+                            if (temp.EFLLevel === tempColumns[iCount2]) {
+                                continueFlag = true;
+                                break;
+                            }
+                        }
+                        if (continueFlag) {
+                            continueFlag = false;
+                        }
+                    }
+                    tempColumns.push(temp.EFLLevel);
+                    columns.push({
+                        "EFLLevel": temp.EFLLevel
+                    });
+                    // Columns Assignment.
+                }
+            }
+            for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+
+                temp = results[iCount1];
+                if ((temp !== undefined) && (temp.EFLLevel !== undefined)) {
+
+                    if (temp.EFLType === "BR") {
+                        oBRCells.push({
+                            "EFLPrice": temp.EFLPrice
+                        });
+                    }
+
+                    if (temp.EFLType === "CE") {
+                        oCECells.push({
+                            "EFLPrice": temp.EFLPrice
+                        });
+                    }
+                }
+            }
+            aJsonDataNew = {};
+            aJsonDataNew.results = {};
+            aJsonDataNew.results.columns = columns;
+            aJsonDataNew.results.rows = [];
+            aJsonDataNew.results.rows.push({
+                "cells" : oBRCells
+            });
+            aJsonDataNew.results.rows.push({
+                "cells" : oCECells
+            });
+
+            return aJsonDataNew;
         };
 
         return Controller;

@@ -2,23 +2,30 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:sm="sap.m"
+    xmlns:c="sap.ui.commons"
+    xmlns:u="ute.ui.commons"
     xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
 
-
-<!--    <template:if test="{meta>CustEligFlag}">
-        <template:then>
-            <sm:Label text="Customer Requested Flag::::"/>
-            <sm:Label text="{meta>CustEligFlag}"/>
-        </template:then>
-        <template:else>
-            <sm:Label text="Agent Requested Flag::::"/>
-            <sm:Label text="{meta>AgntEligFlag}"/>
-        </template:else>
-    </template:if>-->
-        <template:repeat list="{comp-campaign>}" var="field">
-                <Label text="{field>/AgntEligFlag}" />
-                <Text text="{field>/CustEligFlag}" />
-                <Label text="{field>AgntEligFlag}" />
-                <Text text="{field>CustEligFlag}" />
-        </template:repeat>
+        <u:Table width="100%"
+            tableType="CampaignTable"
+            class="nrgCamOvr-left nrgCamOvr-top"  >
+                <u:columns>
+                    <template:repeat list="{tmpl>/results/columns}">
+                            <u:TableColumn>
+                                <c:Label text="EFL@{tmpl>EFLLevel}" />
+                            </u:TableColumn>
+                    </template:repeat>
+                </u:columns>
+                <u:rows>
+                    <template:repeat list="{tmpl>/results/rows}" var="rowField">
+                        <u:TableRow>
+                            <template:repeat list="{rowField>cells}" var="cellField">
+                                <cells>
+                                    <c:Label text="{cellField>EFLPrice}"/>
+                                </cells>
+                            </template:repeat>
+                        </u:TableRow>
+                    </template:repeat>
+                </u:rows>
+        </u:Table>
 </mvc:View>

@@ -120,6 +120,82 @@ sap.ui.define(
         Controller.prototype.backToOverview = function (oEvent) {
             this.navTo("campaign", {coNum : this._sContract, typeV : "C"});
         };
+        /**
+		 * Converts in to EFL Json format required by Template view.
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.convertEFLJson = function (results) {
+            var columns = [],
+                temp,
+                tempColumns = [],
+                continueFlag = false,
+                oBRRow = [],
+                oCERow = [],
+                oBRCells = [],
+                oCECells = [],
+                iCount1,
+                iCount2,
+                aJsonDataNew;
+            for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+
+                temp = results[iCount1];
+                if ((temp !== undefined) && (temp.EFLLevel !== undefined)) {
+
+                  // Columns Assignment.
+                    if (tempColumns !== undefined) {
+
+                        for (iCount2 = 0; iCount2 < tempColumns.length; iCount2  = iCount2 + 1) {
+                            if (temp.EFLLevel === tempColumns[iCount2]) {
+                                continueFlag = true;
+                                break;
+                            }
+                        }
+                        if (continueFlag) {
+                            continueFlag = false;
+                        }
+                    }
+                    tempColumns.push(temp.EFLLevel);
+                    columns.push({
+                        "EFLLevel": temp.EFLLevel
+                    });
+                    // Columns Assignment.
+                }
+            }
+            for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+
+                temp = results[iCount1];
+                if ((temp !== undefined) && (temp.EFLLevel !== undefined)) {
+
+                    if (temp.EFLType === "BR") {
+                        oBRCells.push({
+                            "EFLPrice": temp.EFLPrice
+                        });
+                    }
+
+                    if (temp.EFLType === "CE") {
+                        oCECells.push({
+                            "EFLPrice": temp.EFLPrice
+                        });
+                    }
+                }
+            }
+            aJsonDataNew = {};
+            aJsonDataNew.results = {};
+            aJsonDataNew.results.columns = columns;
+            aJsonDataNew.results.rows = [];
+            aJsonDataNew.results.rows.push({
+                "cells" : oBRCells
+            });
+            aJsonDataNew.results.rows.push({
+                "cells" : oCECells
+            });
+
+            return aJsonDataNew;
+        };
         return Controller;
     }
 );

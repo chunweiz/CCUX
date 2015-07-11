@@ -1,4 +1,5 @@
 /*global sap*/
+/*globals ute*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -64,10 +65,12 @@ sap.ui.define(
             this.getView().getModel('oCfrmStatus').setProperty('/bEditable', true);
         };
 
-        Controller.prototype._onBuagChange = function () {
+        Controller.prototype._onBuagChange = function (iNewBuagIndex) {
             var eventBus = sap.ui.getCore().getEventBus(),
-                newBuagNum = "1234";
-            eventBus.publish("nrg.module.dashoard", "eBuagChanged", newBuagNum);
+                oPayload = {iIndex: iNewBuagIndex};
+
+
+            eventBus.publish("nrg.module.dashoard", "eBuagChanged", oPayload);
         };
 
         Controller.prototype._retrUrlHash = function () {
@@ -230,18 +233,25 @@ sap.ui.define(
             var sSelectedKey = oEvent.getParameters().selectedKey,
                 iSelectedIndex = parseInt(sSelectedKey, 10);
 
+            //Trigger Buag Change event
+            //this._onBuagChange(this.getView().getModel('oAllBuags').oData[iSelectedIndex].ContractAccountID);
+
             this.getView().getModel('oDtaVrfyBuags').setData(this.getView().getModel('oAllBuags').oData[iSelectedIndex]);
             //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
 
+            //Trigger Buag Change event
+            this._onBuagChange(iSelectedIndex);
+
+            //Trigger contracts refresh
             this._retrContracts(this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'));
         };
 
-        Controller.prototype._onBuagChange = function (oEvent) {
+        /*Controller.prototype._onBuagChange = function (oEvent) {
             var sNewSelectedBuagIndex;
 
             sNewSelectedBuagIndex = oEvent.getSource().getSelectedKey();
             this._retrBuag(sNewSelectedBuagIndex);
-        };
+        };*/
 
         Controller.prototype._onToggleButtonPress = function (oEvent) {
             if (this.getView().byId('mailadd_area').getVisible()) {
@@ -437,5 +447,23 @@ sap.ui.define(
                 return true;
             }
         };
+
+        Controller.prototype._onEditMailAddrClick = function (oEvent) {
+            this._oMailEditPopup = ute.ui.main.Popup.create({
+                content: this.getView().byId("idAddrUpdatePopup"),
+                title: 'Edit Mailing Address'
+            });
+            this._oMailEditPopup.open();
+        };
+
+        Controller.prototype._onEditTempAddrClick = function (oEvent) {
+            this._oTempMailEditPopup = ute.ui.main.Popup.create({
+                content: this.getView().byId("idTempAddrUpdatePopup"),
+                title: 'Edit Temparory Mailing Address'
+            });
+            this._oTempMailEditPopup.open();
+        };
+
+        return Controller;
     }
 );

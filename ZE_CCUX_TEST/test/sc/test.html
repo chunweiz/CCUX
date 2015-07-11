@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script>
+        var aJsonData = {};
+        var results = [];
+        results.push({
+            "OfferCode":"50038473",
+            "Type":"H",
+            "EFLType":"BR",
+            "EFLLevel":500,
+            "EFLPrice":"10.2000000",
+            "EFLString":""
+        });
+        results.push({
+            "OfferCode":"50038473",
+            "Type":"H",
+            "EFLType":"BR",
+            "EFLLevel":1000,
+            "EFLPrice":"11.2000000",
+            "EFLString":""
+        });
+        results.push({
+            "OfferCode":"50038473",
+            "Type":"H",
+            "EFLType":"BR",
+            "EFLLevel":2000,
+            "EFLPrice":"12.2000000",
+            "EFLString":""
+        });
+        results.push({
+            "OfferCode":"50038473",
+            "Type":"H",
+            "EFLType":"CE",
+            "EFLLevel":500,
+            "EFLPrice":"13.2000000",
+            "EFLString":""
+        });
+        results.push({
+            "OfferCode":"50038473",
+            "Type":"H",
+            "EFLType":"CE",
+            "EFLLevel":1000,
+            "EFLPrice":"14.2000000",
+            "EFLString":""
+        });
+        results.push({
+            "OfferCode":"50038473",
+            "Type":"H",
+            "EFLType":"CE",
+            "EFLLevel":2000,
+            "EFLPrice":"15.2000000",
+            "EFLString":""
+        });
+        aJsonData.results = results;
+        var columns =[];
+        var temp;
+        var tempColumns = [];
+        var continueFlag = false;
+        var oBRRow = [];
+        var oCERow = [];
+        var oBRCells = [];
+        var oCECells = [];
+          for(var i=0;i< results.length;i++)
+            {
+              temp = results[i];
+
+
+              if((temp!=undefined)&&(temp.EFLLevel!=undefined))
+                {
+
+                  // Columns Assignment.
+                    if(tempColumns!=undefined)
+                    {
+                        for(var j=0;j< tempColumns.length;j++)
+                        {
+                            if(temp.EFLLevel === tempColumns[j])
+                            {
+                                continueFlag = true;
+                                break;
+                            }
+                        }
+                        if(continueFlag)
+                        {
+                            continueFlag = false;
+                            continue;
+                        }
+                    }
+                    tempColumns.push(temp.EFLLevel);
+                      columns.push({
+                        "EFLLevel":temp.EFLLevel
+                      });
+                    // Columns Assignment.
+                 }
+            }
+            for(var i=0;i< results.length;i++)
+            {
+              temp = results[i];
+
+              if((temp!=undefined)&&(temp.EFLLevel!=undefined))
+                {
+                    //BR Row Assignment
+                    if(temp.EFLType === "BR")
+                    {
+                        oBRCells.push({
+                            "EFLPrice": temp.EFLPrice
+                        });
+                    }
+
+                    //BR Row Assignment
+
+                    //BR Row Assignment
+                    if(temp.EFLType === "CE")
+                    {
+                        oCECells.push({
+                            "EFLPrice": temp.EFLPrice
+                        });
+                    }
+                }
+            }
+            var aJsonDataNew = {};
+            aJsonDataNew.resultsNEW ={};
+            aJsonDataNew.resultsNEW.columns=columns;
+            aJsonDataNew.resultsNEW.rows=[];
+            aJsonDataNew.resultsNEW.rows.push({
+                "cells" : oBRCells
+            });
+            aJsonDataNew.resultsNEW.rows.push({
+                "cells" : oCECells
+            });
+
+                    //BR Row Assignment
+         console.log(JSON.stringify(aJsonDataNew));
+
+        </script>
+	</head>
+	<body>
+
+	</body>
+
+</html>

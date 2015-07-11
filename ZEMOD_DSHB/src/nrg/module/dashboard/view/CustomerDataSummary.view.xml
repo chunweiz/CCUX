@@ -159,11 +159,11 @@
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
                             <utmain:Button
-                                class="nrgDashboard-cusDataSum-assignedAccBtn"
+                                class="nrgDashboard-cusDataSum-segExpBtn"
                                 design="None"
                                 press="._onExpandSegInfoClick"
-                                text=">"
-                                visible="true">
+                                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_SegExpand}"
+                                visible="{oSmryBpSegInf>moreThanThree}">
                             </utmain:Button>
                         </l:MatrixLayoutCell>
                     </l:MatrixLayoutRow>
@@ -184,9 +184,73 @@
         </ute:content>
     </ute:Tag>
 
-    <ute:Tag id="idTestFrag">
-        <ute:TextView
-            text="AAAAA"/>
+    <ute:Tag id="idAssignedAccs" class="nrgDashboard-cusDataSumAccFrgmt">
+        <ute:Table tableType="InvoiceTable" width="100%"
+                rows="{oSmryAssignedAccounts>/}">
+            <ute:columns>
+                <ute:TableColumn width="10%">
+                    <c:Label text="Contract"/>
+                </ute:TableColumn>
+                <ute:TableColumn width="10%">
+                    <c:Label text="Sales Rep ID"/>
+                </ute:TableColumn>
+                <ute:TableColumn width="12%">
+                    <c:Label text="Last Name"/>
+                </ute:TableColumn>
+                <ute:TableColumn width="12%">
+                    <c:Label text="First Name"/>
+                </ute:TableColumn>
+                <ute:TableColumn width="10%">
+                    <c:Label text="Pager"/>
+                </ute:TableColumn>
+                <ute:TableColumn width="10%">
+                    <c:Label text="Cell"/>
+                </ute:TableColumn>
+                <ute:TableColumn width="10%">
+                    <c:Label text="Fax"/>
+                </ute:TableColumn>
+                <ute:TableColumn width="10%">
+                    <c:Label text="Phone"/>
+                </ute:TableColumn>
+                <ute:TableColumn width="16%">
+                    <c:Label text="Email Address"/>
+                </ute:TableColumn>
+            </ute:columns>
+            <ute:rows>
+                <ute:TableRow>
+                    <c:Label text="{oSmryAssignedAccounts>ContractAccountID}"/>
+                    <c:Label text="{oSmryAssignedAccounts>SalesRepID}"/>
+                    <c:Label text="{oSmryAssignedAccounts>SalesRepLastName}"/>
+                    <c:Label text="{oSmryAssignedAccounts>SalesRepFirstName}"/>
+                    <c:Label text="{oSmryAssignedAccounts>SalesRepPager}"/>
+                    <c:Label text="{oSmryAssignedAccounts>SalesRepCellPh}"/>
+                    <c:Label text="{oSmryAssignedAccounts>SalesRepFaxPf}"/>
+                    <c:Label text="{oSmryAssignedAccounts>SalesRepPh}"/>
+                    <c:Label text="{oSmryAssignedAccounts>SalesRepEMail}"/>
+                </ute:TableRow>
+            </ute:rows>
+        </ute:Table>
+    </ute:Tag>
+
+    <ute:Tag id="idThreeSegs" class="nrgDashboard-cusDataSumSegFrgmt">
+        <c:TextView
+            text="{comp-i18n-dashboard>nrgDashboardCusDatSum_CusSeg}"
+            class="nrgDashboard-cusDataSumSegFrgmt-Title"/>
+                <l:MatrixLayout
+                    width="50%"
+                    columns="1"
+                    widths="100%"
+                    rows="{oSmryBpAllSegInf>/}">
+                <l:rows>
+                    <l:MatrixLayoutRow>
+                        <l:MatrixLayoutCell>
+                            <c:TextView
+                                text="{oSmryBpAllSegInf>CustomerSeg}"
+                                class="nrgDashboard-cusDataSumSegFrgmt-SegItm"/>
+                        </l:MatrixLayoutCell>
+                    </l:MatrixLayoutRow>
+                </l:rows>
+                </l:MatrixLayout>
     </ute:Tag>
 
 </mvc:View>

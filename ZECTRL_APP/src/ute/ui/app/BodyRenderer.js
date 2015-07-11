@@ -11,7 +11,7 @@ sap.ui.define(
         CustomRenderer.render = function (oRm, oCustomControl) {
             oRm.write('<div');
             oRm.writeControlData(oCustomControl);
-            oRm.addClass('uteMAppHdr');
+            oRm.addClass('uteAppBody');
             oRm.writeClasses();
             oRm.write('>');
 

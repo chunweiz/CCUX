@@ -26,12 +26,8 @@
                         </l:MatrixLayoutCell>
                     </l:MatrixLayoutRow>
                 </l:MatrixLayout>
-                <u:Tag>
-                    <u:Table width="60%"
-                             id="idnrgCamHis-prcTable"
-                             tableType="CampaignTable"
-                             class="nrgCamHis-left nrgCamHis-top">
-                    </u:Table>
+                <u:Tag class="nrgCamHisPriceT nrgCamHis-top" id="idnrgCamHisPriceT">
+                <!-- EFL Data Table is dynamically inserted here with XML templating -->
                 </u:Tag>
                 <u:Tag>
                     <u:TextView color="DarkGrey"

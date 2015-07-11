@@ -4,6 +4,17 @@
 
     font-family: @nrgFontFamily;
 
+    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .clearfix:before{
+        display: table;
+        content: '';
+    }
+
+    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .clearfix:after{
+        display: table;
+        clear: both;
+        content: '';
+    }
+
     & > .nrgDashboard-cusDataCaInfo-scrnTitle{
         font: @nrgFontWeight-semiBold @nrgFontSize-large @nrgFontFamily;
         color: @nrgColor-grey-dark;
@@ -42,7 +53,7 @@
 
     & > .nrgDashboard-cusDataCaInfo-infoLine{
         margin: 30px 0 0 0;
-        overflow: auto;
+//        overflow: auto;
     }
 
     & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-hdr > .uteMIl-hdrContent > .nrgDashboard-cusDataCaInfo-infoLineHeader-txt > span{
@@ -66,12 +77,12 @@
         float: right;
     }
 
-    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-infoline-div{
+    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body{
         marging: 0;
         padding: 0;
     }
 
-    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-infoline-div > .nrgDashboard-cusDataCaInfo-dropdown{
+    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-dropdown{
         margin-left: 10px;
         background-color: @nrgColor-blue-pearl;
         font: @nrgFontWeight-semiBold @nrgFontSize-small @nrgFontFamily;
@@ -79,29 +90,40 @@
         border-radius: 4px;
     }
 
-    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-infoline-div > .nrgDashboard-cusDataCaInfo-dropdown > .uteMDd-hdr{
+
+
+    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-dropdown > .uteMDd-hdr{
         border: none;
         margin-bottom: 4px;
         cursor: pointer;
         width: 300px;
     }
 
-    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-infoline-div > .nrgDashboard-cusDataCaInfo-dropdown > .uteMDd-hdr > .uteMDd-hdrExpander{
+    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-dropdown > .uteMDd-hdr > .uteMDd-hdrExpander{
         float: right;
         padding: 13px 10px;
     }
 
-    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-infoline-div > .nrgDashboard-cusDataBpInfo-checkBox-div{
-        marging: 0;
+    //nrgDashboard-cusDataCaInfo-checkBox-div
+    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-checkBox-div{
+        margin-left: 10px;
+        margin-top: 20px;
         padding: 0;
+        width: 300px;
+        height: 28px;
+        border-radius: 4px;
+        background-color: @nrgColor-blue-pearl;
     }
 
-    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-infoline-div > .nrgDashboard-cusDataBpInfo-checkBox-div > .nrgDashboard-cusDataCaInfo-chb{
-        margin-top: 15px;
+    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-checkBox-div > .nrgDashboard-cusDataCaInfo-chb > .uteMChkBox-chk{
+        vertical-align: middle;
     }
 
-    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-infoline-div > .nrgDashboard-cusDataBpInfo-checkBox-div > .nrgDashboard-cusDatacaInfo-l-chb-lbl{
-        margin-top: 15px;
+    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-checkBox-div > .nrgDashboard-cusDatacaInfo-l-chb-lbl > .uteMLbl-text{
+        font: @nrgFontWeight-semiBold @nrgFontSize-small @nrgFontFamily;
+        color: @nrgColor-grey-dark;
+        margin-left: 10px;
+        vertical-align: middle;
     }
 
     & > .nrgDashboard-cusDataCaInfo-infoLine .nrgDashboard-cusDataCaInfo-l{
@@ -130,10 +152,30 @@
         width: 100% !important;
     }
 
+    & > .nrgDashboard-cusDataCaInfo-infoLine .nrgDashboard-cusDataCaInfo-l .uteTextfield.uteTextfield-noBorder > .uteTextfield-noBorder-input:focus {
+        background-color: @nrgColor-blue-pearl;
+    }
+
     & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-btn {
-        float: right;
         margin-top: 15px;
         overflow: auto;
     }
 
+    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-btn > .nrgDashboard-cusDataCaInfo-CommBtn{
+        float: right;
+        margin: 0;
+        padding: 0;
+        width: 110px;
+        height: 24px;
+        margin-right: 10px;
+        border-radius: 4px;
+    }
+
+    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-btn > .nrgDashboard-cusDataCaInfo-CommBtn > .uteMBtn-text{
+        font: @nrgFontWeight-regular @nrgFontSize-large @nrgFontFamily;
+    }
+
+    & > .nrgDashboard-cusDataCaInfo-infoLine > .uteMIl-body > .nrgDashboard-cusDataCaInfo-date-div {
+        margin-top: 10px;
+    }
 }
