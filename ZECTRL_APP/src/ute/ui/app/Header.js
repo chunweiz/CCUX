@@ -8,7 +8,7 @@ sap.ui.define(
     function (Control) {
         'use strict';
 
-        var CustomControl = Control.extend('ute.ui.app', {
+        var CustomControl = Control.extend('ute.ui.app.Header', {
             metadata: {
                 library: 'ute.ui.app'
             }
