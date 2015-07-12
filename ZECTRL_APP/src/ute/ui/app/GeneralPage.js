@@ -1,4 +1,4 @@
-/*globap sap*/
+/*global sap*/
 
 sap.ui.define(
     [

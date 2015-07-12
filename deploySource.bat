@@ -9,6 +9,7 @@
     @CALL grunt --deploy=source --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH% --eclipseProjectName=%ECLIPSE_SRC_FOLDER% --srcFolderName=ZECMP_IC
     @CALL grunt --deploy=source --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH% --eclipseProjectName=%ECLIPSE_SRC_FOLDER% --srcFolderName=ZECTRL_COMMONS
     @CALL grunt --deploy=source --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH% --eclipseProjectName=%ECLIPSE_SRC_FOLDER% --srcFolderName=ZECTRL_MAIN
+    @CALL grunt --deploy=source --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH% --eclipseProjectName=%ECLIPSE_SRC_FOLDER% --srcFolderName=ZECTRL_APP
     @CALL grunt --deploy=source --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH% --eclipseProjectName=%ECLIPSE_SRC_FOLDER% --srcFolderName=ZEMOD_APP
     @CALL grunt --deploy=source --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH% --eclipseProjectName=%ECLIPSE_SRC_FOLDER% --srcFolderName=ZEMOD_CMPGN
     @CALL grunt --deploy=source --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH% --eclipseProjectName=%ECLIPSE_SRC_FOLDER% --srcFolderName=ZEMOD_DSHB

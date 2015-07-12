@@ -19,6 +19,12 @@
     @ECHO Path %ECLIPSE_WORKSPACE_PATH%\ZECTRL_COMMONS does not exists.
 )
 
+@IF EXIST %ECLIPSE_WORKSPACE_PATH%\ZECTRL_APP (
+    @CALL grunt --deploy=control --controlFolder=ZECTRL_APP --controlName=ute.ui.app --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\ZECTRL_APP
+) ELSE (
+    @ECHO Path %ECLIPSE_WORKSPACE_PATH%\ZECTRL_APP does not exists.
+)
+
 @IF EXIST %ECLIPSE_WORKSPACE_PATH%\ZEMOD_APP (
     @CALL grunt --deploy=module --moduleName=nrg.module.app.main --moduleFolder=ZEMOD_APP --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\ZEMOD_APP
     @CALL grunt --deploy=module --moduleName=nrg.module.app.header --moduleFolder=ZEMOD_APP --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\ZEMOD_APP

@@ -16,9 +16,7 @@ sap.ui.define(
                     header: { type: 'ute.ui.app.Header', multiple: false },
                     body: { type: 'ute.ui.app.Body', multiple: false },
                     footer: { type: 'ute.ui.app.Footer', multiple: false }
-                },
-
-                defaultAggregation: 'body'
+                }
             }
         });
 

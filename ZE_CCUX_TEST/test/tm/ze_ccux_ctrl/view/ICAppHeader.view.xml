@@ -1,0 +1,25 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:um="ute.ui.main"
+    xmlns:uc="ute.ui.commons"
+    xmlns:ua="ute.ui.app"
+    controllerName="test.tm.ze_ccux_ctrl.view.ICAppHeader"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <ua:App>
+        <ua:header>
+            <ua:Header>
+                <ua:headline>
+                    <div>Reliant Interaction Center</div>
+                </ua:headline>
+            </ua:Header>
+        </ua:header>
+    </ua:App>
+
+
+</mvc:View>

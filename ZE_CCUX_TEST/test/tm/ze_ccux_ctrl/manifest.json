@@ -24,7 +24,8 @@
                 "TabBar": { "pattern": "TabBar", "target": [ "TabBar" ] },
                 "Popup": { "pattern": "Popup", "target": [ "Popup" ] },
                 "Icon": { "pattern": "Icon", "target": [ "Icon" ] },
-                "XMLTemplate": { "pattern": "XMLTemplate", "target": [ "XMLTemplate" ] }
+                "XMLTemplate": { "pattern": "XMLTemplate", "target": [ "XMLTemplate" ] },
+                "ICAppHeader": { "pattern": "ICAppHeader", "target": [ "ICAppHeader" ] }
             },
 
             "config": {
@@ -44,7 +45,8 @@
                 "TabBar": { "viewName": "TabBar", "controlId": "idAppContent" },
                 "Popup": { "viewName": "Popup", "controlId": "idAppContent" },
                 "Icon": { "viewName": "Icon", "controlId": "idAppContent" },
-                "XMLTemplate": { "viewName": "XMLView", "controlId": "idAppContent" }
+                "XMLTemplate": { "viewName": "XMLView", "controlId": "idAppContent" },
+                "ICAppHeader": { "viewName": "ICAppHeader", "controlId": "idAppContent" }
             }
         }
     }
