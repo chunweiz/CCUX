@@ -543,7 +543,7 @@
     </ute:Tag>
 
     <ute:Tag id="idTempAddrUpdatePopup" visible="false"
-         class="nrgDashboard-cusDataVerifyEditMailAdd">>
+         class="nrgDashboard-cusDataVerifyEditMailAdd">
         <utmain:Label  labelFor="idTmpEditHouseNum"
             text="HouseNumber"/>
         <ute:Textfield id="idTmpEditHouseNum" fieldType="Underlined"
