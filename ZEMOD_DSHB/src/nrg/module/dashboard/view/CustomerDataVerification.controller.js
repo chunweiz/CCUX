@@ -41,6 +41,7 @@ sap.ui.define(
 
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCoPageModel');
 
+
             this._initDtaVrfRetr();
             this._initCfrmStatus();
             //this._initCoPageModel();
@@ -453,7 +454,36 @@ sap.ui.define(
                 content: this.getView().byId("idAddrUpdatePopup"),
                 title: 'Edit Mailing Address'
             });
+            this._onToggleButtonPress();
+            this.getView().byId("idAddrUpdatePopup").setVisible(true);
             this._oMailEditPopup.open();
+        };
+
+        Controller.prototype._handleMailingAddrUpdate = function (oEvent) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters,
+                sBpNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/PartnerID'),
+                sBuagNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/ContractAccountID'),
+                sFixedAddressID = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/FixedAddressID');
+
+
+
+            sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
+
+            oParameters = {
+                urlParameters: {},
+                success : function (oData) {
+                    sap.ui.commons.MessageBox.alert("Update Success");
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Update Failed");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.update(sPath, this.getView().getModel('oDtaVrfyMailingTempAddr').oData, oParameters);
+            }
         };
 
         Controller.prototype._onEditTempAddrClick = function (oEvent) {
@@ -461,7 +491,46 @@ sap.ui.define(
                 content: this.getView().byId("idTempAddrUpdatePopup"),
                 title: 'Edit Temparory Mailing Address'
             });
+            this._onToggleButtonPress();
+            this.getView().byId("idTempAddrUpdatePopup").setVisible(true);
             this._oTempMailEditPopup.open();
+        };
+
+        Controller.prototype._onEditMailAddrClick = function (oEvent) {
+            this._oMailEditPopup = ute.ui.main.Popup.create({
+                content: this.getView().byId("idAddrUpdatePopup"),
+                title: 'Edit Mailing Address'
+            });
+            this._onToggleButtonPress();
+            this.getView().byId("idAddrUpdatePopup").setVisible(true);
+            this._oMailEditPopup.open();
+        };
+
+        Controller.prototype._handleTempAddrUpdate = function (oEvent) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters,
+                sBpNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/PartnerID'),
+                sBuagNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/ContractAccountID'),
+                sFixedAddressID = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/TemporaryAddrID');
+
+
+
+            sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
+
+            oParameters = {
+                urlParameters: {},
+                success : function (oData) {
+                    sap.ui.commons.MessageBox.alert("Update Success");
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Update Failed");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.update(sPath, this.getView().getModel('oDtaVrfyMailingTempAddr').oData, oParameters);
+            }
         };
 
         return Controller;

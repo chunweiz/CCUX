@@ -160,7 +160,7 @@
                         <!--Area Middle (service address/mailing address)-->
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-m">
                             <ute:Tag class="nrgDashboard-cusDataVerify-mDiv">
-                            <ute:ToggleButton design="ToggleDashboard"
+                            <ute:ToggleButton id="id_DshbTglBtn" design="ToggleDashboard"
                                 leftBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TglBtnLTxt}"
                                 rightBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TglBtnRTxt}"
                                 class="nrgDashboard-cusDataVerify-mTgBtn"
@@ -506,16 +506,76 @@
         </l:MatrixLayout>
     </ute:Tag>
 
-    <ute:Tag id="idAddrUpdatePopup" class="">
-        <c:TextView
-            text="{AAAAA}"
-            class="nrgDashboard-cusDataSumSegFrgmt-Title"/>
+    <ute:Tag id="idAddrUpdatePopup" visible="false"
+             class="nrgDashboard-cusDataVerifyEditMailAdd">
+        <utmain:Label  labelFor="idEditHouseNum"
+            text="HouseNumber"/>
+        <ute:Textfield id="idEditHouseNum" fieldType="Underlined"
+            editable="true"
+            value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/}"/>
+        <utmain:Label  labelFor="idEditStName"
+            text="Street"/>
+        <ute:Textfield id="idEditStName" fieldType="Underlined"
+            editable="true"
+            value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/}"/>
+        <utmain:Label  labelFor="idEditUnitNum"
+            text="Unit"/>
+        <ute:Textfield id="idEditUnitNum" fieldType="Underlined"
+            editable="true"
+            value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/}"/>
+        <utmain:Label  labelFor="idEditCity"
+            text="City"/>
+        <ute:Textfield id="idEditCity" fieldType="Underlined"
+            editable="true"
+            value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/}"/>
+        <utmain:Label  labelFor="idEditState"
+            text="State"/>
+        <ute:Textfield id="idEditState" fieldType="Underlined"
+            editable="true"
+            value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/}"/>
+        <utmain:Label  labelFor="idEditZip"
+            text="Zip Code"/>
+        <ute:Textfield id="idEditZip" fieldType="Underlined"
+            editable="true"
+            value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/}"/>
+        <utmain:Button text="UPDATE"
+            press="._handleMailingAddrUpdate"/>
     </ute:Tag>
 
-    <ute:Tag id="idTempAddrUpdatePopup" class="">
-        <c:TextView
-            text="{AAAAA}"
-            class="nrgDashboard-cusDataSumSegFrgmt-Title"/>
+    <ute:Tag id="idTempAddrUpdatePopup" visible="false"
+         class="nrgDashboard-cusDataVerifyEditMailAdd">>
+        <utmain:Label  labelFor="idTmpEditHouseNum"
+            text="HouseNumber"/>
+        <ute:Textfield id="idTmpEditHouseNum" fieldType="Underlined"
+            editable="true"
+            value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/}"/>
+        <utmain:Label  labelFor="idTmpEditStName"
+            text="Street"/>
+        <ute:Textfield id="idTmpEditStName" fieldType="Underlined"
+            editable="true"
+            value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/}"/>
+        <utmain:Label  labelFor="idTmpEditUnitNum"
+            text="Unit"/>
+        <ute:Textfield id="idTmpEditUnitNum" fieldType="Underlined"
+            editable="true"
+            value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/}"/>
+        <utmain:Label  labelFor="idTmpEditCity"
+            text="City"/>
+        <ute:Textfield id="idTmpEditCity" fieldType="Underlined"
+            editable="true"
+            value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/}"/>
+        <utmain:Label  labelFor="idTmpEditState"
+            text="State"/>
+        <ute:Textfield id="idTmpEditState" fieldType="Underlined"
+            editable="true"
+            value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/}"/>
+        <utmain:Label  labelFor="idTmpEditZip"
+            text="Zip Code"/>
+        <ute:Textfield id="idTmpEditZip" fieldType="Underlined"
+            editable="true"
+            value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/}"/>
+        <utmain:Button text="UPDATE"
+            press="._handleTempAddrUpdate"/>
     </ute:Tag>
 
 </mvc:View>
