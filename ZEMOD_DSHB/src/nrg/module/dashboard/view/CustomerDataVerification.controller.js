@@ -23,7 +23,7 @@ sap.ui.define(
 
             //Model to hold Buags (avoid too long of bindings
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBuags');
-aa
+
             //Model to hold Contract
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyContracts');
 
