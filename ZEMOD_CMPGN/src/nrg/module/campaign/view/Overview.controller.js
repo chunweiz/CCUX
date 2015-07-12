@@ -162,6 +162,7 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sEligibilityPath, mParameters);
             }
+            this.getView().setModel(oModel, "Overview-elig");
 		};
 
         /**
