@@ -26,10 +26,10 @@
                            text="{comp-i18n-appFtr>nrgAppFooterCustReqOffer}" />
                     <u:Tag id="idCamCustReqOffer"
                            class="nrgCamOvr-offerBtnDesc"
-                            text="{= ${Overview-elig>CustEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
+                            text="{= ${Overview-elig>/CustEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
                         <u:customData>
                           <core:CustomData key="flag"
-                                           value="{= ${Overview-elig>CustEligFlag} === '' ? 'Y' : 'X' }"
+                                           value="{= ${Overview-elig>/CustEligFlag} === '' ? 'Y' : 'X' }"
                                            writeToDom="true" />
                         </u:customData>
                     </u:Tag>
@@ -43,8 +43,8 @@
                     <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n-appFtr>nrgAppFooterAgentReqOffer}" />
                     <u:Tag id="idCamAgentReqOffer" class="nrgCamOvr-offerBtnDesc"
                            text="{= ${Overview-elig>AgntEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
-                        <u:customData>
-                          <core:CustomData key="flag"
+                         <u:customData>
+                         <core:CustomData key="flag"
                                            value="{= ${Overview-elig>AgntEligFlag}  === '' ? 'Y' : 'X' }"
                                            writeToDom="true" />
                         </u:customData>
@@ -55,6 +55,8 @@
                 <um:TabBarItem design="Default" key="tb001" select=".toggleCampaign" enabled="{= ${comp-campaign>OfferCode} !== '00000000' }">
                     <u:Tag text="{parts:[{path:'comp-campaign>Type'}],
                                                     formatter:'.formatType'}" />
+
+
                 </um:TabBarItem>
             </um:TabBar>
             <l:MatrixLayout class="nrgCamOvrMtx nrgCamOvr-top">
@@ -64,6 +66,7 @@
                                  icon="sap-icon://nrg-icon/tag"
                                  class="nrgCamOvr-lbl"
                                  labelFor="idCamTitleTv"  />
+
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
                         <c:Label text="{comp-i18n-campaign>nrgCmpOvrAUlbl}"
