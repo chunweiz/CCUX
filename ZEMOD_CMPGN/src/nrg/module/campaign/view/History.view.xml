@@ -95,12 +95,12 @@
                                formatter:'.formatTileDate'}" />
                         <u:Tag class="nrgCamHis-but-title"
                                text="{comp-campaign>OfferTitle}" />
-                        <u:Tag class="nrgCamHis-but-price"
-                               text="{path: 'comp-campaign>EFL2000',
+                        <u:Tag class="nrgCamHis-but-price" id="idnrgCamHis-but-price"
+                               text="{path: 'comp-campaign>EFLPrice',
                                type: 'nrg.util.type.Price',
                                formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
-                        <u:Tag class="nrgCamHis-but-priceLbl"
-                               text="{comp-i18n-campaign>nrgCmpHiskWhDisc}" />
+                        <u:Tag class="nrgCamHis-but-priceLbl" id="idnrgCamHis-but-priceLbl"
+                               text="{comp-campaign>EFLLevel}" />
                 </um:Button>
                 <u:Table width="auto"
                          tableType="CampaignTable"
