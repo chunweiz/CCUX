@@ -45,19 +45,20 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
          * @public
          * @ui5-metamodel This method also will be described in the UI5 (legacy) designtime metamodel
          */
-        EnabledPropagator.call(ToggleButton.prototype);
+        //EnabledPropagator.call(ToggleButton.prototype);
 
         /*Function is called when button is clicked.*/
         ToggleButton.prototype.onclick = function (oEvent) {
             if (this.getEnabled()) {
 
-                if (this.leftSelected) {
-                    this.leftSelected = false;
+                if (this.getLeftSelected()) {
+                    this.setLeftSelected(false);
                 } else {
-                    this.leftSelected = true;
+                    this.setLeftSelected(true);
                 }
+
+                //this.getRenderer().toggle(this);
                 this.firePress({/* no parameters */});
-                this.getRenderer().toggle(this);
                 oEvent.preventDefault();
                 oEvent.stopPropagation();
             }

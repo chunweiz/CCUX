@@ -270,6 +270,7 @@ sap.ui.define(
         };*/
 
         Controller.prototype._onToggleButtonPress = function (oEvent) {
+            var l_selected = this.getView().byId('id_DshbTglBtn').getLeftSelected();
             if (this.getView().byId('mailadd_area').getVisible()) {
                 this.getView().byId('mailadd_area').setVisible(false);
                 this.getView().byId('serviceadd_area').setVisible(true);
@@ -464,15 +465,6 @@ sap.ui.define(
             }
         };
 
-        Controller.prototype._onEditMailAddrClick = function (oEvent) {
-            this._oMailEditPopup = ute.ui.main.Popup.create({
-                content: this.getView().byId("idAddrUpdatePopup"),
-                title: 'Edit Mailing Address'
-            });
-            this._onToggleButtonPress();
-            this.getView().byId("idAddrUpdatePopup").setVisible(true);
-            this._oMailEditPopup.open();
-        };
 
         Controller.prototype._handleMailingAddrUpdate = function (oEvent) {
             var oModel = this.getView().getModel('oODataSvc'),
@@ -507,7 +499,7 @@ sap.ui.define(
                 content: this.getView().byId("idTempAddrUpdatePopup"),
                 title: 'Edit Temparory Mailing Address'
             });
-            this._onToggleButtonPress();
+            //this._onToggleButtonPress();
             this.getView().byId("idTempAddrUpdatePopup").setVisible(true);
             this._oTempMailEditPopup.open();
         };
@@ -517,7 +509,7 @@ sap.ui.define(
                 content: this.getView().byId("idAddrUpdatePopup"),
                 title: 'Edit Mailing Address'
             });
-            this._onToggleButtonPress();
+            //this._onToggleButtonPress();
             this.getView().byId("idAddrUpdatePopup").setVisible(true);
             this._oMailEditPopup.open();
         };

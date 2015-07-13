@@ -23,13 +23,21 @@ sap.ui.define(['jquery.sap.global'],
                 rm.write(">");
 
                 rm.write("<input id=\"__leftBt\" type=\"button\" width=\"500px\" value=\"" + oToggleButton.getLeftBtnText() + "\"");
-                rm.addClass('uteToggleBtn1-leftBtn-selected');
+                if (oToggleButton.getLeftSelected()) {
+                    rm.addClass('uteToggleBtn1-leftBtn-selected');
+                } else {
+                    rm.addClass('uteToggleBtn1-leftBtn');
+                }
                 rm.addStyle("width", oToggleButton.getLeftBtnWidth());
                 rm.writeStyles();
                 rm.writeClasses();
                 rm.write(">");
                 rm.write("<input id=\"__rightBt\" type=\"button\" value=\"" + oToggleButton.getRightBtnText() + "\"");
-                rm.addClass("uteToggleBtn1-rightBtn");
+                if (oToggleButton.getLeftSelected()) {
+                    rm.addClass("uteToggleBtn1-rightBtn");
+                } else {
+                    rm.addClass('uteToggleBtn1-rightBtn-selected');
+                }
                 rm.addStyle("width", oToggleButton.getRightBtnWidth());
                 rm.writeStyles();
                 rm.writeClasses();
@@ -42,13 +50,21 @@ sap.ui.define(['jquery.sap.global'],
                 rm.write(">");
 
                 rm.write("<input id=\"__leftBt\" type=\"button\" width=\"500px\" value=\"" + oToggleButton.getLeftBtnText() + "\"");
-                rm.addClass('uteToggleBtn2-leftBtn-selected');
+                if (oToggleButton.getLeftSelected()) {
+                    rm.addClass('uteToggleBtn2-leftBtn-selected');
+                } else {
+                    rm.addClass('uteToggleBtn2-leftBtn');
+                }
                 rm.addStyle("width", oToggleButton.getLeftBtnWidth());
                 rm.writeStyles();
                 rm.writeClasses();
                 rm.write(">");
                 rm.write("<input id=\"__rightBt\" type=\"button\" value=\"" + oToggleButton.getRightBtnText() + "\"");
-                rm.addClass("uteToggleBtn2-rightBtn");
+                if (oToggleButton.getLeftSelected()) {
+                    rm.addClass("uteToggleBtn2-rightBtn");
+                } else {
+                    rm.addClass('uteToggleBtn2-rightBtn-selected');
+                }
                 rm.addStyle("width", oToggleButton.getRightBtnWidth());
                 rm.writeStyles();
                 rm.writeClasses();
