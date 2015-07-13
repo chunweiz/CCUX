@@ -504,28 +504,6 @@
                                     </utmain:Dropdown>
                                 </ute:Tag>
 
-                                <!--<l:MatrixLayout widths="55%,45%" columns="2">
-                                    <l:MatrixLayoutRow>
-                                        <l:MatrixLayoutCell>
-                                            <utmain:Label labelFor="evnPhn_mail"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <ute:Textfield id="evnPhn_mail" fieldType="Noborder"
-                                                value="{oDtaVrfyBP>/EveningPhone}"
-                                                editable="{oCfrmStatus>/bEditable}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
-                                        </l:MatrixLayoutCell>
-                                        <l:MatrixLayoutCell>
-                                            <utmain:Label labelFor="evnPhnType_mail"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTypTxt}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <ute:Textfield id="evnPhnType_mail" fieldType="Noborder"
-                                                value="{oDtaVrfyBP>/EveningPhoneType}"
-                                                editable="{oCfrmStatus>/bEditable}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
-                                        </l:MatrixLayoutCell>
-                                    </l:MatrixLayoutRow>
-                                </l:MatrixLayout>-->
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
                                 <l:MatrixLayout widths="55%,45%" columns="2">
