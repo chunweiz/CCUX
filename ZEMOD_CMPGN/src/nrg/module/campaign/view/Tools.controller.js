@@ -196,7 +196,7 @@ sap.ui.define(
                     });
                     oPricingTable.addContent(oTemplateView);
                     // Adding EFL Table to History view as XML templating--end
-
+                    that.setEFLTileValue(oHistoryView, aResults, aEFLDatapaths);
 
                     // Development for Pricing Table binding..........................................
                     aContent[0].addStyleClass("nrgCamHis-but-selected");
@@ -399,6 +399,45 @@ sap.ui.define(
             });
 
             return aJsonDataNew;
+        };
+        /**
+		 * Find out the Highest EFL interval and bind it to Tile EFL value
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.setEFLTileValue = function (oHistoryView, aResults, aEFLDatapaths) {
+
+            var iCount1,
+                tempInterval = null,
+                tempValue = null,
+                temp,
+                sPath,
+                iCount;
+
+            for (iCount1 = 0; iCount1 < aResults.length; iCount1 = iCount1 + 1) {
+                temp = aResults[iCount1];
+                if (tempInterval === null) {
+                    tempInterval = temp.EFLLevel;
+                    tempValue = temp.EFLPrice;
+                } else {
+                    if (tempInterval < temp.EFLLevel) {
+                        tempInterval = temp.EFLLevel;
+                        tempValue = temp.EFLPrice;
+                    }
+                }
+            }
+            oHistoryView.byId("idnrgCamHis-but-priceLbl").bindElement({
+                model : "comp-campaign",
+                path : sPath
+            });
+            oHistoryView.byId("idnrgCamHis-but-price").bindElement({
+                model : "comp-campaign",
+                path : sPath
+            });
+
         };
 
         return Controller;

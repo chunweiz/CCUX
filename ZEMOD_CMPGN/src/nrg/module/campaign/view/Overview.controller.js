@@ -309,7 +309,6 @@ sap.ui.define(
                             });
                         }
                     }
-
                     // Columns Assignment.
                 }
             }
