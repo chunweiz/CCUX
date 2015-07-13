@@ -189,17 +189,6 @@
                                             text="{oAllBuags>DisplayName}"/>
                                     </utmain:DropdownItem>
                                 </utmain:Dropdown>
-                                <!--Temp For Testing-->
-                                <utmain:Dropdown
-                                    selectedKey="{oDtaVrfyBP>/DayPhoneType}"
-                                    content="{oPhoneType>/}">
-                                    <utmain:DropdownItem
-                                        key="{oPhoneType>Key}">
-                                        <ute:Tag elem="span"
-                                            text="{oPhoneType>Type}"/>
-                                    </utmain:DropdownItem>
-                                </utmain:Dropdown>
-                                <!--Temp For Testing-->
                             </ute:Tag>
                             <ute:Tag id="serviceadd_area" visible="true" class="nrgDashboard-cusDataVerify-mContent">
                                 <l:MatrixLayout widths="65%,35%" columns="2">
@@ -272,7 +261,7 @@
                                     value="{oDtaVrfyContracts>/ContractID}"
                                     class="nrgDashboard-cusDataVerify-mContent-fInput"/>
 
-                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                <l:MatrixLayout widths="55%,45%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
                                             <utmain:Label  labelFor="cell_num"
@@ -296,40 +285,42 @@
                                 </l:MatrixLayout>
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
-                                <l:MatrixLayout widths="50%,50%" columns="2">
-                                    <l:MatrixLayoutRow>
-                                        <l:MatrixLayoutCell>
-                                            <utmain:Label  labelFor="dayPhn"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <ute:Textfield id="dayPhn" fieldType="Noborder"
-                                                editable="{oCfrmStatus>/bEditable}"
-                                                value="{oDtaVrfyBP>/DayPhone}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
-                                        </l:MatrixLayoutCell>
-                                        <l:MatrixLayoutCell>
-                                            <utmain:Label labelFor="dayPhnType"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <utmain:Dropdown id="dayPhnType"
-                                                selectedKey="{oDtaVrfyBP>/DayPhoneType}"
-                                                content="{oPhoneType>/}">
-                                                <utmain:DropdownItem
-                                                    key="{oPhoneType>Key}">
-                                                    <ute:Tag elem="span"
-                                                        text="{oPhoneType>Type}"/>
-                                                </utmain:DropdownItem>
-                                            </utmain:Dropdown>
-                                            <!--<ute:Textfield id="dayPhnType" fieldType="Noborder"
-                                                editable="{oCfrmStatus>/bEditable}"
-                                                value="{oDtaVrfyBP>/DayPhoneType}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>-->
-                                        </l:MatrixLayoutCell>
-                                    </l:MatrixLayoutRow>
-                                </l:MatrixLayout>
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hPhn">
+                                    <utmain:Label  labelFor="dayPhn"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"/>
+                                    <ute:Textfield id="dayPhn" fieldType="Noborder"
+                                        class="nrgDashboard-cusDataVerify-mContent-hPhnInput"
+                                        editable="{oCfrmStatus>/bEditable}"
+                                        value="{oDtaVrfyBP>/DayPhone}"
+                                        width="100px"/>
+                                </ute:Tag>
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hExt">
+                                    <utmain:Label  labelFor="dayPhnExt"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PhnExt}"/>
+                                    <ute:Textfield id="dayPhnExt" fieldType="Noborder"
+                                        class="nrgDashboard-cusDataVerify-mContent-hPhnExtInput"
+                                        editable="{oCfrmStatus>/bEditable}"
+                                        value="{oDtaVrfyBP>/DayPhoneExt}"
+                                        width="20px"/>
+                                </ute:Tag>
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hType">
+                                    <utmain:Label labelFor="dayPhnType"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
+                                        class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                    <utmain:Dropdown id="dayPhnType" design="Plain"
+                                        selectedKey="{oDtaVrfyBP>/DayPhoneType}"
+                                        content="{oPhoneType>/}">
+                                        <utmain:DropdownItem
+                                            key="{oPhoneType>Key}">
+                                            <ute:Tag elem="span"
+                                                 text="{oPhoneType>Type}"/>
+                                        </utmain:DropdownItem>
+                                    </utmain:Dropdown>
+                                </ute:Tag>
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
-                                <l:MatrixLayout widths="50%,50%" columns="2">
+
+                                <l:MatrixLayout widths="55%,45%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
                                             <utmain:Label labelFor="evnPhn"
@@ -353,7 +344,7 @@
                                 </l:MatrixLayout>
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
-                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                <l:MatrixLayout widths="55%,45%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
                                             <utmain:Button text="SMS"/>
@@ -374,7 +365,7 @@
                             <ute:Tag id="mailadd_area" visible="false" class="nrgDashboard-cusDataVerify-mContent">
 
 
-                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                <l:MatrixLayout widths="55%,45%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
                                             <utmain:Label  labelFor="mail_FixedAddr"
@@ -409,7 +400,7 @@
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
 
-                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                <l:MatrixLayout widths="55%,45%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
                                             <utmain:Label  labelFor="cell_num_mail"
@@ -433,7 +424,7 @@
                                 </l:MatrixLayout>
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
-                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                <l:MatrixLayout widths="55%,45%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
                                             <utmain:Label  labelFor="dayPhn_mail"
@@ -456,7 +447,7 @@
                                 </l:MatrixLayout>
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
-                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                <l:MatrixLayout widths="55%,45%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
                                             <utmain:Label labelFor="evnPhn_mail"
@@ -480,7 +471,7 @@
                                 </l:MatrixLayout>
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
-                                <l:MatrixLayout widths="50%,50%" columns="2">
+                                <l:MatrixLayout widths="55%,45%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
                                             <utmain:Button text="SMS"/>

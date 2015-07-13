@@ -122,24 +122,6 @@
                         <u:Tag text="{comp-campaign>Description}" />
                     </um:DropdownItem>
                 </um:Dropdown>
-<!--                <u:Dropdown
-                            id="idnrgCamChgDisRn"
-                            class="nrgCamChg-DisRn"
-                            arrowcolor="Grey"
-                            arrowType="Hollow"
-                            enabled="true"
-                            title="{comp-i18n-campaign>nrgCmpChgDisResTtl}"
-                            background="Transparent"
-                            border="Bottom"
-                            width="300px"
-                            padding="5px"
-                            DropdownListItems="{comp-campaign>/RejectRsnS}">
-                    <u:DropdownListItems>
-                        <u:DropdownListItem key="{comp-campaign>RejectionCode}">
-                            <c:Label text="{comp-campaign>Description}"/>
-                        </u:DropdownListItem>
-                    </u:DropdownListItems>
-                </u:Dropdown>-->
             </u:Tag>
       </u:Tag>
    </u:Tag>

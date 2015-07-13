@@ -87,6 +87,7 @@ sap.ui.define(
 				delay : 0
 			});
             this._sContract = oEvent.getParameter("arguments").coNum;
+            this._sContract = "32253375";
             aFilterIds = ["Contract", "Type"];
             aFilterValues = [this._sContract, "P"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -100,7 +101,8 @@ sap.ui.define(
                 model : "comp-campaign",
                 path : sCurrentPath,
                 template : oTileTemplate,
-                filters : aFilters
+                filters : aFilters,
+                parameters : {expand: "EFLs"}
             };
             oTileContainer.bindAggregation("content", mParameters);
             this.getView().getModel("appView").setProperty("/busy", false);
@@ -154,7 +156,8 @@ sap.ui.define(
                 model : "comp-campaign",
                 path : sCurrentPath,
                 template : oTileTemplate,
-                filters : aFilters
+                filters : aFilters,
+                parameters : {expand: "EFLs"}
             };
             oTileContainer.bindAggregation("content", mParameters);
         };
