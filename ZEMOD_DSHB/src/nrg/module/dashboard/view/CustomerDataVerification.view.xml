@@ -526,7 +526,7 @@
         <ute:Textfield id="idEditCity" fieldType="Underlined"
             class="nrgDashboard-cusDataVerifyEditMailAdd-cityState"
             label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_City}"
-            editable="true" width="180px"
+            editable="true" width="120px"
             value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/City}"/>
         <ute:Textfield id="idEditState" fieldType="Underlined"
             class="nrgDashboard-cusDataVerifyEditMailAdd-cityState"
@@ -545,37 +545,38 @@
 
     <ute:Tag id="idTempAddrUpdatePopup" visible="false"
          class="nrgDashboard-cusDataVerifyEditMailAdd">
-        <utmain:Label  labelFor="idTmpEditHouseNum"
-            text="HouseNumber"/>
         <ute:Textfield id="idTmpEditHouseNum" fieldType="Underlined"
-            editable="true"
+            class="nrgDashboard-cusDataVerifyEditMailAdd-huNum"
+            label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_HuNum}"
+            editable="true" width="100px"
             value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/HouseNo}"/>
-        <utmain:Label  labelFor="idTmpEditStName"
-            text="Street"/>
-        <ute:Textfield id="idTmpEditStName" fieldType="Underlined"
-            editable="true"
-            value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/Street}"/>
-        <utmain:Label  labelFor="idTmpEditUnitNum"
-            text="Unit"/>
         <ute:Textfield id="idTmpEditUnitNum" fieldType="Underlined"
-            editable="true"
+            label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_UniNum}"
+            class="nrgDashboard-cusDataVerifyEditMailAdd-huNum"
+            editable="true" width="100px"
             value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/UnitNo}"/>
-        <utmain:Label  labelFor="idTmpEditCity"
-            text="City"/>
+        <ute:Textfield id="idTmpEditStName" fieldType="Underlined"
+            class="nrgDashboard-cusDataVerifyEditMailAdd-stName"
+            label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_StName}"
+            editable="true" width="400px"
+            value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/Street}"/>
         <ute:Textfield id="idTmpEditCity" fieldType="Underlined"
-            editable="true"
+            class="nrgDashboard-cusDataVerifyEditMailAdd-cityState"
+            label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_City}"
+            editable="true" width="120px"
             value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/City}"/>
-        <utmain:Label  labelFor="idTmpEditState"
-            text="State"/>
         <ute:Textfield id="idTmpEditState" fieldType="Underlined"
-            editable="true"
+            class="nrgDashboard-cusDataVerifyEditMailAdd-cityState"
+            label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_State}"
+            editable="true" width="120px"
             value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/State}"/>
-        <utmain:Label  labelFor="idTmpEditZip"
-            text="Zip Code"/>
         <ute:Textfield id="idTmpEditZip" fieldType="Underlined"
-            editable="true"
+            label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_ZipCode}"
+            class="nrgDashboard-cusDataVerifyEditMailAdd-zipCode"
+            editable="true" width="80px"
             value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/ZipCode}"/>
-        <utmain:Button text="UPDATE"
+        <utmain:Button text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_UpdtBtnText}"
+            class="nrgDashboard-cusDataVerifyEditMailAdd-updtBtn"
             press="._handleTempAddrUpdate"/>
     </ute:Tag>
 
