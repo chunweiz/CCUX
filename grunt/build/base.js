@@ -8,8 +8,10 @@
 
         oGruntConfig = {};
         oGruntConfig.baseFolder = grunt.option('baseFolder');
+        oGruntConfig.basePath = grunt.option('basePath');
 
         grunt.log.writeln('base folder: ' + oGruntConfig.baseFolder);
+        grunt.log.writeln('base path: ' + oGruntConfig.basePath);
 
         /*
         ** Perform javascript linting on all source files
@@ -22,7 +24,7 @@
                     files: {
                         cwd: '<%= baseFolder %>/src',
                         src: [
-                            'nrg/base/**/*.js'
+                            '<%= basePath %>/base/**/*.js'
                         ]
                     }
                 }
@@ -58,13 +60,14 @@
                     files: [
                         {
                             expand: true,
-                            cwd: '<%= baseFolder %>/src/nrg/base',
+                            cwd: '<%= baseFolder %>/src/<%= basePath %>/base',
                             src: [
                                 'asset/css/font/**',
                                 'asset/img/**/*.png',
+                                'asset/img/*.svg',
                                 'component/**/*.json'
                             ],
-                            dest: '<%= baseFolder %>/build/nrg/base/',
+                            dest: '<%= baseFolder %>/build/<%= basePath %>/base/',
                             filter: 'isFile'
                         },
                         {
@@ -97,7 +100,7 @@
 
             oConfig = {
                 deploy: {
-                    files: '<%= baseFolder %>/build/nrg/base/**/*.json'
+                    files: '<%= baseFolder %>/build/<%= basePath %>/base/**/*.json'
 
                 }
             };
@@ -118,7 +121,7 @@
                             expand: true,
                             cwd: '<%= baseFolder %>/src',
                             src: [
-                                'nrg/base/**/*.js'
+                                '<%= basePath %>/base/**/*.js'
                             ],
                             dest: '<%= baseFolder %>/build'
                         }
@@ -157,7 +160,7 @@
                         ]
                     },
                     files: {
-                        '<%= baseFolder %>/build/nrg/base/asset/css/base.css': '<%= baseFolder %>/src/nrg/base/asset/css/base.less'
+                        '<%= baseFolder %>/build/<%= basePath %>/base/asset/css/base.css': '<%= baseFolder %>/src/<%= basePath %>/base/asset/css/base.less'
                     }
                 }
             };
