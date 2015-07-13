@@ -1,4 +1,5 @@
-grunt --build=base --baseFolder=ZEBASE
+grunt --build=base --baseFolder=ZEBASE --basePath=nrg
+grunt --build=base --baseFolder=ZEBASE_CTRL --basePath=ute/ui
 grunt --build=control --controlLibrary=ute.ui.main --controlFolder=ZECTRL_MAIN
 grunt --build=control --controlLibrary=ute.ui.commons --controlFolder=ZECTRL_COMMONS
 grunt --build=control --controlLibrary=ute.ui.app --controlFolder=ZECTRL_APP

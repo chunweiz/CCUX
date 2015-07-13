@@ -13,7 +13,7 @@ sap.ui.define(
                 library: 'ute.ui.app',
 
                 aggregations: {
-                    headline: { type: 'sap.ui.core.Control', multiple: true, singularName: 'headline' },
+                    banner: { type: 'sap.ui.core.Control', multiple: true, singularName: 'banner' },
                     menu: { type: 'sap.ui.core.Control', multiple: false }
                 }
             }

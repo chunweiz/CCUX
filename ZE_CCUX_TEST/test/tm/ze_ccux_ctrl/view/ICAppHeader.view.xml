@@ -14,12 +14,12 @@
     <ua:App>
         <ua:header>
             <ua:Header>
-                <ua:headline>
-                    <div>Reliant Interaction Center</div>
-                </ua:headline>
+                <ua:banner>
+                    <img src="../../../../../../ZEBASE/build/nrg/base/asset/img/nrg-logo.svg" height="50" width="50"></img>
+                    <span class="nrgU-verticalCenter">Reliant Interaction Center</span>
+                </ua:banner>
             </ua:Header>
         </ua:header>
     </ua:App>
-
 
 </mvc:View>
