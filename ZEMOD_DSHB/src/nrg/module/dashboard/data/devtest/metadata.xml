@@ -298,13 +298,17 @@
         <Property Name="DLVerification" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="SSNVerification" Type="Edm.String" Nullable="false" MaxLength="1" sap:sortable="false" sap:filterable="false" />
         <Property Name="Cell" Type="Edm.String" Nullable="false" MaxLength="30" sap:sortable="false" sap:filterable="false" />
+        <Property Name="CellConsum" Type="Edm.String" Nullable="false" MaxLength="3" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="Fax" Type="Edm.String" Nullable="false" MaxLength="30" sap:sortable="false" sap:filterable="false" />
+        <Property Name="FaxConsum" Type="Edm.String" Nullable="false" MaxLength="3" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="241" sap:sortable="false" sap:filterable="false" />
         <Property Name="DayPhone" Type="Edm.String" Nullable="false" MaxLength="30" sap:sortable="false" sap:filterable="false" />
-        <Property Name="DayPhoneExt" Type="Edm.String" Nullable="false" MaxLength="10" sap:sortable="false" sap:filterable="false" />
+        <Property Name="DayConsum" Type="Edm.String" Nullable="false" MaxLength="3" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="DayPhoneExt" Type="Edm.String" Nullable="false" MaxLength="30" sap:sortable="false" sap:filterable="false" />
         <Property Name="DayPhoneType" Type="Edm.String" Nullable="false" MaxLength="20" sap:sortable="false" sap:filterable="false" />
         <Property Name="EveningPhone" Type="Edm.String" Nullable="false" MaxLength="30" sap:sortable="false" sap:filterable="false" />
-        <Property Name="EveningPhoneExt" Type="Edm.String" Nullable="false" MaxLength="10" sap:sortable="false" sap:filterable="false" />
+        <Property Name="EveConsum" Type="Edm.String" Nullable="false" MaxLength="3" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="EveningPhoneExt" Type="Edm.String" Nullable="false" MaxLength="30" sap:sortable="false" sap:filterable="false" />
         <Property Name="EveningPhoneType" Type="Edm.String" Nullable="false" MaxLength="20" sap:sortable="false" sap:filterable="false" />
         <NavigationProperty Name="Buags" Relationship="ZE_CCUX_SRV.Partner_Buags" FromRole="FromRole_Partner_Buags" ToRole="ToRole_Partner_Buags" />
         <NavigationProperty Name="BpSegs" Relationship="ZE_CCUX_SRV.Partner_BpSegs" FromRole="FromRole_Partner_BpSegs" ToRole="ToRole_Partner_BpSegs" />
@@ -363,8 +367,8 @@
         <Property Name="PremiseID" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Premise ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="PremiseType" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Premise Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Description of Premise" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <NavigationProperty Name="Installations" Relationship="ZE_CCUX_SRV.Premise_Installations" FromRole="FromRole_Premise_Installations" ToRole="ToRole_Premise_Installations" />
         <NavigationProperty Name="Contracts" Relationship="ZE_CCUX_SRV.Premise_Contracts" FromRole="FromRole_Premise_Contracts" ToRole="ToRole_Premise_Contracts" />
+        <NavigationProperty Name="Installations" Relationship="ZE_CCUX_SRV.Premise_Installations" FromRole="FromRole_Premise_Installations" ToRole="ToRole_Premise_Installations" />
       </EntityType>
       <EntityType Name="Installation" sap:label="Installation" sap:content-version="1">
         <Key>
@@ -443,13 +447,18 @@
         </Key>
         <Property Name="PartnerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="Cell" Type="Edm.String" Nullable="false" MaxLength="30" sap:sortable="false" sap:filterable="false" />
+        <Property Name="CellConsum" Type="Edm.String" Nullable="false" MaxLength="3" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="Fax" Type="Edm.String" Nullable="false" MaxLength="30" sap:sortable="false" sap:filterable="false" />
+        <Property Name="FaxConsum" Type="Edm.String" Nullable="false" MaxLength="3" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="241" sap:sortable="false" sap:filterable="false" />
         <Property Name="DayPhone" Type="Edm.String" Nullable="false" MaxLength="30" sap:sortable="false" sap:filterable="false" />
         <Property Name="DayPhoneExt" Type="Edm.String" Nullable="false" MaxLength="10" sap:sortable="false" sap:filterable="false" />
+        <Property Name="DayConsum" Type="Edm.String" Nullable="false" MaxLength="3" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="DayPhoneType" Type="Edm.String" Nullable="false" MaxLength="20" sap:sortable="false" sap:filterable="false" />
         <Property Name="EveningPhone" Type="Edm.String" Nullable="false" MaxLength="30" sap:sortable="false" sap:filterable="false" />
         <Property Name="EveningPhoneType" Type="Edm.String" Nullable="false" MaxLength="20" sap:sortable="false" sap:filterable="false" />
+        <Property Name="EveningPhoneExt" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="EveConsum" Type="Edm.String" Nullable="false" MaxLength="3" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <NavigationProperty Name="Partner" Relationship="ZE_CCUX_SRV.Partner_BpContact" FromRole="ToRole_Partner_BpContact" ToRole="FromRole_Partner_BpContact" />
       </EntityType>
       <EntityType Name="BpMarkPrefer" sap:content-version="1">
@@ -486,8 +495,8 @@
         <Property Name="PartnerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="ContractAccountID" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="FixedAddressID" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <NavigationProperty Name="BuagAddrDetail" Relationship="ZE_CCUX_SRV.BuagDetail_BuagAddrDetail" FromRole="FromRole_BuagDetail_BuagAddrDetail" ToRole="ToRole_BuagDetail_BuagAddrDetail" />
         <NavigationProperty Name="Buag" Relationship="ZE_CCUX_SRV.Buag_BuagDetails" FromRole="ToRole_Buag_BuagDetails" ToRole="FromRole_Buag_BuagDetails" />
+        <NavigationProperty Name="BuagAddrDetail" Relationship="ZE_CCUX_SRV.BuagDetail_BuagAddrDetail" FromRole="FromRole_BuagDetail_BuagAddrDetail" ToRole="ToRole_BuagDetail_BuagAddrDetail" />
       </EntityType>
       <EntityType Name="BuagAddrDetail" sap:content-version="1">
         <Key>
