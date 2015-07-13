@@ -99,8 +99,6 @@ sap.ui.define(
                             aContent[1].setSelected(true);
                         }
                     }
-
-
                    // aContent[0].addStyleClass("nrgCamHisBut-Selected");
                     aEFLDatapaths = this.getModel("comp-campaign").getProperty(sPath + "/EFLs");
                     if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
@@ -121,6 +119,7 @@ sap.ui.define(
                         type: sap.ui.core.mvc.ViewType.XML,
                         viewName: "nrg.module.campaign.view.EFLData"
                     });
+                    that.getView().byId('idnrgCamOvrPriceT').removeAllAggregation("content");
                     that.getView().byId('idnrgCamOvrPriceT').addContent(oTemplateView);
                     that.getView().bindElement({
                         model : "comp-campaign",
@@ -132,7 +131,6 @@ sap.ui.define(
                 oBinding.detachDataReceived(fnRecievedHandler);
             };
              // Handler function for Tab Bar Item.
-
             mParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,
@@ -176,7 +174,6 @@ sap.ui.define(
 		Controller.prototype._bindView = function (sObjectPath) {
 
         };
-
        /**
 		 * Assign the filter objects based on the input selection
 		 *
@@ -194,7 +191,6 @@ sap.ui.define(
             }
             return aFilters;
         };
-
         /**
 		 * Toggles between Current and Pending clicks
 		 *
