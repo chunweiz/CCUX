@@ -45,23 +45,6 @@
                         <u:Tag text="{comp-campaign>TxtLang}" />
                     </um:DropdownItem>
                 </um:Dropdown>
-<!--                <u:Dropdown
-                            id="idnrgCamSSDdL"
-                            arrowcolor="Grey"
-                            arrowType="Hollow"
-                            enabled="true"
-                            background="Transparent"
-                            title="Language"
-                            border="Bottom"
-                            width="100px"
-                            padding="5px"
-                            DropdownListItems="{comp-campaign>/languageData}">
-                    <u:DropdownListItems>
-                        <u:DropdownListItem id="idnrgCamSSLngLtIt" key="{comp-campaign>TxtLang}">
-                            <c:Label text="{comp-campaign>TxtLang}"/>
-                        </u:DropdownListItem>
-                    </u:DropdownListItems>
-                </u:Dropdown>-->
             </u:Tag>
             <u:Tag class="nrgCamSS-Dsc">
                     <c:Label text="{comp-i18n-campaign>nrgCmpSSMdlbl}"
@@ -82,48 +65,14 @@
                     class="nrgCamSS-btn"
                     press=".onAccept">
                 </u:Button>
-                <um:Dropdown id="dd001" content="{comp-campaign>/RejectRsnS}" selectedKey="2" select=".onSelected">
+                <um:Dropdown id="dd001" content="{comp-campaign>/RejectRsnS}" selectedKey="2" select=".onSelected" placeholder="Non-Disposition Reason">
                     <um:DropdownItem key="{comp-campaign>RejectionCode}">
                         <u:Tag text="{comp-campaign>Description}" />
                     </um:DropdownItem>
                 </um:Dropdown>
-<!--                <u:Dropdown
-                            id="idnrgCamSSDisRn"
-                            class="nrgCamSS-DisRn"
-                            arrowcolor="Grey"
-                            arrowType="Hollow"
-                            enabled="true"
-                            title="{comp-i18n-campaign>nrgCmpChgDisResTtl}"
-                            background="Transparent"
-                            border="Bottom"
-                            width="300px"
-                            padding="5px"
-                            DropdownListItems="{comp-campaign>/RejectRsnS}">
-                    <u:DropdownListItems>
-                        <u:DropdownListItem key="{comp-campaign>RejectionCode}">
-                            <c:Label text="{comp-campaign>Description}"/>
-                        </u:DropdownListItem>
-                    </u:DropdownListItems>
-                </u:Dropdown>-->
             </u:Tag>
           <u:Dialog id="idnrgCamOvsDialog">
             <u:Tag class="nrgCamOVS-DdL">
-<!--                <u:Dropdown
-                            id="idnrgCamOvsDdL"
-                            arrowcolor="Grey"
-                            arrowType="Hollow"
-                            enabled="true"
-                            background="Transparent"
-                            title="Language"
-                            border="Bottom"
-                            width="100px"
-                            padding="5px">
-                    <u:DropdownListItems>
-                        <u:DropdownListItem id="idnrgCamOvsLngLtIt" key="{comp-campaign>TxtLang}">
-                            <c:Label text="{comp-campaign>TxtLang}"/>
-                        </u:DropdownListItem>
-                    </u:DropdownListItems>
-                </u:Dropdown>-->
                 <um:Dropdown selectedKey="0" id="idnrgCamOvsDdL">
                     <um:DropdownItem key="{comp-campaign>TxtLang}" id="idnrgCamOvsLngLtIt">
                         <u:Tag text="{comp-campaign>TxtLang}" />

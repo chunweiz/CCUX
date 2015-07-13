@@ -43,7 +43,14 @@ sap.ui.define(
                 mParameters,
                 sNewOfferCode,
                 oViewModel,
-                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay();
+                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
+                oTemplateView,
+                oTemplateModel,
+                aEFLDatapaths,
+                iCount,
+                oEFLJson = {},
+                aResults = [],
+                that = this;
             oViewModel = new JSONModel({
 				busy : true,
 				delay : 0
@@ -51,11 +58,31 @@ sap.ui.define(
             this.getView().setModel(oViewModel, "appView");
             this._sContract = oEvent.getParameter("arguments").coNum;
             sNewOfferCode = oEvent.getParameter("arguments").offercodeNum;
-            sCurrentPath = this._i18NModel.getProperty("nrgCurrentPendingSet");
+            sCurrentPath = "/CpgChgOfferS";
             sCurrentPath = sCurrentPath + "(OfferCode='" + sNewOfferCode + "',Type='P')";
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             mParameters = {
                 success : function (oData) {
+                    aEFLDatapaths = that.getView().getModel("comp-campaign").getProperty(sCurrentPath + "/EFLs");
+                    if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
+                        for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
+                            aResults.push(that.getView().getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
+                        }
+                    }
+                    oTemplateModel.setData(that.convertEFLJson(aResults));
+                    that._oEFLModel = oTemplateModel;
+                    oTemplateView = sap.ui.view({
+                        preprocessors: {
+                            xml: {
+                                models: {
+                                    tmpl : that._oEFLModel
+                                }
+                            }
+                        },
+                        type: sap.ui.core.mvc.ViewType.XML,
+                        viewName: "nrg.module.campaign.view.EFLData"
+                    });
+                    that.getView().byId('idnrgCamOvrPriceT').addContent(oTemplateView);
                     this._bindView(sCurrentPath);
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
@@ -120,7 +147,7 @@ sap.ui.define(
         Controller.prototype.backToOverview = function (oEvent) {
             this.navTo("campaign", {coNum : this._sContract, typeV : "C"});
         };
-        /**
+          /**
 		 * Converts in to EFL Json format required by Template view.
 		 *
 		 * @function
@@ -156,12 +183,14 @@ sap.ui.define(
                         }
                         if (continueFlag) {
                             continueFlag = false;
+                        } else {
+                            tempColumns.push(temp.EFLLevel);
+                            columns.push({
+                                "EFLLevel": temp.EFLLevel
+                            });
                         }
                     }
-                    tempColumns.push(temp.EFLLevel);
-                    columns.push({
-                        "EFLLevel": temp.EFLLevel
-                    });
+
                     // Columns Assignment.
                 }
             }
@@ -196,6 +225,7 @@ sap.ui.define(
 
             return aJsonDataNew;
         };
+
         return Controller;
     }
 );
