@@ -301,7 +301,7 @@
                                         class="nrgDashboard-cusDataVerify-mContent-hPhnExtInput"
                                         editable="{oCfrmStatus>/bEditable}"
                                         value="{oDtaVrfyBP>/DayPhoneExt}"
-                                        width="20px"/>
+                                        width="40px"/>
                                 </ute:Tag>
                                 <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hType">
                                     <utmain:Label labelFor="dayPhnType"
@@ -320,28 +320,39 @@
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
 
-                                <l:MatrixLayout widths="55%,45%" columns="2">
-                                    <l:MatrixLayoutRow>
-                                        <l:MatrixLayoutCell>
-                                            <utmain:Label labelFor="evnPhn"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <ute:Textfield id="evnPhn" fieldType="Noborder"
-                                                value="{oDtaVrfyBP>/EveningPhone}"
-                                                editable="{oCfrmStatus>/bEditable}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
-                                        </l:MatrixLayoutCell>
-                                        <l:MatrixLayoutCell>
-                                            <utmain:Label labelFor="evnPhnType"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTypTxt}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <ute:Textfield id="evnPhnType" fieldType="Noborder"
-                                                value="{oDtaVrfyBP>/EveningPhoneType}"
-                                                editable="{oCfrmStatus>/bEditable}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
-                                        </l:MatrixLayoutCell>
-                                    </l:MatrixLayoutRow>
-                                </l:MatrixLayout>
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hPhn">
+                                    <utmain:Label labelFor="evnPhn"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"/>
+                                    <ute:Textfield id="evnPhn" fieldType="Noborder"
+                                        class="nrgDashboard-cusDataVerify-mContent-hPhnInput"
+                                        editable="{oCfrmStatus>/bEditable}"
+                                        value="{oDtaVrfyBP>/EveningPhone}"
+                                        width="100px"/>
+                                </ute:Tag>
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hExt">
+                                    <utmain:Label  labelFor="evnPhnExt"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PhnExt}"/>
+                                    <ute:Textfield id="evnPhnExt" fieldType="Noborder"
+                                        class="nrgDashboard-cusDataVerify-mContent-hPhnExtInput"
+                                        editable="{oCfrmStatus>/bEditable}"
+                                        value="{oDtaVrfyBP>/EveningPhoneExt}"
+                                        width="40px"/>
+                                </ute:Tag>
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hType">
+                                    <utmain:Label labelFor="evnPhnType"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
+                                        class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                    <utmain:Dropdown id="evnPhnType" design="Plain"
+                                        selectedKey="{oDtaVrfyBP>/EveningPhoneType}"
+                                        content="{oPhoneType>/}">
+                                        <utmain:DropdownItem
+                                            key="{oPhoneType>Key}">
+                                            <ute:Tag elem="span"
+                                                 text="{oPhoneType>Type}"/>
+                                        </utmain:DropdownItem>
+                                    </utmain:Dropdown>
+                                </ute:Tag>
+
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
                                 <l:MatrixLayout widths="55%,45%" columns="2">
@@ -424,30 +435,76 @@
                                 </l:MatrixLayout>
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
-                                <l:MatrixLayout widths="55%,45%" columns="2">
-                                    <l:MatrixLayoutRow>
-                                        <l:MatrixLayoutCell>
-                                            <utmain:Label  labelFor="dayPhn_mail"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <ute:Textfield id="dayPhn_mail" fieldType="Noborder"
-                                                value="{oDtaVrfyBP>/DayPhone}"
-                                                editable="{oCfrmStatus>/bEditable}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
-                                        </l:MatrixLayoutCell>
-                                        <l:MatrixLayoutCell>
-                                            <utmain:Label labelFor="dayPhnType_mail"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <ute:Textfield id="dayPhnType_mail" fieldType="Noborder"
-                                                value="{oDtaVrfyBP>/DayPhoneType}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
-                                        </l:MatrixLayoutCell>
-                                    </l:MatrixLayoutRow>
-                                </l:MatrixLayout>
+
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hPhn">
+                                    <utmain:Label  labelFor="dayPhn_mail"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"/>
+                                    <ute:Textfield id="dayPhn_mail" fieldType="Noborder"
+                                        class="nrgDashboard-cusDataVerify-mContent-hPhnInput"
+                                        editable="{oCfrmStatus>/bEditable}"
+                                        value="{oDtaVrfyBP>/DayPhone}"
+                                        width="100px"/>
+                                </ute:Tag>
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hExt">
+                                    <utmain:Label  labelFor="dayPhnExt_mail"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PhnExt}"/>
+                                    <ute:Textfield id="dayPhnExt_mail" fieldType="Noborder"
+                                        class="nrgDashboard-cusDataVerify-mContent-hPhnExtInput"
+                                        editable="{oCfrmStatus>/bEditable}"
+                                        value="{oDtaVrfyBP>/DayPhoneExt}"
+                                        width="40px"/>
+                                </ute:Tag>
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hType">
+                                    <utmain:Label labelFor="dayPhnType_mail"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
+                                        class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                    <utmain:Dropdown id="dayPhnType_mail" design="Plain"
+                                        selectedKey="{oDtaVrfyBP>/DayPhoneType}"
+                                        content="{oPhoneType>/}">
+                                        <utmain:DropdownItem
+                                            key="{oPhoneType>Key}">
+                                            <ute:Tag elem="span"
+                                                 text="{oPhoneType>Type}"/>
+                                        </utmain:DropdownItem>
+                                    </utmain:Dropdown>
+                                </ute:Tag>
+
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
-                                <l:MatrixLayout widths="55%,45%" columns="2">
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hPhn">
+                                    <utmain:Label labelFor="evnPhn_mail"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"/>
+                                    <ute:Textfield id="evnPhn_mail" fieldType="Noborder"
+                                        class="nrgDashboard-cusDataVerify-mContent-hPhnInput"
+                                        editable="{oCfrmStatus>/bEditable}"
+                                        value="{oDtaVrfyBP>/EveningPhone}"
+                                        width="100px"/>
+                                </ute:Tag>
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hExt">
+                                    <utmain:Label  labelFor="evnPhnExt_mail"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PhnExt}"/>
+                                    <ute:Textfield id="evnPhnExt_mail" fieldType="Noborder"
+                                        class="nrgDashboard-cusDataVerify-mContent-hPhnExtInput"
+                                        editable="{oCfrmStatus>/bEditable}"
+                                        value="{oDtaVrfyBP>/EveningPhoneExt}"
+                                        width="40px"/>
+                                </ute:Tag>
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hType">
+                                    <utmain:Label labelFor="evnPhnType_mail"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
+                                        class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                    <utmain:Dropdown id="evnPhnType_mail" design="Plain"
+                                        selectedKey="{oDtaVrfyBP>/EveningPhoneType}"
+                                        content="{oPhoneType>/}">
+                                        <utmain:DropdownItem
+                                            key="{oPhoneType>Key}">
+                                            <ute:Tag elem="span"
+                                                 text="{oPhoneType>Type}"/>
+                                        </utmain:DropdownItem>
+                                    </utmain:Dropdown>
+                                </ute:Tag>
+
+                                <!--<l:MatrixLayout widths="55%,45%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
                                             <utmain:Label labelFor="evnPhn_mail"
@@ -468,7 +525,7 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
-                                </l:MatrixLayout>
+                                </l:MatrixLayout>-->
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
                                 <l:MatrixLayout widths="55%,45%" columns="2">

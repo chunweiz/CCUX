@@ -56,7 +56,7 @@ sap.ui.define(
             var oPhnType = this.getView().getModel('oPhoneType'),
                 oTypes = [];
 
-            oTypes = [ {Key: "LANDLINE", Type: "LANDLINE"}, {Key: "CELL", Type: "CELL"}, {Key: "DayPhoneType 2", Type: "DayPhoneType 2"}];
+            oTypes = [ {Key: "LANDLINE", Type: "LANDLINE"}, {Key: "CELL", Type: "CELL"}];
 
             oPhnType.setProperty('/', oTypes);
             //oPhnType.setProperty('/selectedKey', this.getView().getModel('oDtaVrfyBP').getProperty('/DayPhoneType'));
