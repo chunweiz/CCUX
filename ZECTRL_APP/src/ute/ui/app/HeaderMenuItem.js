@@ -8,7 +8,7 @@ sap.ui.define(
     function (Control) {
         'use strict';
 
-        var CustomControl = Control.extend('ute.ui.app.HeaderMenu', {
+        var CustomControl = Control.extend('ute.ui.app.HeaderMenuItem', {
             metadata: {
                 library: 'ute.ui.app',
 
@@ -17,14 +17,12 @@ sap.ui.define(
                 },
 
                 aggregations: {
-                    item: { type: 'ute.ui.app.HeaderMenuItem', multiple: true, singularName: 'item' }
+
                 },
 
-                defaultAggregation: 'item'
+                defaultAggregation: ''
             }
         });
-
-
 
         return CustomControl;
     },

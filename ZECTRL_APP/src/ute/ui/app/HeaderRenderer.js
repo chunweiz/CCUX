@@ -18,7 +18,7 @@ sap.ui.define(
             oRm.write('>');
 
             oRm.write('<div');
-            oRm.addClass('uteApp-wrap');
+            oRm.addClass('uteAppHdr-wrap');
             oRm.addClass('uteAppHdr-inner');
             oRm.addClass('uteU-clearfix');
             oRm.writeClasses();
