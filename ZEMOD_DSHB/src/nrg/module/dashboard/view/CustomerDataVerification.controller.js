@@ -41,11 +41,26 @@ sap.ui.define(
 
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCoPageModel');
 
+            //For Phone Type
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPhoneType');
+
 
             this._initDtaVrfRetr();
             this._initCfrmStatus();
+            this._initPhnTypes();
             //this._initCoPageModel();
 
+        };
+
+        Controller.prototype._initPhnTypes = function () {
+            var oPhnType = this.getView().getModel('oPhoneType'),
+                oTypes = [];
+
+            oTypes = [ {Key: "LANDLINE", Type: "LANDLINE"}, {Key: "CELL", Type: "CELL"}, {Key: "DayPhoneType 2", Type: "DayPhoneType 2"}];
+
+            oPhnType.setProperty('/', oTypes);
+            //oPhnType.setProperty('/selectedKey', this.getView().getModel('oDtaVrfyBP').getProperty('/DayPhoneType'));
+            //oPhnType.setProperty('/selectedKey', 'LANDLINE');
         };
 
         Controller.prototype._initCoPageModel = function () {
@@ -475,6 +490,7 @@ sap.ui.define(
                 urlParameters: {},
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Update Success");
+                    this._oMailEditPopup.close();
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Update Failed");
@@ -522,6 +538,7 @@ sap.ui.define(
                 urlParameters: {},
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Update Success");
+                    this._oTempMailEditPopup.close();
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Update Failed");
