@@ -58,44 +58,36 @@ sap.ui.define(
             this.getView().setModel(oViewModel, "appView");
             this._sContract = oEvent.getParameter("arguments").coNum;
             sNewOfferCode = oEvent.getParameter("arguments").offercodeNum;
+            sNewOfferCode = "50160100";
             sCurrentPath = "/CpgChgOfferS";
             sCurrentPath = sCurrentPath + "(OfferCode='" + sNewOfferCode + "',Type='P')";
             oModel = this.getOwnerComponent().getModel('comp-campaign');
-            mParameters = {
-                success : function (oData) {
-                    aEFLDatapaths = that.getView().getModel("comp-campaign").getProperty(sCurrentPath + "/EFLs");
-                    if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
-                        for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
-                            aResults.push(that.getView().getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
+            oTemplateModel = new sap.ui.model.json.JSONModel();
+            this._bindView(sCurrentPath);
+            aEFLDatapaths = that.getView().getModel("comp-campaign").getProperty(sCurrentPath + "/EFLs");
+            if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
+                for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
+                    aResults.push(that.getView().getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
+                }
+            }
+            oTemplateModel.setData(that.convertEFLJson(aResults));
+            that._oEFLModel = oTemplateModel;
+            oTemplateView = sap.ui.view({
+                preprocessors: {
+                    xml: {
+                        models: {
+                            tmpl : that._oEFLModel
                         }
                     }
-                    oTemplateModel.setData(that.convertEFLJson(aResults));
-                    that._oEFLModel = oTemplateModel;
-                    oTemplateView = sap.ui.view({
-                        preprocessors: {
-                            xml: {
-                                models: {
-                                    tmpl : that._oEFLModel
-                                }
-                            }
-                        },
-                        type: sap.ui.core.mvc.ViewType.XML,
-                        viewName: "nrg.module.campaign.view.EFLData"
-                    });
-                    that.getView().byId('idnrgCamOvrPriceT').addContent(oTemplateView);
-                    this._bindView(sCurrentPath);
-                    jQuery.sap.log.info("Odata Read Successfully:::");
-                }.bind(this),
-                error: function (oError) {
-                    jQuery.sap.log.info("Some Error");
-                }.bind(this)
-            };
-            if (oModel) {
-                oModel.read(sCurrentPath, mParameters);
-            }
+                },
+                type: sap.ui.core.mvc.ViewType.XML,
+                viewName: "nrg.module.campaign.view.EFLData"
+            });
+            that.getView().byId('idnrgCamChgPriceT').removeAllAggregation("content");
+            that.getView().byId('idnrgCamChgPriceT').addContent(oTemplateView);
+            jQuery.sap.log.info("Odata Read Successfully:::");
             this.getView().getModel("appView").setProperty("/busy", false);
 		};
-
         /**
 		 * Binds the view to the object path. Makes sure that view displays
 		 * a busy indicator while data for the corresponding element binding is loaded.

@@ -106,7 +106,7 @@
                                    class="nrgCamOff-btn"
                                    id="idnrgCamOffBt" design="None">
                             <u:Tag class="nrgCamOff-btnInfo">
-                                <u:Tag class="nrgCamOff-btnCF" text="{parts:[{path:'comp-campaign>CancellationFee',
+                                <u:Tag class="nrgCamOff-btnCF" text="{parts:[{path:'comp-campaign>CncFee',
                                                                 type: 'nrg.util.type.Price',
                                                                 formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' }},
                                                            {path: 'comp-campaign>Incentive',
@@ -115,7 +115,7 @@
                                                     formatter:'.formatCancelFee'}" />
 
                                 <u:Tag class="nrgCamOff-btnPC"
-                                       text="{parts:[{path:'comp-campaign>PromoCode'}],
+                                       text="{parts:[{path:'comp-campaign>Promo'}],
                                                     formatter:'.formatPromo'}"/>
                             </u:Tag>
                             <u:Tag class="nrgCamOff-btnTtl" text="{comp-campaign>OfferTitle}" />
