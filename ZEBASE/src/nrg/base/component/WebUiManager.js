@@ -44,7 +44,10 @@ sap.ui.define(
 
             oData = {};
             oData.event = sEvent;
-            oData.payload = oPayload;
+
+            if (oPayload) {
+                oData.payload = oPayload;
+            }
 
             if (fnCallback) {
                 oData.sid = this._getUniqueId();
