@@ -69,9 +69,9 @@ sap.ui.define(
                 sCurrentPath,
                 oDropDownList,
                 oDropDownListItemTemplate,
-                sType,
-                sOfferCode,
                 oViewModel,
+                aFilterIds,
+                aFilterValues,
                 iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay();
             oViewModel = new JSONModel({
 				busy : true,
@@ -79,20 +79,21 @@ sap.ui.define(
 			});
             this.getView().setModel(oViewModel, "appView");
             this.sContract = oEvent.getParameter("arguments").coNum;
-            sType = oEvent.getParameter("arguments").typeV;
-            sOfferCode = oEvent.getParameter("arguments").offercodeNum;
+            this._sOfferCode = oEvent.getParameter("arguments").offercodeNum;
             sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
             sCurrentPath = "/ScriptS";
-            sCurrentPath = sCurrentPath + "(OfferCode='" + sOfferCode + "',Type='P')";
+            // + "(OfferCode='" + sOfferCode + "',Contract='32253375',TxtName='MD',TxtLang='EN')";
             //sCurrentPath = sCurrentPath + "/ScriptS";
+            aFilterIds = ["Contract", "OfferCode", "TxtName"];
+            aFilterValues = ['32253375', this._sOfferCode, 'MD'];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oDropDownList = this.getView().byId("idnrgCamSSDdL");
             oDropDownListItemTemplate = this.getView().byId("idnrgCamSSLngLtIt").clone();
             mParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,
-                template : oDropDownListItemTemplate
- /*               parameters: {expand: "Cpg_Script"}
-*/
+                template : oDropDownListItemTemplate,
+                filters : aFilters
             };
             oDropDownList.bindAggregation("content", mParameters);
             //this._bindView(sObjectPath);
@@ -154,8 +155,8 @@ sap.ui.define(
                 oOverScriptTV = this.getView().byId("idnrgCamOvsOvTv"),
                 aFilterIds,
                 aFilterValues;
-            aFilterIds = ["ContractID", "NewOfferCode", "TxtName"];
-            aFilterValues = [this.sContract, "A", "OS"];
+            aFilterIds = ["Contract", "OfferCode", "TxtName"];
+            aFilterValues = ['32253375', this._sOfferCode, "OS"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sCurrentPath = "/ScriptS";
             oDialog.setWidth("750px");
@@ -166,14 +167,6 @@ sap.ui.define(
             oDropDownList = this.getView().byId("idnrgCamOvsDdL");
             aContent = oDropDownList.getContent();
             oDropDownListItemTemplate = aContent[0].clone();
-            mParameters = {
-                model : "comp-campaign",
-                path : sCurrentPath,
-                template : oDropDownListItemTemplate,
-                filters : aFilters,
-                events: {dataReceived : fnRecievedHandler}
-            };
-            oDropDownList.bindAggregation("content", mParameters);
             fnRecievedHandler = function () {
                 aContent = oDropDownList.getContent();
                 if ((aContent !== undefined) && (aContent.length > 0)) {
@@ -185,6 +178,14 @@ sap.ui.define(
                 }
                 obinding.detachDataReceived(fnRecievedHandler);
             };
+            mParameters = {
+                model : "comp-campaign",
+                path : sCurrentPath,
+                template : oDropDownListItemTemplate,
+                filters : aFilters,
+                events: {dataReceived : fnRecievedHandler}
+            };
+            oDropDownList.bindAggregation("content", mParameters);
             obinding = oDropDownList.getBinding("content");
             this.getView().addDependent(oDialog);
             oDialog.open();
