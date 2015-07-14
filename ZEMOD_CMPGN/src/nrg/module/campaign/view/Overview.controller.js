@@ -99,6 +99,8 @@ sap.ui.define(
                             aContent[1].setSelected(true);
                         }
                     }
+
+                    // Some how Expression binding for this condition is not working, so at the controller level checking again to disable button if pending campaign is not available
                     for (iCount = 0; iCount < aContent.length; iCount = iCount + 1) {
                         sTempValue = aContent[iCount].getBindingContext("comp-campaign").getProperty("OfferCode");
                         if (sTempValue === '00000000') {

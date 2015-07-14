@@ -119,10 +119,10 @@
                                                     formatter:'.formatPromo'}"/>
                             </u:Tag>
                             <u:Tag class="nrgCamOff-btnTtl" text="{comp-campaign>OfferTitle}" />
-                            <u:Tag class="nrgCamOff-btnPrc" text="{path: 'comp-campaign>EFL2000',
+                            <u:Tag class="nrgCamOff-btnPrc" text="{path: 'comp-campaign>EFLPrice',
                                                                 type: 'nrg.util.type.Price',
                                                                 formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
-                            <u:Tag class="nrgCamOff-btnPrcLbl" text="{comp-i18n-campaign>nrgCmpOffkWhDisc}" />
+                            <u:Tag class="nrgCamOff-btnPrcLbl" text="{comp-campaign>EFLLevel}" />
                         </um:Button>
             </u:Tag>
            <!-- Place holder for templates to reuse for Bind Aggregation method. Above will be always Display:none -->

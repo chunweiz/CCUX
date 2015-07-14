@@ -81,7 +81,9 @@ sap.ui.define(
                 oViewModel,
                 iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
                 aFilterIds,
-                aFilterValues;
+                aFilterValues,
+                fnRecievedHandler,
+                that = this;
             oViewModel = new JSONModel({
 				busy : true,
 				delay : 0
@@ -97,15 +99,20 @@ sap.ui.define(
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
             oTileTemplate = this.getView().byId("idnrgCamOffBt").clone();
             this.myTemplate = oTileTemplate;
+            // Handler function for tile container
+            fnRecievedHandler = function (oEvent) {
+                that.getView().getModel("appView").setProperty("/busy", false);
+            };
             mParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,
                 template : oTileTemplate,
                 filters : aFilters,
-                parameters : {expand: "EFLs"}
+                parameters : {expand: "EFLs"},
+                events: {dataReceived : fnRecievedHandler}
             };
             oTileContainer.bindAggregation("content", mParameters);
-            this.getView().getModel("appView").setProperty("/busy", false);
+
         };
 
         /**
@@ -127,9 +134,12 @@ sap.ui.define(
                 sCurrentPath,
                 aContent,
                 aFilterIds,
-                aFilterValues;
+                aFilterValues,
+                fnRecievedHandler,
+                that = this;
             sButtonText = oEvent.getSource().getId();
             sButtonText = sButtonText.substring(sButtonText.length - 1, sButtonText.length);
+            this.getView().getModel("appView").setProperty("/busy", true);
             aFilterIds = ["Contract", "Type"];
             switch (sButtonText) {
             case "P":
@@ -152,12 +162,17 @@ sap.ui.define(
             aContent = oTileContainer.getContent();
             oTileTemplate = this.myTemplate;
             sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
+            // Handler function for tile container
+            fnRecievedHandler = function (oEvent) {
+                that.getView().getModel("appView").setProperty("/busy", false);
+            };
             mParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,
                 template : oTileTemplate,
                 filters : aFilters,
-                parameters : {expand: "EFLs"}
+                parameters : {expand: "EFLs"},
+                events: {dataReceived : fnRecievedHandler}
             };
             oTileContainer.bindAggregation("content", mParameters);
         };

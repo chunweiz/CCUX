@@ -185,6 +185,27 @@
             return oConfig;
         }(grunt));
 
+        /*
+        ** Create preload for component
+        */
+        oGruntConfig.openui5_preload = (function (grunt) {
+            var oConfig;
+
+            oConfig = {
+                deploy: {
+                    options: {
+                        resources: {
+                            cwd: '<%= compFolder %>/src'
+                        },
+                        dest: '<%= compFolder %>/build'
+                    },
+                    components: '<%= compPath %>'
+                }
+            };
+
+            return oConfig;
+        }(grunt));
+
         grunt.initConfig(oGruntConfig);
 
         grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -194,6 +215,7 @@
         grunt.loadNpmTasks('grunt-merge-json');
         grunt.loadNpmTasks('grunt-json-minify');
         grunt.loadNpmTasks('grunt-contrib-htmlmin');
+        grunt.loadNpmTasks('grunt-openui5');
 
         grunt.registerTask('default', [
             'jshint',
@@ -202,7 +224,8 @@
             'uglify',
             'merge-json',
             'json-minify',
-            'htmlmin'
+            'htmlmin',
+            'openui5_preload'
         ]);
     };
 
