@@ -3,6 +3,7 @@
 
 sap.ui.define(
     [
+        'jquery.sap.global',
         'nrg/base/view/BaseController',
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
@@ -10,7 +11,7 @@ sap.ui.define(
         'sap/ui/core/format/DateFormat'
     ],
 
-    function (Controller, Filter, FilterOperator, HashChanger, DateFormat) {
+    function (jQuery, Controller, Filter, FilterOperator, HashChanger, DateFormat) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.dashboard.view.CustomerDataBpInfo');
@@ -77,95 +78,110 @@ sap.ui.define(
             oModel.setProperty('/mktPrfEditable', false);
         };
 
-        CustomController.prototype.onTitleCancel = function () {
-            var oModel = this.getView().getModel('oBpInfoConfig');
-            oModel.setProperty('/titleEditVisible', true);
-            oModel.setProperty('/titleSaveVisible', false);
-            oModel.setProperty('/titleEditable', false);
+        CustomController.prototype.onTitleCancel = function () {    //onTitleCancel
+            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                bpTitleModel = this.getView().getModel('oDataBpTitle');
+            oConfigModel.setProperty('/titleEditVisible', true);
+            oConfigModel.setProperty('/titleSaveVisible', false);
+            oConfigModel.setProperty('/titleEditable', false);
+
+            bpTitleModel.setData(this.oDataBpTitleBak);
         };
 
         CustomController.prototype.onTitleEdit = function () {
-            var oModel = this.getView().getModel('oBpInfoConfig');
-            oModel.setProperty('/titleEditVisible', false);
-            oModel.setProperty('/titleSaveVisible', true);
-            oModel.setProperty('/titleEditable', true);
+            var oConfigModel = this.getView().getModel('oBpInfoConfig');
+            oConfigModel.setProperty('/titleEditVisible', false);
+            oConfigModel.setProperty('/titleSaveVisible', true);
+            oConfigModel.setProperty('/titleEditable', true);
         };
 
         CustomController.prototype.onTitleSave = function () {
-            var oModel = this.getView().getModel('oBpInfoConfig');
-            oModel.setProperty('/titleEditVisible', true);
-            oModel.setProperty('/titleSaveVisible', false);
-            oModel.setProperty('/titleEditable', false);
+            var oConfigModel = this.getView().getModel('oBpInfoConfig');
+            oConfigModel.setProperty('/titleEditVisible', true);
+            oConfigModel.setProperty('/titleSaveVisible', false);
+            oConfigModel.setProperty('/titleEditable', false);
         };
 
         CustomController.prototype.onAddrCancel = function () {
-            var oModel = this.getView().getModel('oBpInfoConfig');
-            oModel.setProperty('/addrEditVisible', true);
-            oModel.setProperty('/addrSaveVisible', false);
-            oModel.setProperty('/addrEditable', false);
+            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                bpAddrModel = this.getView().getModel('oDataBpAddress');
+            oConfigModel.setProperty('/addrEditVisible', true);
+            oConfigModel.setProperty('/addrSaveVisible', false);
+            oConfigModel.setProperty('/addrEditable', false);
+
+            bpAddrModel.setData(this.oDataBpAddressBak);
         };
 
         CustomController.prototype.onAddrEdit = function () {
-            var oModel = this.getView().getModel('oBpInfoConfig');
-            oModel.setProperty('/addrEditVisible', false);
-            oModel.setProperty('/addrSaveVisible', true);
-            oModel.setProperty('/addrEditable', true);
+            var oConfigModel = this.getView().getModel('oBpInfoConfig');
+            oConfigModel.setProperty('/addrEditVisible', false);
+            oConfigModel.setProperty('/addrSaveVisible', true);
+            oConfigModel.setProperty('/addrEditable', true);
         };
 
         CustomController.prototype.onAddrSave = function () {
-            var oModel = this.getView().getModel('oBpInfoConfig');
-            oModel.setProperty('/addrEditVisible', true);
-            oModel.setProperty('/addrSaveVisible', false);
-            oModel.setProperty('/addrEditable', false);
+            var oConfigModel = this.getView().getModel('oBpInfoConfig');
+            oConfigModel.setProperty('/addrEditVisible', true);
+            oConfigModel.setProperty('/addrSaveVisible', false);
+            oConfigModel.setProperty('/addrEditable', false);
         };
 
         CustomController.prototype.onPersonalInfoCancel = function () {
-            var oModel = this.getView().getModel('oBpInfoConfig');
-            oModel.setProperty('/personalInfoEditVisible', true);
-            oModel.setProperty('/personalInfoSaveVisible', false);
-            oModel.setProperty('/personalInfoEditable', false);
+            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                bpPersonalModel = this.getView().getModel('oDataBpPersonal');
+            oConfigModel.setProperty('/personalInfoEditVisible', true);
+            oConfigModel.setProperty('/personalInfoSaveVisible', false);
+            oConfigModel.setProperty('/personalInfoEditable', false);
+
+            bpPersonalModel.setData(this.oDataBpPersonalBak);
         };
 
         CustomController.prototype.onPersonalInfoEdit = function () {
-            var oModel = this.getView().getModel('oBpInfoConfig');
-            oModel.setProperty('/personalInfoEditVisible', false);
-            oModel.setProperty('/personalInfoSaveVisible', true);
-            oModel.setProperty('/personalInfoEditable', true);
+            var oConfigModel = this.getView().getModel('oBpInfoConfig');
+            oConfigModel.setProperty('/personalInfoEditVisible', false);
+            oConfigModel.setProperty('/personalInfoSaveVisible', true);
+            oConfigModel.setProperty('/personalInfoEditable', true);
         };
 
         CustomController.prototype.onPersonalInfoSave = function () {
-            var oModel = this.getView().getModel('oBpInfoConfig');
-            oModel.setProperty('/personalInfoEditVisible', true);
-            oModel.setProperty('/personalInfoSaveVisible', false);
-            oModel.setProperty('/personalInfoEditable', false);
+            var oConfigModel = this.getView().getModel('oBpInfoConfig');
+            oConfigModel.setProperty('/personalInfoEditVisible', true);
+            oConfigModel.setProperty('/personalInfoSaveVisible', false);
+            oConfigModel.setProperty('/personalInfoEditable', false);
         };
 
         CustomController.prototype.onContactInfoCancel = function () {
-            var oModel = this.getView().getModel('oBpInfoConfig');
-            oModel.setProperty('/contactInfoEditVisible', true);
-            oModel.setProperty('/contactInfoSaveVisible', false);
-            oModel.setProperty('/contactInfoEditable', false);
+            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                bpContactModel = this.getView().getModel('oDataBpContact');
+            oConfigModel.setProperty('/contactInfoEditVisible', true);
+            oConfigModel.setProperty('/contactInfoSaveVisible', false);
+            oConfigModel.setProperty('/contactInfoEditable', false);
+
+            bpContactModel.setData(this.oDataBpContactBak);
         };
 
         CustomController.prototype.onContactInfoEdit = function () {
-            var oModel = this.getView().getModel('oBpInfoConfig');
-            oModel.setProperty('/contactInfoEditVisible', false);
-            oModel.setProperty('/contactInfoSaveVisible', true);
-            oModel.setProperty('/contactInfoEditable', true);
+            var oConfigModel = this.getView().getModel('oBpInfoConfig');
+            oConfigModel.setProperty('/contactInfoEditVisible', false);
+            oConfigModel.setProperty('/contactInfoSaveVisible', true);
+            oConfigModel.setProperty('/contactInfoEditable', true);
         };
 
         CustomController.prototype.onContactInfoSave = function () {
-            var oModel = this.getView().getModel('oBpInfoConfig');
-            oModel.setProperty('/contactInfoEditVisible', true);
-            oModel.setProperty('/contactInfoSaveVisible', false);
-            oModel.setProperty('/contactInfoEditable', false);
+            var oConfigModel = this.getView().getModel('oBpInfoConfig');
+            oConfigModel.setProperty('/contactInfoEditVisible', true);
+            oConfigModel.setProperty('/contactInfoSaveVisible', false);
+            oConfigModel.setProperty('/contactInfoEditable', false);
         };
 
         CustomController.prototype.onMarketPrefCancel = function () {
-            var oModel = this.getView().getModel('oBpInfoConfig');
-            oModel.setProperty('/marketPrefEditVisible', true);
-            oModel.setProperty('/marketPrefSaveVisible', false);
-            oModel.setProperty('/mktPrfEditable', false);
+            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                bpMarkPrefModel = this.getView().getModel('oDataBpMarkPreferSet');
+            oConfigModel.setProperty('/marketPrefEditVisible', true);
+            oConfigModel.setProperty('/marketPrefSaveVisible', false);
+            oConfigModel.setProperty('/mktPrfEditable', false);
+
+            bpMarkPrefModel.setData(this.oDataBpMarkPreferSetBak);
         };
 
         CustomController.prototype.onMarketPrefEdit = function () {
@@ -241,6 +257,7 @@ sap.ui.define(
                     if (oData) {
                         if (oData.PartnerID) {
                             this.getView().getModel('oDataBpTitle').setData(oData);
+                            this.oDataBpTitleBak = jQuery.extend(true, {}, oData);
                         }
                     }
                 }.bind(this),
@@ -266,6 +283,7 @@ sap.ui.define(
                     if (oData) {
                         if (oData.results[0]) {
                             this.getView().getModel('oDataBpAddress').setData(oData.results[0].AddressInfo);
+                            this.oDataBpAddressBak = jQuery.extend(true, {}, oData.results[0].AddressInfo);
                         }
                     }
                 }.bind(this),
@@ -291,6 +309,7 @@ sap.ui.define(
                     if (oData) {
                         if (oData.PartnerID) {
                             this.getView().getModel('oDataBpPersonal').setData(oData);
+                            this.oDataBpPersonalBak = jQuery.extend(true, {}, oData);
                         }
                     }
                 }.bind(this),
@@ -316,6 +335,7 @@ sap.ui.define(
                     if (oData) {
                         if (oData.PartnerID) {
                             this.getView().getModel('oDataBpContact').setData(oData);
+                            this.oDataBpContactBak = jQuery.extend(true, {}, oData);
                         }
                     }
                 }.bind(this),
@@ -341,6 +361,7 @@ sap.ui.define(
                     if (oData) {
                         if (oData.results) {
                             this.getView().getModel('oDataBpMarkPreferSet').setData(oData);
+                            this.oDataBpMarkPreferSetBak = jQuery.extend(true, {}, oData);
                         }
                     }
                 }.bind(this),

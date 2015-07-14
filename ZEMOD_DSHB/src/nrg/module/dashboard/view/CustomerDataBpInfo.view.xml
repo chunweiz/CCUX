@@ -284,7 +284,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-DOB}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/personalInfoEditable}"
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="false"
                                                                value="{parts:['oDataBpPersonal>/Dob'], formatter:'._formatDate'}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
@@ -295,7 +295,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-LANGUAGE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="{oBpInfoConfig>/personalInfoEditable}" value="{oDataBpPersonal>/Language}"/>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataBpInfo-cnt" editable="false" value="{oDataBpPersonal>/Language}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -450,10 +450,12 @@
                                                          text="{oDataBpMarkPreferSet>AttributeSetDescription} - {oDataBpMarkPreferSet>AttributeDescription}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <utmain:Checkbox id="zzz1" select=".onYesSelected" enabled="true" class="nrgDashboard-cusDataBpInfo-chb"
+                                                <utmain:Checkbox id="zzz1" select=".onYesSelected" enabled="{oBpInfoConfig>/mktPrfEditable}"
+                                                                 class="nrgDashboard-cusDataBpInfo-chb"
                                                                  checked="{parts:['oDataBpMarkPreferSet>Value'], formatter:'._formatBooleanY'}"/>
                                                 <utmain:Label labelFor="zzz1-intChk" text="Yes" class="nrgDashboard-cusDataBpInfo-chb-lbl"/>
-                                                <utmain:Checkbox id="zz1" select=".onNoSelected" enabled="true" class="nrgDashboard-cusDataBpInfo-chb"
+                                                <utmain:Checkbox id="zz1" select=".onNoSelected" enabled="{oBpInfoConfig>/mktPrfEditable}"
+                                                                 class="nrgDashboard-cusDataBpInfo-chb"
                                                                  checked="{parts:['oDataBpMarkPreferSet>Value'], formatter:'._formatBooleanN'}"/>
                                                 <utmain:Label labelFor="zz1-intChk" text="No" class="nrgDashboard-cusDataBpInfo-chb-lbl"/>
                                             </l:MatrixLayoutCell>
