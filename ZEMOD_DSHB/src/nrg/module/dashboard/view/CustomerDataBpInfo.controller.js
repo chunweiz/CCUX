@@ -376,7 +376,7 @@ sap.ui.define(
             }
         };
 
-        Controller.prototype.onYesSelected = function () {
+        Controller.prototype.onYesSelected = function (oEvent) {
             sap.ui.commons.MessageBox.alert("Yes clicked");
         };
 
