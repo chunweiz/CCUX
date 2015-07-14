@@ -245,20 +245,7 @@
 
                                 <!--Area right-->
                                 <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
-                                    <l:MatrixLayout widths="12%,88%" columns="2">
-                                        <l:MatrixLayoutRow>
-                                            <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
-                                                         text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-PO_BOX}:" />
-                                            </l:MatrixLayoutCell>
-                                            <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
-                                                               class="nrgDashboard-cusDataBpInfo-cnt"
-                                                               editable="{oBpInfoConfig>/addrEditable}"
-                                                               value=""/>
-                                            </l:MatrixLayoutCell>
-                                        </l:MatrixLayoutRow>
-                                    </l:MatrixLayout>
+
                                 </l:MatrixLayoutCell>
                             </l:cells>
                         </l:MatrixLayoutRow>
