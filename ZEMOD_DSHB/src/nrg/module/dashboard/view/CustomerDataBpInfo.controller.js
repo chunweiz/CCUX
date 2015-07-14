@@ -3,24 +3,47 @@
 
 sap.ui.define(
     [
-        'jquery.sap.global',
-        'sap/ui/core/mvc/Controller',
-        'sap/ui/model/json/JSONModel'
+        'nrg/base/view/BaseController',
+        'sap/ui/model/Filter',
+        'sap/ui/model/FilterOperator',
+        'sap/ui/core/routing/HashChanger',
+        'sap/ui/core/format/DateFormat'
     ],
 
-    function (jQuery, Controller, JSONModel) {
+    function (Controller, Filter, FilterOperator, HashChanger, DateFormat) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.dashboard.view.CustomerDataBpInfo');
 
         CustomController.prototype.onInit = function () {
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
+
             //Model to track page edit/save status
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBpInfoConfig');
 
+            //Model to hold BP info
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBP');
+
+            //Model to hold BpTitle
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBpTitle');
+
+            //Model to hold BpAddress
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBpAddress');
+
+            //Model to hold BpPersonal
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBpPersonal');
+
+            //Model to hold BpContact
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBpContact');
+
+            //Model to hold BpMarkPreferSet
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBpMarkPreferSet');
         };
 
         CustomController.prototype.onBeforeRendering = function () {
             this._initBpInfoConfigModel();
+
+            this._initDataModel();
         };
 
         CustomController.prototype.onAfterRendering = function () {
@@ -159,7 +182,203 @@ sap.ui.define(
             oModel.setProperty('/mktPrfEditable', false);
         };
 
+        Controller.prototype._retrUrlHash = function () {
+            //Get the hash to retrieve bp #
+            var oHashChanger = new HashChanger(),
+                sUrlHash = oHashChanger.getHash();
 
+            return sUrlHash;
+        };
+
+        CustomController.prototype._initDataModel = function () {
+            var sPath, aSplitHash, iSplitHashL;
+
+            aSplitHash = (this._retrUrlHash()).split('/');
+            iSplitHashL = aSplitHash.length;
+            sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')';
+
+            this._retrAllData(sPath);
+        };
+
+        Controller.prototype._retrAllData = function (sPath) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                oParameters;
+
+            oParameters = {
+                /*urlParameters: {"$expand": "Buags"},*/
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oDataBP').setData(oData);
+                        if (oData.PartnerID) {
+                            this._retrBpTitle(oData.PartnerID);
+                            this._retrBpAddress(oData.PartnerID);
+                            this._retrBpPersonal(oData.PartnerID);
+                            this._retrBpContact(oData.PartnerID);
+                            this._retrBpMarkPrefSet(oData.PartnerID);
+                        }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    var t = 1.0;
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrBpTitle = function (sBpNum) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/Partners' + '(\'' + sBpNum + '\')/BpTitle/';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        if (oData.PartnerID) {
+                            this.getView().getModel('oDataBpTitle').setData(oData);
+                        }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrBpAddress = function (sBpNum) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/Partners' + '(\'' + sBpNum + '\')/BpAddress/';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        if (oData.results[0]) {
+                            this.getView().getModel('oDataBpAddress').setData(oData.results[0].AddressInfo);
+                        }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrBpPersonal = function (sBpNum) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/Partners' + '(\'' + sBpNum + '\')/BpPersonal/';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        if (oData.PartnerID) {
+                            this.getView().getModel('oDataBpPersonal').setData(oData);
+                        }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrBpContact = function (sBpNum) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/Partners' + '(\'' + sBpNum + '\')/BpContact/';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        if (oData.PartnerID) {
+                            this.getView().getModel('oDataBpContact').setData(oData);
+                        }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrBpMarkPrefSet = function (sBpNum) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/Partners' + '(\'' + sBpNum + '\')/BpMarkPreferSet/';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        if (oData.results) {
+                            this.getView().getModel('oDataBpMarkPreferSet').setData(oData);
+                        }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    var t = 1.0;
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._formatDate = function (dob) {
+            if (dob) {
+                var oDateFormat = DateFormat.getInstance({pattern: "MM/dd/yyyy"});
+                return oDateFormat.format(dob);
+            }
+        };
+
+        Controller.prototype._formatBooleanY = function (bPref) {
+            if (bPref === 'Y') {
+                return true;
+            } else {
+                return false;
+            }
+
+        };
+
+        Controller.prototype._formatBooleanN = function (bPref) {
+            if (bPref === 'N') {
+                return true;
+            } else {
+                return false;
+            }
+
+        };
 
 
         return CustomController;

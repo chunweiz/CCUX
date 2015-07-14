@@ -15,9 +15,10 @@
         <ua:header>
             <ua:Header>
                 <ua:banner>
-                    <img src="../../../../../../ZEBASE/build/nrg/base/asset/img/nrg-logo.svg" height="50" width="50"></img>
-                    <span class="nrgU-verticalCenter">Reliant Interaction Center</span>
                 </ua:banner>
+                <ua:menu>
+
+                </ua:menu>
             </ua:Header>
         </ua:header>
     </ua:App>

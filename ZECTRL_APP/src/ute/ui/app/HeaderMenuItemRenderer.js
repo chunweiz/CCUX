@@ -1,4 +1,5 @@
 /*global sap*/
+/*jslint nomen:true*/
 
 sap.ui.define(
     [],
@@ -11,12 +12,11 @@ sap.ui.define(
         CustomRenderer.render = function (oRm, oCustomControl) {
             oRm.write('<div');
             oRm.writeControlData(oCustomControl);
-            oRm.addClass('uteApp');
+            oRm.addClass('uteAppMItem');
+            oRm.writeClasses();
             oRm.write('>');
             oRm.write('</div>');
         };
-
-
 
         return CustomRenderer;
     },
