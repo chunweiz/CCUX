@@ -389,7 +389,7 @@
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
-                                                               editable="{oBpInfoConfig>/personalInfoEditable}"
+                                                               editable="{oBpInfoConfig>/personalInfoSSEditable}"
                                                                value="{oDataBpPersonal>/SSN}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
@@ -403,7 +403,7 @@
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
-                                                               editable="{oBpInfoConfig>/personalInfoEditable}"
+                                                               editable="{oBpInfoConfig>/personalInfoDLEditable}"
                                                                value="{oDataBpPersonal>/DL}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
