@@ -3,7 +3,7 @@
       "results":[
          {
             "Type":"C",
-            "Contract":"34805112",
+            "Contract":"32253375",
             "OfferCode":"50124832",
             "StartDate":"/Date(1498763169000)/",
             "EndDate":"/Date(1215630369000)/",
@@ -17,10 +17,12 @@
             "Term":9387,
             "CncFee":6816.34,
             "Incentive":9636.09,
+            "EFLLevel" : 2000,
+            "EFLPrice" : 13.4
          },
          {
             "Type":"P",
-            "Contract":"34805112",
+            "Contract":"32253375",
             "OfferCode":"OfferCode 2",
             "StartDate":"/Date(965415969000)/",
             "EndDate":"/Date(1187377569000)/",
@@ -33,11 +35,13 @@
             "Promo":"Promo 2",
             "Term":6042,
             "CncFee":282.92,
-            "Incentive":2312.38
+            "Incentive":2312.38,
+            "EFLLevel" : 2000,
+            "EFLPrice" : 13.4
          },
          {
             "Type":"R",
-            "Contract":"Contract",
+            "Contract":"32253375",
             "OfferCode":"50124832",
             "StartDate":"/Date(1017774369000)/",
             "EndDate":"/Date(1419624369000)/",
@@ -50,11 +54,13 @@
             "Promo":"Promo 3",
             "Term":9168,
             "CncFee":84.79,
-            "Incentive":9416.11
+            "Incentive":9416.11,
+            "EFLLevel" : 2000,
+            "EFLPrice" : 13.4
          },
          {
             "Type":"S",
-            "Contract":"34805112",
+            "Contract":"32253375",
             "OfferCode":"OfferCode 4",
             "StartDate":"/Date(1021489569000)/",
             "EndDate":"/Date(1030043169000)/",
@@ -67,11 +73,13 @@
             "Promo":"Promo 4",
             "Term":7411,
             "CncFee":5779.15,
-            "Incentive":9460.23
+            "Incentive":9460.23,
+            "EFLLevel" : 2000,
+            "EFLPrice" : 13.4
          },
          {
             "Type":"F",
-            "Contract":"34805112",
+            "Contract":"32253375",
             "OfferCode":"OfferCode 5",
             "StartDate":"/Date(1432062369000)/",
             "EndDate":"/Date(1150139169000)/",
@@ -84,28 +92,33 @@
             "Promo":"Promo 5",
             "Term":1567,
             "CncFee":1730.05,
-            "Incentive":3079.53
+            "Incentive":3079.53,
+            "EFLLevel" : 2000,
+            "EFLPrice" : 13.4
          },
          {
             "Type":"P",
-            "Contract":"34805112",
-            "OfferCode":"OfferCode 6",
-            "StartDate":"/Date(1206471969000)/",
-            "EndDate":"/Date(1005249969000)/",
-            "OfferTitle":"OfferTitle 6",
-            "Description":"Description 6",
-            "AvgUsage":9529.79,
-            "EFL500":3361.71,
-            "EFL1000":3420.41,
-            "EFL2000":920.01,
-            "Promo":"Promo 6",
-            "Term":7682,
-            "CncFee":8391.22,
-            "Incentive":3885.95
+            "Contract":"32253375",
+            "OfferCode":"50160100",
+            "StartDate":"/Date(965415969000)/",
+            "EndDate":"/Date(1187377569000)/",
+            "OfferTitle":"CND AVG@2000=12.1 Secure Advantage 24",
+            "Description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id mi velit.Ut accumsan vitae neque ut lacinia. Donec id nisl eu mi tempus dapibus. Proin a congue metus, sit amet pharetra turpis. Quisque metus erat, viverra sed interdum id, sodales at lacus. Nullam bibendum velit et augue tempor luctus. ut Volutpat, augue sed mollis cursus, quam lectus viverra urna, at consequat tellus velit non erat. Etiam vulputate sem pulvinar suscipit laoreet.Quisque ut finibus justo, et fermentus lacus. Proin fringilla viverra ullamcorper. Aenean tellus nibh, laoreet et nibh vitae, tristique pretium mi. Sed ullamcorper sagittis erat nec dictum. In at cursus purus, ac varius metus. Quisque condimentum urna sed tempor accumsan.",
+            "AvgUsage":7846.25,
+            "EFL500":9128.95,
+            "EFL1000":5788.06,
+            "EFL2000":9500.04,
+            "Promo":"Promo 2",
+            "Term":6042,
+            "CncFee":282.92,
+            "Incentive":2312.38,
+            "EFLLevel" : 2000,
+            "EFLPrice" : 13.4
+
          },
          {
             "Type":"R",
-            "Contract":"34805112",
+            "Contract":"32253375",
             "OfferCode":"OfferCode 7",
             "StartDate":"/Date(1345143969000)/",
             "EndDate":"/Date(1544385969000)/",
@@ -118,11 +131,13 @@
             "Promo":"Promo 7",
             "Term":7693,
             "CncFee":5965.94,
-            "Incentive":6957.17
+            "Incentive":6957.17,
+            "EFLLevel" : 2000,
+            "EFLPrice" : 13.4
          },
          {
             "Type":"S",
-            "Contract":"34805112",
+            "Contract":"32253375",
             "OfferCode":"OfferCode 8",
             "StartDate":"/Date(1476471969000)/",
             "EndDate":"/Date(1398279969000)/",
@@ -135,11 +150,13 @@
             "Promo":"Promo 8",
             "Term":3717,
             "CncFee":3442.54,
-            "Incentive":9936.13
+            "Incentive":9936.13,
+            "EFLLevel" : 2000,
+            "EFLPrice" : 13.4
          },
          {
             "Type":"F",
-            "Contract":"34805112",
+            "Contract":"32253375",
             "OfferCode":"OfferCode 9",
             "StartDate":"/Date(1456344369000)/",
             "EndDate":"/Date(1090868769000)/",
@@ -152,7 +169,9 @@
             "Promo":"Promo 9",
             "Term":1064,
             "CncFee":4926.25,
-            "Incentive":8731.59
+            "Incentive":8731.59,
+            "EFLLevel" : 2000,
+            "EFLPrice" : 13.4
          },
          {
             "Type":"P",
@@ -169,11 +188,13 @@
             "Promo":"Promo 10",
             "Term":6936,
             "CncFee":2369.08,
-            "Incentive":6413.47
+            "Incentive":6413.47,
+            "EFLLevel" : 2000,
+            "EFLPrice" : 13.4
          },
          {
             "Type":"R",
-            "Contract":"34805112",
+            "Contract":"32253375",
             "OfferCode":"OfferCode 11",
             "StartDate":"/Date(1243105569000)/",
             "EndDate":"/Date(1160679969000)/",
@@ -186,11 +207,13 @@
             "Promo":"Promo 11",
             "Term":3908,
             "CncFee":3634.1,
-            "Incentive":2693.97
+            "Incentive":2693.97,
+            "EFLLevel" : 2000,
+            "EFLPrice" : 13.4
          },
          {
             "Type":"S",
-            "Contract":"34805112",
+            "Contract":"32253375",
             "OfferCode":"OfferCode 12",
             "StartDate":"/Date(1106769969000)/",
             "EndDate":"/Date(1376593569000)/",
@@ -203,11 +226,13 @@
             "Promo":"Promo 12",
             "Term":466,
             "CncFee":4144.32,
-            "Incentive":1624.82
+            "Incentive":1624.82,
+            "EFLLevel" : 2000,
+            "EFLPrice" : 13.4
          },
          {
             "Type":"F",
-            "Contract":"34805112",
+            "Contract":"32253375",
             "OfferCode":"OfferCode 13",
             "StartDate":"/Date(1286910369000)/",
             "EndDate":"/Date(1001703969000)/",
@@ -220,7 +245,9 @@
             "Promo":"Promo 13",
             "Term":963,
             "CncFee":3585.96,
-            "Incentive":2517.26
+            "Incentive":2517.26,
+            "EFLLevel" : 2000,
+            "EFLPrice" : 13.4
          },
          {
             "Type":"Type 14",

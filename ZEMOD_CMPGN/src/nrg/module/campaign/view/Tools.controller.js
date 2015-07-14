@@ -173,7 +173,10 @@ sap.ui.define(
                 aContent = oScrollContainer.getContent();
                 if ((aContent !== undefined) && (aContent.length > 0)) {
                     sPath = aContent[0].getBindingContext("comp-campaign").getPath();
-
+                    oHistoryView.bindElement({
+                        model : "comp-campaign",
+                        path : sPath
+                    });
                    // Adding EFL Table to History view as XML templating-- start
                     aEFLDatapaths = this.getModel("comp-campaign").getProperty(sPath + "/EFLs");
                     if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
@@ -197,13 +200,9 @@ sap.ui.define(
                     oPricingTable.addContent(oTemplateView);
                     // Adding EFL Table to History view as XML templating--end
                     that.setEFLTileValue(oHistoryView, aResults, aEFLDatapaths);
-
                     // Development for Pricing Table binding..........................................
                     aContent[0].addStyleClass("nrgCamHis-but-selected");
-                    that.getView().bindElement({
-                        model : "comp-campaign",
-                        path : sPath
-                    });
+
                 } else {
                     oDataTag.addStyleClass("nrgCamHis-hide");
                     oNoDataTag.removeStyleClass("nrgCamHis-hide");
