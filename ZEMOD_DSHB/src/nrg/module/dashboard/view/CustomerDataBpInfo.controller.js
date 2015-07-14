@@ -376,9 +376,6 @@ sap.ui.define(
         };
 
         Controller.prototype.onYesSelected = function (oEvent) {
-<<<<<<< HEAD
-            sap.ui.commons.MessageBox.alert("Yes clicked");
-=======
             var sPath, index, oMarkPrefModel, data;
             sPath = oEvent.getSource().oPropagatedProperties.oBindingContexts.oDataBpMarkPreferSet.sPath;
             index = parseInt(sPath.split('/')[2], 10);
@@ -404,7 +401,6 @@ sap.ui.define(
                 data.results[index].Value = 'N';
             }
             oMarkPrefModel.setData(data);
->>>>>>> NRG/master
         };
 
         Controller.prototype._formatDate = function (dob) {
