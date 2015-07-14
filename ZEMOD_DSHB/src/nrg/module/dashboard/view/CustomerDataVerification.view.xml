@@ -21,14 +21,22 @@
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-l">
                             <ute:Tag class="nrgDashboard-cusDataVerify-l-div">
                                 <ute:TextView text="{oDtaVrfyContracts>/ContractStatus}"
-                                    class="nrgDashboard-cusDataVerify-l-div-title"/>
+                                    class="nrgDashboard-cusDataVerify-l-div-title">
+                                    <ute:tooltip>
+                                        <c:RichTooltip text="{oDtaVrfyContracts>/HoveringStatus}"/>
+                                    </ute:tooltip>
+                                </ute:TextView>
 
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
 
                                 <utmain:Label labelFor="tdsp"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TdspLbl}"
-                                    class="nrgDashboard-cusDataVerify-l-div-tdspLabl"/>
+                                    class="nrgDashboard-cusDataVerify-l-div-tdspLabl">
+                                    <utmain:tooltip>
+                                        <c:RichTooltip text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TdspServiceNumber} {oDtaVrfyContracts>/TDSPSrvPhNumber}{comp-i18n-dashboard>nrgDashboardCusDatVrf_TdspServiceNumber} {oDtaVrfyContracts>/TDSPOutPhNumber}"/>
+                                    </utmain:tooltip>
+                                </utmain:Label>
                                 <ute:TextView id="tdsp"
                                     text="{oDtaVrfyContracts>/TdspName}"
                                     class="nrgDashboard-cusDataVerify-l-div-tdspVal"/>
