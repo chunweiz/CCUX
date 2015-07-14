@@ -176,7 +176,8 @@ sap.ui.define(
 
             var aFilters = this._createSearchFilterObject(),
                 oParameters,
-                i;
+                i,
+                oRouter = this.getOwnerComponent().getRouter();
 
 
 
@@ -189,12 +190,16 @@ sap.ui.define(
                 filters : aFilters,
                 success : function (oData) {
                     if (oData.results) {
-                        for (i = 0; i < oData.results.length; i = i + 1) {
-                            oData.results[i].iId = i + 1;
-                            oData.results[i].Select = "Select";
+                        if (oData.results.length === 1) {
+                            oRouter.navTo('dashboard.Bp', {bpNum: oData.results[0].PartnerID});
+                        } else {
+                            for (i = 0; i < oData.results.length; i = i + 1) {
+                                oData.results[i].iId = i + 1;
+                                oData.results[i].Select = "Select";
+                            }
+                            this.getView().getModel('oBpSearchResult').setData(oData.results);
+                            this.getView().getModel('oBpSearchCount').setProperty('/searchCount', oData.results.length);
                         }
-                        this.getView().getModel('oBpSearchResult').setData(oData.results);
-                        this.getView().getModel('oBpSearchCount').setProperty('/searchCount', oData.results.length);
                     }
                 }.bind(this),
                 error: function (oError) {
