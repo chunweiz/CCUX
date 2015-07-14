@@ -9,9 +9,9 @@
                 </Key>
                 <Property MaxLength="2" Name="EFLType" Nullable="false" Type="Edm.String" sap:updatable="false"/>
                 <Property Name="EFLLevel" Nullable="false" Type="Edm.Int16" sap:updatable="false"/>
+                <Property MaxLength="12" Name="Contract" Nullable="false" Type="Edm.String" sap:updatable="false"/>
                 <Property MaxLength="8" Name="OfferCode" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="10" Name="Type" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="15" Name="EFLPrice" Type="Edm.String" sap:updatable="false"/>
+                <Property Name="EFLPrice" Nullable="false" Precision="7" Scale="2" Type="Edm.Decimal" sap:updatable="false"/>
             </EntityType>
             <EntityType Name="Return">
                 <Key>
@@ -30,21 +30,16 @@
             </EntityType>
             <EntityType Name="Script">
                 <Key>
+                    <PropertyRef Name="Contract"/>
                     <PropertyRef Name="OfferCode"/>
                     <PropertyRef Name="TxtName"/>
                     <PropertyRef Name="TxtLang"/>
                 </Key>
+                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String" sap:updatable="false"/>
                 <Property MaxLength="10" Name="OfferCode" Nullable="false" Type="Edm.String" sap:updatable="false"/>
                 <Property MaxLength="70" Name="TxtName" Nullable="false" Type="Edm.String" sap:updatable="false"/>
                 <Property MaxLength="2" Name="TxtLang" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="10" Name="Partner" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="10" Name="CurrOffer" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property Name="StartDate" Nullable="false" Type="Edm.DateTime" sap:updatable="false"/>
-                <Property Name="Campaign" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property Name="Promo" Nullable="false" Type="Edm.String" sap:updatable="false"/>
                 <Property MaxLength="5000" Name="TxtLine" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="10" Name="Type" Nullable="false" Type="Edm.String" sap:updatable="false"/>
             </EntityType>
             <EntityType Name="CpgCmpbyInv">
                 <Key>
@@ -111,12 +106,12 @@
             </EntityType>
             <EntityType Name="Cpg">
                 <Key>
+                    <PropertyRef Name="Contract"/>
                     <PropertyRef Name="OfferCode"/>
-                    <PropertyRef Name="Type"/>
                 </Key>
+                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String" sap:updatable="false"/>
                 <Property MaxLength="8" Name="OfferCode" Nullable="false" Type="Edm.String" sap:updatable="false"/>
                 <Property MaxLength="20" Name="Type" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String" sap:updatable="false"/>
                 <Property Name="StartDate" Type="Edm.DateTime" sap:updatable="false"/>
                 <Property Name="EndDate" Type="Edm.DateTime" sap:updatable="false"/>
                 <Property MaxLength="60" Name="OfferTitle" Nullable="false" Type="Edm.String" sap:updatable="false"/>
@@ -131,6 +126,8 @@
                 <Property Name="CurrCons" Nullable="false" Precision="17" Type="Edm.Decimal" sap:updatable="false"/>
                 <Property MaxLength="10" Name="Disposition" Nullable="false" Type="Edm.String" sap:updatable="false"/>
                 <Property MaxLength="1" Name="ReqRefID" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property Name="EFLLevel" Nullable="false" Type="Edm.Int16" sap:updatable="false"/>
+                <Property Name="EFLPrice" Nullable="false" Precision="6" Scale="2" Type="Edm.Decimal" sap:updatable="false"/>
                 <NavigationProperty FromRole="FromRole_Cpg_EFL" Name="EFLs" Relationship="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_EFL" ToRole="ToRole_Cpg_EFL"/>
                 <NavigationProperty FromRole="FromRole_Cpg_Script" Name="Scripts" Relationship="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" ToRole="ToRole_Cpg_Script"/>
             </EntityType>
@@ -139,12 +136,12 @@
                 <End Multiplicity="*" Role="ToRole_Cpg_Script" Type="ZE_CCUX_CAMPAIGN_OVW_SRV.Script"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_Cpg_Script">
-                        <PropertyRef Name="Type"/>
                         <PropertyRef Name="OfferCode"/>
+                        <PropertyRef Name="Contract"/>
                     </Principal>
                     <Dependent Role="ToRole_Cpg_Script">
-                        <PropertyRef Name="Type"/>
                         <PropertyRef Name="OfferCode"/>
+                        <PropertyRef Name="Contract"/>
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
@@ -153,12 +150,12 @@
                 <End Multiplicity="*" Role="ToRole_Cpg_EFL" Type="ZE_CCUX_CAMPAIGN_OVW_SRV.EFL"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_Cpg_EFL">
-                        <PropertyRef Name="Type"/>
                         <PropertyRef Name="OfferCode"/>
+                        <PropertyRef Name="Contract"/>
                     </Principal>
                     <Dependent Role="ToRole_Cpg_EFL">
-                        <PropertyRef Name="Type"/>
                         <PropertyRef Name="OfferCode"/>
+                        <PropertyRef Name="Contract"/>
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
