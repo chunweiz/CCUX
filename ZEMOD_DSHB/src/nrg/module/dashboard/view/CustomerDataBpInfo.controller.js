@@ -85,7 +85,7 @@ sap.ui.define(
             oConfigModel.setProperty('/titleSaveVisible', false);
             oConfigModel.setProperty('/titleEditable', false);
 
-            bpTitleModel.setData(this.oDataBpTitleBak);
+            bpTitleModel.setData(jQuery.extend(true, {}, this.oDataBpTitleBak));
         };
 
         CustomController.prototype.onTitleEdit = function () {
@@ -109,7 +109,7 @@ sap.ui.define(
             oConfigModel.setProperty('/addrSaveVisible', false);
             oConfigModel.setProperty('/addrEditable', false);
 
-            bpAddrModel.setData(this.oDataBpAddressBak);
+            bpAddrModel.setData(jQuery.extend(true, {}, this.oDataBpAddressBak));
         };
 
         CustomController.prototype.onAddrEdit = function () {
@@ -133,7 +133,7 @@ sap.ui.define(
             oConfigModel.setProperty('/personalInfoSaveVisible', false);
             oConfigModel.setProperty('/personalInfoEditable', false);
 
-            bpPersonalModel.setData(this.oDataBpPersonalBak);
+            bpPersonalModel.setData(jQuery.extend(true, {}, this.oDataBpPersonalBak));
         };
 
         CustomController.prototype.onPersonalInfoEdit = function () {
@@ -157,7 +157,7 @@ sap.ui.define(
             oConfigModel.setProperty('/contactInfoSaveVisible', false);
             oConfigModel.setProperty('/contactInfoEditable', false);
 
-            bpContactModel.setData(this.oDataBpContactBak);
+            bpContactModel.setData(jQuery.extend(true, {}, this.oDataBpContactBak));
         };
 
         CustomController.prototype.onContactInfoEdit = function () {
@@ -181,7 +181,7 @@ sap.ui.define(
             oConfigModel.setProperty('/marketPrefSaveVisible', false);
             oConfigModel.setProperty('/mktPrfEditable', false);
 
-            bpMarkPrefModel.setData(this.oDataBpMarkPreferSetBak);
+            bpMarkPrefModel.setData(jQuery.extend(true, {}, this.oDataBpMarkPreferSetBak));
         };
 
         CustomController.prototype.onMarketPrefEdit = function () {
@@ -366,7 +366,6 @@ sap.ui.define(
                     }
                 }.bind(this),
                 error: function (oError) {
-                    var t = 1.0;
                     //Need to put error message
                 }.bind(this)
             };
@@ -377,7 +376,35 @@ sap.ui.define(
         };
 
         Controller.prototype.onYesSelected = function (oEvent) {
+<<<<<<< HEAD
             sap.ui.commons.MessageBox.alert("Yes clicked");
+=======
+            var sPath, index, oMarkPrefModel, data;
+            sPath = oEvent.getSource().oPropagatedProperties.oBindingContexts.oDataBpMarkPreferSet.sPath;
+            index = parseInt(sPath.split('/')[2], 10);
+            oMarkPrefModel = this.getView().getModel('oDataBpMarkPreferSet');
+            data = oMarkPrefModel.getData();
+            if (data.results[index].Value === 'Y') {
+                data.results[index].Value = '';
+            } else {
+                data.results[index].Value = 'Y';
+            }
+            oMarkPrefModel.setData(data);
+        };
+
+        Controller.prototype.onNoSelected = function (oEvent) {
+            var sPath, index, oMarkPrefModel, data;
+            sPath = oEvent.getSource().oPropagatedProperties.oBindingContexts.oDataBpMarkPreferSet.sPath;
+            index = parseInt(sPath.split('/')[2], 10);
+            oMarkPrefModel = this.getView().getModel('oDataBpMarkPreferSet');
+            data = oMarkPrefModel.getData();
+            if (data.results[index].Value === 'N') {
+                data.results[index].Value = '';
+            } else {
+                data.results[index].Value = 'N';
+            }
+            oMarkPrefModel.setData(data);
+>>>>>>> NRG/master
         };
 
         Controller.prototype._formatDate = function (dob) {
