@@ -376,6 +376,10 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype.onYesSelected = function () {
+            sap.ui.commons.MessageBox.alert("Yes clicked");
+        };
+
         Controller.prototype._formatDate = function (dob) {
             if (dob) {
                 var oDateFormat = DateFormat.getInstance({pattern: "MM/dd/yyyy"});
