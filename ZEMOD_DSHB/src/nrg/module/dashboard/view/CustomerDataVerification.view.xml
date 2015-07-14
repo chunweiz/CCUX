@@ -43,18 +43,14 @@
                                             <utmain:Label labelFor="meter_num"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_MtrNum}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halflabl"/>
-                                            <utmain:Label labelFor="meter_num"
-                                                visible="{
-                                                    parts:['oDtaVrfyContracts>/SmartMeter'],
-                                                    formatter:'._formatChecked'}"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RmtMtr}"
-                                                class="nrgDashboard-cusDataVerify-l-div-chb"/>
-                                            <!--
                                             <utmain:Checkbox id="chk_advMtr" enabled="false"
-                                                class="nrgDashboard-cusDataVerify-l-div-chb"
+                                                class="nrgDashboard-cusDataVerify-l-div-cell-rmtChb"
                                                 checked="{
                                                     parts:['oDtaVrfyContracts>/SmartMeter'],
-                                                    formatter:'._formatChecked'}"/>-->
+                                                    formatter:'._formatChecked'}"/>
+                                            <utmain:Label labelFor="meter_num"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RmtMtr}"
+                                                class="nrgDashboard-cusDataVerify-l-div-chb"/>
                                             <ute:TextView id="meter_num"
                                                 text="{oDtaVrfyContracts>/MeterNumber}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
@@ -122,11 +118,15 @@
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
                                             <utmain:Checkbox id="idVrfyDL" enabled="false" checked="true"
                                                 class="nrgDashboard-cusDataVerify-l-div-halChb"
-                                                visible="true"/>
+                                                visible="{
+                                                    parts:['oDtaVrfyBP>/DLVerify'],
+                                                    formatter:'._formatVrfyMark'}"/>
                                             <ute:TextView id="idVrfyDLNo"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RedX}"
                                                 class="nrgDashboard-cusDataVerify-l-div-redX"
-                                                 visible="false"/>
+                                                visible="{
+                                                    parts:['oDtaVrfyBP>/DLVerify'],
+                                                    formatter:'._formatVrfyMarkRedX'}"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell
                                             class="nrgDashboard-cusDataVerify-l-div-cell">
@@ -139,13 +139,13 @@
                                             <utmain:Checkbox id="idVrfySSN" enabled="false" checked="true"
                                                 class="nrgDashboard-cusDataVerify-l-div-halChb"
                                                  visible="{
-                                                    parts:['oDtaVrfyBP>/SSNVerification'],
+                                                    parts:['oDtaVrfyBP>/SSNVerify'],
                                                     formatter:'._formatVrfyMark'}"/>
                                             <ute:TextView id="idVrfySSNNo"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RedX}"
                                                 class="nrgDashboard-cusDataVerify-l-div-redX"
                                                 visible="{
-                                                    parts:['oDtaVrfyBP>/SSNVerification'],
+                                                    parts:['oDtaVrfyBP>/SSNVerify'],
                                                     formatter:'._formatVrfyMarkRedX'}"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
