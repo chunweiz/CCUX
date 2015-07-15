@@ -1,4 +1,5 @@
 /*global sap*/
+/*jslint nomen:true*/
 
 sap.ui.define(
     [
@@ -17,14 +18,12 @@ sap.ui.define(
                 },
 
                 aggregations: {
-                    item: { type: 'ute.ui.app.HeaderMenuItem', multiple: true, singularName: 'item' }
+                    item: { type: 'sap.ui.core.Control', multiple: true, singularName: 'item' }
                 },
 
                 defaultAggregation: 'item'
             }
         });
-
-
 
         return CustomControl;
     },

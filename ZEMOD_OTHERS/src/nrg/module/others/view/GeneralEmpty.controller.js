@@ -3,11 +3,12 @@
 
 sap.ui.define(
     [
+        'jquery.sap.global',
         'sap/ui/core/mvc/Controller',
         'nrg/base/component/WebUiManager'
     ],
 
-    function (Controller, WebUiManager) {
+    function (jQuery, Controller, WebUiManager) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.others.view.GeneralEmpty');
@@ -46,7 +47,19 @@ sap.ui.define(
             oWebUiManager = oComponent.getCcuxWebUiManager();
 
             oComponent.setCcuxBusy(true);
-            oWebUiManager.notifyWebUi('logout');
+            oWebUiManager.notifyWebUi('logout', {}, this._handleLogout, this);
+        };
+
+        CustomController.prototype._handleLogout = function (oEvent) {
+            var oComponent, oResponse;
+
+            oComponent = this.getOwnerComponent();
+            oComponent.setCcuxBusy(false);
+
+            oResponse = oEvent.getParameters();
+            if (oResponse.cancel && oResponse.cancel === 'X') {
+                jQuery.sap.log.info('[GeneralEmptyController._handleLogout()]', 'Logout cancelled by user');
+            }
         };
 
         CustomController.prototype.onInit = function () {

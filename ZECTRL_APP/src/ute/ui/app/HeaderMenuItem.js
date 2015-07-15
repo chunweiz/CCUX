@@ -13,14 +13,15 @@ sap.ui.define(
                 library: 'ute.ui.app',
 
                 properties: {
-
+                    expanded: { type: 'boolean', defaultValue: false }
                 },
 
                 aggregations: {
-
+                    header: { type: 'sap.ui.core.Control', multiple: true, singularName: 'header' },
+                    content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' }
                 },
 
-                defaultAggregation: ''
+                defaultAggregation: 'content'
             }
         });
 

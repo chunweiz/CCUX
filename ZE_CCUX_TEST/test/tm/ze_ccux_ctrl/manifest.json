@@ -4,6 +4,7 @@
     "sap.ui5": {
         "resources": {
             "css": [
+                { "uri": "../../../../../ZELIB/normalize.css/normalize.css" },
                 { "uri": "asset/nrg.css" },
                 { "uri": "../../../../../ZEBASE_CTRL/build/ute/ui/base/asset/css/base.css" },
                 { "uri": "../../../../../ZEBASE/build/nrg/base/asset/css/base.css" }

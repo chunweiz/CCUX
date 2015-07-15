@@ -11,13 +11,37 @@
     width="100%"
     displayBlock="true">
 
+    <style>
+        .divider {
+            position: relative;
+            display: inline-block;
+            width: 1px;
+            height: 12pt;
+            background-color: tomato;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    </style>
+
     <ua:App>
         <ua:header>
             <ua:Header>
                 <ua:banner>
                 </ua:banner>
                 <ua:menu>
-
+                    <ua:HeaderMenu>
+                        <ua:HeaderMenuItem>
+                            <ua:header>
+                                <span>Menu</span>
+                            </ua:header>
+                        </ua:HeaderMenuItem>
+                        <span class="divider" />
+                        <ua:HeaderMenuItem>
+                            <ua:header>
+                                <span>Transaction</span>
+                            </ua:header>
+                        </ua:HeaderMenuItem>
+                    </ua:HeaderMenu>
                 </ua:menu>
             </ua:Header>
         </ua:header>
