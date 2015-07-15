@@ -1,0 +1,35 @@
+{
+    "d":{
+        "results":[
+            {
+                "__metadata":{
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpAddresses(PartnerID='PartnerID 2',AddressID='0148580582')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpAddresses(PartnerID='PartnerID 2',AddressID='0148580582')",
+                    "type":"ZE_CCUX_SRV.BpAddress"
+                },
+                "AddressInfo":{
+                    "__metadata":{
+                        "type":"ZE_CCUX_SRV.AddressInfo"
+                    },
+                    "StandardFlag":"X",
+                    "Street":"fannin st",
+                    "HouseNo":"1201",
+                    "UnitNo":"",
+                    "City":"ALVIN",
+                    "State":"TX",
+                    "ZipCode":"77512-1906",
+                    "ShortForm":"PO Box 1906 / ALVIN TX 77512-1906",
+                    "ValidFrom":null,
+                    "ValidTo":null
+                },
+                "PartnerID":"PartnerID 2",
+                "AddressID":"0148580582",
+                "Partner":{
+                    "__deferred":{
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpAddresses(PartnerID='PartnerID 2',AddressID='0148580582')/Partner"
+                    }
+                }
+            }
+        ]
+    }
+}

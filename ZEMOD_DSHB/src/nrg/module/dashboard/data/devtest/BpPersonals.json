@@ -1,0 +1,21 @@
+{
+    "d":{
+        "PartnerID":"PartnerID 2",
+        "Dob":"/Date(1544033318000)/",
+        "Language":"Language 2",
+        "SSN":"SSN 2",
+        "DL":"DL 2",
+        "SSNVerify":"SSNVerify 2",
+        "DLVerify":"DLVerify 2",
+        "__metadata":{
+            "id":"../../../../../ZEMOD_DSHB/build/nrg/module/dashboard/data/devtest/BpPersonals('PartnerID 2')",
+            "type":"ZE_CCUX_SRV.BpPersonal",
+            "uri":"../../../../../ZEMOD_DSHB/build/nrg/module/dashboard/data/devtest/BpPersonals('PartnerID 2')"
+        },
+        "Partner":{
+            "__deferred":{
+                "uri":"../../../../../ZEMOD_DSHB/build/nrg/module/dashboard/data/devtest/BpPersonals('PartnerID 2')/Partner"
+            }
+        }
+    }
+}
