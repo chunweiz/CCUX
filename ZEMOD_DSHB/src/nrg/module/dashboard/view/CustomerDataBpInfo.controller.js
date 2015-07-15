@@ -67,7 +67,8 @@ sap.ui.define(
 
             oModel.setProperty('/personalInfoEditVisible', true);
             oModel.setProperty('/personalInfoSaveVisible', false);
-            oModel.setProperty('/personalInfoEditable', false);
+            oModel.setProperty('/personalInfoSSEditable', false);
+            oModel.setProperty('/personalInfoDLEditable', false);
 
             oModel.setProperty('/contactInfoEditVisible', true);
             oModel.setProperty('/contactInfoSaveVisible', false);
@@ -137,10 +138,18 @@ sap.ui.define(
         };
 
         CustomController.prototype.onPersonalInfoEdit = function () {
-            var oConfigModel = this.getView().getModel('oBpInfoConfig');
+            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                oBpPersonalInfoModel = this.getView().getModel('oDataBpPersonal');
             oConfigModel.setProperty('/personalInfoEditVisible', false);
             oConfigModel.setProperty('/personalInfoSaveVisible', true);
-            oConfigModel.setProperty('/personalInfoEditable', true);
+
+            if (oBpPersonalInfoModel.SSN === '') {
+                oConfigModel.setProperty('/personalInfoSSEditable', true);
+            }
+
+            if (oBpPersonalInfoModel.DL === '') {
+                oConfigModel.setProperty('/personalInfoDLEditable', true);
+            }
         };
 
         CustomController.prototype.onPersonalInfoSave = function () {

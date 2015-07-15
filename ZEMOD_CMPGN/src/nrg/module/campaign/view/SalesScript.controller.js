@@ -28,7 +28,7 @@ sap.ui.define(
 		/* lifecycle method- After Rendering                           */
 		/* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
-            var aContent, obinding, sPath, that = this,
+/*            var aContent, obinding, sPath, that = this,
                 oMandDiscloureTV = this.getView().byId("idCamSSMdTv"),
                 oDropDownList = this.getView().byId("idnrgCamSSDdL"),
                 handler = function () {
@@ -43,9 +43,9 @@ sap.ui.define(
                     }
                     that.getView().getModel("appView").setProperty("/busy", false);
                     obinding.detachDataReceived(handler);
-                };
-            obinding = oDropDownList.getBinding("content");
-            obinding.attachDataReceived(handler);
+                };*/
+            //obinding = oDropDownList.getBinding("content");
+            //obinding.attachDataReceived(handler);
         };
 
         /* =========================================================== */
@@ -72,7 +72,10 @@ sap.ui.define(
                 oViewModel,
                 aFilterIds,
                 aFilterValues,
-                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay();
+                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
+                sNewOfferCode,
+                fnRecievedHandler,
+                oNewContext;
             oViewModel = new JSONModel({
 				busy : true,
 				delay : 0
@@ -81,11 +84,16 @@ sap.ui.define(
             this.sContract = oEvent.getParameter("arguments").coNum;
             this._sOfferCode = oEvent.getParameter("arguments").offercodeNum;
             sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
-            sCurrentPath = "/ScriptS";
-            // + "(OfferCode='" + sOfferCode + "',Contract='32253375',TxtName='MD',TxtLang='EN')";
-            //sCurrentPath = sCurrentPath + "/ScriptS";
-            aFilterIds = ["Contract", "OfferCode", "TxtName"];
-            aFilterValues = ['32253375', this._sOfferCode, 'MD'];
+            sNewOfferCode = "50160100";
+            sCurrentPath = "/CpgChgOfferS";
+            sCurrentPath = sCurrentPath + "(OfferCode='" + sNewOfferCode + "',Contract='32253375')";
+            // Handler function for Tab Bar Item.
+            fnRecievedHandler = function () {
+                jQuery.sap.log.info("Expand Scripts called successfully");
+            };
+           //oNewContext = oModel.createBindingContext(sCurrentPath, null, {expand : "Scripts" }, fnRecievedHandler);
+            aFilterIds = ["OfferCode", "Contract", "Scripts/TxtName"];
+            aFilterValues = [sNewOfferCode, '32253375', 'MAND'];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oDropDownList = this.getView().byId("idnrgCamSSDdL");
             oDropDownListItemTemplate = this.getView().byId("idnrgCamSSLngLtIt").clone();
@@ -93,7 +101,9 @@ sap.ui.define(
                 model : "comp-campaign",
                 path : sCurrentPath,
                 template : oDropDownListItemTemplate,
-                filters : aFilters
+                //filters : aFilters,
+                events: {dataReceived : fnRecievedHandler},
+                parameters : {expand : "Scripts" }
             };
             oDropDownList.bindAggregation("content", mParameters);
             //this._bindView(sObjectPath);
@@ -156,7 +166,7 @@ sap.ui.define(
                 aFilterIds,
                 aFilterValues;
             aFilterIds = ["Contract", "OfferCode", "TxtName"];
-            aFilterValues = ['32253375', this._sOfferCode, "OS"];
+            aFilterValues = ['32253375', this._sOfferCode, "OVW"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sCurrentPath = "/ScriptS";
             oDialog.setWidth("750px");

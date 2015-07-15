@@ -7,6 +7,12 @@
     @ECHO Path %ECLIPSE_WORKSPACE_PATH%\ZEBASE does not exists.
 )
 
+@IF EXIST %ECLIPSE_WORKSPACE_PATH%\ZEBASE_CTRL (
+    @CALL grunt --deploy=base --baseFolder=ZEBASE_CTRL --baseName=ute.ui.base --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\ZEBASE_CTRL
+) ELSE (
+    @ECHO Path %ECLIPSE_WORKSPACE_PATH%\ZEBASE does not exists.
+)
+
 @IF EXIST %ECLIPSE_WORKSPACE_PATH%\ZECTRL_MAIN (
     @CALL grunt --deploy=control --controlFolder=ZECTRL_MAIN --controlName=ute.ui.main --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\ZECTRL_MAIN
 ) ELSE (
