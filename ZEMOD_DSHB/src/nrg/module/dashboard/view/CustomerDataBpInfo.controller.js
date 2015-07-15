@@ -438,6 +438,26 @@ sap.ui.define(
 
         };
 
+        Controller.prototype._formatVrfyMark = function (sIndicator) {
+            if (sIndicator === 'x' || sIndicator === 'X') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        Controller.prototype._formatVrfyMarkRedX = function (sIndicator, sDLSSN) {
+            if (sDLSSN) {
+                if (sIndicator === 'x' || sIndicator === 'X') {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        };
+
 
         return CustomController;
     }
