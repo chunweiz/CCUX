@@ -31,7 +31,7 @@ sap.ui.define(
         };
 
         Manager.prototype._subscribeWebUi = function () {
-            var oWebUiManager = this._oComponent.getWebUiManager();
+            var oWebUiManager = this._oComponent.getCcuxWebUiManager();
             oWebUiManager.attachEvent('navigate', this._onWebUiNavigate, this);
         };
 
