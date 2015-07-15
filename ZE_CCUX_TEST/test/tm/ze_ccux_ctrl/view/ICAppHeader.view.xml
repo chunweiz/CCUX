@@ -38,7 +38,49 @@
                         <span class="divider" />
                         <ua:HeaderMenuItem>
                             <ua:header>
-                                <span>Transaction</span>
+                                <span>Index</span>
+                            </ua:header>
+                        </ua:HeaderMenuItem>
+                        <span class="divider" />
+                        <ua:HeaderMenuItem>
+                            <ua:header>
+                                <span>Transactions</span>
+                            </ua:header>
+                        </ua:HeaderMenuItem>
+                        <span class="divider" />
+                        <ua:HeaderMenuItem>
+                            <ua:header>
+                                <span>ESID Tool</span>
+                            </ua:header>
+                        </ua:HeaderMenuItem>
+                        <span class="divider" />
+                        <ua:HeaderMenuItem>
+                            <ua:header>
+                                <span>PALPlus</span>
+                            </ua:header>
+                        </ua:HeaderMenuItem>
+                        <span class="divider" />
+                        <ua:HeaderMenuItem>
+                            <ua:header>
+                                <span>Messages</span>
+                            </ua:header>
+                        </ua:HeaderMenuItem>
+                        <span class="divider" />
+                        <ua:HeaderMenuItem>
+                            <ua:header>
+                                <core:Icon src="sap-icon://nrg-icon/refresh"></core:Icon>
+                            </ua:header>
+                        </ua:HeaderMenuItem>
+                        <span class="divider" />
+                        <ua:HeaderMenuItem>
+                            <ua:header>
+                                <span>Clear Account</span>
+                            </ua:header>
+                        </ua:HeaderMenuItem>
+                        <span class="divider" />
+                        <ua:HeaderMenuItem>
+                            <ua:header>
+                                <span>LOG OFF</span>
                             </ua:header>
                         </ua:HeaderMenuItem>
                     </ua:HeaderMenu>
