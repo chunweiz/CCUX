@@ -259,7 +259,7 @@ sap.ui.define(
                 sPath,
                 oParameters;
 
-            sPath = '/Partners' + '(\'' + sBpNum + '\')/BpTitle/';
+            sPath = '/Partners' + '(\'' + sBpNum + '\')/BpName/';
 
             oParameters = {
                 success : function (oData) {
@@ -272,6 +272,7 @@ sap.ui.define(
                 }.bind(this),
                 error: function (oError) {
                     //Need to put error message
+                    var t = 1.0;
                 }.bind(this)
             };
 

@@ -5,7 +5,7 @@
             "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpContacts('PartnerID 2')",
             "type":"ZE_CCUX_SRV.BpContact"
         },
-        "PartnerID":"",
+        "PartnerID":"PartnerID 2",
         "Cell":"234-234-2424",
         "CellConsum":"007",
         "Fax":"111-111-1111",
