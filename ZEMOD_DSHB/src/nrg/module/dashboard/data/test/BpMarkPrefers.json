@@ -3,11 +3,11 @@
         "results":[
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='EMAIL_PREF',Attribute='ECD_EMAIL')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='EMAIL_PREF',Attribute='ECD_EMAIL')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='EMAIL_PREF',Attribute='ECD_EMAIL')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='EMAIL_PREF',Attribute='ECD_EMAIL')",
                     "type":"ZE_CCUX_SRV.BpMarkPrefer"
                 },
-                "PartnerID":"PartnerID 2",
+                "PartnerID":"64041",
                 "AttributeSet":"EMAIL_PREF",
                 "AttributeSetDescription":"Email Preferences",
                 "Attribute":"ECD_EMAIL",
@@ -15,17 +15,17 @@
                 "Value":"",
                 "Partner":{
                     "__deferred":{
-                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='EMAIL_PREF',Attribute='ECD_EMAIL')/Partner"
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='EMAIL_PREF',Attribute='ECD_EMAIL')/Partner"
                     }
                 }
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='EMAIL_PREF',Attribute='EE_EMAIL')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='EMAIL_PREF',Attribute='EE_EMAIL')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='EMAIL_PREF',Attribute='EE_EMAIL')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='EMAIL_PREF',Attribute='EE_EMAIL')",
                     "type":"ZE_CCUX_SRV.BpMarkPrefer"
                 },
-                "PartnerID":"PartnerID 2",
+                "PartnerID":"64041",
                 "AttributeSet":"EMAIL_PREF",
                 "AttributeSetDescription":"Email Preferences",
                 "Attribute":"EE_EMAIL",
@@ -33,17 +33,17 @@
                 "Value":"N",
                 "Partner":{
                     "__deferred":{
-                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='EMAIL_PREF',Attribute='EE_EMAIL')/Partner"
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='EMAIL_PREF',Attribute='EE_EMAIL')/Partner"
                     }
                 }
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='EMAIL_PREF',Attribute='LEGAL_EMAIL')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='EMAIL_PREF',Attribute='LEGAL_EMAIL')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='EMAIL_PREF',Attribute='LEGAL_EMAIL')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='EMAIL_PREF',Attribute='LEGAL_EMAIL')",
                     "type":"ZE_CCUX_SRV.BpMarkPrefer"
                 },
-                "PartnerID":"PartnerID 2",
+                "PartnerID":"64041",
                 "AttributeSet":"EMAIL_PREF",
                 "AttributeSetDescription":"Email Preferences",
                 "Attribute":"LEGAL_EMAIL",
@@ -51,17 +51,17 @@
                 "Value":"Y",
                 "Partner":{
                     "__deferred":{
-                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='EMAIL_PREF',Attribute='LEGAL_EMAIL')/Partner"
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='EMAIL_PREF',Attribute='LEGAL_EMAIL')/Partner"
                     }
                 }
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='EMAIL_PREF',Attribute='MKT_EMAIL')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='EMAIL_PREF',Attribute='MKT_EMAIL')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='EMAIL_PREF',Attribute='MKT_EMAIL')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='EMAIL_PREF',Attribute='MKT_EMAIL')",
                     "type":"ZE_CCUX_SRV.BpMarkPrefer"
                 },
-                "PartnerID":"PartnerID 2",
+                "PartnerID":"64041",
                 "AttributeSet":"EMAIL_PREF",
                 "AttributeSetDescription":"Email Preferences",
                 "Attribute":"MKT_EMAIL",
@@ -69,17 +69,17 @@
                 "Value":"Y",
                 "Partner":{
                     "__deferred":{
-                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='EMAIL_PREF',Attribute='MKT_EMAIL')/Partner"
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='EMAIL_PREF',Attribute='MKT_EMAIL')/Partner"
                     }
                 }
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='EMAIL_PREF',Attribute='OFFER_EMAIL')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='EMAIL_PREF',Attribute='OFFER_EMAIL')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='EMAIL_PREF',Attribute='OFFER_EMAIL')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='EMAIL_PREF',Attribute='OFFER_EMAIL')",
                     "type":"ZE_CCUX_SRV.BpMarkPrefer"
                 },
-                "PartnerID":"PartnerID 2",
+                "PartnerID":"64041",
                 "AttributeSet":"EMAIL_PREF",
                 "AttributeSetDescription":"Email Preferences",
                 "Attribute":"OFFER_EMAIL",
@@ -87,17 +87,17 @@
                 "Value":"Y",
                 "Partner":{
                     "__deferred":{
-                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='EMAIL_PREF',Attribute='OFFER_EMAIL')/Partner"
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='EMAIL_PREF',Attribute='OFFER_EMAIL')/Partner"
                     }
                 }
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='PHONE_PREF',Attribute='EE_PHONE')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='PHONE_PREF',Attribute='EE_PHONE')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='PHONE_PREF',Attribute='EE_PHONE')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='PHONE_PREF',Attribute='EE_PHONE')",
                     "type":"ZE_CCUX_SRV.BpMarkPrefer"
                 },
-                "PartnerID":"PartnerID 2",
+                "PartnerID":"64041",
                 "AttributeSet":"PHONE_PREF",
                 "AttributeSetDescription":"Residential Phone Preferences",
                 "Attribute":"EE_PHONE",
@@ -105,17 +105,17 @@
                 "Value":"Y",
                 "Partner":{
                     "__deferred":{
-                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='PHONE_PREF',Attribute='EE_PHONE')/Partner"
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='PHONE_PREF',Attribute='EE_PHONE')/Partner"
                     }
                 }
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='PHONE_PREF',Attribute='LEGAL_PHONE')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='PHONE_PREF',Attribute='LEGAL_PHONE')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='PHONE_PREF',Attribute='LEGAL_PHONE')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='PHONE_PREF',Attribute='LEGAL_PHONE')",
                     "type":"ZE_CCUX_SRV.BpMarkPrefer"
                 },
-                "PartnerID":"PartnerID 2",
+                "PartnerID":"64041",
                 "AttributeSet":"PHONE_PREF",
                 "AttributeSetDescription":"Residential Phone Preferences",
                 "Attribute":"LEGAL_PHONE",
@@ -123,17 +123,17 @@
                 "Value":"",
                 "Partner":{
                     "__deferred":{
-                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='PHONE_PREF',Attribute='LEGAL_PHONE')/Partner"
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='PHONE_PREF',Attribute='LEGAL_PHONE')/Partner"
                     }
                 }
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='PHONE_PREF',Attribute='MKT_PHONE')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='PHONE_PREF',Attribute='MKT_PHONE')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='PHONE_PREF',Attribute='MKT_PHONE')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='PHONE_PREF',Attribute='MKT_PHONE')",
                     "type":"ZE_CCUX_SRV.BpMarkPrefer"
                 },
-                "PartnerID":"PartnerID 2",
+                "PartnerID":"64041",
                 "AttributeSet":"PHONE_PREF",
                 "AttributeSetDescription":"Residential Phone Preferences",
                 "Attribute":"MKT_PHONE",
@@ -141,17 +141,17 @@
                 "Value":"",
                 "Partner":{
                     "__deferred":{
-                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='PHONE_PREF',Attribute='MKT_PHONE')/Partner"
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='PHONE_PREF',Attribute='MKT_PHONE')/Partner"
                     }
                 }
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='PHONE_PREF',Attribute='OFFER_PHONE')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='PHONE_PREF',Attribute='OFFER_PHONE')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='PHONE_PREF',Attribute='OFFER_PHONE')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='PHONE_PREF',Attribute='OFFER_PHONE')",
                     "type":"ZE_CCUX_SRV.BpMarkPrefer"
                 },
-                "PartnerID":"PartnerID 2",
+                "PartnerID":"64041",
                 "AttributeSet":"PHONE_PREF",
                 "AttributeSetDescription":"Residential Phone Preferences",
                 "Attribute":"OFFER_PHONE",
@@ -159,7 +159,7 @@
                 "Value":"Y",
                 "Partner":{
                     "__deferred":{
-                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='PartnerID 2',AttributeSet='PHONE_PREF',Attribute='OFFER_PHONE')/Partner"
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpMarkPrefers(PartnerID='64041',AttributeSet='PHONE_PREF',Attribute='OFFER_PHONE')/Partner"
                     }
                 }
             }
