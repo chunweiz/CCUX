@@ -28,24 +28,6 @@ sap.ui.define(
 		/* lifecycle method- After Rendering                           */
 		/* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
-/*            var aContent, obinding, sPath, that = this,
-                oMandDiscloureTV = this.getView().byId("idCamSSMdTv"),
-                oDropDownList = this.getView().byId("idnrgCamSSDdL"),
-                handler = function () {
-                    aContent = oDropDownList.getContent();
-                    if ((aContent !== undefined) && (aContent.length > 0)) {
-                        sPath = aContent[0].getBindingContext("comp-campaign").getPath();
-                       // aContent[0].addStyleClass("nrgCamHisBut-Selected");
-                        oMandDiscloureTV.bindElement({
-                            model : "comp-campaign",
-                            path : sPath
-                        });
-                    }
-                    that.getView().getModel("appView").setProperty("/busy", false);
-                    obinding.detachDataReceived(handler);
-                };*/
-            //obinding = oDropDownList.getBinding("content");
-            //obinding.attachDataReceived(handler);
         };
 
         /* =========================================================== */
@@ -69,43 +51,52 @@ sap.ui.define(
                 sCurrentPath,
                 oDropDownList,
                 oDropDownListItemTemplate,
-                oViewModel,
                 aFilterIds,
                 aFilterValues,
-                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
                 sNewOfferCode,
+                oMandDiscloureTV,
                 fnRecievedHandler,
-                oNewContext;
-            oViewModel = new JSONModel({
-				busy : true,
-				delay : 0
-			});
-            this.getView().setModel(oViewModel, "appView");
+                that = this,
+                aContent,
+                sPath;
+            this.getOwnerComponent().setCcuxBusy(true);
             this.sContract = oEvent.getParameter("arguments").coNum;
             this._sOfferCode = oEvent.getParameter("arguments").offercodeNum;
             sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
             sNewOfferCode = "50160100";
             sCurrentPath = "/CpgChgOfferS";
             sCurrentPath = sCurrentPath + "(OfferCode='" + sNewOfferCode + "',Contract='32253375')";
+            this._bindView(sCurrentPath);
+            sCurrentPath = "/ScriptS";
             // Handler function for Tab Bar Item.
-            fnRecievedHandler = function () {
-                jQuery.sap.log.info("Expand Scripts called successfully");
-            };
-           //oNewContext = oModel.createBindingContext(sCurrentPath, null, {expand : "Scripts" }, fnRecievedHandler);
-            aFilterIds = ["OfferCode", "Contract", "Scripts/TxtName"];
-            aFilterValues = [sNewOfferCode, '32253375', 'MAND'];
+            aFilterIds = ["Contract", "OfferCode", "TxtName"];
+            aFilterValues = ['32253375', sNewOfferCode, 'MAND'];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oDropDownList = this.getView().byId("idnrgCamSSDdL");
             oDropDownListItemTemplate = this.getView().byId("idnrgCamSSLngLtIt").clone();
+            oMandDiscloureTV = this.getView().byId("idCamSSMdTv");
+            fnRecievedHandler = function (oEvent) {
+                aContent = oDropDownList.getContent();
+                if ((aContent !== undefined) && (aContent.length > 0)) {
+                    sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                    // aContent[0].addStyleClass("nrgCamHisBut-Selected");
+                    oMandDiscloureTV.bindElement({
+                        model : "comp-campaign",
+                        path : sPath
+                    });
+                }
+                that.getOwnerComponent().setCcuxBusy(true);
+            };
             mParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,
                 template : oDropDownListItemTemplate,
-                //filters : aFilters,
-                events: {dataReceived : fnRecievedHandler},
-                parameters : {expand : "Scripts" }
+                filters : aFilters,
+               // parameters : {expand : "Scripts"},
+                events: {dataReceived : fnRecievedHandler}
             };
             oDropDownList.bindAggregation("content", mParameters);
+
             //this._bindView(sObjectPath);
 		};
 
@@ -165,8 +156,9 @@ sap.ui.define(
                 oOverScriptTV = this.getView().byId("idnrgCamOvsOvTv"),
                 aFilterIds,
                 aFilterValues;
+            this.getOwnerComponent().setCcuxBusy(true);
             aFilterIds = ["Contract", "OfferCode", "TxtName"];
-            aFilterValues = ['32253375', this._sOfferCode, "OVW"];
+            aFilterValues = ['32253375', '50160100', "OVW"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sCurrentPath = "/ScriptS";
             oDialog.setWidth("750px");
@@ -187,6 +179,7 @@ sap.ui.define(
                     });
                 }
                 obinding.detachDataReceived(fnRecievedHandler);
+                that.getOwnerComponent().setCcuxBusy(false);
             };
             mParameters = {
                 model : "comp-campaign",

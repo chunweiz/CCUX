@@ -7,13 +7,18 @@ sap.ui.define(
         'nrg/module/app/header/view/AppHeader',
         'nrg/module/app/footer/view/AppFooter',
         'nrg/module/app/main/view/AppMain',
-        'nrg/module/app/main/view/AppNav'
+        'nrg/module/app/main/view/AppNav',
+        'sap/m/BusyDialog'
     ],
 
-    function (Controller, AppHeader, AppFooter, AppMain, AppNav) {
+    function (Controller, AppHeader, AppFooter, AppMain, AppNav, BusyDialog) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.app.main.view.App');
+
+        CustomController.prototype.onInit = function () {
+            this._oBusyDialog = new BusyDialog();
+        };
 
         //DOM for control is only available after rendering
         CustomController.prototype.onAfterRendering = function () {
@@ -34,6 +39,14 @@ sap.ui.define(
                 navLeft: 'idNrgAppArrowLeft',
                 navRight: 'idNrgAppArrowRight'
             }, this).initialize();
+        };
+
+        CustomController.prototype.getBusyDialog = function () {
+            if (!this._oBusyDialog) {
+                this._oBusyDialog = new BusyDialog();
+            }
+
+            return this._oBusyDialog;
         };
 
         return CustomController;

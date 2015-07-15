@@ -1,11 +1,11 @@
 {
     "d":{
         "__metadata":{
-            "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpContacts('64041')",
-            "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpContacts('64041')",
+            "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpContacts('PartnerID 2')",
+            "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpContacts('PartnerID 2')",
             "type":"ZE_CCUX_SRV.BpContact"
         },
-        "PartnerID":"64041",
+        "PartnerID":"PartnerID 2",
         "Cell":"234-234-2424",
         "CellConsum":"007",
         "Fax":"111-111-1111",
@@ -21,7 +21,7 @@
         "EveConsum":"",
         "Partner":{
             "__deferred":{
-                "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpContacts('64041')/Partner"
+                "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpContacts('PartnerID 2')/Partner"
             }
         }
     }

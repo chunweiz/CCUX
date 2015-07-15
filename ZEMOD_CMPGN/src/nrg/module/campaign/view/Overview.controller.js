@@ -40,8 +40,6 @@ sap.ui.define(
                 oToggleTemplate,
                 aContent,
                 aFilters,
-                oViewModel,
-                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
                 aFilterIds,
                 aFilterValues,
                 oTemplatesView,
@@ -57,11 +55,7 @@ sap.ui.define(
                 iCount,
                 oEFLJson = {},
                 aResults = [];
-            oViewModel = new JSONModel({
-				busy : true,
-				delay : 0
-			});
-            this.getView().setModel(oViewModel, "appView");
+            this.getOwnerComponent().setCcuxBusy(true);
             this._sContract = oEvent.getParameter("arguments").coNum;
             this._sFlag = oEvent.getParameter("arguments").typeV.toUpperCase();
             aFilterIds = ["Contract"];
@@ -134,7 +128,7 @@ sap.ui.define(
                         path : sPath
                     });
                 }
-                that.getView().getModel("appView").setProperty("/busy", false);
+                that.getOwnerComponent().setCcuxBusy(false);
                 oBinding = oToggleContainer.getBinding("content");
                 oBinding.detachDataReceived(fnRecievedHandler);
             };
@@ -255,7 +249,7 @@ sap.ui.define(
             if (sFirstMonthBill === "X") {
                 sap.ui.commons.MessageBox.alert("Customer has to completed atleast One Month Invoice");
             } else {
-                this.showPendingSwaps();
+               // this.showPendingSwaps();
                 this.navTo("campaignoffers", {coNum: sContract});
             }
         };
@@ -373,7 +367,7 @@ sap.ui.define(
             aFilterValues = ['34805112'];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             if (!this._oDialogFragment) {
-                this._oDialogFragment = sap.ui.xmlfragment("PendingSwaps", "nrg.module.campaign.view.PendingSwaps", this);
+                this._oDialogFragment = sap.ui.xmlfragment("PendingOverview", "nrg.module.campaign.view.PendingSwaps", this);
             }
             if (this._oCancelDialog === undefined) {
                 this._oCancelDialog = new ute.ui.main.Popup.create({
@@ -383,18 +377,18 @@ sap.ui.define(
                 });
             }
             sPath = this._i18NModel.getProperty("nrgPendingSwapsSet");
-            oPendingSwapsTable = sap.ui.core.Fragment.byId("PendingSwaps", "idnrgCamPds-pendTable");
-            oPendingSwapsTemplate = sap.ui.core.Fragment.byId("PendingSwaps", "idnrgCamPds-pendRow");
+            oPendingSwapsTable = sap.ui.core.Fragment.byId("PendingOverview", "idnrgCamPds-pendTable");
+            oPendingSwapsTemplate = sap.ui.core.Fragment.byId("PendingOverview", "idnrgCamPds-pendRow");
             mParameters = {
                 model : "comp-campaign",
                 path : sPath,
                 filters : aFilters,
                 template : oPendingSwapsTemplate
             };
+            oPendingSwapsTable.bindRows(mParameters);
             this.getView().addDependent(this._oCancelDialog);
             //to get access to the global model
             this._oCancelDialog.addStyleClass("nrgCamHis-dialog");
-            oPendingSwapsTable.bindRows(mParameters);
             this._oCancelDialog.open();
         };
 

@@ -51,16 +51,12 @@ sap.ui.define(
                 oEFLJson = {},
                 aResults = [],
                 that = this;
-            oViewModel = new JSONModel({
-				busy : true,
-				delay : 0
-			});
-            this.getView().setModel(oViewModel, "appView");
+            this.getOwnerComponent().setCcuxBusy(true);
             this._sContract = oEvent.getParameter("arguments").coNum;
             sNewOfferCode = oEvent.getParameter("arguments").offercodeNum;
             sNewOfferCode = "50160100";
             sCurrentPath = "/CpgChgOfferS";
-            sCurrentPath = sCurrentPath + "(OfferCode='" + sNewOfferCode + "',Contract='" + this._sContract + "')";
+            sCurrentPath = sCurrentPath + "(Contract='" + this._sContract + "',OfferCode='" + sNewOfferCode + "')";
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oTemplateModel = new sap.ui.model.json.JSONModel();
             this._bindView(sCurrentPath);
@@ -86,7 +82,7 @@ sap.ui.define(
             that.getView().byId('idnrgCamChgPriceT').removeAllAggregation("content");
             that.getView().byId('idnrgCamChgPriceT').addContent(oTemplateView);
             jQuery.sap.log.info("Odata Read Successfully:::");
-            this.getView().getModel("appView").setProperty("/busy", false);
+            this.getOwnerComponent().setCcuxBusy(false);
 		};
         /**
 		 * Binds the view to the object path. Makes sure that view displays
@@ -97,9 +93,13 @@ sap.ui.define(
 		 * @private
 		 */
 		Controller.prototype._bindView = function (sObjectPath) {
+            var fnDataReceived = function (oEvent) {
+                jQuery.sap.log.info("Data Received:::");
+            };
             this.getView().bindElement({
                 model : "comp-campaign",
-                path : sObjectPath
+                path : sObjectPath,
+                events : {dataReceived: fnDataReceived}
             });
         };
 

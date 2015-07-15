@@ -5,6 +5,7 @@ sap.ui.define(
     [
         'jquery.sap.global',
         'sap/ui/core/UIComponent',
+        'sap/ui/core/Popup',
         'nrg/base/component/ResourceBundleManager',
         'nrg/base/component/StylesheetManager',
         'nrg/base/component/IconManager',
@@ -14,7 +15,7 @@ sap.ui.define(
         'nrg/base/component/RouteManager'
     ],
 
-    function (jQuery, Component, ResourceBundleManager, StylesheetManager, IconManager, MockDataManager, RealDataManager, WebUiManager, RouteManager) {
+    function (jQuery, Component, Popup, ResourceBundleManager, StylesheetManager, IconManager, MockDataManager, RealDataManager, WebUiManager, RouteManager) {
         'use strict';
 
         var CustomComponent = Component.extend('nrg.component.ic.Component', {
@@ -110,12 +111,20 @@ sap.ui.define(
             this._oRouteManager.init();
         };
 
-        CustomComponent.prototype.getWebUiManager = function () {
+        CustomComponent.prototype.getCcuxWebUiManager = function () {
             return this._oWebUiManager;
         };
 
-        CustomComponent.prototype.getRootView = function () {
-            return this.getAggregation('rootControl');
+        CustomComponent.prototype.setCcuxBusy = function (bEnable) {
+            var oRootViewController, oBusyDialog;
+            oRootViewController = this.getAggregation('rootControl').getController();
+            oBusyDialog = oRootViewController.getBusyDialog();
+
+            if (bEnable) {
+                oBusyDialog.open();
+            } else {
+                oBusyDialog.close();
+            }
         };
 
         return CustomComponent;
