@@ -22,8 +22,11 @@
                             <ute:Tag class="nrgDashboard-cusDataVerify-l-div">
                                 <ute:TextView text="{oDtaVrfyContracts>/ContractStatus}"
                                     class="nrgDashboard-cusDataVerify-l-div-title">
-                                    <ute:tooltip>
-                                        <c:RichTooltip text="{oDtaVrfyContracts>/HoveringStatus}"/>
+                                    <ute:tooltip class="test">
+                                        <c:RichTooltip
+                                            text="{
+                                                parts:['oDtaVrfyContracts>/HoveringStatus'],
+                                                formatter:'._formatDate'}"/>
                                     </ute:tooltip>
                                 </ute:TextView>
 
@@ -202,7 +205,9 @@
                                             <ute:Tag class="nrgDashboard-cusDataVerify-mContent-add-up">
                                             <ute:Badge id="idBadgeCI" size="30px"
                                                 class="nrgDashboard-cusDataVerify-mContent-badge"
-                                                visible="true"
+                                                visible="{
+                                                    parts:['oDtaVrfyContracts>/JointAcc'],
+                                                    formatter:'._formatChecked'}"
                                                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RHSClr}"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_JABadge}">
                                             </ute:Badge>

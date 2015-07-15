@@ -84,16 +84,12 @@ sap.ui.define(
                 aFilterValues,
                 fnRecievedHandler,
                 that = this;
-            oViewModel = new JSONModel({
-				busy : true,
-				delay : 0
-			});
+            this.getOwnerComponent().setCcuxBusy(true);
             this._sContract = oEvent.getParameter("arguments").coNum;
             this._sContract = "32253375";
             aFilterIds = ["Contract", "Type"];
             aFilterValues = [this._sContract, "P"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-            this.getView().setModel(oViewModel, "appView");
             sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
@@ -101,7 +97,7 @@ sap.ui.define(
             this.myTemplate = oTileTemplate;
             // Handler function for tile container
             fnRecievedHandler = function (oEvent) {
-                that.getView().getModel("appView").setProperty("/busy", false);
+                that.getOwnerComponent().setCcuxBusy(false);
             };
             mParameters = {
                 model : "comp-campaign",
@@ -139,7 +135,7 @@ sap.ui.define(
                 that = this;
             sButtonText = oEvent.getSource().getId();
             sButtonText = sButtonText.substring(sButtonText.length - 1, sButtonText.length);
-            this.getView().getModel("appView").setProperty("/busy", true);
+            this.getOwnerComponent().setCcuxBusy(true);
             aFilterIds = ["Contract", "Type"];
             switch (sButtonText) {
             case "P":
@@ -164,7 +160,7 @@ sap.ui.define(
             sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
             // Handler function for tile container
             fnRecievedHandler = function (oEvent) {
-                that.getView().getModel("appView").setProperty("/busy", false);
+                that.getOwnerComponent().setCcuxBusy(false);
             };
             mParameters = {
                 model : "comp-campaign",
