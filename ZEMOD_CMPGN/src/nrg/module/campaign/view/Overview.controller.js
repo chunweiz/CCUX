@@ -373,7 +373,7 @@ sap.ui.define(
             aFilterValues = ['34805112'];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             if (!this._oDialogFragment) {
-                this._oDialogFragment = sap.ui.xmlfragment("PendingSwaps", "nrg.module.campaign.view.PendingSwaps", this);
+                this._oDialogFragment = sap.ui.xmlfragment("PendingOverview", "nrg.module.campaign.view.PendingSwaps", this);
             }
             if (this._oCancelDialog === undefined) {
                 this._oCancelDialog = new ute.ui.main.Popup.create({
@@ -383,8 +383,8 @@ sap.ui.define(
                 });
             }
             sPath = this._i18NModel.getProperty("nrgPendingSwapsSet");
-            oPendingSwapsTable = sap.ui.core.Fragment.byId("PendingSwaps", "idnrgCamPds-pendTable");
-            oPendingSwapsTemplate = sap.ui.core.Fragment.byId("PendingSwaps", "idnrgCamPds-pendRow");
+            oPendingSwapsTable = sap.ui.core.Fragment.byId("PendingOverview", "idnrgCamPds-pendTable");
+            oPendingSwapsTemplate = sap.ui.core.Fragment.byId("PendingOverview", "idnrgCamPds-pendRow");
             mParameters = {
                 model : "comp-campaign",
                 path : sPath,

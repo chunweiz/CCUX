@@ -74,8 +74,7 @@ sap.ui.define(
                 aFilterValues,
                 iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
                 sNewOfferCode,
-                fnRecievedHandler,
-                oNewContext;
+                oTextLineTV;
             oViewModel = new JSONModel({
 				busy : true,
 				delay : 0
@@ -88,24 +87,36 @@ sap.ui.define(
             sCurrentPath = "/CpgChgOfferS";
             sCurrentPath = sCurrentPath + "(OfferCode='" + sNewOfferCode + "',Contract='32253375')";
             // Handler function for Tab Bar Item.
-            fnRecievedHandler = function () {
-                jQuery.sap.log.info("Expand Scripts called successfully");
-            };
-           //oNewContext = oModel.createBindingContext(sCurrentPath, null, {expand : "Scripts" }, fnRecievedHandler);
-            aFilterIds = ["OfferCode", "Contract", "Scripts/TxtName"];
-            aFilterValues = [sNewOfferCode, '32253375', 'MAND'];
+            aFilterIds = ["Scripts/TxtName"];
+            aFilterValues = ['MAND'];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-            oDropDownList = this.getView().byId("idnrgCamSSDdL");
-            oDropDownListItemTemplate = this.getView().byId("idnrgCamSSLngLtIt").clone();
+            //oDropDownList = this.getView().byId("idnrgCamSSDdL");
+            //oDropDownListItemTemplate = this.getView().byId("idnrgCamSSLngLtIt").clone();
+            oTextLineTV = this.getView().byId("idCamSSMdTv");
             mParameters = {
-                model : "comp-campaign",
-                path : sCurrentPath,
-                template : oDropDownListItemTemplate,
-                //filters : aFilters,
-                events: {dataReceived : fnRecievedHandler},
-                parameters : {expand : "Scripts" }
+                filters : aFilters,
+                urlParameters: {"$expand": "Scripts"},
+                success : function (oData) {
+                    this.getView().bindElement({
+                        model : "comp-campaign",
+                        path : sCurrentPath
+                    });
+                    sCurrentPath = "/ScriptS(Contract='32253375',OfferCode='50160100',TxtName='MAND',TxtLang='EN')";
+                    oTextLineTV.bindElement({
+                        model : "comp-campaign",
+                        path : sCurrentPath
+                    });
+                    jQuery.sap.log.info("Odata Read Successfully:::");
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Scripts Error occured");
+                }.bind(this)
             };
-            oDropDownList.bindAggregation("content", mParameters);
+            if (oModel) {
+                oModel.read(sCurrentPath, mParameters);
+            }
+            //oDropDownList.bindAggregation("content", mParameters);
+            this.getView().getModel("appView").setProperty("/busy", false);
             //this._bindView(sObjectPath);
 		};
 

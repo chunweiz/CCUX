@@ -60,7 +60,7 @@ sap.ui.define(
             sNewOfferCode = oEvent.getParameter("arguments").offercodeNum;
             sNewOfferCode = "50160100";
             sCurrentPath = "/CpgChgOfferS";
-            sCurrentPath = sCurrentPath + "(OfferCode='" + sNewOfferCode + "',Contract='" + this._sContract + "')";
+            sCurrentPath = sCurrentPath + "(Contract='" + this._sContract + "',OfferCode='" + sNewOfferCode + "')";
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oTemplateModel = new sap.ui.model.json.JSONModel();
             this._bindView(sCurrentPath);
@@ -97,9 +97,13 @@ sap.ui.define(
 		 * @private
 		 */
 		Controller.prototype._bindView = function (sObjectPath) {
+            var fnDataReceived = function (oEvent) {
+                jQuery.sap.log.info("Data Received:::");
+            };
             this.getView().bindElement({
                 model : "comp-campaign",
-                path : sObjectPath
+                path : sObjectPath,
+                events : {dataReceived: fnDataReceived}
             });
         };
 
