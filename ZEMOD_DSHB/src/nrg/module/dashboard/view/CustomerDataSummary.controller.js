@@ -109,7 +109,12 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     if (oData.results) {
-                        this.getView().getModel('oSmryAssignedAccounts').setData(oData.results);
+                        if (oData.results.length === 0) {
+                            this.getView().byId('id_AssignedAccBtn').setVisible(false);
+                        } else {
+                            this.getView().byId('id_AssignedAccBtn').setVisible(true);
+                            this.getView().getModel('oSmryAssignedAccounts').setData(oData.results);
+                        }
                     }
                 }.bind(this),
                 error: function (oError) {

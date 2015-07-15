@@ -86,7 +86,7 @@
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_ContAcc}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halflabl"/>
                                             <ute:TextView id="contacc"
-                                                text="{oDtaVrfyContracts>/ContractAccountID}"
+                                                text="{oDtaVrfyBuags>/ContractAccountID}-{oDtaVrfyBuags>/CheckDigit}"
                                                 class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell
@@ -127,13 +127,13 @@
                                             <utmain:Checkbox id="idVrfyDL" enabled="false" checked="true"
                                                 class="nrgDashboard-cusDataVerify-l-div-halChb"
                                                 visible="{
-                                                    parts:['oDtaVrfyBP>/DLVerify'],
+                                                    parts:['oDtaVrfyBP>/DLVerification'],
                                                     formatter:'._formatVrfyMark'}"/>
                                             <ute:TextView id="idVrfyDLNo"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RedX}"
                                                 class="nrgDashboard-cusDataVerify-l-div-redX"
                                                 visible="{
-                                                    parts:['oDtaVrfyBP>/DLVerify'],
+                                                    parts:['oDtaVrfyBP>/DLVerification','oDtaVrfyBP>/DL'],
                                                     formatter:'._formatVrfyMarkRedX'}"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell
@@ -147,13 +147,13 @@
                                             <utmain:Checkbox id="idVrfySSN" enabled="false" checked="true"
                                                 class="nrgDashboard-cusDataVerify-l-div-halChb"
                                                  visible="{
-                                                    parts:['oDtaVrfyBP>/SSNVerify'],
+                                                    parts:['oDtaVrfyBP>/SSNVerification'],
                                                     formatter:'._formatVrfyMark'}"/>
                                             <ute:TextView id="idVrfySSNNo"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RedX}"
                                                 class="nrgDashboard-cusDataVerify-l-div-redX"
                                                 visible="{
-                                                    parts:['oDtaVrfyBP>/SSNVerify'],
+                                                    parts:['oDtaVrfyBP>/SSNVerification','oDtaVrfyBP>/SSN'],
                                                     formatter:'._formatVrfyMarkRedX'}"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
