@@ -457,11 +457,15 @@ sap.ui.define(
                 return false;
             }
         };
-        Controller.prototype._formatVrfyMarkRedX = function (sIndicator) {
-            if (sIndicator === 'x' || sIndicator === 'X') {
-                return false;
+        Controller.prototype._formatVrfyMarkRedX = function (sIndicator, sDLSSN) {
+            if (sDLSSN) {
+                if (sIndicator === 'x' || sIndicator === 'X') {
+                    return false;
+                } else {
+                    return true;
+                }
             } else {
-                return true;
+                return false;
             }
         };
 

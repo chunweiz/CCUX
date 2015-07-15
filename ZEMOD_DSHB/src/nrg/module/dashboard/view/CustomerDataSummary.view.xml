@@ -98,7 +98,7 @@
                 </utmain:Label>
                 <ute:Tag elem="span"
                     id="db_verify_CA"
-                    text="{oSmryBuagInf>/ContractAccountID}">
+                    text="{oSmryBuagInf>/ContractAccountID}-{oSmryBuagInf>/CheckDigit}">
                 </ute:Tag>
             </ute:Tag>
 
@@ -171,15 +171,11 @@
                 </l:MatrixLayout>
             </ute:Tag>
 
-            <utmain:Button
+            <utmain:Button id="id_AssignedAccBtn"
                 class="nrgDashboard-cusDataSum-assignedAccBtn"
-                design="None"
+                design="None" visible="true"
                 press="._onAssignedAccountClick"
-                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssignedAccount}"
-                visible="{
-                    parts:['oDtaVrfyBP>/SSNVerification'],
-                    formatter:'._formatVrfyMarkRedX'}">
-            </utmain:Button>
+                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssignedAccount}"/>
 
         </ute:content>
     </ute:Tag>
