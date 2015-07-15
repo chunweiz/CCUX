@@ -85,7 +85,7 @@ sap.ui.define(
                         path : sPath
                     });
                 }
-                that.getOwnerComponent().setCcuxBusy(true);
+                that.getOwnerComponent().setCcuxBusy(false);
             };
             mParameters = {
                 model : "comp-campaign",
