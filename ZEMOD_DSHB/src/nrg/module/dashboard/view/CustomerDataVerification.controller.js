@@ -337,6 +337,17 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._formatDate = function (sDateString) {
+            // 20120620
+            var sYear,
+                sMonth,
+                sDay;
+
+            sYear = sDateString.substring(0, 4);
+            sMonth = sDateString.substring(4, 6);
+            sDay = sDateString.substring(6, 8);
+        };
+
         /********************************************************************************************/
         /*Contract Page Handlers*/
         Controller.prototype._onConFirst = function () {
