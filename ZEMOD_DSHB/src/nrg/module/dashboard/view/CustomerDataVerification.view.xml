@@ -22,7 +22,7 @@
                             <ute:Tag class="nrgDashboard-cusDataVerify-l-div">
                                 <ute:TextView text="{oDtaVrfyContracts>/ContractStatus}"
                                     class="nrgDashboard-cusDataVerify-l-div-title">
-                                    <ute:tooltip>
+                                    <ute:tooltip class="test">
                                         <c:RichTooltip text="{oDtaVrfyContracts>/HoveringStatus}"/>
                                     </ute:tooltip>
                                 </ute:TextView>
