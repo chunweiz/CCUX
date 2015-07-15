@@ -380,7 +380,7 @@
 
 
                                 <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
-                                    <l:MatrixLayout widths="15%,85%" columns="2">
+                                    <l:MatrixLayout widths="15%,80%,5%" columns="3">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
@@ -391,6 +391,17 @@
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/personalInfoSSEditable}"
                                                                value="{oDataBpPersonal>/SSN}"/>
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <utmain:Checkbox id="idVrfyDL" enabled="false" checked="true"
+                                                    class="nrgDashboard-cusDataBpInfo-halChb"
+                                                    visible="true"/>
+<!--
+                                                <ute:TextView id="idVrfyDLNo"
+                                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RedX}"
+                                                    class="nrgDashboard-cusDataBpInfo-redX"
+                                                    visible="true"/>
+-->
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
