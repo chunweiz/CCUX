@@ -375,7 +375,7 @@
                                                 width="200px"
                                                 value="{oDtaVrfyBP>/Email}"
                                                 editable="{oCfrmStatus>/bEditable}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput nrgDashboard-cusDataVerify-mContent-hEmailInput"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
                                             <utmain:Button text="SMS"/>
@@ -520,16 +520,16 @@
                                 <l:MatrixLayout widths="55%,45%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Button text="SMS"/>
-                                        </l:MatrixLayoutCell>
-                                        <l:MatrixLayoutCell>
                                             <utmain:Label labelFor="email_lbl_mail"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Email}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <ute:Textfield id="email_lbl_mail" fieldType="Noborder"
                                                 value="{oDtaVrfyBP>/Email}"
                                                 editable="{oCfrmStatus>/bEditable}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput nrgDashboard-cusDataVerify-mContent-hEmailInput"/>
+                                        </l:MatrixLayoutCell>
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Button text="SMS"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
