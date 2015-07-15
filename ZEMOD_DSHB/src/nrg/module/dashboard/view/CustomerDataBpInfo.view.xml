@@ -395,11 +395,15 @@
                                             <l:MatrixLayoutCell>
                                                 <utmain:Checkbox enabled="false" checked="true"
                                                     class="nrgDashboard-cusDataBpInfo-halChb"
-                                                    visible="true"/>
+                                                    visible="{
+					                                   parts:['oDataBpPersonal>/SSNVerify'],
+					                                   formatter:'._formatVrfyMark'}"/>
                                                 <ute:TextView
                                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RedX}"
                                                     class="nrgDashboard-cusDataBpInfo-redX"
-                                                    visible="true"/>
+                                                    visible="{
+					                                   parts:['oDataBpPersonal>/SSNVerify', 'oDataBpPersonal>/SSN'],
+					                                   formatter:'._formatVrfyMarkRedX'}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -418,11 +422,15 @@
                                             <l:MatrixLayoutCell>
                                                 <utmain:Checkbox enabled="false" checked="true"
                                                     class="nrgDashboard-cusDataBpInfo-halChb"
-                                                    visible="true"/>
+                                                    visible="{
+					                                   parts:['oDataBpPersonal>/DLVerify'],
+					                                   formatter:'._formatVrfyMark'}"/>
                                                 <ute:TextView
                                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RedX}"
                                                     class="nrgDashboard-cusDataBpInfo-redX"
-                                                    visible="true"/>
+                                                    visible="{
+                                                        parts:['oDataBpPersonal>/DLVerify', 'oDataBpPersonal>/DL'],
+                                                        formatter:'._formatVrfyMarkRedX'}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>

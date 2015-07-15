@@ -10,9 +10,7 @@
           controllerName="nrg.module.campaign.view.History"
           height="100%"
           width="100%"
-          displayBlock="true"
-          busy="{appView>/busy}"
-	      busyIndicatorDelay="{appView>/delay}">
+          displayBlock="true">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
       <u:Tag id="idnrgCamHis" class="nrgCamHis">
               <u:Tag id="idnrgCamHisData">

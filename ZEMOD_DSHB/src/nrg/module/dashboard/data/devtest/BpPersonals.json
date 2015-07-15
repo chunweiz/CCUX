@@ -1,21 +1,25 @@
 {
     "d":{
-        "PartnerID":"64041",
-        "Dob":"/Date(1544033318000)/",
-        "Language":"Language 2",
-        "SSN":"SSN 2",
-        "DL":"DL 2",
-        "SSNVerify":"SSNVerify 2",
-        "DLVerify":"DLVerify 2",
-        "__metadata":{
-            "id":"../../../../../ZEMOD_DSHB/build/nrg/module/dashboard/data/devtest/BpPersonals('64041')",
-            "type":"ZE_CCUX_SRV.BpPersonal",
-            "uri":"../../../../../ZEMOD_DSHB/build/nrg/module/dashboard/data/devtest/BpPersonals('64041')"
-        },
-        "Partner":{
-            "__deferred":{
-                "uri":"../../../../../ZEMOD_DSHB/build/nrg/module/dashboard/data/devtest/BpPersonals('64041')/Partner"
-            }
-        }
+        "results":[
+            {
+                "__metadata":{
+                "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpPersonals('64041')",
+                "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpPersonals('64041')",
+                "type":"ZE_CCUX_SRV.BpPersonal"
+                },
+                "PartnerID":"64041",
+                "Dob":null,
+                "Language":"E",
+                "SSN":"8746",
+                "DL":"7765",
+                "SSNVerify":"X",
+                "DLVerify":"",
+                "Partner":{
+                    "__deferred":{
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpPersonals('64041')/Partner"
+                    }
+                }
+             }
+        ]
     }
 }

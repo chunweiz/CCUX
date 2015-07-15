@@ -3,8 +3,8 @@
         "results":[
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpAddresses(PartnerID='PartnerID 2',AddressID='0148580582')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpAddresses(PartnerID='PartnerID 2',AddressID='0148580582')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpAddresses(PartnerID='64041',AddressID='0148580582')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpAddresses(PartnerID='64041',AddressID='0148580582')",
                     "type":"ZE_CCUX_SRV.BpAddress"
                 },
                 "AddressInfo":{
@@ -22,11 +22,11 @@
                     "ValidFrom":null,
                     "ValidTo":null
                 },
-                "PartnerID":"PartnerID 2",
+                "PartnerID":"64041",
                 "AddressID":"0148580582",
                 "Partner":{
                     "__deferred":{
-                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpAddresses(PartnerID='PartnerID 2',AddressID='0148580582')/Partner"
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpAddresses(PartnerID='64041',AddressID='0148580582')/Partner"
                     }
                 }
             }

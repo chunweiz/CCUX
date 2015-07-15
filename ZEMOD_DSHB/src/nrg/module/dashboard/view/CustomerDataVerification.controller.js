@@ -59,8 +59,6 @@ sap.ui.define(
             oTypes = [ {Key: "LANDLINE", Type: "LANDLINE"}, {Key: "CELL", Type: "CELL"}];
 
             oPhnType.setProperty('/', oTypes);
-            //oPhnType.setProperty('/selectedKey', this.getView().getModel('oDtaVrfyBP').getProperty('/DayPhoneType'));
-            //oPhnType.setProperty('/selectedKey', 'LANDLINE');
         };
 
         Controller.prototype._initCoPageModel = function () {
@@ -260,6 +258,7 @@ sap.ui.define(
 
             //Trigger contracts refresh
             this._retrContracts(this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'));
+            this._retrBuagMailingAddr(this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'), this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'), this.getView().getModel('oDtaVrfyBuags').getProperty('/FixedAddressID'));
         };
 
         /*Controller.prototype._onBuagChange = function (oEvent) {
@@ -316,6 +315,7 @@ sap.ui.define(
                 urlParameters: {},
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Update Success");
+                    this._initDtaVrfRetr();
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Update Failed");
@@ -334,6 +334,22 @@ sap.ui.define(
                 return true;
             } else {
                 return false;
+            }
+        };
+
+        Controller.prototype._formatDate = function (sDateString) {
+            // 20120620
+            var sYear,
+                sMonth,
+                sDay;
+
+            if (sDateString) {
+                sYear = sDateString.substring(0, 4);
+                sMonth = sDateString.substring(4, 6);
+                sDay = sDateString.substring(6, 8);
+                return sMonth + '/' + sDay + '/' + sYear;
+            } else {
+                return " ";
             }
         };
 
@@ -431,7 +447,7 @@ sap.ui.define(
                 iSel_Ind = parseInt(oContracts.getProperty('/selectedKey'), 10),
                 i;
 
-            if (iSel_Ind === 0) {
+            if (iSel_Ind === 0 || oContracts.oData.length === 2) {
                 for (i = 0; i < 3; i = i + 1) {
                     oPage[i].co_ind = i + 1;
                 }
