@@ -149,6 +149,7 @@ sap.ui.define(
                 iCount,
                 oEFLJson = {},
                 aResults = [];
+            this.getOwnerComponent().setCcuxBusy(true);
             aFilterIds = ["Contract", "Type"];
             aFilterValues = ["32253375", "H"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -207,7 +208,7 @@ sap.ui.define(
                     oDataTag.addStyleClass("nrgCamHis-hide");
                     oNoDataTag.removeStyleClass("nrgCamHis-hide");
                 }
-                that.getView().getModel("appView").setProperty("/busy", false);
+                that.getOwnerComponent().setCcuxBusy(false);
                 oBinding = oScrollContainer.getBinding("content");
                 oBinding.detachDataReceived(fnRecievedHandler);
             };
