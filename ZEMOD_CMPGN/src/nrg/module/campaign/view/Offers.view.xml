@@ -48,6 +48,7 @@
                 </um:TabPanel>
             </u:Tag>
             <u:Tag class="nrgCamOff-disc" text="{comp-i18n-campaign>nrgCmpOffDisclosure}" />
+            <u:Tag class="nrgCamOff-div" />
             <m:SearchField width="50%" class="nrgCamOff-search" placeholder="Search Ex:Campaign Name, Promo Code, Price"/>
             <u:Tag class="nrgCmpOff-partTiles">
                 <u:Tag class="nrgCmpOff-tiers">
@@ -120,7 +121,7 @@
                             <u:Tag class="nrgCamOff-btnPrc" text="{path: 'comp-campaign>EFLPrice',
                                                                 type: 'nrg.util.type.Price',
                                                                 formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
-                            <u:Tag class="nrgCamOff-btnPrcLbl" text="{comp-campaign>EFLLevel}" />
+                            <u:Tag class="nrgCamOff-btnPrcLbl" text="(for {comp-campaign>EFLLevel}kWh)" />
                         </um:Button>
             </u:Tag>
            <!-- Place holder for templates to reuse for Bind Aggregation method. Above will be always Display:none -->

@@ -79,6 +79,10 @@ sap.ui.define(
             oModel.setProperty('/mktPrfEditable', false);
         };
 
+        CustomController.prototype.onBackToDashboard = function () {
+            //back to dashboard
+        };
+
         CustomController.prototype.onTitleCancel = function () {    //onTitleCancel
             var oConfigModel = this.getView().getModel('oBpInfoConfig'),
                 bpTitleModel = this.getView().getModel('oDataBpTitle');
@@ -106,6 +110,11 @@ sap.ui.define(
             oConfigModel.setProperty('/titleEditVisible', true);
             oConfigModel.setProperty('/titleSaveVisible', false);
             oConfigModel.setProperty('/titleEditable', false);
+
+            if (JSON.stringify(this.getView().getModel('oDataBpTitle').oData) === JSON.stringify(this.oDataBpTitleBak)) {
+                sap.ui.commons.MessageBox.alert("There is no change for Title/Name.");
+                return;
+            }
 
             sPath = '/Partners' + '(\'' + bpNumber + '\')/BpName/';
             oParameters = {
@@ -146,13 +155,19 @@ sap.ui.define(
                 oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
-                bpNumber = this.getView().getModel('oDataBpAddress').getProperty('/results/0/PartnerID');
+                bpNumber = this.getView().getModel('oDataBpAddress').getProperty('/results/0/PartnerID'),
+                addressId = this.getView().getModel('oDataBpAddress').getProperty('/results/0/AddressID');
 
             oConfigModel.setProperty('/addrEditVisible', true);
             oConfigModel.setProperty('/addrSaveVisible', false);
             oConfigModel.setProperty('/addrEditable', false);
 
-            sPath = '/Partners' + '(\'' + bpNumber + '\')/BpAddress/';
+            if (JSON.stringify(this.getView().getModel('oDataBpAddress').oData.results[0]) === JSON.stringify(this.oDataBpAddressBak.results[0])) {
+                sap.ui.commons.MessageBox.alert("There is no change for Address.");
+                return;
+            }
+
+            sPath = '/Partners' + '(\'' + bpNumber + '\')/BpAddress' + '(PartnerID=\'' + bpNumber + '\',AddressID=\'' + addressId + '\')';
             oParameters = {
                 urlParameters: {},
                 success : function (oData) {
@@ -165,7 +180,7 @@ sap.ui.define(
             };
 
             if (oModel) {
-                oModel.update(sPath, this.getView().getModel('oDataBpAddress').oData, oParameters);
+                oModel.update(sPath, this.getView().getModel('oDataBpAddress').oData.results[0], oParameters);
             }
         };
 
@@ -195,10 +210,36 @@ sap.ui.define(
         };
 
         CustomController.prototype.onPersonalInfoSave = function () {
-            var oConfigModel = this.getView().getModel('oBpInfoConfig');
+            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters,
+                bpNumber = this.getView().getModel('oDataBpPersonal').getProperty('/PartnerID');
+
             oConfigModel.setProperty('/personalInfoEditVisible', true);
             oConfigModel.setProperty('/personalInfoSaveVisible', false);
             oConfigModel.setProperty('/personalInfoEditable', false);
+
+            if (JSON.stringify(this.getView().getModel('oDataBpPersonal').oData) === JSON.stringify(this.oDataBpPersonalBak)) {
+                sap.ui.commons.MessageBox.alert("There is no change for Personal Info.");
+                return;
+            }
+
+            sPath = '/Partners' + '(\'' + bpNumber + '\')/BpPersonal/';
+            oParameters = {
+                urlParameters: {},
+                success : function (oData) {
+                    sap.ui.commons.MessageBox.alert("Personal Info Update Success");
+                    this._retrBpPersonal(bpNumber);
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Personal Info Update Failed");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.update(sPath, this.getView().getModel('oDataBpPersonal').oData, oParameters);
+            }
         };
 
         CustomController.prototype.onContactInfoCancel = function () {
@@ -219,10 +260,36 @@ sap.ui.define(
         };
 
         CustomController.prototype.onContactInfoSave = function () {
-            var oConfigModel = this.getView().getModel('oBpInfoConfig');
+            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters,
+                bpNumber = this.getView().getModel('oDataBpContact').getProperty('/PartnerID');
+
             oConfigModel.setProperty('/contactInfoEditVisible', true);
             oConfigModel.setProperty('/contactInfoSaveVisible', false);
             oConfigModel.setProperty('/contactInfoEditable', false);
+
+            if (JSON.stringify(this.getView().getModel('oDataBpContact').oData) === JSON.stringify(this.oDataBpContactBak)) {
+                sap.ui.commons.MessageBox.alert("There is no change for Contact Info.");
+                return;
+            }
+
+            sPath = '/Partners' + '(\'' + bpNumber + '\')/BpContact/';
+            oParameters = {
+                urlParameters: {},
+                success : function (oData) {
+                    sap.ui.commons.MessageBox.alert("Contact Info Update Success");
+                    this._retrBpContact(bpNumber);
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Contact Info Update Failed");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.update(sPath, this.getView().getModel('oDataBpContact').oData, oParameters);
+            }
         };
 
         CustomController.prototype.onMarketPrefCancel = function () {
@@ -236,17 +303,50 @@ sap.ui.define(
         };
 
         CustomController.prototype.onMarketPrefEdit = function () {
-            var oModel = this.getView().getModel('oBpInfoConfig');
-            oModel.setProperty('/marketPrefEditVisible', false);
-            oModel.setProperty('/marketPrefSaveVisible', true);
-            oModel.setProperty('/mktPrfEditable', true);
+            var oConfigModel = this.getView().getModel('oBpInfoConfig');
+            oConfigModel.setProperty('/marketPrefEditVisible', false);
+            oConfigModel.setProperty('/marketPrefSaveVisible', true);
+            oConfigModel.setProperty('/mktPrfEditable', true);
         };
 
         CustomController.prototype.onMarketPrefSave = function () {
-            var oModel = this.getView().getModel('oBpInfoConfig');
-            oModel.setProperty('/marketPrefEditVisible', true);
-            oModel.setProperty('/marketPrefSaveVisible', false);
-            oModel.setProperty('/mktPrfEditable', false);
+            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters,
+                bpNumber = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/0/PartnerID'),
+                attibuteSet,
+                attribute,
+                i;
+
+            oConfigModel.setProperty('/marketPrefEditVisible', true);
+            oConfigModel.setProperty('/marketPrefSaveVisible', false);
+            oConfigModel.setProperty('/mktPrfEditable', false);
+
+            oParameters = {
+                urlParameters: {},
+                success : function (oData) {
+                    sap.ui.commons.MessageBox.alert("Market Preference Update Success");
+                    this._retrBpMarkPrefSet(bpNumber);
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Market Preference Update Failed");
+                }.bind(this)
+            };
+            for (i = 0; i < this.getView().getModel('oDataBpMarkPreferSet').oData.results.length; i = i + 1) {
+                if (JSON.stringify(this.getView().getModel('oDataBpMarkPreferSet').oData.results[i]) === JSON.stringify(this.oDataBpMarkPreferSetBak.results[i])) {
+                    sap.ui.commons.MessageBox.alert("There is no change for Market Perference index: " + i.toString());
+                } else {
+                    attibuteSet = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/AttributeSet');
+                    attribute = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/Attribute');
+
+                    sPath = '/Partners' + '(\'' + bpNumber + '\')/BpMarkPreferSet' + '(PartnerID=\'' + bpNumber + '\',AttributeSet=\'' + attibuteSet + '\',Attribute=\'' + attribute + '\')';
+
+                    if (oModel) {
+                        oModel.update(sPath, this.getView().getModel('oDataBpMarkPreferSet').oData.results[i], oParameters);
+                    }
+                }
+            }
         };
 
         Controller.prototype._retrUrlHash = function () {
@@ -499,7 +599,6 @@ sap.ui.define(
                 return false;
             }
         };
-
 
         return CustomController;
     }
