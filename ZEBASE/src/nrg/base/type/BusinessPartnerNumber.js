@@ -14,7 +14,7 @@ sap.ui.define(
     function ($, SimpleType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = SimpleType.extend('nrg.util.type.BusinessPartnerNumber', {
+        var CustomType = SimpleType.extend('nrg.base.type.BusinessPartnerNumber', {
             constructor: function (oFormatOptions, oConstraints) {
                 SimpleType.apply(this, arguments);
             }

@@ -13,14 +13,14 @@ sap.ui.define(
     function ($, FloatType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = FloatType.extend('nrg.util.type.Price', {
+        var CustomType = FloatType.extend('nrg.base.type.Price', {
             constructor: function (oFormatOptions, oConstraints) {
                 FloatType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'nrg.util.type.Price';
+            return 'nrg.base.type.Price';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {
