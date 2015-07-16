@@ -121,13 +121,21 @@ sap.ui.define(
                         if (oData.PartnerID) {
                             this._retrBuag(oData.PartnerID);
                         }
-                        if (true) {
+                        if (oData.SiebelCustomer === 'X' || oData.SiebelCustomer === 'x') {
                             this.bSiebelCustomer = true;
                             if (this.getView().getModel('oCfrmStatus').getProperty('/bEditable')) {
                                 this.getView().getModel('oCfrmStatus').setProperty('/bEditable', false);
                             }
                             this.getView().byId('id_confmBtn').setVisible(false);
                             this.getView().byId('id_updtBtn').setVisible(false);
+
+                            this._oSiebelAlertPopup = ute.ui.main.Popup.create({
+                                content: this.getView().byId("idSiebelAccAlert"),
+                                title: 'Siebel Contracted Account'
+                            });
+                            //this._onToggleButtonPress();
+                            this.getView().byId("idSiebelAccAlert").setVisible(true);
+                            this._oSiebelAlertPopup.open();
                         }
                     }
                 }.bind(this),
