@@ -79,6 +79,10 @@ sap.ui.define(
             oModel.setProperty('/mktPrfEditable', false);
         };
 
+        CustomController.prototype.onBackToDashboard = function () {
+            //back to dashboard
+        };
+
         CustomController.prototype.onTitleCancel = function () {    //onTitleCancel
             var oConfigModel = this.getView().getModel('oBpInfoConfig'),
                 bpTitleModel = this.getView().getModel('oDataBpTitle');
@@ -106,6 +110,11 @@ sap.ui.define(
             oConfigModel.setProperty('/titleEditVisible', true);
             oConfigModel.setProperty('/titleSaveVisible', false);
             oConfigModel.setProperty('/titleEditable', false);
+
+            if (JSON.stringify(this.getView().getModel('oDataBpTitle').oData) === JSON.stringify(this.oDataBpTitleBak)) {
+                sap.ui.commons.MessageBox.alert("There is no change for Title/Name.");
+                return;
+            }
 
             sPath = '/Partners' + '(\'' + bpNumber + '\')/BpName/';
             oParameters = {
@@ -152,6 +161,11 @@ sap.ui.define(
             oConfigModel.setProperty('/addrEditVisible', true);
             oConfigModel.setProperty('/addrSaveVisible', false);
             oConfigModel.setProperty('/addrEditable', false);
+
+            if (JSON.stringify(this.getView().getModel('oDataBpAddress').oData.results[0]) === JSON.stringify(this.oDataBpAddressBak.results[0])) {
+                sap.ui.commons.MessageBox.alert("There is no change for Address.");
+                return;
+            }
 
             sPath = '/Partners' + '(\'' + bpNumber + '\')/BpAddress' + '(PartnerID=\'' + bpNumber + '\',AddressID=\'' + addressId + '\')';
             oParameters = {
@@ -206,6 +220,11 @@ sap.ui.define(
             oConfigModel.setProperty('/personalInfoSaveVisible', false);
             oConfigModel.setProperty('/personalInfoEditable', false);
 
+            if (JSON.stringify(this.getView().getModel('oDataBpPersonal').oData) === JSON.stringify(this.oDataBpPersonalBak)) {
+                sap.ui.commons.MessageBox.alert("There is no change for Personal Info.");
+                return;
+            }
+
             sPath = '/Partners' + '(\'' + bpNumber + '\')/BpPersonal/';
             oParameters = {
                 urlParameters: {},
@@ -250,6 +269,11 @@ sap.ui.define(
             oConfigModel.setProperty('/contactInfoEditVisible', true);
             oConfigModel.setProperty('/contactInfoSaveVisible', false);
             oConfigModel.setProperty('/contactInfoEditable', false);
+
+            if (JSON.stringify(this.getView().getModel('oDataBpContact').oData) === JSON.stringify(this.oDataBpContactBak)) {
+                sap.ui.commons.MessageBox.alert("There is no change for Contact Info.");
+                return;
+            }
 
             sPath = '/Partners' + '(\'' + bpNumber + '\')/BpContact/';
             oParameters = {
@@ -310,13 +334,17 @@ sap.ui.define(
                 }.bind(this)
             };
             for (i = 0; i < this.getView().getModel('oDataBpMarkPreferSet').oData.results.length; i = i + 1) {
-                attibuteSet = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/AttributeSet');
-                attribute = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/Attribute');
+                if (JSON.stringify(this.getView().getModel('oDataBpMarkPreferSet').oData.results[i]) === JSON.stringify(this.oDataBpMarkPreferSetBak.results[i])) {
+                    sap.ui.commons.MessageBox.alert("There is no change for Market Perference index: " + i.toString());
+                } else {
+                    attibuteSet = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/AttributeSet');
+                    attribute = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/Attribute');
 
-                sPath = '/Partners' + '(\'' + bpNumber + '\')/BpMarkPreferSet' + '(PartnerID=\'' + bpNumber + '\',AttributeSet=\'' + attibuteSet + '\',Attribute=\'' + attribute + '\')';
+                    sPath = '/Partners' + '(\'' + bpNumber + '\')/BpMarkPreferSet' + '(PartnerID=\'' + bpNumber + '\',AttributeSet=\'' + attibuteSet + '\',Attribute=\'' + attribute + '\')';
 
-                if (oModel) {
-                    oModel.update(sPath, this.getView().getModel('oDataBpMarkPreferSet').oData.results[i], oParameters);
+                    if (oModel) {
+                        oModel.update(sPath, this.getView().getModel('oDataBpMarkPreferSet').oData.results[i], oParameters);
+                    }
                 }
             }
         };
