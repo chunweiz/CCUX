@@ -4,9 +4,40 @@
 
     .uteAppHMItem-hdr {
         display: inline-block;
+        color: @uteColor-grey-dark;
+
+        :hover {
+            color: @uteColor-blue-link;
+            cursor: pointer;
+        }
+
+        .sapUiIcon::before {
+            cursor: pointer;
+        }
     }
 
     .uteAppHMItem-content {
+        display: block;
         position: absolute;
+        width: 100%;
+        left: 0;
+        background-color: @uteColor-blue-link;
+        border-bottom: 6px solid @uteColor-grey-dark;
+    }
+}
+
+.uteAppHMItem[data-disabled=disabled] {
+    .uteAppHMItem-hdr {
+        color: @uteColor-grey-light;
+
+        :hover {
+            color: @uteColor-grey-light;
+            cursor: default;
+        }
+
+        .sapUiIcon::before {
+            color: @uteColor-grey-light;
+            cursor: default;
+        }
     }
 }

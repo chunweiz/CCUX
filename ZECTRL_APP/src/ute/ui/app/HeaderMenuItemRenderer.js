@@ -31,6 +31,7 @@ sap.ui.define(
             var aHeader = oCustomControl.getHeader();
 
             oRm.write('<div');
+            oRm.writeAttribute('id', oCustomControl.getId() + '-hdr');
             oRm.addClass('uteAppHMItem-hdr');
             oRm.writeClasses();
             oRm.write('>');
@@ -46,7 +47,13 @@ sap.ui.define(
             var aContent = oCustomControl.getContent();
 
             oRm.write('<div');
+            oRm.writeAttribute('id', oCustomControl.getId() + '-content');
             oRm.addClass('uteAppHMItem-content');
+
+            if (!oCustomControl.getExpanded()) {
+                oRm.addClass('uteU-hidden');
+            }
+
             oRm.writeClasses();
             oRm.write('>');
 

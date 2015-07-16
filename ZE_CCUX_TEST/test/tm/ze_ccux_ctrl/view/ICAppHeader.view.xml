@@ -12,14 +12,32 @@
     displayBlock="true">
 
     <style>
-        .divider {
+        .nrgAppHMItem-spacer {
+            position: relative;
+            display: inline-block;
+            width: 1px;
+            height: 12pt;
+            background-color: transparent;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        .nrgAppHMItem-divider {
             position: relative;
             display: inline-block;
             width: 1px;
             height: 12pt;
             background-color: tomato;
-            margin-left: 10px;
-            margin-right: 10px;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        .nrgAppHMItem.uteAppHMItem {
+            margin-top: 40px;
+        }
+
+        .nrgAppHMItem .uteAppHMItem-hdr {
+            margin-bottom: 10px;
         }
     </style>
 
@@ -29,55 +47,66 @@
                 <ua:banner>
                 </ua:banner>
                 <ua:menu>
-                    <ua:HeaderMenu>
-                        <ua:HeaderMenuItem>
+                    <ua:HeaderMenu class="nrgAppHMItem">
+                        <ua:HeaderMenuItem class="nrgAppHMItem">
                             <ua:header>
                                 <span>Menu</span>
                             </ua:header>
+                            <ua:content>
+                                <div>zminofwnefwe</div>
+                                <div>zminofwnefwe</div>
+                                <div>zminofwnefwe</div>
+                            </ua:content>
                         </ua:HeaderMenuItem>
-                        <span class="divider" />
+                        <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem>
                             <ua:header>
                                 <span>Index</span>
                             </ua:header>
+                            <ua:customData>
+                                <core:CustomData key="disabled" value="disabled" writeToDom="true" />
+                            </ua:customData>
                         </ua:HeaderMenuItem>
-                        <span class="divider" />
+                        <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem>
                             <ua:header>
                                 <span>Transactions</span>
                             </ua:header>
                         </ua:HeaderMenuItem>
-                        <span class="divider" />
+                        <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem>
                             <ua:header>
                                 <span>ESID Tool</span>
                             </ua:header>
                         </ua:HeaderMenuItem>
-                        <span class="divider" />
+                        <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem>
                             <ua:header>
                                 <span>PALPlus</span>
                             </ua:header>
                         </ua:HeaderMenuItem>
-                        <span class="divider" />
+                        <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem>
                             <ua:header>
                                 <span>Messages</span>
                             </ua:header>
                         </ua:HeaderMenuItem>
-                        <span class="divider" />
+                        <span class="nrgAppHMItem-spacer" />
                         <ua:HeaderMenuItem>
                             <ua:header>
                                 <core:Icon src="sap-icon://nrg-icon/refresh"></core:Icon>
                             </ua:header>
+                            <ua:customData>
+                                <core:CustomData key="disabled" value="disabled" writeToDom="true" />
+                            </ua:customData>
                         </ua:HeaderMenuItem>
-                        <span class="divider" />
+                        <span class="nrgAppHMItem-spacer" />
                         <ua:HeaderMenuItem>
                             <ua:header>
                                 <span>Clear Account</span>
                             </ua:header>
                         </ua:HeaderMenuItem>
-                        <span class="divider" />
+                        <span class="nrgAppHMItem-spacer" />
                         <ua:HeaderMenuItem>
                             <ua:header>
                                 <span>LOG OFF</span>
