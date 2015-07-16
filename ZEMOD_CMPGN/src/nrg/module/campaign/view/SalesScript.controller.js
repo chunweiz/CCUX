@@ -79,7 +79,7 @@ sap.ui.define(
                 aContent = oDropDownList.getContent();
                 if ((aContent !== undefined) && (aContent.length > 0)) {
                     sPath = aContent[0].getBindingContext("comp-campaign").getPath();
-                    // aContent[0].addStyleClass("nrgCamHisBut-Selected");
+                    oDropDownList.setSelectedKey("EN");
                     oMandDiscloureTV.bindElement({
                         model : "comp-campaign",
                         path : sPath
@@ -173,6 +173,7 @@ sap.ui.define(
                 aContent = oDropDownList.getContent();
                 if ((aContent !== undefined) && (aContent.length > 0)) {
                     sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                    oDropDownList.setSelectedKey("EN");
                     oOverScriptTV.bindElement({
                         model : "comp-campaign",
                         path : sPath
@@ -202,6 +203,48 @@ sap.ui.define(
 		 */
         Controller.prototype.backToOverview = function (oEvent) {
             this.navTo("campaign", {coNum : "34805112", flagType : "C"});
+        };
+        /**
+		 * Formats the Type value to display "English" and "Spanish"
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.formatType = function (sType) {
+            if (sType === "EN") {
+                return this._i18NModel.getProperty("nrgCmpSSEN");
+            } else {
+                return this._i18NModel.getProperty("nrgCmpSSES");
+            }
+        };
+        /**
+		 * Change the binding if the language is selected
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.onSelected = function (oEvent) {
+            var sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath(),
+                oMandDiscloureTV = this.getView().byId("idCamSSMdTv");
+            oMandDiscloureTV.bindElement({
+                model : "comp-campaign",
+                path : sPath
+            });
+        };
+        /**
+		 * Handler for the Rejection Reason Selected
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.onRejectionReason = function (oEvent) {
+
         };
         return Controller;
     }

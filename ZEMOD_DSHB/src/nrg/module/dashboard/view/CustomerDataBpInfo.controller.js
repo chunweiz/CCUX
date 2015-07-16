@@ -97,10 +97,31 @@ sap.ui.define(
         };
 
         CustomController.prototype.onTitleSave = function () {
-            var oConfigModel = this.getView().getModel('oBpInfoConfig');
+            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters,
+                bpNumber = this.getView().getModel('oDataBpTitle').getProperty('/PartnerID');
+
             oConfigModel.setProperty('/titleEditVisible', true);
             oConfigModel.setProperty('/titleSaveVisible', false);
             oConfigModel.setProperty('/titleEditable', false);
+
+            sPath = '/Partners' + '(\'' + bpNumber + '\')/BpName/';
+            oParameters = {
+                urlParameters: {},
+                success : function (oData) {
+                    sap.ui.commons.MessageBox.alert("Title/Name Update Success");
+                    this._retrBpTitle(bpNumber);
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Title/Name Update Failed");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.update(sPath, this.getView().getModel('oDataBpTitle').oData, oParameters);
+            }
         };
 
         CustomController.prototype.onAddrCancel = function () {
@@ -121,10 +142,31 @@ sap.ui.define(
         };
 
         CustomController.prototype.onAddrSave = function () {
-            var oConfigModel = this.getView().getModel('oBpInfoConfig');
+            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters,
+                bpNumber = this.getView().getModel('oDataBpAddress').getProperty('/results/0/PartnerID');
+
             oConfigModel.setProperty('/addrEditVisible', true);
             oConfigModel.setProperty('/addrSaveVisible', false);
             oConfigModel.setProperty('/addrEditable', false);
+
+            sPath = '/Partners' + '(\'' + bpNumber + '\')/BpAddress/';
+            oParameters = {
+                urlParameters: {},
+                success : function (oData) {
+                    sap.ui.commons.MessageBox.alert("Address Update Success");
+                    this._retrBpAddress(bpNumber);
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Address Update Failed");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.update(sPath, this.getView().getModel('oDataBpAddress').oData, oParameters);
+            }
         };
 
         CustomController.prototype.onPersonalInfoCancel = function () {
@@ -292,8 +334,8 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         if (oData.results[0]) {
-                            this.getView().getModel('oDataBpAddress').setData(oData.results[0].AddressInfo);
-                            this.oDataBpAddressBak = jQuery.extend(true, {}, oData.results[0].AddressInfo);
+                            this.getView().getModel('oDataBpAddress').setData(oData);
+                            this.oDataBpAddressBak = jQuery.extend(true, {}, oData);
                         }
                     }
                 }.bind(this),
