@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Version="1.0">
     <edmx:DataServices m:DataServiceVersion="2.0">
-        <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:sap="http://www.sap.com/Protocols/SAPData" Namespace="ZE_CCUX_CAMPAIGN_OVW_SRV">
+        <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZE_CCUX_CAMPAIGN_OVW_SRV">
             <EntityType Name="EFL">
                 <Key>
                     <PropertyRef Name="EFLType"/>
                     <PropertyRef Name="EFLLevel"/>
                 </Key>
-                <Property MaxLength="2" Name="EFLType" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property Name="EFLLevel" Nullable="false" Type="Edm.Int16" sap:updatable="false"/>
-                <Property MaxLength="12" Name="Contract" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="8" Name="OfferCode" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property Name="EFLPrice" Nullable="false" Precision="7" Scale="2" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property MaxLength="2" Name="EFLType" Nullable="false" Type="Edm.String"/>
+                <Property Name="EFLLevel" Nullable="false" Type="Edm.Int16"/>
+                <Property MaxLength="12" Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="8" Name="OfferCode" Nullable="false" Type="Edm.String"/>
+                <Property Name="EFLPrice" Nullable="false" Precision="7" Scale="2" Type="Edm.Decimal"/>
             </EntityType>
             <EntityType Name="Return">
                 <Key>
@@ -23,10 +23,10 @@
                 <Key>
                     <PropertyRef Name="LpCode"/>
                 </Key>
-                <Property MaxLength="10" Name="LpCode" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="4" Name="Bukrs" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="40" Name="LpTxt" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property Name="ReqRefID" Nullable="false" Type="Edm.Boolean" sap:updatable="false"/>
+                <Property MaxLength="10" Name="LpCode" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="4" Name="Bukrs" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="40" Name="LpTxt" Nullable="false" Type="Edm.String"/>
+                <Property Name="ReqRefID" Nullable="false" Type="Edm.Boolean"/>
             </EntityType>
             <EntityType Name="Script">
                 <Key>
@@ -35,31 +35,31 @@
                     <PropertyRef Name="TxtName"/>
                     <PropertyRef Name="TxtLang"/>
                 </Key>
-                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="10" Name="OfferCode" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="70" Name="TxtName" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="2" Name="TxtLang" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="5000" Name="TxtLine" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="OfferCode" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="70" Name="TxtName" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="2" Name="TxtLang" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="5000" Name="TxtLine" Nullable="false" Type="Edm.String"/>
             </EntityType>
             <EntityType Name="CpgCmpbyInv">
                 <Key>
                     <PropertyRef Name="SelOfferCd"/>
                     <PropertyRef Name="CurrCons"/>
                 </Key>
-                <Property MaxLength="8" Name="SelOfferCd" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property Name="CurrCons" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
-                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property Name="EstInvoice" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
-                <Property Name="EstcentsperkWh" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property MaxLength="8" Name="SelOfferCd" Nullable="false" Type="Edm.String"/>
+                <Property Name="CurrCons" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property Name="EstInvoice" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="EstcentsperkWh" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
             </EntityType>
             <EntityType Name="CpgElig">
                 <Key>
                     <PropertyRef Name="Contract"/>
                 </Key>
-                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="1" Name="AgntEligFlag" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="1" Name="CustEligFlag" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="1" Name="FirstBill" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="1" Name="AgntEligFlag" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="1" Name="CustEligFlag" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="1" Name="FirstBill" Nullable="false" Type="Edm.String"/>
             </EntityType>
             <EntityType Name="CpgCmpbyCons">
                 <Key>
@@ -67,13 +67,13 @@
                     <PropertyRef Name="SelOfferCd"/>
                     <PropertyRef Name="CurrCons"/>
                 </Key>
-                <Property MaxLength="8" Name="CurrOfferCd" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="8" Name="SelOfferCd" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property Name="CurrCons" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
-                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property Name="SimCurrInv" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
-                <Property Name="EstInvoice" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
-                <Property Name="EstcentsperkWh" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property MaxLength="8" Name="CurrOfferCd" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="8" Name="SelOfferCd" Nullable="false" Type="Edm.String"/>
+                <Property Name="CurrCons" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property Name="SimCurrInv" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="EstInvoice" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="EstcentsperkWh" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
             </EntityType>
             <EntityType Name="PendSwap">
                 <Key>
@@ -82,52 +82,53 @@
                     <PropertyRef Name="IdocNo"/>
                     <PropertyRef Name="HistoryNo"/>
                 </Key>
-                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="4" Name="SwapType" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="16" Name="IdocNo" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="16" Name="HistoryNo" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="8" Name="Offer" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="150" Name="OfferDesc" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="10" Name="Promo" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="10" Name="Campaign" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="15" Name="Product" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property Name="DatStartPen" Nullable="false" Precision="7" Type="Edm.DateTime" sap:updatable="false"/>
-                <Property Name="DatEndPen" Nullable="false" Precision="7" Type="Edm.DateTime" sap:updatable="false"/>
-                <Property Name="DateSigned" Nullable="false" Precision="7" Type="Edm.DateTime" sap:updatable="false"/>
-                <Property MaxLength="60" Name="ReqName" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="50" Name="ReqNumber" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="4" Name="SwapType" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="16" Name="IdocNo" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="16" Name="HistoryNo" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="8" Name="Offer" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="150" Name="OfferDesc" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="Promo" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="Campaign" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="15" Name="Product" Nullable="false" Type="Edm.String"/>
+                <Property Name="DatStartPen" Nullable="false" Precision="7" Type="Edm.DateTime"/>
+                <Property Name="DatEndPen" Nullable="false" Precision="7" Type="Edm.DateTime"/>
+                <Property Name="DateSigned" Nullable="false" Precision="7" Type="Edm.DateTime"/>
+                <Property MaxLength="60" Name="ReqName" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="50" Name="ReqNumber" Nullable="false" Type="Edm.String"/>
             </EntityType>
             <EntityType Name="RejectRsn">
                 <Key>
                     <PropertyRef Name="RejectionCode"/>
                 </Key>
-                <Property MaxLength="2" Name="RejectionCode" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="40" Name="Description" Nullable="false" Type="Edm.String" sap:updatable="false"/>
+                <Property MaxLength="2" Name="RejectionCode" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="40" Name="Description" Nullable="false" Type="Edm.String"/>
             </EntityType>
             <EntityType Name="Cpg">
                 <Key>
                     <PropertyRef Name="Contract"/>
                     <PropertyRef Name="OfferCode"/>
                 </Key>
-                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="8" Name="OfferCode" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="20" Name="Type" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property Name="StartDate" Type="Edm.DateTime" sap:updatable="false"/>
-                <Property Name="EndDate" Type="Edm.DateTime" sap:updatable="false"/>
-                <Property MaxLength="60" Name="OfferTitle" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="2048" Name="Description" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property Name="AvgUsage" Nullable="false" Precision="17" Type="Edm.Decimal" sap:updatable="false"/>
-                <Property MaxLength="10" Name="Campaign" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="10" Name="Promo" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="2" Name="Term" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property Name="CncFee" Nullable="false" Precision="10" Scale="2" Type="Edm.Decimal" sap:updatable="false"/>
-                <Property Name="Incentive" Nullable="false" Precision="10" Scale="2" Type="Edm.Decimal" sap:updatable="false"/>
-                <Property Name="CurrInvAmt" Nullable="false" Precision="13" Scale="2" Type="Edm.Decimal" sap:updatable="false"/>
-                <Property Name="CurrCons" Nullable="false" Precision="17" Type="Edm.Decimal" sap:updatable="false"/>
-                <Property MaxLength="10" Name="Disposition" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property MaxLength="1" Name="ReqRefID" Nullable="false" Type="Edm.String" sap:updatable="false"/>
-                <Property Name="EFLLevel" Nullable="false" Type="Edm.Int16" sap:updatable="false"/>
-                <Property Name="EFLPrice" Nullable="false" Precision="6" Scale="2" Type="Edm.Decimal" sap:updatable="false"/>
+                <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="8" Name="OfferCode" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="20" Name="Type" Nullable="false" Type="Edm.String"/>
+                <Property Name="StartDate" Type="Edm.DateTime"/>
+                <Property Name="EndDate" Type="Edm.DateTime"/>
+                <Property MaxLength="60" Name="OfferTitle" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="2048" Name="Description" Nullable="false" Type="Edm.String"/>
+                <Property Name="AvgUsage" Nullable="false" Precision="17" Type="Edm.Decimal"/>
+                <Property MaxLength="10" Name="Campaign" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="Promo" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="2" Name="Term" Nullable="false" Type="Edm.String"/>
+                <Property Name="CncFee" Nullable="false" Precision="10" Scale="2" Type="Edm.Decimal"/>
+                <Property Name="Incentive" Nullable="false" Precision="10" Scale="2" Type="Edm.Decimal"/>
+                <Property Name="CurrInvAmt" Nullable="false" Precision="13" Scale="2" Type="Edm.Decimal"/>
+                <Property Name="CurrCons" Nullable="false" Precision="17" Type="Edm.Decimal"/>
+                <Property MaxLength="10" Name="Disposition" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="LPcode" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="1" Name="ReqRefID" Nullable="false" Type="Edm.String"/>
+                <Property Name="EFLLevel" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="EFLPrice" Nullable="false" Precision="6" Scale="2" Type="Edm.Decimal"/>
                 <NavigationProperty FromRole="FromRole_Cpg_EFL" Name="EFLs" Relationship="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_EFL" ToRole="ToRole_Cpg_EFL"/>
                 <NavigationProperty FromRole="FromRole_Cpg_Script" Name="Scripts" Relationship="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" ToRole="ToRole_Cpg_Script"/>
             </EntityType>
@@ -161,18 +162,18 @@
             </Association>
             <EntityContainer Name="ZE_CCUX_CAMPAIGN_OVW_SRV_Entities" m:IsDefaultEntityContainer="true">
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Return" Name="ReturnCollection"/>
-                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.LoyalPrg" Name="LoyalPrgS" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
-                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Script" Name="ScriptS" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
-                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgCmpbyInv" Name="CpgCmpbyInvS" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
-                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgElig" Name="CpgEligS" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
-                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgCmpbyCons" Name="CpgCmpbyConsS" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
-                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.PendSwap" Name="PendSwapS" sap:creatable="false" sap:pageable="false" sap:updatable="false"/>
-                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.RejectRsn" Name="RejectRsnS" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
-                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" Name="CpgChgOfferS" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
-                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" Name="CpgHistS" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
-                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" Name="CpgOvwS" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
-                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" Name="CpgSearchS" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
-                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.EFL" Name="EFLS" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.LoyalPrg" Name="LoyalPrgS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Script" Name="ScriptS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgCmpbyInv" Name="CpgCmpbyInvS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgElig" Name="CpgEligS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgCmpbyCons" Name="CpgCmpbyConsS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.PendSwap" Name="PendSwapS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.RejectRsn" Name="RejectRsnS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" Name="CpgChgOfferS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" Name="CpgHistS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" Name="CpgOvwS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" Name="CpgSearchS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.EFL" Name="EFLS"/>
                 <AssociationSet Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" Name="OvwS_ScriptS">
                     <End EntitySet="CpgOvwS" Role="FromRole_Cpg_Script"/>
                     <End EntitySet="ScriptS" Role="ToRole_Cpg_Script"/>
@@ -193,19 +194,30 @@
                     <End EntitySet="CpgChgOfferS" Role="FromRole_Cpg_EFL"/>
                     <End EntitySet="EFLS" Role="ToRole_Cpg_EFL"/>
                 </AssociationSet>
+                <AssociationSet Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" Name="SearchS_ScriptS">
+                    <End EntitySet="CpgSearchS" Role="FromRole_Cpg_Script"/>
+                    <End EntitySet="ScriptS" Role="ToRole_Cpg_Script"/>
+                </AssociationSet>
                 <AssociationSet Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_EFL" Name="HistS_EFLS">
                     <End EntitySet="CpgHistS" Role="FromRole_Cpg_EFL"/>
                     <End EntitySet="EFLS" Role="ToRole_Cpg_EFL"/>
                 </AssociationSet>
+                <AssociationSet Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_EFL" Name="SearchS_EFLS">
+                    <End EntitySet="CpgSearchS" Role="FromRole_Cpg_EFL"/>
+                    <End EntitySet="EFLS" Role="ToRole_Cpg_EFL"/>
+                </AssociationSet>
                 <FunctionImport EntitySet="ReturnCollection" Name="Z_CCUX_CAMPAIGN_ACCEPT" ReturnType="ZE_CCUX_CAMPAIGN_OVW_SRV.Return" m:HttpMethod="POST">
-                    <Parameter MaxLength="10" Mode="In" Name="IV_PARTNER" Precision="0" Scale="0" Type="Edm.String"/>
-                    <Parameter MaxLength="12" Mode="In" Name="IV_VKONT" Precision="0" Scale="0" Type="Edm.String"/>
-                    <Parameter MaxLength="10" Mode="In" Name="IV_CURR_CAMP_CODE" Precision="0" Scale="0" Type="Edm.String"/>
-                    <Parameter MaxLength="60" Mode="In" Name="IV_CURR_OFFER_TITLE" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="10" Mode="In" Name="IV_VERTRAG" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="10" Mode="In" Name="IV_CAMPAIGN_CODE" Precision="0" Scale="0" Type="Edm.String"/>
                     <Parameter MaxLength="10" Mode="In" Name="IV_LP_CODE" Precision="0" Scale="0" Type="Edm.String"/>
                     <Parameter MaxLength="24" Mode="In" Name="IV_LP_REFID" Precision="0" Scale="0" Type="Edm.String"/>
                     <Parameter MaxLength="50" Mode="In" Name="IV_LP_FNAME" Precision="0" Scale="0" Type="Edm.String"/>
                     <Parameter MaxLength="50" Mode="In" Name="IV_LP_LNAME" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="8" Mode="In" Name="IV_OFFER_CODE" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="60" Mode="In" Name="IV_OFFER_TITLE" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="10" Mode="In" Name="IV_PROMO_CODE" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="0" Mode="In" Name="IV_STARTDATE" Precision="0" Scale="0" Type="Edm.DateTime"/>
+                    <Parameter MaxLength="0" Mode="In" Name="IV_END_DATE" Precision="0" Scale="0" Type="Edm.DateTime"/>
                 </FunctionImport>
             </EntityContainer>
         </Schema>

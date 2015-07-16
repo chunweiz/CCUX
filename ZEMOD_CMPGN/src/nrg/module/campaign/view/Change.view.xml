@@ -115,8 +115,12 @@
                            class="nrgCamChg-btn"
                            design="Default">
                 </um:button>
-                <um:Dropdown id="dd001" content="{comp-campaign>/RejectRsnS}" selectedKey="2" select=".onSelected" placeholder="Non-Disposition Reason">
-                    <um:DropdownItem key="{comp-campaign>RejectionCode}">
+                <um:Dropdown id="dd001"
+                             content="{comp-campaign>/RejectRsnS}"
+                             select=".onSelected"
+                             placeholder="Non-Disposition Reason"
+                             class="nrgCamChgRr-DdL nrgCamChg-left">
+                    <um:DropdownItem key="{comp-campaign>RejectionCode}" class="nrgCamChgRr-DdLItem">
                         <u:Tag text="{comp-campaign>Description}" />
                     </um:DropdownItem>
                 </um:Dropdown>

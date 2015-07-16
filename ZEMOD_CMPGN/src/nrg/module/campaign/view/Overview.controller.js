@@ -249,8 +249,8 @@ sap.ui.define(
             if (sFirstMonthBill === "X") {
                 sap.ui.commons.MessageBox.alert("Customer has to completed atleast One Month Invoice");
             } else {
-               // this.showPendingSwaps();
-                this.navTo("campaignoffers", {coNum: sContract});
+                this.showPendingSwaps();
+                //this.navTo("campaignoffers", {coNum: sContract});
             }
         };
 
@@ -390,6 +390,26 @@ sap.ui.define(
             //to get access to the global model
             this._oCancelDialog.addStyleClass("nrgCamHis-dialog");
             this._oCancelDialog.open();
+        };
+        /**
+		 * Handle when user clicked on Cancelling of Pending Swaps
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.ProceedwithCancel = function (oEvent) {
+            this._oCancelDialog.close();
+            this.navTo("campaignoffers", {coNum: this._sContract});
+        };
+        /**
+		 * Handle when user clicked on Cancelling of Pending Swaps
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.ContinuewithCancel = function (oEvent) {
+            this._oCancelDialog.close();
+            this.navTo("campaignoffers", {coNum: this._sContract});
         };
 
         return Controller;

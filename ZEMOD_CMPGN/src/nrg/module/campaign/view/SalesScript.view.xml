@@ -37,9 +37,9 @@
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>
-            <u:Tag class="nrgCamSS-DdL">
-                <um:Dropdown id="idnrgCamSSDdL" select=".onSelected">
-                    <um:DropdownItem key="{comp-campaign>TxtLang}" id="idnrgCamSSLngLtIt">
+            <u:Tag class="nrgCamSS-left">
+                <um:Dropdown id="idnrgCamSSDdL" select=".onSelected" class="nrgCamSSLng-DdL">
+                    <um:DropdownItem key="{comp-campaign>TxtLang}" id="idnrgCamSSLngLtIt" class="nrgCamSSLng-DdLItem">
                         <u:Tag text="{parts:[{path:'comp-campaign>TxtLang'}],
                                                     formatter:'.formatType'}"/>
                     </um:DropdownItem>
@@ -64,16 +64,20 @@
                     class="nrgCamSS-btn"
                     press=".onAccept">
                 </u:Button>
-                <um:Dropdown id="dd001" content="{comp-campaign>/RejectRsnS}" selectedKey="2" select=".onRejectionReason" placeholder="Non-Disposition Reason">
-                    <um:DropdownItem key="{comp-campaign>RejectionCode}">
+                <um:Dropdown id="dd001"
+                             content="{comp-campaign>/RejectRsnS}"
+                             selectedKey="2" select=".onRejectionReason"
+                             placeholder="Non-Disposition Reason"
+                             class="nrgCamSSRr-DdL nrgCamSS-left">
+                    <um:DropdownItem key="{comp-campaign>RejectionCode}" class="nrgCamSSRr-DdLItem">
                         <u:Tag text="{comp-campaign>Description}" />
                     </um:DropdownItem>
                 </um:Dropdown>
             </u:Tag>
           <u:Dialog id="idnrgCamOvsDialog">
-            <u:Tag class="nrgCamOVS-DdL">
-                <um:Dropdown selectedKey="EN" id="idnrgCamOvsDdL">
-                    <um:DropdownItem key="{comp-campaign>TxtLang}" id="idnrgCamOvsLngLtIt">
+            <u:Tag>
+                <um:Dropdown selectedKey="EN" id="idnrgCamOvsDdL" class="nrgCamOVSLng-DdL" >
+                    <um:DropdownItem key="{comp-campaign>TxtLang}" id="idnrgCamOvsLngLtIt" class="nrgCamOVSLng-DdLItem">
                         <u:Tag text="{parts:[{path:'comp-campaign>TxtLang'}],
                                                     formatter:'.formatType'}"/>
                     </um:DropdownItem>
@@ -92,13 +96,15 @@
                     id="idnrgCamOvsBtn-Ok"
                     text="{comp-i18n-campaign>nrgCmpSSBtnOk}"
                     enabled="true"
-                    class="nrgCamOvs-btn">
+                    class="nrgCamOvs-btn"
+                    press=".onOvsAccept">
                 </u:Button>
                 <u:Button
                     id="idnrgCamOvsBtn-Dec"
                     text="{comp-i18n-campaign>nrgCmpSSBtnDec}"
                     enabled="true"
-                    class="nrgCamOvs-btn">
+                    class="nrgCamOvs-btn"
+                    press=".onOvsDecline">
                 </u:Button>
             </u:Tag>
           </u:Dialog>

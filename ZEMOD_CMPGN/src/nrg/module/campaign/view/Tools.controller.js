@@ -174,6 +174,7 @@ sap.ui.define(
                 aContent = oScrollContainer.getContent();
                 if ((aContent !== undefined) && (aContent.length > 0)) {
                     sPath = aContent[0].getBindingContext("comp-campaign").getPath();
+                    aContent[0].addStyleClass("nrgCamHis-but-selected");
                     oHistoryView.bindElement({
                         model : "comp-campaign",
                         path : sPath
@@ -185,32 +186,31 @@ sap.ui.define(
                             aResults.push(this.getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
                         }
                     }
-                    oTemplateModel.setData(that.convertEFLJson(aResults));
-                    that._oEFLModel = oTemplateModel;
-                    oTemplateView = sap.ui.view({
-                        preprocessors: {
-                            xml: {
-                                models: {
-                                    tmpl : that._oEFLModel
+                    if ((aResults !== undefined) && (aResults.length > 0)) {
+                        return;
+                    } else {
+                        oTemplateModel.setData(that.convertEFLJson(aResults));
+                        that._oEFLModel = oTemplateModel;
+                        oTemplateView = sap.ui.view({
+                            preprocessors: {
+                                xml: {
+                                    models: {
+                                        tmpl : that._oEFLModel
+                                    }
                                 }
-                            }
-                        },
-                        type: sap.ui.core.mvc.ViewType.XML,
-                        viewName: "nrg.module.campaign.view.EFLData"
-                    });
-                    oPricingTable.addContent(oTemplateView);
+                            },
+                            type: sap.ui.core.mvc.ViewType.XML,
+                            viewName: "nrg.module.campaign.view.EFLData"
+                        });
+                        oPricingTable.addContent(oTemplateView);
+                    }
                     // Adding EFL Table to History view as XML templating--end
-                    that.setEFLTileValue(oHistoryView, aResults, aEFLDatapaths);
-                    // Development for Pricing Table binding..........................................
-                    aContent[0].addStyleClass("nrgCamHis-but-selected");
 
                 } else {
                     oDataTag.addStyleClass("nrgCamHis-hide");
                     oNoDataTag.removeStyleClass("nrgCamHis-hide");
                 }
-                that.getOwnerComponent().setCcuxBusy(false);
-                oBinding = oScrollContainer.getBinding("content");
-                oBinding.detachDataReceived(fnRecievedHandler);
+
             };
             // Function received handler is used to update the view with first History campaign.---end
 
@@ -233,6 +233,7 @@ sap.ui.define(
             //to get access to the global model
             this.getView().addDependent(this._oHistoryDialog);
             this._oHistoryDialog.open();
+            that.getOwnerComponent().setCcuxBusy(false);
 
         };
 
@@ -401,43 +402,20 @@ sap.ui.define(
             return aJsonDataNew;
         };
         /**
-		 * Find out the Highest EFL interval and bind it to Tile EFL value
+		 * Handle when user clicked on Cancelling of Pending Swaps
 		 *
 		 * @function
-		 * @param {String} Type value from the binding
-         *
-		 *
+         * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
-        Controller.prototype.setEFLTileValue = function (oHistoryView, aResults, aEFLDatapaths) {
-
-            var iCount1,
-                tempInterval = null,
-                tempValue = null,
-                temp,
-                sPath,
-                iCount;
-
-            for (iCount1 = 0; iCount1 < aResults.length; iCount1 = iCount1 + 1) {
-                temp = aResults[iCount1];
-                if (tempInterval === null) {
-                    tempInterval = temp.EFLLevel;
-                    tempValue = temp.EFLPrice;
-                } else {
-                    if (tempInterval < temp.EFLLevel) {
-                        tempInterval = temp.EFLLevel;
-                        tempValue = temp.EFLPrice;
-                    }
-                }
-            }
-            oHistoryView.byId("idnrgCamHis-but-priceLbl").bindElement({
-                model : "comp-campaign",
-                path : sPath
-            });
-            oHistoryView.byId("idnrgCamHis-but-price").bindElement({
-                model : "comp-campaign",
-                path : sPath
-            });
-
+        Controller.prototype.ProceedwithCancel = function (oEvent) {
+        };
+        /**
+		 * Handle when user clicked on Cancelling of Pending Swaps
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.ContinuewithCancel = function (oEvent) {
         };
 
         return Controller;

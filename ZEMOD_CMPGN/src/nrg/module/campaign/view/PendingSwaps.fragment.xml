@@ -56,11 +56,13 @@
             <u:Tag class="nrgCamTls-top">
                 <u:Button
                     text="Proceed with Cancel"
-                    enabled="true">
+                    enabled="true"
+                    press=".ProceedwithCancel">
                 </u:Button>
                 <u:Button
                     text="Continue without Cancel"
-                    enabled="true">
+                    enabled="true"
+                    press=".ContinuewithCancel">
                 </u:Button>
             </u:Tag>
           </u:Tag>

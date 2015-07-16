@@ -142,8 +142,7 @@ sap.ui.define(
 		 */
         Controller.prototype.onAccept = function (oEvent) {
 
-            var oDialog = this.getView().byId("idnrgCamOvsDialog"),
-                sCurrentPath,
+            var sCurrentPath,
                 oDropDownList,
                 oDropDownListItemTemplate,
                 mParameters,
@@ -156,16 +155,17 @@ sap.ui.define(
                 oOverScriptTV = this.getView().byId("idnrgCamOvsOvTv"),
                 aFilterIds,
                 aFilterValues;
+            this._oOverviewDialog = this.getView().byId("idnrgCamOvsDialog");
             this.getOwnerComponent().setCcuxBusy(true);
             aFilterIds = ["Contract", "OfferCode", "TxtName"];
             aFilterValues = ['32253375', '50160100', "OVW"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sCurrentPath = "/ScriptS";
-            oDialog.setWidth("750px");
-            oDialog.setHeight("auto");
-            oDialog.setTitle("OVERVIEW SCRIPT");
-            oDialog.setModal(true);
-            oDialog.addStyleClass("nrgCamOvs-dialog");
+            this._oOverviewDialog.setWidth("750px");
+            this._oOverviewDialog.setHeight("auto");
+            this._oOverviewDialog.setTitle("OVERVIEW SCRIPT");
+            this._oOverviewDialog.setModal(true);
+            this._oOverviewDialog.addStyleClass("nrgCamOvs-dialog");
             oDropDownList = this.getView().byId("idnrgCamOvsDdL");
             aContent = oDropDownList.getContent();
             oDropDownListItemTemplate = aContent[0].clone();
@@ -191,8 +191,8 @@ sap.ui.define(
             };
             oDropDownList.bindAggregation("content", mParameters);
             obinding = oDropDownList.getBinding("content");
-            this.getView().addDependent(oDialog);
-            oDialog.open();
+            this.getView().addDependent(this._oOverviewDialog);
+            this._oOverviewDialog.open();
         };
 
         /**
@@ -245,6 +245,50 @@ sap.ui.define(
 		 */
         Controller.prototype.onRejectionReason = function (oEvent) {
 
+        };
+        /**
+		 * Handle when user clicked on Accepting Overview Script
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onOvsAccept = function (oEvent) {
+            var oModel,
+                mParameters;
+            oModel = this.getOwnerComponent().getModel('comp-campaign');
+            mParameters = {
+                method : "POST",
+                urlParameters : {"IV_CAMPAIGN_CODE" : 'XA1PP7',
+                                         "IV_END_DATE" : new Date(),
+                                        "IV_LP_CODE" : "null",
+                                        "IV_LP_FNAME" : "null",
+                                        "IV_LP_LNAME" : "null",
+                                        "IV_LP_REFID" : "null",
+                                        "IV_OFFER_CODE" : '50160100',
+                                        "IV_OFFER_TITLE" : "CPL AVG@2000 13.9 SE N&W 12 WPT EML $0 NSP",
+                                        "IV_PROMO_CODE" : 'XA1PP7',
+                                        "IV_STARTDATE" : new Date(),
+                                        "IV_VERTRAG" : '32253375'},
+                success : function (oData) {
+                    jQuery.sap.log.info("Odata Read Successfully:::");
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Eligibility Error occured");
+                }.bind(this)
+            };
+            oModel.callFunction("/Z_CCUX_CAMPAIGN_ACCEPT", mParameters); // callback function for error
+            this.navTo("campaignoffers", {coNum: this._sContract});
+            this._oOverviewDialog.close();
+        };
+        /**
+		 * Handle when user clicked on Declining Overview Script
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onOvsDecline = function (oEvent) {
+            this._oOverviewDialog.close();
+            this.navTo("campaignoffers", {coNum: this._sContract});
         };
         return Controller;
     }
