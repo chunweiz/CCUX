@@ -98,7 +98,7 @@
                                type: 'nrg.util.type.Price',
                                formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
                         <u:Tag class="nrgCamHis-but-priceLbl" id="idnrgCamHis-but-priceLbl"
-                               text="{comp-campaign>EFLLevel}" />
+                               text="(for {comp-campaign>EFLLevel}kWh)" />
                 </um:Button>
                 <u:Table width="auto"
                          tableType="CampaignTable"
