@@ -44,6 +44,9 @@ sap.ui.define(
             //For Phone Type
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPhoneType');
 
+            //Siebel Customer Indicator
+            this.bSiebelCustomer = false;
+
 
             this._initDtaVrfRetr();
             this._initCfrmStatus();
@@ -117,6 +120,14 @@ sap.ui.define(
                         this.getView().getModel('oDtaVrfyBP').setData(oData);
                         if (oData.PartnerID) {
                             this._retrBuag(oData.PartnerID);
+                        }
+                        if (true) {
+                            this.bSiebelCustomer = true;
+                            if (this.getView().getModel('oCfrmStatus').getProperty('/bEditable')) {
+                                this.getView().getModel('oCfrmStatus').setProperty('/bEditable', false);
+                            }
+                            this.getView().byId('id_confmBtn').setVisible(false);
+                            this.getView().byId('id_updtBtn').setVisible(false);
                         }
                     }
                 }.bind(this),

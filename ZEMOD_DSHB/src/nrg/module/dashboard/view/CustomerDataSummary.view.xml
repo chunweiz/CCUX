@@ -1,4 +1,4 @@
-<mvc:View
+    <mvc:View
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
     xmlns:utmain="ute.ui.main"
@@ -15,12 +15,13 @@
                 design="Large" text="{oSmryBpInf>/FullName}">
             </ute:TextView>
             <!--Badge-->
-            <ute:Badge id="idBadgeCI" size="30px"
-                class="nrgDashboard-cusDataSum-badge"
-                visible="{
+                <!--visible="{
                     parts:['oSmryBpInf>/BadgeCI'],
                     formatter:'._formatBadge'
-                }"
+                }"-->
+            <ute:Badge id="idBadgeCI" size="30px"
+                class="nrgDashboard-cusDataSum-badge"
+                visible="true"
                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CIClr}"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CITxt}">
             </ute:Badge>
@@ -88,6 +89,16 @@
                 <ute:Tag elem="span"
                     id="db_verify_BP"
                     text="{oSmryBpInf>/PartnerID}">
+                </ute:Tag>
+
+                <core:Icon visible="{
+                                parts:['oSmryBpInf>/SiebelCustomer'],
+                                formatter:'._formatSiebel'}"
+                    src="sap-icon://nrg-icon/notification"
+                    class="nrgDashboard-cusDataSum-bpCaArea-SiebelIcon"/>
+                <ute:Tag elem="span"
+                    id="id_siebel_alert" class="nrgDashboard-cusDataSum-bpCaArea-SiebelInd"
+                    text="Siebel Customer">
                 </ute:Tag>
             </ute:Tag>
             <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">

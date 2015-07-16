@@ -29,6 +29,15 @@ sap.ui.define(
             }*/
         };
 
+        Controller.prototype._formatSiebel = function (cIndicator) {
+            if (cIndicator === 'x' || cIndicator === 'X') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+
         Controller.prototype.onInit = function () {
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
