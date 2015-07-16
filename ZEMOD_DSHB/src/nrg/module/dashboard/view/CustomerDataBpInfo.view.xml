@@ -191,7 +191,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/Street}"/>
+                                                               value="{oDataBpAddress>/results/0/AddressInfo/Street}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -209,7 +209,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/HouseNo}"/>
+                                                               value="{oDataBpAddress>/results/0/AddressInfo/HouseNo}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -237,7 +237,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/UnitNo}"/>
+                                                               value="{oDataBpAddress>/results/0/AddressInfo/UnitNo}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -270,7 +270,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/City}"/>
+                                                               value="{oDataBpAddress>/results/0/AddressInfo/City}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -288,7 +288,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/State}"/>
+                                                               value="{oDataBpAddress>/results/0/AddressInfo/State}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -306,7 +306,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/ZipCode}"/>
+                                                               value="{oDataBpAddress>/results/0/AddressInfo/ZipCode}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
