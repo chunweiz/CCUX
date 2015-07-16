@@ -14,14 +14,14 @@ sap.ui.define(
     function ($, SimpleType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = SimpleType.extend('nrg.util.type.EmailAddress', {
+        var CustomType = SimpleType.extend('nrg.base.type.EmailAddress', {
             constructor: function (oFormatOptions, oConstraints) {
                 SimpleType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'nrg.util.type.EmailAddress';
+            return 'nrg.base.type.EmailAddress';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {

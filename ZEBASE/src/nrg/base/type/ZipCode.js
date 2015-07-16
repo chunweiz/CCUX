@@ -14,14 +14,14 @@ sap.ui.define(
     function ($, SimpleType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = SimpleType.extend('nrg.util.type.ZipCode', {
+        var CustomType = SimpleType.extend('nrg.base.type.ZipCode', {
             constructor: function (oFormatOptions, oConstraints) {
                 SimpleType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'nrg.util.type.ZipCode';
+            return 'nrg.base.type.ZipCode';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {

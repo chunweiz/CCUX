@@ -14,14 +14,14 @@ sap.ui.define(
     function ($, SimpleType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = SimpleType.extend('nrg.util.type.ContractNumber', {
+        var CustomType = SimpleType.extend('nrg.base.type.ContractNumber', {
             constructor: function (oFormatOptions, oConstraints) {
                 SimpleType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'nrg.util.type.ContractNumber';
+            return 'nrg.base.type.ContractNumber';
         };
 
 

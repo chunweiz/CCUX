@@ -15,14 +15,14 @@ sap.ui.define(
     function ($, SimpleType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = SimpleType.extend('nrg.util.type.SocialSecurityNumber', {
+        var CustomType = SimpleType.extend('nrg.base.type.SocialSecurityNumber', {
             constructor: function (oFormatOptions, oConstraints) {
                 SimpleType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'nrg.util.type.SocialSecurityNumber';
+            return 'nrg.base.type.SocialSecurityNumber';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {

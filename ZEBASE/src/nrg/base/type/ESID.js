@@ -14,14 +14,14 @@ sap.ui.define(
     function ($, SimpleType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = SimpleType.extend('nrg.util.type.ESID', {
+        var CustomType = SimpleType.extend('nrg.base.type.ESID', {
             constructor: function (oFormatOptions, oConstraints) {
                 SimpleType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'nrg.util.type.ESID';
+            return 'nrg.base.type.ESID';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {

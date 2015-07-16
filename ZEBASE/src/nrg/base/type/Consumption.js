@@ -14,14 +14,14 @@ sap.ui.define(
     function ($, FloatType, FormatException, ParseException, ValidateException) {
         'use strict';
 
-        var CustomType = FloatType.extend('nrg.util.type.Consumption', {
+        var CustomType = FloatType.extend('nrg.base.type.Consumption', {
             constructor: function (oFormatOptions, oConstraints) {
                 FloatType.apply(this, arguments);
             }
         });
 
         CustomType.prototype.getName = function () {
-            return 'nrg.util.type.Consumption';
+            return 'nrg.base.type.Consumption';
         };
 
         CustomType.prototype.setFormatOptions = function (oFormatOptions) {
