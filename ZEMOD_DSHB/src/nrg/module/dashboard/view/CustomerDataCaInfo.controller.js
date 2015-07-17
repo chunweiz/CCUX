@@ -94,6 +94,13 @@ sap.ui.define(
             oModel.setProperty('/tempAddrEditable', false);
         };
 
+        CustomController.prototype.onBackToDashboard = function () {
+            var oRouter = this.getOwnerComponent().getRouter(),
+                bp = '64041';
+
+            oRouter.navTo('dashboard.Bp', {bpNum: bp});
+        };
+
         return CustomController;
     }
 );
