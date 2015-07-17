@@ -42,6 +42,8 @@
                     fieldType="Underlined"
                     label="Requestor's Name">
                 </u:Textfield>
+            </u:Tag>
+            <u:Tag>
                 <c:Label text="No Phone" class="nrgCamTls-left "/>
                 <um:Checkbox id="idnrgCamTlsNoPhone" select=".onSelected" class="nrgCamTls-left"/>
             </u:Tag>

@@ -258,17 +258,17 @@ sap.ui.define(
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             mParameters = {
                 method : "POST",
-                urlParameters : {"IV_CAMPAIGN_CODE" : 'XA1PP7',
-                                         "IV_END_DATE" : new Date(),
-                                        "IV_LP_CODE" : "null",
-                                        "IV_LP_FNAME" : "null",
-                                        "IV_LP_LNAME" : "null",
-                                        "IV_LP_REFID" : "null",
-                                        "IV_OFFER_CODE" : '50160100',
-                                        "IV_OFFER_TITLE" : "CPL AVG@2000 13.9 SE N&W 12 WPT EML $0 NSP",
-                                        "IV_PROMO_CODE" : 'XA1PP7',
-                                        "IV_STARTDATE" : new Date(),
-                                        "IV_VERTRAG" : '32253375'},
+                urlParameters : {"CampaignCode" : 'XA1PP7',
+                                         "EndDate" : new Date(),
+                                        "LP_Code" : "null",
+                                        "LP_FirstName" : "null",
+                                        "LP_LastName" : "null",
+                                        "LP_RefID" : "null",
+                                        "OfferCode" : '50160100',
+                                        "OfferTitle" : "CPL AVG@2000 13.9 SE N&W 12 WPT EML $0 NSP",
+                                        "PromoCode" : 'XA1PP7',
+                                        "StartDate" : new Date(),
+                                        "Contract" : '32253375'},
                 success : function (oData) {
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
@@ -276,8 +276,8 @@ sap.ui.define(
                     jQuery.sap.log.info("Eligibility Error occured");
                 }.bind(this)
             };
-            oModel.callFunction("/Z_CCUX_CAMPAIGN_ACCEPT", mParameters); // callback function for error
-            this.navTo("campaignoffers", {coNum: this._sContract});
+            oModel.callFunction("/AcceptCampaign", mParameters); // callback function for error
+            //this.navTo("campaignoffers", {coNum: this._sContract});
             this._oOverviewDialog.close();
         };
         /**
