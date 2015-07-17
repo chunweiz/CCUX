@@ -84,11 +84,10 @@
                     text="{comp-i18n-dashboard>nrgDashboardCusDatSum_BpNum}"
                     labelFor="db_verify_BP">
                 </utmain:Label>
-                <ute:Tag elem="span"
-                    id="db_verify_BP"
-                    text="{oSmryBpInf>/PartnerID}">
-                </ute:Tag>
-
+                <utmain:Button id="db_verify_BP"
+                    design="None" visible="true"
+                    press="._onBpNumClicked"
+                    text="{oSmryBpInf>/PartnerID}"/>
                 <core:Icon visible="{
                         parts:['oSmryBpInf>/SiebelCustomer'],
                         formatter:'._formatSiebel'}"
@@ -108,10 +107,10 @@
                     text="{comp-i18n-dashboard>nrgDashboardCusDatSum_CaNum}"
                     labelFor="db_verify_CA">
                 </utmain:Label>
-                <ute:Tag elem="span"
-                    id="db_verify_CA"
-                    text="{oSmryBuagInf>/ContractAccountID}-{oSmryBuagInf>/CheckDigit}">
-                </ute:Tag>
+                <utmain:Button id="db_verify_CA"
+                    design="None" visible="true"
+                    press="._onCaNumClicked"
+                    text="{oSmryBuagInf>/ContractAccountID}-{oSmryBuagInf>/CheckDigit}"/>
             </ute:Tag>
 
             <ute:HorizontalDivider class="nrgDashboard-cusDataSum-horiLine"/>

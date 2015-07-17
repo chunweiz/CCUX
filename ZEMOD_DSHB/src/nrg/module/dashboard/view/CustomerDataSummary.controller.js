@@ -257,6 +257,21 @@ sap.ui.define(
             this._oSegPopup.open();
         };
 
+        Controller.prototype._onBpNumClicked = function () {
+            var oRouter = this.getOwnerComponent().getRouter(),
+                sSelectedBpNum = this.getView().getModel('oSmryBpInf').getProperty('/PartnerID');
+
+            oRouter.navTo('dashboard.BpInfo', {bpNum: sSelectedBpNum});
+        };
+
+        Controller.prototype._onCaNumClicked = function () {
+            var oRouter = this.getOwnerComponent().getRouter(),
+                sSelectedBpNum = this.getView().getModel('oSmryBpInf').getProperty('/PartnerID'),
+                sSelectedCaNum = this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID');
+
+            oRouter.navTo('dashboard.CaInfo', {bpNum: sSelectedBpNum, caNum: sSelectedCaNum});
+        };
+
         return Controller;
     }
 );
