@@ -17,16 +17,14 @@ sap.ui.define(
                 library: 'ute.ui.app',
 
                 properties: {
-                    expanded: { type: 'boolean', defaultValue: false },
                     enabled: { type: 'boolean', defaultValue: true }
                 },
 
                 aggregations: {
-                    header: { type: 'sap.ui.core.Control', multiple: true, singularName: 'header' },
-                    content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' }
+                    header: { type: 'sap.ui.core.Control', multiple: true, singularName: 'header' }
                 },
 
-                defaultAggregation: 'content',
+                defaultAggregation: 'header',
 
                 events: {
                     press: {}
@@ -76,33 +74,12 @@ sap.ui.define(
             return this;
         };
 
+
         CustomControl.prototype.onclick = function (oEvent) {
-            var oParentView;
-
-            oParentView = this._getParentView(oEvent.srcControl);
-            if (oParentView) {
-                if (!this._oDialog) {
-                    this._oDialog = new Dialog();
-                    oParentView.addDependent(this._oDialog);
-                }
-
-                this.setExpanded(true);
+            if (!this._oDialog) {
+                this._oDialog = new Dialog();
+                this.addDependent(this._oDialog);
             }
-        };
-
-        CustomControl.prototype._getParentView = function (oControl) {
-            var oParent;
-
-            oParent = oControl.getParent();
-            while (oParent) {
-                if (oParent instanceof View) {
-                    return oParent;
-                }
-
-                oParent = oParent.getParent();
-            }
-
-            return oParent;
         };
 
         CustomControl.prototype._registerMe = function () {
@@ -121,16 +98,7 @@ sap.ui.define(
             this._registerMe();
         };
 
-        CustomControl.prototype.onAfterRendering = function () {
-//            this._bindHeaderEvent();
-        };
-
-        CustomControl.prototype.onBeforeRendering = function () {
-//            this._unbindHeaderEvent();
-        };
-
         CustomControl.prototype.onExit = function () {
-//            this._unbindHeaderEvent();
             this._deregisterMe();
         };
 
