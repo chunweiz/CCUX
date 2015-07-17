@@ -4,11 +4,12 @@
 sap.ui.define(
     [
         'jquery.sap.global',
-        'sap/ui/core/mvc/Controller',
-        'sap/ui/model/json/JSONModel'
+        'nrg/base/view/BaseController',
+        'sap/ui/model/json/JSONModel',
+        'sap/ui/core/routing/HashChanger'
     ],
 
-    function (jQuery, Controller, JSONModel) {
+    function (jQuery, Controller, JSONModel, HashChanger) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.dashboard.view.CustomerDataCaInfo');
@@ -31,10 +32,18 @@ sap.ui.define(
 
             //Model to track page edit/save status
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCaInfoConfig');
+
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
+
+            //Model to hold BuagAddrDetail
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBuagAddrDetails');
+
+
         };
 
         CustomController.prototype.onBeforeRendering = function () {
             this._initCaInfoConfigModel();
+            this._initDataModel();
         };
 
         CustomController.prototype.onAfterRendering = function () {
@@ -95,10 +104,59 @@ sap.ui.define(
         };
 
         CustomController.prototype.onBackToDashboard = function () {
-            var oRouter = this.getOwnerComponent().getRouter(),
-                bp = '64041';
+            var oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo('dashboard.Bp', {bpNum: this._bpNum});
+        };
 
-            oRouter.navTo('dashboard.Bp', {bpNum: bp});
+        Controller.prototype._retrUrlHash = function () {
+            //Get the hash to retrieve bp #
+            var oHashChanger = new HashChanger(),
+                sUrlHash = oHashChanger.getHash();
+
+            return sUrlHash;
+        };
+
+        CustomController.prototype._initDataModel = function () {
+            var sPath, aSplitHash, iSplitHashL;
+
+            aSplitHash = (this._retrUrlHash()).split('/');
+            iSplitHashL = aSplitHash.length;
+            if(!this._bpNum) {
+                this._bpNum = aSplitHash[iSplitHashL - 3];
+            }
+            if(!this._caNum) {
+                this._caNum = aSplitHash[iSplitHashL - 1];
+            }
+
+            this._initRetrAllData(this._caNum);
+        };
+
+        CustomController.prototype._initRetrAllData = function (caNum) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/Buags(ContractAccountID=' + '\'' + caNum + '\')/BuagAddrDetail/';
+//            sPath = '/Buags(\'' + caNum + '\')';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        if (oData.PartnerID) {
+                            this.getView().getModel('oDataBuagAddrDetails').setData(oData);
+                            this.oDataBuagAddrDetailsBak = jQuery.extend(true, {}, oData);
+                        }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                    var t = 1.0;
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
         };
 
         return CustomController;
