@@ -35,12 +35,12 @@
                         </utmain:DropdownItem>
                     </utmain:Dropdown>
 
-                    <ute:tag elem="div" class="nrgDashboard-cusDataCaInfo-checkBox-div">
+                    <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-checkBox-div">
                         <utmain:Checkbox enabled="true" class="nrgDashboard-cusDataCaInfo-chb" />
                         <utmain:Label
                             text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-SELECT_ALL}"
                             class="nrgDashboard-cusDatacaInfo-l-chb-lbl"/>
-                    </ute:tag>
+                    </ute:Tag>
 <!--                </ute:Tag>-->
             </utmain:content>
         </utmain:Infoline>

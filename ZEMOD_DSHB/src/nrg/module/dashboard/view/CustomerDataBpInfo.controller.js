@@ -132,7 +132,10 @@ sap.ui.define(
         };
 
         CustomController.prototype.onBackToDashboard = function () {
-            //back to dashboard
+            var oRouter = this.getOwnerComponent().getRouter(),
+                bp = this.getView().getModel('oDataBP').getProperty('/PartnerID');
+
+            oRouter.navTo('dashboard.Bp', {bpNum: bp});
         };
 
         CustomController.prototype.onTitleCancel = function () {    //onTitleCancel
