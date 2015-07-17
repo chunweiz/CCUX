@@ -564,17 +564,21 @@
     </ute:Tag>
 
     <ute:Tag id="idAddrUpdatePopup" visible="false"
-             class="nrgDashboard-cusDataVerifyEditMailAdd">
-        <ute:Textfield id="idEditHouseNum" fieldType="Underlined"
-            class="nrgDashboard-cusDataVerifyEditMailAdd-huNum"
-            label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_HuNum}"
-            editable="true" width="100px"
-            value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/HouseNo}"/>
-        <ute:Textfield id="idEditUnitNum" fieldType="Underlined"
-            label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_UniNum}"
-            class="nrgDashboard-cusDataVerifyEditMailAdd-huNum"
-            editable="true" width="100px"
-            value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/UnitNo}"/>
+             class="nrgDashboard-cusDataVerifyEditMail">
+        <ute:Tag class="nrgDashboard-cusDataVerifyEditMail-l">
+            <ute:Textfield id="idEditHouseNum"
+                label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_HuNum}"
+                editable="true"
+                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/HouseNo}"/>
+        </ute:Tag>
+        <ute:Tag class="nrgDashboard-cusDataVerifyEditMail-r">
+            <ute:Textfield id="idEditUnitNum"
+                label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_UniNum}"
+                editable="true"
+                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/UnitNo}"/>
+        </ute:Tag>
+
+
         <ute:Textfield id="idEditStName" fieldType="Underlined"
             class="nrgDashboard-cusDataVerifyEditMailAdd-stName"
             label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_StName}"

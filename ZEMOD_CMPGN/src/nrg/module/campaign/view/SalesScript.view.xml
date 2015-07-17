@@ -38,7 +38,7 @@
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>
             <u:Tag class="nrgCamSS-left">
-                <um:Dropdown id="idnrgCamSSDdL" select=".onSelected" class="nrgCamSSLng-DdL">
+                <um:Dropdown id="idnrgCamSSDdL" select=".onMandLngSelected" class="nrgCamSSLng-DdL">
                     <um:DropdownItem key="{comp-campaign>TxtLang}" id="idnrgCamSSLngLtIt" class="nrgCamSSLng-DdLItem">
                         <u:Tag text="{parts:[{path:'comp-campaign>TxtLang'}],
                                                     formatter:'.formatType'}"/>
@@ -49,12 +49,8 @@
                     <c:Label text="{comp-i18n-campaign>nrgCmpSSMdlbl}"
                              class="nrgCamSS-mdlbl nrgCamSS-top nrgCamSS-left"
                              labelFor="idCamSSMdTv" />
-                    <u:TextView
-                        id="idCamSSMdTv"
-                        color="DarkGrey"
-                        class="nrgCamSS-left nrgCamSS-top"
-                        design="Base"
-                        text="{comp-campaign>TxtLine}" />
+                    <core:HTML id="idCamSSMdTv" content='&lt;div class=&quot;nrgCamSS-left nrgCamSS-top nrgCamSS-Mand&quot;&gt;{comp-campaign>TxtLine}&lt;/div&gt;'>
+                    </core:HTML>
             </u:Tag>
             <u:Tag class="nrgCamSS-btnTag nrgCamSS-top" >
                 <u:Button
@@ -76,7 +72,7 @@
             </u:Tag>
           <u:Dialog id="idnrgCamOvsDialog">
             <u:Tag>
-                <um:Dropdown selectedKey="EN" id="idnrgCamOvsDdL" class="nrgCamOVSLng-DdL" >
+                <um:Dropdown selectedKey="EN" id="idnrgCamOvsDdL" class="nrgCamOVSLng-DdL" select=".onOvwLngSelected" >
                     <um:DropdownItem key="{comp-campaign>TxtLang}" id="idnrgCamOvsLngLtIt" class="nrgCamOVSLng-DdLItem">
                         <u:Tag text="{parts:[{path:'comp-campaign>TxtLang'}],
                                                     formatter:'.formatType'}"/>
@@ -84,12 +80,8 @@
                 </um:Dropdown>
             </u:Tag>
             <u:Tag class="nrgCamOvs-Dsc">
-                    <u:TextView
-                        id="idnrgCamOvsOvTv"
-                        color="DarkGrey"
-                        class="nrgCamOvs-left nrgCamOvs-top"
-                        design="Base"
-                        text="{comp-campaign>TxtLine}" />
+                    <core:HTML content='&lt;div class=&quot;nrgCamOvs-left nrgCamOvs-top nrgCamOvs-OVW&quot;&gt;{comp-campaign>TxtLine}&lt;/div&gt;' id="idnrgCamOvsOvTv">
+                    </core:HTML>
             </u:Tag>
             <u:Tag class="nrgCamOvs-btnTag nrgCamOvs-top" >
                 <u:Button
