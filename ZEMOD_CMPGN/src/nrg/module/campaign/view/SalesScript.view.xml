@@ -49,12 +49,14 @@
                     <c:Label text="{comp-i18n-campaign>nrgCmpSSMdlbl}"
                              class="nrgCamSS-mdlbl nrgCamSS-top nrgCamSS-left"
                              labelFor="idCamSSMdTv" />
-                    <u:TextView
+<!--                    <u:TextView
                         id="idCamSSMdTv"
                         color="DarkGrey"
-                        class="nrgCamSS-left nrgCamSS-top"
+                        class="nrgCamSS-left nrgCamSS-top nrgCamSS-Mand"
                         design="Base"
-                        text="{comp-campaign>TxtLine}" />
+                        text="{comp-campaign>TxtLine}" />-->
+                    <core:HTML id="idCamSSMdTv" content='&lt;div class=&quot;nrgCamSS-left nrgCamSS-top nrgCamSS-Mand&quot;&gt;{comp-campaign>TxtLine}&lt;/div&gt;'>
+                    </core:HTML>
             </u:Tag>
             <u:Tag class="nrgCamSS-btnTag nrgCamSS-top" >
                 <u:Button
@@ -84,12 +86,14 @@
                 </um:Dropdown>
             </u:Tag>
             <u:Tag class="nrgCamOvs-Dsc">
-                    <u:TextView
+<!--                    <u:TextView
                         id="idnrgCamOvsOvTv"
                         color="DarkGrey"
                         class="nrgCamOvs-left nrgCamOvs-top"
                         design="Base"
-                        text="{comp-campaign>TxtLine}" />
+                        text="{comp-campaign>TxtLine}" />-->
+                    <core:HTML content='&lt;div class=&quot;nrgCamOvs-left nrgCamOvs-top&quot;&gt;{comp-campaign>TxtLine}&lt;/div&gt;' id="idnrgCamOvsOvTv">
+                    </core:HTML>
             </u:Tag>
             <u:Tag class="nrgCamOvs-btnTag nrgCamOvs-top" >
                 <u:Button

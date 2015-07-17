@@ -63,11 +63,13 @@
                         labelFor="idCamDescTv" />
                 </um:headerContent>
                 <um:content>
-                    <u:TextView
+<!--                    <u:TextView
                         color="DarkGrey"
                         class="nrgCamChg-left nrgCamChg-top"
                         design="Base"
-                        text="{comp-campaign>Description}"/>
+                        text="{comp-campaign>Description}"/>-->
+                    <core:HTML content='&lt;div class=&quot;nrgCamChg-left nrgCamChg-top&quot;&gt;{comp-campaign>Description}&lt;/div&gt;'>
+                    </core:HTML>
                 </um:content>
             </um:Infoline>
             <u:Table width="100%"
