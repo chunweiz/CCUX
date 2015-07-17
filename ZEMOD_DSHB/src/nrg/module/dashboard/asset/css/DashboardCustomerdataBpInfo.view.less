@@ -4,6 +4,17 @@
 
     font-family: @nrgFontFamily;
 
+    & > .nrgDashboard-cusDataBpInfo-infoLine > .uteMIl-body > .clearfix:before{
+        display: table;
+        content: '';
+    }
+
+    & > .nrgDashboard-cusDataBpInfo-infoLine > .uteMIl-body > .clearfix:after{
+        display: table;
+        clear: both;
+        content: '';
+    }
+
     & > .nrgDashboard-cusDataBpInfo-scrnTitle{
         font: @nrgFontWeight-semiBold @nrgFontSize-large @nrgFontFamily;
         color: @nrgColor-grey-dark;
@@ -40,34 +51,13 @@
         float: left;
     }
 
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first{
-        margin: 30px 0 0 0;
-    }
-
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first > .uteMIl-hdr > .uteMIl-hdrContent > .nrgDashboard-cusDataBpInfo-infoLineHeader-txt > span{
-        font: @nrgFontWeight-semiBold @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-    }
-
     & > .nrgDashboard-cusDataBpInfo-infoLine{
-        margin: 65px 0 50px 0;
+        margin-top: 35px;
     }
 
     & > .nrgDashboard-cusDataBpInfo-infoLine > .uteMIl-hdr > .uteMIl-hdrContent > .nrgDashboard-cusDataBpInfo-infoLineHeader-txt > span{
         font: @nrgFontWeight-semiBold @nrgFontSize-base @nrgFontFamily;
         color: @nrgColor-grey-dark;
-    }
-
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first .uteMIl-hdr{
-        background: @nrgColor-blue-pearl;
-        display: block;
-        position: relative;
-        border-radius: 4px;
-        padding: 6px;
-    }
-
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first .uteMIl-body{
-        margin-top:20px;
     }
 
     & > .nrgDashboard-cusDataBpInfo-infoLine .uteMIl-hdr{
@@ -82,23 +72,11 @@
         margin-top:20px;
     }
 
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first .uteMIl-hdrExpander{
-        float: right;
-    }
-
     & > .nrgDashboard-cusDataBpInfo-infoLine .uteMIl-hdrExpander{
         float: right;
     }
 
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first .uteMChkBox-chk::before{
-        background-color: @nrgColor-blue-link;
-    }
-
     & > .nrgDashboard-cusDataBpInfo-infoLine .uteMChkBox-chk::before{
-        background-color: @nrgColor-blue-link;
-    }
-
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first .uteMChkBox-chk::after{
         background-color: @nrgColor-blue-link;
     }
 
@@ -111,13 +89,6 @@
         margin: 0;
     }
 
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first .nrgDashboard-cusDataBpInfo-l{
-        padding: 0;
-        margin: 0;
-        vertical-align: top !important;
-        padding-right: 27px;
-    }
-
     & > .nrgDashboard-cusDataBpInfo-infoLine .nrgDashboard-cusDataBpInfo-l{
         padding: 0;
         margin: 0;
@@ -125,27 +96,12 @@
         padding-right: 27px;
     }
 
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first table > tbody > tr > td > table{
-        margin-top: 4px;
-    }
-
     & > .nrgDashboard-cusDataBpInfo-infoLine .nrgDashboard-cusDataBpInfo-l > table{
         margin-top: 8px;
     }
 
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first .nrgDashboard-cusDataBpInfo-l .nrgDashboard-cusDataBpInfo-lbl{
-        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-    }
-
     & > .nrgDashboard-cusDataBpInfo-infoLine .nrgDashboard-cusDataBpInfo-l .nrgDashboard-cusDataBpInfo-lbl{
         font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-    }
-
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first .nrgDashboard-cusDataBpInfo-l .nrgDashboard-cusDataBpInfo-cnt{
-        border-bottom:solid @nrgColor-grey-light 1px;
-        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
         color: @nrgColor-grey-dark;
     }
 
@@ -176,51 +132,15 @@
         background-color: transparent;
     }
 
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first .nrgDashboard-cusDataBpInfo-l .uteTextfield.uteTextfield-noBorder>.uteTextfield-noBorder-input {
-        width: 100% !important;
-    }
-
     & > .nrgDashboard-cusDataBpInfo-infoLine .nrgDashboard-cusDataBpInfo-l .uteTextfield.uteTextfield-noBorder>.uteTextfield-noBorder-input {
         width: 100% !important;
-    }
-
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first .nrgDashboard-cusDataBpInfo-l .uteTextfield.uteTextfield-noBorder>.uteTextfield-noBorder-input:focus {
-        background-color: @nrgColor-blue-pearl;
     }
 
     & > .nrgDashboard-cusDataBpInfo-infoLine .nrgDashboard-cusDataBpInfo-l .uteTextfield.uteTextfield-noBorder>.uteTextfield-noBorder-input:focus {
         background-color: @nrgColor-blue-pearl;
     }
 
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first .nrgDashboard-cusDataBpInfo-btn{
-        float: right;
-        margin-top: 15px;
-    }
-
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first .nrgDashboard-cusDataBpInfo-btn > .nrgDashboard-cusDataBpInfo-CommBtnEdit{
-        margin: 0;
-        padding: 0;
-        width: 110px;
-        height: 24px;
-    }
-
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first .nrgDashboard-cusDataBpInfo-btn > .nrgDashboard-cusDataBpInfo-CommBtnEdit > .uteMBtn-text{
-        font: @nrgFontWeight-regular @nrgFontSize-large @nrgFontFamily;
-    }
-
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first .nrgDashboard-cusDataBpInfo-btn > .nrgDashboard-cusDataBpInfo-CommBtnSave{
-        margin: 0;
-        padding: 0;
-        width: 110px;
-        height: 24px;
-    }
-
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first .nrgDashboard-cusDataBpInfo-btn > .nrgDashboard-cusDataBpInfo-CommBtnSave > .uteMBtn-text{
-        font: @nrgFontWeight-regular @nrgFontSize-large @nrgFontFamily;
-    }
-
     & > .nrgDashboard-cusDataBpInfo-infoLine .nrgDashboard-cusDataBpInfo-btn{
-        float: right;
         margin-top: 15px;
     }
 
@@ -229,18 +149,11 @@
         padding: 0;
         width: 110px;
         height: 24px;
+        float: right;
     }
 
     & > .nrgDashboard-cusDataBpInfo-infoLine .nrgDashboard-cusDataBpInfo-btn > .nrgDashboard-cusDataBpInfo-CommBtnEdit > .uteMBtn-text{
         font: @nrgFontWeight-regular @nrgFontSize-large @nrgFontFamily;
-    }
-
-    & > .nrgDashboard-cusDataBpInfo-infoLine-first .nrgDashboard-cusDataBpInfo-btn > .nrgDashboard-cusDataBpInfo-CommBtnSave{
-        margin: 0;
-        padding: 0;
-        width: 110px;
-        height: 24px;
-        margin-right: 10px;
     }
 
     & > .nrgDashboard-cusDataBpInfo-infoLine .nrgDashboard-cusDataBpInfo-btn > .nrgDashboard-cusDataBpInfo-CommBtnSave{
@@ -249,6 +162,7 @@
         width: 110px;
         height: 24px;
         margin-right: 10px;
+        float: right;
     }
 
     & > .nrgDashboard-cusDataBpInfo-infoLine .nrgDashboard-cusDataBpInfo-btn > .nrgDashboard-cusDataBpInfo-CommBtnSave > .uteMBtn-text{
