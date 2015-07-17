@@ -171,7 +171,7 @@ sap.ui.define(
                 return;
             }
 
-            sPath = '/Partners' + '(\'' + bpNumber + '\')/BpName/';
+            sPath = '/BpNames' + '(\'' + bpNumber + '\')';
             oParameters = {
                 urlParameters: {},
                 success : function (oData) {
@@ -222,7 +222,7 @@ sap.ui.define(
                 return;
             }
 
-            sPath = '/Partners' + '(\'' + bpNumber + '\')/BpAddress' + '(PartnerID=\'' + bpNumber + '\',AddressID=\'' + addressId + '\')';
+            sPath = '/BpAddresses' + '(PartnerID=\'' + bpNumber + '\',AddressID=\'' + addressId + '\')';
             oParameters = {
                 urlParameters: {},
                 success : function (oData) {
@@ -280,7 +280,7 @@ sap.ui.define(
                 return;
             }
 
-            sPath = '/Partners' + '(\'' + bpNumber + '\')/BpPersonal/';
+            sPath = '/BpPersonals' + '(\'' + bpNumber + '\')';
             oParameters = {
                 urlParameters: {},
                 success : function (oData) {
@@ -330,7 +330,7 @@ sap.ui.define(
                 return;
             }
 
-            sPath = '/Partners' + '(\'' + bpNumber + '\')/BpContact/';
+            sPath = '/BpContacts' + '(\'' + bpNumber + '\')';
             oParameters = {
                 urlParameters: {},
                 success : function (oData) {
@@ -395,7 +395,7 @@ sap.ui.define(
                     attibuteSet = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/AttributeSet');
                     attribute = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/Attribute');
 
-                    sPath = '/Partners' + '(\'' + bpNumber + '\')/BpMarkPreferSet' + '(PartnerID=\'' + bpNumber + '\',AttributeSet=\'' + attibuteSet + '\',Attribute=\'' + attribute + '\')';
+                    sPath = '/BpMarkPreferSets' + '(PartnerID=\'' + bpNumber + '\',AttributeSet=\'' + attibuteSet + '\',Attribute=\'' + attribute + '\')';
 
                     if (oModel) {
                         oModel.update(sPath, this.getView().getModel('oDataBpMarkPreferSet').oData.results[i], oParameters);
