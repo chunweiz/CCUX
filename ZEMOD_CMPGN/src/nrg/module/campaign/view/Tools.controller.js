@@ -186,7 +186,7 @@ sap.ui.define(
                             aResults.push(this.getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
                         }
                     }
-                    if ((aResults !== undefined) && (aResults.length > 0)) {
+                    if ((aResults === undefined) && (aResults.length === 0)) {
                         return;
                     } else {
                         oTemplateModel.setData(that.convertEFLJson(aResults));

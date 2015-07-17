@@ -21,11 +21,11 @@
             </utmain:Button>
         </ute:Tag>
 
-        <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-horiLine-div">
+        <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-horiLine-div clearfix">
             <ute:HorizontalDivider width="16%" class="nrgDashboard-cusDataBpInfo-horiLine"/>
         </ute:Tag>
 
-        <utmain:Infoline class="nrgDashboard-cusDataBpInfo-infoLine-first"
+        <utmain:Infoline class="nrgDashboard-cusDataBpInfo-infoLine"
                          expanded="true" press=".onTitlePressed">
             <utmain:headerContent>
                 <ute:TextView class="nrgDashboard-cusDataBpInfo-infoLineHeader-txt"
@@ -148,7 +148,7 @@
                     </l:rows>
                 </l:MatrixLayout>
 
-                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn clearfix">
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave"
                                    press="onTitleCancel"
                                    visible="{oBpInfoConfig>/titleSaveVisible}"
@@ -306,7 +306,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/results/0/AddressInfo/ZipCode}"/>
+                                                               value="{path: 'oDataBpAddress>/results/0/AddressInfo/ZipCode', type: 'nrg.base.type.ZipCode', constraints: { mandatory: true }}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -316,7 +316,7 @@
                     </l:rows>
                 </l:MatrixLayout>
 
-                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn clearfix">
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave"
                                    press="onAddrCancel"
                                    visible="{oBpInfoConfig>/addrSaveVisible}"
@@ -390,7 +390,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/personalInfoSSEditable}"
-                                                               value="{oDataBpPersonal>/SSN}"/>
+                                                               value="{path: 'oDataBpPersonal>/SSN', type: 'nrg.base.type.SocialSecurityNumber', constraints: { mandatory: true }}"/>
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <utmain:Checkbox enabled="false" checked="true"
@@ -417,7 +417,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/personalInfoDLEditable}"
-                                                               value="{oDataBpPersonal>/DL}"/>
+                                                               value="{path: 'oDataBpPersonal>/DL', type: 'nrg.base.type.DrivingLicenseNumber', constraints: { mandatory: true }}"/>
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <utmain:Checkbox enabled="false" checked="true"
@@ -440,7 +440,7 @@
                     </l:rows>
                 </l:MatrixLayout>
 
-                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn clearfix">
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave"
                                    press="onPersonalInfoCancel"
                                    visible="{oBpInfoConfig>/personalInfoSaveVisible}"
@@ -482,7 +482,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/contactInfoEditable}"
-                                                               value="{oDataBpContact>/Cell}"/>
+                                                               value="{path: 'oDataBpContact>/Cell', type: 'nrg.base.type.CellPhoneNumber', constraints: { mandatory: true }}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -496,7 +496,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/contactInfoEditable}"
-                                                               value="{oDataBpContact>/DayPhone}"/>
+                                                               value="{path: 'oDataBpContact>/DayPhone', type: 'nrg.base.type.CellPhoneNumber', constraints: { mandatory: true }}"/>
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
@@ -524,7 +524,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/contactInfoEditable}"
-                                                               value="{oDataBpContact>/Email}"/>
+                                                               value="{path: 'oDataBpContact>/Email', type: 'nrg.base.type.EmailAddress', constraints: { mandatory: true }}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -538,7 +538,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/contactInfoEditable}"
-                                                               value="{oDataBpContact>/EveningPhone}"/>
+                                                               value="{path: 'oDataBpContact>/EveningPhone', type: 'nrg.base.type.CellPhoneNumber', constraints: { mandatory: true }}"/>
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
@@ -558,7 +558,7 @@
                     </l:rows>
                 </l:MatrixLayout>
 
-                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn clearfix">
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave"
                                    press="onContactInfoCancel"
                                    visible="{oBpInfoConfig>/contactInfoSaveVisible}"
@@ -620,7 +620,7 @@
                     </l:rows>
                 </l:MatrixLayout>
 
-                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn">
+                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-btn clearfix">
                     <utmain:Button class="nrgDashboard-cusDataBpInfo-CommBtnSave"
                                    press="onMarketPrefCancel"
                                    visible="{oBpInfoConfig>/marketPrefSaveVisible}"
