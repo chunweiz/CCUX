@@ -3,8 +3,8 @@
         "results": [
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BuagMailingAddrs(PartnerID='0000064041',ContractAccountID='000000100738',FixedAddressID='0001361245')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BuagMailingAddrs(PartnerID='0000064041',ContractAccountID='000000100738',FixedAddressID='0001361245')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BuagMailingAddrs(PartnerID='64041',ContractAccountID='100738',FixedAddressID='1361245')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BuagMailingAddrs(PartnerID='64041',ContractAccountID='100738',FixedAddressID='1361245')",
                     "type":"ZE_CCUX_SRV.BuagMailingAddr"
                 },
                 "FixAddrInfo":{
@@ -37,9 +37,9 @@
                     "ValidFrom":null,
                     "ValidTo":null
                 },
-                "PartnerID":"0000064041",
-                "ContractAccountID":"000000100738",
-                "FixedAddressID":"0001361245",
+                "PartnerID":"64041",
+                "ContractAccountID":"100738",
+                "FixedAddressID":"1361245",
                 "TemporaryAddrID":"",
                 "DisplayName":"(-000000100738-)-1209 fannin st / ALVIN TX",
                 "FixUpd":"",
