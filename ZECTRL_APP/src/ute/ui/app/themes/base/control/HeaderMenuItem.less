@@ -15,15 +15,6 @@
             cursor: pointer;
         }
     }
-
-    .uteAppHMItem-content {
-        display: block;
-        position: absolute;
-        width: 100%;
-        left: 0;
-        background-color: @uteColor-blue-link;
-        border-bottom: 6px solid @uteColor-grey-dark;
-    }
 }
 
 .uteAppHMItem[data-disabled=disabled] {
@@ -38,6 +29,20 @@
         .sapUiIcon::before {
             color: @uteColor-grey-light;
             cursor: default;
+        }
+    }
+}
+
+.uteAppHMItem[data-selected=selected] {
+    .uteAppHMItem-hdr {
+        color: @uteColor-blue-link;
+
+        :hover {
+            color: @uteColor-blue-link;
+        }
+
+        .sapUiIcon::before {
+            color: @uteColor-blue-link;
         }
     }
 }

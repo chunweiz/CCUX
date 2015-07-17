@@ -48,54 +48,36 @@
                 </ua:banner>
                 <ua:menu>
                     <ua:HeaderMenu class="nrgAppHMItem">
-                        <ua:HeaderMenuItem class="nrgAppHMItem">
+                        <ua:HeaderMenuItem class="nrgAppHMItem" press=".onHdrMenuItemPressed">
                             <span>Menu</span>
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
-                        <ua:HeaderMenuItem>
-                            <ua:header>
-                                <span>Index</span>
-                            </ua:header>
-                            <ua:customData>
-                                <core:CustomData key="disabled" value="disabled" writeToDom="true" />
-                            </ua:customData>
+                        <ua:HeaderMenuItem enabled="false" press=".onHdrMenuItemPressed">
+                            <span>Index</span>
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
-                        <ua:HeaderMenuItem>
+                        <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
                                 <span>Transactions</span>
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
-                        <ua:HeaderMenuItem>
-                            <ua:header>
-                                <span>ESID Tool</span>
-                            </ua:header>
+                        <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
+                            <span>ESID Tool</span>
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
-                        <ua:HeaderMenuItem>
-                            <ua:header>
-                                <span>PALPlus</span>
-                            </ua:header>
+                        <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
+                            <span>PALPlus</span>
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
-                        <ua:HeaderMenuItem>
-                            <ua:header>
-                                <span>Messages</span>
-                            </ua:header>
+                        <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
+                            <span>Messages</span>
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-spacer" />
-                        <ua:HeaderMenuItem>
-                            <ua:header>
-                                <core:Icon src="sap-icon://nrg-icon/refresh"></core:Icon>
-                            </ua:header>
-                            <ua:customData>
-                                <core:CustomData key="disabled" value="disabled" writeToDom="true" />
-                            </ua:customData>
+                        <ua:HeaderMenuItem enabled="false" press=".onHdrMenuItemPressed">
+                            <core:Icon src="sap-icon://nrg-icon/refresh"></core:Icon>
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-spacer" />
-                        <ua:HeaderMenuItem>
-                            <ua:header>
-                                <span>Clear Account</span>
-                            </ua:header>
+                        <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
+                            <span>Clear Account</span>
                         </ua:HeaderMenuItem>
                     </ua:HeaderMenu>
                 </ua:menu>

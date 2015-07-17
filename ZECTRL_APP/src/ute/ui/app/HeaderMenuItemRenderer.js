@@ -20,10 +20,6 @@ sap.ui.define(
                 this._renderHeader(oRm, oCustomControl);
             }
 
-            if (oCustomControl.getContent()) {
-                this._renderContent(oRm, oCustomControl);
-            }
-
             oRm.write('</div>');
         };
 
@@ -38,27 +34,6 @@ sap.ui.define(
 
             aHeader.forEach(function (oHeader) {
                 oRm.renderControl(oHeader);
-            });
-
-            oRm.write('</div>');
-        };
-
-        CustomRenderer._renderContent = function (oRm, oCustomControl) {
-            var aContent = oCustomControl.getContent();
-
-            oRm.write('<div');
-            oRm.writeAttribute('id', oCustomControl.getId() + '-content');
-            oRm.addClass('uteAppHMItem-content');
-
-            if (!oCustomControl.getExpanded()) {
-                oRm.addClass('uteU-hidden');
-            }
-
-            oRm.writeClasses();
-            oRm.write('>');
-
-            aContent.forEach(function (oContent) {
-                oRm.renderControl(oContent);
             });
 
             oRm.write('</div>');

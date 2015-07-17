@@ -17,7 +17,8 @@ sap.ui.define(
                 library: 'ute.ui.app',
 
                 properties: {
-                    enabled: { type: 'boolean', defaultValue: true }
+                    enabled: { type: 'boolean', defaultValue: true },
+                    selected: { type: 'boolean', defaultValue: false}
                 },
 
                 aggregations: {
@@ -41,44 +42,51 @@ sap.ui.define(
                 this.data('disabled', null);
             } else {
                 this.data('disabled', 'disabled', true);
-                this.setExpanded(false);
             }
 
-            this.setProperty('enabled', bEnabled, true);
+            this.setProperty('enabled', bEnabled);
             return this;
         };
 
-        CustomControl.prototype.setExpanded = function (bExpanded) {
-            var $content;
+        CustomControl.prototype.setSelected = function (bSelected) {
+            bSelected = !!bSelected;
 
-            bExpanded = !!bExpanded;
-            $content = this.$('content');
+            if (bSelected) {
+                this.data('selected', 'selected', true);
+            } else {
+                this.data('selected', null);
+            }
 
-            if ($content) {
-                if (bExpanded) {
-                    $content.removeClass('uteU-hidden');
+            this.setProperty('selected', bSelected);
+            return this;
+        };
 
-                    // Make sure only current one is expanded
-                    this._aHdrMenuItem.forEach(function (oItem) {
-                        if (oItem instanceof CustomControl && oItem !== this && oItem.getExpanded()) {
-                            oItem.setExpanded(false);
-                        }
-                    }.bind(this));
-
-                } else {
-                    $content.addClass('uteU-hidden');
+        CustomControl.prototype.deSelectOthers = function () {
+            this._aHdrMenuItem.forEach(function (oItem) {
+                if (oItem instanceof CustomControl && oItem !== this && oItem.getSelected()) {
+                    oItem.setSelected(false);
                 }
-            }
-
-            this.setProperty('expanded', bExpanded, true);
-            return this;
+            }.bind(this));
         };
 
+        CustomControl.prototype._onClick = function (oEvent) {
+            if (this.getEnabled()) {
+                this.setSelected(!this.getSelected());
+                this.firePress();
+            }
+        };
 
-        CustomControl.prototype.onclick = function (oEvent) {
-            if (!this._oDialog) {
-                this._oDialog = new Dialog();
-                this.addDependent(this._oDialog);
+        CustomControl.prototype._bindEvents = function () {
+            var oHdrEl = this.getDomRef('hdr');
+
+            jQuery(oHdrEl).bind('click', jQuery.proxy(this._onClick, this));
+        };
+
+        CustomControl.prototype._unbindEvents = function () {
+            var oHdrEl = this.getDomRef('hdr');
+
+            if (oHdrEl) {
+                jQuery(oHdrEl).unbind();
             }
         };
 
@@ -94,12 +102,21 @@ sap.ui.define(
             }
         };
 
-        CustomControl.prototype.onInit = function () {
+        CustomControl.prototype.init = function () {
             this._registerMe();
         };
 
-        CustomControl.prototype.onExit = function () {
+        CustomControl.prototype.exit = function () {
+            this._unbindEvents();
             this._deregisterMe();
+        };
+
+        CustomControl.prototype.onBeforeRendering = function () {
+            this._unbindEvents();
+        };
+
+        CustomControl.prototype.onAfterRendering = function () {
+            this._bindEvents();
         };
 
         return CustomControl;

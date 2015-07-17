@@ -12,9 +12,8 @@ sap.ui.define(
 
         var CustomController = Controller.extend('test.tm.ze_ccux_ctrl.view.ICAppHeader');
 
-        CustomController.prototype.onInit = function () {
-
-
+        CustomController.prototype.onHdrMenuItemPressed = function (oControlEvent) {
+            oControlEvent.getSource().deSelectOthers();
         };
 
         return CustomController;
