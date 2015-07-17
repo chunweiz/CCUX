@@ -8,10 +8,17 @@ sap.ui.define(
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
         'sap/ui/core/routing/HashChanger',
-        'sap/ui/core/format/DateFormat'
+        'sap/ui/core/format/DateFormat',
+        'sap/ui/core/message/Message',
+        'sap/ui/core/message/ControlMessageProcessor',
+        'nrg/base/type/CellPhoneNumber',
+        'nrg/base/type/EmailAddress',
+        'nrg/base/type/SocialSecurityNumber',
+        'nrg/base/type/DrivingLicenseNumber',
+        'nrg/base/type/ZipCode'
     ],
 
-    function (jQuery, Controller, Filter, FilterOperator, HashChanger, DateFormat) {
+    function (jQuery, Controller, Filter, FilterOperator, HashChanger, DateFormat, CoreMessage, CoreControlMessageProcessor) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.dashboard.view.CustomerDataBpInfo');
@@ -39,6 +46,32 @@ sap.ui.define(
 
             //Model to hold BpMarkPreferSet
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBpMarkPreferSet');
+
+            this.getView().attachParseError(function (oEvent) {
+                this._addMessage(oEvent, 'attachParseError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
+            }.bind(this));
+
+            this.getView().attachFormatError(function (oEvent) {
+                this._addMessage(oEvent, 'attachFormatError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
+            }.bind(this));
+
+            this.getView().attachValidationError(function (oEvent) {
+                this._addMessage(oEvent, 'attachValidationError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
+            }.bind(this));
+
+            this.getView().attachValidationSuccess(function (oEvent) {
+                var oMessageManager, aMessage;
+
+                oMessageManager = sap.ui.getCore().getMessageManager();
+                aMessage = oMessageManager.getMessageModel().getData();
+                if (aMessage && !$.isEmptyObject(aMessage)) {
+                    aMessage.forEach(function (oMessage) {
+                        if (oMessage.target === [oEvent.getParameter('id'), oEvent.getParameter('property')].join('/')) {
+                            oMessageManager.removeMessages(oMessage);
+                        }
+                    }.bind(this));
+                }
+            });
         };
 
         CustomController.prototype.onBeforeRendering = function () {
@@ -53,6 +86,25 @@ sap.ui.define(
 
         CustomController.prototype.onExit = function () {
 
+        };
+
+        CustomController.prototype._getMessageProcessor = function () {
+            if (!this._oControlMessageProcessor) {
+                this._oControlMessageProcessor = new CoreControlMessageProcessor();
+            }
+
+            return this._oControlMessageProcessor;
+        };
+
+        CustomController.prototype._addMessage = function (oEvent, sMsg, sType) {
+            var oMsg = new CoreMessage({
+                message: sMsg,
+                type: sType,
+                target: [oEvent.getParameter('id'), oEvent.getParameter('property')].join('/'),
+                processor: this._getMessageProcessor()
+            });
+
+            sap.ui.getCore().getMessageManager().addMessages(oMsg);
         };
 
         CustomController.prototype._initBpInfoConfigModel = function () {
