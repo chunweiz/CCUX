@@ -219,17 +219,39 @@ sap.ui.define(
             }
         };
         /**
-		 * Change the binding if the language is selected
+		 * Change the binding if the language is selected for Mandatory Discription
 		 *
 		 * @function
 		 * @param {String} Type value from the binding
          *
 		 *
 		 */
-        Controller.prototype.onSelected = function (oEvent) {
-            var sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath(),
-                oMandDiscloureTV = this.getView().byId("idCamSSMdTv");
+        Controller.prototype.onMandLngSelected = function (oEvent) {
+            var sPath,
+                oMandDiscloureTV = this.getView().byId("idCamSSMdTv"),
+                sSelectedKey;
+            sSelectedKey = oEvent.getSource().getProperty("selectedKey");
+            sPath = "/ScriptS(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',TxtName='MAND',TxtLang='" + sSelectedKey + "')";
             oMandDiscloureTV.bindElement({
+                model : "comp-campaign",
+                path : sPath
+            });
+        };
+        /**
+		 * Change the binding if the language is selected for Overview script
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.onOvwLngSelected = function (oEvent) {
+            var sPath,
+                oOverScriptTV = this.getView().byId("idnrgCamOvsOvTv"),
+                sSelectedKey;
+            sSelectedKey = oEvent.getSource().getProperty("selectedKey");
+            sPath = "/ScriptS(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',TxtName='OVW',TxtLang='" + sSelectedKey + "')";
+            oOverScriptTV.bindElement({
                 model : "comp-campaign",
                 path : sPath
             });

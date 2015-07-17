@@ -100,7 +100,7 @@ sap.ui.define(
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
             oTileTemplate = this.getView().byId("idnrgCamOffBt").clone();
-            this.myTemplate = oTileTemplate;
+            this._oTileTemplate = oTileTemplate;
             // Handler function for tile container
             fnRecievedHandler = function (oEvent) {
                 that.getOwnerComponent().setCcuxBusy(false);
@@ -162,7 +162,7 @@ sap.ui.define(
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
             aContent = oTileContainer.getContent();
-            oTileTemplate = this.myTemplate;
+            oTileTemplate = this._oTileTemplate;
             sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
             // Handler function for tile container
             fnRecievedHandler = function (oEvent) {
