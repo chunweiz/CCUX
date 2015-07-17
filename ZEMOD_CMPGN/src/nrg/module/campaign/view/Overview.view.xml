@@ -108,11 +108,6 @@
                         labelFor="idCamDescTv" />
                 </um:headerContent>
                 <um:content>
-<!--                    <u:TextView
-                        color="DarkGrey"
-                        class="nrgCamOvr-left nrgCamOvr-top"
-                        design="Base"
-                        text="{comp-campaign>Description}" />-->
               <core:HTML content='&lt;div class=&quot;nrgCamOvr-left nrgCamOvr-top&quot;&gt;{comp-campaign>Description}&lt;/div&gt;'>
               </core:HTML>
                 </um:content>
