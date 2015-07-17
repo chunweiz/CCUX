@@ -57,6 +57,37 @@
                   "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/CpgHistS(OfferCode='50050804',Type='H')/CpqScript_N"
                }
             }
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/CpgHistS(OfferCode='50050804',Type='H')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/CpgHistS(OfferCode='50050804',Type='H')",
+               "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg"
+            },
+            "Contract":"32253375",
+            "OfferCode":"50050805",
+            "Type":"H",
+            "StartDate":"/Date(1319864400000)/",
+            "EndDate":"/Date(1335848400000)/",
+            "OfferTitle":"ZR_SAVE CNP AVG@2000=7.1 BASIC POWER 6 $0",
+            "Description":"",
+            "AvgUsage":"0.0000",
+            "EFL500":"0.0000",
+            "EFL1000":"0.0000",
+            "EFL2000":"0.0000",
+            "Campaign":"11B15R00E4",
+            "Promo":"",
+            "Term":6,
+            "CncFee":"150.0000",
+            "Incentive":"0.0000",
+            "CurrInvAmt":"0.0000",
+            "CurrCons":"0.0000",
+            "Disposition":"",
+            "CpqScript_N":{
+               "__deferred":{
+                  "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/CpgHistS(OfferCode='50050804',Type='H')/CpqScript_N"
+               }
+            }
          }
       ]
    }

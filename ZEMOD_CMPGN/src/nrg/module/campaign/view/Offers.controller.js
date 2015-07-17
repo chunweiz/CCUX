@@ -53,14 +53,20 @@ sap.ui.define(
         Controller.prototype.onOfferSelected = function (oEvent) {
             var aChildren,
                 sPath,
-                i;
-            aChildren = oEvent.getSource().getParent().findElements();
-            for (i = 0; i < aChildren.length; i = i + 1) {
-                if (aChildren[i].hasStyleClass("nrgCamOff-btn-selected")) {
-                    aChildren[i].removeStyleClass("nrgCamOff-btn-selected");
+                iCount,
+                oContext,
+                sOfferCode;
+            sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
+            oContext = this.getView().getModel("comp-campaign").getContext(sPath);
+            sOfferCode = oContext.getProperty("OfferCode");
+/*            aChildren = oEvent.getSource().getParent().findElements();
+            for (iCount = 0; iCount < aChildren.length; iCount = iCount + 1) {
+                if (aChildren[iCount].hasStyleClass("nrgCamOff-btn-selected")) {
+                    aChildren[iCount].removeStyleClass("nrgCamOff-btn-selected");
                 }
             }
-            oEvent.getSource().addStyleClass("nrgCamOff-btn-selected");
+            oEvent.getSource().addStyleClass("nrgCamOff-btn-selected");*/
+            this.navTo("campaignchg", {coNum: this._sContract, offercodeNum: sOfferCode});
         };
 
         /**

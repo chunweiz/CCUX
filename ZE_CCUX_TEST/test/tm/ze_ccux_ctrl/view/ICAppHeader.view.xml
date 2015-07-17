@@ -49,14 +49,7 @@
                 <ua:menu>
                     <ua:HeaderMenu class="nrgAppHMItem">
                         <ua:HeaderMenuItem class="nrgAppHMItem">
-                            <ua:header>
-                                <span>Menu</span>
-                            </ua:header>
-                            <ua:content>
-                                <div>zminofwnefwe</div>
-                                <div>zminofwnefwe</div>
-                                <div>zminofwnefwe</div>
-                            </ua:content>
+                            <span>Menu</span>
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem>
@@ -69,9 +62,7 @@
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem>
-                            <ua:header>
                                 <span>Transactions</span>
-                            </ua:header>
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem>
@@ -104,12 +95,6 @@
                         <ua:HeaderMenuItem>
                             <ua:header>
                                 <span>Clear Account</span>
-                            </ua:header>
-                        </ua:HeaderMenuItem>
-                        <span class="nrgAppHMItem-spacer" />
-                        <ua:HeaderMenuItem>
-                            <ua:header>
-                                <span>LOG OFF</span>
                             </ua:header>
                         </ua:HeaderMenuItem>
                     </ua:HeaderMenu>

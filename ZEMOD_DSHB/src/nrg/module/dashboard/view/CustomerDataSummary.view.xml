@@ -197,31 +197,31 @@
                 rows="{oSmryAssignedAccounts>/}">
             <ute:columns>
                 <ute:TableColumn width="10%">
-                    <c:Label text="Contract"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccContract}"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="10%">
-                    <c:Label text="Sales Rep ID"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccSlRpID}"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="12%">
-                    <c:Label text="Last Name"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccLName}"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="12%">
-                    <c:Label text="First Name"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccFNmae}"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="10%">
-                    <c:Label text="Pager"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccPager}"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="10%">
-                    <c:Label text="Cell"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccCell}"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="10%">
-                    <c:Label text="Fax"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccFax}"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="10%">
-                    <c:Label text="Phone"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccPhn}"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="16%">
-                    <c:Label text="Email Address"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccEml}"/>
                 </ute:TableColumn>
             </ute:columns>
             <ute:rows>

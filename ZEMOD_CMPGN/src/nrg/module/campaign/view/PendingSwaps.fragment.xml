@@ -9,7 +9,7 @@
     <u:Tag class="nrgCamTls-ttl" text="{='You have selected '+ ${appView>/selected} + ' records'}" />
     <u:Table width="auto"
              id="idnrgCamPds-pendTable"
-             class="nrgCamOvr-left nrgCamTls-top nrgCamPds-pendTable">
+             class="nrgCamOvr-left nrgCamPds-top nrgCamPds-pendTable">
                     <u:columns>
                         <u:TableColumn width="8%" class="nrgCamPds-th">
                             <c:Label text="Select"/>
@@ -35,7 +35,7 @@
                     </u:columns>
             </u:Table>
           <u:Tag>
-            <u:Tag class="nrgCamTls-top nrgCamTls-font">
+            <u:Tag class="nrgCamPds-top nrgCamPds-font">
                 <u:Textfield
                     placeholder=""
                     change="testInputChange"
@@ -43,11 +43,11 @@
                     label="Requestor's Name">
                 </u:Textfield>
             </u:Tag>
-            <u:Tag>
-                <c:Label text="No Phone" class="nrgCamTls-left "/>
-                <um:Checkbox id="idnrgCamTlsNoPhone" select=".onSelected" class="nrgCamTls-left"/>
+            <u:Tag class="nrgCamPds-top nrgCamPds-font nrgCamPds-noPhone">
+                <c:Label text="No Phone" class="nrgCamPds-font"/>
+                <um:Checkbox id="idnrgCamTlsNoPhone" select=".onSelected" class="nrgCamPds-left"/>
             </u:Tag>
-            <u:Tag class="nrgCamTls-top">
+            <u:Tag class="nrgCamPds-top">
                 <u:Textfield
                     placeholder=""
                     change="testInputChange"
@@ -55,7 +55,7 @@
                     label="Requestor's Number">
                 </u:Textfield>
             </u:Tag>
-            <u:Tag class="nrgCamTls-top">
+            <u:Tag class="nrgCamPds-top">
                 <u:Button
                     text="Proceed with Cancel"
                     enabled="true"
