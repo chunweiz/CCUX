@@ -41,9 +41,6 @@ sap.ui.define(
             var oModel,
                 sCurrentPath,
                 mParameters,
-                sNewOfferCode,
-                oViewModel,
-                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
                 oTemplateView,
                 oTemplateModel,
                 aEFLDatapaths,
@@ -53,10 +50,9 @@ sap.ui.define(
                 that = this;
             this.getOwnerComponent().setCcuxBusy(true);
             this._sContract = oEvent.getParameter("arguments").coNum;
-            sNewOfferCode = oEvent.getParameter("arguments").offercodeNum;
-            sNewOfferCode = "50160100";
+            this._sNewOfferCode = oEvent.getParameter("arguments").offercodeNum;
             sCurrentPath = "/CpgChgOfferS";
-            sCurrentPath = sCurrentPath + "(Contract='" + this._sContract + "',OfferCode='" + sNewOfferCode + "')";
+            sCurrentPath = sCurrentPath + "(Contract='" + this._sContract + "',OfferCode='" + this._sNewOfferCode + "')";
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oTemplateModel = new sap.ui.model.json.JSONModel();
             this._bindView(sCurrentPath);
@@ -112,7 +108,7 @@ sap.ui.define(
         Controller.prototype.onAcceptCampaign = function (oEvent) {
             var sOfferCode = this.getView().getBindingContext("comp-campaign").getProperty("OfferCode"),
                 sType = this.getView().getBindingContext("comp-campaign").getProperty("Type");
-            this.navTo("campaignSS", {offercodeNum : sOfferCode, coNum : this._sContract });
+            this.navTo("campaignSS", {offercodeNum : this._sNewOfferCode, coNum : this._sContract });
         };
 
         /**

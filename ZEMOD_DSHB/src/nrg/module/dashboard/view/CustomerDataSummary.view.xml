@@ -84,11 +84,10 @@
                     text="{comp-i18n-dashboard>nrgDashboardCusDatSum_BpNum}"
                     labelFor="db_verify_BP">
                 </utmain:Label>
-                <ute:Tag elem="span"
-                    id="db_verify_BP"
-                    text="{oSmryBpInf>/PartnerID}">
-                </ute:Tag>
-
+                <utmain:Button id="db_verify_BP"
+                    design="None" visible="true"
+                    press="._onBpNumClicked"
+                    text="{oSmryBpInf>/PartnerID}"/>
                 <core:Icon visible="{
                         parts:['oSmryBpInf>/SiebelCustomer'],
                         formatter:'._formatSiebel'}"
@@ -108,10 +107,10 @@
                     text="{comp-i18n-dashboard>nrgDashboardCusDatSum_CaNum}"
                     labelFor="db_verify_CA">
                 </utmain:Label>
-                <ute:Tag elem="span"
-                    id="db_verify_CA"
-                    text="{oSmryBuagInf>/ContractAccountID}-{oSmryBuagInf>/CheckDigit}">
-                </ute:Tag>
+                <utmain:Button id="db_verify_CA"
+                    design="None" visible="true"
+                    press="._onCaNumClicked"
+                    text="{oSmryBuagInf>/ContractAccountID}-{oSmryBuagInf>/CheckDigit}"/>
             </ute:Tag>
 
             <ute:HorizontalDivider class="nrgDashboard-cusDataSum-horiLine"/>
@@ -197,31 +196,31 @@
                 rows="{oSmryAssignedAccounts>/}">
             <ute:columns>
                 <ute:TableColumn width="10%">
-                    <c:Label text="Contract"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccContract}"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="10%">
-                    <c:Label text="Sales Rep ID"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccSlRpID}"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="12%">
-                    <c:Label text="Last Name"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccLName}"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="12%">
-                    <c:Label text="First Name"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccFNmae}"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="10%">
-                    <c:Label text="Pager"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccPager}"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="10%">
-                    <c:Label text="Cell"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccCell}"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="10%">
-                    <c:Label text="Fax"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccFax}"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="10%">
-                    <c:Label text="Phone"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccPhn}"/>
                 </ute:TableColumn>
                 <ute:TableColumn width="16%">
-                    <c:Label text="Email Address"/>
+                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccEml}"/>
                 </ute:TableColumn>
             </ute:columns>
             <ute:rows>

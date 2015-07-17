@@ -53,24 +53,22 @@ sap.ui.define(
                 oDropDownListItemTemplate,
                 aFilterIds,
                 aFilterValues,
-                sNewOfferCode,
                 oMandDiscloureTV,
                 fnRecievedHandler,
                 that = this,
                 aContent,
                 sPath;
             this.getOwnerComponent().setCcuxBusy(true);
-            this.sContract = oEvent.getParameter("arguments").coNum;
+            this._sContract = oEvent.getParameter("arguments").coNum;
             this._sOfferCode = oEvent.getParameter("arguments").offercodeNum;
             sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
-            sNewOfferCode = "50160100";
             sCurrentPath = "/CpgChgOfferS";
-            sCurrentPath = sCurrentPath + "(OfferCode='" + sNewOfferCode + "',Contract='32253375')";
+            sCurrentPath = sCurrentPath + "(OfferCode='" + this._sOfferCode + "',Contract='" + this._sContract + "')";
             this._bindView(sCurrentPath);
             sCurrentPath = "/ScriptS";
             // Handler function for Tab Bar Item.
             aFilterIds = ["Contract", "OfferCode", "TxtName"];
-            aFilterValues = ['32253375', sNewOfferCode, 'MAND'];
+            aFilterValues = [this._sContract, this._sOfferCode, 'MAND'];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oDropDownList = this.getView().byId("idnrgCamSSDdL");
             oDropDownListItemTemplate = this.getView().byId("idnrgCamSSLngLtIt").clone();
@@ -157,8 +155,9 @@ sap.ui.define(
                 aFilterValues;
             this._oOverviewDialog = this.getView().byId("idnrgCamOvsDialog");
             this.getOwnerComponent().setCcuxBusy(true);
+
             aFilterIds = ["Contract", "OfferCode", "TxtName"];
-            aFilterValues = ['32253375', '50160100', "OVW"];
+            aFilterValues = [this._sContract, this._sOfferCode, "OVW"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sCurrentPath = "/ScriptS";
             this._oOverviewDialog.setWidth("750px");
@@ -202,7 +201,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.backToOverview = function (oEvent) {
-            this.navTo("campaign", {coNum : "34805112", flagType : "C"});
+            this.navTo("campaign", {coNum : this._sContract, flagType : "C"});
         };
         /**
 		 * Formats the Type value to display "English" and "Spanish"
@@ -220,17 +219,39 @@ sap.ui.define(
             }
         };
         /**
-		 * Change the binding if the language is selected
+		 * Change the binding if the language is selected for Mandatory Discription
 		 *
 		 * @function
 		 * @param {String} Type value from the binding
          *
 		 *
 		 */
-        Controller.prototype.onSelected = function (oEvent) {
-            var sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath(),
-                oMandDiscloureTV = this.getView().byId("idCamSSMdTv");
+        Controller.prototype.onMandLngSelected = function (oEvent) {
+            var sPath,
+                oMandDiscloureTV = this.getView().byId("idCamSSMdTv"),
+                sSelectedKey;
+            sSelectedKey = oEvent.getSource().getProperty("selectedKey");
+            sPath = "/ScriptS(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',TxtName='MAND',TxtLang='" + sSelectedKey + "')";
             oMandDiscloureTV.bindElement({
+                model : "comp-campaign",
+                path : sPath
+            });
+        };
+        /**
+		 * Change the binding if the language is selected for Overview script
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.onOvwLngSelected = function (oEvent) {
+            var sPath,
+                oOverScriptTV = this.getView().byId("idnrgCamOvsOvTv"),
+                sSelectedKey;
+            sSelectedKey = oEvent.getSource().getProperty("selectedKey");
+            sPath = "/ScriptS(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',TxtName='OVW',TxtLang='" + sSelectedKey + "')";
+            oOverScriptTV.bindElement({
                 model : "comp-campaign",
                 path : sPath
             });
@@ -254,30 +275,56 @@ sap.ui.define(
 		 */
         Controller.prototype.onOvsAccept = function (oEvent) {
             var oModel,
-                mParameters;
+                mParameters,
+                sCampaignCode,
+                sEndDate,
+                sOfferCode,
+                sOfferTitle,
+                sPromo,
+                sStartDate,
+                sContract,
+                sPath,
+                oContext,
+                that = this;
             oModel = this.getOwnerComponent().getModel('comp-campaign');
+            sPath = "/CpgChgOfferS(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "')";
+            oContext = oModel.getContext(sPath);
+            sCampaignCode = oContext.getProperty("Campaign");
+            sEndDate = oContext.getProperty("EndDate");
+            sOfferCode = oContext.getProperty("OfferCode");
+            sOfferTitle = oContext.getProperty("OfferTitle");
+            sPromo = oContext.getProperty("Promo");
+            sStartDate = oContext.getProperty("StartDate");
+            sContract = oContext.getProperty("Contract");
             mParameters = {
                 method : "POST",
-                urlParameters : {"CampaignCode" : 'XA1PP7',
-                                         "EndDate" : new Date(),
+                urlParameters : {"CampaignCode" : sCampaignCode,
+                                         "EndDate" : sEndDate,
                                         "LP_Code" : "null",
                                         "LP_FirstName" : "null",
                                         "LP_LastName" : "null",
                                         "LP_RefID" : "null",
-                                        "OfferCode" : '50160100',
-                                        "OfferTitle" : "CPL AVG@2000 13.9 SE N&W 12 WPT EML $0 NSP",
-                                        "PromoCode" : 'XA1PP7',
-                                        "StartDate" : new Date(),
-                                        "Contract" : '32253375'},
+                                        "OfferCode" : sOfferCode,
+                                        "OfferTitle" : sOfferTitle,
+                                        "PromoCode" : sPromo,
+                                        "StartDate" : sStartDate,
+                                        "Contract" : sContract},
                 success : function (oData) {
-                    jQuery.sap.log.info("Odata Read Successfully:::");
+                    if ((oData !== undefined) && (oData.Code === "S")) {
+                        sap.ui.commons.MessageBox.alert("SWAP is completed");
+                        this.navTo("campaign", {coNum : this._sContract, typeV : "C"});
+                    } else {
+                        sap.ui.commons.MessageBox.alert("SWAP Failed");
+                        this.navTo("campaignoffers", {coNum: this._sContract});
+                    }
+                    jQuery.sap.log.info("Odata Read Successfully:::" + oData.Code);
                 }.bind(this),
                 error: function (oError) {
                     jQuery.sap.log.info("Eligibility Error occured");
                 }.bind(this)
             };
             oModel.callFunction("/AcceptCampaign", mParameters); // callback function for error
-            //this.navTo("campaignoffers", {coNum: this._sContract});
+            //
             this._oOverviewDialog.close();
         };
         /**

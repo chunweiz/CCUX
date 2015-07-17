@@ -186,7 +186,7 @@ sap.ui.define(
                             aResults.push(this.getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
                         }
                     }
-                    if ((aResults !== undefined) && (aResults.length > 0)) {
+                    if ((aResults === undefined) && (aResults.length === 0)) {
                         return;
                     } else {
                         oTemplateModel.setData(that.convertEFLJson(aResults));
@@ -408,6 +408,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.ProceedwithCancel = function (oEvent) {
+            this._oCancelDialog.close();
         };
         /**
 		 * Handle when user clicked on Cancelling of Pending Swaps
@@ -416,6 +417,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.ContinuewithCancel = function (oEvent) {
+            this._oCancelDialog.close();
         };
 
         return Controller;

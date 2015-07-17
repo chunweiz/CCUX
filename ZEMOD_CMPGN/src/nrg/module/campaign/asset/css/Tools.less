@@ -38,6 +38,7 @@
 .nrgCamPds-root {
     width: auto;
     height:auto;
+    font-family: @nrgFontFamily;
 
     & > .nrgCamPds-pendTable > tbody > .nrgCamPds-pendRow {
             background-color: transparent;
@@ -45,10 +46,21 @@
     & > .nrgCamPds-pendTable > tbody > .nrgCamPds-pendRow > tr {
             text-align: center;
     }
-    &  .nrgCamTls-top {
+    &  .nrgCamPds-top {
             margin-top: 20px;
     }
     & > .nrgCamPds-pendTable > tbody > tr > .nrgCamPds-th {
             padding-left: 0px;
+    }
+    &  .nrgCamPds-left {
+            margin-left: 10px;
+    }
+    &  .nrgCamPds-font {
+            font-family: @nrgFontFamily;
+            font-size: @nrgFontSize-base;
+            font-weight: @nrgFontWeight-regular;
+    }
+    &  .nrgCamPds-noPhone {
+            margin-left: 2px;
     }
 }

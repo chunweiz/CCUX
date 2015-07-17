@@ -53,14 +53,20 @@ sap.ui.define(
         Controller.prototype.onOfferSelected = function (oEvent) {
             var aChildren,
                 sPath,
-                i;
-            aChildren = oEvent.getSource().getParent().findElements();
-            for (i = 0; i < aChildren.length; i = i + 1) {
-                if (aChildren[i].hasStyleClass("nrgCamOff-btn-selected")) {
-                    aChildren[i].removeStyleClass("nrgCamOff-btn-selected");
+                iCount,
+                oContext,
+                sOfferCode;
+            sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
+            oContext = this.getView().getModel("comp-campaign").getContext(sPath);
+            sOfferCode = oContext.getProperty("OfferCode");
+/*            aChildren = oEvent.getSource().getParent().findElements();
+            for (iCount = 0; iCount < aChildren.length; iCount = iCount + 1) {
+                if (aChildren[iCount].hasStyleClass("nrgCamOff-btn-selected")) {
+                    aChildren[iCount].removeStyleClass("nrgCamOff-btn-selected");
                 }
             }
-            oEvent.getSource().addStyleClass("nrgCamOff-btn-selected");
+            oEvent.getSource().addStyleClass("nrgCamOff-btn-selected");*/
+            this.navTo("campaignchg", {coNum: this._sContract, offercodeNum: sOfferCode});
         };
 
         /**
@@ -94,7 +100,7 @@ sap.ui.define(
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
             oTileTemplate = this.getView().byId("idnrgCamOffBt").clone();
-            this.myTemplate = oTileTemplate;
+            this._oTileTemplate = oTileTemplate;
             // Handler function for tile container
             fnRecievedHandler = function (oEvent) {
                 that.getOwnerComponent().setCcuxBusy(false);
@@ -156,7 +162,7 @@ sap.ui.define(
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
             aContent = oTileContainer.getContent();
-            oTileTemplate = this.myTemplate;
+            oTileTemplate = this._oTileTemplate;
             sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
             // Handler function for tile container
             fnRecievedHandler = function (oEvent) {

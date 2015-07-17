@@ -22,12 +22,12 @@
             <u:Tag class="nrgCmpOff-partDisplay">
                 <u:Tag class="nrgCmpOff-compare">
                     <u:Tag class="nrgCamOff-ttlC" text="{comp-i18n-campaign>nrgCmpOffCompareBy}" />
-                    <um:TabBar id="nrgTabBar" design="None" select=".onSelected" class="nrgCamOff-tabBar">
-                        <um:TabBarItem key="tb001" design="None" press=".onPressed" selected="true" class="nrgCamOff-tabBarItem">
+                    <um:TabBar id="nrgTabBar" design="None" class="nrgCamOff-tabBar">
+                        <um:TabBarItem key="tb001" design="None" select=".onPressed" selected="true" class="nrgCamOff-tabBarItem">
                             <u:Tag text="{comp-i18n-campaign>nrgCmpOffCpInvoice}" />
                         </um:TabBarItem>
                         <br/>
-                        <um:TabBarItem key="tb002"  design="None" press=".onPressed" class="nrgCamOff-tabBarItem">
+                        <um:TabBarItem key="tb002"  design="None" select=".onPressed" class="nrgCamOff-tabBarItem">
                             <u:Tag text="{comp-i18n-campaign>nrgCmpOffCpConsumption}" />
                         </um:TabBarItem>
                     </um:TabBar>

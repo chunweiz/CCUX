@@ -132,7 +132,10 @@ sap.ui.define(
         };
 
         CustomController.prototype.onBackToDashboard = function () {
-            //back to dashboard
+            var oRouter = this.getOwnerComponent().getRouter(),
+                bp = this.getView().getModel('oDataBP').getProperty('/PartnerID');
+
+            oRouter.navTo('dashboard.Bp', {bpNum: bp});
         };
 
         CustomController.prototype.onTitleCancel = function () {    //onTitleCancel
@@ -168,7 +171,7 @@ sap.ui.define(
                 return;
             }
 
-            sPath = '/Partners' + '(\'' + bpNumber + '\')/BpName/';
+            sPath = '/BpNames' + '(\'' + bpNumber + '\')';
             oParameters = {
                 urlParameters: {},
                 success : function (oData) {
@@ -219,7 +222,7 @@ sap.ui.define(
                 return;
             }
 
-            sPath = '/Partners' + '(\'' + bpNumber + '\')/BpAddress' + '(PartnerID=\'' + bpNumber + '\',AddressID=\'' + addressId + '\')';
+            sPath = '/BpAddresses' + '(PartnerID=\'' + bpNumber + '\',AddressID=\'' + addressId + '\')';
             oParameters = {
                 urlParameters: {},
                 success : function (oData) {
@@ -277,7 +280,7 @@ sap.ui.define(
                 return;
             }
 
-            sPath = '/Partners' + '(\'' + bpNumber + '\')/BpPersonal/';
+            sPath = '/BpPersonals' + '(\'' + bpNumber + '\')';
             oParameters = {
                 urlParameters: {},
                 success : function (oData) {
@@ -327,7 +330,7 @@ sap.ui.define(
                 return;
             }
 
-            sPath = '/Partners' + '(\'' + bpNumber + '\')/BpContact/';
+            sPath = '/BpContacts' + '(\'' + bpNumber + '\')';
             oParameters = {
                 urlParameters: {},
                 success : function (oData) {
@@ -392,7 +395,7 @@ sap.ui.define(
                     attibuteSet = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/AttributeSet');
                     attribute = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/Attribute');
 
-                    sPath = '/Partners' + '(\'' + bpNumber + '\')/BpMarkPreferSet' + '(PartnerID=\'' + bpNumber + '\',AttributeSet=\'' + attibuteSet + '\',Attribute=\'' + attribute + '\')';
+                    sPath = '/BpMarkPreferSets' + '(PartnerID=\'' + bpNumber + '\',AttributeSet=\'' + attibuteSet + '\',Attribute=\'' + attribute + '\')';
 
                     if (oModel) {
                         oModel.update(sPath, this.getView().getModel('oDataBpMarkPreferSet').oData.results[i], oParameters);
@@ -414,38 +417,19 @@ sap.ui.define(
 
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
-            sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')';
+            if(!this._bpNum) {
+                this._bpNum = aSplitHash[iSplitHashL - 1];
+            }
 
-            this._retrAllData(sPath);
+            this._retrAllData(this._bpNum);
         };
 
-        Controller.prototype._retrAllData = function (sPath) {
-            var oModel = this.getView().getModel('oODataSvc'),
-                oParameters;
-
-            oParameters = {
-                /*urlParameters: {"$expand": "Buags"},*/
-                success : function (oData) {
-                    if (oData) {
-                        this.getView().getModel('oDataBP').setData(oData);
-                        if (oData.PartnerID) {
-                            this._retrBpTitle(oData.PartnerID);
-                            this._retrBpAddress(oData.PartnerID);
-                            this._retrBpPersonal(oData.PartnerID);
-                            this._retrBpContact(oData.PartnerID);
-                            this._retrBpMarkPrefSet(oData.PartnerID);
-                        }
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    var t = 1.0;
-                    //Need to put error message
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
+        Controller.prototype._retrAllData = function (bpNum) {
+            this._retrBpTitle(bpNum);
+            this._retrBpAddress(bpNum);
+            this._retrBpPersonal(bpNum);
+            this._retrBpContact(bpNum);
+            this._retrBpMarkPrefSet(bpNum);
         };
 
         Controller.prototype._retrBpTitle = function (sBpNum) {

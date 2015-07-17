@@ -28,10 +28,12 @@
                 <!-- EFL Data Table is dynamically inserted here with XML templating -->
                 </u:Tag>
                 <u:Tag>
-                    <u:TextView color="DarkGrey"
+<!--                    <u:TextView color="DarkGrey"
                                     class="nrgCamHis-left nrgCamHis-top"
                                     design="Base"
-                                    text="{comp-campaign>Description}" />
+                                    text="{comp-campaign>Description}" />-->
+                    <core:HTML content='&lt;div class=&quot;content&quot;&gt;{comp-campaign>Description}&lt;/div&gt;'>
+                    </core:HTML>
                 </u:Tag>
                 <u:Table width="96%"
                          class="nrgCamHis-top nrgCamHis-infoTable"

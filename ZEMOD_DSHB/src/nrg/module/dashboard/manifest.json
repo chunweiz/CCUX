@@ -71,7 +71,7 @@
                 },
 
                 "dashboard.CaInfo": {
-                    "pattern": "cainfo/{bpNum}",
+                    "pattern": "cainfo/bp/{bpNum}/ca/{caNum}",
                     "target": [ "dashboard.CustomerDataCaInfo", "dashboard.CustomerDataSummary", "dashboard.Tools" ]
                 }
             },
