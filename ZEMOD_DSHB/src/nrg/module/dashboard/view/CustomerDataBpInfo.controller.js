@@ -417,38 +417,19 @@ sap.ui.define(
 
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
-            sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')';
+            if(!this._bpNum) {
+                this._bpNum = aSplitHash[iSplitHashL - 1];
+            }
 
-            this._retrAllData(sPath);
+            this._retrAllData(this._bpNum);
         };
 
-        Controller.prototype._retrAllData = function (sPath) {
-            var oModel = this.getView().getModel('oODataSvc'),
-                oParameters;
-
-            oParameters = {
-                /*urlParameters: {"$expand": "Buags"},*/
-                success : function (oData) {
-                    if (oData) {
-                        this.getView().getModel('oDataBP').setData(oData);
-                        if (oData.PartnerID) {
-                            this._retrBpTitle(oData.PartnerID);
-                            this._retrBpAddress(oData.PartnerID);
-                            this._retrBpPersonal(oData.PartnerID);
-                            this._retrBpContact(oData.PartnerID);
-                            this._retrBpMarkPrefSet(oData.PartnerID);
-                        }
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    var t = 1.0;
-                    //Need to put error message
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
+        Controller.prototype._retrAllData = function (bpNum) {
+            this._retrBpTitle(bpNum);
+            this._retrBpAddress(bpNum);
+            this._retrBpPersonal(bpNum);
+            this._retrBpContact(bpNum);
+            this._retrBpMarkPrefSet(bpNum);
         };
 
         Controller.prototype._retrBpTitle = function (sBpNum) {
