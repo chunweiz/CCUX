@@ -63,7 +63,7 @@
                         labelFor="idCamDescTv" />
                 </um:headerContent>
                 <um:content>
-                    <core:HTML content='&lt;div class=&quot;nrgCamChg-left nrgCamChg-top&quot;&gt;{comp-campaign>Description}&lt;/div&gt;'>
+                    <core:HTML content='&lt;div class=&quot;nrgCamChg-left nrgCamChg-top nrgCamChg-desc&quot;&gt;{comp-campaign>Description}&lt;/div&gt;'>
                     </core:HTML>
                 </um:content>
             </um:Infoline>
