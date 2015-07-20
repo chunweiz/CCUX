@@ -32,13 +32,17 @@
            "routes": {
                 "quickpay": {
                     "pattern": "quickpay",
-                    "target": [ "quickpay.General", "dashboard.SummaryBP", "campaign.Tools" ]
+                    "target": [ "quickpay.General", "dashboard.SummaryBP", "quickpay.Tools" ]
                 }
             },
             "targets": {
                 "quickpay.General": {
                     "viewName": "nrg.module.quickpay.view.General",
                     "controlId": "idAppGeneral"
+                },
+                "quickpay.Tools": {
+                    "viewName": "nrg.module.quickpay.view.Tools",
+                    "controlId": "idAppTools"
                 }
             }
         }
