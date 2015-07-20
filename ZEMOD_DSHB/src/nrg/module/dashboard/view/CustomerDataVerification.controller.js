@@ -331,7 +331,7 @@ sap.ui.define(
 
             sPath = '/Partners' + '(\'' + this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID') + '\')';
             oParameters = {
-                urlParameters: {},
+                merge: false,
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Update Success");
                     this._initDtaVrfRetr();
@@ -575,7 +575,7 @@ sap.ui.define(
             sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
 
             oParameters = {
-                urlParameters: {},
+                merge: false,
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Update Success");
                     this._oTempMailEditPopup.close();
