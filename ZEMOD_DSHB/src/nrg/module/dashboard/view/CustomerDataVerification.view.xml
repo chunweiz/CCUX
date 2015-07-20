@@ -529,7 +529,9 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput nrgDashboard-cusDataVerify-mContent-hEmailInput"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Button text="SMS"/>
+                                            <utmain:Button
+                                                press="._onSMSButtonClicked"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SMS}"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>

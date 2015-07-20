@@ -579,6 +579,10 @@ sap.ui.define(
             if (oModel) {
                 oModel.update(sPath, this.getView().getModel('oDtaVrfyMailingTempAddr').oData, oParameters);
             }
+
+            Controller.prototype._onSMSButtonClicked = function (oEvent) {
+                var test = 0;
+            };
         };
 
         return Controller;
