@@ -573,42 +573,41 @@
     <ute:Tag id="idAddrUpdatePopup" visible="false"
              class="nrgDashboard-cusDataVerifyEditMail">
         <ute:Tag class="nrgDashboard-cusDataVerifyEditMail-l">
-            <ute:Textfield id="idEditHouseNum"
+            <ute:Tag><ute:Textfield id="idEditHouseNum" fieldType="Underlined"
                 label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_HuNum}"
-                editable="true"
-                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/HouseNo}"/>
-        </ute:Tag>
-        <ute:Tag class="nrgDashboard-cusDataVerifyEditMail-r">
-            <ute:Textfield id="idEditUnitNum"
+                editable="true" width="100px"
+                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/HouseNo}"/></ute:Tag>
+            <ute:Tag><ute:Textfield id="idEditUnitNum" fieldType="Underlined"
                 label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_UniNum}"
-                editable="true"
-                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/UnitNo}"/>
+                editable="true" width="100px"
+                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/UnitNo}"/></ute:Tag>
+            <ute:Tag><ute:Textfield id="idEditStName" fieldType="Underlined"
+                label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_StName}"
+                editable="true" width="220px"
+                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/Street}"/></ute:Tag>
+            <ute:Tag><ute:Textfield id="idEditCity" fieldType="Underlined"
+                label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_City}"
+                editable="true" width="100px"
+                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/City}"/></ute:Tag>
+            <ute:Tag><ute:Textfield id="idEditState" fieldType="Underlined"
+                label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_State}"
+                editable="true" width="100px"
+                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/State}"/></ute:Tag>
+            <ute:Tag><ute:Textfield id="idEditZip" fieldType="Underlined"
+                label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_ZipCode}"
+                editable="true" width="100px"
+                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ZipCode}"/></ute:Tag>
+
+        </ute:Tag>
+        <ute:Tag class="nrgDashboard-cusDataVerifyEditMail-r"
+                 visible="false">
+
         </ute:Tag>
 
+        <ute:Tag><utmain:Button text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_UpdtBtnText}"
+                press="._handleMailingAddrUpdate"/> </ute:Tag>
 
-        <ute:Textfield id="idEditStName" fieldType="Underlined"
-            class="nrgDashboard-cusDataVerifyEditMailAdd-stName"
-            label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_StName}"
-            editable="true" width="400px"
-            value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/Street}"/>
-        <ute:Textfield id="idEditCity" fieldType="Underlined"
-            class="nrgDashboard-cusDataVerifyEditMailAdd-cityState"
-            label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_City}"
-            editable="true" width="120px"
-            value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/City}"/>
-        <ute:Textfield id="idEditState" fieldType="Underlined"
-            class="nrgDashboard-cusDataVerifyEditMailAdd-cityState"
-            label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_State}"
-            editable="true" width="120px"
-            value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/State}"/>
-        <ute:Textfield id="idEditZip" fieldType="Underlined"
-            label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_ZipCode}"
-            class="nrgDashboard-cusDataVerifyEditMailAdd-zipCode"
-            editable="true" width="80px"
-            value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ZipCode}"/>
-        <utmain:Button text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_UpdtBtnText}"
-            class="nrgDashboard-cusDataVerifyEditMailAdd-updtBtn"
-            press="._handleMailingAddrUpdate"/>
+
     </ute:Tag>
 
     <ute:Tag id="idTempAddrUpdatePopup" visible="false"

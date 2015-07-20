@@ -514,7 +514,7 @@ sap.ui.define(
 
 
         Controller.prototype._handleMailingAddrUpdate = function (oEvent) {
-            var oModel = this.getView().getModel('oODataSvc'),
+            /*var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
                 sBpNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/PartnerID'),
@@ -538,7 +538,8 @@ sap.ui.define(
 
             if (oModel) {
                 oModel.update(sPath, this.getView().getModel('oDtaVrfyMailingTempAddr').oData, oParameters);
-            }
+            }*/
+            this.getView().byId('idAddrUpdatePopup').addStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
         };
 
         Controller.prototype._onEditTempAddrClick = function (oEvent) {
@@ -597,9 +598,7 @@ sap.ui.define(
 
 
             sSmsUrl = sSmsUrl.substr(0, iCAstringIndex + 16) + oCurCaModel.getProperty('/ContractAccountID') + sSmsUrl.substr(iCAstringIndex + 16);
-
             window.open(sSmsUrl);
-
         };
 
         return Controller;

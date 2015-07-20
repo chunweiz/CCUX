@@ -356,36 +356,51 @@
 
 }
 
+
+
 .nrgDashboard-cusDataVerifyEditMail{
-    width: 900px;
+    width: 440px;
+
+    &.nrgDashboard-cusDataVerifyEditMail-vl{
+        width: 880px;
+    }
 
     & > .nrgDashboard-cusDataVerifyEditMail-l{
         display: inline-block;
-        width:50%
+        width: 100%;
+    }
+
+    //& > .nrgDashboard-cusDataVerifyEditMail-l{
+    //    width: 50px;
+    //}
+
+    & > .nrgDashboard-cusDataVerifyEditMail-l > div{
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+    }
+
+    & > .nrgDashboard-cusDataVerifyEditMail-l > div > span > label{
+        font-weight: @nrgFontWeight-semiBold;
+        display: inline-block;
+        float: left;
+        clear: left;
+        width: 120px;
+        text-align: right;
+        padding-top: 3px;
+    }
+
+    & > .nrgDashboard-cusDataVerifyEditMail-l > div > .testClass > label{
+        color: red;
+    }
+
+    & > .nrgDashboard-cusDataVerifyEditMail-l > div > span > input{
+        display: inline-block;
+        float: left;
     }
 
     & > .nrgDashboard-cusDataVerifyEditMail-r{
         display: inline-block;
         width:50%;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMailAdd-huNum{
-        margin-right: 60px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMailAdd-stName{
-        margin-right: 100px;
-        line-height: 35px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMailAdd-cityState{
-        margin-right: 110px;
-        line-height: 35px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMailAdd-zipCode{
-        margin-right: 400px;
-        line-height: 35px;
     }
 
     & > .nrgDashboard-cusDataVerifyEditMailAdd-updtBtn{
