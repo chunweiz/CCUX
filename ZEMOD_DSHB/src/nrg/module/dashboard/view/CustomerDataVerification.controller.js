@@ -356,6 +356,14 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._formatSMSBtn = function (sIndicator) {
+            if (sIndicator === 'x' || sIndicator === 'X') {
+                return false;
+            } else {
+                return true;
+            }
+        };
+
         Controller.prototype._formatDate = function (sDateString) {
             // 20120620
             var sYear,
@@ -579,10 +587,19 @@ sap.ui.define(
             if (oModel) {
                 oModel.update(sPath, this.getView().getModel('oDtaVrfyMailingTempAddr').oData, oParameters);
             }
+        };
 
-            Controller.prototype._onSMSButtonClicked = function (oEvent) {
-                var test = 0;
-            };
+        Controller.prototype._onSMSButtonClicked = function (oEvent) {
+            var oCurBpModel = this.getView().getModel('oDtaVrfyBP'),
+                oCurCaModel = this.getView().getModel('oDtaVrfyBuags'),
+                sSmsUrl = oCurBpModel.getProperty('/SMSUrl'),
+                iCAstringIndex = sSmsUrl.indexOf('contractAccount=');
+
+
+            sSmsUrl = sSmsUrl.substr(0, iCAstringIndex + 16) + oCurCaModel.getProperty('/ContractAccountID') + sSmsUrl.substr(iCAstringIndex + 16);
+
+            window.open(sSmsUrl);
+
         };
 
         return Controller;
