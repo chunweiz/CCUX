@@ -395,7 +395,7 @@ sap.ui.define(
                     attibuteSet = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/AttributeSet');
                     attribute = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/Attribute');
 
-                    sPath = '/BpMarkPreferSets' + '(PartnerID=\'' + bpNumber + '\',AttributeSet=\'' + attibuteSet + '\',Attribute=\'' + attribute + '\')';
+                    sPath = '/BpMarkPrefers' + '(PartnerID=\'' + bpNumber + '\',AttributeSet=\'' + attibuteSet + '\',Attribute=\'' + attribute + '\')';
 
                     if (oModel) {
                         oModel.update(sPath, this.getView().getModel('oDataBpMarkPreferSet').oData.results[i], oParameters);
