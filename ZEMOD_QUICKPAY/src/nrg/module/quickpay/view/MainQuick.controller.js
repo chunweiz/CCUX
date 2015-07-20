@@ -25,9 +25,15 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onQuickPay = function (oEvent) {
+            var oBtnsTag, oStopRecTag;
+
             if (!this._oDialogFragment) {
                 this._oDialogFragment = sap.ui.xmlfragment("PaymentMethods", "nrg.module.quickpay.view.PaymentMethods", this);
             }
+            oBtnsTag = sap.ui.core.Fragment.byId("PaymentMethods", "idnrgQPPay-btns");
+            oStopRecTag = sap.ui.core.Fragment.byId("PaymentMethods", "idnrgQPPay-StopRec");
+            oStopRecTag.addStyleClass("nrgQPPay-hide");
+            oBtnsTag.removeStyleClass("nrgQPPay-hide");
             if (!this._oPaymentDialog) {
                 this._oPaymentDialog = new ute.ui.main.Popup.create({
                     close: this._handleDialogClosed,
@@ -45,8 +51,8 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onCreditCard = function (oEvent) {
-            var oBtnsTag = sap.ui.core.Fragment.byId("PaymentMethods", "idnrgQPPay-btns"),
-                oStopRecTag = sap.ui.core.Fragment.byId("PaymentMethods", "idnrgQPPay-StopRec");
+            var oBtnsTag = this.getView().byId("idnrgQPPay-btns"),
+                oStopRecTag = this.getView().byId("idnrgQPPay-StopRec");
             oBtnsTag.addStyleClass("nrgQPPay-hide");
             oStopRecTag.removeStyleClass("nrgQPPay-hide");
         };
