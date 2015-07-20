@@ -39,12 +39,12 @@ sap.ui.define(
             bEnabled = !!bEnabled;
 
             if (bEnabled) {
-                this.data('disabled', null);
+                this.$().removeClass('uteAppHMItem-disabled');
             } else {
-                this.data('disabled', 'disabled', true);
+                this.$().addClass('uteAppHMItem-disabled');
             }
 
-            this.setProperty('enabled', bEnabled);
+            this.setProperty('enabled', bEnabled, true);
             return this;
         };
 
@@ -52,16 +52,16 @@ sap.ui.define(
             bSelected = !!bSelected;
 
             if (bSelected) {
-                this.data('selected', 'selected', true);
+                this.$().addClass('uteAppHMItem-selected');
             } else {
-                this.data('selected', null);
+                this.$().removeClass('uteAppHMItem-selected');
             }
 
-            this.setProperty('selected', bSelected);
+            this.setProperty('selected', bSelected, true);
             return this;
         };
 
-        CustomControl.prototype.deSelectOthers = function () {
+        CustomControl.prototype.deselectOthers = function () {
             this._aHdrMenuItem.forEach(function (oItem) {
                 if (oItem instanceof CustomControl && oItem !== this && oItem.getSelected()) {
                     oItem.setSelected(false);

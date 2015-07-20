@@ -9,20 +9,6 @@
 
                     "resourceBundle": {
                         "comp-i18n-quickpay": "i18n/module.properties"
-                    },
-
-                    "odata": {
-                        "real": {
-                            "comp-quickpay": {
-                                "url": ""
-                            }
-                        },
-                        "mock": {
-                            "comp-quickpay": {
-                                "mockDataBaseUrl": "",
-                                "generateMissingMockData": true
-                            }
-                        }
                     }
                 }
             }
@@ -32,12 +18,12 @@
            "routes": {
                 "quickpay": {
                     "pattern": "quickpay",
-                    "target": [ "quickpay.General", "dashboard.SummaryBP", "quickpay.Tools" ]
+                    "target": [ "quickpay.MainQuick", "dashboard.SummaryBP", "quickpay.Tools" ]
                 }
             },
             "targets": {
-                "quickpay.General": {
-                    "viewName": "nrg.module.quickpay.view.General",
+                "quickpay.MainQuick": {
+                    "viewName": "nrg.module.quickpay.view.MainQuick",
                     "controlId": "idAppGeneral"
                 },
                 "quickpay.Tools": {

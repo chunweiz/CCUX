@@ -1,0 +1,15 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:u="ute.ui.commons"
+    xmlns:um="ute.ui.main"
+    xmlns:c="sap.ui.commons"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="nrg.module.quickpay.view.MainQuick">
+    <u:Tag class="nrgToolsEmpty nrgAppMain-toolsContent nrgAppMain-toolsContent-full">
+        <um:Button press=".onQuickPay"
+                   text="Quick Pay"
+                   class="nrgCamOff-btn"
+                   id="idnrgCamOffBt" design="Default">
+        </um:Button>
+    </u:Tag>
+</mvc:View>

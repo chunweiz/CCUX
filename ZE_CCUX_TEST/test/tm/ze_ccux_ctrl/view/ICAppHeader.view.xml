@@ -26,10 +26,11 @@
             position: relative;
             display: inline-block;
             width: 1px;
-            height: 12pt;
-            background-color: tomato;
+            height: 8pt;
+            background-color: grey;
             margin-left: 15px;
             margin-right: 15px;
+            transform: translateY(-1px);
         }
 
         .nrgAppHMItem.uteAppHMItem {
@@ -43,16 +44,19 @@
 
     <ua:App>
         <ua:header>
-            <ua:Header>
+            <ua:Header id="header">
                 <ua:banner>
                 </ua:banner>
                 <ua:menu>
                     <ua:HeaderMenu class="nrgAppHMItem">
-                        <ua:HeaderMenuItem class="nrgAppHMItem" press=".onHdrMenuItemPressed">
+                        <ua:HeaderMenuItem id="menu" class="nrgAppHMItem" press=".onHdrMenuItemPressed">
                             <span>Menu</span>
+                            <ua:customData>
+                                <core:CustomData key="nrg-type" value="menu"/>
+                            </ua:customData>
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
-                        <ua:HeaderMenuItem enabled="false" press=".onHdrMenuItemPressed">
+                        <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
                             <span>Index</span>
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
@@ -70,9 +74,12 @@
                         <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
                             <span>Messages</span>
+                            <ua:customData>
+                                <core:customData key="nrg-type" value="menu"/>
+                            </ua:customData>
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-spacer" />
-                        <ua:HeaderMenuItem enabled="false" press=".onHdrMenuItemPressed">
+                        <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
                             <core:Icon src="sap-icon://nrg-icon/refresh"></core:Icon>
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-spacer" />
