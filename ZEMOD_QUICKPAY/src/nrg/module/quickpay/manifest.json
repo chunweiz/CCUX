@@ -2,24 +2,24 @@
     "sap.ui5": {
         "config": {
             "module": {
-                "nrg.module.campaign": {
+                "nrg.module.quickpay": {
                     "stylesheet": [
                         "asset/css/module.css"
                     ],
 
                     "resourceBundle": {
-                        "comp-i18n-campaign": "i18n/module.properties"
+                        "comp-i18n-quickpay": "i18n/module.properties"
                     },
 
                     "odata": {
                         "real": {
-                            "comp-campaign": {
+                            "comp-quickpay": {
                                 "url": ""
                             }
                         },
                         "mock": {
-                            "comp-campaign": {
-                                "mockDataBaseUrl": "data/version1/",
+                            "comp-quickpay": {
+                                "mockDataBaseUrl": "",
                                 "generateMissingMockData": true
                             }
                         }
@@ -36,7 +36,7 @@
                 }
             },
             "targets": {
-                "campaign.General": {
+                "quickpay.General": {
                     "viewName": "nrg.module.quickpay.view.General",
                     "controlId": "idAppGeneral"
                 }
