@@ -13,6 +13,15 @@ sap.ui.define(
             oRm.write('<div');
             oRm.writeControlData(oCustomControl);
             oRm.addClass('uteAppHMItem');
+
+            if (oCustomControl.getSelected()) {
+                oRm.addClass('uteAppHMItem-selected');
+            }
+
+            if (!oCustomControl.getEnabled()) {
+                oRm.addClass('uteAppHMItem-disabled');
+            }
+
             oRm.writeClasses();
             oRm.write('>');
 
