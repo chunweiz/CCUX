@@ -209,6 +209,16 @@ sap.ui.define(
                 content: 'e625'
             });
 
+            IconPool.addIcon('handset', 'nrg-icon', {
+                fontFamily: 'nrg-icon',
+                content: 'e626'
+            });
+
+            IconPool.addIcon('headphone', 'nrg-icon', {
+                fontFamily: 'nrg-icon',
+                content: 'e627'
+            });
+
             IconPool.addIcon('calendar', 'nrg-icon', {
                 fontFamily: 'nrg-icon',
                 content: 'e628'
