@@ -28,21 +28,86 @@ sap.ui.define(
             if (!this._oDialogFragment) {
                 this._oDialogFragment = sap.ui.xmlfragment("PaymentMethods", "nrg.module.quickpay.view.PaymentMethods", this);
             }
-            this._oPaymentDialog = new ute.ui.main.Popup.create({
-/*                title: 'Select Payment Method',*/
-                close: this._handleDialogClosed,
-                content: this._oDialogFragment
-            });
+            if (!this._oPaymentDialog) {
+                this._oPaymentDialog = new ute.ui.main.Popup.create({
+                    close: this._handleDialogClosed,
+                    content: this._oDialogFragment
+                });
+            }
             this._oPaymentDialog.addStyleClass("nrgQPPay-dialog");
+            this.getView().addDependent(this._oPaymentDialog);
             this._oPaymentDialog.open();
         };
         /**
-		 * Start Quick Pay process
+		 * Show Stop Voice Log Recording msg
 		 *
 		 * @function onQuickPay
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
-        Controller.prototype.onQuickPay = function (oEvent) {
+        Controller.prototype.onCreditCard = function (oEvent) {
+            var oBtnsTag = sap.ui.core.Fragment.byId("PaymentMethods", "idnrgQPPay-btns"),
+                oStopRecTag = sap.ui.core.Fragment.byId("PaymentMethods", "idnrgQPPay-StopRec");
+            oBtnsTag.addStyleClass("nrgQPPay-hide");
+            oStopRecTag.removeStyleClass("nrgQPPay-hide");
+        };
+        /**
+		 * Credit Card Process initialization
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onStopRec = function (oEvent) {
+            if (!this._oPaymentDialog) {
+                this._oPaymentDialog = new ute.ui.main.Popup.create({
+                    close: this._handleCreditCardClosed,
+                    content: this._oDialogFragment
+                });
+            }
+            this._oPaymentDialog.open();
+        };
+        /**
+		 * Bank Draft Process initialization
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onBankDraft = function (oEvent) {
+            this._oPaymentDialog.open();
+        };
+        /**
+		 * Receipt Process initialization
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onReceipt = function (oEvent) {
+            this._oPaymentDialog.open();
+        };
+        /**
+		 * Reliant Card Process initialization
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onReliantCard = function (oEvent) {
+            this._oPaymentDialog.open();
+        };
+        /**
+		 * Pending Credit Card Process initialization
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onPendingCreditCard = function (oEvent) {
+            this._oPaymentDialog.open();
+        };
+        /**
+		 * Pending Bank Draft Process initialization
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onPendingBankDraft = function (oEvent) {
             this._oPaymentDialog.open();
         };
         return Controller;
