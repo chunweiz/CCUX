@@ -42,7 +42,8 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCoPageModel');
 
             //For Phone Type
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPhoneType');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDayPhoneType');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEvnPhoneType');
 
             //Siebel Customer Indicator
             this.bSiebelCustomer = false;
@@ -56,12 +57,17 @@ sap.ui.define(
         };
 
         Controller.prototype._initPhnTypes = function () {
-            var oPhnType = this.getView().getModel('oPhoneType'),
-                oTypes = [];
+            var oDayPhnType = this.getView().getModel('oDayPhoneType'),
+                oEvnPhnType = this.getView().getModel('oEvnPhoneType'),
+                oTypes = [],
+                oEvnTypes = [];
 
-            oTypes = [ {Key: "LANDLINE", Type: "LANDLINE"}, {Key: "CELL", Type: "CELL"}];
 
-            oPhnType.setProperty('/', oTypes);
+            oTypes = [ {Key: "WORK", Type: "LANDLINE"}, {Key: "CELL", Type: "CELL"}];
+            oEvnTypes = [ {Key: "HOME", Type: "LANDLINE"}, {Key: "CELL", Type: "CELL"}];
+
+            oDayPhnType.setProperty('/', oTypes);
+            oEvnPhnType.setProperty('/', oEvnTypes);
         };
 
         Controller.prototype._initCoPageModel = function () {

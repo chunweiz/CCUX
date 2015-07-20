@@ -319,11 +319,11 @@
                                         class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                     <utmain:Dropdown id="dayPhnType" design="Plain"
                                         selectedKey="{oDtaVrfyBP>/DayPhoneType}"
-                                        content="{oPhoneType>/}">
+                                        content="{oDayPhoneType>/}">
                                         <utmain:DropdownItem
-                                            key="{oPhoneType>Key}">
+                                            key="{oDayPhoneType>Key}">
                                             <ute:Tag elem="span"
-                                                 text="{oPhoneType>Type}"/>
+                                                 text="{oDayPhoneType>Type}"/>
                                         </utmain:DropdownItem>
                                     </utmain:Dropdown>
                                 </ute:Tag>
@@ -354,11 +354,11 @@
                                         class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                     <utmain:Dropdown id="evnPhnType" design="Plain"
                                         selectedKey="{oDtaVrfyBP>/EveningPhoneType}"
-                                        content="{oPhoneType>/}">
+                                        content="{oEvnPhoneType>/}">
                                         <utmain:DropdownItem
-                                            key="{oPhoneType>Key}">
+                                            key="{oEvnPhoneType>Key}">
                                             <ute:Tag elem="span"
-                                                 text="{oPhoneType>Type}"/>
+                                                 text="{oEvnPhoneType>Type}"/>
                                         </utmain:DropdownItem>
                                     </utmain:Dropdown>
                                 </ute:Tag>
@@ -473,11 +473,11 @@
                                         class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                     <utmain:Dropdown id="dayPhnType_mail" design="Plain"
                                         selectedKey="{oDtaVrfyBP>/DayPhoneType}"
-                                        content="{oPhoneType>/}">
+                                        content="{oDayPhoneType>/}">
                                         <utmain:DropdownItem
-                                            key="{oPhoneType>Key}">
+                                            key="{oDayPhoneType>Key}">
                                             <ute:Tag elem="span"
-                                                 text="{oPhoneType>Type}"/>
+                                                 text="{oDayPhoneType>Type}"/>
                                         </utmain:DropdownItem>
                                     </utmain:Dropdown>
                                 </ute:Tag>
@@ -508,11 +508,11 @@
                                         class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                     <utmain:Dropdown id="evnPhnType_mail" design="Plain"
                                         selectedKey="{oDtaVrfyBP>/EveningPhoneType}"
-                                        content="{oPhoneType>/}">
+                                        content="{oEvnPhoneType>/}">
                                         <utmain:DropdownItem
-                                            key="{oPhoneType>Key}">
+                                            key="{oEvnPhoneType>Key}">
                                             <ute:Tag elem="span"
-                                                 text="{oPhoneType>Type}"/>
+                                                 text="{oEvnPhoneType>Type}"/>
                                         </utmain:DropdownItem>
                                     </utmain:Dropdown>
                                 </ute:Tag>
