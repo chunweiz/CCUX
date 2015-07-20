@@ -604,8 +604,10 @@
 
         </ute:Tag>
 
-        <ute:Tag><utmain:Button text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_UpdtBtnText}"
-                press="._handleMailingAddrUpdate"/> </ute:Tag>
+        <utmain:Button  id="idEditMailAddr_UpdtBtn"
+                class="nrgDashboard-cusDataVerifyEditMailAdd-updtBtn"
+                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_UpdtBtnText}"
+                press="._handleMailingAddrUpdate"/>
 
 
     </ute:Tag>

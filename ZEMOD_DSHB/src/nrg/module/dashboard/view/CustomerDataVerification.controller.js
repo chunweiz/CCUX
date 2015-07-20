@@ -560,12 +560,18 @@ sap.ui.define(
 
         Controller.prototype._onEditMailAddrClick = function (oEvent) {
             this._oMailEditPopup = ute.ui.main.Popup.create({
+                close: this._handleEditMailPopupClose,
                 content: this.getView().byId("idAddrUpdatePopup"),
                 title: 'Edit Mailing Address'
             });
             //this._onToggleButtonPress();
             this.getView().byId("idAddrUpdatePopup").setVisible(true);
             this._oMailEditPopup.open();
+        };
+
+        Controller.prototype._handleEditMailPopupClose = function (oEvent) {
+            this.getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
+
         };
 
         Controller.prototype._handleTempAddrUpdate = function (oEvent) {
