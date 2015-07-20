@@ -160,6 +160,7 @@
                         'ZEMOD_OTHERS/src/nrg/module/others/manifest.json',
                         'ZEMOD_DSHB/src/nrg/module/dashboard/manifest.json',
                         'ZEMOD_CMPGN/src/nrg/module/campaign/manifest.json',
+                        'ZEMOD_QUICKPAY/src/nrg/module/quickpay/manifest.json',
                         '<%= compFolder %>/src/<%= compPath %>/manifest.json'
                     ],
                     dest: '<%= compFolder %>/build/<%= compPath %>/manifest.json'

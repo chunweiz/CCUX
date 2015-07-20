@@ -13,6 +13,7 @@
     @CALL grunt --deploy=source --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH% --eclipseProjectName=%ECLIPSE_SRC_FOLDER% --srcFolderName=ZEMOD_APP
     @CALL grunt --deploy=source --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH% --eclipseProjectName=%ECLIPSE_SRC_FOLDER% --srcFolderName=ZEMOD_CMPGN
     @CALL grunt --deploy=source --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH% --eclipseProjectName=%ECLIPSE_SRC_FOLDER% --srcFolderName=ZEMOD_DSHB
+    @CALL grunt --deploy=source --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH% --eclipseProjectName=%ECLIPSE_SRC_FOLDER% --srcFolderName=ZEMOD_QUICKPAY
     @CALL grunt --deploy=source --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH% --eclipseProjectName=%ECLIPSE_SRC_FOLDER% --srcFolderName=ZEMOD_OTHERS
 ) ELSE (
     @ECHO Path %ECLIPSE_WORKSPACE_PATH%\%ECLIPSE_SRC_FOLDER% does not exists.

@@ -56,7 +56,11 @@
 ) ELSE (
     @ECHO Path %ECLIPSE_WORKSPACE_PATH%\ZEMOD_CMPGN does not exists.
 )
-
+@IF EXIST %ECLIPSE_WORKSPACE_PATH%\ZEMOD_QUICKPAY (
+    @CALL grunt --deploy=module --moduleName=nrg.module.campaign --moduleFolder=ZEMOD_CMPGN --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\ZEMOD_QUICKPAY
+) ELSE (
+    @ECHO Path %ECLIPSE_WORKSPACE_PATH%\ZEMOD_QUICKPAY does not exists.
+)
 @IF EXIST %ECLIPSE_WORKSPACE_PATH%\ZECMP_IC (
     @CALL grunt --deploy=component --componentName=nrg.component.ic --componentFolder=ZECMP_IC --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\ZECMP_IC
 ) ELSE (

@@ -9,6 +9,4 @@
     displayBlock="true">
 
     <div>General QUICKPAY</div>
-    <sm:ScrollContainer id="viewContent" height="100%" width="100%" horizontal="true" vertical="true">
-    </sm:ScrollContainer>
 </mvc:View>

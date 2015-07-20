@@ -9,4 +9,5 @@ grunt --build=module --moduleName=nrg.module.app.main --moduleFolder=ZEMOD_APP
 grunt --build=module --moduleName=nrg.module.others --moduleFolder=ZEMOD_OTHERS
 grunt --build=module --moduleName=nrg.module.dashboard --moduleFolder=ZEMOD_DSHB
 grunt --build=module --moduleName=nrg.module.campaign --moduleFolder=ZEMOD_CMPGN
+grunt --build=module --moduleName=nrg.module.quickpay --moduleFolder=ZEMOD_QUICKPAY
 grunt --build=component --componentName=nrg.component.ic --componentFolder=ZECMP_IC
