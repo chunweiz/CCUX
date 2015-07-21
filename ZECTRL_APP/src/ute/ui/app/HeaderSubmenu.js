@@ -46,11 +46,11 @@ sap.ui.define(
             return this;
         };
 
-        CustomControl.prototype.setPosition = function (oRefElem, sOffset) {
+        CustomControl.prototype.setPosition = function (oRef, sOffset) {
             this._oPopup.setPosition(
                 Popup.Dock.LeftBottom,
                 Popup.Dock.LeftBottom,
-                oRefElem,
+                oRef,
                 sOffset
             );
         };

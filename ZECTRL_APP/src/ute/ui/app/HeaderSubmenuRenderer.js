@@ -13,16 +13,21 @@ sap.ui.define(
             oRm.write('<div');
             oRm.writeControlData(oCustomControl);
             oRm.addClass('uteAppHdrSMenu');
+            oRm.addClass('uteU-clearfix');
             oRm.writeClasses();
             oRm.write('>');
 
+            oRm.write('<div');
+            oRm.addClass('uteAppHdrSMenu-wrap');
+            oRm.writeClasses();
+            oRm.write('>');
             this._renderContent(oRm, oCustomControl);
+            oRm.write('</div>');
 
             oRm.write('</div>');
         };
 
         CustomRenderer._renderContent = function (oRm, oCustomControl) {
-
             oCustomControl.getContent().forEach(function (oContent) {
                 oRm.renderControl(oContent);
             }.bind(this));
