@@ -16,17 +16,8 @@ sap.ui.define(
             oRm.writeClasses();
             oRm.write('>');
 
-            if (oCustomControl.getHeader()) {
-                this._renderHeader(oRm, oCustomControl);
-            }
-
-            if (oCustomControl.getBody()) {
-                this._renderBody(oRm, oCustomControl);
-            }
-
-            if (oCustomControl.getFooter()) {
-                this._renderFooter(oRm, oCustomControl);
-            }
+            this._renderHeader(oRm, oCustomControl);
+            this._renderBody(oRm, oCustomControl);
 
             oRm.write('</div>');
         };
@@ -43,14 +34,14 @@ sap.ui.define(
         };
 
         CustomRenderer._renderBody = function (oRm, oCustomControl) {
-            oRm.write('<main');
+            oRm.write('<div');
             oRm.addClass('uteApp-body');
             oRm.writeClasses();
             oRm.write('>');
 
             oRm.renderControl(oCustomControl.getBody());
 
-            oRm.write('</main>');
+            oRm.write('</div>');
         };
 
         CustomRenderer._renderFooter = function (oRm, oCustomControl) {

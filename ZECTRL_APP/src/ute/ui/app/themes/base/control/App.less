@@ -14,11 +14,11 @@
 
     & .uteApp-body {
         display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+        position: relative;
+        height: ~"calc(100% - 76px)";
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     & .uteApp-ftr {
@@ -27,5 +27,6 @@
         bottom: 0;
         left: 0;
         width: 100%;
+        z-index: 2;
     }
 }
