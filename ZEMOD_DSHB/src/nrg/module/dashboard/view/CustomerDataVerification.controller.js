@@ -537,7 +537,7 @@ sap.ui.define(
                 sFixedAddressID = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/FixedAddressID');
 
             if (this._validateInputAddr()) {
-                sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
+                /*sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
 
                 oParameters = {
                     urlParameters: {},
@@ -552,7 +552,7 @@ sap.ui.define(
 
                 if (oModel) {
                     oModel.update(sPath, this.getView().getModel('oDtaVrfyMailingTempAddr').oData, oParameters);
-                }
+                }*/
             } else {
                 this.getView().byId('idAddrUpdatePopup').addStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
                 this.getView().byId('idAddrUpdatePopup-l').addStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
@@ -573,7 +573,7 @@ sap.ui.define(
             oParameters = {
                 filters: aFilters,
                 success: function (oData) {
-                    var test = oData;
+                    sap.ui.commons.MessageBox.alert('Validatation Call Success');
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert('Validatation Call Failed');
@@ -589,29 +589,32 @@ sap.ui.define(
 
         Controller.prototype._createAddrValidateFilters = function () {
             var aFilters = [],
-                oFilterTemplate = new Filter(),
+                oFilterTemplate,
                 sBpNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/PartnerID'),
                 oMailEdit = this.getView().getModel('oDtaAddrEdit'),
                 oMailEditAddrInfo = oMailEdit.getProperty('/AddrInfo'),
-                key;
+                key,
+                bFixAddr = oMailEdit.getProperty('/bFixAddr'),
+                tempPath;
 
-            oFilterTemplate.sPath = 'PartnerID';
-            oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = sBpNum;
+            oFilterTemplate = new Filter({ path: 'PartnerID', operator: FilterOperator.EQ, value1: sBpNum});
             aFilters.push(oFilterTemplate);
 
-            oFilterTemplate.sPath = 'ChkAddr';
-            oFilterTemplate.sOperator = FilterOperator.EQ;
-            oFilterTemplate.oValue1 = 'X';
+            oFilterTemplate = new Filter({ path: 'ChkAddr', operator: FilterOperator.EQ, value1: 'X'});
             aFilters.push(oFilterTemplate);
 
             for (key in oMailEditAddrInfo) {
-                if (key === 'Street' || key === 'HouseNo' || key === 'UnitNo' || key === 'City' || key === 'State' || key === 'ZipCode' || key === 'PoBox' || key === 'Country' || key === 'CityCode') {
-                    if (oMailEditAddrInfo.hasOwnProperty(key)) {
-                        oFilterTemplate.sPath = key;
-                        oFilterTemplate.sOperator = FilterOperator.EQ;
-                        oFilterTemplate.oValue1 = oMailEditAddrInfo[key];
-                        aFilters.push(oFilterTemplate);
+                if (oMailEditAddrInfo.hasOwnProperty(key)) {
+                    if (!(key === '__metadata' || key === 'StandardFlag' || key === 'ShortForm' || key === 'ValidFrom' || key === 'ValidTo' || key === 'Supplement')) {
+                        if (bFixAddr) {
+                            tempPath = 'FixAddrInfo/' + key;
+                            oFilterTemplate = new Filter({ path: tempPath, operator: FilterOperator.EQ, value1: oMailEditAddrInfo[key]});
+                            aFilters.push(oFilterTemplate);
+                        } else {
+                            tempPath = 'TempAddrInfo/' + key;
+                            oFilterTemplate = new Filter({ path: tempPath, operator: FilterOperator.EQ, value1: oMailEditAddrInfo[key]});
+                            aFilters.push(oFilterTemplate);
+                        }
                     }
                 }
             }
@@ -643,6 +646,7 @@ sap.ui.define(
             this.getView().byId("idAddrUpdatePopup").setVisible(true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
             this._oMailEditPopup.open();
         };
