@@ -29,9 +29,9 @@
             </utmain:headerContent>
             <utmain:content>
 <!--                <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-infoline-div">-->
-                    <utmain:Dropdown id="referer" design="Default" class="nrgDashboard-cusDataCaInfo-dropdown" content="{data>/dropdown}" selectedKey="{data>/selectedKey}" select=".onSelected">
-                        <utmain:DropdownItem key="{data>key}">
-                           <ute:Tag text="{data>value}"/>
+                    <utmain:Dropdown id="referer" design="Default" class="nrgDashboard-cusDataCaInfo-dropdown" content="{oDataCAs>/dropdown}" selectedKey="{oDataCAs>/selectedKey}" select=".onSelected">
+                        <utmain:DropdownItem key="{oDataCAs>key}">
+                           <ute:Tag text="{oDataCAs>value}"/>
                         </utmain:DropdownItem>
                     </utmain:Dropdown>
 
@@ -64,7 +64,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-STREET_NAME}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/mailAddrEditable}" value="Long Title Main st."/>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/mailAddrEditable}" value="{oMailingAddress>/Street}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -78,7 +78,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-STREET_NUMBER}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/mailAddrEditable}" value="123"/>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/mailAddrEditable}" value="{oMailingAddress>/HouseNo}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -102,7 +102,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-APP_UNIT}:"/>
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/mailAddrEditable}" value="A123"/>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/mailAddrEditable}" value="{oMailingAddress>/UnitNo}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -140,7 +140,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-CITY}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/mailAddrEditable}" value="Houston"/>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/mailAddrEditable}" value="{oMailingAddress>/City}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -154,7 +154,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-STATE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/mailAddrEditable}" value="TX"/>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/mailAddrEditable}" value="{oMailingAddress>/State}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -168,7 +168,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-ZIP_CODE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/mailAddrEditable}" value="77777"/>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/mailAddrEditable}" value="{oMailingAddress>/ZipCode}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -178,7 +178,57 @@
                     </l:rows>
                 </l:MatrixLayout>
 
+                <l:MatrixLayout
+                    class="nrgDashboard-cusDataCaInfo-layout"
+                    widths="250px,250px,500px" columns="3" width="100%">
+                    <l:rows>
+                        <l:MatrixLayoutRow>
+                            <l:cells>
+                                <!--Area Left-->
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataCaInfo-l">
+                                    <l:MatrixLayout widths="50%,50%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-START_DATE}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="{parts:[ 'oMailingAddress>/ValidFrom'], formatter:'._formatDate'}"/>
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+
+                                <!--Area middle-->
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataCaInfo-l">
+                                    <l:MatrixLayout widths="50%,50%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-END_DATE}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="{parts:[ 'oMailingAddress>/ValidTo'], formatter:'._formatDate'}"/>
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+                                    <!--place holder-->
+                                <l:MatrixLayoutCell class="nrgDashboard-cusDataCaInfo-l">
+                                    <l:MatrixLayout widths="12%,88%" columns="2">
+                                        <l:MatrixLayoutRow>
+
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+                            </l:cells>
+                        </l:MatrixLayoutRow>
+                    </l:rows>
+                </l:MatrixLayout>
+
                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-btn clearfix">
+                    <utmain:Button class="nrgDashboard-cusDataCaInfo-CommBtn"
+                                   press="onMailAddrCancel"
+                                   visible="{oCaInfoConfig>/mailAddrSaveVisible}"
+                                   text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-CANCEL}"/>
                     <utmain:Button class="nrgDashboard-cusDataCaInfo-CommBtn" press="onMailAddrUpdate" visible="{oCaInfoConfig>/mailAddrUpdateVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-UPDATE}"/>
                     <utmain:Button class="nrgDashboard-cusDataCaInfo-CommBtn" press="onMailAddrAddnew" visible="{oCaInfoConfig>/mailAddrAddnewVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-ADD_NEW}"/>
                     <utmain:Button class="nrgDashboard-cusDataCaInfo-CommBtn" press="onMailAddrSave" visible="{oCaInfoConfig>/mailAddrSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-SAVE}"/>
@@ -205,7 +255,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-STREET_NAME}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="Long Title Main st."/>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="{oTempAddress>/Street}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -219,7 +269,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-STREET_NUMBER}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="123"/>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="{oTempAddress>/HouseNo}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -243,7 +293,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-APP_UNIT}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="A123"/>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="{oTempAddress>/UnitNo}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -281,7 +331,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-CITY}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="Houston"/>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="{oTempAddress>/City}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -295,7 +345,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-STATE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="TX"/>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="{oTempAddress>/State}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -309,7 +359,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-ZIP_CODE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="77777"/>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="{oTempAddress>/ZipCode}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -333,7 +383,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-START_DATE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="11/01/2015"/>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="{parts:[ 'oTempAddress>/ValidFrom'], formatter:'._formatDate'}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -347,7 +397,7 @@
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-END_DATE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="12/01/2015"/>
+                                                <ute:Textfield fieldType="Noborder" class="nrgDashboard-cusDataCaInfo-cnt" editable="{oCaInfoConfig>/tempAddrEditable}" value="{parts:[ 'oTempAddress>/ValidTo'], formatter:'._formatDate'}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -366,6 +416,10 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-btn clearfix">
+                    <utmain:Button class="nrgDashboard-cusDataCaInfo-CommBtn"
+                                   press="onTempAddrCancel"
+                                   visible="{oCaInfoConfig>/tempAddrSaveVisible}"
+                                   text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-CANCEL}"/>
                     <utmain:Button class="nrgDashboard-cusDataCaInfo-CommBtn" press="onTempAddrUpdate" visible="{oCaInfoConfig>/tempAddrAddnewVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-UPDATE}"/>
                     <utmain:Button class="nrgDashboard-cusDataCaInfo-CommBtn" press="onTempAddrSave" visible="{oCaInfoConfig>/tempAddrSaveVisible}" text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-SAVE}"/>
                 </ute:Tag>

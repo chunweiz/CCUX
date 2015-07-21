@@ -173,7 +173,7 @@ sap.ui.define(
 
             sPath = '/BpNames' + '(\'' + bpNumber + '\')';
             oParameters = {
-                urlParameters: {},
+                merge: false,
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Title/Name Update Success");
                     this._retrBpTitle(bpNumber);
@@ -224,7 +224,7 @@ sap.ui.define(
 
             sPath = '/BpAddresses' + '(PartnerID=\'' + bpNumber + '\',AddressID=\'' + addressId + '\')';
             oParameters = {
-                urlParameters: {},
+                merge: false,
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Address Update Success");
                     this._retrBpAddress(bpNumber);
@@ -282,7 +282,7 @@ sap.ui.define(
 
             sPath = '/BpPersonals' + '(\'' + bpNumber + '\')';
             oParameters = {
-                urlParameters: {},
+                merge: false,
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Personal Info Update Success");
                     this._retrBpPersonal(bpNumber);
@@ -332,7 +332,7 @@ sap.ui.define(
 
             sPath = '/BpContacts' + '(\'' + bpNumber + '\')';
             oParameters = {
-                urlParameters: {},
+                merge: false,
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Contact Info Update Success");
                     this._retrBpContact(bpNumber);
@@ -379,7 +379,7 @@ sap.ui.define(
             oConfigModel.setProperty('/mktPrfEditable', false);
 
             oParameters = {
-                urlParameters: {},
+                merge: false,
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Market Preference Update Success");
                     this._retrBpMarkPrefSet(bpNumber);

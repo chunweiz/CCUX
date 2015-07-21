@@ -319,11 +319,11 @@
                                         class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                     <utmain:Dropdown id="dayPhnType" design="Plain"
                                         selectedKey="{oDtaVrfyBP>/DayPhoneType}"
-                                        content="{oPhoneType>/}">
+                                        content="{oDayPhoneType>/}">
                                         <utmain:DropdownItem
-                                            key="{oPhoneType>Key}">
+                                            key="{oDayPhoneType>Key}">
                                             <ute:Tag elem="span"
-                                                 text="{oPhoneType>Type}"/>
+                                                 text="{oDayPhoneType>Type}"/>
                                         </utmain:DropdownItem>
                                     </utmain:Dropdown>
                                 </ute:Tag>
@@ -354,11 +354,11 @@
                                         class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                     <utmain:Dropdown id="evnPhnType" design="Plain"
                                         selectedKey="{oDtaVrfyBP>/EveningPhoneType}"
-                                        content="{oPhoneType>/}">
+                                        content="{oEvnPhoneType>/}">
                                         <utmain:DropdownItem
-                                            key="{oPhoneType>Key}">
+                                            key="{oEvnPhoneType>Key}">
                                             <ute:Tag elem="span"
-                                                 text="{oPhoneType>Type}"/>
+                                                 text="{oEvnPhoneType>Type}"/>
                                         </utmain:DropdownItem>
                                     </utmain:Dropdown>
                                 </ute:Tag>
@@ -473,11 +473,11 @@
                                         class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                     <utmain:Dropdown id="dayPhnType_mail" design="Plain"
                                         selectedKey="{oDtaVrfyBP>/DayPhoneType}"
-                                        content="{oPhoneType>/}">
+                                        content="{oDayPhoneType>/}">
                                         <utmain:DropdownItem
-                                            key="{oPhoneType>Key}">
+                                            key="{oDayPhoneType>Key}">
                                             <ute:Tag elem="span"
-                                                 text="{oPhoneType>Type}"/>
+                                                 text="{oDayPhoneType>Type}"/>
                                         </utmain:DropdownItem>
                                     </utmain:Dropdown>
                                 </ute:Tag>
@@ -508,11 +508,11 @@
                                         class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                     <utmain:Dropdown id="evnPhnType_mail" design="Plain"
                                         selectedKey="{oDtaVrfyBP>/EveningPhoneType}"
-                                        content="{oPhoneType>/}">
+                                        content="{oEvnPhoneType>/}">
                                         <utmain:DropdownItem
-                                            key="{oPhoneType>Key}">
+                                            key="{oEvnPhoneType>Key}">
                                             <ute:Tag elem="span"
-                                                 text="{oPhoneType>Type}"/>
+                                                 text="{oEvnPhoneType>Type}"/>
                                         </utmain:DropdownItem>
                                     </utmain:Dropdown>
                                 </ute:Tag>
@@ -573,42 +573,43 @@
     <ute:Tag id="idAddrUpdatePopup" visible="false"
              class="nrgDashboard-cusDataVerifyEditMail">
         <ute:Tag class="nrgDashboard-cusDataVerifyEditMail-l">
-            <ute:Textfield id="idEditHouseNum"
+            <ute:Tag><ute:Textfield id="idEditHouseNum" fieldType="Underlined"
                 label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_HuNum}"
-                editable="true"
-                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/HouseNo}"/>
-        </ute:Tag>
-        <ute:Tag class="nrgDashboard-cusDataVerifyEditMail-r">
-            <ute:Textfield id="idEditUnitNum"
+                editable="true" width="100px"
+                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/HouseNo}"/></ute:Tag>
+            <ute:Tag><ute:Textfield id="idEditUnitNum" fieldType="Underlined"
                 label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_UniNum}"
-                editable="true"
-                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/UnitNo}"/>
+                editable="true" width="100px"
+                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/UnitNo}"/></ute:Tag>
+            <ute:Tag><ute:Textfield id="idEditStName" fieldType="Underlined"
+                label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_StName}"
+                editable="true" width="220px"
+                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/Street}"/></ute:Tag>
+            <ute:Tag><ute:Textfield id="idEditCity" fieldType="Underlined"
+                label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_City}"
+                editable="true" width="100px"
+                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/City}"/></ute:Tag>
+            <ute:Tag><ute:Textfield id="idEditState" fieldType="Underlined"
+                label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_State}"
+                editable="true" width="100px"
+                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/State}"/></ute:Tag>
+            <ute:Tag><ute:Textfield id="idEditZip" fieldType="Underlined"
+                label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_ZipCode}"
+                editable="true" width="100px"
+                value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ZipCode}"/></ute:Tag>
+
+        </ute:Tag>
+        <ute:Tag class="nrgDashboard-cusDataVerifyEditMail-r"
+                 visible="false">
+
         </ute:Tag>
 
+        <utmain:Button  id="idEditMailAddr_UpdtBtn"
+                class="nrgDashboard-cusDataVerifyEditMailAdd-updtBtn"
+                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_UpdtBtnText}"
+                press="._handleMailingAddrUpdate"/>
 
-        <ute:Textfield id="idEditStName" fieldType="Underlined"
-            class="nrgDashboard-cusDataVerifyEditMailAdd-stName"
-            label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_StName}"
-            editable="true" width="400px"
-            value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/Street}"/>
-        <ute:Textfield id="idEditCity" fieldType="Underlined"
-            class="nrgDashboard-cusDataVerifyEditMailAdd-cityState"
-            label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_City}"
-            editable="true" width="120px"
-            value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/City}"/>
-        <ute:Textfield id="idEditState" fieldType="Underlined"
-            class="nrgDashboard-cusDataVerifyEditMailAdd-cityState"
-            label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_State}"
-            editable="true" width="120px"
-            value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/State}"/>
-        <ute:Textfield id="idEditZip" fieldType="Underlined"
-            label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_ZipCode}"
-            class="nrgDashboard-cusDataVerifyEditMailAdd-zipCode"
-            editable="true" width="80px"
-            value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ZipCode}"/>
-        <utmain:Button text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_UpdtBtnText}"
-            class="nrgDashboard-cusDataVerifyEditMailAdd-updtBtn"
-            press="._handleMailingAddrUpdate"/>
+
     </ute:Tag>
 
     <ute:Tag id="idTempAddrUpdatePopup" visible="false"

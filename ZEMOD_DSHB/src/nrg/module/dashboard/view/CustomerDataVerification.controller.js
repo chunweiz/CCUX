@@ -42,7 +42,8 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCoPageModel');
 
             //For Phone Type
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPhoneType');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDayPhoneType');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEvnPhoneType');
 
             //Siebel Customer Indicator
             this.bSiebelCustomer = false;
@@ -56,12 +57,17 @@ sap.ui.define(
         };
 
         Controller.prototype._initPhnTypes = function () {
-            var oPhnType = this.getView().getModel('oPhoneType'),
-                oTypes = [];
+            var oDayPhnType = this.getView().getModel('oDayPhoneType'),
+                oEvnPhnType = this.getView().getModel('oEvnPhoneType'),
+                oTypes = [],
+                oEvnTypes = [];
 
-            oTypes = [ {Key: "LANDLINE", Type: "LANDLINE"}, {Key: "CELL", Type: "CELL"}];
 
-            oPhnType.setProperty('/', oTypes);
+            oTypes = [ {Key: "WORK", Type: "LANDLINE"}, {Key: "CELL", Type: "CELL"}];
+            oEvnTypes = [ {Key: "HOME", Type: "LANDLINE"}, {Key: "CELL", Type: "CELL"}];
+
+            oDayPhnType.setProperty('/', oTypes);
+            oEvnPhnType.setProperty('/', oEvnTypes);
         };
 
         Controller.prototype._initCoPageModel = function () {
@@ -331,7 +337,7 @@ sap.ui.define(
 
             sPath = '/Partners' + '(\'' + this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID') + '\')';
             oParameters = {
-                urlParameters: {},
+                merge: false,
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Update Success");
                     this._initDtaVrfRetr();
@@ -514,7 +520,7 @@ sap.ui.define(
 
 
         Controller.prototype._handleMailingAddrUpdate = function (oEvent) {
-            var oModel = this.getView().getModel('oODataSvc'),
+            /*var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
                 sBpNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/PartnerID'),
@@ -538,7 +544,8 @@ sap.ui.define(
 
             if (oModel) {
                 oModel.update(sPath, this.getView().getModel('oDtaVrfyMailingTempAddr').oData, oParameters);
-            }
+            }*/
+            this.getView().byId('idAddrUpdatePopup').addStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
         };
 
         Controller.prototype._onEditTempAddrClick = function (oEvent) {
@@ -553,12 +560,18 @@ sap.ui.define(
 
         Controller.prototype._onEditMailAddrClick = function (oEvent) {
             this._oMailEditPopup = ute.ui.main.Popup.create({
+                close: this._handleEditMailPopupClose,
                 content: this.getView().byId("idAddrUpdatePopup"),
                 title: 'Edit Mailing Address'
             });
             //this._onToggleButtonPress();
             this.getView().byId("idAddrUpdatePopup").setVisible(true);
             this._oMailEditPopup.open();
+        };
+
+        Controller.prototype._handleEditMailPopupClose = function (oEvent) {
+            this.getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
+
         };
 
         Controller.prototype._handleTempAddrUpdate = function (oEvent) {
@@ -574,7 +587,7 @@ sap.ui.define(
             sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
 
             oParameters = {
-                urlParameters: {},
+                merge: false,
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Update Success");
                     this._oTempMailEditPopup.close();
@@ -597,9 +610,7 @@ sap.ui.define(
 
 
             sSmsUrl = sSmsUrl.substr(0, iCAstringIndex + 16) + oCurCaModel.getProperty('/ContractAccountID') + sSmsUrl.substr(iCAstringIndex + 16);
-
             window.open(sSmsUrl);
-
         };
 
         return Controller;

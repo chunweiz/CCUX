@@ -9,20 +9,6 @@
 
                     "resourceBundle": {
                         "comp-i18n-quickpay": "i18n/module.properties"
-                    },
-
-                    "odata": {
-                        "real": {
-                            "comp-quickpay": {
-                                "url": ""
-                            }
-                        },
-                        "mock": {
-                            "comp-quickpay": {
-                                "mockDataBaseUrl": "",
-                                "generateMissingMockData": true
-                            }
-                        }
                     }
                 }
             }
