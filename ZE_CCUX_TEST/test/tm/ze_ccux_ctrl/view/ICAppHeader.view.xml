@@ -57,14 +57,6 @@
             padding-left: 10px;
             cursor: default;
         }
-
-        @media screen {
-            @media (max-width: 1090px) {
-                .uteAppHdr>.uteAppHdr-inner .uteAppHdr-banner {
-                    display: none;
-                }
-            }
-        }
     </style>
 
     <ua:App>
