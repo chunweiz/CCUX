@@ -58,7 +58,8 @@ sap.ui.define(
                     { key: 'sap-icon://nrg-icon/verified', value: 'sap-icon://nrg-icon/verified' },
                     { key: 'sap-icon://nrg-icon/trashcan', value: 'sap-icon://nrg-icon/trashcan' },
                     { key: 'sap-icon://nrg-icon/search', value: 'sap-icon://nrg-icon/search' },
-                    { key: 'sap-icon://nrg-icon/not-verified', value: 'sap-icon://nrg-icon/not-verified' }
+                    { key: 'sap-icon://nrg-icon/not-verified', value: 'sap-icon://nrg-icon/not-verified' },
+                    { key: 'sap-icon://nrg-icon/handset', value: 'sap-icon://nrg-icon/handset' }
                 ]
             });
 
