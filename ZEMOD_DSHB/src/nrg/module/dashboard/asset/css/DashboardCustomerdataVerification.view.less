@@ -370,6 +370,10 @@
         width: 100%;
     }
 
+    & > .nrgDashboard-cusDataVerifyEditMail-l-vl{
+        width: 50%;
+    }
+
     //& > .nrgDashboard-cusDataVerifyEditMail-l{
     //    width: 50px;
     //}
@@ -389,10 +393,6 @@
         padding-top: 3px;
     }
 
-    & > .nrgDashboard-cusDataVerifyEditMail-l > div > .testClass > label{
-        color: red;
-    }
-
     & > .nrgDashboard-cusDataVerifyEditMail-l > div > span > input{
         display: inline-block;
         float: left;
@@ -401,11 +401,38 @@
     & > .nrgDashboard-cusDataVerifyEditMail-r{
         display: inline-block;
         width:50%;
+        vertical-align: top;
     }
 
-    & > .nrgDashboard-cusDataVerifyEditMailAdd-updtBtn{
-          margin-left: 179px;
-          margin-top: 20px;
-          margin-bottom: 2px;
+    & > .nrgDashboard-cusDataVerifyEditMail-r > div{
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+    }
+
+    & > .nrgDashboard-cusDataVerifyEditMail-r > div > span > label{
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-red-alert;
+        display: inline-block;
+        float: left;
+        clear: left;
+        width: 120px;
+        text-align: right;
+        padding-top: 3px;
+    }
+
+    & > .nrgDashboard-cusDataVerifyEditMail-r > div > span > input{
+        display: inline-block;
+        float: left;
+    }
+
+    & > .nrgDashboard-cusDataVerifyEditMail-l > .nrgDashboard-cusDataVerifyEditMailAdd-updtBtn{
+        margin-left: 179px;
+        margin-top: 20px;
+        margin-bottom: 2px;
+    }
+
+    & > .nrgDashboard-cusDataVerifyEditMail-r > .nrgDashboard-cusDataVerifyEditMailAdd-valdBtn{
+        margin-left: 49px;
+        margin-top: 20px;
     }
 }

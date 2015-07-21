@@ -43,13 +43,5 @@
             </um:Button>
         </u:Tag>
     </u:Tag>
-    <u:Tag class="nrgQPPay-hide" id="idnrgQPPay-StopRec" >
-         <core:Icon src="sap-icon://nrg-icon/agent" class="icon" />
-         <um:Button press=".onStopRec"
-                       text="{comp-i18n-quickpay>nrgQPStopRecording}"
-                       class="nrgQPPay-stopRec"
-                       id="idnrgQPPayBt-stopRec" design="None">
-         </um:Button>
-    </u:Tag>
  </u:Tag>
 </core:FragmentDefinition>

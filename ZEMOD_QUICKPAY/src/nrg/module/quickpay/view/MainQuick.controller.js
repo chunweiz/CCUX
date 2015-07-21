@@ -40,7 +40,7 @@ sap.ui.define(
                     content: this._oDialogFragment
                 });
             }
-            this._oPaymentDialog.addStyleClass("nrgQPPay-dialog");
+            this._oPaymentDialog.addStyleClass("nrgQPPay-dialogPale");
             this.getView().addDependent(this._oPaymentDialog);
             this._oPaymentDialog.open();
         };
@@ -51,10 +51,9 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onCreditCard = function (oEvent) {
-            var oBtnsTag = this.getView().byId("idnrgQPPay-btns"),
-                oStopRecTag = this.getView().byId("idnrgQPPay-StopRec");
-            oBtnsTag.addStyleClass("nrgQPPay-hide");
-            oStopRecTag.removeStyleClass("nrgQPPay-hide");
+            var oTabBarItem2 = this.getView().byId("idnrgQPPay-tabBarItem002");
+            oTabBarItem2.setSelected(true);
+
         };
         /**
 		 * Credit Card Process initialization
@@ -63,13 +62,10 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onStopRec = function (oEvent) {
-            if (!this._oPaymentDialog) {
-                this._oPaymentDialog = new ute.ui.main.Popup.create({
-                    close: this._handleCreditCardClosed,
-                    content: this._oDialogFragment
-                });
-            }
-            this._oPaymentDialog.open();
+            var oTabBarItem3 = this.getView().byId("idnrgQPPay-tabBarItem003");
+            //this._oPaymentDialog.removeStyleClass("nrgQPPay-dialogPale");
+            //this._oPaymentDialog.addStyleClass("nrgQPPay-dialogRegular");
+            oTabBarItem3.setSelected(true);
         };
         /**
 		 * Bank Draft Process initialization

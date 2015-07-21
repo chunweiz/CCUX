@@ -22,6 +22,9 @@ sap.ui.define(
             controls: [
                 'ute.ui.app.App',
                 'ute.ui.app.Header',
+                'ute.ui.app.HeaderMenu',
+                'ute.ui.app.HeaderMenuItem',
+                'ute.ui.app.HeaderSubmenu',
                 'ute.ui.app.Footer',
                 'ute.ui.app.Body',
                 'ute.ui.app.SummaryPage',

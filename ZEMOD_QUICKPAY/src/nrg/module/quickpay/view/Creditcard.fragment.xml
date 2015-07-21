@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:c="sap.ui.commons"
+          xmlns:core="sap.ui.core"
+          xmlns:u="ute.ui.commons"
+          xmlns:um="ute.ui.main">
+    <u:Tag class="nrgQPCC-root">
+                <u:Textfield
+                    placeholder="Amount"
+                    change=""
+                    fieldType="Regular"
+                    label="Amount">
+                </u:Textfield>
+
+    </u:Tag>
+</core:FragmentDefinition>

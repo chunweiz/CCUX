@@ -7,53 +7,26 @@
     xmlns:mvc="sap.ui.core.mvc"
     controllerName="nrg.module.quickpay.view.MainQuick">
     <u:Tag class="nrgToolsEmpty nrgAppMain-toolsContent nrgAppMain-toolsContent-full">
-        <u:Tag class="nrgQPPay-root">
-            <u:Tag class="nrgQPPay-btns" id="idnrgQPPay-btns" >
-                <u:Tag class="nrgQPPay-top nrgQPPay-Reg" >
-                    <u:Tag text="{comp-i18n-quickpay>nrgQPPaymentTtl}" class="nrgQPPay-ttl"/>
-                    <um:Button press=".onCreditCard"
-                               text="{comp-i18n-quickpay>nrgQPPaymentCC}"
-                               class="nrgQPPay-btn"
-                               id="idnrgQPPayBt-CC" design="Default">
-                    </um:Button>
-                    <um:Button press=".onBankDraft"
-                               text="{comp-i18n-quickpay>nrgQPPaymentBD}"
-                               class="nrgQPPay-btn"
-                               id="idnrgQPPayBt-BD" design="Default">
-                    </um:Button>
-                    <um:Button press=".onReceipt"
-                               text="{comp-i18n-quickpay>nrgQPPaymentRE}"
-                               class="nrgQPPay-btn"
-                               id="idnrgQPPayBt-RE" design="Default">
-                    </um:Button>
-                    <um:Button press=".onReliantCard"
-                               text="{comp-i18n-quickpay>nrgQPPaymentRC}"
-                               class="nrgQPPay-btn"
-                               id="idnrgQPPayBt-RC" design="Default">
-                    </um:Button>
-                </u:Tag>
-                <u:Tag class="nrgQPPay-top">
-                        <u:Tag text="Pending Payments" class="nrgQPPay-ttl" />
-                        <um:Button press=".onPendingCreditCard"
-                               text="{comp-i18n-quickpay>nrgQPPaymentCC}"
-                               class="nrgQPPay-btn"
-                               id="idnrgQPPayBt-PCC" design="Default">
-                    </um:Button>
-                        <um:Button press=".onPendingBankDraft"
-                               text="{comp-i18n-quickpay>nrgQPPaymentBD}"
-                               class="nrgQPPay-btn"
-                               id="idnrgQPPayBt-PBD" design="Default">
-                    </um:Button>
-                </u:Tag>
-            </u:Tag>
-            <u:Tag class="nrgQPPay-hide" id="idnrgQPPay-StopRec" >
-                 <core:Icon src="sap-icon://nrg-icon/agent" class="icon" />
-                 <um:Button press=".onStopRec"
-                               text="{comp-i18n-quickpay>nrgQPStopRecording}"
-                               class="nrgQPPay-stopRec"
-                               id="idnrgQPPayBt-stopRec" design="None">
-                 </um:Button>
-            </u:Tag>
-         </u:Tag>
+        <um:TabBar id="nrgTabBar" design="None" class="nrgQPPay-tabBar">
+            <um:TabBarItem key="tb001" design="None"  selected="true" class="nrgQPPay-tabBarItem" id="idnrgQPPay-tabBarItem001" />
+            <um:TabBarItem key="tb002"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-tabBarItem002" />
+            <um:TabBarItem key="tb003"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-tabBarItem003" />
+        </um:TabBar>
+        <um:TabPanel tabPanelFor="nrgTabBar" design="None" class="nrgQPPay-tabPanel">
+            <um:TabPanelItem key="tb001" class="nrgQPPay-tabPanelItem">
+                    <core:Fragment fragmentName="nrg.module.quickpay.view.PaymentMethods" type="XML" />
+            </um:TabPanelItem>
+            <um:TabPanelItem key="tb002" class="nrgQPPay-tabPanelItem nrgQPPay-tabIcon">
+                      <um:Button press=".onStopRec"
+                                     class="nrgQPPay-stopRec"
+                                   id="idnrgQPPayBt-stopRec" design="None">
+                         <core:Icon src="sap-icon://nrg-icon/handset" class="nrgQPPay-handset" />
+                         <u:Tag text="{comp-i18n-quickpay>nrgQPStopRecording}" class="nrgQPPay-text"/>
+                     </um:Button>
+            </um:TabPanelItem>
+            <um:TabPanelItem key="tb003" class="nrgQPPay-tabPanelItem nrgQPPay-tabIcon">
+                    <core:Fragment fragmentName="nrg.module.quickpay.view.CreditCard" type="XML" />
+            </um:TabPanelItem>
+        </um:TabPanel>
     </u:Tag>
 </mvc:View>
