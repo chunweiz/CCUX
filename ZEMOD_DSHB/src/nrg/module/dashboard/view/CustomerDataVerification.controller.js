@@ -518,21 +518,11 @@ sap.ui.define(
             }
         };
 
-        Controller.prototype._onEditMailAddrClick = function (oEvent) {
-            this._oMailEditPopup = ute.ui.main.Popup.create({
-                close: this._handleEditMailPopupClose,
-                content: this.getView().byId("idAddrUpdatePopup"),
-                title: 'Edit Mailing Address'
-            });
-            //this._onToggleButtonPress();
-            this.getView().byId("idAddrUpdatePopup").setVisible(true);
-            this._oMailEditPopup.open();
-        };
-
         Controller.prototype._handleEditMailPopupClose = function (oEvent) {
             this.getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
-            this.getContent()[0].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
-            this.getContent()[0].getContent()[1].setVisible(false);
+            this.getContent()[0].getContent()[0].setVisible(false);
+            this.getContent()[0].getContent()[1].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
+            this.getContent()[0].getContent()[2].setVisible(false);
         };
 
         Controller.prototype._handleMailingAddrUpdate = function (oEvent) {
@@ -564,7 +554,24 @@ sap.ui.define(
             this.getView().byId('idAddrUpdatePopup').addStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
             this.getView().byId('idAddrUpdatePopup-l').addStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
             this.getView().byId('idAddrUpdatePopup-r').setVisible(true);
+            this.getView().byId('idAddrUpdatePopup-HdrLn').setVisible(true);
+            this.getView().byId('idAddrUpdatePopup-FtrLn').setVisible(true);
+            this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(false);
         };
+
+        Controller.prototype._onEditMailAddrClick = function (oEvent) {
+            this._oMailEditPopup = ute.ui.main.Popup.create({
+                close: this._handleEditMailPopupClose,
+                content: this.getView().byId("idAddrUpdatePopup"),
+                title: 'Edit Mailing Address'
+            });
+            //this._onToggleButtonPress();
+            this.getView().byId("idAddrUpdatePopup").setVisible(true);
+            this.getView().byId('idAddrUpdatePopup-FtrLn').setVisible(false);
+            this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
+            this._oMailEditPopup.open();
+        };
+
 
         Controller.prototype._onEditTempAddrClick = function (oEvent) {
             this._oTempMailEditPopup = ute.ui.main.Popup.create({
@@ -573,6 +580,8 @@ sap.ui.define(
             });
             //this._onToggleButtonPress();
             this.getView().byId("idTempAddrUpdatePopup").setVisible(true);
+            this.getView().byId('idAddrUpdatePopup-FtrLn').setVisible(false);
+            this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
             this._oTempMailEditPopup.open();
         };
 

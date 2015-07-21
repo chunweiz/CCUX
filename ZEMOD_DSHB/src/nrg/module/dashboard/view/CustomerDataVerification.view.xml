@@ -572,6 +572,17 @@
 
     <ute:Tag id="idAddrUpdatePopup" visible="false"
              class="nrgDashboard-cusDataVerifyEditMail">
+        <ute:Tag id="idAddrUpdatePopup-HdrLn" visible="false"
+            class="nrgDashboard-cusDataVerifyEditMail-hdr">
+            <ute:Tag>
+                <core:Icon src="sap-icon://nrg-icon/notification"/>
+                <ute:TextView text="HeaderText1"/>
+            </ute:Tag>
+            <ute:Tag>
+                <core:Icon src="sap-icon://nrg-icon/notification"/>
+                <ute:TextView text="HeaderText2"/>
+            </ute:Tag>
+        </ute:Tag>
         <ute:Tag id="idAddrUpdatePopup-l"
             class="nrgDashboard-cusDataVerifyEditMail-l">
             <ute:Tag><ute:Textfield id="idEditHouseNum" fieldType="Underlined"
@@ -598,6 +609,12 @@
                 label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_ZipCode}"
                 editable="true" width="100px"
                 value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ZipCode}"/></ute:Tag>
+            <ute:Tag id="idAddrUpdatePopup-FtrLn" visible="false"
+                class="nrgDashboard-cusDataVerifyEditMail-l-ftr">
+                <ute:TextView text="FooterLine1"/>
+                <ute:TextView text="FooterLine2"/>
+                <ute:TextView text="FooterLine3"/>
+            </ute:Tag>
 
             <utmain:Button  id="idEditMailAddr_UpdtBtn"
                 class="nrgDashboard-cusDataVerifyEditMailAdd-updtBtn"
@@ -638,12 +655,6 @@
                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_EditBtn}"
                 press="._handleMailingAddrUpdate"/>
         </ute:Tag>
-
-
-
-
-
-
     </ute:Tag>
 
     <ute:Tag id="idTempAddrUpdatePopup" visible="false"
