@@ -572,7 +572,7 @@
 
     <ute:Tag id="idAddrUpdatePopup" visible="false"
              class="nrgDashboard-cusDataVerifyEditMail">
-        <ute:Tag id="idAddrUpdatePopup-HdrLn" visible="false"
+        <ute:Tag id="idAddrUpdatePopup-HdrLn" visible="{oDtaAddrEdit>/updateSent}"
             class="nrgDashboard-cusDataVerifyEditMail-hdr">
             <ute:Tag>
                 <core:Icon src="sap-icon://nrg-icon/notification"/>
@@ -585,6 +585,9 @@
         </ute:Tag>
         <ute:Tag id="idAddrUpdatePopup-l"
             class="nrgDashboard-cusDataVerifyEditMail-l">
+            <ute:TextView visible="{oDtaAddrEdit>/updateSent}"
+                class="nrgDashboard-cusDataVerifyEditMail-rl-title"
+                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_lTitle}"/>
             <ute:Tag><ute:Textfield id="idEditHouseNum" fieldType="Underlined"
                 label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_HuNum}"
                 editable="true" width="100px"
@@ -609,21 +612,19 @@
                 label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_ZipCode}"
                 editable="true" width="100px"
                 value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ZipCode}"/></ute:Tag>
-            <ute:Tag id="idAddrUpdatePopup-FtrLn" visible="false"
-                class="nrgDashboard-cusDataVerifyEditMail-l-ftr">
-                <ute:TextView text="FooterLine1"/>
-                <ute:TextView text="FooterLine2"/>
-                <ute:TextView text="FooterLine3"/>
-            </ute:Tag>
 
             <utmain:Button  id="idEditMailAddr_UpdtBtn"
+                visible="{oDtaAddrEdit>/updateNotSent}"
                 class="nrgDashboard-cusDataVerifyEditMailAdd-updtBtn"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_UpdtBtnText}"
                 press="._handleMailingAddrUpdate"/>
         </ute:Tag>
         <ute:Tag id="idAddrUpdatePopup-r"
             class="nrgDashboard-cusDataVerifyEditMail-r"
-            visible="false">
+            visible="{oDtaAddrEdit>/updateSent}">
+            <ute:TextView
+                class="nrgDashboard-cusDataVerifyEditMail-rl-title"
+                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_rTitle}"/>
             <ute:Tag><ute:Textfield fieldType="Underlined"
                 label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_HuNum}"
                 editable="false" width="100px"/></ute:Tag>
@@ -642,6 +643,12 @@
             <ute:Tag><ute:Textfield id="idValdZip" fieldType="Underlined"
                 label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_ZipCode}"
                 editable="false" width="100px"/></ute:Tag>
+            <ute:Tag id="idAddrUpdatePopup-FtrLn"
+                class="nrgDashboard-cusDataVerifyEditMail-l-ftr">
+                <ute:TextView text="FooterLine1"/>
+                <ute:TextView text="FooterLine2"/>
+                <ute:TextView text="FooterLine3"/>
+            </ute:Tag>
             <utmain:Button  id="idEditMailAddr_AcptBtn"
                 class="nrgDashboard-cusDataVerifyEditMailAdd-valdBtn"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_AcceptBtn}"

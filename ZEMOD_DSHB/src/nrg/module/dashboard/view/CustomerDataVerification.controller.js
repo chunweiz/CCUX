@@ -35,6 +35,9 @@ sap.ui.define(
 
             //Model to hold mailing/temp address
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');
+            //Model for Edit Popup Screen (Use the model to show on edit screen)
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrValidate');
 
             //Model to track "Confirm" or not status
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCfrmStatus');
@@ -52,6 +55,7 @@ sap.ui.define(
             this._initDtaVrfRetr();
             this._initCfrmStatus();
             this._initPhnTypes();
+            this._initMailAddrModels();
             //this._initCoPageModel();
 
         };
@@ -553,10 +557,21 @@ sap.ui.define(
             }*/
             this.getView().byId('idAddrUpdatePopup').addStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
             this.getView().byId('idAddrUpdatePopup-l').addStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
-            this.getView().byId('idAddrUpdatePopup-r').setVisible(true);
-            this.getView().byId('idAddrUpdatePopup-HdrLn').setVisible(true);
-            this.getView().byId('idAddrUpdatePopup-FtrLn').setVisible(true);
-            this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
+        };
+
+        Controller.prototype._initMailAddrModels = function () {
+            /*this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');
+            //Model for Edit Popup Screen (Use the model to show on edit screen)
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrValidate'); */
+
+            var oEditMail = this.getView().getModel('oDtaAddrEdit');
+
+            oEditMail.setProperty('/updateSent', false);
+            oEditMail.setProperty('/updateNotSent', true);
+
         };
 
         Controller.prototype._onEditMailAddrClick = function (oEvent) {
@@ -567,7 +582,8 @@ sap.ui.define(
             });
             //this._onToggleButtonPress();
             this.getView().byId("idAddrUpdatePopup").setVisible(true);
-            this.getView().byId('idAddrUpdatePopup-FtrLn').setVisible(false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
             this._oMailEditPopup.open();
         };
