@@ -56,6 +56,12 @@ sap.ui.define(
             //Model to hold all acdemic titles
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'ODataBpSuffixs');
 
+            //Model to hold all phone types
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDayPhoneType');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEvnPhoneType');
+
+            this._initPhnTypes();
+
             this.getView().attachParseError(function (oEvent) {
                 this._addMessage(oEvent, 'attachParseError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
             }.bind(this));
@@ -419,6 +425,20 @@ sap.ui.define(
                 sUrlHash = oHashChanger.getHash();
 
             return sUrlHash;
+        };
+
+        Controller.prototype._initPhnTypes = function () {
+            var oDayPhnType = this.getView().getModel('oDayPhoneType'),
+                oEvnPhnType = this.getView().getModel('oEvnPhoneType'),
+                oTypes = [],
+                oEvnTypes = [];
+
+
+            oTypes = [ {Key: "WORK", Type: "LANDLINE"}, {Key: "CELL", Type: "CELL"}];
+            oEvnTypes = [ {Key: "HOME", Type: "LANDLINE"}, {Key: "CELL", Type: "CELL"}];
+
+            oDayPhnType.setProperty('/', oTypes);
+            oEvnPhnType.setProperty('/', oEvnTypes);
         };
 
         CustomController.prototype._initDataModel = function () {
