@@ -17,12 +17,14 @@
             }
         </style>
 
+        <um:Button text="press me" press=".onBtnPressed" />
+
         <um:TabBar id="nrgTabBar" design="Invert" select=".onSelected">
             <um:TabBarItem design="Invert" key="tb001" select=".onItemSelected">
                 <uc:Tag text="fweiubfiuwhir" />
             </um:TabBarItem>
             <br/>
-            <um:TabBarItem design="Invert" key="tb002" select=".onItemSelected" selected="true">
+            <um:TabBarItem id="tabBarItem002" design="Invert" key="tb002" select=".onItemSelected">
                 <div>Mailing Address</div>
             </um:TabBarItem>
             <br/>
@@ -30,7 +32,7 @@
                 <div>New Address</div>
             </um:TabBarItem>
             <br/>
-            <um:TabBarItem design="Invert" key="tb004" select=".onItemSelected">
+            <um:TabBarItem id="tabBarItem004" design="Invert" key="tb004" select=".onItemSelected">
                 <div>Yet Another Address</div>
             </um:TabBarItem>
         </um:TabBar>

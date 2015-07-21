@@ -5,11 +5,12 @@ sap.ui.define(
     [
         'jquery.sap.global',
         'sap/ui/core/mvc/Controller',
-        'sap/ui/core/Popup',
+        'sap/ui/model/json/JSONModel',
+        'ute/ui/app/HeaderSubmenu',
         'sap/m/Label'
     ],
 
-    function (jQuery, Controller, Popup, Label) {
+    function (jQuery, Controller, JSONModel, HeaderSubmenu, Label) {
         'use strict';
 
         var CustomController = Controller.extend('test.tm.ze_ccux_ctrl.view.ICAppHeader');
@@ -35,27 +36,27 @@ sap.ui.define(
         };
 
         CustomController.prototype._openMenuPopup = function (oMenuItem) {
-            this._oPopup = new Popup();
-            this._oPopup.setModal(false);
-            this._oPopup.setAutoClose(false);
-            this._oPopup.setShadow(false);
-            this._oPopup.setContent(new Label({
-                text: 'test data',
-                width: '100%'
-            }));
+            if (!this._oPopup) {
+                this._oPopup = new HeaderSubmenu();
+                this._oPopup.setPosition(this.getView().byId('header'), '0 20');
+                this._oPopup.addContent(new Label({ text: '{view-test>/name}' }));
 
-            this._oPopup.setPosition(
-                Popup.Dock.CenterCenter,
-                Popup.Dock.CenterBottom,
-                this.getView().byId('header'),
-                '0 6'
-            );
+                this.getView().addDependent(this._oPopup);
+            }
 
             this._oPopup.open();
         };
 
         CustomController.prototype._closeMenuPopup = function (oMenuItem) {
             this._oPopup.close();
+        };
+
+        CustomController.prototype.onInit = function () {
+            var oModel = new JSONModel({
+                name: 'test data'
+            });
+
+            this.getView().setModel(oModel, 'view-test');
         };
 
         return CustomController;

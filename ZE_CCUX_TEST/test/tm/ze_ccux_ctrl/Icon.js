@@ -227,6 +227,11 @@ sap.ui.define(
                 fontFamily: 'nrg-icon',
                 content: 'e62c'
             });
+
+            IconPool.addIcon('handset', 'nrg-icon', {
+                fontFamily: 'nrg-icon',
+                content: 'e627'
+            });
         };
 
         return Icon;

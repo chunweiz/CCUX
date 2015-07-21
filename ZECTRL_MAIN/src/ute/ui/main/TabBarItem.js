@@ -56,7 +56,6 @@ sap.ui.define(
             }
 
             this.setSelected(this.getDomRef('int').checked);
-            this.fireSelect();
         };
 
         CustomControl.prototype.setSelected = function (bSelected) {
@@ -66,7 +65,7 @@ sap.ui.define(
             sGroup = this.getGroup();
             aControlsInGroup = this._groupNames[sGroup] || [];
 
-            this.setProperty('selected', bSelected, true);
+            this.setProperty('selected', bSelected);
             this._changeGroup(sGroup);
 
             if (bSelected && sGroup && sGroup !== '') {
@@ -88,6 +87,8 @@ sap.ui.define(
 				    this.getDomRef('int').removeAttribute('checked');
                 }
             }
+
+            this.fireSelect();
 
             return this;
         };
