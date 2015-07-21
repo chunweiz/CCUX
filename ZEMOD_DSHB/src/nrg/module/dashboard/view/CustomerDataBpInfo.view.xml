@@ -47,10 +47,16 @@
                                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-TITLE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
-                                                               class="nrgDashboard-cusDataBpInfo-cnt"
-                                                               editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{oDataBpTitle>/Title}"/>
+                                                <utmain:Dropdown design="Default"
+                                                                 class="nrgDashboard-cusDataBpInfo-dropdown"
+                                                                 content="{ODataBpTitles>/results}"
+                                                                 selectedKey="{ODataBpName>/Title}"
+                                                                 select=".onSelectedTitle"
+                                                                 enabled="{oBpInfoConfig>/titleEditable}">
+                                                    <utmain:DropdownItem key="{ODataBpTitles>Key}">
+                                                       <ute:Tag text="{ODataBpTitles>Value}" class="nrgDashboard-cusDataBpInfo-cnt"/>
+                                                    </utmain:DropdownItem>
+                                                </utmain:Dropdown>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -61,10 +67,16 @@
                                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-ACDEMIC_TITLE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
-                                                               class="nrgDashboard-cusDataBpInfo-cnt"
-                                                               editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{oDataBpTitle>/AcademicTitle}"/>
+                                                <utmain:Dropdown design="Default"
+                                                                 class="nrgDashboard-cusDataBpInfo-dropdown"
+                                                                 content="{ODataBpAccTitles>/results}"
+                                                                 selectedKey="{ODataBpName>/AcademicTitle}"
+                                                                 select=".onSelectedAccTitle"
+                                                                 enabled="{oBpInfoConfig>/titleEditable}">
+                                                    <utmain:DropdownItem key="{ODataBpAccTitles>Key}">
+                                                       <ute:Tag text="{ODataBpAccTitles>Value}" class="nrgDashboard-cusDataBpInfo-cnt"/>
+                                                    </utmain:DropdownItem>
+                                                </utmain:Dropdown>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -78,7 +90,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{oDataBpTitle>/FirstName}"/>
+                                                               value="{ODataBpName>/FirstName}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -92,7 +104,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{oDataBpTitle>/LastName}"/>
+                                                               value="{ODataBpName>/LastName}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -110,7 +122,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{oDataBpTitle>/MaidenName}"/>
+                                                               value="{ODataBpName>/MaidenName}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -124,7 +136,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{oDataBpTitle>/MiddleName}"/>
+                                                               value="{ODataBpName>/MiddleName}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -135,10 +147,22 @@
                                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SUFFIX}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
+<!--
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{oDataBpTitle>/Suffix}"/>
+                                                               value="{ODataBpName>/Suffix}"/>
+-->
+                                                <utmain:Dropdown design="Default"
+                                                                 class="nrgDashboard-cusDataBpInfo-dropdown"
+                                                                 content="{ODataBpSuffixs>/results}"
+                                                                 selectedKey="{ODataBpName>/Suffix}"
+                                                                 select=".onSelectedSuffix"
+                                                                 enabled="{oBpInfoConfig>/titleEditable}">
+                                                    <utmain:DropdownItem key="{ODataBpSuffixs>Key}">
+                                                       <ute:Tag text="{ODataBpSuffixs>Value}" class="nrgDashboard-cusDataBpInfo-cnt"/>
+                                                    </utmain:DropdownItem>
+                                                </utmain:Dropdown>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
