@@ -26,7 +26,8 @@ sap.ui.define(
                 'ute.ui.app.Body',
                 'ute.ui.app.SummaryPage',
                 'ute.ui.app.ToolPage',
-                'ute.ui.app.GeneralPage'
+                'ute.ui.app.GeneralPage',
+                'ute.ui.app.Text'
             ],
 
             elements: [],

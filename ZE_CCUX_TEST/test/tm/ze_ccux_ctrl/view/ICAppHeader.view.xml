@@ -40,40 +40,67 @@
         .nrgAppHMItem .uteAppHMItem-hdr {
             margin-bottom: 10px;
         }
+
+        .nrgAppHMItem-highlight .uteAppHMItem-hdr:hover {
+            color: tomato;
+        }
+
+        .nrgAppBanner-logo {
+            width: 60px;
+            transform: translateY(7px);
+            cursor: default;
+        }
+
+        .nrgAppBanner-title {
+            display: inline-block;
+            padding-top: 32px;
+            padding-left: 10px;
+            cursor: default;
+        }
+
+        @media screen {
+            @media (max-width: 1090px) {
+                .uteAppHdr>.uteAppHdr-inner .uteAppHdr-banner {
+                    display: none;
+                }
+            }
+        }
     </style>
 
     <ua:App>
         <ua:header>
             <ua:Header id="header">
                 <ua:banner>
+                    <image class="nrgAppBanner-logo" src="../../../../ZEBASE/build/nrg/base/asset/img/nrg-logo.svg"></image>
+                    <ua:Text class="nrgAppBanner-title" text="Reliant Interaction Center" />
                 </ua:banner>
                 <ua:menu>
                     <ua:HeaderMenu class="nrgAppHMItem">
                         <ua:HeaderMenuItem id="menu" class="nrgAppHMItem" press=".onHdrMenuItemPressed">
-                            <span>Menu</span>
+                            <ua:Text text="Menu" />
                             <ua:customData>
                                 <core:CustomData key="nrg-type" value="menu"/>
                             </ua:customData>
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
-                            <span>Index</span>
+                            <ua:Text text="Index" />
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
-                                <span>Transactions</span>
+                            <ua:Text text="Transaction" />
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
-                            <span>ESID Tool</span>
+                            <ua:Text text="ESID Tool" />
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
-                            <span>PALPlus</span>
+                            <ua:Text text="PALPlus" />
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
-                            <span>Messages</span>
+                            <ua:Text text="Messages" />
                             <ua:customData>
                                 <core:customData key="nrg-type" value="menu"/>
                             </ua:customData>
@@ -83,8 +110,8 @@
                             <core:Icon src="sap-icon://nrg-icon/refresh"></core:Icon>
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-spacer" />
-                        <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
-                            <span>Clear Account</span>
+                        <ua:HeaderMenuItem class="nrgAppHMItem-highlight" press=".onHdrMenuItemPressed">
+                            <ua:Text text="Clear Account" />
                         </ua:HeaderMenuItem>
                     </ua:HeaderMenu>
                 </ua:menu>
