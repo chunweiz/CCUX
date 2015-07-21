@@ -14,7 +14,7 @@ sap.ui.define(
         var CustomController = Controller.extend('test.tm.ze_ccux_ctrl.view.TabBar');
 
         CustomController.prototype.onInit = function () {
-
+            this.getView().byId('tabBarItem004').setSelected(true);
         };
 
         CustomController.prototype.onItemSelected = function (oControlEvent) {
@@ -27,6 +27,10 @@ sap.ui.define(
 
         CustomController.prototype.onSelected = function (oControlEvent) {
             console.log("onSelected ... " + oControlEvent.getParameter('selectedItem').getKey());
+        };
+
+        CustomController.prototype.onBtnPressed = function (oControlEvent) {
+            this.getView().byId('tabBarItem002').setSelected(true);
         };
 
         return CustomController;
