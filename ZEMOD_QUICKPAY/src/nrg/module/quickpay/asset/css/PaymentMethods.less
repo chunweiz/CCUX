@@ -1,10 +1,10 @@
-.nrgQPPay-dialog {
-            background-color: @nrgColor-grey-dark;
+.nrgQPPay-dialogPale {
             color : @nrgColor-white;
             width: 340px;
             height: 326px;
+            background-color: @nrgColor-blue-darkPale;
     & > .sapUiDlgCont {
-            background-color: @nrgColor-grey-dark;
+            background-color: @nrgColor-blue-darkPale;
     }
     &   .sapUiDlgLabel {
             color : @nrgColor-white;
@@ -31,7 +31,7 @@
             display:none;
     }
     &   .nrgQPPay-tabBar {
-
+            display:none;
     }
     &   .nrgQPPay-tabPanelItem {
             background-color: transparent;
@@ -50,5 +50,28 @@
     &   .nrgQPPay-tabIcon > .uteMTabPanelItem-content {
             left:50px;
     }
-
+    &   .sapUiDlgHdrSep {
+            height: 0px;
+            background-color: transparent;
+    }
+}
+.nrgQPPay-dialogRegular {
+            color : @nrgColor-white;
+            width: 340px;
+            height: 326px;
+    &   .sapUiDlgLabel {
+            color : @nrgColor-white;
+    }
+    &   .nrgQPPay-top  {
+            margin: 10px;
+    }
+    &   .nrgQPPay-ttl {
+            text-align: center;
+    }
+    &   .nrgQPPay-hide {
+            display:none;
+    }
+    &   .nrgQPPay-tabBar {
+            display:none;
+    }
 }

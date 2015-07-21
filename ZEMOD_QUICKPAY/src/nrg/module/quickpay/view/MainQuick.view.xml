@@ -8,12 +8,9 @@
     controllerName="nrg.module.quickpay.view.MainQuick">
     <u:Tag class="nrgToolsEmpty nrgAppMain-toolsContent nrgAppMain-toolsContent-full">
         <um:TabBar id="nrgTabBar" design="None" class="nrgQPPay-tabBar">
-            <um:TabBarItem key="tb001" design="None"  selected="true" class="nrgQPPay-tabBarItem" id="idnrgQPPay-tabBarItem1">
-                <u:Tag text="Select" />
-            </um:TabBarItem>
-            <um:TabBarItem key="tb002"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-tabBarItem2" >
-                <u:Tag text="Select" />
-            </um:TabBarItem>
+            <um:TabBarItem key="tb001" design="None"  selected="true" class="nrgQPPay-tabBarItem" id="idnrgQPPay-tabBarItem001" />
+            <um:TabBarItem key="tb002"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-tabBarItem002" />
+            <um:TabBarItem key="tb003"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-tabBarItem003" />
         </um:TabBar>
         <um:TabPanel tabPanelFor="nrgTabBar" design="None" class="nrgQPPay-tabPanel">
             <um:TabPanelItem key="tb001" class="nrgQPPay-tabPanelItem">
@@ -26,6 +23,9 @@
                          <core:Icon src="sap-icon://nrg-icon/handset" class="nrgQPPay-handset" />
                          <u:Tag text="{comp-i18n-quickpay>nrgQPStopRecording}" class="nrgQPPay-text"/>
                      </um:Button>
+            </um:TabPanelItem>
+            <um:TabPanelItem key="tb003" class="nrgQPPay-tabPanelItem nrgQPPay-tabIcon">
+                    <core:Fragment fragmentName="nrg.module.quickpay.view.CreditCard" type="XML" />
             </um:TabPanelItem>
         </um:TabPanel>
     </u:Tag>
