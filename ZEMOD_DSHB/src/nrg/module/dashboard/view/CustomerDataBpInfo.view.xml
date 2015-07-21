@@ -47,10 +47,23 @@
                                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-TITLE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
+<!--
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{oDataBpTitle>/Title}"/>
+                                                               value="{ODataBpName>/Title}"/>
+-->
+                                                <utmain:Dropdown id="referer"
+                                                                 design="Default"
+                                                                 class="nrgDashboard-cusDataBpInfo-dropdown"
+                                                                 content="{ODataBpTitles>/results}"
+                                                                 selectedKey="{ODataBpName>/Title}"
+                                                                 select=".onSelectedCa"
+                                                                 enabled="{oBpInfoConfig>/titleEditable}">
+                                                    <utmain:DropdownItem key="{ODataBpTitles>Key}">
+                                                       <ute:Tag text="{ODataBpTitles>Value}" class="nrgDashboard-cusDataBpInfo-cnt"/>
+                                                    </utmain:DropdownItem>
+                                                </utmain:Dropdown>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -64,7 +77,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{oDataBpTitle>/AcademicTitle}"/>
+                                                               value="{ODataBpName>/AcademicTitle}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -78,7 +91,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{oDataBpTitle>/FirstName}"/>
+                                                               value="{ODataBpName>/FirstName}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -92,7 +105,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{oDataBpTitle>/LastName}"/>
+                                                               value="{ODataBpName>/LastName}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -110,7 +123,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{oDataBpTitle>/MaidenName}"/>
+                                                               value="{ODataBpName>/MaidenName}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -124,7 +137,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{oDataBpTitle>/MiddleName}"/>
+                                                               value="{ODataBpName>/MiddleName}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -138,7 +151,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{oDataBpTitle>/Suffix}"/>
+                                                               value="{ODataBpName>/Suffix}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>

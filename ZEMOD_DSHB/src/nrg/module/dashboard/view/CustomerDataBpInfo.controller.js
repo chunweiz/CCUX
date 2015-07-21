@@ -32,8 +32,8 @@ sap.ui.define(
             //Model to hold BP info
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBP');
 
-            //Model to hold BpTitle
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBpTitle');
+            //Model to hold BpName
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'ODataBpName');
 
             //Model to hold BpAddress
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBpAddress');
@@ -46,6 +46,9 @@ sap.ui.define(
 
             //Model to hold BpMarkPreferSet
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBpMarkPreferSet');
+
+            //Model to hold all titles
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'ODataBpTitles');
 
             this.getView().attachParseError(function (oEvent) {
                 this._addMessage(oEvent, 'attachParseError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
@@ -140,12 +143,12 @@ sap.ui.define(
 
         CustomController.prototype.onTitleCancel = function () {    //onTitleCancel
             var oConfigModel = this.getView().getModel('oBpInfoConfig'),
-                bpTitleModel = this.getView().getModel('oDataBpTitle');
+                bpTitleModel = this.getView().getModel('ODataBpName');
             oConfigModel.setProperty('/titleEditVisible', true);
             oConfigModel.setProperty('/titleSaveVisible', false);
             oConfigModel.setProperty('/titleEditable', false);
 
-            bpTitleModel.setData(jQuery.extend(true, {}, this.oDataBpTitleBak));
+            bpTitleModel.setData(jQuery.extend(true, {}, this.ODataBpNameBak));
         };
 
         CustomController.prototype.onTitleEdit = function () {
@@ -160,13 +163,13 @@ sap.ui.define(
                 oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
-                bpNumber = this.getView().getModel('oDataBpTitle').getProperty('/PartnerID');
+                bpNumber = this.getView().getModel('ODataBpName').getProperty('/PartnerID');
 
             oConfigModel.setProperty('/titleEditVisible', true);
             oConfigModel.setProperty('/titleSaveVisible', false);
             oConfigModel.setProperty('/titleEditable', false);
 
-            if (JSON.stringify(this.getView().getModel('oDataBpTitle').oData) === JSON.stringify(this.oDataBpTitleBak)) {
+            if (JSON.stringify(this.getView().getModel('ODataBpName').oData) === JSON.stringify(this.ODataBpNameBak)) {
                 sap.ui.commons.MessageBox.alert("There is no change for Title/Name.");
                 return;
             }
@@ -176,7 +179,7 @@ sap.ui.define(
                 merge: false,
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Title/Name Update Success");
-                    this._retrBpTitle(bpNumber);
+                    this._retrBpName(bpNumber);
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Title/Name Update Failed");
@@ -184,7 +187,7 @@ sap.ui.define(
             };
 
             if (oModel) {
-                oModel.update(sPath, this.getView().getModel('oDataBpTitle').oData, oParameters);
+                oModel.update(sPath, this.getView().getModel('ODataBpName').oData, oParameters);
             }
         };
 
@@ -425,14 +428,41 @@ sap.ui.define(
         };
 
         Controller.prototype._retrAllData = function (bpNum) {
-            this._retrBpTitle(bpNum);
+            this._retrBpTitles();
+            this._retrBpName(bpNum);
             this._retrBpAddress(bpNum);
             this._retrBpPersonal(bpNum);
             this._retrBpContact(bpNum);
             this._retrBpMarkPrefSet(bpNum);
         };
 
-        Controller.prototype._retrBpTitle = function (sBpNum) {
+        Controller.prototype._retrBpTitles = function() {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/BpTitles/';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        if (oData.results) {
+                            this.getView().getModel('ODataBpTitles').setData(oData);
+                        }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                    var t = 1.0;
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrBpName = function (sBpNum) {
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters;
@@ -443,8 +473,8 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         if (oData.PartnerID) {
-                            this.getView().getModel('oDataBpTitle').setData(oData);
-                            this.oDataBpTitleBak = jQuery.extend(true, {}, oData);
+                            this.getView().getModel('ODataBpName').setData(oData);
+                            this.ODataBpNameBak = jQuery.extend(true, {}, oData);
                         }
                     }
                 }.bind(this),
