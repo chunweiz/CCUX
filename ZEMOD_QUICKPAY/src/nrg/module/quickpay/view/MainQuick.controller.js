@@ -51,10 +51,9 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onCreditCard = function (oEvent) {
-            var oBtnsTag = this.getView().byId("idnrgQPPay-btns"),
-                oStopRecTag = this.getView().byId("idnrgQPPay-StopRec");
-            oBtnsTag.addStyleClass("nrgQPPay-hide");
-            oStopRecTag.removeStyleClass("nrgQPPay-hide");
+            var oTabBarItem2 = this.getView().byId("idnrgQPPay-tabBarItem2");
+            oTabBarItem2.setSelected(true);
+
         };
         /**
 		 * Credit Card Process initialization

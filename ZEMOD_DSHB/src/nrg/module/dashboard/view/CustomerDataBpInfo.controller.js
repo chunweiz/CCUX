@@ -50,6 +50,12 @@ sap.ui.define(
             //Model to hold all titles
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'ODataBpTitles');
 
+            //Model to hold all acdemic titles
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'ODataBpAccTitles');
+
+            //Model to hold all acdemic titles
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'ODataBpSuffixs');
+
             this.getView().attachParseError(function (oEvent) {
                 this._addMessage(oEvent, 'attachParseError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
             }.bind(this));
@@ -67,7 +73,7 @@ sap.ui.define(
 
                 oMessageManager = sap.ui.getCore().getMessageManager();
                 aMessage = oMessageManager.getMessageModel().getData();
-                if (aMessage && !$.isEmptyObject(aMessage)) {
+                if (aMessage && !jQuery.isEmptyObject(aMessage)) {
                     aMessage.forEach(function (oMessage) {
                         if (oMessage.target === [oEvent.getParameter('id'), oEvent.getParameter('property')].join('/')) {
                             oMessageManager.removeMessages(oMessage);
@@ -420,7 +426,7 @@ sap.ui.define(
 
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
-            if(!this._bpNum) {
+            if (!this._bpNum) {
                 this._bpNum = aSplitHash[iSplitHashL - 1];
             }
 
@@ -429,6 +435,8 @@ sap.ui.define(
 
         Controller.prototype._retrAllData = function (bpNum) {
             this._retrBpTitles();
+            this._retrBpAccTitles();
+            this._retrBpSuffixs();
             this._retrBpName(bpNum);
             this._retrBpAddress(bpNum);
             this._retrBpPersonal(bpNum);
@@ -436,7 +444,7 @@ sap.ui.define(
             this._retrBpMarkPrefSet(bpNum);
         };
 
-        Controller.prototype._retrBpTitles = function() {
+        Controller.prototype._retrBpTitles = function () {
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters;
@@ -448,6 +456,58 @@ sap.ui.define(
                     if (oData) {
                         if (oData.results) {
                             this.getView().getModel('ODataBpTitles').setData(oData);
+                        }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                    var t = 1.0;
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrBpAccTitles = function () {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/BpAccTitles/';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        if (oData.results) {
+                            this.getView().getModel('ODataBpAccTitles').setData(oData);
+                        }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                    var t = 1.0;
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrBpSuffixs = function () {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/BpSuffixs/';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        if (oData.results) {
+                            this.getView().getModel('ODataBpSuffixs').setData(oData);
                         }
                     }
                 }.bind(this),
