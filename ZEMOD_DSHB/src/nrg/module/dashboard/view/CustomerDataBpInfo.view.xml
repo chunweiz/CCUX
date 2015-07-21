@@ -510,7 +510,7 @@
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
-                                    <l:MatrixLayout widths="25%,45%,10%,20%" columns="4">
+                                    <l:MatrixLayout widths="25%,25%,10%,10%,10%,20%" columns="6">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
@@ -524,13 +524,29 @@
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
-                                                         text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EXT}.:" />
+                                                         text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EXT}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/contactInfoEditable}"
                                                                value="{oDataBpContact>/DayPhoneExt}"/>
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
+                                                         text="TYPE:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <utmain:Dropdown design="Plain"
+                                                                 selectedKey="{oDataBpContact>/DayPhoneType}"
+                                                                 content="{oDayPhoneType>/}"
+                                                                 enabled="{oBpInfoConfig>/contactInfoEditable}">
+                                                    <utmain:DropdownItem
+                                                        key="{oDayPhoneType>Key}">
+                                                        <ute:Tag elem="span"
+                                                             text="{oDayPhoneType>Type}"/>
+                                                    </utmain:DropdownItem>
+                                                </utmain:Dropdown>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -552,7 +568,7 @@
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
-                                    <l:MatrixLayout widths="25%,45%,10%,20%" columns="4">
+                                    <l:MatrixLayout widths="25%,25%,10%,10%,10%,20%" columns="6">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
@@ -566,13 +582,29 @@
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
-                                                         text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EXT}.:" />
+                                                         text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EXT}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/contactInfoEditable}"
                                                                value="{oDataBpContact>/EveningPhoneExt}"/>
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
+                                                         text="TYPE:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <utmain:Dropdown design="Plain"
+                                                                 selectedKey="{oDataBpContact>/EveningPhoneType}"
+                                                                 content="{oEvnPhoneType>/}"
+                                                                 enabled="{oBpInfoConfig>/contactInfoEditable}">
+                                                    <utmain:DropdownItem
+                                                        key="{oEvnPhoneType>Key}">
+                                                        <ute:Tag elem="span"
+                                                             text="{oEvnPhoneType>Type}"/>
+                                                    </utmain:DropdownItem>
+                                                </utmain:Dropdown>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>

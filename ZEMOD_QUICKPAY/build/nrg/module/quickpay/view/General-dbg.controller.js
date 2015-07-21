@@ -35,7 +35,7 @@ sap.ui.define(
                     content: oQuickPayView
                 });
             }
-            this._oPaymentDialog.addStyleClass("nrgQPPay-dialog");
+            this._oPaymentDialog.addStyleClass("nrgQPPay-dialogPale");
             this.getView().addDependent(this._oPaymentDialog);
             this._oPaymentDialog.open();
         };

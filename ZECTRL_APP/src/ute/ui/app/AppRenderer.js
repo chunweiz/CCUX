@@ -16,17 +16,9 @@ sap.ui.define(
             oRm.writeClasses();
             oRm.write('>');
 
-            if (oCustomControl.getHeader()) {
-                this._renderHeader(oRm, oCustomControl);
-            }
-
-            if (oCustomControl.getBody()) {
-                this._renderBody(oRm, oCustomControl);
-            }
-
-            if (oCustomControl.getFooter()) {
-                this._renderFooter(oRm, oCustomControl);
-            }
+            this._renderHeader(oRm, oCustomControl);
+            this._renderBody(oRm, oCustomControl);
+            this._renderFooter(oRm, oCustomControl);
 
             oRm.write('</div>');
         };

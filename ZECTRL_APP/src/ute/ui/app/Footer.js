@@ -10,7 +10,13 @@ sap.ui.define(
 
         var CustomControl = Control.extend('ute.ui.app.Footer', {
             metadata: {
-                library: 'ute.ui.app'
+                library: 'ute.ui.app',
+
+                aggregations: {
+                    content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' }
+                },
+
+                defaultAggregation: 'content'
             }
         });
 

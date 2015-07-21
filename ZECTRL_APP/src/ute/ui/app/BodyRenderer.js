@@ -1,4 +1,5 @@
 /*global sap*/
+/*jslint nomen:true*/
 
 sap.ui.define(
     [],
@@ -15,9 +16,23 @@ sap.ui.define(
             oRm.writeClasses();
             oRm.write('>');
 
+            oRm.write('<div');
+            oRm.addClass('uteAppBody-wrap');
+            oRm.addClass('uteAppBody-inner');
+            oRm.writeClasses();
+            oRm.write('>');
 
+            this._renderContent(oRm, oCustomControl);
 
-            oRm.write('</div>');
+            oRm.write('</div>'); // uteAppBody-inner
+            oRm.write('</div>'); // uteAppBody
+        };
+
+        CustomRenderer._renderContent = function (oRm, oCustomControl) {
+
+            oCustomControl.getContent().forEach(function (oContent) {
+                oRm.renderControl(oContent);
+            });
         };
 
         return CustomRenderer;
