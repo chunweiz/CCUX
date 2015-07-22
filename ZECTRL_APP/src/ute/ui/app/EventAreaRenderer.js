@@ -10,23 +10,11 @@ sap.ui.define(
         var CustomRenderer = {};
 
         CustomRenderer.render = function (oRm, oCustomControl) {
-            oRm.write('<div');
+            oRm.write('<span');
             oRm.writeControlData(oCustomControl);
-            oRm.addClass('uteAppFtr');
-            oRm.addClass('uteU-clearfix');
             oRm.writeClasses();
             oRm.write('>');
-
-            oRm.write('<div');
-            oRm.addClass('uteAppFtr-wrap');
-            oRm.addClass('uteAppFtr-inner');
-            oRm.writeClasses();
-            oRm.write('>');
-
-            this._renderContent(oRm, oCustomControl);
-
-            oRm.write('</div>'); //uteAppFtr-inner
-            oRm.write('</div>'); //uteAppFtr
+            oRm.write('</span>');
         };
 
         CustomRenderer._renderContent = function (oRm, oCustomControl) {
