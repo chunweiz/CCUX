@@ -1,0 +1,30 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:c="sap.ui.commons"
+          xmlns:core="sap.ui.core"
+          xmlns:u="ute.ui.commons"
+          xmlns:um="ute.ui.main">
+<u:Tag class="nrgQPPay-root">
+    <um:TabBar id="nrgTabBar" design="None" class="nrgQPPay-tabBar">
+        <um:TabBarItem key="tb001" design="None"  selected="true" class="nrgQPPay-tabBarItem" id="idnrgQPPay-tabBarItem001" />
+        <um:TabBarItem key="tb002"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-tabBarItem002" />
+        <um:TabBarItem key="tb003"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-tabBarItem003" />
+    </um:TabBar>
+    <um:TabPanel tabPanelFor="nrgTabBar" design="None" class="nrgQPPay-tabPanel">
+        <um:TabPanelItem key="tb001" class="nrgQPPay-tabPanelItem">
+                <core:Fragment fragmentName="nrg.module.quickpay.view.PaymentMethods" type="XML" />
+        </um:TabPanelItem>
+        <um:TabPanelItem key="tb002" class="nrgQPPay-tabPanelItem nrgQPPay-tabIcon">
+                  <um:Button press=".onStopRec"
+                                 class="nrgQPPay-stopRec"
+                               id="idnrgQPPayBt-stopRec" design="None">
+                     <core:Icon src="sap-icon://nrg-icon/handset" class="nrgQPPay-handset" />
+                     <u:Tag text="{comp-i18n-quickpay>nrgQPStopRecording}" class="nrgQPPay-text"/>
+                 </um:Button>
+        </um:TabPanelItem>
+        <um:TabPanelItem key="tb003" class="nrgQPPay-tabPanelItem nrgQPPay-tabIcon">
+                <core:Fragment fragmentName="nrg.module.quickpay.view.CreditCard" type="XML" />
+        </um:TabPanelItem>
+    </um:TabPanel>
+ </u:Tag>
+</core:FragmentDefinition>
