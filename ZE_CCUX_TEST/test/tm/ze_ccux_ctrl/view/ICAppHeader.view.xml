@@ -57,6 +57,28 @@
             padding-left: 10px;
             cursor: default;
         }
+
+        .nrgAppBodyBanner-title {
+            display: inline-block;
+            position: relative;
+            transform: translateY(100%);
+        }
+
+        .nrgAppBody-navLeft {
+            width: 0;
+            height: 0;
+            border-top: 16px solid transparent;
+            border-bottom: 16px solid transparent;
+            border-right: 16px solid tomato;
+        }
+
+        .nrgAppBody-navRight {
+            width: 0;
+            height: 0;
+            border-top: 16px solid transparent;
+            border-bottom: 16px solid transparent;
+            border-left: 16px solid tomato;
+        }
     </style>
 
     <ua:App>
@@ -112,8 +134,31 @@
         <ua:body>
             <ua:Body>
                 <ua:banner>
-                    <ua:Text text="CUSTOMER DATA" />
+                    <ua:Text text="CUSTOMER DATA" class="nrgAppBodyBanner-title" />
                 </ua:banner>
+                <ua:navLeft>
+                    <ua:EventArea click=".onNavLeftPress">
+                        <div class="nrgAppBody-navLeft"></div>
+                    </ua:EventArea>
+                </ua:navLeft>
+                <ua:navRight>
+                    <ua:EventArea click=".onNavRightPress">
+                        <div class="nrgAppBody-navRight"></div>
+                    </ua:EventArea>
+                </ua:navRight>
+                <ua:content>
+                    <ua:BodyContent id="idBodyContent">
+                        <ua:summary>
+                            <div>Summary content</div>
+                        </ua:summary>
+                        <ua:tool>
+                            <div>Tool content</div>
+                        </ua:tool>
+                        <ua:general>
+                            <div>General content</div>
+                        </ua:general>
+                    </ua:BodyContent>
+                </ua:content>
             </ua:Body>
         </ua:body>
         <ua:footer>

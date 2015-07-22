@@ -51,6 +51,14 @@ sap.ui.define(
             this._oPopup.close();
         };
 
+        CustomController.prototype.onNavLeftPress = function (oControlEvent) {
+            this.getView().byId('idBodyContent').setLayout('FullWidthTool');
+        };
+
+        CustomController.prototype.onNavRightPress = function (oControlEvent) {
+            this.getView().byId('idBodyContent').setLayout('Default');
+        };
+
         CustomController.prototype.onInit = function () {
             var oModel = new JSONModel({
                 name: 'test data'

@@ -396,7 +396,7 @@ sap.ui.define(
             oParameters = {
                 merge: false,
                 success : function (oData) {
-                    sap.ui.commons.MessageBox.alert("Market Preference Update Success");
+//                    sap.ui.commons.MessageBox.alert("Market Preference Update Success");
                     this._retrBpMarkPrefSet(bpNumber);
                 }.bind(this),
                 error: function (oError) {
@@ -405,7 +405,7 @@ sap.ui.define(
             };
             for (i = 0; i < this.getView().getModel('oDataBpMarkPreferSet').oData.results.length; i = i + 1) {
                 if (JSON.stringify(this.getView().getModel('oDataBpMarkPreferSet').oData.results[i]) === JSON.stringify(this.oDataBpMarkPreferSetBak.results[i])) {
-                    sap.ui.commons.MessageBox.alert("There is no change for Market Perference index: " + i.toString());
+//                    sap.ui.commons.MessageBox.alert("There is no change for Market Perference index: " + i.toString());
                 } else {
                     attibuteSet = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/AttributeSet');
                     attribute = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/Attribute');

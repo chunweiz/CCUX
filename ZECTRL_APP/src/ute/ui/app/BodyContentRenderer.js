@@ -76,11 +76,45 @@ sap.ui.define(
         };
 
         CustomRenderer._renderDefaultLayout = function (oRm, oCustomControl) {
+            oRm.write('<div');
+            oRm.addClass('uteAppBodyCnt-leftSection');
+            oRm.writeClasses();
+            oRm.write('>');
 
+            this._renderSummary(oRm, oCustomControl);
+            this._renderTool(oRm, oCustomControl);
+
+            oRm.write('</div>');
+
+            oRm.write('<div');
+            oRm.addClass('uteAppBodyCnt-rightSection');
+            oRm.writeClasses();
+            oRm.write('>');
+
+            this._renderGeneral(oRm, oCustomControl);
+
+            oRm.write('</div>');
         };
 
         CustomRenderer._renderFullWidthToolLayout = function (oRm, oCustomControl) {
+            oRm.write('<div');
+            oRm.addClass('uteAppBodyCnt-topSection');
+            oRm.writeClasses();
+            oRm.write('>');
 
+            this._renderSummary(oRm, oCustomControl);
+            this._renderGeneral(oRm, oCustomControl);
+
+            oRm.write('</div>');
+
+            oRm.write('<div');
+            oRm.addClass('uteAppBodyCnt-bottomSection');
+            oRm.writeClasses();
+            oRm.write('>');
+
+            this._renderTool(oRm, oCustomControl);
+
+            oRm.write('</div>');
         };
 
         return CustomRenderer;

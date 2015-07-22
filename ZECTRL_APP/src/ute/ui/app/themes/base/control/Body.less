@@ -12,10 +12,47 @@
         position: relative;
 
         & .uteAppBody-banner {
+            position: relative;
             font-size: @uteFontSize-jumbo;
             font-weight: @uteFontWeight-bold;
             color: @uteColor-blue-header;
-            padding: 20px 40px 19px 40px; /* 67px 40px 19px 40px */
+            padding: 0 40px;
+            height: 112px;
+            width: 100%;
+        }
+
+        & .uteAppBody-navLeft {
+            display: inline-block;
+            position: relative;
+            width: 40px;
+            padding: 120px 7px 0 14px;
+
+            & .uteAppBody-navLeftCnt {
+                display: inline-block;
+                position: relative;
+                width: 16px;
+                overflow: hidden;
+            }
+        }
+
+        & .uteAppBody-navRight {
+            display: inline-block;
+            position: relative;
+            width: 40px;
+            padding: 120px 14px 0 7px;
+
+            & .uteAppBody-navRightCnt {
+                display: inline-block;
+                position: relative;
+                width: 16px;
+                overflow: hidden;
+            }
+        }
+
+        & .uteAppBody-content {
+            display: inline-block;
+            width: 1360px;
+            vertical-align: top;
         }
     }
 }
