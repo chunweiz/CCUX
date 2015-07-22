@@ -52,11 +52,11 @@ sap.ui.define(
         };
 
         CustomController.prototype.onNavLeftPress = function (oControlEvent) {
-            jQuery.sap.log.error('nav left pressed');
+            this.getView().byId('idBodyContent').setLayout('FullWidthTool');
         };
 
         CustomController.prototype.onNavRightPress = function (oControlEvent) {
-            jQuery.sap.log.error('nav right pressed');
+            this.getView().byId('idBodyContent').setLayout('Default');
         };
 
         CustomController.prototype.onInit = function () {

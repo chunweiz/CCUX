@@ -26,13 +26,13 @@
             vertical-align: top;
 
             & .uteAppBodyCnt-summary {
-                width: 100%;
+                display: block;
                 background-color: deepskyblue;
                 margin-bottom: 13px;
             }
 
             & .uteAppBodyCnt-tool {
-                width: 100%;
+                display: block;
                 background-color: gold;
             }
         }
@@ -44,13 +44,44 @@
             vertical-align: top;
 
             & .uteAppBodyCnt-general {
-                width: 100%;
+                display: block;
                 background-color: tomato;
             }
         }
     }
 
     &.uteAppBodyCnt-layout-fullWidthTool {
+        & .uteAppBodyCnt-topSection {
+            display: block;
+            position: relative;
+            max-height: 400px;
+            margin-bottom: 13px;
+            vertical-align: top;
 
+            & .uteAppBodyCnt-summary {
+                display: inline-block;
+                width: 284px;
+                background-color: deepskyblue;
+                margin-right: 16px;
+            }
+
+            & .uteAppBodyCnt-general {
+                display: inline-block;
+                width: 1060px;
+                background-color: tomato;
+            }
+        }
+
+        & .uteAppBodyCnt-bottomSection {
+            display: block;
+            position: relative;
+            vertical-align: top;
+
+            & .uteAppBodyCnt-tool {
+                display: block;
+                width: 100%;
+                background-color: gold;
+            }
+        }
     }
 }

@@ -147,7 +147,7 @@
                     </ua:EventArea>
                 </ua:navRight>
                 <ua:content>
-                    <ua:BodyContent>
+                    <ua:BodyContent id="idBodyContent">
                         <ua:summary>
                             <div>Summary content</div>
                         </ua:summary>
@@ -155,7 +155,7 @@
                             <div>Tool content</div>
                         </ua:tool>
                         <ua:general>
-
+                            <div>General content</div>
                         </ua:general>
                     </ua:BodyContent>
                 </ua:content>
