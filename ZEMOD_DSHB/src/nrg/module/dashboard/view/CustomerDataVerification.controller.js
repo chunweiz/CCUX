@@ -158,27 +158,35 @@ sap.ui.define(
             }
         };
 
-        Controller.prototype._retrBuag = function (sBpNum) {      //will be called whenever a different Buag is selected
+        Controller.prototype._retrBuag = function (sBpNum, iSelectedCA) {      //will be called whenever a different Buag is selected
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
-                i;
+                i,
+                iPreSelCA;
+
+            if (iSelectedCA) {
+                iPreSelCA = iSelectedCA;
+            } else {
+                iPreSelCA = 0;
+            }
+
 
             sPath = '/Partners' + '(\'' + sBpNum + '\')/Buags/';
             oParameters = {
                 success : function (oData) {
                     if (oData) {
-                        if (oData.results[0]) {
+                        if (oData.results[iPreSelCA]) {
                             //If there's first record of Buags, load as default to display
-                            this.getView().getModel('oDtaVrfyBuags').setData(oData.results[0]);
-                            this._retrContracts(oData.results[0].ContractAccountID);
-                            this._retrBuagMailingAddr(sBpNum, oData.results[0].ContractAccountID, oData.results[0].FixedAddressID);
+                            this.getView().getModel('oDtaVrfyBuags').setData(oData.results[iPreSelCA]);
+                            this._retrContracts(oData.results[iPreSelCA].ContractAccountID);
+                            this._retrBuagMailingAddr(sBpNum, oData.results[iPreSelCA].ContractAccountID, oData.results[iPreSelCA].FixedAddressID);
                         }
                         for (i = 0; i < oData.results.length; i = i + 1) {
                             oData.results[i].iIndex = i.toString();
                         }
                         this.getView().getModel('oAllBuags').setData(oData.results);
-                        this.getView().getModel('oAllBuags').setProperty('/selectedKey', '0');
+                        this.getView().getModel('oAllBuags').setProperty('/selectedKey', iPreSelCA);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -529,6 +537,82 @@ sap.ui.define(
         };
 
         Controller.prototype._handleMailingAddrUpdate = function (oEvent) {
+            //Validate the address input first
+            this._validateInputAddr();
+        };
+
+        Controller.prototype._handleMailingAcceptBtn = function (oEvent) {
+            var oMailEdit = this.getView().getModel('oDtaAddrEdit'),
+                oMailTempModel = this.getView().getModel('oDtaVrfyMailingTempAddr'),
+                tempObj,
+                key;
+
+            tempObj = oMailEdit.getProperty('/SuggAddrInfo');
+            delete tempObj.HeaderText1;
+            delete tempObj.HeaderText2;
+            delete tempObj.FooterLine1;
+            delete tempObj.FooterLine2;
+            delete tempObj.FooterLine3;
+
+            if (oMailEdit.getProperty('/bFixAddr')) {
+                oMailTempModel.setProperty('/FixUpd', 'X');
+                for (key in tempObj) {
+                    if (tempObj.hasOwnProperty(key)) {
+                        if (!(key === '__metadata' || key === 'StandardFlag' || key === 'Supplement')) {
+                            oMailTempModel.setProperty('/FixAddrInfo/' + key, tempObj[key]);
+                        }
+                    }
+                }
+            } else {
+                oMailTempModel.setProperty('/TempUpd', 'X');
+                for (key in tempObj) {
+                    if (tempObj.hasOwnProperty(key)) {
+                        if (!(key === '__metadata' || key === 'StandardFlag' || key === 'Supplement')) {
+                            oMailTempModel.setProperty('/TempAddrInfo/' + key, tempObj[key]);
+                        }
+                    }
+                }
+            }
+
+            this._updateMailingAddr();
+        };
+
+        Controller.prototype._handleMailingDeclineBtn = function (oEvent) {
+            var oMailEdit = this.getView().getModel('oDtaAddrEdit'),
+                oMailTempModel = this.getView().getModel('oDtaVrfyMailingTempAddr'),
+                tempObj;
+
+            tempObj = oMailEdit.getProperty('/AddrInfo');
+
+            if (oMailEdit.getProperty('/bFixAddr')) {
+                oMailTempModel.setProperty('/FixAddrInfo', tempObj);
+                oMailTempModel.setProperty('/FixUpd', 'X');
+            } else {
+                oMailTempModel.setProperty('/TempAddrInfo', tempObj);
+                oMailTempModel.setProperty('/TempUpd', 'X');
+            }
+
+            this._updateMailingAddr();
+        };
+
+        Controller.prototype._handleMailingEditBtn = function (oEvent) {
+            var oEditMail = this.getView().getModel('oDtaAddrEdit');
+
+            //oEditMail.setProperty('/updateSent', false);
+            oEditMail.setProperty('/showVldBtns', false);
+            oEditMail.setProperty('/updateNotSent', true);
+        };
+
+        Controller.prototype._showSuggestedAddr = function () {
+            //Address validation error there was. Show system suggested address values we need to.
+            this.getView().byId('idAddrUpdatePopup').addStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
+            this.getView().byId('idAddrUpdatePopup-l').addStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
+        };
+
+        Controller.prototype._updateMailingAddr = function () {
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
@@ -536,28 +620,23 @@ sap.ui.define(
                 sBuagNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/ContractAccountID'),
                 sFixedAddressID = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/FixedAddressID');
 
-            if (this._validateInputAddr()) {
-                /*sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
 
-                oParameters = {
-                    urlParameters: {},
-                    success : function (oData) {
-                        sap.ui.commons.MessageBox.alert("Update Success");
-                        this._oMailEditPopup.close();
-                    }.bind(this),
-                    error: function (oError) {
-                        sap.ui.commons.MessageBox.alert("Update Failed");
-                    }.bind(this)
-                };
+            sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
 
-                if (oModel) {
-                    oModel.update(sPath, this.getView().getModel('oDtaVrfyMailingTempAddr').oData, oParameters);
-                }*/
-            } else {
-                this.getView().byId('idAddrUpdatePopup').addStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
-                this.getView().byId('idAddrUpdatePopup-l').addStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
-                this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
-                this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
+            oParameters = {
+                urlParameters: {},
+                success : function (oData) {
+                    sap.ui.commons.MessageBox.alert("Update Success");
+                    this._retrBuag(this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'),  this.getView().getModel('oAllBuags').getProperty('/selectedKey'));
+                    this._oMailEditPopup.close();
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Update Failed");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.update(sPath, this.getView().getModel('oDtaVrfyMailingTempAddr').oData, oParameters);
             }
         };
 
@@ -573,7 +652,13 @@ sap.ui.define(
             oParameters = {
                 filters: aFilters,
                 success: function (oData) {
-                    sap.ui.commons.MessageBox.alert('Validatation Call Success');
+                    if (oData.results[0].AddrChkValid === 'X') {
+                        //Validate success, update the address directly
+                        this._updateMailingAddr();
+                    } else {
+                        oMailEdit.setProperty('/SuggAddrInfo', oData.results[0].TriCheck);
+                        this._showSuggestedAddr();
+                    }
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert('Validatation Call Failed');
@@ -583,8 +668,6 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oParameters);
             }
-
-            return false;
         };
 
         Controller.prototype._createAddrValidateFilters = function () {
@@ -596,6 +679,14 @@ sap.ui.define(
                 key,
                 bFixAddr = oMailEdit.getProperty('/bFixAddr'),
                 tempPath;
+
+            if (bFixAddr) {
+                oFilterTemplate = new Filter({ path: 'FixUpd', operator: FilterOperator.EQ, value1: 'X'});
+                aFilters.push(oFilterTemplate);
+            } else {
+                oFilterTemplate = new Filter({ path: 'TempUpd', operator: FilterOperator.EQ, value1: 'X'});
+                aFilters.push(oFilterTemplate);
+            }
 
             oFilterTemplate = new Filter({ path: 'PartnerID', operator: FilterOperator.EQ, value1: sBpNum});
             aFilters.push(oFilterTemplate);
@@ -628,7 +719,19 @@ sap.ui.define(
             var oEditMail = this.getView().getModel('oDtaAddrEdit');
 
             oEditMail.setProperty('/updateSent', false);
+            oEditMail.setProperty('/showVldBtns', false);
             oEditMail.setProperty('/updateNotSent', true);
+        };
+
+        Controller.prototype._onPoBoxEdit = function (oEvent) {
+            //this.getView().byId('idEditHouseNum').setEnabled(false);
+            //this.getView().byId('idEditStName').setEnabled(false);
+            this.getView().byId('idEditHouseNum').setValue('');
+            this.getView().byId('idEditStName').setValue('');
+        };
+
+        Controller.prototype._onRegAddrEdit = function (oEvent) {
+            this.getView().byId('idEditPoBox').setValue('');
         };
 
         Controller.prototype._onEditMailAddrClick = function (oEvent) {
@@ -645,6 +748,7 @@ sap.ui.define(
             //Control what to or not to display
             this.getView().byId("idAddrUpdatePopup").setVisible(true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
@@ -653,15 +757,24 @@ sap.ui.define(
 
 
         Controller.prototype._onEditTempAddrClick = function (oEvent) {
-            this._oTempMailEditPopup = ute.ui.main.Popup.create({
-                content: this.getView().byId("idTempAddrUpdatePopup"),
-                title: 'Edit Temparory Mailing Address'
+            var oEditMail = this.getView().getModel('oDtaAddrEdit');
+
+            this._oMailEditPopup = ute.ui.main.Popup.create({
+                close: this._handleEditMailPopupClose,
+                content: this.getView().byId("idAddrUpdatePopup"),
+                title: 'Edit Temp Mailing Address'
             });
+
+            oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/TempAddrInfo'));
+
             //this._onToggleButtonPress();
             this.getView().byId("idTempAddrUpdatePopup").setVisible(true);
-            this.getView().byId('idAddrUpdatePopup-FtrLn').setVisible(false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', false);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
-            this._oTempMailEditPopup.open();
+            this._oMailEditPopup.open();
         };
 
         Controller.prototype._handleTempAddrUpdate = function (oEvent) {
