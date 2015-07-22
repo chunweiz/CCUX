@@ -51,6 +51,14 @@ sap.ui.define(
             this._oPopup.close();
         };
 
+        CustomController.prototype.onNavLeftPress = function (oControlEvent) {
+            jQuery.sap.log.error('nav left pressed');
+        };
+
+        CustomController.prototype.onNavRightPress = function (oControlEvent) {
+            jQuery.sap.log.error('nav right pressed');
+        };
+
         CustomController.prototype.onInit = function () {
             var oModel = new JSONModel({
                 name: 'test data'

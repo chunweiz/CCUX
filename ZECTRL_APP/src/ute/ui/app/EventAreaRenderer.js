@@ -14,6 +14,9 @@ sap.ui.define(
             oRm.writeControlData(oCustomControl);
             oRm.writeClasses();
             oRm.write('>');
+
+            this._renderContent(oRm, oCustomControl);
+
             oRm.write('</span>');
         };
 
