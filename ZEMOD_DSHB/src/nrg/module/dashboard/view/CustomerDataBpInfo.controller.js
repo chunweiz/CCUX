@@ -396,11 +396,11 @@ sap.ui.define(
             oParameters = {
                 merge: false,
                 success : function (oData) {
-                    sap.ui.commons.MessageBox.alert("Market Preference Update Success");
+//                    sap.ui.commons.MessageBox.alert("Market Preference Update Success");
                     this._retrBpMarkPrefSet(bpNumber);
                 }.bind(this),
                 error: function (oError) {
-                    sap.ui.commons.MessageBox.alert("Market Preference Update Failed");
+//                    sap.ui.commons.MessageBox.alert("Market Preference Update Failed");
                 }.bind(this)
             };
             for (i = 0; i < this.getView().getModel('oDataBpMarkPreferSet').oData.results.length; i = i + 1) {
