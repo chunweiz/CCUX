@@ -12,6 +12,10 @@ sap.ui.define(
             metadata: {
                 library: 'ute.ui.app',
 
+                properties: {
+                    enabled: { type: 'boolean', defaultValue: true }
+                },
+
                 aggregations: {
                     content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' }
                 },
@@ -25,7 +29,16 @@ sap.ui.define(
         });
 
         CustomControl.prototype.onclick = function (oEvent) {
-            this.fireClick();
+            if (this.getEnabled()) {
+                this.fireClick();
+            }
+        };
+
+        CustomControl.prototype.setEnabled = function (bEnabled) {
+            bEnabled = !!bEnabled;
+
+            this.setProperty('enabled', bEnabled, true);
+            return this;
         };
 
         return CustomControl;
