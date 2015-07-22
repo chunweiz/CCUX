@@ -1,1 +1,1 @@
-sap.ui.define(["nrg/base/view/BaseController","nrg/module/quickpay/view/QuickPayController"],function(a,b){"use strict";var c=a.extend("nrg.module.quickpay.view.General");return c.prototype.onInit=function(){},c.prototype.onQuickPay=function(){var a=new b;a.openQuickPay(this.getView())},c});
+sap.ui.define(["nrg/base/view/BaseController","nrg/module/quickpay/view/QuickPayControl"],function(a,b){"use strict";var c=a.extend("nrg.module.quickpay.view.General");return c.prototype.onInit=function(){},c.prototype.onQuickPay=function(){var a=new b;a.openQuickPay()},c});

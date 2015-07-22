@@ -19,32 +19,6 @@ sap.ui.define(
 
         };
         /**
-		 * Start Quick Pay process
-		 *
-		 * @function onQuickPay
-         * @param {sap.ui.base.Event} oEvent pattern match event
-		 */
-        Controller.prototype.onQuickPay = function (oEvent) {
-            var oBtnsTag, oStopRecTag;
-
-            if (!this._oDialogFragment) {
-                this._oDialogFragment = sap.ui.xmlfragment("PaymentMethods", "nrg.module.quickpay.view.PaymentMethods", this);
-            }
-            oBtnsTag = sap.ui.core.Fragment.byId("PaymentMethods", "idnrgQPPay-btns");
-            oStopRecTag = sap.ui.core.Fragment.byId("PaymentMethods", "idnrgQPPay-StopRec");
-            oStopRecTag.addStyleClass("nrgQPPay-hide");
-            oBtnsTag.removeStyleClass("nrgQPPay-hide");
-            if (!this._oPaymentDialog) {
-                this._oPaymentDialog = new ute.ui.main.Popup.create({
-                    close: this._handleDialogClosed,
-                    content: this._oDialogFragment
-                });
-            }
-            this._oPaymentDialog.addStyleClass("nrgQPPay-dialogPale");
-            this.getView().addDependent(this._oPaymentDialog);
-            this._oPaymentDialog.open();
-        };
-        /**
 		 * Show Stop Voice Log Recording msg
 		 *
 		 * @function onQuickPay

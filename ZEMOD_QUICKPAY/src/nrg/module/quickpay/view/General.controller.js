@@ -4,10 +4,10 @@
 sap.ui.define(
     [
         'nrg/base/view/BaseController',
-        'nrg/module/quickpay/view/QuickPayController'
+        'nrg/module/quickpay/view/QuickPayControl'
     ],
 
-    function (CoreController, QuickPayController) {
+    function (CoreController, QuickPayControl) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.quickpay.view.General');
@@ -26,8 +26,8 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onQuickPay = function (oEvent) {
-            var QuickController = new QuickPayController();
-            QuickController.openQuickPay(this.getView());
+            var QuickControl = new QuickPayControl();
+            QuickControl.openQuickPay();
         };
 
         return Controller;
