@@ -25,7 +25,6 @@ sap.ui.define(
             this._renderBanner(oRm, oCustomControl);
             this._renderBody(oRm, oCustomControl);
 
-
             oRm.write('</div>'); // uteAppBody-inner
             oRm.write('</div>'); // uteAppBody
         };
@@ -43,26 +42,63 @@ sap.ui.define(
             oRm.write('</div>');
         };
 
+        CustomRenderer._renderBody = function (oRm, oCustomControl) {
+            this._renderNavLeft(oRm, oCustomControl);
+            this._renderContent(oRm, oCustomControl);
+            this._renderNavRight(oRm, oCustomControl);
+        };
+
         CustomRenderer._renderNavLeft = function (oRm, oCustomControl) {
+            oRm.write('<div');
+            oRm.addClass('uteAppBody-navLeft');
+            oRm.writeClasses();
+            oRm.write('>');
+
+            oRm.write('<div');
+            oRm.addClass('uteAppBody-navLeftCnt');
+            oRm.writeClasses();
+            oRm.write('>');
+
             oCustomControl.getNavLeft().forEach(function (oNavLeft) {
                 oRm.renderControl(oNavLeft);
             }.bind(this));
+
+            oRm.write('</div>');
+            oRm.write('</div>');
         };
 
         CustomRenderer._renderNavRight = function (oRm, oCustomControl) {
-            oCustomControl.getNavLeft().forEach(function (oNavRight) {
+            oRm.write('<div');
+            oRm.addClass('uteAppBody-navRight');
+            oRm.writeClasses();
+            oRm.write('>');
+
+            oRm.write('<div');
+            oRm.addClass('uteAppBody-navRightCnt');
+            oRm.writeClasses();
+            oRm.write('>');
+
+            oCustomControl.getNavRight().forEach(function (oNavRight) {
                 oRm.renderControl(oNavRight);
             }.bind(this));
+
+            oRm.write('</div>');
+            oRm.write('</div>');
         };
 
         CustomRenderer._renderContent = function (oRm, oCustomControl) {
-            oCustomControl.getContent().forEach(function (oContent) {
+            var oContent = oCustomControl.getContent();
+
+            oRm.write('<div');
+            oRm.addClass('uteAppBody-content');
+            oRm.writeClasses();
+            oRm.write('>');
+
+            if (oContent) {
                 oRm.renderControl(oContent);
-            }.bind(this));
-        };
+            }
 
-        CustomRenderer._renderBody = function (oRm, oCustomControl) {
-
+            oRm.write('</div>');
         };
 
         return CustomRenderer;

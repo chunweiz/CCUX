@@ -18,7 +18,36 @@
     }
 
     &.uteAppBodyCnt-layout-default {
+        & .uteAppBodyCnt-leftSection {
+            display: inline-block;
+            position: relative;
+            width: 284px;
+            margin-right: 16px;
+            vertical-align: top;
 
+            & .uteAppBodyCnt-summary {
+                width: 100%;
+                background-color: deepskyblue;
+                margin-bottom: 13px;
+            }
+
+            & .uteAppBodyCnt-tool {
+                width: 100%;
+                background-color: gold;
+            }
+        }
+
+        & .uteAppBodyCnt-rightSection {
+            display: inline-block;
+            position: relative;
+            width: 1060px;
+            vertical-align: top;
+
+            & .uteAppBodyCnt-general {
+                width: 100%;
+                background-color: tomato;
+            }
+        }
     }
 
     &.uteAppBodyCnt-layout-fullWidthTool {
