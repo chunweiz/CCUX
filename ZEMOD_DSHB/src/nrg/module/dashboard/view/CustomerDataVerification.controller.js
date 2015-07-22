@@ -158,27 +158,35 @@ sap.ui.define(
             }
         };
 
-        Controller.prototype._retrBuag = function (sBpNum) {      //will be called whenever a different Buag is selected
+        Controller.prototype._retrBuag = function (sBpNum, iSelectedCA) {      //will be called whenever a different Buag is selected
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
-                i;
+                i,
+                iPreSelCA;
+
+            if (iSelectedCA) {
+                iPreSelCA = iSelectedCA;
+            } else {
+                iPreSelCA = 0;
+            }
+
 
             sPath = '/Partners' + '(\'' + sBpNum + '\')/Buags/';
             oParameters = {
                 success : function (oData) {
                     if (oData) {
-                        if (oData.results[0]) {
+                        if (oData.results[iPreSelCA]) {
                             //If there's first record of Buags, load as default to display
-                            this.getView().getModel('oDtaVrfyBuags').setData(oData.results[0]);
-                            this._retrContracts(oData.results[0].ContractAccountID);
-                            this._retrBuagMailingAddr(sBpNum, oData.results[0].ContractAccountID, oData.results[0].FixedAddressID);
+                            this.getView().getModel('oDtaVrfyBuags').setData(oData.results[iPreSelCA]);
+                            this._retrContracts(oData.results[iPreSelCA].ContractAccountID);
+                            this._retrBuagMailingAddr(sBpNum, oData.results[iPreSelCA].ContractAccountID, oData.results[iPreSelCA].FixedAddressID);
                         }
                         for (i = 0; i < oData.results.length; i = i + 1) {
                             oData.results[i].iIndex = i.toString();
                         }
                         this.getView().getModel('oAllBuags').setData(oData.results);
-                        this.getView().getModel('oAllBuags').setProperty('/selectedKey', '0');
+                        this.getView().getModel('oAllBuags').setProperty('/selectedKey', iPreSelCA);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -619,8 +627,7 @@ sap.ui.define(
                 urlParameters: {},
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Update Success");
-                    this._retrContracts(this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'));
-                    this._retrBuagMailingAddr(this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'), this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'), this.getView().getModel('oDtaVrfyBuags').getProperty('/FixedAddressID'));
+                    this._retrBuag(this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'),  this.getView().getModel('oAllBuags').getProperty('/selectedKey'));
                     this._oMailEditPopup.close();
                 }.bind(this),
                 error: function (oError) {
@@ -714,6 +721,17 @@ sap.ui.define(
             oEditMail.setProperty('/updateSent', false);
             oEditMail.setProperty('/showVldBtns', false);
             oEditMail.setProperty('/updateNotSent', true);
+        };
+
+        Controller.prototype._onPoBoxEdit = function (oEvent) {
+            //this.getView().byId('idEditHouseNum').setEnabled(false);
+            //this.getView().byId('idEditStName').setEnabled(false);
+            this.getView().byId('idEditHouseNum').setValue('');
+            this.getView().byId('idEditStName').setValue('');
+        };
+
+        Controller.prototype._onRegAddrEdit = function (oEvent) {
+            this.getView().byId('idEditPoBox').setValue('');
         };
 
         Controller.prototype._onEditMailAddrClick = function (oEvent) {

@@ -588,7 +588,13 @@
             <ute:TextView visible="{oDtaAddrEdit>/updateSent}"
                 class="nrgDashboard-cusDataVerifyEditMail-rl-title"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_lTitle}"/>
+            <ute:Tag><ute:Textfield id="idEditPoBox" fieldType="Underlined"
+                change="._onPoBoxEdit"
+                label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_PoBox}"
+                editable="{oDtaAddrEdit>/updateNotSent}" width="100px"
+                value="{oDtaAddrEdit>/AddrInfo/PoBox}"/></ute:Tag>
             <ute:Tag><ute:Textfield id="idEditHouseNum" fieldType="Underlined"
+                change="._onRegAddrEdit"
                 label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_HuNum}"
                 editable="{oDtaAddrEdit>/updateNotSent}" width="100px"
                 value="{oDtaAddrEdit>/AddrInfo/HouseNo}"/></ute:Tag>
@@ -597,6 +603,7 @@
                 editable="{oDtaAddrEdit>/updateNotSent}" width="100px"
                 value="{oDtaAddrEdit>/AddrInfo/UnitNo}"/></ute:Tag>
             <ute:Tag><ute:Textfield id="idEditStName" fieldType="Underlined"
+                change="._onRegAddrEdit"
                 label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_StName}"
                 editable="{oDtaAddrEdit>/updateNotSent}" width="220px"
                 value="{oDtaAddrEdit>/AddrInfo/Street}"/></ute:Tag>
@@ -625,6 +632,10 @@
             <ute:TextView
                 class="nrgDashboard-cusDataVerifyEditMail-rl-title"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_rTitle}"/>
+            <ute:Tag><ute:Textfield fieldType="Underlined"
+                label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_PoBox}"
+                editable="false" width="100px"
+                value="{oDtaAddrEdit>/SuggAddrInfo/PoBox}"/></ute:Tag>
             <ute:Tag><ute:Textfield fieldType="Underlined"
                 label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_HuNum}"
                 editable="false" width="100px"
