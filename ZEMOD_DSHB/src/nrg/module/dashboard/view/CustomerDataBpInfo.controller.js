@@ -400,12 +400,12 @@ sap.ui.define(
                     this._retrBpMarkPrefSet(bpNumber);
                 }.bind(this),
                 error: function (oError) {
-//                    sap.ui.commons.MessageBox.alert("Market Preference Update Failed");
+                    sap.ui.commons.MessageBox.alert("Market Preference Update Failed");
                 }.bind(this)
             };
             for (i = 0; i < this.getView().getModel('oDataBpMarkPreferSet').oData.results.length; i = i + 1) {
                 if (JSON.stringify(this.getView().getModel('oDataBpMarkPreferSet').oData.results[i]) === JSON.stringify(this.oDataBpMarkPreferSetBak.results[i])) {
-                    sap.ui.commons.MessageBox.alert("There is no change for Market Perference index: " + i.toString());
+//                    sap.ui.commons.MessageBox.alert("There is no change for Market Perference index: " + i.toString());
                 } else {
                     attibuteSet = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/AttributeSet');
                     attribute = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/Attribute');
