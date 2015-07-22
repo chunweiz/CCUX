@@ -1,3 +1,18 @@
 .uteAppFtr {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
 
+    & > .uteAppFtr-wrap {
+        margin: 0 auto;
+        width: @uteApp-minWidth;
+        padding: 0 0 0 40px;
+    }
+
+    & > .uteAppFtr-inner {
+        position: relative;
+        background-color: @uteColor-white;
+        height: 100%;
+    }
 }

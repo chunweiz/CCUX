@@ -13,14 +13,15 @@ sap.ui.define(
                 library: 'ute.ui.app',
 
                 aggregations: {
-                    content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' }
+                    banner: { type: 'sap.ui.core.Control', multiple: true, singularName: 'banner' },
+                    navLeft: { type: 'sap.ui.core.Control', multiple: true, singularName: 'navLeft' },
+                    navRight: { type: 'sap.ui.core.Control', multiple: true, singularName: 'navRight' },
+                    content: { type: 'ute.ui.app.BodyContent', multiple: false, singularName: 'content' }
                 },
 
                 defaultAggregation: 'content'
             }
         });
-
-
 
         return CustomControl;
     },

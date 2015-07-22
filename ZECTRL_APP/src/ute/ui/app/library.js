@@ -14,6 +14,7 @@ sap.ui.define(
             ],
 
             types: [
+                'ute.ui.app.BodyContentLayout',
                 'ute.ui.app.SummaryPageDesign',
                 'ute.ui.app.ToolPageDesign',
                 'ute.ui.app.GeneralPageDesign'
@@ -27,10 +28,12 @@ sap.ui.define(
                 'ute.ui.app.HeaderSubmenu',
                 'ute.ui.app.Footer',
                 'ute.ui.app.Body',
+                'ute.ui.app.BodyContent',
                 'ute.ui.app.SummaryPage',
                 'ute.ui.app.ToolPage',
                 'ute.ui.app.GeneralPage',
-                'ute.ui.app.Text'
+                'ute.ui.app.Text',
+                'ute.ui.app.EventArea'
             ],
 
             elements: [],
@@ -38,15 +41,20 @@ sap.ui.define(
             interfaces: []
         });
 
-        ute.ui.SummaryPageDesign = {
+        ute.ui.app.BodyContentLayout = {
+            Default: 'Default',
+            FullWidthTool: 'FullWidthTool'
+        };
+
+        ute.ui.app.SummaryPageDesign = {
             Default: 'Default'
         };
 
-        ute.ui.ToolPageDesign = {
+        ute.ui.app.ToolPageDesign = {
             Default: 'Default'
         };
 
-        ute.ui.GeneralPageDesign = {
+        ute.ui.app.GeneralPageDesign = {
             Default: 'Default'
         };
 

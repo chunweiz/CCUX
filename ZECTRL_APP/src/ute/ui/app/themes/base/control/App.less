@@ -11,12 +11,13 @@
         width: 100%;
         min-width: @uteApp-minWidth;
         height: 76px;
+        overflow-y: hidden;
     }
 
     & .uteApp-body {
         display: block;
         position: relative;
-        height: ~"calc(100% - 96px)"; /* offset header 76px, footer, 20px */
+        height: ~"calc(100% - 101px)"; /* offset header 76px, footer, 25px */
         width: 100%;
         overflow-x: hidden;
         overflow-y: auto;
@@ -27,6 +28,6 @@
         position: relative;
         width: 100%;
         min-width: @uteApp-minWidth;
-        height: 20px;
+        height: 25px;
     }
 }

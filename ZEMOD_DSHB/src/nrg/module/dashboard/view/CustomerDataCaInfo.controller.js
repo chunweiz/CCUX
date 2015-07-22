@@ -18,35 +18,16 @@ sap.ui.define(
         CustomController.prototype.onInit = function () {
             var oModel;
 
-//            oModel = new JSONModel({
-//                selectedKey: 'key001',
-//                dropdown: [
-//                    { key: 'key001', value: 'Shop Address Number One' },
-//                    { key: 'key002', value: 'Shop Address Number Two' },
-//                    { key: 'key003', value: 'Shop Address Number Three' },
-//                    { key: 'key004', value: 'Shop Address Number Four' },
-//                    { key: 'key005', value: 'Shop Address Number Five' }
-//                ]
-//            });
-//
-//            this.getView().setModel(oModel, 'data');
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
             //Model to track page edit/save status
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCaInfoConfig');
-
-            this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
             //Model to hold BuagAddrDetail
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBuagAddrDetails');
 
             //Model to hold CA accounts and mailing address short form
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataCAs');
-
-            //Model to hold mailing address
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oMailingAddress');
-
-            //Model to hold temporary address
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oTempAddress');
         };
 
         CustomController.prototype.onBeforeRendering = function () {
@@ -71,6 +52,7 @@ sap.ui.define(
 
             configModel.setProperty('/tempAddrAddnewVisible', true);
             configModel.setProperty('/tempAddrSaveVisible', false);
+            configModel.setProperty('/tempAddrEditable', false);
         };
 
         CustomController.prototype.onMailAddrUpdate = function () {
@@ -83,39 +65,65 @@ sap.ui.define(
 
         CustomController.prototype.onMailAddrAddnew = function () {
             var configModel = this.getView().getModel('oCaInfoConfig'),
-                mailingAddrModel = this.getView().getModel('oMailingAddress');
+                addrModel = this.getView().getModel('oDataBuagAddrDetails');
             configModel.setProperty('/mailAddrUpdateVisible', false);
             configModel.setProperty('/mailAddrAddnewVisible', false);
             configModel.setProperty('/mailAddrSaveVisible', true);
             configModel.setProperty('/mailAddrEditable', true);
 
-            mailingAddrModel.setProperty('/Street', '');
-            mailingAddrModel.setProperty('/HouseNo', '');
-            mailingAddrModel.setProperty('/UnitNo', '');
-            mailingAddrModel.setProperty('/City', '');
-            mailingAddrModel.setProperty('/State', '');
-            mailingAddrModel.setProperty('/ZipCode', '');
-            mailingAddrModel.setProperty('/ValidFrom', '');
-            mailingAddrModel.setProperty('/ValidTo', '');
+            addrModel.setProperty('/results/0/MailingAddress/Street', '');
+            addrModel.setProperty('/HouseNo', '');
+            addrModel.setProperty('/UnitNo', '');
+            addrModel.setProperty('/City', '');
+            addrModel.setProperty('/State', '');
+            addrModel.setProperty('/ZipCode', '');
+            addrModel.setProperty('/ValidFrom', '');
+            addrModel.setProperty('/ValidTo', '');
         };
 
         CustomController.prototype.onMailAddrCancel = function () {
             var configModel = this.getView().getModel('oCaInfoConfig'),
-                mailingAddrModel = this.getView().getModel('oMailingAddress');
+                addrModel = this.getView().getModel('oDataBuagAddrDetails');
             configModel.setProperty('/mailAddrUpdateVisible', true);
             configModel.setProperty('/mailAddrAddnewVisible', true);
             configModel.setProperty('/mailAddrSaveVisible', false);
             configModel.setProperty('/mailAddrEditable', false);
 
-            mailingAddrModel.setData(jQuery.extend(true, {}, this.MailingAddressBak));
+            addrModel.setData(jQuery.extend(true, {}, this.oDataBuagAddrDetailsBak));
         };
 
         CustomController.prototype.onMailAddrSave = function () {
-            var configModel = this.getView().getModel('oCaInfoConfig');
+            var configModel = this.getView().getModel('oCaInfoConfig'),
+                oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters;
+
             configModel.setProperty('/mailAddrUpdateVisible', true);
             configModel.setProperty('/mailAddrAddnewVisible', true);
             configModel.setProperty('/mailAddrSaveVisible', false);
             configModel.setProperty('/mailAddrEditable', false);
+
+            if (JSON.stringify(this.getView().getModel('oDataBuagAddrDetails').oData.results[0].MailingAddress) === JSON.stringify(this.oDataBuagAddrDetailsBak.results[0].MailingAddress)) {
+                sap.ui.commons.MessageBox.alert("There is no change for Mailing Address.");
+                return;
+            }
+
+            sPath = '/BuagAddrDetails(PartnerID=\'' + this._bpNum + '\',ContractAccountID=\'' + this._caNum + '\',FixedAddressID=\'' + this._fixedAddrID + '\')/';
+            oParameters = {
+                merge: false,
+                success : function (oData) {
+                    sap.ui.commons.MessageBox.alert("Mailing Address Update Success");
+                    this.oDataBuagAddrDetailsBak = jQuery.extend(true, {}, this.getView().getModel('oDataBuagAddrDetails').getData());
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Mailing Address Update Failed");
+                    this.getView().getModel('oDataBuagAddrDetails').setData(jQuery.extend(true, {}, this.oDataBuagAddrDetailsBak));
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.update(sPath, this.getView().getModel('oDataBuagAddrDetails').oData.results[0], oParameters);
+            }
         };
 
         CustomController.prototype.onTempAddrUpdate = function () {
@@ -127,19 +135,45 @@ sap.ui.define(
 
         CustomController.prototype.onTempAddrCancel = function () {
             var configModel = this.getView().getModel('oCaInfoConfig'),
-                tempAddrModel = this.getView().getModel('oTempAddress');
+                addrModel = this.getView().getModel('oDataBuagAddrDetails');
             configModel.setProperty('/tempAddrAddnewVisible', true);
             configModel.setProperty('/tempAddrSaveVisible', false);
             configModel.setProperty('/tempAddrEditable', false);
 
-            tempAddrModel.setData(jQuery.extend(true, {}, this.TempAddrBak));
+            addrModel.setData(jQuery.extend(true, {}, this.oDataBuagAddrDetailsBak));
         };
 
         CustomController.prototype.onTempAddrSave = function () {
-            var configModel = this.getView().getModel('oCaInfoConfig');
+            var configModel = this.getView().getModel('oCaInfoConfig'),
+                oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters;
+
             configModel.setProperty('/tempAddrAddnewVisible', true);
             configModel.setProperty('/tempAddrSaveVisible', false);
             configModel.setProperty('/tempAddrEditable', false);
+
+            if (JSON.stringify(this.getView().getModel('oDataBuagAddrDetails').oData.results[0].TemporaryAddress) === JSON.stringify(this.oDataBuagAddrDetailsBak.results[0].TemporaryAddress)) {
+                sap.ui.commons.MessageBox.alert("There is no change for Temporary Address.");
+                return;
+            }
+
+            sPath = '/BuagAddrDetails(PartnerID=\'' + this._bpNum + '\',ContractAccountID=\'' + this._caNum + '\',FixedAddressID=\'' + this._fixedAddrID + '\')/';
+            oParameters = {
+                merge: false,
+                success : function (oData) {
+                    sap.ui.commons.MessageBox.alert("Temporary Address Update Success");
+                    this.oDataBuagAddrDetailsBak = jQuery.extend(true, {}, this.getView().getModel('oDataBuagAddrDetails').getData());
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Temporary Address Update Failed");
+                    this.getView().getModel('oDataBuagAddrDetails').setData(jQuery.extend(true, {}, this.oDataBuagAddrDetailsBak));
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.update(sPath, this.getView().getModel('oDataBuagAddrDetails').oData.results[0], oParameters);
+            }
         };
 
         CustomController.prototype.onBackToDashboard = function () {
@@ -180,12 +214,13 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     if (oData) {
-                        if (oData.results) {
+                        if (oData.results.length !== 0) {
+                            if(!this._fixedAddrID) {
+                                this._fixedAddrID = oData.results[0].FixedAddressID;
+                            }
                             this.getView().getModel('oDataBuagAddrDetails').setData(oData);
                             this.oDataBuagAddrDetailsBak = jQuery.extend(true, {}, oData);
                             this._buildUpCas(this.oDataBuagAddrDetailsBak, caNum);
-                            this._buildUpMailingAddress(this.oDataBuagAddrDetailsBak, caNum);
-                            this._buildUpTempAddress(this.oDataBuagAddrDetailsBak, caNum);
                         }
                     }
                 }.bind(this),
@@ -212,26 +247,6 @@ sap.ui.define(
 
             oModel.setProperty('/selectedKey', caNum);
             oModel.setProperty('/dropdown', caArr);
-        };
-
-        CustomController.prototype._buildUpMailingAddress = function (oData, caNum) {
-            for(var i=0; i<oData.results.length; i = i + 1 ) {
-                if(oData.results[i].ContractAccountID === caNum) {
-                    this.getView().getModel('oMailingAddress').setData(oData.results[i].MailingAddress);
-                }
-            }
-
-            this.MailingAddressBak = jQuery.extend(true, {}, this.getView().getModel('oMailingAddress').getData());
-        };
-
-        CustomController.prototype._buildUpTempAddress = function (oData, caNum) {
-            for(var i=0; i<oData.results.length; i = i + 1 ) {
-                if(oData.results[i].ContractAccountID === caNum) {
-                    this.getView().getModel('oTempAddress').setData(oData.results[i].TemporaryAddress);
-                }
-            }
-
-            this.TempAddrBak = jQuery.extend(true, {}, this.getView().getModel('oTempAddress').getData());
         };
 
         Controller.prototype._formatDate = function (dob) {
