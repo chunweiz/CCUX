@@ -3,10 +3,11 @@
 
 sap.ui.define(
     [
-        'nrg/base/view/BaseController'
+        'nrg/base/view/BaseController',
+        'nrg/module/quickpay/view/QuickPayController'
     ],
 
-    function (CoreController) {
+    function (CoreController, QuickPayController) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.quickpay.view.General');
@@ -25,19 +26,8 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onQuickPay = function (oEvent) {
-            var oQuickPayView = sap.ui.view({
-                type: sap.ui.core.mvc.ViewType.XML,
-                viewName: "nrg.module.quickpay.view.MainQuick"
-            });
-            if (!this._oPaymentDialog) {
-                this._oPaymentDialog = new ute.ui.main.Popup.create({
-                    close: this._handleDialogClosed,
-                    content: oQuickPayView
-                });
-            }
-            this._oPaymentDialog.addStyleClass("nrgQPPay-dialogPale");
-            this.getView().addDependent(this._oPaymentDialog);
-            this._oPaymentDialog.open();
+            var QuickController = new QuickPayController();
+            QuickController.openQuickPay();
         };
 
         return Controller;
