@@ -14,11 +14,12 @@ sap.ui.define(
             }
         });
 
-        QuickPayControl.prototype.openQuickPay = function () {
+        QuickPayControl.prototype.openQuickPay = function (that) {
             var oQuickPayView = sap.ui.view({
                 type: sap.ui.core.mvc.ViewType.XML,
                 viewName: "nrg.module.quickpay.view.MainQuick"
             });
+            oQuickPayView.setParent(that.getOwnerComponent());
             if (!this._oPaymentDialog) {
                 this._oPaymentDialog = new ute.ui.main.Popup.create({
                     close: this._handleDialogClosed,
