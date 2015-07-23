@@ -72,13 +72,13 @@ sap.ui.define(
             configModel.setProperty('/mailAddrEditable', true);
 
             addrModel.setProperty('/results/0/MailingAddress/Street', '');
-            addrModel.setProperty('/HouseNo', '');
-            addrModel.setProperty('/UnitNo', '');
-            addrModel.setProperty('/City', '');
-            addrModel.setProperty('/State', '');
-            addrModel.setProperty('/ZipCode', '');
-            addrModel.setProperty('/ValidFrom', '');
-            addrModel.setProperty('/ValidTo', '');
+            addrModel.setProperty('/results/0/MailingAddress/HouseNo', '');
+            addrModel.setProperty('/results/0/MailingAddress/UnitNo', '');
+            addrModel.setProperty('/results/0/MailingAddress/City', '');
+            addrModel.setProperty('/results/0/MailingAddress/State', '');
+            addrModel.setProperty('/results/0/MailingAddress/ZipCode', '');
+            addrModel.setProperty('/results/0/MailingAddress/ValidFrom', '');
+            addrModel.setProperty('/results/0/MailingAddress/ValidTo', '');
         };
 
         CustomController.prototype.onMailAddrCancel = function () {
