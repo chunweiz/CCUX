@@ -42,6 +42,7 @@ sap.ui.define(
                 this.$().removeClass('uteAppHMItem-disabled');
             } else {
                 this.$().addClass('uteAppHMItem-disabled');
+                this.setSelected(false);
             }
 
             this.setProperty('enabled', bEnabled, true);

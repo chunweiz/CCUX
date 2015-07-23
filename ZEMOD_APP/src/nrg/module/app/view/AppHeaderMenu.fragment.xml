@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ua="ute.ui.app"
+    xmlns:core="sap.ui.core">
+
+    <ua:HeaderSubmenu>
+        <ua:Text text="{comp-i18n-app>nrgAppHdrMenuBilling}" />
+        <ua:Text text="{comp-i18n-app>nrgAppHdrMenuBupa}" />
+        <ua:Text text="{comp-i18n-app>nrgAppHdrMenuRhs}" />
+        <ua:Text text="{comp-i18n-app>nrgAppHdrMenuContactLogs}" />
+        <ua:Text text="{comp-i18n-app>nrgAppHdrMenuCampaigns}" />
+        <ua:Text text="{comp-i18n-app>nrgAppHdrMenuHighBill}" />
+        <ua:Text text="{comp-i18n-app>nrgAppHdrMenuHistory}" />
+        <ua:Text text="{comp-i18n-app>nrgAppHdrMenuSvcOrders}" />
+        <ua:Text text="{comp-i18n-app>nrgAppHdrMenuBizEnrollment}" />
+        <ua:Text text="{comp-i18n-app>nrgAppHdrMenuResEnrollment}" />
+    </ua:HeaderSubmenu>
+
+</core:FragmentDefinition>

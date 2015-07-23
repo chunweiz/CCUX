@@ -19,7 +19,7 @@ sap.ui.define(
             oComponent = this.getOwnerComponent();
             oWebUiManager = oComponent.getCcuxWebUiManager();
 
-            oComponent.setCcuxBusy(true);
+            oComponent.getApp().setOccupied(true);
             oWebUiManager.notifyWebUi('bpConfirmed', {
                 bpNum: '0002955761'
             }, this._handleBpConfirmed, this);
@@ -29,7 +29,7 @@ sap.ui.define(
             var oComponent, oRouter, oRouteInfo;
 
             oComponent = this.getOwnerComponent();
-            oComponent.setCcuxBusy(false);
+            oComponent.getApp().setOccupied(false);
 
             oRouteInfo = oEvent.getParameters();
             if (oRouteInfo.confirmed && oRouteInfo.confirmed === 'X') {
@@ -46,7 +46,7 @@ sap.ui.define(
             oComponent = this.getOwnerComponent();
             oWebUiManager = oComponent.getCcuxWebUiManager();
 
-            oComponent.setCcuxBusy(true);
+            oComponent.getApp().setOccupied(true);
             oWebUiManager.notifyWebUi('logout', {}, this._handleLogout, this);
         };
 
@@ -54,7 +54,7 @@ sap.ui.define(
             var oComponent, oResponse;
 
             oComponent = this.getOwnerComponent();
-            oComponent.setCcuxBusy(false);
+            oComponent.getApp().setOccupied(false);
 
             oResponse = oEvent.getParameters();
             if (oResponse.cancel && oResponse.cancel === 'X') {

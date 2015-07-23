@@ -13,32 +13,32 @@
             <ua:Header id="appHdr">
                 <ua:banner>
                     <span class="nrgAppBanner-logo"></span>
-                    <ua:Text class="nrgAppBanner-title" text="Reliant Interaction Center" />
+                    <ua:Text class="nrgAppBanner-title" text="{comp-i18n-app>nrgAppBannerTitle}" />
                 </ua:banner>
                 <ua:menu>
                     <ua:HeaderMenu id="appHdrMenu">
                         <ua:HeaderMenuItem id="appHMItemMenu" class="nrgAppHMItem">
-                            <ua:Text text="Menu" />
+                            <ua:Text text="{comp-i18n-app>nrgAppHMItemMenu}" />
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem id="appHMItemIndex" class="nrgAppHMItem">
-                            <ua:Text text="Index" />
+                            <ua:Text text="{comp-i18n-app>nrgAppHMItemIndex}" />
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem id="appHMItemTransaction" class="nrgAppHMItem">
-                            <ua:Text text="Transaction" />
+                            <ua:Text text="{comp-i18n-app>nrgAppHMItemTransactions}" />
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem id="appHMItemEsidTool" class="nrgAppHMItem">
-                            <ua:Text text="ESID Tool" />
+                            <ua:Text text="{comp-i18n-app>nrgAppHMItemEsidTool}" />
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem id="appHMItemPalPlus" class="nrgAppHMItem">
-                            <ua:Text text="PALPlus" />
+                            <ua:Text text="{comp-i18n-app>nrgAppHMItemPalPlus}" />
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-divider" />
                         <ua:HeaderMenuItem id="appHMItemMessages" class="nrgAppHMItem">
-                            <ua:Text text="Messages" />
+                            <ua:Text text="{comp-i18n-app>nrgAppHMItemMessages}" />
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-spacer" />
                         <ua:HeaderMenuItem id="appHMItemRefresh" class="nrgAppHMItem">
@@ -46,7 +46,7 @@
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-spacer" />
                         <ua:HeaderMenuItem id="appHMItemClearAcc" class="nrgAppHMItem nrgAppHMItem-attention">
-                            <ua:Text text="Clear Account" />
+                            <ua:Text text="{comp-i18n-app>nrgAppHMItemClearAcc}" />
                         </ua:HeaderMenuItem>
                     </ua:HeaderMenu>
                 </ua:menu>
@@ -55,15 +55,15 @@
         <ua:body>
             <ua:Body id="appBody">
                 <ua:banner>
-                    <ua:Text id="appBodyTitle" text="CUSTOMER DATA" class="nrgAppBodyBanner-title" />
+                    <ua:Text id="appBodyTitle" class="nrgAppBodyBanner-title" />
                 </ua:banner>
                 <ua:navLeft>
-                    <ua:EventArea id="appBodyNavLeft">
+                    <ua:EventArea id="appBodyNavLeft" class="nrgU-displayNone">
                         <div class="nrgAppBody-navLeft"></div>
                     </ua:EventArea>
                 </ua:navLeft>
                 <ua:navRight>
-                    <ua:EventArea id="appBodyNavRight">
+                    <ua:EventArea id="appBodyNavRight" class="nrgU-displayNone">
                         <div class="nrgAppBody-navRight"></div>
                     </ua:EventArea>
                 </ua:navRight>
