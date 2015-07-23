@@ -32,9 +32,7 @@
 )
 
 @IF EXIST %ECLIPSE_WORKSPACE_PATH%\ZEMOD_APP (
-    @CALL grunt --deploy=module --moduleName=nrg.module.app.main --moduleFolder=ZEMOD_APP --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\ZEMOD_APP
-    @CALL grunt --deploy=module --moduleName=nrg.module.app.header --moduleFolder=ZEMOD_APP --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\ZEMOD_APP
-    @CALL grunt --deploy=module --moduleName=nrg.module.app.footer --moduleFolder=ZEMOD_APP --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\ZEMOD_APP
+    @CALL grunt --deploy=module --moduleName=nrg.module.app --moduleFolder=ZEMOD_APP --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\ZEMOD_APP
 ) ELSE (
     @ECHO Path %ECLIPSE_WORKSPACE_PATH%\ZEMOD_APP does not exists.
 )

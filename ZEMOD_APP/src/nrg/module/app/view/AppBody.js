@@ -9,7 +9,7 @@ sap.ui.define(
     function (EventProvider) {
         'use strict';
 
-        var AppFooter = EventProvider.extend('nrg.module.app.ccux.view.AppFooter', {
+        var AppBody = EventProvider.extend('nrg.module.app.view.AppBody', {
             constructor: function (oController) {
                 EventProvider.apply(this);
 
@@ -23,10 +23,10 @@ sap.ui.define(
             }
         });
 
-        AppFooter.prototype.init = function () {
+        AppBody.prototype.init = function () {
 
         };
 
-        return AppFooter;
+        return AppBody;
     }
 );

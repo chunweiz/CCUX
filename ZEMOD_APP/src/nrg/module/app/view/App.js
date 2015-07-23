@@ -4,16 +4,16 @@
 sap.ui.define(
     [
         'sap/ui/base/EventProvider',
-        'nrg/module/app/ccux/view/AppHeader',
-        'nrg/module/app/ccux/view/AppBody',
-        'nrg/module/app/ccux/view/AppFooter',
+        'nrg/module/app/view/AppHeader',
+        'nrg/module/app/view/AppBody',
+        'nrg/module/app/view/AppFooter',
         'sap/m/BusyDialog'
     ],
 
     function (EventProvider, AppHeader, AppBody, AppFooter, BusyDialog) {
         'use strict';
 
-        var App = EventProvider.extend('nrg.module.app.ccux.view.App', {
+        var App = EventProvider.extend('nrg.module.app.view.App', {
             constructor: function (oController) {
                 EventProvider.apply(this);
 
@@ -21,6 +21,8 @@ sap.ui.define(
                 this._bEdit = false;
 
                 this._oAppHeader = new AppHeader(oController, this);
+                this._oAppHeader.init();
+
                 this._oAppBody = new AppBody(oController, this);
                 this._oAppFooter = new AppFooter(oController, this);
             },

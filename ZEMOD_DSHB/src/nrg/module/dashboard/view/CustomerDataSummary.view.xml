@@ -191,73 +191,75 @@
         </ute:content>
     </ute:Tag>
 
-    <ute:Tag id="idAssignedAccs" class="nrgDashboard-cusDataSumAccFrgmt">
-        <ute:Table tableType="InvoiceTable" width="100%"
-                rows="{oSmryAssignedAccounts>/}">
-            <ute:columns>
-                <ute:TableColumn width="10%">
-                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccContract}"/>
-                </ute:TableColumn>
-                <ute:TableColumn width="10%">
-                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccSlRpID}"/>
-                </ute:TableColumn>
-                <ute:TableColumn width="12%">
-                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccLName}"/>
-                </ute:TableColumn>
-                <ute:TableColumn width="12%">
-                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccFNmae}"/>
-                </ute:TableColumn>
-                <ute:TableColumn width="10%">
-                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccPager}"/>
-                </ute:TableColumn>
-                <ute:TableColumn width="10%">
-                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccCell}"/>
-                </ute:TableColumn>
-                <ute:TableColumn width="10%">
-                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccFax}"/>
-                </ute:TableColumn>
-                <ute:TableColumn width="10%">
-                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccPhn}"/>
-                </ute:TableColumn>
-                <ute:TableColumn width="16%">
-                    <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccEml}"/>
-                </ute:TableColumn>
-            </ute:columns>
-            <ute:rows>
-                <ute:TableRow>
-                    <c:Label text="{oSmryAssignedAccounts>ContractAccountID}"/>
-                    <c:Label text="{oSmryAssignedAccounts>SalesRepID}"/>
-                    <c:Label text="{oSmryAssignedAccounts>SalesRepLastName}"/>
-                    <c:Label text="{oSmryAssignedAccounts>SalesRepFirstName}"/>
-                    <c:Label text="{oSmryAssignedAccounts>SalesRepPager}"/>
-                    <c:Label text="{oSmryAssignedAccounts>SalesRepCellPh}"/>
-                    <c:Label text="{oSmryAssignedAccounts>SalesRepFaxPf}"/>
-                    <c:Label text="{oSmryAssignedAccounts>SalesRepPh}"/>
-                    <c:Label text="{oSmryAssignedAccounts>SalesRepEMail}"/>
-                </ute:TableRow>
-            </ute:rows>
-        </ute:Table>
-    </ute:Tag>
+    <div class="nrgU-displayNone">
+        <ute:Tag id="idAssignedAccs" class="nrgDashboard-cusDataSumAccFrgmt">
+            <ute:Table tableType="InvoiceTable" width="100%"
+                    rows="{oSmryAssignedAccounts>/}">
+                <ute:columns>
+                    <ute:TableColumn width="10%">
+                        <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccContract}"/>
+                    </ute:TableColumn>
+                    <ute:TableColumn width="10%">
+                        <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccSlRpID}"/>
+                    </ute:TableColumn>
+                    <ute:TableColumn width="12%">
+                        <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccLName}"/>
+                    </ute:TableColumn>
+                    <ute:TableColumn width="12%">
+                        <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccFNmae}"/>
+                    </ute:TableColumn>
+                    <ute:TableColumn width="10%">
+                        <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccPager}"/>
+                    </ute:TableColumn>
+                    <ute:TableColumn width="10%">
+                        <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccCell}"/>
+                    </ute:TableColumn>
+                    <ute:TableColumn width="10%">
+                        <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccFax}"/>
+                    </ute:TableColumn>
+                    <ute:TableColumn width="10%">
+                        <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccPhn}"/>
+                    </ute:TableColumn>
+                    <ute:TableColumn width="16%">
+                        <c:Label text="{comp-i18n-dashboard>nrgDashboardCusDatSum_AssAccEml}"/>
+                    </ute:TableColumn>
+                </ute:columns>
+                <ute:rows>
+                    <ute:TableRow>
+                        <c:Label text="{oSmryAssignedAccounts>ContractAccountID}"/>
+                        <c:Label text="{oSmryAssignedAccounts>SalesRepID}"/>
+                        <c:Label text="{oSmryAssignedAccounts>SalesRepLastName}"/>
+                        <c:Label text="{oSmryAssignedAccounts>SalesRepFirstName}"/>
+                        <c:Label text="{oSmryAssignedAccounts>SalesRepPager}"/>
+                        <c:Label text="{oSmryAssignedAccounts>SalesRepCellPh}"/>
+                        <c:Label text="{oSmryAssignedAccounts>SalesRepFaxPf}"/>
+                        <c:Label text="{oSmryAssignedAccounts>SalesRepPh}"/>
+                        <c:Label text="{oSmryAssignedAccounts>SalesRepEMail}"/>
+                    </ute:TableRow>
+                </ute:rows>
+            </ute:Table>
+        </ute:Tag>
 
-    <ute:Tag id="idThreeSegs" class="nrgDashboard-cusDataSumSegFrgmt">
-        <c:TextView
-            text="{comp-i18n-dashboard>nrgDashboardCusDatSum_CusSeg}"
-            class="nrgDashboard-cusDataSumSegFrgmt-Title"/>
-                <l:MatrixLayout
-                    width="50%"
-                    columns="1"
-                    widths="100%"
-                    rows="{oSmryBpAllSegInf>/}">
-                <l:rows>
-                    <l:MatrixLayoutRow>
-                        <l:MatrixLayoutCell>
-                            <c:TextView
-                                text="{oSmryBpAllSegInf>CustomerSeg}"
-                                class="nrgDashboard-cusDataSumSegFrgmt-SegItm"/>
-                        </l:MatrixLayoutCell>
-                    </l:MatrixLayoutRow>
-                </l:rows>
-                </l:MatrixLayout>
-    </ute:Tag>
+        <ute:Tag id="idThreeSegs" class="nrgDashboard-cusDataSumSegFrgmt">
+            <c:TextView
+                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_CusSeg}"
+                class="nrgDashboard-cusDataSumSegFrgmt-Title"/>
+                    <l:MatrixLayout
+                        width="50%"
+                        columns="1"
+                        widths="100%"
+                        rows="{oSmryBpAllSegInf>/}">
+                    <l:rows>
+                        <l:MatrixLayoutRow>
+                            <l:MatrixLayoutCell>
+                                <c:TextView
+                                    text="{oSmryBpAllSegInf>CustomerSeg}"
+                                    class="nrgDashboard-cusDataSumSegFrgmt-SegItm"/>
+                            </l:MatrixLayoutCell>
+                        </l:MatrixLayoutRow>
+                    </l:rows>
+                    </l:MatrixLayout>
+        </ute:Tag>
+    </div>
 
 </mvc:View>
