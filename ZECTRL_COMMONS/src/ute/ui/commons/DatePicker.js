@@ -11,9 +11,9 @@ sap.ui.define(
 	function (jQuery, TextField, Date1, Calendar) {
 	    'use strict';
 
-        var DatePicker = TextField.extend('sc.control.lib.ui.DatePicker', {
+        var DatePicker = TextField.extend('ute.ui.commons.DatePicker', {
             metadata: {
-                library: 'sc.control.lib.ui',
+                library: 'ute.ui.commons',
                 properties: {
                     defaultDate: {
                         type: 'string',
