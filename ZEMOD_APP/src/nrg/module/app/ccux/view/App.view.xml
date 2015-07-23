@@ -1,0 +1,84 @@
+<mvc:View
+    controllerName="nrg.module.app.ccux.view.App"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ua="ute.ui.app"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <ua:App id="app">
+        <ua:header>
+            <ua:Header id="appHdr">
+                <ua:banner>
+                    <ua:Text text="Reliant Interaction Center" />
+                </ua:banner>
+                <ua:menu>
+                    <ua:HeaderMenu id="appHdrMenu">
+                        <ua:HeaderMenuItem id="appHMItemMenu">
+
+                        </ua:HeaderMenuItem>
+                        <ua:HeaderMenuItem id="appHMItemIndex">
+
+                        </ua:HeaderMenuItem>
+                        <ua:HeaderMenuItem id="appHMItemTransaction">
+
+                        </ua:HeaderMenuItem>
+                        <ua:HeaderMenuItem id="appHMItemEsidTool">
+
+                        </ua:HeaderMenuItem>
+                        <ua:HeaderMenuItem id="appHMItemPalPlus">
+
+                        </ua:HeaderMenuItem>
+                        <ua:HeaderMenuItem id="appHMItemMessages">
+
+                        </ua:HeaderMenuItem>
+                        <ua:HeaderMenuItem id="appHMItemRefresh">
+
+                        </ua:HeaderMenuItem>
+                        <ua:HeaderMenuItem id="appHMItemClearAcc">
+
+                        </ua:HeaderMenuItem>
+                    </ua:HeaderMenu>
+                </ua:menu>
+            </ua:Header>
+        </ua:header>
+        <ua:body>
+            <ua:Body id="appBody">
+                <ua:banner>
+                    <ua:Text id="appBodyTitle" text="CUSTOMER DATA" class="nrgAppBodyBanner-title" />
+                </ua:banner>
+                <ua:navLeft>
+                    <ua:EventArea id="appBodyNavLeft">
+                        <div class="nrgAppBody-navLeft"></div>
+                    </ua:EventArea>
+                </ua:navLeft>
+                <ua:navRight>
+                    <ua:EventArea id="appBodyNavRight">
+                        <div class="nrgAppBody-navRight"></div>
+                    </ua:EventArea>
+                </ua:navRight>
+                <ua:content>
+                    <ua:BodyContent id="appBodyContent">
+                        <ua:summary>
+                            <ua:Tag id="idAppSummary"></ua:Tag>
+                        </ua:summary>
+                        <ua:tool>
+                            <ua:Tag id="idAppTools"></ua:Tag>
+                        </ua:tool>
+                        <ua:general>
+                            <ua:Tag id="idAppGeneral"></ua:Tag>
+                        </ua:general>
+                    </ua:BodyContent>
+                </ua:content>
+            </ua:Body>
+        </ua:body>
+        <ua:footer>
+            <ua:Footer id="appFtr">
+
+            </ua:Footer>
+        </ua:footer>
+    </ua:App>
+
+</mvc:View>

@@ -17,7 +17,8 @@ sap.ui.define(
                 'ute.ui.app.BodyContentLayout',
                 'ute.ui.app.SummaryPageDesign',
                 'ute.ui.app.ToolPageDesign',
-                'ute.ui.app.GeneralPageDesign'
+                'ute.ui.app.GeneralPageDesign',
+                'ute.ui.app.TagType'
             ],
 
             controls: [
@@ -33,7 +34,8 @@ sap.ui.define(
                 'ute.ui.app.ToolPage',
                 'ute.ui.app.GeneralPage',
                 'ute.ui.app.Text',
-                'ute.ui.app.EventArea'
+                'ute.ui.app.EventArea',
+                'ute.ui.app.Tag'
             ],
 
             elements: [],
@@ -56,6 +58,11 @@ sap.ui.define(
 
         ute.ui.app.GeneralPageDesign = {
             Default: 'Default'
+        };
+
+        ute.ui.app.TagType = {
+            Block: 'Block',
+            Inline: 'Inline'
         };
 
         return ute.ui.app;
