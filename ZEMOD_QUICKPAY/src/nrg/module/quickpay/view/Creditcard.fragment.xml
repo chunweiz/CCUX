@@ -5,12 +5,48 @@
           xmlns:u="ute.ui.commons"
           xmlns:um="ute.ui.main">
     <u:Tag class="nrgQPCC-root">
-                <u:Textfield
-                    placeholder="Amount"
-                    change=""
-                    fieldType="Regular"
-                    label="Amount">
-                </u:Textfield>
-
+        <u:Tag class="nrgQPCC-row nrgQPPay-top">
+            <u:Textfield placeholder=""
+                         change=""
+                         fieldType="Regular"
+                         id="idnrgQPCC-Amt"
+                         class="nrgQPCC-input"
+                         width="12rem">
+                    </u:Textfield>
+            <c:Label text="Amount"
+                     class="nrgQPCC-lbl"
+                     labelFor="idnrgQPCC-Amt"  />
+        </u:Tag>
+        <u:Tag class="nrgQPCC-row nrgQPPay-top">
+            <um:Dropdown id="idnrgQPCC-DDL"
+                         select=".onCreditCardSelected"
+                         selectedKey="1"
+                         placeholder="Select"
+                         class="nrgQPCC-DDL">
+                <um:DropdownItem key="1" class="nrgCamChgRr-DdLItem">
+                    <u:Tag>
+<!--                        <core:Icon src="sap-icon://nrg-icon/cc-visa">-->
+                        <u:Tag text="6068" />
+                    </u:Tag>
+                </um:DropdownItem>
+            </um:Dropdown>
+            <c:Label text="ADD"
+                     class="nrgQPCC-lbl"
+                     labelFor="idnrgQPCC-Amt"  />
+        </u:Tag>
+        <u:Tag class="nrgQPCC-row nrgQPPay-top">
+            <u:Textfield placeholder="CVV"
+                         fieldType="Regular"
+                         id="idnrgQPCC-cvv"
+                         class="nrgQPCC-cvv"
+                         width="4rem">
+                    </u:Textfield>
+            <u:Textfield placeholder="ZIP CODE"
+                         fieldType="Regular"
+                         id="idnrgQPCC-zipcode"
+                         class="nrgQPCC-zipcode"
+                         width="6rem">
+                    </u:Textfield>
+        </u:Tag>
     </u:Tag>
 </core:FragmentDefinition>

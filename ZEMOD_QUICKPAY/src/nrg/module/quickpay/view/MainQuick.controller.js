@@ -37,8 +37,8 @@ sap.ui.define(
 		 */
         Controller.prototype.onStopRec = function (oEvent) {
             var oTabBarItem3 = this.getView().byId("idnrgQPPay-tabBarItem003");
-            //this._oPaymentDialog.removeStyleClass("nrgQPPay-dialogPale");
-            //this._oPaymentDialog.addStyleClass("nrgQPPay-dialogRegular");
+            this.getView().getParent().removeStyleClass("nrgQPPay-dialogPale");
+            this.getView().getParent().addStyleClass("nrgQPPay-dialogRegular");
             oTabBarItem3.setSelected(true);
         };
         /**
