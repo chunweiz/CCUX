@@ -9,7 +9,7 @@ sap.ui.define(
     function (EventProvider) {
         'use strict';
 
-        var AppHeader = EventProvider.extend('nrg.module.app.ccux.view.AppHeader', {
+        var AppHeader = EventProvider.extend('nrg.module.app.view.AppHeader', {
             constructor: function (oController, oApp) {
                 EventProvider.apply(this);
 
@@ -25,7 +25,7 @@ sap.ui.define(
         });
 
         AppHeader.prototype.init = function () {
-
+            this._registerHMItemEvents();
         };
 
         AppHeader.prototype._registerHMItemEvents = function () {
@@ -71,8 +71,6 @@ sap.ui.define(
 
         AppHeader.prototype._onClearAccPress = function (oControlEvent) {
             var oWebUiManager = this._oController.getOwerComponent().getWebUiManager();
-
-            this._oApp.setBusy(true);
         };
 
         return AppHeader;
