@@ -5,8 +5,9 @@
 /ZECMP_IC/build/
 /ZECTRL_COMMONS/build/
 /ZECTRL_MAIN/build/
+/ZECTRL_APP/build/
 /ZEMOD_APP/build/
 /ZEMOD_CMPGN/build/
 /ZEMOD_DSHB/build/
 /ZEMOD_OTHERS/build/
-/ZECTRL_APP/build/
+/ZEMOD_QUICKPAY/build/
