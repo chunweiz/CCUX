@@ -268,11 +268,11 @@ sap.ui.define(
             oConfigModel.setProperty('/personalInfoEditVisible', false);
             oConfigModel.setProperty('/personalInfoSaveVisible', true);
 
-            if (oBpPersonalInfoModel.SSN === '') {
+            if (oBpPersonalInfoModel.getData().SSN === '') {
                 oConfigModel.setProperty('/personalInfoSSEditable', true);
             }
 
-            if (oBpPersonalInfoModel.DL === '') {
+            if (oBpPersonalInfoModel.getData().DL === '') {
                 oConfigModel.setProperty('/personalInfoDLEditable', true);
             }
         };
@@ -280,6 +280,7 @@ sap.ui.define(
         CustomController.prototype.onPersonalInfoSave = function () {
             var oConfigModel = this.getView().getModel('oBpInfoConfig'),
                 oModel = this.getView().getModel('oODataSvc'),
+                bpPersonalModel = this.getView().getModel('oDataBpPersonal'),
                 sPath,
                 oParameters,
                 bpNumber = this.getView().getModel('oDataBpPersonal').getProperty('/PartnerID');
@@ -288,9 +289,17 @@ sap.ui.define(
             oConfigModel.setProperty('/personalInfoSaveVisible', false);
             oConfigModel.setProperty('/personalInfoEditable', false);
 
-            if (JSON.stringify(this.getView().getModel('oDataBpPersonal').oData) === JSON.stringify(this.oDataBpPersonalBak)) {
+            if (JSON.stringify(bpPersonalModel.oData) === JSON.stringify(this.oDataBpPersonalBak)) {
                 sap.ui.commons.MessageBox.alert("There is no change for Personal Info.");
                 return;
+            }
+
+            if (bpPersonalModel.oData.SSN !== this.oDataBpPersonalBak.SSN) {
+                bpPersonalModel.oData.SSNUpd = 'X';
+            }
+
+            if (bpPersonalModel.oData.DL !== this.oDataBpPersonalBak.DL) {
+                bpPersonalModel.oData.DLUpd = 'X';
             }
 
             sPath = '/BpPersonals' + '(\'' + bpNumber + '\')';

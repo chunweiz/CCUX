@@ -19,6 +19,12 @@
                          labelFor="idnrgQPCC-Amt"  />
             </u:Tag>
             <u:Tag class="nrgQPCC-row nrgQPPay-top">
+                <u:DatePicker id="idnrgQPCC-DP" width="12rem"></u:DatePicker>
+                <c:Label text="Date"
+                         class="nrgQPCC-lbl"
+                         labelFor="idnrgQPCC-DP"  />
+            </u:Tag>
+            <u:Tag class="nrgQPCC-row nrgQPPay-top">
                 <um:Dropdown id="idnrgQPCC-DDL"
                              select=".onCreditCardSelected"
                              selectedKey="1"
