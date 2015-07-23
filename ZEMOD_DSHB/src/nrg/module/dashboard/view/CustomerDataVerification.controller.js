@@ -530,10 +530,21 @@ sap.ui.define(
         };
 
         Controller.prototype._handleEditMailPopupClose = function (oEvent) {
+            var oLeftInputArea = this.getContent()[0].getContent()[1].getContent(),
+                oRightSuggArea = this.getContent()[0].getContent()[2].getContent(),
+                i;
+
+
             this.getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
             this.getContent()[0].getContent()[0].setVisible(false);
             this.getContent()[0].getContent()[1].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
             this.getContent()[0].getContent()[2].setVisible(false);
+
+
+            for (i = 1; i < 8; i = i + 1) {
+                oLeftInputArea[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
+                oRightSuggArea[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
+            }
         };
 
         Controller.prototype._handleMailingAddrUpdate = function (oEvent) {
@@ -753,6 +764,7 @@ sap.ui.define(
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
+            this.getView().byId('idSuggCompareCheck').setChecked(false);
             this._oMailEditPopup.open();
         };
 
@@ -806,8 +818,27 @@ sap.ui.define(
             }
         };
 
-        Controller.prototype._onSuggCompareCLicked = function (oEvent) {
+        Controller.prototype._compareSuggChkClicked = function (oEvent) {
             //this.getView().byId('idAddrUpdatePopup-l').getContent()[2].getContent()[0].getValue()
+            var oLeftInputArea = this.getView().byId('idAddrUpdatePopup-l').getContent(),
+                oRightSuggArea = this.getView().byId('idAddrUpdatePopup-r').getContent(),
+                i;
+
+            if (oEvent.mParameters.checked) {
+                for (i = 1; i < 8; i = i + 1) {
+                    if (oLeftInputArea[i].getContent()[0].getValue() !== oRightSuggArea[i].getContent()[0].getValue()) {
+                        oLeftInputArea[i].getContent()[0].addStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
+                        oRightSuggArea[i].getContent()[0].addStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
+                    }
+                }
+            } else {
+                for (i = 1; i < 8; i = i + 1) {
+                    if (oLeftInputArea[i].getContent()[0].getValue() !== oRightSuggArea[i].getContent()[0].getValue()) {
+                        oLeftInputArea[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
+                        oRightSuggArea[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
+                    }
+                }
+            }
         };
 
         Controller.prototype._onSMSButtonClicked = function (oEvent) {

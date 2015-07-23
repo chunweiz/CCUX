@@ -666,8 +666,12 @@
                 <ute:TextView text="{oDtaAddrEdit>/SuggAddrInfo/FooterLine2}"/>
                 <ute:TextView text="{oDtaAddrEdit>/SuggAddrInfo/FooterLine3}"/>
             </ute:Tag>
-            <utmain:Checkbox id="idSuggCompareCheck" select="._compareSuggChkClicked"/>
-            <utmain:Label text="Compare"/>
+
+            <ute:Tag class="nrgDashboard-cusDataVerifyEditMail-r-ChkBx">
+                <utmain:Checkbox id="idSuggCompareCheck" select="._compareSuggChkClicked"/>
+                <utmain:Label class="nrgDashboard-cusDataVerifyEditMail-r-ChkBxlabel"
+                    labelFor="idSuggCompareCheck" text="Compare"/>
+            </ute:Tag>
             <utmain:Button  id="idEditMailAddr_AcptBtn"
                 visible="{oDtaAddrEdit>/showVldBtns}"
                 class="nrgDashboard-cusDataVerifyEditMailAdd-valdBtn"
