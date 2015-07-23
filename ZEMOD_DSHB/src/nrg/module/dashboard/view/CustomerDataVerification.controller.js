@@ -641,6 +641,7 @@ sap.ui.define(
         };
 
         Controller.prototype._validateInputAddr = function () {
+            this._showSuggestedAddr();
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
@@ -803,6 +804,10 @@ sap.ui.define(
             if (oModel) {
                 oModel.update(sPath, this.getView().getModel('oDtaVrfyMailingTempAddr').oData, oParameters);
             }
+        };
+
+        Controller.prototype._onSuggCompareCLicked = function (oEvent) {
+            //this.getView().byId('idAddrUpdatePopup-l').getContent()[2].getContent()[0].getValue()
         };
 
         Controller.prototype._onSMSButtonClicked = function (oEvent) {
