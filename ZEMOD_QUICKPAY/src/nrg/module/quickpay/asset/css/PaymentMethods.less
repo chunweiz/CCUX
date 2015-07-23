@@ -56,14 +56,15 @@
     }
 }
 .nrgQPPay-dialogRegular {
-            color : @nrgColor-white;
+            color : @nrgColor-grey-inactive;
             width: 340px;
             height: 326px;
+            font-family: @nrgFontFamily;
     &   .sapUiDlgLabel {
             color : @nrgColor-white;
     }
     &   .nrgQPPay-top  {
-            margin: 10px;
+            margin-top: 10px;
     }
     &   .nrgQPPay-ttl {
             text-align: center;
@@ -73,5 +74,37 @@
     }
     &   .nrgQPPay-tabBar {
             display:none;
+    }
+    &   .sapUiDlgHdrSep {
+            background-color: transparent;
+            height:0px;
+    }
+    &   .nrgQPCC-root {
+            width: 18rem;
+            height: 10rem;
+    }
+    &   .nrgQPCC-lbl  {
+            color : @nrgColor-grey-inactive;
+            font-family: @nrgFontFamily;
+            font-weight: @nrgFontWeight-regular;
+            font-size : @nrgFontSize-small;
+    }
+    &   .uteMDd-hdrContent {
+            width:11rem;
+    }
+    &   .nrgQPCC-DDL {
+            padding-right: 6px;
+    }
+    &   .uteMDd-picker {
+            width:12rem;
+    }
+    &   .uteTextfield-regular {
+            font-size : @nrgFontSize-small;
+    }
+    &   .nrgQPCC-row {
+            margin-left: 2rem;
+    }
+    &   .nrgQPCC-zipcode > .uteTextfield-regular {
+            margin-left: 25px;
     }
 }

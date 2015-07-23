@@ -181,6 +181,17 @@ sap.ui.define(
             oRouter.navTo('dashboard.Bp', {bpNum: this._bpNum});
         };
 
+        CustomController.prototype.onCaSelected = function (oEvent) {
+            var sSelectedKey = oEvent.getParameters().selectedKey,
+                iSelectedIndex;
+
+            if (sSelectedKey) {
+                iSelectedIndex = parseInt(sSelectedKey, 10);
+                this._caNum = this.getView().getModel('oDataCAs').oData[iSelectedIndex];
+                this._initRetrAllData(this._caNum); //switch content to new CA selected
+            }
+        };
+
         Controller.prototype._retrUrlHash = function () {
             //Get the hash to retrieve bp #
             var oHashChanger = new HashChanger(),
