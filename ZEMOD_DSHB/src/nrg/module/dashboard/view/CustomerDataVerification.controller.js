@@ -652,7 +652,7 @@ sap.ui.define(
         };
 
         Controller.prototype._validateInputAddr = function () {
-            this._showSuggestedAddr();
+            //this._showSuggestedAddr();
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
