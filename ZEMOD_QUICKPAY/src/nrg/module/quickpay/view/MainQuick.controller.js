@@ -86,6 +86,24 @@ sap.ui.define(
         Controller.prototype.onPendingBankDraft = function (oEvent) {
             this._oPaymentDialog.open();
         };
+        /**
+		 * When Credit Card is Accepted
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onAcceptCredit = function (oEvent) {
+            this._oPaymentDialog.open();
+        };
+        /**
+		 * When Credit Card is Accepted
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onDeclineCredit = function (oEvent) {
+            this._oPaymentDialog.open();
+        };
         return Controller;
     }
 
