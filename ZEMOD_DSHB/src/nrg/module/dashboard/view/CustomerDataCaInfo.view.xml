@@ -46,7 +46,7 @@
                                      class="nrgDashboard-cusDataCaInfo-dropdown"
                                      content="{oDataCAs>/dropdown}"
                                      selectedKey="{oDataCAs>/selectedKey}"
-                                     select=".onSelected">
+                                     select=".onCaSelected">
                         <utmain:DropdownItem key="{oDataCAs>key}">
                            <ute:Tag text="{oDataCAs>value}"/>
                         </utmain:DropdownItem>
