@@ -115,16 +115,14 @@ sap.ui.define(
             return this._oWebUiManager;
         };
 
-        CustomComponent.prototype.setCcuxBusy = function (bEnable) {
-            var oRootViewController, oBusyDialog;
-            oRootViewController = this.getAggregation('rootControl').getController();
-            oBusyDialog = oRootViewController.getBusyDialog();
+        CustomComponent.prototype.getCcuxApp = function () {
+            var oRootViewController = this.getAggregation('rootControl').getController();
 
-            if (bEnable) {
-                oBusyDialog.open();
-            } else {
-                oBusyDialog.close();
+            if (oRootViewController) {
+                return oRootViewController.getApp();
             }
+
+            return null;
         };
 
         return CustomComponent;

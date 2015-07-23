@@ -1,4 +1,4 @@
-/*global sap*/
+/*global sap, ute*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -24,38 +24,35 @@ sap.ui.define(
                 this._oAppHeader.init();
 
                 this._oAppBody = new AppBody(oController, this);
+
                 this._oAppFooter = new AppFooter(oController, this);
             },
 
             metadata: {
                 publicMethods: [
-                    'getHeader',
-                    'getBody',
-                    'getFooter',
-                    'setBusy',
-                    'getBusy',
-                    'setEdit',
-                    'getEdit'
+                    'setOccupied',
+                    'isOccupied',
+                    'setInEdit',
+                    'isInEdit',
+                    'setHeaderMenuItemSelected',
+                    'isHeaderMenuItemSelected',
+                    'setHeaderMenuItemEnabled',
+                    'isHeaderMenuItemEnabled',
+                    'setTitle',
+                    'setLayout',
+                    'setFooterExpanded',
+                    'isFooterExpanded'
                 ]
             }
         });
 
-        App.prototype.getHeader = function () {
-            return this._oAppHeader;
-        };
+        App.HMItemId = AppHeader.HMItemId;
+        App.LayoutType = ute.ui.app.BodyContentLayout;
 
-        App.prototype.getBody = function () {
-            return this._oAppBody;
-        };
+        App.prototype.setOccupied = function (bOccupied) {
+            bOccupied = !!bOccupied;
 
-        App.prototype.getFooter = function () {
-            return this._oAppFooter;
-        };
-
-        App.prototype.setBusy = function (bBusy) {
-            bBusy = !!bBusy;
-
-            if (bBusy) {
+            if (bOccupied) {
                 if (!this._oBusyDialog().isOpen()) {
                     this._oBusyDialog.open();
                 }
@@ -69,18 +66,60 @@ sap.ui.define(
             return this;
         };
 
-        App.prototype.getBusy = function () {
+        App.prototype.isOccupied = function () {
             return this._oBusyDialog.isOpen();
         };
 
-        App.prototype.setEdit = function (bEdit) {
+        App.prototype.setInEdit = function (bEdit) {
             this._bEdit = !!bEdit;
 
             return this;
         };
 
-        App.prototype.getEdit = function () {
+        App.prototype.isInEdit = function () {
             return this._bEdit;
+        };
+
+        App.prototype.setHeaderMenuItemSelected = function (bSelected, sHMItemId) {
+            this._oAppHeader.setSelected(bSelected, sHMItemId);
+            return this;
+        };
+
+        App.prototype.isHeaderMenuItemSelected = function (sHMItemId) {
+            this._oAppHeader.isSelected(sHMItemId);
+            return false;
+        };
+
+        App.prototype.setHeaderMenuItemEnabled = function (bEnabled, sHMItemId) {
+            this._oAppHeader.setEnabled(bEnabled, sHMItemId);
+            return this;
+        };
+
+        App.prototype.isHeaderMenuItemEnabled = function (sHMItemId) {
+            this._oAppHeader.isEnabled(sHMItemId);
+            return false;
+        };
+
+        App.prototype.setTitle = function (sTitle) {
+            var oBodyTitle = this._oController.getView().byId('appBodyTitle');
+
+            if (oBodyTitle && sTitle) {
+                oBodyTitle.setText(sTitle);
+            }
+
+            return this;
+        };
+
+        App.prototype.setLayout = function (sLayoutType) {
+            return this;
+        };
+
+        App.prototype.setFooterExpanded = function (bExpanded) {
+            return this;
+        };
+
+        App.prototype.isFooterExpanded = function () {
+            return false;
         };
 
         return App;
