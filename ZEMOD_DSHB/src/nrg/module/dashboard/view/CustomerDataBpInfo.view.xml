@@ -279,7 +279,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/results/0/AddressInfo/Pobox}"/>
+                                                               value="{oDataBpAddress>/results/0/AddressInfo/PoBox}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
