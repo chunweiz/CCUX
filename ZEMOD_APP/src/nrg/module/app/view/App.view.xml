@@ -84,7 +84,9 @@
         </ua:body>
         <ua:footer>
             <ua:Footer id="appFtr">
-
+                <ua:EventArea id="appFtrCaret" class="nrgU-right">
+                    <div class="nrgAppFtr-caret"></div>
+                </ua:EventArea>
             </ua:Footer>
         </ua:footer>
     </ua:App>

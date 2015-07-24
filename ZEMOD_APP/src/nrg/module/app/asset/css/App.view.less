@@ -35,11 +35,11 @@
     & .nrgAppBanner-logo {
         display: block;
         float: left;
-        margin-top: 20px;
+        margin-top: 15px;
         background: data-uri('../../../../../../../ZEBASE/src/nrg/base/asset/img/nrg-logo.svg');
         background-size: contain;
         background-repeat: no-repeat;
-        width: 60px;
+        width: 70px;
         height: 50px;
     }
 
@@ -80,7 +80,28 @@
         border-left-color: @nrgColor-blue-link;
     }
 
-    // To be removed later
+    & .nrgAppFtr-caret {
+        display: inline-block;
+        position: relative;
+        border-top-left-radius: 4px;
+        width: 80px;
+        height: 19px;
+        background-color: @nrgColor-white;
+        cursor: pointer;
+    }
+
+    & .nrgAppFtr-caret::before {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border: 1px solid @nrgColor-blue-link;
+        border-bottom: none;
+        border-right: none;
+        transform: translate(35px, 8px) rotate(45deg);
+    }
+
+    // To be removed later - migration to control
     @maxHeight-summaryPanel: 400px;
     @maxHeight-toolsPanel: 273px;
     @minHeight-generalPanel: 686px;

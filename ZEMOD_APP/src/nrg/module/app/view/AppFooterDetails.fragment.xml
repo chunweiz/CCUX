@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ua="ute.ui.app"
+    xmlns:core="sap.ui.core">
+
+    <ua:FooterSubmenu class="nrgAppFtrDetails">
+        <div class="nrgAppFtrDetails-nav nrgU-clearfix">
+            <ua:EventArea id="appFtrSMenuCaret" class="nrgU-right">
+                <div class="nrgAppFtrDetails-caret"></div>
+            </ua:EventArea>
+        </div>
+        <div class="nrgAppFtrDetails-content">
+            <div class="uteAppHdrSMenu-wrap">
+                content
+            </div>
+        </div>
+    </ua:FooterSubmenu>
+
+</core:FragmentDefinition>

@@ -24,8 +24,10 @@ sap.ui.define(
                 this._oAppHeader.init();
 
                 this._oAppBody = new AppBody(oController, this);
+                this._oAppBody.init();
 
                 this._oAppFooter = new AppFooter(oController, this);
+                this._oAppFooter.init();
             },
 
             metadata: {

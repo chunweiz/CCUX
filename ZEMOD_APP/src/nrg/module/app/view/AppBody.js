@@ -10,20 +10,26 @@ sap.ui.define(
         'use strict';
 
         var AppBody = EventProvider.extend('nrg.module.app.view.AppBody', {
-            constructor: function (oController) {
+            constructor: function (oController, oApp) {
                 EventProvider.apply(this);
 
                 this._oController = oController;
+                this._oApp = oApp;
             },
 
             metadata: {
                 publicMethods: [
-                    'init'
+                    'init',
+                    'reset'
                 ]
             }
         });
 
         AppBody.prototype.init = function () {
+
+        };
+
+        AppBody.prototype.reset = function () {
 
         };
 

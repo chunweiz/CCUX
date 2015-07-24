@@ -28,6 +28,7 @@ sap.ui.define(
                 'ute.ui.app.HeaderMenuItem',
                 'ute.ui.app.HeaderSubmenu',
                 'ute.ui.app.Footer',
+                'ute.ui.app.FooterSubmenu',
                 'ute.ui.app.Body',
                 'ute.ui.app.BodyContent',
                 'ute.ui.app.SummaryPage',
