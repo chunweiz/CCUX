@@ -22,7 +22,11 @@ sap.ui.define(
                     'init',
                     'reset',
                     'setContentLayout',
+                    'attachNavLeft',
+                    'detachNavLeft',
                     'showNavLeft',
+                    'attachNavRight',
+                    'detachNavRight',
                     'showNavRight'
                 ]
             }
@@ -40,7 +44,13 @@ sap.ui.define(
         };
 
         AppBody.prototype.reset = function () {
+            var oBodyContent = this._oController.getView().byId('appBodyContent');
 
+            oBodyContent.setLayout(AppBody.ContentLayoutType.Default);
+
+            this.showNavLeft(false);
+
+            this.showNavRight(false);
         };
 
         AppBody.prototype.setContentLayout = function (sContentLayoutType) {
@@ -56,7 +66,7 @@ sap.ui.define(
         AppBody.prototype.showNavLeft = function (bShow) {
             var oNavLeftElem = this._oController.getView().byId('appBodyNavLeft');
 
-            if (!!bShow && oNavLeftElem) {
+            if (!!bShow) {
                 oNavLeftElem.$().removeClass('nrgU-displayNone');
             } else {
                 oNavLeftElem.$().addClass('nrgU-displayNone');
@@ -68,7 +78,7 @@ sap.ui.define(
         AppBody.prototype.showNavRight = function (bShow) {
             var oNavRightElem = this._oController.getView().byId('appBodyNavRight');
 
-            if (!!bShow && oNavRightElem) {
+            if (!!bShow) {
                 oNavRightElem.$().removeClass('nrgU-displayNone');
             } else {
                 oNavRightElem.$().addClass('nrgU-displayNone');
