@@ -523,7 +523,7 @@
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
-                                    <l:MatrixLayout widths="25%,25%,10%,10%,10%,20%" columns="6">
+                                    <l:MatrixLayout widths="25%,50%,10%,15%" columns="4">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
@@ -545,6 +545,7 @@
                                                                editable="{oBpInfoConfig>/contactInfoEditable}"
                                                                value="{oDataBpContact>/DayPhoneExt}"/>
                                             </l:MatrixLayoutCell>
+<!--
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
                                                          text="TYPE:" />
@@ -561,6 +562,7 @@
                                                     </utmain:DropdownItem>
                                                 </utmain:Dropdown>
                                             </l:MatrixLayoutCell>
+-->
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
                                 </l:MatrixLayoutCell>
@@ -581,7 +583,7 @@
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
-                                    <l:MatrixLayout widths="25%,25%,10%,10%,10%,20%" columns="6">
+                                    <l:MatrixLayout widths="25%,50%,10%,15%" columns="4">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
@@ -603,6 +605,7 @@
                                                                editable="{oBpInfoConfig>/contactInfoEditable}"
                                                                value="{oDataBpContact>/EveningPhoneExt}"/>
                                             </l:MatrixLayoutCell>
+<!--
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
                                                          text="TYPE:" />
@@ -619,6 +622,7 @@
                                                     </utmain:DropdownItem>
                                                 </utmain:Dropdown>
                                             </l:MatrixLayoutCell>
+-->
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
                                 </l:MatrixLayoutCell>
