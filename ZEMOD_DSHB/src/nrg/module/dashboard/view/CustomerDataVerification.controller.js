@@ -852,6 +852,26 @@ sap.ui.define(
             window.open(sSmsUrl);
         };
 
+
+        /*************************************************************************************/
+        //Edit Email
+        Controller.prototype._handleEmailEdit = function (oEvent) {
+            //var oEditEmail = this.getView().getModel('oDtaAddrEdit');
+
+            this.getView().byId("idEmailEditPopup").setVisible(true);
+
+            this._oEmailEditPopup = ute.ui.main.Popup.create({
+                //close: this._handleEditMailPopupClose,
+                content: this.getView().byId("idEmailEditPopup"),
+                title: 'Email Address and Preferences'
+            });
+
+            this._oEmailEditPopup.open();
+
+        };
+
+        /*************************************************************************************/
+
         return Controller;
     }
 );
