@@ -371,11 +371,10 @@
                                             <utmain:Label labelFor="email_lbl"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Email}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <ute:Textfield id="email_lbl" fieldType="Noborder"
-                                                width="200px"
-                                                value="{oDtaVrfyBP>/Email}"
-                                                editable="{oCfrmStatus>/bEditable}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hInput nrgDashboard-cusDataVerify-mContent-hEmailInput"/>
+                                            <utmain:Button  id="email_lbl" design="None"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput nrgDashboard-cusDataVerify-mContent-hEmailInput"
+                                                text="{oDtaVrfyBP>/Email}" enabled="{oCfrmStatus>/bEditable}"
+                                                press="._handleEmailEdit"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
                                             <utmain:Button
@@ -525,10 +524,11 @@
                                             <utmain:Label labelFor="email_lbl_mail"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Email}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                            <ute:Textfield id="email_lbl_mail" fieldType="Noborder"
-                                                value="{oDtaVrfyBP>/Email}"
-                                                editable="{oCfrmStatus>/bEditable}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hInput nrgDashboard-cusDataVerify-mContent-hEmailInput"/>
+                                            <utmain:Button  id="email_lbl_mail" design="None"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput nrgDashboard-cusDataVerify-mContent-hEmailInput"
+                                                text="{oDtaVrfyBP>/Email}"
+                                                enabled="{oCfrmStatus>/bEditable}"
+                                                press="._handleEmailEdit"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
                                             <utmain:Button
@@ -568,6 +568,20 @@
                 </l:MatrixLayoutRow>
             </l:rows>
         </l:MatrixLayout>
+    </ute:Tag>
+
+    <ute:Tag id="idEmailEditPopup" visible="false">
+        <ute:Tag>
+            <ute:TextView
+                text="No new papaer e-mail edit logic"/>
+        </ute:Tag>
+        <ute:Tag>
+            <ute:Textfield fieldType="Underlined"
+                change="._onPoBoxEdit"
+                label="Email"
+                editable="true" width="200px"
+                value="test@123.com"/>
+        </ute:Tag>
     </ute:Tag>
 
     <ute:Tag id="idAddrUpdatePopup" visible="false"

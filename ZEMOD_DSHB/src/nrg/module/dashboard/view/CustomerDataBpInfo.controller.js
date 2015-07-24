@@ -59,8 +59,12 @@ sap.ui.define(
             //Model to hold all phone types
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDayPhoneType');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEvnPhoneType');
-
             this._initPhnTypes();
+
+            //Model to hold mailing/temp address
+//            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');    //not use this model, use 'oDataBpAddress'
+            //Model for Edit Popup Screen (Use the model to show on edit screen)
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
 
             this.getView().attachParseError(function (oEvent) {
                 this._addMessage(oEvent, 'attachParseError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
@@ -173,7 +177,7 @@ sap.ui.define(
                 oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
-                bpNumber = this.getView().getModel('ODataBpName').getProperty('/PartnerID');
+                bpNumber = this._bpNum;
 
             oConfigModel.setProperty('/titleEditVisible', true);
             oConfigModel.setProperty('/titleSaveVisible', false);
@@ -219,37 +223,73 @@ sap.ui.define(
         };
 
         CustomController.prototype.onAddrSave = function () {
-            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
-                oModel = this.getView().getModel('oODataSvc'),
-                sPath,
-                oParameters,
-                bpNumber = this.getView().getModel('oDataBpAddress').getProperty('/results/0/PartnerID'),
-                addressId = this.getView().getModel('oDataBpAddress').getProperty('/results/0/AddressID');
+            var oModel = this.getView().getModel('oODataSvc'),
+            sPath,
+            oParameters,
+            aFilters = this._createAddrValidateFilters(),
+            oMailEdit = this.getView().getModel('oDtaAddrEdit');
 
-            oConfigModel.setProperty('/addrEditVisible', true);
-            oConfigModel.setProperty('/addrSaveVisible', false);
-            oConfigModel.setProperty('/addrEditable', false);
+            sPath = '/BpAddresses' + '(PartnerID=\'' + this._bpNum + '\',AddressID=\'' + this._addressID + '\')';
 
-            if (JSON.stringify(this.getView().getModel('oDataBpAddress').oData.results[0]) === JSON.stringify(this.oDataBpAddressBak.results[0])) {
-                sap.ui.commons.MessageBox.alert("There is no change for Address.");
-                return;
-            }
-
-            sPath = '/BpAddresses' + '(PartnerID=\'' + bpNumber + '\',AddressID=\'' + addressId + '\')';
             oParameters = {
-                merge: false,
-                success : function (oData) {
-                    sap.ui.commons.MessageBox.alert("Address Update Success");
-                    this._retrBpAddress(bpNumber);
+                filters: aFilters,
+                success: function (oData) {
+                    if (oData.results[0].AddrChkValid === 'X') {
+                        //Validate success, update the address directly
+                        this._updateMailingAddr();
+                    } else {
+                        oMailEdit.setProperty('/AddrInfo', oData.results[0].AddressInfo);
+                        oMailEdit.setProperty('/SuggAddrInfo', oData.results[0].TriCheck);
+                        this._oMailEditPopup = ute.ui.main.Popup.create({
+                            close: this._handleEditMailPopupClose,
+                            content: sap.ui.xmlfragment("nrg.module.dashboard.view.AddrUpdatePopup", this),
+                            title: 'Edit Mailing Address'
+                        });
+                        this._oMailEditPopup.open();
+                        this._showSuggestedAddr();
+                    }
                 }.bind(this),
                 error: function (oError) {
-                    sap.ui.commons.MessageBox.alert("Address Update Failed");
+                    sap.ui.commons.MessageBox.alert('Validatation Call Failed');
                 }.bind(this)
             };
 
             if (oModel) {
-                oModel.update(sPath, this.getView().getModel('oDataBpAddress').oData.results[0], oParameters);
+                oModel.read(sPath, oParameters);
             }
+
+            /** Original code for update address, to be removed */
+//            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+//                oModel = this.getView().getModel('oODataSvc'),
+//                sPath,
+//                oParameters,
+//                bpNumber = this.getView().getModel('oDataBpAddress').getProperty('/results/0/PartnerID'),
+//                addressId = this.getView().getModel('oDataBpAddress').getProperty('/results/0/AddressID');
+//
+//            oConfigModel.setProperty('/addrEditVisible', true);
+//            oConfigModel.setProperty('/addrSaveVisible', false);
+//            oConfigModel.setProperty('/addrEditable', false);
+//
+//            if (JSON.stringify(this.getView().getModel('oDataBpAddress').oData.results[0]) === JSON.stringify(this.oDataBpAddressBak.results[0])) {
+//                sap.ui.commons.MessageBox.alert("There is no change for Address.");
+//                return;
+//            }
+//
+//            sPath = '/BpAddresses' + '(PartnerID=\'' + bpNumber + '\',AddressID=\'' + addressId + '\')';
+//            oParameters = {
+//                merge: false,
+//                success : function (oData) {
+//                    sap.ui.commons.MessageBox.alert("Address Update Success");
+//                    this._retrBpAddress(bpNumber);
+//                }.bind(this),
+//                error: function (oError) {
+//                    sap.ui.commons.MessageBox.alert("Address Update Failed");
+//                }.bind(this)
+//            };
+//
+//            if (oModel) {
+//                oModel.update(sPath, this.getView().getModel('oDataBpAddress').oData.results[0], oParameters);
+//            }
         };
 
         CustomController.prototype.onPersonalInfoCancel = function () {
@@ -283,7 +323,7 @@ sap.ui.define(
                 bpPersonalModel = this.getView().getModel('oDataBpPersonal'),
                 sPath,
                 oParameters,
-                bpNumber = this.getView().getModel('oDataBpPersonal').getProperty('/PartnerID');
+                bpNumber = this._bpNum;
 
             oConfigModel.setProperty('/personalInfoEditVisible', true);
             oConfigModel.setProperty('/personalInfoSaveVisible', false);
@@ -341,7 +381,7 @@ sap.ui.define(
                 oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
-                bpNumber = this.getView().getModel('oDataBpContact').getProperty('/PartnerID');
+                bpNumber = this._bpNum;
 
             oConfigModel.setProperty('/contactInfoEditVisible', true);
             oConfigModel.setProperty('/contactInfoSaveVisible', false);
@@ -391,7 +431,7 @@ sap.ui.define(
                 oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
-                bpNumber = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/0/PartnerID'),
+                bpNumber = this._bpNum,
                 attibuteSet,
                 attribute,
                 i;
@@ -587,6 +627,9 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         if (oData.results[0]) {
+                            if(!this._addressID) {
+                                this._addressID = oData.results[0].AddressID;
+                            }
                             this.getView().getModel('oDataBpAddress').setData(oData);
                             this.oDataBpAddressBak = jQuery.extend(true, {}, oData);
                         }
@@ -706,6 +749,147 @@ sap.ui.define(
                 data.results[index].Value = 'N';
             }
             oMarkPrefModel.setData(data);
+        };
+
+        Controller.prototype._showSuggestedAddr = function () {
+            //Address validation error there was. Show system suggested address values we need to.
+            this.getView().byId('idAddrUpdatePopup').addStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
+            this.getView().byId('idAddrUpdatePopup-l').addStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
+        };
+
+        Controller.prototype._createAddrValidateFilters = function () {
+            var aFilters = [],
+                oFilterTemplate,
+//                sBpNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/PartnerID'),
+                sBpNum = this._bpNum,
+                oMailEdit = this.getView().getModel('oDtaAddrEdit'),
+                oMailEditAddrInfo = oMailEdit.getProperty('/AddrInfo'),
+                key,
+                bFixAddr = oMailEdit.getProperty('/bFixAddr'),
+                tempPath;
+
+            if (bFixAddr) {
+                oFilterTemplate = new Filter({ path: 'FixUpd', operator: FilterOperator.EQ, value1: 'X'});
+                aFilters.push(oFilterTemplate);
+            } else {
+                oFilterTemplate = new Filter({ path: 'TempUpd', operator: FilterOperator.EQ, value1: 'X'});
+                aFilters.push(oFilterTemplate);
+            }
+
+            oFilterTemplate = new Filter({ path: 'PartnerID', operator: FilterOperator.EQ, value1: sBpNum});
+            aFilters.push(oFilterTemplate);
+
+            oFilterTemplate = new Filter({ path: 'ChkAddr', operator: FilterOperator.EQ, value1: 'X'});
+            aFilters.push(oFilterTemplate);
+
+            for (key in oMailEditAddrInfo) {
+                if (oMailEditAddrInfo.hasOwnProperty(key)) {
+                    if (!(key === '__metadata' || key === 'StandardFlag' || key === 'ShortForm' || key === 'ValidFrom' || key === 'ValidTo' || key === 'Supplement')) {
+                        if (bFixAddr) {
+                            tempPath = 'FixAddrInfo/' + key;
+                            oFilterTemplate = new Filter({ path: tempPath, operator: FilterOperator.EQ, value1: oMailEditAddrInfo[key]});
+                            aFilters.push(oFilterTemplate);
+                        } else {
+                            tempPath = 'TempAddrInfo/' + key;
+                            oFilterTemplate = new Filter({ path: tempPath, operator: FilterOperator.EQ, value1: oMailEditAddrInfo[key]});
+                            aFilters.push(oFilterTemplate);
+                        }
+                    }
+                }
+            }
+
+            return aFilters;
+        };
+
+        Controller.prototype._updateMailingAddr = function () {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters,
+                sBpNum = this._bpNum,
+                sFixedAddressID = this._addressID;
+
+            sPath = '/BpAddresses' + '(PartnerID=\'' + sBpNum + '\',AddressID=\'' + sFixedAddressID + '\')';
+
+            oParameters = {
+                urlParameters: {},
+                success : function (oData) {
+                    sap.ui.commons.MessageBox.alert("Address Update Success");
+                    this._retrBpAddress(bpNumber);
+                    this._oMailEditPopup.close();
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Address Update Failed");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.update(sPath, this.getView().getModel('oDataBpAddress').oData, oParameters);
+            }
+        };
+
+        Controller.prototype._handleMailingAcceptBtn = function (oEvent) {
+            var oMailEdit = this.getView().getModel('oDtaAddrEdit'),
+                oMailTempModel = this.getView().getModel('oDataBpAddress'),    //replace oDtaVrfyMailingTempAddr with oDataBpAddress because we submit 'oDataBpAddress' in updating call
+                tempObj,
+                key;
+
+            tempObj = oMailEdit.getProperty('/SuggAddrInfo');
+            delete tempObj.HeaderText1;
+            delete tempObj.HeaderText2;
+            delete tempObj.FooterLine1;
+            delete tempObj.FooterLine2;
+            delete tempObj.FooterLine3;
+
+            if (oMailEdit.getProperty('/bFixAddr')) {
+                oMailTempModel.setProperty('/FixUpd', 'X');
+                for (key in tempObj) {
+                    if (tempObj.hasOwnProperty(key)) {
+                        if (!(key === '__metadata' || key === 'StandardFlag' || key === 'Supplement')) {
+                            oMailTempModel.setProperty('/FixAddrInfo/' + key, tempObj[key]);
+                        }
+                    }
+                }
+            } else {
+                oMailTempModel.setProperty('/TempUpd', 'X');
+                for (key in tempObj) {
+                    if (tempObj.hasOwnProperty(key)) {
+                        if (!(key === '__metadata' || key === 'StandardFlag' || key === 'Supplement')) {
+                            oMailTempModel.setProperty('/TempAddrInfo/' + key, tempObj[key]);
+                        }
+                    }
+                }
+            }
+
+            this._updateMailingAddr();
+        };
+
+        Controller.prototype._handleMailingDeclineBtn = function (oEvent) {
+            var oMailEdit = this.getView().getModel('oDtaAddrEdit'),
+                oMailTempModel = this.getView().getModel('oDataBpAddress'), //replace oDtaVrfyMailingTempAddr with oDataBpAddress because we submit 'oDataBpAddress' in updating call
+                tempObj;
+
+            tempObj = oMailEdit.getProperty('/AddrInfo');
+
+            if (oMailEdit.getProperty('/bFixAddr')) {
+                oMailTempModel.setProperty('/FixAddrInfo', tempObj);
+                oMailTempModel.setProperty('/FixUpd', 'X');
+            } else {
+                oMailTempModel.setProperty('/TempAddrInfo', tempObj);
+                oMailTempModel.setProperty('/TempUpd', 'X');
+            }
+
+            this._updateMailingAddr();
+        };
+
+        Controller.prototype._handleMailingEditBtn = function (oEvent) {
+            var oEditMail = this.getView().getModel('oDtaAddrEdit');
+
+            //oEditMail.setProperty('/updateSent', false);
+            oEditMail.setProperty('/showVldBtns', false);
+            oEditMail.setProperty('/updateNotSent', true);
         };
 
         Controller.prototype._formatDate = function (dob) {
