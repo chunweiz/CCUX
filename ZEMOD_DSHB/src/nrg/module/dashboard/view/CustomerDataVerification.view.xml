@@ -571,7 +571,17 @@
     </ute:Tag>
 
     <ute:Tag id="idEmailEditPopup" visible="false">
-
+        <ute:Tag>
+            <ute:TextView
+                text="No new papaer e-mail edit logic"/>
+        </ute:Tag>
+        <ute:Tag>
+            <ute:Textfield fieldType="Underlined"
+                change="._onPoBoxEdit"
+                label="Email"
+                editable="true" width="200px"
+                value="test@123.com"/>
+        </ute:Tag>
     </ute:Tag>
 
     <ute:Tag id="idAddrUpdatePopup" visible="false"
