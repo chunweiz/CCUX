@@ -20,7 +20,9 @@ sap.ui.define(
             metadata: {
                 publicMethods: [
                     'init',
-                    'reset'
+                    'reset',
+                    'setExpanded',
+                    'isExpanded'
                 ]
             }
         });
@@ -30,7 +32,21 @@ sap.ui.define(
         };
 
         AppFooter.prototype.reset = function () {
+            this._getSubmenu().close();
+        };
 
+        AppFooter.prototype.setExpanded = function (bExpanded) {
+            bExpanded = !!bExpanded;
+
+            if (bExpanded) {
+                this._getSubmenu().open();
+            } else {
+                this._getSubmenu().close();
+            }
+        };
+
+        AppFooter.prototype.isExpanded = function () {
+            return this._getSubmenu().isOpen();
         };
 
         AppFooter.prototype._registerEvents = function () {

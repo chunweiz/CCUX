@@ -1,4 +1,4 @@
-/*global sap*/
+/*global sap, ute*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -20,17 +20,81 @@ sap.ui.define(
             metadata: {
                 publicMethods: [
                     'init',
-                    'reset'
+                    'reset',
+                    'setContentLayout',
+                    'showNavLeft',
+                    'showNavRight'
                 ]
             }
         });
 
-        AppBody.prototype.init = function () {
+        AppBody.Event = {
+            NavLeftPress: 'NavLeftPress',
+            NavRightPress: 'NavRightPress'
+        };
 
+        AppBody.ContentLayoutType = ute.ui.app.BodyContentLayout;
+
+        AppBody.prototype.init = function () {
+            this._registerEvents();
         };
 
         AppBody.prototype.reset = function () {
 
+        };
+
+        AppBody.prototype.setContentLayout = function (sContentLayoutType) {
+            var oBodyContent = this._oController.getView().byId('appBodyContent');
+
+            if (oBodyContent && sContentLayoutType) {
+                oBodyContent.setLayout(sContentLayoutType);
+            }
+
+            return this;
+        };
+
+        AppBody.prototype.showNavLeft = function (bShow) {
+            var oNavLeftElem = this._oController.getView().byId('appBodyNavLeft');
+
+            if (!!bShow && oNavLeftElem) {
+                oNavLeftElem.$().removeClass('nrgU-displayNone');
+            } else {
+                oNavLeftElem.$().addClass('nrgU-displayNone');
+            }
+
+            return this;
+        };
+
+        AppBody.prototype.showNavRight = function (bShow) {
+            var oNavRightElem = this._oController.getView().byId('appBodyNavRight');
+
+            if (!!bShow && oNavRightElem) {
+                oNavRightElem.$().removeClass('nrgU-displayNone');
+            } else {
+                oNavRightElem.$().addClass('nrgU-displayNone');
+            }
+
+            return this;
+        };
+
+        AppBody.prototype._registerEvents = function () {
+            var oView;
+
+            oView = this._oController.getView();
+            oView.byId('appBodyNavLeft').attachEvent('click', this._onNavLeftClick, this);
+            oView.byId('appBodyNavRight').attachEvent('click', this._onNavRightClick, this);
+        };
+
+        AppBody.prototype._onNavLeftClick = function (oControlEvent) {
+            this.fireEvent(AppBody.Event.NavLeftPress, {
+                source: oControlEvent.getSource()
+            });
+        };
+
+        AppBody.prototype._onNavRightClick = function (oControlEvent) {
+            this.fireEvent(AppBody.Event.NavRightPress, {
+                source: oControlEvent.getSource()
+            });
         };
 
         return AppBody;
