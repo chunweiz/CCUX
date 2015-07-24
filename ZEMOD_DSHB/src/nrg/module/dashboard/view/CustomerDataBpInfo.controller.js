@@ -62,7 +62,7 @@ sap.ui.define(
             this._initPhnTypes();
 
             //Model to hold mailing/temp address
-//            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');
+//            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');    //not use this model, use 'oDataBpAddress'
             //Model for Edit Popup Screen (Use the model to show on edit screen)
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
 
