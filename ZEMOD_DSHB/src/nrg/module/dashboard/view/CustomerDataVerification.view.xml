@@ -574,7 +574,7 @@
         class="nrgDashboard-cusDataVerifyEditEmail">
         <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-desc">
             <ute:TextView
-                text="No new papaer e-mail edit logic"/>
+                text="{oEditEmailNNP>/Script}"/>
         </ute:Tag>
         <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-inputArea">
             <ute:Textfield fieldType="Underlined"

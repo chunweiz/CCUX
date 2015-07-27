@@ -47,6 +47,9 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDayPhoneType');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEvnPhoneType');
 
+            //For EditEmail Popup
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailNNP');
+
             //Siebel Customer Indicator
             this.bSiebelCustomer = false;
 
@@ -856,7 +859,15 @@ sap.ui.define(
         /*************************************************************************************/
         //Edit Email
         Controller.prototype._handleEmailEdit = function (oEvent) {
-            //Show Popup for Email Edit
+            var oModel = this.getView().getModel('oODataSvc'),
+                oParameters,
+                sBpNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/PartnerID'),
+                sPath,
+                oNNP = this.getView().getModel('oEditEmailNNP');
+
+            sPath = sPath = '/Partners' + '(\'' + sBpNum + '\')/EmailNNPs/';
+
+            //Preapre Popup for Email Edit to show
             this.getView().byId("idEmailEditPopup").setVisible(true);
             this._oEmailEditPopup = ute.ui.main.Popup.create({
                 //close: this._handleEditMailPopupClose,
@@ -864,9 +875,28 @@ sap.ui.define(
                 title: 'Email Address and Preferences'
             });
             this._oEmailEditPopup.setShowCloseButton(false);
-            this._oEmailEditPopup.open();
 
 
+
+            //
+
+
+            oParameters = {
+                /*urlParameters: {"$expand": "Buags"},*/
+                success : function (oData) {
+                    if (oData.results[0]) {
+                        this._oEmailEditPopup.open();
+                        oNNP.setData(oData.restults[0]);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("NNP Entity Service Error");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
         };
 
         Controller.prototype._onValidateEmailAddress = function (oEvent) {
