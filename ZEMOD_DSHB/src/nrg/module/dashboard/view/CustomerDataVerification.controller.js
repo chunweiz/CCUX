@@ -886,7 +886,9 @@ sap.ui.define(
         Controller.prototype._handleEmailEdit = function (oEvent) {
             var oModel = this.getView().getModel('oODataSvc'),
                 oParameters,
-                sBpNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/PartnerID'),
+                sBpNum = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+                sBpEmail = this.getView().getModel('oDtaVrfyBP').getProperty('/Email'),
+                sBpEmailConsum = this.getView().getModel('oDtaVrfyBP').getProperty('/EmailConsum'),
                 sPath,
                 oNNP = this.getView().getModel('oEditEmailNNP');
 
@@ -900,13 +902,13 @@ sap.ui.define(
             this._oEmailEditPopup.setShowCloseButton(false);
 
             //Start loading NNP logics and settings
-            sPath = sPath = '/Partners' + '(\'' + sBpNum + '\')/EmailNNPs/';
+            sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
             oParameters = {
                 /*urlParameters: {"$expand": "Buags"},*/
                 success : function (oData) {
-                    if (oData.results[0]) {
+                    if (oData) {
                         this._oEmailEditPopup.open();
-                        oNNP.setData(oData.results[0]);
+                        oNNP.setData(oData);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -945,6 +947,93 @@ sap.ui.define(
 
         };
 
+        Controller.prototype._onEditEmailSave = function (oEvent) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters,
+                sBpNum = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+                sBpEmail = this.getView().getModel('oDtaVrfyBP').getProperty('/Email'),
+                sBpEmailConsum = this.getView().getModel('oDtaVrfyBP').getProperty('/EmailConsum'),
+                oNNP = this.getView().getModel('oEditEmailNNP');
+
+
+
+            sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
+
+            oParameters = {
+                merge: false,
+                success : function (oData) {
+                    sap.ui.commons.MessageBox.alert('Ldap Message: ' + oNNP.getProperty('/LdapMessage'));
+                    this._oEmailEditPopup.close();
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Update Failed");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.update(sPath, oNNP.oData, oParameters);
+            }
+        };
+
+        Controller.prototype._onEditEmailDelete = function (oEvent) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters,
+                sBpNum = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+                sBpEmailConsum = this.getView().getModel('oDtaVrfyBP').getProperty('/EmailConsum'),
+                oNNP = this.getView().getModel('oEditEmailNNP');
+
+
+            oNNP.setProperty('/Email', '');
+            sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
+
+
+            oParameters = {
+                merge: false,
+                success : function (oData) {
+                    sap.ui.commons.MessageBox.alert('Email Successfully Removed');
+                    this._oEmailEditPopup.close();
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Update Failed");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.remove(sPath, oNNP.oData, oParameters);
+            }
+        };
+
+        Controller.prototype._onMktPrefTogg = function (oEvent) {
+            var oNNP = this.getView().getModel('oEditEmailNNP');
+
+            if (oEvent.mParameters.id.indexOf('ctaddr') > 0) {
+                if (oEvent.getSource().getLeftSelected()) {
+                    oNNP.setProperty('/Ecd', 'Y');
+                } else {
+                    oNNP.setProperty('/Ecd', 'N');
+                }
+            } else if (oEvent.mParameters.id.indexOf('rpdsrv') > 0) {
+                if (oEvent.getSource().getLeftSelected()) {
+                    oNNP.setProperty('/Mkt', 'Y');
+                } else {
+                    oNNP.setProperty('/Mkt', 'N');
+                }
+            } else if (oEvent.mParameters.id.indexOf('thrdpty') > 0) {
+                if (oEvent.getSource().getLeftSelected()) {
+                    oNNP.setProperty('/Offer', 'Y');
+                } else {
+                    oNNP.setProperty('/Offer', 'N');
+                }
+            } else { //('engeff')
+                if (oEvent.getSource().getLeftSelected()) {
+                    oNNP.setProperty('/Ee', 'Y');
+                } else {
+                    oNNP.setProperty('/Ee', 'N');
+                }
+            }
+        };
         /*************************************************************************************/
 
         return Controller;

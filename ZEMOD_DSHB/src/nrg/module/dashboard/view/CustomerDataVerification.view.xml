@@ -607,56 +607,62 @@
         <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
             <ute:ToggleButton id="idEmail_yn_ctaddr"
                 class="nrgDashboard-cusDataVerifyEditEmail-toggle"
-                design="ToggleDashboard"
+                design="ToggleDashboard" press="._onMktPrefTogg"
                 leftSelected="{
                     parts:['oEditEmailNNP>/Ecd'],
                     formatter:'._formatEmailMkt'}"
                 leftBtnWidth="45px" rightBtnWidth="45px"
-                leftBtnText="YES" rightBtnText="NO">
+                leftBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_Y}"
+                rightBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_N}">
             </ute:ToggleButton>
             <utmain:Label labelFor="idEmail_yn_ctaddr" text="Email Contract Documents"/>
         </ute:Tag>
         <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
             <ute:ToggleButton id="idEmail_yn_rpdsrv"
                 class="nrgDashboard-cusDataVerifyEditEmail-toggle"
-                design="ToggleDashboard"
+                design="ToggleDashboard" press="._onMktPrefTogg"
                 leftSelected="{
                     parts:['oEditEmailNNP>/Mkt'],
                     formatter:'._formatEmailMkt'}"
                 leftBtnWidth="45px" rightBtnWidth="45px"
-                leftBtnText="YES" rightBtnText="NO">
+                leftBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_Y}"
+                rightBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_N}">
             </ute:ToggleButton>
             <utmain:Label labelFor="idEmail_yn_rpdsrv" text="Reliant Products and Services"/>
         </ute:Tag>
         <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
             <ute:ToggleButton id="idEmail_yn_thrdpty"
                 class="nrgDashboard-cusDataVerifyEditEmail-toggle"
-                design="ToggleDashboard"
+                design="ToggleDashboard" press="._onMktPrefTogg"
                 leftSelected="{
                     parts:['oEditEmailNNP>/Offer'],
                     formatter:'._formatEmailMkt'}"
                 leftBtnWidth="45px" rightBtnWidth="45px"
-                leftBtnText="YES" rightBtnText="NO">
+                leftBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_Y}"
+                rightBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_N}">
             </ute:ToggleButton>
             <utmain:Label labelFor="idEmail_yn_thrdpty" text="Third Party offers and promototions (e.g. sports/special events)"/>
         </ute:Tag>
         <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
             <ute:ToggleButton id="idEmail_yn_engeff"
                 class="nrgDashboard-cusDataVerifyEditEmail-toggle"
-                design="ToggleDashboard"
+                design="ToggleDashboard" press="._onMktPrefTogg"
                 leftSelected="{
                     parts:['oEditEmailNNP>/Ee'],
                     formatter:'._formatEmailMkt'}"
                 leftBtnWidth="45px" rightBtnWidth="45px"
-                leftBtnText="YES" rightBtnText="NO">
+                leftBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_Y}"
+                rightBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_N}">
             </ute:ToggleButton>
             <utmain:Label labelFor="idEmail_yn_engeff" text="Energy Efficiency"/>
         </ute:Tag>
 
         <utmain:Button  id="idEditEmail_SaveBtn" class="nrgDashboard-cusDataVerifyEditEmail-actBtn"
-            text="Save"/>
+            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_SAVE}"
+            press="._onEditEmailSave"/>
         <utmain:Button  id="idEditEmail_DelBtn" class="nrgDashboard-cusDataVerifyEditEmail-actBtn"
-            text="Delete"/>
+            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_DEL}"
+            press="._onEditEmailDelete"/>
     </ute:Tag>
 
     <ute:Tag id="idAddrUpdatePopup" visible="false"
