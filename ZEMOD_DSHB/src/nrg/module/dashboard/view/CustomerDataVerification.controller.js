@@ -47,6 +47,10 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDayPhoneType');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEvnPhoneType');
 
+            //For EditEmail Popup
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailNNP');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailValidate');
+
             //Siebel Customer Indicator
             this.bSiebelCustomer = false;
 
@@ -363,6 +367,30 @@ sap.ui.define(
             }
 
 
+        };
+
+        Controller.prototype._formatEmailMkt = function (sIndicator) {
+            if (sIndicator === 'y' || sIndicator === 'Y') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        Controller.prototype._formatPositiveX = function (sIndicator) {
+            if (sIndicator === 'x' || sIndicator === 'X') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        Controller.prototype._formatNegativeX = function (sIndicator) {
+            if (sIndicator === 'x' || sIndicator === 'X') {
+                return false;
+            } else {
+                return true;
+            }
         };
 
         Controller.prototype._formatChecked = function (sIndicator) {
@@ -856,17 +884,64 @@ sap.ui.define(
         /*************************************************************************************/
         //Edit Email
         Controller.prototype._handleEmailEdit = function (oEvent) {
-            //var oEditEmail = this.getView().getModel('oDtaAddrEdit');
+            var oModel = this.getView().getModel('oODataSvc'),
+                oParameters,
+                sBpNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/PartnerID'),
+                sPath,
+                oNNP = this.getView().getModel('oEditEmailNNP');
 
+            //Preapre Popup for Email Edit to show
             this.getView().byId("idEmailEditPopup").setVisible(true);
-
             this._oEmailEditPopup = ute.ui.main.Popup.create({
                 //close: this._handleEditMailPopupClose,
                 content: this.getView().byId("idEmailEditPopup"),
                 title: 'Email Address and Preferences'
             });
+            this._oEmailEditPopup.setShowCloseButton(false);
 
-            this._oEmailEditPopup.open();
+            //Start loading NNP logics and settings
+            sPath = sPath = '/Partners' + '(\'' + sBpNum + '\')/EmailNNPs/';
+            oParameters = {
+                /*urlParameters: {"$expand": "Buags"},*/
+                success : function (oData) {
+                    if (oData.results[0]) {
+                        this._oEmailEditPopup.open();
+                        oNNP.setData(oData.results[0]);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("NNP Entity Service Error");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._onValidateEmailAddress = function (oEvent) {
+            var oEmailValidate = this.getView().getModel('oEditEmailValidate'),
+                oModel = this.getView().getModel('oODataSvc'),
+                oParameters,
+                sPath,
+                sEmailAddr = this.getView().getModel('oEditEmailNNP').getProperty('/Email');
+
+            sPath = '/EmailVerifys' + '(\'' + sEmailAddr + '\')';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        oEmailValidate.setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Email Validate Service Error");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
 
         };
 

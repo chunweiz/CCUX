@@ -5,6 +5,7 @@
           xmlns:u="ute.ui.commons"
           xmlns:um="ute.ui.main">
     <u:Tag class="nrgQPCC-root">
+        <u:Tag text="CREDIT CARD" />
         <u:Tag class="nrgQPCC-data">
             <u:Tag class="nrgQPCC-row nrgQPPay-top">
                 <u:Textfield placeholder=""

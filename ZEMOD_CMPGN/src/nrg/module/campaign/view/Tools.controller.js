@@ -149,7 +149,7 @@ sap.ui.define(
                 iCount,
                 oEFLJson = {},
                 aResults = [];
-            this.getOwnerComponent().setCcuxBusy(true);
+            //this.getOwnerComponent().setCcuxBusy(true);
             aFilterIds = ["Contract", "Type"];
             aFilterValues = ["32253375", "H"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -233,7 +233,7 @@ sap.ui.define(
             //to get access to the global model
             this.getView().addDependent(this._oHistoryDialog);
             this._oHistoryDialog.open();
-            that.getOwnerComponent().setCcuxBusy(false);
+            //that.getOwnerComponent().setCcuxBusy(false);
 
         };
 

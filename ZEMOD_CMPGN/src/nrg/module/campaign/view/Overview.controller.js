@@ -55,7 +55,7 @@ sap.ui.define(
                 iCount,
                 oEFLJson = {},
                 aResults = [];
-            this.getOwnerComponent().setCcuxBusy(true);
+            //this.getOwnerComponent().setCcuxBusy(true);
             this._sContract = oEvent.getParameter("arguments").coNum;
             this._sFlag = oEvent.getParameter("arguments").typeV.toUpperCase();
             aFilterIds = ["Contract"];
@@ -128,7 +128,7 @@ sap.ui.define(
                         path : sPath
                     });
                 }
-                that.getOwnerComponent().setCcuxBusy(false);
+                //that.getOwnerComponent().setCcuxBusy(false);
                 oBinding = oToggleContainer.getBinding("content");
                 oBinding.detachDataReceived(fnRecievedHandler);
             };
