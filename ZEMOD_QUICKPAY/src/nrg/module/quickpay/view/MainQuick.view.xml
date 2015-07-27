@@ -32,12 +32,14 @@
                         <core:Fragment fragmentName="nrg.module.quickpay.view.PaymentMethods" type="XML" />
                 </um:TabPanelItem>
                 <um:TabPanelItem key="tb002" class="nrgQPPay-tabPanelItem nrgQPPay-tabIcon">
+                    <u:Tag>
                           <um:Button press=".onStopRec"
                                          class="nrgQPPay-stopRec"
                                        id="idnrgQPPayBt-stopRec" design="None">
                              <core:Icon src="sap-icon://nrg-icon/handset" class="nrgQPPay-handset" />
                              <u:Tag text="{comp-i18n-quickpay>nrgQPStopRecording}" class="nrgQPPay-text"/>
                          </um:Button>
+                    </u:Tag>
                 </um:TabPanelItem>
                 <um:TabPanelItem key="tb003" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
                         <core:Fragment fragmentName="nrg.module.quickpay.view.CreditCard" type="XML" />
