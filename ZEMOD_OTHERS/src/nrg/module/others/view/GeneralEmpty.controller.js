@@ -32,7 +32,7 @@ sap.ui.define(
             oComponent.getApp().setOccupied(false);
 
             oRouteInfo = oEvent.getParameters();
-            if (oRouteInfo.confirmed && oRouteInfo.confirmed === 'X') {
+            if (oRouteInfo.CONFIRMED && oRouteInfo.CONFIRMED === 'X') {
                 oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo('dashboard.Bp', {
                     bpNum: oRouteInfo.bpNum
@@ -57,7 +57,7 @@ sap.ui.define(
             oComponent.getApp().setOccupied(false);
 
             oResponse = oEvent.getParameters();
-            if (oResponse.cancel && oResponse.cancel === 'X') {
+            if (oResponse.CANCEL && oResponse.CANCEL === 'X') {
                 jQuery.sap.log.info('[GeneralEmptyController._handleLogout()]', 'Logout cancelled by user');
             }
         };

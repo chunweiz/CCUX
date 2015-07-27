@@ -43,15 +43,15 @@ sap.ui.define(
             }
 
             oData = {};
-            oData.event = sEvent;
+            oData.EVENT = sEvent;
 
             if (oPayload) {
-                oData.payload = oPayload;
+                oData.PAYLOAD = oPayload;
             }
 
             if (fnCallback) {
-                oData.sid = this._getUniqueId();
-                this.attachEventOnce([ oData.event, oData.sid ].join('-'), fnCallback, oListener);
+                oData.SID = this._getUniqueId();
+                this.attachEventOnce([ oData.EVENT, oData.SID ].join('-'), fnCallback, oListener);
             }
 
             sMessage = JSON.stringify(oData);
@@ -70,16 +70,16 @@ sap.ui.define(
             }
 
             oData = JSON.parse(oEvent.data);
-            if (!oData || !oData.event) {
+            if (!oData || !oData.EVENT) {
                 return;
             }
 
             jQuery.sap.log.info('[WebUiManager._fromWebUi()]', oEvent.data);
 
-            if (oData.sid) {
-                this.fireEvent([ oData.event, oData.sid ].join('-'), oData.payload);
+            if (oData.SID) {
+                this.fireEvent([ oData.EVENT, oData.SID ].join('-'), oData.PAYLOAD);
             } else {
-                this.fireEvent(oData.event, oData.payload);
+                this.fireEvent(oData.EVENT, oData.PAYLOAD);
             }
         };
 

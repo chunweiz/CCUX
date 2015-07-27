@@ -10,13 +10,34 @@ sap.ui.define(
         'use strict';
 
         var QuickPayControl = Control.extend('nrg.module.quickpay.view.QuickPayControl', {
-            metadata: { },
-            renderer: function (rm, ctrl) {
+            metadata: {
+                defaultAggregation: "content",
+                aggregations: {
+                    content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' }
+                }
+            },
+            renderer: function (oRm, oCustomControl) {
+                var i,
+                    aChildren;
+                oRm.write('<div');
+                oRm.writeControlData(oCustomControl);
+               // oRm.addClass('uteAppHdrSMenu');
+                oRm.writeClasses();
+                oRm.write('>');
+
+                aChildren = oCustomControl.getContent();
+                for (i = 0; i < aChildren.length; i = i + 1) {
+                    oRm.renderControl(aChildren[i]);
+                }
+
+                oRm.write('</div>');
             }
         });
 
         QuickPayControl.prototype.init = function () {
-            this._oPaymentPopup = new Popup();
+            this._oPaymentPopup = new Popup(this, true, true);
+			var eDock = Popup.Dock;
+			this._oPaymentPopup.setPosition(eDock.CenterCenter, eDock.CenterCenter, window);
             this._oPaymentPopup.setShadow(false);
             this._oPaymentPopup.setModal(true);
             this._oPaymentPopup.setAutoClose(false);
@@ -30,13 +51,22 @@ sap.ui.define(
                 viewName: "nrg.module.quickpay.view.MainQuick"
             });
             that.getView().addDependent(oQuickPayView);
+            this.addContent(oQuickPayView);
             oQuickPayView.addStyleClass("nrgQPPay-View");
             this._oPaymentPopup.setInitialFocusId(this.getId());
             if (this._oPaymentPopup.isOpen()) {
-                this._oPaymentPopup.setContent(oQuickPayView);
+                //this._oPaymentPopup.setContent(oQuickPayView);
                 return this;
             }
-            this._oPaymentPopup.setContent(oQuickPayView);
+            this._oPaymentPopup.setContent(this);
+
+/*            if (this._oPaymentPopup === undefined) {
+                this._oPaymentPopup = new ute.ui.main.Popup.create({
+                    title: 'Change Campaign - Cancel',
+                    close: this._handleDialogClosed,
+                    content: oQuickPayView
+                });
+            }*/
             this._oPaymentPopup.open();
 
             return this;
