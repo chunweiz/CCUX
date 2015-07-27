@@ -36,9 +36,12 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onStopRec = function (oEvent) {
-            var oTabBarItem3 = this.getView().byId("idnrgQPPay-tabBarItem003");
-            this.getView().getParent().removeStyleClass("nrgQPPay-dialogPale");
-            this.getView().getParent().addStyleClass("nrgQPPay-dialogRegular");
+            var oTabBarItem3 = this.getView().byId("idnrgQPPay-tabBarItem003"),
+                oPopup = this.getView().byId("idnrgQPPay-Popup"),
+                oCloseButton = this.getView().byId("idnrgQPPayBt-close");
+            oPopup.removeStyleClass("nrgQPPay-Popup");
+            oPopup.addStyleClass("nrgQPPay-PopupWhite");
+            oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             oTabBarItem3.setSelected(true);
         };
         /**
@@ -104,6 +107,16 @@ sap.ui.define(
         Controller.prototype.onDeclineCredit = function (oEvent) {
             this._oPaymentDialog.open();
         };
+        /**
+		 * When Popup is closed
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onPopupClose = function (oEvent) {
+            this.getView().getParent().close();
+        };
+
         return Controller;
     }
 

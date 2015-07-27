@@ -1,142 +1,20 @@
-.nrgQPPay-dialogPale {
-            color : @nrgColor-white;
-            width: 340px;
-            height: 326px;
-            background-color: @nrgColor-blue-darkPale;
-    & > .sapUiDlgCont {
-            background-color: @nrgColor-blue-darkPale;
-    }
-    &   .sapUiDlgLabel {
-            color : @nrgColor-white;
-    }
-    &   .nrgQPPay-btn {
-            margin: 20px 10px 2px;
-            width: 7rem;
-            height: 28px;
-            padding: 5px;
-    }
-    &   .sapUiDlgHdr .sapUiDlgHdrBtns>.sapUiDlgCloseBtn::before {
-            background-color: @nrgColor-white;
-    }
-    &   .sapUiDlgHdr .sapUiDlgHdrBtns>.sapUiDlgCloseBtn::after {
-            background-color: @nrgColor-white;
-    }
-    &   .nrgQPPay-top  {
-            margin: 10px;
-    }
-    &   .nrgQPPay-ttl {
-            text-align: center;
-    }
-    &   .nrgQPPay-hide {
-            display:none;
-    }
-    &   .nrgQPPay-tabBar {
-            display:none;
-    }
-    &   .nrgQPPay-tabPanelItem {
-            background-color: transparent;
-    }
-    &   .nrgQPPay-handset {
-            font-size: 10rem;
-            width:100%;
-    }
-    &   .nrgQPPay-stopRec {
-            width:100%;
-
-    }
-    &   .nrgQPPay-text {
-            margin-top: 20px;
-    }
-    &   .nrgQPPay-tabIcon > .uteMTabPanelItem-content {
-            left:50px;
-    }
-    &   .sapUiDlgHdrSep {
-            height: 0px;
-            background-color: transparent;
-    }
-}
-.nrgQPPay-dialogRegular {
-            color : @nrgColor-grey-inactive;
-            width: 340px;
-            height: 326px;
-            font-family: @nrgFontFamily;
-            font-size : @nrgFontSize-small;
-    &   .sapUiDlgLabel {
-            color : @nrgColor-white;
-    }
-    &   .nrgQPPay-tabPanelItem {
-            background-color: transparent;
-    }
-    &   .nrgQPPay-top  {
-            margin-top: 10px;
-    }
-    &   .nrgQPPay-left  {
-            margin-left: 10px;
-    }
-    &   .nrgQPPay-ttl {
-            text-align: center;
-    }
-    &   .nrgQPPay-hide {
-            display:none;
-    }
-    &   .nrgQPPay-tabBar {
-            display:none;
-    }
-    &   .sapUiDlgHdrSep {
-            background-color: transparent;
-            height:0px;
-    }
-    &   .nrgQPCC-root {
-            width: 18rem;
-            height: 10rem;
-    }
-    &   .nrgQPCC-lbl  {
-            color : @nrgColor-grey-inactive;
-            font-family: @nrgFontFamily;
-            font-weight: @nrgFontWeight-regular;
-            font-size : @nrgFontSize-small;
-    }
-    &   .uteMDd-hdrContent {
-            width:11rem;
-    }
-    &   .nrgQPCC-DDL {
-            padding-right: 6px;
-    }
-    &   .uteMDd-picker {
-            width:12rem;
-    }
-    &   .uteTextfield-regular {
-            font-size : @nrgFontSize-small;
-    }
-    &   .nrgQPCC-row {
-            margin-left: 1rem;
-    }
-    &   .nrgQPCC-zipcode > .uteTextfield-regular {
-            margin-left: 25px;
-    }
-    &   .nrgQPCC-btn {
-            margin-left: 2rem;
-    }
-    &   .nrgQPCC-data {
-            background-color: @nrgColor-white;
-            padding: 10px;
-    }
-}
 .nrgQPPay-View {
-            width: 100%;
+/*            width: 100%;
             position: absolute;
             visibility: visible;
             z-index: 8;
             display: block;
             top: 15rem;
             left: auto;
-            text-align: center;
+            text-align: center;*/
             color : @nrgColor-white;
             font-family: @nrgFontFamily;
 
-    &    .nrgQPPay-root {
-            height:100%;
-            width:100%;
+    &    .nrgQPPay-tabPanelItem  {
+            width: 100%;
+            height: 100%;
+            margin-top: 2rem;
+            text-align: center;
     }
     &   .nrgQPPay-btn {
             margin: 20px 10px 2px;
@@ -158,26 +36,82 @@
             display: inline-block;
             position: relative;
             width: 340px;
-            height: 326px
+            height: 326px;
             background-color: @nrgColor-blue-darkPale;
+    }
+    &   .nrgQPPay-PopupHdr {
+            text-align: right;
     }
     &   .nrgQPPay-hdrBtn {
             display: inline-block;
     }
-    &   .nrgQPPayBt-close::before {
-            content: '';
-            position: absolute;
-            height: 18px;
-            width: 1px;
-            background-color: #4d4d4d;
-            transform: translate(8px,0)rotate(45deg);
+    &   .nrgQPPayBt-close{
+            width: 20px;
+            height: 20px;
+            position:relative;
+            border-radius:4px;
+    }
+    &   .nrgQPPay-btns {
+            background-color: @nrgColor-blue-darkPale;
+    }
+    &   .nrgQPPayBt-close::after,.nrgQPPayBt-close::before {
+            position:absolute;
+            top:9px;
+            left:0px;
+            content:'';
+            display:block;
+            width:20px;
+            height:2px;
+            background-color:@nrgColor-white;
+
     }
     &   .nrgQPPayBt-close::after {
-            content: '';
-            position: absolute;
-            height: 18px;
-            width: 1px;
-            background-color: #4d4d4d;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+
+    }
+    &   .nrgQPPayBt-close::before {
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
             transform: rotate(-45deg);
     }
+    &   .nrgQPPay-handset {
+            font-size: 10rem;
+            width:100%;
+    }
+    &   .nrgQPPay-stopRec {
+            width:100%;
+
+    }
+    &   .nrgQPPay-tabIcon  {
+            background-color: @nrgColor-blue-darkPale;
+    }
+    &   .nrgQPPay-text {
+            margin-top: 1rem;
+    }
+    &   .nrgQPPay-PopupWhite {
+            display: inline-block;
+            position: relative;
+            width: 340px;
+            height: 326px;
+            background-color: @nrgColor-blue-lightPale;
+    }
+    &   .nrgQPCC-data {
+            background-color:@nrgColor-blue-pearl;
+    }
+    &   .nrgQPPayBt-closeBG::after,.nrgQPPayBt-closeBG::before {
+            background-color:@nrgColor-grey-highlight;
+    }
+    &  .nrgQPPay-CC {
+            background-color: transparent;
+    }
+    &  .nrgQPPay-Pend {
+            margin-top: 1rem;
+    }
+
 }

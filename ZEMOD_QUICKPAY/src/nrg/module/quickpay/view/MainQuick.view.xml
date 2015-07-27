@@ -13,17 +13,18 @@
             <um:TabBarItem key="tb002"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-tabBarItem002" />
             <um:TabBarItem key="tb003"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-tabBarItem003" />
         </um:TabBar>
-        <u:Tag class="nrgQPPay-Popup">
+        <u:Tag class="nrgQPPay-Popup" id="idnrgQPPay-Popup">
             <u:Tag class="nrgQPPay-PopupHdr">
-                <um:Button press=".onSettings"
-                                         class="nrgQPPay-hdrBtn"
+<!--                <um:Button press=".onSettings"
+                                         class="nrgQPPay-hdrBtn nrgQPPay-setting"
                                        id="idnrgQPPayBt-settings" design="None">
                     <core:Icon src="sap-icon://nrg-icon/gear" class="nrgQPPay-gear" />
-                </um:Button>
+                </um:Button>-->
                 <um:Button press=".onPopupClose"
-                                         class="nrgQPPay-hdrBtn"
-                                       id="idnrgQPPayBt-close" design="None">
-                    <u:Tag class="nrgQPPayBt-close" text="X" />
+                                         class="nrgQPPay-close"
+                                        design="None">
+                   <u:Tag class="nrgQPPayBt-close" id="idnrgQPPayBt-close" />
+
                 </um:Button>
             </u:Tag>
             <um:TabPanel tabPanelFor="nrgTabBar" design="None" class="nrgQPPay-tabPanel">
@@ -38,7 +39,7 @@
                              <u:Tag text="{comp-i18n-quickpay>nrgQPStopRecording}" class="nrgQPPay-text"/>
                          </um:Button>
                 </um:TabPanelItem>
-                <um:TabPanelItem key="tb003" class="nrgQPPay-tabPanelItem nrgQPPay-tabIcon">
+                <um:TabPanelItem key="tb003" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
                         <core:Fragment fragmentName="nrg.module.quickpay.view.CreditCard" type="XML" />
                 </um:TabPanelItem>
             </um:TabPanel>
