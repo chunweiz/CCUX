@@ -578,21 +578,29 @@
         </ute:Tag>
         <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-inputArea">
             <ute:Textfield fieldType="Underlined"
-                change="._onPoBoxEdit"
-                label="Email"
+                label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_Email}"
                 editable="true" width="200px"
-                value="test@123.com"/>
+                value="{oEditEmailNNP>/Email}"/>
              <utmain:Button class="nrgDashboard-cusDataVerifyEditEmail-inputArea-btn"
-                text="Validate Email Address"
+                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_VlBtn}"
                 press="._onValidateEmailAddress"/>
-            <ute:Tag visible="false" class="nrgDashboard-cusDataVerifyEditEmail-inputArea-nresult">
-                <core:Icon src="sap-icon://nrg-icon/notification"/>
-                <ute:TextView text="Success or fail"/>
+            <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-inputArea-nresult"
+                visible="{
+                    parts:['oEditEmailValidate>/Valid'],
+                    formatter:'._formatNegativeX'}">
+                <core:Icon src="sap-icon://nrg-icon/notification"
+                    visible="{
+                        parts:['oEditEmailValidate>/ColorIcon'],
+                        formatter:'._formatEmailMkt'}"/>
+                <ute:TextView text="{oEditEmailValidate>/Result}"/>
             </ute:Tag>
-            <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult">
+            <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult"
+                visible="{
+                    parts:['oEditEmailValidate>/Valid'],
+                    formatter:'._formatPositiveX'}">
                 <utmain:Checkbox enabled="false" checked="true"
                     class="nrgDashboard-cusDataVerifyEditEmail-inputArea-yresultChb"/>
-                <ute:TextView text="Success"/>
+                <ute:TextView text="{oEditEmailValidate>/Result}"/>
             </ute:Tag>
         </ute:Tag>
 
@@ -600,8 +608,10 @@
             <ute:ToggleButton id="idEmail_yn_ctaddr"
                 class="nrgDashboard-cusDataVerifyEditEmail-toggle"
                 design="ToggleDashboard"
-                leftSelected="true"
-                leftBtnWidth="50px" rightBtnWidth="50px"
+                leftSelected="{
+                    parts:['oEditEmailNNP>/Ecd'],
+                    formatter:'._formatEmailMkt'}"
+                leftBtnWidth="45px" rightBtnWidth="45px"
                 leftBtnText="YES" rightBtnText="NO">
             </ute:ToggleButton>
             <utmain:Label labelFor="idEmail_yn_ctaddr" text="Email Contract Documents"/>
@@ -610,8 +620,10 @@
             <ute:ToggleButton id="idEmail_yn_rpdsrv"
                 class="nrgDashboard-cusDataVerifyEditEmail-toggle"
                 design="ToggleDashboard"
-                leftSelected="true"
-                leftBtnWidth="50px" rightBtnWidth="50px"
+                leftSelected="{
+                    parts:['oEditEmailNNP>/Mkt'],
+                    formatter:'._formatEmailMkt'}"
+                leftBtnWidth="45px" rightBtnWidth="45px"
                 leftBtnText="YES" rightBtnText="NO">
             </ute:ToggleButton>
             <utmain:Label labelFor="idEmail_yn_rpdsrv" text="Reliant Products and Services"/>
@@ -620,8 +632,10 @@
             <ute:ToggleButton id="idEmail_yn_thrdpty"
                 class="nrgDashboard-cusDataVerifyEditEmail-toggle"
                 design="ToggleDashboard"
-                leftSelected="true"
-                leftBtnWidth="50px" rightBtnWidth="50px"
+                leftSelected="{
+                    parts:['oEditEmailNNP>/Offer'],
+                    formatter:'._formatEmailMkt'}"
+                leftBtnWidth="45px" rightBtnWidth="45px"
                 leftBtnText="YES" rightBtnText="NO">
             </ute:ToggleButton>
             <utmain:Label labelFor="idEmail_yn_thrdpty" text="Third Party offers and promototions (e.g. sports/special events)"/>
@@ -630,8 +644,10 @@
             <ute:ToggleButton id="idEmail_yn_engeff"
                 class="nrgDashboard-cusDataVerifyEditEmail-toggle"
                 design="ToggleDashboard"
-                leftSelected="true"
-                leftBtnWidth="50px" rightBtnWidth="50px"
+                leftSelected="{
+                    parts:['oEditEmailNNP>/Ee'],
+                    formatter:'._formatEmailMkt'}"
+                leftBtnWidth="45px" rightBtnWidth="45px"
                 leftBtnText="YES" rightBtnText="NO">
             </ute:ToggleButton>
             <utmain:Label labelFor="idEmail_yn_engeff" text="Energy Efficiency"/>

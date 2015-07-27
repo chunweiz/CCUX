@@ -49,6 +49,7 @@ sap.ui.define(
 
             //For EditEmail Popup
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailNNP');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailValidate');
 
             //Siebel Customer Indicator
             this.bSiebelCustomer = false;
@@ -366,6 +367,30 @@ sap.ui.define(
             }
 
 
+        };
+
+        Controller.prototype._formatEmailMkt = function (sIndicator) {
+            if (sIndicator === 'y' || sIndicator === 'Y') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        Controller.prototype._formatPositiveX = function (sIndicator) {
+            if (sIndicator === 'x' || sIndicator === 'X') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        Controller.prototype._formatNegativeX = function (sIndicator) {
+            if (sIndicator === 'x' || sIndicator === 'X') {
+                return false;
+            } else {
+                return true;
+            }
         };
 
         Controller.prototype._formatChecked = function (sIndicator) {
@@ -895,6 +920,28 @@ sap.ui.define(
         };
 
         Controller.prototype._onValidateEmailAddress = function (oEvent) {
+            var oEmailValidate = this.getView().getModel('oEditEmailValidate'),
+                oModel = this.getView().getModel('oODataSvc'),
+                oParameters,
+                sPath,
+                sEmailAddr = this.getView().getModel('oEditEmailNNP').getProperty('/Email');
+
+            sPath = '/EmailVerifys' + '(\'' + sEmailAddr + '\')';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        oEmailValidate.setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Email Validate Service Error");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
 
         };
 
