@@ -582,9 +582,18 @@
                 label="Email"
                 editable="true" width="200px"
                 value="test@123.com"/>
-             <utmain:Button
-                text="{Validate Email Address}"
+             <utmain:Button class="nrgDashboard-cusDataVerifyEditEmail-inputArea-btn"
+                text="Validate Email Address"
                 press="._onValidateEmailAddress"/>
+            <ute:Tag visible="false" class="nrgDashboard-cusDataVerifyEditEmail-inputArea-nresult">
+                <core:Icon src="sap-icon://nrg-icon/notification"/>
+                <ute:TextView text="Success or fail"/>
+            </ute:Tag>
+            <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult">
+                <utmain:Checkbox enabled="false" checked="true"
+                    class="nrgDashboard-cusDataVerifyEditEmail-inputArea-yresultChb"/>
+                <ute:TextView text="Success"/>
+            </ute:Tag>
         </ute:Tag>
 
         <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
@@ -627,6 +636,11 @@
             </ute:ToggleButton>
             <utmain:Label labelFor="idEmail_yn_engeff" text="Energy Efficiency"/>
         </ute:Tag>
+
+        <utmain:Button  id="idEditEmail_SaveBtn" class="nrgDashboard-cusDataVerifyEditEmail-actBtn"
+            text="Save"/>
+        <utmain:Button  id="idEditEmail_DelBtn" class="nrgDashboard-cusDataVerifyEditEmail-actBtn"
+            text="Delete"/>
     </ute:Tag>
 
     <ute:Tag id="idAddrUpdatePopup" visible="false"

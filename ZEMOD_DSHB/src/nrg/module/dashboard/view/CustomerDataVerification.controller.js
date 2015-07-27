@@ -856,17 +856,16 @@ sap.ui.define(
         /*************************************************************************************/
         //Edit Email
         Controller.prototype._handleEmailEdit = function (oEvent) {
-            //var oEditEmail = this.getView().getModel('oDtaAddrEdit');
-
+            //Show Popup for Email Edit
             this.getView().byId("idEmailEditPopup").setVisible(true);
-
             this._oEmailEditPopup = ute.ui.main.Popup.create({
                 //close: this._handleEditMailPopupClose,
                 content: this.getView().byId("idEmailEditPopup"),
                 title: 'Email Address and Preferences'
             });
-
+            this._oEmailEditPopup.setShowCloseButton(false);
             this._oEmailEditPopup.open();
+
 
         };
 

@@ -525,9 +525,43 @@
         margin-bottom: 20px;
     }
 
+    & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-nresult span{
+        color: @nrgColor-red-alert;
+    }
+
+    & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-nresult > div{
+        display: inline-block;
+        margin-left: 5px;
+        color: @nrgColor-red-alert;
+    }
+
+    & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult > div{
+        display: inline-block;
+    }
+
+    & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresultChb > label{
+        border-color: @nrgColor-green-highlight;
+        background: transparent;
+    }
+
+    & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresultChb > label::before{
+        border-color: @nrgColor-green-highlight !important;
+        background: transparent !important;
+    }
+
+    & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult span{
+        color: @nrgColor-green-highlight;
+        margin-left: 5px;
+    }
+
+
     & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > span > label, & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > span > input{
         font-weight: @nrgFontWeight-semiBold;
         color: @nrgColor-grey-dark;
+    }
+
+    & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-btn{
+        margin-left: 50px;
     }
 
     & > .nrgDashboard-cusDataVerifyEditEmail-option > .nrgDashboard-cusDataVerifyEditEmail-toggle{
@@ -542,5 +576,9 @@
         font-size: @nrgFontSize-small;
         font-weight: @nrgFontWeight-semiBold;
         color: @nrgColor-grey-dark;
+    }
+
+    & > .nrgDashboard-cusDataVerifyEditEmail-actBtn{
+        margin-left: 120px;
     }
 }
