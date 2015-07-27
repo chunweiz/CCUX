@@ -570,17 +570,62 @@
         </l:MatrixLayout>
     </ute:Tag>
 
-    <ute:Tag id="idEmailEditPopup" visible="false">
-        <ute:Tag>
+    <ute:Tag id="idEmailEditPopup" visible="false"
+        class="nrgDashboard-cusDataVerifyEditEmail">
+        <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-desc">
             <ute:TextView
                 text="No new papaer e-mail edit logic"/>
         </ute:Tag>
-        <ute:Tag>
+        <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-inputArea">
             <ute:Textfield fieldType="Underlined"
                 change="._onPoBoxEdit"
                 label="Email"
                 editable="true" width="200px"
                 value="test@123.com"/>
+             <utmain:Button
+                text="{Validate Email Address}"
+                press="._onValidateEmailAddress"/>
+        </ute:Tag>
+
+        <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
+            <ute:ToggleButton id="idEmail_yn_ctaddr"
+                class="nrgDashboard-cusDataVerifyEditEmail-toggle"
+                design="ToggleDashboard"
+                leftSelected="true"
+                leftBtnWidth="50px" rightBtnWidth="50px"
+                leftBtnText="YES" rightBtnText="NO">
+            </ute:ToggleButton>
+            <utmain:Label labelFor="idEmail_yn_ctaddr" text="Email Contract Documents"/>
+        </ute:Tag>
+        <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
+            <ute:ToggleButton id="idEmail_yn_rpdsrv"
+                class="nrgDashboard-cusDataVerifyEditEmail-toggle"
+                design="ToggleDashboard"
+                leftSelected="true"
+                leftBtnWidth="50px" rightBtnWidth="50px"
+                leftBtnText="YES" rightBtnText="NO">
+            </ute:ToggleButton>
+            <utmain:Label labelFor="idEmail_yn_rpdsrv" text="Reliant Products and Services"/>
+        </ute:Tag>
+        <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
+            <ute:ToggleButton id="idEmail_yn_thrdpty"
+                class="nrgDashboard-cusDataVerifyEditEmail-toggle"
+                design="ToggleDashboard"
+                leftSelected="true"
+                leftBtnWidth="50px" rightBtnWidth="50px"
+                leftBtnText="YES" rightBtnText="NO">
+            </ute:ToggleButton>
+            <utmain:Label labelFor="idEmail_yn_thrdpty" text="Third Party offers and promototions (e.g. sports/special events)"/>
+        </ute:Tag>
+        <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
+            <ute:ToggleButton id="idEmail_yn_engeff"
+                class="nrgDashboard-cusDataVerifyEditEmail-toggle"
+                design="ToggleDashboard"
+                leftSelected="true"
+                leftBtnWidth="50px" rightBtnWidth="50px"
+                leftBtnText="YES" rightBtnText="NO">
+            </ute:ToggleButton>
+            <utmain:Label labelFor="idEmail_yn_engeff" text="Energy Efficiency"/>
         </ute:Tag>
     </ute:Tag>
 

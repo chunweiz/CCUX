@@ -870,6 +870,10 @@ sap.ui.define(
 
         };
 
+        Controller.prototype._onValidateEmailAddress = function (oEvent) {
+
+        };
+
         /*************************************************************************************/
 
         return Controller;
