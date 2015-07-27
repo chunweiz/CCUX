@@ -865,8 +865,6 @@ sap.ui.define(
                 sPath,
                 oNNP = this.getView().getModel('oEditEmailNNP');
 
-            sPath = sPath = '/Partners' + '(\'' + sBpNum + '\')/EmailNNPs/';
-
             //Preapre Popup for Email Edit to show
             this.getView().byId("idEmailEditPopup").setVisible(true);
             this._oEmailEditPopup = ute.ui.main.Popup.create({
@@ -876,17 +874,14 @@ sap.ui.define(
             });
             this._oEmailEditPopup.setShowCloseButton(false);
 
-
-
-            //
-
-
+            //Start loading NNP logics and settings
+            sPath = sPath = '/Partners' + '(\'' + sBpNum + '\')/EmailNNPs/';
             oParameters = {
                 /*urlParameters: {"$expand": "Buags"},*/
                 success : function (oData) {
                     if (oData.results[0]) {
                         this._oEmailEditPopup.open();
-                        oNNP.setData(oData.restults[0]);
+                        oNNP.setData(oData.results[0]);
                     }
                 }.bind(this),
                 error: function (oError) {
