@@ -32,6 +32,25 @@
                               text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-TITLE_NAME}"/>
             </utmain:headerContent>
             <utmain:content>
+                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
+                         text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-TITLE}:" />
+                <utmain:Dropdown design="Default"
+                                 class="nrgDashboard-cusDataBpInfo-dropdown"
+                                 content="{ODataBpTitles>/results}"
+                                 selectedKey="{ODataBpName>/Title}"
+                                 select=".onSelectedTitle"
+                                 enabled="{oBpInfoConfig>/titleEditable}">
+                    <utmain:DropdownItem key="{ODataBpTitles>Key}">
+                        <ute:Tag text="{ODataBpTitles>Value}" class="nrgDashboard-cusDataBpInfo-cnt_Dropdown"/>
+                    </utmain:DropdownItem>
+                </utmain:Dropdown>
+                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl-r"
+                          text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-MAIDEN_NAME}:" />
+                <ute:Textfield fieldType="Noborder"
+                               class="nrgDashboard-cusDataBpInfo-cnt"
+                               editable="{oBpInfoConfig>/titleEditable}"
+                               value="{ODataBpName>/MaidenName}"/>
+
                 <l:MatrixLayout
                     class="nrgDashboard-cusDataBpInfo-layout"
                     widths="500px,500px" columns="2" width="100%">
@@ -40,26 +59,7 @@
                             <l:cells>
                                 <!--Area Left-->
                                 <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
-                                    <l:MatrixLayout widths="25%,75%" columns="2">
-                                        <l:MatrixLayoutRow>
-                                            <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
-                                                         text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-TITLE}:" />
-                                            </l:MatrixLayoutCell>
-                                            <l:MatrixLayoutCell>
-                                                <utmain:Dropdown design="Default"
-                                                                 class="nrgDashboard-cusDataBpInfo-dropdown"
-                                                                 content="{ODataBpTitles>/results}"
-                                                                 selectedKey="{ODataBpName>/Title}"
-                                                                 select=".onSelectedTitle"
-                                                                 enabled="{oBpInfoConfig>/titleEditable}">
-                                                    <utmain:DropdownItem key="{ODataBpTitles>Key}">
-                                                       <ute:Tag text="{ODataBpTitles>Value}" class="nrgDashboard-cusDataBpInfo-cnt"/>
-                                                    </utmain:DropdownItem>
-                                                </utmain:Dropdown>
-                                            </l:MatrixLayoutCell>
-                                        </l:MatrixLayoutRow>
-                                    </l:MatrixLayout>
+
                                     <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
@@ -112,20 +112,6 @@
 
                             <!--Area right-->
                                 <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
-                                    <l:MatrixLayout widths="25%,75%" columns="2">
-                                        <l:MatrixLayoutRow>
-                                            <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
-                                                         text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-MAIDEN_NAME}:" />
-                                            </l:MatrixLayoutCell>
-                                            <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
-                                                               class="nrgDashboard-cusDataBpInfo-cnt"
-                                                               editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{ODataBpName>/MaidenName}"/>
-                                            </l:MatrixLayoutCell>
-                                        </l:MatrixLayoutRow>
-                                    </l:MatrixLayout>
                                     <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>

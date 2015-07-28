@@ -1,4 +1,5 @@
 /*globals sap*/
+/*globals ute*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -224,10 +225,10 @@ sap.ui.define(
 
         CustomController.prototype.onAddrSave = function () {
             var oModel = this.getView().getModel('oODataSvc'),
-            sPath,
-            oParameters,
-            aFilters = this._createAddrValidateFilters(),
-            oMailEdit = this.getView().getModel('oDtaAddrEdit');
+                sPath,
+                oParameters,
+                aFilters = this._createAddrValidateFilters(),
+                oMailEdit = this.getView().getModel('oDtaAddrEdit');
 
             sPath = '/BpAddresses' + '(PartnerID=\'' + this._bpNum + '\',AddressID=\'' + this._addressID + '\')';
 
@@ -452,7 +453,7 @@ sap.ui.define(
             };
             for (i = 0; i < this.getView().getModel('oDataBpMarkPreferSet').oData.results.length; i = i + 1) {
                 if (JSON.stringify(this.getView().getModel('oDataBpMarkPreferSet').oData.results[i]) === JSON.stringify(this.oDataBpMarkPreferSetBak.results[i])) {
-//                    sap.ui.commons.MessageBox.alert("There is no change for Market Perference index: " + i.toString());
+                    sap.ui.commons.MessageBox.alert("There is no change for Market Perference index: " + i.toString());
                 } else {
                     attibuteSet = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/AttributeSet');
                     attribute = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/Attribute');
@@ -627,7 +628,7 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         if (oData.results[0]) {
-                            if(!this._addressID) {
+                            if (!this._addressID) {
                                 this._addressID = oData.results[0].AddressID;
                             }
                             this.getView().getModel('oDataBpAddress').setData(oData);
@@ -817,7 +818,7 @@ sap.ui.define(
                 urlParameters: {},
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Address Update Success");
-                    this._retrBpAddress(bpNumber);
+                    this._retrBpAddress(sBpNum);
                     this._oMailEditPopup.close();
                 }.bind(this),
                 error: function (oError) {
