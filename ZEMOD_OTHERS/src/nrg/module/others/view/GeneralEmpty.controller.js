@@ -29,13 +29,13 @@ sap.ui.define(
             var oComponent, oRouter, oRouteInfo;
 
             oComponent = this.getOwnerComponent();
-            oComponent.getApp().setOccupied(false);
+            oComponent.getCcuxApp().setOccupied(false);
 
             oRouteInfo = oEvent.getParameters();
             if (oRouteInfo.CONFIRMED && oRouteInfo.CONFIRMED === 'X') {
                 oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo('dashboard.Bp', {
-                    bpNum: oRouteInfo.bpNum
+                    bpNum: oRouteInfo.BP_NUM
                 });
             }
         };
@@ -46,7 +46,7 @@ sap.ui.define(
             oComponent = this.getOwnerComponent();
             oWebUiManager = oComponent.getCcuxWebUiManager();
 
-            oComponent.getApp().setOccupied(true);
+            oComponent.getCcuxApp().setOccupied(true);
             oWebUiManager.notifyWebUi('logout', {}, this._handleLogout, this);
         };
 
