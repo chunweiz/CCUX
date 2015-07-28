@@ -19,7 +19,7 @@ sap.ui.define(
             oComponent = this.getOwnerComponent();
             oWebUiManager = oComponent.getCcuxWebUiManager();
 
-            oComponent.getApp().setOccupied(true);
+            oComponent.getCcuxApp().setOccupied(true);
             oWebUiManager.notifyWebUi('bpConfirmed', {
                 bpNum: '0002955761'
             }, this._handleBpConfirmed, this);
@@ -32,7 +32,7 @@ sap.ui.define(
             oComponent.getApp().setOccupied(false);
 
             oRouteInfo = oEvent.getParameters();
-            if (oRouteInfo.confirmed && oRouteInfo.confirmed === 'X') {
+            if (oRouteInfo.CONFIRMED && oRouteInfo.CONFIRMED === 'X') {
                 oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo('dashboard.Bp', {
                     bpNum: oRouteInfo.bpNum
@@ -54,10 +54,10 @@ sap.ui.define(
             var oComponent, oResponse;
 
             oComponent = this.getOwnerComponent();
-            oComponent.getApp().setOccupied(false);
+            oComponent.getCcuxApp().setOccupied(false);
 
             oResponse = oEvent.getParameters();
-            if (oResponse.cancel && oResponse.cancel === 'X') {
+            if (oResponse.CANCEL && oResponse.CANCEL === 'X') {
                 jQuery.sap.log.info('[GeneralEmptyController._handleLogout()]', 'Logout cancelled by user');
             }
         };

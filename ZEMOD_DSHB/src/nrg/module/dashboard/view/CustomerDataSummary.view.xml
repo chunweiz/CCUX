@@ -22,24 +22,27 @@
                 }"
                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CIClr}"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CITxt}">
+                <ute:tooltip><c:RichTooltip  text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CISummary}"/></ute:tooltip>
             </ute:Badge>
             <ute:Badge id="idBadgeCC" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
                 visible="{
-                    parts:['oSmryBpInf>/BadgeCC'],
+                    parts:['oSmryBuagInf>/BadgeCC'],
                     formatter:'._formatBadge'
                 }"
                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CCClr}"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CCTxt}">
+                <ute:tooltip><c:RichTooltip  text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_CCSummary}"/></ute:tooltip>
             </ute:Badge>
             <ute:Badge id="idBadgeSN" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
                 visible="{
-                    parts:['oSmryBpInf>/BadgeSN'],
+                    parts:['oSmryBuagInf>/BadgeSN'],
                     formatter:'._formatBadge'
                 }"
                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SNClr}"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SNTxt}">
+                <ute:tooltip><c:RichTooltip  text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SNSummary}"/></ute:tooltip>
             </ute:Badge>
             <ute:Badge id="idBadgeRS" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
@@ -49,6 +52,7 @@
                 }"
                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RSClr}"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RSTxt}">
+                <ute:tooltip><c:RichTooltip  text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RSSummary}"/></ute:tooltip>
             </ute:Badge>
             <ute:Badge id="idBadgeBC" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
@@ -58,24 +62,27 @@
                 }"
                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_BCClr}"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_BCTxt}">
+                <ute:tooltip><c:RichTooltip  text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_BCSummary}"/></ute:tooltip>
             </ute:Badge>
             <ute:Badge id="idBadgeRHS" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
                 visible="{
-                    parts:['oSmryBpInf>/BadgeRXS'],
+                    parts:['oSmryBuagInf>/BadgeRHS'],
                     formatter:'._formatBadge'
                 }"
                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RHSClr}"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RHSTxt}">
+                <ute:tooltip><c:RichTooltip  text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RHSSummary}"/></ute:tooltip>
             </ute:Badge>
             <ute:Badge id="idBadgeSS" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
                 visible="{
-                    parts:['oSmryBpInf>/BadgeSS'],
+                    parts:['oSmryBuagInf>/BadgeSS'],
                     formatter:'._formatBadge'
                 }"
                 design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SSClr}"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SSTxt}">
+                <ute:tooltip><c:RichTooltip  text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SSSummary}"/></ute:tooltip>
             </ute:Badge>
             <!--Badges End-->
             <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">

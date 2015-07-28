@@ -1,5 +1,5 @@
 <mvc:View
-    controllerName="nrg.module.app.view.App"
+    controllerName="nrg.module.app.view.CcuxApp"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc"

@@ -10,7 +10,7 @@ sap.ui.define(
     function (Controller, App) {
         'use strict';
 
-        var CustomController = Controller.extend('nrg.module.app.view.App');
+        var CustomController = Controller.extend('nrg.module.app.view.CcuxApp');
 
         CustomController.prototype.onInit = function () {
             this._oApp = new App(this);

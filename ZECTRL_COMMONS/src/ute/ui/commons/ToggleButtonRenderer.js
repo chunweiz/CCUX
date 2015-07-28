@@ -13,7 +13,7 @@ sap.ui.define(['jquery.sap.global'],
             rm.writeControlData(oToggleButton);
             rm.addStyle('width', this._calTotalWidth(oToggleButton));
             if (oToggleButton.getHeight()) {
-                rm.addStyle('height', this.getHeight());
+                rm.addStyle('height', oToggleButton.getHeight());
             }
             switch (oToggleButton.getDesign()) {
             case 'ToggleCampaign':
