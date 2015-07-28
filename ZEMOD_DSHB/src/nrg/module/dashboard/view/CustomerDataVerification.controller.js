@@ -951,20 +951,37 @@ sap.ui.define(
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
-                sBpNum = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
-                sBpEmail = this.getView().getModel('oDtaVrfyBP').getProperty('/Email'),
-                sBpEmailConsum = this.getView().getModel('oDtaVrfyBP').getProperty('/EmailConsum'),
-                oNNP = this.getView().getModel('oEditEmailNNP');
+                sBpNum = this.getView().getModel('oEditEmailNNP').getProperty('/PartnerID'),
+                sBpEmail = this.getView().getModel('oEditEmailNNP').getProperty('/Email'),
+                sBpEmailConsum = this.getView().getModel('oEditEmailNNP').getProperty('/EmailConsum'),
+                oNNP = this.getView().getModel('oEditEmailNNP'),
+                bEmailChanged = true;
+
+            if (sBpEmail === this.getView().getModel('oDtaVrfyBP').getProperty('/Email')) {
+                bEmailChanged = false;
+            } else {
+                bEmailChanged = true;
+            }
 
 
+            if (sBpEmailConsum === '000') {   //If it is 'CREATE'
+                sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'\')';
+                oNNP.setProperty('/EmailConsum', '');
+            } else {    //If it is 'UPDATE'
+                sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
+            }
 
-            sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
 
             oParameters = {
                 merge: false,
                 success : function (oData) {
-                    sap.ui.commons.MessageBox.alert('Ldap Message: ' + oNNP.getProperty('/LdapMessage'));
+                    if (bEmailChanged) {
+                        sap.ui.commons.MessageBox.alert(oNNP.getProperty('/LdapMessage'));
+                    } else {
+                        sap.ui.commons.MessageBox.alert('Marketing Preference Updated Successfully');
+                    }
                     this._oEmailEditPopup.close();
+                    this._initDtaVrfRetr();
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Update Failed");
@@ -980,28 +997,34 @@ sap.ui.define(
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
-                sBpNum = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
-                sBpEmailConsum = this.getView().getModel('oDtaVrfyBP').getProperty('/EmailConsum'),
+                sBpNum = this.getView().getModel('oEditEmailNNP').getProperty('/PartnerID'),
+                //sBpEmailConsum = this.getView().getModel('oDtaVrfyBP').getProperty('/EmailConsum');
                 oNNP = this.getView().getModel('oEditEmailNNP');
 
 
-            oNNP.setProperty('/Email', '');
-            sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
+            //oNNP.setProperty('/Email', '');
+            sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'\'' + ',EmailConsum=\'\')';
 
 
             oParameters = {
-                merge: false,
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert('Email Successfully Removed');
                     this._oEmailEditPopup.close();
+                    this._initDtaVrfRetr();
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Update Failed");
+                    this._oEmailEditPopup.close();
                 }.bind(this)
             };
 
-            if (oModel) {
-                oModel.remove(sPath, oNNP.oData, oParameters);
+            if ((oNNP.getProperty('/Ecd') === 'Y') || (oNNP.getProperty('/Mkt') === 'Y') || (oNNP.getProperty('/Offer') === 'Y') || (oNNP.getProperty('/Ee') === 'Y')) {
+                sap.ui.commons.MessageBox.alert("Set all marketing values to false first");
+                return;
+            } else {
+                if (oModel) {
+                    oModel.remove(sPath, oParameters);
+                }
             }
         };
 
