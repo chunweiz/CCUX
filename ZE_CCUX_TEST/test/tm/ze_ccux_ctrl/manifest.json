@@ -2,6 +2,7 @@
     "name": "test.tm.ze_ccux_ctrl.Component",
 
     "sap.ui5": {
+
         "resources": {
             "css": [
                 { "uri": "../../../../../ZELIB/normalize.css/normalize.css" },
