@@ -19,7 +19,7 @@ sap.ui.define(
             oComponent = this.getOwnerComponent();
             oWebUiManager = oComponent.getCcuxWebUiManager();
 
-            oComponent.getApp().setOccupied(true);
+            oComponent.getCcuxApp().setOccupied(true);
             oWebUiManager.notifyWebUi('bpConfirmed', {
                 bpNum: '0002955761'
             }, this._handleBpConfirmed, this);
@@ -54,7 +54,7 @@ sap.ui.define(
             var oComponent, oResponse;
 
             oComponent = this.getOwnerComponent();
-            oComponent.getApp().setOccupied(false);
+            oComponent.getCcuxApp().setOccupied(false);
 
             oResponse = oEvent.getParameters();
             if (oResponse.CANCEL && oResponse.CANCEL === 'X') {

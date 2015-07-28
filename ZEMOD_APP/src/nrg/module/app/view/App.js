@@ -65,13 +65,9 @@ sap.ui.define(
             bOccupied = !!bOccupied;
 
             if (bOccupied) {
-                if (!this._oBusyDialog().isOpen()) {
-                    this._oBusyDialog.open();
-                }
+                this._oBusyDialog.open();
             } else {
-                if (this._oBusyDialog().isOpen()) {
-                    this._oBusyDialog.close();
-                }
+                this._oBusyDialog.close();
             }
 
             return this;

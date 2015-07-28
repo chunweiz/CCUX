@@ -38,7 +38,7 @@
         },
 
         "rootView": {
-            "viewName": "nrg.module.app.view.App",
+            "viewName": "nrg.module.app.view.CcuxApp",
             "type": "XML"
         },
 
