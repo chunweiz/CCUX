@@ -15,6 +15,8 @@ sap.ui.define(
 
                 this._oController = oController;
                 this._oApp = oApp;
+                this._aNavLeftListener = [];
+                this._aNavRightListener = [];
             },
 
             metadata: {
@@ -49,7 +51,6 @@ sap.ui.define(
             oBodyContent.setLayout(AppBody.ContentLayoutType.Default);
 
             this.showNavLeft(false);
-
             this.showNavRight(false);
         };
 
@@ -62,6 +63,33 @@ sap.ui.define(
 
             return this;
         };
+        
+        AppBody.prototype.attachNavLeft = function (fnCallback, oListener) {
+            this._aNavLeftListener.forEach(function (oNavLeft) {
+                if (oNavLeft.fnCallback === fnCallback && oNavLeft.oListener === oListener) {
+                    return;
+                }
+            });
+            
+            this.attachEvent(AppBody.Event.NavLeftClick, fnCallback, oListener);
+            
+            this._aNavLeftListener.push({
+                fnCallback: fnCallback,
+                oListener: oListener
+            });
+            
+            return this;
+        };
+        
+        AppBody.prototype.detachNavLeft = function (fnCallback, oListener) {
+            this._aNavLeftListener.forEach(function (oNavLeft) {
+                
+                
+                this.detachEvent(AppBody.Event.NavLeftClick, fnCallback, oListener);
+            }.bind(this));
+            
+            return this;
+        };
 
         AppBody.prototype.showNavLeft = function (bShow) {
             var oNavLeftElem = this._oController.getView().byId('appBodyNavLeft');
@@ -72,6 +100,18 @@ sap.ui.define(
                 oNavLeftElem.$().addClass('nrgU-displayNone');
             }
 
+            return this;
+        };
+        
+        AppBody.prototype.attachNavRight = function (fnCallback, oListener) {
+            
+            this.attachEvent(AppBody.Event.NavRightClick, fnCallback, oListener);
+            return this;
+        };
+        
+        AppBody.prototype.detachNavRight = function (fnCallback, oListener) {
+            
+            this.detachEvent(AppBody.Event.NavRightClick, fnCallback, oListener);
             return this;
         };
 
