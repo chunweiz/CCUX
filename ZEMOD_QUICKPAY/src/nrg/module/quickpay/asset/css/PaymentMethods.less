@@ -1,13 +1,12 @@
 .nrgQPPay-View {
+            @nrgQPPay-maxWidth: 340px;
             color : @nrgColor-white;
             font-family: @nrgFontFamily;
+            font-size:@nrgFontSize-small;
 
     &    .nrgQPPay-tabPanelItem  {
             width: 100%;
             height: 100%;
-            margin-top: 2rem;
-            text-align: center;
-
     }
     &   .nrgQPPay-btn {
             margin: 20px 10px 2px;
@@ -16,19 +15,16 @@
             padding: 5px;
     }
     &   .nrgQPPay-top  {
-            margin: 10px;
-    }
-    &   .nrgQPPay-ttl {
-            text-align: center;
+            margin-top: 5px;
     }
     &   .nrgQPPay-tabPanelItem > .uteMTabPanelItem-content {
-            width: 100%;
+            width: @nrgQPPay-maxWidth;
             height: 100%;
     }
     &   .nrgQPPay-Popup {
             display: inline-block;
             position: relative;
-            width: 340px;
+            width: @nrgQPPay-maxWidth;
             height: 326px;
             background-color: @nrgColor-blue-darkPale;
     }
@@ -46,6 +42,7 @@
     }
     &   .nrgQPPay-btns {
             background-color: @nrgColor-blue-darkPale;
+            text-align: center;
     }
     &   .nrgQPPayBt-close::after,.nrgQPPayBt-close::before {
             position:absolute;
@@ -56,21 +53,11 @@
             width:20px;
             height:2px;
             background-color:@nrgColor-white;
-
     }
     &   .nrgQPPayBt-close::after {
-            -webkit-transform: rotate(45deg);
-            -moz-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            -o-transform: rotate(45deg);
             transform: rotate(45deg);
-
     }
     &   .nrgQPPayBt-close::before {
-            -webkit-transform: rotate(-45deg);
-            -moz-transform: rotate(-45deg);
-            -ms-transform: rotate(-45deg);
-            -o-transform: rotate(-45deg);
             transform: rotate(-45deg);
     }
     &   .nrgQPPay-handset {
@@ -79,7 +66,7 @@
     }
     &   .nrgQPPay-stopRec {
             width:100%;
-
+            text-align: center;
     }
     &   .nrgQPPay-tabIcon  {
             background-color: @nrgColor-blue-darkPale;
@@ -90,12 +77,14 @@
     &   .nrgQPPay-PopupWhite {
             display: inline-block;
             position: relative;
-            width: 340px;
+            width: @nrgQPPay-maxWidth;
             height: 326px;
             background-color: @nrgColor-blue-lightPale;
     }
     &   .nrgQPCC-data {
             background-color:@nrgColor-blue-pearl;
+            margin: 1rem 2rem 1rem 2rem;
+            padding: 1px;
     }
     &   .nrgQPPayBt-closeBG::after,.nrgQPPayBt-closeBG::before {
             background-color:@nrgColor-grey-highlight;
@@ -105,6 +94,47 @@
     }
     &  .nrgQPPay-Pend {
             margin-top: 1rem;
+    }
+    &  .nrgQPCC-root {
+            color: @nrgColor-grey-inactive;
+    }
+    &  .nrgQPCC-btn {
+            margin: 5px;
+    }
+    &  .nrgQPCC-ttl {
+            font-weight: @nrgFontWeight-semiBold;
+            text-align: left;
+            position: relative;
+            left: 1.5rem;
+    }
+    &  .nrgQPCC-lbl {
+            display:inline-block;
+    }
+    &  .nrgQPPay-TF {
+            display:inline-block;
+            width: 75%;
+    }
+    &  .nrgQPCC-DDI {
+            width:8.5rem;
+    }
+    &   .nrgQPCC-DDL {
+            width:12rem;
+            margin: 2px 2px 2px 25px;
+    }
+    &  .uteTextfield-regular {
+            font-size:@nrgFontSize-small;
+    }
+    &  .nrgQPCC-input {
+            margin-left: 25px;
+    }
+    &  .uteMDd-hdrContent {
+            width:8.5rem;
+    }
+    &  .nrgQPCC-cvv {
+            margin-left: 25px;
+    }
+    &  .nrgQPCC-zipcode {
+            margin-left:20px;
     }
 
 }

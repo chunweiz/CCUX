@@ -42,6 +42,7 @@ sap.ui.define(
             this._oPaymentPopup.setModal(true);
             this._oPaymentPopup.setAutoClose(false);
             this._oPaymentPopup.setDurations(0, 0);
+            this._oPaymentPopup.setFollowOf(true);
         };
 
 
