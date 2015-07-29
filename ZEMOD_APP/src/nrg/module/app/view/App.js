@@ -120,12 +120,12 @@ sap.ui.define(
         };
 
         App.prototype.attachNavLeft = function (fnCallback, oListener) {
-            this._oAppBody.attachEvent(AppBody.Event.NavLeftClick, fnCallback, oListener);
+            this._oAppBody.attachNavLeft(fnCallback, oListener);
             return this;
         };
 
         App.prototype.detachNavLeft = function (fnCallback, oListener) {
-            this._oAppBody.detachEvent(AppBody.Event.NavLeftClick, fnCallback, oListener);
+            this._oAppBody.detachNavLeft(fnCallback, oListener);
             return this;
         };
 
@@ -135,12 +135,12 @@ sap.ui.define(
         };
 
         App.prototype.attachNavRight = function (fnCallback, oListener) {
-            this._oAppBody.attachEvent(AppBody.Event.NavRightClick, fnCallback, oListener);
+            this._oAppBody.attachNavRight(fnCallback, oListener);
             return this;
         };
 
         App.prototype.detachNavRight = function (fnCallback, oListener) {
-            this._oAppBody.detachEvent(AppBody.Event.NavRightClick, fnCallback, oListener);
+            this._oAppBody.detachNavRight(fnCallback, oListener);
             return this;
         };
 

@@ -51,7 +51,10 @@ sap.ui.define(
             oBodyContent.setLayout(AppBody.ContentLayoutType.Default);
 
             this.showNavLeft(false);
+            this._detachAllNavLeft();
+
             this.showNavRight(false);
+            this._detachAllNavRight();
         };
 
         AppBody.prototype.setContentLayout = function (sContentLayoutType) {
@@ -82,11 +85,13 @@ sap.ui.define(
         };
         
         AppBody.prototype.detachNavLeft = function (fnCallback, oListener) {
-            this._aNavLeftListener.forEach(function (oNavLeft) {
-                
-                
-                this.detachEvent(AppBody.Event.NavLeftClick, fnCallback, oListener);
-            }.bind(this));
+            this._aNavLeftListener.forEach(function (oNavLeft, iIndex, aListener) {
+                if (oNavLeft.fnCallback === fnCallback && oNavLeft.oListener === oListener) {
+                    aListener.splice(iIndex, 1);
+                }
+            });
+
+            this.detachEvent(AppBody.Event.NavLeftClick, fnCallback, oListener);
             
             return this;
         };
@@ -104,12 +109,28 @@ sap.ui.define(
         };
         
         AppBody.prototype.attachNavRight = function (fnCallback, oListener) {
+            this._aNavRightListener.forEach(function (oNavRight) {
+                if (oNavRight.fnCallback === fnCallback && oNavRight.oListener === oListener) {
+                    return;
+                }
+            });
             
             this.attachEvent(AppBody.Event.NavRightClick, fnCallback, oListener);
+
+            this._aNavRightListener.push({
+                fnCallback: fnCallback,
+                oListener: oListener
+            });
+
             return this;
         };
         
         AppBody.prototype.detachNavRight = function (fnCallback, oListener) {
+            this._aNavRightListener.forEach(function (oNavRight, iIndex, aListener) {
+                if (oNavRight.fnCallback === fnCallback && oNavRight.oListener === oListener) {
+                    aListener.splice(iIndex, 1);
+                }
+            });
             
             this.detachEvent(AppBody.Event.NavRightClick, fnCallback, oListener);
             return this;
@@ -141,10 +162,42 @@ sap.ui.define(
             });
         };
 
+        AppBody.prototype._detachAllNavLeft = function () {
+            var i;
+
+            for (i = 0; i < this._aNavLeftListener.length; i = i + 1) {
+                this.detachEvent(
+                    AppBody.Event.NavLeftClick,
+                    this._aNavLeftListener[i].fnCallback,
+                    this._aNavLeftListener[i].oListener
+                );
+            }
+
+            this._aNavLeftListener = [];
+
+            return this;
+        };
+
         AppBody.prototype._onNavRightClick = function (oControlEvent) {
             this.fireEvent(AppBody.Event.NavRightPress, {
                 source: oControlEvent.getSource()
             });
+        };
+
+        AppBody.prototype._detachAllNavRight = function () {
+            var i;
+
+            for (i = 0; i < this._aNavRightListener.length; i = i + 1) {
+                this.detachEvent(
+                    AppBody.Event.NavRightClick,
+                    this._aNavRightListener[i].fnCallback,
+                    this._aNavRightListener[i].oListener
+                );
+            }
+
+            this._aNavRightListener = [];
+
+            return this;
         };
 
         return AppBody;
