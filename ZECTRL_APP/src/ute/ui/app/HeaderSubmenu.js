@@ -49,7 +49,7 @@ sap.ui.define(
         CustomControl.prototype.setPosition = function (oRef, sOffset) {
             this._oPopup.setPosition(
                 Popup.Dock.LeftBottom,
-                Popup.Dock.LeftBottom,
+                Popup.Dock.LeftTop,
                 oRef,
                 sOffset
             );

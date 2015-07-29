@@ -53,6 +53,7 @@ sap.ui.define(
         });
 
         App.HMItemId = AppHeader.HMItemId;
+        App.QuickLinkId = AppHeader.QuickLinkId;
         App.LayoutType = AppBody.ContentLayoutType;
 
         App.prototype.reset = function () {

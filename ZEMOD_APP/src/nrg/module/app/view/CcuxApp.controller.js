@@ -20,6 +20,17 @@ sap.ui.define(
             return this._oApp;
         };
 
+        CustomController.prototype._onQuickLinkClick = function (oControlEvent) {
+            this._oApp.setHeaderMenuItemSelected(false, App.HMItemId.Menu);
+
+            switch (oControlEvent.getSource().getId()) {
+            case App.QuickLinkId.Dashboard:
+                break;
+            case App.QuickLinkId.Campaign:
+                break;
+            }
+        };
+
         return CustomController;
     }
 );

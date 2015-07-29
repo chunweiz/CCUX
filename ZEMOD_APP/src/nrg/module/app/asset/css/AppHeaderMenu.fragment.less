@@ -1,3 +1,63 @@
 .nrgAppHdrMenu {
 
+
+    & .nrgAppHdrMenu-inner {
+        position: relative;
+        margin: 20px 0;
+
+        & .nrgAppHdrMenu-content {
+            display: inline-block;
+
+            & .nrgAppHdrMenu-link {
+                display: block;
+                width: 200px;
+                margin: 0 10px;
+
+                &:hover {
+                    color: @nrgColor-white;
+                    cursor: pointer;
+                }
+
+                & .nrgAppHdrMenu-linkIcon {
+                    font-size: @nrgFontSize-largest;
+                    margin: 10px;
+                }
+
+                & .nrgAppHdrMenu-linkText {
+                    display: inline-block;
+                    transform: translateY(-5px);
+                }
+
+                &.nrgAppHdrMenu-link-underline {
+                    border-bottom: 1px solid @nrgColor-blue-light;
+                }
+            }
+        }
+
+        & .nrgAppHdrMenu-dashboardContent {
+            display: inline-block;
+            top: 50%;
+            transform: translateY(50%);
+
+            & .nrgAppHdrMenu-dashboardLink {
+                display: block;
+                width: 200px;
+
+                &:hover {
+                    color: @nrgColor-white;
+                    cursor: pointer;
+                }
+
+                & .nrgAppHdrMenu-dashboardLinkIcon {
+                    font-size: @nrgFontSize-jumbo;
+                    margin: 10px;
+                }
+
+                & .nrgAppHdrMenu-dashboardLinkText {
+                    display: inline-block;
+                    transform: translateY(-5px);
+                }
+            }
+        }
+    }
 }

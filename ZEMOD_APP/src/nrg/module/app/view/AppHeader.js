@@ -41,6 +41,20 @@ sap.ui.define(
             ClearAcc: 'appHMItemClearAcc'
         };
 
+        AppHeader.QuickLinkId = {
+            Dashboard: 'dashboard',
+            BusinessEnrollment: 'bizEnroll',
+            ResidentialEnrollment: 'resEnroll',
+            History: 'history',
+            ServiceOrder: 'serviceOrder',
+            Campaign: 'campaign',
+            HighBill: 'highBill',
+            RHS: 'rhs',
+            ContactLog: 'contactLog',
+            Billing: 'billing',
+            BusinessPartner: 'bupa'
+        };
+
         AppHeader.prototype.init = function () {
             this._registerHMItemEvents();
         };
@@ -87,9 +101,11 @@ sap.ui.define(
                         this._closeSubmenu(sHMItemId);
                     }
 
+                    oHMItem.setSelected(bSelected);
+                    oHMItem.deselectOthers();
+
                 } else {
                     if (bSelected) {
-                        //TODO: Implementation for each links
                         oHMItem.setSelected(false);
                         oHMItem.deselectOthers();
                         this._closeAllSubmenus();
@@ -200,8 +216,8 @@ sap.ui.define(
 
                 if (sFragmentId) {
                     oView = this._oController.getView();
-                    this._oSubmenuDlg[sSubmenuId] = sap.ui.xmlfragment(sFragmentId);
-                    this._oSubmenuDlg[sSubmenuId].setPosition(oView.byId('appHdr'), '0 20');
+                    this._oSubmenuDlg[sSubmenuId] = sap.ui.xmlfragment(sFragmentId, this._oController);
+                    this._oSubmenuDlg[sSubmenuId].setPosition(oView.byId('appHdr'), '0 0');
                     oView.addDependent(this._oSubmenuDlg[sSubmenuId]);
                 }
             }

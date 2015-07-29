@@ -36,7 +36,7 @@ sap.ui.define(
         };
 
         Manager.prototype._unsubscribeWebUi = function () {
-            var oWebUiManager = this._oComponent.getWebUiManager();
+            var oWebUiManager = this._oComponent.getCcuxWebUiManager();
             oWebUiManager.detachEvent('navigate', this._onWebUiNavigate, this);
         };
 
@@ -62,9 +62,19 @@ sap.ui.define(
         };
 
         Manager.prototype._onRouteMatched = function (oEvent) {
-            var oRoute = oEvent.getParameters();
+            var oRoute, oApp, oWebUiManager;
 
-            //TODO: Intercept routing
+            oRoute = oEvent.getParameters();
+
+            oApp = this._oComponent.getCcuxApp();
+            if (oApp) {
+                oApp.reset();
+            }
+
+            oWebUiManager = this._oComponent.getCcuxWebUiManager();
+            if (oWebUiManager) {
+                oWebUiManager.notifyWebUi('resetTimeOut');
+            }
         };
 
         Manager.prototype.destroy = function () {
