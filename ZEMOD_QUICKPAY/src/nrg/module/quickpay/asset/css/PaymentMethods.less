@@ -1,50 +1,51 @@
 .nrgQPPay-View {
             @nrgQPPay-maxWidth: 340px;
+            @nrgQPPay-marginleft: 2.4rem;
             color : @nrgColor-white;
             font-family: @nrgFontFamily;
-            font-size:@nrgFontSize-small;
+            font-size:@nrgFontSize-smaller;
 
     &    .nrgQPPay-tabPanelItem  {
             width: 100%;
             height: 100%;
     }
-    &   .nrgQPPay-btn {
+    &    .nrgQPPay-btn {
             margin: 20px 10px 2px;
             width: 7rem;
             height: 28px;
             padding: 5px;
     }
-    &   .nrgQPPay-top  {
+    &    .nrgQPPay-top  {
             margin-top: 5px;
     }
-    &   .nrgQPPay-tabPanelItem > .uteMTabPanelItem-content {
+    &    .nrgQPPay-tabPanelItem > .uteMTabPanelItem-content {
             width: @nrgQPPay-maxWidth;
             height: 100%;
     }
-    &   .nrgQPPay-Popup {
+    &    .nrgQPPay-Popup {
             display: inline-block;
             position: relative;
             width: @nrgQPPay-maxWidth;
             height: 326px;
             background-color: @nrgColor-blue-darkPale;
     }
-    &   .nrgQPPay-PopupHdr {
+    &    .nrgQPPay-PopupHdr {
             text-align: right;
     }
-    &   .nrgQPPay-hdrBtn {
+    &    .nrgQPPay-hdrBtn {
             display: inline-block;
     }
-    &   .nrgQPPayBt-close{
+    &    .nrgQPPayBt-close{
             width: 20px;
             height: 20px;
             position:relative;
             border-radius:4px;
     }
-    &   .nrgQPPay-btns {
+    &    .nrgQPPay-btns {
             background-color: @nrgColor-blue-darkPale;
             text-align: center;
     }
-    &   .nrgQPPayBt-close::after,.nrgQPPayBt-close::before {
+    &    .nrgQPPayBt-close::after,.nrgQPPayBt-close::before {
             position:absolute;
             top:9px;
             left:0px;
@@ -54,87 +55,98 @@
             height:2px;
             background-color:@nrgColor-white;
     }
-    &   .nrgQPPayBt-close::after {
+    &    .nrgQPPayBt-close::after {
             transform: rotate(45deg);
     }
-    &   .nrgQPPayBt-close::before {
+    &    .nrgQPPayBt-close::before {
             transform: rotate(-45deg);
     }
-    &   .nrgQPPay-handset {
+    &    .nrgQPPay-handset {
             font-size: 10rem;
             width:100%;
     }
-    &   .nrgQPPay-stopRec {
+    &    .nrgQPPay-stopRec {
             width:100%;
             text-align: center;
     }
-    &   .nrgQPPay-tabIcon  {
+    &    .nrgQPPay-tabIcon  {
             background-color: @nrgColor-blue-darkPale;
     }
-    &   .nrgQPPay-text {
+    &    .nrgQPPay-text {
             margin-top: 1rem;
+            font-size: @nrgFontSize-small;
     }
-    &   .nrgQPPay-PopupWhite {
+    &    .nrgQPPay-PopupWhite {
             display: inline-block;
             position: relative;
             width: @nrgQPPay-maxWidth;
             height: 326px;
             background-color: @nrgColor-blue-lightPale;
     }
-    &   .nrgQPCC-data {
+    &    .nrgQPCC-data {
             background-color:@nrgColor-blue-pearl;
             margin: 1rem 2rem 1rem 2rem;
-            padding: 1px;
+            padding: 10px 0px 10px 0px;
     }
-    &   .nrgQPPayBt-closeBG::after,.nrgQPPayBt-closeBG::before {
+    &    .nrgQPPayBt-closeBG::after,.nrgQPPayBt-closeBG::before {
             background-color:@nrgColor-grey-highlight;
     }
-    &  .nrgQPPay-CC {
+    &    .nrgQPPay-CC {
             background-color: transparent;
     }
-    &  .nrgQPPay-Pend {
+    &    .nrgQPPay-Pend {
             margin-top: 1rem;
     }
-    &  .nrgQPCC-root {
+    &    .nrgQPCC-root {
             color: @nrgColor-grey-inactive;
     }
-    &  .nrgQPCC-btn {
-            margin: 5px;
+    &    .nrgQPCC-btn {
+            margin: 5px 5px 5px 0px;
+            min-width: 5rem;
     }
-    &  .nrgQPCC-ttl {
+    &    .nrgQPCC-ttl {
             font-weight: @nrgFontWeight-semiBold;
             text-align: left;
             position: relative;
             left: 1.5rem;
+            font-size: @nrgFontSize-small;
     }
-    &  .nrgQPCC-lbl {
+    &    .nrgQPPay-ttl {
+            font-size: @nrgFontSize-small;
+    }
+    &    .nrgQPCC-lbl {
             display:inline-block;
     }
-    &  .nrgQPPay-TF {
+    &    .nrgQPPay-TF {
             display:inline-block;
-            width: 75%;
+            width: 80%;
     }
-    &  .nrgQPCC-DDI {
+    &    .nrgQPCC-DDI {
             width:8.5rem;
     }
-    &   .nrgQPCC-DDL {
+    &    .nrgQPCC-DDL {
             width:12rem;
-            margin: 2px 2px 2px 25px;
+            margin: 2px 2px 2px @nrgQPPay-marginleft;
     }
-    &  .uteTextfield-regular {
+    &    .uteTextfield-regular {
             font-size:@nrgFontSize-small;
     }
-    &  .nrgQPCC-input {
-            margin-left: 25px;
+    &    .nrgQPCC-input {
+            margin-left: @nrgQPPay-marginleft;
     }
-    &  .uteMDd-hdrContent {
+    &    .uteMDd-hdrContent {
             width:8.5rem;
     }
-    &  .nrgQPCC-cvv {
-            margin-left: 25px;
+    &    .nrgQPCC-cvv {
+            margin-left: @nrgQPPay-marginleft;
     }
-    &  .nrgQPCC-zipcode {
+    &    .nrgQPCC-zipcode {
             margin-left:20px;
     }
-
+    &    .nrgQPPay-left {
+            margin-left: 4.4rem;
+    }
+    &    .nrgQPCC-DDLWR {
+            margin: 2px 2px 2px 4.4rem;
+    }
 }

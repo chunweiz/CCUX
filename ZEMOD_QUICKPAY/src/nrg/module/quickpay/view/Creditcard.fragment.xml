@@ -58,7 +58,7 @@
             <u:Tag class="nrgQPPay-top">
                     <um:Dropdown id="idnrgQPCC-WR"
                              placeholder="WAIVE PROCESSING FEE"
-                             class="nrgQPCC-DDL">
+                             class="nrgQPCC-DDLWR">
                     <um:DropdownItem class="nrgCamChgRr-DdLItem">
                         <u:Tag>
                               <u:Tag text="Reason1" />
@@ -76,7 +76,7 @@
                     </um:DropdownItem>
                 </um:Dropdown>
             </u:Tag>
-            <u:Tag class="nrgQPPay-top" >
+            <u:Tag class="nrgQPPay-top nrgQPPay-left" >
                 <um:Button id="idnrgQPPayBtn-Ok"
                            press=".onAcceptCredit"
                            text="PAY"
