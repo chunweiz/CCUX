@@ -25,8 +25,8 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onCreditCard = function (oEvent) {
-            var oTabBarItem2 = this.getView().byId("idnrgQPPay-tabBarItem002");
-            oTabBarItem2.setSelected(true);
+            var oTBIStopRec = this.getView().byId("idnrgQPPay-TBIStopRec");
+            oTBIStopRec.setSelected(true);
 
         };
         /**
@@ -36,13 +36,13 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onStopRec = function (oEvent) {
-            var oTabBarItem3 = this.getView().byId("idnrgQPPay-tabBarItem003"),
+            var oTBICC = this.getView().byId("idnrgQPPay-TBICC"),
                 oPopup = this.getView().byId("idnrgQPPay-Popup"),
                 oCloseButton = this.getView().byId("idnrgQPPayBt-close");
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupWhite");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
-            oTabBarItem3.setSelected(true);
+            oTBICC.setSelected(true);
         };
         /**
 		 * Bank Draft Process initialization
@@ -51,7 +51,13 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onBankDraft = function (oEvent) {
-            this._oPaymentDialog.open();
+            var oTBIBD = this.getView().byId("idnrgQPPay-TBIBD"),
+                oPopup = this.getView().byId("idnrgQPPay-Popup"),
+                oCloseButton = this.getView().byId("idnrgQPPayBt-close");
+            oPopup.removeStyleClass("nrgQPPay-Popup");
+            oPopup.addStyleClass("nrgQPPay-PopupWhite");
+            oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
+            oTBIBD.setSelected(true);
         };
         /**
 		 * Receipt Process initialization
@@ -60,7 +66,13 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onReceipt = function (oEvent) {
-            this._oPaymentDialog.open();
+            var oTBIRC = this.getView().byId("idnrgQPPay-TBIRC"),
+                oPopup = this.getView().byId("idnrgQPPay-Popup"),
+                oCloseButton = this.getView().byId("idnrgQPPayBt-close");
+            oPopup.removeStyleClass("nrgQPPay-Popup");
+            oPopup.addStyleClass("nrgQPPay-PopupWhite");
+            oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
+            oTBIRC.setSelected(true);
         };
         /**
 		 * Reliant Card Process initialization
@@ -69,7 +81,13 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onReliantCard = function (oEvent) {
-            this._oPaymentDialog.open();
+            var oTBIRD = this.getView().byId("idnrgQPPay-TBIRD"),
+                oPopup = this.getView().byId("idnrgQPPay-Popup"),
+                oCloseButton = this.getView().byId("idnrgQPPayBt-close");
+            oPopup.removeStyleClass("nrgQPPay-Popup");
+            oPopup.addStyleClass("nrgQPPay-PopupWhite");
+            oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
+            oTBIRD.setSelected(true);
         };
         /**
 		 * Pending Credit Card Process initialization
@@ -116,6 +134,17 @@ sap.ui.define(
         Controller.prototype.onPopupClose = function (oEvent) {
             this.getView().getParent().close();
         };
+        /**
+         * Handler for Adding new Bank draft
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onAddBD = function (oEvent) {
+            var oTBIAddBD = this.getView().byId("idnrgQPPay-TBIAddBD");
+            oTBIAddBD.setSelected(true);
+        };
+
 
         return Controller;
     }
