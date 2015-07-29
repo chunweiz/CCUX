@@ -9,9 +9,13 @@
     <u:Tag class="nrgToolsEmpty nrgAppMain-toolsContent nrgAppMain-toolsContent-full">
 
         <um:TabBar id="nrgTabBar" design="None" class="nrgQPPay-tabBar">
-            <um:TabBarItem key="tb001" design="None"  selected="true" class="nrgQPPay-tabBarItem" id="idnrgQPPay-tabBarItem001" />
-            <um:TabBarItem key="tb002"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-tabBarItem002" />
-            <um:TabBarItem key="tb003"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-tabBarItem003" />
+            <um:TabBarItem key="buttons" design="None"  selected="true" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBIbuttons" />
+            <um:TabBarItem key="StopRec"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBIStopRec" />
+            <um:TabBarItem key="CC"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBICC" />
+            <um:TabBarItem key="BD"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBIBD" />
+            <um:TabBarItem key="RC"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBIRC" />
+            <um:TabBarItem key="RD"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBIRD" />
+            <um:TabBarItem key="AddBD"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBIAddBD" />
         </um:TabBar>
         <u:Tag class="nrgQPPay-Popup" id="idnrgQPPay-Popup">
             <u:Tag class="nrgQPPay-PopupHdr">
@@ -28,10 +32,10 @@
                 </um:Button>
             </u:Tag>
             <um:TabPanel tabPanelFor="nrgTabBar" design="None" class="nrgQPPay-tabPanel">
-                <um:TabPanelItem key="tb001" class="nrgQPPay-tabPanelItem">
+                <um:TabPanelItem key="buttons" class="nrgQPPay-tabPanelItem">
                         <core:Fragment fragmentName="nrg.module.quickpay.view.PaymentMethods" type="XML" />
                 </um:TabPanelItem>
-                <um:TabPanelItem key="tb002" class="nrgQPPay-tabPanelItem nrgQPPay-tabIcon">
+                <um:TabPanelItem key="StopRec" class="nrgQPPay-tabPanelItem nrgQPPay-tabIcon">
                     <u:Tag>
                           <um:Button press=".onStopRec"
                                          class="nrgQPPay-stopRec"
@@ -41,8 +45,20 @@
                          </um:Button>
                     </u:Tag>
                 </um:TabPanelItem>
-                <um:TabPanelItem key="tb003" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
+                <um:TabPanelItem key="CC" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
                         <core:Fragment fragmentName="nrg.module.quickpay.view.CreditCard" type="XML" />
+                </um:TabPanelItem>
+                <um:TabPanelItem key="BD" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
+                        <core:Fragment fragmentName="nrg.module.quickpay.view.BankDraft" type="XML" />
+                </um:TabPanelItem>
+                <um:TabPanelItem key="RC" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
+                        <core:Fragment fragmentName="nrg.module.quickpay.view.Receipt" type="XML" />
+                </um:TabPanelItem>
+                <um:TabPanelItem key="RD" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
+                        <core:Fragment fragmentName="nrg.module.quickpay.view.Redemption" type="XML" />
+                </um:TabPanelItem>
+                <um:TabPanelItem key="AddBD" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
+                        <core:Fragment fragmentName="nrg.module.quickpay.view.AddBankDraft" type="XML" />
                 </um:TabPanelItem>
             </um:TabPanel>
         </u:Tag>

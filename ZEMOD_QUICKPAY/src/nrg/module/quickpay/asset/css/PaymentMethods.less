@@ -85,11 +85,15 @@
     }
     &    .nrgQPCC-data {
             background-color:@nrgColor-blue-pearl;
-            margin: 1rem 2rem 1rem 2rem;
+            margin: 0.5rem 2rem 0.5rem 2rem;
             padding: 10px 0px 10px 0px;
     }
-    &    .nrgQPPayBt-closeBG::after,.nrgQPPayBt-closeBG::before {
-            background-color:@nrgColor-grey-highlight;
+    &    .nrgQPCC-dataBD {
+            margin: 0.5rem 2rem 0.5rem 2rem;
+            padding: 10px 0px 10px 0px;
+    }
+    &    .nrgQPPayBt-closeBG::after, .nrgQPPayBt-closeBG::before {
+            background-color:@nrgColor-grey-inactive;
     }
     &    .nrgQPPay-CC {
             background-color: transparent;
@@ -116,6 +120,10 @@
     }
     &    .nrgQPCC-lbl {
             display:inline-block;
+    }
+    &    .nrgQPCC-lblAdd {
+            display:inline-block;
+            font-weight:@nrgFontWeight-bold;
     }
     &    .nrgQPPay-TF {
             display:inline-block;
@@ -148,5 +156,41 @@
     }
     &    .nrgQPCC-DDLWR {
             margin: 2px 2px 2px 4.4rem;
+    }
+    &    .nrgQPCC-DdlValue {
+            font-size: @nrgFontSize-small;
+            padding: 2px 2px 2px 5px;
+    }
+    &    .nrgQPCC-DDL .uteMDd-hdrContent-placeholder {
+            font-size: @nrgFontSize-small;
+            padding: 2px 2px 2px 5px;
+    }
+    &    .nrgQPCC-DDLWRItem {
+            width: 8rem;
+    }
+    &    .nrgQPCC-Rdmlbl {
+            border: 1px solid;
+            min-height: 30px;
+            margin-left: 4.4rem;
+            min-width: 10rem;
+            display: inline-block;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 22px;
+            border-radius: 2px;
+            background-color: @nrgColor-grey-dark;
+    }
+    &    .nrgQPCC-Addbtn {
+            padding:0px;
+            color:@nrgColor-blueLink;
+    }
+    &    .nrgQPCC-BDlbl {
+            margin-left: 2.5rem;
+    }
+    &    .nrgQPPay-BDtop {
+            margin-top: 2rem;
+    }
+    &    .uteMDd-hdr {
+            border: 1px solid @nrgColor-grey-light;
     }
 }

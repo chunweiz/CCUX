@@ -5,14 +5,13 @@
           xmlns:u="ute.ui.commons"
           xmlns:um="ute.ui.main">
     <u:Tag class="nrgQPCC-root">
-        <u:Tag text="{comp-i18n-quickpay>nrgQPPaymentCC}" class="nrgQPCC-ttl"/>
+        <u:Tag text="{comp-i18n-quickpay>nrgQPPaymentBD}" class="nrgQPCC-ttl"/>
         <u:Tag class="nrgQPCC-data">
             <u:Tag class="nrgQPCC-row nrgQPPay-top">
                 <u:Tag class="nrgQPPay-TF">
                     <u:Textfield placeholder=""
                                  change=""
                                  fieldType="Regular"
-                                 id="idnrgQPCC-Amt"
                                  class="nrgQPCC-input"
                                  width="10rem">
                     </u:Textfield>
@@ -27,42 +26,27 @@
             </u:Tag>
             <u:Tag class="nrgQPCC-row nrgQPPay-top">
                 <u:Tag class="nrgQPPay-TF">
-                    <um:Dropdown id="idnrgQPCC-DDL"
-                                 placeholder="{comp-i18n-quickpay>nrgQPSelect}"
+                    <um:Dropdown placeholder="{comp-i18n-quickpay>nrgQPSelect}"
                                  class="nrgQPCC-DDL">
                         <um:DropdownItem key="1" class="nrgQPCC-DdLItem">
                             <u:Tag class="nrgQPCC-DDI">
         <!--                        <core:Icon src="sap-icon://nrg-icon/cc-visa">-->
-                                <u:Tag text="6068" class="nrgQPCC-DdlValue"/>
+                                <u:Tag text="2158" class="nrgQPCC-DdlValue"/>
                             </u:Tag>
                         </um:DropdownItem>
                     </um:Dropdown>
                 </u:Tag>
-                    <um:Button press=".onAddCC"
+<!--                <u:Tag text="ADD" class="nrgQPCC-lbl"/>-->
+                    <um:Button press=".onAddBD"
                                class="nrgQPCC-Addbtn"
                                design="None">
                         <u:Tag text="{comp-i18n-quickpay>nrgQPAdd}" class="nrgQPCC-lblAdd"/>
                     </um:button>
             </u:Tag>
-            <u:Tag class="nrgQPCC-row nrgQPPay-top">
-                <u:Textfield placeholder="{comp-i18n-quickpay>nrgQPCVV}"
-                             fieldType="Regular"
-                             id="idnrgQPCC-cvv"
-                             class="nrgQPCC-cvv"
-                             width="3rem">
-                </u:Textfield>
-                <u:Textfield placeholder="{comp-i18n-quickpay>nrgQPZipCode}"
-                             fieldType="Regular"
-                             id="idnrgQPCC-zipcode"
-                             class="nrgQPCC-zipcode"
-                             width="5rem">
-                </u:Textfield>
-            </u:Tag>
         </u:Tag>
             <u:Tag class="nrgQPPay-top">
-                    <um:Dropdown id="idnrgQPCC-WR"
-                             placeholder="{comp-i18n-quickpay>nrgQPProcessingFee}"
-                             class="nrgQPCC-DDLWR">
+                    <um:Dropdown placeholder="{comp-i18n-quickpay>nrgQPProcessingFee}"
+                                 class="nrgQPCC-DDLWR">
                     <um:DropdownItem class="nrgQPCC-DDLWRItem">
                         <u:Tag>
                               <u:Tag text="Reason1" />
@@ -86,8 +70,7 @@
                            class="nrgQPCC-btn"
                            design="Default">
                 </um:button>
-                <um:Button press=".onDeclineCredit"
-                           text="{comp-i18n-quickpay>nrgQPCancel}"
+                <um:Button text="{comp-i18n-quickpay>nrgQPCancel}"
                            class="nrgQPCC-btn"
                            design="Default">
                 </um:button>
