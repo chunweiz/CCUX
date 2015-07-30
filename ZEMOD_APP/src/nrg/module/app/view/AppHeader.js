@@ -38,7 +38,8 @@ sap.ui.define(
             PalPlus: 'appHMItemPalPlus',
             Messages: 'appHMItemMessages',
             Refresh: 'appHMItemRefresh',
-            ClearAcc: 'appHMItemClearAcc'
+            ClearAcc: 'appHMItemClearAcc',
+            Logoff: 'appHMItemLogoff'
         };
 
         AppHeader.QuickLinkId = {
@@ -184,6 +185,29 @@ sap.ui.define(
             oWebUiManager.notifyWebUi('clearAccount');
         };
 
+        AppHeader.prototype._onLogoffPress = function (oControlEvent) {
+            var oWebUiManager, oComponent;
+
+            oComponent = this._oController.getOwnerComponent();
+            oWebUiManager = oComponent.getCcuxWebUiManager();
+
+            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Logout);
+
+            oComponent.getCcuxApp().setOccupied(true);
+            oWebUiManager.notifyWebUi('logout', this._onLogoffCallback, this);
+        };
+
+        AppHeader.prototype._onLogoffCallback = function (oEvent) {
+            var oComponent, oResponse;
+
+            oComponent = this._oController.getOwnerComponent();
+
+            oResponse = oEvent.getParameters();
+            if (oResponse.CANCEL && oResponse.CANCEL === 'X') {
+                oComponent.getCcuxApp().setOccupied(false);
+            }
+        };
+
         AppHeader.prototype._resetAllHMItemState = function () {
             var sHMItemId, oHMItem, oView;
 
@@ -211,6 +235,7 @@ sap.ui.define(
             oView.byId(AppHeader.HMItemId.Messages).attachEvent('press', this._onMessagesPress, this);
             oView.byId(AppHeader.HMItemId.Refresh).attachEvent('press', this._onRefreshPress, this);
             oView.byId(AppHeader.HMItemId.ClearAcc).attachEvent('press', this._onClearAccPress, this);
+            oView.byId(AppHeader.HMItemId.Logoff).attachEvent('press', this._onLogoffPress, this);
         };
 
         AppHeader.prototype._isSubmenu = function (sSubmenuId) {
