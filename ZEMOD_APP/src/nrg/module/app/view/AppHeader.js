@@ -145,23 +145,43 @@ sap.ui.define(
         };
 
         AppHeader.prototype._onTransactionPress = function (oControlEvent) {
+            var oWebUiManager = this._oController.getOwnerComponent().getCcuxWebUiManager();
+
             this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Transaction);
+
+            oWebUiManager.notifyCcux('launchTransaction');
         };
 
         AppHeader.prototype._onEsidToolPress = function (oControlEvent) {
+            var oWebUiManager = this._oController.getOwnerComponent().getCcuxWebUiManager();
+
             this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.EsidTool);
+
+            oWebUiManager.notifyCcux('openEsidTool');
         };
 
         AppHeader.prototype._onPalPlusPress = function (oControlEvent) {
+            var oWebUiManager = this._oController.getOwnerComponent().getCcuxWebUiManager();
+
             this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.PalPlus);
+
+            oWebUiManager.notifyCcux('openPalPlus');
         };
 
         AppHeader.prototype._onRefreshPress = function (oControlEvent) {
+            var oWebUiManager = this._oController.getOwnerComponent().getCcuxWebUiManager();
+
             this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Refresh);
+
+            oWebUiManager.notifyCcux('refresh');
         };
 
         AppHeader.prototype._onClearAccPress = function (oControlEvent) {
+            var oWebUiManager = this._oController.getOwnerComponent().getCcuxWebUiManager();
+
             this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.ClearAcc);
+
+            oWebUiManager.notifyCcux('clearAccount');
         };
 
         AppHeader.prototype._resetAllHMItemState = function () {
