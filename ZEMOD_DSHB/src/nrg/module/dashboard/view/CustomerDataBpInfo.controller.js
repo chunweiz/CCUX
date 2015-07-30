@@ -235,25 +235,28 @@ sap.ui.define(
                 oMailEdit = this.getView().getModel('oDtaAddrEdit'),
                 testFrag;
 
-            sPath = '/BpAddresses' + '(PartnerID=\'' + this._bpNum + '\',AddressID=\'' + this._addressID + '\')';
+            //sPath = '/BpAddresses' + '(PartnerID=\'' + this._bpNum + '\',AddressID=\'' + this._addressID + '\')';
+            sPath = '/BpAddresses';
 
             oParameters = {
                 filters: aFilters,
                 success: function (oData) {
-                    if (oData.results[0].AddrChkValid === 'X') {
+                    if (oData.AddrChkValid === 'X') {
                         //Validate success, update the address directly
                         this._updateMailingAddr();
                     } else {
-                        oMailEdit.setProperty('/AddrInfo', oData.results[0].AddressInfo);
-                        oMailEdit.setProperty('/SuggAddrInfo', oData.results[0].TriCheck);
-                        this._oMailEditPopup = ute.ui.main.Popup.create({
-                            close: this._handleEditMailPopupClose,
-                            content: sap.ui.xmlfragment("nrg.module.dashboard.view.AddrUpdatePopup", this),
-                            title: 'Edit Mailing Address'
-                        });
+                        //oMailEdit.setProperty('/AddressInfo', oData.AddressInfo);
+                        if (!this._oMailEditPopup) {
+                            this._oMailEditPopup = ute.ui.main.Popup.create({
+                                close: this._handleEditMailPopupClose,
+                                content: sap.ui.xmlfragment("nrg.module.dashboard.view.AddrUpdatePopup", this),
+                                title: 'Edit Mailing Address'
+                            });
+                        }
                         this.getView().addDependent(this._oMailEditPopup);
                         this._oMailEditPopup.open();
                         this._showSuggestedAddr();
+                        oMailEdit.setProperty('/SuggAddrInfo', oData.results[0].TriCheck);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -261,21 +264,10 @@ sap.ui.define(
                 }.bind(this)
             };
 
-            if (!this._oMailEditPopup) {
-                this._oMailEditPopup = ute.ui.main.Popup.create({
-                    close: this._handleEditMailPopupClose,
-                    content: sap.ui.xmlfragment("nrg.module.dashboard.view.AddrUpdatePopup", this),
-                    title: 'Edit Mailing Address'
-                });
-                this.getView().addDependent(this._oMailEditPopup);
-            }
 
-            //this.getView().addDependent(this._oMailEditPopup);
-            this._showSuggestedAddr();
-            this._oMailEditPopup.open();
-            /*if (oModel) {
+            if (oModel) {
                 oModel.read(sPath, oParameters);
-            }*/
+            }
 
             /** Original code for update address, to be removed */
 //            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
@@ -650,7 +642,7 @@ sap.ui.define(
                                 this._addressID = oData.results[0].AddressID;
                             }
                             this.getView().getModel('oDataBpAddress').setData(oData);
-                            this.getView().getModel('oDtaAddrEdit').setData(oData.result[0]);
+                            this.getView().getModel('oDtaAddrEdit').setData(oData.results[0]);
                             this.oDataBpAddressBak = jQuery.extend(true, {}, oData);
                         }
                     }
@@ -786,7 +778,7 @@ sap.ui.define(
 //                sBpNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/PartnerID'),
                 sBpNum = this._bpNum,
                 oMailEdit = this.getView().getModel('oDtaAddrEdit'),
-                oMailEditAddrInfo = oMailEdit.getProperty('/AddrInfo'),
+                oMailEditAddrInfo = oMailEdit.getProperty('/AddressInfo'),
                 key,
                 //bFixAddr = oMailEdit.getProperty('/bFixAddr'),
                 tempPath;
@@ -876,7 +868,7 @@ sap.ui.define(
                 oMailTempModel = this.getView().getModel('oDataBpAddress'), //replace oDtaVrfyMailingTempAddr with oDataBpAddress because we submit 'oDataBpAddress' in updating call
                 tempObj;
 
-            tempObj = oMailEdit.getProperty('/AddrInfo');
+            tempObj = oMailEdit.getProperty('/AddressInfo');
 
             oMailTempModel.setProperty('/AddressInfo', tempObj);
 
