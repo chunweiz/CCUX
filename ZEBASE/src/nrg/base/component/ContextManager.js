@@ -4,7 +4,7 @@
 sap.ui.define(
     [
         'sap/ui/base/EventProvider',
-        'sap.ui.model.json.JSONModel'
+        'sap/ui/model/json/JSONModel'
     ],
 
     function (EventProvider, JSONModel) {
