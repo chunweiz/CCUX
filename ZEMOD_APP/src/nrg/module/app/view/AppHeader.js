@@ -137,7 +137,11 @@ sap.ui.define(
         };
 
         AppHeader.prototype._onIndexPress = function (oControlEvent) {
+            var oWebUiManager = this._oController.getOwnerComponent().getCcuxWebUiManager();
+
             this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Index);
+
+            oWebUiManager.notifyCcux('openIndex');
         };
 
         AppHeader.prototype._onTransactionPress = function (oControlEvent) {

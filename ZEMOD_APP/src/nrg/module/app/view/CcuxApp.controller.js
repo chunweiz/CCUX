@@ -25,10 +25,20 @@ sap.ui.define(
 
             switch (oControlEvent.getSource().getId()) {
             case App.QuickLinkId.Dashboard:
+                this._onDashboardClick(oControlEvent);
                 break;
             case App.QuickLinkId.Campaign:
+                this._onCampaignClick(oControlEvent);
                 break;
             }
+        };
+
+        CustomController.prototype._onDashboardClick = function (oControlEvent) {
+
+        };
+
+        CustomController.prototype._onCampaignClick = function (oControlEvent) {
+
         };
 
         return CustomController;

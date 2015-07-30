@@ -25,6 +25,22 @@ sap.ui.define(
             }
         });
 
+        Manager.Event = {};
+        Manager.Event.Outbound = {
+            BpConfirmed: 'bpConfirmed',
+            ResetTimeOut: 'resetTimeOut',
+            OpenIndex: 'openIndex',
+            LaunchTransaction: 'launchTransaction',
+            OpenEsidTool: 'openEsidTool',
+            OpenPalPlus: 'openPalPlus',
+            Refresh: 'refresh',
+            ClearAccount: 'clearAccount'
+        };
+
+        Manager.Event.Inbound = {
+            Navigate: 'navigate'
+        };
+
         Manager.prototype.start = function () {
             this._addDomEventListener();
         };
