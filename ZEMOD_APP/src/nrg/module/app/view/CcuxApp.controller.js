@@ -34,11 +34,38 @@ sap.ui.define(
         };
 
         CustomController.prototype._onDashboardClick = function (oControlEvent) {
+            var oContext, oRouter;
 
+            oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
+            oRouter = this.getOwnerComponent().getRouter();
+
+            if (oContext.dashboard) {
+                if (oContext.dashboard.bpNum && oContext.dashboard.caNum) {
+                    oRouter.navTo('dashboard.CaInfo', {
+                        bpNum: oContext.dashboard.bpNum,
+                        caNum: oContext.dashboard.caNum
+                    });
+
+                } else if (oContext.dashboard.bpNum) {
+                    oRouter.navTo('dashboard.BpInfo', {
+                        bpNum: oContext.dashboard.bpNum
+                    });
+                }
+            }
         };
 
         CustomController.prototype._onCampaignClick = function (oControlEvent) {
+            var oContext, oRouter;
 
+            oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
+            oRouter = this.getOwnerComponent().getRouter();
+
+            if (oContext.dashboard && oContext.dashboard.coNum) {
+                oRouter.navTo('campaign', {
+                    coNum: oContext.dashboard.coNum,
+                    type: 'C' //TODO: hardcoded to current for the time being, need to revise
+                });
+            }
         };
 
         return CustomController;
