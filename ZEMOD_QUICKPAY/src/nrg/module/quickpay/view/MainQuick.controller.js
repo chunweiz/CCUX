@@ -96,7 +96,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onPendingCreditCard = function (oEvent) {
-            this._oPaymentDialog.open();
+
         };
         /**
 		 * Pending Bank Draft Process initialization
@@ -105,7 +105,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onPendingBankDraft = function (oEvent) {
-            this._oPaymentDialog.open();
+
         };
         /**
 		 * When Credit Card is Accepted
@@ -114,7 +114,13 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onAcceptCredit = function (oEvent) {
-            this._oPaymentDialog.open();
+            var oTBIPaySucc = this.getView().byId("idnrgQPPay-TBIPaySucc"),
+                oPopup = this.getView().byId("idnrgQPPay-Popup"),
+                oCloseButton = this.getView().byId("idnrgQPPayBt-close");
+            oPopup.removeStyleClass("nrgQPPay-PopupWhite");
+            oPopup.addStyleClass("nrgQPPay-Popup");
+            oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
+            oTBIPaySucc.setSelected(true);
         };
         /**
 		 * When Credit Card is Accepted
@@ -123,7 +129,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onDeclineCredit = function (oEvent) {
-            this._oPaymentDialog.open();
+            this.getView().getParent().close();
         };
         /**
 		 * When Popup is closed

@@ -44,7 +44,8 @@
                            class="nrgQPCC-btn"
                            design="Default">
                 </um:button>
-                <um:Button text="{comp-i18n-quickpay>nrgQPCancel}"
+                <um:Button press=".onDeclineCredit"
+                           text="{comp-i18n-quickpay>nrgQPCancel}"
                            class="nrgQPCC-btn"
                            design="Default">
                 </um:button>
