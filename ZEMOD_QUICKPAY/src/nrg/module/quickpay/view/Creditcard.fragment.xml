@@ -32,7 +32,7 @@
                                  class="nrgQPCC-DDL">
                         <um:DropdownItem key="1" class="nrgQPCC-DdLItem">
                             <u:Tag class="nrgQPCC-DDI">
-        <!--                        <core:Icon src="sap-icon://nrg-icon/cc-visa">-->
+                                <core:Icon src="sap-icon://nrg-icon/cc-visa" />
                                 <u:Tag text="6068" class="nrgQPCC-DdlValue"/>
                             </u:Tag>
                         </um:DropdownItem>
