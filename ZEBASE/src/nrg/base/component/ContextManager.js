@@ -31,7 +31,7 @@ sap.ui.define(
         Manager.prototype.getContext = function () {
             var oContextModel = this._oComponent.getModel('_comp-context');
 
-            if (!oContextModel || !oContextModel instanceof JSONModel) {
+            if (!oContextModel || !(oContextModel instanceof JSONModel)) {
                 oContextModel = new JSONModel({
                     dashboard: {}
                 });
