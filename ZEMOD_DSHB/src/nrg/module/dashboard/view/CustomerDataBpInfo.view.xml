@@ -161,10 +161,10 @@
                                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-STREET_NAME}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
+                                                <ute:Textfield id="idBpInfoStreet_Edit" fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/results/0/AddressInfo/Street}"/>
+                                                               value="{oDataBpAddress>/AddressInfo/Street}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -179,10 +179,10 @@
                                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-STREET_NUMBER}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
+                                                <ute:Textfield id="idBpInfoHouseNo_Edit" fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/results/0/AddressInfo/HouseNo}"/>
+                                                               value="{oDataBpAddress>/AddressInfo/HouseNo}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -210,7 +210,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/results/0/AddressInfo/UnitNo}"/>
+                                                               value="{oDataBpAddress>/AddressInfo/UnitNo}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -225,10 +225,11 @@
                                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-POBOX}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
+                                                <ute:Textfield id="idBpInfoPobox_Edit" fieldType="Noborder"
+                                                               change="._onPoBoxEdit"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/results/0/AddressInfo/PoBox}"/>
+                                                               value="{oDataBpAddress>/AddressInfo/PoBox}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -256,7 +257,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/results/0/AddressInfo/City}"/>
+                                                               value="{oDataBpAddress>/AddressInfo/City}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -274,7 +275,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/results/0/AddressInfo/State}"/>
+                                                               value="{oDataBpAddress>/AddressInfo/State}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -292,7 +293,9 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{path: 'oDataBpAddress>/results/0/AddressInfo/ZipCode', type: 'nrg.base.type.ZipCode', constraints: { mandatory: true }}"/>
+                                                               value="{path: 'oDataBpAddress/AddressInfo/ZipCode',
+                                                                       type: 'nrg.base.type.ZipCode',
+                                                                       constraints: { mandatory: true }}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -358,7 +361,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="false"
-                                                               value="{oDataBpPersonal>/Language}"/>
+                                                               value="{parts:['oDataBpPersonal>/Language'], formatter:'._formatLanguage'}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -376,8 +379,9 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/personalInfoSSEditable}"
-                                                               value="{path: 'oDataBpPersonal>/SSN', type: 'nrg.base.type.SocialSecurityNumber', constraints: { mandatory: true }}"/>
+                                                               value="{oDataBpPersonal>/SSN}"/>
                                             </l:MatrixLayoutCell>
+                                            <!--value="{path: 'oDataBpPersonal>/SSN', type: 'nrg.base.type.SocialSecurityNumber', constraints: { mandatory: true }}"/>-->
                                             <l:MatrixLayoutCell>
                                                 <utmain:Checkbox enabled="false" checked="true"
                                                     class="nrgDashboard-cusDataBpInfo-halChb"
@@ -615,7 +619,7 @@
                                     <l:MatrixLayout widths="65%,35%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-mktlbl"
                                                          text="{oDataBpMarkPreferSet>AttributeSetDescription} - {oDataBpMarkPreferSet>AttributeDescription}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>

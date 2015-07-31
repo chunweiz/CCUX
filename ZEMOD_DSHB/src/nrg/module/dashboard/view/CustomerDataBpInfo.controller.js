@@ -224,18 +224,20 @@ sap.ui.define(
         };
 
         Controller.prototype._handleMailingAddrUpdate = function (oEvent) {
-            this._onAddrSave();
+            this.onAddrSave();
         };
 
         CustomController.prototype.onAddrSave = function () {
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
-                aFilters = this._createAddrValidateFilters(),
+                aFilters,
                 oMailEdit = this.getView().getModel('oDtaAddrEdit'),
-                testFrag;
+                tempObj2;
 
             //sPath = '/BpAddresses' + '(PartnerID=\'' + this._bpNum + '\',AddressID=\'' + this._addressID + '\')';
+            oMailEdit.setProperty('/', this.getView().getModel('oDataBpAddress').getProperty('/'));
+            aFilters = this._createAddrValidateFilters();
             sPath = '/BpAddresses';
 
             oParameters = {
@@ -243,19 +245,25 @@ sap.ui.define(
                 success: function (oData) {
                     if (oData.AddrChkValid === 'X') {
                         //Validate success, update the address directly
+                        tempObj2 = this.getView().getModel('oDataBpAddress').getProperty('/');
+                        delete tempObj2.showVldBtns;
+                        delete tempObj2.updateNotSent;
+                        delete tempObj2.updateSent;
+                        delete tempObj2.SuggAddrInfo;
                         this._updateMailingAddr();
                     } else {
                         //oMailEdit.setProperty('/AddressInfo', oData.AddressInfo);
                         if (!this._oMailEditPopup) {
                             this._oMailEditPopup = ute.ui.main.Popup.create({
                                 close: this._handleEditMailPopupClose,
-                                content: sap.ui.xmlfragment("nrg.module.dashboard.view.AddrUpdatePopup", this),
+                                content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdatePopup", this),
                                 title: 'Edit Mailing Address'
                             });
+                            this.getView().addDependent(this._oMailEditPopup);
                         }
-                        this.getView().addDependent(this._oMailEditPopup);
                         this._oMailEditPopup.open();
                         this._showSuggestedAddr();
+                        //oMailEdit.setProperty('/AddressInfo', oData.results[0].AddressInfo);
                         oMailEdit.setProperty('/SuggAddrInfo', oData.results[0].TriCheck);
                     }
                 }.bind(this),
@@ -263,7 +271,6 @@ sap.ui.define(
                     sap.ui.commons.MessageBox.alert('Validatation Call Failed');
                 }.bind(this)
             };
-
 
             if (oModel) {
                 oModel.read(sPath, oParameters);
@@ -525,9 +532,11 @@ sap.ui.define(
         Controller.prototype._retrBpTitles = function () {
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
-                oParameters;
+                oParameters,
+                sBpNum = this._bpNum;
 
-            sPath = '/BpTitles/';
+            //sPath = '/BpTitles('')/';
+            sPath = '/Partners' + '(\'' + sBpNum + '\')/BpTitle/';
 
             oParameters = {
                 success : function (oData) {
@@ -641,7 +650,7 @@ sap.ui.define(
                             if (!this._addressID) {
                                 this._addressID = oData.results[0].AddressID;
                             }
-                            this.getView().getModel('oDataBpAddress').setData(oData);
+                            this.getView().getModel('oDataBpAddress').setData(oData.results[0]);
                             this.getView().getModel('oDtaAddrEdit').setData(oData.results[0]);
                             this.oDataBpAddressBak = jQuery.extend(true, {}, oData);
                         }
@@ -838,10 +847,47 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._onPoBoxEdit = function (oEvent) {
+            this.getView().byId('idEditHouseNum').setValue('');
+            this.getView().byId('idEditStName').setValue('');
+
+            this.getView().byId('idBpInfoStreet_Edit').setValue('');
+            this.getView().byId('idBpInfoHouseNo_Edit').setValue('');
+
+        };
+
+        Controller.prototype._onRegAddrEdit = function (oEvent) {
+            this.getView().byId('idEditPoBox').setValue('');
+            this.getView().byId('idBpInfoPobox_Edit').setValue('');
+        };
+
+        Controller.prototype._compareSuggChkClicked = function (oEvent) {
+            var oLeftInputArea = this._oMailEditPopup.getContent()[0].getContent()[1].getContent(),
+                oRightSuggArea = this._oMailEditPopup.getContent()[0].getContent()[2].getContent(),
+                i;
+
+            if (oEvent.mParameters.checked) {
+                for (i = 1; i < 8; i = i + 1) {
+                    if (oLeftInputArea[i].getContent()[0].getValue() !== oRightSuggArea[i].getContent()[0].getValue()) {
+                        oLeftInputArea[i].getContent()[0].addStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
+                        oRightSuggArea[i].getContent()[0].addStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
+                    }
+                }
+            } else {
+                for (i = 1; i < 8; i = i + 1) {
+                    if (oLeftInputArea[i].getContent()[0].getValue() !== oRightSuggArea[i].getContent()[0].getValue()) {
+                        oLeftInputArea[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
+                        oRightSuggArea[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
+                    }
+                }
+            }
+        };
+
         Controller.prototype._handleMailingAcceptBtn = function (oEvent) {
             var oMailEdit = this.getView().getModel('oDtaAddrEdit'),
                 oMailTempModel = this.getView().getModel('oDataBpAddress'),    //replace oDtaVrfyMailingTempAddr with oDataBpAddress because we submit 'oDataBpAddress' in updating call
                 tempObj,
+                tempObj2,
                 key;
 
             tempObj = oMailEdit.getProperty('/SuggAddrInfo');
@@ -850,6 +896,12 @@ sap.ui.define(
             delete tempObj.FooterLine1;
             delete tempObj.FooterLine2;
             delete tempObj.FooterLine3;
+            tempObj2 = oMailTempModel.getProperty('/');
+            delete tempObj2.showVldBtns;
+            delete tempObj2.updateNotSent;
+            delete tempObj2.updateSent;
+            delete tempObj2.SuggAddrInfo;
+
 
 
             for (key in tempObj) {
@@ -866,9 +918,15 @@ sap.ui.define(
         Controller.prototype._handleMailingDeclineBtn = function (oEvent) {
             var oMailEdit = this.getView().getModel('oDtaAddrEdit'),
                 oMailTempModel = this.getView().getModel('oDataBpAddress'), //replace oDtaVrfyMailingTempAddr with oDataBpAddress because we submit 'oDataBpAddress' in updating call
-                tempObj;
+                tempObj,
+                tempObj2;
 
             tempObj = oMailEdit.getProperty('/AddressInfo');
+            tempObj2 = oMailTempModel.getProperty('/');
+            delete tempObj2.showVldBtns;
+            delete tempObj2.updateNotSent;
+            delete tempObj2.updateSent;
+            delete tempObj2.SuggAddrInfo;
 
             oMailTempModel.setProperty('/AddressInfo', tempObj);
 
@@ -881,6 +939,16 @@ sap.ui.define(
             //oEditMail.setProperty('/updateSent', false);
             oEditMail.setProperty('/showVldBtns', false);
             oEditMail.setProperty('/updateNotSent', true);
+        };
+
+        Controller.prototype._formatLanguage = function (sLanguage) {
+            if (sLanguage === 'E' || sLanguage === 'e') {
+                return 'EN';
+            } else if (sLanguage === 'S' || sLanguage === 's') {
+                return 'SP';
+            } else {
+                return 'N/A';
+            }
         };
 
         Controller.prototype._formatDate = function (dob) {
