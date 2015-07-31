@@ -211,6 +211,7 @@ sap.ui.define(
         };
 
         CustomController.prototype.onAddrCancel = function () {
+            this._retrBpAddress(this._bpNum);
             var oConfigModel = this.getView().getModel('oBpInfoConfig'),
                 bpAddrModel = this.getView().getModel('oDataBpAddress');
             oConfigModel.setProperty('/addrEditVisible', true);
@@ -232,12 +233,22 @@ sap.ui.define(
         };
 
         CustomController.prototype.onAddrSave = function () {
-            var oModel = this.getView().getModel('oODataSvc'),
+            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
                 aFilters,
                 oMailEdit = this.getView().getModel('oDtaAddrEdit'),
                 tempObj2;
+
+            oConfigModel.setProperty('/addrEditVisible', true);
+            oConfigModel.setProperty('/addrSaveVisible', false);
+            oConfigModel.setProperty('/addrEditable', false);
+
+            if (JSON.stringify(this.getView().getModel('oDataBpAddress').oData) === JSON.stringify(this.oDataBpAddressBak.results[0])) {
+                sap.ui.commons.MessageBox.alert("There is no change for Address.");
+                return;
+            }
 
             //sPath = '/BpAddresses' + '(PartnerID=\'' + this._bpNum + '\',AddressID=\'' + this._addressID + '\')';
             oMailEdit.setProperty('/', this.getView().getModel('oDataBpAddress').getProperty('/'));
@@ -473,9 +484,7 @@ sap.ui.define(
                 }.bind(this)
             };
             for (i = 0; i < this.getView().getModel('oDataBpMarkPreferSet').oData.results.length; i = i + 1) {
-                if (JSON.stringify(this.getView().getModel('oDataBpMarkPreferSet').oData.results[i]) === JSON.stringify(this.oDataBpMarkPreferSetBak.results[i])) {
-                    sap.ui.commons.MessageBox.alert("There is no change for Market Perference index: " + i.toString());
-                } else {
+                if (JSON.stringify(this.getView().getModel('oDataBpMarkPreferSet').oData.results[i]) !== JSON.stringify(this.oDataBpMarkPreferSetBak.results[i])) {
                     attibuteSet = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/AttributeSet');
                     attribute = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/Attribute');
 
@@ -485,6 +494,19 @@ sap.ui.define(
                         oModel.update(sPath, this.getView().getModel('oDataBpMarkPreferSet').oData.results[i], oParameters);
                     }
                 }
+                /*
+                if (JSON.stringify(this.getView().getModel('oDataBpMarkPreferSet').oData.results[i]) === JSON.stringify(this.oDataBpMarkPreferSetBak.results[i])) {
+                    //sap.ui.commons.MessageBox.alert("There is no change for Market Perference index: " + i.toString());
+                } else {
+                    attibuteSet = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/AttributeSet');
+                    attribute = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/Attribute');
+
+                    sPath = '/BpMarkPrefers' + '(PartnerID=\'' + bpNumber + '\',AttributeSet=\'' + attibuteSet + '\',Attribute=\'' + attribute + '\')';
+
+                    if (oModel) {
+                        oModel.update(sPath, this.getView().getModel('oDataBpMarkPreferSet').oData.results[i], oParameters);
+                    }
+                }*/
             }
         };
 
@@ -526,7 +548,7 @@ sap.ui.define(
             this._retrBpTitles();
             this._retrBpAccTitles();
             this._retrBpSuffixs();
-            this._retrBpName(bpNum);
+            //this._retrBpName(bpNum);   //Should be called after retrBpTitles is done. Moved to success function of it
             this._retrBpAddress(bpNum);
             this._retrBpPersonal(bpNum);
             this._retrBpContact(bpNum);
@@ -547,6 +569,7 @@ sap.ui.define(
                     if (oData) {
                         if (oData.results) {
                             this.getView().getModel('ODataBpTitles').setData(oData);
+                            this._retrBpName(sBpNum);
                         }
                     }
                 }.bind(this),
@@ -854,14 +877,18 @@ sap.ui.define(
         Controller.prototype._onPoBoxEdit = function (oEvent) {
             this.getView().byId('idEditHouseNum').setValue('');
             this.getView().byId('idEditStName').setValue('');
+        };
 
+        Controller.prototype._onBpInfoPoBoxEdit = function (oEvent) {
             this.getView().byId('idBpInfoStreet_Edit').setValue('');
             this.getView().byId('idBpInfoHouseNo_Edit').setValue('');
-
         };
 
         Controller.prototype._onRegAddrEdit = function (oEvent) {
             this.getView().byId('idEditPoBox').setValue('');
+        };
+
+        Controller.prototype._onBpInfoRegAddrEdit = function (oEvent) {
             this.getView().byId('idBpInfoPobox_Edit').setValue('');
         };
 
@@ -1001,6 +1028,14 @@ sap.ui.define(
         };
         /*************************************************************************************************************/
         /*Email Edit NNP logic*/
+        Controller.prototype._formatEmailAddressText = function (sEmail) {
+            if (sEmail === '') {
+                return 'CLICK to ADD';
+            } else {
+                return sEmail;
+            }
+        };
+
         Controller.prototype._formatEmailMkt = function (sIndicator) {
             if (sIndicator === 'y' || sIndicator === 'Y') {
                 return true;
@@ -1014,6 +1049,14 @@ sap.ui.define(
                 return true;
             } else {
                 return false;
+            }
+        };
+
+        Controller.prototype._formatNegativeX = function (sIndicator) {
+            if (sIndicator === 'x' || sIndicator === 'X') {
+                return false;
+            } else {
+                return true;
             }
         };
 
@@ -1089,7 +1132,8 @@ sap.ui.define(
                 sBpEmail = this.getView().getModel('oEditEmailNNP').getProperty('/Email'),
                 sBpEmailConsum = this.getView().getModel('oEditEmailNNP').getProperty('/EmailConsum'),
                 oNNP = this.getView().getModel('oEditEmailNNP'),
-                bEmailChanged = true;
+                bEmailChanged = true,
+                oConfigModel = this.getView().getModel('oBpInfoConfig');
 
             if (sBpEmail === this.getView().getModel('oDataBpContact').getProperty('/Email')) {
                 bEmailChanged = false;
@@ -1115,7 +1159,10 @@ sap.ui.define(
                         sap.ui.commons.MessageBox.alert('Marketing Preference Updated Successfully');
                     }
                     this._oEmailEditPopup.close();
-                    this._initDtaVrfRetr();
+                    this._retrBpContact(sBpNum);
+                    oConfigModel.setProperty('/contactInfoEditVisible', true);
+                    oConfigModel.setProperty('/contactInfoSaveVisible', false);
+                    oConfigModel.setProperty('/contactInfoEditable', false);
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Update Failed");
@@ -1133,7 +1180,8 @@ sap.ui.define(
                 oParameters,
                 sBpNum = this.getView().getModel('oEditEmailNNP').getProperty('/PartnerID'),
                 //sBpEmailConsum = this.getView().getModel('oDtaVrfyBP').getProperty('/EmailConsum');
-                oNNP = this.getView().getModel('oEditEmailNNP');
+                oNNP = this.getView().getModel('oEditEmailNNP'),
+                oConfigModel = this.getView().getModel('oBpInfoConfig');
 
             sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'\'' + ',EmailConsum=\'\')';
 
@@ -1142,7 +1190,10 @@ sap.ui.define(
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert('Email Successfully Removed');
                     this._oEmailEditPopup.close();
-                    this._initDtaVrfRetr();
+                    this._retrBpContact(sBpNum);
+                    oConfigModel.setProperty('/contactInfoEditVisible', true);
+                    oConfigModel.setProperty('/contactInfoSaveVisible', false);
+                    oConfigModel.setProperty('/contactInfoEditable', false);
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Update Failed");
