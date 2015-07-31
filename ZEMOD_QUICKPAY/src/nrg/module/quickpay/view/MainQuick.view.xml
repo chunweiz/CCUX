@@ -16,6 +16,7 @@
             <um:TabBarItem key="RC"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBIRC" />
             <um:TabBarItem key="RD"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBIRD" />
             <um:TabBarItem key="AddBD"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBIAddBD" />
+            <um:TabBarItem key="PaySucc"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBIPaySucc" />
         </um:TabBar>
         <u:Tag class="nrgQPPay-Popup" id="idnrgQPPay-Popup">
             <u:Tag class="nrgQPPay-PopupHdr">
@@ -59,6 +60,16 @@
                 </um:TabPanelItem>
                 <um:TabPanelItem key="AddBD" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
                         <core:Fragment fragmentName="nrg.module.quickpay.view.AddBankDraft" type="XML" />
+                </um:TabPanelItem>
+                <um:TabPanelItem key="PaySucc" class="nrgQPPay-tabPanelItem nrgQPPay-tabIcon">
+                    <u:Tag>
+                          <um:Button press=".onPopupClose"
+                                     class="nrgQPPay-stopRec"
+                                     design="None">
+                             <core:Icon src="sap-icon://nrg-icon/verified" class="nrgQPPay-verified" />
+                             <u:Tag text="{comp-i18n-quickpay>nrgQPPaymentAccepted}" class="nrgQPPay-verText"/>
+                         </um:Button>
+                    </u:Tag>
                 </um:TabPanelItem>
             </um:TabPanel>
         </u:Tag>

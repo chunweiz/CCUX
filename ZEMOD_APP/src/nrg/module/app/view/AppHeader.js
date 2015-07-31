@@ -38,7 +38,8 @@ sap.ui.define(
             PalPlus: 'appHMItemPalPlus',
             Messages: 'appHMItemMessages',
             Refresh: 'appHMItemRefresh',
-            ClearAcc: 'appHMItemClearAcc'
+            ClearAcc: 'appHMItemClearAcc',
+            Logoff: 'appHMItemLogoff'
         };
 
         AppHeader.QuickLinkId = {
@@ -141,7 +142,7 @@ sap.ui.define(
 
             this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Index);
 
-            oWebUiManager.notifyCcux('openIndex');
+            oWebUiManager.notifyWebUi('openIndex');
         };
 
         AppHeader.prototype._onTransactionPress = function (oControlEvent) {
@@ -149,7 +150,7 @@ sap.ui.define(
 
             this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Transaction);
 
-            oWebUiManager.notifyCcux('launchTransaction');
+            oWebUiManager.notifyWebUi('launchTransaction');
         };
 
         AppHeader.prototype._onEsidToolPress = function (oControlEvent) {
@@ -157,7 +158,7 @@ sap.ui.define(
 
             this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.EsidTool);
 
-            oWebUiManager.notifyCcux('openEsidTool');
+            oWebUiManager.notifyWebUi('openEsidTool');
         };
 
         AppHeader.prototype._onPalPlusPress = function (oControlEvent) {
@@ -165,7 +166,7 @@ sap.ui.define(
 
             this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.PalPlus);
 
-            oWebUiManager.notifyCcux('openPalPlus');
+            oWebUiManager.notifyWebUi('openPalPlus');
         };
 
         AppHeader.prototype._onRefreshPress = function (oControlEvent) {
@@ -173,7 +174,7 @@ sap.ui.define(
 
             this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Refresh);
 
-            oWebUiManager.notifyCcux('refresh');
+            oWebUiManager.notifyWebUi('refresh');
         };
 
         AppHeader.prototype._onClearAccPress = function (oControlEvent) {
@@ -181,7 +182,30 @@ sap.ui.define(
 
             this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.ClearAcc);
 
-            oWebUiManager.notifyCcux('clearAccount');
+            oWebUiManager.notifyWebUi('clearAccount');
+        };
+
+        AppHeader.prototype._onLogoffPress = function (oControlEvent) {
+            var oWebUiManager, oComponent;
+
+            oComponent = this._oController.getOwnerComponent();
+            oWebUiManager = oComponent.getCcuxWebUiManager();
+
+            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Logout);
+
+            oComponent.getCcuxApp().setOccupied(true);
+            oWebUiManager.notifyWebUi('logout', this._onLogoffCallback, this);
+        };
+
+        AppHeader.prototype._onLogoffCallback = function (oEvent) {
+            var oComponent, oResponse;
+
+            oComponent = this._oController.getOwnerComponent();
+
+            oResponse = oEvent.getParameters();
+            if (oResponse.CANCEL && oResponse.CANCEL === 'X') {
+                oComponent.getCcuxApp().setOccupied(false);
+            }
         };
 
         AppHeader.prototype._resetAllHMItemState = function () {
@@ -211,6 +235,7 @@ sap.ui.define(
             oView.byId(AppHeader.HMItemId.Messages).attachEvent('press', this._onMessagesPress, this);
             oView.byId(AppHeader.HMItemId.Refresh).attachEvent('press', this._onRefreshPress, this);
             oView.byId(AppHeader.HMItemId.ClearAcc).attachEvent('press', this._onClearAccPress, this);
+            oView.byId(AppHeader.HMItemId.Logoff).attachEvent('press', this._onLogoffPress, this);
         };
 
         AppHeader.prototype._isSubmenu = function (sSubmenuId) {
