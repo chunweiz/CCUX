@@ -55,7 +55,7 @@ sap.ui.define(
                 iCount,
                 oEFLJson = {},
                 aResults = [];
-            //this.getOwnerComponent().setCcuxBusy(true);
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oEvent.getParameter("arguments").coNum;
             this._sFlag = oEvent.getParameter("arguments").typeV.toUpperCase();
             aFilterIds = ["Contract"];
@@ -128,7 +128,7 @@ sap.ui.define(
                         path : sPath
                     });
                 }
-                //that.getOwnerComponent().setCcuxBusy(false);
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
                 oBinding = oToggleContainer.getBinding("content");
                 oBinding.detachDataReceived(fnRecievedHandler);
             };
@@ -156,6 +156,7 @@ sap.ui.define(
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
                 error: function (oError) {
+                    this.getOwnerComponent().getCcuxApp().setOccupied(true);
                     jQuery.sap.log.info("Eligibility Error occured");
                 }.bind(this)
             };
@@ -363,6 +364,7 @@ sap.ui.define(
                 aFilterIds,
                 aFilterValues,
                 oPendingSwapsTemplate;
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             aFilterIds = ["Contract"];
             aFilterValues = ['34805112'];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -389,6 +391,7 @@ sap.ui.define(
             this.getView().addDependent(this._oCancelDialog);
             //to get access to the global model
             this._oCancelDialog.addStyleClass("nrgCamHis-dialog");
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
             this._oCancelDialog.open();
         };
         /**
