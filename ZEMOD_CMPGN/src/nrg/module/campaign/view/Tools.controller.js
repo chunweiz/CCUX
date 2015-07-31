@@ -149,7 +149,7 @@ sap.ui.define(
                 iCount,
                 oEFLJson = {},
                 aResults = [];
-            //this.getOwnerComponent().setCcuxBusy(true);
+            this.getOwnerComponent().getCcuxApp.setOccupied(true);
             aFilterIds = ["Contract", "Type"];
             aFilterValues = ["32253375", "H"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -210,6 +210,7 @@ sap.ui.define(
                     oDataTag.addStyleClass("nrgCamHis-hide");
                     oNoDataTag.removeStyleClass("nrgCamHis-hide");
                 }
+                that.getOwnerComponent().getCcuxApp.setOccupied(false);
 
             };
             // Function received handler is used to update the view with first History campaign.---end
@@ -232,8 +233,9 @@ sap.ui.define(
             this._oHistoryDialog.addStyleClass("nrgCamHis-dialog");
             //to get access to the global model
             this.getView().addDependent(this._oHistoryDialog);
+            this.getOwnerComponent().getCcuxApp.setOccupied(false);
             this._oHistoryDialog.open();
-            //that.getOwnerComponent().setCcuxBusy(false);
+            this.getOwnerComponent().getCcuxApp.setOccupied(true);
 
         };
 
@@ -254,6 +256,7 @@ sap.ui.define(
                 aFilterIds,
                 aFilterValues,
                 oPendingSwapsTemplate;
+            this.getOwnerComponent().getCcuxApp.setOccupied(true);
             aFilterIds = ["Contract"];
             aFilterValues = ['34805112'];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -280,6 +283,7 @@ sap.ui.define(
             //to get access to the global model
             this._oCancelDialog.addStyleClass("nrgCamHis-dialog");
             oPendingSwapsTable.bindRows(mParameters);
+            this.getOwnerComponent().getCcuxApp.setOccupied(false);
             this._oCancelDialog.open();
         };
 

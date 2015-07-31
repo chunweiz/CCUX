@@ -48,7 +48,7 @@ sap.ui.define(
                 oEFLJson = {},
                 aResults = [],
                 that = this;
-            this.getOwnerComponent().setCcuxBusy(true);
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oEvent.getParameter("arguments").coNum;
             this._sNewOfferCode = oEvent.getParameter("arguments").offercodeNum;
             sCurrentPath = "/CpgChgOfferS";
@@ -78,7 +78,7 @@ sap.ui.define(
             that.getView().byId('idnrgCamChgPriceT').removeAllAggregation("content");
             that.getView().byId('idnrgCamChgPriceT').addContent(oTemplateView);
             jQuery.sap.log.info("Odata Read Successfully:::");
-            this.getOwnerComponent().setCcuxBusy(false);
+            that.getOwnerComponent().getCcuxApp().setOccupied(false);
 		};
         /**
 		 * Binds the view to the object path. Makes sure that view displays

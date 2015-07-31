@@ -90,7 +90,7 @@ sap.ui.define(
                 aFilterValues,
                 fnRecievedHandler,
                 that = this;
-            this.getOwnerComponent().setCcuxBusy(true);
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oEvent.getParameter("arguments").coNum;
             this._sContract = "32253375";
             aFilterIds = ["Contract", "Type"];
@@ -103,7 +103,7 @@ sap.ui.define(
             this._oTileTemplate = oTileTemplate;
             // Handler function for tile container
             fnRecievedHandler = function (oEvent) {
-                that.getOwnerComponent().setCcuxBusy(false);
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
             };
             mParameters = {
                 model : "comp-campaign",
@@ -141,7 +141,7 @@ sap.ui.define(
                 that = this;
             sButtonText = oEvent.getSource().getId();
             sButtonText = sButtonText.substring(sButtonText.length - 1, sButtonText.length);
-            this.getOwnerComponent().setCcuxBusy(true);
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             aFilterIds = ["Contract", "Type"];
             switch (sButtonText) {
             case "P":
@@ -166,7 +166,7 @@ sap.ui.define(
             sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
             // Handler function for tile container
             fnRecievedHandler = function (oEvent) {
-                that.getOwnerComponent().setCcuxBusy(false);
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
             };
             mParameters = {
                 model : "comp-campaign",
