@@ -163,6 +163,7 @@
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield id="idBpInfoStreet_Edit" fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
+                                                               change="._onBpInfoRegAddrEdit"
                                                                editable="{oBpInfoConfig>/addrEditable}"
                                                                value="{oDataBpAddress>/AddressInfo/Street}"/>
                                             </l:MatrixLayoutCell>
@@ -181,6 +182,7 @@
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield id="idBpInfoHouseNo_Edit" fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
+                                                               change="._onBpInfoRegAddrEdit"
                                                                editable="{oBpInfoConfig>/addrEditable}"
                                                                value="{oDataBpAddress>/AddressInfo/HouseNo}"/>
                                             </l:MatrixLayoutCell>
@@ -226,7 +228,7 @@
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield id="idBpInfoPobox_Edit" fieldType="Noborder"
-                                                               change="._onPoBoxEdit"
+                                                               change="._onBpInfoPoBoxEdit"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
                                                                value="{oDataBpAddress>/AddressInfo/PoBox}"/>
@@ -293,9 +295,10 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{path: 'oDataBpAddress/AddressInfo/ZipCode',
+                                                               value="{oDataBpAddress>/AddressInfo/ZipCode}"/>
+                                                <!--value="{path: 'oDataBpAddress>/AddressInfo/ZipCode',
                                                                        type: 'nrg.base.type.ZipCode',
-                                                                       constraints: { mandatory: true }}"/>
+                                                                       constraints: { mandatory: true }}"-->
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -531,7 +534,8 @@
                                             <l:MatrixLayoutCell>
                                                 <utmain:Button  id="email_lbl_mail" design="None"
                                                     class="nrgDashboard-cusDataBpInfo-cnt nrgDashboard-cusDataBpInfo-cnt-email"
-                                                    text="{oDataBpContact>/Email}"
+                                                    text="{parts:['oDataBpContact>/Email'],
+                                                           formatter:'._formatEmailAddressText'}"
                                                     enabled="{oBpInfoConfig>/contactInfoEditable}"
                                                     press="._handleEmailEdit"/>
                                                 <!--<ute:Textfield fieldType="Noborder"

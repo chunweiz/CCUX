@@ -89,7 +89,7 @@
                                text="{comp-campaign>OfferTitle}" />
                         <u:Tag class="nrgCamHis-but-price" id="idnrgCamHis-but-price"
                                text="{path: 'comp-campaign>EFLPrice',
-                               type: 'nrg.util.type.Price',
+                               type: 'nrg.base.type.Price',
                                formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
                         <u:Tag class="nrgCamHis-but-priceLbl" id="idnrgCamHis-but-priceLbl"
                                text="(for {comp-campaign>EFLLevel}kWh)" />
