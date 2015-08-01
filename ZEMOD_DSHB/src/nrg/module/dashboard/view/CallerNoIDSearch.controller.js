@@ -180,7 +180,8 @@ sap.ui.define(
                 i,
                 oRouter = this.getOwnerComponent().getRouter(),
                 //Componenet Level Context Model
-                oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext();
+                oComponent = this.getOwnerComponent(),
+                oWebUiManager = oComponent.getCcuxWebUiManager();
 
 
 
@@ -195,8 +196,12 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData.results) {
                         if (oData.results.length === 1) {
-                            oComponentContextModel.setProperty('/dashboard/bpNum', oData.results[0].PartnerID);
-                            oRouter.navTo('dashboard.Bp', {bpNum: oData.results[0].PartnerID});
+                            //oComponentContextModel.setProperty('/dashboard/bpNum', oData.results[0].PartnerID);
+                            //oRouter.navTo('dashboard.Bp', {bpNum: oData.results[0].PartnerID});
+                            oComponent.getCcuxApp().setOccupied(true);
+                            oWebUiManager.notifyWebUi('bpConfirmed', {
+                                BP_NUM: oData.results[0].PartnerID
+                            }, this._handleBpConfirmed, this);
                         } else {
                             for (i = 0; i < oData.results.length; i = i + 1) {
                                 oData.results[i].iId = i + 1;
@@ -228,15 +233,32 @@ sap.ui.define(
                 aSelectedId = sSelectedId.split('-'),
                 iSelectedId = aSelectedId[2],
                 sSelectedBpNum = this.getView().getModel('oBpSearchResult').oData[iSelectedId].PartnerID,
-                oRouter = this.getOwnerComponent().getRouter(),
-                oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext();
+                oComponent = this.getOwnerComponent(),
+                oWebUiManager = oComponent.getCcuxWebUiManager();
 
-            //Set BpNum to Component Level
-            oComponentContextModel.setProperty('/dashboard/bpNum', sSelectedBpNum);
-
-            oRouter.navTo('dashboard.Bp', {bpNum: sSelectedBpNum});
+            //Confirm BP to IC first
+            oComponent.getCcuxApp().setOccupied(true);
+            oWebUiManager.notifyWebUi('bpConfirmed', {
+                BP_NUM: sSelectedBpNum
+            }, this._handleBpConfirmed, this);
 
             return;
+        };
+
+        Controller.prototype._handleBpConfirmed = function (oEvent) {
+            var oRouter = this.getOwnerComponent().getRouter(),
+                oComponent = this.getOwnerComponent(),
+                oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+                oRouteInfo = oEvent.getParameters();
+
+            //Set BpNum to Component Level
+            oComponentContextModel.setProperty('/dashboard/bpNum', oRouteInfo.BP_NUM);
+
+            //Set the loading effect to false
+            oComponent.getCcuxApp().setOccupied(false);
+
+            //Navigate to verification page
+            oRouter.navTo('dashboard.Bp', {bpNum: oRouteInfo.BP_NUM});
         };
 
         return Controller;
