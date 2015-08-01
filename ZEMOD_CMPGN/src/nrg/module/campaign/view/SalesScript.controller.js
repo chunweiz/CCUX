@@ -203,7 +203,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.backToOverview = function (oEvent) {
-            this.navTo("campaign", {coNum : this._sContract, flagType : "C"});
+            this.navTo("campaign", {coNum : this._sContract, typeV: "C"});
         };
         /**
 		 * Formats the Type value to display "English" and "Spanish"
