@@ -38,7 +38,9 @@ sap.ui.define(
                 oModel,
                 sCurrentPath,
                 aFilterIds,
-                aFilterValues;
+                aFilterValues,
+                oContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+                aSharedValues;
             oViewModel = new JSONModel({
 				busy : true,
 				delay : 0,
@@ -46,6 +48,7 @@ sap.ui.define(
                 history : false,
                 cancel : false
 			});
+
             aFilterIds = ["Contract", "Type"];
             aFilterValues = ["32253375", "H"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -86,6 +89,11 @@ sap.ui.define(
                         jQuery.sap.log.info("Odata Read Successfully:::");
                         if ((parseInt(oData, 10)) > 0) {
                             this.getView().getModel("appView").setProperty("/cancel", true);
+                            aSharedValues = {"PendingSwaps": true};
+                            oContextModel.setProperty("/Campaign", aSharedValues);
+                        } else {
+                            aSharedValues = {"PendingSwaps": false};
+                            oContextModel.setProperty("/Campaign", aSharedValues);
                         }
                     }
                 }.bind(this),

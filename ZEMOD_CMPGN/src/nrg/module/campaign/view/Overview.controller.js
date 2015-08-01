@@ -252,12 +252,16 @@ sap.ui.define(
 		 */
         Controller.prototype.onOffers = function (oEvent) {
             var sContract = oEvent.getSource().getBindingContext("Overview-elig").getProperty("Contract"),
-                sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill");
+                sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill"),
+                bPendingSwaps = this.getOwnerComponent().getCcuxContextManager().getContext().getProperty("/Campaign/PendingSwaps");
             if (sFirstMonthBill === "X") {
                 sap.ui.commons.MessageBox.alert("Customer has to completed atleast One Month Invoice");
             } else {
-                this.showPendingSwaps();
-                //this.navTo("campaignoffers", {coNum: sContract});
+                if (bPendingSwaps) {
+                    this.showPendingSwaps();
+                } else {
+                    this.navTo("campaignoffers", {coNum: sContract});
+                }
             }
         };
 
