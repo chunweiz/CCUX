@@ -28,6 +28,7 @@ sap.ui.define(
 		/* lifecycle method- After Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
         };
 
 		/**
@@ -78,7 +79,7 @@ sap.ui.define(
             that.getView().byId('idnrgCamChgPriceT').removeAllAggregation("content");
             that.getView().byId('idnrgCamChgPriceT').addContent(oTemplateView);
             jQuery.sap.log.info("Odata Read Successfully:::");
-            that.getOwnerComponent().getCcuxApp().setOccupied(false);
+
 		};
         /**
 		 * Binds the view to the object path. Makes sure that view displays

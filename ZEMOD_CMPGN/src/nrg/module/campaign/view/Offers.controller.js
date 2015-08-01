@@ -92,7 +92,7 @@ sap.ui.define(
                 that = this;
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oEvent.getParameter("arguments").coNum;
-            this._sContract = "32253375";
+            //this._sContract = "32253375";
             aFilterIds = ["Contract", "Type"];
             aFilterValues = [this._sContract, "P"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);

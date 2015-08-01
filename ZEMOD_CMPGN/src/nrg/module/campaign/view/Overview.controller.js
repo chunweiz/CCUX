@@ -23,7 +23,12 @@ sap.ui.define(
             this.getOwnerComponent().getRouter().getRoute("campaign").attachPatternMatched(this._onObjectMatched, this);
             this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
         };
-
+        /* =========================================================== */
+		/* lifecycle method- After Rendering                          */
+		/* =========================================================== */
+        Controller.prototype.onAfterRendering = function () {
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
+        };
         /**
 		 * Binds the view to the object path
 		 *
@@ -128,7 +133,6 @@ sap.ui.define(
                         path : sPath
                     });
                 }
-                that.getOwnerComponent().getCcuxApp().setOccupied(false);
                 oBinding = oToggleContainer.getBinding("content");
                 oBinding.detachDataReceived(fnRecievedHandler);
             };
@@ -143,7 +147,7 @@ sap.ui.define(
             };
             oToggleContainer.bindAggregation("content", mParameters);
             mParameters = {
-                filters : aFilters,
+                //filters : aFilters,
                 success : function (oData) {
                     this.getView().byId("idCamCustReqOfferBtn").bindElement({
                         model : "Overview-elig",
@@ -153,6 +157,7 @@ sap.ui.define(
                         model : "Overview-elig",
                         path : sEligibilityPath
                     });
+                    oModel.updateBindings(false);
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
                 error: function (oError) {
@@ -164,6 +169,7 @@ sap.ui.define(
                 oModel.read(sEligibilityPath, mParameters);
             }
             this.getView().setModel(oModel, "Overview-elig");
+
 		};
 
         /**
