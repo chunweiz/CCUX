@@ -252,12 +252,43 @@ sap.ui.define(
 		 */
         Controller.prototype.onOffers = function (oEvent) {
             var sContract = oEvent.getSource().getBindingContext("Overview-elig").getProperty("Contract"),
-                sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill");
+                sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill"),
+                sCurrentPath,
+                aFilterIds,
+                aFilterValues,
+                aFilters,
+                mParameters,
+                oModel,
+                that = this;
+
             if (sFirstMonthBill === "X") {
                 sap.ui.commons.MessageBox.alert("Customer has to completed atleast One Month Invoice");
             } else {
-                this.showPendingSwaps();
-                //this.navTo("campaignoffers", {coNum: sContract});
+                sCurrentPath = this._i18NModel.getProperty("nrgPendingSwapsSet");
+                sCurrentPath = sCurrentPath + "/$count";
+                aFilterIds = ["Contract"];
+                aFilterValues = [sContract];
+                aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+                mParameters = {
+                    filters : aFilters,
+                    success : function (oData) {
+                        if (oData) {
+                            jQuery.sap.log.info("Odata Read Successfully:::");
+                            if ((parseInt(oData, 10)) > 0) {
+                                that.showPendingSwaps();
+                            } else {
+                                that.navTo("campaignoffers", {coNum: sContract});
+                            }
+                        }
+                    }.bind(this),
+                    error: function (oError) {
+                        jQuery.sap.log.info("Odata Failed:::" + oError);
+                    }.bind(this)
+                };
+                oModel = this.getOwnerComponent().getModel('comp-campaign');
+                if (oModel) {
+                    oModel.read(sCurrentPath, mParameters);
+                }
             }
         };
 
@@ -372,7 +403,7 @@ sap.ui.define(
                 oPendingSwapsTemplate;
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             aFilterIds = ["Contract"];
-            aFilterValues = ['34805112'];
+            aFilterValues = [this._sContract];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             if (!this._oDialogFragment) {
                 this._oDialogFragment = sap.ui.xmlfragment("PendingOverview", "nrg.module.campaign.view.PendingSwaps", this);

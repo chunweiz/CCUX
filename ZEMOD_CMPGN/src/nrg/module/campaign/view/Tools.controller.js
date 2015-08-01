@@ -46,16 +46,16 @@ sap.ui.define(
                 history : false,
                 cancel : false
 			});
-            aFilterIds = ["Contract", "Type"];
-            aFilterValues = ["32253375", "H"];
-            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+
             this.getView().setModel(oViewModel, "appView");
             sCurrentPath = this._i18NModel.getProperty("nrgHistorySet");
             this.getView().getModel("appView").setProperty("/busy", false);
-            Controller.sContract = oEvent.getParameter("arguments").coNum;
+            this._sContract = oEvent.getParameter("arguments").coNum;
+            aFilterIds = ["Contract", "Type"];
+            aFilterValues = [this._sContract, "H"];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sCurrentPath = sCurrentPath + "/$count";
             mParameters = {
-                batchGroupId : "myId3",
                 filters : aFilters,
                 success : function (oData) {
                     if (oData) {
@@ -76,10 +76,9 @@ sap.ui.define(
             sCurrentPath = this._i18NModel.getProperty("nrgPendingSwapsSet");
             sCurrentPath = sCurrentPath + "/$count";
             aFilterIds = ["Contract"];
-            aFilterValues = ['34805112'];
+            aFilterValues = [this._sContract];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             mParameters = {
-                batchGroupId : "myId4",
                 filters : aFilters,
                 success : function (oData) {
                     if (oData) {
@@ -110,9 +109,10 @@ sap.ui.define(
         Controller.prototype._createSearchFilterObject = function (aFilterIds, aFilterValues) {
             var aFilters = [],
                 iCount;
-
-            for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
-                aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
+            if (aFilterIds !== undefined) {
+                for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
+                    aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
+                }
             }
             return aFilters;
         };
@@ -151,7 +151,7 @@ sap.ui.define(
                 aResults = [];
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             aFilterIds = ["Contract", "Type"];
-            aFilterValues = ["32253375", "H"];
+            aFilterValues = [this._sContract, "H"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sPath = this._i18NModel.getProperty("nrgHistorySet");
             oHistoryView = sap.ui.view({
@@ -258,7 +258,7 @@ sap.ui.define(
                 oPendingSwapsTemplate;
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             aFilterIds = ["Contract"];
-            aFilterValues = ['34805112'];
+            aFilterValues = [this._sContract];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             if (!this._oDialogFragment) {
                 this._oDialogFragment = sap.ui.xmlfragment("PendingSwaps", "nrg.module.campaign.view.PendingSwaps", this);
