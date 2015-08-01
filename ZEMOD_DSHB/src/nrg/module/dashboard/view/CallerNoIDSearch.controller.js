@@ -18,6 +18,7 @@ sap.ui.define(
             //var test = new HashChanger();
             //var testagian= test.getHash();
 
+
             /*Models in the controller*/
 
             //get OData Model from component level first
@@ -112,7 +113,7 @@ sap.ui.define(
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sPhnNum')) {
-                oFilterTemplate.sPath = 'DayPhone';
+                oFilterTemplate.sPath = 'TelePhone';
                 oFilterTemplate.sOperator = FilterOperator.EQ;
                 oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sPhnNum');
                 aFilters.push(oFilterTemplate);
@@ -177,7 +178,10 @@ sap.ui.define(
             var aFilters = this._createSearchFilterObject(),
                 oParameters,
                 i,
-                oRouter = this.getOwnerComponent().getRouter();
+                oRouter = this.getOwnerComponent().getRouter(),
+                //Componenet Level Context Model
+                oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext();
+
 
 
 
@@ -191,6 +195,7 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData.results) {
                         if (oData.results.length === 1) {
+                            oComponentContextModel.setProperty('/dashboard/bpNum', oData.results[0].PartnerID);
                             oRouter.navTo('dashboard.Bp', {bpNum: oData.results[0].PartnerID});
                         } else {
                             for (i = 0; i < oData.results.length; i = i + 1) {
@@ -223,7 +228,11 @@ sap.ui.define(
                 aSelectedId = sSelectedId.split('-'),
                 iSelectedId = aSelectedId[2],
                 sSelectedBpNum = this.getView().getModel('oBpSearchResult').oData[iSelectedId].PartnerID,
-                oRouter = this.getOwnerComponent().getRouter();
+                oRouter = this.getOwnerComponent().getRouter(),
+                oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext();
+
+            //Set BpNum to Component Level
+            oComponentContextModel.setProperty('/dashboard/bpNum', sSelectedBpNum);
 
             oRouter.navTo('dashboard.Bp', {bpNum: sSelectedBpNum});
 

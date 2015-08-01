@@ -323,7 +323,13 @@ sap.ui.define(
         };
 
         Controller.prototype._handleConfirm = function () {
-            var oStatusModel = this.getView().getModel('oCfrmStatus');
+            var oStatusModel = this.getView().getModel('oCfrmStatus'),
+                oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID');
+
+            //Set Confirmed CaNum to Component level
+            oComponentContextModel.setProperty('/dashboard/caNum', sCurrentCa);
+
             this.getView().byId('id_confmBtn').setVisible(false);
             this.getView().byId('id_unConfmBtn').setVisible(true);
             this.getView().byId('id_updtBtn').setEnabled(false);
