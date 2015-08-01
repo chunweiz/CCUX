@@ -194,7 +194,7 @@ sap.ui.define(
             this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Logout);
 
             oComponent.getCcuxApp().setOccupied(true);
-            oWebUiManager.notifyWebUi('logout', this._onLogoffCallback, this);
+            oWebUiManager.notifyWebUi('logout', {}, this._onLogoffCallback, this);
         };
 
         AppHeader.prototype._onLogoffCallback = function (oEvent) {
