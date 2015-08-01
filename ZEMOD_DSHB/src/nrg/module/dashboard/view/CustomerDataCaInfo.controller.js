@@ -205,10 +205,10 @@ sap.ui.define(
 
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
-            if(!this._bpNum) {
+            if (!this._bpNum) {
                 this._bpNum = aSplitHash[iSplitHashL - 3];
             }
-            if(!this._caNum) {
+            if (!this._caNum) {
                 this._caNum = aSplitHash[iSplitHashL - 1];
             }
 
@@ -226,7 +226,7 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         if (oData.results.length !== 0) {
-                            if(!this._fixedAddrID) {
+                            if (!this._fixedAddrID) {
                                 this._fixedAddrID = oData.results[0].FixedAddressID;
                             }
                             this.getView().getModel('oDataBuagAddrDetails').setData(oData);
@@ -248,9 +248,11 @@ sap.ui.define(
 
         CustomController.prototype._buildUpCas = function (oData, caNum) {
             var oModel = this.getView().getModel('oDataCAs'),
-                caArr = [];
-            for(var i=0; i<oData.results.length; i = i + 1 ) {
-                var o = {};
+                caArr = [],
+                i,
+                o = {};
+            for (i = 0; i < oData.results.length; i = i + 1) {
+                //var o = {};
                 o.key = oData.results[i].ContractAccountID;
                 o.value = oData.results[i].ContractAccountID;
                 caArr.push(o);

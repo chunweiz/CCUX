@@ -462,53 +462,85 @@ sap.ui.define(
         CustomController.prototype.onMarketPrefSave = function () {
             var oConfigModel = this.getView().getModel('oBpInfoConfig'),
                 oModel = this.getView().getModel('oODataSvc'),
-                sPath,
-                oParameters,
                 bpNumber = this._bpNum,
+                sPath,
                 attibuteSet,
                 attribute,
-                i;
+                i,
+                aPathUpdateReq = [],
+                oTempUpdate;
 
             oConfigModel.setProperty('/marketPrefEditVisible', true);
             oConfigModel.setProperty('/marketPrefSaveVisible', false);
             oConfigModel.setProperty('/mktPrfEditable', false);
 
-            oParameters = {
-                merge: false,
-                success : function (oData) {
-//                    sap.ui.commons.MessageBox.alert("Market Preference Update Success");
-                    this._retrBpMarkPrefSet(bpNumber);
-                }.bind(this),
-                error: function (oError) {
-                    sap.ui.commons.MessageBox.alert("Market Preference Update Failed");
-                }.bind(this)
-            };
+
             for (i = 0; i < this.getView().getModel('oDataBpMarkPreferSet').oData.results.length; i = i + 1) {
                 if (JSON.stringify(this.getView().getModel('oDataBpMarkPreferSet').oData.results[i]) !== JSON.stringify(this.oDataBpMarkPreferSetBak.results[i])) {
                     attibuteSet = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/AttributeSet');
                     attribute = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/Attribute');
 
-                    sPath = '/BpMarkPrefers' + '(PartnerID=\'' + bpNumber + '\',AttributeSet=\'' + attibuteSet + '\',Attribute=\'' + attribute + '\')';
-
-                    if (oModel) {
-                        oModel.update(sPath, this.getView().getModel('oDataBpMarkPreferSet').oData.results[i], oParameters);
-                    }
+                    oTempUpdate = {};
+                    oTempUpdate.iIndex = i;
+                    oTempUpdate.sPath = '/BpMarkPrefers' + '(PartnerID=\'' + bpNumber + '\',AttributeSet=\'' + attibuteSet + '\',Attribute=\'' + attribute + '\')';
+                    aPathUpdateReq.push(oTempUpdate);
                 }
-                /*
+            }
+
+
+            if (aPathUpdateReq.length > 0) {
+                this._updateSingleMarketPref(aPathUpdateReq, 0);
+            }
+        };
+
+        Controller.prototype._updateSingleMarketPref = function (aAllMktPref, iIndex) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                oParameters,
+                bpNumber = this._bpNum,
+                oPayload = {};
+
+            oParameters = {
+                merge: false,
+                success : function (oData) {
+                    if (iIndex < aAllMktPref.length - 1) {
+                        this._updateSingleMarketPref(aAllMktPref, iIndex + 1);
+                    } else {
+                        this._retrBpMarkPrefSet(bpNumber);
+                        sap.ui.commons.MessageBox.alert("Market Preference Update Success");
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Market Preference Update Failed");
+                }.bind(this)
+            };
+
+            oPayload = this.getView().getModel('oDataBpMarkPreferSet').oData.results[aAllMktPref[iIndex].iIndex];
+            delete oPayload.Partner;
+            delete oPayload.__metadata;
+
+            if (oModel) {
+                oModel.update(aAllMktPref[iIndex].sPath, oPayload, oParameters);
+            }
+
+        };
+        /*if (oModel) {
+                        oModel.update(sPath, this.getView().getModel('oDataBpMarkPreferSet').oData.results[i], oParameters);
+                    }*/
+        /*
                 if (JSON.stringify(this.getView().getModel('oDataBpMarkPreferSet').oData.results[i]) === JSON.stringify(this.oDataBpMarkPreferSetBak.results[i])) {
                     //sap.ui.commons.MessageBox.alert("There is no change for Market Perference index: " + i.toString());
                 } else {
                     attibuteSet = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/AttributeSet');
                     attribute = this.getView().getModel('oDataBpMarkPreferSet').getProperty('/results/' + i.toString() + '/Attribute');
 
-                    sPath = '/BpMarkPrefers' + '(PartnerID=\'' + bpNumber + '\',AttributeSet=\'' + attibuteSet + '\',Attribute=\'' + attribute + '\')';
+                    oTempUpdate.iIndex = i;
+                    oTempUpdate.sPath = '/BpMarkPrefers' + '(PartnerID=\'' + bpNumber + '\',AttributeSet=\'' + attibuteSet + '\',Attribute=\'' + attribute + '\')';
+                    aPathUpdateReq.push(oTempUpdate);
 
                     if (oModel) {
                         oModel.update(sPath, this.getView().getModel('oDataBpMarkPreferSet').oData.results[i], oParameters);
                     }
                 }*/
-            }
-        };
 
         Controller.prototype._retrUrlHash = function () {
             //Get the hash to retrieve bp #
