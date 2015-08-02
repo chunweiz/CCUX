@@ -41,26 +41,26 @@
                               text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-SERVICE_ADDRESS}"/>
             </utmain:headerContent>
             <utmain:content>
-                    <utmain:Dropdown id="referer"
-                                     design="Default"
-                                     class="nrgDashboard-cusDataCaInfo-dropdown"
-                                     content="{oDataCAs>/dropdown}"
-                                     selectedKey="{oDataCAs>/selectedKey}"
-                                     select=".onCaSelected">
-                        <utmain:DropdownItem key="{oDataCAs>key}">
-                           <ute:Tag text="{oDataCAs>value}"/>
-                        </utmain:DropdownItem>
-                    </utmain:Dropdown>
+                <utmain:Dropdown id="referer"
+                                 class="nrgDashboard-cusDataCaInfo-dropdown"
+                                 selectedKey="{oAllBuags>/selectedKey}"
+                                 content="{oAllBuags>/}"
+                                 select="._onCaSelected">
+                    <utmain:DropdownItem key="{oAllBuags>ContractAccountID}">
+                       <ute:Tag elem="span" text="{oAllBuags>DisplayName}"/>
+                    </utmain:DropdownItem>
+                </utmain:Dropdown>
 
-                    <ute:Tag elem="div"
-                             class="nrgDashboard-cusDataCaInfo-checkBox-div">
-                        <utmain:Checkbox enabled="true"
-                                         class="nrgDashboard-cusDataCaInfo-chb" />
-                        <utmain:Label
-                            text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-SELECT_ALL}"
-                            class="nrgDashboard-cusDatacaInfo-l-chb-lbl"/>
-                    </ute:Tag>
-            </utmain:content>
+                <ute:Tag elem="div"
+                         class="nrgDashboard-cusDataCaInfo-checkBox-div">
+                    <utmain:Checkbox enabled="true" checked="{oCaInfoConfig>/bAllBuagSelected}"
+                                     select="._onAllBuagsSelected"
+                                     class="nrgDashboard-cusDataCaInfo-chb" />
+                    <utmain:Label
+                        text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-SELECT_ALL}"
+                        class="nrgDashboard-cusDatacaInfo-l-chb-lbl"/>
+                </ute:Tag>
+        </utmain:content>
         </utmain:Infoline>
 
         <utmain:Infoline class="nrgDashboard-cusDataCaInfo-infoLine"

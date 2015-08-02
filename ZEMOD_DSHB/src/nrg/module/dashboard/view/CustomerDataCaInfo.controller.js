@@ -28,11 +28,17 @@ sap.ui.define(
 
             //Model to hold CA accounts and mailing address short form
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataCAs');
+
+            //Model to hold all Buags
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllBuags');
+
+
+            this._initCaInfoConfigModel();
+            this._initDataModel();
         };
 
         CustomController.prototype.onBeforeRendering = function () {
-            this._initCaInfoConfigModel();
-            this._initDataModel();
+
         };
 
         CustomController.prototype.onAfterRendering = function () {
@@ -53,6 +59,105 @@ sap.ui.define(
             configModel.setProperty('/tempAddrAddnewVisible', true);
             configModel.setProperty('/tempAddrSaveVisible', false);
             configModel.setProperty('/tempAddrEditable', false);
+
+            configModel.setProperty('/bAllBuagSelected', false);
+        };
+
+        CustomController.prototype._initDataModel = function () {
+            var sPath, aSplitHash, iSplitHashL;
+
+            aSplitHash = (this._retrUrlHash()).split('/');
+            iSplitHashL = aSplitHash.length;
+            if (!this._bpNum) {
+                this._bpNum = aSplitHash[iSplitHashL - 3];
+            }
+            if (!this._caNum) {
+                this._caNum = aSplitHash[iSplitHashL - 1];
+            }
+
+
+            this._retrAllBuags(this._bpNum);
+            this._retrBuagAddrDetail(this._caNum);
+        };
+
+        Controller.prototype._retrAllBuags = function (sBpNum) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                oCaModel = this.getView().getModel('oAllBuags'),
+                sPath,
+                oParameters,
+                sCurrentCa = this._caNum;
+
+            sPath = '/Partners' + '(\'' + sBpNum + '\')/Buags/';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        oCaModel.setData(oData.results);
+                        oCaModel.setProperty('/selectedKey', sCurrentCa);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        CustomController.prototype._retrBuagAddrDetail = function (caNum) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/Buags(ContractAccountID=' + '\'' + caNum + '\')/BuagAddrDetail/';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        if (oData.results.length !== 0) {
+                            if (!this._fixedAddrID) {
+                                this._fixedAddrID = oData.results[0].FixedAddressID;
+                            }
+                            this.getView().getModel('oDataBuagAddrDetails').setData(oData);
+                            this.oDataBuagAddrDetailsBak = jQuery.extend(true, {}, oData);
+                            //this._buildUpCas(this.oDataBuagAddrDetailsBak, caNum);
+                        }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Error loading /Buags{caNum}/BuagAddrDetail");
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        CustomController.prototype._onCaSelected = function (oEvent) {
+            var sSelectedKey = oEvent.getParameters().selectedKey;
+
+            if (sSelectedKey) {
+                this._caNum = sSelectedKey;
+                this._retrBuagAddrDetail(this._caNum);
+            }
+
+            return;
+        };
+
+        CustomController.prototype._onAllBuagsSelected = function (oEvent) {
+            //var bAllBuagsSelected = oEvent.mParameters.checked;
+
+            //this.getView().getModel('oCaInfoConfig').setProperty('/bAllBuagSelected', bAllBuagsSelected);
+        };
+
+        Controller.prototype._formatDate = function (dob) {
+            if (dob) {
+                var oDateFormat = DateFormat.getInstance({pattern: "MM/dd/yyyy"});
+                return oDateFormat.format(dob);
+            }
         };
 
         CustomController.prototype.onMailAddrUpdate = function () {
@@ -181,17 +286,6 @@ sap.ui.define(
             oRouter.navTo('dashboard.Bp', {bpNum: this._bpNum});
         };
 
-        CustomController.prototype.onCaSelected = function (oEvent) {
-            var sSelectedKey = oEvent.getParameters().selectedKey,
-                iSelectedIndex;
-
-            if (sSelectedKey) {
-                iSelectedIndex = parseInt(sSelectedKey, 10);
-                this._caNum = this.getView().getModel('oDataCAs').oData[iSelectedIndex];
-                this._initRetrAllData(this._caNum); //switch content to new CA selected
-            }
-        };
-
         Controller.prototype._retrUrlHash = function () {
             //Get the hash to retrieve bp #
             var oHashChanger = new HashChanger(),
@@ -200,21 +294,25 @@ sap.ui.define(
             return sUrlHash;
         };
 
-        CustomController.prototype._initDataModel = function () {
-            var sPath, aSplitHash, iSplitHashL;
-
-            aSplitHash = (this._retrUrlHash()).split('/');
-            iSplitHashL = aSplitHash.length;
-            if (!this._bpNum) {
-                this._bpNum = aSplitHash[iSplitHashL - 3];
+        /*
+        CustomController.prototype._buildUpCas = function (oData, caNum) {
+            var oModel = this.getView().getModel('oDataCAs'),
+                caArr = [],
+                i,
+                o;
+            for (i = 0; i < oData.results.length; i = i + 1) {
+                //var o = {};
+                o = {};
+                o.key = i;
+                o.value = oData.results[i].ContractAccountID;
+                caArr.push(o);
             }
-            if (!this._caNum) {
-                this._caNum = aSplitHash[iSplitHashL - 1];
-            }
 
-            this._initRetrAllData(this._caNum);
-        };
+            oModel.setProperty('/selectedKey', i);
+            oModel.setProperty('/dropdown', caArr);
+        };*/
 
+         /*
         CustomController.prototype._initRetrAllData = function (caNum) {
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
@@ -231,7 +329,7 @@ sap.ui.define(
                             }
                             this.getView().getModel('oDataBuagAddrDetails').setData(oData);
                             this.oDataBuagAddrDetailsBak = jQuery.extend(true, {}, oData);
-                            this._buildUpCas(this.oDataBuagAddrDetailsBak, caNum);
+                            //this._buildUpCas(this.oDataBuagAddrDetailsBak, caNum);
                         }
                     }
                 }.bind(this),
@@ -246,28 +344,18 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype._buildUpCas = function (oData, caNum) {
-            var oModel = this.getView().getModel('oDataCAs'),
-                caArr = [],
-                i,
-                o = {};
-            for (i = 0; i < oData.results.length; i = i + 1) {
-                //var o = {};
-                o.key = oData.results[i].ContractAccountID;
-                o.value = oData.results[i].ContractAccountID;
-                caArr.push(o);
-            }
+        CustomController.prototype.onCaSelected = function (oEvent) {
+            var sSelectedKey = oEvent.getParameters().selectedKey,
+                iSelectedIndex;
 
-            oModel.setProperty('/selectedKey', caNum);
-            oModel.setProperty('/dropdown', caArr);
-        };
-
-        Controller.prototype._formatDate = function (dob) {
-            if (dob) {
-                var oDateFormat = DateFormat.getInstance({pattern: "MM/dd/yyyy"});
-                return oDateFormat.format(dob);
+            if (sSelectedKey) {
+                iSelectedIndex = parseInt(sSelectedKey, 10);
+                this._caNum = this.getView().getModel('oDataCAs').oData[iSelectedIndex];
+                this._initRetrAllData(this._caNum); //switch content to new CA selected
             }
         };
+
+        */
 
         return CustomController;
     }
