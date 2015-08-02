@@ -14,7 +14,7 @@ sap.ui.define(
 
         var Controller = CoreController.extend('nrg.module.dashboard.view.CallerNoIDSearch');
 
-        Controller.prototype.onInit = function () {
+        Controller.prototype.onBeforeRendering = function () {
             //var test = new HashChanger();
             //var testagian= test.getHash();
 
