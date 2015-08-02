@@ -15,6 +15,7 @@ sap.ui.define(
             constructor: function (oComponent) {
                 BaseObject.apply(this);
                 this._oComponent = oComponent;
+                this._oCurrRoute = null;
             },
 
             metadata: {
@@ -75,6 +76,10 @@ sap.ui.define(
             if (oWebUiManager) {
                 oWebUiManager.notifyWebUi('resetTimeOut');
             }
+        };
+
+        Manager.prototype.getCurrentRoute = function () {
+            return this._oCurrRoute;
         };
 
         Manager.prototype.destroy = function () {
