@@ -25,6 +25,8 @@ sap.ui.define(
         var CustomController = Controller.extend('nrg.module.dashboard.view.CustomerDataBpInfo');
 
         CustomController.prototype.onInit = function () {
+            this.getOwnerComponent().getCcuxApp().setTitle('BUSINESS PARTNER');
+
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
             //Model to track page edit/save status

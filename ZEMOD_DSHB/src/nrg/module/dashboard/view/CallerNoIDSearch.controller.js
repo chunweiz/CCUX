@@ -18,7 +18,7 @@ sap.ui.define(
             //var test = new HashChanger();
             //var testagian= test.getHash();
 
-
+            this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
             /*Models in the controller*/
 
             //get OData Model from component level first

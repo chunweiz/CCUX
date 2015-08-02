@@ -21,6 +21,8 @@ sap.ui.define(
         CustomController.prototype.onInit = function () {
             var oModel;
 
+            this.getOwnerComponent().getCcuxApp().setTitle('BUSINESS PARTNER');
+
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
             //Model to track page edit/save status
