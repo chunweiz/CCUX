@@ -21,7 +21,7 @@ sap.ui.define(
 
             oComponent.getCcuxApp().setOccupied(true);
             oWebUiManager.notifyWebUi('bpConfirmed', {
-                bpNum: '0002955761'
+                BP_NUM: '0002955761'
             }, this._handleBpConfirmed, this);
         };
 
