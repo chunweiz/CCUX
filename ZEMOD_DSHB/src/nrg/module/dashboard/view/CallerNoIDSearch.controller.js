@@ -53,7 +53,8 @@ sap.ui.define(
                 sUnitNum: null,
                 sCityNum: null,
                 sStateNum: null,
-                sZipNum: null
+                sZipNum: null,
+                sTaxID: null
             };
 
             this.getView().getModel('oSearchFilters').setProperty('/searchTextFields', oFilters);
@@ -193,6 +194,14 @@ sap.ui.define(
                     path: 'LastName',
                     operator: FilterOperator.EQ,
                     value1: oFilterModel.getProperty('/searchTextFields/sLaName')
+                });
+                aFilters.push(oFilterTemplate);
+            }
+            if (oFilterModel.getProperty('/searchTextFields/sTaxID')) {
+                oFilterTemplate =  new Filter({
+                    path: 'TaxID',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sTaxID')
                 });
                 aFilters.push(oFilterTemplate);
             }

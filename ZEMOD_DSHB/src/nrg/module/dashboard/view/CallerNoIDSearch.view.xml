@@ -108,6 +108,17 @@
                     change="onTextFieldChange"
                     width="48%">
                 </ute:Textfield>
+
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sTaxID'}"
+                    id="idSearchTaxID"
+                    class="nrgDashboard-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_TaxID}"
+                    change="onTextFieldChange"
+                    width="48%">
+                </ute:Textfield>
+
             </ute:Tag>
 
             <!--Add Address Search-->
