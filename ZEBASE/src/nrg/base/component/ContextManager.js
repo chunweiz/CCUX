@@ -19,7 +19,8 @@ sap.ui.define(
             metadata: {
                 publicMethods: [
                     'init',
-                    'getContext'
+                    'getContext',
+                    'resetContext'
                 ]
             }
         });
@@ -39,6 +40,16 @@ sap.ui.define(
             }
 
             return oContextModel;
+        };
+
+        Manager.prototype.resetContext = function () {
+            var oModel = this.getContext();
+
+            oModel.setData({
+                dashboard: {}
+            });
+
+            return this;
         };
 
         Manager.prototype.destroy = function () {

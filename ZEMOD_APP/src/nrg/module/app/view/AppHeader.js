@@ -129,85 +129,6 @@ sap.ui.define(
             return false;
         };
 
-        AppHeader.prototype._onMenuPress = function (oControlEvent) {
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Menu);
-        };
-
-        AppHeader.prototype._onMessagesPress = function (oControlEvent) {
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Messages);
-        };
-
-        AppHeader.prototype._onIndexPress = function (oControlEvent) {
-            var oWebUiManager = this._oController.getOwnerComponent().getCcuxWebUiManager();
-
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Index);
-
-            oWebUiManager.notifyWebUi('openIndex');
-        };
-
-        AppHeader.prototype._onTransactionPress = function (oControlEvent) {
-            var oWebUiManager = this._oController.getOwnerComponent().getCcuxWebUiManager();
-
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Transaction);
-
-            oWebUiManager.notifyWebUi('launchTransaction');
-        };
-
-        AppHeader.prototype._onEsidToolPress = function (oControlEvent) {
-            var oWebUiManager = this._oController.getOwnerComponent().getCcuxWebUiManager();
-
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.EsidTool);
-
-            oWebUiManager.notifyWebUi('openEsidTool');
-        };
-
-        AppHeader.prototype._onPalPlusPress = function (oControlEvent) {
-            var oWebUiManager = this._oController.getOwnerComponent().getCcuxWebUiManager();
-
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.PalPlus);
-
-            oWebUiManager.notifyWebUi('openPalPlus');
-        };
-
-        AppHeader.prototype._onRefreshPress = function (oControlEvent) {
-            var oWebUiManager = this._oController.getOwnerComponent().getCcuxWebUiManager();
-
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Refresh);
-
-            oWebUiManager.notifyWebUi('refresh');
-        };
-
-        AppHeader.prototype._onClearAccPress = function (oControlEvent) {
-            var oWebUiManager = this._oController.getOwnerComponent().getCcuxWebUiManager();
-
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.ClearAcc);
-
-            oWebUiManager.notifyWebUi('clearAccount');
-        };
-
-        AppHeader.prototype._onLogoffPress = function (oControlEvent) {
-            var oWebUiManager, oComponent;
-
-            oComponent = this._oController.getOwnerComponent();
-            oWebUiManager = oComponent.getCcuxWebUiManager();
-
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Logout);
-
-            oComponent.getCcuxApp().setOccupied(true);
-            oWebUiManager.notifyWebUi('logout', {}, this._onLogoffCallback, this);
-        };
-
-        AppHeader.prototype._onLogoffCallback = function (oEvent) {
-            var oComponent, oResponse;
-
-            oComponent = this._oController.getOwnerComponent();
-
-            oResponse = oEvent.getParameters();
-            if (oResponse.CANCEL && oResponse.CANCEL === 'X') {
-                oComponent.getCcuxApp().setOccupied(false);
-            }
-        };
-
         AppHeader.prototype._resetAllHMItemState = function () {
             var sHMItemId, oHMItem, oView;
 
@@ -227,15 +148,15 @@ sap.ui.define(
         AppHeader.prototype._registerHMItemEvents = function () {
             var oView = this._oController.getView();
 
-            oView.byId(AppHeader.HMItemId.Menu).attachEvent('press', this._onMenuPress, this);
-            oView.byId(AppHeader.HMItemId.Index).attachEvent('press', this._onIndexPress, this);
-            oView.byId(AppHeader.HMItemId.Transaction).attachEvent('press', this._onTransactionPress, this);
-            oView.byId(AppHeader.HMItemId.EsidTool).attachEvent('press', this._onEsidToolPress, this);
-            oView.byId(AppHeader.HMItemId.PalPlus).attachEvent('press', this._onPalPlusPress, this);
-            oView.byId(AppHeader.HMItemId.Messages).attachEvent('press', this._onMessagesPress, this);
-            oView.byId(AppHeader.HMItemId.Refresh).attachEvent('press', this._onRefreshPress, this);
-            oView.byId(AppHeader.HMItemId.ClearAcc).attachEvent('press', this._onClearAccPress, this);
-            oView.byId(AppHeader.HMItemId.Logoff).attachEvent('press', this._onLogoffPress, this);
+            oView.byId(AppHeader.HMItemId.Menu).attachEvent('press', this._oController._onMenuPress, this._oController);
+            oView.byId(AppHeader.HMItemId.Index).attachEvent('press', this._oController._onIndexPress, this._oController);
+            oView.byId(AppHeader.HMItemId.Transaction).attachEvent('press', this._oController._onTransactionPress, this._oController);
+            oView.byId(AppHeader.HMItemId.EsidTool).attachEvent('press', this._oController._onEsidToolPress, this._oController);
+            oView.byId(AppHeader.HMItemId.PalPlus).attachEvent('press', this._oController._onPalPlusPress, this._oController);
+            oView.byId(AppHeader.HMItemId.Messages).attachEvent('press', this._oController._onMessagesPress, this._oController);
+            oView.byId(AppHeader.HMItemId.Refresh).attachEvent('press', this._oController._onRefreshPress, this._oController);
+            oView.byId(AppHeader.HMItemId.ClearAcc).attachEvent('press', this._oController._onClearAccPress, this._oController);
+            oView.byId(AppHeader.HMItemId.Logoff).attachEvent('press', this._oController._onLogoffPress, this._oController);
         };
 
         AppHeader.prototype._isSubmenu = function (sSubmenuId) {

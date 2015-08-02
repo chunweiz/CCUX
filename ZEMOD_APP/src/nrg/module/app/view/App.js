@@ -159,6 +159,18 @@ sap.ui.define(
             return this._oAppFooter.isExpanded();
         };
 
+        App.prototype._getHeader = function () {
+            return this._oAppHeader;
+        };
+
+        App.prototype._getBody = function () {
+            return this._oAppBody;
+        };
+
+        App.prototype._getFooter = function () {
+            return this._oAppFooter;
+        };
+
         return App;
     }
 );

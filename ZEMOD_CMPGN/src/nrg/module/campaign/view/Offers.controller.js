@@ -89,7 +89,8 @@ sap.ui.define(
                 aFilterIds,
                 aFilterValues,
                 fnRecievedHandler,
-                that = this;
+                that = this,
+                oProactiveButton = this.getView().byId("idCamToggleBtn-P");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oEvent.getParameter("arguments").coNum;
             //this._sContract = "32253375";
@@ -104,6 +105,7 @@ sap.ui.define(
             // Handler function for tile container
             fnRecievedHandler = function (oEvent) {
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                oProactiveButton.addStyleClass("nrgCamOff-btn-selected");
             };
             mParameters = {
                 model : "comp-campaign",
@@ -138,7 +140,16 @@ sap.ui.define(
                 aFilterIds,
                 aFilterValues,
                 fnRecievedHandler,
-                that = this;
+                that = this,
+                oProactiveButton = this.getView().byId("idCamToggleBtn-P"),
+                oReactiveButton = this.getView().byId("idCamToggleBtn-R"),
+                oSaveButton = this.getView().byId("idCamToggleBtn-S"),
+                oFinalSaveButton = this.getView().byId("idCamToggleBtn-F");
+
+            oProactiveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oReactiveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oSaveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oFinalSaveButton.removeStyleClass("nrgCamOff-btn-selected");
             sButtonText = oEvent.getSource().getId();
             sButtonText = sButtonText.substring(sButtonText.length - 1, sButtonText.length);
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
@@ -159,6 +170,7 @@ sap.ui.define(
             default:
                 aFilterValues = [this._sContract, "F"];
             }
+            oEvent.getSource().addStyleClass("nrgCamOff-btn-selected");
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
             aContent = oTileContainer.getContent();
