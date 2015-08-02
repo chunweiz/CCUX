@@ -205,8 +205,6 @@ sap.ui.define(
                 });
                 aFilters.push(oFilterTemplate);
             }
-
-
             return aFilters;
         };
 
