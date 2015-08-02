@@ -58,6 +58,7 @@ sap.ui.define(
                 iCount,
                 oEFLJson = {},
                 aResults = [];
+            this.getOwnerComponent().getCcuxApp().setTitle("CAMPAIGNS");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oEvent.getParameter("arguments").coNum;
             this._sFlag = oEvent.getParameter("arguments").typeV.toUpperCase();
