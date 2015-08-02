@@ -90,9 +90,11 @@ sap.ui.define(
                 aFilterValues,
                 fnRecievedHandler,
                 that = this,
-                oProactiveButton = this.getView().byId("idCamToggleBtn-P");
+                oProactiveButton = this.getView().byId("idCamToggleBtn-P"),
+                oNoDataTag;
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oEvent.getParameter("arguments").coNum;
+            oNoDataTag = this.getView().byId("idnrgCamHisNoData");
             //this._sContract = "32253375";
             aFilterIds = ["Contract", "Type"];
             aFilterValues = [this._sContract, "P"];
@@ -104,6 +106,14 @@ sap.ui.define(
             this._oTileTemplate = oTileTemplate;
             // Handler function for tile container
             fnRecievedHandler = function (oEvent) {
+                var aContent = oTileContainer.getContent();
+                if ((aContent !== undefined) && (aContent.length > 0)) {
+                    oNoDataTag.addStyleClass("nrgCamOff-hide");
+                    oTileContainer.removeStyleClass("nrgCamOff-hide");
+                } else {
+                    oNoDataTag.removeStyleClass("nrgCamOff-hide");
+                    oTileContainer.addStyleClass("nrgCamOff-hide");
+                }
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
                 oProactiveButton.addStyleClass("nrgCamOff-btn-selected");
             };
@@ -144,8 +154,8 @@ sap.ui.define(
                 oProactiveButton = this.getView().byId("idCamToggleBtn-P"),
                 oReactiveButton = this.getView().byId("idCamToggleBtn-R"),
                 oSaveButton = this.getView().byId("idCamToggleBtn-S"),
-                oFinalSaveButton = this.getView().byId("idCamToggleBtn-F");
-
+                oFinalSaveButton = this.getView().byId("idCamToggleBtn-F"),
+                oNoDataTag = this.getView().byId("idnrgCamHisNoData");
             oProactiveButton.removeStyleClass("nrgCamOff-btn-selected");
             oReactiveButton.removeStyleClass("nrgCamOff-btn-selected");
             oSaveButton.removeStyleClass("nrgCamOff-btn-selected");
@@ -178,6 +188,14 @@ sap.ui.define(
             sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
             // Handler function for tile container
             fnRecievedHandler = function (oEvent) {
+                var aContent = oTileContainer.getContent();
+                if ((aContent !== undefined) && (aContent.length > 0)) {
+                    oNoDataTag.addStyleClass("nrgCamOff-hide");
+                    oTileContainer.removeStyleClass("nrgCamOff-hide");
+                } else {
+                    oNoDataTag.removeStyleClass("nrgCamOff-hide");
+                    oTileContainer.addStyleClass("nrgCamOff-hide");
+                }
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
             };
             mParameters = {
@@ -199,7 +217,8 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.selectCampaign = function (oEvent) {
-            this.navTo("campaignchg", {coNum: this._sContract, offercodeNum: "50124832"});
+            //this.navTo("campaignchg", {coNum: this._sContract, offercodeNum: "50124832"});
+            sap.ui.commons.MessageBox.alert("Comparision work is still in progress, please click on any of the offer tiles for SWAP process");
         };
 
         /**

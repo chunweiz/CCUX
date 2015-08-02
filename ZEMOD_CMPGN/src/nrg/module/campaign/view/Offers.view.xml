@@ -94,8 +94,12 @@
                         focusable="true"
                         class="nrgCamOff-scroll"
                         id="idnrgCamOffScroll" >
-
                     </m:ScrollContainer>
+                    <u:Tag id="idnrgCamHisNoData" class="nrgCamHis-noData">
+                        <u:TextView text="{comp-i18n-campaign>nrgCmpOffNoData}"
+                                                color="DarkGrey"
+                                                design="Base"/>
+                   </u:Tag>
                 </u:Tag>
             </u:Tag>
             <!-- Place holder for templates to reuse for Bind Aggregation method. Below will be always Display:none -->
