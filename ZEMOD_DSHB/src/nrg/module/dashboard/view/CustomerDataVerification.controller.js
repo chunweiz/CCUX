@@ -16,6 +16,9 @@ sap.ui.define(
         var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataVerification');
 
         Controller.prototype.onInit = function () {
+            //this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
+            //console.log(this.getOwnerComponent().getCcuxApp().setTitle);
+
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
             //Model to hold BP info
@@ -323,8 +326,28 @@ sap.ui.define(
         };
 
         Controller.prototype._handleConfirm = function () {
+            var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+                sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+                sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID'),
+                oComponent = this.getOwnerComponent(),
+                oWebUiManager = oComponent.getCcuxWebUiManager();
+
+            //Confirm CA to IC first
+            oComponent.getCcuxApp().setOccupied(true);
+            oWebUiManager.notifyWebUi('caConfirmed', {
+                BP_NUM: sCurrentBp,
+                CA_NUM: sCurrentCa
+            }, this._handleCaCofirmed, this);
+        };
+
+        Controller.prototype._handleCaCofirmed = function (oEvent) {
             var oStatusModel = this.getView().getModel('oCfrmStatus'),
+                oRouter = this.getOwnerComponent().getRouter(),
+                oComponent = this.getOwnerComponent(),
                 oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+                oRouteInfo = oEvent.getParameters(),
+                sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
                 sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
                 sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID');
 
@@ -340,10 +363,38 @@ sap.ui.define(
             if (oStatusModel.getProperty('/bEditable')) {
                 oStatusModel.setProperty('/bEditable', false);
             }
+
+            oComponent.getCcuxApp().setOccupied(false);
+
+            //Navigate to verification page
+            oRouter.navTo('dashboard.CaInfo', {bpNum: oRouteInfo.BP_NUM, caNum: oRouteInfo.CA_NUM});
         };
 
         Controller.prototype._handleUnConfirm = function () {
-            var oStatusModel = this.getView().getModel('oCfrmStatus');
+            var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+                sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+                sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID'),
+                oComponent = this.getOwnerComponent(),
+                oWebUiManager = oComponent.getCcuxWebUiManager();
+
+            //UnConfirm CA to IC first
+            oComponent.getCcuxApp().setOccupied(true);
+            oWebUiManager.notifyWebUi('caUnconfirmed', {
+                BP_NUM: sCurrentBp,
+                CA_NUM: sCurrentCa
+            }, this._handleCaUnCofirmed, this);
+        };
+
+        Controller.prototype._handleCaUnCofirmed = function (oEvent) {
+            var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+                oStatusModel = this.getView().getModel('oCfrmStatus'),
+                oComponent = this.getOwnerComponent();
+
+            //Set Confirmed CaNum and CoNum to Component level
+            oComponentContextModel.setProperty('/dashboard/caNum', '');
+            oComponentContextModel.setProperty('/dashboard/coNum', '');
+
             this.getView().byId('id_confmBtn').setVisible(true);
             this.getView().byId('id_unConfmBtn').setVisible(false);
             this.getView().byId('id_updtBtn').setEnabled(true);
@@ -351,6 +402,7 @@ sap.ui.define(
             if (!oStatusModel.getProperty('/bEditable')) {
                 oStatusModel.setProperty('/bEditable', true);
             }
+            oComponent.getCcuxApp().setOccupied(false);
         };
 
         Controller.prototype._handleUpdate = function () {

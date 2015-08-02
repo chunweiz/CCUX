@@ -128,7 +128,7 @@ sap.ui.define(
                             if (!this._fixedAddrID) {
                                 this._fixedAddrID = oData.results[0].FixedAddressID;
                             }
-                            this.getView().getModel('oDataBuagAddrDetails').setData(oData);
+                            this.getView().getModel('oDataBuagAddrDetails').setData(oData.results[0]);
                             this.oDataBuagAddrDetailsBak = jQuery.extend(true, {}, oData);
                         } else {
                             configModel.setProperty('/mailAddrUpdateVisible', false);
@@ -185,7 +185,7 @@ sap.ui.define(
 
         Controller.prototype._handleMailingAcceptBtn = function (oEvent) {
             var oMailEdit = this.getView().getModel('oDtaAddrEdit'),
-                oMailTempModel = this.getView().getModel('oDtaVrfyMailingTempAddr'),
+                oMailTempModel = this.getView().getModel('oDataBuagAddrDetails'),
                 tempObj,
                 key;
 
@@ -221,7 +221,7 @@ sap.ui.define(
 
         Controller.prototype._handleMailingDeclineBtn = function (oEvent) {
             var oMailEdit = this.getView().getModel('oDtaAddrEdit'),
-                oMailTempModel = this.getView().getModel('oDtaVrfyMailingTempAddr'),
+                oMailTempModel = this.getView().getModel('oDataBuagAddrDetails'),
                 tempObj;
 
             tempObj = oMailEdit.getProperty('/AddrInfo');
@@ -258,12 +258,15 @@ sap.ui.define(
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
-                sBpNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/PartnerID'),
-                sBuagNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/ContractAccountID'),
-                sFixedAddressID = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/FixedAddressID');
+                sBpNum = this.getView().getModel('oDataBuagAddrDetails').getProperty('/PartnerID'),
+                sBuagNum = this.getView().getModel('oDataBuagAddrDetails').getProperty('/ContractAccountID'),
+                sFixedAddressID = this.getView().getModel('oDataBuagAddrDetails').getProperty('/FixedAddressID');
 
+            if (this.getView().getModel('oCaInfoConfig').getProperty('/bAllBuagSelected')) {
+                this.getView().getModel('oDataBuagAddrDetails').setProperty('/SaveToAllCa', 'X');
+            }
 
-            sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
+            sPath = '/BuagAddrDetails' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
 
             oParameters = {
                 urlParameters: {},
@@ -278,7 +281,7 @@ sap.ui.define(
             };
 
             if (oModel) {
-                oModel.update(sPath, this.getView().getModel('oDtaVrfyMailingTempAddr').oData, oParameters);
+                oModel.update(sPath, this.getView().getModel('oDataBuagAddrDetails').oData, oParameters);
             }
         };
 
@@ -288,14 +291,7 @@ sap.ui.define(
                 sPath,
                 oParameters,
                 aFilters = this._createAddrValidateFilters(),
-                oMailEdit = this.getView().getModel('oDtaAddrEdit'),
-                sTitle;
-
-            if (oMailEdit.getProperty('/bFixAddr')) {
-                sTitle = 'Edit Mailing Address';
-            } else {
-                sTitle = 'Edit Temporary Mailing Address';
-            }
+                oMailEdit = this.getView().getModel('oDtaAddrEdit');
 
             sPath = '/BuagAddrDetails';
 
@@ -308,21 +304,15 @@ sap.ui.define(
                     } else {
                         oMailEdit.setProperty('/SuggAddrInfo', oData.results[0].TriCheck);
                         this._showSuggestedAddr();
-                        this._oMailEditPopup = ute.ui.main.Popup.create({
-                            close: this._handleEditMailPopupClose,
-                            content: this.getView().byId("idAddrUpdatePopup"),
-                            title: sTitle
-                        });
-                        this._oMailEditPopup.open();
                     }
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert('Validatation Call Failed');
                 }.bind(this)
             };
-
+this._showSuggestedAddr();
             if (oModel) {
-                oModel.read(sPath, oParameters);
+                //oModel.read(sPath, oParameters);
             }
         };
 
@@ -370,7 +360,7 @@ sap.ui.define(
         };
 
         Controller.prototype._initMailAddrModels = function () {
-            /*this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');
+            /*this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBuagAddrDetails');
               this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');*/
             var oEditMail = this.getView().getModel('oDtaAddrEdit');
 
@@ -393,7 +383,7 @@ sap.ui.define(
         Controller.prototype._onEditMailAddrClick = function (oEvent) {
             var oEditMail = this.getView().getModel('oDtaAddrEdit');
 
-            oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDataBuagAddrDetails').getProperty('/results/0/FixAddrInfo'));
+            oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDataBuagAddrDetails').getProperty('/FixAddrInfo'));
 
             //Control what to or not to display
             this.getView().byId("idAddrUpdatePopup").setVisible(true);
@@ -404,14 +394,20 @@ sap.ui.define(
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
             this.getView().byId('idSuggCompareCheck').setChecked(false);
 
+            this._oMailEditPopup = ute.ui.main.Popup.create({
+                close: this._handleEditMailPopupClose,
+                content: this.getView().byId("idAddrUpdatePopup"),
+                title: 'Edit Mailing Address'
+            });
+            this._oMailEditPopup.open();
+
             this._validateInputAddr();
         };
-
 
         Controller.prototype._onEditTempAddrClick = function (oEvent) {
             var oEditMail = this.getView().getModel('oDtaAddrEdit');
 
-            oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDataBuagAddrDetails').getProperty('/results/0/TempAddrInfo'));
+            oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDataBuagAddrDetails').getProperty('/TempAddrInfo'));
 
             //this._onToggleButtonPress();
             this.getView().byId("idTempAddrUpdatePopup").setVisible(true);
@@ -421,36 +417,16 @@ sap.ui.define(
             this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', false);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
 
+            this._oMailEditPopup = ute.ui.main.Popup.create({
+                close: this._handleEditMailPopupClose,
+                content: this.getView().byId("idAddrUpdatePopup"),
+                title: 'Edit Temporary Mailing Address'
+            });
+            this._oMailEditPopup.open();
+
             this._validateInputAddr();
         };
 
-        Controller.prototype._handleTempAddrUpdate = function (oEvent) {
-            var oModel = this.getView().getModel('oODataSvc'),
-                sPath,
-                oParameters,
-                sBpNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/PartnerID'),
-                sBuagNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/ContractAccountID'),
-                sFixedAddressID = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/TemporaryAddrID');
-
-
-
-            sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
-
-            oParameters = {
-                merge: false,
-                success : function (oData) {
-                    sap.ui.commons.MessageBox.alert("Update Success");
-                    this._oTempMailEditPopup.close();
-                }.bind(this),
-                error: function (oError) {
-                    sap.ui.commons.MessageBox.alert("Update Failed");
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.update(sPath, this.getView().getModel('oDtaVrfyMailingTempAddr').oData, oParameters);
-            }
-        };
 
         Controller.prototype._compareSuggChkClicked = function (oEvent) {
             //this.getView().byId('idAddrUpdatePopup-l').getContent()[2].getContent()[0].getValue()
@@ -511,14 +487,14 @@ sap.ui.define(
             configModel.setProperty('/mailAddrSaveVisible', true);
             configModel.setProperty('/mailAddrEditable', true);
 
-            addrModel.setProperty('/results/0/MailingAddress/Street', '');
-            addrModel.setProperty('/results/0/MailingAddress/HouseNo', '');
-            addrModel.setProperty('/results/0/MailingAddress/UnitNo', '');
-            addrModel.setProperty('/results/0/MailingAddress/City', '');
-            addrModel.setProperty('/results/0/MailingAddress/State', '');
-            addrModel.setProperty('/results/0/MailingAddress/ZipCode', '');
-            addrModel.setProperty('/results/0/MailingAddress/ValidFrom', '');
-            addrModel.setProperty('/results/0/MailingAddress/ValidTo', '');
+            addrModel.setProperty('/MailingAddress/Street', '');
+            addrModel.setProperty('/MailingAddress/HouseNo', '');
+            addrModel.setProperty('/MailingAddress/UnitNo', '');
+            addrModel.setProperty('/MailingAddress/City', '');
+            addrModel.setProperty('/MailingAddress/State', '');
+            addrModel.setProperty('/MailingAddress/ZipCode', '');
+            addrModel.setProperty('/MailingAddress/ValidFrom', '');
+            addrModel.setProperty('/MailingAddress/ValidTo', '');
         };
 
         CustomController.prototype.onMailAddrCancel = function () {

@@ -91,7 +91,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/mailAddrEditable}"
-                                                               value="{oDataBuagAddrDetails>/results/0/FixAddrInfo/Street}"/>
+                                                               value="{oDataBuagAddrDetails>/FixAddrInfo/Street}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -110,7 +110,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/mailAddrEditable}"
-                                                               value="{oDataBuagAddrDetails>/results/0/FixAddrInfo/HouseNo}"/>
+                                                               value="{oDataBuagAddrDetails>/FixAddrInfo/HouseNo}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -140,7 +140,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/mailAddrEditable}"
-                                                               value="{oDataBuagAddrDetails>/results/0/FixAddrInfo/UnitNo}"/>
+                                                               value="{oDataBuagAddrDetails>/FixAddrInfo/UnitNo}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -159,7 +159,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/mailAddrEditable}"
-                                                               value="{oDataBuagAddrDetails>/results/0/FixAddrInfo/PoBox}"/>
+                                                               value="{oDataBuagAddrDetails>/FixAddrInfo/PoBox}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -189,7 +189,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/mailAddrEditable}"
-                                                               value="{oDataBuagAddrDetails>/results/0/FixAddrInfo/City}"/>
+                                                               value="{oDataBuagAddrDetails>/FixAddrInfo/City}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -208,7 +208,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/mailAddrEditable}"
-                                                               value="{oDataBuagAddrDetails>/results/0/FixAddrInfo/State}"/>
+                                                               value="{oDataBuagAddrDetails>/FixAddrInfo/State}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -227,7 +227,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/mailAddrEditable}"
-                                                               value="{oDataBuagAddrDetails>/results/0/FixAddrInfo/ZipCode}"/>
+                                                               value="{oDataBuagAddrDetails>/FixAddrInfo/ZipCode}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -257,7 +257,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="false"
-                                                               value="{parts:[ 'oDataBuagAddrDetails>/results/0/FixAddrInfo/ValidFrom'], formatter:'._formatDate'}"/>
+                                                               value="{parts:[ 'oDataBuagAddrDetails>/FixAddrInfo/ValidFrom'], formatter:'._formatDate'}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -276,7 +276,7 @@
                                                 <!--editable="{oCaInfoConfig>/mailAddrEditable}"-->
                                                 <ute:Textfield fieldType="Noborder" editable="false"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
-                                                               value="{parts:[ 'oDataBuagAddrDetails>/results/0/FixAddrInfo/ValidTo'], formatter:'._formatDate'}"/>
+                                                               value="{parts:[ 'oDataBuagAddrDetails>/FixAddrInfo/ValidTo'], formatter:'._formatDate'}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -343,7 +343,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/tempAddrEditable}"
-                                                               value="{oDataBuagAddrDetails>/results/0/TempAddrInfo/Street}"/>
+                                                               value="{oDataBuagAddrDetails>/TempAddrInfo/Street}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -362,7 +362,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/tempAddrEditable}"
-                                                               value="{oDataBuagAddrDetails>/results/0/TempAddrInfo/HouseNo}"/>
+                                                               value="{oDataBuagAddrDetails>/TempAddrInfo/HouseNo}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -391,7 +391,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/tempAddrEditable}"
-                                                               value="{oDataBuagAddrDetails>/results/0/TempAddrInfo/UnitNo}"/>
+                                                               value="{oDataBuagAddrDetails>/TempAddrInfo/UnitNo}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -410,7 +410,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/tempAddrEditable}"
-                                                               value="{oDataBuagAddrDetails>/results/0/TempAddrInfo/PoBox}"/>
+                                                               value="{oDataBuagAddrDetails>/TempAddrInfo/PoBox}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -439,7 +439,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/tempAddrEditable}"
-                                                               value="{oDataBuagAddrDetails>/results/0/TempAddrInfo/City}"/>
+                                                               value="{oDataBuagAddrDetails>/TempAddrInfo/City}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -458,7 +458,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/tempAddrEditable}"
-                                                               value="{oDataBuagAddrDetails>/results/0/TempAddrInfo/State}"/>
+                                                               value="{oDataBuagAddrDetails>/TempAddrInfo/State}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -477,7 +477,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/tempAddrEditable}"
-                                                               value="{oDataBuagAddrDetails>/results/0/TempAddrInfo/ZipCode}"/>
+                                                               value="{oDataBuagAddrDetails>/TempAddrInfo/ZipCode}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -506,7 +506,7 @@
                                                 <!--editable="{oCaInfoConfig>/tempAddrEditable}"-->
                                                 <ute:Textfield fieldType="Noborder" editable="false"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
-                                                               value="{parts:[ 'oDataBuagAddrDetails>/results/0/TempAddrInfo/ValidFrom'], formatter:'._formatDate'}"/>
+                                                               value="{parts:[ 'oDataBuagAddrDetails>/TempAddrInfo/ValidFrom'], formatter:'._formatDate'}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -525,7 +525,7 @@
                                                 <!--editable="{oCaInfoConfig>/tempAddrEditable}"-->
                                                 <ute:Textfield fieldType="Noborder" editable="false"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
-                                                               value="{parts:[ 'oDataBuagAddrDetails>/results/0/TempAddrInfo/ValidTo'], formatter:'._formatDate'}"/>
+                                                               value="{parts:[ 'oDataBuagAddrDetails>/TempAddrInfo/ValidTo'], formatter:'._formatDate'}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
