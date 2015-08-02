@@ -12,6 +12,31 @@
                     }
                 }
             }
+        },
+
+        "routing": {
+            "routes": {
+                "app.refresh": {
+                    "pattern": "app/refresh",
+                    "target": [ "app.GeneralRefresh", "app.SummaryRefresh", "app.ToolsRefresh" ]
+                }
+            },
+            "targets": {
+                "app.GeneralRefresh": {
+                    "viewName": "nrg.module.app.view.GeneralRefresh",
+                    "controlId": "idAppGeneral"
+                },
+
+                "app.SummaryRefresh": {
+                    "viewName": "nrg.module.app.view.SummaryRefresh",
+                    "controlId": "idAppSummary"
+                },
+
+                "app.ToolsRefresh": {
+                    "viewName": "nrg.module.app.view.ToolsRefresh",
+                    "controlId": "idAppTools"
+                }
+            }
         }
     }
 }
