@@ -21,10 +21,11 @@
                                 "mockDataBaseUrl": "data/version1/",
                                 "generateMissingMockData": true
                         }
-                 }
+                    }
+                  }
+                }
             }
         },
-
         "routing": {
            "routes": {
                 "quickpay": {

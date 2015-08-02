@@ -112,22 +112,22 @@ sap.ui.define(
                         for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
                             aResults.push(this.getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
                         }
-                    }
-                    oTemplateModel.setData(that.convertEFLJson(aResults));
-                    that._oEFLModel = oTemplateModel;
-                    oTemplateView = sap.ui.view({
-                        preprocessors: {
-                            xml: {
-                                models: {
-                                    tmpl : that._oEFLModel
+                        oTemplateModel.setData(that.convertEFLJson(aResults));
+                        that._oEFLModel = oTemplateModel;
+                        oTemplateView = sap.ui.view({
+                            preprocessors: {
+                                xml: {
+                                    models: {
+                                        tmpl : that._oEFLModel
+                                    }
                                 }
-                            }
-                        },
-                        type: sap.ui.core.mvc.ViewType.XML,
-                        viewName: "nrg.module.campaign.view.EFLData"
-                    });
-                    that.getView().byId('idnrgCamOvrPriceT').removeAllAggregation("content");
-                    that.getView().byId('idnrgCamOvrPriceT').addContent(oTemplateView);
+                            },
+                            type: sap.ui.core.mvc.ViewType.XML,
+                            viewName: "nrg.module.campaign.view.EFLData"
+                        });
+                        that.getView().byId('idnrgCamOvrPriceT').removeAllAggregation("content");
+                        that.getView().byId('idnrgCamOvrPriceT').addContent(oTemplateView);
+                    }
                     that.getView().bindElement({
                         model : "comp-campaign",
                         path : sPath
