@@ -6,7 +6,7 @@
     xmlns:um="ute.ui.main"
     xmlns:l="sap.ui.commons.layout">
         <u:Tag class="nrgCamOff-consF">
-            <c:Label text="CND AVG@2000=11.1 Secure Advantage 24"
+            <c:Label text="Work in Progress"
                      icon="sap-icon://nrg-icon/tag"
                      class="nrgCamOff-top"  />
             <um:Button press=".selectCampaign"

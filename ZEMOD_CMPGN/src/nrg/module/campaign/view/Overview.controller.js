@@ -14,8 +14,6 @@ sap.ui.define(
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.Overview');
-
-
 		/* =========================================================== */
 		/* lifecycle method- Init                                     */
 		/* =========================================================== */
@@ -27,7 +25,7 @@ sap.ui.define(
 		/* lifecycle method- After Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
-            this.getOwnerComponent().getCcuxApp().setOccupied(false);
+
         };
         /**
 		 * Binds the view to the object path
@@ -60,6 +58,7 @@ sap.ui.define(
                 iCount,
                 oEFLJson = {},
                 aResults = [];
+            this.getOwnerComponent().getCcuxApp().setTitle("CAMPAIGNS");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oEvent.getParameter("arguments").coNum;
             this._sFlag = oEvent.getParameter("arguments").typeV.toUpperCase();
@@ -135,6 +134,7 @@ sap.ui.define(
                 }
                 oBinding = oToggleContainer.getBinding("content");
                 oBinding.detachDataReceived(fnRecievedHandler);
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
             };
              // Handler function for Tab Bar Item.
             mParameters = {
