@@ -17,6 +17,7 @@ sap.ui.define(
             constructor: function (oController) {
                 EventProvider.apply(this);
 
+                this._oController = oController;
                 this._oBusyDialog = new BusyDialog();
                 this._bEdit = false;
 
