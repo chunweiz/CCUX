@@ -20,35 +20,31 @@ sap.ui.define(
             metadata: {
                 publicMethods: [
                     'start',
-                    'notifyWebUi'
+                    'notifyWebUi',
+                    'isAvailable'
                 ]
             }
         });
-
-        Manager.Event = {};
-        Manager.Event.Outbound = {
-            BpConfirmed: 'bpConfirmed',
-            ResetTimeOut: 'resetTimeOut',
-            OpenIndex: 'openIndex',
-            LaunchTransaction: 'launchTransaction',
-            OpenEsidTool: 'openEsidTool',
-            OpenPalPlus: 'openPalPlus',
-            Refresh: 'refresh',
-            ClearAccount: 'clearAccount'
-        };
-
-        Manager.Event.Inbound = {
-            Navigate: 'navigate'
-        };
 
         Manager.prototype.start = function () {
             this._addDomEventListener();
         };
 
+        Manager.prototype.isAvailable = function () {
+            var bAvailable = true;
+
+            //Do not call yourself
+            if (window.parent === window) {
+                return false;
+            }
+
+            return bAvailable;
+        };
+
         Manager.prototype.notifyWebUi = function (sEvent, oPayload, fnCallback, oListener) {
             var sMessage, oData;
 
-            if (window.parent === window) {
+            if (!this.isAvailable()) {
                 jQuery.sap.log.error('[WebUiManager.notifyWebUi()]', 'Unable to post message because this component is not embedded in any parent window');
                 return this;
             }
