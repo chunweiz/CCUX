@@ -131,6 +131,10 @@ sap.ui.define(
             return this._oWebUiManager;
         };
 
+        CustomComponent.prototype.getCcuxRouteManager = function () {
+            return this._oRouteManager;
+        };
+
         CustomComponent.prototype.getCcuxApp = function () {
             var oRootViewController = this.getAggregation('rootControl').getController();
 

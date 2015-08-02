@@ -40,18 +40,10 @@ sap.ui.define(
             oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
             oRouter = this.getOwnerComponent().getRouter();
 
-            if (oContext.dashboard) {
-                if (oContext.dashboard.bpNum && oContext.dashboard.caNum) {
-                    oRouter.navTo('dashboard.CaInfo', {
-                        bpNum: oContext.dashboard.bpNum,
-                        caNum: oContext.dashboard.caNum
-                    });
-
-                } else if (oContext.dashboard.bpNum) {
-                    oRouter.navTo('dashboard.BpInfo', {
-                        bpNum: oContext.dashboard.bpNum
-                    });
-                }
+            if (oContext.dashboard && oContext.dashboard.bpNum) {
+                oRouter.navTo('dashboard.Bp', {
+                    bpNum: oContext.dashboard.bpNum
+                });
             }
         };
 
@@ -148,7 +140,9 @@ sap.ui.define(
         };
 
         CustomController.prototype._onRefreshPress = function (oControlEvent) {
-            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+            var oWebUiManager, oRouter, oRouteManager;
+
+            oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
 
             this._oApp._getHeader().setSelected(
                 oControlEvent.getSource().getSelected(),
@@ -156,6 +150,11 @@ sap.ui.define(
             );
 
             oWebUiManager.notifyWebUi('refresh');
+
+//            oRouteManager = this.getOwnerComponent().getCcuxRouteManager();
+//            oRouter = this.getOwnerComponent().getRouter();
+//            oRouter.navTo('app.refresh');
+
         };
 
         CustomController.prototype._onClearAccPress = function (oControlEvent) {
