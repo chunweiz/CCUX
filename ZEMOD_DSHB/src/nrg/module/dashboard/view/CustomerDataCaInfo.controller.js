@@ -18,32 +18,40 @@ sap.ui.define(
 
         var CustomController = Controller.extend('nrg.module.dashboard.view.CustomerDataCaInfo');
 
+        Controller.prototype.onInit = function () {
+            this._beforeOpenEditAddrDialogue = false;
+        };
+
         Controller.prototype.onBeforeRendering = function () {
-            var oModel;
+            if (!this._beforeOpenEditAddrDialogue) {
+                var oModel;
 
-            this.getOwnerComponent().getCcuxApp().setTitle('BUSINESS PARTNER');
+                this.getOwnerComponent().getCcuxApp().setTitle('BUSINESS PARTNER');
 
-            this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
+                this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
-            //Model to track page edit/save status
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCaInfoConfig');
+                //Model to track page edit/save status
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCaInfoConfig');
 
-            //Model to hold BuagAddrDetail
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBuagAddrDetails');
+                //Model to hold BuagAddrDetail
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBuagAddrDetails');
 
-            //Model to hold CA accounts and mailing address short form
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataCAs');
+                //Model to hold CA accounts and mailing address short form
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataCAs');
 
-            //Model to hold all Buags
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllBuags');
+                //Model to hold all Buags
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllBuags');
 
-            //Model for Edit Popup Screen (Use the model to show on edit screen)
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
+                //Model for Edit Popup Screen (Use the model to show on edit screen)
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
 
 
-            this._initCaInfoConfigModel();
-            this._initDataModel();
-            this._initMailAddrModels();
+                this._initCaInfoConfigModel();
+                this._initDataModel();
+                this._initMailAddrModels();
+            } else {
+                this._beforeOpenEditAddrDialogue = false;
+            }
         };
 
         CustomController.prototype.onAfterRendering = function () {
@@ -163,23 +171,6 @@ sap.ui.define(
 
         /********************************************************************************/
         /**Edit Mailing Addr functions*/
-        Controller.prototype._handleEditMailPopupClose = function (oEvent) {
-            var oLeftInputArea = this.getContent()[0].getContent()[1].getContent(),
-                oRightSuggArea = this.getContent()[0].getContent()[2].getContent(),
-                i;
-
-
-            this.getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
-            this.getContent()[0].getContent()[0].setVisible(false);
-            this.getContent()[0].getContent()[1].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
-            this.getContent()[0].getContent()[2].setVisible(false);
-
-
-            for (i = 1; i < 8; i = i + 1) {
-                oLeftInputArea[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
-                oRightSuggArea[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
-            }
-        };
 
         Controller.prototype._handleMailingAcceptBtn = function (oEvent) {
             var oMailEdit = this.getView().getModel('oDtaAddrEdit'),
@@ -238,7 +229,7 @@ sap.ui.define(
         Controller.prototype._handleMailingEditBtn = function (oEvent) {
             var oEditMail = this.getView().getModel('oDtaAddrEdit');
 
-            //oEditMail.setProperty('/updateSent', false);
+            oEditMail.setProperty('/updateSent', false);
             oEditMail.setProperty('/showVldBtns', false);
             oEditMail.setProperty('/updateNotSent', true);
         };
@@ -247,9 +238,9 @@ sap.ui.define(
             //Address validation error there was. Show system suggested address values we need to.
             this.getView().byId('idAddrUpdatePopup').addStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
             this.getView().byId('idAddrUpdatePopup-l').addStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
-            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
+            //this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
+            //this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
+            //this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
         };
 
         Controller.prototype._updateMailingAddr = function () {
@@ -279,7 +270,11 @@ sap.ui.define(
             };
 
             if (oModel) {
-                oModel.update(sPath, this.getView().getModel('oDataBuagAddrDetails').oData, oParameters);
+                if (this.getView().getModel('oDtaAddrEdit').getProperty('/bCreateFirst')) {
+                    oModel.create(sPath, this.getView().getModel('oDataBuagAddrDetails').oData, oParameters);
+                } else {
+                    oModel.update(sPath, this.getView().getModel('oDataBuagAddrDetails').oData, oParameters);
+                }
             }
         };
 
@@ -301,14 +296,17 @@ sap.ui.define(
                         this._updateMailingAddr();
                     } else {
                         oMailEdit.setProperty('/SuggAddrInfo', oData.results[0].TriCheck);
-                        this._showSuggestedAddr();
+                        //this._showSuggestedAddr();
+                        this._oMailEditPopup.open();
                     }
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert('Validatation Call Failed');
                 }.bind(this)
             };
-//this._showSuggestedAddr();
+
+
+            //oMailEdit.setProperty('/SuggAddrInfo', oMailEdit.getProperty('/AddrInfo'));
             if (oModel) {
                 oModel.read(sPath, oParameters);
             }
@@ -368,14 +366,21 @@ sap.ui.define(
         };
 
         Controller.prototype._onPoBoxEdit = function (oEvent) {
-            //this.getView().byId('idEditHouseNum').setEnabled(false);
-            //this.getView().byId('idEditStName').setEnabled(false);
             this.getView().byId('idEditHouseNum').setValue('');
             this.getView().byId('idEditStName').setValue('');
         };
 
         Controller.prototype._onRegAddrEdit = function (oEvent) {
             this.getView().byId('idEditPoBox').setValue('');
+        };
+
+        Controller.prototype._onMailingPoBoxChanged = function (oEvent) {
+            this.getView().byId('idMailingAddrHouseNo').setValue('');
+            this.getView().byId('idMailingAddrStreet').setValue('');
+        };
+
+        Controller.prototype._onMailingRegAddrChanged = function (oEvent) {
+            this.getView().byId('idMailingAddrPobox').setValue('');
         };
 
         Controller.prototype._onEditMailAddrClick = function (oEvent) {
@@ -385,20 +390,21 @@ sap.ui.define(
 
             //Control what to or not to display
             this.getView().byId("idAddrUpdatePopup").setVisible(true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', false);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
-            this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
             this.getView().byId('idSuggCompareCheck').setChecked(false);
 
             this._oMailEditPopup = ute.ui.main.Popup.create({
-                close: this._handleEditMailPopupClose,
+                close: this._handleEditMailPopupClose.bind(this),
                 content: this.getView().byId("idAddrUpdatePopup"),
                 title: 'Edit Mailing Address'
             });
-            this._oMailEditPopup.open();
 
+            this._beforeOpenEditAddrDialogue = true;
+            this._oMailEditPopup.open();
+            this._showSuggestedAddr();
             this._validateInputAddr();
         };
 
@@ -409,20 +415,27 @@ sap.ui.define(
 
             //this._onToggleButtonPress();
             this.getView().byId("idTempAddrUpdatePopup").setVisible(true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', false);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', false);
-            this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
 
             this._oMailEditPopup = ute.ui.main.Popup.create({
-                close: this._handleEditMailPopupClose,
+                close: this._handleEditMailPopupClose.bind(this),
                 content: this.getView().byId("idAddrUpdatePopup"),
                 title: 'Edit Temporary Mailing Address'
             });
-            this._oMailEditPopup.open();
 
+            this._beforeOpenEditAddrDialogue = true;
+            this._oMailEditPopup.open();
+            this._showSuggestedAddr();
             this._validateInputAddr();
+        };
+
+        Controller.prototype._handleEditMailPopupClose = function (oEvent) {
+            this._initCaInfoConfigModel();
+            this._initDataModel();
+            this._initMailAddrModels();
         };
 
 
@@ -479,7 +492,9 @@ sap.ui.define(
 
         CustomController.prototype.onMailAddrAddnew = function () {
             var configModel = this.getView().getModel('oCaInfoConfig'),
-                addrModel = this.getView().getModel('oDataBuagAddrDetails');
+                addrModel = this.getView().getModel('oDataBuagAddrDetails'),
+                oEditAddrModel = this.getView().getModel('oDtaAddrEdit');
+
             configModel.setProperty('/mailAddrUpdateVisible', false);
             configModel.setProperty('/mailAddrAddnewVisible', false);
             configModel.setProperty('/mailAddrSaveVisible', true);
@@ -493,6 +508,8 @@ sap.ui.define(
             addrModel.setProperty('/MailingAddress/ZipCode', '');
             addrModel.setProperty('/MailingAddress/ValidFrom', '');
             addrModel.setProperty('/MailingAddress/ValidTo', '');
+
+            oEditAddrModel.setProperty('/bCreateFirst', true);
         };
 
         CustomController.prototype.onMailAddrCancel = function () {

@@ -88,7 +88,9 @@
                                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-STREET_NAME}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
+                                                <ute:Textfield id="idMailingAddrStreet"
+                                                               change="._onMailingRegAddrChanged"
+                                                               fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/mailAddrEditable}"
                                                                value="{oDataBuagAddrDetails>/FixAddrInfo/Street}"/>
@@ -107,7 +109,9 @@
                                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-STREET_NUMBER}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
+                                                <ute:Textfield id="idMailingAddrHouseNo"
+                                                               change="._onMailingRegAddrChanged"
+                                                               fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/mailAddrEditable}"
                                                                value="{oDataBuagAddrDetails>/FixAddrInfo/HouseNo}"/>
@@ -156,7 +160,9 @@
                                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-PO_BOX}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
+                                                <ute:Textfield id="idMailingAddrPobox"
+                                                               fieldType="Noborder"
+                                                               change="._onMailingPoBoxChanged"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="{oCaInfoConfig>/mailAddrEditable}"
                                                                value="{oDataBuagAddrDetails>/FixAddrInfo/PoBox}"/>

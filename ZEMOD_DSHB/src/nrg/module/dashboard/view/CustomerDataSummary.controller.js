@@ -77,14 +77,15 @@ sap.ui.define(
         };
 
         Controller.prototype._initRetrBpInf = function () {
-            var sPath, aSplitHash, iSplitHashL;
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
+                sBpNBum,
+                sPath;
 
-            aSplitHash = (this._retrUrlHash()).split('/');
-            iSplitHashL = aSplitHash.length;
-            sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')';
+            sBpNBum = oRouteInfo.parameters.bpNum;
+            sPath = '/Partners' + '(\'' + sBpNBum + '\')';
 
             this._retrBpInf(sPath);
-            this._initRetrCaInf(aSplitHash[iSplitHashL - 1]);  //Should be triggered in Success call back of BP retriev
+            this._initRetrCaInf(sBpNBum);  //Should be triggered in Success call back of BP retriev
         };
 
         Controller.prototype._initRetrBpSegInf = function () {
@@ -92,7 +93,7 @@ sap.ui.define(
                 sBpNBum,
                 sPath;
 
-            sBpNBum = oRouteInfo.BpNum;
+            sBpNBum = oRouteInfo.parameters.bpNum;
             //aSplitHash = (this._retrUrlHash()).split('/');
             //iSplitHashL = aSplitHash.length;
             sPath = '/Partners' + '(\'' + sBpNBum + '\')/BpSegs';
