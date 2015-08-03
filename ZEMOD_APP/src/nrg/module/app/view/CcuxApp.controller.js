@@ -140,7 +140,7 @@ sap.ui.define(
         };
 
         CustomController.prototype._onRefreshPress = function (oControlEvent) {
-            var oWebUiManager, oRouter, oRouteManager;
+            var oWebUiManager, oRouter, oRouteManager, oCurrRouteInfo;
 
             oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
 
@@ -151,10 +151,12 @@ sap.ui.define(
 
             oWebUiManager.notifyWebUi('refresh');
 
-//            oRouteManager = this.getOwnerComponent().getCcuxRouteManager();
-//            oRouter = this.getOwnerComponent().getRouter();
-//            oRouter.navTo('app.refresh');
+            oRouteManager = this.getOwnerComponent().getCcuxRouteManager();
+            oCurrRouteInfo = oRouteManager.getCurrentRouteInfo();
 
+            oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo('app.refresh');
+            oRouter.navTo(oCurrRouteInfo.name, oCurrRouteInfo.parameters);
         };
 
         CustomController.prototype._onClearAccPress = function (oControlEvent) {
