@@ -15,7 +15,7 @@ sap.ui.define(
 
         var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataVerification');
 
-        Controller.prototype.onInit = function () {
+        Controller.prototype.onBeforeRendering = function () {
             this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
             //console.log(this.getOwnerComponent().getCcuxApp().setTitle);
 

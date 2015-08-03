@@ -24,7 +24,7 @@ sap.ui.define(
 
         var CustomController = Controller.extend('nrg.module.dashboard.view.CustomerDataBpInfo');
 
-        CustomController.prototype.onInit = function () {
+        Controller.prototype.onBeforeRendering = function () {
             this.getOwnerComponent().getCcuxApp().setTitle('BUSINESS PARTNER');
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
@@ -98,13 +98,13 @@ sap.ui.define(
                     }.bind(this));
                 }
             });
-        };
 
-        CustomController.prototype.onBeforeRendering = function () {
             this._initBpInfoConfigModel();
 
             this._initDataModel();
         };
+
+
 
         CustomController.prototype.onAfterRendering = function () {
 

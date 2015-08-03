@@ -18,7 +18,7 @@ sap.ui.define(
 
         var CustomController = Controller.extend('nrg.module.dashboard.view.CustomerDataCaInfo');
 
-        CustomController.prototype.onInit = function () {
+        Controller.prototype.onBeforeRendering = function () {
             var oModel;
 
             this.getOwnerComponent().getCcuxApp().setTitle('BUSINESS PARTNER');
@@ -44,10 +44,6 @@ sap.ui.define(
             this._initCaInfoConfigModel();
             this._initDataModel();
             this._initMailAddrModels();
-        };
-
-        CustomController.prototype.onBeforeRendering = function () {
-
         };
 
         CustomController.prototype.onAfterRendering = function () {
@@ -312,9 +308,9 @@ sap.ui.define(
                     sap.ui.commons.MessageBox.alert('Validatation Call Failed');
                 }.bind(this)
             };
-this._showSuggestedAddr();
+//this._showSuggestedAddr();
             if (oModel) {
-                //oModel.read(sPath, oParameters);
+                oModel.read(sPath, oParameters);
             }
         };
 
