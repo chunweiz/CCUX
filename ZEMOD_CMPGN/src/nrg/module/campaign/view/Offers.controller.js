@@ -21,10 +21,64 @@ sap.ui.define(
 		/* lifecycle methods                                           */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
-            this.getOwnerComponent().getRouter().getRoute("campaignoffers").attachPatternMatched(this._onObjectMatched, this);
-            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
-        };
 
+        };
+        /* =========================================================== */
+		/* lifecycle method- Before Rendering                          */
+		/* =========================================================== */
+        Controller.prototype.onBeforeRendering = function () {
+            var oModel,
+                sCurrentPath,
+                sEligibilityPath,
+                mParameters,
+                aFilters,
+                oTileContainer,
+                oTileTemplate,
+                oViewModel,
+                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
+                aFilterIds,
+                aFilterValues,
+                fnRecievedHandler,
+                that = this,
+                oProactiveButton = this.getView().byId("idCamToggleBtn-P"),
+                oNoDataTag,
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            this._sContract = oRouteInfo.parameters.coNum;
+            oNoDataTag = this.getView().byId("idnrgCamHisNoData");
+            //this._sContract = "32253375";
+            aFilterIds = ["Contract", "Type"];
+            aFilterValues = [this._sContract, "P"];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
+            oModel = this.getOwnerComponent().getModel('comp-campaign');
+            oTileContainer = this.getView().byId("idnrgCamOffScroll");
+            oTileTemplate = this.getView().byId("idnrgCamOffBt").clone();
+            this._oTileTemplate = oTileTemplate;
+            // Handler function for tile container
+            fnRecievedHandler = function (oEvent) {
+                var aContent = oTileContainer.getContent();
+                if ((aContent !== undefined) && (aContent.length > 0)) {
+                    oNoDataTag.addStyleClass("nrgCamOff-hide");
+                    oTileContainer.removeStyleClass("nrgCamOff-hide");
+                } else {
+                    oNoDataTag.removeStyleClass("nrgCamOff-hide");
+                    oTileContainer.addStyleClass("nrgCamOff-hide");
+                }
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                oProactiveButton.addStyleClass("nrgCamOff-btn-selected");
+            };
+            mParameters = {
+                model : "comp-campaign",
+                path : sCurrentPath,
+                template : oTileTemplate,
+                filters : aFilters,
+                parameters : {expand: "EFLs"},
+                events: {dataReceived : fnRecievedHandler}
+            };
+            oTileContainer.bindAggregation("content", mParameters);
+        };
        /**
 		 * Assign the filter objects based on the input selection
 		 *
@@ -68,67 +122,6 @@ sap.ui.define(
             oEvent.getSource().addStyleClass("nrgCamOff-btn-selected");*/
             this.navTo("campaignchg", {coNum: this._sContract, offercodeNum: sOfferCode});
         };
-
-        /**
-		 * Binds the view to the object path
-		 *
-		 * @function
-		 * @param {sap.ui.base.Event} oEvent pattern match event
-		 * @private
-		 */
-        Controller.prototype._onObjectMatched = function (oEvent) {
-            var oModel,
-                sCurrentPath,
-                sEligibilityPath,
-                mParameters,
-                aFilters,
-                oTileContainer,
-                oTileTemplate,
-                oViewModel,
-                iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
-                aFilterIds,
-                aFilterValues,
-                fnRecievedHandler,
-                that = this,
-                oProactiveButton = this.getView().byId("idCamToggleBtn-P"),
-                oNoDataTag;
-            this.getOwnerComponent().getCcuxApp().setOccupied(true);
-            this._sContract = oEvent.getParameter("arguments").coNum;
-            oNoDataTag = this.getView().byId("idnrgCamHisNoData");
-            //this._sContract = "32253375";
-            aFilterIds = ["Contract", "Type"];
-            aFilterValues = [this._sContract, "P"];
-            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-            sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
-            oModel = this.getOwnerComponent().getModel('comp-campaign');
-            oTileContainer = this.getView().byId("idnrgCamOffScroll");
-            oTileTemplate = this.getView().byId("idnrgCamOffBt").clone();
-            this._oTileTemplate = oTileTemplate;
-            // Handler function for tile container
-            fnRecievedHandler = function (oEvent) {
-                var aContent = oTileContainer.getContent();
-                if ((aContent !== undefined) && (aContent.length > 0)) {
-                    oNoDataTag.addStyleClass("nrgCamOff-hide");
-                    oTileContainer.removeStyleClass("nrgCamOff-hide");
-                } else {
-                    oNoDataTag.removeStyleClass("nrgCamOff-hide");
-                    oTileContainer.addStyleClass("nrgCamOff-hide");
-                }
-                that.getOwnerComponent().getCcuxApp().setOccupied(false);
-                oProactiveButton.addStyleClass("nrgCamOff-btn-selected");
-            };
-            mParameters = {
-                model : "comp-campaign",
-                path : sCurrentPath,
-                template : oTileTemplate,
-                filters : aFilters,
-                parameters : {expand: "EFLs"},
-                events: {dataReceived : fnRecievedHandler}
-            };
-            oTileContainer.bindAggregation("content", mParameters);
-
-        };
-
         /**
 		 * Binds the view based on the Tier selected like Proactive, Reactive, Save and Final Save
 		 *

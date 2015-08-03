@@ -20,8 +20,6 @@ sap.ui.define(
 		/* lifecycle method- Init                                      */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
-            this.getOwnerComponent().getRouter().getRoute("campaignSS").attachPatternMatched(this._onObjectMatched, this);
-            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
         };
 
        /* =========================================================== */
@@ -34,18 +32,7 @@ sap.ui.define(
 		/* lifecycle method- Before Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onBeforeRendering = function () {
-        };
-
-		/**
-		 * Binds the view to the object path
-		 *
-		 * @function
-		 * @param {sap.ui.base.Event} oEvent pattern match event
-		 * @private
-		 */
-/*        Controller.prototype._onObjectMatched = function (oEvent) {
-			var sObjectPath = oEvent.getParameter("arguments").sPath,
-                oModel = this.getOwnerComponent().getModel('comp-campaign'),
+			var oModel = this.getOwnerComponent().getModel('comp-campaign'),
                 mParameters,
                 aFilters,
                 sCurrentPath,
@@ -57,10 +44,12 @@ sap.ui.define(
                 fnRecievedHandler,
                 that = this,
                 aContent,
-                sPath;
+                sPath,
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
-            this._sContract = oEvent.getParameter("arguments").coNum;
-            this._sOfferCode = oEvent.getParameter("arguments").offercodeNum;
+            this._sContract = oRouteInfo.parameters.coNum;
+            this._sOfferCode = oRouteInfo.parameters.offercodeNum;
             sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
             sCurrentPath = "/CpgChgOfferS";
             sCurrentPath = sCurrentPath + "(OfferCode='" + this._sOfferCode + "',Contract='" + this._sContract + "')";
@@ -94,55 +83,8 @@ sap.ui.define(
                 events: {dataReceived : fnRecievedHandler}
             };
             oDropDownList.bindAggregation("content", mParameters);
+        };
 
-            //this._bindView(sObjectPath);
-		};*/
-        Controller.prototype._onObjectMatched = function (oEvent) {
-			var sObjectPath = oEvent.getParameter("arguments").sPath,
-                oModel = this.getOwnerComponent().getModel('comp-campaign'),
-                mParameters,
-                aFilters,
-                sCurrentPath,
-                oDropDownList,
-                oDropDownListItemTemplate,
-                aFilterIds,
-                aFilterValues,
-                oMandDiscloureTV,
-                fnRecievedHandler,
-                that = this,
-                aContent,
-                sPath;
-            this.getOwnerComponent().getCcuxApp().setOccupied(true);
-            this._sContract = oEvent.getParameter("arguments").coNum;
-            this._sOfferCode = oEvent.getParameter("arguments").offercodeNum;
-            sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
-            sCurrentPath = "/CpgChgOfferS";
-            sCurrentPath = sCurrentPath + "(OfferCode='" + this._sOfferCode + "',Contract='" + this._sContract + "')";
-            this._bindView(sCurrentPath);
-            //sCurrentPath = "/ScriptS";
-            // Handler function for Tab Bar Item.
-            aFilterIds = ["Contract", "OfferCode", "ScriptS/TxtName"];
-            aFilterValues = [this._sContract, this._sOfferCode, 'MAND'];
-            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-            oDropDownList = this.getView().byId("idnrgCamSSDdL");
-            oDropDownListItemTemplate = this.getView().byId("idnrgCamSSLngLtIt").clone();
-            oMandDiscloureTV = this.getView().byId("idCamSSMdTv");
-            mParameters = {
-                //filters : aFilters,
-                success : function (oData) {
-
-                    jQuery.sap.log.info("Odata Read Successfully:::");
-                }.bind(this),
-                error: function (oError) {
-                    this.getOwnerComponent().getCcuxApp().setOccupied(true);
-                    jQuery.sap.log.info("Eligibility Error occured");
-                }.bind(this)
-            };
-            if (oModel) {
-                oModel.read(sCurrentPath, mParameters);
-            }
-
-		};
         /**
 		 * Binds the view to the object path. Makes sure that view displays
 		 * a busy indicator while data for the corresponding element binding is loaded.

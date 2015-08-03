@@ -19,26 +19,13 @@ sap.ui.define(
 		/* lifecycle method- Init                                     */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
-            this.getOwnerComponent().getRouter().getRoute("campaignchg").attachPatternMatched(this._onObjectMatched, this);
-            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
+
 
         };
-
         /* =========================================================== */
-		/* lifecycle method- After Rendering                          */
+		/* lifecycle method- Before Rendering                          */
 		/* =========================================================== */
-        Controller.prototype.onAfterRendering = function () {
-            this.getOwnerComponent().getCcuxApp().setOccupied(false);
-        };
-
-		/**
-		 * Binds the view to the object path
-		 *
-		 * @function
-		 * @param {sap.ui.base.Event} oEvent pattern match event
-		 * @private
-		 */
-        Controller.prototype._onObjectMatched = function (oEvent) {
+        Controller.prototype.onBeforeRendering = function () {
             var oModel,
                 sCurrentPath,
                 mParameters,
@@ -48,10 +35,12 @@ sap.ui.define(
                 iCount,
                 oEFLJson = {},
                 aResults = [],
-                that = this;
+                that = this,
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
-            this._sContract = oEvent.getParameter("arguments").coNum;
-            this._sNewOfferCode = oEvent.getParameter("arguments").offercodeNum;
+            this._sContract = oRouteInfo.parameters.coNum;
+            this._sNewOfferCode = oRouteInfo.parameters.offercodeNum;
             sCurrentPath = "/CpgChgOfferS";
             sCurrentPath = sCurrentPath + "(Contract='" + this._sContract + "',OfferCode='" + this._sNewOfferCode + "')";
             oModel = this.getOwnerComponent().getModel('comp-campaign');
@@ -79,8 +68,13 @@ sap.ui.define(
             that.getView().byId('idnrgCamChgPriceT').removeAllAggregation("content");
             that.getView().byId('idnrgCamChgPriceT').addContent(oTemplateView);
             jQuery.sap.log.info("Odata Read Successfully:::");
-
-		};
+        };
+        /* =========================================================== */
+		/* lifecycle method- After Rendering                          */
+		/* =========================================================== */
+        Controller.prototype.onAfterRendering = function () {
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
+        };
         /**
 		 * Binds the view to the object path. Makes sure that view displays
 		 * a busy indicator while data for the corresponding element binding is loaded.

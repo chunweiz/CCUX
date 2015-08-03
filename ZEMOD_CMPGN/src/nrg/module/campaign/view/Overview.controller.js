@@ -18,23 +18,12 @@ sap.ui.define(
 		/* lifecycle method- Init                                     */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
-            this.getOwnerComponent().getRouter().getRoute("campaign").attachPatternMatched(this._onObjectMatched, this);
-            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
-        };
-        /* =========================================================== */
-		/* lifecycle method- After Rendering                          */
-		/* =========================================================== */
-        Controller.prototype.onAfterRendering = function () {
 
         };
-        /**
-		 * Binds the view to the object path
-		 *
-		 * @function
-		 * @param {sap.ui.base.Event} oEvent pattern match event
-		 * @private
-		 */
-        Controller.prototype._onObjectMatched = function (oEvent) {
+        /* =========================================================== */
+		/* lifecycle method- Before Rendering                          */
+		/* =========================================================== */
+        Controller.prototype.onBeforeRendering = function () {
             var oModel,
                 sCurrentPath,
                 sEligibilityPath,
@@ -57,11 +46,13 @@ sap.ui.define(
                 aEFLDatapaths,
                 iCount,
                 oEFLJson = {},
-                aResults = [];
+                aResults = [],
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setTitle("CAMPAIGNS");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
-            this._sContract = oEvent.getParameter("arguments").coNum;
-            this._sFlag = oEvent.getParameter("arguments").typeV.toUpperCase();
+            this._sContract = oRouteInfo.parameters.coNum;
+            this._sFlag = oRouteInfo.parameters.typeV.toUpperCase();
             aFilterIds = ["Contract"];
             aFilterValues = [this._sContract];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -169,18 +160,11 @@ sap.ui.define(
                 oModel.read(sEligibilityPath, mParameters);
             }
             this.getView().setModel(oModel, "Overview-elig");
-
-		};
-
-        /**
-		 * Binds the view to the object path. Makes sure that detail view displays
-		 * a busy indicator while data for the corresponding element binding is loaded.
-		 *
-		 * @function
-		 * @param {string} sObjectPath path to the object to be bound
-		 * @private
-		 */
-		Controller.prototype._bindView = function (sObjectPath) {
+        };
+        /* =========================================================== */
+		/* lifecycle method- After Rendering                          */
+		/* =========================================================== */
+        Controller.prototype.onAfterRendering = function () {
 
         };
        /**
