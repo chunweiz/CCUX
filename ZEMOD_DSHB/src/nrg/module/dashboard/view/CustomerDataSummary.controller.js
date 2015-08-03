@@ -38,7 +38,7 @@ sap.ui.define(
         };
 
 
-        Controller.prototype.onInit = function () {
+        Controller.prototype.onBeforeRendering = function () {
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
             //Model to keep information to show
