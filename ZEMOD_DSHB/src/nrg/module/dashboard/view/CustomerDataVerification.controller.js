@@ -331,14 +331,26 @@ sap.ui.define(
                 sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
                 sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID'),
                 oComponent = this.getOwnerComponent(),
-                oWebUiManager = oComponent.getCcuxWebUiManager();
+                oWebUiManager = oComponent.getCcuxWebUiManager(),
+                oPassingEvent; //For none IC usage
 
-            //Confirm CA to IC first
-            oComponent.getCcuxApp().setOccupied(true);
-            oWebUiManager.notifyWebUi('caConfirmed', {
-                BP_NUM: sCurrentBp,
-                CA_NUM: sCurrentCa
-            }, this._handleCaCofirmed, this);
+            if (oWebUiManager.isAvailable()) {
+                //Confirm CA to IC first
+                oComponent.getCcuxApp().setOccupied(true);
+                oWebUiManager.notifyWebUi('caConfirmed', {
+                    BP_NUM: sCurrentBp,
+                    CA_NUM: sCurrentCa
+                }, this._handleCaCofirmed, this);
+            } else {
+                oPassingEvent = {
+                    BP_NUM: sCurrentBp,
+                    CA_NUM: sCurrentCa,
+                    getParameters: function () {
+                        return oPassingEvent;
+                    }
+                };
+                this._handleCaCofirmed(oPassingEvent);
+            }
         };
 
         Controller.prototype._handleCaCofirmed = function (oEvent) {

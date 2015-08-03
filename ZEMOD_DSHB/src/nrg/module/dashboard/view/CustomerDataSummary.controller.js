@@ -88,11 +88,14 @@ sap.ui.define(
         };
 
         Controller.prototype._initRetrBpSegInf = function () {
-            var sPath, aSplitHash, iSplitHashL;
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
+                sBpNBum,
+                sPath;
 
-            aSplitHash = (this._retrUrlHash()).split('/');
-            iSplitHashL = aSplitHash.length;
-            sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')/BpSegs';
+            sBpNBum = oRouteInfo.BpNum;
+            //aSplitHash = (this._retrUrlHash()).split('/');
+            //iSplitHashL = aSplitHash.length;
+            sPath = '/Partners' + '(\'' + sBpNBum + '\')/BpSegs';
 
             this._retrBpSegInf(sPath);
         };

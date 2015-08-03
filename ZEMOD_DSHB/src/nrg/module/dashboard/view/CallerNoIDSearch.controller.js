@@ -218,15 +218,8 @@ sap.ui.define(
                 oRouter = this.getOwnerComponent().getRouter(),
                 //Componenet Level Context Model
                 oComponent = this.getOwnerComponent(),
-                oWebUiManager = oComponent.getCcuxWebUiManager();
-
-
-
-
-            /*This need to be re-written
-            oFilter = new Filter("PartnerID", FilterOperator.EQ, "1121");
-            aFilter = [];
-            aFilter.push(oFilter);*/
+                oWebUiManager = oComponent.getCcuxWebUiManager(),
+                oPassingEvent; //For none IC usage
 
             oParameters = {
                 filters : aFilters,
@@ -236,9 +229,19 @@ sap.ui.define(
                             //oComponentContextModel.setProperty('/dashboard/bpNum', oData.results[0].PartnerID);
                             //oRouter.navTo('dashboard.Bp', {bpNum: oData.results[0].PartnerID});
                             oComponent.getCcuxApp().setOccupied(true);
-                            oWebUiManager.notifyWebUi('bpConfirmed', {
-                                BP_NUM: oData.results[0].PartnerID
-                            }, this._handleBpConfirmed, this);
+                            if (oWebUiManager.isAvailable()) {
+                                oWebUiManager.notifyWebUi('bpConfirmed', {
+                                    BP_NUM: oData.results[0].PartnerID
+                                }, this._handleBpConfirmed, this);
+                            } else {
+                                oPassingEvent = {
+                                    BP_NUM: oData.results[0].PartnerID,
+                                    getParameters: function () {
+                                        return oPassingEvent;
+                                    }
+                                };
+                                this._handleBpConfirmed(oPassingEvent);
+                            }
                         } else {
                             for (i = 0; i < oData.results.length; i = i + 1) {
                                 oData.results[i].iId = i + 1;
@@ -271,13 +274,24 @@ sap.ui.define(
                 iSelectedId = aSelectedId[2],
                 sSelectedBpNum = this.getView().getModel('oBpSearchResult').oData[iSelectedId].PartnerID,
                 oComponent = this.getOwnerComponent(),
-                oWebUiManager = oComponent.getCcuxWebUiManager();
+                oWebUiManager = oComponent.getCcuxWebUiManager(),
+                oPassingEvent; //For none IC usage
 
             //Confirm BP to IC first
             oComponent.getCcuxApp().setOccupied(true);
-            oWebUiManager.notifyWebUi('bpConfirmed', {
-                BP_NUM: sSelectedBpNum
-            }, this._handleBpConfirmed, this);
+            if (oWebUiManager.isAvailable()) {
+                oWebUiManager.notifyWebUi('bpConfirmed', {
+                    BP_NUM: sSelectedBpNum
+                }, this._handleBpConfirmed, this);
+            } else {
+                oPassingEvent = {
+                    BP_NUM: sSelectedBpNum,
+                    getParameters: function () {
+                        return oPassingEvent;
+                    }
+                };
+                this._handleBpConfirmed(oPassingEvent);
+            }
 
             return;
         };

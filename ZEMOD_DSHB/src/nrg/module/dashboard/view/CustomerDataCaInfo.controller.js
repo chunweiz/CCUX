@@ -536,7 +536,7 @@ sap.ui.define(
             };
 
             if (oModel) {
-                oModel.update(sPath, this.getView().getModel('oDataBuagAddrDetails').oData.results[0], oParameters);
+                oModel.read(sPath, this.getView().getModel('oDataBuagAddrDetails').oData.results[0], oParameters);
             }
         };
 
