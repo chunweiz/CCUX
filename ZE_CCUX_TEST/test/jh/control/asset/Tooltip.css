@@ -1,0 +1,11 @@
+.uteMTooltip {
+    box-shadow: none;
+    border: none;
+    border-radius: 5px;
+    padding: 0 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.uteMTooltip-arrow {
+    display: none !important;
+}

@@ -12,6 +12,7 @@ sap.ui.define(
 
         var CustomControl = Control.extend('jh.control.lib.ui.Button', {
             metadata: {
+
                 library: 'jh.control.lib.ui',
 
                 properties: {

@@ -11,7 +11,7 @@ sap.ui.define(
 
         CustomRenderer.render = function (oRm, oCustomControl) {
             oRm.write('<span');
-            oRm.writeControlData(oCustomControl);
+            oRm.writeControlData(oCustomControl); // writes the Control ID and enables event handling - important!
 
             oRm.addClass('uteMBtn');
 

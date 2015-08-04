@@ -69,3 +69,27 @@ html {
     color: #424242;
 }
 
+
+/* CSS added by Jerry Hsu on 7/29/2015 */
+.uteMBtn {
+    background-color: #2BC1A0;
+    padding: 5px 10px;
+    border: 1px solid #126C68;
+    color: #FFF;
+    font-weight: 400;
+}
+.uteMBtn:hover {
+    background-color: #F86262;
+    border: 1px solid #EF3E5A;
+}
+.jhWrap {
+    padding: 10px 20px;
+}
+/* Tooltip */
+.sapUiRtt {
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: none;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
