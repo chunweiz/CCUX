@@ -38,7 +38,22 @@ sap.ui.define(
             PalPlus: 'appHMItemPalPlus',
             Messages: 'appHMItemMessages',
             Refresh: 'appHMItemRefresh',
-            ClearAcc: 'appHMItemClearAcc'
+            ClearAcc: 'appHMItemClearAcc',
+            Logoff: 'appHMItemLogoff'
+        };
+
+        AppHeader.QuickLinkId = {
+            Dashboard: 'dashboard',
+            BusinessEnrollment: 'bizEnroll',
+            ResidentialEnrollment: 'resEnroll',
+            History: 'history',
+            ServiceOrder: 'serviceOrder',
+            Campaign: 'campaign',
+            HighBill: 'highBill',
+            RHS: 'rhs',
+            ContactLog: 'contactLog',
+            Billing: 'billing',
+            BusinessPartner: 'bupa'
         };
 
         AppHeader.prototype.init = function () {
@@ -87,9 +102,11 @@ sap.ui.define(
                         this._closeSubmenu(sHMItemId);
                     }
 
+                    oHMItem.setSelected(bSelected);
+                    oHMItem.deselectOthers();
+
                 } else {
                     if (bSelected) {
-                        //TODO: Implementation for each links
                         oHMItem.setSelected(false);
                         oHMItem.deselectOthers();
                         this._closeAllSubmenus();
@@ -112,38 +129,6 @@ sap.ui.define(
             return false;
         };
 
-        AppHeader.prototype._onMenuPress = function (oControlEvent) {
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Menu);
-        };
-
-        AppHeader.prototype._onMessagesPress = function (oControlEvent) {
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Messages);
-        };
-
-        AppHeader.prototype._onIndexPress = function (oControlEvent) {
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Index);
-        };
-
-        AppHeader.prototype._onTransactionPress = function (oControlEvent) {
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Transaction);
-        };
-
-        AppHeader.prototype._onEsidToolPress = function (oControlEvent) {
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.EsidTool);
-        };
-
-        AppHeader.prototype._onPalPlusPress = function (oControlEvent) {
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.PalPlus);
-        };
-
-        AppHeader.prototype._onRefreshPress = function (oControlEvent) {
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.Refresh);
-        };
-
-        AppHeader.prototype._onClearAccPress = function (oControlEvent) {
-            this.setSelected(oControlEvent.getSource().getSelected(), AppHeader.HMItemId.ClearAcc);
-        };
-
         AppHeader.prototype._resetAllHMItemState = function () {
             var sHMItemId, oHMItem, oView;
 
@@ -163,14 +148,15 @@ sap.ui.define(
         AppHeader.prototype._registerHMItemEvents = function () {
             var oView = this._oController.getView();
 
-            oView.byId(AppHeader.HMItemId.Menu).attachEvent('press', this._onMenuPress, this);
-            oView.byId(AppHeader.HMItemId.Index).attachEvent('press', this._onIndexPress, this);
-            oView.byId(AppHeader.HMItemId.Transaction).attachEvent('press', this._onTransactionPress, this);
-            oView.byId(AppHeader.HMItemId.EsidTool).attachEvent('press', this._onEsidToolPress, this);
-            oView.byId(AppHeader.HMItemId.PalPlus).attachEvent('press', this._onPalPlusPress, this);
-            oView.byId(AppHeader.HMItemId.Messages).attachEvent('press', this._onMessagesPress, this);
-            oView.byId(AppHeader.HMItemId.Refresh).attachEvent('press', this._onRefreshPress, this);
-            oView.byId(AppHeader.HMItemId.ClearAcc).attachEvent('press', this._onClearAccPress, this);
+            oView.byId(AppHeader.HMItemId.Menu).attachEvent('press', this._oController._onMenuPress, this._oController);
+            oView.byId(AppHeader.HMItemId.Index).attachEvent('press', this._oController._onIndexPress, this._oController);
+            oView.byId(AppHeader.HMItemId.Transaction).attachEvent('press', this._oController._onTransactionPress, this._oController);
+            oView.byId(AppHeader.HMItemId.EsidTool).attachEvent('press', this._oController._onEsidToolPress, this._oController);
+            oView.byId(AppHeader.HMItemId.PalPlus).attachEvent('press', this._oController._onPalPlusPress, this._oController);
+            oView.byId(AppHeader.HMItemId.Messages).attachEvent('press', this._oController._onMessagesPress, this._oController);
+            oView.byId(AppHeader.HMItemId.Refresh).attachEvent('press', this._oController._onRefreshPress, this._oController);
+            oView.byId(AppHeader.HMItemId.ClearAcc).attachEvent('press', this._oController._onClearAccPress, this._oController);
+            oView.byId(AppHeader.HMItemId.Logoff).attachEvent('press', this._oController._onLogoffPress, this._oController);
         };
 
         AppHeader.prototype._isSubmenu = function (sSubmenuId) {
@@ -200,8 +186,8 @@ sap.ui.define(
 
                 if (sFragmentId) {
                     oView = this._oController.getView();
-                    this._oSubmenuDlg[sSubmenuId] = sap.ui.xmlfragment(sFragmentId);
-                    this._oSubmenuDlg[sSubmenuId].setPosition(oView.byId('appHdr'), '0 20');
+                    this._oSubmenuDlg[sSubmenuId] = sap.ui.xmlfragment(sFragmentId, this._oController);
+                    this._oSubmenuDlg[sSubmenuId].setPosition(oView.byId('appHdr'), '0 0');
                     oView.addDependent(this._oSubmenuDlg[sSubmenuId]);
                 }
             }

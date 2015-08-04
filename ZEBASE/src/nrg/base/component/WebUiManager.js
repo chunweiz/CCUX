@@ -20,7 +20,8 @@ sap.ui.define(
             metadata: {
                 publicMethods: [
                     'start',
-                    'notifyWebUi'
+                    'notifyWebUi',
+                    'isAvailable'
                 ]
             }
         });
@@ -29,10 +30,21 @@ sap.ui.define(
             this._addDomEventListener();
         };
 
+        Manager.prototype.isAvailable = function () {
+            var bAvailable = true;
+
+            //Do not call yourself
+            if (window.parent === window) {
+                return false;
+            }
+
+            return bAvailable;
+        };
+
         Manager.prototype.notifyWebUi = function (sEvent, oPayload, fnCallback, oListener) {
             var sMessage, oData;
 
-            if (window.parent === window) {
+            if (!this.isAvailable()) {
                 jQuery.sap.log.error('[WebUiManager.notifyWebUi()]', 'Unable to post message because this component is not embedded in any parent window');
                 return this;
             }

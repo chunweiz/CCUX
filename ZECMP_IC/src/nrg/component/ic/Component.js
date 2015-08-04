@@ -12,10 +12,11 @@ sap.ui.define(
         'nrg/base/component/MockDataManager',
         'nrg/base/component/RealDataManager',
         'nrg/base/component/WebUiManager',
-        'nrg/base/component/RouteManager'
+        'nrg/base/component/RouteManager',
+        'nrg/base/component/ContextManager'
     ],
 
-    function (jQuery, Component, Popup, ResourceBundleManager, StylesheetManager, IconManager, MockDataManager, RealDataManager, WebUiManager, RouteManager) {
+    function (jQuery, Component, Popup, ResourceBundleManager, StylesheetManager, IconManager, MockDataManager, RealDataManager, WebUiManager, RouteManager, ContextManager) {
         'use strict';
 
         var CustomComponent = Component.extend('nrg.component.ic.Component', {
@@ -28,6 +29,7 @@ sap.ui.define(
             Component.prototype.init.apply(this);
 
             this._initWebUiConnection();
+            this._initContext();
             this._initStylesheets();
             this._initResourceBundles();
             this._initIcons();
@@ -72,6 +74,11 @@ sap.ui.define(
                 this._oRouteManager = null;
             }
 
+            if (this._oContextManager) {
+                this._oContextManager.destroy();
+                this._oContextManager = null;
+            }
+
             Component.prototype.destroy.apply(this, arguments);
         };
 
@@ -111,8 +118,21 @@ sap.ui.define(
             this._oRouteManager.init();
         };
 
+        CustomComponent.prototype._initContext = function () {
+            this._oContextManager = new ContextManager(this);
+            this._oContextManager.init();
+        };
+
+        CustomComponent.prototype.getCcuxContextManager = function () {
+            return this._oContextManager;
+        };
+
         CustomComponent.prototype.getCcuxWebUiManager = function () {
             return this._oWebUiManager;
+        };
+
+        CustomComponent.prototype.getCcuxRouteManager = function () {
+            return this._oRouteManager;
         };
 
         CustomComponent.prototype.getCcuxApp = function () {

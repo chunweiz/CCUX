@@ -16,51 +16,61 @@ sap.ui.define(
         var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataVerification');
 
         Controller.prototype.onInit = function () {
-            this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
+            this._beforeOpenEditAddrDialogue = false;
+        };
 
-            //Model to hold BP info
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBP');
+        Controller.prototype.onBeforeRendering = function () {
+            if (!this._beforeOpenEditAddrDialogue) {
+                this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
+                //console.log(this.getOwnerComponent().getCcuxApp().setTitle);
 
-            //Model to hold Buags (avoid too long of bindings
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBuags');
+                this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
-            //Model to hold Contract
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyContracts');
+                //Model to hold BP info
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBP');
 
-            //Model to hold all Buags
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllBuags');
+                //Model to hold Buags (avoid too long of bindings
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBuags');
 
-            //Model to hold all Contracts of selected Buag
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllContractsofBuag');
+                //Model to hold Contract
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyContracts');
 
-            //Model to hold mailing/temp address
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');
-            //Model for Edit Popup Screen (Use the model to show on edit screen)
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
+                //Model to hold all Buags
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllBuags');
 
-            //Model to track "Confirm" or not status
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCfrmStatus');
+                //Model to hold all Contracts of selected Buag
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllContractsofBuag');
 
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCoPageModel');
+                //Model to hold mailing/temp address
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');
+                //Model for Edit Popup Screen (Use the model to show on edit screen)
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
 
-            //For Phone Type
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDayPhoneType');
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEvnPhoneType');
+                //Model to track "Confirm" or not status
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCfrmStatus');
 
-            //For EditEmail Popup
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailNNP');
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailValidate');
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCoPageModel');
 
-            //Siebel Customer Indicator
-            this.bSiebelCustomer = false;
+                //For Phone Type
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDayPhoneType');
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEvnPhoneType');
+
+                //For EditEmail Popup
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailNNP');
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailValidate');
+
+                //Siebel Customer Indicator
+                this.bSiebelCustomer = false;
 
 
-            this._initDtaVrfRetr();
-            this._initCfrmStatus();
-            this._initPhnTypes();
-            this._initMailAddrModels();
-            //this._initCoPageModel();
-
+                this._initDtaVrfRetr();
+                this._initCfrmStatus();
+                this._initPhnTypes();
+                this._initMailAddrModels();
+                //this._initCoPageModel();
+            } else {
+                this._beforeOpenEditAddrDialogue = false;
+            }
         };
 
         Controller.prototype._initPhnTypes = function () {
@@ -93,6 +103,9 @@ sap.ui.define(
 
         Controller.prototype._initCfrmStatus = function () {
             this.getView().getModel('oCfrmStatus').setProperty('/bEditable', true);
+            this.getView().byId('id_confmBtn').setVisible(true);
+            this.getView().byId('id_unConfmBtn').setVisible(false);
+            this.getView().byId('id_updtBtn').setEnabled(true);
         };
 
         Controller.prototype._onBuagChange = function (iNewBuagIndex) {
@@ -148,6 +161,7 @@ sap.ui.define(
                             });
                             //this._onToggleButtonPress();
                             this.getView().byId("idSiebelAccAlert").setVisible(true);
+                            this._beforeOpenEditAddrDialogue = true;
                             this._oSiebelAlertPopup.open();
                         }
                     }
@@ -323,7 +337,47 @@ sap.ui.define(
         };
 
         Controller.prototype._handleConfirm = function () {
-            var oStatusModel = this.getView().getModel('oCfrmStatus');
+            var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+                sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+                sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID'),
+                oComponent = this.getOwnerComponent(),
+                oWebUiManager = oComponent.getCcuxWebUiManager(),
+                oPassingEvent; //For none IC usage
+
+            if (oWebUiManager.isAvailable()) {
+                //Confirm CA to IC first
+                oComponent.getCcuxApp().setOccupied(true);
+                oWebUiManager.notifyWebUi('caConfirmed', {
+                    BP_NUM: sCurrentBp,
+                    CA_NUM: sCurrentCa
+                }, this._handleCaCofirmed, this);
+            } else {
+                oPassingEvent = {
+                    BP_NUM: sCurrentBp,
+                    CA_NUM: sCurrentCa,
+                    getParameters: function () {
+                        return oPassingEvent;
+                    }
+                };
+                this._handleCaCofirmed(oPassingEvent);
+            }
+        };
+
+        Controller.prototype._handleCaCofirmed = function (oEvent) {
+            var oStatusModel = this.getView().getModel('oCfrmStatus'),
+                oRouter = this.getOwnerComponent().getRouter(),
+                oComponent = this.getOwnerComponent(),
+                oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+                oRouteInfo = oEvent.getParameters(),
+                sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+                sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID');
+
+            //Set Confirmed CaNum and CoNum to Component level
+            oComponentContextModel.setProperty('/dashboard/caNum', sCurrentCa);
+            oComponentContextModel.setProperty('/dashboard/coNum', sCurrentCo);
+
             this.getView().byId('id_confmBtn').setVisible(false);
             this.getView().byId('id_unConfmBtn').setVisible(true);
             this.getView().byId('id_updtBtn').setEnabled(false);
@@ -332,10 +386,38 @@ sap.ui.define(
             if (oStatusModel.getProperty('/bEditable')) {
                 oStatusModel.setProperty('/bEditable', false);
             }
+
+            oComponent.getCcuxApp().setOccupied(false);
+
+            //Navigate to verification page
+            oRouter.navTo('dashboard.CaInfo', {bpNum: oRouteInfo.BP_NUM, caNum: oRouteInfo.CA_NUM});
         };
 
         Controller.prototype._handleUnConfirm = function () {
-            var oStatusModel = this.getView().getModel('oCfrmStatus');
+            var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+                sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+                sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID'),
+                oComponent = this.getOwnerComponent(),
+                oWebUiManager = oComponent.getCcuxWebUiManager();
+
+            //UnConfirm CA to IC first
+            oComponent.getCcuxApp().setOccupied(true);
+            oWebUiManager.notifyWebUi('caUnconfirmed', {
+                BP_NUM: sCurrentBp,
+                CA_NUM: sCurrentCa
+            }, this._handleCaUnCofirmed, this);
+        };
+
+        Controller.prototype._handleCaUnCofirmed = function (oEvent) {
+            var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+                oStatusModel = this.getView().getModel('oCfrmStatus'),
+                oComponent = this.getOwnerComponent();
+
+            //Set Confirmed CaNum and CoNum to Component level
+            oComponentContextModel.setProperty('/dashboard/caNum', '');
+            oComponentContextModel.setProperty('/dashboard/coNum', '');
+
             this.getView().byId('id_confmBtn').setVisible(true);
             this.getView().byId('id_unConfmBtn').setVisible(false);
             this.getView().byId('id_updtBtn').setEnabled(true);
@@ -343,6 +425,7 @@ sap.ui.define(
             if (!oStatusModel.getProperty('/bEditable')) {
                 oStatusModel.setProperty('/bEditable', true);
             }
+            oComponent.getCcuxApp().setOccupied(false);
         };
 
         Controller.prototype._handleUpdate = function () {
@@ -793,6 +876,8 @@ sap.ui.define(
             this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
             this.getView().byId('idSuggCompareCheck').setChecked(false);
+
+            this._beforeOpenEditAddrDialogue = true;
             this._oMailEditPopup.open();
         };
 
@@ -815,6 +900,8 @@ sap.ui.define(
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', false);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
+
+            this._beforeOpenEditAddrDialogue = true;
             this._oMailEditPopup.open();
         };
 
@@ -907,6 +994,7 @@ sap.ui.define(
                 /*urlParameters: {"$expand": "Buags"},*/
                 success : function (oData) {
                     if (oData) {
+                        this._beforeOpenEditAddrDialogue = true;
                         this._oEmailEditPopup.open();
                         oNNP.setData(oData);
                     }

@@ -94,8 +94,12 @@
                         focusable="true"
                         class="nrgCamOff-scroll"
                         id="idnrgCamOffScroll" >
-
                     </m:ScrollContainer>
+                    <u:Tag id="idnrgCamHisNoData" class="nrgCamHis-noData">
+                        <u:TextView text="{comp-i18n-campaign>nrgCmpOffNoData}"
+                                                color="DarkGrey"
+                                                design="Base"/>
+                   </u:Tag>
                 </u:Tag>
             </u:Tag>
             <!-- Place holder for templates to reuse for Bind Aggregation method. Below will be always Display:none -->
@@ -106,10 +110,10 @@
                                    id="idnrgCamOffBt" design="None">
                             <u:Tag class="nrgCamOff-btnInfo">
                                 <u:Tag class="nrgCamOff-btnCF" text="{parts:[{path:'comp-campaign>CncFee',
-                                                                type: 'nrg.util.type.Price',
+                                                                type: 'nrg.base.type.Price',
                                                                 formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' }},
                                                            {path: 'comp-campaign>Incentive',
-                                                                type: 'nrg.util.type.Price',
+                                                                type: 'nrg.base.type.Price',
                                                                 formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' } }],
                                                     formatter:'.formatCancelFee'}" />
 
@@ -119,7 +123,7 @@
                             </u:Tag>
                             <u:Tag class="nrgCamOff-btnTtl" text="{comp-campaign>OfferTitle}" />
                             <u:Tag class="nrgCamOff-btnPrc" text="{path: 'comp-campaign>EFLPrice',
-                                                                type: 'nrg.util.type.Price',
+                                                                type: 'nrg.base.type.Price',
                                                                 formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
                             <u:Tag class="nrgCamOff-btnPrcLbl" text="(for {comp-campaign>EFLLevel}kWh)" />
                         </um:Button>

@@ -23,6 +23,9 @@
             font-size: @nrgFontSize-base;
             font-weight: @nrgFontWeight-semiBold;
     }
+    & > .nrgCmpOff-partTiles > .nrgCmpOff-tiers > .nrgCmpOff-tier > .nrgCamOff-btn-selected{
+            color: @nrgColor-grey-inactive;
+    }
     & > .nrgCmpOff-partTiles > .nrgCmpOff-tiles{
             width: 85%;
             display: inline-block;
@@ -206,11 +209,17 @@
             color: @nrgColor-blueLink;
 
     }
-    & > .nrgCamOff-hide {
+    &  .nrgCamOff-hide {
             display:none;
     }
     &   .nrgCamOff-div {
-        padding-bottom: 5px;
-        border-bottom: 1px solid @nrgColor-grey-light;
+            padding-bottom: 5px;
+            border-bottom: 1px solid @nrgColor-grey-light;
+    }
+    &   .nrgCamHis-noData {
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            margin: 8rem 1rem 1rem 1rem;
     }
 }

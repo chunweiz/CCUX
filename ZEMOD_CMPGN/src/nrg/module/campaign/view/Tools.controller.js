@@ -18,18 +18,12 @@ sap.ui.define(
 		/* lifecycle method- Init                                     */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
-            this.getOwnerComponent().getRouter().attachRoutePatternMatched(this._onObjectMatched, this);
-            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
-        };
 
-		/**
-		 * Binds the view to the object path
-		 *
-		 * @function
-		 * @param {sap.ui.base.Event} oEvent pattern match event
-		 * @private
-		 */
-        Controller.prototype._onObjectMatched = function (oEvent) {
+        };
+        /* =========================================================== */
+		/* lifecycle method- Before Rendering                          */
+		/* =========================================================== */
+        Controller.prototype.onBeforeRendering = function () {
             var oViewModel,
                 iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
                 mParameters,
@@ -38,24 +32,23 @@ sap.ui.define(
                 oModel,
                 sCurrentPath,
                 aFilterIds,
-                aFilterValues;
+                aFilterValues,
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
             oViewModel = new JSONModel({
-				busy : true,
-				delay : 0,
                 selected : 0,
                 history : false,
                 cancel : false
 			});
-            aFilterIds = ["Contract", "Type"];
-            aFilterValues = ["32253375", "H"];
-            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+
+            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getView().setModel(oViewModel, "appView");
             sCurrentPath = this._i18NModel.getProperty("nrgHistorySet");
-            this.getView().getModel("appView").setProperty("/busy", false);
-            Controller.sContract = oEvent.getParameter("arguments").coNum;
+            this._sContract = oRouteInfo.parameters.coNum;
+            aFilterIds = ["Contract", "Type"];
+            aFilterValues = [this._sContract, "H"];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sCurrentPath = sCurrentPath + "/$count";
             mParameters = {
-                batchGroupId : "myId3",
                 filters : aFilters,
                 success : function (oData) {
                     if (oData) {
@@ -76,10 +69,9 @@ sap.ui.define(
             sCurrentPath = this._i18NModel.getProperty("nrgPendingSwapsSet");
             sCurrentPath = sCurrentPath + "/$count";
             aFilterIds = ["Contract"];
-            aFilterValues = ['34805112'];
+            aFilterValues = [this._sContract];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             mParameters = {
-                batchGroupId : "myId4",
                 filters : aFilters,
                 success : function (oData) {
                     if (oData) {
@@ -97,8 +89,7 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sCurrentPath, mParameters);
             }
-		};
-
+        };
        /**
 		 * Assign the filter objects based on the input selection
 		 *
@@ -110,9 +101,10 @@ sap.ui.define(
         Controller.prototype._createSearchFilterObject = function (aFilterIds, aFilterValues) {
             var aFilters = [],
                 iCount;
-
-            for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
-                aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
+            if (aFilterIds !== undefined) {
+                for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
+                    aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
+                }
             }
             return aFilters;
         };
@@ -149,9 +141,9 @@ sap.ui.define(
                 iCount,
                 oEFLJson = {},
                 aResults = [];
-            //this.getOwnerComponent().setCcuxBusy(true);
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             aFilterIds = ["Contract", "Type"];
-            aFilterValues = ["32253375", "H"];
+            aFilterValues = [this._sContract, "H"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sPath = this._i18NModel.getProperty("nrgHistorySet");
             oHistoryView = sap.ui.view({
@@ -210,6 +202,7 @@ sap.ui.define(
                     oDataTag.addStyleClass("nrgCamHis-hide");
                     oNoDataTag.removeStyleClass("nrgCamHis-hide");
                 }
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
 
             };
             // Function received handler is used to update the view with first History campaign.---end
@@ -232,8 +225,9 @@ sap.ui.define(
             this._oHistoryDialog.addStyleClass("nrgCamHis-dialog");
             //to get access to the global model
             this.getView().addDependent(this._oHistoryDialog);
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
             this._oHistoryDialog.open();
-            //that.getOwnerComponent().setCcuxBusy(false);
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
 
         };
 
@@ -254,8 +248,9 @@ sap.ui.define(
                 aFilterIds,
                 aFilterValues,
                 oPendingSwapsTemplate;
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             aFilterIds = ["Contract"];
-            aFilterValues = ['34805112'];
+            aFilterValues = [this._sContract];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             if (!this._oDialogFragment) {
                 this._oDialogFragment = sap.ui.xmlfragment("PendingSwaps", "nrg.module.campaign.view.PendingSwaps", this);
@@ -280,6 +275,7 @@ sap.ui.define(
             //to get access to the global model
             this._oCancelDialog.addStyleClass("nrgCamHis-dialog");
             oPendingSwapsTable.bindRows(mParameters);
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
             this._oCancelDialog.open();
         };
 
@@ -398,7 +394,6 @@ sap.ui.define(
             aJsonDataNew.results.rows.push({
                 "cells" : oCECells
             });
-
             return aJsonDataNew;
         };
         /**

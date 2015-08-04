@@ -15,14 +15,18 @@ sap.ui.define(
             constructor: function (oComponent) {
                 BaseObject.apply(this);
                 this._oComponent = oComponent;
+                this._aRouteHistory = [];
             },
 
             metadata: {
                 publicMethods: [
-                    'init'
+                    'init',
+                    'getCurrentRouteInfo'
                 ]
             }
         });
+
+        Manager._MAX_ROUTE_HISTORY_SIZE = '50';
 
         Manager.prototype.init = function () {
             this._registerRouteCallback();
@@ -36,7 +40,7 @@ sap.ui.define(
         };
 
         Manager.prototype._unsubscribeWebUi = function () {
-            var oWebUiManager = this._oComponent.getWebUiManager();
+            var oWebUiManager = this._oComponent.getCcuxWebUiManager();
             oWebUiManager.detachEvent('navigate', this._onWebUiNavigate, this);
         };
 
@@ -62,9 +66,86 @@ sap.ui.define(
         };
 
         Manager.prototype._onRouteMatched = function (oEvent) {
-            var oRoute = oEvent.getParameters();
+            var oApp, oWebUiManager;
 
-            //TODO: Intercept routing
+            this._updateRouteHistory(oEvent.getParameters());
+
+            oApp = this._oComponent.getCcuxApp();
+            if (oApp) {
+                oApp.reset();
+            }
+
+            oWebUiManager = this._oComponent.getCcuxWebUiManager();
+            if (oWebUiManager && oWebUiManager.isAvailable()) {
+                oWebUiManager.notifyWebUi('resetTimeOut');
+            }
+        };
+
+        Manager.prototype._updateRouteHistory = function (oRouteInfo) {
+            var oCurrentRouteInfo, sArg;
+
+            if (this._aRouteHistory.length !== 0) {
+                oCurrentRouteInfo = this._aRouteHistory[this._aRouteHistory.length - 1];
+            }
+
+            //Do not capture refresh
+            if (oRouteInfo.name === 'app.refresh') {
+                return this;
+            }
+
+            if (oCurrentRouteInfo) {
+                if (this._isIdenticalRouteInfo(oRouteInfo, oCurrentRouteInfo)) {
+                    return this;
+                }
+            }
+
+            if (this._aRouteHistory.length === Manager._MAX_ROUTE_HISTORY_SIZE) {
+                this._aRouteHistory.shift();
+            }
+
+            this._aRouteHistory.push(oRouteInfo);
+            return this;
+        };
+
+        Manager.prototype._isIdenticalRouteInfo = function (oRouteInfoA, oRouteInfoB) {
+            var sArg;
+
+            if (!oRouteInfoA || !oRouteInfoB) {
+                return false;
+            }
+
+            if (oRouteInfoA.name !== oRouteInfoB.name) {
+                return false;
+            }
+
+            for (sArg in oRouteInfoA.arguments) {
+                if (oRouteInfoA.arguments.hasOwnProperty(sArg)) {
+                    if (!oRouteInfoB.arguments[sArg]) {
+                        return false;
+                    }
+
+                    if (oRouteInfoA.arguments[sArg] !== oRouteInfoB.arguments[sArg]) {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        };
+
+        Manager.prototype.getCurrentRouteInfo = function () {
+            var oCurrentRoute;
+
+            if (this._aRouteHistory.length === 0) {
+                return null;
+            }
+
+            oCurrentRoute = this._aRouteHistory[this._aRouteHistory.length - 1];
+
+            return {
+                name: oCurrentRoute.name,
+                parameters: oCurrentRoute.arguments
+            };
         };
 
         Manager.prototype.destroy = function () {

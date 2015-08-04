@@ -37,8 +37,7 @@ sap.ui.define(
             }
         };
 
-
-        Controller.prototype.onInit = function () {
+        Controller.prototype.onBeforeRendering = function () {
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
             //Model to keep information to show
@@ -77,22 +76,26 @@ sap.ui.define(
         };
 
         Controller.prototype._initRetrBpInf = function () {
-            var sPath, aSplitHash, iSplitHashL;
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
+                sBpNBum,
+                sPath;
 
-            aSplitHash = (this._retrUrlHash()).split('/');
-            iSplitHashL = aSplitHash.length;
-            sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')';
+            sBpNBum = oRouteInfo.parameters.bpNum;
+            sPath = '/Partners' + '(\'' + sBpNBum + '\')';
 
             this._retrBpInf(sPath);
-            this._initRetrCaInf(aSplitHash[iSplitHashL - 1]);  //Should be triggered in Success call back of BP retriev
+            this._initRetrCaInf(sBpNBum);  //Should be triggered in Success call back of BP retriev
         };
 
         Controller.prototype._initRetrBpSegInf = function () {
-            var sPath, aSplitHash, iSplitHashL;
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
+                sBpNBum,
+                sPath;
 
-            aSplitHash = (this._retrUrlHash()).split('/');
-            iSplitHashL = aSplitHash.length;
-            sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')/BpSegs';
+            sBpNBum = oRouteInfo.parameters.bpNum;
+            //aSplitHash = (this._retrUrlHash()).split('/');
+            //iSplitHashL = aSplitHash.length;
+            sPath = '/Partners' + '(\'' + sBpNBum + '\')/BpSegs';
 
             this._retrBpSegInf(sPath);
         };
@@ -268,6 +271,7 @@ sap.ui.define(
             var oRouter = this.getOwnerComponent().getRouter(),
                 sSelectedBpNum = this.getView().getModel('oSmryBpInf').getProperty('/PartnerID'),
                 sSelectedCaNum = this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID');
+
 
             oRouter.navTo('dashboard.CaInfo', {bpNum: sSelectedBpNum, caNum: sSelectedCaNum});
         };

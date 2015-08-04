@@ -48,6 +48,10 @@
                         <ua:HeaderMenuItem id="appHMItemClearAcc" class="nrgAppHMItem nrgAppHMItem-attention">
                             <ua:Text text="{comp-i18n-app>nrgAppHMItemClearAcc}" />
                         </ua:HeaderMenuItem>
+                        <span class="nrgAppHMItem-spacer" />
+                        <ua:HeaderMenuItem id="appHMItemLogoff" class="nrgAppHMItem nrgAppHMItem-attention">
+                            <ua:Text text="{comp-i18n-app>nrgAppHMItemLogoff}" />
+                        </ua:HeaderMenuItem>
                     </ua:HeaderMenu>
                 </ua:menu>
             </ua:Header>

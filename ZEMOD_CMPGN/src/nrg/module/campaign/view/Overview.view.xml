@@ -21,7 +21,7 @@
                            class="nrgCamOvr-offerBtn"
                            design="None">
                     <u:Tag class="nrgCamOvr-offerBtnTitle"
-                           text="{comp-i18n-appFtr>nrgAppFooterCustReqOffer}" />
+                           text="{comp-i18n-campaign>nrgAppFooterCustReqOffer}" />
                     <u:Tag id="idCamCustReqOffer"
                            class="nrgCamOvr-offerBtnDesc"
                             text="{= ${Overview-elig>/CustEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
@@ -38,7 +38,7 @@
                            class="nrgCamOvr-offerBtn"
                            design="None"
                            enabled="{= ${Overview-elig>AgntEligFlag} !== '' }">
-                    <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n-appFtr>nrgAppFooterAgentReqOffer}" />
+                    <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n-campaign>nrgAppFooterAgentReqOffer}" />
                     <u:Tag id="idCamAgentReqOffer" class="nrgCamOvr-offerBtnDesc"
                            text="{= ${Overview-elig>AgntEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
                          <u:customData>
@@ -108,7 +108,7 @@
                         labelFor="idCamDescTv" />
                 </um:headerContent>
                 <um:content>
-              <core:HTML content='&lt;div class=&quot;nrgCamOvr-left nrgCamOvr-top&quot;&gt;{comp-campaign>Description}&lt;/div&gt;'>
+              <core:HTML content='&lt;div class=&quot;nrgCamOvr-left nrgCamOvr-top nrgCamOvr-infoline&quot;&gt;{comp-campaign>Description}&lt;/div&gt;'>
               </core:HTML>
                 </um:content>
             </um:Infoline>

@@ -28,20 +28,13 @@
                 <!-- EFL Data Table is dynamically inserted here with XML templating -->
                 </u:Tag>
                 <u:Tag>
-<!--                    <u:TextView color="DarkGrey"
-                                    class="nrgCamHis-left nrgCamHis-top"
-                                    design="Base"
-                                    text="{comp-campaign>Description}" />-->
-                    <core:HTML content='&lt;div class=&quot;content&quot;&gt;{comp-campaign>Description}&lt;/div&gt;'>
-                    </core:HTML>
+              <core:HTML content='&lt;div class=&quot;nrgCamOvr-left nrgCamOvr-top nrgCamOvr-infoline&quot;&gt;{comp-campaign>Description}&lt;/div&gt;'>
+              </core:HTML>
                 </u:Tag>
                 <u:Table width="96%"
                          class="nrgCamHis-top nrgCamHis-infoTable"
                          tableType="CampaignTable">
                     <u:columns>
-<!--                        <u:TableColumn width="14%" >
-                            <c:Label text="Promo Code"/>
-                        </u:TableColumn>-->
                         <u:TableColumn width="14%" >
                              <c:Label text="Offer Code"/>
                         </u:TableColumn>
@@ -54,7 +47,6 @@
                     </u:columns>
                     <u:rows>
                         <u:TableRow>
-<!--                            <c:Label text="{comp-campaign>Promo}"/>-->
                             <c:Label text="{comp-campaign>OfferCode}"/>
                             <c:Label text="{comp-campaign>Term}"/>
                             <c:Label text="{comp-campaign>CncFee}"/>
@@ -97,7 +89,7 @@
                                text="{comp-campaign>OfferTitle}" />
                         <u:Tag class="nrgCamHis-but-price" id="idnrgCamHis-but-price"
                                text="{path: 'comp-campaign>EFLPrice',
-                               type: 'nrg.util.type.Price',
+                               type: 'nrg.base.type.Price',
                                formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
                         <u:Tag class="nrgCamHis-but-priceLbl" id="idnrgCamHis-but-priceLbl"
                                text="(for {comp-campaign>EFLLevel}kWh)" />

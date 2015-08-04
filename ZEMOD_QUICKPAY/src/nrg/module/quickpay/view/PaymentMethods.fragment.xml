@@ -11,22 +11,29 @@
             <um:Button press=".onCreditCard"
                        text="{comp-i18n-quickpay>nrgQPPaymentCC}"
                        class="nrgQPPay-btn"
-                       id="idnrgQPPayBt-CC" design="Default">
+                       id="idnrgQPPayBt-CC" design="Default"
+                       enabled="{comp-quickpay>CCFlag}">
             </um:Button>
             <um:Button press=".onBankDraft"
                        text="{comp-i18n-quickpay>nrgQPPaymentBD}"
                        class="nrgQPPay-btn"
-                       id="idnrgQPPayBt-BD" design="Default">
+                       id="idnrgQPPayBt-BD"
+                       design="Default"
+                       enabled="{comp-quickpay>BDFlag}">
             </um:Button>
             <um:Button press=".onReceipt"
                        text="{comp-i18n-quickpay>nrgQPPaymentRE}"
                        class="nrgQPPay-btn"
-                       id="idnrgQPPayBt-RE" design="Default">
+                       id="idnrgQPPayBt-RE"
+                       design="Default"
+                       enabled="{comp-quickpay>ReceiptFlag}">
             </um:Button>
             <um:Button press=".onReliantCard"
                        text="{comp-i18n-quickpay>nrgQPPaymentRC}"
                        class="nrgQPPay-btn"
-                       id="idnrgQPPayBt-RC" design="Default">
+                       id="idnrgQPPayBt-RC"
+                       design="Default"
+                       enabled="{comp-quickpay>ReliantFlag}">
             </um:Button>
         </u:Tag>
         <u:Tag class="nrgQPPay-Pend">
@@ -34,12 +41,17 @@
                 <um:Button press=".onPendingCreditCard"
                        text="{comp-i18n-quickpay>nrgQPPaymentCC}"
                        class="nrgQPPay-btn"
-                       id="idnrgQPPayBt-PCC" design="Default">
+                       id="idnrgQPPayBt-PCC"
+                       design="Default"
+                       enabled="{comp-quickpay>CCPPFlag}">
             </um:Button>
                 <um:Button press=".onPendingBankDraft"
                        text="{comp-i18n-quickpay>nrgQPPaymentBD}"
                        class="nrgQPPay-btn"
-                       id="idnrgQPPayBt-PBD" design="Default">
+                       id="idnrgQPPayBt-PBD"
+                       design="Default"
+                       enabled="{comp-quickpay>BDPPFlag}">
+
             </um:Button>
         </u:Tag>
     </u:Tag>

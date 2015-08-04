@@ -32,6 +32,66 @@
                               text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-TITLE_NAME}"/>
             </utmain:headerContent>
             <utmain:content>
+                <ute:Tag class="nrgDashboard-cusDataBpInfo-divrow">
+                    <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
+                             text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-TITLE}:" />
+                    <utmain:Dropdown design="Default"
+                                     class="nrgDashboard-cusDataBpInfo-dropdown"
+                                     content="{ODataBpTitles>/results}"
+                                     selectedKey="{ODataBpName>/Title}"
+                                     select=".onSelectedTitle"
+                                     enabled="{oBpInfoConfig>/titleEditable}">
+                        <utmain:DropdownItem key="{ODataBpTitles>Key}">
+                            <ute:Tag text="{ODataBpTitles>Value}" class="nrgDashboard-cusDataBpInfo-cnt_Dropdown"/>
+                        </utmain:DropdownItem>
+                    </utmain:Dropdown>
+                    <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl-r"
+                              text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-MAIDEN_NAME}:" />
+                    <ute:Textfield fieldType="Noborder"
+                                   class="nrgDashboard-cusDataBpInfo-cnt"
+                                   editable="{oBpInfoConfig>/titleEditable}"
+                                   value="{ODataBpName>/MaidenName}"/>
+                </ute:Tag>
+                <ute:Tag class="nrgDashboard-cusDataBpInfo-divrow">
+                    <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
+                             text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-ACDEMIC_TITLE}:" />
+                    <utmain:Dropdown design="Default"
+                                     class="nrgDashboard-cusDataBpInfo-dropdown"
+                                     content="{ODataBpAccTitles>/results}"
+                                     selectedKey="{ODataBpName>/AcademicTitle}"
+                                     select=".onSelectedAccTitle"
+                                     enabled="{oBpInfoConfig>/titleEditable}">
+                        <utmain:DropdownItem key="{ODataBpAccTitles>Key}">
+                           <ute:Tag text="{ODataBpAccTitles>Value}" class="nrgDashboard-cusDataBpInfo-cnt_Dropdown"/>
+                        </utmain:DropdownItem>
+                    </utmain:Dropdown>
+                    <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl-r"
+                             text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-MIDDLE_NAME}:" />
+                    <ute:Textfield fieldType="Noborder"
+                            class="nrgDashboard-cusDataBpInfo-cnt"
+                            editable="{oBpInfoConfig>/titleEditable}"
+                            value="{ODataBpName>/MiddleName}"/>
+                </ute:Tag>
+                <ute:Tag class="nrgDashboard-cusDataBpInfo-divrow">
+                    <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
+                             text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-FIRST_NAME}:" />
+                    <ute:Textfield fieldType="Noborder"
+                             class="nrgDashboard-cusDataBpInfo-cnt"
+                             editable="{oBpInfoConfig>/titleEditable}"
+                             value="{ODataBpName>/FirstName}"/>
+                    <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl-r  nrgDashboard-cusDataBpInfo-cnt-sufx"
+                             text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SUFFIX}:" />
+                    <utmain:Dropdown design="Default"
+                             class="nrgDashboard-cusDataBpInfo-dropdown"
+                             content="{ODataBpSuffixs>/results}"
+                             selectedKey="{ODataBpName>/Suffix}"
+                             select=".onSelectedSuffix"
+                             enabled="{oBpInfoConfig>/titleEditable}">
+                        <utmain:DropdownItem key="{ODataBpSuffixs>Key}">
+                            <ute:Tag text="{ODataBpSuffixs>Value}" class="nrgDashboard-cusDataBpInfo-cnt_Dropdown"/>
+                        </utmain:DropdownItem>
+                    </utmain:Dropdown>
+                </ute:Tag>
                 <l:MatrixLayout
                     class="nrgDashboard-cusDataBpInfo-layout"
                     widths="500px,500px" columns="2" width="100%">
@@ -40,60 +100,6 @@
                             <l:cells>
                                 <!--Area Left-->
                                 <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
-                                    <l:MatrixLayout widths="25%,75%" columns="2">
-                                        <l:MatrixLayoutRow>
-                                            <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
-                                                         text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-TITLE}:" />
-                                            </l:MatrixLayoutCell>
-                                            <l:MatrixLayoutCell>
-                                                <utmain:Dropdown design="Default"
-                                                                 class="nrgDashboard-cusDataBpInfo-dropdown"
-                                                                 content="{ODataBpTitles>/results}"
-                                                                 selectedKey="{ODataBpName>/Title}"
-                                                                 select=".onSelectedTitle"
-                                                                 enabled="{oBpInfoConfig>/titleEditable}">
-                                                    <utmain:DropdownItem key="{ODataBpTitles>Key}">
-                                                       <ute:Tag text="{ODataBpTitles>Value}" class="nrgDashboard-cusDataBpInfo-cnt"/>
-                                                    </utmain:DropdownItem>
-                                                </utmain:Dropdown>
-                                            </l:MatrixLayoutCell>
-                                        </l:MatrixLayoutRow>
-                                    </l:MatrixLayout>
-                                    <l:MatrixLayout widths="25%,75%" columns="2">
-                                        <l:MatrixLayoutRow>
-                                            <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
-                                                         text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-ACDEMIC_TITLE}:" />
-                                            </l:MatrixLayoutCell>
-                                            <l:MatrixLayoutCell>
-                                                <utmain:Dropdown design="Default"
-                                                                 class="nrgDashboard-cusDataBpInfo-dropdown"
-                                                                 content="{ODataBpAccTitles>/results}"
-                                                                 selectedKey="{ODataBpName>/AcademicTitle}"
-                                                                 select=".onSelectedAccTitle"
-                                                                 enabled="{oBpInfoConfig>/titleEditable}">
-                                                    <utmain:DropdownItem key="{ODataBpAccTitles>Key}">
-                                                       <ute:Tag text="{ODataBpAccTitles>Value}" class="nrgDashboard-cusDataBpInfo-cnt"/>
-                                                    </utmain:DropdownItem>
-                                                </utmain:Dropdown>
-                                            </l:MatrixLayoutCell>
-                                        </l:MatrixLayoutRow>
-                                    </l:MatrixLayout>
-                                    <l:MatrixLayout widths="25%,75%" columns="2">
-                                        <l:MatrixLayoutRow>
-                                            <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
-                                                         text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-FIRST_NAME}:" />
-                                            </l:MatrixLayoutCell>
-                                            <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
-                                                               class="nrgDashboard-cusDataBpInfo-cnt"
-                                                               editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{ODataBpName>/FirstName}"/>
-                                            </l:MatrixLayoutCell>
-                                        </l:MatrixLayoutRow>
-                                    </l:MatrixLayout>
                                     <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
@@ -110,63 +116,6 @@
                                     </l:MatrixLayout>
                                 </l:MatrixLayoutCell>
 
-                            <!--Area right-->
-                                <l:MatrixLayoutCell class="nrgDashboard-cusDataBpInfo-l">
-                                    <l:MatrixLayout widths="25%,75%" columns="2">
-                                        <l:MatrixLayoutRow>
-                                            <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
-                                                         text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-MAIDEN_NAME}:" />
-                                            </l:MatrixLayoutCell>
-                                            <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
-                                                               class="nrgDashboard-cusDataBpInfo-cnt"
-                                                               editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{ODataBpName>/MaidenName}"/>
-                                            </l:MatrixLayoutCell>
-                                        </l:MatrixLayoutRow>
-                                    </l:MatrixLayout>
-                                    <l:MatrixLayout widths="25%,75%" columns="2">
-                                        <l:MatrixLayoutRow>
-                                            <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
-                                                         text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-MIDDLE_NAME}:" />
-                                            </l:MatrixLayoutCell>
-                                            <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
-                                                               class="nrgDashboard-cusDataBpInfo-cnt"
-                                                               editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{ODataBpName>/MiddleName}"/>
-                                            </l:MatrixLayoutCell>
-                                        </l:MatrixLayoutRow>
-                                    </l:MatrixLayout>
-                                    <l:MatrixLayout widths="25%,75%" columns="2">
-                                        <l:MatrixLayoutRow>
-                                            <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
-                                                         text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-SUFFIX}:" />
-                                            </l:MatrixLayoutCell>
-                                            <l:MatrixLayoutCell>
-<!--
-                                                <ute:Textfield fieldType="Noborder"
-                                                               class="nrgDashboard-cusDataBpInfo-cnt"
-                                                               editable="{oBpInfoConfig>/titleEditable}"
-                                                               value="{ODataBpName>/Suffix}"/>
--->
-                                                <utmain:Dropdown design="Default"
-                                                                 class="nrgDashboard-cusDataBpInfo-dropdown"
-                                                                 content="{ODataBpSuffixs>/results}"
-                                                                 selectedKey="{ODataBpName>/Suffix}"
-                                                                 select=".onSelectedSuffix"
-                                                                 enabled="{oBpInfoConfig>/titleEditable}">
-                                                    <utmain:DropdownItem key="{ODataBpSuffixs>Key}">
-                                                       <ute:Tag text="{ODataBpSuffixs>Value}" class="nrgDashboard-cusDataBpInfo-cnt"/>
-                                                    </utmain:DropdownItem>
-                                                </utmain:Dropdown>
-                                            </l:MatrixLayoutCell>
-                                        </l:MatrixLayoutRow>
-                                    </l:MatrixLayout>
-                                </l:MatrixLayoutCell>
                             </l:cells>
                         </l:MatrixLayoutRow>
                     </l:rows>
@@ -212,10 +161,11 @@
                                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-STREET_NAME}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
+                                                <ute:Textfield id="idBpInfoStreet_Edit" fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
+                                                               change="._onBpInfoRegAddrEdit"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/results/0/AddressInfo/Street}"/>
+                                                               value="{oDataBpAddress>/AddressInfo/Street}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -230,10 +180,11 @@
                                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-STREET_NUMBER}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
+                                                <ute:Textfield id="idBpInfoHouseNo_Edit" fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
+                                                               change="._onBpInfoRegAddrEdit"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/results/0/AddressInfo/HouseNo}"/>
+                                                               value="{oDataBpAddress>/AddressInfo/HouseNo}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -261,7 +212,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/results/0/AddressInfo/UnitNo}"/>
+                                                               value="{oDataBpAddress>/AddressInfo/UnitNo}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -276,10 +227,11 @@
                                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-POBOX}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
+                                                <ute:Textfield id="idBpInfoPobox_Edit" fieldType="Noborder"
+                                                               change="._onBpInfoPoBoxEdit"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/results/0/AddressInfo/PoBox}"/>
+                                                               value="{oDataBpAddress>/AddressInfo/PoBox}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -307,7 +259,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/results/0/AddressInfo/City}"/>
+                                                               value="{oDataBpAddress>/AddressInfo/City}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -325,7 +277,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{oDataBpAddress>/results/0/AddressInfo/State}"/>
+                                                               value="{oDataBpAddress>/AddressInfo/State}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -343,7 +295,10 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/addrEditable}"
-                                                               value="{path: 'oDataBpAddress>/results/0/AddressInfo/ZipCode', type: 'nrg.base.type.ZipCode', constraints: { mandatory: true }}"/>
+                                                               value="{oDataBpAddress>/AddressInfo/ZipCode}"/>
+                                                <!--value="{path: 'oDataBpAddress>/AddressInfo/ZipCode',
+                                                                       type: 'nrg.base.type.ZipCode',
+                                                                       constraints: { mandatory: true }}"-->
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -409,7 +364,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="false"
-                                                               value="{oDataBpPersonal>/Language}"/>
+                                                               value="{parts:['oDataBpPersonal>/Language'], formatter:'._formatLanguage'}"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -427,8 +382,9 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/personalInfoSSEditable}"
-                                                               value="{path: 'oDataBpPersonal>/SSN', type: 'nrg.base.type.SocialSecurityNumber', constraints: { mandatory: true }}"/>
+                                                               value="{oDataBpPersonal>/SSN}"/>
                                             </l:MatrixLayoutCell>
+                                            <!--value="{path: 'oDataBpPersonal>/SSN', type: 'nrg.base.type.SocialSecurityNumber', constraints: { mandatory: true }}"/>-->
                                             <l:MatrixLayoutCell>
                                                 <utmain:Checkbox enabled="false" checked="true"
                                                     class="nrgDashboard-cusDataBpInfo-halChb"
@@ -576,10 +532,16 @@
                                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataBpInfo-EMAIL}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <ute:Textfield fieldType="Noborder"
+                                                <utmain:Button  id="email_lbl_mail" design="None"
+                                                    class="nrgDashboard-cusDataBpInfo-cnt nrgDashboard-cusDataBpInfo-cnt-email"
+                                                    text="{parts:['oDataBpContact>/Email'],
+                                                           formatter:'._formatEmailAddressText'}"
+                                                    enabled="{oBpInfoConfig>/contactInfoEditable}"
+                                                    press="._handleEmailEdit"/>
+                                                <!--<ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataBpInfo-cnt"
                                                                editable="{oBpInfoConfig>/contactInfoEditable}"
-                                                               value="{path: 'oDataBpContact>/Email', type: 'nrg.base.type.EmailAddress', constraints: { mandatory: true }}"/>
+                                                               value="{path: 'oDataBpContact>/Email', type: 'nrg.base.type.EmailAddress', constraints: { mandatory: true }}"/>-->
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -666,7 +628,7 @@
                                     <l:MatrixLayout widths="65%,35%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
-                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-lbl"
+                                                <ute:Tag elem="div" class="nrgDashboard-cusDataBpInfo-mktlbl"
                                                          text="{oDataBpMarkPreferSet>AttributeSetDescription} - {oDataBpMarkPreferSet>AttributeDescription}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
@@ -709,6 +671,100 @@
                 </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
+    </ute:Tag>
 
+    <ute:Tag id="idBpInfoEmailEditPopup" visible="false"
+        class="nrgDashboard-cusDataVerifyEditEmail">
+        <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-desc">
+            <ute:TextView
+                text="{oEditEmailNNP>/Script}"/>
+        </ute:Tag>
+        <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-inputArea">
+            <ute:Textfield fieldType="Underlined"
+                label="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_Email}"
+                editable="true" width="200px"
+                value="{oEditEmailNNP>/Email}"/>
+             <utmain:Button class="nrgDashboard-cusDataVerifyEditEmail-inputArea-btn"
+                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_VlBtn}"
+                press="._onValidateEmailAddress"/>
+            <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-inputArea-nresult"
+                visible="{
+                    parts:['oEditEmailValidate>/Valid'],
+                    formatter:'._formatNegativeX'}">
+                <core:Icon src="sap-icon://nrg-icon/notification"
+                    visible="{
+                        parts:['oEditEmailValidate>/ColorIcon'],
+                        formatter:'._formatEmailMkt'}"/>
+                <ute:TextView text="{oEditEmailValidate>/Result}"/>
+            </ute:Tag>
+            <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult"
+                visible="{
+                    parts:['oEditEmailValidate>/Valid'],
+                    formatter:'._formatPositiveX'}">
+                <utmain:Checkbox enabled="false" checked="true"
+                    class="nrgDashboard-cusDataVerifyEditEmail-inputArea-yresultChb"/>
+                <ute:TextView text="{oEditEmailValidate>/Result}"/>
+            </ute:Tag>
+        </ute:Tag>
+
+        <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
+            <ute:ToggleButton id="idEmail_yn_ctaddr"
+                class="nrgDashboard-cusDataVerifyEditEmail-toggle"
+                design="ToggleDashboard" press="._onMktPrefTogg"
+                leftSelected="{
+                    parts:['oEditEmailNNP>/Ecd'],
+                    formatter:'._formatEmailMkt'}"
+                leftBtnWidth="45px" rightBtnWidth="45px"
+                leftBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_Y}"
+                rightBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_N}">
+            </ute:ToggleButton>
+            <utmain:Label labelFor="idEmail_yn_ctaddr" text="Email Contract Documents"/>
+        </ute:Tag>
+        <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
+            <ute:ToggleButton id="idEmail_yn_rpdsrv"
+                class="nrgDashboard-cusDataVerifyEditEmail-toggle"
+                design="ToggleDashboard" press="._onMktPrefTogg"
+                leftSelected="{
+                    parts:['oEditEmailNNP>/Mkt'],
+                    formatter:'._formatEmailMkt'}"
+                leftBtnWidth="45px" rightBtnWidth="45px"
+                leftBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_Y}"
+                rightBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_N}">
+            </ute:ToggleButton>
+            <utmain:Label labelFor="idEmail_yn_rpdsrv" text="Reliant Products and Services"/>
+        </ute:Tag>
+        <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
+            <ute:ToggleButton id="idEmail_yn_thrdpty"
+                class="nrgDashboard-cusDataVerifyEditEmail-toggle"
+                design="ToggleDashboard" press="._onMktPrefTogg"
+                leftSelected="{
+                    parts:['oEditEmailNNP>/Offer'],
+                    formatter:'._formatEmailMkt'}"
+                leftBtnWidth="45px" rightBtnWidth="45px"
+                leftBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_Y}"
+                rightBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_N}">
+            </ute:ToggleButton>
+            <utmain:Label labelFor="idEmail_yn_thrdpty" text="Third Party offers and promototions (e.g. sports/special events)"/>
+        </ute:Tag>
+        <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
+            <ute:ToggleButton id="idEmail_yn_engeff"
+                class="nrgDashboard-cusDataVerifyEditEmail-toggle"
+                design="ToggleDashboard" press="._onMktPrefTogg"
+                leftSelected="{
+                    parts:['oEditEmailNNP>/Ee'],
+                    formatter:'._formatEmailMkt'}"
+                leftBtnWidth="45px" rightBtnWidth="45px"
+                leftBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_Y}"
+                rightBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_N}">
+            </ute:ToggleButton>
+            <utmain:Label labelFor="idEmail_yn_engeff" text="Energy Efficiency"/>
+        </ute:Tag>
+
+        <utmain:Button  id="idEditEmail_SaveBtn" class="nrgDashboard-cusDataVerifyEditEmail-actBtn"
+            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_SAVE}"
+            press="._onEditEmailSave"/>
+        <utmain:Button  id="idEditEmail_DelBtn" class="nrgDashboard-cusDataVerifyEditEmail-actBtn"
+            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_DEL}"
+            press="._onEditEmailDelete"/>
     </ute:Tag>
 </mvc:View>

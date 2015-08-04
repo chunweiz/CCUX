@@ -47,7 +47,7 @@
 
                 "dashboard.Bp": {
                     "pattern": "bp/{bpNum}",
-                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary" ]
+                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "dashboard.EmptyTools" ]
                 },
 
                 "dashboard.BpCa": {
@@ -77,6 +77,10 @@
             },
 
             "targets": {
+                "dashboard.EmptyTools":{
+                    "viewName": "nrg.module.dashboard.view.EmptyTools",
+                    "controlId": "idAppTools"
+                },
                 "dashboard.General": {
                     "viewName": "nrg.module.dashboard.view.General",
                     "controlId": "idAppGeneral"

@@ -14,10 +14,11 @@ sap.ui.define(
 
         var Controller = CoreController.extend('nrg.module.dashboard.view.CallerNoIDSearch');
 
-        Controller.prototype.onInit = function () {
+        Controller.prototype.onBeforeRendering = function () {
             //var test = new HashChanger();
             //var testagian= test.getHash();
 
+            this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
             /*Models in the controller*/
 
             //get OData Model from component level first
@@ -52,7 +53,8 @@ sap.ui.define(
                 sUnitNum: null,
                 sCityNum: null,
                 sStateNum: null,
-                sZipNum: null
+                sZipNum: null,
+                sTaxID: null
             };
 
             this.getView().getModel('oSearchFilters').setProperty('/searchTextFields', oFilters);
@@ -71,102 +73,138 @@ sap.ui.define(
 
 
             var aFilters = [],
-                oFilterTemplate = new Filter(),
+                oFilterTemplate,// = new Filter(),
                 oFilterModel = this.getView().getModel('oSearchFilters');
 
 
             if (oFilterModel.getProperty('/searchTextFields/sHousNum')) {
-                oFilterTemplate.sPath = 'HouseNumber';
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sHousNum');
+                oFilterTemplate =  new Filter({
+                    path: 'HouseNumber',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sHousNum')
+                });
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sStreetNum')) {
-                oFilterTemplate.sPath = 'Street';
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sStreetNum');
+                oFilterTemplate =  new Filter({
+                    path: 'Street',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sStreetNum')
+                });
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sUnitNum')) {
-                oFilterTemplate.sPath = 'UnitNumber';
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sUnitNum');
+                oFilterTemplate =  new Filter({
+                    path: 'UnitNumber',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sUnitNum')
+                });
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sCityNum')) {
-                oFilterTemplate.sPath = 'City';
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sCityNum');
+                oFilterTemplate =  new Filter({
+                    path: 'City',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sCityNum')
+                });
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sStateNum')) {
-                oFilterTemplate.sPath = 'State';
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sStateNum');
+                oFilterTemplate =  new Filter({
+                    path: 'State',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sStateNum')
+                });
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sZipNum')) {
-                oFilterTemplate.sPath = 'ZipCode';
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sZipNum');
+                oFilterTemplate =  new Filter({
+                    path: 'ZipCode',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sZipNum')
+                });
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sPhnNum')) {
-                oFilterTemplate.sPath = 'DayPhone';
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sPhnNum');
+                oFilterTemplate =  new Filter({
+                    path: 'TelePhone',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sPhnNum')
+                });
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sCaNum')) {
-                oFilterTemplate.sPath = 'BuagID';
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sCaNum');
+                oFilterTemplate =  new Filter({
+                    path: 'BuagID',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sCaNum')
+                });
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sSsn')) {
-                oFilterTemplate.sPath = 'SSN';
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sSsn');
+                oFilterTemplate =  new Filter({
+                    path: 'SSN',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sSsn')
+                });
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sDl')) {
-                oFilterTemplate.sPath = 'DL';
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sDl');
+                oFilterTemplate =  new Filter({
+                    path: 'DL',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sDl')
+                });
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sOrgName')) {
-                oFilterTemplate.sPath = 'OrgName';
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sOrgName');
+                oFilterTemplate =  new Filter({
+                    path: 'OrgName',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sOrgName')
+                });
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sBpNum')) {
-                oFilterTemplate.sPath = 'PartnerID';
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sBpNum');
+                oFilterTemplate =  new Filter({
+                    path: 'PartnerID',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sBpNum')
+                });
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sFiName')) {
-                oFilterTemplate.sPath = 'FirstName';
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sFiName');
+                oFilterTemplate =  new Filter({
+                    path: 'FirstName',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sFiName')
+                });
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sEsid')) {
-                oFilterTemplate.sPath = 'ESID';
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sEsid');
+                oFilterTemplate =  new Filter({
+                    path: 'ESID',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sEsid')
+                });
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sLaName')) {
-                oFilterTemplate.sPath = 'LastName';
-                oFilterTemplate.sOperator = FilterOperator.EQ;
-                oFilterTemplate.oValue1 = oFilterModel.getProperty('/searchTextFields/sLaName');
+                oFilterTemplate =  new Filter({
+                    path: 'LastName',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sLaName')
+                });
                 aFilters.push(oFilterTemplate);
             }
-
-
+            if (oFilterModel.getProperty('/searchTextFields/sTaxID')) {
+                oFilterTemplate =  new Filter({
+                    path: 'TaxID',
+                    operator: FilterOperator.EQ,
+                    value1: oFilterModel.getProperty('/searchTextFields/sTaxID')
+                });
+                aFilters.push(oFilterTemplate);
+            }
             return aFilters;
         };
 
@@ -177,21 +215,33 @@ sap.ui.define(
             var aFilters = this._createSearchFilterObject(),
                 oParameters,
                 i,
-                oRouter = this.getOwnerComponent().getRouter();
-
-
-
-            /*This need to be re-written
-            oFilter = new Filter("PartnerID", FilterOperator.EQ, "1121");
-            aFilter = [];
-            aFilter.push(oFilter);*/
+                oRouter = this.getOwnerComponent().getRouter(),
+                //Componenet Level Context Model
+                oComponent = this.getOwnerComponent(),
+                oWebUiManager = oComponent.getCcuxWebUiManager(),
+                oPassingEvent; //For none IC usage
 
             oParameters = {
                 filters : aFilters,
                 success : function (oData) {
                     if (oData.results) {
                         if (oData.results.length === 1) {
-                            oRouter.navTo('dashboard.Bp', {bpNum: oData.results[0].PartnerID});
+                            //oComponentContextModel.setProperty('/dashboard/bpNum', oData.results[0].PartnerID);
+                            //oRouter.navTo('dashboard.Bp', {bpNum: oData.results[0].PartnerID});
+                            oComponent.getCcuxApp().setOccupied(true);
+                            if (oWebUiManager.isAvailable()) {
+                                oWebUiManager.notifyWebUi('bpConfirmed', {
+                                    BP_NUM: oData.results[0].PartnerID
+                                }, this._handleBpConfirmed, this);
+                            } else {
+                                oPassingEvent = {
+                                    BP_NUM: oData.results[0].PartnerID,
+                                    getParameters: function () {
+                                        return oPassingEvent;
+                                    }
+                                };
+                                this._handleBpConfirmed(oPassingEvent);
+                            }
                         } else {
                             for (i = 0; i < oData.results.length; i = i + 1) {
                                 oData.results[i].iId = i + 1;
@@ -223,11 +273,43 @@ sap.ui.define(
                 aSelectedId = sSelectedId.split('-'),
                 iSelectedId = aSelectedId[2],
                 sSelectedBpNum = this.getView().getModel('oBpSearchResult').oData[iSelectedId].PartnerID,
-                oRouter = this.getOwnerComponent().getRouter();
+                oComponent = this.getOwnerComponent(),
+                oWebUiManager = oComponent.getCcuxWebUiManager(),
+                oPassingEvent; //For none IC usage
 
-            oRouter.navTo('dashboard.Bp', {bpNum: sSelectedBpNum});
+            //Confirm BP to IC first
+            oComponent.getCcuxApp().setOccupied(true);
+            if (oWebUiManager.isAvailable()) {
+                oWebUiManager.notifyWebUi('bpConfirmed', {
+                    BP_NUM: sSelectedBpNum
+                }, this._handleBpConfirmed, this);
+            } else {
+                oPassingEvent = {
+                    BP_NUM: sSelectedBpNum,
+                    getParameters: function () {
+                        return oPassingEvent;
+                    }
+                };
+                this._handleBpConfirmed(oPassingEvent);
+            }
 
             return;
+        };
+
+        Controller.prototype._handleBpConfirmed = function (oEvent) {
+            var oRouter = this.getOwnerComponent().getRouter(),
+                oComponent = this.getOwnerComponent(),
+                oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+                oRouteInfo = oEvent.getParameters();
+
+            //Set BpNum to Component Level
+            oComponentContextModel.setProperty('/dashboard/bpNum', oRouteInfo.BP_NUM);
+
+            //Set the loading effect to false
+            oComponent.getCcuxApp().setOccupied(false);
+
+            //Navigate to verification page
+            oRouter.navTo('dashboard.Bp', {bpNum: oRouteInfo.BP_NUM});
         };
 
         return Controller;

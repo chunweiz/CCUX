@@ -20,8 +20,6 @@ sap.ui.define(
 		/* lifecycle method- Init                                      */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
-            this.getOwnerComponent().getRouter().getRoute("campaignSS").attachPatternMatched(this._onObjectMatched, this);
-            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
         };
 
        /* =========================================================== */
@@ -34,18 +32,7 @@ sap.ui.define(
 		/* lifecycle method- Before Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onBeforeRendering = function () {
-        };
-
-		/**
-		 * Binds the view to the object path
-		 *
-		 * @function
-		 * @param {sap.ui.base.Event} oEvent pattern match event
-		 * @private
-		 */
-        Controller.prototype._onObjectMatched = function (oEvent) {
-			var sObjectPath = oEvent.getParameter("arguments").sPath,
-                oModel = this.getOwnerComponent().getModel('comp-campaign'),
+			var oModel = this.getOwnerComponent().getModel('comp-campaign'),
                 mParameters,
                 aFilters,
                 sCurrentPath,
@@ -57,10 +44,12 @@ sap.ui.define(
                 fnRecievedHandler,
                 that = this,
                 aContent,
-                sPath;
-            this.getOwnerComponent().setCcuxBusy(true);
-            this._sContract = oEvent.getParameter("arguments").coNum;
-            this._sOfferCode = oEvent.getParameter("arguments").offercodeNum;
+                sPath,
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            this._sContract = oRouteInfo.parameters.coNum;
+            this._sOfferCode = oRouteInfo.parameters.offercodeNum;
             sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
             sCurrentPath = "/CpgChgOfferS";
             sCurrentPath = sCurrentPath + "(OfferCode='" + this._sOfferCode + "',Contract='" + this._sContract + "')";
@@ -83,7 +72,7 @@ sap.ui.define(
                         path : sPath
                     });
                 }
-                that.getOwnerComponent().setCcuxBusy(false);
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
             };
             mParameters = {
                 model : "comp-campaign",
@@ -94,9 +83,7 @@ sap.ui.define(
                 events: {dataReceived : fnRecievedHandler}
             };
             oDropDownList.bindAggregation("content", mParameters);
-
-            //this._bindView(sObjectPath);
-		};
+        };
 
         /**
 		 * Binds the view to the object path. Makes sure that view displays
@@ -154,7 +141,7 @@ sap.ui.define(
                 aFilterIds,
                 aFilterValues;
             this._oOverviewDialog = this.getView().byId("idnrgCamOvsDialog");
-            this.getOwnerComponent().setCcuxBusy(true);
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
 
             aFilterIds = ["Contract", "OfferCode", "TxtName"];
             aFilterValues = [this._sContract, this._sOfferCode, "OVW"];
@@ -179,7 +166,7 @@ sap.ui.define(
                     });
                 }
                 obinding.detachDataReceived(fnRecievedHandler);
-                that.getOwnerComponent().setCcuxBusy(false);
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
             };
             mParameters = {
                 model : "comp-campaign",
@@ -191,7 +178,9 @@ sap.ui.define(
             oDropDownList.bindAggregation("content", mParameters);
             obinding = oDropDownList.getBinding("content");
             this.getView().addDependent(this._oOverviewDialog);
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
             this._oOverviewDialog.open();
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
         };
 
         /**
@@ -201,7 +190,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.backToOverview = function (oEvent) {
-            this.navTo("campaign", {coNum : this._sContract, flagType : "C"});
+            this.navTo("campaign", {coNum : this._sContract, typeV: "C"});
         };
         /**
 		 * Formats the Type value to display "English" and "Spanish"
@@ -287,6 +276,7 @@ sap.ui.define(
                 oContext,
                 that = this;
             oModel = this.getOwnerComponent().getModel('comp-campaign');
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             sPath = "/CpgChgOfferS(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "')";
             oContext = oModel.getContext(sPath);
             sCampaignCode = oContext.getProperty("Campaign");
@@ -324,8 +314,8 @@ sap.ui.define(
                 }.bind(this)
             };
             oModel.callFunction("/AcceptCampaign", mParameters); // callback function for error
-            //
             this._oOverviewDialog.close();
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
         };
         /**
 		 * Handle when user clicked on Declining Overview Script

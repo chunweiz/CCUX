@@ -14,24 +14,16 @@ sap.ui.define(
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.Overview');
-
-
 		/* =========================================================== */
 		/* lifecycle method- Init                                     */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
-            this.getOwnerComponent().getRouter().getRoute("campaign").attachPatternMatched(this._onObjectMatched, this);
-            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
-        };
 
-        /**
-		 * Binds the view to the object path
-		 *
-		 * @function
-		 * @param {sap.ui.base.Event} oEvent pattern match event
-		 * @private
-		 */
-        Controller.prototype._onObjectMatched = function (oEvent) {
+        };
+        /* =========================================================== */
+		/* lifecycle method- Before Rendering                          */
+		/* =========================================================== */
+        Controller.prototype.onBeforeRendering = function () {
             var oModel,
                 sCurrentPath,
                 sEligibilityPath,
@@ -54,10 +46,13 @@ sap.ui.define(
                 aEFLDatapaths,
                 iCount,
                 oEFLJson = {},
-                aResults = [];
-            //this.getOwnerComponent().setCcuxBusy(true);
-            this._sContract = oEvent.getParameter("arguments").coNum;
-            this._sFlag = oEvent.getParameter("arguments").typeV.toUpperCase();
+                aResults = [],
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
+            this.getOwnerComponent().getCcuxApp().setTitle("CAMPAIGNS");
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            this._sContract = oRouteInfo.parameters.coNum;
+            this._sFlag = oRouteInfo.parameters.typeV.toUpperCase();
             aFilterIds = ["Contract"];
             aFilterValues = [this._sContract];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -107,30 +102,30 @@ sap.ui.define(
                         for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
                             aResults.push(this.getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
                         }
-                    }
-                    oTemplateModel.setData(that.convertEFLJson(aResults));
-                    that._oEFLModel = oTemplateModel;
-                    oTemplateView = sap.ui.view({
-                        preprocessors: {
-                            xml: {
-                                models: {
-                                    tmpl : that._oEFLModel
+                        oTemplateModel.setData(that.convertEFLJson(aResults));
+                        that._oEFLModel = oTemplateModel;
+                        oTemplateView = sap.ui.view({
+                            preprocessors: {
+                                xml: {
+                                    models: {
+                                        tmpl : that._oEFLModel
+                                    }
                                 }
-                            }
-                        },
-                        type: sap.ui.core.mvc.ViewType.XML,
-                        viewName: "nrg.module.campaign.view.EFLData"
-                    });
-                    that.getView().byId('idnrgCamOvrPriceT').removeAllAggregation("content");
-                    that.getView().byId('idnrgCamOvrPriceT').addContent(oTemplateView);
+                            },
+                            type: sap.ui.core.mvc.ViewType.XML,
+                            viewName: "nrg.module.campaign.view.EFLData"
+                        });
+                        that.getView().byId('idnrgCamOvrPriceT').removeAllAggregation("content");
+                        that.getView().byId('idnrgCamOvrPriceT').addContent(oTemplateView);
+                    }
                     that.getView().bindElement({
                         model : "comp-campaign",
                         path : sPath
                     });
                 }
-                //that.getOwnerComponent().setCcuxBusy(false);
                 oBinding = oToggleContainer.getBinding("content");
                 oBinding.detachDataReceived(fnRecievedHandler);
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
             };
              // Handler function for Tab Bar Item.
             mParameters = {
@@ -143,7 +138,7 @@ sap.ui.define(
             };
             oToggleContainer.bindAggregation("content", mParameters);
             mParameters = {
-                filters : aFilters,
+                //filters : aFilters,
                 success : function (oData) {
                     this.getView().byId("idCamCustReqOfferBtn").bindElement({
                         model : "Overview-elig",
@@ -153,9 +148,11 @@ sap.ui.define(
                         model : "Overview-elig",
                         path : sEligibilityPath
                     });
+                    oModel.updateBindings(false);
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
                 error: function (oError) {
+                    this.getOwnerComponent().getCcuxApp().setOccupied(true);
                     jQuery.sap.log.info("Eligibility Error occured");
                 }.bind(this)
             };
@@ -163,17 +160,11 @@ sap.ui.define(
                 oModel.read(sEligibilityPath, mParameters);
             }
             this.getView().setModel(oModel, "Overview-elig");
-		};
-
-        /**
-		 * Binds the view to the object path. Makes sure that detail view displays
-		 * a busy indicator while data for the corresponding element binding is loaded.
-		 *
-		 * @function
-		 * @param {string} sObjectPath path to the object to be bound
-		 * @private
-		 */
-		Controller.prototype._bindView = function (sObjectPath) {
+        };
+        /* =========================================================== */
+		/* lifecycle method- After Rendering                          */
+		/* =========================================================== */
+        Controller.prototype.onAfterRendering = function () {
 
         };
        /**
@@ -245,12 +236,43 @@ sap.ui.define(
 		 */
         Controller.prototype.onOffers = function (oEvent) {
             var sContract = oEvent.getSource().getBindingContext("Overview-elig").getProperty("Contract"),
-                sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill");
+                sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill"),
+                sCurrentPath,
+                aFilterIds,
+                aFilterValues,
+                aFilters,
+                mParameters,
+                oModel,
+                that = this;
+
             if (sFirstMonthBill === "X") {
                 sap.ui.commons.MessageBox.alert("Customer has to completed atleast One Month Invoice");
             } else {
-                this.showPendingSwaps();
-                //this.navTo("campaignoffers", {coNum: sContract});
+                sCurrentPath = this._i18NModel.getProperty("nrgPendingSwapsSet");
+                sCurrentPath = sCurrentPath + "/$count";
+                aFilterIds = ["Contract"];
+                aFilterValues = [sContract];
+                aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+                mParameters = {
+                    filters : aFilters,
+                    success : function (oData) {
+                        if (oData) {
+                            jQuery.sap.log.info("Odata Read Successfully:::");
+                            if ((parseInt(oData, 10)) > 0) {
+                                that.showPendingSwaps();
+                            } else {
+                                that.navTo("campaignoffers", {coNum: sContract});
+                            }
+                        }
+                    }.bind(this),
+                    error: function (oError) {
+                        jQuery.sap.log.info("Odata Failed:::" + oError);
+                    }.bind(this)
+                };
+                oModel = this.getOwnerComponent().getModel('comp-campaign');
+                if (oModel) {
+                    oModel.read(sCurrentPath, mParameters);
+                }
             }
         };
 
@@ -363,8 +385,9 @@ sap.ui.define(
                 aFilterIds,
                 aFilterValues,
                 oPendingSwapsTemplate;
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             aFilterIds = ["Contract"];
-            aFilterValues = ['34805112'];
+            aFilterValues = [this._sContract];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             if (!this._oDialogFragment) {
                 this._oDialogFragment = sap.ui.xmlfragment("PendingOverview", "nrg.module.campaign.view.PendingSwaps", this);
@@ -389,6 +412,7 @@ sap.ui.define(
             this.getView().addDependent(this._oCancelDialog);
             //to get access to the global model
             this._oCancelDialog.addStyleClass("nrgCamHis-dialog");
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
             this._oCancelDialog.open();
         };
         /**

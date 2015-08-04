@@ -9,11 +9,23 @@
 
                     "resourceBundle": {
                         "comp-i18n-quickpay": "i18n/module.properties"
+                    },
+                    "odata": {
+                        "real": {
+                            "comp-quickpay": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_QUICK_PAY_SRV/"
+                            }
+                        },
+                        "mock": {
+                            "comp-quickpay": {
+                                "mockDataBaseUrl": "data/version1/",
+                                "generateMissingMockData": true
+                        }
                     }
+                  }
                 }
             }
         },
-
         "routing": {
            "routes": {
                 "quickpay": {
