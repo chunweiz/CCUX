@@ -274,6 +274,7 @@ sap.ui.define(
 
 
             oRouter.navTo('dashboard.CaInfo', {bpNum: sSelectedBpNum, caNum: sSelectedCaNum});
+        };
 
         return Controller;
     }
