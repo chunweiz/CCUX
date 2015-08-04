@@ -65,11 +65,11 @@ sap.ui.define(
         CustomController.prototype._initCaInfoConfigModel = function () {
             var configModel = this.getView().getModel('oCaInfoConfig');
             configModel.setProperty('/mailAddrUpdateVisible', true);
-            configModel.setProperty('/mailAddrAddnewVisible', false);
+            configModel.setProperty('/mailAddrAddnewVisible', true);
             configModel.setProperty('/mailAddrSaveVisible', false);
             configModel.setProperty('/mailAddrEditable', false);
 
-            configModel.setProperty('/tempAddrAddnewVisible', true);
+            configModel.setProperty('/tempAddrAddnewVisible', false);
             configModel.setProperty('/tempAddrSaveVisible', false);
             configModel.setProperty('/tempAddrEditable', false);
 
@@ -134,8 +134,11 @@ sap.ui.define(
                             if (!this._fixedAddrID) {
                                 this._fixedAddrID = oData.results[0].FixedAddressID;
                             }
+                            if (oData.results[0].TempAddrYes === 'X') {
+                                configModel.setProperty('/tempAddrAddnewVisible', true);
+                            }
                             this.getView().getModel('oDataBuagAddrDetails').setData(oData.results[0]);
-                            this.oDataBuagAddrDetailsBak = jQuery.extend(true, {}, oData);
+                            this.oDataBuagAddrDetailsBak = jQuery.extend(true, {}, oData.results[0]);
                         } else {
                             configModel.setProperty('/mailAddrUpdateVisible', false);
                             configModel.setProperty('/mailAddrAddnewVisible', true);
@@ -261,7 +264,7 @@ sap.ui.define(
                 urlParameters: {},
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Update Success");
-                    this._retrBuag(this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'),  this.getView().getModel('oAllBuags').getProperty('/selectedKey'));
+                    //this._retrBuag(this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'), this.getView().getModel('oAllBuags').getProperty('/selectedKey'));
                     this._oMailEditPopup.close();
                 }.bind(this),
                 error: function (oError) {
@@ -485,9 +488,9 @@ sap.ui.define(
         CustomController.prototype.onMailAddrUpdate = function () {
             var configModel = this.getView().getModel('oCaInfoConfig');
             configModel.setProperty('/mailAddrUpdateVisible', false);
-            configModel.setProperty('/mailAddrAddnewVisible', false);
             configModel.setProperty('/mailAddrSaveVisible', true);
             configModel.setProperty('/mailAddrEditable', true);
+            configModel.setProperty('/mailAddrAddnewVisible', false);
         };
 
         CustomController.prototype.onMailAddrAddnew = function () {
@@ -495,19 +498,19 @@ sap.ui.define(
                 addrModel = this.getView().getModel('oDataBuagAddrDetails'),
                 oEditAddrModel = this.getView().getModel('oDtaAddrEdit');
 
-            configModel.setProperty('/mailAddrUpdateVisible', false);
             configModel.setProperty('/mailAddrAddnewVisible', false);
+            configModel.setProperty('/mailAddrUpdateVisible', false);
             configModel.setProperty('/mailAddrSaveVisible', true);
             configModel.setProperty('/mailAddrEditable', true);
 
-            addrModel.setProperty('/MailingAddress/Street', '');
-            addrModel.setProperty('/MailingAddress/HouseNo', '');
-            addrModel.setProperty('/MailingAddress/UnitNo', '');
-            addrModel.setProperty('/MailingAddress/City', '');
-            addrModel.setProperty('/MailingAddress/State', '');
-            addrModel.setProperty('/MailingAddress/ZipCode', '');
-            addrModel.setProperty('/MailingAddress/ValidFrom', '');
-            addrModel.setProperty('/MailingAddress/ValidTo', '');
+            addrModel.setProperty('/FixAddrInfo/Street', '');
+            addrModel.setProperty('/FixAddrInfo/HouseNo', '');
+            addrModel.setProperty('/FixAddrInfo/UnitNo', '');
+            addrModel.setProperty('/FixAddrInfo/City', '');
+            addrModel.setProperty('/FixAddrInfo/State', '');
+            addrModel.setProperty('/FixAddrInfo/ZipCode', '');
+            addrModel.setProperty('/FixAddrInfo/ValidFrom', '');
+            addrModel.setProperty('/FixAddrInfo/ValidTo', '');
 
             oEditAddrModel.setProperty('/bCreateFirst', true);
         };
@@ -516,7 +519,6 @@ sap.ui.define(
             var configModel = this.getView().getModel('oCaInfoConfig'),
                 addrModel = this.getView().getModel('oDataBuagAddrDetails');
             configModel.setProperty('/mailAddrUpdateVisible', true);
-            configModel.setProperty('/mailAddrAddnewVisible', true);
             configModel.setProperty('/mailAddrSaveVisible', false);
             configModel.setProperty('/mailAddrEditable', false);
 
@@ -530,7 +532,6 @@ sap.ui.define(
                 oParameters;
 
             configModel.setProperty('/mailAddrUpdateVisible', true);
-            configModel.setProperty('/mailAddrAddnewVisible', true);
             configModel.setProperty('/mailAddrSaveVisible', false);
             configModel.setProperty('/mailAddrEditable', false);
 
