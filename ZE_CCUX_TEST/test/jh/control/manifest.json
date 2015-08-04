@@ -7,6 +7,7 @@
             "css": [
                 { "uri": "../../../../../ZELIB/normalize.css/normalize.css" },
                 { "uri": "asset/nrg.css" },
+                { "uri": "asset/Tooltip.css" },
                 { "uri": "../../../../../ZEBASE_CTRL/build/ute/ui/base/asset/css/base.css" },
                 { "uri": "../../../../../ZEBASE/build/nrg/base/asset/css/base.css" }
             ]
@@ -19,7 +20,10 @@
 
         "routing": {
             "routes": {
-                "Tooltip": { "pattern": "Tooltip", "target": [ "Tooltip" ] }
+                "Tooltip": {
+                    "pattern": "Tooltip",
+                    "target": [ "Tooltip" ]
+                }
             },
 
             "config": {

@@ -12,18 +12,16 @@ sap.ui.define(
         var CustomController = Controller.extend('test.jh.control.view.Tooltip');
 
         CustomController.prototype.onPressed = function (oControlEvent) {
-            alert('onPressed');
-
-            // console.log(this.getView().byId(oControlEvent.mParameters.id));
-            // console.log(this.byId(oControlEvent.mParameters.id));
+            console.log(oControlEvent.getSource());
+            console.log(oControlEvent.getSource().getText());
         };
 
         CustomController.prototype.onBeforeRendering = function () {
-            alert('onBeforeRendering');
+            // alert('onBeforeRendering');
         };
 
         CustomController.prototype.onAfterRendering = function () {
-            alert('onAfterRendering');
+            // alert('onAfterRendering');
         };
 
         return CustomController;

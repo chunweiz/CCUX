@@ -2,64 +2,45 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:sm="sap.m"
+    xmlns:jh="jh.control.lib.ui"
     xmlns:um="ute.ui.main"
+    xmlns:uc="ute.ui.commons"
+    xmlns:sc="sap.ui.commons"
     controllerName="test.jh.control.view.Tooltip"
     height="100%"
     width="100%"
     displayBlock="true">
 
     <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
-        <style>
-            .custom {
-                width: 100%;
-                background-color: tomato;
-                color: gold;
-            }
+        <div class="jhWrap">
 
-            .custom:hover {
-                background-color: gold;
-                color: tomato;
-            }
 
-            .uteMBtn[data-disabled="true"] .custom {
-                color: green;
-            }
-        </style>
+            <div>Button with Tooltip</div>
+            <jh:Button text="button" press=".onPressed">
+                <jh:tooltip>
+                    <jh:Tooltip openDelay="100" >
+                        <uc:Table width="400px">
+                            <uc:columns>
+                                <uc:TableColumn>
+                                    <uc:TextView text="Invoice Amount Due"></uc:TextView>
+                                </uc:TableColumn>
+                                <uc:TableColumn>
+                                    <uc:TextView text="239.45"></uc:TextView>
+                                </uc:TableColumn>
+                            </uc:columns>
+                            <uc:rows>
+                                <uc:TableRow>
+                                    <uc:TextView text="dsjfijdsfj.45"></uc:TextView>
+                                    <uc:TextView text="dsjfijdsfj.45"></uc:TextView>
+                                </uc:TableRow>
+                            </uc:rows>
+                        </uc:Table>
+                    </jh:Tooltip>
+                </jh:tooltip>
+            </jh:Button>
 
-        <div>Vanilla button</div>
-        <um:Button design="None" text="this is a new button" press=".onPressed" />
 
-        <div>Default button</div>
-        <um:Button text="button" press=".onPressed" />
-
-        <div>Highlight button</div>
-        <um:Button design="Highlight" text="button" press=".onPressed" />
-
-        <div>Invert button</div>
-        <um:Button design="Invert" text="button" press=".onPressed" />
-
-        <br/><div>Default disabled button</div>
-        <um:Button text="this is a new button" press=".onPressed" enabled="false" />
-
-        <br/><div>Button with stuffing</div>
-        <um:Button press=".onPressed">
-            <div>Another text</div>
-            <div>Yet another text</div>
-        </um:Button>
-
-        <br/><div>Custom button styling</div>
-        <um:Button design="None" class="custom" press=".onPressed">
-            <div>haisda</div>
-        </um:Button>
-
-        <br/><div>Substyling standard button with stuffing</div>
-        <um:Button enabled="false" press=".onPressed">
-            <div>haisda</div>
-            <div class="custom" >hzzz</div>
-        </um:Button>
-
-        <br/><br/>
-
+        </div>
     </sm:ScrollContainer>
 </mvc:View>
 

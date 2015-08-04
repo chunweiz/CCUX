@@ -66,24 +66,24 @@ sap.ui.define(
 
             return this;
         };
-        
+
         AppBody.prototype.attachNavLeft = function (fnCallback, oListener) {
             this._aNavLeftListener.forEach(function (oNavLeft) {
                 if (oNavLeft.fnCallback === fnCallback && oNavLeft.oListener === oListener) {
                     return;
                 }
             });
-            
+
             this.attachEvent(AppBody.Event.NavLeftClick, fnCallback, oListener);
-            
+
             this._aNavLeftListener.push({
                 fnCallback: fnCallback,
                 oListener: oListener
             });
-            
+
             return this;
         };
-        
+
         AppBody.prototype.detachNavLeft = function (fnCallback, oListener) {
             this._aNavLeftListener.forEach(function (oNavLeft, iIndex, aListener) {
                 if (oNavLeft.fnCallback === fnCallback && oNavLeft.oListener === oListener) {
@@ -92,7 +92,7 @@ sap.ui.define(
             });
 
             this.detachEvent(AppBody.Event.NavLeftClick, fnCallback, oListener);
-            
+
             return this;
         };
 
@@ -107,14 +107,14 @@ sap.ui.define(
 
             return this;
         };
-        
+
         AppBody.prototype.attachNavRight = function (fnCallback, oListener) {
             this._aNavRightListener.forEach(function (oNavRight) {
                 if (oNavRight.fnCallback === fnCallback && oNavRight.oListener === oListener) {
                     return;
                 }
             });
-            
+
             this.attachEvent(AppBody.Event.NavRightClick, fnCallback, oListener);
 
             this._aNavRightListener.push({
@@ -124,14 +124,14 @@ sap.ui.define(
 
             return this;
         };
-        
+
         AppBody.prototype.detachNavRight = function (fnCallback, oListener) {
             this._aNavRightListener.forEach(function (oNavRight, iIndex, aListener) {
                 if (oNavRight.fnCallback === fnCallback && oNavRight.oListener === oListener) {
                     aListener.splice(iIndex, 1);
                 }
             });
-            
+
             this.detachEvent(AppBody.Event.NavRightClick, fnCallback, oListener);
             return this;
         };
