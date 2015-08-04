@@ -37,7 +37,6 @@ sap.ui.define(
             }
         };
 
-
         Controller.prototype.onBeforeRendering = function () {
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
@@ -273,8 +272,8 @@ sap.ui.define(
                 sSelectedBpNum = this.getView().getModel('oSmryBpInf').getProperty('/PartnerID'),
                 sSelectedCaNum = this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID');
 
+
             oRouter.navTo('dashboard.CaInfo', {bpNum: sSelectedBpNum, caNum: sSelectedCaNum});
-        };
 
         return Controller;
     }

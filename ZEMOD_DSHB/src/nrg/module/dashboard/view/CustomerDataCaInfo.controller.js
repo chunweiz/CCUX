@@ -81,13 +81,9 @@ sap.ui.define(
 
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
-            if (!this._bpNum) {
-                this._bpNum = aSplitHash[iSplitHashL - 3];
-            }
-            if (!this._caNum) {
-                this._caNum = aSplitHash[iSplitHashL - 1];
-            }
 
+            this._bpNum = aSplitHash[iSplitHashL - 3];
+            this._caNum = aSplitHash[iSplitHashL - 1];
 
             this._retrAllBuags(this._bpNum);
             this._retrBuagAddrDetail(this._caNum);
