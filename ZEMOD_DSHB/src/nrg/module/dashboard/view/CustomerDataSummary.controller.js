@@ -77,22 +77,25 @@ sap.ui.define(
 
         Controller.prototype._initRetrBpInf = function () {
             var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
-                sBpNBum,
-                sPath;
+                sBpNum,
+                sPath,
+                oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext();
 
-            sBpNBum = oRouteInfo.parameters.bpNum;
-            sPath = '/Partners' + '(\'' + sBpNBum + '\')';
+            if (oComponentContextModel.getProperty('/dashboard/bpNum')) {
+                sBpNum = oComponentContextModel.getProperty('/dashboard/bpNum');
+            } else {
+                sBpNum = oRouteInfo.parameters.bpNum;
+            }
+            sPath = '/Partners' + '(\'' + sBpNum + '\')';
 
             this._retrBpInf(sPath);
-            this._initRetrCaInf(sBpNBum);  //Should be triggered in Success call back of BP retriev
+            this._initRetrCaInf(sBpNum);  //Should be triggered in Success call back of BP retriev
         };
 
         Controller.prototype._initRetrBpSegInf = function () {
-            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
-                sBpNBum,
+            var sBpNBum,
                 sPath;
 
-            sBpNBum = oRouteInfo.parameters.bpNum;
             //aSplitHash = (this._retrUrlHash()).split('/');
             //iSplitHashL = aSplitHash.length;
             sPath = '/Partners' + '(\'' + sBpNBum + '\')/BpSegs';
@@ -101,7 +104,19 @@ sap.ui.define(
         };
 
         Controller.prototype._initRetrCaInf = function (BpNum) {
-            var sPath;
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
+                sCaNum,
+                sPath;
+
+
+            if (oRouteInfo.parameters.caNum) {
+                sCaNum = oRouteInfo.parameters.caNum;
+                sPath = '/Buags' + '(\'' + sCaNum + '\')';
+                this._bCaNumKnown = true;
+            } else {
+                this._bCaNumKnown = false;
+            }
+
 
             sPath = '/Partners' + '(\'' + BpNum + '\')/Buags';
             this._retrCaInf(sPath);
@@ -154,7 +169,10 @@ sap.ui.define(
 
             oParameters = {
                 success : function (oData) {
-                    if (oData.results) {
+                    if (oData && this._bCaNumKnown) {
+                        this.getView().getModel('oSmryBuagInf').setData(oData);
+                        this._initRetrAssignedAccount(this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID'));
+                    } else {
                         this.getView().getModel('oSmryBuagInf').setData(oData.results[0]);
                         this._initRetrAssignedAccount(this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID'));
                     }
