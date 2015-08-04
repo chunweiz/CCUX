@@ -5,10 +5,11 @@ sap.ui.define(
     [
         'jquery.sap.global',
         'sap/ui/core/mvc/Controller',
-        'nrg/base/component/WebUiManager'
+        'nrg/base/component/WebUiManager',
+        'sap/ui/core/message/Message'
     ],
 
-    function (jQuery, Controller, WebUiManager) {
+    function (jQuery, Controller, WebUiManager, Message) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.others.view.GeneralEmpty');
@@ -60,6 +61,37 @@ sap.ui.define(
             if (oResponse.CANCEL && oResponse.CANCEL === 'X') {
                 jQuery.sap.log.info('[GeneralEmptyController._handleLogout()]', 'Logout cancelled by user');
             }
+        };
+
+        CustomController.prototype.onAddMessage = function (oControlEvent) {
+            var oMessageManager, oMessage;
+
+            oMessageManager = sap.ui.getCore().getMessageManager();
+
+            oMessageManager.addMessages(new Message({
+                message: 'This is a custom error message',
+                type: sap.ui.core.MessageType.Error
+            }));
+
+            oMessageManager.addMessages(new Message({
+                message: 'This is a custom error message',
+                type: sap.ui.core.MessageType.Information
+            }));
+
+            oMessageManager.addMessages(new Message({
+                message: 'This is a custom error message',
+                type: sap.ui.core.MessageType.None
+            }));
+
+            oMessageManager.addMessages(new Message({
+                message: 'This is a custom error message',
+                type: sap.ui.core.MessageType.Success
+            }));
+
+            oMessageManager.addMessages(new Message({
+                message: 'This is a custom error message',
+                type: sap.ui.core.MessageType.Warning
+            }));
         };
 
         CustomController.prototype.onInit = function () {

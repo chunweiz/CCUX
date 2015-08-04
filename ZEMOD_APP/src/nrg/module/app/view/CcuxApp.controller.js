@@ -15,6 +15,10 @@ sap.ui.define(
 
         CustomController.prototype.onInit = function () {
             this._oApp = new App(this);
+            this.getView().setModel(
+                sap.ui.getCore().getMessageManager().getMessageModel(),
+                'view-message'
+            );
         };
 
         CustomController.prototype.getApp = function () {
