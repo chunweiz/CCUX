@@ -51,23 +51,16 @@ sap.ui.define(
                 type: sap.ui.core.mvc.ViewType.XML,
                 viewName: "nrg.module.quickpay.view.MainQuick"
             });
-            that.getView().addDependent(oQuickPayView);
+            //that.getView().addDependent(oQuickPayView);
             this.addContent(oQuickPayView);
             oQuickPayView.addStyleClass("nrgQPPay-View");
             this._oPaymentPopup.setInitialFocusId(this.getId());
+            that.getView().addDependent(this);
             if (this._oPaymentPopup.isOpen()) {
                 //this._oPaymentPopup.setContent(oQuickPayView);
                 return this;
             }
             this._oPaymentPopup.setContent(this);
-
-/*            if (this._oPaymentPopup === undefined) {
-                this._oPaymentPopup = new ute.ui.main.Popup.create({
-                    title: 'Change Campaign - Cancel',
-                    close: this._handleDialogClosed,
-                    content: oQuickPayView
-                });
-            }*/
             this._oPaymentPopup.open();
 
             return this;

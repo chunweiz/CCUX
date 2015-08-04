@@ -3,10 +3,14 @@
 
 sap.ui.define(
     [
-        'nrg/base/view/BaseController'
+        'nrg/base/view/BaseController',
+        'sap/ui/model/Filter',
+        'sap/ui/model/FilterOperator',
+        'jquery.sap.global',
+        "sap/ui/model/json/JSONModel"
     ],
 
-    function (CoreController) {
+    function (CoreController, Filter, FilterOperator, jQuery, JSONModel) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.quickpay.view.MainQuick');
@@ -17,6 +21,31 @@ sap.ui.define(
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
 
+        };
+        /* =========================================================== */
+		/* lifecycle method- Before Rendering                          */
+		/* =========================================================== */
+        Controller.prototype.onBeforeRendering = function () {
+            var oModel = this.getView().getModel('comp-quickpay'),
+                mParameters,
+                sCurrentPath;
+            sCurrentPath = "/PayAvailFlagsSet";
+            sCurrentPath = sCurrentPath + "(ContractID='0034805112')";
+            mParameters = {
+                success : function (oData) {
+                    jQuery.sap.log.info("Odata Read Successfully:::");
+                    this.getView().bindElement({
+                        model : "comp-quickpay",
+                        path : sCurrentPath
+                    });
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Odata Error occured");
+                }.bind(this)
+            };
+            if (oModel) {
+                oModel.read(sCurrentPath, mParameters);
+            }
         };
         /**
 		 * Show Stop Voice Log Recording msg

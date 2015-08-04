@@ -18,18 +18,12 @@ sap.ui.define(
 		/* lifecycle method- Init                                     */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
-            this.getOwnerComponent().getRouter().attachRoutePatternMatched(this._onObjectMatched, this);
-            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
-        };
 
-		/**
-		 * Binds the view to the object path
-		 *
-		 * @function
-		 * @param {sap.ui.base.Event} oEvent pattern match event
-		 * @private
-		 */
-        Controller.prototype._onObjectMatched = function (oEvent) {
+        };
+        /* =========================================================== */
+		/* lifecycle method- Before Rendering                          */
+		/* =========================================================== */
+        Controller.prototype.onBeforeRendering = function () {
             var oViewModel,
                 iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
                 mParameters,
@@ -38,19 +32,18 @@ sap.ui.define(
                 oModel,
                 sCurrentPath,
                 aFilterIds,
-                aFilterValues;
+                aFilterValues,
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
             oViewModel = new JSONModel({
-				busy : true,
-				delay : 0,
                 selected : 0,
                 history : false,
                 cancel : false
 			});
 
+            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getView().setModel(oViewModel, "appView");
             sCurrentPath = this._i18NModel.getProperty("nrgHistorySet");
-            this.getView().getModel("appView").setProperty("/busy", false);
-            this._sContract = oEvent.getParameter("arguments").coNum;
+            this._sContract = oRouteInfo.parameters.coNum;
             aFilterIds = ["Contract", "Type"];
             aFilterValues = [this._sContract, "H"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -96,8 +89,7 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sCurrentPath, mParameters);
             }
-		};
-
+        };
        /**
 		 * Assign the filter objects based on the input selection
 		 *
@@ -402,7 +394,6 @@ sap.ui.define(
             aJsonDataNew.results.rows.push({
                 "cells" : oCECells
             });
-
             return aJsonDataNew;
         };
         /**

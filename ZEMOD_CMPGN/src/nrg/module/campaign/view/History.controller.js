@@ -17,13 +17,13 @@ sap.ui.define(
 		/* lifecycle method- Init                                     */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
-            var oViewModel = new JSONModel({
-				busy : false,
-				delay : 0
-			});
-            this.getView().setModel(oViewModel, "appView");
         };
+        /* =========================================================== */
+		/* lifecycle method- Before Rendering                          */
+		/* =========================================================== */
+        Controller.prototype.onBeforeRendering = function () {
 
+        };
          /**
 		 * When the user choosed to select a Campaign for comparision
 		 *
