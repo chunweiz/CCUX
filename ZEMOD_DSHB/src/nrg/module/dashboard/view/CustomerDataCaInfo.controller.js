@@ -517,6 +517,7 @@ sap.ui.define(
             configModel.setProperty('/mailAddrUpdateVisible', true);
             configModel.setProperty('/mailAddrSaveVisible', false);
             configModel.setProperty('/mailAddrEditable', false);
+            configModel.setProperty('/mailAddrAddnewVisible', true);
 
             addrModel.setData(jQuery.extend(true, {}, this.oDataBuagAddrDetailsBak));
         };
