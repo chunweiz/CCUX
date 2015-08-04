@@ -19,8 +19,6 @@ sap.ui.define(
 		/* lifecycle method- Init                                     */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
-
-
         };
         /* =========================================================== */
 		/* lifecycle method- Before Rendering                          */

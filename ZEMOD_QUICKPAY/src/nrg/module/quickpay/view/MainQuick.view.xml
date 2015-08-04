@@ -47,7 +47,7 @@
                     </u:Tag>
                 </um:TabPanelItem>
                 <um:TabPanelItem key="CC" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
-                        <core:Fragment fragmentName="nrg.module.quickpay.view.CreditCard" type="XML" />
+                        <core:Fragment fragmentName="nrg.module.quickpay.view.Creditcard" type="XML" />
                 </um:TabPanelItem>
                 <um:TabPanelItem key="BD" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
                         <core:Fragment fragmentName="nrg.module.quickpay.view.BankDraft" type="XML" />
@@ -72,6 +72,10 @@
                     </u:Tag>
                 </um:TabPanelItem>
             </um:TabPanel>
+            <u:Tag  class="nrgQPPay-msgArea nrgQPPay-hide">
+                <u:Tag id="idnrgQPPay-msg" class="nrgQPPay-msg" text="Payment System is not Available" />
+            </u:Tag>
         </u:Tag>
+
     </u:Tag>
 </mvc:View>
