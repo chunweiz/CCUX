@@ -641,21 +641,21 @@ sap.ui.define(
         };
 
         Controller.prototype._handleEditMailPopupClose = function (oEvent) {
-            var oLeftInputArea = this.getContent()[0].getContent()[1].getContent(),
-                oRightSuggArea = this.getContent()[0].getContent()[2].getContent(),
-                i;
+            var i;
 
 
-            this.getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
-            this.getContent()[0].getContent()[0].setVisible(false);
-            this.getContent()[0].getContent()[1].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
-            this.getContent()[0].getContent()[2].setVisible(false);
+            this.getView().byId('idAddrUpdatePopup').removeStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
+            this.getView().byId('idAddrUpdatePopup-HdrLn').setVisible(false);
+            this.getView().byId('idAddrUpdatePopup-l').removeStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
+            this.getView().byId('idAddrUpdatePopup-r').setVisible(false);
 
 
             for (i = 1; i < 8; i = i + 1) {
-                oLeftInputArea[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
-                oRightSuggArea[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
+                this.getView().byId('idAddrUpdatePopup-l').getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
+                this.getView().byId('idAddrUpdatePopup-r').getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
             }
+
+            //this._oMailEditPopup.destroy();
         };
 
         Controller.prototype._handleMailingAddrUpdate = function (oEvent) {
@@ -860,11 +860,13 @@ sap.ui.define(
         Controller.prototype._onEditMailAddrClick = function (oEvent) {
             var oEditMail = this.getView().getModel('oDtaAddrEdit');
 
-            this._oMailEditPopup = ute.ui.main.Popup.create({
-                close: this._handleEditMailPopupClose,
-                content: this.getView().byId("idAddrUpdatePopup"),
-                title: 'Edit Mailing Address'
-            });
+            if (!this._oMailEditPopup) {
+                this._oMailEditPopup = ute.ui.main.Popup.create({
+                    close: this._handleEditMailPopupClose.bind(this),
+                    content: this.getView().byId("idAddrUpdatePopup"),
+                    title: 'Edit Mailing Address'
+                });
+            }
 
             oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/FixAddrInfo'));
 
@@ -885,11 +887,13 @@ sap.ui.define(
         Controller.prototype._onEditTempAddrClick = function (oEvent) {
             var oEditMail = this.getView().getModel('oDtaAddrEdit');
 
-            this._oMailEditPopup = ute.ui.main.Popup.create({
-                close: this._handleEditMailPopupClose,
-                content: this.getView().byId("idAddrUpdatePopup"),
-                title: 'Edit Temp Mailing Address'
-            });
+            if (!this._oMailEditPopup) {
+                this._oMailEditPopup = ute.ui.main.Popup.create({
+                    close: this._handleEditMailPopupClose,
+                    content: this.getView().byId("idAddrUpdatePopup"),
+                    title: 'Edit Temp Mailing Address'
+                });
+            }
 
             oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/TempAddrInfo'));
 
@@ -987,6 +991,7 @@ sap.ui.define(
                 title: 'Email Address and Preferences'
             });
             this._oEmailEditPopup.setShowCloseButton(false);
+            this._beforeOpenEditAddrDialogue = true;
 
             //Start loading NNP logics and settings
             sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
@@ -994,7 +999,6 @@ sap.ui.define(
                 /*urlParameters: {"$expand": "Buags"},*/
                 success : function (oData) {
                     if (oData) {
-                        this._beforeOpenEditAddrDialogue = true;
                         this._oEmailEditPopup.open();
                         oNNP.setData(oData);
                     }
