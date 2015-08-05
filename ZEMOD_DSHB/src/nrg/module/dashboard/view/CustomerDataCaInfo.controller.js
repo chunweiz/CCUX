@@ -398,11 +398,14 @@ sap.ui.define(
             this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
             this.getView().byId('idSuggCompareCheck').setChecked(false);
 
-            this._oMailEditPopup = ute.ui.main.Popup.create({
-                close: this._handleEditMailPopupClose.bind(this),
-                content: this.getView().byId("idAddrUpdatePopup"),
-                title: 'Edit Mailing Address'
-            });
+            if (!this._oMailEditPopup) {
+                this._oMailEditPopup = ute.ui.main.Popup.create({
+                    close: this._handleEditMailPopupClose.bind(this),
+                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
+                    title: 'Edit Mailing Address'
+                });
+                this.getView().addDependent(this._oMailEditPopup);
+            }
 
             this._beforeOpenEditAddrDialogue = true;
             this._oMailEditPopup.open();
@@ -415,18 +418,22 @@ sap.ui.define(
 
             oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDataBuagAddrDetails').getProperty('/TempAddrInfo'));
 
-            //this._onToggleButtonPress();
-            this.getView().byId("idTempAddrUpdatePopup").setVisible(true);
+            //Control what to or not to display
+            this.getView().byId("idAddrUpdatePopup").setVisible(true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
+            this.getView().byId('idSuggCompareCheck').setChecked(false);
 
-            this._oMailEditPopup = ute.ui.main.Popup.create({
-                close: this._handleEditMailPopupClose.bind(this),
-                content: this.getView().byId("idAddrUpdatePopup"),
-                title: 'Edit Temporary Mailing Address'
-            });
+            if (!this._oMailEditPopup) {
+                this._oMailEditPopup = ute.ui.main.Popup.create({
+                    close: this._handleEditMailPopupClose.bind(this),
+                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
+                    title: 'Edit Mailing Address'
+                });
+                this.getView().addDependent(this._oMailEditPopup);
+            }
 
             this._beforeOpenEditAddrDialogue = true;
             this._oMailEditPopup.open();

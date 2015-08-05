@@ -858,7 +858,7 @@ sap.ui.define(
             if (!this._oMailEditPopup) {
                 this._oMailEditPopup = ute.ui.main.Popup.create({
                     close: this._handleEditMailPopupClose,
-                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrCaLvlUpdatePopup", this),
+                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
                     title: 'Edit Mailing Address'
                 });
                 this.getView().addDependent(this._oMailEditPopup);
@@ -891,20 +891,22 @@ sap.ui.define(
             if (!this._oMailEditPopup) {
                 this._oMailEditPopup = ute.ui.main.Popup.create({
                     close: this._handleEditMailPopupClose,
-                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrCaLvlUpdatePopup", this),
+                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
                     title: 'Edit Mailing Address'
                 });
+                this.getView().addDependent(this._oMailEditPopup);
             }
 
             oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/TempAddrInfo'));
 
-            //this._onToggleButtonPress();
-            this.getView().byId("idTempAddrUpdatePopup").setVisible(true);
+            //Control what to or not to display
+            this.getView().byId("idAddrUpdatePopup").setVisible(true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
+            this.getView().byId('idSuggCompareCheck').setChecked(false);
 
             this._beforeOpenEditAddrDialogue = true;
             this._oMailEditPopup.open();
