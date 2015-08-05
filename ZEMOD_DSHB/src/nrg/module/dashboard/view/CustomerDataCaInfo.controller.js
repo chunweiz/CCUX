@@ -152,11 +152,14 @@ sap.ui.define(
         };
 
         CustomController.prototype._onCaSelected = function (oEvent) {
-            var sSelectedKey = oEvent.getParameters().selectedKey;
+            var sSelectedKey = oEvent.getParameters().selectedKey,
+                eventBus = sap.ui.getCore().getEventBus(),
+                oPayload = {caNum: sSelectedKey};
 
             if (sSelectedKey) {
                 this._caNum = sSelectedKey;
                 this._retrBuagAddrDetail(this._caNum);
+                eventBus.publish("nrg.module.dashoard", "eBuagChangedFromCaInfo", oPayload);
             }
 
             return;

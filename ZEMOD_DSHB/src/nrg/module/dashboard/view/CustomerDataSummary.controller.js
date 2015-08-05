@@ -65,16 +65,25 @@ sap.ui.define(
         Controller.prototype.onAfterRendering = function () {
             var oEventBus = sap.ui.getCore().getEventBus();
             oEventBus.subscribe("nrg.module.dashoard", "eBuagChanged", this._handleBuagChanged, this);
-            //oEventBus.subscribe("nrg.module.dashoard", "eContractChanged", this._handleContractChanged, this);
+            oEventBus.subscribe("nrg.module.dashoard", "eBuagChangedFromCaInfo", this._handleCaInfoContractChanged, this);
+        };
+
+        Controller.prototype._handleCaInfoContractChanged = function (channel, event, data) {
+            var i,
+                oAllBuags = this.getView().getModel('oSmryAllBuags');
+
+            for (i = 0; i < oAllBuags.getProperty('/results').length; i = i + 1) {
+                if (oAllBuags.getProperty('/results')[i].ContractAccountID === data.caNum) {
+                    this._selectBuag(i);
+                    return;
+                }
+            }
+
         };
 
         Controller.prototype._handleBuagChanged = function (channel, event, data) {
             this._selectBuag(data.iIndex);
         };
-
-        Controller.prototype._handleContractChanged = function (channel, event, data) {
-        };
-
         Controller.prototype._initRetrBpInf = function () {
             var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
                 sBpNum,
