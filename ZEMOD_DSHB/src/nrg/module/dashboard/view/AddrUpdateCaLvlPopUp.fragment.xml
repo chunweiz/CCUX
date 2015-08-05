@@ -125,6 +125,5 @@
                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_EditBtn}"
                 press="._handleMailingEditBtn"/>
         </ute:Tag>
-
-
+    </ute:Tag>
 </core:FragmentDefinition>
