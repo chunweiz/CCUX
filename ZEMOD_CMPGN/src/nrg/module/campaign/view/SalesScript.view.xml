@@ -38,7 +38,7 @@
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>
             <u:Tag class="nrgCamSS-left">
-                <um:Dropdown id="idnrgCamSSDdL" select=".onMandLngSelected" class="nrgCamSSLng-DdL" content="{comp-campaign>/ScriptS}>
+                <um:Dropdown id="idnrgCamSSDdL" select=".onMandLngSelected" class="nrgCamSSLng-DdL">
                     <um:DropdownItem key="{comp-campaign>TxtLang}" id="idnrgCamSSLngLtIt" class="nrgCamSSLng-DdLItem">
                         <u:Tag text="{parts:[{path:'comp-campaign>TxtLang'}],
                                                     formatter:'.formatType'}"/>

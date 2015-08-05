@@ -42,8 +42,9 @@ sap.ui.define(
                 that = this,
                 oProactiveButton = this.getView().byId("idCamToggleBtn-P"),
                 oNoDataTag,
-                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
-            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
+                i18NModel;
+            i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oRouteInfo.parameters.coNum;
             oNoDataTag = this.getView().byId("idnrgCamHisNoData");
@@ -51,7 +52,7 @@ sap.ui.define(
             aFilterIds = ["Contract", "Type"];
             aFilterValues = [this._sContract, "P"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-            sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
+            sCurrentPath = i18NModel.getProperty("nrgCpgChangeOffSet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
             oTileTemplate = this.getView().byId("idnrgCamOffBt").clone();
@@ -148,7 +149,8 @@ sap.ui.define(
                 oReactiveButton = this.getView().byId("idCamToggleBtn-R"),
                 oSaveButton = this.getView().byId("idCamToggleBtn-S"),
                 oFinalSaveButton = this.getView().byId("idCamToggleBtn-F"),
-                oNoDataTag = this.getView().byId("idnrgCamHisNoData");
+                oNoDataTag = this.getView().byId("idnrgCamHisNoData"),
+                i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             oProactiveButton.removeStyleClass("nrgCamOff-btn-selected");
             oReactiveButton.removeStyleClass("nrgCamOff-btn-selected");
             oSaveButton.removeStyleClass("nrgCamOff-btn-selected");
@@ -178,7 +180,7 @@ sap.ui.define(
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
             aContent = oTileContainer.getContent();
             oTileTemplate = this._oTileTemplate;
-            sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
+            sCurrentPath = i18NModel.getProperty("nrgCpgChangeOffSet");
             // Handler function for tile container
             fnRecievedHandler = function (oEvent) {
                 var aContent = oTileContainer.getContent();

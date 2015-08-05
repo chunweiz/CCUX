@@ -9,6 +9,9 @@ sap.ui.define(
     function (Control, Popup) {
         'use strict';
 
+		/* ========================================================================*/
+		/* Creating a New Control to manage Quick Pay  Pop-up                      */
+		/* ======================================================================= */
         var QuickPayControl = Control.extend('nrg.module.quickpay.view.QuickPayControl', {
             metadata: {
                 defaultAggregation: "content",
@@ -34,24 +37,30 @@ sap.ui.define(
             }
         });
 
+		/* ========================================================================*/
+		/* Quick Pay Pop-up to initialize basic popup configurations               */
+		/* ======================================================================= */
         QuickPayControl.prototype.init = function () {
             this._oPaymentPopup = new Popup(this, true, true);
 			var eDock = Popup.Dock;
-			this._oPaymentPopup.setPosition(eDock.CenterCenter, eDock.CenterCenter, window);
+			//this._oPaymentPopup.setPosition("center center", "center center", window, "0 0", "fit");
             this._oPaymentPopup.setShadow(false);
             this._oPaymentPopup.setModal(true);
             this._oPaymentPopup.setAutoClose(false);
             this._oPaymentPopup.setDurations(0, 0);
             this._oPaymentPopup.setFollowOf(true);
+
         };
 
+		/* ========================================================================*/
+		/* Method to be used to open the Quick Pay popup                           */
+		/* ======================================================================= */
 
         QuickPayControl.prototype.openQuickPay = function (that) {
             var oQuickPayView = sap.ui.view({
                 type: sap.ui.core.mvc.ViewType.XML,
                 viewName: "nrg.module.quickpay.view.MainQuick"
             });
-            //that.getView().addDependent(oQuickPayView);
             this.addContent(oQuickPayView);
             oQuickPayView.addStyleClass("nrgQPPay-View");
             this._oPaymentPopup.setInitialFocusId(this.getId());
@@ -63,10 +72,26 @@ sap.ui.define(
             this._oPaymentPopup.setContent(this);
             this._oPaymentPopup.open();
 
+
             return this;
         };
 
+        /* ========================================================================*/
+		/* Handler for popup opened                                                */
+		/* ======================================================================= */
+        QuickPayControl.prototype._handleOpened = function () {
+            this._oPaymentPopup.detachEvent("opened", this.handleOpened, this);
+        };
 
+        /* ========================================================================*/
+		/* Handler for popup closed                                                */
+		/* ======================================================================= */
+        QuickPayControl.prototype._handleClosed = function () {
+            this._oPaymentPopup.detachEvent("closed", this.handleClosed, this);
+        };
+        /* ========================================================================*/
+		/* Method to close the popup                                               */
+		/* ======================================================================= */
         QuickPayControl.prototype.close = function () {
             var sOpenState = this._oPaymentPopup.getOpenState();
 

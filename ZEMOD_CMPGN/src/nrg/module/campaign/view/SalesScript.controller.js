@@ -45,12 +45,13 @@ sap.ui.define(
                 that = this,
                 aContent,
                 sPath,
-                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
-            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
+                i18NModel;
+            i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oRouteInfo.parameters.coNum;
             this._sOfferCode = oRouteInfo.parameters.offercodeNum;
-            sCurrentPath = this._i18NModel.getProperty("nrgCpgChangeOffSet");
+            sCurrentPath = i18NModel.getProperty("nrgCpgChangeOffSet");
             sCurrentPath = "/CpgChgOfferS";
             sCurrentPath = sCurrentPath + "(OfferCode='" + this._sOfferCode + "',Contract='" + this._sContract + "')";
             this._bindView(sCurrentPath);
@@ -201,10 +202,11 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.formatType = function (sType) {
+            var i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             if (sType === "EN") {
-                return this._i18NModel.getProperty("nrgCmpSSEN");
+                return i18NModel.getProperty("nrgCmpSSEN");
             } else {
-                return this._i18NModel.getProperty("nrgCmpSSES");
+                return i18NModel.getProperty("nrgCmpSSES");
             }
         };
         /**

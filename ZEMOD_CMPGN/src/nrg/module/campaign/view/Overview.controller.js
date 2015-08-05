@@ -47,8 +47,9 @@ sap.ui.define(
                 iCount,
                 oEFLJson = {},
                 aResults = [],
-                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
-            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
+                i18NModel;
+            i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setTitle("CAMPAIGNS");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oRouteInfo.parameters.coNum;
@@ -56,8 +57,8 @@ sap.ui.define(
             aFilterIds = ["Contract"];
             aFilterValues = [this._sContract];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-            sCurrentPath = this._i18NModel.getProperty("nrgCurrentPendingSet");
-            sEligibilityPath = this._i18NModel.getProperty("nrgEligibilitySet");
+            sCurrentPath = i18NModel.getProperty("nrgCurrentPendingSet");
+            sEligibilityPath = i18NModel.getProperty("nrgEligibilitySet");
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar");
             oToggleTemplate = this.getView().byId("idnrgCamOvr-TabItem").clone();
@@ -243,12 +244,13 @@ sap.ui.define(
                 aFilters,
                 mParameters,
                 oModel,
-                that = this;
+                that = this,
+                i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
 
             if (sFirstMonthBill === "X") {
                 sap.ui.commons.MessageBox.alert("Customer has to completed atleast One Month Invoice");
             } else {
-                sCurrentPath = this._i18NModel.getProperty("nrgPendingSwapsSet");
+                sCurrentPath = i18NModel.getProperty("nrgPendingSwapsSet");
                 sCurrentPath = sCurrentPath + "/$count";
                 aFilterIds = ["Contract"];
                 aFilterValues = [sContract];
@@ -285,10 +287,11 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.formatType = function (sType) {
+            var i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             if (sType === "C") {
-                return this._i18NModel.getProperty("nrgCmpOvrCt");
+                return i18NModel.getProperty("nrgCmpOvrCt");
             } else {
-                return this._i18NModel.getProperty("nrgCmpOvrPg");
+                return i18NModel.getProperty("nrgCmpOvrPg");
             }
         };
         /**
@@ -384,7 +387,8 @@ sap.ui.define(
                 aFilters,
                 aFilterIds,
                 aFilterValues,
-                oPendingSwapsTemplate;
+                oPendingSwapsTemplate,
+                i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             aFilterIds = ["Contract"];
             aFilterValues = [this._sContract];
@@ -399,7 +403,7 @@ sap.ui.define(
                     content: this._oDialogFragment
                 });
             }
-            sPath = this._i18NModel.getProperty("nrgPendingSwapsSet");
+            sPath = i18NModel.getProperty("nrgPendingSwapsSet");
             oPendingSwapsTable = sap.ui.core.Fragment.byId("PendingOverview", "idnrgCamPds-pendTable");
             oPendingSwapsTemplate = sap.ui.core.Fragment.byId("PendingOverview", "idnrgCamPds-pendRow");
             mParameters = {
