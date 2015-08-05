@@ -20,52 +20,64 @@ sap.ui.define(
         };
 
         Controller.prototype.onBeforeRendering = function () {
-            this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
-            //console.log(this.getOwnerComponent().getCcuxApp().setTitle);
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            if (!this._beforeOpenEditAddrDialogue) {
+                this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
+                //console.log(this.getOwnerComponent().getCcuxApp().setTitle);
 
-            this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
+                this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
-            //Model to hold BP info
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBP');
+                //Model to hold BP info
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBP');
 
-            //Model to hold Buags (avoid too long of bindings
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBuags');
+                //Model to hold Buags (avoid too long of bindings
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBuags');
 
-            //Model to hold Contract
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyContracts');
+                //Model to hold Contract
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyContracts');
 
-            //Model to hold all Buags
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllBuags');
+                //Model to hold all Buags
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllBuags');
 
-            //Model to hold all Contracts of selected Buag
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllContractsofBuag');
+                //Model to hold all Contracts of selected Buag
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllContractsofBuag');
 
-            //Model to hold mailing/temp address
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');
-            //Model for Edit Popup Screen (Use the model to show on edit screen)
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
+                //Model to hold mailing/temp address
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');
+                //Model for Edit Popup Screen (Use the model to show on edit screen)
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
 
-            //Model to track "Confirm" or not status
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCfrmStatus');
+                //Model to track "Confirm" or not status
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCfrmStatus');
 
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCoPageModel');
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCoPageModel');
 
-            //For Phone Type
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDayPhoneType');
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEvnPhoneType');
+                //For Phone Type
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDayPhoneType');
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEvnPhoneType');
 
-            //For EditEmail Popup
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailNNP');
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailValidate');
+                //For EditEmail Popup
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailNNP');
+                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailValidate');
 
-            //Siebel Customer Indicator
-            this.bSiebelCustomer = false;
+                //Siebel Customer Indicator
+                this.bSiebelCustomer = false;
 
-            this._initDtaVrfRetr();
-            this._initCfrmStatus();
-            this._initPhnTypes();
-            this._initMailAddrModels();
-            //this._initCoPageModel();
+
+                this._initDtaVrfRetr();
+                this._initCfrmStatus();
+                this._initPhnTypes();
+                this._initMailAddrModels();
+                //this._initCoPageModel();
+            } else {
+                this._beforeOpenEditAddrDialogue = false;
+            }
+        };
+        /* =========================================================== */
+        /* lifecycle method- After Rendering                          */
+        /* =========================================================== */
+        Controller.prototype.onAfterRendering = function () {
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
         };
 
         Controller.prototype._initPhnTypes = function () {
@@ -975,7 +987,7 @@ sap.ui.define(
         };
 
 
-        /*************************************************************************************/
+    /*************************************************************************************/
         //Edit Email
         Controller.prototype._handleEmailEdit = function (oEvent) {
             var oModel = this.getView().getModel('oODataSvc'),
@@ -983,18 +995,21 @@ sap.ui.define(
                 sBpNum = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
                 sBpEmail = this.getView().getModel('oDtaVrfyBP').getProperty('/Email'),
                 sBpEmailConsum = this.getView().getModel('oDtaVrfyBP').getProperty('/EmailConsum'),
-                sPath,
-                oNNP = this.getView().getModel('oEditEmailNNP');
+                sPath;
 
             //Preapre Popup for Email Edit to show
-            this.getView().byId("idEmailEditPopup").setVisible(true);
+            if (!this._oPopupContent) {
+                this._oPopupContent = sap.ui.xmlfragment("EmailEditPopup", "nrg.module.dashboard.view.CustomerVerificationPopup", this);
+            }
             this._oEmailEditPopup = ute.ui.main.Popup.create({
                 //close: this._handleEditMailPopupClose,
-                content: this.getView().byId("idEmailEditPopup"),
+                content: this._oPopupContent,
                 title: 'Email Address and Preferences'
             });
             this._oEmailEditPopup.setShowCloseButton(false);
-            this._beforeOpenEditAddrDialogue = true;
+            this.getView().addDependent(this._oEmailEditPopup);
+            this._oEmailEditPopup.open();
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
 
             //Start loading NNP logics and settings
             sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
@@ -1002,8 +1017,9 @@ sap.ui.define(
                 /*urlParameters: {"$expand": "Buags"},*/
                 success : function (oData) {
                     if (oData) {
-                        this._oEmailEditPopup.open();
-                        oNNP.setData(oData);
+                        this._beforeOpenEditAddrDialogue = true;
+                        this.getView().getModel('oEditEmailNNP').setData(oData);
+                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -1021,7 +1037,11 @@ sap.ui.define(
                 oModel = this.getView().getModel('oODataSvc'),
                 oParameters,
                 sPath,
-                sEmailAddr = this.getView().getModel('oEditEmailNNP').getProperty('/Email');
+                sEmailAddr,
+                oEditEmailNNP = this.getView().getModel('oEditEmailNNP');
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            oEditEmailNNP.refresh(true);
+            sEmailAddr = oEditEmailNNP.getProperty('/Email');
 
             sPath = '/EmailVerifys' + '(\'' + sEmailAddr + '\')';
 
@@ -1029,10 +1049,13 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         oEmailValidate.setData(oData);
+
                     }
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Email Validate Service Error");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
 
@@ -1051,7 +1074,7 @@ sap.ui.define(
                 sBpEmailConsum = this.getView().getModel('oEditEmailNNP').getProperty('/EmailConsum'),
                 oNNP = this.getView().getModel('oEditEmailNNP'),
                 bEmailChanged = true;
-
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             if (sBpEmail === this.getView().getModel('oDtaVrfyBP').getProperty('/Email')) {
                 bEmailChanged = false;
             } else {
@@ -1077,9 +1100,11 @@ sap.ui.define(
                     }
                     this._oEmailEditPopup.close();
                     this._initDtaVrfRetr();
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Update Failed");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
 
@@ -1096,7 +1121,7 @@ sap.ui.define(
                 //sBpEmailConsum = this.getView().getModel('oDtaVrfyBP').getProperty('/EmailConsum');
                 oNNP = this.getView().getModel('oEditEmailNNP');
 
-
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             //oNNP.setProperty('/Email', '');
             sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'\'' + ',EmailConsum=\'\')';
 
@@ -1106,10 +1131,12 @@ sap.ui.define(
                     sap.ui.commons.MessageBox.alert('Email Successfully Removed');
                     this._oEmailEditPopup.close();
                     this._initDtaVrfRetr();
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Update Failed");
                     this._oEmailEditPopup.close();
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
 

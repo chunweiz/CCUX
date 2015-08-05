@@ -174,14 +174,14 @@ sap.ui.define(
 
             if (!this._oSubmenuDlg[sSubmenuId]) {
                 switch (sSubmenuId) {
-                    case AppHeader.HMItemId.Menu:
-                        sFragmentId = 'nrg.module.app.view.AppHeaderMenu';
-                        break;
-                    case AppHeader.HMItemId.Messages:
-                        sFragmentId = 'nrg.module.app.view.AppHeaderMessages';
-                        break;
-                    default:
-                        sFragmentId = null;
+                case AppHeader.HMItemId.Menu:
+                    sFragmentId = 'nrg.module.app.view.AppHeaderMenu';
+                    break;
+                case AppHeader.HMItemId.Messages:
+                    sFragmentId = 'nrg.module.app.view.AppHeaderMessages';
+                    break;
+                default:
+                    sFragmentId = null;
                 }
 
                 if (sFragmentId) {

@@ -65,6 +65,7 @@ sap.ui.define(
         };
 
         Controller.prototype.onSearch = function () {
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._searchBP('/BpSearchs', this._createSearchParameters());
         };
 
@@ -228,7 +229,6 @@ sap.ui.define(
                         if (oData.results.length === 1) {
                             //oComponentContextModel.setProperty('/dashboard/bpNum', oData.results[0].PartnerID);
                             //oRouter.navTo('dashboard.Bp', {bpNum: oData.results[0].PartnerID});
-                            oComponent.getCcuxApp().setOccupied(true);
                             if (oWebUiManager.isAvailable()) {
                                 oWebUiManager.notifyWebUi('bpConfirmed', {
                                     BP_NUM: oData.results[0].PartnerID
@@ -249,7 +249,9 @@ sap.ui.define(
                             }
                             this.getView().getModel('oBpSearchResult').setData(oData.results);
                             this.getView().getModel('oBpSearchCount').setProperty('/searchCount', oData.results.length);
+                            oComponent.getCcuxApp().setOccupied(false);
                         }
+
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -306,7 +308,7 @@ sap.ui.define(
             oComponentContextModel.setProperty('/dashboard/bpNum', oRouteInfo.BP_NUM);
 
             //Set the loading effect to false
-            oComponent.getCcuxApp().setOccupied(false);
+           // oComponent.getCcuxApp().setOccupied(false);
 
             //Navigate to verification page
             oRouter.navTo('dashboard.Bp', {bpNum: oRouteInfo.BP_NUM});
