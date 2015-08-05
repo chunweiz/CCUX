@@ -28,8 +28,17 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBpSearchCount');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSearchFilters');
 
+            //model to track if searched in CA
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSearchWithCA');
+
+            this._initSearchCaModel();
             this._initSearchFilterModel();
             this._initSearchResultModel();
+        };
+
+        Controller.prototype._initSearchCaModel = function () {
+            this.getView().getModel('oSearchWithCA').setProperty('/searchedInCa', false);
+            this.getView().getModel('oSearchWithCA').setProperty('/searchedCaNum', null);
         };
 
         Controller.prototype._initSearchResultModel = function () {
@@ -75,8 +84,10 @@ sap.ui.define(
 
             var aFilters = [],
                 oFilterTemplate,// = new Filter(),
-                oFilterModel = this.getView().getModel('oSearchFilters');
+                oFilterModel = this.getView().getModel('oSearchFilters'),
+                oSearchCaModel = this.getView().getModel('oSearchWithCA');
 
+            oSearchCaModel.setProperty('/searchedInCa', false);
 
             if (oFilterModel.getProperty('/searchTextFields/sHousNum')) {
                 oFilterTemplate =  new Filter({
@@ -135,6 +146,9 @@ sap.ui.define(
                 aFilters.push(oFilterTemplate);
             }
             if (oFilterModel.getProperty('/searchTextFields/sCaNum')) {
+                oSearchCaModel.setProperty('/searchedInCa', true);
+                oSearchCaModel.setProperty('/searchedCaNum', oFilterModel.getProperty('/searchTextFields/sCaNum'));
+
                 oFilterTemplate =  new Filter({
                     path: 'BuagID',
                     operator: FilterOperator.EQ,
@@ -302,7 +316,8 @@ sap.ui.define(
             var oRouter = this.getOwnerComponent().getRouter(),
                 oComponent = this.getOwnerComponent(),
                 oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
-                oRouteInfo = oEvent.getParameters();
+                oRouteInfo = oEvent.getParameters(),
+                oSearchCaModel = this.getView().getModel('oSearchWithCA');
 
             //Set BpNum to Component Level
             oComponentContextModel.setProperty('/dashboard/bpNum', oRouteInfo.BP_NUM);
@@ -311,7 +326,11 @@ sap.ui.define(
            // oComponent.getCcuxApp().setOccupied(false);
 
             //Navigate to verification page
-            oRouter.navTo('dashboard.Bp', {bpNum: oRouteInfo.BP_NUM});
+            if (oSearchCaModel.getProperty('/searchedInCa')) {
+                oRouter.navTo('dashboard.Bp', {bpNum: oRouteInfo.BP_NUM, caNum: oSearchCaModel.getProperty('/searchedCaNum')});
+            } else {
+                oRouter.navTo('dashboard.Bp', {bpNum: oRouteInfo.BP_NUM, caNum: 0});
+            }
         };
 
         return Controller;

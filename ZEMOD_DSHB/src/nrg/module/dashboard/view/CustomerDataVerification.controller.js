@@ -69,6 +69,8 @@ sap.ui.define(
                 this._initPhnTypes();
                 this._initMailAddrModels();
                 //this._initCoPageModel();
+
+                //this._searchedCaNum = null;
             } else {
                 this._beforeOpenEditAddrDialogue = false;
             }
@@ -136,8 +138,11 @@ sap.ui.define(
 
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
-            sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')';
+            sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 3] + '\')';
 
+            if (aSplitHash[iSplitHashL - 1] !== 0) {
+                this._searchedCaNum = aSplitHash[iSplitHashL - 1];
+            }
             this._retrDataVrf(sPath);
 
         };
@@ -212,6 +217,19 @@ sap.ui.define(
                         }
                         this.getView().getModel('oAllBuags').setData(oData.results);
                         this.getView().getModel('oAllBuags').setProperty('/selectedKey', iPreSelCA);
+
+                        //*************************************************************************************/
+                        //Logic for search with CA
+                        if (this._searchedCaNum) {
+                            for (i = 0; i < oData.results.length; i = i + 1) {
+                                if (this.getView().getModel('oAllBuags').oData[i].ContractAccountID === this._searchedCaNum) {
+                                    this._searchedCaNum = null;
+                                    this._retrBuag(sBpNum, i);
+                                    return;
+                                }
+                            }
+                        }
+                        //*************************************************************************************/
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -760,6 +778,7 @@ sap.ui.define(
                     this._oMailEditPopup.close();
                 }.bind(this),
                 error: function (oError) {
+                    this._oMailEditPopup.close();
                     sap.ui.commons.MessageBox.alert("Update Failed");
                 }.bind(this)
             };

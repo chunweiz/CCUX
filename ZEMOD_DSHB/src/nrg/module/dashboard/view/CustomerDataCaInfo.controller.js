@@ -617,7 +617,7 @@ sap.ui.define(
 
         CustomController.prototype.onBackToDashboard = function () {
             var oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo('dashboard.Bp', {bpNum: this._bpNum});
+            oRouter.navTo('dashboard.Bp', {bpNum: this._bpNum, caNum: 0});
         };
 
         Controller.prototype._retrUrlHash = function () {
