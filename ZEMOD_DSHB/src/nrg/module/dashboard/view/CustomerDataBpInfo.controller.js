@@ -1102,13 +1102,19 @@ sap.ui.define(
                 sBpEmailConsum = this.getView().getModel('oDataBpContact').getProperty('/EmailConsum'),
                 sPath,
                 oNNP = this.getView().getModel('oEditEmailNNP');
-
-            this.getView().byId("idBpInfoEmailEditPopup").setVisible(true);
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            //Preapre Popup for Email Edit to show
+            if (!this._oPopupContent) {
+                this._oPopupContent = sap.ui.xmlfragment("BPInfoEmailEditPopup", "nrg.module.dashboard.view.CustomerVerificationPopup", this);
+            }
+            //this.getView().byId("idBpInfoEmailEditPopup").setVisible(true);
             this._oEmailEditPopup = ute.ui.main.Popup.create({
                 //close: this._handleEditMailPopupClose,
-                content: this.getView().byId("idBpInfoEmailEditPopup"),
+                content: this._oPopupContent,
                 title: 'Email Address and Preferences'
             });
+            this.getView().addDependent(this._oEmailEditPopup);
+            this._oEmailEditPopup.open();
             this._oEmailEditPopup.setShowCloseButton(false);
             //this._oEmailEditPopup.open();
 
@@ -1118,12 +1124,13 @@ sap.ui.define(
                 /*urlParameters: {"$expand": "Buags"},*/
                 success : function (oData) {
                     if (oData) {
-                        this._oEmailEditPopup.open();
-                        oNNP.setData(oData);
+                        this.getView().getModel('oEditEmailNNP').setData(oData);
+                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     }
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("NNP Entity Service Error");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
 
@@ -1138,17 +1145,19 @@ sap.ui.define(
                 oParameters,
                 sPath,
                 sEmailAddr = this.getView().getModel('oEditEmailNNP').getProperty('/Email');
-
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             sPath = '/EmailVerifys' + '(\'' + sEmailAddr + '\')';
 
             oParameters = {
                 success : function (oData) {
                     if (oData) {
                         oEmailValidate.setData(oData);
+                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     }
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Email Validate Service Error");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
 
@@ -1168,7 +1177,7 @@ sap.ui.define(
                 oNNP = this.getView().getModel('oEditEmailNNP'),
                 bEmailChanged = true,
                 oConfigModel = this.getView().getModel('oBpInfoConfig');
-
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             if (sBpEmail === this.getView().getModel('oDataBpContact').getProperty('/Email')) {
                 bEmailChanged = false;
             } else {
@@ -1197,9 +1206,11 @@ sap.ui.define(
                     oConfigModel.setProperty('/contactInfoEditVisible', true);
                     oConfigModel.setProperty('/contactInfoSaveVisible', false);
                     oConfigModel.setProperty('/contactInfoEditable', false);
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Update Failed");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
 
@@ -1218,7 +1229,7 @@ sap.ui.define(
                 oConfigModel = this.getView().getModel('oBpInfoConfig');
 
             sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'\'' + ',EmailConsum=\'\')';
-
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
 
             oParameters = {
                 success : function (oData) {
@@ -1228,9 +1239,11 @@ sap.ui.define(
                     oConfigModel.setProperty('/contactInfoEditVisible', true);
                     oConfigModel.setProperty('/contactInfoSaveVisible', false);
                     oConfigModel.setProperty('/contactInfoEditable', false);
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Update Failed");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     this._oEmailEditPopup.close();
                 }.bind(this)
             };
