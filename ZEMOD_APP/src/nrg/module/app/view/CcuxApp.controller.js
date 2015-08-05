@@ -29,12 +29,28 @@ sap.ui.define(
             this._oApp.setHeaderMenuItemSelected(false, App.HMItemId.Menu);
 
             switch (oControlEvent.getSource().getId()) {
-            case App.QuickLinkId.Dashboard:
-                this._onDashboardClick(oControlEvent);
-                break;
-            case App.QuickLinkId.Campaign:
-                this._onCampaignClick(oControlEvent);
-                break;
+              case App.QuickLinkId.Dashboard:
+                  this._onDashboardClick(oControlEvent);
+                  break;
+              case App.QuickLinkId.Campaign:
+                  this._onCampaignClick(oControlEvent);
+                  break;
+              case App.QuickLinkId.BusinessPartner:
+                  this._onBusinessPartnerClick(oControlEvent);
+                  break;
+            }
+        };
+        
+        CustomController.prototype._onBusinessPartnerClick = function (oControlEvent) {
+            var oContext, oRouter;
+
+            oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
+            oRouter = this.getOwnerComponent().getRouter();
+
+            if (oContext.dashboard && oContext.dashboard.bpNum) {
+                oRouter.navTo('dashboard.BpInfo', {
+                    bpNum: oContext.dashboard.bpNum
+                });
             }
         };
 
