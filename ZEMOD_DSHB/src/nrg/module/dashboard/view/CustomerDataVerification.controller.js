@@ -987,15 +987,15 @@ sap.ui.define(
                 sBpNum = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
                 sBpEmail = this.getView().getModel('oDtaVrfyBP').getProperty('/Email'),
                 sBpEmailConsum = this.getView().getModel('oDtaVrfyBP').getProperty('/EmailConsum'),
-                sPath,
-                oPopupContent;
+                sPath;
 
             //Preapre Popup for Email Edit to show
-            //this.getView().byId("idEmailEditPopup").setVisible(true);
-            oPopupContent = sap.ui.xmlfragment("EmailEditPopup", "nrg.module.dashboard.view.CustomerVerificationPopup", this);
+            if (!this._oPopupContent) {
+                this._oPopupContent = sap.ui.xmlfragment("EmailEditPopup", "nrg.module.dashboard.view.CustomerVerificationPopup", this);
+            }
             this._oEmailEditPopup = ute.ui.main.Popup.create({
                 //close: this._handleEditMailPopupClose,
-                content: oPopupContent,
+                content: this._oPopupContent,
                 title: 'Email Address and Preferences'
             });
             this._oEmailEditPopup.setShowCloseButton(false);
