@@ -673,7 +673,7 @@
         </utmain:Infoline>
     </ute:Tag>
 
-    <ute:Tag id="idBpInfoEmailEditPopup" visible="false"
+<!--    <ute:Tag id="idBpInfoEmailEditPopup" visible="false"
         class="nrgDashboard-cusDataVerifyEditEmail">
         <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-desc">
             <ute:TextView
@@ -766,5 +766,5 @@
         <utmain:Button  id="idEditEmail_DelBtn" class="nrgDashboard-cusDataVerifyEditEmail-actBtn"
             text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_DEL}"
             press="._onEditEmailDelete"/>
-    </ute:Tag>
+    </ute:Tag>-->
 </mvc:View>
