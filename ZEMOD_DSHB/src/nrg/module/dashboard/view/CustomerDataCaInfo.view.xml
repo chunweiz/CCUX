@@ -567,7 +567,7 @@
         </utmain:Infoline>
 
     </ute:Tag>
-
+<!--
     <ute:Tag id="idAddrUpdatePopup" visible="false"
              class="nrgDashboard-cusDataVerifyEditMail">
         <ute:Tag id="idAddrUpdatePopup-HdrLn" visible="{oDtaAddrEdit>/updateSent}"
@@ -686,5 +686,6 @@
                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_EditBtn}"
                 press="._handleMailingEditBtn"/>
         </ute:Tag>
+        -->
     </ute:Tag>
 </mvc:View>
