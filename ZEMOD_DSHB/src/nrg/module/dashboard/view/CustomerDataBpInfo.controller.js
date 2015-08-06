@@ -1297,9 +1297,13 @@ sap.ui.define(
                 }
             }
         };
-        /*************************************************************************************************************/
-        /*Email Edit NNP logic*/
-        Controller.prototype._onShowDelEmailBox = function (sEmail) {
+        /**
+		 * Handler for first cancel of the email, show additional message and request for cancel or delete email.
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype._onShowDelEmailBox = function (oEvent) {
             var oEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-EmailBox"),
                 oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox"),
                 oNNP = this.getView().getModel('oEditEmailNNP');
@@ -1312,9 +1316,13 @@ sap.ui.define(
                 oDelEmailBox.setVisible(true);
             }
         };
-        /*************************************************************************************************************/
-        /*Email Edit NNP logic*/
-        Controller.prototype._onEmailCancel = function (sEmail) {
+        /**
+		 * Handler for Email Cancel, so refresh the data from backend for complete popup
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype._onEmailCancel = function (oEvent) {
             var oEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-EmailBox"),
                 oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox"),
                 sPath,
