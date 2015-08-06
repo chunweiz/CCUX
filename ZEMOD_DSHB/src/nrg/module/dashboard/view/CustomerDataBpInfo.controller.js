@@ -1233,7 +1233,8 @@ sap.ui.define(
 
             oParameters = {
                 success : function (oData) {
-                    sap.ui.commons.MessageBox.alert('Email Successfully Removed');
+                    //sap.ui.commons.MessageBox.alert('Email Successfully Removed');
+                    sap.ui.commons.MessageBox.alert("CONFIRMATION NEEDED: I just want to make sure you're aware that deleting email address will remove you from any Internet-based services we offer, including Online Account Management, online bill payment and Paperless Billing, and that all your bills and accounts notices will be sent via regular mail. Are you sure you want to do this? ");
                     this._oEmailEditPopup.close();
                     this._retrBpContact(sBpNum);
                     oConfigModel.setProperty('/contactInfoEditVisible', true);
@@ -1249,7 +1250,8 @@ sap.ui.define(
             };
 
             if ((oNNP.getProperty('/Ecd') === 'Y') || (oNNP.getProperty('/Mkt') === 'Y') || (oNNP.getProperty('/Offer') === 'Y') || (oNNP.getProperty('/Ee') === 'Y')) {
-                sap.ui.commons.MessageBox.alert("Set all marketing values to false first");
+                this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                sap.ui.commons.MessageBox.alert("Cannot delete email when preferences set to YES.");
                 return;
             } else {
                 if (oModel) {

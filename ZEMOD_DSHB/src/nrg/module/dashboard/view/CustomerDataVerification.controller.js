@@ -1167,6 +1167,7 @@ sap.ui.define(
             };
 
             if ((oNNP.getProperty('/Ecd') === 'Y') || (oNNP.getProperty('/Mkt') === 'Y') || (oNNP.getProperty('/Offer') === 'Y') || (oNNP.getProperty('/Ee') === 'Y')) {
+                this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 sap.ui.commons.MessageBox.alert("Cannot delete email when preferences set to YES.");
                 return;
             } else {
