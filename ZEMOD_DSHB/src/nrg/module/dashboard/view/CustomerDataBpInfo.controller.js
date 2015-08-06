@@ -159,7 +159,7 @@ sap.ui.define(
 
         CustomController.prototype.onBackToDashboard = function () {
             var oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo('dashboard.Bp', {bpNum: this._bpNum});
+            oRouter.navTo('dashboard.Bp', {bpNum: this._bpNum, caNum: 0});
         };
 
         CustomController.prototype.onTitleCancel = function () {    //onTitleCancel
@@ -1063,7 +1063,7 @@ sap.ui.define(
         /*************************************************************************************************************/
         /*Email Edit NNP logic*/
         Controller.prototype._formatEmailAddressText = function (sEmail) {
-            if (sEmail === '') {
+            if ((sEmail === '') || (sEmail === undefined)) {
                 return 'CLICK to ADD';
             } else {
                 return sEmail;
@@ -1101,14 +1101,26 @@ sap.ui.define(
                 sBpEmail = this.getView().getModel('oDataBpContact').getProperty('/Email'),
                 sBpEmailConsum = this.getView().getModel('oDataBpContact').getProperty('/EmailConsum'),
                 sPath,
-                oNNP = this.getView().getModel('oEditEmailNNP');
-
-            this.getView().byId("idBpInfoEmailEditPopup").setVisible(true);
+                oNNP = this.getView().getModel('oEditEmailNNP'),
+                oEmailBox,
+                oDelEmailBox;
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            //Preapre Popup for Email Edit to show
+            if (!this._oPopupContent) {
+                this._oPopupContent = sap.ui.xmlfragment("BPInfoEmailEditPopup", "nrg.module.dashboard.view.CustomerVerificationPopup", this);
+            }
+            oEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-EmailBox");
+            oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox");
+            oEmailBox.setVisible(true);
+            oDelEmailBox.setVisible(false);
+            //this.getView().byId("idBpInfoEmailEditPopup").setVisible(true);
             this._oEmailEditPopup = ute.ui.main.Popup.create({
                 //close: this._handleEditMailPopupClose,
-                content: this.getView().byId("idBpInfoEmailEditPopup"),
+                content: this._oPopupContent,
                 title: 'Email Address and Preferences'
             });
+            this.getView().addDependent(this._oEmailEditPopup);
+            this._oEmailEditPopup.open();
             this._oEmailEditPopup.setShowCloseButton(false);
             //this._oEmailEditPopup.open();
 
@@ -1118,12 +1130,13 @@ sap.ui.define(
                 /*urlParameters: {"$expand": "Buags"},*/
                 success : function (oData) {
                     if (oData) {
-                        this._oEmailEditPopup.open();
-                        oNNP.setData(oData);
+                        this.getView().getModel('oEditEmailNNP').setData(oData);
+                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     }
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("NNP Entity Service Error");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
 
@@ -1138,17 +1151,19 @@ sap.ui.define(
                 oParameters,
                 sPath,
                 sEmailAddr = this.getView().getModel('oEditEmailNNP').getProperty('/Email');
-
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             sPath = '/EmailVerifys' + '(\'' + sEmailAddr + '\')';
 
             oParameters = {
                 success : function (oData) {
                     if (oData) {
                         oEmailValidate.setData(oData);
+                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     }
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Email Validate Service Error");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
 
@@ -1168,7 +1183,7 @@ sap.ui.define(
                 oNNP = this.getView().getModel('oEditEmailNNP'),
                 bEmailChanged = true,
                 oConfigModel = this.getView().getModel('oBpInfoConfig');
-
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             if (sBpEmail === this.getView().getModel('oDataBpContact').getProperty('/Email')) {
                 bEmailChanged = false;
             } else {
@@ -1197,9 +1212,12 @@ sap.ui.define(
                     oConfigModel.setProperty('/contactInfoEditVisible', true);
                     oConfigModel.setProperty('/contactInfoSaveVisible', false);
                     oConfigModel.setProperty('/contactInfoEditable', false);
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    this._retrBpMarkPrefSet(sBpNum);
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Update Failed");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
 
@@ -1218,25 +1236,30 @@ sap.ui.define(
                 oConfigModel = this.getView().getModel('oBpInfoConfig');
 
             sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'\'' + ',EmailConsum=\'\')';
-
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
 
             oParameters = {
                 success : function (oData) {
-                    sap.ui.commons.MessageBox.alert('Email Successfully Removed');
+                    //sap.ui.commons.MessageBox.alert('Email Successfully Removed');
+                   // sap.ui.commons.MessageBox.alert("CONFIRMATION NEEDED: I just want to make sure you're aware that deleting email address will remove you from any Internet-based services we offer, including Online Account Management, online bill payment and Paperless Billing, and that all your bills and accounts notices will be sent via regular mail. Are you sure you want to do this? ");
                     this._oEmailEditPopup.close();
                     this._retrBpContact(sBpNum);
+                    this._retrBpMarkPrefSet(sBpNum);
                     oConfigModel.setProperty('/contactInfoEditVisible', true);
                     oConfigModel.setProperty('/contactInfoSaveVisible', false);
                     oConfigModel.setProperty('/contactInfoEditable', false);
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Update Failed");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     this._oEmailEditPopup.close();
                 }.bind(this)
             };
 
             if ((oNNP.getProperty('/Ecd') === 'Y') || (oNNP.getProperty('/Mkt') === 'Y') || (oNNP.getProperty('/Offer') === 'Y') || (oNNP.getProperty('/Ee') === 'Y')) {
-                sap.ui.commons.MessageBox.alert("Set all marketing values to false first");
+                this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                sap.ui.commons.MessageBox.alert("Cannot delete email when preferences set to YES.");
                 return;
             } else {
                 if (oModel) {
@@ -1273,6 +1296,29 @@ sap.ui.define(
                     oNNP.setProperty('/Ee', 'N');
                 }
             }
+        };
+        /*************************************************************************************************************/
+        /*Email Edit NNP logic*/
+        Controller.prototype._onShowDelEmailBox = function (sEmail) {
+            var oEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-EmailBox"),
+                oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox"),
+                oNNP = this.getView().getModel('oEditEmailNNP');
+            if ((oNNP.getProperty('/Ecd') === 'Y') || (oNNP.getProperty('/Mkt') === 'Y') || (oNNP.getProperty('/Offer') === 'Y') || (oNNP.getProperty('/Ee') === 'Y')) {
+                this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                sap.ui.commons.MessageBox.alert("Cannot delete email when preferences set to YES.");
+                return;
+            } else {
+                oEmailBox.setVisible(false);
+                oDelEmailBox.setVisible(true);
+            }
+        };
+        /*************************************************************************************************************/
+        /*Email Edit NNP logic*/
+        Controller.prototype._onEmailCancel = function (sEmail) {
+            var oEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-EmailBox"),
+                oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox");
+            oEmailBox.setVisible(true);
+            oDelEmailBox.setVisible(false);
         };
         /*************************************************************************************************************/
 

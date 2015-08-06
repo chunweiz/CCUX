@@ -46,7 +46,7 @@
                 },
 
                 "dashboard.Bp": {
-                    "pattern": "bp/{bpNum}",
+                    "pattern": "bp/{bpNum}/searchedInCa/{caNum}",
                     "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "dashboard.EmptyTools" ]
                 },
 

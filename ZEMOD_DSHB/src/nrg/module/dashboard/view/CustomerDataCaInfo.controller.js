@@ -152,11 +152,14 @@ sap.ui.define(
         };
 
         CustomController.prototype._onCaSelected = function (oEvent) {
-            var sSelectedKey = oEvent.getParameters().selectedKey;
+            var sSelectedKey = oEvent.getParameters().selectedKey,
+                eventBus = sap.ui.getCore().getEventBus(),
+                oPayload = {caNum: sSelectedKey};
 
             if (sSelectedKey) {
                 this._caNum = sSelectedKey;
                 this._retrBuagAddrDetail(this._caNum);
+                eventBus.publish("nrg.module.dashoard", "eBuagChangedFromCaInfo", oPayload);
             }
 
             return;
@@ -242,16 +245,43 @@ sap.ui.define(
             //this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
         };
 
+        Controller.prototype._getFromDate = function () {
+            var oDateNow = new Date(),
+                sCuYear,
+                sCuMonth,
+                sCuDay,
+                sCurrentTime;
+
+            sCuYear = oDateNow.getFullYear();
+            sCuMonth = oDateNow.getMonth() + 1;
+            sCuDay = oDateNow.getDate();
+
+            sCurrentTime = sCuYear + '-' + sCuMonth + '-' + sCuDay + 'T00:00:00';
+
+            return sCurrentTime;
+        };
+
         Controller.prototype._updateMailingAddr = function () {
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
                 sBpNum = this.getView().getModel('oDataBuagAddrDetails').getProperty('/PartnerID'),
                 sBuagNum = this.getView().getModel('oDataBuagAddrDetails').getProperty('/ContractAccountID'),
-                sFixedAddressID = this.getView().getModel('oDataBuagAddrDetails').getProperty('/FixedAddressID');
+                sFixedAddressID = this.getView().getModel('oDataBuagAddrDetails').getProperty('/FixedAddressID'),
+                sFromDate = this._getFromDate();
 
             if (this.getView().getModel('oCaInfoConfig').getProperty('/bAllBuagSelected')) {
                 this.getView().getModel('oDataBuagAddrDetails').setProperty('/SaveToAllCa', 'X');
+            }
+
+            if (this.getView().getModel('oDtaAddrEdit').getProperty('/bCreateFirst')) {
+                if (this.getView().getModel('oDataBuagAddrDetails').getProperty('/FixUpd') === 'X') {
+                    this.getView().getModel('oDataBuagAddrDetails').setProperty('/FixAddrInfo/ValidFrom', this._getFromDate());
+                    this.getView().getModel('oDataBuagAddrDetails').setProperty('/FixAddrInfo/ValidTo', '9999-12-31T00:00:00');
+                } else {
+                    this.getView().getModel('oDataBuagAddrDetails').setProperty('/TempAddrInfo/ValidFrom', this._getFromDate());
+                    this.getView().getModel('oDataBuagAddrDetails').setProperty('/TempAddrInfo/ValidTo', '9999-12-31T00:00:00');
+                }
             }
 
             sPath = '/BuagAddrDetails' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
@@ -395,11 +425,14 @@ sap.ui.define(
             this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
             this.getView().byId('idSuggCompareCheck').setChecked(false);
 
-            this._oMailEditPopup = ute.ui.main.Popup.create({
-                close: this._handleEditMailPopupClose.bind(this),
-                content: this.getView().byId("idAddrUpdatePopup"),
-                title: 'Edit Mailing Address'
-            });
+            if (!this._oMailEditPopup) {
+                this._oMailEditPopup = ute.ui.main.Popup.create({
+                    close: this._handleEditMailPopupClose.bind(this),
+                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
+                    title: 'Edit Mailing Address'
+                });
+                this.getView().addDependent(this._oMailEditPopup);
+            }
 
             this._beforeOpenEditAddrDialogue = true;
             this._oMailEditPopup.open();
@@ -412,18 +445,22 @@ sap.ui.define(
 
             oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDataBuagAddrDetails').getProperty('/TempAddrInfo'));
 
-            //this._onToggleButtonPress();
-            this.getView().byId("idTempAddrUpdatePopup").setVisible(true);
+            //Control what to or not to display
+            this.getView().byId("idAddrUpdatePopup").setVisible(true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
+            this.getView().byId('idSuggCompareCheck').setChecked(false);
 
-            this._oMailEditPopup = ute.ui.main.Popup.create({
-                close: this._handleEditMailPopupClose.bind(this),
-                content: this.getView().byId("idAddrUpdatePopup"),
-                title: 'Edit Temporary Mailing Address'
-            });
+            if (!this._oMailEditPopup) {
+                this._oMailEditPopup = ute.ui.main.Popup.create({
+                    close: this._handleEditMailPopupClose.bind(this),
+                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
+                    title: 'Edit Mailing Address'
+                });
+                this.getView().addDependent(this._oMailEditPopup);
+            }
 
             this._beforeOpenEditAddrDialogue = true;
             this._oMailEditPopup.open();
@@ -607,7 +644,7 @@ sap.ui.define(
 
         CustomController.prototype.onBackToDashboard = function () {
             var oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo('dashboard.Bp', {bpNum: this._bpNum});
+            oRouter.navTo('dashboard.Bp', {bpNum: this._bpNum, caNum: 0});
         };
 
         Controller.prototype._retrUrlHash = function () {

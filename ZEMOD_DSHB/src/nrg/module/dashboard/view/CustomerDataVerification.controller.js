@@ -16,60 +16,76 @@ sap.ui.define(
         var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataVerification');
 
         Controller.prototype.onInit = function () {
-            this._beforeOpenEditAddrDialogue = false;
+            //this._beforeOpenEditAddrDialogue = false;
         };
 
         Controller.prototype.onBeforeRendering = function () {
-            if (!this._beforeOpenEditAddrDialogue) {
-                this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
-                //console.log(this.getOwnerComponent().getCcuxApp().setTitle);
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+/*            if (!this._beforeOpenEditAddrDialogue) {*/
+            this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
+            //console.log(this.getOwnerComponent().getCcuxApp().setTitle);
 
-                this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
-                //Model to hold BP info
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBP');
+            //Model to hold BP info
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBP');
 
-                //Model to hold Buags (avoid too long of bindings
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBuags');
+            //Model to hold Buags (avoid too long of bindings
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBuags');
 
-                //Model to hold Contract
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyContracts');
+            //Model to hold Contract
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyContracts');
 
-                //Model to hold all Buags
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllBuags');
+            //Model to hold all Buags
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllBuags');
 
-                //Model to hold all Contracts of selected Buag
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllContractsofBuag');
+            //Model to hold all Contracts of selected Buag
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllContractsofBuag');
 
-                //Model to hold mailing/temp address
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');
-                //Model for Edit Popup Screen (Use the model to show on edit screen)
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
+            //Model to hold mailing/temp address
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');
+            //Model for Edit Popup Screen (Use the model to show on edit screen)
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
 
-                //Model to track "Confirm" or not status
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCfrmStatus');
+            //Model to track "Confirm" or not status
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCfrmStatus');
 
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCoPageModel');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCoPageModel');
 
-                //For Phone Type
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDayPhoneType');
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEvnPhoneType');
+            //For Phone Type
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDayPhoneType');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEvnPhoneType');
 
-                //For EditEmail Popup
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailNNP');
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailValidate');
+            //For EditEmail Popup
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailNNP');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailValidate');
 
-                //Siebel Customer Indicator
-                this.bSiebelCustomer = false;
+            //Siebel Customer Indicator
+            this.bSiebelCustomer = false;
 
-
-                this._initDtaVrfRetr();
-                this._initCfrmStatus();
-                this._initPhnTypes();
-                this._initMailAddrModels();
+            this._initToggleArea();
+            this._initDtaVrfRetr();
+            this._initCfrmStatus();
+            this._initPhnTypes();
+            this._initMailAddrModels();
                 //this._initCoPageModel();
-            } else {
+
+                //this._searchedCaNum = null;
+/*            } else {
                 this._beforeOpenEditAddrDialogue = false;
+            }*/
+        };
+        /* =========================================================== */
+        /* lifecycle method- After Rendering                          */
+        /* =========================================================== */
+        Controller.prototype.onAfterRendering = function () {
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
+        };
+
+        Controller.prototype._initToggleArea = function () {
+            if (!this.getView().byId('id_DshbTglBtn').getLeftSelected()) {
+                this.getView().byId('id_DshbTglBtn').setLeftSelected(true);
+                this._onToggleButtonPress(null);
             }
         };
 
@@ -125,12 +141,19 @@ sap.ui.define(
         };
 
         Controller.prototype._initDtaVrfRetr = function () {        //Only called once when entering the verification page
-            var sPath, aSplitHash, iSplitHashL;
+            var sPath,
+                aSplitHash,
+                iSplitHashL,
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
+                bp = oRouteInfo.parameters.bpNum;
 
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
-            sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 1] + '\')';
+            sPath = '/Partners' + '(\'' + bp + '\')';
 
+            if (aSplitHash[iSplitHashL - 1] !== 0) {
+                this._searchedCaNum = aSplitHash[iSplitHashL - 1];
+            }
             this._retrDataVrf(sPath);
 
         };
@@ -161,7 +184,7 @@ sap.ui.define(
                             });
                             //this._onToggleButtonPress();
                             this.getView().byId("idSiebelAccAlert").setVisible(true);
-                            this._beforeOpenEditAddrDialogue = true;
+                            //this._beforeOpenEditAddrDialogue = true;
                             this._oSiebelAlertPopup.open();
                         }
                     }
@@ -205,6 +228,19 @@ sap.ui.define(
                         }
                         this.getView().getModel('oAllBuags').setData(oData.results);
                         this.getView().getModel('oAllBuags').setProperty('/selectedKey', iPreSelCA);
+
+                        //*************************************************************************************/
+                        //Logic for search with CA
+                        if (this._searchedCaNum) {
+                            for (i = 0; i < oData.results.length; i = i + 1) {
+                                if (this.getView().getModel('oAllBuags').oData[i].ContractAccountID === this._searchedCaNum) {
+                                    this._searchedCaNum = null;
+                                    this._retrBuag(sBpNum, i);
+                                    return;
+                                }
+                            }
+                        }
+                        //*************************************************************************************/
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -323,7 +359,7 @@ sap.ui.define(
         };*/
 
         Controller.prototype._onToggleButtonPress = function (oEvent) {
-            var l_selected = this.getView().byId('id_DshbTglBtn').getLeftSelected();
+            //var l_selected = this.getView().byId('id_DshbTglBtn').getLeftSelected();
             if (this.getView().byId('mailadd_area').getVisible()) {
                 this.getView().byId('mailadd_area').setVisible(false);
                 this.getView().byId('serviceadd_area').setVisible(true);
@@ -640,21 +676,18 @@ sap.ui.define(
             }
         };
 
-        Controller.prototype._handleEditMailPopupClose = function (oEvent) {
-            var oLeftInputArea = this.getContent()[0].getContent()[1].getContent(),
-                oRightSuggArea = this.getContent()[0].getContent()[2].getContent(),
-                i;
+        Controller.prototype._cleanUpAddrEditPop = function () {
+            var i;
 
-
-            this.getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
-            this.getContent()[0].getContent()[0].setVisible(false);
-            this.getContent()[0].getContent()[1].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
-            this.getContent()[0].getContent()[2].setVisible(false);
+            this.getView().byId('idAddrUpdatePopup').removeStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
+            this.getView().byId('idAddrUpdatePopup-HdrLn').setVisible(false);
+            this.getView().byId('idAddrUpdatePopup-l').removeStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
+            this.getView().byId('idAddrUpdatePopup-r').setVisible(false);
 
 
             for (i = 1; i < 8; i = i + 1) {
-                oLeftInputArea[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
-                oRightSuggArea[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
+                this.getView().byId('idAddrUpdatePopup-l').getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
+                this.getView().byId('idAddrUpdatePopup-r').getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
             }
         };
 
@@ -753,6 +786,7 @@ sap.ui.define(
                     this._oMailEditPopup.close();
                 }.bind(this),
                 error: function (oError) {
+                    this._oMailEditPopup.close();
                     sap.ui.commons.MessageBox.alert("Update Failed");
                 }.bind(this)
             };
@@ -858,50 +892,67 @@ sap.ui.define(
         };
 
         Controller.prototype._onEditMailAddrClick = function (oEvent) {
-            var oEditMail = this.getView().getModel('oDtaAddrEdit');
-
-            this._oMailEditPopup = ute.ui.main.Popup.create({
-                close: this._handleEditMailPopupClose,
-                content: this.getView().byId("idAddrUpdatePopup"),
-                title: 'Edit Mailing Address'
-            });
+            var oEditMail = this.getView().getModel('oDtaAddrEdit'),
+                oCompareEvnet = {mParameters: {checked: null}};
 
             oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/FixAddrInfo'));
 
+            if (!this._oMailEditPopup) {
+                this._oMailEditPopup = ute.ui.main.Popup.create({
+                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
+                    title: 'Edit Mailing Address'
+                });
+                this.getView().addDependent(this._oMailEditPopup);
+                /*this._oMailEditPopup = ute.ui.main.Popup.create({
+                    close: this._handleEditMailPopupClose.bind(this),
+                    content: this.getView().byId("idAddrUpdatePopup"),
+                    title: 'Edit Mailing Address'
+                });*/
+            }
+
             //Control what to or not to display
-            this.getView().byId("idAddrUpdatePopup").setVisible(true);
+            this._cleanUpAddrEditPop();
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
             this.getView().byId('idSuggCompareCheck').setChecked(false);
+            if (this.getView().byId('idSuggCompareCheck').getChecked()) {
+                oCompareEvnet.mParameters.checked = false;
+                this._compareSuggChkClicked(oCompareEvnet);
+            }
 
-            this._beforeOpenEditAddrDialogue = true;
             this._oMailEditPopup.open();
         };
 
 
         Controller.prototype._onEditTempAddrClick = function (oEvent) {
-            var oEditMail = this.getView().getModel('oDtaAddrEdit');
-
-            this._oMailEditPopup = ute.ui.main.Popup.create({
-                close: this._handleEditMailPopupClose,
-                content: this.getView().byId("idAddrUpdatePopup"),
-                title: 'Edit Temp Mailing Address'
-            });
+            var oEditMail = this.getView().getModel('oDtaAddrEdit'),
+                oCompareEvnet = {mParameters: {checked: null}};
 
             oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/TempAddrInfo'));
+            if (!this._oMailEditPopup) {
+                this._oMailEditPopup = ute.ui.main.Popup.create({
+                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
+                    title: 'Edit Mailing Address'
+                });
+                this.getView().addDependent(this._oMailEditPopup);
+            }
 
-            //this._onToggleButtonPress();
-            this.getView().byId("idTempAddrUpdatePopup").setVisible(true);
+            //Control what to or not to display
+            this._cleanUpAddrEditPop();
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
+            this.getView().byId('idSuggCompareCheck').setChecked(false);
+            if (this.getView().byId('idSuggCompareCheck').getChecked()) {
+                oCompareEvnet.mParameters.checked = false;
+                this._compareSuggChkClicked(oCompareEvnet);
+            }
 
-            this._beforeOpenEditAddrDialogue = true;
             this._oMailEditPopup.open();
         };
 
@@ -968,7 +1019,7 @@ sap.ui.define(
         };
 
 
-        /*************************************************************************************/
+    /*************************************************************************************/
         //Edit Email
         Controller.prototype._handleEmailEdit = function (oEvent) {
             var oModel = this.getView().getModel('oODataSvc'),
@@ -977,16 +1028,26 @@ sap.ui.define(
                 sBpEmail = this.getView().getModel('oDtaVrfyBP').getProperty('/Email'),
                 sBpEmailConsum = this.getView().getModel('oDtaVrfyBP').getProperty('/EmailConsum'),
                 sPath,
-                oNNP = this.getView().getModel('oEditEmailNNP');
+                oEmailBox,
+                oDelEmailBox;
 
             //Preapre Popup for Email Edit to show
-            this.getView().byId("idEmailEditPopup").setVisible(true);
+            if (!this._oPopupContent) {
+                this._oPopupContent = sap.ui.xmlfragment("EmailEditPopup", "nrg.module.dashboard.view.CustomerVerificationPopup", this);
+            }
+            oEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-EmailBox");
+            oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox");
+            oEmailBox.setVisible(true);
+            oDelEmailBox.setVisible(false);
             this._oEmailEditPopup = ute.ui.main.Popup.create({
                 //close: this._handleEditMailPopupClose,
-                content: this.getView().byId("idEmailEditPopup"),
+                content: this._oPopupContent,
                 title: 'Email Address and Preferences'
             });
             this._oEmailEditPopup.setShowCloseButton(false);
+            this.getView().addDependent(this._oEmailEditPopup);
+            this._oEmailEditPopup.open();
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
 
             //Start loading NNP logics and settings
             sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
@@ -995,11 +1056,13 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         this._beforeOpenEditAddrDialogue = true;
-                        this._oEmailEditPopup.open();
-                        oNNP.setData(oData);
+                        this.getView().getModel('oEditEmailNNP').setData(oData);
+                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     }
                 }.bind(this),
                 error: function (oError) {
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    this._oEmailEditPopup.close();
                     sap.ui.commons.MessageBox.alert("NNP Entity Service Error");
                 }.bind(this)
             };
@@ -1014,7 +1077,11 @@ sap.ui.define(
                 oModel = this.getView().getModel('oODataSvc'),
                 oParameters,
                 sPath,
-                sEmailAddr = this.getView().getModel('oEditEmailNNP').getProperty('/Email');
+                sEmailAddr,
+                oEditEmailNNP = this.getView().getModel('oEditEmailNNP');
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            oEditEmailNNP.refresh(true);
+            sEmailAddr = oEditEmailNNP.getProperty('/Email');
 
             sPath = '/EmailVerifys' + '(\'' + sEmailAddr + '\')';
 
@@ -1022,10 +1089,13 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         oEmailValidate.setData(oData);
+
                     }
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Email Validate Service Error");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
 
@@ -1044,7 +1114,7 @@ sap.ui.define(
                 sBpEmailConsum = this.getView().getModel('oEditEmailNNP').getProperty('/EmailConsum'),
                 oNNP = this.getView().getModel('oEditEmailNNP'),
                 bEmailChanged = true;
-
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             if (sBpEmail === this.getView().getModel('oDtaVrfyBP').getProperty('/Email')) {
                 bEmailChanged = false;
             } else {
@@ -1070,9 +1140,11 @@ sap.ui.define(
                     }
                     this._oEmailEditPopup.close();
                     this._initDtaVrfRetr();
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Update Failed");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
 
@@ -1089,25 +1161,29 @@ sap.ui.define(
                 //sBpEmailConsum = this.getView().getModel('oDtaVrfyBP').getProperty('/EmailConsum');
                 oNNP = this.getView().getModel('oEditEmailNNP');
 
-
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             //oNNP.setProperty('/Email', '');
             sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'\'' + ',EmailConsum=\'\')';
 
 
             oParameters = {
                 success : function (oData) {
-                    sap.ui.commons.MessageBox.alert('Email Successfully Removed');
+                    // The following msg need to pull from the backend instead of hardcoding.
+/*                    sap.ui.commons.MessageBox.alert("CONFIRMATION NEEDED: I just want to make sure you're aware that deleting email address will remove you from any Internet-based services we offer, including Online Account Management, online bill payment and Paperless Billing, and that all your bills and accounts notices will be sent via regular mail. Are you sure you want to do this? ");*/
                     this._oEmailEditPopup.close();
                     this._initDtaVrfRetr();
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
-                    sap.ui.commons.MessageBox.alert("Update Failed");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     this._oEmailEditPopup.close();
+                    sap.ui.commons.MessageBox.alert("Update Failed");
                 }.bind(this)
             };
 
             if ((oNNP.getProperty('/Ecd') === 'Y') || (oNNP.getProperty('/Mkt') === 'Y') || (oNNP.getProperty('/Offer') === 'Y') || (oNNP.getProperty('/Ee') === 'Y')) {
-                sap.ui.commons.MessageBox.alert("Set all marketing values to false first");
+                this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                sap.ui.commons.MessageBox.alert("Cannot delete email when preferences set to YES.");
                 return;
             } else {
                 if (oModel) {
@@ -1145,7 +1221,38 @@ sap.ui.define(
                 }
             }
         };
-        /*************************************************************************************/
+        /*************************************************************************************************************/
+        /*Email Edit NNP logic*/
+        Controller.prototype._formatEmailAddressText = function (sEmail) {
+            if ((sEmail === '') || (sEmail === undefined)) {
+                return 'CLICK to ADD';
+            } else {
+                return sEmail;
+            }
+        };
+        /*************************************************************************************************************/
+        /*Email Edit NNP logic*/
+        Controller.prototype._onShowDelEmailBox = function (sEmail) {
+            var oEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-EmailBox"),
+                oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox"),
+                oNNP = this.getView().getModel('oEditEmailNNP');
+            if ((oNNP.getProperty('/Ecd') === 'Y') || (oNNP.getProperty('/Mkt') === 'Y') || (oNNP.getProperty('/Offer') === 'Y') || (oNNP.getProperty('/Ee') === 'Y')) {
+                this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                sap.ui.commons.MessageBox.alert("Cannot delete email when preferences set to YES.");
+                return;
+            } else {
+                oEmailBox.setVisible(false);
+                oDelEmailBox.setVisible(true);
+            }
+        };
+        /*************************************************************************************************************/
+        /*Email Edit NNP logic*/
+        Controller.prototype._onEmailCancel = function (sEmail) {
+            var oEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-EmailBox"),
+                oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox");
+            oEmailBox.setVisible(true);
+            oDelEmailBox.setVisible(false);
+        };
 
         return Controller;
     }
