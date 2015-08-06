@@ -73,6 +73,11 @@
                 "dashboard.CaInfo": {
                     "pattern": "cainfo/bp/{bpNum}/ca/{caNum}",
                     "target": [ "dashboard.CustomerDataCaInfo", "dashboard.CustomerDataSummary", "dashboard.Tools" ]
+                },
+
+                "dashboard.ChkBook": {
+                    "pattern": "bp/{bpNum}/checkbook",
+                    "target": ["dashboard.Checkbook", "dashboard.CustomerDataSummary", "dashboard.Tools"]
                 }
             },
 
@@ -143,6 +148,11 @@
 
                 "dashboard.CustomerDataCaInfo": {
                     "viewName": "nrg.module.dashboard.view.CustomerDataCaInfo",
+                    "controlId": "idAppGeneral"
+                },
+
+                "dashboard.Checkbook": {
+                    "viewName": "nrg.module.dashboard.view.BillingCheckbook",
                     "controlId": "idAppGeneral"
                 }
             }

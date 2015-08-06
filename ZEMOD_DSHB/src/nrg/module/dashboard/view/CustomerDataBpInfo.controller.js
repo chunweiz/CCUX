@@ -1109,8 +1109,8 @@ sap.ui.define(
             if (!this._oPopupContent) {
                 this._oPopupContent = sap.ui.xmlfragment("BPInfoEmailEditPopup", "nrg.module.dashboard.view.CustomerVerificationPopup", this);
             }
-            oEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-EmailBox");
-            oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox");
+            oEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-EmailBox");
+            oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox");
             oEmailBox.setVisible(true);
             oDelEmailBox.setVisible(false);
             //this.getView().byId("idBpInfoEmailEditPopup").setVisible(true);
@@ -1297,9 +1297,13 @@ sap.ui.define(
                 }
             }
         };
-        /*************************************************************************************************************/
-        /*Email Edit NNP logic*/
-        Controller.prototype._onShowDelEmailBox = function (sEmail) {
+        /**
+		 * Handler for first cancel of the email, show additional message and request for cancel or delete email.
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype._onShowDelEmailBox = function (oEvent) {
             var oEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-EmailBox"),
                 oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox"),
                 oNNP = this.getView().getModel('oEditEmailNNP');
@@ -1312,11 +1316,41 @@ sap.ui.define(
                 oDelEmailBox.setVisible(true);
             }
         };
-        /*************************************************************************************************************/
-        /*Email Edit NNP logic*/
-        Controller.prototype._onEmailCancel = function (sEmail) {
+        /**
+		 * Handler for Email Cancel, so refresh the data from backend for complete popup
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype._onEmailCancel = function (oEvent) {
             var oEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-EmailBox"),
-                oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox");
+                oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox"),
+                sPath,
+                oModel = this.getView().getModel('oODataSvc'),
+                sBpNum = this.getView().getModel('oEditEmailNNP').getProperty('/PartnerID'),
+                sBpEmail = this.getView().getModel('oDataBpContact').getProperty('/Email'),
+                sBpEmailConsum = this.getView().getModel('oDataBpContact').getProperty('/EmailConsum'),
+                oParameters;
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            //Start loading NNP logics and settings
+            sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
+            oParameters = {
+                /*urlParameters: {"$expand": "Buags"},*/
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oEditEmailNNP').setData(oData);
+                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("NNP Entity Service Error");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
             oEmailBox.setVisible(true);
             oDelEmailBox.setVisible(false);
         };

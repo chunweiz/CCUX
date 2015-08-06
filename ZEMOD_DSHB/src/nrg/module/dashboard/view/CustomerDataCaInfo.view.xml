@@ -263,7 +263,7 @@
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="false"
-                                                               value="{parts:[ 'oDataBuagAddrDetails>/FixAddrInfo/ValidFrom'], formatter:'._formatDate'}"/>
+                                                               value="{path: oDataBuagAddrDetails>/FixAddrInfo/ValidFrom', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -282,7 +282,7 @@
                                                 <!--editable="{oCaInfoConfig>/mailAddrEditable}"-->
                                                 <ute:Textfield fieldType="Noborder" editable="false"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
-                                                               value="{parts:[ 'oDataBuagAddrDetails>/FixAddrInfo/ValidTo'], formatter:'._formatDate'}"/>
+                                                               value="{path: oDataBuagAddrDetails>/FixAddrInfo/ValidTo', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -512,7 +512,7 @@
                                                 <!--editable="{oCaInfoConfig>/tempAddrEditable}"-->
                                                 <ute:Textfield fieldType="Noborder" editable="false"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
-                                                               value="{parts:[ 'oDataBuagAddrDetails>/TempAddrInfo/ValidFrom'], formatter:'._formatDate'}"/>
+                                                               value="{path: 'oDataBuagAddrDetails>/TempAddrInfo/ValidFrom', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
@@ -531,7 +531,7 @@
                                                 <!--editable="{oCaInfoConfig>/tempAddrEditable}"-->
                                                 <ute:Textfield fieldType="Noborder" editable="false"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
-                                                               value="{parts:[ 'oDataBuagAddrDetails>/TempAddrInfo/ValidTo'], formatter:'._formatDate'}"/>
+                                                               value="{path: 'oDataBuagAddrDetails>/TempAddrInfo/ValidTo', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
