@@ -904,8 +904,12 @@ sap.ui.define(
             }
 
             //Control what to or not to display
+<<<<<<< HEAD
             this._cleanUpAddrEditPop();
             this.getView().byId("idAddrUpdatePopup").setVisible(true);
+=======
+            //this.getView().byId("idAddrUpdatePopup").setVisible(true);
+>>>>>>> NRG/master
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
@@ -1155,7 +1159,8 @@ sap.ui.define(
 
             oParameters = {
                 success : function (oData) {
-                    sap.ui.commons.MessageBox.alert('Email Successfully Removed');
+                    // The following msg need to pull from the backend instead of hardcoding.
+/*                    sap.ui.commons.MessageBox.alert("CONFIRMATION NEEDED: I just want to make sure you're aware that deleting email address will remove you from any Internet-based services we offer, including Online Account Management, online bill payment and Paperless Billing, and that all your bills and accounts notices will be sent via regular mail. Are you sure you want to do this? ");*/
                     this._oEmailEditPopup.close();
                     this._initDtaVrfRetr();
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
@@ -1168,7 +1173,8 @@ sap.ui.define(
             };
 
             if ((oNNP.getProperty('/Ecd') === 'Y') || (oNNP.getProperty('/Mkt') === 'Y') || (oNNP.getProperty('/Offer') === 'Y') || (oNNP.getProperty('/Ee') === 'Y')) {
-                sap.ui.commons.MessageBox.alert("Set all marketing values to false first");
+                this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                sap.ui.commons.MessageBox.alert("Cannot delete email when preferences set to YES.");
                 return;
             } else {
                 if (oModel) {
@@ -1214,6 +1220,22 @@ sap.ui.define(
             } else {
                 return sEmail;
             }
+        };
+        /*************************************************************************************************************/
+        /*Email Edit NNP logic*/
+        Controller.prototype._onShowDelEmailBox = function (sEmail) {
+            var oEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-EmailBox"),
+                oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox");
+            oEmailBox.setVisible(false);
+            oDelEmailBox.setVisible(true);
+        };
+        /*************************************************************************************************************/
+        /*Email Edit NNP logic*/
+        Controller.prototype._onEmailCancel = function (sEmail) {
+            var oEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-EmailBox"),
+                oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox");
+            oEmailBox.setVisible(true);
+            oDelEmailBox.setVisible(false);
         };
 
         return Controller;
