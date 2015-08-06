@@ -134,11 +134,15 @@ sap.ui.define(
         };
 
         Controller.prototype._initDtaVrfRetr = function () {        //Only called once when entering the verification page
-            var sPath, aSplitHash, iSplitHashL;
+            var sPath,
+                aSplitHash,
+                iSplitHashL,
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
+                bp = oRouteInfo.parameters.bpNum;
 
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
-            sPath = '/Partners' + '(\'' + aSplitHash[iSplitHashL - 3] + '\')';
+            sPath = '/Partners' + '(\'' + bp + '\')';
 
             if (aSplitHash[iSplitHashL - 1] !== 0) {
                 this._searchedCaNum = aSplitHash[iSplitHashL - 1];
@@ -1042,6 +1046,8 @@ sap.ui.define(
                     }
                 }.bind(this),
                 error: function (oError) {
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    this._oEmailEditPopup.close();
                     sap.ui.commons.MessageBox.alert("NNP Entity Service Error");
                 }.bind(this)
             };
@@ -1153,9 +1159,9 @@ sap.ui.define(
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
-                    sap.ui.commons.MessageBox.alert("Update Failed");
-                    this._oEmailEditPopup.close();
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    this._oEmailEditPopup.close();
+                    sap.ui.commons.MessageBox.alert("Update Failed");
                 }.bind(this)
             };
 
@@ -1198,7 +1204,15 @@ sap.ui.define(
                 }
             }
         };
-        /*************************************************************************************/
+        /*************************************************************************************************************/
+        /*Email Edit NNP logic*/
+        Controller.prototype._formatEmailAddressText = function (sEmail) {
+            if ((sEmail === '') || (sEmail === undefined)) {
+                return 'CLICK to ADD';
+            } else {
+                return sEmail;
+            }
+        };
 
         return Controller;
     }

@@ -373,7 +373,9 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
                                             <utmain:Button  id="email_lbl" design="None"
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput nrgDashboard-cusDataVerify-mContent-hEmailInput"
-                                                text="{oDtaVrfyBP>/Email}" enabled="{oCfrmStatus>/bEditable}"
+                                                enabled="{oCfrmStatus>/bEditable}"
+                                                text="{parts:['oDtaVrfyBP>/Email'],
+                                                           formatter:'._formatEmailAddressText'}"
                                                 press="._handleEmailEdit"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
