@@ -79,7 +79,7 @@ sap.ui.define(
         /* lifecycle method- After Rendering                          */
         /* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
-            this.getOwnerComponent().getCcuxApp().setOccupied(false);
+            //this.getOwnerComponent().getCcuxApp().setOccupied(false);
         };
 
         Controller.prototype._initToggleArea = function () {
@@ -188,8 +188,10 @@ sap.ui.define(
                             this._oSiebelAlertPopup.open();
                         }
                     }
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     //Need to put error message
                 }.bind(this)
             };
