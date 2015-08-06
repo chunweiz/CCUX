@@ -1109,8 +1109,8 @@ sap.ui.define(
             if (!this._oPopupContent) {
                 this._oPopupContent = sap.ui.xmlfragment("BPInfoEmailEditPopup", "nrg.module.dashboard.view.CustomerVerificationPopup", this);
             }
-            oEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-EmailBox");
-            oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox");
+            oEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-EmailBox");
+            oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox");
             oEmailBox.setVisible(true);
             oDelEmailBox.setVisible(false);
             //this.getView().byId("idBpInfoEmailEditPopup").setVisible(true);
