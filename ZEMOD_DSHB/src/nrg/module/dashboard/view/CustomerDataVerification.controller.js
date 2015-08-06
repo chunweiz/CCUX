@@ -16,7 +16,7 @@ sap.ui.define(
         var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataVerification');
 
         Controller.prototype.onInit = function () {
-            this._beforeOpenEditAddrDialogue = false;
+            //this._beforeOpenEditAddrDialogue = false;
         };
 
         Controller.prototype.onBeforeRendering = function () {
@@ -177,7 +177,7 @@ sap.ui.define(
                             });
                             //this._onToggleButtonPress();
                             this.getView().byId("idSiebelAccAlert").setVisible(true);
-                            this._beforeOpenEditAddrDialogue = true;
+                            //this._beforeOpenEditAddrDialogue = true;
                             this._oSiebelAlertPopup.open();
                         }
                     }
@@ -669,9 +669,8 @@ sap.ui.define(
             }
         };
 
-        Controller.prototype._handleEditMailPopupClose = function (oEvent) {
+        Controller.prototype._cleanUpAddrEditPop = function () {
             var i;
-
 
             this.getView().byId('idAddrUpdatePopup').removeStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
             this.getView().byId('idAddrUpdatePopup-HdrLn').setVisible(false);
@@ -683,8 +682,6 @@ sap.ui.define(
                 this.getView().byId('idAddrUpdatePopup-l').getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
                 this.getView().byId('idAddrUpdatePopup-r').getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
             }
-
-            //this._oMailEditPopup.destroy();
         };
 
         Controller.prototype._handleMailingAddrUpdate = function (oEvent) {
@@ -888,11 +885,13 @@ sap.ui.define(
         };
 
         Controller.prototype._onEditMailAddrClick = function (oEvent) {
-            var oEditMail = this.getView().getModel('oDtaAddrEdit');
+            var oEditMail = this.getView().getModel('oDtaAddrEdit'),
+                oCompareEvnet = {mParameters: {checked: null}};
+
+            oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/FixAddrInfo'));
 
             if (!this._oMailEditPopup) {
                 this._oMailEditPopup = ute.ui.main.Popup.create({
-                    close: this._handleEditMailPopupClose,
                     content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
                     title: 'Edit Mailing Address'
                 });
@@ -904,36 +903,37 @@ sap.ui.define(
                 });*/
             }
 
-            oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/FixAddrInfo'));
-
             //Control what to or not to display
+            this._cleanUpAddrEditPop();
             this.getView().byId("idAddrUpdatePopup").setVisible(true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
-            this.getView().byId('idSuggCompareCheck').setChecked(false);
+            //this.getView().byId('idSuggCompareCheck').setChecked(false);
+            if (this.getView().byId('idSuggCompareCheck').getChecked()) {
+                oCompareEvnet.mParameters.checked = false;
+                this._compareSuggChkClicked(oCompareEvnet);
+            }
 
-            this._beforeOpenEditAddrDialogue = true;
             this._oMailEditPopup.open();
         };
 
 
         Controller.prototype._onEditTempAddrClick = function (oEvent) {
-            var oEditMail = this.getView().getModel('oDtaAddrEdit');
+            var oEditMail = this.getView().getModel('oDtaAddrEdit'),
+                oCompareEvnet = {mParameters: {checked: null}};
 
+            oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/TempAddrInfo'));
             if (!this._oMailEditPopup) {
                 this._oMailEditPopup = ute.ui.main.Popup.create({
-                    close: this._handleEditMailPopupClose,
                     content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
                     title: 'Edit Mailing Address'
                 });
                 this.getView().addDependent(this._oMailEditPopup);
             }
 
-            oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/TempAddrInfo'));
-
             //Control what to or not to display
             this.getView().byId("idAddrUpdatePopup").setVisible(true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
@@ -941,9 +941,11 @@ sap.ui.define(
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
-            this.getView().byId('idSuggCompareCheck').setChecked(false);
+            if (this.getView().byId('idSuggCompareCheck').getChecked()) {
+                oCompareEvnet.mParameters.checked = false;
+                this._compareSuggChkClicked(oCompareEvnet);
+            }
 
-            this._beforeOpenEditAddrDialogue = true;
             this._oMailEditPopup.open();
         };
 
