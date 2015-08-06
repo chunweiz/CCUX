@@ -102,15 +102,16 @@
                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EmlPup_DEL}"
                 press="._onShowDelEmailBox"/>
         </ute:Tag>
-        <ute:Tag id="idnrgDB-DelEmailBox" visible="false">
+        <ute:Tag id="idnrgDB-DelEmailBox" class="nrgDashboard-DelEmailBox" visible="false">
                 <ute:Tag text="CONFIRMATION NEEDED: I just want to make sure you're aware that deleting email address will remove you from any Internet-based services we offer, including Online Account Management, online bill payment and Paperless Billing, and that all your bills and accounts notices will be sent via regular mail. Are you sure you want to do this? " />
+            <ute:Tag class="nrgDashboard-DelEmailBox-btns">
                 <utmain:Button class="nrgDashboard-cusDataVerifyEditEmail-actBtn"
                 text="Cancel"
                 press="._onEmailCancel"/>
             <utmain:Button class="nrgDashboard-cusDataVerifyEditEmail-actBtn"
                 text="Delete Email Address"
                 press="._onEditEmailDelete"/>
-
+            </ute:Tag>
         </ute:Tag>
     </ute:Tag>
 </core:FragmentDefinition>
