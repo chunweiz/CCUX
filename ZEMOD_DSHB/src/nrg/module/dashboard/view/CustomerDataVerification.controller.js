@@ -1249,7 +1249,33 @@ sap.ui.define(
         /*Email Edit NNP logic*/
         Controller.prototype._onEmailCancel = function (sEmail) {
             var oEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-EmailBox"),
-                oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox");
+                oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox"),
+                sPath,
+                oModel = this.getView().getModel('oODataSvc'),
+                oParameters,
+                sBpNum = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+                sBpEmail = this.getView().getModel('oDtaVrfyBP').getProperty('/Email'),
+                sBpEmailConsum = this.getView().getModel('oDtaVrfyBP').getProperty('/EmailConsum');
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            //Start loading NNP logics and settings
+            sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
+            oParameters = {
+                /*urlParameters: {"$expand": "Buags"},*/
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oEditEmailNNP').setData(oData);
+                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("NNP Entity Service Error");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
             oEmailBox.setVisible(true);
             oDelEmailBox.setVisible(false);
         };
