@@ -904,12 +904,7 @@ sap.ui.define(
             }
 
             //Control what to or not to display
-<<<<<<< HEAD
             this._cleanUpAddrEditPop();
-            this.getView().byId("idAddrUpdatePopup").setVisible(true);
-=======
-            //this.getView().byId("idAddrUpdatePopup").setVisible(true);
->>>>>>> NRG/master
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
