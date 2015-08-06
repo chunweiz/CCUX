@@ -1207,6 +1207,7 @@ sap.ui.define(
                     oConfigModel.setProperty('/contactInfoSaveVisible', false);
                     oConfigModel.setProperty('/contactInfoEditable', false);
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    this._retrBpMarkPrefSet(sBpNum);
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Update Failed");
@@ -1237,6 +1238,7 @@ sap.ui.define(
                     sap.ui.commons.MessageBox.alert("CONFIRMATION NEEDED: I just want to make sure you're aware that deleting email address will remove you from any Internet-based services we offer, including Online Account Management, online bill payment and Paperless Billing, and that all your bills and accounts notices will be sent via regular mail. Are you sure you want to do this? ");
                     this._oEmailEditPopup.close();
                     this._retrBpContact(sBpNum);
+                    this._retrBpMarkPrefSet(sBpNum);
                     oConfigModel.setProperty('/contactInfoEditVisible', true);
                     oConfigModel.setProperty('/contactInfoSaveVisible', false);
                     oConfigModel.setProperty('/contactInfoEditable', false);
