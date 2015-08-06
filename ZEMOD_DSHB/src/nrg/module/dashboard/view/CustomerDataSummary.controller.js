@@ -13,7 +13,6 @@ sap.ui.define(
 
         var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataSummary');
 
-
         Controller.prototype._formatBadge = function (cIndicator) {
             if (cIndicator === 'x' || cIndicator === 'X') {
                 return true;
@@ -202,6 +201,7 @@ sap.ui.define(
             oParameters = {
                 urlParameters: {"$expand": "Buags"},
                 success : function (oData) {
+
                     if (oData) {
                         this.getView().getModel('oSmryBpInf').setData(oData);
                         if (oData.Buags.results[0]) {
