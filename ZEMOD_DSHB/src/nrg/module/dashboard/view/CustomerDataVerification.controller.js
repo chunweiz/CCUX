@@ -21,59 +21,59 @@ sap.ui.define(
 
         Controller.prototype.onBeforeRendering = function () {
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
-            if (!this._beforeOpenEditAddrDialogue) {
-                this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
-                //console.log(this.getOwnerComponent().getCcuxApp().setTitle);
+/*            if (!this._beforeOpenEditAddrDialogue) {*/
+            this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
+            //console.log(this.getOwnerComponent().getCcuxApp().setTitle);
 
-                this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
-                //Model to hold BP info
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBP');
+            //Model to hold BP info
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBP');
 
-                //Model to hold Buags (avoid too long of bindings
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBuags');
+            //Model to hold Buags (avoid too long of bindings
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBuags');
 
-                //Model to hold Contract
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyContracts');
+            //Model to hold Contract
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyContracts');
 
-                //Model to hold all Buags
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllBuags');
+            //Model to hold all Buags
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllBuags');
 
-                //Model to hold all Contracts of selected Buag
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllContractsofBuag');
+            //Model to hold all Contracts of selected Buag
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllContractsofBuag');
 
-                //Model to hold mailing/temp address
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');
-                //Model for Edit Popup Screen (Use the model to show on edit screen)
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
+            //Model to hold mailing/temp address
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');
+            //Model for Edit Popup Screen (Use the model to show on edit screen)
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
 
-                //Model to track "Confirm" or not status
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCfrmStatus');
+            //Model to track "Confirm" or not status
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCfrmStatus');
 
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCoPageModel');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCoPageModel');
 
-                //For Phone Type
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDayPhoneType');
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEvnPhoneType');
+            //For Phone Type
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDayPhoneType');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEvnPhoneType');
 
-                //For EditEmail Popup
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailNNP');
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailValidate');
+            //For EditEmail Popup
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailNNP');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailValidate');
 
-                //Siebel Customer Indicator
-                this.bSiebelCustomer = false;
+            //Siebel Customer Indicator
+            this.bSiebelCustomer = false;
 
 
-                this._initDtaVrfRetr();
-                this._initCfrmStatus();
-                this._initPhnTypes();
-                this._initMailAddrModels();
+            this._initDtaVrfRetr();
+            this._initCfrmStatus();
+            this._initPhnTypes();
+            this._initMailAddrModels();
                 //this._initCoPageModel();
 
                 //this._searchedCaNum = null;
-            } else {
+/*            } else {
                 this._beforeOpenEditAddrDialogue = false;
-            }
+            }*/
         };
         /* =========================================================== */
         /* lifecycle method- After Rendering                          */
