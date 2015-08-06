@@ -1235,7 +1235,7 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     //sap.ui.commons.MessageBox.alert('Email Successfully Removed');
-                    sap.ui.commons.MessageBox.alert("CONFIRMATION NEEDED: I just want to make sure you're aware that deleting email address will remove you from any Internet-based services we offer, including Online Account Management, online bill payment and Paperless Billing, and that all your bills and accounts notices will be sent via regular mail. Are you sure you want to do this? ");
+                   // sap.ui.commons.MessageBox.alert("CONFIRMATION NEEDED: I just want to make sure you're aware that deleting email address will remove you from any Internet-based services we offer, including Online Account Management, online bill payment and Paperless Billing, and that all your bills and accounts notices will be sent via regular mail. Are you sure you want to do this? ");
                     this._oEmailEditPopup.close();
                     this._retrBpContact(sBpNum);
                     this._retrBpMarkPrefSet(sBpNum);
@@ -1290,6 +1290,22 @@ sap.ui.define(
                     oNNP.setProperty('/Ee', 'N');
                 }
             }
+        };
+        /*************************************************************************************************************/
+        /*Email Edit NNP logic*/
+        Controller.prototype._onShowDelEmailBox = function (sEmail) {
+            var oEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-EmailBox"),
+                oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox");
+            oEmailBox.setVisible(false);
+            oDelEmailBox.setVisible(true);
+        };
+        /*************************************************************************************************************/
+        /*Email Edit NNP logic*/
+        Controller.prototype._onEmailCancel = function (sEmail) {
+            var oEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-EmailBox"),
+                oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox");
+            oEmailBox.setVisible(true);
+            oDelEmailBox.setVisible(false);
         };
         /*************************************************************************************************************/
 
