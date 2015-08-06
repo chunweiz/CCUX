@@ -1226,9 +1226,16 @@ sap.ui.define(
         /*Email Edit NNP logic*/
         Controller.prototype._onShowDelEmailBox = function (sEmail) {
             var oEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-EmailBox"),
-                oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox");
-            oEmailBox.setVisible(false);
-            oDelEmailBox.setVisible(true);
+                oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox"),
+                oNNP = this.getView().getModel('oEditEmailNNP');
+            if ((oNNP.getProperty('/Ecd') === 'Y') || (oNNP.getProperty('/Mkt') === 'Y') || (oNNP.getProperty('/Offer') === 'Y') || (oNNP.getProperty('/Ee') === 'Y')) {
+                this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                sap.ui.commons.MessageBox.alert("Cannot delete email when preferences set to YES.");
+                return;
+            } else {
+                oEmailBox.setVisible(false);
+                oDelEmailBox.setVisible(true);
+            }
         };
         /*************************************************************************************************************/
         /*Email Edit NNP logic*/
