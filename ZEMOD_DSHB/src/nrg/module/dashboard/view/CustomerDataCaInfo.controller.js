@@ -240,9 +240,9 @@ sap.ui.define(
             //Address validation error there was. Show system suggested address values we need to.
             this.getView().byId('idAddrUpdatePopup').addStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
             this.getView().byId('idAddrUpdatePopup-l').addStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
-            //this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
-            //this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
-            //this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
         };
 
         Controller.prototype._getFromDate = function () {
@@ -322,11 +322,12 @@ sap.ui.define(
                 success: function (oData) {
                     if (oData.results[0].AddrChkValid === 'X') {
                         //Validate success, update the address directly
+                        this._oMailEditPopup.close();
                         this._updateMailingAddr();
                     } else {
                         oMailEdit.setProperty('/SuggAddrInfo', oData.results[0].TriCheck);
                         //this._showSuggestedAddr();
-                        this._oMailEditPopup.open();
+                        //this._oMailEditPopup.open();
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -412,26 +413,47 @@ sap.ui.define(
             this.getView().byId('idMailingAddrPobox').setValue('');
         };
 
+        Controller.prototype._cleanUpAddrEditPop = function () {
+            var i;
+
+            this.getView().byId('idAddrUpdatePopup').removeStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
+            this.getView().byId('idAddrUpdatePopup-HdrLn').setVisible(false);
+            this.getView().byId('idAddrUpdatePopup-l').removeStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
+            this.getView().byId('idAddrUpdatePopup-r').setVisible(false);
+
+
+            for (i = 1; i < 8; i = i + 1) {
+                this.getView().byId('idAddrUpdatePopup-l').getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
+                this.getView().byId('idAddrUpdatePopup-r').getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
+            }
+        };
+
         Controller.prototype._onEditMailAddrClick = function (oEvent) {
-            var oEditMail = this.getView().getModel('oDtaAddrEdit');
+            var oEditMail = this.getView().getModel('oDtaAddrEdit'),
+                oCompareEvnet = {mParameters: {checked: null}};
 
             oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDataBuagAddrDetails').getProperty('/FixAddrInfo'));
 
-            //Control what to or not to display
-            this.getView().byId("idAddrUpdatePopup").setVisible(true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
-            this.getView().byId('idSuggCompareCheck').setChecked(false);
-
             if (!this._oMailEditPopup) {
                 this._oMailEditPopup = ute.ui.main.Popup.create({
-                    close: this._handleEditMailPopupClose.bind(this),
+                    //close: this._handleEditMailPopupClose.bind(this),
                     content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
                     title: 'Edit Mailing Address'
                 });
                 this.getView().addDependent(this._oMailEditPopup);
+            }
+
+            //Control what to or not to display
+            this._cleanUpAddrEditPop();
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
+            this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
+            if (this.getView().byId('idSuggCompareCheck').getChecked()) {
+                oCompareEvnet.mParameters.checked = false;
+                this._compareSuggChkClicked(oCompareEvnet);
+                this.getView().byId('idSuggCompareCheck').setChecked(false);
             }
 
             this._beforeOpenEditAddrDialogue = true;
@@ -441,25 +463,32 @@ sap.ui.define(
         };
 
         Controller.prototype._onEditTempAddrClick = function (oEvent) {
-            var oEditMail = this.getView().getModel('oDtaAddrEdit');
+            var oEditMail = this.getView().getModel('oDtaAddrEdit'),
+                oCompareEvnet = {mParameters: {checked: null}};
 
             oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDataBuagAddrDetails').getProperty('/TempAddrInfo'));
 
-            //Control what to or not to display
-            this.getView().byId("idAddrUpdatePopup").setVisible(true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
-            this.getView().byId('idSuggCompareCheck').setChecked(false);
 
             if (!this._oMailEditPopup) {
                 this._oMailEditPopup = ute.ui.main.Popup.create({
-                    close: this._handleEditMailPopupClose.bind(this),
+                    //close: this._handleEditMailPopupClose.bind(this),
                     content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
                     title: 'Edit Mailing Address'
                 });
                 this.getView().addDependent(this._oMailEditPopup);
+            }
+
+            //Control what to or not to display
+            this._cleanUpAddrEditPop();
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
+            this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
+            if (this.getView().byId('idSuggCompareCheck').getChecked()) {
+                oCompareEvnet.mParameters.checked = false;
+                this._compareSuggChkClicked(oCompareEvnet);
+                this.getView().byId('idSuggCompareCheck').setChecked(false);
             }
 
             this._beforeOpenEditAddrDialogue = true;
@@ -536,6 +565,7 @@ sap.ui.define(
             configModel.setProperty('/mailAddrSaveVisible', true);
             configModel.setProperty('/mailAddrEditable', true);
 
+            addrModel.setProperty('/FixAddrInfo/PoBox', '');
             addrModel.setProperty('/FixAddrInfo/Street', '');
             addrModel.setProperty('/FixAddrInfo/HouseNo', '');
             addrModel.setProperty('/FixAddrInfo/UnitNo', '');
