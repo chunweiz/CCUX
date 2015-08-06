@@ -1101,12 +1101,18 @@ sap.ui.define(
                 sBpEmail = this.getView().getModel('oDataBpContact').getProperty('/Email'),
                 sBpEmailConsum = this.getView().getModel('oDataBpContact').getProperty('/EmailConsum'),
                 sPath,
-                oNNP = this.getView().getModel('oEditEmailNNP');
+                oNNP = this.getView().getModel('oEditEmailNNP'),
+                oEmailBox,
+                oDelEmailBox;
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             //Preapre Popup for Email Edit to show
             if (!this._oPopupContent) {
                 this._oPopupContent = sap.ui.xmlfragment("BPInfoEmailEditPopup", "nrg.module.dashboard.view.CustomerVerificationPopup", this);
             }
+            oEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-EmailBox");
+            oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox");
+            oEmailBox.setVisible(true);
+            oDelEmailBox.setVisible(false);
             //this.getView().byId("idBpInfoEmailEditPopup").setVisible(true);
             this._oEmailEditPopup = ute.ui.main.Popup.create({
                 //close: this._handleEditMailPopupClose,
@@ -1295,9 +1301,16 @@ sap.ui.define(
         /*Email Edit NNP logic*/
         Controller.prototype._onShowDelEmailBox = function (sEmail) {
             var oEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-EmailBox"),
-                oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox");
-            oEmailBox.setVisible(false);
-            oDelEmailBox.setVisible(true);
+                oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox"),
+                oNNP = this.getView().getModel('oEditEmailNNP');
+            if ((oNNP.getProperty('/Ecd') === 'Y') || (oNNP.getProperty('/Mkt') === 'Y') || (oNNP.getProperty('/Offer') === 'Y') || (oNNP.getProperty('/Ee') === 'Y')) {
+                this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                sap.ui.commons.MessageBox.alert("Cannot delete email when preferences set to YES.");
+                return;
+            } else {
+                oEmailBox.setVisible(false);
+                oDelEmailBox.setVisible(true);
+            }
         };
         /*************************************************************************************************************/
         /*Email Edit NNP logic*/

@@ -1027,12 +1027,18 @@ sap.ui.define(
                 sBpNum = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
                 sBpEmail = this.getView().getModel('oDtaVrfyBP').getProperty('/Email'),
                 sBpEmailConsum = this.getView().getModel('oDtaVrfyBP').getProperty('/EmailConsum'),
-                sPath;
+                sPath,
+                oEmailBox,
+                oDelEmailBox;
 
             //Preapre Popup for Email Edit to show
             if (!this._oPopupContent) {
                 this._oPopupContent = sap.ui.xmlfragment("EmailEditPopup", "nrg.module.dashboard.view.CustomerVerificationPopup", this);
             }
+            oEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-EmailBox");
+            oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox");
+            oEmailBox.setVisible(true);
+            oDelEmailBox.setVisible(false);
             this._oEmailEditPopup = ute.ui.main.Popup.create({
                 //close: this._handleEditMailPopupClose,
                 content: this._oPopupContent,
@@ -1228,9 +1234,16 @@ sap.ui.define(
         /*Email Edit NNP logic*/
         Controller.prototype._onShowDelEmailBox = function (sEmail) {
             var oEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-EmailBox"),
-                oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox");
-            oEmailBox.setVisible(false);
-            oDelEmailBox.setVisible(true);
+                oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox"),
+                oNNP = this.getView().getModel('oEditEmailNNP');
+            if ((oNNP.getProperty('/Ecd') === 'Y') || (oNNP.getProperty('/Mkt') === 'Y') || (oNNP.getProperty('/Offer') === 'Y') || (oNNP.getProperty('/Ee') === 'Y')) {
+                this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                sap.ui.commons.MessageBox.alert("Cannot delete email when preferences set to YES.");
+                return;
+            } else {
+                oEmailBox.setVisible(false);
+                oDelEmailBox.setVisible(true);
+            }
         };
         /*************************************************************************************************************/
         /*Email Edit NNP logic*/
