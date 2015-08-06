@@ -63,7 +63,7 @@ sap.ui.define(
             //Siebel Customer Indicator
             this.bSiebelCustomer = false;
 
-
+            this._initToggleArea();
             this._initDtaVrfRetr();
             this._initCfrmStatus();
             this._initPhnTypes();
@@ -80,6 +80,13 @@ sap.ui.define(
         /* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
             this.getOwnerComponent().getCcuxApp().setOccupied(false);
+        };
+
+        Controller.prototype._initToggleArea = function () {
+            if (!this.getView().byId('id_DshbTglBtn').getLeftSelected()) {
+                this.getView().byId('id_DshbTglBtn').setLeftSelected(true);
+                this._onToggleButtonPress(null);
+            }
         };
 
         Controller.prototype._initPhnTypes = function () {
@@ -352,7 +359,7 @@ sap.ui.define(
         };*/
 
         Controller.prototype._onToggleButtonPress = function (oEvent) {
-            var l_selected = this.getView().byId('id_DshbTglBtn').getLeftSelected();
+            //var l_selected = this.getView().byId('id_DshbTglBtn').getLeftSelected();
             if (this.getView().byId('mailadd_area').getVisible()) {
                 this.getView().byId('mailadd_area').setVisible(false);
                 this.getView().byId('serviceadd_area').setVisible(true);
