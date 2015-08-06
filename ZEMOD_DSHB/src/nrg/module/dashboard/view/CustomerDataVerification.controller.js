@@ -910,7 +910,7 @@ sap.ui.define(
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
-            //this.getView().byId('idSuggCompareCheck').setChecked(false);
+            this.getView().byId('idSuggCompareCheck').setChecked(false);
             if (this.getView().byId('idSuggCompareCheck').getChecked()) {
                 oCompareEvnet.mParameters.checked = false;
                 this._compareSuggChkClicked(oCompareEvnet);
@@ -934,12 +934,13 @@ sap.ui.define(
             }
 
             //Control what to or not to display
-            this.getView().byId("idAddrUpdatePopup").setVisible(true);
+            this._cleanUpAddrEditPop();
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', false);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
+            this.getView().byId('idSuggCompareCheck').setChecked(false);
             if (this.getView().byId('idSuggCompareCheck').getChecked()) {
                 oCompareEvnet.mParameters.checked = false;
                 this._compareSuggChkClicked(oCompareEvnet);

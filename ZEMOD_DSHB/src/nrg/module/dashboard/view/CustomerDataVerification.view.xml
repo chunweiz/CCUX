@@ -413,6 +413,9 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-fLbl"/>
                                             <ute:Tag id="mail_TempAddr">
                                                 <utmain:Button  design="None"
+                                                    enabled=enabled="{
+                                                        parts:['oDtaVrfyBP>/IsSMS'],
+                                                        formatter:'._formatNegativeX'}"
                                                     class="nrgDashboard-cusDataVerify-mContent-fBtn"
                                                     text="{oDtaVrfyMailingTempAddr>/TempAddrInfo/ShortForm}"
                                                     press="._onEditTempAddrClick"/>

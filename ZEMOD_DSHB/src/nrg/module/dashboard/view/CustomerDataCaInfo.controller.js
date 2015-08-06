@@ -245,16 +245,43 @@ sap.ui.define(
             //this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
         };
 
+        Controller.prototype._getFromDate = function () {
+            var oDateNow = new Date(),
+                sCuYear,
+                sCuMonth,
+                sCuDay,
+                sCurrentTime;
+
+            sCuYear = oDateNow.getFullYear();
+            sCuMonth = oDateNow.getMonth() + 1;
+            sCuDay = oDateNow.getDate();
+
+            sCurrentTime = sCuYear + '-' + sCuMonth + '-' + sCuDay + 'T00:00:00';
+
+            return sCurrentTime;
+        };
+
         Controller.prototype._updateMailingAddr = function () {
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
                 sBpNum = this.getView().getModel('oDataBuagAddrDetails').getProperty('/PartnerID'),
                 sBuagNum = this.getView().getModel('oDataBuagAddrDetails').getProperty('/ContractAccountID'),
-                sFixedAddressID = this.getView().getModel('oDataBuagAddrDetails').getProperty('/FixedAddressID');
+                sFixedAddressID = this.getView().getModel('oDataBuagAddrDetails').getProperty('/FixedAddressID'),
+                sFromDate = this._getFromDate();
 
             if (this.getView().getModel('oCaInfoConfig').getProperty('/bAllBuagSelected')) {
                 this.getView().getModel('oDataBuagAddrDetails').setProperty('/SaveToAllCa', 'X');
+            }
+
+            if (this.getView().getModel('oDtaAddrEdit').getProperty('/bCreateFirst')) {
+                if (this.getView().getModel('oDataBuagAddrDetails').getProperty('/FixUpd') === 'X') {
+                    this.getView().getModel('oDataBuagAddrDetails').setProperty('/FixAddrInfo/ValidFrom', this._getFromDate());
+                    this.getView().getModel('oDataBuagAddrDetails').setProperty('/FixAddrInfo/ValidTo', '9999-12-31T00:00:00');
+                } else {
+                    this.getView().getModel('oDataBuagAddrDetails').setProperty('/TempAddrInfo/ValidFrom', this._getFromDate());
+                    this.getView().getModel('oDataBuagAddrDetails').setProperty('/TempAddrInfo/ValidTo', '9999-12-31T00:00:00');
+                }
             }
 
             sPath = '/BuagAddrDetails' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
