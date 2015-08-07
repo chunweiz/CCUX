@@ -380,6 +380,7 @@
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
                                             <utmain:Button
+                                                class="nrgDashboard-cusDataVerify-alignCenBtn"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SMS}"
                                                 press="._onSMSButtonClicked"/>
                                         </l:MatrixLayoutCell>
@@ -537,6 +538,7 @@
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
                                             <utmain:Button
+                                                class="nrgDashboard-cusDataVerify-alignCenBtn"
                                                 enabled="{
                                                     parts:['oDtaVrfyBP>/IsSMS'],
                                                     formatter:'._formatSMSBtn'}"
@@ -555,15 +557,15 @@
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-r">
                             <ute:Tag class="nrgDashboard-cusDataVerify-rContent">
                                 <utmain:Button id="id_confmBtn" visible="true"
-                                    class="nrgDashboard-cusDataVerify-rContent-vBtn"
+                                    class="nrgDashboard-cusDataVerify-rContent-vBtn nrgDashboard-cusDataVerify-alignCenBtn"
                                     press="._handleConfirm"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnConfitm}"/>
                                 <utmain:Button id="id_unConfmBtn" visible="false"
-                                    class="nrgDashboard-cusDataVerify-rContent-vBtn"
+                                    class="nrgDashboard-cusDataVerify-rContent-vBtn nrgDashboard-cusDataVerify-alignCenBtn"
                                     press="._handleUnConfirm"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnUnConfirm}"/>
                                 <utmain:Button id="id_updtBtn" enabled="true"
-                                    class="nrgDashboard-cusDataVerify-rContent-uBtn"
+                                    class="nrgDashboard-cusDataVerify-rContent-uBtn nrgDashboard-cusDataVerify-alignCenBtn"
                                     design="Invert"
                                     press="._handleUpdate"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnUpdate}"/>

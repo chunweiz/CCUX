@@ -59,7 +59,7 @@
 
             <utmain:Button  id="idEditMailAddr_UpdtBtn"
                 visible="{oDtaAddrEdit>/updateNotSent}"
-                class="nrgDashboard-cusDataVerifyEditMailAdd-updtBtn"
+                class="nrgDashboard-cusDataVerifyEditMailAdd-updtBtn nrgDashboard-cusDataVerify-alignCenBtn"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_UpdtBtnText}"
                 press="._validateInputAddr"/>
         </ute:Tag>
