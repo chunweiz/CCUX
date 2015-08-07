@@ -276,7 +276,7 @@
                                         <l:MatrixLayoutCell>
                                             <utmain:Label  labelFor="cell_num"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CellNum}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                                class="nrgDashboard-cusDataVerify-mContent-hLbl nrgDashboard-cusDataVerify-phoneNumAlign"/>
                                             <ute:Textfield id="cell_num" fieldType="Noborder"
                                                 editable="{oCfrmStatus>/bEditable}"
                                                 value="{oDtaVrfyBP>/Cell}"
@@ -296,7 +296,7 @@
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
                                 <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hPhn">
-                                    <utmain:Label  labelFor="dayPhn"
+                                    <utmain:Label  labelFor="dayPhn" class="nrgDashboard-cusDataVerify-phoneNumAlign"
                                         text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"/>
                                     <ute:Textfield id="dayPhn" fieldType="Noborder"
                                         class="nrgDashboard-cusDataVerify-mContent-hPhnInput"
@@ -331,7 +331,7 @@
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
 
                                 <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hPhn">
-                                    <utmain:Label labelFor="evnPhn"
+                                    <utmain:Label labelFor="evnPhn" class="nrgDashboard-cusDataVerify-phoneNumAlign"
                                         text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"/>
                                     <ute:Textfield id="evnPhn" fieldType="Noborder"
                                         class="nrgDashboard-cusDataVerify-mContent-hPhnInput"
@@ -380,6 +380,7 @@
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
                                             <utmain:Button
+                                                class="nrgDashboard-cusDataVerify-alignCenBtn"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SMS}"
                                                 press="._onSMSButtonClicked"/>
                                         </l:MatrixLayoutCell>
@@ -433,7 +434,7 @@
                                         <l:MatrixLayoutCell>
                                             <utmain:Label  labelFor="cell_num_mail"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CellNum}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                                class="nrgDashboard-cusDataVerify-mContent-hLbl nrgDashboard-cusDataVerify-phoneNumAlign"/>
                                             <ute:Textfield id="cell_num_mail" fieldType="Noborder"
                                                 value="{oDtaVrfyBP>/Cell}"
                                                 editable="{oCfrmStatus>/bEditable}"
@@ -454,7 +455,7 @@
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
 
                                 <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hPhn">
-                                    <utmain:Label  labelFor="dayPhn_mail"
+                                    <utmain:Label  labelFor="dayPhn_mail" class="nrgDashboard-cusDataVerify-phoneNumAlign"
                                         text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"/>
                                     <ute:Textfield id="dayPhn_mail" fieldType="Noborder"
                                         class="nrgDashboard-cusDataVerify-mContent-hPhnInput"
@@ -489,7 +490,7 @@
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
                                 <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hPhn">
-                                    <utmain:Label labelFor="evnPhn_mail"
+                                    <utmain:Label labelFor="evnPhn_mail" class="nrgDashboard-cusDataVerify-phoneNumAlign"
                                         text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"/>
                                     <ute:Textfield id="evnPhn_mail" fieldType="Noborder"
                                         class="nrgDashboard-cusDataVerify-mContent-hPhnInput"
@@ -537,6 +538,7 @@
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
                                             <utmain:Button
+                                                class="nrgDashboard-cusDataVerify-alignCenBtn"
                                                 enabled="{
                                                     parts:['oDtaVrfyBP>/IsSMS'],
                                                     formatter:'._formatSMSBtn'}"
@@ -555,15 +557,15 @@
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-r">
                             <ute:Tag class="nrgDashboard-cusDataVerify-rContent">
                                 <utmain:Button id="id_confmBtn" visible="true"
-                                    class="nrgDashboard-cusDataVerify-rContent-vBtn"
+                                    class="nrgDashboard-cusDataVerify-rContent-vBtn nrgDashboard-cusDataVerify-alignCenBtn"
                                     press="._handleConfirm"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnConfitm}"/>
                                 <utmain:Button id="id_unConfmBtn" visible="false"
-                                    class="nrgDashboard-cusDataVerify-rContent-vBtn"
+                                    class="nrgDashboard-cusDataVerify-rContent-vBtn nrgDashboard-cusDataVerify-alignCenBtn"
                                     press="._handleUnConfirm"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnUnConfirm}"/>
                                 <utmain:Button id="id_updtBtn" enabled="true"
-                                    class="nrgDashboard-cusDataVerify-rContent-uBtn"
+                                    class="nrgDashboard-cusDataVerify-rContent-uBtn nrgDashboard-cusDataVerify-alignCenBtn"
                                     design="Invert"
                                     press="._handleUpdate"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnUpdate}"/>
