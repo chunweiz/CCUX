@@ -40,7 +40,7 @@ sap.ui.define(
                   break;
             }
         };
-        
+
         CustomController.prototype._onBusinessPartnerClick = function (oControlEvent) {
             var oContext, oRouter;
 

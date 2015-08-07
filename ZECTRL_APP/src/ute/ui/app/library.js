@@ -36,7 +36,9 @@ sap.ui.define(
                 'ute.ui.app.GeneralPage',
                 'ute.ui.app.Text',
                 'ute.ui.app.EventArea',
-                'ute.ui.app.Tag'
+                'ute.ui.app.Tag',
+                'ute.ui.app.IndexGroupLink',
+                'ute.ui.app.IndexLink'
             ],
 
             elements: [],
