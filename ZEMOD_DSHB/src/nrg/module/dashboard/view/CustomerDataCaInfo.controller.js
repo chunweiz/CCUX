@@ -429,6 +429,7 @@ sap.ui.define(
                 oCompareEvnet = {mParameters: {checked: null}};
 
             oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDataBuagAddrDetails').getProperty('/FixAddrInfo'));
+            this.getView().getModel('oDataBuagAddrDetails').setProperty('/FixUpd', 'X');
 
             if (!this._oMailEditPopup) {
                 this._oMailEditPopup = ute.ui.main.Popup.create({
@@ -463,6 +464,7 @@ sap.ui.define(
                 oCompareEvnet = {mParameters: {checked: null}};
 
             oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDataBuagAddrDetails').getProperty('/TempAddrInfo'));
+            this.getView().getModel('oDataBuagAddrDetails').setProperty('/TempUpd', 'X');
 
 
             if (!this._oMailEditPopup) {
