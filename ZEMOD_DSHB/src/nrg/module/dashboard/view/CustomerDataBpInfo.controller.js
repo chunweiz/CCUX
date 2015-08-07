@@ -1120,9 +1120,8 @@ sap.ui.define(
                 title: 'Email Address and Preferences'
             });
             this.getView().addDependent(this._oEmailEditPopup);
-            this._oEmailEditPopup.open();
-            this._oEmailEditPopup.setShowCloseButton(false);
             //this._oEmailEditPopup.open();
+            this._oEmailEditPopup.setShowCloseButton(false);
 
             //Start loading NNP logics and settings
             sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
@@ -1132,6 +1131,7 @@ sap.ui.define(
                     if (oData) {
                         this.getView().getModel('oEditEmailNNP').setData(oData);
                         this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                        this._oEmailEditPopup.open();
                     }
                 }.bind(this),
                 error: function (oError) {

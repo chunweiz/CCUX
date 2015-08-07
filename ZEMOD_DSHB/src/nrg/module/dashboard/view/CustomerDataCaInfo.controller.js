@@ -570,9 +570,8 @@ sap.ui.define(
             addrModel.setProperty('/FixAddrInfo/State', '');
             addrModel.setProperty('/FixAddrInfo/ZipCode', '');
 
-            //delete addrModel.getProperty('/FixAddrInfo').ValidFrom;
-            addrModel.setProperty('/FixAddrInfo/ValidFrom', '///');
-            //addrModel.setProperty('/FixAddrInfo/ValidTo', '');
+            /*addrModel.setProperty('/FixAddrInfo/ValidFrom', '');
+            addrModel.setProperty('/FixAddrInfo/ValidTo', '');*/
 
             oEditAddrModel.setProperty('/bCreateFirst', true);
         };
