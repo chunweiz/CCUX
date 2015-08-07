@@ -27,7 +27,8 @@
                     placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_BpNum}"
                     change="onTextFieldChange"
                     label="Title"
-                    width="48%">
+                    width="48%"
+                    maxLength="10">
                 </ute:Textfield>
 
                 <!--type:'nrg.util.type.ContractAccountNumber'-->
@@ -39,7 +40,8 @@
                     placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_CaNumPh}"
                     change="onTextFieldChange"
                     label="Title"
-                    width="48%">
+                    width="48%"
+                    maxLength="12">
                 </ute:Textfield>
 
                 <!--type:'nrg.util.type.SocialSecurityNumber'-->
