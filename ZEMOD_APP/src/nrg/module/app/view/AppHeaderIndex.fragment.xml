@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ua="ute.ui.app"
+    xmlns:sm="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <ua:HeaderSubmenu>
+        <div class="uteAppHdrSMenu-wrap">
+            <sm:ScrollContainer height="400px" width="100%" vertical="true" >
+                <ua:IndexGroupLink title="Websites">
+                    <ua:IndexLink description="ESID Tool" refId="Z_ESIDLOOKUP" />
+                    <ua:IndexLink description="PALPlus" refId="Z_PALPLUS" />
+                </ua:IndexGroupLink>
+            </sm:ScrollContainer>
+        </div>
+    </ua:HeaderSubmenu>
+
+</core:FragmentDefinition>

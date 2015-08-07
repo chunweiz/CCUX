@@ -15,7 +15,7 @@ sap.ui.define(
             oRm.writeClasses();
             oRm.write('>');
 
-            if (oRm.getDescription()) {
+            if (oCustomControl.getDescription()) {
                 oRm.writeEscaped(oCustomControl.getDescription());
             }
 

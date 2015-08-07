@@ -163,6 +163,7 @@ sap.ui.define(
             switch (sSubmenuId) {
             case AppHeader.HMItemId.Menu:
             case AppHeader.HMItemId.Messages:
+            case AppHeader.HMItemId.Index:
                 return true;
             default:
                 return false;
@@ -179,6 +180,9 @@ sap.ui.define(
                     break;
                 case AppHeader.HMItemId.Messages:
                     sFragmentId = 'nrg.module.app.view.AppHeaderMessages';
+                    break;
+                case AppHeader.HMItemId.Index:
+                    sFragmentId = 'nrg.module.app.view.AppHeaderIndex';
                     break;
                 default:
                     sFragmentId = null;
