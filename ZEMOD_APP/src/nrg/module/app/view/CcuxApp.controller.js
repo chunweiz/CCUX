@@ -30,18 +30,18 @@ sap.ui.define(
 
             switch (oControlEvent.getSource().getId()) {
               case App.QuickLinkId.Dashboard:
-                  this._onDashboardClick(oControlEvent);
+                  this._onQLDashboardClick(oControlEvent);
                   break;
               case App.QuickLinkId.Campaign:
-                  this._onCampaignClick(oControlEvent);
+                  this._onQLCampaignClick(oControlEvent);
                   break;
               case App.QuickLinkId.BusinessPartner:
-                  this._onBusinessPartnerClick(oControlEvent);
+                  this._onQLBusinessPartnerClick(oControlEvent);
                   break;
             }
         };
-        
-        CustomController.prototype._onBusinessPartnerClick = function (oControlEvent) {
+
+        CustomController.prototype._onQLBusinessPartnerClick = function (oControlEvent) {
             var oContext, oRouter;
 
             oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
@@ -54,7 +54,7 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype._onDashboardClick = function (oControlEvent) {
+        CustomController.prototype._onQLDashboardClick = function (oControlEvent) {
             var oContext, oRouter;
 
             oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
@@ -67,7 +67,7 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype._onCampaignClick = function (oControlEvent) {
+        CustomController.prototype._onQLCampaignClick = function (oControlEvent) {
             var oContext, oRouter;
 
             oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
@@ -96,19 +96,10 @@ sap.ui.define(
         };
 
         CustomController.prototype._onIndexPress = function (oControlEvent) {
-            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
-
             this._oApp._getHeader().setSelected(
                 oControlEvent.getSource().getSelected(),
                 AppHeader.HMItemId.Index
             );
-
-            this._oApp.setOccupied(true);
-            oWebUiManager.notifyWebUi('openIndex', {}, this._onIndexPressCallback, this);
-        };
-
-        CustomController.prototype._onIndexPressCallback = function (oEvent) {
-            this._oApp.setOccupied(false);
         };
 
         CustomController.prototype._onTransactionPress = function (oControlEvent) {
