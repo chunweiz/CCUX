@@ -432,7 +432,7 @@ sap.ui.define(
 
             if (!this._oMailEditPopup) {
                 this._oMailEditPopup = ute.ui.main.Popup.create({
-                    //close: this._handleEditMailPopupClose.bind(this),
+                    close: this._handleEditMailPopupClose.bind(this),
                     content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
                     title: 'Edit Mailing Address'
                 });
@@ -467,7 +467,7 @@ sap.ui.define(
 
             if (!this._oMailEditPopup) {
                 this._oMailEditPopup = ute.ui.main.Popup.create({
-                    //close: this._handleEditMailPopupClose.bind(this),
+                    close: this._handleEditMailPopupClose.bind(this),
                     content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
                     title: 'Edit Mailing Address'
                 });
@@ -493,12 +493,12 @@ sap.ui.define(
             this._validateInputAddr();
         };
 
-        /*
+
         Controller.prototype._handleEditMailPopupClose = function (oEvent) {
             this._initCaInfoConfigModel();
             this._initDataModel();
             this._initMailAddrModels();
-        };*/
+        };
 
 
         Controller.prototype._compareSuggChkClicked = function (oEvent) {
@@ -569,8 +569,10 @@ sap.ui.define(
             addrModel.setProperty('/FixAddrInfo/City', '');
             addrModel.setProperty('/FixAddrInfo/State', '');
             addrModel.setProperty('/FixAddrInfo/ZipCode', '');
-            addrModel.setProperty('/FixAddrInfo/ValidFrom', '');
-            addrModel.setProperty('/FixAddrInfo/ValidTo', '');
+
+            //delete addrModel.getProperty('/FixAddrInfo').ValidFrom;
+            addrModel.setProperty('/FixAddrInfo/ValidFrom', '///');
+            //addrModel.setProperty('/FixAddrInfo/ValidTo', '');
 
             oEditAddrModel.setProperty('/bCreateFirst', true);
         };
@@ -671,7 +673,7 @@ sap.ui.define(
 
         Controller.prototype.onBackToDashboard = function () {
             var oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo('dashboard.Bp', {bpNum: this._bpNum, caNum: 0});
+            oRouter.navTo('dashboard.Bp', {bpNum: this._bpNum});
         };
 
         Controller.prototype._retrUrlHash = function () {

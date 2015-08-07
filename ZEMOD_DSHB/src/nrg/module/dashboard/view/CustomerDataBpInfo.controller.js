@@ -159,7 +159,7 @@ sap.ui.define(
 
         CustomController.prototype.onBackToDashboard = function () {
             var oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo('dashboard.Bp', {bpNum: this._bpNum, caNum: 0});
+            oRouter.navTo('dashboard.Bp', {bpNum: this._bpNum});
         };
 
         CustomController.prototype.onTitleCancel = function () {    //onTitleCancel

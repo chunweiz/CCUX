@@ -151,7 +151,7 @@ sap.ui.define(
             iSplitHashL = aSplitHash.length;
             sPath = '/Partners' + '(\'' + bp + '\')';
 
-            if (aSplitHash[iSplitHashL - 1] !== 0) {
+            if (iSplitHashL === 4 && aSplitHash[iSplitHashL - 1] !== 0) {
                 this._searchedCaNum = aSplitHash[iSplitHashL - 1];
             }
             this._retrDataVrf(sPath);
