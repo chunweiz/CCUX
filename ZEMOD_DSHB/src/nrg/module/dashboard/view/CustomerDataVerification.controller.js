@@ -79,7 +79,7 @@ sap.ui.define(
         /* lifecycle method- After Rendering                          */
         /* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
-            this.getOwnerComponent().getCcuxApp().setOccupied(false);
+            //this.getOwnerComponent().getCcuxApp().setOccupied(false);
         };
 
         Controller.prototype._initToggleArea = function () {
@@ -188,8 +188,10 @@ sap.ui.define(
                             this._oSiebelAlertPopup.open();
                         }
                     }
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     //Need to put error message
                 }.bind(this)
             };
@@ -917,10 +919,10 @@ sap.ui.define(
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
-            this.getView().byId('idSuggCompareCheck').setChecked(false);
             if (this.getView().byId('idSuggCompareCheck').getChecked()) {
                 oCompareEvnet.mParameters.checked = false;
                 this._compareSuggChkClicked(oCompareEvnet);
+                this.getView().byId('idSuggCompareCheck').setChecked(false);
             }
 
             this._oMailEditPopup.open();
@@ -947,10 +949,10 @@ sap.ui.define(
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
             this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
-            this.getView().byId('idSuggCompareCheck').setChecked(false);
             if (this.getView().byId('idSuggCompareCheck').getChecked()) {
                 oCompareEvnet.mParameters.checked = false;
                 this._compareSuggChkClicked(oCompareEvnet);
+                this.getView().byId('idSuggCompareCheck').setChecked(false);
             }
 
             this._oMailEditPopup.open();
@@ -1230,9 +1232,13 @@ sap.ui.define(
                 return sEmail;
             }
         };
-        /*************************************************************************************************************/
-        /*Email Edit NNP logic*/
-        Controller.prototype._onShowDelEmailBox = function (sEmail) {
+        /**
+		 * Handler for first cancel of the email, show additional message and request for cancel or delete email.
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype._onShowDelEmailBox = function (oEventoEvent) {
             var oEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-EmailBox"),
                 oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox"),
                 oNNP = this.getView().getModel('oEditEmailNNP');
@@ -1245,11 +1251,41 @@ sap.ui.define(
                 oDelEmailBox.setVisible(true);
             }
         };
-        /*************************************************************************************************************/
-        /*Email Edit NNP logic*/
-        Controller.prototype._onEmailCancel = function (sEmail) {
+        /**
+		 * Handler for Email Cancel, so refresh the data from backend for complete popup
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype._onEmailCancel = function (oEvent) {
             var oEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-EmailBox"),
-                oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox");
+                oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox"),
+                sPath,
+                oModel = this.getView().getModel('oODataSvc'),
+                oParameters,
+                sBpNum = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+                sBpEmail = this.getView().getModel('oDtaVrfyBP').getProperty('/Email'),
+                sBpEmailConsum = this.getView().getModel('oDtaVrfyBP').getProperty('/EmailConsum');
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            //Start loading NNP logics and settings
+            sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
+            oParameters = {
+                /*urlParameters: {"$expand": "Buags"},*/
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oEditEmailNNP').setData(oData);
+                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("NNP Entity Service Error");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
             oEmailBox.setVisible(true);
             oDelEmailBox.setVisible(false);
         };

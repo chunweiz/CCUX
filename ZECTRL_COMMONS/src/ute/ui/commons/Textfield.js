@@ -22,7 +22,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                 //CSS type width of the Textfield, the min width is set to 168px.
                 width : {type : "sap.ui.core.CSSSize", group : "Dimension", defaultValue : "200px" },
 
-                //maxLength : {type : "int", group : "Behavior", defaultValue : 0},
+                maxLength : {type : "int", group : "Behavior", defaultValue : 0},
 
                 //name attribute in HTML
                 name : {type : "string", group : "Misc", defaultValue : null},

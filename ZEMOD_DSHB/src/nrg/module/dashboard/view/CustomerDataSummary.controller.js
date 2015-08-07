@@ -116,16 +116,13 @@ sap.ui.define(
                 sCaNum,
                 sPath;
 
-
-            if (oRouteInfo.parameters.caNum) {
+            /*if (oRouteInfo.parameters.caNum && oRouteInfo.parameters.caNum !== 0) {
                 sCaNum = oRouteInfo.parameters.caNum;
                 sPath = '/Buags' + '(\'' + sCaNum + '\')';
                 this._bCaNumKnown = true;
             } else {
                 this._bCaNumKnown = false;
-            }
-
-
+            }*/
             sPath = '/Partners' + '(\'' + BpNum + '\')/Buags';
             this._retrCaInf(sPath);
         };
@@ -177,10 +174,7 @@ sap.ui.define(
 
             oParameters = {
                 success : function (oData) {
-                    if (oData && this._bCaNumKnown) {
-                        this.getView().getModel('oSmryBuagInf').setData(oData);
-                        this._initRetrAssignedAccount(this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID'));
-                    } else {
+                    if (oData) {
                         this.getView().getModel('oSmryBuagInf').setData(oData.results[0]);
                         this._initRetrAssignedAccount(this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID'));
                     }

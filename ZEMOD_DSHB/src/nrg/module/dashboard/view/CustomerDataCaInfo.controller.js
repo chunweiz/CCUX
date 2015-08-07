@@ -13,56 +13,52 @@ sap.ui.define(
         'sap/ui/core/format/DateFormat'
     ],
 
-    function (Filter, FilterOperator, jQuery, Controller, JSONModel, HashChanger, DateFormat) {
+    function (Filter, FilterOperator, jQuery, CoreController, JSONModel, HashChanger, DateFormat) {
         'use strict';
 
-        var CustomController = Controller.extend('nrg.module.dashboard.view.CustomerDataCaInfo');
-
-        Controller.prototype.onInit = function () {
-            this._beforeOpenEditAddrDialogue = false;
-        };
+        var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataCaInfo');
 
         Controller.prototype.onBeforeRendering = function () {
-            if (!this._beforeOpenEditAddrDialogue) {
-                var oModel;
+            //if (!this._beforeOpenEditAddrDialogue) {
+            //var oModel;
 
-                this.getOwnerComponent().getCcuxApp().setTitle('BUSINESS PARTNER');
+            this.getOwnerComponent().getCcuxApp().setTitle('BUSINESS PARTNER');
 
-                this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
                 //Model to track page edit/save status
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCaInfoConfig');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCaInfoConfig');
 
-                //Model to hold BuagAddrDetail
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBuagAddrDetails');
+            //Model to hold BuagAddrDetail
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBuagAddrDetails');
 
-                //Model to hold CA accounts and mailing address short form
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataCAs');
+            //Model to hold CA accounts and mailing address short form
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataCAs');
 
-                //Model to hold all Buags
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllBuags');
+            //Model to hold all Buags
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllBuags');
 
-                //Model for Edit Popup Screen (Use the model to show on edit screen)
-                this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
+            //Model for Edit Popup Screen (Use the model to show on edit screen)
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
 
 
-                this._initCaInfoConfigModel();
-                this._initDataModel();
-                this._initMailAddrModels();
-            } else {
-                this._beforeOpenEditAddrDialogue = false;
-            }
+            this._initCaInfoConfigModel();
+            this._initDataModel();
+            this._initMailAddrModels();
+            //} else {
+            //    this._beforeOpenEditAddrDialogue = false;
+            //}
         };
 
-        CustomController.prototype.onAfterRendering = function () {
-
-        };
-
-        CustomController.prototype.onExit = function () {
+        Controller.prototype.onAfterRendering = function () {
 
         };
 
-        CustomController.prototype._initCaInfoConfigModel = function () {
+        Controller.prototype.onExit = function () {
+
+        };
+
+        Controller.prototype._initCaInfoConfigModel = function () {
             var configModel = this.getView().getModel('oCaInfoConfig');
             configModel.setProperty('/mailAddrUpdateVisible', true);
             configModel.setProperty('/mailAddrAddnewVisible', true);
@@ -76,7 +72,7 @@ sap.ui.define(
             configModel.setProperty('/bAllBuagSelected', false);
         };
 
-        CustomController.prototype._initDataModel = function () {
+        Controller.prototype._initDataModel = function () {
             var sPath, aSplitHash, iSplitHashL;
 
             aSplitHash = (this._retrUrlHash()).split('/');
@@ -115,7 +111,7 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype._retrBuagAddrDetail = function (caNum) {
+        Controller.prototype._retrBuagAddrDetail = function (caNum) {
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
@@ -151,7 +147,7 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype._onCaSelected = function (oEvent) {
+        Controller.prototype._onCaSelected = function (oEvent) {
             var sSelectedKey = oEvent.getParameters().selectedKey,
                 eventBus = sap.ui.getCore().getEventBus(),
                 oPayload = {caNum: sSelectedKey};
@@ -165,7 +161,7 @@ sap.ui.define(
             return;
         };
 
-        CustomController.prototype._onAllBuagsSelected = function (oEvent) {
+        Controller.prototype._onAllBuagsSelected = function (oEvent) {
             //var bAllBuagsSelected = oEvent.mParameters.checked;
 
             //this.getView().getModel('oCaInfoConfig').setProperty('/bAllBuagSelected', bAllBuagsSelected);
@@ -240,9 +236,9 @@ sap.ui.define(
             //Address validation error there was. Show system suggested address values we need to.
             this.getView().byId('idAddrUpdatePopup').addStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
             this.getView().byId('idAddrUpdatePopup-l').addStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
-            //this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
-            //this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
-            //this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
         };
 
         Controller.prototype._getFromDate = function () {
@@ -322,11 +318,12 @@ sap.ui.define(
                 success: function (oData) {
                     if (oData.results[0].AddrChkValid === 'X') {
                         //Validate success, update the address directly
+                        this._oMailEditPopup.close();
                         this._updateMailingAddr();
                     } else {
                         oMailEdit.setProperty('/SuggAddrInfo', oData.results[0].TriCheck);
                         //this._showSuggestedAddr();
-                        this._oMailEditPopup.open();
+                        //this._oMailEditPopup.open();
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -412,67 +409,96 @@ sap.ui.define(
             this.getView().byId('idMailingAddrPobox').setValue('');
         };
 
+        Controller.prototype._cleanUpAddrEditPop = function () {
+            var i;
+
+            this.getView().byId('idAddrUpdatePopup').removeStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
+            this.getView().byId('idAddrUpdatePopup-HdrLn').setVisible(false);
+            this.getView().byId('idAddrUpdatePopup-l').removeStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
+            this.getView().byId('idAddrUpdatePopup-r').setVisible(false);
+
+
+            for (i = 1; i < 8; i = i + 1) {
+                this.getView().byId('idAddrUpdatePopup-l').getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
+                this.getView().byId('idAddrUpdatePopup-r').getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
+            }
+        };
+
         Controller.prototype._onEditMailAddrClick = function (oEvent) {
-            var oEditMail = this.getView().getModel('oDtaAddrEdit');
+            var oEditMail = this.getView().getModel('oDtaAddrEdit'),
+                oCompareEvnet = {mParameters: {checked: null}};
 
             oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDataBuagAddrDetails').getProperty('/FixAddrInfo'));
 
-            //Control what to or not to display
-            this.getView().byId("idAddrUpdatePopup").setVisible(true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
-            this.getView().byId('idSuggCompareCheck').setChecked(false);
-
             if (!this._oMailEditPopup) {
                 this._oMailEditPopup = ute.ui.main.Popup.create({
-                    close: this._handleEditMailPopupClose.bind(this),
+                    //close: this._handleEditMailPopupClose.bind(this),
                     content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
                     title: 'Edit Mailing Address'
                 });
                 this.getView().addDependent(this._oMailEditPopup);
             }
 
-            this._beforeOpenEditAddrDialogue = true;
+            //Control what to or not to display
+            this._cleanUpAddrEditPop();
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
+            this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
+            if (this.getView().byId('idSuggCompareCheck').getChecked()) {
+                oCompareEvnet.mParameters.checked = false;
+                this._compareSuggChkClicked(oCompareEvnet);
+                this.getView().byId('idSuggCompareCheck').setChecked(false);
+            }
+
+            //this._beforeOpenEditAddrDialogue = true;
             this._oMailEditPopup.open();
             this._showSuggestedAddr();
             this._validateInputAddr();
         };
 
         Controller.prototype._onEditTempAddrClick = function (oEvent) {
-            var oEditMail = this.getView().getModel('oDtaAddrEdit');
+            var oEditMail = this.getView().getModel('oDtaAddrEdit'),
+                oCompareEvnet = {mParameters: {checked: null}};
 
             oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDataBuagAddrDetails').getProperty('/TempAddrInfo'));
 
-            //Control what to or not to display
-            this.getView().byId("idAddrUpdatePopup").setVisible(true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
-            this.getView().byId('idSuggCompareCheck').setChecked(false);
 
             if (!this._oMailEditPopup) {
                 this._oMailEditPopup = ute.ui.main.Popup.create({
-                    close: this._handleEditMailPopupClose.bind(this),
+                    //close: this._handleEditMailPopupClose.bind(this),
                     content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
                     title: 'Edit Mailing Address'
                 });
                 this.getView().addDependent(this._oMailEditPopup);
             }
 
-            this._beforeOpenEditAddrDialogue = true;
+            //Control what to or not to display
+            this._cleanUpAddrEditPop();
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', false);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', true);
+            this.getView().getModel('oDtaAddrEdit').setProperty('/bFixAddr', true);
+            this.getView().byId('idEditMailAddr_UpdtBtn').setVisible(true);
+            if (this.getView().byId('idSuggCompareCheck').getChecked()) {
+                oCompareEvnet.mParameters.checked = false;
+                this._compareSuggChkClicked(oCompareEvnet);
+                this.getView().byId('idSuggCompareCheck').setChecked(false);
+            }
+
+            //this._beforeOpenEditAddrDialogue = true;
             this._oMailEditPopup.open();
             this._showSuggestedAddr();
             this._validateInputAddr();
         };
 
+        /*
         Controller.prototype._handleEditMailPopupClose = function (oEvent) {
             this._initCaInfoConfigModel();
             this._initDataModel();
             this._initMailAddrModels();
-        };
+        };*/
 
 
         Controller.prototype._compareSuggChkClicked = function (oEvent) {
@@ -518,7 +544,7 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype.onMailAddrUpdate = function () {
+        Controller.prototype.onMailAddrUpdate = function () {
             var configModel = this.getView().getModel('oCaInfoConfig');
             configModel.setProperty('/mailAddrUpdateVisible', false);
             configModel.setProperty('/mailAddrSaveVisible', true);
@@ -526,7 +552,7 @@ sap.ui.define(
             configModel.setProperty('/mailAddrAddnewVisible', false);
         };
 
-        CustomController.prototype.onMailAddrAddnew = function () {
+        Controller.prototype.onMailAddrAddnew = function () {
             var configModel = this.getView().getModel('oCaInfoConfig'),
                 addrModel = this.getView().getModel('oDataBuagAddrDetails'),
                 oEditAddrModel = this.getView().getModel('oDtaAddrEdit');
@@ -536,6 +562,7 @@ sap.ui.define(
             configModel.setProperty('/mailAddrSaveVisible', true);
             configModel.setProperty('/mailAddrEditable', true);
 
+            addrModel.setProperty('/FixAddrInfo/PoBox', '');
             addrModel.setProperty('/FixAddrInfo/Street', '');
             addrModel.setProperty('/FixAddrInfo/HouseNo', '');
             addrModel.setProperty('/FixAddrInfo/UnitNo', '');
@@ -548,7 +575,7 @@ sap.ui.define(
             oEditAddrModel.setProperty('/bCreateFirst', true);
         };
 
-        CustomController.prototype.onMailAddrCancel = function () {
+        Controller.prototype.onMailAddrCancel = function () {
             var configModel = this.getView().getModel('oCaInfoConfig'),
                 addrModel = this.getView().getModel('oDataBuagAddrDetails');
             configModel.setProperty('/mailAddrUpdateVisible', true);
@@ -559,7 +586,7 @@ sap.ui.define(
             addrModel.setData(jQuery.extend(true, {}, this.oDataBuagAddrDetailsBak));
         };
 
-        CustomController.prototype.onMailAddrSave = function () {
+        Controller.prototype.onMailAddrSave = function () {
             var configModel = this.getView().getModel('oCaInfoConfig'),
                 oModel = this.getView().getModel('oODataSvc'),
                 sPath,
@@ -592,14 +619,14 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype.onTempAddrUpdate = function () {
+        Controller.prototype.onTempAddrUpdate = function () {
             var configModel = this.getView().getModel('oCaInfoConfig');
             configModel.setProperty('/tempAddrAddnewVisible', false);
             configModel.setProperty('/tempAddrSaveVisible', true);
             configModel.setProperty('/tempAddrEditable', true);
         };
 
-        CustomController.prototype.onTempAddrCancel = function () {
+        Controller.prototype.onTempAddrCancel = function () {
             var configModel = this.getView().getModel('oCaInfoConfig'),
                 addrModel = this.getView().getModel('oDataBuagAddrDetails');
             configModel.setProperty('/tempAddrAddnewVisible', true);
@@ -609,7 +636,7 @@ sap.ui.define(
             addrModel.setData(jQuery.extend(true, {}, this.oDataBuagAddrDetailsBak));
         };
 
-        CustomController.prototype.onTempAddrSave = function () {
+        Controller.prototype.onTempAddrSave = function () {
             var configModel = this.getView().getModel('oCaInfoConfig'),
                 oModel = this.getView().getModel('oODataSvc'),
                 sPath,
@@ -642,7 +669,7 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype.onBackToDashboard = function () {
+        Controller.prototype.onBackToDashboard = function () {
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo('dashboard.Bp', {bpNum: this._bpNum, caNum: 0});
         };
@@ -655,69 +682,6 @@ sap.ui.define(
             return sUrlHash;
         };
 
-        /*
-        CustomController.prototype._buildUpCas = function (oData, caNum) {
-            var oModel = this.getView().getModel('oDataCAs'),
-                caArr = [],
-                i,
-                o;
-            for (i = 0; i < oData.results.length; i = i + 1) {
-                //var o = {};
-                o = {};
-                o.key = i;
-                o.value = oData.results[i].ContractAccountID;
-                caArr.push(o);
-            }
-
-            oModel.setProperty('/selectedKey', i);
-            oModel.setProperty('/dropdown', caArr);
-        };*/
-
-         /*
-        CustomController.prototype._initRetrAllData = function (caNum) {
-            var oModel = this.getView().getModel('oODataSvc'),
-                sPath,
-                oParameters;
-
-            sPath = '/Buags(ContractAccountID=' + '\'' + caNum + '\')/BuagAddrDetail/';
-
-            oParameters = {
-                success : function (oData) {
-                    if (oData) {
-                        if (oData.results.length !== 0) {
-                            if (!this._fixedAddrID) {
-                                this._fixedAddrID = oData.results[0].FixedAddressID;
-                            }
-                            this.getView().getModel('oDataBuagAddrDetails').setData(oData);
-                            this.oDataBuagAddrDetailsBak = jQuery.extend(true, {}, oData);
-                            //this._buildUpCas(this.oDataBuagAddrDetailsBak, caNum);
-                        }
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    //Need to put error message
-                    var t = 1.0;
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
-        };
-
-        CustomController.prototype.onCaSelected = function (oEvent) {
-            var sSelectedKey = oEvent.getParameters().selectedKey,
-                iSelectedIndex;
-
-            if (sSelectedKey) {
-                iSelectedIndex = parseInt(sSelectedKey, 10);
-                this._caNum = this.getView().getModel('oDataCAs').oData[iSelectedIndex];
-                this._initRetrAllData(this._caNum); //switch content to new CA selected
-            }
-        };
-
-        */
-
-        return CustomController;
+        return Controller;
     }
 );

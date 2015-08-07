@@ -48,6 +48,9 @@ sap.ui.define(
                 } else {
                     oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
                 }
+                if (oTextfield.getMaxLength()) {
+			        oRm.writeAttribute("maxLength", oTextfield.getMaxLength());
+		        }
                 oRm.addStyle('width', oTextfield.getWidth());
                 oRm.addClass('uteTextfield-underlined-input');
                 oRm.writeStyles();
@@ -66,6 +69,9 @@ sap.ui.define(
                 if (!oTextfield.getEditable()) {
                     oRm.writeAttribute('readonly', '');
                 }
+                if (oTextfield.getMaxLength()) {
+			        oRm.writeAttribute("maxLength", oTextfield.getMaxLength());
+		        }
                 oRm.addStyle('width', 'auto');
                 oRm.addClass('uteTextfield-noBorder-input');
                 oRm.writeStyles();
@@ -85,6 +91,9 @@ sap.ui.define(
                 if (!oTextfield.getEditable()) {
                     oRm.writeAttribute('readonly', '');
                 }
+                if (oTextfield.getMaxLength()) {
+			        oRm.writeAttribute("maxLength", oTextfield.getMaxLength());
+		        }
                 oRm.addStyle('width', oTextfield.getWidth());
                 oRm.addClass('uteTextfield-regular');
                 oRm.writeStyles();
