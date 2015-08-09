@@ -5,20 +5,82 @@ sap.ui.define(
     [
         'sap/ui/core/mvc/Controller',
         'nrg/module/app/view/App',
-        'nrg/module/app/view/AppHeader'
+        'nrg/module/app/view/AppHeader',
+        'sap/ui/model/json/JSONModel'
     ],
 
-    function (Controller, App, AppHeader) {
+    function (Controller, App, AppHeader, JSONModel) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.app.view.CcuxApp');
 
         CustomController.prototype.onInit = function () {
             this._oApp = new App(this);
+
             this.getView().setModel(
                 sap.ui.getCore().getMessageManager().getMessageModel(),
                 'view-message'
             );
+
+            this.getView().setModel(new JSONModel({
+                LEFT: [
+                    {
+                        TITLE: 'Left websites',
+                        LINKS: [
+                            { DESCRIPTION: 'ESID Tool', ID: 'Z_ESIDLOOKUP' },
+                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' },
+                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' },
+                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' },
+                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' },
+                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' }
+                        ]
+                    },
+                    {
+                        TITLE: 'Left websites',
+                        LINKS: [
+                            { DESCRIPTION: 'ESID Tool', ID: 'Z_ESIDLOOKUP' },
+                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' }
+                        ]
+                    }
+                ],
+                RIGHT: [
+                    {
+                        TITLE: 'Right websites',
+                        LINKS: [
+                            { DESCRIPTION: 'ESID Tool', ID: 'Z_ESIDLOOKUP' },
+                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' }
+                        ]
+                    },
+                    {
+                        TITLE: 'Right websites',
+                        LINKS: [
+                            { DESCRIPTION: 'ESID Tool', ID: 'Z_ESIDLOOKUP' },
+                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' }
+                        ]
+                    },
+                    {
+                        TITLE: 'Right websites',
+                        LINKS: [
+                            { DESCRIPTION: 'ESID Tool', ID: 'Z_ESIDLOOKUP' },
+                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' }
+                        ]
+                    },
+                    {
+                        TITLE: 'Right websites',
+                        LINKS: [
+                            { DESCRIPTION: 'ESID Tool', ID: 'Z_ESIDLOOKUP' },
+                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' }
+                        ]
+                    },
+                    {
+                        TITLE: 'Right websites',
+                        LINKS: [
+                            { DESCRIPTION: 'ESID Tool', ID: 'Z_ESIDLOOKUP' },
+                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' }
+                        ]
+                    }
+                ]
+            }), 'view-index');
         };
 
         CustomController.prototype.getApp = function () {
@@ -210,6 +272,12 @@ sap.ui.define(
             if (oResponse.CANCEL && oResponse.CANCEL === 'X') {
                 this._oApp.setOccupied(false);
             }
+        };
+
+        CustomController.prototype._onIndexLinkPress = function (oControlEvent) {
+            this._oApp.setHeaderMenuItemSelected(false, App.HMItemId.Index);
+
+
         };
 
         return CustomController;

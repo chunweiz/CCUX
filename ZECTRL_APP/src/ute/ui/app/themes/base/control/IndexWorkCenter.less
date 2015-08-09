@@ -1,0 +1,20 @@
+@uteAppIdxWC-maxWidth: 1000px;
+@uteAppIdxWC-content-maxWidth: (@uteAppIdxWC-maxWidth / 2) - 8px;
+
+.uteAppIdxWC {
+    display: block;
+    width: @uteAppIdxWC-maxWidth;
+    margin: 20px auto;
+
+    & .uteAppIdxWc-leftCnt {
+        display: inline-block;
+        vertical-align: top;
+        width: @uteAppIdxWC-content-maxWidth;
+    }
+
+    & .uteAppIdxWc-rightCnt {
+        display: inline-block;
+        vertical-align: top;
+        width: @uteAppIdxWC-content-maxWidth;
+    }
+}
