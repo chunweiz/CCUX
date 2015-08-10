@@ -16,12 +16,29 @@
 
         "routing": {
             "routes": {
-                "bupa": {
-
+                "bupa.bpInfo": {
+                    "pattern": "bupa/bpinfo/bp/{bpNum}/ca/{caNum}",
+                    "target":["bupa.BupaBpInfo", "dashboard.SummaryBP", "bupa.Tools"]
+                },
+                "bupa.caInfo": {
+                    "pattern": "bupa/cainfo/bp/{bpNum}/ca/{caNum}",
+                    "target":["bupa.BupaBpInfo", "dashboard.SummaryBP", "bupa.Tools"]
                 }
             },
 
             "targets":{
+                "bupa.BupaBpInfo": {
+                    "viewName": "nrg.module.bupa.view.CustomerDataBpInfo",
+                    "controlId": "idAppGeneral"
+                },
+                "bupa.BupaCaInfo": {
+                    "viewName": "nrg.module.bupa.view.CustomerDataCaInfo",
+                    "controlId": "idAppGeneral"
+                },
+                "bupa.Tools": {
+                    "viewName": "nrg.module.bupa.view.Tools",
+                    "controlId": "idAppTools"
+                }
             }
         }
     }
