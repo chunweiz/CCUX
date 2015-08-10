@@ -18,7 +18,8 @@ sap.ui.define(
                 'ute.ui.app.SummaryPageDesign',
                 'ute.ui.app.ToolPageDesign',
                 'ute.ui.app.GeneralPageDesign',
-                'ute.ui.app.TagType'
+                'ute.ui.app.TagType',
+                'ute.ui.app.MessageDesign'
             ],
 
             controls: [
@@ -36,7 +37,11 @@ sap.ui.define(
                 'ute.ui.app.GeneralPage',
                 'ute.ui.app.Text',
                 'ute.ui.app.EventArea',
-                'ute.ui.app.Tag'
+                'ute.ui.app.Tag',
+                'ute.ui.app.IndexWorkCenter',
+                'ute.ui.app.IndexGroupLink',
+                'ute.ui.app.IndexLink',
+                'ute.ui.app.Message'
             ],
 
             elements: [],
@@ -64,6 +69,14 @@ sap.ui.define(
         ute.ui.app.TagType = {
             Block: 'Block',
             Inline: 'Inline'
+        };
+
+        ute.ui.app.MessageDesign = {
+            None: 'None',
+            Error: 'Error',
+            Information: 'Information',
+            Success: 'Success',
+            Warning: 'Warning'
         };
 
         return ute.ui.app;

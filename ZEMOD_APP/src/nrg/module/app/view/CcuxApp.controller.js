@@ -5,16 +5,18 @@ sap.ui.define(
     [
         'sap/ui/core/mvc/Controller',
         'nrg/module/app/view/App',
-        'nrg/module/app/view/AppHeader'
+        'nrg/module/app/view/AppHeader',
+        'sap/ui/model/json/JSONModel'
     ],
 
-    function (Controller, App, AppHeader) {
+    function (Controller, App, AppHeader, JSONModel) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.app.view.CcuxApp');
 
         CustomController.prototype.onInit = function () {
             this._oApp = new App(this);
+
             this.getView().setModel(
                 sap.ui.getCore().getMessageManager().getMessageModel(),
                 'view-message'
@@ -30,52 +32,52 @@ sap.ui.define(
 
             switch (oControlEvent.getSource().getId()) {
               case App.QuickLinkId.Dashboard:
-                  this._onDashboardClick(oControlEvent);
+                  this._onQLDashboardClick(oControlEvent);
                   break;
               case App.QuickLinkId.Campaign:
-                  this._onCampaignClick(oControlEvent);
+                  this._onQLCampaignClick(oControlEvent);
                   break;
               case App.QuickLinkId.BusinessPartner:
-                  this._onBusinessPartnerClick(oControlEvent);
+                  this._onQLBusinessPartnerClick(oControlEvent);
                   break;
             }
         };
-        
-        CustomController.prototype._onBusinessPartnerClick = function (oControlEvent) {
+
+        CustomController.prototype._onQLBusinessPartnerClick = function (oControlEvent) {
             var oContext, oRouter;
 
             oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
             oRouter = this.getOwnerComponent().getRouter();
 
-            if (oContext.dashboard && oContext.dashboard.bpNum) {
+            if (oContext.bpNum) {
                 oRouter.navTo('dashboard.BpInfo', {
-                    bpNum: oContext.dashboard.bpNum
+                    bpNum: oContext.pNum
                 });
             }
         };
 
-        CustomController.prototype._onDashboardClick = function (oControlEvent) {
+        CustomController.prototype._onQLDashboardClick = function (oControlEvent) {
             var oContext, oRouter;
 
             oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
             oRouter = this.getOwnerComponent().getRouter();
 
-            if (oContext.dashboard && oContext.dashboard.bpNum) {
+            if (oContext.bpNum) {
                 oRouter.navTo('dashboard.Bp', {
-                    bpNum: oContext.dashboard.bpNum
+                    bpNum: oContext.bpNum
                 });
             }
         };
 
-        CustomController.prototype._onCampaignClick = function (oControlEvent) {
+        CustomController.prototype._onQLCampaignClick = function (oControlEvent) {
             var oContext, oRouter;
 
             oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
             oRouter = this.getOwnerComponent().getRouter();
 
-            if (oContext.dashboard && oContext.dashboard.coNum) {
+            if (oContext.coNum) {
                 oRouter.navTo('campaign', {
-                    coNum: oContext.dashboard.coNum,
+                    coNum: oContext.coNum,
                     typeV: 'C' //TODO: hardcoded to current for the time being, need to revise
                 });
             }
@@ -96,19 +98,14 @@ sap.ui.define(
         };
 
         CustomController.prototype._onIndexPress = function (oControlEvent) {
-            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+            if (!this.getView().getModel('view-index')) {
+                this._initIndexConfigModel();
+            }
 
             this._oApp._getHeader().setSelected(
                 oControlEvent.getSource().getSelected(),
                 AppHeader.HMItemId.Index
             );
-
-            this._oApp.setOccupied(true);
-            oWebUiManager.notifyWebUi('openIndex', {}, this._onIndexPressCallback, this);
-        };
-
-        CustomController.prototype._onIndexPressCallback = function (oEvent) {
-            this._oApp.setOccupied(false);
         };
 
         CustomController.prototype._onTransactionPress = function (oControlEvent) {
@@ -219,6 +216,30 @@ sap.ui.define(
             if (oResponse.CANCEL && oResponse.CANCEL === 'X') {
                 this._oApp.setOccupied(false);
             }
+        };
+
+        CustomController.prototype._initIndexConfigModel = function () {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+
+            this._oApp.setOccupied(true);
+            oWebUiManager.notifyWebUi('getIndexConfig', {}, this._onInitIndexConfigModelCallback, this);
+        };
+
+        CustomController.prototype._onInitIndexConfigModelCallback = function (oEvent) {
+            var oResponse = oEvent.getParameters();
+
+            this.getView().setModel(new JSONModel(oResponse), 'view-index');
+            this._oApp.setOccupied(false);
+        };
+
+        CustomController.prototype._onIndexLinkPress = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+
+            this._oApp.setHeaderMenuItemSelected(false, App.HMItemId.Index);
+
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: oControlEvent.getSource().getRefId()
+            });
         };
 
         return CustomController;

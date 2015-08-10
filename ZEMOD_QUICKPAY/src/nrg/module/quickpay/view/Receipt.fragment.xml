@@ -13,7 +13,8 @@
                                  change=""
                                  fieldType="Regular"
                                  class="nrgQPCC-input"
-                                 width="10rem">
+                                 width="10rem"
+                                 editable="false" >
                     </u:Textfield>
                 </u:Tag>
                 <u:Tag text="{comp-i18n-quickpay>nrgQPAmount}" class="nrgQPCC-lbl"/>

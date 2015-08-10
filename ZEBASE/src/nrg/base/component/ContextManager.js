@@ -34,7 +34,9 @@ sap.ui.define(
 
             if (!oContextModel || !(oContextModel instanceof JSONModel)) {
                 oContextModel = new JSONModel({
-                    dashboard: {}
+                    bpNum: null,
+                    caNum: null,
+                    coNum: null
                 });
                 this._oComponent.setModel(oContextModel, '_comp-context');
             }
@@ -46,7 +48,9 @@ sap.ui.define(
             var oModel = this.getContext();
 
             oModel.setData({
-                dashboard: {}
+                bpNum: null,
+                caNum: null,
+                coNum: null
             });
 
             return this;

@@ -243,13 +243,13 @@
                     </l:rows>
                 </l:MatrixLayout>
 
-                <l:MatrixLayout
+                <!--<l:MatrixLayout
                     class="nrgDashboard-cusDataCaInfo-layout"
                     widths="250px,250px,500px" columns="3" width="100%">
                     <l:rows>
                         <l:MatrixLayoutRow>
                             <l:cells>
-                                <!--Area Left-->
+                                <!--Area Left->
                                 <l:MatrixLayoutCell class="nrgDashboard-cusDataCaInfo-l">
                                     <l:MatrixLayout widths="50%,50%" columns="2">
                                         <l:MatrixLayoutRow>
@@ -259,7 +259,7 @@
                                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-START_DATE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <!--editable="{oCaInfoConfig>/mailAddrEditable}"-->
+                                                <!--editable="{oCaInfoConfig>/mailAddrEditable}"->
                                                 <ute:Textfield fieldType="Noborder"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                editable="false"
@@ -271,7 +271,7 @@
                                     </l:MatrixLayout>
                                 </l:MatrixLayoutCell>
 
-                                <!--Area middle-->
+                                <!--Area middle->
                                 <l:MatrixLayoutCell class="nrgDashboard-cusDataCaInfo-l">
                                     <l:MatrixLayout widths="50%,50%" columns="2">
                                         <l:MatrixLayoutRow>
@@ -281,7 +281,7 @@
                                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataCaInfo-END_DATE}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
-                                                <!--editable="{oCaInfoConfig>/mailAddrEditable}"-->
+                                                <!--editable="{oCaInfoConfig>/mailAddrEditable}"->
                                                 <ute:Textfield fieldType="Noborder" editable="false"
                                                                class="nrgDashboard-cusDataCaInfo-cnt"
                                                                value="{path: 'oDataBuagAddrDetails>/FixAddrInfo/ValidTo',
@@ -291,7 +291,7 @@
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
                                 </l:MatrixLayoutCell>
-                                    <!--place holder-->
+                                    <!--place holder->
                                 <l:MatrixLayoutCell class="nrgDashboard-cusDataCaInfo-l">
                                     <l:MatrixLayout widths="12%,88%" columns="2">
                                         <l:MatrixLayoutRow>
@@ -302,7 +302,7 @@
                             </l:cells>
                         </l:MatrixLayoutRow>
                     </l:rows>
-                </l:MatrixLayout>
+                </l:MatrixLayout>-->
 
                 <ute:Tag elem="div" class="nrgDashboard-cusDataCaInfo-btn clearfix">
                     <utmain:Button class="nrgDashboard-cusDataCaInfo-CommBtn"

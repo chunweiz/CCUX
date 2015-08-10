@@ -326,9 +326,9 @@ sap.ui.define(
 
             //Navigate to verification page
             if (oSearchCaModel.getProperty('/searchedInCa')) {
-                oRouter.navTo('dashboard.Bp', {bpNum: oRouteInfo.BP_NUM, caNum: oSearchCaModel.getProperty('/searchedCaNum')});
+                oRouter.navTo('dashboard.BpSearchedInCa', {bpNum: oRouteInfo.BP_NUM, caNum: oSearchCaModel.getProperty('/searchedCaNum')});
             } else {
-                oRouter.navTo('dashboard.Bp', {bpNum: oRouteInfo.BP_NUM, caNum: 0});
+                oRouter.navTo('dashboard.Bp', {bpNum: oRouteInfo.BP_NUM});
             }
         };
 

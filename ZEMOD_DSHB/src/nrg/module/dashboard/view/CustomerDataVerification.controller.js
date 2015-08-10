@@ -151,7 +151,7 @@ sap.ui.define(
             iSplitHashL = aSplitHash.length;
             sPath = '/Partners' + '(\'' + bp + '\')';
 
-            if (aSplitHash[iSplitHashL - 1] !== 0) {
+            if (iSplitHashL === 4 && aSplitHash[iSplitHashL - 1] !== 0) {
                 this._searchedCaNum = aSplitHash[iSplitHashL - 1];
             }
             this._retrDataVrf(sPath);
@@ -206,7 +206,9 @@ sap.ui.define(
                 sPath,
                 oParameters,
                 i,
-                iPreSelCA;
+                iPreSelCA,
+                eventBus = sap.ui.getCore().getEventBus(),
+                oPayload = {iIndex: iSelectedCA};
 
             if (iSelectedCA) {
                 iPreSelCA = iSelectedCA;
@@ -238,6 +240,7 @@ sap.ui.define(
                                 if (this.getView().getModel('oAllBuags').oData[i].ContractAccountID === this._searchedCaNum) {
                                     this._searchedCaNum = null;
                                     this._retrBuag(sBpNum, i);
+                                    eventBus.publish("nrg.module.dashoard", "eBuagChanged", oPayload);
                                     return;
                                 }
                             }
@@ -272,7 +275,8 @@ sap.ui.define(
                         if (oData.results[0]) {
                             //Again if there's first record of Contracts, load as default to display
                             this.getView().getModel('oDtaVrfyContracts').setData(oData.results[0]);
-                            //oData.results.selectedKey = '0';
+                        } else {
+                            this.getView().getModel('oDtaVrfyContracts').setData(oData);
                         }
 
                         this._initCoPageModel();

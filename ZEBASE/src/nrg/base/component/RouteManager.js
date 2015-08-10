@@ -68,6 +68,7 @@ sap.ui.define(
         Manager.prototype._onRouteMatched = function (oEvent) {
             var oApp, oWebUiManager;
 
+            this._updateContext(oEvent.getParameters());
             this._updateRouteHistory(oEvent.getParameters());
 
             oApp = this._oComponent.getCcuxApp();
@@ -79,6 +80,18 @@ sap.ui.define(
             if (oWebUiManager && oWebUiManager.isAvailable()) {
                 oWebUiManager.notifyWebUi('resetTimeOut');
             }
+        };
+
+        Manager.prototype._updateContext = function (oRouteInfo) {
+            var oContextData;
+
+            oContextData = {
+                bpNum: oRouteInfo.arguments.bpNum || null,
+                caNum: oRouteInfo.arguments.caNum || null,
+                coNum: oRouteInfo.arguments.coNum || null
+            };
+
+            this._oComponent.getCcuxContextManager().getContext().setData(oContextData, true);
         };
 
         Manager.prototype._updateRouteHistory = function (oRouteInfo) {

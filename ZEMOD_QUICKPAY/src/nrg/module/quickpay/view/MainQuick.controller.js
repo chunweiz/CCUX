@@ -31,13 +31,10 @@ sap.ui.define(
                 sCurrentPath;
             sCurrentPath = "/PayAvailFlagsSet";
             sCurrentPath = sCurrentPath + "(ContractID='0034805112')";
-            mParameters = {
+/*            mParameters = {
                 success : function (oData) {
                     jQuery.sap.log.info("Odata Read Successfully:::");
-                    this.getView().bindElement({
-                        model : "comp-quickpay",
-                        path : sCurrentPath
-                    });
+
                 }.bind(this),
                 error: function (oError) {
                     jQuery.sap.log.info("Odata Error occured");
@@ -45,7 +42,11 @@ sap.ui.define(
             };
             if (oModel) {
                 oModel.read(sCurrentPath, mParameters);
-            }
+            }*/
+            this.getView().bindElement({
+                model : "comp-quickpay",
+                path : sCurrentPath
+            });
         };
         /**
 		 * Show Stop Voice Log Recording msg
@@ -112,11 +113,14 @@ sap.ui.define(
         Controller.prototype.onReliantCard = function (oEvent) {
             var oTBIRD = this.getView().byId("idnrgQPPay-TBIRD"),
                 oPopup = this.getView().byId("idnrgQPPay-Popup"),
-                oCloseButton = this.getView().byId("idnrgQPPayBt-close");
+                oCloseButton = this.getView().byId("idnrgQPPayBt-close"),
+                oReliantDate = this.getView().byId("idnrgQPCC-RedDate");
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupWhite");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             oTBIRD.setSelected(true);
+            oReliantDate.setValue(new Date().toLocaleDateString("en-US"));
+            oReliantDate.setEditable(false);
         };
         /**
 		 * Pending Credit Card Process initialization

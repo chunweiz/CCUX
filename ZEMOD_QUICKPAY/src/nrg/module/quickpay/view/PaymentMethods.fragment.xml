@@ -12,28 +12,28 @@
                        text="{comp-i18n-quickpay>nrgQPPaymentCC}"
                        class="nrgQPPay-btn"
                        id="idnrgQPPayBt-CC" design="Default"
-                       enabled="{comp-quickpay>CCFlag}">
+                       enabled="{= ${comp-quickpay>CCFlag} === 'X'}">
             </um:Button>
             <um:Button press=".onBankDraft"
                        text="{comp-i18n-quickpay>nrgQPPaymentBD}"
                        class="nrgQPPay-btn"
                        id="idnrgQPPayBt-BD"
                        design="Default"
-                       enabled="{comp-quickpay>BDFlag}">
+                       enabled="{= ${comp-quickpay>BDFlag} === 'X'}">
             </um:Button>
             <um:Button press=".onReceipt"
                        text="{comp-i18n-quickpay>nrgQPPaymentRE}"
                        class="nrgQPPay-btn"
                        id="idnrgQPPayBt-RE"
                        design="Default"
-                       enabled="{comp-quickpay>ReceiptFlag}">
+                       enabled="{= ${comp-quickpay>ReceiptFlag} === 'X'}">
             </um:Button>
             <um:Button press=".onReliantCard"
                        text="{comp-i18n-quickpay>nrgQPPaymentRC}"
                        class="nrgQPPay-btn"
                        id="idnrgQPPayBt-RC"
                        design="Default"
-                       enabled="{comp-quickpay>ReliantFlag}">
+                       enabled="{= ${comp-quickpay>ReliantFlag} === 'X'}">
             </um:Button>
         </u:Tag>
         <u:Tag class="nrgQPPay-Pend">
@@ -43,14 +43,14 @@
                        class="nrgQPPay-btn"
                        id="idnrgQPPayBt-PCC"
                        design="Default"
-                       enabled="{comp-quickpay>CCPPFlag}">
+                       enabled="{= ${comp-quickpay>CCPPFlag} === 'X'}">
             </um:Button>
                 <um:Button press=".onPendingBankDraft"
                        text="{comp-i18n-quickpay>nrgQPPaymentBD}"
                        class="nrgQPPay-btn"
                        id="idnrgQPPayBt-PBD"
                        design="Default"
-                       enabled="{comp-quickpay>BDPPFlag}">
+                       enabled="{= ${comp-quickpay>BDPPFlag} === 'X'}">
 
             </um:Button>
         </u:Tag>

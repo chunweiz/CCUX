@@ -9,12 +9,11 @@
         <u:Tag class="nrgQPCC-data">
             <u:Tag class="nrgQPCC-row nrgQPPay-top">
                 <u:Tag class="nrgQPPay-TF">
-                    <u:Textfield placeholder=""
-                                 change=""
-                                 fieldType="Regular"
+                    <u:Textfield fieldType="Regular"
                                  id="idnrgQPCC-Amt"
                                  class="nrgQPCC-input"
-                                 width="10rem">
+                                 width="10rem"
+                                 editable="true">
                     </u:Textfield>
                 </u:Tag>
                 <u:Tag text="{comp-i18n-quickpay>nrgQPAmount}" class="nrgQPCC-lbl"/>
