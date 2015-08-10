@@ -71,24 +71,9 @@ sap.ui.define(
             }
             this._oPaymentPopup.setContent(this);
             this._oPaymentPopup.open();
-
-
             return this;
         };
 
-        /* ========================================================================*/
-		/* Handler for popup opened                                                */
-		/* ======================================================================= */
-        QuickPayControl.prototype._handleOpened = function () {
-            this._oPaymentPopup.detachEvent("opened", this.handleOpened, this);
-        };
-
-        /* ========================================================================*/
-		/* Handler for popup closed                                                */
-		/* ======================================================================= */
-        QuickPayControl.prototype._handleClosed = function () {
-            this._oPaymentPopup.detachEvent("closed", this.handleClosed, this);
-        };
         /* ========================================================================*/
 		/* Method to close the popup                                               */
 		/* ======================================================================= */
