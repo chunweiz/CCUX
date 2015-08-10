@@ -12,6 +12,17 @@
                     }
                 }
             }
+        },
+
+        "routing": {
+            "routes": {
+                "bupa": {
+
+                }
+            },
+
+            "targets":{
+            }
         }
     }
 }
