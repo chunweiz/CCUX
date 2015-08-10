@@ -9,25 +9,22 @@
         <u:Tag class="nrgQPCC-data">
             <u:Tag class="nrgQPCC-row nrgQPPay-top">
                 <u:Tag class="nrgQPPay-TF">
-                    <u:Textfield placeholder=""
-                                 change=""
-                                 fieldType="Regular"
+                    <u:Textfield fieldType="Regular"
+                                 id="idnrgQPCC-Amt2"
                                  class="nrgQPCC-input"
                                  width="10rem"
-                                 value="{path: 'comp-quickpay>Amount', type: 'sap.ui.model.type.Float'}"
-                                 editable="false">
-                    </u:Textfield>
+                                 editable="false"
+                                 value="sarath"/>
                 </u:Tag>
                 <u:Tag text="{comp-i18n-quickpay>nrgQPAmount}" class="nrgQPCC-lbl"/>
             </u:Tag>
             <u:Tag class="nrgQPCC-row nrgQPPay-top">
                 <u:Tag class="nrgQPPay-TF">
                     <u:Textfield id="idnrgQPCC-RedDate"
+                                 editable="false"
                                  fieldType="Regular"
                                  class="nrgQPCC-input"
-                                 width="10rem"
-                                 editable="false">
-                    </u:Textfield>
+                                 width="10rem" />
                 </u:Tag>
                 <u:Tag text="{comp-i18n-quickpay>nrgQPDate}" class="nrgQPCC-lbl"/>
             </u:Tag>
@@ -37,8 +34,7 @@
                                  change=""
                                  fieldType="Regular"
                                  class="nrgQPCC-input"
-                                 width="10rem">
-                    </u:Textfield>
+                                 width="10rem" />
                 </u:Tag>
             </u:Tag>
         </u:Tag>
@@ -49,13 +45,11 @@
                 <um:Button press=".onAcceptCredit"
                            text="{comp-i18n-quickpay>nrgQPPay}"
                            class="nrgQPCC-btn"
-                           design="Default">
-                </um:button>
+                           design="Default" />
                 <um:Button press=".onDeclineCredit"
                            text="{comp-i18n-quickpay>nrgQPCancel}"
                            class="nrgQPCC-btn"
-                           design="Default">
-                </um:button>
+                           design="Default" />
             </u:Tag>
     </u:Tag>
 </core:FragmentDefinition>
