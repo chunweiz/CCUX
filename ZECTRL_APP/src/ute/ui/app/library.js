@@ -37,6 +37,7 @@ sap.ui.define(
                 'ute.ui.app.Text',
                 'ute.ui.app.EventArea',
                 'ute.ui.app.Tag',
+                'ute.ui.app.IndexWorkCenter',
                 'ute.ui.app.IndexGroupLink',
                 'ute.ui.app.IndexLink'
             ],

@@ -5,16 +5,18 @@ sap.ui.define(
     [
         'sap/ui/core/mvc/Controller',
         'nrg/module/app/view/App',
-        'nrg/module/app/view/AppHeader'
+        'nrg/module/app/view/AppHeader',
+        'sap/ui/model/json/JSONModel'
     ],
 
-    function (Controller, App, AppHeader) {
+    function (Controller, App, AppHeader, JSONModel) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.app.view.CcuxApp');
 
         CustomController.prototype.onInit = function () {
             this._oApp = new App(this);
+
             this.getView().setModel(
                 sap.ui.getCore().getMessageManager().getMessageModel(),
                 'view-message'
@@ -96,6 +98,10 @@ sap.ui.define(
         };
 
         CustomController.prototype._onIndexPress = function (oControlEvent) {
+            if (!this.getView().getModel('view-index')) {
+                this._initIndexConfigModel();
+            }
+
             this._oApp._getHeader().setSelected(
                 oControlEvent.getSource().getSelected(),
                 AppHeader.HMItemId.Index
@@ -210,6 +216,30 @@ sap.ui.define(
             if (oResponse.CANCEL && oResponse.CANCEL === 'X') {
                 this._oApp.setOccupied(false);
             }
+        };
+
+        CustomController.prototype._initIndexConfigModel = function () {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+
+            this._oApp.setOccupied(true);
+            oWebUiManager.notifyWebUi('getIndexConfig', {}, this._onInitIndexConfigModelCallback, this);
+        };
+
+        CustomController.prototype._onInitIndexConfigModelCallback = function (oEvent) {
+            var oResponse = oEvent.getParameters();
+
+            this.getView().setModel(new JSONModel(oResponse), 'view-index');
+            this._oApp.setOccupied(false);
+        };
+
+        CustomController.prototype._onIndexLinkPress = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+
+            this._oApp.setHeaderMenuItemSelected(false, App.HMItemId.Index);
+
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: oControlEvent.getSource().getRefId()
+            });
         };
 
         return CustomController;

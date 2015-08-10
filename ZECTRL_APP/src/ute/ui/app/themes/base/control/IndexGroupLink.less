@@ -1,16 +1,25 @@
 .uteAppIdxGrpLink {
-    display: inline-block;
+    display: block;
     position: relative;
+    padding: 0 20px;
 
     & .uteAppIdxGrpLink-hdr {
+        display: block;
         position: relative;
+        border-bottom: 2px solid @uteColor-grey-dark;
 
         & .uteAppIdxGrpLink-hdrTitle {
             display: inline-block;
+            font-weight: @uteFontWeight-semiBold;
+            font-size: @uteFontSize-large;
         }
     }
 
     & .uteAppIdxGrpLink-linkCont {
         display: block;
     }
+}
+
+.uteAppIdxGrpLink:not(:first-child) {
+    margin-top: 20px;
 }
