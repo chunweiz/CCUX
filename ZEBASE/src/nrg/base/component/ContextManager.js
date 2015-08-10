@@ -48,7 +48,9 @@ sap.ui.define(
             var oModel = this.getContext();
 
             oModel.setData({
-                dashboard: {}
+                bpNum: null,
+                caNum: null,
+                coNum: null
             });
 
             return this;
