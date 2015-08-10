@@ -21,66 +21,6 @@ sap.ui.define(
                 sap.ui.getCore().getMessageManager().getMessageModel(),
                 'view-message'
             );
-
-            this.getView().setModel(new JSONModel({
-                LEFT: [
-                    {
-                        TITLE: 'Left websites',
-                        LINKS: [
-                            { DESCRIPTION: 'ESID Tool', ID: 'Z_ESIDLOOKUP' },
-                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' },
-                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' },
-                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' },
-                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' },
-                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' }
-                        ]
-                    },
-                    {
-                        TITLE: 'Left websites',
-                        LINKS: [
-                            { DESCRIPTION: 'ESID Tool', ID: 'Z_ESIDLOOKUP' },
-                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' }
-                        ]
-                    }
-                ],
-                RIGHT: [
-                    {
-                        TITLE: 'Right websites',
-                        LINKS: [
-                            { DESCRIPTION: 'ESID Tool', ID: 'Z_ESIDLOOKUP' },
-                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' }
-                        ]
-                    },
-                    {
-                        TITLE: 'Right websites',
-                        LINKS: [
-                            { DESCRIPTION: 'ESID Tool', ID: 'Z_ESIDLOOKUP' },
-                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' }
-                        ]
-                    },
-                    {
-                        TITLE: 'Right websites',
-                        LINKS: [
-                            { DESCRIPTION: 'ESID Tool', ID: 'Z_ESIDLOOKUP' },
-                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' }
-                        ]
-                    },
-                    {
-                        TITLE: 'Right websites',
-                        LINKS: [
-                            { DESCRIPTION: 'ESID Tool', ID: 'Z_ESIDLOOKUP' },
-                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' }
-                        ]
-                    },
-                    {
-                        TITLE: 'Right websites',
-                        LINKS: [
-                            { DESCRIPTION: 'ESID Tool', ID: 'Z_ESIDLOOKUP' },
-                            { DESCRIPTION: 'PALPlus', ID: 'Z_PALPLUS' }
-                        ]
-                    }
-                ]
-            }), 'view-index');
         };
 
         CustomController.prototype.getApp = function () {
@@ -158,6 +98,10 @@ sap.ui.define(
         };
 
         CustomController.prototype._onIndexPress = function (oControlEvent) {
+            if (!this.getView().getModel('view-index')) {
+                this._initIndexConfigModel();
+            }
+
             this._oApp._getHeader().setSelected(
                 oControlEvent.getSource().getSelected(),
                 AppHeader.HMItemId.Index
@@ -274,10 +218,28 @@ sap.ui.define(
             }
         };
 
+        CustomController.prototype._initIndexConfigModel = function () {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+
+            this._oApp.setOccupied(true);
+            oWebUiManager.notifyWebUi('getIndexConfig', {}, this._onInitIndexConfigModelCallback, this);
+        };
+
+        CustomController.prototype._onInitIndexConfigModelCallback = function (oEvent) {
+            var oResponse = oEvent.getParameters();
+
+            this.getView().setModel(new JSONModel(oResponse), 'view-index');
+            this._oApp.setOccupied(false);
+        };
+
         CustomController.prototype._onIndexLinkPress = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+
             this._oApp.setHeaderMenuItemSelected(false, App.HMItemId.Index);
 
-
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: oControlEvent.getSource().getRefId()
+            });
         };
 
         return CustomController;

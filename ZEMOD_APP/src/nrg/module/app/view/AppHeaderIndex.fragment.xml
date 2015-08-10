@@ -9,12 +9,12 @@
             <ua:IndexWorkCenter leftContent="{view-index>/LEFT}" rightContent="{view-index>/RIGHT}">
                 <ua:leftContent>
                     <ua:IndexGroupLink title="{view-index>TITLE}" content="{view-index>LINKS}">
-                        <ua:IndexLink description="{view-index>DESCRIPTION}" refId="{view-index>ID}" press="._onIndexLinkPress" />
+                        <ua:IndexLink description="{view-index>DESCRIPTION}" refId="{view-index>LINK_ID}" press="._onIndexLinkPress" />
                     </ua:IndexGroupLink>
                 </ua:leftContent>
                 <ua:rightContent>
                     <ua:IndexGroupLink title="{view-index>TITLE}" content="{view-index>LINKS}">
-                        <ua:IndexLink description="{view-index>DESCRIPTION}" refId="{view-index>ID}" press="._onIndexLinkPress" />
+                        <ua:IndexLink description="{view-index>DESCRIPTION}" refId="{view-index>LINK_ID}" press="._onIndexLinkPress" />
                     </ua:IndexGroupLink>
                 </ua:rightContent>
             </ua:IndexWorkCenter>
