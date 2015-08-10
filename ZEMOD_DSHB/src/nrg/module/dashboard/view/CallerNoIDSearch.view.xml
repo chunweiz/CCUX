@@ -8,7 +8,6 @@
     controllerName="nrg.module.dashboard.view.CallerNoIDSearch"
     displayBlock="true">
 
-
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
         <ute:content>
             <ute:Tag class="nrgDashboard-calrNoIDSearch-title">
@@ -18,6 +17,7 @@
                      text="{comp-i18n-dashboard>nrgDashboardCallerNoIDSearchTitle}">
                 </ute:Tag>
             </ute:Tag>
+            
             <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
                 <!--type:'nrg.util.type.BusinessPartnerNumber'-->
                 <ute:Textfield
@@ -68,6 +68,7 @@
                     width="48%">
                 </ute:Textfield>
             </ute:Tag>
+            
             <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
                 <!--type:'nrg.util.type.ESID'-->
                 <ute:Textfield
@@ -120,7 +121,6 @@
                     change="onTextFieldChange"
                     width="48%">
                 </ute:Textfield>
-
             </ute:Tag>
 
             <!--Add Address Search-->
@@ -180,6 +180,7 @@
                     width="48%">
                 </ute:Textfield>
             </ute:Tag>
+            
             <ute:Tag class="nrgCallerNoIDSearch-sbtn">
                 <ute:Button
                     press="onSearch"
@@ -189,9 +190,10 @@
             </ute:Tag>
         </ute:content>
     </ute:Tag>
+    
     <ute:Tag class="nrgDashboard-calrNoIDSearch nrgDashboard-calrNoIDSearch-transSpace">
-
     </ute:Tag>
+    
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
         <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTitle"
                  text="{comp-i18n-dashboard>nrgDashboardCallerNoIDSearchResultTitle}">
@@ -299,7 +301,6 @@
             </l:MatrixLayout>
         </ute:ScrollContainer>
         </ute:Tag>
-
     </ute:Tag>
 
 </mvc:View>
