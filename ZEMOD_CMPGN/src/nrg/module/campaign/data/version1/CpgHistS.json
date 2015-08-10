@@ -2,7 +2,7 @@
    "d":{
       "results":[
          {
-            "Contract":"32253375",
+            "Contract":"34805112",
             "OfferCode":"50038473",
             "Type":"H",
             "StartDate":"/Date(1307422800000)/",
@@ -33,7 +33,7 @@
                "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/CpgHistS(OfferCode='50050804',Type='H')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg"
             },
-            "Contract":"32253375",
+            "Contract":"34805112",
             "OfferCode":"50050804",
             "Type":"H",
             "StartDate":"/Date(1319864400000)/",
@@ -64,7 +64,7 @@
                "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/CpgHistS(OfferCode='50050804',Type='H')",
                "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg"
             },
-            "Contract":"32253375",
+            "Contract":"34805112",
             "OfferCode":"50050805",
             "Type":"H",
             "StartDate":"/Date(1319864400000)/",
