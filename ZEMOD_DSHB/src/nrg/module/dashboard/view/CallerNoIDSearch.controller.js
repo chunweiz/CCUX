@@ -69,14 +69,13 @@ sap.ui.define(
             this.getView().getModel('oSearchFilters').setProperty('/searchTextFields', oFilters);
         };
 
-        Controller.prototype.onTextFieldChange = function (oControlEvent) {
-            //Create for future use
-        };
 
         Controller.prototype.onSearch = function () {
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._searchBP('/BpSearchs', this._createSearchParameters());
         };
+
+        Controller.prototype.onTextFieldChange = Controller.prototype.onSearch;
 
         Controller.prototype._createSearchFilterObject = function () {
             //var test = this.getView().byId('idSearchBp');

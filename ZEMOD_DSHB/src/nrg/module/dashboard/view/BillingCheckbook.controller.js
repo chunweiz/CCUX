@@ -19,7 +19,7 @@ sap.ui.define(
         };
 
         CustomController.prototype.onBeforeRendering = function () {
-
+            this.getOwnerComponent().getCcuxApp().setTitle('BILLING');
         };
 
         CustomController.prototype.onAfterRendering = function () {

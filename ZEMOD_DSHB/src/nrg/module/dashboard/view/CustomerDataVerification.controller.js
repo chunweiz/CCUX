@@ -266,6 +266,8 @@ sap.ui.define(
             sPath = '/Buags' + '(\'' + sBuagNum + '\')/Contracts/';
             oParameters = {
                 success : function (oData) {
+                    console.log('path', sPath);
+                    console.log('oData', oData);
                     if (oData) {
                         if (oData.results[0]) {
                             //Again if there's first record of Contracts, load as default to display
