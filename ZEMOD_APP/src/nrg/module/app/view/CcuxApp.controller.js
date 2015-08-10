@@ -49,9 +49,9 @@ sap.ui.define(
             oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
             oRouter = this.getOwnerComponent().getRouter();
 
-            if (oContext.dashboard && oContext.dashboard.bpNum) {
+            if (oContext.bpNum) {
                 oRouter.navTo('dashboard.BpInfo', {
-                    bpNum: oContext.dashboard.bpNum
+                    bpNum: oContext.pNum
                 });
             }
         };
@@ -62,9 +62,9 @@ sap.ui.define(
             oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
             oRouter = this.getOwnerComponent().getRouter();
 
-            if (oContext.dashboard && oContext.dashboard.bpNum) {
+            if (oContext.bpNum) {
                 oRouter.navTo('dashboard.Bp', {
-                    bpNum: oContext.dashboard.bpNum
+                    bpNum: oContext.bpNum
                 });
             }
         };
@@ -75,9 +75,9 @@ sap.ui.define(
             oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
             oRouter = this.getOwnerComponent().getRouter();
 
-            if (oContext.dashboard && oContext.dashboard.coNum) {
+            if (oContext.coNum) {
                 oRouter.navTo('campaign', {
-                    coNum: oContext.dashboard.coNum,
+                    coNum: oContext.coNum,
                     typeV: 'C' //TODO: hardcoded to current for the time being, need to revise
                 });
             }
