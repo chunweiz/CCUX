@@ -16,7 +16,7 @@ sap.ui.define(
     function (Filter, FilterOperator, jQuery, CoreController, JSONModel, HashChanger, DateFormat) {
         'use strict';
 
-        var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataCaInfo');
+        var Controller = CoreController.extend('nrg.module.bupa.view.CustomerDataCaInfo');
 
         Controller.prototype.onBeforeRendering = function () {
             //if (!this._beforeOpenEditAddrDialogue) {
@@ -24,7 +24,7 @@ sap.ui.define(
 
             this.getOwnerComponent().getCcuxApp().setTitle('BUSINESS PARTNER');
 
-            this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-bupa'), 'oODataSvc');
 
                 //Model to track page edit/save status
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCaInfoConfig');
@@ -434,7 +434,7 @@ sap.ui.define(
             if (!this._oMailEditPopup) {
                 this._oMailEditPopup = ute.ui.main.Popup.create({
                     close: this._handleEditMailPopupClose.bind(this),
-                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
+                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.bupa.view.AddrUpdateCaLvlPopUp", this),
                     title: 'Edit Mailing Address'
                 });
                 this.getView().addDependent(this._oMailEditPopup);

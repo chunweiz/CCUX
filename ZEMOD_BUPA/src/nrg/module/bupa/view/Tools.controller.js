@@ -9,7 +9,7 @@ sap.ui.define(
     function (CoreController) {
         'use strict';
 
-        var Controller = CoreController.extend('nrg.module.dashboard.view.Tools');
+        var Controller = CoreController.extend('nrg.module.bupa.view.Tools');
 
         //TODO: Implementation required
 

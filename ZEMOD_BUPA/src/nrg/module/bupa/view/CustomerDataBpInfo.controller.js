@@ -22,7 +22,7 @@ sap.ui.define(
     function (jQuery, Controller, Filter, FilterOperator, HashChanger, DateFormat, CoreMessage, CoreControlMessageProcessor) {
         'use strict';
 
-        var CustomController = Controller.extend('nrg.module.dashboard.view.CustomerDataBpInfo');
+        var CustomController = Controller.extend('nrg.module.bupa.view.CustomerDataBpInfo');
 
         Controller.prototype.onBeforeRendering = function () {
             this.getOwnerComponent().getCcuxApp().setTitle('BUSINESS PARTNER');
@@ -273,7 +273,7 @@ sap.ui.define(
                         if (!this._oMailEditPopup) {
                             this._oMailEditPopup = ute.ui.main.Popup.create({
                                 close: this._handleEditMailPopupClose,
-                                content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdatePopup", this),
+                                content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.bupa.view.AddrUpdatePopup", this),
                                 title: 'Edit Mailing Address'
                             });
                             this.getView().addDependent(this._oMailEditPopup);
@@ -1107,7 +1107,7 @@ sap.ui.define(
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             //Preapre Popup for Email Edit to show
             if (!this._oPopupContent) {
-                this._oPopupContent = sap.ui.xmlfragment("BPInfoEmailEditPopup", "nrg.module.dashboard.view.CustomerVerificationPopup", this);
+                this._oPopupContent = sap.ui.xmlfragment("BPInfoEmailEditPopup", "nrg.module.bupa.view.CustomerVerificationPopup", this);
             }
             oEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-EmailBox");
             oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox");
