@@ -27,7 +27,7 @@ sap.ui.define(
         Controller.prototype.onBeforeRendering = function () {
             this.getOwnerComponent().getCcuxApp().setTitle('BUSINESS PARTNER');
 
-            this.getView().setModel(this.getOwnerComponent().getModel('comp-bupa'), 'oODataSvc');
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
             //Model to track page edit/save status
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBpInfoConfig');
@@ -1107,7 +1107,7 @@ sap.ui.define(
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             //Preapre Popup for Email Edit to show
             if (!this._oPopupContent) {
-                this._oPopupContent = sap.ui.xmlfragment("BPInfoEmailEditPopup", "nrg.module.dashboard.view.CustomerVerificationPopup", this);
+                this._oPopupContent = sap.ui.xmlfragment("BPInfoEmailEditPopup", "nrg.module.bupa.view.CustomerVerificationPopup", this);
             }
             oEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-EmailBox");
             oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox");
