@@ -8,4 +8,7 @@
 @CALL grunt --build=module --moduleName=nrg.module.dashboard --moduleFolder=ZEMOD_DSHB
 @CALL grunt --build=module --moduleName=nrg.module.campaign --moduleFolder=ZEMOD_CMPGN
 @CALL grunt --build=module --moduleName=nrg.module.quickpay --moduleFolder=ZEMOD_QUICKPAY
+@CALL grunt --build=module --moduleName=nrg.module.billing --moduleFolder=ZEMOD_BILLING
+@CALL grunt --build=module --moduleName=nrg.module.bupa --moduleFolder=ZEMOD_BUPA
+@CALL grunt --build=module --moduleName=nrg.module.search --moduleFolder=ZEMOD_SEARCH
 @CALL grunt --build=component --componentName=nrg.component.ic --componentFolder=ZECMP_IC
