@@ -120,6 +120,7 @@ sap.ui.define(
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             oTBIRD.setSelected(true);
             oReliantDate.setValue(new Date().toLocaleDateString("en-US"));
+            oReliantDate.setEditable(false);
         };
         /**
 		 * Pending Credit Card Process initialization
