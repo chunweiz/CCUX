@@ -86,7 +86,7 @@
                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-m-div-POST_INVOICE}" />
 
                                 <l:MatrixLayout
-                                    class="nrgDashboard-cusDataBil-layout"
+                                    class="nrgDashboard-cusDataBil-invoice-layout"
                                     widths="50%,50%" columns="2" width="100%">
                                     <l:rows>
                                         <l:MatrixLayoutRow>
@@ -99,6 +99,7 @@
                                                 <utmain:Button
                                                     design="None" visible="true"
                                                     press="._onPaymentsClicked"
+                                                    class="nrgDashboard-cusDataBillingInfo-invoiceBtnValue"
                                                     text="74.02"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
@@ -130,8 +131,6 @@
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
-                                <ute:HorizontalDivider
-                                    class="nrgDashboard-cusDataBil-horDvi"/>
                                 <l:MatrixLayout widths="60%,40%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
@@ -154,21 +153,6 @@
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
-                                <ute:HorizontalDivider
-                                    class="nrgDashboard-cusDataBil-horDvi"/>
-                                <l:MatrixLayout widths="60%,40%" columns="2">
-                                    <l:MatrixLayoutRow>
-                                        <l:MatrixLayoutCell>
-                                            <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-lbl" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-r-div-DISCONN_DATE}:" />
-                                        </l:MatrixLayoutCell>
-                                        <l:MatrixLayoutCell>
-                                            <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-content-cnt" text="01/20/2015" />
-                                        </l:MatrixLayoutCell>
-                                    </l:MatrixLayoutRow>
-                                </l:MatrixLayout>
-                                <ute:HorizontalDivider
-                                    class="nrgDashboard-cusDataBil-horDvi"/>
-
                             </ute:Tag>
                         </l:MatrixLayoutCell>
 
