@@ -2,7 +2,7 @@
     "sap.ui5": {
         "config": {
             "module": {
-                "nrg.module.bupa": {
+                "nrg.module.billing": {
                     "stylesheet": [
                         "asset/css/module.css"
                     ],
@@ -18,7 +18,7 @@
                             }
                         },
                         "mock": {
-                            "comp-bupa": {
+                            "comp-billing": {
                                 "mockDataBaseUrl": "data/devtest/",
                                 "generateMissingMockData": true
                             }
