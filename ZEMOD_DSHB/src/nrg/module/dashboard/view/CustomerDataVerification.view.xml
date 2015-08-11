@@ -263,25 +263,37 @@
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
 
-                                <utmain:Label  labelFor="contractNum"
-                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CaNum}"
-                                    class="nrgDashboard-cusDataVerify-mContent-fLbl"/>
-                                <ute:Textfield id="contractNum" fieldType="Noborder"
-                                    editable="false"
-                                    value="{oDtaVrfyContracts>/ContractID}"
-                                    class="nrgDashboard-cusDataVerify-mContent-fInput"/>
+                                <ute:Tag class="nrgDashboard-cusDataVerify-contractWrap">
+                                    <utmain:Label  labelFor="contractNum"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CaNum}"
+                                        class="nrgDashboard-cusDataVerify-mContent-fLbl"/>
+                                    <ute:Textfield id="contractNum" fieldType="Noborder"
+                                        editable="false"
+                                        value="{oDtaVrfyContracts>/ContractID}"
+                                        class="nrgDashboard-cusDataVerify-mContent-fInput"/>
+                                </ute:Tag>
 
-                                <l:MatrixLayout widths="55%,45%" columns="2">
+                                <!-- <l:MatrixLayout widths="180px,80px,200px" columns="3">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
                                             <utmain:Label  labelFor="cell_num"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CellNum}"
                                                 class="nrgDashboard-cusDataVerify-mContent-hLbl nrgDashboard-cusDataVerify-phoneNumAlign"/>
                                             <ute:Textfield id="cell_num" fieldType="Noborder"
+                                                class="nrgDashboard-cusDataVerify-mContent-hInput"
                                                 editable="{oCfrmStatus>/bEditable}"
                                                 value="{oDtaVrfyBP>/Cell}"
-                                                class="nrgDashboard-cusDataVerify-mContent-hInput"/>
+                                                width="100px"/>
+
                                         </l:MatrixLayoutCell>
+
+                                        <l:MatrixLayoutCell>
+                                            <utmain:Button
+                                                class="nrgDashboard-cusDataVerify-alignCenBtn"
+                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SMS}"
+                                                press="._onSMSButtonClicked"/>
+                                        </l:MatrixLayoutCell>
+
                                         <l:MatrixLayoutCell>
                                             <utmain:Label labelFor="fax_num"
                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FaxNum}"
@@ -292,12 +304,45 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
-                                </l:MatrixLayout>
+                                </l:MatrixLayout> -->
+
+                                <!-- Added by Jerry Hsu, 8/11/2015 -->
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-cellPhn">
+                                    <utmain:Label  labelFor="cell_num"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CellNum}"
+                                        class="nrgDashboard-cusDataVerify-mContent-hLbl nrgDashboard-cusDataVerify-phoneNumAlign"/>
+                                    <ute:Textfield id="cell_num" fieldType="Noborder"
+                                        class="nrgDashboard-cusDataVerify-mContent-hInput"
+                                        editable="{oCfrmStatus>/bEditable}"
+                                        value="{oDtaVrfyBP>/Cell}"
+                                        width="100px"/>
+                                </ute:Tag>
+                                <!-- Added by Jerry Hsu, 8/11/2015 -->
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-smsBtn">
+                                    <utmain:Button
+                                        visible="{oCfrmStatus>/ShowSMSBtn}"
+                                        class="nrgDashboard-cusDataVerify-alignCenBtn"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SMS}"
+                                        press="._onSMSButtonClicked"/>
+                                </ute:Tag>
+                                <!-- Added by Jerry Hsu, 8/11/2015 -->
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-fax">
+                                    <utmain:Label labelFor="fax_num"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FaxNum}"
+                                        class="nrgDashboard-cusDataVerify-mContent-hLbl nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                    <ute:Textfield id="fax_num" fieldType="Noborder"
+                                        value="{oDtaVrfyBP>/Fax}"
+                                        editable="{oCfrmStatus>/bEditable}"
+                                        class="nrgDashboard-cusDataVerify-mContent-hInput"/>
+                                </ute:Tag>
+
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
+
                                 <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hPhn">
-                                    <utmain:Label  labelFor="dayPhn" class="nrgDashboard-cusDataVerify-phoneNumAlign"
-                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"/>
+                                    <utmain:Label  labelFor="dayPhn" 
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"
+                                        class="nrgDashboard-cusDataVerify-mContent-hLbl nrgDashboard-cusDataVerify-phoneNumAlign"/>
                                     <ute:Textfield id="dayPhn" fieldType="Noborder"
                                         class="nrgDashboard-cusDataVerify-mContent-hPhnInput"
                                         editable="{oCfrmStatus>/bEditable}"
@@ -378,19 +423,14 @@
                                                            formatter:'._formatEmailAddressText'}"
                                                 press="._handleEmailEdit"/>
                                         </l:MatrixLayoutCell>
+                                        
                                         <l:MatrixLayoutCell>
-                                            <utmain:Button
-                                                class="nrgDashboard-cusDataVerify-alignCenBtn"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SMS}"
-                                                press="._onSMSButtonClicked"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
-
                             </ute:Tag>
+
                             <ute:Tag id="mailadd_area" visible="false" class="nrgDashboard-cusDataVerify-mContent">
-
-
                                 <l:MatrixLayout widths="55%,45%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
@@ -429,7 +469,7 @@
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
 
-                                <l:MatrixLayout widths="55%,45%" columns="2">
+                                <!-- <l:MatrixLayout widths="55%,45%" columns="2">
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
                                             <utmain:Label  labelFor="cell_num_mail"
@@ -450,7 +490,41 @@
                                                 class="nrgDashboard-cusDataVerify-mContent-hInput"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
-                                </l:MatrixLayout>
+                                </l:MatrixLayout> -->
+
+                                <!-- Added by Jerry Hsu, 8/11/2015 -->
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-cellPhn">
+                                    <utmain:Label  labelFor="cell_num_mail"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CellNum}"
+                                        class="nrgDashboard-cusDataVerify-mContent-hLbl nrgDashboard-cusDataVerify-phoneNumAlign"/>
+                                    <ute:Textfield id="cell_num_mail" fieldType="Noborder"
+                                        value="{oDtaVrfyBP>/Cell}"
+                                        editable="{oCfrmStatus>/bEditable}"
+                                        class="nrgDashboard-cusDataVerify-mContent-hInput"
+                                        width="100px"/>
+                                </ute:Tag>
+                                <!-- Added by Jerry Hsu, 8/11/2015 -->
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-smsBtn">
+                                    <utmain:Button
+                                        visible="{oCfrmStatus>/ShowSMSBtn}"
+                                        class="nrgDashboard-cusDataVerify-alignCenBtn"
+                                        enabled="{
+                                            parts:['oDtaVrfyBP>/IsSMS'],
+                                            formatter:'._formatSMSBtn'}"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SMS}"
+                                        press="._onSMSButtonClicked"/>
+                                </ute:Tag>
+                                <!-- Added by Jerry Hsu, 8/11/2015 -->
+                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-fax">
+                                    <utmain:Label labelFor="fax_num_mail"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FaxNum}"
+                                        class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
+                                    <ute:Textfield id="fax_num_mail" fieldType="Noborder"
+                                        value="{oDtaVrfyBP>/Fax}"
+                                        editable="{oCfrmStatus>/bEditable}"
+                                        class="nrgDashboard-cusDataVerify-mContent-hInput"/>
+                                </ute:Tag>
+
                                 <ute:HorizontalDivider
                                     class="nrgDashboard-cusDataVerify-horDvi"/>
 
@@ -537,13 +611,6 @@
                                                 press="._handleEmailEdit"/>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell>
-                                            <utmain:Button
-                                                class="nrgDashboard-cusDataVerify-alignCenBtn"
-                                                enabled="{
-                                                    parts:['oDtaVrfyBP>/IsSMS'],
-                                                    formatter:'._formatSMSBtn'}"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SMS}"
-                                                press="._onSMSButtonClicked"/>
                                         </l:MatrixLayoutCell>
                                     </l:MatrixLayoutRow>
                                 </l:MatrixLayout>
