@@ -164,6 +164,7 @@
                             </ute:Tag>
                         </l:MatrixLayoutCell>
                         <!--Area Left Ends-->
+
                         <!--Area Middle (service address/mailing address)-->
                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-m">
                             <ute:Tag class="nrgDashboard-cusDataVerify-mDiv">
@@ -203,18 +204,21 @@
                                     <l:MatrixLayoutRow>
                                         <l:MatrixLayoutCell>
                                             <ute:Tag class="nrgDashboard-cusDataVerify-mContent-add-up">
-                                            <ute:Badge id="idBadgeCI" size="30px"
-                                                class="nrgDashboard-cusDataVerify-mContent-badge"
-                                                visible="{
-                                                    parts:['oDtaVrfyContracts>/JointAcc'],
-                                                    formatter:'._formatChecked'}"
-                                                design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RHSClr}"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_JABadge}">
-                                            </ute:Badge>
-                                            <ute:TextView
-                                                class="nrgDashboard-cusDataVerify-mContent-add"
-                                                text="{oDtaVrfyContracts>/HouseNum1} {oDtaVrfyContracts>/Street}, {oDtaVrfyContracts>/City1}, {oDtaVrfyContracts>/Region} {oDtaVrfyContracts>/PostCode1}"/>
-                                                </ute:Tag>
+                                                <ute:Badge id="idBadgeCI" size="30px"
+                                                    class="nrgDashboard-cusDataVerify-mContent-badge"
+                                                    visible="{
+                                                        parts:['oDtaVrfyContracts>/JointAcc'],
+                                                        formatter:'._formatChecked'}"
+                                                    design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RHSClr}"
+                                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_JABadge}">
+                                                </ute:Badge>
+                                                <ute:TextView
+                                                    class="nrgDashboard-cusDataVerify-mContent-add"
+                                                    text="{oDtaVrfyContracts>/HouseNum1} {oDtaVrfyContracts>/Street}"/>
+                                                <ute:TextView
+                                                    class="nrgDashboard-cusDataVerify-mContent-add"
+                                                    text="{oDtaVrfyContracts>/City1}, {oDtaVrfyContracts>/Region} {oDtaVrfyContracts>/PostCode1}"/>
+                                            </ute:Tag>
                                         </l:MatrixLayoutCell>
                                         <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-mContent-pag">
                                             <utmain:Button design="None"
