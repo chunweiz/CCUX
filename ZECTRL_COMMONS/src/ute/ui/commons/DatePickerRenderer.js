@@ -21,7 +21,7 @@ sap.ui.define(
          * @param {sap.ui.core.RenderManager} oRm the RenderManager that can be used for writing to the render output buffer
          * @param {ute.ui.commons.Textfield} oTextfield an object representation of the control that should be rendered
          */
-        TextFieldRenderer.render = function (oRm, oTextfield) {
+/*        TextFieldRenderer.render = function (oRm, oTextfield) {
             oRm.write('<span');
             oRm.addClass('uteTextfield');
             oRm.writeClasses();
@@ -64,7 +64,7 @@ sap.ui.define(
             }
 
             oRm.write('</span>');
-        };
+        };*/
 
         /**
          * DatePickerRenderer Method to include the Icon to launch the Calendar control in the pop-up.

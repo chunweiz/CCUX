@@ -62,14 +62,12 @@
                     </um:button>
             </u:Tag>
             <u:Tag class="nrgQPCC-row nrgQPPay-top">
-                <u:Textfield placeholder="{comp-i18n-quickpay>nrgQPCVV}"
-                             fieldType="Regular"
+                <u:Textfield fieldType="Regular"
                              id="idnrgQPCC-cvv"
                              class="nrgQPCC-cvv"
                              width="3rem">
                 </u:Textfield>
-                <u:Textfield placeholder="{comp-i18n-quickpay>nrgQPZipCode}"
-                             fieldType="Regular"
+                <u:Textfield fieldType="Regular"
                              id="idnrgQPCC-zipcode"
                              class="nrgQPCC-zipcode"
                              width="5rem">

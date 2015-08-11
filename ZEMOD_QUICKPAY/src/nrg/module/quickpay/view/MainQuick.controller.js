@@ -208,6 +208,24 @@ sap.ui.define(
                 events: {dataReceived : fnRecievedHandler}
             });
         };
+        /**
+         * Handler for Declining Reliant Card Payment
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onDeclineReliant = function (oEvent) {
+
+        };
+        /**
+         * handler for Adding Credit card
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onAddCC = function (oEvent) {
+
+        };
 
         return Controller;
     }
