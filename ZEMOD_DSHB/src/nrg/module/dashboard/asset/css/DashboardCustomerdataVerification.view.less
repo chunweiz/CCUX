@@ -200,14 +200,18 @@
         margin-right: 6px;
     }
 
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up > .nrgDashboard-cusDataVerify-mContent-add{
-        display: table-cell;
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up > .nrgDashboard-cusDataVerify-mContent-add:last-child{
+        margin-bottom: 10px;
     }
 
     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up > .nrgDashboard-cusDataVerify-mContent-add > span{
         font-size: @nrgFontSize-base;
         font-weight: @nrgFontWeight-bold;
         color: @nrgColor-grey-dark;
+    }
+
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent .nrgDashboard-cusDataVerify-contractWrap{
+        margin-bottom: 10px;
     }
 
     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-fLbl{
@@ -251,10 +255,55 @@
         font-weight: @nrgFontWeight-semiBold;
         color: @nrgColor-grey-inactive;
     }
+    // Added by Jerry Hsu, 8/11/2015
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-cellPhn{
+        display: inline-block;
+        width: 180px;
+        label span {
+            font-size: @nrgFontSize-small;
+            font-weight: @nrgFontWeight-semiBold;
+            color: @nrgColor-grey-inactive;
+        }
+        input {
+            font-size: @nrgFontSize-small;
+            font-weight: @nrgFontWeight-semiBold;
+            color: @nrgColor-grey-dark;
+            width: 90px !important;
+            margin-left: 8px;
+        }
+        input:focus {
+            background-color: @nrgColor-blue-link;
+        }
+    }
+    // Added by Jerry Hsu, 8/11/2015
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-smsBtn{
+        display: inline-block;
+        width: 90px;
+    }
+    // Added by Jerry Hsu, 8/11/2015
+    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-fax{
+        display: inline-block;
+        margin-left: 3px;
+        label span {
+            font-size: @nrgFontSize-small;
+            font-weight: @nrgFontWeight-semiBold;
+            color: @nrgColor-grey-inactive;
+        }
+        input {
+            font-size: @nrgFontSize-small;
+            font-weight: @nrgFontWeight-semiBold;
+            color: @nrgColor-grey-dark;
+            width: 90px !important;
+            margin-left: 8px;
+        }
+        input:focus {
+            background-color: @nrgColor-blue-link;
+        }
+    }
 
     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hPhn{
         display: inline-block;
-        width: 180px
+        width: 180px;
     }
 
      & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hExt{
@@ -290,8 +339,8 @@
         font-weight: @nrgFontWeight-semiBold;
         color: @nrgColor-grey-dark;
         margin-left: 8px;
-        min-width: 100px;
-        width: 100px !important;
+        // min-width: 100px;
+        width: 90px !important;
     }
 
     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hPhn > .nrgDashboard-cusDataVerify-mContent-hPhnInput > input:focus{
@@ -312,6 +361,7 @@
         font-weight: @nrgFontWeight-semiBold;
         color: @nrgColor-grey-dark;
         margin-left: 8px;
+        width: 90px !important;
     }
 
     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hEmailInput > div{

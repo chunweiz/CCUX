@@ -29,7 +29,6 @@
                                          class="nrgQPPay-close"
                                         design="None">
                    <u:Tag class="nrgQPPayBt-close" id="idnrgQPPayBt-close" />
-
                 </um:Button>
             </u:Tag>
             <um:TabPanel tabPanelFor="nrgTabBar" design="None" class="nrgQPPay-tabPanel">

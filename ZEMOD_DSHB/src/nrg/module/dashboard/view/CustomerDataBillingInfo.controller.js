@@ -42,6 +42,25 @@ sap.ui.define(
 
         };
 
+        CustomController.prototype._onInvoiceAmntClicked = function (oEvent) {
+            alert("Hi, invoice!");
+        };
+
+        CustomController.prototype._onPaymentsClicked = function (oEvent) {
+            if (!this._oPaymentPopup) {
+                this._oPaymentPopup = sap.ui.xmlfragment("PaymentPopup", "nrg.module.dashboard.view.PaymentsPopup", this);
+            }
+
+            this._oPaymentsPopup = ute.ui.main.Popup.create({
+                content: this._oPaymentPopup,
+                title: 'Payments'
+            });
+
+            this._oPaymentsPopup.setShowCloseButton(true);
+            this.getView().addDependent(this._oPaymentsPopup);
+            this._oPaymentsPopup.open();
+        };
+
         return CustomController;
     }
 );

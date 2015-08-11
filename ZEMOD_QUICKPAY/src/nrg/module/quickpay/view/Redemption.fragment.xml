@@ -14,7 +14,8 @@
                                  class="nrgQPCC-input"
                                  width="10rem"
                                  editable="false"
-                                 value="{comp-quickpay>Amount}"/>
+                                 value="{comp-quickpay>Amount}">
+                    </u:Textfield>
                 </u:Tag>
                 <u:Tag text="{comp-i18n-quickpay>nrgQPAmount}" class="nrgQPCC-lbl"/>
             </u:Tag>
@@ -24,18 +25,19 @@
                                  editable="false"
                                  fieldType="Regular"
                                  class="nrgQPCC-input"
-                                 width="10rem" />
+                                 width="10rem">
+                    </u:Textfield>
                 </u:Tag>
                 <u:Tag text="{comp-i18n-quickpay>nrgQPDate}" class="nrgQPCC-lbl"/>
             </u:Tag>
             <u:Tag class="nrgQPCC-row nrgQPPay-top">
                 <u:Tag class="nrgQPPay-TF">
                     <u:Textfield placeholder="{comp-i18n-quickpay>nrgQPRedemptionNum}"
-                                 change=""
                                  fieldType="Regular"
                                  class="nrgQPCC-input"
                                  width="10rem"
-                                 value="{comp-quickpay>ReliantCard}"/>
+                                 value="{comp-quickpay>ReliantCard}">
+                    </u:Textfield>
                 </u:Tag>
             </u:Tag>
         </u:Tag>
