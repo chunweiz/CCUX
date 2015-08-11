@@ -1,1 +1,66 @@
-{}
+{
+    "sap.ui5": {
+        "config": {
+            "module": {
+                "nrg.module.bupa": {
+                    "stylesheet": [
+                        "asset/css/module.css"
+                    ],
+
+                    "resourceBundle": {
+                        "comp-i18n-billing": "i18n/module.properties"
+                    },
+
+                    "odata": {
+                        "real": {
+                            "comp-billing": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_SRV/"
+                            }
+                        },
+                        "mock": {
+                            "comp-bupa": {
+                                "mockDataBaseUrl": "data/devtest/",
+                                "generateMissingMockData": true
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "routing": {
+            "routes": {
+                "billing.CheckBook": {
+                    "pattern": "billing/checkbook/bp/{bpNum}/ca/{caNum}",
+                    "target":["billing.Checkbook", "dashboard.CustomerDataSummary"]
+                },
+                "billing.BillingInfo": {
+                    "pattern": "billing/billinginfo/bp/{bpNum}/ca/{caNum}",
+                    "target":["billing.CustomerDataBillingInfo", "dashboard.CustomerDataSummary"]
+                },
+                "billing.BillingPrePaid": {
+                    "pattern": "billing/billingprepaid/bp/{bpNum}/ca/{caNum}",
+                    "target":["billing.CustomerDataPrePD", "dashboard.CustomerDataSummary"]
+                }
+            },
+
+            "targets":{
+                "billing.Checkbook": {
+                    "viewName": "nrg.module.billing.view.BillingCheckbook",
+                    "controlId": "idAppGeneral"
+                },
+                "billing.CustomerDataBillingInfo": {
+                    "viewName": "nrg.module.bupa.view.CustomerDataBillingInfo",
+                    "controlId": "idAppGeneral"
+                },
+                "billing.CustomerDataPrePD": {
+                    "viewName": "nrg.module.bupa.view.CustomerDataPrePD",
+                    "controlId": "idAppGeneral"
+                },
+                "dashboard.SummaryBP": {
+                    "viewName": "nrg.module.dashboard.view.CustomerDataSummary",
+                    "controlId": "idAppSummary"
+                }
+            }
+        }
+    }
