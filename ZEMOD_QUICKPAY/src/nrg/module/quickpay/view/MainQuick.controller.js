@@ -29,21 +29,16 @@ sap.ui.define(
             var oModel = this.getView().getModel('comp-quickpay'),
                 mParameters,
                 sCurrentPath,
-                oMsgArea = this.getView().byId("idnrgQPPay-msgArea");
+                oMsgArea = this.getView().byId("idnrgQPPay-msgArea"),
+                oViewModel = new JSONModel({
+                    reliantPay : false,
+                    message : "",
+                    reliantText : "Verify",
+                    reliantPress: ".onAcceptReliant"
+                });
+            this.getView().setModel(oViewModel, "appView");
             sCurrentPath = "/PayAvailFlagsSet";
             sCurrentPath = sCurrentPath + "(ContractID='0034805112')";
-/*            mParameters = {
-                success : function (oData) {
-                    jQuery.sap.log.info("Odata Read Successfully:::");
-
-                }.bind(this),
-                error: function (oError) {
-                    jQuery.sap.log.info("Odata Error occured");
-                }.bind(this)
-            };
-            if (oModel) {
-                oModel.read(sCurrentPath, mParameters);
-            }*/
             this.getView().bindElement({
                 model : "comp-quickpay",
                 path : sCurrentPath
@@ -116,10 +111,12 @@ sap.ui.define(
             var oTBIRD = this.getView().byId("idnrgQPPay-TBIRD"),
                 oPopup = this.getView().byId("idnrgQPPay-Popup"),
                 oCloseButton = this.getView().byId("idnrgQPPayBt-close"),
-                oReliantDate = this.getView().byId("idnrgQPCC-RedDate");
+                oReliantDate = this.getView().byId("idnrgQPCC-RedDate"),
+                oReliantRedeem = this.getView().byId("idnrgQPCC-reliantRedeem");
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupWhite");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
+            oReliantRedeem.addStyleClass("nrgQPPay-hide");
             oTBIRD.setSelected(true);
             oReliantDate.setValue(new Date().toLocaleDateString("en-US"));
             oReliantDate.setEditable(false);
@@ -196,10 +193,24 @@ sap.ui.define(
                 mParameters,
                 sCurrentPath,
                 oMsgArea = this.getView().byId("idnrgQPPay-msgArea"),
-                fnRecievedHandler;
+                oReliantButton = this.getView().byId("idnrgQPCC-reliantAccept"),
+                oReliantRedeem = this.getView().byId("idnrgQPCC-reliantRedeem"),
+                oReliantCard = this.getView().byId("idnrgQPCC-ReliantCard"),
+                fnRecievedHandler,
+                that = this;
             sCurrentPath = "/ReliantSet";
-            sCurrentPath = sCurrentPath + "(ContractID='0034805112',ReliantCard='1234567890')";
+            sCurrentPath = sCurrentPath + "(ContractID='0034805112',ReliantCard='" + oReliantCard.getValue() + "')";
+            oMsgArea.addStyleClass("nrgQPPay-hide");
             fnRecievedHandler = function (oEvent) {
+                if (oEvent.mParameters.data.Error !== "") {
+                    that.getView().getModel("appView").setProperty("/message", oEvent.mParameters.data.Message);
+                    oMsgArea.removeStyleClass("nrgQPPay-hide");
+                    oMsgArea.addStyleClass("nrgQPPay-black");
+                } else {
+                    that.getView().getModel("appView").setProperty("/reliantText", "Redeem");
+                    oReliantButton.addStyleClass("nrgQPPay-hide");
+                    oReliantRedeem.removeStyleClass("nrgQPPay-hide");
+                }
                 jQuery.sap.log.info("Odata Read Successfully:::");
             };
             this.getView().byId("idnrgQPCC-Amt2").bindElement({
@@ -226,7 +237,24 @@ sap.ui.define(
         Controller.prototype.onAddCC = function (oEvent) {
 
         };
+        /**
+         * handler for Reliant Card change value
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onReliantCardChange = function (oEvent) {
+            this.getView().getModel("appView").setProperty("/reliantPay", true);
+        };
+        /**
+         * handler for Reliant Card Redeem
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onReliantRedeem = function (oEvent) {
 
+        };
         return Controller;
     }
 
