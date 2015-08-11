@@ -12,7 +12,7 @@ sap.ui.define(
     function (CoreController, Filter, FilterOperator, HashChanger) {
         'use strict';
 
-        var Controller = CoreController.extend('nrg.module.dashboard.view.CallerNoIDSearch');
+        var Controller = CoreController.extend('nrg.module.search.view.CallerNoIDSearch');
 
         Controller.prototype.onBeforeRendering = function () {
             //var test = new HashChanger();
@@ -22,7 +22,7 @@ sap.ui.define(
             /*Models in the controller*/
 
             //get OData Model from component level first
-            this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oSearchBpODataModel');
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-search'), 'oSearchBpODataModel');
             //JSON model for search result
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBpSearchResult');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBpSearchCount');

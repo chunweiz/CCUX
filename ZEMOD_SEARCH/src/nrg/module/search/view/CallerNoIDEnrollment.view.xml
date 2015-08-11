@@ -3,7 +3,7 @@
     xmlns:ute="ute.ui.commons"
     xmlns:utmain="ute.ui.main"
     xmlns:mvc="sap.ui.core.mvc"
-    controllerName="nrg.module.dashboard.view.CallerNoIDEnrollment">
+    controllerName="nrg.module.search.view.CallerNoIDEnrollment">
 
     <ute:Tag class="nrgDashboard-calrNoIDEnrol nrgAppMain-summaryContent nrgAppMain-summaryContent-full">
         <ute:content>

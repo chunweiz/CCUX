@@ -9,7 +9,7 @@ sap.ui.define(
     function (CoreController) {
         'use strict';
 
-        var Controller = CoreController.extend('nrg.module.dashboard.view.CallerNoIDEnrollment');
+        var Controller = CoreController.extend('nrg.module.search.view.CallerNoIDEnrollment');
 
         Controller.prototype.onInit = function () {
         };

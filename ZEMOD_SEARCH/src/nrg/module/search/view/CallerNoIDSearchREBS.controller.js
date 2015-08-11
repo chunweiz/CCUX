@@ -9,7 +9,7 @@ sap.ui.define(
     function (CoreController) {
         'use strict';
 
-        var Controller = CoreController.extend('nrg.module.dashboard.view.CallerNoIDSearchREBS');
+        var Controller = CoreController.extend('nrg.module.search.view.CallerNoIDSearchREBS');
 
         Controller.prototype.onInit = function () {
             var oModel;
