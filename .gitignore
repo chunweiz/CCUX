@@ -12,4 +12,7 @@
 /ZEMOD_DSHB/build/
 /ZEMOD_OTHERS/build/
 /ZEMOD_QUICKPAY/build/
+/ZEMOD_BUPA/build/
+/ZEMOD_BILLING/build/
+/ZEMOD_SEARCH/build/
 .DS_Store
