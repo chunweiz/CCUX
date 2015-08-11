@@ -33,6 +33,11 @@
                 "search.SearchNoID": {
                     "pattern": "search/searchNoID",
                     "target": [ "search.CallerNoIDSearch", "search.CallerNoIDEnrollment", "search.EmptyTools" ]
+                },
+
+                "search.SearchNoIDREBS": {
+                    "pattern": "searchNoIDREBS",
+                    "target": [ "search.CallerNoIDSearchREBS", "search.CallerNoIDEnrollment", "search.EmptyTools" ]
                 }
             },
 
@@ -47,8 +52,13 @@
                     "controlId": "idAppGeneral"
                 },
 
+                "dashboard.CallerNoIDSearchREBS": {
+                    "viewName": "nrg.module.search.view.CallerNoIDSearchREBS",
+                    "controlId": "idAppGeneral"
+                },
+
                 "dashboard.CallerNoIDEnrollment": {
-                    "viewName": "nrg.module.dashboard.view.CallerNoIDEnrollment",
+                    "viewName": "nrg.module.search.view.CallerNoIDEnrollment",
                     "controlId": "idAppSummary"
                 }
             }
