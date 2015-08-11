@@ -4,106 +4,106 @@
     xmlns:l="sap.ui.commons.layout"
     xmlns:c="sap.ui.commons"
     xmlns:core="sap.ui.core"
-    controllerName="nrg.module.dashboard.view.CallerNoIDSearchREBS">
+    controllerName="nrg.module.search.view.CallerNoIDSearchREBS">
 
 
-    <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
+    <ute:Tag class="nrgAppMain-generalContent nrgSearch-calrNoIDSearch">
         <ute:content>
-            <ute:Tag class="nrgDashboard-calrNoIDSearch-title"
-                     text="{comp-i18n-dashboard>nrgDashboardCallerNoIDSearchTitle}">
+            <ute:Tag class="nrgSearch-calrNoIDSearch-title"
+                     text="{comp-i18n-search>nrgSearchCallerNoIDSearchTitle}">
             </ute:Tag>
-            <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
+            <ute:Tag class="nrgSearch-calrNoIDSearch-textfield">
                 <ute:Textfield
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_CaNumPh}"
+                    class="nrgSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>nrgSearchClrNid_CaNumPh}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_Ssn}"
+                    class="nrgSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>nrgSearchClrNid_Ssn}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_Dl}"
+                    class="nrgSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>nrgSearchClrNid_Dl}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
             </ute:Tag>
-            <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
+            <ute:Tag class="nrgSearch-calrNoIDSearch-textfield">
                 <ute:Textfield
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_CaName}"
+                    class="nrgSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>nrgSearchClrNid_CaName}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_BpNum}"
+                    class="nrgSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>nrgSearchClrNid_BpNum}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_FedTaxId}"
+                    class="nrgSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>nrgSearchClrNid_FedTaxId}"
                     change="ESID"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_Esid}"
+                    class="nrgSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>nrgSearchClrNid_Esid}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
             </ute:Tag>
-            <ute:Tag class="nrgDashboard-calrNoIDSearch-textfield">
+            <ute:Tag class="nrgSearch-calrNoIDSearch-textfield">
                 <ute:Textfield
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_HouseNum}"
+                    class="nrgSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>nrgSearchClrNid_HouseNum}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_Street}"
+                    class="nrgSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>nrgSearchClrNid_Street}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_UnitNum}"
+                    class="nrgSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>nrgSearchClrNid_UnitNum}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_City}"
+                    class="nrgSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>nrgSearchClrNid_City}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_State}"
+                    class="nrgSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>nrgSearchClrNid_State}"
                     change="testInputChange"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
-                    class="nrgDashboard-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-dashboard>nrgDashboardClrNid_ZipCode}"
+                    class="nrgSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>nrgSearchClrNid_ZipCode}"
                     change="ESID"
                     label="Title"
                     width="48%">
@@ -117,15 +117,15 @@
             </ute:Tag>
         </ute:content>
     </ute:Tag>
-    <ute:Tag class="nrgDashboard-calrNoIDSearch nrgDashboard-calrNoIDSearch-transSpace">
+    <ute:Tag class="nrgSearch-calrNoIDSearch nrgSearch-calrNoIDSearch-transSpace">
 
     </ute:Tag>
-    <ute:Tag class="nrgAppMain-generalContent nrgDashboard-calrNoIDSearch">
-        <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTitle"
-                 text="{comp-i18n-dashboard>nrgDashboardCallerNoIDSearchResultTitle}">
+    <ute:Tag class="nrgAppMain-generalContent nrgSearch-calrNoIDSearch">
+        <ute:Tag class="nrgSearch-calrNoIDSearch-resultTitle"
+                 text="{comp-i18n-search>nrgSearchCallerNoIDSearchResultTitle}">
         </ute:Tag>
 
-        <ute:Tag class="nrgDashboard-calrNoIDSearch-resultTable">
+        <ute:Tag class="nrgSearch-calrNoIDSearch-resultTable">
         <ute:ScrollContainer
             height="180px"
             width="100%"
@@ -135,7 +135,7 @@
                 width="100%"
                 columns="8"
                 widths="2%,18%,10%,24%,13%,13%,10%,10%"
-                rows="{comp-dashboard>/BpSearchs}">
+                rows="{comp-search>/BpSearchs}">
                 <l:rows>
                     <l:MatrixLayoutRow>
                         <l:MatrixLayoutCell>
@@ -143,27 +143,27 @@
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
                             <c:TextView
-                                text="{comp-dashboard>FirstName} {comp-dashboard>LastName}">
+                                text="{comp-search>FirstName} {comp-search>LastName}">
                             </c:TextView>
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
-                            <c:TextView text="{comp-dashboard>PartnerID}"></c:TextView>
+                            <c:TextView text="{comp-search>PartnerID}"></c:TextView>
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
                             <c:TextView
-                                text="{comp-dashboard>HouseNumber} {comp-dashboard>Street}">
+                                text="{comp-search>HouseNumber} {comp-search>Street}">
                             </c:TextView>
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
-                            <c:TextView text="{comp-dashboard>UnitNumber}"></c:TextView>
+                            <c:TextView text="{comp-search>UnitNumber}"></c:TextView>
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
                             <c:TextView
-                                text="{comp-dashboard>City} {comp-dashboard>State}">
+                                text="{comp-search>City} {comp-search>State}">
                             </c:TextView>
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
-                            <c:TextView text="{comp-dashboard>ZipCode}"></c:TextView>
+                            <c:TextView text="{comp-search>ZipCode}"></c:TextView>
                         </l:MatrixLayoutCell>
                         <l:MatrixLayoutCell>
                             <ute:Button
