@@ -119,6 +119,7 @@ sap.ui.define(
 
         Controller.prototype._initCfrmStatus = function () {
             this.getView().getModel('oCfrmStatus').setProperty('/bEditable', true);
+            this.getView().getModel('oCfrmStatus').setProperty('/ShowSMSBtn', false);
             this.getView().byId('id_confmBtn').setVisible(true);
             this.getView().byId('id_unConfmBtn').setVisible(false);
             this.getView().byId('id_updtBtn').setEnabled(true);
@@ -186,6 +187,9 @@ sap.ui.define(
                             this.getView().byId("idSiebelAccAlert").setVisible(true);
                             //this._beforeOpenEditAddrDialogue = true;
                             this._oSiebelAlertPopup.open();
+                        }
+                        if(oData.Cell) {
+                            this.getView().getModel('oCfrmStatus').setProperty('/ShowSMSBtn', true);
                         }
                     }
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
