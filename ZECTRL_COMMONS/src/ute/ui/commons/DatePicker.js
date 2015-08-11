@@ -95,7 +95,7 @@ sap.ui.define(
             this.setProperty('defaultDate', sNewValue, true);
             // this.setProperty('yyyymmdd', sYyyymmdd, true);
             // set inputs value after properties because of placeholder logic for IE
-            $Input = jQuery(this.getDomRef());
+            $Input = jQuery(this.getInputDomRef());
             if ($Input.val() !== sNewValue) {
                 $Input.val(sNewValue);
                 this._curpos = sNewValue.length;
@@ -252,7 +252,7 @@ sap.ui.define(
          *
          */
         DatePicker.prototype._checkChange = function (oEvent) {
-            var oInput = jQuery(this.getDomRef()),
+            var oInput = jQuery(this.getInputDomRef()),
                 sNewValue = oInput.val(),
                 oldVal = this.getValue();
 
