@@ -36,7 +36,7 @@
                 },
                 "bupa.caInfo": {
                     "pattern": "bupa/cainfo/bp/{bpNum}/ca/{caNum}",
-                    "target":["bupa.BupaBpInfo", "dashboard.SummaryBP", "bupa.Tools"]
+                    "target":["bupa.BupaCaInfo", "dashboard.SummaryBP", "bupa.Tools"]
                 }
             },
 
@@ -52,6 +52,10 @@
                 "bupa.Tools": {
                     "viewName": "nrg.module.bupa.view.Tools",
                     "controlId": "idAppTools"
+                },
+                "dashboard.SummaryBP": {
+                    "viewName": "nrg.module.dashboard.view.CustomerDataSummary",
+                    "controlId": "idAppSummary"
                 }
             }
         }

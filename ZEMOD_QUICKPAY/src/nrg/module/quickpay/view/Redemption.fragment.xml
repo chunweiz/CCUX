@@ -32,7 +32,9 @@
             </u:Tag>
             <u:Tag class="nrgQPCC-row nrgQPPay-top">
                 <u:Tag class="nrgQPPay-TF">
-                    <u:Textfield placeholder="{comp-i18n-quickpay>nrgQPRedemptionNum}"
+                    <u:Textfield id="idnrgQPCC-ReliantCard"
+                                 placeholder="{comp-i18n-quickpay>nrgQPRedemptionNum}"
+                                 change="onReliantCardChange"
                                  fieldType="Regular"
                                  class="nrgQPCC-input"
                                  width="10rem"
@@ -46,9 +48,17 @@
             </u:Tag>
             <u:Tag class="nrgQPPay-top nrgQPPay-left" >
                 <um:Button press=".onAcceptReliant"
-                           text="{comp-i18n-quickpay>nrgQPPay}"
+                           id="idnrgQPCC-reliantAccept"
+                           text="{appView>/reliantText}"
                            class="nrgQPCC-btn"
-                           design="Default" />
+                           design="Default"
+                           enabled="{appView>/reliantPay}"/>
+                <um:Button press=".onReliantRedeem"
+                           id="idnrgQPCC-reliantRedeem"
+                           text="REDEEM"
+                           class="nrgQPCC-btn"
+                           design="Default"
+                           enabled="{appView>/reliantPay}"/>
                 <um:Button press=".onDeclineReliant"
                            text="{comp-i18n-quickpay>nrgQPCancel}"
                            class="nrgQPCC-btn"

@@ -9,15 +9,11 @@
     xmlns:core="sap.ui.core"
     controllerName="nrg.module.dashboard.view.CustomerDataBillingInfo">
 
+    <ute:Tag elem="div" class="nrgDashboard-cusDataBil-scrnHeader"
+                 text="Deferred Payment Plan Cancelled" />
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-cusDataBillingInfo">
         <ute:Tag elem="div" class="nrgDashboard-cusDataBil-scrnTitle"
                  text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-l-div-CURRENT_AMNT_DUE}" />
-
-        <ute:Tag elem="div" class="nrgDashboard-cusDataBil-r-btn">
-            <utmain:Button design="None" class="nrgDashboard-cusDataBil-CommBtn" press="onFeeAdj">
-                <ute:Tag elem="div" class="nrgDashboard-cusDataBil-PayBalBtn-text" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-r-div-FEE_ADJ}" />
-            </utmain:Button>
-        </ute:Tag>
 
         <l:MatrixLayout
             class="nrgDashboard-cusDataBil-layout"
@@ -41,32 +37,28 @@
                                              text="{comp-i18n-dashboard>nrgDashboard-cusDataPrePD-l-div-PAY_NOW}" />
                                 </utmain:Button>
 
-                                <utmain:Label text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-l-div-INVOICE} #:" labelFor="invoice"
-                                   class="nrgDashboard-cusDataBil-invoice-lbl"/>
-                                <ute:tag id="invoice" elem="span">
-                                    <ute:Tag elem="span" class="nrgDashboard-cusDataBil-invoice-id" text="000 000 000 000" />
-                                    <core:Icon src="sap-icon://nrg-icon/calendar" class="nrgDashboard-cusDataBil-Icon" />
-                                </ute:tag>
-
                                 <ute:Tag class="nrgDashboard-cusDataBil-date">
-                                    <ute:Tag elem="div" class="nrgDashboard-cusDataBil-date-label" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-l-div-BILLING_DATE}" />
+                                    <utmain:Label labelFor="idBillDate"
+                                                  text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-l-div-BILLING_DATE}"
+                                                  class="nrgDashboard-cusDataBil-date-label" />
 
-                                    <ute:Tag elem="div" class="nrgDashboard-cusDataBil-date-value" text="10/28/2014" />
+                                    <ute:Tag id="idBillDate"
+                                             elem="span"
+                                             class="nrgDashboard-cusDataBil-date-value"
+                                             text="10/28/2014" />
 
-                                    <ute:Tag elem="div" class="nrgDashboard-cusDataBil-date-label" text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-l-div-DUE_DATE}" />
+                                    <ute:HorizontalDivider
+                                        class="nrgDashboard-cusDataBil-horDvi-long"/>
 
-                                    <ute:Tag elem="div" class="nrgDashboard-cusDataBil-date-value" text="11/10/2014" />
+                                    <utmain:Label labelFor="idDueDate"
+                                                  text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-l-div-DUE_DATE}"
+                                                  class="nrgDashboard-cusDataDue-date-label" />
+
+                                    <ute:Tag id="idDueDate"
+                                             elem="span"
+                                             class="nrgDashboard-cusDataDue-date-value"
+                                             text="11/10/2014" />
                                 </ute:Tag>
-
-                                <ute:tag elem="div">
-                                    <utmain:Label text="{comp-i18n-dashboard>nrgDashboard-cusDataPrePD-l-div-REFER_TO}:" labelFor="referrer"
-                                       class="nrgDashboard-cusDataBil-referer-lbl"/>
-                                    <utmain:Dropdown id="referer" design="Default" class="nrgDashboard-cusDataBil-referer-dropdown" content="{data>/dropdown}" selectedKey="{data>/selectedKey}" select=".onSelected">
-                                        <utmain:DropdownItem key="{data>key}">
-                                           <ute:Tag text="{data>value}" />
-                                        </utmain:DropdownItem>
-                                    </utmain:Dropdown>
-                                </ute:tag>
 
                             </ute:Tag>
                         </l:MatrixLayoutCell>
@@ -94,7 +86,7 @@
                                          text="{comp-i18n-dashboard>nrgDashboard-cusDataBillingInfo-m-div-POST_INVOICE}" />
 
                                 <l:MatrixLayout
-                                    class="nrgDashboard-cusDataBil-invoice-layout"
+                                    class="nrgDashboard-cusDataBil-layout"
                                     widths="50%,50%" columns="2" width="100%">
                                     <l:rows>
                                         <l:MatrixLayoutRow>
@@ -107,7 +99,6 @@
                                                 <utmain:Button
                                                     design="None" visible="true"
                                                     press="._onPaymentsClicked"
-                                                    class="nrgDashboard-cusDataBillingInfo-invoiceBtnValue"
                                                     text="74.02"/>
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>

@@ -72,7 +72,7 @@
                 </um:TabPanelItem>
             </um:TabPanel>
             <u:Tag  class="nrgQPPay-msgArea" id="idnrgQPPay-msgArea">
-                <u:Tag id="idnrgQPPay-msg" class="nrgQPPay-msg" text="Payment System is not Available" />
+                <u:Tag id="idnrgQPPay-msg" class="nrgQPPay-msg" text="{appView>/message}" />
             </u:Tag>
         </u:Tag>
 
