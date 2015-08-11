@@ -29,7 +29,6 @@
                                          class="nrgQPPay-close"
                                         design="None">
                    <u:Tag class="nrgQPPayBt-close" id="idnrgQPPayBt-close" />
-
                 </um:Button>
             </u:Tag>
             <um:TabPanel tabPanelFor="nrgTabBar" design="None" class="nrgQPPay-tabPanel">
@@ -72,7 +71,7 @@
                     </u:Tag>
                 </um:TabPanelItem>
             </um:TabPanel>
-            <u:Tag  class="nrgQPPay-msgArea nrgQPPay-hide">
+            <u:Tag  class="nrgQPPay-msgArea" id="idnrgQPPay-msgArea">
                 <u:Tag id="idnrgQPPay-msg" class="nrgQPPay-msg" text="Payment System is not Available" />
             </u:Tag>
         </u:Tag>

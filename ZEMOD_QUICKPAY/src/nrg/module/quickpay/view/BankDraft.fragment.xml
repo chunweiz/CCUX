@@ -10,7 +10,6 @@
             <u:Tag class="nrgQPCC-row nrgQPPay-top">
                 <u:Tag class="nrgQPPay-TF">
                     <u:Textfield placeholder=""
-                                 change=""
                                  fieldType="Regular"
                                  class="nrgQPCC-input"
                                  width="10rem">

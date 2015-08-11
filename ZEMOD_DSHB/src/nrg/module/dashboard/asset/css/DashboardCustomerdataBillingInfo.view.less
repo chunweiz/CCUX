@@ -1,10 +1,17 @@
+.nrgDashboard-cusDataBil-scrnHeader{
+    font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
+    color: @nrgColor-bluePearl;
+    text-align: center;
+    background-color: @nrgColor-grey-dark;
+}
+
 .nrgDashboard-cusDataBillingInfo{
-    height: 398px;
+    height: 380px;
     padding: 17px 25px 18px 25px !important;
 
     font-family: @nrgFontFamily;
 
-    & > .nrgDashboard-cusDataBil-scrnTitle{
+    & .nrgDashboard-cusDataBil-scrnTitle{
         font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
         color: @nrgColor-grey-dark;
     }
@@ -33,9 +40,9 @@
     }
 
     & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-l{
-        border-right: @nrgColor-grey-light;
-        border-right-style: dashed;
-        border-right-width: thin;
+//        border-right: @nrgColor-grey-light;
+//        border-right-style: dashed;
+//        border-right-width: thin;
         padding: 0;
         margin: 0;
     }
@@ -43,7 +50,7 @@
     & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-l > .nrgDashboard-cusDataBil-l-div{
         padding:0;
         margin:0;
-        height: 346px;
+        height: 326px;
     }
 
     & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-l > .nrgDashboard-cusDataBil-l-div > .nrgDashboard-cusDataBil-PayBalBtn{
@@ -113,28 +120,57 @@
         background-color: @nrgColor-bluePearl;
         border-radius: 2px;
         width: 214px;
-        height: 130px;
+        height: 90px;
         margin-top: 12px;
     }
 
     & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-l > .nrgDashboard-cusDataBil-l-div > .nrgDashboard-cusDataBil-date > .nrgDashboard-cusDataBil-date-label{
+        text-align: center;
+        padding-top: 20px;
+        margin-left: 20px;
+    }
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-l > .nrgDashboard-cusDataBil-l-div > .nrgDashboard-cusDataBil-date > .nrgDashboard-cusDataBil-date-label > .uteMLbl-text{
+        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
+        color: @nrgColor-grey-inactive;
+    }
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-l > .nrgDashboard-cusDataBil-l-div > .nrgDashboard-cusDataBil-date > .nrgDashboard-cusDataDue-date-label{
         font: @nrgFontWeight-regular @nrgFontSize-small @nrgFontFamily;
         color: @nrgColor-grey-inactive;
         text-align: center;
-        padding-top: 20px;
+        margin-left: 20px;
+    }
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-l > .nrgDashboard-cusDataBil-l-div > .nrgDashboard-cusDataBil-date > .nrgDashboard-cusDataDue-date-label > .uteMLbl-text{
+        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
+        color: @nrgColor-grey-inactive;
     }
 
     & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-l > .nrgDashboard-cusDataBil-l-div > .nrgDashboard-cusDataBil-date > .nrgDashboard-cusDataBil-date-value{
-        font: @nrgFontWeight-bold @nrgFontSize-small @nrgFontFamily;
+        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
         color: @nrgColor-grey-dark;
         text-align: center;
         margin-top: 5px;
+        margin-left: 17px;
+    }
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-l > .nrgDashboard-cusDataBil-l-div > .nrgDashboard-cusDataBil-date > .nrgDashboard-cusDataDue-date-value{
+        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
+        color: @nrgColor-grey-dark;
+        text-align: center;
+        margin-top: 5px;
+        margin-left: 13px;
+    }
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-l > .nrgDashboard-cusDataBil-l-div > .nrgDashboard-cusDataBil-date > .nrgDashboard-cusDataBil-horDvi-long{
+        border-color: @nrgColor-grey-light;
     }
 
     & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m{
-        border-right: @nrgColor-grey-light;
-        border-right-style: dashed;
-        border-right-width: thin;
+//        border-right: @nrgColor-grey-light;
+//        border-right-style: dashed;
+//        border-right-width: thin;
         padding: 0;
         margin: 0;
     }
@@ -146,14 +182,85 @@
     }
 
     & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div > .nrgDashboard-cusDataBil-m-text-amntexpln{
-        font: @nrgFontWeight-bold @nrgFontSize-small @nrgFontFamily;
+        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
+        color: @nrgColor-grey-dark;
+        text-align: center;
+    }
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div > .nrgDashboard-cusDataBillingInfo-midlbl{
+        margin-top: 10px;
+    }
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div > .nrgDashboard-cusDataBillingInfo-midlbl > .uteMLbl-text{
+        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
         color: @nrgColor-grey-dark;
     }
 
-    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div > .nrgDashboard-cusDataBil-m-text-current{
-        font: @nrgFontWeight-bold @nrgFontSize-small @nrgFontFamily;
-        color: @nrgColor-grey-light;
-        margin-top: 24px;
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div > .nrgDashboard-cusDataBillingInfo-midamnt{
+        float: right;
+    }
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div > .nrgDashboard-cusDataBillingInfo-midamnt > .uteMBtn-text{
+        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
+        color: @nrgColor-blue-link;
+        border-bottom: #5092ce;
+        border-bottom-style: solid;
+        border-bottom-width: thin;
+    }
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div > .nrgDashboard-cusDataBil-m-text-postinvoice{
+        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
+        color: @nrgColor-grey-dark;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div > .nrgDashboard-cusDataBil-m-text-totalDue{
+
+    }
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div > .nrgDashboard-cusDataBil-m-text-totalDue > .uteMLbl-text{
+        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
+        color: @nrgColor-grey-dark;
+    }
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div > .nrgDashboard-cusDataBil-m-text-totalamntdue{
+        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
+        color: @nrgColor-grey-dark;
+        float: right;
+    }
+
+//    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div > .nrgDashboard-cusDataBil-m-text-current{
+//        font: @nrgFontWeight-bold @nrgFontSize-small @nrgFontFamily;
+//        color: @nrgColor-grey-light;
+//        margin-top: 24px;
+//    }
+
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div .nrgDashboard-cusDataBil-invoice-layout{
+        height: 210px;
+    }
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div .nrgDashboard-cusDataBil-invoice-layout .nrgDashboard-cusDataBillingInfo-invoicelbl{
+        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
+        color: @nrgColor-grey-dark;
+    }
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div .nrgDashboard-cusDataBil-invoice-layout .nrgDashboard-cusDataBillingInfo-invoiceBtnValue{
+        float: right;
+    }
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div .nrgDashboard-cusDataBil-invoice-layout .nrgDashboard-cusDataBillingInfo-invoiceBtnValue > .uteMBtn-text{
+        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
+        color: @nrgColor-blue-link;
+        border-bottom: #5092ce;
+        border-bottom-style: solid;
+        border-bottom-width: thin;
+    }
+
+    & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div .nrgDashboard-cusDataBil-invoice-layout {
+        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
+        color: @nrgColor-grey-dark;
     }
 
     & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-m > .nrgDashboard-cusDataBil-m-div > .nrgDashboard-cusDataBil-m-matrix{
@@ -256,9 +363,8 @@
     }
 
     & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-r > .nrgDashboard-cusDataBil-r-div > .nrgDashboard-cusDataBil-r-text-disconnect{
-        font: @nrgFontWeight-bold @nrgFontSize-small @nrgFontFamily;
-        color: @nrgColor-grey-light;
-        padding-top: 42px;
+        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
+        color: @nrgColor-grey-dark;
     }
 
     & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-r > .nrgDashboard-cusDataBil-r-div > table > tbody > tr td{
@@ -269,14 +375,14 @@
     & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-r > .nrgDashboard-cusDataBil-r-div > table > tbody > tr > td > .nrgDashboard-cusDataBil-r-content-lbl1{
         font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
         color: @nrgColor-grey-dark;
-        margin-top: 36px;
+        margin-top: 18px;
     }
 
     & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-r > .nrgDashboard-cusDataBil-r-div > table > tbody > tr > td > .nrgDashboard-cusDataBil-r-content-cnt1{
-        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
+        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
         color: @nrgColor-grey-dark;
         margin-left: 18px;
-        margin-top: 36px;
+        margin-top: 18px;
     }
 
     & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-r > .nrgDashboard-cusDataBil-r-div > table > tbody > tr > td > .nrgDashboard-cusDataBil-r-content-lbl{
@@ -286,7 +392,7 @@
     }
 
     & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-r > .nrgDashboard-cusDataBil-r-div > table > tbody > tr > td > .nrgDashboard-cusDataBil-r-content-cnt{
-        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
+        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
         color: @nrgColor-grey-dark;
         margin-left: 18px;
         margin-top: 10px;
@@ -294,7 +400,7 @@
 
     & > .nrgDashboard-cusDataBil-layout > tbody > tr > .nrgDashboard-cusDataBil-r > .nrgDashboard-cusDataBil-r-div > .nrgDashboard-cusDataBil-horDvi{
         border-color: @nrgColor-grey-light;
-        border-style: dashed;
+        border-style: solid;
         margin: 0;
         margin-top: 4px;
     }

@@ -28,7 +28,8 @@ sap.ui.define(
         Controller.prototype.onBeforeRendering = function () {
             var oModel = this.getView().getModel('comp-quickpay'),
                 mParameters,
-                sCurrentPath;
+                sCurrentPath,
+                oMsgArea = this.getView().byId("idnrgQPPay-msgArea");
             sCurrentPath = "/PayAvailFlagsSet";
             sCurrentPath = sCurrentPath + "(ContractID='0034805112')";
 /*            mParameters = {
@@ -47,6 +48,7 @@ sap.ui.define(
                 model : "comp-quickpay",
                 path : sCurrentPath
             });
+            oMsgArea.addStyleClass("nrgQPPay-hide");
         };
         /**
 		 * Show Stop Voice Log Recording msg
@@ -183,7 +185,47 @@ sap.ui.define(
             var oTBIAddBD = this.getView().byId("idnrgQPPay-TBIAddBD");
             oTBIAddBD.setSelected(true);
         };
+        /**
+         * Handler for Accepting Reliant Card Payment
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onAcceptReliant = function (oEvent) {
+            var oModel = this.getView().getModel('comp-quickpay'),
+                mParameters,
+                sCurrentPath,
+                oMsgArea = this.getView().byId("idnrgQPPay-msgArea"),
+                fnRecievedHandler;
+            sCurrentPath = "/ReliantSet";
+            sCurrentPath = sCurrentPath + "(ContractID='0034805112',ReliantCard='1234567890')";
+            fnRecievedHandler = function (oEvent) {
+                jQuery.sap.log.info("Odata Read Successfully:::");
+            };
+            this.getView().byId("idnrgQPCC-Amt2").bindElement({
+                model : "comp-quickpay",
+                path : sCurrentPath,
+                events: {dataReceived : fnRecievedHandler}
+            });
+        };
+        /**
+         * Handler for Declining Reliant Card Payment
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onDeclineReliant = function (oEvent) {
 
+        };
+        /**
+         * handler for Adding Credit card
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onAddCC = function (oEvent) {
+
+        };
 
         return Controller;
     }
