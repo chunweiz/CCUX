@@ -200,9 +200,9 @@ sap.ui.define(
             sCurrentPath = "/ReliantSet";
             sCurrentPath = sCurrentPath + "(ContractID='0034805112',ReliantCard='1234567890')";
             fnRecievedHandler = function (oEvent) {
-
+                jQuery.sap.log.info("Odata Read Successfully:::");
             };
-            this.getView().byId("idnrgQPCC-Reliant").bindElement({
+            this.getView().byId("idnrgQPCC-Amt2").bindElement({
                 model : "comp-quickpay",
                 path : sCurrentPath,
                 events: {dataReceived : fnRecievedHandler}
