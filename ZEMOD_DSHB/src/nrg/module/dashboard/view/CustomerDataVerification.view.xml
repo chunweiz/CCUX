@@ -325,6 +325,9 @@
                                 <ute:Tag class="nrgDashboard-cusDataVerify-mContent-smsBtn">
                                     <utmain:Button
                                         visible="{oCfrmStatus>/ShowSMSBtn}"
+                                        enabled="{
+                                            parts:['oDtaVrfyBP>/IsSMS'],
+                                            formatter:'._formatSMSBtn'}"
                                         class="nrgDashboard-cusDataVerify-alignCenBtn"
                                         text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SMS}"
                                         press="._onSMSButtonClicked"/>
