@@ -34,13 +34,18 @@ sap.ui.define(
                 oEFLJson = {},
                 aResults = [],
                 that = this,
+                sCurrentDate,
                 oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
             this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oRouteInfo.parameters.coNum;
             this._sNewOfferCode = oRouteInfo.parameters.offercodeNum;
+            this._sStartDate = oRouteInfo.parameters.sDV;
+            this._sBP = oRouteInfo.parameters.bpNum;
+            this._sCA = oRouteInfo.parameters.caNum;
             sCurrentPath = "/CpgChgOfferS";
-            sCurrentPath = sCurrentPath + "(Contract='" + this._sContract + "',OfferCode='" + this._sNewOfferCode + "')";
+            sCurrentDate = "datetime'2012-06-30T05%3A00%3A00'";
+            sCurrentPath = sCurrentPath + "(Contract='" + this._sContract + "',OfferCode='" + this._sNewOfferCode + "',StartDate=" + sCurrentDate + ")";
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oTemplateModel = new sap.ui.model.json.JSONModel();
             this._bindView(sCurrentPath);
@@ -101,7 +106,7 @@ sap.ui.define(
         Controller.prototype.onAcceptCampaign = function (oEvent) {
             var sOfferCode = this.getView().getBindingContext("comp-campaign").getProperty("OfferCode"),
                 sType = this.getView().getBindingContext("comp-campaign").getProperty("Type");
-            this.navTo("campaignSS", {offercodeNum : this._sNewOfferCode, coNum : this._sContract });
+            this.navTo("campaignSS", {bpNum: this._sBP, caNum: this._sCA, offercodeNum : this._sNewOfferCode, coNum : this._sContract });
         };
 
         /**
@@ -126,7 +131,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.backToOverview = function (oEvent) {
-            this.navTo("campaign", {coNum : this._sContract, typeV : "C"});
+            this.navTo("campaign", {bpNum: this._sBP, caNum: this._sCA, coNum : this._sContract, typeV : "C"});
         };
           /**
 		 * Converts in to EFL Json format required by Template view.

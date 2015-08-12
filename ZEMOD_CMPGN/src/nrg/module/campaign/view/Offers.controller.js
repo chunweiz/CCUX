@@ -47,8 +47,9 @@ sap.ui.define(
             i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oRouteInfo.parameters.coNum;
+            this._sBP = oRouteInfo.parameters.bpNum;
+            this._sCA = oRouteInfo.parameters.caNum;
             oNoDataTag = this.getView().byId("idnrgCamHisNoData");
-            //this._sContract = "32253375";
             aFilterIds = ["Contract", "Type"];
             aFilterValues = [this._sContract, "P"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -110,18 +111,13 @@ sap.ui.define(
                 sPath,
                 iCount,
                 oContext,
-                sOfferCode;
+                sOfferCode,
+                sStartDate;
             sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
             oContext = this.getView().getModel("comp-campaign").getContext(sPath);
             sOfferCode = oContext.getProperty("OfferCode");
-/*            aChildren = oEvent.getSource().getParent().findElements();
-            for (iCount = 0; iCount < aChildren.length; iCount = iCount + 1) {
-                if (aChildren[iCount].hasStyleClass("nrgCamOff-btn-selected")) {
-                    aChildren[iCount].removeStyleClass("nrgCamOff-btn-selected");
-                }
-            }
-            oEvent.getSource().addStyleClass("nrgCamOff-btn-selected");*/
-            this.navTo("campaignchg", {coNum: this._sContract, offercodeNum: sOfferCode});
+            sStartDate = oContext.getProperty("StartDate");
+            this.navTo("campaignchg", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, offercodeNum: sOfferCode});
         };
         /**
 		 * Binds the view based on the Tier selected like Proactive, Reactive, Save and Final Save
@@ -247,7 +243,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.backToOverview = function (oEvent) {
-            this.navTo("campaign", {coNum : this._sContract, typeV : "C"});
+            this.navTo("campaign", {bpNum: this._sBP, caNum: this._sCA, coNum : this._sContract, typeV : "C"});
         };
 
         return Controller;

@@ -53,6 +53,8 @@ sap.ui.define(
             this.getOwnerComponent().getCcuxApp().setTitle("CAMPAIGNS");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oRouteInfo.parameters.coNum;
+            this._sBP = oRouteInfo.parameters.bpNum;
+            this._sCA = oRouteInfo.parameters.caNum;
             this._sFlag = oRouteInfo.parameters.typeV.toUpperCase();
             aFilterIds = ["Contract"];
             aFilterValues = [this._sContract];
@@ -263,7 +265,7 @@ sap.ui.define(
                             if ((parseInt(oData, 10)) > 0) {
                                 that.showPendingSwaps();
                             } else {
-                                that.navTo("campaignoffers", {coNum: sContract});
+                                that.navTo("campaignoffers", {bpNum: that._sBP, caNum: that._sCA, coNum: sContract});
                             }
                         }
                     }.bind(this),
@@ -427,7 +429,7 @@ sap.ui.define(
 		 */
         Controller.prototype.ProceedwithCancel = function (oEvent) {
             this._oCancelDialog.close();
-            this.navTo("campaignoffers", {coNum: this._sContract});
+            this.navTo("campaignoffers", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
         };
         /**
 		 * Handle when user clicked on Cancelling of Pending Swaps
@@ -437,7 +439,7 @@ sap.ui.define(
 		 */
         Controller.prototype.ContinuewithCancel = function (oEvent) {
             this._oCancelDialog.close();
-            this.navTo("campaignoffers", {coNum: this._sContract});
+            this.navTo("campaignoffers", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
         };
 
         return Controller;
