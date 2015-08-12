@@ -51,6 +51,8 @@ sap.ui.define(
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oRouteInfo.parameters.coNum;
             this._sOfferCode = oRouteInfo.parameters.offercodeNum;
+            this._sBP = oRouteInfo.parameters.bpNum;
+            this._sCA = oRouteInfo.parameters.caNum;
             sCurrentPath = i18NModel.getProperty("nrgCpgChangeOffSet");
             sCurrentPath = "/CpgChgOfferS";
             sCurrentPath = sCurrentPath + "(OfferCode='" + this._sOfferCode + "',Contract='" + this._sContract + "')";
@@ -191,7 +193,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.backToOverview = function (oEvent) {
-            this.navTo("campaign", {coNum : this._sContract, typeV: "C"});
+            this.navTo("campaign", {bpNum: this._sBP, caNum: this._sCA, coNum : this._sContract, typeV: "C"});
         };
         /**
 		 * Formats the Type value to display "English" and "Spanish"
@@ -304,10 +306,10 @@ sap.ui.define(
                 success : function (oData) {
                     if ((oData !== undefined) && (oData.Code === "S")) {
                         sap.ui.commons.MessageBox.alert("SWAP is completed");
-                        this.navTo("campaign", {coNum : this._sContract, typeV : "C"});
+                        this.navTo("campaign", {bpNum: that._sBP, caNum: that._sCA, coNum : that._sContract, typeV : "C"});
                     } else {
                         sap.ui.commons.MessageBox.alert("SWAP Failed");
-                        this.navTo("campaignoffers", {coNum: this._sContract});
+                        this.navTo("campaignoffers", {bpNum: that._sBP, caNum: that._sCA, coNum: that._sContract});
                     }
                     jQuery.sap.log.info("Odata Read Successfully:::" + oData.Code);
                 }.bind(this),

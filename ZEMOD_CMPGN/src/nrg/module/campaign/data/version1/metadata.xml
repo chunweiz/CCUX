@@ -11,13 +11,14 @@
                 <Property Name="EFLLevel" Nullable="false" Type="Edm.Int16"/>
                 <Property MaxLength="12" Name="Contract" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="8" Name="OfferCode" Nullable="false" Type="Edm.String"/>
+                <Property Name="StartDate" Nullable="false" Type="Edm.DateTime"/>
                 <Property Name="EFLPrice" Nullable="false" Precision="7" Scale="2" Type="Edm.Decimal"/>
             </EntityType>
             <EntityType Name="Return">
                 <Key>
                     <PropertyRef Name="Code"/>
                 </Key>
-                <Property Name="Code" Nullable="false" Type="Edm.Int16"/>
+                <Property MaxLength="1" Name="Code" Nullable="false" Type="Edm.String"/>
             </EntityType>
             <EntityType Name="LoyalPrg">
                 <Key>
@@ -32,11 +33,13 @@
                 <Key>
                     <PropertyRef Name="Contract"/>
                     <PropertyRef Name="OfferCode"/>
+                    <PropertyRef Name="StartDate"/>
                     <PropertyRef Name="TxtName"/>
                     <PropertyRef Name="TxtLang"/>
                 </Key>
                 <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="OfferCode" Nullable="false" Type="Edm.String"/>
+                <Property Name="StartDate" Nullable="false" Type="Edm.DateTime"/>
                 <Property MaxLength="70" Name="TxtName" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="2" Name="TxtLang" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="5000" Name="TxtLine" Nullable="false" Type="Edm.String"/>
@@ -108,11 +111,12 @@
                 <Key>
                     <PropertyRef Name="Contract"/>
                     <PropertyRef Name="OfferCode"/>
+                    <PropertyRef Name="StartDate"/>
                 </Key>
                 <Property MaxLength="10" Name="Contract" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="8" Name="OfferCode" Nullable="false" Type="Edm.String"/>
+                <Property Name="StartDate" Nullable="false" Type="Edm.DateTime"/>
                 <Property MaxLength="20" Name="Type" Nullable="false" Type="Edm.String"/>
-                <Property Name="StartDate" Type="Edm.DateTime"/>
                 <Property Name="EndDate" Type="Edm.DateTime"/>
                 <Property MaxLength="60" Name="OfferTitle" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="2048" Name="Description" Nullable="false" Type="Edm.String"/>
@@ -137,10 +141,12 @@
                 <End Multiplicity="*" Role="ToRole_Cpg_Script" Type="ZE_CCUX_CAMPAIGN_OVW_SRV.Script"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_Cpg_Script">
+                        <PropertyRef Name="StartDate"/>
                         <PropertyRef Name="OfferCode"/>
                         <PropertyRef Name="Contract"/>
                     </Principal>
                     <Dependent Role="ToRole_Cpg_Script">
+                        <PropertyRef Name="StartDate"/>
                         <PropertyRef Name="OfferCode"/>
                         <PropertyRef Name="Contract"/>
                     </Dependent>
@@ -151,10 +157,12 @@
                 <End Multiplicity="*" Role="ToRole_Cpg_EFL" Type="ZE_CCUX_CAMPAIGN_OVW_SRV.EFL"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_Cpg_EFL">
+                        <PropertyRef Name="StartDate"/>
                         <PropertyRef Name="OfferCode"/>
                         <PropertyRef Name="Contract"/>
                     </Principal>
                     <Dependent Role="ToRole_Cpg_EFL">
+                        <PropertyRef Name="StartDate"/>
                         <PropertyRef Name="OfferCode"/>
                         <PropertyRef Name="Contract"/>
                     </Dependent>
@@ -206,18 +214,18 @@
                     <End EntitySet="CpgSearchS" Role="FromRole_Cpg_EFL"/>
                     <End EntitySet="EFLS" Role="ToRole_Cpg_EFL"/>
                 </AssociationSet>
-                <FunctionImport EntitySet="ReturnCollection" Name="Z_CCUX_CAMPAIGN_ACCEPT" ReturnType="ZE_CCUX_CAMPAIGN_OVW_SRV.Return" m:HttpMethod="POST">
-                    <Parameter MaxLength="10" Mode="In" Name="IV_VERTRAG" Precision="0" Scale="0" Type="Edm.String"/>
-                    <Parameter MaxLength="10" Mode="In" Name="IV_CAMPAIGN_CODE" Precision="0" Scale="0" Type="Edm.String"/>
-                    <Parameter MaxLength="10" Mode="In" Name="IV_LP_CODE" Precision="0" Scale="0" Type="Edm.String"/>
-                    <Parameter MaxLength="24" Mode="In" Name="IV_LP_REFID" Precision="0" Scale="0" Type="Edm.String"/>
-                    <Parameter MaxLength="50" Mode="In" Name="IV_LP_FNAME" Precision="0" Scale="0" Type="Edm.String"/>
-                    <Parameter MaxLength="50" Mode="In" Name="IV_LP_LNAME" Precision="0" Scale="0" Type="Edm.String"/>
-                    <Parameter MaxLength="8" Mode="In" Name="IV_OFFER_CODE" Precision="0" Scale="0" Type="Edm.String"/>
-                    <Parameter MaxLength="60" Mode="In" Name="IV_OFFER_TITLE" Precision="0" Scale="0" Type="Edm.String"/>
-                    <Parameter MaxLength="10" Mode="In" Name="IV_PROMO_CODE" Precision="0" Scale="0" Type="Edm.String"/>
-                    <Parameter MaxLength="0" Mode="In" Name="IV_STARTDATE" Precision="0" Scale="0" Type="Edm.DateTime"/>
-                    <Parameter MaxLength="0" Mode="In" Name="IV_END_DATE" Precision="0" Scale="0" Type="Edm.DateTime"/>
+                <FunctionImport EntitySet="ReturnCollection" Name="AcceptCampaign" ReturnType="ZE_CCUX_CAMPAIGN_OVW_SRV.Return" m:HttpMethod="POST">
+                    <Parameter MaxLength="10" Mode="In" Name="Contract" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="10" Mode="In" Name="LP_Code" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="50" Mode="In" Name="LP_FirstName" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="50" Mode="In" Name="LP_LastName" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="0" Mode="In" Name="EndDate" Precision="0" Scale="0" Type="Edm.DateTime"/>
+                    <Parameter MaxLength="10" Mode="In" Name="CampaignCode" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="10" Mode="In" Name="PromoCode" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="8" Mode="In" Name="OfferCode" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="60" Mode="In" Name="OfferTitle" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="0" Mode="In" Name="StartDate" Precision="0" Scale="0" Type="Edm.DateTime"/>
+                    <Parameter MaxLength="24" Mode="In" Name="LP_RefID" Precision="0" Scale="0" Type="Edm.String"/>
                 </FunctionImport>
             </EntityContainer>
         </Schema>
