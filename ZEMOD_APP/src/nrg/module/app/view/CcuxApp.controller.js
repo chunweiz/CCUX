@@ -77,6 +77,8 @@ sap.ui.define(
 
             if (oContext.coNum) {
                 oRouter.navTo('campaign', {
+                    bpNum: oContext.bpNum,
+                    caNum: oContext.caNum,
                     coNum: oContext.coNum,
                     typeV: 'C' //TODO: hardcoded to current for the time being, need to revise
                 });
