@@ -26,7 +26,27 @@ sap.ui.define(
         });
 
         Manager.prototype.init = function () {
+            this._getUserInfo();
+        };
 
+        Manager.prototype._getUserInfo = function () {
+            var oWebUiManager = this._oComponent.getCcuxWebUiManager();
+
+            oWebUiManager.notifyWebUi('getUserInfo', {}, this._onGetUserInfoCallback, this);
+        };
+
+        Manager.prototype._onGetUserInfoCallback = function (oEvent) {
+            var oContextModel, oUserInfo, oResponse;
+
+            oResponse = oEvent.getParameters();
+
+            oUserInfo = {};
+            oUserInfo.webui = {
+                username: oResponse.USERNAME,
+                businessRole: oResponse.BUSINESS_ROLE
+            };
+
+            this.getContext().setData(oUserInfo, true);
         };
 
         Manager.prototype.getContext = function () {
