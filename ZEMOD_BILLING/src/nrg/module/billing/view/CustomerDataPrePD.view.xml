@@ -11,11 +11,13 @@
     <ute:Tag class="nrgAppMain-generalContent nrgBilling-cusDataPrePD">
         <ute:Tag elem="span" class="nrgBilling-cusDataBil-scrnTitle" text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-ACCOUNT_BALANCE}" />
 
+<!--
         <ute:Tag elem="span" class="nrgBilling-cusDataPrePD-r-btn">
             <utmain:Button design="None" class="nrgBilling-cusDataBil-CommBtn" press="onPayNow">
                 <ute:Tag elem="div" class="nrgBilling-cusDataBil-PayBalBtn-text" text="Communication Preferences" />
             </utmain:Button>
         </ute:Tag>
+-->
 
         <l:MatrixLayout
             class="nrgBilling-cusDataPrePD-layout"
