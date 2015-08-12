@@ -31,15 +31,15 @@
         "routing": {
             "routes": {
                 "billing.CheckBook": {
-                    "pattern": "billing/checkbook/bp/{bpNum}/ca/{caNum}",
+                    "pattern": "billing/checkbook/bp/{bpNum}/ca/{caNum}/co/{coNum}",
                     "target":["billing.Checkbook", "dashboard.CustomerDataSummary"]
                 },
                 "billing.BillingInfo": {
-                    "pattern": "billing/billinginfo/bp/{bpNum}/ca/{caNum}",
+                    "pattern": "billing/billinginfo/bp/{bpNum}/ca/{caNum}/co/{coNum}",
                     "target":["billing.CustomerDataBillingInfo", "dashboard.CustomerDataSummary"]
                 },
                 "billing.BillingPrePaid": {
-                    "pattern": "billing/billingprepaid/bp/{bpNum}/ca/{caNum}",
+                    "pattern": "billing/billingprepaid/bp/{bpNum}/ca/{caNum}/co/{coNum}",
                     "target":["billing.CustomerDataPrePD", "dashboard.CustomerDataSummary"]
                 }
             },
@@ -56,10 +56,6 @@
                 "billing.CustomerDataPrePD": {
                     "viewName": "nrg.module.bupa.view.CustomerDataPrePD",
                     "controlId": "idAppGeneral"
-                },
-                "dashboard.SummaryBP": {
-                    "viewName": "nrg.module.dashboard.view.CustomerDataSummary",
-                    "controlId": "idAppSummary"
                 }
             }
         }

@@ -1,4 +1,5 @@
 /*globals sap*/
+/*global ute*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -11,7 +12,7 @@ sap.ui.define(
     function (jQuery, Controller, JSONModel) {
         'use strict';
 
-        var CustomController = Controller.extend('nrg.module.dashboard.view.CustomerDataBillingInfo');
+        var CustomController = Controller.extend('nrg.module.billing.view.CustomerDataBillingInfo');
 
         CustomController.prototype.onInit = function () {
             var oModel;
@@ -40,6 +41,25 @@ sap.ui.define(
 
         CustomController.prototype.onExit = function () {
 
+        };
+
+        CustomController.prototype._onInvoiceAmntClicked = function (oEvent) {
+            //alert("Hi, invoice!");
+        };
+
+        CustomController.prototype._onPaymentsClicked = function (oEvent) {
+            if (!this._oPaymentPopup) {
+                this._oPaymentPopup = sap.ui.xmlfragment("PaymentPopup", "nrg.module.dashboard.view.PaymentsPopup", this);
+            }
+
+            this._oPaymentsPopup = ute.ui.main.Popup.create({
+                content: this._oPaymentPopup,
+                title: 'Payments'
+            });
+
+            this._oPaymentsPopup.setShowCloseButton(true);
+            this.getView().addDependent(this._oPaymentsPopup);
+            this._oPaymentsPopup.open();
         };
 
         return CustomController;

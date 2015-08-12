@@ -11,7 +11,7 @@ sap.ui.define(
     function (jQuery, Controller, JSONModel) {
         'use strict';
 
-        var CustomController = Controller.extend('nrg.module.dashboard.view.CustomerDataPrePD');
+        var CustomController = Controller.extend('nrg.module.billing.view.CustomerDataPrePD');
 
         CustomController.prototype.onInit = function () {
             var oModel;
