@@ -31,12 +31,12 @@
         "routing": {
             "routes": {
                 "search.SearchNoID": {
-                    "pattern": "search/searchNoID",
+                    "pattern": "search/SearchNoID",
                     "target": [ "search.CallerNoIDSearch", "search.CallerNoIDEnrollment", "search.EmptyTools" ]
                 },
 
                 "search.SearchNoIDREBS": {
-                    "pattern": "searchNoIDREBS",
+                    "pattern": "search/SearchNoID",
                     "target": [ "search.CallerNoIDSearchREBS", "search.CallerNoIDEnrollment", "search.EmptyTools" ]
                 }
             },
@@ -47,17 +47,17 @@
                     "controlId": "idAppTools"
                 },
 
-                "dashboard.CallerNoIDSearch": {
+                "search.CallerNoIDSearch": {
                     "viewName": "nrg.module.search.view.CallerNoIDSearch",
                     "controlId": "idAppGeneral"
                 },
 
-                "dashboard.CallerNoIDSearchREBS": {
+                "search.CallerNoIDSearchREBS": {
                     "viewName": "nrg.module.search.view.CallerNoIDSearchREBS",
                     "controlId": "idAppGeneral"
                 },
 
-                "dashboard.CallerNoIDEnrollment": {
+                "search.CallerNoIDEnrollment": {
                     "viewName": "nrg.module.search.view.CallerNoIDEnrollment",
                     "controlId": "idAppSummary"
                 }
