@@ -24,43 +24,43 @@
             class="nrgBupa-cusDataVerifyEditMail-l">
             <ute:TextView visible="{oDtaAddrEdit>/updateSent}"
                 class="nrgBupa-cusDataVerifyEditMail-rl-title"
-                text="{comp-i18n-bupa>nrgBupa_Pup_lTitle}"/>
+                text="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_lTitle}"/>
             <ute:Tag><ute:Textfield id="idEditPoBox" fieldType="Underlined"
                 change="._onPoBoxEdit"
-                label="{comp-i18n-bupa>nrgBupa_Pup_PoBox}"
+                label="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_PoBox}"
                 editable="{oDtaAddrEdit>/updateNotSent}" width="100px"
                 value="{oDtaAddrEdit>/AddrInfo/PoBox}"/></ute:Tag>
             <ute:Tag><ute:Textfield id="idEditHouseNum" fieldType="Underlined"
                 change="._onRegAddrEdit"
-                label="{comp-i18n-bupa>nrgBupa_Pup_HuNum}"
+                label="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_HuNum}"
                 editable="{oDtaAddrEdit>/updateNotSent}" width="100px"
                 value="{oDtaAddrEdit>/AddrInfo/HouseNo}"/></ute:Tag>
             <ute:Tag><ute:Textfield id="idEditUnitNum" fieldType="Underlined"
-                label="{comp-i18n-bupa>nrgBupa_Pup_UniNum}"
+                label="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_UniNum}"
                 editable="{oDtaAddrEdit>/updateNotSent}" width="100px"
                 value="{oDtaAddrEdit>/AddrInfo/UnitNo}"/></ute:Tag>
             <ute:Tag><ute:Textfield id="idEditStName" fieldType="Underlined"
                 change="._onRegAddrEdit"
-                label="{comp-i18n-bupa>nrgBupa_Pup_StName}"
+                label="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_StName}"
                 editable="{oDtaAddrEdit>/updateNotSent}" width="220px"
                 value="{oDtaAddrEdit>/AddrInfo/Street}"/></ute:Tag>
             <ute:Tag><ute:Textfield id="idEditCity" fieldType="Underlined"
-                label="{comp-i18n-bupa>nrgBupa_Pup_City}"
+                label="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_City}"
                 editable="{oDtaAddrEdit>/updateNotSent}" width="100px"
                 value="{oDtaAddrEdit>/AddrInfo/City}"/></ute:Tag>
             <ute:Tag><ute:Textfield id="idEditState" fieldType="Underlined"
-                label="{comp-i18n-bupa>nrgBupa_Pup_State}"
+                label="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_State}"
                 editable="{oDtaAddrEdit>/updateNotSent}" width="100px"
                 value="{oDtaAddrEdit>/AddrInfo/State}"/></ute:Tag>
             <ute:Tag><ute:Textfield id="idEditZip" fieldType="Underlined"
-                label="{comp-i18n-bupa>nrgBupa_Pup_ZipCode}"
+                label="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_ZipCode}"
                 editable="{oDtaAddrEdit>/updateNotSent}" width="100px"
                 value="{oDtaAddrEdit>/AddrInfo/ZipCode}"/></ute:Tag>
 
             <utmain:Button  id="idEditMailAddr_UpdtBtn"
                 visible="{oDtaAddrEdit>/updateNotSent}"
                 class="nrgBupa-cusDataVerifyEditMailAdd-updtBtn nrgBupa-cusDataVerify-alignCenBtn"
-                text="{comp-i18n-bupa>nrgBupa_Pup_UpdtBtnText}"
+                text="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_UpdtBtnText}"
                 press="._validateInputAddr"/>
         </ute:Tag>
         <ute:Tag id="idAddrUpdatePopup-r"
@@ -68,33 +68,33 @@
             visible="{oDtaAddrEdit>/updateSent}">
             <ute:TextView
                 class="nrgBupa-cusDataVerifyEditMail-rl-title"
-                text="{comp-i18n-bupa>nrgBupa_Pup_rTitle}"/>
+                text="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_rTitle}"/>
             <ute:Tag><ute:Textfield fieldType="Underlined"
-                label="{comp-i18n-bupa>nrgBupa_Pup_PoBox}"
+                label="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_PoBox}"
                 editable="false" width="100px"
                 value="{oDtaAddrEdit>/SuggAddrInfo/PoBox}"/></ute:Tag>
             <ute:Tag><ute:Textfield fieldType="Underlined"
-                label="{comp-i18n-bupa>nrgBupa_Pup_HuNum}"
+                label="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_HuNum}"
                 editable="false" width="100px"
                 value="{oDtaAddrEdit>/SuggAddrInfo/HouseNo}"/></ute:Tag>
             <ute:Tag><ute:Textfield fieldType="Underlined"
-                label="{comp-i18n-bupa>nrgBupa_Pup_UniNum}"
+                label="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_UniNum}"
                 editable="false" width="100px"
                 value="{oDtaAddrEdit>/SuggAddrInfo/UnitNo}"/></ute:Tag>
             <ute:Tag><ute:Textfield fieldType="Underlined"
-                label="{comp-i18n-bupa>nrgBupa_Pup_StName}"
+                label="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_StName}"
                 editable="false" width="220px"
                 value="{oDtaAddrEdit>/SuggAddrInfo/Street}"/></ute:Tag>
             <ute:Tag><ute:Textfield fieldType="Underlined"
-                label="{comp-i18n-bupa>nrgBupa_Pup_City}"
+                label="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_City}"
                 editable="false" width="100px"
                 value="{oDtaAddrEdit>/SuggAddrInfo/City}"/></ute:Tag>
             <ute:Tag><ute:Textfield fieldType="Underlined"
-                label="{comp-i18n-bupa>nrgBupa_Pup_State}"
+                label="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_State}"
                 editable="false" width="100px"
                 value="{oDtaAddrEdit>/SuggAddrInfo/State}"/></ute:Tag>
             <ute:Tag><ute:Textfield id="idValdZip" fieldType="Underlined"
-                label="{comp-i18n-bupa>nrgBupa_Pup_ZipCode}"
+                label="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_ZipCode}"
                 editable="false" width="100px"
                 value="{oDtaAddrEdit>/SuggAddrInfo/ZipCode}"/></ute:Tag>
             <ute:Tag id="idAddrUpdatePopup-FtrLn"
@@ -112,17 +112,17 @@
             <utmain:Button  id="idEditMailAddr_AcptBtn"
                 visible="{oDtaAddrEdit>/showVldBtns}"
                 class="nrgBupa-cusDataVerifyEditMailAdd-valdBtn"
-                text="{comp-i18n-bupa>nrgBupa_Pup_AcceptBtn}"
+                text="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_AcceptBtn}"
                 press="._handleMailingAcceptBtn"/>
             <utmain:Button  id="idEditMailAddr_DclnBtn"
                 visible="{oDtaAddrEdit>/showVldBtns}"
                 class="nrgBupa-cusDataVerifyEditMailAdd-valdBtn"
-                text="{comp-i18n-bupa>nrgBupa_Pup_DeclineBtn}"
+                text="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_DeclineBtn}"
                 press="._handleMailingDeclineBtn"/>
             <utmain:Button  id="idEditMailAddr_EditBtn"
                 visible="{oDtaAddrEdit>/showVldBtns}"
                 class="nrgBupa-cusDataVerifyEditMailAdd-valdBtn"
-                text="{comp-i18n-Bupa>nrgBupa_Pup_EditBtn}"
+                text="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_EditBtn}"
                 press="._handleMailingEditBtn"/>
         </ute:Tag>
     </ute:Tag>

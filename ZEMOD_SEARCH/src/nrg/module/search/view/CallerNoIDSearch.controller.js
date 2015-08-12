@@ -319,7 +319,7 @@ sap.ui.define(
                 oSearchCaModel = this.getView().getModel('oSearchWithCA');
 
             //Set BpNum to Component Level
-            oComponentContextModel.setProperty('/dashboard/bpNum', oRouteInfo.BP_NUM);
+            oComponentContextModel.setProperty('/bpNum', oRouteInfo.BP_NUM);
 
             //Set the loading effect to false
            // oComponent.getCcuxApp().setOccupied(false);
