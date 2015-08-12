@@ -234,8 +234,8 @@ sap.ui.define(
 
         Controller.prototype._showSuggestedAddr = function () {
             //Address validation error there was. Show system suggested address values we need to.
-            this.getView().byId('idAddrUpdatePopup').addStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
-            this.getView().byId('idAddrUpdatePopup-l').addStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
+            this.getView().byId('idAddrUpdatePopup').addStyleClass('nrgBupa-cusDataVerifyEditMail-vl');
+            this.getView().byId('idAddrUpdatePopup-l').addStyleClass('nrgBupa-cusDataVerifyEditMail-l-vl');
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
@@ -412,15 +412,15 @@ sap.ui.define(
         Controller.prototype._cleanUpAddrEditPop = function () {
             var i;
 
-            this.getView().byId('idAddrUpdatePopup').removeStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
+            this.getView().byId('idAddrUpdatePopup').removeStyleClass('nrgBupa-cusDataVerifyEditMail-vl');
             this.getView().byId('idAddrUpdatePopup-HdrLn').setVisible(false);
-            this.getView().byId('idAddrUpdatePopup-l').removeStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
+            this.getView().byId('idAddrUpdatePopup-l').removeStyleClass('nrgBupa-cusDataVerifyEditMail-l-vl');
             this.getView().byId('idAddrUpdatePopup-r').setVisible(false);
 
 
             for (i = 1; i < 8; i = i + 1) {
-                this.getView().byId('idAddrUpdatePopup-l').getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
-                this.getView().byId('idAddrUpdatePopup-r').getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
+                this.getView().byId('idAddrUpdatePopup-l').getContent()[0].removeStyleClass('nrgBupa-cusDataVerifyEditMail-lHighlight');
+                this.getView().byId('idAddrUpdatePopup-r').getContent()[0].removeStyleClass('nrgBupa-cusDataVerifyEditMail-rHighlight');
             }
         };
 
@@ -470,7 +470,7 @@ sap.ui.define(
             if (!this._oMailEditPopup) {
                 this._oMailEditPopup = ute.ui.main.Popup.create({
                     close: this._handleEditMailPopupClose.bind(this),
-                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
+                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.bupa.view.AddrUpdateCaLvlPopUp", this),
                     title: 'Edit Mailing Address'
                 });
                 this.getView().addDependent(this._oMailEditPopup);
@@ -512,15 +512,15 @@ sap.ui.define(
             if (oEvent.mParameters.checked) {
                 for (i = 1; i < 8; i = i + 1) {
                     if (oLeftInputArea[i].getContent()[0].getValue() !== oRightSuggArea[i].getContent()[0].getValue()) {
-                        oLeftInputArea[i].getContent()[0].addStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
-                        oRightSuggArea[i].getContent()[0].addStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
+                        oLeftInputArea[i].getContent()[0].addStyleClass('nrgBupa-cusDataVerifyEditMail-lHighlight');
+                        oRightSuggArea[i].getContent()[0].addStyleClass('nrgBupa-cusDataVerifyEditMail-rHighlight');
                     }
                 }
             } else {
                 for (i = 1; i < 8; i = i + 1) {
                     if (oLeftInputArea[i].getContent()[0].getValue() !== oRightSuggArea[i].getContent()[0].getValue()) {
-                        oLeftInputArea[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
-                        oRightSuggArea[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
+                        oLeftInputArea[i].getContent()[0].removeStyleClass('nrgBupa-cusDataVerifyEditMail-lHighlight');
+                        oRightSuggArea[i].getContent()[0].removeStyleClass('nrgBupa-cusDataVerifyEditMail-rHighlight');
                     }
                 }
             }

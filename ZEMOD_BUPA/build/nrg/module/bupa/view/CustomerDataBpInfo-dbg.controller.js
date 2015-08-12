@@ -27,7 +27,7 @@ sap.ui.define(
         Controller.prototype.onBeforeRendering = function () {
             this.getOwnerComponent().getCcuxApp().setTitle('BUSINESS PARTNER');
 
-            this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-bupa'), 'oODataSvc');
 
             //Model to track page edit/save status
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBpInfoConfig');
@@ -834,9 +834,6 @@ sap.ui.define(
         };
 
         Controller.prototype._showSuggestedAddr = function () {
-            //Address validation error there was. Show system suggested address values we need to.
-            //this.getView().byId('idAddrUpdatePopup').addStyleClass('nrgDashboard-cusDataVerifyEditMail-vl');
-            //this.getView().byId('idAddrUpdatePopup-l').addStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
             this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
@@ -934,15 +931,15 @@ sap.ui.define(
             if (oEvent.mParameters.checked) {
                 for (i = 1; i < 8; i = i + 1) {
                     if (oLeftInputArea[i].getContent()[0].getValue() !== oRightSuggArea[i].getContent()[0].getValue()) {
-                        oLeftInputArea[i].getContent()[0].addStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
-                        oRightSuggArea[i].getContent()[0].addStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
+                        oLeftInputArea[i].getContent()[0].addStyleClass('nrgBupa-cusDataVerifyEditMail-lHighlight');
+                        oRightSuggArea[i].getContent()[0].addStyleClass('nrgBupa-cusDataVerifyEditMail-rHighlight');
                     }
                 }
             } else {
                 for (i = 1; i < 8; i = i + 1) {
                     if (oLeftInputArea[i].getContent()[0].getValue() !== oRightSuggArea[i].getContent()[0].getValue()) {
-                        oLeftInputArea[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
-                        oRightSuggArea[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
+                        oLeftInputArea[i].getContent()[0].removeStyleClass('nrgBupa-cusDataVerifyEditMail-lHighlight');
+                        oRightSuggArea[i].getContent()[0].removeStyleClass('nrgBupa-cusDataVerifyEditMail-rHighlight');
                     }
                 }
             }
