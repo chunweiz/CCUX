@@ -12,7 +12,7 @@ sap.ui.define(
     function (jQuery, Controller) {
         'use strict';
 
-        var CustomController = Controller.extend('nrg.module.dashboard.view.BillingCheckbook');
+        var CustomController = Controller.extend('nrg.module.billing.view.BillingCheckbook');
 
         CustomController.prototype.onInit = function () {
 

@@ -10,31 +10,31 @@
     xmlns:l="sap.ui.commons.layout"
     xmlns:core="sap.ui.core"
     xmlns:m="sap.m"
-    controllerName="nrg.module.dashboard.view.BillingCheckbook">
+    controllerName="nrg.module.billing.view.BillingCheckbook">
 
-    <ute:Tag class="nrgAppMain-generalContent nrgDashboard-billChkBook">
+    <ute:Tag class="nrgAppMain-generalContent nrgBilling-billChkBook">
         <!-- Left -->
-        <ute:Tag class="nrgDashboard-billChkBook-left">
-            <ute:Tag elem="span" class="nrgDashboard-billChkBook-pageTitle" text="{comp-i18n-dashboard>nrgDashboard-billChkBook-PAGE_TITLE}" />
+        <ute:Tag class="nrgBilling-billChkBook-left">
+            <ute:Tag elem="span" class="nrgBilling-billChkBook-pageTitle" text="{comp-i18n-billing>nrgBilling-billChkBook-PAGE_TITLE}" />
             <ute:Tag elem="div" class="clearfix">
-                <ute:HorizontalDivider width="16%" class="nrgDashboard-billChkBook-horiLine"/>
+                <ute:HorizontalDivider width="16%" class="nrgBilling-billChkBook-horiLine"/>
             </ute:Tag>
             <!-- Quick Reference Area -->
-            <ute:Tag elem="div" class="nrgDashboard-billChkBook-quickRefArea">
-                <ute:Tag elem="div" class="nrgDashboard-billChkBook-quickRefArea-date">
-                    <ute:Tag elem="div" class="nrgDashboard-billChkBook-quickRefArea-dateWrap">
+            <ute:Tag elem="div" class="nrgBilling-billChkBook-quickRefArea">
+                <ute:Tag elem="div" class="nrgBilling-billChkBook-quickRefArea-date">
+                    <ute:Tag elem="div" class="nrgBilling-billChkBook-quickRefArea-dateWrap">
                         <l:MatrixLayout
-                            class="nrgDashboard-billChkBook-dateTable"
+                            class="nrgBilling-billChkBook-dateTable"
                             layoutFixed="false" widths="40%,60%" columns="2" width="100%">
                             <l:rows>
                                 <l:MatrixLayoutRow>
                                     <l:cells>
-                                        <l:MatrixLayoutCell class="nrgDashboard-billChkBook-tableCell">
-                                            <ute:Tag elem="div" class="nrgDashboard-billChkBook-dateTable-clm1"
+                                        <l:MatrixLayoutCell class="nrgBilling-billChkBook-tableCell">
+                                            <ute:Tag elem="div" class="nrgBilling-billChkBook-dateTable-clm1"
                                                      text="Start Date" />
                                         </l:MatrixLayoutCell>
-                                        <l:MatrixLayoutCell class="nrgDashboard-billChkBook-tableCell">
-                                            <ute:Tag elem="div" class="nrgDashboard-billChkBook-dateTable-clm2"
+                                        <l:MatrixLayoutCell class="nrgBilling-billChkBook-tableCell">
+                                            <ute:Tag elem="div" class="nrgBilling-billChkBook-dateTable-clm2"
                                                      text="6 months ago" />
                                         </l:MatrixLayoutCell>
 
@@ -42,12 +42,12 @@
                                 </l:MatrixLayoutRow>
                                 <l:MatrixLayoutRow>
                                     <l:cells>
-                                        <l:MatrixLayoutCell class="nrgDashboard-billChkBook-tableCell">
-                                            <ute:Tag elem="div" class="nrgDashboard-billChkBook-dateTable-clm1"
+                                        <l:MatrixLayoutCell class="nrgBilling-billChkBook-tableCell">
+                                            <ute:Tag elem="div" class="nrgBilling-billChkBook-dateTable-clm1"
                                                      text="End Date" />
                                         </l:MatrixLayoutCell>
-                                        <l:MatrixLayoutCell class="nrgDashboard-billChkBook-tableCell">
-                                            <ute:Tag elem="div" class="nrgDashboard-billChkBook-dateTable-clm2"
+                                        <l:MatrixLayoutCell class="nrgBilling-billChkBook-tableCell">
+                                            <ute:Tag elem="div" class="nrgBilling-billChkBook-dateTable-clm2"
                                                      text="today: 08/06/15" />
                                         </l:MatrixLayoutCell>
 
@@ -57,13 +57,13 @@
                         </l:MatrixLayout>
                     </ute:Tag>
                 </ute:Tag>
-                <ute:Tag elem="div" class="nrgDashboard-billChkBook-quickRefArea-amount">
-                    <ute:Tag elem="span" class="nrgDashboard-billChkBook-amountNum" text="$380.87"/>
-                    <ute:Tag elem="sapn" class="nrgDashboard-billChkBook-amountAsterisk" text="*"/>
-                    <ute:Tag elem="span" class="nrgDashboard-billChkBook-amountDscrpt1" text="current amount due"/>
-                    <ute:Tag elem="span" class="nrgDashboard-billChkBook-amountDscrpt2" text="for no service interuption"/>
-                    <ute:Tag elem="div" class="nrgDashboard-billChkBook-quickRefArea-amountHover">
-                        <ute:tooltip class="nrgDashboard-billChkBook-quickRefArea-amount-tooltip">
+                <ute:Tag elem="div" class="nrgBilling-billChkBook-quickRefArea-amount">
+                    <ute:Tag elem="span" class="nrgBilling-billChkBook-amountNum" text="$380.87"/>
+                    <ute:Tag elem="sapn" class="nrgBilling-billChkBook-amountAsterisk" text="*"/>
+                    <ute:Tag elem="span" class="nrgBilling-billChkBook-amountDscrpt1" text="current amount due"/>
+                    <ute:Tag elem="span" class="nrgBilling-billChkBook-amountDscrpt2" text="for no service interuption"/>
+                    <ute:Tag elem="div" class="nrgBilling-billChkBook-quickRefArea-amountHover">
+                        <ute:tooltip class="nrgBilling-billChkBook-quickRefArea-amount-tooltip">
                             <c:Callout openDelay="100">
                                 <c:content>
                                     <ute:Table width="400px">
@@ -87,22 +87,22 @@
                         </ute:tooltip>
                     </ute:Tag>
                 </ute:Tag>
-                <ute:Tag elem="div" class="nrgDashboard-billChkBook-quickRefArea-customer">
-                    <ute:Button class="nrgDashboard-billChkBook-customer-btn"
+                <ute:Tag elem="div" class="nrgBilling-billChkBook-quickRefArea-customer">
+                    <ute:Button class="nrgBilling-billChkBook-customer-btn"
                                    text="payment options"/>
-                    <ute:Button class="nrgDashboard-billChkBook-customer-btn"
+                    <ute:Button class="nrgBilling-billChkBook-customer-btn"
                                    text="high bill factors"/>
                 </ute:Tag>
             </ute:Tag>
             <!-- Main Content Body -->
-            <ute:ScrollContainer class="nrgDashboard-billChkBook-mainContent" height="380px" horizontal="false" vertical="true">
+            <ute:ScrollContainer class="nrgBilling-billChkBook-mainContent" height="380px" horizontal="false" vertical="true">
                 <ute:Tag elem="div" class="test"/>
                 <ute:Tag elem="div" class="test2"/>
             </ute:ScrollContainer>
         </ute:Tag>
 
         <!-- Right -->
-        <ute:Tag class="nrgDashboard-billChkBook-right">
+        <ute:Tag class="nrgBilling-billChkBook-right">
 
         </ute:Tag>
     </ute:Tag>
