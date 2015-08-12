@@ -32,11 +32,11 @@
             "routes": {
                 "bupa.bpInfo": {
                     "pattern": "bupa/bpinfo/bp/{bpNum}/ca/{caNum}",
-                    "target":["bupa.BupaBpInfo", "dashboard.SummaryBP", "bupa.Tools"]
+                    "target":["bupa.BupaBpInfo", "dashboard.CustomerDataSummary", "bupa.Tools"]
                 },
                 "bupa.caInfo": {
                     "pattern": "bupa/cainfo/bp/{bpNum}/ca/{caNum}",
-                    "target":["bupa.BupaCaInfo", "dashboard.SummaryBP", "bupa.Tools"]
+                    "target":["bupa.BupaCaInfo", "dashboard.CustomerDataSummary", "bupa.Tools"]
                 }
             },
 
