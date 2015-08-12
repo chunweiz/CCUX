@@ -3,10 +3,11 @@
 sap.ui.define(
     [
         'sap/ui/base/Object',
-        'sap/ui/core/message/ControlMessageProcessor'
+        'sap/ui/core/message/ControlMessageProcessor',
+        'sap/ui/core/message/Message'
     ],
 
-    function (BaseObject, ControlMessageProcessor) {
+    function (BaseObject, ControlMessageProcessor, Message) {
         'use strict';
 
         var Manager = BaseObject.extend('nrg.base.component.NotificationManager', {
