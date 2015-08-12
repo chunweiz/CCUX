@@ -52,10 +52,6 @@
                 "bupa.Tools": {
                     "viewName": "nrg.module.bupa.view.Tools",
                     "controlId": "idAppTools"
-                },
-                "dashboard.SummaryBP": {
-                    "viewName": "nrg.module.dashboard.view.CustomerDataSummary",
-                    "controlId": "idAppSummary"
                 }
             }
         }
