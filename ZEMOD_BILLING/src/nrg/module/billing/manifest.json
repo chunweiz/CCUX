@@ -50,11 +50,11 @@
                     "controlId": "idAppGeneral"
                 },
                 "billing.CustomerDataBillingInfo": {
-                    "viewName": "nrg.module.bupa.view.CustomerDataBillingInfo",
+                    "viewName": "nrg.module.billing.view.CustomerDataBillingInfo",
                     "controlId": "idAppGeneral"
                 },
                 "billing.CustomerDataPrePD": {
-                    "viewName": "nrg.module.bupa.view.CustomerDataPrePD",
+                    "viewName": "nrg.module.billing.view.CustomerDataPrePD",
                     "controlId": "idAppGeneral"
                 }
             }
