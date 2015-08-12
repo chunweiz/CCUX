@@ -188,7 +188,7 @@ sap.ui.define(
                             //this._beforeOpenEditAddrDialogue = true;
                             this._oSiebelAlertPopup.open();
                         }
-                        if(oData.Cell) {
+                        if (oData.Cell) {
                             this.getView().getModel('oCfrmStatus').setProperty('/ShowSMSBtn', true);
                         }
                     }
@@ -273,8 +273,8 @@ sap.ui.define(
             sPath = '/Buags' + '(\'' + sBuagNum + '\')/Contracts/';
             oParameters = {
                 success : function (oData) {
-                    console.log('path', sPath);
-                    console.log('oData', oData);
+                    //console.log('path', sPath);
+                    //console.log('oData', oData);
                     if (oData) {
                         if (oData.results[0]) {
                             //Again if there's first record of Contracts, load as default to display
@@ -423,8 +423,8 @@ sap.ui.define(
                 sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID');
 
             //Set Confirmed CaNum and CoNum to Component level
-            oComponentContextModel.setProperty('/dashboard/caNum', sCurrentCa);
-            oComponentContextModel.setProperty('/dashboard/coNum', sCurrentCo);
+            oComponentContextModel.setProperty('/caNum', sCurrentCa);
+            oComponentContextModel.setProperty('/coNum', sCurrentCo);
 
             this.getView().byId('id_confmBtn').setVisible(false);
             this.getView().byId('id_unConfmBtn').setVisible(true);
