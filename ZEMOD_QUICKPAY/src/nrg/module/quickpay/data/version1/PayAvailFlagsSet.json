@@ -3,12 +3,12 @@
       "results":[
             {
               "ContractID":"0034805112",
-              "CCPPFlag":"",
-              "BDPPFlag":"",
+              "CCPPFlag":"X",
+              "BDPPFlag":"X",
               "PartnerID":"0002473499",
               "ContractAccountID":"000003040103",
-              "CCFlag":"",
-              "BDFlag":"",
+              "CCFlag":"X",
+              "BDFlag":"X",
               "ReliantFlag":"X",
               "ReceiptFlag":"X",
               "Message":"X"

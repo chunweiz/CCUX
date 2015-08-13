@@ -21,16 +21,16 @@
                 <li class="nrgSearch-calrNoIDEnrol-listitem">
                     <utmain:Button
                         design="None"
-                        text="{comp-i18n-search>nrgSearchClrNid_EnrollBus}"
-                        press="onEnrollBusiness"
+                        text="{comp-i18n-search>nrgSearchClrNid_EnrollResident}"
+                        press="onEnrollResident"
                         class="nrgCallerNoIDEnrollment-ListItemLink">
                     </utmain:Button>
                 </li>
                 <li class="nrgSearch-calrNoIDEnrol-listitem">
                     <utmain:Button
                         design="None"
-                        text="{comp-i18n-search>nrgSearchClrNid_EnrollResident}"
-                        press="onEnrollResident"
+                        text="{comp-i18n-search>nrgSearchClrNid_EnrollBus}"
+                        press="onEnrollBusiness"
                         class="nrgCallerNoIDEnrollment-ListItemLink">
                     </utmain:Button>
                 </li>

@@ -73,13 +73,20 @@ sap.ui.define(
         };
 
         Controller.prototype._initDataModel = function () {
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+
+            this._bpNum = oRouteInfo.parameters.bpNum;
+            this._caNum = oRouteInfo.parameters.caNum;
+            this._coNum = oRouteInfo.parameters.coNum;
+
+            /*
             var sPath, aSplitHash, iSplitHashL;
 
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
 
             this._bpNum = aSplitHash[iSplitHashL - 3];
-            this._caNum = aSplitHash[iSplitHashL - 1];
+            this._caNum = aSplitHash[iSplitHashL - 1];*/
 
             this._retrAllBuags(this._bpNum);
             this._retrBuagAddrDetail(this._caNum);
@@ -674,7 +681,12 @@ sap.ui.define(
 
         Controller.prototype.onBackToDashboard = function () {
             var oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo('dashboard.Bp', {bpNum: this._bpNum});
+
+            if (this._coNum) {
+                oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('dashboard.VerificationWithCa', {bpNum: this._bpNum, caNum: this._caNum});
+            }
         };
 
         Controller.prototype._retrUrlHash = function () {

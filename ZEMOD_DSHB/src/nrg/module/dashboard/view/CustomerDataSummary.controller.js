@@ -57,7 +57,7 @@ sap.ui.define(
 
 
             this._initRetrBpInf();
-            this._initRetrBpSegInf();
+            //this._initRetrBpSegInf();
 
         };
 
@@ -85,28 +85,34 @@ sap.ui.define(
         };
         Controller.prototype._initRetrBpInf = function () {
             var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
-                sBpNum,
-                sPath,
-                oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext();
+                //sBpNum,
+                sPath;
+                //oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext();
 
+            /*
             if (oComponentContextModel.getProperty('/dashboard/bpNum')) {
                 sBpNum = oComponentContextModel.getProperty('/dashboard/bpNum');
             } else {
                 sBpNum = oRouteInfo.parameters.bpNum;
-            }
-            sPath = '/Partners' + '(\'' + sBpNum + '\')';
+            }*/
+
+            this._bpNum = oRouteInfo.parameters.bpNum;
+            this._caNum = oRouteInfo.parameters.caNum;
+            this._coNum = oRouteInfo.parameters.coNum;
+
+            sPath = '/Partners' + '(\'' + this._bpNum + '\')';
 
             this._retrBpInf(sPath);
-            this._initRetrCaInf(sBpNum);  //Should be triggered in Success call back of BP retriev
+            this._initRetrCaInf(this._bpNum);  //Should be triggered in Success call back of BP retriev
+            this._initRetrBpSegInf(this._bpNum);
         };
 
-        Controller.prototype._initRetrBpSegInf = function () {
-            var sBpNBum,
-                sPath;
+        Controller.prototype._initRetrBpSegInf = function (BpNum) {
+            var sPath;
 
             //aSplitHash = (this._retrUrlHash()).split('/');
             //iSplitHashL = aSplitHash.length;
-            sPath = '/Partners' + '(\'' + sBpNBum + '\')/BpSegs';
+            sPath = '/Partners' + '(\'' + BpNum + '\')/BpSegs';
 
             this._retrBpSegInf(sPath);
         };
@@ -177,6 +183,7 @@ sap.ui.define(
                     if (oData) {
                         this.getView().getModel('oSmryBuagInf').setData(oData.results[0]);
                         this._initRetrAssignedAccount(this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID'));
+                        this._caNum = this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID');
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -194,6 +201,7 @@ sap.ui.define(
                 this.getView().getModel('oSmryBuagInf').setData(this.getView().getModel('oSmryAllBuags').getProperty('/results')[iIndex]);
                 this.getView().getModel('oSmryAllBuags').setProperty('/selectedIndex', iIndex);
                 this._initRetrAssignedAccount(this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID'));
+                this._caNum = this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID');
             }
         };
 
@@ -282,19 +290,25 @@ sap.ui.define(
         };
 
         Controller.prototype._onBpNumClicked = function () {
-            var oRouter = this.getOwnerComponent().getRouter(),
-                sSelectedBpNum = this.getView().getModel('oSmryBpInf').getProperty('/PartnerID');
+            var oRouter = this.getOwnerComponent().getRouter();
+                //sSelectedBpNum = this.getView().getModel('oSmryBpInf').getProperty('/PartnerID');
 
-            oRouter.navTo('dashboard.BpInfo', {bpNum: sSelectedBpNum});
+            if (this._coNum) {
+                oRouter.navTo('bupa.bpInfoWithCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('bupa.bpInfo', {bpNum: this._bpNum, caNum: this._caNum});
+            }
         };
 
         Controller.prototype._onCaNumClicked = function () {
-            var oRouter = this.getOwnerComponent().getRouter(),
-                sSelectedBpNum = this.getView().getModel('oSmryBpInf').getProperty('/PartnerID'),
-                sSelectedCaNum = this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID');
-
-
-            oRouter.navTo('dashboard.CaInfo', {bpNum: sSelectedBpNum, caNum: sSelectedCaNum});
+            var oRouter = this.getOwnerComponent().getRouter();
+                //sSelectedBpNum = this.getView().getModel('oSmryBpInf').getProperty('/PartnerID'),
+                //sSelectedCaNum = this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID');
+            if (this._coNum) {
+                oRouter.navTo('bupa.caInfoWithCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('bupa.caInfo', {bpNum: this._bpNum, caNum: this._caNum});
+            }
         };
 
         return Controller;
