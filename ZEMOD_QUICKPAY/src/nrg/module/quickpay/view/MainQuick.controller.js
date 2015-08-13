@@ -31,7 +31,7 @@ sap.ui.define(
                 sCurrentPath,
                 oMsgArea = this.getView().byId("idnrgQPPay-msgArea"),
                 oViewModel = new JSONModel({
-                    reliantPay : false,
+                    reliantPay : true,
                     message : "",
                     reliantText : "Verify",
                     reliantPress: ".onAcceptReliant"
@@ -253,7 +253,27 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onReliantRedeem = function (oEvent) {
-
+            var oModel = this.getView().getModel('comp-quickpay'),
+                mParameters,
+                sCurrentPath,
+                oMsgArea = this.getView().byId("idnrgQPPay-msgArea"),
+                oContext,
+                oReliantCardAmount = this.getView().byId("idnrgQPCC-Amt2");
+            oContext = oReliantCardAmount.getBindingContext("comp-quickpay");
+            sCurrentPath = "/ReliantSet";
+            oMsgArea.addStyleClass("nrgQPPay-hide");
+            oModel.create("/ReliantSet", {
+                "ContractID": oContext.getProperty("ContractID"),
+                "ReliantCard": oContext.getProperty("ReliantCard"),
+                "Amount": oContext.getProperty("Amount")
+            }, {
+                success : function (oData, oResponse) {
+                    jQuery.sap.log.info("Create successfull");
+                },
+                error : function (oError) {
+                    jQuery.sap.log.info("Create Failure");
+                }
+            });
         };
         return Controller;
     }
