@@ -30,59 +30,19 @@
 
         "routing": {
             "routes": {
-                "dashboard": {
-                    "pattern": "",
-                    "target": [ "dashboard.General", "dashboard.Summary", "dashboard.Tools" ]
-                },
-
-                "dashboard.SearchNoID": {
-                    "pattern": "searchNoID",
-                    "target": [ "dashboard.CallerNoIDSearch", "dashboard.CallerNoIDEnrollment" ]
-                },
-
-                "dashboard.SearchNoIDREBS": {
-                    "pattern": "searchNoIDREBS",
-                    "target": [ "dashboard.CallerNoIDSearchREBS", "dashboard.CallerNoIDEnrollment" ]
-                },
-
-                "dashboard.Bp": {
-                    "pattern": "bp/{bpNum}",
+                "dashboard.Verification": {
+                    "pattern": "dashboard/verification/bp/{bpNum}",
                     "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "dashboard.EmptyTools" ]
                 },
 
-                "dashboard.BpSearchedInCa": {
-                    "pattern": "bp/{bpNum}/searchedInCa/{caNum}",
+                "dashboard.VerificationWithCa": {
+                    "pattern": "dashboard/verification/bp/{bpNum}/ca/{caNum}",
                     "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "dashboard.EmptyTools" ]
                 },
 
-                "dashboard.BpCa": {
-                    "pattern": "bp/{bpNum}/ca/{caNum}",
-                    "target": [ "others.GeneralEmpty", "dashboard.SummaryBP", "others.ToolsEmpty" ]
-                },
-
-                "dashboard.PrePD": {
-                    "pattern": "prepd",
-                    "target": [ "dashboard.CustomerDataPrePD", "dashboard.CustomerDataSummary" ]
-                },
-
-                "dashboard.BillingInfo": {
-                    "pattern": "billinginfo",
-                    "target": [ "dashboard.CustomerDataBillingInfo", "dashboard.CustomerDataSummary" ]
-                },
-
-                "dashboard.BpInfo": {
-                    "pattern": "bpinfo/{bpNum}",
-                    "target": [ "dashboard.CustomerDataBpInfo", "dashboard.CustomerDataSummary", "dashboard.Tools" ]
-                },
-
-                "dashboard.CaInfo": {
-                    "pattern": "cainfo/bp/{bpNum}/ca/{caNum}",
-                    "target": [ "dashboard.CustomerDataCaInfo", "dashboard.CustomerDataSummary", "dashboard.Tools" ]
-                },
-
-                "dashboard.ChkBook": {
-                    "pattern": "bp/{bpNum}/checkbook",
-                    "target": ["dashboard.Checkbook", "dashboard.CustomerDataSummary", "dashboard.Tools"]
+                "dashboard.VerificationWithCaCo": {
+                    "pattern": "dashboard/verification/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "dashboard.EmptyTools" ]
                 }
             },
 
@@ -90,40 +50,6 @@
                 "dashboard.EmptyTools":{
                     "viewName": "nrg.module.dashboard.view.EmptyTools",
                     "controlId": "idAppTools"
-                },
-                "dashboard.General": {
-                    "viewName": "nrg.module.dashboard.view.General",
-                    "controlId": "idAppGeneral"
-                },
-
-                "dashboard.Summary": {
-                    "viewName": "nrg.module.dashboard.view.Summary",
-                    "controlId": "idAppSummary"
-                },
-
-                "dashboard.Tools": {
-                    "viewName": "nrg.module.dashboard.view.Tools",
-                    "controlId": "idAppTools"
-                },
-
-                "dashboard.SummaryBP": {
-                    "viewName": "nrg.module.dashboard.view.SummaryBP",
-                    "controlId": "idAppSummary"
-                },
-
-                "dashboard.CallerNoIDSearch": {
-                    "viewName": "nrg.module.dashboard.view.CallerNoIDSearch",
-                    "controlId": "idAppGeneral"
-                },
-
-                "dashboard.CallerNoIDSearchREBS": {
-                    "viewName": "nrg.module.dashboard.view.CallerNoIDSearchREBS",
-                    "controlId": "idAppGeneral"
-                },
-
-                "dashboard.CallerNoIDEnrollment": {
-                    "viewName": "nrg.module.dashboard.view.CallerNoIDEnrollment",
-                    "controlId": "idAppSummary"
                 },
 
                 "dashboard.CustomerDataSummary": {
@@ -133,31 +59,6 @@
 
                 "dashboard.CustomerDataVerification": {
                     "viewName": "nrg.module.dashboard.view.CustomerDataVerification",
-                    "controlId": "idAppGeneral"
-                },
-
-                "dashboard.CustomerDataPrePD": {
-                    "viewName": "nrg.module.dashboard.view.CustomerDataPrePD",
-                    "controlId": "idAppGeneral"
-                },
-
-                "dashboard.CustomerDataBillingInfo": {
-                    "viewName": "nrg.module.dashboard.view.CustomerDataBillingInfo",
-                    "controlId": "idAppGeneral"
-                },
-
-                "dashboard.CustomerDataBpInfo": {
-                    "viewName": "nrg.module.dashboard.view.CustomerDataBpInfo",
-                    "controlId": "idAppGeneral"
-                },
-
-                "dashboard.CustomerDataCaInfo": {
-                    "viewName": "nrg.module.dashboard.view.CustomerDataCaInfo",
-                    "controlId": "idAppGeneral"
-                },
-
-                "dashboard.Checkbook": {
-                    "viewName": "nrg.module.dashboard.view.BillingCheckbook",
                     "controlId": "idAppGeneral"
                 }
             }

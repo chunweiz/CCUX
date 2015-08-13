@@ -49,7 +49,7 @@ sap.ui.define(
 
         CustomController.prototype._onPaymentsClicked = function (oEvent) {
             if (!this._oPaymentPopup) {
-                this._oPaymentPopup = sap.ui.xmlfragment("PaymentPopup", "nrg.module.dashboard.view.PaymentsPopup", this);
+                this._oPaymentPopup = sap.ui.xmlfragment("PaymentPopup", "nrg.module.billing.view.PaymentsPopup", this);
             }
 
             this._oPaymentsPopup = ute.ui.main.Popup.create({
