@@ -7,17 +7,18 @@ sap.ui.define(
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
         'jquery.sap.global',
-        "sap/ui/model/json/JSONModel"
+        "sap/ui/model/json/JSONModel",
+        'sap/ui/model/odata/v2/ODataModel'
     ],
 
-    function (CoreController, Filter, FilterOperator, jQuery, JSONModel) {
+    function (CoreController, Filter, FilterOperator, jQuery, JSONModel, ODataModel) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.quickpay.view.MainQuick');
 
 
 		/* =========================================================== */
-		/* lifecycle method- Init                                     */
+		/* lifecycle method- Init                                      */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
 
@@ -45,6 +46,7 @@ sap.ui.define(
             });
             oMsgArea.addStyleClass("nrgQPPay-hide");
         };
+
         /**
 		 * Show Stop Voice Log Recording msg
 		 *
@@ -52,9 +54,57 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onCreditCard = function (oEvent) {
-            var oTBIStopRec = this.getView().byId("idnrgQPPay-TBIStopRec");
+            var oTBIStopRec = this.getView().byId("idnrgQPPay-TBIStopRec"),
+                fnRecievedHandler,
+                oDropDown = this.getView().byId("idnrgQPCC-DDL"),
+                mParameters,
+                oDropDownTemplate = this.getView().byId("idnrgQPCC-DDLItem"),
+                aFilters,
+                dropDownHandler,
+                sCurrentPath = "/CreditCardSet",
+                aFilterIds,
+                aFilterValues,
+                oModel;
+            oModel = new ODataModel("/sap/opu/odata/sap/ZE_CCUX_SRV");
+            this.getView().setModel(oModel, 'comp-creditcard');
             oTBIStopRec.setSelected(true);
+            // Handler function for Tab Bar Item.
+            aFilterIds = ["PartnerID"];
+            aFilterValues = ['0000956003'];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            fnRecievedHandler = function (oEvent) {
+                jQuery.sap.log.info("Date Received Succesfully");
+            };
+            mParameters = {
+                model : "comp-creditcard",
+                path : sCurrentPath,
+                template : oDropDownTemplate,
+                filters : aFilters,
+                events: {dataReceived : fnRecievedHandler}
+            };
+            dropDownHandler = function (oEvent) {
+                jQuery.sap.log.info("Event Called Successfully");
+                oDropDown.bindAggregation("content", mParameters);
+                oDropDown.detachEvent("DropDownClicked", dropDownHandler);
+            };
+            oDropDown.attachEvent("DropDownClicked", dropDownHandler);
+        };
+       /**
+		 * Assign the filter objects based on the input selection
+		 *
+		 * @function
+		 * @param {Array} aFilterIds to be used as sPath for Filters
+         * @param {Array} aFilterValues for each sPath
+		 * @private
+		 */
+        Controller.prototype._createSearchFilterObject = function (aFilterIds, aFilterValues) {
+            var aFilters = [],
+                iCount;
 
+            for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
+                aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
+            }
+            return aFilters;
         };
         /**
 		 * Credit Card Process initialization
@@ -71,6 +121,7 @@ sap.ui.define(
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             oTBICC.setSelected(true);
         };
+
         /**
 		 * Bank Draft Process initialization
 		 *
@@ -86,6 +137,7 @@ sap.ui.define(
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             oTBIBD.setSelected(true);
         };
+
         /**
 		 * Receipt Process initialization
 		 *
@@ -101,6 +153,7 @@ sap.ui.define(
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             oTBIRC.setSelected(true);
         };
+
         /**
 		 * Reliant Card Process initialization
 		 *
@@ -121,6 +174,7 @@ sap.ui.define(
             oReliantDate.setValue(new Date().toLocaleDateString("en-US"));
             oReliantDate.setEditable(false);
         };
+
         /**
 		 * Pending Credit Card Process initialization
 		 *
@@ -130,6 +184,7 @@ sap.ui.define(
         Controller.prototype.onPendingCreditCard = function (oEvent) {
 
         };
+
         /**
 		 * Pending Bank Draft Process initialization
 		 *
@@ -139,6 +194,7 @@ sap.ui.define(
         Controller.prototype.onPendingBankDraft = function (oEvent) {
 
         };
+
         /**
 		 * When Credit Card is Accepted
 		 *
@@ -154,6 +210,7 @@ sap.ui.define(
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             oTBIPaySucc.setSelected(true);
         };
+
         /**
 		 * When Credit Card is Accepted
 		 *
@@ -163,6 +220,7 @@ sap.ui.define(
         Controller.prototype.onDeclineCredit = function (oEvent) {
             this.getView().getParent().close();
         };
+
         /**
 		 * When Popup is closed
 		 *
@@ -172,6 +230,7 @@ sap.ui.define(
         Controller.prototype.onPopupClose = function (oEvent) {
             this.getView().getParent().close();
         };
+
         /**
          * Handler for Adding new Bank draft
 		 *
@@ -182,6 +241,7 @@ sap.ui.define(
             var oTBIAddBD = this.getView().byId("idnrgQPPay-TBIAddBD");
             oTBIAddBD.setSelected(true);
         };
+
         /**
          * Handler for Accepting Reliant Card Payment
 		 *
@@ -200,14 +260,13 @@ sap.ui.define(
                 that = this;
             sCurrentPath = "/ReliantSet";
             sCurrentPath = sCurrentPath + "(ContractID='0034805112',ReliantCard='" + oReliantCard.getValue() + "')";
-            oMsgArea.addStyleClass("nrgQPPay-hide");
+            oMsgArea.removeStyleClass("nrgQPPay-hide");
+            oMsgArea.addStyleClass("nrgQPPay-black");
             fnRecievedHandler = function (oEvent) {
                 if (oEvent.mParameters.data.Error !== "") {
                     that.getView().getModel("appView").setProperty("/message", oEvent.mParameters.data.Message);
-                    oMsgArea.removeStyleClass("nrgQPPay-hide");
-                    oMsgArea.addStyleClass("nrgQPPay-black");
                 } else {
-                    that.getView().getModel("appView").setProperty("/reliantText", "Redeem");
+                    that.getView().getModel("appView").setProperty("/message", "Success");
                     oReliantButton.addStyleClass("nrgQPPay-hide");
                     oReliantRedeem.removeStyleClass("nrgQPPay-hide");
                 }
@@ -219,6 +278,7 @@ sap.ui.define(
                 events: {dataReceived : fnRecievedHandler}
             });
         };
+
         /**
          * Handler for Declining Reliant Card Payment
 		 *
@@ -228,6 +288,7 @@ sap.ui.define(
         Controller.prototype.onDeclineReliant = function (oEvent) {
 
         };
+
         /**
          * handler for Adding Credit card
 		 *
@@ -237,6 +298,7 @@ sap.ui.define(
         Controller.prototype.onAddCC = function (oEvent) {
 
         };
+
         /**
          * handler for Reliant Card change value
 		 *
@@ -246,6 +308,7 @@ sap.ui.define(
         Controller.prototype.onReliantCardChange = function (oEvent) {
             this.getView().getModel("appView").setProperty("/reliantPay", true);
         };
+
         /**
          * handler for Reliant Card Redeem
 		 *
@@ -258,19 +321,29 @@ sap.ui.define(
                 sCurrentPath,
                 oMsgArea = this.getView().byId("idnrgQPPay-msgArea"),
                 oContext,
-                oReliantCardAmount = this.getView().byId("idnrgQPCC-Amt2");
+                oReliantCardAmount = this.getView().byId("idnrgQPCC-Amt2"),
+                oTBIPaySucc = this.getView().byId("idnrgQPPay-TBIPaySucc"),
+                that = this,
+                oPopup = this.getView().byId("idnrgQPPay-Popup"),
+                oCloseButton = this.getView().byId("idnrgQPPayBt-close");
             oContext = oReliantCardAmount.getBindingContext("comp-quickpay");
             sCurrentPath = "/ReliantSet";
-            oMsgArea.addStyleClass("nrgQPPay-hide");
+            //oMsgArea.addStyleClass("nrgQPPay-hide");
             oModel.create("/ReliantSet", {
                 "ContractID": oContext.getProperty("ContractID"),
                 "ReliantCard": oContext.getProperty("ReliantCard"),
                 "Amount": oContext.getProperty("Amount")
             }, {
                 success : function (oData, oResponse) {
+                    oPopup.removeStyleClass("nrgQPPay-PopupWhite");
+                    oPopup.addStyleClass("nrgQPPay-Popup");
+                    oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
+                    oTBIPaySucc.setSelected(true);
+                    oMsgArea.addStyleClass("nrgQPPay-hide");
                     jQuery.sap.log.info("Create successfull");
                 },
                 error : function (oError) {
+                    that.getView().getModel("appView").setProperty("/message", "Error at backend");
                     jQuery.sap.log.info("Create Failure");
                 }
             });
