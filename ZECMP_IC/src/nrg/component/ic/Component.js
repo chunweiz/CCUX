@@ -16,7 +16,8 @@ sap.ui.define(
         'nrg/base/component/ContextManager'
     ],
 
-    function (jQuery, Component, Popup, ResourceBundleManager, StylesheetManager, IconManager, MockDataManager, RealDataManager, WebUiManager, RouteManager, ContextManager) {
+    function (jQuery, Component, Popup, ResourceBundleManager, StylesheetManager, IconManager,
+        MockDataManager, RealDataManager, WebUiManager, RouteManager, ContextManager) {
         'use strict';
 
         var CustomComponent = Component.extend('nrg.component.ic.Component', {
@@ -25,17 +26,51 @@ sap.ui.define(
             }
         });
 
+        CustomComponent.prototype.getCcuxContextManager = function () {
+            return this._oContextManager;
+        };
+
+        CustomComponent.prototype.getCcuxWebUiManager = function () {
+            return this._oWebUiManager;
+        };
+
+        CustomComponent.prototype.getCcuxRouteManager = function () {
+            return this._oRouteManager;
+        };
+
+        CustomComponent.prototype.getCcuxApp = function () {
+            var oRootViewController = this.getAggregation('rootControl').getController();
+
+            if (oRootViewController) {
+                return oRootViewController.getApp();
+            }
+
+            return null;
+        };
+
         CustomComponent.prototype.init = function () {
             Component.prototype.init.apply(this);
 
-            this._initWebUiConnection();
-            this._initContext();
-            this._initStylesheets();
-            this._initResourceBundles();
-            this._initIcons();
-            this._initRealData();
-            this._initMockData();
-            this._initRouter();
+            //Instantiation sequence should not be important
+            this._oWebUiManager = new WebUiManager(this);
+            this._oContextManager = new ContextManager(this);
+            this._oStylesheetManager = new StylesheetManager(this);
+            this._oResourceBundleManager = new ResourceBundleManager(this);
+            this._oIconManager = new IconManager(this);
+            this._oRealDataManager = new RealDataManager(this);
+            this._oMockDataManager = new MockDataManager(this);
+            this._oRouteManager = new RouteManager(this);
+
+            //Initialization sequence is important due to inter manager dependencies
+            this._oWebUiManager.start();
+            this._oContextManager.init(); //Depending on WebUiManager
+            this._oRealDataManager.addODataModels();
+            this._oMockDataManager.startMockServers();
+            this._oMockDataManager.addMockODataModels();
+            this._oResourceBundleManager.addResourceModels();
+            this._oStylesheetManager.addStylesheets();
+            this._oIconManager.addIcons();
+            this._oRouteManager.init();  //Depending on WebUiManager
         };
 
         CustomComponent.prototype.destroy = function () {
@@ -80,69 +115,6 @@ sap.ui.define(
             }
 
             Component.prototype.destroy.apply(this, arguments);
-        };
-
-        CustomComponent.prototype._initWebUiConnection = function () {
-            this._oWebUiManager = new WebUiManager(this);
-            this._oWebUiManager.start();
-        };
-
-        CustomComponent.prototype._initResourceBundles = function () {
-            this._oResourceBundleManager = new ResourceBundleManager(this);
-            this._oResourceBundleManager.addResourceModels();
-        };
-
-        CustomComponent.prototype._initStylesheets = function () {
-            this._oStylesheetManager = new StylesheetManager(this);
-            this._oStylesheetManager.addStylesheets();
-        };
-
-        CustomComponent.prototype._initIcons = function () {
-            this._oIconManager = new IconManager(this);
-            this._oIconManager.addIcons();
-        };
-
-        CustomComponent.prototype._initMockData = function () {
-            this._oMockDataManager = new MockDataManager(this);
-            this._oMockDataManager.startMockServers();
-            this._oMockDataManager.addMockODataModels();
-        };
-
-        CustomComponent.prototype._initRealData = function () {
-            this._oRealDataManager = new RealDataManager(this);
-            this._oRealDataManager.addODataModels();
-        };
-
-        CustomComponent.prototype._initRouter = function () {
-            this._oRouteManager = new RouteManager(this);
-            this._oRouteManager.init();
-        };
-
-        CustomComponent.prototype._initContext = function () {
-            this._oContextManager = new ContextManager(this);
-            this._oContextManager.init();
-        };
-
-        CustomComponent.prototype.getCcuxContextManager = function () {
-            return this._oContextManager;
-        };
-
-        CustomComponent.prototype.getCcuxWebUiManager = function () {
-            return this._oWebUiManager;
-        };
-
-        CustomComponent.prototype.getCcuxRouteManager = function () {
-            return this._oRouteManager;
-        };
-
-        CustomComponent.prototype.getCcuxApp = function () {
-            var oRootViewController = this.getAggregation('rootControl').getController();
-
-            if (oRootViewController) {
-                return oRootViewController.getApp();
-            }
-
-            return null;
         };
 
         return CustomComponent;
