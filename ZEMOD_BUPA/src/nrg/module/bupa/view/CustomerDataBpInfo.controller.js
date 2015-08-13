@@ -159,7 +159,12 @@ sap.ui.define(
 
         CustomController.prototype.onBackToDashboard = function () {
             var oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo('dashboard.Bp', {bpNum: this._bpNum});
+
+            if (this._coNum) {
+                oRouter.navTo('dashboard.VerificationWithCa', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum});
+            }
         };
 
         CustomController.prototype.onTitleCancel = function () {    //onTitleCancel
@@ -567,13 +572,11 @@ sap.ui.define(
         };
 
         CustomController.prototype._initDataModel = function () {
-            var sPath, aSplitHash, iSplitHashL;
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
 
-            aSplitHash = (this._retrUrlHash()).split('/');
-            iSplitHashL = aSplitHash.length;
-            if (!this._bpNum) {
-                this._bpNum = aSplitHash[iSplitHashL - 1];
-            }
+            this._bpNum = oRouteInfo.parameters.bpNum;
+            this._caNum = oRouteInfo.parameters.caNum;
+            this._coNum = oRouteInfo.parameters.coNum;
 
             this._retrAllData(this._bpNum);
         };

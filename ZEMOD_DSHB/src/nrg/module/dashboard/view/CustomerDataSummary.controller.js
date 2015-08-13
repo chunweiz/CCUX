@@ -293,7 +293,7 @@ sap.ui.define(
                 //sSelectedBpNum = this.getView().getModel('oSmryBpInf').getProperty('/PartnerID');
 
             if (this._coNum) {
-                oRouter.navTo('bupa.bpInfo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+                oRouter.navTo('bupa.bpInfoWithCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
             } else {
                 oRouter.navTo('bupa.bpInfo', {bpNum: this._bpNum, caNum: this._caNum});
             }
@@ -304,7 +304,7 @@ sap.ui.define(
                 //sSelectedBpNum = this.getView().getModel('oSmryBpInf').getProperty('/PartnerID'),
                 //sSelectedCaNum = this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID');
             if (this._coNum) {
-                oRouter.navTo('bupa.bpInfo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+                oRouter.navTo('bupa.bpInfoWithCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
             } else {
                 oRouter.navTo('bupa.bpInfo', {bpNum: this._bpNum, caNum: this._caNum});
             }
