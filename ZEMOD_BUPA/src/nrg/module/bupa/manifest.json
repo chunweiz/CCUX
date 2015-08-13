@@ -31,11 +31,11 @@
         "routing": {
             "routes": {
                 "bupa.bpInfo": {
-                    "pattern": "bupa/bpinfo/bp/{bpNum}/ca/{caNum}",
+                    "pattern": "bupa/bpinfo/bp/{bpNum}/ca/{caNum}/co/{coNum}",
                     "target":["bupa.BupaBpInfo", "dashboard.CustomerDataSummary", "bupa.Tools"]
                 },
                 "bupa.caInfo": {
-                    "pattern": "bupa/cainfo/bp/{bpNum}/ca/{caNum}",
+                    "pattern": "bupa/cainfo/bp/{bpNum}/ca/{caNum}/co/{coNum}",
                     "target":["bupa.BupaCaInfo", "dashboard.CustomerDataSummary", "bupa.Tools"]
                 }
             },
