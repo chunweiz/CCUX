@@ -31,7 +31,8 @@ sap.ui.define(
                 'ute.ui.commons.DropdownBorder',
                 'ute.ui.commons.DropdownBackground',
                 'ute.ui.commons.TextViewDesign',
-                'ute.ui.commons.TextViewColor'
+                'ute.ui.commons.TextViewColor',
+                'ute.ui.commons.TooltipDesign'
             ],
 
 			controls: [
@@ -52,7 +53,8 @@ sap.ui.define(
                 'ute.ui.commons.TableColumn',
                 'ute.ui.commons.TableRow',
                 'ute.ui.commons.Tag',
-                'ute.ui.commons.ScrollContainer'
+                'ute.ui.commons.ScrollContainer',
+                'ute.ui.commons.Tooltip'
 			],
 
 			elements: [],
@@ -139,6 +141,13 @@ sap.ui.define(
             Base : "Base",
             Large: "Large"
         };
+
+        ute.ui.commons.TooltipDesign = {
+            Black: "Black",
+            White : "White"
+        };
+
+
         /**
          * Semantic Colors of a text.
          */

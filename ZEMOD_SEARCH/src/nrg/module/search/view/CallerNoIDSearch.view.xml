@@ -19,18 +19,7 @@
             </ute:Tag>
 
             <ute:Tag class="nrgSearch-calrNoIDSearch-textfield">
-                <!--type:'nrg.util.type.BusinessPartnerNumber'-->
-                <ute:Textfield
-                    value="{
-                        path:'oSearchFilters>/searchTextFields/sBpNum'}"
-                    class="nrgSearch-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-search>nrgSearchClrNid_BpNum}"
-                    change="onTextFieldChange"
-                    label="Title"
-                    width="48%"
-                    maxLength="10">
-                </ute:Textfield>
-
+                
                 <!--type:'nrg.util.type.ContractAccountNumber'-->
                 <ute:Textfield
                     value="{
@@ -66,6 +55,18 @@
                     change="onTextFieldChange"
                     label="Title"
                     width="48%">
+                </ute:Textfield>
+
+                <!--type:'nrg.util.type.BusinessPartnerNumber'-->
+                <ute:Textfield
+                    value="{
+                        path:'oSearchFilters>/searchTextFields/sBpNum'}"
+                    class="nrgSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>nrgSearchClrNid_BpNum}"
+                    change="onTextFieldChange"
+                    label="Title"
+                    width="48%"
+                    maxLength="10">
                 </ute:Textfield>
             </ute:Tag>
 

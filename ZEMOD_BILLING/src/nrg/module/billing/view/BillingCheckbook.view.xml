@@ -63,27 +63,29 @@
                     <ute:Tag elem="span" class="nrgBilling-billChkBook-amountDscrpt1" text="current amount due"/>
                     <ute:Tag elem="span" class="nrgBilling-billChkBook-amountDscrpt2" text="for no service interuption"/>
                     <ute:Tag elem="div" class="nrgBilling-billChkBook-quickRefArea-amountHover">
-                        <ute:tooltip class="nrgBilling-billChkBook-quickRefArea-amount-tooltip">
-                            <c:Callout openDelay="100">
-                                <c:content>
-                                    <ute:Table width="400px">
-                                        <ute:columns>
-                                            <ute:TableColumn>
-                                                <ute:TextView text="Invoice Amount Due"></ute:TextView>
-                                            </ute:TableColumn>
-                                            <ute:TableColumn>
-                                                <ute:TextView text="239.45"></ute:TextView>
-                                            </ute:TableColumn>
-                                        </ute:columns>
-                                        <ute:rows>
-                                            <ute:TableRow>
-                                                <ute:TextView text="dsjfijdsfj.45"></ute:TextView>
-                                                <ute:TextView text="dsjfijdsfj.45"></ute:TextView>
-                                            </ute:TableRow>
-                                        </ute:rows>
-                                    </ute:Table>
-                                </c:content>
-                            </c:Callout>
+                        <ute:tooltip>
+                            <ute:Tooltip openDelay="100" class="nrgBilling-billChkBook-quickRefArea-amount-tooltip">
+                                <ute:Table width="400px">
+                                    <ute:columns>
+                                        <ute:TableColumn>
+                                            <ute:TextView color="White" text="Invoice Amount Due"></ute:TextView>
+                                        </ute:TableColumn>
+                                        <ute:TableColumn>
+                                            <ute:TextView color="White" text="239.45"></ute:TextView>
+                                        </ute:TableColumn>
+                                    </ute:columns>
+                                    <ute:rows>
+                                        <ute:TableRow>
+                                            <ute:TextView color="White" text="dsjfijdsfj.45"></ute:TextView>
+                                            <ute:TextView color="White" text="dsjfijdsfj.45"></ute:TextView>
+                                        </ute:TableRow>
+                                        <ute:TableRow>
+                                            <ute:TextView color="White" text="dsjfijdsfj.45"></ute:TextView>
+                                            <ute:TextView color="White" text="dsjfijdsfj.45"></ute:TextView>
+                                        </ute:TableRow>
+                                    </ute:rows>
+                                </ute:Table>
+                            </ute:Tooltip>
                         </ute:tooltip>
                     </ute:Tag>
                 </ute:Tag>
