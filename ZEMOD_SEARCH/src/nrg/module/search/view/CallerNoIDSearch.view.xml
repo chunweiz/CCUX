@@ -199,7 +199,12 @@
         <ute:Tag class="nrgSearch-calrNoIDSearch-resultTitle"
                  text="{comp-i18n-search>nrgSearchCallerNoIDSearchResultTitle}">
             <ute:Tag elem="span" class="nrgSearch-calrNoIDSearch-resultCount"
+                visible="{oBpSearchCount>/searchCountBelow100}"
                 text="{comp-i18n-search>nrgSearchClrNid_ResultCountStart} {oBpSearchCount>/searchCount} {comp-i18n-search>nrgSearchClrNid_ResultCountEnd}" >
+            </ute:Tag>
+            <ute:Tag elem="span" class="nrgSearch-calrNoIDSearch-resultCount"
+                visible="{oBpSearchCount>/searchCountOver100}"
+                text="{comp-i18n-search>nrgSearchClrNid_ResultCountOver100}" >
             </ute:Tag>
         </ute:Tag>
 

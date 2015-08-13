@@ -44,6 +44,8 @@ sap.ui.define(
         Controller.prototype._initSearchResultModel = function () {
             //Set search result number = 0 first.
             this.getView().getModel('oBpSearchCount').setProperty('/searchCount', 0);
+            this.getView().getModel('oBpSearchCount').setProperty('/searchCountOver100', false);
+            this.getView().getModel('oBpSearchCount').setProperty('/searchCountBelow100', false);
         };
 
         Controller.prototype._initSearchFilterModel = function () {
@@ -262,6 +264,13 @@ sap.ui.define(
                             }
                             this.getView().getModel('oBpSearchResult').setData(oData.results);
                             this.getView().getModel('oBpSearchCount').setProperty('/searchCount', oData.results.length);
+                            if(oData.results.length >= 100) {
+                                this.getView().getModel('oBpSearchCount').setProperty('/searchCountOver100', true);
+                                this.getView().getModel('oBpSearchCount').setProperty('/searchCountBelow100', false);
+                            } else {
+                                this.getView().getModel('oBpSearchCount').setProperty('/searchCountOver100', false);
+                                this.getView().getModel('oBpSearchCount').setProperty('/searchCountBelow100', true);
+                            }
                             oComponent.getCcuxApp().setOccupied(false);
                         }
 
