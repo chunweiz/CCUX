@@ -18,6 +18,18 @@ sap.ui.define(
             //var test = new HashChanger();
             //var testagian= test.getHash();
 
+
+            // Fire search function when detect user hit the enter key in the search textfields
+            sap.ui.getCore().attachControlEvent(function (oEvent) {
+                var capturedEvent = oEvent.getParameter('browserEvent');
+                
+                if(capturedEvent.type === "keydown" && capturedEvent.keyCode === 13) {
+                    if(capturedEvent.srcControl.aCustomStyleClasses == "nrgSearch-calrNoIDSearch-textfield-input") {
+                        this.onSearch();
+                    }
+                }                 
+            }.bind(this));  
+
             this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
             /*Models in the controller*/
 
@@ -71,13 +83,14 @@ sap.ui.define(
             this.getView().getModel('oSearchFilters').setProperty('/searchTextFields', oFilters);
         };
 
+        Controller.prototype.onTextFieldChange = function() {
+
+        };
 
         Controller.prototype.onSearch = function () {
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._searchBP('/BpSearchs', this._createSearchParameters());
         };
-
-        Controller.prototype.onTextFieldChange = Controller.prototype.onSearch;
 
         Controller.prototype._createSearchFilterObject = function () {
             //var test = this.getView().byId('idSearchBp');
