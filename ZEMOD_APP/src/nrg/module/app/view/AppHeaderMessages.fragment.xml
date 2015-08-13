@@ -7,12 +7,7 @@
     <ua:HeaderSubmenu>
         <div class="uteAppHdrSMenu-wrap">
             <sm:ScrollContainer height="200px" width="100%" vertical="true" content="{view-message>/}" >
-                <ua:Tag>
-                    <core:Icon src="sap-icon://nrg-icon/notification" />
-                    <ua:Text text="{view-message>type}" />
-                    <ua:Text text="{view-message>description}" />
-                    <ua:Text text="{view-message>title}" />
-                </ua:Tag>
+                <ua:Message design="{view-message>type}" text="{view-message>description}" />
             </sm:ScrollContainer>
         </div>
     </ua:HeaderSubmenu>
