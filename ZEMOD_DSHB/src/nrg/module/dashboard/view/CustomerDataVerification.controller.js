@@ -438,7 +438,7 @@ sap.ui.define(
             oComponent.getCcuxApp().setOccupied(false);
 
             //Navigate to verification page
-            oRouter.navTo('dashboard.CaInfo', {bpNum: oRouteInfo.BP_NUM, caNum: oRouteInfo.CA_NUM});
+            oRouter.navTo('bupa.caInfo', {bpNum: oRouteInfo.BP_NUM, caNum: sCurrentCa, coNum: sCurrentCo});
         };
 
         Controller.prototype._handleUnConfirm = function () {
