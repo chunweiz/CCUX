@@ -53,11 +53,7 @@ sap.ui.define(
             var oContextModel = this._oComponent.getModel('_comp-context');
 
             if (!oContextModel || !(oContextModel instanceof JSONModel)) {
-                oContextModel = new JSONModel({
-                    bpNum: null,
-                    caNum: null,
-                    coNum: null
-                });
+                oContextModel = new JSONModel({});
                 this._oComponent.setModel(oContextModel, '_comp-context');
             }
 
@@ -67,11 +63,7 @@ sap.ui.define(
         Manager.prototype.resetContext = function () {
             var oModel = this.getContext();
 
-            oModel.setData({
-                bpNum: null,
-                caNum: null,
-                coNum: null
-            });
+            oModel.setData({});
 
             return this;
         };

@@ -77,7 +77,7 @@ sap.ui.define(
             }
 
             oWebUiManager = this._oComponent.getCcuxWebUiManager();
-            if (oWebUiManager && oWebUiManager.isAvailable()) {
+            if (oWebUiManager.isAvailable()) {
                 oWebUiManager.notifyWebUi('resetTimeOut');
             }
         };

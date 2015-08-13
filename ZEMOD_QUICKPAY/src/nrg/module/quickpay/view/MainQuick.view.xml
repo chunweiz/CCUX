@@ -60,6 +60,16 @@
                 <um:TabPanelItem key="AddBD" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
                         <core:Fragment fragmentName="nrg.module.quickpay.view.AddBankDraft" type="XML" />
                 </um:TabPanelItem>
+                <um:TabPanelItem key="dummy" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
+                    <um:Dropdown>
+                        <um:DropdownItem key="1" class="nrgQPCC-DdLItem" id="idnrgQPCC-DDLItem">
+                            <u:Tag class="nrgQPCC-DDI">
+                                <core:Icon src="sap-icon://nrg-icon/cc-visa" class="nrgQPCC-icon" />
+                                <u:Tag text="{comp-creditcard>CardNumber}" class="nrgQPCC-DdlValue"/>
+                            </u:Tag>
+                        </um:DropdownItem>
+                    </um:Dropdown>
+                </um:TabPanelItem>
                 <um:TabPanelItem key="PaySucc" class="nrgQPPay-tabPanelItem nrgQPPay-tabIcon">
                     <u:Tag>
                           <um:Button press=".onPopupClose"
