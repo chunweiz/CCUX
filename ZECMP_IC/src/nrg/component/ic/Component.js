@@ -13,11 +13,12 @@ sap.ui.define(
         'nrg/base/component/RealDataManager',
         'nrg/base/component/WebUiManager',
         'nrg/base/component/RouteManager',
-        'nrg/base/component/ContextManager'
+        'nrg/base/component/ContextManager',
+        'nrg/base/component/NotificationManager'
     ],
 
     function (jQuery, Component, Popup, ResourceBundleManager, StylesheetManager, IconManager,
-        MockDataManager, RealDataManager, WebUiManager, RouteManager, ContextManager) {
+        MockDataManager, RealDataManager, WebUiManager, RouteManager, ContextManager, NotificationManager) {
         'use strict';
 
         var CustomComponent = Component.extend('nrg.component.ic.Component', {
@@ -25,6 +26,10 @@ sap.ui.define(
                 manifest: 'json'
             }
         });
+
+        CustomComponent.prototype.getCcuxNotificationManager = function () {
+            return this._oNotificationManager;
+        };
 
         CustomComponent.prototype.getCcuxContextManager = function () {
             return this._oContextManager;
@@ -60,10 +65,12 @@ sap.ui.define(
             this._oRealDataManager = new RealDataManager(this);
             this._oMockDataManager = new MockDataManager(this);
             this._oRouteManager = new RouteManager(this);
+            this._oNotificationManager = new NotificationManager(this);
 
             //Initialization sequence is important due to inter manager dependencies
             this._oWebUiManager.start();
             this._oContextManager.init(); //Depending on WebUiManager
+            this._oNotificationManager.init();
             this._oRealDataManager.addODataModels();
             this._oMockDataManager.startMockServers();
             this._oMockDataManager.addMockODataModels();
