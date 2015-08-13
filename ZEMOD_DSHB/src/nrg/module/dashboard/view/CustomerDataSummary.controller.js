@@ -183,6 +183,7 @@ sap.ui.define(
                     if (oData) {
                         this.getView().getModel('oSmryBuagInf').setData(oData.results[0]);
                         this._initRetrAssignedAccount(this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID'));
+                        this._caNum = this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID');
                     }
                 }.bind(this),
                 error: function (oError) {

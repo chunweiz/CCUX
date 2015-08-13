@@ -14,7 +14,7 @@
                  text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-BUSINESS_PARTNER} #{oDataBP>/PartnerID}" />
 
         <ute:Tag elem="span" class="nrgBupa-cusDataBpInfo-r-btn">
-            <utmain:Button design="None" class="nrgBupa-cusDataBpInfo-CommBtn" press="onBackToBupa">
+            <utmain:Button design="None" class="nrgBupa-cusDataBpInfo-CommBtn" press="onBackToDashboard">
                 <core:Icon src="sap-icon://slim-arrow-left" class="nrgBupa-cusDataBpInfo-Icon" />
                 <ute:Tag elem="span" class="nrgBupa-cusDataBpInfo-btn-text"
                          text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-BACK}" />
