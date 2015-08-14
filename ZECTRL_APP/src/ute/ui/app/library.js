@@ -71,13 +71,7 @@ sap.ui.define(
             Inline: 'Inline'
         };
 
-        ute.ui.app.MessageDesign = {
-            None: 'None',
-            Error: 'Error',
-            Information: 'Information',
-            Success: 'Success',
-            Warning: 'Warning'
-        };
+        ute.ui.app.MessageDesign = sap.ui.core.MessageType;
 
         return ute.ui.app;
     },

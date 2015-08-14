@@ -15,7 +15,7 @@ sap.ui.define(
             oRm.writeControlData(oCustomControl);
 
             oRm.addClass('uteAppMsg');
-            if (oCustomControl.getDesign() !== ute.ui.main.MessageDesign.None) {
+            if (oCustomControl.getDesign() !== ute.ui.app.MessageDesign.None) {
                 oRm.addClass('uteAppMsg-design-' + oCustomControl.getDesign().toLowerCase());
             }
 
@@ -29,16 +29,9 @@ sap.ui.define(
         };
 
         CustomRenderer._renderIcon = function (oRm, oCustomControl) {
-            oRm.write('<span');
-            oRm.addClass('uteAppMsg-icon');
-            oRm.writeClasses();
-            oRm.write('>');
-
-            oRm.renderControl(new Icon({
-                src: oCustomControl.getIcon()
-            }));
-
-            oRm.write('</span>');
+            oRm.writeIcon(oCustomControl.getIcon(), 'uteAppMsg-icon', {
+                'title': null
+            });
         };
 
         CustomRenderer._renderText = function (oRm, oCustomControl) {

@@ -64,33 +64,36 @@ sap.ui.define(
         };
 
         CustomController.prototype.onAddMessage = function (oControlEvent) {
-            var oMessageManager, oMessage;
+            var oNotificationManager = this.getOwnerComponent().getCcuxNotificationManager();
 
-            oMessageManager = sap.ui.getCore().getMessageManager();
-
-            oMessageManager.addMessages(new Message({
-                message: 'This is a custom error message',
+            oNotificationManager.addHeaderMessage(new Message({
+                message: 'this is a new message',
+                description: 'this is a new description',
                 type: sap.ui.core.MessageType.Error
             }));
 
-            oMessageManager.addMessages(new Message({
-                message: 'This is a custom error message',
+            oNotificationManager.addHeaderMessage(new Message({
+                message: 'this is a new message',
+                description: 'this is a new description',
+                type: sap.ui.core.MessageType.Warning
+            }));
+
+            oNotificationManager.addHeaderMessage(new Message({
+                message: 'this is a new message',
+                description: 'this is a new description',
                 type: sap.ui.core.MessageType.Information
             }));
 
-            oMessageManager.addMessages(new Message({
-                message: 'This is a custom error message',
+            oNotificationManager.addHeaderMessage(new Message({
+                message: 'this is a new message',
+                description: 'this is a new description',
                 type: sap.ui.core.MessageType.None
             }));
 
-            oMessageManager.addMessages(new Message({
-                message: 'This is a custom error message',
+            oNotificationManager.addHeaderMessage(new Message({
+                message: 'this is a new message',
+                description: 'this is a new description',
                 type: sap.ui.core.MessageType.Success
-            }));
-
-            oMessageManager.addMessages(new Message({
-                message: 'This is a custom error message',
-                type: sap.ui.core.MessageType.Warning
             }));
         };
 
