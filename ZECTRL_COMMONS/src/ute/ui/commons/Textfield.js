@@ -43,8 +43,9 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                         /*The new / changed value of the textfield.*/
                         newValue : {type : "string"}
                     }
-                }
-                
+                },
+                // Fired when the enter key got clicked 
+                enterKeyPress : {}
             }
         }
             });
@@ -62,6 +63,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
             oEvent.stopPropagation();
 
             this._checkChange(oEvent);
+            this.fireEnterKeyPress(oEvent);
         };
 
         Textfield.prototype._checkChange = function (oEvent) {
