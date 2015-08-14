@@ -12,7 +12,7 @@
     xmlns:m="sap.m"
     controllerName="nrg.module.billing.view.BillingCheckbook">
 
-    <ute:Tag class="nrgAppMain-generalContent nrgBilling-billChkBook">
+    <ute:Tag class="nrgAppMain-generalContent nrgBilling-blChkBk">
         <!-- Left -->
         <ute:Tag class="nrgBilling-billChkBook-left">
             <ute:Tag elem="span" class="nrgBilling-billChkBook-pageTitle" text="{comp-i18n-billing>nrgBilling-billChkBook-PAGE_TITLE}" />

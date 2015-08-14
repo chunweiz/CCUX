@@ -36,7 +36,7 @@
                 },
 
                 "search.SearchNoIDREBS": {
-                    "pattern": "search/SearchNoID",
+                    "pattern": "search/SearchNoIDREBS",
                     "target": [ "search.CallerNoIDSearchREBS", "search.CallerNoIDEnrollment", "search.EmptyTools" ]
                 }
             },
