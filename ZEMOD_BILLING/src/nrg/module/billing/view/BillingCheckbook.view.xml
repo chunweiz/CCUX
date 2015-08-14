@@ -36,7 +36,13 @@
                     </ute:Tag>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl">
-                    <ute:Tag text="test"/>
+                    <ute:Tag class="nrgBilling-billChkBook-quickRefArea-amount">
+                        <ute:Tag elem="span" class="nrgBilling-billChkBook-amountNum" text="$380.87"/>
+                        <ute:Tag elem="sapn" class="nrgBilling-billChkBook-amountAsterisk" text="*"/>
+                        <ute:Tag elem="span" class="nrgBilling-billChkBook-amountDscrpt1" text="current amount due"/>
+                        <ute:Tag elem="span" class="nrgBilling-billChkBook-amountDscrpt2" text="for no service interuption"/>
+                    </ute:Tag>
+
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght">
                     <ute:Tag text="test"/>
