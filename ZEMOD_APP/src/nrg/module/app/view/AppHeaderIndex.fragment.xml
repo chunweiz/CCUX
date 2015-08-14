@@ -1,7 +1,6 @@
 <core:FragmentDefinition
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ua="ute.ui.app"
-    xmlns:sm="sap.m"
     xmlns:core="sap.ui.core">
 
     <ua:HeaderSubmenu class="nrgAppHdrIdx">

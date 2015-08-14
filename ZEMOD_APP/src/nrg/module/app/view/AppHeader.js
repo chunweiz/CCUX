@@ -63,6 +63,7 @@ sap.ui.define(
         AppHeader.prototype.reset = function () {
             this._resetAllHMItemState();
             this._closeAllSubmenus();
+            this._clearHeaderMessages();
         };
 
         AppHeader.prototype.setEnabled = function (bEnabled, sHMItemId) {
@@ -243,6 +244,10 @@ sap.ui.define(
             return this;
         };
 
+        AppHeader.prototype._clearHeaderMessages = function () {
+            var oNotifManager = this._oController.getOwnerComponent().getCcuxNotificationManager();
+            oNotifManager.clearHeaderMessages();
+        };
 
         return AppHeader;
     }

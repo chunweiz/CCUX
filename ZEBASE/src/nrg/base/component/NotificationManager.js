@@ -20,7 +20,7 @@ sap.ui.define(
                 publicMethods: [
                     'getHeaderMessageProcessor',
                     'addHeaderMessage',
-                    'clearHeaderMessage'
+                    'clearHeaderMessages'
                 ]
             }
         });

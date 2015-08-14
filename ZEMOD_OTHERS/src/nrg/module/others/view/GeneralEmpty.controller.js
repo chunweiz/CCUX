@@ -67,31 +67,21 @@ sap.ui.define(
             var oNotificationManager = this.getOwnerComponent().getCcuxNotificationManager();
 
             oNotificationManager.addHeaderMessage(new Message({
-                message: 'this is a new message',
                 description: 'this is a new description',
                 type: sap.ui.core.MessageType.Error
             }));
 
             oNotificationManager.addHeaderMessage(new Message({
-                message: 'this is a new message',
                 description: 'this is a new description',
                 type: sap.ui.core.MessageType.Warning
             }));
 
             oNotificationManager.addHeaderMessage(new Message({
-                message: 'this is a new message',
                 description: 'this is a new description',
                 type: sap.ui.core.MessageType.Information
             }));
 
             oNotificationManager.addHeaderMessage(new Message({
-                message: 'this is a new message',
-                description: 'this is a new description',
-                type: sap.ui.core.MessageType.None
-            }));
-
-            oNotificationManager.addHeaderMessage(new Message({
-                message: 'this is a new message',
                 description: 'this is a new description',
                 type: sap.ui.core.MessageType.Success
             }));
