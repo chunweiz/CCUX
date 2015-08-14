@@ -14,8 +14,7 @@ sap.ui.define(
 
                 properties: {
                     design: { type: 'ute.ui.app.MessageDesign', defaultValue: ute.ui.app.MessageDesign.None },
-                    text: { type: 'string', defaultValue: null },
-                    icon: { type: 'sap.ui.core.URI', defaultValue: 'sap-icon://nrg-icon/notification' }
+                    text: { type: 'string', defaultValue: null }
                 }
             }
         });
