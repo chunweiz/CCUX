@@ -14,13 +14,43 @@
 
     <ute:Tag class="nrgAppMain-generalContent nrgBilling-blChkBk">
         <!-- Left -->
-        <ute:Tag class="nrgBilling-billChkBook-left">
-            <ute:Tag elem="span" class="nrgBilling-billChkBook-pageTitle" text="{comp-i18n-billing>nrgBilling-billChkBook-PAGE_TITLE}" />
-            <ute:Tag elem="div" class="clearfix">
-                <ute:HorizontalDivider width="16%" class="nrgBilling-billChkBook-horiLine"/>
+        <ute:Tag class="nrgBilling-blChkBk-lftDiv">
+            <ute:Tag class="nrgBilling-blChkBk-lftDiv-pageTitle">
+                <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-pageTitleSpan"
+                         text="{comp-i18n-billing>nrgBilling-billChkBook-PAGE_TITLE}" />
             </ute:Tag>
+
+            <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea">
+                <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft">
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-ctnt">
+                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-lbl"
+                                 text="Start Date:"/>
+                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-val"
+                                 text="06/09/14"/>
+                        </ute:Tag>
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-ctnt">
+                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-lbl"
+                                 text="End Date:"/>
+                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-val"
+                                 text="08/09/15"/>
+                    </ute:Tag>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl">
+                    <ute:Tag text="test"/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght">
+                    <ute:Tag text="test"/>
+                </ute:Tag>
+            </ute:Tag>
+
+            <ute:ScrollContainer class="nrgBilling-blChkBk-lftDiv-scrllArea" height="686px" horizontal="false" vertical="true">
+
+            </ute:ScrollContainer>
             <!-- Quick Reference Area -->
-            <ute:Tag elem="div" class="nrgBilling-billChkBook-quickRefArea">
+
+
+
+            <ute:Tag class="nrgBilling-billChkBook-quickRefArea">
                 <ute:Tag elem="div" class="nrgBilling-billChkBook-quickRefArea-date">
                     <ute:Tag elem="div" class="nrgBilling-billChkBook-quickRefArea-dateWrap">
                         <l:MatrixLayout
@@ -97,14 +127,14 @@
                 </ute:Tag>
             </ute:Tag>
             <!-- Main Content Body -->
-            <ute:ScrollContainer class="nrgBilling-billChkBook-mainContent" height="380px" horizontal="false" vertical="true">
+            <!--<ute:ScrollContainer class="nrgBilling-billChkBook-mainContent" height="380px" horizontal="false" vertical="true">
                 <ute:Tag elem="div" class="test"/>
                 <ute:Tag elem="div" class="test2"/>
-            </ute:ScrollContainer>
+            </ute:ScrollContainer>-->
         </ute:Tag>
 
         <!-- Right -->
-        <ute:Tag class="nrgBilling-billChkBook-right">
+        <ute:Tag class="nrgBilling-blChkBk-rghtDiv">
 
         </ute:Tag>
     </ute:Tag>
