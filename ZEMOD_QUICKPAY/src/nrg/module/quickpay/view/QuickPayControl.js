@@ -63,13 +63,13 @@ sap.ui.define(
             });
             this.addContent(oQuickPayView);
             oQuickPayView.addStyleClass("nrgQPPay-View");
-            this._oPaymentPopup.setInitialFocusId(this.getId());
             that.getView().addDependent(this);
             if (this._oPaymentPopup.isOpen()) {
                 //this._oPaymentPopup.setContent(oQuickPayView);
                 return this;
             }
             this._oPaymentPopup.setContent(this);
+            this._oPaymentPopup.setInitialFocusId(oQuickPayView.getId("idnrgQPPay-Popup"));
             this._oPaymentPopup.open();
             return this;
         };

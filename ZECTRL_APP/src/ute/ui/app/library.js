@@ -41,7 +41,8 @@ sap.ui.define(
                 'ute.ui.app.IndexWorkCenter',
                 'ute.ui.app.IndexGroupLink',
                 'ute.ui.app.IndexLink',
-                'ute.ui.app.Message'
+                'ute.ui.app.Message',
+                'ute.ui.app.MessageContainer'
             ],
 
             elements: [],
@@ -71,13 +72,7 @@ sap.ui.define(
             Inline: 'Inline'
         };
 
-        ute.ui.app.MessageDesign = {
-            None: 'None',
-            Error: 'Error',
-            Information: 'Information',
-            Success: 'Success',
-            Warning: 'Warning'
-        };
+        ute.ui.app.MessageDesign = sap.ui.core.MessageType;
 
         return ute.ui.app;
     },

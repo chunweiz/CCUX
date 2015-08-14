@@ -110,18 +110,67 @@ sap.ui.define(
         };
 
         /**
-		 * Event function for Decline Campaign
+		 * Event Handler function for Disposition Reason selected
 		 *
 		 * @function
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
-        Controller.prototype.onDeclineCampaign = function (oEvent) {
-            var sPath;
+        Controller.prototype.onDisposition = function (oEvent) {
+            var sPath,
+                mParameters,
+                oContext,
+                oModel = this.getOwnerComponent().getModel('comp-campaign'),
+                sBrand,
+                sCampaignCode,
+                sCA,
+                sOfferCode,
+                sDispoCode,
+                sPromoRank,
+                sContract,
+                sType,
+                sPromo,
+                that = this;
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
-            this.getView().bindElement({
-                model : "comp-campaign",
-                path : sPath
-            });
+            oContext = oModel.getContext(sPath);
+            sCampaignCode = oContext.getProperty("Campaign");
+            sBrand = oContext.getProperty("Brand");
+            sOfferCode = oContext.getProperty("OfferCode");
+            sCA = "";
+            sPromo = oContext.getProperty("Promo");
+            sDispoCode = oEvent.mParameters.selectedKey;
+            sPromoRank = oContext.getProperty("PromoRank");
+            sContract = oContext.getProperty("Contract");
+            sType = oContext.getProperty("Type");
+            mParameters = {
+                method : "POST",
+                urlParameters : {"Brand" : sBrand,
+                                         "CA" : sCA,
+                                        "CampaignCode" : sCampaignCode,
+                                        "Contract" : sContract,
+                                        "DispoCode" : sDispoCode,
+                                        "OfferCode" : sOfferCode,
+                                        "PromoCode" : sPromo,
+                                        "PromoRank" : sPromoRank,
+                                        "Type" : sType},
+                success : function (oData) {
+                    if ((oData !== undefined) && (oData.Code === "S")) {
+                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                        sap.ui.commons.MessageBox.alert("Disposition process is completed");
+                        this.navTo("campaign", {bpNum: that._sBP, caNum: that._sCA, coNum : that._sContract, typeV : "C"});
+                    } else {
+                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                        sap.ui.commons.MessageBox.alert("Disposition process is Failed");
+                        this.navTo("campaignoffers", {bpNum: that._sBP, caNum: that._sCA, coNum: that._sContract});
+                    }
+                    jQuery.sap.log.info("Odata Read Successfully:::" + oData.Code);
+                }.bind(this),
+                error: function (oError) {
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    sap.ui.commons.MessageBox.alert("Disposition process is Failed");
+                }.bind(this)
+            };
+            oModel.callFunction("/RejectCampaign", mParameters); // callback function for error
         };
 
         /**

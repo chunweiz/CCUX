@@ -39,16 +39,15 @@ sap.ui.define(
         };
 
         Manager.prototype.addHeaderMessage = function (oMsg) {
-            if (oMsg instanceof Message) {
-                this._getMessageManager.addMessages(oMsg);
-
-            } else if (typeof oMsg === 'object') {
-                if (!oMsg.processor) {
-                    oMsg.processor = this._getHeaderMessageProcessor();
-                }
-
-                this._getMessageManager.addMessages(new Message(oMsg));
+            if (!oMsg) {
+                return this;
             }
+
+            if (!oMsg.getMessageProcessor()) {
+                oMsg.setMessageProcessor(this.getHeaderMessageProcessor());
+            }
+
+            this._getMessageManager().addMessages(oMsg);
 
             return this;
         };
