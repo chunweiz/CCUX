@@ -22,16 +22,18 @@ sap.ui.define(
             oRm.writeClasses();
             oRm.write('>');
 
-            this._renderIcon(oRm, oCustomControl);
             this._renderText(oRm, oCustomControl);
 
             oRm.write('</div>');
         };
 
         CustomRenderer._renderIcon = function (oRm, oCustomControl) {
-            oRm.writeIcon(oCustomControl.getIcon(), 'uteAppMsg-icon', {
-                'title': null
-            });
+            oRm.write('<span');
+            oRm.addClass('uteAppMsg-icon');
+            oRm.writeClasses();
+            oRm.write('>');
+            oRm.writeIcon(oCustomControl.getIcon());
+            oRm.write('</span>');
         };
 
         CustomRenderer._renderText = function (oRm, oCustomControl) {

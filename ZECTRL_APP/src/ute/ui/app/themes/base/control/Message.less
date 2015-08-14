@@ -1,51 +1,58 @@
 .uteAppMsg {
-
     & .uteAppMsg-icon {
-
+        color: @uteColor-white;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        vertical-align: middle;
     }
 
     & .uteAppMsg-text {
-
+        display: inline-block;
+        position: relative;
+        color: @uteColor-white;
+        padding: 5px;
+        width: 100%;
+        cursor: default;
     }
-
 }
 
 .uteAppMsg-design-error {
-    .uteAppMsg-icon {
-        color: @uteColor-red-alert;
+    & .uteAppMsg-text {
+        border-left: 5px solid @uteColor-red-alert;
     }
 
-    .uteAppMsg-text {
-        color: @uteColor-red-alert;
+    &:hover {
+        background-color: @uteColor-red-alert;
     }
 }
 
 .uteAppMsg-design-information {
-    .uteAppMsg-icon {
-        color: @uteColor-grey-light;
+    & .uteAppMsg-text {
+        border-left: 5px solid @uteColor-grey-semiDark;
     }
 
-    .uteAppMsg-text {
-        color: @uteColor-grey-light;
+    &:hover {
+        background-color: @uteColor-grey-semiDark;
     }
 }
 
 .uteAppMsg-design-success {
-    .uteAppMsg-icon {
-        color: @uteColor-green-highlight;
+    & .uteAppMsg-text {
+        border-left: 5px solid @uteColor-green-highlight;
     }
 
-    .uteAppMsg-text {
-        color: @uteColor-green-highlight;
+    &:hover {
+        background-color: @uteColor-green-highlight;
     }
 }
 
 .uteAppMsg-design-warning {
-    .uteAppMsg-icon {
-        color: @uteColor-orange-attention;
+    & .uteAppMsg-text {
+        border-left: 5px solid @uteColor-orange-attention;
     }
 
-    .uteAppMsg-text {
-        color: @uteColor-orange-attention;
+    &:hover {
+        background-color: @uteColor-orange-attention;
     }
 }
