@@ -28,6 +28,7 @@
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_CaNumPh}"
                     change="onTextFieldChange"
+                    enterKeyPress="onEnterKeyPress"
                     label="Title"
                     width="48%"
                     maxLength="12">
@@ -41,6 +42,7 @@
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_Ssn}"
                     change="onTextFieldChange"
+                    enterKeyPress="onEnterKeyPress"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
@@ -53,6 +55,7 @@
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_Dl}"
                     change="onTextFieldChange"
+                    enterKeyPress="onEnterKeyPress"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
@@ -64,6 +67,7 @@
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_BpNum}"
                     change="onTextFieldChange"
+                    enterKeyPress="onEnterKeyPress"
                     label="Title"
                     width="48%"
                     maxLength="10">
@@ -79,6 +83,7 @@
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_Esid}"
                     change="onTextFieldChange"
+                    enterKeyPress="onEnterKeyPress"
                     width="48%">
                 </ute:Textfield>
 
@@ -89,6 +94,7 @@
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_PhnNum}"
                     change="onTextFieldChange"
+                    enterKeyPress="onEnterKeyPress"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
@@ -100,6 +106,7 @@
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_FiName}"
                     change="onTextFieldChange"
+                    enterKeyPress="onEnterKeyPress"
                     width="48%">
                 </ute:Textfield>
 
@@ -110,6 +117,7 @@
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_LaName}"
                     change="onTextFieldChange"
+                    enterKeyPress="onEnterKeyPress"
                     width="48%">
                 </ute:Textfield>
 
@@ -120,6 +128,7 @@
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_TaxID}"
                     change="onTextFieldChange"
+                    enterKeyPress="onEnterKeyPress"
                     width="48%">
                 </ute:Textfield>
             </ute:Tag>
@@ -132,6 +141,7 @@
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_HouseNum}"
                     change="onTextFieldChange"
+                    enterKeyPress="onEnterKeyPress"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
@@ -141,6 +151,7 @@
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_Street}"
                     change="onTextFieldChange"
+                    enterKeyPress="onEnterKeyPress"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
@@ -150,6 +161,7 @@
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_UnitNum}"
                     change="onTextFieldChange"
+                    enterKeyPress="onEnterKeyPress"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
@@ -159,6 +171,7 @@
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_City}"
                     change="onTextFieldChange"
+                    enterKeyPress="onEnterKeyPress"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
@@ -168,6 +181,7 @@
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_State}"
                     change="onTextFieldChange"
+                    enterKeyPress="onEnterKeyPress"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
@@ -177,6 +191,7 @@
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_ZipCode}"
                     change="onTextFieldChange"
+                    enterKeyPress="onEnterKeyPress"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
