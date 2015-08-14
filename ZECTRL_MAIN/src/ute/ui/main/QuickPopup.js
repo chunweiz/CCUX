@@ -11,13 +11,28 @@ sap.ui.define(
 
         var CustomControl = {};
 
-        CustomControl.Alert = function () {
-
+        CustomControl.Action = {
+            Yes: 'Yes',
+            No: 'No',
+            Ok: 'Ok',
+            Cancel: 'Cancel'
         };
 
-        CustomControl.Confirm = function () {
+        (function () {
+            var oDialog = ute.ui.main.Popup.create({
+                title: 'title',
+                text: '',
+                close: fnOnClose
+            });
 
-        };
+            CustomControl.Alert = function (mConfig) {
+
+            };
+
+            CustomControl.Confirm = function (mConfig) {
+
+            };
+        }());
 
         return CustomControl;
     },
