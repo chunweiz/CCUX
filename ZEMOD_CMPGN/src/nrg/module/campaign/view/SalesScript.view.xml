@@ -62,7 +62,7 @@
                 </u:Button>
                 <um:Dropdown id="dd001"
                              content="{comp-campaign>/RejectRsnS}"
-                             selectedKey="2" select=".onRejectionReason"
+                             selectedKey="2" select=".onDisposition"
                              placeholder="Non-Disposition Reason"
                              class="nrgCamSSRr-DdL nrgCamSS-left">
                     <um:DropdownItem key="{comp-campaign>RejectionCode}" class="nrgCamSSRr-DdLItem">
