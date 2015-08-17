@@ -15,8 +15,6 @@ sap.ui.define(
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.quickpay.view.MainQuick');
-
-
 		/* =========================================================== */
 		/* lifecycle method- Init                                      */
 		/* =========================================================== */
@@ -89,6 +87,7 @@ sap.ui.define(
             };
             oDropDown.attachEvent("DropDownClicked", dropDownHandler);
         };
+
        /**
 		 * Assign the filter objects based on the input selection
 		 *
@@ -106,6 +105,7 @@ sap.ui.define(
             }
             return aFilters;
         };
+
         /**
 		 * Credit Card Process initialization
 		 *
@@ -328,8 +328,7 @@ sap.ui.define(
                 oCloseButton = this.getView().byId("idnrgQPPayBt-close");
             oContext = oReliantCardAmount.getBindingContext("comp-quickpay");
             sCurrentPath = "/ReliantSet";
-            //oMsgArea.addStyleClass("nrgQPPay-hide");
-            oModel.create("/ReliantSet", {
+            oModel.create(sCurrentPath, {
                 "ContractID": oContext.getProperty("ContractID"),
                 "ReliantCard": oContext.getProperty("ReliantCard"),
                 "Amount": oContext.getProperty("Amount")
