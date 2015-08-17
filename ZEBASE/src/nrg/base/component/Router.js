@@ -17,7 +17,7 @@ sap.ui.define(
         });
 
         CustomRouter.prototype.navTo = function (sName, oParameters, bReplace) {
-            var oCcuxApp, fnConfirmCallback;
+            var oCcuxApp, fnConfirmCallback, mConfirmParam, oAppRbModel;
 
             oCcuxApp = this._oComponent.getCcuxApp();
 
@@ -29,11 +29,19 @@ sap.ui.define(
                     }
                 };
 
-                ute.ui.main.Popup.Confirm({
-                    title: 'Possible Data Loss',
-                    message: 'There might be unsaved changes. Do you really want to navigate away?',
-                    callback: fnConfirmCallback
-                });
+                mConfirmParam = {};
+                mConfirmParam.callback = fnConfirmCallback;
+
+                oAppRbModel = this._oComponent.getModel('comp-i18n-app');
+                if (oAppRbModel) {
+                    mConfirmParam.title = oAppRbModel.getProperty('nrgAppNavDataLossTitle');
+                    mConfirmParam.message = oAppRbModel.getProperty('nrgAppNavDataLossMsg');
+                } else {
+                    mConfirmParam.title = 'Possible Data Loss';
+                    mConfirmParam.message = 'There might be unsaved changes. Do you really want to navigate away?';
+                }
+
+                ute.ui.main.Popup.Confirm(mConfirmParam);
 
             } else {
                 Router.prototype.navTo.apply(this, arguments);

@@ -159,7 +159,7 @@ sap.ui.define(
         };
 
         CustomController.prototype._onRefreshPress = function (oControlEvent) {
-            var oWebUiManager, oRouter, oRouteManager, oCurrRouteInfo, fnConfirmCallback;
+            var oWebUiManager, oRouter, oRouteManager, oCurrRouteInfo, fnConfirmCallback, oAppRbModel;
 
             oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
             oRouteManager = this.getOwnerComponent().getCcuxRouteManager();
@@ -188,9 +188,11 @@ sap.ui.define(
                     }
                 }.bind(this);
 
+                oAppRbModel = this.getOwnerComponent().getModel('comp-i18n-app');
+
                 ute.ui.main.Popup.Confirm({
-                    title: 'Possible Data Loss',
-                    message: 'There might be unsaved changes. Do you really want to refresh the page?',
+                    title: oAppRbModel.getProperty('nrgAppRefreshDataLossTitle'),
+                    message: oAppRbModel.getProperty('nrgAppRefreshDataLossMsg'),
                     callback: fnConfirmCallback
                 });
 
@@ -198,7 +200,7 @@ sap.ui.define(
                 if (oWebUiManager.isAvailable()) {
                     oWebUiManager.notifyWebUi('refresh');
                 }
-                
+
                 oCurrRouteInfo = oRouteManager.getCurrentRouteInfo();
                 oRouter.navTo('app.refresh');
                 oRouter.navTo(oCurrRouteInfo.name, oCurrRouteInfo.parameters);
@@ -214,7 +216,12 @@ sap.ui.define(
             );
 
             this._oApp.setOccupied(true);
-            oWebUiManager.notifyWebUi('clearAccount', {}, this._onClearAccPressCallback, this);
+
+            if (oWebUiManager.isAvailable()) {
+                oWebUiManager.notifyWebUi('clearAccount', {}, this._onClearAccPressCallback, this);
+            } else {
+                this._onClearAccPressCallback();
+            }
         };
 
         CustomController.prototype._onClearAccPressCallback = function (oEvent) {
@@ -225,7 +232,7 @@ sap.ui.define(
             oRouter = this.getOwnerComponent().getRouter();
 
             oRouter.navTo('app.refresh');
-            oRouter.navTo('dashboard.SearchNoID'); //SearchNoIDREBS - need to differentiate between rebs and normal?
+            oRouter.navTo('search.SearchNoID');
         };
 
         CustomController.prototype._onLogoffPress = function (oControlEvent) {
