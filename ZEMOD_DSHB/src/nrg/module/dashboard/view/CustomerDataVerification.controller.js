@@ -809,6 +809,8 @@ sap.ui.define(
         };
 
         Controller.prototype._validateInputAddr = function () {
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            
             //this._showSuggestedAddr();
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
@@ -821,6 +823,7 @@ sap.ui.define(
             oParameters = {
                 filters: aFilters,
                 success: function (oData) {
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     if (oData.results[0].AddrChkValid === 'X') {
                         //Validate success, update the address directly
                         this._updateMailingAddr();
@@ -830,6 +833,7 @@ sap.ui.define(
                     }
                 }.bind(this),
                 error: function (oError) {
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     sap.ui.commons.MessageBox.alert('Validatation Call Failed');
                 }.bind(this)
             };
