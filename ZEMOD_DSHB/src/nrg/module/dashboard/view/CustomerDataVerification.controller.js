@@ -782,6 +782,8 @@ sap.ui.define(
         };
 
         Controller.prototype._updateMailingAddr = function () {
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
@@ -795,11 +797,13 @@ sap.ui.define(
             oParameters = {
                 urlParameters: {},
                 success : function (oData) {
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     sap.ui.commons.MessageBox.alert("Update Success");
                     this._retrBuag(this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'),  this.getView().getModel('oAllBuags').getProperty('/selectedKey'));
                     this._oMailEditPopup.close();
                 }.bind(this),
                 error: function (oError) {
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     this._oMailEditPopup.close();
                     sap.ui.commons.MessageBox.alert("Update Failed");
                 }.bind(this)
