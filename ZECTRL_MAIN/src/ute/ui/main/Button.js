@@ -56,7 +56,12 @@ sap.ui.define(
             oRm.addClass('uteMBtn-text');
             oRm.writeClasses();
             oRm.write('>');
+
+            oRm.write('<span');
+            oRm.write('>');
             oRm.writeEscaped(this.getText());
+            oRm.write('</span>');
+
             oRm.write('</div>');
         };
 

@@ -12,13 +12,25 @@ sap.ui.define(
         var CustomController = Controller.extend('test.tm.ze_ccux_ctrl.view.Popup');
 
         CustomController.prototype.onInit = function () {
-            this._oPopup = ute.ui.main.Popup.create({
-                content: new Button({ text: 'Close the dialog', press: jQuery.proxy(this._onPressed, this) }),
-                close: this._handleDialogClosed,
-                title: 'This is the title for Popup'
+            this._oPopup = ute.ui.main.Popup.Confirm({
+                title: 'This is the title for alert',
+                message: 'this is a message for alert',
+                callback: this._popupCallback
             });
 
+            // this._oPopup = ute.ui.main.Popup.create({
+            //     content: new Button({ text: 'Close the dialog', press: jQuery.proxy(this._onPressed, this) }),
+            //     close: this._handleDialogClosed,
+            //     title: 'This is the title for Popup'
+            // });
+            //
+            // this._oPopup.setShowCloseButton(false);
+
             this._oPopup.open();
+        };
+
+        CustomController.prototype._popupCallback = function (sAction) {
+            alert(sAction);
         };
 
         CustomController.prototype._onPressed = function (oControlEvent) {

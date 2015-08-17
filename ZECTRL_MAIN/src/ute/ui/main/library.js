@@ -148,6 +148,81 @@ sap.ui.define(
             return oDialog;
         };
 
+        ute.ui.main.Popup.Action = {
+            Ok: 'Ok',
+            Yes: 'Yes',
+            No: 'No'
+        };
+
+        ute.ui.main.Popup._createQuickPopup = function (mParams) {
+            var oDialog, aButton, oButton, oContentLayout, oButtonLayout;
+
+            oDialog = this.create({
+                design: mParams.design,
+                title: mParams.title,
+                close: function () {
+                    this.destroy();
+                }
+            });
+
+            oDialog.addStyleClass('uteMQPopup');
+            oDialog.setShowCloseButton(false);
+
+            aButton = [];
+            mParams.actions.forEach(function (sAction) {
+                oButton = new ute.ui.main.Button({
+                    text: sAction,
+                    press: function () {
+                        if(mParams.callback && typeof mParams.callback === 'function') {
+                            mParams.callback(sAction);
+                        }
+
+                        oDialog.close();
+                    }
+                });
+                aButton.push(oButton);
+            }, this);
+
+            oContentLayout = new sap.ui.layout.VerticalLayout().addStyleClass('uteMQPopup-content');
+
+            //Message
+            oContentLayout.addContent(new ute.ui.main.Label({
+                text: mParams.message
+            }).addStyleClass('uteMQPopup-message'));
+
+            //Button
+            oButtonLayout = new sap.ui.layout.HorizontalLayout().addStyleClass('uteMQPopup-buttonBar');
+            aButton.forEach(function (oButton) {
+                oButtonLayout.addContent(oButton);
+            }, this);
+            oContentLayout.addContent(oButtonLayout);
+
+            oDialog.addContent(oContentLayout);
+
+            return oDialog;
+        };
+
+        ute.ui.main.Popup.Alert = function (mParams) {
+            var oDialog;
+
+            mParams.actions = [ ute.ui.main.Popup.Action.Ok ];
+            oDialog = this._createQuickPopup(mParams);
+
+            return oDialog;
+        };
+
+        ute.ui.main.Popup.Confirm = function (mParams) {
+            var oDialog;
+
+            mParams.actions = [
+                ute.ui.main.Popup.Action.No,
+                ute.ui.main.Popup.Action.Yes
+            ];
+            oDialog = this._createQuickPopup(mParams);
+
+            return oDialog;
+        };
+
         return ute.ui.main;
     },
 
