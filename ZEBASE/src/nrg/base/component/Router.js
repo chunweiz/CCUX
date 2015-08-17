@@ -21,7 +21,7 @@ sap.ui.define(
 
             oCcuxApp = this._oComponent.getCcuxApp();
 
-            if (oCcuxApp.isInEdit()) {
+            if (oCcuxApp && oCcuxApp.isInEdit()) {
                 fnConfirmCallback = function (sAction) {
                     if (sAction === ute.ui.main.Popup.Action.Yes) {
                         oCcuxApp.setInEdit(false);
@@ -31,7 +31,7 @@ sap.ui.define(
 
                 ute.ui.main.Popup.Confirm({
                     title: 'Possible Data Loss',
-                    message: 'Do you want to continue?',
+                    message: 'There might be unsaved changes. Do you really want to navigate away?',
                     callback: fnConfirmCallback
                 });
 
