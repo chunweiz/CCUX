@@ -111,17 +111,17 @@
             </ute:Tag>
             <utmain:Button  id="idEditMailAddr_AcptBtn"
                 visible="{oDtaAddrEdit>/showVldBtns}"
-                class="nrgDashboard-cusDataVerifyEditMailAdd-valdBtn"
+                class="nrgDashboard-cusDataVerifyEditMailAdd-valdBtn nrgDashboard-cusDataVerify-alignCenBtn"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_AcceptBtn}"
                 press="._handleMailingAcceptBtn"/>
             <utmain:Button  id="idEditMailAddr_DclnBtn"
                 visible="{oDtaAddrEdit>/showVldBtns}"
-                class="nrgDashboard-cusDataVerifyEditMailAdd-valdBtn"
+                class="nrgDashboard-cusDataVerifyEditMailAdd-valdBtn nrgDashboard-cusDataVerify-alignCenBtn"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_DeclineBtn}"
                 press="._handleMailingDeclineBtn"/>
             <utmain:Button  id="idEditMailAddr_EditBtn"
                 visible="{oDtaAddrEdit>/showVldBtns}"
-                class="nrgDashboard-cusDataVerifyEditMailAdd-valdBtn"
+                class="nrgDashboard-cusDataVerifyEditMailAdd-valdBtn nrgDashboard-cusDataVerify-alignCenBtn"
                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Pup_EditBtn}"
                 press="._handleMailingEditBtn"/>
         </ute:Tag>
