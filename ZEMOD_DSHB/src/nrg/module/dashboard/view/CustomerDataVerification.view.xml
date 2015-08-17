@@ -23,10 +23,13 @@
                                 <ute:TextView text="{oDtaVrfyContracts>/ContractStatus}"
                                     class="nrgDashboard-cusDataVerify-l-div-title">
                                     <ute:tooltip class="test">
-                                        <c:RichTooltip
-                                            text="{
+                                        <ute:Tooltip>
+                                            <ute:TextView
+                                                color="White"
+                                                text="{
                                                 parts:['oDtaVrfyContracts>/HoveringStatus'],
                                                 formatter:'._formatDate'}"/>
+                                        </ute:Tooltip>
                                     </ute:tooltip>
                                 </ute:TextView>
 
