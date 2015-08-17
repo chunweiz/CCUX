@@ -50,6 +50,7 @@
                 }
             },
             "config": {
+                "routerClass": "nrg.base.component.Router",
                 "viewType": "XML",
                 "controlAggregation": "content",
                 "clearControlAggregation": true
