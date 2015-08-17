@@ -160,6 +160,8 @@ sap.ui.define(
         };
 
         Controller.prototype._retrDataVrf = function (sPath) {
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+
             var oModel = this.getView().getModel('oODataSvc'),
                 oParameters;
 
