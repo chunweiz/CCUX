@@ -159,23 +159,43 @@ sap.ui.define(
         };
 
         CustomController.prototype._onRefreshPress = function (oControlEvent) {
-            var oWebUiManager, oRouter, oRouteManager, oCurrRouteInfo;
+            var oWebUiManager, oRouter, oRouteManager, oCurrRouteInfo, fnConfirmCallback;
 
             oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+            oRouteManager = this.getOwnerComponent().getCcuxRouteManager();
+            oRouter = this.getOwnerComponent().getRouter();
 
             this._oApp._getHeader().setSelected(
                 oControlEvent.getSource().getSelected(),
                 AppHeader.HMItemId.Refresh
             );
 
-            oWebUiManager.notifyWebUi('refresh');
+            if (this._oApp.isInEdit()) {
+                fnConfirmCallback = function (sAction) {
+                    if (sAction === ute.ui.main.Popup.Action.Yes) {
+                        this._oApp.setInEdit(false);
+                        oWebUiManager.notifyWebUi('refresh');
+                        oCurrRouteInfo = oRouteManager.getCurrentRouteInfo();
+                        oRouter.navTo('app.refresh');
+                        oRouter.navTo(oCurrRouteInfo.name, oCurrRouteInfo.parameters);
 
-            oRouteManager = this.getOwnerComponent().getCcuxRouteManager();
-            oCurrRouteInfo = oRouteManager.getCurrentRouteInfo();
+                    } else {
+                        this._oApp._getHeader().setSelected(false, AppHeader.HMItemId.Refresh);
+                    }
+                }.bind(this);
 
-            oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo('app.refresh');
-            oRouter.navTo(oCurrRouteInfo.name, oCurrRouteInfo.parameters);
+                ute.ui.main.Popup.Confirm({
+                    title: 'Possible Data Loss',
+                    message: 'There might be unsaved changes. Do you really want to refresh the page?',
+                    callback: fnConfirmCallback
+                });
+
+            } else {
+                oWebUiManager.notifyWebUi('refresh');
+                oCurrRouteInfo = oRouteManager.getCurrentRouteInfo();
+                oRouter.navTo('app.refresh');
+                oRouter.navTo(oCurrRouteInfo.name, oCurrRouteInfo.parameters);
+            }
         };
 
         CustomController.prototype._onClearAccPress = function (oControlEvent) {

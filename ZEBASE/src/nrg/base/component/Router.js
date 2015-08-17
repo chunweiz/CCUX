@@ -40,7 +40,6 @@ sap.ui.define(
             }
         };
 
-
         return CustomRouter;
     },
 
