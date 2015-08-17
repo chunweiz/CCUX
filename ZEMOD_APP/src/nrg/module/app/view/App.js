@@ -48,7 +48,9 @@ sap.ui.define(
                     'showNavLeft',
                     'attachNavRight',
                     'detachNavRight',
-                    'showNavRight'
+                    'showNavRight',
+                    'setInEdit',
+                    'isInEdit'
                 ]
             }
         });
@@ -61,6 +63,8 @@ sap.ui.define(
             this._oAppHeader.reset();
             this._oAppBody.reset();
             this._oAppFooter.reset();
+
+            this.setInEdit(false);
         };
 
         App.prototype.setOccupied = function (bOccupied) {

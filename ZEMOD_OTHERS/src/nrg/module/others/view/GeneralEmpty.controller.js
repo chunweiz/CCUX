@@ -87,6 +87,11 @@ sap.ui.define(
             }));
         };
 
+        CustomController.prototype.onSetInEdit = function (oEvent) {
+            this.getOwnerComponent().getCcuxApp().setInEdit(true);
+            this.getOwnerComponent().getRouter().navTo('search.SearchNoID');
+        };
+
         CustomController.prototype.onInit = function () {
 
         };
