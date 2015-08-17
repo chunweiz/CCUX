@@ -174,7 +174,11 @@ sap.ui.define(
                 fnConfirmCallback = function (sAction) {
                     if (sAction === ute.ui.main.Popup.Action.Yes) {
                         this._oApp.setInEdit(false);
-                        oWebUiManager.notifyWebUi('refresh');
+
+                        if (oWebUiManager.isAvailable()) {
+                            oWebUiManager.notifyWebUi('refresh');
+                        }
+
                         oCurrRouteInfo = oRouteManager.getCurrentRouteInfo();
                         oRouter.navTo('app.refresh');
                         oRouter.navTo(oCurrRouteInfo.name, oCurrRouteInfo.parameters);
@@ -191,7 +195,10 @@ sap.ui.define(
                 });
 
             } else {
-                oWebUiManager.notifyWebUi('refresh');
+                if (oWebUiManager.isAvailable()) {
+                    oWebUiManager.notifyWebUi('refresh');
+                }
+                
                 oCurrRouteInfo = oRouteManager.getCurrentRouteInfo();
                 oRouter.navTo('app.refresh');
                 oRouter.navTo(oCurrRouteInfo.name, oCurrRouteInfo.parameters);
