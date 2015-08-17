@@ -20,11 +20,6 @@
         </um:TabBar>
         <u:Tag class="nrgQPPay-Popup" id="idnrgQPPay-Popup">
             <u:Tag class="nrgQPPay-PopupHdr">
-<!--                <um:Button press=".onSettings"
-                                         class="nrgQPPay-hdrBtn nrgQPPay-setting"
-                                       id="idnrgQPPayBt-settings" design="None">
-                    <core:Icon src="sap-icon://nrg-icon/gear" class="nrgQPPay-gear" />
-                </um:Button>-->
                 <um:Button press=".onPopupClose"
                                          class="nrgQPPay-close"
                                         design="None">
