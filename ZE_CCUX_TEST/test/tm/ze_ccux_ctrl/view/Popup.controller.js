@@ -16,7 +16,7 @@ sap.ui.define(
                 title: 'This is the title for confirm',
                 message: 'this is a message for confirm',
                 callback: this._popupCallback
-            }).open();
+            });
 
             // this._oPopup = ute.ui.main.Popup.create({
             //     content: new Button({ text: 'Close the dialog', press: jQuery.proxy(this._onPressed, this) }),
@@ -34,8 +34,8 @@ sap.ui.define(
                     ute.ui.main.Popup.Alert({
                         title: 'This is the title for alert',
                         message: 'this is a message for alert',
-                    }).open();
-                    
+                    });
+
                     break;
                 case ute.ui.main.Popup.Action.No:
                     alert('user pressed No');

@@ -154,7 +154,7 @@ sap.ui.define(
             No: 'No'
         };
 
-        ute.ui.main.Popup._createQuickPopup = function (mParams) {
+        ute.ui.main.Popup.createQuickPopup = function (mParams) {
             var oDialog, aButton, oButton, oContentLayout, oButtonLayout;
 
             oDialog = this.create({
@@ -206,7 +206,8 @@ sap.ui.define(
             var oDialog;
 
             mParams.actions = [ ute.ui.main.Popup.Action.Ok ];
-            oDialog = this._createQuickPopup(mParams);
+            oDialog = this.createQuickPopup(mParams);
+            oDialog.open();
 
             return oDialog;
         };
@@ -218,7 +219,8 @@ sap.ui.define(
                 ute.ui.main.Popup.Action.No,
                 ute.ui.main.Popup.Action.Yes
             ];
-            oDialog = this._createQuickPopup(mParams);
+            oDialog = this.createQuickPopup(mParams);
+            oDialog.open();
 
             return oDialog;
         };
