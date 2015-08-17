@@ -159,23 +159,52 @@ sap.ui.define(
         };
 
         CustomController.prototype._onRefreshPress = function (oControlEvent) {
-            var oWebUiManager, oRouter, oRouteManager, oCurrRouteInfo;
+            var oWebUiManager, oRouter, oRouteManager, oCurrRouteInfo, fnConfirmCallback, oAppRbModel;
 
             oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+            oRouteManager = this.getOwnerComponent().getCcuxRouteManager();
+            oRouter = this.getOwnerComponent().getRouter();
 
             this._oApp._getHeader().setSelected(
                 oControlEvent.getSource().getSelected(),
                 AppHeader.HMItemId.Refresh
             );
 
-            oWebUiManager.notifyWebUi('refresh');
+            if (this._oApp.isInEdit()) {
+                fnConfirmCallback = function (sAction) {
+                    if (sAction === ute.ui.main.Popup.Action.Yes) {
+                        this._oApp.setInEdit(false);
 
-            oRouteManager = this.getOwnerComponent().getCcuxRouteManager();
-            oCurrRouteInfo = oRouteManager.getCurrentRouteInfo();
+                        if (oWebUiManager.isAvailable()) {
+                            oWebUiManager.notifyWebUi('refresh');
+                        }
 
-            oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo('app.refresh');
-            oRouter.navTo(oCurrRouteInfo.name, oCurrRouteInfo.parameters);
+                        oCurrRouteInfo = oRouteManager.getCurrentRouteInfo();
+                        oRouter.navTo('app.refresh');
+                        oRouter.navTo(oCurrRouteInfo.name, oCurrRouteInfo.parameters);
+
+                    } else {
+                        this._oApp._getHeader().setSelected(false, AppHeader.HMItemId.Refresh);
+                    }
+                }.bind(this);
+
+                oAppRbModel = this.getOwnerComponent().getModel('comp-i18n-app');
+
+                ute.ui.main.Popup.Confirm({
+                    title: oAppRbModel.getProperty('nrgAppRefreshDataLossTitle'),
+                    message: oAppRbModel.getProperty('nrgAppRefreshDataLossMsg'),
+                    callback: fnConfirmCallback
+                });
+
+            } else {
+                if (oWebUiManager.isAvailable()) {
+                    oWebUiManager.notifyWebUi('refresh');
+                }
+
+                oCurrRouteInfo = oRouteManager.getCurrentRouteInfo();
+                oRouter.navTo('app.refresh');
+                oRouter.navTo(oCurrRouteInfo.name, oCurrRouteInfo.parameters);
+            }
         };
 
         CustomController.prototype._onClearAccPress = function (oControlEvent) {
@@ -187,7 +216,12 @@ sap.ui.define(
             );
 
             this._oApp.setOccupied(true);
-            oWebUiManager.notifyWebUi('clearAccount', {}, this._onClearAccPressCallback, this);
+
+            if (oWebUiManager.isAvailable()) {
+                oWebUiManager.notifyWebUi('clearAccount', {}, this._onClearAccPressCallback, this);
+            } else {
+                this._onClearAccPressCallback();
+            }
         };
 
         CustomController.prototype._onClearAccPressCallback = function (oEvent) {
@@ -198,7 +232,7 @@ sap.ui.define(
             oRouter = this.getOwnerComponent().getRouter();
 
             oRouter.navTo('app.refresh');
-            oRouter.navTo('dashboard.SearchNoID'); //SearchNoIDREBS - need to differentiate between rebs and normal?
+            oRouter.navTo('search.SearchNoID');
         };
 
         CustomController.prototype._onLogoffPress = function (oControlEvent) {
