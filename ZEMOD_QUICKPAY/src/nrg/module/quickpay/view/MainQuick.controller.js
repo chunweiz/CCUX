@@ -147,11 +147,35 @@ sap.ui.define(
         Controller.prototype.onReceipt = function (oEvent) {
             var oTBIRC = this.getView().byId("idnrgQPPay-TBIRC"),
                 oPopup = this.getView().byId("idnrgQPPay-Popup"),
-                oCloseButton = this.getView().byId("idnrgQPPayBt-close");
+                oCloseButton = this.getView().byId("idnrgQPPayBt-close"),
+                aFilterIds,
+                aFilterValues,
+                aFilters,
+                fnRecievedHandler,
+                oDropDown = this.getView().byId("idnrgQPCC-ReceiptDD"),
+                mParameters,
+                oDropDownTemplate = this.getView().byId("idnrgQPCC-ReceiptItem"),
+                sCurrentPath,
+                oModel = this.getView().getModel('comp-quickpay');
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupWhite");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             oTBIRC.setSelected(true);
+            sCurrentPath = "/ReceiptSet" + "(ContractID='0034805112')/WaiveReasonsSet";
+            aFilterIds = ["ContractID"];
+            aFilterValues = ['0034805112'];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            fnRecievedHandler = function (oEvent) {
+                jQuery.sap.log.info("Date Received Succesfully");
+            };
+            mParameters = {
+                model : "comp-quickpay",
+                path : sCurrentPath,
+                template : oDropDownTemplate,
+                filters : aFilters,
+                events: {dataReceived : fnRecievedHandler}
+            };
+            oDropDown.bindAggregation("content", mParameters);
         };
 
         /**

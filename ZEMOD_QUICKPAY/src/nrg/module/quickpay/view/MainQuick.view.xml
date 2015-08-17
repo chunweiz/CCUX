@@ -57,10 +57,15 @@
                 </um:TabPanelItem>
                 <um:TabPanelItem key="dummy" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
                     <um:Dropdown>
-                        <um:DropdownItem key="1" class="nrgQPCC-DdLItem" id="idnrgQPCC-DDLItem">
+                        <um:DropdownItem key="{comp-creditcard>CardNumber}" class="nrgQPCC-DdLItem" id="idnrgQPCC-DDLItem">
                             <u:Tag class="nrgQPCC-DDI">
                                 <core:Icon src="sap-icon://nrg-icon/cc-visa" class="nrgQPCC-icon" />
                                 <u:Tag text="{comp-creditcard>CardNumber}" class="nrgQPCC-DdlValue"/>
+                            </u:Tag>
+                        </um:DropdownItem>
+                        <um:DropdownItem key="{comp-creditcard>ReasonCode}" class="nrgQPCC-DDLWRItem" id="idnrgQPCC-ReceiptItem">
+                            <u:Tag>
+                                  <u:Tag text="{comp-quickpay>ReasonText}" />
                             </u:Tag>
                         </um:DropdownItem>
                     </um:Dropdown>
