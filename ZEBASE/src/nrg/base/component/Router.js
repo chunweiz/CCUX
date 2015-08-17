@@ -27,7 +27,7 @@ sap.ui.define(
                         oCcuxApp.setInEdit(false);
                         Router.prototype.navTo.call(this, sName, oParameters, bReplace);
                     }
-                }.bind(this);
+                };
 
                 ute.ui.main.Popup.Confirm({
                     title: 'Possible Data Loss',
