@@ -160,6 +160,8 @@ sap.ui.define(
         };
 
         Controller.prototype._retrDataVrf = function (sPath) {
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+
             var oModel = this.getView().getModel('oODataSvc'),
                 oParameters;
 
@@ -485,11 +487,17 @@ sap.ui.define(
             oParameters = {
                 merge: false,
                 success : function (oData) {
-                    sap.ui.commons.MessageBox.alert("Update Success");
+                    ute.ui.main.Popup.Alert({
+                        title: 'Customer data update ',
+                        message: 'Update Success',
+                    });
                     this._initDtaVrfRetr();
                 }.bind(this),
                 error: function (oError) {
-                    sap.ui.commons.MessageBox.alert("Update Failed");
+                    ute.ui.main.Popup.Alert({
+                        title: 'Customer data update ',
+                        message: 'Update Failed',
+                    });
                 }.bind(this)
             };
 
@@ -780,6 +788,8 @@ sap.ui.define(
         };
 
         Controller.prototype._updateMailingAddr = function () {
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
                 oParameters,
@@ -793,13 +803,21 @@ sap.ui.define(
             oParameters = {
                 urlParameters: {},
                 success : function (oData) {
-                    sap.ui.commons.MessageBox.alert("Update Success");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    ute.ui.main.Popup.Alert({
+                        title: 'Mailing address update ',
+                        message: 'Update Success',
+                    });
                     this._retrBuag(this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'),  this.getView().getModel('oAllBuags').getProperty('/selectedKey'));
                     this._oMailEditPopup.close();
                 }.bind(this),
                 error: function (oError) {
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     this._oMailEditPopup.close();
-                    sap.ui.commons.MessageBox.alert("Update Failed");
+                    ute.ui.main.Popup.Alert({
+                        title: 'Mailing address update ',
+                        message: 'Update Failed',
+                    });
                 }.bind(this)
             };
 
@@ -809,6 +827,8 @@ sap.ui.define(
         };
 
         Controller.prototype._validateInputAddr = function () {
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            
             //this._showSuggestedAddr();
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath,
@@ -821,6 +841,7 @@ sap.ui.define(
             oParameters = {
                 filters: aFilters,
                 success: function (oData) {
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     if (oData.results[0].AddrChkValid === 'X') {
                         //Validate success, update the address directly
                         this._updateMailingAddr();
@@ -830,7 +851,12 @@ sap.ui.define(
                     }
                 }.bind(this),
                 error: function (oError) {
-                    sap.ui.commons.MessageBox.alert('Validatation Call Failed');
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    ute.ui.main.Popup.Alert({
+                        title: 'Input address validation',
+                        message: 'Validation Call Failed',
+                    });
+
                 }.bind(this)
             };
 
@@ -983,11 +1009,17 @@ sap.ui.define(
             oParameters = {
                 merge: false,
                 success : function (oData) {
-                    sap.ui.commons.MessageBox.alert("Update Success");
+                    ute.ui.main.Popup.Alert({
+                        title: 'Address update',
+                        message: 'Update Success',
+                    });
                     this._oTempMailEditPopup.close();
                 }.bind(this),
                 error: function (oError) {
-                    sap.ui.commons.MessageBox.alert("Update Failed");
+                    ute.ui.main.Popup.Alert({
+                        title: 'Address update',
+                        message: 'Update Failed',
+                    });
                 }.bind(this)
             };
 
@@ -1075,7 +1107,10 @@ sap.ui.define(
                 error: function (oError) {
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     this._oEmailEditPopup.close();
-                    sap.ui.commons.MessageBox.alert("NNP Entity Service Error");
+                    ute.ui.main.Popup.Alert({
+                        title: 'Email edit',
+                        message: 'NNP Entity Service Error',
+                    });
                 }.bind(this)
             };
 
@@ -1107,6 +1142,10 @@ sap.ui.define(
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Email Validate Service Error");
+                    ute.ui.main.Popup.Alert({
+                        title: 'Email address validation',
+                        message: 'Email Validate Service Error',
+                    });
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
@@ -1146,16 +1185,25 @@ sap.ui.define(
                 merge: false,
                 success : function (oData) {
                     if (bEmailChanged) {
-                        sap.ui.commons.MessageBox.alert(oNNP.getProperty('/LdapMessage'));
+                        ute.ui.main.Popup.Alert({
+                            title: 'Email save ',
+                            message: oNNP.getProperty('/LdapMessage'),
+                        });
                     } else {
-                        sap.ui.commons.MessageBox.alert('Marketing Preference Updated Successfully');
+                        ute.ui.main.Popup.Alert({
+                            title: 'Email save',
+                            message: 'Marketing Preference Updated Successfully',
+                        });
                     }
                     this._oEmailEditPopup.close();
                     this._initDtaVrfRetr();
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
-                    sap.ui.commons.MessageBox.alert("Update Failed");
+                     ute.ui.main.Popup.Alert({
+                        title: 'Email save',
+                        message: 'Update Failed',
+                    });
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
@@ -1189,13 +1237,19 @@ sap.ui.define(
                 error: function (oError) {
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     this._oEmailEditPopup.close();
-                    sap.ui.commons.MessageBox.alert("Update Failed");
+                     ute.ui.main.Popup.Alert({
+                        title: 'Email delete',
+                        message: 'Update Failed',
+                    });
                 }.bind(this)
             };
 
             if ((oNNP.getProperty('/Ecd') === 'Y') || (oNNP.getProperty('/Mkt') === 'Y') || (oNNP.getProperty('/Offer') === 'Y') || (oNNP.getProperty('/Ee') === 'Y')) {
                 this.getOwnerComponent().getCcuxApp().setOccupied(false);
-                sap.ui.commons.MessageBox.alert("Cannot delete email when preferences set to YES.");
+                ute.ui.main.Popup.Alert({
+                    title: 'Email delete',
+                    message: 'Cannot delete email when preferences set to YES.',
+                });
                 return;
             } else {
                 if (oModel) {
@@ -1254,7 +1308,10 @@ sap.ui.define(
                 oNNP = this.getView().getModel('oEditEmailNNP');
             if ((oNNP.getProperty('/Ecd') === 'Y') || (oNNP.getProperty('/Mkt') === 'Y') || (oNNP.getProperty('/Offer') === 'Y') || (oNNP.getProperty('/Ee') === 'Y')) {
                 this.getOwnerComponent().getCcuxApp().setOccupied(false);
-                sap.ui.commons.MessageBox.alert("Cannot delete email when preferences set to YES.");
+                ute.ui.main.Popup.Alert({
+                    title: 'Email delete',
+                    message: 'Cannot delete email when preferences set to YES.',
+                });
                 return;
             } else {
                 oEmailBox.setVisible(false);
@@ -1288,7 +1345,10 @@ sap.ui.define(
                     }
                 }.bind(this),
                 error: function (oError) {
-                    sap.ui.commons.MessageBox.alert("NNP Entity Service Error");
+                    ute.ui.main.Popup.Alert({
+                        title: 'Email cancel',
+                        message: 'NNP Entity Service Error',
+                    });
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };

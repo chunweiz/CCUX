@@ -23,10 +23,13 @@
                                 <ute:TextView text="{oDtaVrfyContracts>/ContractStatus}"
                                     class="nrgDashboard-cusDataVerify-l-div-title">
                                     <ute:tooltip class="test">
-                                        <c:RichTooltip
-                                            text="{
+                                        <ute:Tooltip>
+                                            <ute:TextView
+                                                color="White"
+                                                text="{
                                                 parts:['oDtaVrfyContracts>/HoveringStatus'],
                                                 formatter:'._formatDate'}"/>
+                                        </ute:Tooltip>
                                     </ute:tooltip>
                                 </ute:TextView>
 
@@ -175,6 +178,7 @@
                                 class="nrgDashboard-cusDataVerify-mTgBtn"
                                 press="._onToggleButtonPress">
                             </ute:ToggleButton>
+                            
                             <ute:Tag class="nrgDashboard-cusDataVerify-mRdBtn">
                                 <utmain:Dropdown id="idContractDropdown"
                                     class="nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom"
@@ -199,6 +203,7 @@
                                     </utmain:DropdownItem>
                                 </utmain:Dropdown>
                             </ute:Tag>
+                            
                             <ute:Tag id="serviceadd_area" visible="true" class="nrgDashboard-cusDataVerify-mContent">
                                 <l:MatrixLayout widths="65%,35%" columns="2">
                                     <l:MatrixLayoutRow>

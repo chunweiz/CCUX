@@ -14,7 +14,9 @@ sap.ui.define(
         'nrg/base/component/WebUiManager',
         'nrg/base/component/RouteManager',
         'nrg/base/component/ContextManager',
-        'nrg/base/component/NotificationManager'
+        'nrg/base/component/NotificationManager',
+
+        'nrg/base/component/Router'
     ],
 
     function (jQuery, Component, Popup, ResourceBundleManager, StylesheetManager, IconManager,

@@ -67,3 +67,27 @@
     background-color: @uteColor-blue-lightPale;
     margin: 10px;
 }
+
+/*
+** Quick popup
+*/
+.uteMQPopup {
+    & .uteMQPopup-content {
+        min-width: 300px;
+        max-width: 500px;
+
+        & .uteMQPopup-message {
+
+        }
+
+        & .uteMQPopup-buttonBar {
+            width: 100%;
+            
+            & > div {
+                margin-top: 20px;
+                margin-left: 10px;
+                float: right;
+            }
+        }
+    }
+}
