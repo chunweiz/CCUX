@@ -39,9 +39,6 @@
                                 <utmain:Label labelFor="tdsp"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TdspLbl}"
                                     class="nrgDashboard-cusDataVerify-l-div-tdspLabl">
-                                    <!-- <utmain:tooltip>
-                                        <c:RichTooltip text="{oDtaVrfyContracts>/TDSPSrvPhNumber}  {oDtaVrfyContracts>/TDSPOutPhNumber}"/>
-                                    </utmain:tooltip> -->
                                     <utmain:tooltip>
                                         <ute:Tooltip>
                                             <ute:TextView

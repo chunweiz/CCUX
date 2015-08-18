@@ -704,10 +704,10 @@ sap.ui.define(
             this.getView().byId('idAddrUpdatePopup-l').removeStyleClass('nrgDashboard-cusDataVerifyEditMail-l-vl');
             this.getView().byId('idAddrUpdatePopup-r').setVisible(false);
 
-
             for (i = 1; i < 8; i = i + 1) {
-                this.getView().byId('idAddrUpdatePopup-l').getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
-                this.getView().byId('idAddrUpdatePopup-r').getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
+                console.log(this.getView().byId('idAddrUpdatePopup-l').getContent()[i]);
+                this.getView().byId('idAddrUpdatePopup-l').getContent()[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
+                this.getView().byId('idAddrUpdatePopup-r').getContent()[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
             }
         };
 
@@ -930,15 +930,26 @@ sap.ui.define(
         };
 
         Controller.prototype._onEditMailAddrClick = function (oEvent) {
+
             var oEditMail = this.getView().getModel('oDtaAddrEdit'),
                 oCompareEvnet = {mParameters: {checked: null}};
+
+                console.log(oEditMail);
+
 
             oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/FixAddrInfo'));
 
             if (!this._oMailEditPopup) {
                 this._oMailEditPopup = ute.ui.main.Popup.create({
                     content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
-                    title: 'Edit Mailing Address'
+                    title: 'Edit Mailing Address',
+                    close: function() {
+                        this._retrBuagMailingAddr(
+                            this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'), 
+                            this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'), 
+                            this.getView().getModel('oDtaVrfyBuags').getProperty('/FixedAddressID')
+                        );
+                    }.bind(this)
                 });
                 this.getView().addDependent(this._oMailEditPopup);
                 /*this._oMailEditPopup = ute.ui.main.Popup.create({
