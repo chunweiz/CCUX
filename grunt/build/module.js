@@ -64,6 +64,7 @@
                             expand: true,
                             cwd: '<%= moduleFolder %>/src/<%= modulePath %>',
                             src: [
+                                'asset/img/**',
                                 'data/**/*.json',
                                 'manifest.json'
                             ],
