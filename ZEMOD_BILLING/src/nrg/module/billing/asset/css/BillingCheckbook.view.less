@@ -39,6 +39,7 @@
         color: @nrgColor-grey-dark;
         font-weight: @nrgFontWeight-semiBold;
         font-size: @nrgFontSize-base;
+        vertical-align: top;
     }
 
     & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-qkRefArea > .nrgBilling-blChkBk-lftDiv-qkRefArea-lft > div > .nrgBilling-blChkBk-lftDiv-qkRefArea-lft-lbl{
@@ -57,8 +58,34 @@
     & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-qkRefArea > .nrgBilling-blChkBk-lftDiv-qkRefArea-mdl{
         margin-right: 11px;
         width: 215px;
+        height: 98px;
+        border: 1px dashed @nrgColor-grey-dark;
         display: inline-block;
-        background-color: yellow;
+        background-color: @nrgColor-blue-pearl;
+        vertical-align: top;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        text-align: center;
+    }
+
+     & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-qkRefArea > .nrgBilling-blChkBk-lftDiv-qkRefArea-mdl > .nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-onHover{
+         //background: green;
+         background: transparent;
+         width: 215px;
+         height: 98px;
+         top: -80px;
+         position: relative
+     }
+
+    & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-qkRefArea > .nrgBilling-blChkBk-lftDiv-qkRefArea-mdl .nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtNum{
+        font-weight: @nrgFontWeight-bold;
+        font-size: @nrgFontSize-largest;
+        text-align: center;
+    }
+
+    & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-qkRefArea > .nrgBilling-blChkBk-lftDiv-qkRefArea-mdl > .nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtDscp1, & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-qkRefArea > .nrgBilling-blChkBk-lftDiv-qkRefArea-mdl > .nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtDscp2{
+        font-weight: @nrgFontWeight-semiBold;
+        font-size: @nrgFontSize-base;
     }
 
     & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-qkRefArea > .nrgBilling-blChkBk-lftDiv-qkRefArea-rght{
@@ -66,7 +93,26 @@
         margin-right: 0;
         display: inline-block;
         width: 228px;
-        background-color: green;
+        vertical-align: top;
+    }
+
+    & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-qkRefArea > .nrgBilling-blChkBk-lftDiv-qkRefArea-rght .nrgBilling-blChkBk-lftDiv-qkRefArea-rght-btn1{
+        width: 228px;
+        height: 40px;
+        font-size: @nrgFontSize-base;
+        font-weight: @nrgFontWeight-semiBold;
+    }
+
+     & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-qkRefArea > .nrgBilling-blChkBk-lftDiv-qkRefArea-rght .nrgBilling-blChkBk-lftDiv-qkRefArea-rght-btn1 > div, & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-qkRefArea > .nrgBilling-blChkBk-lftDiv-qkRefArea-rght .nrgBilling-blChkBk-lftDiv-qkRefArea-rght-btn2 > div{
+         margin-top: 9px;
+     }
+
+    & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-qkRefArea > .nrgBilling-blChkBk-lftDiv-qkRefArea-rght .nrgBilling-blChkBk-lftDiv-qkRefArea-rght-btn2{
+        margin-top: 18px;
+        width: 228px;
+        height: 40px;
+        font-size: @nrgFontSize-base;
+        font-weight: @nrgFontWeight-semiBold;
     }
 
     & > .nrgBilling-blChkBk-rghtDiv {
@@ -130,7 +176,7 @@
             .nrgBilling-billChkBook-quickRefArea-amount {
                 width: 215px;
                 flex: 1;
-                background-color: @nrgColor-blue-pearl;
+
                 border: 1px dashed @nrgColor-grey-amount;
                 height: 110px;
                 padding: 5px 20px 10px 20px;

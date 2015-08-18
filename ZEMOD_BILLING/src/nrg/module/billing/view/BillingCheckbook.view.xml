@@ -36,22 +36,46 @@
                     </ute:Tag>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl">
-                    <ute:Tag class="nrgBilling-billChkBook-quickRefArea-amount">
-                        <ute:Tag elem="span" class="nrgBilling-billChkBook-amountNum" text="$380.87"/>
-                        <ute:Tag elem="sapn" class="nrgBilling-billChkBook-amountAsterisk" text="*"/>
-                        <ute:Tag elem="span" class="nrgBilling-billChkBook-amountDscrpt1" text="current amount due"/>
-                        <ute:Tag elem="span" class="nrgBilling-billChkBook-amountDscrpt2" text="for no service interuption"/>
+                    <ute:Tag>
+                        <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtNum" text="$380.87"/>
+                        <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtNum" text="*"/>
                     </ute:Tag>
-
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtDscp1" text="AMOUNT DUE"/>
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtDscp2" text="for no service interuption"/>
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-onHover">
+                        <ute:tooltip>
+                            <ute:Tooltip openDelay="100" class="nrgBilling-billChkBook-quickRefArea-amount-tooltip">
+                                <ute:Table width="400px" content="{bp>/employees}">
+                                    <ute:rows>
+                                        <ute:TableRow>
+                                            <ute:TextView color="White" text="{bp>lastName}"></ute:TextView>
+                                            <ute:TextView color="White" text="456"></ute:TextView>
+                                        </ute:TableRow>
+                                    </ute:rows>
+                                </ute:Table>
+                            </ute:Tooltip>
+                        </ute:tooltip>
+                    </ute:Tag>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght">
-                    <ute:Tag text="test"/>
+                    <utmain:Button class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght-btn1" text="PAYMENT OPTIONS"/>
+                    <utmain:Button class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght-btn2" text="HIGH BILL FACTORS"/>
                 </ute:Tag>
             </ute:Tag>
 
-            <ute:ScrollContainer class="nrgBilling-blChkBk-lftDiv-scrllArea" height="686px" horizontal="false" vertical="true">
-
-            </ute:ScrollContainer>
+            <m:ScrollContainer class="nrgBilling-blChkBk-lftDiv-scrllArea" height="686px" horizontal="false" vertical="true">
+                <ute:Tag content="{bp>/employees}">
+                    <utmain:Infoline>
+                        <utmain:headerContent>
+                            <utmain:Label text="{bp>firstName}"/>
+                        </utmain:headerContent>
+                        <utmain:content>
+                            <ute:Tag text="{bp>firstName}"/>
+                            <utmain:Label text="{bp>lastName}"/>
+                        </utmain:content>
+                    </utmain:Infoline>
+                </ute:Tag>
+            </m:ScrollContainer>
             <!-- Quick Reference Area -->
 
 

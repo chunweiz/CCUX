@@ -15,7 +15,15 @@ sap.ui.define(
         var CustomController = Controller.extend('nrg.module.billing.view.BillingCheckbook');
 
         CustomController.prototype.onInit = function () {
+            var oModel = new sap.ui.model.json.JSONModel({
+                employees: [
+                    { firstName: 'tau ming', lastName: 'hew' },
+                    { firstName: 'tau ming', lastName: 'hew' },
+                    { firstName: 'tau ming', lastName: 'hew' }
+                ]
+            });
 
+            this.getView().setModel(oModel, 'bp');
         };
 
         CustomController.prototype.onBeforeRendering = function () {
