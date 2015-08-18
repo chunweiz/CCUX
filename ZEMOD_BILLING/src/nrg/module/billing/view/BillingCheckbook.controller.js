@@ -15,15 +15,35 @@ sap.ui.define(
         var CustomController = Controller.extend('nrg.module.billing.view.BillingCheckbook');
 
         CustomController.prototype.onInit = function () {
+            var o18n = this.getOwnerComponent().getModel('comp-i18n-billing');
+
             var oModel = new sap.ui.model.json.JSONModel({
                 employees: [
-                    { firstName: 'tau ming', lastName: 'hew' },
-                    { firstName: 'tau ming', lastName: 'hew' },
-                    { firstName: 'tau ming', lastName: 'hew' }
+                    { firstName: 'Roger', lastName: 'Cheng' },
+                    { firstName: 'Yumi', lastName: 'Yao' },
+                    { firstName: 'Taylor', lastName: 'Hsu' }
+                ]
+            });
+
+            var oModelContent = new sap.ui.model.json.JSONModel({
+                employers: [
+                    { firstName: 'Kacy', lastName: 'Liao' },
+                    { firstName: 'Frank', lastName: 'Huang' },
+                    { firstName: 'Joseph', lastName: 'Lin' }
+                ]
+            });
+
+            var oModelToolTip = new sap.ui.model.json.JSONModel({
+                employers: [
+                    { firstName: 'Kacy', lastName: 'Liao' },
+                    { firstName: 'Frank', lastName: 'Huang' },
+                    { firstName: 'Joseph', lastName: 'Lin' }
                 ]
             });
 
             this.getView().setModel(oModel, 'bp');
+            this.getView().setModel(oModelContent, 'emp');
+            this.getView().setModel(oModelToolTip, 'tip');
         };
 
         CustomController.prototype.onBeforeRendering = function () {

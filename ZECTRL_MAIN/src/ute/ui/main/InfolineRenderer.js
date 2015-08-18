@@ -21,8 +21,13 @@ sap.ui.define(
             oRm.writeClasses();
             oRm.write('>');
 
-            this._addHeader(oRm, oCustomControl);
-            this._addContent(oRm, oCustomControl);
+            if (oCustomControl.getReverse()) {
+                this._addContent(oRm, oCustomControl);
+                this._addHeader(oRm, oCustomControl);
+            } else {
+                this._addHeader(oRm, oCustomControl);
+                this._addContent(oRm, oCustomControl);
+            }
 
             oRm.write('</div>');
         };
