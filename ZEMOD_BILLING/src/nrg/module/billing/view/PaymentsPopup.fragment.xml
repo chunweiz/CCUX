@@ -7,10 +7,30 @@
     xmlns:l="sap.ui.commons.layout"
     xmlns:core="sap.ui.core"
     xmlns:m="sap.m">
-    <ute:Tag>
-        <ute:Textfield fieldType="Underlined"
-            editable="true" width="200px"
-            value="TEST"/>
+    <ute:Tag class="nrgBilling-invoicePopup">
+        <ute:Tag elem="div">
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="auto"
+                text="{comp-i18n-billing>nrgBilling-paymentsPopup-PAYMENT} 10/08/2013"
+                class="nrgBilling-invoicePopup-label"/>
+
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="auto"
+                text="50.00"
+                class="nrgBilling-invoicePopup-value floatRight"/>
+        </ute:Tag>
+
+        <ute:Tag elem="div">
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="auto"
+                text="{comp-i18n-billing>nrgBilling-paymentsPopup-PAYMENT} 10/14/2013"
+                class="nrgBilling-invoicePopup-label"/>
+
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="auto"
+                text="24.12"
+                class="nrgBilling-invoicePopup-value floatRight"/>
+        </ute:Tag>
 
     </ute:Tag>
 </core:FragmentDefinition>
