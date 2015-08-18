@@ -88,6 +88,7 @@ sap.ui.define(
         };
 
         CustomController.prototype.onSetInEdit = function (oEvent) {
+            console.log(d3);
             this.getOwnerComponent().getCcuxApp().setInEdit(true);
             this.getOwnerComponent().getRouter().navTo('search.SearchNoID');
         };
