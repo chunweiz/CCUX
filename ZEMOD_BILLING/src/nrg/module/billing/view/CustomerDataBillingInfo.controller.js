@@ -44,11 +44,14 @@ sap.ui.define(
         };
 
         CustomController.prototype._onInvoiceAmntClicked = function (oEvent) {
+            var i18nModel =  this.getOwnerComponent().getModel('comp-i18n-billing'),
+                popupTitle = i18nModel.getProperty("nrgBilling-paymentsPopup-ACCOUNT_SUMMARY");
+
             if (!this._oInvoicePopup) {
                 this._oInvoicePopup = sap.ui.xmlfragment("PaymentPopup", "nrg.module.billing.view.InvoicePopup", this);
                 this._oInvoicePopup = ute.ui.main.Popup.create({
                     content: this._oInvoicePopup,
-                    title: 'Account Summary'
+                    title: popupTitle
                 });
 
                 this._oInvoicePopup.setShowCloseButton(true);
@@ -59,11 +62,14 @@ sap.ui.define(
         };
 
         CustomController.prototype._onPaymentsClicked = function (oEvent) {
+            var i18nModel =  this.getOwnerComponent().getModel('comp-i18n-billing'),
+                popupTitle = i18nModel.getProperty("nrgBilling-paymentsPopup-PAYMENTS");
+
             if (!this._oPaymentPopup) {
                 this._oPaymentPopup = sap.ui.xmlfragment("PaymentPopup", "nrg.module.billing.view.PaymentsPopup", this);
                 this._oPaymentsPopup = ute.ui.main.Popup.create({
                     content: this._oPaymentPopup,
-                    title: 'Payments'
+                    title: popupTitle
                 });
 
                 this._oPaymentsPopup.setShowCloseButton(true);
