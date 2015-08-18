@@ -119,7 +119,11 @@ sap.ui.define(
             );
 
             this._oApp.setOccupied(true);
-            oWebUiManager.notifyWebUi('launchTransaction', {}, this._onTransactionPressCallback, this);
+            if (oWebUiManager.isAvailable()) {
+                oWebUiManager.notifyWebUi('launchTransaction', {}, this._onTransactionPressCallback, this);
+            } else {
+                this._onTransactionPressCallback();
+            }
         };
 
         CustomController.prototype._onTransactionPressCallback = function (oEvent) {
@@ -135,7 +139,11 @@ sap.ui.define(
             );
 
             this._oApp.setOccupied(true);
-            oWebUiManager.notifyWebUi('openEsidTool', {}, this._onEsidToolPressCallback, this);
+            if (oWebUiManager.isAvailable()) {
+                oWebUiManager.notifyWebUi('openEsidTool', {}, this._onEsidToolPressCallback, this);
+            } else {
+                this._onEsidToolPressCallback();
+            }
         };
 
         CustomController.prototype._onEsidToolPressCallback = function (oEvent) {
@@ -151,7 +159,11 @@ sap.ui.define(
             );
 
             this._oApp.setOccupied(true);
-            oWebUiManager.notifyWebUi('openPalPlus', {}, this._onPalPlusPressCallback, this);
+            if (oWebUiManager.isAvailable()) {
+                oWebUiManager.notifyWebUi('openPalPlus', {}, this._onPalPlusPressCallback, this);
+            } else {
+                this._onPalPlusPressCallback();
+            }
         };
 
         CustomController.prototype._onPalPlusPressCallback = function (oEvent) {
