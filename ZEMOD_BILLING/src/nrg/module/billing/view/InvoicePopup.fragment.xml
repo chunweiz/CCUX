@@ -1,0 +1,162 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:utmain="ute.ui.main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.commons"
+    xmlns:l="sap.ui.commons.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:m="sap.m">
+    <ute:Tag class="nrgBilling-invoicePopup">
+        <ute:Tag elem="div">
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="auto"
+                text="Previous Amount Due"
+                class="nrgBilling-invoicePopup-label"/>
+
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="auto"
+                text="105.09"
+                class="nrgBilling-invoicePopup-value floatRight"/>
+        </ute:Tag>
+
+        <ute:Tag elem="div">
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="200px"
+                text="Payment 02/03/2015"
+                class="nrgBilling-invoicePopup-label"/>
+
+            <ute:TextView fieldType="Underlined"
+                editable="false" width="auto"
+                text="-105.09"
+                class="nrgBilling-invoicePopup-value floatRight"/>
+        </ute:Tag>
+
+        <ute:Tag elem="div">
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="300px"
+                text="Balance Forward"
+                class="nrgBilling-invoicePopup-label"/>
+
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="100px"
+                text="0.00"
+                class="nrgBilling-invoicePopup-value floatRight"/>
+        </ute:Tag>
+
+        <ute:HorizontalDivider class="nrgBilling-invoicePopup-horDvi"/>
+
+        <ute:Tag elem="div">
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="300px"
+                text="Usage Charge"
+                class="nrgBilling-invoicePopup-label"/>
+
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="100px"
+                text="0.00"
+                class="nrgBilling-invoicePopup-value floatRight"/>
+        </ute:Tag>
+
+        <ute:Tag elem="div">
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="300px"
+                text="Energy Charge 1.022kWh @ 0.008000/kWh"
+                class="nrgBilling-invoicePopup-label"/>
+
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="100px"
+                text="9.90"
+                class="nrgBilling-invoicePopup-value floatRight"/>
+        </ute:Tag>
+
+        <ute:Tag elem="div">
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="300px"
+                text="CenterPoint Energy Delivery Charges"
+                class="nrgBilling-invoicePopup-label"/>
+
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="100px"
+                text="56.26"
+                class="nrgBilling-invoicePopup-value floatRight"/>
+        </ute:Tag>
+
+        <ute:Tag elem="div">
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="300px"
+                text="Gross Reciepts Tax Reimbursement"
+                class="nrgBilling-invoicePopup-label"/>
+
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="100px"
+                text="1.24"
+                class="nrgBilling-invoicePopup-value floatRight"/>
+        </ute:Tag>
+
+        <ute:Tag elem="div">
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="300px"
+                text="Sales Tax 1.00%"
+                class="nrgBilling-invoicePopup-label"/>
+
+            <ute:TextView fieldType="Underlined"
+                editable="false" width="100px"
+                text="0.63"
+                class="nrgBilling-invoicePopup-value floatRight"/>
+        </ute:Tag>
+
+        <ute:Tag elem="div">
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="300px"
+                text="Current Charges"
+                class="nrgBilling-invoicePopup-label"/>
+
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="100px"
+                text="64.03"
+                class="nrgBilling-invoicePopup-value floatRight"/>
+        </ute:Tag>
+
+        <ute:HorizontalDivider class="nrgBilling-invoicePopup-horDvi"/>
+
+        <ute:Tag elem="div">
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="300px"
+                text="Reliant Surge Protect ($1000)"
+                class="nrgBilling-invoicePopup-label"/>
+
+            <ute:TextView fieldType="Underlined"
+                editable="false" width="100px"
+                text="9.99"
+                class="nrgBilling-invoicePopup-value floatRight"/>
+        </ute:Tag>
+
+        <ute:Tag elem="div">
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="300px"
+                text="Deferred Payment Plan Installment"
+                class="nrgBilling-invoicePopup-label"/>
+
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="100px"
+                text="9.99"
+                class="nrgBilling-invoicePopup-value floatRight"/>
+        </ute:Tag>
+
+        <ute:HorizontalDivider class="nrgBilling-invoicePopup-horDvi"/>
+
+        <ute:Tag elem="div">
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="300px"
+                text="Amount Due"
+                class="nrgBilling-invoicePopup-label"/>
+
+            <ute:TextView fieldType="Noborder"
+                editable="false" width="100px"
+                text="74.02"
+                class="nrgBilling-invoicePopup-value floatRight"/>
+        </ute:Tag>
+
+    </ute:Tag>
+</core:FragmentDefinition>

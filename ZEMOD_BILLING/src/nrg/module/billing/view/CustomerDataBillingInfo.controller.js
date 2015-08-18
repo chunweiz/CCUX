@@ -44,21 +44,32 @@ sap.ui.define(
         };
 
         CustomController.prototype._onInvoiceAmntClicked = function (oEvent) {
-            //alert("Hi, invoice!");
+            if (!this._oInvoicePopup) {
+                this._oInvoicePopup = sap.ui.xmlfragment("PaymentPopup", "nrg.module.billing.view.InvoicePopup", this);
+                this._oInvoicePopup = ute.ui.main.Popup.create({
+                    content: this._oInvoicePopup,
+                    title: 'Account Summary'
+                });
+
+                this._oInvoicePopup.setShowCloseButton(true);
+                this.getView().addDependent(this._oInvoicePopup);
+            }
+
+            this._oInvoicePopup.open();
         };
 
         CustomController.prototype._onPaymentsClicked = function (oEvent) {
             if (!this._oPaymentPopup) {
                 this._oPaymentPopup = sap.ui.xmlfragment("PaymentPopup", "nrg.module.billing.view.PaymentsPopup", this);
+                this._oPaymentsPopup = ute.ui.main.Popup.create({
+                    content: this._oPaymentPopup,
+                    title: 'Payments'
+                });
+
+                this._oPaymentsPopup.setShowCloseButton(true);
+                this.getView().addDependent(this._oPaymentsPopup);
             }
 
-            this._oPaymentsPopup = ute.ui.main.Popup.create({
-                content: this._oPaymentPopup,
-                title: 'Payments'
-            });
-
-            this._oPaymentsPopup.setShowCloseButton(true);
-            this.getView().addDependent(this._oPaymentsPopup);
             this._oPaymentsPopup.open();
         };
 
