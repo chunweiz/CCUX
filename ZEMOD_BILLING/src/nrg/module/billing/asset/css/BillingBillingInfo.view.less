@@ -368,8 +368,17 @@
     }
 }
 
+.sapUiDlgHdr {
+    height: 40px;
+    color: #666666;
+    border-bottom: 0;
+    margin-top: 0;
+    text-align: center;
+}
+
 .nrgBilling-invoicePopup{
     width: 440px;
+    background-color: @nrgColor-bluePearl;
 
     & .floatRight{
         float: right;
@@ -377,10 +386,57 @@
 
     & .nrgBilling-invoicePopup-label{
         display: inline-block;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    & .nrgBilling-invoicePopup-label > span{
+        font-size: @nrgFontSize-base;
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-grey-inactive;
     }
 
     & .nrgBilling-invoicePopup-value{
-        align-content: center;
         display: inline-block;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    & .nrgBilling-invoicePopup-value > span{
+        font-size: @nrgFontSize-base;
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-grey-inactive;
+    }
+
+    & .nrgBilling-invoicePopup-dark-label{
+        display: inline-block;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    & .nrgBilling-invoicePopup-dark-label > span{
+        font-size: @nrgFontSize-base;
+        font-weight: @nrgFontWeight-bold;
+        color: @nrgColor-grey-dark;
+    }
+
+    & .nrgBilling-invoicePopup-dark-value{
+        display: inline-block;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    & .nrgBilling-invoicePopup-dark-value > span{
+        font-size: @nrgFontSize-base;
+        font-weight: @nrgFontWeight-bold;
+        color: @nrgColor-grey-dark;
     }
 }
