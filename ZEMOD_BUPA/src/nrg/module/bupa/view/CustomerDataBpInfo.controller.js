@@ -578,8 +578,8 @@ sap.ui.define(
             this._caNum = oRouteInfo.parameters.caNum;
             this._coNum = oRouteInfo.parameters.coNum;
 
-            this.getView().getModel('oDataBP').setProperty('/PartnerID', this._bpNum);
-            
+            this.getView().getModel('oDataBP').setProperty('/PartnerID', true);
+
 
             this._retrAllData(this._bpNum);
         };
@@ -1098,6 +1098,7 @@ sap.ui.define(
         };
 
         Controller.prototype._handleEmailEdit = function (oEvent) {
+            console.log('5566');
             var oModel = this.getView().getModel('oODataSvc'),
                 oParameters,
                 sBpNum = this._bpNum,
@@ -1131,6 +1132,7 @@ sap.ui.define(
             oParameters = {
                 /*urlParameters: {"$expand": "Buags"},*/
                 success : function (oData) {
+                    console.log('7788', oData);
                     if (oData) {
                         this.getView().getModel('oEditEmailNNP').setData(oData);
                         this.getOwnerComponent().getCcuxApp().setOccupied(false);

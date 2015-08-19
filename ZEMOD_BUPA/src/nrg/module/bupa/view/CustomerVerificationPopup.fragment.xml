@@ -8,12 +8,14 @@
     xmlns:core="sap.ui.core"
     xmlns:m="sap.m">
     <ute:Tag>
-        <ute:Tag id="idnrgDB-EmailBox" visible="true"
-            class="nrgBupa-cusDataVerifyEditEmail">
+        <!-- Email Box -->
+        <ute:Tag id="idnrgDB-EmailBox" visible="true" class="nrgBupa-cusDataVerifyEditEmail">
+            <!-- Descripttion -->
             <ute:Tag class="nrgBupa-cusDataVerifyEditEmail-desc">
                 <ute:TextView
                     text="{oEditEmailNNP>/Script}"/>
             </ute:Tag>
+            <!-- Switches -->
             <ute:Tag class="nrgBupa-cusDataVerifyEditEmail-inputArea">
                 <ute:Textfield fieldType="Underlined"
                     label="{comp-i18n-bupa>nrgBupaCusDatVrf_EmlPup_Email}"
@@ -102,6 +104,7 @@
                 text="{comp-i18n-bupa>nrgBupaCusDatVrf_EmlPup_DEL}"
                 press="._onShowDelEmailBox"/>
         </ute:Tag>
+        <!-- Delete Email Box -->
         <ute:Tag id="idnrgDB-DelEmailBox" class="nrgBupa-DelEmailBox" visible="false">
                 <ute:Tag text="CONFIRMATION NEEDED: I just want to make sure you're aware that deleting email address will remove you from any Internet-based services we offer, including Online Account Management, online bill payment and Paperless Billing, and that all your bills and accounts notices will be sent via regular mail. Are you sure you want to do this? " />
             <ute:Tag class="nrgBupa-DelEmailBox-btns">
