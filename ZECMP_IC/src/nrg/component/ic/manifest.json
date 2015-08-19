@@ -16,25 +16,12 @@
     },
 
     "sap.ui5": {
-        "handleValidation": true,
-
         "resources": {
             "css": [
                 { "uri": "../../../../../ZELIB/normalize.css/normalize.css" },
                 { "uri": "../../../../../ZEBASE_CTRL/build/ute/ui/base/asset/css/base.css" },
                 { "uri": "../../../../../ZEBASE/build/nrg/base/asset/css/base.css" }
             ]
-        },
-
-        "dependencies": {
-            "minUI5Version": "1.28.6",
-            "libs": {
-                "sap.ui.core": { "minVersion": "1.28.6" },
-                "sap.m": { "minVersion": "1.28.6" },
-                "sap.ui.commons": { "minVersion": "1.28.6" },
-                "ute.ui.commons": { "minVersion": "1.0.0" },
-                "ute.ui.main": { "minVersion": "1.0.0" }
-            }
         },
 
         "rootView": {
