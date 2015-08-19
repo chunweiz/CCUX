@@ -10,6 +10,8 @@
     controllerName="nrg.module.bupa.view.CustomerDataBpInfo">
 
     <ute:Tag class="nrgAppMain-generalContent nrgBupa-cusDataBpInfo">
+        
+        <!-- BP Number -->
         <ute:Tag elem="span" class="nrgBupa-cusDataBpInfo-scrnTitle"
                  text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-BUSINESS_PARTNER} #{oDataBP>/PartnerID}" />
 

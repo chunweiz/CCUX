@@ -578,6 +578,9 @@ sap.ui.define(
             this._caNum = oRouteInfo.parameters.caNum;
             this._coNum = oRouteInfo.parameters.coNum;
 
+            this.getView().getModel('oDataBP').setProperty('/PartnerID', this._bpNum);
+            
+
             this._retrAllData(this._bpNum);
         };
 
