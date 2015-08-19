@@ -55,7 +55,8 @@ sap.ui.define(
             this._sCA = oRouteInfo.parameters.caNum;
             sCurrentPath = i18NModel.getProperty("nrgCpgChangeOffSet");
             sCurrentPath = "/CpgChgOfferS";
-            sCurrentPath = sCurrentPath + "(OfferCode='" + this._sOfferCode + "',Contract='" + this._sContract + "')";
+            this._sDate = oRouteInfo.parameters.sDate;
+            sCurrentPath = sCurrentPath + "(OfferCode='" + this._sOfferCode + "',Contract='" + this._sContract + "',StartDate=" + this._sDate + ")";
             this._bindView(sCurrentPath);
             sCurrentPath = "/ScriptS";
             // Handler function for Tab Bar Item.
@@ -278,10 +279,14 @@ sap.ui.define(
                 sContract,
                 sPath,
                 oContext,
-                that = this;
+                that = this,
+                sPromoRank,
+                sBrand,
+                sCA,
+                sType;
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
-            sPath = "/CpgChgOfferS(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "')";
+            sPath = "/CpgChgOfferS(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',StartDate=" + this._sDate + ")";
             oContext = oModel.getContext(sPath);
             sCampaignCode = oContext.getProperty("Campaign");
             sEndDate = oContext.getProperty("EndDate");
@@ -290,6 +295,10 @@ sap.ui.define(
             sPromo = oContext.getProperty("Promo");
             sStartDate = oContext.getProperty("StartDate");
             sContract = oContext.getProperty("Contract");
+            sPromoRank = oContext.getProperty("PromoRank");
+            sBrand = oContext.getProperty("Brand");
+            sType = oContext.getProperty("Type");
+            sCA = this._sCA;
             mParameters = {
                 method : "POST",
                 urlParameters : {"CampaignCode" : sCampaignCode,
@@ -302,7 +311,11 @@ sap.ui.define(
                                         "OfferTitle" : sOfferTitle,
                                         "PromoCode" : sPromo,
                                         "StartDate" : sStartDate,
-                                        "Contract" : sContract},
+                                        "Contract" : sContract,
+                                        "PromoRank" : sPromoRank,
+                                        "Brand" : sBrand,
+                                        "CA" : sCA,
+                                        "Type": sType},
                 success : function (oData) {
                     if ((oData !== undefined) && (oData.Code === "S")) {
                         sap.ui.commons.MessageBox.alert("SWAP is completed");

@@ -10,9 +10,11 @@
     controllerName="nrg.module.bupa.view.CustomerDataBpInfo">
 
     <ute:Tag class="nrgAppMain-generalContent nrgBupa-cusDataBpInfo">
+        
+        <!-- BP Number -->
         <ute:Tag elem="span" class="nrgBupa-cusDataBpInfo-scrnTitle"
                  text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-BUSINESS_PARTNER} #{oDataBP>/PartnerID}" />
-
+        <!-- Back To Dashboard -->
         <ute:Tag elem="span" class="nrgBupa-cusDataBpInfo-r-btn">
             <utmain:Button design="None" class="nrgBupa-cusDataBpInfo-CommBtn" press="onBackToDashboard">
                 <core:Icon src="sap-icon://slim-arrow-left" class="nrgBupa-cusDataBpInfo-Icon" />
@@ -20,13 +22,12 @@
                          text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-BACK}" />
             </utmain:Button>
         </ute:Tag>
-
+        <!-- ----- -->
         <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-horiLine-div clearfix">
             <ute:HorizontalDivider width="16%" class="nrgBupa-cusDataBpInfo-horiLine"/>
         </ute:Tag>
-
-        <utmain:Infoline class="nrgBupa-cusDataBpInfo-infoLine"
-                         expanded="true" press=".onTitlePressed">
+        <!-- BP Title/Name -->
+        <utmain:Infoline class="nrgBupa-cusDataBpInfo-infoLine" expanded="true" press=".onTitlePressed">
             <utmain:headerContent>
                 <ute:TextView class="nrgBupa-cusDataBpInfo-infoLineHeader-txt"
                               text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-TITLE_NAME}"/>
@@ -137,9 +138,8 @@
                 </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
-
-        <utmain:Infoline class="nrgBupa-cusDataBpInfo-infoLine"
-                         expanded="true" press=".onAddressPressed">
+        <!-- BP Address -->
+        <utmain:Infoline class="nrgBupa-cusDataBpInfo-infoLine" expanded="true" press=".onAddressPressed">
             <utmain:headerContent>
                 <ute:TextView class="nrgBupa-cusDataBpInfo-infoLineHeader-txt"
                               text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-ADDRESS}"/>
@@ -324,9 +324,8 @@
                 </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
-
-        <utmain:Infoline class="nrgBupa-cusDataBpInfo-infoLine"
-                         expanded="true" press=".onPersonalInfoPressed">
+        <!-- BP Personal Info -->
+        <utmain:Infoline class="nrgBupa-cusDataBpInfo-infoLine" expanded="true" press=".onPersonalInfoPressed">
             <utmain:headerContent>
                 <ute:TextView class="nrgBupa-cusDataBpInfo-infoLineHeader-txt"
                               text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-PERSONAL_INFO}"/>
@@ -449,9 +448,8 @@
                 </ute:Tag>
             </utmain:content>
         </utmain:Infoline>
-
-        <utmain:Infoline class="nrgBupa-cusDataBpInfo-infoLine"
-                         expanded="true" press=".onContactInfoPressed">
+        <!-- BP Contact Info -->
+        <utmain:Infoline class="nrgBupa-cusDataBpInfo-infoLine" expanded="true" press=".onContactInfoPressed">
             <utmain:headerContent>
                 <ute:TextView class="nrgBupa-cusDataBpInfo-infoLineHeader-txt"
                               text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-CONTACT_INFO}"/>
@@ -505,7 +503,7 @@
                                     </l:MatrixLayout>
                                 </l:MatrixLayoutCell>
 
-                            <!--Area right-->
+                                <!--Area right-->
                                 <l:MatrixLayoutCell class="nrgBupa-cusDataBpInfo-l">
                                     <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
@@ -549,8 +547,8 @@
                                                                editable="{oBpInfoConfig>/contactInfoEditable}"
                                                                value="{oDataBpContact>/EveningPhoneExt}"/>
                                             </l:MatrixLayoutCell>
-<!--
-                                            <l:MatrixLayoutCell>
+
+                                            <!-- <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
                                                          text="TYPE:" />
                                             </l:MatrixLayoutCell>
@@ -565,8 +563,8 @@
                                                              text="{oEvnPhoneType>Type}"/>
                                                     </utmain:DropdownItem>
                                                 </utmain:Dropdown>
-                                            </l:MatrixLayoutCell>
--->
+                                            </l:MatrixLayoutCell> -->
+
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
                                 </l:MatrixLayoutCell>

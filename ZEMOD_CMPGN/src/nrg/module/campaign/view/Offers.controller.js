@@ -112,12 +112,14 @@ sap.ui.define(
                 iCount,
                 oContext,
                 sOfferCode,
-                sStartDate;
+                sStartDate,
+                sDate;
             sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
             oContext = this.getView().getModel("comp-campaign").getContext(sPath);
             sOfferCode = oContext.getProperty("OfferCode");
             sStartDate = oContext.getProperty("StartDate");
-            this.navTo("campaignchg", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, offercodeNum: sOfferCode});
+            sDate = sPath.substring(sPath.lastIndexOf("=") + 1, sPath.lastIndexOf(")"));
+            this.navTo("campaignchg", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, offercodeNum: sOfferCode, sDate : sDate});
         };
         /**
 		 * Binds the view based on the Tier selected like Proactive, Reactive, Save and Final Save

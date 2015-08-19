@@ -44,8 +44,8 @@ sap.ui.define(
             this._sBP = oRouteInfo.parameters.bpNum;
             this._sCA = oRouteInfo.parameters.caNum;
             sCurrentPath = "/CpgChgOfferS";
-            sCurrentDate = "datetime'2012-06-30T05%3A00%3A00'";
-            sCurrentPath = sCurrentPath + "(Contract='" + this._sContract + "',OfferCode='" + this._sNewOfferCode + "',StartDate=" + sCurrentDate + ")";
+            this._sDate = oRouteInfo.parameters.sDate;
+            sCurrentPath = sCurrentPath + "(Contract='" + this._sContract + "',OfferCode='" + this._sNewOfferCode + "',StartDate=" + this._sDate + ")";
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oTemplateModel = new sap.ui.model.json.JSONModel();
             this._bindView(sCurrentPath);
@@ -106,7 +106,7 @@ sap.ui.define(
         Controller.prototype.onAcceptCampaign = function (oEvent) {
             var sOfferCode = this.getView().getBindingContext("comp-campaign").getProperty("OfferCode"),
                 sType = this.getView().getBindingContext("comp-campaign").getProperty("Type");
-            this.navTo("campaignSS", {bpNum: this._sBP, caNum: this._sCA, offercodeNum : this._sNewOfferCode, coNum : this._sContract });
+            this.navTo("campaignSS", {bpNum: this._sBP, caNum: this._sCA, offercodeNum : this._sNewOfferCode, coNum : this._sContract, sDate : this._sDate});
         };
 
         /**
