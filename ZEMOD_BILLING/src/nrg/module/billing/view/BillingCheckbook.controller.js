@@ -21,6 +21,9 @@ sap.ui.define(
                 employees: [
                     { firstName: 'Roger', lastName: 'Cheng' },
                     { firstName: 'Yumi', lastName: 'Yao' },
+                    { firstName: 'Yumi', lastName: 'Yao' },
+                    { firstName: 'Yumi', lastName: 'Yao' },
+                    { firstName: 'Yumi', lastName: 'Yao' },
                     { firstName: 'Taylor', lastName: 'Hsu' }
                 ]
             });
@@ -29,6 +32,14 @@ sap.ui.define(
                 employers: [
                     { firstName: 'Kacy', lastName: 'Liao' },
                     { firstName: 'Frank', lastName: 'Huang' },
+                    { firstName: 'Frank', lastName: 'Huang' },
+                    { firstName: 'Frank', lastName: 'Huang' },
+                    { firstName: 'Frank', lastName: 'Huang' },
+                    { firstName: 'Frank', lastName: 'Huang' },
+                    { firstName: 'Frank', lastName: 'Huang' },
+                    { firstName: 'Frank', lastName: 'Huang' },
+                    { firstName: 'Frank', lastName: 'Huang' },
+                    { firstName: 'Frank', lastName: 'Huang' },
                     { firstName: 'Joseph', lastName: 'Lin' }
                 ]
             });
@@ -36,6 +47,9 @@ sap.ui.define(
             var oModelToolTip = new sap.ui.model.json.JSONModel({
                 employers: [
                     { firstName: 'Kacy', lastName: 'Liao' },
+                    { firstName: 'Frank', lastName: 'Huang' },
+                    { firstName: 'Frank', lastName: 'Huang' },
+                    { firstName: 'Frank', lastName: 'Huang' },
                     { firstName: 'Frank', lastName: 'Huang' },
                     { firstName: 'Joseph', lastName: 'Lin' }
                 ]

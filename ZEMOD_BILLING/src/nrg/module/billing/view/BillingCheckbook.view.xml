@@ -58,7 +58,7 @@
                 </ute:Tag>
             </ute:Tag>
 
-            <m:ScrollContainer class="nrgBilling-blChkBk-lftDiv-scrllArea" width="752px" height="686px" horizontal="false" vertical="true">
+            <m:ScrollContainer class="nrgBilling-blChkBk-lftDiv-scrllArea" width="768px" height="686px" horizontal="false" vertical="true">
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr">
                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-h1"
                              text="{comp-i18n-billing>nrgBilling-billChkBook-Table-BillingDate}" />
@@ -72,112 +72,37 @@
                 <ute:Tag content="{emp>/employers}">
                     <utmain:Infoline reverse="true" class="nrgBilling-blChkBk-lftDiv-scrllArea-lnItm">
                         <utmain:headerContent>
-                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c1"
-                                     text="{emp>firstName}"/>
-                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2"
-                                     text="Some line item description"/>
-                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_1"
-                                     text="223.67"/>
-                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_2"
-                                     text="123.23"/>
-                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c4"
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh1"
                                      text="01/31/14"/>
-                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c5"
-                                     text="DPP+AAA"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh2"
+                                     text="Invoicee Amount Due Description"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh3"
+                                     text="91.08"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh4"
+                                     text="08/31/16"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5"/>
                         </utmain:headerContent>
                         <utmain:content>
                             <ute:Tag content="{bp>/employees}">
-                                <ute:Tag text="{bp>firstName} {bp>lastName}"/>
+                                <ute:Tag> <!--For single or double underline classes add here ==> class="nrgBilling-blChkBk-lftDiv-scrllArea-snglUndrln nrgBilling-blChkBk-lftDiv-scrllArea-dblUndrln"-->
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c1"
+                                             text="01/31/14"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2"
+                                             text="{bp>firstName} {bp>lastName}"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_1"
+                                             text="223.67"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_2"
+                                             text="123.23"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c4"
+                                             text="08/31/16"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c5"
+                                             text="DPP+AAA"/>
+                                </ute:Tag>
                             </ute:Tag>
                         </utmain:content>
                     </utmain:Infoline>
                 </ute:Tag>
             </m:ScrollContainer>
-            <!-- Quick Reference Area -->
-
-
-
-            <ute:Tag class="nrgBilling-billChkBook-quickRefArea">
-                <ute:Tag elem="div" class="nrgBilling-billChkBook-quickRefArea-date">
-                    <ute:Tag elem="div" class="nrgBilling-billChkBook-quickRefArea-dateWrap">
-                        <l:MatrixLayout
-                            class="nrgBilling-billChkBook-dateTable"
-                            layoutFixed="false" widths="40%,60%" columns="2" width="100%">
-                            <l:rows>
-                                <l:MatrixLayoutRow>
-                                    <l:cells>
-                                        <l:MatrixLayoutCell class="nrgBilling-billChkBook-tableCell">
-                                            <ute:Tag elem="div" class="nrgBilling-billChkBook-dateTable-clm1"
-                                                     text="Start Date" />
-                                        </l:MatrixLayoutCell>
-                                        <l:MatrixLayoutCell class="nrgBilling-billChkBook-tableCell">
-                                            <ute:Tag elem="div" class="nrgBilling-billChkBook-dateTable-clm2"
-                                                     text="6 months ago" />
-                                        </l:MatrixLayoutCell>
-
-                                    </l:cells>
-                                </l:MatrixLayoutRow>
-                                <l:MatrixLayoutRow>
-                                    <l:cells>
-                                        <l:MatrixLayoutCell class="nrgBilling-billChkBook-tableCell">
-                                            <ute:Tag elem="div" class="nrgBilling-billChkBook-dateTable-clm1"
-                                                     text="End Date" />
-                                        </l:MatrixLayoutCell>
-                                        <l:MatrixLayoutCell class="nrgBilling-billChkBook-tableCell">
-                                            <ute:Tag elem="div" class="nrgBilling-billChkBook-dateTable-clm2"
-                                                     text="today: 08/06/15" />
-                                        </l:MatrixLayoutCell>
-
-                                    </l:cells>
-                                </l:MatrixLayoutRow>
-                            </l:rows>
-                        </l:MatrixLayout>
-                    </ute:Tag>
-                </ute:Tag>
-                <ute:Tag elem="div" class="nrgBilling-billChkBook-quickRefArea-amount">
-                    <ute:Tag elem="span" class="nrgBilling-billChkBook-amountNum" text="$380.87"/>
-                    <ute:Tag elem="sapn" class="nrgBilling-billChkBook-amountAsterisk" text="*"/>
-                    <ute:Tag elem="span" class="nrgBilling-billChkBook-amountDscrpt1" text="current amount due"/>
-                    <ute:Tag elem="span" class="nrgBilling-billChkBook-amountDscrpt2" text="for no service interuption"/>
-                    <ute:Tag elem="div" class="nrgBilling-billChkBook-quickRefArea-amountHover">
-                        <ute:tooltip>
-                            <ute:Tooltip openDelay="100" class="nrgBilling-billChkBook-quickRefArea-amount-tooltip">
-                                <ute:Table width="400px">
-                                    <ute:columns>
-                                        <ute:TableColumn>
-                                            <ute:TextView color="White" text="Invoice Amount Due"></ute:TextView>
-                                        </ute:TableColumn>
-                                        <ute:TableColumn>
-                                            <ute:TextView color="White" text="239.45"></ute:TextView>
-                                        </ute:TableColumn>
-                                    </ute:columns>
-                                    <ute:rows>
-                                        <ute:TableRow>
-                                            <ute:TextView color="White" text="dsjfijdsfj.45"></ute:TextView>
-                                            <ute:TextView color="White" text="dsjfijdsfj.45"></ute:TextView>
-                                        </ute:TableRow>
-                                        <ute:TableRow>
-                                            <ute:TextView color="White" text="dsjfijdsfj.45"></ute:TextView>
-                                            <ute:TextView color="White" text="dsjfijdsfj.45"></ute:TextView>
-                                        </ute:TableRow>
-                                    </ute:rows>
-                                </ute:Table>
-                            </ute:Tooltip>
-                        </ute:tooltip>
-                    </ute:Tag>
-                </ute:Tag>
-                <ute:Tag elem="div" class="nrgBilling-billChkBook-quickRefArea-customer">
-                    <ute:Button class="nrgBilling-billChkBook-customer-btn"
-                                   text="payment options"/>
-                    <ute:Button class="nrgBilling-billChkBook-customer-btn"
-                                   text="high bill factors"/>
-                </ute:Tag>
-            </ute:Tag>
-            <!-- Main Content Body -->
-            <!--<ute:ScrollContainer class="nrgBilling-billChkBook-mainContent" height="380px" horizontal="false" vertical="true">
-                <ute:Tag elem="div" class="test"/>
-                <ute:Tag elem="div" class="test2"/>
-            </ute:ScrollContainer>-->
         </ute:Tag>
 
         <!-- Right -->
