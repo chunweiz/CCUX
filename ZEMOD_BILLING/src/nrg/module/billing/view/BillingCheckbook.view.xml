@@ -60,22 +60,32 @@
 
             <m:ScrollContainer class="nrgBilling-blChkBk-lftDiv-scrllArea" width="752px" height="686px" horizontal="false" vertical="true">
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr">
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c1"
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-h1"
                              text="{comp-i18n-billing>nrgBilling-billChkBook-Table-BillingDate}" />
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2"
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-h2"
                              text="{comp-i18n-billing>nrgBilling-billChkBook-Table-LineItemDesc}" />
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3"
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-h3"
                              text="{comp-i18n-billing>nrgBilling-billChkBook-Table-Amount}" />
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c4"
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-h4"
                              text="{comp-i18n-billing>nrgBilling-billChkBook-Table-DueDate}" />
                 </ute:Tag>
                 <ute:Tag content="{emp>/employers}">
-                    <utmain:Infoline reverse="true">
+                    <utmain:Infoline reverse="true" class="nrgBilling-blChkBk-lftDiv-scrllArea-lnItm">
+                        <utmain:headerContent>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c1"
+                                     text="{emp>firstName}"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2"
+                                     text="Some line item description"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_1"
+                                     text="223.67"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_2"
+                                     text="123.23"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c4"
+                                     text="01/31/14"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c5"
+                                     text="DPP+AAA"/>
+                        </utmain:headerContent>
                         <utmain:content>
-                            <utmain:headerContent>
-                                <utmain:Label text="{emp>firstName}"/>
-                            </utmain:headerContent>
-                            <ute:Tag text="{emp>firstName} {emp>lastName}"/>
                             <ute:Tag content="{bp>/employees}">
                                 <ute:Tag text="{bp>firstName} {bp>lastName}"/>
                             </ute:Tag>
