@@ -2,6 +2,17 @@
     "name": "test.tm.ze_ccux_ctrl.Component",
 
     "sap.ui5": {
+        "dependencies": {
+            "libs": {
+                "sap.ui.layout": {},
+                "sap.ui.commons": {},
+                "sap.m": {},
+                "ute.ui.commons": {},
+                "ute.ui.main": {},
+                "ute.ui.app": {},
+                "ute.ui.viz": {}
+            }
+        },
 
         "resources": {
             "css": [

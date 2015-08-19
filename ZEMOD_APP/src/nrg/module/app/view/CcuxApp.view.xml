@@ -57,7 +57,7 @@
             </ua:Header>
         </ua:header>
         <ua:body>
-            <ua:Body id="appBody">
+            <ua:Body id="appBody" class="nrgAppBody">
                 <ua:banner>
                     <ua:Text id="appBodyTitle" class="nrgAppBodyBanner-title" />
                 </ua:banner>

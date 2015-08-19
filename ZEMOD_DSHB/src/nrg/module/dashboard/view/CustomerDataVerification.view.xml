@@ -22,7 +22,7 @@
                             <ute:Tag class="nrgDashboard-cusDataVerify-l-div">
                                 <ute:TextView text="{oDtaVrfyContracts>/ContractStatus}"
                                     class="nrgDashboard-cusDataVerify-l-div-title">
-                                    <ute:tooltip class="test">
+                                    <ute:tooltip>
                                         <ute:Tooltip>
                                             <ute:TextView
                                                 color="White"
@@ -40,7 +40,14 @@
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TdspLbl}"
                                     class="nrgDashboard-cusDataVerify-l-div-tdspLabl">
                                     <utmain:tooltip>
-                                        <c:RichTooltip text="{oDtaVrfyContracts>/TDSPSrvPhNumber}  {oDtaVrfyContracts>/TDSPOutPhNumber}"/>
+                                        <ute:Tooltip>
+                                            <ute:TextView
+                                                color="White"
+                                                text="{oDtaVrfyContracts>/TDSPSrvPhNumber}"/>
+                                            <ute:TextView
+                                                color="White"
+                                                text="{oDtaVrfyContracts>/TDSPOutPhNumber}"/>
+                                        </ute:Tooltip>
                                     </utmain:tooltip>
                                 </utmain:Label>
                                 <ute:TextView id="tdsp"

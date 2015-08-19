@@ -1,0 +1,9 @@
+{
+	"version": "2.0",
+	"name": "ute.ui.viz.library-preload",
+	"modules": {
+		"ute/ui/viz/library.js": "sap.ui.define([\"sap/ui/thirdparty/d3\"],function(){\"use strict\";return sap.ui.getCore().initLibrary({name:\"ute.ui.viz\",version:\"1.0.0\",interfaces:[],types:[],controls:[],elements:[]}),ute.ui.viz});",
+		"ute/ui/viz/themes/base/library.less": "@import \"../../../../../../../ZEBASE_CTRL/src/ute/ui/base/asset/css/color.less\";\r\n@import \"../../../../../../../ZEBASE_CTRL/src/ute/ui/base/asset/css/typography.less\";\r\n",
+		"ute/ui/viz/themes/sap_bluecrystal/library.less": "@import \"../base/library.less\";\n"
+	}
+}

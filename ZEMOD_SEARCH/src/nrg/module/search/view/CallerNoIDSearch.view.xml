@@ -44,7 +44,8 @@
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
-                    width="48%">
+                    width="48%"
+                    maxLength="9">
                 </ute:Textfield>
 
                 <!--type:'nrg.util.type.DriverLicenseNumber'-->

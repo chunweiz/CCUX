@@ -21,6 +21,7 @@ sap.ui.define(
                 publicMethods: [
                     'start',
                     'notifyWebUi',
+                    'cancelWebUiEvent',
                     'isAvailable'
                 ]
             }
@@ -41,16 +42,36 @@ sap.ui.define(
             return bAvailable;
         };
 
+        Manager.prototype.cancelWebUiEvent = function (sEvent, sId, fnCallback, oListener) {
+            var sEventInt = [ sEvent, sId ].join('-');
+            this.detachEvent(sEventInt, fnCallback, oListener);
+
+            this.notifyWebUi('cancelEvent', {
+                EVENT: sEvent,
+                SID: sId
+            });
+
+            return this;
+        };
+
         Manager.prototype.notifyWebUi = function (sEvent, oPayload, fnCallback, oListener) {
-            var sMessage, oData;
+            var sMessage, oData, sId;
 
             if (!this.isAvailable()) {
-                jQuery.sap.log.error('[WebUiManager.notifyWebUi()]', 'Unable to post message because this component is not embedded in any parent window');
+                jQuery.sap.log.error(
+                    '[WebUiManager.notifyWebUi()]',
+                    'Unable to post message because this component is not embedded in any parent window'
+                );
+
                 return this;
             }
 
             if (!sEvent) {
-                jQuery.sap.log.error('[WebUiManager.notifyWebUi()]', 'Event name is not provided');
+                jQuery.sap.log.error(
+                    '[WebUiManager.notifyWebUi()]',
+                    'Event name is not provided'
+                );
+
                 return this;
             }
 
@@ -62,7 +83,8 @@ sap.ui.define(
             }
 
             if (fnCallback) {
-                oData.SID = this._getUniqueId();
+                sId = this._getUniqueId();
+                oData.SID = sId;
                 this.attachEventOnce([ oData.EVENT, oData.SID ].join('-'), fnCallback, oListener);
             }
 
@@ -71,7 +93,7 @@ sap.ui.define(
             jQuery.sap.log.info('[WebUiManager.notifyWebUi()]', sMessage);
             window.parent.postMessage(sMessage, this._getDomain());
 
-            return this;
+            return sId || this;
         };
 
         Manager.prototype._fromWebUi = function (oEvent) {
