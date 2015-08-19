@@ -8,8 +8,8 @@
     xmlns:core="sap.ui.core"
     xmlns:m="sap.m">
 
-    <ute:Tag id="idAddrUpdatePopup"
-             class="nrgBupa-cusDataVerifyEditMail nrgBupa-cusDataVerifyEditMail-vl">
+    <ute:Tag id="idAddrUpdatePopup" class="nrgBupa-cusDataVerifyEditMail nrgBupa-cusDataVerifyEditMail-vl">
+        <!-- Warnings -->
         <ute:Tag id="idAddrUpdatePopup-HdrLn" visible="{oDtaAddrEdit>/updateSent}"
             class="nrgBupa-cusDataVerifyEditMail-hdr">
             <ute:Tag>
@@ -21,6 +21,7 @@
                 <ute:TextView text="{oDtaAddrEdit>/SuggAddrInfo/HeaderText2}"/>
             </ute:Tag>
         </ute:Tag>
+        <!-- Address Form - Left -->
         <ute:Tag id="idAddrUpdatePopup-l"
             class="nrgBupa-cusDataVerifyEditMail-l nrgBupa-cusDataVerifyEditMail-l-vl">
             <ute:TextView visible="{oDtaAddrEdit>/updateSent}"
@@ -64,6 +65,7 @@
                 text="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_UpdtBtnText}"
                 press="._handleMailingAddrUpdate"/>
         </ute:Tag>
+        <!-- Address Form - Right -->
         <ute:Tag id="idAddrUpdatePopup-r"
             class="nrgBupa-cusDataVerifyEditMail-r"
             visible="{oDtaAddrEdit>/updateSent}">
@@ -104,10 +106,12 @@
                 <ute:TextView text="{oDtaAddrEdit>/SuggAddrInfo/FooterLine2}"/>
                 <ute:TextView text="{oDtaAddrEdit>/SuggAddrInfo/FooterLine3}"/>
             </ute:Tag>
+            <!-- Compare Btn -->
             <ute:Tag class="nrgBupa-cusDataVerifyEditMail-r-ChkBx">
                 <utmain:Checkbox id="idSuggCompareCheck" select="._compareSuggChkClicked"/>
                 <utmain:Label text="Compare"/>
             </ute:Tag>
+            <!-- Accept / Decline / Edit -->
             <utmain:Button  id="idEditMailAddr_AcptBtn"
                 visible="{oDtaAddrEdit>/showVldBtns}"
                 class="nrgBupa-cusDataVerifyEditMailAdd-valdBtn"
