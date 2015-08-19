@@ -945,8 +945,8 @@ sap.ui.define(
                     title: 'Edit Mailing Address',
                     close: function() {
                         this._retrBuagMailingAddr(
-                            this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'), 
-                            this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'), 
+                            this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'),
+                            this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
                             this.getView().getModel('oDtaVrfyBuags').getProperty('/FixedAddressID')
                         );
                     }.bind(this)

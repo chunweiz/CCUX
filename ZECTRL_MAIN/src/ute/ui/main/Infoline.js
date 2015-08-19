@@ -18,7 +18,8 @@ sap.ui.define(
 
                 properties: {
                     design: { type: 'ute.ui.main.InfolineDesign', defaultValue: ute.ui.main.InfolineDesign.Default },
-                    expanded: { type: 'boolean', defaultValue: false }
+                    expanded: { type: 'boolean', defaultValue: false },
+                    reverse: { type: 'boolean', defaultValue: false}
                 },
 
                 aggregations: {
