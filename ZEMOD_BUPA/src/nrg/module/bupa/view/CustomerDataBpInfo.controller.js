@@ -1118,17 +1118,20 @@ sap.ui.define(
             oEmailBox.setVisible(true);
             oDelEmailBox.setVisible(false);
             //this.getView().byId("idBpInfoEmailEditPopup").setVisible(true);
-            this._oEmailEditPopup = ute.ui.main.Popup.create({
-                //close: this._handleEditMailPopupClose,
-                content: this._oPopupContent,
-                title: 'Email Address and Preferences'
-            });
-            this.getView().addDependent(this._oEmailEditPopup);
-            //this._oEmailEditPopup.open();
-            this._oEmailEditPopup.setShowCloseButton(false);
+            if(!this._oEmailEditPopup) {
+                this._oEmailEditPopup = ute.ui.main.Popup.create({
+                    //close: this._handleEditMailPopupClose,
+                    content: this._oPopupContent,
+                    title: 'Email Address and Preferences'
+                });
+                this.getView().addDependent(this._oEmailEditPopup);
+                //this._oEmailEditPopup.open();
+                this._oEmailEditPopup.setShowCloseButton(false);
+            }
 
             //Start loading NNP logics and settings
             sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
+            
             oParameters = {
                 /*urlParameters: {"$expand": "Buags"},*/
                 success : function (oData) {
