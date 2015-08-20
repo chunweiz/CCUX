@@ -442,7 +442,7 @@ sap.ui.define(
             oComponent.getCcuxApp().setOccupied(false);
 
             //Navigate to verification page
-            oRouter.navTo('bupa.caInfo', {bpNum: oRouteInfo.BP_NUM, caNum: sCurrentCa, coNum: sCurrentCo});
+            oRouter.navTo('bupa.caInfoWithCo', {bpNum: oRouteInfo.BP_NUM, caNum: sCurrentCa, coNum: sCurrentCo});
         };
 
         Controller.prototype._handleUnConfirm = function () {
@@ -491,14 +491,14 @@ sap.ui.define(
                 success : function (oData) {
                     ute.ui.main.Popup.Alert({
                         title: 'Customer data update ',
-                        message: 'Update Success',
+                        message: 'Update Success'
                     });
                     this._initDtaVrfRetr();
                 }.bind(this),
                 error: function (oError) {
                     ute.ui.main.Popup.Alert({
                         title: 'Customer data update ',
-                        message: 'Update Failed',
+                        message: 'Update Failed'
                     });
                 }.bind(this)
             };
@@ -707,7 +707,7 @@ sap.ui.define(
             this.getView().byId('idAddrUpdatePopup-r').setVisible(false);
 
             for (i = 1; i < 8; i = i + 1) {
-                console.log(this.getView().byId('idAddrUpdatePopup-l').getContent()[i]);
+                //console.log(this.getView().byId('idAddrUpdatePopup-l').getContent()[i]);
                 this.getView().byId('idAddrUpdatePopup-l').getContent()[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-lHighlight');
                 this.getView().byId('idAddrUpdatePopup-r').getContent()[i].getContent()[0].removeStyleClass('nrgDashboard-cusDataVerifyEditMail-rHighlight');
             }
@@ -808,7 +808,7 @@ sap.ui.define(
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     ute.ui.main.Popup.Alert({
                         title: 'Mailing address update ',
-                        message: 'Update Success',
+                        message: 'Update Success'
                     });
                     this._retrBuag(this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'),  this.getView().getModel('oAllBuags').getProperty('/selectedKey'));
                     this._oMailEditPopup.close();
@@ -818,7 +818,7 @@ sap.ui.define(
                     this._oMailEditPopup.close();
                     ute.ui.main.Popup.Alert({
                         title: 'Mailing address update ',
-                        message: 'Update Failed',
+                        message: 'Update Failed'
                     });
                 }.bind(this)
             };
@@ -856,7 +856,7 @@ sap.ui.define(
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     ute.ui.main.Popup.Alert({
                         title: 'Input address validation',
-                        message: 'Validation Call Failed',
+                        message: 'Validation Call Failed'
                     });
 
                 }.bind(this)
@@ -936,7 +936,7 @@ sap.ui.define(
             var oEditMail = this.getView().getModel('oDtaAddrEdit'),
                 oCompareEvnet = {mParameters: {checked: null}};
 
-                console.log(oEditMail);
+                //console.log(oEditMail);
 
 
             oEditMail.setProperty('/AddrInfo', this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/FixAddrInfo'));
@@ -945,7 +945,7 @@ sap.ui.define(
                 this._oMailEditPopup = ute.ui.main.Popup.create({
                     content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
                     title: 'Edit Mailing Address',
-                    close: function() {
+                    close: function () {
                         this._retrBuagMailingAddr(
                             this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'),
                             this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
@@ -1024,14 +1024,14 @@ sap.ui.define(
                 success : function (oData) {
                     ute.ui.main.Popup.Alert({
                         title: 'Address update',
-                        message: 'Update Success',
+                        message: 'Update Success'
                     });
                     this._oTempMailEditPopup.close();
                 }.bind(this),
                 error: function (oError) {
                     ute.ui.main.Popup.Alert({
                         title: 'Address update',
-                        message: 'Update Failed',
+                        message: 'Update Failed'
                     });
                 }.bind(this)
             };
@@ -1122,7 +1122,7 @@ sap.ui.define(
                     this._oEmailEditPopup.close();
                     ute.ui.main.Popup.Alert({
                         title: 'Email edit',
-                        message: 'NNP Entity Service Error',
+                        message: 'NNP Entity Service Error'
                     });
                 }.bind(this)
             };
@@ -1157,7 +1157,7 @@ sap.ui.define(
                     sap.ui.commons.MessageBox.alert("Email Validate Service Error");
                     ute.ui.main.Popup.Alert({
                         title: 'Email address validation',
-                        message: 'Email Validate Service Error',
+                        message: 'Email Validate Service Error'
                     });
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
@@ -1200,12 +1200,12 @@ sap.ui.define(
                     if (bEmailChanged) {
                         ute.ui.main.Popup.Alert({
                             title: 'Email save ',
-                            message: oNNP.getProperty('/LdapMessage'),
+                            message: oNNP.getProperty('/LdapMessage')
                         });
                     } else {
                         ute.ui.main.Popup.Alert({
                             title: 'Email save',
-                            message: 'Marketing Preference Updated Successfully',
+                            message: 'Marketing Preference Updated Successfully'
                         });
                     }
                     this._oEmailEditPopup.close();
