@@ -936,6 +936,7 @@ sap.ui.define(
 
             if (oEvent.mParameters.checked) {
                 for (i = 1; i < 8; i = i + 1) {
+                    console.log('5566', oLeftInputArea[i].getContent()[0].getValue(), oRightSuggArea[i].getContent()[0].getValue());
                     if (oLeftInputArea[i].getContent()[0].getValue() !== oRightSuggArea[i].getContent()[0].getValue()) {
                         oLeftInputArea[i].getContent()[0].addStyleClass('nrgBupa-cusDataVerifyEditMail-lHighlight');
                         oRightSuggArea[i].getContent()[0].addStyleClass('nrgBupa-cusDataVerifyEditMail-rHighlight');
