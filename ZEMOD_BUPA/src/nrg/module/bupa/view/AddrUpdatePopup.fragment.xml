@@ -59,7 +59,7 @@
                 editable="{oDtaAddrEdit>/updateNotSent}" width="100px"
                 value="{oDtaAddrEdit>/AddressInfo/ZipCode}"/></ute:Tag>
 
-            <utmain:Button  id="idEditMailAddr_UpdtBtn"
+            <ute:Button  id="idEditMailAddr_UpdtBtn"
                 visible="{oDtaAddrEdit>/updateNotSent}"
                 class="nrgBupa-cusDataVerifyEditMailAdd-updtBtn nrgBupa-cusDataVerify-alignCenBtn"
                 text="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_UpdtBtnText}"
@@ -112,17 +112,17 @@
                 <utmain:Label text="Compare"/>
             </ute:Tag>
             <!-- Accept / Decline / Edit -->
-            <utmain:Button  id="idEditMailAddr_AcptBtn"
+            <ute:Button  id="idEditMailAddr_AcptBtn"
                 visible="{oDtaAddrEdit>/showVldBtns}"
                 class="nrgBupa-cusDataVerifyEditMailAdd-valdBtn"
                 text="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_AcceptBtn}"
                 press="._handleMailingAcceptBtn"/>
-            <utmain:Button  id="idEditMailAddr_DclnBtn"
+            <ute:Button  id="idEditMailAddr_DclnBtn"
                 visible="{oDtaAddrEdit>/showVldBtns}"
                 class="nrgBupa-cusDataVerifyEditMailAdd-valdBtn"
                 text="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_DeclineBtn}"
                 press="._handleMailingDeclineBtn"/>
-            <utmain:Button  id="idEditMailAddr_EditBtn"
+            <ute:Button  id="idEditMailAddr_EditBtn"
                 visible="{oDtaAddrEdit>/showVldBtns}"
                 class="nrgBupa-cusDataVerifyEditMailAdd-valdBtn"
                 text="{comp-i18n-bupa>nrgBupaCusDatVrf_Pup_EditBtn}"

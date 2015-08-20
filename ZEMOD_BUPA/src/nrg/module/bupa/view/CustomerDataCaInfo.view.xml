@@ -1,4 +1,3 @@
-<!--Routing Pattern: BpInfo/{bpNum}-->
 <mvc:View
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
@@ -10,6 +9,7 @@
     controllerName="nrg.module.bupa.view.CustomerDataCaInfo">
 
     <ute:Tag class="nrgAppMain-generalContent nrgBupa-cusDataCaInfo">
+        <!-- Header -->
         <ute:Tag elem="span"
                  class="nrgBupa-cusDataCaInfo-scrnTitle"
                  text="{comp-i18n-bupa>nrgBupa-cusDataCaInfo-MAILING_ADDRESS}" />
@@ -32,10 +32,8 @@
             <ute:HorizontalDivider width="16%"
                                    class="nrgBupa-cusDataCaInfo-horiLine"/>
         </ute:Tag>
-
-        <utmain:Infoline class="nrgBupa-cusDataCaInfo-infoLine"
-                         expanded="true"
-                         press=".onSvcAddrPressed">
+        <!-- Service Address -->
+        <utmain:Infoline class="nrgBupa-cusDataCaInfo-infoLine" expanded="true" press=".onSvcAddrPressed">
             <utmain:headerContent>
                 <ute:TextView class="nrgBupa-cusDataCaInfo-infoLineHeader-txt"
                               text="{comp-i18n-bupa>nrgBupa-cusDataCaInfo-SERVICE_ADDRESS}"/>
@@ -60,12 +58,11 @@
                         text="{comp-i18n-bupa>nrgBupa-cusDataCaInfo-SELECT_ALL}"
                         class="nrgBupa-cusDatacaInfo-l-chb-lbl"/>
                 </ute:Tag>
-        </utmain:content>
+            </utmain:content>
         </utmain:Infoline>
 
-        <utmain:Infoline class="nrgBupa-cusDataCaInfo-infoLine"
-                         expanded="true"
-                         press=".onSvcAddrPressed">
+        <!-- Mailing Address -->
+        <utmain:Infoline class="nrgBupa-cusDataCaInfo-infoLine" expanded="true" press=".onSvcAddrPressed">
             <utmain:headerContent>
                 <ute:TextView class="nrgBupa-cusDataCaInfo-infoLineHeader-txt"
                               text="{comp-i18n-bupa>nrgBupa-cusDataCaInfo-MAILING_ADDRESS}"/>
@@ -304,20 +301,21 @@
                     </l:rows>
                 </l:MatrixLayout>-->
 
+                <!-- Buttons -->
                 <ute:Tag elem="div" class="nrgBupa-cusDataCaInfo-btn clearfix">
-                    <utmain:Button class="nrgBupa-cusDataCaInfo-CommBtn"
+                    <ute:Button class="nrgBupa-cusDataCaInfo-CommBtn"
                                    press="onMailAddrCancel"
                                    visible="{oCaInfoConfig>/mailAddrSaveVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataCaInfo-CANCEL}"/>
-                    <utmain:Button class="nrgBupa-cusDataCaInfo-CommBtn"
+                    <ute:Button class="nrgBupa-cusDataCaInfo-CommBtn"
                                    press="onMailAddrUpdate"
                                    visible="{oCaInfoConfig>/mailAddrUpdateVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataCaInfo-UPDATE}"/>
-                    <utmain:Button class="nrgBupa-cusDataCaInfo-CommBtn"
+                    <ute:Button class="nrgBupa-cusDataCaInfo-CommBtn"
                                    press="onMailAddrAddnew"
                                    visible="{oCaInfoConfig>/mailAddrAddnewVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataCaInfo-ADD_NEW}"/>
-                    <utmain:Button class="nrgBupa-cusDataCaInfo-CommBtn"
+                    <ute:Button class="nrgBupa-cusDataCaInfo-CommBtn"
                                    press="._onEditMailAddrClick"
                                    visible="{oCaInfoConfig>/mailAddrSaveVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataCaInfo-SAVE}"/>
@@ -325,9 +323,8 @@
             </utmain:content>
         </utmain:Infoline>
 
-        <utmain:Infoline class="nrgBupa-cusDataCaInfo-infoLine"
-                         expanded="true"
-                         press=".onSvcAddrPressed">
+        <!-- Temporary Mailing Address -->
+        <utmain:Infoline class="nrgBupa-cusDataCaInfo-infoLine" expanded="true" press=".onSvcAddrPressed">
             <utmain:headerContent>
                 <ute:TextView class="nrgBupa-cusDataCaInfo-infoLineHeader-txt"
                               text="{comp-i18n-bupa>nrgBupa-cusDataCaInfo-TEMP_MAILING_ADDRESS}"/>
