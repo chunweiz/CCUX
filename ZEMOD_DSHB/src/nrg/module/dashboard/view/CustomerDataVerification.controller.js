@@ -1213,9 +1213,9 @@ sap.ui.define(
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
-                     ute.ui.main.Popup.Alert({
+                    ute.ui.main.Popup.Alert({
                         title: 'Email save',
-                        message: 'Update Failed',
+                        message: 'Update Failed'
                     });
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
@@ -1250,9 +1250,9 @@ sap.ui.define(
                 error: function (oError) {
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     this._oEmailEditPopup.close();
-                     ute.ui.main.Popup.Alert({
+                    ute.ui.main.Popup.Alert({
                         title: 'Email delete',
-                        message: 'Update Failed',
+                        message: 'Update Failed'
                     });
                 }.bind(this)
             };
@@ -1261,7 +1261,7 @@ sap.ui.define(
                 this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 ute.ui.main.Popup.Alert({
                     title: 'Email delete',
-                    message: 'Cannot delete email when preferences set to YES.',
+                    message: 'Cannot delete email when preferences set to YES.'
                 });
                 return;
             } else {
@@ -1323,7 +1323,7 @@ sap.ui.define(
                 this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 ute.ui.main.Popup.Alert({
                     title: 'Email delete',
-                    message: 'Cannot delete email when preferences set to YES.',
+                    message: 'Cannot delete email when preferences set to YES.'
                 });
                 return;
             } else {
@@ -1360,7 +1360,7 @@ sap.ui.define(
                 error: function (oError) {
                     ute.ui.main.Popup.Alert({
                         title: 'Email cancel',
-                        message: 'NNP Entity Service Error',
+                        message: 'NNP Entity Service Error'
                     });
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
