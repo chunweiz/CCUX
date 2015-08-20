@@ -1098,7 +1098,6 @@ sap.ui.define(
         };
 
         Controller.prototype._handleEmailEdit = function (oEvent) {
-            console.log('5566');
             var oModel = this.getView().getModel('oODataSvc'),
                 oParameters,
                 sBpNum = this._bpNum,
@@ -1115,43 +1114,40 @@ sap.ui.define(
             //Start loading NNP logics and settings
             sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
             
+            //Preapre Popup for Email Edit to show
+            if (!this._oPopupContent) {
+                this._oPopupContent = sap.ui.xmlfragment(this.getView().sId, "nrg.module.bupa.view.CustomerVerificationPopup", this);
+            }
+
+            oEmailBox = sap.ui.core.Fragment.byId(this.getView().sId, "idnrgDB-EmailBox");
+            oDelEmailBox = sap.ui.core.Fragment.byId(this.getView().sId, "idnrgDB-DelEmailBox");
+            oEmailBox.setVisible(true);
+            oDelEmailBox.setVisible(false);
+
+            //this.getView().byId("idBpInfoEmailEditPopup").setVisible(true);
+            if(!this._oEmailEditPopup) {
+                this._oEmailEditPopup = ute.ui.main.Popup.create({
+                    //close: this._handleEditMailPopupClose,
+                    content: this._oPopupContent,
+                    title: 'Email Address and Preferences'
+                });
+                this.getView().addDependent(this._oEmailEditPopup);
+                this._oEmailEditPopup.setShowCloseButton(false);
+            }
+            this._oEmailEditPopup.open();
+
+
             oParameters = {
                 /*urlParameters: {"$expand": "Buags"},*/
                 success : function (oData) {
-                    console.log('7788', oData);
                     if (oData) {
+                        oNNP.setData(oData);
                         this.getOwnerComponent().getCcuxApp().setOccupied(false);
-                        this.getView().getModel('oEditEmailNNP').setData(oData);
-                        
-                        //Preapre Popup for Email Edit to show
-                        if (!this._oPopupContent) {
-                            this._oPopupContent = sap.ui.xmlfragment("BPInfoEmailEditPopup", "nrg.module.bupa.view.CustomerVerificationPopup", this);
-                        }
-                        
-                        oEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-EmailBox");
-                        oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox");
-                        oEmailBox.setVisible(true);
-                        oDelEmailBox.setVisible(false);
-                        
-                        //this.getView().byId("idBpInfoEmailEditPopup").setVisible(true);
-                        if(!this._oEmailEditPopup) {
-                            this._oEmailEditPopup = ute.ui.main.Popup.create({
-                                //close: this._handleEditMailPopupClose,
-                                content: this._oPopupContent,
-                                title: 'Email Address and Preferences'
-                            });
-                            this.getView().addDependent(this._oEmailEditPopup);
-                            //this._oEmailEditPopup.open();
-                            this._oEmailEditPopup.setShowCloseButton(false);
-                        }
-
-
-                        this._oEmailEditPopup.open();
                     }
                 }.bind(this),
                 error: function (oError) {
-                    sap.ui.commons.MessageBox.alert("NNP Entity Service Error");
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    sap.ui.commons.MessageBox.alert("NNP Entity Service Error");
                 }.bind(this)
             };
 

@@ -13,7 +13,7 @@
         
         <!-- BP Number -->
         <ute:Tag elem="span" class="nrgBupa-cusDataBpInfo-scrnTitle"
-                 text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-BUSINESS_PARTNER} #{oDataBP>/PartnerID}" />
+                 text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-BUSINESS_PARTNER}" />
         <!-- Back To Dashboard -->
         <ute:Tag elem="span" class="nrgBupa-cusDataBpInfo-r-btn">
             <utmain:Button design="None" class="nrgBupa-cusDataBpInfo-CommBtn" press="onBackToDashboard">
