@@ -44,9 +44,10 @@
                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtDscp2" text="for no service interuption"/>
                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-onHover">
                         <ute:tooltip>
-                            <ute:Tooltip openDelay="100" class="nrgBilling-billChkBook-quickRefArea-amount-tooltip">
-                                <ute:Tag content="{tip>/employers}">
-                                    <ute:Tag text="{tip>lastName}"/>
+                            <ute:Tooltip openDelay="100" class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip">
+                                <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-frm">
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="Invoice Amount Due"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="239.45"/>
                                 </ute:Tag>
                             </ute:Tooltip>
                         </ute:tooltip>
