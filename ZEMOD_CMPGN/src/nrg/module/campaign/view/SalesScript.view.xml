@@ -39,7 +39,7 @@
             </l:MatrixLayout>
             <u:Tag class="nrgCamSS-left">
                 <um:Dropdown id="idnrgCamSSDdL" select=".onMandLngSelected" class="nrgCamSSLng-DdL">
-                    <um:DropdownItem key="{comp-campaign>TxtLang}" id="idnrgCamSSLngLtIt" class="nrgCamSSLng-DdLItem">
+                    <um:DropdownItem key="{comp-campaign>TxtLang}" class="nrgCamSSLng-DdLItem">
                         <u:Tag text="{parts:[{path:'comp-campaign>TxtLang'}],
                                                     formatter:'.formatType'}"/>
                     </um:DropdownItem>
@@ -102,6 +102,14 @@
                 </um:Dropdown>
             </u:Tag>
           </u:Dialog>
+        <u:Tag class="nrgCamSS-hide">
+            <um:Dropdown select=".onMandLngSelected" class="nrgCamSSLng-DdL">
+                <um:DropdownItem key="{comp-campaign>TxtLang}" id="idnrgCamSSLngLtIt" class="nrgCamSSLng-DdLItem">
+                    <u:Tag text="{parts:[{path:'comp-campaign>TxtLang'}],
+                                                formatter:'.formatType'}"/>
+                </um:DropdownItem>
+            </um:Dropdown>
+        </u:Tag>
       </u:Tag>
    </u:Tag>
 </mvc:View>

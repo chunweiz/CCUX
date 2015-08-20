@@ -136,7 +136,7 @@ sap.ui.define(
             sCampaignCode = oContext.getProperty("Campaign");
             sBrand = oContext.getProperty("Brand");
             sOfferCode = oContext.getProperty("OfferCode");
-            sCA = "";
+            sCA = this._sCA;
             sPromo = oContext.getProperty("Promo");
             sDispoCode = oEvent.mParameters.selectedKey;
             sPromoRank = oContext.getProperty("PromoRank");
