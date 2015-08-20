@@ -1132,10 +1132,13 @@ sap.ui.define(
                     content: this._oPopupContent,
                     title: 'Email Address and Preferences'
                 });
-                this.getView().addDependent(this._oEmailEditPopup);
                 this._oEmailEditPopup.setShowCloseButton(false);
+                this.getView().addDependent(this._oEmailEditPopup);
+                this._oEmailEditPopup.open();
+            } else {
+                this._oEmailEditPopup.open();
             }
-            this._oEmailEditPopup.open();
+
 
 
             oParameters = {
