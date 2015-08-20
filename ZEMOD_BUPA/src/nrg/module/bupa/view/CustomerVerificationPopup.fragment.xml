@@ -15,13 +15,13 @@
                 <ute:TextView
                     text="{oEditEmailNNP>/Script}"/>
             </ute:Tag>
-            <!-- Switches -->
+            
             <ute:Tag class="nrgBupa-cusDataVerifyEditEmail-inputArea">
                 <ute:Textfield fieldType="Underlined"
                     label="{comp-i18n-bupa>nrgBupaCusDatVrf_EmlPup_Email}"
                     editable="true" width="200px"
                     value="{oEditEmailNNP>/Email}"/>
-                 <utmain:Button class="nrgBupa-cusDataVerifyEditEmail-inputArea-btn nrgBupa-cusDataVerify-alignCenBtn"
+                 <ute:Button class="nrgBupa-cusDataVerifyEditEmail-inputArea-btn nrgBupa-cusDataVerify-alignCenBtn"
                     text="{comp-i18n-bupa>nrgBupaCusDatVrf_EmlPup_VlBtn}"
                     press="._onValidateEmailAddress"/>
                 <ute:Tag class="nrgBupa-cusDataVerifyEditEmail-inputArea-nresult"
@@ -43,7 +43,7 @@
                     <ute:TextView text="{oEditEmailValidate>/Result}"/>
                 </ute:Tag>
             </ute:Tag>
-
+            <!-- Switches -->
             <ute:Tag class="nrgBupa-cusDataVerifyEditEmail-option">
                 <ute:ToggleButton id="idEmail_yn_ctaddr"
                     class="nrgBupa-cusDataVerifyEditEmail-toggle"
@@ -97,10 +97,10 @@
                 <utmain:Label labelFor="idEmail_yn_engeff" text="Energy Efficiency"/>
             </ute:Tag>
 
-            <utmain:Button  id="idEditEmail_SaveBtn" class="nrgBupa-cusDataVerifyEditEmail-actBtn nrgBupa-cusDataVerify-alignCenBtn"
+            <ute:Button  id="idEditEmail_SaveBtn" class="nrgBupa-cusDataVerifyEditEmail-actBtn nrgBupa-cusDataVerify-alignCenBtn"
                 text="{comp-i18n-bupa>nrgBupaCusDatVrf_EmlPup_SAVE}"
                 press="._onEditEmailSave"/>
-            <utmain:Button  id="idEditEmail_DelBtn" class="nrgBupa-cusDataVerifyEditEmail-actBtn nrgBupa-cusDataVerify-alignCenBtn"
+            <ute:Button  id="idEditEmail_DelBtn" class="nrgBupa-cusDataVerifyEditEmail-actBtn nrgBupa-cusDataVerify-alignCenBtn"
                 text="{comp-i18n-bupa>nrgBupaCusDatVrf_EmlPup_DEL}"
                 press="._onShowDelEmailBox"/>
         </ute:Tag>

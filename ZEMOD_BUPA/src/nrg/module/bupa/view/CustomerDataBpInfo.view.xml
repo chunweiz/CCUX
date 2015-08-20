@@ -121,17 +121,17 @@
                         </l:MatrixLayoutRow>
                     </l:rows>
                 </l:MatrixLayout>
-
+                <!-- Buttons -->
                 <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-btn clearfix">
-                    <utmain:Button class="nrgBupa-cusDataBpInfo-CommBtnSave"
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
                                    press="onTitleCancel"
                                    visible="{oBpInfoConfig>/titleSaveVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-CANCEL}"/>
-                    <utmain:Button class="nrgBupa-cusDataBpInfo-CommBtnEdit"
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnEdit nrgBupa-cusDataBpInfo-alignCenBtn"
                                    press="onTitleEdit"
                                    visible="{oBpInfoConfig>/titleEditVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-EDIT}"/>
-                    <utmain:Button class="nrgBupa-cusDataBpInfo-CommBtnSave"
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
                                    press="onTitleSave"
                                    visible="{oBpInfoConfig>/titleSaveVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-SAVE}"/>
@@ -307,17 +307,17 @@
                         </l:MatrixLayoutRow>
                     </l:rows>
                 </l:MatrixLayout>
-
+                <!-- Buttons -->
                 <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-btn clearfix">
-                    <utmain:Button class="nrgBupa-cusDataBpInfo-CommBtnSave"
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
                                    press="onAddrCancel"
                                    visible="{oBpInfoConfig>/addrSaveVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-CANCEL}"/>
-                    <utmain:Button class="nrgBupa-cusDataBpInfo-CommBtnEdit"
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnEdit nrgBupa-cusDataBpInfo-alignCenBtn"
                                    press="onAddrEdit"
                                    visible="{oBpInfoConfig>/addrEditVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-EDIT}"/>
-                    <utmain:Button class="nrgBupa-cusDataBpInfo-CommBtnSave"
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
                                    press="onAddrSave"
                                    visible="{oBpInfoConfig>/addrSaveVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-SAVE}"/>
@@ -431,17 +431,17 @@
                         </l:MatrixLayoutRow>
                     </l:rows>
                 </l:MatrixLayout>
-
+                <!-- Buttons -->
                 <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-btn clearfix">
-                    <utmain:Button class="nrgBupa-cusDataBpInfo-CommBtnSave"
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
                                    press="onPersonalInfoCancel"
                                    visible="{oBpInfoConfig>/personalInfoSaveVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-CANCEL}"/>
-                    <utmain:Button class="nrgBupa-cusDataBpInfo-CommBtnEdit"
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnEdit nrgBupa-cusDataBpInfo-alignCenBtn"
                                    press="onPersonalInfoEdit"
                                    visible="{oBpInfoConfig>/personalInfoEditVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-EDIT}"/>
-                    <utmain:Button class="nrgBupa-cusDataBpInfo-CommBtnSave"
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
                                    press="onPersonalInfoSave"
                                    visible="{oBpInfoConfig>/personalInfoSaveVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-SAVE}"/>
@@ -572,17 +572,17 @@
                         </l:MatrixLayoutRow>
                     </l:rows>
                 </l:MatrixLayout>
-
+                <!-- Buttons -->
                 <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-btn clearfix">
-                    <utmain:Button class="nrgBupa-cusDataBpInfo-CommBtnSave"
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
                                    press="onContactInfoCancel"
                                    visible="{oBpInfoConfig>/contactInfoSaveVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-CANCEL}"/>
-                    <utmain:Button class="nrgBupa-cusDataBpInfo-CommBtnEdit"
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnEdit nrgBupa-cusDataBpInfo-alignCenBtn"
                                    press="onContactInfoEdit"
                                    visible="{oBpInfoConfig>/contactInfoEditVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-EDIT}"/>
-                    <utmain:Button class="nrgBupa-cusDataBpInfo-CommBtnSave"
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
                                    press="onContactInfoSave"
                                    visible="{oBpInfoConfig>/contactInfoSaveVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-SAVE}"/>
@@ -590,6 +590,7 @@
             </utmain:content>
         </utmain:Infoline>
 
+        <!-- Marketing Preference -->
         <utmain:Infoline class="nrgBupa-cusDataBpInfo-infoLine"
                          expanded="true" press=".onMarketPrefPressed">
             <utmain:headerContent>
@@ -634,17 +635,17 @@
                         </l:MatrixLayoutRow>
                     </l:rows>
                 </l:MatrixLayout>
-
+                <!-- Buttons -->
                 <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-btn clearfix">
-                    <utmain:Button class="nrgBupa-cusDataBpInfo-CommBtnSave"
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
                                    press="onMarketPrefCancel"
                                    visible="{oBpInfoConfig>/marketPrefSaveVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-CANCEL}"/>
-                    <utmain:Button class="nrgBupa-cusDataBpInfo-CommBtnEdit"
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnEdit nrgBupa-cusDataBpInfo-alignCenBtn"
                                    press="onMarketPrefEdit"
                                    visible="{oBpInfoConfig>/marketPrefEditVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-EDIT}"/>
-                    <utmain:Button class="nrgBupa-cusDataBpInfo-CommBtnSave"
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
                                    press="onMarketPrefSave"
                                    visible="{oBpInfoConfig>/marketPrefSaveVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-SAVE}"/>
