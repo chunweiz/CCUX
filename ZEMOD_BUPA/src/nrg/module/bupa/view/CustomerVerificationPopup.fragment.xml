@@ -108,12 +108,12 @@
         <ute:Tag id="idnrgDB-DelEmailBox" class="nrgBupa-DelEmailBox" visible="false">
                 <ute:Tag text="CONFIRMATION NEEDED: I just want to make sure you're aware that deleting email address will remove you from any Internet-based services we offer, including Online Account Management, online bill payment and Paperless Billing, and that all your bills and accounts notices will be sent via regular mail. Are you sure you want to do this? " />
             <ute:Tag class="nrgBupa-DelEmailBox-btns">
-                <utmain:Button class="nrgBupa-cusDataVerifyEditEmail-actBtn nrgBupa-cusDataVerify-alignCenBtn"
-                text="Cancel"
-                press="._onEmailCancel"/>
-            <utmain:Button class="nrgBupa-cusDataVerifyEditEmail-actBtn nrgBupa-cusDataVerify-alignCenBtn"
-                text="Delete Email Address"
-                press="._onEditEmailDelete"/>
+                <ute:Button class="nrgBupa-cusDataVerifyEditEmail-actBtn nrgBupa-cusDataVerify-alignCenBtn"
+                    text="Cancel"
+                    press="._onEmailCancel"/>
+                <ute:Button class="nrgBupa-cusDataVerifyEditEmail-actBtn nrgBupa-cusDataVerify-alignCenBtn"
+                    text="Delete Email Address"
+                    press="._onEditEmailDelete"/>
             </ute:Tag>
         </ute:Tag>
     </ute:Tag>

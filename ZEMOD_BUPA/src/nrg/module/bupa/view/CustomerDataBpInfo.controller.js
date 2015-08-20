@@ -1319,8 +1319,8 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype._onShowDelEmailBox = function (oEvent) {
-            var oEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-EmailBox"),
-                oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox"),
+            var oEmailBox = sap.ui.core.Fragment.byId(this.getView().sId, "idnrgDB-EmailBox"),
+                oDelEmailBox = sap.ui.core.Fragment.byId(this.getView().sId, "idnrgDB-DelEmailBox"),
                 oNNP = this.getView().getModel('oEditEmailNNP');
             if ((oNNP.getProperty('/Ecd') === 'Y') || (oNNP.getProperty('/Mkt') === 'Y') || (oNNP.getProperty('/Offer') === 'Y') || (oNNP.getProperty('/Ee') === 'Y')) {
                 this.getOwnerComponent().getCcuxApp().setOccupied(false);
@@ -1338,8 +1338,8 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype._onEmailCancel = function (oEvent) {
-            var oEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-EmailBox"),
-                oDelEmailBox = sap.ui.core.Fragment.byId("BPInfoEmailEditPopup", "idnrgDB-DelEmailBox"),
+            var oEmailBox = sap.ui.core.Fragment.byId(this.getView().sId, "idnrgDB-EmailBox"),
+                oDelEmailBox = sap.ui.core.Fragment.byId(this.getView().sId, "idnrgDB-DelEmailBox"),
                 sPath,
                 oModel = this.getView().getModel('oODataSvc'),
                 sBpNum = this.getView().getModel('oEditEmailNNP').getProperty('/PartnerID'),
