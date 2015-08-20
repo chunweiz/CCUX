@@ -400,12 +400,14 @@ sap.ui.define(
                 oComponent.getCcuxApp().setOccupied(true);
                 oWebUiManager.notifyWebUi('caConfirmed', {
                     BP_NUM: sCurrentBp,
-                    CA_NUM: sCurrentCa
+                    CA_NUM: sCurrentCa,
+                    CO_NUM: sCurrentCo
                 }, this._handleCaCofirmed, this);
             } else {
                 oPassingEvent = {
                     BP_NUM: sCurrentBp,
                     CA_NUM: sCurrentCa,
+                    CO_NUM: sCurrentCo,
                     getParameters: function () {
                         return oPassingEvent;
                     }
