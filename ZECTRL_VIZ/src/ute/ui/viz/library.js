@@ -18,7 +18,9 @@ sap.ui.define(
 
             controls: [],
 
-            elements: []
+            elements: [
+                'ute.ui.viz.Dataset'
+            ]
         });
 
         return ute.ui.viz;
