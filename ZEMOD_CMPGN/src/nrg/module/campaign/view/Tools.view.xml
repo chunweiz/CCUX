@@ -12,12 +12,12 @@
                 <u:Button
                     class="nrgCamTls-btn"
                     text="{comp-i18n-campaign>nrgCmpTlsBtnHis}"
-                    enabled="{appView>/history}"
+                    enabled="{localModel>/history}"
                     press=".onHistoryPress">
                 </u:Button>
                 <u:Button
                     text="{comp-i18n-campaign>nrgCmpTlsBtnCan}"
-                    enabled="{appView>/cancel}"
+                    enabled="{localModel>/cancel}"
                     class="nrgCamTls-top nrgCamTls-btn"
                     press=".onCancelPress">
                 </u:Button>
