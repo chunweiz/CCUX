@@ -35,6 +35,7 @@ sap.ui.define(
                     reliantText : "Verify",
                     reliantPress: ".onAcceptReliant"
                 });
+            this._OwnerComponent = this.getView().getParent().getParent().getController().getOwnerComponent();
             this.getView().setModel(oViewModel, "appView");
             sCurrentPath = "/PayAvailFlagsSet";
             sCurrentPath = sCurrentPath + "(ContractID='0034805112')";
@@ -55,7 +56,7 @@ sap.ui.define(
             var oTBIStopRec = this.getView().byId("idnrgQPPay-TBIStopRec"),
                 fnRecievedHandler,
                 oDropDown = this.getView().byId("idnrgQPCC-DDL"),
-                mParameters,
+                oBindingInfo,
                 oDropDownTemplate = this.getView().byId("idnrgQPCC-DDLItem"),
                 aFilters,
                 dropDownHandler,
@@ -73,19 +74,17 @@ sap.ui.define(
             fnRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
             };
-            mParameters = {
+
+            oBindingInfo = {
                 model : "comp-creditcard",
                 path : sCurrentPath,
                 template : oDropDownTemplate,
                 filters : aFilters,
+                parameters: {countMode : "None", operationMode : "Server"},
                 events: {dataReceived : fnRecievedHandler}
             };
-            dropDownHandler = function (oEvent) {
-                jQuery.sap.log.info("Event Called Successfully");
-                oDropDown.bindAggregation("content", mParameters);
-                oDropDown.detachEvent("DropDownClicked", dropDownHandler);
-            };
-            oDropDown.attachEvent("DropDownClicked", dropDownHandler);
+            oDropDown.bindAggregation("content", oBindingInfo);
+
         };
 
        /**
@@ -153,7 +152,7 @@ sap.ui.define(
                 aFilters,
                 fnRecievedHandler,
                 oDropDown = this.getView().byId("idnrgQPCC-ReceiptDD"),
-                mParameters,
+                oBindingInfo,
                 oDropDownTemplate = this.getView().byId("idnrgQPCC-ReceiptItem"),
                 sCurrentPath,
                 oModel = this.getView().getModel('comp-quickpay');
@@ -168,14 +167,15 @@ sap.ui.define(
             fnRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
             };
-            mParameters = {
+            oBindingInfo = {
                 model : "comp-quickpay",
                 path : sCurrentPath,
                 template : oDropDownTemplate,
                 filters : aFilters,
+                parameters: {countMode : "None", operationMode : "Server"},
                 events: {dataReceived : fnRecievedHandler}
             };
-            oDropDown.bindAggregation("content", mParameters);
+            oDropDown.bindAggregation("content", oBindingInfo);
         };
 
         /**
