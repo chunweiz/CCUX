@@ -1,0 +1,31 @@
+.uteTextField-float {
+	position: relative;
+	background-color: #FFF;
+	padding: 17px 0px 0px 0px;
+	height: 45px;
+	padding-right: 5px;
+	padding-left: 5px;
+	display: block;
+}
+
+.uteTextField-float > .uteTextField-float-input {
+	outline: none;
+	border: none;
+	line-height: 25px;
+	font-size: 18px;
+	padding: 0;
+}
+.uteTextField-float > .uteTextField-float-input.uteTextField-float-label-show + label {
+  	margin-top: -18px;
+  	font-size: 12px;
+  	font-weight: 500;
+}
+.uteTextField-float > .uteTextField-float-label {
+	position: absolute;
+	left: 5px;
+	top: 20px;
+	color: #C8C8C8;
+	font-size: 18px;
+	cursor: text;
+	transition: 0.2s;
+}

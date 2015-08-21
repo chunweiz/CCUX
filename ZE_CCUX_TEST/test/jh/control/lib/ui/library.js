@@ -17,12 +17,14 @@ sap.ui.define(
 
 			types: [
                 'jh.control.lib.ui.ButtonDesign',
-                'jh.control.lib.ui.TooltipDesign'
+                'jh.control.lib.ui.TooltipDesign',
+                'jh.control.lib.ui.TextFieldType'
             ],
 
 			controls: [
                 'jh.control.lib.ui.Button',
-				'jh.control.lib.ui.Tooltip'
+                'jh.control.lib.ui.Tooltip',
+				'jh.control.lib.ui.TextField'
 			],
 
 			elements: [],
@@ -42,6 +44,12 @@ sap.ui.define(
             Default: 'Default'
         };
 
+        jh.control.lib.ui.TextFieldType = {
+            Regular: 'Regular',
+            Underlined: 'Underlined',
+            Noborder: 'Noborder',
+            Float: 'Float'
+        };
 
         /*
         ** Create popup based on style guide

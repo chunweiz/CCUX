@@ -39,6 +39,13 @@
                 </jh:tooltip>
             </jh:Button>
 
+            <div>Float TextField</div>
+            <jh:TextField
+                placeholder="this is the test"
+                label="Test"
+                name="test"
+                fieldType="Float"
+                width="200px"/>
 
         </div>
     </sm:ScrollContainer>
