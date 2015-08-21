@@ -46,7 +46,7 @@
             </u:Tag>
             <u:Tag class="nrgCamPds-top nrgCamPds-font nrgCamPds-noPhone">
                 <c:Label text="No Phone" class="nrgCamPds-font"/>
-                <um:Checkbox id="idnrgCamTlsNoPhone" select=".onSelected" class="nrgCamPds-left"/>
+                <um:Checkbox id="idnrgCamTlsNoPhone" select=".onSelected" class="nrgCamPds-left" checked="{localModel>/NoPhone}"/>
             </u:Tag>
             <u:Tag class="nrgCamPds-top">
                 <u:Textfield
@@ -54,8 +54,8 @@
                     change="testInputChange"
                     fieldType="Underlined"
                     label="Requestor's Number"
-                    value="{localModel>ReqNumber}"
-                    editable="{localModel>/NoPhone}">
+                    value="{localModel>/ReqNumber}"
+                    editable="{= ! ${localModel>/NoPhone}  }">
                 </u:Textfield>
             </u:Tag>
             <u:Tag class="nrgCamPds-top">

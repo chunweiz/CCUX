@@ -48,11 +48,8 @@ sap.ui.define(
                 oEFLJson = {},
                 aResults = [],
                 oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
-                i18NModel,
-                oViewModel = new JSONModel({
-                    selected : 0
-			    });
-            this.getView().setModel(oViewModel, "appView");
+                i18NModel;
+
             i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setTitle("CAMPAIGNS");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
@@ -395,7 +392,15 @@ sap.ui.define(
                 aFilterValues,
                 oPendingSwapsTemplate,
                 i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign"),
-                fnRecievedHandler;
+                fnRecievedHandler,
+                oViewModel = new JSONModel({
+                    selected : 0,
+                    ReqNumber : "",
+                    ReqName : "",
+                    NoPhone : false
+                }),
+                that = this;
+            this.getView().setModel(oViewModel, "localModel");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             aFilterIds = ["Contract"];
             aFilterValues = [this._sContract];
@@ -414,7 +419,7 @@ sap.ui.define(
             oPendingSwapsTable = sap.ui.core.Fragment.byId("PendingOverview", "idnrgCamPds-pendTable");
             oPendingSwapsTemplate = sap.ui.core.Fragment.byId("PendingOverview", "idnrgCamPds-pendRow");
             fnRecievedHandler = function () {
-                this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
             };
             oBindingInfo = {
                 model : "comp-campaign",
@@ -427,7 +432,10 @@ sap.ui.define(
             this.getView().addDependent(this._oCancelDialog);
             //to get access to the global model
             this._oCancelDialog.addStyleClass("nrgCamHis-dialog");
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
             this._oCancelDialog.open();
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+
         };
         /**
 		 * Handler Function for the Pending Swaps Selection
@@ -436,7 +444,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onPendingSwapsSelected = function (oEvent) {
-            var iSelected = this.getView().getModel("appView").getProperty("/selected"),
+            var iSelected = this.getView().getModel("localModel").getProperty("/selected"),
                 sPath,
                 iIndex,
                 sTemp;
@@ -450,7 +458,7 @@ sap.ui.define(
                 iSelected = iSelected - 1;
                 sTemp = iIndex > -1 && this._aPendingSelPaths.splice(iIndex, 1);
             }
-            this.getView().getModel("appView").setProperty("/selected", iSelected);
+            this.getView().getModel("localModel").setProperty("/selected", iSelected);
         };
         /**
 		 * Handle when user clicked on Cancelling of Pending Swaps
@@ -461,18 +469,42 @@ sap.ui.define(
         Controller.prototype.ProceedwithCancel = function (oEvent) {
             var oModel = this.getOwnerComponent().getModel('comp-campaign'),
                 aSelectedPendingSwaps,
-                mParameters;
+                mParameters,
+                oLocalModel,
+                sReqName,
+                sReqNumber,
+                bNoPhone;
+
+            oLocalModel = this.getView().getModel("localModel");
+            sReqName = oLocalModel.getProperty("/ReqName");
+            sReqNumber = oLocalModel.getProperty("/ReqNumber");
+            bNoPhone = oLocalModel.getProperty("/NoPhone");
+            if ((this._aPendingSelPaths) && (this._aPendingSelPaths.length > 0)) {
+                if ((!sReqName) || (sReqName === "")) {
+                    sap.ui.commons.MessageBox.alert("Please enter Requestor's Name");
+                    return;
+                }
+                if ((!bNoPhone) && ((!sReqNumber) || (sReqNumber === ""))) {
+                    sap.ui.commons.MessageBox.alert("Please enter Requestor's Number or Select No Phone");
+                    return;
+                }
+            } else {
+                sap.ui.commons.MessageBox.alert("Select Pending Swap to cancel");
+                return;
+            }
             oModel.setRefreshAfterChange(false);
             mParameters = {
                 batchGroupId : "PD",
                 success : function (oData, oResponse) {
-                    jQuery.sap.log.info("Deleted Successfully");
+                    jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
                 error: function (oError) {
-                    jQuery.sap.log.info("Deletion failed");
-                }.bind(this)
+                    jQuery.sap.log.info("Eligibility Error occured");
+                }.bind(this),
+                urlParameters : {ReqName : sReqName, ReqNumber : sReqNumber }
             };
             this._aPendingSelPaths.map(function (sCurrentPath) {
+                var oContext = oModel.getContext(sCurrentPath);
                 oModel.remove(sCurrentPath, mParameters);
             });
             this._oCancelDialog.close();

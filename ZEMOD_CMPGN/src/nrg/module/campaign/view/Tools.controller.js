@@ -39,7 +39,7 @@ sap.ui.define(
                 cancel : false,
                 ReqNumber : "",
                 ReqName : "",
-                NoPhone : true
+                NoPhone : false
 			});
 
             this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
@@ -331,9 +331,7 @@ sap.ui.define(
 		 */
         Controller.prototype.onSelected = function (oEvent) {
             if (oEvent.getSource().getChecked()) {
-                this.getView().getModel("localModel").setProperty("/NoPhone", false);// No Phone checkbox selected
-            } else {
-                this.getView().getModel("localModel").setProperty("/NoPhone", true);// No Phone checkbox de-selected
+                this.getView().getModel("localModel").setProperty("/ReqNumber", "");// No Phone checkbox selected
             }
         };
         /**
@@ -435,7 +433,7 @@ sap.ui.define(
                     sap.ui.commons.MessageBox.alert("Please enter Requestor's Name");
                     return;
                 }
-                if ((bNoPhone) && ((!sReqNumber) || (sReqNumber === ""))) {
+                if ((!bNoPhone) && ((!sReqNumber) || (sReqNumber === ""))) {
                     sap.ui.commons.MessageBox.alert("Please enter Requestor's Number or Select No Phone");
                     return;
                 }
