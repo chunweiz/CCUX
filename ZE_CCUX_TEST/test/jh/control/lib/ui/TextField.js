@@ -77,19 +77,6 @@ sap.ui.define(
 		// * This file defines behavior for the Customized TextField control
 		// */
 
-		CustomControl.prototype.ontap = function (oEvent) {
-			var $inputField = jQuery(this.getDomRef("input"));
-			if(!$inputField.hasClass('uteTextField-float-label-show')) {
-				$inputField.addClass('uteTextField-float-label-show');
-			}
-
-			$inputField.focus();
-		}
-
-		CustomControl.prototype.onsapfocusleave = function (oEvent) {
-			console.log(this.getValue());
-		}
-
 
 		return CustomControl;
 

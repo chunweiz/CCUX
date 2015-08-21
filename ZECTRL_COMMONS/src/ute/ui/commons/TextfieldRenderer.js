@@ -23,6 +23,11 @@ sap.ui.define(
             if (oTextfield.getFieldType() === 'Noborder') {
                 oRm.addClass('uteTextfield-noBorder');
             }
+            if (oTextfield.getFieldType() === 'Float') {
+                oRm.addClass('uteTextfield-float');
+                oRm.addStyle('width', oTextfield.getWidth());
+                oRm.writeStyles();
+            }
             oRm.writeClasses();
             oRm.write('>');
 
@@ -77,6 +82,34 @@ sap.ui.define(
                 oRm.writeStyles();
                 oRm.writeClasses();
                 oRm.write('>');
+            } else if (oTextfield.getFieldType() === 'Float') {
+                oRm.write('<input');
+                // Attributes
+                oRm.writeAttribute('id', oTextfield.getId() + '-input');
+                oRm.writeAttribute('name', oTextfield.getName());
+                oRm.writeAttribute('required');
+                if (oTextfield.getValue()) {
+                    oRm.writeAttribute('value', oTextfield.getValue());
+                }
+                if (!oTextfield.getEditable()) {
+                    oRm.writeAttribute('readonly', '');
+                }
+                if (oTextfield.getMaxLength()) {
+                    oRm.writeAttribute("maxLength", oTextfield.getMaxLength());
+                }
+                oRm.addClass('uteTextfield-float-input');
+                oRm.writeClasses();
+                oRm.write('>');
+                // Implement Placeholder
+                if(oTextfield.getPlaceholder()) {
+                    oRm.write('<label');
+                    oRm.writeAttribute('for', oTextfield.getName());
+                    oRm.addClass('uteTextfield-float-label');
+                    oRm.writeClasses();
+                    oRm.write('>');
+                    oRm.write(oTextfield.getPlaceholder());
+                    oRm.write('</label>');
+                }
             } else {       //default situation, so not specified as type "underlined"
                 oRm.write('<input');
                 //oRm.writeControlData(oTextfield);

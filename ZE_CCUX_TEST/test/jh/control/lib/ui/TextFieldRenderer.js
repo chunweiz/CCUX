@@ -24,6 +24,8 @@ sap.ui.define(
             if (oTextField.getFieldType() === 'Float') {
                 oRenderManager.addClass('uteTextField-float');
             }
+            oRenderManager.addStyle('width', oTextField.getWidth());
+            oRenderManager.writeStyles();
             oRenderManager.writeClasses();
             oRenderManager.write('>');
 
@@ -32,24 +34,24 @@ sap.ui.define(
             // Attributes
             oRenderManager.writeAttribute('id', oTextField.getId() + '-input');
             oRenderManager.writeAttribute('name', oTextField.getName());
+            if (oTextField.getFieldType() === 'Float') {
+                oRenderManager.writeAttribute('required');
+            }
             if (oTextField.getValue()) {
                 oRenderManager.writeAttribute('value', oTextField.getValue());
             }
-            
             if (!oTextField.getEditable()) {
                 oRenderManager.writeAttribute('readonly', '');
             }
             if (oTextField.getMaxLength()) {
 		        oRenderManager.writeAttribute("maxLength", oTextField.getMaxLength());
 	        }
-            oRenderManager.addStyle('width', oTextField.getWidth());
             oRenderManager.addClass('uteTextField-float-input');
-            oRenderManager.writeStyles();
             oRenderManager.writeClasses();
             oRenderManager.write('>');
 
             // Implement Placeholder
-            if(oTextField.getPlaceholder()) {
+            if(oTextField.getFieldType() === 'Float' && oTextField.getPlaceholder()) {
             	oRenderManager.write('<label');
             	oRenderManager.writeAttribute('for', oTextField.getName());
             	oRenderManager.addClass('uteTextField-float-label');

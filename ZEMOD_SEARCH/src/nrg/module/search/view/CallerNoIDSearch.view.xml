@@ -21,6 +21,7 @@
             <ute:Tag class="nrgSearch-calrNoIDSearch-textfield">
                 
                 <!--type:'nrg.util.type.ContractAccountNumber'-->
+
                 <ute:Textfield
                     value="{
                         path:'oSearchFilters>/searchTextFields/sCaNum'}"
