@@ -45,9 +45,27 @@
                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-onHover">
                         <ute:tooltip>
                             <ute:Tooltip openDelay="100" class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip">
-                                <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-frm">
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="Invoice Amount Due"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="239.45"/>
+                                <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-otrFrm">
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-innFrm">
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="Invoice Amount Due"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="239.45"/>
+                                    </ute:Tag>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-innFrm nrgBilling-blChkBk-lftDiv-qkRefArea-redHghlt">
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="Disconnect Notice Amount Due"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="99.86"/>
+                                    </ute:Tag>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-innFrm nrgBilling-blChkBk-lftDiv-qkRefArea-yllwHghlt">
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="Other Fees and Charges"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="16.55"/>
+                                    </ute:Tag>
+                                    <ute:Tag>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="Payment Plan Balance"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="0.00"/>
+                                    </ute:Tag>
+                                </ute:Tag>
+                                <ute:Tag>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="TOTAL"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="355.86"/>
                                 </ute:Tag>
                             </ute:Tooltip>
                         </ute:tooltip>
