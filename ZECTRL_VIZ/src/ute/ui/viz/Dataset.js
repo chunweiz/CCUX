@@ -10,7 +10,11 @@ sap.ui.define(
 
         var CustomElement = Element.extend('ute.ui.viz.Dataset', {
             metadata: {
-                library: 'ute.ui.viz'
+                library: 'ute.ui.viz',
+
+                aggregations: {
+                    dimension: { type: 'sap.ui.core.Element', multiple: true, singularName: 'dimension' }
+                }
             }
         });
 
