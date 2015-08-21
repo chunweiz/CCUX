@@ -1,0 +1,39 @@
+<mvc:View
+    controllerName="test.tm.ze_ccux_ctrl.view.FancyTextField"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <style>
+        .customFTF {
+            display: inline-block;
+            position: relative;
+        }
+
+        .customFTF-input {
+            color: tomato;
+        }
+
+        .customFTF-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: grey;
+        }
+
+        .customFTF-input:focus + .customFTF-placeholder {
+            display: none;
+        }
+
+        .customFTF-input:valid + .customFTF-placeholder {
+            display: none;
+        }
+    </style>
+
+    <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
+
+    </sm:ScrollContainer>
+</mvc:View>

@@ -40,7 +40,8 @@
                 "Popup": { "pattern": "Popup", "target": [ "Popup" ] },
                 "Icon": { "pattern": "Icon", "target": [ "Icon" ] },
                 "XMLTemplate": { "pattern": "XMLTemplate", "target": [ "XMLTemplate" ] },
-                "ICAppHeader": { "pattern": "ICAppHeader", "target": [ "ICAppHeader" ] }
+                "ICAppHeader": { "pattern": "ICAppHeader", "target": [ "ICAppHeader" ] },
+                "FancyTextField": { "pattern": "FancyTextField", "target": [ "FancyTextField" ] }
             },
 
             "config": {
@@ -61,7 +62,8 @@
                 "Popup": { "viewName": "Popup", "controlId": "idAppContent" },
                 "Icon": { "viewName": "Icon", "controlId": "idAppContent" },
                 "XMLTemplate": { "viewName": "XMLView", "controlId": "idAppContent" },
-                "ICAppHeader": { "viewName": "ICAppHeader", "controlId": "idAppContent" }
+                "ICAppHeader": { "viewName": "ICAppHeader", "controlId": "idAppContent" },
+                "FancyTextField": { "viewName": "FancyTextField", "controlId": "idAppContent" }
             }
         }
     }
