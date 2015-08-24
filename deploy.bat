@@ -74,6 +74,16 @@
 ) ELSE (
     @ECHO Path %ECLIPSE_WORKSPACE_PATH%\ZEMOD_SEARCH does not exists.
 )
+@IF EXIST %ECLIPSE_WORKSPACE_PATH%\ZEMOD_USAGE (
+    @CALL grunt --deploy=module --moduleName=nrg.module.usage --moduleFolder=ZEMOD_USAGE --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\ZEMOD_USAGE
+) ELSE (
+    @ECHO Path %ECLIPSE_WORKSPACE_PATH%\ZEMOD_USAGE does not exists.
+)
+@IF EXIST %ECLIPSE_WORKSPACE_PATH%\ZEMOD_NNP (
+    @CALL grunt --deploy=module --moduleName=nrg.module.nnp --moduleFolder=ZEMOD_NNP --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\ZEMOD_NNP
+) ELSE (
+    @ECHO Path %ECLIPSE_WORKSPACE_PATH%\ZEMOD_NNP does not exists.
+)
 @IF EXIST %ECLIPSE_WORKSPACE_PATH%\ZECMP_IC (
     @CALL grunt --deploy=component --componentName=nrg.component.ic --componentFolder=ZECMP_IC --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\ZECMP_IC
 ) ELSE (

@@ -493,19 +493,24 @@ sap.ui.define(
                 return;
             }
             oModel.setRefreshAfterChange(false);
-            mParameters = {
-                batchGroupId : "PD",
-                success : function (oData, oResponse) {
-                    jQuery.sap.log.info("Odata Read Successfully:::");
-                }.bind(this),
-                error: function (oError) {
-                    jQuery.sap.log.info("Eligibility Error occured");
-                }.bind(this),
-                urlParameters : {ReqName : sReqName, ReqNumber : sReqNumber }
-            };
             this._aPendingSelPaths.map(function (sCurrentPath) {
                 var oContext = oModel.getContext(sCurrentPath);
-                oModel.remove(sCurrentPath, mParameters);
+                mParameters = {
+                    method : "POST",
+                    urlParameters : {"iDoc" : oContext.getProperty("IdocNo"),
+                                     "ReqNumber" : sReqNumber,
+                                     "Type" : oContext.getProperty("SwapType"),
+                                     "ReqName" : sReqName,
+                                     "Contract" : oContext.getProperty("Contract"),
+                                     "Hist" : oContext.getProperty("HistoryNo")},
+                    success : function (oData, oResponse) {
+                        jQuery.sap.log.info("Odata Read Successfully:::");
+                    }.bind(this),
+                    error: function (oError) {
+                        jQuery.sap.log.info("Eligibility Error occured");
+                    }.bind(this)
+                };
+                oModel.callFunction("/DeleteCampaign", mParameters);
             });
             this._oCancelDialog.close();
             this.navTo("campaignoffers", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
@@ -516,7 +521,7 @@ sap.ui.define(
 		 * @function
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
-        Controller.prototype.ContinuewithoutCancel = function (oEvent) {
+        Controller.prototype.ContinueWithoutCancel = function (oEvent) {
             this._oCancelDialog.close();
             this.navTo("campaignoffers", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
         };
