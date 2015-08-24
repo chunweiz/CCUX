@@ -67,7 +67,7 @@
                 <u:Button
                     text="Continue without Cancel"
                     enabled="true"
-                    press=".ContinuewithCancel">
+                    press=".ContinueWithoutCancel">
                 </u:Button>
             </u:Tag>
           </u:Tag>
