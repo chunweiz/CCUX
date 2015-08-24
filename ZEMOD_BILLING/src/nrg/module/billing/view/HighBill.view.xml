@@ -1,4 +1,4 @@
-<!--Routing Pattern: customerDataVerification/bp/{bpNum}-->
+<!--Routing Pattern: billing/highbill/bp/{bpNum}/ca/{caNum}/co/{coNum}-->
 <mvc:View
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
@@ -10,104 +10,54 @@
     xmlns:m="sap.m"
     controllerName="nrg.module.billing.view.HighBill">
 
-    <ute:Tag class="nrgAppMain-generalContent nrgBilling-blChkBk">
-        <!-- Left -->
-        <ute:Tag class="nrgBilling-blChkBk-lftDiv">
-            <ute:Tag class="nrgBilling-blChkBk-lftDiv-pageTitle">
-                <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-pageTitleSpan"
-                         text="{comp-i18n-billing>nrgBilling-billChkBook-PAGE_TITLE}" />
-            </ute:Tag>
+    <ute:Tag class="nrgAppMain-generalContent nrgBilling-highBill">
+        
+        <!-- Left Section -->
+        <ute:Tag class="nrgBilling-highBill-leftDiv">
+            <!-- Banner Section -->
+            <ute:Tag class="nrgBilling-highBill-banner">
+                <!-- Title & Back To Dashboard -->
+                <ute:Tag class="nrgBilling-highBill-titleAndNav">
+                    <!-- Title -->
+                    <ute:Tag elem="span" class="nrgBilling-highBill-title"
+                             text="{comp-i18n-billing>nrgBilling-highBill-PAGE_TITLE}" />
+                    <!-- Back -->
+                    <ute:Tag elem="span" class="nrgBilling-highBill-backToDash">
+                        <utmain:Button design="None" class="" press="onBackToDashboard">
+                            <core:Icon src="sap-icon://slim-arrow-left" class="nrgBilling-highBill-backIcon" />
+                            <ute:Tag elem="span" class="nrgBilling-highBill-backTitle"
+                                     text="{comp-i18n-billing>nrgBilling-highBill-BACK}" />
+                        </utmain:Button>
+                    </ute:Tag>
+                </ute:Tag>
+                
+                <!-- Meter Reading Date -->
+                <ute:Tag class="nrgBilling-highBill-mrDate">
+                    
+                </ute:Tag>
+                <!-- Billing Period Charges -->
+                <ute:Tag class="nrgBilling-highBill-bpCharges">
+                    
+                </ute:Tag>
+                <!-- Links -->
+                <ute:Tag class="nrgBilling-highBill-btnLinks">
+                    <!-- Retro Average Billing -->
+                    <ute:Tag class="nrgBilling-highBill-retroAvgBilling">
+                        
+                    </ute:Tag>
+                    <!-- Average Billing -->
+                    <ute:Tag class="nrgBilling-highBill-avgBilling">
+                        
+                    </ute:Tag>
 
-            <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea">
-                <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft">
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-ctnt">
-                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-lbl"
-                                 text="Start Date:"/>
-                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-val"
-                                 text="06/09/14"/>
-                        </ute:Tag>
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-ctnt">
-                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-lbl"
-                                 text="End Date:"/>
-                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-val"
-                                 text="08/09/15"/>
-                    </ute:Tag>
-                </ute:Tag>
-                <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl">
-                    <ute:Tag>
-                        <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtNum" text="$380.87"/>
-                        <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtNum" text="*"/>
-                    </ute:Tag>
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtDscp1" text="AMOUNT DUE"/>
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtDscp2" text="for no service interuption"/>
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-onHover">
-                        <ute:tooltip>
-                            <ute:Tooltip openDelay="100" class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip">
-                                <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-frm">
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="Invoice Amount Due"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="239.45"/>
-                                </ute:Tag>
-                            </ute:Tooltip>
-                        </ute:tooltip>
-                    </ute:Tag>
-                </ute:Tag>
-                <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght">
-                    <utmain:Button class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght-btn1" text="PAYMENT OPTIONS"/>
-                    <utmain:Button class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght-btn2" text="HIGH BILL FACTORS"/>
                 </ute:Tag>
             </ute:Tag>
-
-            <m:ScrollContainer class="nrgBilling-blChkBk-lftDiv-scrllArea" width="768px" height="686px" horizontal="false" vertical="true">
-                <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr">
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-h1"
-                             text="{comp-i18n-billing>nrgBilling-billChkBook-Table-BillingDate}" />
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-h2"
-                             text="{comp-i18n-billing>nrgBilling-billChkBook-Table-LineItemDesc}" />
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-h3"
-                             text="{comp-i18n-billing>nrgBilling-billChkBook-Table-Amount}" />
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-h4"
-                             text="{comp-i18n-billing>nrgBilling-billChkBook-Table-DueDate}" />
-                </ute:Tag>
-                <ute:Tag content="{emp>/employers}">
-                    <utmain:Infoline reverse="true" class="nrgBilling-blChkBk-lftDiv-scrllArea-lnItm">
-                        <utmain:headerContent>
-                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh1"
-                                     text="01/31/14"/>
-                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh2"
-                                     text="Invoicee Amount Due Description"/>
-                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh3"
-                                     text="91.08"/>
-                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh4"
-                                     text="08/31/16"/>
-                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5"/>
-                        </utmain:headerContent>
-                        <utmain:content>
-                            <ute:Tag content="{bp>/employees}">
-                                <ute:Tag> <!--For single or double underline classes add here ==> class="nrgBilling-blChkBk-lftDiv-scrllArea-snglUndrln nrgBilling-blChkBk-lftDiv-scrllArea-dblUndrln"-->
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c1"
-                                             text="01/31/14"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2"
-                                             text="{bp>firstName} {bp>lastName}"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_1"
-                                             text="223.67"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_2"
-                                             text="123.23"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c4"
-                                             text="08/31/16"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c5"
-                                             text="DPP+AAA"/>
-                                </ute:Tag>
-                            </ute:Tag>
-                        </utmain:content>
-                    </utmain:Infoline>
-                </ute:Tag>
-            </m:ScrollContainer>
         </ute:Tag>
 
-        <!-- Right -->
-        <ute:Tag class="nrgBilling-blChkBk-rghtDiv">
-
+        <!-- Right Section -->
+        <ute:Tag class="nrgBilling-highBill-rightDiv">
         </ute:Tag>
+        
     </ute:Tag>
 
 
