@@ -41,6 +41,10 @@
                 "billing.BillingPrePaid": {
                     "pattern": "billing/billingprepaid/bp/{bpNum}/ca/{caNum}/co/{coNum}",
                     "target":["billing.CustomerDataPrePD", "dashboard.CustomerDataSummary"]
+                },
+                "billing.HighBill": {
+                    "pattern": "billing/highbill/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target":["billing.HighBill", "dashboard.CustomerDataSummary", "dashboard.EmptyTools"]
                 }
             },
 
@@ -55,6 +59,10 @@
                 },
                 "billing.CustomerDataPrePD": {
                     "viewName": "nrg.module.billing.view.CustomerDataPrePD",
+                    "controlId": "idAppGeneral"
+                },
+                "billing.HighBill": {
+                    "viewName": "nrg.module.billing.view.HighBill",
                     "controlId": "idAppGeneral"
                 }
             }
