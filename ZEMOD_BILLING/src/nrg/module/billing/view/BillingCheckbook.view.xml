@@ -24,15 +24,15 @@
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft">
                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-ctnt">
                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-lbl"
-                                 text="Start Date:"/>
+                                 text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-StaDate}"/>
                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-val"
-                                 text="06/09/14"/>
+                                 text="{oChkbkHdr>/InvStrartDate}"/>
                         </ute:Tag>
                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-ctnt">
                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-lbl"
-                                 text="End Date:"/>
+                                 text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-EndDate}"/>
                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-val"
-                                 text="08/09/15"/>
+                                 text="{oChkbkHdr>/InvEndDate}"/>
                     </ute:Tag>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl">

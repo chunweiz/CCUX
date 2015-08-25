@@ -89,7 +89,7 @@ sap.ui.define(
         CustomController.prototype._initChkbookHdr = function () {
             var sPath;
 
-            sPath = '/ChkBookHdrs' + '(PartnerID=\'' + this._bpNum + '\', ContractAccountID=' + this._caNum + '\')';
+            sPath = '/ChkBookHdrs' + '(PartnerID=\'' + this._bpNum + '\', ContractAccountID=\'' + this._caNum + '\')';
 
             this._retrChkbookHdr(sPath);
         };
