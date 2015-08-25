@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:utmain="ute.ui.main"
+    xmlns:l="sap.ui.commons.layout"
+    xmlns:c="sap.ui.commons"
+    xmlns:core="sap.ui.core"
+    controllerName="nrg.module.nnp.view.NNP"
+    displayBlock="true">
+   <ute:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
+        <ute:Tag id="idnrgDB-EmailBox" visible="true"
+            class="nrgDashboard-cusDataVerifyEditEmail">
+            <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-desc">
+                <ute:TextView
+                    text="{oEditEmailNNP>/Script}"/>
+            </ute:Tag>
+            <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-inputArea">
+                <ute:Textfield fieldType="Underlined"
+                    label="{comp-i18n-nnp>nrgDashboardCusDatVrf_EmlPup_Email}"
+                    editable="true" width="200px"
+                    value="{oEditEmailNNP>/Email}"/>
+                 <utmain:Button class="nrgDashboard-cusDataVerifyEditEmail-inputArea-btn nrgDashboard-cusDataVerify-alignCenBtn"
+                    text="{comp-i18n-nnp>nrgDashboardCusDatVrf_EmlPup_VlBtn}"
+                    press="._onValidateEmailAddress"/>
+                <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-inputArea-nresult"
+                    visible="{
+                        parts:['oEditEmailValidate>/Valid'],
+                        formatter:'._formatNegativeX'}">
+                    <core:Icon src="sap-icon://nrg-icon/notification"
+                        visible="{
+                            parts:['oEditEmailValidate>/ColorIcon'],
+                            formatter:'._formatEmailMkt'}"/>
+                    <ute:TextView text="{oEditEmailValidate>/Result}"/>
+                </ute:Tag>
+                <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult"
+                    visible="{
+                        parts:['oEditEmailValidate>/Valid'],
+                        formatter:'._formatPositiveX'}">
+                    <utmain:Checkbox enabled="false" checked="true"
+                        class="nrgDashboard-cusDataVerifyEditEmail-inputArea-yresultChb"/>
+                    <ute:TextView text="{oEditEmailValidate>/Result}"/>
+                </ute:Tag>
+            </ute:Tag>
+
+            <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
+                <ute:ToggleButton id="idEmail_yn_ctaddr"
+                    class="nrgDashboard-cusDataVerifyEditEmail-toggle"
+                    design="ToggleDashboard" press="._onMktPrefTogg"
+                    leftSelected="{
+                        parts:['oEditEmailNNP>/Ecd'],
+                        formatter:'._formatEmailMkt'}"
+                    leftBtnWidth="45px" rightBtnWidth="45px"
+                    leftBtnText="{comp-i18n-nnp>nrgDashboardCusDatVrf_EmlPup_Y}"
+                    rightBtnText="{comp-i18n-nnp>nrgDashboardCusDatVrf_EmlPup_N}">
+                </ute:ToggleButton>
+                <utmain:Label labelFor="idEmail_yn_ctaddr" text="Email Contract Documents"/>
+            </ute:Tag>
+            <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
+                <ute:ToggleButton id="idEmail_yn_rpdsrv"
+                    class="nrgDashboard-cusDataVerifyEditEmail-toggle"
+                    design="ToggleDashboard" press="._onMktPrefTogg"
+                    leftSelected="{
+                        parts:['oEditEmailNNP>/Mkt'],
+                        formatter:'._formatEmailMkt'}"
+                    leftBtnWidth="45px" rightBtnWidth="45px"
+                    leftBtnText="{comp-i18n-nnp>nrgDashboardCusDatVrf_EmlPup_Y}"
+                    rightBtnText="{comp-i18n-nnp>nrgDashboardCusDatVrf_EmlPup_N}">
+                </ute:ToggleButton>
+                <utmain:Label labelFor="idEmail_yn_rpdsrv" text="Reliant Products and Services"/>
+            </ute:Tag>
+            <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
+                <ute:ToggleButton id="idEmail_yn_thrdpty"
+                    class="nrgDashboard-cusDataVerifyEditEmail-toggle"
+                    design="ToggleDashboard" press="._onMktPrefTogg"
+                    leftSelected="{
+                        parts:['oEditEmailNNP>/Offer'],
+                        formatter:'._formatEmailMkt'}"
+                    leftBtnWidth="45px" rightBtnWidth="45px"
+                    leftBtnText="{comp-i18n-nnp>nrgDashboardCusDatVrf_EmlPup_Y}"
+                    rightBtnText="{comp-i18n-nnp>nrgDashboardCusDatVrf_EmlPup_N}">
+                </ute:ToggleButton>
+                <utmain:Label labelFor="idEmail_yn_thrdpty" text="Third Party offers and promototions (e.g. sports/special events)"/>
+            </ute:Tag>
+            <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-option">
+                <ute:ToggleButton id="idEmail_yn_engeff"
+                    class="nrgDashboard-cusDataVerifyEditEmail-toggle"
+                    design="ToggleDashboard" press="._onMktPrefTogg"
+                    leftSelected="{
+                        parts:['oEditEmailNNP>/Ee'],
+                        formatter:'._formatEmailMkt'}"
+                    leftBtnWidth="45px" rightBtnWidth="45px"
+                    leftBtnText="{comp-i18n-nnp>nrgDashboardCusDatVrf_EmlPup_Y}"
+                    rightBtnText="{comp-i18n-nnp>nrgDashboardCusDatVrf_EmlPup_N}">
+                </ute:ToggleButton>
+                <utmain:Label labelFor="idEmail_yn_engeff" text="Energy Efficiency"/>
+            </ute:Tag>
+
+            <utmain:Button  id="idEditEmail_SaveBtn" class="nrgDashboard-cusDataVerifyEditEmail-actBtn nrgDashboard-cusDataVerify-alignCenBtn"
+                text="{comp-i18n-nnp>nrgDashboardCusDatVrf_EmlPup_SAVE}"
+                press="._onEditEmailSave"/>
+            <utmain:Button  id="idEditEmail_DelBtn" class="nrgDashboard-cusDataVerifyEditEmail-actBtn nrgDashboard-cusDataVerify-alignCenBtn"
+                text="{comp-i18n-nnp>nrgDashboardCusDatVrf_EmlPup_DEL}"
+                press="._onShowDelEmailBox"/>
+        </ute:Tag>
+
+        <ute:Tag id="idnrgDB-DelEmailBox" class="nrgDashboard-DelEmailBox" visible="false">
+            <ute:Tag text="CONFIRMATION NEEDED: I just want to make sure you're aware that deleting email address will remove you from any Internet-based services we offer, including Online Account Management, online bill payment and Paperless Billing, and that all your bills and accounts notices will be sent via regular mail. Are you sure you want to do this? " />
+            <ute:Tag class="nrgDashboard-DelEmailBox-btns">
+                <utmain:Button class="nrgDashboard-cusDataVerifyEditEmail-actBtn nrgDashboard-cusDataVerify-alignCenBtn"
+                text="Cancel"
+                press="._onEmailCancel"/>
+            <utmain:Button class="nrgDashboard-cusDataVerifyEditEmail-actBtn nrgDashboard-cusDataVerify-alignCenBtn"
+                text="Delete Email Address"
+                press="._onEditEmailDelete"/>
+            </ute:Tag>
+        </ute:Tag>
+   </ute:Tag>
+</mvc:View>
