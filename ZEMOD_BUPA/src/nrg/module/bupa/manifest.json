@@ -31,19 +31,23 @@
         "routing": {
             "routes": {
                 "bupa.bpInfo": {
-                    "pattern": "bupa/bpinfo/bp/{bpNum}/ca/{caNum}",
-                    "target":["bupa.BupaBpInfo", "dashboard.CustomerDataSummary", "bupa.Tools"]
-                },
-                "bupa.bpInfoWithCo": {
                     "pattern": "bupa/bpinfo/bp/{bpNum}/ca/{caNum}/co/{coNum}",
                     "target":["bupa.BupaBpInfo", "dashboard.CustomerDataSummary", "bupa.Tools"]
                 },
+                "bupa.bpInfoNoCo": {
+                    "pattern": "bupa/bpinfo/bp/{bpNum}/ca/{caNum}",
+                    "target":["bupa.BupaBpInfo", "dashboard.CustomerDataSummary", "bupa.Tools"]
+                },
+                "bupa.bpInfoNoCoNoCa": {
+                    "pattern": "bupa/bpinfo/bp/{bpNum}",
+                    "target":["bupa.BupaBpInfo", "dashboard.CustomerDataSummary", "bupa.Tools"]
+                },
                 "bupa.caInfo": {
-                    "pattern": "bupa/cainfo/bp/{bpNum}/ca/{caNum}",
+                    "pattern": "bupa/cainfo/bp/{bpNum}/ca/{caNum}/co/{coNum}",
                     "target":["bupa.BupaCaInfo", "dashboard.CustomerDataSummary", "bupa.Tools"]
                 },
-                "bupa.caInfoWithCo": {
-                    "pattern": "bupa/cainfo/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                "bupa.caInfoNoCo": {
+                    "pattern": "bupa/cainfo/bp/{bpNum}/ca/{caNum}",
                     "target":["bupa.BupaCaInfo", "dashboard.CustomerDataSummary", "bupa.Tools"]
                 }
             },
