@@ -1,0 +1,48 @@
+{
+    "sap.ui5": {
+        "config": {
+            "module": {
+                "nrg.module.usage": {
+                    "stylesheet": [
+                        "asset/css/module.css"
+                    ],
+
+                    "resourceBundle": {
+                        "comp-i18n-usage": "i18n/module.properties"
+                    },
+                    "odata": {
+                        "real": {
+                            "comp-usage": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_QUICK_PAY_SRV/"
+                            }
+                        },
+                        "mock": {
+                            "comp-usage": {
+                                "mockDataBaseUrl": "data/",
+                                "generateMissingMockData": true
+                        }
+                    }
+                  }
+                }
+            }
+        },
+        "routing": {
+           "routes": {
+                "usage": {
+                    "pattern": "usage",
+                    "target": [ "quickpay.General", "dashboard.SummaryBP", "quickpay.Tools" ]
+                }
+            },
+            "targets": {
+                "usage.General": {
+                    "viewName": "nrg.module.usage.view.General",
+                    "controlId": "idAppGeneral"
+                },
+                "usage.Tools": {
+                    "viewName": "nrg.module.usage.view.Tools",
+                    "controlId": "idAppTools"
+                }
+            }
+        }
+    }
+}

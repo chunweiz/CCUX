@@ -21,6 +21,7 @@
             <ute:Tag class="nrgSearch-calrNoIDSearch-textfield">
                 
                 <!--type:'nrg.util.type.ContractAccountNumber'-->
+
                 <ute:Textfield
                     value="{
                         path:'oSearchFilters>/searchTextFields/sCaNum'}"
@@ -30,6 +31,7 @@
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
+                    fieldType="Float"
                     width="48%"
                     maxLength="12">
                 </ute:Textfield>
@@ -44,6 +46,7 @@
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
+                    fieldType="Float"
                     width="48%"
                     maxLength="9">
                 </ute:Textfield>
@@ -58,6 +61,7 @@
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
+                    fieldType="Float"
                     width="48%">
                 </ute:Textfield>
 
@@ -70,6 +74,7 @@
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
+                    fieldType="Float"
                     width="48%"
                     maxLength="10">
                 </ute:Textfield>
@@ -84,6 +89,7 @@
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_Esid}"
                     change="onTextFieldChange"
+                    fieldType="Float"
                     enterKeyPress="onEnterKeyPress"
                     width="48%">
                 </ute:Textfield>
@@ -96,6 +102,7 @@
                     placeholder="{comp-i18n-search>nrgSearchClrNid_PhnNum}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
+                    fieldType="Float"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
@@ -108,6 +115,7 @@
                     placeholder="{comp-i18n-search>nrgSearchClrNid_FiName}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
+                    fieldType="Float"
                     width="48%">
                 </ute:Textfield>
 
@@ -119,6 +127,7 @@
                     placeholder="{comp-i18n-search>nrgSearchClrNid_LaName}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
+                    fieldType="Float"
                     width="48%">
                 </ute:Textfield>
 
@@ -130,6 +139,7 @@
                     placeholder="{comp-i18n-search>nrgSearchClrNid_TaxID}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
+                    fieldType="Float"
                     width="48%">
                 </ute:Textfield>
             </ute:Tag>
@@ -144,6 +154,7 @@
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
+                    fieldType="Float"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
@@ -154,6 +165,7 @@
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
+                    fieldType="Float"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
@@ -163,6 +175,7 @@
                     placeholder="{comp-i18n-search>nrgSearchClrNid_UnitNum}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
+                    fieldType="Float"
                     label="Title"
                     width="48%">
                 </ute:Textfield>
@@ -174,6 +187,7 @@
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
+                    fieldType="Float"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
@@ -184,6 +198,7 @@
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
+                    fieldType="Float"
                     width="48%">
                 </ute:Textfield>
                 <ute:Textfield
@@ -194,6 +209,7 @@
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
+                    fieldType="Float"
                     width="48%">
                 </ute:Textfield>
             </ute:Tag>

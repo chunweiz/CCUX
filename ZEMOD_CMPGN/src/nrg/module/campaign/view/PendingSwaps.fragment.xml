@@ -40,19 +40,22 @@
                     placeholder=""
                     change="testInputChange"
                     fieldType="Underlined"
-                    label="Requestor's Name">
+                    label="Requestor's Name"
+                    value="{localModel>/ReqName}">
                 </u:Textfield>
             </u:Tag>
             <u:Tag class="nrgCamPds-top nrgCamPds-font nrgCamPds-noPhone">
                 <c:Label text="No Phone" class="nrgCamPds-font"/>
-                <um:Checkbox id="idnrgCamTlsNoPhone" select=".onSelected" class="nrgCamPds-left"/>
+                <um:Checkbox id="idnrgCamTlsNoPhone" select=".onSelected" class="nrgCamPds-left" checked="{localModel>/NoPhone}"/>
             </u:Tag>
             <u:Tag class="nrgCamPds-top">
                 <u:Textfield
                     placeholder=""
                     change="testInputChange"
                     fieldType="Underlined"
-                    label="Requestor's Number">
+                    label="Requestor's Number"
+                    value="{localModel>/ReqNumber}"
+                    editable="{= ! ${localModel>/NoPhone}  }">
                 </u:Textfield>
             </u:Tag>
             <u:Tag class="nrgCamPds-top">
@@ -64,7 +67,7 @@
                 <u:Button
                     text="Continue without Cancel"
                     enabled="true"
-                    press=".ContinuewithCancel">
+                    press=".ContinueWithoutCancel">
                 </u:Button>
             </u:Tag>
           </u:Tag>

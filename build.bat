@@ -11,4 +11,6 @@
 @CALL grunt --build=module --moduleName=nrg.module.billing --moduleFolder=ZEMOD_BILLING
 @CALL grunt --build=module --moduleName=nrg.module.bupa --moduleFolder=ZEMOD_BUPA
 @CALL grunt --build=module --moduleName=nrg.module.search --moduleFolder=ZEMOD_SEARCH
+@CALL grunt --build=module --moduleName=nrg.module.nnp --moduleFolder=ZEMOD_NNP
+@CALL grunt --build=module --moduleName=nrg.module.usage --moduleFolder=ZEMOD_USAGE
 @CALL grunt --build=component --componentName=nrg.component.ic --componentFolder=ZECMP_IC

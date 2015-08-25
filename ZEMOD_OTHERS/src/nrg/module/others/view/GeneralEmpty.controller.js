@@ -15,13 +15,13 @@ sap.ui.define(
         var CustomController = Controller.extend('nrg.module.others.view.GeneralEmpty');
 
         CustomController.prototype.onConfirm = function (oControlEvent) {
-            var oWebUiManager, oComponent;
+            var oWebUiManager, oComponent, sId;
 
             oComponent = this.getOwnerComponent();
             oWebUiManager = oComponent.getCcuxWebUiManager();
 
             oComponent.getCcuxApp().setOccupied(true);
-            oWebUiManager.notifyWebUi('bpConfirmed', {
+            sId = oWebUiManager.notifyWebUi('bpConfirmed', {
                 BP_NUM: '0002955761'
             }, this._handleBpConfirmed, this);
         };
@@ -88,7 +88,6 @@ sap.ui.define(
         };
 
         CustomController.prototype.onSetInEdit = function (oEvent) {
-            console.log(d3);
             this.getOwnerComponent().getCcuxApp().setInEdit(true);
             this.getOwnerComponent().getRouter().navTo('search.SearchNoID');
         };

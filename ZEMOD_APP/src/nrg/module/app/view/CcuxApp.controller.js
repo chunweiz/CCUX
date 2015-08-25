@@ -267,14 +267,16 @@ sap.ui.define(
         };
 
         CustomController.prototype._initIndexConfigModel = function () {
-            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+            var oWebUiManager, sId;
+
+            oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
 
             if (!oWebUiManager.isAvailable()) {
                 return this;
             }
 
             this._oApp.setOccupied(true);
-            oWebUiManager.notifyWebUi('getIndexConfig', {}, this._onInitIndexConfigModelCallback, this);
+            sId = oWebUiManager.notifyWebUi('getIndexConfig', {}, this._onInitIndexConfigModelCallback, this);
         };
 
         CustomController.prototype._onInitIndexConfigModelCallback = function (oEvent) {

@@ -2,6 +2,7 @@
 /*globals ute*/
 /*jslint nomen:true*/
 
+
 sap.ui.define(
     [
         'jquery.sap.global',
@@ -107,11 +108,11 @@ sap.ui.define(
 
 
         CustomController.prototype.onAfterRendering = function () {
-
+            return undefined;
         };
 
         CustomController.prototype.onExit = function () {
-
+            return undefined;
         };
 
         CustomController.prototype._getMessageProcessor = function () {
@@ -936,7 +937,6 @@ sap.ui.define(
 
             if (oEvent.mParameters.checked) {
                 for (i = 1; i < 8; i = i + 1) {
-                    console.log('5566', oLeftInputArea[i].getContent()[0].getValue(), oRightSuggArea[i].getContent()[0].getValue());
                     if (oLeftInputArea[i].getContent()[0].getValue() !== oRightSuggArea[i].getContent()[0].getValue()) {
                         oLeftInputArea[i].getContent()[0].addStyleClass('nrgBupa-cusDataVerifyEditMail-lHighlight');
                         oRightSuggArea[i].getContent()[0].addStyleClass('nrgBupa-cusDataVerifyEditMail-rHighlight');
@@ -1317,7 +1317,7 @@ sap.ui.define(
 		 *
 		 * @function
          * @param {sap.ui.base.Event} oEvent pattern match event
-		 */
+         */
         Controller.prototype._onShowDelEmailBox = function (oEvent) {
             var oEmailBox = sap.ui.core.Fragment.byId(this.getView().sId, "idnrgDB-EmailBox"),
                 oDelEmailBox = sap.ui.core.Fragment.byId(this.getView().sId, "idnrgDB-DelEmailBox"),
@@ -1332,11 +1332,11 @@ sap.ui.define(
             }
         };
         /**
-		 * Handler for Email Cancel, so refresh the data from backend for complete popup
-		 *
-		 * @function
+         * Handler for Email Cancel, so refresh the data from backend for complete popup
+         *
+         * @function
          * @param {sap.ui.base.Event} oEvent pattern match event
-		 */
+         */
         Controller.prototype._onEmailCancel = function (oEvent) {
             var oEmailBox = sap.ui.core.Fragment.byId(this.getView().sId, "idnrgDB-EmailBox"),
                 oDelEmailBox = sap.ui.core.Fragment.byId(this.getView().sId, "idnrgDB-DelEmailBox"),

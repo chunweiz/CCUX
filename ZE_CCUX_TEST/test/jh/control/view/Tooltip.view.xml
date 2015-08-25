@@ -15,7 +15,7 @@
         <div class="jhWrap">
 
 
-            <div>Button with Tooltip</div>
+   <!--          <div>Button with Tooltip</div>
             <jh:Button text="button" press=".onPressed">
                 <jh:tooltip>
                     <jh:Tooltip openDelay="100" >
@@ -37,8 +37,30 @@
                         </uc:Table>
                     </jh:Tooltip>
                 </jh:tooltip>
-            </jh:Button>
+            </jh:Button> -->
 
+            <div>Float Label Pattern</div>
+            <br/>
+            <jh:TextField
+                placeholder="Contract Account #"
+                label="Test"
+                name="test"
+                fieldType="Float"
+                width="480px"/>
+
+            <jh:TextField
+                placeholder="SSN"
+                label="Test"
+                name="test"
+                fieldType="Float"
+                width="480px"/>
+
+            <jh:TextField
+                placeholder="Last Name / Org Name"
+                label="Test"
+                name="test"
+                fieldType="Float"
+                width="480px"/>
 
         </div>
     </sm:ScrollContainer>

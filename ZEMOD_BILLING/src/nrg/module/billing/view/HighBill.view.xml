@@ -1,0 +1,70 @@
+<!--Routing Pattern: billing/highbill/bp/{bpNum}/ca/{caNum}/co/{coNum}-->
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:utmain="ute.ui.main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.commons"
+    xmlns:l="sap.ui.commons.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:m="sap.m"
+    controllerName="nrg.module.billing.view.HighBill">
+
+    <ute:Tag class="nrgAppMain-generalContent nrgBilling-highBill">
+        
+        <!-- Left Section -->
+        <ute:Tag class="nrgBilling-highBill-leftDiv">
+            <!-- Banner Section -->
+            <ute:Tag class="nrgBilling-highBill-banner">
+                <!-- Title & Back To Dashboard -->
+                <ute:Tag class="nrgBilling-highBill-titleAndNav">
+                    <!-- Title -->
+                    <ute:Tag elem="span" class="nrgBilling-highBill-title"
+                             text="{comp-i18n-billing>nrgBilling-highBill-PAGE_TITLE}" />
+                    <!-- Back -->
+                    <ute:Tag elem="span" class="nrgBilling-highBill-backToDash">
+                        <utmain:Button design="None" class="" press="onBackToDashboard">
+                            <core:Icon src="sap-icon://slim-arrow-left" class="nrgBilling-highBill-backIcon" />
+                            <ute:Tag elem="span" class="nrgBilling-highBill-backTitle"
+                                     text="{comp-i18n-billing>nrgBilling-highBill-BACK}" />
+                        </utmain:Button>
+                    </ute:Tag>
+                </ute:Tag>
+                
+                <ute:Tag class="nrgBilling-highBill-flexbox">
+                    
+                    <!-- Meter Reading Date -->
+                    <ute:Tag class="nrgBilling-highBill-mrDate">
+                        <ute:Tag elem="span" class="nrgBilling-highBill-mrDate-title"
+                                 text="{comp-i18n-billing>nrgBilling-highBill-mrDate-TITLE}" />
+                        
+                    </ute:Tag>
+                    <!-- Billing Period Charges -->
+                    <ute:Tag class="nrgBilling-highBill-bpCharges">
+                        
+                    </ute:Tag>
+                    <!-- Links -->
+                    <ute:Tag class="nrgBilling-highBill-btnLinks">
+                        <!-- Retro Average Billing -->
+                        <ute:Tag class="nrgBilling-highBill-retroAvgBilling">
+                            
+                        </ute:Tag>
+                        <!-- Average Billing -->
+                        <ute:Tag class="nrgBilling-highBill-avgBilling">
+                            
+                        </ute:Tag>
+
+                    </ute:Tag>
+
+                </ute:Tag>
+            </ute:Tag>
+        </ute:Tag>
+
+        <!-- Right Section -->
+        <ute:Tag class="nrgBilling-highBill-rightDiv">
+        </ute:Tag>
+        
+    </ute:Tag>
+
+
+</mvc:View>
