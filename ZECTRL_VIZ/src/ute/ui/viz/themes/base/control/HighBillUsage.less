@@ -3,35 +3,80 @@
     .uteVizHBUsage-board {
 
         & .uteVizHBUsage-xGrid {
-            stroke: gold;
+            & .tick line {
+                stroke: @uteColor-white;
+                stroke-width: 1;
+            }
+
+            & .domain {
+                fill: none;
+                stroke: none;
+            }
         }
 
         & .uteVizHBUsage-yGrid {
-            stroke: gold;
+            & .tick line {
+                stroke: @uteColor-white;
+                stroke-width: 1;
+            }
+
+            & .domain {
+                fill: none;
+                stroke: none;
+            }
         }
 
         & .uteVizHBUsage-xAxis {
 
+            & line {
+                fill: none;
+			    stroke: @uteColor-white;
+			    stroke-width: 1;
+			    shape-rendering: crispEdges;
+            }
+
+            & .domain {
+                fill: none;
+                stroke: none;
+            }
         }
 
         & .uteVizHBUsage-yAxis {
 
+            & line {
+                fill: none;
+			    stroke: @uteColor-white;
+			    stroke-width: 1;
+			    shape-rendering: crispEdges;
+            }
+
+            & .domain {
+                fill: none;
+                stroke: none;
+            }
         }
 
         & .uteVizHBUsage-line {
-            stroke: steelblue;
+            stroke: @uteColor-grey-dark;
             stroke-width: 2;
             fill: none;
         }
 
         & .uteVizHBUsage-area {
             stroke: none;
-            fill: antiquewhite;
+            fill: @uteColor-grey-light;
             opacity: 0.8;
         }
 
         & .uteVizHBUsage-dataPt {
-            fill: tomato;
+            fill: @uteColor-grey-dark;
+            stroke: @uteColor-white;
+            stroke-width: 2;
+
+            &:hover {
+                fill: @uteColor-white;
+                stroke: @uteColor-grey-dark;
+            }
         }
     }
 }

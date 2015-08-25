@@ -91,6 +91,17 @@ sap.ui.define(
                     .attr('class', 'uteVizHBUsage-board')
                     .attr('transform', 'translate(' + oChartMargin.left + ',' + oChartMargin.top + ')');
 
+            //Draw area
+            oSvg.append('path')
+                .datum(aData)
+                .attr('class', 'uteVizHBUsage-area')
+                .attr('d', oArea);
+
+            // Draw line
+            oSvg.append('path')
+                .attr('class', 'uteVizHBUsage-line')
+                .attr('d', oLine(aData));
+
             // Draw grid
             oSvg.append('g')
                 .attr('class', 'uteVizHBUsage-xGrid')
@@ -111,24 +122,14 @@ sap.ui.define(
                 .attr('class', 'uteVizHBUsage-yAxis')
                 .call(oAxis.y);
 
-            //Draw area
-            oSvg.append('path')
-                .datum(aData)
-                .attr('class', 'uteVizHBUsage-area')
-                .attr('d', oArea);
-
-            // Draw line
-            oSvg.append('path')
-                .attr('class', 'uteVizHBUsage-line')
-                .attr('d', oLine(aData));
-
             // Draw data points
             oSvg.append('g')
                 .selectAll('.uteVizHBUsage-dataPt')
                 .data(aData)
                 .enter()
                 .append('circle')
-                    .attr('r', 5)
+                    .attr('class', 'uteVizHBUsage-dataPt')
+                    .attr('r', 4)
                     .attr('cx', function (d) { return oScale.x(d.date); })
                     .attr('cy', function (d) { return oScale.y(d.close); });
         };
