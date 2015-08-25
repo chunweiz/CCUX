@@ -38,6 +38,12 @@ sap.ui.define(
             this._cleanupChart();
         };
 
+        CustomControl.prototype._initChartSettings = function () {
+            this._oChartSetting = {};
+
+            
+        };
+
         CustomControl.prototype._createChart = function () {
             var oChartMargin, oChartSize, oSvg, oScale, oAxis, oGrid, aData, oLine, oArea;
 
