@@ -2,7 +2,7 @@
     "sap.ui5": {
         "config": {
             "module": {
-                "nrg.module.quickpay": {
+                "nrg.module.usage": {
                     "stylesheet": [
                         "asset/css/module.css"
                     ],

@@ -162,6 +162,8 @@
                         'ZEMOD_BILLING/src/nrg/module/billing/manifest.json',
                         'ZEMOD_BUPA/src/nrg/module/bupa/manifest.json',
                         'ZEMOD_SEARCH/src/nrg/module/search/manifest.json',
+                        'ZEMOD_USAGE/src/nrg/module/usage/manifest.json',
+                        'ZEMOD_NNP/src/nrg/module/nnp/manifest.json',
                         '<%= compFolder %>/src/<%= compPath %>/manifest.json'
                     ],
                     dest: '<%= compFolder %>/build/<%= compPath %>/manifest.json'
