@@ -121,6 +121,10 @@
                         </utmain:content>
                     </utmain:Infoline>
                 </ute:Tag>
+                <ute:Tag>
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-poInvc"
+                             text="Post Invoice Date Activities" />
+                </ute:Tag>
             </m:ScrollContainer>
         </ute:Tag>
 
