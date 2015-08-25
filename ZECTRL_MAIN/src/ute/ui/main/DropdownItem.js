@@ -14,7 +14,9 @@ sap.ui.define(
                 library: 'ute.ui.main',
 
                 properties: {
-                    key: { type: 'string', defaultValue: null }
+                    key: { type: 'string', defaultValue: null },
+
+                    enabled : {type : "boolean", group : "Misc", defaultValue : true}
                 },
 
                 aggregations: {
@@ -30,7 +32,9 @@ sap.ui.define(
         });
 
         CustomControl.prototype.onclick = function (oEvent) {
-            this.firePress();
+            if(this.getEnabled()) {
+                this.firePress();
+            }
         };
 
         return CustomControl;

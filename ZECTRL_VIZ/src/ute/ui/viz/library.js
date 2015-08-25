@@ -1,9 +1,7 @@
 /*global sap, ute*/
 
 sap.ui.define(
-    [
-        'sap/ui/thirdparty/d3'
-    ],
+    [],
 
     function () {
         'use strict';
@@ -16,10 +14,12 @@ sap.ui.define(
 
             types: [],
 
-            controls: [],
+            controls: [
+                'ute.ui.viz.HighBillUsage'
+            ],
 
             elements: [
-                'ute.ui.viz.Dataset'
+                'ute.ui.viz.HighBillUsageData'
             ]
         });
 

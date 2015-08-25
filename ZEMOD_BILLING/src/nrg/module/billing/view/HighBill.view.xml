@@ -30,13 +30,38 @@
                         </utmain:Button>
                     </ute:Tag>
                 </ute:Tag>
-                
+
                 <ute:Tag class="nrgBilling-highBill-flexbox">
                     
                     <!-- Meter Reading Date -->
                     <ute:Tag class="nrgBilling-highBill-mrDate">
                         <ute:Tag elem="span" class="nrgBilling-highBill-mrDate-title"
                                  text="{comp-i18n-billing>nrgBilling-highBill-mrDate-TITLE}" />
+                        <utmain:Dropdown id="startDateDropdown"
+                            class="nrgBilling-highBill-mrDate-startDropdown"
+                            selectedKey="{oStartInvoice>/selectedKey}"
+                            content="{oStartInvoice>/}"
+                            select="._onStartInvoiceSelect" >
+                            <utmain:DropdownItem
+                                key="{oStartInvoice>Index}">
+                                <ute:Tag elem="span"
+                                    text="{oStartInvoice>Date}"/>
+                            </utmain:DropdownItem>
+                        </utmain:Dropdown>
+                        
+                        <utmain:Dropdown id="endDateDropdown"
+                            class="nrgBilling-highBill-mrDate-endDropdown"
+                            selectedKey="{oEndInvoice>/selectedKey}"
+                            content="{oEndInvoice>/}"
+                            select="._onEndInvoiceSelect" >
+                            <utmain:DropdownItem
+                                key="{oEndInvoice>Index}"
+                                enabled="false">
+                                <ute:Tag elem="span"
+                                    text="{oEndInvoice>Date}"/>
+                            </utmain:DropdownItem>
+                        </utmain:Dropdown>
+
                         
                     </ute:Tag>
                     <!-- Billing Period Charges -->

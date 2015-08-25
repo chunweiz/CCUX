@@ -56,6 +56,37 @@ sap.ui.define(
             this.getView().setModel(oModel, 'bp');
             this.getView().setModel(oModelContent, 'emp');
             this.getView().setModel(oModelToolTip, 'tip');
+
+            // Set data model for invoices
+
+            var oModelStartInvoice = new sap.ui.model.json.JSONModel(
+                [
+                    { Date: '09/28/2014', Index: '0' },
+                    { Date: '10/28/2014', Index: '1' },
+                    { Date: '11/28/2014', Index: '2' },
+                    { Date: '12/28/2014', Index: '3' },
+                    { Date: '01/28/2015', Index: '4' },
+                    { Date: '02/28/2016', Index: '5' }
+                ]
+            );
+
+            var oModelEndInvoice = new sap.ui.model.json.JSONModel(
+                [
+                    { Date: '09/28/2014', Index: '0' },
+                    { Date: '10/28/2014', Index: '1' },
+                    { Date: '11/28/2014', Index: '2' },
+                    { Date: '12/28/2014', Index: '3' },
+                    { Date: '01/28/2015', Index: '4' },
+                    { Date: '02/28/2016', Index: '5' }
+                ]
+            );
+            this.getView().setModel(oModelStartInvoice, 'oStartInvoice');
+            this.getView().setModel(oModelEndInvoice, 'oEndInvoice');
+            this.getView().getModel('oStartInvoice').setProperty('/selectedKey', 0);
+            this.getView().getModel('oEndInvoice').setProperty('/selectedKey', 0);
+
+
+
         };
 
         CustomController.prototype.onBeforeRendering = function () {
@@ -69,6 +100,11 @@ sap.ui.define(
         CustomController.prototype.onExit = function () {
 
         };
+
+        CustomController.prototype._onStartInvoiceSelect = function () {
+
+        };
+
 
         return CustomController;
     }
