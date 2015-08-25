@@ -31,23 +31,29 @@
                     </ute:Tag>
                 </ute:Tag>
                 
-                <!-- Meter Reading Date -->
-                <ute:Tag class="nrgBilling-highBill-mrDate">
+                <ute:Tag class="nrgBilling-highBill-flexbox">
                     
-                </ute:Tag>
-                <!-- Billing Period Charges -->
-                <ute:Tag class="nrgBilling-highBill-bpCharges">
-                    
-                </ute:Tag>
-                <!-- Links -->
-                <ute:Tag class="nrgBilling-highBill-btnLinks">
-                    <!-- Retro Average Billing -->
-                    <ute:Tag class="nrgBilling-highBill-retroAvgBilling">
+                    <!-- Meter Reading Date -->
+                    <ute:Tag class="nrgBilling-highBill-mrDate">
+                        <ute:Tag elem="span" class="nrgBilling-highBill-mrDate-title"
+                                 text="{comp-i18n-billing>nrgBilling-highBill-mrDate-TITLE}" />
                         
                     </ute:Tag>
-                    <!-- Average Billing -->
-                    <ute:Tag class="nrgBilling-highBill-avgBilling">
+                    <!-- Billing Period Charges -->
+                    <ute:Tag class="nrgBilling-highBill-bpCharges">
                         
+                    </ute:Tag>
+                    <!-- Links -->
+                    <ute:Tag class="nrgBilling-highBill-btnLinks">
+                        <!-- Retro Average Billing -->
+                        <ute:Tag class="nrgBilling-highBill-retroAvgBilling">
+                            
+                        </ute:Tag>
+                        <!-- Average Billing -->
+                        <ute:Tag class="nrgBilling-highBill-avgBilling">
+                            
+                        </ute:Tag>
+
                     </ute:Tag>
 
                 </ute:Tag>
