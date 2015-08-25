@@ -14,7 +14,7 @@
                     "odata": {
                         "real": {
                             "comp-billing": {
-                                "url": "sap/opu/odata/sap/ZE_CCUX_SRV/"
+                                "url": "sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/"
                             }
                         },
                         "mock": {
