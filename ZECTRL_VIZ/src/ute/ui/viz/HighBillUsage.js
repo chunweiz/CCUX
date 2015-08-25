@@ -38,10 +38,14 @@ sap.ui.define(
             this._cleanupChart();
         };
 
+        CustomControl.prototype.refresh = function () {
+            this.rerender();
+        };
+
         CustomControl.prototype._initChartSettings = function () {
             this._oChartSetting = {};
 
-            
+
         };
 
         CustomControl.prototype._createChart = function () {
