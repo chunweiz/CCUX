@@ -1,4 +1,3 @@
-# NRG IC Web Redesign #
+# Project Call Center User Experience (CCUX) #
 
-This repository contains the source code for the entire new NRG UI5 IC Web IC application.
-
+This repository contains the source code for the new NRG Reliant Interaction Center.
