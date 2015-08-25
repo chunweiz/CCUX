@@ -13,6 +13,9 @@ sap.ui.define(
             oRm.write('<div');
             oRm.writeControlData(oCustomControl);
             oRm.addClass('uteMDdItem');
+            if(!oCustomControl.getEnabled()){
+                oRm.addClass('disabled');
+            }
             oRm.writeClasses();
             oRm.write('>');
 
