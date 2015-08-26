@@ -20,7 +20,20 @@ sap.ui.define(
                 }
             },
             renderer: function (oRm, oCustomControl) {
+                var i,
+                    aChildren;
+                oRm.write('<div');
+                oRm.writeControlData(oCustomControl);
+               // oRm.addClass('uteAppHdrSMenu');
+                oRm.writeClasses();
+                oRm.write('>');
 
+                aChildren = oCustomControl.getContent();
+                for (i = 0; i < aChildren.length; i = i + 1) {
+                    oRm.renderControl(aChildren[i]);
+
+                }
+                oRm.write('</div>');
             }
         });
 
@@ -28,8 +41,12 @@ sap.ui.define(
 		/* Quick Pay Pop-up to initialize basic popup configurations               */
 		/* ======================================================================= */
         NNPPopup.prototype.init = function () {
+            var _handleDialogClosed = function (oEvent) {
+                    this.getParent().fireEvent("NNPCompleted");
+                };
             this._oNNPPopup = ute.ui.main.Popup.create({
-                title: 'Email Address and Preferences'
+                title: 'Email Address and Preferences',
+                close: _handleDialogClosed
             });
 
         };
@@ -38,35 +55,25 @@ sap.ui.define(
 		/* Method to be used to open the Quick Pay popup                           */
 		/* ======================================================================= */
 
-        NNPPopup.prototype.openNNP = function (that) {
-            var oQuickPayView = sap.ui.view({
+        NNPPopup.prototype.openNNP = function (PartnerID, Email, EmailConsum) {
+            var oNNPView = sap.ui.view({
                 type: sap.ui.core.mvc.ViewType.XML,
                 viewName: "nrg.module.nnp.view.NNP"
             });
-            //this.addContent(oQuickPayView);
-            oQuickPayView.addStyleClass("nrgQPPay-View");
-            that.getView().addDependent(this._oNNPPopup);
+            oNNPView.getController()._sPartnerID = PartnerID;
+            oNNPView.getController()._sEmail = Email;
+            oNNPView.getController()._sEmailConsum = EmailConsum;
+            oNNPView.addStyleClass("nrgQPPay-View");
             if (this._oNNPPopup.isOpen()) {
                 //this._oPaymentPopup.setContent(oQuickPayView);
                 return this;
             }
-            this._oNNPPopup.addContent(oQuickPayView);
+            this._oNNPPopup.addContent(oNNPView);
+            this.addDependent(this._oNNPPopup);
             this._oNNPPopup.open();
             return this;
         };
 
-        /* ========================================================================*/
-		/* Method to close the popup                                               */
-		/* ======================================================================= */
-        NNPPopup.prototype.close = function () {
-            var sOpenState = this._oPaymentPopup.getOpenState();
-
-            if (!(sOpenState === sap.ui.core.OpenState.CLOSED || sOpenState === sap.ui.core.OpenState.CLOSING)) {
-                this._oNNPPopup.close();
-            }
-
-            return this;
-        };
         return NNPPopup;
     },
 
