@@ -1,15 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mvc:View
+<core:FragmentDefinition
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
-    xmlns:mvc="sap.ui.core.mvc"
     xmlns:utmain="ute.ui.main"
-    xmlns:l="sap.ui.commons.layout"
+    xmlns:mvc="sap.ui.core.mvc"
     xmlns:c="sap.ui.commons"
+    xmlns:l="sap.ui.commons.layout"
     xmlns:core="sap.ui.core"
-    controllerName="nrg.module.nnp.view.NNP"
-    displayBlock="true">
-   <ute:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
+    xmlns:m="sap.m">
+    <ute:Tag>
         <ute:Tag id="idnrgDB-EmailBox" visible="true"
             class="nrgDashboard-cusDataVerifyEditEmail">
             <ute:Tag class="nrgDashboard-cusDataVerifyEditEmail-desc">
@@ -116,5 +114,5 @@
                 press="._onEditEmailDelete"/>
             </ute:Tag>
         </ute:Tag>
-   </ute:Tag>
-</mvc:View>
+    </ute:Tag>
+</core:FragmentDefinition>
