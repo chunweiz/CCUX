@@ -36,33 +36,25 @@
                     <!-- Meter Reading Date -->
                     <ute:Tag class="nrgBilling-highBill-mrDate">
                         <ute:Tag elem="span" class="nrgBilling-highBill-mrDate-title"
-                                 text="{comp-i18n-billing>nrgBilling-highBill-mrDate-TITLE}" />
-                        <utmain:Dropdown id="startDateDropdown"
-                            class="nrgBilling-highBill-mrDate-startDropdown"
-                            selectedKey="{oStartInvoice>/selectedKey}"
-                            content="{oStartInvoice>/}"
-                            select="._onStartInvoiceSelect" >
+                            text="{comp-i18n-billing>nrgBilling-highBill-mrDate-TITLE}" />
+                        <utmain:Dropdown id="invoiceDropdown"
+                            class="nrgBilling-highBill-mrDate-invoiceDropdown"
+                            selectedKey="{oAllInvoices>/selectedKey}"
+                            content="{oAllInvoices>/}"
+                            select="._onInvoiceSelect" >
                             <utmain:DropdownItem
-                                key="{oStartInvoice>Index}">
+                                class="nrgBilling-highBill-mrDate-invoiceDropdownItem"
+                                key="{oAllInvoices>Index}">
                                 <ute:Tag elem="span"
-                                    text="{oStartInvoice>Date}"/>
+                                    text="{oAllInvoices>Period}"/>
                             </utmain:DropdownItem>
                         </utmain:Dropdown>
-                        
-                        <utmain:Dropdown id="endDateDropdown"
-                            class="nrgBilling-highBill-mrDate-endDropdown"
-                            selectedKey="{oEndInvoice>/selectedKey}"
-                            content="{oEndInvoice>/}"
-                            select="._onEndInvoiceSelect" >
-                            <utmain:DropdownItem
-                                key="{oEndInvoice>Index}"
-                                enabled="false">
-                                <ute:Tag elem="span"
-                                    text="{oEndInvoice>Date}"/>
-                            </utmain:DropdownItem>
-                        </utmain:Dropdown>
-
-                        
+                        <ute:Tag class="nrgBilling-highBill-mrDate-invoiceNum">
+                            <ute:Tag elem="span" class="nrgBilling-highBill-mrDate-invoiceNumTitle"
+                                text="{comp-i18n-billing>nrgBilling-highBill-mrDate-INVOICE_NUM_TITLE}" />
+                            <ute:Tag elem="span" class="nrgBilling-highBill-mrDate-invoiceNumValue"
+                                text="{oAllInvoices>/selectedInvoiceNum}" />
+                        </ute:Tag>
                     </ute:Tag>
                     <!-- Billing Period Charges -->
                     <ute:Tag class="nrgBilling-highBill-bpCharges">

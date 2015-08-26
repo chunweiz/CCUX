@@ -20,6 +20,11 @@
                 stroke-width: 1;
             }
 
+            & .tick:first-child line {
+                fill: none;
+                stroke: none;
+            }
+
             & .domain {
                 fill: none;
                 stroke: none;
@@ -30,9 +35,7 @@
 
             & line {
                 fill: none;
-			    stroke: @uteColor-white;
-			    stroke-width: 1;
-			    shape-rendering: crispEdges;
+			    stroke: none;
             }
 
             & .domain {
@@ -45,9 +48,7 @@
 
             & line {
                 fill: none;
-			    stroke: @uteColor-white;
-			    stroke-width: 1;
-			    shape-rendering: crispEdges;
+			    stroke: none;
             }
 
             & .domain {
@@ -57,7 +58,7 @@
         }
 
         & .uteVizHBUsage-line {
-            stroke: @uteColor-grey-dark;
+            stroke: @uteColor-grey-semiDark;
             stroke-width: 2;
             fill: none;
         }

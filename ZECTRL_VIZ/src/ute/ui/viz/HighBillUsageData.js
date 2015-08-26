@@ -18,7 +18,6 @@ sap.ui.define(
             var parseDate = d3.time.format('%d-%b-%y').parse;
 
             var data = [
-    			{ date: parseDate('30-Apr-12'), close: 58.13 },
     			{ date: parseDate('30-Apr-12'), close: 53.98 },
     			{ date: parseDate('27-Apr-12'), close: 67.00 },
     			{ date: parseDate('26-Apr-12'), close: 89.70 },

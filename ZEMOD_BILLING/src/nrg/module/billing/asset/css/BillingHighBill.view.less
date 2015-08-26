@@ -36,7 +36,6 @@
     & > .nrgBilling-highBill-leftDiv > .nrgBilling-highBill-banner > .nrgBilling-highBill-flexbox {
         display: flex;
         & .nrgBilling-highBill-mrDate {
-            height: 117px;
             width: 300px;
             background-color: @nrgColor-blue-pearl;
             border-radius: 5px;
@@ -45,6 +44,53 @@
         }
         & .nrgBilling-highBill-mrDate > .nrgBilling-highBill-mrDate-title {
             color: @nrgColor-grey-inactive;
+            font-size: @nrgFontSize-base;
+            font-weight: @nrgFontWeight-semiBold;
+        }
+        // Dropdown
+        & .nrgBilling-highBill-mrDate > .nrgBilling-highBill-mrDate-invoiceDropdown {
+            margin-top: 15px;
+            
+            & .uteMDd-picker,
+            & .uteMDd-hdr {
+                width: 215px;
+                border: 1px solid @nrgColor-grey-inactive;
+            }
+            & .uteMDd-picker,
+            & .uteMDd-hdrContent {
+                padding: 8px 15px;
+            }
+            & .uteMDd-hdrExpander {
+                padding: 5px;
+            }
+            & .uteMDdItem {
+                color: @nrgColor-grey-inactive;
+                font-size: @nrgFontSize-base;
+                font-weight: @nrgFontWeight-semiBold;
+            }
+            & .uteMDdItem:hover {
+                color: @nrgColor-blue-link;
+            }
+            & .uteMDd-picker > .uteMDdItem {
+                margin: 7px 0;
+            }
+            & .uteMDd-picker > .uteMDdItem[data-selected="selected"] {
+                color: @nrgColor-grey-highlight;
+            }
+        }
+        & .nrgBilling-highBill-mrDate > .nrgBilling-highBill-mrDate-invoiceNum {
+            margin-top: 15px;
+            display: flex;
+        }
+        & .nrgBilling-highBill-mrDate > .nrgBilling-highBill-mrDate-invoiceNum > .nrgBilling-highBill-mrDate-invoiceNumTitle {
+            color: @nrgColor-grey-inactive;
+            font-size: @nrgFontSize-base;
+            font-weight: @nrgFontWeight-regular;
+        }
+        & .nrgBilling-highBill-mrDate > .nrgBilling-highBill-mrDate-invoiceNum > .nrgBilling-highBill-mrDate-invoiceNumValue {
+            margin-left: 15px;
+            cursor: pointer;
+            color: @nrgColor-blue-link;
             font-size: @nrgFontSize-base;
             font-weight: @nrgFontWeight-semiBold;
         }
@@ -60,4 +106,25 @@
             width: 50px;
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

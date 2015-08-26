@@ -59,31 +59,20 @@ sap.ui.define(
 
             // Set data model for invoices
 
-            var oModelStartInvoice = new sap.ui.model.json.JSONModel(
+            var oModelInvoice = new sap.ui.model.json.JSONModel(
                 [
-                    { Date: '09/28/2014', Index: '0' },
-                    { Date: '10/28/2014', Index: '1' },
-                    { Date: '11/28/2014', Index: '2' },
-                    { Date: '12/28/2014', Index: '3' },
-                    { Date: '01/28/2015', Index: '4' },
-                    { Date: '02/28/2016', Index: '5' }
+                    { Period: '08/28/2014 - 09/28/2014', InvoiceNum: '0000000001', Index: '0' },
+                    { Period: '09/28/2014 - 10/28/2014', InvoiceNum: '0000000002', Index: '1' },
+                    { Period: '10/28/2014 - 11/28/2014', InvoiceNum: '0000000003', Index: '2' },
+                    { Period: '11/28/2014 - 12/28/2014', InvoiceNum: '0000000004', Index: '3' },
+                    { Period: '12/28/2014 - 01/28/2015', InvoiceNum: '0000000005', Index: '4' },
+                    { Period: '01/28/2015 - 02/28/2015', InvoiceNum: '0000000006', Index: '5' }
                 ]
             );
 
-            var oModelEndInvoice = new sap.ui.model.json.JSONModel(
-                [
-                    { Date: '09/28/2014', Index: '0' },
-                    { Date: '10/28/2014', Index: '1' },
-                    { Date: '11/28/2014', Index: '2' },
-                    { Date: '12/28/2014', Index: '3' },
-                    { Date: '01/28/2015', Index: '4' },
-                    { Date: '02/28/2016', Index: '5' }
-                ]
-            );
-            this.getView().setModel(oModelStartInvoice, 'oStartInvoice');
-            this.getView().setModel(oModelEndInvoice, 'oEndInvoice');
-            this.getView().getModel('oStartInvoice').setProperty('/selectedKey', 0);
-            this.getView().getModel('oEndInvoice').setProperty('/selectedKey', 0);
+            this.getView().setModel(oModelInvoice, 'oAllInvoices');
+            this.getView().getModel('oAllInvoices').setProperty('/selectedKey', 0);
+            this.getView().getModel('oAllInvoices').setProperty('/selectedInvoiceNum', this.getView().getModel('oAllInvoices').oData[0].InvoiceNum);
 
 
 
@@ -101,8 +90,9 @@ sap.ui.define(
 
         };
 
-        CustomController.prototype._onStartInvoiceSelect = function () {
-
+        CustomController.prototype._onInvoiceSelect = function (oEvent) {
+            var selectedIndex = parseInt(oEvent.getParameters().selectedKey);
+            this.getView().getModel('oAllInvoices').setProperty('/selectedInvoiceNum', this.getView().getModel('oAllInvoices').oData[selectedIndex].InvoiceNum);
         };
 
 

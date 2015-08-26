@@ -10,7 +10,7 @@
     displayBlock="true">
 
     <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
-        <uv:HighBillUsage>
+        <uv:HighBillUsage width="1000" height="400">
             <uv:usage>
                 <uv:HighBillUsageData></uv:HighBillUsageData>
             </uv:usage>

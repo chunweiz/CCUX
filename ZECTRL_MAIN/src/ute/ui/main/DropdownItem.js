@@ -15,8 +15,7 @@ sap.ui.define(
 
                 properties: {
                     key: { type: 'string', defaultValue: null },
-
-                    enabled : {type : "boolean", group : "Misc", defaultValue : true}
+                    enabled : {type: 'boolean', defaultValue: true }
                 },
 
                 aggregations: {
