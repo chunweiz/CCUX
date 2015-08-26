@@ -7,10 +7,12 @@ sap.ui.define(
         'nrg/base/view/BaseController',
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
-        'sap/ui/core/routing/HashChanger'
+        'sap/ui/core/routing/HashChanger',
+        'jquery.sap.global',
+        'nrg/module/nnp/view/NNPPopup'
     ],
 
-    function (CoreController, Filter, FilterOperator, HashChanger) {
+    function (CoreController, Filter, FilterOperator, HashChanger, jQuery, NNPPopup) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataVerification');
@@ -145,9 +147,10 @@ sap.ui.define(
             var sPath,
                 aSplitHash,
                 iSplitHashL,
-                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
-                bp = oRouteInfo.parameters.bpNum;
-
+                oRouteInfo,
+                bp;
+            oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+            bp = oRouteInfo.parameters.bpNum;
             aSplitHash = (this._retrUrlHash()).split('/');
             iSplitHashL = aSplitHash.length;
             sPath = '/Partners' + '(\'' + bp + '\')';
@@ -1079,16 +1082,35 @@ sap.ui.define(
     /*************************************************************************************/
         //Edit Email
         Controller.prototype._handleEmailEdit = function (oEvent) {
-            var oModel = this.getView().getModel('oODataSvc'),
-                oParameters,
-                sBpNum = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+            var sBpNum = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
                 sBpEmail = this.getView().getModel('oDtaVrfyBP').getProperty('/Email'),
                 sBpEmailConsum = this.getView().getModel('oDtaVrfyBP').getProperty('/EmailConsum'),
-                sPath,
-                oEmailBox,
-                oDelEmailBox;
+                NNPPopupControl = new NNPPopup(),
+                oNNPView,
+                _handleDialogClosed;
 
-            //Preapre Popup for Email Edit to show
+            NNPPopupControl.attachEvent("NNPCompleted", this._initDtaVrfRetr, this);
+            this.getView().addDependent(NNPPopupControl);
+            NNPPopupControl.openNNP(sBpNum, sBpEmail, sBpEmailConsum);
+/*            oNNPView = sap.ui.view({
+                type: sap.ui.core.mvc.ViewType.XML,
+                viewName: "nrg.module.nnp.view.NNP"
+            });
+            _handleDialogClosed = function (oEvent) {
+                this.getParent().getController()._initDtaVrfRetr();
+            };
+            oNNPView.getController()._sPartnerID = sBpNum;
+            oNNPView.getController()._sEmail = sBpEmail;
+            oNNPView.getController()._sEmailConsum = sBpEmailConsum;
+            this._oNNPPopup = ute.ui.main.Popup.create({
+                title: 'Email Address and Preferences',
+                content: oNNPView,
+                close: _handleDialogClosed
+            });
+            this.getView().addDependent(this._oNNPPopup);
+            this._oNNPPopup.open();*/
+
+/*            //Preapre Popup for Email Edit to show
             if (!this._oPopupContent) {
                 this._oPopupContent = sap.ui.xmlfragment("EmailEditPopup", "nrg.module.dashboard.view.CustomerVerificationPopup", this);
             }
@@ -1104,12 +1126,12 @@ sap.ui.define(
             this._oEmailEditPopup.setShowCloseButton(false);
             this.getView().addDependent(this._oEmailEditPopup);
             this._oEmailEditPopup.open();
-            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);*/
 
             //Start loading NNP logics and settings
-            sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
+/*            sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
             oParameters = {
-                /*urlParameters: {"$expand": "Buags"},*/
+                urlParameters: {"$expand": "Buags"},
                 success : function (oData) {
                     if (oData) {
                         this._beforeOpenEditAddrDialogue = true;
@@ -1129,7 +1151,7 @@ sap.ui.define(
 
             if (oModel) {
                 oModel.read(sPath, oParameters);
-            }
+            }*/
         };
 
         Controller.prototype._onValidateEmailAddress = function (oEvent) {
