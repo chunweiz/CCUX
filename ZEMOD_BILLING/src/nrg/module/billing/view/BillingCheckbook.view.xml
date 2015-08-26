@@ -24,15 +24,15 @@
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft">
                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-ctnt">
                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-lbl"
-                                 text="Start Date:"/>
+                                 text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-StaDate}"/>
                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-val"
-                                 text="06/09/14"/>
+                                 text="{oChkbkHdr>/InvStrartDate}"/>
                         </ute:Tag>
                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-ctnt">
                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-lbl"
-                                 text="End Date:"/>
+                                 text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-EndDate}"/>
                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-val"
-                                 text="08/09/15"/>
+                                 text="{oChkbkHdr>/InvEndDate}"/>
                     </ute:Tag>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl">
@@ -45,9 +45,27 @@
                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-onHover">
                         <ute:tooltip>
                             <ute:Tooltip openDelay="100" class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip">
-                                <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-frm">
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="Invoice Amount Due"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="239.45"/>
+                                <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-otrFrm">
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-innFrm">
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="Invoice Amount Due"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="239.45"/>
+                                    </ute:Tag>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-innFrm nrgBilling-blChkBk-lftDiv-qkRefArea-redHghlt">
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="Disconnect Notice Amount Due"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="99.86"/>
+                                    </ute:Tag>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-innFrm nrgBilling-blChkBk-lftDiv-qkRefArea-yllwHghlt">
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="Other Fees and Charges"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="16.55"/>
+                                    </ute:Tag>
+                                    <ute:Tag>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="Payment Plan Balance"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="0.00"/>
+                                    </ute:Tag>
+                                </ute:Tag>
+                                <ute:Tag>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="TOTAL"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="355.86"/>
                                 </ute:Tag>
                             </ute:Tooltip>
                         </ute:tooltip>
@@ -102,6 +120,10 @@
                             </ute:Tag>
                         </utmain:content>
                     </utmain:Infoline>
+                </ute:Tag>
+                <ute:Tag>
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-poInvc"
+                             text="Post Invoice Date Activities" />
                 </ute:Tag>
             </m:ScrollContainer>
         </ute:Tag>

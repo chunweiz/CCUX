@@ -17,8 +17,7 @@ sap.ui.define(
 		/* lifecycle method- Init                                     */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
-            var NNPPopupControl = new NNPPopup();
-            NNPPopupControl.openNNP(this);
+
         };
         /**
 		 * Start Quick Pay process

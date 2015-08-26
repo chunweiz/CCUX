@@ -1,0 +1,23 @@
+{
+  "d":{
+     "results":[
+         {
+        "PartnerID":"PartnerID 1",
+        "ContractAccountID":"ContractAccountID 1",
+        "PrintDocNum":"PrintDocNum 1",
+        "InvStrartDate":"08/15/2014",
+        "InvEndDate":"08/15/2015",
+        "InvAmount":3173.71,
+        "InvAmtMark":"InvAmtMark 1",
+        "DisNoticeAmtDue":4070.68,
+        "OtherFeeChrg":3559.67,
+        "PaymtPlnBal":172.65,
+        "__metadata":{
+          "id":"../../../../../ZEMOD_BILLING/build/nrg/module/billing/data/devtest/ChkBookHdrs(PartnerID='PartnerID 1',ContractAccountID='ContractAccountID 1',PrintDocNum='PrintDocNum 1')",
+          "type":"ZE_CCUX_CHKBOOK_SRV.ChkBookHdr",
+          "uri":"../../../../../ZEMOD_BILLING/build/nrg/module/billing/data/devtest/ChkBookHdrs(PartnerID='PartnerID 1',ContractAccountID='ContractAccountID 1',PrintDocNum='PrintDocNum 1')"
+        }
+        }
+    ]
+  }
+}

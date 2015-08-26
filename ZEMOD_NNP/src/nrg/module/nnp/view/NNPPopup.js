@@ -20,20 +20,7 @@ sap.ui.define(
                 }
             },
             renderer: function (oRm, oCustomControl) {
-                var i,
-                    aChildren;
-                oRm.write('<div');
-                oRm.writeControlData(oCustomControl);
-               // oRm.addClass('uteAppHdrSMenu');
-                oRm.writeClasses();
-                oRm.write('>');
 
-                aChildren = oCustomControl.getContent();
-                for (i = 0; i < aChildren.length; i = i + 1) {
-                    oRm.renderControl(aChildren[i]);
-                }
-
-                oRm.write('</div>');
             }
         });
 
@@ -56,14 +43,14 @@ sap.ui.define(
                 type: sap.ui.core.mvc.ViewType.XML,
                 viewName: "nrg.module.nnp.view.NNP"
             });
-            this.addContent(oQuickPayView);
+            //this.addContent(oQuickPayView);
             oQuickPayView.addStyleClass("nrgQPPay-View");
-            that.getView().addDependent(this);
+            that.getView().addDependent(this._oNNPPopup);
             if (this._oNNPPopup.isOpen()) {
                 //this._oPaymentPopup.setContent(oQuickPayView);
                 return this;
             }
-            this._oNNPPopup.addContent(this);
+            this._oNNPPopup.addContent(oQuickPayView);
             this._oNNPPopup.open();
             return this;
         };

@@ -6,7 +6,7 @@
 sap.ui.define(
     [
         'jquery.sap.global',
-        'sap/ui/core/mvc/Controller'
+        'nrg/base/view/BaseController'
     ],
 
     function (jQuery, Controller) {
@@ -62,6 +62,56 @@ sap.ui.define(
 
         CustomController.prototype.onBeforeRendering = function () {
             this.getOwnerComponent().getCcuxApp().setTitle('BILLING');
+
+            var o18n = this.getOwnerComponent().getModel('comp-i18n-billing');
+
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-billing'), 'oDataSvc');
+
+            //Model to keep checkbook header
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oChkbkHdr');
+
+
+
+
+            //Start of data retriving
+            this._initRouitingInfo();
+            this._initChkbookHdr();
+        };
+
+        CustomController.prototype._initRouitingInfo = function () {
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+
+            this._bpNum = oRouteInfo.parameters.bpNum;
+            this._caNum = oRouteInfo.parameters.caNum;
+            this._coNum = oRouteInfo.parameters.coNum;
+        };
+
+        CustomController.prototype._initChkbookHdr = function () {
+            var sPath;
+
+            sPath = '/ChkBookHdrs' + '(PartnerID=\'' + this._bpNum + '\', ContractAccountID=\'' + this._caNum + '\', PrintDocNum=\'PrintDocNum 1\'' + ')';
+
+            this._retrChkbookHdr(sPath);
+        };
+
+        CustomController.prototype._retrChkbookHdr = function (sPath) {
+            var oChbkOData = this.getView().getModel('oDataSvc'),
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oChkbkHdr').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oChbkOData) {
+                oChbkOData.read(sPath, oParameters);
+            }
         };
 
         CustomController.prototype.onAfterRendering = function () {
