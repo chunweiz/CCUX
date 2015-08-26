@@ -37,35 +37,35 @@
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl">
                     <ute:Tag>
-                        <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtNum" text="$380.87"/>
-                        <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtNum" text="*"/>
+                        <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtNum" text="{oChkbkHdr>/InvAmount}"/>
+                        <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtNum" text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-Astrik}"/>
                     </ute:Tag>
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtDscp1" text="AMOUNT DUE"/>
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtDscp2" text="for no service interuption"/>
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtDscp1" text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-AmountDue}"/>
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtDscp2" text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-NoSrvvInteruption}"/>
                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-onHover">
                         <ute:tooltip>
                             <ute:Tooltip openDelay="100" class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip">
                                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-otrFrm">
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-innFrm">
-                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="Invoice Amount Due"/>
-                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="239.45"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="{comp-i18n-billing>nrgBilling-billChkBook-HdrHvr-InvcAmtDue}"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="{oChkbkHdr>/InvAmount}"/>
                                     </ute:Tag>
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-innFrm nrgBilling-blChkBk-lftDiv-qkRefArea-redHghlt">
-                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="Disconnect Notice Amount Due"/>
-                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="99.86"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="{comp-i18n-billing>nrgBilling-billChkBook-HdrHvr-DscnctNoticeAmountDue}"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="{oChkbkHdr>/DisNoticeAmtDue}"/>
                                     </ute:Tag>
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-innFrm nrgBilling-blChkBk-lftDiv-qkRefArea-yllwHghlt">
-                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="Other Fees and Charges"/>
-                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="16.55"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="{comp-i18n-billing>nrgBilling-billChkBook-HdrHvr-OthrFeeCharge}"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="{oChkbkHdr>/OtherFeeChrg}"/>
                                     </ute:Tag>
                                     <ute:Tag>
-                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="Payment Plan Balance"/>
-                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="0.00"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="{comp-i18n-billing>nrgBilling-billChkBook-HdrHvr-PmtPlnBal}"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="{oChkbkHdr>/PaymtPlnBal}"/>
                                     </ute:Tag>
                                 </ute:Tag>
                                 <ute:Tag>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="TOTAL"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="355.86"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="{comp-i18n-billing>nrgBilling-billChkBook-HdrHvr-Total}"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="{oChkbkHdr>/InvAmount}"/>
                                 </ute:Tag>
                             </ute:Tooltip>
                         </ute:tooltip>
