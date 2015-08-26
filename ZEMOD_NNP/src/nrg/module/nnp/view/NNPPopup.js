@@ -13,28 +13,7 @@ sap.ui.define(
 		/* Creating a New Control to manage Quick Pay  Pop-up                      */
 		/* ======================================================================= */
         var NNPPopup = Control.extend('nrg.module.nnp.view.NNPPopup', {
-            metadata: {
-                defaultAggregation: "content",
-                aggregations: {
-                    content: { type: 'sap.ui.core.Control', multiple: true, singularName: 'content' }
-                }
-            },
-            renderer: function (oRm, oCustomControl) {
-                var i,
-                    aChildren;
-                oRm.write('<div');
-                oRm.writeControlData(oCustomControl);
-               // oRm.addClass('uteAppHdrSMenu');
-                oRm.writeClasses();
-                oRm.write('>');
 
-                aChildren = oCustomControl.getContent();
-                for (i = 0; i < aChildren.length; i = i + 1) {
-                    oRm.renderControl(aChildren[i]);
-
-                }
-                oRm.write('</div>');
-            }
         });
 
 		/* ========================================================================*/
