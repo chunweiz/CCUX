@@ -44,6 +44,7 @@
                             select="._onInvoiceSelect" >
                             <utmain:DropdownItem
                                 class="nrgBilling-highBill-mrDate-invoiceDropdownItem"
+                                enabled="false"
                                 key="{oAllInvoices>Index}">
                                 <ute:Tag elem="span"
                                     text="{oAllInvoices>Period}"/>
