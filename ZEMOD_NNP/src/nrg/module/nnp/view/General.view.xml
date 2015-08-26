@@ -2,7 +2,7 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:sm="sap.m"
+    xmlns:um="sap.m"
     controllerName="nrg.module.nnp.view.General"
     height="100%"
     width="100%"
