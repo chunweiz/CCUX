@@ -89,7 +89,7 @@ sap.ui.define(
         CustomController.prototype._initChkbookHdr = function () {
             var sPath;
 
-            sPath = '/ChkBookHdrs' + '(PartnerID=\'' + this._bpNum + '\', ContractAccountID=\'' + this._caNum + '\')';
+            sPath = '/ChkBookHdrs' + '(PartnerID=\'' + this._bpNum + '\', ContractAccountID=\'' + this._caNum + '\', PrintDocNum=\'PrintDocNum 1\'' + ')';
 
             this._retrChkbookHdr(sPath);
         };
@@ -101,7 +101,7 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     if (oData) {
-                        this.getView().getModel('oChkbkHdr').setData(oData.results);
+                        this.getView().getModel('oChkbkHdr').setData(oData);
                     }
                 }.bind(this),
                 error: function (oError) {
