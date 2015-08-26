@@ -1,11 +1,14 @@
 .nrgBilling-highBill {
     padding: 25px;
-
+    /*-----------------------------------------
+     -------- L E F T * S E C T I O N ---------
+     -----------------------------------------*/
     & > .nrgBilling-highBill-leftDiv {
         display: inline-block;
         width: 782px;
         border-right: 1px solid @nrgColor-blue-header;
     }
+    /*--- BANNER ---*/
     & > .nrgBilling-highBill-leftDiv > .nrgBilling-highBill-banner {
         width: 100%;
     }
@@ -24,6 +27,7 @@
     }
     & > .nrgBilling-highBill-leftDiv > .nrgBilling-highBill-banner > .nrgBilling-highBill-titleAndNav > .nrgBilling-highBill-backToDash {
         float: right;
+        margin-right: 28px;
         color: @nrgColor-grey-lighter;
         & .nrgBilling-highBill-backIcon {
             margin-right: 5px;
@@ -34,27 +38,30 @@
         }
     }
     & > .nrgBilling-highBill-leftDiv > .nrgBilling-highBill-banner > .nrgBilling-highBill-flexbox {
-        display: flex;
+        display: flex;        
+        // METER READING DATE
         & .nrgBilling-highBill-mrDate {
-            width: 300px;
+            width: auto;
             background-color: @nrgColor-blue-pearl;
-            border-radius: 5px;
-            margin-right: 10px;
-            padding: 18px 30px;
+            border-radius: 3px;
+            margin-right: 20px;
+            padding: 15px 30px;
         }
+        // title
         & .nrgBilling-highBill-mrDate > .nrgBilling-highBill-mrDate-title {
-            color: @nrgColor-grey-inactive;
+            display: block;
+            color: @nrgColor-grey-dark;
             font-size: @nrgFontSize-base;
             font-weight: @nrgFontWeight-semiBold;
         }
-        // Dropdown
+        // dropdown
         & .nrgBilling-highBill-mrDate > .nrgBilling-highBill-mrDate-invoiceDropdown {
-            margin-top: 15px;
+            margin-top: 10px;
             
             & .uteMDd-picker,
             & .uteMDd-hdr {
                 width: 215px;
-                border: 1px solid @nrgColor-grey-inactive;
+                border: 1px solid @nrgColor-grey-dark;
             }
             & .uteMDd-picker,
             & .uteMDd-hdrContent {
@@ -64,12 +71,16 @@
                 padding: 5px;
             }
             & .uteMDdItem {
-                color: @nrgColor-grey-inactive;
+                color: @nrgColor-grey-dark;
                 font-size: @nrgFontSize-base;
                 font-weight: @nrgFontWeight-semiBold;
             }
             & .uteMDdItem:hover {
                 color: @nrgColor-blue-link;
+            }
+            & .uteMDdItem.uteMDdItem-disabled {
+                color: @nrgColor-grey-light;
+                cursor: text;
             }
             & .uteMDd-picker > .uteMDdItem {
                 margin: 7px 0;
@@ -78,8 +89,9 @@
                 color: @nrgColor-grey-highlight;
             }
         }
+        // invoice Number
         & .nrgBilling-highBill-mrDate > .nrgBilling-highBill-mrDate-invoiceNum {
-            margin-top: 15px;
+            margin-top: 5px;
             display: flex;
         }
         & .nrgBilling-highBill-mrDate > .nrgBilling-highBill-mrDate-invoiceNum > .nrgBilling-highBill-mrDate-invoiceNumTitle {
@@ -94,18 +106,144 @@
             font-size: @nrgFontSize-base;
             font-weight: @nrgFontWeight-semiBold;
         }
+        // BILL CHARGES
         & .nrgBilling-highBill-bpCharges {
-            height: 117px;
-            width: 200px;
-            background-color: red;
-            margin-right: 10px;
+            height: 127px;
+            width: 190px;
+            border: 1px dashed @nrgColor-grey-dark;
+            background-color: @nrgColor-blue-pearl;
+            margin-right: 20px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
         }
+        // amount
+        & .nrgBilling-highBill-bpCharges > .nrgBilling-highBill-bpCharges-amount {
+            font-size: @nrgFontSize-veryJumbo;
+            color: @nrgColor-grey-dark;
+            font-weight: @nrgFontWeight-semiBold;
+            order: 0;
+            text-align: center;
+        }
+        & .nrgBilling-highBill-bpCharges > .nrgBilling-highBill-bpCharges-title {
+            font-size: @nrgFontSize-base;
+            color: @nrgColor-grey-dark;
+            font-weight: @nrgFontWeight-regular;
+            order: 0;
+            text-align: center;
+        }
+        // BUTTON LINKS
         & .nrgBilling-highBill-btnLinks  {
-            background-color: blue;
-            height: 117px;
-            width: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 127px;
+            width: 248px;
+        }
+        // retro average billing
+        & .nrgBilling-highBill-btnLinks > .nrgBilling-highBill-retroAvgBilling:hover {
+            background-color: @nrgColor-blue-light;
+        }
+        & .nrgBilling-highBill-btnLinks > .nrgBilling-highBill-retroAvgBilling {
+            background-color: @nrgColor-blue-link;
+            width: 100%;
+            border-radius: 3px;
+            color: @nrgColor-white;
+            font-size: @nrgFontSize-large;
+            font-weight: @nrgFontWeight-semiBold;
+            padding: 10px 0;
+            order: 0;
+            margin-bottom: 15px;
+        }
+        // average billing
+        & .nrgBilling-highBill-btnLinks > .nrgBilling-highBill-avgBilling:hover {
+            background-color: @nrgColor-blue-light;
+        }
+        & .nrgBilling-highBill-btnLinks > .nrgBilling-highBill-avgBilling {
+            background-color: @nrgColor-blue-link;
+            width: 100%;
+            border-radius: 3px;
+            color: @nrgColor-white;
+            font-size: @nrgFontSize-large;
+            font-weight: @nrgFontWeight-semiBold;
+            padding: 10px 0;
+            order: 0;
         }
     }
+    /*--- CUSTOMER DRIVEN ---*/
+    & > .nrgBilling-highBill-leftDiv > .nrgBilling-highBill-cusDriven {
+        width: auto;
+        margin-top: 25px;
+        margin-right: 28px;
+    }
+    & > .nrgBilling-highBill-leftDiv > .nrgBilling-highBill-cusDriven > .nrgBilling-highBill-cusDriven-header {
+        width: 100%;
+        border-radius: 3px 3px 0 0;
+        padding: 10px 20px;
+        background-color: @nrgColor-grey-superLight;
+    }
+    & > .nrgBilling-highBill-leftDiv > .nrgBilling-highBill-cusDriven > .nrgBilling-highBill-cusDriven-body {
+        width: 100%;
+        margin-top: 5px;
+        border-radius: 0 0 3px 3px;
+        padding: 15px 20px;
+        background-color: @nrgColor-blue-pearl;
+    }
+    // ROW
+    & > .nrgBilling-highBill-leftDiv > .nrgBilling-highBill-cusDriven > .nrgBilling-highBill-cusDriven-body .nrgBilling-highBill-cusDriven-row {
+        width: 100%;
+        padding: 5px 10px;
+        margin-bottom: 5px;
+        display: flex;
+        // statistics
+        & .nrgBilling-highBill-cusDriven-statis {
+            flex: 0 0 100px;
+            padding: 5px 10px;
+            color: @nrgColor-orange-amount;
+            align-items: center;
+            display: flex;
+            & .nrgBilling-highBill-cusDriven-statis-icon {
+                margin-right: 5px;
+            }
+            & .nrgBilling-highBill-cusDriven-statis-number {
+                font-weight: @nrgFontWeight-semiBold;
+            }
+        }
+        // type
+        & .nrgBilling-highBill-cusDriven-type {
+            flex: 0 0 150px;
+            padding: 5px 10px;
+            align-items: center;
+            display: flex;
+        }
+        // description
+        & .nrgBilling-highBill-cusDriven-descr {
+            width: auto;
+            padding: 5px 10px;
+        }
+    }
+    /*--- NON CUSTOMER DRIVEN ---*/
+    & > .nrgBilling-highBill-leftDiv > .nrgBilling-highBill-nonCusImpacts {
+        width: auto;
+        margin-top: 25px;
+        margin-right: 28px;
+    }
+    & > .nrgBilling-highBill-leftDiv > .nrgBilling-highBill-nonCusImpacts > .nrgBilling-highBill-nonCusImpacts-header {
+        width: 100%;
+        border-radius: 3px 3px 0 0;
+        padding: 10px 20px;
+        background-color: @nrgColor-grey-superLight;
+    }
+    & > .nrgBilling-highBill-leftDiv > .nrgBilling-highBill-nonCusImpacts > .nrgBilling-highBill-nonCusImpacts-body {
+        width: 100%;
+        margin-top: 5px;
+        border-radius: 0 0 3px 3px;
+        padding: 15px 20px;
+        background-color: @nrgColor-blue-pearl;
+    }
+    /*------------------------------------------
+     -------- R I G H T * S E C T I O N --------
+     ------------------------------------------*/
 
 
 
