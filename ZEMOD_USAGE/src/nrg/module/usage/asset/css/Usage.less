@@ -1,3 +1,29 @@
-.nrgCamChg {
+.nrgUsg {
             font-family: @nrgFontFamily;
+
+    & > .nrgUsg-ttl {
+            margin-left: 8px;
+            font-size: @nrgFontSize-base;
+            font-weight: @nrgFontWeight-semiBold;
+    }
+    & > .nrgCmpUsg-side1 {
+            font-weight: 400;
+     }
+    & > .nrgUsg-tiers {
+            width:13.5%;
+            float:left;
+            display:inline-block;
+            border-right : 1px solid @nrgColor-grey-light;
+            height: 40rem;
+    }
+    & > .nrgUsg-tiers > .nrgUsg-tier {
+            margin-bottom: 10px;
+            margin-top: 10px;
+            color: @nrgColor-blueLink;
+            font-size: @nrgFontSize-base;
+            font-weight: @nrgFontWeight-semiBold;
+    }
+    & > .nrgUsg-tiers > .nrgUsg-tier > .nrgUsg-btn-selected {
+            color: @nrgColor-grey-inactive;
+    }
 }
