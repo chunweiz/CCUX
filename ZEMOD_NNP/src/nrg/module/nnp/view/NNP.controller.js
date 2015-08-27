@@ -32,11 +32,15 @@ sap.ui.define(
                 oEditEmailNNP = new sap.ui.model.json.JSONModel(),
                 oEmailBox,
                 oDelEmailBox,
-                that = this;
+                that = this,
+                oLocalModel = new sap.ui.model.json.JSONModel({
+                    emailExist : true
+			    });
             sPath = "/EmailNNPs(PartnerID='" + this._sPartnerID + "',Email='" + this._sEmail + "',EmailConsum='" + this._sEmailConsum + "')";
             this._OwnerComponent = this.getView().getParent().getParent().getParent().getController().getOwnerComponent();
             //Start loading NNP logics and settings
             this.getView().setModel(oEditEmailNNP, 'oEditEmailNNP');
+            this.getView().setModel(oLocalModel, 'oLocalModel');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailValidate');
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             oEmailBox = this.getView().byId("idnrgDB-EmailBox");
@@ -48,6 +52,9 @@ sap.ui.define(
                     if (oData) {
                         this._beforeOpenEditAddrDialogue = true;
                         oEditEmailNNP.setData(oData);
+                        if ((oEditEmailNNP.getProperty('/Email') === undefined) || (oEditEmailNNP.getProperty('/Email') === "") || (oEditEmailNNP.getProperty('/Email') === null)) {
+                            this.getView().getModel("oLocalModel").setProperty("/emailExist", false);
+                        }
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -97,6 +104,13 @@ sap.ui.define(
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             oEditEmailNNP.refresh(true);
             sEmailAddr = oEditEmailNNP.getProperty('/Email');
+            if ((sEmailAddr === undefined) || (sEmailAddr === "") || (sEmailAddr === null)) {
+                ute.ui.main.Popup.Alert({
+                    title: 'Email address validation',
+                    message: 'Please enter an email address'
+                });
+                return;
+            }
             sPath = '/EmailVerifys' + '(\'' + sEmailAddr + '\')';
             oParameters = {
                 success : function (oData) {
@@ -229,7 +243,18 @@ sap.ui.define(
         Controller.prototype._onShowDelEmailBox = function (oEventoEvent) {
             var oEmailBox = this.getView().byId("idnrgDB-EmailBox"),
                 oDelEmailBox = this.getView().byId("idnrgDB-DelEmailBox"),
-                oNNP = this.getView().getModel('oEditEmailNNP');
+                oNNP = this.getView().getModel('oEditEmailNNP'),
+                sEmailAddr = oNNP.getProperty('/Email'),
+                olocalModel = this.getView().getModel('oLocalModel');
+            if ((sEmailAddr === undefined) || (sEmailAddr === "") || (sEmailAddr === null)) {
+                if (!olocalModel.getProperty("/emailExist")) {
+                    ute.ui.main.Popup.Alert({
+                        title: 'Email address validation',
+                        message: 'No Email to delete'
+                    });
+                    return;
+                }
+            }
             if ((oNNP.getProperty('/Ecd') === 'Y') || (oNNP.getProperty('/Mkt') === 'Y') || (oNNP.getProperty('/Offer') === 'Y') || (oNNP.getProperty('/Ee') === 'Y')) {
                 this._OwnerComponent.getCcuxApp().setOccupied(false);
                 ute.ui.main.Popup.Alert({
@@ -257,7 +282,8 @@ sap.ui.define(
                 sBpNum = this._sPartnerID,
                 sBpEmail = this._sEmail,
                 sBpEmailConsum = this._sEmailConsum,
-                that = this;
+                that = this,
+                oEditEmailNNP = this.getView().getModel('oEditEmailNNP');
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             //Start loading NNP logics and settings
             sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
@@ -265,7 +291,10 @@ sap.ui.define(
                 /*urlParameters: {"$expand": "Buags"},*/
                 success : function (oData) {
                     if (oData) {
-                        this.getView().getModel('oEditEmailNNP').setData(oData);
+                        oEditEmailNNP.setData(oData);
+                        if ((oEditEmailNNP.getProperty('/Email') === undefined) || (oEditEmailNNP.getProperty('/Email') === "") || (oEditEmailNNP.getProperty('/Email') === null)) {
+                            this.getView().getModel("oLocalModel").setProperty("/emailExist", false);
+                        }
                         that._OwnerComponent.getCcuxApp().setOccupied(false);
                     }
                 }.bind(this),
