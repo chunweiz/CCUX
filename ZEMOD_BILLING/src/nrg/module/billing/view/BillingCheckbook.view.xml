@@ -99,7 +99,27 @@
                                      text="91.08"/>
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh4"
                                      text="08/31/16"/>
-                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5"/>
+                            <ute:Tag visible="false"
+                                     class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5"
+                                     text="DPP"/>
+                            <ute:Tag visible="true"
+                                     class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5"
+                                     text="+++">
+                                <ute:tooltip>
+                                    <ute:Tooltip class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip">
+                                        <ute:Tag content="{emp>/employers}">
+                                            <ute:Tag>
+                                                <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip-current"
+                                                         text="{emp>lastName}"/>
+                                                <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip-canceled"
+                                                         text="{emp>lastName}"/>
+                                                <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip-inactive"
+                                                         text="{emp>lastName}"/>
+                                            </ute:Tag>
+                                        </ute:Tag>
+                                    </ute:Tooltip>
+                                </ute:tooltip>
+                            </ute:Tag>
                         </utmain:headerContent>
                         <utmain:content>
                             <ute:Tag content="{bp>/employees}">
@@ -115,7 +135,7 @@
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c4"
                                              text="08/31/16"/>
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c5"
-                                             text="DPP+AAA"/>
+                                             text=""/>
                                 </ute:Tag>
                             </ute:Tag>
                         </utmain:content>
