@@ -27,6 +27,7 @@ sap.ui.define(
                 title: 'Email Address and Preferences',
                 close: _handleDialogClosed
             });
+            this._oNNPPopup.setShowCloseButton(false);
 
         };
 
