@@ -41,7 +41,7 @@ sap.ui.define(
 		/* Quick Pay Pop-up to initialize basic popup configurations               */
 		/* ======================================================================= */
         QuickPayControl.prototype.init = function () {
-            this._oPaymentPopup = new Popup();
+            this._oPaymentPopup = new Popup(this);
 			var eDock = Popup.Dock;
 			//this._oPaymentPopup.setPosition("center center", "center center", window, "0 0", "fit");
             this._oPaymentPopup.setShadow(false);
@@ -56,14 +56,13 @@ sap.ui.define(
 		/* Method to be used to open the Quick Pay popup                           */
 		/* ======================================================================= */
 
-        QuickPayControl.prototype.openQuickPay = function (that) {
+        QuickPayControl.prototype.openQuickPay = function () {
             var oQuickPayView = sap.ui.view({
                 type: sap.ui.core.mvc.ViewType.XML,
                 viewName: "nrg.module.quickpay.view.MainQuick"
             });
             this.addContent(oQuickPayView);
             oQuickPayView.addStyleClass("nrgQPPay-View");
-            that.getView().addDependent(this);
             if (this._oPaymentPopup.isOpen()) {
                 //this._oPaymentPopup.setContent(oQuickPayView);
                 return this;
@@ -71,10 +70,10 @@ sap.ui.define(
             this._oPaymentPopup.setPosition(
                 Popup.Dock.RightBottom,
                 Popup.Dock.CenterCenter,
-                that.getView(),
+                this.getParent(),
                 "0 0"
             );
-            this._oPaymentPopup.setContent(this);
+            //this._oPaymentPopup.setContent(this);
             this._oPaymentPopup.setInitialFocusId(oQuickPayView.getId("idnrgQPPay-Popup"));
             this._oPaymentPopup.open();
             return this;

@@ -27,7 +27,8 @@ sap.ui.define(
 		 */
         Controller.prototype.onQuickPay = function (oEvent) {
             var QuickControl = new QuickPayControl();
-            QuickControl.openQuickPay(this);
+            this.getView().addDependent(QuickControl);
+            QuickControl.openQuickPay();
         };
 
         return Controller;
