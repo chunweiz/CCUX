@@ -13,6 +13,7 @@ sap.ui.define(
         'sap/ui/core/format/DateFormat',
         'sap/ui/core/message/Message',
         'sap/ui/core/message/ControlMessageProcessor',
+        'nrg/module/nnp/view/NNPPopup',
         'nrg/base/type/CellPhoneNumber',
         'nrg/base/type/EmailAddress',
         'nrg/base/type/SocialSecurityNumber',
@@ -20,7 +21,7 @@ sap.ui.define(
         'nrg/base/type/ZipCode'
     ],
 
-    function (jQuery, Controller, Filter, FilterOperator, HashChanger, DateFormat, CoreMessage, CoreControlMessageProcessor) {
+    function (jQuery, Controller, Filter, FilterOperator, HashChanger, DateFormat, CoreMessage, CoreControlMessageProcessor, NNPPopup) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.bupa.view.CustomerDataBpInfo');
@@ -1098,17 +1099,40 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._handleNnpClose = function () {
+            var sBpNum = this._bpNum,
+                oConfigModel = this.getView().getModel('oBpInfoConfig');
+
+            this._retrBpContact(sBpNum);
+            oConfigModel.setProperty('/contactInfoEditVisible', true);
+            oConfigModel.setProperty('/contactInfoSaveVisible', false);
+            oConfigModel.setProperty('/contactInfoEditable', false);
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
+            this._retrBpMarkPrefSet(sBpNum);
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
+        };
+
         Controller.prototype._handleEmailEdit = function (oEvent) {
-            var oModel = this.getView().getModel('oODataSvc'),
-                oParameters,
-                sBpNum = this._bpNum,
+            var sBpNum = this._bpNum,
                 sBpEmail = this.getView().getModel('oDataBpContact').getProperty('/Email'),
                 sBpEmailConsum = this.getView().getModel('oDataBpContact').getProperty('/EmailConsum'),
-                sPath,
-                oNNP = this.getView().getModel('oEditEmailNNP'),
-                oEmailBox,
-                oDelEmailBox;
+                NNPPopupControl = new NNPPopup();
+
+
+            NNPPopupControl.attachEvent("NNPCompleted", this._handleNnpClose, this);
+            this.getView().addDependent(NNPPopupControl);
+            NNPPopupControl.openNNP(sBpNum, sBpEmail, sBpEmailConsum);
+
+
             
+                //oModel = this.getView().getModel('oODataSvc'),
+                //oParameters,
+                //sPath,
+                //oNNP = this.getView().getModel('oEditEmailNNP'),
+                //oEmailBox,
+                //oDelEmailBox;
+
+            /*
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             
 
@@ -1142,7 +1166,6 @@ sap.ui.define(
 
 
             oParameters = {
-                /*urlParameters: {"$expand": "Buags"},*/
                 success : function (oData) {
                     if (oData) {
                         oNNP.setData(oData);
@@ -1157,7 +1180,7 @@ sap.ui.define(
 
             if (oModel) {
                 oModel.read(sPath, oParameters);
-            }
+            }*/
         };
 
         Controller.prototype._onValidateEmailAddress = function (oEvent) {
