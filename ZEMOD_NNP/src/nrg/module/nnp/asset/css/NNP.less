@@ -1,3 +1,120 @@
 .nrgCamChg {
             font-family: @nrgFontFamily;
 }
+
+.nrgNnp-Nnp{
+    width: 520px;
+    font-family: @nrgFontFamily;
+    & > .nrgNnp-Nnp-desc{
+        width: 100%;
+        height: 200px;
+        border-color: @nrgColor-grey-inactive;
+        border-style: solid;
+        border-width: thin;
+    }
+
+    & > .nrgNnp-Nnp-desc > div{
+        margin: 2px;
+    }
+
+    & > .nrgNnp-Nnp-desc > div > span{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-grey-dark;
+    }
+
+    & > .nrgNnp-Nnp-inputArea{
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    & > .nrgNnp-Nnp-inputArea > .nrgNnp-Nnp-inputArea-nresult span{
+        color: @nrgColor-orange-attention;
+    }
+
+    & > .nrgNnp-Nnp-inputArea > .nrgNnp-Nnp-inputArea-nresult > div{
+        display: inline-block;
+        margin-left: 5px;
+        color: @nrgColor-orange-attention;
+    }
+
+    & > .nrgNnp-Nnp-inputArea > .nrgNnp-Nnp-inputArea-yresult > div{
+        display: inline-block;
+    }
+
+    & > .nrgNnp-Nnp-inputArea > .nrgNnp-Nnp-inputArea-yresult > .nrgNnp-Nnp-inputArea-yresultChb > label{
+        border-color: @nrgColor-green-highlight;
+        background: transparent;
+    }
+
+    & > .nrgNnp-Nnp-inputArea > .nrgNnp-Nnp-inputArea-yresult > .nrgNnp-Nnp-inputArea-yresultChb > label::before{
+        border-color: @nrgColor-green-highlight !important;
+        background: transparent !important;
+    }
+
+    & > .nrgNnp-Nnp-inputArea > .nrgNnp-Nnp-inputArea-yresult span{
+        color: @nrgColor-green-highlight;
+        margin-left: 5px;
+    }
+
+
+    & > .nrgNnp-Nnp-inputArea > span > label, & > .nrgNnp-Nnp-inputArea > span > input{
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-grey-dark;
+    }
+
+    & > .nrgNnp-Nnp-inputArea > .nrgNnp-Nnp-inputArea-btn{
+        margin-left: 50px;
+    }
+
+    & > .nrgNnp-Nnp-option > .nrgNnp-Nnp-toggle{
+        display: inline-block;
+    }
+
+    & > .nrgNnp-Nnp-option > label{
+        margin-left: 20px;
+    }
+
+    & > .nrgNnp-Nnp-option > label > span{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-grey-dark;
+    }
+
+    & > .nrgNnp-Nnp-actBtn{
+        margin-left: 120px;
+        margin-top: 30px;
+    }
+}
+
+.nrgNnp-DelEmailBox {
+    width:520px;
+    &  .nrgNnp-DelEmailBox-btns {
+        text-align: center;
+    }
+    & .nrgNnp-actBtn {
+        margin: 10px;
+    }
+
+    & .nrgNnp-delDesc{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-grey-dark;
+        width: 100%;
+        height: 100px;
+        border-color: @nrgColor-grey-inactive;
+        border-style: solid;
+        border-width: thin;
+    }
+}
+
+// Vertically center the text in a button
+.nrgNnp-cusDataVerify-alignCenBtn {
+    .uteMBtn-text {
+        line-height: 23px;
+    }
+}
+// Phone number alignment
+.nrgNnp-cusDataVerify-phoneNumAlign {
+    width: 65px;
+}
