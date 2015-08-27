@@ -2,7 +2,9 @@
 
 sap.ui.define(
     [
-        'sap/ui/core/Element'
+        'sap/ui/core/Element',
+
+        'sap/ui/thirdparty/d3'
     ],
 
     function (Element) {
