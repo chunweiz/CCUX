@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:c="sap.ui.commons"
+          xmlns:core="sap.ui.core"
+          xmlns:u="ute.ui.commons"
+          xmlns:um="ute.ui.main"
+          xmlns:l="sap.ui.commons.layout"
+          controllerName="nrg.module.usage.view.Usage"
+          height="100%"
+          width="100%"
+          displayBlock="true">
+   <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
+        <u:Tag class="nrgUsg">
+            <u:Tag class="nrgUsg-ttl" text="{comp-i18n-usage>nrgUsgLTtl}" />
+                <u:Tag class="nrgUsg-tiers">
+                        <u:Tag class="nrgUsg-tier">
+                            <um:Button id="idCamToggleBtn-P"
+                                press=".toggleTier"
+                                text="{comp-i18n-usage>nrgUsgLUsage}"
+                                class="nrgUsg-btn-selected"
+                                design="None">
+                            </um:button>
+                        </u:Tag>
+                        <u:Tag class="nrgUsg-tier">
+                            <um:Button id="idCamToggleBtn-R"
+                                press=".toggleTier"
+                                text="{comp-i18n-usage>nrgUsgLBilling}"
+                                design="None">
+                            </um:button>
+                        </u:Tag>
+                        <u:Tag class="nrgUsg-tier">
+                            <um:Button id="idCamToggleBtn-S"
+                                press=".toggleTier"
+                                text="{comp-i18n-usage>nrgUsgLBillWizard}"
+                                design="None">
+                            </um:button>
+                        </u:Tag>
+                        <u:Tag class="nrgUsg-tier">
+                            <um:Button id="idCamToggleBtn-F"
+                                press=".toggleTier"
+                                text="{comp-i18n-usage>nrgUsgLRateHis}"
+                                design="None">
+                            </um:button>
+                        </u:Tag>
+                        <u:Tag class="nrgUsg-tier">
+                            <um:Button id="idCamToggleBtn-d"
+                                press=".toggleTier"
+                                text="{comp-i18n-usage>nrgUsgLPreAttri}"
+                                design="None">
+                            </um:button>
+                        </u:Tag>
+                    </u:Tag>
+                <u:Tag class="nrgUsg-Table">
+                    <u:Tag class="nrgUsg-ttl" text="{comp-i18n-usage>nrgUsgLSrvAddTtl}" />
+                    <um:Dropdown id="idnrgUsgSD" content="{oLocalModel>/dropdown}" select=".onServiceAdd" class="nrgUsgSD">
+                        <um:DropdownItem key="{oLocalModel>value}" class="nrgUsgSD-DdLItem">
+                            <u:Tag text="{oLocalModel>value}"/>
+                        </um:DropdownItem>
+                    </um:Dropdown>
+                </u:Tag>
+       </u:Tag>
+   </u:Tag>
+</mvc:View>

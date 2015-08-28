@@ -29,8 +29,8 @@
         "routing": {
            "routes": {
                 "usage": {
-                    "pattern": "usage",
-                    "target": [ "quickpay.General", "dashboard.SummaryBP", "quickpay.Tools" ]
+                    "pattern": "usage/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target": [ "usage.Usage", "dashboard.CustomerDataSummary", "usage.Tools" ]
                 }
             },
             "targets": {
@@ -41,6 +41,10 @@
                 "usage.Tools": {
                     "viewName": "nrg.module.usage.view.Tools",
                     "controlId": "idAppTools"
+                },
+                "usage.Usage": {
+                    "viewName": "nrg.module.usage.view.Usage",
+                    "controlId": "idAppGeneral"
                 }
             }
         }

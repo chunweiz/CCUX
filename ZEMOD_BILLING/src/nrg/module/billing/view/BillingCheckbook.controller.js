@@ -32,14 +32,6 @@ sap.ui.define(
                 employers: [
                     { firstName: 'Kacy', lastName: 'Liao' },
                     { firstName: 'Frank', lastName: 'Huang' },
-                    { firstName: 'Frank', lastName: 'Huang' },
-                    { firstName: 'Frank', lastName: 'Huang' },
-                    { firstName: 'Frank', lastName: 'Huang' },
-                    { firstName: 'Frank', lastName: 'Huang' },
-                    { firstName: 'Frank', lastName: 'Huang' },
-                    { firstName: 'Frank', lastName: 'Huang' },
-                    { firstName: 'Frank', lastName: 'Huang' },
-                    { firstName: 'Frank', lastName: 'Huang' },
                     { firstName: 'Joseph', lastName: 'Lin' }
                 ]
             });
