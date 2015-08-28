@@ -147,6 +147,11 @@ sap.ui.define(
             }
         };
 
+        CustomController.prototype._getArrowIcon = function (value) {
+            var map = { "increase" : "sap-icon://up", "decrease" : "sap-icon://down" };
+            return (value && map[value]) ? map[value] : "None";
+        };
+
 
         return CustomController;
     }
