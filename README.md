@@ -1,12 +1,12 @@
 # Call Center User Experience (CCUX)
-> The documentation in this repository is written in [Markdown](https://bitbucket.org/tutorials/markdowndemo/src) format. You will be able to find a copy of `README.md` in the respective baseline, control, module and component folders.
+The documentation in this repository is written in [Markdown](https://bitbucket.org/tutorials/markdowndemo/src) format. You will be able to find a copy of `README.md` in the respective baseline, control, module and component folders.
 
-# Getting started
-* [Git](#markdown-header-git-client)
-* [Node.js](#markdown-header-nodejs)
-* [Editor](#markdown-header-editor)
-* [Deployment](#markdown-header-deployment)
+## Sections:
+* [Prerequisites](#markdown-header-prerequisites)
+* [Getting started](#markdown-header-getting-started)
+* [General folder structure](#markdown-header-general-folder-structure)
 
+# Prerequisites
 ## Git client
 You will need Git in order to be able to interact with CCUX source code repository. You can download a copy of Git from the following link:
 
