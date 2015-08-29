@@ -4,3 +4,5 @@ This repository contains the source code for the new NRG Reliant Interaction Cen
 
 Prerequisites
 -------------
+[Git](https://git-scm.com/downloads)
+[Node.js](https://nodejs.org/download/)
