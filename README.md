@@ -3,7 +3,7 @@ The documentation in this repository is written in [Markdown](https://bitbucket.
 
 ## Sections:
 * [Prerequisites](docs/prerequisites.md)
-* [Getting started](#markdown-header-getting-started)
+* [Getting started](docs/getting_started.md)
 * [General folder structure](#markdown-header-general-folder-structure)
 * [Deployment](#markdown-header-general)
 
