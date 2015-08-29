@@ -1,33 +1,35 @@
 # Call Center User Experience (CCUX)
-> The documentation in this repository is written in [Markdown](https://bitbucket.org/tutorials/markdowndemo/src) format.
+> The documentation in this repository is written in [Markdown](https://bitbucket.org/tutorials/markdowndemo/src) format. You will be able to find a copy of `README.md` in the respective baseline, control, module and component folders.
 
-## Getting started
-* [Prerequisites](#markdown-header-prerequisites)
-    + [Git](#markdown-header-git-client)
-    + [Node.js](#markdown-header-nodejs)
-* [Development environment](#markdown-header-development-environment)
+# Getting started
+* [Git](#markdown-header-git-client)
+* [Node.js](#markdown-header-nodejs)
+* [Editor](#markdown-header-editor)
 * [Deployment](#markdown-header-deployment)
 
-### Git client
-You will need a Git client in order to be able to interact with CCUX source code repository. You can download a copy of Git client from the following link:
+## Git client
+You will need Git in order to be able to interact with CCUX source code repository. You can download a copy of Git from the following link:
 
 > [Git](https://git-scm.com/downloads)
 
-Please make sure that you choose the following option if you are installing the Git client in a Windows machine:
+If you are installing Git in a Windows machine, please make sure that you are able to run Git from the command prompt.
 
 ![Run Git form the Windows Command Prompt](docs/img/git.001.png)
 
-### Node.js
-
+## Node.js
 You will need to use Node.js to build your development. You can also use it as a web server to test your development locally. You can download a copy of Node.js from the following link:
 
 > [Node.js](https://nodejs.org/download/)
 
-### Development environment
+## Editor
 
 
 
-### Deployment
+## Development environment
+
+
+
+## Deployment
 
 You will need to use Eclipse with SAPUI5 tools installed to deploy your changes to the respective SAPUI5 repository in SAP Netweaver application server.
 
