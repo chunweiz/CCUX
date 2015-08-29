@@ -4,13 +4,5 @@ The documentation in this repository is written in [Markdown](https://bitbucket.
 ## Sections:
 * [Prerequisites](docs/prerequisites.md)
 * [Getting started](docs/getting_started.md)
-* [General folder structure](#markdown-header-general-folder-structure)
-* [Deployment](#markdown-header-general)
-
-
-
-## Deployment
-
-You will need to use Eclipse with SAPUI5 tools installed to deploy your changes to the respective SAPUI5 repository in SAP Netweaver application server.
-
-* [SAP UI Development Toolkit for HTML5](https://tools.hana.ondemand.com/#sapui5)
+* [General folder structure](docs/general_folder_structure.md)
+* [Deployment](docs/deployment.md)
