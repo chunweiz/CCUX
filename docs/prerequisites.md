@@ -1,5 +1,5 @@
 # Prerequisites
-You need to make sure that you have the following applications installed and setup before you can begin your development.
+It is recommended that you have following applications installed and setup before begin your development.
 
 ***
 ## Git
