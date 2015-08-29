@@ -1,7 +1,8 @@
 # Call Center User Experience (CCUX)
 > The documentation in this repository is written in [Markdown](https://bitbucket.org/tutorials/markdowndemo/src) format. Please run the following Grunt task to generate a copy of this documentation in PDF.
 
-```batch
+```
+#!batch
     grunt --build=doc
 ```
 
