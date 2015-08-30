@@ -7,17 +7,17 @@ You will need a local CCUX Git repository in order to pull from the remote CCUX 
 ```
 mkdir CCUX
 cd CCUX
-git config user.name `username`
-git config user.email `email address`
+git config user.name <username>
+git config user.email <email address>
 git config url."https://".insteadOf git://
-git remote add origin `CCUX remote repo`
+git remote add origin <CCUX remote repo>
 git pull origin master
 ```
 
 where
-> `username` is your remote Git repository username  
-> `email address` is your remote Git repository email address  
-> `CCUX remote repo` is your remote CCUX Git repository `HTTPS` url
+`username` is your remote Git repository username  
+`email address` is your remote Git repository email address  
+`CCUX remote repo` is your remote CCUX Git repository `HTTPS` url
 
 ***
 ## Install NPM modules
