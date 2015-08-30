@@ -5,6 +5,8 @@
 You will need a local CCUX Git repository in order to pull from the remote CCUX Git repository. You will begin by launching your command prompt. Navigate within your command prompt to the place where you would like to keep the CCUX source codes. Once you are reached the desired location, type the following commands:
 
 ```
+!#application/x-dos-batch
+#
 mkdir CCUX
 cd CCUX
 git config user.name <username>
@@ -14,7 +16,7 @@ git remote add origin <CCUX remote repo>
 git pull origin master
 ```
 
-where   
+where
 `username` is your remote Git repository username  
 `email address` is your remote Git repository email address  
 `CCUX remote repo` is your remote CCUX Git repository `HTTPS` url
