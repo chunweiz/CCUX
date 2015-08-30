@@ -11,7 +11,8 @@ var el = document.querySelector('test');
 ```
 
 ```
-#!application/x-dos-batch
+#!batch
+
 mkdir CCUX
 cd CCUX
 git config user.name <username>
