@@ -1,5 +1,5 @@
-# Module Dashboard
+# Module nrg.module.dashboard
 
+***
 ## Dependencies
-- ZE_CCUX_BASE
-- ZE_CCUX_MOD_OTHERS
+* [nrg.base](ZEBASE/src/nrg/base/README.md)

@@ -1,8 +1,5 @@
 # Control library ute.ui.main
 
-## Controls available
-
-- Button
-- Checkbox
-- Label
-- Infoline
+***
+## Dependencies
+* [ute.ui.base](ZEBASE_CTRL/src/ute/ui/base/README.md)

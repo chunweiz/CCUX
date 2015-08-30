@@ -1,4 +1,5 @@
-# Module Others
+# Module nrg.module.others
 
+***
 ## Dependencies
-- ZE_CCUX_BASE
+* [nrg.base](ZEBASE/src/nrg/base/README.md)

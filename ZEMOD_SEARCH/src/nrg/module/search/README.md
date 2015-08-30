@@ -1,4 +1,5 @@
-# Module Search
+# Module nrg.module.search
 
+***
 ## Dependencies
-- ZE_CCUX_BASE
+* [nrg.base](ZEBASE/src/nrg/base/README.md)
