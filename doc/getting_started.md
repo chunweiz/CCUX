@@ -11,7 +11,7 @@ var el = document.querySelector('test');
 ```
 
 ```
-#!shell
+#!batch
 
 mkdir CCUX
 cd CCUX
