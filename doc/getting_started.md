@@ -14,13 +14,13 @@ git remote add origin <CCUX remote repo>
 git pull origin master
 ```
 
-where
+where   
 `username` is your remote Git repository username  
 `email address` is your remote Git repository email address  
 `CCUX remote repo` is your remote CCUX Git repository `HTTPS` url
 
 ***
-## Install NPM modules ##   {#npm}
+## Install NPM modules ##
 In your command prompt, navigate to your local CCUX folder and type the following command:
 
 ```
