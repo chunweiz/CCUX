@@ -36,7 +36,6 @@
 * [ute.ui.app](ZECTRL_APP/src/ute/ui/app/README.md)
 * [ute.ui.commons](ZECTRL_COMMONS/src/ute/ui/commons/README.md)
 * [ute.ui.main](ZECTRL_MAIN/src/ute/ui/main/README.md)
-* [ute.ui.viz](ZECTRL_VIZ/src/ute/ui/viz/README.md)
 
 ***
 ## Baseline
