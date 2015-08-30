@@ -6,7 +6,6 @@ You will need a local CCUX Git repository in order to pull from the remote CCUX 
 
 ```
 #!application/x-dos-batch
-#
 mkdir CCUX
 cd CCUX
 git config user.name <username>
