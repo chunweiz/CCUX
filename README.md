@@ -1,15 +1,15 @@
 # Call Center User Experience (CCUX)
 
 
-> The documentation in this repository is written in [Markdown](https://bitbucket.org/tutorials/markdowndemo/src) format.
+> This documentation is written in [Markdown](https://bitbucket.org/tutorials/markdowndemo/src) format.
 
 ***
 ## General
-* [Prerequisites](docs/prerequisites.md)
-* [Getting started](docs/getting_started.md)
-* [Build](docs/build.md)
-* [Deploy](docs/deploy.md)
-* [General folder structure](docs/general_folder_structure.md)
+* [Prerequisites](doc/prerequisites.md)
+* [Getting started](doc/getting_started.md)
+* [Build](doc/build.md)
+* [Deploy](doc/deploy.md)
+* [General folder structure](doc/general_folder_structure.md)
 
 ***
 ## Component
