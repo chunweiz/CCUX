@@ -1,5 +1,5 @@
 # Getting started #
-Please make sure you went through the [Prerequisites](prerequisites.md) section. This section assumes that you have installed the necessary softwares in Windows machine.
+Please make sure you went through the [Prerequisites](prerequisites.md) section first. This section assumes that you have necessary softwares installed in your local Windows machine.
 
 ***
 ## CCUX source codes ##
@@ -40,6 +40,7 @@ git remote add origin <CCUX remote repo>
 >
 > `CCUX remote repo` is your remote CCUX Git repository `HTTPS` url
 
+
 Finally, type the following command to download CCUX source code from the remote repository:
 
 ```
@@ -48,19 +49,19 @@ git pull origin master
 ```
 
 ***
-## Install NPM modules ##
-In your command prompt, navigate to your local CCUX folder and type the following command:
+## Install build modules ##
+In your command prompt, navigate to the CCUX folder that you have created through `mkdir CCUX` and type the following command to install all the modules that you need to build CCUX:
 
 ```
+#!batch
 npm install
 ```
 
-This will install all the modules that you need to build CCUX.
-
 ***
-## Perform first build ##
-In your command prompt, navigate to your local CCUX folder and type the following command:
+## First build ##
+In your command prompt, navigate to the CCUX folder that you have created through `mkdir CCUX` and type the following command to build CCUX:
 
 ```
+#!batch
 build
 ```
