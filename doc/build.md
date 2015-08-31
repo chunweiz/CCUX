@@ -22,6 +22,13 @@ Depending on what you need to build, you would need to run Grunt for that partic
 
 ***
 ## Module
+The Grunt build for module will perform the following tasks:
+* Javascript code quality check through [JSHint](http://jshint.com/about/).
+* Minification and mangling of Javascript files.
+* Adding suffix -dbg to selected Javascript files for sap-ui-debug=true purpose.
+* Compile and optimize LESS files to CSS.
+* Minification of XML and HTML files.
+* Concatenation of properties files.
 
 > The Grunt build for module is maintained at `grunt\build\module.js`.
 
@@ -104,7 +111,7 @@ grunt --build=base --baseFolder=<base folder> --basePath=<base path>
 
 > where
 >
-> `base folder` is the folder name of your baseline such as ZEBASE_CTRL                           
+> `base folder` is the folder name of your baseline such as ZEBASE_CTRL
 > `base path` is the path to your baseline based on UI5 namespace such as ute/ui
 
 This is how a generated build structure for a baseline typically looks like:
