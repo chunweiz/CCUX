@@ -27,8 +27,8 @@ git config user.email <email address>
 >
 > `username` is your remote Git user name  
 > `email address` is your remote Git email address  
-                                             
-Type the following commands to add the remote CCUX Git repository URL. You will have to use `https://` because NRG local network blocks the port for `git://`:
+
+Type the following commands to add the remote CCUX Git repository URL. You will have to use `https://` because NRG local network blocks the port for `git://`.
 
 ```
 #!batch
@@ -39,8 +39,8 @@ git remote add origin <CCUX remote repo>
 > where
 >
 > `CCUX remote repo` is your remote CCUX Git repository `HTTPS` url
-                       
-                                                           
+
+
 Finally, type the following command to download CCUX source code from the remote repository:
 
 ```
@@ -49,7 +49,7 @@ git pull origin master
 ```
 
 ***
-## Install build modules ##
+## Build module ##
 In your command prompt, navigate to the CCUX folder that you have created through `mkdir CCUX` and type the following command to install all the modules that you need to build CCUX:
 
 ```

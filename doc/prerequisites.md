@@ -25,6 +25,6 @@ There is no restriction on which editor to use but it would be wise to pick an e
 
 ***
 ## SAP UI Development Toolkit for HTML5
-You will need this if you want to deploy your changes to the SAPUI5 ABAP Repository. You can follow the instructions from the following link on how to setup the toolkit:
+You will need this if you want to deploy your changes to the SAPUI5 ABAP Repository. You can follow the instructions from the following link to install the toolkit:
 
 > [https://tools.hana.ondemand.com/#sapui5](https://tools.hana.ondemand.com/#sapui5)
