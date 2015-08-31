@@ -32,7 +32,7 @@
             "routes": {
                 "billing.CheckBook": {
                     "pattern": "billing/checkbook/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target":["billing.Checkbook", "dashboard.CustomerDataSummary"]
+                    "target":["billing.Checkbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
                 },
                 "billing.BillingInfo": {
                     "pattern": "billing/billinginfo/bp/{bpNum}/ca/{caNum}/co/{coNum}",
@@ -64,6 +64,10 @@
                 "billing.HighBill": {
                     "viewName": "nrg.module.billing.view.HighBill",
                     "controlId": "idAppGeneral"
+                },
+                "billing.CheckbookTools": {
+                    "viewName": "nrg.module.billing.view.BillingCheckbookTools",
+                    "controlId": "idAppTools"
                 }
             }
         }

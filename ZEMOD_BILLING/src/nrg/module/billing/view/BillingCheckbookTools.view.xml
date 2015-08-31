@@ -1,0 +1,14 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="nrg.module.billing.view.BillingCheckbookTools"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <ute:Tag class="nrgAppMain-generalContent">
+        <ute:Tag elem="span" class="" text="Tools" />
+    </ute:Tag>
+
+</mvc:View>
