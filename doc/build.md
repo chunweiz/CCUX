@@ -1,5 +1,5 @@
 # Build
-This section details how CCUX build system works. You might have performed your first build from [here](getting_started.md/#markdown-header-first-build) and wondered what was going on.
+This section details how CCUX build system works. You might have performed your first build from [here](getting_started.md/#markdown-header-first-build) and wonder what was going on.
 
 > Please make sure that you have installed all the necessary [build modules](getting_started.md/#markdown-header-install-build-modules).
 
@@ -7,7 +7,9 @@ This section details how CCUX build system works. You might have performed your 
 ## Overview
 CCUX build system primary goal is to generate an optimized set of files to run the application. On a high level, this is achieved by transforming the actual source files through a series of compression, mangling and concatenation.
 
-CCUX is using [Grunt](http://gruntjs.com/) to automate its build tasks and the build steps are optimized to the each of the following scenarios:
+CCUX is using [Grunt](http://gruntjs.com/) to achieve this. Grunt is a Javascript task runner that allows CCUX to automate its build tasks. You can refer to [Getting started with Grunt](http://gruntjs.com/getting-started) to find out more about Grunt.
+
+CCUX grunt build is divided into four scenarios:
 
 * [Module](#markdown-header-module)
 * [Control](#markdown-header-control)
@@ -16,9 +18,9 @@ CCUX is using [Grunt](http://gruntjs.com/) to automate its build tasks and the b
 
 When you run one of the build scenario, a `build` folder will be generated in the respective root folder of the scenario.
 
-> You can run `build.bat` on Windows or `build.sh` on Mac from the local root folder of your CCUX application to build the entire application covering all scenarios.
+> You can run `build.bat` on Windows or `build.sh` on Mac from the local root folder of your CCUX application to build the entire application. The build script covers all scenarios.
 >
-> **Do not** push the generated `build` folder to CCUX remote Git repository. Build folder is for deployment.
+> **Do not** push the generated `build` folder to CCUX remote Git repository. You can always generate the build locally.
 
 ***
 ## Module
@@ -30,6 +32,9 @@ This is how a generated build structure for a module typically looks like:
 |   +-- asset
 |   |   +-- css
 |   |   |   +-- module.css
+|   |   +-- data
+|   |   |   +-- **/*.json
+|   |   |   +-- **/*.xml
 |   +-- i18n
 |   |   +-- module.properties
 |   |   +-- module_en.properties
@@ -38,9 +43,9 @@ This is how a generated build structure for a module typically looks like:
 |   |   +-- *-dbg*.js
 |   |   +-- *.js
 |   |   +-- *.xml
-|   +-- manifest.json
 ```
 
+`grunt\build\module.js`
 
 ***
 ## Control

@@ -50,10 +50,11 @@ git pull origin master
 
 ***
 ## Build module ##
-In your command prompt, navigate to the CCUX folder that you have created through `mkdir CCUX` and type the following command to install all the modules that you need to build CCUX:
+In your command prompt, navigate to the CCUX folder that you have created through `mkdir CCUX` and type the following commands to install [Grunt command line interface globally](build.md/#markdown-header-overview) and all the modules that you need to build CCUX:
 
 ```
 #!batch
+npm install -g grunt-cli
 npm install
 ```
 
