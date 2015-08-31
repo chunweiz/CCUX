@@ -1,5 +1,5 @@
 # Prerequisites
-It is recommended that you have following applications installed and setup before begin your development.
+You will need to have at least [Git](#markdown-header-git) and [Node.js](#markdown-header-nodejs) installed before you can start your development.
 
 ***
 ## Git
@@ -24,6 +24,7 @@ There is no restriction on the type of editor that you can use for your developm
 * [Atom](https://atom.io/)
 * [Brackets](http://brackets.io/)
 * [Sublime](http://www.sublimetext.com/)
+* [SAP Web IDE](https://www.sapstore.com/solutions/60009/SAP-Web-IDE)
 
 ***
 ## SAP UI Development Toolkit for HTML5
