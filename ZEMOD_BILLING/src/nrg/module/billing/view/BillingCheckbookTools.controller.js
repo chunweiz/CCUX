@@ -13,6 +13,6 @@ sap.ui.define(
 
         //TODO: Implementation required
 
-        return Controller;
+        return CoreController;
     }
 );
