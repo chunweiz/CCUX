@@ -5,18 +5,16 @@ This section details how CCUX build system works. You might have performed your 
 
 ***
 ## Overview
-CCUX build system primary goal is to generate an optimized set of files to run the application. On a high level, this is achieved by transforming the actual source files through a series of compression, mangling and concatenation.
+CCUX build system primary goal is to generate an optimized set of application files. On a high level, this is done by transforming the actual source files through a series of compression, mangling, concatenation and preprocessing. CCUX is using [Grunt](http://gruntjs.com/) to achieve this. You can refer to [Getting started with Grunt](http://gruntjs.com/getting-started) to find out more about Grunt.
 
-CCUX is using [Grunt](http://gruntjs.com/) to achieve this. Grunt is a Javascript task runner that allows CCUX to automate its build tasks. You can refer to [Getting started with Grunt](http://gruntjs.com/getting-started) to find out more about Grunt.
-
-CCUX grunt build is divided into four scenarios:
+CCUX grunt build is divided into four main scenarios:
 
 * [Module](#markdown-header-module)
 * [Control](#markdown-header-control)
 * [Baseline](#markdown-header-baseline)
 * [Component](#markdown-header-component)
 
-When you run one of the build scenario, a `build` folder will be generated in the respective root folder of the scenario.
+Depending on what you need to build, you would need to run Grunt for that particular scenario. When you run one of the build scenario, a `build` folder will be generated in the respective root folder of the scenario.
 
 > You can run `build.bat` on Windows or `build.sh` on Mac from the local root folder of your CCUX application to build the entire application. The build script covers all scenarios.
 >

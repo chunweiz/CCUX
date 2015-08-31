@@ -49,7 +49,7 @@ git pull origin master
 ```
 
 ***
-## Build module ##
+## Install build module ##
 In your command prompt, navigate to the CCUX folder that you have created through `mkdir CCUX` and type the following commands to install [Grunt command line interface globally](build.md/#markdown-header-overview) and all the modules that you need to build CCUX:
 
 ```
@@ -66,3 +66,13 @@ In your command prompt, navigate to the CCUX folder that you have created throug
 #!batch
 build
 ```
+
+## Serving up CCUX locally ##
+In your command prompt, navigate to the CCUX folder that you have created through `mkdir CCUX` and type the following command to start your web server:
+
+```
+#!batch
+node webserver
+```
+
+Go to [http://localhost:3000/ZECMP_IC/build/nrg/component/ic/](http://localhost:3000/ZECMP_IC/build/nrg/component/ic/).
