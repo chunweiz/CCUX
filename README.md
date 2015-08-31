@@ -1,6 +1,4 @@
 # Call Center User Experience (CCUX)
-CCUX is built on top of [OpenUI5](https://openui5.hana.ondemand.com/), [LESS](http://lesscss.org/) and [Grunt](http://gruntjs.com/).
-
 > This document is written in [Markdown](https://bitbucket.org/tutorials/markdowndemo/src) format and changes are logged based on this [set of guidelines](https://github.com/olivierlacan/keep-a-changelog).
 
 ***
@@ -10,6 +8,8 @@ CCUX is built on top of [OpenUI5](https://openui5.hana.ondemand.com/), [LESS](ht
 * [Getting started](doc/getting_started.md)
 * [Build](doc/build.md)
 * [Deploy](doc/deploy.md)
+
+> CCUX is built on top of [OpenUI5](https://openui5.hana.ondemand.com/), [LESS](http://lesscss.org/) and [Grunt](http://gruntjs.com/).
 
 ***
 ## Component
