@@ -34,7 +34,7 @@ grunt --build=module --moduleName=<module ui5 namespace> --moduleFolder=<module 
 
 > where
 >
-> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.app           
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.app
 > `module folder` is the folder name of your module such as ZEMOD_APP
 
 This is how a generated build structure for a module typically looks like:
@@ -61,6 +61,18 @@ This is how a generated build structure for a module typically looks like:
 ## Control
 
 > The Grunt build for control is available at `grunt\build\control.js`.
+
+In order to invoke Grunt to build a control library, open your command prompt and navigate to your local CCUX repository root folder where the `Gruntfile.js` resides. Type the following command:
+
+```
+#!batch
+grunt --build=control --controlLibrary=<control library ui5 namespace> --controlFolder=<control library folder>
+```
+
+> where
+>
+> `control library ui5 namespace` is the UI5 namespace for your control library such as ute.ui.main             
+> `control library folder` is the folder name of your control library such as ZECTRL_MAIN
 
 This is how a generated build structure for a control library typically looks like:
 
