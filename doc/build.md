@@ -23,6 +23,7 @@ Depending on what you need to build, you would need to run Grunt for that partic
 ***
 ## Module
 The Grunt build for module will perform the following tasks:
+
 * Javascript code quality check through [JSHint](http://jshint.com/about/).
 * Minification and mangling of Javascript files.
 * Adding suffix -dbg to selected Javascript files for sap-ui-debug=true purpose.
