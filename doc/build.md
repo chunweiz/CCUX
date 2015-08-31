@@ -23,7 +23,19 @@ Depending on what you need to build, you would need to run Grunt for that partic
 ***
 ## Module
 
-> The Grunt build is available at `grunt\build\module.js`.
+> The Grunt build for module is available at `grunt\build\module.js`.
+
+You invoke a Grunt module build by typing the following command in your command prompt at your CCUX local repository root folder:
+
+```
+#!batch
+grunt --build=module --moduleName=<module ui5 namespace> --moduleFolder=<module folder>
+```
+
+> where
+>
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.app
+> `module folder` is the folder name of your module such as ZEMOD_APP
 
 This is how a generated build structure for a module typically looks like:
 
@@ -50,7 +62,7 @@ This is how a generated build structure for a module typically looks like:
 ***
 ## Control
 
-> The Grunt build is available at `grunt\build\control.js`.
+> The Grunt build for control is available at `grunt\build\control.js`.
 
 This is how a generated build structure for a control library typically looks like:
 
@@ -71,7 +83,7 @@ This is how a generated build structure for a control library typically looks li
 ***
 ## Baseline
 
-> The Grunt build is available at `grunt\build\base.js`.
+> The Grunt build for baseline is available at `grunt\build\base.js`.
 
 This is how a generated build structure for a baseline typically looks like:
 
@@ -92,7 +104,7 @@ This is how a generated build structure for a baseline typically looks like:
 ***
 ## Component
 
-> The Grunt build is available at `grunt\build\component\<component ui5 namespace>.js`.
+> The Grunt build for respective components are available at `grunt\build\component\<component ui5 namespace>.js`.
 
 This is how a generated build structure for a component typically looks like:
 
