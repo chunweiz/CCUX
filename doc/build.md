@@ -133,14 +133,16 @@ grunt --build=base --baseFolder=<base folder> --basePath=<base path>
 
 > where
 >
-> `base folder` is the folder name of your baseline such as ZEBASE_CTRL                  
+> `base folder` is the folder name of your baseline such as ZEBASE_CTRL
 > `base path` is the path to your baseline based on UI5 namespace such as ute/ui
 
 There is no predefined folder structure for baseline. Hence, the Grunt build for baseline will just create a build folder structure which is identical to the source folder structure.
 
 ***
 ## Component
-Typically, a Grunt build for component will perform the following tasks:
+The Grunt build for component is special in the sense that it is specific to the respective component. This is because each components need to determine what modules to include, which routes are permitted, type of customizations required, etc ...
+
+Having said that, a Grunt build for component should at least perform the following tasks:
 
 * Javascript code quality check through [JSHint](http://jshint.com/about/).
 * Clean up respective component build folder.
