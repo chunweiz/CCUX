@@ -83,7 +83,7 @@ This is how a generated build structure for a baseline typically looks like:
 ***
 ## Component
 
-This is how a generated build structure for a baseline typically looks like:
+This is how a generated build structure for a component typically looks like:
 
 ```
 +-- build/<component ui5 namespace path>
