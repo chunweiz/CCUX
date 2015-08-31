@@ -1,4 +1,7 @@
 # Component nrg.component.ic
+This component has everything !!!
+
+> Notable changes made to this folder are [logged here](doc/CHANGELOG.md).
 
 ***
 ## Dependencies
