@@ -34,7 +34,7 @@ grunt --build=module --moduleName=<module ui5 namespace> --moduleFolder=<module 
 
 > where
 >
-> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.app
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.app       
 > `module folder` is the folder name of your module such as ZEMOD_APP
 
 This is how a generated build structure for a module typically looks like:
