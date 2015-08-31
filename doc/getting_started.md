@@ -40,8 +40,7 @@ git remote add origin <CCUX remote repo>
 > where
 >
 > `CCUX remote repo` is your remote CCUX Git repository `HTTPS` url
-    
-
+                                                                                    
 Finally, type the following command to download CCUX source code from the remote repository:
 
 ```
