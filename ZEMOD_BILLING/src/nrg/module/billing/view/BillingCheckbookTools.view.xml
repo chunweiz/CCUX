@@ -7,7 +7,7 @@
     width="100%"
     displayBlock="true">
 
-    <ute:Tag class="nrgAppMain-generalContent">
+    <ute:Tag class="nrgAppMain-generalContent nrgBilling-blChkBkTools">
         <ute:Tag elem="span" class="" text="Tools" />
     </ute:Tag>
 
