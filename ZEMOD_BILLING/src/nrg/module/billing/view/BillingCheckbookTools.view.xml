@@ -8,7 +8,18 @@
     displayBlock="true">
 
     <ute:Tag class="nrgAppMain-generalContent nrgBilling-blChkBkTools">
-        <ute:Tag elem="span" class="" text="Tools" />
+        <ute:Tag class="nrgBilling-blChkBkTools-Title"
+                 text="{comp-i18n-billing>nrgBilling-chkbkTools-Title}" />
+        <ute:Tag class="nrgBilling-blChkBkTools-ctnt">
+            <ute:Button class="nrgBilling-blChkBkTools-ctnt-btn"
+                buttonType="SpecialNav" width="220px" enabled="true"
+                text="{comp-i18n-billing>nrgBilling-chkbkTools-FreeAdj-Btn}">
+            </ute:Button>
+            <ute:Button class="nrgBilling-blChkBkTools-ctnt-btn"
+                buttonType="SpecialNav" width="220px" enabled="true"
+                text="{comp-i18n-billing>nrgBilling-chkbkTools-AvgBill-Btn}">
+            </ute:Button>
+        </ute:Tag>
     </ute:Tag>
 
 </mvc:View>

@@ -332,7 +332,7 @@
                                 buttonType="GeneralInfo"
                                 text="{oBpSearchResult>Select}"
                                 enabled="true">
-                        </ute:Button>
+                            </ute:Button>
                         </l:MatrixLayoutCell>
                     </l:MatrixLayoutRow>
                 </l:rows>
