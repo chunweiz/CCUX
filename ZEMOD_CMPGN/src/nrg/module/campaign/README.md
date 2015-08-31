@@ -1,6 +1,7 @@
-# Module Campaign
+# Module nrg.module.campaign
 
+> Notable changes made to this folder are [logged here](doc/CHANGELOG.md).
+
+***
 ## Dependencies
-- ZE_CCUX_BASE
-- ZE_CCUX_MOD_APP
-- ZE_CCUX_MOD_DASHBOARD
+* [nrg.base](../../../../../ZEBASE/src/nrg/base/README.md)

@@ -86,13 +86,28 @@
                     <ute:Tag elem="span" 
                         class="nrgBilling-highBill-cusDriven-title"
                         text="{comp-i18n-billing>nrgBilling-highBill-cusDriven-TITLE}"/>
+                    <utmain:Button 
+                        design="None"
+                        text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-RATE_HISTORY_BTN}"
+                        class="nrgBilling-highBill-headerBtn" 
+                        press=""/>
+                    <utmain:Button 
+                        design="None"
+                        text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-USAGE_BTN}"
+                        class="nrgBilling-highBill-headerBtn" 
+                        press=""/>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-highBill-cusDriven-body">
-                    <m:ScrollContainer class="nrgBilling-highBill-cusDriven-body-scrollArea" height="200px" horizontal="false" vertical="true">
+                    <m:ScrollContainer class="nrgBilling-highBill-cusDriven-body-scrollArea" height="150px" horizontal="false" vertical="true">
                         <ute:Tag content="{oCusDriven>/}">
                             <ute:Tag class="nrgBilling-highBill-cusDriven-row">
                                 <ute:Tag class="nrgBilling-highBill-cusDriven-statis">
-                                    <core:Icon src="sap-icon://up" class="nrgBilling-highBill-cusDriven-statis-icon" />
+                                    <core:Icon 
+                                        src="{
+                                            parts: ['oCusDriven>Change'],
+                                            formatter: '._getArrowIcon'
+                                        }" 
+                                        class="nrgBilling-highBill-cusDriven-statis-icon" />
                                     <ute:Tag class="nrgBilling-highBill-cusDriven-statis-number" text="{oCusDriven>Amount}"/>
                                 </ute:Tag>
                                 <ute:Tag class="nrgBilling-highBill-cusDriven-type"
@@ -111,16 +126,41 @@
                         class="nrgBilling-highBill-nonCusImpacts-title"
                         text="{comp-i18n-billing>nrgBilling-highBill-nonCusImpacts-TITLE}"/>
                 </ute:Tag>
-            </ute:Tag>
-            <ute:Tag class="nrgBilling-highBill-nonCusImpacts-body">
-                    <m:ScrollContainer class="nrgBilling-highBill-nonCusImpacts-body-scrollArea" height="200px" horizontal="false" vertical="true">
-                        
+                <ute:Tag class="nrgBilling-highBill-nonCusImpacts-body">
+                    <m:ScrollContainer class="nrgBilling-highBill-nonCusImpacts-body-scrollArea" height="150px" horizontal="false" vertical="true">
+                        <ute:Tag content="{oCusDriven>/}">
+                            <ute:Tag class="nrgBilling-highBill-nonCusImpacts-row">
+                                <ute:Tag class="nrgBilling-highBill-nonCusImpacts-statis">
+                                    <core:Icon 
+                                        src="{
+                                            parts: ['oCusDriven>Change'],
+                                            formatter: '._getArrowIcon'
+                                        }" 
+                                        class="nrgBilling-highBill-nonCusImpacts-statis-icon" />
+                                    <ute:Tag class="nrgBilling-highBill-nonCusImpacts-statis-number" text="{oCusDriven>Amount}"/>
+                                </ute:Tag>
+                                <ute:Tag class="nrgBilling-highBill-nonCusImpacts-type"
+                                    text="{oCusDriven>Type}"/>
+                                <ute:Tag class="nrgBilling-highBill-nonCusImpacts-descr"
+                                    text="{oCusDriven>Description}"/>
+                            </ute:Tag>
+                        </ute:Tag>
                     </m:ScrollContainer>
                 </ute:Tag>
+            </ute:Tag>
+            <!-- Premise Attributes -->
+            <utmain:Button 
+                design="None"
+                text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-PREMISE_ATTRIB}"
+                class="nrgBilling-highBill-premiseAttrib" 
+                press=""/>
         </ute:Tag>
 
         <!-- Right Section -->
         <ute:Tag class="nrgBilling-highBill-rightDiv">
+            <!-- Title -->
+            <ute:Tag elem="span" class="nrgBilling-highBill-notiTitle"
+                text="{comp-i18n-billing>nrgBilling-highBill-NOTI_TITLE}" />
 
         </ute:Tag>
         

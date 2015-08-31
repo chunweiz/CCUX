@@ -1,4 +1,7 @@
-# Module Search
+# Module nrg.module.search
 
+> Notable changes made to this folder are [logged here](doc/CHANGELOG.md).
+
+***
 ## Dependencies
-- ZE_CCUX_BASE
+* [nrg.base](../../../../../ZEBASE/src/nrg/base/README.md)
