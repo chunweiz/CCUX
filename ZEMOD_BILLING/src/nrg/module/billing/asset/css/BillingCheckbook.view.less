@@ -64,6 +64,14 @@
         text-align: center !important;
     }
 
+    & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh1.nrgBilling-blChkBk-lftDiv-scrllArea-hdr-alert{
+        background-color: @nrgColor-red-alert;
+    }
+
+    & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh1.nrgBilling-blChkBk-lftDiv-scrllArea-hdr-notify{
+        background-color: @nrgColor-orange-attention;
+    }
+
     & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh2{
         width: 300px;
         border-left: 2px solid @nrgColor-grey-amount;
@@ -88,7 +96,7 @@
         width: 52px;
     }
 
-    & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5 .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip{
+    /*& > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5 .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip{
         width: 52px;
     }
 
@@ -105,7 +113,7 @@
     & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5 .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip-inactive{
         //color:
         font-size: @nrgFontSize-base;
-    }
+    }*/
 
 
     & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-h1, & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c1{
@@ -269,7 +277,7 @@
     }
 }
 
-.nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip {
+.nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip{
     font-size: @nrgFontSize-base;
     & .nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-otrFrm{
         border: 2px @nrgColor-grey-highlight solid;
@@ -304,5 +312,23 @@
 
     & .nrgBilling-blChkBk-lftDiv-qkRefArea-redHghlt{
         background-color: @nrgColor-red-pale;
+    }
+}
+
+.nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip{
+    font-size: @nrgFontSize-small;
+    font-weight: @nrgFontWeight-semiBold;
+    width: 52px;
+    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip-current{
+        color: @nrgColor-green-credit;
+    }
+
+    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip-canceled{
+        color: @nrgColor-red-pale;
+    }
+
+    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip-inactive{
+        //color:
+        color: @nrgColor-grey-highlight;
     }
 }
