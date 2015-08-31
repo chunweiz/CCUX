@@ -23,6 +23,8 @@ Depending on what you need to build, you would need to run Grunt for that partic
 ***
 ## Module
 
+> The Grunt build is available at `grunt\build\module.js`.
+
 This is how a generated build structure for a module typically looks like:
 
 ```
@@ -48,6 +50,8 @@ This is how a generated build structure for a module typically looks like:
 ***
 ## Control
 
+> The Grunt build is available at `grunt\build\control.js`.
+
 This is how a generated build structure for a control library typically looks like:
 
 ```
@@ -67,6 +71,8 @@ This is how a generated build structure for a control library typically looks li
 ***
 ## Baseline
 
+> The Grunt build is available at `grunt\build\base.js`.
+
 This is how a generated build structure for a baseline typically looks like:
 
 ```
@@ -85,6 +91,8 @@ This is how a generated build structure for a baseline typically looks like:
 
 ***
 ## Component
+
+> The Grunt build is available at `grunt\build\component\<component ui5 namespace>.js`.
 
 This is how a generated build structure for a component typically looks like:
 
