@@ -1,7 +1,5 @@
 # Call Center User Experience (CCUX)
-
-
-> This documentation is written in [Markdown](https://bitbucket.org/tutorials/markdowndemo/src) format and change logs follow this [set of guidelines](https://github.com/olivierlacan/keep-a-changelog).
+> This document is written in [Markdown](https://bitbucket.org/tutorials/markdowndemo/src) format and changes are logged based on this [set of guidelines](https://github.com/olivierlacan/keep-a-changelog).
 
 ***
 ## General
