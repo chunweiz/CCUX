@@ -71,7 +71,7 @@ grunt --build=control --controlLibrary=<control library ui5 namespace> --control
 
 > where
 >
-> `control library ui5 namespace` is the UI5 namespace for your control library such as ute.ui.main             
+> `control library ui5 namespace` is the UI5 namespace for your control library such as ute.ui.main
 > `control library folder` is the folder name of your control library such as ZECTRL_MAIN
 
 This is how a generated build structure for a control library typically looks like:
@@ -94,6 +94,18 @@ This is how a generated build structure for a control library typically looks li
 ## Baseline
 
 > The Grunt build for baseline is available at `grunt\build\base.js`.
+
+In order to invoke Grunt to build a baseline, open your command prompt and navigate to your local CCUX repository root folder where the `Gruntfile.js` resides. Type the following command:
+
+```
+#!batch
+grunt --build=base --baseFolder=<base folder> --basePath=<base path>
+```
+
+> where
+>
+> `base folder` is the folder name of your baseline such as ZEBASE_CTRL                           
+> `base path` is the path to your baseline based on UI5 namespace such as ute/ui
 
 This is how a generated build structure for a baseline typically looks like:
 
