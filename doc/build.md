@@ -25,21 +25,21 @@ When you run one of the build scenario, a `build` folder will be generated in th
 
 Below is how a generated build folder for a module looks like:
 > * build
->    * nrg
->        * module
->            * `module name`
->                * asset
->                    * css
->                        * `module.css`
->                * i18n
->                    * `module.properties`
->                    * `module_en.properties`
->                    * `module_en_US.properties`
->                * view
->                    * `*-dbg.js`
->                    * `*.js`
->                    * `*.xml`
->                * `manifest.json`
+>       * nrg
+>           * module
+>               * `module name`
+>                   * asset
+>                       * css
+>                           * `module.css`
+>                   * i18n
+>                       * `module.properties`
+>                       * `module_en.properties`
+>                       * `module_en_US.properties`
+>                   * view
+>                       * `*-dbg.js`
+>                       * `*.js`
+>                       * `*.xml`
+>                   * `manifest.json`
 
 
 ***
