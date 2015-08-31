@@ -1,5 +1,5 @@
 # Getting started #
-Please make sure you went through the [Prerequisites](getting_started.md) section.
+Please make sure you went through the [Prerequisites](prerequisites.md) section.
 
 ***
 ## Pull CCUX source codes ##
