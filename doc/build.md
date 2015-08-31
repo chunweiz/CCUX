@@ -25,11 +25,14 @@ Depending on what you need to build, you would need to run Grunt for that partic
 The Grunt build for module will perform the following tasks:
 
 * Javascript code quality check through [JSHint](http://jshint.com/about/).
-* Minification and mangling of Javascript files.
-* Adding suffix -dbg to selected Javascript files for sap-ui-debug=true purpose.
-* Compile and optimize LESS files to CSS.
-* Minification of XML and HTML files.
-* Concatenation of properties files.
+* Clean up respective module build folder.
+* Minify and mangle Javascript files.
+* Add suffix -dbg to selected Javascript files for sap-ui-debug=true purpose.
+* Optimize and compile LESS files to CSS.
+* Minify XML and HTML files.
+* Concatenate properties files.
+* Compress JSON files.
+* Copy selected files to build folder.
 
 > The Grunt build for module is maintained at `grunt\build\module.js`.
 
@@ -67,6 +70,15 @@ This is how a generated build structure for a module typically looks like:
 
 ***
 ## Control
+The Grunt build for control library will perform the following tasks:
+
+* Javascript code quality check through [JSHint](http://jshint.com/about/).
+* Clean up respective control library build folder.
+* Minify and mangle Javascript files.
+* Add suffix -dbg to selected Javascript files for sap-ui-debug=true purpose.
+* Optimize and compile LESS files to CSS.
+* Generate library-preload file.
+* Copy selected files to build folder.
 
 > The Grunt build for control is available at `grunt\build\control.js`.
 
@@ -100,6 +112,15 @@ This is how a generated build structure for a control library typically looks li
 
 ***
 ## Baseline
+The Grunt build for baseline will perform the following tasks:
+
+* Javascript code quality check through [JSHint](http://jshint.com/about/).
+* Clean up respective baseline build folder.
+* Minify and mangle Javascript files.
+* Add suffix -dbg to selected Javascript files for sap-ui-debug=true purpose.
+* Optimize and compile LESS files to CSS.
+* Compress JSON files.
+* Copy selected files to build folder.
 
 > The Grunt build for baseline is available at `grunt\build\base.js`.
 
@@ -115,24 +136,19 @@ grunt --build=base --baseFolder=<base folder> --basePath=<base path>
 > `base folder` is the folder name of your baseline such as ZEBASE_CTRL
 > `base path` is the path to your baseline based on UI5 namespace such as ute/ui
 
-This is how a generated build structure for a baseline typically looks like:
-
-```
-+-- build/<baseline ui5 namespace path>
-|   +-- themes
-|   |   +-- base
-|   |   |   +-- library.css
-|   |   +-- sap_bluecrystal
-|   |   |   +-- library.css
-|   +-- *-dbg.js
-|   +-- *.js
-|   +-- library-dbg.js
-|   +-- library.js
-|   +-- library-preload.json
-```
+There is no predefined folder structure for baseline. Hence, the Grunt build for baseline will just create a build folder structure which is identical to the source folder structure.
 
 ***
 ## Component
+Typically, a Grunt build for component will perform the following tasks:
+
+* Javascript code quality check through [JSHint](http://jshint.com/about/).
+* Clean up respective component build folder.
+* Minify and mangle Javascript files.
+* Add suffix -dbg to selected Javascript files for sap-ui-debug=true purpose.
+* Merge and compress multiple manifest.json files.
+* Minify index.html.
+* Generate Component-preload file.
 
 > The Grunt build for respective components are available at `grunt\build\component\<component ui5 namespace>.js`.
 
