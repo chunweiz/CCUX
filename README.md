@@ -7,7 +7,6 @@
 * [Getting started](doc/getting_started.md)
 * [Build](doc/build.md)
 * [Deploy](doc/deploy.md)
-* [General folder structure](doc/general_folder_structure.md)
 
 ***
 ## Component
