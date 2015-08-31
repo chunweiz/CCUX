@@ -14,10 +14,31 @@ CCUX is using [Grunt](http://gruntjs.com/) to automate its build tasks and build
 * [Baseline](#markdown-header-baseline)
 * [Component](#markdown-header-component)
 
-You can run `build.bat` on Windows or `build.sh` on Mac to build the entire application covering all scenarios.
+When you run one of the build scenario, a `build` folder will be generated in the respective root folder of the scenario.
+
+> You can run `build.bat` on Windows or `build.sh` on Mac from the local root folder of your CCUX application to build the entire application covering all scenarios.
+>
+> **Do not** push the generated `build` folder to the CCUX remote Git repository.
 
 ***
 ## Module
+
+* build
+    * nrg
+        * module
+            * `module name`
+                * asset
+                    * css
+                        * `module.css`
+                * i18n
+                    * `module.properties`
+                    * `module_en.properties`
+                    * `module_en_US.properties`
+                * view
+                    * `*-dbg.js`
+                    * `*.js`
+                    * `*.xml`
+                * `manifest.json`
 
 
 ***
