@@ -3,10 +3,13 @@
 
 ***
 ## General
+
 * [Prerequisites](doc/prerequisites.md)
 * [Getting started](doc/getting_started.md)
 * [Build](doc/build.md)
 * [Deploy](doc/deploy.md)
+
+> CCUX is built on top of [OpenUI5](https://openui5.hana.ondemand.com/), [LESS](http://lesscss.org/) and [Grunt](http://gruntjs.com/).
 
 ***
 ## Component
