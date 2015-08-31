@@ -1,25 +1,51 @@
 # Getting started #
-Please make sure you went through the [Prerequisites](prerequisites.md) section.
+Please make sure you went through the [Prerequisites](prerequisites.md) section. This section assumes that you have installed the necessary softwares in Windows machine.
 
 ***
-## Pull CCUX source codes ##
-You will need a local CCUX Git repository in order to pull from the remote CCUX Git repository. You will begin by launching your command prompt. Navigate within your command prompt to the place where you would like to keep the CCUX source codes. Once you are reached the desired location, type the following commands:
+## CCUX source codes ##
+You will need to create a local CCUX Git repository in order to pull from the remote CCUX Git repository. You will begin by pressing `Windows logo + R` and type `cmd` to launch your command prompt.
+
+![Open Command Prompt in Windows](img/cmd.001.png)
+
+Navigate within your command prompt to the folder where you would like to keep the CCUX source codes and type the following commands to create and navigate to the CCUX folder:
 
 ```
 #!batch
-
 mkdir CCUX
 cd CCUX
-git config user.name <username>
-git config user.email <email address>
-git config url."https://".insteadOf git://
-git remote add origin <CCUX remote repo>
-git pull origin master
 ```
 
-> `username` is your remote Git repository username  
-> `email address` is your remote Git repository email address  
+While you are in the CCUX folder, type the following commands to create the local CCUX Git repository:
+
+```
+#!batch
+git init
+git config user.name <username>
+git config user.email <email address>
+```
+> where
+>
+> `username` is your remote Git user name  
+> `email address` is your remote Git email address  
+
+Type the following commands to add the remote CCUX Git repository URL. You will have to use `https://` because NRG local network is blocking the port for `git://`:
+
+```
+#!batch
+git config url."https://".insteadOf git://
+git remote add origin <CCUX remote repo>
+```
+
+> where
+>
 > `CCUX remote repo` is your remote CCUX Git repository `HTTPS` url
+
+Finally, type the following command to download CCUX source code from the remote repository:
+
+```
+#!batch
+git pull origin master
+```
 
 ***
 ## Install NPM modules ##
