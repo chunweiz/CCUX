@@ -1,15 +1,14 @@
 # Deploy #
-Eclipse will be used to deploy CCUX application to the SAPUI5 ABAP repository.  
-
+Eclipse will be used to deploy the CCUX application to the SAPUI5 ABAP repository.
 
 ***
 ## Setting up Eclipse ##
-Please make sure you have [UI5 toolkit](prerequisites.md#markdown-header-sap-ui-development-toolkit-for-html5) installed in your Eclipse.
+Please make sure that you have [UI5 toolkit](prerequisites.md#markdown-header-sap-ui-development-toolkit-for-html5) installed in your Eclipse.
 
 ### File content ##
-In your Eclipse, go to `Window > Preferences > Team > File Content`
+Setting relevant file content types to *Binary* prevents the [end of line marker](http://help.sap.com/saphelp_uiaddon10/helpdata/en/46/d0d54889be48d7abba0fa061c65835/content.htm) issue.
 
-The content type for the following extensions need to be set to *Binary*. If the entry is not in your Eclipse, please add it in by pressing `Add Extension...`.
+In your Eclipse, go to `Window > Preferences > Team > File Content`. The content type for the following extensions need to be set to *Binary*. If the entry is not in your Eclipse, please add it in by pressing `Add Extension...`.
 
 Extension  | Extension | Extension | Extension | Extension | Extension | Extension     | Extension | Extension
 ---------- | --------- | --------- | --------- | --------- | --------- | ------------- | --------- | ---------
@@ -19,7 +18,7 @@ Extension  | Extension | Extension | Extension | Extension | Extension | Extensi
 \*.tif     | \*.tiff   |  \*.ttf   | \*.txt    | \*.woff   | \*.xls    | \*.xml        | \*.zip    |
 
 ### SAP Logon ###
-Eclipse reads SAP logon information from your **SAP GUI Local Configuration Files**. If your SAP GUI is configured to read configuration files from the server only, please make a copy of the configuration files from the network and add them to your local machine as indicated below.
+Eclipse reads SAP logon information from your **SAP GUI Local Configuration Files** only. If your SAP GUI is configured to read configuration files from the server only, please make a copy of the configuration files from the network and add them to your local machine as indicated below.
 
 ![SAP GUI Server Configuration Files](img/deploy.015.png)
 
@@ -28,8 +27,38 @@ Eclipse reads SAP logon information from your **SAP GUI Local Configuration File
 ***
 ## Deploy CCUX application ##
 
+
+
+***
+## Grunt deploy tasks ##
+Grunt deploy tasks are being used to copy the generated build folders from CCUX to the corresponding Eclipse projects. The tasks are divided into four main scenarios and are maintained at:
+
+Scenario  | Maintained at
+--------- | ---------------------------
+Module    | `grunt\deploy\module.js`
+Control   | `grunt\deploy\control.js`
+Baseline  | `grunt\deploy\base.js`
+Component | `grunt\deploy\component.js`
+
+In order to invoke Grunt to deploy a scenario, open your command prompt and navigate to your local CCUX repository root folder where the `Gruntfile.js` resides. Depending on your scenario, type one of the following command:
+
+```
+#!batch
+grunt --deploy=base --baseFolder=<base folder> --baseName=<base name> --eclipseProjectPath=<eclipse project path>
+```
+
+> where
+>
+> <base folder> is the baseline folder name such as ZEBASE
+> <base name> is the baseline ui5 namespace such as nrg.base
+> <eclipse project path> is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZEBASE
+
+Generally speaking, this is what the Grunt deploy tasks perform:
+* Cleanup the Eclipse project.
+* Copy the build folder to the corresponding Eclipse project.
+
 ***
 ## SAPUI5 ABAP repository ##
-CCUX related modules are stored in package `ZCCUX_UI5`.
+The entire CCUX application is stored under package `ZCCUX_UI5`.
 
 ![SAP packge ZCCUX_UI5](img/deploy.014.png)
