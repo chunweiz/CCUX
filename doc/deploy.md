@@ -181,7 +181,7 @@ Right-click your Eclipse project. Choose `Team > Submit`.
 
 ![Choose a project](img/deploy.017.png)
 
-The system complains if your local Eclipse project files are different from those in SAPUI5 ABAP repository. This usually happens after you ran the Grunt build and deploy tasks before submitting the changes. Just select all the files by pressing `CTRL + A` and press `Set Resolved`. It is okay to set everything as resolved because the latest changes are always in Git and you are running the Grunt build based on the files in Git.
+The system complains if your local Eclipse project files are different from those in SAPUI5 ABAP repository. This usually happens after you ran the Grunt build and deploy tasks before submitting the changes. Just select all the files by pressing `CTRL + A` and press `Set Resolved`. It is okay to set everything as resolved because the latest changes are always in Git and you are running the Grunt build based on the files from Git.
 
 ![Resolve conflict](img/deploy.018.png)
 
@@ -195,7 +195,12 @@ Enter transport request information. Depending on your requirements, you are giv
 
 ***
 ## Deploy ZELIB ##
+ZELIB stores the OpenUi5 and any other external libraries that are used by CCUX. At the moment, there is no Grunt deploy tasks for ZELIB, hence you will need do it manually. You will still need to [share your local ZELIB Eclipse project](#markdown-header-share-ccux-application).
 
+Below are the steps on how to submit the changes manually to SAPUI5 ABAP repository.
+
+1. Copy the library from your local CCUX Git repository and replace the one in your local Eclipse project.
+2. [Submit the changes](#markdown-header-submit-ccux-application). It will take a while, so you might want to do this over a weekend where no one is testing CCUX in SAP.
 
 ***
 ## SAPUI5 ABAP repository ##
