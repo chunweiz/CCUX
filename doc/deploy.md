@@ -1,5 +1,15 @@
 # Deploy #
-Eclipse will be used to deploy the CCUX application to the SAPUI5 ABAP repository.
+Eclipse will be used to deploy the CCUX application to the SAPUI5 ABAP repository. Each eclipse project refers to a particular baseline, module, control or component.
+
+Sections:
+
+* [Setting up Eclipse](#markdown-header-setting-up-eclipse)
+* [Grunt deploy tasks](#markdown-header-grunt-deploy-tasks)
+* [Share CCUX application](#markdown-header-share-ccux-application)
+* [Retrieve CCUX application](#markdown-header-retrieve-ccux-application)
+* [Submit CCUX application](#markdown-header-submit-ccux-application)
+* [Deploy ZELIB](#markdown-header-deploy-zelib)
+* [SAPUI5 ABAP repository](#markdown-header-sapui5-abap-repository)
 
 ***
 ## Setting up Eclipse ##
@@ -23,11 +33,6 @@ Eclipse reads SAP logon information from your **SAP GUI Local Configuration File
 ![SAP GUI Server Configuration Files](img/deploy.015.png)
 
 ![SAP GUI Local Configuration Files](img/deploy.016.png)
-
-***
-## Deploy CCUX application ##
-
-
 
 ***
 ## Grunt deploy tasks ##
@@ -98,12 +103,65 @@ You can deploy the entire CCUX application to the corresponding Eclipse projects
 
 ```
 #!batch
-deploy ECLIPSE_WORKSPACE_PATH=<eclipse project path>
+deploy ECLIPSE_WORKSPACE_PATH=<eclipse workspace path>
 ```
 
 > where
 >
-> <eclipse project path> is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse         
+> <eclipse workspace path> is the workspace path of the Eclipse project workspace such as C:\Users\thew\workspace\eclipse
+
+***
+## Share CCUX application ##
+To share means to connect your local Eclipse project to a particular SAPUI5 ABAP repository BSP application. You will share an Eclipse project if you need to:
+
+* _Upload a new_ module, control, baseline or component to SAPUI5 ABAP repository.
+* _Download an existing_ module, control, baseline or component from SAPUI5 ABAP repository.
+
+Go to `File > New > Project`.
+![Create Eclipse project](img/deploy.001.png)
+
+Put your module, control, baseline or component folder name as project name. Press `Finish`.
+![Eclipse project name](img/deploy.002.png)
+
+Right click the newly created project and choose `Team > Share Project...`.
+![Share Eclipse project](img/deploy.003.png)
+
+Choose 'SAPUI5 ABAP Repository'. Press 'Next'.
+![Choose Repository](img/deploy.004.png)
+
+Choose `SAP CMD`. Press `Next`. The SAP connection list is coming from your SAP GUI. If you are not seeing any entry, you might want to [read this up](#markdown-header-sap-logon).
+![Choose SAP system](img/deploy.005.png)
+
+Enter client `520` and your SAP logon credential to SAP CMD/520. 520 is CMD development client.
+![SAP logon credential](img/deploy.006.png)
+
+If you are uploading a new module, control, baseline or component to SAPUI5 ABAP repository, choose `Create a new BSP Application`. The name of the BSP application will be identical to the folder name of your module, control, baseline or component. Defaults the package to `ZCCUX_UI5`.
+![Create BSP application](img/deploy.008.png)
+
+If you are downloading an existing module, control, baseline or component from SAPUI5 ABAP repository, choose `Select a BSP Application`. Select the BSP application that shares the same name as the folder name of your module, control, baseline or component.
+![Choose BSP application](img/deploy.007.png)
+
+Enter transport request information. Depending on your requirements, you are given the following options:
+![Choose transport request](img/deploy.009.png)
+
+Once you have successfully shared a project, you will be able to see additional information beside the Eclipse project.
+![Verify connection status](img/deploy.010.png)
+
+***
+## Retrieve CCUX application ##
+
+![Retrieve changes](img/deploy.011.png)
+![Select resources to retrieve](img/deploy.012.png)
+![Verify retrieved resources](img/deploy.013.png)
+
+
+***
+## Submit CCUX application ##
+
+
+***
+## Deploy ZELIB ##
+
 
 ***
 ## SAPUI5 ABAP repository ##
