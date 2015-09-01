@@ -1,10 +1,25 @@
 # Module
-Generally, a module is a logical grouping of related business processes such as billing and campaign.
+Module is a logical grouping of related business content such as billing and campaign. Generally, it is used to create a unique UI5 namespace and to store the XML views, controllers, stylesheets, mock data, documentations, translation files and configurations such as routing.
+
+How to create a module:
+
+1. Create a new [module folder](#markdown-header-module-folder).
+2. Add in [stylesheet](#markdown-header-stylesheets).
+3. Add in [translation file](#markdown-header-translation-files).
+4. Add in [configuration file](#markdown-header-configuration).
+5. Add in [documentations](#markdown-header-documentation).
 
 ***
-## Create a new module
+## Module folder
+### Module folder name ###
+The naming convention for a module folder is as follows. This is because SAP BSP application name can only accommodate up to 15 characters.
 
-**Initial module structure**
+```
+ZEMOD_[a-zA-Z0-9_]{1,9}
+```
+
+### Module folder structure ###
+
 
 ```
 ZEMOD_<module folder name>/
@@ -21,57 +36,14 @@ ZEMOD_<module folder name>/
     └── README.md
 ```
 
-**Initial manifest.json**
 
-```
-#!json
-{
-    "sap.ui5": {
-        "config": {
-            "module": {
-                "<module ui5 namespace>": {
-                    "stylesheet": [
-                        "asset/css/module.css"
-                    ],
-                    "resourceBundle": {
-                        "comp-i18n-billing": "i18n/module.properties"
-                    },
-                    "odata": {
-                        "real": {
-                            "comp-billing": {
-                                "url": "sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/"
-                            }
-                        },
-                        "mock": {
-                            "comp-billing": {
-                                "mockDataBaseUrl": "data/devtest/",
-                                "generateMissingMockData": true
-                            }
-                        }
-                    }
-                }
-            }
-        },
+## Stylesheet
 
-        "routing": {
-            "routes": {
-                "billing.CheckBook": {
-                    "pattern": "billing/checkbook/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target":["billing.Checkbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
-                }
-            },
 
-            "targets":{
-                "billing.Checkbook": {
-                    "viewName": "nrg.module.billing.view.BillingCheckbook",
-                    "controlId": "idAppGeneral"
-                },
-                "billing.CheckbookTools": {
-                    "viewName": "nrg.module.billing.view.BillingCheckbookTools",
-                    "controlId": "idAppTools"
-                }
-            }
-        }
-    }
-}
-```
+## Translation
+
+
+## Configuration
+
+
+## Documentation
