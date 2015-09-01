@@ -61,7 +61,9 @@ grunt --deploy=module --moduleName=<module name> --moduleFolder=<module folder> 
 > where
 >
 > <module folder> is the baseline folder name such as ZEMOD_APP
+>
 > <module name> is the baseline ui5 namespace such as nrg.module.app
+>
 > <eclipse project path> is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZEMOD_APP
 
 **Control**
