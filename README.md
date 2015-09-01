@@ -13,11 +13,13 @@
 
 ***
 ## Component
+> [Getting started](component.md) with component development
 
 * [nrg.component.ic](ZECMP_IC/src/nrg/component/ic/README.md)
 
 ***
 ## Module
+> [Getting started](module.md) with module development
 
 * [nrg.module.app](ZEMOD_APP/src/nrg/module/app/README.md)
 * [nrg.module.billing](ZEMOD_BILLING/src/nrg/module/billing/README.md)
@@ -32,6 +34,7 @@
 
 ***
 ## Control
+> [Getting started](control.md) with control library development
 
 * [ute.ui.app](ZECTRL_APP/src/ute/ui/app/README.md)
 * [ute.ui.commons](ZECTRL_COMMONS/src/ute/ui/commons/README.md)
@@ -39,6 +42,7 @@
 
 ***
 ## Baseline
+> [Getting started](baseline.md) with baseline development
 
 * [nrg.base](ZEBASE/src/nrg/base/README.md)
 * [ute.ui.base](ZEBASE_CTRL/src/ute/ui/base/README.md)
