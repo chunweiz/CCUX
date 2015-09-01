@@ -76,9 +76,9 @@ grunt --deploy=base --baseFolder=<base folder> --baseName=<base name> --eclipseP
 
 > where
 >
-> <base folder> is the baseline folder name such as ZEBASE
-> <base name> is the baseline ui5 namespace such as nrg.base
-> <eclipse project path> is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZEBASE
+> <base folder> is the baseline folder name such as ZEBASE			
+> <base name> is the baseline ui5 namespace such as nrg.base			
+> <eclipse project path> is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZEBASE			
 
 **Component**
 ```
