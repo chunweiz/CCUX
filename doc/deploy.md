@@ -40,7 +40,7 @@ Control   | `grunt\deploy\control.js`
 Baseline  | `grunt\deploy\base.js`
 Component | `grunt\deploy\component.js`
 
-In order to invoke Grunt to deploy a scenario, open your command prompt and navigate to your local CCUX repository root folder where the `Gruntfile.js` resides. Depending on your scenario, type one of the following command:
+In order to invoke Grunt to deploy a scenario, open your command prompt and navigate to your local CCUX repository root folder where the `Gruntfile.js` resides. Depending on your scenario, type one of the following commands:
 
 **Module**
 ```
@@ -53,6 +53,18 @@ grunt --deploy=module --moduleName=<module name> --moduleFolder=<module folder> 
 > <module folder> is the baseline folder name such as ZEMOD_APP
 > <module name> is the baseline ui5 namespace such as nrg.module.app
 > <eclipse project path> is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZEMOD_APP
+
+**Control**
+```
+#!batch
+grunt --deploy=control --controlFolder=<control folder> --controlName=<control name> --eclipseProjectPath=<eclipse project path>
+```
+
+> where
+>
+> <control folder> is the baseline folder name such as ZECTRL_MAIN
+> <control name> is the baseline ui5 namespace such as ute.ui.main
+> <eclipse project path> is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZECTRL_MAIN
 
 **Baseline**
 ```
