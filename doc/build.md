@@ -46,6 +46,7 @@ grunt --build=module --moduleName=<module ui5 namespace> --moduleFolder=<module 
 > where
 >
 > `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.app
+>
 > `module folder` is the folder name of your module such as ZEMOD_APP
 
 This is how a generated build structure for a module typically looks like:
@@ -92,6 +93,7 @@ grunt --build=control --controlLibrary=<control library ui5 namespace> --control
 > where
 >
 > `control library ui5 namespace` is the UI5 namespace for your control library such as ute.ui.main
+>
 > `control library folder` is the folder name of your control library such as ZECTRL_MAIN
 
 This is how a generated build structure for a control library typically looks like:
@@ -134,6 +136,7 @@ grunt --build=base --baseFolder=<base folder> --basePath=<base path>
 > where
 >
 > `base folder` is the folder name of your baseline such as ZEBASE_CTRL
+>
 > `base path` is the path to your baseline based on UI5 namespace such as ute/ui
 
 There is no predefined folder structure for baseline. Hence, the Grunt build for baseline will just create a build folder structure which is identical to the source folder structure.
@@ -153,6 +156,19 @@ Having said that, a Grunt build for component should at least perform the follow
 * Generate Component-preload file.
 
 > The Grunt build for respective components are available at `grunt\build\component\<component ui5 namespace>.js`.
+
+In order to invoke Grunt to build a component, open your command prompt and navigate to your local CCUX repository root folder where the `Gruntfile.js` resides. Type the following command:
+
+```
+#!batch
+grunt --build=component --componentName=<component name> --componentFolder=<component folder>
+```
+
+> where
+>
+> `component name` is the UI5 namespace for your component such as nrg.component.ic
+>
+> `component folder` is the folder name of your component such as ZECMP_IC
 
 This is how a generated build structure for a component typically looks like:
 

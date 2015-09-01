@@ -7,7 +7,7 @@ sap.ui.define(
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
         'jquery.sap.global',
-        "sap/ui/model/json/JSONModel"
+        'sap/ui/model/json/JSONModel'
     ],
 
     function (CoreController, Filter, FilterOperator, jQuery, JSONModel) {
