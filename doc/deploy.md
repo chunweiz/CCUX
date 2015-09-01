@@ -8,8 +8,13 @@
 ***
 ## Setting up Eclipse
 
-Below are all the file types that are set to *Binary*:
+`Eclipse Menubar > Window > Preferences > Team > File Content`
 
-File type | File type | File type | File type | File type
---------- | --------- | --------- | --------- | ---------
-\*.less   | \*.less   | \*.less   | \*.less   | \*.less
+The content type for the following extensions need to be set to *Binary*. If the extension is not in your Eclipse, please add it by pressing `Add Extension...`:
+
+Extension  | Extension | Extension | Extension | Extension | Extension | Extension     | Extension | Extension
+---------- | --------- | --------- | --------- | --------- | --------- | ------------- | --------- | ---------
+\*.bmp     | \*.class  |  \*.css   | \*.cur    | \*.dll    | \*.doc    | \*.eot        | \*.exe    | \*.gif
+\*.htm     | \*.html   |  \*.ico   | \*.jar    | \*.jpeg   | \*.jpg    | \*.js         | \*.json   | \*.less
+\*.library | \*.md     |  \*.off   | \*.pdf    | \*.png    | \*.ppt    | \*.properties | \*.so     | \*.theme
+\*.tif     | \*.tiff   |  \*.ttf   | \*.txt    | \*.woff   | \*.xls    | \*.xml        | \*.zip    |
