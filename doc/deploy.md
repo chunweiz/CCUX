@@ -197,9 +197,9 @@ Enter transport request information. Depending on your requirements, you are giv
 ## Deploy ZELIB ##
 ZELIB stores the OpenUi5 and any other external libraries that are used by CCUX. At the moment, there is no Grunt deploy tasks for ZELIB, hence you will need do it manually. You will still need to [share your local ZELIB Eclipse project](#markdown-header-share-ccux-application).
 
-Below are the steps on how to submit the changes manually to SAPUI5 ABAP repository.
+Below are the steps on how to submit the changes manually to SAPUI5 ABAP repository:
 
-1. Copy the library from your local CCUX Git repository and replace the one in your local Eclipse project.
+1. Copy the library from your local CCUX Git repository and replace the one in your local Eclipse project. Please keep in mind that `Copy + Replace` do not delete files that exist in your local Eclipse project but not in local CCUX Git repository. If you are able to identify the files, you might want to delete it manually after the replace operation. If not, it might be a good idea to perform a `Delete + Copy + Replace` operation.
 2. [Submit the changes](#markdown-header-submit-ccux-application). It will take a while, so you might want to do this over a weekend where no one is testing CCUX in SAP.
 
 ***
