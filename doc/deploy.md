@@ -169,13 +169,29 @@ Pick all the resources that you would like to retrieve. Press `Finish`.
 
 ![Select resources to retrieve](img/deploy.012.png)
 
-Once the retrieval is completed, you can see the changes in your Eclipse project.
+Once the retrieval is completed, you can see the changes reflected in your Eclipse project.
 
 ![Verify retrieved resources](img/deploy.013.png)
 
 ***
 ## Submit CCUX application ##
+To submit means to upload the changes from your local Eclipse project to SAPUI5 ABAP repository. You will typically do if after the [Grunt deploy](#markdown-header-grunt-deploy-tasks). You will need to [share your Eclipse project](#markdown-header-share-ccux-application) before you can submit the changes.
 
+Right-click your Eclipse project. Choose `Team > Submit`.
+
+![Choose a project](img/deploy.017.png)
+
+The system complains if your local Eclipse project files are different from those in SAPUI5 ABAP repository. This usually happens after you ran the Grunt build and deploy tasks before submitting the changes. Just select all the files by pressing `CTRL + A` and press `Set Resolved`. It is okay to set everything as resolved because the latest changes are always in Git and you are running the Grunt build based on the files in Git.
+
+![Resolve conflict](img/deploy.018.png)
+
+This is how it looks like after you resolved the conflicts. Press `Next`.
+
+![Resolved conflict](img/deploy.019.png)
+
+Enter transport request information. Depending on your requirements, you are given the following options:
+
+![Choose transport](img/deploy.020.png)
 
 ***
 ## Deploy ZELIB ##
