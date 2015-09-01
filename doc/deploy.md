@@ -80,6 +80,8 @@ grunt --deploy=base --baseFolder=<base folder> --baseName=<base name> --eclipseP
 > <base name> is the baseline ui5 namespace such as nrg.base
 > <eclipse project path> is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZEBASE
 
+##
+
 Generally speaking, this is what the Grunt deploy tasks perform:
 
 * Cleanup the Eclipse project.
