@@ -84,6 +84,16 @@
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SSTxt}">
                 <ute:tooltip><c:RichTooltip  text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SSSummary}"/></ute:tooltip>
             </ute:Badge>
+            <ute:Badge id="idBadgeRX" size="30px"
+                class="nrgDashboard-cusDataSum-badge"
+                visible="{
+                    parts:['oSmryBpInf>/BadgeRX'],
+                    formatter:'._formatBadge'
+                }"
+                design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RXClr}"
+                text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RXTxt}">
+                <ute:tooltip><c:RichTooltip  text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RXSummary}"/></ute:tooltip>
+            </ute:Badge>
             <!--Badges End-->
             <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">
                 <utmain:Label

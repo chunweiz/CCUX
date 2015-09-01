@@ -20,21 +20,6 @@ Depending on what you need to build, you would need to run Grunt for that partic
 >
 > **Do not** push the generated `build` folder to CCUX remote Git repository. You can always generate the build locally.
 
-Below are all the Grunt plugins that are used to support the build scenarios:
-
-* [grunt-contrib-jshint](https://www.npmjs.com/package/grunt-contrib-jshint)
-* [grunt-contrib-clean](https://www.npmjs.com/package/grunt-contrib-clean)
-* [grunt-contrib-copy](https://www.npmjs.com/package/grunt-contrib-copy)
-* [grunt-contrib-concat](https://www.npmjs.com/package/grunt-contrib-concat)
-* [grunt-contrib-less](https://www.npmjs.com/package/grunt-contrib-less)
-    * [less-plugin-autoprefix](https://github.com/less/less-plugin-autoprefix)
-    * [less-plugin-clean-css](https://github.com/less/less-plugin-clean-css)
-* [grunt-contrib-uglify](https://www.npmjs.com/package/grunt-contrib-uglify)
-* [grunt-json-minify](https://www.npmjs.com/package/grunt-json-minify)
-* [grunt-contrib-htmlmin](https://www.npmjs.com/package/grunt-contrib-htmlmin)
-* [grunt-openui5](https://www.npmjs.com/package/grunt-openui5)
-* [grunt-merge-json](https://www.npmjs.com/package/grunt-merge-json)
-
 ***
 ## Module
 The Grunt build for module will perform the following tasks:
@@ -66,21 +51,21 @@ grunt --build=module --moduleName=<module ui5 namespace> --moduleFolder=<module 
 This is how a generated build structure for a module typically looks like:
 
 ```
-+-- build/<module ui5 namespace path>
-|   +-- asset
-|   |   +-- css
-|   |   |   +-- module.css
-|   |   +-- data
-|   |   |   +-- **/*.json
-|   |   |   +-- **/*.xml
-|   +-- i18n
-|   |   +-- module.properties
-|   |   +-- module_en.properties
-|   |   +-- module_en_US.properties
-|   +-- view
-|   |   +-- *-dbg*.js
-|   |   +-- *.js
-|   |   +-- *.xml
+├── build/<module ui5 namespace path>/
+|   ├── asset/
+|   |   ├── css/
+|   |   |   └── module.css
+|   |   └── data/
+|   |       ├── **/*.json
+|   |       └── **/*.xml
+|   ├── i18n/
+|   |   ├── module.properties
+|   |   ├── module_en.properties
+|   |   └── module_en_US.properties
+|   └── view/
+|       ├── *-dbg*.js
+|       ├── *.js
+|       └── *.xml
 ```
 
 ***
@@ -112,17 +97,17 @@ grunt --build=control --controlLibrary=<control library ui5 namespace> --control
 This is how a generated build structure for a control library typically looks like:
 
 ```
-+-- build/<control library ui5 namespace path>
-|   +-- themes
-|   |   +-- base
-|   |   |   +-- library.css
-|   |   +-- sap_bluecrystal
-|   |   |   +-- library.css
-|   +-- *-dbg.js
-|   +-- *.js
-|   +-- library-dbg.js
-|   +-- library.js
-|   +-- library-preload.json
+├── build/<control library ui5 namespace path>/
+|   ├── themes/
+|   |   ├── base/
+|   |   |   └── library.css
+|   |   └── sap_bluecrystal/
+|   |       └── library.css
+|   ├── *-dbg.js
+|   ├── *.js
+|   ├── library-dbg.js
+|   ├── library.js
+|   └── library-preload.json
 ```
 
 ***
@@ -172,10 +157,10 @@ Having said that, a Grunt build for component should at least perform the follow
 This is how a generated build structure for a component typically looks like:
 
 ```
-+-- build/<component ui5 namespace path>
-|   +-- Component-dbg.js
-|   +-- Component-preload.js
-|   +-- Component.js
-|   +-- index.html
-|   +-- manifest.json
+├── build/<component ui5 namespace path>/
+│   ├── Component-dbg.js
+|   ├── Component-preload.js
+|   ├── Component.js
+|   ├── index.html
+|   └── manifest.json
 ```
