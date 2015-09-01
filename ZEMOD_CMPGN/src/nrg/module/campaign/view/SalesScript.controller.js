@@ -8,10 +8,11 @@ sap.ui.define(
         'sap/ui/model/FilterOperator',
         'jquery.sap.global',
         'ute/ui/commons/Dialog',
-        "sap/ui/model/json/JSONModel"
+        "sap/ui/model/json/JSONModel",
+        'nrg/module/nnp/view/NNPPopup'
     ],
 
-    function (CoreController, Filter, FilterOperator, jQuery, Dialog, JSONModel) {
+    function (CoreController, Filter, FilterOperator, jQuery, Dialog, JSONModel, NNPPopup) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.SalesScript');
@@ -130,7 +131,37 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onAccept = function (oEvent) {
+            var sCurrentPath,
+                oModel = this.getOwnerComponent().getModel('comp-campaign'),
+                oBindingInfo,
+                NNPPopupControl = new NNPPopup();
+            NNPPopupControl.attachEvent("NNPCompleted", this.invokeOverviewScript, this);
+            this.getView().addDependent(NNPPopupControl);
+            this._oOverviewDialog = this.getView().byId("idnrgCamOvsDialog");
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            sCurrentPath = "/NNPS('" + this._sBP + "')";
+            oBindingInfo = {
+                success : function (oData) {
+                    NNPPopupControl.openNNP(oData.BP, oData.Email, oData.ConsNum);
+                    jQuery.sap.log.info("Odata Read Successfully:::");
+                }.bind(this),
+                error: function (oError) {
+                    this.getOwnerComponent().getCcuxApp().setOccupied(true);
+                    jQuery.sap.log.info("NNP Error occured");
+                }.bind(this)
+            };
+            if (oModel) {
+                oModel.read(sCurrentPath, oBindingInfo);
+            }
 
+        };
+        /**
+		 * Action to be taken when the User clicks on Accept of Sales Script and NNP is executed
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.invokeOverviewScript = function (oEvent) {
             var sCurrentPath,
                 oDropDownList,
                 oDropDownListItemTemplate,
@@ -144,9 +175,6 @@ sap.ui.define(
                 oOverScriptTV = this.getView().byId("idnrgCamOvsOvTv"),
                 aFilterIds,
                 aFilterValues;
-            this._oOverviewDialog = this.getView().byId("idnrgCamOvsDialog");
-            this.getOwnerComponent().getCcuxApp().setOccupied(true);
-
             aFilterIds = ["Contract", "OfferCode", "TxtName"];
             aFilterValues = [this._sContract, this._sOfferCode, "OVW"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -186,7 +214,6 @@ sap.ui.define(
             this._oOverviewDialog.open();
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
         };
-
         /**
 		 * Back to Overview page function
 		 *
@@ -318,9 +345,11 @@ sap.ui.define(
                                         "Type": sType},
                 success : function (oData) {
                     if ((oData !== undefined) && (oData.Code === "S")) {
+                        that.getOwnerComponent().getCcuxApp().setOccupied(false);
                         sap.ui.commons.MessageBox.alert("SWAP is completed");
                         this.navTo("campaign", {bpNum: that._sBP, caNum: that._sCA, coNum : that._sContract, typeV : "C"});
                     } else {
+                        that.getOwnerComponent().getCcuxApp().setOccupied(false);
                         sap.ui.commons.MessageBox.alert("SWAP Failed");
                         this.navTo("campaignoffers", {bpNum: that._sBP, caNum: that._sCA, coNum: that._sContract});
                     }
@@ -332,7 +361,7 @@ sap.ui.define(
             };
             oModel.callFunction("/AcceptCampaign", mParameters); // callback function for error
             this._oOverviewDialog.close();
-            this.getOwnerComponent().getCcuxApp().setOccupied(false);
+
         };
         /**
 		 * Handle when user clicked on Declining Overview Script

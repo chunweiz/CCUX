@@ -142,7 +142,11 @@ sap.ui.define(
                 sBpEmailConsum = this.getView().getModel('oEditEmailNNP').getProperty('/EmailConsum'),
                 oNNP = this.getView().getModel('oEditEmailNNP'),
                 bEmailChanged = true,
-                that = this;
+                that = this,
+                oAlertCallBack = function (oEvent) {
+                    that.getView().getParent().close();
+                    that._OwnerComponent.getCcuxApp().setOccupied(false);
+                };
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             if (sBpEmail === this._sEmail) {
                 bEmailChanged = false;
@@ -161,17 +165,17 @@ sap.ui.define(
                     if (bEmailChanged) {
                         ute.ui.main.Popup.Alert({
                             title: 'Email save ',
-                            message: oNNP.getProperty('/LdapMessage')
+                            message: oNNP.getProperty('/LdapMessage'),
+                            callback : oAlertCallBack
                         });
                     } else {
                         ute.ui.main.Popup.Alert({
                             title: 'Email save',
-                            message: 'Marketing Preference Updated Successfully'
+                            message: 'Marketing Preference Updated Successfully',
+                            callback : oAlertCallBack
                         });
                     }
-                    that.getView().getParent().close();
-                    //this._initDtaVrfRetr();
-                    that._OwnerComponent.getCcuxApp().setOccupied(false);
+
                 }.bind(this),
                 error: function (oError) {
                     ute.ui.main.Popup.Alert({
