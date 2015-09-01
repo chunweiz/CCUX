@@ -17,7 +17,17 @@
                 text="{comp-i18n-search>nrgSearchClrNid_Enrol2ndTitle}">
             </ute:Tag>
 
-            <ul class="nrgSearch-calrNoIDEnrol-list">
+            <ute:Tag elem="ul" class="nrgSearch-calrNoIDEnrol-list"
+                     content="{oEnrollmentList>/actionList}">
+                <ute:Tag elem="li" class="nrgSearch-calrNoIDEnrol-listitem">
+                    <utmain:Button
+                        design="None"
+                        text="{comp-i18n-search>nrgSearchClrNid_EnrollStartString} {oEnrollmentList>DESCRIPTION} {comp-i18n-search>nrgSearchClrNid_EnrollEndString}"
+                        press="._onActionItemClicked"
+                        class="nrgCallerNoIDEnrollment-ListItemLink">
+                    </utmain:Button>
+                </ute:Tag>
+                <!--
                 <li class="nrgSearch-calrNoIDEnrol-listitem">
                     <utmain:Button
                         design="None"
@@ -49,8 +59,8 @@
                         press="onEnrollHomeSecurity"
                         class="nrgCallerNoIDEnrollment-ListItemLink">
                     </utmain:Button>
-                </li>
-            </ul>
+                </li>-->
+            </ute:Tag>
         </ute:content>
     </ute:Tag>
 </mvc:View>
