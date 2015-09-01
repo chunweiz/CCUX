@@ -16,6 +16,10 @@ CCUX grunt build is divided into four main scenarios:
 
 Depending on what you need to build, you would need to run Grunt for that particular scenario. When you run one of the build scenario, a `build` folder will be generated in the respective root folder of the scenario.
 
+> You can run `build.bat` on Windows or `build.sh` on Mac from the local root folder of your CCUX application to build the entire application. The build script covers all scenarios.
+>
+> **Do not** push the generated `build` folder to CCUX remote Git repository. You can always generate the build locally.
+
 Below are all the Grunt plugins that are used to support the build scenarios:
 
 * [grunt-contrib-jshint](https://www.npmjs.com/package/grunt-contrib-jshint)
@@ -30,10 +34,6 @@ Below are all the Grunt plugins that are used to support the build scenarios:
 * [grunt-contrib-htmlmin](https://www.npmjs.com/package/grunt-contrib-htmlmin)
 * [grunt-openui5](https://www.npmjs.com/package/grunt-openui5)
 * [grunt-merge-json](https://www.npmjs.com/package/grunt-merge-json)
-
-> You can run `build.bat` on Windows or `build.sh` on Mac from the local root folder of your CCUX application to build the entire application. The build script covers all scenarios.
->
-> **Do not** push the generated `build` folder to CCUX remote Git repository. You can always generate the build locally.
 
 ***
 ## Module
