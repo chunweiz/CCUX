@@ -120,50 +120,58 @@ To share means to connect your local Eclipse project to a particular SAPUI5 ABAP
 Go to `File > New > Project`.
 
 ![Create Eclipse project](img/deploy.001.png)
-	
+
 Put your module, control, baseline or component folder name as project name. Press `Finish`.
 
 ![Eclipse project name](img/deploy.002.png)
-	
-Right click the newly created project and choose `Team > Share Project...`.
+
+Right-click the newly created project and choose `Team > Share Project...`.
 
 ![Share Eclipse project](img/deploy.003.png)
-	
+
 Choose 'SAPUI5 ABAP Repository'. Press 'Next'.
 
 ![Choose Repository](img/deploy.004.png)
-	
+
 Choose `SAP CMD`. Press `Next`. The SAP connection list is coming from your SAP GUI. If you are not seeing any entry, you might want to [read this up](#markdown-header-sap-logon).
 
 ![Choose SAP system](img/deploy.005.png)
-	
+
 Enter client `520` and your SAP logon credential to SAP CMD/520. 520 is CMD development client.
 
 ![SAP logon credential](img/deploy.006.png)
-	
+
 If you are uploading a new module, control, baseline or component to SAPUI5 ABAP repository, choose `Create a new BSP Application`. The name of the BSP application will be identical to the folder name of your module, control, baseline or component. Defaults the package to `ZCCUX_UI5`.
 
 ![Create BSP application](img/deploy.008.png)
-	
+
 If you are downloading an existing module, control, baseline or component from SAPUI5 ABAP repository, choose `Select a BSP Application`. Select the BSP application that shares the same name as the folder name of your module, control, baseline or component.
 
 ![Choose BSP application](img/deploy.007.png)
-	
+
 Enter transport request information. Depending on your requirements, you are given the following options:
 
 ![Choose transport request](img/deploy.009.png)
-	
+
 Once you have successfully shared a project, you will be able to see additional information beside the Eclipse project.
 
 ![Verify connection status](img/deploy.010.png)
 
 ***
 ## Retrieve CCUX application ##
+To retrieve means to copy the changes from SAPUI5 ABAP repository to your local Eclipse project. You will need to [share your Eclipse project](#markdown-header-share-ccux-application) before you can retrieve the changes.
+
+Right-click your Eclipse project. Choose `Team > Retrieve`.
 
 ![Retrieve changes](img/deploy.011.png)
-![Select resources to retrieve](img/deploy.012.png)
-![Verify retrieved resources](img/deploy.013.png)
 
+Pick all the resources that you would like to retrieve. Press `Finish`.
+
+![Select resources to retrieve](img/deploy.012.png)
+
+Once the retrieval is completed, you can see the changes in your Eclipse project.
+
+![Verify retrieved resources](img/deploy.013.png)
 
 ***
 ## Submit CCUX application ##
