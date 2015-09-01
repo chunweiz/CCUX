@@ -23,6 +23,8 @@ Below are all the Grunt plugins that are used to support the build scenarios:
 * [grunt-contrib-copy](https://www.npmjs.com/package/grunt-contrib-copy)
 * [grunt-contrib-concat](https://www.npmjs.com/package/grunt-contrib-concat)
 * [grunt-contrib-less](https://www.npmjs.com/package/grunt-contrib-less)
+    * [less-plugin-autoprefix](https://github.com/less/less-plugin-autoprefix)
+    * [less-plugin-clean-css](https://github.com/less/less-plugin-clean-css)
 * [grunt-contrib-uglify](https://www.npmjs.com/package/grunt-contrib-uglify)
 * [grunt-json-minify](https://www.npmjs.com/package/grunt-json-minify)
 * [grunt-contrib-htmlmin](https://www.npmjs.com/package/grunt-contrib-htmlmin)
