@@ -60,11 +60,11 @@ grunt --deploy=module --moduleName=<module name> --moduleFolder=<module folder> 
 
 > where
 >
-> <module folder> is the baseline folder name such as ZEMOD_APP
+> `module folder` is the baseline folder name such as ZEMOD_APP
 >
-> <module name> is the baseline ui5 namespace such as nrg.module.app
+> `module name` is the baseline ui5 namespace such as nrg.module.app
 >
-> <eclipse project path> is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZEMOD_APP
+> `eclipse project path` is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZEMOD_APP
 
 **Control**
 ```
@@ -74,9 +74,11 @@ grunt --deploy=control --controlFolder=<control folder> --controlName=<control n
 
 > where
 >
-> <control folder> is the baseline folder name such as ZECTRL_MAIN
-> <control name> is the baseline ui5 namespace such as ute.ui.main
-> <eclipse project path> is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZECTRL_MAIN
+> `control folder` is the baseline folder name such as ZECTRL_MAIN
+>
+> `control name` is the baseline ui5 namespace such as ute.ui.main
+>
+> `eclipse project path` is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZECTRL_MAIN
 
 **Baseline**
 ```
@@ -86,9 +88,11 @@ grunt --deploy=base --baseFolder=<base folder> --baseName=<base name> --eclipseP
 
 > where
 >
-> <base folder> is the baseline folder name such as ZEBASE
-> <base name> is the baseline ui5 namespace such as nrg.base
-> <eclipse project path> is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZEBASE
+> `base folder` is the baseline folder name such as ZEBASE
+>
+> `base name` is the baseline ui5 namespace such as nrg.base
+>
+> `eclipse project path` is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZEBASE
 
 **Component**
 ```
@@ -98,9 +102,11 @@ grunt --deploy=component --componentName=<component name> --componentFolder=<com
 
 > where
 >
-> <component folder> is the baseline folder name such as ZECMP_IC
-> <component name> is the baseline ui5 namespace such as nrg.component.ic
-> <eclipse project path> is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZECMP_IC
+> `component folder` is the baseline folder name such as ZECMP_IC
+>
+> `component name` is the baseline ui5 namespace such as nrg.component.ic
+>
+> `eclipse project path` is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZECMP_IC
 
 ##
 
