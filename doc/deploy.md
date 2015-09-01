@@ -80,12 +80,17 @@ grunt --deploy=base --baseFolder=<base folder> --baseName=<base name> --eclipseP
 > <base name> is the baseline ui5 namespace such as nrg.base
 > <eclipse project path> is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZEBASE
 
-##
+**Component**
+```
+#!batch
+grunt --deploy=component --componentName=<component name> --componentFolder=<component folder> --eclipseProjectPath=<eclipse project path>
+```
 
-Generally speaking, this is what the Grunt deploy tasks perform:
-
-* Cleanup the Eclipse project.
-* Copy the build folder to the corresponding Eclipse project.
+> where
+>
+> <component folder> is the baseline folder name such as ZECMP_IC  
+> <component name> is the baseline ui5 namespace such as nrg.component.ic
+> <eclipse project path> is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZECMP_IC    
 
 ***
 ## SAPUI5 ABAP repository ##
