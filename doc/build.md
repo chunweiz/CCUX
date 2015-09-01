@@ -51,21 +51,21 @@ grunt --build=module --moduleName=<module ui5 namespace> --moduleFolder=<module 
 This is how a generated build structure for a module typically looks like:
 
 ```
-+-- build/<module ui5 namespace path>
-|   +-- asset
-|   |   +-- css
-|   |   |   +-- module.css
-|   |   +-- data
-|   |   |   +-- **/*.json
-|   |   |   +-- **/*.xml
-|   +-- i18n
-|   |   +-- module.properties
-|   |   +-- module_en.properties
-|   |   +-- module_en_US.properties
-|   +-- view
-|   |   +-- *-dbg*.js
-|   |   +-- *.js
-|   |   +-- *.xml
+├── build/<module ui5 namespace path>/
+|   ├── asset/
+|   |   ├── css/
+|   |   |   └── module.css
+|   |   └── data/
+|   |       ├── **/*.json
+|   |       └── **/*.xml
+|   ├── i18n/
+|   |   ├── module.properties
+|   |   ├── module_en.properties
+|   |   └── module_en_US.properties
+|   └── view/
+|       ├── *-dbg*.js
+|       ├── *.js
+|       └── *.xml
 ```
 
 ***
@@ -97,17 +97,17 @@ grunt --build=control --controlLibrary=<control library ui5 namespace> --control
 This is how a generated build structure for a control library typically looks like:
 
 ```
-+-- build/<control library ui5 namespace path>
-|   +-- themes
-|   |   +-- base
-|   |   |   +-- library.css
-|   |   +-- sap_bluecrystal
-|   |   |   +-- library.css
-|   +-- *-dbg.js
-|   +-- *.js
-|   +-- library-dbg.js
-|   +-- library.js
-|   +-- library-preload.json
+├── build/<control library ui5 namespace path>/
+|   ├── themes/
+|   |   ├── base/
+|   |   |   └── library.css
+|   |   └── sap_bluecrystal/
+|   |       └── library.css
+|   ├── *-dbg.js
+|   ├── *.js
+|   ├── library-dbg.js
+|   ├── library.js
+|   └── library-preload.json
 ```
 
 ***
@@ -163,13 +163,4 @@ This is how a generated build structure for a component typically looks like:
 |   ├── Component.js
 |   ├── index.html
 |   └── manifest.json
-```
-
-```
-+-- build/<component ui5 namespace path>
-|   +-- Component-dbg.js
-|   +-- Component-preload.js
-|   +-- Component.js
-|   +-- index.html
-|   +-- manifest.json
 ```
