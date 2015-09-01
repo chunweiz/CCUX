@@ -10,6 +10,8 @@
 
 ***
 #Button
+| Function name | Description                    |
+| ------------- | ------------------------------ |
 | Inheritance              | [sap/ui/core/Control](../../../../../ZELIB/openui5/resources/sap/ui/core/Control.js), [sap/ui/core/EnabledPropagator](../../../../../ZELIB/openui5/resources/sap/ui/core/EnabledPropagator.js)|
 | Available since version  |    |
 | Source Code              | [ute.ui.main.Button](Button.js)     |
