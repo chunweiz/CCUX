@@ -1,5 +1,7 @@
-# Module Dashboard
+# Module nrg.module.dashboard
 
+> Notable changes made to this folder are [logged here](doc/CHANGELOG.md).
+
+***
 ## Dependencies
-- ZE_CCUX_BASE
-- ZE_CCUX_MOD_OTHERS
+* [nrg.base](../../../../../ZEBASE/src/nrg/base/README.md)

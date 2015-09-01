@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZE_CCUX_HISTORY_SRV">
+            <EntityType Name="Billing">
+                <Key>
+                    <PropertyRef Name="CA"/>
+                    <PropertyRef Name="Date"/>
+                </Key>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
+                <Property Name="Date" Nullable="false" Type="Edm.DateTime"/>
+                <Property Name="PeriodStart" Nullable="false" Type="Edm.DateTime"/>
+                <Property Name="PeriodEnd" Nullable="false" Type="Edm.DateTime"/>
+                <Property MaxLength="20" Name="InvoiceNum" Nullable="false" Type="Edm.String"/>
+                <Property Name="Amount" Nullable="false" Precision="11" Scale="2" Type="Edm.Decimal"/>
+            </EntityType>
+            <EntityType Name="Dunning">
+                <Key>
+                    <PropertyRef Name="CA"/>
+                    <PropertyRef Name="DMONTH"/>
+                </Key>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
+                <Property Name="DMONTH" Nullable="false" Type="Edm.DateTime"/>
+                <Property Name="LATE_CHARGE" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="DROP_NOTICE" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="PREDICT_DIALER" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="DROP_DISC_NOTICE" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="SLATE_CHARGE" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="SDROP_NOTICE" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="SPREDICT_DIALER" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="SDROP_DISC_NOTICE" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="DISCONNECTED" Nullable="false" Type="Edm.Boolean"/>
+            </EntityType>
+            <EntityType Name="Usage">
+                <Key>
+                    <PropertyRef Name="Contract"/>
+                    <PropertyRef Name="PeriodStart"/>
+                    <PropertyRef Name="PeriodEnd"/>
+                </Key>
+                <Property MaxLength="12" Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property Name="PeriodStart" Nullable="false" Type="Edm.DateTimeOffset"/>
+                <Property Name="PeriodEnd" Nullable="false" Type="Edm.DateTimeOffset"/>
+                <Property MaxLength="20" Name="Reading" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="2" Name="Type" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="5" Name="NumOfDays" Nullable="false" Type="Edm.String"/>
+                <Property Name="KwhUsage" Nullable="false" Precision="17" Type="Edm.Decimal"/>
+                <Property Name="KvaDemand" Nullable="false" Precision="17" Type="Edm.Decimal"/>
+                <Property Name="BbpBasis" Nullable="false" Precision="15" Scale="3" Type="Edm.Decimal"/>
+                <Property Name="CurrentCharges" Nullable="false" Precision="15" Scale="3" Type="Edm.Decimal"/>
+                <Property Name="AvgDailyCons" Nullable="false" Precision="19" Scale="3" Type="Edm.Decimal"/>
+                <Property MaxLength="10" Name="ConvText" Nullable="false" Type="Edm.String"/>
+                <Property Name="LowTemp" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="HighTemp" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="CDI_HDI" Nullable="false" Precision="17" Type="Edm.Decimal"/>
+            </EntityType>
+            <EntityType Name="DunningREI">
+                <Key>
+                    <PropertyRef Name="CA"/>
+                    <PropertyRef Name="BUDAT"/>
+                </Key>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
+                <Property Name="BUDAT" Nullable="false" Type="Edm.DateTime"/>
+                <Property Name="RETURNS" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="EXTENSION" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="INSTALLMENTS" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="S_RETURNS" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="S_EXTENSION" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="S_INSTALLMENTS" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="CC_RETURNS" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="S_CC_RETURNS" Nullable="false" Type="Edm.Int16"/>
+            </EntityType>
+            <EntityType Name="DunningA">
+                <Key>
+                    <PropertyRef Name="CA"/>
+                    <PropertyRef Name="DMONTH"/>
+                </Key>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
+                <Property Name="DMONTH" Nullable="false" Type="Edm.DateTime"/>
+                <Property MaxLength="2" Name="DUNN_PROCEDURE" Nullable="false" Type="Edm.String"/>
+                <Property Name="LATE_CHARGE" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="DROP_NOTICE" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="REPORT" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="PREDICT_DIALER" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="BB_DEACT" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="DROP_DISC_NOTICE" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="DISCONNECTED" Nullable="false" Type="Edm.Boolean"/>
+            </EntityType>
+            <EntityType Name="DunningI">
+                <Key>
+                    <PropertyRef Name="CA"/>
+                    <PropertyRef Name="DMONTH"/>
+                </Key>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
+                <Property Name="DMONTH" Nullable="false" Type="Edm.DateTime"/>
+                <Property MaxLength="2" Name="DUNN_PROCEDURE" Nullable="false" Type="Edm.String"/>
+                <Property Name="FINAL_BILL2" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="PREDICT_DIALER" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="BALANCE_XFER" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="FINAL_TRACK" Nullable="false" Type="Edm.Int16"/>
+                <Property MaxLength="3" Name="FINAL_BILL3" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="3" Name="WRITE_OFF" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="3" Name="COLLECT_AGENCY" Nullable="false" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="Dun">
+                <Key>
+                    <PropertyRef Name="CA"/>
+                </Key>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
+                <NavigationProperty FromRole="FromRole_Dun_REI" Name="REIs" Relationship="ZE_CCUX_HISTORY_SRV.Dun_REI" ToRole="ToRole_Dun_REI"/>
+                <NavigationProperty FromRole="FromRole_Dun_Dunning" Name="Dunnings" Relationship="ZE_CCUX_HISTORY_SRV.Dun_Dunning" ToRole="ToRole_Dun_Dunning"/>
+                <NavigationProperty FromRole="FromRole_Dun_A" Name="As" Relationship="ZE_CCUX_HISTORY_SRV.Dun_A" ToRole="ToRole_Dun_A"/>
+                <NavigationProperty FromRole="FromRole_Dun_I" Name="Is" Relationship="ZE_CCUX_HISTORY_SRV.Dun_I" ToRole="ToRole_Dun_I"/>
+            </EntityType>
+            <EntityType Name="NNP">
+                <Key>
+                    <PropertyRef Name="BP"/>
+                </Key>
+                <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="241" Name="Email" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="3" Name="ConsNum" Nullable="false" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="SrvAddr">
+                <Key>
+                    <PropertyRef Name="CA"/>
+                    <PropertyRef Name="Contract"/>
+                </Key>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="12" Name="Contract" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="50" Name="ESID" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="House" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="60" Name="Street" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="Apt" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="40" Name="City" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="3" Name="State" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="ZIP" Nullable="false" Type="Edm.String"/>
+            </EntityType>
+            <Association Name="Dun_Dunning">
+                <End Multiplicity="1" Role="FromRole_Dun_Dunning" Type="ZE_CCUX_HISTORY_SRV.Dun"/>
+                <End Multiplicity="*" Role="ToRole_Dun_Dunning" Type="ZE_CCUX_HISTORY_SRV.Dunning"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Dun_Dunning">
+                        <PropertyRef Name="CA"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Dun_Dunning">
+                        <PropertyRef Name="CA"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Dun_REI">
+                <End Multiplicity="1" Role="FromRole_Dun_REI" Type="ZE_CCUX_HISTORY_SRV.Dun"/>
+                <End Multiplicity="*" Role="ToRole_Dun_REI" Type="ZE_CCUX_HISTORY_SRV.DunningREI"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Dun_REI">
+                        <PropertyRef Name="CA"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Dun_REI">
+                        <PropertyRef Name="CA"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Dun_A">
+                <End Multiplicity="1" Role="FromRole_Dun_A" Type="ZE_CCUX_HISTORY_SRV.Dun"/>
+                <End Multiplicity="*" Role="ToRole_Dun_A" Type="ZE_CCUX_HISTORY_SRV.DunningA"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Dun_A">
+                        <PropertyRef Name="CA"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Dun_A">
+                        <PropertyRef Name="CA"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Dun_I">
+                <End Multiplicity="1" Role="FromRole_Dun_I" Type="ZE_CCUX_HISTORY_SRV.Dun"/>
+                <End Multiplicity="*" Role="ToRole_Dun_I" Type="ZE_CCUX_HISTORY_SRV.DunningI"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Dun_I">
+                        <PropertyRef Name="CA"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Dun_I">
+                        <PropertyRef Name="CA"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZE_CCUX_HISTORY_SRV_Entities" m:IsDefaultEntityContainer="true">
+                <EntitySet EntityType="ZE_CCUX_HISTORY_SRV.Dunning" Name="DunningS"/>
+                <EntitySet EntityType="ZE_CCUX_HISTORY_SRV.Usage" Name="UsageS"/>
+                <EntitySet EntityType="ZE_CCUX_HISTORY_SRV.Usage" Name="WeeklyUsageS"/>
+                <EntitySet EntityType="ZE_CCUX_HISTORY_SRV.Usage" Name="DailyUsageS"/>
+                <EntitySet EntityType="ZE_CCUX_HISTORY_SRV.DunningREI" Name="DunningREIS"/>
+                <EntitySet EntityType="ZE_CCUX_HISTORY_SRV.DunningA" Name="DunningAS"/>
+                <EntitySet EntityType="ZE_CCUX_HISTORY_SRV.DunningI" Name="DunningIS"/>
+                <EntitySet EntityType="ZE_CCUX_HISTORY_SRV.Dun" Name="DunS"/>
+                <EntitySet EntityType="ZE_CCUX_HISTORY_SRV.NNP" Name="NNPS"/>
+                <EntitySet EntityType="ZE_CCUX_HISTORY_SRV.SrvAddr" Name="SrvAddrS"/>
+                <EntitySet EntityType="ZE_CCUX_HISTORY_SRV.Billing" Name="BillingS"/>
+                <AssociationSet Association="ZE_CCUX_HISTORY_SRV.Dun_A" Name="Dun_ASet">
+                    <End EntitySet="DunS" Role="FromRole_Dun_A"/>
+                    <End EntitySet="DunningAS" Role="ToRole_Dun_A"/>
+                </AssociationSet>
+                <AssociationSet Association="ZE_CCUX_HISTORY_SRV.Dun_Dunning" Name="Dun_DunningSet">
+                    <End EntitySet="DunS" Role="FromRole_Dun_Dunning"/>
+                    <End EntitySet="DunningS" Role="ToRole_Dun_Dunning"/>
+                </AssociationSet>
+                <AssociationSet Association="ZE_CCUX_HISTORY_SRV.Dun_REI" Name="Dun_REISet">
+                    <End EntitySet="DunS" Role="FromRole_Dun_REI"/>
+                    <End EntitySet="DunningREIS" Role="ToRole_Dun_REI"/>
+                </AssociationSet>
+                <AssociationSet Association="ZE_CCUX_HISTORY_SRV.Dun_I" Name="Dun_ISet">
+                    <End EntitySet="DunS" Role="FromRole_Dun_I"/>
+                    <End EntitySet="DunningIS" Role="ToRole_Dun_I"/>
+                </AssociationSet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

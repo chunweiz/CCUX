@@ -1,8 +1,8 @@
 # Control library ute.ui.main
 
-## Controls available
+> Notable changes made to this folder are [logged here](doc/CHANGELOG.md).
 
-- Button
-- Checkbox
-- Label
-- Infoline
+
+***
+## Dependencies
+* [ute.ui.base](../../../../../ZEBASE_CTRL/src/ute/ui/base/README.md)

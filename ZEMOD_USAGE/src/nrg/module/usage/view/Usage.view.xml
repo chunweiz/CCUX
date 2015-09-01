@@ -53,11 +53,53 @@
                     </u:Tag>
                 <u:Tag class="nrgUsg-Table">
                     <u:Tag class="nrgUsg-ttl" text="{comp-i18n-usage>nrgUsgLSrvAddTtl}" />
-                    <um:Dropdown id="idnrgUsgSD" content="{oLocalModel>/dropdown}" select=".onServiceAdd" class="nrgUsgSD">
-                        <um:DropdownItem key="{oLocalModel>value}" class="nrgUsgSD-DdLItem">
+                    <um:Dropdown id="idnrgUsgServiceAdd"
+                                 content="{oLocalModel>/dropdown}"
+                                 select=".onServiceAdd"
+                                 placeholder="Select Service Address"
+                                 class="nrgUsg-top">
+                        <um:DropdownItem key="{oLocalModel>value}" class="nrgUsg-DdLItem">
                             <u:Tag text="{oLocalModel>value}"/>
                         </um:DropdownItem>
                     </um:Dropdown>
+                    <u:Tag class="nrgUsgTable-header nrgUsg-top">
+                        <u:Tag text="{comp-i18n-usage>nrgUsgHdDate}" class="nrgUsgTag-hd"/>
+                        <u:Tag text="{comp-i18n-usage>nrgUsgHdBillingDays}" class="nrgUsgTag-hd"/>
+                        <u:Tag text="{comp-i18n-usage>nrgUsgHdReading}" class="nrgUsgTag-hd"/>
+                        <u:Tag text="{comp-i18n-usage>nrgUsgHdKWh}" class="nrgUsgTag-hd"/>
+                        <u:Tag text="{comp-i18n-usage>nrgUsgHdActualEst}" class="nrgUsgTag-hd"/>
+                        <u:Tag text="{comp-i18n-usage>nrgUsgHdWeather}" class="nrgUsgTag-hd"/>
+                        <u:Tag text="{comp-i18n-usage>nrgUsgHdCDIHDI}" class="nrgUsgTag-hd"/>
+                        <u:Tag text="{comp-i18n-usage>nrgUsgHdDollar}" class="nrgUsgTag-hd"/>
+                    </u:Tag>
+                    <u:Tag content="{oLocalModel>/table}" class="nrgUsgTable-Row">
+                        <um:Infoline design="None">
+                            <um:headerContent class="nrgUsgTable-Row">
+                                <u:Tag text="{oLocalModel>Date}" class="nrgUsgTag-Date"/>
+                                <u:Tag text="{oLocalModel>BillingDays}" class="nrgUsgTag1"/>
+                                <um:Button press=".expandInfoline" text="{oLocalModel>Reading}"  design="None" class="nrgUsgButton"/>
+                                <u:Tag text="{oLocalModel>kWh}" class="nrgUsgTag"/>
+                                <u:Tag text="{oLocalModel>Actual}" class="nrgUsgTag"/>
+                                <u:Tag text="{oLocalModel>Weather}" class="nrgUsgTag3"/>
+                                <u:Tag text="{oLocalModel>CDI}" class="nrgUsgTag1"/>
+                                <u:Tag text="{oLocalModel>$}" class="nrgUsgTag1"/>
+                            </um:headerContent>
+                            <um:content>
+                                <u:Tag content="{oLocalModel>/table}" class="nrgUsgTable-inside">
+                                    <u:Tag class="">
+                                        <u:Tag text="{oLocalModel>Date}" class="nrgUsgTag-Date"/>
+                                        <u:Tag text="{oLocalModel>BillingDays}" class="nrgUsgTag1"/>
+                                        <u:Tag text="{oLocalModel>Reading}" class="nrgUsgTag"/>
+                                        <u:Tag text="{oLocalModel>kWh}" class="nrgUsgTag"/>
+                                        <u:Tag text="{oLocalModel>Actual}" class="nrgUsgTag"/>
+                                        <u:Tag text="{oLocalModel>Weather}" class="nrgUsgTag3"/>
+                                        <u:Tag text="{oLocalModel>CDI}" class="nrgUsgTag1"/>
+                                        <u:Tag text="{oLocalModel>$}" class="nrgUsgTag1"/>
+                                    </u:Tag>
+                                </u:Tag>
+                            </um:content>
+                        </um:Infoline>
+                    </u:Tag>
                 </u:Tag>
        </u:Tag>
    </u:Tag>
