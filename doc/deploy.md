@@ -42,6 +42,19 @@ Component | `grunt\deploy\component.js`
 
 In order to invoke Grunt to deploy a scenario, open your command prompt and navigate to your local CCUX repository root folder where the `Gruntfile.js` resides. Depending on your scenario, type one of the following command:
 
+**Module**
+```
+#!batch
+grunt --deploy=module --moduleName=<module name> --moduleFolder=<module folder> --eclipseProjectPath=<eclipse project path>
+```
+
+> where
+>
+> <module folder> is the baseline folder name such as ZEMOD_APP
+> <module name> is the baseline ui5 namespace such as nrg.module.app
+> <eclipse project path> is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZEMOD_APP
+
+**Baseline**
 ```
 #!batch
 grunt --deploy=base --baseFolder=<base folder> --baseName=<base name> --eclipseProjectPath=<eclipse project path>
@@ -54,6 +67,7 @@ grunt --deploy=base --baseFolder=<base folder> --baseName=<base name> --eclipseP
 > <eclipse project path> is the project path of the Eclipse project such as C:\Users\thew\workspace\eclipse\ZEBASE
 
 Generally speaking, this is what the Grunt deploy tasks perform:
+
 * Cleanup the Eclipse project.
 * Copy the build folder to the corresponding Eclipse project.
 
