@@ -40,6 +40,8 @@ Control   | `grunt\deploy\control.js`
 Baseline  | `grunt\deploy\base.js`
 Component | `grunt\deploy\component.js`
 
+##
+
 In order to invoke Grunt to deploy a scenario, open your command prompt and navigate to your local CCUX repository root folder where the `Gruntfile.js` resides. Depending on your scenario, type one of the following commands:
 
 **Module**
