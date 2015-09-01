@@ -4,7 +4,7 @@ Generally, a module is a logical grouping of related business processes such as 
 ***
 ## Create a new module
 
-**Initial folder structure**
+**Initial module structure**
 
 ```
 ZEMOD_<module folder name>/
@@ -21,13 +21,15 @@ ZEMOD_<module folder name>/
     └── README.md
 ```
 
+**Initial manifest.json**
+
 ```
 #!json
 {
     "sap.ui5": {
         "config": {
             "module": {
-                "nrg.module.billing": {
+                "<module ui5 namespace>": {
                     "stylesheet": [
                         "asset/css/module.css"
                     ],
