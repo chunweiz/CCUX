@@ -20,21 +20,6 @@ Depending on what you need to build, you would need to run Grunt for that partic
 >
 > **Do not** push the generated `build` folder to CCUX remote Git repository. You can always generate the build locally.
 
-Below are all the Grunt plugins that are used to support the build scenarios:
-
-* [grunt-contrib-jshint](https://www.npmjs.com/package/grunt-contrib-jshint)
-* [grunt-contrib-clean](https://www.npmjs.com/package/grunt-contrib-clean)
-* [grunt-contrib-copy](https://www.npmjs.com/package/grunt-contrib-copy)
-* [grunt-contrib-concat](https://www.npmjs.com/package/grunt-contrib-concat)
-* [grunt-contrib-less](https://www.npmjs.com/package/grunt-contrib-less)
-    * [less-plugin-autoprefix](https://github.com/less/less-plugin-autoprefix)
-    * [less-plugin-clean-css](https://github.com/less/less-plugin-clean-css)
-* [grunt-contrib-uglify](https://www.npmjs.com/package/grunt-contrib-uglify)
-* [grunt-json-minify](https://www.npmjs.com/package/grunt-json-minify)
-* [grunt-contrib-htmlmin](https://www.npmjs.com/package/grunt-contrib-htmlmin)
-* [grunt-openui5](https://www.npmjs.com/package/grunt-openui5)
-* [grunt-merge-json](https://www.npmjs.com/package/grunt-merge-json)
-
 ***
 ## Module
 The Grunt build for module will perform the following tasks:
@@ -170,6 +155,15 @@ Having said that, a Grunt build for component should at least perform the follow
 > The Grunt build for respective components are available at `grunt\build\component\<component ui5 namespace>.js`.
 
 This is how a generated build structure for a component typically looks like:
+
+```
+├── build/<component ui5 namespace path>/
+│   ├── Component-dbg.js
+|   ├── Component-preload.js
+|   ├── Component.js
+|   ├── index.html
+|   └── manifest.json
+```
 
 ```
 +-- build/<component ui5 namespace path>
