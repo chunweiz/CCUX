@@ -12,7 +12,7 @@ How to introduce a new module:
 
 ***
 ## UI5 namespace for module ##
-A UI5 namespace is a way for the framework to uniquely identifies a particular resource. In our case, everything that falls under a particular module will be namespaced after that module. The UI5 namespace for a module starts with the keyword `nrg.module.` follows by a `module identifier`.
+UI5 namespace is a way for the framework to uniquely identifies a particular resource. In our case, everything that falls under a particular module will be namespaced after that module. The UI5 namespace for a module starts with the keyword `nrg.module.` follows by a `module identifier`.
 
 ##
 
@@ -22,7 +22,7 @@ nrg.module.<module identifier>
 
 > where
 >
-> `module identifier` is a unique keyword that identifies the module such as billing, campaign or dashboard. The format requirement for a module identifier is `[a-z]+`. Please make sure that you are using a unique module identifier for your module by cross checking it against [existing modules](../README.md#markdown-header-module).
+> `module identifier` is a unique keyword that identifies the module such as billing, campaign or dashboard. The format requirement for a module identifier is `[a-z]+`. Please make sure that you pick a unique module identifier by cross checking it against [existing modules](../README.md#markdown-header-module).
 
 ##
 
@@ -36,22 +36,25 @@ Below are some examples of valid module UI5 namespace:
 ## Module folder
 
 ### Module folder name ###
-The naming convention for a module folder is as follows. This is because SAP BSP application name accommodates up to 15 characters only.
+Module folder is the place where you are going to keep all content for your module. The folder name starts with `ZEMOD_` follows by a `module initial`. The module folder name is consistent across the Git repository, Eclipse project and SAPUI5 ABAP repository.
 
-
-Regular expression syntax for a module folder is as follows:
+##
 
 ```
-ZEMOD_[a-zA-Z0-9_]{1,9}
+ZEMOD_<module initial>
 ```
+
+> where
+>
+> `module initial` is a unique initial that identifies the module such as BILLING, CMPGN or DSHB. The format requirement for a module initial is `[A-Z0-9]{1-9}`. The limitation imposed on the total length of the a module folder name is because SAP BSP application name supports up to 15 characters only.
+
+##
 
 Below are some examples of valid module folder name:
 
 * ZEMOD_BILLING
 * ZEMOD_CMPGN
 * ZEMOD_DSHB
-
-
 
 ### Module folder structure ###
 
