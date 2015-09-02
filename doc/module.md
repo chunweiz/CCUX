@@ -153,9 +153,7 @@ Documentations that are specific to a particular module are stored within the mo
 
 ##
 
-The minimum requirement is to create the `README.md` and `doc/CHANGELOG.md` files. Git repositories such as Bitbucket and Github renders the content of `README.md` automatically it sees one. There is no hard rules on what to put in `README.md`. A general rule of thumb is to focus on the quirks of the module. As for `CHANGELOG.md`, please follow the guidelines provided by [Keep a CHANGELOG](http://keepachangelog.com/) to determine what to put in `CHANGELOG.md`.
-
-> Do not treat the documentation as a place to provide general development tutorials such as UI5 or LESS. Focus on how you have used a particular feature in your module development. For instance, if you used UI5 EventBus to communicate, document down the channels used, why you used, etc ... Do not document down how to use EventBus.
+The minimum requirement is to create the `README.md` and `doc/CHANGELOG.md` files. Git repositories such as Bitbucket and Github renders the content of `README.md` automatically when it sees one. There is no hard rules on what to put in `README.md`. A general rule of thumb is to focus on the quirks of the module. As for `CHANGELOG.md`, please follow the guidelines provided by [Keep a CHANGELOG](http://keepachangelog.com/) to determine what to put in `CHANGELOG.md`. You can use `doc/` to keep additional assets such as images that are relevant to the documentation of the module.
 
 ```
 <module folder name>/
@@ -168,21 +166,58 @@ The minimum requirement is to create the `README.md` and `doc/CHANGELOG.md` file
                 └── README.md
 ```
 
-## Configuration
+> Do not treat the documentation as a place to provide general development tutorials. Focus on how you have used a particular feature in your module development and why. For instance, if you have used UI5 EventBus to communicate, document down the channels used, why you used, behaviors, etc ... do not document down how to use EventBus.
+
+## Translation
+All `*.properties` files are stored under `i18n/`. They are based on [Java properties files](https://openui5.hana.ondemand.com/#docs/guide/91f225ce6f4d1014b6dd926db0e91070.html) The [Grunt build](build.md) compiles all the `*.properties` files in `i18n/` and generates a new set of `module*.properties` files.
+
+##
+
+```
+<module folder name>/
+└── src/
+    └── nrg/
+        └── module/
+            └── <module identifier>/
+                └── i18n/
+                    └── *.properties
+```
+
+##
+
+The key of each entry needs to be namespaced to `nrg<module identifier><key>`. For instance:
+
+##
+
+```
+#!properties
+nrgAppKey=Value
+```
+
+
+## View
+This is the place to store the content and business logic of the module.
+
+```
+<module folder name>/
+└── src/
+    └── nrg/
+        └── module/
+            └── <module identifier>/
+                └── view/
+                    ├── *.controller.js
+                    ├── *.fragment.xml
+                    └── *.view.xml
+```
+
+
+
+## Module descriptor
 
 ```
 src/
 └── nrg/
     └── module/
         └── <module identifier>/
-            ├── asset/
-            |   └── css/
-            |       └── module.less
-            ├── data/
-            ├── doc/
-            |   └── CHANGELOG.md
-            ├── i18n/
-            ├── view/
-            ├── manifest.json
-            └── README.md
+            └── manifest.json
 ```
