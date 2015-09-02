@@ -26,9 +26,13 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onQuickPay = function (oEvent) {
-            var QuickControl = new QuickPayControl();
+            var QuickControl = new QuickPayControl(),
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+            this._sContract = oRouteInfo.parameters.coNum;
+            this._sBP = oRouteInfo.parameters.bpNum;
+            this._sCA = oRouteInfo.parameters.caNum;
             this.getView().addDependent(QuickControl);
-            QuickControl.openQuickPay();
+            QuickControl.openQuickPay(this._sContract, this._sBP, this._sCA);
         };
 
         return Controller;

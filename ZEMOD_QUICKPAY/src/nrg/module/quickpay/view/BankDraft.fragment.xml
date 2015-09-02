@@ -26,7 +26,8 @@
             <u:Tag class="nrgQPCC-row nrgQPPay-top">
                 <u:Tag class="nrgQPPay-TF">
                     <um:Dropdown placeholder="{comp-i18n-quickpay>nrgQPSelect}"
-                                 class="nrgQPCC-DDL">
+                                 class="nrgQPCC-DDL"
+                                 id="idnrgQPBD-BankAccounts">
                         <um:DropdownItem key="1" class="nrgQPCC-DdLItem">
                             <u:Tag class="nrgQPCC-DDI">
                                <core:Icon src="sap-icon://nrg-icon/cc-visa" />
@@ -45,22 +46,11 @@
         </u:Tag>
             <u:Tag class="nrgQPPay-top">
                     <um:Dropdown placeholder="{comp-i18n-quickpay>nrgQPProcessingFee}"
-                                 class="nrgQPCC-DDLWR">
-                    <um:DropdownItem class="nrgQPCC-DDLWRItem">
-                        <u:Tag>
-                              <u:Tag text="Reason1" />
-                        </u:Tag>
-                    </um:DropdownItem>
-                    <um:DropdownItem class="nrgQPCC-DDLWRItem">
-                        <u:Tag>
-                              <u:Tag text="Reason2" />
-                        </u:Tag>
-                    </um:DropdownItem>
-                    <um:DropdownItem class="nrgQPCC-DDLWRItem">
-                        <u:Tag>
-                              <u:Tag text="Reason3" />
-                        </u:Tag>
-                    </um:DropdownItem>
+                                 class="nrgQPCC-DDLWR"
+                                 id="idnrgQPBD-WaiveReason">
+                        <um:DropdownItem class="nrgQPCC-DDLWRItem">
+                                  <u:Tag text="Reason1" />
+                        </um:DropdownItem>
                 </um:Dropdown>
             </u:Tag>
             <u:Tag class="nrgQPPay-top nrgQPPay-left" >

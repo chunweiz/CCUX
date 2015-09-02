@@ -13,14 +13,20 @@
                                  fieldType="Regular"
                                  class="nrgQPCC-input"
                                  width="10rem"
-                                 editable="false" >
+                                 editable="true"
+                                 id="idnrgQPRC-Amt">
                     </u:Textfield>
                 </u:Tag>
                 <u:Tag text="{comp-i18n-quickpay>nrgQPAmount}" class="nrgQPCC-lbl"/>
             </u:Tag>
             <u:Tag class="nrgQPCC-row nrgQPPay-top">
                 <u:Tag class="nrgQPPay-TF">
-                    <u:DatePicker width="10rem" class="nrgQPCC-input"></u:DatePicker>
+                    <u:Textfield id="idnrgQPRC-RcDate"
+                                 editable="false"
+                                 fieldType="Regular"
+                                 class="nrgQPCC-input"
+                                 width="10rem">
+                    </u:Textfield>
                 </u:Tag>
                 <u:Tag text="{comp-i18n-quickpay>nrgQPDate}" class="nrgQPCC-lbl"/>
             </u:Tag>
@@ -30,7 +36,8 @@
                                  change=""
                                  fieldType="Regular"
                                  class="nrgQPCC-input"
-                                 width="10rem">
+                                 width="10rem"
+                                 id="idnrgQPRC-RNum">
                     </u:Textfield>
                 </u:Tag>
             </u:Tag>

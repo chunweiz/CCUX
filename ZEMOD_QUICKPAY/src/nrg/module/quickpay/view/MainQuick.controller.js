@@ -36,14 +36,16 @@ sap.ui.define(
                     reliantPress: ".onAcceptReliant"
                 });
             this._OwnerComponent = this.getView().getParent().getParent().getController().getOwnerComponent();
+            this._OwnerComponent.getCcuxApp().setOccupied(true);
             this.getView().setModel(oViewModel, "appView");
             sCurrentPath = "/PayAvailFlagsSet";
-            sCurrentPath = sCurrentPath + "(ContractID='0034805112')";
+            sCurrentPath = sCurrentPath + "(ContractID='" + this._sContractId + "')";
             this.getView().bindElement({
                 model : "comp-quickpay",
                 path : sCurrentPath
             });
             oMsgArea.addStyleClass("nrgQPPay-hide");
+            this._OwnerComponent.getCcuxApp().setOccupied(false);
         };
 
         /**
@@ -130,11 +132,50 @@ sap.ui.define(
         Controller.prototype.onBankDraft = function (oEvent) {
             var oTBIBD = this.getView().byId("idnrgQPPay-TBIBD"),
                 oPopup = this.getView().byId("idnrgQPPay-Popup"),
-                oCloseButton = this.getView().byId("idnrgQPPayBt-close");
+                oCloseButton = this.getView().byId("idnrgQPPayBt-close"),
+                sCurrentPath,
+                aFilterIds,
+                aFilterValues,
+                aFilters,
+                fnRecievedHandler,
+                that = this,
+                oBindingInfo,
+                oWaiveReasonTemplate = this.getView().byId("idnrgQPCC-WaiveReasonItem"),
+                oBankDraftTemplate = this.getView().byId("idnrgQPCC-BankDraftItem"),
+                oBankDraftDropDown = this.getView().byId("idnrgQPBD-BankAccounts"),
+                oWaiveReasonDropDown = this.getView().byId("idnrgQPBD-WaiveReason");
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupWhite");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             oTBIBD.setSelected(true);
+            this._OwnerComponent.getCcuxApp().setOccupied(true);
+            sCurrentPath = "/BankDraftSet" + "(ContractID='" + this._sContractId + "')/WaiveReasonsSet";
+/*            aFilterIds = ["ContractID"];
+            aFilterValues = ['0034805112'];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);*/
+            fnRecievedHandler = function (oEvent) {
+                jQuery.sap.log.info("Date Received Succesfully");
+                that._OwnerComponent.getCcuxApp().setOccupied(false);
+            };
+            oBindingInfo = {
+                model : "comp-quickpay",
+                path : sCurrentPath,
+                template : oWaiveReasonTemplate,
+                //filters : aFilters,
+                parameters: {countMode : "None"},
+                events: {dataReceived : fnRecievedHandler}
+            };
+            oWaiveReasonDropDown.bindAggregation("content", oBindingInfo);
+            sCurrentPath = "/BankDraftSet" + "(ContractID='" + this._sContractId + "')/BankAccountSet";
+            oBindingInfo = {
+                model : "comp-quickpay",
+                path : sCurrentPath,
+                template : oBankDraftTemplate,
+                //filters : aFilters,
+                parameters: {countMode : "None"},
+                events: {dataReceived : fnRecievedHandler}
+            };
+            oBankDraftDropDown.bindAggregation("content", oBindingInfo);
         };
 
         /**
@@ -153,29 +194,80 @@ sap.ui.define(
                 fnRecievedHandler,
                 oDropDown = this.getView().byId("idnrgQPCC-ReceiptDD"),
                 oBindingInfo,
-                oDropDownTemplate = this.getView().byId("idnrgQPCC-ReceiptItem"),
+                oDropDownTemplate = this.getView().byId("idnrgQPCC-WaiveReasonItem"),
                 sCurrentPath,
-                oModel = this.getView().getModel('comp-quickpay');
+                oModel = this.getView().getModel('comp-quickpay'),
+                oReceiptDate = this.getView().byId("idnrgQPRC-RcDate"),
+                that = this;
+            this._OwnerComponent.getCcuxApp().setOccupied(true);
+            oReceiptDate.setValue(new Date().toLocaleDateString("en-US"));
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupWhite");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             oTBIRC.setSelected(true);
-            sCurrentPath = "/ReceiptSet" + "(ContractID='0034805112')/WaiveReasonsSet";
+            sCurrentPath = "/ReceiptSet" + "(ContractID='" + this._sContractId + "')/WaiveReasonsSet";
             aFilterIds = ["ContractID"];
-            aFilterValues = ['0034805112'];
+            aFilterValues = [" + this._sContractId + "];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             fnRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
+                that._OwnerComponent.getCcuxApp().setOccupied(false);
             };
             oBindingInfo = {
                 model : "comp-quickpay",
                 path : sCurrentPath,
                 template : oDropDownTemplate,
                 filters : aFilters,
-                parameters: {countMode : "None", operationMode : "Server"},
+                parameters: {countMode : "None"},
                 events: {dataReceived : fnRecievedHandler}
             };
             oDropDown.bindAggregation("content", oBindingInfo);
+        };
+
+        /**
+		 * Receipt Process initialization
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onAcceptReceipt = function (oEvent) {
+            var oModel = this.getView().getModel('comp-quickpay'),
+                mParameters,
+                sCurrentPath,
+                oMsgArea = this.getView().byId("idnrgQPPay-msgArea"),
+                oReceiptDate = this.getView().byId("idnrgQPRC-RcDate"),
+                oReceiptNum = this.getView().byId("idnrgQPRC-RNum"),
+                oReceiptAmount = this.getView().byId("idnrgQPRC-Amt"),
+                oReceiptDropDown = this.getView().byId("idnrgQPCC-ReceiptDD"),
+                that = this,
+                oReceiptModel = new sap.ui.model.json.JSONModel(),
+                oTBICL = this.getView().byId("idnrgQPPay-TBICL");
+            this.getView().setModel(oReceiptModel, "quickpay-rc");
+            this._OwnerComponent.getCcuxApp().setOccupied(true);
+            sCurrentPath = "/ReceiptSet";
+            oMsgArea.removeStyleClass("nrgQPPay-hide");
+            oMsgArea.addStyleClass("nrgQPPay-black");
+            oModel.create(sCurrentPath, {
+                "ContractID" : this._sContractId,
+                "ReceiptNumber" : oReceiptNum.getValue(),
+                "Amount" : oReceiptAmount.getValue(),
+                "WaiveFlag" : oReceiptDropDown.getSelectedKey()
+            }, {
+                success : function (oData, oResponse) {
+                    if (oData.Error === "") {
+                        oReceiptModel.setData(oData);
+                        oTBICL.setSelected(true);
+                        oMsgArea.addStyleClass("nrgQPPay-hide");
+                    } else {
+                        that.getView().getModel("appView").setProperty("/message", oData.Message);
+                    }
+                    that._OwnerComponent.getCcuxApp().setOccupied(false);
+                },
+                error : function (oError) {
+                    that.getView().getModel("appView").setProperty("/message", oError);
+                    that._OwnerComponent.getCcuxApp().setOccupied(false);
+                }
+            });
         };
 
         /**
@@ -283,7 +375,8 @@ sap.ui.define(
                 fnRecievedHandler,
                 that = this;
             sCurrentPath = "/ReliantSet";
-            sCurrentPath = sCurrentPath + "(ContractID='0034805112',ReliantCard='" + oReliantCard.getValue() + "')";
+            this._OwnerComponent.getCcuxApp().setOccupied(true);
+            sCurrentPath = sCurrentPath + "(ContractID='" + this._sContractId + "',ReliantCard='" + oReliantCard.getValue() + "')";
             oMsgArea.removeStyleClass("nrgQPPay-hide");
             oMsgArea.addStyleClass("nrgQPPay-black");
             fnRecievedHandler = function (oEvent) {
@@ -295,6 +388,7 @@ sap.ui.define(
                     oReliantRedeem.removeStyleClass("nrgQPPay-hide");
                 }
                 jQuery.sap.log.info("Odata Read Successfully:::");
+                that._OwnerComponent.getCcuxApp().setOccupied(false);
             };
             this.getView().byId("idnrgQPCC-Amt2").bindElement({
                 model : "comp-quickpay",
@@ -350,6 +444,7 @@ sap.ui.define(
                 that = this,
                 oPopup = this.getView().byId("idnrgQPPay-Popup"),
                 oCloseButton = this.getView().byId("idnrgQPPayBt-close");
+            this._OwnerComponent.getCcuxApp().setOccupied(true);
             oContext = oReliantCardAmount.getBindingContext("comp-quickpay");
             sCurrentPath = "/ReliantSet";
             oModel.create(sCurrentPath, {
@@ -364,13 +459,51 @@ sap.ui.define(
                     oTBIPaySucc.setSelected(true);
                     oMsgArea.addStyleClass("nrgQPPay-hide");
                     jQuery.sap.log.info("Create successfull");
+                    that._OwnerComponent.getCcuxApp().setOccupied(false);
                 },
                 error : function (oError) {
                     that.getView().getModel("appView").setProperty("/message", "Error at backend");
                     jQuery.sap.log.info("Create Failure");
+                    that._OwnerComponent.getCcuxApp().setOccupied(false);
                 }
             });
         };
+        /**
+         * handler for contact log maintenance
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onAcceptContactLog = function (oEvent) {
+            var oReceiptModel = this.getView().getModel("quickpay-rc"),
+                oModel = this.getView().getModel('comp-quickpay'),
+                sCurrentPath = "/ContactLogSet",
+                oTBIPaySucc = this.getView().byId("idnrgQPPay-TBIPaySucc"),
+                oPopup = this.getView().byId("idnrgQPPay-Popup"),
+                oCloseButton = this.getView().byId("idnrgQPPayBt-close"),
+                that = this;
+            this._OwnerComponent.getCcuxApp().setOccupied(true);
+            oModel.create(sCurrentPath, {
+                "ContractID" : oReceiptModel.getProperty("/ContractID"),
+                "Class" : oReceiptModel.getProperty("/Class"),
+                "Activit" : oReceiptModel.getProperty("/Activit"),
+                "PopMessage" : oReceiptModel.getProperty("/PopMessage")
+            }, {
+                success : function (oData, oResponse) {
+                    if (oData.ContactLogID !== "") {
+                        oPopup.removeStyleClass("nrgQPPay-PopupWhite");
+                        oPopup.addStyleClass("nrgQPPay-Popup");
+                        oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
+                        oTBIPaySucc.setSelected(true);
+                    }
+                    that._OwnerComponent.getCcuxApp().setOccupied(false);
+                },
+                error : function (oError) {
+                    that._OwnerComponent.getCcuxApp().setOccupied(false);
+                }
+            });
+        };
+
         return Controller;
     }
 
