@@ -266,7 +266,7 @@ If you are using events in your XML view, please remember to add the [dot (.)](h
 
 ##
 
-This is how the boilerplate codes of your controller looks like. We are using AMD (sap.ui.define) to load all the necessary dependencies. AMD loading style is the default way for you to load your dependencies.
+This is how the boilerplate codes of your controller looks like. We are using AMD style to load all the necessary dependencies and it should be your default way in loading your dependencies.
 
 ```
 /*global sap*/
