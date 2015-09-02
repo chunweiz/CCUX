@@ -185,18 +185,15 @@ All `*.properties` files are stored under `i18n/`. They are based on [Java prope
 
 ##
 
-The key of each entry needs to be namespaced to `nrg<module identifier><key>`. For instance:
-
-##
+At the moment, there is no rule on how many `*.properties` file to be created but it would be good if you can try to create one for each view and fragment. The key of each entry in your `*.properties` needs to be in `camelCase`. It is advisable to namespace the key to `nrg<module identifier><key>` to avoid any unnecessary conflict.
 
 ```
 #!properties
-nrgAppKey=Value
+nrgBillingKey=Value
 ```
 
-
 ## View
-This is the place to store the content and business logic of the module.
+This is the place to store the content and business logic of the module. XML based view and fragment should be your default choice.
 
 ```
 <module folder name>/
@@ -205,11 +202,42 @@ This is the place to store the content and business logic of the module.
         └── module/
             └── <module identifier>/
                 └── view/
+                    ├── *.js
                     ├── *.controller.js
                     ├── *.fragment.xml
                     └── *.view.xml
 ```
 
+```
+<mvc:View
+    controllerName="nrg.module.sample.view.Overview"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <div class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
+    </div>
+
+</mvc:View>
+```
+
+```
+/*globals sap*/
+/*jslint nomen:true*/
+
+sap.ui.define(
+    [
+        'sap/ui/core/mvc/Controller'
+    ],
+
+    function (Controller) {
+        'use strict';
+
+        var CustomController = Controller.extend('nrg.module.sample.view.Overview');
+
+        return CustomController;
+    }
+);
+```
 
 
 ## Module descriptor
