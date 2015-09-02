@@ -1,49 +1,188 @@
 # Module
 Module is a logical grouping of related business content such as billing and campaign. Generally, it is used to create a unique UI5 namespace and to store the XML views, controllers, stylesheets, mock data, documentations, translation files and configurations such as routing.
 
-How to introduce a new module:
+How to create a new module:
 
-1. Create a new [module folder](#markdown-header-module-folder).
-2. Add in [stylesheet](#markdown-header-stylesheets).
-3. Add in [translation file](#markdown-header-translation-files).
-4. Add in [configuration file](#markdown-header-configuration).
-5. Add in [documentations](#markdown-header-documentation).
+1. Pick a [UI5 namespace](#markdown-header-ui5-namespace-for-module).
+1. Create a [module folder](#markdown-header-module-folder).
+1. Add in [stylesheet](#markdown-header-stylesheets).
+1. Add in [translation file](#markdown-header-translation-files).
+1. Add in [configuration file](#markdown-header-configuration).
+1. Add in [documentations](#markdown-header-documentation).
+
+##
+
+How to do module development:
+
+*
+
+***
+## UI5 namespace for module ##
+UI5 namespace is a way for the framework to uniquely identifies a particular resource. In our case, everything that falls under a particular module will be namespaced after that module. The UI5 namespace for a module starts with the keyword `nrg.module.` follows by a `module identifier`.
+
+##
+
+```
+nrg.module.<module identifier>
+```
+
+> where
+>
+> `module identifier` is a unique keyword that identifies the module such as billing, campaign or dashboard. The format requirement for a module identifier is `[a-z]+`. Please make sure that you pick a unique module identifier by cross checking it against [existing modules](../README.md#markdown-header-module).
+
+##
+
+Below are some examples of valid module UI5 namespace:
+
+* nrg.module.billing
+* nrg.module.campaign
+* nrg.module.dashboard
 
 ***
 ## Module folder
+
 ### Module folder name ###
-The naming convention for a module folder is as follows. This is because SAP BSP application name can only accommodate up to 15 characters.
+Module folder is the place where you are going to keep all content for your module. The folder name starts with `ZEMOD_` follows by a `module initial`. The module folder name is consistent across the Git repository, Eclipse project and SAPUI5 ABAP repository.
+
+##
 
 ```
-ZEMOD_[a-zA-Z0-9_]{1,9}
+ZEMOD_<module initial>
 ```
+
+> where
+>
+> `module initial` is a unique initial that identifies the module such as BILLING, CMPGN or DSHB. The format requirement for a module initial is `[A-Z0-9]{1-9}`. The limitation imposed on the total length of a module folder name is because SAP BSP application name supports up to 15 characters only.
+
+##
+
+Below are some examples of valid module folder name:
+
+* ZEMOD_BILLING
+* ZEMOD_CMPGN
+* ZEMOD_DSHB
 
 ### Module folder structure ###
-
+It is important to keep folder structure consistent among all modules. This allows the [Grunt build](build.md) to locate files it needs for processing. Below is the initial folder structure for a new module:
 
 ```
-ZEMOD_<module folder name>/
-└── src/<module ui5 namespace path>/
-    ├── asset/
-    |   └── css/
-    |       └── module.less
-    ├── data/
-    ├── doc/
-    |   └── CHANGELOG.md
-    ├── i18n/
-    ├── view/
-    ├── manifest.json
-    └── README.md
+<module folder name>/
+└── src/
+    └── nrg/
+        └── module/
+            └── <module identifier>/
+                ├── asset/
+                |   └── css/
+                ├── data/
+                ├── doc/
+                ├── i18n/
+                └── view/
 ```
 
+> where
+>
+> `module folder name` refers to the [folder described here](#markdown-header-ui5-namespace-for-module).
+>
+> `module identifier` refers to the [keyword described here](#markdown-header-ui5-namespace-for-module).
 
+##
+
+Folder | General idea of its purpose                                                                                              | Support subfolder
+------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------
+asset  | Mainly used to store stylesheets. You can also use it to store resources such as images that are specific to the module. | Yes
+data   | Keep all the mock resources such as OData metadata.xml and mock data for entities.                                       | Yes
+doc    | Keep all the documentations related to the module.                                                                       | Yes
+i18n   | Keep all the translation files.                                                                                          | No
+view   | Keep all module content related development objects such as views, fragments and controllers.                            | Yes
+
+***
 ## Stylesheet
+We are using [LESS](http://lesscss.org/) for module related CSS development. LESS allows us to use a shared set of style guides based on ChaiOne wireframe requirements and also to optimize the generated CSS based on certain set of requirements.
 
+##
 
-## Translation
+All stylesheets are stored under `asset/css/` folder. The minimum requirement is to have the `module.less` file created under `asset/css/`. The [Grunt build](build.md) will be looking for this file to determine what to do with the module stylesheets.
 
+```
+<module folder name>/
+└── src/
+    └── nrg/
+        └── module/
+            └── <module identifier>/
+                └── asset/
+                    └── css/
+                        └── module.less
+```
+
+##
+
+Add the following LESS import statements at the beginning of your `module.less` file. This allows you to use LESS variables that are shared among all modules.
+```
+@import '../../../../../../../ZEBASE/src/nrg/base/asset/css/color.less';
+@import '../../../../../../../ZEBASE/src/nrg/base/asset/css/typography.less';
+```
+
+## Mock data
+We are using [OpenUI5 mock server](https://openui5.hana.ondemand.com/#docs/guide/3459c372aaaa4c31ab87bb0e174adcc3.html) to mock OData services so that we can test our development locally on our machine and to circumvent the lack of test data in SAP development environment.
+
+##
+
+All mock data are stored under `data/` folder. There only requirement is to place the OData `metadata.xml` in the same folder as your mock entity set `*.json` files. For instance:
+
+```
+<module folder name>/
+└── src/
+    └── nrg/
+        └── module/
+            └── <module identifier>/
+                └── data/
+                    ├── test_scenario_001/
+                    |   ├── metadata.xml
+                    |   ├── CustomerSet.json
+                    |   ├── AgentSet.json
+                    |   └── ProductSet.json
+                    |
+                    └── test_scenario_002/
+                        ├── metadata.xml
+                        ├── EmployeeSet.json
+                        └── CompanySet.json
+```
+
+## Documentation
+Documentations that are specific to a particular module are stored within the module itself. The documentation is to be written in [Markdown]((https://bitbucket.org/tutorials/markdowndemo/src) format. This gives us the ability to integrate the documentations to the Git repository in a Wiki-like fashion.
+
+##
+
+The minimum requirement is to create the `README.md` and `doc/CHANGELOG.md` files. Git repositories such as Bitbucket and Github renders the content of `README.md` automatically when you open the `<module identifier>` folder. There is no hard rules on what to put in `README.md`. A general rule of thumb is to focus on the quirks of the module. As for `CHANGELOG.md`, please follow the guidelines provided by [Keep a CHANGELOG](http://keepachangelog.com/) to determine what to put in 'CHANGELOG.md'.
+
+> Do not treat the documentation as a place to provide general UI5 or LESS tutorials.
+
+```
+<module folder name>/
+└── src/
+    └── nrg/
+        └── module/
+            └── <module identifier>/
+                ├── doc/
+                |   └── CHANGELOG.md
+                └── README.md
+```
 
 ## Configuration
 
-
-## Documentation
+```
+src/
+└── nrg/
+    └── module/
+        └── <module identifier>/
+            ├── asset/
+            |   └── css/
+            |       └── module.less
+            ├── data/
+            ├── doc/
+            |   └── CHANGELOG.md
+            ├── i18n/
+            ├── view/
+            ├── manifest.json
+            └── README.md
+```
