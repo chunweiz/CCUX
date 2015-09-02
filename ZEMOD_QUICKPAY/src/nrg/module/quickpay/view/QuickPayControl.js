@@ -56,11 +56,14 @@ sap.ui.define(
 		/* Method to be used to open the Quick Pay popup                           */
 		/* ======================================================================= */
 
-        QuickPayControl.prototype.openQuickPay = function () {
+        QuickPayControl.prototype.openQuickPay = function (sContractId, sBP, sCA) {
             var oQuickPayView = sap.ui.view({
                 type: sap.ui.core.mvc.ViewType.XML,
                 viewName: "nrg.module.quickpay.view.MainQuick"
             });
+            oQuickPayView.getController()._sContractId = sContractId;
+            oQuickPayView.getController()._sBP = sBP;
+            oQuickPayView.getController()._sCA = sCA;
             this.addContent(oQuickPayView);
             oQuickPayView.addStyleClass("nrgQPPay-View");
             if (this._oPaymentPopup.isOpen()) {

@@ -112,11 +112,8 @@
             font-weight: @nrgFontWeight-semiBold;
             text-align: left;
             position: relative;
-            left: 1.5rem;
-            font-size: @nrgFontSize-small;
-    }
-    &    .nrgQPPay-ttl {
-            font-size: @nrgFontSize-small;
+            left: 1rem;
+            font-size: @nrgFontSize-base;
     }
     &    .nrgQPCC-lbl {
             display:inline-block;
@@ -231,4 +228,21 @@
     &    .nrgQPPay-hide {
             display:none;
     }
+    &    .nrgQPCC-Contact {
+
+        &    .nrgQPCC-contactlog {
+                font-size: @nrgFontSize-small;
+        }
+        &    .nrgQPCC-textArea  > .uteUiTxtA {
+                font-size: @nrgFontSize-small;
+                width: 20rem;
+                height: 12rem;
+                background-color: @nrgColor-white;
+                margin: 0.5rem;
+        }
+    }
+   &    .nrgQPPay-ContactLogBtns {
+            text-align: center;
+   }
+
 }

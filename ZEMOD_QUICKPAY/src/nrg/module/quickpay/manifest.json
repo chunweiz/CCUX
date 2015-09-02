@@ -29,7 +29,7 @@
         "routing": {
            "routes": {
                 "quickpay": {
-                    "pattern": "quickpay",
+                    "pattern": "quickpay/bp/{bpNum}/ca/{caNum}/co/{coNum}",
                     "target": [ "quickpay.General", "dashboard.SummaryBP", "quickpay.Tools" ]
                 }
             },

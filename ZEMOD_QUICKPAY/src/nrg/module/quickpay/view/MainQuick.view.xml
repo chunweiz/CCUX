@@ -15,6 +15,7 @@
             <um:TabBarItem key="BD"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBIBD" />
             <um:TabBarItem key="RC"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBIRC" />
             <um:TabBarItem key="RD"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBIRD" />
+            <um:TabBarItem key="CL"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBICL" />
             <um:TabBarItem key="AddBD"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBIAddBD" />
             <um:TabBarItem key="PaySucc"  design="None" class="nrgQPPay-tabBarItem" id="idnrgQPPay-TBIPaySucc" />
         </um:TabBar>
@@ -55,6 +56,9 @@
                 <um:TabPanelItem key="AddBD" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
                         <core:Fragment fragmentName="nrg.module.quickpay.view.AddBankDraft" type="XML" />
                 </um:TabPanelItem>
+                <um:TabPanelItem key="CL" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
+                        <core:Fragment fragmentName="nrg.module.quickpay.view.Contactlog" type="XML" />
+                </um:TabPanelItem>
                 <um:TabPanelItem key="dummy" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
                     <um:Dropdown>
                         <um:DropdownItem key="{comp-creditcard>CardNumber}" class="nrgQPCC-DdLItem" id="idnrgQPCC-DDLItem">
@@ -63,9 +67,13 @@
                                 <u:Tag text="{comp-creditcard>CardNumber}" class="nrgQPCC-DdlValue"/>
                             </u:Tag>
                         </um:DropdownItem>
-                        <um:DropdownItem key="{comp-creditcard>ReasonCode}" class="nrgQPCC-DDLWRItem" id="idnrgQPCC-ReceiptItem">
-                            <u:Tag>
+                        <um:DropdownItem key="{comp-quickpay>ReasonCode}" class="nrgQPCC-DDLWRItem" id="idnrgQPCC-WaiveReasonItem">
                                   <u:Tag text="{comp-quickpay>ReasonText}" />
+                        </um:DropdownItem>
+                        <um:DropdownItem key="{comp-quickpay>BankKey}" class="nrgQPCC-DdLItem" id="idnrgQPCC-BankDraftItem">
+                            <u:Tag class="nrgQPCC-DDI">
+                               <core:Icon src="sap-icon://nrg-icon/cc-visa" />
+                                <u:Tag text="{comp-quickpay>BankAccNum}" class="nrgQPCC-DdlValue"/>
                             </u:Tag>
                         </um:DropdownItem>
                     </um:Dropdown>
