@@ -57,7 +57,7 @@ Below are some examples of valid module folder name:
 * ZEMOD_DSHB
 
 ### Module folder structure ###
-
+The folder structure is consistent among modules. This allows the [Grunt build](build.md) to locate the files it needs for processing. Below is how your initial folder structure of your module looks like:
 
 ```
 <module folder name>/
@@ -81,11 +81,11 @@ Below are some examples of valid module folder name:
 
 ##
 
-Folder | Purpose
------- | -----------------
+Folder | General idea of its purpose
+------ | --------------------------------------------------------------------------------------------------------------------------------
 asset  | This is mainly used to store stylesheets. You can also use it to store resources such as images that are specific to the module.
 data   | This is where we keep all the mock resources such as OData metadata.xml and mock data for entities.
-doc    | This is where we keep all the documentaions related to the module.
+doc    | This is where we keep all the documentations related to the module.
 i18n   | This is where we keep all the translation files.
 view   | This is where we keep all module content related development objects such as views, fragments and controllers.
 
