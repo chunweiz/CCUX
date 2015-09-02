@@ -14,8 +14,8 @@ The controls here are mean to supersedes the controls in `ZECTRL_COMMONS`. `ZECT
 
 Control list:
 
-* [Button](doc/button.md)
-* [Checkbox]()
+* [Button](doc/Button.md)
+* [Checkbox](doc/Checkbox.md)
 * [Dropdown]()
 * [DropdownItem]()
 * [Infoline]()
