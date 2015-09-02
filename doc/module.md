@@ -1,7 +1,7 @@
 # Module
 Module is a logical grouping of related business content such as billing and campaign. Generally, it is used to create a unique UI5 namespace and to store the XML views, controllers, stylesheets, mock data, documentations, translation files and configurations such as routing.
 
-How to create a module:
+How to introduce a new module:
 
 1. Create a new [module folder](#markdown-header-module-folder).
 2. Add in [stylesheet](#markdown-header-stylesheets).
