@@ -1,7 +1,7 @@
 # Module
 Module is a logical grouping of related business content such as billing and campaign. Generally, it is used to create a unique UI5 namespace and to store the XML views, controllers, stylesheets, mock data, documentations, translation files and configurations such as routing.
 
-How to introduce a new module:
+How to create a new module:
 
 1. Pick a [UI5 namespace](#markdown-header-ui5-namespace-for-module).
 1. Create a [module folder](#markdown-header-module-folder).
@@ -76,9 +76,24 @@ Below are some examples of valid module folder name:
 > where
 >
 > `module folder name` refers to the [folder described here](#markdown-header-ui5-namespace-for-module).
+>
 > `module identifier` refers to the [keyword described here](#markdown-header-ui5-namespace-for-module).
 
+##
+
+Folder | Purpose
+------ | -----------------
+asset  | This is mainly used to store stylesheets. You can also use it to store resources such as images that are specific to the module.
+data   | This is where we keep all the mock resources such as OData metadata.xml and mock data for entities.
+doc    | This is where we keep all the documentaions related to the module.
+i18n   | This is where we keep all the translation files.
+view   | This is where we keep all module content related development objects such as views, fragments and controllers.
+
+***
 ## Stylesheet
+We are using [LESS](http://lesscss.org/) for module related CSS development. LESS allows us to use a shared set of style guides based on ChaiOne wireframe requirements and also to optimize the generated CSS based on certain set of requirements.
+
+##
 
 ```
 <module folder name>/
