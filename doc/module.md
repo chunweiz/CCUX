@@ -183,9 +183,15 @@ All `*.properties` files are stored under `i18n/`. They are based on [Java prope
                     └── *.properties
 ```
 
+##
+
+The key of each entry needs to be namespaced to `nrg<module identifier><key>`. For instance:
+
+##
+
 ```
 #!properties
-nrgAppMessage=Message
+nrgAppKey=Value
 ```
 
 
