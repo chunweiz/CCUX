@@ -116,11 +116,50 @@ All stylesheets are stored under `asset/css/` folder. The minimum requirement is
 
 ##
 
-Add the following LESS import statements at the beginning of your `module.less` file. This allows you to use LESS variables that are shared among all modules.
+Add the following baseline references at the beginning of your `module.less` file. This allows you to use LESS variables based on style guides in your module.
+
 ```
 @import '../../../../../../../ZEBASE/src/nrg/base/asset/css/color.less';
 @import '../../../../../../../ZEBASE/src/nrg/base/asset/css/typography.less';
 ```
+> Always make an effort to stick to style guides especially on matters such as color and typography.
+
+##
+
+There is no hard limit on how many `*.less` to create but the general rule of thumb is to create one `*.less` for each view or fragment, then add it into `module.less` as a dependency. For instance:
+
+```
+@import '../../../../../../../ZEBASE/src/nrg/base/asset/css/color.less';
+@import '../../../../../../../ZEBASE/src/nrg/base/asset/css/typography.less';
+
+@import 'BillingCheckbook.view.less';
+@import 'BillingBillingInfo.view.less';
+@import 'BillingPrePaidBilling.view.less';
+@import 'BillingHighBill.view.less';
+@import 'BillingCheckbookTools.view.less';
+```
+
+##
+
+__Naming convention is very important for stylesheet.__ All CSS classes must be namespaced by the module. This is to avoid unnecessary conflict and overriding of styles. For instance:
+
+```
+.nrgBilling {
+
+    & .nrgBilling-content {
+        background-color: @nrgColor-blue-link;
+    }
+
+    & .nrgBilling-content:hover {
+        background-color: @nrgColor-white;
+    }
+}
+```
+
+
+[BEM naming convention](http://getbem.com/naming/)
+
+
 
 ***
 ## Mock data
@@ -230,7 +269,7 @@ If you are using events in your XML view, please remember to add the [dot (.)](h
 
 ##
 
-This is how the boilerplate codes of your controller looks like. We are using AMD (sap.ui.define) to load all the necessary dependencies. AMD should be the default way for you to load your dependencies unless you have very good reason not to.
+This is how the boilerplate codes of your controller looks like. We are using AMD (sap.ui.define) to load all the necessary dependencies. AMD loading style is the default way for you to load your dependencies.
 
 ```
 /*global sap*/
@@ -250,7 +289,7 @@ sap.ui.define(
 );
 ```
 
-Please refer to [OpenUi5 Javascript coding guidelines](https://github.com/SAP/openui5/blob/master/docs/guidelines.md#javascript-coding-guidelines) for naming conventions and class creation. Keep in mind that the [Grunt build](build.md) will be screening your Javascript codes for best practices with [JSHint](http://jshint.com/) and if your codes fails the screening, the build will be halted.
+Please refer to [OpenUI5 Javascript coding guidelines](https://github.com/SAP/openui5/blob/master/docs/guidelines.md#javascript-coding-guidelines) for [naming conventions](https://github.com/SAP/openui5/blob/master/docs/guidelines.md#naming-conventions) and [class creation](https://github.com/SAP/openui5/blob/master/docs/guidelines.md#creating-classes). Also, keep in mind that the [Grunt build](build.md) will be screening your Javascript codes for best practices with [JSHint](http://jshint.com/).
 
 ***
 ## Module descriptor
