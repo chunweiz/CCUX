@@ -108,8 +108,8 @@ We are using [LESS](http://lesscss.org/) for module related CSS development. LES
 ```
 
 ```
-#!css
-
+@import '../../../../../../../ZEBASE/src/nrg/base/asset/css/color.less';
+@import '../../../../../../../ZEBASE/src/nrg/base/asset/css/typography.less';
 ```
 
 ## Translation
