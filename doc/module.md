@@ -46,7 +46,7 @@ ZEMOD_<module initial>
 
 > where
 >
-> `module initial` is a unique initial that identifies the module such as BILLING, CMPGN or DSHB. The format requirement for a module initial is `[A-Z0-9]{1-9}`. The limitation imposed on the total length of the a module folder name is because SAP BSP application name supports up to 15 characters only.
+> `module initial` is a unique initial that identifies the module such as BILLING, CMPGN or DSHB. The format requirement for a module initial is `[A-Z0-9]{1-9}`. The limitation imposed on the total length of a module folder name is because SAP BSP application name supports up to 15 characters only.
 
 ##
 
@@ -57,6 +57,48 @@ Below are some examples of valid module folder name:
 * ZEMOD_DSHB
 
 ### Module folder structure ###
+
+
+```
+<module folder name>/
+└── src/
+    └── nrg/
+        └── module/
+            └── <module identifier>/
+                ├── asset/
+                |   └── css/
+                ├── data/
+                ├── doc/
+                ├── i18n/
+                └── view/
+```
+
+> where
+>
+> `module folder name` refers to the [folder described here](#markdown-header-ui5-namespace-for-module).
+> `module identifier` refers to the [keyword described here](#markdown-header-ui5-namespace-for-module).
+
+## Stylesheet
+
+```
+<module folder name>/
+└── src/
+    └── nrg/
+        └── module/
+            └── <module identifier>/
+                └── asset/
+                    └── css/
+                        ├── **/*.less
+                        └── module.less
+```
+
+## Translation
+
+
+## Configuration
+
+
+## Documentation
 
 ```
 src/
@@ -74,18 +116,3 @@ src/
             ├── manifest.json
             └── README.md
 ```
-
-> where
->
-> `module ui5 namespace path` is the folder structure path based on the [UI5 namespace][#markdown-header-module-ui5-namespace]. For instance, the folder path for nrg.module.billing will be nrg/module/billing.
-
-## Stylesheet
-
-
-## Translation
-
-
-## Configuration
-
-
-## Documentation
