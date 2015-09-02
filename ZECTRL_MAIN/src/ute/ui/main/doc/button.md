@@ -2,14 +2,14 @@
 Button renders a ute-customized button.
 
 ### Inheritance ##
-[ute.ui.main.Button](Button.js) >> [sap.ui.core.Control](../../../../../../ZELIB/openui5/resources/sap/ui/core/Control-dbg.js) >> [sap.ui.core.Element](../../../../../../ZELIB/openui5/resources/sap/ui/core/Element-dbg.js)
+[ute.ui.main.Button](../Button.js) >> [sap.ui.core.Control](../../../../../../ZELIB/openui5/resources/sap/ui/core/Control-dbg.js) >> [sap.ui.core.Element](../../../../../../ZELIB/openui5/resources/sap/ui/core/Element-dbg.js)
 
 ### Properties ##
-| Property            | Type                                   | Description                                                                | Defined By                                 |
-| :------------------ | :------------------------------------- | :------------------------------------------------------------------------- | :----------------------------------------- |
-| design              | [ute.ui.main.ButtonDesign](library.js) | The style and layout of a button.                                          | [ute.ui.main.Button](../Button.js)         |
-| text                | [string](https://goo.gl/tle3QN)        | The text to be shown inside the button.                                    | [ute.ui.main.Button](../Button.js)         |
-| enabled             | [boolean](https://goo.gl/KjFDba)       | Whether the button should be active.                                       | [ute.ui.main.Button](../Button.js)         |
+| Property            | Type                                      | Description                                                                | Defined By                                 |
+| :------------------ | :---------------------------------------- | :------------------------------------------------------------------------- | :----------------------------------------- |
+| design              | [ute.ui.main.ButtonDesign](../library.js) | The style and layout of a button.                                          | [ute.ui.main.Button](../Button.js)         |
+| text                | [string](https://goo.gl/tle3QN)           | The text to be shown inside the button.                                    | [ute.ui.main.Button](../Button.js)         |
+| enabled             | [boolean](https://goo.gl/KjFDba)          | Whether the button should be active.                                       | [ute.ui.main.Button](../Button.js)         |
 
 ### Aggregations ##
 | Aggregation         | Type                                   | Multiple | Description                                                                | Defined By                                 |
@@ -19,10 +19,13 @@ Button renders a ute-customized button.
 > defaultAggregation: `content`
 
 ### Events ##
-| Event               | Parameter                                |
-| :------------------ | :--------------------------------------- |
-| press               | `{}`                                     |
 
+#### press ##
+Triggered by `ontap()`.
+
+| Parameter | Type  | Description         |
+|-----------|-------|---------------------|
+| none      |       |                     |
 
 ### Public Methods ##
 | Method              |  Description                                                                | Defined By                                 |
