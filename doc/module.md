@@ -57,7 +57,7 @@ Below are some examples of valid module folder name:
 * ZEMOD_DSHB
 
 ### Module folder structure ###
-The folder structure is consistent among modules. This allows the [Grunt build](build.md) to locate the files it needs for processing. Below is how your initial folder structure of your module looks like:
+It is important to keep folder structure consistent among all modules. This allows the [Grunt build](build.md) to locate files it needs for processing. Below is the initial folder structure for a new module:
 
 ```
 <module folder name>/
@@ -81,13 +81,13 @@ The folder structure is consistent among modules. This allows the [Grunt build](
 
 ##
 
-Folder | General idea of its purpose
------- | --------------------------------------------------------------------------------------------------------------------------------
-asset  | This is mainly used to store stylesheets. You can also use it to store resources such as images that are specific to the module.
-data   | This is where we keep all the mock resources such as OData metadata.xml and mock data for entities.
-doc    | This is where we keep all the documentations related to the module.
-i18n   | This is where we keep all the translation files.
-view   | This is where we keep all module content related development objects such as views, fragments and controllers.
+Folder | General idea of its purpose                                                                                              | Support subfolder
+------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------
+asset  | Mainly used to store stylesheets. You can also use it to store resources such as images that are specific to the module. | Yes
+data   | Keep all the mock resources such as OData metadata.xml and mock data for entities.                                       | Yes
+doc    | Keep all the documentations related to the module.                                                                       | Yes
+i18n   | Keep all the translation files.                                                                                          | No
+view   | Keep all module content related development objects such as views, fragments and controllers.                            | Yes
 
 ***
 ## Stylesheet
@@ -105,6 +105,11 @@ We are using [LESS](http://lesscss.org/) for module related CSS development. LES
                     └── css/
                         ├── **/*.less
                         └── module.less
+```
+
+```
+#!css
+
 ```
 
 ## Translation
