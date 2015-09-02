@@ -193,7 +193,7 @@ nrgBillingKey=Value
 ```
 
 ## View
-This is the place to store the content and business logic of the module. XML based view and fragment should be your default choice.
+This is the place to store the content and business logic. XML based [view](https://openui5.hana.ondemand.com/#docs/guide/e3b5323649b44d9a883a6233fb01ee9d.html) and [fragment](https://openui5.hana.ondemand.com/#docs/guide/d6af195124cf430599530668ddea7425.html) should be your default choice.
 
 ```
 <module folder name>/
@@ -208,21 +208,28 @@ This is the place to store the content and business logic of the module. XML bas
                     └── *.view.xml
 ```
 
+##
+
+This is how the boilerplate codes of your XML view looks like. We are using quite a lot of plain HTML, so the default XML namespace is reserved for HTML.
+
 ```
 <mvc:View
     controllerName="nrg.module.sample.view.Overview"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc">
 
-    <div class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
-    </div>
+    <!-- Content -->
 
 </mvc:View>
 ```
+If you are using events in your XML view, please remember to add the [dot (.)](https://openui5.hana.ondemand.com/#docs/guide/b0fb4de7364f4bcbb053a99aa645affe.html) in the event handler.
+
+##
+
+This is how the boilerplate codes of your controller looks like. We are using AMD (sap.ui.define) to load all the necessary dependencies. AMD should be the default way for you to load your dependencies unless you have very good reason not to.
 
 ```
-/*globals sap*/
-/*jslint nomen:true*/
+/*global sap*/
 
 sap.ui.define(
     [
@@ -239,6 +246,7 @@ sap.ui.define(
 );
 ```
 
+Please refer to [OpenUi5 Javascript coding guidelines](https://github.com/SAP/openui5/blob/master/docs/guidelines.md#javascript-coding-guidelines) for naming conventions and class creation. Keep in mind that the [Grunt build](build.md) will be screening your Javascript codes for best practices with [JSHint](http://jshint.com/) and if your codes fails the screening, the build will be halted.
 
 ## Module descriptor
 
