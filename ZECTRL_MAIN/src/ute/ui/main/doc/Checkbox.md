@@ -3,11 +3,11 @@
 ***
 ## Properties ##
 
-| Property | Type                                                                                                    | Description                         |
-|----------|---------------------------------------------------------------------------------------------------------|-------------------------------------|
-| design   | [sap.ui.core.RenderManager](../../../../../../ZELIB/openui5/resources/sap/ui/core/RenderManager-dbg.js) | The style and layout of a checkbox. |
-| checked  | [boolean](https://goo.gl/KjFDba)                                                                        | Whether the checkbox is checked.    |
-| enabled  | [boolean](https://goo.gl/KjFDba)                                                                        | Whether the checkbox is enabled.    |
+| Property | Type                                        | Description                         |
+|----------|---------------------------------------------|-------------------------------------|
+| design   | [ute.ui.main.CheckboxDesign](../library.js) | The style and layout of a checkbox. |
+| checked  | [boolean](https://goo.gl/KjFDba)            | Whether the checkbox is checked.    |
+| enabled  | [boolean](https://goo.gl/KjFDba)            | Whether the checkbox is enabled.    |
 
 ***
 ## Events ##
