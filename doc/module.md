@@ -10,6 +10,12 @@ How to create a new module:
 1. Add in [configuration file](#markdown-header-configuration).
 1. Add in [documentations](#markdown-header-documentation).
 
+##
+
+How to do module development:
+
+*
+
 ***
 ## UI5 namespace for module ##
 UI5 namespace is a way for the framework to uniquely identifies a particular resource. In our case, everything that falls under a particular module will be namespaced after that module. The UI5 namespace for a module starts with the keyword `nrg.module.` follows by a `module identifier`.
@@ -95,6 +101,7 @@ We are using [LESS](http://lesscss.org/) for module related CSS development. LES
 
 ##
 
+All stylesheets are stored under `asset/css/` folder. The minimum requirement is to have the `module.less` file created under `asset/css/`. The [Grunt build](build.md) will be looking for this file to determine what to process for stylesheets.
 ```
 <module folder name>/
 └── src/
@@ -103,15 +110,39 @@ We are using [LESS](http://lesscss.org/) for module related CSS development. LES
             └── <module identifier>/
                 └── asset/
                     └── css/
-                        ├── **/*.less
                         └── module.less
 ```
 
+##
+
+Add the following LESS import statements at the beginning of your `module.less` file. This allows you to use LESS variables that are shared among all modules.
 ```
 @import '../../../../../../../ZEBASE/src/nrg/base/asset/css/color.less';
 @import '../../../../../../../ZEBASE/src/nrg/base/asset/css/typography.less';
 ```
 
+## Mock data
+We are using [OpenUI5 mock server](https://openui5.hana.ondemand.com/#docs/guide/3459c372aaaa4c31ab87bb0e174adcc3.html) to mock OData services so that we can test our development locally on our machine.
+
+##
+
+All mock data are stored under `data/` folder. There only requirement is to place the OData `metadata.xml` in the same folder as your mock data `*.json` files. For instance:
+
+<module folder name>/
+└── src/
+    └── nrg/
+        └── module/
+            └── <module identifier>/
+                └── data/
+                    ├── test_scenario_001/
+                    |   ├── metadata.xml
+                    |   ├── CustomerSet.json
+                    |   ├── AgentSet.json
+                    |   └── ProductSet.json
+                    └── test_scenario_002/
+                        ├── metadata.xml
+                        ├── EmployeeSet.json
+                        └── CompanySet.json
 ## Translation
 
 
