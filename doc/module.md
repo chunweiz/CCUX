@@ -1,77 +1,88 @@
 # Module
-Generally, a module is a logical grouping of related business processes such as billing and campaign.
+Module is a logical grouping of related business content such as billing and campaign. Generally, it is used to create a unique UI5 namespace and to store the XML views, controllers, stylesheets, mock data, documentations, translation files and configurations such as routing.
+
+How to introduce a new module:
+
+1. Pick a [UI5 namespace](#markdown-header-ui5-namespace-for-module).
+1. Create a [module folder](#markdown-header-module-folder).
+1. Add in [stylesheet](#markdown-header-stylesheets).
+1. Add in [translation file](#markdown-header-translation-files).
+1. Add in [configuration file](#markdown-header-configuration).
+1. Add in [documentations](#markdown-header-documentation).
 
 ***
-## Create a new module
+## UI5 namespace for module ##
+A UI5 namespace is a way for the framework to uniquely identifies a particular resource. In our case, everything that falls under a particular module will be namespaced after that module. The UI5 namespace for a module starts with the keyword `nrg.module.` follows by a `module identifier`.
 
-**Initial module structure**
-
-```
-ZEMOD_<module folder name>/
-└── src/<module ui5 namespace path>/
-    ├── asset/
-    |   └── css/
-    |       └── module.less
-    ├── data/
-    ├── doc/
-    |   └── CHANGELOG.md
-    ├── i18n/
-    ├── view/
-    ├── manifest.json
-    └── README.md
-```
-
-**Initial manifest.json**
+##
 
 ```
-#!json
-{
-    "sap.ui5": {
-        "config": {
-            "module": {
-                "<module ui5 namespace>": {
-                    "stylesheet": [
-                        "asset/css/module.css"
-                    ],
-                    "resourceBundle": {
-                        "comp-i18n-billing": "i18n/module.properties"
-                    },
-                    "odata": {
-                        "real": {
-                            "comp-billing": {
-                                "url": "sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/"
-                            }
-                        },
-                        "mock": {
-                            "comp-billing": {
-                                "mockDataBaseUrl": "data/devtest/",
-                                "generateMissingMockData": true
-                            }
-                        }
-                    }
-                }
-            }
-        },
-
-        "routing": {
-            "routes": {
-                "billing.CheckBook": {
-                    "pattern": "billing/checkbook/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target":["billing.Checkbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
-                }
-            },
-
-            "targets":{
-                "billing.Checkbook": {
-                    "viewName": "nrg.module.billing.view.BillingCheckbook",
-                    "controlId": "idAppGeneral"
-                },
-                "billing.CheckbookTools": {
-                    "viewName": "nrg.module.billing.view.BillingCheckbookTools",
-                    "controlId": "idAppTools"
-                }
-            }
-        }
-    }
-}
+nrg.module.<module identifier>
 ```
+
+> where
+>
+> `module identifier` is a unique keyword that identifies the module such as billing, campaign or dashboard. The format requirement for a module identifier is `[a-z]+`. Please make sure that you are using a unique module identifier for your module by cross checking it against [existing modules](../README.md#markdown-header-module).
+
+##
+
+Below are some examples of valid module UI5 namespace:
+
+* nrg.module.billing
+* nrg.module.campaign
+* nrg.module.dashboard
+
+***
+## Module folder
+
+### Module folder name ###
+The naming convention for a module folder is as follows. This is because SAP BSP application name accommodates up to 15 characters only.
+
+
+Regular expression syntax for a module folder is as follows:
+
+```
+ZEMOD_[a-zA-Z0-9_]{1,9}
+```
+
+Below are some examples of valid module folder name:
+
+* ZEMOD_BILLING
+* ZEMOD_CMPGN
+* ZEMOD_DSHB
+
+
+
+### Module folder structure ###
+
+```
+src/
+└── nrg/
+    └── module/
+        └── <module identifier>/
+            ├── asset/
+            |   └── css/
+            |       └── module.less
+            ├── data/
+            ├── doc/
+            |   └── CHANGELOG.md
+            ├── i18n/
+            ├── view/
+            ├── manifest.json
+            └── README.md
+```
+
+> where
+>
+> `module ui5 namespace path` is the folder structure path based on the [UI5 namespace][#markdown-header-module-ui5-namespace]. For instance, the folder path for nrg.module.billing will be nrg/module/billing.
+
+## Stylesheet
+
+
+## Translation
+
+
+## Configuration
+
+
+## Documentation
