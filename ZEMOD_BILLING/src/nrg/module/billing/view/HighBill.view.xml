@@ -69,14 +69,12 @@
                             text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-RETRO_AVG}"
                             class="nrgBilling-highBill-retroAvgBilling" 
                             press="onBackToDashboard"/>
-                        </utmain:Button>
                         <!-- Average Billing -->
                         <utmain:Button 
                             design="None"
                             text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-AVG}"
                             class="nrgBilling-highBill-avgBilling" 
                             press="onBackToDashboard"/>
-                        </utmain:Button>
                     </ute:Tag>
                 </ute:Tag>
             </ute:Tag>
