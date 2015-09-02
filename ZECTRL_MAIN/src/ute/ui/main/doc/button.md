@@ -15,6 +15,7 @@ Button renders a ute-customized button.
 | Aggregation         | Type                                   | Multiple | Description                                                                | Defined By                                 |
 | :------------------ | :------------------------------------- | :------- | :------------------------------------------------------------------------- | :----------------------------------------- |
 | content             | [sap.ui.core.Control](../../../../../../ZELIB/openui5/resources/sap/ui/core/Control-dbg.js) | `true` | Determines the content of the Button. | [ute.ui.main.Button](../Button.js) |
+
 > defaultAggregation: `content`
 
 ### Events ##
