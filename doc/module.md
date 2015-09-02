@@ -141,7 +141,7 @@ There is no hard limit on how many `*.less` to create but the general rule of th
 
 ##
 
-All CSS classes must be namespaced by the module. This is to avoid unnecessary conflict and overriding other CSS. As for naming convention, we are using [BEM naming convention](http://getbem.com/naming/) as a guideline but the general format is `<module namespace><block>-<element>-<modifier>`. For instance:
+All CSS classes must be namespaced by the module. This is to avoid unnecessary conflict and overriding other CSS. As for naming convention, the general format is `<module namespace><block>-<element>-<modifier>` and use [BEM naming convention](http://getbem.com/naming/) as a guideline. For instance:
 
 ```
 .nrgBilling {
