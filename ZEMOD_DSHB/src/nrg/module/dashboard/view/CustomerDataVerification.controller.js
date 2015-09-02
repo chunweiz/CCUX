@@ -22,6 +22,7 @@ sap.ui.define(
         };
 
         Controller.prototype.onBeforeRendering = function () {
+
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
 /*            if (!this._beforeOpenEditAddrDialogue) {*/
             this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
@@ -81,7 +82,37 @@ sap.ui.define(
         /* lifecycle method- After Rendering                          */
         /* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
-            //this.getOwnerComponent().getCcuxApp().setOccupied(false);
+            /*Add Nav Button to left and right*/
+            this.getOwnerComponent().getCcuxApp().showNavLeft(true);
+            this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
+            this.getOwnerComponent().getCcuxApp().showNavRight(true);
+            this.getOwnerComponent().getCcuxApp().attachNavRight(this._navRightCallBack, this);
+        };
+
+        Controller.prototype._navLeftCallBack = function () {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+
+            if (oWebUiManager.isAvailable()) {
+                oWebUiManager.notifyWebUi('clearAccount', {}, this._navLeftClearAccCallBack, this);
+            } else {
+                this._navLeftClearAccCallBack();
+            }
+        };
+
+        Controller.prototype._navLeftClearAccCallBack = function () {
+            var oContext, oRouter;
+
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
+            oContext = this.getOwnerComponent().getCcuxContextManager().resetContext();
+            oRouter = this.getOwnerComponent().getRouter();
+
+            oRouter.navTo('app.refresh');
+            oRouter.navTo('search.SearchNoID');
+        };
+
+        Controller.prototype._navRightCallBack = function () {
         };
 
         Controller.prototype._initToggleArea = function () {
