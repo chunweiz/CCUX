@@ -12,7 +12,9 @@ How to introduce a new module:
 
 ***
 ## Module UI5 namespace ##
-A UI5 namespace is a way for the framework to uniquely identifies a particular resource. In our case, everything that falls under a particular module will be namespaced after that module. The UI5 namespace for a module must starts with `nrg.module.` and follows by a `module identifier`.
+A UI5 namespace is a way for the framework to uniquely identifies a particular resource. In our case, everything that falls under a particular module will be namespaced after that module. The UI5 namespace for a module starts with `nrg.module.` follows by a `module identifier`.
+
+##
 
 ```
 nrg.module.<module identifier>
@@ -20,8 +22,7 @@ nrg.module.<module identifier>
 
 > where
 >
-> `module identifier` is a unique keyword that identifies the module such as billing, campaign or dashboard. The format requirement for a module identifier is `[a-z]+.
->> Please make sure that you are using a unique module identifier for your module by cross checking it against [existing modules](../README.md#markdown-header-module).
+> `module identifier` is a unique keyword that identifies the module such as billing, campaign or dashboard. The format requirement for a module identifier is `[a-z]+`. Please make sure that you are using a unique module identifier for your module by cross checking it against [existing modules](../README.md#markdown-header-module).
 
 
 Below are some examples of valid module UI5 namespace:
