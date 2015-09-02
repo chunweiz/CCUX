@@ -126,8 +126,9 @@ We are using [OpenUI5 mock server](https://openui5.hana.ondemand.com/#docs/guide
 
 ##
 
-All mock data are stored under `data/` folder. There only requirement is to place the OData `metadata.xml` in the same folder as your mock data `*.json` files. For instance:
+All mock data are stored under `data/` folder. There only requirement is to place the OData `metadata.xml` in the same folder as your mock entity set `*.json` files. For instance:
 
+```
 <module folder name>/
 └── src/
     └── nrg/
@@ -143,6 +144,8 @@ All mock data are stored under `data/` folder. There only requirement is to plac
                         ├── metadata.xml
                         ├── EmployeeSet.json
                         └── CompanySet.json
+```
+
 ## Translation
 
 
