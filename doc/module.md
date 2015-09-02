@@ -141,23 +141,20 @@ There is no hard limit on how many `*.less` to create but the general rule of th
 
 ##
 
-__Naming convention is very important for stylesheet.__ All CSS classes must be namespaced by the module. This is to avoid unnecessary conflict and overriding of styles. For instance:
+All CSS classes must be namespaced by the module. This is to avoid unnecessary conflict and overriding other CSS. As for naming convention, we are using [BEM naming convention](http://getbem.com/naming/) as a guideline but the general format is `<module namespace><block>-<element>-<modifier>`. For instance:
 
 ```
 .nrgBilling {
 
     & .nrgBilling-content {
         background-color: @nrgColor-blue-link;
-    }
 
-    & .nrgBilling-content:hover {
-        background-color: @nrgColor-white;
+        &.nrgBilling-content-disabled {
+            background-color: @nrgColor-grey-light;
+        }
     }
 }
 ```
-
-
-[BEM naming convention](http://getbem.com/naming/)
 
 
 
