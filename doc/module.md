@@ -122,6 +122,7 @@ Add the following LESS import statements at the beginning of your `module.less` 
 @import '../../../../../../../ZEBASE/src/nrg/base/asset/css/typography.less';
 ```
 
+***
 ## Mock data
 We are using [OpenUI5 mock server](https://openui5.hana.ondemand.com/#docs/guide/3459c372aaaa4c31ab87bb0e174adcc3.html) to mock OData services so that we can test our development locally on our machine and to circumvent the lack of test data in SAP development environment.
 
@@ -148,6 +149,7 @@ All mock data are stored under `data/` folder. There only requirement is to plac
                         └── CompanySet.json
 ```
 
+***
 ## Documentation
 Documentations that are specific to a particular module are stored within the module itself. The documentation is to be written in [Markdown](https://bitbucket.org/tutorials/markdowndemo/src) format. This gives us the ability to integrate the documentations to the Git repository in a Wiki-like fashion.
 
@@ -168,6 +170,7 @@ The minimum requirement is to create the `README.md` and `doc/CHANGELOG.md` file
 
 > Do not treat the documentation as a place to provide general development tutorials. Focus on how you have used a particular feature in your module development and why. For instance, if you have used UI5 EventBus to communicate, document down the channels used, why you used, behaviors, etc ... do not document down how to use EventBus.
 
+***
 ## Translation
 All `*.properties` files are stored under `i18n/`. They are based on [Java properties files](https://openui5.hana.ondemand.com/#docs/guide/91f225ce6f4d1014b6dd926db0e91070.html) The [Grunt build](build.md) compiles all the `*.properties` files in `i18n/` and generates a new set of `module*.properties` files.
 
@@ -192,6 +195,7 @@ At the moment, there is no rule on how many `*.properties` file to be created bu
 nrgBillingKey=Value
 ```
 
+***
 ## View
 This is the place to store the content and business logic. XML based [view](https://openui5.hana.ondemand.com/#docs/guide/e3b5323649b44d9a883a6233fb01ee9d.html) and [fragment](https://openui5.hana.ondemand.com/#docs/guide/d6af195124cf430599530668ddea7425.html) should be your default choice.
 
@@ -248,6 +252,7 @@ sap.ui.define(
 
 Please refer to [OpenUi5 Javascript coding guidelines](https://github.com/SAP/openui5/blob/master/docs/guidelines.md#javascript-coding-guidelines) for naming conventions and class creation. Keep in mind that the [Grunt build](build.md) will be screening your Javascript codes for best practices with [JSHint](http://jshint.com/) and if your codes fails the screening, the build will be halted.
 
+***
 ## Module descriptor
 
 ```
