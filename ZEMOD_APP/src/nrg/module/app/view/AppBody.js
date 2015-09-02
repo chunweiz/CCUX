@@ -74,7 +74,7 @@ sap.ui.define(
                 }
             });
 
-            this.attachEvent(AppBody.Event.NavLeftClick, fnCallback, oListener);
+            this.attachEvent(AppBody.Event.NavLeftPress, fnCallback, oListener);
 
             this._aNavLeftListener.push({
                 fnCallback: fnCallback,
@@ -115,7 +115,7 @@ sap.ui.define(
                 }
             });
 
-            this.attachEvent(AppBody.Event.NavRightClick, fnCallback, oListener);
+            this.attachEvent(AppBody.Event.NavRightPress, fnCallback, oListener);
 
             this._aNavRightListener.push({
                 fnCallback: fnCallback,
