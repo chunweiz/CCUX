@@ -149,13 +149,13 @@ All mock data are stored under `data/` folder. There only requirement is to plac
 ```
 
 ## Documentation
-Documentations that are specific to a particular module are stored within the module itself. The documentation is to be written in [Markdown]((https://bitbucket.org/tutorials/markdowndemo/src) format. This gives us the ability to integrate the documentations to the Git repository in a Wiki-like fashion.
+Documentations that are specific to a particular module are stored within the module itself. The documentation is to be written in [Markdown](https://bitbucket.org/tutorials/markdowndemo/src) format. This gives us the ability to integrate the documentations to the Git repository in a Wiki-like fashion.
 
 ##
 
-The minimum requirement is to create the `README.md` and `doc/CHANGELOG.md` files. Git repositories such as Bitbucket and Github renders the content of `README.md` automatically when you open the `<module identifier>` folder. There is no hard rules on what to put in `README.md`. A general rule of thumb is to focus on the quirks of the module. As for `CHANGELOG.md`, please follow the guidelines provided by [Keep a CHANGELOG](http://keepachangelog.com/) to determine what to put in 'CHANGELOG.md'.
+The minimum requirement is to create the `README.md` and `doc/CHANGELOG.md` files. Git repositories such as Bitbucket and Github renders the content of `README.md` automatically it sees one. There is no hard rules on what to put in `README.md`. A general rule of thumb is to focus on the quirks of the module. As for `CHANGELOG.md`, please follow the guidelines provided by [Keep a CHANGELOG](http://keepachangelog.com/) to determine what to put in `CHANGELOG.md`.
 
-> Do not treat the documentation as a place to provide general UI5 or LESS tutorials.
+> Do not treat the documentation as a place to provide general development tutorials such as UI5 or LESS. Focus on how you have used a particular feature in your module development. For instance, if you used UI5 EventBus to communicate, document down the channels used, why you used, etc ... Do not document down how to use EventBus.
 
 ```
 <module folder name>/
