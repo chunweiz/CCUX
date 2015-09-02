@@ -101,7 +101,8 @@ We are using [LESS](http://lesscss.org/) for module related CSS development. LES
 
 ##
 
-All stylesheets are stored under `asset/css/` folder. The minimum requirement is to have the `module.less` file created under `asset/css/`. The [Grunt build](build.md) will be looking for this file to determine what to process for stylesheets.
+All stylesheets are stored under `asset/css/` folder. The minimum requirement is to have the `module.less` file created under `asset/css/`. The [Grunt build](build.md) will be looking for this file to determine what to do with the module stylesheets.
+
 ```
 <module folder name>/
 └── src/
@@ -122,7 +123,7 @@ Add the following LESS import statements at the beginning of your `module.less` 
 ```
 
 ## Mock data
-We are using [OpenUI5 mock server](https://openui5.hana.ondemand.com/#docs/guide/3459c372aaaa4c31ab87bb0e174adcc3.html) to mock OData services so that we can test our development locally on our machine.
+We are using [OpenUI5 mock server](https://openui5.hana.ondemand.com/#docs/guide/3459c372aaaa4c31ab87bb0e174adcc3.html) to mock OData services so that we can test our development locally on our machine and to circumvent the lack of test data in SAP development environment.
 
 ##
 
@@ -140,19 +141,34 @@ All mock data are stored under `data/` folder. There only requirement is to plac
                     |   ├── CustomerSet.json
                     |   ├── AgentSet.json
                     |   └── ProductSet.json
+                    |
                     └── test_scenario_002/
                         ├── metadata.xml
                         ├── EmployeeSet.json
                         └── CompanySet.json
 ```
 
-## Translation
+## Documentation
+Documentations that are specific to a particular module are stored within the module itself. The documentation is to be written in [Markdown](https://bitbucket.org/tutorials/markdowndemo/src) format. This gives us the ability to integrate the documentations to the Git repository in a Wiki-like fashion.
 
+##
+
+The minimum requirement is to create the `README.md` and `doc/CHANGELOG.md` files. Git repositories such as Bitbucket and Github renders the content of `README.md` automatically it sees one. There is no hard rules on what to put in `README.md`. A general rule of thumb is to focus on the quirks of the module. As for `CHANGELOG.md`, please follow the guidelines provided by [Keep a CHANGELOG](http://keepachangelog.com/) to determine what to put in `CHANGELOG.md`.
+
+> Do not treat the documentation as a place to provide general development tutorials such as UI5 or LESS. Focus on how you have used a particular feature in your module development. For instance, if you used UI5 EventBus to communicate, document down the channels used, why you used, etc ... Do not document down how to use EventBus.
+
+```
+<module folder name>/
+└── src/
+    └── nrg/
+        └── module/
+            └── <module identifier>/
+                ├── doc/
+                |   └── CHANGELOG.md
+                └── README.md
+```
 
 ## Configuration
-
-
-## Documentation
 
 ```
 src/
