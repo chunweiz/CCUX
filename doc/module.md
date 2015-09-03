@@ -247,7 +247,7 @@ This is the place to store the content and business logic. XML based [view](http
 
 ##
 
-This is how the boilerplate codes of your XML view looks like. We are using quite a lot of plain HTML, so the default XML namespace is reserved for HTML.
+This is how the boilerplate codes of your XML view looks like. We are using quite a lot of plain HTML, so the default XML namespace is reserved for HTML. If you are using events in your XML view, please remember to add the [dot (.)](https://openui5.hana.ondemand.com/#docs/guide/b0fb4de7364f4bcbb053a99aa645affe.html) in the event handler of your XML view.
 
 ```
 <mvc:View
@@ -259,7 +259,6 @@ This is how the boilerplate codes of your XML view looks like. We are using quit
 
 </mvc:View>
 ```
-If you are using events in your XML view, please remember to add the [dot (.)](https://openui5.hana.ondemand.com/#docs/guide/b0fb4de7364f4bcbb053a99aa645affe.html) in the event handler.
 
 ##
 
@@ -287,6 +286,7 @@ Please refer to [OpenUI5 Javascript coding guidelines](https://github.com/SAP/op
 
 ***
 ## Module descriptor
+The `manifest.json` file is the place for you to declare module related settings such as routes and OData services.
 
 ```
 src/
@@ -296,11 +296,182 @@ src/
             └── manifest.json
 ```
 
+##
+
+**Register stylesheets**
+
+This is the place for you to register the stylesheets that you would like to load when the CCUX application starts. It is relative to the `build\` folder and by default, you should add in `asset/css/module.css` entry.
+
+```
+{
+    "sap.ui5": {
+        "config": {
+            "module": {
+                "<module ui5 namespace>": {
+                    "stylesheet": [
+                        "asset/css/module.css"
+                    ]
+                }
+            }
+        }
+    }
+}
+```
+
+> where
+>
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.billing
+
+##
+
+**Resource bundle**
+
+This is the place for you to register your translation file. A [resource model](https://github.com/SAP/openui5/blob/master/src/sap.ui.core/src/sap/ui/model/resource/ResourceModel.js) will be created and stored in the component for each key-value pair in `resourceBundle`. The key serves as the name of your model. By default, you should add an entry with the following key-value pair. The `*.properties` file path is relative to the `build/` folder.
+
+```
+{
+    "sap.ui5": {
+        "config": {
+            "module": {
+                "<module ui5 namespace>": {
+                    "resourceBundle": {
+                        "comp-i18n-<module identifier>": "i18n/module.properties"
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+> where
+>
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.billing
+>
+> `module identifier` is a unique keyword that identifies the module such as billing.
+
+##
+
+**Actual OData services**
+You will add an entry here if you would like CCUX to preload the OData service when the application starts. A [OData model](https://github.com/SAP/openui5/blob/master/src/sap.ui.core/src/sap/ui/model/odata/v2/ODataModel.js) will be created and stored in the component for each key-value pair in `odata.real`. The key serves as the name of the model. At the moment, it supports only OData services that are coming from SAP NW Gateway, hence the hard coded initial path of `sap/opu/odata/sap/`.
+
+```
+{
+    "sap.ui5": {
+        "config": {
+            "module": {
+                "<module ui5 namespace>": {
+                    "odata": {
+                        "real": {
+                            "comp-<module identifier>": {
+                                "url": "sap/opu/odata/sap/<odata service name/"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+> where
+>
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.billing
+>
+> `module identifier` is a unique keyword that identifies the module such as billing
+>
+> 'odata service name' is the external service name of your SAP NW Gateway OData service such as ZE_CCUX_BILLING_SRV
+
+##
+
+**Mock OData services**
+You will add an entry here if you would would like to use mock OData services. A [OData model](https://github.com/SAP/openui5/blob/master/src/sap.ui.core/src/sap/ui/model/odata/v2/ODataModel.js) will be created and stored in the component for each key-value pair entry in `odata.mock`. The key serves as the name of the model. The mock OData models will be created after the actual OData models. So, if you have a mock OData service that shares the same name as the actual OData service, the actual OData service will be replaced.
+
+> Mock OData services will only be activated if you add `nrg-mock=true` as part of CCUX application URL parameters.
+
+```
+{
+    "sap.ui5": {
+        "config": {
+            "module": {
+                "<module ui5 namespace>": {
+                    "odata": {
+                        "mock": {
+                            "comp-<module identifier>": {
+                                "mockDataBaseUrl": "<mock base url>",
+                                "generateMissingMockData": <generate missing mock data>
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+> where
+>
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.billing
+>
+> `module identifier` is a unique keyword that identifies the module such as billing
+>
+> `mock base url` is the relative path to your mock data such as data/devtest/
+>
+> `generate missing mock data` is a boolean value. If it is set to `true`, random data will be generated for each entity in the `metadata.xml` that does not has a corresponding `*.json` entity set file.
+
+
+##
+
+**Routing**
+This is the place for you to declare all the routes and targets for your module. All the routes, patterns and targets must be namespaced after your module to make sure they are unique throughout the CCUX application.
+
+```
+{
+    "sap.ui5": {
+        "routing": {
+            "routes": {
+                "<module identifier>.refresh": {
+                    "pattern": "<module identifier>/refresh",
+                    "target": [
+                        "<module identifier>.GeneralRefresh",
+                        "<module identifier>.SummaryRefresh",
+                        "<module identifier>.ToolsRefresh"
+                    ]
+                }
+            },
+            "targets": {
+                "<module identifier>.GeneralRefresh": {
+                    "viewName": "<module ui5 namespace>.GeneralRefresh",
+                    "controlId": "idAppGeneral"
+                },
+
+                "<module identifier>.SummaryRefresh": {
+                    "viewName": "<module ui5 namespace>.view.SummaryRefresh",
+                    "controlId": "idAppSummary"
+                },
+
+                "<module identifier>.ToolsRefresh": {
+                    "viewName": "<module ui5 namespace>.view.ToolsRefresh",
+                    "controlId": "idAppTools"
+                }
+            }
+        }
+    }
+}
+```
+> where
+>
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.billing
+>
+> `module identifier` is a unique keyword that identifies the module such as billing
+
 ***
 ## Global settings
-**Git settings**
+**Git setting**
 
-Add the following entry to the `.gitignore` file in root folder to prevent Git from uploading the module `build/` folder to the remote repository. Please make sure that you add the entry before performing the first build for your module.
+Add the following entry to the `.gitignore` file in root folder to prevent Git from uploading the module `build/` folder to the remote repository. **Please make sure that you add this entry before performing the first build for your module**.
 
 ```
 /<module folder>/build/
