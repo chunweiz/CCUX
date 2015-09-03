@@ -18,7 +18,7 @@ Control list:
 * [Checkbox](doc/Checkbox.md)
 * [Dropdown](doc/Dropdown.md)
 * [DropdownItem](doc/DropdownItem.md)
-* [Infoline]()
+* [Infoline](doc/Infoline.md)
 * [Label]()
 * [RadioButton]()
 * [TabBar]()
