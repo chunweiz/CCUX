@@ -11,8 +11,8 @@
         <Property Name="PartnerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Do Not Require" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="ContractAccountID" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="PrintDocNum" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="InvStrartDate" Type="Edm.String" Precision="0" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="InvEndDate" Type="Edm.String" Precision="0" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="InvStrartDate" Type="Edm.DateTimeOffset" Precision="0" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="InvEndDate" Type="Edm.DateTimeOffset" Precision="0" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="InvAmount" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="InvAmtMark" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="DisNoticeAmtDue" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
@@ -21,18 +21,19 @@
       </EntityType>
       <EntityType Name="PaymentItem" sap:label="Check Book Payment Items" sap:content-version="1">
         <Key>
+          <PropertyRef Name="ContractAccountNumber" />
           <PropertyRef Name="InvoiceNum" />
         </Key>
         <Property Name="NonComdItem" Type="ZE_CCUX_CHKBOOK_SRV.LineItem" Nullable="false" />
+        <Property Name="ContractAccountNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="InvoiceNum" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="ItemDesc" Type="Edm.String" Nullable="false" MaxLength="200" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="Value" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="DisplayRt" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="DisplayLt" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ValueRt" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ValueLt" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" Precision="0" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="DisplayOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="HyperLink" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <NavigationProperty Name="ChkBookPmtH" Relationship="ZE_CCUX_CHKBOOK_SRV.PaymentHdr_PaymentItems" FromRole="ToRole_PaymentHdr_PaymentItems" ToRole="FromRole_PaymentHdr_PaymentItems" />
+        <NavigationProperty Name="PaymentHdr" Relationship="ZE_CCUX_CHKBOOK_SRV.PaymentHdr_PaymentItems" FromRole="ToRole_PaymentHdr_PaymentItems" ToRole="FromRole_PaymentHdr_PaymentItems" />
       </EntityType>
       <EntityType Name="PaymentHdr" sap:label="Check Book Payment Header" sap:content-version="1">
         <Key>
@@ -43,9 +44,10 @@
         <Property Name="InvAmtDue" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="DueDate" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="BillDate" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <NavigationProperty Name="ChkBookPmts" Relationship="ZE_CCUX_CHKBOOK_SRV.PaymentHdr_Payments" FromRole="FromRole_PaymentHdr_Payments" ToRole="ToRole_PaymentHdr_Payments" />
-        <NavigationProperty Name="ChkBookPmtItems" Relationship="ZE_CCUX_CHKBOOK_SRV.PaymentHdr_PaymentItems" FromRole="FromRole_PaymentHdr_PaymentItems" ToRole="ToRole_PaymentHdr_PaymentItems" />
+        <NavigationProperty Name="Payments" Relationship="ZE_CCUX_CHKBOOK_SRV.PaymentHdr_Payments" FromRole="FromRole_PaymentHdr_Payments" ToRole="ToRole_PaymentHdr_Payments" />
+        <NavigationProperty Name="PaymentItems" Relationship="ZE_CCUX_CHKBOOK_SRV.PaymentHdr_PaymentItems" FromRole="FromRole_PaymentHdr_PaymentItems" ToRole="ToRole_PaymentHdr_PaymentItems" />
         <NavigationProperty Name="ConfBuag" Relationship="ZE_CCUX_CHKBOOK_SRV.ConfBuag_PaymentHdrs" FromRole="ToRole_ConfBuag_PaymentHdrs" ToRole="FromRole_ConfBuag_PaymentHdrs" />
+        <NavigationProperty Name="PaymentSumry" Relationship="ZE_CCUX_CHKBOOK_SRV.PaymentHdr_PaymentSumry" FromRole="FromRole_PaymentHdr_PaymentSumry" ToRole="ToRole_PaymentHdr_PaymentSumry" />
       </EntityType>
       <EntityType Name="Payment" sap:content-version="1">
         <Key>
@@ -54,6 +56,7 @@
         </Key>
         <Property Name="InvoiceNum" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="Paidamt" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ItemDesc" Type="Edm.String" Nullable="false" MaxLength="180" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="PaidDate" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <NavigationProperty Name="ChkBookPmtH" Relationship="ZE_CCUX_CHKBOOK_SRV.PaymentHdr_Payments" FromRole="ToRole_PaymentHdr_Payments" ToRole="FromRole_PaymentHdr_Payments" />
       </EntityType>
@@ -74,12 +77,12 @@
         <Property Name="DueDate" Type="Edm.DateTimeOffset" Nullable="false" Precision="0" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="BillDate" Type="Edm.DateTimeOffset" Nullable="false" Precision="0" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="DueAmt" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <NavigationProperty Name="PaymentHdr" Relationship="ZE_CCUX_CHKBOOK_SRV.PaymentHdr_PaymentSumry" FromRole="ToRole_PaymentHdr_PaymentSumry" ToRole="FromRole_PaymentHdr_PaymentSumry" />
       </EntityType>
       <ComplexType Name="LineItem">
         <Property Name="ItemDesc" Type="Edm.String" Nullable="false" MaxLength="200" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="Value" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="DisplayRt" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="DisplayLt" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ValueRt" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ValueLt" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" Precision="0" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="DisplayOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="HyperLink" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
@@ -104,6 +107,18 @@
             <PropertyRef Name="InvoiceNum" />
           </Principal>
           <Dependent Role="ToRole_PaymentHdr_PaymentItems">
+            <PropertyRef Name="InvoiceNum" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="PaymentHdr_PaymentSumry" sap:content-version="1">
+        <End Type="ZE_CCUX_CHKBOOK_SRV.PaymentHdr" Multiplicity="1" Role="FromRole_PaymentHdr_PaymentSumry" />
+        <End Type="ZE_CCUX_CHKBOOK_SRV.PaymentSumry" Multiplicity="*" Role="ToRole_PaymentHdr_PaymentSumry" />
+        <ReferentialConstraint>
+          <Principal Role="FromRole_PaymentHdr_PaymentSumry">
+            <PropertyRef Name="InvoiceNum" />
+          </Principal>
+          <Dependent Role="ToRole_PaymentHdr_PaymentSumry">
             <PropertyRef Name="InvoiceNum" />
           </Dependent>
         </ReferentialConstraint>
@@ -139,9 +154,13 @@
           <End EntitySet="ConfBuags" Role="FromRole_ConfBuag_PaymentHdrs" />
           <End EntitySet="PaymentHdrs" Role="ToRole_ConfBuag_PaymentHdrs" />
         </AssociationSet>
+        <AssociationSet Name="PaymentHdr_PaymentSumrySet" Association="ZE_CCUX_CHKBOOK_SRV.PaymentHdr_PaymentSumry" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+          <End EntitySet="PaymentHdrs" Role="FromRole_PaymentHdr_PaymentSumry" />
+          <End EntitySet="PaymentSumrys" Role="ToRole_PaymentHdr_PaymentSumry" />
+        </AssociationSet>
       </EntityContainer>
-      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/$metadata" />
-      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/$metadata" />
+      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/$metadata" />
+      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/$metadata" />
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>

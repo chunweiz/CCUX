@@ -1,0 +1,19 @@
+{
+  "d":{
+    "results":[
+      {
+        "__metadata":{
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/ConfBuags('70889118')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/ConfBuags('70889118')",
+          "type":"ZE_CCUX_CHKBOOK_SRV.ConfBuag"
+        },
+        "ContractAccountNumber":"70889118",
+        "PaymentHdrs":{
+          "__deferred":{
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/ConfBuags('70889118')/PaymentHdrs"
+          }
+        }
+      }
+    ]
+  }
+}
