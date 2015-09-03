@@ -184,9 +184,120 @@ Add the following entry to your `sap_bluecrystal\library.less`. This allows you 
 
 ***
 ## Content
+In order for OpenUI5 to recognize this as a control library, you will need to create a `library.js` file.
 
-[OpenUI5 control library guidelines](https://github.com/SAP/openui5/blob/master/docs/controllibraries.md)
+> Please refer to [OpenUI5 Javascript coding guidelines](https://github.com/SAP/openui5/blob/master/docs/guidelines.md#javascript-coding-guidelines) for [naming conventions](https://github.com/SAP/openui5/blob/master/docs/guidelines.md#naming-conventions) and [class creation](https://github.com/SAP/openui5/blob/master/docs/guidelines.md#creating-classes). Also, keep in mind that the [Grunt build](build.md) will be screening your Javascript codes for best practices with [JSHint](http://jshint.com/).
 
+```
+<control library folder name>/
+└── src/
+    └── ute/
+        └── ui/
+            └── <control library identifier>/
+                └── library.js
+```
+
+##
+
+This is the bare minimum on how your `library.js` should looks like:
+
+```
+/*global sap, ute*/
+
+sap.ui.define(
+    [],
+
+    function () {
+        'use strict';
+
+        sap.ui.getCore().initLibrary({
+            name: '<control library ui5 namespace>',
+			version: '1.0.0',
+			dependencies: [
+                'sap.ui.core'
+            ]
+        });
+
+        return <control library ui5 namespace>;
+    },
+
+    true
+);
+```
+
+> where
+>
+> `control library ui5 namespace` is the UI5 namespace for your control library such as ute.ui.main
+
+##
+
+**Control**
+
+> [OpenUI5 Control API and behavior](https://github.com/SAP/openui5/blob/master/docs/controllibraries.md#the-control-api-and-behavior)
+
+The code below acts as the template for your new control:
+
+```
+/*global sap, ute*/
+
+sap.ui.define(
+    [
+        'sap/ui/core/Control'
+    ],
+
+    function (Control) {
+        'use strict';
+
+        var CustomControl = Control.extend('ute.ui.main.Button', {
+            metadata: {
+                library: 'ute.ui.main'
+            }
+        });
+
+        return CustomControl;
+    },
+
+    true
+);
+```
+
+##
+
+**Control Renderer**
+
+> [OpenUI5 Control Renderer](https://github.com/SAP/openui5/blob/master/docs/controllibraries.md#the-control-renderer)
+
+The code below acts as the template for your new control renderer:
+
+```
+/*global sap*/
+
+sap.ui.define(
+    [],
+
+    function () {
+        'use strict';
+
+        var CustomRenderer = {};
+
+        CustomRenderer.render = function (oRm, oCustomControl) {
+            oRm.write('<div');
+            oRm.writeControlData(oCustomControl);
+            oRm.writeClasses();
+            oRm.write('>');
+
+            /* Content rendering */
+
+            oRm.write('</div>');
+        };
+
+        return CustomRenderer;
+    },
+
+    true
+);
+
+```
 
 ***
 ## Global settings
