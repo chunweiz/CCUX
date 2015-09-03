@@ -199,7 +199,7 @@ In order for OpenUI5 to recognize this as a control library, you will need to cr
 
 ##
 
-This is the bare minimum on how your `library.js` should looks like:
+This will be the template for your `library.js`:
 
 ```
 /*global sap, ute*/
@@ -235,9 +235,10 @@ sap.ui.define(
 
 > [OpenUI5 Control API and behavior](https://github.com/SAP/openui5/blob/master/docs/controllibraries.md#the-control-api-and-behavior)
 
-The code below acts as the template for your new control:
+This will be the template for your new control:
 
 ```
+#!js
 /*global sap, ute*/
 
 sap.ui.define(
@@ -267,9 +268,10 @@ sap.ui.define(
 
 > [OpenUI5 Control Renderer](https://github.com/SAP/openui5/blob/master/docs/controllibraries.md#the-control-renderer)
 
-The code below acts as the template for your new control renderer:
+This will be the template for your new control renderer:
 
 ```
+#!js
 /*global sap*/
 
 sap.ui.define(
