@@ -13,7 +13,7 @@ CCUX is built using [OpenUI5](https://openui5.hana.ondemand.com/), [LESS](http:/
 
 ***
 ## Module
-> Please make sure you read [Getting started with module development](doc/module.md).
+> [Getting started with module development](doc/module.md).
 
 * [nrg.module.app](ZEMOD_APP/src/nrg/module/app/README.md)
 * [nrg.module.billing](ZEMOD_BILLING/src/nrg/module/billing/README.md)
@@ -28,7 +28,7 @@ CCUX is built using [OpenUI5](https://openui5.hana.ondemand.com/), [LESS](http:/
 
 ***
 ## Control
-> Please make sure you read [Getting started with control library development](doc/control.md).
+> [Getting started with control library development](doc/control.md).
 
 * [ute.ui.app](ZECTRL_APP/src/ute/ui/app/README.md)
 * [ute.ui.commons](ZECTRL_COMMONS/src/ute/ui/commons/README.md)
@@ -36,13 +36,13 @@ CCUX is built using [OpenUI5](https://openui5.hana.ondemand.com/), [LESS](http:/
 
 ***
 ## Component
-> Please make sure you read [Getting started with component development](doc/component.md).
+> [Getting started with component development](doc/component.md).
 
 * [nrg.component.ic](ZECMP_IC/src/nrg/component/ic/README.md)
 
 ***
 ## Baseline
-> Please make sure you read [Getting started with baseline development](doc/baseline.md).
+> [Getting started with baseline development](doc/baseline.md).
 
 * [nrg.base](ZEBASE/src/nrg/base/README.md)
 * [ute.ui.base](ZEBASE_CTRL/src/ute/ui/base/README.md)
