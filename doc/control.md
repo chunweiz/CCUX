@@ -8,6 +8,7 @@ How to create a new control library:
 1. [Add in stylesheet](#markdown-header-stylesheet).
 1. [Add in documentation](#markdown-header-documentation).
 1. [Add in content](#markdown-header-content).
+1. [Setup CCUX global settings](#markdown-header-global-settings).
 
 ***
 ## UI5 namespace for control
@@ -185,3 +186,71 @@ Add the following entry to your `sap_bluecrystal\library.less`. This allows you 
 ## Content
 
 [OpenUI5 control library guidelines](https://github.com/SAP/openui5/blob/master/docs/controllibraries.md)
+
+
+***
+## Global settings
+**Git setting**
+
+Add the following entry to the `.gitignore` file in root folder to prevent Git from uploading the control library `build/` folder to the remote repository. **Please make sure that you add this entry before performing the first build for your control library**.
+
+```
+/<control library folder>/build/
+```
+
+> where
+>
+> `control library folder` is the folder name of your control library such as ZECTRL_MAIN
+
+##
+
+**Full build**
+
+Add the following entry to the `build.bat` file in root folder so that when someone performs a full [build](build.md#markdown-header-control), this control library will be included as part of the build.
+
+```
+#!batch
+@CALL grunt --build=control --controlLibrary=<control library ui5 namespace> --controlFolder=<control library folder>
+```
+
+> where
+>
+> `control library ui5 namespace` is the UI5 namespace for your control library such as ute.ui.main
+>
+> `control library folder` is the folder name of your control library such as ZECTRL_MAIN
+
+##
+
+Add the following entry to the `build.sh` file in root folder for folks that are using \*nix based operating systems.
+
+```
+#!sh
+grunt --build=control --controlLibrary=<control library ui5 namespace> --controlFolder=<control library folder>
+```
+
+> where
+>
+> `control library ui5 namespace` is the UI5 namespace for your control library such as ute.ui.main
+>
+> `control library folder` is the folder name of your control library such as ZECTRL_MAIN
+
+##
+
+**Deploy**
+
+Add the following entry to the `deploy.bat` file in root folder so that when someone performs a [deploy](build.md##markdown-header-grunt-deploy-tasks), this control library will be included as part of the deployment.
+
+```
+#!batch
+@IF EXIST %ECLIPSE_WORKSPACE_PATH%\<control library folder> (
+    @CALL grunt --deploy=control --controlFolder=<control library folder> --controlName=<control library ui5 namespace> --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\<control library folder>
+) ELSE (
+    @ECHO Path %ECLIPSE_WORKSPACE_PATH%\<control library folder> does not exists.
+)
+```
+
+> where
+>
+> `control library ui5 namespace` is the UI5 namespace for your control library such as ute.ui.main
+>
+> `control library folder` is the folder name of your control library such as ZECTRL_MAIN
