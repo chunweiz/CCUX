@@ -39,7 +39,7 @@ Below are some examples of valid module UI5 namespace:
 ## Module folder
 
 ### Module folder name ###
-Module folder is the place where you are going to keep all content for your module. The folder name starts with `ZEMOD_` follows by a `module initial`. The module folder name is consistent across the Git repository, Eclipse project and SAPUI5 ABAP repository.
+Module folder is the place where you are going to keep the content for your module. The folder name starts with `ZEMOD_` follows by a `module initial`. The module folder name needs to be consistent across the Git repository, Eclipse project and SAPUI5 ABAP repository.
 
 ##
 
@@ -78,7 +78,7 @@ It is important to keep folder structure consistent among all modules. This allo
 
 > where
 >
-> `module folder name` refers to the [folder described here](#markdown-header-ui5-namespace-for-module).
+> `module folder name` refers to the [folder described here](#markdown-header-module-folder-name).
 >
 > `module identifier` refers to the [keyword described here](#markdown-header-ui5-namespace-for-module).
 
@@ -94,7 +94,7 @@ view   | Keep all module content related development objects such as views, frag
 
 ***
 ## Stylesheet
-We are using [LESS](http://lesscss.org/) for module related CSS development. LESS allows us to use a shared set of style guides based on ChaiOne wireframe requirements and also to optimize the generated CSS based on certain set of requirements.
+We are using [LESS](http://lesscss.org/) for module related CSS development. LESS allows us to use a shared set of style guides and also to optimize the generated CSS.
 
 ##
 
@@ -187,6 +187,8 @@ Documentations that are specific to a particular module are stored within the mo
 ##
 
 The minimum requirement is to create the `README.md` and `doc/CHANGELOG.md` files. Git repositories such as Bitbucket and Github renders the content of `README.md` automatically when it sees one. There is no hard rules on what to put in `README.md`. A general rule of thumb is to focus on the quirks of the module. As for `CHANGELOG.md`, please follow the guidelines provided by [Keep a CHANGELOG](http://keepachangelog.com/) to determine what to put in `CHANGELOG.md`. You can use `doc/` to keep additional assets such as images that are relevant to the documentation of the module.
+
+##
 
 ```
 <module folder name>/
