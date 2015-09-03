@@ -499,7 +499,7 @@ Add the following entry to the `build.bat` file in root folder so that when some
 
 ##
 
-Add the following entry to the `build.sh` in root folder for folks that are using \*nix based operating systems.
+Add the following entry to the `build.sh` file in root folder for folks that are using \*nix based operating systems.
 
 ```
 #!sh
