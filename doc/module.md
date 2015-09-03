@@ -4,11 +4,13 @@ Module is a logical grouping of related business content such as billing and cam
 How to create a new module:
 
 1. Pick a [UI5 namespace](#markdown-header-ui5-namespace-for-module).
-1. Create a [module folder](#markdown-header-module-folder).
-1. Add in [stylesheet](#markdown-header-stylesheets).
-1. Add in [translation file](#markdown-header-translation-files).
-1. Add in [configuration file](#markdown-header-configuration).
-1. Add in [documentations](#markdown-header-documentation).
+1. Create the [module folder](#markdown-header-module-folder).
+1. Add in [stylesheet](#markdown-header-stylesheet).
+1. Add in [mock data](#markdown-header-mock-data) [Optional].
+1. Add in [documentation](#markdown-header-documentation).
+1. Add in [translation](#markdown-header-translation).
+1. Add in [content](#markdown-header-view).
+1. Add in [module descriptor](#markdown-header-module-descriptor).
 
 ##
 
