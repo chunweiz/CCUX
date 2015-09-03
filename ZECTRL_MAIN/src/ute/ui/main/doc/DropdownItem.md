@@ -1,6 +1,7 @@
 # [ute.ui.main.DropdownItem](../DropdownItem.js)
 
 ***
+
 ## Properties ##
 
 | Aggregation | Type                             | Description                           |
@@ -8,7 +9,6 @@
 | key         | [string](https://goo.gl/tle3QN)  | The key of the dropdown item.         |
 | enabled     | [boolean](https://goo.gl/KjFDba) | Whether the dropdown item is enabled. |
 
-***
 ## Aggregations ##
 
 | Aggregation         | Type                                                                                        | Multiple | Description                                  |
@@ -17,7 +17,6 @@
 
 > defaultAggregation: `content`
 
-***
 ## Events ##
 
 ### press ##

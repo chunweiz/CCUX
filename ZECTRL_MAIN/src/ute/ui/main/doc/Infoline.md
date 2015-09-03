@@ -1,5 +1,7 @@
 # [ute.ui.main.Infoline](../Infoline.js)
 
+***
+
 ## Properties ##
 
 | Aggregation | Type                                        | Description                                                             |
@@ -16,8 +18,7 @@
 | content             | [sap.ui.core.Control](../../../../../../ZELIB/openui5/resources/sap/ui/core/Control-dbg.js) | `true`   | The infoline content.                                                |
 | _headerExpander     | [sap.ui.core.Control](../../../../../../ZELIB/openui5/resources/sap/ui/core/Control-dbg.js) | `false`  | Aggregation that controls the expand and collapse of the `Infoline`. |
 
-> defaultAggregation: `content`
-> `_headerExpander` is mean to bind with a Checkbox control and is not accessible by the view.
+> defaultAggregation: `content`. `_headerExpander` is mean to bind with a Checkbox control and is not accessible by the view.
 
 ## Events ##
 
