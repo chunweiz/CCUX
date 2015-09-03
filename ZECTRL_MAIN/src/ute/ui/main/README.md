@@ -21,8 +21,8 @@ Control list:
 * [Infoline](doc/Infoline.md)
 * [Label](doc/Label.md)
 * [RadioButton](doc/RadioButton.md)
-* [TabBar]()
-* [TabBarItem]()
-* [TabPanel]()
-* [TabPanelItem]()
+* [TabBar](doc/TabBar.md)
+* [TabBarItem](doc/TabBarItem.md)
+* [TabPanel](doc/TabPanel.md)
+* [TabPanelItem](doc/TabPanelItem.md)
 
