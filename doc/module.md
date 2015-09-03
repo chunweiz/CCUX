@@ -298,7 +298,7 @@ src/
 
 ##
 
-**Register stylesheets**
+**Stylesheets**
 
 This is the place for you to register the stylesheets that you would like to load when the CCUX application starts. It is relative to the `build\` folder and by default, you should add in `asset/css/module.css` entry.
 
@@ -353,6 +353,7 @@ This is the place for you to register your translation file. A [resource model](
 ##
 
 **Actual OData services**
+
 You will add an entry here if you would like CCUX to preload the OData service when the application starts. A [OData model](https://github.com/SAP/openui5/blob/master/src/sap.ui.core/src/sap/ui/model/odata/v2/ODataModel.js) will be created and stored in the component for each key-value pair in `odata.real`. The key serves as the name of the model. At the moment, it supports only OData services that are coming from SAP NW Gateway, hence the hard coded initial path of `sap/opu/odata/sap/`.
 
 ```
@@ -386,6 +387,7 @@ You will add an entry here if you would like CCUX to preload the OData service w
 ##
 
 **Mock OData services**
+
 You will add an entry here if you would would like to use mock OData services. A [OData model](https://github.com/SAP/openui5/blob/master/src/sap.ui.core/src/sap/ui/model/odata/v2/ODataModel.js) will be created and stored in the component for each key-value pair entry in `odata.mock`. The key serves as the name of the model. The mock OData models will be created after the actual OData models. So, if you have a mock OData service that shares the same name as the actual OData service, the actual OData service will be replaced.
 
 > Mock OData services will only be activated if you add `nrg-mock=true` as part of CCUX application URL parameters.
@@ -425,6 +427,7 @@ You will add an entry here if you would would like to use mock OData services. A
 ##
 
 **Routing**
+
 This is the place for you to declare all the routes and targets for your module. All the routes, patterns and targets must be namespaced after your module to make sure they are unique throughout the CCUX application.
 
 ```
@@ -432,28 +435,26 @@ This is the place for you to declare all the routes and targets for your module.
     "sap.ui5": {
         "routing": {
             "routes": {
-                "<module identifier>.refresh": {
-                    "pattern": "<module identifier>/refresh",
+                "<module identifier>.overview": {
+                    "pattern": "<module identifier>/overview",
                     "target": [
-                        "<module identifier>.GeneralRefresh",
-                        "<module identifier>.SummaryRefresh",
-                        "<module identifier>.ToolsRefresh"
+                        "<module identifier>.GeneralOverview",
+                        "<module identifier>.SummaryOverview",
+                        "<module identifier>.ToolsOverview"
                     ]
                 }
             },
             "targets": {
-                "<module identifier>.GeneralRefresh": {
-                    "viewName": "<module ui5 namespace>.GeneralRefresh",
+                "<module identifier>.GeneralOverview": {
+                    "viewName": "<module ui5 namespace>.view.General",
                     "controlId": "idAppGeneral"
                 },
-
-                "<module identifier>.SummaryRefresh": {
-                    "viewName": "<module ui5 namespace>.view.SummaryRefresh",
+                "<module identifier>.SummaryOverview": {
+                    "viewName": "<module ui5 namespace>.view.Summary",
                     "controlId": "idAppSummary"
                 },
-
-                "<module identifier>.ToolsRefresh": {
-                    "viewName": "<module ui5 namespace>.view.ToolsRefresh",
+                "<module identifier>.ToolsOverview": {
+                    "viewName": "<module ui5 namespace>.view.Tools",
                     "controlId": "idAppTools"
                 }
             }
