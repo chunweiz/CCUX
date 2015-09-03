@@ -61,6 +61,7 @@ sap.ui.define(
 
             //Model to keep checkbook header
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oChkbkHdr');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPaymentHdr');
 
 
 
@@ -68,7 +69,21 @@ sap.ui.define(
             //Start of data retriving
             this._initRouitingInfo();
             this._initChkbookHdr();
+            this._initPaymentHdr();
         };
+
+        /*****************************************************************************************************************************************************/
+        //Formatter Functions
+        CustomController.prototype._formatDate = function(oDate) {
+            var sFormattedDate;
+
+            sFormattedDate = (oDate.getMonth() + 1).toString() + '/' + oDate.getDate().toString() + '/' + oDate.getFullYear().toString().substring(2, 4);
+            return sFormattedDate;
+        };
+
+
+
+        /*****************************************************************************************************************************************************/
 
         CustomController.prototype._initRouitingInfo = function () {
             var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
@@ -81,10 +96,18 @@ sap.ui.define(
         CustomController.prototype._initChkbookHdr = function () {
             var sPath;
 
-            sPath = '/ConfBuags' + '(\'' + this._caNum + '\')/PaymentHdrs';
+            sPath = '/ConfBuags' + '(\'' + this._caNum + '\')';
                 //'/ChkBookHdrs' + '(PartnerID=\'' + this._bpNum + '\', ContractAccountID=\'' + this._caNum + '\', PrintDocNum=\'PrintDocNum 1\'' + ')';
 
             this._retrChkbookHdr(sPath);
+        };
+
+        CustomController.prototype._initPaymentHdr = function () {
+            var sPath;
+
+            sPath = '/ConfBuags' + '(\'' + this._caNum + '\')/PaymentHdrs';
+
+            this._retrPaymentHdr(sPath);
         };
 
         CustomController.prototype._retrChkbookHdr = function (sPath) {
@@ -95,6 +118,26 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oChkbkHdr').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oChbkOData) {
+                oChbkOData.read(sPath, oParameters);
+            }
+        };
+
+        CustomController.prototype._retrPaymentHdr = function (sPath) {
+            var oChbkOData = this.getView().getModel('oDataSvc'),
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oPaymentHdr').setData(oData);
                     }
                 }.bind(this),
                 error: function (oError) {
