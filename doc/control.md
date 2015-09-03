@@ -233,9 +233,7 @@ sap.ui.define(
 
 **Control**
 
-> [OpenUI5 Control API and behavior](https://github.com/SAP/openui5/blob/master/docs/controllibraries.md#the-control-api-and-behavior)
-
-This will be the template for your new control:
+Please refer to [OpenUI5 control API and behavior development guide](https://github.com/SAP/openui5/blob/master/docs/controllibraries.md#the-control-api-and-behavior). Below will be the template for your new control:
 
 ```
 #!js
@@ -266,9 +264,7 @@ sap.ui.define(
 
 **Control Renderer**
 
-> [OpenUI5 Control Renderer](https://github.com/SAP/openui5/blob/master/docs/controllibraries.md#the-control-renderer)
-
-This will be the template for your new control renderer:
+Please refer to [OpenUI5 control renderer development guide](https://github.com/SAP/openui5/blob/master/docs/controllibraries.md#the-control-renderer). Below will be the template for your new control renderer:
 
 ```
 #!js
