@@ -14,7 +14,7 @@
 ## Events ##
 
 ### select ##
-Triggered when `onchange` event is detected. 
+Triggered when `change` event is detected. 
 
 | Parameter | Type | Description |
 |-----------|------|-------------|

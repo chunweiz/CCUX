@@ -44,15 +44,6 @@ this._oHdrExpander = new Checkbox({
 this.setAggregation('_headerExpander', this._oHdrExpander);
 ``` 
 
-### _onHdrExpanderSelected() ##
-Executed when the `select` event of the `_headerExpander` got triggered. It will set the `expanded` property and fire `press` event of the `Infoline`.
-
-```JavaScript
-var bExpand = oControlEvent.getParameter('checked');
-this.setExpanded(bExpand);
-this.firePress({ expanded: bExpand });
-``` 
-
 ### exit() ##
 Do the clean up for the `_headerExpander` binding.
 
