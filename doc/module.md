@@ -11,7 +11,7 @@ How to create a new module:
 1. [Add in translation](#markdown-header-translation).
 1. [Add in content](#markdown-header-view).
 1. [Add in module descriptor](#markdown-header-module-descriptor).
-1. [Let the world knows](#markdown-header-global-settings).
+1. [Setup CCUX global settings](#markdown-header-global-settings).
 
 ***
 ## UI5 namespace for module ##
@@ -298,3 +298,52 @@ src/
 
 ***
 ## Global settings
+**Git settings**
+
+Add the following entry to the `.gitignore` file in root folder to prevent Git from uploading the module `build/` folder to the remote repository. Please make sure that you add the entry before performing the first build for your module.
+
+```
+/<module folder>/build/
+```
+
+> where
+>
+> `module folder` is the folder name of your module such as ZEMOD_BILLING
+
+##
+
+**Full build**
+
+Add the following entry to the `build.bat` file in root folder so that when someone performs a full [build](build.md#markdown-header-module), this module will be included as part of the build.
+
+```
+#!batch
+@CALL grunt --build=module --moduleName=<module ui5 namespace> --moduleFolder=<module folder>
+```
+
+> where
+>
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.billing
+>
+> `module folder` is the folder name of your module such as ZEMOD_BILLING
+
+##
+
+**Deploy**
+
+Add the following entry to the `deploy.bat` file in root folder so that when someone performs a [deploy](build.md##markdown-header-grunt-deploy-tasks), this module will be included as part of the deployment.
+
+```
+#!batch
+@IF EXIST %ECLIPSE_WORKSPACE_PATH%\<module folder> (
+    @CALL grunt --deploy=module --moduleName=<module ui5 namespace> --moduleFolder=<module folder> --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\<module folder>
+) ELSE (
+    @ECHO Path %ECLIPSE_WORKSPACE_PATH%\<module folder> does not exists.
+)
+```
+
+> where
+>
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.billing
+>
+> `module folder` is the folder name of your module such as ZEMOD_BILLING
