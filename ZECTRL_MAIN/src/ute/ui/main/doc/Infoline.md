@@ -1,6 +1,5 @@
 # [ute.ui.main.Infoline](../Infoline.js)
 
-***
 ## Properties ##
 
 | Aggregation | Type                                        | Description                                                             |
@@ -9,7 +8,6 @@
 | expanded    | [boolean](https://goo.gl/KjFDba)            | Whether the infoline is expanded.                                       |
 | reverse     | [boolean](https://goo.gl/KjFDba)            | If set to true, it will render content first then header at the bottom. |
 
-***
 ## Aggregations ##
 
 | Aggregation         | Type                                                                                        | Multiple | Description                                                          |
@@ -21,7 +19,6 @@
 > defaultAggregation: `content`
 > `_headerExpander` is mean to bind with a Checkbox control and is not accessible by the view.
 
-***
 ## Events ##
 
 ### press ##
@@ -31,7 +28,6 @@ Triggered when `_headerExpander` is selected.
 |-----------|----------------------------------|-----------------------------------|
 | expanded  | [boolean](https://goo.gl/KjFDba) | Whether the infoline is expanded. |
 
-***
 ## Methods ##
 
 ### onBeforeRendering() ##
