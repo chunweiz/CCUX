@@ -39,7 +39,7 @@ Below are some examples of valid module UI5 namespace:
 ## Module folder
 
 ### Module folder name ###
-Module folder is the place where you are going to keep all content for your module. The folder name starts with `ZEMOD_` follows by a `module initial`. The module folder name is consistent across the Git repository, Eclipse project and SAPUI5 ABAP repository.
+Module folder is the place where you are going to keep the content for your module. The folder name starts with `ZEMOD_` follows by a `module initial`. The module folder name needs to be consistent across the Git repository, Eclipse project and SAPUI5 ABAP repository.
 
 ##
 
@@ -78,7 +78,7 @@ It is important to keep folder structure consistent among all modules. This allo
 
 > where
 >
-> `module folder name` refers to the [folder described here](#markdown-header-ui5-namespace-for-module).
+> `module folder name` refers to the [folder described here](#markdown-header-module-folder-name).
 >
 > `module identifier` refers to the [keyword described here](#markdown-header-ui5-namespace-for-module).
 
@@ -94,7 +94,7 @@ view   | Keep all module content related development objects such as views, frag
 
 ***
 ## Stylesheet
-We are using [LESS](http://lesscss.org/) for module related CSS development. LESS allows us to use a shared set of style guides based on ChaiOne wireframe requirements and also to optimize the generated CSS based on certain set of requirements.
+We are using [LESS](http://lesscss.org/) for module related CSS development. LESS allows us to use a shared set of style guides and also to optimize the generated CSS.
 
 ##
 
@@ -138,7 +138,7 @@ There is no hard limit on how many `*.less` to create but the general rule of th
 
 ##
 
-All CSS classes must be namespaced by the module. This is to avoid unnecessary conflict and overriding other CSS. As for naming convention, the general format is `<module namespace><block>-<element>-<modifier>` and use [BEM naming convention](http://getbem.com/naming/) as a guideline. For instance:
+All CSS classes must be namespaced by the module. This is to avoid unnecessary conflict and overriding other CSS. As for naming convention, the general format is `<module namespace><block>-<element>-<modifier>`. Please refer to [BEM naming convention](http://getbem.com/naming/) for the definition of block, element and modifier. For instance:
 
 ```
 .nrgBilling {
@@ -152,8 +152,6 @@ All CSS classes must be namespaced by the module. This is to avoid unnecessary c
     }
 }
 ```
-
-
 
 ***
 ## Mock data
@@ -189,6 +187,8 @@ Documentations that are specific to a particular module are stored within the mo
 ##
 
 The minimum requirement is to create the `README.md` and `doc/CHANGELOG.md` files. Git repositories such as Bitbucket and Github renders the content of `README.md` automatically when it sees one. There is no hard rules on what to put in `README.md`. A general rule of thumb is to focus on the quirks of the module. As for `CHANGELOG.md`, please follow the guidelines provided by [Keep a CHANGELOG](http://keepachangelog.com/) to determine what to put in `CHANGELOG.md`. You can use `doc/` to keep additional assets such as images that are relevant to the documentation of the module.
+
+##
 
 ```
 <module folder name>/
@@ -247,7 +247,7 @@ This is the place to store the content and business logic. XML based [view](http
 
 ##
 
-This is how the boilerplate codes of your XML view looks like. We are using quite a lot of plain HTML, so the default XML namespace is reserved for HTML.
+This is how the boilerplate codes of your XML view looks like. We are using quite a lot of plain HTML, so the default XML namespace is reserved for HTML. If you are using events in your XML view, please remember to add the [dot (.)](https://openui5.hana.ondemand.com/#docs/guide/b0fb4de7364f4bcbb053a99aa645affe.html) in the event handler of your XML view.
 
 ```
 <mvc:View
@@ -259,7 +259,6 @@ This is how the boilerplate codes of your XML view looks like. We are using quit
 
 </mvc:View>
 ```
-If you are using events in your XML view, please remember to add the [dot (.)](https://openui5.hana.ondemand.com/#docs/guide/b0fb4de7364f4bcbb053a99aa645affe.html) in the event handler.
 
 ##
 
@@ -287,6 +286,7 @@ Please refer to [OpenUI5 Javascript coding guidelines](https://github.com/SAP/op
 
 ***
 ## Module descriptor
+The `manifest.json` file is the place for you to declare module related settings such as routes and OData services.
 
 ```
 src/
@@ -296,11 +296,183 @@ src/
             └── manifest.json
 ```
 
+##
+
+**Stylesheets**
+
+This is the place for you to register the stylesheets that you would like to load when the CCUX application starts. It is relative to the `build/` folder and by default, you should add in `asset/css/module.css` entry.
+
+```
+{
+    "sap.ui5": {
+        "config": {
+            "module": {
+                "<module ui5 namespace>": {
+                    "stylesheet": [
+                        "asset/css/module.css"
+                    ]
+                }
+            }
+        }
+    }
+}
+```
+
+> where
+>
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.billing
+
+##
+
+**Resource bundles**
+
+This is the place for you to register your translation file. A [resource model](https://github.com/SAP/openui5/blob/master/src/sap.ui.core/src/sap/ui/model/resource/ResourceModel.js) will be created and stored in the component for each key-value pair in `resourceBundle`. The key serves as the name of your model. By default, you should add an entry with the following key-value pair. The `*.properties` file path is relative to the `build/` folder.
+
+```
+{
+    "sap.ui5": {
+        "config": {
+            "module": {
+                "<module ui5 namespace>": {
+                    "resourceBundle": {
+                        "comp-i18n-<module identifier>": "i18n/module.properties"
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+> where
+>
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.billing
+>
+> `module identifier` is a unique keyword that identifies the module such as billing
+
+##
+
+**Actual OData services**
+
+You will add an entry here if you would like CCUX to preload the OData service when the application starts. A [OData model](https://github.com/SAP/openui5/blob/master/src/sap.ui.core/src/sap/ui/model/odata/v2/ODataModel.js) will be created and stored in the component for each key-value pair in `odata.real`. The key serves as the name of the model. At the moment, it supports only OData services that are coming from SAP NW Gateway, hence the hard coded initial path of `sap/opu/odata/sap/`.
+
+```
+{
+    "sap.ui5": {
+        "config": {
+            "module": {
+                "<module ui5 namespace>": {
+                    "odata": {
+                        "real": {
+                            "comp-<module identifier>": {
+                                "url": "sap/opu/odata/sap/<odata service name/"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+> where
+>
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.billing
+>
+> `module identifier` is a unique keyword that identifies the module such as billing
+>
+> 'odata service name' is the external service name of your SAP NW Gateway OData service such as ZE_CCUX_BILLING_SRV
+
+##
+
+**Mock OData services**
+
+You will add an entry here if you would would like to use mock OData services. A [OData model](https://github.com/SAP/openui5/blob/master/src/sap.ui.core/src/sap/ui/model/odata/v2/ODataModel.js) will be created and stored in the component for each key-value pair entry in `odata.mock`. The key serves as the name of the model. The mock OData models will be created after the actual OData models. So, if you have a mock OData service that shares the same name as the actual OData service, the actual OData service will be replaced.
+
+> Mock OData services will only be activated if you add `nrg-mock=true` as part of CCUX application URL parameters.
+
+```
+{
+    "sap.ui5": {
+        "config": {
+            "module": {
+                "<module ui5 namespace>": {
+                    "odata": {
+                        "mock": {
+                            "comp-<module identifier>": {
+                                "mockDataBaseUrl": "<mock base url>",
+                                "generateMissingMockData": <generate missing mock data>
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+> where
+>
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.billing
+>
+> `module identifier` is a unique keyword that identifies the module such as billing
+>
+> `mock base url` is the relative path to your mock data such as data/devtest/
+>
+> `generate missing mock data` is a boolean value. If it is set to `true`, random data will be generated for each entity in the `metadata.xml` that does not has a corresponding `*.json` entity set file
+
+
+##
+
+**Routing**
+
+This is the place for you to declare all the routes and targets for your module. All the routes, patterns and targets must be namespaced after your module to make sure they are unique throughout the CCUX application. By default, registered views are assumed to be XML views. For instance:
+
+```
+{
+    "sap.ui5": {
+        "routing": {
+            "routes": {
+                "<module identifier>.overview": {
+                    "pattern": "<module identifier>/overview",
+                    "target": [
+                        "<module identifier>.GeneralOverview",
+                        "<module identifier>.SummaryOverview",
+                        "<module identifier>.ToolsOverview"
+                    ]
+                }
+            },
+            "targets": {
+                "<module identifier>.GeneralOverview": {
+                    "viewName": "<module ui5 namespace>.view.General",
+                    "controlId": "idAppGeneral"
+                },
+                "<module identifier>.SummaryOverview": {
+                    "viewName": "<module ui5 namespace>.view.Summary",
+                    "controlId": "idAppSummary"
+                },
+                "<module identifier>.ToolsOverview": {
+                    "viewName": "<module ui5 namespace>.view.Tools",
+                    "controlId": "idAppTools"
+                }
+            }
+        }
+    }
+}
+```
+> where
+>
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.billing
+>
+> `module identifier` is a unique keyword that identifies the module such as billing
+
 ***
 ## Global settings
-**Git settings**
+**Git setting**
 
-Add the following entry to the `.gitignore` file in root folder to prevent Git from uploading the module `build/` folder to the remote repository. Please make sure that you add the entry before performing the first build for your module.
+Add the following entry to the `.gitignore` file in root folder to prevent Git from uploading the module `build/` folder to the remote repository. **Please make sure that you add this entry before performing the first build for your module**.
 
 ```
 /<module folder>/build/
@@ -319,6 +491,21 @@ Add the following entry to the `build.bat` file in root folder so that when some
 ```
 #!batch
 @CALL grunt --build=module --moduleName=<module ui5 namespace> --moduleFolder=<module folder>
+```
+
+> where
+>
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.billing
+>
+> `module folder` is the folder name of your module such as ZEMOD_BILLING
+
+##
+
+Add the following entry to the `build.sh` file in root folder for folks that are using \*nix based operating systems.
+
+```
+#!sh
+grunt --build=module --moduleName=<module ui5 namespace> --moduleFolder=<module folder>
 ```
 
 > where

@@ -161,7 +161,7 @@
                                              text=""/>
                                 </ute:Tag>
                             </ute:Tag>
-                        </utmain:content>
+                        </utmain:controllerNametent>
                     </utmain:Infoline>
                 </ute:Tag>
                 <ute:Tag>
