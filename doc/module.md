@@ -138,7 +138,7 @@ There is no hard limit on how many `*.less` to create but the general rule of th
 
 ##
 
-All CSS classes must be namespaced by the module. This is to avoid unnecessary conflict and overriding other CSS. As for naming convention, the general format is `<module namespace><block>-<element>-<modifier>` and use [BEM naming convention](http://getbem.com/naming/) as a guideline. For instance:
+All CSS classes must be namespaced by the module. This is to avoid unnecessary conflict and overriding other CSS. As for naming convention, the general format is `<module namespace><block>-<element>-<modifier>`. Please refer to [BEM naming convention](http://getbem.com/naming/) for the definition of block, element and modifier. For instance:
 
 ```
 .nrgBilling {
@@ -152,8 +152,6 @@ All CSS classes must be namespaced by the module. This is to avoid unnecessary c
     }
 }
 ```
-
-
 
 ***
 ## Mock data
@@ -300,7 +298,7 @@ src/
 
 **Stylesheets**
 
-This is the place for you to register the stylesheets that you would like to load when the CCUX application starts. It is relative to the `build\` folder and by default, you should add in `asset/css/module.css` entry.
+This is the place for you to register the stylesheets that you would like to load when the CCUX application starts. It is relative to the `build/` folder and by default, you should add in `asset/css/module.css` entry.
 
 ```
 {
@@ -324,7 +322,7 @@ This is the place for you to register the stylesheets that you would like to loa
 
 ##
 
-**Resource bundle**
+**Resource bundles**
 
 This is the place for you to register your translation file. A [resource model](https://github.com/SAP/openui5/blob/master/src/sap.ui.core/src/sap/ui/model/resource/ResourceModel.js) will be created and stored in the component for each key-value pair in `resourceBundle`. The key serves as the name of your model. By default, you should add an entry with the following key-value pair. The `*.properties` file path is relative to the `build/` folder.
 
@@ -348,7 +346,7 @@ This is the place for you to register your translation file. A [resource model](
 >
 > `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.billing
 >
-> `module identifier` is a unique keyword that identifies the module such as billing.
+> `module identifier` is a unique keyword that identifies the module such as billing
 
 ##
 
@@ -421,14 +419,14 @@ You will add an entry here if you would would like to use mock OData services. A
 >
 > `mock base url` is the relative path to your mock data such as data/devtest/
 >
-> `generate missing mock data` is a boolean value. If it is set to `true`, random data will be generated for each entity in the `metadata.xml` that does not has a corresponding `*.json` entity set file.
+> `generate missing mock data` is a boolean value. If it is set to `true`, random data will be generated for each entity in the `metadata.xml` that does not has a corresponding `*.json` entity set file
 
 
 ##
 
 **Routing**
 
-This is the place for you to declare all the routes and targets for your module. All the routes, patterns and targets must be namespaced after your module to make sure they are unique throughout the CCUX application.
+This is the place for you to declare all the routes and targets for your module. All the routes, patterns and targets must be namespaced after your module to make sure they are unique throughout the CCUX application. By default, registered views are assumed to be XML views. For instance:
 
 ```
 {
@@ -491,6 +489,21 @@ Add the following entry to the `build.bat` file in root folder so that when some
 ```
 #!batch
 @CALL grunt --build=module --moduleName=<module ui5 namespace> --moduleFolder=<module folder>
+```
+
+> where
+>
+> `module ui5 namespace` is the UI5 namespace for your module such as nrg.module.billing
+>
+> `module folder` is the folder name of your module such as ZEMOD_BILLING
+
+##
+
+Add the following entry to the `build.sh` in root folder for folks that are using \*nix based operating systems.
+
+```
+#!sh
+grunt --build=module --moduleName=<module ui5 namespace> --moduleFolder=<module folder>
 ```
 
 > where
