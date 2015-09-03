@@ -233,7 +233,7 @@ sap.ui.define(
 
 **Control**
 
-Please refer to [OpenUI5 control API and behavior development guide](https://github.com/SAP/openui5/blob/master/docs/controllibraries.md#the-control-api-and-behavior). Below will be the template for your new control:
+Please refer to [OpenUI5 control API and behavior development guide](https://github.com/SAP/openui5/blob/master/docs/controllibraries.md#the-control-api-and-behavior). Below will be the starting template for your new control:
 
 ```
 #!js
