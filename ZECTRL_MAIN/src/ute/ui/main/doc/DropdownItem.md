@@ -1,4 +1,4 @@
-# ute.ui.main.DropdownItem
+# [ute.ui.main.DropdownItem](../DropdownItem.js)
 
 ***
 ## Properties ##
@@ -21,7 +21,7 @@
 ## Events ##
 
 ### press ##
-Triggered when the value of the checkbox is changed.
+Triggered when the dropdown item is clicked.
 
 | Parameter | Type  | Description |
 |-----------|-------|-------------|

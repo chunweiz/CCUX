@@ -1,4 +1,4 @@
-# ute.ui.main.Checkbox
+# [ute.ui.main.Checkbox](../Checkbox.js)
 
 ***
 ## Properties ##
