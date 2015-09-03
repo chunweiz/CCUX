@@ -3,20 +3,15 @@ Module is a logical grouping of related business content such as billing and cam
 
 How to create a new module:
 
-1. Pick a [UI5 namespace](#markdown-header-ui5-namespace-for-module).
-1. Create the [module folder](#markdown-header-module-folder).
-1. Add in [stylesheet](#markdown-header-stylesheet).
-1. Add in [mock data](#markdown-header-mock-data) [Optional].
-1. Add in [documentation](#markdown-header-documentation).
-1. Add in [translation](#markdown-header-translation).
-1. Add in [content](#markdown-header-view).
-1. Add in [module descriptor](#markdown-header-module-descriptor).
-
-##
-
-How to do module development:
-
-*
+1. [Pick a UI5 namespace](#markdown-header-ui5-namespace-for-module).
+1. [Create the module folder](#markdown-header-module-folder).
+1. [Add in stylesheet](#markdown-header-stylesheet).
+1. [Add in mock data](#markdown-header-mock-data). This is optional.
+1. [Add in documentation](#markdown-header-documentation).
+1. [Add in translation](#markdown-header-translation).
+1. [Add in content](#markdown-header-view).
+1. [Add in module descriptor](#markdown-header-module-descriptor).
+1. [Let the world knows](#markdown-header-global-settings).
 
 ***
 ## UI5 namespace for module ##
@@ -300,3 +295,6 @@ src/
         └── <module identifier>/
             └── manifest.json
 ```
+
+***
+## Global settings
