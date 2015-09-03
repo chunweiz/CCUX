@@ -1,4 +1,4 @@
-# ute.ui.main.Button
+# [ute.ui.main.Button](../Button.js)
 
 ***
 ## Properties ##

@@ -1,4 +1,4 @@
-# ute.ui.main.Checkbox
+# [ute.ui.main.Dropdown](../Dropdown.js)
 
 ***
 ## Properties ##
