@@ -1,5 +1,5 @@
 # Control
-Controls consist mainly of reusable UI elements such as button and checkbox.
+Controls consist mainly of reusable UI elements such as button and checkbox. Please refer to [respective control libraries](../README.md#markdown-header-control) for implementation details.
 
 How to create a new control library:
 
@@ -264,7 +264,7 @@ sap.ui.define(
 
 **Control Renderer**
 
-Please refer to [OpenUI5 control renderer development guide](https://github.com/SAP/openui5/blob/master/docs/controllibraries.md#the-control-renderer). Below will be the template for your new control renderer:
+Please refer to [OpenUI5 control renderer development guide](https://github.com/SAP/openui5/blob/master/docs/controllibraries.md#the-control-renderer). Below will be the starting template for your new control renderer:
 
 ```
 #!js
