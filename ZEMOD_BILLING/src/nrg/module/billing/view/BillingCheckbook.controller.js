@@ -6,10 +6,11 @@
 sap.ui.define(
     [
         'jquery.sap.global',
-        'nrg/base/view/BaseController'
+        'nrg/base/view/BaseController',
+        'nrg/base/type/Price'
     ],
 
-    function (jQuery, Controller) {
+    function (jQuery, Controller, Type_Price) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.billing.view.BillingCheckbook');
@@ -64,8 +65,6 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPaymentHdr');
 
 
-
-
             //Start of data retriving
             this._initRouitingInfo();
             this._initChkbookHdr();
@@ -96,8 +95,8 @@ sap.ui.define(
         CustomController.prototype._initChkbookHdr = function () {
             var sPath;
 
-            sPath = '/ConfBuags' + '(\'' + this._caNum + '\')';
-                //'/ChkBookHdrs' + '(PartnerID=\'' + this._bpNum + '\', ContractAccountID=\'' + this._caNum + '\', PrintDocNum=\'PrintDocNum 1\'' + ')';
+            sPath = '/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'111014762427\')';
+                    //'/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'\')';
 
             this._retrChkbookHdr(sPath);
         };

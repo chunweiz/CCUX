@@ -37,7 +37,10 @@
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl">
                     <ute:Tag>
-                        <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtNum" text="{oChkbkHdr>/InvAmount}"/>
+                        <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtNum"
+                                 text="{path: 'oChkbkHdr>/InvAmount',
+                                        type: 'nrg.base.type.Price',
+                                        formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
                         <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtNum" text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-Astrik}"/>
                     </ute:Tag>
                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtDscp1" text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-AmountDue}"/>
@@ -48,24 +51,39 @@
                                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-otrFrm">
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-innFrm">
                                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="{comp-i18n-billing>nrgBilling-billChkBook-HdrHvr-InvcAmtDue}"/>
-                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="{oChkbkHdr>/InvAmount}"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue"
+                                                 text="{path: 'oChkbkHdr>/InvAmount',
+                                                        type: 'nrg.base.type.Price',
+                                                        formatOptions: { currencySymbol: ''}}"/>
                                     </ute:Tag>
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-innFrm nrgBilling-blChkBk-lftDiv-qkRefArea-redHghlt">
                                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="{comp-i18n-billing>nrgBilling-billChkBook-HdrHvr-DscnctNoticeAmountDue}"/>
-                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="{oChkbkHdr>/DisNoticeAmtDue}"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue"
+                                                 text="{path: 'oChkbkHdr>/DisNoticeAmtDue',
+                                                        type: 'nrg.base.type.Price',
+                                                        formatOptions: { currencySymbol: ''}}"/>
                                     </ute:Tag>
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-innFrm nrgBilling-blChkBk-lftDiv-qkRefArea-yllwHghlt">
                                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="{comp-i18n-billing>nrgBilling-billChkBook-HdrHvr-OthrFeeCharge}"/>
-                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="{oChkbkHdr>/OtherFeeChrg}"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue"
+                                                 text="{path: 'oChkbkHdr>/OtherFeeChrg',
+                                                        type: 'nrg.base.type.Price',
+                                                        formatOptions: { currencySymbol: ''}}"/>
                                     </ute:Tag>
                                     <ute:Tag>
                                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="{comp-i18n-billing>nrgBilling-billChkBook-HdrHvr-PmtPlnBal}"/>
-                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="{oChkbkHdr>/PaymtPlnBal}"/>
+                                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue"
+                                                 text="{path: 'oChkbkHdr>/PaymtPlnBal',
+                                                        type: 'nrg.base.type.Price',
+                                                        formatOptions: { currencySymbol: ''}}"/>
                                     </ute:Tag>
                                 </ute:Tag>
                                 <ute:Tag>
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="{comp-i18n-billing>nrgBilling-billChkBook-HdrHvr-Total}"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue" text="{oChkbkHdr>/InvAmount}"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue"
+                                             text="{path: 'oChkbkHdr>/InvAmount',
+                                                    type: 'nrg.base.type.Price',
+                                                    formatOptions: { currencySymbol: ''}}"/>
                                 </ute:Tag>
                             </ute:Tooltip>
                         </ute:tooltip>
@@ -98,7 +116,9 @@
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh2"
                                      text="{comp-i18n-billing>nrgBilling-billChkBook-PmtHdr-InvAmt} {oPaymentHdr>InvoiceNum}"/>
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh3"
-                                     text="{oPaymentHdr>InvAmtDue}"/>
+                                     text="{path: 'oPaymentHdr>InvAmtDue',
+                                        type: 'nrg.base.type.Price',
+                                        formatOptions: { currencySymbol: ''}}"/>
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh4"
                                      text="{parts:['oPaymentHdr>DueDate'],
                                             formatter:'._formatDate'}"/>
