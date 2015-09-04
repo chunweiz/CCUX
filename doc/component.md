@@ -82,6 +82,7 @@ The minimum requirement is to create the `README.md` and `doc/CHANGELOG.md` file
 ***
 ## Create component ##
 
+You need to create `index.html` and `Component.js` files as follows:
 
 ```
 <component folder name>/
@@ -92,6 +93,69 @@ The minimum requirement is to create the `README.md` and `doc/CHANGELOG.md` file
                 ├── Component.js
                 └── index.html
 ```
+
+##
+
+**index.html**
+
+Below are the main items that are needed for `index.html`:
+
+* Set the HTML height to 100%.
+* Set the `data-sap-ui-bindingSyntax` to `complex`.
+* Declare the libraries that will be used in `data-sap-ui-libs`.
+* Declare the modules, control libraries, baselines and component that will be used at `data-sap-ui-resourceroots`.
+* Create the component container.
+
+> Please refer to [OpenUI5 Runtime Configuration Options](https://openui5.hana.ondemand.com/#docs/guide/91f2d03b6f4d1014b6dd926db0e91070.html) for more information.
+
+```
+<!DOCTYPE html>
+<html style="height:100%">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>NRG Reliant Interaction Center</title>
+		<script id="sap-ui-bootstrap"
+		    src="../../../../../ZELIB/openui5/resources/sap-ui-core.js"
+            data-sap-ui-theme="sap_bluecrystal"
+            data-sap-ui-bindingSyntax="complex"
+            data-sap-ui-animation="false"
+            data-sap-ui-preload="async"
+			data-sap-ui-libs="sap.ui.commons, sap.m, ute.ui.commons, ute.ui.main, ute.ui.app"
+            data-sap-ui-resourceroots='{
+                "ute.ui.commons": "../../../../../ZECTRL_COMMONS/build/ute/ui/commons",
+                "ute.ui.main": "../../../../../ZECTRL_MAIN/build/ute/ui/main",
+                "ute.ui.app": "../../../../../ZECTRL_APP/build/ute/ui/app",
+                "nrg.component.ic": "./",
+                "nrg.base": "../../../../../ZEBASE/build/nrg/base",
+                "nrg.module.app": "../../../../../ZEMOD_APP/build/nrg/module/app",
+                "nrg.module.others": "../../../../../ZEMOD_OTHERS/build/nrg/module/others",
+                "nrg.module.dashboard": "../../../../../ZEMOD_DSHB/build/nrg/module/dashboard",
+                "nrg.module.campaign": "../../../../../ZEMOD_CMPGN/build/nrg/module/campaign",
+                "nrg.module.quickpay": "../../../../../ZEMOD_QUICKPAY/build/nrg/module/quickpay",
+                "nrg.module.billing": "../../../../../ZEMOD_BILLING/build/nrg/module/billing",
+                "nrg.module.bupa": "../../../../../ZEMOD_BUPA/build/nrg/module/bupa",
+                "nrg.module.search": "../../../../../ZEMOD_SEARCH/build/nrg/module/search",
+                "nrg.module.usage": "../../../../../ZEMOD_USAGE/build/nrg/module/usage",
+                "nrg.module.nnp": "../../../../../ZEMOD_NNP/build/nrg/module/nnp"
+            }'>
+		</script>
+        <script>
+            sap.ui.getCore().attachInit(function () {
+                new sap.ui.core.ComponentContainer({
+                    height: '100%',
+                    width: '100%',
+                    name: 'nrg.component.ic'
+                }).placeAt('content');
+            });
+		</script>
+	</head>
+	<body role="application" class="nrgUiBody" id="content">
+	</body>
+</html>
+```
+
+##
 
 **Component.js**
 
@@ -164,7 +228,6 @@ sap.ui.define(
         CustomComponent.prototype.init = function () {
             Component.prototype.init.apply(this);
 
-            //Instantiation sequence should not be important
             this._oWebUiManager = new WebUiManager(this);
             this._oContextManager = new ContextManager(this);
             this._oStylesheetManager = new StylesheetManager(this);
@@ -175,9 +238,8 @@ sap.ui.define(
             this._oRouteManager = new RouteManager(this);
             this._oNotificationManager = new NotificationManager(this);
 
-            //Initialization sequence is important due to inter manager dependencies
             this._oWebUiManager.start();
-            this._oContextManager.init(); //Depending on WebUiManager
+            this._oContextManager.init();
             this._oNotificationManager.init();
             this._oRealDataManager.addODataModels();
             this._oMockDataManager.startMockServers();
@@ -185,7 +247,7 @@ sap.ui.define(
             this._oResourceBundleManager.addResourceModels();
             this._oStylesheetManager.addStylesheets();
             this._oIconManager.addIcons();
-            this._oRouteManager.init();  //Depending on WebUiManager
+            this._oRouteManager.init();
         };
 
         CustomComponent.prototype.destroy = function () {
@@ -236,7 +298,6 @@ sap.ui.define(
     }
 );
 ```
-
 
 ***
 ## Component descriptor ##
