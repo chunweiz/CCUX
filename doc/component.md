@@ -98,11 +98,12 @@ You need to create `index.html` and `Component.js` files as follows:
 
 **index.html**
 
-Below are the main items that are needed for `index.html`:
+Below are the ingredients for `index.html`:
 
-* Set the HTML height to 100%.
+* Add CSS style `height:100%` to the `<html>`.
+* Add CSS class `nrgUiBody` to the `<body>`.
 * Set the `data-sap-ui-bindingSyntax` to `complex`.
-* Declare the libraries that will be used in `data-sap-ui-libs`.
+* Declare the libraries that will be used at `data-sap-ui-libs`.
 * Declare the modules, control libraries, baselines and component that will be used at `data-sap-ui-resourceroots`.
 * Create the component container.
 
@@ -302,6 +303,10 @@ sap.ui.define(
 ***
 ## Component descriptor ##
 
+You will need to create a `manifest.json` at the following location to declare the configurations for your component.
+
+> Please keep in mind that the [Grunt buid](build.md#markdowndown-header-component) will pull and merge `manifest.json` files from other modules into here.
+
 ```
 <component folder name>/
 └── src/
@@ -311,5 +316,134 @@ sap.ui.define(
                 └── manifest.json
 ```
 
+##
+
+**manifest.json**
+
+Generally, it should have the following items:
+
+* Name and id for the component.
+* CSS resources for baselines' CSS and `normalize.css`.
+* Root view pointing to `nrg.module.app.view.CcuxApp`.
+* Router class `nrg.base.component.Router`.
+* Defaults the following for routing configurations:
+    * `viewType` to `XML`.
+    * `controlAggregation` to `content`.
+    * `clearControlAggregation` to `true`.
+
+```
+{
+    "name": "nrg.component.ic.Component",
+
+    "sap.app": {
+        "id": "nrg.component.ic.Component",
+        "type": "application",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "Reliant Interaction Center",
+        "description": "Reliant Interaction Center"
+    },
+
+    "sap.ui": {
+        "technology": "UI5"
+    },
+
+    "sap.ui5": {
+        "resources": {
+            "css": [
+                { "uri": "../../../../../ZELIB/normalize.css/normalize.css" },
+                { "uri": "../../../../../ZEBASE_CTRL/build/ute/ui/base/asset/css/base.css" },
+                { "uri": "../../../../../ZEBASE/build/nrg/base/asset/css/base.css" }
+            ]
+        },
+
+        "rootView": {
+            "viewName": "nrg.module.app.view.CcuxApp",
+            "type": "XML"
+        },
+
+        "routing": {
+            "routes": {
+                "notFound": {
+                    "pattern": "{all*}",
+                    "target": [ "others.GeneralEmpty", "others.SummaryEmpty", "others.ToolsEmpty" ]
+                }
+            },
+            "config": {
+                "routerClass": "nrg.base.component.Router",
+                "viewType": "XML",
+                "controlAggregation": "content",
+                "clearControlAggregation": true
+            }
+        }
+    }
+}
+```
+
 ***
 ## Global settings ##
+**Git setting**
+
+Add the following entry to the `.gitignore` file in root folder to prevent Git from uploading the component `build/` folder to the remote repository. **Please make sure that you add this entry before performing the first build for your component**.
+
+```
+/<component folder>/build/
+```
+
+> where
+>
+> `component folder` is the folder name of your component such as ZECMP_IC
+
+##
+
+**Full build**
+
+Add the following entry to the `build.bat` file in root folder so that when someone performs a full [build](build.md#markdown-header-control), this control library will be included as part of the build.
+
+```
+#!batch
+@CALL grunt --build=component --componentName=<component ui5 namespace> --componentFolder=<component folder>
+```
+
+> where
+>
+> `component ui5 namespace` is the UI5 namespace for your component such as nrg.component.ic
+>
+> `component folder` is the folder name of your control library such as ZECMP_IC
+
+##
+
+Add the following entry to the `build.sh` file in root folder for folks that are using \*nix based operating systems.
+
+```
+#!sh
+grunt --build=component --componentName=<component ui5 namespace> --componentFolder=<component folder>
+```
+
+> where
+>
+> `component ui5 namespace` is the UI5 namespace for your component such as nrg.component.ic
+>
+> `component folder` is the folder name of your control library such as ZECMP_IC
+
+##
+
+**Deploy**
+
+Add the following entry to the `deploy.bat` file in root folder so that when someone performs a [deploy](build.md##markdown-header-grunt-deploy-tasks), this component will be included as part of the deployment.
+
+```
+#!batch
+@IF EXIST %ECLIPSE_WORKSPACE_PATH%\<component folder> (
+    @CALL grunt --deploy=component --componentName=<component ui5 namespace> --componentFolder=<component folder> --eclipseProjectPath=%ECLIPSE_WORKSPACE_PATH%\<component folder>
+) ELSE (
+    @ECHO Path %ECLIPSE_WORKSPACE_PATH%\<component folder> does not exists.
+)
+```
+
+> where
+>
+> `component ui5 namespace` is the UI5 namespace for your component such as nrg.component.ic
+>
+> `component folder` is the folder name of your control library such as ZECMP_IC
