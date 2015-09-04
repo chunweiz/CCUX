@@ -1,7 +1,7 @@
 # Call Center User Experience (CCUX)
 CCUX is built using [OpenUI5](https://openui5.hana.ondemand.com/), [LESS](http://lesscss.org/) and [Grunt](http://gruntjs.com/).
 
-> This document is written in [Markdown](https://bitbucket.org/tutorials/markdowndemo/src) format and changes are logged based on this [set of guidelines](https://github.com/olivierlacan/keep-a-changelog).
+> This document is written in [Markdown](https://bitbucket.org/tutorials/markdowndemo/src) format.
 
 ***
 ## General
@@ -12,14 +12,8 @@ CCUX is built using [OpenUI5](https://openui5.hana.ondemand.com/), [LESS](http:/
 * [Deploy](doc/deploy.md)
 
 ***
-## Component
-> [Getting started](doc/component.md) with component development
-
-* [nrg.component.ic](ZECMP_IC/src/nrg/component/ic/README.md)
-
-***
 ## Module
-> [Getting started](doc/module.md) with module development
+> [Getting started with module development](doc/module.md).
 
 * [nrg.module.app](ZEMOD_APP/src/nrg/module/app/README.md)
 * [nrg.module.billing](ZEMOD_BILLING/src/nrg/module/billing/README.md)
@@ -34,15 +28,21 @@ CCUX is built using [OpenUI5](https://openui5.hana.ondemand.com/), [LESS](http:/
 
 ***
 ## Control
-> [Getting started](doc/control.md) with control library development
+> [Getting started with control library development](doc/control.md).
 
 * [ute.ui.app](ZECTRL_APP/src/ute/ui/app/README.md)
 * [ute.ui.commons](ZECTRL_COMMONS/src/ute/ui/commons/README.md)
 * [ute.ui.main](ZECTRL_MAIN/src/ute/ui/main/README.md)
 
 ***
+## Component
+> [Getting started with component development](doc/component.md).
+
+* [nrg.component.ic](ZECMP_IC/src/nrg/component/ic/README.md)
+
+***
 ## Baseline
-> [Getting started](doc/baseline.md) with baseline development
+> [Getting started with baseline development](doc/baseline.md).
 
 * [nrg.base](ZEBASE/src/nrg/base/README.md)
 * [ute.ui.base](ZEBASE_CTRL/src/ute/ui/base/README.md)

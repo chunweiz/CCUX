@@ -1,23 +1,22 @@
 {
   "d":{
-     "results":[
-         {
-        "PartnerID":"PartnerID 1",
-        "ContractAccountID":"ContractAccountID 1",
-        "PrintDocNum":"PrintDocNum 1",
-        "InvStrartDate":"08/15/2014",
-        "InvEndDate":"08/15/2015",
-        "InvAmount":3173.71,
-        "InvAmtMark":"InvAmtMark 1",
-        "DisNoticeAmtDue":4070.68,
-        "OtherFeeChrg":3559.67,
-        "PaymtPlnBal":172.65,
+    "results":[
+      {
         "__metadata":{
-          "id":"../../../../../ZEMOD_BILLING/build/nrg/module/billing/data/devtest/ChkBookHdrs(PartnerID='PartnerID 1',ContractAccountID='ContractAccountID 1',PrintDocNum='PrintDocNum 1')",
-          "type":"ZE_CCUX_CHKBOOK_SRV.ChkBookHdr",
-          "uri":"../../../../../ZEMOD_BILLING/build/nrg/module/billing/data/devtest/ChkBookHdrs(PartnerID='PartnerID 1',ContractAccountID='ContractAccountID 1',PrintDocNum='PrintDocNum 1')"
-        }
-        }
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/ChkBookHdrs(ContractAccountID='000070889118',InvoiceNum='111014762427')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/ChkBookHdrs(ContractAccountID='000070889118',InvoiceNum='111014762427')",
+          "type":"ZE_CCUX_CHKBOOK_SRV.ChkBookHdr"
+        },
+        "ContractAccountID":"70889118",
+        "InvoiceNum":"111014762427",
+        "InvStrartDate":null,
+        "InvEndDate":null,
+        "InvAmount":"0.0000",
+        "InvAmtMark":"",
+        "DisNoticeAmtDue":"0.0000",
+        "OtherFeeChrg":"0.0000",
+        "PaymtPlnBal":"0.0000"
+      }
     ]
   }
 }

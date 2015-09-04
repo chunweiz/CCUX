@@ -14,15 +14,15 @@ The controls here are mean to supersedes the controls in `ZECTRL_COMMONS`. `ZECT
 
 Control list:
 
-* [Button](doc/button.md)
-* [Checkbox]()
-* [Dropdown]()
-* [DropdownItem]()
-* [Infoline]()
-* [Label]()
-* [RadioButton]()
-* [TabBar]()
-* [TabBarItem]()
-* [TabPanel]()
-* [TabPanelItem]()
+* [Button](doc/Button.md)
+* [Checkbox](doc/Checkbox.md)
+* [Dropdown](doc/Dropdown.md)
+* [DropdownItem](doc/DropdownItem.md)
+* [Infoline](doc/Infoline.md)
+* [Label](doc/Label.md)
+* [RadioButton](doc/RadioButton.md)
+* [TabBar](doc/TabBar.md)
+* [TabBarItem](doc/TabBarItem.md)
+* [TabPanel](doc/TabPanel.md)
+* [TabPanelItem](doc/TabPanelItem.md)
 
