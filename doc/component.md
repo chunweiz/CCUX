@@ -323,10 +323,10 @@ You will need to create a `manifest.json` at the following location to declare t
 Generally, it should have the following items:
 
 * Name and id for the component.
-* CSS resources for baselines' CSS and `normalize.css`.
+* CSS resources for `baselines' CSS` and `normalize.css`.
 * Root view pointing to `nrg.module.app.view.CcuxApp`.
-* Router class `nrg.base.component.Router`.
-* Defaults the following for routing configurations:
+* Router class pointing to `nrg.base.component.Router`.
+* Default the following for routing configurations:
     * `viewType` to `XML`.
     * `controlAggregation` to `content`.
     * `clearControlAggregation` to `true`.
