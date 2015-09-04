@@ -70,10 +70,11 @@
                         <um:DropdownItem key="{comp-quickpay>ReasonCode}" class="nrgQPCC-DDLWRItem" id="idnrgQPCC-WaiveReasonItem">
                                   <u:Tag text="{comp-quickpay>ReasonText}" />
                         </um:DropdownItem>
-                        <um:DropdownItem key="{comp-quickpay>BankKey}" class="nrgQPCC-DdLItem" id="idnrgQPCC-BankDraftItem">
+                        <um:DropdownItem key="{comp-quickpay>BankAccNum}" class="nrgQPCC-DdLItem" id="idnrgQPCC-BankDraftItem">
                             <u:Tag class="nrgQPCC-DDI">
                                <core:Icon src="sap-icon://nrg-icon/cc-visa" />
-                                <u:Tag text="{comp-quickpay>BankAccNum}" class="nrgQPCC-DdlValue"/>
+                                <u:Tag text="{parts:[{path:'comp-quickpay>BankAccNum'}],
+                                                    formatter:'.formatAccountNumber'}"  class="nrgQPCC-DdlValue"/>
                             </u:Tag>
                         </um:DropdownItem>
                     </um:Dropdown>

@@ -13,7 +13,9 @@
                                  change=""
                                  fieldType="Regular"
                                  class="nrgQPCC-input"
-                                 width="10rem">
+                                 width="10rem"
+                                 value="{appView>/newBankRouting}"
+                                 id="idnrgQPBD-newRouting">
                     </u:Textfield>
                 </u:Tag>
                 <u:Tag text="{comp-i18n-quickpay>nrgQPRouting}" class="nrgQPCC-BDlbl"/>
@@ -24,14 +26,15 @@
                                  change=""
                                  fieldType="Regular"
                                  class="nrgQPCC-input"
-                                 width="10rem">
+                                 width="10rem"
+                                 value="{appView>/newBankAccount}">
                     </u:Textfield>
                 </u:Tag>
                 <u:Tag text="{comp-i18n-quickpay>nrgQPAccount}" class="nrgQPCC-BDlbl"/>
             </u:Tag>
         </u:Tag>
             <u:Tag class="nrgQPPay-top nrgQPPay-left" >
-                <um:Button press=".onAddBD"
+                <um:Button press=".onAddNewBD"
                            text="{comp-i18n-quickpay>nrgQPOk}"
                            class="nrgQPCC-btn"
                            design="Default">

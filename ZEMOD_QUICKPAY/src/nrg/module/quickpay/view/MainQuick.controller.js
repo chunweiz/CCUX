@@ -33,7 +33,9 @@ sap.ui.define(
                     reliantPay : true,
                     message : "",
                     reliantText : "Verify",
-                    reliantPress: ".onAcceptReliant"
+                    reliantPress: ".onAcceptReliant",
+                    newBankRouting: "",
+                    newBankAccount: ""
                 });
             this._OwnerComponent = this.getView().getParent().getParent().getController().getOwnerComponent();
             this._OwnerComponent.getCcuxApp().setOccupied(true);
@@ -150,9 +152,6 @@ sap.ui.define(
             oTBIBD.setSelected(true);
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             sCurrentPath = "/BankDraftSet" + "(ContractID='" + this._sContractId + "')/WaiveReasonsSet";
-/*            aFilterIds = ["ContractID"];
-            aFilterValues = ['0034805112'];
-            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);*/
             fnRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
                 that._OwnerComponent.getCcuxApp().setOccupied(false);
@@ -167,6 +166,7 @@ sap.ui.define(
             };
             oWaiveReasonDropDown.bindAggregation("content", oBindingInfo);
             sCurrentPath = "/BankDraftSet" + "(ContractID='" + this._sContractId + "')/BankAccountSet";
+            //sCurrentPath = "/BankAccountSet";
             oBindingInfo = {
                 model : "comp-quickpay",
                 path : sCurrentPath,
@@ -176,6 +176,53 @@ sap.ui.define(
                 events: {dataReceived : fnRecievedHandler}
             };
             oBankDraftDropDown.bindAggregation("content", oBindingInfo);
+        };
+        /**
+		 * Bank Draft Posting
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onAcceptBankDraft = function (oEvent) {
+            var oModel = this.getView().getModel('comp-quickpay'),
+                mParameters,
+                sCurrentPath,
+                oMsgArea = this.getView().byId("idnrgQPPay-msgArea"),
+                oBankDraftDate = this.getView().byId("idnrgQPBD-Date"),
+                oBankAccountDropDown = this.getView().byId("idnrgQPBD-BankAccounts"),
+                oBankDraftAmount = this.getView().byId("idnrgQPBD-Amt"),
+                oWaiveReasonDropDown = this.getView().byId("idnrgQPBD-WaiveReason"),
+                that = this,
+                //oReceiptModel = new sap.ui.model.json.JSONModel(),
+                oTBICL = this.getView().byId("idnrgQPPay-TBICL"),
+                oBankDraftDateValue;
+            //this.getView().setModel(oReceiptModel, "quickpay-rc");
+            this._OwnerComponent.getCcuxApp().setOccupied(true);
+            sCurrentPath = "/BankDraftSet";
+            oMsgArea.removeStyleClass("nrgQPPay-hide");
+            oMsgArea.addStyleClass("nrgQPPay-black");
+            oBankDraftDateValue = this._getODataLocalDateFilter(new Date(oBankDraftDate.getValue()));
+            oModel.create(sCurrentPath, {
+                "ContractID" : this._sContractId,
+                "BankAccNum" : oBankAccountDropDown.getSelectedKey(),
+                "PaymentDate" : oBankDraftDateValue,
+                "Amount" : oBankDraftAmount.getValue(),
+                "WaiveFlag" : oWaiveReasonDropDown.getSelectedKey()
+            }, {
+                success : function (oData, oResponse) {
+                    if (oData.Error === "") {
+                        oTBICL.setSelected(true);
+                        oMsgArea.addStyleClass("nrgQPPay-hide");
+                    } else {
+                        that.getView().getModel("appView").setProperty("/message", oData.Message);
+                    }
+                    that._OwnerComponent.getCcuxApp().setOccupied(false);
+                },
+                error : function (oError) {
+                    that.getView().getModel("appView").setProperty("/message", oError);
+                    that._OwnerComponent.getCcuxApp().setOccupied(false);
+                }
+            });
         };
 
         /**
@@ -357,7 +404,33 @@ sap.ui.define(
             var oTBIAddBD = this.getView().byId("idnrgQPPay-TBIAddBD");
             oTBIAddBD.setSelected(true);
         };
+        /**
+         * Handler for Adding new Bank draft after data
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onAddNewBD = function (oEvent) {
+            var oModel = this.getView().getModel('comp-quickpay'),
+                oAppViewModel = this.getView().getModel("appView"),
+                sCurrentPath = "/BankAccountSet",
+                that = this;
+            this._OwnerComponent.getCcuxApp().setOccupied(true);
 
+            oModel.create(sCurrentPath, {
+                "ContractID" : this._sContractId,
+                "BankAccNum" : oAppViewModel.getProperty("/newBankAccount"),
+                "BankRouting" : oAppViewModel.getProperty("/newBankRouting")
+            }, {
+                success : function (oData, oResponse) {
+                    that._OwnerComponent.getCcuxApp().setOccupied(false);
+                    that.onBankDraft();
+                },
+                error : function (oError) {
+                    that._OwnerComponent.getCcuxApp().setOccupied(false);
+                }
+            });
+        };
         /**
          * Handler for Accepting Reliant Card Payment
 		 *
@@ -504,8 +577,50 @@ sap.ui.define(
             });
         };
 
+        /**
+		 * Formats the Bank Account Number only show last three digits
+		 *
+		 * @function
+		 * @param {String} sAccountNumber value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.formatAccountNumber = function (sAccountNumber) {
+            if ((sAccountNumber !== undefined) && (sAccountNumber !== null) && (sAccountNumber !== "") && (sAccountNumber.split("-").length > 1)) {
+                return sAccountNumber.split("-")[1];
+            } else {
+                return "";
+            }
+        };
+        Controller.prototype._getODataLocalDateFilter = function (date) {
+            var monthString,
+                rawMonth = (date.getMonth() + 1).toString(),
+                dateString,
+                rawDate,
+                DateFilter = "";
+            if (rawMonth.length === 1) {
+                monthString = "0" + rawMonth;
+            } else {
+                monthString = rawMonth;
+            }
+            rawDate = date.getUTCDate().toString();
+            if (rawDate.length === 1) {
+                dateString = "0" + rawDate;
+            } else {
+                dateString = rawDate;
+            }
+            DateFilter = "datetime'";
+            DateFilter += date.getFullYear() + "-";
+            DateFilter += monthString + "-";
+            DateFilter += dateString;
+            //DateFilter += "T" + date.getHours() + ":";
+            DateFilter += "T16:00:00.000'";
+/*            DateFilter += date.getMinutes() + ":";
+            DateFilter += date.getSeconds() + ":";
+            DateFilter += date.getMilliseconds();*/
+            //DateFilter += "'";
+            return DateFilter;
+        };
         return Controller;
     }
-
-
 );
