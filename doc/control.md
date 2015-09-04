@@ -12,7 +12,7 @@ How to create a new control library:
 
 ***
 ## UI5 namespace for control
-UI5 namespace is a way for the framework to uniquely identifies a particular resource. In our case, everything that falls under a particular control library will be namespaced after that control library. The UI5 namespace for a control library starts with the keyword `ute.ui.` follows by a `control library identifier`.
+Everything that falls under a particular control library will be namespaced after that control library. The UI5 namespace for a control library starts with the keyword `ute.ui.` follows by a `control library identifier`.
 
 ##
 
