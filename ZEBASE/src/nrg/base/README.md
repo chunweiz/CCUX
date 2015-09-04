@@ -38,8 +38,6 @@ nrg.base.component.WebUiManager          | Provide two way communication between
 ***
 ### nrg.base.component.ContextManager
 
-**Purpose**
-
 Provide a managed area where modules can share information among themselves.
 
 ***
@@ -54,8 +52,6 @@ Returns the shared context model.
 ***
 ### nrg.base.component.IconManager
 
-**Purpose**
-
 Add custom icons from `ZEBASE/build/nrg/base/asset/css/base.css` based on [OpenUI5 icon font](https://openui5.hana.ondemand.com/#docs/guide/21ea0ea94614480d9a910b2e93431291.html).
 
 ***
@@ -65,8 +61,6 @@ Assign [Private Use Area](https://en.wikipedia.org/wiki/Private_Use_Areas#Privat
 
 ***
 ### nrg.base.component.MockDataManager
-
-**Purpose**
 
 Leverage [OpenUI5 mock server](https://openui5.hana.ondemand.com/#docs/guide/69d3cbd4150c4ffb884e788f7f60fd93.html) to mock OData services for testing purpose.
 
@@ -78,7 +72,7 @@ Read mock OData configurations from `manifest.json` and create the respective mo
 ***
 **nrg.base.component.MockDataManager.addMockODataModels**
 
-Add mock OData models to the component based on `manifest.json` configurations.
+Add mock[ OData models](https://github.com/SAP/openui5/blob/master/src/sap.ui.core/src/sap/ui/model/odata/v2/ODataModel.js) to the component based on `manifest.json` configurations.
 
 ***
 **nrg.base.component.MockDataManager.stopMockServers**
@@ -87,8 +81,6 @@ Stop all initialized mock servers which means stopping all mock OData services. 
 
 ***
 ### nrg.base.component.NotificationManager
-
-**Purpose**
 
 Act as a mediator between [OpenUI5 messages](https://openui5.hana.ondemand.com/#docs/guide/62b1481d3e084cb49dd30956d183c6a0.html) and CCUX to provide a centralized place to manage messages and notifications.
 
@@ -118,25 +110,98 @@ Clear all the messages at header `Messages` area.
 ***
 ### nrg.base.component.RealDataManager
 
+Preload OData models for modules.
 
+***
+**nrg.base.component.RealDataManager.addODataModels**
+
+Read real OData configurations from `manifest.json` and add [OData models](https://github.com/SAP/openui5/blob/master/src/sap.ui.core/src/sap/ui/model/odata/v2/ODataModel.js) into the component based on the respective OData services. If the OData service is from SAP NW Gateway, it appends the necessary relative path to the OData service. At the moment, it supports only OData service from SAP NW Gateway.
 
 ***
 ### nrg.base.component.ResourceBundleManager
 
+Preload resource bundles for modules.
 
+***
+**nrg.base.component.ResourceBundleManager.addResourceModels**
+
+Read resource bundle configurations from `manifest.json`, create and add the respective [resource models](https://github.com/SAP/openui5/blob/master/src/sap.ui.core/src/sap/ui/model/resource/ResourceModel.js) into the component.
 
 ***
 ### nrg.base.component.RouteManager
 
+Provide additional functionalities to the standard navigation system. This allows CCUX to:
 
+* Keep track of the navigation history.
+* Update the shared context area based on route arguments.
+* Listen to navigation event from SAP CRM Web IC.
+
+***
+**nrg.base.component.RouteManager.getCurrentRouteInfo**
+
+Returns the information pertaining to current route in the following format:
+
+```
+{
+    name: <route name>
+    parameters: {
+        <route arguments>
+    }
+}
+```
+
+> where
+>
+> `route name` is the name of the current route
+>
+> `route arguments` are the arguments supplied in the pattern of current route
+
+**Returns:**
+
+{Object} Current route information
 
 ***
 ### nrg.base.component.StylesheetManager
 
+Load stylesheets based on configurations.
 
+***
+**nrg.base.component.StylesheetManager.addStyleSheets**
+
+Read stylesheet configurations from `manifest.json` and load them accordingly.
 
 ***
 ### nrg.base.component.WebUiManager
+
+Act as a messenger between SAP CRM Web IC and CCUX application.
+
+***
+**nrg.base.component.WebUiManager.notifyWebUi**
+
+
+
+**Parameters:**
+
+{string} *sEvent* The name of the event that you would like to raise.
+
+{Object} *oPayload*? The payload data for the event.
+
+{function} *fnCallback*? A callback function if you are expecting a response.
+
+{Object} *oListener*? The `this` scope of your callback function.
+
+**Returns:**
+
+{string|undefined} A reference ID for the transaction. You will only get an ID if this is a two way transaction.
+
+
+***
+**nrg.base.component.WebUiManager.cancelWebUiEvent**
+
+
+
+***
+**nrg.base.component.WebUiManager.isAvailable**
 
 
 
