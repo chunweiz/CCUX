@@ -332,6 +332,7 @@ Generally, it should have the following items:
     * `clearControlAggregation` to `true`.
 
 ```
+#!json
 {
     "name": "nrg.component.ic.Component",
 
