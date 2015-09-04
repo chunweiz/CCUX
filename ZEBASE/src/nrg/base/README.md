@@ -42,10 +42,11 @@ nrg.base.component.WebUiManager          | Provide two way communication between
 
 Provide a managed area where modules can share information among themselves.
 
-***
+##
+
 **nrg.base.component.ContextManager.getContext**
 
-Returns the context model.
+Returns the shared context model.
 
 **Returns:**
 
@@ -53,32 +54,104 @@ Returns the context model.
 
 ***
 ### nrg.base.component.IconManager
-[OpenUI5 icon font](https://openui5.hana.ondemand.com/#docs/guide/21ea0ea94614480d9a910b2e93431291.html)
 
+**Purpose**
+
+Add custom icons from `ZEBASE/build/nrg/base/asset/css/base.css` based on [OpenUI5 icon font](https://openui5.hana.ondemand.com/#docs/guide/21ea0ea94614480d9a910b2e93431291.html).
+
+##
+
+**nrg.base.component.IconManager.addIcons**
+
+Assign [Private Use Area](https://en.wikipedia.org/wiki/Private_Use_Areas#Private_Use_Areas) from loaded icon font file to OpenUI5 icon collection `nrg-icon` so that they can be referenced through [[OpenUI5 icon protocol](https://openui5.hana.ondemand.com/#docs/guide/21ea0ea94614480d9a910b2e93431291.html)].
+
+***
 ### nrg.base.component.MockDataManager
 
+**Purpose**
 
+Leverage [OpenUI5 mock server](https://openui5.hana.ondemand.com/#docs/guide/69d3cbd4150c4ffb884e788f7f60fd93.html) to mock OData services for testing purpose.
+
+##
+
+**nrg.base.component.MockDataManager.startMockServers**
+
+Read mock OData configurations from `manifest.json` and create the respective mock servers which means starting mock OData services.
+
+##
+
+**nrg.base.component.MockDataManager.addMockODataModels**
+
+Add mock OData models to the component based on `manifest.json` configurations.
+
+##
+
+**nrg.base.component.MockDataManager.stopMockServers**
+
+Stop all initialized mock servers which means stopping all mock OData services. At the moment, it is not removing mock OData models from the component.
+
+***
 ### nrg.base.component.NotificationManager
 
+**Purpose**
 
+Act as a mediator between [OpenUI5 messages](https://openui5.hana.ondemand.com/#docs/guide/62b1481d3e084cb49dd30956d183c6a0.html) and CCUX to provide a centralized place to manage messages and notifications.
+
+##
+
+**nrg.base.component.NotificationManager.getHeaderMessageProcessor**
+
+Get the message processor for header. This allows you to create a message to be added to the header `Messages` area.
+
+**Returns:**
+
+{sap.ui.core.message.ControlMessageProcessor} The message processor for header
+
+##
+
+**nrg.base.component.NotificationManager.addHeaderMessage**
+
+Allows you to add a message to the header `Messages` area. If you did not provide a message processor or the message processor is not the same as the one provided by `nrg.base.component.NotificationManager.getHeaderMessageProcessor()`, it will be defaulted to header message processor.
+
+**Parameters:**
+
+{sap.ui.core.message.Message} *oMsg* Message to be added to header.
+
+##
+
+**nrg.base.component.NotificationManager.clearHeaderMessages**
+
+Clear all the messages at header `Messages` area.
+
+***
 ### nrg.base.component.RealDataManager
 
 
+
+***
 ### nrg.base.component.ResourceBundleManager
 
 
+
+***
 ### nrg.base.component.RouteManager
 
 
+
+***
 ### nrg.base.component.StylesheetManager
 
 
+
+***
 ### nrg.base.component.WebUiManager
 
 
 
+***
 ## Router
 Custom router implemented is stored in `component/`.
+
 
 ### nrg.base.component.Router
 This router has an implementation that is similar to SAP CRM data loss popup. If the user navigates away while still in [edit mode](), the router will shows a popup to confirm whether the user really wants to navigate away and if the user chooses *No*, the navigation will be cancelled.  
