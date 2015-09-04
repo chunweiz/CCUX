@@ -18,6 +18,13 @@ Reusable [OpenUI5 custom formatters](https://openui5.hana.ondemand.com/#docs/gui
 Common `manifest.json` entries are stored in `component/manifest/`. This allows us to maintain generic configurations in a single place and also allows [Grunt build](../../../../doc/build.md#markdown-header-component) to take advantage of them while constructing the manifest.json for a component.
 
 ***
+## Router
+Custom router implemented is stored in `component/`.
+
+### nrg.base.component.Router
+This router has an implementation that is similar to SAP CRM data loss popup. If the user navigates away while still in [edit mode](), the router will shows a popup to confirm whether the user really wants to navigate away and if the user chooses *No*, the navigation will be cancelled.  
+
+***
 ## Managers
 Managers are generic classes that handle application level operations such as routing, icon pool and integration with SAP CRM WebUI. They are stored in `component/`.
 
@@ -202,13 +209,3 @@ Act as a messenger between SAP CRM Web IC and CCUX application.
 
 ***
 **nrg.base.component.WebUiManager.isAvailable**
-
-
-
-***
-## Router
-Custom router implemented is stored in `component/`.
-
-
-### nrg.base.component.Router
-This router has an implementation that is similar to SAP CRM data loss popup. If the user navigates away while still in [edit mode](), the router will shows a popup to confirm whether the user really wants to navigate away and if the user chooses *No*, the navigation will be cancelled.  
