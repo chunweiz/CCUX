@@ -73,14 +73,31 @@ sap.ui.define(
 
         /*****************************************************************************************************************************************************/
         //Formatter Functions
-        CustomController.prototype._formatDate = function(oDate) {
+        CustomController.prototype._formatDate = function (oDate) {
             var sFormattedDate;
 
             sFormattedDate = (oDate.getMonth() + 1).toString() + '/' + oDate.getDate().toString() + '/' + oDate.getFullYear().toString().substring(2, 4);
             return sFormattedDate;
         };
 
+        CustomController.prototype._getCurDate = function () {
+            var sCurDate,
+                oCurDate = new Date();
 
+            sCurDate = (oCurDate.getMonth() + 1).toString() + '/' + oCurDate.getDate().toString() + '/' + oCurDate.getFullYear().toString().substring(2, 4);
+
+            return sCurDate;
+        };
+
+        CustomController.prototype._getPreSixMonthDate = function () {
+            var sPreSixDate,
+                oPreSixDate = new Date();
+
+            oPreSixDate.setMonth(oPreSixDate.getMonth() - 6);
+            sPreSixDate = (oPreSixDate.getMonth() + 1).toString() + '/' + oPreSixDate.getDate().toString() + '/' + oPreSixDate.getFullYear().toString().substring(2, 4);
+
+            return sPreSixDate;
+        };
 
         /*****************************************************************************************************************************************************/
 
