@@ -84,7 +84,7 @@ Add mock[ OData models](https://github.com/SAP/openui5/blob/master/src/sap.ui.co
 ***
 **nrg.base.component.MockDataManager.stopMockServers**
 
-Stop all initialized mock servers which means stopping all mock OData services. At the moment, it is not removing mock OData models from the component.
+Stop all initialized mock servers which also means stopping all mock OData services. At the moment, it is not removing mock OData models from the component.
 
 ***
 ### nrg.base.component.NotificationManager
