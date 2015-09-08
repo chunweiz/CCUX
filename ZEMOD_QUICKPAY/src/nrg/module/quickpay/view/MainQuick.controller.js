@@ -70,8 +70,10 @@ sap.ui.define(
                 sCurrentPath,
                 oWaiveReasonTemplate = this.getView().byId("idnrgQPCC-WaiveReasonItem"),
                 oWaiveReasonDropDown = this.getView().byId("idnrgQPCC-WR"),
-                WRRecievedHandler;
+                WRRecievedHandler,
+                oCreditCardDate = this.getView().byId("idnrgQPCC-Date");
             oTBIStopRec.setSelected(true);
+            oCreditCardDate.setDefaultDate(new Date().toLocaleDateString("en-US"));
             WRRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
                 if (oEvent) {
@@ -212,6 +214,7 @@ sap.ui.define(
             var oTBIBD = this.getView().byId("idnrgQPPay-TBIBD"),
                 oPopup = this.getView().byId("idnrgQPPay-Popup"),
                 oCloseButton = this.getView().byId("idnrgQPPayBt-close"),
+                oBankDraftDate = this.getView().byId("idnrgQPBD-Date"),
                 sCurrentPath,
                 aFilterIds,
                 aFilterValues,
@@ -224,6 +227,7 @@ sap.ui.define(
                 oBankDraftDropDown = this.getView().byId("idnrgQPBD-BankAccounts"),
                 oWaiveReasonDropDown = this.getView().byId("idnrgQPBD-WaiveReason"),
                 WRRecievedHandler;
+            oBankDraftDate.setDefaultDate(new Date().toLocaleDateString("en-US"));
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupWhite");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
