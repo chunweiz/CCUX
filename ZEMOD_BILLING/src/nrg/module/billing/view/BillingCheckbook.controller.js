@@ -64,6 +64,11 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oChkbkHdr');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPaymentHdr');
 
+            //Model to keep CheckBook detail data
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPayments');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPaymentItems');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPaymentSumrys');
+
 
             //Start of data retriving
             this._initRouitingInfo();
@@ -107,6 +112,31 @@ sap.ui.define(
         };
 
         /*****************************************************************************************************************************************************/
+        /*****************************************************************************************************************************************************/
+        //Handlers
+        CustomController.prototype._onPaymentHdrClicked = function (oEvent) {
+            var sBindingPath,
+                oPmtHdr = this.getView().getModel('oPaymentHdr');
+
+            sBindingPath = oEvent.oSource.oBindingContexts.oPaymentHdr.getPath();
+            oPmtHdr.setProperty(sBindingPath + '/bExpand', true);
+
+            this._retrPayments(oPmtHdr.getProperty(sBindingPath).InvoiceNum);
+            this._retrPaymentItmes(oPmtHdr.getProperty(sBindingPath).InvoiceNum);
+            this._retrPaymentSumrys(oPmtHdr.getProperty(sBindingPath).InvoiceNum);
+
+        };
+        /*****************************************************************************************************************************************************/
+
+        CustomController.prototype._retrPayments = function (sInvNum) {
+            var sPath;
+        };
+        CustomController.prototype._retrPaymentItmes = function (sInvNum) {
+
+        };
+        CustomController.prototype._retrPaymentSumrys = function (sInvNum) {
+
+        };
 
         CustomController.prototype._initRouitingInfo = function () {
             var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
@@ -155,11 +185,27 @@ sap.ui.define(
 
         CustomController.prototype._retrPaymentHdr = function (sPath) {
             var oChbkOData = this.getView().getModel('oDataSvc'),
-                oParameters;
+                oParameters,
+                i;
 
             oParameters = {
                 success : function (oData) {
                     if (oData) {
+                        this.getView().getModel('oPayments').setProperty('/oCtxt', {});
+                        this.getView().getModel('oPaymentItems').setProperty('/oCtxt', {});
+                        this.getView().getModel('oPaymentSumrys').setProperty('/oCtxt', {});
+
+                        for (i = 0; i < oData.results.length; i = i + 1) {
+                            this.getView().getModel('oPayments').setProperty('/oCtxt/' + i, false);
+                            this.getView().getModel('oPaymentItems').setProperty('/oCtxt/' + i, false);
+                            this.getView().getModel('oPaymentSumrys').setProperty('/oCtxt/' + i, false);
+
+                            if (i !== oData.results.length - 1) {
+                                oData.results[i].bExpand = false;
+                            } else {
+                                oData.results[i].bExpand = true;
+                            }
+                        }
                         this.getView().getModel('oPaymentHdr').setData(oData);
                     }
                 }.bind(this),

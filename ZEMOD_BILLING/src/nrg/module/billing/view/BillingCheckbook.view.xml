@@ -109,7 +109,9 @@
                              text="{comp-i18n-billing>nrgBilling-billChkBook-Table-DueDate}" />
                 </ute:Tag>
                 <ute:Tag content="{oPaymentHdr>/results}">
-                    <utmain:Infoline reverse="true" class="nrgBilling-blChkBk-lftDiv-scrllArea-lnItm">
+                    <utmain:Infoline expanded="{oPaymentHdr>bExpand}" reverse="true"
+                                     press="._onPaymentHdrClicked"
+                                     class="nrgBilling-blChkBk-lftDiv-scrllArea-lnItm">
                         <utmain:headerContent>
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh1"
                                      text="{parts:['oPaymentHdr>BillDate'],
@@ -147,7 +149,7 @@
                             </ute:Tag>
                         </utmain:headerContent>
                         <utmain:content>
-                            <ute:Tag content="{bp>/employees}">
+                            <ute:Tag content="{bp>/employees}"> <!--This one is for Previoue Payments-->
                                 <ute:Tag> <!--For single or double underline classes add here ==> class="nrgBilling-blChkBk-lftDiv-scrllArea-snglUndrln nrgBilling-blChkBk-lftDiv-scrllArea-dblUndrln"-->
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c1"
                                              text="01/31/14"/>
