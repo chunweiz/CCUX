@@ -1,0 +1,51 @@
+<mvc:View
+    controllerName="test.tm.ze_ccux_ctrl.view.CustJourneyChannel"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <style>
+        .tmCustJCChart {
+            display: inline-block;
+        }
+
+        .tmCustJCChart-arc path {
+            stroke: black;
+            stroke-width: 2;
+        }
+
+        .tmCustJCChart-freqText {
+            text-anchor: middle;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+        .tmCustJCChart-total {
+            fill: grey;
+        }
+
+        .tmCustJCChart-totalText {
+            fill: white;
+            text-anchor: middle;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+        .tmCustJCChart-bg {
+
+        }
+
+        .tmCustJCChart-outerBg {
+            fill-opacity: 0;
+            stroke: black;
+            stroke-width: 2;
+        }
+    </style>
+
+    <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
+
+    </sm:ScrollContainer>
+</mvc:View>

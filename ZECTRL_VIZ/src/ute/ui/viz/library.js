@@ -15,13 +15,11 @@ sap.ui.define(
             types: [],
 
             controls: [
-                'ute.ui.viz.HighBillUsage',
-                'ute.ui.viz.CustomerJourneyChannel'
+                'ute.ui.viz.HighBillUsage'
             ],
 
             elements: [
-                'ute.ui.viz.HighBillUsageData',
-                'ute.ui.viz.CustomerJourneyChannelData'
+                'ute.ui.viz.HighBillUsageData'
             ]
         });
 

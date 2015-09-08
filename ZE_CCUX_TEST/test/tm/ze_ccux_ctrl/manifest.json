@@ -42,7 +42,8 @@
                 "XMLTemplate": { "pattern": "XMLTemplate", "target": [ "XMLTemplate" ] },
                 "ICAppHeader": { "pattern": "ICAppHeader", "target": [ "ICAppHeader" ] },
                 "FancyTextField": { "pattern": "FancyTextField", "target": [ "FancyTextField" ] },
-                "HighBillUsage": { "pattern": "HighBillUsage", "target": [ "HighBillUsage" ] }
+                "HighBillUsage": { "pattern": "HighBillUsage", "target": [ "HighBillUsage" ] },
+                "CustJourneyChannel": { "pattern": "CustJourneyChannel", "target": [ "CustJourneyChannel" ] }
             },
 
             "config": {
@@ -65,7 +66,8 @@
                 "XMLTemplate": { "viewName": "XMLView", "controlId": "idAppContent" },
                 "ICAppHeader": { "viewName": "ICAppHeader", "controlId": "idAppContent" },
                 "FancyTextField": { "viewName": "FancyTextField", "controlId": "idAppContent" },
-                "HighBillUsage": { "viewName": "HighBillUsage", "controlId": "idAppContent" }
+                "HighBillUsage": { "viewName": "HighBillUsage", "controlId": "idAppContent" },
+                "CustJourneyChannel": { "viewName": "CustJourneyChannel", "controlId": "idAppContent" }
             }
         }
     }
