@@ -20,7 +20,7 @@
             </u:Tag>
             <u:Tag class="nrgQPCC-row nrgQPPay-top">
                 <u:Tag class="nrgQPPay-TF">
-                    <u:DatePicker width="10rem" class="nrgQPCC-input"></u:DatePicker>
+                    <u:DatePicker width="10rem" class="nrgQPCC-input" id="idnrgQPCC-Date"></u:DatePicker>
                 </u:Tag>
                 <u:Tag text="{comp-i18n-quickpay>nrgQPDate}" class="nrgQPCC-lbl"/>
             </u:Tag>
@@ -33,24 +33,6 @@
                             <u:Tag class="nrgQPCC-DDI">
                                 <core:Icon src="sap-icon://nrg-icon/cc-visa" class="nrgQPCC-icon" />
                                 <u:Tag text="6068" class="nrgQPCC-DdlValue"/>
-                            </u:Tag>
-                        </um:DropdownItem>
-                        <um:DropdownItem key="2" class="nrgQPCC-DdLItem">
-                            <u:Tag class="nrgQPCC-DDI">
-                                <core:Icon src="sap-icon://nrg-icon/cc-amex" class="nrgQPCC-icon"/>
-                                <u:Tag text="4068" class="nrgQPCC-DdlValue"/>
-                            </u:Tag>
-                        </um:DropdownItem>
-                        <um:DropdownItem key="3" class="nrgQPCC-DdLItem">
-                            <u:Tag class="nrgQPCC-DDI">
-                                <core:Icon src="sap-icon://nrg-icon/cc-discover" class="nrgQPCC-icon" />
-                                <u:Tag text="5068" class="nrgQPCC-DdlValue"/>
-                            </u:Tag>
-                        </um:DropdownItem>
-                        <um:DropdownItem key="4" class="nrgQPCC-DdLItem">
-                            <u:Tag class="nrgQPCC-DDI">
-                                <core:Icon src="sap-icon://nrg-icon/cc-mastercard" class="nrgQPCC-icon" />
-                                <u:Tag text="7068" class="nrgQPCC-DdlValue"/>
                             </u:Tag>
                         </um:DropdownItem>
                     </um:Dropdown>

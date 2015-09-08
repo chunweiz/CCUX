@@ -84,7 +84,7 @@ Add mock[ OData models](https://github.com/SAP/openui5/blob/master/src/sap.ui.co
 ***
 **nrg.base.component.MockDataManager.stopMockServers**
 
-Stop all initialized mock servers which means stopping all mock OData services. At the moment, it is not removing mock OData models from the component.
+Stop all initialized mock servers which also means stopping all mock OData services. At the moment, it is not removing mock OData models from the component.
 
 ***
 ### nrg.base.component.NotificationManager
@@ -185,7 +185,13 @@ Act as a messenger between SAP CRM Web IC and CCUX application.
 ***
 **nrg.base.component.WebUiManager.notifyWebUi**
 
+Sends a message to SAP CRM Web UI. If the event is returning a response and you would like to handle it (two way communication), pass in a callback function and its context. For instance:
 
+```
+this.getOwnerComponent()
+    .getCcuxWebUiManager()
+    .notifyWebUi('bpConfirmed', { bpNum: '123759846' }, this._onBpConfirmedCallback, this);
+```
 
 **Parameters:**
 
@@ -205,7 +211,23 @@ Act as a messenger between SAP CRM Web IC and CCUX application.
 ***
 **nrg.base.component.WebUiManager.cancelWebUiEvent**
 
+Allows you to cancel a particular event for two way communication scenario.
 
+**Parameters:**
+
+{string} *sEvent* The name of the event that you have raised.
+
+{string} *sId* The reference ID of the transaction.
+
+{function} *fnCallback* The callback function that you passed to `notifyWebUi()`.
+
+{Object} *oListener* The context of your callback function.
 
 ***
 **nrg.base.component.WebUiManager.isAvailable**
+
+Determines whether you will be able to communicate with SAP CRM Web UI.
+
+**Returns:**
+
+{boolean} `true` if you will be able to communicate with SAP CRM Web UI.
