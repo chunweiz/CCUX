@@ -40,7 +40,11 @@ sap.ui.define(
         };
 
         CustomControl.prototype.onExit = function () {
+            this._oDataModel = null;
+        };
 
+        CustomControl.prototype.refreshChart = function () {
+            this.rerender();
         };
 
         CustomControl.prototype.setDataModel = function (model) {
@@ -55,7 +59,6 @@ sap.ui.define(
         CustomControl.prototype._createChart = function () {
             // http://jsfiddle.net/thudfactor/HdwTH/
             // http://bl.ocks.org/dbuezas/9306799
-
             var iWidth = this.getWidth();
             var iHeight = this.getHeight();
             var iRadius = Math.min(iWidth, iHeight) / 4;
@@ -79,7 +82,7 @@ sap.ui.define(
 
             var fnColor = d3.scale.ordinal()
                 .domain(aData, function (data) { return data.channel; })
-                .range([ '#5092ce', '#5bc2af', '#f2a814', '#c0272d' ]);
+                .range(['#5092ce', '#5bc2af', '#f2a814', '#c0272d']);
 
             oCanvas.append('circle')
                 .attr('r', iRadius * 1.48)
@@ -125,7 +128,15 @@ sap.ui.define(
                     })
                 );
 
+            
+        };
 
+        CustomControl.prototype._midAngle = function (startAngle, endAngle) {
+            return startAngle + (endAngle - startAngle) / 2;
+        };
+
+        CustomControl.prototype._toDegree = function (radian) {
+            return radian * 180 / Math.PI;
         };
 
         return CustomControl;
