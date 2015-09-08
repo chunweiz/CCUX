@@ -55,7 +55,7 @@ sap.ui.define(
         CustomControl.prototype._createChart = function () {
             // http://jsfiddle.net/thudfactor/HdwTH/
             // http://bl.ocks.org/dbuezas/9306799
-            
+
             var iWidth = this.getWidth();
             var iHeight = this.getHeight();
             var iRadius = Math.min(iWidth, iHeight) / 4;
@@ -77,7 +77,9 @@ sap.ui.define(
                 .outerRadius(iRadius - 10)
                 .innerRadius(iRadius - 60);
 
-            var fnColor = d3.scale.category10();
+            var fnColor = d3.scale.ordinal()
+                .domain(aData, function (data) { return data.channel; })
+                .range([ '#5092ce', '#5bc2af', '#f2a814', '#c0272d' ]);
 
             oCanvas.append('circle')
                 .attr('r', iRadius + 60)
