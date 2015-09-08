@@ -43,6 +43,7 @@
         <Property Name="InvAmtDue" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="DueDate" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="BillDate" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="CallOut" Type="Edm.String" Nullable="false" MaxLength="300" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <NavigationProperty Name="Payments" Relationship="ZE_CCUX_CHKBOOK_SRV.PaymentHdr_Payments" FromRole="FromRole_PaymentHdr_Payments" ToRole="ToRole_PaymentHdr_Payments" />
         <NavigationProperty Name="PaymentItems" Relationship="ZE_CCUX_CHKBOOK_SRV.PaymentHdr_PaymentItems" FromRole="FromRole_PaymentHdr_PaymentItems" ToRole="ToRole_PaymentHdr_PaymentItems" />
         <NavigationProperty Name="ConfBuag" Relationship="ZE_CCUX_CHKBOOK_SRV.ConfBuag_PaymentHdrs" FromRole="ToRole_ConfBuag_PaymentHdrs" ToRole="FromRole_ConfBuag_PaymentHdrs" />

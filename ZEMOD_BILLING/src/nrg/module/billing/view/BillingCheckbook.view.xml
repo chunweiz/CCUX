@@ -163,6 +163,22 @@
                                              text=""/>
                                 </ute:Tag>
                             </ute:Tag>
+                            <ute:Tag content="{bp>/employees}">
+                                <ute:Tag> <!--For single or double underline classes add here ==> class="nrgBilling-blChkBk-lftDiv-scrllArea-snglUndrln nrgBilling-blChkBk-lftDiv-scrllArea-dblUndrln"-->
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c1"
+                                             text="01/31/14"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2"
+                                             text="{bp>firstName} {bp>lastName}"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_1"
+                                             text="223.67"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_2"
+                                             text="123.23"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c4"
+                                             text="08/31/16"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c5"
+                                             text=""/>
+                                </ute:Tag>
+                            </ute:Tag>
                         </utmain:controllerNametent>
                     </utmain:Infoline>
                 </ute:Tag>

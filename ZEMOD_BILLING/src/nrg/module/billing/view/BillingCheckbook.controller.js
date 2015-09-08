@@ -71,6 +71,13 @@ sap.ui.define(
             this._initPaymentHdr();
         };
 
+        CustomController.prototype.onAfterRendering = function () {
+        };
+
+        CustomController.prototype.onExit = function () {
+        };
+
+
         /*****************************************************************************************************************************************************/
         //Formatter Functions
         CustomController.prototype._formatDate = function (oDate) {
@@ -112,7 +119,7 @@ sap.ui.define(
         CustomController.prototype._initChkbookHdr = function () {
             var sPath;
 
-            sPath = '/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'111014762427\')';
+            sPath = '/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'008005303668\')';
                     //'/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'\')';
 
             this._retrChkbookHdr(sPath);
@@ -166,13 +173,6 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype.onAfterRendering = function () {
-
-        };
-
-        CustomController.prototype.onExit = function () {
-
-        };
 
         return CustomController;
     }
