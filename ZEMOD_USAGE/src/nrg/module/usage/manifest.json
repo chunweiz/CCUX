@@ -13,7 +13,7 @@
                     "odata": {
                         "real": {
                             "comp-usage": {
-                                "url": "sap/opu/odata/sap/ZE_CCUX_QUICK_PAY_SRV/"
+                                "url": "sap/opu/odata/sap/ZE_CCUX_HISTORY_SRV/"
                             }
                         },
                         "mock": {
