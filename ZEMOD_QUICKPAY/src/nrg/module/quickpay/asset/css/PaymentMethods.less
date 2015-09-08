@@ -147,6 +147,9 @@
     &    .uteMDd-hdrContent {
             width:8.5rem;
     }
+    &    .nrgQPCC-DDLWR .uteMDd-hdrContent {
+            width:9.5rem;
+    }
     &    .nrgQPCC-cvv {
             margin-left: @nrgQPPay-marginleft;
     }
@@ -169,7 +172,8 @@
             padding: 2px 2px 2px 5px;
     }
     &    .nrgQPCC-DDLWRItem {
-            width: 8rem;
+            width: 10rem;
+            padding : 2px;
     }
     &    .nrgQPCC-Rdmlbl {
             border: 1px solid;
@@ -249,5 +253,14 @@
    &    .nrgQPPay-ContactLogBtns {
             text-align: center;
    }
+   &    .nrgQPCC-DDLWRItem:nth-child(odd) {
+        background-color: @nrgColor-grey-highlight;
+   }
 
+   &    .nrgQPCC-DDLWRItem:nth-child(even) {
+        background-color: transparent;
+   }
+   &    .nrgQPCC-DdLItem:nth-child(odd) {
+        background-color: @nrgColor-grey-highlight;
+   }
 }

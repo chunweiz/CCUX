@@ -47,12 +47,14 @@
                 <u:Textfield fieldType="Regular"
                              id="idnrgQPCC-cvv"
                              class="nrgQPCC-cvv"
-                             width="3rem">
+                             width="3rem"
+                             placeholder="CVV">
                 </u:Textfield>
                 <u:Textfield fieldType="Regular"
                              id="idnrgQPCC-zipcode"
                              class="nrgQPCC-zipcode"
-                             width="5rem">
+                             width="5rem"
+                             placeholder="PINCODE">
                 </u:Textfield>
             </u:Tag>
         </u:Tag>
@@ -63,16 +65,6 @@
                     <um:DropdownItem class="nrgQPCC-DDLWRItem">
                         <u:Tag>
                               <u:Tag text="Reason1" />
-                        </u:Tag>
-                    </um:DropdownItem>
-                    <um:DropdownItem class="nrgQPCC-DDLWRItem">
-                        <u:Tag>
-                              <u:Tag text="Reason2" />
-                        </u:Tag>
-                    </um:DropdownItem>
-                    <um:DropdownItem class="nrgQPCC-DDLWRItem">
-                        <u:Tag>
-                              <u:Tag text="Reason3" />
                         </u:Tag>
                     </um:DropdownItem>
                 </um:Dropdown>

@@ -69,8 +69,17 @@ sap.ui.define(
                 dropDownHandler,
                 sCurrentPath,
                 oWaiveReasonTemplate = this.getView().byId("idnrgQPCC-WaiveReasonItem"),
-                oWaiveReasonDropDown = this.getView().byId("idnrgQPCC-WR");
+                oWaiveReasonDropDown = this.getView().byId("idnrgQPCC-WR"),
+                WRRecievedHandler;
             oTBIStopRec.setSelected(true);
+            WRRecievedHandler = function (oEvent) {
+                jQuery.sap.log.info("Date Received Succesfully");
+                if (oEvent) {
+                    if (oEvent.getSource().getLength() === 1) {
+                        oWaiveReasonDropDown.setSelectedKey(oEvent.getSource().getContexts()[0].getProperty("ReasonCode"));
+                    }
+                }
+            };
             fnRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
             };
@@ -89,7 +98,7 @@ sap.ui.define(
                 path : sCurrentPath,
                 template : oWaiveReasonTemplate,
                 parameters: {countMode : "None"},
-                events: {dataReceived : fnRecievedHandler}
+                events: {dataReceived : WRRecievedHandler}
             };
             oWaiveReasonDropDown.bindAggregation("content", oBindingInfo);
         };
@@ -137,7 +146,7 @@ sap.ui.define(
                     that._OwnerComponent.getCcuxApp().setOccupied(false);
                 },
                 error : function (oError) {
-                    that.getView().getModel("appView").setProperty("/message", oError);
+                    that.getView().getModel("appView").setProperty("/message", oError.statusText);
                     that._OwnerComponent.getCcuxApp().setOccupied(false);
                 }
             });
@@ -197,7 +206,8 @@ sap.ui.define(
                 oWaiveReasonTemplate = this.getView().byId("idnrgQPCC-WaiveReasonItem"),
                 oBankDraftTemplate = this.getView().byId("idnrgQPCC-BankDraftItem"),
                 oBankDraftDropDown = this.getView().byId("idnrgQPBD-BankAccounts"),
-                oWaiveReasonDropDown = this.getView().byId("idnrgQPBD-WaiveReason");
+                oWaiveReasonDropDown = this.getView().byId("idnrgQPBD-WaiveReason"),
+                WRRecievedHandler;
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupWhite");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
@@ -208,12 +218,20 @@ sap.ui.define(
                 jQuery.sap.log.info("Date Received Succesfully");
                 that._OwnerComponent.getCcuxApp().setOccupied(false);
             };
+            WRRecievedHandler = function (oEvent) {
+                jQuery.sap.log.info("Date Received Succesfully");
+                if (oEvent) {
+                    if (oEvent.getSource().getLength() === 1) {
+                        oWaiveReasonDropDown.setSelectedKey(oEvent.getSource().getContexts()[0].getProperty("ReasonCode"));
+                    }
+                }
+            };
             oBindingInfo = {
                 model : "comp-quickpay",
                 path : sCurrentPath,
                 template : oWaiveReasonTemplate,
                 parameters: {countMode : "None"},
-                events: {dataReceived : fnRecievedHandler}
+                events: {dataReceived : WRRecievedHandler}
             };
             oWaiveReasonDropDown.bindAggregation("content", oBindingInfo);
             sCurrentPath = "/BankDraftSet" + "(ContractID='" + this._sContractId + "')/BankAccountSet";
@@ -272,7 +290,7 @@ sap.ui.define(
                     that._OwnerComponent.getCcuxApp().setOccupied(false);
                 },
                 error : function (oError) {
-                    that.getView().getModel("appView").setProperty("/message", oError);
+                    that.getView().getModel("appView").setProperty("/message", oError.statusText);
                     that._OwnerComponent.getCcuxApp().setOccupied(false);
                 }
             });
@@ -291,10 +309,10 @@ sap.ui.define(
                 aFilterIds,
                 aFilterValues,
                 aFilters,
-                fnRecievedHandler,
-                oDropDown = this.getView().byId("idnrgQPCC-ReceiptDD"),
+                WRRecievedHandler,
+                oWaiveReasonDropDown = this.getView().byId("idnrgQPCC-ReceiptDD"),
                 oBindingInfo,
-                oDropDownTemplate = this.getView().byId("idnrgQPCC-WaiveReasonItem"),
+                oWaiveReasonTemplate = this.getView().byId("idnrgQPCC-WaiveReasonItem"),
                 sCurrentPath,
                 oModel = this.getView().getModel('comp-quickpay'),
                 oReceiptDate = this.getView().byId("idnrgQPRC-RcDate"),
@@ -309,19 +327,24 @@ sap.ui.define(
             aFilterIds = ["ContractID"];
             aFilterValues = [" + this._sContractId + "];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-            fnRecievedHandler = function (oEvent) {
+            WRRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
+                if (oEvent) {
+                    if (oEvent.getSource().getLength() === 1) {
+                        oWaiveReasonDropDown.setSelectedKey(oEvent.getSource().getContexts()[0].getProperty("ReasonCode"));
+                    }
+                }
                 that._OwnerComponent.getCcuxApp().setOccupied(false);
             };
             oBindingInfo = {
                 model : "comp-quickpay",
                 path : sCurrentPath,
-                template : oDropDownTemplate,
+                template : oWaiveReasonTemplate,
                 filters : aFilters,
                 parameters: {countMode : "None"},
-                events: {dataReceived : fnRecievedHandler}
+                events: {dataReceived : WRRecievedHandler}
             };
-            oDropDown.bindAggregation("content", oBindingInfo);
+            oWaiveReasonDropDown.bindAggregation("content", oBindingInfo);
         };
 
         /**
@@ -364,7 +387,7 @@ sap.ui.define(
                     that._OwnerComponent.getCcuxApp().setOccupied(false);
                 },
                 error : function (oError) {
-                    that.getView().getModel("appView").setProperty("/message", oError);
+                    that.getView().getModel("appView").setProperty("/message", oError.statusText);
                     that._OwnerComponent.getCcuxApp().setOccupied(false);
                 }
             });
@@ -631,6 +654,30 @@ sap.ui.define(
                 return "";
             }
         };
+        /**
+		 * Formats the Credit Card Icon based on type value
+		 *
+		 * @function
+		 * @param {String} sAccountNumber value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.formatCCType = function (sCCType) {
+            if ((sCCType !== undefined) && (sCCType !== null) && (sCCType !== "")) {
+                if (sCCType === "ZVIS") {
+                    return "sap-icon://nrg-icon/cc-visa";
+                } else if (sCCType === "ZDSC") {
+                    return "sap-icon://nrg-icon/cc-discover";
+                } else if (sCCType === "ZMCD") {
+                    return "sap-icon://nrg-icon/cc-mastercard";
+                } else if (sCCType === "ZATM") {
+                    return "sap-icon://nrg-icon/cc-visa";
+                }
+            } else {
+                return "";
+            }
+        };
+
         return Controller;
     }
 );
