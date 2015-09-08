@@ -121,19 +121,35 @@ sap.ui.define(
                 //oReceiptModel = new sap.ui.model.json.JSONModel(),
                 oTBICL = this.getView().byId("idnrgQPPay-TBICL"),
                 oCreditCardDateValue,
-                oContactModel = this.getView().getModel("quickpay-cl");
+                oContactModel = this.getView().getModel("quickpay-cl"),
+                oZipCode = this.getView().byId("idnrgQPCC-cvv"),
+                oCVVCode = this.getView().byId("idnrgQPCC-zipcode");
             //this.getView().setModel(oReceiptModel, "quickpay-rc");
-            this._OwnerComponent.getCcuxApp().setOccupied(true);
-            sCurrentPath = "/CreditCardSet";
             oMsgArea.removeStyleClass("nrgQPPay-hide");
             oMsgArea.addStyleClass("nrgQPPay-black");
+            if (!this._ValidateValue(oCreditCardAmount.getValue(), "Enter Amount to be posted")) {
+                return false;
+            }
+            if (!this._ValidateValue(oCreditCardDropDown.getSelectedKey(), "Select Credit Card")) {
+                return false;
+            }
+            if (!this._ValidateValue(oZipCode.getValue(), "Enter Zip Code")) {
+                return false;
+            }
+            if (!this._ValidateValue(oCVVCode.getValue(), "Enter CVV")) {
+                return false;
+            }
+            this._OwnerComponent.getCcuxApp().setOccupied(true);
+            sCurrentPath = "/CreditCardSet";
             oCreditCardDateValue = new Date(oCreditCardDate.getValue());
             oModel.create(sCurrentPath, {
                 "ContractID" : this._sContractId,
                 "CardNumber" : oCreditCardDropDown.getSelectedKey(),
                 "PaymentDate" : oCreditCardDateValue,
                 "Amount" : oCreditCardAmount.getValue(),
-                "WaiveFlag" : oWaiveReasonDropDown.getSelectedKey()
+                "WaiveFlag" : oWaiveReasonDropDown.getSelectedKey(),
+                "Cvval" : oCVVCode.getValue(),
+                "ZipCode" : oZipCode.getValue()
             }, {
                 success : function (oData, oResponse) {
                     if (oData.Error === "") {
@@ -265,13 +281,17 @@ sap.ui.define(
                 oTBICL = this.getView().byId("idnrgQPPay-TBICL"),
                 oBankDraftDateValue,
                 oContactModel = this.getView().getModel("quickpay-cl");
-            //this.getView().setModel(oReceiptModel, "quickpay-rc");
-            this._OwnerComponent.getCcuxApp().setOccupied(true);
-            sCurrentPath = "/BankDraftSet";
             oMsgArea.removeStyleClass("nrgQPPay-hide");
             oMsgArea.addStyleClass("nrgQPPay-black");
+            if (!this._ValidateValue(oBankDraftAmount.getValue(), "Enter Amount to be posted")) {
+                return false;
+            }
+            if (!this._ValidateValue(oBankAccountDropDown.getSelectedKey(), "Select Bank Account")) {
+                return false;
+            }
+            this._OwnerComponent.getCcuxApp().setOccupied(true);
+            sCurrentPath = "/BankDraftSet";
             oBankDraftDateValue = new Date(oBankDraftDate.getValue());
-
             oModel.create(sCurrentPath, {
                 "ContractID" : this._sContractId,
                 "BankAccNum" : oBankAccountDropDown.getSelectedKey(),
@@ -324,9 +344,6 @@ sap.ui.define(
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             oTBIRC.setSelected(true);
             sCurrentPath = "/ReceiptSet" + "(ContractID='" + this._sContractId + "')/WaiveReasonsSet";
-            aFilterIds = ["ContractID"];
-            aFilterValues = [" + this._sContractId + "];
-            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             WRRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
                 if (oEvent) {
@@ -340,7 +357,6 @@ sap.ui.define(
                 model : "comp-quickpay",
                 path : sCurrentPath,
                 template : oWaiveReasonTemplate,
-                filters : aFilters,
                 parameters: {countMode : "None"},
                 events: {dataReceived : WRRecievedHandler}
             };
@@ -365,11 +381,16 @@ sap.ui.define(
                 that = this,
                 oTBICL = this.getView().byId("idnrgQPPay-TBICL"),
                 oContactModel = this.getView().getModel("quickpay-cl");
-
-            this._OwnerComponent.getCcuxApp().setOccupied(true);
-            sCurrentPath = "/ReceiptSet";
             oMsgArea.removeStyleClass("nrgQPPay-hide");
             oMsgArea.addStyleClass("nrgQPPay-black");
+            if (!this._ValidateValue(oReceiptNum.getValue(), "Enter Receipt Number")) {
+                return false;
+            }
+            if (!this._ValidateValue(oReceiptAmount.getValue(), "Enter Amount")) {
+                return false;
+            }
+            this._OwnerComponent.getCcuxApp().setOccupied(true);
+            sCurrentPath = "/ReceiptSet";
             oModel.create(sCurrentPath, {
                 "ContractID" : this._sContractId,
                 "ReceiptNumber" : oReceiptNum.getValue(),
@@ -476,13 +497,24 @@ sap.ui.define(
             var oModel = this.getView().getModel('comp-quickpay'),
                 oAppViewModel = this.getView().getModel("appView"),
                 sCurrentPath = "/BankAccountSet",
-                that = this;
-            this._OwnerComponent.getCcuxApp().setOccupied(true);
+                that = this,
+                sBankAccount = oAppViewModel.getProperty("/newBankAccount"),
+                sBankRouting = oAppViewModel.getProperty("/newBankRouting"),
+                oMsgArea = this.getView().byId("idnrgQPPay-msgArea");
 
+            oMsgArea.removeStyleClass("nrgQPPay-hide");
+            oMsgArea.addStyleClass("nrgQPPay-black");
+            if (!this._ValidateValue(sBankAccount, "Enter Bank Account")) {
+                return false;
+            }
+            if (!this._ValidateValue(sBankRouting, "Enter Routing Number")) {
+                return false;
+            }
+            this._OwnerComponent.getCcuxApp().setOccupied(true);
             oModel.create(sCurrentPath, {
                 "ContractID" : this._sContractId,
-                "BankAccNum" : oAppViewModel.getProperty("/newBankAccount"),
-                "BankRouting" : oAppViewModel.getProperty("/newBankRouting")
+                "BankAccNum" : sBankAccount,
+                "BankRouting" : sBankRouting
             }, {
                 success : function (oData, oResponse) {
                     that._OwnerComponent.getCcuxApp().setOccupied(false);
@@ -510,10 +542,13 @@ sap.ui.define(
                 fnRecievedHandler,
                 that = this;
             sCurrentPath = "/ReliantSet";
-            this._OwnerComponent.getCcuxApp().setOccupied(true);
-            sCurrentPath = sCurrentPath + "(ContractID='" + this._sContractId + "',ReliantCard='" + oReliantCard.getValue() + "')";
             oMsgArea.removeStyleClass("nrgQPPay-hide");
             oMsgArea.addStyleClass("nrgQPPay-black");
+            if (!this._ValidateValue(oReliantCard.getValue(), "Enter Reliant Card")) {
+                return false;
+            }
+            this._OwnerComponent.getCcuxApp().setOccupied(true);
+            sCurrentPath = sCurrentPath + "(ContractID='" + this._sContractId + "',ReliantCard='" + oReliantCard.getValue() + "')";
             fnRecievedHandler = function (oEvent) {
                 if (oEvent.mParameters.data.Error !== "") {
                     that.getView().getModel("appView").setProperty("/message", oEvent.mParameters.data.Message);
@@ -610,7 +645,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onAcceptContactLog = function (oEvent) {
-            var oReceiptModel = this.getView().getModel("quickpay-rc"),
+            var oContactLogModel = this.getView().getModel("quickpay-cl"),
                 oModel = this.getView().getModel('comp-quickpay'),
                 sCurrentPath = "/ContactLogSet",
                 oTBIPaySucc = this.getView().byId("idnrgQPPay-TBIPaySucc"),
@@ -619,10 +654,10 @@ sap.ui.define(
                 that = this;
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             oModel.create(sCurrentPath, {
-                "ContractID" : oReceiptModel.getProperty("/ContractID"),
-                "Class" : oReceiptModel.getProperty("/Class"),
-                "Activit" : oReceiptModel.getProperty("/Activit"),
-                "PopMessage" : oReceiptModel.getProperty("/PopMessage")
+                "ContractID" : oContactLogModel.getProperty("/ContractID"),
+                "Class" : oContactLogModel.getProperty("/Class"),
+                "Activit" : oContactLogModel.getProperty("/Activit"),
+                "PopMessage" : oContactLogModel.getProperty("/PopMessage")
             }, {
                 success : function (oData, oResponse) {
                     if (oData.ContactLogID !== "") {
@@ -653,6 +688,23 @@ sap.ui.define(
             } else {
                 return "";
             }
+        };
+        /**
+		 * Validates User Input values
+		 *
+		 * @function
+		 * @param {String} sValue to validate
+         * @param {String} sMsg to display when blank/null/undefined
+		 *
+		 */
+        Controller.prototype._ValidateValue = function (sValue, sMsg) {
+            if ((sValue === undefined) || (sValue === null) || (sValue === "")) {
+                this.getView().getModel("appView").setProperty("/message", sMsg);
+                return false;
+            } else {
+                return true;
+            }
+
         };
         /**
 		 * Formats the Credit Card Icon based on type value
