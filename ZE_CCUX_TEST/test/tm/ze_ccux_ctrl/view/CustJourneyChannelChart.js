@@ -13,7 +13,7 @@ sap.ui.define(
             metadata: {
                 properties: {
                     width: { type: 'int', defaultValue: 500 },
-                    height: { type: 'int', defaultValue: 500 }
+                    height: { type: 'int', defaultValue: 300 }
                 }
             },
 
@@ -74,19 +74,19 @@ sap.ui.define(
                 .value(function (data) { return data.frequency; });
 
             var fnArc = d3.svg.arc()
-                .outerRadius(iRadius - 10)
-                .innerRadius(iRadius - 60);
+                .outerRadius(iRadius * 0.92)
+                .innerRadius(iRadius * 0.52);
 
             var fnColor = d3.scale.ordinal()
                 .domain(aData, function (data) { return data.channel; })
                 .range([ '#5092ce', '#5bc2af', '#f2a814', '#c0272d' ]);
 
             oCanvas.append('circle')
-                .attr('r', iRadius + 60)
+                .attr('r', iRadius * 1.48)
                 .attr('class', 'tmCustJCChart-outerBg');
 
             oCanvas.append('circle')
-                .attr('r', iRadius + 30)
+                .attr('r', iRadius * 1.24)
                 .attr('class', 'tmCustJCChart-bg');
 
             var oChart = oCanvas.selectAll('.tmCustJCChart-arc')
@@ -109,11 +109,11 @@ sap.ui.define(
                 .text(function (data) { return data.data.frequency; });
 
             oCanvas.append('circle')
-                .attr('r', iRadius - 60)
+                .attr('r', iRadius * 0.52)
                 .attr('class', 'tmCustJCChart-totalBg');
 
             oCanvas.append('circle')
-                .attr('r', iRadius - 80)
+                .attr('r', iRadius * 0.36)
                 .attr('class', 'tmCustJCChart-total');
 
             oCanvas.append('text')

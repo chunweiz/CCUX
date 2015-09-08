@@ -19,7 +19,7 @@
 
         .tmCustJCChart-freqText {
             text-anchor: middle;
-            font-size: 1.5em;
+            font-size: 1em;
             font-weight: 600;
         }
 
@@ -31,7 +31,7 @@
         .tmCustJCChart-totalText {
             fill: white;
             text-anchor: middle;
-            font-size: 1.5em;
+            font-size: 1em;
             font-weight: 600;
         }
 
