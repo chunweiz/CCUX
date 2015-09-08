@@ -57,8 +57,6 @@ sap.ui.define(
         };
 
         CustomControl.prototype._createChart = function () {
-            // http://jsfiddle.net/thudfactor/HdwTH/
-            // http://bl.ocks.org/dbuezas/9306799
             var iWidth = this.getWidth();
             var iHeight = this.getHeight();
             var iRadius = Math.min(iWidth, iHeight) / 4;
@@ -127,6 +125,10 @@ sap.ui.define(
                       return data.frequency;
                     })
                 );
+
+            // http://jsfiddle.net/thudfactor/HdwTH/
+            // http://bl.ocks.org/dbuezas/9306799
+            // https://www.safaribooksonline.com/blog/2014/03/11/solving-d3-label-placement-constraint-relaxing/
 
             
         };
