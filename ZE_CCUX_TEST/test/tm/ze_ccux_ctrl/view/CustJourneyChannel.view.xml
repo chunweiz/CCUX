@@ -12,18 +12,31 @@
             display: inline-block;
         }
 
-        .tmCustJCChart-arc path {
+        .tmCustJCChart-slice {
             stroke: black;
-            stroke-width: 2;
+            stroke-width: 1;
         }
 
-        .tmCustJCChart-freqText {
+        .tmCustJCChart-sliceValue {
             text-anchor: middle;
-            font-size: 1em;
+            font-size: 0.8em;
             font-weight: 600;
         }
 
-        .tmCustJCChart-total {
+        .tmCustJCChart-line {
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .tmCustJCChart-label {
+            font-size: 1em;
+        }
+
+        .tmCustJCChart-totalOuterBg {
+
+        }
+
+        .tmCustJCChart-totalInnerBg {
             fill-opacity: 0.3;
             fill: grey;
         }
@@ -33,16 +46,6 @@
             text-anchor: middle;
             font-size: 1em;
             font-weight: 600;
-        }
-
-        .tmCustJCChart-bg {
-
-        }
-
-        .tmCustJCChart-outerBg {
-            fill-opacity: 0;
-            stroke: black;
-            stroke-width: 2;
         }
     </style>
 
