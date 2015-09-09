@@ -144,6 +144,7 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     if (oData.results) {
+                        oData.results[0].PrvAmtDueRt = '<br>';
                         this.getView().getModel('oPaymentHdr').setProperty(sBindingPath + '/PaymentSumry', oData.results[0]);
                     }
                 }.bind(this),
