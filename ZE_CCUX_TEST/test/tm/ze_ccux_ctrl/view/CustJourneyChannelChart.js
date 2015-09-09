@@ -74,13 +74,12 @@ sap.ui.define(
             function fnValue(data) { return data.frequency; }
 
             function fnMidAngle(data) {
-                return data.startAngle + (data.endAngle - data.startAngle)/2;
+                return data.startAngle + (data.endAngle - data.startAngle) / 2;
             }
 
             var fnColor = d3.scale.ordinal()
                 .domain(aData, fnLabel)
                 .range(['#5092ce', '#5bc2af', '#f2a814', '#c0272d']);
-
 
             /* Donut rim */
             var oPieRim = oCanvas.append('g');

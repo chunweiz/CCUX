@@ -17,10 +17,10 @@ sap.ui.define(
 
             var oCustomChart = new CustomChart().setDataModel(new JSONModel({
                 data: [
-                    { channel: 'Call', frequency: 5 },
+                    { channel: 'Call', frequency: 1 },
                     { channel: 'Webchat', frequency: 1 },
-                    { channel: 'Mail', frequency: 3 },
-                    { channel: 'Email', frequency: 3 }
+                    { channel: 'Mail', frequency: 1 },
+                    { channel: 'Email', frequency: 1 }
                 ]
             }));
 
