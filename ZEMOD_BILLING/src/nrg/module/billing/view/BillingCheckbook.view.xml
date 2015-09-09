@@ -149,20 +149,17 @@
                             </ute:Tag>
                         </utmain:headerContent>
                         <utmain:content>
-                            <ute:Tag content="{bp>/employees}"> <!--This one is for Previoue Payments-->
-                                <ute:Tag> <!--For single or double underline classes add here ==> class="nrgBilling-blChkBk-lftDiv-scrllArea-snglUndrln nrgBilling-blChkBk-lftDiv-scrllArea-dblUndrln"-->
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c1"
-                                             text="01/31/14"/>
+                            <ute:Tag> <!--Previous due amount-->
+                                <ute:Tag>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c1"/>
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2"
-                                             text="{bp>firstName} {bp>lastName}"/>
+                                             text="{comp-i18n-billing>nrgBilling-billChkBook-PmtHdr-InvAmt}"/>
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_1"
-                                             text="223.67"/>
+                                             text="{oPaymentHdr>InvAmtDue}"/>
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_2"
-                                             text="123.23"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c4"
-                                             text="08/31/16"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c5"
-                                             text=""/>
+                                             text="{oPaymentHdr>InvAmtDue}"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c4"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c5"/>
                                 </ute:Tag>
                             </ute:Tag>
                             <ute:Tag content="{bp>/employees}">

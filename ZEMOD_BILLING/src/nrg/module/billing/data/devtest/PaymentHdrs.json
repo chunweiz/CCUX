@@ -3,67 +3,34 @@
     "results":[
       {
         "__metadata":{
-          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303668')",
-          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303668')",
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303650')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303650')",
           "type":"ZE_CCUX_CHKBOOK_SRV.PaymentHdr"
         },
         "ContractAccountNumber":"000071851129",
-        "InvoiceNum":"008005303668",
-        "InvAmtDue":"678.7900",
-        "DueDate":"\/Date(1398056401000+0000)\/",
-        "BillDate":"\/Date(1396587601000+0000)\/",
-        "CallOut":"{\"CallOuts\":[ {\"CallOut\":\"FNL\"}  ]}",
-        "Payments":{
-          "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303668')/Payments"
-          }
-        },
-        "PaymentItems":{
-          "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303668')/PaymentItems"
-          }
-        },
-        "ConfBuag":{
-          "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303668')/ConfBuag"
-          }
-        },
-        "PaymentSumry":{
-          "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303668')/PaymentSumry"
-          }
-        }
-      },
-      {
-        "__metadata":{
-          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303657')",
-          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303657')",
-          "type":"ZE_CCUX_CHKBOOK_SRV.PaymentHdr"
-        },
-        "ContractAccountNumber":"000071851129",
-        "InvoiceNum":"008005303657",
-        "InvAmtDue":"352.2800",
-        "DueDate":"\/Date(1396846801000+0000)\/",
-        "BillDate":"\/Date(1395291601000+0000)\/",
+        "InvoiceNum":"008005303650",
+        "InvAmtDue":"118.7600",
+        "DueDate":"\/Date(1392876001000+0000)\/",
+        "BillDate":"\/Date(1391493601000+0000)\/",
         "CallOut":"",
         "Payments":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303657')/Payments"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303650')/Payments"
           }
         },
         "PaymentItems":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303657')/PaymentItems"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303650')/PaymentItems"
           }
         },
         "ConfBuag":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303657')/ConfBuag"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303650')/ConfBuag"
           }
         },
         "PaymentSumry":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303657')/PaymentSumry"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303650')/PaymentSumry"
           }
         }
       },
@@ -102,34 +69,67 @@
       },
       {
         "__metadata":{
-          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303650')",
-          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303650')",
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303657')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303657')",
           "type":"ZE_CCUX_CHKBOOK_SRV.PaymentHdr"
         },
         "ContractAccountNumber":"000071851129",
-        "InvoiceNum":"008005303650",
-        "InvAmtDue":"118.7600",
-        "DueDate":"\/Date(1392876001000+0000)\/",
-        "BillDate":"\/Date(1391493601000+0000)\/",
+        "InvoiceNum":"008005303657",
+        "InvAmtDue":"352.2800",
+        "DueDate":"\/Date(1396846801000+0000)\/",
+        "BillDate":"\/Date(1395291601000+0000)\/",
         "CallOut":"",
         "Payments":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303650')/Payments"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303657')/Payments"
           }
         },
         "PaymentItems":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303650')/PaymentItems"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303657')/PaymentItems"
           }
         },
         "ConfBuag":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303650')/ConfBuag"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303657')/ConfBuag"
           }
         },
         "PaymentSumry":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303650')/PaymentSumry"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303657')/PaymentSumry"
+          }
+        }
+      },
+      {
+        "__metadata":{
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303668')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303668')",
+          "type":"ZE_CCUX_CHKBOOK_SRV.PaymentHdr"
+        },
+        "ContractAccountNumber":"000071851129",
+        "InvoiceNum":"008005303668",
+        "InvAmtDue":"678.7900",
+        "DueDate":"\/Date(1398056401000+0000)\/",
+        "BillDate":"\/Date(1396587601000+0000)\/",
+        "CallOut":"{\"CallOuts\":[ {\"CallOut\":\"FNL\"}  ]}",
+        "Payments":{
+          "__deferred":{
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303668')/Payments"
+          }
+        },
+        "PaymentItems":{
+          "__deferred":{
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303668')/PaymentItems"
+          }
+        },
+        "ConfBuag":{
+          "__deferred":{
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303668')/ConfBuag"
+          }
+        },
+        "PaymentSumry":{
+          "__deferred":{
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303668')/PaymentSumry"
           }
         }
       }
