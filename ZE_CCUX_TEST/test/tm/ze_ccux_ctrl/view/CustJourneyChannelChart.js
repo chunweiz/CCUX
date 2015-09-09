@@ -155,7 +155,7 @@ sap.ui.define(
                     .append('polyline')
                         .attr('points', function(data) {
                             var aXY = fnLineOuterArc.centroid(data);
-                            aXY[0] = iRadius * (fnMidAngle(data) < Math.PI ? 1 : -1 );
+                            aXY[0] = iRadius * 1.4 * (fnMidAngle(data) < Math.PI ? 1 : -1 );
 
                             return [fnLineInnerArc.centroid(data), fnLineOuterArc.centroid(data), aXY];
                         })
@@ -184,7 +184,7 @@ sap.ui.define(
                         .attr('dy', '0.35em')
                         .attr('transform', function(data) {
                             var aXY = fnLineOuterArc.centroid(data);
-                            aXY[0] = iRadius * 1.1 * (fnMidAngle(data) < Math.PI ? 1 : -1 );
+                            aXY[0] = iRadius * 1.5 * (fnMidAngle(data) < Math.PI ? 1 : -1 );
                             return 'translate(' + aXY + ')';
                         })
                         .style('text-anchor', function(data) {
