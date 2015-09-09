@@ -120,18 +120,39 @@ sap.ui.define(
 
             sBindingPath = oEvent.oSource.oBindingContexts.oPaymentHdr.getPath();
             if (oPmtHdr.getProperty(sBindingPath + '/bExpand')) {   //If the status is expand need to feed the data inside the expand area
-                this._retrPayments(oPmtHdr.getProperty(sBindingPath).InvoiceNum);
-                this._retrPaymentItmes(oPmtHdr.getProperty(sBindingPath).InvoiceNum);
+                this._retrPayments(oPmtHdr.getProperty(sBindingPath).InvoiceNum, sBindingPath);
+                this._retrPaymentItmes(oPmtHdr.getProperty(sBindingPath).InvoiceNum, sBindingPath);
                 this._retrPaymentSumrys(oPmtHdr.getProperty(sBindingPath).InvoiceNum, sBindingPath);
             }
         };
         /*****************************************************************************************************************************************************/
 
-        CustomController.prototype._retrPayments = function (sInvNum) {
-            var sPath;
+        CustomController.prototype._retrPayments = function (sInvNum, sBindingPath) {
+            var oChbkOData = this.getView().getModel('oDataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/PaymentHdrs(\'' + sInvNum + '\')/Payments';
+                //'/PaymentHdrs' + '(InvoiceNum=\'' + sInvNum + '\',Paidamt=\'0.0000\')';
+                //'/PaymentHdrs(\'' + sInvNum + '\')/Payments';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oPaymentHdr').setProperty(sBindingPath + '/Payment', oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oChbkOData) {
+                oChbkOData.read(sPath, oParameters);
+            }
 
         };
-        CustomController.prototype._retrPaymentItmes = function (sInvNum) {
+        CustomController.prototype._retrPaymentItmes = function (sInvNum, sBindingPath) {
 
         };
         CustomController.prototype._retrPaymentSumrys = function (sInvNum, sBindingPath) {
@@ -144,7 +165,6 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     if (oData.results) {
-                        oData.results[0].PrvAmtDueRt = '<br>';
                         this.getView().getModel('oPaymentHdr').setProperty(sBindingPath + '/PaymentSumry', oData.results[0]);
                     }
                 }.bind(this),
@@ -211,15 +231,8 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     if (oData) {
-                        /*this.getView().getModel('oPayments').setProperty('/oCtxt', {});
-                        this.getView().getModel('oPaymentItems').setProperty('/oCtxt', {});
-                        this.getView().getModel('oPaymentSumrys').setProperty('/oCtxt', {});*/
 
                         for (i = 0; i < oData.results.length; i = i + 1) {
-                            //this.getView().getModel('oPayments').setProperty('/oCtxt/' + i, false);
-                            //this.getView().getModel('oPaymentItems').setProperty('/oCtxt/' + i, false);
-                            //this.getView().getModel('oPaymentSumrys').setProperty('/oCtxt/' + i, false);
-
                             if (i !== oData.results.length - 1) {
                                 oData.results[i].bExpand = false;
                             } else {
@@ -227,6 +240,9 @@ sap.ui.define(
                             }
                         }
                         this.getView().getModel('oPaymentHdr').setData(oData);
+                        i = i - 1;  //At this moment i is the lengh of oData, need the index of the last element
+                        this._retrPayments(oData.results[i].InvoiceNum, '/results/' + i);
+                        this._retrPaymentSumrys(oData.results[i].InvoiceNum, '/results/' + i);
                     }
                 }.bind(this),
                 error: function (oError) {
