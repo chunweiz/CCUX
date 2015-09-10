@@ -74,12 +74,40 @@ sap.ui.define(
             function fnValue(data) { return data.frequency; }
 
             function fnMidAngle(data) {
-                return data.startAngle + (data.endAngle - data.startAngle)/2;
+                return data.startAngle + (data.endAngle - data.startAngle) / 2;
             }
 
             var fnColor = d3.scale.ordinal()
                 .domain(aData, fnLabel)
-                .range(['#5092ce', '#5bc2af', '#f2a814', '#c0272d']);
+                .range(['#5092ce', '#f2a814', '#c0272d', '#5bc2af']);
+
+            /* Donut rim */
+            var oPieRim = oCanvas.append('g');
+
+            oPieRim.append('circle')
+                .attr('r', iRadius * 0.95)
+                .style('fill', 'none')
+                .style('stroke', 'black')
+                .style('stroke-width', 2);
+
+            oPieRim.append('circle')
+                .attr('r', iRadius * 0.8);
+
+            /* Total circle */
+            var oTotal = oCanvas.append('g');
+
+            oTotal.append('circle')
+                .attr('r', iRadius * 0.35)
+                .attr('class', 'tmCustJCChart-totalOuterBg');
+
+            oTotal.append('circle')
+                .attr('r', iRadius * 0.25)
+                .attr('class', 'tmCustJCChart-totalInnerBg');
+
+            oTotal.append('text')
+                .text(d3.sum(aData, fnValue))
+                .attr('dy', '0.35em')
+                .attr('class', 'tmCustJCChart-totalText');
 
             /* Donut chart */
             var fnPie = d3.layout.pie()
@@ -88,9 +116,11 @@ sap.ui.define(
 
             var fnPieArc = d3.svg.arc()
                 .outerRadius(iRadius * 0.6)
-                .innerRadius(iRadius * 0.3);
+                .innerRadius(iRadius * 0.35);
 
-            var oPieSlice = oCanvas.append('g').selectAll('path.tmCustJCChart-slice')
+            var oPie = oCanvas.append('g');
+
+            var oPieSlice = oPie.append('g').selectAll('path.tmCustJCChart-slice')
                 .data(fnPie(aData))
                 .enter()
                 .append('path')
@@ -100,30 +130,51 @@ sap.ui.define(
                         return fnColor(fnLabel(data.data));
                     });
 
+            /* Donut chart value */
+            oPie.append('g').selectAll('text.tmCustJCChart-sliceValue')
+                .data(fnPie(aData))
+                .enter()
+                .append('text')
+                    .text(function (data) { return fnValue(data.data); })
+                    .attr('dy', '0.35em')
+                    .attr('transform', function (data) { return 'translate(' + fnPieArc.centroid(data) + ')'; })
+                    .attr('class', 'tmCustJCChart-sliceValue');
+
             /* Line between donut chart and label */
             var fnLineInnerArc = d3.svg.arc()
                 .outerRadius(iRadius * 0.7)
                 .innerRadius(iRadius * 0.7);
 
             var fnLineOuterArc = d3.svg.arc()
-                .outerRadius(iRadius * 0.9)
-                .innerRadius(iRadius * 0.9);
+                .outerRadius(iRadius)
+                .innerRadius(iRadius);
 
-            var oLine = oCanvas.append('g').selectAll('path.tmCustJCChart-line')
+            var oLine = oCanvas.append('g').selectAll('polyline.tmCustJCChart-line')
                 .data(fnPie(aData))
                 .enter()
                     .append('polyline')
                         .attr('points', function(data) {
                             var aXY = fnLineOuterArc.centroid(data);
-                            aXY[0] = iRadius * (fnMidAngle(data) < Math.PI ? 1 : -1 );
+                            aXY[0] = iRadius * 1.4 * (fnMidAngle(data) < Math.PI ? 1 : -1 );
 
                             return [fnLineInnerArc.centroid(data), fnLineOuterArc.centroid(data), aXY];
                         })
                         .attr('stroke', function (data) {
                             return fnColor(fnLabel(data.data));
                         })
-                        .attr('class', 'tmCustJCChart-line')
-                        .style('fill', 'none');
+                        .attr('class', 'tmCustJCChart-line');
+
+            /* Line point */
+            var oLineInnerPoint = oCanvas.append('g').selectAll('circle')
+                .data(fnPie(aData))
+                .enter()
+                    .append('circle')
+                        .attr('r', iRadius * 0.03)
+                        .attr('fill', 'white')
+                        .attr('stroke-width', 2)
+                        .attr('stroke', function (data) { return fnColor(fnLabel(data.data)); })
+                        .attr('cx', function (data) { return fnLineInnerArc.centroid(data)[0]; })
+                        .attr('cy', function (data) { return fnLineInnerArc.centroid(data)[1]; });
 
             /* Label */
             var oLabel = oCanvas.append('g').selectAll('text.tmCustJCChart-label')
@@ -133,7 +184,7 @@ sap.ui.define(
                         .attr('dy', '0.35em')
                         .attr('transform', function(data) {
                             var aXY = fnLineOuterArc.centroid(data);
-                            aXY[0] = iRadius * 1.1 * (fnMidAngle(data) < Math.PI ? 1 : -1 );
+                            aXY[0] = iRadius * 1.5 * (fnMidAngle(data) < Math.PI ? 1 : -1 );
                             return 'translate(' + aXY + ')';
                         })
                         .style('text-anchor', function(data) {

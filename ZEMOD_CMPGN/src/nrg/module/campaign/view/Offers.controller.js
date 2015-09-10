@@ -43,43 +43,57 @@ sap.ui.define(
                 oProactiveButton = this.getView().byId("idCamToggleBtn-P"),
                 oNoDataTag,
                 oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
-                i18NModel;
+                i18NModel,
+                oSelectedButton;
             i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oRouteInfo.parameters.coNum;
             this._sBP = oRouteInfo.parameters.bpNum;
             this._sCA = oRouteInfo.parameters.caNum;
+            this._sType = oRouteInfo.parameters.typeV;
+            if ((!this._sType) || (this._sType === undefined) || (this._sType === null) || (this._sType === "")) {
+                this._sType = "SE";
+            }
             oNoDataTag = this.getView().byId("idnrgCamHisNoData");
-            aFilterIds = ["Contract", "Type"];
-            aFilterValues = [this._sContract, "P"];
-            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-            sCurrentPath = i18NModel.getProperty("nrgCpgChangeOffSet");
-            oModel = this.getOwnerComponent().getModel('comp-campaign');
+            oSelectedButton = this.getView().byId("idCamToggleBtn-" + this._sType);
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
             oTileTemplate = this.getView().byId("idnrgCamOffBt").clone();
             this._oTileTemplate = oTileTemplate;
-            // Handler function for tile container
-            fnRecievedHandler = function (oEvent) {
-                var aContent = oTileContainer.getContent();
-                if ((aContent !== undefined) && (aContent.length > 0)) {
-                    oNoDataTag.addStyleClass("nrgCamOff-hide");
-                    oTileContainer.removeStyleClass("nrgCamOff-hide");
-                } else {
-                    oNoDataTag.removeStyleClass("nrgCamOff-hide");
-                    oTileContainer.addStyleClass("nrgCamOff-hide");
-                }
-                that.getOwnerComponent().getCcuxApp().setOccupied(false);
-                oProactiveButton.addStyleClass("nrgCamOff-btn-selected");
-            };
-            mParameters = {
-                model : "comp-campaign",
-                path : sCurrentPath,
-                template : oTileTemplate,
-                filters : aFilters,
-                parameters : {expand: "EFLs"},
-                events: {dataReceived : fnRecievedHandler}
-            };
-            oTileContainer.bindAggregation("content", mParameters);
+            if (this._sType === "SE") {
+                oNoDataTag.removeStyleClass("nrgCamOff-hide");
+                oTileContainer.addStyleClass("nrgCamOff-hide");
+                oSelectedButton.addStyleClass("nrgCamOff-btn-selected");
+                this.getOwnerComponent().getCcuxApp().setOccupied(false);
+            } else {
+                aFilterIds = ["Contract", "Type"];
+                aFilterValues = [this._sContract, this._sType];
+                aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+                sCurrentPath = i18NModel.getProperty("nrgCpgChangeOffSet");
+                oModel = this.getOwnerComponent().getModel('comp-campaign');
+                oSelectedButton.addStyleClass("nrgCamOff-btn-selected");
+                // Handler function for tile container
+                fnRecievedHandler = function (oEvent) {
+                    var aContent = oTileContainer.getContent();
+                    if ((aContent !== undefined) && (aContent.length > 0)) {
+                        oNoDataTag.addStyleClass("nrgCamOff-hide");
+                        oTileContainer.removeStyleClass("nrgCamOff-hide");
+                    } else {
+                        oNoDataTag.removeStyleClass("nrgCamOff-hide");
+                        oTileContainer.addStyleClass("nrgCamOff-hide");
+                    }
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    oProactiveButton.addStyleClass("nrgCamOff-btn-selected");
+                };
+                mParameters = {
+                    model : "comp-campaign",
+                    path : sCurrentPath,
+                    template : oTileTemplate,
+                    filters : aFilters,
+                    parameters : {expand: "EFLs"},
+                    events: {dataReceived : fnRecievedHandler}
+                };
+                oTileContainer.bindAggregation("content", mParameters);
+            }
         };
        /**
 		 * Assign the filter objects based on the input selection
@@ -146,7 +160,7 @@ sap.ui.define(
                 oProactiveButton = this.getView().byId("idCamToggleBtn-P"),
                 oReactiveButton = this.getView().byId("idCamToggleBtn-R"),
                 oSaveButton = this.getView().byId("idCamToggleBtn-S"),
-                oFinalSaveButton = this.getView().byId("idCamToggleBtn-F"),
+                oFinalSaveButton = this.getView().byId("idCamToggleBtn-FS"),
                 oNoDataTag = this.getView().byId("idnrgCamHisNoData"),
                 i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             oProactiveButton.removeStyleClass("nrgCamOff-btn-selected");

@@ -43,7 +43,7 @@
                     "target": [ "campaign.SalesScript", "dashboard.CustomerDataSummary", "campaign.Tools" ]
                 },
                 "campaignoffers": {
-                    "pattern": "campaign/offers/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "pattern": "campaign/offers/bp/{bpNum}/ca/{caNum}/co/{coNum}/type/{typeV}",
                     "target": [ "campaign.Offers", "dashboard.CustomerDataSummary", "campaign.Tools" ]
                 }
             },

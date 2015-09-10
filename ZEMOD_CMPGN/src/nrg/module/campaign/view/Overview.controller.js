@@ -233,14 +233,85 @@ sap.ui.define(
         };
 
         /**
-		 * Traverse to Offers View when the user selected Agent requested and Customer Requested buttons
+		 * Traverse to Offers View when the user selected Agent requested buttons
 		 *
 		 * @function
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
-        Controller.prototype.onOffers = function (oEvent) {
+        Controller.prototype.onAgentRequestedOffers = function (oEvent) {
+            var sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill"),
+                sInitTab = oEvent.getSource().getBindingContext("Overview-elig").getProperty("InitTab");
+            if ((!sInitTab) || (sInitTab === undefined) || (sInitTab === null) || (sInitTab === "")) {
+                this._sInitTab = "SE";
+            } else {
+                this._sInitTab = sInitTab;
+            }
+            if (sFirstMonthBill === "X") {
+                //sap.ui.commons.MessageBox.alert("Customer has to completed atleast One Month Invoice");
+                ute.ui.main.Popup.Alert({
+                    title: 'Information',
+                    message: 'Customer has to completed atleast One Month Invoice'
+                });
+            } else {
+                this._getPendingSwapsCount(oEvent);
+            }
+        };
+        /**
+		 * Traverse to Offers View when the user selected Customer requested buttons
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onCustomerRequestedOffers = function (oEvent) {
+            var sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill"),
+                sCustomerEligible = oEvent.getSource().getBindingContext("Overview-elig").getProperty("CustEligFlag"),
+                sInitTab = oEvent.getSource().getBindingContext("Overview-elig").getProperty("InitTab"),
+                _CancellationPopupHandler;
+            if ((!sInitTab) || (sInitTab === undefined) || (sInitTab === null) || (sInitTab === "")) {
+                this._sInitTab = "SE";
+            } else {
+                this._sInitTab = sInitTab;
+            }
+            if (sFirstMonthBill === "X") {
+                sap.ui.commons.MessageBox.alert("Customer has to completed atleast One Month Invoice");
+            } else {
+                if (sCustomerEligible === "X") {
+                    this._getPendingSwapsCount(oEvent);
+                } else {
+                    _CancellationPopupHandler = function (sAction) {
+                        switch (sAction) {
+                        case ute.ui.main.Popup.Action.Yes:
+                            this.__getPendingSwapsCount(oEvent);
+                            break;
+                        case ute.ui.main.Popup.Action.No:
+                        // No Action decided
+                            break;
+                        case ute.ui.main.Popup.Action.Ok:
+                        // No Action decided
+                            break;
+                        }
+                    };
+                    ute.ui.main.Popup.Confirm({
+                        title: 'Cancellation',
+                        message: 'Customer may be charged a cancellation fee',
+                        callback: _CancellationPopupHandler
+                    });
+                }
+
+            }
+        };
+        /**
+		 * Queries Odata and get the count of the pending swaps
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype._getPendingSwapsCount = function (oEvent) {
             var sContract = oEvent.getSource().getBindingContext("Overview-elig").getProperty("Contract"),
                 sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill"),
+                sCustomerEligible = oEvent.getSource().getBindingContext("Overview-elig").getProperty("CustEligFlag"),
                 sCurrentPath,
                 aFilterIds,
                 aFilterValues,
@@ -249,38 +320,32 @@ sap.ui.define(
                 oModel,
                 that = this,
                 i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
-
-            if (sFirstMonthBill === "X") {
-                sap.ui.commons.MessageBox.alert("Customer has to completed atleast One Month Invoice");
-            } else {
-                sCurrentPath = i18NModel.getProperty("nrgPendingSwapsSet");
-                sCurrentPath = sCurrentPath + "/$count";
-                aFilterIds = ["Contract"];
-                aFilterValues = [sContract];
-                aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-                mParameters = {
-                    filters : aFilters,
-                    success : function (oData) {
-                        if (oData) {
-                            jQuery.sap.log.info("Odata Read Successfully:::");
-                            if ((parseInt(oData, 10)) > 0) {
-                                that.showPendingSwaps();
-                            } else {
-                                that.navTo("campaignoffers", {bpNum: that._sBP, caNum: that._sCA, coNum: sContract});
-                            }
+            sCurrentPath = i18NModel.getProperty("nrgPendingSwapsSet");
+            sCurrentPath = sCurrentPath + "/$count";
+            aFilterIds = ["Contract"];
+            aFilterValues = [sContract];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            mParameters = {
+                filters : aFilters,
+                success : function (oData) {
+                    if (oData) {
+                        jQuery.sap.log.info("Odata Read Successfully:::");
+                        if ((parseInt(oData, 10)) > 0) {
+                            that.showPendingSwaps();
+                        } else {
+                            that.navTo("campaignoffers", {bpNum: that._sBP, caNum: that._sCA, coNum: sContract, typeV : this._sInitTab});
                         }
-                    }.bind(this),
-                    error: function (oError) {
-                        jQuery.sap.log.info("Odata Failed:::" + oError);
-                    }.bind(this)
-                };
-                oModel = this.getOwnerComponent().getModel('comp-campaign');
-                if (oModel) {
-                    oModel.read(sCurrentPath, mParameters);
-                }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Odata Failed:::" + oError);
+                }.bind(this)
+            };
+            oModel = this.getOwnerComponent().getModel('comp-campaign');
+            if (oModel) {
+                oModel.read(sCurrentPath, mParameters);
             }
         };
-
         /**
 		 * Formats the Type value to display "Current Campaign" or "Pending Campaign"
 		 *
@@ -513,7 +578,7 @@ sap.ui.define(
                 oModel.callFunction("/DeleteCampaign", mParameters);
             });
             this._oCancelDialog.close();
-            this.navTo("campaignoffers", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
+            this.navTo("campaignoffers", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, typeV : this._sInitTab});
         };
         /**
 		 * Handle when user clicked on Cancelling of Pending Swaps
@@ -523,7 +588,7 @@ sap.ui.define(
 		 */
         Controller.prototype.ContinueWithoutCancel = function (oEvent) {
             this._oCancelDialog.close();
-            this.navTo("campaignoffers", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
+            this.navTo("campaignoffers", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, typeV : this._sInitTab});
         };
 
         return Controller;
