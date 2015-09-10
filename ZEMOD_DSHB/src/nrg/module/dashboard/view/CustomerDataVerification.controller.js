@@ -265,7 +265,7 @@ sap.ui.define(
                         if (iSelectedCA) {
                             iPreSelCA = iSelectedCA;
                         } else {
-                            for (var i = 0; i < oData.results.length; i++ ) {
+                            for (i = 0; i < oData.results.length; i++ ) {
                                 if (oData.results[i].ContractAccountID === this._caNum) {
                                     iPreSelCA = i;
                                 }
