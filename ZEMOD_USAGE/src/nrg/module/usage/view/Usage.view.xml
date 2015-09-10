@@ -53,13 +53,11 @@
                     </u:Tag>
                 <u:Tag class="nrgUsg-Table">
                     <u:Tag class="nrgUsg-ttl" text="{comp-i18n-usage>nrgUsgLSrvAddTtl}" />
-                    <um:Dropdown id="idnrgUsgServiceAdd"
-                                 content="{comp-usage>/dropdown}"
+                    <um:Dropdown id="idnrgUsgServiceAdd-DropDown"
                                  select=".onServiceAdd"
                                  placeholder="Select Service Address"
                                  class="nrgUsg-top">
-                        <um:DropdownItem key="{comp-usage>value}" class="nrgUsg-DdLItem">
-                            <u:Tag text="{comp-usage>value}"/>
+                        <um:DropdownItem>
                         </um:DropdownItem>
                     </um:Dropdown>
                     <u:Tag class="nrgUsgTable-header nrgUsg-top">
@@ -78,23 +76,23 @@
                                 <u:Tag text="{comp-usage>PeriodBegin}-{comp-usage>PeriodEnd}" class="nrgUsgTag-Date"/>
                                 <u:Tag text="{comp-usage>BillingDays}" class="nrgUsgTag1"/>
                                 <um:Button press=".expandInfoline" text="{comp-usage>Reading}"  design="None" class="nrgUsgButton"/>
-                                <u:Tag text="{comp-usage>kWh}" class="nrgUsgTag"/>
+                                <u:Tag text="{comp-usage>KwhUsage}" class="nrgUsgTag"/>
                                 <u:Tag text="{comp-usage>Actual}" class="nrgUsgTag"/>
-                                <u:Tag text="{comp-usage>Weather}" class="nrgUsgTag3"/>
-                                <u:Tag text="{comp-usage>CDI}" class="nrgUsgTag1"/>
-                                <u:Tag text="{comp-usage>$}" class="nrgUsgTag1"/>
+                                <u:Tag text="{comp-usage>LowTemp} {comp-usage>HighTemp}" class="nrgUsgTag3"/>
+                                <u:Tag text="{comp-usage>CDI_HDI}" class="nrgUsgTag1"/>
+                                <u:Tag text="{comp-usage>CurrentCharges}" class="nrgUsgTag1"/>
                             </um:headerContent>
                             <um:content>
-                                <u:Tag content="{comp-usage>/table}" class="nrgUsgTable-inside">
+                                <u:Tag class="nrgUsgTable-inside">
                                     <u:Tag class="">
-                                        <u:Tag text="{comp-usage>Date}" class="nrgUsgTag-Date"/>
+                                        <u:Tag text="{comp-usage>PeriodBegin}-{comp-usage>PeriodEnd}" class="nrgUsgTag-Date"/>
                                         <u:Tag text="{comp-usage>BillingDays}" class="nrgUsgTag1"/>
                                         <u:Tag text="{comp-usage>Reading}" class="nrgUsgTag"/>
-                                        <u:Tag text="{comp-usage>kWh}" class="nrgUsgTag"/>
+                                        <u:Tag text="{comp-usage>KwhUsage}" class="nrgUsgTag"/>
                                         <u:Tag text="{comp-usage>Actual}" class="nrgUsgTag"/>
-                                        <u:Tag text="{comp-usage>Weather}" class="nrgUsgTag3"/>
-                                        <u:Tag text="{comp-usage>CDI}" class="nrgUsgTag1"/>
-                                        <u:Tag text="{comp-usage>$}" class="nrgUsgTag1"/>
+                                        <u:Tag text="{comp-usage>LowTemp} {comp-usage>HighTemp}" class="nrgUsgTag3"/>
+                                        <u:Tag text="{comp-usage>CDI_HDI}" class="nrgUsgTag1"/>
+                                        <u:Tag text="{comp-usage>CurrentCharges}" class="nrgUsgTag1"/>
                                     </u:Tag>
                                 </u:Tag>
                             </um:content>
@@ -102,5 +100,15 @@
                     </u:Tag>
                 </u:Tag>
        </u:Tag>
+       <u:Tag visible="false">
+            <um:Dropdown select=".onServiceAdd"
+                                 placeholder="Select Service Address"
+                                 class="nrgUsg-top">
+                <um:DropdownItem key="{comp-usage>value}" class="nrgUsg-DdLItem" id="idnrgUsgServiceAdd-DropDownItem">
+                    <u:Tag text="{comp-usage>CA}-{comp-usage>Contract}-{comp-usage>ESID}-{comp-usage>House}-{comp-usage>Street}-{comp-usage>Apt}-{comp-usage>City}-{comp-usage>State}-{comp-usage>ZIP}"/>
+                </um:DropdownItem>
+            </um:Dropdown>
+       </u:Tag>
+
    </u:Tag>
 </mvc:View>

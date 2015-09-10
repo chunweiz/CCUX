@@ -16,7 +16,7 @@
          <u:Tag class="nrgCamOvr-Title" text="{comp-i18n-campaign>nrgCmpOvrTtl}" />
             <article class="nrgCamOvr-offerToolbar nrgCamOvr-top">
                 <um:Button id="idCamCustReqOfferBtn"
-                           press=".onOffers"
+                           press=".onCustomerRequestedOffers"
                            text="{Overview-elig>Notitle}"
                            class="nrgCamOvr-offerBtn"
                            design="None">
@@ -33,7 +33,7 @@
                     </u:Tag>
                 </um:button>
                 <um:Button id="idCamAgtReqOfferBtn"
-                           press=".onOffers"
+                           press=".onAgentRequestedOffers"
                            text="{Overview-elig>Notitle}"
                            class="nrgCamOvr-offerBtn"
                            design="None"
