@@ -1,0 +1,28 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:c="sap.ui.commons"
+          xmlns:core="sap.ui.core"
+          xmlns:u="ute.ui.commons"
+          xmlns:um="ute.ui.main">
+    <u:Tag class="nrgQPCC-root">
+        <u:Tag text="{comp-i18n-quickpay>nrgQPPendingCreditCard}" class="nrgQPCC-ttl"/>
+            <u:Tag class="nrgQP-Table">
+                <u:Tag class="nrgQPTable-header nrgQP-top">
+                    <u:Tag text="{comp-i18n-quickpay>nrgQPTrackingID}" class="nrgQPCC-hd"/>
+                    <u:Tag text="{comp-i18n-quickpay>nrgQPCardNumber}" class="nrgQPCC-hd"/>
+                    <u:Tag text="{comp-i18n-quickpay>nrgQPExpiryDate}" class="nrgQPCC-hd"/>
+                    <u:Tag text="{comp-i18n-quickpay>nrgQPScheduledDate}" class="nrgQPCC-hd"/>
+                    <u:Tag text="{comp-i18n-quickpay>nrgQPAmount}" class="nrgQPCC-hd"/>
+                    <u:Tag text="{comp-i18n-quickpay>nrgQPCurrentStatus}" class="nrgQPCC-hd"/>
+                </u:Tag>
+                <u:Tag content="{comp-quickpay>/table}" class="nrgUsgTable-Row">
+                        <u:Tag text="{comp-quickpay>PeriodBegin}" class="nrgUsgTag-Date"/>
+                        <u:Tag text="{comp-quickpay>BillingDays}" class="nrgUsgTag1"/>
+                        <u:Tag text="{comp-quickpay>BillingDays}" class="nrgUsgTag1"/>
+                        <u:Tag text="{comp-quickpay>KwhUsage}" class="nrgUsgTag"/>
+                        <u:Tag text="{comp-quickpay>Actual}" class="nrgUsgTag"/>
+                        <u:Tag text="{comp-quickpay>LowTemp} {comp-quickpay>HighTemp}" class="nrgUsgTag3"/>
+                </u:Tag>
+            </u:Tag>
+    </u:Tag>
+</core:FragmentDefinition>

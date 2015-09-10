@@ -446,7 +446,13 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onPendingCreditCard = function (oEvent) {
-
+            var oTBIPCC = this.getView().byId("idnrgQPPay-TBIPCC"),
+                oPopup = this.getView().byId("idnrgQPPay-Popup"),
+                oCloseButton = this.getView().byId("idnrgQPPayBt-close");
+            oTBIPCC.setSelected(true);
+            oPopup.removeStyleClass("nrgQPPay-Popup");
+            oPopup.addStyleClass("nrgQPPay-PopupPayment");
+            oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
         };
 
         /**
@@ -456,11 +462,14 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onPendingBankDraft = function (oEvent) {
-
+            var oTBIPBD = this.getView().byId("idnrgQPPay-TBIPBD"),
+                oPopup = this.getView().byId("idnrgQPPay-Popup"),
+                oCloseButton = this.getView().byId("idnrgQPPayBt-close");
+            oTBIPBD.setSelected(true);
+            oPopup.removeStyleClass("nrgQPPay-Popup");
+            oPopup.addStyleClass("nrgQPPay-PopupPayment");
+            oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
         };
-
-
-
         /**
 		 * When Credit Card is Accepted
 		 *

@@ -1,5 +1,6 @@
 .nrgQPPay-View {
             @nrgQPPay-maxWidth: 340px;
+            @nrgQPPay-PendingScreenWidth: 40rem;
             @nrgQPPay-marginleft: 2.4rem;
             color : @nrgColor-white;
             font-family: @nrgFontFamily;
@@ -249,18 +250,48 @@
                 background-color: @nrgColor-white;
                 margin: 0.5rem;
         }
-    }
+   }
    &    .nrgQPPay-ContactLogBtns {
             text-align: center;
    }
    &    .uteMDd-picker > .nrgQPCC-DDLWRItem:nth-child(odd) {
-        background-color: @nrgColor-grey-highlight;
+            background-color: @nrgColor-grey-highlight;
    }
-
    &    .uteMDd-picker > .nrgQPCC-DDLWRItem:nth-child(even) {
-        background-color: transparent;
+            background-color: transparent;
    }
    &    .uteMDd-picker > .nrgQPCC-DdLItem:nth-child(odd) {
-        background-color: @nrgColor-grey-highlight;
+            background-color: @nrgColor-grey-highlight;
    }
+   &    .nrgQPPay-PopupPayment {
+            display: inline-block;
+            position: relative;
+            width: @nrgQPPay-PendingScreenWidth;
+            height: auto;
+            background-color: @nrgColor-blue-lightPale;
+            font-family: @nrgFontFamily;
+            font-size: @nrgFontSize-small;
+            &    .nrgQP-top {
+                    margin-top : 10px;
+            }
+            &   .nrgQP-Table {
+                    width: 39rem;
+                    margin: 20px 8px 20px 8px;
+                    color: @nrgColor-black;
+
+                    &   .nrgQPTable-header {
+                            width: 100%;
+                            background-color: @nrgColor-grey-light;
+                            line-height: 30px;
+                            border-right: 1px solid @nrgColor-lightGrey;
+                            box-shadow: inset 2px 0px @nrgColor-lightPaleBlue;
+                    }
+                    &   .nrgQPCC-hd {
+                            display: inline-block;
+                            width: 6rem;
+                            text-align: center;
+                    }
+            }
+   }
+
 }

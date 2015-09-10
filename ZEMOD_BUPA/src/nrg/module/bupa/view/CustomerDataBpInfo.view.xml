@@ -337,8 +337,9 @@
                     <l:rows>
                         <l:MatrixLayoutRow>
                             <l:cells>
-
+                                <!-- Left Sice -->
                                 <l:MatrixLayoutCell class="nrgBupa-cusDataBpInfo-l">
+                                    <!-- DOB -->
                                     <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
@@ -353,6 +354,7 @@
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
+                                    <!-- Language -->
                                     <l:MatrixLayout widths="25%,75%" columns="2">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
@@ -368,9 +370,9 @@
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
                                 </l:MatrixLayoutCell>
-
-
+                                <!-- Right Side -->
                                 <l:MatrixLayoutCell class="nrgBupa-cusDataBpInfo-l">
+                                    <!-- SSN -->
                                     <l:MatrixLayout widths="15%,80%,5%" columns="3">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
@@ -399,6 +401,7 @@
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
+                                    <!-- DL -->
                                     <l:MatrixLayout widths="15%,80%,5%" columns="3">
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
@@ -427,6 +430,7 @@
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>
                                 </l:MatrixLayoutCell>
+
                             </l:cells>
                         </l:MatrixLayoutRow>
                     </l:rows>
