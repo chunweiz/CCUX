@@ -71,7 +71,7 @@ sap.ui.define(
 
 
             //Start of data retriving
-            this._initRouitingInfo();
+            this._initRoutingInfo();
             this._initChkbookHdr();
             this._initPaymentHdr();
         };
@@ -178,7 +178,7 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype._initRouitingInfo = function () {
+        CustomController.prototype._initRoutingInfo = function () {
             var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
 
             this._bpNum = oRouteInfo.parameters.bpNum;
