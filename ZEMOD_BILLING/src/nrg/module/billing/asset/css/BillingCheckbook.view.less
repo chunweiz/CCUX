@@ -47,11 +47,13 @@
         display: inline-block;
         text-align: right;
         font-weight: @nrgFontWeight-regular;
+        font-size: @nrgFontSize-base;
         color: @nrgColor-grey-dark;
         padding-top: 2px;
         padding-bottom: 2px;
         height: 24px;
         vertical-align: middle;
+        overflow-y: hidden;
     }
 
     & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-scrllArea .nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell{
@@ -61,8 +63,12 @@
         font-weight: @nrgFontWeight-semiBold;
     }
 
+    & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-scrllArea .nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell.nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell-Clot-grn{
+        color: @nrgColor-green-credit;
+    }
+
     & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh1{
-        width: 100px;
+        width: 84px;
         text-align: center !important;
     }
 
@@ -75,14 +81,14 @@
     }
 
     & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh2{
-        width: 300px;
+        width: 360px;
         border-left: 2px solid @nrgColor-grey-amount;
         border-top: 2px solid @nrgColor-grey-amount;
         border-bottom: 2px solid @nrgColor-grey-amount;
     }
 
     & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh3{
-        width: 160px;
+        width: 146px;
         border-right: 2px solid @nrgColor-grey-amount;
         border-top: 2px solid @nrgColor-grey-amount;
         border-bottom: 2px solid @nrgColor-grey-amount;
@@ -90,7 +96,7 @@
     }
 
     & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh4{
-        width: 100px;
+        width: 70px;
         text-align: center !important;
     }
 
@@ -119,34 +125,34 @@
 
 
     & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-h1, & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c1{
-        width: 100px;
+        width: 84px;
         text-align: center !important;
     }
 
     & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-h2, & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2{
-        width: 300px;
+        width: 360px;
         padding-right: 6px;
     }
 
     & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-h3{
-        width: 160px;
+        width: 146px;
     }
 
     & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_1{
-        width: 80px;
+        width: 73px;
         border-left: 2px solid @nrgColor-grey-amount;
         padding-right: 6px;
     }
 
     & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_2{
-        width: 80px;
+        width: 73px;
         border-left: 2px solid @nrgColor-grey-amount;
         border-right: 2px solid @nrgColor-grey-amount;
         padding-right: 6px;
     }
 
     & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-h4, & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c4{
-        width: 100px;
+        width: 70px;
         text-align: center !important;
     }
 
@@ -167,6 +173,10 @@
         border-bottom: 2px solid @nrgColor-grey-amount;
     }
 
+    & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-scrllArea .nrgBilling-blChkBk-lftDiv-scrllArea-lnItm .nrgBilling-blChkBk-lftDiv-scrllArea-snglUperln .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2, & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-scrllArea .nrgBilling-blChkBk-lftDiv-scrllArea-lnItm .nrgBilling-blChkBk-lftDiv-scrllArea-snglUperln .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_1, & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-scrllArea .nrgBilling-blChkBk-lftDiv-scrllArea-lnItm .nrgBilling-blChkBk-lftDiv-scrllArea-snglUperln .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_2{
+        border-top: 2px solid @nrgColor-grey-amount;
+    }
+
     & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-scrllArea .nrgBilling-blChkBk-lftDiv-scrllArea-lnItm .nrgBilling-blChkBk-lftDiv-scrllArea-dblUndrln .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2, & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-scrllArea .nrgBilling-blChkBk-lftDiv-scrllArea-lnItm .nrgBilling-blChkBk-lftDiv-scrllArea-dblUndrln .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_1, & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-scrllArea .nrgBilling-blChkBk-lftDiv-scrllArea-lnItm .nrgBilling-blChkBk-lftDiv-scrllArea-dblUndrln .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_2{
         border-bottom: double @nrgColor-grey-amount;
     }
@@ -182,6 +192,7 @@
     & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-scrllArea .nrgBilling-blChkBk-lftDiv-scrllArea-lnItm > header > article > div, & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-scrllArea .nrgBilling-blChkBk-lftDiv-scrllArea-lnItm > header > aside{
         padding-bottom: 4px;
         padding-top: 4px;
+        text-align: right;
     }
 
     & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-qkRefArea{
