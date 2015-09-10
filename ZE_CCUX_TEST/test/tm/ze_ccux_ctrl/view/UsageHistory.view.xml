@@ -1,0 +1,32 @@
+<mvc:View
+    controllerName="test.tm.ze_ccux_ctrl.view.UsageHistory"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <style>
+        .tmUsageHistChart {
+            display: inline-block;
+        }
+
+        .tmUsageHistChart-consumptionLine {
+            stroke: #ffffff;
+            stroke-width: 3;
+            stroke-dasharray: 10,10;
+            fill: none;
+        }
+
+        .tmUsageHistChart-consumptionPoint {
+            stroke: #808080;
+            stroke-width: 2;
+            fill: #ffffff;
+        }
+    </style>
+
+    <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
+
+    </sm:ScrollContainer>
+</mvc:View>
