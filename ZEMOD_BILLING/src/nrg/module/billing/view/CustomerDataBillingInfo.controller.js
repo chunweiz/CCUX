@@ -79,6 +79,18 @@ sap.ui.define(
             this._oPaymentsPopup.open();
         };
 
+        CustomController.prototype.onPayNow = function(oEvent) {
+            var oRouter = this.getOwnerComponent().getRouter();
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+
+            this._bpNum = oRouteInfo.parameters.bpNum;
+            this._caNum = oRouteInfo.parameters.caNum;
+            this._coNum = oRouteInfo.parameters.coNum;
+
+            oRouter.navTo('quickpay', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+        };
+
+
         return CustomController;
     }
 );

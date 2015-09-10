@@ -458,7 +458,14 @@ sap.ui.define(
                 oRouteInfo = oEvent.getParameters(),
                 sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
                 sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
-                sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID');
+                sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID'),
+                badgeSS = this.getView().getModel('oDtaVrfyBuags').getProperty('/BadgeSS');
+
+            // Determine if prepaid user
+            var isPrepaidUser = false;
+            if(badgeSS === 'x' || badgeSS === 'X') {
+                isPrepaidUser = true;
+            }
 
             //Set Confirmed CaNum and CoNum to Component level
             oComponentContextModel.setProperty('/caNum', sCurrentCa);
@@ -476,7 +483,11 @@ sap.ui.define(
             oComponent.getCcuxApp().setOccupied(false);
 
             //Navigate to verification page
-            oRouter.navTo('bupa.caInfoWithCo', {bpNum: oRouteInfo.BP_NUM, caNum: sCurrentCa, coNum: sCurrentCo});
+            if(isPrepaidUser) {
+                oRouter.navTo('billing.BillingPrePaid', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
+            } else {
+                oRouter.navTo('billing.BillingInfo', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
+            }
         };
 
         Controller.prototype._handleUnConfirm = function () {
