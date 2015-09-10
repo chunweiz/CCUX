@@ -55,6 +55,12 @@ sap.ui.define(
             //Model to keep Assainged Accounts
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryAssignedAccounts');
 
+            // Retrieve routing parameters
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+
+            this._bpNum = oRouteInfo.parameters.bpNum;
+            this._caNum = oRouteInfo.parameters.caNum;
+            this._coNum = oRouteInfo.parameters.coNum;
 
             this._initRetrBpInf();
             //this._initRetrBpSegInf();
@@ -181,7 +187,15 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     if (oData) {
-                        this.getView().getModel('oSmryBuagInf').setData(oData.results[0]);
+                        if(this._caNum) {
+                            for (var i=0; i<oData.results.length; i++) {
+                                if (oData.results[i].ContractAccountID === this._caNum) {
+                                    this.getView().getModel('oSmryBuagInf').setData(oData.results[i]);
+                                }
+                            }
+                        } else {
+                            this.getView().getModel('oSmryBuagInf').setData(oData.results[0]);
+                        }
                         this._initRetrAssignedAccount(this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID'));
                         this._caNum = this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID');
                     }
