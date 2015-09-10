@@ -164,8 +164,10 @@ sap.ui.define(
 
             if (this._coNum) {
                 oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
-            } else {
+            } else if (this._caNum) {
                 oRouter.navTo('dashboard.VerificationWithCa', {bpNum: this._bpNum, caNum: this._caNum});
+            } else {
+                oRouter.navTo('dashboard.Verification', {bpNum: this._bpNum});
             }
         };
 
