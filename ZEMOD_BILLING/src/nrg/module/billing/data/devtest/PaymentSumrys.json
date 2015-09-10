@@ -13,6 +13,7 @@
         "DueDate":null,
         "BillDate":null,
         "DueAmt":"678.7900",
+        "CurrChrgs": "326.5100",
         "PaymentHdr":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentSumrys('008005303668')/PaymentHdr"

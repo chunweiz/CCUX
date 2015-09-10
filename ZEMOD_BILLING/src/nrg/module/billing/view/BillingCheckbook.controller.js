@@ -17,7 +17,7 @@ sap.ui.define(
 
         CustomController.prototype.onInit = function () {
             var o18n = this.getOwnerComponent().getModel('comp-i18n-billing');
-
+/*
             var oModel = new sap.ui.model.json.JSONModel({
                 employees: [
                     { firstName: 'Roger', lastName: 'Cheng' },
@@ -50,7 +50,7 @@ sap.ui.define(
 
             this.getView().setModel(oModel, 'bp');
             this.getView().setModel(oModelContent, 'emp');
-            this.getView().setModel(oModelToolTip, 'tip');
+            this.getView().setModel(oModelToolTip, 'tip');*/
         };
 
         CustomController.prototype.onBeforeRendering = function () {
@@ -71,7 +71,7 @@ sap.ui.define(
 
 
             //Start of data retriving
-            this._initRouitingInfo();
+            this._initRoutingInfo();
             this._initChkbookHdr();
             this._initPaymentHdr();
         };
@@ -88,8 +88,12 @@ sap.ui.define(
         CustomController.prototype._formatDate = function (oDate) {
             var sFormattedDate;
 
-            sFormattedDate = (oDate.getMonth() + 1).toString() + '/' + oDate.getDate().toString() + '/' + oDate.getFullYear().toString().substring(2, 4);
-            return sFormattedDate;
+            if (!oDate) {
+                return null;
+            } else {
+                sFormattedDate = (oDate.getMonth() + 1).toString() + '/' + oDate.getDate().toString() + '/' + oDate.getFullYear().toString().substring(2, 4);
+                return sFormattedDate;
+            }
         };
 
         CustomController.prototype._getCurDate = function () {
@@ -111,6 +115,14 @@ sap.ui.define(
             return sPreSixDate;
         };
 
+        CustomController.prototype._formatLfRtZroVal = function (iLfRtVal) {
+            if (iLfRtVal === '0.00' || iLfRtVal === '0') {
+                return ' ';
+            } else {
+                return iLfRtVal;
+            }
+        };
+
         /*****************************************************************************************************************************************************/
         /*****************************************************************************************************************************************************/
         //Handlers
@@ -120,18 +132,59 @@ sap.ui.define(
 
             sBindingPath = oEvent.oSource.oBindingContexts.oPaymentHdr.getPath();
             if (oPmtHdr.getProperty(sBindingPath + '/bExpand')) {   //If the status is expand need to feed the data inside the expand area
-                this._retrPayments(oPmtHdr.getProperty(sBindingPath).InvoiceNum);
-                this._retrPaymentItmes(oPmtHdr.getProperty(sBindingPath).InvoiceNum);
+                this._retrPayments(oPmtHdr.getProperty(sBindingPath).InvoiceNum, sBindingPath);
+                this._retrPaymentItmes(oPmtHdr.getProperty(sBindingPath).InvoiceNum, sBindingPath);
                 this._retrPaymentSumrys(oPmtHdr.getProperty(sBindingPath).InvoiceNum, sBindingPath);
             }
         };
         /*****************************************************************************************************************************************************/
 
-        CustomController.prototype._retrPayments = function (sInvNum) {
-            var sPath;
+        CustomController.prototype._retrPayments = function (sInvNum, sBindingPath) {
+            var oChbkOData = this.getView().getModel('oDataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/PaymentHdrs(\'' + sInvNum + '\')/Payments';
+                //'/PaymentHdrs' + '(InvoiceNum=\'' + sInvNum + '\',Paidamt=\'0.0000\')';
+                //'/PaymentHdrs(\'' + sInvNum + '\')/Payments';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oPaymentHdr').setProperty(sBindingPath + '/Payments', oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oChbkOData) {
+                oChbkOData.read(sPath, oParameters);
+            }
 
         };
-        CustomController.prototype._retrPaymentItmes = function (sInvNum) {
+        CustomController.prototype._retrPaymentItmes = function (sInvNum, sBindingPath) {
+            var oChbkOData = this.getView().getModel('oDataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/PaymentHdrs(\'' + sInvNum + '\')/PaymentItems';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oPaymentHdr').setProperty(sBindingPath + '/PaymentItems', oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oChbkOData) {
+                oChbkOData.read(sPath, oParameters);
+            }
 
         };
         CustomController.prototype._retrPaymentSumrys = function (sInvNum, sBindingPath) {
@@ -144,7 +197,6 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     if (oData.results) {
-                        oData.results[0].PrvAmtDueRt = '<br>';
                         this.getView().getModel('oPaymentHdr').setProperty(sBindingPath + '/PaymentSumry', oData.results[0]);
                     }
                 }.bind(this),
@@ -158,7 +210,7 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype._initRouitingInfo = function () {
+        CustomController.prototype._initRoutingInfo = function () {
             var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
 
             this._bpNum = oRouteInfo.parameters.bpNum;
@@ -211,15 +263,19 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     if (oData) {
-                        /*this.getView().getModel('oPayments').setProperty('/oCtxt', {});
-                        this.getView().getModel('oPaymentItems').setProperty('/oCtxt', {});
-                        this.getView().getModel('oPaymentSumrys').setProperty('/oCtxt', {});*/
-
                         for (i = 0; i < oData.results.length; i = i + 1) {
-                            //this.getView().getModel('oPayments').setProperty('/oCtxt/' + i, false);
-                            //this.getView().getModel('oPaymentItems').setProperty('/oCtxt/' + i, false);
-                            //this.getView().getModel('oPaymentSumrys').setProperty('/oCtxt/' + i, false);
-
+                            oData.results[i].oCallOut = {};
+                            if (oData.results[i].CallOut) {
+                                oData.results[i].oCallOut = JSON.parse(oData.results[i].CallOut);
+                                if (oData.results[i].oCallOut.CallOuts.length === 1) {
+                                    oData.results[i].sCallOut = oData.results[i].oCallOut.CallOuts[0].CallOut;
+                                } else if (oData.results[i].oCallOut.CallOuts.length === 2) {
+                                    oData.results[i].sCallOut = oData.results[i].oCallOut.CallOuts[0].CallOut + '+' + oData.results[i].oCallOut.CallOuts[1].CallOut;
+                                } else {
+                                    oData.results[i].sCallOut = oData.results[i].oCallOut.CallOuts.length + '+';
+                                    this.getView().byId('ChkbookHdrClOt').setVisible(true);
+                                }
+                            }
                             if (i !== oData.results.length - 1) {
                                 oData.results[i].bExpand = false;
                             } else {
@@ -227,6 +283,10 @@ sap.ui.define(
                             }
                         }
                         this.getView().getModel('oPaymentHdr').setData(oData);
+                        i = i - 1;  //At this moment i is the lengh of oData, need the index of the last element
+                        this._retrPayments(oData.results[i].InvoiceNum, '/results/' + i);
+                        this._retrPaymentSumrys(oData.results[i].InvoiceNum, '/results/' + i);
+                        this._retrPaymentItmes(oData.results[i].InvoiceNum, '/results/' + i);
                     }
                 }.bind(this),
                 error: function (oError) {
