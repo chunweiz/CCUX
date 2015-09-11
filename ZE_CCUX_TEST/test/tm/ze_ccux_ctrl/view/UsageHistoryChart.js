@@ -73,8 +73,8 @@ sap.ui.define(
 
             // Base X scale - meter reading date
             var aXScaleDomain = d3.extent(aDataSet, function (data) { return data.meterReadDate; });
-            aXScaleDomain[0] = aXScaleDomain[0].setMonth(aXScaleDomain[0].getMonth() - 1);
-            aXScaleDomain[1] = aXScaleDomain[1].setMonth(aXScaleDomain[1].getMonth() + 1);
+            aXScaleDomain[0] = new Date(aXScaleDomain[0].getFullYear(), aXScaleDomain[0].getMonth(), 1); // Beginning of month of smallest date
+            aXScaleDomain[1] = new Date(aXScaleDomain[1].getFullYear(), aXScaleDomain[1].getMonth() + 1, 0); // End of month of biggest date
 
             var fnScaleX = d3.time.scale()
                 .domain(aXScaleDomain)
@@ -84,7 +84,6 @@ sap.ui.define(
             var fnScaleY = d3.scale.linear()
                 .domain([0, d3.max(aDataSet, function (data) { return data.kwhUsage; })])
                 .range([iHeight, 0]);
-
 
             // Draw consumption line
             var oConsumptionLine = d3.svg.line()
@@ -106,13 +105,14 @@ sap.ui.define(
                     .attr('class', 'tmUsageHistChart-consumptionPoint');
 
             // Consumption data point information
-            oCanvas.selectAll('text.tmUsageHistChart-consumptionPointTxt')
+            oCanvas.append('g').selectAll('text.tmUsageHistChart-consumptionPointTxt')
                 .data(aDataSet)
                 .enter()
                 .append('text')
                     .attr('x', function (data) { return fnScaleX(data.meterReadDate); })
                     .attr('y', function (data) { return fnScaleY(data.kwhUsage); })
                     .attr('class', 'tmUsageHistChart-consumptionPointTxt')
+                    .attr('transform', 'translate(0, -30)')
                     .text(function (data) { return data.kwhUsage; } );
 
             function fnOnConsumptionDataPointMouseOver(data) {

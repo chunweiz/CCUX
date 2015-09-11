@@ -40,6 +40,15 @@
             stroke: #ffffff;
             fill: #6F8D9E;
         }
+
+        .tmUsageHistChart-consumptionPointTxt {
+            fill: #ffffff;
+            text-anchor: middle;
+        }
+
+        .tmUsageHistChart-consumptionPointTxt-hidden {
+            display: none;
+        }
     </style>
 
     <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
