@@ -85,17 +85,6 @@ sap.ui.define(
                 .domain([0, d3.max(aDataSet, function (data) { return data.kwhUsage; })])
                 .range([iHeight, 0]);
 
-            // Draw X axis
-            var fnXAxis = d3.svg.axis()
-                .orient('bottom')
-                .scale(fnScaleX);
-
-            oCanvas.append('g')
-                .attr('class', 'tmUsageHistChart-xAxis')
-                .call(fnXAxis);
-
-            // Draw Y axis
-
 
             // Draw consumption line
             var oConsumptionLine = d3.svg.line()
@@ -116,6 +105,26 @@ sap.ui.define(
                     .attr('cy', function (data) { return fnScaleY(data.kwhUsage); })
                     .attr('class', 'tmUsageHistChart-consumptionPoint');
 
+            // Consumption data point information
+            oCanvas.selectAll('text.tmUsageHistChart-consumptionPointTxt')
+                .data(aDataSet)
+                .enter()
+                .append('text')
+                    .attr('x', function (data) { return fnScaleX(data.meterReadDate); })
+                    .attr('y', function (data) { return fnScaleY(data.kwhUsage); })
+                    .attr('class', 'tmUsageHistChart-consumptionPointTxt')
+                    .text(function (data) { return data.kwhUsage; } );
+
+            function fnOnConsumptionDataPointMouseOver(data) {
+
+            }
+
+            function fnOnConsumptionDataPointMouseOut(data) {
+
+            }
+
+            oConsumptionDataPoint.on('mouseover', fnOnConsumptionDataPointMouseOver);
+            oConsumptionDataPoint.on('mouseout', fnOnConsumptionDataPointMouseOut);
         };
 
         /*
