@@ -111,7 +111,7 @@
         "InvAmtDue":"678.7900",
         "DueDate":"\/Date(1398056401000+0000)\/",
         "BillDate":"\/Date(1396587601000+0000)\/",
-        "CallOut":"{\"CallOuts\":[ {\"CallOut\":\"FNL\"},{\"CallOut\":\"DPP\"},{\"CallOut\":\"ABC\"},{\"CallOut\":\"CDE\"},{\"CallOut\":\"KFC\"}  ]}",
+        "CallOut":"{\"CallOuts\":[ {\"CallOut\":\"FNL\"},{\"CallOut\":\"DPP\"} ]}",
         "Payments":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303668')/Payments"
