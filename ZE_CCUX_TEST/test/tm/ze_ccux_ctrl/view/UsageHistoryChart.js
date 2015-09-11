@@ -15,7 +15,7 @@ sap.ui.define(
                 properties: {
                     width: { type: 'int', defaultValue: 800 },
                     height: { type: 'int', defaultValue: 300 },
-                    consumptionGroup: { type: 'string', defaultValue: 'RES' } // Change to type later?
+                    consumptionGroup: { type: 'string', defaultValue: 'RES' }
                 }
             },
 
@@ -31,18 +31,9 @@ sap.ui.define(
 
         CustomControl.prototype.onInit = function () {};
         CustomControl.prototype.onBeforeRendering = function () {};
-
-        CustomControl.prototype.onAfterRendering = function () {
-            this._createChart();
-        };
-
-        CustomControl.prototype.onExit = function () {
-            this._oDataModel = null;
-        };
-
-        CustomControl.prototype.refreshChart = function () {
-            this.rerender();
-        };
+        CustomControl.prototype.onAfterRendering = function () { this._createChart(); };
+        CustomControl.prototype.onExit = function () { this._oDataModel = null; };
+        CustomControl.prototype.refreshChart = function () { this.rerender(); };
 
         CustomControl.prototype.setDataModel = function (model) {
             this._oDataModel = model;
@@ -54,8 +45,8 @@ sap.ui.define(
         };
 
         CustomControl.prototype._getDataSet = function () {
-            var aData = jQuery.extend(true, [], this.getDataModel().getData().data); // Deep clone the dataset
-            var fnDateParser = d3.time.format('%x').parse; // date format m/d/yyyy
+            var aData = jQuery.extend(true, [], this.getDataModel().getData().data);
+            var fnDateParser = d3.time.format('%x').parse;
 
             aData.forEach(function (data) {
                 data.meterReadDate = fnDateParser(data.meterReadDate);
@@ -65,7 +56,7 @@ sap.ui.define(
         };
 
         CustomControl.prototype._createChart = function () {
-            var oMargin = { top: 20, right: 30, bottom: 30, left: 20 };
+            var oMargin = { top: 50, right: 50, bottom: 50, left: 50 };
             var iWidth = this.getWidth() - oMargin.left - oMargin.right;
             var iHeight = this.getHeight() - oMargin.top - oMargin.bottom;
             var aDataSet = this._getDataSet();
@@ -75,16 +66,19 @@ sap.ui.define(
             // Create a canvas with margin
             var oCanvas = d3.select('#' + this.getId())
                 .append('svg')
-                    .attr('width', iWidth)
-                    .attr('height', iHeight)
+                    .attr('width', this.getWidth())
+                    .attr('height', this.getHeight())
                     .append('g')
                         .attr('transform', 'translate(' + [ oMargin.left, oMargin.top ] + ')');
 
             // Base X scale - meter reading date
+            var aXScaleDomain = d3.extent(aDataSet, function (data) { return data.meterReadDate; });
+            aXScaleDomain[0] = aXScaleDomain[0].setMonth(aXScaleDomain[0].getMonth() - 1);
+            aXScaleDomain[1] = aXScaleDomain[1].setMonth(aXScaleDomain[1].getMonth() + 1);
+
             var fnScaleX = d3.time.scale()
-                .domain(d3.extent(aDataSet, function (data) { return data.meterReadDate; }))
-                .range([0, iWidth])
-                .nice();
+                .domain(aXScaleDomain)
+                .range([0, iWidth]);
 
             // Base Y scale - kwh usage
             var fnScaleY = d3.scale.linear()
@@ -92,9 +86,16 @@ sap.ui.define(
                 .range([iHeight, 0]);
 
             // Draw X axis
-            //
+            var fnXAxis = d3.svg.axis()
+                .orient('bottom')
+                .scale(fnScaleX);
+
+            oCanvas.append('g')
+                .attr('class', 'tmUsageHistChart-xAxis')
+                .call(fnXAxis);
 
             // Draw Y axis
+
 
             // Draw consumption line
             var oConsumptionLine = d3.svg.line()

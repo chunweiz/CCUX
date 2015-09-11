@@ -9,8 +9,7 @@
                 "sap.m": {},
                 "ute.ui.commons": {},
                 "ute.ui.main": {},
-                "ute.ui.app": {},
-                "ute.ui.viz": {}
+                "ute.ui.app": {}
             }
         },
 

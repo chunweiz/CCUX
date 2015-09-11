@@ -13,9 +13,7 @@ sap.ui.define(
         var CustomController = Controller.extend('test.tm.ze_ccux_ctrl.view.UsageHistory');
 
         CustomController.prototype.onBeforeRendering = function () {
-            this.getView().byId('content').removeAllAggregation('content');
-
-            var oCustomChart = new CustomChart().setDataModel(new JSONModel({
+            this.getView().byId('chart').setDataModel(new JSONModel({
                 data: [
                     { meterReadDate: '3/12/2015', kwhUsage: 1287, avgHighTemp: 46 },
                     { meterReadDate: '2/11/2015', kwhUsage: 1312, avgHighTemp: 45 },
@@ -30,9 +28,6 @@ sap.ui.define(
                     { meterReadDate: '5/13/2014', kwhUsage: 779, avgHighTemp: 25 }
                 ]
             }));
-
-            this.getView().byId('content').addContent(oCustomChart);
-            
         };
 
         return CustomController;

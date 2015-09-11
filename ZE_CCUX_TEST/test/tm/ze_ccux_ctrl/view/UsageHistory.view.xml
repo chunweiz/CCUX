@@ -3,6 +3,7 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:sm="sap.m"
+    xmlns:tm="test.tm.ze_ccux_ctrl.view"
     height="100%"
     width="100%"
     displayBlock="true">
@@ -19,12 +20,29 @@
             fill: none;
         }
 
+        .tmUsageHistChart-xAxis path {
+            fill: none;
+            stroke: black;
+            shape-rendering: crispEdges;
+        }
+
+        .tmUsageHistChart-xAxis path {
+
+        }
+
         .tmUsageHistChart-consumptionPoint {
             stroke: #808080;
             stroke-width: 2;
             fill: #ffffff;
         }
+
+        .tmUsageHistChart-consumptionPoint:hover {
+            stroke: #ffffff;
+            fill: #6F8D9E;
+        }
     </style>
 
-    <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true"></sm:ScrollContainer>
+    <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
+        <tm:UsageHistoryChart id="chart" width="900" height="400"></tm:UsageHistoryChart>
+    </sm:ScrollContainer>
 </mvc:View>
