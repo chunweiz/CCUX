@@ -78,7 +78,7 @@
                 class="nrgCamOvr-left nrgCamOvr-top" >
                     <u:rows>
                     <u:TableRow id="idnrgCamPds-pendRow" class="nrgCamPds-pendRow" >
-                        <um:Checkbox id="idPds" select="onPendingSwapsSelected" />
+                        <um:Checkbox id="idPds" select=".onPendingSwapsSelected" />
                         <c:Label text="{comp-campaign>OfferDesc}"/>
                         <c:Label text="{comp-campaign>Campaign}"/>
                         <c:Label text="{comp-campaign>Promo}"/>

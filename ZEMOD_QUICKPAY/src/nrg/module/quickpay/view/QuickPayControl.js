@@ -70,12 +70,7 @@ sap.ui.define(
                 //this._oPaymentPopup.setContent(oQuickPayView);
                 return this;
             }
-            this._oPaymentPopup.setPosition(
-                Popup.Dock.RightBottom,
-                Popup.Dock.CenterCenter,
-                this.getParent(),
-                "0 0"
-            );
+            //this.setPosition();
             //this._oPaymentPopup.setContent(this);
             this._oPaymentPopup.setInitialFocusId(oQuickPayView.getId("idnrgQPPay-Popup"));
             this._oPaymentPopup.open();
@@ -93,6 +88,17 @@ sap.ui.define(
             }
 
             return this;
+        };
+        /* ========================================================================*/
+		/* Method to Set the Popup Position                                        */
+		/* ======================================================================= */
+        QuickPayControl.prototype.setPosition = function () {
+            this._oPaymentPopup.setPosition(
+                Popup.Dock.RightBottom,
+                Popup.Dock.CenterCenter,
+                this.getParent(),
+                "0 0"
+            );
         };
         return QuickPayControl;
     },

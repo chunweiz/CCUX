@@ -19,7 +19,17 @@ sap.ui.define(
 		/* lifecycle method- Init                                      */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
-
+            var oModel = new sap.ui.model.json.JSONModel({
+                employees: [
+                    { firstName: 'Roger', lastName: 'Cheng' },
+                    { firstName: 'Yumi', lastName: 'Yao' },
+                    { firstName: 'Yumi', lastName: 'Yao' },
+                    { firstName: 'Yumi', lastName: 'Yao' },
+                    { firstName: 'Yumi', lastName: 'Yao' },
+                    { firstName: 'Taylor', lastName: 'Hsu' }
+                ]
+            });
+            this.getView().setModel(oModel, 'bp');
         };
         /* =========================================================== */
 		/* lifecycle method- Before Rendering                          */
@@ -453,6 +463,7 @@ sap.ui.define(
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupPayment");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
+            this.getParent().setPosition();
         };
 
         /**
