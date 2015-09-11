@@ -1,6 +1,6 @@
 .nrgQPPay-View {
             @nrgQPPay-maxWidth: 340px;
-            @nrgQPPay-PendingScreenWidth: 40rem;
+            @nrgQPPay-PendingScreenWidth: 45rem;
             @nrgQPPay-marginleft: 2.4rem;
             color : @nrgColor-white;
             font-family: @nrgFontFamily;
@@ -20,6 +20,10 @@
     }
     &    .nrgQPPay-tabPanelItem > .uteMTabPanelItem-content {
             width: @nrgQPPay-maxWidth;
+            height: 100%;
+    }
+    &    .nrgQPPay-tabPanelItemNew > .uteMTabPanelItem-content {
+            width: 100%;
             height: 100%;
     }
     &    .nrgQPPay-Popup {
@@ -275,11 +279,11 @@
                     margin-top : 10px;
             }
             &   .nrgQP-Table {
-                    width: 39rem;
+                    width: 44rem;
                     margin: 20px 8px 20px 8px;
                     color: @nrgColor-black;
 
-                    &   .nrgQPTable-header {
+                    &  > .nrgQPTable-header {
                             width: 100%;
                             background-color: @nrgColor-grey-light;
                             line-height: 30px;
@@ -290,7 +294,35 @@
                             display: inline-block;
                             width: 6rem;
                             text-align: center;
+                            min-width: 6rem;
                     }
+                    & > .nrgQPTable-Row > .nrgQPTable-Rows > .nrgQPCC-Data {
+                            display: inline-block;
+                            width: 6rem;
+                            text-align: center;
+                            min-width: 6rem;
+                            & > .uteTextfield-noBorder-input {
+                                font-size: @nrgFontSize-small;
+                            }
+                    }
+                    & > .nrgQPTable-Row > .nrgQPTable-Rows:nth-child(even) {
+                            background-color: @nrgColor-grey-highlight;
+                    }
+                    & > .nrgQPTable-Row > .nrgQPTable-Rows:nth-child(odd) {
+                            background-color: transparent;
+                    }
+                    & > .nrgQPTable-Row > .nrgQPTable-Rows > .nrgQPCC-CheckBox {
+                            vertical-align: middle;
+                            margin-top: 5px;
+                            display: inline-block;
+                            width: 6rem;
+                            min-width: 6rem;
+                            padding-left: 35px;
+                    }
+
+            }
+            &  .nrgQPPCC-buttons {
+                    text-align: center;
             }
    }
 

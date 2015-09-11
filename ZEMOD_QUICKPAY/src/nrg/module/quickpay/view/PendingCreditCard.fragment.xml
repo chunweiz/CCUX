@@ -8,6 +8,7 @@
         <u:Tag text="{comp-i18n-quickpay>nrgQPPendingCreditCard}" class="nrgQPCC-ttl"/>
             <u:Tag class="nrgQP-Table">
                 <u:Tag class="nrgQPTable-header nrgQP-top">
+                    <u:Tag text="Select" class="nrgQPCC-hd"/>
                     <u:Tag text="{comp-i18n-quickpay>nrgQPTrackingID}" class="nrgQPCC-hd"/>
                     <u:Tag text="{comp-i18n-quickpay>nrgQPCardNumber}" class="nrgQPCC-hd"/>
                     <u:Tag text="{comp-i18n-quickpay>nrgQPExpiryDate}" class="nrgQPCC-hd"/>
@@ -15,14 +16,40 @@
                     <u:Tag text="{comp-i18n-quickpay>nrgQPAmount}" class="nrgQPCC-hd"/>
                     <u:Tag text="{comp-i18n-quickpay>nrgQPCurrentStatus}" class="nrgQPCC-hd"/>
                 </u:Tag>
-                <u:Tag content="{comp-quickpay>/table}" class="nrgUsgTable-Row">
-                        <u:Tag text="{comp-quickpay>PeriodBegin}" class="nrgUsgTag-Date"/>
-                        <u:Tag text="{comp-quickpay>BillingDays}" class="nrgUsgTag1"/>
-                        <u:Tag text="{comp-quickpay>BillingDays}" class="nrgUsgTag1"/>
-                        <u:Tag text="{comp-quickpay>KwhUsage}" class="nrgUsgTag"/>
-                        <u:Tag text="{comp-quickpay>Actual}" class="nrgUsgTag"/>
-                        <u:Tag text="{comp-quickpay>LowTemp} {comp-quickpay>HighTemp}" class="nrgUsgTag3"/>
+                <u:Tag content="{bp>/employees}" class="nrgQPTable-Row">
+                    <u:Tag class="nrgQPTable-Rows">
+                        <um:Checkbox id="zzz" select=".onSelected" class="nrgQPCC-CheckBox"/>
+                        <u:Tag text="{bp>firstName}" class="nrgQPCC-Data"/>
+                        <u:Tag text="{bp>firstName}" class="nrgQPCC-Data"/>
+                        <u:Tag text="{bp>firstName}" class="nrgQPCC-Data"/>
+                        <u:Textfield fieldType="Noborder"
+                                     value="{bp>firstName}"
+                                     class="nrgQPCC-Data"
+                                     editable="false"
+                                     width="100%" />
+                        <u:Textfield fieldType="Noborder"
+                                     value="{bp>firstName}"
+                                     class="nrgQPCC-Data"
+                                     editable="false"
+                                     width="100%" />
+
+                        <u:Tag text="{bp>firstName}" class="nrgQPCC-Data"/>
+                    </u:Tag>
                 </u:Tag>
+
+            </u:Tag>
+
+            <u:Tag class="nrgQPPCC-buttons" >
+                <um:Button press=".onPendingCCSave"
+                           text="{comp-i18n-quickpay>nrgQPPay}"
+                           class="nrgQPCC-btn"
+                           design="Default">
+                </um:button>
+                <um:Button press=".onPendingCCCancel"
+                           text="{comp-i18n-quickpay>nrgQPCancel}"
+                           class="nrgQPCC-btn"
+                           design="Default">
+                </um:button>
             </u:Tag>
     </u:Tag>
 </core:FragmentDefinition>
