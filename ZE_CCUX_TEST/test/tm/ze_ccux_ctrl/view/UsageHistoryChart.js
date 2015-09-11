@@ -92,7 +92,7 @@ sap.ui.define(
                 .range([iHeight, 0]);
 
             // Draw X axis
-            
+            //
 
             // Draw Y axis
 

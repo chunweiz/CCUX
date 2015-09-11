@@ -26,7 +26,5 @@
         }
     </style>
 
-    <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
-
-    </sm:ScrollContainer>
+    <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true"></sm:ScrollContainer>
 </mvc:View>

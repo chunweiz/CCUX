@@ -32,6 +32,7 @@ sap.ui.define(
             }));
 
             this.getView().byId('content').addContent(oCustomChart);
+            
         };
 
         return CustomController;
