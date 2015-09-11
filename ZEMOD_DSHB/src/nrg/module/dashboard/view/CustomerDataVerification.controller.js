@@ -66,6 +66,13 @@ sap.ui.define(
             //Siebel Customer Indicator
             this.bSiebelCustomer = false;
 
+            // Retrieve routing parameters
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+
+            this._bpNum = oRouteInfo.parameters.bpNum;
+            this._caNum = oRouteInfo.parameters.caNum;
+            this._coNum = oRouteInfo.parameters.coNum;
+
             this._initToggleArea();
             this._initDtaVrfRetr();
             this._initCfrmStatus();
@@ -250,17 +257,21 @@ sap.ui.define(
                 eventBus = sap.ui.getCore().getEventBus(),
                 oPayload = {iIndex: iSelectedCA};
 
-            if (iSelectedCA) {
-                iPreSelCA = iSelectedCA;
-            } else {
-                iPreSelCA = 0;
-            }
-
-
             sPath = '/Partners' + '(\'' + sBpNum + '\')/Buags/';
             oParameters = {
                 success : function (oData) {
                     if (oData) {
+                        
+                        if (iSelectedCA) {
+                            iPreSelCA = iSelectedCA;
+                        } else {
+                            for (i = 0; i < oData.results.length; i++ ) {
+                                if (oData.results[i].ContractAccountID === this._caNum) {
+                                    iPreSelCA = i;
+                                }
+                            }
+                        }
+
                         if (oData.results[iPreSelCA]) {
                             //If there's first record of Buags, load as default to display
                             this.getView().getModel('oDtaVrfyBuags').setData(oData.results[iPreSelCA]);
