@@ -229,18 +229,18 @@ sap.ui.define(
                         
                         var caIndex = 0;
                         
-                        // if(this._caNum) {
-                        //     for (var i=0; i<oData.Buags.results.length; i++) {
-                        //         if (oData.Buags.results[i].ContractAccountID === this._caNum) {
-                        //             caIndex = i;
-                        //         }
-                        //     }
-                        // }
+                        if(this._caNum) {
+                            for (var i=0; i<oData.Buags.results.length; i++) {
+                                if (oData.Buags.results[i].ContractAccountID === this._caNum) {
+                                    caIndex = i;
+                                }
+                            }
+                        }
 
-                        if (oData.Buags.results[0]) {
-                            this.getView().getModel('oSmryBuagInf').setData(oData.Buags.results[0]);
+                        if (oData.Buags.results[caIndex]) {
+                            this.getView().getModel('oSmryBuagInf').setData(oData.Buags.results[caIndex]);
                             this.getView().getModel('oSmryAllBuags').setData(oData.Buags);
-                            this.getView().getModel('oSmryAllBuags').setProperty('/selectedIndex', 0);
+                            this.getView().getModel('oSmryAllBuags').setProperty('/selectedIndex', caIndex);
                         }
                     }
                 }.bind(this),
