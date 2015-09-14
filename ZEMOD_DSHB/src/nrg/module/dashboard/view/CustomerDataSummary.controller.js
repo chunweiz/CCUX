@@ -187,15 +187,20 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     if (oData) {
-                        if(this._caNum) {
-                            for (var i=0; i<oData.results.length; i++) {
-                                if (oData.results[i].ContractAccountID === this._caNum) {
-                                    this.getView().getModel('oSmryBuagInf').setData(oData.results[i]);
-                                }
-                            }
-                        } else {
-                            this.getView().getModel('oSmryBuagInf').setData(oData.results[0]);
-                        }
+                        
+                        // if(this._caNum) {
+                        //     for (var i=0; i<oData.results.length; i++) {
+                        //         if (oData.results[i].ContractAccountID === this._caNum) {
+                        //             this.getView().getModel('oSmryBuagInf').setData(oData.results[i]);
+                        //         }
+                        //     }
+                        // } else {
+                        //     this.getView().getModel('oSmryBuagInf').setData(oData.results[0]);
+                        // }
+
+                        this.getView().getModel('oSmryBuagInf').setData(oData.results[0]);
+
+
                         this._initRetrAssignedAccount(this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID'));
                         this._caNum = this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID');
                     }
@@ -231,18 +236,18 @@ sap.ui.define(
                         
                         var caIndex = 0;
                         
-                        if(this._caNum) {
-                            for (var i=0; i<oData.Buags.results.length; i++) {
-                                if (oData.Buags.results[i].ContractAccountID === this._caNum) {
-                                    caIndex = i;
-                                }
-                            }
-                        }
+                        // if(this._caNum) {
+                        //     for (var i=0; i<oData.Buags.results.length; i++) {
+                        //         if (oData.Buags.results[i].ContractAccountID === this._caNum) {
+                        //             caIndex = i;
+                        //         }
+                        //     }
+                        // }
 
-                        if (oData.Buags.results[caIndex]) {
-                            this.getView().getModel('oSmryBuagInf').setData(oData.Buags.results[caIndex]);
+                        if (oData.Buags.results[0]) {
+                            this.getView().getModel('oSmryBuagInf').setData(oData.Buags.results[0]);
                             this.getView().getModel('oSmryAllBuags').setData(oData.Buags);
-                            this.getView().getModel('oSmryAllBuags').setProperty('/selectedIndex', caIndex);
+                            this.getView().getModel('oSmryAllBuags').setProperty('/selectedIndex', 0);
                         }
                     }
                 }.bind(this),

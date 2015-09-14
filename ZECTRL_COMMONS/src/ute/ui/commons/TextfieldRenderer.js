@@ -173,8 +173,6 @@ sap.ui.define(
                 } else {
                     if (oTextfield.getValue()) {
                         oRm.writeAttribute('value', oTextfield.getValue());
-                    } else {
-                        oRm.writeAttribute('placeholder', oTextfield.getPlaceholder());
                     }
                     oRm.write("\"");
                     oRm.write("/>");
