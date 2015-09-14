@@ -181,18 +181,15 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         
-                        // if(this._caNum) {
-                        //     for (var i=0; i<oData.results.length; i++) {
-                        //         if (oData.results[i].ContractAccountID === this._caNum) {
-                        //             this.getView().getModel('oSmryBuagInf').setData(oData.results[i]);
-                        //         }
-                        //     }
-                        // } else {
-                        //     this.getView().getModel('oSmryBuagInf').setData(oData.results[0]);
-                        // }
-
-                        this.getView().getModel('oSmryBuagInf').setData(oData.results[0]);
-
+                        if (this._caNum) {
+                            for (var i=0; i<oData.results.length; i++) {
+                                if (oData.results[i].ContractAccountID === this._caNum) {
+                                    this.getView().getModel('oSmryBuagInf').setData(oData.results[i]);
+                                }
+                            }
+                        } else {
+                            this.getView().getModel('oSmryBuagInf').setData(oData.results[0]);
+                        }
 
                         this._initRetrAssignedAccount(this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID'));
                         this._caNum = this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID');
@@ -229,7 +226,7 @@ sap.ui.define(
                         
                         var caIndex = 0;
                         
-                        if(this._caNum) {
+                        if (this._caNum) {
                             for (var i=0; i<oData.Buags.results.length; i++) {
                                 if (oData.Buags.results[i].ContractAccountID === this._caNum) {
                                     caIndex = i;
