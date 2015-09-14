@@ -90,7 +90,8 @@ sap.ui.define(
             var oConsumptionXAxis = d3.svg.axis()
                 .orient('bottom')
                 .scale(fnScaleX)
-                .tickValues(aDataSet.map(function (data) { return data.meterReadDate; }));
+                .tickValues(aDataSet.map(function (data) { return data.meterReadDate; }))
+                .tickFormat(d3.time.format("%d/%m/%y"));
 
             oCanvas.append('g')
                 .attr('class', 'tmUsageHistChart-consumptionXAxis')

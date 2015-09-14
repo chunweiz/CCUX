@@ -74,6 +74,6 @@
     </style>
 
     <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
-        <tm:UsageHistoryChart id="chart" width="1000" height="400"></tm:UsageHistoryChart>
+        <tm:UsageHistoryChart id="chart" width="1200" height="400"></tm:UsageHistoryChart>
     </sm:ScrollContainer>
 </mvc:View>
