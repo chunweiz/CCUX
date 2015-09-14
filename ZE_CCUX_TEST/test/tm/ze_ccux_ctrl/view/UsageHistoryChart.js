@@ -31,9 +31,19 @@ sap.ui.define(
 
         CustomControl.prototype.onInit = function () {};
         CustomControl.prototype.onBeforeRendering = function () {};
-        CustomControl.prototype.onAfterRendering = function () { this._createChart(); };
-        CustomControl.prototype.onExit = function () { this._oDataModel = null; };
-        CustomControl.prototype.refreshChart = function () { this.rerender(); };
+
+        CustomControl.prototype.onAfterRendering = function () {
+            this._createChart();
+            this._createTemperatureChart();
+        };
+
+        CustomControl.prototype.onExit = function () {
+            this._oDataModel = null;
+        };
+
+        CustomControl.prototype.refreshChart = function () {
+            this.rerender();
+        };
 
         CustomControl.prototype.setDataModel = function (model) {
             this._oDataModel = model;
@@ -56,16 +66,16 @@ sap.ui.define(
         };
 
         CustomControl.prototype._createChart = function () {
-            var oMargin = { top: 60, right: 60, bottom: 60, left: 100 };
+            var oMargin = { top: 50, right: 60, bottom: 60, left: 100 };
             var iWidth = this.getWidth() - oMargin.left - oMargin.right;
-            var iHeight = this.getHeight() - oMargin.top - oMargin.bottom;
+            var iHeight = this.getHeight() - oMargin.top - oMargin.bottom - 50;
             var aDataSet = this._getDataSet();
 
             // Create a canvas with margin
             var oCanvas = d3.select('#' + this.getId())
                 .append('svg')
                     .attr('width', this.getWidth())
-                    .attr('height', this.getHeight())
+                    .attr('height', this.getHeight() - 50)
                     .append('g')
                         .attr('transform', 'translate(' + [ oMargin.left, oMargin.top ] + ')');
 
@@ -87,7 +97,7 @@ sap.ui.define(
                 .range([iHeight, 0]);
 
             //Background
-            
+
 
             // X axis
             var fnConsumptionXAxis = d3.svg.axis()
@@ -116,7 +126,7 @@ sap.ui.define(
                 .append('text')
                     .attr('class', 'tmUsageHistChart-consumptionYAxisLabel')
                     .attr('x', -iHeight / 2)
-                    .attr('y', -55)
+                    .attr('y', -65)
                     .attr('transform', 'rotate(-90)')
                     .text('kWh');
 
@@ -196,6 +206,24 @@ sap.ui.define(
             oConsumptionDataPoint.on('mouseover', fnOnConsumptionDataPointMouseOver);
             oConsumptionDataPoint.on('mouseout', fnOnConsumptionDataPointMouseOut);
         };
+
+        CustomControl.prototype._createTemperatureChart = function () {
+            var oMargin = { top: 0, right: 60, bottom: 0, left: 100 };
+            var iWidth = this.getWidth() - oMargin.left - oMargin.right;
+            var iHeight = 50;
+            var aDataSet = this._getDataSet();
+
+            // Create a canvas with margin
+            var oCanvas = d3.select('#' + this.getId())
+                .append('svg')
+                    .attr('width', this.getWidth())
+                    .attr('height', iHeight)
+                    .append('g')
+                        .attr('transform', 'translate(' + [ oMargin.left, oMargin.top ] + ')');
+
+            
+        };
+
 
         /*
             a.	Y axis – consumption in increments of 500 for RES and 1000 for REBS
