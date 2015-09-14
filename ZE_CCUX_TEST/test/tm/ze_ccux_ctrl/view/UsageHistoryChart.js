@@ -56,12 +56,10 @@ sap.ui.define(
         };
 
         CustomControl.prototype._createChart = function () {
-            var oMargin = { top: 50, right: 50, bottom: 50, left: 50 };
+            var oMargin = { top: 60, right: 60, bottom: 60, left: 60 };
             var iWidth = this.getWidth() - oMargin.left - oMargin.right;
             var iHeight = this.getHeight() - oMargin.top - oMargin.bottom;
             var aDataSet = this._getDataSet();
-
-            var iYStepSize = this.getConsumptionGroup() === 'REBS' ? 1000 : 500;
 
             // Create a canvas with margin
             var oCanvas = d3.select('#' + this.getId())
@@ -81,11 +79,25 @@ sap.ui.define(
                 .range([0, iWidth]);
 
             // Base Y scale - kwh usage
+            var iYAxisTickSize = this.getConsumptionGroup() === 'REBS' ? 1000 : 500;
+            var iMaxKwhUsage = d3.max(aDataSet, function (data) { return data.kwhUsage; });
+
             var fnScaleY = d3.scale.linear()
-                .domain([0, d3.max(aDataSet, function (data) { return data.kwhUsage; })])
+                .domain([0, iMaxKwhUsage + (iYAxisTickSize - (iMaxKwhUsage % iYAxisTickSize))])
                 .range([iHeight, 0]);
 
-            // Draw consumption line
+            // Y axis
+            var oConsumptionYAxis = d3.svg.axis()
+                .orient('left')
+                .scale(fnScaleY)
+                .ticks(Math.floor(iMaxKwhUsage / iYAxisTickSize) + 1)
+                .tickFormat(d3.format('d'));
+
+            oCanvas.append('g')
+                .attr('class', 'tmUsageHistChart-consumptionYAxis')
+                .call(oConsumptionYAxis);
+
+            // Consumption line
             var oConsumptionLine = d3.svg.line()
                 .x(function (data) { return fnScaleX(data.meterReadDate); })
                 .y(function (data) { return fnScaleY(data.kwhUsage); });
@@ -94,7 +106,7 @@ sap.ui.define(
                 .attr('d', oConsumptionLine(aDataSet))
                 .attr('class', 'tmUsageHistChart-consumptionLine');
 
-            // Draw consumption data points
+            // Consumption data points
             var oConsumptionDataPoint = oCanvas.append('g').selectAll('circle.tmUsageHistChart-consumptionPoint')
                 .data(aDataSet)
                 .enter()
@@ -104,28 +116,34 @@ sap.ui.define(
                     .attr('cy', function (data) { return fnScaleY(data.kwhUsage); })
                     .attr('class', 'tmUsageHistChart-consumptionPoint');
 
-            // Consumption data point information
-            oCanvas.append('g').selectAll('text.tmUsageHistChart-consumptionPointTxt')
-                .data(aDataSet)
-                .enter()
-                .append('text')
-                    .attr('x', function (data) { return fnScaleX(data.meterReadDate); })
-                    .attr('y', function (data) { return fnScaleY(data.kwhUsage); })
-                    .attr('class', 'tmUsageHistChart-consumptionPointTxt')
-                    .attr('transform', 'translate(0, -30)')
-                    .text(function (data) { return data.kwhUsage; } );
+            // Consumption data point tooltip
+            var oConsumptionDataPointTooltip = oCanvas.append('g')
+                .attr('class', 'tmUsageHistChart-consumptionPointTooltip')
+                .style('display', 'none');
 
-            oCanvas.append('g')
-                .append('path')
-                    .attr('d', 'M1,16 C1,7.71572875 7.71655983,1 15.9980512,1 L86.0019488,1 C94.2851438,1 101,7.71390727 101,16 L101,16 C101,24.2842712 94.2823898,31 86.0015316,31 L59.3333333,31 L51,41 L42.6666667,31 L15.9984684,31 C7.71504305,31 1,24.2860927 1,16 L1,16 Z')
-                    .attr('class', 'tmUsageHistChart-consumptionPointTooltip');
+            // Consumption data point tooltip background
+            oConsumptionDataPointTooltip.append('path')
+                .attr('d', 'M1,16 C1,7.71572875 7.71655983,1 15.9980512,1 L86.0019488,1 C94.2851438,1 101,7.71390727 101,16 L101,16 C101,24.2842712 94.2823898,31 86.0015316,31 L59.3333333,31 L51,41 L42.6666667,31 L15.9984684,31 C7.71504305,31 1,24.2860927 1,16 L1,16 Z');
+
+            // Consumption data point tooltip text
+            oConsumptionDataPointTooltip.append('text')
+                .attr('dy', '0.35em');
 
             function fnOnConsumptionDataPointMouseOver(data) {
+                var aCircleXY = [fnScaleX(data.meterReadDate), fnScaleY(data.kwhUsage)];
 
+                oConsumptionDataPointTooltip.select('path')
+                    .attr('transform', 'translate(' + [ aCircleXY[0] - 52, aCircleXY[1] - 55 ] + ')');
+
+                oConsumptionDataPointTooltip.select('text')
+                    .attr('transform', 'translate(' + [ aCircleXY[0], aCircleXY[1] - 40 ] + ')')
+                    .text(data.kwhUsage);
+
+                oConsumptionDataPointTooltip.style('display', null);
             }
 
             function fnOnConsumptionDataPointMouseOut(data) {
-
+                oConsumptionDataPointTooltip.style('display', 'none');
             }
 
             oConsumptionDataPoint.on('mouseover', fnOnConsumptionDataPointMouseOver);
