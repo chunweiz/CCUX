@@ -258,7 +258,8 @@ sap.ui.define(
         CustomController.prototype._retrPaymentHdr = function (sPath) {
             var oChbkOData = this.getView().getModel('oDataSvc'),
                 oParameters,
-                i;
+                i,
+                oCurDate = new Date();
 
             oParameters = {
                 success : function (oData) {
@@ -281,9 +282,19 @@ sap.ui.define(
                             } else {
                                 oData.results[i].bExpand = true;
                             }
+                            oData.results[i].bRegul = true;
+                            oData.results[i].bAlert = false;
                         }
-                        this.getView().getModel('oPaymentHdr').setData(oData);
+
                         i = i - 1;  //At this moment i is the lengh of oData, need the index of the last element
+
+                        //Check over due invoices
+                        if (oData.results[i].DueDate < oCurDate) {
+                            oData.results[i].bAlert = true;
+                            oData.results[i].bRegul = false;
+                        }
+
+                        this.getView().getModel('oPaymentHdr').setData(oData);
                         this._retrPayments(oData.results[i].InvoiceNum, '/results/' + i);
                         this._retrPaymentSumrys(oData.results[i].InvoiceNum, '/results/' + i);
                         this._retrPaymentItmes(oData.results[i].InvoiceNum, '/results/' + i);
