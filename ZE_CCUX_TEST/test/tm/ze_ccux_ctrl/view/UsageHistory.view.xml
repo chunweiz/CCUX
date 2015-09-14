@@ -33,6 +33,14 @@
             fill: #989898;
         }
 
+        .tmUsageHistChart-consumptionXGrid g.tick line {
+            stroke: #ffffff;
+        }
+
+        .tmUsageHistChart-consumptionYGrid g.tick line {
+            stroke: #ffffff;
+        }
+
         .tmUsageHistChart-consumptionLine {
             stroke: #ffffff;
             stroke-width: 3;
