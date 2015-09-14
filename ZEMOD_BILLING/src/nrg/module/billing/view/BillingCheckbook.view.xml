@@ -113,10 +113,15 @@
                                      press="._onPaymentHdrClicked"
                                      class="nrgBilling-blChkBk-lftDiv-scrllArea-lnItm">
                         <utmain:headerContent>
-                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh1"
+                            <ute:Tag visible="{oPaymentHdr>bRegul}"
+                                     class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh1"
                                      text="{parts:['oPaymentHdr>BillDate'],
                                             formatter:'._formatDate'}" /> <!--1. nrgBilling-blChkBk-lftDiv-scrllArea-hdr-notify for yellow bgclr-->
                                                                           <!--2. nrgBilling-blChkBk-lftDiv-scrllArea-hdr-alert for red bgclr-->
+                            <ute:Tag visible="{oPaymentHdr>bAlert}"
+                                     class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh1 nrgBilling-blChkBk-lftDiv-scrllArea-hdr-alert"
+                                     text="{parts:['oPaymentHdr>BillDate'],
+                                            formatter:'._formatDate'}" />
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh2"
                                      text="{comp-i18n-billing>nrgBilling-billChkBook-PmtHdr-InvAmt} {oPaymentHdr>InvoiceNum}"/>
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh3"
