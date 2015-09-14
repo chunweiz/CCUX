@@ -42,9 +42,9 @@ sap.ui.define(
 
         };
 
-        CustomController.prototype.onPayNow = function() {
-            var oRouter = this.getOwnerComponent().getRouter();
-            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+        CustomController.prototype.onPayNow = function () {
+            var oRouter = this.getOwnerComponent().getRouter(),
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
 
             this._bpNum = oRouteInfo.parameters.bpNum;
             this._caNum = oRouteInfo.parameters.caNum;
