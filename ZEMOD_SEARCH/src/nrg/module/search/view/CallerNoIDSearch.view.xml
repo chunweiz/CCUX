@@ -24,7 +24,9 @@
 
                 <ute:Textfield
                     value="{
-                        path:'oSearchFilters>/searchTextFields/sCaNum'}"
+                        path:'oSearchFilters>/searchTextFields/sCaNum',
+                        type: 'type:'nrg.base.type.ContractAccountNumber'
+                        }"
                     id="idSearchCa"
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_CaNumPh}"
@@ -39,7 +41,9 @@
                 <!--type:'nrg.util.type.SocialSecurityNumber'-->
                 <ute:Textfield
                     value="{
-                        path:'oSearchFilters>/searchTextFields/sSsn'}"
+                        path:'oSearchFilters>/searchTextFields/sSsn',
+                        type: 'type:'nrg.base.type.SocialSecurityNumber'
+                        }"
                     id="idSearchSsn"
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_Ssn}"
@@ -54,7 +58,9 @@
                 <!--type:'nrg.util.type.DriverLicenseNumber'-->
                 <ute:Textfield
                     value="{
-                        path:'oSearchFilters>/searchTextFields/sDl'}"
+                        path:'oSearchFilters>/searchTextFields/sDl',
+                        type: 'nrg.base.type.DriverLicenseNumber'
+                        }"
                     id="idSearchDl"
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_Dl}"
@@ -68,7 +74,9 @@
                 <!--type:'nrg.util.type.BusinessPartnerNumber'-->
                 <ute:Textfield
                     value="{
-                        path:'oSearchFilters>/searchTextFields/sBpNum'}"
+                        path:'oSearchFilters>/searchTextFields/sBpNum',
+                        type: 'nrg.base.type.BusinessPartnerNumber'
+                        }"
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_BpNum}"
                     change="onTextFieldChange"
@@ -84,7 +92,9 @@
                 <!--type:'nrg.util.type.ESID'-->
                 <ute:Textfield
                     value="{
-                        path:'oSearchFilters>/searchTextFields/sEsid'}"
+                        path:'oSearchFilters>/searchTextFields/sEsid',
+                        type: 'nrg.base.type.ESID'
+                        }"
                     id="idSearchEsid"
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_Esid}"
