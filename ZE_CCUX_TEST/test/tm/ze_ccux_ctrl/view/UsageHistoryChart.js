@@ -115,6 +115,11 @@ sap.ui.define(
                     .attr('transform', 'translate(0, -30)')
                     .text(function (data) { return data.kwhUsage; } );
 
+            oCanvas.append('g')
+                .append('path')
+                    .attr('d', 'M1,16 C1,7.71572875 7.71655983,1 15.9980512,1 L86.0019488,1 C94.2851438,1 101,7.71390727 101,16 L101,16 C101,24.2842712 94.2823898,31 86.0015316,31 L59.3333333,31 L51,41 L42.6666667,31 L15.9984684,31 C7.71504305,31 1,24.2860927 1,16 L1,16 Z')
+                    .attr('class', 'tmUsageHistChart-consumptionPointTooltip');
+
             function fnOnConsumptionDataPointMouseOver(data) {
 
             }

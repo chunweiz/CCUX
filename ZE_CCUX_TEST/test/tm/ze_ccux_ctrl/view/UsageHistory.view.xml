@@ -49,6 +49,13 @@
         .tmUsageHistChart-consumptionPointTxt-hidden {
             display: none;
         }
+
+        .tmUsageHistChart-consumptionPointTooltip {
+            stroke: #ffffff;
+            stroke-width: 2;
+            fill: #6F8D9E;
+            opacity: 0.5;
+        }
     </style>
 
     <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
