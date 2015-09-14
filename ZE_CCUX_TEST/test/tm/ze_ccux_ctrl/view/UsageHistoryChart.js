@@ -56,12 +56,10 @@ sap.ui.define(
         };
 
         CustomControl.prototype._createChart = function () {
-            var oMargin = { top: 50, right: 50, bottom: 50, left: 50 };
+            var oMargin = { top: 60, right: 60, bottom: 60, left: 60 };
             var iWidth = this.getWidth() - oMargin.left - oMargin.right;
             var iHeight = this.getHeight() - oMargin.top - oMargin.bottom;
             var aDataSet = this._getDataSet();
-
-            var iYStepSize = this.getConsumptionGroup() === 'REBS' ? 1000 : 500;
 
             // Create a canvas with margin
             var oCanvas = d3.select('#' + this.getId())
@@ -81,11 +79,25 @@ sap.ui.define(
                 .range([0, iWidth]);
 
             // Base Y scale - kwh usage
+            var iYAxisTickSize = this.getConsumptionGroup() === 'REBS' ? 1000 : 500;
+            var iMaxKwhUsage = d3.max(aDataSet, function (data) { return data.kwhUsage; });
+
             var fnScaleY = d3.scale.linear()
-                .domain([0, d3.max(aDataSet, function (data) { return data.kwhUsage; })])
+                .domain([0, iMaxKwhUsage + (iYAxisTickSize - (iMaxKwhUsage % iYAxisTickSize))])
                 .range([iHeight, 0]);
 
-            // Draw consumption line
+            // Y axis
+            var oConsumptionYAxis = d3.svg.axis()
+                .orient('left')
+                .scale(fnScaleY)
+                .ticks(Math.floor(iMaxKwhUsage / iYAxisTickSize) + 1)
+                .tickFormat(d3.format('d'));
+
+            oCanvas.append('g')
+                .attr('class', 'tmUsageHistChart-consumptionYAxis')
+                .call(oConsumptionYAxis);
+
+            // Consumption line
             var oConsumptionLine = d3.svg.line()
                 .x(function (data) { return fnScaleX(data.meterReadDate); })
                 .y(function (data) { return fnScaleY(data.kwhUsage); });
@@ -94,7 +106,7 @@ sap.ui.define(
                 .attr('d', oConsumptionLine(aDataSet))
                 .attr('class', 'tmUsageHistChart-consumptionLine');
 
-            // Draw consumption data points
+            // Consumption data points
             var oConsumptionDataPoint = oCanvas.append('g').selectAll('circle.tmUsageHistChart-consumptionPoint')
                 .data(aDataSet)
                 .enter()

@@ -13,6 +13,18 @@
             display: inline-block;
         }
 
+        .tmUsageHistChart-consumptionYAxis path.domain {
+            display: none;
+        }
+
+        .tmUsageHistChart-consumptionYAxis g.tick:last-of-type {
+            display: none;
+        }
+
+        .tmUsageHistChart-consumptionYAxis g.tick text {
+            fill: #989898;
+        }
+
         .tmUsageHistChart-consumptionLine {
             stroke: #ffffff;
             stroke-width: 3;
@@ -39,15 +51,6 @@
         .tmUsageHistChart-consumptionPoint:hover {
             stroke: #ffffff;
             fill: #6F8D9E;
-        }
-
-        .tmUsageHistChart-consumptionPointTxt {
-            fill: #ffffff;
-            text-anchor: middle;
-        }
-
-        .tmUsageHistChart-consumptionPointTxt-hidden {
-            display: none;
         }
 
         .tmUsageHistChart-consumptionPointTooltip path {
