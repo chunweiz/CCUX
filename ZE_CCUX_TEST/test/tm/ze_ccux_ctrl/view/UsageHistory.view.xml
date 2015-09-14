@@ -33,6 +33,11 @@
             fill: #989898;
         }
 
+        .tmUsageHistChart-consumptionYAxisLabel {
+            text-anchor: middle;
+            fill: #989898;
+        }
+
         .tmUsageHistChart-consumptionXGrid g.tick line {
             stroke: #ffffff;
         }

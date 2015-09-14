@@ -56,7 +56,7 @@ sap.ui.define(
         };
 
         CustomControl.prototype._createChart = function () {
-            var oMargin = { top: 60, right: 60, bottom: 60, left: 60 };
+            var oMargin = { top: 60, right: 60, bottom: 60, left: 100 };
             var iWidth = this.getWidth() - oMargin.left - oMargin.right;
             var iHeight = this.getHeight() - oMargin.top - oMargin.bottom;
             var aDataSet = this._getDataSet();
@@ -86,6 +86,9 @@ sap.ui.define(
                 .domain([0, iMaxKwhUsage + (iYAxisTickSize - (iMaxKwhUsage % iYAxisTickSize))])
                 .range([iHeight, 0]);
 
+            //Background
+            
+
             // X axis
             var fnConsumptionXAxis = d3.svg.axis()
                 .orient('bottom')
@@ -108,6 +111,14 @@ sap.ui.define(
             oCanvas.append('g')
                 .attr('class', 'tmUsageHistChart-consumptionYAxis')
                 .call(fnConsumptionYAxis);
+
+            oCanvas.select('g.tmUsageHistChart-consumptionYAxis')
+                .append('text')
+                    .attr('class', 'tmUsageHistChart-consumptionYAxisLabel')
+                    .attr('x', -iHeight / 2)
+                    .attr('y', -55)
+                    .attr('transform', 'rotate(-90)')
+                    .text('kWh');
 
             // X grid
             var fnConsumptionXGrid = d3.svg.axis()
