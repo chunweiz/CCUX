@@ -16,16 +16,16 @@
                     <u:Tag text="{comp-i18n-quickpay>nrgQPAmount}" class="nrgQPCC-hd"/>
                     <u:Tag text="{comp-i18n-quickpay>nrgQPCurrentStatus}" class="nrgQPCC-hd"/>
                 </u:Tag>
-                <u:Tag class="nrgQPTable-Row" id="idnrgQPTable-Row">
+                <u:Tag class="nrgQPTable-Row" content="{QP-quickpay>/results}" id="idnrgQPTable-Row">
                     <u:Tag class="nrgQPTable-Rows" id="idnrgQPTable-Rows">
-                        <um:Checkbox id="zzz" select=".onPendingCCSelected" class="nrgQPCC-CheckBox"/>
+                        <um:Checkbox select=".onPendingCCSelected" class="nrgQPCC-CheckBox"/>
                         <u:Tag text="{QP-quickpay>CardID}" class="nrgQPCC-Data"/>
                         <u:Tag text="{QP-quickpay>CardNumber}" class="nrgQPCC-Data"/>
                         <u:Tag text="{QP-quickpay>ExpiryDate}" class="nrgQPCC-Data"/>
                         <u:Textfield fieldType="Noborder"
-                                     value="{bp>ScheduledDate}"
+                                     value="{path: 'QP-quickpay>ScheduledDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }"
                                      class="nrgQPCC-Data"
-                                     editable="{bp>Editable}"
+                                     editable="{QP-quickpay>Editable}"
                                      width="100%" />
                         <u:Textfield fieldType="Noborder"
                                      value="{QP-quickpay>Amount}"
@@ -42,7 +42,7 @@
                            class="nrgQPCC-btn"
                            design="Default">
                 </um:button>
-                <um:Button press=".onPendingCCCancel"
+                <um:Button press=".onPopupClose"
                            text="{comp-i18n-quickpay>nrgQPCancel}"
                            class="nrgQPCC-btn"
                            design="Default">
