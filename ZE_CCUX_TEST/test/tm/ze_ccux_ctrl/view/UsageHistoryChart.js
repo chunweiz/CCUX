@@ -56,7 +56,7 @@ sap.ui.define(
         };
 
         CustomControl.prototype._createChart = function () {
-            var oMargin = { top: 60, right: 60, bottom: 60, left: 60 };
+            var oMargin = { top: 60, right: 60, bottom: 60, left: 100 };
             var iWidth = this.getWidth() - oMargin.left - oMargin.right;
             var iHeight = this.getHeight() - oMargin.top - oMargin.bottom;
             var aDataSet = this._getDataSet();
@@ -86,19 +86,23 @@ sap.ui.define(
                 .domain([0, iMaxKwhUsage + (iYAxisTickSize - (iMaxKwhUsage % iYAxisTickSize))])
                 .range([iHeight, 0]);
 
+            //Background
+            
+
             // X axis
-            var oConsumptionXAxis = d3.svg.axis()
+            var fnConsumptionXAxis = d3.svg.axis()
                 .orient('bottom')
                 .scale(fnScaleX)
-                .tickValues(aDataSet.map(function (data) { return data.meterReadDate; }));
+                .tickValues(aDataSet.map(function (data) { return data.meterReadDate; }))
+                .tickFormat(d3.time.format("%d/%m/%y"));
 
             oCanvas.append('g')
                 .attr('class', 'tmUsageHistChart-consumptionXAxis')
                 .attr('transform', 'translate(0,' + (iHeight + 20) + ')')
-                .call(oConsumptionXAxis);
+                .call(fnConsumptionXAxis);
 
             // Y axis
-            var oConsumptionYAxis = d3.svg.axis()
+            var fnConsumptionYAxis = d3.svg.axis()
                 .orient('left')
                 .scale(fnScaleY)
                 .ticks(Math.floor(iMaxKwhUsage / iYAxisTickSize) + 1)
@@ -106,7 +110,39 @@ sap.ui.define(
 
             oCanvas.append('g')
                 .attr('class', 'tmUsageHistChart-consumptionYAxis')
-                .call(oConsumptionYAxis);
+                .call(fnConsumptionYAxis);
+
+            oCanvas.select('g.tmUsageHistChart-consumptionYAxis')
+                .append('text')
+                    .attr('class', 'tmUsageHistChart-consumptionYAxisLabel')
+                    .attr('x', -iHeight / 2)
+                    .attr('y', -55)
+                    .attr('transform', 'rotate(-90)')
+                    .text('kWh');
+
+            // X grid
+            var fnConsumptionXGrid = d3.svg.axis()
+                .orient('bottom')
+                .scale(fnScaleX)
+                .ticks(aDataSet.length)
+                .tickSize(iHeight, 0, 0)
+                .tickFormat('');
+
+            oCanvas.append('g')
+                .attr('class', 'tmUsageHistChart-consumptionXGrid')
+                .call(fnConsumptionXGrid);
+
+            // Y grid
+            var fnConsumptionYGrid = d3.svg.axis()
+                .orient('left')
+                .scale(fnScaleY)
+                .ticks(Math.floor(iMaxKwhUsage / iYAxisTickSize) + 1)
+                .tickSize(-iWidth, 0, 0)
+                .tickFormat('');
+
+            oCanvas.append('g')
+                .attr('class', 'tmUsageHistChart-consumptionYGrid')
+                .call(fnConsumptionYGrid);
 
             // Consumption line
             var oConsumptionLine = d3.svg.line()
