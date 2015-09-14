@@ -53,8 +53,7 @@
         .tmUsageHistChart-consumptionPointTooltip {
             stroke: #ffffff;
             stroke-width: 2;
-            fill: #6F8D9E;
-            opacity: 0.5;
+            fill: rgba(111,141,158, 0.5);
         }
     </style>
 
