@@ -47,7 +47,7 @@
                         <core:Fragment fragmentName="nrg.module.quickpay.view.Creditcard" type="XML" />
                 </um:TabPanelItem>
                 <um:TabPanelItem key="PCC" class="nrgQPPay-tabPanelItemNew nrgQPPay-CC">
-                        <core:Fragment fragmentName="nrg.module.quickpay.view.PendingCreditcard" type="XML" />
+                        <core:Fragment fragmentName="nrg.module.quickpay.view.PendingCreditCard" type="XML" />
                 </um:TabPanelItem>
                 <um:TabPanelItem key="BD" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
                         <core:Fragment fragmentName="nrg.module.quickpay.view.BankDraft" type="XML" />

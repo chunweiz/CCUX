@@ -457,26 +457,66 @@ sap.ui.define(
                 aFilterIds,
                 aFilterValues,
                 aFilters,
-                fnRecievedHandler;
+                fnRecievedHandler,
+                oPendingPaymentsModel = new JSONModel();
             oTBIPCC.setSelected(true);
             this._aPendingSelPaths = [];
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupPayment");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
-            this.getParent().setPosition();
-            aFilterIds = ["Contract"];
+            //this.getView().getParent().setPosition();
+            this.getView().setModel(oPendingPaymentsModel, "QP-quickpay");
+            aFilterIds = ["ContractID"];
             aFilterValues = [this._sContractId];
+            //aFilterValues = ["0038817501"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-            fnRecievedHandler = function () {
-            };
             oBindingInfo = {
-                model : "comp-quickpay",
-                path : sPath,
-                template : oTableRowTemplate,
                 filters : aFilters,
-                events: {dataReceived : fnRecievedHandler}
+                success : function (oData) {
+                    oPendingPaymentsModel.setData(oData);
+                    oTableRow.setModel(oPendingPaymentsModel);
+                    jQuery.sap.log.info("Odata Read Successfully:::");
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Eligibility Error occured");
+                }.bind(this)
             };
-            oTableRow.bindAggregation("content", oBindingInfo);
+            if (oModel) {
+                oModel.read(sPath, oBindingInfo);
+            }
+
+        };
+
+        /**
+		 * Pending Credit Card Process initialization
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onPendingCCSave = function (oEvent) {
+            var oModel = this.getView().getModel('comp-quickpay'),
+                oPCCModel = this.getView().getModel('QP-quickpay'),
+                mParameters;
+            this._aPendingSelPaths.map(function (sCurrentPath) {
+                var oContext = oPCCModel.getContext(sCurrentPath),
+                    sPath = "/CreditCardPPSet";
+                sPath = "/CreditCardPPSet('" + oContext.getProperty("ContractID") + "')";
+                mParameters = {
+                    urlParameters : {"CardID" : oContext.getProperty("CardID"),
+                                     "CardNumber" : oContext.getProperty("CardNumber"),
+                                     "ScheduledDate" : oContext.getProperty("ScheduledDate"),
+                                     "Amount" : oContext.getProperty("Amount"),
+                                     "ContractID" : oContext.getProperty("ContractID"),
+                                     "CurrentStatus" : oContext.getProperty("CurrentStatus")},
+                    success : function (oData, oResponse) {
+                        jQuery.sap.log.info("Odata Read Successfully:::");
+                    }.bind(this),
+                    error: function (oError) {
+                        jQuery.sap.log.info("Eligibility Error occured");
+                    }.bind(this)
+                };
+                oModel.update(sPath, mParameters);
+            });
 
         };
         /**
@@ -485,7 +525,30 @@ sap.ui.define(
 		 * @function onQuickPay
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
-        Controller.prototype.onPendingCCSave = function (oEvent) {
+        Controller.prototype.onPendingBDSave = function (oEvent) {
+            var oModel = this.getView().getModel('comp-quickpay'),
+                oPCCModel = this.getView().getModel('QP-quickpay'),
+                mParameters;
+            this._aPendingSelPaths.map(function (sCurrentPath) {
+                var oContext = oPCCModel.getContext(sCurrentPath),
+                    sPath = "/CreditCardPPSet";
+                sPath = "/BankDraftPPSet('" + oContext.getProperty("ContractID") + "')";
+                mParameters = {
+                    urlParameters : {"RoutingNumber" : oContext.getProperty("RoutingNumber"),
+                                     "AccountNumber" : oContext.getProperty("AccountNumber"),
+                                     "ScheduledDate" : oContext.getProperty("ScheduledDate"),
+                                     "PaymentAmount" : oContext.getProperty("PaymentAmount"),
+                                     "ContractID" : oContext.getProperty("ContractID"),
+                                     "CurrentStatus" : oContext.getProperty("CurrentStatus")},
+                    success : function (oData, oResponse) {
+                        jQuery.sap.log.info("Odata Read Successfully:::");
+                    }.bind(this),
+                    error: function (oError) {
+                        jQuery.sap.log.info("Eligibility Error occured");
+                    }.bind(this)
+                };
+                oModel.update(sPath, mParameters);
+            });
 
         };
         /**
@@ -503,8 +566,8 @@ sap.ui.define(
                 iIndex,
                 sTemp,
                 oModel;
-            oModel = oEvent.getSource().getBindingContext("bp").getModel();
-            sPath = oEvent.getSource().getParent().getBindingContext("bp").getPath();
+            oModel = oEvent.getSource().getBindingContext("QP-quickpay").getModel();
+            sPath = oEvent.getSource().getParent().getBindingContext("QP-quickpay").getPath();
             if (oEvent.getSource().getChecked()) {
                 if ((iSelected) && (iSelected === 1)) {
                     ute.ui.main.Popup.Alert({
@@ -517,7 +580,7 @@ sap.ui.define(
                     sTemp = iIndex < 0 && this._aPendingSelPaths.push(sPath);
                     iSelected = 1;
                     this.getView().getModel("appView").setProperty("/selected", iSelected);
-                    oModel.setProperty(oEvent.getSource().getBindingContext("bp").getPath() + "/editable", true);
+                    oModel.setProperty(oEvent.getSource().getBindingContext("QP-quickpay").getPath() + "/Editable", true);
                     oRow.addStyleClass("nrgQPTable-RowsSelected");
                 }
             } else {
@@ -537,11 +600,81 @@ sap.ui.define(
         Controller.prototype.onPendingBankDraft = function (oEvent) {
             var oTBIPBD = this.getView().byId("idnrgQPPay-TBIPBD"),
                 oPopup = this.getView().byId("idnrgQPPay-Popup"),
-                oCloseButton = this.getView().byId("idnrgQPPayBt-close");
+                oCloseButton = this.getView().byId("idnrgQPPayBt-close"),
+                oTableRow = this.getView().byId("idnrgQPTable-BDRow"),
+                oTableRowTemplate = this.getView().byId("idnrgQPTable-BDRows"),
+                oBindingInfo,
+                sPath = "/BankDraftPPSet",
+                oModel = this.getView().getModel('comp-quickpay'),
+                aFilterIds,
+                aFilterValues,
+                aFilters,
+                fnRecievedHandler,
+                oPendingPaymentsModel = new JSONModel();
             oTBIPBD.setSelected(true);
+            this._aPendingSelPaths = [];
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupPayment");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
+            //this.getView().getParent().setPosition();
+            this.getView().setModel(oPendingPaymentsModel, "QP-quickpay");
+            aFilterIds = ["ContractID"];
+            aFilterValues = [this._sContractId];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            oBindingInfo = {
+                filters : aFilters,
+                success : function (oData) {
+                    oPendingPaymentsModel.setData(oData);
+                    oTableRow.setModel(oPendingPaymentsModel);
+                    jQuery.sap.log.info("Odata Read Successfully:::");
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Eligibility Error occured");
+                }.bind(this)
+            };
+            if (oModel) {
+                oModel.read(sPath, oBindingInfo);
+            }
+        };
+        /**
+		 * Handler when Pending payment record is selected, make fields editable
+		 *
+		 * @function
+		 * @param {sap.ui.base.Event} oEvent pattern match event
+         *
+		 *
+		 */
+        Controller.prototype.onPendingBDSelected = function (oEvent) {
+            var oRow = oEvent.getSource().getParent(),
+                iSelected = this.getView().getModel("appView").getProperty("/selected"),
+                sPath,
+                iIndex,
+                sTemp,
+                oModel;
+            oModel = oEvent.getSource().getBindingContext("QP-quickpay").getModel();
+            sPath = oEvent.getSource().getParent().getBindingContext("QP-quickpay").getPath();
+            if (oEvent.getSource().getChecked()) {
+                if ((iSelected) && (iSelected === 1)) {
+                    ute.ui.main.Popup.Alert({
+                        title: 'Information',
+                        message: 'Only one Record editable'
+                    });
+                    oEvent.getSource().setChecked(false);
+                } else {
+                    iIndex = this._aPendingSelPaths.indexOf(sPath);
+                    sTemp = iIndex < 0 && this._aPendingSelPaths.push(sPath);
+                    iSelected = 1;
+                    this.getView().getModel("appView").setProperty("/selected", iSelected);
+                    oModel.setProperty(oEvent.getSource().getBindingContext("QP-quickpay").getPath() + "/Editable", true);
+                    oRow.addStyleClass("nrgQPTable-RowsSelected");
+                }
+            } else {
+                iIndex = this._aPendingSelPaths.indexOf(sPath);
+                sTemp = iIndex > -1 && this._aPendingSelPaths.splice(iIndex, 1);
+                iSelected = 0;
+                this.getView().getModel("appView").setProperty("/selected", iSelected);
+                oRow.removeStyleClass("nrgQPTable-RowsSelected");
+            }
         };
         /**
 		 * When Credit Card is Accepted

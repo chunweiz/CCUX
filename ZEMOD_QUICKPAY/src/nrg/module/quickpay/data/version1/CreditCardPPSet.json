@@ -1,0 +1,26 @@
+{
+   "d":{
+      "results":[
+         {
+            "__metadata":{
+               "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_QUICK_PAY_SRV/CreditCardPPSet('0034805112')",
+               "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_QUICK_PAY_SRV/CreditCardPPSet('0034805112')",
+               "type":"ZE_CCUX_QUICK_PAY_SRV.CreditCardPP"
+            },
+            "ContractID":"0034805112",
+            "ContractAccountID":"000070914590",
+            "CardID":"000000066196",
+            "CardNumber":"40-b4uQjF-0000",
+            "CheckDigit":"8",
+            "ExpiryDate":"1116",
+            "ScheduledDate":"\/Date(1443625179000)\/",
+            "Amount":"1.0200",
+            "CurrentStatus":"SCHEDULED",
+            "ZipCode":"",
+            "Error":"",
+            "Message":"",
+            "Editable":false
+         }
+      ]
+   }
+}
