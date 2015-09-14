@@ -42,7 +42,8 @@
                 "ICAppHeader": { "pattern": "ICAppHeader", "target": [ "ICAppHeader" ] },
                 "FancyTextField": { "pattern": "FancyTextField", "target": [ "FancyTextField" ] },
                 "UsageHistory": { "pattern": "UsageHistory", "target": [ "UsageHistory" ] },
-                "CustJourneyChannel": { "pattern": "CustJourneyChannel", "target": [ "CustJourneyChannel" ] }
+                "CustJourneyChannel": { "pattern": "CustJourneyChannel", "target": [ "CustJourneyChannel" ] },
+                "CustJourneyLifecycle": { "pattern": "CustJourneyLifecycle", "target": [ "CustJourneyLifecycle" ] }
             },
 
             "config": {
@@ -66,7 +67,8 @@
                 "ICAppHeader": { "viewName": "ICAppHeader", "controlId": "idAppContent" },
                 "FancyTextField": { "viewName": "FancyTextField", "controlId": "idAppContent" },
                 "UsageHistory": { "viewName": "UsageHistory", "controlId": "idAppContent" },
-                "CustJourneyChannel": { "viewName": "CustJourneyChannel", "controlId": "idAppContent" }
+                "CustJourneyChannel": { "viewName": "CustJourneyChannel", "controlId": "idAppContent" },
+                "CustJourneyLifecycle": { "viewName": "CustJourneyLifecycle", "controlId": "idAppContent" }
             }
         }
     }
