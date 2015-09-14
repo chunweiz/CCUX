@@ -19,13 +19,6 @@ sap.ui.define(
             } else {
                 return false;
             }
-
-            /*Temp Code for Testing for mock server data
-            if (cIndicator) {
-                return true;
-            } else {
-                return false;
-            }*/
         };
 
         Controller.prototype._formatSiebel = function (cIndicator) {

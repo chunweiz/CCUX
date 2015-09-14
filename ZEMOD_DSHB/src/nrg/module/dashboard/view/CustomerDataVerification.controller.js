@@ -26,7 +26,6 @@ sap.ui.define(
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
 /*            if (!this._beforeOpenEditAddrDialogue) {*/
             this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
-            //console.log(this.getOwnerComponent().getCcuxApp().setTitle);
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 
@@ -265,10 +264,16 @@ sap.ui.define(
                         if (iSelectedCA) {
                             iPreSelCA = iSelectedCA;
                         } else {
-                            for (i = 0; i < oData.results.length; i++ ) {
-                                if (oData.results[i].ContractAccountID === this._caNum) {
-                                    iPreSelCA = i;
+                            if(this._caNum) {
+                                // Seatch for the CA matched the designated CA number
+                                for (i = 0; i < oData.results.length; i++ ) {
+                                    if (oData.results[i].ContractAccountID === this._caNum) {
+                                        iPreSelCA = i;
+                                    }
                                 }
+                            } else {
+                                // If cannot find designated CA number, choose the first CA by default
+                                iPreSelCA = 0;
                             }
                         }
 
