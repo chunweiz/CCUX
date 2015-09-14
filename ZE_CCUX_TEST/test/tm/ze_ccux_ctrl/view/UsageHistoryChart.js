@@ -210,18 +210,56 @@ sap.ui.define(
         CustomControl.prototype._createTemperatureChart = function () {
             var oMargin = { top: 0, right: 60, bottom: 0, left: 100 };
             var iWidth = this.getWidth() - oMargin.left - oMargin.right;
-            var iHeight = 50;
+            var iHeight = 30;
             var aDataSet = this._getDataSet();
 
-            // Create a canvas with margin
             var oCanvas = d3.select('#' + this.getId())
                 .append('svg')
                     .attr('width', this.getWidth())
-                    .attr('height', iHeight)
-                    .append('g')
-                        .attr('transform', 'translate(' + [ oMargin.left, oMargin.top ] + ')');
+                    .attr('height', iHeight);
 
-            
+            // Create a canvas with margin
+            oCanvas = oCanvas.append('g')
+                .attr('transform', 'translate(' + [ oMargin.left, oMargin.top ] + ')');
+
+            // Y label
+            oCanvas.append('text')
+                .attr('class', 'tmUsageHistChart-temperatureYAxisLabel')
+                .attr('x', -oMargin.left + 15)
+                .attr('y', iHeight / 2)
+                .attr('dy', '0.35em')
+                .text('Temperature');
+
+            // Temperature color scale
+            var fnTemperatureColorScale = d3.scale.linear()
+                .domain([30, 100])
+                .range(['#3597ce', '#c1563f'])
+                .clamp(true);
+
+            // Temperature bar
+            var iTemperatureBarWidth = iWidth / aDataSet.length;
+
+            var oTemperatureBar = oCanvas.append('g').selectAll('g.tmUsageHistChart-temperature')
+                .data(aDataSet)
+                .enter()
+                .append('g')
+                    .attr('class', 'tmUsageHistChart-temperature')
+                    .attr('transform', function (data, index) {
+                        return 'translate(' + index * iTemperatureBarWidth + ',0)';
+                    });
+
+            oTemperatureBar.append('rect')
+                .attr('class', 'tmUsageHistChart-temperatureBar')
+                .attr('height', iHeight)
+                .attr('width', iTemperatureBarWidth)
+                .style('fill', function (data) { return fnTemperatureColorScale(data.avgHighTemp); });
+
+            oTemperatureBar.append('text')
+                .attr('class', 'tmUsageHistChart-temperatureText')
+                .attr('x', iTemperatureBarWidth / 2)
+                .attr('y', iHeight / 2)
+                .attr('dy', '0.35em')
+                .text(function (data) { return data.avgHighTemp; });
         };
 
 

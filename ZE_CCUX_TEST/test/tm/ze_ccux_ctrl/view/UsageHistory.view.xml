@@ -18,7 +18,7 @@
         }
 
         .tmUsageHistChart-consumptionXAxis g.tick text {
-            fill: #989898;
+            fill: #808080;
         }
 
         .tmUsageHistChart-consumptionYAxis path.domain {
@@ -30,12 +30,13 @@
         }
 
         .tmUsageHistChart-consumptionYAxis g.tick text {
-            fill: #989898;
+            fill: #808080;
         }
 
         .tmUsageHistChart-consumptionYAxisLabel {
             text-anchor: middle;
-            fill: #989898;
+            fill: #808080;
+            font-size: 14px;
         }
 
         .tmUsageHistChart-consumptionXGrid g.tick line {
@@ -59,10 +60,6 @@
             shape-rendering: crispEdges;
         }
 
-        .tmUsageHistChart-xAxis path {
-
-        }
-
         .tmUsageHistChart-consumptionPoint {
             stroke: #808080;
             stroke-width: 2;
@@ -81,6 +78,23 @@
         }
 
         .tmUsageHistChart-consumptionPointTooltip text {
+            fill: #ffffff;
+            text-anchor: middle;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .tmUsageHistChart-temperatureYAxisLabel {
+            fill: #808080;
+            font-size: 14px;
+            text-anchor: start;
+        }
+
+        .tmUsageHistChart-temperatureBar {
+            shape-rendering: crispEdges;
+        }
+
+        .tmUsageHistChart-temperatureText {
             fill: #ffffff;
             text-anchor: middle;
             font-size: 1em;
