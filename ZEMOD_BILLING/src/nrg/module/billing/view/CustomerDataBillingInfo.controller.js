@@ -79,9 +79,9 @@ sap.ui.define(
             this._oPaymentsPopup.open();
         };
 
-        CustomController.prototype.onPayNow = function(oEvent) {
-            var oRouter = this.getOwnerComponent().getRouter();
-            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+        CustomController.prototype.onPayNow = function (oEvent) {
+            var oRouter = this.getOwnerComponent().getRouter(),
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
 
             this._bpNum = oRouteInfo.parameters.bpNum;
             this._caNum = oRouteInfo.parameters.caNum;
