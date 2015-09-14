@@ -13,6 +13,14 @@
             display: inline-block;
         }
 
+        .tmUsageHistChart-consumptionXAxis path.domain {
+            display: none;
+        }
+
+        .tmUsageHistChart-consumptionXAxis g.tick text {
+            fill: #989898;
+        }
+
         .tmUsageHistChart-consumptionYAxis path.domain {
             display: none;
         }
@@ -66,6 +74,6 @@
     </style>
 
     <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
-        <tm:UsageHistoryChart id="chart" width="900" height="400"></tm:UsageHistoryChart>
+        <tm:UsageHistoryChart id="chart" width="1000" height="400"></tm:UsageHistoryChart>
     </sm:ScrollContainer>
 </mvc:View>

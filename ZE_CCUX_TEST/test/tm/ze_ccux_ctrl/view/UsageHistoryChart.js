@@ -13,7 +13,7 @@ sap.ui.define(
         var CustomControl = Control.extend('test.tm.ze_ccux_ctrl.view.UsageHistoryChart', {
             metadata: {
                 properties: {
-                    width: { type: 'int', defaultValue: 800 },
+                    width: { type: 'int', defaultValue: 1000 },
                     height: { type: 'int', defaultValue: 300 },
                     consumptionGroup: { type: 'string', defaultValue: 'RES' }
                 }
@@ -85,6 +85,17 @@ sap.ui.define(
             var fnScaleY = d3.scale.linear()
                 .domain([0, iMaxKwhUsage + (iYAxisTickSize - (iMaxKwhUsage % iYAxisTickSize))])
                 .range([iHeight, 0]);
+
+            // X axis
+            var oConsumptionXAxis = d3.svg.axis()
+                .orient('bottom')
+                .scale(fnScaleX)
+                .tickValues(aDataSet.map(function (data) { return data.meterReadDate; }));
+
+            oCanvas.append('g')
+                .attr('class', 'tmUsageHistChart-consumptionXAxis')
+                .attr('transform', 'translate(0,' + (iHeight + 20) + ')')
+                .call(oConsumptionXAxis);
 
             // Y axis
             var oConsumptionYAxis = d3.svg.axis()
