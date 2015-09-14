@@ -83,6 +83,8 @@
         .tmUsageHistChart-consumptionPointTooltip text {
             fill: #ffffff;
             text-anchor: middle;
+            font-size: 1em;
+            font-weight: 600;
         }
     </style>
 
