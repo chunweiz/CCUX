@@ -50,10 +50,15 @@
             display: none;
         }
 
-        .tmUsageHistChart-consumptionPointTooltip {
+        .tmUsageHistChart-consumptionPointTooltip path {
             stroke: #ffffff;
             stroke-width: 2;
             fill: rgba(111,141,158, 0.5);
+        }
+
+        .tmUsageHistChart-consumptionPointTooltip text {
+            fill: #ffffff;
+            text-anchor: middle;
         }
     </style>
 
