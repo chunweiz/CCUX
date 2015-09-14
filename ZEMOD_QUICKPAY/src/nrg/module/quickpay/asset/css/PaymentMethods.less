@@ -296,20 +296,36 @@
                             text-align: center;
                             min-width: 6rem;
                     }
+                    & > .nrgQPTable-Row > .nrgQPTable-Rows {
+                            margin: 2px 0px 2px 0px;
+                            height: 28px;
+                            line-height: 100%;
+                    }
                     & > .nrgQPTable-Row > .nrgQPTable-Rows > .nrgQPCC-Data {
                             display: inline-block;
                             width: 6rem;
                             text-align: center;
                             min-width: 6rem;
+                            font-size: @nrgFontSize-small;
                             & > .uteTextfield-noBorder-input {
-                                font-size: @nrgFontSize-small;
+                                    font-size: @nrgFontSize-small;
+                                    max-width: 100%;
+                                    text-align: center;
+                            }
+                            & > .uteTextfield-noBorder-input[readonly] {
+                                    background-color: transparent;
+                            }
+                            & > .uteTextfield-noBorder-input {
+                                   padding: 0px;
+                            }
+                            & > .uteTextfield-noBorder-input:parent {
+                                    background-color: @nrgColor-white;
+                                    border: 1px solid @nrgColor-black;
                             }
                     }
-                    & > .nrgQPTable-Row > .nrgQPTable-Rows:nth-child(even) {
+                    & > .nrgQPTable-Row > .nrgQPTable-RowsSelected {
                             background-color: @nrgColor-grey-highlight;
-                    }
-                    & > .nrgQPTable-Row > .nrgQPTable-Rows:nth-child(odd) {
-                            background-color: transparent;
+
                     }
                     & > .nrgQPTable-Row > .nrgQPTable-Rows > .nrgQPCC-CheckBox {
                             vertical-align: middle;
@@ -319,7 +335,6 @@
                             min-width: 6rem;
                             padding-left: 35px;
                     }
-
             }
             &  .nrgQPPCC-buttons {
                     text-align: center;

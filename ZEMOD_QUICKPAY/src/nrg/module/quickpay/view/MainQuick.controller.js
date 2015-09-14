@@ -19,17 +19,6 @@ sap.ui.define(
 		/* lifecycle method- Init                                      */
 		/* =========================================================== */
         Controller.prototype.onInit = function () {
-            var oModel = new sap.ui.model.json.JSONModel({
-                employees: [
-                    { firstName: 'Roger', lastName: 'Cheng' },
-                    { firstName: 'Yumi', lastName: 'Yao' },
-                    { firstName: 'Yumi', lastName: 'Yao' },
-                    { firstName: 'Yumi', lastName: 'Yao' },
-                    { firstName: 'Yumi', lastName: 'Yao' },
-                    { firstName: 'Taylor', lastName: 'Hsu' }
-                ]
-            });
-            this.getView().setModel(oModel, 'bp');
         };
         /* =========================================================== */
 		/* lifecycle method- Before Rendering                          */
@@ -45,7 +34,8 @@ sap.ui.define(
                     reliantText : "Verify",
                     reliantPress: ".onAcceptReliant",
                     newBankRouting: "",
-                    newBankAccount: ""
+                    newBankAccount: "",
+                    selected : 0
                 }),
                 oContactModel;
             oContactModel = new sap.ui.model.json.JSONModel();
@@ -134,8 +124,8 @@ sap.ui.define(
                 oTBICL = this.getView().byId("idnrgQPPay-TBICL"),
                 oCreditCardDateValue,
                 oContactModel = this.getView().getModel("quickpay-cl"),
-                oZipCode = this.getView().byId("idnrgQPCC-cvv"),
-                oCVVCode = this.getView().byId("idnrgQPCC-zipcode");
+                oZipCode = this.getView().byId("idnrgQPCC-zipcode"),
+                oCVVCode = this.getView().byId("idnrgQPCC-cvv");
             //this.getView().setModel(oReceiptModel, "quickpay-rc");
             oMsgArea.removeStyleClass("nrgQPPay-hide");
             oMsgArea.addStyleClass("nrgQPPay-black");
@@ -458,14 +448,86 @@ sap.ui.define(
         Controller.prototype.onPendingCreditCard = function (oEvent) {
             var oTBIPCC = this.getView().byId("idnrgQPPay-TBIPCC"),
                 oPopup = this.getView().byId("idnrgQPPay-Popup"),
-                oCloseButton = this.getView().byId("idnrgQPPayBt-close");
+                oCloseButton = this.getView().byId("idnrgQPPayBt-close"),
+                oTableRow = this.getView().byId("idnrgQPTable-Row"),
+                oTableRowTemplate = this.getView().byId("idnrgQPTable-Rows"),
+                oBindingInfo,
+                sPath = "/CreditCardPPSet",
+                oModel = this.getView().getModel('comp-quickpay'),
+                aFilterIds,
+                aFilterValues,
+                aFilters,
+                fnRecievedHandler;
             oTBIPCC.setSelected(true);
+            this._aPendingSelPaths = [];
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupPayment");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             this.getParent().setPosition();
-        };
+            aFilterIds = ["Contract"];
+            aFilterValues = [this._sContractId];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            fnRecievedHandler = function () {
+            };
+            oBindingInfo = {
+                model : "comp-quickpay",
+                path : sPath,
+                template : oTableRowTemplate,
+                filters : aFilters,
+                events: {dataReceived : fnRecievedHandler}
+            };
+            oTableRow.bindAggregation("content", oBindingInfo);
 
+        };
+        /**
+		 * Pending Credit Card Process initialization
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onPendingCCSave = function (oEvent) {
+
+        };
+        /**
+		 * Handler when Pending payment record is selected, make fields editable
+		 *
+		 * @function
+		 * @param {sap.ui.base.Event} oEvent pattern match event
+         *
+		 *
+		 */
+        Controller.prototype.onPendingCCSelected = function (oEvent) {
+            var oRow = oEvent.getSource().getParent(),
+                iSelected = this.getView().getModel("appView").getProperty("/selected"),
+                sPath,
+                iIndex,
+                sTemp,
+                oModel;
+            oModel = oEvent.getSource().getBindingContext("bp").getModel();
+            sPath = oEvent.getSource().getParent().getBindingContext("bp").getPath();
+            if (oEvent.getSource().getChecked()) {
+                if ((iSelected) && (iSelected === 1)) {
+                    ute.ui.main.Popup.Alert({
+                        title: 'Information',
+                        message: 'Only one Record editable'
+                    });
+                    oEvent.getSource().setChecked(false);
+                } else {
+                    iIndex = this._aPendingSelPaths.indexOf(sPath);
+                    sTemp = iIndex < 0 && this._aPendingSelPaths.push(sPath);
+                    iSelected = 1;
+                    this.getView().getModel("appView").setProperty("/selected", iSelected);
+                    oModel.setProperty(oEvent.getSource().getBindingContext("bp").getPath() + "/editable", true);
+                    oRow.addStyleClass("nrgQPTable-RowsSelected");
+                }
+            } else {
+                iIndex = this._aPendingSelPaths.indexOf(sPath);
+                sTemp = iIndex > -1 && this._aPendingSelPaths.splice(iIndex, 1);
+                iSelected = 0;
+                this.getView().getModel("appView").setProperty("/selected", iSelected);
+                oRow.removeStyleClass("nrgQPTable-RowsSelected");
+            }
+        };
         /**
 		 * Pending Bank Draft Process initialization
 		 *
@@ -753,6 +815,7 @@ sap.ui.define(
                 return "";
             }
         };
+
 
         return Controller;
     }

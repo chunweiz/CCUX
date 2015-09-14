@@ -81,7 +81,7 @@
                         </um:DropdownItem>
                         <um:DropdownItem key="{comp-quickpay>BankAccNum}" class="nrgQPCC-DdLItem" id="idnrgQPCC-BankDraftItem">
                             <u:Tag class="nrgQPCC-DDI">
-                               <core:Icon src="sap-icon://nrg-icon/cc-visa" />
+                               <core:Icon src="sap-icon://nrg-icon/dollar" />
                                 <u:Tag text="{parts:[{path:'comp-quickpay>BankAccNum'}],
                                                     formatter:'.formatAccountNumber'}"  class="nrgQPCC-DdlValue"/>
                             </u:Tag>

@@ -16,32 +16,29 @@
                     <u:Tag text="{comp-i18n-quickpay>nrgQPAmount}" class="nrgQPCC-hd"/>
                     <u:Tag text="{comp-i18n-quickpay>nrgQPCurrentStatus}" class="nrgQPCC-hd"/>
                 </u:Tag>
-                <u:Tag content="{bp>/employees}" class="nrgQPTable-Row">
-                    <u:Tag class="nrgQPTable-Rows">
-                        <um:Checkbox id="zzz" select=".onSelected" class="nrgQPCC-CheckBox"/>
-                        <u:Tag text="{bp>firstName}" class="nrgQPCC-Data"/>
-                        <u:Tag text="{bp>firstName}" class="nrgQPCC-Data"/>
-                        <u:Tag text="{bp>firstName}" class="nrgQPCC-Data"/>
+                <u:Tag class="nrgQPTable-Row" id="idnrgQPTable-Row">
+                    <u:Tag class="nrgQPTable-Rows" id="idnrgQPTable-Rows">
+                        <um:Checkbox id="zzz" select=".onPendingCCSelected" class="nrgQPCC-CheckBox"/>
+                        <u:Tag text="{QP-quickpay>CardID}" class="nrgQPCC-Data"/>
+                        <u:Tag text="{QP-quickpay>CardNumber}" class="nrgQPCC-Data"/>
+                        <u:Tag text="{QP-quickpay>ExpiryDate}" class="nrgQPCC-Data"/>
                         <u:Textfield fieldType="Noborder"
-                                     value="{bp>firstName}"
+                                     value="{bp>ScheduledDate}"
                                      class="nrgQPCC-Data"
-                                     editable="false"
+                                     editable="{bp>Editable}"
                                      width="100%" />
                         <u:Textfield fieldType="Noborder"
-                                     value="{bp>firstName}"
+                                     value="{QP-quickpay>Amount}"
                                      class="nrgQPCC-Data"
-                                     editable="false"
+                                     editable="{QP-quickpay>Editable}"
                                      width="100%" />
-
-                        <u:Tag text="{bp>firstName}" class="nrgQPCC-Data"/>
+                        <u:Tag text="{QP-quickpay>CurrentStatus}" class="nrgQPCC-Data"/>
                     </u:Tag>
                 </u:Tag>
-
             </u:Tag>
-
             <u:Tag class="nrgQPPCC-buttons" >
                 <um:Button press=".onPendingCCSave"
-                           text="{comp-i18n-quickpay>nrgQPPay}"
+                           text="{comp-i18n-quickpay>nrgQPSave}"
                            class="nrgQPCC-btn"
                            design="Default">
                 </um:button>
