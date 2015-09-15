@@ -502,12 +502,6 @@ sap.ui.define(
                     sPath = "/CreditCardPPSet";
                 sPath = "/CreditCardPPSet('" + oContext.getProperty("ContractID") + "')";
                 mParameters = {
-                    urlParameters : {"CardID" : oContext.getProperty("CardID"),
-                                     "CardNumber" : oContext.getProperty("CardNumber"),
-                                     "ScheduledDate" : oContext.getProperty("ScheduledDate"),
-                                     "Amount" : oContext.getProperty("Amount"),
-                                     "ContractID" : oContext.getProperty("ContractID"),
-                                     "CurrentStatus" : oContext.getProperty("CurrentStatus")},
                     success : function (oData, oResponse) {
                         jQuery.sap.log.info("Odata Read Successfully:::");
                     }.bind(this),
@@ -515,7 +509,12 @@ sap.ui.define(
                         jQuery.sap.log.info("Eligibility Error occured");
                     }.bind(this)
                 };
-                oModel.update(sPath, mParameters);
+                oModel.update(sPath, {"CardID" : oContext.getProperty("CardID"),
+                                     "CardNumber" : oContext.getProperty("CardNumber"),
+                                     "ScheduledDate" : oContext.getProperty("ScheduledDate"),
+                                     "Amount" : oContext.getProperty("Amount"),
+                                     "ContractID" : oContext.getProperty("ContractID"),
+                                     "CurrentStatus" : oContext.getProperty("CurrentStatus")}, mParameters);
             });
 
         };
@@ -534,12 +533,6 @@ sap.ui.define(
                     sPath = "/CreditCardPPSet";
                 sPath = "/BankDraftPPSet('" + oContext.getProperty("ContractID") + "')";
                 mParameters = {
-                    urlParameters : {"RoutingNumber" : oContext.getProperty("RoutingNumber"),
-                                     "AccountNumber" : oContext.getProperty("AccountNumber"),
-                                     "ScheduledDate" : oContext.getProperty("ScheduledDate"),
-                                     "PaymentAmount" : oContext.getProperty("PaymentAmount"),
-                                     "ContractID" : oContext.getProperty("ContractID"),
-                                     "CurrentStatus" : oContext.getProperty("CurrentStatus")},
                     success : function (oData, oResponse) {
                         jQuery.sap.log.info("Odata Read Successfully:::");
                     }.bind(this),
@@ -547,7 +540,12 @@ sap.ui.define(
                         jQuery.sap.log.info("Eligibility Error occured");
                     }.bind(this)
                 };
-                oModel.update(sPath, mParameters);
+                oModel.update(sPath, {"RoutingNumber" : oContext.getProperty("RoutingNumber"),
+                                     "AccountNumber" : oContext.getProperty("AccountNumber"),
+                                     "ScheduledDate" : oContext.getProperty("ScheduledDate"),
+                                     "PaymentAmount" : oContext.getProperty("PaymentAmount"),
+                                     "ContractID" : oContext.getProperty("ContractID"),
+                                     "CurrentStatus" : oContext.getProperty("CurrentStatus")}, mParameters);
             });
 
         };
