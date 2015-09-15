@@ -79,7 +79,8 @@ sap.ui.define(
             oValue = oValue.replace(' ', '');
             oValue = oValue.replace('+', '');
 
-            if (oValue.indexOf("+1") > -1 || oValue.indexOf("1") > -1) {
+            // If the length is more than 11 digits, take the first 11 digit as phone number and make the first digit country code.
+            if (oValue.length >= 11) {
                 return ('+' + oValue.substr(0, 1) + ' ' + oValue.substr(1, 3) + '-' + oValue.substr(4, 3) + '-' + oValue.substr(7, 4) + ' ');
             } else {
                 return (oValue.substr(0, 3) + '-' + oValue.substr(3, 3) + '-' + oValue.substr(6, 4) + ' ' + oValue.substr(10));

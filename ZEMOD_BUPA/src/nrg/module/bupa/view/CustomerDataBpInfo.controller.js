@@ -343,6 +343,10 @@ sap.ui.define(
             oConfigModel.setProperty('/personalInfoSaveVisible', false);
             oConfigModel.setProperty('/personalInfoEditable', false);
 
+            // Make DL & SSN uneditable
+            oConfigModel.setProperty('/personalInfoSSEditable', false);
+            oConfigModel.setProperty('/personalInfoDLEditable', false);
+
             bpPersonalModel.setData(jQuery.extend(true, {}, this.oDataBpPersonalBak));
         };
 
@@ -372,9 +376,10 @@ sap.ui.define(
             oConfigModel.setProperty('/personalInfoEditVisible', true);
             oConfigModel.setProperty('/personalInfoSaveVisible', false);
             oConfigModel.setProperty('/personalInfoEditable', false);
+            
             // Make DL & SSN uneditable
             oConfigModel.setProperty('/personalInfoSSEditable', false);
-            oConfigModel.setProperty('/personalInfoSSEditable', false);
+            oConfigModel.setProperty('/personalInfoDLEditable', false);
 
             if (JSON.stringify(bpPersonalModel.oData) === JSON.stringify(this.oDataBpPersonalBak)) {
                 sap.ui.commons.MessageBox.alert("There is no change for Personal Info.");

@@ -87,10 +87,10 @@ sap.ui.define(
             var sNewValue = this._oFormatYyyymmdd.format(this._oCalendar._getFocusedDate()),
                 $Input;
 
-            this._oPopup.close();
+
             this.focus();
             // do not call this._checkChange(); because we already have the date object and no wrong entry is possible
-
+            this._oPopup.close();
             this.setProperty('value', sNewValue, true);
             this.setProperty('defaultDate', sNewValue, true);
             // this.setProperty('yyyymmdd', sYyyymmdd, true);
@@ -243,7 +243,26 @@ sap.ui.define(
                 oEvent.stopPropagation();
             }
         };
-
+       /**
+         * to override the change event of the text field
+         *
+         * @param {jQuery.EventObject} oEvent The event object
+         *
+         *
+         */
+        DatePicker.prototype.setMinDate = function (minDate) {
+            this._oMinDate = minDate;
+        };
+        /**
+         * to override the change event of the text field
+         *
+         * @param {jQuery.EventObject} oEvent The event object
+         *
+         *
+         */
+        DatePicker.prototype.setMaxDate = function (maxDate) {
+            this._oMaxDate = maxDate;
+        };
        /**
          * to override the change event of the text field
          *
