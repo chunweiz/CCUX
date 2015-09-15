@@ -32,24 +32,29 @@
                                              text="$200.00" />
                                     <ute:Tag elem="div"
                                              class="nrgBilling-cusDataBil-PayBalBtn-text"
-                                             text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-PAY_NOW}" />
+                                             text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-PAY_NOW}"/>
                                 </utmain:Button>
 
-                                <ute:tag elem="div">
-                                    <utmain:Label text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-REFER_TO}:"
-                                                  labelFor="referrer"
+                                <ute:Tag>
+                                    <ute:Tag text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-REFER_TO}"
                                                   class="nrgBilling-cusDataBil-referer-lbl"/>
-                                    <utmain:Dropdown id="referer"
+                                    <utmain:Button class="nrgBilling-cusDataBil-referer-linkFirst" design="None"
+                                                   text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-CHKBOOK}"
+                                                   press="._onChkbookLnkClicked"/>
+                                    <utmain:Button class="nrgBilling-cusDataBil-referer-linkSecnd" design="None"
+                                                   text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-HighBill}"
+                                                   press="._onHighbillLnkClicked"/>
+                                    <!--<utmain:Dropdown id="referer"
                                                      design="Default"
                                                      class="nrgBilling-cusDataBil-referer-dropdown"
-                                                     content="{data>/dropdown}"
-                                                     selectedKey="{data>/selectedKey}"
+                                                     content="{oLinkDropdown>/aLinks}"
+                                                     selectedKey="{oLinkDropdown>/selectedKey}"
                                                      select=".onSelected">
-                                        <utmain:DropdownItem key="{data>key}">
-                                           <ute:Tag text="{data>value}" />
+                                        <utmain:DropdownItem key="{oLinkDropdown>key}">
+                                           <ute:Tag text="{oLinkDropdown>value}" />
                                         </utmain:DropdownItem>
-                                    </utmain:Dropdown>
-                                </ute:tag>
+                                    </utmain:Dropdown>-->
+                                </ute:Tag>
 
                                 <ute:Tag class="nrgBilling-cusDataBil-date">
                                     <ute:Tag elem="div"

@@ -18,17 +18,14 @@ sap.ui.define(
             var oModel;
 
             oModel = new JSONModel({
-                selectedKey: 'key003',
-                dropdown: [
-                    { key: 'key001', value: 'value001' },
-                    { key: 'key002', value: 'value002' },
-                    { key: 'key003', value: 'Checkbook' },
-                    { key: 'key004', value: 'value004' },
-                    { key: 'key005', value: 'value005' }
+                selectedKey: 'ilink_1',
+                aLinks: [
+                    { key: 'ilink_1', value: 'Checkbook' },
+                    { key: 'ilink_2', value: 'High Bill' }
                 ]
             });
 
-            this.getView().setModel(oModel, 'data');
+            this.getView().setModel(oModel, 'oLinkDropdown');      //Model for the dropdown links
         };
 
         CustomController.prototype.onBeforeRendering = function () {
@@ -43,6 +40,9 @@ sap.ui.define(
 
         };
 
+        /*************************************************************************************************************************/
+        //Handlers
+        /*************************************************************************************************************************/
         CustomController.prototype._onInvoiceAmntClicked = function (oEvent) {
             var i18nModel =  this.getOwnerComponent().getModel('comp-i18n-billing'),
                 popupTitle = i18nModel.getProperty("nrgBilling-paymentsPopup-ACCOUNT_SUMMARY");
@@ -89,6 +89,31 @@ sap.ui.define(
 
             oRouter.navTo('quickpay', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
         };
+
+        CustomController.prototype._onChkbookLnkClicked = function () {
+            var oRouter = this.getOwnerComponent().getRouter(),
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+
+            this._bpNum = oRouteInfo.parameters.bpNum;
+            this._caNum = oRouteInfo.parameters.caNum;
+            this._coNum = oRouteInfo.parameters.coNum;
+
+            oRouter.navTo('billing.CheckBook', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+        };
+
+        CustomController.prototype._onHighbillLnkClicked = function () {
+            var oRouter = this.getOwnerComponent().getRouter(),
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+
+            this._bpNum = oRouteInfo.parameters.bpNum;
+            this._caNum = oRouteInfo.parameters.caNum;
+            this._coNum = oRouteInfo.parameters.coNum;
+
+            oRouter.navTo('billing.HighBill', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+        };
+        /*************************************************************************************************************************/
+
+
 
 
         return CustomController;
