@@ -191,17 +191,6 @@ sap.ui.define(
                     })
                     .attr('y2', iHeight);
 
-            // var fnConsumptionXGrid = d3.svg.axis()
-            //     .orient('bottom')
-            //     .scale(fnScaleX)
-            //     .ticks(aDataSet.length)
-            //     .tickSize(iHeight, 0, 0)
-            //     .tickFormat('');
-            //
-            // oCanvas.append('g')
-            //     .attr('class', 'tmUsageHistChart-consumptionXGrid')
-            //     .call(fnConsumptionXGrid);
-
             // Y grid
             var fnConsumptionYGrid = d3.svg.axis()
                 .orient('left')
