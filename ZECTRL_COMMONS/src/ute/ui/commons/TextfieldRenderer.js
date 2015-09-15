@@ -53,6 +53,7 @@ sap.ui.define(
                 oRm.writeAttribute('name', oTextfield.getName());
                 if (!oTextfield.getEditable()) {
                     oRm.writeAttribute('readonly', '');
+                    oRm.writeAttribute('disabled', '');
                 }
 /*                if (oTextfield.getValue()) {
                     oRm.writeAttribute('value', oTextfield.getValue());
@@ -108,6 +109,7 @@ sap.ui.define(
                 }*/
                 if (!oTextfield.getEditable()) {
                     oRm.writeAttribute('readonly', '');
+                    oRm.writeAttribute('disabled', '');
                 }
                 if (oTextfield.getMaxLength()) {
 			        oRm.writeAttribute("maxLength", oTextfield.getMaxLength());
@@ -157,6 +159,7 @@ sap.ui.define(
                 }
                 if (!oTextfield.getEditable()) {
                     oRm.writeAttribute('readonly', '');
+                    oRm.writeAttribute('disabled', '');
                 }
                 if (oTextfield.getMaxLength()) {
                     oRm.writeAttribute("maxLength", oTextfield.getMaxLength());
@@ -214,6 +217,7 @@ sap.ui.define(
                 }
                 if (!oTextfield.getEditable()) {
                     oRm.writeAttribute('readonly', '');
+                    oRm.writeAttribute('disabled', '');
                 }
                 if (oTextfield.getMaxLength()) {
 			        oRm.writeAttribute("maxLength", oTextfield.getMaxLength());
