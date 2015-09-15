@@ -39,8 +39,13 @@
             font-size: 14px;
         }
 
-        .tmUsageHistChart-consumptionXGrid g.tick line {
+        .tmUsageHistChart-consumptionXGrid {
             stroke: #ffffff;
+            stroke-width: 4;
+        }
+
+        .tmUsageHistChart-consumptionXGrid:first-child {
+            stroke-width: 1;
         }
 
         .tmUsageHistChart-consumptionYGrid g.tick line {

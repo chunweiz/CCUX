@@ -96,8 +96,53 @@ sap.ui.define(
                 .domain([0, iMaxKwhUsage + (iYAxisTickSize - (iMaxKwhUsage % iYAxisTickSize))])
                 .range([iHeight, 0]);
 
-            //Background
+            //Background gradient
+            var iBackgroundBarWidth = iWidth / aDataSet.length;
+            var sOddBgGradientId = this.getId() + '-oddBgGradient';
+            var sEvenBgGradientId = this.getId() + '-evenBgGradient';
 
+            oCanvas.append('linearGradient')
+                .attr('id', sOddBgGradientId)
+                .attr('x1', '0%').attr('y1', '0%')
+                .attr('x2', '0%').attr('y2', '0%')
+                .selectAll('stop')
+                .data([
+                    { offset: '0%', stopColor: 'rgb(163,190,206)' },
+                    { offset: '100%', stopColor: 'rgb(163,190,206)' }
+                ])
+                .enter()
+                .append('stop')
+                    .attr('offset', function (data) { return data.offset; })
+                    .attr('stop-color', function (data) { return data.stopColor; });
+
+            oCanvas.append('linearGradient')
+                .attr('id', sEvenBgGradientId)
+                .attr('x1', '0%').attr('y1', '0%')
+                .attr('x2', '0%').attr('y2', '100%')
+                .selectAll('stop')
+                .data([
+                    { offset: '5%', stopColor: 'rgb(181,203,216)' },
+                    { offset: '95%', stopColor: 'rgb(156,173,184)' }
+                ])
+                .enter()
+                .append('stop')
+                    .attr('offset', function (data) { return data.offset; })
+                    .attr('stop-color', function (data) { return data.stopColor; });
+
+            oCanvas.append('g')
+                .selectAll('rect')
+                .data(aDataSet)
+                .enter()
+                .append('rect')
+                    .attr('transform', function (data, index) {
+                        return 'translate(' + index * iBackgroundBarWidth + ',0)';
+                    })
+                    .attr('height', iHeight)
+                    .attr('width', iBackgroundBarWidth)
+                    .style('fill', function (data, index) {
+                        var sId = (index + 1) % 2 === 0 ? sEvenBgGradientId : sOddBgGradientId;
+                        return 'url(#' + sId + ')';
+                    });
 
             // X axis
             var fnConsumptionXAxis = d3.svg.axis()
@@ -131,16 +176,31 @@ sap.ui.define(
                     .text('kWh');
 
             // X grid
-            var fnConsumptionXGrid = d3.svg.axis()
-                .orient('bottom')
-                .scale(fnScaleX)
-                .ticks(aDataSet.length)
-                .tickSize(iHeight, 0, 0)
-                .tickFormat('');
-
             oCanvas.append('g')
-                .attr('class', 'tmUsageHistChart-consumptionXGrid')
-                .call(fnConsumptionXGrid);
+                .selectAll('line')
+                .data(aDataSet)
+                .enter()
+                .append('line')
+                    .attr('class', 'tmUsageHistChart-consumptionXGrid')
+                    .attr('x1', function (data, index) {
+                        return index * iBackgroundBarWidth;
+                    })
+                    .attr('y1', 0)
+                    .attr('x2', function (data, index) {
+                        return index * iBackgroundBarWidth;
+                    })
+                    .attr('y2', iHeight);
+
+            // var fnConsumptionXGrid = d3.svg.axis()
+            //     .orient('bottom')
+            //     .scale(fnScaleX)
+            //     .ticks(aDataSet.length)
+            //     .tickSize(iHeight, 0, 0)
+            //     .tickFormat('');
+            //
+            // oCanvas.append('g')
+            //     .attr('class', 'tmUsageHistChart-consumptionXGrid')
+            //     .call(fnConsumptionXGrid);
 
             // Y grid
             var fnConsumptionYGrid = d3.svg.axis()
