@@ -26,15 +26,15 @@
                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-lbl"
                                  text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-StaDate}"/>
                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-val"
-                                 text="{parts:['oChkbkHdr>/InvStrartDate'],
-                                        formatter:'._getCurDate'}"/>
+                                 text="{parts:['oChkbkHdr>/InvEndDate'],
+                                        formatter:'._getPreSixMonthDate'}"/>
                         </ute:Tag>
                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-ctnt">
                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-lbl"
                                  text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-EndDate}"/>
                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-val"
-                                 text="{parts:['oChkbkHdr>/InvEndDate'],
-                                        formatter:'._getPreSixMonthDate'}"/>
+                                 text="{parts:['oChkbkHdr>/InvStrartDate'],
+                                        formatter:'._getCurDate'}"/>
                     </ute:Tag>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl">
