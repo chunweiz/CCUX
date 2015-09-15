@@ -121,7 +121,7 @@ sap.ui.define(
         };
 
         App.prototype.setLayout = function (sLayoutType) {
-            AppBody.setContentLayout(sLayoutType);
+            this._oAppBody.setContentLayout(sLayoutType);
             return this;
         };
 
