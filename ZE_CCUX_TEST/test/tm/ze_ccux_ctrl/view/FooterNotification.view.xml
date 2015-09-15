@@ -1,0 +1,17 @@
+<mvc:View
+    controllerName="test.tm.ze_ccux_ctrl.view.FooterNotification"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:ua="ute.ui.app"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
+        <ua:FooterNotificationItem text="Information notification message" />
+        <ua:FooterNotificationItem design="Warning" text="Warning notification message" />
+        <ua:FooterNotificationItem design="Error" text="Error notification message" />
+        <ua:FooterNotificationItem design="Success" text="Success notification message" />
+    </sm:ScrollContainer>
+</mvc:View>

@@ -19,7 +19,8 @@ sap.ui.define(
                 'ute.ui.app.ToolPageDesign',
                 'ute.ui.app.GeneralPageDesign',
                 'ute.ui.app.TagType',
-                'ute.ui.app.MessageDesign'
+                'ute.ui.app.MessageDesign',
+                'ute.ui.app.FooterNotificationItemDesign'
             ],
 
             controls: [
@@ -70,6 +71,14 @@ sap.ui.define(
         ute.ui.app.TagType = {
             Block: 'Block',
             Inline: 'Inline'
+        };
+
+        ute.ui.app.FooterNotificationItemDesign = {
+            None: 'None',
+            Information: 'Information',
+            Error: 'Error',
+            Warning: 'Warning',
+            Success: 'Success'
         };
 
         ute.ui.app.MessageDesign = sap.ui.core.MessageType;

@@ -1,0 +1,43 @@
+.uteAppFtrNotifItem {
+    position: relative;
+    display: block;
+    padding: 10px 0;
+
+    & .uteAppFtrNotifItem-icon {
+        position: absolute;
+        display: inline-block;
+        float: left;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: @uteFontSize-largest;
+    }
+
+    & .uteAppFtrNotifItem-text {
+        display: block;
+        padding-left: 40px;
+    }
+}
+
+.uteAppFtrNotifItem-design-information {
+    & .uteAppFtrNotifItem-icon {
+        color: @uteColor-grey-light;
+    }
+}
+
+.uteAppFtrNotifItem-design-error {
+    & .uteAppFtrNotifItem-icon {
+        color: red;
+    }
+}
+
+.uteAppFtrNotifItem-design-warning {
+    & .uteAppFtrNotifItem-icon {
+        color: gold;
+    }
+}
+
+.uteAppFtrNotifItem-design-success {
+    & .uteAppFtrNotifItem-icon {
+        color: lightgreen;
+    }
+}

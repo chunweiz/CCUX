@@ -43,7 +43,8 @@
                 "FancyTextField": { "pattern": "FancyTextField", "target": [ "FancyTextField" ] },
                 "UsageHistory": { "pattern": "UsageHistory", "target": [ "UsageHistory" ] },
                 "CustJourneyChannel": { "pattern": "CustJourneyChannel", "target": [ "CustJourneyChannel" ] },
-                "CustJourneyLifecycle": { "pattern": "CustJourneyLifecycle", "target": [ "CustJourneyLifecycle" ] }
+                "CustJourneyLifecycle": { "pattern": "CustJourneyLifecycle", "target": [ "CustJourneyLifecycle" ] },
+                "FooterNotification": { "pattern": "FooterNotification", "target": [ "FooterNotification" ] }
             },
 
             "config": {
@@ -68,7 +69,8 @@
                 "FancyTextField": { "viewName": "FancyTextField", "controlId": "idAppContent" },
                 "UsageHistory": { "viewName": "UsageHistory", "controlId": "idAppContent" },
                 "CustJourneyChannel": { "viewName": "CustJourneyChannel", "controlId": "idAppContent" },
-                "CustJourneyLifecycle": { "viewName": "CustJourneyLifecycle", "controlId": "idAppContent" }
+                "CustJourneyLifecycle": { "viewName": "CustJourneyLifecycle", "controlId": "idAppContent" },
+                "FooterNotification": { "viewName": "FooterNotification", "controlId": "idAppContent" }
             }
         }
     }
