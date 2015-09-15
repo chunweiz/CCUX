@@ -107,8 +107,8 @@ sap.ui.define(
                 .attr('x2', '0%').attr('y2', '0%')
                 .selectAll('stop')
                 .data([
-                    { offset: '0%', stopColor: 'rgb(163,190,206)' },
-                    { offset: '100%', stopColor: 'rgb(163,190,206)' }
+                    { offset: '0%', stopColor: '#a3bece' },
+                    { offset: '100%', stopColor: '#a3bece' }
                 ])
                 .enter()
                 .append('stop')
@@ -121,8 +121,8 @@ sap.ui.define(
                 .attr('x2', '0%').attr('y2', '100%')
                 .selectAll('stop')
                 .data([
-                    { offset: '5%', stopColor: 'rgb(181,203,216)' },
-                    { offset: '95%', stopColor: 'rgb(156,173,184)' }
+                    { offset: '5%', stopColor: '#b5cbd8' },
+                    { offset: '95%', stopColor: '#9cadb8' }
                 ])
                 .enter()
                 .append('stop')
