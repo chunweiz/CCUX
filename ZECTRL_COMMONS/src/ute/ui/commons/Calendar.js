@@ -222,29 +222,44 @@ sap.ui.define(
             } else {
 
                 $Target = jQuery(oEvent.target);
-                if ($Target.hasClass('uteCal-dayPic-day')) {
+                if ((this.getEditable() && this.getEnabled())) {
 
-                    oFocusedDate = this._getFocusedDate();
-                    oOldFocusedDate = oFocusedDate;
-                    oFocusedDate = this._oFormatYyyymmdd.parse($Target.attr('data-nrg-day'), false);
-                    this._setFocusedDate(oFocusedDate);
-                    if (oFocusedDate.getTime() !== oOldFocusedDate.getTime()) {
-
-                        if ($Target.hasClass('uteCal-dayPic-dayOtherMonth')) {
-
-                            // in other month -> change month
-                            this._renderMonth();
-                            oEvent.stopPropagation();
-                            oEvent.preventDefault();
-                        } else {
-
-                            this._selectDay(this._getFocusedDate());
-                            this.fireEvent('select');
-                            //to prevent bubbling into input field if in DatePicker
-                            oEvent.stopPropagation();
-                            oEvent.preventDefault();
+                    if ($Target.hasClass('uteCal-dayPic-dayNoRange')) {
+                        oEvent.stopPropagation();
+                        oEvent.preventDefault();
+                        return false;
+                    }
+                    if ($Target.hasClass('uteCal-dayPic-day')) {
+                        oFocusedDate = this._getFocusedDate();
+                        oOldFocusedDate = oFocusedDate;
+                        oFocusedDate = this._oFormatYyyymmdd.parse($Target.attr('data-nrg-day'), false);
+                        if (oFocusedDate.getTime() !== oOldFocusedDate.getTime()) {
+                            if ($Target.hasClass('uteCal-dayPic-dayOtherMonth')) {
+                                // in other month -> change month
+                                this._setFocusedDate(oFocusedDate);
+                                this._renderMonth();
+                                oEvent.stopPropagation();
+                                oEvent.preventDefault();
+                            } else if ($Target.hasClass('uteCal-dayPic-dayNoRange')) { // Can remove this condition but just to keep checking again.
+                                //to prevent bubbling into input field if in DatePicker
+                                oEvent.stopPropagation();
+                                oEvent.preventDefault();
+                                return false;
+                            } else {
+                                this._setFocusedDate(oFocusedDate);
+                                this._selectDay(this._getFocusedDate());
+                                this.fireEvent('select');
+                                //to prevent bubbling into input field if in DatePicker
+                                oEvent.stopPropagation();
+                                oEvent.preventDefault();
+                            }
                         }
                     }
+                } else {
+                    this.fireEvent('close');
+                    oEvent.stopPropagation();
+                    oEvent.preventDefault();
+                    return false;
                 }
 
             }
@@ -294,7 +309,26 @@ sap.ui.define(
 
             return iSelected;
         };
-
+        /*
+         * Checks if a date between selectable range
+         * @return {boolean} true : with in Range; false : outside range
+         * @private
+         */
+        Calendar.prototype._checkDateRange = function (oDate) {
+            var bSelectedRange = true,
+                oMinDateTimeStamp = this.getMinDate().getTime(),
+                oDateTimeStamp = oDate.getTime(),
+                oMaxDateTimeStamp = this.getMaxDate().getTime();
+            if (!(oDate instanceof Date)) {
+                throw new Error('Date must be a JavaScript date object; ' + this);
+            }
+            if ((oDateTimeStamp > oMinDateTimeStamp) && (oDateTimeStamp < oMaxDateTimeStamp)) {
+                bSelectedRange = true; // single day selected
+            } else {
+                bSelectedRange = false;
+            }
+            return bSelectedRange;
+        };
        /**
          * Change the focusdate and also the render month again in the calendar control
          * only for internal use
@@ -309,13 +343,91 @@ sap.ui.define(
        /**
          * Change the selectedDate
          * only for internal use
-         * @return {string} oSelectedDate
+         * @Parameter {string} oSelectedDate
          *
          */
         Calendar.prototype.addSelectedDate = function (oSelectedDate) {
             this.setProperty('selectedDate', oSelectedDate, true);
             this._oFocusedDate = this._oFormatYyyymmdd.parse(oSelectedDate);
             this._renderMonth();
+        };
+       /**
+         * Sets the Minimum Date
+         * only for internal use
+         * @Parameter {Date} oMinDate
+         *
+         */
+        Calendar.prototype.setMinDate = function (oMinDate) {
+            if (!(oMinDate instanceof Date)) {
+                throw new Error('Date must be a JavaScript date object; ' + this);
+            }
+            this._oMinDate = oMinDate;
+        };
+        /**
+         * Sets the Maximum Date
+         * only for internal use
+         * @Parameter {Date} oMaxDate
+         *
+         */
+        Calendar.prototype.setMaxDate = function (oMaxDate) {
+            if (!(oMaxDate instanceof Date)) {
+                throw new Error('Date must be a JavaScript date object; ' + this);
+            }
+            this._oMaxDate = oMaxDate;
+        };
+       /**
+         * Sets the Editable
+         * only for internal use
+         * @Parameter {boolean} bEditable
+         *
+         */
+        Calendar.prototype.setEditable = function (bEditable) {
+            this._bEditable = bEditable;
+        };
+        /**
+         * Sets the Enabled
+         * only for internal use
+         * @Parameter {boolean} bEnabled
+         *
+         */
+        Calendar.prototype.setEnabled = function (bEnabled) {
+            this._bEnabled = bEnabled;
+        };
+       /**
+         * Gets the Editable
+         * only for internal use
+         * @return {boolean} bEditable
+         *
+         */
+        Calendar.prototype.getEditable = function () {
+            return this._bEditable;
+        };
+        /**
+         * Gets the Enabled
+         * only for internal use
+         * @return {boolean} bEnabled
+         *
+         */
+        Calendar.prototype.getEnabled = function () {
+            return this._bEnabled;
+        };
+       /**
+         * Gets the Minimum Date
+         * only for internal use
+         *
+         *
+         */
+        Calendar.prototype.getMinDate = function () {
+            return this._oMinDate;
+        };
+        /**
+         * Sets the Maximum Date
+         * only for internal use
+         *
+         *
+         */
+        Calendar.prototype.getMaxDate = function () {
+            return this._oMaxDate;
         };
 
         return Calendar;
