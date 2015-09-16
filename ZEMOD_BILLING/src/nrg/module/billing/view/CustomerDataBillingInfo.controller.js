@@ -34,7 +34,7 @@ sap.ui.define(
         };
 
         CustomController.prototype.onAfterRendering = function () {
-            this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+            //this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
         };
 
         CustomController.prototype.onExit = function () {

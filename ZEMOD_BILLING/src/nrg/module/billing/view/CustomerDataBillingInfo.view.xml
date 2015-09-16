@@ -36,8 +36,15 @@
                                 </utmain:Button>
 
                                 <ute:Tag>
+                                    <ute:Tag text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-INVOCE_NUM}"
+                                             class="nrgBilling-cusDataBil-referer-lbl"/>
+                                    <utmain:Button class="nrgBilling-cusDataBil-referer-linkFirst" design="None"
+                                                   text="000 000 000 000"/>
+                                </ute:Tag>
+
+                                <ute:Tag>
                                     <ute:Tag text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-REFER_TO}"
-                                                  class="nrgBilling-cusDataBil-referer-lbl"/>
+                                             class="nrgBilling-cusDataBil-referer-lbl"/>
                                     <utmain:Button class="nrgBilling-cusDataBil-referer-linkFirst" design="None"
                                                    text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-CHKBOOK}"
                                                    press="._onChkbookLnkClicked"/>

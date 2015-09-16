@@ -28,6 +28,12 @@
         "ItemOrder":"        2-",
         "HyperLink":"",
         "Date":null,
+        "BBPAmt":"",
+        "BBPAmtAddr":"",
+        "BBPBal":"",
+        "BBPBalAddr":"",
+        "BBPDefBal":"",
+        "BBPDefBalTxt":"",
         "PaymentHdr":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='008005303668')/PaymentHdr"
@@ -61,6 +67,12 @@
         "ItemOrder":"      827",
         "HyperLink":"",
         "Date":null,
+        "BBPAmt":"",
+        "BBPAmtAddr":"",
+        "BBPBal":"",
+        "BBPBalAddr":"",
+        "BBPDefBal":"",
+        "BBPDefBalTxt":"",
         "PaymentHdr":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='008005303668')/PaymentHdr"
@@ -94,6 +106,12 @@
         "ItemOrder":"      312",
         "HyperLink":"",
         "Date":null,
+        "BBPAmt":"",
+        "BBPAmtAddr":"",
+        "BBPBal":"",
+        "BBPBalAddr":"",
+        "BBPDefBal":"",
+        "BBPDefBalTxt":"",
         "PaymentHdr":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='008005303668')/PaymentHdr"
@@ -127,6 +145,12 @@
         "ItemOrder":"     1813",
         "HyperLink":"",
         "Date":null,
+        "BBPAmt":"",
+        "BBPAmtAddr":"",
+        "BBPBal":"",
+        "BBPBalAddr":"",
+        "BBPDefBal":"",
+        "BBPDefBalTxt":"",
         "PaymentHdr":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='008005303668')/PaymentHdr"
@@ -160,6 +184,12 @@
         "ItemOrder":"     1820",
         "HyperLink":"",
         "Date":null,
+        "BBPAmt":"",
+        "BBPAmtAddr":"",
+        "BBPBal":"",
+        "BBPBalAddr":"",
+        "BBPDefBal":"",
+        "BBPDefBalTxt":"",
         "PaymentHdr":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='008005303668')/PaymentHdr"
@@ -193,6 +223,12 @@
         "ItemOrder":"     1758",
         "HyperLink":"",
         "Date":null,
+        "BBPAmt":"",
+        "BBPAmtAddr":"",
+        "BBPBal":"",
+        "BBPBalAddr":"",
+        "BBPDefBal":"",
+        "BBPDefBalTxt":"",
         "PaymentHdr":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='008005303668')/PaymentHdr"
@@ -226,6 +262,12 @@
         "ItemOrder":"     1827",
         "HyperLink":"",
         "Date":null,
+        "BBPAmt":"",
+        "BBPAmtAddr":"",
+        "BBPBal":"",
+        "BBPBalAddr":"",
+        "BBPDefBal":"",
+        "BBPDefBalTxt":"",
         "PaymentHdr":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='008005303668')/PaymentHdr"
@@ -259,6 +301,12 @@
         "ItemOrder":"      426",
         "HyperLink":"",
         "Date":null,
+        "BBPAmt":"",
+        "BBPAmtAddr":"",
+        "BBPBal":"",
+        "BBPBalAddr":"",
+        "BBPDefBal":"",
+        "BBPDefBalTxt":"",
         "PaymentHdr":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='008005303668')/PaymentHdr"
@@ -325,6 +373,12 @@
         "ItemOrder":"      512",
         "HyperLink":"",
         "Date":null,
+        "BBPAmt":"",
+        "BBPAmtAddr":"",
+        "BBPBal":"",
+        "BBPBalAddr":"",
+        "BBPDefBal":"",
+        "BBPDefBalTxt":"",
         "PaymentHdr":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='008005303668')/PaymentHdr"
@@ -358,6 +412,12 @@
         "ItemOrder":"      927",
         "HyperLink":"",
         "Date":null,
+        "BBPAmt":"",
+        "BBPAmtAddr":"",
+        "BBPBal":"",
+        "BBPBalAddr":"",
+        "BBPDefBal":"",
+        "BBPDefBalTxt":"",
         "PaymentHdr":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='008005303668')/PaymentHdr"
@@ -391,6 +451,12 @@
         "ItemOrder":"      602",
         "HyperLink":"",
         "Date":null,
+        "BBPAmt":"35.14",
+        "BBPAmtAddr":"7213 1/3 ROOT RD SPRING TX 77389",
+        "BBPBal":"288.00",
+        "BBPBalAddr":"BAL - 7213 ROOT RD SPRING TX 77389",
+        "BBPDefBal":"-233.84",
+        "BBPDefBalTxt":"Deferred Balance after payment of your monthly Total Due",
         "PaymentHdr":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='008005303668')/PaymentHdr"
