@@ -224,9 +224,9 @@ sap.ui.define(
             if (oModel) {
 
                 // Make the key of empty value as "", so that the system can recognize it.
-                if (this.ODataBpNameBak.Title === "0000") this.ODataBpNameBak.Title = "";
-                if (this.ODataBpNameBak.AcademicTitle === "0000") this.ODataBpNameBak.AcademicTitle = "";
-                if (this.ODataBpNameBak.Suffix === "0000") this.ODataBpNameBak.Suffix = "";
+                if (this.getView().getModel('ODataBpName').oData.Title === "0000") this.getView().getModel('ODataBpName').oData.Title = "";
+                if (this.getView().getModel('ODataBpName').oData.AcademicTitle === "0000") this.getView().getModel('ODataBpName').oData.AcademicTitle = "";
+                if (this.getView().getModel('ODataBpName').oData.Suffix === "0000") this.getView().getModel('ODataBpName').oData.Suffix = "";
 
                 oModel.update(sPath, this.getView().getModel('ODataBpName').oData, oParameters);
             }
