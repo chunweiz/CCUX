@@ -178,6 +178,11 @@ sap.ui.define(
             oConfigModel.setProperty('/titleSaveVisible', false);
             oConfigModel.setProperty('/titleEditable', false);
 
+            // Make the key of empty value as "0000", so that the dropdown can recognize it.
+            if (this.ODataBpNameBak.Title === "") this.ODataBpNameBak.Title = "0000";
+            if (this.ODataBpNameBak.AcademicTitle === "") this.ODataBpNameBak.AcademicTitle = "0000";
+            if (this.ODataBpNameBak.Suffix === "") this.ODataBpNameBak.Suffix = "0000";
+
             bpTitleModel.setData(jQuery.extend(true, {}, this.ODataBpNameBak));
         };
 
