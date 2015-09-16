@@ -73,7 +73,9 @@
                             <u:Tag class="nrgQPCC-DDI">
                                 <core:Icon src="{parts:[{path:'comp-quickpay>CardType'}],
                                                     formatter:'.formatCCType'}" class="nrgQPCC-icon" />
-                                <u:Tag text="{comp-quickpay>CardNumber}" class="nrgQPCC-DdlValue"/>
+                                <u:Tag text="{parts:[{path:'comp-quickpay>CardNumber'}],
+                                                    formatter:'.formatCardNumber'}"
+                                       class="nrgQPCC-DdlValue"/>
                             </u:Tag>
                         </um:DropdownItem>
                         <um:DropdownItem key="{comp-quickpay>ReasonCode}" class="nrgQPCC-DDLWRItem" id="idnrgQPCC-WaiveReasonItem">

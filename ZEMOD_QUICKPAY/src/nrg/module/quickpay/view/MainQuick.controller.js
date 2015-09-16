@@ -86,6 +86,7 @@ sap.ui.define(
                 jQuery.sap.log.info("Date Received Succesfully");
             };
             sCurrentPath = "/CreditCardSet" + "(ContractID='" + this._sContractId + "')/CardsSet";
+            //sCurrentPath = "/CardsSet";
             oBindingInfo = {
                 model : "comp-quickpay",
                 path : sCurrentPath,
@@ -910,6 +911,21 @@ sap.ui.define(
         Controller.prototype.formatAccountNumber = function (sAccountNumber) {
             if ((sAccountNumber !== undefined) && (sAccountNumber !== null) && (sAccountNumber !== "") && (sAccountNumber.split("-").length > 1)) {
                 return sAccountNumber.split("-")[1];
+            } else {
+                return "";
+            }
+        };
+         /**
+		 * Formats the Bank Account Number only show last three digits
+		 *
+		 * @function
+		 * @param {String} sAccountNumber value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.formatCardNumber = function (sCardNumber) {
+            if ((sCardNumber !== undefined) && (sCardNumber !== null) && (sCardNumber !== "") && (sCardNumber.split("-").length > 1)) {
+                return sCardNumber.split("-")[2];
             } else {
                 return "";
             }

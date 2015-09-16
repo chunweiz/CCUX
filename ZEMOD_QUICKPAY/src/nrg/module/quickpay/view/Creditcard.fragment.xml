@@ -31,8 +31,11 @@
                                  class="nrgQPCC-DDL">
                         <um:DropdownItem key="1" class="nrgQPCC-DdLItem">
                             <u:Tag class="nrgQPCC-DDI">
-                                <core:Icon src="sap-icon://nrg-icon/cc-visa" class="nrgQPCC-icon" />
-                                <u:Tag text="6068" class="nrgQPCC-DdlValue"/>
+                                <core:Icon src="{parts:[{path:'comp-quickpay>CardType'}],
+                                                    formatter:'.formatCCType'}" class="nrgQPCC-icon" />
+                                <u:Tag text="{parts:[{path:'comp-quickpay>CardNumber'}],
+                                                    formatter:'.formatCardNumber'}"
+                                       class="nrgQPCC-DdlValue"/>
                             </u:Tag>
                         </um:DropdownItem>
                     </um:Dropdown>

@@ -39,6 +39,7 @@ sap.ui.define(
             //this._oMinDate = new Date(1, 0, 1);
             //this._oMinDate.setFullYear(1); // otherwise year 1 will be converted to year 1901
             this._oMinDate = new Date();// Take todays date as minimum date unless changed by setMinDate
+            this._oMinDate.setHours(0, 0, 0, 0);//Set to midnight of yesterday
             this._oMaxDate = new Date(9999, 11, 31);
         };
 
@@ -127,6 +128,8 @@ sap.ui.define(
                 this._oCalendar.setSelectedDate(this.getDefaultDate());
                 this._oCalendar.setMinDate(this._oMinDate);
                 this._oCalendar.setMaxDate(this._oMaxDate);
+                this._oCalendar.setEditable(this.getEditable());
+                this._oCalendar.setEnabled(this.getEnabled());
                 this._oCalendar.attachEvent('select', this._selectDate, this);
                 this._oCalendar.attachEvent('close', this._close, this);
                 this._oPopup.setContent(this._oCalendar);
