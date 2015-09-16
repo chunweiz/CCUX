@@ -17,6 +17,10 @@ sap.ui.define(
                 oRm.addClass('uteAppFtrNotifItem-design-' + oCustomControl.getDesign().toLowerCase());
             }
 
+            if (oCustomControl.getLink()) {
+                oRm.addClass('uteAppFtrNotifItem-link');
+            }
+
             oRm.writeClasses();
             oRm.write('>');
 
@@ -33,6 +37,7 @@ sap.ui.define(
         CustomRenderer._renderIcon = function (oRm, oCustomControl) {
             oRm.write('<span');
             oRm.addClass('uteAppFtrNotifItem-icon');
+
             oRm.writeClasses();
             oRm.write('>');
 
@@ -44,6 +49,7 @@ sap.ui.define(
         CustomRenderer._renderText = function (oRm, oCustomControl) {
             oRm.write('<span');
             oRm.addClass('uteAppFtrNotifItem-text');
+
             oRm.writeClasses();
             oRm.write('>');
 
