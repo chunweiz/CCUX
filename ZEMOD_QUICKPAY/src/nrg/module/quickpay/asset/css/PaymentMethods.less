@@ -1,6 +1,6 @@
 .nrgQPPay-View {
             @nrgQPPay-maxWidth: 340px;
-            @nrgQPPay-PendingScreenWidth: 45rem;
+            @nrgQPPay-PendingScreenWidth: 50rem;
             @nrgQPPay-marginleft: 2.4rem;
             color : @nrgColor-white;
             font-family: @nrgFontFamily;
@@ -279,7 +279,7 @@
                     margin-top : 10px;
             }
             &   .nrgQP-Table {
-                    width: 44rem;
+                    width: 49rem;
                     margin: 20px 8px 20px 8px;
                     color: @nrgColor-black;
 
@@ -296,6 +296,12 @@
                             text-align: center;
                             min-width: 6rem;
                     }
+                    &   .nrgQPCC-hdDate {
+                            display: inline-block;
+                            width: 9rem;
+                            text-align: center;
+                            min-width: 9rem;
+                    }
                     & > .nrgQPTable-Row > .nrgQPTable-Rows {
                             margin: 2px 0px 2px 0px;
                             height: 28px;
@@ -304,6 +310,28 @@
                     & > .nrgQPTable-Row > .nrgQPTable-Rows > .nrgQPCC-Data {
                             display: inline-block;
                             width: 6rem;
+                            text-align: center;
+                            min-width: 6rem;
+                            font-size: @nrgFontSize-small;
+                            & > .uteTextfield-noBorder-input {
+                                    font-size: @nrgFontSize-small;
+                                    max-width: 100%;
+                                    text-align: center;
+                            }
+                            & > .uteTextfield-noBorder-input[readonly] {
+                                    background-color: transparent;
+                            }
+                            & > .uteTextfield-noBorder-input {
+                                   padding: 0px;
+                            }
+                            & > .uteTextfield-noBorder-input:parent {
+                                    background-color: @nrgColor-white;
+                                    border: 1px solid @nrgColor-black;
+                            }
+                    }
+                    & > .nrgQPTable-Row > .nrgQPTable-Rows > .nrgQPCC-Date {
+                            display: inline-block;
+                            width: 9rem;
                             text-align: center;
                             min-width: 6rem;
                             font-size: @nrgFontSize-small;

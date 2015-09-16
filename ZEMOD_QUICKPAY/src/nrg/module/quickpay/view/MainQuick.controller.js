@@ -73,7 +73,7 @@ sap.ui.define(
                 oCreditCardDate = this.getView().byId("idnrgQPCC-Date");
             oTBIStopRec.setSelected(true);
             oCreditCardDate.setDefaultDate(new Date().toLocaleDateString("en-US"));
-            oCreditCardDate.setMinDate(new Date());
+            //oCreditCardDate.setMinDate(new Date());
             WRRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
                 if (oEvent) {
@@ -373,7 +373,7 @@ sap.ui.define(
                 WRRecievedHandler,
                 oSorter = new sap.ui.model.Sorter("LastUsed", true); // sort descending;
             oBankDraftDate.setDefaultDate(new Date().toLocaleDateString("en-US"));
-            oBankDraftDate.setMinDate(new Date());
+            //oBankDraftDate.setMinDate(new Date());
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupWhite");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
@@ -400,8 +400,7 @@ sap.ui.define(
                 events: {dataReceived : WRRecievedHandler}
             };
             oWaiveReasonDropDown.bindAggregation("content", oBindingInfo);
-            //sCurrentPath = "/BankDraftSet" + "(ContractID='" + this._sContractId + "')/BankAccountSet";
-            sCurrentPath = "/BankAccountSet";
+            sCurrentPath = "/BankDraftSet" + "(ContractID='" + this._sContractId + "')/BankAccountSet";
             oBindingInfo = {
                 model : "comp-quickpay",
                 path : sCurrentPath,
@@ -581,7 +580,7 @@ sap.ui.define(
             this._aPendingSelPaths.map(function (sCurrentPath) {
                 var oContext = oPCCModel.getContext(sCurrentPath),
                     aFilterIds = ["ContractID"],
-                    aFilterValues = [this._sContractId],
+                    aFilterValues = [oContext.getProperty("ContractID")],
                     aFilters,
                     oBindingInfo,
                     oTableRow = that.getView().byId("idnrgQPTable-BDRow"),
@@ -608,7 +607,7 @@ sap.ui.define(
                                 that._OwnerComponent.getCcuxApp().setOccupied(false);
                             }.bind(this),
                             error: function (oError) {
-                                jQuery.sap.log.info("Eligibility Error occured");
+                                jQuery.sap.log.info("Error occured");
                                 that._OwnerComponent.getCcuxApp().setOccupied(false);
                             }.bind(this)
                         };
