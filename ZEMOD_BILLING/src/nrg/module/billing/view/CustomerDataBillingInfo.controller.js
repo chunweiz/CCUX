@@ -30,10 +30,11 @@ sap.ui.define(
 
         CustomController.prototype.onBeforeRendering = function () {
 
+
         };
 
         CustomController.prototype.onAfterRendering = function () {
-
+            this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
         };
 
         CustomController.prototype.onExit = function () {

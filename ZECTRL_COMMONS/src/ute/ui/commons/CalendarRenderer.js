@@ -162,12 +162,12 @@ sap.ui.define(
                 sYyyymmdd = '',
                 iNextMonth = (iMonth + 1) % 12,
                 sIdConcat = '',
-                iSelected;
+                iSelected,
+                bSelectedRange;
 
             if (!oDate) {
 			    oDate = oCal._getCurrentDate();
 		    }
-
             oFirstDay.setUTCDate(1);
             iWeekDay = oFirstDay.getUTCDay();
             iDaysOldMonth = iWeekDay - iFirstDayOfWeek;
@@ -182,6 +182,7 @@ sap.ui.define(
             do {
                 sYyyymmdd = oCal._oFormatYyyymmdd.format(oDay, true);
                 iSelected = oCal._checkDateSelected(oDay);
+                bSelectedRange = oCal._checkDateRange(oDay);
                 iWeekDay = oDay.getUTCDay();
                 oRm.write('<div');
                 oRm.writeAttribute('id', sId + '-' + sYyyymmdd);
@@ -195,6 +196,9 @@ sap.ui.define(
                 }
                 if (iSelected === 1) {
                     oRm.addClass('uteCal-dayPic-daySelected');
+                }
+                if (!bSelectedRange) {
+                    oRm.addClass('uteCal-dayPic-dayNoRange');
                 }
                 oRm.writeAttribute('tabindex', '-1');
                 oRm.writeAttribute('data-nrg-day', sYyyymmdd);

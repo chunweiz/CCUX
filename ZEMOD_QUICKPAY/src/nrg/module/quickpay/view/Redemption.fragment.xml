@@ -59,7 +59,7 @@
                            class="nrgQPCC-btn"
                            design="Default"
                            enabled="{appView>/reliantPay}"/>
-                <um:Button press=".onDeclineReliant"
+                <um:Button press=".onPopupClose"
                            text="{comp-i18n-quickpay>nrgQPCancel}"
                            class="nrgQPCC-btn"
                            design="Default" />

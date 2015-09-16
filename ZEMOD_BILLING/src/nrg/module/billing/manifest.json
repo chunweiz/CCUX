@@ -36,11 +36,11 @@
                 },
                 "billing.BillingInfo": {
                     "pattern": "billing/billinginfo/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target":["billing.CustomerDataBillingInfo", "dashboard.CustomerDataSummary"]
+                    "target":["billing.CustomerDataBillingInfo", "dashboard.CustomerDataSummary", "billing.CustomerJourney"]
                 },
                 "billing.BillingPrePaid": {
                     "pattern": "billing/billingprepaid/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target":["billing.CustomerDataPrePD", "dashboard.CustomerDataSummary"]
+                    "target":["billing.CustomerDataPrePD", "dashboard.CustomerDataSummary", "billing.CustomerJourney"]
                 },
                 "billing.HighBill": {
                     "pattern": "billing/highbill/bp/{bpNum}/ca/{caNum}/co/{coNum}",
@@ -67,6 +67,10 @@
                 },
                 "billing.CheckbookTools": {
                     "viewName": "nrg.module.billing.view.BillingCheckbookTools",
+                    "controlId": "idAppTools"
+                },
+                "billing.CustomerJourney": {
+                    "viewName": "nrg.module.billing.view.BillingCustomerJourney",
                     "controlId": "idAppTools"
                 }
             }
