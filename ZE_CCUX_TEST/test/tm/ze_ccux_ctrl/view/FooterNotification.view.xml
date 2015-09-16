@@ -9,9 +9,8 @@
     displayBlock="true">
 
     <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
-        <ua:FooterNotificationItem text="Information notification message" />
-        <ua:FooterNotificationItem design="Warning" text="Warning notification message" />
-        <ua:FooterNotificationItem design="Error" text="Error notification message" />
-        <ua:FooterNotificationItem design="Success" text="Success notification message" />
+        <ua:FooterNotificationCenter content="{view-data>/notification}">
+            <ua:FooterNotificationItem design="{view-data>design}" text="{view-data>text}" />
+        </ua:FooterNotificationCenter>
     </sm:ScrollContainer>
 </mvc:View>
