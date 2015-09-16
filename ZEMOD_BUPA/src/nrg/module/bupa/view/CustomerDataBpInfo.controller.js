@@ -620,6 +620,15 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         if (oData.results) {
+
+                            // Create a default empty 
+                            var emptyEntry = (JSON.parse(JSON.stringify(oData.results[0])));
+                            emptyEntry.Key = '0000';
+                            emptyEntry.Partner = '';
+                            emptyEntry.PartnerID = '';
+                            emptyEntry.Value = '';
+                            oData.results.unshift(emptyEntry);
+
                             this.getView().getModel('ODataBpTitles').setData(oData);
                             this._retrBpName(sBpNum);
                         }
@@ -647,6 +656,15 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         if (oData.results) {
+
+                            // Create a default empty 
+                            var emptyEntry = (JSON.parse(JSON.stringify(oData.results[0])));
+                            emptyEntry.Key = '0000';
+                            emptyEntry.Partner = '';
+                            emptyEntry.PartnerID = '';
+                            emptyEntry.Value = '';
+                            oData.results.unshift(emptyEntry);
+
                             this.getView().getModel('ODataBpAccTitles').setData(oData);
                         }
                     }
@@ -673,6 +691,15 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         if (oData.results) {
+
+                            // Create a default empty 
+                            var emptyEntry = (JSON.parse(JSON.stringify(oData.results[0])));
+                            emptyEntry.Key = '0000';
+                            emptyEntry.Partner = '';
+                            emptyEntry.PartnerID = '';
+                            emptyEntry.Value = '';
+                            oData.results.unshift(emptyEntry);
+
                             this.getView().getModel('ODataBpSuffixs').setData(oData);
                         }
                     }
