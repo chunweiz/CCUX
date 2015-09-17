@@ -151,7 +151,7 @@ sap.ui.define(
             });
 
             /* Donut chart value */
-            oPie.append('g').selectAll('text.tmCustJCChart-sliceValue')
+            var oPieSliceText = oPie.append('g').selectAll('text.tmCustJCChart-sliceValue')
                 .data(fnPie(aData))
                 .enter()
                 .append('text')
@@ -159,6 +159,12 @@ sap.ui.define(
                     .attr('dy', '0.35em')
                     .attr('transform', function (data) { return 'translate(' + fnPieArc.centroid(data) + ')'; })
                     .attr('class', 'tmCustJCChart-sliceValue');
+
+            oPieSliceText.on('dblclick', function (data) {
+                oCustomControl.fireSlicePress({
+                    channel: data.data.channel
+                });
+            });
 
             /* Line between donut chart and label */
             var fnLineInnerArc = d3.svg.arc()
