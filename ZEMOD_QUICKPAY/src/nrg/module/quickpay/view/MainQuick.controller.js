@@ -1088,7 +1088,7 @@ sap.ui.define(
             }, {
                 success : function (oData, oResponse) {
                     if (oData.ContactLogID !== "") {
-                        oPopup.removeStyleClass("nrgQPPay-PopupWhite");
+                        oPopup.removeStyleClass("nrgQPPay-PopupPayment");
                         oPopup.addStyleClass("nrgQPPay-Popup");
                         oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
                         oTBIPaySucc.setSelected(true);
