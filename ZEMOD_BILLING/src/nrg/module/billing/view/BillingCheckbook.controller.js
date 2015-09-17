@@ -50,11 +50,27 @@ sap.ui.define(
 
         /*****************************************************************************************************************************************************/
         //Formatter Functions
+        CustomController.prototype._formatTwoClotBoolean = function (sSecondCallout) {
+            if (sSecondCallout) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
         CustomController.prototype._formatBppBoolean = function (sCallout) {
             if (sCallout === 'BBP') {
                 return true;
             } else {
                 return false;
+            }
+        };
+
+        CustomController.prototype._formatNotBppBoolean = function (sCallout) {
+            if (sCallout === 'BBP') {
+                return false;
+            } else {
+                return true;
             }
         };
 
@@ -242,7 +258,7 @@ sap.ui.define(
                             oData.results[i].oCallOut = {};
                             if (oData.results[i].CallOut) {
                                 oData.results[i].oCallOut = JSON.parse(oData.results[i].CallOut);
-                                for (j = 0; j < oData.results[i].oCallOut.CallOuts.length; j++) {
+                                for (j = 0; j < oData.results[i].oCallOut.CallOuts.length; j = j + 1) {
                                     if (oData.results[i].oCallOut.CallOuts[j].CallOut === 'BBP') {
                                         oData.results[i].oCallOut.CallOuts[j].BBPAmt = oData.results[i].BBPAmt;
                                         oData.results[i].oCallOut.CallOuts[j].BBPAmtAddr = oData.results[i].BBPAmtAddr;
@@ -255,7 +271,9 @@ sap.ui.define(
                                 if (oData.results[i].oCallOut.CallOuts.length === 1) {
                                     oData.results[i].sCallOut = oData.results[i].oCallOut.CallOuts[0].CallOut;
                                 } else if (oData.results[i].oCallOut.CallOuts.length === 2) {
-                                    oData.results[i].sCallOut = oData.results[i].oCallOut.CallOuts[0].CallOut + '+' + oData.results[i].oCallOut.CallOuts[1].CallOut;
+                                    oData.results[i].sCallOut = oData.results[i].oCallOut.CallOuts[0].CallOut;
+                                    oData.results[i].sCallOut2 = oData.results[i].oCallOut.CallOuts[1].CallOut;
+                                    this.getView().byId('ChkbookHdrTwoClot').setVisible(true);
                                 } else {
                                     oData.results[i].sCallOut = oData.results[i].oCallOut.CallOuts.length + '+';
                                     this.getView().byId('ChkbookHdrClOt').setVisible(true);

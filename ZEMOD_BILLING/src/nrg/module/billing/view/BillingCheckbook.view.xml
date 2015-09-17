@@ -132,14 +132,20 @@
                                      text="{parts:['oPaymentHdr>DueDate'],
                                             formatter:'._formatDate'}"/>
                             <ute:Tag visible="true"
-                                     class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5 nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell-Clot-grn"
-                                     text="{oPaymentHdr>sCallOut}">
+                                     class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5 nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell-Clot-grn">
+                                <ute:Tag elem="span" text="{oPaymentHdr>sCallOut}"/>
+                                <ute:Tag elem="span" id="ChkbookHdrTwoClotPlus" text="+" visible="{parts:['oPaymentHdr>sCallOut2'], formatter:'._formatTwoClotBoolean'}"/>
+                                <ute:Tag elem="span" id="ChkbookHdrTwoClot" visible="false" class="nrgBilling-blChkBk-lftDiv-scrllArea-TwoClot" text="{oPaymentHdr>sCallOut2}"/>
                                 <ute:tooltip>
                                     <ute:Tooltip id="ChkbookHdrClOt"
                                         visible="false" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip">
                                         <ute:Tag content="{oPaymentHdr>oCallOut/CallOuts}"> <!--Content here-->
                                             <ute:Tag>
-                                                <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip-current"
+                                                <ute:Tag visible="{parts:['oPaymentHdr>CallOut'], formatter:'._formatNotBppBoolean'}"
+                                                         class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip-current"
+                                                         text="{oPaymentHdr>CallOut}"/>
+                                                <ute:Tag visible="{parts:['oPaymentHdr>CallOut'], formatter:'._formatBppBoolean'}"
+                                                         class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip-current nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip-underline"
                                                          text="{oPaymentHdr>CallOut}">
                                                     <ute:tooltip>
                                                         <ute:Tooltip visible="{parts:['oPaymentHdr>CallOut'], formatter:'._formatBppBoolean'}"
