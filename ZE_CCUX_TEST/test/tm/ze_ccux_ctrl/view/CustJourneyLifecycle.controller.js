@@ -13,7 +13,7 @@ sap.ui.define(
         var CustomController = Controller.extend('test.tm.ze_ccux_ctrl.view.CustJourneyLifecycle');
 
         CustomController.prototype.onBeforeRendering = function () {
-            this.getView().byId('content').removeAllAggregation('content');
+            
 
 
 

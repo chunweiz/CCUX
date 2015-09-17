@@ -3,6 +3,7 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:sm="sap.m"
+    xmlns:tm="test.tm.ze_ccux_ctrl.view"
     height="100%"
     width="100%"
     displayBlock="true">
@@ -50,6 +51,7 @@
     </style>
 
     <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
-
+        <tm:CustJourneyChannelChart id="chart" totalPress="_onTotalPress" slicePress="_onSlicePress">
+        </tm:CustJourneyChannelChart>
     </sm:ScrollContainer>
 </mvc:View>
