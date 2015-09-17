@@ -90,7 +90,7 @@ sap.ui.define(
             };
             fnRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
-                that._OwnerComponent.getCcuxApp().setOccupied(true);
+                that._OwnerComponent.getCcuxApp().setOccupied(false);
             };
             sCurrentPath = "/CreditCardSet" + "(ContractID='" + this._sContractId + "')/CardsSet";
             //sCurrentPath = "/CardsSet";
