@@ -6,6 +6,11 @@
           xmlns:um="ute.ui.main">
     <u:Tag class="nrgQPCC-root">
         <u:Tag text="{comp-i18n-quickpay>nrgQPPaymentCC}" class="nrgQPCC-ttl"/>
+        <um:Button press=".onRefreshCC"
+                   class="nrgQPCC-Refreshbtn"
+                   design="None">
+           <core:Icon src="sap-icon://nrg-icon/refresh" />
+        </um:button>
         <u:Tag class="nrgQPCC-data">
             <u:Tag class="nrgQPCC-row nrgQPPay-top">
                 <u:Tag class="nrgQPPay-TF">
