@@ -64,7 +64,7 @@
                 <um:TabPanelItem key="AddBD" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
                         <core:Fragment fragmentName="nrg.module.quickpay.view.AddBankDraft" type="XML" />
                 </um:TabPanelItem>
-                <um:TabPanelItem key="CL" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
+                <um:TabPanelItem key="CL" class="nrgQPPay-tabPanelItemNew nrgQPPay-CC">
                         <core:Fragment fragmentName="nrg.module.quickpay.view.Contactlog" type="XML" />
                 </um:TabPanelItem>
                 <um:TabPanelItem key="dummy" class="nrgQPPay-tabPanelItem nrgQPPay-CC">

@@ -6,10 +6,11 @@ sap.ui.define(
     [
         'jquery.sap.global',
         'sap/ui/core/mvc/Controller',
-        'sap/ui/model/json/JSONModel'
+        'sap/ui/model/json/JSONModel',
+        'nrg/module/quickpay/view/QuickPayControl'
     ],
 
-    function (jQuery, Controller, JSONModel) {
+    function (jQuery, Controller, JSONModel, QuickPayControl) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.billing.view.CustomerDataBillingInfo');
@@ -34,7 +35,7 @@ sap.ui.define(
         };
 
         CustomController.prototype.onAfterRendering = function () {
-            this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+            //this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
         };
 
         CustomController.prototype.onExit = function () {
@@ -82,13 +83,15 @@ sap.ui.define(
 
         CustomController.prototype.onPayNow = function (oEvent) {
             var oRouter = this.getOwnerComponent().getRouter(),
-                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
+                QuickControl = new QuickPayControl();
 
-            this._bpNum = oRouteInfo.parameters.bpNum;
-            this._caNum = oRouteInfo.parameters.caNum;
-            this._coNum = oRouteInfo.parameters.coNum;
+            this._sContract = oRouteInfo.parameters.coNum;
+            this._sBP = oRouteInfo.parameters.bpNum;
+            this._sCA = oRouteInfo.parameters.caNum;
+            this.getView().addDependent(QuickControl);
+            QuickControl.openQuickPay(this._sContract, this._sBP, this._sCA);
 
-            oRouter.navTo('quickpay', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
         };
 
         CustomController.prototype._onChkbookLnkClicked = function () {
