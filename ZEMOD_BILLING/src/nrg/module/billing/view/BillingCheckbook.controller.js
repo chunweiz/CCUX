@@ -16,47 +16,12 @@ sap.ui.define(
         var CustomController = Controller.extend('nrg.module.billing.view.BillingCheckbook');
 
         CustomController.prototype.onInit = function () {
-            var o18n = this.getOwnerComponent().getModel('comp-i18n-billing');
-/*
-            var oModel = new sap.ui.model.json.JSONModel({
-                employees: [
-                    { firstName: 'Roger', lastName: 'Cheng' },
-                    { firstName: 'Yumi', lastName: 'Yao' },
-                    { firstName: 'Yumi', lastName: 'Yao' },
-                    { firstName: 'Yumi', lastName: 'Yao' },
-                    { firstName: 'Yumi', lastName: 'Yao' },
-                    { firstName: 'Taylor', lastName: 'Hsu' }
-                ]
-            });
-
-            var oModelContent = new sap.ui.model.json.JSONModel({
-                employers: [
-                    { firstName: 'Kacy', lastName: 'Liao' },
-                    { firstName: 'Frank', lastName: 'Huang' },
-                    { firstName: 'Joseph', lastName: 'Lin' }
-                ]
-            });
-
-            var oModelToolTip = new sap.ui.model.json.JSONModel({
-                employers: [
-                    { firstName: 'Kacy', lastName: 'Liao' },
-                    { firstName: 'Frank', lastName: 'Huang' },
-                    { firstName: 'Frank', lastName: 'Huang' },
-                    { firstName: 'Frank', lastName: 'Huang' },
-                    { firstName: 'Frank', lastName: 'Huang' },
-                    { firstName: 'Joseph', lastName: 'Lin' }
-                ]
-            });
-
-            this.getView().setModel(oModel, 'bp');
-            this.getView().setModel(oModelContent, 'emp');
-            this.getView().setModel(oModelToolTip, 'tip');*/
         };
 
         CustomController.prototype.onBeforeRendering = function () {
             this.getOwnerComponent().getCcuxApp().setTitle('BILLING');
 
-            var o18n = this.getOwnerComponent().getModel('comp-i18n-billing');
+            //var o18n = this.getOwnerComponent().getModel('comp-i18n-billing');
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-billing'), 'oDataSvc');
 
@@ -259,6 +224,7 @@ sap.ui.define(
             var oChbkOData = this.getView().getModel('oDataSvc'),
                 oParameters,
                 i,
+                j,
                 oCurDate = new Date();
 
             oParameters = {
@@ -268,6 +234,16 @@ sap.ui.define(
                             oData.results[i].oCallOut = {};
                             if (oData.results[i].CallOut) {
                                 oData.results[i].oCallOut = JSON.parse(oData.results[i].CallOut);
+                                for (j = 0; j < oData.results[i].oCallOut.CallOuts.length; j++) {
+                                    if (oData.results[i].oCallOut.CallOuts[j].CallOut === 'BBP') {
+                                        oData.results[i].oCallOut.CallOuts[j].BBPAmt = oData.results[i].BBPAmt;
+                                        oData.results[i].oCallOut.CallOuts[j].BBPAmtAddr = oData.results[i].BBPAmtAddr;
+                                        oData.results[i].oCallOut.CallOuts[j].BBPBal = oData.results[i].BBPBal;
+                                        oData.results[i].oCallOut.CallOuts[j].BBPBalAddr = oData.results[i].BBPBalAddr;
+                                        oData.results[i].oCallOut.CallOuts[j].BBPDefBal = oData.results[i].BBPDefBal;
+                                        oData.results[i].oCallOut.CallOuts[j].BBPDefBalTxt = oData.results[i].BBPDefBalTxt;
+                                    }
+                                }
                                 if (oData.results[i].oCallOut.CallOuts.length === 1) {
                                     oData.results[i].sCallOut = oData.results[i].oCallOut.CallOuts[0].CallOut;
                                 } else if (oData.results[i].oCallOut.CallOuts.length === 2) {

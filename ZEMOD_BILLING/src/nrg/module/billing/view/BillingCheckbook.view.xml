@@ -140,7 +140,13 @@
                                         <ute:Tag content="{oPaymentHdr>oCallOut/CallOuts}"> <!--Content here-->
                                             <ute:Tag>
                                                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip-current"
-                                                         text="{oPaymentHdr>CallOut}"/>
+                                                         text="{oPaymentHdr>CallOut}">
+                                                    <ute:tooltip>
+                                                        <ute:Tooltip>
+                                                            <ute:Tag text="{oPaymentHdr>BBPAmt}"/>
+                                                        </ute:Tooltip>
+                                                    </ute:tooltip>
+                                                </ute:Tag>
                                                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip-canceled"
                                                          text="{oPaymentHdr>CallOut}" visible="false"/>
                                                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip-inactive"
