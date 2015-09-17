@@ -50,6 +50,14 @@ sap.ui.define(
 
         /*****************************************************************************************************************************************************/
         //Formatter Functions
+        CustomController.prototype._formatBppBoolean = function (sCallout) {
+            if (sCallout === 'BBP') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
         CustomController.prototype._formatDate = function (oDate) {
             var sFormattedDate;
 

@@ -142,8 +142,20 @@
                                                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-toolltip-current"
                                                          text="{oPaymentHdr>CallOut}">
                                                     <ute:tooltip>
-                                                        <ute:Tooltip>
-                                                            <ute:Tag text="{oPaymentHdr>BBPAmt}"/>
+                                                        <ute:Tooltip visible="{parts:['oPaymentHdr>CallOut'], formatter:'._formatBppBoolean'}"
+                                                            class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip">
+                                                            <ute:Tag>
+                                                                <ute:Tag text="{oPaymentHdr>BBPAmt}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                                <ute:Tag text="{oPaymentHdr>BBPAmtAddr}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
+                                                            </ute:Tag>
+                                                            <ute:Tag>
+                                                                <ute:Tag text="{oPaymentHdr>BBPBal}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                                <ute:Tag text="{oPaymentHdr>BBPBalAddr}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
+                                                            </ute:Tag>
+                                                            <ute:Tag>
+                                                                <ute:Tag text="{oPaymentHdr>BBPDefBal}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                                <ute:Tag text="{oPaymentHdr>BBPDefBalTxt}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
+                                                            </ute:Tag>
                                                         </ute:Tooltip>
                                                     </ute:tooltip>
                                                 </ute:Tag>
