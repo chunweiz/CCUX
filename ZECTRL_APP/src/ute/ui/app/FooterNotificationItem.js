@@ -15,17 +15,20 @@ sap.ui.define(
                 properties: {
                     design: { type: 'ute.ui.app.FooterNotificationItemDesign', defaultValue: ute.ui.app.FooterNotificationItemDesign.Information },
                     customIcon: { type: 'sap.ui.core.Icon', defaultValue: 'sap-icon://nrg-icon/notification' },
-                    text: { type: 'string', defaultValue: null }
+                    text: { type: 'string', defaultValue: null },
+                    link: { type: 'boolean', defaultValue: false }
                 },
 
                 events: {
-                    press: {}
+                    linkPress: {}
                 }
             }
         });
 
-        CustomControl.prototype.ontap = function (oEvent) {
-            this.firePress();
+        CustomControl.prototype.onclick = function (oEvent) {
+            if (this.getLink()) {
+                this.fireLinkPress();
+            }
         };
 
         return CustomControl;

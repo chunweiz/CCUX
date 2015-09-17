@@ -33,6 +33,7 @@
                               text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-TITLE_NAME}"/>
             </utmain:headerContent>
             <utmain:content>
+                <!-- Title & Maiden Name -->
                 <ute:Tag class="nrgBupa-cusDataBpInfo-divrow">
                     <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
                              text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-TITLE}:" />
@@ -53,6 +54,7 @@
                                    editable="{oBpInfoConfig>/titleEditable}"
                                    value="{ODataBpName>/MaidenName}"/>
                 </ute:Tag>
+                <!-- Academic Title & Middle Name -->
                 <ute:Tag class="nrgBupa-cusDataBpInfo-divrow">
                     <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
                              text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-ACDEMIC_TITLE}:" />
@@ -73,6 +75,7 @@
                             editable="{oBpInfoConfig>/titleEditable}"
                             value="{ODataBpName>/MiddleName}"/>
                 </ute:Tag>
+                <!-- First Name & Suffix -->
                 <ute:Tag class="nrgBupa-cusDataBpInfo-divrow">
                     <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
                              text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-FIRST_NAME}:" />

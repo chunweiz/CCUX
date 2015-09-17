@@ -36,8 +36,10 @@ sap.ui.define(
                 pattern: 'MM/dd/yyyy',
                 strictParsing: true
             });
-            this._oMinDate = new Date(1, 0, 1);
-            this._oMinDate.setFullYear(1); // otherwise year 1 will be converted to year 1901
+            //this._oMinDate = new Date(1, 0, 1);
+            //this._oMinDate.setFullYear(1); // otherwise year 1 will be converted to year 1901
+            this._oMinDate = new Date();// Take todays date as minimum date unless changed by setMinDate
+            this._oMinDate.setHours(0, 0, 0, 0);//Set to midnight of yesterday
             this._oMaxDate = new Date(9999, 11, 31);
         };
 
@@ -124,7 +126,12 @@ sap.ui.define(
             if (!this._oCalendar) {
                 this._oCalendar = new Calendar(this.getId() + '-cal');
                 this._oCalendar.setSelectedDate(this.getDefaultDate());
+                this._oCalendar.setMinDate(this._oMinDate);
+                this._oCalendar.setMaxDate(this._oMaxDate);
+                this._oCalendar.setEditable(this.getEditable());
+                this._oCalendar.setEnabled(this.getEnabled());
                 this._oCalendar.attachEvent('select', this._selectDate, this);
+                this._oCalendar.attachEvent('close', this._close, this);
                 this._oPopup.setContent(this._oCalendar);
                 this._oCalendar.setParent(this, undefined, true); // don't invalidate DatePicker
             } else {
@@ -143,7 +150,19 @@ sap.ui.define(
             this._oPopup.open(0, eDock.BeginTop, eDock.BeginBottom, this, null, null, true);
 
         };
-
+        /**
+         * Handler for popup close.
+         *
+         * @param {jQuery.EventObject} oEvent The event object
+         *
+         *
+         */
+        DatePicker.prototype._close = function (oEvent) {
+            if ((this._oPopup !== undefined) && (this._oPopup.isOpen())) {
+                this._oPopup.close();
+                this.focus();
+            }
+        };
         /**
          * The event to show the calendar control.
          *
@@ -252,6 +271,9 @@ sap.ui.define(
          */
         DatePicker.prototype.setMinDate = function (minDate) {
             this._oMinDate = minDate;
+            if (this._oCalendar) {
+                this._oCalendar.setMinDate(this._oMinDate);
+            }
         };
         /**
          * to override the change event of the text field
@@ -262,6 +284,9 @@ sap.ui.define(
          */
         DatePicker.prototype.setMaxDate = function (maxDate) {
             this._oMaxDate = maxDate;
+            if (this._oCalendar) {
+                this._oCalendar.setMaxDate(this._oMaxDate);
+            }
         };
        /**
          * to override the change event of the text field

@@ -1,6 +1,6 @@
 .nrgQPPay-View {
             @nrgQPPay-maxWidth: 340px;
-            @nrgQPPay-PendingScreenWidth: 45rem;
+            @nrgQPPay-PendingScreenWidth: 50rem;
             @nrgQPPay-marginleft: 2.4rem;
             color : @nrgColor-white;
             font-family: @nrgFontFamily;
@@ -118,6 +118,7 @@
             position: relative;
             left: 1rem;
             font-size: @nrgFontSize-small;
+            display:inline-block;
     }
     &   .nrgQPPay-ttl {
             font-weight: @nrgFontWeight-semiBold;
@@ -242,22 +243,6 @@
     &    .nrgQPPay-hide {
             display:none;
     }
-    &    .nrgQPCC-Contact {
-
-        &    .nrgQPCC-contactlog {
-                font-size: @nrgFontSize-small;
-        }
-        &    .nrgQPCC-textArea  > .uteUiTxtA {
-                font-size: @nrgFontSize-small;
-                width: 20rem;
-                height: 12rem;
-                background-color: @nrgColor-white;
-                margin: 0.5rem;
-        }
-   }
-   &    .nrgQPPay-ContactLogBtns {
-            text-align: center;
-   }
    &    .uteMDd-picker > .nrgQPCC-DDLWRItem:nth-child(odd) {
             background-color: @nrgColor-grey-highlight;
    }
@@ -266,6 +251,15 @@
    }
    &    .uteMDd-picker > .nrgQPCC-DdLItem:nth-child(odd) {
             background-color: @nrgColor-grey-highlight;
+   }
+   &    .nrgQPCC-Refreshbtn {
+            position: absolute;
+            right: 20px;
+            font-size: 12pt;
+            vertical-align: middle;
+       &  > span {
+                cursor  : pointer;
+       }
    }
    &    .nrgQPPay-PopupPayment {
             display: inline-block;
@@ -279,7 +273,7 @@
                     margin-top : 10px;
             }
             &   .nrgQP-Table {
-                    width: 44rem;
+                    width: 49rem;
                     margin: 20px 8px 20px 8px;
                     color: @nrgColor-black;
 
@@ -295,6 +289,14 @@
                             width: 6rem;
                             text-align: center;
                             min-width: 6rem;
+                            margin-right: 5px;
+                    }
+                    &   .nrgQPCC-hdDate {
+                            display: inline-block;
+                            width: 9rem;
+                            text-align: center;
+                            min-width: 9rem;
+                            margin-right: 5px;
                     }
                     & > .nrgQPTable-Row > .nrgQPTable-Rows {
                             margin: 2px 0px 2px 0px;
@@ -307,24 +309,36 @@
                             text-align: center;
                             min-width: 6rem;
                             font-size: @nrgFontSize-small;
+                            margin-right: 5px;
                             & > .uteTextfield-noBorder-input {
                                     font-size: @nrgFontSize-small;
                                     max-width: 100%;
                                     text-align: center;
-                            }
-                            & > .uteTextfield-noBorder-input[readonly] {
-                                    background-color: transparent;
+                                    margin-top: 5px;
                             }
                             & > .uteTextfield-noBorder-input {
                                    padding: 0px;
                             }
-                            & > .uteTextfield-noBorder-input:parent {
-                                    background-color: @nrgColor-white;
-                                    border: 1px solid @nrgColor-black;
+                    }
+                    & > .nrgQPTable-Row > .nrgQPTable-Rows > .nrgQPCC-Date {
+                            display: inline-block;
+                            width: 10rem;
+                            text-align: center;
+                            min-width: 10rem;
+                            font-size: @nrgFontSize-small;
+                            margin-right: 5px;
+                            & > .uteTextfield-noBorder-input {
+                                    font-size: @nrgFontSize-small;
+                                    max-width: 100%;
+                                    text-align: center;
+                                    margin-top: 5px;
+                            }
+                            & > .uteTextfield-noBorder-input {
+                                   padding: 0px;
                             }
                     }
                     & > .nrgQPTable-Row > .nrgQPTable-RowsSelected {
-                            background-color: @nrgColor-grey-highlight;
+                            background-color: @nrgColor-white;
 
                     }
                     & > .nrgQPTable-Row > .nrgQPTable-Rows > .nrgQPCC-CheckBox {
@@ -339,6 +353,22 @@
             &  .nrgQPPCC-buttons {
                     text-align: center;
             }
+            &    .nrgQPCC-Contact {
+
+                &    .nrgQPCC-contactlog {
+                        font-size: @nrgFontSize-small;
+                }
+                &    .nrgQPCC-textArea  > .uteUiTxtA {
+                        font-size: @nrgFontSize-small;
+                        width: 49rem;
+                        height: 12rem;
+                        background-color: @nrgColor-white;
+                        margin: 0.5rem;
+                }
+           }
+           &    .nrgQPPay-ContactLogBtns {
+                    text-align: center;
+           }
    }
 
 }

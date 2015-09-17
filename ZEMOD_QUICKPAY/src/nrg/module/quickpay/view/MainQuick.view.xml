@@ -64,7 +64,7 @@
                 <um:TabPanelItem key="AddBD" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
                         <core:Fragment fragmentName="nrg.module.quickpay.view.AddBankDraft" type="XML" />
                 </um:TabPanelItem>
-                <um:TabPanelItem key="CL" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
+                <um:TabPanelItem key="CL" class="nrgQPPay-tabPanelItemNew nrgQPPay-CC">
                         <core:Fragment fragmentName="nrg.module.quickpay.view.Contactlog" type="XML" />
                 </um:TabPanelItem>
                 <um:TabPanelItem key="dummy" class="nrgQPPay-tabPanelItem nrgQPPay-CC">
@@ -73,7 +73,9 @@
                             <u:Tag class="nrgQPCC-DDI">
                                 <core:Icon src="{parts:[{path:'comp-quickpay>CardType'}],
                                                     formatter:'.formatCCType'}" class="nrgQPCC-icon" />
-                                <u:Tag text="{comp-quickpay>CardNumber}" class="nrgQPCC-DdlValue"/>
+                                <u:Tag text="{parts:[{path:'comp-quickpay>CardNumber'}],
+                                                    formatter:'.formatCardNumber'}"
+                                       class="nrgQPCC-DdlValue"/>
                             </u:Tag>
                         </um:DropdownItem>
                         <um:DropdownItem key="{comp-quickpay>ReasonCode}" class="nrgQPCC-DDLWRItem" id="idnrgQPCC-WaiveReasonItem">

@@ -10,6 +10,7 @@ sap.ui.define(
         var CustomRenderer = {};
 
         CustomRenderer.render = function (oRm, oCustomControl) {
+            
             oRm.write('<div');
             oRm.writeControlData(oCustomControl);
             oRm.addClass('uteMDdItem');

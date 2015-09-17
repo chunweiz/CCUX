@@ -15,9 +15,8 @@ sap.ui.define(
         CustomController.prototype.onBeforeRendering = function () {
             this.getView().byId('content').removeAllAggregation('content');
 
-            
 
-            this.getView().byId('content').addContent(oCustomChart);
+
         };
 
         return CustomController;

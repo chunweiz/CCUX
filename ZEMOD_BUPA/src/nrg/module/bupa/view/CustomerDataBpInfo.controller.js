@@ -178,6 +178,11 @@ sap.ui.define(
             oConfigModel.setProperty('/titleSaveVisible', false);
             oConfigModel.setProperty('/titleEditable', false);
 
+            // Make the key of empty value as "0000", so that the dropdown can recognize it.
+            if (this.ODataBpNameBak.Title === "") this.ODataBpNameBak.Title = "0000";
+            if (this.ODataBpNameBak.AcademicTitle === "") this.ODataBpNameBak.AcademicTitle = "0000";
+            if (this.ODataBpNameBak.Suffix === "") this.ODataBpNameBak.Suffix = "0000";
+
             bpTitleModel.setData(jQuery.extend(true, {}, this.ODataBpNameBak));
         };
 
@@ -217,6 +222,12 @@ sap.ui.define(
             };
 
             if (oModel) {
+
+                // Make the key of empty value as "", so that the system can recognize it.
+                if (this.getView().getModel('ODataBpName').oData.Title === "0000") this.getView().getModel('ODataBpName').oData.Title = "";
+                if (this.getView().getModel('ODataBpName').oData.AcademicTitle === "0000") this.getView().getModel('ODataBpName').oData.AcademicTitle = "";
+                if (this.getView().getModel('ODataBpName').oData.Suffix === "0000") this.getView().getModel('ODataBpName').oData.Suffix = "";
+
                 oModel.update(sPath, this.getView().getModel('ODataBpName').oData, oParameters);
             }
         };
@@ -620,6 +631,15 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         if (oData.results) {
+
+                            // Create a default empty 
+                            var emptyEntry = (JSON.parse(JSON.stringify(oData.results[0])));
+                            emptyEntry.Key = '0000';
+                            emptyEntry.Partner = '';
+                            emptyEntry.PartnerID = '';
+                            emptyEntry.Value = '';
+                            oData.results.unshift(emptyEntry);
+
                             this.getView().getModel('ODataBpTitles').setData(oData);
                             this._retrBpName(sBpNum);
                         }
@@ -647,6 +667,15 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         if (oData.results) {
+
+                            // Create a default empty 
+                            var emptyEntry = (JSON.parse(JSON.stringify(oData.results[0])));
+                            emptyEntry.Key = '0000';
+                            emptyEntry.Partner = '';
+                            emptyEntry.PartnerID = '';
+                            emptyEntry.Value = '';
+                            oData.results.unshift(emptyEntry);
+
                             this.getView().getModel('ODataBpAccTitles').setData(oData);
                         }
                     }
@@ -673,6 +702,15 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         if (oData.results) {
+
+                            // Create a default empty 
+                            var emptyEntry = (JSON.parse(JSON.stringify(oData.results[0])));
+                            emptyEntry.Key = '0000';
+                            emptyEntry.Partner = '';
+                            emptyEntry.PartnerID = '';
+                            emptyEntry.Value = '';
+                            oData.results.unshift(emptyEntry);
+
                             this.getView().getModel('ODataBpSuffixs').setData(oData);
                         }
                     }
