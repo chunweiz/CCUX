@@ -25,8 +25,7 @@ sap.ui.define(
                 'ute.ui.main.RadioButtonDesign',
                 'ute.ui.main.InfolineDesign',
                 'ute.ui.main.PopupDesign',
-                'ute.ui.main.DropdownDesign',
-                'ute.ui.main.CustomerJourneyTimelineChannelType'
+                'ute.ui.main.DropdownDesign'
             ],
 
 			controls: [
@@ -40,13 +39,10 @@ sap.ui.define(
                 'ute.ui.main.RadioButton',
                 'ute.ui.main.Infoline',
                 'ute.ui.main.Dropdown',
-                'ute.ui.main.DropdownItem',
-                'ute.ui.main.CustomerJourneyTimeline'
+                'ute.ui.main.DropdownItem'
 			],
 
-			elements: [
-                'ute.ui.main.CustomerJourneyTimelineChannel'
-            ],
+			elements: [],
 
             interfaces: []
         });
@@ -98,15 +94,6 @@ sap.ui.define(
             Default: 'Default',
             Plain: 'Plain'
         };
-
-        ute.ui.main.CustomerJourneyTimelineChannelType = {
-            Website: 'Website',
-            Mobile: 'Mobile',
-            Ivr: 'Ivr',
-            Phone: 'Phone',
-            Survey: 'Survey',
-            Correspondence: 'Correspondence'
-        }
 
         /*
         ** Create popup based on style guide
