@@ -3,10 +3,6 @@
     display: block;
     padding: 10px 0;
 
-    &.uteAppFtrNotifItem-link:hover {
-        cursor: pointer;
-    }
-
     & .uteAppFtrNotifItem-icon {
         position: absolute;
         display: inline-block;
@@ -19,27 +15,33 @@
         display: block;
         padding-left: 40px;
     }
+
+    &.uteAppFtrNotifItem-link {
+        &:hover {
+            cursor: pointer;
+        }
+
+        & .uteAppFtrNotifItem-icon {
+            color: @uteColor-blue-link;
+        }
+
+        &:hover .uteAppFtrNotifItem-icon {
+            color: @uteColor-blue-light;
+        }
+
+        & .uteAppFtrNotifItem-text {
+            color: @uteColor-blue-link;
+        }
+
+        &:hover .uteAppFtrNotifItem-text {
+            color: @uteColor-blue-light;
+        }
+    }
 }
 
 .uteAppFtrNotifItem-design-information {
     & .uteAppFtrNotifItem-icon {
         color: @uteColor-grey-light;
-    }
-
-    &.uteAppFtrNotifItem-link .uteAppFtrNotifItem-icon {
-        color: @uteColor-blue-link;
-    }
-
-    &.uteAppFtrNotifItem-link .uteAppFtrNotifItem-icon:hover {
-        color: @uteColor-blue-light;
-    }
-
-    &.uteAppFtrNotifItem-link .uteAppFtrNotifItem-text {
-        color: @uteColor-blue-link;
-    }
-
-    &.uteAppFtrNotifItem-link .uteAppFtrNotifItem-text:hover {
-        color: @uteColor-blue-light;
     }
 }
 
@@ -47,64 +49,16 @@
     & .uteAppFtrNotifItem-icon {
         color: red;
     }
-
-    &.uteAppFtrNotifItem-link .uteAppFtrNotifItem-icon {
-        color: @uteColor-blue-link;
-    }
-
-    &.uteAppFtrNotifItem-link .uteAppFtrNotifItem-icon:hover {
-        color: @uteColor-blue-light;
-    }
-
-    &.uteAppFtrNotifItem-link .uteAppFtrNotifItem-text {
-        color: @uteColor-blue-link;
-    }
-
-    &.uteAppFtrNotifItem-link .uteAppFtrNotifItem-text:hover {
-        color: @uteColor-blue-light;
-    }
 }
 
 .uteAppFtrNotifItem-design-warning {
     & .uteAppFtrNotifItem-icon {
         color: gold;
     }
-
-    &.uteAppFtrNotifItem-link .uteAppFtrNotifItem-icon {
-        color: @uteColor-blue-link;
-    }
-
-    &.uteAppFtrNotifItem-link .uteAppFtrNotifItem-icon:hover {
-        color: @uteColor-blue-light;
-    }
-
-    &.uteAppFtrNotifItem-link .uteAppFtrNotifItem-text {
-        color: @uteColor-blue-link;
-    }
-
-    &.uteAppFtrNotifItem-link .uteAppFtrNotifItem-text:hover {
-        color: @uteColor-blue-light;
-    }
 }
 
 .uteAppFtrNotifItem-design-success {
     & .uteAppFtrNotifItem-icon {
         color: lightgreen;
-    }
-
-    &.uteAppFtrNotifItem-link .uteAppFtrNotifItem-icon {
-        color: @uteColor-blue-link;
-    }
-
-    &.uteAppFtrNotifItem-link .uteAppFtrNotifItem-icon:hover {
-        color: @uteColor-blue-light;
-    }
-
-    &.uteAppFtrNotifItem-link .uteAppFtrNotifItem-text {
-        color: @uteColor-blue-link;
-    }
-
-    &.uteAppFtrNotifItem-link .uteAppFtrNotifItem-text:hover {
-        color: @uteColor-blue-light;
     }
 }

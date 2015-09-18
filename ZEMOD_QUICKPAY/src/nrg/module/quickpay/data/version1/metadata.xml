@@ -63,8 +63,8 @@
                 <Property MaxLength="4" Name="Class" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="4" Name="Activit" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="99999" Name="PopMessage" Nullable="false" Type="Edm.String"/>
-                <NavigationProperty FromRole="FromRole_CreditCard_WaiveReasons" Name="WaiveReasonsSet" Relationship="ZE_CCUX_QUICK_PAY_SRV.CreditCard_WaiveReasons" ToRole="ToRole_CreditCard_WaiveReasons"/>
                 <NavigationProperty FromRole="FromRole_CreditCard_Cards" Name="CardsSet" Relationship="ZE_CCUX_QUICK_PAY_SRV.CreditCard_Cards" ToRole="ToRole_CreditCard_Cards"/>
+                <NavigationProperty FromRole="FromRole_CreditCard_WaiveReasons" Name="WaiveReasonsSet" Relationship="ZE_CCUX_QUICK_PAY_SRV.CreditCard_WaiveReasons" ToRole="ToRole_CreditCard_WaiveReasons"/>
             </EntityType>
             <EntityType Name="BankAccount">
                 <Key>
@@ -147,7 +147,7 @@
                 <Property MaxLength="4" Name="Class" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="4" Name="Activit" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1000" Name="Message" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="5" Name="Editable" Nullable="false" Type="Edm.String"/>
+                <Property Name="Editable" Nullable="false" Type="Edm.Boolean"/>
             </EntityType>
             <EntityType Name="PayAvailFlags">
                 <Key>
@@ -186,6 +186,15 @@
                 <Property MaxLength="18" Name="BankAccNum" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1000" Name="message" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1" Name="error" Nullable="false" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="CCCreateURL">
+                <Key>
+                    <PropertyRef Name="ContractID"/>
+                </Key>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="1" Name="Error" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="99999" Name="Message" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="999" Name="URL" Nullable="false" Type="Edm.String"/>
             </EntityType>
             <Association Name="BankDraft_BankAccount">
                 <End Multiplicity="1" Role="FromRole_BankDraft_BankAccount" Type="ZE_CCUX_QUICK_PAY_SRV.BankDraft"/>
@@ -259,6 +268,7 @@
                 <EntitySet EntityType="ZE_CCUX_QUICK_PAY_SRV.PayAvailFlags" Name="PayAvailFlagsSet"/>
                 <EntitySet EntityType="ZE_CCUX_QUICK_PAY_SRV.ContactLog" Name="ContactLogSet"/>
                 <EntitySet EntityType="ZE_CCUX_QUICK_PAY_SRV.BankDraftCreate" Name="BankDraftCreateSet"/>
+                <EntitySet EntityType="ZE_CCUX_QUICK_PAY_SRV.CCCreateURL" Name="CCCreateURLSet"/>
                 <EntitySet EntityType="ZE_CCUX_QUICK_PAY_SRV.Receipt" Name="ReceiptSet"/>
                 <AssociationSet Association="ZE_CCUX_QUICK_PAY_SRV.CreditCard_WaiveReasons" Name="CreditCard_WaiveReasonsSet">
                     <End EntitySet="CreditCardSet" Role="FromRole_CreditCard_WaiveReasons"/>
@@ -280,6 +290,23 @@
                     <End EntitySet="BankDraftSet" Role="FromRole_BankDraft_BankAccount"/>
                     <End EntitySet="BankAccountSet" Role="ToRole_BankDraft_BankAccount"/>
                 </AssociationSet>
+                <FunctionImport EntitySet="BankDraftPPSet" Name="BankDraftUpdate" ReturnType="ZE_CCUX_QUICK_PAY_SRV.BankDraftPP" m:HttpMethod="POST">
+                    <Parameter MaxLength="0" Mode="In" Name="Editable" Precision="0" Scale="0" Type="Edm.Boolean"/>
+                    <Parameter MaxLength="1000" Mode="In" Name="Message" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="4" Mode="In" Name="Activit" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="4" Mode="In" Name="Class" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="99999" Mode="In" Name="PopMessage" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="1" Mode="In" Name="Error" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="10" Mode="In" Name="CurrentStatus" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="12" Mode="In" Name="TrackingID" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="0" Mode="In" Name="ScheduledDate" Precision="0" Scale="0" Type="Edm.DateTime"/>
+                    <Parameter MaxLength="0" Mode="In" Name="PaymentAmount" Precision="0" Scale="0" Type="Edm.Decimal"/>
+                    <Parameter MaxLength="18" Mode="In" Name="AccountNumber" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="15" Mode="In" Name="RoutingNumber" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="1" Mode="In" Name="CheckDigit" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="12" Mode="In" Name="ContractAccountID" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="10" Mode="In" Name="ContractID" Precision="0" Scale="0" Type="Edm.String"/>
+                </FunctionImport>
             </EntityContainer>
         </Schema>
     </edmx:DataServices>

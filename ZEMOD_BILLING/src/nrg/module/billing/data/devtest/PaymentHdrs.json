@@ -13,6 +13,12 @@
         "DueDate":"\/Date(1392876001000+0000)\/",
         "BillDate":"\/Date(1391493601000+0000)\/",
         "CallOut":"",
+        "BBPAmt":"",
+        "BBPAmtAddr":"",
+        "BBPBal":"",
+        "BBPBalAddr":"",
+        "BBPDefBal":"",
+        "BBPDefBalTxt":"",
         "Payments":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303650')/Payments"
@@ -79,6 +85,12 @@
         "DueDate":"\/Date(1396846801000+0000)\/",
         "BillDate":"\/Date(1395291601000+0000)\/",
         "CallOut":"",
+        "BBPAmt":"",
+        "BBPAmtAddr":"",
+        "BBPBal":"",
+        "BBPBalAddr":"",
+        "BBPDefBal":"",
+        "BBPDefBalTxt":"",
         "Payments":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303657')/Payments"
@@ -111,7 +123,13 @@
         "InvAmtDue":"678.7900",
         "DueDate":"\/Date(1398056401000+0000)\/",
         "BillDate":"\/Date(1396587601000+0000)\/",
-        "CallOut":"{\"CallOuts\":[ {\"CallOut\":\"FNL\"},{\"CallOut\":\"DPP\"} ]}",
+        "CallOut":"{\"CallOuts\":[ {\"CallOut\":\"DPP\"},{\"CallOut\":\"BBP\"} ]}",
+        "BBPAmt":"35.14",
+        "BBPAmtAddr":"7213 1/3 ROOT RD SPRING TX 77389",
+        "BBPBal":"288.00",
+        "BBPBalAddr":"BAL - 7213 ROOT RD SPRING TX 77389",
+        "BBPDefBal":"-233.84",
+        "BBPDefBalTxt":"Deferred Balance after payment of your monthly Total Due",
         "Payments":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentHdrs('008005303668')/Payments"
