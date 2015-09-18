@@ -15,17 +15,27 @@ sap.ui.define(
             oRm.writeControlData(oCustomControl);
             oRm.addClass('tmCJT');
             oRm.writeClasses();
-            oRm.addStyle('width', oCustomControl.getWidth());
+            oRm.addStyle('max-width', oCustomControl.getWidth());
             oRm.writeStyles();
             oRm.write('>');
 
-            oCustomControl.getChannel().forEach(function (channel) {
-                oRm.write('<div>');
-                oRm.writeEscaped(channel.getChannelType());
-                oRm.write('</div>');
-            }, this);
+            this._renderChannel(oRm, oCustomControl);
 
             oRm.write('</div>');
+        };
+
+        CustomRenderer._renderChannel = function (oRm, oCustomControl) {
+            oCustomControl.getChannel().forEach(function (channel) {
+                oRm.write('<div');
+                oRm.addClass('tmCJTChannel');
+                oRm.addClass('tmCJTChannel-big');
+                oRm.writeClasses();
+                oRm.write('>');
+
+                oRm.writeIcon(channel.getChannelIcon());
+
+                oRm.write('</div>');
+            }, this);
         };
 
         return CustomRenderer;

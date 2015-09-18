@@ -1,0 +1,25 @@
+.tmCJT {
+    position: relative;
+}
+
+.tmCJT::before {
+    content: '';
+    display: block;
+    height: 2px;
+    background-color: tomato;
+    transform: translateY(25px);
+    margin: 0 10px;
+}
+
+.tmCJTChannel {
+    display: inline-block;
+}
+
+.tmCJTChannel:hover {
+    cursor: pointer;
+}
+
+.tmCJTChannel-big {
+    font-size: 20pt;
+    margin: 10px;
+}

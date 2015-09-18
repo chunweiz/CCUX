@@ -14,12 +14,13 @@ sap.ui.define(
         CustomController.prototype.onBeforeRendering = function () {
             this.getView().byId('chart').setDataModel(new JSONModel({
                 data: [
-                    { channel: 'Mail', frequency: 3 },
-                    { channel: 'Email', frequency: 3 },
-                    { channel: 'Webchat', frequency: 1 },
-                    { channel: 'Call', frequency: 5 },
-                    { channel: 'IVR', frequency: 5 },
-                    { channel: 'Web', frequency: 5 }
+                    { channel: 'Website', frequency: 3 },
+                    { channel: 'Mobile', frequency: 3 },
+                    { channel: 'IVR', frequency: 1 },
+                    { channel: 'Webchat', frequency: 5 },
+                    { channel: 'Phone', frequency: 2 },
+                    { channel: 'Survey', frequency: 6 },
+                    { channel: 'Correspondence', frequency: 4 }
                 ]
             }));
         };

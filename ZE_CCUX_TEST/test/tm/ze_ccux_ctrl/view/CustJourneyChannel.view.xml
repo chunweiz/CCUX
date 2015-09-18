@@ -51,7 +51,7 @@
     </style>
 
     <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
-        <tm:CustJourneyChannelChart id="chart" totalPress="_onTotalPress" slicePress="_onSlicePress">
+        <tm:CustJourneyChannelChart width="600" height="300" id="chart" totalPress="_onTotalPress" slicePress="_onSlicePress">
         </tm:CustJourneyChannelChart>
     </sm:ScrollContainer>
 </mvc:View>

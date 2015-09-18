@@ -89,7 +89,7 @@ sap.ui.define(
 
             var fnColor = d3.scale.ordinal()
                 .domain(aData, fnLabel)
-                .range(['#5092ce', '#f2a814', '#c0272d', '#5bc2af', '#f15a24', '#9C27B0']);
+                .range(['#5092ce', '#f2a814', '#c0272d', '#315952', '#f15a24', '#9C27B0', '#2e9985']);
 
             /* Donut rim */
             var oPieRim = oCanvas.append('g');
