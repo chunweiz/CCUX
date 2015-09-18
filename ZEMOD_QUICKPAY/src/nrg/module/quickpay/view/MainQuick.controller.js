@@ -663,10 +663,18 @@ sap.ui.define(
                                 oTableRow.setModel(oPCCModel);
                                 jQuery.sap.log.info("Odata Read Successfully:::");
                                 that._OwnerComponent.getCcuxApp().setOccupied(false);
+                                ute.ui.main.Popup.Alert({
+                                    title: 'Information',
+                                    message: 'Update Successfull'
+                                });
                             }.bind(this),
                             error: function (oError) {
                                 jQuery.sap.log.info("Error occured");
                                 that._OwnerComponent.getCcuxApp().setOccupied(false);
+                                ute.ui.main.Popup.Alert({
+                                    title: 'Information',
+                                    message: 'Update Successfull'
+                                });
                             }.bind(this)
                         };
                         if (oModel) {
@@ -676,6 +684,10 @@ sap.ui.define(
                     error: function (oError) {
                         jQuery.sap.log.info("Eligibility Error occured");
                         that._OwnerComponent.getCcuxApp().setOccupied(false);
+                        ute.ui.main.Popup.Alert({
+                            title: 'Information',
+                            message: 'Update failed'
+                        });
                     }.bind(this)
                 };
                 oModel.callFunction("/BankDraftUpdate", mParameters);
