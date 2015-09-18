@@ -200,6 +200,9 @@ sap.ui.define(
                 oParameters,
                 bpNumber = this._bpNum;
 
+            // Display the loading indicator
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+
             oConfigModel.setProperty('/titleEditVisible', true);
             oConfigModel.setProperty('/titleSaveVisible', false);
             oConfigModel.setProperty('/titleEditable', false);
@@ -215,9 +218,15 @@ sap.ui.define(
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Title/Name Update Success");
                     this._retrBpName(bpNumber);
+                    // Dismiss the loading indicator
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Title/Name Update Failed");
+                    // If save failed, roll back to previous value
+                    this.getView().getModel('ODataBpName').setData(jQuery.extend(true, {}, this.ODataBpNameBak));
+                    // Dismiss the loading indicator
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
 

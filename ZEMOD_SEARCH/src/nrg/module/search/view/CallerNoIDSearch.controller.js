@@ -294,9 +294,27 @@ sap.ui.define(
         Controller.prototype._searchBP = function (sPath, oParameters) {
             var oModel = this.getView().getModel('oSearchBpODataModel');
             if (oModel) {
-                oModel.read(sPath, oParameters);
+                if (this._checkWildCard(oParameters)) {
+                    oModel.read(sPath, oParameters);
+                }
             }
         };
+
+        Controller.prototype._checkWildCard = function (oParameters) {
+            oParameters.filters.forEach(function(filter) {
+                // These are fields that wildcard is not allowed for
+                if (filter.sPath === "BuagID" || filter.sPath === "SSN" || filter.sPath === "DL" || filter.sPath === "PartnerID" || filter.sPath === "ESID" || filter.sPath === "TaxID") {
+                    if (filter.oValue1.indexOf("*") > -1) {
+                        sap.ui.commons.MessageBox.alert("Wildcard is not allowed for this search criteria.");
+                        return false;
+                    }
+                }
+            });
+
+            return true;
+        };
+
+
 
         Controller.prototype._onBpSelect = function (oEvent) {
             var sSelectedId = oEvent.getParameters().id,
