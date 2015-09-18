@@ -66,6 +66,13 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEvnPhoneType');
             this._initPhnTypes();
 
+            // Disable backspace key on this page
+            $(document).on("keydown", function (e) {
+                if (e.which === 8 && !$(e.target).is("input, textarea")) {
+                    e.preventDefault();
+                }
+            });
+
             //Model to hold NNP logics
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailNNP');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailValidate');
