@@ -95,10 +95,6 @@ sap.ui.define(
                 sBpNum = oRouteInfo.parameters.bpNum;
             }*/
 
-            this._bpNum = oRouteInfo.parameters.bpNum;
-            this._caNum = oRouteInfo.parameters.caNum;
-            this._coNum = oRouteInfo.parameters.coNum;
-
             sPath = '/Partners' + '(\'' + this._bpNum + '\')';
 
             this._retrBpInf(sPath);

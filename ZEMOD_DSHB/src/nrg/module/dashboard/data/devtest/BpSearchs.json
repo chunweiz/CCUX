@@ -75,6 +75,44 @@
                 }
             },
             {
+                "PartnerID":"1121773",
+                "BuagID":"100738",
+                "SSN":"SSN 2",
+                "DL":"DL 2",
+                "OrgName":"OrgName 2",
+                "TaxID":"TaxID 2",
+                "ESID":"ESID 2",
+                "FirstName":"FirstName 2",
+                "LastName":"LastName 2",
+                "MiddleName":"MiddleName 2",
+                "Street":"Street 2",
+                "HouseNumber":"HouseNumber 2",
+                "UnitNumber":"UnitNumber 2",
+                "City":"City 2",
+                "State":"State 2",
+                "ZipCode":"ZipCode 2",
+                "__metadata":{
+                    "id":"../../data/dashboard/devtest/BpSearchs('1121773')",
+                    "type":"ZE_CCUX_SRV.BpSearch",
+                    "uri":"../../data/dashboard/devtest/BpSearchs('1121773')"
+                },
+                "Buag":{
+                    "__deferred":{
+                        "uri":"../../data/dashboard/devtest/BpSearchs('1121773')/Buag"
+                    }
+                },
+                "Contract":{
+                    "__deferred":{
+                        "uri":"../../data/dashboard/devtest/BpSearchs('1121773')/Contract"
+                    }
+                },
+                "Partner":{
+                    "__deferred":{
+                        "uri":"../../data/dashboard/devtest/BpSearchs('1121773')/Partner"
+                    }
+                }
+            },
+            {
                 "PartnerID":"PartnerID 3",
                 "BuagID":"BuagID 3",
                 "SSN":"SSN 3",
