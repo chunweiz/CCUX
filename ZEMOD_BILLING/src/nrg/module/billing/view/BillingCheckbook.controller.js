@@ -273,7 +273,6 @@ sap.ui.define(
                                 } else if (oData.results[i].oCallOut.CallOuts.length === 2) {
                                     oData.results[i].sCallOut = oData.results[i].oCallOut.CallOuts[0].CallOut;
                                     oData.results[i].sCallOut2 = oData.results[i].oCallOut.CallOuts[1].CallOut;
-                                    this.getView().byId('ChkbookHdrTwoClot').setVisible(true);
                                 } else {
                                     oData.results[i].sCallOut = oData.results[i].oCallOut.CallOuts.length + '+';
                                     this.getView().byId('ChkbookHdrClOt').setVisible(true);
