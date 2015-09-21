@@ -45,15 +45,23 @@ sap.ui.define(
                 ]
             }), 'timeline');
 
-            // case CustomControl.ChannelType.Website: return 'sap-icon://nrg-icon/website';
-            // case CustomControl.ChannelType.Mobile: return 'sap-icon://ipad';
-            // case CustomControl.ChannelType.IVR: return 'sap-icon://nrg-icon/not-verified';
-            // case CustomControl.ChannelType.Webchat: return 'sap-icon://nrg-icon/webchat';
-            // case CustomControl.ChannelType.Phone: return 'sap-icon://nrg-icon/agent';
-            // case CustomControl.ChannelType.Survey: return 'sap-icon://nrg-icon/survey';
-            // default: return 'sap-icon://letter';
-
         };
+
+        CustomController.prototype._onPress = function (oEvent) {
+            console.log('onPress', oEvent);
+        };
+
+        CustomController.prototype._onDoublePress = function (oEvent) {
+            console.log('onDoublePress', oEvent);
+        };
+
+        // case CustomControl.ChannelType.Website: return 'sap-icon://nrg-icon/website';
+        // case CustomControl.ChannelType.Mobile: return 'sap-icon://ipad';
+        // case CustomControl.ChannelType.IVR: return 'sap-icon://nrg-icon/not-verified';
+        // case CustomControl.ChannelType.Webchat: return 'sap-icon://nrg-icon/webchat';
+        // case CustomControl.ChannelType.Phone: return 'sap-icon://nrg-icon/agent';
+        // case CustomControl.ChannelType.Survey: return 'sap-icon://nrg-icon/survey';
+        // default: return 'sap-icon://letter';
 
         return CustomController;
     }

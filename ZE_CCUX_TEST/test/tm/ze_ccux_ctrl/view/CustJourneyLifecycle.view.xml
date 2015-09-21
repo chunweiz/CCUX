@@ -11,6 +11,8 @@
     <tm:CustomerJourneyTimeline channel="{timeline>/data}">
         <tm:CustomerJourneyTimelineChannel
             topLabel="{timeline>topLabel}"
-            channelIcon="{timeline>channelIcon}" />
+            channelIcon="{timeline>channelIcon}"
+            press="._onPress"
+            doublePress="._onDoublePress" />
     </tm:CustomerJourneyTimeline>
 </mvc:View>
