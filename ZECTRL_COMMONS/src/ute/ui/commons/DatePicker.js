@@ -42,7 +42,23 @@ sap.ui.define(
             this._oMinDate.setHours(0, 0, 0, 0);//Set to midnight of yesterday
             this._oMaxDate = new Date(9999, 11, 31);
         };
-
+        /**
+         * After control Rendering hook for the DatePicker.
+         * It initializes some basic configuration.
+         * 1) Check if default date is missing set it to todays date
+         *
+         *
+         * @private
+         */
+        DatePicker.prototype.onAfterRendering = function () {
+/*            if (!this.getDefaultDate()) {
+                if (this.$("input").val()) {
+                    this.setDefaultDate(this.$("input").val());
+                } else {
+                    this.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
+                }
+            }*/
+        };
          /*
          * Date Picker Exit method for memory leaks
          * 1) Deletes the popup session.
@@ -88,20 +104,20 @@ sap.ui.define(
         DatePicker.prototype._selectDate = function (oEvent) {
             var sNewValue = this._oFormatYyyymmdd.format(this._oCalendar._getFocusedDate()),
                 $Input;
-
-
             this.focus();
             // do not call this._checkChange(); because we already have the date object and no wrong entry is possible
             this._oPopup.close();
-            this.setProperty('value', sNewValue, true);
-            this.setProperty('defaultDate', sNewValue, true);
-            // this.setProperty('yyyymmdd', sYyyymmdd, true);
-            // set inputs value after properties because of placeholder logic for IE
-            $Input = jQuery(this.getInputDomRef());
-            if ($Input.val() !== sNewValue) {
-                $Input.val(sNewValue);
-                this._curpos = sNewValue.length;
-                $Input.cursorPos(this._curpos);
+            if (this.getEditable() && this.getEnabled() && sNewValue !== this.getValue()) {
+                this.setProperty('value', sNewValue, true);
+                this.setProperty('defaultDate', sNewValue, true);
+                // this.setProperty('yyyymmdd', sYyyymmdd, true);
+                // set inputs value after properties because of placeholder logic for IE
+                $Input = jQuery(this.getInputDomRef());
+                if ($Input.val() !== sNewValue) {
+                    $Input.val(sNewValue);
+                    this._curpos = sNewValue.length;
+                    $Input.cursorPos(this._curpos);
+                }
             }
         };
 
@@ -116,6 +132,12 @@ sap.ui.define(
             var sValue = '',
                 eDock;
 
+            if (this.getDefaultDate()) {
+                sValue = this.getDefaultDate();
+            }
+            if (sValue !== this.$("input").val()) {
+                this._checkChange(); // to prove is something was typed in manually
+            }
             if (!this._oPopup) {
                 jQuery.sap.require('sap.ui.core.Popup');
                 this._oPopup = new sap.ui.core.Popup();
@@ -128,23 +150,12 @@ sap.ui.define(
                 this._oCalendar.setSelectedDate(this.getDefaultDate());
                 this._oCalendar.setMinDate(this._oMinDate);
                 this._oCalendar.setMaxDate(this._oMaxDate);
-                this._oCalendar.setEditable(this.getEditable());
-                this._oCalendar.setEnabled(this.getEnabled());
                 this._oCalendar.attachEvent('select', this._selectDate, this);
                 this._oCalendar.attachEvent('close', this._close, this);
                 this._oPopup.setContent(this._oCalendar);
                 this._oCalendar.setParent(this, undefined, true); // don't invalidate DatePicker
-            } else {
-
-                if (this.getDefaultDate()) {
-                    sValue = this.getDefaultDate();
-                }
-                if (sValue !== this.$("input").val()) {
-                    this._checkChange(); // to prove is something was typed in manually
-                }
-                this._oCalendar.addSelectedDate(this.getDefaultDate());
             }
-
+            this._oCalendar.addSelectedDate(this.getDefaultDate());
             this._oPopup.setAutoCloseAreas([this.getDomRef()]);
             eDock = sap.ui.core.Popup.Dock;
             this._oPopup.open(0, eDock.BeginTop, eDock.BeginBottom, this, null, null, true);
@@ -298,17 +309,15 @@ sap.ui.define(
         DatePicker.prototype._checkChange = function (oEvent) {
             var oInput = jQuery(this.getInputDomRef()),
                 sNewValue = oInput.val(),
-                oldVal = this.getValue();
+                oldVal = this.getDefaultDate();
 
-            if (this.getEditable() && this.getEnabled() && (oldVal !== sNewValue)) {
+            if ((oldVal !== sNewValue)) {
 
                 if (sNewValue !== '') {
 
                     this._oDate = this._oFormatYyyymmdd.parse(sNewValue);
                     if (!this._oDate || this._oDate.getTime() < this._oMinDate.getTime() || this._oDate.getTime() > this._oMaxDate.getTime()) {
-
 				        this._oDate = undefined;
-
 				    } else {
 
                         // just format date to right pattern, because maybe a fallback pattern is used in the parsing

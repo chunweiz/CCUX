@@ -11,12 +11,18 @@ sap.ui.define(
         var CustomElement = Element.extend('test.tm.ze_ccux_ctrl.view.control.CustomerJourneyTimelineChannel', {
             metadata: {
                 properties: {
-                    date: { type: 'string', defaultValue: null },
-                    rightDivider: { type: 'boolean', defaultValue: false },
                     channelType: {
                         type: 'test.tm.ze_ccux_ctrl.view.control.CustomerJourneyTimelineChannel.ChannelType',
                         defaultValue: 'Correspondence'
-                    }
+                    },
+                    topLabel: { type: 'string', defaultValue: null },
+                    rightDivider: { type: 'boolean', defaultValue: false },
+                    selected: { type: 'boolean', defaultValue: false }
+                },
+
+                events: {
+                    press: {},
+                    doublePress: {}
                 }
             }
         });

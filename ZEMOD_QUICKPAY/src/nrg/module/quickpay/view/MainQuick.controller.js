@@ -7,10 +7,11 @@ sap.ui.define(
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
         'jquery.sap.global',
-        "sap/ui/model/json/JSONModel"
+        "sap/ui/model/json/JSONModel",
+        'sap/ui/core/format/DateFormat'
     ],
 
-    function (CoreController, Filter, FilterOperator, jQuery, JSONModel) {
+    function (CoreController, Filter, FilterOperator, jQuery, JSONModel, DateFormat) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.quickpay.view.MainQuick');
@@ -39,6 +40,9 @@ sap.ui.define(
                 oContactModel,
                 fnRecievedHandler,
                 that = this;
+            this._oFormatYyyymmdd = DateFormat.getInstance({
+                pattern: 'MM/dd/yyyy'
+            });
             this._OwnerComponent = this.getView().getParent().getParent().getController().getOwnerComponent();
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             oContactModel = new sap.ui.model.json.JSONModel();
@@ -77,7 +81,7 @@ sap.ui.define(
                 oCreditCardDate = this.getView().byId("idnrgQPCC-Date"),
                 that = this;
             oTBIStopRec.setSelected(true);
-            oCreditCardDate.setDefaultDate(new Date().toLocaleDateString("en-US"));
+            oCreditCardDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             //oCreditCardDate.setMinDate(new Date());
             WRRecievedHandler = function (oEvent) {
@@ -200,6 +204,8 @@ sap.ui.define(
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             oTBIPCC.setSelected(true);
             this._aPendingSelPaths = [];
+            //this.getView().getParent().setPosition("begin bottom", "begin bottom");
+            this.setPosition(0);
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupPayment");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
@@ -432,7 +438,7 @@ sap.ui.define(
                 oWaiveReasonDropDown = this.getView().byId("idnrgQPBD-WaiveReason"),
                 WRRecievedHandler,
                 oSorter = new sap.ui.model.Sorter("LastUsed", true); // sort descending;
-            oBankDraftDate.setDefaultDate(new Date().toLocaleDateString("en-US"));
+            oBankDraftDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
             //oBankDraftDate.setMinDate(new Date());
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupWhite");
@@ -762,7 +768,7 @@ sap.ui.define(
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             oReliantRedeem.addStyleClass("nrgQPPay-hide");
             oTBIRD.setSelected(true);
-            oReliantDate.setValue(new Date().toLocaleDateString("en-US"));
+            oReliantDate.setValue(this._oFormatYyyymmdd.format(new Date(), true));
             oReliantDate.setEditable(false);
         };
 
@@ -892,7 +898,7 @@ sap.ui.define(
                 oReceiptDate = this.getView().byId("idnrgQPRC-RcDate"),
                 that = this;
             this._OwnerComponent.getCcuxApp().setOccupied(true);
-            oReceiptDate.setValue(new Date().toLocaleDateString("en-US"));
+            oReceiptDate.setValue(this._oFormatYyyymmdd.format(new Date(), true));
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupWhite");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
@@ -1111,6 +1117,19 @@ sap.ui.define(
                     that._OwnerComponent.getCcuxApp().setOccupied(false);
                 }
             });
+        };
+        /**
+         * handler for contact log maintenance
+		 *
+		 * @function onQuickPay
+         * @param {interger} iType = 0 is small, 1 is large
+		 */
+        Controller.prototype.setPosition = function (iType) {
+            if (iType === 0) {
+                this.getView().getParent().setPosition("begin bottom", "begin bottom");
+            } else {
+                this.getView().getParent().setPosition("begin bottom", "begin bottom");
+            }
         };
        /**
 		 * Assign the filter objects based on the input selection

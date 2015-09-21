@@ -29,7 +29,7 @@
                                      editable="{QP-quickpay>Editable}"
                                      width="100%" />
                         <u:Textfield fieldType="Noborder"
-                                     value="{QP-quickpay>PaymentAmount}"
+                                     value="{path: 'QP-quickpay>PaymentAmount', type: 'sap.ui.model.type.Float', formatOptions:{maxFractionDigits: '2'} }"
                                      class="nrgQPCC-Data"
                                      editable="{QP-quickpay>Editable}"
                                      width="100%" />

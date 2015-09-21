@@ -75,53 +75,15 @@
                 }
             },
             {
-                "PartnerID":"PartnerID 1",
-                "BuagID":"BuagID 1",
-                "SSN":"SSN 1",
-                "DL":"DL 1",
-                "OrgName":"OrgName 1",
-                "TaxID":"TaxID 1",
-                "ESID":"ESID 1",
-                "FirstName":"FirstName 1",
-                "LastName":"LastName 1",
-                "MiddleName":"MiddleName 1",
-                "Street":"Street 1",
-                "HouseNumber":"HouseNumber 1",
-                "UnitNumber":"UnitNumber 1",
-                "City":"City 1",
-                "State":"State 1",
-                "ZipCode":"ZipCode 1",
-                "__metadata":{
-                    "id":"../../data/dashboard/devtest/BpSearchs('PartnerID 1')",
-                    "type":"ZE_CCUX_SRV.BpSearch",
-                    "uri":"../../data/dashboard/devtest/BpSearchs('PartnerID 1')"
-                },
-                "Buag":{
-                    "__deferred":{
-                        "uri":"../../data/dashboard/devtest/BpSearchs('PartnerID 1')/Buag"
-                    }
-                },
-                "Contract":{
-                    "__deferred":{
-                        "uri":"../../data/dashboard/devtest/BpSearchs('PartnerID 1')/Contract"
-                    }
-                },
-                "Partner":{
-                    "__deferred":{
-                        "uri":"../../data/dashboard/devtest/BpSearchs('PartnerID 1')/Partner"
-                    }
-                }
-            },
-            {
-                "PartnerID":"PartnerID 2",
-                "BuagID":"BuagID 2",
+                "PartnerID":"1121773",
+                "BuagID":"100738",
                 "SSN":"SSN 2",
                 "DL":"DL 2",
                 "OrgName":"OrgName 2",
                 "TaxID":"TaxID 2",
                 "ESID":"ESID 2",
                 "FirstName":"FirstName 2",
-                "LastName":"LastName 3",
+                "LastName":"LastName 2",
                 "MiddleName":"MiddleName 2",
                 "Street":"Street 2",
                 "HouseNumber":"HouseNumber 2",
@@ -130,23 +92,23 @@
                 "State":"State 2",
                 "ZipCode":"ZipCode 2",
                 "__metadata":{
-                    "id":"../../data/dashboard/devtest/BpSearchs('PartnerID 2')",
+                    "id":"../../data/dashboard/devtest/BpSearchs('1121773')",
                     "type":"ZE_CCUX_SRV.BpSearch",
-                    "uri":"../../data/dashboard/devtest/BpSearchs('PartnerID 2')"
+                    "uri":"../../data/dashboard/devtest/BpSearchs('1121773')"
                 },
                 "Buag":{
                     "__deferred":{
-                        "uri":"../../data/dashboard/devtest/BpSearchs('PartnerID 2')/Buag"
+                        "uri":"../../data/dashboard/devtest/BpSearchs('1121773')/Buag"
                     }
                 },
                 "Contract":{
                     "__deferred":{
-                        "uri":"../../data/dashboard/devtest/BpSearchs('PartnerID 2')/Contract"
+                        "uri":"../../data/dashboard/devtest/BpSearchs('1121773')/Contract"
                     }
                 },
                 "Partner":{
                     "__deferred":{
-                        "uri":"../../data/dashboard/devtest/BpSearchs('PartnerID 2')/Partner"
+                        "uri":"../../data/dashboard/devtest/BpSearchs('1121773')/Partner"
                     }
                 }
             },

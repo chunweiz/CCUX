@@ -465,10 +465,6 @@
                                                         text="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ShortForm}"
                                                         press="._onEditMailAddrClick"/>
                                                 </ute:Tag>
-                                                <!--<ute:Textfield id="mail_FixedAddr" fieldType="Noborder"
-                                                    value="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ShortForm}"
-                                                    editable="{oCfrmStatus>/bEditable}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-fInput"/>-->
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <utmain:Label  labelFor="mail_TempAddr"
@@ -483,10 +479,6 @@
                                                         text="{oDtaVrfyMailingTempAddr>/TempAddrInfo/ShortForm}"
                                                         press="._onEditTempAddrClick"/>
                                                 </ute:Tag>
-                                                <!--<ute:Textfield id="mail_TempAddr" fieldType="Noborder"
-                                                    value="{oDtaVrfyMailingTempAddr>/TempAddrInfo/ShortForm}"
-                                                    editable="{oCfrmStatus>/bEditable}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-fInput"/>-->
                                             </l:MatrixLayoutCell>
                                         </l:MatrixLayoutRow>
                                     </l:MatrixLayout>

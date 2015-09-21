@@ -28,7 +28,7 @@
                                       editable="{QP-quickpay>Editable}"
                                       value="{path: 'QP-quickpay>ScheduledDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
                         <u:Textfield fieldType="Noborder"
-                                     value="{QP-quickpay>Amount}"
+                                     value="{path: 'QP-quickpay>Amount', type: 'sap.ui.model.type.Float', formatOptions:{maxFractionDigits: '2'} }"
                                      class="nrgQPCC-Data"
                                      editable="{QP-quickpay>Editable}"
                                      width="100%" />
