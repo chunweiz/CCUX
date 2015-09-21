@@ -2,32 +2,34 @@
 
 sap.ui.define(
     [
-        'sap/ui/core/Element'
+        'jquery.sap.global',
+        'sap/ui/core/Control',
+        'test/tm/ze_ccux_ctrl/view/control/CustomerJourneyTimelineChannelRenderer'
     ],
 
-    function (Element) {
+    function (jQuery, Control, CustomRenderer) {
         'use strict';
 
-        var CustomElement = Element.extend('test.tm.ze_ccux_ctrl.view.control.CustomerJourneyTimelineChannel', {
+        var CustomControl = Control.extend('test.tm.ze_ccux_ctrl.view.control.CustomerJourneyTimelineChannel', {
             metadata: {
                 properties: {
-                    channelType: {
-                        type: 'test.tm.ze_ccux_ctrl.view.control.CustomerJourneyTimelineChannel.ChannelType',
-                        defaultValue: 'Correspondence'
-                    },
+                    channelIcon: { type: 'sap.ui.core.URI', defaultValue: 'sap-icon://letter' },
                     topLabel: { type: 'string', defaultValue: null },
                     rightDivider: { type: 'boolean', defaultValue: false },
-                    selected: { type: 'boolean', defaultValue: false }
+                    selected: { type: 'boolean', defaultValue: false },
+                    selectionGroup: { type: 'string', defaultValue: null }
                 },
 
                 events: {
                     press: {},
                     doublePress: {}
                 }
-            }
+            },
+
+            renderer: CustomRenderer
         });
 
-        CustomElement.ChannelType = {
+        CustomControl.ChannelType = {
             Website: 'Website',
             Mobile: 'Mobile',
             IVR: 'IVR',
@@ -37,18 +39,59 @@ sap.ui.define(
             Correspondence: 'Correspondence'
         };
 
-        CustomElement.prototype.getChannelIcon = function () {
-            switch(this.getChannelType()) {
-                case CustomElement.ChannelType.Website: return 'sap-icon://nrg-icon/website';
-                case CustomElement.ChannelType.Mobile: return 'sap-icon://ipad';
-                case CustomElement.ChannelType.IVR: return 'sap-icon://nrg-icon/not-verified';
-                case CustomElement.ChannelType.Webchat: return 'sap-icon://nrg-icon/webchat';
-                case CustomElement.ChannelType.Phone: return 'sap-icon://nrg-icon/agent';
-                case CustomElement.ChannelType.Survey: return 'sap-icon://nrg-icon/survey';
-                default: return 'sap-icon://letter';
+        CustomControl.prototype._aGroupRegistry = {};
+
+        CustomControl.prototype.exit = function () {
+            var sSelectionGroup = this.getSelectionGroup();
+
+            if (!sSelectionGroup || !this._aGroupRegistry[sSelectionGroup]) {
+                return;
+            }
+
+            var iIndex = this._aGroupRegistry[sSelectionGroup].indexOf(this);
+            if (iIndex && iIndex !== -1) {
+                this._aGroupRegistry[sSelectionGroup].splice(iIndex, 1);
             }
         };
 
-        return CustomElement;
+        CustomControl.prototype.setSelectionGroup = function (sSelectionGroup) {
+            if (!sSelectionGroup) {
+                return;
+            }
+
+            if (!this._aGroupRegistry[sSelectionGroup]) {
+                this._aGroupRegistry[sSelectionGroup] = [];
+            }
+
+            this._aGroupRegistry[sSelectionGroup].push(this);
+        };
+
+        CustomControl.prototype.setSelected = function (bSelected) {
+            bSelected = !!bSelected;
+
+            console.log(this._aGroupRegistry);
+
+            this.setProperty('selected', bSelected, true);
+        };
+
+        CustomControl.prototype.onclick = function (oEvent) {
+            this._onDoubleClick = false;
+
+            // Wait for a while to check whether user intention is to double click.
+            // If it is, do not fire single click.
+            jQuery.sap.delayedCall(300, this, function () {
+                if (!this._onDoubleClick) {
+                    this.firePress();
+                }
+            });
+        };
+
+        CustomControl.prototype.ondblclick = function (oEvent) {
+            this._onDoubleClick = true;
+            this.setSelected(true);
+            this.fireDoublePress();
+        };
+
+        return CustomControl;
     }
 );

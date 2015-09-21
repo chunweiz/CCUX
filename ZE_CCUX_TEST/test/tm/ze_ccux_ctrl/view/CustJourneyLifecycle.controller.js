@@ -21,17 +21,47 @@ sap.ui.define(
 
             this.getView().setModel(new JSONModel({
                 data: [
-                    { channelType: 'Website' },
-                    { channelType: 'Mobile' },
-                    { channelType: 'IVR' },
-                    { channelType: 'Webchat' },
-                    { channelType: 'Phone' },
-                    { channelType: 'Survey' },
-                    { channelType: 'Correspondence' }
+                    { channelIcon: 'sap-icon://nrg-icon/website', topLabel: '09/21/2014' },
+                    { channelIcon: 'sap-icon://ipad' },
+                    { channelIcon: 'sap-icon://nrg-icon/not-verified' },
+                    { channelIcon: 'sap-icon://nrg-icon/webchat' },
+                    { channelIcon: 'sap-icon://nrg-icon/agent' },
+                    { channelIcon: 'sap-icon://nrg-icon/survey' },
+                    { channelIcon: 'sap-icon://letter' },
+                    { channelIcon: 'sap-icon://nrg-icon/website' },
+                    { channelIcon: 'sap-icon://ipad' },
+                    { channelIcon: 'sap-icon://nrg-icon/not-verified' },
+                    { channelIcon: 'sap-icon://nrg-icon/webchat' },
+                    { channelIcon: 'sap-icon://nrg-icon/agent' },
+                    { channelIcon: 'sap-icon://nrg-icon/survey' },
+                    { channelIcon: 'sap-icon://letter' },
+                    { channelIcon: 'sap-icon://nrg-icon/website' },
+                    { channelIcon: 'sap-icon://ipad' },
+                    { channelIcon: 'sap-icon://nrg-icon/not-verified' },
+                    { channelIcon: 'sap-icon://nrg-icon/webchat' },
+                    { channelIcon: 'sap-icon://nrg-icon/agent' },
+                    { channelIcon: 'sap-icon://nrg-icon/survey' },
+                    { channelIcon: 'sap-icon://letter', topLabel: '09/21/2015' }
                 ]
             }), 'timeline');
 
         };
+
+        CustomController.prototype._onPress = function (oEvent) {
+            console.log('onPress', oEvent);
+        };
+
+        CustomController.prototype._onDoublePress = function (oEvent) {
+            console.log('onDoublePress', oEvent);
+        };
+
+        // case CustomControl.ChannelType.Website: return 'sap-icon://nrg-icon/website';
+        // case CustomControl.ChannelType.Mobile: return 'sap-icon://ipad';
+        // case CustomControl.ChannelType.IVR: return 'sap-icon://nrg-icon/not-verified';
+        // case CustomControl.ChannelType.Webchat: return 'sap-icon://nrg-icon/webchat';
+        // case CustomControl.ChannelType.Phone: return 'sap-icon://nrg-icon/agent';
+        // case CustomControl.ChannelType.Survey: return 'sap-icon://nrg-icon/survey';
+        // default: return 'sap-icon://letter';
 
         return CustomController;
     }
