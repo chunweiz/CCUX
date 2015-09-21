@@ -16,30 +16,57 @@ sap.ui.define(
         var CustomController = Controller.extend('nrg.module.billing.view.CustomerDataBillingInfo');
 
         CustomController.prototype.onInit = function () {
-            var oModel;
-
-            oModel = new JSONModel({
-                selectedKey: 'ilink_1',
-                aLinks: [
-                    { key: 'ilink_1', value: 'Checkbook' },
-                    { key: 'ilink_2', value: 'High Bill' }
-                ]
-            });
-
-            this.getView().setModel(oModel, 'oLinkDropdown');      //Model for the dropdown links
         };
 
         CustomController.prototype.onBeforeRendering = function () {
+            this.getOwnerComponent().getCcuxApp().setTitle('BILLING INFO');
 
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-billing'), 'oDataSvc');
 
+            //Models for BillingInvoices
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBillingInvoices');
+
+            //Starting invoices retriviging
+            this._initRoutingInfo();
+            this._initRetrBillInvoices();
         };
 
         CustomController.prototype.onAfterRendering = function () {
-            //this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
         };
 
         CustomController.prototype.onExit = function () {
+        };
 
+        CustomController.prototype._initRoutingInfo = function () {
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+
+            this._bpNum = oRouteInfo.parameters.bpNum;
+            this._caNum = oRouteInfo.parameters.caNum;
+            this._coNum = oRouteInfo.parameters.coNum;
+        };
+
+
+        CustomController.prototype._initRetrBillInvoices = function () {
+            var oChbkOData = this.getView().getModel('oDataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/BillInvoices(\'' + this._caNum + '\')';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oBillingInvoices').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oChbkOData) {
+                oChbkOData.read(sPath, oParameters);
+            }
         };
 
         /*************************************************************************************************************************/
@@ -82,38 +109,39 @@ sap.ui.define(
         };
 
         CustomController.prototype.onPayNow = function (oEvent) {
-            var oRouter = this.getOwnerComponent().getRouter(),
-                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
-                QuickControl = new QuickPayControl();
+            var QuickControl = new QuickPayControl();
 
-            this._sContract = oRouteInfo.parameters.coNum;
-            this._sBP = oRouteInfo.parameters.bpNum;
-            this._sCA = oRouteInfo.parameters.caNum;
+            this._sContract = this._coNum;
+            this._sBP = this._bpNum;
+            this._sCA = this._caNum;
             this.getView().addDependent(QuickControl);
             QuickControl.openQuickPay(this._sContract, this._sBP, this._sCA);
-
         };
 
         CustomController.prototype._onChkbookLnkClicked = function () {
-            var oRouter = this.getOwnerComponent().getRouter(),
-                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
-
-            this._bpNum = oRouteInfo.parameters.bpNum;
-            this._caNum = oRouteInfo.parameters.caNum;
-            this._coNum = oRouteInfo.parameters.coNum;
+            var oRouter = this.getOwnerComponent().getRouter();
 
             oRouter.navTo('billing.CheckBook', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
         };
 
         CustomController.prototype._onHighbillLnkClicked = function () {
-            var oRouter = this.getOwnerComponent().getRouter(),
-                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
-
-            this._bpNum = oRouteInfo.parameters.bpNum;
-            this._caNum = oRouteInfo.parameters.caNum;
-            this._coNum = oRouteInfo.parameters.coNum;
+            var oRouter = this.getOwnerComponent().getRouter();
 
             oRouter.navTo('billing.HighBill', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+        };
+
+        CustomController.prototype._onInvoiceNumClicked = function () {
+            if (!this._oInvSelectPopup) {
+                this._oInvSelectPopup = sap.ui.xmlfragment("InvSelectPopup", "nrg.module.billing.view.InvSelectPopup", this);
+                this._oInvSelectPopup = ute.ui.main.Popup.create({
+                    content: this._oInvSelectPopup,
+                    title: "INVOICE SELECTION"
+                });
+
+                this.getView().addDependent(this._oInvSelectPopup);
+            }
+
+            this._oInvSelectPopup.open();
         };
         /*************************************************************************************************************************/
 
