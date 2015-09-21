@@ -17,8 +17,8 @@ sap.ui.define(
                 },
 
                 events: {
-                    totalPress: {},
-                    slicePress: {
+                    totalDoublePress: {},
+                    sliceDoublePress: {
                         parameters: {
                             channel: { type: 'string' }
                         }
@@ -120,7 +120,7 @@ sap.ui.define(
                 .attr('class', 'tmCustJCChart-totalText');
 
             oTotal.on('dblclick', function () {
-                oCustomControl.fireTotalPress();
+                oCustomControl.fireTotalDoublePress();
             });
 
             /* Donut chart */
@@ -145,7 +145,7 @@ sap.ui.define(
                     });
 
             oPieSlice.on('dblclick', function (data) {
-                oCustomControl.fireSlicePress({
+                oCustomControl.fireSliceDoublePress({
                     channel: data.data.channel
                 });
             });
@@ -161,7 +161,7 @@ sap.ui.define(
                     .attr('class', 'tmCustJCChart-sliceValue');
 
             oPieSliceText.on('dblclick', function (data) {
-                oCustomControl.fireSlicePress({
+                oCustomControl.fireSliceDoublePress({
                     channel: data.data.channel
                 });
             });
