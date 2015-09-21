@@ -32,15 +32,8 @@ sap.ui.define(
             oRm.write('>');
 
             oCustomControl.getChannel().forEach(function (channel) {
-                oRm.write('<div');
-                oRm.addClass('tmCJTChannel');
-                oRm.addClass('tmCJTChannel-big');
-                oRm.writeClasses();
-                oRm.write('>');
-
-                oRm.writeIcon(channel.getChannelIcon());
-
-                oRm.write('</div>');
+                channel.setSelectionGroup(oCustomControl.getId() + 'channelGroup');
+                oRm.renderControl(channel);
             }, this);
 
             oRm.write('</div>');

@@ -8,9 +8,9 @@
     width="100%"
     displayBlock="true">
 
-    <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
-        <tm:CustomerJourneyTimeline channel="{timeline>/data}">
-            <tm:CustomerJourneyTimelineChannel channelType="{timeline>channelType}"></tm:CustomerJourneyTimelineChannel>
-        </tm:CustomerJourneyTimeline>
-    </sm:ScrollContainer>
+    <tm:CustomerJourneyTimeline channel="{timeline>/data}">
+        <tm:CustomerJourneyTimelineChannel
+            topLabel="{timeline>topLabel}"
+            channelIcon="{timeline>channelIcon}" />
+    </tm:CustomerJourneyTimeline>
 </mvc:View>
