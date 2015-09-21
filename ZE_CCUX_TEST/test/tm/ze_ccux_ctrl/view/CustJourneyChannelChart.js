@@ -14,6 +14,15 @@ sap.ui.define(
                 properties: {
                     width: { type: 'int', defaultValue: 500 },
                     height: { type: 'int', defaultValue: 300 }
+                },
+
+                events: {
+                    totalDoublePress: {},
+                    sliceDoublePress: {
+                        parameters: {
+                            channel: { type: 'string' }
+                        }
+                    }
                 }
             },
 
@@ -57,6 +66,7 @@ sap.ui.define(
         };
 
         CustomControl.prototype._createChart = function () {
+            var oCustomControl = this;
             var iWidth = this.getWidth();
             var iHeight = this.getHeight();
             var iRadius = Math.min(iWidth, iHeight) / 3;
@@ -79,7 +89,7 @@ sap.ui.define(
 
             var fnColor = d3.scale.ordinal()
                 .domain(aData, fnLabel)
-                .range(['#5092ce', '#f2a814', '#c0272d', '#5bc2af']);
+                .range(['#5092ce', '#f2a814', '#c0272d', '#315952', '#f15a24', '#9C27B0', '#2e9985']);
 
             /* Donut rim */
             var oPieRim = oCanvas.append('g');
@@ -109,6 +119,10 @@ sap.ui.define(
                 .attr('dy', '0.35em')
                 .attr('class', 'tmCustJCChart-totalText');
 
+            oTotal.on('dblclick', function () {
+                oCustomControl.fireTotalDoublePress();
+            });
+
             /* Donut chart */
             var fnPie = d3.layout.pie()
                 .sort(null)
@@ -130,8 +144,14 @@ sap.ui.define(
                         return fnColor(fnLabel(data.data));
                     });
 
+            oPieSlice.on('dblclick', function (data) {
+                oCustomControl.fireSliceDoublePress({
+                    channel: data.data.channel
+                });
+            });
+
             /* Donut chart value */
-            oPie.append('g').selectAll('text.tmCustJCChart-sliceValue')
+            var oPieSliceText = oPie.append('g').selectAll('text.tmCustJCChart-sliceValue')
                 .data(fnPie(aData))
                 .enter()
                 .append('text')
@@ -139,6 +159,12 @@ sap.ui.define(
                     .attr('dy', '0.35em')
                     .attr('transform', function (data) { return 'translate(' + fnPieArc.centroid(data) + ')'; })
                     .attr('class', 'tmCustJCChart-sliceValue');
+
+            oPieSliceText.on('dblclick', function (data) {
+                oCustomControl.fireSliceDoublePress({
+                    channel: data.data.channel
+                });
+            });
 
             /* Line between donut chart and label */
             var fnLineInnerArc = d3.svg.arc()
@@ -170,7 +196,7 @@ sap.ui.define(
                 .enter()
                     .append('circle')
                         .attr('r', iRadius * 0.03)
-                        .attr('fill', 'white')
+                        .attr('fill', '#ffffff')
                         .attr('stroke-width', 2)
                         .attr('stroke', function (data) { return fnColor(fnLabel(data.data)); })
                         .attr('cx', function (data) { return fnLineInnerArc.centroid(data)[0]; })

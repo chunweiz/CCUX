@@ -3,17 +3,14 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:sm="sap.m"
+    xmlns:tm="test.tm.ze_ccux_ctrl.view.control"
     height="100%"
     width="100%"
     displayBlock="true">
 
-    <style>
-        .tmCustJLcTimeline {
-
-        }
-    </style>
-
     <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
-
+        <tm:CustomerJourneyTimeline channel="{timeline>/data}">
+            <tm:CustomerJourneyTimelineChannel channelType="{timeline>channelType}"></tm:CustomerJourneyTimelineChannel>
+        </tm:CustomerJourneyTimeline>
     </sm:ScrollContainer>
 </mvc:View>

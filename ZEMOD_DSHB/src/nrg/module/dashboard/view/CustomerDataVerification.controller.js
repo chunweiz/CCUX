@@ -65,6 +65,13 @@ sap.ui.define(
             //Siebel Customer Indicator
             this.bSiebelCustomer = false;
 
+            // Disable backspace key on this page
+            $(document).on("keydown", function (e) {
+                if (e.which === 8 && !$(e.target).is("input, textarea")) {
+                    e.preventDefault();
+                }
+            });
+
             // Retrieve routing parameters
             var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
 

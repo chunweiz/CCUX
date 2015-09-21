@@ -36,20 +36,26 @@ sap.ui.define(
                     newBankAccount: "",
                     selected : 0
                 }),
-                oContactModel;
-            oContactModel = new sap.ui.model.json.JSONModel();
-            this.getView().setModel(oContactModel, "quickpay-cl");
+                oContactModel,
+                fnRecievedHandler,
+                that = this;
             this._OwnerComponent = this.getView().getParent().getParent().getController().getOwnerComponent();
             this._OwnerComponent.getCcuxApp().setOccupied(true);
+            oContactModel = new sap.ui.model.json.JSONModel();
+            this.getView().setModel(oContactModel, "quickpay-cl");
             this.getView().setModel(oViewModel, "appView");
             sCurrentPath = "/PayAvailFlagsSet";
             sCurrentPath = sCurrentPath + "(ContractID='" + this._sContractId + "')";
+            fnRecievedHandler = function (oEvent) {
+                jQuery.sap.log.info("Date Received Succesfully");
+                that._OwnerComponent.getCcuxApp().setOccupied(false);
+            };
             this.getView().bindElement({
                 model : "comp-quickpay",
-                path : sCurrentPath
+                path : sCurrentPath,
+                events: {dataReceived : fnRecievedHandler}
             });
             oMsgArea.addStyleClass("nrgQPPay-hide");
-            this._OwnerComponent.getCcuxApp().setOccupied(false);
         };
 /********************************  Credit card Related functionality Start ***********************************/
         /**
@@ -68,9 +74,11 @@ sap.ui.define(
                 oWaiveReasonTemplate = this.getView().byId("idnrgQPCC-WaiveReasonItem"),
                 oWaiveReasonDropDown = this.getView().byId("idnrgQPCC-WR"),
                 WRRecievedHandler,
-                oCreditCardDate = this.getView().byId("idnrgQPCC-Date");
+                oCreditCardDate = this.getView().byId("idnrgQPCC-Date"),
+                that = this;
             oTBIStopRec.setSelected(true);
             oCreditCardDate.setDefaultDate(new Date().toLocaleDateString("en-US"));
+            this._OwnerComponent.getCcuxApp().setOccupied(true);
             //oCreditCardDate.setMinDate(new Date());
             WRRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
@@ -82,6 +90,7 @@ sap.ui.define(
             };
             fnRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
+                that._OwnerComponent.getCcuxApp().setOccupied(false);
             };
             sCurrentPath = "/CreditCardSet" + "(ContractID='" + this._sContractId + "')/CardsSet";
             //sCurrentPath = "/CardsSet";
@@ -377,9 +386,12 @@ sap.ui.define(
                 oCreditCardDropDown = this.getView().byId("idnrgQPCC-DDL"),
                 oBindingInfo,
                 oCreditCardTemplate = this.getView().byId("idnrgQPCC-DDLItem"),
-                sCurrentPath;
+                sCurrentPath,
+                that = this;
+            that._OwnerComponent.getCcuxApp().setOccupied(true);
             fnRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
+                that._OwnerComponent.getCcuxApp().setOccupied(false);
             };
             sCurrentPath = "/CreditCardSet" + "(ContractID='" + this._sContractId + "')/CardsSet";
             //sCurrentPath = "/CardsSet";
@@ -651,10 +663,18 @@ sap.ui.define(
                                 oTableRow.setModel(oPCCModel);
                                 jQuery.sap.log.info("Odata Read Successfully:::");
                                 that._OwnerComponent.getCcuxApp().setOccupied(false);
+                                ute.ui.main.Popup.Alert({
+                                    title: 'Information',
+                                    message: 'Update Successfull'
+                                });
                             }.bind(this),
                             error: function (oError) {
                                 jQuery.sap.log.info("Error occured");
                                 that._OwnerComponent.getCcuxApp().setOccupied(false);
+                                ute.ui.main.Popup.Alert({
+                                    title: 'Information',
+                                    message: 'Update Successfull'
+                                });
                             }.bind(this)
                         };
                         if (oModel) {
@@ -664,6 +684,10 @@ sap.ui.define(
                     error: function (oError) {
                         jQuery.sap.log.info("Eligibility Error occured");
                         that._OwnerComponent.getCcuxApp().setOccupied(false);
+                        ute.ui.main.Popup.Alert({
+                            title: 'Information',
+                            message: 'Update failed'
+                        });
                     }.bind(this)
                 };
                 oModel.callFunction("/BankDraftUpdate", mParameters);
@@ -1076,7 +1100,7 @@ sap.ui.define(
             }, {
                 success : function (oData, oResponse) {
                     if (oData.ContactLogID !== "") {
-                        oPopup.removeStyleClass("nrgQPPay-PopupWhite");
+                        oPopup.removeStyleClass("nrgQPPay-PopupPayment");
                         oPopup.addStyleClass("nrgQPPay-Popup");
                         oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
                         oTBIPaySucc.setSelected(true);
