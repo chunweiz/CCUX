@@ -29,7 +29,7 @@
                                                press="onPayNow">
                                     <ute:Tag elem="div"
                                              class="nrgBilling-cusDataBil-PayBalBtn-amount"
-                                             text="$200.00" />
+                                             text="{oBillingInvoices>/AmountDue}" />
                                     <ute:Tag elem="div"
                                              class="nrgBilling-cusDataBil-PayBalBtn-text"
                                              text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-PAY_NOW}"/>
@@ -39,6 +39,7 @@
                                     <ute:Tag text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-INVOCE_NUM}"
                                              class="nrgBilling-cusDataBil-referer-lbl"/>
                                     <utmain:Button class="nrgBilling-cusDataBil-referer-linkFirst" design="None"
+                                                   press="._onInvoiceNumClicked"
                                                    text="000 000 000 000"/>
                                 </ute:Tag>
 

@@ -1,0 +1,23 @@
+{
+  "d":{
+    "results":[
+      {
+        "__metadata":{
+          "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/BillInvoices('000071851129')",
+          "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/BillInvoices('000071851129')",
+          "type":"ZE_CCUX_CHKBOOK_SRV.BillInvoice"
+        },
+        "ContractAccountNumber":"000071851129",
+        "InvoiceNum":"128002822856",
+        "AmountDue":"69.6900",
+        "BillDate":"\/Date(1312347601000+0000)\/",
+        "DueDate":"\/Date(1313730001000+0000)\/",
+        "ConfBuag":{
+          "__deferred":{
+            "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/BillInvoices('000071851129')/ConfBuag"
+          }
+        }
+      }
+    ]
+  }
+}

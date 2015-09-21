@@ -7,10 +7,11 @@ sap.ui.define(
         'sap/ui/core/Control',
         'sap/ui/core/Locale',
         'sap/ui/core/LocaleData',
-        'sap/ui/core/format/DateFormat'
+        'sap/ui/core/format/DateFormat',
+        'sap/ui/core/date/UniversalDate'
     ],
 
-	function (jQuery, Control, Locale, LocaleData, DateFormat) {
+	function (jQuery, Control, Locale, LocaleData, DateFormat, UniversalDate) {
 	    'use strict';
 
         var Calendar = Control.extend('ute.ui.commons.Calendar', {
@@ -67,26 +68,76 @@ sap.ui.define(
 
             return this._oLocaleData;
         };
+        /**
+         * Creates a Date in local timezone from UTC timezone
+         * @param {Date} oDate in UTC timezone
+         * @param {boolean} bTime if set the time part of the date will be used too, otherwise it will be initial
+         * @return {Date} in local timezone
+         * @private
+         */
+        Calendar.prototype._createLocalDate = function (oDate, bTime) {
 
+            var oLocaleDate,
+                oMyDate;
+
+            if (oDate) {
+
+                if (oDate instanceof UniversalDate) {
+                    oMyDate = new Date(oDate.getTime());
+                } else {
+                    oMyDate = oDate;
+                }
+
+                oLocaleDate = new Date(oMyDate.getUTCFullYear(), oMyDate.getUTCMonth(), oMyDate.getUTCDate());
+                if (oMyDate.getFullYear() < 1000) {
+                    oLocaleDate.setFullYear(oMyDate.getFullYear());
+                }
+
+                if (bTime) {
+                    oLocaleDate.setHours(oMyDate.getUTCHours());
+                    oLocaleDate.setMinutes(oMyDate.getUTCMinutes());
+                    oLocaleDate.setSeconds(oMyDate.getUTCSeconds());
+                    oLocaleDate.setMilliseconds(oMyDate.getUTCMilliseconds());
+                }
+            }
+
+            return oLocaleDate;
+
+        };
         /**
          * Creates a Date in UTC timezone from local timezone
          * @param {Date} oDate in local timezone
+         * @param {boolean} bTime if set the time part of the date will be used too, otherwise it will be initial
          * @return {Date} in UTC timezone
          * @private
          */
+        Calendar.prototype._createUTCDate = function (oDate, bTime) {
 
-        Calendar.prototype._createUTCDate =  function (oDate) {
-            var oUTCDate;
+            var oUTCDate,
+                oMyDate;
 
             if (oDate) {
-                oUTCDate = new Date(Date.UTC(oDate.getFullYear(), oDate.getMonth(), oDate.getDate()));
 
-                if (oDate.getFullYear() < 1000) {
-                    oUTCDate.setUTCFullYear(oDate.getFullYear());
+                if (oDate instanceof UniversalDate) {
+                    oMyDate = new Date(oDate.getTime());
+                } else {
+                    oMyDate = oDate;
                 }
 
-                return oUTCDate;
+                oUTCDate = new Date(Date.UTC(oMyDate.getFullYear(), oMyDate.getMonth(), oMyDate.getDate()));
+                if (oMyDate.getFullYear() < 1000) {
+                    oUTCDate.setUTCFullYear(oMyDate.getFullYear());
+                }
+
+                if (bTime) {
+                    oUTCDate.setUTCHours(oMyDate.getHours());
+                    oUTCDate.setUTCMinutes(oMyDate.getMinutes());
+                    oUTCDate.setUTCSeconds(oMyDate.getSeconds());
+                    oUTCDate.setUTCMilliseconds(oMyDate.getMilliseconds());
+                }
             }
+            return oUTCDate;
+
         };
 
         /**
@@ -97,8 +148,8 @@ sap.ui.define(
          */
 
         Calendar.prototype._getCurrentDate = function () {
-            this._oFocusedDate = this._createUTCDate(new Date());
-            return this._createUTCDate(this._oFocusedDate);
+            this._oFocusedDate = this._createLocalDate(new Date());
+            return this._oFocusedDate;
         };
 
         /**
@@ -222,46 +273,39 @@ sap.ui.define(
             } else {
 
                 $Target = jQuery(oEvent.target);
-                if ((this.getEditable() && this.getEnabled())) {
-
-                    if ($Target.hasClass('uteCal-dayPic-dayNoRange')) {
-                        oEvent.stopPropagation();
-                        oEvent.preventDefault();
-                        return false;
-                    }
-                    if ($Target.hasClass('uteCal-dayPic-day')) {
-                        oFocusedDate = this._getFocusedDate();
-                        oOldFocusedDate = oFocusedDate;
-                        oFocusedDate = this._oFormatYyyymmdd.parse($Target.attr('data-nrg-day'), false);
-                        if (oFocusedDate.getTime() !== oOldFocusedDate.getTime()) {
-                            if ($Target.hasClass('uteCal-dayPic-dayOtherMonth')) {
-                                // in other month -> change month
-                                this._setFocusedDate(oFocusedDate);
-                                this._renderMonth();
-                                oEvent.stopPropagation();
-                                oEvent.preventDefault();
-                            } else if ($Target.hasClass('uteCal-dayPic-dayNoRange')) { // Can remove this condition but just to keep checking again.
-                                //to prevent bubbling into input field if in DatePicker
-                                oEvent.stopPropagation();
-                                oEvent.preventDefault();
-                                return false;
-                            } else {
-                                this._setFocusedDate(oFocusedDate);
-                                this._selectDay(this._getFocusedDate());
-                                this.fireEvent('select');
-                                //to prevent bubbling into input field if in DatePicker
-                                oEvent.stopPropagation();
-                                oEvent.preventDefault();
-                            }
-                        }
-                    }
-                } else {
-                    this.fireEvent('close');
+                if ($Target.hasClass('uteCal-dayPic-dayNoRange')) {
                     oEvent.stopPropagation();
                     oEvent.preventDefault();
                     return false;
                 }
-
+                if ($Target.hasClass('uteCal-dayPic-day')) {
+                    oFocusedDate = this._getFocusedDate();
+                    oOldFocusedDate = oFocusedDate;
+                    oFocusedDate = this._oFormatYyyymmdd.parse($Target.attr('data-nrg-day'), false);
+                    if (oFocusedDate.getTime() !== oOldFocusedDate.getTime()) {
+                        if ($Target.hasClass('uteCal-dayPic-dayOtherMonth')) {
+                            // in other month -> change month
+                            this._setFocusedDate(oFocusedDate);
+                            this._renderMonth();
+                            oEvent.stopPropagation();
+                            oEvent.preventDefault();
+                        } else if ($Target.hasClass('uteCal-dayPic-dayNoRange')) { // Can remove this condition but just to keep checking again.
+                            //to prevent bubbling into input field if in DatePicker
+                            oEvent.stopPropagation();
+                            oEvent.preventDefault();
+                            return false;
+                        } else {
+                            this._setFocusedDate(oFocusedDate);
+                            this._selectDay(this._getFocusedDate());
+                            this.fireEvent('select');
+                            //to prevent bubbling into input field if in DatePicker
+                            oEvent.stopPropagation();
+                            oEvent.preventDefault();
+                        }
+                    } else {
+                        this.fireEvent('select');
+                    }
+                }
             }
 
         };
@@ -322,7 +366,7 @@ sap.ui.define(
             if (!(oDate instanceof Date)) {
                 throw new Error('Date must be a JavaScript date object; ' + this);
             }
-            if ((oDateTimeStamp > oMinDateTimeStamp) && (oDateTimeStamp < oMaxDateTimeStamp)) {
+            if ((oDateTimeStamp >= oMinDateTimeStamp) && (oDateTimeStamp <= oMaxDateTimeStamp)) {
                 bSelectedRange = true; // single day selected
             } else {
                 bSelectedRange = false;
@@ -374,42 +418,6 @@ sap.ui.define(
                 throw new Error('Date must be a JavaScript date object; ' + this);
             }
             this._oMaxDate = oMaxDate;
-        };
-       /**
-         * Sets the Editable
-         * only for internal use
-         * @Parameter {boolean} bEditable
-         *
-         */
-        Calendar.prototype.setEditable = function (bEditable) {
-            this._bEditable = bEditable;
-        };
-        /**
-         * Sets the Enabled
-         * only for internal use
-         * @Parameter {boolean} bEnabled
-         *
-         */
-        Calendar.prototype.setEnabled = function (bEnabled) {
-            this._bEnabled = bEnabled;
-        };
-       /**
-         * Gets the Editable
-         * only for internal use
-         * @return {boolean} bEditable
-         *
-         */
-        Calendar.prototype.getEditable = function () {
-            return this._bEditable;
-        };
-        /**
-         * Gets the Enabled
-         * only for internal use
-         * @return {boolean} bEnabled
-         *
-         */
-        Calendar.prototype.getEnabled = function () {
-            return this._bEnabled;
         };
        /**
          * Gets the Minimum Date
