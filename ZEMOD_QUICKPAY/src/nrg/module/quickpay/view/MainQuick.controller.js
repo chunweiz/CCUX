@@ -86,7 +86,7 @@ sap.ui.define(
             oCreditCardDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             //oCreditCardDate.setMinDate(new Date());
-            this.getView().setModel("quickpay-cc", oCreditCardModel);
+            this.getView().setModel(oCreditCardModel, "quickpay-cc");
             WRRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
                 if (oEvent) {
@@ -153,64 +153,93 @@ sap.ui.define(
                 oCreditCardModel = this.getView().getModel("quickpay-cc"),
                 oZipCode = this.getView().byId("idnrgQPCC-zipcode"),
                 oCVVCode = this.getView().byId("idnrgQPCC-cvv"),
-                oInvoiceDate;
+                oInvoiceDate,
+                oCallFunctionHandler,
+                oConfirmCallbackHandler;
             //this.getView().setModel(oReceiptModel, "quickpay-rc");
             oMsgArea.removeStyleClass("nrgQPPay-hide");
             oMsgArea.addStyleClass("nrgQPPay-black");
             if (!this._ValidateValue(oCreditCardAmount.getValue(), "Enter Amount to be posted")) {
                 return false;
+                //jQuery.sap.log.info("Date Received Succesfully");
             }
             if (!this._ValidateValue(oCreditCardDropDown.getSelectedKey(), "Select Credit Card")) {
                 return false;
+                //jQuery.sap.log.info("Date Received Succesfully");
             }
             if (!this._ValidateValue(oZipCode.getValue(), "Enter Zip Code")) {
                 return false;
+                //jQuery.sap.log.info("Date Received Succesfully");
             }
             if (!this._ValidateValue(oCVVCode.getValue(), "Enter CVV")) {
                 return false;
+                //jQuery.sap.log.info("Date Received Succesfully");
             }
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             sCurrentPath = "/CreditCardPost";
             oCreditCardDateValue = new Date(oCreditCardDate.getValue());
-            oInvoiceDate = new Date(oCreditCardModel.getProperty("/InvoiceDate"));
-            mParameters = {
-                method : "POST",
-                urlParameters : {
-                    "ContractID" : this._sContractId,
-                    "CardNumber" : oCreditCardDropDown.getSelectedKey(),
-                    "PaymentDate" : oCreditCardDateValue,
-                    "Amount" : oCreditCardAmount.getValue(),
-                    "WaiveFlag" : oWaiveReasonDropDown.getSelectedKey(),
-                    "Cvval" : oCVVCode.getValue(),
-                    "ZipCode" : oZipCode.getValue(),
-                    "Activit" : "123",
-                    "CardType" : "1234",
-                    "Class" : "1",
-                    "Error" : "234",
-                    "InvoiceAmount" : "123",
-                    "InvoiceDate" : 1436109229000,
-                    "Message" : "234",
-                    "NameOnCard" : "234",
-                    "PopMessage" : "2324",
-                    "UserDecision" : false,
-                    "WaiveReason" : "234"
-                },
-                success : function (oData, oResponse) {
-                    if (oData.Error === "") {
-                        oContactModel.setData(oData);
-                        that.onContactLog();
-                        oMsgArea.addStyleClass("nrgQPPay-hide");
-                    } else {
-                        that.getView().getModel("appView").setProperty("/message", oData.Message);
-                    }
+            oInvoiceDate = oCreditCardModel.getProperty("/InvoiceDate");
+            oConfirmCallbackHandler = function (sAction) {
+                switch (sAction) {
+                case ute.ui.main.Popup.Action.Yes:
+                    oCallFunctionHandler();
+                    break;
+                case ute.ui.main.Popup.Action.No:
                     that._OwnerComponent.getCcuxApp().setOccupied(false);
-                }.bind(this),
-                error: function (oError) {
-                    that.getView().getModel("appView").setProperty("/message", oError.statusText);
-                    that._OwnerComponent.getCcuxApp().setOccupied(false);
-                }.bind(this)
+                    break;
+                case ute.ui.main.Popup.Action.Ok:
+                    break;
+                }
             };
-            oModel.callFunction(sCurrentPath, mParameters);
+            oCallFunctionHandler = function () {
+                mParameters = {
+                    method : "POST",
+                    urlParameters : {
+                        "ContractID" : that._sContractId,
+                        "CardNumber" : oCreditCardDropDown.getSelectedKey(),
+                        "PaymentDate" : oCreditCardDateValue,
+                        "Amount" : oCreditCardAmount.getValue(),
+                        "WaiveFlag" : oWaiveReasonDropDown.getSelectedKey(),
+                        "Cvval" : oCVVCode.getValue(),
+                        "ZipCode" : oZipCode.getValue(),
+                        "Activit" : "123",
+                        "CardType" : "1234",
+                        "Class" : "1",
+                        "Error" : "234",
+                        "InvoiceAmount" : "123",
+                        "InvoiceDate" : 1436109229000,
+                        "Message" : "234",
+                        "NameOnCard" : "234",
+                        "PopMessage" : "2324",
+                        "UserDecision" : true,
+                        "WaiveReason" : "234"
+                    },
+                    success : function (oData, oResponse) {
+                        if (oData.Error === "") {
+                            oContactModel.setData(oData);
+                            that.onContactLog();
+                            oMsgArea.addStyleClass("nrgQPPay-hide");
+                        } else {
+                            that.getView().getModel("appView").setProperty("/message", oData.Message);
+                        }
+                        that._OwnerComponent.getCcuxApp().setOccupied(false);
+                    }.bind(this),
+                    error: function (oError) {
+                        that.getView().getModel("appView").setProperty("/message", oError.statusText);
+                        that._OwnerComponent.getCcuxApp().setOccupied(false);
+                    }.bind(this)
+                };
+                oModel.callFunction(sCurrentPath, mParameters);
+            };
+            if (oCreditCardDateValue.getTime() > oInvoiceDate.getTime()) {
+                ute.ui.main.Popup.Confirm({
+                    title: 'Information',
+                    message: 'Your Scheduled payment date is after the due date. You will be subject to applicable late fees and/or disconnection.',
+                    callback: oConfirmCallbackHandler
+                });
+            } else {
+                oCallFunctionHandler();
+            }
         };
        /**
 		 * Pending Credit Card Process initialization
@@ -327,7 +356,6 @@ sap.ui.define(
                                      "ContractID" : oContext.getProperty("ContractID"),
                                      "CurrentStatus" : oContext.getProperty("CurrentStatus")}, mParameters);
             });
-
         };
 
         /**
@@ -469,13 +497,16 @@ sap.ui.define(
                 oBankDraftDropDown = this.getView().byId("idnrgQPBD-BankAccounts"),
                 oWaiveReasonDropDown = this.getView().byId("idnrgQPBD-WaiveReason"),
                 WRRecievedHandler,
-                oSorter = new sap.ui.model.Sorter("LastUsed", true); // sort descending;
+                oSorter = new sap.ui.model.Sorter("LastUsed", true),// sort descending;
+                oBankDraftModel = new sap.ui.model.json.JSONModel(),
+                oModel = this.getView().getModel('comp-quickpay');
             oBankDraftDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
             //oBankDraftDate.setMinDate(new Date());
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupWhite");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             oTBIBD.setSelected(true);
+            this.getView().setModel(oBankDraftModel, "quickpay-bd");
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             sCurrentPath = "/BankDraftSet" + "(ContractID='" + this._sContractId + "')/WaiveReasonsSet";
             fnRecievedHandler = function (oEvent) {
@@ -490,6 +521,18 @@ sap.ui.define(
                     }
                 }
             };
+            sCurrentPath = "/BankDraftSet" + "(ContractID='" + this._sContractId + "')";
+            oBindingInfo = {
+                success : function (oData) {
+                    oBankDraftModel.setData(oData);
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Error occured");
+                }.bind(this)
+            };
+            if (oModel) {
+                oModel.read(sCurrentPath, oBindingInfo);
+            }
             oBindingInfo = {
                 model : "comp-quickpay",
                 path : sCurrentPath,
@@ -528,9 +571,16 @@ sap.ui.define(
                 that = this,
                 oBankDraftDateValue,
                 oContactModel = this.getView().getModel("quickpay-cl"),
+                oBankDraftModel = this.getView().getModel("quickpay-bd"),
                 sBankKey,
                 sBankRouting,
-                sBankAccount;
+                sBankAccount,
+                oCallFunctionHandler,
+                oConfirmCallbackHandler,
+                sInvoiceAmount,
+                oInvoiceDate,
+                oConfirmDateHandler,
+                oCallDateHandler;
             oMsgArea.removeStyleClass("nrgQPPay-hide");
             oMsgArea.addStyleClass("nrgQPPay-black");
             if (!this._ValidateValue(oBankDraftAmount.getValue(), "Enter Amount to be posted")) {
@@ -545,42 +595,90 @@ sap.ui.define(
             sBankRouting = oModel.getProperty("/BankAccountSet(ContractID='" + this._sContractId + "',BankKey='" + sBankKey + "')/BankRouting");
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             oBankDraftDateValue = new Date(oBankDraftDate.getValue());
-            mParameters = {
-                method : "POST",
-                urlParameters : {
-                    "ContractID" : this._sContractId,
-                    "BankAccNum" : sBankAccount,
-                    "PaymentDate" : oBankDraftDateValue,
-                    "Amount" : oBankDraftAmount.getValue(),
-                    "WaiveFlag" : oWaiveReasonDropDown.getSelectedKey(),
-                    "BankKey" : sBankKey,
-                    "BankRouting" : sBankRouting,
-                    "Activit" : "0",
-                    "Class" : "0",
-                    "Error" : "0",
-                    "InvoiceAmount" : "0",
-                    "InvoiceDate" : 1436109229000,
-                    "Message" : "0",
-                    "PopMessage" : "0",
-                    "UserDecision" : false,
-                    "WaiveReason" : "0"
-                },
-                success : function (oData, oResponse) {
-                    if (oData.Error === "") {
-                        oContactModel.setData(oData);
-                        that.onContactLog();
-                        oMsgArea.addStyleClass("nrgQPPay-hide");
-                    } else {
-                        that.getView().getModel("appView").setProperty("/message", oData.Message);
-                    }
+            sInvoiceAmount =  oBankDraftModel.getProperty("/InvoiceAmount");
+            oInvoiceDate = oBankDraftModel.getProperty("/InvoiceDate");
+            oConfirmCallbackHandler = function (sAction) {
+                switch (sAction) {
+                case ute.ui.main.Popup.Action.Yes:
+                    oCallFunctionHandler();
+                    break;
+                case ute.ui.main.Popup.Action.No:
                     that._OwnerComponent.getCcuxApp().setOccupied(false);
-                }.bind(this),
-                error: function (oError) {
-                    that.getView().getModel("appView").setProperty("/message", oError.statusText);
-                    that._OwnerComponent.getCcuxApp().setOccupied(false);
-                }.bind(this)
+                    break;
+                case ute.ui.main.Popup.Action.Ok:
+                    break;
+                }
             };
-            oModel.callFunction(sCurrentPath, mParameters);
+            oConfirmDateHandler = function (sAction) {
+                switch (sAction) {
+                case ute.ui.main.Popup.Action.Yes:
+                    oCallDateHandler();
+                    break;
+                case ute.ui.main.Popup.Action.No:
+                    that._OwnerComponent.getCcuxApp().setOccupied(false);
+                    break;
+                case ute.ui.main.Popup.Action.Ok:
+                    break;
+                }
+            };
+            oCallDateHandler = function () {
+                if ((oBankDraftAmount > 0) && (oInvoiceDate.getTime() < oBankDraftDateValue.getTime())) {
+                    ute.ui.main.Popup.Confirm({
+                        title: 'Information',
+                        message: 'Your scheduled payment date is after the due date.  You will be subject to applicable late fees and/or disconnection.',
+                        callback: oConfirmCallbackHandler
+                    });
+                } else {
+                    oCallFunctionHandler();
+                }
+            };
+            oCallFunctionHandler = function () {
+                mParameters = {
+                    method : "POST",
+                    urlParameters : {
+                        "ContractID" : that._sContractId,
+                        "BankAccNum" : sBankAccount,
+                        "PaymentDate" : oBankDraftDateValue,
+                        "Amount" : oBankDraftAmount.getValue(),
+                        "WaiveFlag" : oWaiveReasonDropDown.getSelectedKey(),
+                        "BankKey" : sBankKey,
+                        "BankRouting" : sBankRouting,
+                        "Activit" : "0",
+                        "Class" : "0",
+                        "Error" : "0",
+                        "InvoiceAmount" : "0",
+                        "InvoiceDate" : 1436109229000,
+                        "Message" : "0",
+                        "PopMessage" : "0",
+                        "UserDecision" : true,
+                        "WaiveReason" : "0"
+                    },
+                    success : function (oData, oResponse) {
+                        if (oData.Error === "") {
+                            oContactModel.setData(oData);
+                            that.onContactLog();
+                            oMsgArea.addStyleClass("nrgQPPay-hide");
+                        } else {
+                            that.getView().getModel("appView").setProperty("/message", oData.Message);
+                        }
+                        that._OwnerComponent.getCcuxApp().setOccupied(false);
+                    }.bind(this),
+                    error: function (oError) {
+                        that.getView().getModel("appView").setProperty("/message", oError.statusText);
+                        that._OwnerComponent.getCcuxApp().setOccupied(false);
+                    }.bind(this)
+                };
+                oModel.callFunction(sCurrentPath, mParameters);
+            };
+            if (oBankDraftAmount > sInvoiceAmount) {
+                ute.ui.main.Popup.Confirm({
+                    title: 'Information',
+                    message: 'Payment amount is greater than Total amount due. Do you wish to continue?',
+                    callback: oConfirmDateHandler
+                });
+            } else {
+                oCallDateHandler();
+            }
         };
         /**
 		 * Pending Bank Draft Process initialization
