@@ -47,11 +47,7 @@ sap.ui.define(
             this.$('navFwd').bind('click', this._onNavForwardClick.bind(this));
 
             var oTimelineDomRef = this.getDomRef('container');
-            console.log(oTimelineDomRef.scrollWidth);
-
-            console.log(this.getDomRef().scrollWidth);
-
-            this._scroll(oTimelineDomRef.scrollWidth + CustomControl.SCROLL_STEP, 10);
+            this._scroll(oTimelineDomRef.scrollWidth, 10);
         };
 
         CustomControl.prototype.exit = function () {
@@ -75,38 +71,6 @@ sap.ui.define(
     		jQuery(oDomRef).stop(true, true).animate({
                 scrollLeft: iScrollTarget
             }, iDuration);
-        };
-
-        CustomControl.prototype._checkOverflow = function (oTimelineDomRef, o$BackArrow, o$ForwardArrow) {
-            var bScrollBack = false;
-            var bScrollForward = false;
-
-            var iScrollLeft = oTimelineDomRef.scrollLeft;
-            var iRealWidth = oTimelineDomRef.scrollWidth;
-			var iAvailableWidth = oTimelineDomRef.clientWidth;
-
-            console.log(iRealWidth);
-            console.log(iAvailableWidth);
-
-            if (Math.abs(iRealWidth - iAvailableWidth) === 1) {
-				iRealWidth = iAvailableWidth;
-			}
-
-            if (iScrollLeft > 0) {
-                bScrollBack = true;
-            }
-
-            if ((iRealWidth > iAvailableWidth) && (iScrollLeft + iAvailableWidth < iRealWidth)) {
-                bScrollForward = true;
-            }
-
-            if (!bScrollBack) {
-                o$BackArrow.hide();
-            }
-
-            if (!bScrollForward) {
-                o$ForwardArrow.hide();
-            }
         };
 
         return CustomControl;
