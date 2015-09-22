@@ -7,10 +7,11 @@ sap.ui.define(
         'jquery.sap.global',
         'sap/ui/core/mvc/Controller',
         'sap/ui/model/json/JSONModel',
-        'nrg/module/quickpay/view/QuickPayControl'
+        'nrg/module/quickpay/view/QuickPayControl',
+        'nrg/base/type/Price'
     ],
 
-    function (jQuery, Controller, JSONModel, QuickPayControl) {
+    function (jQuery, Controller, JSONModel, QuickPayControl, Type_Price) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.billing.view.CustomerDataBillingInfo');
@@ -68,6 +69,19 @@ sap.ui.define(
                 oChbkOData.read(sPath, oParameters);
             }
         };
+        /*************************************************************************************************************************/
+        //Formatter Functions
+        CustomController.prototype._formatDate = function (oDate) {
+            var sFormattedDate;
+
+            if (!oDate) {
+                return null;
+            } else {
+                sFormattedDate = (oDate.getMonth() + 1).toString() + '/' + oDate.getDate().toString() + '/' + oDate.getFullYear().toString();
+                return sFormattedDate;
+            }
+        };
+        /*************************************************************************************************************************/
 
         /*************************************************************************************************************************/
         //Handlers

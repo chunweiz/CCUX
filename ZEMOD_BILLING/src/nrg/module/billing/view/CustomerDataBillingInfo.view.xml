@@ -29,7 +29,9 @@
                                                press="onPayNow">
                                     <ute:Tag elem="div"
                                              class="nrgBilling-cusDataBil-PayBalBtn-amount"
-                                             text="{oBillingInvoices>/AmountDue}" />
+                                             text="{path: 'oBillingInvoices>/AmountDue',
+                                                    type: 'nrg.base.type.Price',
+                                                    formatOptions: { currencySymbol: ''}}"/>
                                     <ute:Tag elem="div"
                                              class="nrgBilling-cusDataBil-PayBalBtn-text"
                                              text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-PAY_NOW}"/>
@@ -40,7 +42,7 @@
                                              class="nrgBilling-cusDataBil-referer-lbl"/>
                                     <utmain:Button class="nrgBilling-cusDataBil-referer-linkFirst" design="None"
                                                    press="._onInvoiceNumClicked"
-                                                   text="000 000 000 000"/>
+                                                   text="{oBillingInvoices>/InvoiceNum}"/>
                                 </ute:Tag>
 
                                 <ute:Tag>
@@ -70,13 +72,15 @@
                                              text="{comp-i18n-billing>nrgBilling-cusDataBillingInfo-l-div-BILLING_DATE}" />
                                     <ute:Tag elem="div"
                                              class="nrgBilling-cusDataBil-date-value"
-                                             text="10/28/2014" />
+                                             text="{ parts:['oBillingInvoices>/BillDate'],
+                                                     formatter:'._formatDate'}"/>
                                     <ute:Tag elem="div"
                                              class="nrgBilling-cusDataBil-date-label"
                                              text="{comp-i18n-billing>nrgBilling-cusDataBillingInfo-l-div-DUE_DATE}" />
                                     <ute:Tag elem="div"
                                              class="nrgBilling-cusDataBil-date-value"
-                                             text="11/10/2014" />
+                                             text="{ parts:['oBillingInvoices>/DueDate'],
+                                                     formatter:'._formatDate'}"/>
                                 </ute:Tag>
 
                             </ute:Tag>
@@ -98,7 +102,9 @@
                                                design="None" visible="true"
                                                press="._onInvoiceAmntClicked"
                                                class="nrgBilling-cusDataBillingInfo-midamnt"
-                                               text="74.02"/>
+                                               text="{path: 'oBillingInvoices>/AmountDue',
+                                                    type: 'nrg.base.type.Price',
+                                                    formatOptions: { currencySymbol: ''}}"/>
 
                                 <ute:Tag elem="div"
                                          class="nrgBilling-cusDataBil-m-text-postinvoice"
@@ -131,7 +137,9 @@
                                 <ute:Tag id="idTotalAmnt"
                                          elem="span"
                                          class="nrgBilling-cusDataBil-m-text-totalamntdue"
-                                         text="0.00" />
+                                         text="{path: 'oBillingInvoices>/AmountDue',
+                                                type: 'nrg.base.type.Price',
+                                                formatOptions: { currencySymbol: ''}}"/>
                             </ute:Tag>
                         </l:MatrixLayoutCell>
 
