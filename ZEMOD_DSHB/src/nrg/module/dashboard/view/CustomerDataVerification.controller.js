@@ -228,14 +228,11 @@ sap.ui.define(
                             this.getView().byId('id_confmBtn').setVisible(false);
                             this.getView().byId('id_updtBtn').setVisible(false);
 
-                            this._oSiebelAlertPopup = ute.ui.main.Popup.create({
-                                content: this.getView().byId("idSiebelAccAlert"),
-                                title: 'Siebel Contracted Account'
+                            // Added by Jerry
+                            ute.ui.main.Popup.Alert({
+                                title: 'Siebel Contracted Account',
+                                message: 'This is a Siebel Contracted account Connect the caller to the CI Account Management Team for all account inquiries during their business hours of 7:30 AM to 5:30 PM, Monday through Friday (except holidays). After Hours: For service outages and Other Service Order requests, follow the defined process. For all other call types provide the customer with the CI Account Management Team’s toll free number and ask the customer to call back during business hours.'
                             });
-                            //this._onToggleButtonPress();
-                            this.getView().byId("idSiebelAccAlert").setVisible(true);
-                            //this._beforeOpenEditAddrDialogue = true;
-                            this._oSiebelAlertPopup.open();
                         }
                         if (oData.Cell) {
                             this.getView().getModel('oCfrmStatus').setProperty('/ShowSMSBtn', true);
