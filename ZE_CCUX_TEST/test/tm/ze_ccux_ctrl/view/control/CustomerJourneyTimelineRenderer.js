@@ -48,6 +48,7 @@ sap.ui.define(
                     oRm.addClass('tmCJT-channelLineDivider');
                     oRm.writeClasses();
                     oRm.write('>');
+                    oRm.writeIcon('sap-icon://line-charts');
                     oRm.write('</div>');
                     oRm.write('<div');
                     oRm.addClass('tmCJT-channelLine tmCJT-channelLine-small');

@@ -21,9 +21,9 @@ sap.ui.define(
 
             this.getView().setModel(new JSONModel({
                 data: [
-                    { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: '09/21/2014' },
+                    { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: '08/31/2014' },
                     { recordIndex: '1', channelIcon: 'sap-icon://ipad' },
-                    { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/not-verified', rightDivider: true },
+                    { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/not-verified', topLabel: '09/21/2014', rightDivider: true },
                     { recordIndex: '3', channelIcon: 'sap-icon://nrg-icon/webchat' },
                     { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/agent' },
                     { recordIndex: '5', channelIcon: 'sap-icon://nrg-icon/survey' },
