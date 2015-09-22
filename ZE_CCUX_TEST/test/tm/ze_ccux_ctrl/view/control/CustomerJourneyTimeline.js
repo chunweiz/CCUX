@@ -47,6 +47,10 @@ sap.ui.define(
             this.$('navFwd').bind('click', this._onNavForwardClick.bind(this));
 
             var oTimelineDomRef = this.getDomRef('container');
+            console.log(oTimelineDomRef.scrollWidth);
+
+            console.log(this.getDomRef().scrollWidth);
+
             this._scroll(oTimelineDomRef.scrollWidth + CustomControl.SCROLL_STEP, 10);
         };
 
