@@ -53,7 +53,6 @@ sap.ui.define(
 
         CustomController.prototype._onDoublePress = function (oEvent) {
             console.log('onDoublePress', oEvent);
-            oEvent.getSource().setSelected(true);
         };
 
         return CustomController;

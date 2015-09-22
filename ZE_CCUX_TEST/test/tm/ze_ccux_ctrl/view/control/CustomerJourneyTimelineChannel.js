@@ -56,7 +56,7 @@ sap.ui.define(
 
         CustomControl.prototype.ondblclick = function (oEvent) {
             this._onDoubleClick = true;
-            this.setSelected(true);
+            this.setSelected(!this.getSelected());
             this.fireDoublePress();
         };
 
@@ -72,9 +72,7 @@ sap.ui.define(
                     }
                 }, this);
             } else {
-                if (this.getSelected()) {
-                    this.$().removeClass('tmCJTChannel-selected');
-                }
+                this.$().removeClass('tmCJTChannel-selected');
             }
 
             this.setProperty('selected', bSelected, true);
