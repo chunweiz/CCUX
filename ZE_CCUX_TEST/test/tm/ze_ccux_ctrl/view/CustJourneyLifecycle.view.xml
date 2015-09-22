@@ -4,6 +4,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:sm="sap.m"
     xmlns:tm="test.tm.ze_ccux_ctrl.view.control"
+    xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     height="100%"
     width="100%"
     displayBlock="true">
@@ -12,7 +13,9 @@
         <tm:CustomerJourneyTimelineChannel
             topLabel="{timeline>topLabel}"
             channelIcon="{timeline>channelIcon}"
+            selected="{timeline>selected}"
             press="._onPress"
-            doublePress="._onDoublePress" />
+            doublePress="._onDoublePress"
+            cd:recordIndex="{timeline>recordIndex}" />
     </tm:CustomerJourneyTimeline>
 </mvc:View>

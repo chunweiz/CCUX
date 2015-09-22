@@ -31,9 +31,8 @@ sap.ui.define(
             oRm.writeClasses();
             oRm.write('>');
 
-            oCustomControl.getChannel().forEach(function (channel) {
-                channel.setSelectionGroup(oCustomControl.getId() + 'channelGroup');
-                oRm.renderControl(channel);
+            oCustomControl.getChannel().forEach(function (oChannel) {
+                oRm.renderControl(oChannel);
             }, this);
 
             oRm.write('</div>');

@@ -41,7 +41,7 @@ sap.ui.define(
 		/* Quick Pay Pop-up to initialize basic popup configurations               */
 		/* ======================================================================= */
         QuickPayControl.prototype.init = function () {
-            this._oPaymentPopup = new Popup(this);
+            this._oPaymentPopup = new Popup(this, true, true);
 			var eDock = Popup.Dock;
 			//this._oPaymentPopup.setPosition("center center", "center center", window, "0 0", "fit");
             this._oPaymentPopup.setShadow(false);
@@ -70,7 +70,7 @@ sap.ui.define(
                 //this._oPaymentPopup.setContent(oQuickPayView);
                 return this;
             }
-            this.setPosition("right bottom", "center center");
+            this.setPosition("center bottom", "center bottom");
             //this._oPaymentPopup.setContent(this);
             this._oPaymentPopup.setInitialFocusId(oQuickPayView.getId("idnrgQPPay-Popup"));
             this._oPaymentPopup.open();
@@ -95,7 +95,7 @@ sap.ui.define(
         QuickPayControl.prototype.setPosition = function (my, at) {
             this._oPaymentPopup.setPosition(
                 my,
-                at,
+                {left : "30%", top : "30%"},
                 this.getParent(),
                 "0 0"
             );

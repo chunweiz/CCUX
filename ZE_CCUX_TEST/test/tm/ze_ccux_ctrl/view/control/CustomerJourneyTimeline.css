@@ -1,6 +1,6 @@
 .tmCJT {
     position: relative;
-    width: 385px;
+    width: 384px;
 }
 
 .tmCJT-navBack {
@@ -12,6 +12,7 @@
 }
 
 .tmCJT-navBack:hover {
+    cursor: pointer;
     color: gold;
 }
 
@@ -24,6 +25,7 @@
 }
 
 .tmCJT-navFwd:hover {
+    cursor: pointer;
     color: gold;
 }
 
@@ -40,6 +42,11 @@
 
 .tmCJTChannel:hover {
     cursor: pointer;
+    color: tomato;
+}
+
+.tmCJTChannel-selected {
+    color: tomato;
 }
 
 .tmCJTChannel-big:last-child {
