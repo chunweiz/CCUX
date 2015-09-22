@@ -35,7 +35,7 @@ sap.ui.define(
                     { recordIndex: '11', channelIcon: 'sap-icon://nrg-icon/agent' },
                     { recordIndex: '12', channelIcon: 'sap-icon://nrg-icon/survey' },
                     { recordIndex: '13', channelIcon: 'sap-icon://letter' },
-                    { recordIndex: '14', channelIcon: 'sap-icon://nrg-icon/website' },
+                    { recordIndex: '14', channelIcon: 'sap-icon://nrg-icon/website', selected: true },
                     { recordIndex: '15', channelIcon: 'sap-icon://ipad' },
                     { recordIndex: '16', channelIcon: 'sap-icon://nrg-icon/not-verified' },
                     { recordIndex: '17', channelIcon: 'sap-icon://nrg-icon/webchat' },
@@ -53,9 +53,7 @@ sap.ui.define(
 
         CustomController.prototype._onDoublePress = function (oEvent) {
             console.log('onDoublePress', oEvent);
-
-            // Example of how to add additional data to control in binding .. look for cd:recordIndex="{timeline>recordIndex}" in the xml view
-            console.log(oEvent.getSource().data('recordIndex'));
+            oEvent.getSource().setSelected(true);
         };
 
         return CustomController;

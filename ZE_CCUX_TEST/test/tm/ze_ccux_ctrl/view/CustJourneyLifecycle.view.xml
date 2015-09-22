@@ -13,6 +13,7 @@
         <tm:CustomerJourneyTimelineChannel
             topLabel="{timeline>topLabel}"
             channelIcon="{timeline>channelIcon}"
+            selected="{timeline>selected}"
             press="._onPress"
             doublePress="._onDoublePress"
             cd:recordIndex="{timeline>recordIndex}" />
