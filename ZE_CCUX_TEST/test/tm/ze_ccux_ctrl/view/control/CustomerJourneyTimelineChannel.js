@@ -29,16 +29,6 @@ sap.ui.define(
             renderer: CustomRenderer
         });
 
-        CustomControl.ChannelType = {
-            Website: 'Website',
-            Mobile: 'Mobile',
-            IVR: 'IVR',
-            Webchat: 'Webchat',
-            Phone: 'Phone',
-            Survey: 'Survey',
-            Correspondence: 'Correspondence'
-        };
-
         CustomControl.prototype._aGroupRegistry = {};
 
         CustomControl.prototype.exit = function () {
@@ -73,6 +63,7 @@ sap.ui.define(
 
             this.setProperty('selected', bSelected, true);
         };
+
 
         CustomControl.prototype.onclick = function (oEvent) {
             this._onDoubleClick = false;
