@@ -141,6 +141,7 @@ sap.ui.define(
                 this.getView().addDependent(this._oInvSelectPopup);
             }
 
+            this._oInvSelectPopup.addStyleClass('nrgBilling-invSelPopupTop');
             this._oInvSelectPopup.open();
         };
         /*************************************************************************************************************************/

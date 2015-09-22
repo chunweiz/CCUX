@@ -173,7 +173,7 @@ sap.ui.define(
                 oButton = new ute.ui.main.Button({
                     text: sAction,
                     press: function () {
-                        if(mParams.callback && typeof mParams.callback === 'function') {
+                        if (mParams.callback && typeof mParams.callback === 'function') {
                             mParams.callback(sAction);
                         }
 
