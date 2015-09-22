@@ -32,7 +32,7 @@ sap.ui.define(
 
         CustomControl.prototype.init = function () {
             this._aChannelRegistry.push(this);
-        }
+        };
 
         CustomControl.prototype.exit = function () {
             var iIndex = this._aChannelRegistry.indexOf(this);

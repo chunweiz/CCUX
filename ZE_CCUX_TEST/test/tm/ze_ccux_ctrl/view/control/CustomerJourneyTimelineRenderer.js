@@ -33,6 +33,12 @@ sap.ui.define(
 
             oCustomControl.getChannel().forEach(function (oChannel) {
                 oRm.renderControl(oChannel);
+
+                oRm.write('<div');
+                oRm.addClass('tmCJT-channelLine');
+                oRm.writeClasses();
+                oRm.write('>');
+                oRm.write('</div>');
             }, this);
 
             oRm.write('</div>');

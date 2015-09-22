@@ -29,6 +29,17 @@
     color: gold;
 }
 
+.tmCJT-channelLine {
+    display: inline-block;
+    width: 30px;
+    height: 10px;
+    border-top: 1px solid black;
+}
+
+.tmCJT-channelLine:last-child {
+    display: none;
+}
+
 .tmCJT-container {
     margin: 0 20px;
     overflow: hidden;
@@ -38,6 +49,7 @@
 .tmCJTChannel {
     display: inline-block;
     width: 60px;
+    height: 50px;
 }
 
 .tmCJTChannel:hover {
@@ -63,7 +75,7 @@
 
 .tmCJTChannel-icon {
     display: block;
-    height: 30px;
+    height: 40px;
     font-size: 20pt;
     text-align: center;
 }
