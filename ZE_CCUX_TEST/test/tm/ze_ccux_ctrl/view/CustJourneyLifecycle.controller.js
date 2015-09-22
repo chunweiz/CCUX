@@ -23,7 +23,7 @@ sap.ui.define(
                 data: [
                     { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: '09/21/2014' },
                     { recordIndex: '1', channelIcon: 'sap-icon://ipad' },
-                    { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/not-verified' },
+                    { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/not-verified', rightDivider: true },
                     { recordIndex: '3', channelIcon: 'sap-icon://nrg-icon/webchat' },
                     { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/agent' },
                     { recordIndex: '5', channelIcon: 'sap-icon://nrg-icon/survey' },
@@ -53,7 +53,6 @@ sap.ui.define(
 
         CustomController.prototype._onDoublePress = function (oEvent) {
             console.log('onDoublePress', oEvent);
-            oEvent.getSource().setSelected(true);
         };
 
         return CustomController;

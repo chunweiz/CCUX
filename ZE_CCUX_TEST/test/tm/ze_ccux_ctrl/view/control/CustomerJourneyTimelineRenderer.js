@@ -36,9 +36,26 @@ sap.ui.define(
 
                 oRm.write('<div');
                 oRm.addClass('tmCJT-channelLine');
+                if (oChannel.getRightDivider()) {
+                    oRm.addClass('tmCJT-channelLine-small');
+                }
                 oRm.writeClasses();
                 oRm.write('>');
                 oRm.write('</div>');
+
+                if (oChannel.getRightDivider()) {
+                    oRm.write('<div');
+                    oRm.addClass('tmCJT-channelLineDivider');
+                    oRm.writeClasses();
+                    oRm.write('>');
+                    oRm.write('</div>');
+                    oRm.write('<div');
+                    oRm.addClass('tmCJT-channelLine tmCJT-channelLine-small');
+                    oRm.writeClasses();
+                    oRm.write('>');
+                    oRm.write('</div>');
+                }
+
             }, this);
 
             oRm.write('</div>');
