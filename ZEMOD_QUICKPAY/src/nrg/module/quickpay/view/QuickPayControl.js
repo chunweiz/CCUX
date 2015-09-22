@@ -95,7 +95,7 @@ sap.ui.define(
         QuickPayControl.prototype.setPosition = function (my, at) {
             this._oPaymentPopup.setPosition(
                 my,
-                {left : "30%", top : "30%"},
+                {left : "40%", top : "30%"},
                 this.getParent(),
                 "0 0"
             );

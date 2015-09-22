@@ -6,7 +6,7 @@
 .tmCJT-navBack {
     display: inline-block;
     position: absolute;
-    top: 18px;
+    top: 20px;
     left: 0;
     font-size: 20pt;
 }
@@ -19,7 +19,7 @@
 .tmCJT-navFwd {
     display: inline-block;
     position: absolute;
-    top: 18px;
+    top: 20px;
     right: 0;
     font-size: 20pt;
 }
@@ -47,11 +47,8 @@
 .tmCJT-channelLineDivider {
     display: inline-block;
     position: relative;
-    width: 1px;
-    height: 30px;
-    background-color: black;
-    margin: 0 5px;
-    transform: translateY(5px);
+    transform: rotate(90deg);
+    font-size: 30pt;
 }
 
 .tmCJT-container {
