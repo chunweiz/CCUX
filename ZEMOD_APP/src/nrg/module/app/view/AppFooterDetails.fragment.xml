@@ -1,6 +1,7 @@
 <core:FragmentDefinition
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ua="ute.ui.app"
+    xmlns:ute="ute.ui.commons"
     xmlns:core="sap.ui.core">
 
     <ua:FooterSubmenu class="nrgAppFtrDetails">
@@ -11,7 +12,18 @@
         </div>
         <div class="nrgAppFtrDetails-content">
             <div class="uteAppHdrSMenu-wrap">
-                TBD - Footer content
+                <!-- Notifications -->
+                <ute:Tag class="nrgAppFtrDetails-notification">
+                    
+                </ute:Tag>
+                <!-- RHS -->
+                <ute:Tag class="nrgAppFtrDetails-rhs">
+                    
+                </ute:Tag>
+                <!-- Eligible Offers -->
+                <ute:Tag class="nrgAppFtrDetails-eligibleOffers">
+                    
+                </ute:Tag>
             </div>
         </div>
     </ua:FooterSubmenu>

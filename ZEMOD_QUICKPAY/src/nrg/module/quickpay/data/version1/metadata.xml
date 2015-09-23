@@ -4,8 +4,11 @@
         <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZE_CCUX_QUICK_PAY_SRV">
             <EntityType Name="Receipt">
                 <Key>
-                    <PropertyRef Name="ContractID"/>
+                    <PropertyRef Name="BP"/>
+                    <PropertyRef Name="CA"/>
                 </Key>
+                <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="17" Name="ReceiptNumber" Nullable="false" Type="Edm.String"/>
                 <Property Name="Amount" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
@@ -21,11 +24,14 @@
             </EntityType>
             <EntityType Name="Reliant">
                 <Key>
-                    <PropertyRef Name="ContractID"/>
+                    <PropertyRef Name="BP"/>
+                    <PropertyRef Name="CA"/>
                     <PropertyRef Name="ReliantCard"/>
                 </Key>
-                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="ReliantCard" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
                 <Property Name="Amount" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
                 <Property MaxLength="2" Name="Confirmation" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1000" Name="Message" Nullable="false" Type="Edm.String"/>
@@ -33,21 +39,27 @@
             </EntityType>
             <EntityType Name="Cards">
                 <Key>
-                    <PropertyRef Name="ContractID"/>
+                    <PropertyRef Name="BP"/>
+                    <PropertyRef Name="CA"/>
                     <PropertyRef Name="CardType"/>
                     <PropertyRef Name="CardNumber"/>
                 </Key>
-                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="4" Name="CardType" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="25" Name="CardNumber" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
                 <Property Name="LastUsed" Nullable="false" Type="Edm.Boolean"/>
                 <Property MaxLength="40" Name="NameOnCard" Nullable="false" Type="Edm.String"/>
                 <NavigationProperty FromRole="ToRole_CreditCard_Cards" Name="CreditCard" Relationship="ZE_CCUX_QUICK_PAY_SRV.CreditCard_Cards" ToRole="FromRole_CreditCard_Cards"/>
             </EntityType>
             <EntityType Name="CreditCard">
                 <Key>
-                    <PropertyRef Name="ContractID"/>
+                    <PropertyRef Name="BP"/>
+                    <PropertyRef Name="CA"/>
                 </Key>
+                <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
                 <Property Name="Amount" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
                 <Property Name="PaymentDate" Nullable="false" Type="Edm.DateTime"/>
@@ -63,16 +75,22 @@
                 <Property MaxLength="4" Name="Class" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="4" Name="Activit" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="99999" Name="PopMessage" Nullable="false" Type="Edm.String"/>
-                <NavigationProperty FromRole="FromRole_CreditCard_Cards" Name="CardsSet" Relationship="ZE_CCUX_QUICK_PAY_SRV.CreditCard_Cards" ToRole="ToRole_CreditCard_Cards"/>
+                <Property Name="InvoiceDate" Nullable="false" Precision="7" Type="Edm.DateTimeOffset"/>
+                <Property Name="InvoiceAmount" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="UserDecision" Nullable="false" Type="Edm.Boolean"/>
                 <NavigationProperty FromRole="FromRole_CreditCard_WaiveReasons" Name="WaiveReasonsSet" Relationship="ZE_CCUX_QUICK_PAY_SRV.CreditCard_WaiveReasons" ToRole="ToRole_CreditCard_WaiveReasons"/>
+                <NavigationProperty FromRole="FromRole_CreditCard_Cards" Name="CardsSet" Relationship="ZE_CCUX_QUICK_PAY_SRV.CreditCard_Cards" ToRole="ToRole_CreditCard_Cards"/>
             </EntityType>
             <EntityType Name="BankAccount">
                 <Key>
-                    <PropertyRef Name="ContractID"/>
+                    <PropertyRef Name="BP"/>
+                    <PropertyRef Name="CA"/>
                     <PropertyRef Name="BankKey"/>
                 </Key>
-                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="15" Name="BankKey" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="18" Name="BankAccNum" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1" Name="LastUsed" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1000" Name="Message" Nullable="false" Type="Edm.String"/>
@@ -82,10 +100,12 @@
             </EntityType>
             <EntityType Name="CreditCardPP">
                 <Key>
-                    <PropertyRef Name="ContractID"/>
+                    <PropertyRef Name="BP"/>
+                    <PropertyRef Name="CA"/>
                 </Key>
+                <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="12" Name="ContractAccountID" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="12" Name="CardID" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="25" Name="CardNumber" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1" Name="CheckDigit" Nullable="false" Type="Edm.String"/>
@@ -100,19 +120,25 @@
             </EntityType>
             <EntityType Name="WaiveReasons">
                 <Key>
-                    <PropertyRef Name="ContractID"/>
+                    <PropertyRef Name="BP"/>
+                    <PropertyRef Name="CA"/>
                     <PropertyRef Name="ReasonCode"/>
                 </Key>
-                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="4" Name="ReasonCode" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="40" Name="ReasonText" Nullable="false" Type="Edm.String"/>
                 <NavigationProperty FromRole="ToRole_BankDraft_WaiveReasons" Name="BankDraft" Relationship="ZE_CCUX_QUICK_PAY_SRV.BankDraft_WaiveReasons" ToRole="FromRole_BankDraft_WaiveReasons"/>
                 <NavigationProperty FromRole="ToRole_CreditCard_WaiveReasons" Name="CreditCard" Relationship="ZE_CCUX_QUICK_PAY_SRV.CreditCard_WaiveReasons" ToRole="FromRole_CreditCard_WaiveReasons"/>
             </EntityType>
             <EntityType Name="BankDraft">
                 <Key>
-                    <PropertyRef Name="ContractID"/>
+                    <PropertyRef Name="BP"/>
+                    <PropertyRef Name="CA"/>
                 </Key>
+                <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
                 <Property Name="Amount" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
                 <Property Name="PaymentDate" Nullable="false" Type="Edm.DateTime"/>
@@ -126,15 +152,20 @@
                 <Property MaxLength="4" Name="Class" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="4" Name="Activit" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="15" Name="BankRouting" Nullable="false" Type="Edm.String"/>
+                <Property Name="InvoiceDate" Nullable="false" Precision="7" Type="Edm.DateTimeOffset"/>
+                <Property Name="InvoiceAmount" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="UserDecision" Nullable="false" Type="Edm.Boolean"/>
                 <NavigationProperty FromRole="FromRole_BankDraft_BankAccount" Name="BankAccountSet" Relationship="ZE_CCUX_QUICK_PAY_SRV.BankDraft_BankAccount" ToRole="ToRole_BankDraft_BankAccount"/>
                 <NavigationProperty FromRole="FromRole_BankDraft_WaiveReasons" Name="WaiveReasonsSet" Relationship="ZE_CCUX_QUICK_PAY_SRV.BankDraft_WaiveReasons" ToRole="ToRole_BankDraft_WaiveReasons"/>
             </EntityType>
             <EntityType Name="BankDraftPP">
                 <Key>
-                    <PropertyRef Name="ContractID"/>
+                    <PropertyRef Name="BP"/>
+                    <PropertyRef Name="CA"/>
                 </Key>
+                <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="12" Name="ContractAccountID" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1" Name="CheckDigit" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="15" Name="RoutingNumber" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="18" Name="AccountNumber" Nullable="false" Type="Edm.String"/>
@@ -151,13 +182,15 @@
             </EntityType>
             <EntityType Name="PayAvailFlags">
                 <Key>
-                    <PropertyRef Name="ContractID"/>
+                    <PropertyRef Name="BP"/>
+                    <PropertyRef Name="CA"/>
                 </Key>
+                <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1" Name="CCPPFlag" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1" Name="BDPPFlag" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="PartnerID" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="12" Name="ContractAccountID" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1" Name="CCFlag" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1" Name="BDFlag" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1" Name="ReliantFlag" Nullable="false" Type="Edm.String"/>
@@ -169,18 +202,24 @@
                     <PropertyRef Name="Class"/>
                     <PropertyRef Name="Activit"/>
                     <PropertyRef Name="PopMessage"/>
-                    <PropertyRef Name="ContractID"/>
+                    <PropertyRef Name="BP"/>
+                    <PropertyRef Name="CA"/>
                 </Key>
                 <Property MaxLength="4" Name="Class" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="4" Name="Activit" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="99999" Name="PopMessage" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="12" Name="ContactLogID" Nullable="false" Type="Edm.String"/>
             </EntityType>
             <EntityType Name="BankDraftCreate">
                 <Key>
-                    <PropertyRef Name="ContractID"/>
+                    <PropertyRef Name="BP"/>
+                    <PropertyRef Name="CA"/>
                 </Key>
+                <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="15" Name="BankKey" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="18" Name="BankAccNum" Nullable="false" Type="Edm.String"/>
@@ -189,22 +228,28 @@
             </EntityType>
             <EntityType Name="CCCreateURL">
                 <Key>
-                    <PropertyRef Name="ContractID"/>
+                    <PropertyRef Name="BP"/>
+                    <PropertyRef Name="CA"/>
                 </Key>
+                <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="ContractID" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1" Name="Error" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="99999" Name="Message" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="999" Name="URL" Nullable="false" Type="Edm.String"/>
+                <Property Name="Enabled" Nullable="false" Type="Edm.Boolean"/>
             </EntityType>
             <Association Name="BankDraft_BankAccount">
                 <End Multiplicity="1" Role="FromRole_BankDraft_BankAccount" Type="ZE_CCUX_QUICK_PAY_SRV.BankDraft"/>
                 <End Multiplicity="*" Role="ToRole_BankDraft_BankAccount" Type="ZE_CCUX_QUICK_PAY_SRV.BankAccount"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_BankDraft_BankAccount">
-                        <PropertyRef Name="ContractID"/>
+                        <PropertyRef Name="CA"/>
+                        <PropertyRef Name="BP"/>
                     </Principal>
                     <Dependent Role="ToRole_BankDraft_BankAccount">
-                        <PropertyRef Name="ContractID"/>
+                        <PropertyRef Name="CA"/>
+                        <PropertyRef Name="BP"/>
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
@@ -213,10 +258,12 @@
                 <End Multiplicity="*" Role="ToRole_BankDraft_WaiveReasons" Type="ZE_CCUX_QUICK_PAY_SRV.WaiveReasons"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_BankDraft_WaiveReasons">
-                        <PropertyRef Name="ContractID"/>
+                        <PropertyRef Name="CA"/>
+                        <PropertyRef Name="BP"/>
                     </Principal>
                     <Dependent Role="ToRole_BankDraft_WaiveReasons">
-                        <PropertyRef Name="ContractID"/>
+                        <PropertyRef Name="CA"/>
+                        <PropertyRef Name="BP"/>
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
@@ -225,10 +272,12 @@
                 <End Multiplicity="*" Role="ToRole_CreditCard_Cards" Type="ZE_CCUX_QUICK_PAY_SRV.Cards"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_CreditCard_Cards">
-                        <PropertyRef Name="ContractID"/>
+                        <PropertyRef Name="CA"/>
+                        <PropertyRef Name="BP"/>
                     </Principal>
                     <Dependent Role="ToRole_CreditCard_Cards">
-                        <PropertyRef Name="ContractID"/>
+                        <PropertyRef Name="CA"/>
+                        <PropertyRef Name="BP"/>
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
@@ -237,10 +286,12 @@
                 <End Multiplicity="*" Role="ToRole_CreditCard_WaiveReasons" Type="ZE_CCUX_QUICK_PAY_SRV.WaiveReasons"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_CreditCard_WaiveReasons">
-                        <PropertyRef Name="ContractID"/>
+                        <PropertyRef Name="CA"/>
+                        <PropertyRef Name="BP"/>
                     </Principal>
                     <Dependent Role="ToRole_CreditCard_WaiveReasons">
-                        <PropertyRef Name="ContractID"/>
+                        <PropertyRef Name="CA"/>
+                        <PropertyRef Name="BP"/>
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
@@ -249,10 +300,12 @@
                 <End Multiplicity="*" Role="ToRole_Receipt_WaiveReasons" Type="ZE_CCUX_QUICK_PAY_SRV.WaiveReasons"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_Receipt_WaiveReasons">
-                        <PropertyRef Name="ContractID"/>
+                        <PropertyRef Name="CA"/>
+                        <PropertyRef Name="BP"/>
                     </Principal>
                     <Dependent Role="ToRole_Receipt_WaiveReasons">
-                        <PropertyRef Name="ContractID"/>
+                        <PropertyRef Name="CA"/>
+                        <PropertyRef Name="BP"/>
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
@@ -290,6 +343,26 @@
                     <End EntitySet="BankDraftSet" Role="FromRole_BankDraft_BankAccount"/>
                     <End EntitySet="BankAccountSet" Role="ToRole_BankDraft_BankAccount"/>
                 </AssociationSet>
+                <FunctionImport EntitySet="BankDraftSet" Name="BankDraftpost" ReturnType="ZE_CCUX_QUICK_PAY_SRV.BankDraft" m:HttpMethod="POST">
+                    <Parameter MaxLength="0" Mode="In" Name="UserDecision" Precision="0" Scale="0" Type="Edm.Boolean"/>
+                    <Parameter MaxLength="0" Mode="In" Name="InvoiceDate" Precision="0" Scale="0" Type="Edm.DateTimeOffset"/>
+                    <Parameter MaxLength="0" Mode="In" Name="InvoiceAmount" Precision="0" Scale="0" Type="Edm.Decimal"/>
+                    <Parameter MaxLength="10" Mode="In" Name="ContractID" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="15" Mode="In" Name="BankRouting" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="0" Mode="In" Name="Amount" Precision="0" Scale="0" Type="Edm.Decimal"/>
+                    <Parameter MaxLength="0" Mode="In" Name="PaymentDate" Precision="0" Scale="0" Type="Edm.DateTime"/>
+                    <Parameter MaxLength="4" Mode="In" Name="WaiveFlag" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="4" Mode="In" Name="Activit" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="40" Mode="In" Name="WaiveReason" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="15" Mode="In" Name="BankKey" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="18" Mode="In" Name="BankAccNum" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="4" Mode="In" Name="Class" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="1" Mode="In" Name="Message" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="1" Mode="In" Name="Error" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="99999" Mode="In" Name="PopMessage" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="12" Mode="In" Name="CA" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="10" Mode="In" Name="BP" Precision="0" Scale="0" Type="Edm.String"/>
+                </FunctionImport>
                 <FunctionImport EntitySet="BankDraftPPSet" Name="BankDraftUpdate" ReturnType="ZE_CCUX_QUICK_PAY_SRV.BankDraftPP" m:HttpMethod="POST">
                     <Parameter MaxLength="0" Mode="In" Name="Editable" Precision="0" Scale="0" Type="Edm.Boolean"/>
                     <Parameter MaxLength="1000" Mode="In" Name="Message" Precision="0" Scale="0" Type="Edm.String"/>
@@ -304,8 +377,31 @@
                     <Parameter MaxLength="18" Mode="In" Name="AccountNumber" Precision="0" Scale="0" Type="Edm.String"/>
                     <Parameter MaxLength="15" Mode="In" Name="RoutingNumber" Precision="0" Scale="0" Type="Edm.String"/>
                     <Parameter MaxLength="1" Mode="In" Name="CheckDigit" Precision="0" Scale="0" Type="Edm.String"/>
-                    <Parameter MaxLength="12" Mode="In" Name="ContractAccountID" Precision="0" Scale="0" Type="Edm.String"/>
                     <Parameter MaxLength="10" Mode="In" Name="ContractID" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="12" Mode="In" Name="CA" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="10" Mode="In" Name="BP" Precision="0" Scale="0" Type="Edm.String"/>
+                </FunctionImport>
+                <FunctionImport EntitySet="CreditCardSet" Name="CreditCardPost" ReturnType="ZE_CCUX_QUICK_PAY_SRV.CreditCard" m:HttpMethod="POST">
+                    <Parameter MaxLength="0" Mode="In" Name="UserDecision" Precision="0" Scale="0" Type="Edm.Boolean"/>
+                    <Parameter MaxLength="0" Mode="In" Name="InvoiceDate" Precision="0" Scale="0" Type="Edm.DateTimeOffset"/>
+                    <Parameter MaxLength="99999" Mode="In" Name="PopMessage" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="4" Mode="In" Name="Activit" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="4" Mode="In" Name="Class" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="40" Mode="In" Name="NameOnCard" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="1" Mode="In" Name="Error" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="1000" Mode="In" Name="Message" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="25" Mode="In" Name="CardNumber" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="4" Mode="In" Name="CardType" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="40" Mode="In" Name="WaiveReason" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="4" Mode="In" Name="WaiveFlag" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="5" Mode="In" Name="ZipCode" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="6" Mode="In" Name="Cvval" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="0" Mode="In" Name="PaymentDate" Precision="0" Scale="0" Type="Edm.DateTime"/>
+                    <Parameter MaxLength="0" Mode="In" Name="Amount" Precision="0" Scale="0" Type="Edm.Decimal"/>
+                    <Parameter MaxLength="10" Mode="In" Name="ContractID" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="0" Mode="In" Name="InvoiceAmount" Precision="0" Scale="0" Type="Edm.Decimal"/>
+                    <Parameter MaxLength="12" Mode="In" Name="CA" Precision="0" Scale="0" Type="Edm.String"/>
+                    <Parameter MaxLength="10" Mode="In" Name="BP" Precision="0" Scale="0" Type="Edm.String"/>
                 </FunctionImport>
             </EntityContainer>
         </Schema>

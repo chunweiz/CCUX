@@ -6,7 +6,8 @@ sap.ui.define(
         'nrg/base/view/BaseController',
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
-        'sap/ui/core/routing/HashChanger'
+        'sap/ui/core/routing/HashChanger',
+        'nrg/base/type/ContractAccountNumber'
     ],
 
     function (CoreController, Filter, FilterOperator, HashChanger) {
@@ -154,12 +155,12 @@ sap.ui.define(
             }
             if (oFilterModel.getProperty('/searchTextFields/sCaNum')) {
                 oSearchCaModel.setProperty('/searchedInCa', true);
-                oSearchCaModel.setProperty('/searchedCaNum', oFilterModel.getProperty('/searchTextFields/sCaNum'));
+                oSearchCaModel.setProperty('/searchedCaNum', oFilterModel.getProperty('/searchTextFields/sCaNum').trim());
 
                 oFilterTemplate =  new Filter({
                     path: 'BuagID',
                     operator: FilterOperator.EQ,
-                    value1: oFilterModel.getProperty('/searchTextFields/sCaNum')
+                    value1: oFilterModel.getProperty('/searchTextFields/sCaNum').trim()
                 });
                 aFilters.push(oFilterTemplate);
             }

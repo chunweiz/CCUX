@@ -21,12 +21,11 @@
             <ute:Tag class="nrgSearch-calrNoIDSearch-textfield">
                 
                 <!--type:'nrg.util.type.ContractAccountNumber'-->
-
                 <ute:Textfield
                     value="{
-                        path:'oSearchFilters>/searchTextFields/sCaNum',
+                        path: 'oSearchFilters>/searchTextFields/sCaNum',
                         type: 'nrg.base.type.ContractAccountNumber'
-                        }"
+                    }"
                     id="idSearchCa"
                     class="nrgSearch-calrNoIDSearch-textfield-input"
                     placeholder="{comp-i18n-search>nrgSearchClrNid_CaNumPh}"
