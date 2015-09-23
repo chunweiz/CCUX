@@ -1,30 +1,54 @@
 .tmCJT {
     position: relative;
-    width: 385px;
+    max-width: 384px;
 }
 
 .tmCJT-navBack {
     display: inline-block;
     position: absolute;
-    top: 18px;
+    top: 20px;
     left: 0;
     font-size: 20pt;
 }
 
 .tmCJT-navBack:hover {
+    cursor: pointer;
     color: gold;
 }
 
 .tmCJT-navFwd {
     display: inline-block;
     position: absolute;
-    top: 18px;
+    top: 20px;
     right: 0;
     font-size: 20pt;
 }
 
 .tmCJT-navFwd:hover {
+    cursor: pointer;
     color: gold;
+}
+
+.tmCJT-channelLine {
+    display: inline-block;
+    width: 30px;
+    height: 10px;
+    border-top: 1px solid black;
+}
+
+.tmCJT-channelLine:last-child {
+    display: none;
+}
+
+.tmCJT-channelLine-small {
+    width: 10px;
+}
+
+.tmCJT-channelLineDivider {
+    display: inline-block;
+    position: relative;
+    transform: rotate(90deg);
+    font-size: 30pt;
 }
 
 .tmCJT-container {
@@ -36,10 +60,16 @@
 .tmCJTChannel {
     display: inline-block;
     width: 60px;
+    height: 50px;
 }
 
 .tmCJTChannel:hover {
     cursor: pointer;
+    color: tomato;
+}
+
+.tmCJTChannel-selected {
+    color: tomato;
 }
 
 .tmCJTChannel-big:last-child {
@@ -56,7 +86,7 @@
 
 .tmCJTChannel-icon {
     display: block;
-    height: 30px;
+    height: 40px;
     font-size: 20pt;
     text-align: center;
 }

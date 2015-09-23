@@ -50,6 +50,22 @@ sap.ui.define(
 
         /*****************************************************************************************************************************************************/
         //Formatter Functions
+        CustomController.prototype._formatBoolCurChrg = function (sIndicator) {
+            if (sIndicator === 'X' || sIndicator === 'x') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        CustomController.prototype._formatBoolCurChrg_Rev = function (sIndicator) {
+            if (sIndicator === 'X' || sIndicator === 'x') {
+                return false;
+            } else {
+                return true;
+            }
+        };
+
+
         CustomController.prototype._formatTwoClotBoolean = function (sSecondCallout) {
             if (sSecondCallout) {
                 return true;

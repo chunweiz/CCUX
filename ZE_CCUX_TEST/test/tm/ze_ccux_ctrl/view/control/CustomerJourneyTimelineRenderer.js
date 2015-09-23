@@ -31,9 +31,32 @@ sap.ui.define(
             oRm.writeClasses();
             oRm.write('>');
 
-            oCustomControl.getChannel().forEach(function (channel) {
-                channel.setSelectionGroup(oCustomControl.getId() + 'channelGroup');
-                oRm.renderControl(channel);
+            oCustomControl.getChannel().forEach(function (oChannel) {
+                oRm.renderControl(oChannel);
+
+                oRm.write('<div');
+                oRm.addClass('tmCJT-channelLine');
+                if (oChannel.getRightDivider()) {
+                    oRm.addClass('tmCJT-channelLine-small');
+                }
+                oRm.writeClasses();
+                oRm.write('>');
+                oRm.write('</div>');
+
+                if (oChannel.getRightDivider()) {
+                    oRm.write('<div');
+                    oRm.addClass('tmCJT-channelLineDivider');
+                    oRm.writeClasses();
+                    oRm.write('>');
+                    oRm.writeIcon('sap-icon://line-charts');
+                    oRm.write('</div>');
+                    oRm.write('<div');
+                    oRm.addClass('tmCJT-channelLine tmCJT-channelLine-small');
+                    oRm.writeClasses();
+                    oRm.write('>');
+                    oRm.write('</div>');
+                }
+
             }, this);
 
             oRm.write('</div>');

@@ -49,7 +49,7 @@ sap.ui.define(
             this.getView().setModel(oContactModel, "quickpay-cl");
             this.getView().setModel(oViewModel, "appView");
             sCurrentPath = "/PayAvailFlagsSet";
-            sCurrentPath = sCurrentPath + "(ContractID='" + this._sContractId + "')";
+            sCurrentPath = sCurrentPath + "(BP='" + this._sBP + "',CA='" + this._sCA + "')";
             fnRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
                 that._OwnerComponent.getCcuxApp().setOccupied(false);
@@ -75,15 +75,18 @@ sap.ui.define(
                 oBindingInfo,
                 oCreditCardTemplate = this.getView().byId("idnrgQPCC-DDLItem"),
                 sCurrentPath,
+                oModel = this.getView().getModel('comp-quickpay'),
                 oWaiveReasonTemplate = this.getView().byId("idnrgQPCC-WaiveReasonItem"),
                 oWaiveReasonDropDown = this.getView().byId("idnrgQPCC-WR"),
                 WRRecievedHandler,
                 oCreditCardDate = this.getView().byId("idnrgQPCC-Date"),
-                that = this;
+                that = this,
+                oCreditCardModel = new sap.ui.model.json.JSONModel();
             oTBIStopRec.setSelected(true);
             oCreditCardDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             //oCreditCardDate.setMinDate(new Date());
+            this.getView().setModel(oCreditCardModel, "quickpay-cc");
             WRRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
                 if (oEvent) {
@@ -96,7 +99,19 @@ sap.ui.define(
                 jQuery.sap.log.info("Date Received Succesfully");
                 that._OwnerComponent.getCcuxApp().setOccupied(false);
             };
-            sCurrentPath = "/CreditCardSet" + "(ContractID='" + this._sContractId + "')/CardsSet";
+            sCurrentPath = "/CreditCardSet" + "(BP='" + this._sBP + "',CA='" + this._sCA + "')";
+            oBindingInfo = {
+                success : function (oData) {
+                    oCreditCardModel.setData(oData);
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Error occured");
+                }.bind(this)
+            };
+            if (oModel) {
+                oModel.read(sCurrentPath, oBindingInfo);
+            }
+            sCurrentPath = "/CreditCardSet" + "(BP='" + this._sBP + "',CA='" + this._sCA + "')/CardsSet";
             //sCurrentPath = "/CardsSet";
             oBindingInfo = {
                 model : "comp-quickpay",
@@ -106,7 +121,7 @@ sap.ui.define(
                 events: {dataReceived : fnRecievedHandler}
             };
             oCreditCardDropDown.bindAggregation("content", oBindingInfo);
-            sCurrentPath = "/CreditCardSet" + "(ContractID='" + this._sContractId + "')/WaiveReasonsSet";
+            sCurrentPath = "/CreditCardSet" + "(BP='" + this._sBP + "',CA='" + this._sCA + "')/WaiveReasonsSet";
             oBindingInfo = {
                 model : "comp-quickpay",
                 path : sCurrentPath,
@@ -130,55 +145,101 @@ sap.ui.define(
                 oCreditCardDate = this.getView().byId("idnrgQPCC-Date"),
                 oCreditCardDropDown = this.getView().byId("idnrgQPCC-DDL"),
                 oCreditCardAmount = this.getView().byId("idnrgQPCC-Amt"),
-                oWaiveReasonDropDown = this.getView().byId("idnrgQPBD-WaiveReason"),
+                oWaiveReasonDropDown = this.getView().byId("idnrgQPCC-WR"),
                 that = this,
-                //oReceiptModel = new sap.ui.model.json.JSONModel(),
                 oCreditCardDateValue,
                 oContactModel = this.getView().getModel("quickpay-cl"),
+                oCreditCardModel = this.getView().getModel("quickpay-cc"),
                 oZipCode = this.getView().byId("idnrgQPCC-zipcode"),
-                oCVVCode = this.getView().byId("idnrgQPCC-cvv");
-            //this.getView().setModel(oReceiptModel, "quickpay-rc");
+                oCVVCode = this.getView().byId("idnrgQPCC-cvv"),
+                oInvoiceDate,
+                oCallFunctionHandler,
+                oConfirmCallbackHandler;
             oMsgArea.removeStyleClass("nrgQPPay-hide");
             oMsgArea.addStyleClass("nrgQPPay-black");
             if (!this._ValidateValue(oCreditCardAmount.getValue(), "Enter Amount to be posted")) {
                 return false;
+                //jQuery.sap.log.info("Date Received Succesfully");
             }
             if (!this._ValidateValue(oCreditCardDropDown.getSelectedKey(), "Select Credit Card")) {
                 return false;
+                //jQuery.sap.log.info("Date Received Succesfully");
             }
             if (!this._ValidateValue(oZipCode.getValue(), "Enter Zip Code")) {
                 return false;
+                //jQuery.sap.log.info("Date Received Succesfully");
             }
             if (!this._ValidateValue(oCVVCode.getValue(), "Enter CVV")) {
                 return false;
+                //jQuery.sap.log.info("Date Received Succesfully");
             }
             this._OwnerComponent.getCcuxApp().setOccupied(true);
-            sCurrentPath = "/CreditCardSet";
+            sCurrentPath = "/CreditCardPost";
             oCreditCardDateValue = new Date(oCreditCardDate.getValue());
-            oModel.create(sCurrentPath, {
-                "ContractID" : this._sContractId,
-                "CardNumber" : oCreditCardDropDown.getSelectedKey(),
-                "PaymentDate" : oCreditCardDateValue,
-                "Amount" : oCreditCardAmount.getValue(),
-                "WaiveFlag" : oWaiveReasonDropDown.getSelectedKey(),
-                "Cvval" : oCVVCode.getValue(),
-                "ZipCode" : oZipCode.getValue()
-            }, {
-                success : function (oData, oResponse) {
-                    if (oData.Error === "") {
-                        oContactModel.setData(oData);
-                        that.onContactLog();
-                        oMsgArea.addStyleClass("nrgQPPay-hide");
-                    } else {
-                        that.getView().getModel("appView").setProperty("/message", oData.Message);
-                    }
+            oInvoiceDate = oCreditCardModel.getProperty("/InvoiceDate");
+            oConfirmCallbackHandler = function (sAction) {
+                switch (sAction) {
+                case ute.ui.main.Popup.Action.Yes:
+                    oCallFunctionHandler();
+                    break;
+                case ute.ui.main.Popup.Action.No:
                     that._OwnerComponent.getCcuxApp().setOccupied(false);
-                },
-                error : function (oError) {
-                    that.getView().getModel("appView").setProperty("/message", oError.statusText);
-                    that._OwnerComponent.getCcuxApp().setOccupied(false);
+                    break;
+                case ute.ui.main.Popup.Action.Ok:
+                    break;
                 }
-            });
+            };
+            oCallFunctionHandler = function () {
+                mParameters = {
+                    method : "POST",
+                    urlParameters : {
+                        "ContractID" : that._sContractId,
+                        "BP" : that._sBP,
+                        "CA" : that._sCA,
+                        "CardNumber" : oCreditCardDropDown.getSelectedKey(),
+                        "PaymentDate" : oCreditCardDateValue,
+                        "Amount" : oCreditCardAmount.getValue(),
+                        "WaiveFlag" : oWaiveReasonDropDown.getSelectedKey(),
+                        "Cvval" : oCVVCode.getValue(),
+                        "ZipCode" : oZipCode.getValue(),
+                        "Activit" : "0",
+                        "CardType" : "0",
+                        "Class" : "0",
+                        "Error" : "0",
+                        "InvoiceAmount" : "0",
+                        "InvoiceDate" : 1436109229000,
+                        "Message" : "0",
+                        "NameOnCard" : "0",
+                        "PopMessage" : "0",
+                        "UserDecision" : true,
+                        "WaiveReason" : "0"
+                    },
+                    success : function (oData, oResponse) {
+                        if (oData.Error === "") {
+                            oContactModel.setData(oData);
+                            that.onContactLog();
+                            oMsgArea.addStyleClass("nrgQPPay-hide");
+                        } else {
+                            that.getView().getModel("appView").setProperty("/message", oData.Message);
+                        }
+                        that._OwnerComponent.getCcuxApp().setOccupied(false);
+                    }.bind(this),
+                    error: function (oError) {
+                        that.getView().getModel("appView").setProperty("/message", oError.statusText);
+                        that._OwnerComponent.getCcuxApp().setOccupied(false);
+                    }.bind(this)
+                };
+                oModel.callFunction(sCurrentPath, mParameters);
+            };
+            if (oCreditCardDateValue.getTime() > oInvoiceDate.getTime()) {
+                ute.ui.main.Popup.Confirm({
+                    title: 'Information',
+                    message: 'Your Scheduled payment date is after the due date. You will be subject to applicable late fees and/or disconnection.',
+                    callback: oConfirmCallbackHandler
+                });
+            } else {
+                oCallFunctionHandler();
+            }
         };
        /**
 		 * Pending Credit Card Process initialization
@@ -210,8 +271,8 @@ sap.ui.define(
             oPopup.addStyleClass("nrgQPPay-PopupPayment");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             this.getView().setModel(oPendingPaymentsModel, "QP-quickpay");
-            aFilterIds = ["ContractID"];
-            aFilterValues = [this._sContractId];
+            aFilterIds = ["BP", "CA"];
+            aFilterValues = [this._sBP, this._sCA];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oBindingInfo = {
                 filters : aFilters,
@@ -245,11 +306,11 @@ sap.ui.define(
             this._aPendingSelPaths.map(function (sCurrentPath) {
                 var oContext = oPCCModel.getContext(sCurrentPath),
                     sPath = "/CreditCardPPSet";
-                sPath = "/CreditCardPPSet('" + oContext.getProperty("ContractID") + "')";
+                sPath = "/CreditCardPPSet(BP='" + this._sBP + "',CA='" + this._sCA + "')";
                 mParameters = {
                     success : function (oData, oResponse) {
-                        var aFilterIds = ["ContractID"],
-                            aFilterValues = [that._sContractId],
+                        var aFilterIds = ["BP", "CA"],
+                            aFilterValues = [this._sBP, this._sCA],
                             aFilters,
                             oBindingInfo,
                             oPendingPaymentsModel = that.getView().getModel("QP-quickpay"),
@@ -293,9 +354,10 @@ sap.ui.define(
                                      "ScheduledDate" : oContext.getProperty("ScheduledDate"),
                                      "Amount" : oContext.getProperty("Amount"),
                                      "ContractID" : oContext.getProperty("ContractID"),
+                                     "BP" : oContext.getProperty("BP"),
+                                     "CA" : oContext.getProperty("CA"),
                                      "CurrentStatus" : oContext.getProperty("CurrentStatus")}, mParameters);
             });
-
         };
 
         /**
@@ -353,18 +415,17 @@ sap.ui.define(
             fnRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
             };
-            sPath = "/CCCreateURLSet(ContractID='" + this._sContractId + "')";
+            sPath = "/CCCreateURLSet(BP='" + this._sBP + "',CA='" + this._sCA + "')";
             oBindingInfo = {
                 success : function (oData) {
                     var paymentWindow = window.open(oData.URL);
-                    //paymentWindow.addEventListener("onbeforeunload", fnRecievedHandler);
                     paymentWindow.onbeforeunload = function (oEvent) {
                         that.onRefreshCC();
                     };
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
                 error: function (oError) {
-                    jQuery.sap.log.info("Eligibility Error occured");
+                    jQuery.sap.log.info("Error occured");
 
                 }.bind(this)
             };
@@ -399,7 +460,7 @@ sap.ui.define(
                 jQuery.sap.log.info("Date Received Succesfully");
                 that._OwnerComponent.getCcuxApp().setOccupied(false);
             };
-            sCurrentPath = "/CreditCardSet" + "(ContractID='" + this._sContractId + "')/CardsSet";
+            sCurrentPath = "/CreditCardSet" + "(BP='" + this._sBP + "',CA='" + this._sCA + "')/CardsSet";
             //sCurrentPath = "/CardsSet";
             oBindingInfo = {
                 model : "comp-quickpay",
@@ -437,15 +498,18 @@ sap.ui.define(
                 oBankDraftDropDown = this.getView().byId("idnrgQPBD-BankAccounts"),
                 oWaiveReasonDropDown = this.getView().byId("idnrgQPBD-WaiveReason"),
                 WRRecievedHandler,
-                oSorter = new sap.ui.model.Sorter("LastUsed", true); // sort descending;
+                oSorter = new sap.ui.model.Sorter("LastUsed", true),// sort descending;
+                oBankDraftModel = new sap.ui.model.json.JSONModel(),
+                oModel = this.getView().getModel('comp-quickpay');
             oBankDraftDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
             //oBankDraftDate.setMinDate(new Date());
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupWhite");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             oTBIBD.setSelected(true);
+            this.getView().setModel(oBankDraftModel, "quickpay-bd");
             this._OwnerComponent.getCcuxApp().setOccupied(true);
-            sCurrentPath = "/BankDraftSet" + "(ContractID='" + this._sContractId + "')/WaiveReasonsSet";
+            sCurrentPath = "/BankDraftSet" + "(BP='" + this._sBP + "',CA='" + this._sCA + "')/WaiveReasonsSet";
             fnRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
                 that._OwnerComponent.getCcuxApp().setOccupied(false);
@@ -458,6 +522,19 @@ sap.ui.define(
                     }
                 }
             };
+            sCurrentPath = "/BankDraftSet" + "(BP='" + this._sBP + "',CA='" + this._sCA + "')";
+            oBindingInfo = {
+                success : function (oData) {
+                    oBankDraftModel.setData(oData);
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Error occured");
+                }.bind(this)
+            };
+            if (oModel) {
+                oModel.read(sCurrentPath, oBindingInfo);
+            }
+            sCurrentPath = "/BankDraftSet" + "(BP='" + this._sBP + "',CA='" + this._sCA + "')/WaiveReasonsSet";
             oBindingInfo = {
                 model : "comp-quickpay",
                 path : sCurrentPath,
@@ -466,7 +543,7 @@ sap.ui.define(
                 events: {dataReceived : WRRecievedHandler}
             };
             oWaiveReasonDropDown.bindAggregation("content", oBindingInfo);
-            sCurrentPath = "/BankDraftSet" + "(ContractID='" + this._sContractId + "')/BankAccountSet";
+            sCurrentPath = "/BankDraftSet" + "(BP='" + this._sBP + "',CA='" + this._sCA + "')/BankAccountSet";
             oBindingInfo = {
                 model : "comp-quickpay",
                 path : sCurrentPath,
@@ -496,9 +573,16 @@ sap.ui.define(
                 that = this,
                 oBankDraftDateValue,
                 oContactModel = this.getView().getModel("quickpay-cl"),
+                oBankDraftModel = this.getView().getModel("quickpay-bd"),
                 sBankKey,
                 sBankRouting,
-                sBankAccount;
+                sBankAccount,
+                oCallFunctionHandler,
+                oConfirmCallbackHandler,
+                sInvoiceAmount,
+                oInvoiceDate,
+                oConfirmDateHandler,
+                oCallDateHandler;
             oMsgArea.removeStyleClass("nrgQPPay-hide");
             oMsgArea.addStyleClass("nrgQPPay-black");
             if (!this._ValidateValue(oBankDraftAmount.getValue(), "Enter Amount to be posted")) {
@@ -507,37 +591,98 @@ sap.ui.define(
             if (!this._ValidateValue(oBankAccountDropDown.getSelectedKey(), "Select Bank Account")) {
                 return false;
             }
-            sCurrentPath = "/BankDraftSet";
+            sCurrentPath = "/BankDraftpost";
             sBankKey = oBankAccountDropDown.getSelectedKey();
-            sBankAccount = oModel.getProperty("/BankAccountSet(ContractID='" + this._sContractId + "',BankKey='" + sBankKey + "')/BankAccNum");
-            sBankRouting = oModel.getProperty("/BankAccountSet(ContractID='" + this._sContractId + "',BankKey='" + sBankKey + "')/BankRouting");
+            sBankAccount = oModel.getProperty("/BankAccountSet(BP='" + this._sBP + "',CA='" + this._sCA + "',BankKey='" + sBankKey + "')/BankAccNum");
+            sBankRouting = oModel.getProperty("/BankAccountSet(BP='" + this._sBP + "',CA='" + this._sCA + "',BankKey='" + sBankKey + "')/BankRouting");
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             oBankDraftDateValue = new Date(oBankDraftDate.getValue());
-            oModel.create(sCurrentPath, {
-                "ContractID" : this._sContractId,
-                "BankAccNum" : sBankAccount,
-                "PaymentDate" : oBankDraftDateValue,
-                "Amount" : oBankDraftAmount.getValue(),
-                "WaiveFlag" : oWaiveReasonDropDown.getSelectedKey(),
-                "BankKey" : sBankKey,
-                "BankRouting" : sBankRouting
-            }, {
-                success : function (oData, oResponse) {
-                    if (oData.Error === "") {
-                        oContactModel.setData(oData);
-                        that.onContactLog();
-                        oMsgArea.addStyleClass("nrgQPPay-hide");
-
-                    } else {
-                        that.getView().getModel("appView").setProperty("/message", oData.Message);
-                    }
+            sInvoiceAmount =  oBankDraftModel.getProperty("/InvoiceAmount");
+            oInvoiceDate = oBankDraftModel.getProperty("/InvoiceDate");
+            oConfirmCallbackHandler = function (sAction) {
+                switch (sAction) {
+                case ute.ui.main.Popup.Action.Yes:
+                    oCallFunctionHandler();
+                    break;
+                case ute.ui.main.Popup.Action.No:
                     that._OwnerComponent.getCcuxApp().setOccupied(false);
-                },
-                error : function (oError) {
-                    that.getView().getModel("appView").setProperty("/message", oError.statusText);
-                    that._OwnerComponent.getCcuxApp().setOccupied(false);
+                    break;
+                case ute.ui.main.Popup.Action.Ok:
+                    break;
                 }
-            });
+            };
+            oConfirmDateHandler = function (sAction) {
+                switch (sAction) {
+                case ute.ui.main.Popup.Action.Yes:
+                    oCallDateHandler();
+                    break;
+                case ute.ui.main.Popup.Action.No:
+                    that._OwnerComponent.getCcuxApp().setOccupied(false);
+                    break;
+                case ute.ui.main.Popup.Action.Ok:
+                    break;
+                }
+            };
+            oCallDateHandler = function () {
+                if ((oBankDraftAmount > 0) && (oInvoiceDate.getTime() < oBankDraftDateValue.getTime())) {
+                    ute.ui.main.Popup.Confirm({
+                        title: 'Information',
+                        message: 'Your scheduled payment date is after the due date.  You will be subject to applicable late fees and/or disconnection.',
+                        callback: oConfirmCallbackHandler
+                    });
+                } else {
+                    oCallFunctionHandler();
+                }
+            };
+            oCallFunctionHandler = function () {
+                mParameters = {
+                    method : "POST",
+                    urlParameters : {
+                        "ContractID" : that._sContractId,
+                        "BP" : that._sBP,
+                        "CA" : that._sCA,
+                        "BankAccNum" : sBankAccount,
+                        "PaymentDate" : oBankDraftDateValue,
+                        "Amount" : oBankDraftAmount.getValue(),
+                        "WaiveFlag" : oWaiveReasonDropDown.getSelectedKey(),
+                        "BankKey" : sBankKey,
+                        "BankRouting" : sBankRouting,
+                        "Activit" : "0",
+                        "Class" : "0",
+                        "Error" : "0",
+                        "InvoiceAmount" : "0",
+                        "InvoiceDate" : 1436109229000,
+                        "Message" : "0",
+                        "PopMessage" : "0",
+                        "UserDecision" : true,
+                        "WaiveReason" : "0"
+                    },
+                    success : function (oData, oResponse) {
+                        if (oData.Error === "") {
+                            oContactModel.setData(oData);
+                            that.onContactLog();
+                            oMsgArea.addStyleClass("nrgQPPay-hide");
+                        } else {
+                            that.getView().getModel("appView").setProperty("/message", oData.Message);
+                        }
+                        that._OwnerComponent.getCcuxApp().setOccupied(false);
+                    }.bind(this),
+                    error: function (oError) {
+                        that.getView().getModel("appView").setProperty("/message", oError.statusText);
+                        that._OwnerComponent.getCcuxApp().setOccupied(false);
+                    }.bind(this)
+                };
+                oModel.callFunction(sCurrentPath, mParameters);
+            };
+            if (oBankDraftAmount > sInvoiceAmount) {
+                ute.ui.main.Popup.Confirm({
+                    title: 'Information',
+                    message: 'Payment amount is greater than Total amount due. Do you wish to continue?',
+                    callback: oConfirmDateHandler
+                });
+            } else {
+                oCallDateHandler();
+            }
         };
         /**
 		 * Pending Bank Draft Process initialization
@@ -568,8 +713,8 @@ sap.ui.define(
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             //this.getView().getParent().setPosition();
             this.getView().setModel(oPendingPaymentsModel, "QP-quickpay");
-            aFilterIds = ["ContractID"];
-            aFilterValues = [this._sContractId];
+            aFilterIds = ["BP", "CA"];
+            aFilterValues = [this._sBP, this._sCA];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oBindingInfo = {
                 filters : aFilters,
@@ -643,8 +788,8 @@ sap.ui.define(
             that._OwnerComponent.getCcuxApp().setOccupied(true);
             this._aPendingSelPaths.map(function (sCurrentPath) {
                 var oContext = oPCCModel.getContext(sCurrentPath),
-                    aFilterIds = ["ContractID"],
-                    aFilterValues = [oContext.getProperty("ContractID")],
+                    aFilterIds = ["BP", "CA"],
+                    aFilterValues = [oContext.getProperty("BP"), oContext.getProperty("CA")],
                     aFilters,
                     oBindingInfo,
                     oTableRow = that.getView().byId("idnrgQPTable-BDRow"),
@@ -658,6 +803,8 @@ sap.ui.define(
                                      "PaymentAmount" : oContext.getProperty("PaymentAmount"),
                                      "TrackingID" : oContext.getProperty("TrackingID"),
                                      "ContractID" : oContext.getProperty("ContractID"),
+                                     "BP" : oContext.getProperty("BP"),
+                                     "CA" : oContext.getProperty("CA"),
                                      "CurrentStatus" : oContext.getProperty("CurrentStatus")},
                     success : function (oData, oResponse) {
                         jQuery.sap.log.info("Odata Read Successfully:::");
@@ -688,7 +835,7 @@ sap.ui.define(
                         }
                     }.bind(this),
                     error: function (oError) {
-                        jQuery.sap.log.info("Eligibility Error occured");
+                        jQuery.sap.log.info("Error occured");
                         that._OwnerComponent.getCcuxApp().setOccupied(false);
                         ute.ui.main.Popup.Alert({
                             title: 'Information',
@@ -736,6 +883,8 @@ sap.ui.define(
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             oModel.create(sCurrentPath, {
                 "ContractID" : this._sContractId,
+                "BP" : this._sBP,
+                "CA" : this._sCA,
                 "BankAccNum" : sBankAccount,
                 "BankRouting" : sBankRouting
             }, {
@@ -795,7 +944,7 @@ sap.ui.define(
                 return false;
             }
             this._OwnerComponent.getCcuxApp().setOccupied(true);
-            sCurrentPath = sCurrentPath + "(ContractID='" + this._sContractId + "',ReliantCard='" + oReliantCard.getValue() + "')";
+            sCurrentPath = sCurrentPath + "(BP='" + this._sBP + "',CA='" + this._sCA + "',ReliantCard='" + oReliantCard.getValue() + "')";
             fnRecievedHandler = function (oEvent) {
                 if (oEvent.mParameters.data.Error !== "") {
                     that.getView().getModel("appView").setProperty("/message", oEvent.mParameters.data.Message);
@@ -855,6 +1004,8 @@ sap.ui.define(
             sCurrentPath = "/ReliantSet";
             oModel.create(sCurrentPath, {
                 "ContractID": oContext.getProperty("ContractID"),
+                "BP": oContext.getProperty("BP"),
+                "CA": oContext.getProperty("CA"),
                 "ReliantCard": oContext.getProperty("ReliantCard"),
                 "Amount": oContext.getProperty("Amount")
             }, {
@@ -903,7 +1054,7 @@ sap.ui.define(
             oPopup.addStyleClass("nrgQPPay-PopupWhite");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             oTBIRC.setSelected(true);
-            sCurrentPath = "/ReceiptSet" + "(ContractID='" + this._sContractId + "')/WaiveReasonsSet";
+            sCurrentPath = "/ReceiptSet" + "(BP='" + this._sBP + "',CA='" + this._sCA + "')/WaiveReasonsSet";
             WRRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
                 if (oEvent) {
@@ -952,6 +1103,8 @@ sap.ui.define(
             sCurrentPath = "/ReceiptSet";
             oModel.create(sCurrentPath, {
                 "ContractID" : this._sContractId,
+                "BP" : this._sBP,
+                "CA" : this._sCA,
                 "ReceiptNumber" : oReceiptNum.getValue(),
                 "Amount" : oReceiptAmount.getValue(),
                 "WaiveFlag" : oReceiptDropDown.getSelectedKey()
@@ -1100,6 +1253,8 @@ sap.ui.define(
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             oModel.create(sCurrentPath, {
                 "ContractID" : oContactLogModel.getProperty("/ContractID"),
+                "BP" : oContactLogModel.getProperty("/BP"),
+                "CA" : oContactLogModel.getProperty("/CA"),
                 "Class" : oContactLogModel.getProperty("/Class"),
                 "Activit" : oContactLogModel.getProperty("/Activit"),
                 "PopMessage" : oContactLogModel.getProperty("/PopMessage")
@@ -1108,6 +1263,7 @@ sap.ui.define(
                     if (oData.ContactLogID !== "") {
                         oPopup.removeStyleClass("nrgQPPay-PopupPayment");
                         oPopup.addStyleClass("nrgQPPay-Popup");
+                        oPopup.removeStyleClass("nrgQPPay-PopupWhite");
                         oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
                         oTBIPaySucc.setSelected(true);
                     }
@@ -1126,9 +1282,9 @@ sap.ui.define(
 		 */
         Controller.prototype.setPosition = function (iType) {
             if (iType === 0) {
-                this.getView().getParent().setPosition("begin bottom", "begin bottom");
+                this.getView().getParent().setPosition("left bottom", "left bottom");
             } else {
-                this.getView().getParent().setPosition("begin bottom", "begin bottom");
+                this.getView().getParent().setPosition("left bottom", "left bottom");
             }
         };
        /**

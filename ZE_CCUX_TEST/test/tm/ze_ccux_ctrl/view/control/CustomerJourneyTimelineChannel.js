@@ -16,8 +16,7 @@ sap.ui.define(
                     channelIcon: { type: 'sap.ui.core.URI', defaultValue: 'sap-icon://letter' },
                     topLabel: { type: 'string', defaultValue: null },
                     rightDivider: { type: 'boolean', defaultValue: false },
-                    selected: { type: 'boolean', defaultValue: false },
-                    selectionGroup: { type: 'string', defaultValue: null }
+                    selected: { type: 'boolean', defaultValue: false }
                 },
 
                 events: {
@@ -29,49 +28,18 @@ sap.ui.define(
             renderer: CustomRenderer
         });
 
-        CustomControl.ChannelType = {
-            Website: 'Website',
-            Mobile: 'Mobile',
-            IVR: 'IVR',
-            Webchat: 'Webchat',
-            Phone: 'Phone',
-            Survey: 'Survey',
-            Correspondence: 'Correspondence'
-        };
+        CustomControl.prototype._aChannelRegistry = [];
 
-        CustomControl.prototype._aGroupRegistry = {};
+        CustomControl.prototype.init = function () {
+            this._aChannelRegistry.push(this);
+        };
 
         CustomControl.prototype.exit = function () {
-            var sSelectionGroup = this.getSelectionGroup();
+            var iIndex = this._aChannelRegistry.indexOf(this);
 
-            if (!sSelectionGroup || !this._aGroupRegistry[sSelectionGroup]) {
-                return;
-            }
-
-            var iIndex = this._aGroupRegistry[sSelectionGroup].indexOf(this);
             if (iIndex && iIndex !== -1) {
-                this._aGroupRegistry[sSelectionGroup].splice(iIndex, 1);
+                this._aChannelRegistry.splice(iIndex, 1);
             }
-        };
-
-        CustomControl.prototype.setSelectionGroup = function (sSelectionGroup) {
-            if (!sSelectionGroup) {
-                return;
-            }
-
-            if (!this._aGroupRegistry[sSelectionGroup]) {
-                this._aGroupRegistry[sSelectionGroup] = [];
-            }
-
-            this._aGroupRegistry[sSelectionGroup].push(this);
-        };
-
-        CustomControl.prototype.setSelected = function (bSelected) {
-            bSelected = !!bSelected;
-
-            console.log(this._aGroupRegistry);
-
-            this.setProperty('selected', bSelected, true);
         };
 
         CustomControl.prototype.onclick = function (oEvent) {
@@ -88,8 +56,26 @@ sap.ui.define(
 
         CustomControl.prototype.ondblclick = function (oEvent) {
             this._onDoubleClick = true;
-            this.setSelected(true);
+            this.setSelected(!this.getSelected());
             this.fireDoublePress();
+        };
+
+        CustomControl.prototype.setSelected = function (bSelected) {
+            bSelected = !!bSelected;
+
+            if (bSelected) {
+                this.$().addClass('tmCJTChannel-selected');
+
+                this._aChannelRegistry.forEach(function (oChannel) {
+                    if (oChannel !== this) {
+                        oChannel.setSelected(false);
+                    }
+                }, this);
+            } else {
+                this.$().removeClass('tmCJTChannel-selected');
+            }
+
+            this.setProperty('selected', bSelected, true);
         };
 
         return CustomControl;

@@ -26,7 +26,15 @@ sap.ui.define(
             renderer: CustomRenderer
         });
 
-        CustomControl.SCROLL_STEP = 280;
+        /*
+            todo - zig zag line
+            http://codepen.io/pouretrebelle/pen/hypGk
+
+            Try not to go overboard with javascript scrolling ... be careful of reflow
+            https://gist.github.com/paulirish/5d52fb081b3570c81e3a
+        */
+
+        CustomControl.SCROLL_STEP = 360;
         CustomControl.SCROLL_DURATION = 500;
 
         CustomControl.prototype.onBeforeRendering = function () {
@@ -35,10 +43,11 @@ sap.ui.define(
         };
 
         CustomControl.prototype.onAfterRendering = function () {
-            // this._checkOverflow(this.getDomRef('container'), this.$('navBack'), this.$('navFwd'));
-
             this.$('navBack').bind('click', this._onNavBackClick.bind(this));
             this.$('navFwd').bind('click', this._onNavForwardClick.bind(this));
+
+            var oTimelineDomRef = this.getDomRef('container');
+            this._scroll(oTimelineDomRef.scrollWidth, 10);            
         };
 
         CustomControl.prototype.exit = function () {
@@ -62,40 +71,6 @@ sap.ui.define(
     		jQuery(oDomRef).stop(true, true).animate({
                 scrollLeft: iScrollTarget
             }, iDuration);
-        };
-
-        /* css zigzag border - http://codepen.io/pouretrebelle/pen/hypGk */
-
-        CustomControl.prototype._checkOverflow = function (oTimelineDomRef, o$BackArrow, o$ForwardArrow) {
-            var bScrollBack = false;
-            var bScrollForward = false;
-
-            var iScrollLeft = oTimelineDomRef.scrollLeft;
-            var iRealWidth = oTimelineDomRef.scrollWidth;
-			var iAvailableWidth = oTimelineDomRef.clientWidth;
-
-            console.log(iRealWidth);
-            console.log(iAvailableWidth);
-
-            if (Math.abs(iRealWidth - iAvailableWidth) === 1) {
-				iRealWidth = iAvailableWidth;
-			}
-
-            if (iScrollLeft > 0) {
-                bScrollBack = true;
-            }
-
-            if ((iRealWidth > iAvailableWidth) && (iScrollLeft + iAvailableWidth < iRealWidth)) {
-                bScrollForward = true;
-            }
-
-            if (!bScrollBack) {
-                o$BackArrow.hide();
-            }
-
-            if (!bScrollForward) {
-                o$ForwardArrow.hide();
-            }
         };
 
         return CustomControl;
