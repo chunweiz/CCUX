@@ -154,12 +154,12 @@ sap.ui.define(
             }
             if (oFilterModel.getProperty('/searchTextFields/sCaNum')) {
                 oSearchCaModel.setProperty('/searchedInCa', true);
-                oSearchCaModel.setProperty('/searchedCaNum', oFilterModel.getProperty('/searchTextFields/sCaNum'));
+                oSearchCaModel.setProperty('/searchedCaNum', oFilterModel.getProperty('/searchTextFields/sCaNum').trim());
 
                 oFilterTemplate =  new Filter({
                     path: 'BuagID',
                     operator: FilterOperator.EQ,
-                    value1: oFilterModel.getProperty('/searchTextFields/sCaNum')
+                    value1: oFilterModel.getProperty('/searchTextFields/sCaNum').trim()
                 });
                 aFilters.push(oFilterTemplate);
             }
