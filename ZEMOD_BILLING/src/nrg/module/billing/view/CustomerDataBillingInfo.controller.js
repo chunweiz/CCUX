@@ -135,13 +135,21 @@ sap.ui.define(
         CustomController.prototype._onChkbookLnkClicked = function () {
             var oRouter = this.getOwnerComponent().getRouter();
 
-            oRouter.navTo('billing.CheckBook', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            if (this._coNum) {
+                oRouter.navTo('billing.CheckBook', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('billing.CheckBookNoCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            }
         };
 
         CustomController.prototype._onHighbillLnkClicked = function () {
             var oRouter = this.getOwnerComponent().getRouter();
 
-            oRouter.navTo('billing.HighBill', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            if (this._coNum) {
+                oRouter.navTo('billing.HighBill', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('billing.HighBillNoCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            }
         };
 
         CustomController.prototype._onInvoiceNumClicked = function () {

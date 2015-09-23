@@ -504,9 +504,17 @@ sap.ui.define(
 
             //Navigate to verification page
             if (isPrepaidUser) {
-                oRouter.navTo('billing.BillingPrePaid', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
+                if (sCurrentCo) {
+                    oRouter.navTo('billing.BillingPrePaid', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
+                } else {
+                    oRouter.navTo('billing.BillingPrePaidNoCo', {bpNum: sCurrentBp, caNum: sCurrentCa});
+                }
             } else {
-                oRouter.navTo('billing.BillingInfo', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
+                if (sCurrentCo) {
+                    oRouter.navTo('billing.BillingInfo', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
+                } else {
+                    oRouter.navTo('billing.BillingInfoNoCo', {bpNum: sCurrentBp, caNum: sCurrentCa});
+                }
             }
         };
 
