@@ -97,7 +97,8 @@
                 </ute:Tag>
             </ute:Tag>
 
-            <m:ScrollContainer class="nrgBilling-blChkBk-lftDiv-scrllArea" width="768px" height="686px" horizontal="false" vertical="true">
+            <m:ScrollContainer id="nrgChkbookScrollContainer"
+                    class="nrgBilling-blChkBk-lftDiv-scrllArea" width="768px" height="686px" horizontal="false" vertical="true">
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr">
                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-h1"
                              text="{comp-i18n-billing>nrgBilling-billChkBook-Table-BillingDate}" />

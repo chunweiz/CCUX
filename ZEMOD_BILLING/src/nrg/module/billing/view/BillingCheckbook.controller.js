@@ -172,7 +172,8 @@ sap.ui.define(
         CustomController.prototype._retrPaymentItmes = function (sInvNum, sBindingPath) {
             var oChbkOData = this.getView().getModel('oDataSvc'),
                 sPath,
-                oParameters;
+                oParameters,
+                oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer');
 
             sPath = '/PaymentHdrs(\'' + sInvNum + '\')/PaymentItems';
 
@@ -181,6 +182,7 @@ sap.ui.define(
                     if (oData) {
                         this.getView().getModel('oPaymentHdr').setProperty(sBindingPath + '/PaymentItems', oData);
                     }
+                    oScrlCtaner.scrollTop = oScrlCtaner.scrollHeight;
                 }.bind(this),
                 error: function (oError) {
                     //Need to put error message
