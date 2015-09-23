@@ -34,16 +34,32 @@
                     "pattern": "billing/checkbook/bp/{bpNum}/ca/{caNum}/co/{coNum}",
                     "target":["billing.Checkbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
                 },
+                "billing.CheckBookNoCo": {
+                    "pattern": "billing/checkbook/bp/{bpNum}/ca/{caNum}",
+                    "target":["billing.Checkbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
+                },
                 "billing.BillingInfo": {
                     "pattern": "billing/billinginfo/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target":["billing.CustomerDataBillingInfo", "dashboard.CustomerDataSummary", "billing.CustomerJourney"]
+                },
+                "billing.BillingInfoNoCo": {
+                    "pattern": "billing/billinginfo/bp/{bpNum}/ca/{caNum}",
                     "target":["billing.CustomerDataBillingInfo", "dashboard.CustomerDataSummary", "billing.CustomerJourney"]
                 },
                 "billing.BillingPrePaid": {
                     "pattern": "billing/billingprepaid/bp/{bpNum}/ca/{caNum}/co/{coNum}",
                     "target":["billing.CustomerDataPrePD", "dashboard.CustomerDataSummary", "billing.CustomerJourney"]
                 },
+                "billing.BillingPrePaidNoCo": {
+                    "pattern": "billing/billingprepaid/bp/{bpNum}/ca/{caNum}",
+                    "target":["billing.CustomerDataPrePD", "dashboard.CustomerDataSummary", "billing.CustomerJourney"]
+                },
                 "billing.HighBill": {
                     "pattern": "billing/highbill/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target":["billing.HighBill", "dashboard.CustomerDataSummary", "dashboard.EmptyTools"]
+                },
+                "billing.HighBillNoCo": {
+                    "pattern": "billing/highbill/bp/{bpNum}/ca/{caNum}",
                     "target":["billing.HighBill", "dashboard.CustomerDataSummary", "dashboard.EmptyTools"]
                 }
             },

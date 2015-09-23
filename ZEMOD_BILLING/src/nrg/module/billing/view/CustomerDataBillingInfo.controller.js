@@ -27,6 +27,11 @@ sap.ui.define(
             //Models for BillingInvoices
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBillingInvoices');
 
+            //Models for Invoice Details
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPmtSummary');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPmtPayments');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPmtItems');
+
             //Starting invoices retriviging
             this._initRoutingInfo();
             this._initRetrBillInvoices();
@@ -58,6 +63,7 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oBillingInvoices').setData(oData);
+                        this._curInvNum = oData.InvoiceNum;
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -69,6 +75,82 @@ sap.ui.define(
                 oChbkOData.read(sPath, oParameters);
             }
         };
+
+        CustomController.prototype._initRetrInvoiceDetail = function (sInvNum) {
+            this._retrInvSumry(sInvNum);
+            this._retrInvPmts(sInvNum);
+            this._retrInvItems(sInvNum);
+        };
+
+        CustomController.prototype._retrInvSumry = function (sInvNum) {
+            var oChbkOData = this.getView().getModel('oDataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/PaymentHdrs(\'' + sInvNum + '\')/PaymentSumry';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oPmtSummary').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oChbkOData) {
+                oChbkOData.read(sPath, oParameters);
+            }
+        };
+
+        CustomController.prototype._retrInvPmts = function (sInvNum) {
+            var oChbkOData = this.getView().getModel('oDataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/PaymentHdrs(\'' + sInvNum + '\')/Payments';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oPmtPayments').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oChbkOData) {
+                oChbkOData.read(sPath, oParameters);
+            }
+        };
+
+        CustomController.prototype._retrInvItems = function (sInvNum) {
+            var oChbkOData = this.getView().getModel('oDataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/PaymentHdrs(\'' + sInvNum + '\')/PaymentItems';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oPmtItems').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oChbkOData) {
+                oChbkOData.read(sPath, oParameters);
+            }
+        };
+
         /*************************************************************************************************************************/
         //Formatter Functions
         CustomController.prototype._formatDate = function (oDate) {
@@ -102,6 +184,10 @@ sap.ui.define(
             }
 
             this._oInvoicePopup.open();
+
+            if (this._curInvNum) {
+                this._initRetrInvoiceDetail(this._curInvNum);
+            }
         };
 
         CustomController.prototype._onPaymentsClicked = function (oEvent) {
@@ -135,13 +221,21 @@ sap.ui.define(
         CustomController.prototype._onChkbookLnkClicked = function () {
             var oRouter = this.getOwnerComponent().getRouter();
 
-            oRouter.navTo('billing.CheckBook', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            if (this._coNum) {
+                oRouter.navTo('billing.CheckBook', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('billing.CheckBookNoCo', {bpNum: this._bpNum, caNum: this._caNum});
+            }
         };
 
         CustomController.prototype._onHighbillLnkClicked = function () {
             var oRouter = this.getOwnerComponent().getRouter();
 
-            oRouter.navTo('billing.HighBill', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            if (this._coNum) {
+                oRouter.navTo('billing.HighBill', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('billing.HighBillNoCo', {bpNum: this._bpNum, caNum: this._caNum});
+            }
         };
 
         CustomController.prototype._onInvoiceNumClicked = function () {

@@ -1,5 +1,6 @@
 /*global sap*/
 /*globals ute*/
+/*globals $*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -278,9 +279,9 @@ sap.ui.define(
                         if (iSelectedCA) {
                             iPreSelCA = iSelectedCA;
                         } else {
-                            if(this._caNum) {
+                            if (this._caNum) {
                                 // Seatch for the CA matched the designated CA number
-                                for (i = 0; i < oData.results.length; i++ ) {
+                                for (i = 0; i < oData.results.length; i = i + 1) {
                                     if (oData.results[i].ContractAccountID === this._caNum) {
                                         iPreSelCA = i;
                                     }
@@ -489,11 +490,10 @@ sap.ui.define(
                 sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
                 sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
                 sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID'),
-                badgeSS = this.getView().getModel('oDtaVrfyBuags').getProperty('/BadgeSS');
+                badgeSS = this.getView().getModel('oDtaVrfyBuags').getProperty('/BadgeSS'),
+                isPrepaidUser = false; // Determine if prepaid user
 
-            // Determine if prepaid user
-            var isPrepaidUser = false;
-            if(badgeSS === 'x' || badgeSS === 'X') {
+            if (badgeSS === 'x' || badgeSS === 'X') {
                 isPrepaidUser = true;
             }
 
@@ -513,10 +513,18 @@ sap.ui.define(
             oComponent.getCcuxApp().setOccupied(false);
 
             //Navigate to verification page
-            if(isPrepaidUser) {
-                oRouter.navTo('billing.BillingPrePaid', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
+            if (isPrepaidUser) {
+                if (sCurrentCo) {
+                    oRouter.navTo('billing.BillingPrePaid', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
+                } else {
+                    oRouter.navTo('billing.BillingPrePaidNoCo', {bpNum: sCurrentBp, caNum: sCurrentCa});
+                }
             } else {
-                oRouter.navTo('billing.BillingInfo', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
+                if (sCurrentCo) {
+                    oRouter.navTo('billing.BillingInfo', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
+                } else {
+                    oRouter.navTo('billing.BillingInfoNoCo', {bpNum: sCurrentBp, caNum: sCurrentCa});
+                }
             }
         };
 
