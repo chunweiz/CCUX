@@ -147,7 +147,6 @@ sap.ui.define(
                 oCreditCardAmount = this.getView().byId("idnrgQPCC-Amt"),
                 oWaiveReasonDropDown = this.getView().byId("idnrgQPCC-WR"),
                 that = this,
-                //oReceiptModel = new sap.ui.model.json.JSONModel(),
                 oCreditCardDateValue,
                 oContactModel = this.getView().getModel("quickpay-cl"),
                 oCreditCardModel = this.getView().getModel("quickpay-cc"),
@@ -156,7 +155,6 @@ sap.ui.define(
                 oInvoiceDate,
                 oCallFunctionHandler,
                 oConfirmCallbackHandler;
-            //this.getView().setModel(oReceiptModel, "quickpay-rc");
             oMsgArea.removeStyleClass("nrgQPPay-hide");
             oMsgArea.addStyleClass("nrgQPPay-black");
             if (!this._ValidateValue(oCreditCardAmount.getValue(), "Enter Amount to be posted")) {
