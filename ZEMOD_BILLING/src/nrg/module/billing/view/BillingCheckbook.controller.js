@@ -182,7 +182,8 @@ sap.ui.define(
                     if (oData) {
                         this.getView().getModel('oPaymentHdr').setProperty(sBindingPath + '/PaymentItems', oData);
                     }
-                    oScrlCtaner.scrollTop = oScrlCtaner.scrollHeight;
+                    //oScrlCtaner.scrollTop = oScrlCtaner.scrollHeight;
+                    oScrlCtaner.scrollTo(0, 686, 100);
                 }.bind(this),
                 error: function (oError) {
                     //Need to put error message
@@ -328,7 +329,6 @@ sap.ui.define(
                 oChbkOData.read(sPath, oParameters);
             }
         };
-
 
         return CustomController;
     }
