@@ -6,7 +6,8 @@ sap.ui.define(
         'nrg/base/view/BaseController',
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
-        'sap/ui/core/routing/HashChanger'
+        'sap/ui/core/routing/HashChanger',
+        'nrg/base/type/ContractAccountNumber'
     ],
 
     function (CoreController, Filter, FilterOperator, HashChanger) {
