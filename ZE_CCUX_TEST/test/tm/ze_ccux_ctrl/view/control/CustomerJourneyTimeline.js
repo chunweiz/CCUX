@@ -34,7 +34,10 @@ sap.ui.define(
         CustomControl.SCROLL_STEP = 360;
         CustomControl.SCROLL_DURATION = 500;
 
-
+        CustomControl.prototype.onAfterRendering = function () {
+            var oContainerEl = document.querySelector('.tmCJT-channelContainer');
+            console.log(oContainerEl.clientWidth, oContainerEl.scrollWidth);
+        };
 
         return CustomControl;
     }

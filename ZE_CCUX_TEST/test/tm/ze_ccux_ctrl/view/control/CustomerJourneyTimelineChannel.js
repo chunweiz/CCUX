@@ -28,6 +28,10 @@ sap.ui.define(
             renderer: CustomRenderer
         });
 
+        CustomControl.prototype.onAfterRendering = function () {
+            
+        };
+
         return CustomControl;
     }
 );
