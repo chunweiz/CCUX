@@ -1,6 +1,6 @@
 .nrgAppFtrDetails {
     width: 100%;
-    height: 253px;
+    height: 300px;
 
     & .nrgAppFtrDetails-nav {
         display: block;
@@ -31,7 +31,7 @@
 
     & .nrgAppFtrDetails-content {
         width: 100%;
-        height: 234px;
+        height: 300px;
         background-color: @nrgColor-white;
 
         & .uteAppHdrSMenu-wrap {
@@ -39,27 +39,58 @@
 
             & .nrgAppFtrDetails-notification {
                 width: 600px;
-                height: 230px;
-                padding-top: 15px;
+                height: 200px;
+                padding-right: 15px;
+                border-right: 1px solid @nrgColor-grey-light;
 
                 & .nrgAppFtrDetails-notification-title {
                     color: @nrgColor-blueLink;
                     font-weight: @nrgFontWeight-semiBold;
                 }
+
+                & .nrgAppFtrDetails-notification-content {
+                    margin-top: 10px;
+                    font-size: @nrgFontSize-small;
+                }
             }
 
             & .nrgAppFtrDetails-rhs {
-                background-color: blue;
                 width: 270px;
-                height: 230px;
-                padding-top: 15px;
+                height: 200px;
+                padding-left: 15px;
+                padding-right: 15px;
+                border-right: 1px solid @nrgColor-grey-light;
+
+                & .nrgAppFtrDetails-rhs-title {
+                    color: @nrgColor-blueLink;
+                    font-weight: @nrgFontWeight-semiBold;
+                }
+
+                & .nrgAppFtrDetails-rhs-content {
+                    margin-top: 10px;
+                    font-size: @nrgFontSize-small;
+                
+                    & .nrgAppFtrDetails-rhs-item {
+                        padding: 17px 0;
+                        border-bottom: 1px dashed @nrgColor-grey-dark;
+
+                        & .nrgAppFtrDetails-rhs-contentTitle {
+                            color: @nrgColor-blueLink;
+                            width: 60px;
+                        }
+                    }
+                }
             }
 
             & .nrgAppFtrDetails-eligibleOffers {
-                background-color: yellow;
                 width: 490px;
-                height: 230px;
-                padding-top: 15px;
+                height: 200px;
+                padding-left: 15px;
+
+                & .nrgAppFtrDetails-eligibleOffers-title {
+                    color: @nrgColor-blueLink;
+                    font-weight: @nrgFontWeight-semiBold;
+                }
             }
         }
     }

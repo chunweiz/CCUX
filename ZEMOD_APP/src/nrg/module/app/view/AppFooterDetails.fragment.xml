@@ -17,9 +17,9 @@
                 <ute:Tag class="nrgAppFtrDetails-notification">
                     <!-- Title -->
                     <ute:Tag elem="span" class="nrgAppFtrDetails-notification-title"
-                             text="{comp-i18n-app>nrgAppFtrDetails-notification-TITLE}" />
+                        text="{comp-i18n-app>nrgAppFtrDetails-notification-TITLE}" />
                     <!-- Contents -->
-                    <sm:ScrollContainer id="content" height="180px" width="100%" horizontal="true" vertical="true">
+                    <sm:ScrollContainer class="nrgAppFtrDetails-notification-content" height="170px" width="100%" horizontal="true" vertical="true">
                         <ua:FooterNotificationCenter content="{view-data>/notification}">
                             <ua:FooterNotificationItem
                                 design="{view-data>design}"
@@ -31,10 +31,31 @@
                 </ute:Tag>
                 <!-- RHS -->
                 <ute:Tag class="nrgAppFtrDetails-rhs">
+                    <!-- Title -->
+                    <ute:Tag elem="span" class="nrgAppFtrDetails-rhs-title"
+                        text="{comp-i18n-app>nrgAppFtrDetails-rhs-TITLE}" />
+                    <!-- Contents -->
+                    <sm:ScrollContainer class="nrgAppFtrDetails-rhs-content" height="170px" width="100%" horizontal="true" vertical="true">
+                        <ute:Tag class="nrgAppFtrDetails-rhs-item">
+                            <ute:Tag class="nrgAppFtrDetails-rhs-currentTitle nrgAppFtrDetails-rhs-contentTitle"
+                                text="{comp-i18n-app>nrgAppFtrDetails-notification-CURRENT_TITLE}" />
+                        </ute:Tag>
+                        <ute:Tag class="nrgAppFtrDetails-rhs-item">
+                            <ute:Tag class="nrgAppFtrDetails-rhs-pendingTitle nrgAppFtrDetails-rhs-contentTitle"
+                                text="{comp-i18n-app>nrgAppFtrDetails-notification-PENDING_TITLE}" />
+                        </ute:Tag>
+                        <ute:Tag class="nrgAppFtrDetails-rhs-item">
+                            <ute:Tag class="nrgAppFtrDetails-rhs-historyTitle nrgAppFtrDetails-rhs-contentTitle"
+                                text="{comp-i18n-app>nrgAppFtrDetails-notification-HISTORY_TITLE}" />
+                        </ute:Tag>
+                    </sm:ScrollContainer>
                     
                 </ute:Tag>
                 <!-- Eligible Offers -->
                 <ute:Tag class="nrgAppFtrDetails-eligibleOffers">
+                    <!-- Title -->
+                    <ute:Tag elem="span" class="nrgAppFtrDetails-eligibleOffers-title"
+                        text="{comp-i18n-app>nrgAppFtrDetails-eligibleOffers-TITLE}" />
                     
                 </ute:Tag>
             </div>
