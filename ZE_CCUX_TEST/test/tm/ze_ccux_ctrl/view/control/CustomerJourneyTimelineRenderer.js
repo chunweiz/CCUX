@@ -17,71 +17,44 @@ sap.ui.define(
             oRm.writeClasses();
             oRm.write('>');
 
+            // this._renderNavBack(oRm, oCustomControl);
             this._renderChannel(oRm, oCustomControl);
-            this._renderBackNavigation(oRm, oCustomControl);
-            this._renderForwardNavigation(oRm, oCustomControl);
+            // this._renderNavForward(oRm, oCustomControl);
 
             oRm.write('</div>');
         };
 
         CustomRenderer._renderChannel = function (oRm, oCustomControl) {
             oRm.write('<div');
-            oRm.writeAttribute('id', oCustomControl.getId() + '-container');
-            oRm.addClass('tmCJT-container');
+            oRm.addClass('tmCJT-channelContainer');
             oRm.writeClasses();
             oRm.write('>');
 
-            oCustomControl.getChannel().forEach(function (oChannel) {
-                oRm.renderControl(oChannel);
-
-                oRm.write('<div');
-                oRm.addClass('tmCJT-channelLine');
-                if (oChannel.getRightDivider()) {
-                    oRm.addClass('tmCJT-channelLine-small');
-                }
-                oRm.writeClasses();
-                oRm.write('>');
-                oRm.write('</div>');
-
-                if (oChannel.getRightDivider()) {
-                    oRm.write('<div');
-                    oRm.addClass('tmCJT-channelLineDivider');
-                    oRm.writeClasses();
-                    oRm.write('>');
-                    oRm.writeIcon('sap-icon://line-charts');
-                    oRm.write('</div>');
-                    oRm.write('<div');
-                    oRm.addClass('tmCJT-channelLine tmCJT-channelLine-small');
-                    oRm.writeClasses();
-                    oRm.write('>');
-                    oRm.write('</div>');
-                }
-
-            }, this);
+            // oCustomControl.getChannel().forEach(function (oChannel) {
+            //     oRm.renderControl(oChannel);
+            // }, this);
 
             oRm.write('</div>');
         };
 
-        CustomRenderer._renderBackNavigation = function (oRm, oCustomControl) {
-            // Left arrow
-            oRm.write('<span');
-            oRm.writeAttribute('id', oCustomControl.getId() + '-navBack');
+        CustomRenderer._renderNavBack = function (oRm, oCustomControl) {
+            oRm.write('<div');
             oRm.addClass('tmCJT-navBack');
             oRm.writeClasses();
+            oRm.writeAttribute('id', oCustomControl.getId() + '-navBack');
             oRm.write('>');
-            oRm.writeIcon('sap-icon://navigation-left-arrow');
-            oRm.write('</span>');
+
+            oRm.write('</div>');
         };
 
-        CustomRenderer._renderForwardNavigation = function (oRm, oCustomControl) {
-            // Right arrow
-            oRm.write('<span');
-            oRm.addClass('tmCJT-navFwd');
+        CustomRenderer._renderNavForward = function (oRm, oCustomControl) {
+            oRm.write('<div');
+            oRm.addClass('tmCJT-navForward');
             oRm.writeClasses();
-            oRm.writeAttribute('id', oCustomControl.getId() + '-navFwd');
+            oRm.writeAttribute('id', oCustomControl.getId() + '-navForward');
             oRm.write('>');
-            oRm.writeIcon('sap-icon://navigation-right-arrow');
-            oRm.write('</span>');
+
+            oRm.write('</div>');
         };
 
         return CustomRenderer;

@@ -68,7 +68,7 @@ sap.ui.define(
 
             if (!this._oSubmenu) {
                 oView = this._oController.getView();
-                this._oSubmenu = sap.ui.xmlfragment(oView.getId(), 'nrg.module.app.view.AppFooterDetails');
+                this._oSubmenu = sap.ui.xmlfragment(oView.getId(), 'nrg.module.app.view.AppFooterDetails', this._oController);
                 this._oSubmenu.setPosition(oView.byId('appFtr'), '0 0');
                 oView.addDependent(this._oSubmenu);
                 oView.byId('appFtrSMenuCaret').attachEvent('click', this._onFooterSubmenuCaretClick, this);

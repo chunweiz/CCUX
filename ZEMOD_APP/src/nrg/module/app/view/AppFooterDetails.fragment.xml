@@ -1,6 +1,7 @@
 <core:FragmentDefinition
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ua="ute.ui.app"
+    xmlns:sm="sap.m"
     xmlns:ute="ute.ui.commons"
     xmlns:core="sap.ui.core">
 
@@ -14,7 +15,19 @@
             <div class="uteAppHdrSMenu-wrap">
                 <!-- Notifications -->
                 <ute:Tag class="nrgAppFtrDetails-notification">
-                    
+                    <!-- Title -->
+                    <ute:Tag elem="span" class="nrgAppFtrDetails-notification-title"
+                             text="{comp-i18n-app>nrgAppFtrDetails-notification-TITLE}" />
+                    <!-- Contents -->
+                    <sm:ScrollContainer id="content" height="180px" width="100%" horizontal="true" vertical="true">
+                        <ua:FooterNotificationCenter content="{view-data>/notification}">
+                            <ua:FooterNotificationItem
+                                design="{view-data>design}"
+                                link="{view-data>link}"
+                                text="{view-data>text}"
+                                linkPress="._onFooterNotificationLinkPress" />
+                        </ua:FooterNotificationCenter>
+                    </sm:ScrollContainer>
                 </ute:Tag>
                 <!-- RHS -->
                 <ute:Tag class="nrgAppFtrDetails-rhs">
