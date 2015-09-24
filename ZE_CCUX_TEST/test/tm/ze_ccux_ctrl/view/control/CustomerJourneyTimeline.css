@@ -54,6 +54,14 @@
     height: 60px;
 }
 
+.tmCJTChannel.tmCJTChannel-selected {
+    color: gold;
+}
+
+.tmCJTChannel:hover {
+    color: hotpink;
+}
+
 .tmCJTChannel .tmCJTChannel-topLabel {
     display: block;
     width: 100%;
@@ -67,4 +75,8 @@
     display: block;
     font-size: 35px;
     text-align: center;
+}
+
+.tmCJTChannel .tmCJTChannel-icon:hover {
+    cursor: pointer;
 }

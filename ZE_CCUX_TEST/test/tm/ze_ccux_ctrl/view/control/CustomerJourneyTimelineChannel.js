@@ -59,7 +59,7 @@ sap.ui.define(
             this._onDoubleClick = false;
 
             // Wait for a while to determine whether the user intention is to double click.
-            // If it is, do not fire single click.
+            // If it is, do not fire single click. Might want to calibrate the delay
             jQuery.sap.delayedCall(300, this, function () {
                 if (!this._onDoubleClick) {
                     this.firePress();
