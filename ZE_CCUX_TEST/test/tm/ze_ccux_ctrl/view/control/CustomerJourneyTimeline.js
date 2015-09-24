@@ -29,6 +29,16 @@ sap.ui.define(
         CustomControl.SCROLL_STEP = 360;
         CustomControl.SCROLL_DURATION = 500;
 
+        CustomControl.prototype.exit = function () {
+            this.$('navBack').unbind('click', this._onNavBackClick);
+            this.$('navForward').unbind('click', this._onNavForwardClick);
+        };
+
+        CustomControl.prototype.onBeforeRendering = function () {
+            this.$('navBack').unbind('click', this._onNavBackClick);
+            this.$('navForward').unbind('click', this._onNavForwardClick);
+        };
+
         CustomControl.prototype.onAfterRendering = function () {
             this.$('navBack').bind('click', this._onNavBackClick.bind(this));
             this.$('navForward').bind('click', this._onNavForwardClick.bind(this));
@@ -76,8 +86,6 @@ sap.ui.define(
             var iScrollLeft = oChannelContainerDomRef.scrollLeft;
 			var iScrollWidth = oChannelContainerDomRef.scrollWidth;
 			var iClientWidth = oChannelContainerDomRef.clientWidth;
-
-            console.log('iScrollLeft', iScrollLeft, 'iScrollWidth', iScrollWidth, 'iClientWidth', iClientWidth);
 
             var bScrollBack = false;
 			var bScrollForward = false;
