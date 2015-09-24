@@ -42,7 +42,8 @@ sap.ui.define(
             return this._oApp;
         };
 
-        CustomController.prototype._onLinkPress = function (oControlEvent) {
+        // Click the links under the Notification section in the footer
+        CustomController.prototype._onFooterNotificationLinkPress = function (oControlEvent) {
             console.log(oControlEvent.getSource());
         };
 
