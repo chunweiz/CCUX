@@ -92,7 +92,7 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     if (oData) {
-                        this.getView().getModel('oPmtSummary').setData(oData);
+                        this.getView().getModel('oPmtSummary').setData(oData.results[0]);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -161,6 +161,20 @@ sap.ui.define(
             } else {
                 sFormattedDate = (oDate.getMonth() + 1).toString() + '/' + oDate.getDate().toString() + '/' + oDate.getFullYear().toString();
                 return sFormattedDate;
+            }
+        };
+        CustomController.prototype._formatBoolCurChrg = function (sIndicator) {
+            if (sIndicator === 'X' || sIndicator === 'x') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        CustomController.prototype._formatBoolCurChrg_Rev = function (sIndicator) {
+            if (sIndicator === 'X' || sIndicator === 'x') {
+                return false;
+            } else {
+                return true;
             }
         };
         /*************************************************************************************************************************/
