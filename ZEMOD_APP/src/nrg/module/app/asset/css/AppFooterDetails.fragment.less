@@ -71,12 +71,18 @@
                     font-size: @nrgFontSize-small;
                 
                     & .nrgAppFtrDetails-rhs-item {
+                        width: 239px;
                         padding: 17px 0;
                         border-bottom: 1px dashed @nrgColor-grey-dark;
 
-                        & .nrgAppFtrDetails-rhs-contentTitle {
+                        & .nrgAppFtrDetails-rhs-itemTitle {
+                            display: inline-block;
                             color: @nrgColor-blueLink;
-                            width: 60px;
+                            width: 55px;
+                        }
+                        
+                        & .nrgAppFtrDetails-rhs-itemContent {
+                            display: inline-block;
                         }
                     }
                 }

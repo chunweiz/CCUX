@@ -23,7 +23,12 @@ sap.ui.define(
                     { link: false, design: 'Information', text: 'This is a normal text.' },
                     { link: true, design: 'Error', text: 'Late fee for last month was not paid.' },
                     { link: true, design: 'Error', text: 'Disconnection notice amount - $130.00. Net amount - $110.00. Due Date: 11/20/2014' }
-                ]
+                ],
+                rhs : {
+                    current: 'Water Heater Protect $1000',
+                    pending: 'None',
+                    history: 'Plumbing Essentials'
+                }
             }), 'view-data');
         };
 
