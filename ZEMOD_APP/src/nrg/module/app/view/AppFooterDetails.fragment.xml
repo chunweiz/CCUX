@@ -19,7 +19,7 @@
                     <ute:Tag elem="span" class="nrgAppFtrDetails-notification-title"
                         text="{comp-i18n-app>nrgAppFtrDetails-notification-TITLE}" />
                     <!-- Contents -->
-                    <sm:ScrollContainer class="nrgAppFtrDetails-notification-content" height="170px" width="100%" horizontal="true" vertical="true">
+                    <sm:ScrollContainer class="nrgAppFtrDetails-notification-content" height="230px" width="100%" horizontal="true" vertical="true">
                         <ua:FooterNotificationCenter content="{view-data>/notification}">
                             <ua:FooterNotificationItem
                                 design="{view-data>design}"
