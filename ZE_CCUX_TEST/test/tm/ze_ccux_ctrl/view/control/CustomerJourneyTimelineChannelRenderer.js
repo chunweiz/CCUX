@@ -15,10 +15,8 @@ sap.ui.define(
             oRm.writeClasses();
             oRm.write('>');
 
-            this._renderLeftLine(oRm, oCustomControl);
-            // this._renderTopLabel(oRm, oCustomControl);
+            this._renderTopLabel(oRm, oCustomControl);
             this._renderIcon(oRm, oCustomControl);
-            this._renderRightLine(oRm, oCustomControl);
 
             oRm.write('</div>');
         };
