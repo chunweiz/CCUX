@@ -12,13 +12,16 @@ sap.ui.define(
             oRm.write('<div');
             oRm.writeControlData(oCustomControl);
             oRm.addClass('tmCJTChannel');
+
+            if (oCustomControl.getSelected()) {
+                oRm.addClass('tmCJTChannel-selected');
+            }
+
             oRm.writeClasses();
             oRm.write('>');
 
-            this._renderLeftLine(oRm, oCustomControl);
-            // this._renderTopLabel(oRm, oCustomControl);
+            this._renderTopLabel(oRm, oCustomControl);
             this._renderIcon(oRm, oCustomControl);
-            this._renderRightLine(oRm, oCustomControl);
 
             oRm.write('</div>');
         };
@@ -38,6 +41,7 @@ sap.ui.define(
 
         CustomRenderer._renderIcon = function (oRm, oCustomControl) {
             oRm.write('<div');
+            oRm.writeAttribute('id', oCustomControl.getId() + '-icon');
             oRm.addClass('tmCJTChannel-icon');
             oRm.writeClasses();
             oRm.write('>');
