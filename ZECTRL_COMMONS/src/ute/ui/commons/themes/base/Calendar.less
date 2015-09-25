@@ -1,0 +1,133 @@
+.uteCal {
+    outline: none;
+    padding: 16px;
+    font-family: @uteFontFamily;
+    font-size: @uteControlFontSize;
+    width: 340px;
+    height: 220px;
+    background-color: @uteColorWhite;
+    & > .uteCal-hd {
+          width: 100%;
+          height: 20px;
+          text-align: center;
+        }
+    & > .uteCal-hd > .uteCal-hd-btnMonth {
+                  width: 30%;
+             }
+    & > .uteCal-hd > .uteCal-hd-btnYear {
+                  width: 18%;
+                  text-align: left;
+             }
+    & > .uteCal-hd > .uteCal-hd-btnPrev, .uteCal-hd-btnNext, .uteCal-hd-btnMonth, .uteCal-hd-btnYear {
+                  background-color: transparent;
+                  border: none;
+                  color: @uteColorDarkGrey;
+                  cursor: pointer;
+                  height: 18px;
+                  font-size: @uteControlFontSize;
+                  font-weight: @uteFontWeightSemiBold;
+                  outline: 0px;
+             }
+
+    & > .uteCal-dayPic{
+          outline: 0px;
+        }
+    & > .uteCal-dayPic > .uteCal-dayPic-day {
+                  font-size: @uteControlFontSize;
+                  font-weight: @uteFontWeightRegular;
+                  height: 28px;
+                  line-height: 28px;
+                  color:  @uteColorLightGrey;
+                  border: 2px solid transparent;
+                  float: left;
+                  cursor: default;
+                  text-align: center;
+                  margin-right: 10px;
+                  margin-top: 1px;
+                  box-sizing: border-box;
+                  width: 10.5%;
+                  & > :not(span), :before, :after { box-sizing: inherit; }
+             }
+    & > .uteCal-dayPic > .uteCal-dayPic-day:focus , .uteCal-dayPic-day:visited {
+                  border: 2px solid transparent;
+                  border-radius: 6px;
+                  background-color: @uteColorBlueLink;
+                  color: #ffffff;
+                  outline: 0px;
+             }
+    & > .uteCal-dayPic > .uteCal-dayPic-daySelected {
+                  border: 2px solid transparent;
+                  border-radius: 6px;
+                  background-color: @uteColorBlueLink;
+                  color: #ffffff;
+                  outline: 0px;
+             }
+    & > .uteCal-dayPic > .uteCal-dayPic-day:hover {
+                  border: 2px solid @uteColorBlueLink;
+                  border-radius: 6px;
+              }
+    & > .uteCal-dayPic > .uteCal-dayPic-dayWeekend {
+                  color: @uteColorDarkGrey;
+                  font-weight: @uteFontWeightSemiBold;
+             }
+    & > .uteCal-dayPic > .uteCal-dayPic-dayOtherMonth {
+                  color: @uteColorLightPaleBlue;
+             }
+    & > .uteCal-dayPic > .uteCal-dayPic-dayNoRange {
+                  color: @uteColorLightPaleBlue;
+             }
+    & > .uteCal-dayPic > .uteCal-dayPic-dayOtherMonth:focus ,  :visited {
+                  border: 2px solid transparent;
+                  background-color: @uteColorWhite;
+                  color: @uteColorLightPaleBlue;
+                  outline: 0px;
+             }
+    & > .uteCal-dayPic > .uteCal-dayPic-dayNoRange:focus ,  :visited {
+                  border: 2px solid transparent;
+                  background-color: @uteColorWhite;
+                  color: @uteColorLightPaleBlue;
+                  outline: 0px;
+             }
+    & > .uteCal-dayPic > .uteCal-dayPic-dayOtherMonth:hover {
+                  border: 2px solid transparent;
+             }
+    & > .uteCal-dayPic > .uteCal-dayPic-dayNoRange:hover {
+                  border: 2px solid transparent;
+             }
+    & > .uteCal-dayPic-week{
+          outline: 0px;
+         }
+    & > .uteCal-dayPic-week > .uteCal-dayPic-weekHead {
+                  float: left;
+                  cursor: default;
+                  text-align: center;
+                  margin-right: 10px;
+                  margin-top: 1px;
+                  width: 10.5%;
+                  font-size: @uteControlFontSize;
+                  font-weight: @uteFontWeightSemiBold;
+                  color: @uteColorLightGrey;
+                  height: 32px;
+                  line-height: 30px;
+            }
+
+    &  .UiIcon {
+          display: inline-block;
+          outline:0px;
+      }
+    &  .UiIcon-right {
+          width: 0;
+          height: 0;
+          border-top: 6px solid transparent;
+          border-bottom: 6px solid transparent;
+          border-left: 6px solid @uteColorLightGrey;
+      }
+    &  .UiIcon-left {
+          width: 0;
+          height: 0;
+          border-top: 6px solid transparent;
+          border-bottom: 6px solid transparent;
+          border-right: 6px solid @uteColorLightGrey;
+      }
+
+}

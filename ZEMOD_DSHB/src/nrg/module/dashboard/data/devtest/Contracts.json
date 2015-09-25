@@ -1,0 +1,234 @@
+{
+    "d":{
+        "results":[
+            {
+                "__metadata":{
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('32192644')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('32192644')",
+                    "type":"ZE_CCUX_SRV.Contract"
+                },
+                "ContractID":"32192644",
+                "PartnerID":"0000064041",
+                "ContractAccountID":"100738",
+                "ContractStatus":"ACTIVE",
+                "HoveringStatus":"20110602",
+                "TdspName":"CENTERPOINT ENERGY",
+                "TDSPSrvPhNumber":"Service phone(s):  713-207-2222  **OR**  800-332-7143",
+                "TDSPOutPhNumber":"Outage phone(s):  713-207-2222  **OR**  800-332-7143",
+                "MeterNumber":"SM0000071399",
+                "MeterDescription":"TDSP",
+                "AdvMeter":"X",
+                "RemoteMeter":"X",
+                "ProvisionMeter":"X",
+                "RateClass":"RERG Res Mass",
+                "ESID":"1008901035360261080100",
+                "PremiseID":"0000069581",
+                "HouseNum1":"5939",
+                "Street":"COUNTY ROAD 168",
+                "HouseNum2":"",
+                "City1":"ALVIN",
+                "Region":"TX",
+                "PostCode1":"77511-7962",
+                "DisplayName":"( 32192644 ) 5939 COUNTY ROAD 168  ALVIN TX 77511-7962",
+                "SmartMeter":"X",
+                "JointAcc":"",
+                "Premise":{
+                    "__deferred":{
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('32192644')/Premise"
+                    }
+                },
+                "Partner":{
+                    "__deferred":{
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('32192644')/Partner"
+                    }
+                },
+                "StatusViews":{
+                    "__deferred":{
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('32192644')/StatusViews"
+                    }
+                },
+                "Campaigns":{
+                    "__deferred":{
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('32192644')/Campaigns"
+                    }
+                },
+                "Buag":{
+                    "__deferred":{
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('32192644')/Buag"
+                    }
+                }
+            },
+            {
+                "__metadata":{
+                    "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5782721')",
+                    "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5782721')",
+                    "type":"ZE_CCUX_SRV.Contract"
+                },
+                "ContractID":"5782721",
+                "PartnerID":"1121773",
+                "ContractAccountID":"2069899",
+                "ContractStatus":"INACTIVE",
+                "HoveringStatus":"20060614",
+                "TdspName":"CENTERPOINT ENERGY",
+                "TDSPSrvPhNumber":"Service phone(s):  713-207-2222  **OR**  800-332-7143",
+                "TDSPOutPhNumber":"Outage phone(s):  713-207-2222  **OR**  800-332-7143",
+                "MeterNumber":"SM0000967350",
+                "MeterDescription":"Non-interval meter",
+                "AdvMeter":"X",
+                "RemoteMeter":"",
+                "ProvisionMeter":"X",
+                "RateClass":"RERG Bus Svcs",
+                "ESID":"1008901023806695440100",
+                "PremiseID":"0000973046",
+                "HouseNum1":"777",
+                "Street":"WALKER ST",
+                "HouseNum2":"C420",
+                "City1":"HOUSTON",
+                "Region":"TX",
+                "PostCode1":"77002-5316",
+                "DisplayName":"( 5782721 ) 777 WALKER ST C420 HOUSTON TX 77002-5316",
+                "SmartMeter":"",
+                "JointAcc":"",
+                "Premise":{
+                    "__deferred":{
+                        "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5782721')/Premise"
+                    }
+                },
+                "Partner":{
+                    "__deferred":{
+                        "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5782721')/Partner"
+                    }
+                },
+                "StatusViews":{
+                    "__deferred":{
+                        "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5782721')/StatusViews"
+                    }
+                },
+                "Campaigns":{
+                    "__deferred":{
+                        "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5782721')/Campaigns"
+                    }
+                },
+                "Buag":{
+                    "__deferred":{
+                        "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5782721')/Buag"
+                    }
+                }
+            },
+            {
+                "__metadata":{
+                    "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5879205')",
+                    "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5879205')",
+                    "type":"ZE_CCUX_SRV.Contract"
+                },
+                "ContractID":"5879205",
+                "PartnerID":"0001121773",
+                "ContractAccountID":"1289967",
+                "ContractStatus":"INACTIVE",
+                "HoveringStatus":"20050713",
+                "TdspName":"CENTERPOINT ENERGY",
+                "TDSPSrvPhNumber":"Service phone(s):  713-207-2222  **OR**  800-332-7143",
+                "TDSPOutPhNumber":"Outage phone(s):  713-207-2222  **OR**  800-332-7143",
+                "MeterNumber":"S18379130",
+                "MeterDescription":"Non-interval meter",
+                "AdvMeter":"",
+                "RemoteMeter":"",
+                "ProvisionMeter":"",
+                "RateClass":"RERG Bus Svcs",
+                "ESID":"1008901023809092090100",
+                "PremiseID":"0000177906",
+                "HouseNum1":"3",
+                "Street":"E GREENWAY PLZ",
+                "HouseNum2":"B114",
+                "City1":"HOUSTON",
+                "Region":"TX",
+                "PostCode1":"77046-0322",
+                "DisplayName":"( 5879205 ) 3 E GREENWAY PLZ B114 HOUSTON TX 77046-0322",
+                "SmartMeter":"",
+                "JointAcc":"",
+                "Premise":{
+                    "__deferred":{
+                        "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5879205')/Premise"
+                    }
+                },
+                "Partner":{
+                    "__deferred":{
+                        "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5879205')/Partner"
+                    }
+                },
+                "StatusViews":{
+                    "__deferred":{
+                        "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5879205')/StatusViews"
+                    }
+                },
+                "Campaigns":{
+                    "__deferred":{
+                        "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5879205')/Campaigns"
+                    }
+                },
+                "Buag":{
+                    "__deferred":{
+                        "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5879205')/Buag"
+                    }
+                }
+            },
+            {
+                "__metadata":{
+                    "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5879206')",
+                    "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5879206')",
+                    "type":"ZE_CCUX_SRV.Contract"
+                },
+                "ContractID":"5879206",
+                "PartnerID":"0001121773",
+                "ContractAccountID":"1289967",
+                "ContractStatus":"INACTIVE",
+                "HoveringStatus":"20050713",
+                "TdspName":"TEST DATA CENTERPOINT ENERGY",
+                "TDSPSrvPhNumber":"Service phone(s):  713-207-2222  **OR**  800-332-7143",
+                "TDSPOutPhNumber":"Outage phone(s):  713-207-2222  **OR**  800-332-7143",
+                "MeterNumber":"S18371111",
+                "MeterDescription":"TEST DATA Non-interval meter",
+                "AdvMeter":"",
+                "RemoteMeter":"",
+                "ProvisionMeter":"",
+                "RateClass":"TEST Bus Svcs",
+                "ESID":"1008901023809092091111",
+                "PremiseID":"0000177906",
+                "HouseNum1":"1111",
+                "Street":"TEST E GREENWAY PLZ",
+                "HouseNum2":"B114",
+                "City1":"HOUSTON",
+                "Region":"TX",
+                "PostCode1":"77046-0322",
+                "DisplayName":"( 5879206 ) 1111 TEST E GREENWAY PLZ B114 HOUSTON TX 77046-0322",
+                "SmartMeter":"",
+                "JointAcc":"",
+                "Premise":{
+                    "__deferred":{
+                        "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5879206')/Premise"
+                    }
+                },
+                "Partner":{
+                    "__deferred":{
+                        "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5879206')/Partner"
+                    }
+                },
+                "StatusViews":{
+                    "__deferred":{
+                        "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5879206')/StatusViews"
+                    }
+                },
+                "Campaigns":{
+                    "__deferred":{
+                        "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5879206')/Campaigns"
+                    }
+                },
+                "Buag":{
+                    "__deferred":{
+                        "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Contracts('5879206')/Buag"
+                    }
+                }
+            }
+        ]
+    }
+}

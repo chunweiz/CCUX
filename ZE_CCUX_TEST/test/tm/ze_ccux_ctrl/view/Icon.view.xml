@@ -1,0 +1,35 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:um="ute.ui.main"
+    xmlns:uc="ute.ui.commons"
+    controllerName="test.tm.ze_ccux_ctrl.view.Icon"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <style>
+        .custom {
+            font-size: 18pt;
+            padding: 5px;
+        }
+
+        .custom .icon {
+            padding-right: 10px;
+        }
+
+        .custom:hover {
+            color: tomato;
+            font-size: 32pt;
+        }
+    </style>
+
+    <uc:Tag elem="span" content="{nrgIcon>/icon}">
+        <uc:Tag class="custom">
+            <core:Icon src="{nrgIcon>key}" class="icon" /><uc:Tag elem="span" text="{nrgIcon>value}" />
+        </uc:Tag>
+    </uc:Tag>
+
+</mvc:View>

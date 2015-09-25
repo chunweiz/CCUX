@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html style="height:100%">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>NRG Reliant Interaction Center</title>
+		<script id="sap-ui-bootstrap"
+		    src="../../../../../ZELIB/openui5/resources/sap-ui-core.js"
+            data-sap-ui-theme="sap_bluecrystal"
+            data-sap-ui-bindingSyntax="complex"
+            data-sap-ui-animation="false"
+            data-sap-ui-preload="async"
+			data-sap-ui-libs="sap.ui.commons, sap.m, ute.ui.commons, ute.ui.main, ute.ui.app"
+            data-sap-ui-resourceroots='{
+                "ute.ui.commons": "../../../../../ZECTRL_COMMONS/build/ute/ui/commons",
+                "ute.ui.main": "../../../../../ZECTRL_MAIN/build/ute/ui/main",
+                "ute.ui.app": "../../../../../ZECTRL_APP/build/ute/ui/app",
+                "nrg.component.ic": "./",
+                "nrg.base": "../../../../../ZEBASE/build/nrg/base",
+                "nrg.module.app": "../../../../../ZEMOD_APP/build/nrg/module/app",
+                "nrg.module.others": "../../../../../ZEMOD_OTHERS/build/nrg/module/others",
+                "nrg.module.dashboard": "../../../../../ZEMOD_DSHB/build/nrg/module/dashboard",
+                "nrg.module.campaign": "../../../../../ZEMOD_CMPGN/build/nrg/module/campaign",
+                "nrg.module.quickpay": "../../../../../ZEMOD_QUICKPAY/build/nrg/module/quickpay",
+                "nrg.module.billing": "../../../../../ZEMOD_BILLING/build/nrg/module/billing",
+                "nrg.module.bupa": "../../../../../ZEMOD_BUPA/build/nrg/module/bupa",
+                "nrg.module.search": "../../../../../ZEMOD_SEARCH/build/nrg/module/search",
+                "nrg.module.usage": "../../../../../ZEMOD_USAGE/build/nrg/module/usage",
+                "nrg.module.nnp": "../../../../../ZEMOD_NNP/build/nrg/module/nnp"
+            }'>
+		</script>
+        <script>
+            sap.ui.getCore().attachInit(function () {
+                new sap.ui.core.ComponentContainer({
+                    height: '100%',
+                    width: '100%',
+                    name: 'nrg.component.ic'
+                }).placeAt('content');
+            });
+		</script>
+	</head>
+	<body role="application" class="nrgUiBody" id="content">
+	</body>
+</html>

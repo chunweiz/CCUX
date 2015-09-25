@@ -1,0 +1,52 @@
+.uteTextField-float {
+	position: relative;
+	overflow: hidden;
+	background-color: #FFF;
+	display: block;
+	margin-bottom: 10px;
+	border-radius: 3px;
+}
+
+.uteTextField-float > .uteTextField-float-input {
+	position: relative;
+	outline: none;
+	border: none;
+	width: 100%;
+    background: none;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+.uteTextField-float > .uteTextField-float-input:focus + label {
+  	right: 0;
+    margin-right: 0;
+    width: 35%;
+}
+.uteTextField-float > .uteTextField-float-input:valid + label {
+	right: 0;
+    margin-right: 0;
+    width: 35%;
+}
+.uteTextField-float > .uteTextField-float-input:valid {
+	width: 65%;
+}
+.uteTextField-float > .uteTextField-float-input:focus {
+	width: 65%;
+}
+.uteTextField-float > .uteTextField-float-label {
+	padding-top: 5px;
+	padding-left: 10px;
+	position: absolute;
+	right: 100%;
+    width: 100%;
+    height: 100%;
+    margin-right: -100%;
+	background-color: #EFEEEE;
+	font-size: 16px;
+	color: #cacacb;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

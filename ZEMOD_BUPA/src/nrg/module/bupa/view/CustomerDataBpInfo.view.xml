@@ -1,0 +1,663 @@
+<!--Routing Pattern: BpInfo/{bpNum}-->
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:utmain="ute.ui.main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.commons"
+    xmlns:l="sap.ui.commons.layout"
+    xmlns:core="sap.ui.core"
+    controllerName="nrg.module.bupa.view.CustomerDataBpInfo">
+
+    <ute:Tag class="nrgAppMain-generalContent nrgBupa-cusDataBpInfo">
+        
+        <!-- BP Number -->
+        <ute:Tag elem="span" class="nrgBupa-cusDataBpInfo-scrnTitle"
+                 text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-BUSINESS_PARTNER}" />
+        <!-- Back To Dashboard -->
+        <ute:Tag elem="span" class="nrgBupa-cusDataBpInfo-r-btn">
+            <utmain:Button design="None" class="nrgBupa-cusDataBpInfo-CommBtn" press="onBackToDashboard">
+                <core:Icon src="sap-icon://slim-arrow-left" class="nrgBupa-cusDataBpInfo-Icon" />
+                <ute:Tag elem="span" class="nrgBupa-cusDataBpInfo-btn-text"
+                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-BACK}" />
+            </utmain:Button>
+        </ute:Tag>
+        <!-- ----- -->
+        <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-horiLine-div clearfix">
+            <ute:HorizontalDivider width="16%" class="nrgBupa-cusDataBpInfo-horiLine"/>
+        </ute:Tag>
+        <!-- BP Title/Name -->
+        <utmain:Infoline class="nrgBupa-cusDataBpInfo-infoLine" expanded="true" press=".onTitlePressed">
+            <utmain:headerContent>
+                <ute:TextView class="nrgBupa-cusDataBpInfo-infoLineHeader-txt"
+                              text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-TITLE_NAME}"/>
+            </utmain:headerContent>
+            <utmain:content>
+                <!-- Title & Maiden Name -->
+                <ute:Tag class="nrgBupa-cusDataBpInfo-divrow">
+                    <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                             text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-TITLE}:" />
+                    <utmain:Dropdown design="Default"
+                                     class="nrgBupa-cusDataBpInfo-dropdown"
+                                     content="{ODataBpTitles>/results}"
+                                     selectedKey="{ODataBpName>/Title}"
+                                     select=".onSelectedTitle"
+                                     enabled="{oBpInfoConfig>/titleEditable}">
+                        <utmain:DropdownItem key="{ODataBpTitles>Key}">
+                            <ute:Tag text="{ODataBpTitles>Value}" class="nrgBupa-cusDataBpInfo-cnt_Dropdown"/>
+                        </utmain:DropdownItem>
+                    </utmain:Dropdown>
+                    <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl-r"
+                              text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-MAIDEN_NAME}:" />
+                    <ute:Textfield fieldType="Noborder"
+                                   class="nrgBupa-cusDataBpInfo-cnt"
+                                   editable="{oBpInfoConfig>/titleEditable}"
+                                   value="{ODataBpName>/MaidenName}"/>
+                </ute:Tag>
+                <!-- Academic Title & Middle Name -->
+                <ute:Tag class="nrgBupa-cusDataBpInfo-divrow">
+                    <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                             text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-ACDEMIC_TITLE}:" />
+                    <utmain:Dropdown design="Default"
+                                     class="nrgBupa-cusDataBpInfo-dropdown"
+                                     content="{ODataBpAccTitles>/results}"
+                                     selectedKey="{ODataBpName>/AcademicTitle}"
+                                     select=".onSelectedAccTitle"
+                                     enabled="{oBpInfoConfig>/titleEditable}">
+                        <utmain:DropdownItem key="{ODataBpAccTitles>Key}">
+                           <ute:Tag text="{ODataBpAccTitles>Value}" class="nrgBupa-cusDataBpInfo-cnt_Dropdown"/>
+                        </utmain:DropdownItem>
+                    </utmain:Dropdown>
+                    <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl-r"
+                             text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-MIDDLE_NAME}:" />
+                    <ute:Textfield fieldType="Noborder"
+                            class="nrgBupa-cusDataBpInfo-cnt"
+                            editable="{oBpInfoConfig>/titleEditable}"
+                            value="{ODataBpName>/MiddleName}"/>
+                </ute:Tag>
+                <!-- First Name & Suffix -->
+                <ute:Tag class="nrgBupa-cusDataBpInfo-divrow">
+                    <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                             text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-FIRST_NAME}:" />
+                    <ute:Textfield fieldType="Noborder"
+                             class="nrgBupa-cusDataBpInfo-cnt"
+                             editable="{oBpInfoConfig>/titleEditable}"
+                             value="{ODataBpName>/FirstName}"/>
+                    <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl-r  nrgBupa-cusDataBpInfo-cnt-sufx"
+                             text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-SUFFIX}:" />
+                    <utmain:Dropdown design="Default"
+                             class="nrgBupa-cusDataBpInfo-dropdown"
+                             content="{ODataBpSuffixs>/results}"
+                             selectedKey="{ODataBpName>/Suffix}"
+                             select=".onSelectedSuffix"
+                             enabled="{oBpInfoConfig>/titleEditable}">
+                        <utmain:DropdownItem key="{ODataBpSuffixs>Key}">
+                            <ute:Tag text="{ODataBpSuffixs>Value}" class="nrgBupa-cusDataBpInfo-cnt_Dropdown"/>
+                        </utmain:DropdownItem>
+                    </utmain:Dropdown>
+                </ute:Tag>
+                <l:MatrixLayout
+                    class="nrgBupa-cusDataBpInfo-layout"
+                    widths="500px,500px" columns="2" width="100%">
+                    <l:rows>
+                        <l:MatrixLayoutRow>
+                            <l:cells>
+                                <!--Area Left-->
+                                <l:MatrixLayoutCell class="nrgBupa-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-LAST_NAME}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               editable="{oBpInfoConfig>/titleEditable}"
+                                                               value="{ODataBpName>/LastName}"/>
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+
+                            </l:cells>
+                        </l:MatrixLayoutRow>
+                    </l:rows>
+                </l:MatrixLayout>
+                <!-- Buttons -->
+                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-btn clearfix">
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
+                                   press="onTitleCancel"
+                                   visible="{oBpInfoConfig>/titleSaveVisible}"
+                                   text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-CANCEL}"/>
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnEdit nrgBupa-cusDataBpInfo-alignCenBtn"
+                                   press="onTitleEdit"
+                                   visible="{oBpInfoConfig>/titleEditVisible}"
+                                   text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-EDIT}"/>
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
+                                   press="onTitleSave"
+                                   visible="{oBpInfoConfig>/titleSaveVisible}"
+                                   text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-SAVE}"/>
+                </ute:Tag>
+            </utmain:content>
+        </utmain:Infoline>
+        <!-- BP Address -->
+        <utmain:Infoline class="nrgBupa-cusDataBpInfo-infoLine" expanded="true" press=".onAddressPressed">
+            <utmain:headerContent>
+                <ute:TextView class="nrgBupa-cusDataBpInfo-infoLineHeader-txt"
+                              text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-ADDRESS}"/>
+            </utmain:headerContent>
+            <utmain:content>
+                <l:MatrixLayout
+                    class="nrgBupa-cusDataBil-layout"
+                    widths="700px,300px" columns="2" width="100%">
+                    <l:rows>
+                        <l:MatrixLayoutRow>
+                            <l:cells>
+                                <!--Area Left-->
+                                <l:MatrixLayoutCell class="nrgBupa-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="16.5%,83.5%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div"
+                                                         class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-STREET_NAME}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield id="idBpInfoStreet_Edit" fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               change="._onBpInfoRegAddrEdit"
+                                                               editable="{oBpInfoConfig>/addrEditable}"
+                                                               value="{oDataBpAddress>/AddressInfo/Street}"/>
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+
+                                <!--Area right-->
+                                <l:MatrixLayoutCell class="nrgBupa-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="50%,50%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-STREET_NUMBER}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield id="idBpInfoHouseNo_Edit" fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               change="._onBpInfoRegAddrEdit"
+                                                               editable="{oBpInfoConfig>/addrEditable}"
+                                                               value="{oDataBpAddress>/AddressInfo/HouseNo}"/>
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+                            </l:cells>
+                        </l:MatrixLayoutRow>
+                    </l:rows>
+                </l:MatrixLayout>
+
+                <l:MatrixLayout
+                    class="nrgBupa-cusDataBil-layout"
+                    widths="500px,500px" columns="2" width="100%">
+                    <l:rows>
+                        <l:MatrixLayoutRow>
+                            <l:cells>
+                                <!--Area Left-->
+                                <l:MatrixLayoutCell class="nrgBupa-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="24%,76%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-APP_UNIT}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               editable="{oBpInfoConfig>/addrEditable}"
+                                                               value="{oDataBpAddress>/AddressInfo/UnitNo}"/>
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+
+                                <!--Area right-->
+                                <l:MatrixLayoutCell class="nrgBupa-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="15%,85%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-POBOX}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield id="idBpInfoPobox_Edit" fieldType="Noborder"
+                                                               change="._onBpInfoPoBoxEdit"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               editable="{oBpInfoConfig>/addrEditable}"
+                                                               value="{oDataBpAddress>/AddressInfo/PoBox}"/>
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+                            </l:cells>
+                        </l:MatrixLayoutRow>
+                    </l:rows>
+                </l:MatrixLayout>
+
+                <l:MatrixLayout
+                    class="nrgBupa-cusDataBil-layout"
+                    widths="400px,200px,400px" columns="3" width="100%">
+                    <l:rows>
+                        <l:MatrixLayoutRow>
+                            <l:cells>
+                                <!--Area Left-->
+                                <l:MatrixLayoutCell class="nrgBupa-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="30%,70%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-CITY}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               editable="{oBpInfoConfig>/addrEditable}"
+                                                               value="{oDataBpAddress>/AddressInfo/City}"/>
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+
+                                <!--Area middle-->
+                                <l:MatrixLayoutCell class="nrgBupa-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="30%,70%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-STATE}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               editable="{oBpInfoConfig>/addrEditable}"
+                                                               value="{oDataBpAddress>/AddressInfo/State}"/>
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+
+                                <!--Area right-->
+                                <l:MatrixLayoutCell class="nrgBupa-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="20%,80%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-ZIP_CODE}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               editable="{oBpInfoConfig>/addrEditable}"
+                                                               value="{oDataBpAddress>/AddressInfo/ZipCode}"/>
+                                                <!--value="{path: 'oDataBpAddress>/AddressInfo/ZipCode',
+                                                                       type: 'nrg.base.type.ZipCode',
+                                                                       constraints: { mandatory: true }}"-->
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+                            </l:cells>
+                        </l:MatrixLayoutRow>
+                    </l:rows>
+                </l:MatrixLayout>
+                <!-- Buttons -->
+                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-btn clearfix">
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
+                                   press="onAddrCancel"
+                                   visible="{oBpInfoConfig>/addrSaveVisible}"
+                                   text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-CANCEL}"/>
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnEdit nrgBupa-cusDataBpInfo-alignCenBtn"
+                                   press="onAddrEdit"
+                                   visible="{oBpInfoConfig>/addrEditVisible}"
+                                   text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-EDIT}"/>
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
+                                   press="onAddrSave"
+                                   visible="{oBpInfoConfig>/addrSaveVisible}"
+                                   text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-SAVE}"/>
+                </ute:Tag>
+            </utmain:content>
+        </utmain:Infoline>
+        <!-- BP Personal Info -->
+        <utmain:Infoline class="nrgBupa-cusDataBpInfo-infoLine" expanded="true" press=".onPersonalInfoPressed">
+            <utmain:headerContent>
+                <ute:TextView class="nrgBupa-cusDataBpInfo-infoLineHeader-txt"
+                              text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-PERSONAL_INFO}"/>
+            </utmain:headerContent>
+            <utmain:content>
+                <l:MatrixLayout
+                    class="nrgBupa-cusDataBil-layout"
+                    widths="500px,500px" columns="2" width="100%">
+                    <l:rows>
+                        <l:MatrixLayoutRow>
+                            <l:cells>
+                                <!-- Left Sice -->
+                                <l:MatrixLayoutCell class="nrgBupa-cusDataBpInfo-l">
+                                    <!-- DOB -->
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-DOB}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               editable="false"
+                                                               value="{parts:['oDataBpPersonal>/Dob'], formatter:'._formatDate'}"/>
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <!-- Language -->
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-LANGUAGE}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               editable="false"
+                                                               value="{parts:['oDataBpPersonal>/Language'], formatter:'._formatLanguage'}"/>
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+                                <!-- Right Side -->
+                                <l:MatrixLayoutCell class="nrgBupa-cusDataBpInfo-l">
+                                    <!-- SSN -->
+                                    <l:MatrixLayout widths="15%,80%,5%" columns="3">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-SS}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               editable="{oBpInfoConfig>/personalInfoSSEditable}"
+                                                               value="{oDataBpPersonal>/SSN}"/>
+                                            </l:MatrixLayoutCell>
+                                            <!--value="{path: 'oDataBpPersonal>/SSN', type: 'nrg.base.type.SocialSecurityNumber', constraints: { mandatory: true }}"/>-->
+                                            <l:MatrixLayoutCell>
+                                                <utmain:Checkbox enabled="false" checked="true"
+                                                    class="nrgBupa-cusDataBpInfo-halChb"
+                                                    visible="{
+					                                   parts:['oDataBpPersonal>/SSNVerify'],
+					                                   formatter:'._formatVrfyMark'}"/>
+                                                <ute:TextView
+                                                    text="{comp-i18n-bupa>nrgBupaCusDatVrf_RedX}"
+                                                    class="nrgBupa-cusDataBpInfo-redX"
+                                                    visible="{
+					                                   parts:['oDataBpPersonal>/SSNVerify', 'oDataBpPersonal>/SSN'],
+					                                   formatter:'._formatVrfyMarkRedX'}"/>
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <!-- DL -->
+                                    <l:MatrixLayout widths="15%,80%,5%" columns="3">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-DL}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               editable="{oBpInfoConfig>/personalInfoDLEditable}"
+                                                               value="{path: 'oDataBpPersonal>/DL', type: 'nrg.base.type.DrivingLicenseNumber', constraints: { mandatory: true }}"/>
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <utmain:Checkbox enabled="false" checked="true"
+                                                    class="nrgBupa-cusDataBpInfo-halChb"
+                                                    visible="{
+					                                   parts:['oDataBpPersonal>/DLVerify'],
+					                                   formatter:'._formatVrfyMark'}"/>
+                                                <ute:TextView
+                                                    text="{comp-i18n-bupa>nrgBupaCusDatVrf_RedX}"
+                                                    class="nrgBupa-cusDataBpInfo-redX"
+                                                    visible="{
+                                                        parts:['oDataBpPersonal>/DLVerify', 'oDataBpPersonal>/DL'],
+                                                        formatter:'._formatVrfyMarkRedX'}"/>
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+
+                            </l:cells>
+                        </l:MatrixLayoutRow>
+                    </l:rows>
+                </l:MatrixLayout>
+                <!-- Buttons -->
+                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-btn clearfix">
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
+                                   press="onPersonalInfoCancel"
+                                   visible="{oBpInfoConfig>/personalInfoSaveVisible}"
+                                   text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-CANCEL}"/>
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnEdit nrgBupa-cusDataBpInfo-alignCenBtn"
+                                   press="onPersonalInfoEdit"
+                                   visible="{oBpInfoConfig>/personalInfoEditVisible}"
+                                   text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-EDIT}"/>
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
+                                   press="onPersonalInfoSave"
+                                   visible="{oBpInfoConfig>/personalInfoSaveVisible}"
+                                   text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-SAVE}"/>
+                </ute:Tag>
+            </utmain:content>
+        </utmain:Infoline>
+        <!-- BP Contact Info -->
+        <utmain:Infoline class="nrgBupa-cusDataBpInfo-infoLine" expanded="true" press=".onContactInfoPressed">
+            <utmain:headerContent>
+                <ute:TextView class="nrgBupa-cusDataBpInfo-infoLineHeader-txt"
+                              text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-CONTACT_INFO}"/>
+            </utmain:headerContent>
+            <utmain:content>
+                <l:MatrixLayout
+                    class="nrgBupa-cusDataBil-layout"
+                    widths="500px,500px" columns="2" width="100%">
+                    <l:rows>
+                        <l:MatrixLayoutRow>
+                            <l:cells>
+                                <!--Area Left-->
+                                <l:MatrixLayoutCell class="nrgBupa-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-CELL_PHONE}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               editable="{oBpInfoConfig>/contactInfoEditable}"
+                                                               value="{path: 'oDataBpContact>/Cell', type: 'nrg.base.type.CellPhoneNumber', constraints: { mandatory: true }}"/>
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <l:MatrixLayout widths="25%,50%,10%,15%" columns="4">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-DAY_PHONE}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               editable="{oBpInfoConfig>/contactInfoEditable}"
+                                                               value="{path: 'oDataBpContact>/DayPhone', type: 'nrg.base.type.CellPhoneNumber', constraints: { mandatory: true }}"/>
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-EXT}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               editable="{oBpInfoConfig>/contactInfoEditable}"
+                                                               value="{oDataBpContact>/DayPhoneExt}"/>
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+
+                                <!--Area right-->
+                                <l:MatrixLayoutCell class="nrgBupa-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="25%,75%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-EMAIL}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <utmain:Button  id="email_lbl_mail" design="None"
+                                                    class="nrgBupa-cusDataBpInfo-cnt nrgBupa-cusDataBpInfo-cnt-email"
+                                                    text="{parts:['oDataBpContact>/Email'],
+                                                           formatter:'._formatEmailAddressText'}"
+                                                    enabled="{oBpInfoConfig>/contactInfoEditable}"
+                                                    press="._handleEmailEdit"/>
+                                                <!--<ute:Textfield fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               editable="{oBpInfoConfig>/contactInfoEditable}"
+                                                               value="{path: 'oDataBpContact>/Email', type: 'nrg.base.type.EmailAddress', constraints: { mandatory: true }}"/>-->
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                    <l:MatrixLayout widths="25%,50%,10%,15%" columns="4">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-EVENING_PH}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               editable="{oBpInfoConfig>/contactInfoEditable}"
+                                                               value="{path: 'oDataBpContact>/EveningPhone', type: 'nrg.base.type.CellPhoneNumber', constraints: { mandatory: true }}"/>
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-EXT}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Textfield fieldType="Noborder"
+                                                               class="nrgBupa-cusDataBpInfo-cnt"
+                                                               editable="{oBpInfoConfig>/contactInfoEditable}"
+                                                               value="{oDataBpContact>/EveningPhoneExt}"/>
+                                            </l:MatrixLayoutCell>
+
+                                            <!-- <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
+                                                         text="TYPE:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <utmain:Dropdown design="Plain"
+                                                                 selectedKey="{oDataBpContact>/EveningPhoneType}"
+                                                                 content="{oEvnPhoneType>/}"
+                                                                 enabled="{oBpInfoConfig>/contactInfoEditable}">
+                                                    <utmain:DropdownItem
+                                                        key="{oEvnPhoneType>Key}">
+                                                        <ute:Tag elem="span"
+                                                             text="{oEvnPhoneType>Type}"/>
+                                                    </utmain:DropdownItem>
+                                                </utmain:Dropdown>
+                                            </l:MatrixLayoutCell> -->
+
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+                            </l:cells>
+                        </l:MatrixLayoutRow>
+                    </l:rows>
+                </l:MatrixLayout>
+                <!-- Buttons -->
+                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-btn clearfix">
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
+                                   press="onContactInfoCancel"
+                                   visible="{oBpInfoConfig>/contactInfoSaveVisible}"
+                                   text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-CANCEL}"/>
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnEdit nrgBupa-cusDataBpInfo-alignCenBtn"
+                                   press="onContactInfoEdit"
+                                   visible="{oBpInfoConfig>/contactInfoEditVisible}"
+                                   text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-EDIT}"/>
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
+                                   press="onContactInfoSave"
+                                   visible="{oBpInfoConfig>/contactInfoSaveVisible}"
+                                   text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-SAVE}"/>
+                </ute:Tag>
+            </utmain:content>
+        </utmain:Infoline>
+
+        <!-- Marketing Preference -->
+        <utmain:Infoline class="nrgBupa-cusDataBpInfo-infoLine"
+                         expanded="true" press=".onMarketPrefPressed">
+            <utmain:headerContent>
+                <ute:TextView class="nrgBupa-cusDataBpInfo-infoLineHeader-txt"
+                              text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-MARKET_PREF}"/>
+            </utmain:headerContent>
+            <utmain:content>
+                <l:MatrixLayout
+                    class="nrgBupa-cusDataBil-layout"
+                    widths="700px,300px" columns="2" width="100%"
+                    rows="{oDataBpMarkPreferSet>/results}">
+                    <l:rows>
+                        <l:MatrixLayoutRow>
+                            <l:cells>
+                                <l:MatrixLayoutCell class="nrgBupa-cusDataBpInfo-l">
+                                    <l:MatrixLayout widths="65%,35%" columns="2">
+                                        <l:MatrixLayoutRow>
+                                            <l:MatrixLayoutCell>
+                                                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-mktlbl"
+                                                         text="{oDataBpMarkPreferSet>AttributeSetDescription} - {oDataBpMarkPreferSet>AttributeDescription}:" />
+                                            </l:MatrixLayoutCell>
+                                            <l:MatrixLayoutCell>
+                                                <utmain:Checkbox id="yesChkBox" select=".onYesSelected"
+                                                                 enabled="{oBpInfoConfig>/mktPrfEditable}"
+                                                                 class="nrgBupa-cusDataBpInfo-chb"
+                                                                 checked="{parts:['oDataBpMarkPreferSet>Value'], formatter:'._formatBooleanY'}"/>
+                                                <utmain:Label labelFor="yesChkBox-intChk"
+                                                              text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-YES}"
+                                                              class="nrgBupa-cusDataBpInfo-chb-lbl"/>
+                                                <utmain:Checkbox id="noChkBox" select=".onNoSelected"
+                                                                 enabled="{oBpInfoConfig>/mktPrfEditable}"
+                                                                 class="nrgBupa-cusDataBpInfo-chb"
+                                                                 checked="{parts:['oDataBpMarkPreferSet>Value'], formatter:'._formatBooleanN'}"/>
+                                                <utmain:Label labelFor="noChkBox-intChk"
+                                                              text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-NO}"
+                                                              class="nrgBupa-cusDataBpInfo-chb-lbl"/>
+                                            </l:MatrixLayoutCell>
+                                        </l:MatrixLayoutRow>
+                                    </l:MatrixLayout>
+                                </l:MatrixLayoutCell>
+                            </l:cells>
+                        </l:MatrixLayoutRow>
+                    </l:rows>
+                </l:MatrixLayout>
+                <!-- Buttons -->
+                <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-btn clearfix">
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
+                                   press="onMarketPrefCancel"
+                                   visible="{oBpInfoConfig>/marketPrefSaveVisible}"
+                                   text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-CANCEL}"/>
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnEdit nrgBupa-cusDataBpInfo-alignCenBtn"
+                                   press="onMarketPrefEdit"
+                                   visible="{oBpInfoConfig>/marketPrefEditVisible}"
+                                   text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-EDIT}"/>
+                    <ute:Button class="nrgBupa-cusDataBpInfo-CommBtnSave nrgBupa-cusDataBpInfo-alignCenBtn"
+                                   press="onMarketPrefSave"
+                                   visible="{oBpInfoConfig>/marketPrefSaveVisible}"
+                                   text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-SAVE}"/>
+                </ute:Tag>
+            </utmain:content>
+        </utmain:Infoline>
+    </ute:Tag>
+</mvc:View>

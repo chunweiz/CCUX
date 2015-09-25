@@ -1,0 +1,42 @@
+{
+    "name": "test.jh.control.Component",
+
+    "sap.ui5": {
+
+        "resources": {
+            "css": [
+                { "uri": "../../../../../ZELIB/normalize.css/normalize.css" },
+                { "uri": "asset/nrg.css" },
+                { "uri": "asset/Tooltip.css" },
+                { "uri": "asset/TextField.css" },
+                { "uri": "../../../../../ZEBASE_CTRL/build/ute/ui/base/asset/css/base.css" },
+                { "uri": "../../../../../ZEBASE/build/nrg/base/asset/css/base.css" }
+            ]
+        },
+
+        "rootView": {
+            "viewName": "test.jh.control.view.App",
+            "type": "XML"
+        },
+
+        "routing": {
+            "routes": {
+                "Tooltip": {
+                    "pattern": "Tooltip",
+                    "target": [ "Tooltip" ]
+                }
+            },
+
+            "config": {
+                "viewType": "XML",
+                "viewPath": "test.jh.control.view",
+                "controlAggregation": "content",
+                "clearControlAggregation": true
+            },
+
+            "targets": {
+                "Tooltip": { "viewName": "Tooltip", "controlId": "idAppContent" }
+            }
+        }
+    }
+}

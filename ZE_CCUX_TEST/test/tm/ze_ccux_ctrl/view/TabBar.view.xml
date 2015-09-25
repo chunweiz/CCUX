@@ -1,0 +1,88 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:um="ute.ui.main"
+    xmlns:uc="ute.ui.commons"
+    controllerName="test.tm.ze_ccux_ctrl.view.TabBar"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+        <style>
+            .custom {
+
+            }
+        </style>
+
+        <um:Button text="press me" press=".onBtnPressed" />
+
+        <um:TabBar id="nrgTabBar" design="Invert" select=".onSelected">
+            <um:TabBarItem design="Invert" key="tb001" select=".onItemSelected">
+                <uc:Tag text="fweiubfiuwhir" />
+            </um:TabBarItem>
+            <br/>
+            <um:TabBarItem id="tabBarItem002" design="Invert" key="tb002" select=".onItemSelected">
+                <div>Mailing Address</div>
+            </um:TabBarItem>
+            <br/>
+            <um:TabBarItem design="Invert" key="tb003" select=".onItemSelected" enabled="false">
+                <div>New Address</div>
+            </um:TabBarItem>
+            <br/>
+            <um:TabBarItem id="tabBarItem004" design="Invert" key="tb004" select=".onItemSelected">
+                <div>Yet Another Address</div>
+            </um:TabBarItem>
+        </um:TabBar>
+
+        <br/>
+
+        <um:TabBarItem group="grp001" key="tb001" select=".onItemSelected">
+            <div>Service Address</div>
+        </um:TabBarItem>
+        <um:TabBarItem group="grp001" key="tb002" select=".onItemSelected" selected="true">
+            <div>Mailing Address</div>
+        </um:TabBarItem>
+        <um:TabBarItem group="grp001" key="tb003" select=".onItemSelected">
+            <div>New Address</div>
+        </um:TabBarItem>
+        <um:TabBarItem group="grp001" key="tb004" select=".onItemSelected">
+            <div>Yet Another Address</div>
+        </um:TabBarItem>
+
+        <br/>
+
+        <um:TabPanel tabPanelFor="nrgTabBar">
+            <um:TabPanelItem key="tb001">
+                <div>Panel for tb001</div>
+            </um:TabPanelItem>
+            <um:TabPanelItem key="tb002">
+                <div>Panel for tb002</div>
+            </um:TabPanelItem>
+            <um:TabPanelItem key="tb003">
+                <div>Panel for tb003</div>
+            </um:TabPanelItem>
+            <um:TabPanelItem key="tb004">
+                <div>Panel for tb004</div>
+            </um:TabPanelItem>
+        </um:TabPanel>
+
+        <um:TabPanel tabPanelFor="nrgTabBar">
+            <um:TabPanelItem key="tb001">
+                <div>Panel for tb001</div>
+            </um:TabPanelItem>
+            <um:TabPanelItem key="tb002">
+                <div>Panel for tb002</div>
+            </um:TabPanelItem>
+            <um:TabPanelItem key="tb003">
+                <div>Panel for tb003</div>
+            </um:TabPanelItem>
+            <um:TabPanelItem key="tb004">
+                <div>Panel for tb004</div>
+            </um:TabPanelItem>
+        </um:TabPanel>
+
+    </sm:ScrollContainer>
+</mvc:View>

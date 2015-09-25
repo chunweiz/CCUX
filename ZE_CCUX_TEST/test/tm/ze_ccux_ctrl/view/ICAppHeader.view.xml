@@ -1,0 +1,158 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:um="ute.ui.main"
+    xmlns:uc="ute.ui.commons"
+    xmlns:ua="ute.ui.app"
+    controllerName="test.tm.ze_ccux_ctrl.view.ICAppHeader"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <style>
+        .nrgAppHMItem-spacer {
+            position: relative;
+            display: inline-block;
+            width: 1px;
+            height: 12pt;
+            background-color: transparent;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        .nrgAppHMItem-divider {
+            position: relative;
+            display: inline-block;
+            width: 1px;
+            height: 8pt;
+            background-color: grey;
+            margin-left: 15px;
+            margin-right: 15px;
+            transform: translateY(-1px);
+        }
+
+        .nrgAppHMItem.uteAppHMItem {
+            margin-top: 40px;
+        }
+
+        .nrgAppHMItem .uteAppHMItem-hdr {
+            margin-bottom: 10px;
+        }
+
+        .nrgAppHMItem-highlight .uteAppHMItem-hdr:hover {
+            color: tomato;
+        }
+
+        .nrgAppBanner-logo {
+            width: 60px;
+            transform: translateY(7px);
+            cursor: default;
+        }
+
+        .nrgAppBanner-title {
+            display: inline-block;
+            padding-top: 32px;
+            padding-left: 10px;
+            cursor: default;
+        }
+
+        .nrgAppBodyBanner-title {
+            display: inline-block;
+            position: relative;
+            transform: translateY(100%);
+        }
+
+        .nrgAppBody-navLeft {
+            width: 0;
+            height: 0;
+            border-top: 16px solid transparent;
+            border-bottom: 16px solid transparent;
+            border-right: 16px solid tomato;
+        }
+
+        .nrgAppBody-navRight {
+            width: 0;
+            height: 0;
+            border-top: 16px solid transparent;
+            border-bottom: 16px solid transparent;
+            border-left: 16px solid tomato;
+        }
+    </style>
+
+    <ua:App>
+        <ua:header>
+            <ua:Header id="header">
+                <ua:banner>
+                    <image class="nrgAppBanner-logo" src="../../../../ZEBASE/build/nrg/base/asset/img/nrg-logo.svg"></image>
+                    <ua:Text class="nrgAppBanner-title" text="Reliant Interaction Center" />
+                </ua:banner>
+                <ua:menu>
+                    <ua:HeaderMenu class="nrgAppHMItem">
+                        <ua:HeaderMenuItem id="menu" class="nrgAppHMItem" press=".onHdrMenuItemPressed">
+                            <ua:Text text="Menu" />
+                            <ua:customData>
+                                <core:CustomData key="nrg-type" value="menu"/>
+                            </ua:customData>
+                        </ua:HeaderMenuItem>
+                        <span class="nrgAppHMItem-divider" />
+                        <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
+                            <ua:Text text="Index" />
+                        </ua:HeaderMenuItem>
+                        <span class="nrgAppHMItem-divider" />
+                        <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
+                            <ua:Text text="Transaction" />
+                        </ua:HeaderMenuItem>
+                        <span class="nrgAppHMItem-divider" />
+                        <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
+                            <ua:Text text="ESID Tool" />
+                        </ua:HeaderMenuItem>
+                        <span class="nrgAppHMItem-divider" />
+                        <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
+                            <ua:Text text="PALPlus" />
+                        </ua:HeaderMenuItem>
+                        <span class="nrgAppHMItem-divider" />
+                        <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
+                            <ua:Text text="Messages" />
+                            <ua:customData>
+                                <core:customData key="nrg-type" value="menu"/>
+                            </ua:customData>
+                        </ua:HeaderMenuItem>
+                        <span class="nrgAppHMItem-spacer" />
+                        <ua:HeaderMenuItem press=".onHdrMenuItemPressed">
+                            <core:Icon src="sap-icon://nrg-icon/refresh"></core:Icon>
+                        </ua:HeaderMenuItem>
+                        <span class="nrgAppHMItem-spacer" />
+                        <ua:HeaderMenuItem class="nrgAppHMItem-highlight" press=".onHdrMenuItemPressed">
+                            <ua:Text text="Clear Account" />
+                        </ua:HeaderMenuItem>
+                    </ua:HeaderMenu>
+                </ua:menu>
+            </ua:Header>
+        </ua:header>
+        <ua:body>
+            <ua:Body>
+                <ua:banner>
+                    <ua:Text text="CUSTOMER DATA" class="nrgAppBodyBanner-title" />
+                </ua:banner>
+                <ua:navLeft>
+                    <ua:EventArea click=".onNavLeftPress">
+                        <div class="nrgAppBody-navLeft"></div>
+                    </ua:EventArea>
+                </ua:navLeft>
+                <ua:navRight>
+                    <ua:EventArea click=".onNavRightPress">
+                        <div class="nrgAppBody-navRight"></div>
+                    </ua:EventArea>
+                </ua:navRight>
+            </ua:Body>
+        </ua:body>
+        <ua:footer>
+            <ua:Footer>
+                <div>this is a footer</div>
+            </ua:Footer>
+        </ua:footer>
+    </ua:App>
+
+</mvc:View>

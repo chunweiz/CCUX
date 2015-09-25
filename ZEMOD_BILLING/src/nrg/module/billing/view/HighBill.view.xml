@@ -1,0 +1,168 @@
+<!--Routing Pattern: billing/highbill/bp/{bpNum}/ca/{caNum}/co/{coNum}-->
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:utmain="ute.ui.main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.commons"
+    xmlns:l="sap.ui.commons.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:m="sap.m"
+    controllerName="nrg.module.billing.view.HighBill">
+
+    <ute:Tag class="nrgAppMain-generalContent nrgBilling-highBill">
+        <!-- Left Section -->
+        <ute:Tag class="nrgBilling-highBill-leftDiv">
+            <!-- Banner Section -->
+            <ute:Tag class="nrgBilling-highBill-banner">
+                <!-- Title & Back To Dashboard -->
+                <ute:Tag class="nrgBilling-highBill-titleAndNav">
+                    <!-- Title -->
+                    <ute:Tag elem="span" class="nrgBilling-highBill-title"
+                             text="{comp-i18n-billing>nrgBilling-highBill-PAGE_TITLE}" />
+                    <!-- Back -->
+                    <ute:Tag elem="span" class="nrgBilling-highBill-backToDash">
+                        <utmain:Button design="None" class="" press="_onBackToDashboard">
+                            <core:Icon src="sap-icon://slim-arrow-left" class="nrgBilling-highBill-backIcon" />
+                            <ute:Tag elem="span" class="nrgBilling-highBill-backTitle"
+                                     text="{comp-i18n-billing>nrgBilling-highBill-BACK}" />
+                        </utmain:Button>
+                    </ute:Tag>
+                </ute:Tag>
+                <!-- Flex Box -->
+                <ute:Tag class="nrgBilling-highBill-flexbox">
+                    <!-- Meter Reading Date -->
+                    <ute:Tag class="nrgBilling-highBill-mrDate">
+                        <ute:Tag elem="span" class="nrgBilling-highBill-mrDate-title"
+                            text="{comp-i18n-billing>nrgBilling-highBill-mrDate-TITLE}" />
+                        <utmain:Dropdown id="invoiceDropdown"
+                            class="nrgBilling-highBill-mrDate-invoiceDropdown"
+                            selectedKey="{oAllInvoices>/selectedKey}"
+                            content="{oAllInvoices>/}"
+                            select="_onInvoiceSelect" >
+                            <utmain:DropdownItem
+                                class="nrgBilling-highBill-mrDate-invoiceDropdownItem"
+                                key="{oAllInvoices>Index}">
+                                <ute:Tag elem="span"
+                                    text="{oAllInvoices>Period}"/>
+                            </utmain:DropdownItem>
+                        </utmain:Dropdown>
+                        <ute:Tag class="nrgBilling-highBill-mrDate-invoiceNum">
+                            <ute:Tag elem="span" class="nrgBilling-highBill-mrDate-invoiceNumTitle"
+                                text="{comp-i18n-billing>nrgBilling-highBill-mrDate-INVOICE_NUM_TITLE}" />
+                            <ute:Tag elem="span" class="nrgBilling-highBill-mrDate-invoiceNumValue"
+                                text="{oAllInvoices>/selectedInvoiceNum}" />
+                        </ute:Tag>
+                    </ute:Tag>
+                    <!-- Billing Period Charges -->
+                    <ute:Tag class="nrgBilling-highBill-bpCharges">
+                        <ute:Tag class="nrgBilling-highBill-bpCharges-amount"
+                            text="{oAllInvoices>/selectedBillCharge}"/>
+                        <ute:Tag class="nrgBilling-highBill-bpCharges-title"
+                            text="{comp-i18n-billing>nrgBilling-highBill-bpCharges-TITLE}"/>
+                    </ute:Tag>
+                    <!-- Links -->
+                    <ute:Tag class="nrgBilling-highBill-btnLinks">
+                        <!-- Retro Average Billing -->
+                        <utmain:Button 
+                            design="None"
+                            text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-RETRO_AVG}"
+                            class="nrgBilling-highBill-retroAvgBilling" 
+                            press="onBackToDashboard"/>
+                        <!-- Average Billing -->
+                        <utmain:Button 
+                            design="None"
+                            text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-AVG}"
+                            class="nrgBilling-highBill-avgBilling" 
+                            press="onBackToDashboard"/>
+                    </ute:Tag>
+                </ute:Tag>
+            </ute:Tag>
+            <!-- Customer Driven -->
+            <ute:Tag class="nrgBilling-highBill-cusDriven">
+                <ute:Tag class="nrgBilling-highBill-cusDriven-header">
+                    <ute:Tag elem="span" 
+                        class="nrgBilling-highBill-cusDriven-title"
+                        text="{comp-i18n-billing>nrgBilling-highBill-cusDriven-TITLE}"/>
+                    <utmain:Button 
+                        design="None"
+                        text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-RATE_HISTORY_BTN}"
+                        class="nrgBilling-highBill-headerBtn" 
+                        press=""/>
+                    <utmain:Button 
+                        design="None"
+                        text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-USAGE_BTN}"
+                        class="nrgBilling-highBill-headerBtn" 
+                        press=""/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-highBill-cusDriven-body">
+                    <m:ScrollContainer class="nrgBilling-highBill-cusDriven-body-scrollArea" height="150px" horizontal="false" vertical="true">
+                        <ute:Tag content="{oCusDriven>/}">
+                            <ute:Tag class="nrgBilling-highBill-cusDriven-row">
+                                <ute:Tag class="nrgBilling-highBill-cusDriven-statis">
+                                    <core:Icon 
+                                        src="{
+                                            parts: ['oCusDriven>Change'],
+                                            formatter: '._getArrowIcon'
+                                        }" 
+                                        class="nrgBilling-highBill-cusDriven-statis-icon" />
+                                    <ute:Tag class="nrgBilling-highBill-cusDriven-statis-number" text="{oCusDriven>Amount}"/>
+                                </ute:Tag>
+                                <ute:Tag class="nrgBilling-highBill-cusDriven-type"
+                                    text="{oCusDriven>Type}"/>
+                                <ute:Tag class="nrgBilling-highBill-cusDriven-descr"
+                                    text="{oCusDriven>Description}"/>
+                            </ute:Tag>
+                        </ute:Tag>
+                    </m:ScrollContainer>
+                </ute:Tag>
+            </ute:Tag>
+            <!-- Non Customer Impacts -->
+            <ute:Tag class="nrgBilling-highBill-nonCusImpacts">
+                <ute:Tag class="nrgBilling-highBill-nonCusImpacts-header">
+                    <ute:Tag elem="span" 
+                        class="nrgBilling-highBill-nonCusImpacts-title"
+                        text="{comp-i18n-billing>nrgBilling-highBill-nonCusImpacts-TITLE}"/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-highBill-nonCusImpacts-body">
+                    <m:ScrollContainer class="nrgBilling-highBill-nonCusImpacts-body-scrollArea" height="150px" horizontal="false" vertical="true">
+                        <ute:Tag content="{oCusDriven>/}">
+                            <ute:Tag class="nrgBilling-highBill-nonCusImpacts-row">
+                                <ute:Tag class="nrgBilling-highBill-nonCusImpacts-statis">
+                                    <core:Icon 
+                                        src="{
+                                            parts: ['oCusDriven>Change'],
+                                            formatter: '._getArrowIcon'
+                                        }" 
+                                        class="nrgBilling-highBill-nonCusImpacts-statis-icon" />
+                                    <ute:Tag class="nrgBilling-highBill-nonCusImpacts-statis-number" text="{oCusDriven>Amount}"/>
+                                </ute:Tag>
+                                <ute:Tag class="nrgBilling-highBill-nonCusImpacts-type"
+                                    text="{oCusDriven>Type}"/>
+                                <ute:Tag class="nrgBilling-highBill-nonCusImpacts-descr"
+                                    text="{oCusDriven>Description}"/>
+                            </ute:Tag>
+                        </ute:Tag>
+                    </m:ScrollContainer>
+                </ute:Tag>
+            </ute:Tag>
+            <!-- Premise Attributes -->
+            <utmain:Button 
+                design="None"
+                text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-PREMISE_ATTRIB}"
+                class="nrgBilling-highBill-premiseAttrib" 
+                press=""/>
+        </ute:Tag>
+
+        <!-- Right Section -->
+        <ute:Tag class="nrgBilling-highBill-rightDiv">
+            <!-- Title -->
+            <ute:Tag elem="span" class="nrgBilling-highBill-notiTitle"
+                text="{comp-i18n-billing>nrgBilling-highBill-NOTI_TITLE}" />
+
+        </ute:Tag>
+        
+    </ute:Tag>
+
+
+</mvc:View>

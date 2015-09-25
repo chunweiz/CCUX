@@ -1,0 +1,45 @@
+.uteAppHMItem {
+    display: inline-block;
+    position: relative;
+
+    .uteAppHMItem-hdr {
+        display: inline-block;
+        color: @uteColor-grey-dark;
+
+        &:hover {
+            color: @uteColor-blue-link;
+            cursor: pointer;
+        }
+
+        .sapUiIcon::before {
+            cursor: pointer;
+        }
+    }
+}
+
+.uteAppHMItem-selected .uteAppHMItem-hdr {
+    color: @uteColor-blue-link;
+
+    &:hover {
+        color: @uteColor-blue-link;
+    }
+
+    .sapUiIcon::before {
+        color: @uteColor-blue-link;
+    }
+}
+
+.uteAppHMItem-disabled .uteAppHMItem-hdr {
+    color: @uteColor-grey-light;
+
+    &:hover {
+        color: @uteColor-grey-light;
+        cursor: default;
+    }
+
+    .sapUiIcon::before {
+        color: @uteColor-grey-light;
+        cursor: default;
+    }
+}
+

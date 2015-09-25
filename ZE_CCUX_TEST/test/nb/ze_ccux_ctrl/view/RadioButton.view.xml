@@ -1,0 +1,49 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:um="ute.ui.main"
+    xmlns:nb="nb.ui.main"
+    controllerName="test.nb.ze_ccux_ctrl.view.RadioButton"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <sm:ScrollContainer height="100%" width="100%" horizontal="true" vertical="true">
+        <style>
+            .custom .uteMRb-rb {
+                border: 1px solid tomato;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+            }
+
+            .custom .uteMRb-intRb:checked + .uteMRb-rb {
+                background-color: tomato;
+            }
+
+            .custom .uteMRb-intRb:checked + .uteMRb-rb::before {
+                content: '';
+                position: absolute;
+                width: 6px;
+                height: 10px;
+                border: 2px solid white;
+                border-top: none;
+                border-left: none;
+                transform: translate(3px, 0) rotate(45deg);
+            }
+        </style>
+
+        <um:RadioButton name="rb001" id="idRb002" design="None" class="custom" /><um:Label text="Radio button label #2" labelFor="idRb002-intRb" /><br/>
+
+        <div style="background-color: gold; padding: 10px;">
+            <nb:RadioButton group="grp001" id="idRb001" checked="true" /><br/>
+            <nb:RadioButton group="grp001" /><br/>
+            <nb:RadioButton group="grp001"  /><br/>
+        </div>
+
+        <sm:RadioButton />
+
+    </sm:ScrollContainer>
+</mvc:View>

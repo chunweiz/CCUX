@@ -1,0 +1,74 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:c="sap.ui.commons"
+    xmlns:core="sap.ui.core"
+    xmlns:u="ute.ui.commons"
+    xmlns:um="ute.ui.main"
+    xmlns:l="sap.ui.commons.layout">
+        <u:Tag class="nrgCamOff-consF">
+            <c:Label text="Work in Progress"
+                     icon="sap-icon://nrg-icon/tag"
+                     class="nrgCamOff-top"  />
+            <um:Button press=".selectCampaign"
+                       text="Select"
+                       class="nrgCamOvr-selectBtn"
+                       design="None">
+            </um:button>
+            <u:Table width="100%"
+                tableType="CampaignTable"
+                class="nrgCamOff-prcTbl"  >
+                    <u:columns>
+                        <u:TableColumn width="33%" >
+                            <c:Label text="EFL@500"/>
+                        </u:TableColumn>
+                        <u:TableColumn width="33%" >
+                            <c:Label text="EFL@1000"/>
+                        </u:TableColumn>
+                        <u:TableColumn width="33%" >
+                            <c:Label text="EFL@2000"/>
+                        </u:TableColumn>
+                    </u:columns>
+                    <u:rows>
+                        <u:TableRow>
+                            <c:Label text="14.4"/>
+                            <c:Label text="12.4"/>
+                            <c:Label text="13.4"/>
+                        </u:TableRow>
+                    </u:rows>
+            </u:Table>
+            <l:MatrixLayout class="nrgCamOff-mtx nrgCamOff-top">
+                <l:MatrixLayoutRow class="nrgCamOff-mtxRow">
+                    <l:MatrixLayoutCell class="nrgCamOff-mtxFstCell">
+                        <c:Label text="Monthly Consumption" class="nrgCamOff-lbl" />
+                    </l:MatrixLayoutCell>
+                    <l:MatrixLayoutCell class="nrgCamOff-mtxSndCell">
+                        <c:Label text="$85.00" class="nrgCamOff-lbl"  />
+                    </l:MatrixLayoutCell>
+                </l:MatrixLayoutRow>
+               <l:MatrixLayoutRow class="nrgCamOff-mtxRow">
+                   <l:MatrixLayoutCell class="nrgCamOff-mtxFstCell">
+                        <c:Label text="Monthly Consumption @ Campaign Estimation" />
+                    </l:MatrixLayoutCell>
+                   <l:MatrixLayoutCell class="nrgCamOff-mtxSndCell">
+                        <c:Label text="$65.00" class="nrgCamOff-lbl" />
+                    </l:MatrixLayoutCell>
+                </l:MatrixLayoutRow>
+                <l:MatrixLayoutRow class="nrgCamOff-mtxRow">
+                    <l:MatrixLayoutCell class="nrgCamOff-mtxFstCell">
+                        <c:Label text="Estimated Difference"  />
+                    </l:MatrixLayoutCell>
+                    <l:MatrixLayoutCell class="nrgCamOff-mtxSndCell">
+                        <c:Label text="$20.00" />
+                    </l:MatrixLayoutCell>
+                </l:MatrixLayoutRow>
+                <l:MatrixLayoutRow class="nrgCamOff-mtxRow">
+                    <l:MatrixLayoutCell class="nrgCamOff-mtxFstCell">
+                        <c:Label text="Estimated Cents per kWh"  />
+                    </l:MatrixLayoutCell>
+                    <l:MatrixLayoutCell class="nrgCamOff-mtxSndCell">
+                        <c:Label text="02.00¢/kWh" />
+                    </l:MatrixLayoutCell>
+                </l:MatrixLayoutRow>
+            </l:MatrixLayout>
+        </u:Tag>
+</core:FragmentDefinition>

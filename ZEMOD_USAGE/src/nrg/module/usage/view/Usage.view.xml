@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:c="sap.ui.commons"
+          xmlns:core="sap.ui.core"
+          xmlns:u="ute.ui.commons"
+          xmlns:um="ute.ui.main"
+          xmlns:l="sap.ui.commons.layout"
+          controllerName="nrg.module.usage.view.Usage"
+          height="100%"
+          width="100%"
+          displayBlock="true">
+   <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
+        <u:Tag class="nrgUsg">
+            <u:Tag class="nrgUsg-ttl" text="{comp-i18n-usage>nrgUsgLTtl}" />
+                <u:Tag class="nrgUsg-tiers">
+                        <u:Tag class="nrgUsg-tier">
+                            <um:Button id="idCamToggleBtn-P"
+                                press=".toggleTier"
+                                text="{comp-i18n-usage>nrgUsgLUsage}"
+                                class="nrgUsg-btn-selected"
+                                design="None">
+                            </um:button>
+                        </u:Tag>
+                        <u:Tag class="nrgUsg-tier">
+                            <um:Button id="idCamToggleBtn-R"
+                                press=".toggleTier"
+                                text="{comp-i18n-usage>nrgUsgLBilling}"
+                                design="None">
+                            </um:button>
+                        </u:Tag>
+                        <u:Tag class="nrgUsg-tier">
+                            <um:Button id="idCamToggleBtn-S"
+                                press=".toggleTier"
+                                text="{comp-i18n-usage>nrgUsgLBillWizard}"
+                                design="None">
+                            </um:button>
+                        </u:Tag>
+                        <u:Tag class="nrgUsg-tier">
+                            <um:Button id="idCamToggleBtn-F"
+                                press=".toggleTier"
+                                text="{comp-i18n-usage>nrgUsgLRateHis}"
+                                design="None">
+                            </um:button>
+                        </u:Tag>
+                        <u:Tag class="nrgUsg-tier">
+                            <um:Button id="idCamToggleBtn-d"
+                                press=".toggleTier"
+                                text="{comp-i18n-usage>nrgUsgLPreAttri}"
+                                design="None">
+                            </um:button>
+                        </u:Tag>
+                    </u:Tag>
+                <u:Tag class="nrgUsg-Table">
+                    <u:Tag class="nrgUsg-ttl" text="{comp-i18n-usage>nrgUsgLSrvAddTtl}" />
+                    <um:Dropdown id="idnrgUsgServiceAdd-DropDown"
+                                 select=".onServiceAdd"
+                                 placeholder="Select Service Address"
+                                 class="nrgUsg-top">
+                        <um:DropdownItem>
+                        </um:DropdownItem>
+                    </um:Dropdown>
+                    <u:Tag class="nrgUsgTable-header nrgUsg-top">
+                        <u:Tag text="{comp-i18n-usage>nrgUsgHdDate}" class="nrgUsgTag-hd"/>
+                        <u:Tag text="{comp-i18n-usage>nrgUsgHdBillingDays}" class="nrgUsgTag-hd"/>
+                        <u:Tag text="{comp-i18n-usage>nrgUsgHdReading}" class="nrgUsgTag-hd"/>
+                        <u:Tag text="{comp-i18n-usage>nrgUsgHdKWh}" class="nrgUsgTag-hd"/>
+                        <u:Tag text="{comp-i18n-usage>nrgUsgHdActualEst}" class="nrgUsgTag-hd"/>
+                        <u:Tag text="{comp-i18n-usage>nrgUsgHdWeather}" class="nrgUsgTag-hd"/>
+                        <u:Tag text="{comp-i18n-usage>nrgUsgHdCDIHDI}" class="nrgUsgTag-hd"/>
+                        <u:Tag text="{comp-i18n-usage>nrgUsgHdDollar}" class="nrgUsgTag-hd"/>
+                    </u:Tag>
+                    <u:Tag content="{comp-usage>/table}" class="nrgUsgTable-Row">
+                        <um:Infoline design="None">
+                            <um:headerContent class="nrgUsgTable-Row">
+                                <u:Tag text="{comp-usage>PeriodBegin}-{comp-usage>PeriodEnd}" class="nrgUsgTag-Date"/>
+                                <u:Tag text="{comp-usage>BillingDays}" class="nrgUsgTag1"/>
+                                <um:Button press=".expandInfoline" text="{comp-usage>Reading}"  design="None" class="nrgUsgButton"/>
+                                <u:Tag text="{comp-usage>KwhUsage}" class="nrgUsgTag"/>
+                                <u:Tag text="{comp-usage>Actual}" class="nrgUsgTag"/>
+                                <u:Tag text="{comp-usage>LowTemp} {comp-usage>HighTemp}" class="nrgUsgTag3"/>
+                                <u:Tag text="{comp-usage>CDI_HDI}" class="nrgUsgTag1"/>
+                                <u:Tag text="{comp-usage>CurrentCharges}" class="nrgUsgTag1"/>
+                            </um:headerContent>
+                            <um:content>
+                                <u:Tag class="nrgUsgTable-inside">
+                                    <u:Tag class="">
+                                        <u:Tag text="{comp-usage>PeriodBegin}-{comp-usage>PeriodEnd}" class="nrgUsgTag-Date"/>
+                                        <u:Tag text="{comp-usage>BillingDays}" class="nrgUsgTag1"/>
+                                        <u:Tag text="{comp-usage>Reading}" class="nrgUsgTag"/>
+                                        <u:Tag text="{comp-usage>KwhUsage}" class="nrgUsgTag"/>
+                                        <u:Tag text="{comp-usage>Actual}" class="nrgUsgTag"/>
+                                        <u:Tag text="{comp-usage>LowTemp} {comp-usage>HighTemp}" class="nrgUsgTag3"/>
+                                        <u:Tag text="{comp-usage>CDI_HDI}" class="nrgUsgTag1"/>
+                                        <u:Tag text="{comp-usage>CurrentCharges}" class="nrgUsgTag1"/>
+                                    </u:Tag>
+                                </u:Tag>
+                            </um:content>
+                        </um:Infoline>
+                    </u:Tag>
+                </u:Tag>
+       </u:Tag>
+       <u:Tag visible="false">
+            <um:Dropdown select=".onServiceAdd"
+                                 placeholder="Select Service Address"
+                                 class="nrgUsg-top">
+                <um:DropdownItem key="{comp-usage>value}" class="nrgUsg-DdLItem" id="idnrgUsgServiceAdd-DropDownItem">
+                    <u:Tag text="{comp-usage>CA}-{comp-usage>Contract}-{comp-usage>ESID}-{comp-usage>House}-{comp-usage>Street}-{comp-usage>Apt}-{comp-usage>City}-{comp-usage>State}-{comp-usage>ZIP}"/>
+                </um:DropdownItem>
+            </um:Dropdown>
+       </u:Tag>
+
+   </u:Tag>
+</mvc:View>

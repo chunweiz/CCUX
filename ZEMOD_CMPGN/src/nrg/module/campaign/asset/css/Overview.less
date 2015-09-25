@@ -1,0 +1,90 @@
+.nrgCamOvrT {
+            font-family: @nrgFontFamily;
+
+    & > .nrgCamOvr-Title {
+            margin-left: 8px;
+            font-size: @nrgFontSize-base;
+            font-weight: @nrgFontWeight-semiBold;
+    }
+    &   .nrgCamOvr-lbl {
+            font-weight: @nrgFontWeight-semiBold;
+            color: @nrgColor-inactiveGrey;
+    }
+    &   .nrgCamOvr-left {
+            margin-left: 22px;
+     }
+    &  .nrgCamOvr-top {
+            margin-top: 20px;
+    }
+    & > .nrgCamOvr-Mtx{
+            font-family: @nrgFontFamily;
+    }
+    & > .nrgCamOvr-offerToolbar {
+            width: 100%;
+            margin-left: 20px;
+    }
+    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn {
+            height: 50px;
+            background-color: @nrgColor-lightBlue;
+            border: none;
+            border-radius: 2px;
+            outline-style: none;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-right: 50px;
+    }
+    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn:hover {
+            background-color: @nrgColor-darkPaleBlue;
+            color: @nrgColor-white;
+    }
+    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn[data-disabled="true"]:hover {
+            background-color: @nrgColor-lightBlue;
+            color: @nrgColor-grey-dark;
+    }
+    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn > .nrgCamOvr-offerBtnTitle {
+            font: @nrgFontWeight-semiBold @nrgFontSize-small @nrgFontFamily;
+            margin-bottom: 10px;
+    }
+    & > .nrgCamOvr-offerToolbar> .nrgCamOvr-offerBtn > .nrgCamOvr-offerBtnDesc {
+            font: @nrgFontWeight-semiBold @nrgFontSize-small @nrgFontFamily;
+            color: @nrgColor-redAlert;
+            text-transform: uppercase;
+    }
+    & > .nrgCamOvr-offerToolbar > .nrgCamOvr-offerBtn > .nrgCamOvr-offerBtnDesc[data-flag="X"] {
+            color: @nrgColor-blueLink;
+    }
+    &   .nrgCamOvr-desc {
+            margin-top: 2px;
+    }
+    & > .nrgCamOvr-TabBar {
+            background-color: @nrgColor-blue-pearl;
+            width: 80%;
+            margin-left: 20px;
+    }
+    & > .nrgCamOvr-TabBar > .uteMTabBarItem {
+            width: 50%;
+    }
+    & > .nrgCamOvr-TabBar > .uteMTabBarItem > .uteMTabBarItem-content {
+            width:100%;
+            color: @nrgColor-blueLink;
+    }
+    & > .nrgCamOvr-TabBar > .uteMTabBarItem > .uteMTabBarItem-int:checked + .uteMTabBarItem-content {
+            color: @nrgColor-white;
+    }
+    & > .nrgCamOvr-TabBar > .uteMTabBarItem > .uteMTabBarItem-content:hover {
+            width:100%;
+            color: @nrgColor-white;
+    }
+    & > .nrgCamOvr-TabBar > .uteMTabBarItem > .uteMTabBarItem-int[disabled="disabled"] + .uteMTabBarItem-content {
+            color: @nrgColor-blueLink;
+            background-color: @nrgColor-blue-pearl;
+    }
+    & > .nrgCamOvr-hide{
+            display:none;
+    }
+    &  .nrgCamOvr-infoline {
+            overflow-x: hidden;
+            max-height: 10rem;
+    }
+}
+

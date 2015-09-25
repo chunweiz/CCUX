@@ -1,0 +1,83 @@
+.uteAppBodyCnt {
+    display: block;
+    position: relative;
+
+    & .uteAppBodyCnt-general {
+        display: inline-block;
+        position: relative;
+    }
+
+    & .uteAppBodyCnt-summary {
+        display: inline-block;
+        position: relative;
+    }
+
+    & .uteAppBodyCnt-tool {
+        display: inline-block;
+        position: relative;
+    }
+
+    &.uteAppBodyCnt-layout-default {
+        & .uteAppBodyCnt-leftSection {
+            display: inline-block;
+            position: relative;
+            width: 284px;
+            margin-right: 16px;
+            vertical-align: top;
+
+            & .uteAppBodyCnt-summary {
+                display: block;
+                margin-bottom: 13px;
+            }
+
+            & .uteAppBodyCnt-tool {
+                display: block;
+            }
+        }
+
+        & .uteAppBodyCnt-rightSection {
+            display: inline-block;
+            position: relative;
+            width: 1060px;
+            vertical-align: top;
+
+            & .uteAppBodyCnt-general {
+                display: block;
+            }
+        }
+    }
+
+    &.uteAppBodyCnt-layout-fullWidthTool {
+        & .uteAppBodyCnt-topSection {
+            display: block;
+            position: relative;
+            max-height: 400px;
+            margin-bottom: 13px;
+            vertical-align: top;
+            overflow: hidden;
+
+            & .uteAppBodyCnt-summary {
+                display: inline-block;
+                width: 284px;
+                margin-right: 16px;
+                vertical-align: top;
+            }
+
+            & .uteAppBodyCnt-general {
+                display: inline-block;
+                width: 1060px;
+                vertical-align: top;
+            }
+        }
+
+        & .uteAppBodyCnt-bottomSection {
+            display: block;
+            position: relative;
+            vertical-align: top;
+
+            & .uteAppBodyCnt-tool {
+                display: block;
+            }
+        }
+    }
+}

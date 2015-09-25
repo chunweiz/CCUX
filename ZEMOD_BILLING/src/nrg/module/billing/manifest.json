@@ -1,0 +1,95 @@
+{
+    "sap.ui5": {
+        "config": {
+            "module": {
+                "nrg.module.billing": {
+                    "stylesheet": [
+                        "asset/css/module.css"
+                    ],
+
+                    "resourceBundle": {
+                        "comp-i18n-billing": "i18n/module.properties"
+                    },
+
+                    "odata": {
+                        "real": {
+                            "comp-billing": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/"
+                            }
+                        },
+                        "mock": {
+                            "comp-billing": {
+                                "mockDataBaseUrl": "data/devtest/",
+                                "generateMissingMockData": true
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "routing": {
+            "routes": {
+                "billing.CheckBook": {
+                    "pattern": "billing/checkbook/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target":["billing.Checkbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
+                },
+                "billing.CheckBookNoCo": {
+                    "pattern": "billing/checkbook/bp/{bpNum}/ca/{caNum}",
+                    "target":["billing.Checkbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
+                },
+                "billing.BillingInfo": {
+                    "pattern": "billing/billinginfo/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target":["billing.CustomerDataBillingInfo", "dashboard.CustomerDataSummary", "billing.CustomerJourney"]
+                },
+                "billing.BillingInfoNoCo": {
+                    "pattern": "billing/billinginfo/bp/{bpNum}/ca/{caNum}",
+                    "target":["billing.CustomerDataBillingInfo", "dashboard.CustomerDataSummary", "billing.CustomerJourney"]
+                },
+                "billing.BillingPrePaid": {
+                    "pattern": "billing/billingprepaid/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target":["billing.CustomerDataPrePD", "dashboard.CustomerDataSummary", "billing.CustomerJourney"]
+                },
+                "billing.BillingPrePaidNoCo": {
+                    "pattern": "billing/billingprepaid/bp/{bpNum}/ca/{caNum}",
+                    "target":["billing.CustomerDataPrePD", "dashboard.CustomerDataSummary", "billing.CustomerJourney"]
+                },
+                "billing.HighBill": {
+                    "pattern": "billing/highbill/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target":["billing.HighBill", "dashboard.CustomerDataSummary", "dashboard.EmptyTools"]
+                },
+                "billing.HighBillNoCo": {
+                    "pattern": "billing/highbill/bp/{bpNum}/ca/{caNum}",
+                    "target":["billing.HighBill", "dashboard.CustomerDataSummary", "dashboard.EmptyTools"]
+                }
+            },
+
+            "targets":{
+                "billing.Checkbook": {
+                    "viewName": "nrg.module.billing.view.BillingCheckbook",
+                    "controlId": "idAppGeneral"
+                },
+                "billing.CustomerDataBillingInfo": {
+                    "viewName": "nrg.module.billing.view.CustomerDataBillingInfo",
+                    "controlId": "idAppGeneral"
+                },
+                "billing.CustomerDataPrePD": {
+                    "viewName": "nrg.module.billing.view.CustomerDataPrePD",
+                    "controlId": "idAppGeneral"
+                },
+                "billing.HighBill": {
+                    "viewName": "nrg.module.billing.view.HighBill",
+                    "controlId": "idAppGeneral"
+                },
+                "billing.CheckbookTools": {
+                    "viewName": "nrg.module.billing.view.BillingCheckbookTools",
+                    "controlId": "idAppTools"
+                },
+                "billing.CustomerJourney": {
+                    "viewName": "nrg.module.billing.view.BillingCustomerJourney",
+                    "controlId": "idAppTools"
+                }
+            }
+        }
+    }
+}

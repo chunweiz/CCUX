@@ -1,0 +1,58 @@
+.uteAppMsg {
+    & .uteAppMsg-icon {
+        color: @uteColor-white;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        vertical-align: middle;
+    }
+
+    & .uteAppMsg-text {
+        display: inline-block;
+        position: relative;
+        color: @uteColor-white;
+        padding: 5px;
+        width: 100%;
+        cursor: default;
+    }
+}
+
+.uteAppMsg-design-error {
+    & .uteAppMsg-text {
+        border-left: 5px solid @uteColor-red-alert;
+    }
+
+    &:hover {
+        background-color: @uteColor-red-alert;
+    }
+}
+
+.uteAppMsg-design-information {
+    & .uteAppMsg-text {
+        border-left: 5px solid @uteColor-grey-semiDark;
+    }
+
+    &:hover {
+        background-color: @uteColor-grey-semiDark;
+    }
+}
+
+.uteAppMsg-design-success {
+    & .uteAppMsg-text {
+        border-left: 5px solid @uteColor-green-highlight;
+    }
+
+    &:hover {
+        background-color: @uteColor-green-highlight;
+    }
+}
+
+.uteAppMsg-design-warning {
+    & .uteAppMsg-text {
+        border-left: 5px solid @uteColor-orange-attention;
+    }
+
+    &:hover {
+        background-color: @uteColor-orange-attention;
+    }
+}

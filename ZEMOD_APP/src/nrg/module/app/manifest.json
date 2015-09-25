@@ -1,0 +1,49 @@
+{
+    "sap.ui5": {
+        "config": {
+            "module": {
+                "nrg.module.app": {
+                    "stylesheet": [
+                        "asset/css/module.css"
+                    ],
+
+                    "resourceBundle": {
+                        "comp-i18n-app": "i18n/module.properties"
+                    },
+                    "odata": {
+                        "real": {
+                            "comp-campaign": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "routing": {
+            "routes": {
+                "app.refresh": {
+                    "pattern": "app/refresh",
+                    "target": [ "app.GeneralRefresh", "app.SummaryRefresh", "app.ToolsRefresh" ]
+                }
+            },
+            "targets": {
+                "app.GeneralRefresh": {
+                    "viewName": "nrg.module.app.view.GeneralRefresh",
+                    "controlId": "idAppGeneral"
+                },
+
+                "app.SummaryRefresh": {
+                    "viewName": "nrg.module.app.view.SummaryRefresh",
+                    "controlId": "idAppSummary"
+                },
+
+                "app.ToolsRefresh": {
+                    "viewName": "nrg.module.app.view.ToolsRefresh",
+                    "controlId": "idAppTools"
+                }
+            }
+        }
+    }
+}

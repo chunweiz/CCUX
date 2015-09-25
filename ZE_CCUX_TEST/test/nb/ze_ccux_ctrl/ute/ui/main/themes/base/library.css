@@ -1,0 +1,73 @@
+/*
+.uteMTogBar {
+    display: inline-block;
+    position: relative;
+}
+
+.uteMDd {
+    display: block;
+    position: relative;
+    }
+
+.uteMDd .uteMDd-hdr {
+    display: block;
+    position: relative;
+}
+
+.uteMDd .uteMDd-hdr .uteMDd-hdrContent {
+    display: inline-block;
+}
+
+.uteMDd .uteMDd-hdr .uteMDd-hdrExpander {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px;
+}
+
+.uteMDd .uteMDd-body {
+    display: block;
+    position: relative;
+}
+
+.uteMDd .uteMDd-body.uteMDd-body-hidden {
+    display: none;
+}
+
+.uteMDd-design-default {
+
+}
+
+** Default design for expander
+.uteMDd-hdrExpanderDesign-default .uteMChkBox-chk {
+    width: 20px;
+    height: 15px;
+    cursor: pointer;
+    border: 2px;
+}
+
+.uteMDd-hdrExpanderDesign-default .uteMChkBox-intChk + .uteMChkBox-chk::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 11px;
+    background-color: grey;
+    transform: translate(13px, 4px) rotate(45deg);
+}
+
+.uteMDd-hdrExpanderDesign-default .uteMChkBox-intChk + .uteMChkBox-chk::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 11px;
+    background-color: grey;
+    transform: translate(5px, 4px) rotate(-45deg);
+}
+
+.uteMDd-hdrExpanderDesign-default .uteMChkBox-intChk:checked + .uteMChkBox-chk::before {
+    transform: translate(13px, 4px) rotate(-45deg);
+}
+
+.uteMDd-hdrExpanderDesign-default .uteMChkBox-intChk:checked + .uteMChkBox-chk::after {
+    transform: translate(5px, 4px) rotate(45deg);
+}
+*/

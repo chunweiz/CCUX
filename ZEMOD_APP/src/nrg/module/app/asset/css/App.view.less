@@ -1,0 +1,163 @@
+.nrgApp {
+    background: data-uri('../img/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    // Header
+    & .nrgAppHMItem-spacer {
+        position: relative;
+        display: inline-block;
+        width: 1px;
+        height: 12pt;
+        background-color: transparent;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    & .nrgAppHMItem-divider {
+        position: relative;
+        display: inline-block;
+        width: 1px;
+        height: 8pt;
+        background-color: @nrgColor-grey-dark;
+        margin-left: 15px;
+        margin-right: 15px;
+        transform: translateY(-1px);
+    }
+
+    & .nrgAppHMItem.uteAppHMItem {
+        margin-top: 40px;
+    }
+
+    & .nrgAppHMItem .uteAppHMItem-hdr {
+        margin-bottom: 10px;
+    }
+
+    & .nrgAppHMItem-attention .uteAppHMItem-hdr:hover {
+        color: @nrgColor-orange-attention;
+    }
+
+    & .nrgAppBanner-logo {
+        display: block;
+        float: left;
+        margin-top: 15px;
+        background: data-uri('../../../../../../../ZEBASE/src/nrg/base/asset/img/nrg-logo.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 70px;
+        height: 50px;
+    }
+
+    & .nrgAppBanner-title {
+        display: inline-block;
+        padding-top: 32px;
+        padding-left: 10px;
+        cursor: default;
+    }
+
+    // Body
+    & .nrgAppBody {
+        & .nrgAppBodyBanner-title {
+            display: inline-block;
+            position: relative;
+            transform: translateY(100%);
+        }
+
+        & .nrgAppBody-navLeft {
+            width: 0;
+            height: 0;
+            border-top: 16px solid transparent;
+            border-bottom: 16px solid transparent;
+            border-right: 16px solid @nrgColor-grey-dark;
+        }
+
+        & .nrgAppBody-navLeft:hover {
+            border-right-color: @nrgColor-blue-link;
+        }
+
+        .nrgAppBody-navRight {
+            width: 0;
+            height: 0;
+            border-top: 16px solid transparent;
+            border-bottom: 16px solid transparent;
+            border-left: 16px solid @nrgColor-grey-dark;
+        }
+
+        & .nrgAppBody-navRight:hover {
+            border-left-color: @nrgColor-blue-link;
+        }
+    }
+
+    // Footer
+    & .nrgAppFtr-caret {
+        display: inline-block;
+        position: relative;
+        border-top-left-radius: 4px;
+        width: 80px;
+        height: 19px;
+        background-color: @nrgColor-white;
+        cursor: pointer;
+    }
+
+    & .nrgAppFtr-caret::before {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border: 1px solid @nrgColor-blue-link;
+        border-bottom: none;
+        border-right: none;
+        transform: translate(35px, 8px) rotate(45deg);
+    }
+
+    // To be removed later - migration to control
+    @maxHeight-summaryPanel: 400px;
+    @maxHeight-toolsPanel: 273px;
+    @minHeight-generalPanel: 686px;
+
+    & .nrgAppMain-summaryPanel,
+    & .nrgAppMain-toolsPanel,
+    & .nrgAppMain-generalPanel {
+        height: 100%;
+    }
+
+    & .nrgAppMain-summaryPanel {
+        max-height: @maxHeight-summaryPanel;
+//        overflow: hidden;
+    }
+
+    & .nrgAppMain-toolsPanel {
+        max-height: @maxHeight-toolsPanel;
+//        overflow: hidden;
+    }
+
+    & .nrgAppMain-generalContent,
+    & .nrgAppMain-summaryContent,
+    & .nrgAppMain-toolsContent {
+        width: 100%;
+        border-radius: 2px;
+        background-color: @nrgColor-blue-lightPale;
+        padding: 25px 14px 20px 14px;
+    }
+
+    & .nrgAppMain-generalContent {
+        padding: 25px 28px 28px 28px;
+    }
+
+    & .nrgAppMain-generalContent:last-child {
+        margin-bottom: 30px;
+    }
+
+    & .nrgAppMain-generalContent.nrgAppMain-generalContent-full {
+        min-height: @minHeight-generalPanel;
+        height: 100%;
+    }
+
+    & .nrgAppMain-summaryContent.nrgAppMain-summaryContent-full {
+        height: @maxHeight-summaryPanel;
+    }
+
+    & .nrgAppMain-toolsContent.nrgAppMain-toolsContent-full {
+        height: @maxHeight-toolsPanel;
+    }
+}

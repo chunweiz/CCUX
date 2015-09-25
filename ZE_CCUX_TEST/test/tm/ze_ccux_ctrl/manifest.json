@@ -1,0 +1,77 @@
+{
+    "name": "test.tm.ze_ccux_ctrl.Component",
+
+    "sap.ui5": {
+        "dependencies": {
+            "libs": {
+                "sap.ui.layout": {},
+                "sap.ui.commons": {},
+                "sap.m": {},
+                "ute.ui.commons": {},
+                "ute.ui.main": {},
+                "ute.ui.app": {}
+            }
+        },
+
+        "resources": {
+            "css": [
+                { "uri": "../../../../../ZELIB/normalize.css/normalize.css" },
+                { "uri": "asset/nrg.css" },
+                { "uri": "../../../../../ZEBASE_CTRL/build/ute/ui/base/asset/css/base.css" },
+                { "uri": "../../../../../ZEBASE/build/nrg/base/asset/css/base.css" }
+            ]
+        },
+
+        "rootView": {
+            "viewName": "test.tm.ze_ccux_ctrl.view.App",
+            "type": "XML"
+        },
+
+        "routing": {
+            "routes": {
+                "Button": { "pattern": "Button", "target": [ "Button" ] },
+                "Label": { "pattern": "Label", "target": [ "Label" ] },
+                "Checkbox": { "pattern": "Checkbox", "target": [ "Checkbox" ] },
+                "Infoline": { "pattern": "Infoline", "target": [ "Infoline" ] },
+                "Dropdown": { "pattern": "Dropdown", "target": [ "Dropdown" ] },
+                "RadioButton": { "pattern": "RadioButton", "target": [ "RadioButton" ] },
+                "TabBar": { "pattern": "TabBar", "target": [ "TabBar" ] },
+                "Popup": { "pattern": "Popup", "target": [ "Popup" ] },
+                "Icon": { "pattern": "Icon", "target": [ "Icon" ] },
+                "XMLTemplate": { "pattern": "XMLTemplate", "target": [ "XMLTemplate" ] },
+                "ICAppHeader": { "pattern": "ICAppHeader", "target": [ "ICAppHeader" ] },
+                "FancyTextField": { "pattern": "FancyTextField", "target": [ "FancyTextField" ] },
+                "UsageHistory": { "pattern": "UsageHistory", "target": [ "UsageHistory" ] },
+                "CustJourneyChannel": { "pattern": "CustJourneyChannel", "target": [ "CustJourneyChannel" ] },
+                "CustJourneyLifecycle": { "pattern": "CustJourneyLifecycle", "target": [ "CustJourneyLifecycle" ] },
+                "FooterNotification": { "pattern": "FooterNotification", "target": [ "FooterNotification" ] }
+            },
+
+            "config": {
+                "viewType": "XML",
+                "viewPath": "test.tm.ze_ccux_ctrl.view",
+                "controlAggregation": "content",
+                "clearControlAggregation": true
+            },
+
+            "targets": {
+                "Button": { "viewName": "Button", "controlId": "idAppContent" },
+                "Label": { "viewName": "Label", "controlId": "idAppContent" },
+                "Checkbox": { "viewName": "Checkbox", "controlId": "idAppContent" },
+                "Infoline": { "viewName": "Infoline", "controlId": "idAppContent" },
+                "Dropdown": { "viewName": "Dropdown", "controlId": "idAppContent" },
+                "RadioButton": { "viewName": "RadioButton", "controlId": "idAppContent" },
+                "TabBar": { "viewName": "TabBar", "controlId": "idAppContent" },
+                "Popup": { "viewName": "Popup", "controlId": "idAppContent" },
+                "Icon": { "viewName": "Icon", "controlId": "idAppContent" },
+                "XMLTemplate": { "viewName": "XMLView", "controlId": "idAppContent" },
+                "ICAppHeader": { "viewName": "ICAppHeader", "controlId": "idAppContent" },
+                "FancyTextField": { "viewName": "FancyTextField", "controlId": "idAppContent" },
+                "UsageHistory": { "viewName": "UsageHistory", "controlId": "idAppContent" },
+                "CustJourneyChannel": { "viewName": "CustJourneyChannel", "controlId": "idAppContent" },
+                "CustJourneyLifecycle": { "viewName": "CustJourneyLifecycle", "controlId": "idAppContent" },
+                "FooterNotification": { "viewName": "FooterNotification", "controlId": "idAppContent" }
+            }
+        }
+    }
+}

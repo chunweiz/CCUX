@@ -1,0 +1,67 @@
+{
+    "sap.ui5": {
+        "config": {
+            "module": {
+                "nrg.module.dashboard": {
+                    "stylesheet": [
+                        "asset/css/module.css"
+                    ],
+
+                    "resourceBundle": {
+                        "comp-i18n-dashboard": "i18n/module.properties"
+                    },
+
+                    "odata": {
+                        "real": {
+                            "comp-dashboard": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_SRV/"
+                            }
+                        },
+                        "mock": {
+                            "comp-dashboard": {
+                                "mockDataBaseUrl": "data/devtest/",
+                                "generateMissingMockData": true
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "routing": {
+            "routes": {
+                "dashboard.Verification": {
+                    "pattern": "dashboard/verification/bp/{bpNum}",
+                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "dashboard.EmptyTools" ]
+                },
+
+                "dashboard.VerificationWithCa": {
+                    "pattern": "dashboard/verification/bp/{bpNum}/ca/{caNum}",
+                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "dashboard.EmptyTools" ]
+                },
+
+                "dashboard.VerificationWithCaCo": {
+                    "pattern": "dashboard/verification/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "dashboard.EmptyTools" ]
+                }
+            },
+
+            "targets": {
+                "dashboard.EmptyTools":{
+                    "viewName": "nrg.module.dashboard.view.EmptyTools",
+                    "controlId": "idAppTools"
+                },
+
+                "dashboard.CustomerDataSummary": {
+                    "viewName": "nrg.module.dashboard.view.CustomerDataSummary",
+                    "controlId": "idAppSummary"
+                },
+
+                "dashboard.CustomerDataVerification": {
+                    "viewName": "nrg.module.dashboard.view.CustomerDataVerification",
+                    "controlId": "idAppGeneral"
+                }
+            }
+        }
+    }
+}

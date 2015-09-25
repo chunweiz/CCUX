@@ -1,0 +1,57 @@
+<mvc:View
+    controllerName="test.tm.ze_ccux_ctrl.view.CustJourneyChannel"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:tm="test.tm.ze_ccux_ctrl.view"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <style>
+        .tmCustJCChart {
+            display: inline-block;
+        }
+
+        .tmCustJCChart-slice {
+            stroke: black;
+            stroke-width: 1;
+        }
+
+        .tmCustJCChart-sliceValue {
+            text-anchor: middle;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .tmCustJCChart-line {
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .tmCustJCChart-label {
+            font-size: 1em;
+        }
+
+        .tmCustJCChart-totalOuterBg {
+
+        }
+
+        .tmCustJCChart-totalInnerBg {
+            fill-opacity: 0.3;
+            fill: grey;
+        }
+
+        .tmCustJCChart-totalText {
+            fill: white;
+            text-anchor: middle;
+            font-size: 1em;
+            font-weight: 600;
+        }
+    </style>
+
+    <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
+        <tm:CustJourneyChannelChart width="600" height="300" id="chart" totalDoublePress="_onTotalPress" sliceDoublePress="_onSlicePress">
+        </tm:CustJourneyChannelChart>
+    </sm:ScrollContainer>
+</mvc:View>

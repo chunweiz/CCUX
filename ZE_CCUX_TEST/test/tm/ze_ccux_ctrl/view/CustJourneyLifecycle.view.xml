@@ -1,0 +1,22 @@
+<mvc:View
+    controllerName="test.tm.ze_ccux_ctrl.view.CustJourneyLifecycle"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:tm="test.tm.ze_ccux_ctrl.view.control"
+    xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <tm:CustomerJourneyTimeline channel="{timeline>/data}">
+        <tm:CustomerJourneyTimelineChannel
+            topLabel="{timeline>topLabel}"
+            channelIcon="{timeline>channelIcon}"
+            rightDivider="{timeline>rightDivider}"
+            selected="{timeline>selected}"
+            press="._onPress"
+            doublePress="._onDoublePress"
+            cd:recordIndex="{timeline>recordIndex}" />
+    </tm:CustomerJourneyTimeline>
+</mvc:View>

@@ -1,0 +1,113 @@
+<mvc:View
+    controllerName="test.tm.ze_ccux_ctrl.view.UsageHistory"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:tm="test.tm.ze_ccux_ctrl.view"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <style>
+        .tmUsageHistChart {
+            display: inline-block;
+        }
+
+        .tmUsageHistChart-consumptionXAxis path.domain {
+            display: none;
+        }
+
+        .tmUsageHistChart-consumptionXAxis g.tick text {
+            fill: #808080;
+        }
+
+        .tmUsageHistChart-consumptionYAxis path.domain {
+            display: none;
+        }
+
+        .tmUsageHistChart-consumptionYAxis g.tick:last-of-type {
+            display: none;
+        }
+
+        .tmUsageHistChart-consumptionYAxis g.tick text {
+            fill: #808080;
+        }
+
+        .tmUsageHistChart-consumptionYAxisLabel {
+            text-anchor: middle;
+            fill: #808080;
+            font-size: 14px;
+        }
+
+        .tmUsageHistChart-consumptionXGrid {
+            stroke: #ffffff;
+            stroke-width: 4;
+        }
+
+        .tmUsageHistChart-consumptionXGrid:first-child {
+            stroke-width: 1;
+        }
+
+        .tmUsageHistChart-consumptionYGrid g.tick line {
+            stroke: #ffffff;
+        }
+
+        .tmUsageHistChart-consumptionLine {
+            stroke: #ffffff;
+            stroke-width: 3;
+            stroke-dasharray: 10,10;
+            fill: none;
+        }
+
+        .tmUsageHistChart-xAxis path {
+            fill: none;
+            stroke: black;
+            shape-rendering: crispEdges;
+        }
+
+        .tmUsageHistChart-consumptionPoint {
+            stroke: #808080;
+            stroke-width: 2;
+            fill: #ffffff;
+        }
+
+        .tmUsageHistChart-consumptionPoint:hover {
+            stroke: #ffffff;
+            fill: #6F8D9E;
+        }
+
+        .tmUsageHistChart-consumptionPointTooltip path {
+            stroke: #ffffff;
+            stroke-width: 2;
+            fill: rgba(111,141,158, 0.5);
+        }
+
+        .tmUsageHistChart-consumptionPointTooltip text {
+            fill: #ffffff;
+            text-anchor: middle;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .tmUsageHistChart-temperatureYAxisLabel {
+            fill: #808080;
+            font-size: 14px;
+            text-anchor: start;
+        }
+
+        .tmUsageHistChart-temperatureBar {
+            shape-rendering: crispEdges;
+        }
+
+        .tmUsageHistChart-temperatureText {
+            fill: #ffffff;
+            text-anchor: middle;
+            font-size: 1em;
+            font-weight: 600;
+        }
+    </style>
+
+    <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
+        <tm:UsageHistoryChart id="chart" width="1200" height="400"></tm:UsageHistoryChart>
+    </sm:ScrollContainer>
+</mvc:View>
