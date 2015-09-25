@@ -32,6 +32,7 @@ sap.ui.define(
             }), 'view-data');
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-campaign'), 'oODataSvc');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
 
             this._initFooterRetr();
         };
@@ -59,6 +60,27 @@ sap.ui.define(
         CustomController.prototype._initFooterRetr = function () {
             var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
             var bp = oRouteInfo.parameters.bpNum;
+            var ca = oRouteInfo.parameters.caNum;
+            var co = '32253375';
+
+            var sPath = '/CpgFtrS?$filter=Contract eq ' + '\'' + co + '\'';
+            var oModel = this.getView().getModel('oODataSvc'),
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oFooterCampaign').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
         };
 
 

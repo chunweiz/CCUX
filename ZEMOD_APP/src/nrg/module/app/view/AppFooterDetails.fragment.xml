@@ -57,7 +57,7 @@
                     </sm:ScrollContainer>
                     
                 </ute:Tag>
-                <!-- Eligible Offers (CA Level)-->
+                <!-- Eligible Offers (CO Level)-->
                 <ute:Tag class="nrgAppFtrDetails-eligibleOffers">
                     <!-- Title -->
                     <ute:Tag elem="span" class="nrgAppFtrDetails-eligibleOffers-title"
