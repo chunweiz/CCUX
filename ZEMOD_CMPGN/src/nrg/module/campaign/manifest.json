@@ -45,6 +45,10 @@
                 "campaignoffers": {
                     "pattern": "campaign/offers/bp/{bpNum}/ca/{caNum}/co/{coNum}/type/{typeV}",
                     "target": [ "campaign.Offers", "dashboard.CustomerDataSummary", "campaign.Tools" ]
+                },
+                "campaignhistory": {
+                    "pattern": "campaign/history/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target": [ "campaign.history", "dashboard.CustomerDataSummary", "campaign.Tools" ]
                 }
             },
             "targets": {
@@ -70,6 +74,10 @@
                 },
                 "campaign.Change": {
                     "viewName": "nrg.module.campaign.view.Change",
+                    "controlId": "idAppGeneral"
+                },
+                "campaign.history": {
+                    "viewName": "nrg.module.campaign.view.History",
                     "controlId": "idAppGeneral"
                 },
                 "campaign.Tools": {

@@ -4,10 +4,12 @@ sap.ui.define(
     [
         'nrg/base/view/BaseController',
         'jquery.sap.global',
-        "sap/ui/model/json/JSONModel"
+        "sap/ui/model/json/JSONModel",
+        'sap/ui/model/Filter',
+        'sap/ui/model/FilterOperator'
     ],
 
-    function (CoreController, jQuery, JSONModel) {
+    function (CoreController, jQuery, JSONModel,  Filter, FilterOperator) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.campaign.view.History');
@@ -22,10 +24,109 @@ sap.ui.define(
 		/* lifecycle method- Before Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onBeforeRendering = function () {
+            var oModel,
+                sPath,
+                mParameters,
+                oHistoryView,
+                oHistoryTable,
+                oHistoryRowTemplate,
+                aFilters,
+                aFilterIds,
+                aFilterValues,
+                oDataTag,
+                oNoDataTag,
+                fnRecievedHandler,
+                aRows,
+                oPricingTable,
+                oPricingRowTemplate,
+                oPricingColTemplate,
+                that = this,
+                fnRecieved,
+                fnChange,
+                oTemplateView,
+                oTemplateModel,
+                aEFLDatapaths,
+                iCount,
+                oEFLJson = {},
+                aResults = [],
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            this._i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
+            this._sContract = oRouteInfo.parameters.coNum;
+            this._sBP = oRouteInfo.parameters.bpNum;
+            this._sCA = oRouteInfo.parameters.caNum;
+            aFilterIds = ["Contract", "Type"];
+            aFilterValues = [this._sContract, "H"];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            sPath = this._i18NModel.getProperty("nrgHistorySet");
+            oModel = this.getOwnerComponent().getModel('comp-campaign');
+            oHistoryTable = this.getView().byId("idnrgCamHis-table");
+            oHistoryRowTemplate = this.getView().byId("idnrgCamHis-row").clone();
+            oDataTag = this.getView().byId("idnrgCamHisData");
+            oNoDataTag = this.getView().byId("idnrgCamHisNoData");
+            oPricingColTemplate = this.getView().byId("idnrgCamHis-prcCol");
+            oPricingRowTemplate = this.getView().byId("idnrgCamHis-prcRow");
+            oPricingTable = this.getView().byId("idnrgCamHisPriceT");
+            oTemplateModel = new sap.ui.model.json.JSONModel();
 
+            // Function received handler is used to update the view with first History campaign.---start
+            fnRecievedHandler = function () {
+                var oBinding;
+                aRows = oHistoryTable.getRows();
+                if ((aRows !== undefined) && (aRows.length > 0)) {
+                    sPath = aRows[0].getBindingContext("comp-campaign").getPath();
+                    aRows[0].addStyleClass("nrgCamHis-but-selected");
+                    that.getView().bindElement({
+                        model : "comp-campaign",
+                        path : sPath
+                    });
+                   // Adding EFL Table to History view as XML templating-- start
+                    aEFLDatapaths = this.getModel("comp-campaign").getProperty(sPath + "/EFLs");
+                    if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
+                        for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
+                            aResults.push(this.getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
+                        }
+                    }
+                    if ((aResults === undefined) && (aResults.length === 0)) {
+                        return;
+                    } else {
+                        oTemplateModel.setData(that.convertEFLJson(aResults));
+                        that._oEFLModel = oTemplateModel;
+                        oTemplateView = sap.ui.view({
+                            preprocessors: {
+                                xml: {
+                                    models: {
+                                        tmpl : that._oEFLModel
+                                    }
+                                }
+                            },
+                            type: sap.ui.core.mvc.ViewType.XML,
+                            viewName: "nrg.module.campaign.view.EFLData"
+                        });
+                        oPricingTable.addContent(oTemplateView);
+                    }
+                    // Adding EFL Table to History view as XML templating--end
+
+                } else {
+                    oDataTag.addStyleClass("nrgCamHis-hide");
+                    oNoDataTag.removeStyleClass("nrgCamHis-hide");
+                }
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
+
+            };
+            // Function received handler is used to update the view with first History campaign.---end
+            mParameters = {
+                parameters : {expand: "EFLs"},
+                model : "comp-campaign",
+                path : sPath,
+                template : oHistoryRowTemplate,
+                filters : aFilters,
+                events: {dataReceived : fnRecievedHandler}
+            };
+            oHistoryTable.bindAggregation("rows", mParameters);
         };
          /**
-		 * When the user choosed to select a Campaign for comparision
+		 * When the user choosed to select a Campaign for Details
 		 *
 		 * @function
 		 * @param {sap.ui.base.Event} oEvent pattern match event
@@ -35,11 +136,11 @@ sap.ui.define(
             var aChildren,
                 sPath,
                 i,
-                aContent,
+                aRows,
                 oPricingTable,
                 oPricingRowTemplate,
                 oPricingColTemplate,
-                oScrollContainer = this.getView().byId("idnrgCamHisScroll"),
+                oHistoryTable = this.getView().byId("idnrgCamHis-table"),
                 mParameters,
                 fnRecieved,
                 fnChange,
@@ -49,7 +150,7 @@ sap.ui.define(
                 iCount,
                 oEFLJson = {},
                 aResults = [];
-            aContent = oScrollContainer.getContent();
+            aRows = oHistoryTable.getRows();
             aChildren = oEvent.getSource().getParent().findElements();
             for (i = 0; i < aChildren.length; i = i + 1) {
                 if (aChildren[i].hasStyleClass("nrgCamHis-but-selected")) {
@@ -195,7 +296,33 @@ sap.ui.define(
 
             return aJsonDataNew;
         };
-
+       /**
+		 * Assign the filter objects based on the input selection
+		 *
+		 * @function
+		 * @param {Array} aFilterIds to be used as sPath for Filters
+         * @param {Array} aFilterValues for each sPath
+		 * @private
+		 */
+        Controller.prototype._createSearchFilterObject = function (aFilterIds, aFilterValues) {
+            var aFilters = [],
+                iCount;
+            if (aFilterIds !== undefined) {
+                for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
+                    aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
+                }
+            }
+            return aFilters;
+        };
+        /**
+		 * Back to Overview page function
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.backToOverview = function (oEvent) {
+            this.navTo("campaign", {bpNum: this._sBP, caNum: this._sCA, coNum : this._sContract, typeV : "C"});
+        };
         return Controller;
     }
 );

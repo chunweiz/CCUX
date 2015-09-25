@@ -92,7 +92,7 @@
                 </um:TabPanelItem>
                 <um:TabPanelItem key="PaySucc" class="nrgQPPay-tabPanelItem nrgQPPay-tabIcon">
                     <u:Tag>
-                          <um:Button press=".onPopupClose"
+                          <um:Button press=".onContactLog"
                                      class="nrgQPPay-stopRec"
                                      design="None">
                              <core:Icon src="sap-icon://nrg-icon/verified" class="nrgQPPay-verified" />
