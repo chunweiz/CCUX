@@ -412,11 +412,17 @@
 }
 
 .nrgBilling-invoicePopup{
-    width: 440px;
+    width: 560px;
     background-color: @nrgColor-bluePearl;
 
     & .floatRight{
         float: right;
+    }
+
+    & .nrgBilling-invoicePopup-horDvi{
+        border-width: 1px;
+        border-style: solid;
+        border-color: @nrgColor-grey-amount;
     }
 
     & .nrgBilling-invoicePopup-label{
@@ -425,6 +431,8 @@
         margin-bottom: 5px;
         margin-left: 10px;
         margin-right: 10px;
+        width: 400px;
+        height: 20px;
     }
 
     & .nrgBilling-invoicePopup-label > span{
@@ -434,11 +442,32 @@
     }
 
     & .nrgBilling-invoicePopup-value{
+    }
+
+    & .nrgBilling-invoicePopup-value-Lt{
         display: inline-block;
         margin-top: 5px;
         margin-bottom: 5px;
         margin-left: 10px;
+        width: 50px;
+        height: 20px;
+        vertical-align: middle;
+    }
+
+    & .nrgBilling-invoicePopup-value-Rt{
+        display: inline-block;
+        margin-top: 5px;
+        margin-bottom: 5px;
         margin-right: 10px;
+        width: 50px;
+        height: 20px;
+        vertical-align: middle;
+    }
+
+    & .nrgBilling-invoicePopup-value-Lt > span, & .nrgBilling-invoicePopup-value-Rt > span{
+        font-size: @nrgFontSize-base;
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-grey-inactive;
     }
 
     & .nrgBilling-invoicePopup-value > span{
@@ -450,9 +479,11 @@
     & .nrgBilling-invoicePopup-dark-label{
         display: inline-block;
         margin-top: 5px;
-        margin-bottom: 5px;
         margin-left: 10px;
+        margin-bottom: 5px;
         margin-right: 10px;
+        width: 400px;
+        height: 20px;
     }
 
     & .nrgBilling-invoicePopup-dark-label > span{
@@ -465,8 +496,15 @@
         display: inline-block;
         margin-top: 5px;
         margin-bottom: 5px;
-        margin-left: 10px;
+        padding-left: 10px;
         margin-right: 10px;
+        width: 50px;
+        height: 20px;
+        vertical-align: middle;
+    }
+
+    & .nrgBilling-invoicePopup-borderTop{
+        border-top: 1px solid @nrgColor-grey-amount;
     }
 
     & .nrgBilling-invoicePopup-dark-value > span{

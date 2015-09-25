@@ -9,6 +9,13 @@
 
                     "resourceBundle": {
                         "comp-i18n-app": "i18n/module.properties"
+                    },
+                    "odata": {
+                        "real": {
+                            "comp-campaign": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/"
+                            }
+                        }
                     }
                 }
             }

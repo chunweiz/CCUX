@@ -17,16 +17,24 @@ sap.ui.define(
         CustomController.prototype.onBeforeRendering = function () {
             this.getView().setModel(new JSONModel({
                 notification: [
-                    { link: false, design: 'Error', text: 'Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress.' },
-                    { link: false, design: 'Warning', text: 'Caulie dandelion maize lentil collard greens radish arugula sweet pepper water spinach kombu courgette lettuce.' },
-                    { link: false, design: 'Success', text: 'Parsnip lotus root celery yarrow seakale tomato collard greens tigernut epazote ricebean melon tomatillo soybean chicory broccoli beet greens peanut salad.' },
-                    { link: false, design: 'Information', text: 'Peanut gourd nori welsh onion rock melon mustard jícama. Desert raisin amaranth kombu aubergine kale seakale brussels sprout pea.' },
-                    { link: true, design: 'Error', text: 'Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress.' },
-                    { link: true, design: 'Warning', text: 'Caulie dandelion maize lentil collard greens radish arugula sweet pepper water spinach kombu courgette lettuce.' },
-                    { link: true, design: 'Success', text: 'Parsnip lotus root celery yarrow seakale tomato collard greens tigernut epazote ricebean melon tomatillo soybean chicory broccoli beet greens peanut salad.' },
-                    { link: true, design: 'Information', text: 'Peanut gourd nori welsh onion rock melon mustard jícama. Desert raisin amaranth kombu aubergine kale seakale brussels sprout pea.' }
-                ]
+                    { link: false, design: 'Warning', text: 'Lite Up Customer' },
+                    { link: false, design: 'Error', text: 'Invalid Mailing Address' },
+                    { link: true, design: 'Success', text: 'Customer is eligible for extension' },
+                    { link: false, design: 'Information', text: 'This is a normal text.' },
+                    { link: true, design: 'Error', text: 'Late fee for last month was not paid.' },
+                    { link: true, design: 'Error', text: 'Disconnection notice amount - $130.00. Net amount - $110.00. Due Date: 11/20/2014' }
+                ],
+                rhs : {
+                    current: 'Water Heater Protect $1000',
+                    pending: 'None',
+                    history: 'Plumbing Essentials'
+                }
             }), 'view-data');
+
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-campaign'), 'oODataSvc');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
+
+            this._initFooterRetr();
         };
 
         CustomController.prototype.onInit = function () {
@@ -42,10 +50,41 @@ sap.ui.define(
             return this._oApp;
         };
 
+        /*------------------------------ Footer ----------------------------*/
+
         // Click the links under the Notification section in the footer
         CustomController.prototype._onFooterNotificationLinkPress = function (oControlEvent) {
             console.log(oControlEvent.getSource());
         };
+
+        CustomController.prototype._initFooterRetr = function () {
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+            var bp = oRouteInfo.parameters.bpNum;
+            var ca = oRouteInfo.parameters.caNum;
+            var co = '32253375';
+
+            var sPath = '/CpgFtrS?$filter=Contract eq ' + '\'' + co + '\'';
+            var oModel = this.getView().getModel('oODataSvc'),
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oFooterCampaign').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+
+
 
         CustomController.prototype._onQuickLinkClick = function (oControlEvent) {
             this._oApp.setHeaderMenuItemSelected(false, App.HMItemId.Menu);

@@ -51,15 +51,18 @@ sap.ui.define(
 
         AppFooter.prototype._registerEvents = function () {
             var oView = this._oController.getView();
-
             oView.byId('appFtrCaret').attachEvent('click', this._onFooterCaretClick, this);
         };
 
         AppFooter.prototype._onFooterCaretClick = function (oControlEvent) {
+            var oView = this._oController.getView();
+            oView.byId('appFtr').toggleStyleClass('uteAppFtr-open');
             this._getSubmenu().open();
         };
 
         AppFooter.prototype._onFooterSubmenuCaretClick = function (oControlEvent) {
+            var oView = this._oController.getView();
+            oView.byId('appFtr').toggleStyleClass('uteAppFtr-open');
             this._getSubmenu().close();
         };
 
