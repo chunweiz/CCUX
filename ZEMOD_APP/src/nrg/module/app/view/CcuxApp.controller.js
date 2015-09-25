@@ -6,10 +6,12 @@ sap.ui.define(
         'sap/ui/core/mvc/Controller',
         'nrg/module/app/view/App',
         'nrg/module/app/view/AppHeader',
-        'sap/ui/model/json/JSONModel'
+        'sap/ui/model/json/JSONModel',
+        'sap/ui/model/Filter',
+        'sap/ui/model/FilterOperator'
     ],
 
-    function (Controller, App, AppHeader, JSONModel) {
+    function (Controller, App, AppHeader, JSONModel, Filter, FilterOperator) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.app.view.CcuxApp');
@@ -63,11 +65,16 @@ sap.ui.define(
             var ca = oRouteInfo.parameters.caNum;
             var co = '32253375';
 
-            var sPath = '/CpgFtrS?$filter=Contract eq ' + '\'' + co + '\'';
+            var oFilterTemplate = new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: co});
+
+            // var sPath = '/CpgFtrS?$filter=Contract eq ' + '\'' + co + '\'';
+            var sPath = '/CpgFtrS';
+            var aFilters = oFilterTemplate;
             var oModel = this.getView().getModel('oODataSvc'),
                 oParameters;
 
             oParameters = {
+                filters: aFilters,
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oFooterCampaign').setData(oData);
