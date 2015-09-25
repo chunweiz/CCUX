@@ -92,7 +92,7 @@ sap.ui.define(
                     } else {
                         oTemplateModel.setData(that.convertEFLJson(aResults));
                         that._oEFLModel = oTemplateModel;
-                        oTemplateView = sap.ui.view({
+                        oTemplateView = new sap.ui.view({
                             preprocessors: {
                                 xml: {
                                     models: {
