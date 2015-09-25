@@ -30,6 +30,10 @@ sap.ui.define(
                     current: 'Water Heater Protect $1000',
                     pending: 'None',
                     history: 'Plumbing Essentials'
+                },
+                campaign: {
+                    title: 'Agent Requested Offers',
+                    text: 'NOT ELIGIBLE'
                 }
             }), 'view-data');
 
@@ -69,7 +73,8 @@ sap.ui.define(
 
             // var sPath = '/CpgFtrS?$filter=Contract eq ' + '\'' + co + '\'';
             var sPath = '/CpgFtrS';
-            var aFilters = oFilterTemplate;
+            var aFilters = [];
+            aFilters.push(oFilterTemplate);
             var oModel = this.getView().getModel('oODataSvc'),
                 oParameters;
 

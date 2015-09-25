@@ -2,6 +2,7 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ua="ute.ui.app"
     xmlns:sm="sap.m"
+    xmlns:utmain="ute.ui.main"
     xmlns:ute="ute.ui.commons"
     xmlns:core="sap.ui.core">
 
@@ -84,6 +85,17 @@
                         </ute:Tag>
 
                     </sm:ScrollContainer>
+                </ute:Tag>
+                <ute:Tag class="nrgAppFtrDetails-campaignButton">
+                    <utmain:Button 
+                        design="None"
+                        class="nrgAppFtrDetails-campaignButton-item" 
+                        press="onCampaignBtnClick">
+                        <ute:Tag class="nrgAppFtrDetails-campaignButton-itemTitle"
+                            text="{view-data>/campaign/title}" />
+                        <ute:Tag class="nrgAppFtrDetails-campaignButton-itemText"
+                            text="{view-data>/campaign/text}" />
+                    </utmain:Button>
                 </ute:Tag>
             </div>
         </div>

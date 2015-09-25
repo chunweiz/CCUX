@@ -89,7 +89,7 @@
             }
 
             & .nrgAppFtrDetails-eligibleOffers {
-                width: 490px;
+                width: 270px;
                 height: 260px;
                 padding-left: 15px;
 
@@ -118,6 +118,39 @@
                         }
                     }
 
+                }
+            }
+
+            & .nrgAppFtrDetails-campaignButton {
+                width: 201px;
+                height: 260px;
+                padding-left: 15px;
+                padding-right: 15px;
+                border-right: 1px solid @nrgColor-grey-light;
+                display: flex;
+                align-items: center;
+
+                & .nrgAppFtrDetails-campaignButton-item {
+                    background-color: @nrgColor-grey-highlight;
+                    width: 170px;
+                    height: 80px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column; 
+
+                    & .nrgAppFtrDetails-campaignButton-itemTitle {
+                        color: @nrgColor-darkGrey;
+                        font-size: @nrgFontSize-small;
+                        font-weight: @nrgFontWeight-semiBold;
+                        margin-bottom: 5px;
+                    }
+
+                    & .nrgAppFtrDetails-campaignButton-itemText {
+                        color: @nrgColor-red-pale;
+                        font-size: @nrgFontSize-larger;
+                        font-weight: @nrgFontWeight-bold;
+                    }   
                 }
             }
         }
