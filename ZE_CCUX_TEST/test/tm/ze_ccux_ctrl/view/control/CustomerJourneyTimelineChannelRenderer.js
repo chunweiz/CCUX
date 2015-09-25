@@ -20,6 +20,23 @@ sap.ui.define(
             oRm.writeClasses();
             oRm.write('>');
 
+            this._renderLeftLine(oRm, oCustomControl);
+            this._renderEmblem(oRm, oCustomControl);
+            this._renderRightLine(oRm, oCustomControl);
+
+            if (oCustomControl.getRightDivider()) {
+                this._renderRightDivider(oRm, oCustomControl);
+            }
+
+            oRm.write('</div>');
+        };
+
+        CustomRenderer._renderEmblem = function (oRm, oCustomControl) {
+            oRm.write('<div');
+            oRm.addClass('tmCJTChannel-emblem');
+            oRm.writeClasses();
+            oRm.write('>');
+
             this._renderTopLabel(oRm, oCustomControl);
             this._renderIcon(oRm, oCustomControl);
 
@@ -52,11 +69,29 @@ sap.ui.define(
         };
 
         CustomRenderer._renderLeftLine = function (oRm, oCustomControl) {
-
+            oRm.write('<div');
+            oRm.addClass('tmCJTChannel-line');
+            oRm.addClass('tmCJTChannel-line-left');
+            oRm.writeClasses();
+            oRm.write('>');
+            oRm.write('</div>');
         };
 
         CustomRenderer._renderRightLine = function (oRm, oCustomControl) {
+            oRm.write('<div');
+            oRm.addClass('tmCJTChannel-line');
+            oRm.addClass('tmCJTChannel-line-right');
+            oRm.writeClasses();
+            oRm.write('>');
+            oRm.write('</div>');
+        };
 
+        CustomRenderer._renderRightDivider = function (oRm, oCustomControl) {
+            oRm.write('<div');
+            oRm.addClass('tmCJTChannel-divider');
+            oRm.writeClasses();
+            oRm.write('>');
+            oRm.write('</div>');
         };
 
         return CustomRenderer;

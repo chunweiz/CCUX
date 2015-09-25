@@ -56,19 +56,19 @@ sap.ui.define(
         };
 
         CustomControl.prototype._onChannelClick = function (oEvent) {
-            this._onDoubleClick = false;
+            this._bDoubleClick = false;
 
             // Wait for a while to determine whether the user intention is to double click.
             // If it is, do not fire single click. Might want to calibrate the delay
             jQuery.sap.delayedCall(300, this, function () {
-                if (!this._onDoubleClick) {
+                if (!this._bDoubleClick) {
                     this.firePress();
                 }
             });
         };
 
         CustomControl.prototype._onChannelDoubleClick = function (oEvent) {
-            this._onDoubleClick = true;
+            this._bDoubleClick = true;
             this.setSelected(!this.getSelected());
             this.fireDoublePress();
         };

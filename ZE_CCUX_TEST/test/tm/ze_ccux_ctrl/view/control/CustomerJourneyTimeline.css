@@ -50,19 +50,24 @@
 .tmCJTChannel {
     display: inline-block;
     position: relative;
+}
+
+.tmCJTChannel .tmCJTChannel-emblem {
+    display: inline-block;
+    position: relative;
     width: 70px;
     height: 60px;
 }
 
-.tmCJTChannel.tmCJTChannel-selected {
+.tmCJTChannel.tmCJTChannel-selected .tmCJTChannel-emblem {
     color: hotpink;
 }
 
-.tmCJTChannel:hover {
-    color: hotpink;
+.tmCJTChannel .tmCJTChannel-emblem:hover {
+    color: gold;
 }
 
-.tmCJTChannel .tmCJTChannel-topLabel {
+.tmCJTChannel .tmCJTChannel-emblem .tmCJTChannel-topLabel {
     display: block;
     width: 100%;
     height: 20px;
@@ -71,12 +76,36 @@
     text-align: center;
 }
 
-.tmCJTChannel .tmCJTChannel-icon {
+.tmCJTChannel .tmCJTChannel-emblem .tmCJTChannel-icon {
     display: block;
     font-size: 35px;
     text-align: center;
 }
 
-.tmCJTChannel .tmCJTChannel-icon:hover {
+.tmCJTChannel .tmCJTChannel-emblem .tmCJTChannel-icon:hover {
     cursor: pointer;
+}
+
+.tmCJTChannel .tmCJTChannel-line {
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background-color: black;
+    transform: translateY(-15px);
+}
+
+.tmCJTChannel:first-child .tmCJTChannel-line-left {
+    display: none;
+}
+
+.tmCJTChannel:last-child .tmCJTChannel-line-right {
+    display: none;
+}
+
+.tmCJTChannel .tmCJTChannel-divider {
+    display: inline-block;
+    width: 1px;
+    height: 35px;
+    background-color: black;
+    margin: 0 5px;
 }
