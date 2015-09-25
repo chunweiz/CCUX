@@ -30,6 +30,10 @@ sap.ui.define(
                     history: 'Plumbing Essentials'
                 }
             }), 'view-data');
+
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-campaign'), 'oODataSvc');
+
+            this._initFooterRetr();
         };
 
         CustomController.prototype.onInit = function () {
@@ -45,10 +49,20 @@ sap.ui.define(
             return this._oApp;
         };
 
+        /*------------------------------ Footer ----------------------------*/
+
         // Click the links under the Notification section in the footer
         CustomController.prototype._onFooterNotificationLinkPress = function (oControlEvent) {
             console.log(oControlEvent.getSource());
         };
+
+        CustomController.prototype._initFooterRetr = function () {
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+            var bp = oRouteInfo.parameters.bpNum;
+        };
+
+
+
 
         CustomController.prototype._onQuickLinkClick = function (oControlEvent) {
             this._oApp.setHeaderMenuItemSelected(false, App.HMItemId.Menu);
