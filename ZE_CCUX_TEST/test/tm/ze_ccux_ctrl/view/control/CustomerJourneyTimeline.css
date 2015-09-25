@@ -5,11 +5,16 @@
 .tmCJT-navBack {
     display: inline-block;
     height: 60px;
-    width: 30px;
+    width: 20px;
     font-size: 35px;
     vertical-align: bottom;
     text-align: left;
     transform: translateY(15px);
+}
+
+.tmCJT-navBack:hover {
+    color: tomato;
+    cursor: pointer;
 }
 
 .tmCJT-navBack.tmCJT-navBack-hide .sapUiIcon {
@@ -19,11 +24,16 @@
 .tmCJT-navForward {
     display: inline-block;
     height: 60px;
-    width: 30px;
+    width: 20px;
     font-size: 35px;
     vertical-align: bottom;
     text-align: right;
     transform: translateY(15px);
+}
+
+.tmCJT-navForward:hover {
+    color: tomato;
+    cursor: pointer;
 }
 
 .tmCJT-navForward.tmCJT-navForward-hide .sapUiIcon {
@@ -44,6 +54,14 @@
     height: 60px;
 }
 
+.tmCJTChannel.tmCJTChannel-selected {
+    color: hotpink;
+}
+
+.tmCJTChannel:hover {
+    color: hotpink;
+}
+
 .tmCJTChannel .tmCJTChannel-topLabel {
     display: block;
     width: 100%;
@@ -57,4 +75,8 @@
     display: block;
     font-size: 35px;
     text-align: center;
+}
+
+.tmCJTChannel .tmCJTChannel-icon:hover {
+    cursor: pointer;
 }

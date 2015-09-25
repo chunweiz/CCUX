@@ -697,3 +697,141 @@
     ]
   }
 }
+/*{
+  "d":{
+    "results":[
+      {
+        "__metadata":{
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')",
+          "type":"ZE_CCUX_CHKBOOK_SRV.PaymentItem"
+        },
+        "ContractAccountNumber":"",
+        "InvoiceNum":"111014765354",
+        "ItemDesc":"30 Day Billing Period From 06/22/2015 To 07/22/2015",
+        "ValueRt":"0.0000",
+        "ValueLt":"0.0000",
+        "CurrChrgInd":"",
+        "Index":"        1",
+        "HyperLinkInd":"",
+        "HyperLinkValue":"                                                                                               0.00",
+        "Date":null,
+        "PaymentHdr":{
+          "__deferred":{
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')/PaymentHdr"
+          }
+        }
+      },
+      {
+        "__metadata":{
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')",
+          "type":"ZE_CCUX_CHKBOOK_SRV.PaymentItem"
+        },
+        "ContractAccountNumber":"",
+        "InvoiceNum":"111014765354",
+        "ItemDesc":"Reliant Predictable Amount",
+        "ValueRt":"0.0000",
+        "ValueLt":"140.0000",
+        "CurrChrgInd":"",
+        "Index":"        2",
+        "HyperLinkInd":"",
+        "HyperLinkValue":"                                                                                               0.00",
+        "Date":null,
+        "PaymentHdr":{
+          "__deferred":{
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')/PaymentHdr"
+          }
+        }
+      },
+      {
+        "__metadata":{
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')",
+          "type":"ZE_CCUX_CHKBOOK_SRV.PaymentItem"
+        },
+        "ContractAccountNumber":"",
+        "InvoiceNum":"111014765354",
+        "ItemDesc":"LITE-UP Discount",
+        "ValueRt":"0.0000",
+        "ValueLt":"-40.2500",
+        "CurrChrgInd":"",
+        "Index":"        3",
+        "HyperLinkInd":"LP",
+        "HyperLinkValue":"                                                                                               0.00",
+        "Date":null,
+        "PaymentHdr":{
+          "__deferred":{
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')/PaymentHdr"
+          }
+        }
+      },
+      {
+        "__metadata":{
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')",
+          "type":"ZE_CCUX_CHKBOOK_SRV.PaymentItem"
+        },
+        "ContractAccountNumber":"",
+        "InvoiceNum":"111014765354",
+        "ItemDesc":"Current Charges",
+        "ValueRt":"99.7500",
+        "ValueLt":"0.0000",
+        "CurrChrgInd":"X",
+        "Index":"        4",
+        "HyperLinkInd":"",
+        "HyperLinkValue":"                                                                                               0.00",
+        "Date":null,
+        "PaymentHdr":{
+          "__deferred":{
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')/PaymentHdr"
+          }
+        }
+      },
+      {
+        "__metadata":{
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')",
+          "type":"ZE_CCUX_CHKBOOK_SRV.PaymentItem"
+        },
+        "ContractAccountNumber":"",
+        "InvoiceNum":"111014765354",
+        "ItemDesc":"Disconnect Notice Fee",
+        "ValueRt":"10.0000",
+        "ValueLt":"0.0000",
+        "CurrChrgInd":"",
+        "Index":"        5",
+        "HyperLinkInd":"",
+        "HyperLinkValue":"                                                                                               0.00",
+        "Date":null,
+        "PaymentHdr":{
+          "__deferred":{
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')/PaymentHdr"
+          }
+        }
+      },
+      {
+        "__metadata":{
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')",
+          "type":"ZE_CCUX_CHKBOOK_SRV.PaymentItem"
+        },
+        "ContractAccountNumber":"",
+        "InvoiceNum":"111014765354",
+        "ItemDesc":"Late Payment Penalty",
+        "ValueRt":"4.9900",
+        "ValueLt":"0.0000",
+        "CurrChrgInd":"",
+        "Index":"        6",
+        "HyperLinkInd":"",
+        "HyperLinkValue":"                                                                                               0.00",
+        "Date":null,
+        "PaymentHdr":{
+          "__deferred":{
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='111014765354')/PaymentHdr"
+          }
+        }
+      }
+    ]
+  }
+}*/
