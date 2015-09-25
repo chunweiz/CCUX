@@ -91,6 +91,9 @@ sap.ui.define(
             oRm.addClass('tmCJTChannel-divider');
             oRm.writeClasses();
             oRm.write('>');
+
+            /* TODO: Render a zig zag icon? */
+
             oRm.write('</div>');
         };
 
