@@ -102,3 +102,11 @@
 .tmCJTChannel:last-child .tmCJTChannel-line-right {
     display: none;
 }
+
+.tmCJTChannel .tmCJTChannel-divider {
+    display: inline-block;
+    width: 1px;
+    height: 35px;
+    background-color: black;
+    margin: 0 5px;
+}

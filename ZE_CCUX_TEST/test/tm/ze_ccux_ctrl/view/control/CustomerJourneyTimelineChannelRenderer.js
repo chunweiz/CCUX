@@ -24,6 +24,10 @@ sap.ui.define(
             this._renderEmblem(oRm, oCustomControl);
             this._renderRightLine(oRm, oCustomControl);
 
+            if (oCustomControl.getRightDivider()) {
+                this._renderRightDivider(oRm, oCustomControl);
+            }
+
             oRm.write('</div>');
         };
 
@@ -64,14 +68,6 @@ sap.ui.define(
             oRm.write('</div>');
         };
 
-        CustomRenderer._renderLine = function (oRm, oCustomControl) {
-            oRm.write('<div');
-            oRm.addClass('tmCJTChannel-line');
-            oRm.writeClasses();
-            oRm.write('>');
-            oRm.write('</div>');
-        };
-
         CustomRenderer._renderLeftLine = function (oRm, oCustomControl) {
             oRm.write('<div');
             oRm.addClass('tmCJTChannel-line');
@@ -85,6 +81,14 @@ sap.ui.define(
             oRm.write('<div');
             oRm.addClass('tmCJTChannel-line');
             oRm.addClass('tmCJTChannel-line-right');
+            oRm.writeClasses();
+            oRm.write('>');
+            oRm.write('</div>');
+        };
+
+        CustomRenderer._renderRightDivider = function (oRm, oCustomControl) {
+            oRm.write('<div');
+            oRm.addClass('tmCJTChannel-divider');
             oRm.writeClasses();
             oRm.write('>');
             oRm.write('</div>');
