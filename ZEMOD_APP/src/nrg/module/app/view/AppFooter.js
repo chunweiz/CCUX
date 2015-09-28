@@ -54,22 +54,20 @@ sap.ui.define(
                 filters: aFilters,
                 success : function (oData) {
                     if (oData) {
-                        var oCampaignModel = this._oController.getView().getModel('oFooterCampaign');
-                        oCampaignModel.setData({Current:{OfferTitle: "None"}, Pending:{OfferTitle: "None"}, History:{OfferTitle: "None"}});
+                        // var oCampaignModel = this._oController.getView().getModel('oFooterCampaign');
+                        // oCampaignModel.setData({Current:{OfferTitle: "None"}, Pending:{OfferTitle: "None"}, History:{OfferTitle: "None"}});
 
-                        for (var i = 0; i < oData.results.length; i++) {
-                            if (oData.results[i].Type === 'C') {
-                                oCampaignModel.setProperty('/Current', oData.results[i]);
-                            }
-                            if (oData.results[i].Type === 'PE') {
-                                oCampaignModel.setProperty('/Pending', oData.results[i]);
-                            }
-                            if (oData.results[i].Type === 'H') {
-                                oCampaignModel.setProperty('/History', oData.results[i]);
-                            }
-                        }
-                        
-                        
+                        // for (var i = 0; i < oData.results.length; i++) {
+                        //     if (oData.results[i].Type === 'C') {
+                        //         oCampaignModel.setProperty('/Current', oData.results[i]);
+                        //     }
+                        //     if (oData.results[i].Type === 'PE') {
+                        //         oCampaignModel.setProperty('/Pending', oData.results[i]);
+                        //     }
+                        //     if (oData.results[i].Type === 'H') {
+                        //         oCampaignModel.setProperty('/History', oData.results[i]);
+                        //     }
+                        // }
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -81,6 +79,16 @@ sap.ui.define(
                 oModel.read(sPath, oParameters);
             }
         };
+
+        AppFooter.prototype._formatCampaignTime = function (oDate) {
+            var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern:"MM/yyyy"});
+            var dateStr = dateFormat.format(new Date(oDate.getTime()));
+            return dateStr;
+        };
+
+
+
+
 
         AppFooter.prototype.reset = function () {
             this._getSubmenu().close();
