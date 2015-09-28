@@ -176,6 +176,11 @@ sap.ui.define(
             return this._oAppFooter;
         };
 
+        App.prototype._initFooterOData = function () {
+            this._oAppFooter._initFooterOData();
+            return this;
+        };
+
         App.prototype.updateFooter = function (oPayload) {
             this._oAppFooter.updateFooter(oPayload);
             return this;

@@ -30,16 +30,16 @@ sap.ui.define(
         });
 
         AppFooter.prototype.init = function () {
-            // oData Model
-            this._oController.getView().setModel(this._oController.getOwnerComponent().getModel('comp-campaign'), 'oODataSvc');
-            this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
-            this._initFooterRetr();
-
-
             this._registerEvents();
         };
 
-        AppFooter.prototype._initFooterRetr = function () {
+        AppFooter.prototype._initFooterOData = function () {
+            // oData Model
+            this._oController.getView().setModel(this._oController.getOwnerComponent().getModel('comp-campaign'), 'oODataSvc');
+            this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
+        };
+
+        AppFooter.prototype.updateFooter = function (oPayload) {
             var bp = '';
             var ca = '';
             var co = '32253375';
@@ -68,10 +68,6 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oParameters);
             }
-        };
-
-        AppFooter.prototype.updateFooter = function (oPayload) {
-
         };
 
         AppFooter.prototype.reset = function () {
