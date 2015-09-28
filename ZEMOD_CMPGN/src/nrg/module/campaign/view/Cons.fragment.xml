@@ -58,7 +58,7 @@
                         <c:Label text="Estimated Difference"  />
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell class="nrgCamOff-mtxSndCell">
-                        <c:Label text="$20.00" />
+                        <c:Label text="$20.00" class="nrgCamOff-diff"/>
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
                 <l:MatrixLayoutRow class="nrgCamOff-mtxRow">

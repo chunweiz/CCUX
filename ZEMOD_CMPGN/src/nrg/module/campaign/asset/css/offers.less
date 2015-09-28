@@ -1,7 +1,9 @@
 .nrgCmpOff {
             font-family: @nrgFontFamily;
+            @nrgCamOffers-redcolor : red;
+            @nrgCamOffers-yellowcolor : yellow;
 
-    & > .nrgCamOff-ttl {
+    &  .nrgCamOff-ttl {
             margin-left: 8px;
             font-size: @nrgFontSize-base;
             font-weight: @nrgFontWeight-semiBold;
@@ -12,28 +14,28 @@
             white-space: nowrap;*/
     }
     & > .nrgCmpOff-partTiles > .nrgCmpOff-tiers{
-            width:13.5%;
+            width:10%;
             float:left;
             display:inline-block;
     }
     & > .nrgCmpOff-partTiles > .nrgCmpOff-tiers > .nrgCmpOff-tier{
-            margin-bottom: 10px;
-            margin-top: 10px;
+/*            margin-bottom: 10px;
+            margin-top: 10px;*/
             color: @nrgColor-blueLink;
             font-size: @nrgFontSize-base;
-            font-weight: @nrgFontWeight-semiBold;
+            font-weight: @nrgFontWeight-regular;
     }
     & > .nrgCmpOff-partTiles > .nrgCmpOff-tiers > .nrgCmpOff-tier > .nrgCamOff-btn-selected{
-            color: @nrgColor-grey-inactive;
+            color: @nrgColor-grey-light;
     }
     & > .nrgCmpOff-partTiles > .nrgCmpOff-tiles{
-            width: 85%;
+            width: 89%;
             display: inline-block;
             white-space: normal;
+        	margin-left: 10px;
     }
     & > .nrgCmpOff-partTiles > .nrgCmpOff-tiles > .nrgCamOff-scroll{
             overflow: auto;
-            text-align: right;
             outline: 0px;
             margin-top: 10px;
     }
@@ -42,14 +44,39 @@
             height:126px;
             margin:3px 3px 3px 3px;
             background-color: @nrgColor-grey-highlight;
-            color:@nrgColor-grey-dark;
+            color:@nrgColor-green-pale;
             float:left;
     }
-    & > .nrgCmpOff-partTiles > .nrgCmpOff-tiles > .nrgCamOff-scroll > .sapMScrollContScroll > .nrgCamOff-btn > .nrgCamOff-btnTtl {
-            font-size: @nrgFontSize-small;
+    & > .nrgCmpOff-partTiles > .nrgCmpOff-tiles > .nrgCamOff-scroll > .sapMScrollContScroll > .nrgCamOff-btn > .nrgCamOff-btnInfo > .nrgCamOff-ttlinfo  {
+            display:inline-block;
+            width: 60%;
+    }
+    & > .nrgCmpOff-partTiles > .nrgCmpOff-tiles > .nrgCamOff-scroll > .sapMScrollContScroll > .nrgCamOff-btn > .nrgCamOff-btnInfo > .nrgCamOff-feeinfo  {
+            display:inline-block;
+            width: 40%;
+            float: right;
+            text-align: right;
             font-weight: @nrgFontWeight-semiBold;
+    }
+    & > .nrgCmpOff-partTiles > .nrgCmpOff-tiles > .nrgCamOff-scroll > .sapMScrollContScroll > .nrgCamOff-btn > .nrgCamOff-btnInfo > .nrgCamOff-ttlinfo > .nrgCamOff-btnTtl {
+            font-size: @nrgFontSize-small;
+            font-weight: @nrgFontWeight-regular;
             padding-top: 5px;
-            width: 75%;
+	        height: 35px;
+            overflow: hidden;
+    }
+    & > .nrgCmpOff-partTiles > .nrgCmpOff-tiles > .nrgCamOff-scroll > .sapMScrollContScroll > .nrgCamOff-btn > .nrgCamOff-btnInfo > .nrgCamOff-feeinfo > .nrgCamOff-Canfee {
+            font-size: @nrgFontSize-small;
+            font-weight: @nrgFontWeight-regular;
+            padding-top: 5px;
+            overflow: hidden;
+            color: @nrgCamOffers-redcolor;
+    }
+    & > .nrgCmpOff-partTiles > .nrgCmpOff-tiles > .nrgCamOff-scroll > .sapMScrollContScroll > .nrgCamOff-btn > .nrgCamOff-btnInfo > .nrgCamOff-feeinfo > .nrgCamOff-Inc {
+            font-size: @nrgFontSize-small;
+            font-weight: @nrgFontWeight-regular;
+            overflow: hidden;
+            color: @nrgCamOffers-yellowcolor;
     }
     & > .nrgCmpOff-partTiles > .nrgCmpOff-tiles > .nrgCamOff-scroll > .sapMScrollContScroll > .nrgCamOff-btn > .nrgCamOff-btnPrc{
             font-size: @nrgFontSize-largest;
@@ -68,10 +95,10 @@
             font-weight: @nrgFontWeight-regular;
             text-align: right;
     }
-    & > .nrgCmpOff-partTiles > .nrgCmpOff-tiles > .nrgCamOff-scroll > .sapMScrollContScroll > .nrgCamOff-btn > .nrgCamOff-btnInfo > .nrgCamOff-btnPC{
+    & > .nrgCmpOff-partTiles > .nrgCmpOff-tiles > .nrgCamOff-scroll > .sapMScrollContScroll > .nrgCamOff-btn > .nrgCamOff-btnInfo > .nrgCamOff-ttlinfo > .nrgCamOff-btnPC{
             font-size: @nrgFontSize-smaller;
             font-weight: @nrgFontWeight-regular;
-            text-align: right;
+            display:inline-block;
     }
     & > .nrgCmpOff-partTiles > .nrgCmpOff-tiles > .nrgCamOff-scroll > .sapMScrollContScroll > .nrgCamOff-btn-selected {
             background-color: @nrgColor-grey-light;
@@ -82,12 +109,12 @@
             margin-top: 15px;
     }
     & > .nrgCmpOff-partDisplay > .nrgCmpOff-compare {
-            width: 12%;
+            width: 10%;
             display: inline-block;
             background-color: #f9fcff;
             float: left;
             text-align: center;
-            height: 14.5rem;
+            height: 15.1rem;
     }
     &  .nrgCmpOff-display-invoice {
             width:100%;
@@ -127,9 +154,6 @@
     &   .nrgCamOff-mtxFstCell {
             width:80%;
     }
-    &   .nrgCamOff-mtxFstCell {
-            width:80%;
-    }
     &   .nrgCamOff-mtxRow {
             border-bottom:  1px dashed @nrgColor-grey-highlight;
             line-height: 25px;
@@ -139,16 +163,17 @@
             font-weight: @nrgFontWeight-semiBold;
             width: 86%;
             margin-top: 2px;
-            margin-left: 15%;
+            margin-left: 12%;
     }
-    & > .nrgCamOff-search {
+    & > .nrgCamOff-searchArea > .nrgCamOff-search {
             background: transparent;
             border-bottom: 1px solid @nrgColor-grey-highlight;
             margin-left: 45%;
             width: 50%;
             height: 1.5rem;
+            display:inline-block;
     }
-    & > .nrgCamOff-search > form {
+    & > .nrgCamOff-searchArea > .nrgCamOff-search > form {
             background: transparent;
             border: 0px;
             font-family: @nrgFontFamily;
@@ -157,19 +182,22 @@
             line-height: 0px;
             height: 1.5rem;
     }
-    & > .nrgCamOff-search > form > input {
+    & > .nrgCamOff-searchArea > .nrgCamOff-search > form > input {
             height: 1.5rem;
     }
-    & > .nrgCamOff-search > form > div {
+    & > .nrgCamOff-searchArea > .nrgCamOff-search > form > div {
             height: 1.5rem;
             line-height: 1.5rem;
+    }
+    & > .nrgCamOff-searchArea > .nrgCamOff-disc {
+            display:inline-block;
     }
     &   .nrgCamOvr-selectBtn {
             color: @nrgColor-blueLink;
             float:right;
     }
     &   .nrgCmpOff-tabPanel {
-            width:85%;
+            width:90%;
             background-color: transparent;
     }
     &   .nrgCamOff-consF {
@@ -180,11 +208,11 @@
             padding-left: 10px;
     }
     &   .nrgCamOffInvoiceF {
-            width:45%;
+            width:48%;
             display:inline-block;
             background-color: @nrgColor-blue-pearl;
-            margin-left: 20px;
-            padding-left: 10px;
+            margin-left: 15px;
+            padding: 5px 5px 5px 5px;
     }
     &   .nrgCmpOff-tabPanelItem {
             background: transparent;
@@ -193,21 +221,14 @@
     &   .nrgCamOff-tabBarItem {
             margin-top: 10px;
             color: @nrgColor-grey-inactive;
-            font-size: @nrgFontSize-base;
-            font-weight: @nrgFontWeight-semiBold;
+            font-size: @nrgFontSize-small;
+            font-weight: @nrgFontWeight-regular;
     }
     &   .nrgCamOff-tabBar {
-            margin-top: 20px;
-    }
-    &   .nrgCamOff-tabBarItem {
-            margin-top: 10px;
-            color: @nrgColor-grey-inactive;
-            font-size: @nrgFontSize-base;
-            font-weight: @nrgFontWeight-semiBold;
+            margin-top: 4rem;
     }
     &   .nrgCamOff-tabBarItem > .uteMTabBarItem-int:checked + .uteMTabBarItem-content {
             color: @nrgColor-blueLink;
-
     }
     &  .nrgCamOff-hide {
             display:none;
@@ -222,4 +243,15 @@
             text-align: center;
             margin: 8rem 1rem 1rem 1rem;
     }
+    &   .nrgCamOff-diff {
+            color: @nrgColor-orange-attention;
+    }
+    &   .nrgCamOff-cardTitle {
+            color: @nrgColor-grey-dark;
+    }
+    &   .nrgCmpOff-div {
+        	border-bottom: 1px dashed @nrgColor-grey-highlight;
+	        margin-top: 8px;
+    }
+
 }
