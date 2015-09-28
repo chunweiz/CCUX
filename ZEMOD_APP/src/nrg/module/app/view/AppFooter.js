@@ -55,8 +55,8 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         var oCampaignModel = this._oController.getView().getModel('oFooterCampaign');
-                        oCampaignModel.setData('{"Current":{"OfferTitle": "None"}, "Pending":{"OfferTitle": "None"}, "History":{"OfferTitle": "None"}}');
-                        
+                        oCampaignModel.setData({Current:{OfferTitle: "None"}, Pending:{OfferTitle: "None"}, History:{OfferTitle: "None"}});
+
                         for (var i = 0; i < oData.results.length; i++) {
                             if (oData.results[i].Type === 'C') {
                                 oCampaignModel.setProperty('/Current', oData.results[i]);
