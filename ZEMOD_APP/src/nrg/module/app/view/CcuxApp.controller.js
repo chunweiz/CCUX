@@ -40,7 +40,8 @@ sap.ui.define(
             this.getView().setModel(this.getOwnerComponent().getModel('comp-campaign'), 'oODataSvc');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
 
-            this._initFooterRetr();
+            // this._initFooterRetr();
+            this._oApp.updateFooter(true);
         };
 
         CustomController.prototype.onInit = function () {

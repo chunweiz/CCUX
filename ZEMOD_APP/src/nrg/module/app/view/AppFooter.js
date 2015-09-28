@@ -3,10 +3,12 @@
 
 sap.ui.define(
     [
-        'sap/ui/base/EventProvider'
+        'sap/ui/base/EventProvider',
+        'sap/ui/model/Filter',
+        'sap/ui/model/FilterOperator'
     ],
 
-    function (EventProvider) {
+    function (EventProvider, Filter, FilterOperator) {
         'use strict';
 
         var AppFooter = EventProvider.extend('nrg.module.app.view.AppFooter', {
@@ -28,8 +30,48 @@ sap.ui.define(
         });
 
         AppFooter.prototype.init = function () {
+            // oData Model
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-campaign'), 'oODataSvc');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
+            this._initFooterRetr();
+
+
             this._registerEvents();
         };
+
+        AppFooter.prototype._initFooterRetr = function () {
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+            var bp = oRouteInfo.parameters.bpNum;
+            var ca = oRouteInfo.parameters.caNum;
+            var co = '32253375';
+
+            var oFilterTemplate = new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: co});
+
+            // var sPath = '/CpgFtrS?$filter=Contract eq ' + '\'' + co + '\'';
+            var sPath = '/CpgFtrS';
+            var aFilters = [];
+            aFilters.push(oFilterTemplate);
+            var oModel = this.getView().getModel('oODataSvc'),
+                oParameters;
+
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oFooterCampaign').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+
 
         AppFooter.prototype.reset = function () {
             this._getSubmenu().close();
