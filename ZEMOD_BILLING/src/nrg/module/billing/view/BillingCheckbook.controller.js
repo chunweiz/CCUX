@@ -1,6 +1,7 @@
 // temporarily added by Jerry
 
 /*globals sap*/
+/*globals window*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -50,6 +51,22 @@ sap.ui.define(
 
         /*****************************************************************************************************************************************************/
         //Formatter Functions
+        CustomController.prototype._formatBoolHyperLink = function (sIndicator) {
+            if (sIndicator) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatBoolLP = function (sIndicator) {
+            if (sIndicator === 'LP') {return true; } else { return false; }
+        };
+
+        CustomController.prototype._formatBoolBB = function (sIndicator) {
+            if (sIndicator === 'BB') {return true; } else { return false; }
+        };
+
         CustomController.prototype._formatBoolCurChrg = function (sIndicator) {
             if (sIndicator === 'X' || sIndicator === 'x') {
                 return true;
@@ -57,8 +74,8 @@ sap.ui.define(
                 return false;
             }
         };
-        CustomController.prototype._formatBoolCurChrg_Rev = function (sIndicator) {
-            if (sIndicator === 'X' || sIndicator === 'x') {
+        CustomController.prototype._formatBoolNormalPitem = function (sIndicator1, sIndicator2) {
+            if (sIndicator1 || sIndicator2) {
                 return false;
             } else {
                 return true;
@@ -141,6 +158,11 @@ sap.ui.define(
                 this._retrPaymentItmes(oPmtHdr.getProperty(sBindingPath).InvoiceNum, sBindingPath);
                 this._retrPaymentSumrys(oPmtHdr.getProperty(sBindingPath).InvoiceNum, sBindingPath);
             }
+        };
+
+        CustomController.prototype._onLiteUpLinkClicked = function (oEvent) {
+            var sLiteUpUrl = 'http://www.puc.state.tx.us/consumer/lowincome/Assistance.aspx';
+            window.open(sLiteUpUrl);
         };
         /*****************************************************************************************************************************************************/
 

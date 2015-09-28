@@ -752,7 +752,7 @@
         "CurrChrgInd":"",
         "Index":"        3",
         "HyperLinkInd":"LP",
-        "HyperLinkValue":"                                                                                               0.00",
+        "HyperLinkValue":"20",
         "Date":null,
         "PaymentHdr":{
           "__deferred":{
