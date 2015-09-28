@@ -31,8 +31,8 @@ sap.ui.define(
 
         AppFooter.prototype.init = function () {
             // oData Model
-            this.getView().setModel(this.getOwnerComponent().getModel('comp-campaign'), 'oODataSvc');
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
+            this._oController.getView().setModel(this.getOwnerComponent().getModel('comp-campaign'), 'oODataSvc');
+            this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
             this._initFooterRetr();
 
 
@@ -51,14 +51,14 @@ sap.ui.define(
             var sPath = '/CpgFtrS';
             var aFilters = [];
             aFilters.push(oFilterTemplate);
-            var oModel = this.getView().getModel('oODataSvc'),
+            var oModel = this._oController.getView().getModel('oODataSvc'),
                 oParameters;
 
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
                     if (oData) {
-                        this.getView().getModel('oFooterCampaign').setData(oData);
+                        this._oController.getView().getModel('oFooterCampaign').setData(oData);
                     }
                 }.bind(this),
                 error: function (oError) {
