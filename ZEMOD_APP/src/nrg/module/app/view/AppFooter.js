@@ -54,7 +54,8 @@ sap.ui.define(
                 filters: aFilters,
                 success : function (oData) {
                     if (oData) {
-                        this._oController.getView().getModel('oFooterCampaign').setData(oData);
+                        var oModel = this._oController.getView().getModel('oFooterCampaign');
+                        oModel.setProperty('/Current/OfferTitle', oData.results[0].OfferTitle);
                     }
                 }.bind(this),
                 error: function (oError) {
