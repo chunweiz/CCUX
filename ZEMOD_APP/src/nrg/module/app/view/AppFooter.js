@@ -40,32 +40,44 @@ sap.ui.define(
         };
 
         AppFooter.prototype.updateFooter = function (oPayload) {
-            // var bp = '';
-            // var ca = '';
-            // var co = '32253375';
-            // var oFilterTemplate = new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: co});
-            // var sPath = '/CpgFtrS';
-            // var aFilters = [];
-            //     aFilters.push(oFilterTemplate);
-            // var oModel = this._oController.getView().getModel('oODataSvc'),
-            //     oParameters;
+            var bp = '';
+            var ca = '';
+            var co = '32253375';
+            var oFilterTemplate = new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: co});
+            var sPath = '/CpgFtrS';
+            var aFilters = [];
+                aFilters.push(oFilterTemplate);
+            var oModel = this._oController.getView().getModel('oODataSvc'),
+                oParameters;
 
-            // oParameters = {
-            //     filters: aFilters,
-            //     success : function (oData) {
-            //         if (oData) {
-            //             var oModel = this._oController.getView().getModel('oFooterCampaign');
-            //             oModel.setProperty('/Current', oData.results[0]);
-            //         }
-            //     }.bind(this),
-            //     error: function (oError) {
-            //         //Need to put error message
-            //     }.bind(this)
-            // };
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData) {
+                        var oCampaignModel = this._oController.getView().getModel('oFooterCampaign');
+                        for (var i = 0; i < oData.results.length; i++) {
+                            if (oData.results[i].Type === 'C') {
+                                oCampaignModel.setProperty('/Current', oData.results[i]);
+                            }
+                            if (oData.results[i].Type === 'PE') {
+                                oCampaignModel.setProperty('/Pending', oData.results[i]);
+                            }
+                            if (oData.results[i].Type === 'H') {
+                                oCampaignModel.setProperty('/History', oData.results[i]);
+                            }
+                        }
+                        
+                        
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
 
-            // if (oModel) {
-            //     oModel.read(sPath, oParameters);
-            // }
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
         };
 
         AppFooter.prototype.reset = function () {
