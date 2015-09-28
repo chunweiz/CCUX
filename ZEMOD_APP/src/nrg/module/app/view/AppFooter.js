@@ -55,7 +55,7 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         var oModel = this._oController.getView().getModel('oFooterCampaign');
-                        oModel.setProperty('/Current/OfferTitle', oData.results[0].OfferTitle);
+                        oModel.setProperty('/Current', oData.results[0]);
                     }
                 }.bind(this),
                 error: function (oError) {

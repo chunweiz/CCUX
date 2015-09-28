@@ -69,7 +69,7 @@
                             <ute:Tag class="nrgAppFtrDetails-eligibleOffers-currentTitle nrgAppFtrDetails-eligibleOffers-itemTitle"
                                 text="{comp-i18n-app>nrgAppFtrDetails-eligibleOffers-CURRENT_TITLE}" />
                             <ute:Tag class="nrgAppFtrDetails-eligibleOffers-itemContent"
-                                text="{oFooterCampaign>/current/offterTitle}" />
+                                text="{oFooterCampaign>/Current/OfferTitle}" />
                         </ute:Tag>
                         <ute:Tag class="nrgAppFtrDetails-eligibleOffers-item">
                             <ute:Tag class="nrgAppFtrDetails-eligibleOffers-pendingTitle nrgAppFtrDetails-eligibleOffers-itemTitle"
