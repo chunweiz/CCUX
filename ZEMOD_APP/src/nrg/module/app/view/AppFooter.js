@@ -45,8 +45,8 @@ sap.ui.define(
             var co = '32253375';
             var oFilterTemplate = new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: co});
             var sPath = '/CpgFtrS';
-            var aFilters = [].push(oFilterTemplate);
-            // aFilters.push(oFilterTemplate);
+            var aFilters = [];
+                aFilters.push(oFilterTemplate);
             var oModel = this._oController.getView().getModel('oODataSvc'),
                 oParameters;
 
