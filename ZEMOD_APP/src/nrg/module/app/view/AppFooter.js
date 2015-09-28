@@ -82,6 +82,16 @@ sap.ui.define(
             }
         };
 
+        AppFooter.prototype._formatCampaignTime = function (oDate) {
+            var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern:"MM/yyyy"});
+            var dateStr = dateFormat.format(new Date(oDate.getTime()));
+            return dateStr;
+        };
+
+
+
+
+
         AppFooter.prototype.reset = function () {
             this._getSubmenu().close();
         };
