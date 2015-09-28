@@ -70,7 +70,9 @@ sap.ui.define(
             }
         };
 
+        AppFooter.prototype.updateFooter = function (oPayload) {
 
+        };
 
         AppFooter.prototype.reset = function () {
             this._getSubmenu().close();

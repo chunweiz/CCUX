@@ -177,7 +177,7 @@ sap.ui.define(
         };
 
         App.prototype.updateFooter = function (oPayload) {
-            this._oAppFooter._updateFooter(oPayload);
+            this._oAppFooter.updateFooter(oPayload);
             return this;
         };
 
