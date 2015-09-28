@@ -50,7 +50,8 @@ sap.ui.define(
                     'detachNavRight',
                     'showNavRight',
                     'setInEdit',
-                    'isInEdit'
+                    'isInEdit',
+                    'updateFooter'
                 ]
             }
         });
@@ -174,6 +175,18 @@ sap.ui.define(
 
         App.prototype._getFooter = function () {
             return this._oAppFooter;
+        };
+
+        // Added by Jeery on 09/28/2015
+        App.prototype._initFooterOData = function () {
+            this._oAppFooter._initFooterOData();
+            return this;
+        };
+        
+        // Added by Jeery on 09/28/2015
+        App.prototype.updateFooter = function (oPayload) {
+            this._oAppFooter.updateFooter(oPayload);
+            return this;
         };
 
         return App;
