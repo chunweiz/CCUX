@@ -75,13 +75,13 @@
                             <ute:Tag class="nrgAppFtrDetails-eligibleOffers-pendingTitle nrgAppFtrDetails-eligibleOffers-itemTitle"
                                 text="{comp-i18n-app>nrgAppFtrDetails-eligibleOffers-PENDING_TITLE}" />
                             <ute:Tag class="nrgAppFtrDetails-eligibleOffers-itemContent"
-                                text="{view-data>/eligibleOffers/current}" />
+                                text="{oFooterCampaign>/Pending/OfferTitle}" />
                         </ute:Tag>
                         <ute:Tag class="nrgAppFtrDetails-eligibleOffers-item">
                             <ute:Tag class="nrgAppFtrDetails-eligibleOffers-historyTitle nrgAppFtrDetails-eligibleOffers-itemTitle"
                                 text="{comp-i18n-app>nrgAppFtrDetails-eligibleOffers-HISTORY_TITLE}" />
                             <ute:Tag class="nrgAppFtrDetails-eligibleOffers-itemContent"
-                                text="{view-data>/eligibleOffers/current}" />
+                                text="{oFooterCampaign>/History/OfferTitle}" />
                         </ute:Tag>
 
                     </sm:ScrollContainer>
