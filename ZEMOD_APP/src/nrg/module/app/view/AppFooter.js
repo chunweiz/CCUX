@@ -31,7 +31,7 @@ sap.ui.define(
 
         AppFooter.prototype.init = function () {
             // oData Model
-            this._oController.getView().setModel(this.getOwnerComponent().getModel('comp-campaign'), 'oODataSvc');
+            this._oController.getView().setModel(this._oController.getOwnerComponent().getModel('comp-campaign'), 'oODataSvc');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
             this._initFooterRetr();
 
@@ -40,9 +40,8 @@ sap.ui.define(
         };
 
         AppFooter.prototype._initFooterRetr = function () {
-            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
-            var bp = oRouteInfo.parameters.bpNum;
-            var ca = oRouteInfo.parameters.caNum;
+            var bp = '';
+            var ca = '';
             var co = '32253375';
 
             var oFilterTemplate = new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: co});
