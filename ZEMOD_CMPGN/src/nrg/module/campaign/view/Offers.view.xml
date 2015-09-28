@@ -13,33 +13,35 @@
           displayBlock="true">
     <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
         <u:Tag class="nrgCmpOff">
-            <u:Tag class="nrgCamOff-ttl" text="{comp-i18n-campaign>nrgCmpOffTtl}" />
-             <um:Button press=".backToOverview"
-                        text="{comp-i18n-campaign>nrgCmpBckOverview}"
-                        class="nrgCamOff-Back"
-                        design="None">
-            </um:button>
+            <div>
+                <u:Tag class="nrgCamOff-ttl" text="{comp-i18n-campaign>nrgCmpOffTtl}" />
+                 <um:Button press=".backToOverview"
+                            text="{comp-i18n-campaign>nrgCmpBckOverview}"
+                            class="nrgCamOff-Back"
+                            design="None">
+                </um:button>
+            </div>
             <u:Tag class="nrgCmpOff-partDisplay">
                 <u:Tag class="nrgCmpOff-compare">
                     <u:Tag class="nrgCamOff-ttlC" text="{comp-i18n-campaign>nrgCmpOffCompareBy}" />
                     <um:TabBar id="nrgTabBar" design="None" class="nrgCamOff-tabBar">
-                        <um:TabBarItem key="tb001" design="None" select=".onPressed" selected="true" class="nrgCamOff-tabBarItem">
+                        <um:TabBarItem key="Invoice" design="None" select=".onPressed" selected="true" class="nrgCamOff-tabBarItem">
                             <u:Tag text="{comp-i18n-campaign>nrgCmpOffCpInvoice}" />
                         </um:TabBarItem>
-                        <br/>
-                        <um:TabBarItem key="tb002"  design="None" select=".onPressed" class="nrgCamOff-tabBarItem">
+                       <div class="nrgCmpOff-div"/>
+                        <um:TabBarItem key="consumption"  design="None" select=".onPressed" class="nrgCamOff-tabBarItem">
                             <u:Tag text="{comp-i18n-campaign>nrgCmpOffCpConsumption}" />
                         </um:TabBarItem>
                     </um:TabBar>
                 </u:Tag>
                 <um:TabPanel tabPanelFor="nrgTabBar" design="None" class="nrgCmpOff-tabPanel">
-                    <um:TabPanelItem key="tb001" class="nrgCmpOff-tabPanelItem">
+                    <um:TabPanelItem key="Invoice" class="nrgCmpOff-tabPanelItem">
                         <u:Tag class="nrgCmpOff-display-invoice" id="idnrgCmpOffDisplay-1">
                              <core:Fragment fragmentName="nrg.module.campaign.view.Invoice" type="XML" />
                              <core:Fragment fragmentName="nrg.module.campaign.view.Invoice" type="XML" />
                         </u:Tag>
                     </um:TabPanelItem>
-                    <um:TabPanelItem key="tb002" class="nrgCmpOff-tabPanelItem">
+                    <um:TabPanelItem key="consumption" class="nrgCmpOff-tabPanelItem">
                         <u:Tag class="nrgCmpOff-display-consumption" id="idnrgCmpOffDisplay-2">
                             <core:Fragment fragmentName="nrg.module.campaign.view.Cons" type="XML" />
                             <core:Fragment fragmentName="nrg.module.campaign.view.Cons" type="XML" />
@@ -49,7 +51,10 @@
             </u:Tag>
             <u:Tag class="nrgCamOff-disc" text="{comp-i18n-campaign>nrgCmpOffDisclosure}" />
             <u:Tag class="nrgCamOff-div" />
-            <m:SearchField width="50%" class="nrgCamOff-search" placeholder="Search Ex:Campaign Name, Promo Code, Price"/>
+            <u:Tag class="nrgCamOff-searchArea">
+                <u:Tag class="nrgCamOff-disc" text="Dummy offers text areaasdfasdfasdfasdfasdfasdfasdfasfasdfasdfasdfasdfasdfasdfasfasdfasdfasdfasfdasd" />
+                <m:SearchField width="30%" class="nrgCamOff-search" placeholder="Search Ex:Promo Code"/>
+            </u:Tag>
             <u:Tag class="nrgCmpOff-partTiles">
                 <u:Tag class="nrgCmpOff-tiers">
                     <u:Tag class="nrgCmpOff-tier">
@@ -117,19 +122,17 @@
                                    class="nrgCamOff-btn"
                                    id="idnrgCamOffBt" design="None">
                             <u:Tag class="nrgCamOff-btnInfo">
-                                <u:Tag class="nrgCamOff-btnCF" text="{parts:[{path:'comp-campaign>CncFee',
-                                                                type: 'nrg.base.type.Price',
-                                                                formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' }},
-                                                           {path: 'comp-campaign>Incentive',
-                                                                type: 'nrg.base.type.Price',
-                                                                formatOptions: { currencySymbol: '$', currencyAlignment: 'RHS' } }],
-                                                    formatter:'.formatCancelFee'}" />
-
-                                <u:Tag class="nrgCamOff-btnPC"
-                                       text="{parts:[{path:'comp-campaign>Promo'}],
-                                                    formatter:'.formatPromo'}"/>
+                                <u:Tag class="nrgCamOff-ttlinfo">
+                                    <u:Tag class="nrgCamOff-btnTtl" text="{comp-campaign>OfferTitle}" />
+                                    <u:Tag class="nrgCamOff-btnPC"
+                                           text="({comp-campaign>Promo})"/>
+                                </u:Tag>
+                                <u:Tag class="nrgCamOff-feeinfo">
+                                    <u:Tag class="nrgCamOff-Canfee" text="{comp-campaign>CncFee}" />
+                                    <u:Tag class="nrgCamOff-Inc" text="{comp-campaign>Incentive}" />
+                                </u:Tag>
                             </u:Tag>
-                            <u:Tag class="nrgCamOff-btnTtl" text="{comp-campaign>OfferTitle}" />
+
                             <u:Tag class="nrgCamOff-btnPrc" text="{path: 'comp-campaign>EFLPrice',
                                                                 type: 'nrg.base.type.Price',
                                                                 formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />

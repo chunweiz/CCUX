@@ -6,7 +6,7 @@
     xmlns:um="ute.ui.main"
     xmlns:l="sap.ui.commons.layout">
     <u:Tag class="nrgCamOffInvoiceF">
-            <c:Label text="Work in Progress" icon="sap-icon://nrg-icon/tag" class="nrgCamOff-top"  />
+            <c:Label text="Work in Progress" icon="sap-icon://nrg-icon/tag" class="nrgCamOff-top nrgCamOff-cardTitle"  />
             <um:Button press=".selectCampaign"
                        text="Select"
                        class="nrgCamOvr-selectBtn"
@@ -56,7 +56,7 @@
                         <c:Label text="Estimated Difference"  />
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell class="nrgCamOff-mtxSndCell">
-                        <c:Label text="$20.00" />
+                        <c:Label text="$20.00" class="nrgCamOff-diff"/>
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
                 <l:MatrixLayoutRow class="nrgCamOff-mtxRow">

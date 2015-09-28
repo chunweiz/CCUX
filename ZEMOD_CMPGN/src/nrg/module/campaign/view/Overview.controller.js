@@ -310,10 +310,7 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype._getPendingSwapsCount = function (oEvent) {
-            var sContract = oEvent.getSource().getBindingContext("Overview-elig").getProperty("Contract"),
-                sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill"),
-                sCustomerEligible = oEvent.getSource().getBindingContext("Overview-elig").getProperty("CustEligFlag"),
-                sCurrentPath,
+            var sCurrentPath,
                 aFilterIds,
                 aFilterValues,
                 aFilters,
@@ -324,7 +321,7 @@ sap.ui.define(
             sCurrentPath = i18NModel.getProperty("nrgPendingSwapsSet");
             sCurrentPath = sCurrentPath + "/$count";
             aFilterIds = ["Contract"];
-            aFilterValues = [sContract];
+            aFilterValues = [this._sContract];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             mParameters = {
                 filters : aFilters,
@@ -334,7 +331,7 @@ sap.ui.define(
                         if ((parseInt(oData, 10)) > 0) {
                             that.showPendingSwaps();
                         } else {
-                            that.navTo("campaignoffers", {bpNum: that._sBP, caNum: that._sCA, coNum: sContract, typeV : this._sInitTab});
+                            that.navTo("campaignoffers", {bpNum: that._sBP, caNum: that._sCA, coNum: this._sContract, typeV : this._sInitTab});
                         }
                     }
                 }.bind(this),
