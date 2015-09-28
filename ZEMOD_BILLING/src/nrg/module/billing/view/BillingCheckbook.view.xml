@@ -38,15 +38,6 @@
                     </ute:Tag>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl">
-                    <ute:Tag>
-                        <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtNum"
-                                 text="{path: 'oChkbkHdr>/InvAmount',
-                                        type: 'nrg.base.type.Price',
-                                        formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
-                        <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtNum" text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-Astrik}"/>
-                    </ute:Tag>
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtDscp1" text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-AmountDue}"/>
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtDscp2" text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-NoSrvvInteruption}"/>
                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-onHover">
                         <ute:tooltip>
                             <ute:Tooltip openDelay="100" class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip">
@@ -90,6 +81,20 @@
                             </ute:Tooltip>
                         </ute:tooltip>
                     </ute:Tag>
+                    <ute:Tag>
+                        <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtNum"
+                                 text="{path: 'oChkbkHdr>/InvAmount',
+                                        type: 'nrg.base.type.Price',
+                                        formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                        <ute:Tag visible="{parts:['oChkbkHdr>InvAmtMark'], formatter:'._formatBoolCurChrg'}" elem="span"
+                                 class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtNum"
+                                 text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-Astrik}"/>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtDscp1" text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-AmountDue}"/>
+                    <ute:Tag visible="{parts:['oChkbkHdr>InvAmtMark'], formatter:'._formatBoolCurChrg'}"
+                             class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl-amtDscp2"
+                             text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-NoSrvvInteruption}"/>
+
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght">
                     <utmain:Button class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght-btn1" text="PAYMENT OPTIONS"/>
@@ -268,6 +273,46 @@
                             <ute:Tag content="{oPaymentHdr>PaymentItems/results}"> <!--PaymentItems-->
                                 <!--For single or double underline classes add here ==> class="nrgBilling-blChkBk-lftDiv-scrllArea-snglUndrln nrgBilling-blChkBk-lftDiv-scrllArea-dblUndrln"-->
                                 <ute:Tag>
+                                <!--LiteUp Case-->
+                                <ute:Tag visible="{ parts:['oPaymentHdr>HyperLinkInd'],
+                                                    formatter:'._formatBoolHyperLink'}">
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c1"
+                                             text="{ parts:['oPaymentHdr>Date'],
+                                                     formatter:'._formatDate'}"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2 nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell-link"
+                                             text="{oPaymentHdr>ItemDesc}">
+                                        <ute:tooltip>
+                                            <ute:Tooltip openDelay="100" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-LiteUpTooltip">
+                                                <ute:Tag visible="{ parts:['oPaymentHdr>HyperLinkInd'],
+                                                                    formatter:'._formatBoolLP'}">
+                                                    <ute:Tag text="{comp-i18n-billing>nrgBilling-billChkBook-LiteUp-Title}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-LiteUpTooltip-Title"/>
+                                                    <ute:Tag text="{comp-i18n-billing>nrgBilling-billChkBook-LiteUp-TelNum}"/>
+                                                    <utmain:Button design="None" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-LiteUpTooltip-Link"
+                                                        text="{comp-i18n-billing>nrgBilling-billChkBook-LiteUp-Url}"
+                                                        press="._onLiteUpLinkClicked"/>
+                                                </ute:Tag>
+                                                <ute:Tag visible="{ parts:['oPaymentHdr>HyperLinkInd'],
+                                                                    formatter:'._formatBoolBB'}">
+                                                    <ute:Tag text="{comp-i18n-billing>nrgBilling-billChkBook-ABP-Title}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-LiteUpTooltip-Title"/>
+                                                    <ute:Tag text="{oPaymentHdr>HyperLinkValue}"/>
+                                                </ute:Tag>
+                                            </ute:Tooltip>
+                                        </ute:tooltip>
+                                    </ute:Tag>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_1"
+                                             text="{path: 'oPaymentHdr>ValueLt',
+                                                    type: 'nrg.base.type.Price',
+                                                    formatOptions: { currencySymbol: ''},
+                                                    formatter:'._formatLfRtZroVal'}"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_2"
+                                             text="{path: 'oPaymentHdr>ValueRt',
+                                                    type: 'nrg.base.type.Price',
+                                                    formatOptions: { currencySymbol: ''},
+                                                    formatter:'._formatLfRtZroVal'}"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c4"/>
+                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c5"/>
+                                </ute:Tag>
+                                <!--Current Charge Case-->
                                 <ute:Tag visible="{ parts:['oPaymentHdr>CurrChrgInd'],
                                                     formatter:'._formatBoolCurChrg'}"
                                          class="nrgBilling-blChkBk-lftDiv-scrllArea-snglUperln nrgBilling-blChkBk-lftDiv-scrllArea-snglUndrln">
@@ -289,8 +334,9 @@
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c4"/>
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c5"/>
                                 </ute:Tag>
-                                <ute:Tag visible="{ parts:['oPaymentHdr>CurrChrgInd'],
-                                                    formatter:'._formatBoolCurChrg_Rev'}">
+                                <!--Normal Payment Item Case-->
+                                <ute:Tag visible="{ parts:['oPaymentHdr>CurrChrgInd', 'oPaymentHdr>HyperLinkInd'],
+                                                    formatter:'._formatBoolNormalPitem'}">
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c1"
                                              text="{ parts:['oPaymentHdr>Date'],
                                                      formatter:'._formatDate'}"/>

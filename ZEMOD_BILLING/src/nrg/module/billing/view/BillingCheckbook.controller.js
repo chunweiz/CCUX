@@ -1,6 +1,7 @@
 // temporarily added by Jerry
 
 /*globals sap*/
+/*globals window*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -50,6 +51,22 @@ sap.ui.define(
 
         /*****************************************************************************************************************************************************/
         //Formatter Functions
+        CustomController.prototype._formatBoolHyperLink = function (sIndicator) {
+            if (sIndicator) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatBoolLP = function (sIndicator) {
+            if (sIndicator === 'LP') {return true; } else { return false; }
+        };
+
+        CustomController.prototype._formatBoolBB = function (sIndicator) {
+            if (sIndicator === 'BB') {return true; } else { return false; }
+        };
+
         CustomController.prototype._formatBoolCurChrg = function (sIndicator) {
             if (sIndicator === 'X' || sIndicator === 'x') {
                 return true;
@@ -57,8 +74,8 @@ sap.ui.define(
                 return false;
             }
         };
-        CustomController.prototype._formatBoolCurChrg_Rev = function (sIndicator) {
-            if (sIndicator === 'X' || sIndicator === 'x') {
+        CustomController.prototype._formatBoolNormalPitem = function (sIndicator1, sIndicator2) {
+            if (sIndicator1 || sIndicator2) {
                 return false;
             } else {
                 return true;
@@ -142,6 +159,11 @@ sap.ui.define(
                 this._retrPaymentSumrys(oPmtHdr.getProperty(sBindingPath).InvoiceNum, sBindingPath);
             }
         };
+
+        CustomController.prototype._onLiteUpLinkClicked = function (oEvent) {
+            var sLiteUpUrl = 'http://www.puc.state.tx.us/consumer/lowincome/Assistance.aspx';
+            window.open(sLiteUpUrl);
+        };
         /*****************************************************************************************************************************************************/
 
         CustomController.prototype._retrPayments = function (sInvNum, sBindingPath) {
@@ -198,8 +220,8 @@ sap.ui.define(
         CustomController.prototype._retrPaymentSumrys = function (sInvNum, sBindingPath) {
             var oChbkOData = this.getView().getModel('oDataSvc'),
                 sPath,
-                oParameters,
-                oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer');
+                oParameters;
+                //oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer');
 
             sPath = '/PaymentHdrs(\'' + sInvNum + '\')/PaymentSumry';
 
@@ -209,7 +231,7 @@ sap.ui.define(
                         this.getView().getModel('oPaymentHdr').setProperty(sBindingPath + '/PaymentSumry', oData.results[0]);
                     }
                     //oScrlCtaner.scrollTop = oScrlCtaner.scrollHeight;
-                    oScrlCtaner.scrollTo(0, 550, 100);
+                    //oScrlCtaner.scrollTo(0, 550, 100);
                 }.bind(this),
                 error: function (oError) {
                     //Need to put error message
@@ -232,8 +254,8 @@ sap.ui.define(
         CustomController.prototype._initChkbookHdr = function () {
             var sPath;
 
-            sPath = '/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'008005303668\')';
-                    //'/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'\')';
+            sPath = '/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'\')';
+                //'/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'008005303668\')';
 
             this._retrChkbookHdr(sPath);
         };
@@ -271,7 +293,8 @@ sap.ui.define(
                 oParameters,
                 i,
                 j,
-                oCurDate = new Date();
+                oCurDate = new Date(),
+                oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer');
 
             oParameters = {
                 success : function (oData) {
@@ -321,6 +344,8 @@ sap.ui.define(
                         this._retrPayments(oData.results[i].InvoiceNum, '/results/' + i);
                         this._retrPaymentSumrys(oData.results[i].InvoiceNum, '/results/' + i);
                         this._retrPaymentItmes(oData.results[i].InvoiceNum, '/results/' + i);
+
+                        oScrlCtaner.scrollTo(0, 550, 1000);
                     }
                 }.bind(this),
                 error: function (oError) {

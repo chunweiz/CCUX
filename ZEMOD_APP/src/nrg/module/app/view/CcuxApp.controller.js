@@ -36,11 +36,10 @@ sap.ui.define(
                     text: 'NOT ELIGIBLE'
                 }
             }), 'view-data');
-
-            this.getView().setModel(this.getOwnerComponent().getModel('comp-campaign'), 'oODataSvc');
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
-
-            this._initFooterRetr();
+            
+            
+            this._oApp._initFooterOData();
+            this._oApp.updateFooter(true);
         };
 
         CustomController.prototype.onInit = function () {
@@ -61,38 +60,6 @@ sap.ui.define(
         // Click the links under the Notification section in the footer
         CustomController.prototype._onFooterNotificationLinkPress = function (oControlEvent) {
             console.log(oControlEvent.getSource());
-        };
-
-        CustomController.prototype._initFooterRetr = function () {
-            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
-            var bp = oRouteInfo.parameters.bpNum;
-            var ca = oRouteInfo.parameters.caNum;
-            var co = '32253375';
-
-            var oFilterTemplate = new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: co});
-
-            // var sPath = '/CpgFtrS?$filter=Contract eq ' + '\'' + co + '\'';
-            var sPath = '/CpgFtrS';
-            var aFilters = [];
-            aFilters.push(oFilterTemplate);
-            var oModel = this.getView().getModel('oODataSvc'),
-                oParameters;
-
-            oParameters = {
-                filters: aFilters,
-                success : function (oData) {
-                    if (oData) {
-                        this.getView().getModel('oFooterCampaign').setData(oData);
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    //Need to put error message
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
         };
 
 

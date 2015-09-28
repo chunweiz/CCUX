@@ -69,19 +69,34 @@
                             <ute:Tag class="nrgAppFtrDetails-eligibleOffers-currentTitle nrgAppFtrDetails-eligibleOffers-itemTitle"
                                 text="{comp-i18n-app>nrgAppFtrDetails-eligibleOffers-CURRENT_TITLE}" />
                             <ute:Tag class="nrgAppFtrDetails-eligibleOffers-itemContent"
-                                text="{view-data>/eligibleOffers/current}" />
+                                text="{oFooterCampaign>/Current/OfferTitle}" />
+                            <!-- Time Period -->
+                            <ute:Tag class="nrgAppFtrDetails-eligibleOffers-timePeriod">
+                                <!-- Start Date -->
+                                <ute:Tag class="nrgAppFtrDetails-eligibleOffers-startDate"
+                                    text="{
+                                        parts:['oFooterCampaign>/Current/StartDate'],
+                                        formatter:'._formatCampaignTime'
+                                    }"/>
+                                <!-- End Date -->
+                                <ute:Tag class="nrgAppFtrDetails-eligibleOffers-startDate"
+                                    text="{
+                                        parts:['oFooterCampaign>/Current/EndDate'],
+                                        formatter:'._formatCampaignTime'
+                                    }"/>
+                            </ute:Tag>
                         </ute:Tag>
                         <ute:Tag class="nrgAppFtrDetails-eligibleOffers-item">
                             <ute:Tag class="nrgAppFtrDetails-eligibleOffers-pendingTitle nrgAppFtrDetails-eligibleOffers-itemTitle"
                                 text="{comp-i18n-app>nrgAppFtrDetails-eligibleOffers-PENDING_TITLE}" />
                             <ute:Tag class="nrgAppFtrDetails-eligibleOffers-itemContent"
-                                text="{view-data>/eligibleOffers/current}" />
+                                text="{oFooterCampaign>/Pending/OfferTitle}" />
                         </ute:Tag>
                         <ute:Tag class="nrgAppFtrDetails-eligibleOffers-item">
                             <ute:Tag class="nrgAppFtrDetails-eligibleOffers-historyTitle nrgAppFtrDetails-eligibleOffers-itemTitle"
                                 text="{comp-i18n-app>nrgAppFtrDetails-eligibleOffers-HISTORY_TITLE}" />
                             <ute:Tag class="nrgAppFtrDetails-eligibleOffers-itemContent"
-                                text="{view-data>/eligibleOffers/current}" />
+                                text="{oFooterCampaign>/History/OfferTitle}" />
                         </ute:Tag>
 
                     </sm:ScrollContainer>
