@@ -6,7 +6,7 @@
     xmlns:um="ute.ui.main"
     xmlns:l="sap.ui.commons.layout">
     <u:Tag class="nrgCamOffInvoiceF">
-            <c:Label text="Work in Progress" icon="sap-icon://nrg-icon/tag" class="nrgCamOff-top"  />
+            <c:Label text="Work in Progress" icon="sap-icon://nrg-icon/tag" class="nrgCamOff-top nrgCamOff-cardTitle"  />
             <um:Button press=".selectCampaign"
                        text="Select"
                        class="nrgCamOvr-selectBtn"
@@ -17,23 +17,30 @@
                 class="nrgCamOff-prcTbl"  >
                     <u:columns>
                         <u:TableColumn width="33%" >
-                            <c:Label text="EFL@500"/>
+                            <u:Tag text="EFL@500" class="nrgCamOff-label"/>
                         </u:TableColumn>
                         <u:TableColumn width="33%" >
-                            <c:Label text="EFL@1000"/>
+                            <u:Tag text="EFL@1000" class="nrgCamOff-label"/>
                         </u:TableColumn>
                         <u:TableColumn width="33%" >
-                            <c:Label text="EFL@2000"/>
+                            <u:Tag text="EFL@2000" class="nrgCamOff-label"/>
                         </u:TableColumn>
                     </u:columns>
                     <u:rows>
                         <u:TableRow>
-                            <c:Label text="14.4"/>
-                            <c:Label text="12.4"/>
-                            <c:Label text="13.4"/>
+                            <u:Tag text="14.4" class="nrgCamOff-label"/>
+                            <u:Tag text="12.4" class="nrgCamOff-label"/>
+                            <u:Tag text="13.4" class="nrgCamOff-label"/>
+                        </u:TableRow>
+                        <u:TableRow>
+                            <u:Tag text="14.4" class="nrgCamOff-label"/>
+                            <u:Tag text="12.4" class="nrgCamOff-label"/>
+                            <u:Tag text="13.4" class="nrgCamOff-label"/>
                         </u:TableRow>
                     </u:rows>
             </u:Table>
+            <u:Tag>
+            </u:Tag>
             <l:MatrixLayout class="nrgCamOff-mtx nrgCamOff-top">
                 <l:MatrixLayoutRow class="nrgCamOff-mtxRow">
                     <l:MatrixLayoutCell class="nrgCamOff-mtxFstCell">
@@ -56,7 +63,7 @@
                         <c:Label text="Estimated Difference"  />
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell class="nrgCamOff-mtxSndCell">
-                        <c:Label text="$20.00" />
+                        <c:Label text="$20.00" class="nrgCamOff-diff"/>
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
                 <l:MatrixLayoutRow class="nrgCamOff-mtxRow">
