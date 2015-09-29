@@ -118,27 +118,29 @@
             </u:Tag>
             <!-- Place holder for templates to reuse for Bind Aggregation method. Below will be always Display:none -->
             <u:Tag class="nrgCamOff-hide">
-                        <um:Button press=".onOfferSelected"
-                                   text="{comp-campaign>Notitle}"
-                                   class="nrgCamOff-btn"
-                                   id="idnrgCamOffBt" design="None">
-                            <u:Tag class="nrgCamOff-btnInfo">
-                                <u:Tag class="nrgCamOff-ttlinfo">
-                                    <u:Tag class="nrgCamOff-btnTtl" text="{comp-campaign>OfferTitle}" />
-                                    <u:Tag class="nrgCamOff-btnPC"
-                                           text="({comp-campaign>Promo})"/>
-                                </u:Tag>
-                                <u:Tag class="nrgCamOff-feeinfo">
-                                    <u:Tag class="nrgCamOff-Canfee" text="{comp-campaign>CncFee}" />
-                                    <u:Tag class="nrgCamOff-Inc" text="{comp-campaign>Incentive}" />
-                                </u:Tag>
+                    <um:Button press=".onOfferSelected"
+                               text="{comp-campaign>Notitle}"
+                               class="nrgCamOff-btn"
+                               id="idnrgCamOffBt"
+                               design="None"
+                               enabled="{= ${comp-campaign>Type} !== 'C' }">
+                          <u:Tag class="nrgCamOff-btnInfo">
+                            <u:Tag class="nrgCamOff-ttlinfo">
+                                <u:Tag class="nrgCamOff-btnTtl" text="{comp-campaign>OfferTitle}" />
+                                <u:Tag class="nrgCamOff-btnPC"
+                                       text="({comp-campaign>Promo})"/>
                             </u:Tag>
+                            <u:Tag class="nrgCamOff-feeinfo">
+                                <u:Tag class="nrgCamOff-Canfee" text="{comp-campaign>CncFee}" />
+                                <u:Tag class="nrgCamOff-Inc" text="{comp-campaign>Incentive}" />
+                            </u:Tag>
+                        </u:Tag>
 
-                            <u:Tag class="nrgCamOff-btnPrc" text="{path: 'comp-campaign>EFLPrice',
-                                                                type: 'nrg.base.type.Price',
-                                                                formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
-                            <u:Tag class="nrgCamOff-btnPrcLbl" text="(for {comp-campaign>EFLLevel}kWh)" />
-                        </um:Button>
+                        <u:Tag class="nrgCamOff-btnPrc" text="{path: 'comp-campaign>EFLPrice',
+                                                            type: 'nrg.base.type.Price',
+                                                            formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
+                        <u:Tag class="nrgCamOff-btnPrcLbl" text="(for {comp-campaign>EFLLevel}kWh)" />
+                    </um:Button>
             </u:Tag>
            <!-- Place holder for templates to reuse for Bind Aggregation method. Above will be always Display:none -->
         </u:Tag>
