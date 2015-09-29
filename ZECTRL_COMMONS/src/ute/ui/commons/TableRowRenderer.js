@@ -24,7 +24,7 @@ sap.ui.define(['jquery.sap.global'],
                 break;
             case 'CampaignTable':
                 oRm.addClass('uteTb-row-campaign');
-                bRenderExtraLine = true;
+                bRenderExtraLine = false;
                 break;
             }
             oRm.writeClasses();
