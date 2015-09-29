@@ -266,6 +266,10 @@ sap.ui.define(
             this._oInvSelectPopup.addStyleClass('nrgBilling-invSelPopupTop');
             this._oInvSelectPopup.open();
         };
+
+        CustomController.prototype.test = function (oEvent) {
+            var tt0 = oEvent;
+        };
         /*************************************************************************************************************************/
 
 

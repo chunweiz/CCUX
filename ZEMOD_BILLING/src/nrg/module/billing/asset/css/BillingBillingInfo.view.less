@@ -402,12 +402,42 @@
 
 
 .nrgBilling-invSelPopup{
-    width: 440px;
-    background-color: @nrgColor-bluePearl;
+    width: 550px;
 
+    & .nrgBilling-invSelPopup-datePickArea{
+        margin-left: 80px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    & .nrgBilling-invSelPopup-datePickArea > .nrgBilling-invSelPopup-datePickArea-datePicker{
+        width: 150px !important;
+        margin-left: 20px;
+        margin-right: 20px;
+        height: 30px;
+        padding: 0px;
+        border: 1px @nrgColor-grey-highlight solid;
+    }
+
+    & .nrgBilling-invSelPopup-datePickArea > .nrgBilling-invSelPopup-datePickArea-datePicker > input{
+        height: 30px;
+        border: none;
+        //border-top-left-radius: 5px;
+        //border-bottom-left-radius: 5px;
+    }
+
+    & .nrgBilling-invSelPopup-datePickArea > .nrgBilling-invSelPopup-datePickArea-datePicker > div, & .nrgBilling-invSelPopup-datePickArea > .nrgBilling-invSelPopup-datePickArea-datePicker > div > span{
+        height: 20px;
+        line-height: 20px;
+        border: none;
+        background: transparent;
+        //border-top-right-radius: 5px;
+        //border-bottom-right-radius: 5px;
+    }
 
     & .nrgBilling-invSelPopup-Ctnt{
         width: 100%;
+        background-color: @nrgColor-bluePearl;
     }
 }
 
