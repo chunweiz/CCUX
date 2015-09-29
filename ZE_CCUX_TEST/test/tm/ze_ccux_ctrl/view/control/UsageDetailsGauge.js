@@ -70,38 +70,26 @@ sap.ui.define(
                 .outerRadius(iRadius * 0.6)
                 .innerRadius(iRadius * 0.59);
 
-            var oMeter = oCanvas.append('path')
-                .attr('d', fnOuterTickArc({
-                    startAngle: Math.PI + 0.5,
-                    endAngle: Math.PI * 3 - 0.5
-                }))
+            var oTickArcSize = {
+                startAngle: Math.PI - 0.5,
+                endAngle: 0.5 - Math.PI
+            };
+
+            oCanvas.append('path')
+                .attr('d', fnOuterTickArc(oTickArcSize))
                 .style('fill', 'tomato');
 
             oCanvas.append('path')
-                .attr('d', fnInnerTickArc({
-                    startAngle: Math.PI + 0.5,
-                    endAngle: Math.PI * 3 - 0.5
-                }))
+                .attr('d', fnInnerTickArc(oTickArcSize))
                 .style('fill', 'gold');
 
-            var aOuterXY = fnOuterTickArc.centroid({
-                startAngle: Math.PI + 0.5,
-                endAngle: Math.PI * 3 - 0.5
-            });
+            var fnTick = d3.scale.ordinal()
+                .domain(d3.range(150))
+                .rangePoints([ oTickArcSize.startAngle, oTickArcSize.endAngle ]);
 
-            var aInnerXY = fnInnerTickArc.centroid({
-                startAngle: Math.PI + 0.5,
-                endAngle: Math.PI * 3 - 0.5
-            });
-
-            oCanvas.append('line')
-                .attr('x1', aInnerXY[0])
-                .attr('y1', aInnerXY[1])
-                .attr('x2', aOuterXY[0])
-                .attr('y2', aOuterXY[1])
-                .style('stroke', 'black')
-                .style('stroke-width', 2);
-
+            for (var i =0; i < 150; i++) {
+                console.log(fnTick(i));
+            }
         };
 
         return CustomControl;
