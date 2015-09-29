@@ -16,7 +16,8 @@ sap.ui.define(
                 properties: {
                     width: { type: 'int', defaultValue: 500 },
                     height: { type: 'int', defaultValue: 300 },
-                    usage: { type: 'float', defaultValue: 0.0 }
+                    usage: { type: 'float', defaultValue: 0.0 },
+                    consumptionGroup: { type: 'string', defaultValue: 'RES' }
                 }
             },
 
@@ -60,7 +61,47 @@ sap.ui.define(
                     .append('g')
                         .attr('transform', 'translate(' + [ iWidth / 2, iHeight / 2 ] + ')');
 
-            
+            // Arc function for ticks
+            var fnOuterTickArc = d3.svg.arc()
+                .outerRadius(iRadius * 0.7)
+                .innerRadius(iRadius * 0.69);
+
+            var fnInnerTickArc = d3.svg.arc()
+                .outerRadius(iRadius * 0.6)
+                .innerRadius(iRadius * 0.59);
+
+            var oMeter = oCanvas.append('path')
+                .attr('d', fnOuterTickArc({
+                    startAngle: Math.PI + 0.5,
+                    endAngle: Math.PI * 3 - 0.5
+                }))
+                .style('fill', 'tomato');
+
+            oCanvas.append('path')
+                .attr('d', fnInnerTickArc({
+                    startAngle: Math.PI + 0.5,
+                    endAngle: Math.PI * 3 - 0.5
+                }))
+                .style('fill', 'gold');
+
+            var aOuterXY = fnOuterTickArc.centroid({
+                startAngle: Math.PI + 0.5,
+                endAngle: Math.PI * 3 - 0.5
+            });
+
+            var aInnerXY = fnInnerTickArc.centroid({
+                startAngle: Math.PI + 0.5,
+                endAngle: Math.PI * 3 - 0.5
+            });
+
+            oCanvas.append('line')
+                .attr('x1', aInnerXY[0])
+                .attr('y1', aInnerXY[1])
+                .attr('x2', aOuterXY[0])
+                .attr('y2', aOuterXY[1])
+                .style('stroke', 'black')
+                .style('stroke-width', 2);
+
         };
 
         return CustomControl;
