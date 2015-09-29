@@ -52,7 +52,8 @@
             <u:Tag class="nrgCamOff-disc" text="{comp-i18n-campaign>nrgCmpOffDisclosure}" />
             <u:Tag class="nrgCamOff-div" />
             <u:Tag class="nrgCamOff-searchArea">
-                <u:Tag class="nrgCamOff-disc" text="Dummy offers text areaasdfasdfasdfasdfasdfasdfasdfasfasdfasdfasdfasdfasdfasdfasfasdfasdfasdfasfdasd" />
+                <div class="nrgCamOff-dummy"/>
+                <u:Tag class="nrgCamOff-Dummydisc" text="Dummy offers text will come here Dummy offers text will come here Dummy offers text will come here Dummy offers text will come here" />
                 <m:SearchField width="30%" class="nrgCamOff-search" placeholder="Search Ex:Promo Code"/>
             </u:Tag>
             <u:Tag class="nrgCmpOff-partTiles">

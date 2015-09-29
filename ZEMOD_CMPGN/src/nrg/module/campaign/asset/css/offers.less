@@ -106,7 +106,7 @@
     }
     & > .nrgCmpOff-partDisplay {
             white-space: normal;
-            margin-top: 15px;
+            margin-top: 5px;
     }
     & > .nrgCmpOff-partDisplay > .nrgCmpOff-compare {
             width: 10%;
@@ -114,7 +114,8 @@
             background-color: #f9fcff;
             float: left;
             text-align: center;
-            height: 15.1rem;
+            height: 15.5rem;
+            max-height: 15.5rem;
     }
     &  .nrgCmpOff-display-invoice {
             width:100%;
@@ -124,9 +125,7 @@
             width:100%;
             display:inline-block;
     }
-    &  .nrgCamOff-prcTbl {
-            margin:10px 0px 0px 0px;
-    }
+
     & > .nrgCmpOff-partDisplay > .nrgCmpOff-compare> .nrgCamOff-ttlC {
             margin-top: 10px;
             font-size: @nrgFontSize-small;
@@ -165,32 +164,40 @@
             margin-top: 2px;
             margin-left: 12%;
     }
-    & > .nrgCamOff-searchArea > .nrgCamOff-search {
-            background: transparent;
-            border-bottom: 1px solid @nrgColor-grey-highlight;
-            margin-left: 45%;
-            width: 50%;
-            height: 1.5rem;
-            display:inline-block;
-    }
-    & > .nrgCamOff-searchArea > .nrgCamOff-search > form {
-            background: transparent;
-            border: 0px;
-            font-family: @nrgFontFamily;
-            font-size: @nrgFontSize-small;
-            font-weight: @nrgFontWeight-regular;
-            line-height: 0px;
-            height: 1.5rem;
-    }
-    & > .nrgCamOff-searchArea > .nrgCamOff-search > form > input {
-            height: 1.5rem;
-    }
-    & > .nrgCamOff-searchArea > .nrgCamOff-search > form > div {
-            height: 1.5rem;
-            line-height: 1.5rem;
-    }
-    & > .nrgCamOff-searchArea > .nrgCamOff-disc {
-            display:inline-block;
+    & > .nrgCamOff-searchArea {
+            &  > .nrgCamOff-search {
+                    background: transparent;
+                    border-bottom: 1px solid @nrgColor-grey-highlight;
+                    height: 2rem;
+                    display:table-cell;
+            }
+            & > .nrgCamOff-search > form {
+                    background: transparent;
+                    border: 0px;
+                    font-family: @nrgFontFamily;
+                    font-size: @nrgFontSize-small;
+                    font-weight: @nrgFontWeight-regular;
+                    line-height: 0px;
+                    height: 1.5rem;
+            }
+            & > .nrgCamOff-search > form > input {
+                    height: 1.5rem;
+            }
+            & > .nrgCamOff-search > form > div {
+                    height: 1.5rem;
+                    line-height: 1.5rem;
+            }
+            & > .nrgCamOff-Dummydisc {
+                    display: table-cell;
+                    width: 55%;
+                    font-size: @nrgFontSize-smaller;
+                    font-weight: @nrgFontWeight-semiBold;
+                	overflow: hidden;
+            }
+            & > .nrgCamOff-dummy {
+                    width: 12%;
+                	display: table-cell;
+            }
     }
     &   .nrgCamOvr-selectBtn {
             color: @nrgColor-blueLink;
@@ -201,11 +208,24 @@
             background-color: transparent;
     }
     &   .nrgCamOff-consF {
-            width:45%;
+            width:48%;
             display:inline-block;
             background-color: @nrgColor-blue-pearl;
-            margin-left: 20px;
-            padding-left: 10px;
+            margin-left: 15px;
+            padding: 5px 5px 5px 5px;
+            height: 15.5rem;
+            max-height: 15.5rem;
+
+            &  .nrgCamOff-label {
+                font-size: @nrgFontSize-small;
+            }
+            &  .uteTb-column-campaign {
+                background-color: @nrgColor-grey-highlight;
+                line-height: 20px;
+            }
+            &  .nrgCamOff-prcTbl {
+                    margin:5px 0px 0px 0px;
+            }
     }
     &   .nrgCamOffInvoiceF {
             width:48%;
@@ -213,6 +233,19 @@
             background-color: @nrgColor-blue-pearl;
             margin-left: 15px;
             padding: 5px 5px 5px 5px;
+            height: 15.5rem;
+            max-height: 15.5rem;
+
+            &  .nrgCamOff-label {
+                font-size: @nrgFontSize-small;
+            }
+            &  .uteTb-column-campaign {
+                background-color: @nrgColor-grey-highlight;
+                line-height: 20px;
+            }
+            &  .nrgCamOff-prcTbl {
+                    margin:5px 0px 0px 0px;
+            }
     }
     &   .nrgCmpOff-tabPanelItem {
             background: transparent;
@@ -253,5 +286,4 @@
         	border-bottom: 1px dashed @nrgColor-grey-highlight;
 	        margin-top: 8px;
     }
-
 }

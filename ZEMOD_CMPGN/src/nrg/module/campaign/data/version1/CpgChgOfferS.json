@@ -40,7 +40,7 @@
             "EFLPrice" : 13.4
          },
          {
-            "Type":"R",
+            "Type":"P",
             "Contract":"34805112",
             "OfferCode":"50124832",
             "StartDate":"/Date(1017774369000)/",
@@ -59,7 +59,7 @@
             "EFLPrice" : 13.4
          },
          {
-            "Type":"S",
+            "Type":"P",
             "Contract":"34805112",
             "OfferCode":"OfferCode 4",
             "StartDate":"/Date(1021489569000)/",
