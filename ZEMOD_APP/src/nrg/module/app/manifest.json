@@ -15,6 +15,12 @@
                             "comp-campaign": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/"
                             }
+                        },
+                        "mock": {
+                            "comp-campaign": {
+                                "mockDataBaseUrl": "data/devtest/",
+                                "generateMissingMockData": true
+                            }
                         }
                     }
                 }
