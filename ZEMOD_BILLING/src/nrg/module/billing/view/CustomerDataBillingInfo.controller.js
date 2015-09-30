@@ -282,9 +282,6 @@ sap.ui.define(
             return;
         };
 
-        CustomController.prototype.testButton = function (oEvent){
-            var tt = oEvent;
-        };
 
         return CustomController;
     }
