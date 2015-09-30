@@ -51,7 +51,9 @@ sap.ui.define(
                     'showNavRight',
                     'setInEdit',
                     'isInEdit',
-                    'updateFooter'
+                    'updateFooterNotification',
+                    'updateFooterRHS',
+                    'updateFooterCampaign'
                 ]
             }
         });
@@ -177,15 +179,23 @@ sap.ui.define(
             return this._oAppFooter;
         };
 
-        // Added by Jeery on 09/28/2015
         App.prototype._initFooterOData = function () {
             this._oAppFooter._initFooterOData();
             return this;
         };
         
-        // Added by Jeery on 09/28/2015
-        App.prototype.updateFooter = function (oPayload) {
-            this._oAppFooter.updateFooter(oPayload);
+        App.prototype.updateFooterNotification = function (oPayload) {
+            this._oAppFooter.updateFooterNotification(oPayload);
+            return this;
+        };
+
+        App.prototype.updateFooterRHS = function (oPayload) {
+            this._oAppFooter.updateFooterRHS(oPayload);
+            return this;
+        };
+
+        App.prototype.updateFooterCampaign = function (oPayload) {
+            this._oAppFooter.updateFooterCampaign(oPayload);
             return this;
         };
 
