@@ -16,8 +16,7 @@ sap.ui.define(
                 properties: {
                     width: { type: 'int', defaultValue: 500 },
                     height: { type: 'int', defaultValue: 300 },
-                    usage: { type: 'float', defaultValue: 0.0 },
-                    consumptionGroup: { type: 'string', defaultValue: 'RES' }
+                    usage: { type: 'float', defaultValue: 0.0 }
                 }
             },
 
