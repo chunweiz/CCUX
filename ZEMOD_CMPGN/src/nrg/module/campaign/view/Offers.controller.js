@@ -44,7 +44,8 @@ sap.ui.define(
                 oNoDataTag,
                 oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
                 i18NModel,
-                oSelectedButton;
+                oSelectedButton,
+                oSorter = new sap.ui.model.Sorter("Type", false);
             i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oRouteInfo.parameters.coNum;
@@ -65,8 +66,8 @@ sap.ui.define(
                 oSelectedButton.addStyleClass("nrgCamOff-btn-selected");
                 this.getOwnerComponent().getCcuxApp().setOccupied(false);
             } else {
-                aFilterIds = ["Contract", "Type"];
-                aFilterValues = [this._sContract, this._sType];
+                aFilterIds = ["Contract", "Type", "Type"];
+                aFilterValues = [this._sContract, this._sType, "C"];
                 aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
                 sCurrentPath = i18NModel.getProperty("nrgCpgChangeOffSet");
                 oModel = this.getOwnerComponent().getModel('comp-campaign');
@@ -81,6 +82,13 @@ sap.ui.define(
                         oNoDataTag.removeStyleClass("nrgCamOff-hide");
                         oTileContainer.addStyleClass("nrgCamOff-hide");
                     }
+                    aContent.map(function (oButtonItem) {
+                        var oButtonContext = oButtonItem.getBindingContext("comp-campaign"),
+                            type;
+                        type = oButtonContext.getProperty("Type");
+                        oButtonItem.insertCustomData(new sap.ui.core.CustomData({key: "flag", value: type, writeToDom : true}));
+
+                    });
                     that.getOwnerComponent().getCcuxApp().setOccupied(false);
                     oProactiveButton.addStyleClass("nrgCamOff-btn-selected");
                 };
@@ -89,6 +97,7 @@ sap.ui.define(
                     path : sCurrentPath,
                     template : oTileTemplate,
                     filters : aFilters,
+                    sorter: oSorter,
                     parameters : {expand: "EFLs"},
                     events: {dataReceived : fnRecievedHandler}
                 };
@@ -133,7 +142,7 @@ sap.ui.define(
             sOfferCode = oContext.getProperty("OfferCode");
             sStartDate = oContext.getProperty("StartDate");
             sDate = sPath.substring(sPath.lastIndexOf("=") + 1, sPath.lastIndexOf(")"));
-            this.navTo("campaignchg", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, offercodeNum: sOfferCode, sDate : sDate});
+            //this.navTo("campaignchg", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, offercodeNum: sOfferCode, sDate : sDate});
         };
         /**
 		 * Binds the view based on the Tier selected like Proactive, Reactive, Save and Final Save
@@ -203,6 +212,13 @@ sap.ui.define(
                     oNoDataTag.removeStyleClass("nrgCamOff-hide");
                     oTileContainer.addStyleClass("nrgCamOff-hide");
                 }
+                aContent.map(function (oButtonItem) {
+                    var oButtonContext = oButtonItem.getBindingContext("comp-campaign"),
+                        type;
+                    type = oButtonContext.getProperty("Type");
+                    oButtonItem.insertCustomData(new sap.ui.core.CustomData({key: "flag", value: type, writeToDom : true}));
+
+                });
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
             };
             mParameters = {

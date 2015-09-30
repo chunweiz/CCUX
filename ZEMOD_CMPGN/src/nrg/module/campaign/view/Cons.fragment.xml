@@ -19,56 +19,46 @@
                 class="nrgCamOff-prcTbl"  >
                     <u:columns>
                         <u:TableColumn width="33%" >
-                            <c:Label text="EFL@500"/>
+                            <u:Tag text="EFL@500" class="nrgCamOff-label"/>
                         </u:TableColumn>
                         <u:TableColumn width="33%" >
-                            <c:Label text="EFL@1000"/>
+                            <u:Tag text="EFL@1000" class="nrgCamOff-label"/>
                         </u:TableColumn>
                         <u:TableColumn width="33%" >
-                            <c:Label text="EFL@2000"/>
+                            <u:Tag text="EFL@2000" class="nrgCamOff-label"/>
                         </u:TableColumn>
                     </u:columns>
                     <u:rows>
                         <u:TableRow>
-                            <c:Label text="14.4"/>
-                            <c:Label text="12.4"/>
-                            <c:Label text="13.4"/>
+                            <u:Tag text="14.4" class="nrgCamOff-label"/>
+                            <u:Tag text="12.4" class="nrgCamOff-label"/>
+                            <u:Tag text="13.4" class="nrgCamOff-label"/>
                         </u:TableRow>
                     </u:rows>
             </u:Table>
-            <l:MatrixLayout class="nrgCamOff-mtx nrgCamOff-top">
-                <l:MatrixLayoutRow class="nrgCamOff-mtxRow">
-                    <l:MatrixLayoutCell class="nrgCamOff-mtxFstCell">
-                        <c:Label text="Monthly Consumption" class="nrgCamOff-lbl" />
-                    </l:MatrixLayoutCell>
-                    <l:MatrixLayoutCell class="nrgCamOff-mtxSndCell">
-                        <c:Label text="$85.00" class="nrgCamOff-lbl"  />
-                    </l:MatrixLayoutCell>
-                </l:MatrixLayoutRow>
-               <l:MatrixLayoutRow class="nrgCamOff-mtxRow">
-                   <l:MatrixLayoutCell class="nrgCamOff-mtxFstCell">
-                        <c:Label text="Monthly Consumption @ Campaign Estimation" />
-                    </l:MatrixLayoutCell>
-                   <l:MatrixLayoutCell class="nrgCamOff-mtxSndCell">
-                        <c:Label text="$65.00" class="nrgCamOff-lbl" />
-                    </l:MatrixLayoutCell>
-                </l:MatrixLayoutRow>
-                <l:MatrixLayoutRow class="nrgCamOff-mtxRow">
-                    <l:MatrixLayoutCell class="nrgCamOff-mtxFstCell">
-                        <c:Label text="Estimated Difference"  />
-                    </l:MatrixLayoutCell>
-                    <l:MatrixLayoutCell class="nrgCamOff-mtxSndCell">
-                        <c:Label text="$20.00" class="nrgCamOff-diff"/>
-                    </l:MatrixLayoutCell>
-                </l:MatrixLayoutRow>
-                <l:MatrixLayoutRow class="nrgCamOff-mtxRow">
-                    <l:MatrixLayoutCell class="nrgCamOff-mtxFstCell">
-                        <c:Label text="Estimated Cents per kWh"  />
-                    </l:MatrixLayoutCell>
-                    <l:MatrixLayoutCell class="nrgCamOff-mtxSndCell">
-                        <c:Label text="02.00¢/kWh" />
-                    </l:MatrixLayoutCell>
-                </l:MatrixLayoutRow>
-            </l:MatrixLayout>
+            <u:Tag class="nrgCamOff-mtx nrgCamOff-top">
+                <u:Tag class="nrgCamOff-mtxRow">
+                    <u:Tag text="Monthly Consumption" class="nrgCamOff-mtxFstCell"/>
+                    <u:Tag text="$85.00" class="nrgCamOff-mtxSndCell"/>
+                </u:Tag>
+                <u:Tag class="nrgCamOff-mtxRow">
+                    <u:Tag text="Monthly Consumption @ Campaign Estimation" class="nrgCamOff-mtxFstCell"/>
+                    <u:Tag text="$65.00" class="nrgCamOff-mtxSndCell"/>
+                </u:Tag>
+                <u:Tag class="nrgCamOff-mtxRow">
+                    <u:Tag text="Estimated Difference" class="nrgCamOff-mtxFstCell"/>
+                    <u:Tag text="$20.00" class="nrgCamOff-mtxSndCell"/>
+                </u:Tag>
+                <u:Tag class="nrgCamOff-mtxRow">
+                    <u:Tag text="Estimated Cents per kWh" class="nrgCamOff-mtxFstCell"/>
+                    <u:Tag text="02.00¢/kWh" class="nrgCamOff-mtxSndCell">
+                        <u:customData>
+                             <core:CustomData key="flag"
+                                               value="X"
+                                               writeToDom="true" />
+                        </u:customData>
+                    </u:Tag>
+                </u:Tag>
+            </u:Tag>
         </u:Tag>
 </core:FragmentDefinition>

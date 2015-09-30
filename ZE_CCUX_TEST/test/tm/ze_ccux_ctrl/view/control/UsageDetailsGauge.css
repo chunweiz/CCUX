@@ -1,0 +1,22 @@
+.tmUDGauge {
+    display: inline-block;
+    position: relative;
+}
+
+.tmUDGauge-outerRing {
+    fill: tomato;
+}
+
+.tmUDGauge-tick {
+    stroke: black;
+    stroke-width: 2;
+}
+
+.tmUDGauge-tick-selected {
+    stroke: gold;
+    stroke-width: 2;
+}
+
+.tmUDGauge-tick-selected:last-child {
+    stroke-width: 4;
+}
