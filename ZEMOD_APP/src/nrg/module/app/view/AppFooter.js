@@ -40,34 +40,42 @@ sap.ui.define(
         };
 
         AppFooter.prototype.updateFooter = function (oPayload) {
-            var bp = '';
-            var ca = '';
-            var co = '32253375';
-            var oFilterTemplate = new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: co});
-            var sPath = '/CpgFtrS';
-            var aFilters = [];
+            var bp = '',
+                ca = '',
+                co = '32253375',
+                oFilterTemplate = new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: co}),
+                sPath = '/CpgFtrS',
+                aFilters = [];
                 aFilters.push(oFilterTemplate);
             var oModel = this._oController.getView().getModel('oODataSvc'),
+                oCampaignModel = this._oController.getView().getModel('oFooterCampaign'),
                 oParameters;
 
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
                     if (oData) {
-                        var oCampaignModel = this._oController.getView().getModel('oFooterCampaign');
                         // oCampaignModel.setData({Current:{OfferTitle: "None"}, Pending:{OfferTitle: "None"}, History:{OfferTitle: "None"}});
-
-                        // for (var i = 0; i < oData.results.length; i++) {
-                        //     if (oData.results[i].Type === 'C') {
-                        //         oCampaignModel.setProperty('/Current', oData.results[i]);
-                        //     }
-                        //     if (oData.results[i].Type === 'PE') {
-                        //         oCampaignModel.setProperty('/Pending', oData.results[i]);
-                        //     }
-                        //     if (oData.results[i].Type === 'H') {
-                        //         oCampaignModel.setProperty('/History', oData.results[i]);
-                        //     }
-                        // }
+                        var oCurrent = {OfferTitle: "None"},
+                            oPending = {OfferTitle: "None"},
+                            oHistory = {OfferTitle: "None"};
+                        
+                        for (var i = 0; i < oData.results.length; i++) {
+                            if (oData.results[i].Type === 'C') {
+                                // oCampaignModel.setProperty('/Current', oData.results[i]);
+                                oCurrent = oData.results[i];
+                            }
+                            if (oData.results[i].Type === 'PE') {
+                                // oCampaignModel.setProperty('/Pending', oData.results[i]);
+                                oPending = oData.results[i];
+                            }
+                            if (oData.results[i].Type === 'H') {
+                                // oCampaignModel.setProperty('/History', oData.results[i]);
+                                oHistory = oData.results[i];
+                            }
+                        }
+                        var oContent = {Current: oCurrent, Pending: oPending, History: oHistory};
+                        oCampaignModel.setData(oContent);
                     }
                 }.bind(this),
                 error: function (oError) {
