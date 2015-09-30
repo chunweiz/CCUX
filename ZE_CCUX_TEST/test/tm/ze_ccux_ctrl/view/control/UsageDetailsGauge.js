@@ -87,9 +87,16 @@ sap.ui.define(
                 .domain(d3.range(150))
                 .rangePoints([ oTickArcSize.startAngle, oTickArcSize.endAngle ]);
 
-            for (var i =0; i < 150; i++) {
-                console.log(fnTick(i));
-            }
+            oCanvas.append('g').selectAll('line')
+                .data(d3.range(150))
+                .enter()
+                .append('line')
+                    .attr('x1', function(data) { return Math.sin(fnTick(data)) * iRadius * -0.5;})
+                    .attr('y1', function(data) { return Math.cos(fnTick(data)) * iRadius * -0.5;})
+                    .attr('x2', function(data) { return Math.sin(fnTick(data)) * iRadius * -0.4;})
+                    .attr('y2', function(data) { return Math.cos(fnTick(data)) * iRadius * -0.4;})
+                    .style('stroke', 'black')
+                    .style('stroke-width', 2);
         };
 
         return CustomControl;
