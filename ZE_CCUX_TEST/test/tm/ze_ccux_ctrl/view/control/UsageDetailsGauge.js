@@ -64,7 +64,7 @@ sap.ui.define(
 
             // Outer ring
             var fnOuterRing = d3.svg.arc()
-                .outerRadius(iRadius * 0.7)
+                .outerRadius(iRadius * 0.67)
                 .innerRadius(iRadius * 0.6);
 
             oCanvas.append('g').append('path')
@@ -84,15 +84,20 @@ sap.ui.define(
                 .domain(d3.range(iNumofTicks))
                 .rangePoints([ oTickArcSize.startAngle, oTickArcSize.endAngle ]);
 
-            oCanvas.append('g').selectAll('line.tmUDGauge-tick')
+            var oTicks = oCanvas.append('g').selectAll('line.tmUDGauge-tick')
                 .data(d3.range(iNumofTicks))
                 .enter()
                 .append('line')
-                    .attr('class', 'tmUDGauge-tick')
                     .attr('x1', function(data) { return Math.sin(fnArcTick(data)) * -iRadius * 0.5;})
                     .attr('y1', function(data) { return Math.cos(fnArcTick(data)) * -iRadius * 0.5;})
                     .attr('x2', function(data) { return Math.sin(fnArcTick(data)) * -iRadius * 0.55;})
-                    .attr('y2', function(data) { return Math.cos(fnArcTick(data)) * -iRadius * 0.55;});
+                    .attr('y2', function(data) { return Math.cos(fnArcTick(data)) * -iRadius * 0.55;})
+                    .attr('class', function(data) {
+                        if (data < 10)
+                            return 'tmUDGauge-tick tmUDGauge-tick-selected';
+
+                        return 'tmUDGauge-tick';
+                    });
         };
 
         return CustomControl;
