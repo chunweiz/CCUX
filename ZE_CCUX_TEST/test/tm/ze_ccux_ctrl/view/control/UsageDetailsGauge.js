@@ -52,6 +52,7 @@ sap.ui.define(
             var iWidth = this.getWidth();
             var iHeight = this.getHeight();
             var iRadius = Math.min(iWidth, iHeight) / 2;
+            var iNumofTicks = 150;
 
             // Create a canvas with the center as starting point
             var oCanvas = d3.select('#' + this.getId())
@@ -61,42 +62,37 @@ sap.ui.define(
                     .append('g')
                         .attr('transform', 'translate(' + [ iWidth / 2, iHeight / 2 ] + ')');
 
-            // Arc function for ticks
-            var fnOuterTickArc = d3.svg.arc()
+            // Outer ring
+            var fnOuterRing = d3.svg.arc()
                 .outerRadius(iRadius * 0.7)
-                .innerRadius(iRadius * 0.69);
+                .innerRadius(iRadius * 0.6);
 
-            var fnInnerTickArc = d3.svg.arc()
-                .outerRadius(iRadius * 0.6)
-                .innerRadius(iRadius * 0.59);
+            oCanvas.append('g').append('path')
+                .attr('class', 'tmUDGauge-outerRing')
+                .attr('d', fnOuterRing({
+                    startAngle: 0,
+                    endAngle: Math.PI * 2
+                }));
 
+            // Arc ticks
             var oTickArcSize = {
-                startAngle: Math.PI - 0.5,
-                endAngle: 0.5 - Math.PI
+                startAngle: Math.PI - 0.4,
+                endAngle: 0.4 - Math.PI
             };
 
-            oCanvas.append('path')
-                .attr('d', fnOuterTickArc(oTickArcSize))
-                .style('fill', 'tomato');
-
-            oCanvas.append('path')
-                .attr('d', fnInnerTickArc(oTickArcSize))
-                .style('fill', 'gold');
-
-            var fnTick = d3.scale.ordinal()
-                .domain(d3.range(150))
+            var fnArcTick = d3.scale.ordinal()
+                .domain(d3.range(iNumofTicks))
                 .rangePoints([ oTickArcSize.startAngle, oTickArcSize.endAngle ]);
 
-            oCanvas.append('g').selectAll('line')
-                .data(d3.range(150))
+            oCanvas.append('g').selectAll('line.tmUDGauge-tick')
+                .data(d3.range(iNumofTicks))
                 .enter()
                 .append('line')
-                    .attr('x1', function(data) { return Math.sin(fnTick(data)) * iRadius * -0.5;})
-                    .attr('y1', function(data) { return Math.cos(fnTick(data)) * iRadius * -0.5;})
-                    .attr('x2', function(data) { return Math.sin(fnTick(data)) * iRadius * -0.4;})
-                    .attr('y2', function(data) { return Math.cos(fnTick(data)) * iRadius * -0.4;})
-                    .style('stroke', 'black')
-                    .style('stroke-width', 2);
+                    .attr('class', 'tmUDGauge-tick')
+                    .attr('x1', function(data) { return Math.sin(fnArcTick(data)) * -iRadius * 0.5;})
+                    .attr('y1', function(data) { return Math.cos(fnArcTick(data)) * -iRadius * 0.5;})
+                    .attr('x2', function(data) { return Math.sin(fnArcTick(data)) * -iRadius * 0.55;})
+                    .attr('y2', function(data) { return Math.cos(fnArcTick(data)) * -iRadius * 0.55;});
         };
 
         return CustomControl;
