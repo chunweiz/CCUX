@@ -43,3 +43,8 @@
     stroke: #20557f;
     stroke-width: 2;
 }
+
+.tmUDGauge-meterArcLabel {
+    font-size: 10px;
+    fill: #20557f;
+}

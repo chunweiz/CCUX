@@ -100,7 +100,11 @@ sap.ui.define(
                 .attr('x1', '-70').attr('y1', '25')
                 .attr('x2', '70').attr('y2', '25');
 
-            // Usage indicator
+            // kwh usage to usage indicator text mapping
+            var fnKwhToUsageIndicator = d3.scale.quantize()
+                .domain(aKwhDomain)
+                .range(['LOW', 'MEDIUM', 'HIGH']);
+
             var oUsageInfoIndicator = oUsageInfo.append('g');
 
             oUsageInfoIndicator.append('rect')
@@ -115,7 +119,7 @@ sap.ui.define(
                 .attr('text-anchor', 'middle')
                 .attr('dy', '0.35em')
                 .attr('transform', 'translate(' + [0, 55] + ')')
-                .text('LOW');
+                .text(fnKwhToUsageIndicator(iCurrentKwh));
 
             // Meter arc sizing
             var oTickArcSize = {
@@ -152,6 +156,33 @@ sap.ui.define(
                     .attr('class', function(data) {
                         return data <= iNumOfSelectedTicks ? 'tmUDGauge-tick tmUDGauge-tick-selected' : 'tmUDGauge-tick';
                     });
+
+            // Meter arc label text path
+            var fnMeterArcLabel = d3.svg.arc()
+                .outerRadius(iRadius * 0.85)
+                .innerRadius(iRadius * 0.85);
+
+            // oCanvas.append('path')
+            //     .attr('d', fnMeterArcLabel({
+            //         startAngle: Math.PI - 0.35,
+            //         endAngle: Math.PI + 0.35
+            //     }))
+            //     .attr('fill', 'tomato');
+
+            oCanvas.append('defs').append('path')
+                .attr('id', oCustomControl.getId() + '-meterArcLabelTextPath')
+                .attr('d', fnMeterArcLabel({
+                    startAngle: Math.PI - 0.35,
+                    endAngle: Math.PI + 0.35
+                }));
+
+            // Meter arc label text
+            oCanvas.append('text').append('textPath')
+                .attr('class', 'tmUDGauge-meterArcLabel')
+                .attr('startOffset', '62%')
+                .attr('xlink:href', '#' + oCustomControl.getId() + '-meterArcLabelTextPath')
+                .attr('dy', '0.35em')
+                .text('TODAYS USAGE');
 
         };
 
