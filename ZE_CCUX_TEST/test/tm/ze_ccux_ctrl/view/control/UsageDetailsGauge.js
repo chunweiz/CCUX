@@ -162,13 +162,6 @@ sap.ui.define(
                 .outerRadius(iRadius * 0.85)
                 .innerRadius(iRadius * 0.85);
 
-            // oCanvas.append('path')
-            //     .attr('d', fnMeterArcLabel({
-            //         startAngle: Math.PI - 0.35,
-            //         endAngle: Math.PI + 0.35
-            //     }))
-            //     .attr('fill', 'tomato');
-
             oCanvas.append('defs').append('path')
                 .attr('id', oCustomControl.getId() + '-meterArcLabelTextPath')
                 .attr('d', fnMeterArcLabel({
@@ -179,7 +172,7 @@ sap.ui.define(
             // Meter arc label text
             oCanvas.append('text').append('textPath')
                 .attr('class', 'tmUDGauge-meterArcLabel')
-                .attr('startOffset', '62%')
+                .attr('startOffset', '61%')
                 .attr('xlink:href', '#' + oCustomControl.getId() + '-meterArcLabelTextPath')
                 .attr('dy', '0.35em')
                 .text('TODAYS USAGE');
