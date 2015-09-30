@@ -9,6 +9,6 @@
     displayBlock="true">
 
     <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
-        <tm:UsageDetailsGauge width="600" height="600" usage="0.5" />
+        <tm:UsageDetailsGauge width="600" height="400" usage="1.5" />
     </sm:ScrollContainer>
 </mvc:View>

@@ -4,19 +4,47 @@
 }
 
 .tmUDGauge-outerRing {
-    fill: tomato;
+    fill: #d7dae2;
+}
+
+.tmUDGauge-usage {
+    font-size: 100px;
+    font-weight: bold;
+    fill: #20557f;
+}
+
+.tmUDGauge-usageUnit {
+    font-size: 18px;
+    fill: #20557f;
+}
+
+.tmUDGauge-usageDivider {
+    stroke: #20557f;
+    stroke-width: 2.5;
+}
+
+.tmUDGauge-usageIndicatorBg {
+    fill: #a3bddf;
+    stroke: none;
+}
+
+.tmUDGauge-usageIndicatorText {
+    font-size: 10px;
+    font-weight: bold;
+    fill: #6580a7;
 }
 
 .tmUDGauge-tick {
-    stroke: black;
+    stroke: #a3bddf;
     stroke-width: 2;
 }
 
 .tmUDGauge-tick-selected {
-    stroke: gold;
+    stroke: #20557f;
     stroke-width: 2;
 }
 
-.tmUDGauge-tick-selected:last-child {
-    stroke-width: 4;
+.tmUDGauge-meterArcLabel {
+    font-size: 11px;
+    fill: #20557f;
 }
