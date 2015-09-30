@@ -579,10 +579,11 @@ sap.ui.define(
                 sBankAccount,
                 oCallFunctionHandler,
                 oConfirmCallbackHandler,
-                sInvoiceAmount,
+                iInvoiceAmount,
                 oInvoiceDate,
                 oConfirmDateHandler,
-                oCallDateHandler;
+                oCallDateHandler,
+                iBankDraftAmount;
             oMsgArea.removeStyleClass("nrgQPPay-hide");
             oMsgArea.addStyleClass("nrgQPPay-black");
             if (!this._ValidateValue(oBankDraftAmount.getValue(), "Enter Amount to be posted")) {
@@ -597,7 +598,7 @@ sap.ui.define(
             sBankRouting = oModel.getProperty("/BankAccountSet(BP='" + this._sBP + "',CA='" + this._sCA + "',BankKey='" + sBankKey + "')/BankRouting");
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             oBankDraftDateValue = new Date(oBankDraftDate.getValue());
-            sInvoiceAmount =  oBankDraftModel.getProperty("/InvoiceAmount");
+            iInvoiceAmount = parseInt(oBankDraftModel.getProperty("/InvoiceAmount"), 10) || 0;
             oInvoiceDate = oBankDraftModel.getProperty("/InvoiceDate");
             oConfirmCallbackHandler = function (sAction) {
                 switch (sAction) {
@@ -674,7 +675,8 @@ sap.ui.define(
                 };
                 oModel.callFunction(sCurrentPath, mParameters);
             };
-            if (oBankDraftAmount > sInvoiceAmount) {
+            iBankDraftAmount = parseInt(oBankDraftAmount.getValue(), 10) || 0;
+            if (iBankDraftAmount > iInvoiceAmount) {
                 ute.ui.main.Popup.Confirm({
                     title: 'Information',
                     message: 'Payment amount is greater than Total amount due. Do you wish to continue?',
