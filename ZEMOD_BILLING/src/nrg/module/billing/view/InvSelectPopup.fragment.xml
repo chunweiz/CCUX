@@ -9,11 +9,15 @@
     xmlns:m="sap.m">
     <ute:Tag class="nrgBilling-invSelPopup">
         <ute:Tag class="nrgBilling-invSelPopup-datePickArea">
-            <m:DatePicker class="nrgBilling-invSelPopup-datePickArea-datePicker"
+            <ute:DatePicker width="150px" id="id_nrgBilling-invSel-stDate"/>
+
+            <!--<m:DatePicker class="nrgBilling-invSelPopup-datePickArea-datePicker"
                           value="03/26/2014" valueFormat="MM/dd/yyyy" displayFormat="MM/dd/yyyy"/>
             <m:DatePicker class="nrgBilling-invSelPopup-datePickArea-datePicker"
                           value="03/26/2015" valueFormat="MM/dd/yyyy" displayFormat="MM/dd/yyyy"/>
+            -->
         </ute:Tag>
+        <utmain:Button text="TTTEST" press="testButton"/>
         <ute:Tag class="nrgBilling-invSelPopup-Ctnt" text="test">
 
         </ute:Tag>
