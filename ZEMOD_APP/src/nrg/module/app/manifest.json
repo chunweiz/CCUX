@@ -14,11 +14,18 @@
                         "real": {
                             "comp-app": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/"
+                            },
+                            "rhs-app": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_RHS_SRV/"
                             }
                         },
                         "mock": {
                             "comp-app": {
-                                "mockDataBaseUrl": "data/devtest/",
+                                "mockDataBaseUrl": "data/devCamp/",
+                                "generateMissingMockData": true
+                            },
+                            "rhs-app": {
+                                "mockDataBaseUrl": "data/devRHS/",
                                 "generateMissingMockData": true
                             }
                         }

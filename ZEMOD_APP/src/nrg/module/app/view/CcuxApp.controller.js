@@ -36,10 +36,6 @@ sap.ui.define(
                     text: 'NOT ELIGIBLE'
                 }
             }), 'view-data');
-            
-            
-            this._oApp._initFooterOData();
-            this._oApp.updateFooter(true);
         };
 
         CustomController.prototype.onInit = function () {
@@ -62,6 +58,19 @@ sap.ui.define(
             console.log(oControlEvent.getSource());
         };
 
+        CustomController.prototype._formatCampaignTime = function (oDate) {
+            if (oDate) {
+                var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern:"MM/yyyy"});
+                var dateStr = dateFormat.format(new Date(oDate.getTime()));
+                return dateStr;
+            }
+        };
+
+        // AppFooter.prototype._formatCampaignTime = function (oDate) {
+        //     var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern:"MM/yyyy"});
+        //     var dateStr = dateFormat.format(new Date(oDate.getTime()));
+        //     return dateStr;
+        // };        
 
 
 
