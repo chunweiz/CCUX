@@ -35,7 +35,7 @@ sap.ui.define(
 
         AppFooter.prototype._initFooterOData = function () {
             // oData Model
-            this._oController.getView().setModel(this._oController.getOwnerComponent().getModel('comp-campaign'), 'oODataSvc');
+            this._oController.getView().setModel(this._oController.getOwnerComponent().getModel('comp-app'), 'oODataSvc');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
         };
 

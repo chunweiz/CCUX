@@ -12,12 +12,12 @@
                     },
                     "odata": {
                         "real": {
-                            "comp-campaign": {
+                            "comp-app": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/"
                             }
                         },
                         "mock": {
-                            "comp-campaign": {
+                            "comp-app": {
                                 "mockDataBaseUrl": "data/devtest/",
                                 "generateMissingMockData": true
                             }
