@@ -34,7 +34,6 @@ sap.ui.define(
                 aFilters,
                 oTileContainer,
                 oTileTemplate,
-                oViewModel,
                 iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
                 aFilterIds,
                 aFilterValues,
@@ -45,7 +44,14 @@ sap.ui.define(
                 oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
                 i18NModel,
                 oSelectedButton,
-                oSorter = new sap.ui.model.Sorter("Type", false);
+                oSorter = new sap.ui.model.Sorter("Type", false),
+                oViewModel = new JSONModel({
+                    invoice : true,  // true for invoice & false for consumption
+                    invoiceFirstCard : true,  // true for first Card change, false for second card change for Invoice
+                    consumptionFirstCard : true // true for first Card change, false for second card change for Consumption
+			    });
+            this._aSelectedComparisionCards = [];
+            this.getView().setModel(oViewModel, "localModel");
             i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oRouteInfo.parameters.coNum;
@@ -66,18 +72,26 @@ sap.ui.define(
                 oSelectedButton.addStyleClass("nrgCamOff-btn-selected");
                 this.getOwnerComponent().getCcuxApp().setOccupied(false);
             } else {
-                aFilterIds = ["Contract", "Type", "Type"];
-                aFilterValues = [this._sContract, this._sType, "C"];
+                aFilterIds = ["Contract"];
+                aFilterValues = [this._sContract];
                 aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
                 sCurrentPath = i18NModel.getProperty("nrgCpgChangeOffSet");
                 oModel = this.getOwnerComponent().getModel('comp-campaign');
                 oSelectedButton.addStyleClass("nrgCamOff-btn-selected");
                 // Handler function for tile container
                 fnRecievedHandler = function (oEvent) {
-                    var aContent = oTileContainer.getContent();
+                    var aContent = oTileContainer.getContent(),
+                        oBinding = oTileContainer.getBinding("content");
                     if ((aContent !== undefined) && (aContent.length > 0)) {
                         oNoDataTag.addStyleClass("nrgCamOff-hide");
                         oTileContainer.removeStyleClass("nrgCamOff-hide");
+                        aFilterIds = ["Type", "Type"];
+                        aFilterValues = ["C", "P"];
+                        aFilters = that._createSearchFilterObject(aFilterIds, aFilterValues);
+                        oBinding.sOperationMode = "Client";
+                        oBinding.aAllKeys = oEvent.getSource().aKeys;
+                        oBinding.filter(aFilters);
+
                     } else {
                         oNoDataTag.removeStyleClass("nrgCamOff-hide");
                         oTileContainer.addStyleClass("nrgCamOff-hide");
@@ -87,7 +101,6 @@ sap.ui.define(
                             type;
                         type = oButtonContext.getProperty("Type");
                         oButtonItem.insertCustomData(new sap.ui.core.CustomData({key: "flag", value: type, writeToDom : true}));
-
                     });
                     that.getOwnerComponent().getCcuxApp().setOccupied(false);
                     oProactiveButton.addStyleClass("nrgCamOff-btn-selected");
@@ -136,13 +149,124 @@ sap.ui.define(
                 oContext,
                 sOfferCode,
                 sStartDate,
-                sDate;
-            sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
+                sDate,
+                oViewModel = this.getView().getModel("localModel"),
+                oFirstCardInvoice,
+                oSecondCardInvoice,
+                oFirstCardConsumption,
+                oSecondCardConsumption,
+                oTestModel = new JSONModel({
+                    CurrInvAmt : "85$",
+                    EstInvoice : "65$",
+                    EstDiff : "20$",
+                    EstcentsperkWh : "2kWh"
+			    }),
+                oSelectedObject = oEvent.getSource();
+            this.getView().setModel(oTestModel, 'oViewModel');
+            if ((oViewModel) && (oViewModel.getProperty("/invoice"))) { // comparision is enabled for Invoice
+                if ((oViewModel) && (oViewModel.getProperty("/invoiceFirstCard"))) {
+                    oViewModel.setProperty("/invoiceFirstCard", false);  // change it to false to show next product in second card
+                    this._changeSelectedObject(oSelectedObject, 0);
+                    this._bindCard(oSelectedObject, 1);
+                } else {
+                    oViewModel.setProperty("/invoiceFirstCard", true);
+                    this._changeSelectedObject(oSelectedObject, 1);
+                    this._bindCard(oSelectedObject, 2);
+                }
+            } else { // comparision is enabled for consumption
+                if ((oViewModel) && (oViewModel.getProperty("/consumptionFirstCard"))) {
+                    this._changeSelectedObject(oSelectedObject, 0);
+                    this._bindCard(oSelectedObject, 1);
+                    oViewModel.setProperty("/consumptionFirstCard", false);
+
+                } else {
+                    this._changeSelectedObject(oSelectedObject, 0);
+                    this._bindCard(oSelectedObject, 1);
+                    oViewModel.setProperty("/consumptionFirstCard", true);
+
+                }
+            }
+/*            sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
             oContext = this.getView().getModel("comp-campaign").getContext(sPath);
             sOfferCode = oContext.getProperty("OfferCode");
-            sStartDate = oContext.getProperty("StartDate");
-            sDate = sPath.substring(sPath.lastIndexOf("=") + 1, sPath.lastIndexOf(")"));
+            sStartDate = oContext.getProperty("StartDate");*/
+            //sDate = sPath.substring(sPath.lastIndexOf("=") + 1, sPath.lastIndexOf(")"));
             //this.navTo("campaignchg", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, offercodeNum: sOfferCode, sDate : sDate});
+        };
+        /**
+		 * Assign custom data to change the CSS based on that
+		 *
+		 * @function
+		 * @param {sap.ui.base.Event} oEvent pattern match event
+         * @private
+		 */
+        Controller.prototype._changeSelectedObject = function (item, index) {
+            var oSelectedObject,
+                aCustomData;
+            if ((this._aSelectedComparisionCards) && (this._aSelectedComparisionCards.length === 2)) {// always assuming that selected cards will always be 2
+                oSelectedObject = this._aSelectedComparisionCards[index];
+                if (oSelectedObject) {
+                    aCustomData = oSelectedObject.getCustomData();
+                    if ((aCustomData) && (aCustomData.length > 0)) {
+                        aCustomData.map(function (item) {
+
+                        });
+                    }
+
+                }
+                this._aSelectedComparisionCards[index] = item;
+                if (this._aSelectedComparisionCards[index]) {
+                    oSelectedObject.insertCustomData(new sap.ui.core.CustomData({key: "flag", value: "X", writeToDom : true}));
+                }
+            }
+        };
+        /**
+		 * Bind the object to selected Card in either Invoice or Consumption
+		 *
+		 * @function
+		 * @param {sap.ui.base.Event} oEvent pattern match event
+         * @private
+		 */
+        Controller.prototype._bindCard = function (object, iCounter) {
+            var oFirstCardInvoice = this.getView().byId("idnrgCamOff-firstCardI"),
+                oSecondCardInvoice = this.getView().byId("idnrgCamOff-SecondCardI"),
+                oFirstCardConsumption = this.getView().byId("idnrgCamOff-firstCardC"),
+                oSecondCardConsumption = this.getView().byId("idnrgCamOff-SecondCardC"),
+                oSelectedObject,
+                sPath = "/"; // object.getBindingContext().getPath() need to be assigned
+            if (iCounter === 1) {
+                oSelectedObject = this.getView().byId("idnrgCamOff-firstCardI");
+            } else if (iCounter === 2) {
+                oSelectedObject = this.getView().byId("idnrgCamOff-SecondCardI");
+            } else if (iCounter === 3) {
+                oSelectedObject = this.getView().byId("idnrgCamOff-firstCardC");
+            } else if (iCounter === 4) {
+                oSelectedObject = this.getView().byId("idnrgCamOff-SecondCardC");
+            }
+            oSelectedObject.bindElement({
+                model : "oViewModel",
+                path : sPath
+            });
+        };
+        /**
+		 * when the user chooses one of the comparision option Invoice/Consumption
+		 *
+		 * @function
+		 * @param {sap.ui.base.Event} oEvent pattern match event
+         * @private
+		 */
+        Controller.prototype.onPressed = function (oEvent) {
+            var aTabBarItems = oEvent.getSource().getContent(),
+                oViewModel = this.getView().getModel("localModel");
+            aTabBarItems.map(function (item) {
+                if ((item.getSelected) && (item.getSelected())) {
+                    if ((item.getKey()) && (item.getKey() ===  "Invoice")) {
+                        oViewModel.setProperty("/invoice", true);
+                    } else {
+                        oViewModel.setProperty("/invoice", false);
+                    }
+                }
+            });
         };
         /**
 		 * Binds the view based on the Tier selected like Proactive, Reactive, Save and Final Save
@@ -179,22 +303,22 @@ sap.ui.define(
             sButtonText = oEvent.getSource().getId();
             sButtonText = sButtonText.substring(sButtonText.length - 1, sButtonText.length);
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
-            aFilterIds = ["Contract", "Type"];
+            aFilterIds = ["Contract", "Type", "Type"];
             switch (sButtonText) {
             case "P":
-                aFilterValues = [this._sContract, "P"];
+                aFilterValues = [this._sContract, "P", "C"];
                 break;
             case "R":
-                aFilterValues = [this._sContract, "R"];
+                aFilterValues = [this._sContract, "R", "C"];
                 break;
             case "S":
-                aFilterValues = [this._sContract, "S"];
+                aFilterValues = [this._sContract, "S", "C"];
                 break;
             case "F":
-                aFilterValues = [this._sContract, "F"];
+                aFilterValues = [this._sContract, "F", "C"];
                 break;
             default:
-                aFilterValues = [this._sContract, "F"];
+                aFilterValues = [this._sContract, "F", "C"];
             }
             oEvent.getSource().addStyleClass("nrgCamOff-btn-selected");
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -202,8 +326,10 @@ sap.ui.define(
             aContent = oTileContainer.getContent();
             oTileTemplate = this._oTileTemplate;
             sCurrentPath = i18NModel.getProperty("nrgCpgChangeOffSet");
+            oTileContainer.getBinding("content").filter(aFilters);
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
             // Handler function for tile container
-            fnRecievedHandler = function (oEvent) {
+/*            fnRecievedHandler = function (oEvent) {
                 var aContent = oTileContainer.getContent();
                 if ((aContent !== undefined) && (aContent.length > 0)) {
                     oNoDataTag.addStyleClass("nrgCamOff-hide");
@@ -220,8 +346,8 @@ sap.ui.define(
 
                 });
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
-            };
-            mParameters = {
+            };*/
+/*            mParameters = {
                 model : "comp-campaign",
                 path : sCurrentPath,
                 template : oTileTemplate,
@@ -229,7 +355,7 @@ sap.ui.define(
                 parameters : {expand: "EFLs"},
                 events: {dataReceived : fnRecievedHandler}
             };
-            oTileContainer.bindAggregation("content", mParameters);
+            oTileContainer.bindAggregation("content", mParameters);*/
         };
 
         /**

@@ -172,7 +172,7 @@ sap.ui.define(
             // Meter arc label text
             oCanvas.append('text').append('textPath')
                 .attr('class', 'tmUDGauge-meterArcLabel')
-                .attr('startOffset', '65%')
+                .attr('startOffset', '59%')
                 .attr('xlink:href', '#' + oCustomControl.getId() + '-meterArcLabelTextPath')
                 .attr('dy', '0.35em')
                 .text('TODAYS USAGE');
