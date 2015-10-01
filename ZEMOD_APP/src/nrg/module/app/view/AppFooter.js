@@ -33,41 +33,48 @@ sap.ui.define(
             this._registerEvents();
         };
 
+        /*------------------ Footer Update ----------------*/
+
         AppFooter.prototype._initFooterOData = function () {
-            // oData Model
-            this._oController.getView().setModel(this._oController.getOwnerComponent().getModel('comp-campaign'), 'oODataSvc');
+            this._oController.getView().setModel(this._oController.getOwnerComponent().getModel('comp-app'), 'oCompODataSvc');
+            this._oController.getView().setModel(this._oController.getOwnerComponent().getModel('rhs-app'), 'oRHSODataSvc');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
         };
 
-        AppFooter.prototype.updateFooter = function (oPayload) {
-            var bp = '';
-            var ca = '';
-            var co = '32253375';
-            var oFilterTemplate = new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: co});
-            var sPath = '/CpgFtrS';
-            var aFilters = [];
+        AppFooter.prototype.updateFooterNotification = function (sBpNumber, sCaNumber) {
+
+        };
+
+        AppFooter.prototype.updateFooterRHS = function (sBpNumber, sCaNumber) {
+
+        };
+
+        AppFooter.prototype.updateFooterCampaign = function (sCoNumber) {
+            var co = '32253375',
+                oFilterTemplate = new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: co}),
+                sPath = '/CpgFtrS',
+                aFilters = [];
                 aFilters.push(oFilterTemplate);
-            var oModel = this._oController.getView().getModel('oODataSvc'),
+            var oModel = this._oController.getView().getModel('oCompODataSvc'),
+                oCampaignModel = this._oController.getView().getModel('oFooterCampaign'),
                 oParameters;
 
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
                     if (oData) {
-                        var oCampaignModel = this._oController.getView().getModel('oFooterCampaign');
-                        // oCampaignModel.setData({Current:{OfferTitle: "None"}, Pending:{OfferTitle: "None"}, History:{OfferTitle: "None"}});
-
-                        // for (var i = 0; i < oData.results.length; i++) {
-                        //     if (oData.results[i].Type === 'C') {
-                        //         oCampaignModel.setProperty('/Current', oData.results[i]);
-                        //     }
-                        //     if (oData.results[i].Type === 'PE') {
-                        //         oCampaignModel.setProperty('/Pending', oData.results[i]);
-                        //     }
-                        //     if (oData.results[i].Type === 'H') {
-                        //         oCampaignModel.setProperty('/History', oData.results[i]);
-                        //     }
-                        // }
+                        oCampaignModel.setData({Current:{OfferTitle: "None"}, Pending:{OfferTitle: "None"}, History:{OfferTitle: "None"}});
+                        for (var i = 0; i < oData.results.length; i++) {
+                            if (oData.results[i].Type === 'C') {
+                                oCampaignModel.setProperty('/Current', oData.results[i]);
+                            }
+                            if (oData.results[i].Type === 'PE') {
+                                oCampaignModel.setProperty('/Pending', oData.results[i]);
+                            }
+                            if (oData.results[i].Type === 'H') {
+                                oCampaignModel.setProperty('/History', oData.results[i]);
+                            }
+                        }
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -134,6 +141,12 @@ sap.ui.define(
                 this._oSubmenu.setPosition(oView.byId('appFtr'), '0 0');
                 oView.addDependent(this._oSubmenu);
                 oView.byId('appFtrSMenuCaret').attachEvent('click', this._onFooterSubmenuCaretClick, this);
+            
+                // Initialize the oData model in footer
+                this._oApp._initFooterOData();
+                this._oApp.updateFooterNotification();
+                this._oApp.updateFooterRHS();
+                this._oApp.updateFooterCampaign();
             }
 
             return this._oSubmenu;

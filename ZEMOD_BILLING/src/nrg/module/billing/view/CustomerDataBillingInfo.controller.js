@@ -254,25 +254,33 @@ sap.ui.define(
 
         CustomController.prototype._onInvoiceNumClicked = function () {
             if (!this._oInvSelectPopup) {
-                this._oInvSelectPopup = sap.ui.xmlfragment("InvSelectPopup", "nrg.module.billing.view.InvSelectPopup", this);
+                this._oInvSelectPopup = sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.InvSelectPopup", this);
                 this._oInvSelectPopup = ute.ui.main.Popup.create({
                     content: this._oInvSelectPopup,
                     title: "INVOICE SELECTION"
                 });
 
                 this.getView().addDependent(this._oInvSelectPopup);
+
+                this.getView().byId('id_nrgBilling-invSel-stDate').attachBrowserEvent('select', this._handleDateRanggeChange, this);
+                //jQuery.sap.byId('id_nrgBilling-invSel-stDate').bind("sapfocusleave", jQuery.proxy(this.handleDateChange, this));
+            //jQuery.sap.byId(this.getView().byId('InvSelectPopup--nrgBilling-invSel-stDate')).bind("onsapfocusleave", jQuery.proxy(this.handleDateChange, this));
             }
 
             this._oInvSelectPopup.addStyleClass('nrgBilling-invSelPopupTop');
             this._oInvSelectPopup.open();
         };
 
-        CustomController.prototype.test = function (oEvent) {
+        CustomController.prototype.onclick = function (oEvent) {
             var tt0 = oEvent;
         };
         /*************************************************************************************************************************/
 
 
+        CustomController.prototype._handleDateRanggeChange = function (oEvent) {
+            var tt = this.getView().byId('id_nrgBilling-invSel-stDate');
+            return;
+        };
 
 
         return CustomController;

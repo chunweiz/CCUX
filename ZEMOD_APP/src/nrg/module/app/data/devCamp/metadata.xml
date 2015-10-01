@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZE_CCUX_CAMPAIGN_OVW_SRV" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="EFL" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="EFLType" />
+                    <PropertyRef Name="EFLLevel" />
+                </Key>
+                <Property Name="Contract" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Contract" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="OfferCode" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Offer Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="StartDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Start Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EFLType" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="EFL Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EFLLevel" Type="Edm.Int16" Nullable="false" sap:label="EFL Level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EFLPrice" Type="Edm.Decimal" Nullable="false" Precision="7" Scale="2" sap:label="EFL Price" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityType Name="Return" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Code" />
+                    <PropertyRef Name="Message" />
+                </Key>
+                <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="255" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityType Name="LoyalPrg" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LpCode" />
+                </Key>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="LpCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Loyalty program code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="LpTxt" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Loyalty Program Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="ReqRefID" Type="Edm.Boolean" Nullable="false" sap:label="Require Reference ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityType Name="Script" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Contract" />
+                    <PropertyRef Name="OfferCode" />
+                    <PropertyRef Name="StartDate" />
+                    <PropertyRef Name="TxtName" />
+                    <PropertyRef Name="TxtLang" />
+                </Key>
+                <Property Name="Contract" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="OfferCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="StartDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="TxtName" Type="Edm.String" Nullable="false" MaxLength="70" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="TxtLang" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="TxtLine" Type="Edm.String" Nullable="false" MaxLength="5000" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityType Name="CpgCmpbyInv" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SelOfferCd" />
+                    <PropertyRef Name="CurrCons" />
+                </Key>
+                <Property Name="Contract" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="SelOfferCd" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="CurrCons" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EstInvoice" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EstcentsperkWh" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityType Name="Button" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Contract" />
+                </Key>
+                <Property Name="Contract" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="FirstBill" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="InitTab" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityType Name="CpgCmpbyCons" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Contract" />
+                    <PropertyRef Name="CurrOfferCd" />
+                    <PropertyRef Name="SelOfferCd" />
+                    <PropertyRef Name="CurrCons" />
+                </Key>
+                <Property Name="Contract" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="CurrOfferCd" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="SelOfferCd" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="CurrCons" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="SimCurrInv" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EstInvoice" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EstcentsperkWh" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityType Name="PendSwap" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Contract" />
+                    <PropertyRef Name="SwapType" />
+                    <PropertyRef Name="IdocNo" />
+                    <PropertyRef Name="HistoryNo" />
+                </Key>
+                <Property Name="Contract" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Contract" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="SwapType" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Swap Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="IdocNo" Type="Edm.String" Nullable="false" MaxLength="16" sap:label="IDoc number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="HistoryNo" Type="Edm.String" Nullable="false" MaxLength="16" sap:label="History Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Offer" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Offer Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="OfferDesc" Type="Edm.String" Nullable="false" MaxLength="150" sap:label="Offer Cell Desc" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Promo" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Promo Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Campaign" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Campaign Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Product Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="DatStartPen" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="DatEndPen" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="DateSigned" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Signed Dt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityType Name="RejectRsn" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="RejectionCode" />
+                </Key>
+                <Property Name="RejectionCode" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Cancel Rsn Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityType Name="Cpg" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Contract" />
+                    <PropertyRef Name="OfferCode" />
+                    <PropertyRef Name="StartDate" />
+                </Key>
+                <Property Name="Contract" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Contract" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="OfferCode" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Offer Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Tier" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="StartDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Start Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EndDate" Type="Edm.DateTime" Precision="0" sap:label="End Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="OfferTitle" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="Offer Title" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="2048" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="AvgUsage" Type="Edm.Decimal" Nullable="false" Precision="17" Scale="0" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Campaign" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Campaign Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Promo" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Promo Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="Term" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Contract Length" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="CncFee" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" sap:label="Penalty Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Incentive" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" sap:label="Incentive Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="IncenDesc" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Incentive Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="CurrInvAmt" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="CurrCons" Type="Edm.Decimal" Nullable="false" Precision="17" Scale="0" sap:label="Current Consumption kWh" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Disposition" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Character Field Length = 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="LPcode" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Loyalty Program Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="ReqRefID" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EFLLevel" Type="Edm.Int16" Nullable="false" sap:label="EFL Level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EFLPrice" Type="Edm.Decimal" Nullable="false" Precision="6" Scale="2" sap:label="EFL Price" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Brand" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Brand ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="PromoRank" Type="Edm.Byte" Nullable="false" sap:label="Promo Rank" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <NavigationProperty Name="EFLs" Relationship="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_EFL" FromRole="FromRole_Cpg_EFL" ToRole="ToRole_Cpg_EFL" />
+                <NavigationProperty Name="Scripts" Relationship="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" FromRole="FromRole_Cpg_Script" ToRole="ToRole_Cpg_Script" />
+            </EntityType>
+            <EntityType Name="NNP" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BP" />
+                </Key>
+                <Property Name="BP" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="241" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="ConsNum" Type="Edm.String" Nullable="false" MaxLength="3" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityType Name="CustMsg" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Contract" />
+                    <PropertyRef Name="Sequence" />
+                </Key>
+                <Property Name="Contract" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="Sequence" Type="Edm.Int16" Nullable="false" sap:label="Signed INT2 / int16" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="60" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <Association Name="Cpg_Script" sap:content-version="1">
+                <End Type="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" Multiplicity="1" Role="FromRole_Cpg_Script" />
+                <End Type="ZE_CCUX_CAMPAIGN_OVW_SRV.Script" Multiplicity="*" Role="ToRole_Cpg_Script" />
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Cpg_Script">
+                        <PropertyRef Name="StartDate" />
+                        <PropertyRef Name="OfferCode" />
+                        <PropertyRef Name="Contract" />
+                    </Principal>
+                    <Dependent Role="ToRole_Cpg_Script">
+                        <PropertyRef Name="StartDate" />
+                        <PropertyRef Name="OfferCode" />
+                        <PropertyRef Name="Contract" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Cpg_EFL" sap:content-version="1">
+                <End Type="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" Multiplicity="1" Role="FromRole_Cpg_EFL" />
+                <End Type="ZE_CCUX_CAMPAIGN_OVW_SRV.EFL" Multiplicity="*" Role="ToRole_Cpg_EFL" />
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Cpg_EFL">
+                        <PropertyRef Name="StartDate" />
+                        <PropertyRef Name="OfferCode" />
+                        <PropertyRef Name="Contract" />
+                    </Principal>
+                    <Dependent Role="ToRole_Cpg_EFL">
+                        <PropertyRef Name="StartDate" />
+                        <PropertyRef Name="OfferCode" />
+                        <PropertyRef Name="Contract" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZE_CCUX_CAMPAIGN_OVW_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ReturnCollection" EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Return" sap:content-version="1" />
+                <EntitySet Name="LoyalPrgS" EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.LoyalPrg" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <EntitySet Name="ScriptS" EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Script" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <EntitySet Name="CpgCmpbyInvS" EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgCmpbyInv" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <EntitySet Name="ButtonS" EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Button" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+                <EntitySet Name="CpgCmpbyConsS" EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgCmpbyCons" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <EntitySet Name="PendSwapS" EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.PendSwap" sap:creatable="false" sap:updatable="false" sap:pageable="false" sap:content-version="1" />
+                <EntitySet Name="RejectRsnS" EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.RejectRsn" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <EntitySet Name="CpgChgOfferS" EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <EntitySet Name="CpgHistS" EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <EntitySet Name="CpgOvwS" EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <EntitySet Name="CpgSearchS" EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <EntitySet Name="CpgFtrS" EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <EntitySet Name="NNPS" EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.NNP" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+                <EntitySet Name="CustMsgS" EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CustMsg" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+                <EntitySet Name="EFLS" EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.EFL" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <AssociationSet Name="OvwS_ScriptS" Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CpgOvwS" Role="FromRole_Cpg_Script" />
+                    <End EntitySet="ScriptS" Role="ToRole_Cpg_Script" />
+                </AssociationSet>
+                <AssociationSet Name="FtrS_ScriptS" Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CpgFtrS" Role="FromRole_Cpg_Script" />
+                    <End EntitySet="ScriptS" Role="ToRole_Cpg_Script" />
+                </AssociationSet>
+                <AssociationSet Name="OvwS_EFLS" Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_EFL" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CpgOvwS" Role="FromRole_Cpg_EFL" />
+                    <End EntitySet="EFLS" Role="ToRole_Cpg_EFL" />
+                </AssociationSet>
+                <AssociationSet Name="HistS_ScriptS" Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CpgHistS" Role="FromRole_Cpg_Script" />
+                    <End EntitySet="ScriptS" Role="ToRole_Cpg_Script" />
+                </AssociationSet>
+                <AssociationSet Name="FtrS_EFLS" Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_EFL" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CpgFtrS" Role="FromRole_Cpg_EFL" />
+                    <End EntitySet="EFLS" Role="ToRole_Cpg_EFL" />
+                </AssociationSet>
+                <AssociationSet Name="CpgS_ScriptS" Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CpgChgOfferS" Role="FromRole_Cpg_Script" />
+                    <End EntitySet="ScriptS" Role="ToRole_Cpg_Script" />
+                </AssociationSet>
+                <AssociationSet Name="CpgS_EFLS" Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_EFL" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CpgChgOfferS" Role="FromRole_Cpg_EFL" />
+                    <End EntitySet="EFLS" Role="ToRole_Cpg_EFL" />
+                </AssociationSet>
+                <AssociationSet Name="SearchS_ScriptS" Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CpgSearchS" Role="FromRole_Cpg_Script" />
+                    <End EntitySet="ScriptS" Role="ToRole_Cpg_Script" />
+                </AssociationSet>
+                <AssociationSet Name="HistS_EFLS" Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_EFL" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CpgHistS" Role="FromRole_Cpg_EFL" />
+                    <End EntitySet="EFLS" Role="ToRole_Cpg_EFL" />
+                </AssociationSet>
+                <AssociationSet Name="SearchS_EFLS" Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_EFL" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CpgSearchS" Role="FromRole_Cpg_EFL" />
+                    <End EntitySet="EFLS" Role="ToRole_Cpg_EFL" />
+                </AssociationSet>
+                <FunctionImport Name="AcceptCampaign" ReturnType="ZE_CCUX_CAMPAIGN_OVW_SRV.Return" EntitySet="ReturnCollection" m:HttpMethod="POST">
+                    <Parameter Name="Contract" Type="Edm.String" Mode="In" MaxLength="10" />
+                    <Parameter Name="LP_Code" Type="Edm.String" Mode="In" MaxLength="10" />
+                    <Parameter Name="LP_FirstName" Type="Edm.String" Mode="In" MaxLength="50" />
+                    <Parameter Name="LP_LastName" Type="Edm.String" Mode="In" MaxLength="50" />
+                    <Parameter Name="EndDate" Type="Edm.DateTime" Mode="In" Precision="0" />
+                    <Parameter Name="CampaignCode" Type="Edm.String" Mode="In" MaxLength="10" />
+                    <Parameter Name="PromoCode" Type="Edm.String" Mode="In" MaxLength="10" />
+                    <Parameter Name="OfferCode" Type="Edm.String" Mode="In" MaxLength="8" />
+                    <Parameter Name="OfferTitle" Type="Edm.String" Mode="In" MaxLength="60" />
+                    <Parameter Name="StartDate" Type="Edm.DateTime" Mode="In" Precision="0" />
+                    <Parameter Name="LP_RefID" Type="Edm.String" Mode="In" MaxLength="24" />
+                    <Parameter Name="Type" Type="Edm.String" Mode="In" MaxLength="2" />
+                    <Parameter Name="Brand" Type="Edm.String" Mode="In" MaxLength="4" />
+                    <Parameter Name="CA" Type="Edm.String" Mode="In" MaxLength="12" />
+                    <Parameter Name="PromoRank" Type="Edm.Int16" Mode="In" />
+                </FunctionImport>
+                <FunctionImport Name="RejectCampaign" ReturnType="ZE_CCUX_CAMPAIGN_OVW_SRV.Return" EntitySet="ReturnCollection" m:HttpMethod="POST">
+                    <Parameter Name="Contract" Type="Edm.String" Mode="In" MaxLength="10" />
+                    <Parameter Name="CA" Type="Edm.String" Mode="In" MaxLength="12" />
+                    <Parameter Name="DispoCode" Type="Edm.String" Mode="In" MaxLength="10" />
+                    <Parameter Name="Type" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Brand" Type="Edm.String" Mode="In" MaxLength="4" />
+                    <Parameter Name="PromoRank" Type="Edm.Int16" Mode="In" />
+                    <Parameter Name="OfferCode" Type="Edm.String" Mode="In" MaxLength="8" />
+                    <Parameter Name="PromoCode" Type="Edm.String" Mode="In" MaxLength="10" />
+                    <Parameter Name="CampaignCode" Type="Edm.String" Mode="In" MaxLength="10" />
+                </FunctionImport>
+                <FunctionImport Name="DeleteCampaign" ReturnType="ZE_CCUX_CAMPAIGN_OVW_SRV.Return" EntitySet="ReturnCollection" m:HttpMethod="POST" sap:action-for="ZE_CCUX_CAMPAIGN_OVW_SRV.PendSwap">
+                    <Parameter Name="ReqNumber" Type="Edm.String" Mode="In" MaxLength="30" />
+                    <Parameter Name="ReqName" Type="Edm.String" Mode="In" MaxLength="30" />
+                    <Parameter Name="Hist" Type="Edm.String" Mode="In" MaxLength="16" />
+                    <Parameter Name="iDoc" Type="Edm.String" Mode="In" MaxLength="16" />
+                    <Parameter Name="Type" Type="Edm.String" Mode="In" MaxLength="4" />
+                    <Parameter Name="Contract" Type="Edm.String" Mode="In" MaxLength="12" />
+                </FunctionImport>
+            </EntityContainer>
+            <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/$metadata" />
+            <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/$metadata" />
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
