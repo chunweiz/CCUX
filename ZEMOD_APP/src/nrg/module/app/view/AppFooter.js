@@ -39,6 +39,7 @@ sap.ui.define(
             this._oController.getView().setModel(this._oController.getOwnerComponent().getModel('comp-app'), 'oCompODataSvc');
             this._oController.getView().setModel(this._oController.getOwnerComponent().getModel('rhs-app'), 'oRHSODataSvc');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
+            this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterRHS');
         };
 
         AppFooter.prototype.updateFooterNotification = function (sBpNumber, sCaNumber) {
@@ -46,15 +47,57 @@ sap.ui.define(
         };
 
         AppFooter.prototype.updateFooterRHS = function (sBpNumber, sCaNumber) {
+            var bp = '0002473499',
+                ca = '000003040103',
+                sPath = '/FooterS',
+                aFilters = [];
+                aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: bp}));
+                aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: ca}));
+            var oModel = this._oController.getView().getModel('oRHSODataSvc'),
+                oRHSModel = this._oController.getView().getModel('oFooterRHS'),
+                oParameters;
 
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData) {
+                        var oCurrent = [];
+                        var iCurrentIndex = 0;
+                        oRHSModel.setData({Current:{ProdName: "None"}, Pending:{ProdName: "None"}, History:{ProdName: "None"}});
+                        for (var i = 0; i < oData.results.length; i++) {
+                            // Get all objects for Current
+                            if (oData.results[i].Type === 'C') {
+                                oCurrent.push(oData.results[i]);
+                                oCurrent[iCurrentIndex].Index = iCurrentIndex++;
+                            }
+                            // Get first object for Pending
+                            if (oData.results[i].Type === 'P' && oRHSModel.getProperty('/Pending/ProdName') === "None") {
+                                oRHSModel.setProperty('/Pending', oData.results[i]);
+                            }
+                            // Get first object for History
+                            if (oData.results[i].Type === 'H' && oRHSModel.getProperty('/History/ProdName') === "None") {
+                                oRHSModel.setProperty('/History', oData.results[i]);
+                            }
+                        }
+                        oRHSModel.setProperty('/Current', oCurrent);
+                        oRHSModel.setProperty('/Current/SelectedKey', 0);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
         };
 
         AppFooter.prototype.updateFooterCampaign = function (sCoNumber) {
             var co = '32253375',
-                oFilterTemplate = new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: co}),
                 sPath = '/CpgFtrS',
                 aFilters = [];
-                aFilters.push(oFilterTemplate);
+                aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: co}));
             var oModel = this._oController.getView().getModel('oCompODataSvc'),
                 oCampaignModel = this._oController.getView().getModel('oFooterCampaign'),
                 oParameters;
@@ -121,6 +164,10 @@ sap.ui.define(
         };
 
         AppFooter.prototype._onFooterCaretClick = function (oControlEvent) {
+            $('#' + this._oController.getView().byId('test5566').sId).click(function(){
+                console.log('hey');
+            });
+            
             var oView = this._oController.getView();
             oView.byId('appFtr').toggleStyleClass('uteAppFtr-open');
             this._getSubmenu().open();

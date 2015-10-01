@@ -40,7 +40,7 @@
                 display: flex;
 
                 & .nrgAppFtrDetails-notification {
-                    width: 551px;
+                    width: 520px;
                     height: 265px;
                     padding-right: 15px;
                     border-right: 1px solid @nrgColor-grey-light;
@@ -57,7 +57,7 @@
                 }
 
                 & .nrgAppFtrDetails-rhs {
-                    width: 270px;
+                    width: 285px;
                     height: 265px;
                     padding-left: 15px;
                     padding-right: 15px;
@@ -71,29 +71,47 @@
                     & .nrgAppFtrDetails-rhs-content {
                         margin-top: 10px;
                         font-size: @nrgFontSize-small;
-                    
-                        & .nrgAppFtrDetails-rhs-item {
-                            width: 239px;
-                            padding: 17px 0;
-                            border-bottom: 1px dashed @nrgColor-grey-dark;
-
-                            & .nrgAppFtrDetails-rhs-itemTitle {
-                                display: inline-block;
-                                color: @nrgColor-blueLink;
-                                width: 55px;
-                            }
+                        
+                        & .sapMScrollContScroll {
+                            width: 100%;
                             
-                            & .nrgAppFtrDetails-rhs-itemContent {
-                                display: inline-block;
+                            & .nrgAppFtrDetails-rhs-item {
+                                width: 100%;
+                                padding: 17px 0;
+                                border-bottom: 1px dashed @nrgColor-grey-dark;
+
+                                & .nrgAppFtrDetails-rhs-itemTitle {
+                                    display: inline-block;
+                                    color: @nrgColor-blueLink;
+                                    width: 55px;
+                                }
+                                
+                                & .nrgAppFtrDetails-rhs-itemContent {
+                                    display: inline-block;
+                                    width: 180px;
+                                    vertical-align: text-top;
+
+                                    // Dropdown
+                                    & .uteMDd-hdr {
+                                        border: none;
+                                        display: flex;
+
+                                        & .uteMDd-hdrContent {
+                                            padding: 0;
+                                            width: 160px;
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                 }
 
                 & .nrgAppFtrDetails-eligibleOffers {
-                    width: 270px;
+                    width: 285px;
                     height: 265px;
                     padding-left: 15px;
+                    padding-right: 15px;
 
                     & .nrgAppFtrDetails-eligibleOffers-title {
                         color: @nrgColor-blueLink;
@@ -104,57 +122,61 @@
                         margin-top: 10px;
                         font-size: @nrgFontSize-small;
 
-                        & .nrgAppFtrDetails-eligibleOffers-item {
-                            width: 255px;
-                            padding: 17px 0;
-                            border-bottom: 1px dashed @nrgColor-grey-dark;
+                        & .sapMScrollContScroll {
+                            width: 100%;
 
-                            & .nrgAppFtrDetails-eligibleOffers-itemTitle {
-                                display: inline-block;
-                                color: @nrgColor-blueLink;
-                                width: 55px;
-                            }
-
-                            & .nrgAppFtrDetails-eligibleOffers-itemContent {
-                                display: inline-block;
-                                width: 200px;
-                                vertical-align: text-top;
-                            }
-
-                            & .nrgAppFtrDetails-eligibleOffers-timePeriod {
+                            & .nrgAppFtrDetails-eligibleOffers-item {
                                 width: 100%;
-                                margin-top: 10px;
-                                display: flex;
-                                & .nrgAppFtrDetails-eligibleOffers-startDate {
-                                    flex-grow: 1;
-                                    display: flex;
-                                    & .nrgAppFtrDetails-eligibleOffers-startDateTitle {
-                                        margin-right: 5px;
-                                    }
-                                    & .nrgAppFtrDetails-eligibleOffers-startDateValue {
-                                        font-weight: @nrgFontWeight-bold;
-                                    }
+                                padding: 17px 0;
+                                border-bottom: 1px dashed @nrgColor-grey-dark;
+
+                                & .nrgAppFtrDetails-eligibleOffers-itemTitle {
+                                    display: inline-block;
+                                    color: @nrgColor-blueLink;
+                                    width: 55px;
                                 }
-                                & .nrgAppFtrDetails-eligibleOffers-endDate {
-                                    flex-grow: 1;
+
+                                & .nrgAppFtrDetails-eligibleOffers-itemContent {
+                                    display: inline-block;
+                                    width: 180px;
+                                    vertical-align: text-top;
+                                }
+
+                                & .nrgAppFtrDetails-eligibleOffers-timePeriod {
+                                    width: 100%;
+                                    margin-top: 10px;
                                     display: flex;
-                                    & .nrgAppFtrDetails-eligibleOffers-endDateTitle {
-                                        margin-right: 5px;
+                                    & .nrgAppFtrDetails-eligibleOffers-startDate {
+                                        flex-grow: 1;
+                                        display: flex;
+                                        & .nrgAppFtrDetails-eligibleOffers-startDateTitle {
+                                            margin-right: 5px;
+                                            color: @nrgColor-grey-lighter;
+                                        }
+                                        & .nrgAppFtrDetails-eligibleOffers-startDateValue {
+                                            font-weight: @nrgFontWeight-semiBold;
+                                        }
                                     }
-                                    & .nrgAppFtrDetails-eligibleOffers-endDateValue {
-                                        font-weight: @nrgFontWeight-bold;
+                                    & .nrgAppFtrDetails-eligibleOffers-endDate {
+                                        flex-grow: 1;
+                                        display: flex;
+                                        & .nrgAppFtrDetails-eligibleOffers-endDateTitle {
+                                            margin-right: 5px;
+                                            color: @nrgColor-grey-lighter;
+                                        }
+                                        & .nrgAppFtrDetails-eligibleOffers-endDateValue {
+                                            font-weight: @nrgFontWeight-semiBold;
+                                        }
                                     }
                                 }
                             }
                         }
-
                     }
                 }
 
                 & .nrgAppFtrDetails-campaignButton {
                     width: 269px;
                     height: 265px;
-                    padding-left: 10px;
                     padding-right: 10px;
                     border-right: 1px solid @nrgColor-grey-light;
                     display: flex;
