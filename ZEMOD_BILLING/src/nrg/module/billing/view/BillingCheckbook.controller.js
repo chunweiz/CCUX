@@ -99,6 +99,48 @@ sap.ui.define(
             }
         };
 
+        CustomController.prototype._formatFirstClotBlk = function (sBbpIndicator, bCurrent) {
+            if (sBbpIndicator === 'BBP') {
+                return false;
+            } else if (!bCurrent) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatFirstClotGrn = function (sBbpIndicator, bCurrent) {
+            if (sBbpIndicator === 'BBP') {
+                return false;
+            } else if (bCurrent) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatClotTTCurrent = function (sClot, sClr, bCurrent) {
+            if (sClot === 'BBP') {
+                return false;
+            } else if (sClr === 'RED') {
+                return false;
+            } else if (bCurrent) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatClotTTDppCncl = function (sClot, sClr, bCurrent) {
+            if (sClot === 'BBP') {
+                return false;
+            } else if (sClr === 'RED') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
         CustomController.prototype._formatNotBppBoolean = function (sCallout) {
             if (sCallout === 'BBP') {
                 return false;
@@ -311,6 +353,11 @@ sap.ui.define(
                                         oData.results[i].oCallOut.CallOuts[j].BBPBalAddr = oData.results[i].BBPBalAddr;
                                         oData.results[i].oCallOut.CallOuts[j].BBPDefBal = oData.results[i].BBPDefBal;
                                         oData.results[i].oCallOut.CallOuts[j].BBPDefBalTxt = oData.results[i].BBPDefBalTxt;
+                                    }
+                                    if (i === oData.results.length - 1) {
+                                        oData.results[i].oCallOut.CallOuts[j].bCurrent = true;
+                                    } else {
+                                        oData.results[i].oCallOut.CallOuts[j].bCurrent = false;
                                     }
                                 }
                                 if (oData.results[i].oCallOut.CallOuts.length === 1) {
