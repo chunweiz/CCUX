@@ -49,7 +49,8 @@ sap.ui.define(
                     invoice : true,  // true for invoice & false for consumption
                     invoiceFirstCard : true,  // true for first Card change, false for second card change for Invoice
                     consumptionFirstCard : true // true for first Card change, false for second card change for Consumption
-			    });
+			    }),
+                bInvoiceFirstCard = true;
             this._aSelectedComparisionCards = [];
             this.getView().setModel(oViewModel, "localModel");
             i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
@@ -91,7 +92,22 @@ sap.ui.define(
                         oBinding.sOperationMode = "Client";
                         oBinding.aAllKeys = oEvent.getSource().aKeys;
                         oBinding.filter(aFilters);
-
+                        if ((oTileContainer.getContent()) && (oTileContainer.getContent().length > 0)) {
+                            oTileContainer.getContent().map(function (item) {
+                                if (item) {
+                                    if (item.getBindingContext("comp-campaign").getProperty("Type") !== "C") {
+                                        if (bInvoiceFirstCard) {
+                                            that._changeSelectedObject(item, 0, true);
+                                            that._bindCard(item, 1);
+                                            bInvoiceFirstCard = false;
+                                        } else {
+                                            that._changeSelectedObject(item, 1, true);
+                                            that._bindCard(item, 2);
+                                        }
+                                    }
+                                }
+                            });
+                        }
                     } else {
                         oNoDataTag.removeStyleClass("nrgCamOff-hide");
                         oTileContainer.addStyleClass("nrgCamOff-hide");
@@ -155,14 +171,7 @@ sap.ui.define(
                 oSecondCardInvoice,
                 oFirstCardConsumption,
                 oSecondCardConsumption,
-                oTestModel = new JSONModel({
-                    CurrInvAmt : "85$",
-                    EstInvoice : "65$",
-                    EstDiff : "20$",
-                    EstcentsperkWh : "2kWh"
-			    }),
                 oSelectedObject = oEvent.getSource();
-            this.getView().setModel(oTestModel, 'oViewModel');
             if ((oViewModel) && (oViewModel.getProperty("/invoice"))) { // comparision is enabled for Invoice
                 if ((oViewModel) && (oViewModel.getProperty("/invoiceFirstCard"))) {
                     oViewModel.setProperty("/invoiceFirstCard", false);  // change it to false to show next product in second card
@@ -176,12 +185,12 @@ sap.ui.define(
             } else { // comparision is enabled for consumption
                 if ((oViewModel) && (oViewModel.getProperty("/consumptionFirstCard"))) {
                     this._changeSelectedObject(oSelectedObject, 0);
-                    this._bindCard(oSelectedObject, 1);
+                    this._bindCard(oSelectedObject, 3);
                     oViewModel.setProperty("/consumptionFirstCard", false);
 
                 } else {
                     this._changeSelectedObject(oSelectedObject, 0);
-                    this._bindCard(oSelectedObject, 1);
+                    this._bindCard(oSelectedObject, 4);
                     oViewModel.setProperty("/consumptionFirstCard", true);
 
                 }
@@ -200,23 +209,32 @@ sap.ui.define(
 		 * @param {sap.ui.base.Event} oEvent pattern match event
          * @private
 		 */
-        Controller.prototype._changeSelectedObject = function (item, index) {
+        Controller.prototype._changeSelectedObject = function (item, index, bFirstTime) {
             var oSelectedObject,
                 aCustomData;
-            if ((this._aSelectedComparisionCards) && (this._aSelectedComparisionCards.length === 2)) {// always assuming that selected cards will always be 2
-                oSelectedObject = this._aSelectedComparisionCards[index];
-                if (oSelectedObject) {
-                    aCustomData = oSelectedObject.getCustomData();
-                    if ((aCustomData) && (aCustomData.length > 0)) {
-                        aCustomData.map(function (item) {
+            if (!bFirstTime) {
+                if ((this._aSelectedComparisionCards) && (this._aSelectedComparisionCards.length > 1)) {// always assuming that selected cards will always be 2
+                    oSelectedObject = this._aSelectedComparisionCards[index];
+                    if (oSelectedObject) {
+                        aCustomData = oSelectedObject.getCustomData();
+                        if ((aCustomData) && (aCustomData.length > 0)) {
+                            aCustomData.map(function (item) {
 
-                        });
+                            });
+                        }
                     }
-
+                    this._aSelectedComparisionCards[index] = item;
+                    if (this._aSelectedComparisionCards[index]) {
+                        item.insertCustomData(new sap.ui.core.CustomData({key: "flag", value: "X", writeToDom : true}));
+                    }
+                }
+            } else {
+                if (!this._aSelectedComparisionCards) {
+                    this._aSelectedComparisionCards = [];
                 }
                 this._aSelectedComparisionCards[index] = item;
                 if (this._aSelectedComparisionCards[index]) {
-                    oSelectedObject.insertCustomData(new sap.ui.core.CustomData({key: "flag", value: "X", writeToDom : true}));
+                    item.insertCustomData(new sap.ui.core.CustomData({key: "flag", value: "X", writeToDom : true}));
                 }
             }
         };
@@ -233,7 +251,7 @@ sap.ui.define(
                 oFirstCardConsumption = this.getView().byId("idnrgCamOff-firstCardC"),
                 oSecondCardConsumption = this.getView().byId("idnrgCamOff-SecondCardC"),
                 oSelectedObject,
-                sPath = "/"; // object.getBindingContext().getPath() need to be assigned
+                sPath = object.getBindingContext("comp-campaign").getPath();// need to be assigned
             if (iCounter === 1) {
                 oSelectedObject = this.getView().byId("idnrgCamOff-firstCardI");
             } else if (iCounter === 2) {
@@ -244,7 +262,7 @@ sap.ui.define(
                 oSelectedObject = this.getView().byId("idnrgCamOff-SecondCardC");
             }
             oSelectedObject.bindElement({
-                model : "oViewModel",
+                model : "comp-campaign",
                 path : sPath
             });
         };
@@ -255,18 +273,40 @@ sap.ui.define(
 		 * @param {sap.ui.base.Event} oEvent pattern match event
          * @private
 		 */
-        Controller.prototype.onPressed = function (oEvent) {
+        Controller.prototype.onComparisionChanged = function (oEvent) {
             var aTabBarItems = oEvent.getSource().getContent(),
-                oViewModel = this.getView().getModel("localModel");
+                oViewModel = this.getView().getModel("localModel"),
+                bSelectedType = true,
+                that = this;
             aTabBarItems.map(function (item) {
                 if ((item.getSelected) && (item.getSelected())) {
                     if ((item.getKey()) && (item.getKey() ===  "Invoice")) {
+                        bSelectedType = true;
                         oViewModel.setProperty("/invoice", true);
                     } else {
+                        bSelectedType = false;
                         oViewModel.setProperty("/invoice", false);
                     }
                 }
             });
+            if (bSelectedType) {
+                this._aSelectedComparisionCards.map(function (item, index) {
+                    if (index === 0) {
+                        that._bindCard(item, 1);
+                    } else {
+                        that._bindCard(item, 2);
+                    }
+                });
+            } else {
+                this._aSelectedComparisionCards.map(function (item, index) {
+                    if (index === 0) {
+                        that._bindCard(item, 3);
+                    } else {
+                        that._bindCard(item, 4);
+                    }
+                });
+            }
+
         };
         /**
 		 * Binds the view based on the Tier selected like Proactive, Reactive, Save and Final Save
@@ -393,7 +433,32 @@ sap.ui.define(
         Controller.prototype.formatPromo = function (sPromoCode) {
             return "Promo: " + sPromoCode;
         };
-
+        /**
+		 * Formats the Invoice Amount in Campaign consumption
+		 *
+		 * @function
+		 * @param {sPromoCode} Promo Code value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.formatCurrentConsAmount = function (sCurInvoiceAmount, sSimulateInvoiceAmount) {
+            return sSimulateInvoiceAmount || sCurInvoiceAmount;
+        };
+        /**
+		 * Calculate the difference Amount
+		 *
+		 * @function
+		 * @param {sPromoCode} Promo Code value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.formatDifference = function (sCurInvoiceAmount, sEstimateInvoiceAmount) {
+            if ((sCurInvoiceAmount) && (sEstimateInvoiceAmount)) {
+                if ((parseFloat(sCurInvoiceAmount)) && (parseFloat(sEstimateInvoiceAmount))) {
+                    return parseFloat(sCurInvoiceAmount) - parseFloat(sEstimateInvoiceAmount);
+                }
+            }
+        };
         /**
 		 * Back to Overview page function
 		 *

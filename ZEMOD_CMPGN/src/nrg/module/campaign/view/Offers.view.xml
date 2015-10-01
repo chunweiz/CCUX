@@ -24,7 +24,7 @@
             <u:Tag class="nrgCmpOff-partDisplay">
                 <u:Tag class="nrgCmpOff-compare">
                     <u:Tag class="nrgCamOff-ttlC" text="{comp-i18n-campaign>nrgCmpOffCompareBy}" />
-                    <um:TabBar id="nrgTabBar" design="None" class="nrgCamOff-tabBar" select=".onPressed">
+                    <um:TabBar id="nrgTabBar" design="None" class="nrgCamOff-tabBar" select=".onComparisionChanged">
                         <um:TabBarItem key="Invoice" design="None"  selected="true" class="nrgCamOff-tabBarItem" id="idnrgCamoff-Invoice">
                             <u:Tag text="{comp-i18n-campaign>nrgCmpOffCpInvoice}" />
                         </um:TabBarItem>

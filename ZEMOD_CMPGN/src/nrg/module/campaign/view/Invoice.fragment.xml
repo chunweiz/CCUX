@@ -37,19 +37,21 @@
             <u:Tag class="nrgCamOff-mtx nrgCamOff-top">
                 <u:Tag class="nrgCamOff-mtxRow">
                     <u:Tag text="September Invoice" class="nrgCamOff-mtxFstCell"/>
-                    <u:Tag text="{oViewModel>CurrInvAmt}" class="nrgCamOff-mtxSndCell"/>
+                    <u:Tag text="{comp-campaign>CurrInvAmt}" class="nrgCamOff-mtxSndCell"/>
                 </u:Tag>
                 <u:Tag class="nrgCamOff-mtxRow">
                     <u:Tag text="September Invoice @ Campaign Estimation" class="nrgCamOff-mtxFstCell"/>
-                    <u:Tag text="{oViewModel>EstInvoice}" class="nrgCamOff-mtxSndCell"/>
+                    <u:Tag text="{comp-campaign>EstInvAmt}" class="nrgCamOff-mtxSndCell"/>
                 </u:Tag>
                 <u:Tag class="nrgCamOff-mtxRow">
                     <u:Tag text="Estimated Difference" class="nrgCamOff-mtxFstCell"/>
-                    <u:Tag text="{oViewModel>EstDiff}" class="nrgCamOff-mtxSndCell"/>
+                    <u:Tag text="{parts:[{path:'comp-campaign>CurrInvAmt'},{path:'comp-campaign>EstInvAmt'}],
+                                                    formatter:'.formatDifference'}"
+                           class="nrgCamOff-mtxSndCell"/>
                 </u:Tag>
                 <u:Tag class="nrgCamOff-mtxRow">
                     <u:Tag text="Estimated Cents per kWh" class="nrgCamOff-mtxFstCell"/>
-                    <u:Tag text="{oViewModel>EstcentsperkWh}" class="nrgCamOff-mtxSndCell">
+                    <u:Tag text="{comp-campaign>EstCents}" class="nrgCamOff-mtxSndCell">
                         <u:customData>
                              <core:CustomData key="flag"
                                                value="X"
