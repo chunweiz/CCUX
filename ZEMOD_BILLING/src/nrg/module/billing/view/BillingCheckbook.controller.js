@@ -99,8 +99,10 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype._formatFirstClotBlk = function (sBbpIndicator, bCurrent) {
+        CustomController.prototype._formatFirstClotBlk = function (sBbpIndicator, bCurrent, bRed) {
             if (sBbpIndicator === 'BBP') {
+                return false;
+            } else if (bRed) {
                 return false;
             } else if (!bCurrent) {
                 return true;
@@ -109,10 +111,24 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype._formatFirstClotGrn = function (sBbpIndicator, bCurrent) {
+        CustomController.prototype._formatFirstClotGrn = function (sBbpIndicator, bCurrent, bRed) {
             if (sBbpIndicator === 'BBP') {
                 return false;
             } else if (bCurrent) {
+                return true;
+            } else if (bRed) {
+                return false;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatFirstClotRed = function (sBbpIndicator, bCurrent, bRed) {
+            if (sBbpIndicator === 'BBP') {
+                return false;
+            } else if (bCurrent) {
+                return false;
+            } else if (bRed) {
                 return true;
             } else {
                 return false;
@@ -135,6 +151,18 @@ sap.ui.define(
             if (sClot === 'BBP') {
                 return false;
             } else if (sClr === 'RED') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatClotTTDInactive = function (sClot, sClr, bCurrent) {
+            if (sClot === 'BBP') {
+                return false;
+            } else if (sClr === 'RED') {
+                return false;
+            } else if (!bCurrent) {
                 return true;
             } else {
                 return false;
@@ -345,6 +373,7 @@ sap.ui.define(
                             oData.results[i].oCallOut = {};
                             if (oData.results[i].CallOut) {
                                 oData.results[i].oCallOut = JSON.parse(oData.results[i].CallOut);
+                                oData.results[i].bRed = false; //Preset to false;
                                 for (j = 0; j < oData.results[i].oCallOut.CallOuts.length; j = j + 1) {
                                     if (oData.results[i].oCallOut.CallOuts[j].CallOut === 'BBP') {
                                         oData.results[i].oCallOut.CallOuts[j].BBPAmt = oData.results[i].BBPAmt;
@@ -354,6 +383,13 @@ sap.ui.define(
                                         oData.results[i].oCallOut.CallOuts[j].BBPDefBal = oData.results[i].BBPDefBal;
                                         oData.results[i].oCallOut.CallOuts[j].BBPDefBalTxt = oData.results[i].BBPDefBalTxt;
                                     }
+
+                                    //Checking DPP red
+                                    if (oData.results[i].oCallOut.CallOuts[j].Color === 'RED') {
+                                        oData.results[i].bRed = true;
+                                    }
+
+                                    //Current flags
                                     if (i === oData.results.length - 1) {
                                         oData.results[i].oCallOut.CallOuts[j].bCurrent = true;
                                     } else {
