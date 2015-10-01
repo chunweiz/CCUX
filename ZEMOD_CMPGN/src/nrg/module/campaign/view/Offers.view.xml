@@ -24,27 +24,35 @@
             <u:Tag class="nrgCmpOff-partDisplay">
                 <u:Tag class="nrgCmpOff-compare">
                     <u:Tag class="nrgCamOff-ttlC" text="{comp-i18n-campaign>nrgCmpOffCompareBy}" />
-                    <um:TabBar id="nrgTabBar" design="None" class="nrgCamOff-tabBar">
-                        <um:TabBarItem key="Invoice" design="None" select=".onPressed" selected="true" class="nrgCamOff-tabBarItem">
+                    <um:TabBar id="nrgTabBar" design="None" class="nrgCamOff-tabBar" select=".onPressed">
+                        <um:TabBarItem key="Invoice" design="None"  selected="true" class="nrgCamOff-tabBarItem" id="idnrgCamoff-Invoice">
                             <u:Tag text="{comp-i18n-campaign>nrgCmpOffCpInvoice}" />
                         </um:TabBarItem>
                        <div class="nrgCmpOff-div"/>
-                        <um:TabBarItem key="consumption"  design="None" select=".onPressed" class="nrgCamOff-tabBarItem">
+                        <um:TabBarItem key="consumption"  design="None" class="nrgCamOff-tabBarItem" id="idnrgCamoff-Consum">
                             <u:Tag text="{comp-i18n-campaign>nrgCmpOffCpConsumption}" />
                         </um:TabBarItem>
                     </um:TabBar>
                 </u:Tag>
                 <um:TabPanel tabPanelFor="nrgTabBar" design="None" class="nrgCmpOff-tabPanel">
                     <um:TabPanelItem key="Invoice" class="nrgCmpOff-tabPanelItem">
-                        <u:Tag class="nrgCmpOff-display-invoice" id="idnrgCmpOffDisplay-1">
-                             <core:Fragment fragmentName="nrg.module.campaign.view.Invoice" type="XML" />
-                             <core:Fragment fragmentName="nrg.module.campaign.view.Invoice" type="XML" />
+                        <u:Tag class="nrgCmpOff-display" id="idnrgCmpOffDisplay-1">
+                            <u:Tag id="idnrgCamOff-firstCardI" class="nrgCamOff-firstCardI">
+                                <core:Fragment fragmentName="nrg.module.campaign.view.Invoice" type="XML" />
+                            </u:Tag>
+                            <u:Tag id="idnrgCamOff-SecondCardI" class="nrgCamOff-SecondCardI">
+                                <core:Fragment fragmentName="nrg.module.campaign.view.Invoice" type="XML" />
+                            </u:Tag>
                         </u:Tag>
                     </um:TabPanelItem>
                     <um:TabPanelItem key="consumption" class="nrgCmpOff-tabPanelItem">
-                        <u:Tag class="nrgCmpOff-display-consumption" id="idnrgCmpOffDisplay-2">
-                            <core:Fragment fragmentName="nrg.module.campaign.view.Cons" type="XML" />
-                            <core:Fragment fragmentName="nrg.module.campaign.view.Cons" type="XML" />
+                        <u:Tag class="nrgCmpOff-display" id="idnrgCmpOffDisplay-2">
+                            <u:Tag id="idnrgCamOff-firstCardC" class="nrgCamOff-firstCardC">
+                                <core:Fragment fragmentName="nrg.module.campaign.view.Cons" type="XML" />
+                            </u:Tag>
+                            <u:Tag id="idnrgCamOff-SecondCardC" class="nrgCamOff-SecondCardC">
+                                <core:Fragment fragmentName="nrg.module.campaign.view.Cons" type="XML" />
+                            </u:Tag>
                        </u:Tag>
                     </um:TabPanelItem>
                 </um:TabPanel>
@@ -53,7 +61,7 @@
             <u:Tag class="nrgCamOff-div" />
             <u:Tag class="nrgCamOff-searchArea">
                 <div class="nrgCamOff-dummy"/>
-                <u:Tag class="nrgCamOff-Dummydisc" text="Dummy offers text will come here Dummy offers text will come here Dummy offers text will come here Dummy offers text will come here" />
+                <u:Tag class="nrgCamOff-Dummydisc" text="Not Eligible For Selected Me Too Matrix offers" />
                 <m:SearchField width="30%" class="nrgCamOff-search" placeholder="Search Ex:Promo Code"/>
             </u:Tag>
             <u:Tag class="nrgCmpOff-partTiles">

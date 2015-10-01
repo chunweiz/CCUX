@@ -58,10 +58,11 @@ sap.ui.define(
             // Create a canvas with the center as starting point
             var oCanvas = d3.select('#' + this.getId())
                 .append('svg')
+                    .attr('viewBox', '0 0 600 400')
                     .attr('width', iWidth)
                     .attr('height', iHeight)
                     .append('g')
-                        .attr('transform', 'translate(' + [ iWidth / 2, iHeight / 2 ] + ')');
+                        .attr('transform', 'translate(' + [ 600 / 2, 400 / 2 ] + ')');
 
             // Outer ring
             var fnOuterRing = d3.svg.arc()
@@ -126,10 +127,10 @@ sap.ui.define(
                 endAngle: 0.4 - Math.PI
             };
 
-            // How many meter ticks?
+            // Number of  meter ticks
             var aNumOfTicksDomain = d3.range(iNumOfTicks);
 
-            // How many meter ticks should be selected based on kwh?
+            // Number of selected meter ticks based on kwh
             var fnKwh2Tick = d3.scale.linear()
                 .domain(aKwhDomain)
                 .range([0, iNumOfTicks - 1])
@@ -171,7 +172,7 @@ sap.ui.define(
             // Meter arc label text
             oCanvas.append('text').append('textPath')
                 .attr('class', 'tmUDGauge-meterArcLabel')
-                .attr('startOffset', '61%')
+                .attr('startOffset', '59%')
                 .attr('xlink:href', '#' + oCustomControl.getId() + '-meterArcLabelTextPath')
                 .attr('dy', '0.35em')
                 .text('TODAYS USAGE');

@@ -9,7 +9,11 @@
             font-weight: @nrgFontWeight-semiBold;
             display:inline-block;
     }
+    &   .nrgCamOff-top {
+            margin-Top:10px;
+    }
     & > .nrgCmpOff-partTiles {
+
             & > .nrgCmpOff-tiers{
                     width:10%;
                     float:left;
@@ -41,6 +45,7 @@
                     background-color: @nrgColor-grey-highlight;
                     color:@nrgColor-green-pale;
                     float:left;
+
                     &   > .nrgCamOff-btnInfo {
                             & > .nrgCamOff-ttlinfo  {
                                     display:inline-block;
@@ -138,40 +143,102 @@
                             font-size: @nrgFontSize-base;
                             font-weight: @nrgFontWeight-semiBold;
                     }
+                    &   .nrgCamOff-tabBar {
+                            margin-top: 4rem;
+                            &  > .nrgCamOff-tabBarItem {
+                                    margin-top: 10px;
+                                    color: @nrgColor-grey-inactive;
+                                    font-size: @nrgFontSize-small;
+                                    font-weight: @nrgFontWeight-regular;
+                            }
+                            & >  .nrgCamOff-tabBarItem > .uteMTabBarItem-int:checked + .uteMTabBarItem-content {
+                                    color: @nrgColor-grey-light;
+                            }
+                            &  > .nrgCamOff-tabBarItem > .uteMTabBarItem-int + .uteMTabBarItem-content {
+                                    color: @nrgColor-blueLink;
+                            }
+                    }
             }
-    }
-    &  .nrgCmpOff-display-invoice {
-            width:100%;
-            display:inline-block;
-    }
-    &  .nrgCmpOff-display-consumption {
-            width:100%;
-            display:inline-block;
-    }
-    &   .nrgCamOff-left {
-            margin-left:10px;
-    }
-    &   .nrgCamOff-top {
-            margin-Top:10px;
-    }
-    &   .nrgCamOff-mtx {
-                    font-size: @nrgFontSize-small;
-                    font-weight: @nrgFontWeight-semiBold;
+            &  > .nrgCmpOff-tabPanel {
+                    width:90%;
+                    background-color: transparent;
+                    & > .nrgCmpOff-tabPanelItem {
+                            background: transparent;
+                            width: 100%;
+                            & > .uteMTabPanelItem-content {
+                                 width: 100%;
+                            }
+                            &  .nrgCmpOff-display {
+                                    width:100%;
+                                    display:inline-block;
+                                    & > .nrgCamOff-firstCardI, .nrgCamOff-SecondCardI {
+                                            width:48%;
+                                            margin-left: 15px;
+                                            max-height: 15.5rem;
+                                            display:inline-block;
+                                            & > .nrgCamOffInvoiceF {
+                                                    width: 100%;
+                                                    height: 15.5rem;
+                                                    display:inline-block;
+                                                    background-color: @nrgColor-blue-pearl;
+                                                    padding: 5px 5px 5px 5px;
+                                                    &  .nrgCamOff-label {
+                                                        font-size: @nrgFontSize-small;
+                                                    }
+                                                    &  .uteTb-column-campaign {
+                                                        background-color: @nrgColor-grey-highlight;
+                                                        line-height: 20px;
+                                                    }
+                                                    &  .nrgCamOff-prcTbl {
+                                                            margin:5px 0px 0px 0px;
+                                                    }
+                                            }
+                                    }
+                                   & > .nrgCamOff-firstCardC, .nrgCamOff-SecondCardC {
+                                            width:48%;
+                                            margin-left: 15px;
+                                            max-height: 15.5rem;
+                                            display:inline-block;
+                                            &   .nrgCamOff-consF {
+                                                    width:100%;
+                                                    height: 15.5rem;
+                                                    display:inline-block;
+                                                    background-color: @nrgColor-blue-pearl;
+                                                    padding: 5px 5px 5px 5px;
+                                                    &  .nrgCamOff-label {
+                                                        font-size: @nrgFontSize-small;
+                                                    }
+                                                    &  .uteTb-column-campaign {
+                                                        background-color: @nrgColor-grey-highlight;
+                                                        line-height: 20px;
+                                                    }
+                                                    &  .nrgCamOff-prcTbl {
+                                                            margin:5px 0px 0px 0px;
+                                                    }
+                                            }
+                                   }
+                                    &   .nrgCamOff-mtx {
+                                            font-size: @nrgFontSize-small;
+                                            font-weight: @nrgFontWeight-semiBold;
 
-            &  > .nrgCamOff-mtxRow {
-                    border-bottom:  1px dashed @nrgColor-grey-highlight;
-                    line-height: 25px;
-                    & > .nrgCamOff-mtxFstCell {
-                            width:80%;
-                            display:inline-block;
-                    }
-                    & > .nrgCamOff-mtxSndCell {
-                            display:inline-block;
-                            font-size: @nrgFontSize-base;
-                            color: @nrgColor-green-highlight;
-                    }
-                    & > .nrgCamOff-mtxSndCell[data-flag="X"] {
-                            color: @nrgColor-orange-attention;
+                                            &  > .nrgCamOff-mtxRow {
+                                                    border-bottom:  1px dashed @nrgColor-grey-highlight;
+                                                    line-height: 25px;
+                                                    & > .nrgCamOff-mtxFstCell {
+                                                            width:80%;
+                                                            display:inline-block;
+                                                    }
+                                                    & > .nrgCamOff-mtxSndCell {
+                                                            display:inline-block;
+                                                            font-size: @nrgFontSize-base;
+                                                            color: @nrgColor-green-highlight;
+                                                    }
+                                                    & > .nrgCamOff-mtxSndCell[data-flag="X"] {
+                                                            color: @nrgColor-orange-attention;
+                                                    }
+                                            }
+                                    }
+                            }
                     }
             }
     }
@@ -183,6 +250,7 @@
             margin-left: 12%;
     }
     & > .nrgCamOff-searchArea {
+            max-height: 35px;
             &  > .nrgCamOff-search {
                     background: transparent;
                     border-bottom: 1px solid @nrgColor-grey-highlight;
@@ -208,84 +276,19 @@
             & > .nrgCamOff-Dummydisc {
                     display: table-cell;
                     width: 55%;
-                    font-size: @nrgFontSize-smaller;
+                    font-size: @nrgFontSize-small;
                     font-weight: @nrgFontWeight-semiBold;
                 	overflow: hidden;
+                    color: @nrgColor-orange-notice;
             }
             & > .nrgCamOff-dummy {
-                    width: 12%;
+                    width: 15%;
                 	display: table-cell;
             }
     }
     &   .nrgCamOvr-selectBtn {
             color: @nrgColor-blueLink;
             float:right;
-    }
-    &   .nrgCmpOff-tabPanel {
-            width:90%;
-            background-color: transparent;
-    }
-    &   .nrgCamOff-consF {
-            width:48%;
-            display:inline-block;
-            background-color: @nrgColor-blue-pearl;
-            margin-left: 15px;
-            padding: 5px 5px 5px 5px;
-            height: 15.5rem;
-            max-height: 15.5rem;
-
-            &  .nrgCamOff-label {
-                font-size: @nrgFontSize-small;
-            }
-            &  .uteTb-column-campaign {
-                background-color: @nrgColor-grey-highlight;
-                line-height: 20px;
-            }
-            &  .nrgCamOff-prcTbl {
-                    margin:5px 0px 0px 0px;
-            }
-    }
-    &   .nrgCamOffInvoiceF {
-            width:48%;
-            display:inline-block;
-            background-color: @nrgColor-blue-pearl;
-            margin-left: 15px;
-            padding: 5px 5px 5px 5px;
-            height: 15.5rem;
-            max-height: 15.5rem;
-
-            &  .nrgCamOff-label {
-                font-size: @nrgFontSize-small;
-            }
-            &  .uteTb-column-campaign {
-                background-color: @nrgColor-grey-highlight;
-                line-height: 20px;
-            }
-            &  .nrgCamOff-prcTbl {
-                    margin:5px 0px 0px 0px;
-            }
-    }
-    &   .nrgCmpOff-tabPanelItem {
-            background: transparent;
-            width: 100%;
-            & > .uteMTabPanelItem-content {
-                 width: 100%;
-            }
-    }
-    &   .nrgCamOff-tabBarItem {
-            margin-top: 10px;
-            color: @nrgColor-grey-inactive;
-            font-size: @nrgFontSize-small;
-            font-weight: @nrgFontWeight-regular;
-    }
-    &   .nrgCamOff-tabBar {
-            margin-top: 4rem;
-    }
-    &   .nrgCamOff-tabBarItem > .uteMTabBarItem-int:checked + .uteMTabBarItem-content {
-            color: @nrgColor-grey-light;
-    }
-    &   .nrgCamOff-tabBarItem > .uteMTabBarItem-int + .uteMTabBarItem-content {
-            color: @nrgColor-blueLink;
     }
     &  .nrgCamOff-hide {
             display:none;
