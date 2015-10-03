@@ -170,48 +170,57 @@ sap.ui.define(
                 oSecondCardInvoice,
                 oFirstCardConsumption,
                 oSecondCardConsumption,
-                oSelectedObject = oEvent.getSource();
+                oSelectedObject = oEvent.getSource(),
+                that = this;
             if ((oEvent.getSource()) && (oEvent.getSource().hasStyleClass("nrgCamOff-btnSelected"))) { // checking whether tile is already selected or not
-                jQuery.sap.log.info("Already selected so just ignore");
-            } else {
-                if ((oViewModel) && (oViewModel.getProperty("/invoice"))) { // comparision is enabled for Invoice
-                    if (oViewModel.getProperty("/pin")) {
-                        if (oViewModel.getProperty("/pinFirstCardInvoice")) {
-                            oViewModel.setProperty("/invoiceFirstCard", false); // Dont change first card if pin is set
-                        } else {
-                            oViewModel.setProperty("/invoiceFirstCard", true);// Dont change second card if pin is set
+                that._aSelectedComparisionCards.map(function (oSelectedContent) {
+                    var sofferCode1,
+                        sofferCode2;
+                    if (oSelectedContent) {
+                        sofferCode1 = oSelectedContent.getBindingContext("comp-campaign").getProperty("OfferCode") || "";
+                        sofferCode2 = oSelectedObject.getBindingContext("comp-campaign").getProperty("OfferCode") || "";
+                        if (sofferCode1 === sofferCode2) {
+                            return;
                         }
                     }
-                    if ((oViewModel) && (oViewModel.getProperty("/invoiceFirstCard"))) {
-                        oViewModel.setProperty("/invoiceFirstCard", false);  // change it to false to show next product in second card
-                        this._changeSelectedObject(oSelectedObject, 0);
-                        this._bindCard(oSelectedObject, 1);
+                });
+            }
+            if ((oViewModel) && (oViewModel.getProperty("/invoice"))) { // comparision is enabled for Invoice
+                if (oViewModel.getProperty("/pin")) {
+                    if (oViewModel.getProperty("/pinFirstCardInvoice")) {
+                        oViewModel.setProperty("/invoiceFirstCard", false); // Dont change first card if pin is set
                     } else {
-                        oViewModel.setProperty("/invoiceFirstCard", true);
-                        this._changeSelectedObject(oSelectedObject, 1);
-                        this._bindCard(oSelectedObject, 2);
-                    }
-                } else { // comparision is enabled for consumption
-                    if (oViewModel.getProperty("/pin")) {
-                        if (oViewModel.getProperty("/pinFirstCardConsumption")) {
-                            oViewModel.setProperty("/consumptionFirstCard", false); // Dont change first card if pin is set
-                        } else {
-                            oViewModel.setProperty("/consumptionFirstCard", true);// Dont change second card if pin is set
-                        }
-                    }
-                    if ((oViewModel) && (oViewModel.getProperty("/consumptionFirstCard"))) {
-                        this._changeSelectedObject(oSelectedObject, 0);
-                        this._bindCard(oSelectedObject, 3);
-                        oViewModel.setProperty("/consumptionFirstCard", false);
-
-                    } else {
-                        this._changeSelectedObject(oSelectedObject, 0);
-                        this._bindCard(oSelectedObject, 4);
-                        oViewModel.setProperty("/consumptionFirstCard", true);
+                        oViewModel.setProperty("/invoiceFirstCard", true);// Dont change second card if pin is set
                     }
                 }
-            }
+                if ((oViewModel) && (oViewModel.getProperty("/invoiceFirstCard"))) {
+                    oViewModel.setProperty("/invoiceFirstCard", false);  // change it to false to show next product in second card
+                    this._changeSelectedObject(oSelectedObject, 0);
+                    this._bindCard(oSelectedObject, 1);
+                } else {
+                    oViewModel.setProperty("/invoiceFirstCard", true);
+                    this._changeSelectedObject(oSelectedObject, 1);
+                    this._bindCard(oSelectedObject, 2);
+                }
+            } else { // comparision is enabled for consumption
+                if (oViewModel.getProperty("/pin")) {
+                    if (oViewModel.getProperty("/pinFirstCardConsumption")) {
+                        oViewModel.setProperty("/consumptionFirstCard", false); // Dont change first card if pin is set
+                    } else {
+                        oViewModel.setProperty("/consumptionFirstCard", true);// Dont change second card if pin is set
+                    }
+                }
+                if ((oViewModel) && (oViewModel.getProperty("/consumptionFirstCard"))) {
+                    this._changeSelectedObject(oSelectedObject, 0);
+                    this._bindCard(oSelectedObject, 3);
+                    oViewModel.setProperty("/consumptionFirstCard", false);
 
+                } else {
+                    this._changeSelectedObject(oSelectedObject, 0);
+                    this._bindCard(oSelectedObject, 4);
+                    oViewModel.setProperty("/consumptionFirstCard", true);
+                }
+            }
         };
         /**
 		 * Assign custom data to change the CSS based on that
