@@ -6,14 +6,18 @@
     xmlns:um="ute.ui.main"
     xmlns:l="sap.ui.commons.layout">
         <u:Tag class="nrgCamOff-consF">
-            <c:Label text="Work in Progress"
+            <c:Label text="{comp-campaign>OfferTitle}"
                      icon="sap-icon://nrg-icon/tag"
-                     class="nrgCamOff-top"  />
+                     class="nrgCamOff-top nrgCamOff-cardTitle"  />
             <um:Button press=".selectCampaign"
                        text="Select"
                        class="nrgCamOvr-selectBtn"
                        design="None">
             </um:button>
+            <um:Checkbox id="idnrgCamOffpin" class="custom" design="None" checked="false" select=".pinComparisionCard"/>
+            <um:Label labelFor="idnrgCamOffpin-intChk">
+               <core:Icon src="sap-icon://pushpin-off" class="icon" id="nrgCamOff-PinId"/>
+            </um:Label>
             <u:Table width="100%"
                 tableType="CampaignTable"
                 class="nrgCamOff-prcTbl">

@@ -48,7 +48,10 @@ sap.ui.define(
                 oViewModel = new JSONModel({
                     invoice : true,  // true for invoice & false for consumption
                     invoiceFirstCard : true,  // true for first Card change, false for second card change for Invoice
-                    consumptionFirstCard : true // true for first Card change, false for second card change for Consumption
+                    consumptionFirstCard : true, // true for first Card change, false for second card change for Consumption
+                    pinFirstCardInvoice : false,
+                    pinFirstCardConsumption : false,
+                    pin: false
 			    }),
                 bInvoiceFirstCard = true;
             this._aSelectedComparisionCards = [];
@@ -100,9 +103,11 @@ sap.ui.define(
                                             that._changeSelectedObject(item, 0, true);
                                             that._bindCard(item, 1);
                                             bInvoiceFirstCard = false;
+                                            oViewModel.setProperty("/invoiceFirstCard", false); // enable false to make sure next turn is second card in invoice
                                         } else {
                                             that._changeSelectedObject(item, 1, true);
                                             that._bindCard(item, 2);
+                                            oViewModel.setProperty("/invoiceFirstCard", true); // enable false to make sure next turn is first card in invoice
                                         }
                                     }
                                 }
@@ -112,12 +117,6 @@ sap.ui.define(
                         oNoDataTag.removeStyleClass("nrgCamOff-hide");
                         oTileContainer.addStyleClass("nrgCamOff-hide");
                     }
-                    aContent.map(function (oButtonItem) {
-                        var oButtonContext = oButtonItem.getBindingContext("comp-campaign"),
-                            type;
-                        type = oButtonContext.getProperty("Type");
-                        oButtonItem.insertCustomData(new sap.ui.core.CustomData({key: "flag", value: type, writeToDom : true}));
-                    });
                     that.getOwnerComponent().getCcuxApp().setOccupied(false);
                     oProactiveButton.addStyleClass("nrgCamOff-btn-selected");
                 };
@@ -172,35 +171,47 @@ sap.ui.define(
                 oFirstCardConsumption,
                 oSecondCardConsumption,
                 oSelectedObject = oEvent.getSource();
-            if ((oViewModel) && (oViewModel.getProperty("/invoice"))) { // comparision is enabled for Invoice
-                if ((oViewModel) && (oViewModel.getProperty("/invoiceFirstCard"))) {
-                    oViewModel.setProperty("/invoiceFirstCard", false);  // change it to false to show next product in second card
-                    this._changeSelectedObject(oSelectedObject, 0);
-                    this._bindCard(oSelectedObject, 1);
-                } else {
-                    oViewModel.setProperty("/invoiceFirstCard", true);
-                    this._changeSelectedObject(oSelectedObject, 1);
-                    this._bindCard(oSelectedObject, 2);
-                }
-            } else { // comparision is enabled for consumption
-                if ((oViewModel) && (oViewModel.getProperty("/consumptionFirstCard"))) {
-                    this._changeSelectedObject(oSelectedObject, 0);
-                    this._bindCard(oSelectedObject, 3);
-                    oViewModel.setProperty("/consumptionFirstCard", false);
+            if ((oEvent.getSource()) && (oEvent.getSource().hasStyleClass("nrgCamOff-btnSelected"))) { // checking whether tile is already selected or not
+                jQuery.sap.log.info("Already selected so just ignore");
+            } else {
+                if ((oViewModel) && (oViewModel.getProperty("/invoice"))) { // comparision is enabled for Invoice
+                    if (oViewModel.getProperty("/pin")) {
+                        if (oViewModel.getProperty("/pinFirstCardInvoice")) {
+                            oViewModel.setProperty("/invoiceFirstCard", false); // Dont change first card if pin is set
+                        } else {
+                            oViewModel.setProperty("/invoiceFirstCard", true);// Dont change second card if pin is set
+                        }
+                    }
+                    if ((oViewModel) && (oViewModel.getProperty("/invoiceFirstCard"))) {
+                        oViewModel.setProperty("/invoiceFirstCard", false);  // change it to false to show next product in second card
+                        this._changeSelectedObject(oSelectedObject, 0);
+                        this._bindCard(oSelectedObject, 1);
+                    } else {
+                        oViewModel.setProperty("/invoiceFirstCard", true);
+                        this._changeSelectedObject(oSelectedObject, 1);
+                        this._bindCard(oSelectedObject, 2);
+                    }
+                } else { // comparision is enabled for consumption
+                    if (oViewModel.getProperty("/pin")) {
+                        if (oViewModel.getProperty("/pinFirstCardConsumption")) {
+                            oViewModel.setProperty("/consumptionFirstCard", false); // Dont change first card if pin is set
+                        } else {
+                            oViewModel.setProperty("/consumptionFirstCard", true);// Dont change second card if pin is set
+                        }
+                    }
+                    if ((oViewModel) && (oViewModel.getProperty("/consumptionFirstCard"))) {
+                        this._changeSelectedObject(oSelectedObject, 0);
+                        this._bindCard(oSelectedObject, 3);
+                        oViewModel.setProperty("/consumptionFirstCard", false);
 
-                } else {
-                    this._changeSelectedObject(oSelectedObject, 0);
-                    this._bindCard(oSelectedObject, 4);
-                    oViewModel.setProperty("/consumptionFirstCard", true);
-
+                    } else {
+                        this._changeSelectedObject(oSelectedObject, 0);
+                        this._bindCard(oSelectedObject, 4);
+                        oViewModel.setProperty("/consumptionFirstCard", true);
+                    }
                 }
             }
-/*            sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
-            oContext = this.getView().getModel("comp-campaign").getContext(sPath);
-            sOfferCode = oContext.getProperty("OfferCode");
-            sStartDate = oContext.getProperty("StartDate");*/
-            //sDate = sPath.substring(sPath.lastIndexOf("=") + 1, sPath.lastIndexOf(")"));
-            //this.navTo("campaignchg", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, offercodeNum: sOfferCode, sDate : sDate});
+
         };
         /**
 		 * Assign custom data to change the CSS based on that
@@ -213,19 +224,15 @@ sap.ui.define(
             var oSelectedObject,
                 aCustomData;
             if (!bFirstTime) {
-                if ((this._aSelectedComparisionCards) && (this._aSelectedComparisionCards.length > 1)) {// always assuming that selected cards will always be 2
+                if ((this._aSelectedComparisionCards) && (this._aSelectedComparisionCards.length >= 1)) {// always assuming that selected cards will always be 2
                     oSelectedObject = this._aSelectedComparisionCards[index];
                     if (oSelectedObject) {
-                        aCustomData = oSelectedObject.getCustomData();
-                        if ((aCustomData) && (aCustomData.length > 0)) {
-                            aCustomData.map(function (item) {
-
-                            });
-                        }
+                        oSelectedObject.removeStyleClass("nrgCamOff-btnSelected");
+                        item.removeStyleClass("nrgCamOff-btnSelected");
                     }
                     this._aSelectedComparisionCards[index] = item;
                     if (this._aSelectedComparisionCards[index]) {
-                        item.insertCustomData(new sap.ui.core.CustomData({key: "flag", value: "X", writeToDom : true}));
+                        item.addStyleClass("nrgCamOff-btnSelected");
                     }
                 }
             } else {
@@ -234,7 +241,7 @@ sap.ui.define(
                 }
                 this._aSelectedComparisionCards[index] = item;
                 if (this._aSelectedComparisionCards[index]) {
-                    item.insertCustomData(new sap.ui.core.CustomData({key: "flag", value: "X", writeToDom : true}));
+                    item.addStyleClass("nrgCamOff-btnSelected");
                 }
             }
         };
@@ -277,7 +284,10 @@ sap.ui.define(
             var aTabBarItems = oEvent.getSource().getContent(),
                 oViewModel = this.getView().getModel("localModel"),
                 bSelectedType = true,
-                that = this;
+                that = this,
+                oIcon,
+                oCheckBox;
+            //myControl = this.byId(sap.ui.core.Fragment.createId("part1", "nrgCamOff-PinId"))
             aTabBarItems.map(function (item) {
                 if ((item.getSelected) && (item.getSelected())) {
                     if ((item.getKey()) && (item.getKey() ===  "Invoice")) {
@@ -293,18 +303,54 @@ sap.ui.define(
                 this._aSelectedComparisionCards.map(function (item, index) {
                     if (index === 0) {
                         that._bindCard(item, 1);
+                        oViewModel.setProperty("/invoiceFirstCard", false);
                     } else {
                         that._bindCard(item, 2);
+                        oViewModel.setProperty("/invoiceFirstCard", true);
                     }
                 });
+                // Convert pinning of cards also if needed
+                if (oViewModel.getProperty("/pin")) {
+                    if (oViewModel.getProperty("/pinFirstCardConsumption")) {
+                        oIcon = that.byId(sap.ui.core.Fragment.createId("Invoice1", "nrgCamOff-PinId"));
+                        oCheckBox = that.byId(sap.ui.core.Fragment.createId("Invoice1", "idnrgCamOffpin"));
+                        oIcon.setSrc("sap-icon://pushpin-on");
+                        oCheckBox.setChecked(true);
+                        oViewModel.setProperty("/pinFirstCardInvoice", true);
+                    } else {
+                        oIcon = that.byId(sap.ui.core.Fragment.createId("Invoice2", "nrgCamOff-PinId"));
+                        oCheckBox = that.byId(sap.ui.core.Fragment.createId("Invoice2", "idnrgCamOffpin"));
+                        oIcon.setSrc("sap-icon://pushpin-on");
+                        oCheckBox.setChecked(true);
+                        oViewModel.setProperty("/pinFirstCardInvoice", false);
+                    }
+                }
             } else {
                 this._aSelectedComparisionCards.map(function (item, index) {
                     if (index === 0) {
                         that._bindCard(item, 3);
+                        oViewModel.setProperty("/consumptionFirstCard", false);
                     } else {
                         that._bindCard(item, 4);
+                        oViewModel.setProperty("/consumptionFirstCard", true);
                     }
                 });
+                // Convert pinning of cards also if needed
+                if (oViewModel.getProperty("/pin")) {
+                    if (oViewModel.getProperty("/pinFirstCardInvoice")) {
+                        oIcon = that.byId(sap.ui.core.Fragment.createId("Cons1", "nrgCamOff-PinId"));
+                        oCheckBox = that.byId(sap.ui.core.Fragment.createId("Cons1", "idnrgCamOffpin"));
+                        oIcon.setSrc("sap-icon://pushpin-on");
+                        oCheckBox.setChecked(true);
+                        oViewModel.setProperty("/pinFirstCardConsumption", true);
+                    } else {
+                        oIcon = that.byId(sap.ui.core.Fragment.createId("Cons2", "nrgCamOff-PinId"));
+                        oCheckBox = that.byId(sap.ui.core.Fragment.createId("Cons2", "idnrgCamOffpin"));
+                        oIcon.setSrc("sap-icon://pushpin-on");
+                        oCheckBox.setChecked(true);
+                        oViewModel.setProperty("/pinFirstCardConsumption", false);
+                    }
+                }
             }
 
         };
@@ -367,35 +413,25 @@ sap.ui.define(
             oTileTemplate = this._oTileTemplate;
             sCurrentPath = i18NModel.getProperty("nrgCpgChangeOffSet");
             oTileContainer.getBinding("content").filter(aFilters);
-            this.getOwnerComponent().getCcuxApp().setOccupied(false);
-            // Handler function for tile container
-/*            fnRecievedHandler = function (oEvent) {
-                var aContent = oTileContainer.getContent();
-                if ((aContent !== undefined) && (aContent.length > 0)) {
-                    oNoDataTag.addStyleClass("nrgCamOff-hide");
-                    oTileContainer.removeStyleClass("nrgCamOff-hide");
-                } else {
-                    oNoDataTag.removeStyleClass("nrgCamOff-hide");
-                    oTileContainer.addStyleClass("nrgCamOff-hide");
-                }
-                aContent.map(function (oButtonItem) {
-                    var oButtonContext = oButtonItem.getBindingContext("comp-campaign"),
-                        type;
-                    type = oButtonContext.getProperty("Type");
-                    oButtonItem.insertCustomData(new sap.ui.core.CustomData({key: "flag", value: type, writeToDom : true}));
-
+            if ((oTileContainer.getContent()) && (oTileContainer.getContent().length > 0)) {
+                oTileContainer.getContent().map(function (oItem) {
+                    if (oItem) {
+                        that._aSelectedComparisionCards.map(function (oSelectedContent) {
+                            var sofferCode1,
+                                sofferCode2;
+                            if (oSelectedContent) {
+                                sofferCode1 = oSelectedContent.getBindingContext("comp-campaign").getProperty("OfferCode") || "";
+                                sofferCode2 = oItem.getBindingContext("comp-campaign").getProperty("OfferCode") || "";
+                                if (sofferCode1 === sofferCode2) {
+                                    oItem.addStyleClass("nrgCamOff-btnSelected");
+                                    oSelectedContent = oItem;
+                                }
+                            }
+                        });
+                    }
                 });
-                that.getOwnerComponent().getCcuxApp().setOccupied(false);
-            };*/
-/*            mParameters = {
-                model : "comp-campaign",
-                path : sCurrentPath,
-                template : oTileTemplate,
-                filters : aFilters,
-                parameters : {expand: "EFLs"},
-                events: {dataReceived : fnRecievedHandler}
-            };
-            oTileContainer.bindAggregation("content", mParameters);*/
+            }
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
         };
 
         /**
@@ -421,7 +457,101 @@ sap.ui.define(
         Controller.prototype.formatCancelFee = function (sCancellationFee, sIncentive) {
             return "Canc: " + sCancellationFee + " / " + "Inc: " + sIncentive;
         };
-
+        /**
+		 * Pin the comparision cards
+		 *
+		 * @function
+		 * @param {sap.ui.base.Event} oEvent pattern
+		 *
+		 */
+        Controller.prototype.pinComparisionCard = function (oEvent) {
+            var oSelectedCheckBox = oEvent.getSource(),
+                oIcon,
+                that = this,
+                oSelectedCardContext,
+                sSelectedOfferCode,
+                oViewModel = this.getView().getModel("localModel"),
+                bPinSelected = oViewModel.getProperty("/pin");
+            if ((oSelectedCheckBox) && (oSelectedCheckBox.getChecked())) { // check box is selected
+                if (bPinSelected) { // if Pin is already selected for other card
+                    oSelectedCheckBox.setChecked(false);
+                    ute.ui.main.Popup.Alert({
+                        title: 'Information',
+                        message: 'Only one Pin at a time'
+                    });
+                } else { // if pin is not already selected
+                    oViewModel.setProperty("/pin", true);
+                    oSelectedCardContext = oSelectedCheckBox.getBindingContext("comp-campaign");
+                    sSelectedOfferCode = oSelectedCardContext.getProperty("OfferCode");
+                    that._aSelectedComparisionCards.map(function (oSelectedContent, index) {
+                        var oContext,
+                            sOfferCode;
+                        if (oSelectedContent) {
+                            oContext = oSelectedContent.getBindingContext("comp-campaign");
+                            if (oContext) {
+                                sOfferCode = oContext.getProperty("OfferCode");
+                                if (sSelectedOfferCode === sOfferCode) {
+                                    if (oViewModel.getProperty("/invoice")) {
+                                        if (index === 0) { //if First Card and Invoice
+                                            oViewModel.setProperty("/pinFirstCardInvoice", true);
+                                            oIcon = that.byId(sap.ui.core.Fragment.createId("Invoice1", "nrgCamOff-PinId"));
+                                            oIcon.setSrc("sap-icon://pushpin-on");
+                                        } else { //if Second Card and invoice
+                                            oViewModel.setProperty("/pinFirstCardInvoice", false);
+                                            oIcon = that.byId(sap.ui.core.Fragment.createId("Invoice2", "nrgCamOff-PinId"));
+                                            oIcon.setSrc("sap-icon://pushpin-on");
+                                        }
+                                    } else {
+                                        if (index === 0) {
+                                            oViewModel.setProperty("/pinFirstCardConsumption", true);
+                                            oIcon = that.byId(sap.ui.core.Fragment.createId("Cons1", "nrgCamOff-PinId"));
+                                            oIcon.setSrc("sap-icon://pushpin-on");
+                                        } else { //if Second Card and invoice
+                                            oViewModel.setProperty("/pinFirstCardConsumption", false);
+                                            oIcon = that.byId(sap.ui.core.Fragment.createId("Cons2", "nrgCamOff-PinId"));
+                                            oIcon.setSrc("sap-icon://pushpin-on");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            } else if ((oSelectedCheckBox) && (!oSelectedCheckBox.getChecked())) { // check box is de-selected
+                oViewModel.setProperty("/pin", false);
+                oSelectedCardContext = oSelectedCheckBox.getBindingContext("comp-campaign");
+                sSelectedOfferCode = oSelectedCardContext.getProperty("OfferCode");
+                that._aSelectedComparisionCards.map(function (oSelectedContent, index) {
+                    var oContext,
+                        sOfferCode;
+                    if (oSelectedContent) {
+                        oContext = oSelectedContent.getBindingContext("comp-campaign");
+                        if (oContext) {
+                            sOfferCode = oContext.getProperty("OfferCode");
+                            if (sSelectedOfferCode === sOfferCode) {
+                                if (oViewModel.getProperty("/invoice")) {
+                                    if (index === 0) { //if First Card and Invoice
+                                        oIcon = that.byId(sap.ui.core.Fragment.createId("Invoice1", "nrgCamOff-PinId"));
+                                        oIcon.setSrc("sap-icon://pushpin-off");
+                                    } else { //if Second Card and invoice
+                                        oIcon = that.byId(sap.ui.core.Fragment.createId("Invoice2", "nrgCamOff-PinId"));
+                                        oIcon.setSrc("sap-icon://pushpin-off");
+                                    }
+                                } else {
+                                    if (index === 0) {
+                                        oIcon = that.byId(sap.ui.core.Fragment.createId("Cons1", "nrgCamOff-PinId"));
+                                        oIcon.setSrc("sap-icon://pushpin-off");
+                                    } else { //if Second Card and invoice
+                                        oIcon = that.byId(sap.ui.core.Fragment.createId("Cons2", "nrgCamOff-PinId"));
+                                        oIcon.setSrc("sap-icon://pushpin-off");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        };
         /**
 		 * Formats the Promo Code binding value
 		 *

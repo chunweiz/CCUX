@@ -38,20 +38,20 @@
                     <um:TabPanelItem key="Invoice" class="nrgCmpOff-tabPanelItem">
                         <u:Tag class="nrgCmpOff-display" id="idnrgCmpOffDisplay-1">
                             <u:Tag id="idnrgCamOff-firstCardI" class="nrgCamOff-firstCardI">
-                                <core:Fragment fragmentName="nrg.module.campaign.view.Invoice" type="XML" />
+                                <core:Fragment fragmentName="nrg.module.campaign.view.Invoice" id="Invoice1" type="XML" />
                             </u:Tag>
                             <u:Tag id="idnrgCamOff-SecondCardI" class="nrgCamOff-SecondCardI">
-                                <core:Fragment fragmentName="nrg.module.campaign.view.Invoice" type="XML" />
+                                <core:Fragment fragmentName="nrg.module.campaign.view.Invoice" id="Invoice2" type="XML" />
                             </u:Tag>
                         </u:Tag>
                     </um:TabPanelItem>
                     <um:TabPanelItem key="consumption" class="nrgCmpOff-tabPanelItem">
                         <u:Tag class="nrgCmpOff-display" id="idnrgCmpOffDisplay-2">
                             <u:Tag id="idnrgCamOff-firstCardC" class="nrgCamOff-firstCardC">
-                                <core:Fragment fragmentName="nrg.module.campaign.view.Cons" type="XML" />
+                                <core:Fragment fragmentName="nrg.module.campaign.view.Cons" id="Cons1" type="XML" />
                             </u:Tag>
                             <u:Tag id="idnrgCamOff-SecondCardC" class="nrgCamOff-SecondCardC">
-                                <core:Fragment fragmentName="nrg.module.campaign.view.Cons" type="XML" />
+                                <core:Fragment fragmentName="nrg.module.campaign.view.Cons" id="Cons2" type="XML" />
                             </u:Tag>
                        </u:Tag>
                     </um:TabPanelItem>
