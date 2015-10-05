@@ -100,14 +100,8 @@ sap.ui.define(
             var iMinUsageDomain = iMinUsage - (iMinUsage % iUsageTickSize) - iUsageTickSize;
             iMinUsageDomain = iMinUsageDomain < 0 ? 0 : iMinUsageDomain;
 
-            console.log(iMaxUsageDomain);
-            console.log(iMinUsageDomain);
-
             var fnScaleUsage = d3.scale.linear()
-                .domain([
-                    0,
-                    iMaxUsageDomain
-                ])
+                .domain([iMinUsageDomain, iMaxUsageDomain])
                 .range([iHeight, 0]);
 
             // Create a canvas with margin
@@ -140,7 +134,7 @@ sap.ui.define(
             var fnYAxisUsage = d3.svg.axis()
                 .scale(fnScaleUsage)
                 .orient('left')
-                .ticks(Math.floor(iMaxUsage / iUsageTickSize) + 1)
+                .ticks(Math.floor((iMaxUsage - iMinUsage) / iUsageTickSize) + 1)
                 .tickFormat(d3.format('d'));
 
             this._oCanvas.append('g')
@@ -163,7 +157,7 @@ sap.ui.define(
             // Y grid
             this._oCanvas.append('g')
                 .selectAll('line')
-                .data(d3.range(0, iMaxUsage + (iUsageTickSize - (iMaxUsage % iUsageTickSize)), iUsageTickSize))
+                .data(d3.range(iMinUsageDomain, iMaxUsageDomain, iUsageTickSize))
                 .enter()
                 .append('line')
                     .attr('class', 'tmAVDChart-YGrid')
