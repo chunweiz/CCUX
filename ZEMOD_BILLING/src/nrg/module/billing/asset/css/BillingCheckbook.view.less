@@ -420,32 +420,44 @@
     }
 }
 
-.nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-LiteUpTooltip{
-    color: @nrgColor-grey-highlight;
-    font-size: @nrgFontSize-small;
-    font-weight: @nrgFontWeight-semiBold;
+.nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip{
+    & > div > div > div{
+        padding: 2px;
+        text-align: center;
+    }
 
-    & > div{
+    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-ltUp{
+        color: @nrgColor-grey-highlight;
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
         border: 1px @nrgColor-grey-highlight solid;
     }
 
-    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-LiteUpTooltip-Title{
+    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-ltUp .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-Title{
         border-bottom: 1px @nrgColor-grey-highlight solid;
     }
 
-    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-LiteUpTooltip-Link{
+    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-ltUp .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-Link{
         color: @nrgColor-blue-link;
         text-decoration: underline;
         padding: 0px;
         margin: 0px;
     }
 
-    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-LiteUpTooltip-Link div{
+    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-ltUp .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip div{
         padding: 2px;
     }
 
-    & > div > div > div{
-        padding: 2px;
-        text-align: center;
+    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst{
+        color: @nrgColor-grey-dark;
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        border: 1px @nrgColor-grey-dark solid;
+        border-radius: 2px;
+        background: @nrgColor-blue-pearl;
     }
+}
+
+.uteCommonsTooltip.nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-LiteUpTooltip{
+    //background: red;
 }

@@ -51,8 +51,16 @@ sap.ui.define(
 
         /*****************************************************************************************************************************************************/
         //Formatter Functions
-        CustomController.prototype._formatBool_LPhyperLink = function (sIndicator) {
-            if (sIndicator === 'LP') {
+        CustomController.prototype._formatBoolHyperLink = function (sIndicator) {
+            if (sIndicator) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatBoolDP = function (sIndicator) {
+            if (sIndicator === 'DP') {
                 return true;
             } else {
                 return false;
