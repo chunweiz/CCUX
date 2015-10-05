@@ -1,0 +1,57 @@
+/*global sap*/
+
+sap.ui.define(
+    [
+        'sap/ui/core/mvc/Controller',
+        'sap/ui/model/json/JSONModel'
+    ],
+
+    function (Controller, JSONModel) {
+        'use strict';
+
+        var CustomController = Controller.extend('test.tm.ze_ccux_ctrl.view.AverageBillDetails');
+
+        CustomController.prototype.onInit = function() {
+            var sUrl = jQuery.sap.getModulePath('test.tm.ze_ccux_ctrl.view.control.AverageBillDetailsChart', '.css');
+            jQuery.sap.includeStyleSheet(sUrl);
+        };
+
+        CustomController.prototype.onBeforeRendering = function() {
+            this.getView().byId('chart').setDataModel(new JSONModel({
+                data: [
+                    { usageDate: '12/01/2015', usage: 1332 },
+                    { usageDate: '11/01/2015', usage: 1450 },
+                    { usageDate: '10/01/2015', usage: 1280 },
+                    { usageDate: '09/01/2015', usage: 1390 },
+                    { usageDate: '08/01/2015', usage: 1420 },
+                    { usageDate: '07/01/2015', usage: 1380 },
+                    { usageDate: '06/01/2015', usage: 1400 },
+                    { usageDate: '05/01/2015', usage: 1300 },
+
+                    { usageDate: '12/01/2014', usage: 1280 },
+                    { usageDate: '11/01/2014', usage: 1280 },
+                    { usageDate: '10/01/2014', usage: 1280 },
+                    { usageDate: '09/01/2014', usage: 1280 },
+                    { usageDate: '08/01/2014', usage: 1280 },
+                    { usageDate: '07/01/2014', usage: 1280 },
+                    { usageDate: '06/01/2014', usage: 1280 },
+                    { usageDate: '05/01/2014', usage: 1280 },
+                    { usageDate: '04/01/2014', usage: 1280 },
+                    { usageDate: '03/01/2014', usage: 1280 },
+                    { usageDate: '02/01/2014', usage: 1280 },
+                    { usageDate: '01/01/2014', usage: 1280 },
+
+                    { usageDate: '07/01/2013', usage: 1380 },
+                    { usageDate: '06/01/2013', usage: 1380 },
+                    { usageDate: '05/01/2013', usage: 1380 },
+                    { usageDate: '04/01/2013', usage: 1380 },
+                    { usageDate: '03/01/2013', usage: 1380 },
+                    { usageDate: '02/01/2013', usage: 1380 },
+                    { usageDate: '01/01/2013', usage: 1380 }
+                ]
+            }));
+        };
+
+        return CustomController;
+    }
+);
