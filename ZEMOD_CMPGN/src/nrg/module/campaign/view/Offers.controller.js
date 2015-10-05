@@ -287,15 +287,49 @@ sap.ui.define(
                 oFirstCardConsumption = this.getView().byId("idnrgCamOff-firstCardC"),
                 oSecondCardConsumption = this.getView().byId("idnrgCamOff-SecondCardC"),
                 oSelectedObject,
-                sPath = object.getBindingContext("comp-campaign").getPath();// need to be assigned
+                sPath = object.getBindingContext("comp-campaign").getPath(),
+                aEFLDatapaths,
+                iCount,
+                aResults = [],
+                oTemplateModel = new JSONModel(),
+                that = this,
+                oTemplateView,
+                oTableTag,
+                oModel = this.getOwnerComponent().getModel('comp-campaign');// need to be assigned
             if (iCounter === 1) {
                 oSelectedObject = this.getView().byId("idnrgCamOff-firstCardI");
+                oTableTag = that.byId(sap.ui.core.Fragment.createId("Invoice1", "idnrgCamOffPriceT"));
             } else if (iCounter === 2) {
                 oSelectedObject = this.getView().byId("idnrgCamOff-SecondCardI");
+                oTableTag = that.byId(sap.ui.core.Fragment.createId("Invoice2", "idnrgCamOffPriceT"));
             } else if (iCounter === 3) {
                 oSelectedObject = this.getView().byId("idnrgCamOff-firstCardC");
+                oTableTag = that.byId(sap.ui.core.Fragment.createId("Cons1", "idnrgCamOffPriceT"));
             } else if (iCounter === 4) {
                 oSelectedObject = this.getView().byId("idnrgCamOff-SecondCardC");
+                oTableTag = that.byId(sap.ui.core.Fragment.createId("Cons2", "idnrgCamOffPriceT"));
+            }
+           // aContent[0].addStyleClass("nrgCamHisBut-Selected");
+            aEFLDatapaths = oModel.getProperty(sPath + "/EFLs");
+            if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
+                for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
+                    aResults.push(oModel.getProperty("/" + aEFLDatapaths[iCount]));
+                }
+                oTemplateModel.setData(that.convertEFLJson(aResults));
+                that._oEFLModel = oTemplateModel;
+                oTemplateView = sap.ui.view({
+                    preprocessors: {
+                        xml: {
+                            models: {
+                                tmpl : that._oEFLModel
+                            }
+                        }
+                    },
+                    type: sap.ui.core.mvc.ViewType.XML,
+                    viewName: "nrg.module.campaign.view.EFLData"
+                });
+                oTableTag.removeAllAggregation("content");
+                oTableTag.addContent(oTemplateView);
             }
             oSelectedObject.bindElement({
                 model : "comp-campaign",
@@ -494,6 +528,7 @@ sap.ui.define(
                 oTileTemplate = this.getView().byId("idnrgCamOffBt").clone(),
                 mParameters,
                 oSorter = new sap.ui.model.Sorter("Type", false);
+
             oProactiveButton.removeStyleClass("nrgCamOff-btn-selected");
             oReactiveButton.removeStyleClass("nrgCamOff-btn-selected");
             oSaveButton.removeStyleClass("nrgCamOff-btn-selected");
@@ -519,6 +554,7 @@ sap.ui.define(
                         oBinding.aAllKeys = oEvent.getSource().aKeys;
                         oBinding.filter(aFilters, "Application");
                         oSearchField.setValue("");
+                        that.getOwnerComponent().getCcuxApp().setOccupied(false);
                     } else {
                         oNoDataTag.removeStyleClass("nrgCamOff-hide");
                         oTileContainer.addStyleClass("nrgCamOff-hide");
@@ -556,26 +592,49 @@ sap.ui.define(
                 sOfferCode,
                 oContext,
                 sLPCode,
-                fnhandleDialogClosed;
+                fnhandleDialogClosed,
+                oViewModel,
+                sPromo,
+                sLPReqName,
+                that = this;
+            that.getOwnerComponent().getCcuxApp().setOccupied(true);
             oContext = oEvent.getSource().getBindingContext("comp-campaign");
             sPath = oContext.getPath();
+            sDate = sPath.substring(sPath.lastIndexOf("=") + 1, sPath.lastIndexOf(")"));
             sOfferCode = oContext.getProperty("OfferCode");
             sLPCode = oContext.getProperty("LPcode");
+            sPromo = oContext.getProperty("Promo");
+            sLPReqName = oContext.getProperty("LPReqName");
+            oViewModel = new JSONModel({
+                lprefId : "",
+                showNames : (sLPReqName === "X"),
+                firstName : "",
+                lastName : "",
+                OfferCode : sOfferCode,
+                Date : sDate,
+                LPCode: sLPCode,
+                Promo : sPromo,
+                message : ""
+            });
             fnhandleDialogClosed = function (oEvent) {
             };
             if (sLPCode) {
                 if (!this._oDialogFragment) {
-                    this._oDialogFragment = sap.ui.xmlfragment("LoyalityFragment", "nrg.module.campaign.view.Loyality", this);
+                    this._oDialogFragment = sap.ui.xmlfragment("LoyalityFragment", "nrg.module.campaign.view.Loyalty", this);
                 }
+                this._oDialogFragment.setModel(oViewModel, "oLoyalModel");
                 if (!this._oLoyalityDialog) {
                     this._oLoyalityDialog = new ute.ui.main.Popup.create({
-                        title: 'Loyality Information',
+                        title: 'Loyalty Information',
                         close: fnhandleDialogClosed,
                         content: this._oDialogFragment
                     });
                 }
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                this._oLoyalityDialog.open();
             } else {
-                sDate = sPath.substring(sPath.lastIndexOf("=") + 1, sPath.lastIndexOf(")"));
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                that.getOwnerComponent().setModel(oViewModel, 'comp-campLocal');
                 this.navTo("campaignchg", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, offercodeNum: sOfferCode, sDate : sDate});
             }
         };
@@ -706,7 +765,12 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.formatCurrentConsAmount = function (sCurInvoiceAmount, sSimulateInvoiceAmount) {
-            return sSimulateInvoiceAmount || sCurInvoiceAmount;
+            if (sSimulateInvoiceAmount || sCurInvoiceAmount) {
+                return sSimulateInvoiceAmount || sCurInvoiceAmount;
+            } else {
+                return "N/A";
+            }
+
         };
         /**
 		 * Calculate the difference Amount
@@ -721,7 +785,69 @@ sap.ui.define(
                 if ((parseFloat(sCurInvoiceAmount)) && (parseFloat(sEstimateInvoiceAmount))) {
                     return parseFloat(sCurInvoiceAmount) - parseFloat(sEstimateInvoiceAmount);
                 }
+            } else {
+                return "N/A";
             }
+        };
+        /**
+		 * Handler for loyality Cancel option
+		 *
+		 * @function
+		 * @param {sPromoCode} Promo Code value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.onDeclineLoyalty = function (oEvent) {
+            this._oLoyalityDialog.close();
+        };
+        /**
+		 * Handler for loyality Accept option
+		 *
+		 * @function
+		 * @param {sPromoCode} Promo Code value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.onAcceptLoyalty = function (oEvent) {
+            var mParameters,
+                oModel = this.getOwnerComponent().getModel('comp-campaign'),
+                sReqNumber,
+                oLoyalModel = this._oDialogFragment.getModel("oLoyalModel"),
+                sLPCode,
+                sPromo,
+                that = this,
+                sOfferCode,
+                sDate;
+            that.getOwnerComponent().getCcuxApp().setOccupied(true);
+            sReqNumber = oLoyalModel.getProperty("/lprefId");
+            sLPCode = oLoyalModel.getProperty("/LPCode");
+            sPromo = oLoyalModel.getProperty("/Promo");
+            sOfferCode = oLoyalModel.getProperty("/OfferCode");
+            sDate = oLoyalModel.getProperty("/Date");
+            mParameters = {
+                method : "POST",
+                urlParameters : {"LP_Code" : sLPCode,
+                                 "LP_RefID" : sReqNumber,
+                                 "PromoCode" : sPromo},
+                success : function (oData, oResponse) {
+                    if (oData.Code === "E") {
+                        oLoyalModel.setProperty("/message", "Please enter correct Reference Id");
+                        that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                        jQuery.sap.log.info("Odata Read Successfully:::");
+                    } else if (oData.Code === "S") {
+                        jQuery.sap.log.info("Odata Read Successfully:::");
+                        that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                        that._oLoyalityDialog.close();
+                        that.getOwnerComponent().setModel(oLoyalModel, 'comp-campLocal');
+                        that.navTo("campaignchg", {bpNum: that._sBP, caNum: that._sCA, coNum: that._sContract, offercodeNum: sOfferCode, sDate : sDate});
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Eligibility Error occured");
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                }.bind(this)
+            };
+            oModel.callFunction("/CheckLoyalty", mParameters);
         };
         /**
 		 * Back to Overview page function
@@ -733,6 +859,83 @@ sap.ui.define(
             this.navTo("campaign", {bpNum: this._sBP, caNum: this._sCA, coNum : this._sContract, typeV : "C"});
         };
 
+        /**
+		 * Converts in to EFL Json format required by Template view.
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.convertEFLJson = function (results) {
+            var columns = [],
+                temp,
+                tempColumns = [],
+                continueFlag = false,
+                oBRRow = [],
+                oCERow = [],
+                oBRCells = [],
+                oCECells = [],
+                iCount1,
+                iCount2,
+                aJsonDataNew;
+            for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+
+                temp = results[iCount1];
+                if ((temp !== undefined) && (temp.EFLLevel !== undefined)) {
+
+                  // Columns Assignment.
+                    if (tempColumns !== undefined) {
+
+                        for (iCount2 = 0; iCount2 < tempColumns.length; iCount2  = iCount2 + 1) {
+                            if (temp.EFLLevel === tempColumns[iCount2]) {
+                                continueFlag = true;
+                                break;
+                            }
+                        }
+                        if (continueFlag) {
+                            continueFlag = false;
+                        } else {
+                            tempColumns.push(temp.EFLLevel);
+                            columns.push({
+                                "EFLLevel": temp.EFLLevel
+                            });
+                        }
+                    }
+                    // Columns Assignment.
+                }
+            }
+            for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+
+                temp = results[iCount1];
+                if ((temp !== undefined) && (temp.EFLLevel !== undefined)) {
+
+                    if (temp.EFLType === "BR") {
+                        oBRCells.push({
+                            "EFLPrice": temp.EFLPrice
+                        });
+                    }
+
+                    if (temp.EFLType === "CE") {
+                        oCECells.push({
+                            "EFLPrice": temp.EFLPrice
+                        });
+                    }
+                }
+            }
+            aJsonDataNew = {};
+            aJsonDataNew.results = {};
+            aJsonDataNew.results.columns = columns;
+            aJsonDataNew.results.rows = [];
+            aJsonDataNew.results.rows.push({
+                "cells" : oBRCells
+            });
+            aJsonDataNew.results.rows.push({
+                "cells" : oCECells
+            });
+
+            return aJsonDataNew;
+        };
         return Controller;
     }
 );
