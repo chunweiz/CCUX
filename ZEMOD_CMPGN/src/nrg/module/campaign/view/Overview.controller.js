@@ -45,7 +45,6 @@ sap.ui.define(
                 oTemplateModel,
                 aEFLDatapaths,
                 iCount,
-                oEFLJson = {},
                 aResults = [],
                 oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
                 i18NModel;

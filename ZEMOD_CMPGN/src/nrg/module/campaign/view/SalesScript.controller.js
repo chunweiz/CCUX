@@ -310,7 +310,12 @@ sap.ui.define(
                 sPromoRank,
                 sBrand,
                 sCA,
-                sType;
+                sType,
+                oLocalModel,
+                sLpCode,
+                sLpFirstName,
+                sLpLastName,
+                sLPRefId;
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             sPath = "/CpgChgOfferS(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',StartDate=" + this._sDate + ")";
@@ -325,15 +330,20 @@ sap.ui.define(
             sPromoRank = oContext.getProperty("PromoRank");
             sBrand = oContext.getProperty("Brand");
             sType = oContext.getProperty("Type");
+            oLocalModel = this.getOwnerComponent().getModel('comp-campLocal'); // Model set in Offers Controller page after checking loyality code
+            sLpCode = oLocalModel.getProperty("/LPCode");
+            sLpFirstName = oLocalModel.getProperty("/firstName");
+            sLpLastName = oLocalModel.getProperty("/lastName");
+            sLPRefId = oLocalModel.getProperty("/lprefId");
             sCA = this._sCA;
             mParameters = {
                 method : "POST",
                 urlParameters : {"CampaignCode" : sCampaignCode,
                                          "EndDate" : sEndDate,
-                                        "LP_Code" : "null",
-                                        "LP_FirstName" : "null",
-                                        "LP_LastName" : "null",
-                                        "LP_RefID" : "null",
+                                        "LP_Code" : sLpCode,
+                                        "LP_FirstName" : sLpFirstName,
+                                        "LP_LastName" : sLpLastName,
+                                        "LP_RefID" : sLPRefId,
                                         "OfferCode" : sOfferCode,
                                         "OfferTitle" : sOfferTitle,
                                         "PromoCode" : sPromo,
