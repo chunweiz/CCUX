@@ -52,6 +52,17 @@ sap.ui.define(
             }));
         };
 
+        CustomController.prototype.onSelected = function (oEvent) {
+            var oCheckbox = oEvent.getSource();
+            var sYear = oCheckbox.getId().replace(this.getView().getId() + '--', '');
+            var bHide = oCheckbox.getChecked();
+
+            var oChart = this.getView().byId('chart');
+            if (oChart) {
+                oChart.hideUsage(sYear, !bHide);
+            }
+        };
+
         return CustomController;
     }
 );

@@ -4,6 +4,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:sm="sap.m"
     xmlns:tm="test.tm.ze_ccux_ctrl.view.control"
+    xmlns:um="ute.ui.main"
     height="100%"
     width="100%"
     displayBlock="true">
@@ -11,5 +12,19 @@
     <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
         <!-- width:height = 3:2 ratio -->
         <tm:AverageBillDetailsChart id="chart" />
+        <div>
+            <um:Checkbox id="2015" checked="true" select=".onSelected" />
+            <um:Label labelFor="2015-intChk">
+                <span>Usage 2015</span>
+            </um:Label>
+            <um:Checkbox id="2014" checked="true" select=".onSelected" />
+            <um:Label labelFor="2014-intChk">
+                <span>Usage 2014</span>
+            </um:Label>
+            <um:Checkbox id="2013" checked="true" select=".onSelected" />
+            <um:Label labelFor="2013-intChk">
+                <span>Usage 2013</span>
+            </um:Label>
+        </div>
     </sm:ScrollContainer>
 </mvc:View>
