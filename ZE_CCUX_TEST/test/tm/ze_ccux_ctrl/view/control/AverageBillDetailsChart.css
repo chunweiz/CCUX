@@ -3,12 +3,12 @@
 }
 
 .tmAVDChart .tmAVDChart-XGrid {
-    stroke: #808080;
+    stroke: #989898;
     stroke-width: 1;
 }
 
 .tmAVDChart .tmAVDChart-YGrid {
-    stroke: #808080;
+    stroke: #989898;
     stroke-width: 1;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .tmAVDChart .tmAVDChart-XAxis g.tick text {
-    fill: #808080;
+    fill: #545a6a;
 }
 
 .tmAVDChart .tmAVDChart-YAxis path.domain {
@@ -25,7 +25,7 @@
 }
 
 .tmAVDChart .tmAVDChart-YAxis g.tick text {
-    fill: #808080;
+    fill: #545a6a;
 }
 
 .tmAVDChart .tmAVDChart-YAxis g.tick:last-of-type {

@@ -84,7 +84,7 @@ sap.ui.define(
                 .range([iHeight, 0]);
 
             // Create a canvas with margin
-            var oCanvas = d3.select('#' + this.getId())
+            this._oCanvas = d3.select('#' + this.getId())
                 .append('svg')
                     .attr('class', 'tmAVDChart')
                     .attr('width', oCustomControl.getWidth())
@@ -104,7 +104,7 @@ sap.ui.define(
                 .tickValues(d3.range(aMinMaxMonth[0], aMinMaxMonth[1] + 1))
                 .tickFormat(function (data) { return fnXAxisLabel(data); });
 
-            oCanvas.append('g')
+            this._oCanvas.append('g')
                 .attr('class', 'tmAVDChart-XAxis')
                 .attr('transform', 'translate(' + [0, iHeight + 30] + ')')
                 .call(fnXAxisMonth);
@@ -116,42 +116,34 @@ sap.ui.define(
                 .ticks(Math.floor(iMaxUsage / iUsageTickSize) + 1)
                 .tickFormat(d3.format('d'));
 
-            oCanvas.append('g')
+            this._oCanvas.append('g')
                 .attr('class', 'tmAVDChart-YAxis')
                 .attr('transform', 'translate(' + [-30, 0] + ')')
                 .call(fnYAxisUsage);
 
             // X grid
-            oCanvas.append('g')
+            this._oCanvas.append('g')
                 .selectAll('line')
                 .data(d3.range(aMinMaxMonth[0], aMinMaxMonth[1] + 1))
                 .enter()
                 .append('line')
                     .attr('class', 'tmAVDChart-XGrid')
-                    .attr('x1', function (data) {
-                        return fnScaleMonth(data);
-                    })
+                    .attr('x1', function (data) { return fnScaleMonth(data); })
                     .attr('y1', 0)
-                    .attr('x2', function (data) {
-                        return fnScaleMonth(data);
-                    })
+                    .attr('x2', function (data) { return fnScaleMonth(data); })
                     .attr('y2', iHeight);
 
             // Y grid
-            oCanvas.append('g')
+            this._oCanvas.append('g')
                 .selectAll('line')
                 .data(d3.range(0, iMaxUsage + (iUsageTickSize - (iMaxUsage % iUsageTickSize)), iUsageTickSize))
                 .enter()
                 .append('line')
                     .attr('class', 'tmAVDChart-YGrid')
                     .attr('x1', 0)
-                    .attr('y1', function (data) {
-                        return fnScaleUsage(data);
-                    })
+                    .attr('y1', function (data) { return fnScaleUsage(data); })
                     .attr('x2', iWidth + 30)
-                    .attr('y2', function (data) {
-                        return fnScaleUsage(data);
-                    });
+                    .attr('y2', function (data) { return fnScaleUsage(data); });
 
             // Average usage lines
             var aDatasetByYear = d3.nest()
@@ -167,7 +159,7 @@ sap.ui.define(
                 .y(function (data) { return fnScaleUsage(data.usage); })
                 .interpolate('cardinal');
 
-            var oUsageLines = oCanvas.append('g').selectAll('g')
+            var oUsageLines = this._oCanvas.append('g').selectAll('g')
                 .data(aDatasetByYear)
                 .enter().append('g')
                     .attr('class', 'tmAVDChart-usage');
