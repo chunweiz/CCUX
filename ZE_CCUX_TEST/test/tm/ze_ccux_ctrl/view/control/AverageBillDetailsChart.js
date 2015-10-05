@@ -31,10 +31,27 @@ sap.ui.define(
 
         CustomControl.prototype.onExit = function () {
             this._oDataModel = null;
+            this._oCanvas = null;
         };
 
         CustomControl.prototype.onAfterRendering = function () {
             this._createChart();
+        };
+
+        CustomControl.prototype.hideUsage = function (sYear, bHide) {
+            if(this._oCanvas) {
+                this._oCanvas.selectAll('.tmAVDChart-usage').each(function (oData) {
+                    if (oData.key === sYear) {
+                        if (bHide) {
+                            d3.select(this).style('display', 'none');
+                        } else {
+                            d3.select(this).style('display', null);
+                        }
+                    }
+                });
+            }
+
+            return this;
         };
 
         CustomControl.prototype.refreshChart = function () {
@@ -180,14 +197,6 @@ sap.ui.define(
                     .attr('cx', function (data) { return fnScaleMonth(data.usageDate.getMonth()); })
                     .attr('cy', function (data) { return fnScaleUsage(data.usage); })
                     .style('fill', function (data) { return fnLineColor(data.usageDate.getFullYear()); });
-
-            // Selectively display usage lines
-            // oCanvas.selectAll('.tmAVDChart-usage').each(function (oData) {
-            //     if (oData.key !== '2015') {
-            //         d3.select(this).style('display', 'none');
-            //     }
-            // });
-
         };
 
         return CustomControl;
