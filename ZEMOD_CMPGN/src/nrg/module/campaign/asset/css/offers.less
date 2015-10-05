@@ -104,12 +104,12 @@
                     }
 
             }
-            & > .nrgCmpOff-tiles > .nrgCamOff-scroll > .sapMScrollContScroll > .nrgCamOff-btn[data-flag="C"] {
+            & > .nrgCmpOff-tiles > .nrgCamOff-scroll > .sapMScrollContScroll > .nrgCamOff-btn[data-disabled="true"] {
                     background-color: @nrgColor-grey-light;
                     color:@nrgColor-white;
             }
-            & > .nrgCmpOff-tiles > .nrgCamOff-scroll > .sapMScrollContScroll > .nrgCamOff-btn-selected {
-                    background-color: @nrgColor-grey-light;
+             & > .nrgCmpOff-tiles > .nrgCamOff-scroll > .sapMScrollContScroll > .nrgCamOff-btnSelected {
+                    background-color: @nrgColor-green-highlight;
                     color: @nrgColor-white;
             }
     }
@@ -183,14 +183,19 @@
                                                     background-color: @nrgColor-blue-pearl;
                                                     padding: 5px 5px 5px 5px;
                                                     &  .nrgCamOff-label {
-                                                        font-size: @nrgFontSize-small;
+                                                            font-size: @nrgFontSize-small;
                                                     }
                                                     &  .uteTb-column-campaign {
-                                                        background-color: @nrgColor-grey-highlight;
-                                                        line-height: 20px;
+                                                            background-color: @nrgColor-grey-highlight;
+                                                            line-height: 20px;
                                                     }
                                                     &  .nrgCamOff-prcTbl {
                                                             margin:5px 0px 0px 0px;
+                                                    }
+                                                    &  .icon {
+                                                            cursor:pointer;
+                                                            color: @nrgColor-blueLink;
+                                                        	cursor: pointer;
                                                     }
                                             }
                                     }
@@ -206,14 +211,19 @@
                                                     background-color: @nrgColor-blue-pearl;
                                                     padding: 5px 5px 5px 5px;
                                                     &  .nrgCamOff-label {
-                                                        font-size: @nrgFontSize-small;
+                                                            font-size: @nrgFontSize-small;
                                                     }
                                                     &  .uteTb-column-campaign {
-                                                        background-color: @nrgColor-grey-highlight;
-                                                        line-height: 20px;
+                                                            background-color: @nrgColor-grey-highlight;
+                                                            line-height: 20px;
                                                     }
                                                     &  .nrgCamOff-prcTbl {
                                                             margin:5px 0px 0px 0px;
+                                                    }
+                                                    &  .icon {
+                                                            cursor:pointer;
+                                                            color: @nrgColor-blueLink;
+                                                            cursor: pointer;
                                                     }
                                             }
                                    }
@@ -288,7 +298,7 @@
     }
     &   .nrgCamOvr-selectBtn {
             color: @nrgColor-blueLink;
-            float:right;
+            width: 4rem;
     }
     &  .nrgCamOff-hide {
             display:none;
@@ -308,6 +318,7 @@
     }
     &   .nrgCamOff-cardTitle {
             color: @nrgColor-grey-dark;
+            width: 21rem
     }
     &   .nrgCmpOff-div {
         	border-bottom: 1px dashed @nrgColor-grey-highlight;

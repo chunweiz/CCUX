@@ -1,0 +1,25 @@
+.tmAVDChart {
+
+}
+
+.tmAVDChart .tmAVDChart-XAxis path.domain {
+   display: none;
+}
+
+.tmAVDChart .tmAVDChart-XAxis g.tick text {
+   fill: #808080;
+}
+
+.tmAVDChart .tmAVDChart-YAxis {
+
+}
+
+.tmAVDChart .tmAVDChart-usageLine {
+    fill: none;
+    stroke-width: 2;
+}
+
+.tmAVDChart .tmAVDChart-usageDataPoint {
+    stroke: #ffffff; /* same as background color */
+    stroke-width: 2;
+}
