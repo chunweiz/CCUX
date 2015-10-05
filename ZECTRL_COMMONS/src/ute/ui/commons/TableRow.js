@@ -17,9 +17,15 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/core/Control'],
                     multiple: true,
                     singularName: 'cell'
                 }
+            },
+            events: {
+                /*Event onPress*/
+                press: {}
             }
         }});
 
-
+        TableRow.prototype.ontap = function (oEvent) {
+            this.firePress();
+        };
         return TableRow;
     }, true);

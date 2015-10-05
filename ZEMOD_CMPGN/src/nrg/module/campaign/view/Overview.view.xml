@@ -116,9 +116,9 @@
                      class="nrgCamOvr-top"
                      tableType="CampaignTable" >
                 <u:columns>
-<!--                    <u:TableColumn>
+                    <u:TableColumn>
                         <c:Label text="Promo Code"/>
-                    </u:TableColumn>-->
+                    </u:TableColumn>
                     <u:TableColumn>
                          <c:Label text="Offer Code"/>
                     </u:TableColumn>
@@ -137,16 +137,20 @@
                     <u:TableColumn>
                          <c:Label text="Incentive"/>
                     </u:TableColumn>
+                    <u:TableColumn>
+                         <c:Label text="Description"/>
+                    </u:TableColumn>
                 </u:columns>
                 <u:rows>
                     <u:TableRow>
-<!--                        <c:Label text="{comp-campaign>Promo}"/>-->
+                        <c:Label text="{comp-campaign>Promo}"/>
                         <c:Label text="{comp-campaign>OfferCode}"/>
                         <c:Label text="{comp-campaign>Term}"/>
                         <c:Label text="{path: 'comp-campaign>StartDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
                         <c:Label text="{path: 'comp-campaign>EndDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
                         <c:Label text="{comp-campaign>CncFee}"/>
                         <c:Label text="{comp-campaign>Incentive}"/>
+                        <c:Label text="{comp-campaign>IncenDesc}"/>
                     </u:TableRow>
                 </u:rows>
             </u:Table>

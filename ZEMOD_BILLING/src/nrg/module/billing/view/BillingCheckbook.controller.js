@@ -1,6 +1,7 @@
 // temporarily added by Jerry
 
 /*globals sap*/
+/*globals window*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -50,6 +51,22 @@ sap.ui.define(
 
         /*****************************************************************************************************************************************************/
         //Formatter Functions
+        CustomController.prototype._formatBoolHyperLink = function (sIndicator) {
+            if (sIndicator) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatBoolLP = function (sIndicator) {
+            if (sIndicator === 'LP') {return true; } else { return false; }
+        };
+
+        CustomController.prototype._formatBoolBB = function (sIndicator) {
+            if (sIndicator === 'BB') {return true; } else { return false; }
+        };
+
         CustomController.prototype._formatBoolCurChrg = function (sIndicator) {
             if (sIndicator === 'X' || sIndicator === 'x') {
                 return true;
@@ -57,8 +74,8 @@ sap.ui.define(
                 return false;
             }
         };
-        CustomController.prototype._formatBoolCurChrg_Rev = function (sIndicator) {
-            if (sIndicator === 'X' || sIndicator === 'x') {
+        CustomController.prototype._formatBoolNormalPitem = function (sIndicator1, sIndicator2) {
+            if (sIndicator1 || sIndicator2) {
                 return false;
             } else {
                 return true;
@@ -76,6 +93,76 @@ sap.ui.define(
 
         CustomController.prototype._formatBppBoolean = function (sCallout) {
             if (sCallout === 'BBP') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatFirstClotBlk = function (sBbpIndicator, bCurrent, bRed) {
+            if (sBbpIndicator === 'BBP') {
+                return false;
+            } else if (bRed) {
+                return false;
+            } else if (!bCurrent) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatFirstClotGrn = function (sBbpIndicator, bCurrent, bRed) {
+            if (sBbpIndicator === 'BBP') {
+                return false;
+            } else if (bCurrent) {
+                return true;
+            } else if (bRed) {
+                return false;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatFirstClotRed = function (sBbpIndicator, bCurrent, bRed) {
+            if (sBbpIndicator === 'BBP') {
+                return false;
+            } else if (bCurrent) {
+                return false;
+            } else if (bRed) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatClotTTCurrent = function (sClot, sClr, bCurrent) {
+            if (sClot === 'BBP') {
+                return false;
+            } else if (sClr === 'RED') {
+                return false;
+            } else if (bCurrent) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatClotTTDppCncl = function (sClot, sClr, bCurrent) {
+            if (sClot === 'BBP') {
+                return false;
+            } else if (sClr === 'RED') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatClotTTDInactive = function (sClot, sClr, bCurrent) {
+            if (sClot === 'BBP') {
+                return false;
+            } else if (sClr === 'RED') {
+                return false;
+            } else if (!bCurrent) {
                 return true;
             } else {
                 return false;
@@ -142,6 +229,11 @@ sap.ui.define(
                 this._retrPaymentSumrys(oPmtHdr.getProperty(sBindingPath).InvoiceNum, sBindingPath);
             }
         };
+
+        CustomController.prototype._onLiteUpLinkClicked = function (oEvent) {
+            var sLiteUpUrl = 'http://www.puc.state.tx.us/consumer/lowincome/Assistance.aspx';
+            window.open(sLiteUpUrl);
+        };
         /*****************************************************************************************************************************************************/
 
         CustomController.prototype._retrPayments = function (sInvNum, sBindingPath) {
@@ -198,8 +290,8 @@ sap.ui.define(
         CustomController.prototype._retrPaymentSumrys = function (sInvNum, sBindingPath) {
             var oChbkOData = this.getView().getModel('oDataSvc'),
                 sPath,
-                oParameters,
-                oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer');
+                oParameters;
+                //oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer');
 
             sPath = '/PaymentHdrs(\'' + sInvNum + '\')/PaymentSumry';
 
@@ -209,7 +301,7 @@ sap.ui.define(
                         this.getView().getModel('oPaymentHdr').setProperty(sBindingPath + '/PaymentSumry', oData.results[0]);
                     }
                     //oScrlCtaner.scrollTop = oScrlCtaner.scrollHeight;
-                    oScrlCtaner.scrollTo(0, 550, 100);
+                    //oScrlCtaner.scrollTo(0, 550, 100);
                 }.bind(this),
                 error: function (oError) {
                     //Need to put error message
@@ -232,8 +324,8 @@ sap.ui.define(
         CustomController.prototype._initChkbookHdr = function () {
             var sPath;
 
-            sPath = '/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'008005303668\')';
-                    //'/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'\')';
+            sPath = '/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'\')';
+                //'/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'008005303668\')';
 
             this._retrChkbookHdr(sPath);
         };
@@ -271,7 +363,8 @@ sap.ui.define(
                 oParameters,
                 i,
                 j,
-                oCurDate = new Date();
+                oCurDate = new Date(),
+                oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer');
 
             oParameters = {
                 success : function (oData) {
@@ -280,6 +373,7 @@ sap.ui.define(
                             oData.results[i].oCallOut = {};
                             if (oData.results[i].CallOut) {
                                 oData.results[i].oCallOut = JSON.parse(oData.results[i].CallOut);
+                                oData.results[i].bRed = false; //Preset to false;
                                 for (j = 0; j < oData.results[i].oCallOut.CallOuts.length; j = j + 1) {
                                     if (oData.results[i].oCallOut.CallOuts[j].CallOut === 'BBP') {
                                         oData.results[i].oCallOut.CallOuts[j].BBPAmt = oData.results[i].BBPAmt;
@@ -288,6 +382,18 @@ sap.ui.define(
                                         oData.results[i].oCallOut.CallOuts[j].BBPBalAddr = oData.results[i].BBPBalAddr;
                                         oData.results[i].oCallOut.CallOuts[j].BBPDefBal = oData.results[i].BBPDefBal;
                                         oData.results[i].oCallOut.CallOuts[j].BBPDefBalTxt = oData.results[i].BBPDefBalTxt;
+                                    }
+
+                                    //Checking DPP red
+                                    if (oData.results[i].oCallOut.CallOuts[j].Color === 'RED') {
+                                        oData.results[i].bRed = true;
+                                    }
+
+                                    //Current flags
+                                    if (i === oData.results.length - 1) {
+                                        oData.results[i].oCallOut.CallOuts[j].bCurrent = true;
+                                    } else {
+                                        oData.results[i].oCallOut.CallOuts[j].bCurrent = false;
                                     }
                                 }
                                 if (oData.results[i].oCallOut.CallOuts.length === 1) {
@@ -321,6 +427,8 @@ sap.ui.define(
                         this._retrPayments(oData.results[i].InvoiceNum, '/results/' + i);
                         this._retrPaymentSumrys(oData.results[i].InvoiceNum, '/results/' + i);
                         this._retrPaymentItmes(oData.results[i].InvoiceNum, '/results/' + i);
+
+                        oScrlCtaner.scrollTo(0, 550, 1000);
                     }
                 }.bind(this),
                 error: function (oError) {

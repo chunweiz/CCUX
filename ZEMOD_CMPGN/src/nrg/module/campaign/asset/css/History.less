@@ -7,14 +7,13 @@
             margin: 0px;
     }
 }
-
 .nrgCamHis {
             font-family: @nrgFontFamily;
-            width:750px;
+            width:100%;
             height:auto;
     &   .nrgCamHis-left {
             margin-left: 15px;
-     }
+    }
     &   .nrgCamHis-top {
             margin-top: 20px;
     }
@@ -70,6 +69,10 @@
             background-color: @nrgColor-grey-light;
             color:@nrgColor-white;
     }
+    &  > div > .nrgCamHis-table > tbody > .nrgCamHis-but-selected {
+            background-color: @nrgColor-grey-highlight;
+            color:@nrgColor-white;
+    }
 /*    & > div > .nrgCamHis-infoTable {
             display:inline-block;
     }*/
@@ -79,6 +82,14 @@
     &  .nrgCamOvr-infoline {
             overflow-x: hidden;
             max-height: 10rem;
+    }
+    &  .nrgCamHis-noData  {
+            text-align: center;
+            margin-top: 10rem;
+    }
+    &  .nrgCamHis-noData > span {
+            font-size: @nrgFontSize-larger;
+            font-weight: @nrgFontWeight-semiBold;
     }
 }
 

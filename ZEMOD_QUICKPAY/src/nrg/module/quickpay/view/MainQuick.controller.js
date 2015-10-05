@@ -217,7 +217,7 @@ sap.ui.define(
                     success : function (oData, oResponse) {
                         if (oData.Error === "") {
                             oContactModel.setData(oData);
-                            that.onContactLog();
+                            that.onPaymentSuccess();
                             oMsgArea.addStyleClass("nrgQPPay-hide");
                         } else {
                             that.getView().getModel("appView").setProperty("/message", oData.Message);
@@ -579,10 +579,11 @@ sap.ui.define(
                 sBankAccount,
                 oCallFunctionHandler,
                 oConfirmCallbackHandler,
-                sInvoiceAmount,
+                iInvoiceAmount,
                 oInvoiceDate,
                 oConfirmDateHandler,
-                oCallDateHandler;
+                oCallDateHandler,
+                iBankDraftAmount;
             oMsgArea.removeStyleClass("nrgQPPay-hide");
             oMsgArea.addStyleClass("nrgQPPay-black");
             if (!this._ValidateValue(oBankDraftAmount.getValue(), "Enter Amount to be posted")) {
@@ -597,7 +598,7 @@ sap.ui.define(
             sBankRouting = oModel.getProperty("/BankAccountSet(BP='" + this._sBP + "',CA='" + this._sCA + "',BankKey='" + sBankKey + "')/BankRouting");
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             oBankDraftDateValue = new Date(oBankDraftDate.getValue());
-            sInvoiceAmount =  oBankDraftModel.getProperty("/InvoiceAmount");
+            iInvoiceAmount = parseInt(oBankDraftModel.getProperty("/InvoiceAmount"), 10) || 0;
             oInvoiceDate = oBankDraftModel.getProperty("/InvoiceDate");
             oConfirmCallbackHandler = function (sAction) {
                 switch (sAction) {
@@ -660,7 +661,7 @@ sap.ui.define(
                     success : function (oData, oResponse) {
                         if (oData.Error === "") {
                             oContactModel.setData(oData);
-                            that.onContactLog();
+                            that.onPaymentSuccess();
                             oMsgArea.addStyleClass("nrgQPPay-hide");
                         } else {
                             that.getView().getModel("appView").setProperty("/message", oData.Message);
@@ -674,7 +675,8 @@ sap.ui.define(
                 };
                 oModel.callFunction(sCurrentPath, mParameters);
             };
-            if (oBankDraftAmount > sInvoiceAmount) {
+            iBankDraftAmount = parseInt(oBankDraftAmount.getValue(), 10) || 0;
+            if (iBankDraftAmount > iInvoiceAmount) {
                 ute.ui.main.Popup.Confirm({
                     title: 'Information',
                     message: 'Payment amount is greater than Total amount due. Do you wish to continue?',
@@ -1112,7 +1114,7 @@ sap.ui.define(
                 success : function (oData, oResponse) {
                     if (oData.Error === "") {
                         oContactModel.setData(oData);
-                        that.onContactLog();
+                        that.onPaymentSuccess();
                         oMsgArea.addStyleClass("nrgQPPay-hide");
                     } else {
                         that.getView().getModel("appView").setProperty("/message", oData.Message);
@@ -1224,6 +1226,22 @@ sap.ui.define(
             this.getView().getParent().close();
         };
         /**
+		 * Enable Payment Success
+		 *
+		 * @function onQuickPay
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onPaymentSuccess = function () {
+            var oTBIPaySucc = this.getView().byId("idnrgQPPay-TBIPaySucc"),
+                oPopup = this.getView().byId("idnrgQPPay-Popup"),
+                oCloseButton = this.getView().byId("idnrgQPPayBt-close");
+            oPopup.removeStyleClass("nrgQPPay-PopupPayment");
+            oPopup.removeStyleClass("nrgQPPay-PopupWhite");
+            oPopup.addStyleClass("nrgQPPay-Popup");
+            oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
+            oTBIPaySucc.setSelected(true);
+        };
+        /**
 		 * Enable Contact Log
 		 *
 		 * @function onQuickPay
@@ -1246,9 +1264,6 @@ sap.ui.define(
             var oContactLogModel = this.getView().getModel("quickpay-cl"),
                 oModel = this.getView().getModel('comp-quickpay'),
                 sCurrentPath = "/ContactLogSet",
-                oTBIPaySucc = this.getView().byId("idnrgQPPay-TBIPaySucc"),
-                oPopup = this.getView().byId("idnrgQPPay-Popup"),
-                oCloseButton = this.getView().byId("idnrgQPPayBt-close"),
                 that = this;
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             oModel.create(sCurrentPath, {
@@ -1261,11 +1276,7 @@ sap.ui.define(
             }, {
                 success : function (oData, oResponse) {
                     if (oData.ContactLogID !== "") {
-                        oPopup.removeStyleClass("nrgQPPay-PopupPayment");
-                        oPopup.addStyleClass("nrgQPPay-Popup");
-                        oPopup.removeStyleClass("nrgQPPay-PopupWhite");
-                        oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
-                        oTBIPaySucc.setSelected(true);
+                        that.onPopupClose();
                     }
                     that._OwnerComponent.getCcuxApp().setOccupied(false);
                 },

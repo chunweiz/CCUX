@@ -44,7 +44,8 @@
                 "UsageHistory": { "pattern": "UsageHistory", "target": [ "UsageHistory" ] },
                 "CustJourneyChannel": { "pattern": "CustJourneyChannel", "target": [ "CustJourneyChannel" ] },
                 "CustJourneyLifecycle": { "pattern": "CustJourneyLifecycle", "target": [ "CustJourneyLifecycle" ] },
-                "FooterNotification": { "pattern": "FooterNotification", "target": [ "FooterNotification" ] }
+                "FooterNotification": { "pattern": "FooterNotification", "target": [ "FooterNotification" ] },
+                "UsageDetails": { "pattern": "UsageDetails", "target": [ "UsageDetails" ] }
             },
 
             "config": {
@@ -70,7 +71,8 @@
                 "UsageHistory": { "viewName": "UsageHistory", "controlId": "idAppContent" },
                 "CustJourneyChannel": { "viewName": "CustJourneyChannel", "controlId": "idAppContent" },
                 "CustJourneyLifecycle": { "viewName": "CustJourneyLifecycle", "controlId": "idAppContent" },
-                "FooterNotification": { "viewName": "FooterNotification", "controlId": "idAppContent" }
+                "FooterNotification": { "viewName": "FooterNotification", "controlId": "idAppContent" },
+                "UsageDetails": { "viewName": "UsageDetails", "controlId": "idAppContent" }
             }
         }
     }

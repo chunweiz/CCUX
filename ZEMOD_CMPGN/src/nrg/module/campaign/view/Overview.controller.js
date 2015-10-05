@@ -266,7 +266,8 @@ sap.ui.define(
             var sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill"),
                 sCustomerEligible = oEvent.getSource().getBindingContext("Overview-elig").getProperty("CustEligFlag"),
                 sInitTab = oEvent.getSource().getBindingContext("Overview-elig").getProperty("InitTab"),
-                _CancellationPopupHandler;
+                _CancellationPopupHandler,
+                that = this;
             if ((!sInitTab) || (sInitTab === undefined) || (sInitTab === null) || (sInitTab === "")) {
                 this._sInitTab = "SE";
             } else {
@@ -281,7 +282,7 @@ sap.ui.define(
                     _CancellationPopupHandler = function (sAction) {
                         switch (sAction) {
                         case ute.ui.main.Popup.Action.Yes:
-                            this.__getPendingSwapsCount(oEvent);
+                            that._getPendingSwapsCount(oEvent);
                             break;
                         case ute.ui.main.Popup.Action.No:
                         // No Action decided
@@ -309,10 +310,7 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype._getPendingSwapsCount = function (oEvent) {
-            var sContract = oEvent.getSource().getBindingContext("Overview-elig").getProperty("Contract"),
-                sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill"),
-                sCustomerEligible = oEvent.getSource().getBindingContext("Overview-elig").getProperty("CustEligFlag"),
-                sCurrentPath,
+            var sCurrentPath,
                 aFilterIds,
                 aFilterValues,
                 aFilters,
@@ -323,7 +321,7 @@ sap.ui.define(
             sCurrentPath = i18NModel.getProperty("nrgPendingSwapsSet");
             sCurrentPath = sCurrentPath + "/$count";
             aFilterIds = ["Contract"];
-            aFilterValues = [sContract];
+            aFilterValues = [this._sContract];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             mParameters = {
                 filters : aFilters,
@@ -333,7 +331,7 @@ sap.ui.define(
                         if ((parseInt(oData, 10)) > 0) {
                             that.showPendingSwaps();
                         } else {
-                            that.navTo("campaignoffers", {bpNum: that._sBP, caNum: that._sCA, coNum: sContract, typeV : this._sInitTab});
+                            that.navTo("campaignoffers", {bpNum: that._sBP, caNum: that._sCA, coNum: this._sContract, typeV : this._sInitTab});
                         }
                     }
                 }.bind(this),
@@ -590,7 +588,6 @@ sap.ui.define(
             this._oCancelDialog.close();
             this.navTo("campaignoffers", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, typeV : this._sInitTab});
         };
-
         return Controller;
     }
 

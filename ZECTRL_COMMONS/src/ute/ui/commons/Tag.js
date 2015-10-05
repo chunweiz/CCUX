@@ -24,6 +24,10 @@ sap.ui.define(
                     text: {
                         type: 'string',
                         defaultValue: ''
+                    },
+                    width: {
+                        type: 'string',
+                        defaultValue: ''
                     }
                 },
                 aggregations: {

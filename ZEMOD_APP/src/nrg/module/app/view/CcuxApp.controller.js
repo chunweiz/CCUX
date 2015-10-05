@@ -6,10 +6,12 @@ sap.ui.define(
         'sap/ui/core/mvc/Controller',
         'nrg/module/app/view/App',
         'nrg/module/app/view/AppHeader',
-        'sap/ui/model/json/JSONModel'
+        'sap/ui/model/json/JSONModel',
+        'sap/ui/model/Filter',
+        'sap/ui/model/FilterOperator'
     ],
 
-    function (Controller, App, AppHeader, JSONModel) {
+    function (Controller, App, AppHeader, JSONModel, Filter, FilterOperator) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.app.view.CcuxApp');
@@ -24,16 +26,11 @@ sap.ui.define(
                     { link: true, design: 'Error', text: 'Late fee for last month was not paid.' },
                     { link: true, design: 'Error', text: 'Disconnection notice amount - $130.00. Net amount - $110.00. Due Date: 11/20/2014' }
                 ],
-                rhs : {
-                    current: 'Water Heater Protect $1000',
-                    pending: 'None',
-                    history: 'Plumbing Essentials'
+                campaign: {
+                    title: 'Agent Requested Offers',
+                    text: 'NOT ELIGIBLE'
                 }
             }), 'view-data');
-
-            this.getView().setModel(this.getOwnerComponent().getModel('comp-campaign'), 'oODataSvc');
-
-            this._initFooterRetr();
         };
 
         CustomController.prototype.onInit = function () {
@@ -56,11 +53,19 @@ sap.ui.define(
             console.log(oControlEvent.getSource());
         };
 
-        CustomController.prototype._initFooterRetr = function () {
-            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
-            var bp = oRouteInfo.parameters.bpNum;
+        CustomController.prototype._formatCampaignTime = function (oDate) {
+            if (oDate) {
+                var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern:"MM/yyyy"});
+                var dateStr = dateFormat.format(new Date(oDate.getTime()));
+                return dateStr;
+            }
         };
 
+        // AppFooter.prototype._formatCampaignTime = function (oDate) {
+        //     var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern:"MM/yyyy"});
+        //     var dateStr = dateFormat.format(new Date(oDate.getTime()));
+        //     return dateStr;
+        // };
 
 
 

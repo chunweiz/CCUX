@@ -357,7 +357,7 @@
         "InvAmtDue":"678.7900",
         "DueDate":"\/Date(1398056401000+0000)\/",
         "BillDate":"\/Date(1396587601000+0000)\/",
-        "CallOut":"{\"CallOuts\":[ {\"CallOut\":\"BBP\"}, {\"CallOut\":\"DPP\"} ]}",
+        "CallOut":"{\"CallOuts\":[ {\"CallOut\":\"DPP\",\"Color\":\"RED\"}, {\"CallOut\":\"DPP\",\"Color\":\"RED\"} ]}",
         "BBPAmt":"35.14",
         "BBPAmtAddr":"7213 1/3 ROOT RD SPRING TX 77389",
         "BBPBal":"288.00",
@@ -392,7 +392,7 @@
           "type":"ZE_CCUX_CHKBOOK_SRV.PaymentHdr"
         },
         "ContractAccountNumber":"000071851129",
-        "InvoiceNum":"008004249300",
+        "InvoiceNum":"008005303668",//""008004249300",
         "InvAmtDue":"321.0300",
         "DueDate":"\/Date(1403758801000+0000)\/",
         "BillDate":"\/Date(1402376401000+0000)\/",

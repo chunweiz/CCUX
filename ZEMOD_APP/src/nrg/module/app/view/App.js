@@ -50,7 +50,10 @@ sap.ui.define(
                     'detachNavRight',
                     'showNavRight',
                     'setInEdit',
-                    'isInEdit'
+                    'isInEdit',
+                    'updateFooterNotification',
+                    'updateFooterRHS',
+                    'updateFooterCampaign'
                 ]
             }
         });
@@ -174,6 +177,26 @@ sap.ui.define(
 
         App.prototype._getFooter = function () {
             return this._oAppFooter;
+        };
+
+        App.prototype._initFooterOData = function () {
+            this._oAppFooter._initFooterOData();
+            return this;
+        };
+
+        App.prototype.updateFooterNotification = function (oPayload) {
+            this._oAppFooter.updateFooterNotification(oPayload);
+            return this;
+        };
+
+        App.prototype.updateFooterRHS = function (oPayload) {
+            this._oAppFooter.updateFooterRHS(oPayload);
+            return this;
+        };
+
+        App.prototype.updateFooterCampaign = function (oPayload) {
+            this._oAppFooter.updateFooterCampaign(oPayload);
+            return this;
         };
 
         return App;
