@@ -19,14 +19,13 @@ sap.ui.define(
         CustomController.prototype.onBeforeRendering = function() {
             this.getView().byId('chart').setDataModel(new JSONModel({
                 data: [
-                    { usageDate: '12/01/2015', usage: 1332 },
-                    { usageDate: '11/01/2015', usage: 1450 },
-                    { usageDate: '10/01/2015', usage: 1280 },
-                    { usageDate: '09/01/2015', usage: 1390 },
-                    { usageDate: '08/01/2015', usage: 1420 },
-                    { usageDate: '07/01/2015', usage: 1380 },
-                    { usageDate: '06/01/2015', usage: 1400 },
-                    { usageDate: '05/01/2015', usage: 1300 },
+                    { usageDate: '07/01/2013', usage: 1380 },
+                    { usageDate: '06/01/2013', usage: 1380 },
+                    { usageDate: '05/01/2013', usage: 1380 },
+                    { usageDate: '04/01/2013', usage: 1380 },
+                    { usageDate: '03/01/2013', usage: 1380 },
+                    { usageDate: '02/01/2013', usage: 1380 },
+                    { usageDate: '01/01/2013', usage: 1380 },
 
                     { usageDate: '12/01/2014', usage: 1280 },
                     { usageDate: '11/01/2014', usage: 1280 },
@@ -41,13 +40,14 @@ sap.ui.define(
                     { usageDate: '02/01/2014', usage: 1280 },
                     { usageDate: '01/01/2014', usage: 1280 },
 
-                    { usageDate: '07/01/2013', usage: 1380 },
-                    { usageDate: '06/01/2013', usage: 1380 },
-                    { usageDate: '05/01/2013', usage: 1380 },
-                    { usageDate: '04/01/2013', usage: 1380 },
-                    { usageDate: '03/01/2013', usage: 1380 },
-                    { usageDate: '02/01/2013', usage: 1380 },
-                    { usageDate: '01/01/2013', usage: 1380 }
+                    { usageDate: '12/01/2015', usage: 1332 },
+                    { usageDate: '11/01/2015', usage: 1450 },
+                    { usageDate: '10/01/2015', usage: 1280 },
+                    { usageDate: '09/01/2015', usage: 1390 },
+                    { usageDate: '08/01/2015', usage: 1420 },
+                    { usageDate: '07/01/2015', usage: 1380 },
+                    { usageDate: '06/01/2015', usage: 1400 },
+                    { usageDate: '05/01/2015', usage: 1300 }
                 ]
             }));
         };

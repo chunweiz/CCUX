@@ -1,3 +1,13 @@
 .tmAVDChart {
-    
+
+}
+
+.tmAVDChart .tmAVDChart-usageLine {
+    fill: none;
+    stroke-width: 2;
+}
+
+.tmAVDChart .tmAVDChart-usageDataPoint {
+    stroke: #ffffff; /* same as background color */
+    stroke-width: 2;
 }

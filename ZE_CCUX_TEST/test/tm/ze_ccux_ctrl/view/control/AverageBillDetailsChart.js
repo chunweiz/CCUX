@@ -64,17 +64,17 @@ sap.ui.define(
         CustomControl.prototype._createChart = function () {
             var oCustomControl = this;
             var oMargin = { top: 50, right: 60, bottom: 60, left: 100 };
-            var iWidth = this.getWidth() - oMargin.left - oMargin.right;
-            var iHeight = this.getHeight() - oMargin.top - oMargin.bottom - 50;
-            var aDataSet = oCustomControl._getDataSet();
+            var iWidth = 600 - oMargin.left - oMargin.right;
+            var iHeight = 400 - oMargin.top - oMargin.bottom - 50;
+            var aDataset = oCustomControl._getDataSet();
 
             // X scale - month
             var fnScaleMonth = d3.scale.linear()
-                .domain(d3.extent(aDataSet, function(data) { return data.usageDate.getMonth(); }))
+                .domain(d3.extent(aDataset, function (data) { return data.usageDate.getMonth(); }))
                 .range([0, iWidth]);
 
             // Y scale - kwh usage based on usage tick size
-            var iMaxUsage = d3.max(aDataSet, function(data) { return data.usage; });
+            var iMaxUsage = d3.max(aDataset, function (data) { return data.usage; });
             var iUsageTickSize = oCustomControl.getUsageTickSize();
 
             var fnScaleUsage = d3.scale.linear()
@@ -84,16 +84,43 @@ sap.ui.define(
             // Create a canvas with margin
             var oCanvas = d3.select('#' + this.getId())
                 .append('svg')
-                    .attr('viewBox', [0, 0, oCustomControl.getWidth(), oCustomControl.getHeight()].join(' '))
+                    .attr('width', oCustomControl.getWidth())
+                    .attr('height', oCustomControl.getHeight())
+                    .attr('viewBox', [0, 0, iWidth + oMargin.left + oMargin.right, iHeight + oMargin.top + oMargin.bottom].join(' '))
                     .append('g')
                         .attr('transform', 'translate(' + [ oMargin.left, oMargin.top ] + ')');
 
-            // Average usage line
+            // Average usage lines
             var aDatasetByYear = d3.nest()
-                .key(function(data) { return data.usageDate.getFullYear(); })
-                .entries(aDataSet);
+                .key(function (data) { return data.usageDate.getFullYear(); })
+                .entries(aDataset);
 
-            
+            var fnLineColor = d3.scale.ordinal()
+                .domain(aDatasetByYear, function (data) { return data.key; })
+                .range(['#ffffff', '#f2a814', '#000000', '#5092ce']);
+
+            var fnUsageLine = d3.svg.line()
+                .x(function (data) { return fnScaleMonth(data.usageDate.getMonth()); })
+                .y(function (data) { return fnScaleUsage(data.usage); });
+
+            var oUsageLines = oCanvas.append('g').selectAll('g')
+                .data(aDatasetByYear)
+                .enter().append('g')
+                    .append('path')
+                        .attr('class', 'tmAVDChart-usageLine')
+                        .attr('d', function (data) { return fnUsageLine(data.values); })
+                        .style('stroke', function (data) { return fnLineColor(data.key); })
+                        .style('fill', 'none');
+
+            // Average usage data points
+            var oUsageDataPoints = oCanvas.append('g').selectAll('circle')
+                .data(aDataset)
+                .enter().append('circle')
+                    .attr('class', 'tmAVDChart-usageDataPoint')
+                    .attr('r', '3')
+                    .attr('cx', function (data) { return fnScaleMonth(data.usageDate.getMonth()); })
+                    .attr('cy', function (data) { return fnScaleUsage(data.usage); })
+                    .style('fill', function (data) { return fnLineColor(data.usageDate.getFullYear()); });
 
         };
 
