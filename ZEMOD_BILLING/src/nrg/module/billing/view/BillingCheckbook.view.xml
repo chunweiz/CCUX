@@ -217,7 +217,15 @@
                                          visible="{parts:['oPaymentHdr>sCallOut2'], formatter:'._formatTwoClotBoolean'}"/>
                                 <!--3.Cases to handle the 2nd value when there's the 2nd value (ex. DPP+ABP)-->
                                 <ute:Tag elem="span" visible="{parts:['oPaymentHdr>sCallOut2'], formatter:'._formatTwoClotBoolean'}">
-                                    <ute:Tag elem="span" text="{oPaymentHdr>sCallOut2}" visible="{parts:['oPaymentHdr>sCallOut2'], formatter:'._formatNotBppBoolean'}"/>
+                                    <ute:Tag elem="span" text="{oPaymentHdr>sCallOut2}"
+                                             visible="{parts:['oPaymentHdr>sCallOut2', 'oPaymentHdr>bExpand', 'oPaymentHdr>bRed'], formatter:'._formatFirstClotGrn'}"
+                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell-Clot-grn"/>
+                                    <ute:Tag elem="span" text="{oPaymentHdr>sCallOut2}"
+                                             visible="{parts:['oPaymentHdr>sCallOut2', 'oPaymentHdr>bExpand', 'oPaymentHdr>bRed'], formatter:'._formatFirstClotBlk'}"
+                                         class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell-Clot-blk"/>
+                                    <ute:Tag elem="span" text="{oPaymentHdr>sCallOut2}"
+                                             visible="{parts:['oPaymentHdr>sCallOut2', 'oPaymentHdr>bExpand', 'oPaymentHdr>bRed'], formatter:'._formatFirstClotRed'}"
+                                         class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell-Clot-red"/>
                                     <ute:Tag elem="span" text="{oPaymentHdr>sCallOut2}" visible="{parts:['oPaymentHdr>sCallOut2'], formatter:'._formatBppBoolean'}"
                                              class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-uderline">
                                         <ute:tooltip>
@@ -291,7 +299,7 @@
                                 <ute:Tag>
                                 <!--LiteUp Case-->
                                 <ute:Tag visible="{ parts:['oPaymentHdr>HyperLinkInd'],
-                                                    formatter:'._formatBoolHyperLink'}">
+                                                    formatter:'._formatBool_LPhyperLink'}">
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c1"
                                              text="{ parts:['oPaymentHdr>Date'],
                                                      formatter:'._formatDate'}"/>
