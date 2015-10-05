@@ -15,15 +15,15 @@
         <div>
             <um:Checkbox id="2015" checked="true" select=".onSelected" />
             <um:Label labelFor="2015-intChk">
-                <span>Usage 2015</span>
+                <span>USAGE <span style="color:#5092ce;">2015</span></span>
             </um:Label>
             <um:Checkbox id="2014" checked="true" select=".onSelected" />
             <um:Label labelFor="2014-intChk">
-                <span>Usage 2014</span>
+                <span>USAGE <span style="color:#000000;">2014</span></span>
             </um:Label>
             <um:Checkbox id="2013" checked="true" select=".onSelected" />
             <um:Label labelFor="2013-intChk">
-                <span>Usage 2013</span>
+                <span>USAGE <span style="color:#f2a814;">2013</span></span>
             </um:Label>
         </div>
     </sm:ScrollContainer>
