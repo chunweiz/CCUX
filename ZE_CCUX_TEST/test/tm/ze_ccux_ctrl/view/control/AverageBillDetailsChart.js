@@ -14,8 +14,8 @@ sap.ui.define(
             metadata: {
                 properties: {
                     width: { type: 'int', defaultValue: 900 },
-                    height: { type: 'int', defaultValue: 300 },
-                    usageTickSize: { type: 'int', defaultValue: 1000 }
+                    height: { type: 'int', defaultValue: 600 },
+                    usageTickSize: { type: 'int', defaultValue: 100 }
                 }
             },
 
@@ -65,7 +65,7 @@ sap.ui.define(
             var oCustomControl = this;
             var oMargin = { top: 0, right: 60, bottom: 60, left: 100 };
             var iWidth = 900 - oMargin.left - oMargin.right;
-            var iHeight = 300 - oMargin.top - oMargin.bottom - 50;
+            var iHeight = 600 - oMargin.top - oMargin.bottom - 50;
             var aDataset = oCustomControl._getDataSet();
 
             // X scale - month
@@ -98,7 +98,7 @@ sap.ui.define(
                 .domain(d3.range(12))
                 .range(['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']);
 
-            var fnAxisMonth = d3.svg.axis()
+            var fnXAxisMonth = d3.svg.axis()
                 .scale(fnScaleMonth)
                 .orient('bottom')
                 .tickValues(d3.range(aMinMaxMonth[0], aMinMaxMonth[1] + 1))
@@ -107,9 +107,51 @@ sap.ui.define(
             oCanvas.append('g')
                 .attr('class', 'tmAVDChart-XAxis')
                 .attr('transform', 'translate(' + [0, iHeight + 30] + ')')
-                .call(fnAxisMonth);
+                .call(fnXAxisMonth);
 
             // Y axis - kwh usage based on usage tick size
+            var fnYAxisUsage = d3.svg.axis()
+                .scale(fnScaleUsage)
+                .orient('left')
+                .ticks(Math.floor(iMaxUsage / iUsageTickSize) + 1)
+                .tickFormat(d3.format('d'));
+
+            oCanvas.append('g')
+                .attr('class', 'tmAVDChart-YAxis')
+                .attr('transform', 'translate(' + [-30, 0] + ')')
+                .call(fnYAxisUsage);
+
+            // X grid
+            oCanvas.append('g')
+                .selectAll('line')
+                .data(d3.range(aMinMaxMonth[0], aMinMaxMonth[1] + 1))
+                .enter()
+                .append('line')
+                    .attr('class', 'tmAVDChart-XGrid')
+                    .attr('x1', function (data) {
+                        return fnScaleMonth(data);
+                    })
+                    .attr('y1', 0)
+                    .attr('x2', function (data) {
+                        return fnScaleMonth(data);
+                    })
+                    .attr('y2', iHeight);
+
+            // Y grid
+            oCanvas.append('g')
+                .selectAll('line')
+                .data(d3.range(0, iMaxUsage + (iUsageTickSize - (iMaxUsage % iUsageTickSize)), iUsageTickSize))
+                .enter()
+                .append('line')
+                    .attr('class', 'tmAVDChart-YGrid')
+                    .attr('x1', 0)
+                    .attr('y1', function (data) {
+                        return fnScaleUsage(data);
+                    })
+                    .attr('x2', iWidth + 30)
+                    .attr('y2', function (data) {
+                        return fnScaleUsage(data);
+                    });
 
             // Average usage lines
             var aDatasetByYear = d3.nest()
@@ -142,7 +184,7 @@ sap.ui.define(
                 .enter()
                 .append('circle')
                     .attr('class', 'tmAVDChart-usageDataPoint')
-                    .attr('r', '3')
+                    .attr('r', '4')
                     .attr('cx', function (data) { return fnScaleMonth(data.usageDate.getMonth()); })
                     .attr('cy', function (data) { return fnScaleUsage(data.usage); })
                     .style('fill', function (data) { return fnLineColor(data.usageDate.getFullYear()); });

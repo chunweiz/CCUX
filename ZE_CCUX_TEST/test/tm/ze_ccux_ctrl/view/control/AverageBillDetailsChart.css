@@ -2,24 +2,42 @@
 
 }
 
+.tmAVDChart .tmAVDChart-XGrid {
+    stroke: #808080;
+    stroke-width: 1;
+}
+
+.tmAVDChart .tmAVDChart-YGrid {
+    stroke: #808080;
+    stroke-width: 1;
+}
+
 .tmAVDChart .tmAVDChart-XAxis path.domain {
-   display: none;
+    display: none;
 }
 
 .tmAVDChart .tmAVDChart-XAxis g.tick text {
-   fill: #808080;
+    fill: #808080;
 }
 
-.tmAVDChart .tmAVDChart-YAxis {
+.tmAVDChart .tmAVDChart-YAxis path.domain {
+    display: none;
+}
 
+.tmAVDChart .tmAVDChart-YAxis g.tick text {
+    fill: #808080;
+}
+
+.tmAVDChart .tmAVDChart-YAxis g.tick:last-of-type {
+    display: none;
 }
 
 .tmAVDChart .tmAVDChart-usageLine {
     fill: none;
-    stroke-width: 2;
+    stroke-width: 3;
 }
 
 .tmAVDChart .tmAVDChart-usageDataPoint {
     stroke: #ffffff; /* same as background color */
-    stroke-width: 2;
+    stroke-width: 3;
 }
