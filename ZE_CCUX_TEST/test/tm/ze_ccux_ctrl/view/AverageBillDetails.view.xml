@@ -10,6 +10,6 @@
 
     <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
         <!-- width:height = 3:2 ratio -->
-        <tm:AverageBillDetailsChart id="chart" width="900" height="600" />
+        <tm:AverageBillDetailsChart id="chart" />
     </sm:ScrollContainer>
 </mvc:View>

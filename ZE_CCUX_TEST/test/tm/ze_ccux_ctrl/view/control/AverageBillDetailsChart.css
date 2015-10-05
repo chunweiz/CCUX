@@ -2,6 +2,14 @@
 
 }
 
+.tmAVDChart .tmAVDChart-XAxis {
+    
+}
+
+.tmAVDChart .tmAVDChart-YAxis {
+
+}
+
 .tmAVDChart .tmAVDChart-usageLine {
     fill: none;
     stroke-width: 2;
