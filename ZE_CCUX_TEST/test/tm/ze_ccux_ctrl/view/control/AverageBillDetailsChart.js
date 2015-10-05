@@ -93,11 +93,21 @@ sap.ui.define(
                 .range([0, iWidth]);
 
             // Y scale - kwh usage
-            var iMaxUsage = d3.max(aDataset, function (data) { return data.usage; });
             var iUsageTickSize = oCustomControl.getUsageTickSize();
+            var iMaxUsage = d3.max(aDataset, function (data) { return data.usage; });
+            var iMaxUsageDomain = iMaxUsage + (iUsageTickSize - (iMaxUsage % iUsageTickSize));
+            var iMinUsage = d3.min(aDataset, function (data) { return data.usage; });
+            var iMinUsageDomain = iMinUsage - (iMinUsage % iUsageTickSize) - iUsageTickSize;
+            iMinUsageDomain = iMinUsageDomain < 0 ? 0 : iMinUsageDomain;
+
+            console.log(iMaxUsageDomain);
+            console.log(iMinUsageDomain);
 
             var fnScaleUsage = d3.scale.linear()
-                .domain([0, iMaxUsage + (iUsageTickSize - (iMaxUsage % iUsageTickSize))])
+                .domain([
+                    0,
+                    iMaxUsageDomain
+                ])
                 .range([iHeight, 0]);
 
             // Create a canvas with margin

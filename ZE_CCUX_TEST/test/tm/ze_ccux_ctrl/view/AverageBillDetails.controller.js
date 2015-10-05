@@ -33,7 +33,7 @@ sap.ui.define(
                     { usageDate: '09/01/2014', usage: 1286 },
                     { usageDate: '08/01/2014', usage: 1574 },
                     { usageDate: '07/01/2014', usage: 1258 },
-                    { usageDate: '06/01/2014', usage: 50 },
+                    { usageDate: '06/01/2014', usage: 1345 },
                     { usageDate: '05/01/2014', usage: 1526 },
                     { usageDate: '04/01/2014', usage: 1712 },
                     { usageDate: '03/01/2014', usage: 1462 },
