@@ -9,22 +9,47 @@
     width="100%"
     displayBlock="true">
 
+    <style>
+        .usageChart {
+            display: inline-block;
+            float: left;
+        }
+
+        .usageChartLegend {
+            display: inline-block;
+            float: left;
+            transform: translateY(100px);
+        }
+
+        .usageChartLegend > div {
+            margin: 10px 0;
+        }
+    </style>
+
     <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
-        <!-- width:height = 3:2 ratio -->
-        <tm:AverageBillDetailsChart id="chart" width="900" height="600" usageTickSize="100" />
-        <div>
-            <um:Checkbox id="2015" checked="true" select=".onSelected" />
-            <um:Label labelFor="2015-intChk">
-                <span>USAGE <span style="color:#5092ce;">2015</span></span>
-            </um:Label>
-            <um:Checkbox id="2014" checked="true" select=".onSelected" />
-            <um:Label labelFor="2014-intChk">
-                <span>USAGE <span style="color:#000000;">2014</span></span>
-            </um:Label>
-            <um:Checkbox id="2013" checked="true" select=".onSelected" />
-            <um:Label labelFor="2013-intChk">
-                <span>USAGE <span style="color:#f2a814;">2013</span></span>
-            </um:Label>
+        <div class="usageChart">
+            <!-- width:height = 3:2 ratio -->
+            <tm:AverageBillDetailsChart id="chart" width="900" height="600" usageTickSize="100" />
+        </div>
+        <div class="usageChartLegend">
+            <div>
+                <um:Checkbox id="2015" checked="true" select=".onSelected" />
+                <um:Label labelFor="2015-intChk">
+                    <span>USAGE <span style="color:#5092ce;">2015</span></span>
+                </um:Label>
+            </div>
+            <div>
+                <um:Checkbox id="2014" checked="true" select=".onSelected" />
+                <um:Label labelFor="2014-intChk">
+                    <span>USAGE <span style="color:#000000;">2014</span></span>
+                </um:Label>
+            </div>
+            <div>
+                <um:Checkbox id="2013" checked="true" select=".onSelected" />
+                <um:Label labelFor="2013-intChk">
+                    <span>USAGE <span style="color:#f2a814;">2013</span></span>
+                </um:Label>
+            </div>
         </div>
     </sm:ScrollContainer>
 </mvc:View>
