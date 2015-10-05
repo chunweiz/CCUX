@@ -173,8 +173,7 @@ sap.ui.define(
 
             var fnUsageLine = d3.svg.line()
                 .x(function (data) { return fnScaleMonth(data.usageDate.getMonth()); })
-                .y(function (data) { return fnScaleUsage(data.usage); })
-                .interpolate('cardinal');
+                .y(function (data) { return fnScaleUsage(data.usage); });
 
             var oUsageLines = this._oCanvas.append('g').selectAll('g')
                 .data(aDatasetByYear)
