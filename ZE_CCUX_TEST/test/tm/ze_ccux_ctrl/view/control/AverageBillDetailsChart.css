@@ -2,8 +2,12 @@
 
 }
 
-.tmAVDChart .tmAVDChart-XAxis {
-    
+.tmAVDChart .tmAVDChart-XAxis path.domain {
+   display: none;
+}
+
+.tmAVDChart .tmAVDChart-XAxis g.tick text {
+   fill: #808080;
 }
 
 .tmAVDChart .tmAVDChart-YAxis {

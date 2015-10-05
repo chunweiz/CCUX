@@ -13,7 +13,7 @@ sap.ui.define(
         var CustomControl = Control.extend('test.tm.ze_ccux_ctrl.view.control.AverageBillDetailsChart', {
             metadata: {
                 properties: {
-                    width: { type: 'int', defaultValue: 600 },
+                    width: { type: 'int', defaultValue: 900 },
                     height: { type: 'int', defaultValue: 300 },
                     usageTickSize: { type: 'int', defaultValue: 1000 }
                 }
@@ -64,7 +64,7 @@ sap.ui.define(
         CustomControl.prototype._createChart = function () {
             var oCustomControl = this;
             var oMargin = { top: 0, right: 60, bottom: 60, left: 100 };
-            var iWidth = 600 - oMargin.left - oMargin.right;
+            var iWidth = 900 - oMargin.left - oMargin.right;
             var iHeight = 300 - oMargin.top - oMargin.bottom - 50;
             var aDataset = oCustomControl._getDataSet();
 
@@ -106,7 +106,7 @@ sap.ui.define(
 
             oCanvas.append('g')
                 .attr('class', 'tmAVDChart-XAxis')
-                .attr('transform', 'translate(' + [0, iHeight] + ')')
+                .attr('transform', 'translate(' + [0, iHeight + 30] + ')')
                 .call(fnAxisMonth);
 
             // Y axis - kwh usage based on usage tick size
