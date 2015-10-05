@@ -24,6 +24,21 @@
         .usageChartLegend > div {
             margin: 10px 0;
         }
+
+        .usageChartLegend-checkbox.uteMChkBox-design-default .uteMChkBox-chk {
+            border-color: #989898;
+            border-radius: 5px;
+        }
+
+        .usageChartLegend-checkbox.uteMChkBox-design-default .uteMChkBox-intChk:checked + .uteMChkBox-chk {
+            background-color: transparent;
+        }
+
+        .usageChartLegend-checkbox.uteMChkBox-design-default .uteMChkBox-intChk:checked + .uteMChkBox-chk::before {
+            border-color: #5bc2af;
+            height: 13px;
+            transform: translate(5px, -3px) rotate(45deg);
+        }
     </style>
 
     <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
@@ -33,20 +48,20 @@
         </div>
         <div class="usageChartLegend">
             <div>
-                <um:Checkbox id="2015" checked="true" select=".onSelected" />
-                <um:Label labelFor="2015-intChk">
+                <um:Checkbox id="2015" class="usageChartLegend-checkbox" checked="true" select=".onSelected" />
+                <um:Label labelFor="2015-intChk" class="usageChartLegend-label">
                     <span>USAGE <span style="color:#5092ce;">2015</span></span>
                 </um:Label>
             </div>
             <div>
-                <um:Checkbox id="2014" checked="true" select=".onSelected" />
-                <um:Label labelFor="2014-intChk">
+                <um:Checkbox id="2014" class="usageChartLegend-checkbox" checked="true" select=".onSelected" />
+                <um:Label labelFor="2014-intChk" class="usageChartLegend-label">
                     <span>USAGE <span style="color:#000000;">2014</span></span>
                 </um:Label>
             </div>
             <div>
-                <um:Checkbox id="2013" checked="true" select=".onSelected" />
-                <um:Label labelFor="2013-intChk">
+                <um:Checkbox id="2013" class="usageChartLegend-checkbox" checked="true" select=".onSelected" />
+                <um:Label labelFor="2013-intChk" class="usageChartLegend-label">
                     <span>USAGE <span style="color:#f2a814;">2013</span></span>
                 </um:Label>
             </div>
