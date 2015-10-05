@@ -68,30 +68,32 @@ sap.ui.define(
             var iHeight = this.getHeight() - oMargin.top - oMargin.bottom - 50;
             var aDataSet = oCustomControl._getDataSet();
 
-            // X scale
+            // X scale - month
             var fnScaleMonth = d3.scale.linear()
                 .domain(d3.extent(aDataSet, function(data) { return data.usageDate.getMonth(); }))
                 .range([0, iWidth]);
 
-            // Y scale
-
+            // Y scale - kwh usage based on usage tick size
+            var iMaxUsage = d3.max(aDataSet, function(data) { return data.usage; });
+            var iUsageTickSize = oCustomControl.getUsageTickSize();
 
             var fnScaleUsage = d3.scale.linear()
-                .domain([
-                    0,
-                ])
+                .domain([0, iMaxUsage + (iUsageTickSize - (iMaxUsage % iUsageTickSize))])
                 .range([iHeight, 0]);
 
             // Create a canvas with margin
             var oCanvas = d3.select('#' + this.getId())
                 .append('svg')
-                    .attr('width', this.getWidth())
-                    .attr('height', this.getHeight())
+                    .attr('viewBox', [0, 0, oCustomControl.getWidth(), oCustomControl.getHeight()].join(' '))
                     .append('g')
                         .attr('transform', 'translate(' + [ oMargin.left, oMargin.top ] + ')');
 
+            // Average usage line
+            var aDatasetByYear = d3.nest()
+                .key(function(data) { return data.usageDate.getFullYear(); })
+                .entries(aDataSet);
 
-
+            
 
         };
 
