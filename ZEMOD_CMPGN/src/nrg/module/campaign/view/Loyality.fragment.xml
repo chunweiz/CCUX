@@ -1,0 +1,33 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:c="sap.ui.commons"
+    xmlns:core="sap.ui.core"
+    xmlns:u="ute.ui.commons"
+    xmlns:um="ute.ui.main"
+    xmlns:l="sap.ui.commons.layout">
+    <u:Tag class="nrgCamOffInvoiceF">
+            <u:Textfield fieldType="Regular"
+                         width="10rem"
+                         editable="true"
+                         placeholder="Reference ID">
+            </u:Textfield>
+            <u:Textfield fieldType="Regular"
+                         width="10rem"
+                         editable="true"
+                         placeholder="First Name">
+            </u:Textfield>
+            <u:Textfield fieldType="Regular"
+                         width="10rem"
+                         editable="true"
+                         placeholder="Last Name">
+            </u:Textfield>
+            <um:Button press=".onAcceptLoyality"
+                       text="Ok"
+                       design="Default">
+            </um:button>
+            <um:Button press=".onDeclineLoyality"
+                       text="Cancel"
+                       design="Default">
+            </um:button>
+    </u:Tag>
+</core:FragmentDefinition>

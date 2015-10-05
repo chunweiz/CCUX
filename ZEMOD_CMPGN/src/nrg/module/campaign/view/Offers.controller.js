@@ -34,6 +34,8 @@ sap.ui.define(
                 aFilters,
                 oTileContainer,
                 oTileTemplate,
+                oTagContainer = this.getView().byId("idnrgCamOff-Dummydisc"),
+                oTagTemplate = this.getView().byId("idnrgCamOff-DummyRow").clone(),
                 iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
                 aFilterIds,
                 aFilterValues,
@@ -53,8 +55,10 @@ sap.ui.define(
                     pinFirstCardConsumption : false,
                     pin: false
 			    }),
-                bInvoiceFirstCard = true;
+                bInvoiceFirstCard = true,
+                fnTagDataRecHandler;
             this._aSelectedComparisionCards = [];
+            this._bSearchEnabled = false;
             this.getView().setModel(oViewModel, "localModel");
             i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
@@ -130,6 +134,18 @@ sap.ui.define(
                     events: {dataReceived : fnRecievedHandler}
                 };
                 oTileContainer.bindAggregation("content", mParameters);
+                sCurrentPath = "/CustMsgS";
+                fnTagDataRecHandler = function (oEvent) {
+                    jQuery.sap.log.info("Odata Read Successfully:::");
+                };
+                mParameters = {
+                    model : "comp-campaign",
+                    path : sCurrentPath,
+                    template : oTagTemplate,
+                    filters : aFilters,
+                    events: {dataReceived : fnTagDataRecHandler}
+                };
+                oTagContainer.bindAggregation("content", mParameters);
             }
         };
        /**
@@ -389,11 +405,13 @@ sap.ui.define(
                 oReactiveButton = this.getView().byId("idCamToggleBtn-R"),
                 oSaveButton = this.getView().byId("idCamToggleBtn-S"),
                 oFinalSaveButton = this.getView().byId("idCamToggleBtn-FS"),
+                oSearchButton = this.getView().byId("idCamToggleBtn-SE"),
                 oNoDataTag = this.getView().byId("idnrgCamHisNoData"),
                 i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             oProactiveButton.removeStyleClass("nrgCamOff-btn-selected");
             oReactiveButton.removeStyleClass("nrgCamOff-btn-selected");
             oSaveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oSearchButton.removeStyleClass("nrgCamOff-btn-selected");
             oFinalSaveButton.removeStyleClass("nrgCamOff-btn-selected");
             sButtonText = oEvent.getSource().getId();
             sButtonText = sButtonText.substring(sButtonText.length - 1, sButtonText.length);
@@ -439,10 +457,84 @@ sap.ui.define(
                         });
                     }
                 });
+            } else {
+                oNoDataTag.removeStyleClass("nrgCamOff-hide");
+                oTileContainer.addStyleClass("nrgCamOff-hide");
             }
             this.getOwnerComponent().getCcuxApp().setOccupied(false);
         };
-
+        /**
+		 * Searching for promo code
+		 *
+		 * @function
+		 * @param {sap.ui.base.Event} oEvent pattern match event in route 'object'
+		 *
+		 */
+        Controller.prototype.promoSearch = function (oEvent, query) {
+            var oSearchField = this.getView().byId("idnrgCamOff-search"),
+                that = this,
+                oProactiveButton = this.getView().byId("idCamToggleBtn-P"),
+                oReactiveButton = this.getView().byId("idCamToggleBtn-R"),
+                oSaveButton = this.getView().byId("idCamToggleBtn-S"),
+                oFinalSaveButton = this.getView().byId("idCamToggleBtn-FS"),
+                oSearchButton = this.getView().byId("idCamToggleBtn-SE"),
+                oNoDataTag = this.getView().byId("idnrgCamHisNoData"),
+                aFilterIds,
+                aFilterValues,
+                aFilters,
+                oModel = this.getOwnerComponent().getModel('comp-campaign'),
+                sCurrentPath = "/CpgSearchS",
+                fnRecievedHandler,
+                oTileContainer = this.getView().byId("idnrgCamOffScroll"),
+                oTileTemplate = this.getView().byId("idnrgCamOffBt").clone(),
+                mParameters,
+                oSorter = new sap.ui.model.Sorter("Type", false);
+            oProactiveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oReactiveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oSaveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oFinalSaveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oSearchButton.addStyleClass("nrgCamOff-btn-selected");
+            if ((oSearchField) && (oSearchField.getValue())) {
+                this._bSearchEnabled = true;
+                aFilterIds = ["Contract", "Promo"];
+                aFilterValues = [this._sContract, oSearchField.getValue()];
+                aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+                // Handler function for tile container
+                fnRecievedHandler = function (oEvent) {
+                    var aContent = oTileContainer.getContent(),
+                        oBinding = oTileContainer.getBinding("content");
+                    if ((aContent !== undefined) && (aContent.length > 0)) {
+                        oNoDataTag.addStyleClass("nrgCamOff-hide");
+                        oTileContainer.removeStyleClass("nrgCamOff-hide");
+                        aFilterIds = ["Type", "Type"];
+                        aFilterValues = ["C", "P"];
+                        aFilters = that._createSearchFilterObject(aFilterIds, aFilterValues);
+                        oBinding.sOperationMode = "Client";
+                        oBinding.aAllKeys = oEvent.getSource().aKeys;
+                        oBinding.filter(aFilters);
+                    } else {
+                        oNoDataTag.removeStyleClass("nrgCamOff-hide");
+                        oTileContainer.addStyleClass("nrgCamOff-hide");
+                    }
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                };
+                mParameters = {
+                    model : "comp-campaign",
+                    path : sCurrentPath,
+                    template : oTileTemplate,
+                    filters : aFilters,
+                    sorter: oSorter,
+                    parameters : {expand: "EFLs"},
+                    events: {dataReceived : fnRecievedHandler}
+                };
+                oTileContainer.bindAggregation("content", mParameters);
+            } else {
+                aFilterIds = ["Contract", "Type", "Type"];
+                aFilterValues = [this._sContract, "SE", "C"];
+                aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+                oTileContainer.getBinding("content").filter(aFilters);
+            }
+        };
         /**
 		 * Move to Campaign details view when the user selected a particular campaign
 		 *
@@ -451,8 +543,33 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.selectCampaign = function (oEvent) {
-            //this.navTo("campaignchg", {coNum: this._sContract, offercodeNum: "50124832"});
-            sap.ui.commons.MessageBox.alert("Comparision work is still in progress, please click on any of the offer tiles for SWAP process");
+            var sDate,
+                sPath,
+                sOfferCode,
+                oContext,
+                sLPCode,
+                fnhandleDialogClosed;
+            oContext = oEvent.getSource().getBindingContext("comp-campaign");
+            sPath = oContext.getPath();
+            sOfferCode = oContext.getProperty("OfferCode");
+            sLPCode = oContext.getProperty("LPcode");
+            fnhandleDialogClosed = function (oEvent) {
+            };
+            if (sLPCode) {
+                if (!this._oDialogFragment) {
+                    this._oDialogFragment = sap.ui.xmlfragment("LoyalityFragment", "nrg.module.campaign.view.Loyality", this);
+                }
+                if (!this._oLoyalityDialog) {
+                    this._oLoyalityDialog = new ute.ui.main.Popup.create({
+                        title: 'Loyality Information',
+                        close: fnhandleDialogClosed,
+                        content: this._oDialogFragment
+                    });
+                }
+            } else {
+                sDate = sPath.substring(sPath.lastIndexOf("=") + 1, sPath.lastIndexOf(")"));
+                this.navTo("campaignchg", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, offercodeNum: sOfferCode, sDate : sDate});
+            }
         };
 
         /**
