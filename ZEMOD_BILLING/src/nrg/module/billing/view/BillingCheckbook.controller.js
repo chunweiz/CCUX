@@ -59,6 +59,14 @@ sap.ui.define(
             }
         };
 
+        CustomController.prototype._formatBoolDP = function (sIndicator) {
+            if (sIndicator === 'DP') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
         CustomController.prototype._formatBoolLP = function (sIndicator) {
             if (sIndicator === 'LP') {return true; } else { return false; }
         };

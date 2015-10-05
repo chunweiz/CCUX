@@ -65,7 +65,7 @@ sap.ui.define(
         //     var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern:"MM/yyyy"});
         //     var dateStr = dateFormat.format(new Date(oDate.getTime()));
         //     return dateStr;
-        // };        
+        // };
 
 
 
