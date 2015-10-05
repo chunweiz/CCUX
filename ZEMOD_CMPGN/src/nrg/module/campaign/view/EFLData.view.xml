@@ -6,9 +6,8 @@
     xmlns:u="ute.ui.commons"
     xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
 
-        <u:Table width="50%"
-            tableType="CampaignTable"
-            class="nrgCamOvr-left nrgCamOvr-top"  >
+        <u:Table width="100%"
+            tableType="CampaignTable">
                 <u:columns>
                     <template:repeat list="{tmpl>/results/columns}">
                             <u:TableColumn>

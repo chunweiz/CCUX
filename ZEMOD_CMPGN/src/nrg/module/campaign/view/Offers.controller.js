@@ -34,6 +34,8 @@ sap.ui.define(
                 aFilters,
                 oTileContainer,
                 oTileTemplate,
+                oTagContainer = this.getView().byId("idnrgCamOff-Dummydisc"),
+                oTagTemplate = this.getView().byId("idnrgCamOff-DummyRow").clone(),
                 iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
                 aFilterIds,
                 aFilterValues,
@@ -53,8 +55,10 @@ sap.ui.define(
                     pinFirstCardConsumption : false,
                     pin: false
 			    }),
-                bInvoiceFirstCard = true;
+                bInvoiceFirstCard = true,
+                fnTagDataRecHandler;
             this._aSelectedComparisionCards = [];
+            this._bSearchEnabled = false;
             this.getView().setModel(oViewModel, "localModel");
             i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
@@ -94,7 +98,7 @@ sap.ui.define(
                         aFilters = that._createSearchFilterObject(aFilterIds, aFilterValues);
                         oBinding.sOperationMode = "Client";
                         oBinding.aAllKeys = oEvent.getSource().aKeys;
-                        oBinding.filter(aFilters);
+                        oBinding.filter(aFilters, "Application");
                         if ((oTileContainer.getContent()) && (oTileContainer.getContent().length > 0)) {
                             oTileContainer.getContent().map(function (item) {
                                 if (item) {
@@ -130,6 +134,18 @@ sap.ui.define(
                     events: {dataReceived : fnRecievedHandler}
                 };
                 oTileContainer.bindAggregation("content", mParameters);
+                sCurrentPath = "/CustMsgS";
+                fnTagDataRecHandler = function (oEvent) {
+                    jQuery.sap.log.info("Odata Read Successfully:::");
+                };
+                mParameters = {
+                    model : "comp-campaign",
+                    path : sCurrentPath,
+                    template : oTagTemplate,
+                    filters : aFilters,
+                    events: {dataReceived : fnTagDataRecHandler}
+                };
+                oTagContainer.bindAggregation("content", mParameters);
             }
         };
        /**
@@ -162,7 +178,6 @@ sap.ui.define(
                 sPath,
                 iCount,
                 oContext,
-                sOfferCode,
                 sStartDate,
                 sDate,
                 oViewModel = this.getView().getModel("localModel"),
@@ -171,56 +186,61 @@ sap.ui.define(
                 oFirstCardConsumption,
                 oSecondCardConsumption,
                 oSelectedObject = oEvent.getSource(),
-                that = this;
+                that = this,
+                bAlreadyExisted = false;
             if ((oEvent.getSource()) && (oEvent.getSource().hasStyleClass("nrgCamOff-btnSelected"))) { // checking whether tile is already selected or not
                 that._aSelectedComparisionCards.map(function (oSelectedContent) {
-                    var sofferCode1,
-                        sofferCode2;
+                    var sPath1,
+                        sPath2;
                     if (oSelectedContent) {
-                        sofferCode1 = oSelectedContent.getBindingContext("comp-campaign").getProperty("OfferCode") || "";
-                        sofferCode2 = oSelectedObject.getBindingContext("comp-campaign").getProperty("OfferCode") || "";
-                        if (sofferCode1 === sofferCode2) {
+                        sPath1 = oSelectedContent.getBindingContext("comp-campaign").getPath() || "";
+                        sPath2 = oSelectedObject.getBindingContext("comp-campaign").getPath() || "";
+                        if (sPath1 === sPath2) {
+                            bAlreadyExisted = true;
                             return;
                         }
                     }
                 });
             }
-            if ((oViewModel) && (oViewModel.getProperty("/invoice"))) { // comparision is enabled for Invoice
-                if (oViewModel.getProperty("/pin")) {
-                    if (oViewModel.getProperty("/pinFirstCardInvoice")) {
-                        oViewModel.setProperty("/invoiceFirstCard", false); // Dont change first card if pin is set
-                    } else {
-                        oViewModel.setProperty("/invoiceFirstCard", true);// Dont change second card if pin is set
+            if (!bAlreadyExisted) {
+                if ((oViewModel) && (oViewModel.getProperty("/invoice"))) { // comparision is enabled for Invoice
+                    if (oViewModel.getProperty("/pin")) {
+                        if (oViewModel.getProperty("/pinFirstCardInvoice")) {
+                            oViewModel.setProperty("/invoiceFirstCard", false); // Dont change first card if pin is set
+                        } else {
+                            oViewModel.setProperty("/invoiceFirstCard", true);// Dont change second card if pin is set
+                        }
                     }
-                }
-                if ((oViewModel) && (oViewModel.getProperty("/invoiceFirstCard"))) {
-                    oViewModel.setProperty("/invoiceFirstCard", false);  // change it to false to show next product in second card
-                    this._changeSelectedObject(oSelectedObject, 0);
-                    this._bindCard(oSelectedObject, 1);
-                } else {
-                    oViewModel.setProperty("/invoiceFirstCard", true);
-                    this._changeSelectedObject(oSelectedObject, 1);
-                    this._bindCard(oSelectedObject, 2);
-                }
-            } else { // comparision is enabled for consumption
-                if (oViewModel.getProperty("/pin")) {
-                    if (oViewModel.getProperty("/pinFirstCardConsumption")) {
-                        oViewModel.setProperty("/consumptionFirstCard", false); // Dont change first card if pin is set
+                    if ((oViewModel) && (oViewModel.getProperty("/invoiceFirstCard"))) {
+                        oViewModel.setProperty("/invoiceFirstCard", false);  // change it to false to show next product in second card
+                        this._changeSelectedObject(oSelectedObject, 0);
+                        this._bindCard(oSelectedObject, 1);
                     } else {
-                        oViewModel.setProperty("/consumptionFirstCard", true);// Dont change second card if pin is set
+                        oViewModel.setProperty("/invoiceFirstCard", true);
+                        this._changeSelectedObject(oSelectedObject, 1);
+                        this._bindCard(oSelectedObject, 2);
                     }
-                }
-                if ((oViewModel) && (oViewModel.getProperty("/consumptionFirstCard"))) {
-                    this._changeSelectedObject(oSelectedObject, 0);
-                    this._bindCard(oSelectedObject, 3);
-                    oViewModel.setProperty("/consumptionFirstCard", false);
+                } else { // comparision is enabled for consumption
+                    if (oViewModel.getProperty("/pin")) {
+                        if (oViewModel.getProperty("/pinFirstCardConsumption")) {
+                            oViewModel.setProperty("/consumptionFirstCard", false); // Dont change first card if pin is set
+                        } else {
+                            oViewModel.setProperty("/consumptionFirstCard", true);// Dont change second card if pin is set
+                        }
+                    }
+                    if ((oViewModel) && (oViewModel.getProperty("/consumptionFirstCard"))) {
+                        this._changeSelectedObject(oSelectedObject, 0);
+                        this._bindCard(oSelectedObject, 3);
+                        oViewModel.setProperty("/consumptionFirstCard", false);
 
-                } else {
-                    this._changeSelectedObject(oSelectedObject, 0);
-                    this._bindCard(oSelectedObject, 4);
-                    oViewModel.setProperty("/consumptionFirstCard", true);
+                    } else {
+                        this._changeSelectedObject(oSelectedObject, 0);
+                        this._bindCard(oSelectedObject, 4);
+                        oViewModel.setProperty("/consumptionFirstCard", true);
+                    }
                 }
             }
+
         };
         /**
 		 * Assign custom data to change the CSS based on that
@@ -267,15 +287,49 @@ sap.ui.define(
                 oFirstCardConsumption = this.getView().byId("idnrgCamOff-firstCardC"),
                 oSecondCardConsumption = this.getView().byId("idnrgCamOff-SecondCardC"),
                 oSelectedObject,
-                sPath = object.getBindingContext("comp-campaign").getPath();// need to be assigned
+                sPath = object.getBindingContext("comp-campaign").getPath(),
+                aEFLDatapaths,
+                iCount,
+                aResults = [],
+                oTemplateModel = new JSONModel(),
+                that = this,
+                oTemplateView,
+                oTableTag,
+                oModel = this.getOwnerComponent().getModel('comp-campaign');// need to be assigned
             if (iCounter === 1) {
                 oSelectedObject = this.getView().byId("idnrgCamOff-firstCardI");
+                oTableTag = that.byId(sap.ui.core.Fragment.createId("Invoice1", "idnrgCamOffPriceT"));
             } else if (iCounter === 2) {
                 oSelectedObject = this.getView().byId("idnrgCamOff-SecondCardI");
+                oTableTag = that.byId(sap.ui.core.Fragment.createId("Invoice2", "idnrgCamOffPriceT"));
             } else if (iCounter === 3) {
                 oSelectedObject = this.getView().byId("idnrgCamOff-firstCardC");
+                oTableTag = that.byId(sap.ui.core.Fragment.createId("Cons1", "idnrgCamOffPriceT"));
             } else if (iCounter === 4) {
                 oSelectedObject = this.getView().byId("idnrgCamOff-SecondCardC");
+                oTableTag = that.byId(sap.ui.core.Fragment.createId("Cons2", "idnrgCamOffPriceT"));
+            }
+           // aContent[0].addStyleClass("nrgCamHisBut-Selected");
+            aEFLDatapaths = oModel.getProperty(sPath + "/EFLs");
+            if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
+                for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
+                    aResults.push(oModel.getProperty("/" + aEFLDatapaths[iCount]));
+                }
+                oTemplateModel.setData(that.convertEFLJson(aResults));
+                that._oEFLModel = oTemplateModel;
+                oTemplateView = sap.ui.view({
+                    preprocessors: {
+                        xml: {
+                            models: {
+                                tmpl : that._oEFLModel
+                            }
+                        }
+                    },
+                    type: sap.ui.core.mvc.ViewType.XML,
+                    viewName: "nrg.module.campaign.view.EFLData"
+                });
+                oTableTag.removeAllAggregation("content");
+                oTableTag.addContent(oTemplateView);
             }
             oSelectedObject.bindElement({
                 model : "comp-campaign",
@@ -389,11 +443,13 @@ sap.ui.define(
                 oReactiveButton = this.getView().byId("idCamToggleBtn-R"),
                 oSaveButton = this.getView().byId("idCamToggleBtn-S"),
                 oFinalSaveButton = this.getView().byId("idCamToggleBtn-FS"),
+                oSearchButton = this.getView().byId("idCamToggleBtn-SE"),
                 oNoDataTag = this.getView().byId("idnrgCamHisNoData"),
                 i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             oProactiveButton.removeStyleClass("nrgCamOff-btn-selected");
             oReactiveButton.removeStyleClass("nrgCamOff-btn-selected");
             oSaveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oSearchButton.removeStyleClass("nrgCamOff-btn-selected");
             oFinalSaveButton.removeStyleClass("nrgCamOff-btn-selected");
             sButtonText = oEvent.getSource().getId();
             sButtonText = sButtonText.substring(sButtonText.length - 1, sButtonText.length);
@@ -421,17 +477,17 @@ sap.ui.define(
             aContent = oTileContainer.getContent();
             oTileTemplate = this._oTileTemplate;
             sCurrentPath = i18NModel.getProperty("nrgCpgChangeOffSet");
-            oTileContainer.getBinding("content").filter(aFilters);
+            oTileContainer.getBinding("content").filter(aFilters, "Application");
             if ((oTileContainer.getContent()) && (oTileContainer.getContent().length > 0)) {
                 oTileContainer.getContent().map(function (oItem) {
                     if (oItem) {
                         that._aSelectedComparisionCards.map(function (oSelectedContent) {
-                            var sofferCode1,
-                                sofferCode2;
+                            var sPath1,
+                                sPath2;
                             if (oSelectedContent) {
-                                sofferCode1 = oSelectedContent.getBindingContext("comp-campaign").getProperty("OfferCode") || "";
-                                sofferCode2 = oItem.getBindingContext("comp-campaign").getProperty("OfferCode") || "";
-                                if (sofferCode1 === sofferCode2) {
+                                sPath1 = oSelectedContent.getBindingContext("comp-campaign").getPath() || "";
+                                sPath2 = oItem.getBindingContext("comp-campaign").getPath() || "";
+                                if (sPath1 === sPath2) {
                                     oItem.addStyleClass("nrgCamOff-btnSelected");
                                     oSelectedContent = oItem;
                                 }
@@ -439,10 +495,90 @@ sap.ui.define(
                         });
                     }
                 });
+            } else {
+                oNoDataTag.removeStyleClass("nrgCamOff-hide");
+                oTileContainer.addStyleClass("nrgCamOff-hide");
             }
             this.getOwnerComponent().getCcuxApp().setOccupied(false);
         };
+        /**
+		 * Searching for promo code
+		 *
+		 * @function
+		 * @param {sap.ui.base.Event} oEvent pattern match event in route 'object'
+		 *
+		 */
+        Controller.prototype.promoSearch = function (oEvent, query) {
+            var oSearchField = this.getView().byId("idnrgCamOff-search"),
+                that = this,
+                oProactiveButton = this.getView().byId("idCamToggleBtn-P"),
+                oReactiveButton = this.getView().byId("idCamToggleBtn-R"),
+                oSaveButton = this.getView().byId("idCamToggleBtn-S"),
+                oFinalSaveButton = this.getView().byId("idCamToggleBtn-FS"),
+                oSearchButton = this.getView().byId("idCamToggleBtn-SE"),
+                oNoDataTag = this.getView().byId("idnrgCamHisNoData"),
+                aFilterIds,
+                aFilterValues,
+                aFilters,
+                oModel = this.getOwnerComponent().getModel('comp-campaign'),
+                i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign"),
+                sCurrentPath = i18NModel.getProperty("nrgCpgChangeOffSet"),
+                fnRecievedHandler,
+                oTileContainer = this.getView().byId("idnrgCamOffScroll"),
+                oTileTemplate = this.getView().byId("idnrgCamOffBt").clone(),
+                mParameters,
+                oSorter = new sap.ui.model.Sorter("Type", false);
 
+            oProactiveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oReactiveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oSaveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oFinalSaveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oSearchButton.addStyleClass("nrgCamOff-btn-selected");
+            that.getOwnerComponent().getCcuxApp().setOccupied(true);
+            if ((oSearchField) && (oSearchField.getValue())) {
+                this._bSearchEnabled = true;
+                aFilterIds = ["Contract", "Promo"];
+                aFilterValues = [this._sContract, oSearchField.getValue()];
+                aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+                // Handler function for tile container
+                fnRecievedHandler = function (oEvent, oData) {
+                    var aContent = oTileContainer.getContent(),
+                        oBinding = oTileContainer.getBinding("content");
+                    if ((aContent !== undefined) && (aContent.length > 0)) {
+                        oNoDataTag.addStyleClass("nrgCamOff-hide");
+                        oTileContainer.removeStyleClass("nrgCamOff-hide");
+                        aFilterIds = ["Type", "Type"];
+                        aFilterValues = ["C", "SE"];
+                        aFilters = that._createSearchFilterObject(aFilterIds, aFilterValues);
+                        oBinding.sOperationMode = "Client";
+                        oBinding.aAllKeys = oEvent.getSource().aKeys;
+                        oBinding.filter(aFilters, "Application");
+                        oSearchField.setValue("");
+                        that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    } else {
+                        oNoDataTag.removeStyleClass("nrgCamOff-hide");
+                        oTileContainer.addStyleClass("nrgCamOff-hide");
+                    }
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                };
+                mParameters = {
+                    model : "comp-campaign",
+                    path : sCurrentPath,
+                    template : oTileTemplate,
+                    filters : aFilters,
+                    sorter: oSorter,
+                    parameters : {expand: "EFLs", operationMode : "Server"},
+                    events: {dataReceived : fnRecievedHandler}
+                };
+                oTileContainer.bindAggregation("content", mParameters);
+            } else {
+                aFilterIds = ["Type", "Type"];
+                aFilterValues = ["SE", "C"];
+                aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+                oTileContainer.getBinding("content").filter(aFilters, "Application");
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
+            }
+        };
         /**
 		 * Move to Campaign details view when the user selected a particular campaign
 		 *
@@ -451,8 +587,56 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.selectCampaign = function (oEvent) {
-            //this.navTo("campaignchg", {coNum: this._sContract, offercodeNum: "50124832"});
-            sap.ui.commons.MessageBox.alert("Comparision work is still in progress, please click on any of the offer tiles for SWAP process");
+            var sDate,
+                sPath,
+                sOfferCode,
+                oContext,
+                sLPCode,
+                fnhandleDialogClosed,
+                oViewModel,
+                sPromo,
+                sLPReqName,
+                that = this;
+            that.getOwnerComponent().getCcuxApp().setOccupied(true);
+            oContext = oEvent.getSource().getBindingContext("comp-campaign");
+            sPath = oContext.getPath();
+            sDate = sPath.substring(sPath.lastIndexOf("=") + 1, sPath.lastIndexOf(")"));
+            sOfferCode = oContext.getProperty("OfferCode");
+            sLPCode = oContext.getProperty("LPcode");
+            sPromo = oContext.getProperty("Promo");
+            sLPReqName = oContext.getProperty("LPReqName");
+            oViewModel = new JSONModel({
+                lprefId : "",
+                showNames : (sLPReqName === "X"),
+                firstName : "",
+                lastName : "",
+                OfferCode : sOfferCode,
+                Date : sDate,
+                LPCode: sLPCode,
+                Promo : sPromo,
+                message : ""
+            });
+            fnhandleDialogClosed = function (oEvent) {
+            };
+            if (sLPCode) {
+                if (!this._oDialogFragment) {
+                    this._oDialogFragment = sap.ui.xmlfragment("LoyalityFragment", "nrg.module.campaign.view.Loyalty", this);
+                }
+                this._oDialogFragment.setModel(oViewModel, "oLoyalModel");
+                if (!this._oLoyalityDialog) {
+                    this._oLoyalityDialog = new ute.ui.main.Popup.create({
+                        title: 'Loyalty Information',
+                        close: fnhandleDialogClosed,
+                        content: this._oDialogFragment
+                    });
+                }
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                this._oLoyalityDialog.open();
+            } else {
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                that.getOwnerComponent().setModel(oViewModel, 'comp-campLocal');
+                this.navTo("campaignchg", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, offercodeNum: sOfferCode, sDate : sDate});
+            }
         };
 
         /**
@@ -478,7 +662,7 @@ sap.ui.define(
                 oIcon,
                 that = this,
                 oSelectedCardContext,
-                sSelectedOfferCode,
+                sSelectedPath,
                 oViewModel = this.getView().getModel("localModel"),
                 bPinSelected = oViewModel.getProperty("/pin");
             if ((oSelectedCheckBox) && (oSelectedCheckBox.getChecked())) { // check box is selected
@@ -491,15 +675,15 @@ sap.ui.define(
                 } else { // if pin is not already selected
                     oViewModel.setProperty("/pin", true);
                     oSelectedCardContext = oSelectedCheckBox.getBindingContext("comp-campaign");
-                    sSelectedOfferCode = oSelectedCardContext.getProperty("OfferCode");
+                    sSelectedPath = oSelectedCardContext.getPath();
                     that._aSelectedComparisionCards.map(function (oSelectedContent, index) {
                         var oContext,
-                            sOfferCode;
+                            sPath;
                         if (oSelectedContent) {
                             oContext = oSelectedContent.getBindingContext("comp-campaign");
                             if (oContext) {
-                                sOfferCode = oContext.getProperty("OfferCode");
-                                if (sSelectedOfferCode === sOfferCode) {
+                                sPath = oContext.getPath();
+                                if (sSelectedPath === sPath) {
                                     if (oViewModel.getProperty("/invoice")) {
                                         if (index === 0) { //if First Card and Invoice
                                             oViewModel.setProperty("/pinFirstCardInvoice", true);
@@ -529,15 +713,15 @@ sap.ui.define(
             } else if ((oSelectedCheckBox) && (!oSelectedCheckBox.getChecked())) { // check box is de-selected
                 oViewModel.setProperty("/pin", false);
                 oSelectedCardContext = oSelectedCheckBox.getBindingContext("comp-campaign");
-                sSelectedOfferCode = oSelectedCardContext.getProperty("OfferCode");
+                sSelectedPath = oSelectedCardContext.getPath();
                 that._aSelectedComparisionCards.map(function (oSelectedContent, index) {
                     var oContext,
-                        sOfferCode;
+                        sPath;
                     if (oSelectedContent) {
                         oContext = oSelectedContent.getBindingContext("comp-campaign");
                         if (oContext) {
-                            sOfferCode = oContext.getProperty("OfferCode");
-                            if (sSelectedOfferCode === sOfferCode) {
+                            sPath = oContext.getPath();
+                            if (sSelectedPath === sPath) {
                                 if (oViewModel.getProperty("/invoice")) {
                                     if (index === 0) { //if First Card and Invoice
                                         oIcon = that.byId(sap.ui.core.Fragment.createId("Invoice1", "nrgCamOff-PinId"));
@@ -581,7 +765,12 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.formatCurrentConsAmount = function (sCurInvoiceAmount, sSimulateInvoiceAmount) {
-            return sSimulateInvoiceAmount || sCurInvoiceAmount;
+            if (sSimulateInvoiceAmount || sCurInvoiceAmount) {
+                return sSimulateInvoiceAmount || sCurInvoiceAmount;
+            } else {
+                return "N/A";
+            }
+
         };
         /**
 		 * Calculate the difference Amount
@@ -596,7 +785,69 @@ sap.ui.define(
                 if ((parseFloat(sCurInvoiceAmount)) && (parseFloat(sEstimateInvoiceAmount))) {
                     return parseFloat(sCurInvoiceAmount) - parseFloat(sEstimateInvoiceAmount);
                 }
+            } else {
+                return "N/A";
             }
+        };
+        /**
+		 * Handler for loyality Cancel option
+		 *
+		 * @function
+		 * @param {sPromoCode} Promo Code value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.onDeclineLoyalty = function (oEvent) {
+            this._oLoyalityDialog.close();
+        };
+        /**
+		 * Handler for loyality Accept option
+		 *
+		 * @function
+		 * @param {sPromoCode} Promo Code value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.onAcceptLoyalty = function (oEvent) {
+            var mParameters,
+                oModel = this.getOwnerComponent().getModel('comp-campaign'),
+                sReqNumber,
+                oLoyalModel = this._oDialogFragment.getModel("oLoyalModel"),
+                sLPCode,
+                sPromo,
+                that = this,
+                sOfferCode,
+                sDate;
+            that.getOwnerComponent().getCcuxApp().setOccupied(true);
+            sReqNumber = oLoyalModel.getProperty("/lprefId");
+            sLPCode = oLoyalModel.getProperty("/LPCode");
+            sPromo = oLoyalModel.getProperty("/Promo");
+            sOfferCode = oLoyalModel.getProperty("/OfferCode");
+            sDate = oLoyalModel.getProperty("/Date");
+            mParameters = {
+                method : "POST",
+                urlParameters : {"LP_Code" : sLPCode,
+                                 "LP_RefID" : sReqNumber,
+                                 "PromoCode" : sPromo},
+                success : function (oData, oResponse) {
+                    if (oData.Code === "E") {
+                        oLoyalModel.setProperty("/message", "Please enter correct Reference Id");
+                        that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                        jQuery.sap.log.info("Odata Read Successfully:::");
+                    } else if (oData.Code === "S") {
+                        jQuery.sap.log.info("Odata Read Successfully:::");
+                        that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                        that._oLoyalityDialog.close();
+                        that.getOwnerComponent().setModel(oLoyalModel, 'comp-campLocal');
+                        that.navTo("campaignchg", {bpNum: that._sBP, caNum: that._sCA, coNum: that._sContract, offercodeNum: sOfferCode, sDate : sDate});
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Eligibility Error occured");
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                }.bind(this)
+            };
+            oModel.callFunction("/CheckLoyalty", mParameters);
         };
         /**
 		 * Back to Overview page function
@@ -608,6 +859,83 @@ sap.ui.define(
             this.navTo("campaign", {bpNum: this._sBP, caNum: this._sCA, coNum : this._sContract, typeV : "C"});
         };
 
+        /**
+		 * Converts in to EFL Json format required by Template view.
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.convertEFLJson = function (results) {
+            var columns = [],
+                temp,
+                tempColumns = [],
+                continueFlag = false,
+                oBRRow = [],
+                oCERow = [],
+                oBRCells = [],
+                oCECells = [],
+                iCount1,
+                iCount2,
+                aJsonDataNew;
+            for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+
+                temp = results[iCount1];
+                if ((temp !== undefined) && (temp.EFLLevel !== undefined)) {
+
+                  // Columns Assignment.
+                    if (tempColumns !== undefined) {
+
+                        for (iCount2 = 0; iCount2 < tempColumns.length; iCount2  = iCount2 + 1) {
+                            if (temp.EFLLevel === tempColumns[iCount2]) {
+                                continueFlag = true;
+                                break;
+                            }
+                        }
+                        if (continueFlag) {
+                            continueFlag = false;
+                        } else {
+                            tempColumns.push(temp.EFLLevel);
+                            columns.push({
+                                "EFLLevel": temp.EFLLevel
+                            });
+                        }
+                    }
+                    // Columns Assignment.
+                }
+            }
+            for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+
+                temp = results[iCount1];
+                if ((temp !== undefined) && (temp.EFLLevel !== undefined)) {
+
+                    if (temp.EFLType === "BR") {
+                        oBRCells.push({
+                            "EFLPrice": temp.EFLPrice
+                        });
+                    }
+
+                    if (temp.EFLType === "CE") {
+                        oCECells.push({
+                            "EFLPrice": temp.EFLPrice
+                        });
+                    }
+                }
+            }
+            aJsonDataNew = {};
+            aJsonDataNew.results = {};
+            aJsonDataNew.results.columns = columns;
+            aJsonDataNew.results.rows = [];
+            aJsonDataNew.results.rows.push({
+                "cells" : oBRCells
+            });
+            aJsonDataNew.results.rows.push({
+                "cells" : oCECells
+            });
+
+            return aJsonDataNew;
+        };
         return Controller;
     }
 );

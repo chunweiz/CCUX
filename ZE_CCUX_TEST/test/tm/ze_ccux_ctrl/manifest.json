@@ -45,7 +45,8 @@
                 "CustJourneyChannel": { "pattern": "CustJourneyChannel", "target": [ "CustJourneyChannel" ] },
                 "CustJourneyLifecycle": { "pattern": "CustJourneyLifecycle", "target": [ "CustJourneyLifecycle" ] },
                 "FooterNotification": { "pattern": "FooterNotification", "target": [ "FooterNotification" ] },
-                "UsageDetails": { "pattern": "UsageDetails", "target": [ "UsageDetails" ] }
+                "UsageDetails": { "pattern": "UsageDetails", "target": [ "UsageDetails" ] },
+                "AverageBillDetails": { "pattern": "AverageBillDetails", "target": [ "AverageBillDetails" ] }
             },
 
             "config": {
@@ -72,7 +73,8 @@
                 "CustJourneyChannel": { "viewName": "CustJourneyChannel", "controlId": "idAppContent" },
                 "CustJourneyLifecycle": { "viewName": "CustJourneyLifecycle", "controlId": "idAppContent" },
                 "FooterNotification": { "viewName": "FooterNotification", "controlId": "idAppContent" },
-                "UsageDetails": { "viewName": "UsageDetails", "controlId": "idAppContent" }
+                "UsageDetails": { "viewName": "UsageDetails", "controlId": "idAppContent" },
+                "AverageBillDetails": { "viewName": "AverageBillDetails", "controlId": "idAppContent" }
             }
         }
     }
