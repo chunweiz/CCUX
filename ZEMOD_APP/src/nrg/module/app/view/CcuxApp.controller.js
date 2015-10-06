@@ -27,8 +27,8 @@ sap.ui.define(
                     { link: true, design: 'Error', text: 'Disconnection notice amount - $130.00. Net amount - $110.00. Due Date: 11/20/2014' }
                 ],
                 campaign: {
-                    title: 'Agent Requested Offers',
-                    text: 'NOT ELIGIBLE'
+                    title: 'Yes Eligible Offers Available',
+                    text: 'CHANGE CAMPAIGN'
                 }
             }), 'view-data');
         };

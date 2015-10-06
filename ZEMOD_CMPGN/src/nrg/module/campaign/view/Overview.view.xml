@@ -20,17 +20,12 @@
                            text="{comp-campaign>Notitle}"
                            class="nrgCamOvr-offerBtn"
                            design="None">
-<!--                    <u:Tag class="nrgCamOvr-offerBtnTitle"
-                           text="{comp-i18n-campaign>nrgAppFooterCustReqOffer}" />-->
                     <u:Tag id="idCamCustReqOffer"
-                           class="nrgCamOvr-offerBtnDesc"
+                           class="nrgCamOvr-offerBtnTitle"
                             text="{= ${comp-campaign>InitTab} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
-                        <u:customData>
-                          <core:CustomData key="flag"
-                                           value="{= ${comp-campaign>Flag} === '' ? 'Y' : 'X' }"
-                                           writeToDom="true" />
-                        </u:customData>
                     </u:Tag>
+                    <u:Tag class="nrgCamOvr-offerBtnDesc"
+                           text="CHANGE CAMPAIGN" />
                 </um:button>
 <!--                <um:Button id="idCamAgtReqOfferBtn"
                            press=".onAgentRequestedOffers"

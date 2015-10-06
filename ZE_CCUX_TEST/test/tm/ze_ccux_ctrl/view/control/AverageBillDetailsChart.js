@@ -14,7 +14,7 @@ sap.ui.define(
             metadata: {
                 properties: {
                     width: { type: 'int', defaultValue: 900 },
-                    height: { type: 'int', defaultValue: 600 },
+                    height: { type: 'int', defaultValue: 400 },
                     usageTickSize: { type: 'int', defaultValue: 100 }
                 }
             },
@@ -82,7 +82,7 @@ sap.ui.define(
             var oCustomControl = this;
             var oMargin = { top: 0, right: 60, bottom: 60, left: 100 };
             var iWidth = 900 - oMargin.left - oMargin.right;
-            var iHeight = 600 - oMargin.top - oMargin.bottom - 50;
+            var iHeight = 400 - oMargin.top - oMargin.bottom - 50;
             var aDataset = oCustomControl._getDataSet();
 
             // X scale - month
@@ -127,7 +127,7 @@ sap.ui.define(
 
             this._oCanvas.append('g')
                 .attr('class', 'tmAVDChart-XAxis')
-                .attr('transform', 'translate(' + [0, iHeight + 30] + ')')
+                .attr('transform', 'translate(' + [0, iHeight + 20] + ')')
                 .call(fnXAxisMonth);
 
             // Y axis - kwh usage based on usage tick size

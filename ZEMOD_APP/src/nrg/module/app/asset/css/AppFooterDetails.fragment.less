@@ -106,103 +106,122 @@
                         }
                     }
                 }
+                & .nrgAppFtrDetails-campaignSection {
+                    display: flex;
 
-                & .nrgAppFtrDetails-eligibleOffers {
-                    width: 285px;
-                    height: 265px;
-                    padding-left: 15px;
-                    padding-right: 15px;
+                    & .nrgAppFtrDetails-eligibleOffers-emptySection {
+                        width: 554px;
+                        height: 265px;
+                        padding: 0 15px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-right: 1px solid @nrgColor-grey-light;
 
-                    & .nrgAppFtrDetails-eligibleOffers-title {
-                        color: @nrgColor-blueLink;
-                        font-weight: @nrgFontWeight-semiBold;
+                        & .nrgAppFtrDetails-noAvailableData span {
+                            font-size: @nrgFontSize-largest;
+                            color: @nrgColor-grey-highlight;
+                            font-weight: @nrgFontWeight-semiBold;
+                        }
                     }
 
-                    & .nrgAppFtrDetails-eligibleOffers-content {
-                        margin-top: 10px;
-                        font-size: @nrgFontSize-small;
+                    & .nrgAppFtrDetails-eligibleOffers {
+                        width: 285px;
+                        height: 265px;
+                        padding-left: 15px;
+                        padding-right: 15px;
 
-                        & .sapMScrollContScroll {
-                            width: 100%;
+                        & .nrgAppFtrDetails-eligibleOffers-title {
+                            color: @nrgColor-blueLink;
+                            font-weight: @nrgFontWeight-semiBold;
+                        }
 
-                            & .nrgAppFtrDetails-eligibleOffers-item {
+                        & .nrgAppFtrDetails-eligibleOffers-content {
+                            margin-top: 10px;
+                            font-size: @nrgFontSize-small;
+
+                            & .sapMScrollContScroll {
                                 width: 100%;
-                                padding: 17px 0;
-                                border-bottom: 1px dashed @nrgColor-grey-dark;
 
-                                & .nrgAppFtrDetails-eligibleOffers-itemTitle {
-                                    display: inline-block;
-                                    color: @nrgColor-blueLink;
-                                    width: 55px;
-                                }
-
-                                & .nrgAppFtrDetails-eligibleOffers-itemContent {
-                                    display: inline-block;
-                                    width: 180px;
-                                    vertical-align: text-top;
-                                }
-
-                                & .nrgAppFtrDetails-eligibleOffers-timePeriod {
+                                & .nrgAppFtrDetails-eligibleOffers-item {
                                     width: 100%;
-                                    margin-top: 10px;
-                                    display: flex;
-                                    & .nrgAppFtrDetails-eligibleOffers-startDate {
-                                        flex-grow: 1;
-                                        display: flex;
-                                        & .nrgAppFtrDetails-eligibleOffers-startDateTitle {
-                                            margin-right: 5px;
-                                            color: @nrgColor-grey-lighter;
-                                        }
-                                        & .nrgAppFtrDetails-eligibleOffers-startDateValue {
-                                            font-weight: @nrgFontWeight-semiBold;
-                                        }
+                                    padding: 17px 0;
+                                    border-bottom: 1px dashed @nrgColor-grey-dark;
+
+                                    & .nrgAppFtrDetails-eligibleOffers-itemTitle {
+                                        display: inline-block;
+                                        color: @nrgColor-blueLink;
+                                        width: 55px;
                                     }
-                                    & .nrgAppFtrDetails-eligibleOffers-endDate {
-                                        flex-grow: 1;
+
+                                    & .nrgAppFtrDetails-eligibleOffers-itemContent {
+                                        display: inline-block;
+                                        width: 180px;
+                                        vertical-align: text-top;
+                                    }
+
+                                    & .nrgAppFtrDetails-eligibleOffers-timePeriod {
+                                        width: 100%;
+                                        margin-top: 10px;
                                         display: flex;
-                                        & .nrgAppFtrDetails-eligibleOffers-endDateTitle {
-                                            margin-right: 5px;
-                                            color: @nrgColor-grey-lighter;
+                                        & .nrgAppFtrDetails-eligibleOffers-startDate {
+                                            flex-grow: 1;
+                                            display: flex;
+                                            & .nrgAppFtrDetails-eligibleOffers-startDateTitle {
+                                                margin-right: 5px;
+                                                color: @nrgColor-grey-lighter;
+                                            }
+                                            & .nrgAppFtrDetails-eligibleOffers-startDateValue {
+                                                font-weight: @nrgFontWeight-semiBold;
+                                            }
                                         }
-                                        & .nrgAppFtrDetails-eligibleOffers-endDateValue {
-                                            font-weight: @nrgFontWeight-semiBold;
+                                        & .nrgAppFtrDetails-eligibleOffers-endDate {
+                                            flex-grow: 1;
+                                            display: flex;
+                                            & .nrgAppFtrDetails-eligibleOffers-endDateTitle {
+                                                margin-right: 5px;
+                                                color: @nrgColor-grey-lighter;
+                                            }
+                                            & .nrgAppFtrDetails-eligibleOffers-endDateValue {
+                                                font-weight: @nrgFontWeight-semiBold;
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
                     }
-                }
 
-                & .nrgAppFtrDetails-campaignButton {
-                    width: 269px;
-                    height: 265px;
-                    padding-right: 10px;
-                    border-right: 1px solid @nrgColor-grey-light;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    & .nrgAppFtrDetails-campaignButton-item {
-                        background-color: @nrgColor-grey-lightBackground;
-                        width: 230px;
-                        height: 80px;
+                    & .nrgAppFtrDetails-campaignButton {
+                        width: 269px;
+                        height: 265px;
+                        padding-right: 10px;
+                        border-right: 1px solid @nrgColor-grey-light;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        flex-direction: column;
 
-                        & .nrgAppFtrDetails-campaignButton-itemTitle {
-                            color: @nrgColor-darkGrey;
-                            font-size: @nrgFontSize-small;
-                            font-weight: @nrgFontWeight-semiBold;
-                            margin-bottom: 5px;
-                        }
+                        & .nrgAppFtrDetails-campaignButton-item {
+                            background-color: @nrgColor-grey-lightBackground;
+                            width: 230px;
+                            height: 80px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            flex-direction: column;
 
-                        & .nrgAppFtrDetails-campaignButton-itemText {
-                            color: @nrgColor-red-pale;
-                            font-size: @nrgFontSize-larger;
-                            font-weight: @nrgFontWeight-semiBold;
+                            & .nrgAppFtrDetails-campaignButton-itemTitle {
+                                color: @nrgColor-darkGrey;
+                                font-size: @nrgFontSize-small;
+                                font-weight: @nrgFontWeight-semiBold;
+                                margin-bottom: 5px;
+                            }
+
+                            & .nrgAppFtrDetails-campaignButton-itemText {
+                                color: @nrgColor-red-pale;
+                                font-size: @nrgFontSize-larger;
+                                font-weight: @nrgFontWeight-semiBold;
+                            }
                         }
                     }
                 }
