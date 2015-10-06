@@ -94,6 +94,11 @@ sap.ui.define(
         };
 
         AppFooter.prototype.updateFooterCampaign = function (sCoNumber) {
+            this._updateFooterCampaignContract(sCoNumber);
+            this._updateFooterCampaignButton(sCoNumber);
+        };
+
+        AppFooter.prototype._updateFooterCampaignContract = function (sCoNumber) {
             // var co = '32253375';
             var sPath = '/CpgFtrS',
                 aFilters = [];
@@ -134,6 +139,46 @@ sap.ui.define(
                 oModel.read(sPath, oParameters);
             }
         };
+
+        AppFooter.prototype._updateFooterCampaignButton = function (sCoNumber) {
+            var co = '32253375';
+            var sPath = '/ButtonS("' + co + '")';
+            var oModel = this._oController.getView().getModel('oCompODataSvc'),
+                oCampaignModel = this._oController.getView().getModel('oFooterCampaign'),
+                oParameters;
+
+            // oCampaignModel.setProperty('/CampaignAvailable', false);
+            // oCampaignModel.setProperty('/EmptyAvailable', true);
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData.results.length > 0) {
+                        // oCampaignModel.setData({Current:{OfferTitle: "None"}, Pending:{OfferTitle: "None"}, History:{OfferTitle: "None"}});
+                        // for (var i = 0; i < oData.results.length; i++) {
+                        //     if (oData.results[i].Type === 'C') {
+                        //         oCampaignModel.setProperty('/Current', oData.results[i]);
+                        //     }
+                        //     if (oData.results[i].Type === 'PE') {
+                        //         oCampaignModel.setProperty('/Pending', oData.results[i]);
+                        //     }
+                        //     if (oData.results[i].Type === 'H') {
+                        //         oCampaignModel.setProperty('/History', oData.results[i]);
+                        //     }
+                        // }
+                        // oCampaignModel.setProperty('/CampaignAvailable', true);
+                        // oCampaignModel.setProperty('/EmptyAvailable', false);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
 
         AppFooter.prototype._formatCampaignTime = function (oDate) {
             var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern:"MM/yyyy"});
