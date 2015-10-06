@@ -164,10 +164,6 @@ sap.ui.define(
         };
 
         AppFooter.prototype._onFooterCaretClick = function (oControlEvent) {
-            $('#' + this._oController.getView().byId('test5566').sId).click(function(){
-                console.log('hey');
-            });
-            
             var oView = this._oController.getView();
             oView.byId('appFtr').toggleStyleClass('uteAppFtr-open');
             this._getSubmenu().open();

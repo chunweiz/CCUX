@@ -49,7 +49,7 @@
                             height="230px" 
                             width="100%" 
                             vertical="true">
-                            <ute:Tag id="test5566" class="nrgAppFtrDetails-rhs-item">
+                            <ute:Tag class="nrgAppFtrDetails-rhs-item">
                                 <ute:Tag class="nrgAppFtrDetails-rhs-currentTitle nrgAppFtrDetails-rhs-itemTitle"
                                     text="{comp-i18n-app>nrgAppFtrDetails-rhs-CURRENT_TITLE}" />
                                 <utmain:Dropdown class="nrgAppFtrDetails-rhs-itemContent"
