@@ -94,13 +94,16 @@ sap.ui.define(
         };
 
         AppFooter.prototype.updateFooterCampaign = function (sCoNumber) {
-            var co = '32253375',
-                sPath = '/CpgFtrS',
+            // var co = '32253375';
+            var sPath = '/CpgFtrS',
                 aFilters = [];
-                aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: co}));
+                aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNumber}));
             var oModel = this._oController.getView().getModel('oCompODataSvc'),
                 oCampaignModel = this._oController.getView().getModel('oFooterCampaign'),
                 oParameters;
+
+            oCampaignModel.setProperty('/CampaignAvailable', false);
+            oCampaignModel.setProperty('/EmptyAvailable', true);
 
             oParameters = {
                 filters: aFilters,
@@ -118,6 +121,8 @@ sap.ui.define(
                                 oCampaignModel.setProperty('/History', oData.results[i]);
                             }
                         }
+                        oCampaignModel.setProperty('/CampaignAvailable', true);
+                        oCampaignModel.setProperty('/EmptyAvailable', false);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -164,10 +169,6 @@ sap.ui.define(
         };
 
         AppFooter.prototype._onFooterCaretClick = function (oControlEvent) {
-            $('#' + this._oController.getView().byId('test5566').sId).click(function(){
-                console.log('hey');
-            });
-
             var oView = this._oController.getView();
             oView.byId('appFtr').toggleStyleClass('uteAppFtr-open');
             this._getSubmenu().open();
