@@ -104,7 +104,7 @@ sap.ui.define(
 
 
             // Update Footer
-            this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._coNum);
+            // this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._coNum);
         };
 
         Controller.prototype._navLeftCallBack = function () {
