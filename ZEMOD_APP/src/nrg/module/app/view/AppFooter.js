@@ -164,6 +164,10 @@ sap.ui.define(
         };
 
         AppFooter.prototype._onFooterCaretClick = function (oControlEvent) {
+            $('#' + this._oController.getView().byId('test5566').sId).click(function(){
+                console.log('hey');
+            });
+
             var oView = this._oController.getView();
             oView.byId('appFtr').toggleStyleClass('uteAppFtr-open');
             this._getSubmenu().open();
@@ -184,7 +188,7 @@ sap.ui.define(
                 this._oSubmenu.setPosition(oView.byId('appFtr'), '0 0');
                 oView.addDependent(this._oSubmenu);
                 oView.byId('appFtrSMenuCaret').attachEvent('click', this._onFooterSubmenuCaretClick, this);
-            
+
                 // Initialize the oData model in footer
                 this._oApp._initFooterOData();
                 this._oApp.updateFooterNotification();

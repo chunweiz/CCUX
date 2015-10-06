@@ -17,37 +17,37 @@
             <article class="nrgCamOvr-offerToolbar nrgCamOvr-top">
                 <um:Button id="idCamCustReqOfferBtn"
                            press=".onCustomerRequestedOffers"
-                           text="{Overview-elig>Notitle}"
+                           text="{comp-campaign>Notitle}"
                            class="nrgCamOvr-offerBtn"
                            design="None">
-                    <u:Tag class="nrgCamOvr-offerBtnTitle"
-                           text="{comp-i18n-campaign>nrgAppFooterCustReqOffer}" />
+<!--                    <u:Tag class="nrgCamOvr-offerBtnTitle"
+                           text="{comp-i18n-campaign>nrgAppFooterCustReqOffer}" />-->
                     <u:Tag id="idCamCustReqOffer"
                            class="nrgCamOvr-offerBtnDesc"
-                            text="{= ${Overview-elig>/CustEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
+                            text="{= ${comp-campaign>InitTab} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
                         <u:customData>
                           <core:CustomData key="flag"
-                                           value="{= ${Overview-elig>/CustEligFlag} === '' ? 'Y' : 'X' }"
+                                           value="{= ${comp-campaign>Flag} === '' ? 'Y' : 'X' }"
                                            writeToDom="true" />
                         </u:customData>
                     </u:Tag>
                 </um:button>
-                <um:Button id="idCamAgtReqOfferBtn"
+<!--                <um:Button id="idCamAgtReqOfferBtn"
                            press=".onAgentRequestedOffers"
-                           text="{Overview-elig>Notitle}"
+                           text="{comp-campaign>Notitle}"
                            class="nrgCamOvr-offerBtn"
                            design="None"
-                           enabled="{= ${Overview-elig>AgntEligFlag} !== '' }">
+                           enabled="{= ${comp-campaign>AgntEligFlag} !== '' }">
                     <u:Tag class="nrgCamOvr-offerBtnTitle" text="{comp-i18n-campaign>nrgAppFooterAgentReqOffer}" />
                     <u:Tag id="idCamAgentReqOffer" class="nrgCamOvr-offerBtnDesc"
-                           text="{= ${Overview-elig>AgntEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
+                           text="{= ${comp-campaign>AgntEligFlag} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
                          <u:customData>
                          <core:CustomData key="flag"
-                                           value="{= ${Overview-elig>AgntEligFlag}  === '' ? 'Y' : 'X' }"
+                                           value="{= ${comp-campaign>AgntEligFlag}  === '' ? 'Y' : 'X' }"
                                            writeToDom="true" />
                         </u:customData>
                     </u:Tag>
-                </um:button>
+                </um:button>-->
             </article>
             <um:TabBar id="idnrgCamOvr-TabBar" design="None" class="nrgCamOvr-TabBar nrgCamOvr-top" >
                 <um:TabBarItem design="Default" key="tb001" select=".toggleCampaign" enabled="{= ${comp-campaign>OfferCode} !== '00000000' }">
@@ -94,7 +94,7 @@
                          icon="sap-icon://nrg-icon/dollar"
                          class="nrgCamOvr-lbl nrgCamOvr-top"
                          labelFor="idCamPriceTbl"  />
-                <u:Tag class="nrgCamOvrPriceT" id="idnrgCamOvrPriceT">
+                <u:Tag class="nrgCamOvrPriceT nrgCamOvr-left nrgCamOvr-top" id="idnrgCamOvrPriceT">
                     <!-- EFL Data Table is dynamically inserted here with XML templating -->
                 </u:Tag>
 

@@ -45,7 +45,6 @@ sap.ui.define(
                 oTemplateModel,
                 aEFLDatapaths,
                 iCount,
-                oEFLJson = {},
                 aResults = [],
                 oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
                 i18NModel;
@@ -61,7 +60,7 @@ sap.ui.define(
             aFilterValues = [this._sContract];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sCurrentPath = i18NModel.getProperty("nrgCurrentPendingSet");
-            sEligibilityPath = i18NModel.getProperty("nrgEligibilitySet");
+            sEligibilityPath = "/ButtonS";
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar");
             oToggleTemplate = this.getView().byId("idnrgCamOvr-TabItem").clone();
@@ -92,7 +91,6 @@ sap.ui.define(
                             aContent[1].setSelected(true);
                         }
                     }
-
                     // Some how Expression binding for this condition is not working, so at the controller level checking again to disable button if pending campaign is not available
                     for (iCount = 0; iCount < aContent.length; iCount = iCount + 1) {
                         sTempValue = aContent[iCount].getBindingContext("comp-campaign").getProperty("OfferCode");
@@ -148,10 +146,10 @@ sap.ui.define(
                         model : "Overview-elig",
                         path : sEligibilityPath
                     });
-                    this.getView().byId("idCamAgtReqOfferBtn").bindElement({
+/*                    this.getView().byId("idCamAgtReqOfferBtn").bindElement({
                         model : "Overview-elig",
                         path : sEligibilityPath
-                    });
+                    });*/
                     oModel.updateBindings(false);
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),

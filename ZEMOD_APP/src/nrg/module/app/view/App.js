@@ -183,7 +183,7 @@ sap.ui.define(
             this._oAppFooter._initFooterOData();
             return this;
         };
-        
+
         App.prototype.updateFooterNotification = function (oPayload) {
             this._oAppFooter.updateFooterNotification(oPayload);
             return this;
