@@ -68,7 +68,6 @@ sap.ui.define(
             oPricingRowTemplate = this.getView().byId("idnrgCamHis-prcRow");
             oPricingTable = this.getView().byId("idnrgCamHisPriceT");
             oTemplateModel = new sap.ui.model.json.JSONModel();
-
             // Function received handler is used to update the view with first History campaign.---start
             fnRecievedHandler = function () {
                 var oBinding;
@@ -76,10 +75,7 @@ sap.ui.define(
                 if ((aRows !== undefined) && (aRows.length > 0)) {
                     sPath = aRows[0].getBindingContext("comp-campaign").getPath();
                     aRows[0].addStyleClass("nrgCamHis-but-selected");
-                    that.getView().bindElement({
-                        model : "comp-campaign",
-                        path : sPath
-                    });
+
                    // Adding EFL Table to History view as XML templating-- start
                     aEFLDatapaths = this.getModel("comp-campaign").getProperty(sPath + "/EFLs");
                     if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
@@ -103,10 +99,14 @@ sap.ui.define(
                             type: sap.ui.core.mvc.ViewType.XML,
                             viewName: "nrg.module.campaign.view.EFLData"
                         });
-                        oPricingTable.addContent(oTemplateView);
+                        that.getView().byId("idnrgCamHisPriceT").removeAllAggregation("content");
+                        that.getView().byId('idnrgCamHisPriceT').addContent(oTemplateView);
                     }
+                    that.getView().bindElement({
+                        model : "comp-campaign",
+                        path : sPath
+                    });
                     // Adding EFL Table to History view as XML templating--end
-
                 } else {
                     oDataTag.addStyleClass("nrgCamHis-hide");
                     oNoDataTag.removeStyleClass("nrgCamHis-hide");
