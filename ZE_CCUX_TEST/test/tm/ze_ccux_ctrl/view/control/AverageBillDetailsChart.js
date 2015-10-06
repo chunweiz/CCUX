@@ -14,7 +14,7 @@ sap.ui.define(
             metadata: {
                 properties: {
                     width: { type: 'int', defaultValue: 900 },
-                    height: { type: 'int', defaultValue: 600 },
+                    height: { type: 'int', defaultValue: 400 },
                     usageTickSize: { type: 'int', defaultValue: 100 }
                 }
             },
@@ -127,7 +127,7 @@ sap.ui.define(
 
             this._oCanvas.append('g')
                 .attr('class', 'tmAVDChart-XAxis')
-                .attr('transform', 'translate(' + [0, iHeight + 30] + ')')
+                .attr('transform', 'translate(' + [0, iHeight + 20] + ')')
                 .call(fnXAxisMonth);
 
             // Y axis - kwh usage based on usage tick size
