@@ -149,12 +149,30 @@ sap.ui.define(
                 .data(aNumOfTicksDomain)
                 .enter()
                 .append('line')
-                    .attr('x1', function(data) { return Math.sin(fnArcTick(data)) * -iRadius * 0.8; })
-                    .attr('y1', function(data) { return Math.cos(fnArcTick(data)) * -iRadius * 0.8; })
-                    .attr('x2', function(data) { return Math.sin(fnArcTick(data)) * -iRadius * 0.85; })
-                    .attr('y2', function(data) { return Math.cos(fnArcTick(data)) * -iRadius * 0.85; })
+                    .attr('x1', function(data) {
+                        var iLength = data === iNumOfSelectedTicks ? 0.78 : 0.8;
+                        return Math.sin(fnArcTick(data)) * -iRadius * iLength;
+                    })
+                    .attr('y1', function(data) {
+                        var iLength = data === iNumOfSelectedTicks ? 0.78 : 0.8;
+                        return Math.cos(fnArcTick(data)) * -iRadius * iLength;
+                    })
+                    .attr('x2', function(data) {
+                        var iLength = data === iNumOfSelectedTicks ? 0.87 : 0.85;
+                        return Math.sin(fnArcTick(data)) * -iRadius * iLength;
+                    })
+                    .attr('y2', function(data) {
+                        var iLength = data === iNumOfSelectedTicks ? 0.87 : 0.85;
+                        return Math.cos(fnArcTick(data)) * -iRadius * iLength;
+                    })
                     .attr('class', function(data) {
-                        return data <= iNumOfSelectedTicks ? 'tmUDGauge-tick tmUDGauge-tick-selected' : 'tmUDGauge-tick';
+                        var aTickClass = ['tmUDGauge-tick'];
+
+                        if (data <= iNumOfSelectedTicks) {
+                            aTickClass.push('tmUDGauge-tick-selected');
+                        }
+
+                        return aTickClass.join(' ');
                     });
 
             // Meter arc label text path
