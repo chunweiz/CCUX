@@ -82,7 +82,7 @@ sap.ui.define(
             var oCustomControl = this;
             var oMargin = { top: 0, right: 60, bottom: 60, left: 100 };
             var iWidth = 900 - oMargin.left - oMargin.right;
-            var iHeight = 600 - oMargin.top - oMargin.bottom - 50;
+            var iHeight = 400 - oMargin.top - oMargin.bottom - 50;
             var aDataset = oCustomControl._getDataSet();
 
             // X scale - month
