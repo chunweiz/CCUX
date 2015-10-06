@@ -141,32 +141,21 @@ sap.ui.define(
         };
 
         AppFooter.prototype._updateFooterCampaignButton = function (sCoNumber) {
-            var co = '32253375';
-            var sPath = '/ButtonS("' + co + '")';
+            // var co = '32253375';
+            var sPath = '/ButtonS(\'' + sCoNumber + '\')';
             var oModel = this._oController.getView().getModel('oCompODataSvc'),
                 oCampaignModel = this._oController.getView().getModel('oFooterCampaign'),
                 oParameters;
 
-            // oCampaignModel.setProperty('/CampaignAvailable', false);
-            // oCampaignModel.setProperty('/EmptyAvailable', true);
-
             oParameters = {
                 success : function (oData) {
-                    if (oData.results.length > 0) {
-                        // oCampaignModel.setData({Current:{OfferTitle: "None"}, Pending:{OfferTitle: "None"}, History:{OfferTitle: "None"}});
-                        // for (var i = 0; i < oData.results.length; i++) {
-                        //     if (oData.results[i].Type === 'C') {
-                        //         oCampaignModel.setProperty('/Current', oData.results[i]);
-                        //     }
-                        //     if (oData.results[i].Type === 'PE') {
-                        //         oCampaignModel.setProperty('/Pending', oData.results[i]);
-                        //     }
-                        //     if (oData.results[i].Type === 'H') {
-                        //         oCampaignModel.setProperty('/History', oData.results[i]);
-                        //     }
-                        // }
-                        // oCampaignModel.setProperty('/CampaignAvailable', true);
-                        // oCampaignModel.setProperty('/EmptyAvailable', false);
+                    if (oData.Contract) {
+                        if (oData.FirstBill === 'x' || oData.FirstBill === 'X') {
+                            oCampaignModel.setProperty('/CampaignButtonText', 'Eligible offers Available');
+                        } else {
+                            oCampaignModel.setProperty('/CampaignButtonText', 'No Eligible offers Available');
+                        }
+                        oCampaignModel.setProperty('/CampaignButtonType', oData.InitTab);
                     }
                 }.bind(this),
                 error: function (oError) {

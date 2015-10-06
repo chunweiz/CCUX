@@ -101,6 +101,10 @@ sap.ui.define(
             this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
             this.getOwnerComponent().getCcuxApp().showNavRight(true);
             this.getOwnerComponent().getCcuxApp().attachNavRight(this._navRightCallBack, this);
+
+
+            // Update Footer
+            this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._coNum);
         };
 
         Controller.prototype._navLeftCallBack = function () {

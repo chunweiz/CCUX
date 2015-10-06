@@ -149,9 +149,9 @@
                                 class="nrgAppFtrDetails-campaignButton-item"
                                 press="onCampaignBtnClick">
                                 <ute:Tag class="nrgAppFtrDetails-campaignButton-itemTitle"
-                                    text="{view-data>/campaign/title}" />
+                                    text="{oFooterCampaign>/CampaignButtonText}" />
                                 <ute:Tag class="nrgAppFtrDetails-campaignButton-itemText"
-                                    text="{view-data>/campaign/text}" />
+                                    text="{comp-i18n-app>nrgAppFtrDetails-campaignButton_TEXT}" />
                             </utmain:Button>
                         </ute:Tag>                        
                     </ute:Tag>
