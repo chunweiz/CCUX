@@ -39,6 +39,17 @@
             height: 13px;
             transform: translate(5px, -3px) rotate(45deg);
         }
+
+        @media (max-width: 1000px) {
+            .usageChartLegend {
+                transform: translateY(0px);
+            }
+            
+            .usageChartLegend > div {
+                display: inline-block;
+                margin: 0 10px;
+            }
+        }
     </style>
 
     <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
