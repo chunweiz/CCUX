@@ -138,6 +138,9 @@ sap.ui.define(
                 .nice();
 
             var iNumOfSelectedTicks = Math.floor(fnKwh2Tick(iCurrentKwh));
+            if (iNumOfSelectedTicks === 0 && iCurrentKwh <= aKwhDomain[0]) {
+                iNumOfSelectedTicks = -1;
+            }
 
             // Tick distribution around meter arc
             var fnArcTick = d3.scale.ordinal()
