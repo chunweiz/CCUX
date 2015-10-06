@@ -108,7 +108,7 @@ sap.ui.define(
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
-                    if (oData) {
+                    if (oData.results.length > 0) {
                         oCampaignModel.setData({Current:{OfferTitle: "None"}, Pending:{OfferTitle: "None"}, History:{OfferTitle: "None"}});
                         for (var i = 0; i < oData.results.length; i++) {
                             if (oData.results[i].Type === 'C') {
