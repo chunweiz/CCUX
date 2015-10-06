@@ -271,10 +271,10 @@ sap.ui.define(
             } else {
                 this._sInitTab = sInitTab;
             }
-            if (sFirstMonthBill === "X") {
-                sap.ui.commons.MessageBox.alert("Customer has to completed atleast One Month Invoice");
+            if (!sFirstMonthBill) {
+                sap.ui.commons.MessageBox.alert("Customer has to completed at least One Month Invoice");
             } else {
-                if (sCustomerEligible === "X") {
+/*                if (sCustomerEligible === "X") {
                     this._getPendingSwapsCount(oEvent);
                 } else {
                     _CancellationPopupHandler = function (sAction) {
@@ -295,8 +295,8 @@ sap.ui.define(
                         message: 'Customer may be charged a cancellation fee',
                         callback: _CancellationPopupHandler
                     });
-                }
-
+                }*/
+                this._getPendingSwapsCount(oEvent);
             }
         };
         /**

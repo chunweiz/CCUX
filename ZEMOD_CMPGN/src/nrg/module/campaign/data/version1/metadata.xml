@@ -137,7 +137,7 @@
                 <Property Name="EFLPrice" Nullable="false" Precision="6" Scale="2" Type="Edm.Decimal"/>
                 <Property MaxLength="4" Name="Brand" Nullable="false" Type="Edm.String"/>
                 <Property Name="PromoRank" Nullable="false" Type="Edm.Byte"/>
-                <NavigationProperty FromRole="FromRole_Cpg_EFL" Name="EFLs" Relationship="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_EFL" ToRole="ToRole_Cpg_EFL"/>
+                <NavigationProperty FromRole="FromRole_Cpg_EFL" Name="EFLS" Relationship="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_EFL" ToRole="ToRole_Cpg_EFL"/>
                 <NavigationProperty FromRole="FromRole_Cpg_Script" Name="Scripts" Relationship="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" ToRole="ToRole_Cpg_Script"/>
             </EntityType>
             <EntityType Name="NNP">

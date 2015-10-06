@@ -454,22 +454,22 @@ sap.ui.define(
             sButtonText = oEvent.getSource().getId();
             sButtonText = sButtonText.substring(sButtonText.length - 1, sButtonText.length);
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
-            aFilterIds = ["Contract", "Type", "Type"];
+            aFilterIds = ["Type", "Type"];
             switch (sButtonText) {
             case "P":
-                aFilterValues = [this._sContract, "P", "C"];
+                aFilterValues = ["P", "C"];
                 break;
             case "R":
-                aFilterValues = [this._sContract, "R", "C"];
+                aFilterValues = ["R", "C"];
                 break;
             case "S":
-                aFilterValues = [this._sContract, "S", "C"];
+                aFilterValues = ["S", "C"];
                 break;
             case "F":
-                aFilterValues = [this._sContract, "F", "C"];
+                aFilterValues = ["F", "C"];
                 break;
             default:
-                aFilterValues = [this._sContract, "F", "C"];
+                aFilterValues = ["F", "C"];
             }
             oEvent.getSource().addStyleClass("nrgCamOff-btn-selected");
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -599,44 +599,47 @@ sap.ui.define(
                 that = this;
             that.getOwnerComponent().getCcuxApp().setOccupied(true);
             oContext = oEvent.getSource().getBindingContext("comp-campaign");
-            sPath = oContext.getPath();
-            sDate = sPath.substring(sPath.lastIndexOf("=") + 1, sPath.lastIndexOf(")"));
-            sOfferCode = oContext.getProperty("OfferCode");
-            sLPCode = oContext.getProperty("LPcode");
-            sPromo = oContext.getProperty("Promo");
-            sLPReqName = oContext.getProperty("LPReqName");
-            oViewModel = new JSONModel({
-                lprefId : "",
-                showNames : (sLPReqName === "X"),
-                firstName : "",
-                lastName : "",
-                OfferCode : sOfferCode,
-                Date : sDate,
-                LPCode: sLPCode,
-                Promo : sPromo,
-                message : ""
-            });
-            fnhandleDialogClosed = function (oEvent) {
-            };
-            if (sLPCode) {
-                if (!this._oDialogFragment) {
-                    this._oDialogFragment = sap.ui.xmlfragment("LoyalityFragment", "nrg.module.campaign.view.Loyalty", this);
+            if (oContext) {
+                sPath = oContext.getPath();
+                sDate = sPath.substring(sPath.lastIndexOf("=") + 1, sPath.lastIndexOf(")"));
+                sOfferCode = oContext.getProperty("OfferCode");
+                sLPCode = oContext.getProperty("LPcode");
+                sPromo = oContext.getProperty("Promo");
+                sLPReqName = oContext.getProperty("LPReqName");
+                oViewModel = new JSONModel({
+                    lprefId : "",
+                    showNames : (sLPReqName === "X"),
+                    firstName : "",
+                    lastName : "",
+                    OfferCode : sOfferCode,
+                    Date : sDate,
+                    LPCode: sLPCode,
+                    Promo : sPromo,
+                    message : ""
+                });
+                fnhandleDialogClosed = function (oEvent) {
+                };
+                if (sLPCode) {
+                    if (!this._oDialogFragment) {
+                        this._oDialogFragment = sap.ui.xmlfragment("LoyalityFragment", "nrg.module.campaign.view.Loyalty", this);
+                    }
+                    this._oDialogFragment.setModel(oViewModel, "oLoyalModel");
+                    if (!this._oLoyalityDialog) {
+                        this._oLoyalityDialog = new ute.ui.main.Popup.create({
+                            title: 'Loyalty Information',
+                            close: fnhandleDialogClosed,
+                            content: this._oDialogFragment
+                        });
+                    }
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    this._oLoyalityDialog.open();
+                } else {
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    that.getOwnerComponent().setModel(oViewModel, 'comp-campLocal');
+                    this.navTo("campaignchg", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, offercodeNum: sOfferCode, sDate : sDate});
                 }
-                this._oDialogFragment.setModel(oViewModel, "oLoyalModel");
-                if (!this._oLoyalityDialog) {
-                    this._oLoyalityDialog = new ute.ui.main.Popup.create({
-                        title: 'Loyalty Information',
-                        close: fnhandleDialogClosed,
-                        content: this._oDialogFragment
-                    });
-                }
-                that.getOwnerComponent().getCcuxApp().setOccupied(false);
-                this._oLoyalityDialog.open();
-            } else {
-                that.getOwnerComponent().getCcuxApp().setOccupied(false);
-                that.getOwnerComponent().setModel(oViewModel, 'comp-campLocal');
-                this.navTo("campaignchg", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, offercodeNum: sOfferCode, sDate : sDate});
             }
+
         };
 
         /**
