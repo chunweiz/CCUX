@@ -138,6 +138,8 @@ sap.ui.define(
                 .nice();
 
             var iNumOfSelectedTicks = Math.floor(fnKwh2Tick(iCurrentKwh));
+
+            // Do not highlight any tick if current kwh is smaller or equal than defined domain
             if (iNumOfSelectedTicks === 0 && iCurrentKwh <= aKwhDomain[0]) {
                 iNumOfSelectedTicks = -1;
             }
