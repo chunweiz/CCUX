@@ -2,7 +2,7 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
     xmlns:utmain="ute.ui.main"
-    xmlns:uctrl="test.tm.ze_ccux_ctrl.view.control"
+    xmlns:uctrl="..tm.ze_ccux_ctrl.view.control"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:c="sap.ui.commons"
     xmlns:l="sap.ui.commons.layout"
