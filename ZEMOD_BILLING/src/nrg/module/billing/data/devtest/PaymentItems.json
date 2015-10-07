@@ -842,7 +842,7 @@
         "HyperLinkInd":"DP",
         "HyperLinkValue":"                                                                                               0.00",
         "Date":null,
-        "Opbel":"",
+        "Opbel":"000116307728",
         "PaymentHdr":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='008005303668')/PaymentHdr"
@@ -850,7 +850,7 @@
         },
         "DPPPlan":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='008005303668')/DPPPlan"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PaymentItems(ContractAccountNumber='',InvoiceNum='008005303668', Opbel='000116307728')/DPPPlan"
           }
         }
       }
