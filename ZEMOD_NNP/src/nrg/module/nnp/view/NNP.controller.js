@@ -120,7 +120,7 @@ sap.ui.define(
                     that._OwnerComponent.getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
-                    sap.ui.commons.MessageBox.alert("Email Validate Service Error");
+                    //sap.ui.commons.MessageBox.alert("Email Validate Service Error");
                     ute.ui.main.Popup.Alert({
                         title: 'Email address validation',
                         message: 'Email Validate Service Error'

@@ -357,7 +357,7 @@
         "InvAmtDue":"678.7900",
         "DueDate":"\/Date(1398056401000+0000)\/",
         "BillDate":"\/Date(1396587601000+0000)\/",
-        "CallOut":"{\"CallOuts\":[ {\"CallOut\":\"DPP\",\"Color\":\"\"}, {\"CallOut\":\"BBP\",\"Color\":\"\"}, {\"CallOut\":\"DPP\",\"Color\":\"\"} ]}",
+        "CallOut":"{\"CallOuts\":[ {\"CallOut\":\"DPP\",\"Color\":\"RED\"}, {\"CallOut\":\"BBP\",\"Color\":\"\"} ]}",
         "BBPAmt":"35.14",
         "BBPAmtAddr":"7213 1/3 ROOT RD SPRING TX 77389",
         "BBPBal":"288.00",

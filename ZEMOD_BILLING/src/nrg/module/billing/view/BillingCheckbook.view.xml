@@ -330,7 +330,42 @@
                                                 <!--DPP Case-->
                                                 <ute:Tag visible="{ parts:['oPaymentHdr>HyperLinkInd'], formatter:'._formatBoolDP'}"
                                                          class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst">
-                                                    <ute:Tag text="test"/>
+                                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-hdr">
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-hdr-cell" text="Installment"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-hdr-cell" text="Amount of Installment"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-hdr-cell" text="Due Date"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-hdr-cell" text="Balance After Installment"/>
+                                                    </ute:Tag>
+                                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst nrgBilling-blshc2-dpInst-inst-grn">
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="1"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="200"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="12/15/2015"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="160"/>
+                                                    </ute:Tag>
+                                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst nrgBilling-blshc2-dpInst-inst-ylw">
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="1"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="200"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="12/15/2015"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="160"/>
+                                                    </ute:Tag>
+                                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst nrgBilling-blshc2-dpInst-inst-red">
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="1"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="200"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="12/15/2015"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="160"/>
+                                                    </ute:Tag>
+                                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst">
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="1"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="200"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="12/15/2015"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="160"/>
+                                                    </ute:Tag>
+                                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst">
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="1"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="200"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="12/15/2015"/>
+                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="160"/>
+                                                    </ute:Tag>
                                                 </ute:Tag>
                                             </ute:Tooltip>
                                         </ute:tooltip>

@@ -14,8 +14,14 @@
     &   .nrgCamHis-left {
             margin-left: 15px;
     }
+    &  .nrgCamOff-ttl {
+            margin-left: 8px;
+            font-size: @nrgFontSize-base;
+            font-weight: @nrgFontWeight-semiBold;
+            display:inline-block;
+    }
     &   .nrgCamHis-top {
-            margin-top: 20px;
+            margin-top: 5px;
     }
     & > div > .nrgCamHis-Div {
             margin-top: 10px;
@@ -69,13 +75,14 @@
             background-color: @nrgColor-grey-light;
             color:@nrgColor-white;
     }
+    & > div > .nrgCamHis-table > tbody > .uteTb-row-campaign:nth-child(odd).nrgCamHis-but-selected {
+            background-color: @nrgColor-grey-highlight;
+            color:@nrgColor-white;
+    }
     &  > div > .nrgCamHis-table > tbody > .nrgCamHis-but-selected {
             background-color: @nrgColor-grey-highlight;
             color:@nrgColor-white;
     }
-/*    & > div > .nrgCamHis-infoTable {
-            display:inline-block;
-    }*/
     &  .nrgCamHis-hide {
             display:none;
     }
@@ -93,6 +100,9 @@
     }
     &  .nrgCamHisPriceT {
             width: 50%;
+    }
+    & > div > .nrgCamHis-table > tbody > .uteTb-row-campaign:nth-child(odd){
+        background-color: transparent;
     }
 }
 
