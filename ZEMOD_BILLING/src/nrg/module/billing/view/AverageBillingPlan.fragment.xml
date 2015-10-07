@@ -2,11 +2,36 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ute="ute.ui.commons"
     xmlns:utmain="ute.ui.main"
+    xmlns:uctrl="test.tm.ze_ccux_ctrl.view.control"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:c="sap.ui.commons"
     xmlns:l="sap.ui.commons.layout"
     xmlns:core="sap.ui.core"
     xmlns:m="sap.m">
     <ute:Tag text="test">
+        <div class="usageChart">
+            <!-- width:height = 3:2 ratio -->
+            <uctrl:AverageBillDetailsChart id="chart" width="900" height="400" usageTickSize="100" />
+        </div>
+        <div class="usageChartLegend">
+            <div>
+                <utmain:Checkbox id="2015" class="usageChartLegend-checkbox" checked="true" select=".onSelected" />
+                <utmain:Label labelFor="2015-intChk" class="usageChartLegend-label">
+                    <span>USAGE <span style="color:#5092ce;">2015</span></span>
+                </utmain:Label>
+            </div>
+            <div>
+                <utmain:Checkbox id="2014" class="usageChartLegend-checkbox" checked="true" select=".onSelected" />
+                <utmain:Label labelFor="2014-intChk" class="usageChartLegend-label">
+                    <span>USAGE <span style="color:#000000;">2014</span></span>
+                </utmain:Label>
+            </div>
+            <div>
+                <utmain:Checkbox id="2013" class="usageChartLegend-checkbox" checked="true" select=".onSelected" />
+                <utmain:Label labelFor="2013-intChk" class="usageChartLegend-label">
+                    <span>USAGE <span style="color:#f2a814;">2013</span></span>
+                </utmain:Label>
+            </div>
+        </div>
     </ute:Tag>
 </core:FragmentDefinition>
