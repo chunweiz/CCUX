@@ -3,14 +3,14 @@
 
 sap.ui.define(
     [
-        'nrg/base/view/BaseController',
-        'sap/ui/model/Filter',
+        'nrg/base/view/BaseController'
+/*        'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
         'jquery.sap.global',
-        'sap/ui/model/json/JSONModel'
+        'sap/ui/model/json/JSONModel'*/
     ],
 
-    function (CoreController, Filter, FilterOperator, jQuery, JSONModel) {
+    function (CoreController) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.usage.view.Usage');
@@ -26,7 +26,7 @@ sap.ui.define(
 		/* lifecycle method- Before Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onBeforeRendering = function () {
-            var oBindingInfo,
+/*            var oBindingInfo,
                 oServiceAddressDropDown = this.getView().byId("idnrgUsgServiceAdd-DropDown"),
                 oServiceAddressTemplate = this.getView().byId("idnrgUsgServiceAdd-DropDownItem"),
                 sPath,
@@ -34,7 +34,8 @@ sap.ui.define(
                 aFilterValues,
                 aFilters,
                 fnRecievedHandler,
-                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
+                that = this;
             this._sContract = oRouteInfo.parameters.coNum;
             this._sBP = oRouteInfo.parameters.bpNum;
             this._sCA = oRouteInfo.parameters.caNum;
@@ -42,17 +43,22 @@ sap.ui.define(
             aFilterValues = [this._sContract, this._sCA];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             // Handler function for Tab Bar Item.
-            fnRecievedHandler = function (oEvent) {
+            fnRecievedHandler = function (oEvent, oData) {
+                var aContent = oServiceAddressDropDown.getContent();
+                if ((aContent) && (aContent.length > 0)) {
+                    oServiceAddressDropDown.setSelectedKey(aContent[0].getKey());
+                }
+                oServiceAddressDropDown.getBinding("content").detachEvent("dataReceived", fnRecievedHandler);
             };
             sPath = "/SrvAddrS";
             oBindingInfo = {
                 model : "comp-usage",
                 path : sPath,
                 template : oServiceAddressTemplate,
-                filters : aFilters,
-                events: {dataReceived : fnRecievedHandler}
+                filters : aFilters
+                //events: {dataReceived : fnRecievedHandler}
             };
-            oServiceAddressDropDown.bindAggregation("content", oBindingInfo);
+            oServiceAddressDropDown.bindAggregation("content", oBindingInfo);*/
         };
        /**
 		 * Assign the filter objects based on the input selection
@@ -63,20 +69,20 @@ sap.ui.define(
 		 * @private
 		 */
         Controller.prototype._createSearchFilterObject = function (aFilterIds, aFilterValues) {
-            var aFilters = [],
+/*            var aFilters = [],
                 iCount;
 
             for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
                 aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
             }
-            return aFilters;
+            return aFilters;*/
         };
         /* =========================================================== */
 		/* lifecycle method- Before Rendering                          */
 		/* =========================================================== */
         Controller.prototype.expandInfoline = function (oEvent) {
-            var oCurrentInfoLine = oEvent.getSource().getParent();
-            oCurrentInfoLine.setExpanded(!(oCurrentInfoLine.getExpanded()));
+/*            var oCurrentInfoLine = oEvent.getSource().getParent();
+            oCurrentInfoLine.setExpanded(!(oCurrentInfoLine.getExpanded()));*/
         };
 
         return Controller;
