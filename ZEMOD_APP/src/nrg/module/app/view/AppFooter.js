@@ -214,15 +214,15 @@ sap.ui.define(
                 oRouting = this._oController.getView().getModel('oFooterRouting'),
                 item = oControlEvent.getSource().getDomRef().childNodes[0];
             
-            if ($(item).hasClass('currentItem')) {
+            if ($(item).hasClass('currentItem') && $(item).hasClass('hasValue')) {
                 oRouter.navTo('campaign', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber, typeV: 'C'});
             }
 
-            if ($(item).hasClass('pendingItem')) {
+            if ($(item).hasClass('pendingItem') && $(item).hasClass('hasValue')) {
                 oRouter.navTo('campaign', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber, typeV: 'PE'});
             }
 
-            if ($(item).hasClass('historyItem')) {
+            if ($(item).hasClass('historyItem') && $(item).hasClass('hasValue')) {
                 oRouter.navTo('campaignhistory', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber});
             }
             
