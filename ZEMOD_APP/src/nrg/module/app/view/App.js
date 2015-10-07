@@ -194,8 +194,8 @@ sap.ui.define(
             return this;
         };
 
-        App.prototype.updateFooterCampaign = function (oPayload) {
-            this._oAppFooter.updateFooterCampaign(oPayload);
+        App.prototype.updateFooterCampaign = function (sBpNumber, sCaNumber, sCoNumber) {
+            this._oAppFooter.updateFooterCampaign(sBpNumber, sCaNumber, sCoNumber);
             return this;
         };
 

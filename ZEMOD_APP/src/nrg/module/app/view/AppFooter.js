@@ -1,4 +1,6 @@
 /*global sap*/
+/*globals ute*/
+/*globals $*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -36,10 +38,12 @@ sap.ui.define(
         /*------------------ Footer Update ----------------*/
 
         AppFooter.prototype._initFooterOData = function () {
-            this._oController.getView().setModel(this._oController.getOwnerComponent().getModel('comp-app'), 'oCompODataSvc');
-            this._oController.getView().setModel(this._oController.getOwnerComponent().getModel('rhs-app'), 'oRHSODataSvc');
-            this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
+            this._oController.getView().setModel(this._oController.getView().getModel('comp-app'), 'oCompODataSvc');
+            this._oController.getView().setModel(this._oController.getView().getModel('rhs-app'), 'oRHSODataSvc');
+            this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterNotification');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterRHS');
+            this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
+            this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterRouting');
         };
 
         AppFooter.prototype.updateFooterNotification = function (sBpNumber, sCaNumber) {
@@ -93,45 +97,65 @@ sap.ui.define(
             }
         };
 
-        AppFooter.prototype.updateFooterCampaign = function (sCoNumber) {
+        AppFooter.prototype.updateFooterCampaign = function (sBpNumber, sCaNumber, sCoNumber) {
+            // this._oController.getView().byId('nrgAppFtrDetails-appFooterContent').getController().updateFooterCampaign(sBpNumber, sCaNumber, sCoNumber);
+        
+            var oRouting = this._oController.getView().getModel('oFooterRouting');
+
             this._updateFooterCampaignContract(sCoNumber);
             this._updateFooterCampaignButton(sCoNumber);
+
+            oRouting.setProperty('/BpNumber', sBpNumber);
+            oRouting.setProperty('/CaNumber', sCaNumber);
+            oRouting.setProperty('/CoNumber', sCoNumber);
         };
 
+
+
         AppFooter.prototype._updateFooterCampaignContract = function (sCoNumber) {
-            // var co = '32253375';
             var sPath = '/CpgFtrS',
                 aFilters = [];
                 aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNumber}));
+
             var oModel = this._oController.getView().getModel('oCompODataSvc'),
                 oCampaignModel = this._oController.getView().getModel('oFooterCampaign'),
-                oParameters;
-
-            oCampaignModel.setProperty('/CampaignAvailable', false);
-            oCampaignModel.setProperty('/EmptyAvailable', true);
+                oParameters;            
 
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
-                    if (oData.results.length > 0) {
-                        oCampaignModel.setData({Current:{OfferTitle: "None"}, Pending:{OfferTitle: "None"}, History:{OfferTitle: "None"}});
+                    if (oData.results.length > 0) {                       
+                        // oCampaignModel.setData({Current:{OfferTitle: "None"}, Pending:{OfferTitle: "None"}, History:{OfferTitle: "None"}});
                         for (var i = 0; i < oData.results.length; i++) {
                             if (oData.results[i].Type === 'C') {
                                 oCampaignModel.setProperty('/Current', oData.results[i]);
+                                if (oData.results[i].OfferTitle !== 'None' && oData.results[i].OfferTitle !== '') {
+                                    this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers-currentItem').addStyleClass('hasValue');
+                                } 
                             }
                             if (oData.results[i].Type === 'PE') {
                                 oCampaignModel.setProperty('/Pending', oData.results[i]);
+                                if (oData.results[i].OfferTitle !== 'None' && oData.results[i].OfferTitle !== '') {
+                                    this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers-pendingItem').addStyleClass('hasValue');
+                                } 
                             }
                             if (oData.results[i].Type === 'H') {
                                 oCampaignModel.setProperty('/History', oData.results[i]);
+                                if (oData.results[i].OfferTitle !== 'None' && oData.results[i].OfferTitle !== '') {
+                                    this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers-historyItem').addStyleClass('hasValue');
+                                } 
                             }
                         }
                         oCampaignModel.setProperty('/CampaignAvailable', true);
                         oCampaignModel.setProperty('/EmptyAvailable', false);
+                    } else {
+                        oCampaignModel.setProperty('/CampaignAvailable', false);
+                        oCampaignModel.setProperty('/EmptyAvailable', true);
                     }
                 }.bind(this),
                 error: function (oError) {
-                    //Need to put error message
+                    oCampaignModel.setProperty('/CampaignAvailable', false);
+                    oCampaignModel.setProperty('/EmptyAvailable', true);
                 }.bind(this)
             };
 
@@ -141,8 +165,8 @@ sap.ui.define(
         };
 
         AppFooter.prototype._updateFooterCampaignButton = function (sCoNumber) {
-            // var co = '32253375';
             var sPath = '/ButtonS(\'' + sCoNumber + '\')';
+            
             var oModel = this._oController.getView().getModel('oCompODataSvc'),
                 oCampaignModel = this._oController.getView().getModel('oFooterCampaign'),
                 oParameters;
@@ -152,14 +176,16 @@ sap.ui.define(
                     if (oData.Contract) {
                         if (oData.FirstBill === 'x' || oData.FirstBill === 'X') {
                             oCampaignModel.setProperty('/CampaignButtonText', 'Eligible offers Available');
+                            oCampaignModel.setProperty('/CampaignFirstBill', true);
                         } else {
                             oCampaignModel.setProperty('/CampaignButtonText', 'No Eligible offers Available');
+                            oCampaignModel.setProperty('/CampaignFirstBill', false);
                         }
                         oCampaignModel.setProperty('/CampaignButtonType', oData.InitTab);
                     }
                 }.bind(this),
                 error: function (oError) {
-                    //Need to put error message
+
                 }.bind(this)
             };
 
@@ -168,12 +194,67 @@ sap.ui.define(
             }
         };
 
+        AppFooter.prototype.onCampaignBtnClick = function () {
+            var oCampaignModel = this._oController.getView().getModel('oFooterCampaign'),
+                oRouter = this._oController.getOwnerComponent().getRouter(),
+                oRouting = this._oController.getView().getModel('oFooterRouting');
 
-        AppFooter.prototype._formatCampaignTime = function (oDate) {
-            var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern:"MM/yyyy"});
-            var dateStr = dateFormat.format(new Date(oDate.getTime()));
-            return dateStr;
+            if (oCampaignModel.getProperty('/CampaignFirstBill')) {
+                oRouter.navTo('campaignoffers', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber, typeV: oCampaignModel.getProperty('/CampaignButtonType')});
+            } else {
+                ute.ui.main.Popup.Alert({
+                    title: 'No First Bill',
+                    message: 'Customer has to completed at least One Month Invoice'
+                });
+            }
         };
+
+        AppFooter.prototype.onCampaignItemClick = function (oControlEvent) {
+            var oRouter = this._oController.getOwnerComponent().getRouter(),
+                oRouting = this._oController.getView().getModel('oFooterRouting'),
+                item = oControlEvent.getSource().getDomRef().childNodes[0];
+            
+            if ($(item).hasClass('currentItem')) {
+                oRouter.navTo('campaign', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber, typeV: 'C'});
+            }
+
+            if ($(item).hasClass('pendingItem')) {
+                oRouter.navTo('campaign', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber, typeV: 'PE'});
+            }
+
+            if ($(item).hasClass('historyItem')) {
+                oRouter.navTo('campaignhistory', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber});
+            }
+            
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

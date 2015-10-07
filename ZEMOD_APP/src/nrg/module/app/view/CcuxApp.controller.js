@@ -61,11 +61,13 @@ sap.ui.define(
             }
         };
 
-        // AppFooter.prototype._formatCampaignTime = function (oDate) {
-        //     var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern:"MM/yyyy"});
-        //     var dateStr = dateFormat.format(new Date(oDate.getTime()));
-        //     return dateStr;
-        // };
+        CustomController.prototype._onCampaignBtnClick = function (oControlEvent) {
+            this._oApp._getFooter().onCampaignBtnClick(oControlEvent);
+        };
+
+        CustomController.prototype._onCampaignItemClick = function (oControlEvent) {
+            this._oApp._getFooter().onCampaignItemClick(oControlEvent);
+        };
 
 
 
