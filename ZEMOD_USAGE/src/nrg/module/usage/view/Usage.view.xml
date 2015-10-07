@@ -11,7 +11,7 @@
           width="100%"
           displayBlock="true">
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
-        <u:Tag class="nrgUsg">
+<!--        <u:Tag class="nrgUsg">
             <u:Tag class="nrgUsg-ttl" text="{comp-i18n-usage>nrgUsgLTtl}" />
                 <u:Tag class="nrgUsg-tiers">
                         <u:Tag class="nrgUsg-tier">
@@ -70,10 +70,11 @@
                         <u:Tag text="{comp-i18n-usage>nrgUsgHdCDIHDI}" class="nrgUsgTag-hd"/>
                         <u:Tag text="{comp-i18n-usage>nrgUsgHdDollar}" class="nrgUsgTag-hd"/>
                     </u:Tag>
-                    <u:Tag content="{comp-usage>/table}" class="nrgUsgTable-Row">
+                    <u:Tag class="nrgUsgTable-Row">
                         <um:Infoline design="None">
                             <um:headerContent class="nrgUsgTable-Row">
-                                <u:Tag text="{comp-usage>PeriodBegin}-{comp-usage>PeriodEnd}" class="nrgUsgTag-Date"/>
+                                <u:Tag text="{= (${comp-usage>PeriodBegin} &amp;&amp; ${comp-usage>PeriodEnd}) ? ${comp-usage>PeriodBegin} - ${comp-usage>PeriodEnd} : '' }"
+                                       class="nrgUsgTag-Date"/>
                                 <u:Tag text="{comp-usage>BillingDays}" class="nrgUsgTag1"/>
                                 <um:Button press=".expandInfoline" text="{comp-usage>Reading}"  design="None" class="nrgUsgButton"/>
                                 <u:Tag text="{comp-usage>KwhUsage}" class="nrgUsgTag"/>
@@ -104,11 +105,11 @@
             <um:Dropdown select=".onServiceAdd"
                                  placeholder="Select Service Address"
                                  class="nrgUsg-top">
-                <um:DropdownItem key="{comp-usage>value}" class="nrgUsg-DdLItem" id="idnrgUsgServiceAdd-DropDownItem">
+                <um:DropdownItem key="{comp-usage>Contract}" class="nrgUsg-DdLItem" id="idnrgUsgServiceAdd-DropDownItem">
                     <u:Tag text="{comp-usage>CA}-{comp-usage>Contract}-{comp-usage>ESID}-{comp-usage>House}-{comp-usage>Street}-{comp-usage>Apt}-{comp-usage>City}-{comp-usage>State}-{comp-usage>ZIP}"/>
                 </um:DropdownItem>
             </um:Dropdown>
-       </u:Tag>
+       </u:Tag>-->
 
    </u:Tag>
 </mvc:View>
