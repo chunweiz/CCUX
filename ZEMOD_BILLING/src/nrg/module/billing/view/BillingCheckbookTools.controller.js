@@ -4,18 +4,18 @@
 
 sap.ui.define(
     [
-        'sap/ui/core/mvc/Controller'
+        'sap/ui/core/mvc/Controller',
+        'sap/ui/core/Fragment',
+        'sap/ui/model/json/JSONModel'
     ],
 
-    function (CoreController) {
+    function (CoreController,Fragment,JOSNModel) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.billing.view.BillingCheckbookTools');
 
-        Controller.prototype.onInit = function () {
-        };
-
-        Controller.prototype.onBeforeRendering = function () {
+        Controller.prototype.onInit = function ()
+        {
             this.getView().byId('chart').setDataModel(new JSONModel({
                 data: [
                     { usageDate: '07/01/2013', usage: 1456 },
@@ -47,6 +47,9 @@ sap.ui.define(
                     { usageDate: '05/01/2015', usage: 1300 }
                 ]
             }));
+        };
+
+        Controller.prototype.onBeforeRendering = function () {
         };
 
         Controller.prototype._onAvgBillBtnClicked = function () {
