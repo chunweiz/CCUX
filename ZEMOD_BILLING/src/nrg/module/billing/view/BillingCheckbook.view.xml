@@ -336,35 +336,14 @@
                                                         <ute:Tag class="nrgBilling-blshc2-dpInst-hdr-cell" text="Due Date"/>
                                                         <ute:Tag class="nrgBilling-blshc2-dpInst-hdr-cell" text="Balance After Installment"/>
                                                     </ute:Tag>
-                                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst nrgBilling-blshc2-dpInst-inst-grn">
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="1"/>
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="200"/>
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="12/15/2015"/>
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="160"/>
-                                                    </ute:Tag>
-                                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst nrgBilling-blshc2-dpInst-inst-ylw">
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="1"/>
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="200"/>
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="12/15/2015"/>
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="160"/>
-                                                    </ute:Tag>
-                                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst nrgBilling-blshc2-dpInst-inst-red">
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="1"/>
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="200"/>
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="12/15/2015"/>
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="160"/>
-                                                    </ute:Tag>
-                                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst">
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="1"/>
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="200"/>
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="12/15/2015"/>
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="160"/>
-                                                    </ute:Tag>
-                                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst">
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="1"/>
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="200"/>
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="12/15/2015"/>
-                                                        <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="160"/>
+                                                    <ute:Tag content="{oPaymentHdr>DpInstls/results}"
+                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst nrgBilling-blshc2-dpInst-inst-grn">
+                                                        <ute:Tag>
+                                                            <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="{oPaymentHdr>InstlMent}"/>
+                                                            <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="{oPaymentHdr>AmtOfInstlMent}"/>
+                                                            <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="{oPaymentHdr>DueDate}"/>
+                                                            <ute:Tag class="nrgBilling-blshc2-dpInst-inst-cell" text="{oPaymentHdr>BalAftInstlMent}"/>
+                                                        </ute:Tag>
                                                     </ute:Tag>
                                                 </ute:Tag>
                                             </ute:Tooltip>
