@@ -49,14 +49,33 @@
                     padding-right: 15px;
                     border-right: 1px solid @nrgColor-grey-light;
 
-                    & .nrgAppFtrDetails-notification-title {
-                        color: @nrgColor-blueLink;
-                        font-weight: @nrgFontWeight-semiBold;
+                    & .nrgAppFtrDetails-notification-emptySection {
+                        width: 520px;
+                        height: 265px;
+                        padding: 0 15px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-left: 1px solid @nrgColor-grey-light;
+
+                        & .nrgAppFtrDetails-noAvailableData span {
+                            font-size: @nrgFontSize-largest;
+                            color: @nrgColor-grey-highlight;
+                            font-weight: @nrgFontWeight-semiBold;
+                        }
                     }
 
-                    & .nrgAppFtrDetails-notification-content {
-                        margin-top: 10px;
-                        font-size: @nrgFontSize-small;
+                    & .nrgAppFtrDetails-notification-alertSection {
+                        
+                        & .nrgAppFtrDetails-notification-title {
+                            color: @nrgColor-blueLink;
+                            font-weight: @nrgFontWeight-semiBold;
+                        }
+
+                        & .nrgAppFtrDetails-notification-content {
+                            margin-top: 10px;
+                            font-size: @nrgFontSize-small;
+                        }
                     }
                 }
 
