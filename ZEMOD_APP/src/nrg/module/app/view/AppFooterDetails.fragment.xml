@@ -19,25 +19,36 @@
                 <div class="uteAppHdrSMenu-flexbox">
                     <!-- Notifications (BP and CA Level)-->
                     <ute:Tag class="nrgAppFtrDetails-notification">
-                        <!-- Title -->
-                        <ute:Tag elem="span" class="nrgAppFtrDetails-notification-title"
-                            text="{comp-i18n-app>nrgAppFtrDetails-notification-TITLE}" />
-                        <!-- Contents -->
-                        <sm:ScrollContainer
-                            id="nrgAppFtrDetails-notification-scrollContent"
-                            class="nrgAppFtrDetails-notification-content"
-                            height="230px"
-                            width="100%"
-                            horizontal="true"
-                            vertical="true">
-                            <ua:FooterNotificationCenter content="{view-data>/notification}">
-                                <ua:FooterNotificationItem
-                                    design="{view-data>design}"
-                                    link="{view-data>link}"
-                                    text="{view-data>text}"
-                                    linkPress="._onFooterNotificationLinkPress" />
-                            </ua:FooterNotificationCenter>
-                        </sm:ScrollContainer>
+                        <!-- Default Empty View -->
+                        <ute:Tag id="nrgAppFtrDetails-notification-emptySection" class="nrgAppFtrDetails-notification-emptySection" visible="true">
+                            <ute:TextView
+                                text="{comp-i18n-app>nrgAppFtrDetails-empty-noti-TITLE}"
+                                class="nrgAppFtrDetails-noAvailableData"/>
+                        </ute:Tag>
+                        <!-- Alert Section -->
+                        <ute:Tag id="nrgAppFtrDetails-notification-alertSection" class="nrgAppFtrDetails-notification-alertSection" visible="true">
+                            <!-- Title -->
+                            <ute:Tag elem="span" class="nrgAppFtrDetails-notification-title"
+                                text="{comp-i18n-app>nrgAppFtrDetails-notification-TITLE}" />
+                            <!-- Contents -->
+                            <sm:ScrollContainer
+                                id="nrgAppFtrDetails-notification-scrollContent"
+                                class="nrgAppFtrDetails-notification-content"
+                                height="230px"
+                                width="100%"
+                                horizontal="true"
+                                vertical="true">
+                                <!-- <ua:FooterNotificationCenter 
+                                    id="nrgAppFtrDetails-notification-alertCenter"
+                                    content="{view-data>/notification}">
+                                    <ua:FooterNotificationItem
+                                        design="{view-data>design}"
+                                        link="{view-data>link}"
+                                        text="{view-data>text}"
+                                        linkPress="._onFooterNotificationLinkPress" />
+                                </ua:FooterNotificationCenter> -->
+                            </sm:ScrollContainer>
+                        </ute:Tag>
                     </ute:Tag>
                     <!-- RHS (BP and CA Level)-->
                     <ute:Tag class="nrgAppFtrDetails-rhs">

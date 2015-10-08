@@ -38,8 +38,9 @@ sap.ui.define(
         /*------------------ Footer Update ----------------*/
 
         AppFooter.prototype._initFooterContent = function () {
-            this._oController.getView().setModel(this._oController.getView().getModel('comp-app'), 'oCompODataSvc');
+            this._oController.getView().setModel(this._oController.getView().getModel('noti-app'), 'oNotiODataSvc');
             this._oController.getView().setModel(this._oController.getView().getModel('rhs-app'), 'oRHSODataSvc');
+            this._oController.getView().setModel(this._oController.getView().getModel('comp-app'), 'oCompODataSvc');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterNotification');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterRHS');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
@@ -48,6 +49,10 @@ sap.ui.define(
             this.footerElement = {};
 
             // Notification
+            this.footerElement.notiEmptySec = this._oController.getView().byId('nrgAppFtrDetails-notification-emptySection');
+            this.footerElement.notiAlertSec = this._oController.getView().byId('nrgAppFtrDetails-notification-alertSection');
+            this.footerElement.notiEmptySec.setVisible(true);
+            this.footerElement.notiAlertSec.setVisible(false);
 
             // RHS
 
@@ -55,17 +60,62 @@ sap.ui.define(
             this.footerElement.campEmptySec = this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers-emptySection');
             this.footerElement.campOfferSec = this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers');
             this.footerElement.campBtnSec = this._oController.getView().byId('nrgAppFtrDetails-campaignButton');
-            // this.footerElement.campEmptySec.setVisible(true);
-            // this.footerElement.campOfferSec.setVisible(false);
-            // this.footerElement.campBtnSec.setVisible(false);
+            this.footerElement.campEmptySec.setVisible(true);
+            this.footerElement.campOfferSec.setVisible(false);
+            this.footerElement.campBtnSec.setVisible(false);
 
         };
 
-        AppFooter.prototype.updateFooterNotification = function (sBpNumber, sCaNumber) {
+        AppFooter.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber) {
+            this._updateRouting(sBpNumber, sCaNumber, sCoNumber);
 
+            var sPath = '/AlertsSet',
+                aFilters = [];
+                aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: sBpNumber}));
+                aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNumber}));
+
+            var oModel = this._oController.getView().getModel('oNotiODataSvc'),
+                oNotificationModel = this._oController.getView().getModel('oFooterNotification'),
+                oParameters;
+
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData.results.length > 0) {  
+                        oNotificationModel.setData(oData.results[0]);
+                        if (!this.noificationCenter) {
+                            var notification = [];
+                            var notificationContainer = this._oController.getView().byId("nrgAppFtrDetails-notification-scrollContent");
+                            
+                            if (oNotificationModel.oData.IsM2Minvoice) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Multi-month Invoice'}));
+                            if (oNotificationModel.oData.IsBadEmail) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Bad Email Address'}));
+                            if (oNotificationModel.oData.IsBadOamEmail) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Bad OAM Email Address'}));
+                            if (oNotificationModel.oData.IsInvalidMail) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Invalid Mail Address'}));
+                            if (oNotificationModel.oData.IsBadSMS) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Invalid SMS'}));
+                            
+                            this.noificationCenter = new ute.ui.app.FooterNotificationCenter("nrgAppFtrDetails-notification-notificationCenter", {content: notification});
+
+                            this.noificationCenter.placeAt(notificationContainer);
+                        }
+                        this.footerElement.notiEmptySec.setVisible(false);
+                        this.footerElement.notiAlertSec.setVisible(true);
+                    } else {
+                        this.footerElement.notiEmptySec.setVisible(true);
+                        this.footerElement.notiAlertSec.setVisible(false);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    this.footerElement.notiEmptySec.setVisible(true);
+                    this.footerElement.notiAlertSec.setVisible(false);
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
         };
 
-        AppFooter.prototype.updateFooterRHS = function (sBpNumber, sCaNumber) {
+        AppFooter.prototype.updateFooterRHS = function (sBpNumber, sCaNumber, sCoNumber) {
             var bp = '0002473499',
                 ca = '000003040103',
                 sPath = '/FooterS',
@@ -112,22 +162,22 @@ sap.ui.define(
             }
         };
 
-        AppFooter.prototype.updateFooterCampaign = function (sBpNumber, sCaNumber, sCoNumber) {        
-            var oRouting = this._oController.getView().getModel('oFooterRouting');
+        AppFooter.prototype.updateFooterCampaign = function (sBpNumber, sCaNumber, sCoNumber) {
+            this._updateRouting(sBpNumber, sCaNumber, sCoNumber);
 
             this._updateFooterCampaignContract(sCoNumber);
             this._updateFooterCampaignButton(sCoNumber);
+        };
 
+        AppFooter.prototype._updateRouting = function (sBpNumber, sCaNumber, sCoNumber) {
+            var oRouting = this._oController.getView().getModel('oFooterRouting');
             oRouting.setProperty('/BpNumber', sBpNumber);
             oRouting.setProperty('/CaNumber', sCaNumber);
             oRouting.setProperty('/CoNumber', sCoNumber);
         };
 
-
-
         AppFooter.prototype._updateFooterCampaignContract = function (sCoNumber) {
-            var oFooter = this,
-                sPath = '/CpgFtrS',
+            var sPath = '/CpgFtrS',
                 aFilters = [];
                 aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNumber}));
 
@@ -340,9 +390,6 @@ sap.ui.define(
 
                 // Initialize the oData model in footer
                 this._oApp._initFooterContent();
-                // this._oApp.updateFooterNotification();
-                // this._oApp.updateFooterRHS();
-                // this._oApp.updateFooterCampaign();
             }
 
             return this._oSubmenu;

@@ -184,13 +184,13 @@ sap.ui.define(
             return this;
         };
 
-        App.prototype.updateFooterNotification = function (oPayload) {
-            this._oAppFooter.updateFooterNotification(oPayload);
+        App.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber) {
+            this._oAppFooter.updateFooterNotification(sBpNumber, sCaNumber, sCoNumber);
             return this;
         };
 
-        App.prototype.updateFooterRHS = function (oPayload) {
-            this._oAppFooter.updateFooterRHS(oPayload);
+        App.prototype.updateFooterRHS = function (sBpNumber, sCaNumber, sCoNumber) {
+            this._oAppFooter.updateFooterRHS(sBpNumber, sCaNumber, sCoNumber);
             return this;
         };
 

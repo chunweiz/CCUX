@@ -1,0 +1,21 @@
+{
+    "d":{
+        "results":[
+            {
+                "__metadata":{
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_ALERTS_SRV/AlertsSet(BP='0002473499',CA='000003040103')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_ALERTS_SRV/AlertsSet(BP='0002473499',CA='000003040103')",
+                    "type":"ZE_CCUX_ALERTS_SRV.Alerts"
+                },
+                "BP":"2473499",
+                "CA":"3040103",
+                "IsM2Minvoice":true,
+                "IsBadEmail":false,
+                "IsBadOamEmail":false,
+                "IsInvalidMail":true,
+                "IsBadSMS":false,
+                "IsAssignedCollections":false
+            }
+        ]
+    }
+}
