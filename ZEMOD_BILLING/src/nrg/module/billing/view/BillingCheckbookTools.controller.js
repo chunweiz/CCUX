@@ -9,13 +9,12 @@ sap.ui.define(
         'sap/ui/model/json/JSONModel'
     ],
 
-    function (CoreController,Fragment,JOSNModel) {
+    function (CoreController, Fragment, JOSNModel) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.billing.view.BillingCheckbookTools');
 
-        Controller.prototype.onInit = function ()
-        {/*
+        Controller.prototype.onInit = function () {/*
             this.getView().byId('chart').setDataModel(new JSONModel({
                 data: [
                     { usageDate: '07/01/2013', usage: 1456 },
@@ -66,11 +65,11 @@ sap.ui.define(
         };
 
         Controller.prototype.onSelected = function (oEvent) {
-            var oCheckbox = oEvent.getSource();
-            var sYear = oCheckbox.getId().replace(this.getView().getId() + '--', '');
-            var bHide = oCheckbox.getChecked();
+            var oCheckbox = oEvent.getSource(),
+                sYear = oCheckbox.getId().replace(this.getView().getId() + '--', ''),
+                bHide = oCheckbox.getChecked(),
+                oChart = this.getView().byId('chart');
 
-            var oChart = this.getView().byId('chart');
             if (oChart) {
                 oChart.hideUsage(sYear, !bHide);
             }
