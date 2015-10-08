@@ -10,7 +10,7 @@ sap.ui.define(
     function (Control) {
         'use strict';
 
-        var CustomControl = Control.extend('ute.ui.main.AverageBillDetailsChart', {
+        var CustomControl = Control.extend('ute.ui.main.Chart', {
             metadata: {
                 properties: {
                     width: { type: 'int', defaultValue: 900 },
