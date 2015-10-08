@@ -179,8 +179,8 @@ sap.ui.define(
             return this._oAppFooter;
         };
 
-        App.prototype._initFooterOData = function () {
-            this._oAppFooter._initFooterOData();
+        App.prototype._initFooterContent = function () {
+            this._oAppFooter._initFooterContent();
             return this;
         };
 

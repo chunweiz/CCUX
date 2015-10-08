@@ -37,13 +37,28 @@ sap.ui.define(
 
         /*------------------ Footer Update ----------------*/
 
-        AppFooter.prototype._initFooterOData = function () {
+        AppFooter.prototype._initFooterContent = function () {
             this._oController.getView().setModel(this._oController.getView().getModel('comp-app'), 'oCompODataSvc');
             this._oController.getView().setModel(this._oController.getView().getModel('rhs-app'), 'oRHSODataSvc');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterNotification');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterRHS');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterRouting');
+
+            this.footerElement = {};
+
+            // Notification
+
+            // RHS
+
+            // Campaign
+            this.footerElement.campEmptySec = this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers-emptySection');
+            this.footerElement.campOfferSec = this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers');
+            this.footerElement.campBtnSec = this._oController.getView().byId('nrgAppFtrDetails-campaignButton');
+            // this.footerElement.campEmptySec.setVisible(true);
+            // this.footerElement.campOfferSec.setVisible(false);
+            // this.footerElement.campBtnSec.setVisible(false);
+
         };
 
         AppFooter.prototype.updateFooterNotification = function (sBpNumber, sCaNumber) {
@@ -97,9 +112,7 @@ sap.ui.define(
             }
         };
 
-        AppFooter.prototype.updateFooterCampaign = function (sBpNumber, sCaNumber, sCoNumber) {
-            // this._oController.getView().byId('nrgAppFtrDetails-appFooterContent').getController().updateFooterCampaign(sBpNumber, sCaNumber, sCoNumber);
-        
+        AppFooter.prototype.updateFooterCampaign = function (sBpNumber, sCaNumber, sCoNumber) {        
             var oRouting = this._oController.getView().getModel('oFooterRouting');
 
             this._updateFooterCampaignContract(sCoNumber);
@@ -113,49 +126,60 @@ sap.ui.define(
 
 
         AppFooter.prototype._updateFooterCampaignContract = function (sCoNumber) {
-            var sPath = '/CpgFtrS',
+            var oFooter = this,
+                sPath = '/CpgFtrS',
                 aFilters = [];
                 aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNumber}));
 
             var oModel = this._oController.getView().getModel('oCompODataSvc'),
                 oCampaignModel = this._oController.getView().getModel('oFooterCampaign'),
-                oParameters;            
+                oParameters;
 
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
                     if (oData.results.length > 0) {                       
-                        // oCampaignModel.setData({Current:{OfferTitle: "None"}, Pending:{OfferTitle: "None"}, History:{OfferTitle: "None"}});
                         for (var i = 0; i < oData.results.length; i++) {
                             if (oData.results[i].Type === 'C') {
                                 oCampaignModel.setProperty('/Current', oData.results[i]);
-                                if (oData.results[i].OfferTitle !== 'None' && oData.results[i].OfferTitle !== '') {
+                                
+                                if (oCampaignModel.oData.Current.OfferTitle !== 'None' && oCampaignModel.oData.Current.OfferTitle !== '') {
                                     this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers-currentItem').addStyleClass('hasValue');
-                                } 
+                                }
+                                this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers-currentItem').setText(oCampaignModel.oData.Current.OfferTitle);
+                                this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers-startDateValue').setText(this._formatCampaignTime(oCampaignModel.oData.Current.StartDate));
+                                this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers-endDateValue').setText(this._formatCampaignTime(oCampaignModel.oData.Current.EndDate));
                             }
                             if (oData.results[i].Type === 'PE') {
                                 oCampaignModel.setProperty('/Pending', oData.results[i]);
-                                if (oData.results[i].OfferTitle !== 'None' && oData.results[i].OfferTitle !== '') {
+                                
+                                if (oCampaignModel.oData.Pending.OfferTitle !== 'None' && oCampaignModel.oData.Pending.OfferTitle !== '') {
                                     this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers-pendingItem').addStyleClass('hasValue');
-                                } 
+                                }
+                                this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers-pendingItem').setText(oCampaignModel.oData.Pending.OfferTitle);
                             }
                             if (oData.results[i].Type === 'H') {
                                 oCampaignModel.setProperty('/History', oData.results[i]);
-                                if (oData.results[i].OfferTitle !== 'None' && oData.results[i].OfferTitle !== '') {
+
+                                if (oCampaignModel.oData.History.OfferTitle !== 'None' && oCampaignModel.oData.History.OfferTitle !== '') {
                                     this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers-historyItem').addStyleClass('hasValue');
-                                } 
+                                }
+                                this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers-historyItem').setText(oCampaignModel.oData.History.OfferTitle);
                             }
                         }
-                        oCampaignModel.setProperty('/CampaignAvailable', true);
-                        oCampaignModel.setProperty('/EmptyAvailable', false);
+                        this.footerElement.campEmptySec.setVisible(false);
+                        this.footerElement.campOfferSec.setVisible(true);
+                        this.footerElement.campBtnSec.setVisible(true);
                     } else {
-                        oCampaignModel.setProperty('/CampaignAvailable', false);
-                        oCampaignModel.setProperty('/EmptyAvailable', true);
+                        this.footerElement.campEmptySec.setVisible(true);
+                        this.footerElement.campOfferSec.setVisible(false);
+                        this.footerElement.campBtnSec.setVisible(false);
                     }
                 }.bind(this),
                 error: function (oError) {
-                    oCampaignModel.setProperty('/CampaignAvailable', false);
-                    oCampaignModel.setProperty('/EmptyAvailable', true);
+                    this.footerElement.campEmptySec.setVisible(true);
+                    this.footerElement.campOfferSec.setVisible(false);
+                    this.footerElement.campBtnSec.setVisible(false);
                 }.bind(this)
             };
 
@@ -181,6 +205,7 @@ sap.ui.define(
                             oCampaignModel.setProperty('/CampaignButtonText', 'No Eligible offers Available');
                             oCampaignModel.setProperty('/CampaignFirstBill', false);
                         }
+                        this._oController.getView().byId('nrgAppFtrDetails-campaignButton-itemTitle').setText(oCampaignModel.oData.CampaignButtonText);
                         oCampaignModel.setProperty('/CampaignButtonType', oData.InitTab);
                     }
                 }.bind(this),
@@ -191,6 +216,14 @@ sap.ui.define(
 
             if (oModel) {
                 oModel.read(sPath, oParameters);
+            }
+        };
+
+        AppFooter.prototype._formatCampaignTime = function (oDate) {
+            if (oDate) {
+                var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern:"MM/yyyy"});
+                var dateStr = dateFormat.format(new Date(oDate.getTime()));
+                return dateStr;
             }
         };
 
@@ -306,10 +339,10 @@ sap.ui.define(
                 oView.byId('appFtrSMenuCaret').attachEvent('click', this._onFooterSubmenuCaretClick, this);
 
                 // Initialize the oData model in footer
-                this._oApp._initFooterOData();
-                this._oApp.updateFooterNotification();
-                this._oApp.updateFooterRHS();
-                this._oApp.updateFooterCampaign();
+                this._oApp._initFooterContent();
+                // this._oApp.updateFooterNotification();
+                // this._oApp.updateFooterRHS();
+                // this._oApp.updateFooterCampaign();
             }
 
             return this._oSubmenu;
