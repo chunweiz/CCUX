@@ -71,7 +71,7 @@
                                                         formatOptions: { currencySymbol: ''}}"/>
                                     </ute:Tag>
                                 </ute:Tag>
-                                <ute:Tag>
+                                <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-otrFrm">
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle" text="{comp-i18n-billing>nrgBilling-billChkBook-HdrHvr-Total}"/>
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue"
                                              text="{path: 'oChkbkHdr>/InvAmount',
@@ -427,20 +427,6 @@
                                 </ute:Tag>
                                 </ute:Tag>
                             </ute:Tag>
-                            <!--<ute:Tag > <!--Current Charges
-                                <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-snglUperln">
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c1"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2"
-                                             text="{comp-i18n-billing>nrgBilling-billChkBook-CurrCharages}"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_1"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c3_2"
-                                             text="{path: 'oPaymentHdr>PaymentSumry/CurrChrgs',
-                                                    type: 'nrg.base.type.Price',
-                                                    formatOptions: { currencySymbol: ''}}"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c4"/>
-                                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c5"/>
-                                </ute:Tag>
-                            </ute:Tag>-->
                         </utmain:content>
                     </utmain:Infoline>
                 </ute:Tag>
