@@ -25,7 +25,7 @@ sap.ui.define(
         Controller.prototype.onBeforeRendering = function () {
 
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
-/*            if (!this._beforeOpenEditAddrDialogue) {*/
+            // if (!this._beforeOpenEditAddrDialogue) {
             this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
@@ -104,7 +104,7 @@ sap.ui.define(
 
 
             // Update Footer
-            // this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._coNum);
+            this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum);
         };
 
         Controller.prototype._navLeftCallBack = function () {
