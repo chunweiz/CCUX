@@ -15,7 +15,7 @@ sap.ui.define(
         var Controller = CoreController.extend('nrg.module.billing.view.BillingCheckbookTools');
 
         Controller.prototype.onInit = function ()
-        {
+        {/*
             this.getView().byId('chart').setDataModel(new JSONModel({
                 data: [
                     { usageDate: '07/01/2013', usage: 1456 },
@@ -46,7 +46,7 @@ sap.ui.define(
                     { usageDate: '06/01/2015', usage: 1400 },
                     { usageDate: '05/01/2015', usage: 1300 }
                 ]
-            }));
+            }));*/
         };
 
         Controller.prototype.onBeforeRendering = function () {

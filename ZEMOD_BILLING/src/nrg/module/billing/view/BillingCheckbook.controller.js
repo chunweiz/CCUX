@@ -275,12 +275,12 @@ sap.ui.define(
                 sPath,
                 oParameters;
 
-            sPath = '/PaymentItems(ContractAccountNumber=\'\',InvoiceNum=\'' + sInvNum + '\',Opbel=\'' + sOpbel +'\')/DPPPlan';
+            sPath = '/PaymentItems(ContractAccountNumber=\'\',InvoiceNum=\'' + sInvNum + '\',Opbel=\'' + sOpbel + '\')/DPPPlan';
 
             oParameters = {
                 success : function (oData) {
                     if (oData) {
-                        this.getView().getModel('oPaymentHdr').setProperty(sBindingPath + '/DppTbl', oData);
+                        this.getView().getModel('oPaymentHdr').setProperty(sBindingPath + '/DpInstls', oData);
                         sPath = sBindingPath;
                     }
                 }.bind(this),
@@ -310,7 +310,7 @@ sap.ui.define(
 
                         for (i = 0; i < oData.results.length; i = i + 1) {
                             if (oData.results[i].HyperLinkInd === 'DP') {
-                                this._retrPaymentItemDppTable(oData.results[i].InvoiceNum, oData.results[i].Opbel, sBindingPath + '/PaymentItems/' + i.toString() );
+                                this._retrPaymentItemDppTable(oData.results[i].InvoiceNum, oData.results[i].Opbel, sBindingPath + '/PaymentItems/results/' + i.toString());
                             }
                         }
                     }
