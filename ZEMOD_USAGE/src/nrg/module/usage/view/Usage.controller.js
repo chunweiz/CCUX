@@ -38,6 +38,7 @@ sap.ui.define(
                 that = this,
                 oUsageTable = this.getView().byId("idnrgUsgTable-Rows"),
                 oUsageTableRowTemplate = this.getView().byId("idnrgUsgRow-Infoline");
+            that.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oRouteInfo.parameters.coNum;
             this._sBP = oRouteInfo.parameters.bpNum;
             this._sCA = oRouteInfo.parameters.caNum;
@@ -67,6 +68,7 @@ sap.ui.define(
                         filters : aFilters
                     };
                     oUsageTable.bindAggregation("content", oBindingInfo);
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }
             };
             sPath = "/SrvAddrS";
@@ -111,7 +113,9 @@ sap.ui.define(
                 oBindingContext,
                 oRadioWeekly = this.getView().byId("idnrgUsgRadioweekly"),
                 fnRecievedHandler,
-                oNoDataTag = this.getView().byId("idnrgUsgNoData");
+                oNoDataTag = this.getView().byId("idnrgUsgNoData").clone(),
+                that = this;
+            that.getOwnerComponent().getCcuxApp().setOccupied(true);
             if ((oRadioWeekly) && (oRadioWeekly.getChecked())) {
                 sPath = "/WeeklyUsageS";
             } else {
@@ -124,6 +128,7 @@ sap.ui.define(
                     if ((aContent) && (aContent.length === 0)) {
                         oInsideTableTag.addContent(oNoDataTag);
                     }
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
                 };
                 oBindingContext = oEvent.getSource().getBindingContext("comp-usage");
                 aFilterIds = ["Contract", "PeriodBegin", "PeriodEnd"];
@@ -138,6 +143,8 @@ sap.ui.define(
                     events: {dataReceived : fnRecievedHandler}
                 };
                 oInsideTableTag.bindAggregation("content", oBindingInfo);
+            } else {
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
             }
         };
 
