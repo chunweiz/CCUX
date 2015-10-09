@@ -55,6 +55,10 @@ sap.ui.define(
             this.footerElement.notiAlertSec.setVisible(false);
 
             // RHS
+            this.footerElement.rhsEmptySec = this._oController.getView().byId('nrgAppFtrDetails-rhs-emptySection');
+            this.footerElement.rhsProdSec = this._oController.getView().byId('nrgAppFtrDetails-rhs-productSection');
+            this.footerElement.rhsEmptySec.setVisible(true);
+            this.footerElement.rhsProdSec.setVisible(false);
 
             // Campaign
             this.footerElement.campEmptySec = this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers-emptySection');
@@ -64,6 +68,10 @@ sap.ui.define(
             this.footerElement.campOfferSec.setVisible(false);
             this.footerElement.campBtnSec.setVisible(false);
 
+        };
+
+        AppFooter.prototype._onFooterNotificationLinkPress = function (oControlEvent) {
+            
         };
 
         AppFooter.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber) {
@@ -87,11 +95,11 @@ sap.ui.define(
                             var notification = [];
                             var notificationContainer = this._oController.getView().byId("nrgAppFtrDetails-notification-scrollContent");
                             
-                            if (oNotificationModel.oData.IsM2Minvoice) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Multi-month Invoice'}));
-                            if (oNotificationModel.oData.IsBadEmail) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Bad Email Address'}));
-                            if (oNotificationModel.oData.IsBadOamEmail) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Bad OAM Email Address'}));
-                            if (oNotificationModel.oData.IsInvalidMail) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Invalid Mail Address'}));
-                            if (oNotificationModel.oData.IsBadSMS) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Invalid SMS'}));
+                            if (oNotificationModel.oData.IsM2Minvoice) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Multi-month Invoice', linkPress: this._onFooterNotificationLinkPress}));
+                            if (oNotificationModel.oData.IsBadEmail) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Bad Email Address', linkPress: this._onFooterNotificationLinkPress}));
+                            if (oNotificationModel.oData.IsBadOamEmail) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Bad OAM Email Address', linkPress: this._onFooterNotificationLinkPress}));
+                            if (oNotificationModel.oData.IsInvalidMail) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Invalid Mail Address', linkPress: this._onFooterNotificationLinkPress}));
+                            if (oNotificationModel.oData.IsBadSMS) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Invalid SMS', linkPress: this._onFooterNotificationLinkPress}));
                             
                             this.noificationCenter = new ute.ui.app.FooterNotificationCenter("nrgAppFtrDetails-notification-notificationCenter", {content: notification});
 
@@ -115,13 +123,28 @@ sap.ui.define(
             }
         };
 
+        AppFooter.prototype._onRhsCurrenItemSelect = function (oControlEvent) {
+            
+        }.bind(this);
+
+        AppFooter.prototype._onRhsCurrenDropdownClick = function (oControlEvent) {
+            var rhsSection = this._oController.getView().byId("nrgAppFtrDetails-rhs");
+            if ($('#nrgAppFtrDetails-rhs-currentDropdown-picker').height() > 200) {
+                if (rhsSection.hasStyleClass('scrollBarAppear')) {
+                    rhsSection.removeStyleClass('scrollBarAppear');
+                } else {
+                    rhsSection.addStyleClass('scrollBarAppear');
+                }
+            }
+        };
+
         AppFooter.prototype.updateFooterRHS = function (sBpNumber, sCaNumber, sCoNumber) {
-            var bp = '0002473499',
-                ca = '000003040103',
-                sPath = '/FooterS',
+            this._updateRouting(sBpNumber, sCaNumber, sCoNumber);
+
+            var sPath = '/FooterS',
                 aFilters = [];
-                aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: bp}));
-                aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: ca}));
+                aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: sBpNumber}));
+                aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNumber}));
             var oModel = this._oController.getView().getModel('oRHSODataSvc'),
                 oRHSModel = this._oController.getView().getModel('oFooterRHS'),
                 oParameters;
@@ -129,31 +152,44 @@ sap.ui.define(
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
-                    if (oData) {
-                        var oCurrent = [];
-                        var iCurrentIndex = 0;
-                        oRHSModel.setData({Current:{ProdName: "None"}, Pending:{ProdName: "None"}, History:{ProdName: "None"}});
-                        for (var i = 0; i < oData.results.length; i++) {
+                    if (oData.results.length > 0) {
+                        // Generate a dropdwon for RHS current products
+                        if (!this.rhsDropdown) {
+                            var iCurrentIndex = 0;
+                            var aCurrent = [];
+                            var dropdownContainer = this._oController.getView().byId("nrgAppFtrDetails-rhs-currentItem");
                             // Get all objects for Current
-                            if (oData.results[i].Type === 'C') {
-                                oCurrent.push(oData.results[i]);
-                                oCurrent[iCurrentIndex].Index = iCurrentIndex++;
+                            for (var i = 0; i < oData.results.length; i++) {
+                                if (oData.results[i].Type === 'C') {
+                                    var oTag = new ute.ui.commons.Tag({elem: 'span', text: oData.results[i].ProdName});
+                                    aCurrent.push(new ute.ui.main.DropdownItem({key: iCurrentIndex++, content: oTag}).addStyleClass("nrgAppFtrDetails-rhs-currentDropdownItem"));
+                                }
                             }
+                            this.rhsDropdown = new ute.ui.main.Dropdown("nrgAppFtrDetails-rhs-currentDropdown", {content: aCurrent, selectedKey: 0, select: this._onRhsCurrenItemSelect}).addStyleClass("nrgAppFtrDetails-rhs-itemContent");
+                            this.rhsDropdown.attachBrowserEvent("click", this._onRhsCurrenDropdownClick.bind(this));
+                            this.rhsDropdown.placeAt(dropdownContainer);
+                        }
+
+                        for (var j = 0; j < oData.results.length; j++) {
                             // Get first object for Pending
-                            if (oData.results[i].Type === 'P' && oRHSModel.getProperty('/Pending/ProdName') === "None") {
-                                oRHSModel.setProperty('/Pending', oData.results[i]);
+                            if (oData.results[j].Type === 'P') {
+                                this._oController.getView().byId("nrgAppFtrDetails-rhs-pendingItemContent").setText(oData.results[j].ProdName);
                             }
                             // Get first object for History
-                            if (oData.results[i].Type === 'H' && oRHSModel.getProperty('/History/ProdName') === "None") {
-                                oRHSModel.setProperty('/History', oData.results[i]);
+                            if (oData.results[j].Type === 'H' ) {
+                                this._oController.getView().byId("nrgAppFtrDetails-rhs-historyItemContent").setText(oData.results[j].ProdName);
                             }
                         }
-                        oRHSModel.setProperty('/Current', oCurrent);
-                        oRHSModel.setProperty('/Current/SelectedKey', 0);
+                        this.footerElement.rhsEmptySec.setVisible(false);
+                        this.footerElement.rhsProdSec.setVisible(true);
+                    } else {
+                        this.footerElement.rhsEmptySec.setVisible(true);
+                        this.footerElement.rhsProdSec.setVisible(false);
                     }
                 }.bind(this),
                 error: function (oError) {
-                    //Need to put error message
+                    this.footerElement.rhsEmptySec.setVisible(true);
+                    this.footerElement.rhsProdSec.setVisible(false);
                 }.bind(this)
             };
 
@@ -344,6 +380,8 @@ sap.ui.define(
 
 
         AppFooter.prototype.reset = function () {
+            var oView = this._oController.getView();
+            oView.byId('appFtr').removeStyleClass('uteAppFtr-open');
             this._getSubmenu().close();
         };
 
