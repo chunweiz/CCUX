@@ -89,8 +89,8 @@ sap.ui.define(
             oParameters = {
                 // filters: aFilters,
                 success : function (oData) {
-                    if (oData.results.length > 0) {  
-                        oNotificationModel.setData(oData.results[0]);
+                    if (oData) {  
+                        oNotificationModel.setData(oData);
                         if (!this.noificationCenter) {
                             var notification = [];
                             var notificationContainer = this._oController.getView().byId("nrgAppFtrDetails-notification-scrollContent");
