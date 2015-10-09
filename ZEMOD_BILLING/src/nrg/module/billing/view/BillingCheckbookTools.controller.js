@@ -9,14 +9,18 @@ sap.ui.define(
         'sap/ui/model/json/JSONModel'
     ],
 
-    function (CoreController,Fragment,JOSNModel) {
+    function (CoreController, JSONModel) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.billing.view.BillingCheckbookTools');
 
         Controller.prototype.onInit = function ()
         {
-            this.getView().byId('chart').setDataModel(new JSONModel({
+        };
+
+        Controller.prototype.onAfterRendering = function ()
+		{
+			var model = new sap.ui.model.json.JSONModel({
                 data: [
                     { usageDate: '07/01/2013', usage: 1456 },
                     { usageDate: '06/01/2013', usage: 1210 },
@@ -46,12 +50,10 @@ sap.ui.define(
                     { usageDate: '06/01/2015', usage: 1400 },
                     { usageDate: '05/01/2015', usage: 1300 }
                 ]
-            }));
+            });
+			var view = this.getView();
+			view.setModel(model);
         };
-
-        Controller.prototype.onBeforeRendering = function () {
-        };
-
         Controller.prototype._onAvgBillBtnClicked = function () {
             if (!this._oAvgBillPopup) {
                 this._oAvgBillPopup = ute.ui.main.Popup.create({
@@ -59,6 +61,8 @@ sap.ui.define(
                     title: 'AVERAGE BILLING PLAN'
                 });
                 this.getView().addDependent(this._oAvgBillPopup);
+				this._oAvgBillPopup.bindElement('/data');
+				this.byId("chart").setDataModel(this.getView().getModel());
             }
 
             this._oAvgBillPopup.open();

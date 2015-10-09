@@ -196,7 +196,7 @@ sap.ui.define(
                 .append('circle')
                     .attr('class', 'AVDChart-usageDataPoint')
                     .attr('r', '4')
-                    .attr('cx', function (data) { return fnScaleMonth(data.usageDate.geonth()); })
+                    .attr('cx', function (data) { return fnScaleMonth(data.usageDate.getMonth()); })
                     .attr('cy', function (data) { return fnScaleUsage(data.usage); })
                     .style('fill', function (data) { return fnLineColor(data.usageDate.getFullYear()); });
         };
