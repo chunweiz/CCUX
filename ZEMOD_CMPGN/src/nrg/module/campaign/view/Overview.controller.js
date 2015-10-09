@@ -68,34 +68,36 @@ sap.ui.define(
             oTemplateModel = new sap.ui.model.json.JSONModel();
             // Handler function for Tab Bar Item.
             fnRecievedHandler = function (oEvent) {
+                var sOfferCode;
                 aContent = oToggleContainer.getContent();
                 if ((aContent !== undefined) && (aContent.length > 0)) {
-                    if (aContent.length === 1) { // show only current campaign data irrespective of the flag
-                        sTempValue = aContent[0].getBindingContext("comp-campaign").getProperty("Type");
-                        if (sTempValue === that._sFlag) {
-                            sPath = aContent[0].getBindingContext("comp-campaign").getPath();
-                            aContent[0].setSelected(true);
-                        } else {
-                            sPath = aContent[0].getBindingContext("comp-campaign").getPath();
-                            aContent[0].setSelected(true);
-                            //Temporarily show exiting acontent[0] data but in the future decide based on business requirement
+                    if ((that._sFlag) && ((that._sFlag === "PE") || (that._sFlag === "P"))) {  // For pending Campaign check whether there is any data
+                        that._sFlag = "PE";
+                        for (iCount = 0; iCount < aContent.length; iCount = iCount + 1) {
+                            sTempValue = aContent[iCount].getBindingContext("comp-campaign").getProperty("Type");
+                            sOfferCode = aContent[iCount].getBindingContext("comp-campaign").getProperty("OfferCode");
+                            if ((sTempValue) && (sTempValue === that._sFlag) && (sTempValue !== '00000000')) {
+                                aContent[iCount].setSelected(true);
+                                sPath = aContent[iCount].getBindingContext("comp-campaign").getPath();
+                            } else if ((!sTempValue) && (sTempValue !== "C")) {
+                                aContent[iCount].setEnabled(false);
+                                that._sFlag = "C";
+                                ute.ui.main.Popup.Alert({
+                                    title: 'Information',
+                                    message: 'Pending Campaign is not available'
+                                });
+                            }
                         }
                     }
-                    if (aContent.length === 2) {
-                        sTempValue = aContent[0].getBindingContext("comp-campaign").getProperty("Type");
-                        if (sTempValue === that._sFlag) { //Populate view with Current Campaign or Pending Campaign depends on the flag came from dashboard
-                            sPath = aContent[0].getBindingContext("comp-campaign").getPath();
-                            aContent[0].setSelected(true);
-                        } else {
-                            sPath = aContent[1].getBindingContext("comp-campaign").getPath();
-                            aContent[1].setSelected(true);
-                        }
-                    }
-                    // Some how Expression binding for this condition is not working, so at the controller level checking again to disable button if pending campaign is not available
-                    for (iCount = 0; iCount < aContent.length; iCount = iCount + 1) {
-                        sTempValue = aContent[iCount].getBindingContext("comp-campaign").getProperty("OfferCode");
-                        if (sTempValue === '00000000') {
-                            aContent[iCount].setEnabled(false);
+                    if ((that._sFlag) && (that._sFlag === "C")) {
+                        for (iCount = 0; iCount < aContent.length; iCount = iCount + 1) {
+                            sTempValue = aContent[iCount].getBindingContext("comp-campaign").getProperty("Type");
+                            if ((sTempValue) && (sTempValue === that._sFlag)) {
+                                aContent[iCount].setSelected(true);
+                                sPath = aContent[iCount].getBindingContext("comp-campaign").getPath();
+                            } else if ((!sTempValue) || (sTempValue === "PE")) {
+                                aContent[iCount].setEnabled(false);
+                            }
                         }
                     }
                    // aContent[0].addStyleClass("nrgCamHisBut-Selected");
@@ -271,10 +273,10 @@ sap.ui.define(
             } else {
                 this._sInitTab = sInitTab;
             }
-            if (sFirstMonthBill === "X") {
-                sap.ui.commons.MessageBox.alert("Customer has to completed atleast One Month Invoice");
+            if (!sFirstMonthBill) {
+                sap.ui.commons.MessageBox.alert("Customer has to completed at least One Month Invoice");
             } else {
-                if (sCustomerEligible === "X") {
+/*                if (sCustomerEligible === "X") {
                     this._getPendingSwapsCount(oEvent);
                 } else {
                     _CancellationPopupHandler = function (sAction) {
@@ -295,8 +297,8 @@ sap.ui.define(
                         message: 'Customer may be charged a cancellation fee',
                         callback: _CancellationPopupHandler
                     });
-                }
-
+                }*/
+                this._getPendingSwapsCount(oEvent);
             }
         };
         /**

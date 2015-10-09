@@ -1,642 +1,645 @@
-.nrgDashboard-cusDataVerify{
-    height: 400px;
-
-    /*CSS for layouts*/
-    & > .nrgDashboard-cusDataVerify-layout{
-        padding: 0;
-        margin: 0;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > td {
-        vertical-align: top !important;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l{
-        padding-right: 32px;
-        border-right: @nrgColor-grey-light;
-        border-right-style: dashed;
-        border-right-width: thin;
-    }
-
-     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div{
-        background-color: @nrgColor-bluePearl;
-        border-radius: 2px;
-        //height: 350px;
-        padding: 10px;
-     }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-chb > span{
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-semiBold;
-        border-color: @nrgColor-grey-dark;
-        line-height: 24px;
-        margin-left: 2px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m{
-        padding-left: 32px;
-        padding-right: 28px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv{
-        top: 0px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mTgBtn{
-        margin-top: 0px;
-    }
-
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn{
-        margin-top: 16px;
-        margin-bottom: 16px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-rdBtn{
-        padding-left: 50px;
-    }
-
-     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent{
-         background-color: @nrgColor-bluePearl;
-         border-radius: 2px;
-         //height: 300px;
-         padding: 16px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-r{
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-r > .nrgDashboard-cusDataVerify-rContent{
-        position: relative;
-        height: 344px;
-        margin: 0;
-        padding: 0;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-r > .nrgDashboard-cusDataVerify-rContent > .nrgDashboard-cusDataVerify-rContent-vBtn {
-        bottom: 48px;
-        right: 0px;
-        position: absolute;
-    }
-
-     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-r > .nrgDashboard-cusDataVerify-rContent > .nrgDashboard-cusDataVerify-rContent-uBtn {
-        bottom: 0px;
-        right: 0px;
-        position: absolute;
-    }
-
-    /*Starting from here are for text style and alignment*/
-    & .nrgDashboard-cusDataVerify-horDvi{
-        border-color: @nrgColor-grey-light;
-        border-style: dashed;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > .nrgDashboard-cusDataVerify-l-div-cell{
-        padding: 0;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > .nrgDashboard-cusDataVerify-l-div-cell > .nrgDashboard-cusDataVerify-l-div-cell-rmtChb{
-        margin-left: 12px;
-        top: 3px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > .nrgDashboard-cusDataVerify-l-div-cell > .nrgDashboard-cusDataVerify-l-div-cell-rmtChb > label{
-        border-color: @nrgColor-grey-dark;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > .nrgDashboard-cusDataVerify-l-div-title{
-        text-align: center;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > .nrgDashboard-cusDataVerify-l-div-title span{
-        font-size: @nrgFontSize-largest;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-blue-link;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > .nrgDashboard-cusDataVerify-l-div-tdspLabl > span{
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-blue-link;
-        line-height: 22px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > .nrgDashboard-cusDataVerify-l-div-tdspVal > span{
-        font-size: @nrgFontSize-base;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-grey-dark;
-        line-height: 24px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-halflabl > span{
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-grey-inactive;
-        line-height: 24px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-ritelabl > span{
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-grey-inactive;
-        line-height: 24px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-halgVal{
-        display: inline-block;
-        width: 85%;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-halgVal > span{
-        font-size: @nrgFontSize-base;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-grey-dark;
-        line-height: 22px;
-    }
-
-     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-redX{
-         display: inline-block;
-     }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-redX > span{
-        font-size: @nrgFontSize-base;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-red-pale;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-halChb > label{
-        border-color: @nrgColor-green-highlight;
-        top: 3px;
-        position: inherit;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-halChb > label::before{
-        border-color: @nrgColor-green-highlight;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > .nrgDashboard-cusDataVerify-l-div-esidLabl > span{
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-grey-inactive;
-        line-height: 22px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > .nrgDashboard-cusDataVerify-mContent-pag{
-        vertical-align: top !important;
-        text-align: right;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-pagBtn > div {
-        color: @nrgColor-blue-link;
-        padding-right: 3px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up {
-        display: table-row;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up > .nrgDashboard-cusDataVerify-mContent-badge {
-        top: 5px;
-        margin-right: 6px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up > .nrgDashboard-cusDataVerify-mContent-add:last-child{
-        margin-bottom: 10px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up > .nrgDashboard-cusDataVerify-mContent-add > span{
-        font-size: @nrgFontSize-base;
-        font-weight: @nrgFontWeight-bold;
-        color: @nrgColor-grey-dark;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent .nrgDashboard-cusDataVerify-contractWrap{
-        margin-bottom: 10px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-fLbl{
-        margin-bottom: 8px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-fLbl > span{
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-blue-link;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > div > .nrgDashboard-cusDataVerify-mContent-fBtn > div{
-        text-align: initial;
-        margin-right: 6px;
-        padding-right: 6px;
-        margin-bottom: 8px;
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-semiBold;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-fInput{
-        border: 0;
-        outline: 0;
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-grey-dark;
-        margin-left: 8px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td{
-        padding: 0;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-fInput:focus{
-        background-color: @nrgColor-blue-link;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hLbl > span{
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-grey-inactive;
-    }
-    // Added by Jerry Hsu, 8/11/2015
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-cellPhn{
-        display: inline-block;
-        width: 180px;
-        label span {
-            font-size: @nrgFontSize-small;
-            font-weight: @nrgFontWeight-semiBold;
-            color: @nrgColor-grey-inactive;
-        }
-        input {
-            font-size: @nrgFontSize-small;
-            font-weight: @nrgFontWeight-semiBold;
-            color: @nrgColor-grey-dark;
-            width: 90px !important;
-            margin-left: 8px;
-        }
-        input:focus {
-            background-color: @nrgColor-blue-link;
-        }
-    }
-    // Added by Jerry Hsu, 8/11/2015
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-smsBtn{
-        display: inline-block;
-        width: 90px;
-        .uteMBtn-design-default[data-disabled=true] {
-            background-color: @nrgColor-grey-highlight;
-            cursor: not-allowed;
-        }
-    }
-    // Added by Jerry Hsu, 8/11/2015
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-fax{
-        display: inline-block;
-        margin-left: 3px;
-        label span {
-            font-size: @nrgFontSize-small;
-            font-weight: @nrgFontWeight-semiBold;
-            color: @nrgColor-grey-inactive;
-        }
-        input {
-            font-size: @nrgFontSize-small;
-            font-weight: @nrgFontWeight-semiBold;
-            color: @nrgColor-grey-dark;
-            width: 90px !important;
-            margin-left: 8px;
-        }
-        input:focus {
-            background-color: @nrgColor-blue-link;
-        }
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hPhn{
-        display: inline-block;
-        width: 180px;
-    }
-
-     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hExt{
-        display: inline-block;
-        width: 90px
-     }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hPhn > label > span, & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hExt > label > span, & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hType > label > span{
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-grey-inactive;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hExt > .nrgDashboard-cusDataVerify-mContent-hPhnExtInput > input{
-        border: 0;
-        outline: 0;
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-grey-dark;
-        margin-left: 8px;
-        min-width: 40px;
-        width: 40px !important;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hExt > .nrgDashboard-cusDataVerify-mContent-hPhnExtInput > input:focus{
-        background-color: @nrgColor-blue-link;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hPhn > .nrgDashboard-cusDataVerify-mContent-hPhnInput > input{
-        border: 0;
-        outline: 0;
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-grey-dark;
-        margin-left: 8px;
-        // min-width: 100px;
-        width: 90px !important;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hPhn > .nrgDashboard-cusDataVerify-mContent-hPhnInput > input:focus{
-        background-color: @nrgColor-blue-link;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hType{
-        display: inline-block;
-        margin-left: 3px;
-    }
-
-
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hInput > input{
-        border: 0;
-        outline: 0;
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-grey-dark;
-        margin-left: 8px;
-        width: 90px !important;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hEmailInput > div{
-        //width: 200px !important;
-        border: 0;
-        outline: 0;
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-grey-dark;
-        margin-left: 8px;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hInput > input:focus{
-        background-color: @nrgColor-blue-link;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .uteMDd-hdr .uteMDd-hdrContent {
-        width: 230px;
-        height: 20px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .uteMDd-hdr .uteMDd-hdrExpander{
-        margin-bottom: 4px;
-     }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .uteMDdItem{
-        width: auto;
-        //padding: 3px 0 3px 0;
-    }
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .uteMDd-hdr{
-        margin-right: 5px;
-    }
-
-
-    & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .uteMDd-picker{
-        max-height: 270px;
-        overflow-y: auto;
-    }
-    /*
-        & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .custom .uteMDd-hdr {
-            border: none;
-            margin-bottom: 4px;
-            cursor: pointer;
-        }*/
-
-}
-
-
-
-.nrgDashboard-cusDataVerifyEditMail{
-    width: 440px;
-
-    & > .nrgDashboard-cusDataVerifyEditMail-hdr{
-        margin-left: 13px;
-        margin-bottom: 10px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-hdr > div > span{
-        color: @nrgColor-red-alert;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-hdr > div > div{
-        display: inline-block;
-        margin-left: 5px;
-        color: @nrgColor-red-alert;
-    }
-
-    &.nrgDashboard-cusDataVerifyEditMail-vl{
-        width: 880px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-l{
-        display: inline-block;
-        width: 100%;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-l-vl{
-        width: 47%;
-        border-right-color: @nrgColor-inactiveGrey;
-        border-right-style: dashed;
-        border-right-width: 1px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-l > div{
-        margin-bottom: 5px;
-        padding-bottom: 5px;
-    }
-
-    & > div > .nrgDashboard-cusDataVerifyEditMail-rl-title > span{
-        font-weight: @nrgFontWeight-bold;
-        text-decoration: underline;
-    }
-
-    & > div > .nrgDashboard-cusDataVerifyEditMail-rl-title{
-        margin-bottom: 2px;
-        padding-bottom: 2px;
-        text-align: center;
-    }
-
-
-    & > .nrgDashboard-cusDataVerifyEditMail-l > div > span > label{
-        font-weight: @nrgFontWeight-semiBold;
-        display: inline-block;
-        float: left;
-        clear: left;
-        width: 120px;
-        text-align: right;
-        padding-top: 3px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-l > div > span > input{
-        display: inline-block;
-        float: left;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-r > .nrgDashboard-cusDataVerifyEditMail-r-ChkBx{
-        margin-left: 35px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-r > .nrgDashboard-cusDataVerifyEditMail-r-ChkBx > div > label{
-        margin-top: 0px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-r > .nrgDashboard-cusDataVerifyEditMail-r-ChkBx > .nrgDashboard-cusDataVerifyEditMail-r-ChkBxlabel {
-        font-size: @nrgFontSize-base;
-        font-weight: @nrgFontWeight-semiBold;
-        position: relative;
-        bottom: 2px;
-        margin-left: 2px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-r > .nrgDashboard-cusDataVerifyEditMail-l-ftr{
-        margin-top: 10px;
-        margin-left: 13px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-r{
-        display: inline-block;
-        width: 53%;
-        vertical-align: top;
-        padding-left: 30px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-r > div{
-        margin-bottom: 5px;
-        padding-bottom: 5px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-r > div > span > label{
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-red-alert;
-        display: inline-block;
-        float: left;
-        clear: left;
-        width: 120px;
-        text-align: right;
-        padding-top: 3px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-r > div > span > input{
-        display: inline-block;
-        float: left;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-l > .nrgDashboard-cusDataVerifyEditMailAdd-updtBtn{
-        margin-left: 179px;
-        margin-top: 20px;
-        margin-bottom: 2px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-r > .nrgDashboard-cusDataVerifyEditMailAdd-valdBtn{
-        margin-left: 35px;
-        margin-top: 20px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-r > div > .nrgDashboard-cusDataVerifyEditMail-rHighlight > input{
-        background-color: @nrgColor-orange-attention;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditMail-l > div > .nrgDashboard-cusDataVerifyEditMail-lHighlight > input{
-        background-color: @nrgColor-orange-attention;
-    }
-}
-
-.nrgDashboard-cusDataVerifyEditEmail{
-    width: 520px;
-
-    & > .nrgDashboard-cusDataVerifyEditEmail-desc{
-        width: 100%;
-        height: 200px;
-        border-color: @nrgColor-grey-inactive;
-        border-style: solid;
-        border-width: thin;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditEmail-desc > div{
-        margin: 2px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditEmail-desc > div > span{
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-grey-dark;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditEmail-inputArea{
-        margin-top: 10px;
-        margin-bottom: 20px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-nresult span{
-        color: @nrgColor-orange-attention;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-nresult > div{
-        display: inline-block;
-        margin-left: 5px;
-        color: @nrgColor-orange-attention;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult > div{
-        display: inline-block;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresultChb > label{
-        border-color: @nrgColor-green-highlight;
-        background: transparent;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresultChb > label::before{
-        border-color: @nrgColor-green-highlight !important;
-        background: transparent !important;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult span{
-        color: @nrgColor-green-highlight;
-        margin-left: 5px;
-    }
-
-
-    & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > span > label, & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > span > input{
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-grey-dark;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-btn{
-        margin-left: 50px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditEmail-option > .nrgDashboard-cusDataVerifyEditEmail-toggle{
-        display: inline-block;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditEmail-option > label{
-        margin-left: 20px;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditEmail-option > label > span{
-        font-size: @nrgFontSize-small;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-grey-dark;
-    }
-
-    & > .nrgDashboard-cusDataVerifyEditEmail-actBtn{
-        margin-left: 120px;
-        margin-top: 30px;
-    }
-}
+// .nrgDashboard-cusDataVerify{
+//     height: 400px;
+
+//     /*CSS for layouts*/
+//     & > .nrgDashboard-cusDataVerify-layout{
+//         padding: 0;
+//         margin: 0;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > td {
+//         vertical-align: top !important;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l{
+//         padding-right: 32px;
+//         border-right: @nrgColor-grey-light;
+//         border-right-style: dashed;
+//         border-right-width: thin;
+//     }
+
+//      & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div{
+//         background-color: @nrgColor-bluePearl;
+//         border-radius: 2px;
+//         //height: 350px;
+//         padding: 10px;
+//      }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-chb > span{
+//         font-size: @nrgFontSize-small;
+//         font-weight: @nrgFontWeight-semiBold;
+//         border-color: @nrgColor-grey-dark;
+//         line-height: 24px;
+//         margin-left: 2px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m{
+//         padding-left: 32px;
+//         padding-right: 28px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv{
+//         top: 0px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mTgBtn{
+//         margin-top: 0px;
+//     }
+
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn{
+//         margin-top: 16px;
+//         margin-bottom: 16px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-rdBtn{
+//         padding-left: 50px;
+//     }
+
+//      & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent{
+//          background-color: @nrgColor-bluePearl;
+//          border-radius: 2px;
+//          //height: 300px;
+//          padding: 16px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-r{
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-r > .nrgDashboard-cusDataVerify-rContent{
+//         position: relative;
+//         height: 344px;
+//         margin: 0;
+//         padding: 0;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-r > .nrgDashboard-cusDataVerify-rContent > .nrgDashboard-cusDataVerify-rContent-vBtn {
+//         bottom: 48px;
+//         right: 0px;
+//         position: absolute;
+//     }
+
+//      & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-r > .nrgDashboard-cusDataVerify-rContent > .nrgDashboard-cusDataVerify-rContent-uBtn {
+//         bottom: 0px;
+//         right: 0px;
+//         position: absolute;
+//     }
+
+//     /*Starting from here are for text style and alignment*/
+//     & .nrgDashboard-cusDataVerify-horDvi{
+//         border-color: @nrgColor-grey-light;
+//         border-style: dashed;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > .nrgDashboard-cusDataVerify-l-div-cell{
+//         padding: 0;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > .nrgDashboard-cusDataVerify-l-div-cell > .nrgDashboard-cusDataVerify-l-div-cell-rmtChb{
+//         margin-left: 12px;
+//         top: 3px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > .nrgDashboard-cusDataVerify-l-div-cell > .nrgDashboard-cusDataVerify-l-div-cell-rmtChb > label{
+//         border-color: @nrgColor-grey-dark;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > .nrgDashboard-cusDataVerify-l-div-title{
+//         text-align: center;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > .nrgDashboard-cusDataVerify-l-div-title span{
+//         font-size: @nrgFontSize-largest;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-blue-link;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > .nrgDashboard-cusDataVerify-l-div-tdspLabl > span{
+//         font-size: @nrgFontSize-small;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-blue-link;
+//         line-height: 22px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > .nrgDashboard-cusDataVerify-l-div-tdspVal > span{
+//         // font-size: @nrgFontSize-base;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-grey-dark;
+//         line-height: 24px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-halflabl > span{
+//         font-size: @nrgFontSize-small;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-grey-inactive;
+//         line-height: 24px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-ritelabl > span{
+//         font-size: @nrgFontSize-small;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-grey-inactive;
+//         line-height: 24px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-halgVal{
+//         display: inline-block;
+//         width: 85%;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-halgVal > span{
+//         // font-size: @nrgFontSize-base;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-grey-dark;
+//         line-height: 22px;
+//     }
+
+//      & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-redX{
+//          display: inline-block;
+//      }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-redX > span{
+//         // font-size: @nrgFontSize-base;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-red-pale;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-halChb > label{
+//         border-color: @nrgColor-green-highlight;
+//         top: 3px;
+//         position: inherit;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > table > tbody > tr > td > .nrgDashboard-cusDataVerify-l-div-halChb > label::before{
+//         border-color: @nrgColor-green-highlight;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-l > .nrgDashboard-cusDataVerify-l-div > .nrgDashboard-cusDataVerify-l-div-esidLabl > span{
+//         font-size: @nrgFontSize-small;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-grey-inactive;
+//         line-height: 22px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > .nrgDashboard-cusDataVerify-mContent-pag{
+//         vertical-align: top !important;
+//         text-align: right;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-pagBtn > div {
+//         color: @nrgColor-blue-link;
+//         padding-right: 3px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up {
+//         display: table-row;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up > .nrgDashboard-cusDataVerify-mContent-badge {
+//         top: 5px;
+//         margin-right: 6px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up > .nrgDashboard-cusDataVerify-mContent-add:last-child{
+//         margin-bottom: 10px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-add-up > .nrgDashboard-cusDataVerify-mContent-add > span{
+//         // font-size: @nrgFontSize-base;
+//         font-weight: @nrgFontWeight-bold;
+//         color: @nrgColor-grey-dark;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent .nrgDashboard-cusDataVerify-contractWrap{
+//         margin-bottom: 10px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-fLbl{
+//         margin-bottom: 8px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-fLbl > span{
+//         font-size: @nrgFontSize-small;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-blue-link;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > div > .nrgDashboard-cusDataVerify-mContent-fBtn > div{
+//         text-align: initial;
+//         margin-right: 6px;
+//         padding-right: 6px;
+//         margin-bottom: 8px;
+//         font-size: @nrgFontSize-small;
+//         font-weight: @nrgFontWeight-semiBold;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-fInput{
+//         border: 0;
+//         outline: 0;
+//         font-size: @nrgFontSize-small;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-grey-dark;
+//         margin-left: 8px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td{
+//         padding: 0;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-fInput:focus{
+//         background-color: @nrgColor-blue-link;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hLbl > span{
+//         font-size: @nrgFontSize-small;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-grey-inactive;
+//     }
+//     // Added by Jerry Hsu, 8/11/2015
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-cellPhn{
+//         display: inline-block;
+//         width: 180px;
+//         label span {
+//             font-size: @nrgFontSize-small;
+//             font-weight: @nrgFontWeight-semiBold;
+//             color: @nrgColor-grey-inactive;
+//         }
+//         input {
+//             font-size: @nrgFontSize-small;
+//             font-weight: @nrgFontWeight-semiBold;
+//             color: @nrgColor-grey-dark;
+//             width: 90px !important;
+//             margin-left: 8px;
+//         }
+//         input:focus {
+//             background-color: @nrgColor-blue-link;
+//         }
+//     }
+//     // Added by Jerry Hsu, 8/11/2015
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-smsBtn{
+//         display: inline-block;
+//         width: 90px;
+//         .uteMBtn-design-default[data-disabled=true] {
+//             background-color: @nrgColor-grey-highlight;
+//             cursor: not-allowed;
+//         }
+//     }
+//     // Added by Jerry Hsu, 8/11/2015
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-fax{
+//         display: inline-block;
+//         margin-left: 3px;
+//         label span {
+//             font-size: @nrgFontSize-small;
+//             font-weight: @nrgFontWeight-semiBold;
+//             color: @nrgColor-grey-inactive;
+//         }
+//         input {
+//             font-size: @nrgFontSize-small;
+//             font-weight: @nrgFontWeight-semiBold;
+//             color: @nrgColor-grey-dark;
+//             width: 90px !important;
+//             margin-left: 8px;
+//         }
+//         input:focus {
+//             background-color: @nrgColor-blue-link;
+//         }
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hPhn{
+//         display: inline-block;
+//         width: 180px;
+//     }
+
+//      & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hExt{
+//         display: inline-block;
+//         width: 90px
+//      }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hPhn > label > span, & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hExt > label > span, & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hType > label > span{
+//         font-size: @nrgFontSize-small;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-grey-inactive;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hExt > .nrgDashboard-cusDataVerify-mContent-hPhnExtInput > input{
+//         border: 0;
+//         outline: 0;
+//         font-size: @nrgFontSize-small;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-grey-dark;
+//         margin-left: 8px;
+//         min-width: 40px;
+//         width: 40px !important;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hExt > .nrgDashboard-cusDataVerify-mContent-hPhnExtInput > input:focus{
+//         background-color: @nrgColor-blue-link;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hPhn > .nrgDashboard-cusDataVerify-mContent-hPhnInput > input{
+//         border: 0;
+//         outline: 0;
+//         font-size: @nrgFontSize-small;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-grey-dark;
+//         margin-left: 8px;
+//         // min-width: 100px;
+//         width: 90px !important;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hPhn > .nrgDashboard-cusDataVerify-mContent-hPhnInput > input:focus{
+//         background-color: @nrgColor-blue-link;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > .nrgDashboard-cusDataVerify-mContent-hType{
+//         display: inline-block;
+//         margin-left: 3px;
+//     }
+
+
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hInput > input{
+//         border: 0;
+//         outline: 0;
+//         font-size: @nrgFontSize-small;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-grey-dark;
+//         margin-left: 8px;
+//         width: 90px !important;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hEmailInput > div{
+//         //width: 200px !important;
+//         border: 0;
+//         outline: 0;
+//         font-size: @nrgFontSize-small;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-grey-dark;
+//         margin-left: 8px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mContent > table > tbody > tr > td > .nrgDashboard-cusDataVerify-mContent-hInput > input:focus{
+//         background-color: @nrgColor-blue-link;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .uteMDd-hdr .uteMDd-hdrContent {
+//         width: 230px;
+//         height: 20px;
+//         overflow: hidden;
+//         text-overflow: ellipsis;
+//     }
+
+//      & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .uteMDd-hdr .uteMDd-hdrExpander{
+//         margin-bottom: 4px;
+//      }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .uteMDdItem{
+//         width: auto;
+//         //padding: 3px 0 3px 0;
+//     }
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .uteMDd-hdr{
+//         margin-right: 5px;
+//     }
+
+
+//     & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .uteMDd-picker{
+//         max-height: 270px;
+//         overflow-y: auto;
+//     }
+//     /*
+//         & > .nrgDashboard-cusDataVerify-layout > tbody > tr > .nrgDashboard-cusDataVerify-m > .nrgDashboard-cusDataVerify-mDiv > .nrgDashboard-cusDataVerify-mRdBtn > .nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom .custom .uteMDd-hdr {
+//             border: none;
+//             margin-bottom: 4px;
+//             cursor: pointer;
+//         }*/
+
+// }
+
+
+
+// .nrgDashboard-cusDataVerifyEditMail{
+//     width: 440px;
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-hdr{
+//         margin-left: 13px;
+//         margin-bottom: 10px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-hdr > div > span{
+//         color: @nrgColor-red-alert;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-hdr > div > div{
+//         display: inline-block;
+//         margin-left: 5px;
+//         color: @nrgColor-red-alert;
+//     }
+
+//     &.nrgDashboard-cusDataVerifyEditMail-vl{
+//         width: 880px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-l{
+//         display: inline-block;
+//         width: 100%;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-l-vl{
+//         width: 47%;
+//         border-right-color: @nrgColor-inactiveGrey;
+//         border-right-style: dashed;
+//         border-right-width: 1px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-l > div{
+//         margin-bottom: 5px;
+//         padding-bottom: 5px;
+//     }
+
+//     & > div > .nrgDashboard-cusDataVerifyEditMail-rl-title > span{
+//         font-weight: @nrgFontWeight-bold;
+//         text-decoration: underline;
+//     }
+
+//     & > div > .nrgDashboard-cusDataVerifyEditMail-rl-title{
+//         margin-bottom: 2px;
+//         padding-bottom: 2px;
+//         text-align: center;
+//     }
+
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-l > div > span > label{
+//         font-weight: @nrgFontWeight-semiBold;
+//         display: inline-block;
+//         float: left;
+//         clear: left;
+//         width: 120px;
+//         text-align: right;
+//         padding-top: 3px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-l > div > span > input{
+//         display: inline-block;
+//         float: left;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-r > .nrgDashboard-cusDataVerifyEditMail-r-ChkBx{
+//         margin-left: 35px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-r > .nrgDashboard-cusDataVerifyEditMail-r-ChkBx > div > label{
+//         margin-top: 0px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-r > .nrgDashboard-cusDataVerifyEditMail-r-ChkBx > .nrgDashboard-cusDataVerifyEditMail-r-ChkBxlabel {
+//         // font-size: @nrgFontSize-base;
+//         font-weight: @nrgFontWeight-semiBold;
+//         position: relative;
+//         bottom: 2px;
+//         margin-left: 2px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-r > .nrgDashboard-cusDataVerifyEditMail-l-ftr{
+//         margin-top: 10px;
+//         margin-left: 13px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-r{
+//         display: inline-block;
+//         width: 53%;
+//         vertical-align: top;
+//         padding-left: 30px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-r > div{
+//         margin-bottom: 5px;
+//         padding-bottom: 5px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-r > div > span > label{
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-red-alert;
+//         display: inline-block;
+//         float: left;
+//         clear: left;
+//         width: 120px;
+//         text-align: right;
+//         padding-top: 3px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-r > div > span > input{
+//         display: inline-block;
+//         float: left;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-l > .nrgDashboard-cusDataVerifyEditMailAdd-updtBtn{
+//         margin-left: 179px;
+//         margin-top: 20px;
+//         margin-bottom: 2px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-r > .nrgDashboard-cusDataVerifyEditMailAdd-valdBtn{
+//         margin-left: 35px;
+//         margin-top: 20px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-r > div > .nrgDashboard-cusDataVerifyEditMail-rHighlight > input{
+//         background-color: @nrgColor-orange-attention;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditMail-l > div > .nrgDashboard-cusDataVerifyEditMail-lHighlight > input{
+//         background-color: @nrgColor-orange-attention;
+//     }
+// }
+
+// .nrgDashboard-cusDataVerifyEditEmail{
+//     width: 520px;
+
+//     & > .nrgDashboard-cusDataVerifyEditEmail-desc{
+//         width: 100%;
+//         height: 200px;
+//         border-color: @nrgColor-grey-inactive;
+//         border-style: solid;
+//         border-width: thin;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditEmail-desc > div{
+//         margin: 2px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditEmail-desc > div > span{
+//         font-size: @nrgFontSize-small;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-grey-dark;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditEmail-inputArea{
+//         margin-top: 10px;
+//         margin-bottom: 20px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-nresult span{
+//         color: @nrgColor-orange-attention;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-nresult > div{
+//         display: inline-block;
+//         margin-left: 5px;
+//         color: @nrgColor-orange-attention;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult > div{
+//         display: inline-block;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresultChb > label{
+//         border-color: @nrgColor-green-highlight;
+//         background: transparent;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresultChb > label::before{
+//         border-color: @nrgColor-green-highlight !important;
+//         background: transparent !important;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-yresult span{
+//         color: @nrgColor-green-highlight;
+//         margin-left: 5px;
+//     }
+
+
+//     & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > span > label, & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > span > input{
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-grey-dark;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditEmail-inputArea > .nrgDashboard-cusDataVerifyEditEmail-inputArea-btn{
+//         margin-left: 50px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditEmail-option > .nrgDashboard-cusDataVerifyEditEmail-toggle{
+//         display: inline-block;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditEmail-option > label{
+//         margin-left: 20px;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditEmail-option > label > span{
+//         font-size: @nrgFontSize-small;
+//         font-weight: @nrgFontWeight-semiBold;
+//         color: @nrgColor-grey-dark;
+//     }
+
+//     & > .nrgDashboard-cusDataVerifyEditEmail-actBtn{
+//         margin-left: 120px;
+//         margin-top: 30px;
+//     }
+// }
+
+
+
 .nrgDashboard-DelEmailBox {
         width:520px;
     &  .nrgDashboard-DelEmailBox-btns {
@@ -653,7 +656,796 @@
         line-height: 23px;
     }
 }
-// Phone number alignment
-.nrgDashboard-cusDataVerify-phoneNumAlign {
-    width: 65px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nrgDashboard-cusDataVerify {
+    height: 400px;
+
+    & .nrgDashboard-cusDataVerify-layout {
+        width: 100%;
+        display: flex;
+
+        & .nrgDashboard-cusDataVerify-left {
+            width: 335px;
+            padding-right: 28px;
+            border-right: 1px dashed @nrgColor-grey-light;
+
+            & .nrgDashboard-cusDataVerify-lleft-wrap {
+                background-color: @nrgColor-bluePearl;
+                border-radius: 4px;
+                padding: 15px 20px;
+                height: 350px;
+                // 1. Status Title
+                & .nrgDashboard-cusDataVerify-left-statusTitle {
+                    text-align: center;
+                    padding-bottom: 10px;
+                    border-bottom: 1px dashed @nrgColor-grey-light;
+
+                    span {
+                        font-size: @nrgFontSize-larger;
+                        font-weight: @nrgFontWeight-semiBold;
+                        color: @nrgColor-blue-link;
+                    }
+                }
+                // 2. TDSP
+                & .nrgDashboard-cusDataVerify-lleft-tdspSection {
+                    width: 100%;
+                    padding: 12px 0;
+                    border-bottom: 1px dashed @nrgColor-grey-light;
+
+                    & .nrgDashboard-cusDataVerify-left-tdspLabl {
+                        font-weight: @nrgFontWeight-semiBold;
+                        margin-bottom: 5px;
+                        color: @nrgColor-blue-lightLink;
+                        display: block;
+                        line-height: 10px;
+
+                        span {
+                            display: block;
+                        }
+                    }
+
+                    & .nrgDashboard-cusDataVerify-left-tdspVal {
+
+                        span {
+                            color: @nrgColor-grey-dark;
+                        }
+                    }
+                }
+                // 3. Meter & Description
+                & .nrgDashboard-cusDataVerify-left-meterDescrSection {
+                    width: 100%;
+                    display: flex;
+                    padding: 12px 0;
+                    border-bottom: 1px dashed @nrgColor-grey-light;
+
+                    & .nrgDashboard-cusDataVerify-left-meter {
+                        flex: 1;
+
+                        & .nrgDashboard-cusDataVerify-left-meterLabelSection {
+                            display: flex;
+                            align-items: center;
+                            margin-bottom: 5px;
+
+                            & .nrgDashboard-cusDataVerify-left-meterLabel {
+                                font-weight: @nrgFontWeight-semiBold;
+                                color: @nrgColor-blue-lightLink;
+                                margin-right: 5px;
+                                display: block;
+                                line-height: 10px;
+
+                                span {
+                                    display: block;
+                                }
+                            }
+
+                            & .nrgDashboard-cusDataVerify-left-meterCheckbox {
+                                height: 10px;
+                                width: 10px;
+                                margin-right: 10px;
+                                margin-top: -8px;
+
+                                & .uteMChkBox-chk {
+                                    height: 15px;
+                                    width: 15px;
+                                    border-color: @nrgColor-grey-light;
+                                    border-radius: 2px;
+
+                                    &::before {
+                                        border-color: @nrgColor-grey-light;
+                                        left: 2px;
+                                        top: 2px;
+                                        width: 4px;
+                                        height: 8px;
+                                    }
+                                }
+                            }
+
+                            & .nrgDashboard-cusDataVerify-left-meterRemote {
+                                font-weight: @nrgFontWeight-semiBold;
+                                color: @nrgColor-grey-light;
+                                display: block;
+                                line-height: 10px;
+
+                                span {
+                                    display: block;
+                                }
+                            }
+                        }
+
+                        & .nrgDashboard-cusDataVerify-left-meterValue {
+                            width: 100%;
+
+                            span {
+                                color: @nrgColor-grey-dark;
+                            }
+                        }
+                    }
+
+                    & .nrgDashboard-cusDataVerify-left-description {
+                        flex: 1;
+
+                        & .nrgDashboard-cusDataVerify-left-descrLabel {
+                            font-weight: @nrgFontWeight-semiBold;
+                            color: @nrgColor-grey-light;
+                            margin-bottom: 5px;
+                            display: block;
+                            line-height: 10px;
+
+                            span {
+                                display: block;
+                            }
+                        }
+
+                        & .nrgDashboard-cusDataVerify-left-descrVal {
+                            width: 100%;
+
+                            span {
+                                color: @nrgColor-grey-dark;
+                            }
+                        }
+                    }
+                }
+                // 4. Contract & Rate
+                & .nrgDashboard-cusDataVerify-left-contrRateSection {
+                    width: 100%;
+                    display: flex;
+                    padding: 12px 0;
+                    border-bottom: 1px dashed @nrgColor-grey-light;
+
+                    & .nrgDashboard-cusDataVerify-left-contract {
+                        flex: 1;
+
+                        & .nrgDashboard-cusDataVerify-left-contractLabel {
+                            font-weight: @nrgFontWeight-semiBold;
+                            margin-bottom: 5px;
+                            color: @nrgColor-blue-lightLink;
+                            display: block;
+                            line-height: 10px;
+
+                            span {
+                                display: block;
+                            }
+                        }
+
+                        & .nrgDashboard-cusDataVerify-left-contractVal {
+
+                            span {
+                                color: @nrgColor-grey-dark;
+                            }
+                        }
+                    }
+
+                    & .nrgDashboard-cusDataVerify-left-rate {
+                        flex: 1;
+
+                        & .nrgDashboard-cusDataVerify-left-rateLabel {
+                            font-weight: @nrgFontWeight-semiBold;
+                            margin-bottom: 5px;
+                            color: @nrgColor-grey-light;
+                            display: block;
+                            line-height: 10px;
+
+                            span {
+                                display: block;
+                            }
+                        }
+
+                        & .nrgDashboard-cusDataVerify-left-rateVal {
+                            span {
+                                color: @nrgColor-grey-dark;
+                            }
+                        }
+                    }
+                }
+                // 5. ESID
+                & .nrgDashboard-cusDataVerify-left-esidSection {
+                    width: 100%;
+                    padding: 12px 0;
+                    border-bottom: 1px dashed @nrgColor-grey-light;
+
+                    & .nrgDashboard-cusDataVerify-left-esidLabel {
+                        font-weight: @nrgFontWeight-semiBold;
+                        margin-bottom: 5px;
+                        color: @nrgColor-grey-light;
+                        display: block;
+                        line-height: 10px;
+
+                        span {
+                            display: block;
+                        }
+                    }
+
+                    & .nrgDashboard-cusDataVerify-left-esidVal {
+
+                        span {
+                            color: @nrgColor-grey-dark;
+                        }
+                    }
+                }
+                // 6. DL & SSN
+                & .nrgDashboard-cusDataVerify-left-driverSocialSection {
+                    width: 100%;
+                    padding: 12px 0;
+                    display: flex;
+
+                    & .nrgDashboard-cusDataVerify-left-driver {
+                        flex: 1;
+
+                        & .nrgDashboard-cusDataVerify-left-driverLabel {
+                            font-weight: @nrgFontWeight-semiBold;
+                            margin-bottom: 5px;
+                            color: @nrgColor-grey-light;
+                            display: block;
+                            line-height: 10px;
+
+                            span {
+                                display: block;
+                            }
+                        }
+
+                        & .nrgDashboard-cusDataVerify-left-driverValSection {
+                            display: flex;
+                            align-items: center;
+
+                            & .nrgDashboard-cusDataVerify-left-driverVal {
+                                margin-right: 10px;
+
+                                span {
+                                    color: @nrgColor-grey-dark;
+                                }
+                            }
+                        }
+                    }
+                    & .nrgDashboard-cusDataVerify-left-social {
+                        flex: 1;
+
+                        & .nrgDashboard-cusDataVerify-left-socialLabel {
+                            font-weight: @nrgFontWeight-semiBold;
+                            margin-bottom: 5px;
+                            color: @nrgColor-grey-light;
+                            display: block;
+                            line-height: 10px;
+
+                            span {
+                                display: block;
+                            }
+                        }
+
+                        & .nrgDashboard-cusDataVerify-left-socialValSection {
+                            display: flex;
+                            align-items: center;
+
+                            & .nrgDashboard-cusDataVerify-left-socialVal {
+                                margin-right: 10px;
+
+                                span {
+                                    color: @nrgColor-grey-dark;
+                                }
+                            }
+                        }
+                    }
+
+                    // Green Checkbox
+                    & .nrgDashboard-cusDataVerify-left-redX {
+
+                        span {
+                            display: inline-block;
+                            transform:scale(1.5,1); /* W3C */
+                            -webkit-transform:scale(1.5,1); /* Safari and Chrome */
+                            -moz-transform:scale(1.5,1); /* Firefox */
+                            -ms-transform:scale(1.5,1); /* IE 9 */
+                            -o-transform:scale(1.5,1); /* Opera */
+                            color: @nrgColor-red-pale;
+                        }
+                    }
+
+                    // Red X
+                    & .nrgDashboard-cusDataVerify-left-greenCheckbox {
+                        height: 17px;
+                        width: 17px;
+                        margin-right: 5px;
+
+                        & .uteMChkBox-chk {
+                            height: 17px;
+                            width: 17px;
+                            border-color: @nrgColor-green-highlight;
+                            border-radius: 2px;
+
+                            &::before {
+                                border-color: @nrgColor-green-highlight;
+                                left: 3px;
+                                top: 2px;
+                                width: 4px;
+                                height: 8px;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        & .nrgDashboard-cusDataVerify-middle {
+            padding: 0 28px;
+            width: 588px;
+
+            & .nrgDashboard-cusDataVerify-middle-wrap {
+                width: 529px;
+                height: 250px;
+
+                & .nrgDashboard-cusDataVerify-middle-dropdownArea {
+                    margin: 15px 0;
+                    display: flex;
+
+                    & .nrgDashboard-cusDataVerify-middle-dropdownMenu {
+                        flex: 1;
+                        max-width: 260px;
+
+                        &:first-child {
+                            margin-right: 10px;
+                        }
+
+                        & .uteMDd-hdr {
+                            display: flex;
+                            border: none;
+                            margin: 0;
+                            background-color: @nrgColor-bluePearl;
+
+                            & .uteMDd-hdrContent {
+                                height: 35px;
+                                overflow: hidden;
+                                padding: 8px 0 8px 8px;
+                                white-space: nowrap;
+
+                                & .uteMDdItem {
+                                    font-size: @nrgFontSize-small;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                }
+                            }
+
+                            & .uteMDd-hdrExpander {
+                                padding: 15px;
+                            }
+                        }
+
+                        & .uteMDd-picker {
+                            width: 100%;
+                            max-height: 270px;
+                            overflow-y: auto;
+                            margin-top: 5px;
+
+                            & .uteMDdItem {
+                                font-size: @nrgFontSize-small;
+                            }
+                        }
+                    }
+                }
+
+                & .nrgDashboard-cusDataVerify-middle-content {
+                    background-color: @nrgColor-bluePearl;
+                    border-radius: 4px;
+                    padding: 15px 20px;
+                    display: flex;
+                    flex-direction: column;
+
+                    & .rgDashboard-cusDataVerify-middle-content-row {
+                        flex: 1;
+                        width: 100%;
+                        align-items: flex-start;
+                        display: flex;
+                        margin-bottom: 10px;
+
+                        &.dashedBottom {
+                            border-bottom: 1px dashed @nrgColor-grey-light;
+                        }
+
+                        &.noBtmMargin {
+                            margin-bottom: 0;
+                        }
+
+                        &.mailingAddrHeight {
+                            height: 77px;
+                        }
+
+                        &.serviceAddrHeight {
+                            height: 42px;
+                        }
+
+                        & .nrgDashboard-cusDataVerify-middle-addrSection {
+                            flex: 1;
+                            display: flex;
+                            align-items: center;
+
+                            &.column {
+                                flex-direction: column;
+                                align-items: flex-start;
+                            }
+
+                            & .nrgDashboard-cusDataVerify-middle-mailAddrLabel {
+                                font-weight: @nrgFontWeight-semiBold;
+                                color: @nrgColor-blue-link;
+                            }
+
+                            & .nrgDashboard-cusDataVerify-middle-addrBtn {
+                                padding: 0;
+
+                                & .uteMBtn-text {
+                                    font-weight: @nrgFontWeight-semiBold;
+                                    font-size: @nrgFontSize-base;
+                                    color: @nrgColor-black;
+                                    text-align: left;
+                                }
+                            }
+
+                            & .nrgDashboard-cusDataVerify-middle-addrSection-badge {
+                                margin-right: 10px;
+                            }
+
+                            & .nrgDashboard-cusDataVerify-middle-addr {
+                                span {
+                                    font-weight: @nrgFontWeight-semiBold;
+                                }
+                            }
+                        }
+                        & .nrgDashboard-cusDataVerify-middle-pagiSection {
+                            flex: 1;
+                            text-align: center;
+
+                            & .nrgDashboard-cusDataVerify-middle-pageBtn {
+                                color: @nrgColor-blue-link;
+
+                                &.navigate {
+                                    transform:scale(1,1.8);         /* W3C */
+                                    -webkit-transform:scale(1,1.8); /* Safari and Chrome */
+                                    -moz-transform:scale(1,1.8);    /* Firefox */
+                                    -ms-transform:scale(1,1.8);     /* IE 9 */
+                                    -o-transform:scale(1,1.8);      /* Opera */
+                                }
+
+                                &.active {
+                                    font-weight: @nrgFontWeight-semiBold;
+                                }
+                            }
+                        }
+                        & .nrgDashboard-cusDataVerify-middel-contractNumLabel {
+                            font-weight: @nrgFontWeight-semiBold;
+                            color: @nrgColor-blue-link;
+                            margin-right: 10px;
+
+                            span {
+                                line-height: 25px;
+                                display: block;
+                            }
+                        }
+                        & .nrgDashboard-cusDataVerify-middle-contractNumVal {
+                            min-height: 25px;
+                            margin: 0;
+
+                            input {
+                                line-height: 25px;
+                                padding: 0;
+                                display: block;
+                                color: @nrgColor-black;
+                                font-weight: @nrgFontWeight-semiBold;
+                                border: none;
+                                text-indent: 0;
+                            }
+                        }
+                        // ROW 1
+                        & .nrgDashboard-cusDataVerify-middel-cellNumSection {
+                            flex: 1;
+                            display: flex;
+                            align-items: baseline;
+                            margin-right: 10px;
+
+                            & .nrgDashboard-cusDataVerify-middle-cellNumLabel {
+                                font-weight: @nrgFontWeight-semiBold;
+                                color: @nrgColor-grey-light;
+                                width: 65px;
+                            }
+
+                            & .nrgDashboard-cusDataVerify-middle-cellNumVal {
+                                min-width: 0;
+                                color: @nrgColor-black;
+                                font-weight: @nrgFontWeight-semiBold;
+                                margin: 0 5px 0 0;
+                                padding: 0;
+
+                                input {
+                                    border: none;
+                                    text-indent: 0;
+                                }
+                            }
+                        }
+                        & .nrgDashboard-cusDataVerify-middle-faxNum {
+                            flex: 1;
+                            display: flex;
+                            align-items: baseline;
+
+                            & .nrgDashboard-cusDataVerify-middle-faxNumLabel {
+                                font-weight: @nrgFontWeight-semiBold;
+                                color: @nrgColor-grey-light;
+                                width: 65px;
+                            }
+
+                            & .nrgDashboard-cusDataVerify-middle-faxNumVal {
+                                min-width: 0;
+                                color: @nrgColor-black;
+                                font-weight: @nrgFontWeight-semiBold;
+                                margin: 0 5px 0 0;
+                                padding: 0;
+
+                                input {
+                                    border: none;
+                                    text-indent: 0;
+                                }
+                            }
+                        }
+                        // ROW 2
+                        & .nrgDashboard-cusDataVerify-middle-dayNumSection {
+                            flex: 1;
+                            display: flex;
+                            align-items: baseline;
+                            margin-right: 10px;
+
+                            & .nrgDashboard-cusDataVerify-middle-dayNumLabel {
+                                font-weight: @nrgFontWeight-semiBold;
+                                color: @nrgColor-grey-light;
+                                width: 65px;
+                            }
+                            & .nrgDashboard-cusDataVerify-middle-dayNumVal {
+                                min-width: 0;
+                                color: @nrgColor-black;
+                                font-weight: @nrgFontWeight-semiBold;
+                                margin: 0 5px 0 0;
+                                padding: 0;
+
+                                input {
+                                    border: none;
+                                    text-indent: 0;
+                                }
+                            }
+                            & .nrgDashboard-cusDataVerify-middle-extNumLabel {
+                                font-weight: @nrgFontWeight-semiBold;
+                                color: @nrgColor-grey-light;
+                                margin-right: 10px;
+
+                            }
+                            & .nrgDashboard-cusDataVerify-middle-extNumVal {
+                                min-width: 0;
+                                color: @nrgColor-black;
+                                font-weight: @nrgFontWeight-semiBold;
+                                margin: 0;
+                                padding: 0;
+
+                                input {
+                                    border: none;
+                                    text-indent: 0;
+                                }
+                            }
+                        }
+                        & .nrgDashboard-cusDataVerify-middle-dayNumType {
+                            flex: 1;
+                            display: flex;
+                            align-items: baseline;
+
+                            & .nrgDashboard-cusDataVerify-middle-dayNumTypeLabel {
+                                font-weight: @nrgFontWeight-semiBold;
+                                color: @nrgColor-grey-light;
+                                width: 65px;
+                                margin-right: 2px;
+                            }
+                            & .nrgDashboard-cusDataVerify-middle-dayNumTypeDropdown {
+                                min-width: 0;
+                                color: @nrgColor-black;
+                                font-weight: @nrgFontWeight-semiBold;
+
+                                & .uteMDd-hdr {
+                                    border: none;
+                                    border-radius: 0;
+
+                                    & .uteMDd-hdrContent {
+                                        padding: 0;
+
+                                        & .uteMDdItem {
+                                            margin-right: 10px;
+                                        }
+                                    }
+
+                                    & .uteMDd-hdrExpander {
+                                        padding: 6px 10px;
+
+                                        &::before {
+                                            border-color: @nrgColor-blue-link;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        // ROW 3
+                        & .nrgDashboard-cusDataVerify-middle-evenNumSection {
+                            flex: 1;
+                            display: flex;
+                            align-items: baseline;
+                            margin-right: 10px;
+
+                            & .nrgDashboard-cusDataVerify-middle-evenNumLabel {
+                                font-weight: @nrgFontWeight-semiBold;
+                                color: @nrgColor-grey-light;
+                                width: 65px;
+                            }
+                            & .nrgDashboard-cusDataVerify-middle-evenNumVal {
+                                min-width: 0;
+                                color: @nrgColor-black;
+                                font-weight: @nrgFontWeight-semiBold;
+                                margin: 0 5px 0 0;
+                                padding: 0;
+
+                                input {
+                                    border: none;
+                                    text-indent: 0;
+                                }
+                            }
+                            & .nrgDashboard-cusDataVerify-middle-extNumLabel {
+                                font-weight: @nrgFontWeight-semiBold;
+                                color: @nrgColor-grey-light;
+                                margin-right: 10px;
+
+                            }
+                            & .nrgDashboard-cusDataVerify-middle-extNumVal {
+                                min-width: 0;
+                                color: @nrgColor-black;
+                                font-weight: @nrgFontWeight-semiBold;
+                                margin: 0;
+                                padding: 0;
+
+                                input {
+                                    border: none;
+                                    text-indent: 0;
+                                }
+                            }
+                        }
+                        & .nrgDashboard-cusDataVerify-middle-evenNumType {
+                            flex: 1;
+                            display: flex;
+                            align-items: baseline;
+
+                            & .nrgDashboard-cusDataVerify-middle-evenNumTypeLabel {
+                                font-weight: @nrgFontWeight-semiBold;
+                                color: @nrgColor-grey-light;
+                                width: 65px;
+                                margin-right: 2px;
+                            }
+                            & .nrgDashboard-cusDataVerify-middle-evenNumTypeDropdown {
+                                min-width: 0;
+                                color: @nrgColor-black;
+                                font-weight: @nrgFontWeight-semiBold;
+
+                                & .uteMDd-hdr {
+                                    border: none;
+                                    border-radius: 0;
+
+                                    & .uteMDd-hdrContent {
+                                        padding: 0;
+
+                                        & .uteMDdItem {
+                                            margin-right: 10px;
+                                        }
+                                    }
+
+                                    & .uteMDd-hdrExpander {
+                                        padding: 6px 10px;
+
+                                        &::before {
+                                            border-color: @nrgColor-blue-link;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        // ROW 4
+                        & .nrgDashboard-cusDataVerify-middle-emailLabel {
+                            font-weight: @nrgFontWeight-semiBold;
+                            color: @nrgColor-grey-light;
+                            width: 65px;
+                        }
+                        & .nrgDashboard-cusDataVerify-middle-emailVal {
+                            width: 105px;
+                            min-width: 105px;
+                            color: @nrgColor-black;
+                            font-weight: @nrgFontWeight-semiBold;
+                            padding: 0;
+
+                            & .uteMBtn-text {
+                                padding: 0;
+                                text-align: left;
+                                span {
+                                    font-size: @nrgFontSize-base;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        & .nrgDashboard-cusDataVerify-right {
+            width: 86px;
+            align-self: flex-end;
+
+            & .nrgDashboard-cusDataVerify-right-btn {
+                margin-bottom: 20px;
+
+                &.noBtmMargin {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        // SMS Button
+        & .nrgDashboard-cusDataVerify-smsBtn {
+            min-width: 0;
+            min-height: 0;
+            padding: 0 8px;
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

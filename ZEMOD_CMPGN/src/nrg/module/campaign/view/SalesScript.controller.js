@@ -361,7 +361,7 @@ sap.ui.define(
                     } else {
                         that.getOwnerComponent().getCcuxApp().setOccupied(false);
                         sap.ui.commons.MessageBox.alert("SWAP Failed");
-                        this.navTo("campaignoffers", {bpNum: that._sBP, caNum: that._sCA, coNum: that._sContract});
+                        this.navTo("campaignoffers", {bpNum: that._sBP, caNum: that._sCA, coNum: that._sContract, typeV : "P"});
                     }
                     jQuery.sap.log.info("Odata Read Successfully:::" + oData.Code);
                 }.bind(this),
@@ -381,7 +381,7 @@ sap.ui.define(
 		 */
         Controller.prototype.onOvsDecline = function (oEvent) {
             this._oOverviewDialog.close();
-            this.navTo("campaignoffers", {coNum: this._sContract});
+            this.navTo("campaignoffers", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, typeV : "P"});
         };
 
         /**
@@ -436,7 +436,7 @@ sap.ui.define(
                     } else {
                         this.getOwnerComponent().getCcuxApp().setOccupied(false);
                         sap.ui.commons.MessageBox.alert("Disposition process is Failed");
-                        this.navTo("campaignoffers", {bpNum: that._sBP, caNum: that._sCA, coNum: that._sContract});
+                        this.navTo("campaignoffers", {bpNum: that._sBP, caNum: that._sCA, coNum: that._sContract, typeV : "P"});
                     }
                     jQuery.sap.log.info("Odata Read Successfully:::" + oData.Code);
                 }.bind(this),

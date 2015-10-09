@@ -11,652 +11,583 @@
     controllerName="nrg.module.dashboard.view.CustomerDataVerification">
 
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-cusDataVerify">
-        <l:MatrixLayout
-            class="nrgDashboard-cusDataVerify-layout"
-            widths="288px,534px,84px" columns="3" width="100%">
-            <l:rows>
-                <l:MatrixLayoutRow>
-                    <l:cells>
-                        <!--Area Left (active)-->
-                        <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-l">
-                            <ute:Tag class="nrgDashboard-cusDataVerify-l-div">
-                                <ute:TextView text="{oDtaVrfyContracts>/ContractStatus}"
-                                    class="nrgDashboard-cusDataVerify-l-div-title">
-                                    <ute:tooltip>
-                                        <ute:Tooltip>
-                                            <ute:TextView
-                                                color="White"
-                                                text="{
-                                                parts:['oDtaVrfyContracts>/HoveringStatus'],
-                                                formatter:'._formatDate'}"/>
-                                        </ute:Tooltip>
-                                    </ute:tooltip>
-                                </ute:TextView>
-
-                                <ute:HorizontalDivider
-                                    class="nrgDashboard-cusDataVerify-horDvi"/>
-
-                                <utmain:Label labelFor="tdsp"
-                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TdspLbl}"
-                                    class="nrgDashboard-cusDataVerify-l-div-tdspLabl">
-                                    <utmain:tooltip>
-                                        <ute:Tooltip>
-                                            <ute:TextView
-                                                color="White"
-                                                text="{oDtaVrfyContracts>/TDSPSrvPhNumber}"/>
-                                            <ute:TextView
-                                                color="White"
-                                                text="{oDtaVrfyContracts>/TDSPOutPhNumber}"/>
-                                        </ute:Tooltip>
-                                    </utmain:tooltip>
-                                </utmain:Label>
-                                <ute:TextView id="tdsp"
-                                    text="{oDtaVrfyContracts>/TdspName}"
-                                    class="nrgDashboard-cusDataVerify-l-div-tdspVal"/>
-
-                                <ute:HorizontalDivider
-                                    class="nrgDashboard-cusDataVerify-horDvi"/>
-
-                                <l:MatrixLayout widths="50%,50%" columns="2">
-                                    <l:MatrixLayoutRow>
-                                        <l:MatrixLayoutCell
-                                            class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label labelFor="meter_num"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_MtrNum}"
-                                                class="nrgDashboard-cusDataVerify-l-div-halflabl"/>
-                                            <utmain:Checkbox id="chk_advMtr" enabled="false"
-                                                class="nrgDashboard-cusDataVerify-l-div-cell-rmtChb"
-                                                checked="{
-                                                    parts:['oDtaVrfyContracts>/SmartMeter'],
-                                                    formatter:'._formatChecked'}"/>
-                                            <utmain:Label labelFor="meter_num"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RmtMtr}"
-                                                class="nrgDashboard-cusDataVerify-l-div-chb"/>
-                                            <ute:TextView id="meter_num"
-                                                text="{oDtaVrfyContracts>/MeterNumber}"
-                                                class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
-                                        </l:MatrixLayoutCell>
-                                        <l:MatrixLayoutCell
-                                            class="{comp-i18n-dashboard>nrgDashboard-cusDataVerify-l-div-cell}">
-                                            <utmain:Label labelFor="desp_txt"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Desc}"
-                                                class="nrgDashboard-cusDataVerify-l-div-ritelabl"/>
-                                            <ute:TextView id="desp_txt"
-                                                text="{oDtaVrfyContracts>/MeterDescription}"
-                                                class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
-                                        </l:MatrixLayoutCell>
-                                    </l:MatrixLayoutRow>
-                                </l:MatrixLayout>
-
-                                <ute:HorizontalDivider
-                                    class="nrgDashboard-cusDataVerify-horDvi"/>
-
-                                <l:MatrixLayout widths="50%,50%" columns="2">
-                                    <l:MatrixLayoutRow>
-                                        <l:MatrixLayoutCell
-                                            class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label labelFor="contacc"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_ContAcc}"
-                                                class="nrgDashboard-cusDataVerify-l-div-halflabl"/>
-                                            <ute:TextView id="contacc"
-                                                text="{oDtaVrfyBuags>/ContractAccountID}-{oDtaVrfyBuags>/CheckDigit}"
-                                                class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
-                                        </l:MatrixLayoutCell>
-                                        <l:MatrixLayoutCell
-                                            class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label labelFor="rtcls_lbl"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RtCls}"
-                                                class="nrgDashboard-cusDataVerify-l-div-ritelabl"/>
-                                            <ute:TextView id="rtcls_lbl"
-                                                text="{oDtaVrfyContracts>/RateClass}"
-                                                class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
-                                        </l:MatrixLayoutCell>
-                                    </l:MatrixLayoutRow>
-                                </l:MatrixLayout>
-
-                                <ute:HorizontalDivider
-                                    class="nrgDashboard-cusDataVerify-horDvi"/>
-
-                                <utmain:Label  labelFor="esid_lbl"
-                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_ESID}"
-                                    class="nrgDashboard-cusDataVerify-l-div-esidLabl"/>
-                                <ute:TextView id="esid_lbl"
-                                              class="nrgDashboard-cusDataVerify-l-div-tdspVal"
-                                              text="{oDtaVrfyContracts>/ESID}"/>
-
-                                <ute:HorizontalDivider
-                                    class="nrgDashboard-cusDataVerify-horDvi"/>
-
-                                <l:MatrixLayout widths="50%,50%" columns="2">
-                                    <l:MatrixLayoutRow>
-                                        <l:MatrixLayoutCell
-                                            class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label labelFor="dl_lbl"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DlNum}"
-                                                class="nrgDashboard-cusDataVerify-l-div-ritelabl"/>
-                                            <ute:TextView id="dl_lbl"
-                                                text="{oDtaVrfyBP>/DL}"
-                                                class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
-                                            <utmain:Checkbox id="idVrfyDL" enabled="false" checked="true"
-                                                class="nrgDashboard-cusDataVerify-l-div-halChb"
-                                                visible="{
-                                                    parts:['oDtaVrfyBP>/DLVerification'],
-                                                    formatter:'._formatVrfyMark'}"/>
-                                            <ute:TextView id="idVrfyDLNo"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RedX}"
-                                                class="nrgDashboard-cusDataVerify-l-div-redX"
-                                                visible="{
-                                                    parts:['oDtaVrfyBP>/DLVerification','oDtaVrfyBP>/DL'],
-                                                    formatter:'._formatVrfyMarkRedX'}"/>
-                                        </l:MatrixLayoutCell>
-                                        <l:MatrixLayoutCell
-                                            class="nrgDashboard-cusDataVerify-l-div-cell">
-                                            <utmain:Label labelFor="ssn_lbl"
-                                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SSNum}"
-                                                class="nrgDashboard-cusDataVerify-l-div-ritelabl"/>
-                                            <ute:TextView id="ssn_lbl"
-                                                text="{oDtaVrfyBP>/SSN}"
-                                                class="nrgDashboard-cusDataVerify-l-div-halgVal"/>
-                                            <utmain:Checkbox id="idVrfySSN" enabled="false" checked="true"
-                                                class="nrgDashboard-cusDataVerify-l-div-halChb"
-                                                 visible="{
-                                                    parts:['oDtaVrfyBP>/SSNVerification'],
-                                                    formatter:'._formatVrfyMark'}"/>
-                                            <ute:TextView id="idVrfySSNNo"
-                                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RedX}"
-                                                class="nrgDashboard-cusDataVerify-l-div-redX"
-                                                visible="{
-                                                    parts:['oDtaVrfyBP>/SSNVerification','oDtaVrfyBP>/SSN'],
-                                                    formatter:'._formatVrfyMarkRedX'}"/>
-                                        </l:MatrixLayoutCell>
-                                    </l:MatrixLayoutRow>
-                                </l:MatrixLayout>
+        <ute:Tag class="nrgDashboard-cusDataVerify-layout">
+            <!--Area Left -->
+            <ute:Tag class="nrgDashboard-cusDataVerify-left">
+                <ute:Tag class="nrgDashboard-cusDataVerify-lleft-wrap">
+                    <!-- Status -->
+                    <ute:TextView text="{oDtaVrfyContracts>/ContractStatus}"
+                        class="nrgDashboard-cusDataVerify-left-statusTitle">
+                        <ute:tooltip>
+                            <ute:Tooltip>
+                                <ute:TextView
+                                    color="White"
+                                    text="{
+                                    parts:['oDtaVrfyContracts>/HoveringStatus'],
+                                    formatter:'._formatDate'}"/>
+                            </ute:Tooltip>
+                        </ute:tooltip>
+                    </ute:TextView>
+                    <!-- TDSP -->
+                    <ute:Tag class="nrgDashboard-cusDataVerify-lleft-tdspSection">
+                        <utmain:Label labelFor="tdsp"
+                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TdspLbl}"
+                            class="nrgDashboard-cusDataVerify-left-tdspLabl">
+                            <utmain:tooltip>
+                                <ute:Tooltip>
+                                    <ute:TextView
+                                        color="White"
+                                        text="{oDtaVrfyContracts>/TDSPSrvPhNumber}"/>
+                                    <ute:TextView
+                                        color="White"
+                                        text="{oDtaVrfyContracts>/TDSPOutPhNumber}"/>
+                                </ute:Tooltip>
+                            </utmain:tooltip>
+                        </utmain:Label>
+                        <ute:TextView id="tdsp"
+                            text="{oDtaVrfyContracts>/TdspName}"
+                            class="nrgDashboard-cusDataVerify-left-tdspVal"/>
+                    </ute:Tag>
+                    <!-- Meter & Description -->
+                    <ute:Tag class="nrgDashboard-cusDataVerify-left-meterDescrSection">
+                        <!-- Meter -->
+                        <ute:Tag class="nrgDashboard-cusDataVerify-left-meter">
+                            <!-- Label Section -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-left-meterLabelSection">
+                                <utmain:Label labelFor="meter_num"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_MtrNum}"
+                                    class="nrgDashboard-cusDataVerify-left-meterLabel"/>
+                                <utmain:Checkbox id="chk_advMtr" enabled="false"
+                                    class="nrgDashboard-cusDataVerify-left-meterCheckbox"
+                                    checked="{
+                                        parts:['oDtaVrfyContracts>/SmartMeter'],
+                                        formatter:'._formatChecked'}"/>
+                                <utmain:Label labelFor="meter_num"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RmtMtr}"
+                                    class="nrgDashboard-cusDataVerify-left-meterRemote"/>
                             </ute:Tag>
-                        </l:MatrixLayoutCell>
-                        <!--Area Left Ends-->
-
-                        <!--Area Middle (service address/mailing address)-->
-                        <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-m">
-                            <ute:Tag class="nrgDashboard-cusDataVerify-mDiv">
-                                <!-- Toggle Tab -->
-                                <ute:ToggleButton id="id_DshbTglBtn" design="ToggleDashboard"
-                                    leftSelected="true"
-                                    leftBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TglBtnLTxt}"
-                                    rightBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TglBtnRTxt}"
-                                    class="nrgDashboard-cusDataVerify-mTgBtn"
-                                    press="._onToggleButtonPress">
-                                </ute:ToggleButton>
-                                <!-- Dropdown Menus -->
-                                <ute:Tag class="nrgDashboard-cusDataVerify-mRdBtn">
-                                    <!-- Contract Dropdown -->
-                                    <utmain:Dropdown id="idContractDropdown"
-                                        class="nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom"
-                                        selectedKey="{oAllContractsofBuag>/selectedKey}"
-                                        content="{oAllContractsofBuag>/}"
-                                        select="._onContractSelect" >
-                                        <utmain:DropdownItem
-                                            key="{oAllContractsofBuag>iIndex}">
-                                            <ute:Tag elem="span"
-                                                text="{oAllContractsofBuag>DisplayName}"/>
-                                        </utmain:DropdownItem>
-                                    </utmain:Dropdown>
-                                    <!-- Contract Account Dropdown -->
-                                    <utmain:Dropdown id="idCADropdown"
-                                        class="nrgDashboard-cusDataVerify-mRdBtn-dropDownCustom"
-                                        selectedKey="{oAllBuags>/selectedKey}"
-                                        content="{oAllBuags>/}"
-                                        select="._onBuagSelect" >
-                                        <utmain:DropdownItem
-                                            key="{oAllBuags>iIndex}">
-                                            <ute:Tag elem="span"
-                                                text="{oAllBuags>DisplayName}"/>
-                                        </utmain:DropdownItem>
-                                    </utmain:Dropdown>
-                                </ute:Tag>
-                            
-                                <ute:Tag id="serviceadd_area" visible="true" class="nrgDashboard-cusDataVerify-mContent">
-                                    <l:MatrixLayout widths="65%,35%" columns="2">
-                                        <l:MatrixLayoutRow>
-                                            <l:MatrixLayoutCell>
-                                                <ute:Tag class="nrgDashboard-cusDataVerify-mContent-add-up">
-                                                    <ute:Badge id="idBadgeCI" size="30px"
-                                                        class="nrgDashboard-cusDataVerify-mContent-badge"
-                                                        visible="{
-                                                            parts:['oDtaVrfyContracts>/JointAcc'],
-                                                            formatter:'._formatChecked'}"
-                                                        design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RHSClr}"
-                                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_JABadge}">
-                                                    </ute:Badge>
-                                                    <ute:TextView
-                                                        class="nrgDashboard-cusDataVerify-mContent-add"
-                                                        text="{oDtaVrfyContracts>/HouseNum1} {oDtaVrfyContracts>/Street}"/>
-                                                    <ute:TextView
-                                                        class="nrgDashboard-cusDataVerify-mContent-add"
-                                                        text="{oDtaVrfyContracts>/City1}, {oDtaVrfyContracts>/Region} {oDtaVrfyContracts>/PostCode1}"/>
-                                                </ute:Tag>
-                                            </l:MatrixLayoutCell>
-                                            <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-mContent-pag">
-                                                <utmain:Button design="None"
-                                                    visible="{oCoPageModel>/threeLarger}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-pagBtn"
-                                                    press="._onConFirst"
-                                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgFirst}">
-                                                </utmain:Button>
-                                                <utmain:Button design="None"
-                                                    visible="{oCoPageModel>/threeLarger}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-pagBtn"
-                                                    press="._onConLeft"
-                                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgLeft}">
-                                                </utmain:Button>
-                                                <utmain:Button design="None"
-                                                    visible="{oCoPageModel>/paging/1/exist}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-pagBtn"
-                                                    press="._onConPone"
-                                                    text="{oCoPageModel>/paging/0/co_ind}">
-                                                </utmain:Button>
-                                                <utmain:Button design="None"
-                                                    visible="{oCoPageModel>/paging/1/exist}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-pagBtn"
-                                                    press="._onConPtwo"
-                                                    text="{oCoPageModel>/paging/1/co_ind}">
-                                                </utmain:Button>
-                                                <utmain:Button design="None"
-                                                    visible="{oCoPageModel>/paging/2/exist}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-pagBtn"
-                                                    press="._onConPthree"
-                                                    text="{oCoPageModel>/paging/2/co_ind}">
-                                                </utmain:Button>
-                                                <utmain:Button design="None"
-                                                    visible="{oCoPageModel>/threeLarger}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-pagBtn"
-                                                    press="._onConRite"
-                                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgRite}">
-                                                </utmain:Button>
-                                                <utmain:Button design="None"
-                                                    visible="{oCoPageModel>/threeLarger}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-pagBtn"
-                                                    press="._onConLast"
-                                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgLast}">
-                                                </utmain:Button>
-                                            </l:MatrixLayoutCell>
-                                        </l:MatrixLayoutRow>
-                                    </l:MatrixLayout>
-
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-contractWrap">
-                                        <utmain:Label  labelFor="contractNum"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CaNum}"
-                                            class="nrgDashboard-cusDataVerify-mContent-fLbl"/>
-                                        <ute:Textfield id="contractNum" fieldType="Noborder"
-                                            editable="false"
-                                            value="{oDtaVrfyContracts>/ContractID}"
-                                            class="nrgDashboard-cusDataVerify-mContent-fInput"/>
-                                    </ute:Tag>
-
-                                    <!-- <l:MatrixLayout widths="180px,80px,200px" columns="3">
-                                        <l:MatrixLayoutRow>
-                                            <l:MatrixLayoutCell>
-                                                <utmain:Label  labelFor="cell_num"
-                                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CellNum}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-hLbl nrgDashboard-cusDataVerify-phoneNumAlign"/>
-                                                <ute:Textfield id="cell_num" fieldType="Noborder"
-                                                    class="nrgDashboard-cusDataVerify-mContent-hInput"
-                                                    editable="{oCfrmStatus>/bEditable}"
-                                                    value="{oDtaVrfyBP>/Cell}"
-                                                    width="100px"/>
-
-                                            </l:MatrixLayoutCell>
-
-                                            <l:MatrixLayoutCell>
-                                                <utmain:Button
-                                                    class="nrgDashboard-cusDataVerify-alignCenBtn"
-                                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SMS}"
-                                                    press="._onSMSButtonClicked"/>
-                                            </l:MatrixLayoutCell>
-
-                                            <l:MatrixLayoutCell>
-                                                <utmain:Label labelFor="fax_num"
-                                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FaxNum}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                                <ute:Textfield id="fax_num" fieldType="Noborder"
-                                                    value="{oDtaVrfyBP>/Fax}"
-                                                    editable="{oCfrmStatus>/bEditable}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-hInput"/>
-                                            </l:MatrixLayoutCell>
-                                        </l:MatrixLayoutRow>
-                                    </l:MatrixLayout> -->
-
-                                    <!-- Added by Jerry Hsu, 8/11/2015 -->
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-cellPhn">
-                                        <utmain:Label  labelFor="cell_num"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CellNum}"
-                                            class="nrgDashboard-cusDataVerify-mContent-hLbl nrgDashboard-cusDataVerify-phoneNumAlign"/>
-                                        <ute:Textfield id="cell_num" fieldType="Noborder"
-                                            class="nrgDashboard-cusDataVerify-mContent-hInput"
-                                            editable="{oCfrmStatus>/bEditable}"
-                                            value="{oDtaVrfyBP>/Cell}"
-                                            width="100px"/>
-                                    </ute:Tag>
-                                    <!-- Added by Jerry Hsu, 8/11/2015 -->
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-smsBtn">
-                                        <utmain:Button
-                                            visible="{oCfrmStatus>/ShowSMSBtn}"
-                                            enabled="{
-                                                parts:['oDtaVrfyBP>/IsSMS'],
-                                                formatter:'._formatSMSBtn'}"
-                                            class="nrgDashboard-cusDataVerify-alignCenBtn"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SMS}"
-                                            press="._onSMSButtonClicked"/>
-                                    </ute:Tag>
-                                    <!-- Added by Jerry Hsu, 8/11/2015 -->
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-fax">
-                                        <utmain:Label labelFor="fax_num"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FaxNum}"
-                                            class="nrgDashboard-cusDataVerify-mContent-hLbl nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                        <ute:Textfield id="fax_num" fieldType="Noborder"
-                                            value="{oDtaVrfyBP>/Fax}"
-                                            editable="{oCfrmStatus>/bEditable}"
-                                            class="nrgDashboard-cusDataVerify-mContent-hInput"/>
-                                    </ute:Tag>
-
-                                    <ute:HorizontalDivider
-                                        class="nrgDashboard-cusDataVerify-horDvi"/>
-
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hPhn">
-                                        <utmain:Label  labelFor="dayPhn" 
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"
-                                            class="nrgDashboard-cusDataVerify-mContent-hLbl nrgDashboard-cusDataVerify-phoneNumAlign"/>
-                                        <ute:Textfield id="dayPhn" fieldType="Noborder"
-                                            class="nrgDashboard-cusDataVerify-mContent-hPhnInput"
-                                            editable="{oCfrmStatus>/bEditable}"
-                                            value="{oDtaVrfyBP>/DayPhone}"
-                                            width="100px"/>
-                                    </ute:Tag>
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hExt">
-                                        <utmain:Label  labelFor="dayPhnExt"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PhnExt}"/>
-                                        <ute:Textfield id="dayPhnExt" fieldType="Noborder"
-                                            class="nrgDashboard-cusDataVerify-mContent-hPhnExtInput"
-                                            editable="{oCfrmStatus>/bEditable}"
-                                            value="{oDtaVrfyBP>/DayPhoneExt}"
-                                            width="40px"/>
-                                    </ute:Tag>
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hType">
-                                        <utmain:Label labelFor="dayPhnType"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
-                                            class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                        <utmain:Dropdown id="dayPhnType" design="Plain"
-                                            selectedKey="{oDtaVrfyBP>/DayPhoneType}"
-                                            content="{oDayPhoneType>/}">
-                                            <utmain:DropdownItem
-                                                key="{oDayPhoneType>Key}">
-                                                <ute:Tag elem="span"
-                                                     text="{oDayPhoneType>Type}"/>
-                                            </utmain:DropdownItem>
-                                        </utmain:Dropdown>
-                                    </ute:Tag>
-                                    <ute:HorizontalDivider
-                                        class="nrgDashboard-cusDataVerify-horDvi"/>
-
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hPhn">
-                                        <utmain:Label labelFor="evnPhn" class="nrgDashboard-cusDataVerify-phoneNumAlign"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"/>
-                                        <ute:Textfield id="evnPhn" fieldType="Noborder"
-                                            class="nrgDashboard-cusDataVerify-mContent-hPhnInput"
-                                            editable="{oCfrmStatus>/bEditable}"
-                                            value="{oDtaVrfyBP>/EveningPhone}"
-                                            width="100px"/>
-                                    </ute:Tag>
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hExt">
-                                        <utmain:Label  labelFor="evnPhnExt"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PhnExt}"/>
-                                        <ute:Textfield id="evnPhnExt" fieldType="Noborder"
-                                            class="nrgDashboard-cusDataVerify-mContent-hPhnExtInput"
-                                            editable="{oCfrmStatus>/bEditable}"
-                                            value="{oDtaVrfyBP>/EveningPhoneExt}"
-                                            width="40px"/>
-                                    </ute:Tag>
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hType">
-                                        <utmain:Label labelFor="evnPhnType"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
-                                            class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                        <utmain:Dropdown id="evnPhnType" design="Plain"
-                                            selectedKey="{oDtaVrfyBP>/EveningPhoneType}"
-                                            content="{oEvnPhoneType>/}">
-                                            <utmain:DropdownItem
-                                                key="{oEvnPhoneType>Key}">
-                                                <ute:Tag elem="span"
-                                                     text="{oEvnPhoneType>Type}"/>
-                                            </utmain:DropdownItem>
-                                        </utmain:Dropdown>
-                                    </ute:Tag>
-
-                                    <ute:HorizontalDivider
-                                        class="nrgDashboard-cusDataVerify-horDvi"/>
-                                    <l:MatrixLayout widths="55%,45%" columns="2">
-                                        <l:MatrixLayoutRow>
-                                            <l:MatrixLayoutCell>
-                                                <utmain:Label labelFor="email_lbl"
-                                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Email}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                                <utmain:Button  id="email_lbl" design="None"
-                                                    class="nrgDashboard-cusDataVerify-mContent-hInput nrgDashboard-cusDataVerify-mContent-hEmailInput"
-                                                    enabled="{oCfrmStatus>/bEditable}"
-                                                    text="{parts:['oDtaVrfyBP>/Email'],
-                                                               formatter:'._formatEmailAddressText'}"
-                                                    press="._handleEmailEdit"/>
-                                            </l:MatrixLayoutCell>
-                                            
-                                            <l:MatrixLayoutCell>
-                                            </l:MatrixLayoutCell>
-                                        </l:MatrixLayoutRow>
-                                    </l:MatrixLayout>
-                                </ute:Tag>
-
-                                <ute:Tag id="mailadd_area" visible="false" class="nrgDashboard-cusDataVerify-mContent">
-                                    <l:MatrixLayout widths="55%,45%" columns="2">
-                                        <l:MatrixLayoutRow>
-                                            <l:MatrixLayoutCell>
-                                                <utmain:Label  labelFor="mail_FixedAddr"
-                                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FAddr}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-fLbl"/>
-                                                <ute:Tag id="mail_FixedAddr">
-                                                    <utmain:Button  design="None"
-                                                        class="nrgDashboard-cusDataVerify-mContent-fBtn"
-                                                        text="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ShortForm}"
-                                                        press="._onEditMailAddrClick"/>
-                                                </ute:Tag>
-                                            </l:MatrixLayoutCell>
-                                            <l:MatrixLayoutCell>
-                                                <utmain:Label  labelFor="mail_TempAddr"
-                                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TAddr}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-fLbl"/>
-                                                <ute:Tag id="mail_TempAddr">
-                                                    <utmain:Button  design="None"
-                                                        enabled="{
-                                                            parts:['oDtaVrfyMailingTempAddr>/TempAddrNo'],
-                                                            formatter:'._formatNegativeX'}"
-                                                        class="nrgDashboard-cusDataVerify-mContent-fBtn"
-                                                        text="{oDtaVrfyMailingTempAddr>/TempAddrInfo/ShortForm}"
-                                                        press="._onEditTempAddrClick"/>
-                                                </ute:Tag>
-                                            </l:MatrixLayoutCell>
-                                        </l:MatrixLayoutRow>
-                                    </l:MatrixLayout>
-
-                                    <!-- <l:MatrixLayout widths="55%,45%" columns="2">
-                                        <l:MatrixLayoutRow>
-                                            <l:MatrixLayoutCell>
-                                                <utmain:Label  labelFor="cell_num_mail"
-                                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CellNum}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-hLbl nrgDashboard-cusDataVerify-phoneNumAlign"/>
-                                                <ute:Textfield id="cell_num_mail" fieldType="Noborder"
-                                                    value="{oDtaVrfyBP>/Cell}"
-                                                    editable="{oCfrmStatus>/bEditable}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-hInput"/>
-                                            </l:MatrixLayoutCell>
-                                            <l:MatrixLayoutCell>
-                                                <utmain:Label labelFor="fax_num_mail"
-                                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FaxNum}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                                <ute:Textfield id="fax_num_mail" fieldType="Noborder"
-                                                    value="{oDtaVrfyBP>/Fax}"
-                                                    editable="{oCfrmStatus>/bEditable}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-hInput"/>
-                                            </l:MatrixLayoutCell>
-                                        </l:MatrixLayoutRow>
-                                    </l:MatrixLayout> -->
-
-                                    <!-- Added by Jerry Hsu, 8/11/2015 -->
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-cellPhn">
-                                        <utmain:Label  labelFor="cell_num_mail"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CellNum}"
-                                            class="nrgDashboard-cusDataVerify-mContent-hLbl nrgDashboard-cusDataVerify-phoneNumAlign"/>
-                                        <ute:Textfield id="cell_num_mail" fieldType="Noborder"
-                                            value="{oDtaVrfyBP>/Cell}"
-                                            editable="{oCfrmStatus>/bEditable}"
-                                            class="nrgDashboard-cusDataVerify-mContent-hInput"
-                                            width="100px"/>
-                                    </ute:Tag>
-                                    <!-- Added by Jerry Hsu, 8/11/2015 -->
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-smsBtn">
-                                        <utmain:Button
-                                            visible="{oCfrmStatus>/ShowSMSBtn}"
-                                            class="nrgDashboard-cusDataVerify-alignCenBtn"
-                                            enabled="{
-                                                parts:['oDtaVrfyBP>/IsSMS'],
-                                                formatter:'._formatSMSBtn'}"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SMS}"
-                                            press="._onSMSButtonClicked"/>
-                                    </ute:Tag>
-                                    <!-- Added by Jerry Hsu, 8/11/2015 -->
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-fax">
-                                        <utmain:Label labelFor="fax_num_mail"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FaxNum}"
-                                            class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                        <ute:Textfield id="fax_num_mail" fieldType="Noborder"
-                                            value="{oDtaVrfyBP>/Fax}"
-                                            editable="{oCfrmStatus>/bEditable}"
-                                            class="nrgDashboard-cusDataVerify-mContent-hInput"/>
-                                    </ute:Tag>
-
-                                    <ute:HorizontalDivider
-                                        class="nrgDashboard-cusDataVerify-horDvi"/>
-
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hPhn">
-                                        <utmain:Label  labelFor="dayPhn_mail" class="nrgDashboard-cusDataVerify-phoneNumAlign"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"/>
-                                        <ute:Textfield id="dayPhn_mail" fieldType="Noborder"
-                                            class="nrgDashboard-cusDataVerify-mContent-hPhnInput"
-                                            editable="{oCfrmStatus>/bEditable}"
-                                            value="{oDtaVrfyBP>/DayPhone}"
-                                            width="100px"/>
-                                    </ute:Tag>
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hExt">
-                                        <utmain:Label  labelFor="dayPhnExt_mail"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PhnExt}"/>
-                                        <ute:Textfield id="dayPhnExt_mail" fieldType="Noborder"
-                                            class="nrgDashboard-cusDataVerify-mContent-hPhnExtInput"
-                                            editable="{oCfrmStatus>/bEditable}"
-                                            value="{oDtaVrfyBP>/DayPhoneExt}"
-                                            width="40px"/>
-                                    </ute:Tag>
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hType">
-                                        <utmain:Label labelFor="dayPhnType_mail"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
-                                            class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                        <utmain:Dropdown id="dayPhnType_mail" design="Plain"
-                                            selectedKey="{oDtaVrfyBP>/DayPhoneType}"
-                                            content="{oDayPhoneType>/}">
-                                            <utmain:DropdownItem
-                                                key="{oDayPhoneType>Key}">
-                                                <ute:Tag elem="span"
-                                                     text="{oDayPhoneType>Type}"/>
-                                            </utmain:DropdownItem>
-                                        </utmain:Dropdown>
-                                    </ute:Tag>
-
-                                    <ute:HorizontalDivider
-                                        class="nrgDashboard-cusDataVerify-horDvi"/>
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hPhn">
-                                        <utmain:Label labelFor="evnPhn_mail" class="nrgDashboard-cusDataVerify-phoneNumAlign"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"/>
-                                        <ute:Textfield id="evnPhn_mail" fieldType="Noborder"
-                                            class="nrgDashboard-cusDataVerify-mContent-hPhnInput"
-                                            editable="{oCfrmStatus>/bEditable}"
-                                            value="{oDtaVrfyBP>/EveningPhone}"
-                                            width="100px"/>
-                                    </ute:Tag>
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hExt">
-                                        <utmain:Label  labelFor="evnPhnExt_mail"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PhnExt}"/>
-                                        <ute:Textfield id="evnPhnExt_mail" fieldType="Noborder"
-                                            class="nrgDashboard-cusDataVerify-mContent-hPhnExtInput"
-                                            editable="{oCfrmStatus>/bEditable}"
-                                            value="{oDtaVrfyBP>/EveningPhoneExt}"
-                                            width="40px"/>
-                                    </ute:Tag>
-                                    <ute:Tag class="nrgDashboard-cusDataVerify-mContent-hType">
-                                        <utmain:Label labelFor="evnPhnType_mail"
-                                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
-                                            class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                        <utmain:Dropdown id="evnPhnType_mail" design="Plain"
-                                            selectedKey="{oDtaVrfyBP>/EveningPhoneType}"
-                                            content="{oEvnPhoneType>/}">
-                                            <utmain:DropdownItem
-                                                key="{oEvnPhoneType>Key}">
-                                                <ute:Tag elem="span"
-                                                     text="{oEvnPhoneType>Type}"/>
-                                            </utmain:DropdownItem>
-                                        </utmain:Dropdown>
-                                    </ute:Tag>
-
-                                    <ute:HorizontalDivider
-                                        class="nrgDashboard-cusDataVerify-horDvi"/>
-                                    <l:MatrixLayout widths="55%,45%" columns="2">
-                                        <l:MatrixLayoutRow>
-                                            <l:MatrixLayoutCell>
-                                                <utmain:Label labelFor="email_lbl_mail"
-                                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Email}"
-                                                    class="nrgDashboard-cusDataVerify-mContent-hLbl"/>
-                                                <utmain:Button  id="email_lbl_mail" design="None"
-                                                    class="nrgDashboard-cusDataVerify-mContent-hInput nrgDashboard-cusDataVerify-mContent-hEmailInput"
-                                                    text="{oDtaVrfyBP>/Email}"
-                                                    enabled="{oCfrmStatus>/bEditable}"
-                                                    press="._handleEmailEdit"/>
-                                            </l:MatrixLayoutCell>
-                                            <l:MatrixLayoutCell>
-                                            </l:MatrixLayoutCell>
-                                        </l:MatrixLayoutRow>
-                                    </l:MatrixLayout>
-                                </ute:Tag>
-
+                            <!-- Value Section -->
+                            <ute:TextView id="meter_num"
+                                text="{oDtaVrfyContracts>/MeterNumber}"
+                                class="nrgDashboard-cusDataVerify-left-meterValue"/>
+                        </ute:Tag>
+                        <!-- Description -->
+                        <ute:Tag class="nrgDashboard-cusDataVerify-left-description">
+                            <!-- Label -->
+                            <utmain:Label labelFor="desp_txt"
+                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Desc}"
+                                class="nrgDashboard-cusDataVerify-left-descrLabel"/>
+                            <ute:TextView id="desp_txt"
+                                text="{oDtaVrfyContracts>/MeterDescription}"
+                                class="nrgDashboard-cusDataVerify-left-descrVal"/>
+                        </ute:Tag>
+                    </ute:Tag>
+                    <!-- Contract & Rate -->
+                    <ute:Tag class="nrgDashboard-cusDataVerify-left-contrRateSection">
+                        <!-- Contract -->
+                        <ute:Tag class="nrgDashboard-cusDataVerify-left-contract">
+                            <utmain:Label labelFor="contacc"
+                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_ContAcc}"
+                                class="nrgDashboard-cusDataVerify-left-contractLabel"/>
+                            <ute:TextView id="contacc"
+                                text="{oDtaVrfyBuags>/ContractAccountID}-{oDtaVrfyBuags>/CheckDigit}"
+                                class="nrgDashboard-cusDataVerify-left-contractVal"/>
+                        </ute:Tag>
+                        <!-- Rate -->
+                        <ute:Tag class="nrgDashboard-cusDataVerify-left-rate">
+                            <utmain:Label labelFor="rtcls_lbl"
+                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RtCls}"
+                                class="nrgDashboard-cusDataVerify-left-rateLabel"/>
+                            <ute:TextView id="rtcls_lbl"
+                                text="{oDtaVrfyContracts>/RateClass}"
+                                class="nrgDashboard-cusDataVerify-left-rateVal"/>
+                        </ute:Tag>
+                    </ute:Tag>
+                    <!-- ESID -->
+                    <ute:Tag class="nrgDashboard-cusDataVerify-left-esidSection">
+                        <utmain:Label  labelFor="esid_lbl"
+                            text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_ESID}"
+                            class="nrgDashboard-cusDataVerify-left-esidLabel"/>
+                        <ute:TextView id="esid_lbl"
+                            class="nrgDashboard-cusDataVerify-left-esidVal"
+                            text="{oDtaVrfyContracts>/ESID}"/>
+                    </ute:Tag>
+                    <!-- DL & SSN -->
+                    <ute:Tag class="nrgDashboard-cusDataVerify-left-driverSocialSection">
+                        <ute:Tag class="nrgDashboard-cusDataVerify-left-driver">
+                            <utmain:Label labelFor="dl_lbl"
+                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DlNum}"
+                                class="nrgDashboard-cusDataVerify-left-driverLabel"/>
+                            <!-- Value Section -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-left-driverValSection">
+                                <ute:TextView id="dl_lbl"
+                                    text="{oDtaVrfyBP>/DL}"
+                                    class="nrgDashboard-cusDataVerify-left-driverVal"/>
+                                <!-- Green Checkbox -->
+                                <utmain:Checkbox id="idVrfyDL" enabled="false" checked="true"
+                                    class="nrgDashboard-cusDataVerify-left-greenCheckbox"
+                                    visible="{
+                                        parts:['oDtaVrfyBP>/DLVerification'],
+                                        formatter:'._formatVrfyMark'}"/>
+                                <!-- Red X -->
+                                <ute:TextView id="idVrfyDLNo"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RedX}"
+                                    class="nrgDashboard-cusDataVerify-left-redX"
+                                    visible="{
+                                        parts:['oDtaVrfyBP>/DLVerification','oDtaVrfyBP>/DL'],
+                                        formatter:'._formatVrfyMarkRedX'}"/>
                             </ute:Tag>
-
-                        </l:MatrixLayoutCell>
-                        <!--Area Middle Ends-->
-
-                        <!--Area Right (Only 2 buttons )-->
-                        <l:MatrixLayoutCell class="nrgDashboard-cusDataVerify-r">
-                            <ute:Tag class="nrgDashboard-cusDataVerify-rContent">
-                                <utmain:Button id="id_confmBtn" visible="true"
-                                    class="nrgDashboard-cusDataVerify-rContent-vBtn nrgDashboard-cusDataVerify-alignCenBtn"
-                                    press="._handleConfirm"
-                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnConfitm}"/>
-                                <utmain:Button id="id_unConfmBtn" visible="false"
-                                    class="nrgDashboard-cusDataVerify-rContent-vBtn nrgDashboard-cusDataVerify-alignCenBtn"
-                                    press="._handleUnConfirm"
-                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnUnConfirm}"/>
-                                <utmain:Button id="id_updtBtn" enabled="true"
-                                    class="nrgDashboard-cusDataVerify-rContent-uBtn nrgDashboard-cusDataVerify-alignCenBtn"
-                                    design="Invert"
-                                    press="._handleUpdate"
-                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnUpdate}"/>
+                        </ute:Tag>
+                        <ute:Tag class="nrgDashboard-cusDataVerify-left-social">
+                            <utmain:Label labelFor="ssn_lbl"
+                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SSNum}"
+                                class="nrgDashboard-cusDataVerify-left-socialLabel"/>
+                            <!-- Value Section -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-left-socialValSection">
+                                <ute:TextView id="ssn_lbl"
+                                    text="{oDtaVrfyBP>/SSN}"
+                                    class="nrgDashboard-cusDataVerify-left-socialVal"/>
+                                <!-- Green Checkbox -->
+                                <utmain:Checkbox id="idVrfySSN" enabled="false" checked="true"
+                                    class="nrgDashboard-cusDataVerify-left-greenCheckbox"
+                                     visible="{
+                                        parts:['oDtaVrfyBP>/SSNVerification'],
+                                        formatter:'._formatVrfyMark'}"/>
+                                <!-- Red X -->
+                                <ute:TextView id="idVrfySSNNo"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RedX}"
+                                    class="nrgDashboard-cusDataVerify-left-redX"
+                                    visible="{
+                                        parts:['oDtaVrfyBP>/SSNVerification','oDtaVrfyBP>/SSN'],
+                                        formatter:'._formatVrfyMarkRedX'}"/>
                             </ute:Tag>
-                        </l:MatrixLayoutCell>
-                    </l:cells>
-                </l:MatrixLayoutRow>
-            </l:rows>
-        </l:MatrixLayout>
+                        </ute:Tag>
+                    </ute:Tag>
+                </ute:Tag>
+            </ute:Tag>
+
+            <!--Area Middle (Service address/Mailing address)-->
+            <ute:Tag class="nrgDashboard-cusDataVerify-middle">
+                <ute:Tag class="nrgDashboard-cusDataVerify-middle-wrap">
+                    <!-- 1. Toggle Tab -->
+                    <ute:ToggleButton id="id_DshbTglBtn" design="ToggleDashboard"
+                        leftSelected="true"
+                        leftBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TglBtnLTxt}"
+                        rightBtnText="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TglBtnRTxt}"
+                        class="nrgDashboard-cusDataVerify-mTgBtn"
+                        press="._onToggleButtonPress">
+                    </ute:ToggleButton>
+                    <!-- 2. Dropdown Menus -->
+                    <ute:Tag class="nrgDashboard-cusDataVerify-middle-dropdownArea">
+                        <!-- Contract Dropdown -->
+                        <utmain:Dropdown id="idContractDropdown"
+                            class="nrgDashboard-cusDataVerify-middle-dropdownMenu"
+                            selectedKey="{oAllContractsofBuag>/selectedKey}"
+                            content="{oAllContractsofBuag>/}"
+                            select="._onContractSelect" >
+                            <utmain:DropdownItem
+                                key="{oAllContractsofBuag>iIndex}">
+                                <ute:Tag elem="span"
+                                    text="{oAllContractsofBuag>DisplayName}"/>
+                            </utmain:DropdownItem>
+                        </utmain:Dropdown>
+                        <!-- Contract Account Dropdown -->
+                        <utmain:Dropdown id="idCADropdown"
+                            class="nrgDashboard-cusDataVerify-middle-dropdownMenu"
+                            selectedKey="{oAllBuags>/selectedKey}"
+                            content="{oAllBuags>/}"
+                            select="._onBuagSelect" >
+                            <utmain:DropdownItem
+                                key="{oAllBuags>iIndex}">
+                                <ute:Tag elem="span"
+                                    text="{oAllBuags>DisplayName}"/>
+                            </utmain:DropdownItem>
+                        </utmain:Dropdown>
+                    </ute:Tag>
+
+                    <!-- 3. Contact Info (Service Address) -->
+                    <ute:Tag id="serviceadd_area" visible="true" class="nrgDashboard-cusDataVerify-middle-content">
+                        <!-- ROW -->
+                        <ute:Tag class="rgDashboard-cusDataVerify-middle-content-row serviceAddrHeight">
+                            <!-- Address -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-middle-addrSection">
+                                <ute:Badge id="idBadgeCI" size="30px"
+                                    class="nrgDashboard-cusDataVerify-middle-addrSection-badge"
+                                    visible="{
+                                        parts:['oDtaVrfyContracts>/JointAcc'],
+                                        formatter:'._formatChecked'}"
+                                    design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RHSClr}"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_JABadge}">
+                                </ute:Badge>
+                                <ute:Tag  class="nrgDashboard-cusDataVerify-middle-addr">
+                                    <ute:TextView
+                                        class="nrgDashboard-cusDataVerify-mContent-add"
+                                        text="{oDtaVrfyContracts>/HouseNum1} {oDtaVrfyContracts>/Street}"/>
+                                    <ute:TextView
+                                        class="nrgDashboard-cusDataVerify-mContent-add"
+                                        text="{oDtaVrfyContracts>/City1}, {oDtaVrfyContracts>/Region} {oDtaVrfyContracts>/PostCode1}"/>
+                                </ute:Tag>
+                            </ute:Tag>
+                            <!-- Pagination for Multiple COs -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-middle-pagiSection">
+                                <utmain:Button design="None"
+                                    visible="{oCoPageModel>/threeLarger}"
+                                    class="nrgDashboard-cusDataVerify-middle-pageBtn navigate"
+                                    press="._onConFirst"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgFirst}">
+                                </utmain:Button>
+                                <utmain:Button design="None"
+                                    visible="{oCoPageModel>/threeLarger}"
+                                    class="nrgDashboard-cusDataVerify-middle-pageBtn navigate"
+                                    press="._onConLeft"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgLeft}">
+                                </utmain:Button>
+                                <utmain:Button design="None"
+                                    visible="{oCoPageModel>/paging/1/exist}"
+                                    class="nrgDashboard-cusDataVerify-middle-pageBtn"
+                                    press="._onConPone"
+                                    text="{oCoPageModel>/paging/0/co_ind}">
+                                </utmain:Button>
+                                <utmain:Button design="None"
+                                    visible="{oCoPageModel>/paging/1/exist}"
+                                    class="nrgDashboard-cusDataVerify-middle-pageBtn"
+                                    press="._onConPtwo"
+                                    text="{oCoPageModel>/paging/1/co_ind}">
+                                </utmain:Button>
+                                <utmain:Button design="None"
+                                    visible="{oCoPageModel>/paging/2/exist}"
+                                    class="nrgDashboard-cusDataVerify-middle-pageBtn"
+                                    press="._onConPthree"
+                                    text="{oCoPageModel>/paging/2/co_ind}">
+                                </utmain:Button>
+                                <utmain:Button design="None"
+                                    visible="{oCoPageModel>/threeLarger}"
+                                    class="nrgDashboard-cusDataVerify-middle-pageBtn navigate"
+                                    press="._onConRite"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgRite}">
+                                </utmain:Button>
+                                <utmain:Button design="None"
+                                    visible="{oCoPageModel>/threeLarger}"
+                                    class="nrgDashboard-cusDataVerify-middle-pageBtn navigate"
+                                    press="._onConLast"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PgLast}">
+                                </utmain:Button>
+                            </ute:Tag>
+                        </ute:Tag>
+                        <!-- ROW -->
+                        <ute:Tag class="rgDashboard-cusDataVerify-middle-content-row">
+                            <utmain:Label  labelFor="contractNum"
+                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CaNum}"
+                                class="nrgDashboard-cusDataVerify-middel-contractNumLabel"/>
+                            <ute:Textfield id="contractNum" fieldType="Underlined"
+                                editable="false"
+                                value="{oDtaVrfyContracts>/ContractID}"
+                                class="nrgDashboard-cusDataVerify-middle-contractNumVal"/>
+                        </ute:Tag>
+                        <!-- ROW -->
+                        <ute:Tag class="rgDashboard-cusDataVerify-middle-content-row dashedBottom">
+                            <!-- Cell Num -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-middel-cellNumSection">
+                                <utmain:Label  labelFor="cell_num"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CellNum}"
+                                    class="nrgDashboard-cusDataVerify-middle-cellNumLabel"/>
+                                <ute:Textfield id="cell_num" fieldType="Underlined"
+                                    class="nrgDashboard-cusDataVerify-middle-cellNumVal"
+                                    editable="{oCfrmStatus>/bEditable}"
+                                    value="{oDtaVrfyBP>/Cell}"
+                                    width="100px"/>
+                                <!-- SMS Btn -->
+                                <utmain:Button
+                                    visible="{oCfrmStatus>/ShowSMSBtn}"
+                                    enabled="{
+                                        parts:['oDtaVrfyBP>/IsSMS'],
+                                        formatter:'._formatSMSBtn'}"
+                                    class="nrgDashboard-cusDataVerify-smsBtn"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SMS}"
+                                    press="._onSMSButtonClicked"/>
+                            </ute:Tag>
+                            <!-- Fax Num -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-middle-faxNum">
+                                <utmain:Label labelFor="fax_num"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FaxNum}"
+                                    class="nrgDashboard-cusDataVerify-middle-faxNumLabel"/>
+                                <ute:Textfield id="fax_num" fieldType="Underlined"
+                                    value="{oDtaVrfyBP>/Fax}"
+                                    editable="{oCfrmStatus>/bEditable}"
+                                    class="nrgDashboard-cusDataVerify-middle-faxNumVal"
+                                    width="100px"/>
+                            </ute:Tag>
+                        </ute:Tag>
+                        <!-- ROW -->
+                        <ute:Tag class="rgDashboard-cusDataVerify-middle-content-row dashedBottom">
+                            <!-- Day Num -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-middle-dayNumSection">
+                                <utmain:Label  labelFor="dayPhn"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"
+                                    class="nrgDashboard-cusDataVerify-middle-dayNumLabel"/>
+                                <ute:Textfield id="dayPhn" fieldType="Underlined"
+                                    class="nrgDashboard-cusDataVerify-middle-dayNumVal"
+                                    editable="{oCfrmStatus>/bEditable}"
+                                    value="{oDtaVrfyBP>/DayPhone}"
+                                    width="100px"/>
+                                <!-- Extension -->
+                                <utmain:Label  labelFor="dayPhnExt"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PhnExt}"
+                                    class="nrgDashboard-cusDataVerify-middle-extNumLabel"/>
+                                <ute:Textfield id="dayPhnExt" fieldType="Underlined"
+                                    class="nrgDashboard-cusDataVerify-middle-extNumVal"
+                                    editable="{oCfrmStatus>/bEditable}"
+                                    value="{oDtaVrfyBP>/DayPhoneExt}"
+                                    width="30px"/>
+                            </ute:Tag>
+                            <!-- Num Type -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-middle-dayNumType">
+                                <utmain:Label labelFor="dayPhnType"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
+                                    class="nrgDashboard-cusDataVerify-middle-dayNumTypeLabel"/>
+                                <utmain:Dropdown id="dayPhnType"
+                                    selectedKey="{oDtaVrfyBP>/DayPhoneType}"
+                                    class="nrgDashboard-cusDataVerify-middle-dayNumTypeDropdown"
+                                    content="{oDayPhoneType>/}">
+                                    <utmain:DropdownItem
+                                        key="{oDayPhoneType>Key}">
+                                        <ute:Tag elem="span"
+                                             text="{oDayPhoneType>Type}"/>
+                                    </utmain:DropdownItem>
+                                </utmain:Dropdown>
+                            </ute:Tag>
+                        </ute:Tag>
+                        <!-- ROW -->
+                        <ute:Tag class="rgDashboard-cusDataVerify-middle-content-row dashedBottom">
+                            <!-- Evening Num -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-middle-evenNumSection">
+                                <utmain:Label labelFor="evnPhn"
+                                    class="nrgDashboard-cusDataVerify-middle-evenNumLabel"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"/>
+                                <ute:Textfield id="evnPhn" fieldType="Underlined"
+                                    class="nrgDashboard-cusDataVerify-middle-evenNumVal"
+                                    editable="{oCfrmStatus>/bEditable}"
+                                    value="{oDtaVrfyBP>/EveningPhone}"
+                                    width="100px"/>
+                                <!-- Extension -->
+                                <utmain:Label  labelFor="evnPhnExt"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PhnExt}"
+                                    class="nrgDashboard-cusDataVerify-middle-extNumLabel"/>
+                                <ute:Textfield id="evnPhnExt" fieldType="Underlined"
+                                    class="nrgDashboard-cusDataVerify-middle-extNumVal"
+                                    editable="{oCfrmStatus>/bEditable}"
+                                    value="{oDtaVrfyBP>/EveningPhoneExt}"
+                                    width="30px"/>
+                            </ute:Tag>
+                            <!-- Num Type -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-middle-evenNumType">
+                                <utmain:Label labelFor="evnPhnType"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
+                                    class="nrgDashboard-cusDataVerify-middle-evenNumTypeLabel"/>
+                                <utmain:Dropdown id="evnPhnType"
+                                    selectedKey="{oDtaVrfyBP>/EveningPhoneType}"
+                                    class="nrgDashboard-cusDataVerify-middle-evenNumTypeDropdown"
+                                    content="{oEvnPhoneType>/}">
+                                    <utmain:DropdownItem
+                                        key="{oEvnPhoneType>Key}">
+                                        <ute:Tag elem="span"
+                                             text="{oEvnPhoneType>Type}"/>
+                                    </utmain:DropdownItem>
+                                </utmain:Dropdown>
+                            </ute:Tag>
+                        </ute:Tag>
+                        <!-- ROW -->
+                        <ute:Tag class="rgDashboard-cusDataVerify-middle-content-row noBtmMargin">
+                            <utmain:Label labelFor="email_lbl"
+                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Email}"
+                                class="nrgDashboard-cusDataVerify-middle-emailLabel"/>
+                            <utmain:Button  id="email_lbl" design="None"
+                                class="nrgDashboard-cusDataVerify-middle-emailVal"
+                                enabled="{oCfrmStatus>/bEditable}"
+                                text="{parts:['oDtaVrfyBP>/Email'],
+                                           formatter:'._formatEmailAddressText'}"
+                                press="._handleEmailEdit"/>
+                        </ute:Tag>
+                    </ute:Tag>
+
+                    <!-- 3. Contact Info (Mail Address) -->
+                    <ute:Tag id="mailadd_area" visible="false" class="nrgDashboard-cusDataVerify-middle-content">
+                        <!-- ROW -->
+                        <ute:Tag class="rgDashboard-cusDataVerify-middle-content-row mailingAddrHeight">
+                            <ute:Tag class="nrgDashboard-cusDataVerify-middle-addrSection column">
+                                <utmain:Label  labelFor="mail_FixedAddr"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FAddr}"
+                                    class="nrgDashboard-cusDataVerify-middle-mailAddrLabel"/>
+                                <ute:Tag id="mail_FixedAddr">
+                                    <utmain:Button  design="None"
+                                        class="nrgDashboard-cusDataVerify-middle-addrBtn"
+                                        text="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ShortForm}"
+                                        press="._onEditMailAddrClick"/>
+                                </ute:Tag>
+                            </ute:Tag>
+                            <ute:Tag class="nrgDashboard-cusDataVerify-middle-addrSection column">
+                                <utmain:Label  labelFor="mail_TempAddr"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TAddr}"
+                                    class="nrgDashboard-cusDataVerify-middle-mailAddrLabel"/>
+                                <ute:Tag id="mail_TempAddr">
+                                    <utmain:Button  design="None"
+                                        enabled="{
+                                            parts:['oDtaVrfyMailingTempAddr>/TempAddrNo'],
+                                            formatter:'._formatNegativeX'}"
+                                        class="nrgDashboard-cusDataVerify-middle-addrBtn"
+                                        text="{oDtaVrfyMailingTempAddr>/TempAddrInfo/ShortForm}"
+                                        press="._onEditTempAddrClick"/>
+                                </ute:Tag>
+                            </ute:Tag>
+                        </ute:Tag>
+                        <!-- ROW -->
+                        <ute:Tag class="rgDashboard-cusDataVerify-middle-content-row dashedBottom">
+                            <!-- Cell Num -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-middel-cellNumSection">
+                                <utmain:Label  labelFor="cell_num_mail"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_CellNum}"
+                                    class="nrgDashboard-cusDataVerify-middle-cellNumLabel"/>
+                                <ute:Textfield id="cell_num_mail" fieldType="Underlined"
+                                    value="{oDtaVrfyBP>/Cell}"
+                                    editable="{oCfrmStatus>/bEditable}"
+                                    class="nrgDashboard-cusDataVerify-middle-cellNumVal"
+                                    width="100px"/>
+                                <!-- SMS Btn -->
+                                <utmain:Button
+                                    visible="{oCfrmStatus>/ShowSMSBtn}"
+                                    class="nrgDashboard-cusDataVerify-smsBtn"
+                                    enabled="{
+                                        parts:['oDtaVrfyBP>/IsSMS'],
+                                        formatter:'._formatSMSBtn'}"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_SMS}"
+                                    press="._onSMSButtonClicked"/>
+                            </ute:Tag>
+                            <!-- Fax Num -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-middle-faxNum">
+                                <utmain:Label labelFor="fax_num_mail"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FaxNum}"
+                                    class="nrgDashboard-cusDataVerify-middle-faxNumLabel"/>
+                                <ute:Textfield id="fax_num_mail" fieldType="Underlined"
+                                    value="{oDtaVrfyBP>/Fax}"
+                                    editable="{oCfrmStatus>/bEditable}"
+                                    class="nrgDashboard-cusDataVerify-middle-faxNumVal"
+                                    width="100px"/>
+                            </ute:Tag>
+                        </ute:Tag>
+                        <!-- ROW -->
+                        <ute:Tag class="rgDashboard-cusDataVerify-middle-content-row dashedBottom">
+                            <!-- Day Num -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-middle-dayNumSection">
+                                <utmain:Label  labelFor="dayPhn_mail"
+                                    class="nrgDashboard-cusDataVerify-middle-dayNumLabel"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"/>
+                                <ute:Textfield id="dayPhn_mail" fieldType="Underlined"
+                                    class="nrgDashboard-cusDataVerify-middle-dayNumVal"
+                                    editable="{oCfrmStatus>/bEditable}"
+                                    value="{oDtaVrfyBP>/DayPhone}"
+                                    width="100px"/>
+                                <!-- Extension -->
+                                <utmain:Label  labelFor="dayPhnExt_mail"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PhnExt}"
+                                    class="nrgDashboard-cusDataVerify-middle-extNumLabel"/>
+                                <ute:Textfield id="dayPhnExt_mail" fieldType="Underlined"
+                                    class="nrgDashboard-cusDataVerify-middle-extNumVal"
+                                    editable="{oCfrmStatus>/bEditable}"
+                                    value="{oDtaVrfyBP>/DayPhoneExt}"
+                                    width="30px"/>
+                            </ute:Tag>
+                            <!-- Num Type -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-middle-dayNumType">
+                                 <utmain:Label labelFor="dayPhnType_mail"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
+                                    class="nrgDashboard-cusDataVerify-middle-dayNumTypeLabel"/>
+                                <utmain:Dropdown id="dayPhnType_mail"
+                                    selectedKey="{oDtaVrfyBP>/DayPhoneType}"
+                                    class="nrgDashboard-cusDataVerify-middle-dayNumTypeDropdown"
+                                    content="{oDayPhoneType>/}">
+                                    <utmain:DropdownItem
+                                        key="{oDayPhoneType>Key}">
+                                        <ute:Tag elem="span"
+                                             text="{oDayPhoneType>Type}"/>
+                                    </utmain:DropdownItem>
+                                </utmain:Dropdown>
+                            </ute:Tag>
+                        </ute:Tag>
+                        <!-- ROW -->
+                        <ute:Tag class="rgDashboard-cusDataVerify-middle-content-row dashedBottom">
+                            <!-- Evening Num -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-middle-evenNumSection">
+                                <utmain:Label labelFor="evnPhn_mail"
+                                    class="nrgDashboard-cusDataVerify-middle-evenNumLabel"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"/>
+                                <ute:Textfield id="evnPhn_mail" fieldType="Underlined"
+                                    class="nrgDashboard-cusDataVerify-middle-evenNumVal"
+                                    editable="{oCfrmStatus>/bEditable}"
+                                    value="{oDtaVrfyBP>/EveningPhone}"
+                                    width="100px"/>
+                                <!-- Extension -->
+                                <utmain:Label  labelFor="evnPhnExt_mail"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_PhnExt}"
+                                    class="nrgDashboard-cusDataVerify-middle-extNumLabel"/>
+                                <ute:Textfield id="evnPhnExt_mail" fieldType="Underlined"
+                                    class="nrgDashboard-cusDataVerify-middle-extNumVal"
+                                    editable="{oCfrmStatus>/bEditable}"
+                                    value="{oDtaVrfyBP>/EveningPhoneExt}"
+                                    width="30px"/>
+                            </ute:Tag>
+                            <!-- Num Type -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-middle-evenNumType">
+                                <utmain:Label labelFor="evnPhnType_mail"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTypTxt}"
+                                    class="nrgDashboard-cusDataVerify-middle-evenNumTypeLabel"/>
+                                <utmain:Dropdown id="evnPhnType_mail"
+                                    selectedKey="{oDtaVrfyBP>/EveningPhoneType}"
+                                    class="nrgDashboard-cusDataVerify-middle-evenNumTypeDropdown"
+                                    content="{oEvnPhoneType>/}">
+                                    <utmain:DropdownItem
+                                        key="{oEvnPhoneType>Key}">
+                                        <ute:Tag elem="span"
+                                             text="{oEvnPhoneType>Type}"/>
+                                    </utmain:DropdownItem>
+                                </utmain:Dropdown>
+                            </ute:Tag>
+                        </ute:Tag>
+                        <!-- ROW -->
+                        <ute:Tag class="rgDashboard-cusDataVerify-middle-content-row noBtmMargin">
+                            <utmain:Label labelFor="email_lbl_mail"
+                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Email}"
+                                class="nrgDashboard-cusDataVerify-middle-emailLabel"/>
+                            <utmain:Button  id="email_lbl_mail" design="None"
+                                class="nrgDashboard-cusDataVerify-middle-emailVal"
+                                text="{oDtaVrfyBP>/Email}"
+                                enabled="{oCfrmStatus>/bEditable}"
+                                press="._handleEmailEdit"/>
+                        </ute:Tag>
+                    </ute:Tag>
+                </ute:Tag>
+            </ute:Tag>
+
+            <!--Area Right (Only 2 buttons )-->
+            <ute:Tag class="nrgDashboard-cusDataVerify-right">
+                <ute:Tag class="nrgDashboard-cusDataVerify-right-wrap">
+                    <utmain:Button id="id_confmBtn" visible="true"
+                        class="nrgDashboard-cusDataVerify-right-btn"
+                        press="._handleConfirm"
+                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnConfitm}"/>
+                    <utmain:Button id="id_unConfmBtn" visible="false"
+                        class="nrgDashboard-cusDataVerify-right-btn"
+                        press="._handleUnConfirm"
+                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnUnConfirm}"/>
+                    <utmain:Button id="id_updtBtn" enabled="true"
+                        class="nrgDashboard-cusDataVerify-right-btn noBtmMargin"
+                        design="Invert"
+                        press="._handleUpdate"
+                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnUpdate}"/>
+                </ute:Tag>
+            </ute:Tag>
+
+
+        </ute:Tag>
     </ute:Tag>
 
 <!--    <ute:Tag id="idEmailEditPopup" visible="false"

@@ -1,0 +1,43 @@
+    <core:FragmentDefinition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ute="ute.ui.commons"
+        xmlns:utmain="ute.ui.main"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:c="sap.ui.commons"
+        xmlns:l="sap.ui.commons.layout"
+        xmlns:core="sap.ui.core"
+        xmlns:m="sap.m">
+        <!--<ute:Tag class="nrgBilling-AvgBillingPopup">
+            <ute:Tag elem="div">
+
+                <ute:TextView fieldType="Noborder"
+                    editable="false" width="auto"
+                    text="{comp-i18n-billing>nrgBilling-AvgBillingPopup-Title-AmountDue}"/>
+            </ute:Tag>
+        </ute:Tag>-->
+        <ute:Tag class="nrgBilling-AvgBillingPopup">
+            <ute:Tag elem="div" class="nrgBilling-AvgBillingPopup-Chart">
+                <utmain:Chart id="chart" width="900" height="400" usageTickSize="100" dataModel=""/>
+            </ute:Tag>
+            <ute:Tag elem="div" class="nrgBilling-AvgBillingPopup-ChartLegend">
+                <ute:Tag elem="div">
+                    <utmain:Checkbox id="2015" class="nrgBilling-AvgBillingPopup-ChartLegend-checkbox" checked="true" select=".onSelected" />
+                    <utmain:Label labelFor="2015-intChk" class="nrgBilling-AvgBillingPopup-ChartLegend-label">
+                        <span>USAGE <span style="color:#5092ce;">2015</span></span>
+                    </utmain:Label>
+                </ute:Tag>
+                <ute:Tag elem="div">
+                    <utmain:Checkbox id="2014" class="nrgBilling-AvgBillingPopup-ChartLegend-checkbox" checked="true" select=".onSelected" />
+                    <utmain:Label labelFor="2014-intChk" class="nrgBilling-AvgBillingPopupChartLegend-label">
+                        <span>USAGE <span style="color:#000000;">2014</span></span>
+                    </utmain:Label>
+                </ute:Tag>
+                <ute:Tag elem="div">
+                    <utmain:Checkbox id="2013" class="nrgBilling-AvgBillingPopup-ChartLegend-checkbox" checked="true" select=".onSelected" />
+                    <utmain:Label labelFor="2013-intChk" class="nrgBilling-AvgBillingPopup-ChartLegend-label">
+                        <span>USAGE <span style="color:#f2a814;">2013</span></span>
+                    </utmain:Label>
+                </ute:Tag>
+            </ute:Tag>
+        </ute:Tag>
+    </core:FragmentDefinition>

@@ -1,0 +1,16 @@
+{
+    "d":{
+        "results":[
+            {
+                "__metadata":{
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/ButtonS('32253375')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/ButtonS('32253375')",
+                    "type":"ZE_CCUX_CAMPAIGN_OVW_SRV.Button"
+                },
+                "Contract":"32253375",
+                "FirstBill":"X",
+                "InitTab":"P"
+            }
+        ]
+    }
+}
