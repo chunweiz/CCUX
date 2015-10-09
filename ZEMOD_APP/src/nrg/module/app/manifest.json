@@ -17,6 +17,9 @@
                             },
                             "rhs-app": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_RHS_SRV/"
+                            },
+                            "noti-app": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_ALERTS_SRV/"
                             }
                         },
                         "mock": {
@@ -26,6 +29,10 @@
                             },
                             "rhs-app": {
                                 "mockDataBaseUrl": "data/devRHS/",
+                                "generateMissingMockData": true
+                            },
+                            "noti-app": {
+                                "mockDataBaseUrl": "data/devAlert/",
                                 "generateMissingMockData": true
                             }
                         }

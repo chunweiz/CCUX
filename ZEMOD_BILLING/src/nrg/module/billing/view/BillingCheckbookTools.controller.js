@@ -9,11 +9,16 @@ sap.ui.define(
         'sap/ui/model/json/JSONModel'
     ],
 
+<<<<<<< HEAD
     function (CoreController, JSONModel) {
+=======
+    function (CoreController, Fragment, JOSNModel) {
+>>>>>>> origin/master
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.billing.view.BillingCheckbookTools');
 
+<<<<<<< HEAD
         Controller.prototype.onInit = function ()
         {
         };
@@ -21,6 +26,10 @@ sap.ui.define(
         Controller.prototype.onAfterRendering = function ()
 		{
 			var model = new sap.ui.model.json.JSONModel({
+=======
+        Controller.prototype.onInit = function () {/*
+            this.getView().byId('chart').setDataModel(new JSONModel({
+>>>>>>> origin/master
                 data: [
                     { usageDate: '07/01/2013', usage: 1456 },
                     { usageDate: '06/01/2013', usage: 1210 },
@@ -50,9 +59,13 @@ sap.ui.define(
                     { usageDate: '06/01/2015', usage: 1400 },
                     { usageDate: '05/01/2015', usage: 1300 }
                 ]
+<<<<<<< HEAD
             });
 			var view = this.getView();
 			view.setModel(model);
+=======
+            }));*/
+>>>>>>> origin/master
         };
         Controller.prototype._onAvgBillBtnClicked = function () {
             if (!this._oAvgBillPopup) {
@@ -70,11 +83,11 @@ sap.ui.define(
         };
 
         Controller.prototype.onSelected = function (oEvent) {
-            var oCheckbox = oEvent.getSource();
-            var sYear = oCheckbox.getId().replace(this.getView().getId() + '--', '');
-            var bHide = oCheckbox.getChecked();
+            var oCheckbox = oEvent.getSource(),
+                sYear = oCheckbox.getId().replace(this.getView().getId() + '--', ''),
+                bHide = oCheckbox.getChecked(),
+                oChart = this.getView().byId('chart');
 
-            var oChart = this.getView().byId('chart');
             if (oChart) {
                 oChart.hideUsage(sYear, !bHide);
             }
