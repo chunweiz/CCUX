@@ -77,7 +77,7 @@ sap.ui.define(
         AppFooter.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber) {
             this._updateRouting(sBpNumber, sCaNumber, sCoNumber);
 
-            var sPath = '/AlertsSet(BP=\'' + sBpNumber + '\', CA=\'' + sCaNumber + '\')';
+            var sPath = '/AlertsSet(BP=\'' + sBpNumber + '\',CA=\'' + sCaNumber + '\')';
                 // aFilters = [];
                 // aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: sBpNumber}));
                 // aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNumber}));
