@@ -77,17 +77,17 @@ sap.ui.define(
         AppFooter.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber) {
             this._updateRouting(sBpNumber, sCaNumber, sCoNumber);
 
-            var sPath = '/AlertsSet',
-                aFilters = [];
-                aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: sBpNumber}));
-                aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNumber}));
+            var sPath = '/AlertsSet(BP=\'' + sBpNumber + '\', CA=\'' + sCaNumber + '\')';
+                // aFilters = [];
+                // aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: sBpNumber}));
+                // aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNumber}));
 
             var oModel = this._oController.getView().getModel('oNotiODataSvc'),
                 oNotificationModel = this._oController.getView().getModel('oFooterNotification'),
                 oParameters;
 
             oParameters = {
-                filters: aFilters,
+                // filters: aFilters,
                 success : function (oData) {
                     if (oData.results.length > 0) {  
                         oNotificationModel.setData(oData.results[0]);
