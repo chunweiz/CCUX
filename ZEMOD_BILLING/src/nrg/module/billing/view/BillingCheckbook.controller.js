@@ -51,6 +51,35 @@ sap.ui.define(
 
         /*****************************************************************************************************************************************************/
         //Formatter Functions
+        CustomController.prototype._formatDppIntGrn = function (sIndicator) {
+            if (sIndicator === 'G') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        CustomController.prototype._formatDppIntYlw = function (sIndicator) {
+            if (sIndicator === 'Y') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        CustomController.prototype._formatDppIntRed = function (sIndicator) {
+            if (sIndicator === 'R') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        CustomController.prototype._formatDppIntWte = function (sIndicator) {
+            if (sIndicator) {
+                return false;
+            } else {
+                return true;
+            }
+        };
+
         CustomController.prototype._formatBoolHyperLink = function (sIndicator) {
             if (sIndicator) {
                 return true;
@@ -122,10 +151,10 @@ sap.ui.define(
         CustomController.prototype._formatFirstClotGrn = function (sBbpIndicator, bCurrent, bRed) {
             if (sBbpIndicator === 'BBP') {
                 return false;
-            } else if (bCurrent) {
-                return true;
             } else if (bRed) {
                 return false;
+            } else if (bCurrent) {
+                return true;
             } else {
                 return false;
             }
@@ -134,10 +163,10 @@ sap.ui.define(
         CustomController.prototype._formatFirstClotRed = function (sBbpIndicator, bCurrent, bRed) {
             if (sBbpIndicator === 'BBP') {
                 return false;
-            } else if (bCurrent) {
-                return false;
             } else if (bRed) {
                 return true;
+            } else if (bCurrent) {
+                return false;
             } else {
                 return false;
             }
@@ -269,10 +298,35 @@ sap.ui.define(
             }
 
         };
-        CustomController.prototype._retrPaymentItmes = function (sInvNum, sBindingPath) {
+
+        CustomController.prototype._retrPaymentItemDppTable = function (sInvNum, sOpbel, sBindingPath) {
             var oChbkOData = this.getView().getModel('oDataSvc'),
                 sPath,
                 oParameters;
+
+            sPath = '/PaymentItems(ContractAccountNumber=\'\',InvoiceNum=\'' + sInvNum + '\',Opbel=\'' + sOpbel + '\')/DPPPlan';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oPaymentHdr').setProperty(sBindingPath + '/DpInstls', oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oChbkOData) {
+                oChbkOData.read(sPath, oParameters);
+            }
+        };
+
+        CustomController.prototype._retrPaymentItmes = function (sInvNum, sBindingPath) {
+            var oChbkOData = this.getView().getModel('oDataSvc'),
+                sPath,
+                oParameters,
+                i;
                 //oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer');
 
             sPath = '/PaymentHdrs(\'' + sInvNum + '\')/PaymentItems';
@@ -281,6 +335,12 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oPaymentHdr').setProperty(sBindingPath + '/PaymentItems', oData);
+
+                        for (i = 0; i < oData.results.length; i = i + 1) {
+                            if (oData.results[i].HyperLinkInd === 'DP') {
+                                this._retrPaymentItemDppTable(oData.results[i].InvoiceNum, oData.results[i].Opbel, sBindingPath + '/PaymentItems/results/' + i.toString());
+                            }
+                        }
                     }
                     //oScrlCtaner.scrollTop = oScrlCtaner.scrollHeight;
                     //oScrlCtaner.scrollTo(0, 686, 100);
@@ -436,7 +496,7 @@ sap.ui.define(
                         this._retrPaymentSumrys(oData.results[i].InvoiceNum, '/results/' + i);
                         this._retrPaymentItmes(oData.results[i].InvoiceNum, '/results/' + i);
 
-                        oScrlCtaner.scrollTo(0, 550, 1000);
+                        oScrlCtaner.scrollTo(0, 1000, 1000);
                     }
                 }.bind(this),
                 error: function (oError) {

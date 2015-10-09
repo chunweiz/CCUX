@@ -43,7 +43,9 @@ sap.ui.define(
                 'ute.ui.app.IndexGroupLink',
                 'ute.ui.app.IndexLink',
                 'ute.ui.app.Message',
-                'ute.ui.app.MessageContainer'
+                'ute.ui.app.MessageContainer',
+                'ute.ui.app.FooterNotificationCenter',
+                'ute.ui.app.FooterNotificationItem'
             ],
 
             elements: [],

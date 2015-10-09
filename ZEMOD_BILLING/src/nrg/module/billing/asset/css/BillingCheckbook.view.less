@@ -335,16 +335,20 @@
 
 .nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip{
     font-size: @nrgFontSize-base;
+    //border-radius: 2px;
+
+
     & .nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-otrFrm{
-        border: 2px @nrgColor-grey-highlight solid;
+        border: 2px @nrgColor-grey-lighter solid;
+        background: @nrgColor-blue-pearl;
     }
 
     & .nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-innFrm{
-        border-bottom: 1px @nrgColor-grey-highlight solid;
+        border-bottom: 1px @nrgColor-grey-lighter solid;
     }
 
     & .nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnTitle{
-        color: @nrgColor-grey-highlight;
+        color: @nrgColor-grey-dark;
         width: 300px;
         display: inline-block;
         padding-left: 2px;
@@ -353,7 +357,7 @@
     }
 
     & .nrgBilling-blChkBk-lftDiv-qkRefArea-tooltip-lnValue{
-        color: @nrgColor-grey-highlight;
+        color: @nrgColor-grey-dark;
         width: 100px;
         display: inline-block;
         text-align: right;
@@ -363,11 +367,11 @@
     }
 
     & .nrgBilling-blChkBk-lftDiv-qkRefArea-yllwHghlt{
-        background-color: @nrgColor-orange-amount;
+        background-color: yellow;
     }
 
     & .nrgBilling-blChkBk-lftDiv-qkRefArea-redHghlt{
-        background-color: @nrgColor-red-pale;
+        background-color: red;
     }
 }
 
@@ -427,7 +431,8 @@
     }
 
     & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-ltUp{
-        color: @nrgColor-grey-highlight;
+        background: @nrgColor-blue-pearl;
+        color: @nrgColor-grey-dark;
         font-size: @nrgFontSize-small;
         font-weight: @nrgFontWeight-semiBold;
         border: 1px @nrgColor-grey-highlight solid;
@@ -435,6 +440,7 @@
 
     & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-ltUp .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-Title{
         border-bottom: 1px @nrgColor-grey-highlight solid;
+        padding: 2px;
     }
 
     & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-ltUp .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-Link{
@@ -469,25 +475,25 @@
         padding: 2px;
     }
 
-    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst > .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst{
+    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst > .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst > div > div{
         display: flex;
         width: 540px;
         border-top: 1px @nrgColor-grey-highlight solid;
     }
 
-    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst > .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst.nrgBilling-blshc2-dpInst-inst-grn{
-        background-color: @nrgColor-green-credit;
+    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst > .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst > div > .nrgBilling-blshc2-dpInst-inst-grn{
+        background-color: forestgreen;
     }
 
-    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst > .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst.nrgBilling-blshc2-dpInst-inst-ylw{
-        background-color: @nrgColor-orange-attention;
+    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst > .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst > div > .nrgBilling-blshc2-dpInst-inst-ylw{
+        background-color: yellow;
     }
 
-    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst > .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst.nrgBilling-blshc2-dpInst-inst-red{
-        background-color: @nrgColor-red-pale;
+    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst > .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst > div > .nrgBilling-blshc2-dpInst-inst-red{
+        background-color: red;
     }
 
-    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst > .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst > .nrgBilling-blshc2-dpInst-inst-cell{
+    & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst > .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst > div > div > div{
         flex: 1;
         padding: 2px;
         color: @nrgColor-grey-dark;
