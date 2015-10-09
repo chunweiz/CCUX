@@ -15,11 +15,18 @@
                         "real": {
                             "comp-billing": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/"
+                            },
+                            "comp-billing-avgplan": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/"
                             }
                         },
                         "mock": {
                             "comp-billing": {
                                 "mockDataBaseUrl": "data/devtest/",
+                                "generateMissingMockData": true
+                            },
+                            "comp-billing-avgplan": {
+                                "mockDataBaseUrl": "data/devavg/",
                                 "generateMissingMockData": true
                             }
                         }
