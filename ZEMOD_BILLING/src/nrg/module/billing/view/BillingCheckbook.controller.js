@@ -51,6 +51,35 @@ sap.ui.define(
 
         /*****************************************************************************************************************************************************/
         //Formatter Functions
+        CustomController.prototype._formatDppIntGrn = function (sIndicator) {
+            if (sIndicator === 'G') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        CustomController.prototype._formatDppIntYlw = function (sIndicator) {
+            if (sIndicator === 'Y') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        CustomController.prototype._formatDppIntRed = function (sIndicator) {
+            if (sIndicator === 'R') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        CustomController.prototype._formatDppIntWte = function (sIndicator) {
+            if (sIndicator) {
+                return false;
+            } else {
+                return true;
+            }
+        };
+
         CustomController.prototype._formatBoolHyperLink = function (sIndicator) {
             if (sIndicator) {
                 return true;
@@ -281,7 +310,6 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oPaymentHdr').setProperty(sBindingPath + '/DpInstls', oData);
-                        sPath = sBindingPath;
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -468,7 +496,7 @@ sap.ui.define(
                         this._retrPaymentSumrys(oData.results[i].InvoiceNum, '/results/' + i);
                         this._retrPaymentItmes(oData.results[i].InvoiceNum, '/results/' + i);
 
-                        oScrlCtaner.scrollTo(0, 550, 1000);
+                        oScrlCtaner.scrollTo(0, 1000, 1000);
                     }
                 }.bind(this),
                 error: function (oError) {

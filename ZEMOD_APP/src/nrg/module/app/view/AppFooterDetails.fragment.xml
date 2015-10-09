@@ -38,7 +38,7 @@
                                 width="100%"
                                 horizontal="true"
                                 vertical="true">
-                                <!-- <ua:FooterNotificationCenter 
+                                <!-- <ua:FooterNotificationCenter
                                     id="nrgAppFtrDetails-notification-alertCenter"
                                     content="{view-data>/notification}">
                                     <ua:FooterNotificationItem
@@ -135,7 +135,7 @@
                                         design="None"
                                         class="nrgAppFtrDetails-eligibleOffers-itemContentBtn"
                                         press="_onCampaignItemClick">
-                                        <!-- <ute:Tag id="nrgAppFtrDetails-eligibleOffers-currentItem" 
+                                        <!-- <ute:Tag id="nrgAppFtrDetails-eligibleOffers-currentItem"
                                             class="nrgAppFtrDetails-eligibleOffers-itemContent currentItem"
                                             text="{oFooterCampaign>/Current/OfferTitle}" /> -->
                                         <ute:Tag id="nrgAppFtrDetails-eligibleOffers-currentItem" 
@@ -153,7 +153,7 @@
                                                     parts:['oFooterCampaign>/Current/StartDate'],
                                                     formatter:'._formatCampaignTime'
                                                 }"/> -->
-                                            <ute:Tag 
+                                            <ute:Tag
                                                 id="nrgAppFtrDetails-eligibleOffers-startDateValue"
                                                 class="nrgAppFtrDetails-eligibleOffers-startDateValue"
                                                 text=""/>
@@ -167,7 +167,7 @@
                                                     parts:['oFooterCampaign>/Current/EndDate'],
                                                     formatter:'._formatCampaignTime'
                                                 }"/> -->
-                                            <ute:Tag 
+                                            <ute:Tag
                                                 id="nrgAppFtrDetails-eligibleOffers-endDateValue"
                                                 class="nrgAppFtrDetails-eligibleOffers-endDateValue"
                                                 text=""/>
@@ -181,7 +181,7 @@
                                         design="None"
                                         class="nrgAppFtrDetails-eligibleOffers-itemContentBtn"
                                         press="_onCampaignItemClick">
-                                        <!-- <ute:Tag id="nrgAppFtrDetails-eligibleOffers-pendingItem" 
+                                        <!-- <ute:Tag id="nrgAppFtrDetails-eligibleOffers-pendingItem"
                                             class="nrgAppFtrDetails-eligibleOffers-itemContent pendingItem"
                                             text="{oFooterCampaign>/Pending/OfferTitle}" /> -->
                                         <ute:Tag id="nrgAppFtrDetails-eligibleOffers-pendingItem" 
@@ -196,13 +196,13 @@
                                         design="None"
                                         class="nrgAppFtrDetails-eligibleOffers-itemContentBtn"
                                         press="_onCampaignItemClick">
-                                        <!-- <ute:Tag id="nrgAppFtrDetails-eligibleOffers-historyItem" 
+                                        <!-- <ute:Tag id="nrgAppFtrDetails-eligibleOffers-historyItem"
                                             class="nrgAppFtrDetails-eligibleOffers-itemContent historyItem"
                                             text="{oFooterCampaign>/History/OfferTitle}" 
                                             press="_onCampaignItemClick"/> -->
-                                        <ute:Tag id="nrgAppFtrDetails-eligibleOffers-historyItem" 
+                                        <ute:Tag id="nrgAppFtrDetails-eligibleOffers-historyItem"
                                             class="nrgAppFtrDetails-eligibleOffers-itemContent historyItem"
-                                            text="" 
+                                            text=""
                                             press="_onCampaignItemClick"/>
                                     </utmain:Button>
                                 </ute:Tag>
@@ -217,7 +217,7 @@
                                 press="_onCampaignBtnClick">
                                <!--  <ute:Tag class="nrgAppFtrDetails-campaignButton-itemTitle"
                                     text="{oFooterCampaign>/CampaignButtonText}" /> -->
-                                <ute:Tag 
+                                <ute:Tag
                                     id="nrgAppFtrDetails-campaignButton-itemTitle"
                                     class="nrgAppFtrDetails-campaignButton-itemTitle"
                                     text="" />

@@ -10,7 +10,7 @@ sap.ui.define(
     function (Control) {
         'use strict';
 
-        var CustomControl = Control.extend('ute.ui.main.Chart', {
+        var CustomControl = Control.extend('nrg.module.billing.view.control.AverageBillDetailsChart', {
             metadata: {
                 properties: {
                     width: { type: 'int', defaultValue: 900 },
@@ -22,7 +22,7 @@ sap.ui.define(
             renderer: function (oRm, oCustomControl) {
                 oRm.write('<div');
                 oRm.writeControlData(oCustomControl);
-                oRm.addClass('AVDChart');
+                oRm.addClass('tmAVDChart');
                 oRm.writeClasses();
                 oRm.write('>');
                 oRm.write('</div>');
@@ -40,7 +40,7 @@ sap.ui.define(
 
         CustomControl.prototype.hideUsage = function (sYear, bHide) {
             if(this._oCanvas) {
-                this._oCanvas.selectAll('.AVDChart-usage').each(function (oData) {
+                this._oCanvas.selectAll('.tmAVDChart-usage').each(function (oData) {
                     if (oData.key === sYear) {
                         if (bHide) {
                             d3.select(this).style('display', 'none');
@@ -107,7 +107,7 @@ sap.ui.define(
             // Create a canvas with margin
             this._oCanvas = d3.select('#' + this.getId())
                 .append('svg')
-                    .attr('class', 'AVDChart')
+                    .attr('class', 'tmAVDChart')
                     .attr('width', oCustomControl.getWidth())
                     .attr('height', oCustomControl.getHeight())
                     .attr('viewBox', [0, 0, iWidth + oMargin.left + oMargin.right, iHeight + oMargin.top + oMargin.bottom].join(' '))
@@ -126,7 +126,7 @@ sap.ui.define(
                 .tickFormat(function (data) { return fnXAxisLabel(data); });
 
             this._oCanvas.append('g')
-                .attr('class', 'AVDChart-XAxis')
+                .attr('class', 'tmAVDChart-XAxis')
                 .attr('transform', 'translate(' + [0, iHeight + 20] + ')')
                 .call(fnXAxisMonth);
 
@@ -138,7 +138,7 @@ sap.ui.define(
                 .tickFormat(d3.format('d'));
 
             this._oCanvas.append('g')
-                .attr('class', 'AVDChart-YAxis')
+                .attr('class', 'tmAVDChart-YAxis')
                 .attr('transform', 'translate(' + [-30, 0] + ')')
                 .call(fnYAxisUsage);
 
@@ -148,7 +148,7 @@ sap.ui.define(
                 .data(d3.range(aMinMaxMonth[0], aMinMaxMonth[1] + 1))
                 .enter()
                 .append('line')
-                    .attr('class', 'AVDChart-XGrid')
+                    .attr('class', 'tmAVDChart-XGrid')
                     .attr('x1', function (data) { return fnScaleMonth(data); })
                     .attr('y1', 0)
                     .attr('x2', function (data) { return fnScaleMonth(data); })
@@ -160,7 +160,7 @@ sap.ui.define(
                 .data(d3.range(iMinUsageDomain, iMaxUsageDomain, iUsageTickSize))
                 .enter()
                 .append('line')
-                    .attr('class', 'AVDChart-YGrid')
+                    .attr('class', 'tmAVDChart-YGrid')
                     .attr('x1', 0)
                     .attr('y1', function (data) { return fnScaleUsage(data); })
                     .attr('x2', iWidth + 30)
@@ -182,9 +182,10 @@ sap.ui.define(
             var oUsageLines = this._oCanvas.append('g').selectAll('g')
                 .data(aDatasetByYear)
                 .enter().append('g')
-                    .attr('class', 'AVDChart-usage');
+                    .attr('class', 'tmAVDChart-usage');
+
             oUsageLines.append('path')
-                .attr('class', 'AVDChart-usageLine')
+                .attr('class', 'tmAVDChart-usageLine')
                 .attr('d', function (data) { return fnUsageLine(data.values); })
                 .style('stroke', function (data) { return fnLineColor(data.key); })
                 .style('fill', 'none');
@@ -194,7 +195,7 @@ sap.ui.define(
                 .data(function (data) { return data.values; })
                 .enter()
                 .append('circle')
-                    .attr('class', 'AVDChart-usageDataPoint')
+                    .attr('class', 'tmAVDChart-usageDataPoint')
                     .attr('r', '4')
                     .attr('cx', function (data) { return fnScaleMonth(data.usageDate.getMonth()); })
                     .attr('cy', function (data) { return fnScaleUsage(data.usage); })
