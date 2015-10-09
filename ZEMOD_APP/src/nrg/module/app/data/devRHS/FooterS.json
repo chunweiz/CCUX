@@ -3,484 +3,552 @@
         "results":[
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001624')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001624')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7000763394')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7000763394')",
                     "type":"ZE_CCUX_RHS_SRV.Footer"
                 },
-                "BP":"0002473499",
-                "CA":"000003040103",
+                "BP":"2473499",
+                "CA":"3040103",
+                "Type":"C",
+                "ProdID":"7000763394",
+                "ProdName":"Release Programs to ZRCC Contract"
+            },
+            {
+                "__metadata":{
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001415')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001415')",
+                    "type":"ZE_CCUX_RHS_SRV.Footer"
+                },
+                "BP":"2473499",
+                "CA":"3040103",
+                "Type":"C",
+                "ProdID":"7001001415",
+                "ProdName":"Reliant $2000 LINE-SURGE"
+            },
+            {
+                "__metadata":{
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001624')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001624')",
+                    "type":"ZE_CCUX_RHS_SRV.Footer"
+                },
+                "BP":"2473499",
+                "CA":"3040103",
                 "Type":"C",
                 "ProdID":"7001001624",
                 "ProdName":"Reliant $2000 SURGE PROTECT"
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001628')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001628')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001641')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001641')",
                     "type":"ZE_CCUX_RHS_SRV.Footer"
                 },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001001628",
-                "ProdName":"Reliant $500 AC/HEAT PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001629')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001629')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001001629",
-                "ProdName":"Reliant $1,000 ELECTRIC LINE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001630')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001630')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001001630",
-                "ProdName":"Reliant $2000 SURGE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001632')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001632')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001001632",
-                "ProdName":"Reliant $1,000 ELECTRIC LINE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001633')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001633')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001001633",
-                "ProdName":"Reliant $500 SURGE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001637')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001637')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001001637",
-                "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001640')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001640')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001001640",
-                "ProdName":"Reliant $2000 SURGE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001643')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001643')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001001643",
-                "ProdName":"Reliant $2000 SURGE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001644')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001644')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001001644",
-                "ProdName":"Reliant $2000 SURGE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001645')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001645')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001001645",
-                "ProdName":"Reliant e-Sense® IdealTemp 3moFree $9.95"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001646')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001646')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001001646",
-                "ProdName":"Reliant $500 AC/HEAT PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001647')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001001647')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001001647",
-                "ProdName":"Reliant $500 AC/HEAT PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003460')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003460')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001003460",
-                "ProdName":"Reliant $1500 AC/HEAT PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003461')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003461')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001003461",
-                "ProdName":"Reliant $500 SURGE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003619')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003619')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001003619",
-                "ProdName":"Reliant $500 AC/HEAT PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003620')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003620')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001003620",
-                "ProdName":"Reliant $1000 SURGE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003630')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003630')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001003630",
-                "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003631')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003631')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001003631",
-                "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003632')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003632')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001003632",
-                "ProdName":"EcoShare Silver 500lbs CO2/$1 donation"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003633')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003633')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001003633",
-                "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003634')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='C',ProdID='7001003634')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"C",
-                "ProdID":"7001003634",
-                "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001413')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001413')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"H",
-                "ProdID":"7001001413",
-                "ProdName":"Reliant $500 SURGE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001415')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001415')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"H",
-                "ProdID":"7001001415",
-                "ProdName":"Reliant $2000 LINE-SURGE"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001416')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001416')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"H",
-                "ProdID":"7001001416",
-                "ProdName":"Reliant $500 SURGE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001417')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001417')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"H",
-                "ProdID":"7001001417",
-                "ProdName":"Reliant $2000 LINE-SURGE"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001615')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001615')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"H",
-                "ProdID":"7001001615",
-                "ProdName":"Reliant $2000 LINE-SURGE"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001623')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001623')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"H",
-                "ProdID":"7001001623",
-                "ProdName":"Reliant $2000 SURGE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001625')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001625')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"H",
-                "ProdID":"7001001625",
-                "ProdName":"Reliant $1000 SURGE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001626')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001626')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"H",
-                "ProdID":"7001001626",
-                "ProdName":"Reliant $500 SURGE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001627')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001627')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"H",
-                "ProdID":"7001001627",
-                "ProdName":"Reliant $1000 SURGE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001631')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001631')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"H",
-                "ProdID":"7001001631",
-                "ProdName":"Reliant $500 ELECTRIC LINE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001634')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001634')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"H",
-                "ProdID":"7001001634",
-                "ProdName":"Reliant $500 SURGE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001635')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001635')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"H",
-                "ProdID":"7001001635",
-                "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001636')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001636')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"H",
-                "ProdID":"7001001636",
-                "ProdName":"Reliant $500 Elec Line Prot 866-791-1200"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001638')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001638')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"H",
-                "ProdID":"7001001638",
-                "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001639')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001639')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"H",
-                "ProdID":"7001001639",
-                "ProdName":"Reliant $2000 SURGE PROTECT"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001641')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='H',ProdID='7001001641')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
+                "BP":"2473499",
+                "CA":"3040103",
                 "Type":"H",
                 "ProdID":"7001001641",
                 "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='P',ProdID='7000763394')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='P',ProdID='7000763394')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='P',ProdID='7001003633')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='P',ProdID='7001003633')",
                     "type":"ZE_CCUX_RHS_SRV.Footer"
                 },
-                "BP":"0002473499",
-                "CA":"000003040103",
+                "BP":"2473499",
+                "CA":"3040103",
                 "Type":"P",
-                "ProdID":"7000763394",
-                "ProdName":"Release Programs to ZRCC Contract"
-            },
-            {
-                "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='P',ProdID='7000979743')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='0002473499',CA='000003040103',Type='P',ProdID='7000979743')",
-                    "type":"ZE_CCUX_RHS_SRV.Footer"
-                },
-                "BP":"0002473499",
-                "CA":"000003040103",
-                "Type":"P",
-                "ProdID":"7000979743",
-                "ProdName":"Reliant Easy Move® Premium SF STD MVI"
+                "ProdID":"7001003633",
+                "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
             }
         ]
     }
 }
+
+
+// {
+//     "d":{
+//         "results":[
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001624')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001624')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001001624",
+//                 "ProdName":"Reliant $2000 SURGE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001628')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001628')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001001628",
+//                 "ProdName":"Reliant $500 AC/HEAT PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001629')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001629')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001001629",
+//                 "ProdName":"Reliant $1,000 ELECTRIC LINE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001630')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001630')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001001630",
+//                 "ProdName":"Reliant $2000 SURGE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001632')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001632')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001001632",
+//                 "ProdName":"Reliant $1,000 ELECTRIC LINE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001633')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001633')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001001633",
+//                 "ProdName":"Reliant $500 SURGE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001637')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001637')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001001637",
+//                 "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001640')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001640')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001001640",
+//                 "ProdName":"Reliant $2000 SURGE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001643')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001643')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001001643",
+//                 "ProdName":"Reliant $2000 SURGE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001644')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001644')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001001644",
+//                 "ProdName":"Reliant $2000 SURGE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001645')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001645')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001001645",
+//                 "ProdName":"Reliant e-Sense® IdealTemp 3moFree $9.95"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001646')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001646')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001001646",
+//                 "ProdName":"Reliant $500 AC/HEAT PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001647')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001001647')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001001647",
+//                 "ProdName":"Reliant $500 AC/HEAT PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003460')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003460')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001003460",
+//                 "ProdName":"Reliant $1500 AC/HEAT PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003461')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003461')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001003461",
+//                 "ProdName":"Reliant $500 SURGE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003619')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003619')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001003619",
+//                 "ProdName":"Reliant $500 AC/HEAT PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003620')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003620')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001003620",
+//                 "ProdName":"Reliant $1000 SURGE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003630')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003630')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001003630",
+//                 "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003631')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003631')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001003631",
+//                 "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003632')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003632')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001003632",
+//                 "ProdName":"EcoShare Silver 500lbs CO2/$1 donation"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003633')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003633')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001003633",
+//                 "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003634')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='C',ProdID='7001003634')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"C",
+//                 "ProdID":"7001003634",
+//                 "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001413')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001413')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"H",
+//                 "ProdID":"7001001413",
+//                 "ProdName":"Reliant $500 SURGE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001415')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001415')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"H",
+//                 "ProdID":"7001001415",
+//                 "ProdName":"Reliant $2000 LINE-SURGE"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001416')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001416')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"H",
+//                 "ProdID":"7001001416",
+//                 "ProdName":"Reliant $500 SURGE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001417')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001417')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"H",
+//                 "ProdID":"7001001417",
+//                 "ProdName":"Reliant $2000 LINE-SURGE"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001615')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001615')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"H",
+//                 "ProdID":"7001001615",
+//                 "ProdName":"Reliant $2000 LINE-SURGE"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001623')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001623')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"H",
+//                 "ProdID":"7001001623",
+//                 "ProdName":"Reliant $2000 SURGE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001625')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001625')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"H",
+//                 "ProdID":"7001001625",
+//                 "ProdName":"Reliant $1000 SURGE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001626')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001626')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"H",
+//                 "ProdID":"7001001626",
+//                 "ProdName":"Reliant $500 SURGE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001627')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001627')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"H",
+//                 "ProdID":"7001001627",
+//                 "ProdName":"Reliant $1000 SURGE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001631')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001631')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"H",
+//                 "ProdID":"7001001631",
+//                 "ProdName":"Reliant $500 ELECTRIC LINE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001634')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001634')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"H",
+//                 "ProdID":"7001001634",
+//                 "ProdName":"Reliant $500 SURGE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001635')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001635')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"H",
+//                 "ProdID":"7001001635",
+//                 "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001636')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001636')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"H",
+//                 "ProdID":"7001001636",
+//                 "ProdName":"Reliant $500 Elec Line Prot 866-791-1200"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001638')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001638')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"H",
+//                 "ProdID":"7001001638",
+//                 "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001639')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001639')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"H",
+//                 "ProdID":"7001001639",
+//                 "ProdName":"Reliant $2000 SURGE PROTECT"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001641')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='H',ProdID='7001001641')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"H",
+//                 "ProdID":"7001001641",
+//                 "ProdName":"EcoShare Gold 1000lbs CO2/$2 donation"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='P',ProdID='7000763394')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='P',ProdID='7000763394')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"P",
+//                 "ProdID":"7000763394",
+//                 "ProdName":"Release Programs to ZRCC Contract"
+//             },
+//             {
+//                 "__metadata":{
+//                     "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='P',ProdID='7000979743')",
+//                     "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_RHS_SRV/FooterS(BP='2473499',CA='3040103',Type='P',ProdID='7000979743')",
+//                     "type":"ZE_CCUX_RHS_SRV.Footer"
+//                 },
+//                 "BP":"2473499",
+//                 "CA":"3040103",
+//                 "Type":"P",
+//                 "ProdID":"7000979743",
+//                 "ProdName":"Reliant Easy Move® Premium SF STD MVI"
+//             }
+//         ]
+//     }
+// }
