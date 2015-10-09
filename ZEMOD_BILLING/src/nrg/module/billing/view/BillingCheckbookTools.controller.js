@@ -16,6 +16,7 @@ sap.ui.define(
 
         Controller.prototype.onInit = function ()
         {
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-billing'), 'oDataAvgSvc');
         };
 
         Controller.prototype.onAfterRendering = function ()
@@ -67,6 +68,8 @@ sap.ui.define(
             }
 
             this._oAvgBillPopup.open();
+
+            var oAvgOData = this.getView().getModel('oDataAvgSvc');
             return;
         };
 
