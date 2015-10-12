@@ -80,10 +80,18 @@
                     & .nrgUsgTable-Infoline {
                         min-width: 53rem;
                         max-width: 53rem;
-                        height: 30px;
+
+                        & .uteMIl-hdrExpander {
+                            display : none;
+                        }
                     }
                     & .nrgUsgTable-Infoline:nth-child(even) {
                         background-color: @nrgColor-blue-pearl;
+
+                    }
+                    & .nrgUsgTable-Infoline:nth-child(odd) {
+                        background-color: transparent;
+
                     }
                     & .nrgUsgTable-Data  {
                             display : inline-block;
@@ -117,7 +125,8 @@
                     }
                     &  .nrgUsgTable-inside {
                             background-color: @nrgColor-blue-pearl;
-                            margin-top: 5px;
+                            margin-bottom: 5px;
+                            border: 1px solid @nrgColor-grey-dark;
                             &  .nrgUsgNoData {
                                 text-align: center;
                             }
