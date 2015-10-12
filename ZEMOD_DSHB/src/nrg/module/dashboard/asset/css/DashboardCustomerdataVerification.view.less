@@ -743,16 +743,25 @@
                             align-items: center;
                             margin-bottom: 5px;
 
-                            & .nrgDashboard-cusDataVerify-left-meterLabel {
-                                font-weight: @nrgFontWeight-semiBold;
-                                color: @nrgColor-blue-lightLink;
-                                margin-right: 5px;
-                                display: block;
-                                line-height: 10px;
+                            & .nrgDashboard-cusDataVerify-left-usageLink {
+                            	padding: 0;
 
-                                span {
-                                    display: block;
-                                }
+                            	& .nrgDashboard-cusDataVerify-left-meterLabel {
+	                                font-weight: @nrgFontWeight-semiBold;
+	                                color: @nrgColor-grey-light;
+	                                margin-right: 5px;
+	                                display: block;
+	                                line-height: 10px;
+
+	                                span {
+	                                    display: block;
+	                                }
+	                            }
+
+	                            &.active .nrgDashboard-cusDataVerify-left-meterLabel {
+	                            	color: @nrgColor-blue-lightLink;
+	                            	cursor: pointer;
+                            	}
                             }
 
                             & .nrgDashboard-cusDataVerify-left-meterCheckbox {
@@ -1065,7 +1074,7 @@
                 & .nrgDashboard-cusDataVerify-middle-content {
                     background-color: @nrgColor-bluePearl;
                     border-radius: 4px;
-                    padding: 15px 20px;
+                    padding: 15px 20px 3px 20px;
                     display: flex;
                     flex-direction: column;
 
@@ -1075,6 +1084,7 @@
                         align-items: flex-start;
                         display: flex;
                         margin-bottom: 10px;
+                        min-height: 29px;
 
                         &.dashedBottom {
                             border-bottom: 1px dashed @nrgColor-grey-light;
@@ -1085,11 +1095,12 @@
                         }
 
                         &.mailingAddrHeight {
-                            height: 77px;
+                            min-height: 81px;
                         }
 
                         &.serviceAddrHeight {
                             height: 42px;
+                            min-height: 42px;
                         }
 
                         & .nrgDashboard-cusDataVerify-middle-addrSection {
@@ -1107,15 +1118,19 @@
                                 color: @nrgColor-blue-link;
                             }
 
-                            & .nrgDashboard-cusDataVerify-middle-addrBtn {
-                                padding: 0;
+                            & .nrgDashboard-cusDataVerify-middle-address {
+                            	width: 100%;
+                            	
+                            	& .nrgDashboard-cusDataVerify-middle-addrBtn {
+	                                padding: 0;
 
-                                & .uteMBtn-text {
-                                    font-weight: @nrgFontWeight-semiBold;
-                                    font-size: @nrgFontSize-base;
-                                    color: @nrgColor-black;
-                                    text-align: left;
-                                }
+	                                & .uteMBtn-text {
+	                                    font-weight: @nrgFontWeight-semiBold;
+	                                    font-size: @nrgFontSize-base;
+	                                    color: @nrgColor-black;
+	                                    text-align: left;
+	                                }
+	                            }
                             }
 
                             & .nrgDashboard-cusDataVerify-middle-addrSection-badge {
