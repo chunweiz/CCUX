@@ -46,18 +46,19 @@
                     }
             }
             &   .uteMIl-hdrContent, .nrgUsgTable-inside {
-                    width: 52rem;
-                    max-width: 52rem;
+                    width: 100%;
+                    max-width: 100%;
             }
             &  > .nrgUsgTable-header {
-                    background-color: @nrgColor-grey-light;
-                    line-height: 30px;
-                    border-right: 1px solid @nrgColor-lightGrey;
-                    box-shadow: inset 2px 0px @nrgColor-lightPaleBlue;
-                    width: 52rem;
-                    max-width: 52rem;
+                    background-color: @nrgColor-blue-pearl;
+                    line-height: 25px;
+                    width: 53rem;
+                    max-width: 53rem;
+                    color: @nrgColor-grey-dark;
+                    font-size: @nrgFontSize-small;
+	                font-weight: @nrgFontWeight-semiBold;
                     & > .nrgUsgTable-hd-Dt {
-                            width: 18%;
+                            width: 20%;
                     }
                     & > .nrgUsgTable-hd-BD, .nrgUsgTable-hd-RD, .nrgUsgTable-hd-Ac, .nrgUsgTable-hd-ch, .nrgUsgTable-hd-dollar {
                             width: 10%;
@@ -76,14 +77,22 @@
             }
             &  > .nrgUsgTable-Row {
                     font-size: @nrgFontSize-small;
+                    & .nrgUsgTable-Infoline {
+                        min-width: 53rem;
+                        max-width: 53rem;
+                        height: 30px;
+                    }
+                    & .nrgUsgTable-Infoline:nth-child(even) {
+                        background-color: @nrgColor-blue-pearl;
+                    }
                     & .nrgUsgTable-Data  {
                             display : inline-block;
                             vertical-align: middle;
                             text-align: center;
                     }
                     &   .nrgUsgTable-Data-days {
-                            min-width: 6%;
-                            max-width: 6%;
+                            min-width: 8%;
+                            max-width: 8%;
                     }
                     &  .nrgUsgTable-Data-ch, .nrgUsgTable-Data-dollar, .nrgUsgTable-Data-kwh, .nrgUsgTable-Data-Ac {
                             min-width: 10%;
@@ -107,7 +116,7 @@
                             max-width: 14%;
                     }
                     &  .nrgUsgTable-inside {
-                            background-color: @nrgColor-lightGrey;
+                            background-color: @nrgColor-blue-pearl;
                             margin-top: 5px;
                             &  .nrgUsgNoData {
                                 text-align: center;
@@ -140,7 +149,7 @@
             }
     }
     &  .nrgUsg-top {
-            margin-top: 20px;
+            margin-top: 10px;
     }
     &  .nrgUsg-left {
             margin-left: 22px;
