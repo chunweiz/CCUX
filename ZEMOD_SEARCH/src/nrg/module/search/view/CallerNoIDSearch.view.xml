@@ -23,8 +23,7 @@
                 <!--type:'nrg.util.type.ContractAccountNumber'-->
                 <ute:Textfield
                     value="{
-                        path: 'oSearchFilters>/searchTextFields/sCaNum',
-                        type: 'nrg.base.type.ContractAccountNumber'
+                        path: 'oSearchFilters>/searchTextFields/sCaNum'
                     }"
                     id="idSearchCa"
                     class="nrgSearch-calrNoIDSearch-textfield-input"
