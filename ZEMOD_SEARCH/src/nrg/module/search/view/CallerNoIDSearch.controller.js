@@ -313,10 +313,11 @@ sap.ui.define(
                     }
                 }
             });
-            
+
             if (ok) {
                 return true;
             } else {
+                this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 return false;
             }
         };
