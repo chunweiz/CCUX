@@ -425,7 +425,7 @@
                                 <utmain:Label  labelFor="mail_FixedAddr"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FAddr}"
                                     class="nrgDashboard-cusDataVerify-middle-mailAddrLabel"/>
-                                <ute:Tag id="mail_FixedAddr">
+                                <ute:Tag id="mail_FixedAddr" width="100%">
                                     <utmain:Button  design="None"
                                         class="nrgDashboard-cusDataVerify-middle-addrBtn"
                                         text="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ShortForm}"
@@ -436,7 +436,7 @@
                                 <utmain:Label  labelFor="mail_TempAddr"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TAddr}"
                                     class="nrgDashboard-cusDataVerify-middle-mailAddrLabel"/>
-                                <ute:Tag id="mail_TempAddr">
+                                <ute:Tag id="mail_TempAddr" width="100%">
                                     <utmain:Button  design="None"
                                         enabled="{
                                             parts:['oDtaVrfyMailingTempAddr>/TempAddrNo'],
