@@ -81,57 +81,7 @@
                     </u:Tag>
                 </u:Tag>
        </u:Tag>
-       <u:Tag visible="false">
-            <um:Dropdown select=".onServiceAdd"
-                                 placeholder="Select Service Address"
-                                 class="nrgUsg-top">
-                <um:DropdownItem key="{comp-usage>Contract}" class="nrgUsg-DdLItem" id="idnrgUsgServiceAdd-DropDownItem">
-                    <u:Tag
-                    text="{comp-usage>CA}-{comp-usage>Contract}-{comp-usage>ESID}-{comp-usage>House}-{comp-usage>Street}-{comp-usage>Apt}-{comp-usage>City}-{comp-usage>State}-{comp-usage>ZIP}"/>
-                </um:DropdownItem>
-            </um:Dropdown>
-            <um:Infoline design="None" id="idnrgUsgRow-Infoline">
-                <um:headerContent>
-                    <u:Tag text="{= (${comp-usage>PeriodBegin} &amp;&amp; ${comp-usage>PeriodEnd}) ? ${path: 'comp-usage>PeriodBegin',
-                                                                                                       type: 'sap.ui.model.type.Date',
-                                                                                                       formatOptions:{pattern: 'MM/dd/yyyy'}} + '-' + ${path: 'comp-usage>PeriodEnd',
-                                                                                                       type: 'sap.ui.model.type.Date',
-                                                                                                       formatOptions:{pattern: 'MM/dd/yyyy'}} : '' }"
-                           class="nrgUsgTable-Data nrgUsgTable-Data-dt"/>
-                    <u:Tag text="{comp-usage>NumOfDays}" class="nrgUsgTable-Data nrgUsgTable-Data-days"/>
-                    <um:Button press=".expandInfoline"
-                               text="{= ${comp-usage>Reading} ? ${comp-usage>Reading} : 'Reading'}"
-                               design="None"
-                               class="nrgUsgTable-Data nrgUsgTable-hd-RD"/>
-                    <u:Tag text="{comp-usage>KwhUsage}" class="nrgUsgTable-Data nrgUsgTable-Data-kwh"/>
-                    <u:Tag text="{comp-usage>ConvText}" class="nrgUsgTable-Data nrgUsgTable-Data-Ac"/>
-                    <u:Tag text="Low {comp-usage>LowTemp} High {comp-usage>HighTemp}" class="nrgUsgTable-Data nrgUsgTable-Data-Wt"/>
-                    <u:Tag text="{comp-usage>CDI_HDI}" class="nrgUsgTable-Data nrgUsgTable-Data-ch"/>
-                    <u:Tag text="{comp-usage>CurrentCharges}" class="nrgUsgTable-Data nrgUsgTable-Data-dollar"/>
-                </um:headerContent>
-                <um:content>
-                    <u:Tag class="nrgUsgTable-inside">
-
-                    </u:Tag>
-                </um:content>
-            </um:Infoline>
-                    <u:Tag id="idnrgUsgTable-insideTmpl">
-                    <u:Tag text="{= (${comp-usage>PeriodBegin} &amp;&amp; ${comp-usage>PeriodEnd}) ? ${path: 'comp-usage>PeriodBegin',
-                                                                                                       type: 'sap.ui.model.type.Date',
-                                                                                                       formatOptions:{pattern: 'MM/dd/yyyy'}} + '-' + ${path: 'comp-usage>PeriodEnd',
-                                                                                                       type: 'sap.ui.model.type.Date',
-                                                                                                       formatOptions:{pattern: 'MM/dd/yyyy'}} : '' }"
-                           class="nrgUsgTable-Data nrgUsgTable-Data-dt"/>
-                            <u:Tag text="{comp-usage>NumOfDays}" class="nrgUsgTable-Data nrgUsgTable-Data-days"/>
-                            <u:Tag text="{= ${comp-usage>Reading} ? ${comp-usage>Reading} : 'Reading'}" class="nrgUsgTable-Data nrgUsgTable-hd-RDInner"/>
-                            <u:Tag text="{comp-usage>KwhUsage}" class="nrgUsgTable-Data nrgUsgTable-Data-kwh"/>
-                            <u:Tag text="{comp-usage>ConvText}" class="nrgUsgTable-Data nrgUsgTable-Data-Ac"/>
-                            <u:Tag text="Low {comp-usage>LowTemp} High {comp-usage>HighTemp}" class="nrgUsgTable-Data nrgUsgTable-Data-Wt"/>
-                            <u:Tag text="{comp-usage>CDI_HDI}" class="nrgUsgTable-Data nrgUsgTable-Data-ch"/>
-                            <u:Tag text="{comp-usage>CurrentCharges}" class="nrgUsgTable-Data nrgUsgTable-Data-dollar"/>
-                    </u:Tag>
-           <u:Tag id="idnrgUsgNoData" text="No Data Available" class="nrgUsgNoData"/>
-       </u:Tag>
+       <core:Fragment fragmentName="nrg.module.usage.view.TableView" type="XML" />
 
    </u:Tag>
 </mvc:View>
