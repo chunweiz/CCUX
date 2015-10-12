@@ -430,9 +430,19 @@
                         </utmain:content>
                     </utmain:Infoline>
                 </ute:Tag>
-                <ute:Tag>
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-poInvc"
-                             text="Post Invoice Date Activities" />
+                <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-poInvc">
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po1"
+                             text="test" />
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po2"
+                             text="test2"/>
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po3-1"
+                             text="p1"/>
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po3-2"
+                             text="p2"/>
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po4"
+                             text="date"/>
+                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hh-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po5"
+                             text="calot"/>
                 </ute:Tag>
             </m:ScrollContainer>
         </ute:Tag>
