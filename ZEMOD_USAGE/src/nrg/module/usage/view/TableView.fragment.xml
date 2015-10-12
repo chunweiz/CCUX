@@ -13,7 +13,7 @@
                     text="{comp-usage>CA}-{comp-usage>Contract}-{comp-usage>ESID}-{comp-usage>House}-{comp-usage>Street}-{comp-usage>Apt}-{comp-usage>City}-{comp-usage>State}-{comp-usage>ZIP}"/>
                 </um:DropdownItem>
             </um:Dropdown>
-            <um:Infoline design="None" id="idnrgUsgRow-Infoline">
+            <um:Infoline design="None" id="idnrgUsgRow-Infoline" class="nrgUsgTable-Infoline">
                 <um:headerContent>
                     <u:Tag text="{= (${comp-usage>PeriodBegin} &amp;&amp; ${comp-usage>PeriodEnd}) ? ${path: 'comp-usage>PeriodBegin',
                                                                                                        type: 'sap.ui.model.type.Date',
