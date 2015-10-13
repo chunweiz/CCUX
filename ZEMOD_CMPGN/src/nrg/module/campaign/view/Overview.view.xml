@@ -77,10 +77,10 @@
 
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
-                        <u:TextView text="{comp-campaign>AvgUsage}"
-                                    class="nrgCamOvr-left"
-                                    color="DarkGrey"
-                                    design="Base"/>
+                        <um:Button press=".onAvgUsage"
+                                   text="{= ${comp-campaign>AvgUsage} ? ${comp-campaign>AvgUsage} : 'NA' }"
+                                   class="nrgCamOvrAvgUsg nrgCamOvr-left"
+                                   design="None" />
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>

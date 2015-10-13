@@ -266,15 +266,27 @@ sap.ui.define(
             var sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill"),
                 sCustomerEligible = oEvent.getSource().getBindingContext("Overview-elig").getProperty("CustEligFlag"),
                 sInitTab = oEvent.getSource().getBindingContext("Overview-elig").getProperty("InitTab"),
+                sPendingMoveOut = oEvent.getSource().getBindingContext("Overview-elig").getProperty("PendMvo"),
                 _CancellationPopupHandler,
-                that = this;
+                that = this,
+                i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             if ((!sInitTab) || (sInitTab === undefined) || (sInitTab === null) || (sInitTab === "")) {
                 this._sInitTab = "SE";
             } else {
                 this._sInitTab = sInitTab;
             }
+            if (sPendingMoveOut) {
+                ute.ui.main.Popup.Alert({
+                    title: 'Information',
+                    message: i18NModel.getProperty("nrgCmpOvrPendingMoveOut")
+                });
+                return;
+            }
             if (!sFirstMonthBill) {
-                sap.ui.commons.MessageBox.alert("Customer has to completed at least One Month Invoice");
+                ute.ui.main.Popup.Alert({
+                    title: 'Information',
+                    message: i18NModel.getProperty("nrgCmpOvrFirstBillMsg")
+                });
             } else {
 /*                if (sCustomerEligible === "X") {
                     this._getPendingSwapsCount(oEvent);
@@ -331,7 +343,7 @@ sap.ui.define(
                         if ((parseInt(oData, 10)) > 0) {
                             that.showPendingSwaps();
                         } else {
-                            that.navTo("campaignoffers", {bpNum: that._sBP, caNum: that._sCA, coNum: this._sContract, typeV : this._sInitTab});
+                            that.navTo("campaignoffers", {bpNum: that._sBP, caNum: that._sCA, coNum: that._sContract, typeV : that._sInitTab});
                         }
                     }
                 }.bind(this),
@@ -501,6 +513,15 @@ sap.ui.define(
 
         };
         /**
+		 * Handler Function for the Average Usage selection
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onAvgUsage = function (oEvent) {
+            this.navTo("usage", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
+        };
+        /**
 		 * Handler Function for the Pending Swaps Selection
 		 *
 		 * @function
@@ -536,7 +557,8 @@ sap.ui.define(
                 oLocalModel,
                 sReqName,
                 sReqNumber,
-                bNoPhone;
+                bNoPhone,
+                i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
 
             oLocalModel = this.getView().getModel("localModel");
             sReqName = oLocalModel.getProperty("/ReqName");
@@ -544,15 +566,27 @@ sap.ui.define(
             bNoPhone = oLocalModel.getProperty("/NoPhone");
             if ((this._aPendingSelPaths) && (this._aPendingSelPaths.length > 0)) {
                 if ((!sReqName) || (sReqName === "")) {
-                    sap.ui.commons.MessageBox.alert("Please enter Requestor's Name");
+                    //sap.ui.commons.MessageBox.alert("Please enter Requestor's Name");/nrgCmpOvrEntReqName
+                    ute.ui.main.Popup.Alert({
+                        title: 'Information',
+                        message: i18NModel.getProperty("nrgCmpOvrEntReqName")
+                    });
                     return;
                 }
                 if ((!bNoPhone) && ((!sReqNumber) || (sReqNumber === ""))) {
-                    sap.ui.commons.MessageBox.alert("Please enter Requestor's Number or Select No Phone");
+                    //sap.ui.commons.MessageBox.alert("Please enter Requestor's Number or Select No Phone");
+                    ute.ui.main.Popup.Alert({
+                        title: 'Information',
+                        message: i18NModel.getProperty("nrgCmpOvrNoPhoneErrMsg")
+                    });
                     return;
                 }
             } else {
-                sap.ui.commons.MessageBox.alert("Select Pending Swap to cancel");
+                //sap.ui.commons.MessageBox.alert("Select Pending Swap to cancel");
+                ute.ui.main.Popup.Alert({
+                    title: 'Information',
+                    message: i18NModel.getProperty("nrgCmpOvrPendingSwapSelection")
+                });
                 return;
             }
             oModel.setRefreshAfterChange(false);

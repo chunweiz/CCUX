@@ -42,7 +42,10 @@
                 </u:Tag>
             </u:Tag>
         </u:Tag>
-            <u:Tag class="nrgQPPay-top">
+        <u:Tag class="nrgQPPay-top">
+            <u:Tag text="{comp-i18n-quickpay>nrgQPNoProcessingFee}" class="nrgQPCC-Rdmlbl"/>
+        </u:Tag>
+<!--            <u:Tag class="nrgQPPay-top">
                     <um:Dropdown placeholder="{comp-i18n-quickpay>nrgQPProcessingFee}"
                                  class="nrgQPCC-DDLWR"
                                  id="idnrgQPCC-ReceiptDD">
@@ -52,7 +55,8 @@
                         </u:Tag>
                     </um:DropdownItem>
                 </um:Dropdown>
-            </u:Tag>
+            </u:Tag>-->
+
             <u:Tag class="nrgQPPay-top nrgQPPay-left" >
                 <um:Button press=".onAcceptReceipt"
                            text="{comp-i18n-quickpay>nrgQPPay}"
