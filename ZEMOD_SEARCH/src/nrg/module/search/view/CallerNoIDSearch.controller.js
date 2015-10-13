@@ -302,17 +302,24 @@ sap.ui.define(
         };
 
         Controller.prototype._checkWildCard = function (oParameters) {
+            var ok = true;
+            
             oParameters.filters.forEach(function(filter) {
                 // These are fields that wildcard is not allowed for
                 if (filter.sPath === "BuagID" || filter.sPath === "SSN" || filter.sPath === "DL" || filter.sPath === "PartnerID" || filter.sPath === "ESID" || filter.sPath === "TaxID") {
                     if (filter.oValue1.indexOf("*") > -1) {
                         sap.ui.commons.MessageBox.alert("Wildcard is not allowed for this search criteria.");
-                        return false;
+                        ok = false;
                     }
                 }
             });
 
-            return true;
+            if (ok) {
+                return true;
+            } else {
+                this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                return false;
+            }
         };
 
 

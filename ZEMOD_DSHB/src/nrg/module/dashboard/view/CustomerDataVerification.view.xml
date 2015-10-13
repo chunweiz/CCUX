@@ -54,9 +54,16 @@
                         <ute:Tag class="nrgDashboard-cusDataVerify-left-meter">
                             <!-- Label Section -->
                             <ute:Tag class="nrgDashboard-cusDataVerify-left-meterLabelSection">
-                                <utmain:Label labelFor="meter_num"
-                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_MtrNum}"
-                                    class="nrgDashboard-cusDataVerify-left-meterLabel"/>
+                                <!-- Link to Usage Page -->
+                                <utmain:Button design="None"
+                                    visible="true"
+                                    id="nrgDashboard-cusDataVerify-left-usageLink"
+                                    class="nrgDashboard-cusDataVerify-left-usageLink">
+                                    <!-- METER # -->
+                                    <utmain:Label labelFor="meter_num"
+                                        text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_MtrNum}"
+                                        class="nrgDashboard-cusDataVerify-left-meterLabel"/>
+                                </utmain:Button>
                                 <utmain:Checkbox id="chk_advMtr" enabled="false"
                                     class="nrgDashboard-cusDataVerify-left-meterCheckbox"
                                     checked="{
@@ -418,7 +425,7 @@
                                 <utmain:Label  labelFor="mail_FixedAddr"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_FAddr}"
                                     class="nrgDashboard-cusDataVerify-middle-mailAddrLabel"/>
-                                <ute:Tag id="mail_FixedAddr">
+                                <ute:Tag id="mail_FixedAddr" class="nrgDashboard-cusDataVerify-middle-address">
                                     <utmain:Button  design="None"
                                         class="nrgDashboard-cusDataVerify-middle-addrBtn"
                                         text="{oDtaVrfyMailingTempAddr>/FixAddrInfo/ShortForm}"
@@ -429,7 +436,7 @@
                                 <utmain:Label  labelFor="mail_TempAddr"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TAddr}"
                                     class="nrgDashboard-cusDataVerify-middle-mailAddrLabel"/>
-                                <ute:Tag id="mail_TempAddr">
+                                <ute:Tag id="mail_TempAddr" class="nrgDashboard-cusDataVerify-middle-address">
                                     <utmain:Button  design="None"
                                         enabled="{
                                             parts:['oDtaVrfyMailingTempAddr>/TempAddrNo'],

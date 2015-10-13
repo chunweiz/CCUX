@@ -430,9 +430,34 @@
                         </utmain:content>
                     </utmain:Infoline>
                 </ute:Tag>
-                <ute:Tag>
-                    <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-poInvc"
-                             text="Post Invoice Date Activities" />
+                <ute:Tag content="{oPostInvoiceItems>/results}">
+                    <ute:Tag>
+                        <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-poInvc">
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po1"
+                                     text="{parts:['oPostInvoiceItems>Date'],
+                                            formatter:'._formatDate'}" />
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po2"
+                                     text="{oPostInvoiceItems>ItemDesc}"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po3-1"
+                                     text="{path: 'oPostInvoiceItems>ValueLt',
+                                            type: 'nrg.base.type.Price',
+                                            formatOptions: { currencySymbol: ''},
+                                            formatter:'._formatLfRtZroVal'}"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po3-2"
+                                     text="{path: 'oPostInvoiceItems>ValueRt',
+                                            type: 'nrg.base.type.Price',
+                                            formatOptions: { currencySymbol: ''},
+                                            formatter:'._formatLfRtZroVal'}"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po4"
+                                     text="{parts:['oPostInvoiceItems>DueDate'],
+                                            formatter:'._formatDate'}"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po5"
+                                     text="{oPostInvoiceItems>CallOut}"/>
+                        </ute:Tag>
+                        <ute:Tag visible="{ parts:['oPostInvoiceItems>LineInd'],
+                                            formatter:'._formatBoolCurChrg'}"
+                                 class="nrgBilling-blChkBk-lftDiv-scrllArea-poInvc-underline"/>
+                    </ute:Tag>
                 </ute:Tag>
             </m:ScrollContainer>
         </ute:Tag>

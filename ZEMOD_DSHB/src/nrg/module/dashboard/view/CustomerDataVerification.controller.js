@@ -352,6 +352,7 @@ sap.ui.define(
                         if (oData.results[0]) {
                             //Again if there's first record of Contracts, load as default to display
                             this.getView().getModel('oDtaVrfyContracts').setData(oData.results[0]);
+                            this._updateUsageLink();
                         } else {
                             this.getView().getModel('oDtaVrfyContracts').setData(oData);
                         }
@@ -415,6 +416,7 @@ sap.ui.define(
                 this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
                 //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
                 this._refreshPaging();
+                this._updateUsageLink();
             }
         };
 
@@ -434,6 +436,8 @@ sap.ui.define(
             //Trigger contracts refresh
             this._retrContracts(this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'));
             this._retrBuagMailingAddr(this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'), this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'), this.getView().getModel('oDtaVrfyBuags').getProperty('/FixedAddressID'));
+            
+            this._updateUsageLink();
         };
 
         /*Controller.prototype._onBuagChange = function (oEvent) {
@@ -655,17 +659,17 @@ sap.ui.define(
             }
         };
 
-        /********************************************************************************************/
-        /*Contract Page Handlers*/
+        /*---------------------------------------------- CO Pagination Handlers ---------------------------------------------*/
+
         Controller.prototype._onConFirst = function () {
             var oContracts = this.getView().getModel('oAllContractsofBuag'),
                 iSelectedIndex = 0;
 
             this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
             //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
-
             oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
             this._refreshPaging();
+
         };
         Controller.prototype._onConLeft = function () {
             var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
@@ -1480,6 +1484,41 @@ sap.ui.define(
             oEmailBox.setVisible(true);
             oDelEmailBox.setVisible(false);
         };
+
+        /*----------------------------------------------- CCUX Level Methods ------------------------------------------------*/
+
+        // Notify WebUI service about the current BP, CA and CO.
+        Controller.prototype._updateWebUI = function (fnCallback) {
+
+        };
+
+        // Update CCUX about the current BP, CA and CO.
+        Controller.prototype._updateCcux = function () {
+
+        };
+
+        /*------------------------------------------- UI Style Class Manipulation -------------------------------------------*/
+
+        // If BP, CA and CO are available, then make the "METER. #" label a link to Usage Page.
+        Controller.prototype._updateUsageLink = function () {
+            var sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+                sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID');
+            
+            if (sCurrentBp && sCurrentCa && sCurrentCo) {
+                this.getView().byId('nrgDashboard-cusDataVerify-left-usageLink').attachBrowserEvent('click', this._onMeterClick);
+                this.getView().byId('nrgDashboard-cusDataVerify-left-usageLink').addStyleClass('active');
+            } else {
+                this.getView().byId('nrgDashboard-cusDataVerify-left-usageLink').detachBrowserEvent('click');
+                this.getView().byId('nrgDashboard-cusDataVerify-left-usageLink').removeStyleClass('active');
+            }
+        }; 
+
+        /*--------------------------------------------------- Button Press --------------------------------------------------*/
+
+        Controller.prototype._onMeterClick = function () {
+            // alert('XDDDDDD');
+        };     
 
         return Controller;
     }

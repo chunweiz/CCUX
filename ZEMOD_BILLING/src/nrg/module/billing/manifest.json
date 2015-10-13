@@ -45,6 +45,14 @@
                     "pattern": "billing/checkbook/bp/{bpNum}/ca/{caNum}",
                     "target":["billing.Checkbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
                 },
+                "billing.PrePayCheckBook": {
+                    "pattern": "billing/prepaycheckbook/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target":["billing.PrePayCheckbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
+                },
+                "billing.PrePayCheckBookNoCo": {
+                    "pattern": "billing/prepaycheckbook/bp/{bpNum}/ca/{caNum}",
+                    "target":["billing.PrePayCheckbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
+                },
                 "billing.BillingInfo": {
                     "pattern": "billing/billinginfo/bp/{bpNum}/ca/{caNum}/co/{coNum}",
                     "target":["billing.CustomerDataBillingInfo", "dashboard.CustomerDataSummary", "billing.CustomerJourney"]
@@ -74,6 +82,10 @@
             "targets":{
                 "billing.Checkbook": {
                     "viewName": "nrg.module.billing.view.BillingCheckbook",
+                    "controlId": "idAppGeneral"
+                },
+                "billing.PrePayCheckbook": {
+                    "viewName": "nrg.module.billing.view.PrePayCheckbook",
                     "controlId": "idAppGeneral"
                 },
                 "billing.CustomerDataBillingInfo": {
