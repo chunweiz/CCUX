@@ -57,7 +57,6 @@ sap.ui.define(
                     sPath = "/UsageS",
                     fnTableDataRecdHandler;
                 fnTableDataRecdHandler = function (oEvent) {
-
                     that._oGraphModel.setData(that.convertEFLJson(oEvent.mParameters.data.results));
                     oGraph.setDataModel(that._oGraphModel);
                 };
@@ -208,9 +207,9 @@ sap.ui.define(
                 if ((temp !== undefined) && (temp.KwhUsage !== undefined)) {
                     oformattedDate = dateFormat.format(new Date(temp.PeriodBegin + TZOffsetMs));
                     columns.push({
-                        "kwhUsage": temp.KwhUsage,
+                        "kwhUsage": parseInt(temp.KwhUsage, 10),
                         "meterReadDate": oformattedDate,
-                        "avgHighTemp": temp.HighTemp
+                        "avgHighTemp": parseInt(temp.HighTemp, 10)
                     });
                 }
             }

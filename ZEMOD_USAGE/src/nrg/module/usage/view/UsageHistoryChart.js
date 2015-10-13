@@ -1,5 +1,5 @@
 /*global sap*/
-
+/*jslint nomen:true*/
 sap.ui.define(
     [
         'jquery.sap.global',
@@ -55,6 +55,9 @@ sap.ui.define(
         };
 
         CustomControl.prototype._getDataSet = function () {
+            if (!this.getDataModel()) {
+                return [];
+            }
             var aData = jQuery.extend(true, [], this.getDataModel().getData().data);
             var fnDateParser = d3.time.format('%x').parse;
 
@@ -70,7 +73,9 @@ sap.ui.define(
             var iWidth = this.getWidth() - oMargin.left - oMargin.right;
             var iHeight = this.getHeight() - oMargin.top - oMargin.bottom - 50;
             var aDataSet = this._getDataSet();
-
+            if (!((aDataSet) && (aDataSet.length >  0))) {
+                return;
+            }
             // Create a canvas with margin
             var oCanvas = d3.select('#' + this.getId())
                 .append('svg')
@@ -261,7 +266,9 @@ sap.ui.define(
             var iWidth = this.getWidth() - oMargin.left - oMargin.right;
             var iHeight = 30;
             var aDataSet = this._getDataSet();
-
+            if (!((aDataSet) && (aDataSet.length >  0))) {
+                return;
+            }
             var oCanvas = d3.select('#' + this.getId())
                 .append('svg')
                     .attr('width', this.getWidth())
