@@ -38,7 +38,8 @@ sap.ui.define(
                 that = this,
                 oUsageTable = this.getView().byId("idnrgUsgTable-Rows"),
                 oUsageTableRowTemplate = this.getView().byId("idnrgUsgRow-Infoline"),
-                oGraph = this.getView().byId('chart');
+                oGraph = this.getView().byId('chart'),
+                oNoDataTag = this.getView().byId("idnrgUsgNoData").clone();
             that._oGraphModel = new JSONModel();
             that.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oRouteInfo.parameters.coNum;
@@ -63,21 +64,23 @@ sap.ui.define(
                 if ((aContent) && (aContent.length > 0)) {
                     oServiceAddressDropDown.setSelectedKey(aContent[0].getKey());
                     oBindingContext = aContent[0].getBindingContext("comp-usage");
+                    if (oBindingContext) {
+                        aFilterIds = ["Contract"];
+                        aFilterValues = [oBindingContext.getProperty("Contract")];
+                        aFilters = that._createSearchFilterObject(aFilterIds, aFilterValues);
+                        oBindingInfo = {
+                            model : "comp-usage",
+                            path : sPath,
+                            template : oUsageTableRowTemplate,
+                            filters : aFilters,
+                            events: {dataReceived : fnTableDataRecdHandler}
+                        };
+                        oUsageTable.bindAggregation("content", oBindingInfo);
+                    }
+                } else {
+                    oUsageTable.addContent(oNoDataTag);
                 }
-                if (oBindingContext) {
-                    aFilterIds = ["Contract"];
-                    aFilterValues = [oBindingContext.getProperty("Contract")];
-                    aFilters = that._createSearchFilterObject(aFilterIds, aFilterValues);
-                    oBindingInfo = {
-                        model : "comp-usage",
-                        path : sPath,
-                        template : oUsageTableRowTemplate,
-                        filters : aFilters,
-                        events: {dataReceived : fnTableDataRecdHandler}
-                    };
-                    oUsageTable.bindAggregation("content", oBindingInfo);
-                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
-                }
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
             };
             sPath = "/SrvAddrS";
             oBindingInfo = {
@@ -184,6 +187,15 @@ sap.ui.define(
                     { meterReadDate: '12/11/2014', kwhUsage: 200, avgHighTemp: 70 }
                 ]
             }));*/
+        };
+       /**
+		 * Handler when user expanded Info line for each row
+		 *
+		 * @function
+		 * @param {Event} oEvent object
+		 */
+        Controller.prototype.onServiceAdd = function (oEvent) {
+
         };
         /**
 		 * Converts in to EFL Json format required by Template view.
