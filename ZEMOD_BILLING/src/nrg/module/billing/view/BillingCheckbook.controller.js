@@ -53,6 +53,30 @@ sap.ui.define(
 
         /*****************************************************************************************************************************************************/
         //Formatter Functions
+        CustomController.prototype._formatPostClotGrn = function (sColor) {
+            if (sColor === 'G') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatPostClotRed = function (sColor) {
+            if (sColor === 'R') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatPostInv2V = function (sLValue, sRValue) {
+            return (!!(parseInt(sLValue, 10)) || !!parseInt(sRValue, 10));
+        };
+
+        CustomController.prototype._formatPostInv1V = function (sRonlyValue) {
+            return !!(parseInt(sRonlyValue, 10));
+        };
+
         CustomController.prototype._formatDppIntGrn = function (sIndicator) {
             if (sIndicator === 'G') {
                 return true;

@@ -11,9 +11,9 @@
         "InvoiceNum":"",
         "ItemDesc":"Payment",
         "ValueRt":"0.0000",
-        "ValueLt":"11.0000",
-        "ValueRightOnly":"0.0000",
-        "LineInd":"",
+        "ValueLt":"0.0000",
+        "ValueRightOnly":"20.0000",
+        "LineInd":"X",
         "Index":"        2",
         "HyperLinkInd":"",
         "HyperLinkValue":"                                                                                               0.00",
@@ -47,8 +47,8 @@
         "Date":null,
         "DueDate":null,
         "Opbel":"",
-        "CallOut":"",
-        "CallOutColor":"",
+        "CallOut":"DPP",
+        "CallOutColor":"R",
         "ConfBuag":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PostInvoices(ContractAccountNumber='000001662926',InvoiceNum='',Opbel='')/ConfBuag"
