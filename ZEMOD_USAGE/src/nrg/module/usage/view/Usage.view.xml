@@ -66,22 +66,37 @@
                         <um:DropdownItem>
                         </um:DropdownItem>
                     </um:Dropdown>
-                    <u:Tag class="nrgUsgTable-header nrgUsg-top">
-                        <u:Tag text="{comp-i18n-usage>nrgUsgHdDate}" class="nrgUsgTag-hd nrgUsgTable-hd-Dt"/>
-                        <u:Tag text="{comp-i18n-usage>nrgUsgHdBillingDays}" class="nrgUsgTag-hd nrgUsgTable-hd-BD"/>
-                        <u:Tag text="{comp-i18n-usage>nrgUsgHdReading}" class="nrgUsgTag-hd nrgUsgTable-hd-RD"/>
-                        <u:Tag text="{comp-i18n-usage>nrgUsgHdKWh}" class="nrgUsgTag-hd nrgUsgTable-hd-kwh"/>
-                        <u:Tag text="{comp-i18n-usage>nrgUsgHdActualEst}" class="nrgUsgTag-hd nrgUsgTable-hd-Ac"/>
-                        <u:Tag text="{comp-i18n-usage>nrgUsgHdWeather}" class="nrgUsgTag-hd nrgUsgTable-hd-Wt"/>
-                        <u:Tag text="{comp-i18n-usage>nrgUsgHdCDIHDI}" class="nrgUsgTag-hd nrgUsgTable-hd-ch"/>
-                        <u:Tag text="{comp-i18n-usage>nrgUsgHdDollar}" class="nrgUsgTag-hd nrgUsgTable-hd-dollar"/>
-                    </u:Tag>
-                    <u:Tag class="nrgUsgTable-Row" id="idnrgUsgTable-Rows">
-
-                    </u:Tag>
+                    <um:TabBar id="nrgTabBar" design="Default" class="nrgUsg-tabBar">
+                        <um:TabBarItem key="TV" design="Default"  selected="true" select=".toggleTable" class="nrgUsg-tabBarItem" id="idnrgUsg-TV">
+                             <u:Tag text="TABLE VIEW" class="nrgUsgTag-hd"/>
+                        </um:TabBarItem>
+                        <um:TabBarItem key="GV"  design="Default" select=".toggleGraph" class="nrgUsg-tabBarItem" id="idnrgUsg-GV">
+                            <u:Tag text="GRAPH VIEW" class="nrgUsgTag-hd"/>
+                        </um:TabBarItem>
+                    </um:TabBar>
+                    <um:TabPanel tabPanelFor="nrgTabBar" design="None" class="nrgUsg-tabPanel">
+                       <um:TabPanelItem key="TV" class="nrgUsg-tabPanelItem">
+                           <u:Tag>
+                               <u:Tag class="nrgUsgTable-header">
+                                    <u:Tag text="{comp-i18n-usage>nrgUsgHdDate}" class="nrgUsgTag-hd nrgUsgTable-hd-Dt"/>
+                                    <u:Tag text="{comp-i18n-usage>nrgUsgHdBillingDays}" class="nrgUsgTag-hd nrgUsgTable-hd-BD"/>
+                                    <u:Tag text="{comp-i18n-usage>nrgUsgHdReading}" class="nrgUsgTag-hd nrgUsgTable-hd-RD"/>
+                                    <u:Tag text="{comp-i18n-usage>nrgUsgHdKWh}" class="nrgUsgTag-hd nrgUsgTable-hd-kwh"/>
+                                    <u:Tag text="{comp-i18n-usage>nrgUsgHdActualEst}" class="nrgUsgTag-hd nrgUsgTable-hd-Ac"/>
+                                    <u:Tag text="{comp-i18n-usage>nrgUsgHdWeather}" class="nrgUsgTag-hd nrgUsgTable-hd-Wt"/>
+                                    <u:Tag text="{comp-i18n-usage>nrgUsgHdCDIHDI}" class="nrgUsgTag-hd nrgUsgTable-hd-ch"/>
+                                    <u:Tag text="{comp-i18n-usage>nrgUsgHdDollar}" class="nrgUsgTag-hd nrgUsgTable-hd-dollar"/>
+                               </u:Tag>
+                                <u:Tag class="nrgUsgTable-Row" id="idnrgUsgTable-Rows">
+                                </u:Tag>
+                            </u:Tag>
+                       </um:TabPanelItem>
+                        <um:TabPanelItem key="GV" class="nrgUsg-tabPanelItem">
+                             <core:Fragment fragmentName="nrg.module.usage.view.GraphView" type="XML" />
+                        </um:TabPanelItem>
+                    </um:TabPanel>
                 </u:Tag>
        </u:Tag>
        <core:Fragment fragmentName="nrg.module.usage.view.TableView" type="XML" />
-
    </u:Tag>
 </mvc:View>
