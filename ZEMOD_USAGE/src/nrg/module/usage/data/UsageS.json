@@ -20,7 +20,7 @@
             "AvgDailyCons":"2.07",
             "ConvText":"Actual",
             "LowTemp":"61F",
-            "HighTemp":"70F",
+            "HighTemp":"70",
             "CDI_HDI":"0"
          },
          {
@@ -42,7 +42,7 @@
             "AvgDailyCons":"4.10",
             "ConvText":"Actual",
             "LowTemp":"61F",
-            "HighTemp":"70F",
+            "HighTemp":"70",
             "CDI_HDI":"0"
          },
          {
@@ -64,7 +64,7 @@
             "AvgDailyCons":"0.66",
             "ConvText":"Actual",
             "LowTemp":"61F",
-            "HighTemp":"70F",
+            "HighTemp":"70",
             "CDI_HDI":"0"
          },
          {
@@ -86,7 +86,7 @@
             "AvgDailyCons":"18.18",
             "ConvText":"Actual",
             "LowTemp":"61F",
-            "HighTemp":"70F",
+            "HighTemp":"70",
             "CDI_HDI":"0"
          }
       ]
