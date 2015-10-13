@@ -193,7 +193,7 @@ sap.ui.define(
                 mParameters = {
                     method : "POST",
                     urlParameters : {
-                        "ContractID" : that._sContractId,
+                        "ContractID" : "",
                         "BP" : that._sBP,
                         "CA" : that._sCA,
                         "CardNumber" : oCreditCardDropDown.getSelectedKey(),
@@ -353,7 +353,7 @@ sap.ui.define(
                                      "CardNumber" : oContext.getProperty("CardNumber"),
                                      "ScheduledDate" : oContext.getProperty("ScheduledDate"),
                                      "Amount" : oContext.getProperty("Amount"),
-                                     "ContractID" : oContext.getProperty("ContractID"),
+                                     "ContractID" : "",
                                      "BP" : oContext.getProperty("BP"),
                                      "CA" : oContext.getProperty("CA"),
                                      "CurrentStatus" : oContext.getProperty("CurrentStatus")}, mParameters);
@@ -639,7 +639,7 @@ sap.ui.define(
                 mParameters = {
                     method : "POST",
                     urlParameters : {
-                        "ContractID" : that._sContractId,
+                        "ContractID" : "",
                         "BP" : that._sBP,
                         "CA" : that._sCA,
                         "BankAccNum" : sBankAccount,
@@ -804,7 +804,7 @@ sap.ui.define(
                                      "ScheduledDate" : oContext.getProperty("ScheduledDate"),
                                      "PaymentAmount" : oContext.getProperty("PaymentAmount"),
                                      "TrackingID" : oContext.getProperty("TrackingID"),
-                                     "ContractID" : oContext.getProperty("ContractID"),
+                                     "ContractID" : "",
                                      "BP" : oContext.getProperty("BP"),
                                      "CA" : oContext.getProperty("CA"),
                                      "CurrentStatus" : oContext.getProperty("CurrentStatus")},
@@ -884,7 +884,7 @@ sap.ui.define(
             }
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             oModel.create(sCurrentPath, {
-                "ContractID" : this._sContractId,
+                "ContractID" : "",
                 "BP" : this._sBP,
                 "CA" : this._sCA,
                 "BankAccNum" : sBankAccount,
@@ -1005,7 +1005,7 @@ sap.ui.define(
             oContext = oReliantCardAmount.getBindingContext("comp-quickpay");
             sCurrentPath = "/ReliantSet";
             oModel.create(sCurrentPath, {
-                "ContractID": oContext.getProperty("ContractID"),
+                "ContractID": "",
                 "BP": oContext.getProperty("BP"),
                 "CA": oContext.getProperty("CA"),
                 "ReliantCard": oContext.getProperty("ReliantCard"),
@@ -1104,7 +1104,7 @@ sap.ui.define(
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             sCurrentPath = "/ReceiptSet";
             oModel.create(sCurrentPath, {
-                "ContractID" : this._sContractId,
+                "ContractID" : "",
                 "BP" : this._sBP,
                 "CA" : this._sCA,
                 "ReceiptNumber" : oReceiptNum.getValue(),
@@ -1267,7 +1267,7 @@ sap.ui.define(
                 that = this;
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             oModel.create(sCurrentPath, {
-                "ContractID" : oContactLogModel.getProperty("/ContractID"),
+                "ContractID" : "",
                 "BP" : oContactLogModel.getProperty("/BP"),
                 "CA" : oContactLogModel.getProperty("/CA"),
                 "Class" : oContactLogModel.getProperty("/Class"),
