@@ -53,7 +53,7 @@ sap.ui.define(
                     throw new ParseException('Invalid contract account number');
                 }
             } else {
-                if (isNaN(oValue)) {
+                if (isNaN(oValue) && oValue.indexOf("*") < 0) {
                     jQuery.sap.log.error('Parse Exception: Invalid contract account number', oValue);
                     throw new ParseException('Invalid contract account number');
                 }

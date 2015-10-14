@@ -22,7 +22,7 @@ sap.ui.define(
             renderer: function (oRm, oCustomControl) {
                 oRm.write('<div');
                 oRm.writeControlData(oCustomControl);
-                oRm.addClass('tmAVDChart');
+                oRm.addClass('nrgAVDChart');
                 oRm.writeClasses();
                 oRm.write('>');
                 oRm.write('</div>');
@@ -40,7 +40,7 @@ sap.ui.define(
 
         CustomControl.prototype.hideUsage = function (sYear, bHide) {
             if(this._oCanvas) {
-                this._oCanvas.selectAll('.tmAVDChart-usage').each(function (oData) {
+                this._oCanvas.selectAll('.nrgAVDChart-usage').each(function (oData) {
                     if (oData.key === sYear) {
                         if (bHide) {
                             d3.select(this).style('display', 'none');
@@ -80,9 +80,9 @@ sap.ui.define(
 
         CustomControl.prototype._createChart = function () {
             var oCustomControl = this;
-            var oMargin = { top: 0, right: 60, bottom: 60, left: 100 };
-            var iWidth = 900 - oMargin.left - oMargin.right;
-            var iHeight = 400 - oMargin.top - oMargin.bottom - 50;
+            var oMargin = { top: 0, right: 30, bottom: 40, left: 80 };
+            var iWidth = oCustomControl.getWidth() - oMargin.left - oMargin.right;
+            var iHeight = oCustomControl.getHeight() - oMargin.top - oMargin.bottom;
             var aDataset = oCustomControl._getDataSet();
 
             // X scale - month
@@ -107,7 +107,7 @@ sap.ui.define(
             // Create a canvas with margin
             this._oCanvas = d3.select('#' + this.getId())
                 .append('svg')
-                    .attr('class', 'tmAVDChart')
+                    .attr('class', 'nrgAVDChart')
                     .attr('width', oCustomControl.getWidth())
                     .attr('height', oCustomControl.getHeight())
                     .attr('viewBox', [0, 0, iWidth + oMargin.left + oMargin.right, iHeight + oMargin.top + oMargin.bottom].join(' '))
@@ -126,7 +126,7 @@ sap.ui.define(
                 .tickFormat(function (data) { return fnXAxisLabel(data); });
 
             this._oCanvas.append('g')
-                .attr('class', 'tmAVDChart-XAxis')
+                .attr('class', 'nrgAVDChart-XAxis')
                 .attr('transform', 'translate(' + [0, iHeight + 20] + ')')
                 .call(fnXAxisMonth);
 
@@ -135,10 +135,10 @@ sap.ui.define(
                 .scale(fnScaleUsage)
                 .orient('left')
                 .ticks(Math.floor((iMaxUsage - iMinUsage) / iUsageTickSize) + 1)
-                .tickFormat(d3.format('d'));
+                .tickFormat(d3.format(','));
 
             this._oCanvas.append('g')
-                .attr('class', 'tmAVDChart-YAxis')
+                .attr('class', 'nrgAVDChart-YAxis')
                 .attr('transform', 'translate(' + [-30, 0] + ')')
                 .call(fnYAxisUsage);
 
@@ -148,7 +148,7 @@ sap.ui.define(
                 .data(d3.range(aMinMaxMonth[0], aMinMaxMonth[1] + 1))
                 .enter()
                 .append('line')
-                    .attr('class', 'tmAVDChart-XGrid')
+                    .attr('class', 'nrgAVDChart-XGrid')
                     .attr('x1', function (data) { return fnScaleMonth(data); })
                     .attr('y1', 0)
                     .attr('x2', function (data) { return fnScaleMonth(data); })
@@ -160,7 +160,7 @@ sap.ui.define(
                 .data(d3.range(iMinUsageDomain, iMaxUsageDomain, iUsageTickSize))
                 .enter()
                 .append('line')
-                    .attr('class', 'tmAVDChart-YGrid')
+                    .attr('class', 'nrgAVDChart-YGrid')
                     .attr('x1', 0)
                     .attr('y1', function (data) { return fnScaleUsage(data); })
                     .attr('x2', iWidth + 30)
@@ -173,7 +173,7 @@ sap.ui.define(
 
             var fnLineColor = d3.scale.ordinal()
                 .domain(aDatasetByYear, function (data) { return data.key; })
-                .range(['#ffffff', '#f2a814', '#000000', '#5092ce']);
+                .range(['#ffffff', '#5092CE', '#545A6A', '#F2A814']);
 
             var fnUsageLine = d3.svg.line()
                 .x(function (data) { return fnScaleMonth(data.usageDate.getMonth()); })
@@ -182,10 +182,10 @@ sap.ui.define(
             var oUsageLines = this._oCanvas.append('g').selectAll('g')
                 .data(aDatasetByYear)
                 .enter().append('g')
-                    .attr('class', 'tmAVDChart-usage');
+                    .attr('class', 'nrgAVDChart-usage');
 
             oUsageLines.append('path')
-                .attr('class', 'tmAVDChart-usageLine')
+                .attr('class', 'nrgAVDChart-usageLine')
                 .attr('d', function (data) { return fnUsageLine(data.values); })
                 .style('stroke', function (data) { return fnLineColor(data.key); })
                 .style('fill', 'none');
@@ -195,10 +195,12 @@ sap.ui.define(
                 .data(function (data) { return data.values; })
                 .enter()
                 .append('circle')
-                    .attr('class', 'tmAVDChart-usageDataPoint')
+                    .attr('class', 'nrgAVDChart-usageDataPoint')
                     .attr('r', '4')
                     .attr('cx', function (data) { return fnScaleMonth(data.usageDate.getMonth()); })
                     .attr('cy', function (data) { return fnScaleUsage(data.usage); })
+                    .style('stroke', function (data) { return fnLineColor(data.usageDate.getFullYear()); })
+                    .style('stroke-opacity', 0.3)
                     .style('fill', function (data) { return fnLineColor(data.usageDate.getFullYear()); });
         };
 
