@@ -21,7 +21,7 @@ sap.ui.define(
 
         Controller.prototype.onAfterRendering = function ()
 		{
-			var model = new sap.ui.model.json.JSONModel({
+			var graphModel = new sap.ui.model.json.JSONModel({
                 data: [
                     { usageDate: '07/01/2013', usage: 1456 },
                     { usageDate: '06/01/2013', usage: 1210 },
@@ -52,8 +52,83 @@ sap.ui.define(
                     { usageDate: '05/01/2015', usage: 1300 }
                 ]
             });
-			var view = this.getView();
-			view.setModel(model);
+
+            var btnModel = new sap.ui.model.json.JSONModel({
+                amount: "$60.00"
+            });
+
+            var historyModel = new sap.ui.model.json.JSONModel(
+                [
+                    {
+                        Month: '08/28/14',
+                        Usage: '1450',
+                        UsageCharge: '$80.00',
+                        Avg: '$60.00',
+                        Adj: '$10.00',
+                        Deferred: '$20.00'
+                    },
+                    {
+                        Month: '07/28/14',
+                        Usage: '1250',
+                        UsageCharge: '$90.00',
+                        Avg: '$65.00',
+                        Adj: '$15.00',
+                        Deferred: '$45.00'
+                    },
+                    {
+                        Month: '06/28/14',
+                        Usage: '1246',
+                        UsageCharge: '$50.00',
+                        Avg: '$70.00',
+                        Adj: '$20.00',
+                        Deferred: '$25.00'
+                    },
+                    {
+                        Month: '05/28/14',
+                        Usage: '1150',
+                        UsageCharge: '$50.00',
+                        Avg: '$70.00',
+                        Adj: '$20.00',
+                        Deferred: '$25.00'
+                    },
+                    {
+                        Month: '04/28/14',
+                        Usage: '1264',
+                        UsageCharge: '$90.00',
+                        Avg: '$65.00',
+                        Adj: '$25.00',
+                        Deferred: '$45.00'
+                    },
+                    {
+                        Month: '03/28/14',
+                        Usage: '1350',
+                        UsageCharge: '$80.00',
+                        Avg: '$60.00',
+                        Adj: '$20.00',
+                        Deferred: '$20.00'
+                    },
+                    {
+                        Month: '02/28/14',
+                        Usage: '1035',
+                        UsageCharge: '$90.00',
+                        Avg: '$60.00',
+                        Adj: '$30.00',
+                        Deferred: '$15.00'
+                    },
+                    {
+                        Month: '01/28/14',
+                        Usage: '1440',
+                        UsageCharge: '$55.00',
+                        Avg: '$65.00',
+                        Adj: '$10.00',
+                        Deferred: '$10.00'
+                    }
+                ]
+            );
+            
+            this.getView().setModel(graphModel, 'oUsageGraph');
+            this.getView().setModel(btnModel, 'oAmountBtn');
+            this.getView().setModel(historyModel, 'oAmountHistory');
         };
 
         Controller.prototype._onAvgBillBtnClicked = function () {
@@ -62,9 +137,10 @@ sap.ui.define(
                     content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.AverageBillingPlan", this),
                     title: 'AVERAGE BILLING PLAN'
                 });
+                this._oAvgBillPopup.addStyleClass('nrgBilling-avgBillingPopup');
                 this.getView().addDependent(this._oAvgBillPopup);
 				this._oAvgBillPopup.bindElement('/data');
-				this.byId("chart").setDataModel(this.getView().getModel());
+				this.byId("chart").setDataModel(this.getView().getModel('oUsageGraph'));
             }
 
             this._oAvgBillPopup.open();
