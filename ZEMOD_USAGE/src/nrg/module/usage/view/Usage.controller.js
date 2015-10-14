@@ -37,7 +37,10 @@ sap.ui.define(
                 oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
                 that = this,
                 oUsageTable = this.getView().byId("idnrgUsgTable-Rows"),
-                oUsageTableRowTemplate = this.getView().byId("idnrgUsgRow-Infoline");
+                oUsageTableRowTemplate = this.getView().byId("idnrgUsgRow-Infoline"),
+                oGraph = this.getView().byId('chart'),
+                oNoDataTag = this.getView().byId("idnrgUsgNoData").clone();
+            that._oGraphModel = new JSONModel();
             that.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oRouteInfo.parameters.coNum;
             this._sBP = oRouteInfo.parameters.bpNum;
@@ -52,24 +55,32 @@ sap.ui.define(
                     aFilterIds,
                     aFilterValues,
                     aFilters,
-                    sPath = "/UsageS";
+                    sPath = "/UsageS",
+                    fnTableDataRecdHandler;
+                fnTableDataRecdHandler = function (oEvent) {
+                    that._oGraphModel.setData(that.convertEFLJson(oEvent.mParameters.data.results));
+                    oGraph.setDataModel(that._oGraphModel);
+                };
                 if ((aContent) && (aContent.length > 0)) {
                     oServiceAddressDropDown.setSelectedKey(aContent[0].getKey());
                     oBindingContext = aContent[0].getBindingContext("comp-usage");
+                    if (oBindingContext) {
+                        aFilterIds = ["Contract"];
+                        aFilterValues = [oBindingContext.getProperty("Contract")];
+                        aFilters = that._createSearchFilterObject(aFilterIds, aFilterValues);
+                        oBindingInfo = {
+                            model : "comp-usage",
+                            path : sPath,
+                            template : oUsageTableRowTemplate,
+                            filters : aFilters,
+                            events: {dataReceived : fnTableDataRecdHandler}
+                        };
+                        oUsageTable.bindAggregation("content", oBindingInfo);
+                    }
+                } else {
+                    oUsageTable.addContent(oNoDataTag);
                 }
-                if (oBindingContext) {
-                    aFilterIds = ["Contract"];
-                    aFilterValues = [oBindingContext.getProperty("Contract")];
-                    aFilters = that._createSearchFilterObject(aFilterIds, aFilterValues);
-                    oBindingInfo = {
-                        model : "comp-usage",
-                        path : sPath,
-                        template : oUsageTableRowTemplate,
-                        filters : aFilters
-                    };
-                    oUsageTable.bindAggregation("content", oBindingInfo);
-                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
-                }
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
             };
             sPath = "/SrvAddrS";
             oBindingInfo = {
@@ -98,9 +109,14 @@ sap.ui.define(
             }
             return aFilters;
         };
-        /* =========================================================== */
-		/* lifecycle method- Before Rendering                          */
-		/* =========================================================== */
+       /**
+		 * Handler when user expanded Info line for each row
+		 *
+		 * @function
+		 * @param {Event} oEvent object
+         *
+		 *
+		 */
         Controller.prototype.expandInfoline = function (oEvent) {
             var oCurrentInfoLine = oEvent.getSource().getParent(),
                 oInsideTableTag,
@@ -115,6 +131,7 @@ sap.ui.define(
                 fnRecievedHandler,
                 oNoDataTag = this.getView().byId("idnrgUsgNoData").clone(),
                 that = this;
+
             that.getOwnerComponent().getCcuxApp().setOccupied(true);
             if ((oRadioWeekly) && (oRadioWeekly.getChecked())) {
                 sPath = "/WeeklyUsageS";
@@ -147,7 +164,72 @@ sap.ui.define(
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
             }
         };
+       /**
+		 * Handler when user expanded Info line for each row
+		 *
+		 * @function
+		 * @param {Event} oEvent object
+		 */
+        Controller.prototype.toggleTable = function (oEvent) {
+        };
+       /**
+		 * Handler when user expanded Info line for each row
+		 *
+		 * @function
+		 * @param {Event} oEvent object
+		 */
+        Controller.prototype.toggleGraph = function (oEvent) {
+/*            this.getView().byId('chart').setDataModel(new JSONModel({
+                data: [
+                    { meterReadDate: '3/12/2015', kwhUsage: 120, avgHighTemp: 70 },
+                    { meterReadDate: '2/11/2015', kwhUsage: 123, avgHighTemp: 70 },
+                    { meterReadDate: '1/12/2015', kwhUsage: 121, avgHighTemp: 70 },
+                    { meterReadDate: '12/11/2014', kwhUsage: 200, avgHighTemp: 70 }
+                ]
+            }));*/
+        };
+       /**
+		 * Handler when user expanded Info line for each row
+		 *
+		 * @function
+		 * @param {Event} oEvent object
+		 */
+        Controller.prototype.onServiceAdd = function (oEvent) {
 
+        };
+        /**
+		 * Converts in to EFL Json format required by Template view.
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.convertEFLJson = function (results) {
+            var columns = [],
+                temp,
+                tempColumns = [],
+                iCount1,
+                aJsonDataNew,
+                dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern : "MM/dd/yyyy" }),
+                TZOffsetMs = new Date(0).getTimezoneOffset() * 60 * 1000,
+                oformattedDate;
+            for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+                temp = results[iCount1];
+                if ((temp !== undefined) && (temp.KwhUsage !== undefined)) {
+                    oformattedDate = dateFormat.format(new Date(temp.PeriodBegin + TZOffsetMs));
+                    columns.push({
+                        "kwhUsage": parseInt(temp.KwhUsage, 10),
+                        "meterReadDate": oformattedDate,
+                        "avgHighTemp": parseInt(temp.HighTemp, 10)
+                    });
+                }
+            }
+            aJsonDataNew = {};
+            //aJsonDataNew.results = {};
+            aJsonDataNew.data = columns;
+            return aJsonDataNew;
+        };
         return Controller;
     }
 

@@ -171,14 +171,15 @@ sap.ui.define(
 
         Controller.prototype._retrCaInf = function (sPath) {
             var oModel = this.getView().getModel('oODataSvc'),
-                oParameters;
+                oParameters,
+                i;
 
             oParameters = {
                 success : function (oData) {
                     if (oData) {
                         
                         if (this._caNum) {
-                            for (var i=0; i<oData.results.length; i++) {
+                            for (i = 0; i < oData.results.length; i = i + 1) {
                                 if (oData.results[i].ContractAccountID === this._caNum) {
                                     this.getView().getModel('oSmryBuagInf').setData(oData.results[i]);
                                 }
@@ -212,7 +213,8 @@ sap.ui.define(
 
         Controller.prototype._retrBpInf = function (sPath) {
             var oModel = this.getView().getModel('oODataSvc'),
-                oParameters;
+                oParameters,
+                i;
 
             oParameters = {
                 urlParameters: {"$expand": "Buags"},
@@ -223,7 +225,7 @@ sap.ui.define(
                         var caIndex = 0;
                         
                         if (this._caNum) {
-                            for (var i=0; i<oData.Buags.results.length; i++) {
+                            for (i = 0; i < oData.Buags.results.length; i = i + 1) {
                                 if (oData.Buags.results[i].ContractAccountID === this._caNum) {
                                     caIndex = i;
                                 }
@@ -309,7 +311,7 @@ sap.ui.define(
                 //sSelectedBpNum = this.getView().getModel('oSmryBpInf').getProperty('/PartnerID');
 
             if (this._caNum) {
-                if(this._coNum) {
+                if (this._coNum) {
                     oRouter.navTo('bupa.bpInfo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
                 } else {
                     oRouter.navTo('bupa.bpInfoNoCo', {bpNum: this._bpNum, caNum: this._caNum});
@@ -328,6 +330,23 @@ sap.ui.define(
             } else {
                 oRouter.navTo('bupa.caInfoNoCo', {bpNum: this._bpNum, caNum: this._caNum});
             }
+        };
+
+        /***********************************************************************************************************************/
+        //Functions for AccAccessAuthPty.fragment.xml
+        /***********************************************************************************************************************/
+        Controller.prototype._onAuthPtyClicked = function () {
+            if (!this._oAccAuthPtyPopup) {
+                this._oAccAuthPtyPopup = ute.ui.main.Popup.create({
+                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AcctAccessAuthPty", this),
+                    title: 'ACCOUNT ACCESS AUTHORIZATION'
+                });
+                this.getView().addDependent(this._oAccAuthPtyPopup);
+            }
+
+            this._oAccAuthPtyPopup.open();
+
+            return;
         };
 
         return Controller;

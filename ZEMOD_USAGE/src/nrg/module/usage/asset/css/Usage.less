@@ -45,11 +45,38 @@
                         margin: 0px 5px;
                     }
             }
+            &  .nrgUsg-tabBar {
+                 width : 53rem;
+                 max-width:  53rem;
+                 font: @nrgFontWeight-semiBold @nrgFontSize-small @nrgFontFamily;
+                 margin: 5px 0px 5px 0px;
+                 & > .nrgUsg-tabBarItem {
+                     width: 50%;
+                     text-align: center;
+                     & > .uteMTabBarItem-content {
+                            width : 100%;
+                            color: @nrgColor-blueLink;
+                     }
+                     & > .uteMTabBarItem-int:checked + .uteMTabBarItem-content {
+                            color: @nrgColor-white;
+                     }
+                     &   > .uteMTabBarItem-content:hover {
+                            color: @nrgColor-white;
+                     }
+                 }
+            }
+            &  .nrgUsg-tabPanelItem {
+                    background-color: transparent;
+                    max-width: 53rem;
+            }
+            &  .nrgUsg-tabPanel {
+                    display: block;
+            }
             &   .uteMIl-hdrContent, .nrgUsgTable-inside {
                     width: 100%;
                     max-width: 100%;
             }
-            &  > .nrgUsgTable-header {
+            &   .nrgUsgTable-header {
                     background-color: @nrgColor-blue-pearl;
                     line-height: 25px;
                     width: 53rem;
@@ -75,8 +102,11 @@
                             text-align: center;
                     }
             }
-            &  > .nrgUsgTable-Row {
+            &   .nrgUsgTable-Row {
                     font-size: @nrgFontSize-small;
+                    &  .nrgUsgNoData {
+                        text-align: center;
+                    }
                     & .nrgUsgTable-Infoline {
                         min-width: 53rem;
                         max-width: 53rem;
@@ -127,13 +157,11 @@
                             background-color: @nrgColor-blue-pearl;
                             margin-bottom: 5px;
                             border: 1px solid @nrgColor-grey-dark;
-                            &  .nrgUsgNoData {
-                                text-align: center;
-                            }
                     }
             }
 
             &  > .nrgUsgDropDown {
+                    display: block;
                     &   .nrgUsg-DdLItem {
                             width: 45rem;
                     }

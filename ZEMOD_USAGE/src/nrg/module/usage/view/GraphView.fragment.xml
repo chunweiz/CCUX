@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+    xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:c="sap.ui.commons"
+          xmlns:core="sap.ui.core"
+          xmlns:u="ute.ui.commons"
+          xmlns:um="ute.ui.main"
+          xmlns:m="sap.m"
+          xmlns:ch="nrg.module.usage.view">
+
+    <m:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
+       <ch:UsageHistoryChart id="chart" width="850" height="400"></ch:UsageHistoryChart>
+    </m:ScrollContainer>
+
+</core:FragmentDefinition>

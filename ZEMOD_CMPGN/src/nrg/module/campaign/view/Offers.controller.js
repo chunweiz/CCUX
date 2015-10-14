@@ -474,10 +474,12 @@ sap.ui.define(
             oEvent.getSource().addStyleClass("nrgCamOff-btn-selected");
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oTileContainer = this.getView().byId("idnrgCamOffScroll");
-            aContent = oTileContainer.getContent();
+            //aContent = oTileContainer.getContent();
             oTileTemplate = this._oTileTemplate;
             sCurrentPath = i18NModel.getProperty("nrgCpgChangeOffSet");
-            oTileContainer.getBinding("content").filter(aFilters, "Application");
+            if (oTileContainer.getBinding("content")) {
+                oTileContainer.getBinding("content").filter(aFilters, "Application");
+            }
             if ((oTileContainer.getContent()) && (oTileContainer.getContent().length > 0)) {
                 oTileContainer.getContent().map(function (oItem) {
                     if (oItem) {

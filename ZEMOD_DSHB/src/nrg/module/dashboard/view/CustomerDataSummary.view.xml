@@ -10,10 +10,17 @@
 
     <ute:Tag class="nrgDashboard-cusDataSum nrgAppMain-summaryContent nrgAppMain-summaryContent-full">
         <ute:content>
-            <ute:TextView
-                class="nrgDashboard-cusDataSum-bpName"
-                design="Large" text="{oSmryBpInf>/FullName}">
-            </ute:TextView>
+            <ute:Tag class="nrgDashboard-cusDataSum-bpArea">
+                <ute:TextView
+                    class="nrgDashboard-cusDataSum-bpName"
+                    design="Large" text="{oSmryBpInf>/FullName}">
+                </ute:TextView>
+                <ute:Tag class="nrgDashboard-cusDataSum-bpAuthBtn" >
+                    <utmain:Button design="None" press="._onAuthPtyClicked">
+                        <ute:Tag class="nrgDashboard-cusDataSum-bpAuthBtn-btn"/>
+                    </utmain:Button>
+                </ute:Tag>
+            </ute:Tag>
             <ute:Badge id="idBadgeCI" size="30px"
                 class="nrgDashboard-cusDataSum-badge"
                 visible="{
