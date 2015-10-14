@@ -105,6 +105,5 @@
                 <u:Tag id="idnrgQPPay-msg" class="nrgQPPay-msg" text="{appView>/message}" />
             </u:Tag>
         </u:Tag>
-
     </u:Tag>
 </mvc:View>

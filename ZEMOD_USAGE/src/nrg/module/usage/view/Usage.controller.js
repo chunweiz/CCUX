@@ -45,8 +45,8 @@ sap.ui.define(
             this._sContract = oRouteInfo.parameters.coNum;
             this._sBP = oRouteInfo.parameters.bpNum;
             this._sCA = oRouteInfo.parameters.caNum;
-            aFilterIds = ["Contract", "CA"];
-            aFilterValues = [this._sContract, this._sCA];
+            aFilterIds = ["CA"];
+            aFilterValues = [this._sCA];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             fnRecievedHandler = function (oEvent, oData) {
                 var aContent = oServiceAddressDropDown.getContent(),
@@ -140,6 +140,7 @@ sap.ui.define(
             }
             oCurrentInfoLine.setExpanded(!(oCurrentInfoLine.getExpanded()));
             if (oCurrentInfoLine.getExpanded()) {
+                oEvent.getSource().getParent().addStyleClass("nrgUsgTable-InfolineSelected");
                 fnRecievedHandler = function (oEvent, oData) {
                     var aContent = oInsideTableTag.getContent();
                     if ((aContent) && (aContent.length === 0)) {
@@ -161,6 +162,7 @@ sap.ui.define(
                 };
                 oInsideTableTag.bindAggregation("content", oBindingInfo);
             } else {
+                oEvent.getSource().getParent().removeStyleClass("nrgUsgTable-InfolineSelected");
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
             }
         };
@@ -189,13 +191,57 @@ sap.ui.define(
             }));*/
         };
        /**
-		 * Handler when user expanded Info line for each row
+		 * Handler when user clicked on rate history
+		 *
+		 * @function
+		 * @param {Event} oEvent object
+		 */
+        Controller.prototype.onRateHistory = function (oEvent) {
+            this.navTo("campaignhistory", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
+        };
+       /**
+		 * Handler when user changed service address
 		 *
 		 * @function
 		 * @param {Event} oEvent object
 		 */
         Controller.prototype.onServiceAdd = function (oEvent) {
-
+            var oBindingContext,
+                aFilterIds,
+                aFilterValues,
+                aFilters,
+                sPath = "/UsageS",
+                fnTableDataRecdHandler,
+                oUsageTable = this.getView().byId("idnrgUsgTable-Rows"),
+                oUsageTableRowTemplate = this.getView().byId("idnrgUsgRow-Infoline"),
+                that = this,
+                oBindingInfo,
+                oServiceAddressDropDown = this.getView().byId("idnrgUsgServiceAdd-DropDown"),
+                aContent,
+                sKey;
+/*            aContent = oServiceAddressDropDown.getContent();
+            sKey = oServiceAddressDropDown.getSelectedKey();
+            aContent.forEach(function (oContent) {
+                if (oContent.getKey() === sKey) {
+                    oBindingContext = oContent.getBindingContext("comp-usage");
+                }
+            });
+            if (oBindingContext) {
+                aFilterIds = ["Contract"];
+                aFilterValues = [oBindingContext.getProperty("Contract")];
+                aFilters = that._createSearchFilterObject(aFilterIds, aFilterValues);
+                fnTableDataRecdHandler = function (oEvent) {
+                    that._oGraphModel.setData(that.convertEFLJson(oEvent.mParameters.data.results));
+                };
+                oBindingInfo = {
+                    model : "comp-usage",
+                    path : sPath,
+                    template : oUsageTableRowTemplate,
+                    filters : aFilters,
+                    events: {dataReceived : fnTableDataRecdHandler}
+                };
+                oUsageTable.bindAggregation("content", oBindingInfo);
+            }*/
         };
         /**
 		 * Converts in to EFL Json format required by Template view.
