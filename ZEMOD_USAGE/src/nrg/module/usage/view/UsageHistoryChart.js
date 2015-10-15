@@ -69,7 +69,7 @@ sap.ui.define(
         };
 
         CustomControl.prototype._createChart = function () {
-            var oMargin = { top: 50, right: 60, bottom: 60, left: 100 };
+            var oMargin = { top: 50, right: 40, bottom: 100, left: 80 };
             var iWidth = this.getWidth() - oMargin.left - oMargin.right;
             var iHeight = this.getHeight() - oMargin.top - oMargin.bottom - 50;
             var aDataSet = this._getDataSet();
@@ -154,12 +154,15 @@ sap.ui.define(
                 .orient('bottom')
                 .scale(fnScaleX)
                 .tickValues(aDataSet.map(function (data) { return data.meterReadDate; }))
-                .tickFormat(d3.time.format("%d/%m/%y"));
+                .tickFormat(d3.time.format("%m/%d/%y"));
 
             oCanvas.append('g')
                 .attr('class', 'tmUsageHistChart-consumptionXAxis')
                 .attr('transform', 'translate(0,' + (iHeight + 20) + ')')
-                .call(fnConsumptionXAxis);
+                .call(fnConsumptionXAxis).selectAll("text").style("text-anchor", "middle")
+                    .attr("dx", "-.5em")
+                    .attr("dy", ".15em")
+                    .attr("transform", "rotate(-65)" );
 
             // Y axis
             var fnConsumptionYAxis = d3.svg.axis()

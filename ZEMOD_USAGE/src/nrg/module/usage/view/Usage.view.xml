@@ -38,7 +38,7 @@
                         </u:Tag>
                         <u:Tag class="nrgUsg-tier">
                             <um:Button id="idCamToggleBtn-F"
-                                press=".toggleTier"
+                                press=".onRateHistory"
                                 text="{comp-i18n-usage>nrgUsgLRateHis}"
                                 design="None">
                             </um:button>

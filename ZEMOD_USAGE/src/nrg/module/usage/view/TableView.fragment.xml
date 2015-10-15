@@ -5,8 +5,7 @@
           xmlns:u="ute.ui.commons"
           xmlns:um="ute.ui.main">
            <u:Tag visible="false">
-            <um:Dropdown select=".onServiceAdd"
-                                 placeholder="Select Service Address"
+            <um:Dropdown placeholder="Select Service Address"
                                  class="nrgUsg-top">
                 <um:DropdownItem key="{comp-usage>Contract}" class="nrgUsg-DdLItem" id="idnrgUsgServiceAdd-DropDownItem">
                     <u:Tag
@@ -15,17 +14,21 @@
             </um:Dropdown>
             <um:Infoline design="None" id="idnrgUsgRow-Infoline" class="nrgUsgTable-Infoline">
                 <um:headerContent>
-                    <u:Tag text="{= (${comp-usage>PeriodBegin} &amp;&amp; ${comp-usage>PeriodEnd}) ? ${path: 'comp-usage>PeriodBegin',
+                    <um:Button text="{= (${comp-usage>PeriodBegin} &amp;&amp; ${comp-usage>PeriodEnd}) ? ${path: 'comp-usage>PeriodBegin',
                                                                                                        type: 'sap.ui.model.type.Date',
                                                                                                        formatOptions:{pattern: 'MM/dd/yyyy'}} + '-' + ${path: 'comp-usage>PeriodEnd',
                                                                                                        type: 'sap.ui.model.type.Date',
                                                                                                        formatOptions:{pattern: 'MM/dd/yyyy'}} : '' }"
-                           class="nrgUsgTable-Data nrgUsgTable-Data-dt"/>
+                           class="nrgUsgTable-Data nrgUsgTable-Data-dt"
+                           design="None"
+                           press=".expandInfoline"/>
                     <u:Tag text="{comp-usage>NumOfDays}" class="nrgUsgTable-Data nrgUsgTable-Data-days"/>
                     <um:Button press=".expandInfoline"
-                               text="{= ${comp-usage>Reading} ? ${comp-usage>Reading} : 'Reading'}"
-                               design="None"
-                               class="nrgUsgTable-Data nrgUsgTable-hd-RD"/>
+                                   text="{= ${comp-usage>Reading} ? ${comp-usage>Reading} : 'N/A'}"
+                                   design="None"
+                                   class="nrgUsgTable-Data nrgUsgTable-hd-RD">
+                        <u:Tag class="nrgUsgTable-RdExpander" />
+                    </um:Button>
                     <u:Tag text="{comp-usage>KwhUsage}" class="nrgUsgTable-Data nrgUsgTable-Data-kwh"/>
                     <u:Tag text="{comp-usage>ConvText}" class="nrgUsgTable-Data nrgUsgTable-Data-Ac"/>
                     <u:Tag text="Low {comp-usage>LowTemp} High {comp-usage>HighTemp}" class="nrgUsgTable-Data nrgUsgTable-Data-Wt"/>
