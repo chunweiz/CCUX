@@ -9,6 +9,7 @@
                 </Key>
                 <Property Name="Contract" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Contract" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
                 <Property Name="Period" Type="Edm.String" Nullable="false" MaxLength="7" sap:label="Period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="ABP" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="ABP Active" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
                 <Property Name="AvgPrior12" Type="Edm.String" Nullable="false" sap:label="Avg Prior 12 Month" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
                 <Property Name="Consumption" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Consumption" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
                 <Property Name="Charge" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Charge" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
