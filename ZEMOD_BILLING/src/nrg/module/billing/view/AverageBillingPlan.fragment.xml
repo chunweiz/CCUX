@@ -44,8 +44,13 @@
                                     text="{oAmountHistory>UsageCharge}"/>
                                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-avg"
                                     text="{oAmountHistory>Avg}"/>
-                                <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-adj"
-                                    text="{oAmountHistory>Adj}"/>
+                                <!-- <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-adj"
+                                    text="{oAmountHistory>Adj}"/> -->
+
+                                <ute:Textfield class="nrgBilling-avgBillingPopup-amountDue-history-adj" 
+                                    width="80px"
+                                    data-id="{oAmountHistory>Adj}"/>
+                                                                
                                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-deferred"
                                     text="{oAmountHistory>Deferred}"/>
                             </ute:Tag>

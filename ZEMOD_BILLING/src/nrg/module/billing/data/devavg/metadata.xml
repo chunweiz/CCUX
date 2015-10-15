@@ -1,24 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
-  <edmx:DataServices m:DataServiceVersion="2.0">
-    <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZE_CCUX_AVG_BILL_PLAN_SRV" xml:lang="en" sap:schema-version="1">
-      <EntityType Name="AvgDet" sap:content-version="1">
-        <Key>
-          <PropertyRef Name="Contract" />
-          <PropertyRef Name="Period" />
-        </Key>
-        <Property Name="Contract" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Contract" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
-        <Property Name="Period" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="Consumption" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Consumption" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="Charge" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Charge" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="AvgEst" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Average Estimated" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="DefBal" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Deferred Balance" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-      </EntityType>
-      <EntityContainer Name="ZE_CCUX_AVG_BILL_PLAN_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
-        <EntitySet Name="AvgDetS" EntityType="ZE_CCUX_AVG_BILL_PLAN_SRV.AvgDet" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
-      </EntityContainer>
-      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/$metadata" />
-      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/$metadata" />
-    </Schema>
-  </edmx:DataServices>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZE_CCUX_AVG_BILL_PLAN_SRV" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="AvgDet" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Contract" />
+                    <PropertyRef Name="Period" />
+                </Key>
+                <Property Name="Contract" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Contract" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="Period" Type="Edm.String" Nullable="false" MaxLength="7" sap:label="Period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="AvgPrior12" Type="Edm.String" Nullable="false" sap:label="Avg Prior 12 Month" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Consumption" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Consumption" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Charge" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Charge" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="AvgEst" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Average Estimated" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="DefBal" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Deferred Balance" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="AmtAdj" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Adjusted Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityType Name="Return" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Code" />
+                </Key>
+                <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityType Name="ABPCancel" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Contract" />
+                </Key>
+                <Property Name="Contract" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Contract" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityType Name="ABPUpdt" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Contract" />
+                    <PropertyRef Name="Period" />
+                </Key>
+                <Property Name="Contract" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Contract" sap:creatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Period" Type="Edm.String" Nullable="false" MaxLength="7" sap:label="Period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityContainer Name="ZE_CCUX_AVG_BILL_PLAN_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="AvgDetS" EntityType="ZE_CCUX_AVG_BILL_PLAN_SRV.AvgDet" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+                <EntitySet Name="ReturnCollection" EntityType="ZE_CCUX_AVG_BILL_PLAN_SRV.Return" sap:content-version="1" />
+                <EntitySet Name="ABPCancelS" EntityType="ZE_CCUX_AVG_BILL_PLAN_SRV.ABPCancel" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+                <EntitySet Name="ABPUpdtS" EntityType="ZE_CCUX_AVG_BILL_PLAN_SRV.ABPUpdt" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+                <FunctionImport Name="ABPCanc" ReturnType="ZE_CCUX_AVG_BILL_PLAN_SRV.Return" EntitySet="ReturnCollection" m:HttpMethod="POST">
+                    <Parameter Name="Contract" Type="Edm.String" Mode="In" MaxLength="10" />
+                </FunctionImport>
+                <FunctionImport Name="ABPCrte" ReturnType="ZE_CCUX_AVG_BILL_PLAN_SRV.Return" EntitySet="ReturnCollection" m:HttpMethod="POST" />
+            </EntityContainer>
+            <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/$metadata" />
+            <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/$metadata" />
+        </Schema>
+    </edmx:DataServices>
 </edmx:Edmx>
