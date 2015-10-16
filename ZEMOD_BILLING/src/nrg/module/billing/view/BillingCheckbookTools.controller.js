@@ -139,7 +139,8 @@ sap.ui.define(
                 });
                 this._oAvgBillPopup.addStyleClass('nrgBilling-avgBillingPopup');
                 this.getView().addDependent(this._oAvgBillPopup);
-				this._oAvgBillPopup.bindElement('/data');
+				// this._oAvgBillPopup.bindElement('/data');
+                this._retrieveAbpInfo();
 				this.byId("chart").setDataModel(this.getView().getModel('oUsageGraph'));
             }
 
@@ -159,6 +160,11 @@ sap.ui.define(
                 oChart.hideUsage(sYear, !bHide);
             }
         };
+
+        Controller.prototype._retrieveAbpInfo = function () {
+
+        };
+
 
         return Controller;
     }

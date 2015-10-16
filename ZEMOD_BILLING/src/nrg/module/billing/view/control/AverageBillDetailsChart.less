@@ -1,5 +1,5 @@
 .nrgBilling-avgBillingPopup {
-    width: 1200px;
+    width: 1000px;
     font-family: @nrgFontFamily;
 
     // Header
@@ -73,27 +73,27 @@
                         align-items: center;
 
                         & .nrgBilling-avgBillingPopup-amountDue-history-monthLabel {
-                            width: 150px;
-                        }
-
-                        & .nrgBilling-avgBillingPopup-amountDue-history-usageLabel {
                             width: 100px;
                         }
 
+                        & .nrgBilling-avgBillingPopup-amountDue-history-usageLabel {
+                            width: 70px;
+                        }
+
                         & .nrgBilling-avgBillingPopup-amountDue-history-usageChargeLabel {
-                            width: 120px;
+                            width: 110px;
                         }
 
                         & .nrgBilling-avgBillingPopup-amountDue-history-avgLabel {
-                            width: 120px;
+                            width: 110px;
                         }
 
                         & .nrgBilling-avgBillingPopup-amountDue-history-adjLabel {
-                            width: 150px;
+                            width: 120px;
                         }
 
                         & .nrgBilling-avgBillingPopup-amountDue-history-deferredLabel {
-                            width: 150px;
+                            width: 130px;
                         }
                     }
 
@@ -102,36 +102,44 @@
                         & .nrgBilling-avgBillingPopup-amountDue-history-row {
                             padding: 10px 0;
                             display: flex;
-                            border-bottom: 1px solid @nrgColor-grey-light;
+                            border-bottom: 1px solid @nrgColor-grey-lightBackground;
                             font-size: @nrgFontSize-base;
+                            align-items: center;
                             text-align: center;
 
                             & .nrgBilling-avgBillingPopup-amountDue-history-month {
-                                width: 150px;
+                                width: 100px;
                                 color: @nrgColor-grey-lighter;
                             }
 
                             & .nrgBilling-avgBillingPopup-amountDue-history-usage {
-                                width: 100px;
+                                width: 70px;
                                 color: @nrgColor-orange-notice;
                             }
 
                             & .nrgBilling-avgBillingPopup-amountDue-history-usageCharge {
-                                width: 120px;
+                                width: 110px;
                                 color: @nrgColor-green-highlight;
                             }
 
                             & .nrgBilling-avgBillingPopup-amountDue-history-avg {
-                                width: 120px;
+                                width: 110px;
                                 color: @nrgColor-green-highlight;
                             }
 
                             & .nrgBilling-avgBillingPopup-amountDue-history-adj {
-                                width: 150px;
+                                width: 120px;
+                                min-width: 120px;
+                                min-height: 25px;
+
+                                & .uteTextfield-regular {
+                                    min-height: 25px;
+                                    font-size: @nrgFontSize-small;
+                                }
                             }
 
                             & .nrgBilling-avgBillingPopup-amountDue-history-deferred {
-                                width: 150px;
+                                width: 130px;
                             }
                         }
                     }
@@ -147,19 +155,20 @@
                     & .nrgBilling-avgBillingPopup-amountDue-btnSec-title {
                         font-size: 36pt;
                         font-weight: @nrgFontWeight-semiBold;
-                        margin-bottom: 15px;
+                        margin-bottom: 10px;
                     }
 
                     & .nrgBilling-avgBillingPopup-amountDue-btnSec-noticeSec {
-                        margin-bottom: 25px;
+                        margin-bottom: 20px;
+                        width: 100%;
 
                         & .nrgBilling-avgBillingPopup-amountDue-btnSec-noticeTitle {
-                            font-size: @nrgFontSize-base;
+                            font-size: @nrgFontSize-small;
                             font-weight: @nrgFontWeight-semiBold;
                         }
 
                         & .nrgBilling-avgBillingPopup-amountDue-btnSec-noticeContent {
-                            font-size: @nrgFontSize-base;
+                            font-size: @nrgFontSize-small;
                         }
                     }
 
@@ -175,7 +184,7 @@
                             margin-bottom: 20px;
                             background-color: @nrgColor-blue-link;
                             color: @nrgColor-white;
-                            font-size: @nrgFontSize-base;
+                            font-size: @nrgFontSize-small;
                             border-radius: 5px;
                             display: flex;
                             align-items: center;
@@ -188,7 +197,7 @@
                             margin-bottom: 20px;
                             background-color: @nrgColor-green-highlight;
                             color: @nrgColor-white;
-                            font-size: @nrgFontSize-base;
+                            font-size: @nrgFontSize-small;
                             border-radius: 5px;
                             display: flex;
                             align-items: center;
@@ -200,7 +209,7 @@
                             padding: 10px 0;
                             background-color: @nrgColor-grey-highlight;
                             color: @nrgColor-white;
-                            font-size: @nrgFontSize-base;
+                            font-size: @nrgFontSize-small;
                             border-radius: 5px;
                             display: flex;
                             align-items: center;
@@ -215,7 +224,7 @@
         & .nrgBilling-avgBillingPopup-amountDue-note {
             display: block;
             margin: 20px 0;
-            font-size: @nrgFontSize-base;
+            font-size: @nrgFontSize-small;
             font-style: italic;
             color: #000;
             font-weight: @nrgFontWeight-semiBold;
@@ -327,7 +336,7 @@
                         }
 
                         & .usageChartLegend-label {
-                            font-size: @nrgFontSize-large;
+                            font-size: @nrgFontSize-base;
                         }
                     }
                 }

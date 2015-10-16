@@ -33,7 +33,7 @@
                         <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-deferredLabel"
                             text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-history-defferred-LABEL}"/>
                     </ute:Tag>
-                    <m:ScrollContainer class="nrgBilling-avgBillingPopup-amountDue-history-scrollArea" height="270px" horizontal="false" vertical="true">
+                    <m:ScrollContainer class="nrgBilling-avgBillingPopup-amountDue-history-scrollArea" height="250px" horizontal="false" vertical="true">
                         <ute:Tag content="{oAmountHistory>/}">
                             <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-row">
                                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-month"
@@ -44,8 +44,10 @@
                                     text="{oAmountHistory>UsageCharge}"/>
                                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-avg"
                                     text="{oAmountHistory>Avg}"/>
-                                <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-adj"
-                                    text="{oAmountHistory>Adj}"/>
+                                <ute:Textfield class="nrgBilling-avgBillingPopup-amountDue-history-adj"
+                                    width="80px"
+                                    data-id="{oAmountHistory>Adj}"/>
+
                                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-deferred"
                                     text="{oAmountHistory>Deferred}"/>
                             </ute:Tag>
@@ -114,7 +116,7 @@
             <ute:Tag class="nrgBilling-avgBillingPopup-usage-content">
                 <!-- Graph -->
                 <ute:Tag class="nrgBilling-avgBillingPopup-usage-graph">
-                    <chart:AverageBillDetailsChart id="chart" width="850" height="300" usageTickSize="100" />
+                    <chart:AverageBillDetailsChart id="chart" width="700" height="250" usageTickSize="100" />
                 </ute:Tag>
                 <!-- Graph Legend -->
                 <ute:Tag class="nrgBilling-avgBillingPopup-usage-control">

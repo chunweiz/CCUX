@@ -1080,14 +1080,14 @@ sap.ui.define(
                 oModel = this.getView().getModel('comp-quickpay'),
                 oReceiptDate = this.getView().byId("idnrgQPRC-RcDate"),
                 that = this;
-            this._OwnerComponent.getCcuxApp().setOccupied(true);
+            //this._OwnerComponent.getCcuxApp().setOccupied(true);
             oReceiptDate.setValue(this._oFormatYyyymmdd.format(new Date(), true));
             oPopup.removeStyleClass("nrgQPPay-Popup");
             oPopup.addStyleClass("nrgQPPay-PopupWhite");
             oCloseButton.addStyleClass("nrgQPPayBt-closeBG");
             oTBIRC.setSelected(true);
             sCurrentPath = "/ReceiptSet" + "(BP='" + this._sBP + "',CA='" + this._sCA + "')/WaiveReasonsSet";
-            WRRecievedHandler = function (oEvent) {
+/*            WRRecievedHandler = function (oEvent) {
                 jQuery.sap.log.info("Date Received Succesfully");
                 if (oEvent) {
                     if (oEvent.getSource().getLength() === 1) {
@@ -1103,7 +1103,7 @@ sap.ui.define(
                 parameters: {countMode : "None"},
                 events: {dataReceived : WRRecievedHandler}
             };
-            oWaiveReasonDropDown.bindAggregation("content", oBindingInfo);
+            oWaiveReasonDropDown.bindAggregation("content", oBindingInfo);*/
         };
 
         /**
