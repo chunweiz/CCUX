@@ -7,5 +7,20 @@
         xmlns:l="sap.ui.commons.layout"
         xmlns:core="sap.ui.core"
         xmlns:m="sap.m">
-        <ute:Tag text="test"/>
+        <ute:Tag class="nrgDashboard-AcctAccessAuthPty">
+			<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr">
+				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h1"
+						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-AuthParty}"/>
+				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h2"
+						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-TypeLegalDoc}"/>
+				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h3"
+						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-ReceivedData}"/>
+				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h4"
+						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-EffecDate}"/>
+				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h5"
+						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-EndDate}"/>
+				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h6"
+						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-Status}"/>
+			</ute:Tag>
+		</ute:Tag>
 </core:FragmentDefinition>
