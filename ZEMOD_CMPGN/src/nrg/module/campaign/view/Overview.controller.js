@@ -102,7 +102,7 @@ sap.ui.define(
                     }
                    // aContent[0].addStyleClass("nrgCamHisBut-Selected");
                     aEFLDatapaths = this.getModel("comp-campaign").getProperty(sPath + "/EFLs");
-                    if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
+                    if ((aEFLDatapaths) && (aEFLDatapaths.length > 0)) {
                         for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
                             aResults.push(this.getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
                         }
@@ -127,8 +127,6 @@ sap.ui.define(
                         path : sPath
                     });
                 }
-                oBinding = oToggleContainer.getBinding("content");
-                oBinding.detachDataReceived(fnRecievedHandler);
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
             };
              // Handler function for Tab Bar Item.
@@ -519,7 +517,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onAvgUsage = function (oEvent) {
-            this.navTo("usage", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
+            this.navTo("usage", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, typeV : "C"});
         };
         /**
 		 * Handler Function for the Pending Swaps Selection

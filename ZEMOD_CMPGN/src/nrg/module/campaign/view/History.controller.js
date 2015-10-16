@@ -323,6 +323,15 @@ sap.ui.define(
         Controller.prototype.backToOverview = function (oEvent) {
             this.navTo("campaign", {bpNum: this._sBP, caNum: this._sCA, coNum : this._sContract, typeV : "C"});
         };
+        /**
+		 * Handler Function for the Average Usage selection
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onAvgUsage = function (oEvent) {
+            this.navTo("usage", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, typeV : "H"});
+        };
         return Controller;
     }
 );
