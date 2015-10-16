@@ -81,7 +81,9 @@ sap.ui.define(
                 WRRecievedHandler,
                 oCreditCardDate = this.getView().byId("idnrgQPCC-Date"),
                 that = this,
-                oCreditCardModel = new sap.ui.model.json.JSONModel();
+                oCreditCardModel = new sap.ui.model.json.JSONModel(),
+                oMsgArea = this.getView().byId("idnrgQPPay-msgArea"),
+                oAppViewModel = this.getView().getModel("appView");
             oTBIStopRec.setSelected(true);
             oCreditCardDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
             this._OwnerComponent.getCcuxApp().setOccupied(true);
@@ -92,6 +94,19 @@ sap.ui.define(
                 if (oEvent) {
                     if (oEvent.getSource().getLength() === 1) {
                         oWaiveReasonDropDown.setSelectedKey(oEvent.getSource().getContexts()[0].getProperty("ReasonCode"));
+                    } else {
+                        if ((oEvent) && (oEvent.mParameters) && (oEvent.mParameters.data) && (oEvent.mParameters.data.results)) {
+                            oEvent.mParameters.data.results.forEach(function (item) {
+                                if ((item) && (item.DefaultFlag)) {
+                                    oWaiveReasonDropDown.setSelectedKey(item.ReasonCode);
+                                }
+                                if ((item) && (item.Message)) {
+                                    oMsgArea.removeStyleClass("nrgQPPay-hide");
+                                    oMsgArea.addStyleClass("nrgQPPay-black");
+                                    oAppViewModel.setProperty("/message", item.Message);
+                                }
+                            });
+                        }
                     }
                 }
             };
@@ -193,7 +208,7 @@ sap.ui.define(
                 mParameters = {
                     method : "POST",
                     urlParameters : {
-                        "ContractID" : that._sContractId,
+                        "ContractID" : "",
                         "BP" : that._sBP,
                         "CA" : that._sCA,
                         "CardNumber" : oCreditCardDropDown.getSelectedKey(),
@@ -353,7 +368,7 @@ sap.ui.define(
                                      "CardNumber" : oContext.getProperty("CardNumber"),
                                      "ScheduledDate" : oContext.getProperty("ScheduledDate"),
                                      "Amount" : oContext.getProperty("Amount"),
-                                     "ContractID" : oContext.getProperty("ContractID"),
+                                     "ContractID" : "",
                                      "BP" : oContext.getProperty("BP"),
                                      "CA" : oContext.getProperty("CA"),
                                      "CurrentStatus" : oContext.getProperty("CurrentStatus")}, mParameters);
@@ -500,7 +515,9 @@ sap.ui.define(
                 WRRecievedHandler,
                 oSorter = new sap.ui.model.Sorter("LastUsed", true),// sort descending;
                 oBankDraftModel = new sap.ui.model.json.JSONModel(),
-                oModel = this.getView().getModel('comp-quickpay');
+                oModel = this.getView().getModel('comp-quickpay'),
+                oMsgArea = this.getView().byId("idnrgQPPay-msgArea"),
+                oAppViewModel = this.getView().getModel("appView");
             oBankDraftDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
             //oBankDraftDate.setMinDate(new Date());
             oPopup.removeStyleClass("nrgQPPay-Popup");
@@ -519,6 +536,19 @@ sap.ui.define(
                 if (oEvent) {
                     if (oEvent.getSource().getLength() === 1) {
                         oWaiveReasonDropDown.setSelectedKey(oEvent.getSource().getContexts()[0].getProperty("ReasonCode"));
+                    } else {
+                        if ((oEvent) && (oEvent.mParameters) && (oEvent.mParameters.data) && (oEvent.mParameters.data.results)) {
+                            oEvent.mParameters.data.results.forEach(function (item) {
+                                if ((item) && (item.DefaultFlag)) {
+                                    oWaiveReasonDropDown.setSelectedKey(item.ReasonCode);
+                                }
+                                if ((item) && (item.Message)) {
+                                    oMsgArea.removeStyleClass("nrgQPPay-hide");
+                                    oMsgArea.addStyleClass("nrgQPPay-black");
+                                    oAppViewModel.setProperty("/message", item.Message);
+                                }
+                            });
+                        }
                     }
                 }
             };
@@ -639,7 +669,7 @@ sap.ui.define(
                 mParameters = {
                     method : "POST",
                     urlParameters : {
-                        "ContractID" : that._sContractId,
+                        "ContractID" : "",
                         "BP" : that._sBP,
                         "CA" : that._sCA,
                         "BankAccNum" : sBankAccount,
@@ -804,7 +834,7 @@ sap.ui.define(
                                      "ScheduledDate" : oContext.getProperty("ScheduledDate"),
                                      "PaymentAmount" : oContext.getProperty("PaymentAmount"),
                                      "TrackingID" : oContext.getProperty("TrackingID"),
-                                     "ContractID" : oContext.getProperty("ContractID"),
+                                     "ContractID" : "",
                                      "BP" : oContext.getProperty("BP"),
                                      "CA" : oContext.getProperty("CA"),
                                      "CurrentStatus" : oContext.getProperty("CurrentStatus")},
@@ -884,7 +914,7 @@ sap.ui.define(
             }
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             oModel.create(sCurrentPath, {
-                "ContractID" : this._sContractId,
+                "ContractID" : "",
                 "BP" : this._sBP,
                 "CA" : this._sCA,
                 "BankAccNum" : sBankAccount,
@@ -1005,7 +1035,7 @@ sap.ui.define(
             oContext = oReliantCardAmount.getBindingContext("comp-quickpay");
             sCurrentPath = "/ReliantSet";
             oModel.create(sCurrentPath, {
-                "ContractID": oContext.getProperty("ContractID"),
+                "ContractID": "",
                 "BP": oContext.getProperty("BP"),
                 "CA": oContext.getProperty("CA"),
                 "ReliantCard": oContext.getProperty("ReliantCard"),
@@ -1104,7 +1134,7 @@ sap.ui.define(
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             sCurrentPath = "/ReceiptSet";
             oModel.create(sCurrentPath, {
-                "ContractID" : this._sContractId,
+                "ContractID" : "",
                 "BP" : this._sBP,
                 "CA" : this._sCA,
                 "ReceiptNumber" : oReceiptNum.getValue(),
@@ -1267,7 +1297,7 @@ sap.ui.define(
                 that = this;
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             oModel.create(sCurrentPath, {
-                "ContractID" : oContactLogModel.getProperty("/ContractID"),
+                "ContractID" : "",
                 "BP" : oContactLogModel.getProperty("/BP"),
                 "CA" : oContactLogModel.getProperty("/CA"),
                 "Class" : oContactLogModel.getProperty("/Class"),

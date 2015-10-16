@@ -1,0 +1,338 @@
+.nrgBilling-avgBillingPopup {
+    width: 1200px;
+    font-family: @nrgFontFamily;
+
+    // Header
+    & .sapUiDlgHdr {
+        height: 80px;
+        margin: 0;
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-between;
+
+        & .sapUiDlgHdrLeft {
+
+            & .sapUiDlgLabel {
+                font-size: @nrgFontSize-large;
+            }
+        }
+
+        & .sapUiDlgHdrBtns {
+            position: relative;
+            margin-right: 0;
+
+            & .sapUiDlgCloseBtn {
+                &::before {
+                    height: 20px;
+                    width: 2px;
+                    transform: translate(6px,0) rotate(45deg);
+                }
+                &::after {
+                    height: 20px;
+                    width: 2px;
+                }
+            }
+
+        }
+    }
+
+    // Content
+    & .nrgBilling-avgBillingPopup-content {
+        display: flex;
+        flex-direction: column;
+        padding: 0 10px;
+
+        // Amount Due Section
+        & .nrgBilling-avgBillingPopup-amountDueSec {
+
+            & .nrgBilling-avgBillingPopup-amountDue-title {
+                display: block;
+                font-size: @nrgFontSize-base;
+                font-weight: @nrgFontWeight-semiBold;
+                margin-bottom: 10px;
+            }
+
+            & .nrgBilling-avgBillingPopup-amountDue-content {
+                width: 100%;
+                padding: 20px;
+                border-radius: 5px;
+                background-color: @nrgColor-blue-pearl;
+                display: flex;
+
+                & .nrgBilling-avgBillingPopup-amountDue-history {
+                    flex: 7;
+                    padding-right: 20px;
+                    border-right: 1px dashed @nrgColor-grey-light;
+
+                    & .nrgBilling-avgBillingPopup-amountDue-history-labelSec {
+                        padding-right: 16px;
+                        height: 30px;
+                        display: flex;
+                        font-weight: @nrgFontWeight-semiBold;
+                        text-align: center;
+                        align-items: center;
+
+                        & .nrgBilling-avgBillingPopup-amountDue-history-monthLabel {
+                            width: 150px;
+                        }
+
+                        & .nrgBilling-avgBillingPopup-amountDue-history-usageLabel {
+                            width: 100px;
+                        }
+
+                        & .nrgBilling-avgBillingPopup-amountDue-history-usageChargeLabel {
+                            width: 120px;
+                        }
+
+                        & .nrgBilling-avgBillingPopup-amountDue-history-avgLabel {
+                            width: 120px;
+                        }
+
+                        & .nrgBilling-avgBillingPopup-amountDue-history-adjLabel {
+                            width: 150px;
+                        }
+
+                        & .nrgBilling-avgBillingPopup-amountDue-history-deferredLabel {
+                            width: 150px;
+                        }
+                    }
+
+                    & .nrgBilling-avgBillingPopup-amountDue-history-scrollArea {
+
+                        & .nrgBilling-avgBillingPopup-amountDue-history-row {
+                            padding: 10px 0;
+                            display: flex;
+                            border-bottom: 1px solid @nrgColor-grey-light;
+                            font-size: @nrgFontSize-base;
+                            text-align: center;
+
+                            & .nrgBilling-avgBillingPopup-amountDue-history-month {
+                                width: 150px;
+                                color: @nrgColor-grey-lighter;
+                            }
+
+                            & .nrgBilling-avgBillingPopup-amountDue-history-usage {
+                                width: 100px;
+                                color: @nrgColor-orange-notice;
+                            }
+
+                            & .nrgBilling-avgBillingPopup-amountDue-history-usageCharge {
+                                width: 120px;
+                                color: @nrgColor-green-highlight;
+                            }
+
+                            & .nrgBilling-avgBillingPopup-amountDue-history-avg {
+                                width: 120px;
+                                color: @nrgColor-green-highlight;
+                            }
+
+                            & .nrgBilling-avgBillingPopup-amountDue-history-adj {
+                                width: 150px;
+                            }
+
+                            & .nrgBilling-avgBillingPopup-amountDue-history-deferred {
+                                width: 150px;
+                            }
+                        }
+                    }
+                }
+
+                & .nrgBilling-avgBillingPopup-amountDue-btnSec {
+                    flex: 2;
+                    display: flex;
+                    padding-left: 20px;
+                    flex-direction: column;
+                    align-items: center;
+
+                    & .nrgBilling-avgBillingPopup-amountDue-btnSec-title {
+                        font-size: 36pt;
+                        font-weight: @nrgFontWeight-semiBold;
+                        margin-bottom: 15px;
+                    }
+
+                    & .nrgBilling-avgBillingPopup-amountDue-btnSec-noticeSec {
+                        margin-bottom: 25px;
+
+                        & .nrgBilling-avgBillingPopup-amountDue-btnSec-noticeTitle {
+                            font-size: @nrgFontSize-base;
+                            font-weight: @nrgFontWeight-semiBold;
+                        }
+
+                        & .nrgBilling-avgBillingPopup-amountDue-btnSec-noticeContent {
+                            font-size: @nrgFontSize-base;
+                        }
+                    }
+
+                    & .nrgBilling-avgBillingPopup-amountDue-btnSec-buttons {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        & .nrgBilling-avgBillingPopup-amountDue-calBtn {
+                            width: 120px;
+                            padding: 10px 0;
+                            margin-bottom: 20px;
+                            background-color: @nrgColor-blue-link;
+                            color: @nrgColor-white;
+                            font-size: @nrgFontSize-base;
+                            border-radius: 5px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+
+                        & .nrgBilling-avgBillingPopup-amountDue-setBtn {
+                            width: 120px;
+                            padding: 10px 0;
+                            margin-bottom: 20px;
+                            background-color: @nrgColor-green-highlight;
+                            color: @nrgColor-white;
+                            font-size: @nrgFontSize-base;
+                            border-radius: 5px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+
+                        & .nrgBilling-avgBillingPopup-amountDue-cancelBtn {
+                            width: 120px;
+                            padding: 10px 0;
+                            background-color: @nrgColor-grey-highlight;
+                            color: @nrgColor-white;
+                            font-size: @nrgFontSize-base;
+                            border-radius: 5px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Note
+        & .nrgBilling-avgBillingPopup-amountDue-note {
+            display: block;
+            margin: 20px 0;
+            font-size: @nrgFontSize-base;
+            font-style: italic;
+            color: #000;
+            font-weight: @nrgFontWeight-semiBold;
+        }
+
+        // Usage
+        & .nrgBilling-avgBillingPopup-usageSec {
+
+            & .nrgBilling-avgBillingPopup-usage-title {
+                display: block;
+                font-size: @nrgFontSize-base;
+                font-weight: @nrgFontWeight-semiBold;
+                margin-bottom: 10px;
+            }
+
+            & .nrgBilling-avgBillingPopup-usage-content {
+                width: 100%;
+                padding: 20px;
+                border-radius: 5px;
+                background-color: @nrgColor-blue-pearl;
+                display: flex;
+
+                & .nrgBilling-avgBillingPopup-usage-graph {
+
+                    & .nrgAVDChart {
+
+                        & .nrgAVDChart-XGrid {
+                            stroke: @nrgColor-grey-lightBackground;
+                            stroke-width: 1;
+                        }
+
+                        & .nrgAVDChart-YGrid {
+                            stroke: @nrgColor-grey-lightBackground;
+                            stroke-width: 1;
+                        }
+
+                        & .nrgAVDChart-XAxis {
+                            & path.domain {
+                                display: none;
+                            }
+                            & g.tick text {
+                                fill: @nrgColor-grey-semiDark;
+                            }
+                        }
+
+                        & .nrgAVDChart-YAxis {
+                            & path.domain {
+                                display: none;
+                            }
+                            & g.tick text {
+                                fill: @nrgColor-grey-semiDark;
+                            }
+                            & g.tick:last-of-type {
+                                display: none;
+                            }
+                        }
+
+                        & .nrgAVDChart-usage {
+
+                            & .nrgAVDChart-usageLine {
+                                fill: none;
+                                stroke-width: 3;
+                            }
+
+                            & .nrgAVDChart-usageDataPoint {
+                                stroke-width: 8;
+                            }
+                        }
+
+                    }
+                }
+
+                & .nrgBilling-avgBillingPopup-usage-control {
+                    width: 100%;
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    & .usageChartLegend {
+                        margin: 10px 0;
+                        display: flex;
+                        align-items: center;
+
+                        & .usageChartLegend-checkbox.uteMChkBox-design-default {
+                            height: 20px;
+                            margin-right: 10px;
+
+                            & .uteMChkBox-chk {
+                                border-color: @nrgColor-grey-light;
+                                border-radius: 5px;
+                                width: 20px;
+                                height: 20px;
+                            }
+
+                            & .uteMChkBox-intChk:checked + .uteMChkBox-chk {
+                                background-color: transparent;
+                            }
+
+                            & .uteMChkBox-intChk:checked + .uteMChkBox-chk::before {
+                                border-color: @nrgColor-green-highlight;
+                                top: 4px;
+                                left: 2px;
+                                height: 12px;
+                                width: 5px;
+                                transform: translate(5px, -3px) rotate(45deg);
+                            }
+                        }
+
+                        & .usageChartLegend-label {
+                            font-size: @nrgFontSize-large;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}

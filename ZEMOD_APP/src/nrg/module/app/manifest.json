@@ -12,27 +12,27 @@
                     },
                     "odata": {
                         "real": {
-                            "comp-app": {
-                                "url": "sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/"
+                            "noti-app": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_ALERTS_SRV/"
                             },
                             "rhs-app": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_RHS_SRV/"
                             },
-                            "noti-app": {
-                                "url": "sap/opu/odata/sap/ZE_CCUX_ALERTS_SRV/"
+                            "comp-app": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/"
                             }
                         },
                         "mock": {
-                            "comp-app": {
-                                "mockDataBaseUrl": "data/devCamp/",
+                            "noti-app": {
+                                "mockDataBaseUrl": "data/devAlert/",
                                 "generateMissingMockData": true
                             },
                             "rhs-app": {
                                 "mockDataBaseUrl": "data/devRHS/",
                                 "generateMissingMockData": true
                             },
-                            "noti-app": {
-                                "mockDataBaseUrl": "data/devAlert/",
+                            "comp-app": {
+                                "mockDataBaseUrl": "data/devCamp/",
                                 "generateMissingMockData": true
                             }
                         }

@@ -29,6 +29,7 @@ sap.ui.define(
             //Model to keep checkbook header
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oChkbkHdr');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPaymentHdr');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPostInvoiceItems');
 
             //Model to keep CheckBook detail data
             /*this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPayments');
@@ -40,6 +41,7 @@ sap.ui.define(
             this._initRoutingInfo();
             this._initChkbookHdr();
             this._initPaymentHdr();
+            this._initPostInvoiceItems();
         };
 
         CustomController.prototype.onAfterRendering = function () {
@@ -51,6 +53,30 @@ sap.ui.define(
 
         /*****************************************************************************************************************************************************/
         //Formatter Functions
+        CustomController.prototype._formatPostClotGrn = function (sColor) {
+            if (sColor === 'G') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatPostClotRed = function (sColor) {
+            if (sColor === 'R') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatPostInv2V = function (sLValue, sRValue) {
+            return (!!(parseInt(sLValue, 10)) || !!parseInt(sRValue, 10));
+        };
+
+        CustomController.prototype._formatPostInv1V = function (sRonlyValue) {
+            return !!(parseInt(sRonlyValue, 10));
+        };
+
         CustomController.prototype._formatDppIntGrn = function (sIndicator) {
             if (sIndicator === 'G') {
                 return true;
@@ -104,7 +130,7 @@ sap.ui.define(
             if (sIndicator === 'BB') {return true; } else { return false; }
         };
 
-        CustomController.prototype._formatBoolCurChrg = function (sIndicator) {
+        CustomController.prototype._formatBoolCurChrg = function (sIndicator) { //Also used for other 'X' indicator
             if (sIndicator === 'X' || sIndicator === 'x') {
                 return true;
             } else {
@@ -406,6 +432,15 @@ sap.ui.define(
             this._retrPaymentHdr(sPath);
         };
 
+
+        CustomController.prototype._initPostInvoiceItems = function () {
+            var sPath;
+
+            sPath = '/ConfBuags' + '(\'' + this._caNum + '\')/PostInvoice';
+
+            this._retrPostInvoiceItems(sPath);
+        };
+
         CustomController.prototype._retrChkbookHdr = function (sPath) {
             var oChbkOData = this.getView().getModel('oDataSvc'),
                 oParameters;
@@ -496,7 +531,7 @@ sap.ui.define(
                         this._retrPaymentSumrys(oData.results[i].InvoiceNum, '/results/' + i);
                         this._retrPaymentItmes(oData.results[i].InvoiceNum, '/results/' + i);
 
-                        oScrlCtaner.scrollTo(0, 1000, 1000);
+                        //oScrlCtaner.scrollTo(0, 1000, 1000);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -508,6 +543,30 @@ sap.ui.define(
                 oChbkOData.read(sPath, oParameters);
             }
         };
+
+        CustomController.prototype._retrPostInvoiceItems = function (sPath) {
+            var oChbkOData = this.getView().getModel('oDataSvc'),
+                oParameters,
+                oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer');
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oPostInvoiceItems').setData(oData);
+                    }
+
+                    oScrlCtaner.scrollTo(0, 1000, 1000);
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oChbkOData) {
+                oChbkOData.read(sPath, oParameters);
+            }
+        };
+
 
         return CustomController;
     }

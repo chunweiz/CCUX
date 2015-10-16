@@ -17,20 +17,7 @@ sap.ui.define(
         var CustomController = Controller.extend('nrg.module.app.view.CcuxApp');
 
         CustomController.prototype.onBeforeRendering = function () {
-            this.getView().setModel(new JSONModel({
-                notification: [
-                    { link: false, design: 'Warning', text: 'Lite Up Customer' },
-                    { link: false, design: 'Error', text: 'Invalid Mailing Address' },
-                    { link: true, design: 'Success', text: 'Customer is eligible for extension' },
-                    { link: false, design: 'Information', text: 'This is a normal text.' },
-                    { link: true, design: 'Error', text: 'Late fee for last month was not paid.' },
-                    { link: true, design: 'Error', text: 'Disconnection notice amount - $130.00. Net amount - $110.00. Due Date: 11/20/2014' }
-                ],
-                campaign: {
-                    title: 'Yes Eligible Offers Available',
-                    text: 'CHANGE CAMPAIGN'
-                }
-            }), 'view-data');
+
         };
 
         CustomController.prototype.onInit = function () {

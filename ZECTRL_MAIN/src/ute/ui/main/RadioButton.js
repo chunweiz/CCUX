@@ -33,16 +33,16 @@ sap.ui.define(
         CustomControl.prototype._groupNames = {};
 
         CustomControl.prototype.exit = function () {
-            this.$().unbind('change', this.onchange);
+            this.$().unbind('change', jQuery.proxy(this.onchange));
             this._removeFromGroup();
         };
 
         CustomControl.prototype.onBeforeRendering = function () {
-            this.$().unbind('change', this.onchange);
+            this.$().unbind('change', jQuery.proxy(this.onchange));
         };
 
         CustomControl.prototype.onAfterRendering = function () {
-            this.$().bind('change', this.onchange);
+            this.$().bind('change', jQuery.proxy(this.onchange, this));
         };
 
         CustomControl.prototype.onchange = function (oEvent) {

@@ -15,11 +15,18 @@
                         "real": {
                             "comp-billing": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/"
+                            },
+                            "comp-billing-avgplan": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/"
                             }
                         },
                         "mock": {
                             "comp-billing": {
                                 "mockDataBaseUrl": "data/devtest/",
+                                "generateMissingMockData": true
+                            },
+                            "comp-billing-avgplan": {
+                                "mockDataBaseUrl": "data/devavg/",
                                 "generateMissingMockData": true
                             }
                         }
@@ -37,6 +44,14 @@
                 "billing.CheckBookNoCo": {
                     "pattern": "billing/checkbook/bp/{bpNum}/ca/{caNum}",
                     "target":["billing.Checkbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
+                },
+                "billing.PrePayCheckBook": {
+                    "pattern": "billing/prepaycheckbook/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target":["billing.PrePayCheckbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
+                },
+                "billing.PrePayCheckBookNoCo": {
+                    "pattern": "billing/prepaycheckbook/bp/{bpNum}/ca/{caNum}",
+                    "target":["billing.PrePayCheckbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
                 },
                 "billing.BillingInfo": {
                     "pattern": "billing/billinginfo/bp/{bpNum}/ca/{caNum}/co/{coNum}",
@@ -67,6 +82,10 @@
             "targets":{
                 "billing.Checkbook": {
                     "viewName": "nrg.module.billing.view.BillingCheckbook",
+                    "controlId": "idAppGeneral"
+                },
+                "billing.PrePayCheckbook": {
+                    "viewName": "nrg.module.billing.view.PrePayCheckbook",
                     "controlId": "idAppGeneral"
                 },
                 "billing.CustomerDataBillingInfo": {

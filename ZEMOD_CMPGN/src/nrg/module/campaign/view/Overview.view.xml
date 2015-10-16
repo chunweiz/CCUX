@@ -22,7 +22,7 @@
                            design="None">
                     <u:Tag id="idCamCustReqOffer"
                            class="nrgCamOvr-offerBtnTitle"
-                            text="{= ${comp-campaign>InitTab} === '' ? ${comp-i18n-campaign>nrgCmpOvrNotElg} : ${comp-i18n-campaign>nrgCmpOvrElg} }" >
+                            text="{= ${comp-campaign>InitTab} ? ${comp-i18n-campaign>nrgCmpOvrElg} : ${comp-i18n-campaign>nrgCmpOvrNotElg} }" >
                     </u:Tag>
                     <u:Tag class="nrgCamOvr-offerBtnDesc"
                            text="CHANGE CAMPAIGN" />
@@ -77,10 +77,10 @@
 
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
-                        <u:TextView text="{comp-campaign>AvgUsage}"
-                                    class="nrgCamOvr-left"
-                                    color="DarkGrey"
-                                    design="Base"/>
+                        <um:Button press=".onAvgUsage"
+                                   text="{= ${comp-campaign>AvgUsage} ? ${comp-campaign>AvgUsage} : 'NA' }"
+                                   class="nrgCamOvrAvgUsg nrgCamOvr-left"
+                                   design="None" />
                     </l:MatrixLayoutCell>
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>

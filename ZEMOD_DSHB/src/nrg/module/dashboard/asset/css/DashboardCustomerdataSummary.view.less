@@ -1,13 +1,33 @@
 .nrgDashboard-cusDataSum{
     font-family: @nrgFontFamily;
 
-    & > .nrgDashboard-cusDataSum-bpName{
+    & > .nrgDashboard-cusDataSum-bpArea {
         font-size: @nrgFontSize-large;
         margin-bottom: 5px;
         margin-top: 0;
     }
 
-    & > .nrgDashboard-cusDataSum-bpName > span{
+    & > .nrgDashboard-cusDataSum-bpArea > .nrgDashboard-cusDataSum-bpAuthBtn{
+
+        display: inline-block;
+
+    }
+
+    & > .nrgDashboard-cusDataSum-bpArea > .nrgDashboard-cusDataSum-bpAuthBtn .nrgDashboard-cusDataSum-bpAuthBtn-btn{
+        width: 10px;
+        height: 10px;
+        border: 2px solid @nrgColor-blue-link;
+        border-top: none;
+        border-left: none;
+        transform: rotate(45deg);
+        margin-left: 8px;
+    }
+
+    & > .nrgDashboard-cusDataSum-bpArea > .nrgDashboard-cusDataSum-bpName{
+        display: inline-block;
+    }
+
+    & > .nrgDashboard-cusDataSum-bpArea > .nrgDashboard-cusDataSum-bpName > span{
         font-weight: @nrgFontWeight-bold;
     }
 
