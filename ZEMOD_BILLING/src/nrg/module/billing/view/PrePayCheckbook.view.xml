@@ -69,8 +69,6 @@
             <!--Form starts here-->
             <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr">
                     <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell"
-                             text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-HIGHBILLFACTORS}" />
-                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell"
                              text="{comp-i18n-billing>nrgBilling-prpayChkBook-FormHdr-TransactionText}" />
                     <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell"
                              text="{comp-i18n-billing>nrgBilling-prpayChkBook-FormHdr-TransactionDate}" />
@@ -79,22 +77,45 @@
                     <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell"
                              text="{comp-i18n-billing>nrgBilling-prpayChkBook-FormHdr-USAGEAmount}" />
                     <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell"
+                             text="{comp-i18n-billing>nrgBilling-prpayChkBook-FormHdr-LITEUPAmount}" />
+                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell"
                              text="{comp-i18n-billing>nrgBilling-prpayChkBook-FormHdr-AccountBal}" />
                     <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell"
                              text="{comp-i18n-billing>nrgBilling-prpayChkBook-FormHdr-PrePayDPPBal}" />
-                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell"
+                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell-last"
                              text="{comp-i18n-billing>nrgBilling-prpayChkBook-FormHdr-AcctBalDate}" />
             </ute:Tag>
             <m:ScrollContainer id="nrgChkbookScrollContainer"
                     class="nrgBilling-ppChkBk-lftDiv-scrllArea" width="768px" height="500px" horizontal="false" vertical="true">
-                <ute:Tag text="test"/>
-                <ute:Tag text="test"/>
-                <ute:Tag text="test"/>
-                <ute:Tag text="test"/>
-                <ute:Tag text="test"/>
-                <ute:Tag text="test"/>
-
-
+                <ute:Tag>   <!--div to put content aggregation-->
+                    <utmain:Infoline expanded="{oPaymentHdr>bExpand}"
+                                     class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm">
+                        <utmain:headerContent>
+                            <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-hdr">
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell-last" text="test"/>
+                            </ute:Tag>
+                        </utmain:headerContent>
+                        <utmain:content>
+                            <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt">
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell-last" text="tt"/>
+                            </ute:Tag>
+                        </utmain:content>
+                    </utmain:Infoline>
+                </ute:Tag>
             </m:ScrollContainer>
         </ute:Tag>
         <ute:Tag class="nrgBilling-ppChkBk-rghtDiv">
