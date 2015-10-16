@@ -15,50 +15,51 @@
             <u:Tag class="nrgUsg-ttl" text="{comp-i18n-usage>nrgUsgLTtl}" />
                 <u:Tag class="nrgUsg-tiers">
                         <u:Tag class="nrgUsg-tier">
-                            <um:Button id="idCamToggleBtn-P"
-                                press=".toggleTier"
-                                text="{comp-i18n-usage>nrgUsgLUsage}"
+                            <um:Button text="{comp-i18n-usage>nrgUsgLUsage}"
                                 class="nrgUsg-btn-selected"
                                 design="None">
                             </um:button>
                         </u:Tag>
                         <u:Tag class="nrgUsg-tier">
-                            <um:Button id="idCamToggleBtn-R"
-                                press=".toggleTier"
-                                text="{comp-i18n-usage>nrgUsgLBilling}"
+                            <um:Button press=".toggleTier"
+                                text="{comp-i18n-usage>nrgUsgLCheckBook}"
                                 design="None">
                             </um:button>
                         </u:Tag>
                         <u:Tag class="nrgUsg-tier">
-                            <um:Button id="idCamToggleBtn-S"
-                                press=".toggleTier"
+                            <um:Button press=".toggleTier"
                                 text="{comp-i18n-usage>nrgUsgLBillWizard}"
                                 design="None">
                             </um:button>
                         </u:Tag>
                         <u:Tag class="nrgUsg-tier">
-                            <um:Button id="idCamToggleBtn-F"
-                                press=".onRateHistory"
+                            <um:Button press=".onRateHistory"
                                 text="{comp-i18n-usage>nrgUsgLRateHis}"
                                 design="None">
                             </um:button>
                         </u:Tag>
                         <u:Tag class="nrgUsg-tier">
-                            <um:Button id="idCamToggleBtn-d"
-                                press=".toggleTier"
-                                text="{comp-i18n-usage>nrgUsgLPreAttri}"
+                            <um:Button press=".onDunningHistory"
+                                text="{comp-i18n-usage>nrgUsgDunningHistory}"
                                 design="None">
                             </um:button>
                         </u:Tag>
                     </u:Tag>
                 <u:Tag class="nrgUsg-Table">
-                    <u:Tag class="nrgUsg-ttl" text="{comp-i18n-usage>nrgUsgLSrvAddTtl}" />
+                    <u:Tag>
+                        <u:Tag class="nrgUsg-ttl" text="{comp-i18n-usage>nrgUsgLSrvAddTtl}" />
+                        <um:Button press=".backToPage"
+                            text="{comp-i18n-usage>nrgUsgBack}"
+                            class="nrgUsg-Table-Back"
+                            design="None">
+                        </um:button>
+                    </u:Tag>
                     <u:Tag class="nrgUsg-Radio">
                         <um:RadioButton id="idnrgUsgRadioweekly" design="Default" class="nrgUsg-RadioLabel" group="nrgUsg" checked="true" enabled="true"/>
                         <um:Label text="Weekly" labelFor="idnrgUsgRadioweekly-intRb" class="nrgUsg-RadioLabel"/>
                         <um:RadioButton id="idnrgUsgRadiodaily" design="Default" class="nrgUsg-RadioLabel" group="nrgUsg" enabled="true"/>
                         <um:Label text="Daily" labelFor="idnrgUsgRadiodaily-intRb" class="nrgUsg-RadioLabel" />
-                    </u:Tag>   <br/>
+                    </u:Tag>
                     <um:Dropdown id="idnrgUsgServiceAdd-DropDown"
                                  select=".onServiceAdd"
                                  placeholder="Select Service Address"
