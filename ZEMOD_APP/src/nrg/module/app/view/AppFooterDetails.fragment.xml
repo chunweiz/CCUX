@@ -71,10 +71,10 @@
                                 width="100%"
                                 vertical="true">
                                 <ute:Tag id="nrgAppFtrDetails-rhs-currentItem" class="nrgAppFtrDetails-rhs-item">
-                                    <ute:Tag 
+                                    <ute:Tag
                                         class="nrgAppFtrDetails-rhs-currentTitle nrgAppFtrDetails-rhs-itemTitle"
                                         text="{comp-i18n-app>nrgAppFtrDetails-rhs-CURRENT_TITLE}" />
-                                    <!-- <utmain:Dropdown 
+                                    <!-- <utmain:Dropdown
                                         id="nrgAppFtrDetails-rhs-currentDropdown"
                                         class="nrgAppFtrDetails-rhs-itemContent"
                                         selectedKey="{oFooterRHS>/Current/SelectedKey}"
@@ -138,7 +138,7 @@
                                         <!-- <ute:Tag id="nrgAppFtrDetails-eligibleOffers-currentItem"
                                             class="nrgAppFtrDetails-eligibleOffers-itemContent currentItem"
                                             text="{oFooterCampaign>/Current/OfferTitle}" /> -->
-                                        <ute:Tag id="nrgAppFtrDetails-eligibleOffers-currentItem" 
+                                        <ute:Tag id="nrgAppFtrDetails-eligibleOffers-currentItem"
                                             class="nrgAppFtrDetails-eligibleOffers-itemContent currentItem"
                                             text="" />
                                     </utmain:Button>
@@ -184,7 +184,7 @@
                                         <!-- <ute:Tag id="nrgAppFtrDetails-eligibleOffers-pendingItem"
                                             class="nrgAppFtrDetails-eligibleOffers-itemContent pendingItem"
                                             text="{oFooterCampaign>/Pending/OfferTitle}" /> -->
-                                        <ute:Tag id="nrgAppFtrDetails-eligibleOffers-pendingItem" 
+                                        <ute:Tag id="nrgAppFtrDetails-eligibleOffers-pendingItem"
                                             class="nrgAppFtrDetails-eligibleOffers-itemContent pendingItem"
                                             text="" />
                                     </utmain:Button>
@@ -198,7 +198,7 @@
                                         press="_onCampaignItemClick">
                                         <!-- <ute:Tag id="nrgAppFtrDetails-eligibleOffers-historyItem"
                                             class="nrgAppFtrDetails-eligibleOffers-itemContent historyItem"
-                                            text="{oFooterCampaign>/History/OfferTitle}" 
+                                            text="{oFooterCampaign>/History/OfferTitle}"
                                             press="_onCampaignItemClick"/> -->
                                         <ute:Tag id="nrgAppFtrDetails-eligibleOffers-historyItem"
                                             class="nrgAppFtrDetails-eligibleOffers-itemContent historyItem"
@@ -224,12 +224,12 @@
                                 <ute:Tag class="nrgAppFtrDetails-campaignButton-itemText"
                                     text="{comp-i18n-app>nrgAppFtrDetails-campaignButton_TEXT}" />
                             </utmain:Button>
-                        </ute:Tag>                        
+                        </ute:Tag>
                     </ute:Tag>
                 </div>
             </div>
         </div>
-                
+
     </ua:FooterSubmenu>
 
 </core:FragmentDefinition>

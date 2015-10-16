@@ -125,7 +125,7 @@ sap.ui.define(
                     }
                 ]
             );
-            
+
             this.getView().setModel(graphModel, 'oUsageGraph');
             this.getView().setModel(btnModel, 'oAmountBtn');
             this.getView().setModel(historyModel, 'oAmountHistory');

@@ -11,7 +11,7 @@
     controllerName="nrg.module.dashboard.view.CustomerDataVerification">
 
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-cusDataVerify">
-        <ute:Tag class="nrgDashboard-cusDataVerify-layout">  
+        <ute:Tag class="nrgDashboard-cusDataVerify-layout">
             <!--Area Left -->
             <ute:Tag class="nrgDashboard-cusDataVerify-left">
                 <ute:Tag class="nrgDashboard-cusDataVerify-lleft-wrap">
@@ -211,7 +211,7 @@
                             </utmain:DropdownItem>
                         </utmain:Dropdown>
                     </ute:Tag>
-                    
+
                     <!-- 3. Contact Info (Service Address) -->
                     <ute:Tag id="serviceadd_area" visible="true" class="nrgDashboard-cusDataVerify-middle-content">
                         <!-- ROW -->
@@ -289,7 +289,7 @@
                             <ute:Textfield id="contractNum" fieldType="Underlined"
                                 editable="false"
                                 value="{oDtaVrfyContracts>/ContractID}"
-                                class="nrgDashboard-cusDataVerify-middle-contractNumVal"/>     
+                                class="nrgDashboard-cusDataVerify-middle-contractNumVal"/>
                         </ute:Tag>
                         <!-- ROW -->
                         <ute:Tag class="rgDashboard-cusDataVerify-middle-content-row dashedBottom">
@@ -329,7 +329,7 @@
                         <ute:Tag class="rgDashboard-cusDataVerify-middle-content-row dashedBottom">
                             <!-- Day Num -->
                             <ute:Tag class="nrgDashboard-cusDataVerify-middle-dayNumSection">
-                                <utmain:Label  labelFor="dayPhn" 
+                                <utmain:Label  labelFor="dayPhn"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DayPhnTxt}"
                                     class="nrgDashboard-cusDataVerify-middle-dayNumLabel"/>
                                 <ute:Textfield id="dayPhn" fieldType="Underlined"
@@ -368,7 +368,7 @@
                         <ute:Tag class="rgDashboard-cusDataVerify-middle-content-row dashedBottom">
                             <!-- Evening Num -->
                             <ute:Tag class="nrgDashboard-cusDataVerify-middle-evenNumSection">
-                                <utmain:Label labelFor="evnPhn" 
+                                <utmain:Label labelFor="evnPhn"
                                     class="nrgDashboard-cusDataVerify-middle-evenNumLabel"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"/>
                                 <ute:Textfield id="evnPhn" fieldType="Underlined"
@@ -524,7 +524,7 @@
                         <ute:Tag class="rgDashboard-cusDataVerify-middle-content-row dashedBottom">
                             <!-- Evening Num -->
                             <ute:Tag class="nrgDashboard-cusDataVerify-middle-evenNumSection">
-                                <utmain:Label labelFor="evnPhn_mail" 
+                                <utmain:Label labelFor="evnPhn_mail"
                                     class="nrgDashboard-cusDataVerify-middle-evenNumLabel"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_EvnPhnTxt}"/>
                                 <ute:Textfield id="evnPhn_mail" fieldType="Underlined"
@@ -593,7 +593,7 @@
                 </ute:Tag>
             </ute:Tag>
 
-                  
+
         </ute:Tag>
     </ute:Tag>
 

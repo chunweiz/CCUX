@@ -303,7 +303,7 @@ sap.ui.define(
 
         Controller.prototype._checkWildCard = function (oParameters) {
             var ok = true;
-            
+
             oParameters.filters.forEach(function(filter) {
                 // These are fields that wildcard is not allowed for
                 if (filter.sPath === "BuagID" || filter.sPath === "SSN" || filter.sPath === "DL" || filter.sPath === "PartnerID" || filter.sPath === "ESID" || filter.sPath === "TaxID") {

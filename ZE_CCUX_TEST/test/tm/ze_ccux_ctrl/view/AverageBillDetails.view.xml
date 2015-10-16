@@ -44,7 +44,7 @@
             .usageChartLegend {
                 transform: translateY(0px);
             }
-            
+
             .usageChartLegend > div {
                 display: inline-block;
                 margin: 0 10px;

@@ -71,7 +71,7 @@ sap.ui.define(
         };
 
         AppFooter.prototype._onFooterNotificationLinkPress = function (oControlEvent) {
-            
+
         };
 
         AppFooter.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber) {
@@ -89,18 +89,18 @@ sap.ui.define(
             oParameters = {
                 // filters: aFilters,
                 success : function (oData) {
-                    if (oData) {  
+                    if (oData) {
                         oNotificationModel.setData(oData);
                         if (!this.noificationCenter) {
                             var notification = [];
                             var notificationContainer = this._oController.getView().byId("nrgAppFtrDetails-notification-scrollContent");
-                            
+
                             if (oNotificationModel.oData.IsM2Minvoice) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Multi-month Invoice', linkPress: this._onFooterNotificationLinkPress}));
                             if (oNotificationModel.oData.IsBadEmail) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Bad Email Address', linkPress: this._onFooterNotificationLinkPress}));
                             if (oNotificationModel.oData.IsBadOamEmail) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Bad OAM Email Address', linkPress: this._onFooterNotificationLinkPress}));
                             if (oNotificationModel.oData.IsInvalidMail) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Invalid Mail Address', linkPress: this._onFooterNotificationLinkPress}));
                             if (oNotificationModel.oData.IsBadSMS) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Invalid SMS', linkPress: this._onFooterNotificationLinkPress}));
-                            
+
                             this.noificationCenter = new ute.ui.app.FooterNotificationCenter("nrgAppFtrDetails-notification-notificationCenter", {content: notification});
 
                             this.noificationCenter.placeAt(notificationContainer);
@@ -124,7 +124,7 @@ sap.ui.define(
         };
 
         AppFooter.prototype._onRhsCurrenItemSelect = function (oControlEvent) {
-            
+
         }.bind(this);
 
         AppFooter.prototype._onRhsCurrenDropdownClick = function (oControlEvent) {
@@ -224,11 +224,11 @@ sap.ui.define(
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
-                    if (oData.results.length > 0) {                       
+                    if (oData.results.length > 0) {
                         for (var i = 0; i < oData.results.length; i++) {
                             if (oData.results[i].Type === 'C') {
                                 oCampaignModel.setProperty('/Current', oData.results[i]);
-                                
+
                                 if (oCampaignModel.oData.Current.OfferTitle !== 'None' && oCampaignModel.oData.Current.OfferTitle !== '') {
                                     this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers-currentItem').addStyleClass('hasValue');
                                 }
@@ -238,7 +238,7 @@ sap.ui.define(
                             }
                             if (oData.results[i].Type === 'PE') {
                                 oCampaignModel.setProperty('/Pending', oData.results[i]);
-                                
+
                                 if (oCampaignModel.oData.Pending.OfferTitle !== 'None' && oCampaignModel.oData.Pending.OfferTitle !== '') {
                                     this._oController.getView().byId('nrgAppFtrDetails-eligibleOffers-pendingItem').addStyleClass('hasValue');
                                 }
@@ -276,7 +276,7 @@ sap.ui.define(
 
         AppFooter.prototype._updateFooterCampaignButton = function (sCoNumber) {
             var sPath = '/ButtonS(\'' + sCoNumber + '\')';
-            
+
             var oModel = this._oController.getView().getModel('oCompODataSvc'),
                 oCampaignModel = this._oController.getView().getModel('oFooterCampaign'),
                 oParameters;
@@ -332,7 +332,7 @@ sap.ui.define(
             var oRouter = this._oController.getOwnerComponent().getRouter(),
                 oRouting = this._oController.getView().getModel('oFooterRouting'),
                 item = oControlEvent.getSource().getDomRef().childNodes[0];
-            
+
             if ($(item).hasClass('currentItem') && $(item).hasClass('hasValue')) {
                 oRouter.navTo('campaign', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber, typeV: 'C'});
             }
@@ -344,7 +344,7 @@ sap.ui.define(
             if ($(item).hasClass('historyItem') && $(item).hasClass('hasValue')) {
                 oRouter.navTo('campaignhistory', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber});
             }
-            
+
         };
 
 
