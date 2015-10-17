@@ -8,7 +8,117 @@
     xmlns:core="sap.ui.core"
     xmlns:m="sap.m"
     controllerName="nrg.module.billing.view.PrePayCheckbook">
-    <ute:Tag class="nrgAppMain-generalContent">
-        <ute:Tag text="test"/>
+    <ute:Tag class="nrgAppMain-generalContent nrgBilling-ppChkBk">
+        <ute:Tag class="nrgBilling-ppChkBk-lftDiv">
+            <ute:Tag class="nrgBilling-ppChkBk-lftDiv-pageTitle">
+                <ute:Tag elem="span" class="nrgBilling-ppChkBk-lftDiv-pageTitleSpan"
+                         text="{comp-i18n-billing>nrgBilling-prpayChkBook-PAGE_TITLE}" />
+            </ute:Tag>
+            <!--Header starting area-->
+            <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea">
+                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-lft">
+                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-lft-ctnt">
+                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-lft-lbl"
+                                 text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-StaDate}"/>
+                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-lft-val"
+                                 text="12/15/2014"/>
+                        </ute:Tag>
+                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-lft-ctnt">
+                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-lft-lbl"
+                                 text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-DaysRemaining}"/>
+                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-lft-val"
+                                 text="18"/>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-lft-ctnt">
+                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-lft-lbl"
+                                 text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-AvgDailyUsage}"/>
+                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-lft-val"
+                                 text="$2.56"/>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-lft-ctnt">
+                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-lft-lbl"
+                                 text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-DppBal}"/>
+                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-lft-val"
+                                 text="$0.00"/>
+                    </ute:Tag>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl">
+                    <ute:Tag visible="true">
+                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-credit nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-balnum"
+                                 text="$3.16"/>
+                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-credibit nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-credit"
+                                 text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-CREDIT}"/>
+                    </ute:Tag>
+                    <ute:Tag visible="false">
+                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-credit nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-balnum"
+                                 text="$3.16"/>
+                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-credibit nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-credit"
+                                 text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-DEBIT}"/>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-onAcc"
+                             text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-onaccount}"/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-rght">
+                    <utmain:Button class="nrgBilling-ppChkBk-lftDiv-qkRefArea-rght-btn1"
+                                   text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-PAYMENTOPTIONS}"/>
+                    <utmain:Button class="nrgBilling-ppChkBk-lftDiv-qkRefArea-rght-btn2"
+                                   text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-HIGHBILLFACTORS}"/>
+                </ute:Tag>
+            </ute:Tag>
+
+            <!--Form starts here-->
+            <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr">
+                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell"
+                             text="{comp-i18n-billing>nrgBilling-prpayChkBook-FormHdr-TransactionText}" />
+                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell"
+                             text="{comp-i18n-billing>nrgBilling-prpayChkBook-FormHdr-TransactionDate}" />
+                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell"
+                             text="{comp-i18n-billing>nrgBilling-prpayChkBook-FormHdr-PAIDAmount}" />
+                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell"
+                             text="{comp-i18n-billing>nrgBilling-prpayChkBook-FormHdr-USAGEAmount}" />
+                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell"
+                             text="{comp-i18n-billing>nrgBilling-prpayChkBook-FormHdr-LITEUPAmount}" />
+                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell"
+                             text="{comp-i18n-billing>nrgBilling-prpayChkBook-FormHdr-AccountBal}" />
+                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell"
+                             text="{comp-i18n-billing>nrgBilling-prpayChkBook-FormHdr-PrePayDPPBal}" />
+                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell nrgBilling-ppChkBk-lftDiv-scrllArea-hdr-cell-last"
+                             text="{comp-i18n-billing>nrgBilling-prpayChkBook-FormHdr-AcctBalDate}" />
+            </ute:Tag>
+            <m:ScrollContainer id="nrgChkbookScrollContainer"
+                    class="nrgBilling-ppChkBk-lftDiv-scrllArea" width="768px" height="500px" horizontal="false" vertical="true">
+                <ute:Tag>   <!--div to put content aggregation-->
+                    <utmain:Infoline expanded="{oPaymentHdr>bExpand}"
+                                     class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm">
+                        <utmain:headerContent>
+                            <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-hdr">
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell-last" text="test"/>
+                            </ute:Tag>
+                        </utmain:headerContent>
+                        <utmain:content>
+                            <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt">
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell-last" text="tt"/>
+                            </ute:Tag>
+                        </utmain:content>
+                    </utmain:Infoline>
+                </ute:Tag>
+            </m:ScrollContainer>
+        </ute:Tag>
+        <ute:Tag class="nrgBilling-ppChkBk-rghtDiv">
+        </ute:Tag>
     </ute:Tag>
 </mvc:View>

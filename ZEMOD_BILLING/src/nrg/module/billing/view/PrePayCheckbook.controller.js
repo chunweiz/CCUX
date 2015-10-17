@@ -11,6 +11,7 @@ sap.ui.define(
         var CustomController = Controller.extend('nrg.module.billing.view.PrePayCheckbook');
 
         CustomController.prototype.onInit = function () {
+            this.getOwnerComponent().getCcuxApp().setTitle('BILLING');
         };
 
         CustomController.prototype.onBeforeRendering = function () {

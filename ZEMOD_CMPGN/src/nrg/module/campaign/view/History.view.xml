@@ -70,7 +70,15 @@
                         </u:TableRow>
                     </u:rows>
                 </u:Table>
-                <u:Tag class="nrgCamHis-Div"></u:Tag>
+                <u:Tag class="nrgCamHis-Div">
+                    <um:Button text="{comp-i18n-campaign>nrgCmpHisLBilling}"
+                                class="nrgCamHis-btns"
+                                design="None" />
+                    <um:Button text="{comp-i18n-campaign>nrgCmpHisLUsage}"
+                               press=".onAvgUsage"
+                               class="nrgCamHis-btns"
+                               design="None" />
+                </u:Tag>
                 <u:Table width="100%"
                          class="nrgCamHis-table"
                          tableType="CampaignTable"
@@ -117,10 +125,10 @@
                     </u:columns>
                     <u:rows>
                         <u:TableRow id="idnrgCamHis-row" press=".onPressed">
-                            <c:Label text="{comp-campaign>OfferTitle}" />
-                            <c:Label text="{comp-campaign>EFLPrice}" />
-                            <c:Label text="{path: 'comp-campaign>StartDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
-                            <c:Label text="{path: 'comp-campaign>EndDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                            <u:Tag text="{comp-campaign>OfferTitle}" class="nrgCamHis-table-title"/>
+                            <u:Tag text="{comp-campaign>EFLPrice}" />
+                            <u:Tag text="{path: 'comp-campaign>StartDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                            <u:Tag text="{path: 'comp-campaign>EndDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
                         </u:TableRow>
                     </u:rows>
                 </u:Table>

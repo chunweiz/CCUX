@@ -436,7 +436,7 @@ sap.ui.define(
             //Trigger contracts refresh
             this._retrContracts(this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'));
             this._retrBuagMailingAddr(this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'), this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'), this.getView().getModel('oDtaVrfyBuags').getProperty('/FixedAddressID'));
-            
+
             this._updateUsageLink();
         };
 
@@ -1504,7 +1504,7 @@ sap.ui.define(
             var sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
                 sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
                 sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID');
-            
+
             if (sCurrentBp && sCurrentCa && sCurrentCo) {
                 this.getView().byId('nrgDashboard-cusDataVerify-left-usageLink').attachBrowserEvent('click', this._onMeterClick);
                 this.getView().byId('nrgDashboard-cusDataVerify-left-usageLink').addStyleClass('active');
@@ -1512,13 +1512,13 @@ sap.ui.define(
                 this.getView().byId('nrgDashboard-cusDataVerify-left-usageLink').detachBrowserEvent('click');
                 this.getView().byId('nrgDashboard-cusDataVerify-left-usageLink').removeStyleClass('active');
             }
-        }; 
+        };
 
         /*--------------------------------------------------- Button Press --------------------------------------------------*/
 
         Controller.prototype._onMeterClick = function () {
             // alert('XDDDDDD');
-        };     
+        };
 
         return Controller;
     }

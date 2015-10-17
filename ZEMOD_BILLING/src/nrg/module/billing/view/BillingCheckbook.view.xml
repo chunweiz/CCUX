@@ -97,8 +97,10 @@
 
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght">
-                    <utmain:Button class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght-btn1" text="PAYMENT OPTIONS"/>
-                    <utmain:Button class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght-btn2" text="HIGH BILL FACTORS"/>
+                    <utmain:Button class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght-btn1"
+                                   text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-PAYMENTOPTIONS}"/>
+                    <utmain:Button class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght-btn2"
+                                   text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-HIGHBILLFACTORS}"/>
                 </ute:Tag>
             </ute:Tag>
 

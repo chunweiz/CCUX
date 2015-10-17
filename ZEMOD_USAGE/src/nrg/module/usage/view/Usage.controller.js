@@ -45,6 +45,7 @@ sap.ui.define(
             this._sContract = oRouteInfo.parameters.coNum;
             this._sBP = oRouteInfo.parameters.bpNum;
             this._sCA = oRouteInfo.parameters.caNum;
+            this._sType = oRouteInfo.parameters.typeV;
             aFilterIds = ["CA"];
             aFilterValues = [this._sCA];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -78,7 +79,10 @@ sap.ui.define(
                         oUsageTable.bindAggregation("content", oBindingInfo);
                     }
                 } else {
-                    oUsageTable.addContent(oNoDataTag);
+                    if (oUsageTable) {
+                        oUsageTable.removeAllContent();
+                        oUsageTable.addContent(oNoDataTag);
+                    }
                 }
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
             };
@@ -167,6 +171,19 @@ sap.ui.define(
             }
         };
        /**
+		 * Handler when user clicked on Back
+		 *
+		 * @function
+		 * @param {Event} oEvent object
+		 */
+        Controller.prototype.backToPage = function (oEvent) {
+            if (this._sType ===  "C") {
+                this.navTo("campaign", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, typeV: "C"});
+            } else if (this._sType ===  "H") {
+                this.onRateHistory();
+            }
+        };
+       /**
 		 * Handler when user expanded Info line for each row
 		 *
 		 * @function
@@ -219,7 +236,7 @@ sap.ui.define(
                 oServiceAddressDropDown = this.getView().byId("idnrgUsgServiceAdd-DropDown"),
                 aContent,
                 sKey;
-/*            aContent = oServiceAddressDropDown.getContent();
+            aContent = oServiceAddressDropDown.getContent();
             sKey = oServiceAddressDropDown.getSelectedKey();
             aContent.forEach(function (oContent) {
                 if (oContent.getKey() === sKey) {
@@ -241,7 +258,7 @@ sap.ui.define(
                     events: {dataReceived : fnTableDataRecdHandler}
                 };
                 oUsageTable.bindAggregation("content", oBindingInfo);
-            }*/
+            }
         };
         /**
 		 * Converts in to EFL Json format required by Template view.
@@ -263,7 +280,7 @@ sap.ui.define(
             for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
                 temp = results[iCount1];
                 if ((temp !== undefined) && (temp.KwhUsage !== undefined)) {
-                    oformattedDate = dateFormat.format(new Date(temp.PeriodBegin + TZOffsetMs));
+                    oformattedDate = dateFormat.format(new Date(temp.PeriodBegin.getTime() + TZOffsetMs));
                     columns.push({
                         "kwhUsage": parseInt(temp.KwhUsage, 10),
                         "meterReadDate": oformattedDate,
@@ -275,6 +292,40 @@ sap.ui.define(
             //aJsonDataNew.results = {};
             aJsonDataNew.data = columns;
             return aJsonDataNew;
+        };
+        /**
+		 * Handler for Side links
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.toggleTier = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+
+            //this._oApp.setHeaderMenuItemSelected(false, App.HMItemId.Index);
+
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: "Z_DUNH"
+            });
+        };
+        /**
+		 * Handler for Dunning History Transaction launcher
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.onDunningHistory = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+
+            //this._oApp.setHeaderMenuItemSelected(false, App.HMItemId.Index);
+
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: "Z_DUNH"
+            });
         };
         return Controller;
     }

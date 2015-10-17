@@ -17,7 +17,7 @@ sap.ui.define(
         var CustomController = Controller.extend('nrg.module.app.view.CcuxApp');
 
         CustomController.prototype.onBeforeRendering = function () {
-            
+
         };
 
         CustomController.prototype.onInit = function () {
