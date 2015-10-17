@@ -3,11 +3,11 @@
         "results":[
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='11%2F2015')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='11%2F2015')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='11%2F2015')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='11%2F2015')",
                     "type":"ZE_CCUX_AVG_BILL_PLAN_SRV.AvgDet"
                 },
-                "Contract":"0034911148",
+                "Contract":"34911148",
                 "Period":"11/2015",
                 "ABP":"",
                 "AvgPrior12":"",
@@ -19,11 +19,11 @@
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='10%2F2015')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='10%2F2015')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='10%2F2015')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='10%2F2015')",
                     "type":"ZE_CCUX_AVG_BILL_PLAN_SRV.AvgDet"
                 },
-                "Contract":"0034911148",
+                "Contract":"34911148",
                 "Period":"10/2015",
                 "ABP":"",
                 "AvgPrior12":"",
@@ -35,11 +35,11 @@
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='09%2F2015')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='09%2F2015')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='09%2F2015')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='09%2F2015')",
                     "type":"ZE_CCUX_AVG_BILL_PLAN_SRV.AvgDet"
                 },
-                "Contract":"0034911148",
+                "Contract":"34911148",
                 "Period":"09/2015",
                 "ABP":"",
                 "AvgPrior12":"",
@@ -51,11 +51,11 @@
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='08%2F2015')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='08%2F2015')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='08%2F2015')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='08%2F2015')",
                     "type":"ZE_CCUX_AVG_BILL_PLAN_SRV.AvgDet"
                 },
-                "Contract":"0034911148",
+                "Contract":"34911148",
                 "Period":"08/2015",
                 "ABP":"",
                 "AvgPrior12":"",
@@ -67,11 +67,11 @@
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='07%2F2015')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='07%2F2015')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='07%2F2015')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='07%2F2015')",
                     "type":"ZE_CCUX_AVG_BILL_PLAN_SRV.AvgDet"
                 },
-                "Contract":"0034911148",
+                "Contract":"34911148",
                 "Period":"07/2015",
                 "ABP":"",
                 "AvgPrior12":"",
@@ -83,11 +83,11 @@
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='06%2F2015')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='06%2F2015')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='06%2F2015')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='06%2F2015')",
                     "type":"ZE_CCUX_AVG_BILL_PLAN_SRV.AvgDet"
                 },
-                "Contract":"0034911148",
+                "Contract":"34911148",
                 "Period":"06/2015",
                 "ABP":"",
                 "AvgPrior12":"",
@@ -99,11 +99,11 @@
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='05%2F2015')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='05%2F2015')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='05%2F2015')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='05%2F2015')",
                     "type":"ZE_CCUX_AVG_BILL_PLAN_SRV.AvgDet"
                 },
-                "Contract":"0034911148",
+                "Contract":"34911148",
                 "Period":"05/2015",
                 "ABP":"",
                 "AvgPrior12":"",
@@ -115,11 +115,11 @@
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='04%2F2015')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='04%2F2015')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='04%2F2015')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='04%2F2015')",
                     "type":"ZE_CCUX_AVG_BILL_PLAN_SRV.AvgDet"
                 },
-                "Contract":"0034911148",
+                "Contract":"34911148",
                 "Period":"04/2015",
                 "ABP":"",
                 "AvgPrior12":"",
@@ -131,11 +131,11 @@
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='03%2F2015')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='03%2F2015')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='03%2F2015')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='03%2F2015')",
                     "type":"ZE_CCUX_AVG_BILL_PLAN_SRV.AvgDet"
                 },
-                "Contract":"0034911148",
+                "Contract":"34911148",
                 "Period":"03/2015",
                 "ABP":"",
                 "AvgPrior12":"",
@@ -147,11 +147,11 @@
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='02%2F2015')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='02%2F2015')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='02%2F2015')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='02%2F2015')",
                     "type":"ZE_CCUX_AVG_BILL_PLAN_SRV.AvgDet"
                 },
-                "Contract":"0034911148",
+                "Contract":"34911148",
                 "Period":"02/2015",
                 "ABP":"",
                 "AvgPrior12":"",
@@ -163,11 +163,11 @@
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='01%2F2015')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='01%2F2015')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='01%2F2015')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='01%2F2015')",
                     "type":"ZE_CCUX_AVG_BILL_PLAN_SRV.AvgDet"
                 },
-                "Contract":"0034911148",
+                "Contract":"34911148",
                 "Period":"01/2015",
                 "ABP":"",
                 "AvgPrior12":"",
@@ -179,11 +179,11 @@
             },
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='12%2F2014')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='0034911148',Period='12%2F2014')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='12%2F2014')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgDetS(Contract='34911148',Period='12%2F2014')",
                     "type":"ZE_CCUX_AVG_BILL_PLAN_SRV.AvgDet"
                 },
-                "Contract":"0034911148",
+                "Contract":"34911148",
                 "Period":"12/2014",
                 "ABP":"",
                 "AvgPrior12":"",

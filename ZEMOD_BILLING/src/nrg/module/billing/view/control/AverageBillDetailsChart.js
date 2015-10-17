@@ -80,7 +80,7 @@ sap.ui.define(
 
         CustomControl.prototype._createChart = function () {
             var oCustomControl = this;
-            var oMargin = { top: 0, right: 30, bottom: 40, left: 80 };
+            var oMargin = { top: 10, right: 30, bottom: 40, left: 80 };
             var iWidth = oCustomControl.getWidth() - oMargin.left - oMargin.right;
             var iHeight = oCustomControl.getHeight() - oMargin.top - oMargin.bottom;
             var aDataset = oCustomControl._getDataSet();

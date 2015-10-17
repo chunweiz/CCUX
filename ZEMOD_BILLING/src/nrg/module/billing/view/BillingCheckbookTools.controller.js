@@ -6,153 +6,76 @@ sap.ui.define(
     [
         'sap/ui/core/mvc/Controller',
         'sap/ui/core/Fragment',
-        'sap/ui/model/json/JSONModel'
+        'sap/ui/model/json/JSONModel',
+        'sap/ui/model/Filter',
+        'sap/ui/model/FilterOperator'
     ],
 
-    function (CoreController, Fragment, JSONModel) {
+    function (CoreController, Fragment, JSONModel, Filter, FilterOperator) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.billing.view.BillingCheckbookTools');
 
         Controller.prototype.onInit = function ()
         {
-            this.getView().setModel(this.getOwnerComponent().getModel('comp-billing'), 'oDataAvgSvc');
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-billing-avgplan'), 'oDataAvgSvc');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oUsageGraph');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAmountBtn');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAmountHistory');
+
+            this._aYearList = [];
+            this._aGraphClors = ['blue', 'gray', 'yellow'];
+        };
+
+        Controller.prototype.onBeforeRendering = function () {
+            // Retrieve routing parameters
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+
+            this._bpNum = oRouteInfo.parameters.bpNum;
+            this._caNum = oRouteInfo.parameters.caNum;
+            this._coNum = oRouteInfo.parameters.coNum;
+
+            // Retrieve the data for table
+            this._retrieveTableInfo(this._coNum);
+            // Retrieve the data for graph
+            this._retrieveGraphInfo(this._coNum);
         };
 
         Controller.prototype.onAfterRendering = function ()
 		{
-			var graphModel = new sap.ui.model.json.JSONModel({
-                data: [
-                    { usageDate: '07/01/2013', usage: 1456 },
-                    { usageDate: '06/01/2013', usage: 1210 },
-                    { usageDate: '05/01/2013', usage: 1144 },
-                    { usageDate: '04/01/2013', usage: 1357 },
-                    { usageDate: '03/01/2013', usage: 1543 },
-                    { usageDate: '02/01/2013', usage: 1654 },
-                    { usageDate: '01/01/2013', usage: 1356 },
-                    { usageDate: '12/01/2014', usage: 1158 },
-                    { usageDate: '11/01/2014', usage: 1582 },
-                    { usageDate: '10/01/2014', usage: 1055 },
-                    { usageDate: '09/01/2014', usage: 1286 },
-                    { usageDate: '08/01/2014', usage: 1574 },
-                    { usageDate: '07/01/2014', usage: 1258 },
-                    { usageDate: '06/01/2014', usage: 1345 },
-                    { usageDate: '05/01/2014', usage: 1526 },
-                    { usageDate: '04/01/2014', usage: 1712 },
-                    { usageDate: '03/01/2014', usage: 1462 },
-                    { usageDate: '02/01/2014', usage: 1155 },
-                    { usageDate: '01/01/2014', usage: 1018 },
-                    { usageDate: '12/01/2015', usage: 1332 },
-                    { usageDate: '11/01/2015', usage: 1450 },
-                    { usageDate: '10/01/2015', usage: 1280 },
-                    { usageDate: '09/01/2015', usage: 1390 },
-                    { usageDate: '08/01/2015', usage: 1420 },
-                    { usageDate: '07/01/2015', usage: 1380 },
-                    { usageDate: '06/01/2015', usage: 1400 },
-                    { usageDate: '05/01/2015', usage: 1300 }
-                ]
-            });
 
-            var btnModel = new sap.ui.model.json.JSONModel({
-                amount: "$60.00"
-            });
-
-            var historyModel = new sap.ui.model.json.JSONModel(
-                [
-                    {
-                        Month: '08/28/14',
-                        Usage: '1450',
-                        UsageCharge: '$80.00',
-                        Avg: '$60.00',
-                        Adj: '$10.00',
-                        Deferred: '$20.00'
-                    },
-                    {
-                        Month: '07/28/14',
-                        Usage: '1250',
-                        UsageCharge: '$90.00',
-                        Avg: '$65.00',
-                        Adj: '$15.00',
-                        Deferred: '$45.00'
-                    },
-                    {
-                        Month: '06/28/14',
-                        Usage: '1246',
-                        UsageCharge: '$50.00',
-                        Avg: '$70.00',
-                        Adj: '$20.00',
-                        Deferred: '$25.00'
-                    },
-                    {
-                        Month: '05/28/14',
-                        Usage: '1150',
-                        UsageCharge: '$50.00',
-                        Avg: '$70.00',
-                        Adj: '$20.00',
-                        Deferred: '$25.00'
-                    },
-                    {
-                        Month: '04/28/14',
-                        Usage: '1264',
-                        UsageCharge: '$90.00',
-                        Avg: '$65.00',
-                        Adj: '$25.00',
-                        Deferred: '$45.00'
-                    },
-                    {
-                        Month: '03/28/14',
-                        Usage: '1350',
-                        UsageCharge: '$80.00',
-                        Avg: '$60.00',
-                        Adj: '$20.00',
-                        Deferred: '$20.00'
-                    },
-                    {
-                        Month: '02/28/14',
-                        Usage: '1035',
-                        UsageCharge: '$90.00',
-                        Avg: '$60.00',
-                        Adj: '$30.00',
-                        Deferred: '$15.00'
-                    },
-                    {
-                        Month: '01/28/14',
-                        Usage: '1440',
-                        UsageCharge: '$55.00',
-                        Avg: '$65.00',
-                        Adj: '$10.00',
-                        Deferred: '$10.00'
-                    }
-                ]
-            );
-            
-            this.getView().setModel(graphModel, 'oUsageGraph');
-            this.getView().setModel(btnModel, 'oAmountBtn');
-            this.getView().setModel(historyModel, 'oAmountHistory');
         };
 
         Controller.prototype._onAvgBillBtnClicked = function () {
-            if (!this._oAvgBillPopup) {
-                this._oAvgBillPopup = ute.ui.main.Popup.create({
-                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.AverageBillingPlan", this),
-                    title: 'AVERAGE BILLING PLAN'
+            // Check if the user is eligible for ABP.
+            // If yes, show the ABP button; if not, hide the button.
+
+            if (this._coNum) {
+
+                if (!this._oAvgBillPopup) {
+                    this._oAvgBillPopup = ute.ui.main.Popup.create({
+                        content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.AverageBillingPlan", this),
+                        title: 'AVERAGE BILLING PLAN'
+                    });
+                    this._oAvgBillPopup.addStyleClass('nrgBilling-avgBillingPopup');
+                    this.getView().addDependent(this._oAvgBillPopup);
+                    // Render the graph
+                    this.byId("chart").setDataModel(this.getView().getModel('oUsageGraph'));
+                    // Render the graph crontrol buttons
+                    this._renderGraphCrontrolBtn();
+                }
+                this._oAvgBillPopup.open();
+            } else {
+                ute.ui.main.Popup.Alert({
+                    title: 'Contract Not Found',
+                    message: 'Contract number is not found in the routing.'
                 });
-                this._oAvgBillPopup.addStyleClass('nrgBilling-avgBillingPopup');
-                this.getView().addDependent(this._oAvgBillPopup);
-				// this._oAvgBillPopup.bindElement('/data');
-                this._retrieveAbpInfo();
-				this.byId("chart").setDataModel(this.getView().getModel('oUsageGraph'));
             }
-
-            this._oAvgBillPopup.open();
-
-            var oAvgOData = this.getView().getModel('oDataAvgSvc');
-            return;
         };
 
         Controller.prototype.onSelected = function (oEvent) {
             var oCheckbox = oEvent.getSource(),
-                sYear = oCheckbox.getId().replace(this.getView().getId() + '--', ''),
+                sYear = this._aYearList[parseInt(oCheckbox.getId().replace(this.getView().getId() + '--' + 'nrgBilling-avgBillingPopup-graphControlChkbox-', ''))].toString(),
                 bHide = oCheckbox.getChecked(),
                 oChart = this.getView().byId('chart');
 
@@ -161,8 +84,137 @@ sap.ui.define(
             }
         };
 
-        Controller.prototype._retrieveAbpInfo = function () {
+        Controller.prototype._retrieveTableInfo = function (sCoNumber) {
+            var sPath = '/AvgAddS',
+                aFilters = [];
+                aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNumber}));
 
+            var oModel = this.getView().getModel('oDataAvgSvc'),
+                oHistoryModel = this.getView().getModel('oAmountHistory'),
+                aHistoryData = [],
+                oParameters;
+
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData.results) {
+                        for (var i = 0; i < oData.results.length; i++) {
+                            var dataEntry = {};
+                            dataEntry = oData.results[i];
+                            dataEntry.Amount = "$" + parseFloat(dataEntry.Amount);
+                            dataEntry.Consumption = parseFloat(dataEntry.Consumption);
+                            dataEntry.AdjAmount = "";
+                            aHistoryData.push(dataEntry);
+                        }
+                        oHistoryModel.setData(aHistoryData);
+                        oHistoryModel.setProperty('/estAmount', "$" + parseFloat(oData.results[0].Estimate));
+                    } else {
+                        
+                    }
+                }.bind(this),
+                error: function (oError) {
+                
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrieveGraphInfo = function (sCoNumber) {
+            var sPath = '/AvgUsgS',
+                aFilters = [];
+                aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNumber}));
+
+            var oModel = this.getView().getModel('oDataAvgSvc'),
+                oGraphModel = this.getView().getModel('oUsageGraph'),
+                aGraphData = [],
+                oParameters;
+
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData.results) {  
+                        for (var i = 0; i < oData.results.length; i++) {
+                            var dataEntry = {};
+                            dataEntry.usageDate = oData.results[i].Period;
+                            dataEntry.usage = parseInt(oData.results[i].Consumption);
+                            aGraphData.push(dataEntry);
+                        }
+                        oGraphModel.setProperty('/data', aGraphData);
+                    } else {
+                        
+                    }
+                }.bind(this),
+                error: function (oError) {
+                
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+            
+        };
+
+        Controller.prototype._renderGraphCrontrolBtn = function () {
+            var oGraphModel = this.getView().getModel('oUsageGraph');
+            
+            if (oGraphModel.oData.data.length) {
+                for (var i = 0; i < oGraphModel.oData.data.length; i++) {
+                    var parts = oGraphModel.oData.data[i].usageDate.split("/");
+                    var time = new Date(parseInt(parts[2], 10), parseInt(parts[1], 10) - 1, parseInt(parts[0], 10));
+                    if (this._aYearList.indexOf(time.getFullYear()) < 0) {
+                        this._aYearList.push(time.getFullYear());
+                    }
+                }
+            }
+
+            for (var j = 0; j < this._aYearList.length; j++) {
+                this.getView().byId("nrgBilling-avgBillingPopup-graphControlBtn-" + j).setVisible(true);
+                this.getView().byId("nrgBilling-avgBillingPopup-graphControlText-" + j).setText(this._aYearList[j]).addStyleClass("usageChartLegend-label-" + this._aGraphClors[j]);
+            }
+
+        };
+
+        Controller.prototype._onCancelBtnClick = function () {
+            this._oAvgBillPopup.close();
+        };
+
+        Controller.prototype._onCalBtnClick = function () {
+            var oModel = this.getView().getModel('oDataAvgSvc'),
+                oHistoryModel = this.getView().getModel('oAmountHistory'),
+                oPayload = {};
+
+            oPayload.Contract = this._coNum;
+            for (var i = 0; i < oHistoryModel.oData.length; i++) {
+                var periodParameterName = 'Prd' + this._pad(i+1);
+                var basisParameterName = 'Bbs' + this._pad(i+1);
+                var adjustParameterName = 'Amt' + this._pad(i+1);
+
+                oPayload[periodParameterName] = oHistoryModel.oData[i].Period;
+                oPayload[basisParameterName] = oHistoryModel.oData[i].Basis;
+                oPayload[adjustParameterName] = oHistoryModel.oData[i].AdjAmount;
+            }
+
+            if (oModel) {
+                oModel.callFunction(
+                    '/ABPCalc',     // function name
+                    'POST',         // http method
+                    oPayload,       // parameters
+                    function (oData, response) {    // callback function for success  
+                        console.log('5566520', oData, response);
+                    },
+                    function (oError) {             // callback function for error  
+                        console.log('7788520', oError);
+                    }
+                );
+            }
+        };
+
+        Controller.prototype._pad = function (d) {
+            return (d < 10) ? '0' + d.toString() : d.toString();
         };
 
 
