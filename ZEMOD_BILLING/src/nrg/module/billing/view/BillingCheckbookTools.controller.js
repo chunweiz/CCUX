@@ -280,8 +280,8 @@ sap.ui.define(
             if (this._coNum) {
 
                 // Check if the user is eligible for ABP.
-                if (oEligibilityModel.oData.ABPElig) {
-                    if (oEligibilityModel.oData.ABPAct) {
+                if (oEligibilityModel.oData.ABPElig === "Y") {
+                    if (oEligibilityModel.oData.ABPAct === "Y") {
                         // Scenario 1
                     } else {
                         // Scenario 2
