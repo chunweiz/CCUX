@@ -19,6 +19,7 @@ sap.ui.define(
         Controller.prototype.onInit = function ()
         {
             this.getView().setModel(this.getOwnerComponent().getModel('comp-billing-avgplan'), 'oDataAvgSvc');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEligibility');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oUsageGraph');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAmountBtn');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAmountHistory');
@@ -39,6 +40,8 @@ sap.ui.define(
             this._retrieveTableInfo(this._coNum);
             // Retrieve the data for graph
             this._retrieveGraphInfo(this._coNum);
+            // Retrieve the eligibility for ABP
+            this._retrieveABPEligibility(this._coNum);
         };
 
         Controller.prototype.onAfterRendering = function ()
@@ -46,43 +49,7 @@ sap.ui.define(
 
         };
 
-        Controller.prototype._onAvgBillBtnClicked = function () {
-            // Check if the user is eligible for ABP.
-            // If yes, show the ABP button; if not, hide the button.
-
-            if (this._coNum) {
-
-                if (!this._oAvgBillPopup) {
-                    this._oAvgBillPopup = ute.ui.main.Popup.create({
-                        content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.AverageBillingPlan", this),
-                        title: 'AVERAGE BILLING PLAN'
-                    });
-                    this._oAvgBillPopup.addStyleClass('nrgBilling-avgBillingPopup');
-                    this.getView().addDependent(this._oAvgBillPopup);
-                    // Render the graph
-                    this.byId("chart").setDataModel(this.getView().getModel('oUsageGraph'));
-                    // Render the graph crontrol buttons
-                    this._renderGraphCrontrolBtn();
-                }
-                this._oAvgBillPopup.open();
-            } else {
-                ute.ui.main.Popup.Alert({
-                    title: 'Contract Not Found',
-                    message: 'Contract number is not found in the routing.'
-                });
-            }
-        };
-
-        Controller.prototype.onSelected = function (oEvent) {
-            var oCheckbox = oEvent.getSource(),
-                sYear = this._aYearList[parseInt(oCheckbox.getId().replace(this.getView().getId() + '--' + 'nrgBilling-avgBillingPopup-graphControlChkbox-', ''))].toString(),
-                bHide = oCheckbox.getChecked(),
-                oChart = this.getView().byId('chart');
-
-            if (oChart) {
-                oChart.hideUsage(sYear, !bHide);
-            }
-        };
+        /*------------------------------------------------ Retrieve Methods -------------------------------------------------*/
 
         Controller.prototype._retrieveTableInfo = function (sCoNumber) {
             var sPath = '/AvgAddS',
@@ -158,6 +125,134 @@ sap.ui.define(
             
         };
 
+        Controller.prototype._retrieveABPEligibility = function (sCoNumber) {
+            var sPath = '/EligibilityS' + '(\'' + sCoNumber + '\')',
+                oModel = this.getView().getModel('oDataAvgSvc'),
+                oEligibilityModel = this.getView().getModel('oEligibility'),
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    oEligibilityModel.setData(oData);
+                }.bind(this),
+                error: function (oError) {
+                
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        /*------------------------------------------------- Button Actions --------------------------------------------------*/
+
+        Controller.prototype._onCancelBtnClick = function () {
+            this._oAvgBillPopup.close();
+        };
+
+        Controller.prototype._onCalBtnClick = function () {
+            var oModel = this.getView().getModel('oDataAvgSvc'),
+                oHistoryModel = this.getView().getModel('oAmountHistory'),
+                oPayload = {},
+                mParameters;
+
+            oPayload.Contract = this._coNum;
+            for (var i = 0; i < oHistoryModel.oData.length; i++) {
+                var periodParameterName = 'Prd' + this._pad(i+1);
+                var basisParameterName = 'Bbs' + this._pad(i+1);
+                var adjustParameterName = 'Amt' + this._pad(i+1);
+
+                oPayload[periodParameterName] = oHistoryModel.oData[i].Period;
+                oPayload[basisParameterName] = oHistoryModel.oData[i].Basis;
+                oPayload[adjustParameterName] = oHistoryModel.oData[i].AdjAmount;
+            }
+
+            // if (oModel) {
+            //     oModel.callFunction(
+            //         '/ABPCalc',     // function name
+            //         'POST',         // http method
+            //         oPayload,       // parameters
+            //         function (oData, response) {    // callback function for success  
+            //             console.log('5566520', oData, response);
+            //         },
+            //         function (oError) {             // callback function for error  
+            //             console.log('7788520', oError);
+            //         }
+            //     );
+            // }
+
+            if (oModel) {
+                mParameters = {
+                    method : "POST",
+                    urlParameters : oPayload,
+                    success : function (oData, response) {
+                        console.log('5566520', oData, response);
+                    }.bind(this),
+                    error: function (oError) {
+                        console.log('7788520', oError);
+                    }.bind(this)
+                };
+                oModel.callFunction("/ABPCalc", mParameters);
+            }
+
+        };
+
+        Controller.prototype._onAvgBillBtnClicked = function () {
+            var oEligibilityModel = this.getView().getModel('oEligibility');
+
+            // Check if the user is eligible for ABP.
+            if (oEligibilityModel.oData.ABPElig) {
+                if (oEligibilityModel.oData.ABPAct) {
+                    // Scenario 1
+                } else {
+                    // Scenario 2
+                }
+            } else {
+                ute.ui.main.Popup.Alert({
+                    title: 'Not Eligible',
+                    message: 'You are not eligible for Average Billing Plan.'
+                });
+            }
+
+            if (this._coNum) {
+
+                if (!this._oAvgBillPopup) {
+                    this._oAvgBillPopup = ute.ui.main.Popup.create({
+                        content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.AverageBillingPlan", this),
+                        title: 'AVERAGE BILLING PLAN'
+                    });
+                    this._oAvgBillPopup.addStyleClass('nrgBilling-avgBillingPopup');
+                    this.getView().addDependent(this._oAvgBillPopup);
+                    // Render the graph
+                    this.byId("chart").setDataModel(this.getView().getModel('oUsageGraph'));
+                    // Render the graph crontrol buttons
+                    this._renderGraphCrontrolBtn();
+                }
+                this._oAvgBillPopup.open();
+            } else {
+                ute.ui.main.Popup.Alert({
+                    title: 'Contract Not Found',
+                    message: 'Contract number is not found in the routing.'
+                });
+            }
+        };
+
+        Controller.prototype.onSelected = function (oEvent) {
+            var oCheckbox = oEvent.getSource(),
+                sYear = this._aYearList[parseInt(oCheckbox.getId().replace(this.getView().getId() + '--' + 'nrgBilling-avgBillingPopup-graphControlChkbox-', ''))].toString(),
+                bHide = oCheckbox.getChecked(),
+                oChart = this.getView().byId('chart');
+
+            if (oChart) {
+                oChart.hideUsage(sYear, !bHide);
+            }
+        };
+
+
+
+
+
         Controller.prototype._renderGraphCrontrolBtn = function () {
             var oGraphModel = this.getView().getModel('oUsageGraph');
             
@@ -178,40 +273,7 @@ sap.ui.define(
 
         };
 
-        Controller.prototype._onCancelBtnClick = function () {
-            this._oAvgBillPopup.close();
-        };
-
-        Controller.prototype._onCalBtnClick = function () {
-            var oModel = this.getView().getModel('oDataAvgSvc'),
-                oHistoryModel = this.getView().getModel('oAmountHistory'),
-                oPayload = {};
-
-            oPayload.Contract = this._coNum;
-            for (var i = 0; i < oHistoryModel.oData.length; i++) {
-                var periodParameterName = 'Prd' + this._pad(i+1);
-                var basisParameterName = 'Bbs' + this._pad(i+1);
-                var adjustParameterName = 'Amt' + this._pad(i+1);
-
-                oPayload[periodParameterName] = oHistoryModel.oData[i].Period;
-                oPayload[basisParameterName] = oHistoryModel.oData[i].Basis;
-                oPayload[adjustParameterName] = oHistoryModel.oData[i].AdjAmount;
-            }
-
-            if (oModel) {
-                oModel.callFunction(
-                    '/ABPCalc',     // function name
-                    'POST',         // http method
-                    oPayload,       // parameters
-                    function (oData, response) {    // callback function for success  
-                        console.log('5566520', oData, response);
-                    },
-                    function (oError) {             // callback function for error  
-                        console.log('7788520', oError);
-                    }
-                );
-            }
-        };
+        
 
         Controller.prototype._pad = function (d) {
             return (d < 10) ? '0' + d.toString() : d.toString();
