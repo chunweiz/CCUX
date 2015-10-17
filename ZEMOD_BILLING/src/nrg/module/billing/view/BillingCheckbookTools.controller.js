@@ -134,13 +134,13 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     oEligibilityModel.setData(oData);
-                    if (oData.ABPAct === "Y") {
-                        oEligibilityModel.setProperty('/Activated', true);
-                        oEligibilityModel.setProperty('/NonActivated', false);
-                    } else {
-                        oEligibilityModel.setProperty('/Activated', false);
-                        oEligibilityModel.setProperty('/NonActivated', true);
-                    }
+                    // if (oData.ABPAct === "Y") {
+                    //     oEligibilityModel.setProperty('/Activated', true);
+                    //     oEligibilityModel.setProperty('/NonActivated', false);
+                    // } else {
+                    //     oEligibilityModel.setProperty('/Activated', false);
+                    //     oEligibilityModel.setProperty('/NonActivated', true);
+                    // }
                 }.bind(this),
                 error: function (oError) {
                 
