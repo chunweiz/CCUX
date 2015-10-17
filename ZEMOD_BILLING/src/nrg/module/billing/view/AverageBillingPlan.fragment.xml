@@ -70,6 +70,7 @@
                         <!-- Caculate Btn -->                            
                         <utmain:Button
                             design="None"
+                            visible="{oEligibility>/NonActivated}"
                             class="nrgBilling-avgBillingPopup-amountDue-calBtn"
                             press="_onCalBtnClick">
                             <ute:Tag 
@@ -79,6 +80,7 @@
                         <!-- Set-up Btn -->
                         <utmain:Button
                             design="None"
+                            visible="{oEligibility>/NonActivated}"
                             class="nrgBilling-avgBillingPopup-amountDue-setBtn"
                             press="_onSetBtnClick">
                             <ute:Tag 
@@ -88,12 +90,24 @@
                         <!-- Cancel Btn -->
                         <utmain:Button
                             design="None"
+                            visible="{oEligibility>/NonActivated}"
                             class="nrgBilling-avgBillingPopup-amountDue-cancelBtn"
                             press="_onCancelBtnClick">
                             <ute:Tag 
                                 class="nrgBilling-avgBillingPopup-amountDue-cancelBtnText"
                                 text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-cancelBtn-TITLE}" />
                         </utmain:Button>
+                        <!-- De-activate Btn -->
+                        <utmain:Button
+                            design="None"
+                            visible="{oEligibility>/Activated}"
+                            class="nrgBilling-avgBillingPopup-amountDue-deactBtn"
+                            press="_onDeactBtnClick">
+                            <ute:Tag 
+                                class="nrgBilling-avgBillingPopup-amountDue-deactBtnText"
+                                text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-deactBtn-TITLE}" />
+                        </utmain:Button>
+
                     </ute:Tag>
 
                 </ute:Tag>
