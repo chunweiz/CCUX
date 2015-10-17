@@ -196,9 +196,9 @@ sap.ui.define(
                         "Prd07": oPayload.Prd07,
                         "Prd08": oPayload.Prd08,
                         "Prd09": oPayload.Prd09,
-                        "Prd010": oPayload.Prd10,
-                        "Prd011": oPayload.Prd11,
-                        "Prd012": oPayload.Prd12,
+                        "Prd10": oPayload.Prd10,
+                        "Prd11": oPayload.Prd11,
+                        "Prd12": oPayload.Prd12,
                         "Amt01": oPayload.Amt01,
                         "Amt02": oPayload.Amt02,
                         "Amt03": oPayload.Amt03,
@@ -239,35 +239,36 @@ sap.ui.define(
         Controller.prototype._onAvgBillBtnClicked = function () {
             var oEligibilityModel = this.getView().getModel('oEligibility');
 
-            // Check if the user is eligible for ABP.
-            if (oEligibilityModel.oData.ABPElig) {
-                if (oEligibilityModel.oData.ABPAct) {
-                    // Scenario 1
-                } else {
-                    // Scenario 2
-                }
-            } else {
-                ute.ui.main.Popup.Alert({
-                    title: 'Not Eligible',
-                    message: 'You are not eligible for Average Billing Plan.'
-                });
-            }
-
             if (this._coNum) {
 
-                if (!this._oAvgBillPopup) {
-                    this._oAvgBillPopup = ute.ui.main.Popup.create({
-                        content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.AverageBillingPlan", this),
-                        title: 'AVERAGE BILLING PLAN'
+                // Check if the user is eligible for ABP.
+                if (oEligibilityModel.oData.ABPElig) {
+                    if (oEligibilityModel.oData.ABPAct) {
+                        // Scenario 1
+                    } else {
+                        // Scenario 2
+                    }
+
+                    if (!this._oAvgBillPopup) {
+                        this._oAvgBillPopup = ute.ui.main.Popup.create({
+                            content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.AverageBillingPlan", this),
+                            title: 'AVERAGE BILLING PLAN'
+                        });
+                        this._oAvgBillPopup.addStyleClass('nrgBilling-avgBillingPopup');
+                        this.getView().addDependent(this._oAvgBillPopup);
+                        // Render the graph
+                        this.byId("chart").setDataModel(this.getView().getModel('oUsageGraph'));
+                        // Render the graph crontrol buttons
+                        this._renderGraphCrontrolBtn();
+                    }
+                    this._oAvgBillPopup.open();
+
+                } else {
+                    ute.ui.main.Popup.Alert({
+                        title: 'Not Eligible',
+                        message: 'You are not eligible for Average Billing Plan.'
                     });
-                    this._oAvgBillPopup.addStyleClass('nrgBilling-avgBillingPopup');
-                    this.getView().addDependent(this._oAvgBillPopup);
-                    // Render the graph
-                    this.byId("chart").setDataModel(this.getView().getModel('oUsageGraph'));
-                    // Render the graph crontrol buttons
-                    this._renderGraphCrontrolBtn();
                 }
-                this._oAvgBillPopup.open();
             } else {
                 ute.ui.main.Popup.Alert({
                     title: 'Contract Not Found',
