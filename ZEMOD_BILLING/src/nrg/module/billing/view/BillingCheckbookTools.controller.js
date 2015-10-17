@@ -200,7 +200,7 @@ sap.ui.define(
 
             if (oModel) {
                 oModel.callFunction(
-                    '/ABPCalc',     // function name
+                    'ABPCalc',     // function name
                     'POST',         // http method
                     oPayload,       // parameters
                     function (oData, response) {    // callback function for success  
