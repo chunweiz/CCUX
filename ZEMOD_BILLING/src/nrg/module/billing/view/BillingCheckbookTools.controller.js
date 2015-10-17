@@ -172,7 +172,7 @@ sap.ui.define(
 
                 oPayload[periodParameterName] = oHistoryModel.oData[i].Period;
                 oPayload[basisParameterName] = oHistoryModel.oData[i].Basis;
-                oPayload[adjustParameterName] = oHistoryModel.oData[i].AdjAmount;
+                oPayload[adjustParameterName] = (parseFloat(oHistoryModel.oData[i].AdjAmount) || 0).toString();
             }
 
             if (oModel) {

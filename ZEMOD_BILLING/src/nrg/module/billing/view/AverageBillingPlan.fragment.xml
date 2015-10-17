@@ -129,7 +129,7 @@
             <ute:Tag class="nrgBilling-avgBillingPopup-usage-content">
                 <!-- Graph -->
                 <ute:Tag class="nrgBilling-avgBillingPopup-usage-graph">
-                    <chart:AverageBillDetailsChart id="chart" width="700" height="250" usageTickSize="100" />
+                    <chart:AverageBillDetailsChart id="chart" width="700" height="250" usageTickSize="500" />
                 </ute:Tag>
                 <!-- Graph Legend -->
                 <ute:Tag class="nrgBilling-avgBillingPopup-usage-control">

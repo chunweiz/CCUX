@@ -15,7 +15,7 @@ sap.ui.define(
                 properties: {
                     width: { type: 'int', defaultValue: 900 },
                     height: { type: 'int', defaultValue: 400 },
-                    usageTickSize: { type: 'int', defaultValue: 100 }
+                    usageTickSize: { type: 'int', defaultValue: 500 }
                 }
             },
 
