@@ -218,7 +218,7 @@ sap.ui.define(
                                 title: 'Success',
                                 message: 'ABP enrollment success.'
                             });
-                            this._retrieveABPEligibility();
+                            this._retrieveABPEligibility(this._coNum);
                         } else {
                             ute.ui.main.Popup.Alert({
                                 title: 'Request failed',
@@ -254,7 +254,7 @@ sap.ui.define(
                                 title: 'Success',
                                 message: 'You have canceled the ABP successfully.'
                             });
-                            this._retrieveABPEligibility();
+                            this._retrieveABPEligibility(this._coNum);
                         } else {
                             ute.ui.main.Popup.Alert({
                                 title: 'Request failed',
