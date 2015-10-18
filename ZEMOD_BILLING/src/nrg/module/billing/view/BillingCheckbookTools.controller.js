@@ -218,6 +218,7 @@ sap.ui.define(
                                 title: 'Success',
                                 message: 'ABP enrollment success.'
                             });
+                            this._retrieveABPEligibility();
                         } else {
                             ute.ui.main.Popup.Alert({
                                 title: 'Request failed',
@@ -253,6 +254,7 @@ sap.ui.define(
                                 title: 'Success',
                                 message: 'You have canceled the ABP successfully.'
                             });
+                            this._retrieveABPEligibility();
                         } else {
                             ute.ui.main.Popup.Alert({
                                 title: 'Request failed',
@@ -322,10 +324,6 @@ sap.ui.define(
                 oChart.hideUsage(sYear, !bHide);
             }
         };
-
-
-
-
 
         Controller.prototype._renderGraphCrontrolBtn = function () {
             var oGraphModel = this.getView().getModel('oUsageGraph');
