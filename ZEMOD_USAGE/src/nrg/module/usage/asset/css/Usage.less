@@ -43,7 +43,7 @@
             }
             & > .nrgUsg-Radio {
                     width: 10rem;
-                    float : right;
+                    margin-left: 42rem;
                     & > .nrgUsg-RadioLabel {
                         margin: 0px 5px;
                     }
@@ -108,7 +108,10 @@
             &   .nrgUsgTable-Row {
                     font-size: @nrgFontSize-small;
                     &  .nrgUsgNoData {
-                        text-align: center;
+                            text-align: center;
+                            padding-top: 20px;
+                            padding-bottom: 20px;
+                            background-color: #cacacb;
                     }
                     & .nrgUsgTable-Infoline {
                         min-width: 53rem;
@@ -184,7 +187,6 @@
                             border: 1px solid @nrgColor-grey-dark;
                     }
             }
-
             &  > .nrgUsgDropDown {
                     display: block;
                     &   .nrgUsg-DdLItem {
@@ -209,6 +211,12 @@
                             }
                     }
             }
+        & .nrgUsg-table-Graph > .nrgUsgNoData {
+                text-align: center;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                background-color: #cacacb;
+        }
     }
     &  .nrgUsg-top {
             margin-top: 10px;
