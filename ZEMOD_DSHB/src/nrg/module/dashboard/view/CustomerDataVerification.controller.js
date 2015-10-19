@@ -19,13 +19,13 @@ sap.ui.define(
         var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataVerification');
 
         Controller.prototype.onInit = function () {
-            //this._beforeOpenEditAddrDialogue = false;
+
         };
 
         Controller.prototype.onBeforeRendering = function () {
 
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
-            // if (!this._beforeOpenEditAddrDialogue) {
+
             this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
@@ -85,23 +85,14 @@ sap.ui.define(
             this._initCfrmStatus();
             this._initPhnTypes();
             this._initMailAddrModels();
-                //this._initCoPageModel();
-
-                //this._searchedCaNum = null;
-/*            } else {
-                this._beforeOpenEditAddrDialogue = false;
-            }*/
         };
-        /* =========================================================== */
-        /* lifecycle method- After Rendering                          */
-        /* =========================================================== */
+
         Controller.prototype.onAfterRendering = function () {
-            /*Add Nav Button to left and right*/
+            // Add Nav Button to left and right
             this.getOwnerComponent().getCcuxApp().showNavLeft(true);
             this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
             this.getOwnerComponent().getCcuxApp().showNavRight(true);
             this.getOwnerComponent().getCcuxApp().attachNavRight(this._navRightCallBack, this);
-
 
             // Update Footer
             this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum);
@@ -178,13 +169,6 @@ sap.ui.define(
             this.getView().byId('id_updtBtn').setEnabled(true);
         };
 
-        Controller.prototype._onBuagChange = function (iNewBuagIndex) {
-            var eventBus = sap.ui.getCore().getEventBus(),
-                oPayload = {iIndex: iNewBuagIndex};
-
-
-            eventBus.publish("nrg.module.dashoard", "eBuagChanged", oPayload);
-        };
 
         Controller.prototype._retrUrlHash = function () {
             //Get the hash to retrieve bp #
@@ -240,16 +224,6 @@ sap.ui.define(
                                 title: 'Siebel Contracted Account',
                                 message: 'This is a Siebel Contracted account. Connect the caller to the CI Account Management Team for all account inquiries during their business hours of 7:30 AM to 5:30 PM, Monday through Friday (except holidays). After Hours: For service outages and Other Service Order requests, follow the defined process. For all other call types provide the customer with the CI Account Management Team’s toll free number and ask the customer to call back during business hours.'
                             });
-                        
-                            // this._oSiebelAlertPopup = ute.ui.main.Popup.create({
-                            //     content: this.getView().byId("idSiebelAccAlert"),
-                            //     title: 'Siebel Contracted Account'
-                            // });
-                            // //this._onToggleButtonPress();
-                            // this.getView().byId("idSiebelAccAlert").setVisible(true);
-                            // //this._beforeOpenEditAddrDialogue = true;
-                            // this._oSiebelAlertPopup.open();
-
                         }
                         if (oData.Cell) {
                             this.getView().getModel('oCfrmStatus').setProperty('/ShowSMSBtn', true);
@@ -302,7 +276,7 @@ sap.ui.define(
                             //If there's first record of Buags, load as default to display
                             this.getView().getModel('oDtaVrfyBuags').setData(oData.results[iPreSelCA]);
                             this._retrContracts(oData.results[iPreSelCA].ContractAccountID);
-                            this._retrBuagMailingAddr(sBpNum, oData.results[iPreSelCA].ContractAccountID, oData.results[iPreSelCA].FixedAddressID);
+                            this._retrCaMailingAddr(sBpNum, oData.results[iPreSelCA].ContractAccountID, oData.results[iPreSelCA].FixedAddressID);
                         }
                         for (i = 0; i < oData.results.length; i = i + 1) {
                             oData.results[i].iIndex = i.toString();
@@ -383,29 +357,6 @@ sap.ui.define(
                 oModel.read(sPath, oParameters);
             }
         };
-        Controller.prototype._retrBuagMailingAddr = function (sBpNum, sBuagNum, sFixedAddressID) {
-            var oModel = this.getView().getModel('oODataSvc'),
-                sPath,
-                oParameters,
-                i;
-
-            sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
-
-            oParameters = {
-                success : function (oData) {
-                    if (oData) {
-                        this.getView().getModel('oDtaVrfyMailingTempAddr').setData(oData);
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    //Need to put error message
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
-        };
 
         Controller.prototype._onContractSelect = function (oEvent) {
             var sSelectedKey = oEvent.getParameters().selectedKey,
@@ -420,27 +371,8 @@ sap.ui.define(
             }
         };
 
-        Controller.prototype._onBuagSelect = function (oEvent) {
-            var sSelectedKey = oEvent.getParameters().selectedKey,
-                iSelectedIndex = parseInt(sSelectedKey, 10);
 
-            //Trigger Buag Change event
-            //this._onBuagChange(this.getView().getModel('oAllBuags').oData[iSelectedIndex].ContractAccountID);
-
-            this.getView().getModel('oDtaVrfyBuags').setData(this.getView().getModel('oAllBuags').oData[iSelectedIndex]);
-            //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
-
-            //Trigger Buag Change event
-            this._onBuagChange(iSelectedIndex);
-
-            //Trigger contracts refresh
-            this._retrContracts(this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'));
-            this._retrBuagMailingAddr(this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'), this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'), this.getView().getModel('oDtaVrfyBuags').getProperty('/FixedAddressID'));
-
-            this._updateUsageLink();
-        };
-
-        /*Controller.prototype._onBuagChange = function (oEvent) {
+        /*Controller.prototype._onCaChange = function (oEvent) {
             var sNewSelectedBuagIndex;
 
             sNewSelectedBuagIndex = oEvent.getSource().getSelectedKey();
@@ -461,117 +393,40 @@ sap.ui.define(
 
         };
 
-        Controller.prototype._handleConfirm = function () {
-            var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
-                sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
-                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
-                sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID'),
-                oComponent = this.getOwnerComponent(),
-                oWebUiManager = oComponent.getCcuxWebUiManager(),
-                oPassingEvent; //For none IC usage
+        // Controller.prototype._handleUnConfirm = function () {
+        //     var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+        //         sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+        //         sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+        //         sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID'),
+        //         oComponent = this.getOwnerComponent(),
+        //         oWebUiManager = oComponent.getCcuxWebUiManager();
 
-            if (oWebUiManager.isAvailable()) {
-                //Confirm CA to IC first
-                oComponent.getCcuxApp().setOccupied(true);
-                oWebUiManager.notifyWebUi('caConfirmed', {
-                    BP_NUM: sCurrentBp,
-                    CA_NUM: sCurrentCa,
-                    CO_NUM: sCurrentCo
-                }, this._handleCaCofirmed, this);
-            } else {
-                oPassingEvent = {
-                    BP_NUM: sCurrentBp,
-                    CA_NUM: sCurrentCa,
-                    CO_NUM: sCurrentCo,
-                    getParameters: function () {
-                        return oPassingEvent;
-                    }
-                };
-                this._handleCaCofirmed(oPassingEvent);
-            }
-        };
+        //     //UnConfirm CA to IC first
+        //     oComponent.getCcuxApp().setOccupied(true);
+        //     oWebUiManager.notifyWebUi('caUnconfirmed', {
+        //         BP_NUM: sCurrentBp,
+        //         CA_NUM: sCurrentCa
+        //     }, this._handleCaUnCofirmed, this);
+        // };
 
-        Controller.prototype._handleCaCofirmed = function (oEvent) {
-            var oStatusModel = this.getView().getModel('oCfrmStatus'),
-                oRouter = this.getOwnerComponent().getRouter(),
-                oComponent = this.getOwnerComponent(),
-                oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
-                oRouteInfo = oEvent.getParameters(),
-                sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
-                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
-                sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID'),
-                badgeSS = this.getView().getModel('oDtaVrfyBuags').getProperty('/BadgeSS'),
-                isPrepaidUser = false; // Determine if prepaid user
+        // Controller.prototype._handleCaUnCofirmed = function (oEvent) {
+        //     var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+        //         oStatusModel = this.getView().getModel('oCfrmStatus'),
+        //         oComponent = this.getOwnerComponent();
 
-            if (badgeSS === 'x' || badgeSS === 'X') {
-                isPrepaidUser = true;
-            }
+        //     //Set Confirmed CaNum and CoNum to Component level
+        //     oComponentContextModel.setProperty('/dashboard/caNum', '');
+        //     oComponentContextModel.setProperty('/dashboard/coNum', '');
 
-            //Set Confirmed CaNum and CoNum to Component level
-            oComponentContextModel.setProperty('/caNum', sCurrentCa);
-            oComponentContextModel.setProperty('/coNum', sCurrentCo);
+        //     this.getView().byId('id_confmBtn').setVisible(true);
+        //     this.getView().byId('id_unConfmBtn').setVisible(false);
+        //     this.getView().byId('id_updtBtn').setEnabled(true);
 
-            this.getView().byId('id_confmBtn').setVisible(false);
-            this.getView().byId('id_unConfmBtn').setVisible(true);
-            this.getView().byId('id_updtBtn').setEnabled(false);
-
-            //Set the 'Editable' for all input to false to prevent changing after "Confirmed"
-            if (oStatusModel.getProperty('/bEditable')) {
-                oStatusModel.setProperty('/bEditable', false);
-            }
-
-            oComponent.getCcuxApp().setOccupied(false);
-
-            //Navigate to verification page
-            if (isPrepaidUser) {
-                if (sCurrentCo) {
-                    oRouter.navTo('billing.BillingPrePaid', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
-                } else {
-                    oRouter.navTo('billing.BillingPrePaidNoCo', {bpNum: sCurrentBp, caNum: sCurrentCa});
-                }
-            } else {
-                if (sCurrentCo) {
-                    oRouter.navTo('billing.BillingInfo', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
-                } else {
-                    oRouter.navTo('billing.BillingInfoNoCo', {bpNum: sCurrentBp, caNum: sCurrentCa});
-                }
-            }
-        };
-
-        Controller.prototype._handleUnConfirm = function () {
-            var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
-                sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
-                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
-                sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID'),
-                oComponent = this.getOwnerComponent(),
-                oWebUiManager = oComponent.getCcuxWebUiManager();
-
-            //UnConfirm CA to IC first
-            oComponent.getCcuxApp().setOccupied(true);
-            oWebUiManager.notifyWebUi('caUnconfirmed', {
-                BP_NUM: sCurrentBp,
-                CA_NUM: sCurrentCa
-            }, this._handleCaUnCofirmed, this);
-        };
-
-        Controller.prototype._handleCaUnCofirmed = function (oEvent) {
-            var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
-                oStatusModel = this.getView().getModel('oCfrmStatus'),
-                oComponent = this.getOwnerComponent();
-
-            //Set Confirmed CaNum and CoNum to Component level
-            oComponentContextModel.setProperty('/dashboard/caNum', '');
-            oComponentContextModel.setProperty('/dashboard/coNum', '');
-
-            this.getView().byId('id_confmBtn').setVisible(true);
-            this.getView().byId('id_unConfmBtn').setVisible(false);
-            this.getView().byId('id_updtBtn').setEnabled(true);
-
-            if (!oStatusModel.getProperty('/bEditable')) {
-                oStatusModel.setProperty('/bEditable', true);
-            }
-            oComponent.getCcuxApp().setOccupied(false);
-        };
+        //     if (!oStatusModel.getProperty('/bEditable')) {
+        //         oStatusModel.setProperty('/bEditable', true);
+        //     }
+        //     oComponent.getCcuxApp().setOccupied(false);
+        // };
 
         Controller.prototype._handleUpdate = function () {
             var oModel = this.getView().getModel('oODataSvc'),
@@ -1039,7 +894,7 @@ sap.ui.define(
                     content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
                     title: 'Edit Mailing Address',
                     close: function () {
-                        this._retrBuagMailingAddr(
+                        this._retrCaMailingAddr(
                             this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'),
                             this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
                             this.getView().getModel('oDtaVrfyBuags').getProperty('/FixedAddressID')
@@ -1487,15 +1342,97 @@ sap.ui.define(
 
         /*----------------------------------------------- CCUX Level Methods ------------------------------------------------*/
 
-        // Notify WebUI service about the current BP, CA and CO.
-        Controller.prototype._updateWebUI = function (fnCallback) {
+        Controller.prototype._routeInfoConfirm = function () {
+            var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+                sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+                sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID'),
+                oComponent = this.getOwnerComponent(),
+                oWebUiManager = oComponent.getCcuxWebUiManager(),
+                oPassingEvent,
+                iCompleteCheck = 0;
 
+            // Display the loading indicator
+            oComponent.getCcuxApp().setOccupied(true);
+
+            // if (oWebUiManager.isAvailable()) {
+            //     //Confirm CA to IC first
+            //     oComponent.getCcuxApp().setOccupied(true);
+            //     oWebUiManager.notifyWebUi('caConfirmed', {
+            //         BP_NUM: sCurrentBp,
+            //         CA_NUM: sCurrentCa,
+            //         CO_NUM: sCurrentCo
+            //     }, this._handleCaCofirmed, this);
+            // } else {
+            //     oPassingEvent = {
+            //         BP_NUM: sCurrentBp,
+            //         CA_NUM: sCurrentCa,
+            //         CO_NUM: sCurrentCo,
+            //         getParameters: function () {
+            //             return oPassingEvent;
+            //         }
+            //     };
+            //     this._handleCaCofirmed(oPassingEvent);
+            // }
+
+            // Update WebUI
+            if (oWebUiManager.isAvailable()) {
+                this._updateWebUI(sCurrentBp, sCurrentCa, sCurrentCo, function () {
+                    iCompleteCheck += 1;
+                }, this);
+            } else {
+                iCompleteCheck += 1;
+            }
+
+            // Update CCUX
+            this._updateCcux(sCurrentBp, sCurrentCa, sCurrentCo, function () {
+                iCompleteCheck += 1;
+            });
+
+            // Check the completion of WebUI & CCUX update
+            var checkComplete = setInterval(function() {
+                if (iCompleteCheck === 2) {
+                    oComponent.getCcuxApp().setOccupied(false);
+                    clearInterval(checkComplete);
+                }
+            }, 100);
+
+        };
+
+        // Notify WebUI service about the current BP, CA and CO.
+        Controller.prototype._updateWebUI = function (sCurrentBp, sCurrentCa, sCurrentCo, fnCallback, oListener) {
+            var oComponent = this.getOwnerComponent(),
+                oWebUiManager = oComponent.getCcuxWebUiManager();
+
+            oWebUiManager.notifyWebUi('caConfirmed', {
+                BP_NUM: sCurrentBp, 
+                CA_NUM: sCurrentCa, 
+                CO_NUM: sCurrentCo
+            }, fnCallback, oListener);
         };
 
         // Update CCUX about the current BP, CA and CO.
-        Controller.prototype._updateCcux = function () {
+        Controller.prototype._updateCcux = function (sCurrentBp, sCurrentCa, sCurrentCo, fnCallback) {
+            var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext();
 
+            //Set Confirmed CaNum and CoNum to Component level
+            oComponentContextModel.setProperty('/bpNum', sCurrentBp);
+            oComponentContextModel.setProperty('/caNum', sCurrentCa);
+            oComponentContextModel.setProperty('/coNum', sCurrentCo);
+
+            fnCallback();
         };
+
+        // Controller.prototype._handleCaCofirmed = function (oEvent) {
+        //     var 
+        //         oRouter = this.getOwnerComponent().getRouter(),
+        //         oComponent = this.getOwnerComponent(),
+        //         oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+        //         oRouteInfo = oEvent.getParameters(),
+        //         sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+        //         sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+        //         sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID');
+        // };
 
         /*------------------------------------------- UI Style Class Manipulation -------------------------------------------*/
 
@@ -1514,11 +1451,130 @@ sap.ui.define(
             }
         };
 
-        /*--------------------------------------------------- Button Press --------------------------------------------------*/
+        /*------------------------------------------------ UI Element Actions -----------------------------------------------*/
+
+        /**********************************************/
+        /************** CA Dropdown Select ************/
+        /**********************************************/
+
+        Controller.prototype._onCaSelect = function (oEvent) {
+            var sSelectedKey = oEvent.getParameters().selectedKey,
+                iSelectedIndex = parseInt(sSelectedKey, 10);
+
+            // Load the selected CA info
+            this.getView().getModel('oDtaVrfyBuags').setData(this.getView().getModel('oAllBuags').oData[iSelectedIndex]);
+
+            // Publish the CA Change event to event bus
+            this._onCaChange(iSelectedIndex);
+
+            // Retrieve the Mailing Address for the selected CA
+            this._retrCaMailingAddr(
+                this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'),
+                this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+                this.getView().getModel('oDtaVrfyBuags').getProperty('/FixedAddressID')
+            );
+
+            // Trigger contracts refresh
+            this._retrContracts(
+                this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID')
+            );
+            
+            // Confirm with WebUI and CCUX
+            this._routeInfoConfirm();
+
+            // Update the linkability of METER lable
+            this._updateUsageLink();
+        };
+
+        Controller.prototype._onCaChange = function (iNewBuagIndex) {
+            var eventBus = sap.ui.getCore().getEventBus(),
+                oPayload = {iIndex: iNewBuagIndex};
+
+            eventBus.publish("nrg.module.dashoard", "eBuagChanged", oPayload);
+        };
+
+        Controller.prototype._retrCaMailingAddr = function (sBpNum, sCaNum, sFixedAddressID) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sCaNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oDtaVrfyMailingTempAddr').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        /**********************************************/
+        /************* Confirm Btn Clicked ************/
+        /**********************************************/
+
+        // We now take care of the update to WebUI & CCUX automatically, 
+        // so only lead users to Billing Info page when this button clicked. 
+        Controller.prototype._onGoToBillingInfo = function () {
+            var oRouteInfo = this.getOwnerComponent().getCcuxContextManager().getContext().oData,
+                oRouter = this.getOwnerComponent().getRouter(),
+                badgeSS = this.getView().getModel('oDtaVrfyBuags').getProperty('/BadgeSS'),
+                isPrepaidUser = false;
+
+            // Determine if it is Prepaid User
+            if (badgeSS === 'x' || badgeSS === 'X') {
+                isPrepaidUser = true;
+            }
+
+            // Navigate to Billing page
+            if (isPrepaidUser) {
+                if (oRouteInfo.coNum) {
+                    oRouter.navTo('billing.BillingPrePaid', {bpNum: oRouteInfo.bpNum, caNum: oRouteInfo.caNum, coNum: oRouteInfo.coNum});
+                } else {
+                    oRouter.navTo('billing.BillingPrePaidNoCo', {bpNum: oRouteInfo.bpNum, caNum: oRouteInfo.caNum});
+                }
+            } else {
+                if (oRouteInfo.coNum) {
+                    oRouter.navTo('billing.BillingInfo', {bpNum: oRouteInfo.bpNum, caNum: oRouteInfo.caNum, coNum: oRouteInfo.coNum});
+                } else {
+                    oRouter.navTo('billing.BillingInfoNoCo', {bpNum: oRouteInfo.bpNum, caNum: oRouteInfo.caNum});
+                }
+            }
+        };
+
+        /**********************************************/
+        /************* METER Label Clicked ************/
+        /**********************************************/
 
         Controller.prototype._onMeterClick = function () {
             // alert('XDDDDDD');
         };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         return Controller;
     }

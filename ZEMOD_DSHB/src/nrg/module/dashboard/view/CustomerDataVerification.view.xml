@@ -203,7 +203,7 @@
                             class="nrgDashboard-cusDataVerify-middle-dropdownMenu"
                             selectedKey="{oAllBuags>/selectedKey}"
                             content="{oAllBuags>/}"
-                            select="._onBuagSelect" >
+                            select="._onCaSelect" >
                             <utmain:DropdownItem
                                 key="{oAllBuags>iIndex}">
                                 <ute:Tag elem="span"
@@ -579,7 +579,7 @@
                 <ute:Tag class="nrgDashboard-cusDataVerify-right-wrap">
                     <utmain:Button id="id_confmBtn" visible="true"
                         class="nrgDashboard-cusDataVerify-right-btn"
-                        press="._handleConfirm"
+                        press="._onGoToBillingInfo"
                         text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnConfitm}"/>
                     <utmain:Button id="id_unConfmBtn" visible="false"
                         class="nrgDashboard-cusDataVerify-right-btn"
