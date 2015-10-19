@@ -5,10 +5,13 @@
 sap.ui.define(
     [
         'nrg/base/view/BaseController',
-        'sap/ui/core/routing/HashChanger'
+        'sap/ui/core/routing/HashChanger',
+        'sap/ui/model/json/JSONModel',
+        'sap/ui/model/Filter',
+        'sap/ui/model/FilterOperator'
     ],
 
-    function (CoreController, HashChanger) {
+    function (CoreController, HashChanger, JSONModel, Filter, FilterOperator) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataSummary');
@@ -29,8 +32,13 @@ sap.ui.define(
             }
         };
 
+		Controller.prototype.onInit = function(){
+			this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard-AcctAccessPty'),'oDataASvc');
+		};
+
         Controller.prototype.onBeforeRendering = function () {
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
+
 
             //Model to keep information to show
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryBpInf');
@@ -48,6 +56,9 @@ sap.ui.define(
             //Model to keep Assainged Accounts
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryAssignedAccounts');
 
+			//Model to Keep Account Access Authorizations
+			this.getView().setModel(new sap.ui.model.json.JSONModel(),'oSmryAccessAuth');
+
             // Retrieve routing parameters
             var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
 
@@ -57,6 +68,9 @@ sap.ui.define(
 
             this._initRetrBpInf();
             //this._initRetrBpSegInf();
+
+			//retrieve the table data
+			this._retrieveTableInfo(this._bpNum);
 
         };
 
@@ -348,6 +362,59 @@ sap.ui.define(
 
             return;
         };
+
+		//method to retrieve the data for the table
+
+		 Controller.prototype._retrieveTableInfo = function (sBPNumber) {
+            var sPath = '/AcctAccessAuth',
+                aFilters = [];
+                aFilters.push(new Filter({ path: 'BPNum', operator: FilterOperator.EQ, value1: sBPNumber}));
+
+            var oModel = this.getView().getModel('oDataASvc'),
+                oAcctAccessModel = this.getView().getModel('oSmryAccessAuth'),
+                oAcctAccessData = [],
+                oParameters;
+
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData.results) {
+                        for (var i = 0; i < oData.results.length; i++) {
+                            var dataEntry = {};
+                            var data = oData.results[i];
+                            dataEntry.AuthorizedParty = data.AuthorizedParty;
+                            dataEntry.LegalDocType = data.LegalDocType;
+                            dataEntry.ReceivedDate = data.ReceivedDate;
+							dataEntry.EffectiveDate = data.EffectiveDate;
+							dataEntry.EndDate = data.EndDate;
+							dataEntry.Status = data.Status;
+                            oAcctAccessData.push(dataEntry);
+                        }
+                        oAcctAccessModel.setData(oAcctAccessData);
+                    } else {
+
+                    }
+                }.bind(this),
+                error: function (oError) {
+
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+/*		 CustomController.prototype._formatDate = function (oDate) {
+            var sFormattedDate;
+
+            if (!oDate) {
+                return null;
+            } else {
+                sFormattedDate = (oDate.getMonth() + 1).toString() + '/' + oDate.getDate().toString() + '/' + 				oDate.getFullYear().toString().substring(2, 4);
+                return sFormattedDate;
+            }
+        };*/
 
         return Controller;
     }

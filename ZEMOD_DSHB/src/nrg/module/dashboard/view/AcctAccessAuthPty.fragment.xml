@@ -8,19 +8,37 @@
         xmlns:core="sap.ui.core"
         xmlns:m="sap.m">
         <ute:Tag class="nrgDashboard-AcctAccessAuthPty">
-			<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr">
-				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h1"
+				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr">
+					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h1"
 						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-AuthParty}"/>
-				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h2"
+					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h2"
 						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-TypeLegalDoc}"/>
-				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h3"
+					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h3"
 						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-ReceivedData}"/>
-				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h4"
+					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h4"
 						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-EffecDate}"/>
-				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h5"
+					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h5"
 						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-EndDate}"/>
-				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h6"
+					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h6"
 						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-Status}"/>
+				</ute:Tag>
+				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-tbl">
+					<ute:Tag content="{oSmryAccessAuth>/}">
+						<ute:Tag class="nrgDashboard-AcctAccessAuthPty-tbl-row">
+							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h1-c1"
+									 text="{oSmryAccessAuth>AuthorizedParty}"/>
+							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h2-c2"
+									 text="{oSmryAccessAuth>LegalDocType}"/>
+							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h3-c3"
+									 text="{oSmryAccessAuth>ReceivedDate}"/>
+							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h4-c4"
+									 text="{oSmryAccessAuth>EffectiveDate}"/>
+							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h5-c5"
+									 text="{oSmryAccessAuth>EndDate}"/>
+							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h6-c6"
+									 text="{oSmryAccessAuth>Status}"/>
+						</ute:Tag>
+					</ute:Tag>
 			</ute:Tag>
 		</ute:Tag>
 </core:FragmentDefinition>

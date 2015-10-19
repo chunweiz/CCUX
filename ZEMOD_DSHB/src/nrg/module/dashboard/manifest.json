@@ -21,7 +21,11 @@
                             "comp-dashboard": {
                                 "mockDataBaseUrl": "data/devtest/",
                                 "generateMissingMockData": true
-                            }
+                            },
+							"comp-dashboard-AcctAccessPty":{
+								"mockDataBaseUrl": "data/devAcctAccessPty/",
+								"generateMissingMockData": true
+							}
                         }
                     }
                 }
