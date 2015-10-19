@@ -1,0 +1,25 @@
+{
+  "d":{
+    "results":[
+      {
+        "__metadata":{
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayHeaders(ContractAccountNumber='71348166',InvNumber='')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayHeaders(ContractAccountNumber='71348166',InvNumber='')",
+          "type":"ZE_CCUX_CHKBOOK_SRV.PrePayHeader"
+        },
+        "ContractAccountNumber":"71348166",
+        "InvNumber":"",
+        "Date":null,
+        "RemainUsageDays":-305,
+        "AvgdailyUsageAmt":"0.0000",
+        "AccountBalance":"-36.5900",
+        "AccountDppBalance":"0.0000",
+        "ConfBuag":{
+          "__deferred":{
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayHeaders(ContractAccountNumber='71348166',InvNumber='')/ConfBuag"
+          }
+        }
+      }
+    ]
+  }
+}

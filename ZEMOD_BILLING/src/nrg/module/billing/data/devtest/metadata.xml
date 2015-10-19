@@ -140,8 +140,8 @@
           <PropertyRef Name="SortKey" />
           <PropertyRef Name="ContractAccountNumber" />
         </Key>
-        <Property Name="ActKey" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="Account Balance Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="SortKey" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="Acc Balance Sort Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ActKey" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="Account Balance Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="true" />
+        <Property Name="SortKey" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="Acc Balance Sort Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="true" />
         <Property Name="PostDate" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="TransactionText" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Transaction Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="DebitAmt" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="2" sap:label="Acc Balance Deb Amt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
