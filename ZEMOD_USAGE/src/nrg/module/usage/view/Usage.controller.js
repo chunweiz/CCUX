@@ -61,7 +61,7 @@ sap.ui.define(
                     fnTableDataRecdHandler;
                 fnTableDataRecdHandler = function (oEvent) {
                     oGraphNoData.setVisible(false);
-                    that._oGraphModel.setData(that.convertEFLJson(oEvent.mParameters.data.results));
+                    that._oGraphModel.setData(that.convertEFLJson(oEvent.mParameters.data.results.reverse()));
                     oGraph.setDataModel(that._oGraphModel);
                 };
                 if ((aContent) && (aContent.length > 0)) {
@@ -254,7 +254,7 @@ sap.ui.define(
                 aFilterValues = [oBindingContext.getProperty("Contract")];
                 aFilters = that._createSearchFilterObject(aFilterIds, aFilterValues);
                 fnTableDataRecdHandler = function (oEvent) {
-                    that._oGraphModel.setData()(that.convertEFLJson(oEvent.mParameters.data.results));
+                    that._oGraphModel.setData()(that.convertEFLJson(oEvent.mParameters.data.results.reverse()));
                     oGraphNoData.setVisible(false);
                 };
                 oBindingInfo = {
@@ -282,12 +282,11 @@ sap.ui.define(
                 iCount1,
                 aJsonDataNew,
                 dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern : "MM/dd/yyyy" }),
-                TZOffsetMs = new Date(0).getTimezoneOffset() * 60 * 1000,
                 oformattedDate;
             for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
                 temp = results[iCount1];
                 if ((temp !== undefined) && (temp.KwhUsage !== undefined)) {
-                    oformattedDate = dateFormat.format(new Date(temp.PeriodBegin.getTime() + TZOffsetMs));
+                    oformattedDate = dateFormat.format(new Date(temp.PeriodEnd.getTime()));
                     columns.push({
                         "kwhUsage": parseInt(temp.KwhUsage, 10),
                         "meterReadDate": oformattedDate,
@@ -308,20 +307,31 @@ sap.ui.define(
          *
 		 *
 		 */
+        Controller.prototype.toggleCheckBook = function (oControlEvent) {
+                this.navTo("billing.CheckBook", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
+        };
+        /**
+		 * Handler for Side links
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
         Controller.prototype.toggleTier = function (oControlEvent) {
-            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+            //var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
 
             //this._oApp.setHeaderMenuItemSelected(false, App.HMItemId.Index);
 
-            oWebUiManager.notifyWebUi('openIndex', {
+/*            oWebUiManager.notifyWebUi('openIndex', {
                 LINK_ID: "Z_DUNH"
-            });
+            });*/
         };
         /**
 		 * Handler for Dunning History Transaction launcher
 		 *
 		 * @function
-		 * @param {String} Type value from the binding
+		 * @param {Event} Type Event object
          *
 		 *
 		 */
@@ -333,6 +343,49 @@ sap.ui.define(
             oWebUiManager.notifyWebUi('openIndex', {
                 LINK_ID: "Z_DUNH"
             });
+        };
+        /**
+		 * Format address in the drop down
+		 *
+		 * @function
+		 * @param {Contract} Type value from the binding
+         * @param {ESID} Type value from the binding
+         * @param {House} Type value from the binding
+         * @param {Street} Type value from the binding
+         * @param {Apt} Type value from the binding
+         * @param {City} Type value from the binding
+         * @param {State} Type value from the binding
+         * @param {ZIP} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.formatAddress = function (Contract, ESID, House, Street, Apt, City, State, ZIP) {
+            var sFormattedAddress = "";
+            if ((Contract) && (ESID)) {
+                sFormattedAddress += "[" + Contract + "-" + ESID + "] ";
+            }
+            if ((House)) {
+                sFormattedAddress += House;
+            }
+            if ((Street)) {
+                sFormattedAddress += " " + Street;
+            }
+            if ((Apt)) {
+                sFormattedAddress += ",  " + Apt;
+            }
+            if ((House) || (Street) || (Apt)) {
+                sFormattedAddress += ",";
+            }
+            if ((City)) {
+                sFormattedAddress += " " + City + ",";
+            }
+            if ((State)) {
+                sFormattedAddress += " " + State;
+            }
+            if ((ZIP)) {
+                sFormattedAddress += " " + ZIP;
+            }
+            return sFormattedAddress;
         };
         return Controller;
     }
