@@ -511,8 +511,10 @@ sap.ui.define(
                             }
                             if (i !== oData.results.length - 1) {
                                 oData.results[i].bExpand = false;
+                                oData.results[i].bExpand_0 = false;
                             } else {
                                 oData.results[i].bExpand = true;
+                                oData.results[i].bExpand_0 = true;
                             }
                             oData.results[i].bRegul = true;
                             oData.results[i].bAlert = false;

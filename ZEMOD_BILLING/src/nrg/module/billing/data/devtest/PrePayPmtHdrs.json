@@ -3,12 +3,55 @@
     "results":[
       {
         "__metadata":{
-          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000001')",
-          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000001')",
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000001')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000001')",
           "type":"ZE_CCUX_CHKBOOK_SRV.PrePayPmtHdr"
         },
-        "ContractAccountNumber":"71348166",
+        "results":[
+              {
+                "ContractAccountNumber":"000071348166",
+                "ActKey":"000001",
+                "InvNumber":"",
+                "SortKey":"000001",
+                "PostDate":"",
+                "TransactionText":"Oct 2014",
+                "DebitAmt":"14.9800",
+                "DebitAmtCurr":"USD",
+                "CreditAmt":"20.0000",
+                "CreditAmtCurr":"USD",
+                "PpdBal":"5.0200",
+                "PpdBalCurr":"",
+                "PpdDppBal":"0.0000",
+                "PpdDppBalCurr":"",
+                "DocumentNo":"",
+                "DocumentDt":null,
+                "LidaAmt":"0.0000",
+                "LidaAmtCurr":"USD"
+              },
+              {
+                "ContractAccountNumber":"000071348166",
+                "ActKey":"000002",
+                "InvNumber":"",
+                "SortKey":"000002",
+                "PostDate":"",
+                "TransactionText":"Nov 2014",
+                "DebitAmt":"124.8600",
+                "DebitAmtCurr":"USD",
+                "CreditAmt":"105.0000",
+                "CreditAmtCurr":"USD",
+                "PpdBal":"-14.8400",
+                "PpdBalCurr":"",
+                "PpdDppBal":"0.0000",
+                "PpdDppBalCurr":"",
+                "DocumentNo":"",
+                "DocumentDt":null,
+                "LidaAmt":"0.0000",
+                "LidaAmtCurr":"USD"
+              }
+            ],
+        "ContractAccountNumber":"000071348166",
         "ActKey":"000001",
+        "InvNumber":"",
         "SortKey":"000001",
         "PostDate":"\/Date(1414731601000+0000)\/",
         "TransactionText":"October 2014 Monthly Summary",
@@ -24,25 +67,26 @@
         "DocumentDt":null,
         "LidaAmt":"0.0000",
         "LidaAmtCurr":"USD",
-        "ConfBuag":{
+        "PrePayPmtItems":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000001')/ConfBuag"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000001')/PrePayPmtItems"
           }
         },
-        "PrePayPmtItem":{
+        "ConfBuag":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000001')/PrePayPmtItem"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000001')/ConfBuag"
           }
         }
       },
       {
         "__metadata":{
-          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000002')",
-          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000002')",
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000002')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000002')",
           "type":"ZE_CCUX_CHKBOOK_SRV.PrePayPmtHdr"
         },
-        "ContractAccountNumber":"71348166",
+        "ContractAccountNumber":"000071348166",
         "ActKey":"000002",
+        "InvNumber":"",
         "SortKey":"000002",
         "PostDate":"\/Date(1417327201000+0000)\/",
         "TransactionText":"November 2014 Monthly Summary",
@@ -58,25 +102,26 @@
         "DocumentDt":null,
         "LidaAmt":"0.0000",
         "LidaAmtCurr":"USD",
-        "ConfBuag":{
+        "PrePayPmtItems":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000002')/ConfBuag"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000002')/PrePayPmtItems"
           }
         },
-        "PrePayPmtItem":{
+        "ConfBuag":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000002')/PrePayPmtItem"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000002')/ConfBuag"
           }
         }
       },
       {
         "__metadata":{
-          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000003')",
-          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000003')",
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000003')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000003')",
           "type":"ZE_CCUX_CHKBOOK_SRV.PrePayPmtHdr"
         },
-        "ContractAccountNumber":"71348166",
+        "ContractAccountNumber":"000071348166",
         "ActKey":"000003",
+        "InvNumber":"",
         "SortKey":"000003",
         "PostDate":"\/Date(1420005601000+0000)\/",
         "TransactionText":"December 2014 Monthly Summary",
@@ -92,25 +137,26 @@
         "DocumentDt":null,
         "LidaAmt":"0.0000",
         "LidaAmtCurr":"USD",
-        "ConfBuag":{
+        "PrePayPmtItems":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000003')/ConfBuag"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000003')/PrePayPmtItems"
           }
         },
-        "PrePayPmtItem":{
+        "ConfBuag":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000003')/PrePayPmtItem"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000003')/ConfBuag"
           }
         }
       },
       {
         "__metadata":{
-          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000004')",
-          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000004')",
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000004')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000004')",
           "type":"ZE_CCUX_CHKBOOK_SRV.PrePayPmtHdr"
         },
-        "ContractAccountNumber":"71348166",
+        "ContractAccountNumber":"000071348166",
         "ActKey":"000004",
+        "InvNumber":"",
         "SortKey":"000004",
         "PostDate":"\/Date(1422684001000+0000)\/",
         "TransactionText":"January 2015 Monthly Summary",
@@ -126,25 +172,26 @@
         "DocumentDt":null,
         "LidaAmt":"0.0000",
         "LidaAmtCurr":"USD",
-        "ConfBuag":{
+        "PrePayPmtItems":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000004')/ConfBuag"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000004')/PrePayPmtItems"
           }
         },
-        "PrePayPmtItem":{
+        "ConfBuag":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000004')/PrePayPmtItem"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000004')/ConfBuag"
           }
         }
       },
       {
         "__metadata":{
-          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000005')",
-          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000005')",
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000005')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000005')",
           "type":"ZE_CCUX_CHKBOOK_SRV.PrePayPmtHdr"
         },
-        "ContractAccountNumber":"71348166",
+        "ContractAccountNumber":"000071348166",
         "ActKey":"000005",
+        "InvNumber":"",
         "SortKey":"000005",
         "PostDate":"\/Date(1425103201000+0000)\/",
         "TransactionText":"February 2015 Monthly Summary",
@@ -160,25 +207,26 @@
         "DocumentDt":null,
         "LidaAmt":"0.0000",
         "LidaAmtCurr":"USD",
-        "ConfBuag":{
+        "PrePayPmtItems":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000005')/ConfBuag"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000005')/PrePayPmtItems"
           }
         },
-        "PrePayPmtItem":{
+        "ConfBuag":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000005')/PrePayPmtItem"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000005')/ConfBuag"
           }
         }
       },
       {
         "__metadata":{
-          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000006')",
-          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000006')",
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000006')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000006')",
           "type":"ZE_CCUX_CHKBOOK_SRV.PrePayPmtHdr"
         },
-        "ContractAccountNumber":"71348166",
+        "ContractAccountNumber":"000071348166",
         "ActKey":"000006",
+        "InvNumber":"",
         "SortKey":"000006",
         "PostDate":"\/Date(1427778001000+0000)\/",
         "TransactionText":"March 2015 Monthly Summary",
@@ -194,25 +242,26 @@
         "DocumentDt":null,
         "LidaAmt":"0.0000",
         "LidaAmtCurr":"USD",
-        "ConfBuag":{
+        "PrePayPmtItems":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000006')/ConfBuag"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000006')/PrePayPmtItems"
           }
         },
-        "PrePayPmtItem":{
+        "ConfBuag":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000006')/PrePayPmtItem"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000006')/ConfBuag"
           }
         }
       },
       {
         "__metadata":{
-          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000007')",
-          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000007')",
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000007')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000007')",
           "type":"ZE_CCUX_CHKBOOK_SRV.PrePayPmtHdr"
         },
-        "ContractAccountNumber":"71348166",
+        "ContractAccountNumber":"000071348166",
         "ActKey":"000007",
+        "InvNumber":"",
         "SortKey":"000007",
         "PostDate":"\/Date(1430370001000+0000)\/",
         "TransactionText":"April 2015 Monthly Summary",
@@ -228,25 +277,26 @@
         "DocumentDt":null,
         "LidaAmt":"0.0000",
         "LidaAmtCurr":"USD",
-        "ConfBuag":{
+        "PrePayPmtItems":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000007')/ConfBuag"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000007')/PrePayPmtItems"
           }
         },
-        "PrePayPmtItem":{
+        "ConfBuag":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000007')/PrePayPmtItem"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000007')/ConfBuag"
           }
         }
       },
       {
         "__metadata":{
-          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000008')",
-          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000008')",
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000008')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000008')",
           "type":"ZE_CCUX_CHKBOOK_SRV.PrePayPmtHdr"
         },
-        "ContractAccountNumber":"71348166",
+        "ContractAccountNumber":"000071348166",
         "ActKey":"000008",
+        "InvNumber":"",
         "SortKey":"000008",
         "PostDate":"\/Date(1433048401000+0000)\/",
         "TransactionText":"May 2015 Monthly Summary",
@@ -262,25 +312,26 @@
         "DocumentDt":null,
         "LidaAmt":"-19.3500",
         "LidaAmtCurr":"USD",
-        "ConfBuag":{
+        "PrePayPmtItems":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000008')/ConfBuag"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000008')/PrePayPmtItems"
           }
         },
-        "PrePayPmtItem":{
+        "ConfBuag":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000008')/PrePayPmtItem"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000008')/ConfBuag"
           }
         }
       },
       {
         "__metadata":{
-          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000009')",
-          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000009')",
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000009')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000009')",
           "type":"ZE_CCUX_CHKBOOK_SRV.PrePayPmtHdr"
         },
-        "ContractAccountNumber":"71348166",
+        "ContractAccountNumber":"000071348166",
         "ActKey":"000009",
+        "InvNumber":"",
         "SortKey":"000009",
         "PostDate":"\/Date(1435640401000+0000)\/",
         "TransactionText":"June 2015 Monthly Summary",
@@ -296,25 +347,26 @@
         "DocumentDt":null,
         "LidaAmt":"-18.4400",
         "LidaAmtCurr":"USD",
-        "ConfBuag":{
+        "PrePayPmtItems":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000009')/ConfBuag"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000009')/PrePayPmtItems"
           }
         },
-        "PrePayPmtItem":{
+        "ConfBuag":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000009')/PrePayPmtItem"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000009')/ConfBuag"
           }
         }
       },
       {
         "__metadata":{
-          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000010')",
-          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000010')",
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000010')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000010')",
           "type":"ZE_CCUX_CHKBOOK_SRV.PrePayPmtHdr"
         },
-        "ContractAccountNumber":"71348166",
+        "ContractAccountNumber":"000071348166",
         "ActKey":"000010",
+        "InvNumber":"",
         "SortKey":"000010",
         "PostDate":"\/Date(1438318801000+0000)\/",
         "TransactionText":"July 2015 Monthly Summary",
@@ -330,25 +382,26 @@
         "DocumentDt":null,
         "LidaAmt":"-18.1000",
         "LidaAmtCurr":"USD",
-        "ConfBuag":{
+        "PrePayPmtItems":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000010')/ConfBuag"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000010')/PrePayPmtItems"
           }
         },
-        "PrePayPmtItem":{
+        "ConfBuag":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000010')/PrePayPmtItem"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000010')/ConfBuag"
           }
         }
       },
       {
         "__metadata":{
-          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000011')",
-          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000011')",
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000011')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000011')",
           "type":"ZE_CCUX_CHKBOOK_SRV.PrePayPmtHdr"
         },
-        "ContractAccountNumber":"71348166",
+        "ContractAccountNumber":"000071348166",
         "ActKey":"000011",
+        "InvNumber":"",
         "SortKey":"000011",
         "PostDate":"\/Date(1440997201000+0000)\/",
         "TransactionText":"August 2015 Monthly Summary",
@@ -364,25 +417,26 @@
         "DocumentDt":null,
         "LidaAmt":"-19.9700",
         "LidaAmtCurr":"USD",
-        "ConfBuag":{
+        "PrePayPmtItems":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000011')/ConfBuag"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000011')/PrePayPmtItems"
           }
         },
-        "PrePayPmtItem":{
+        "ConfBuag":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000011')/PrePayPmtItem"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000011')/ConfBuag"
           }
         }
       },
       {
         "__metadata":{
-          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000012')",
-          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000012')",
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000012')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000012')",
           "type":"ZE_CCUX_CHKBOOK_SRV.PrePayPmtHdr"
         },
-        "ContractAccountNumber":"71348166",
+        "ContractAccountNumber":"000071348166",
         "ActKey":"000012",
+        "InvNumber":"",
         "SortKey":"000012",
         "PostDate":"\/Date(1443589201000+0000)\/",
         "TransactionText":"September 2015 Monthly Summary",
@@ -398,25 +452,26 @@
         "DocumentDt":null,
         "LidaAmt":"-1.6300",
         "LidaAmtCurr":"USD",
-        "ConfBuag":{
+        "PrePayPmtItems":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000012')/ConfBuag"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000012')/PrePayPmtItems"
           }
         },
-        "PrePayPmtItem":{
+        "ConfBuag":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000012')/PrePayPmtItem"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000012')/ConfBuag"
           }
         }
       },
       {
         "__metadata":{
-          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000013')",
-          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000013')",
+          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000013')",
+          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000013')",
           "type":"ZE_CCUX_CHKBOOK_SRV.PrePayPmtHdr"
         },
-        "ContractAccountNumber":"71348166",
+        "ContractAccountNumber":"000071348166",
         "ActKey":"000013",
+        "InvNumber":"",
         "SortKey":"000013",
         "PostDate":"\/Date(1446267601000+0000)\/",
         "TransactionText":"October 2015 Monthly Summary",
@@ -432,14 +487,14 @@
         "DocumentDt":null,
         "LidaAmt":"0.0000",
         "LidaAmtCurr":"USD",
-        "ConfBuag":{
+        "PrePayPmtItems":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000013')/ConfBuag"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000013')/PrePayPmtItems"
           }
         },
-        "PrePayPmtItem":{
+        "ConfBuag":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='71348166',ActKey='000013')/PrePayPmtItem"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PrePayPmtHdrs(ContractAccountNumber='000071348166',ActKey='000013')/ConfBuag"
           }
         }
       }
