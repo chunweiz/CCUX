@@ -1099,6 +1099,8 @@ sap.ui.define(
                             if (bCoRetrieveComplate) {
                                 // Confirm with WebUI and CCUX
                                 this._routeInfoConfirm();
+                                // Update the linkability of METER lable
+                                this._updateUsageLink();
                                 clearInterval(checkCoRetrComplete);
                             }
                         }.bind(this), 100);
