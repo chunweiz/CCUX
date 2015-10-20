@@ -274,32 +274,32 @@ sap.ui.define(
         };
 
         Controller.prototype._onAvgBillBtnClicked = function () {
-            var oEligibilityModel = this.getView().getModel('oEligibility');
+            var oEligibilityModel = this.getView().getModel('oEligibility'),
+                oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
 
             if (this._coNum) {
 
                 // Check if the user is eligible for ABP.
                 if (oEligibilityModel.oData.ABPElig === "Y") {
                     if (oEligibilityModel.oData.ABPAct === "Y") {
-                        // Scenario 1
-                    } else {
-                        // Scenario 2
-                    }
-
-                    if (!this._oAvgBillPopup) {
-                        this._oAvgBillPopup = ute.ui.main.Popup.create({
-                            content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.AverageBillingPlan", this),
-                            title: 'AVERAGE BILLING PLAN'
+                        oWebUiManager.notifyWebUi('openIndex', {
+                            LINK_ID: "Z_AVGBIL_D"
                         });
-                        this._oAvgBillPopup.addStyleClass('nrgBilling-avgBillingPopup');
-                        this.getView().addDependent(this._oAvgBillPopup);
-                        // Render the graph
-                        this.byId("chart").setDataModel(this.getView().getModel('oUsageGraph'));
-                        // Render the graph crontrol buttons
-                        this._renderGraphCrontrolBtn();
+                    } else {
+                        if (!this._oAvgBillPopup) {
+                            this._oAvgBillPopup = ute.ui.main.Popup.create({
+                                content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.AverageBillingPlan", this),
+                                title: 'AVERAGE BILLING PLAN'
+                            });
+                            this._oAvgBillPopup.addStyleClass('nrgBilling-avgBillingPopup');
+                            this.getView().addDependent(this._oAvgBillPopup);
+                            // Render the graph
+                            this.byId("chart").setDataModel(this.getView().getModel('oUsageGraph'));
+                            // Render the graph crontrol buttons
+                            this._renderGraphCrontrolBtn();
+                        }
+                        this._oAvgBillPopup.open();
                     }
-                    this._oAvgBillPopup.open();
-
                 } else {
                     ute.ui.main.Popup.Alert({
                         title: 'Not Eligible',
