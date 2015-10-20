@@ -38,7 +38,8 @@ sap.ui.define(
                 that = this,
                 oUsageTable = this.getView().byId("idnrgUsgTable-Rows"),
                 oUsageTableRowTemplate = this.getView().byId("idnrgUsgRow-Infoline"),
-                oGraph = this.getView().byId('chart'),
+                oGraph = this.getView().byId('idnrgUsg-Graph-chart'),
+                oGraphNoData = this.getView().byId('idnrgUsg-Graph-NoData'),
                 oNoDataTag = this.getView().byId("idnrgUsgNoData").clone();
             that._oGraphModel = new JSONModel();
             that.getOwnerComponent().getCcuxApp().setOccupied(true);
@@ -59,6 +60,7 @@ sap.ui.define(
                     sPath = "/UsageS",
                     fnTableDataRecdHandler;
                 fnTableDataRecdHandler = function (oEvent) {
+                    oGraphNoData.setVisible(false);
                     that._oGraphModel.setData(that.convertEFLJson(oEvent.mParameters.data.results));
                     oGraph.setDataModel(that._oGraphModel);
                 };
@@ -235,7 +237,9 @@ sap.ui.define(
                 oBindingInfo,
                 oServiceAddressDropDown = this.getView().byId("idnrgUsgServiceAdd-DropDown"),
                 aContent,
-                sKey;
+                sKey,
+                oGraphNoData = this.getView().byId('idnrgUsg-Graph-NoData'),
+                aDummyArray = [];
             aContent = oServiceAddressDropDown.getContent();
             sKey = oServiceAddressDropDown.getSelectedKey();
             aContent.forEach(function (oContent) {
@@ -243,12 +247,15 @@ sap.ui.define(
                     oBindingContext = oContent.getBindingContext("comp-usage");
                 }
             });
+            that._oGraphModel.setData(aDummyArray);
+            oGraphNoData.setVisible(true);
             if (oBindingContext) {
                 aFilterIds = ["Contract"];
                 aFilterValues = [oBindingContext.getProperty("Contract")];
                 aFilters = that._createSearchFilterObject(aFilterIds, aFilterValues);
                 fnTableDataRecdHandler = function (oEvent) {
-                    that._oGraphModel.setData(that.convertEFLJson(oEvent.mParameters.data.results));
+                    that._oGraphModel.setData()(that.convertEFLJson(oEvent.mParameters.data.results));
+                    oGraphNoData.setVisible(false);
                 };
                 oBindingInfo = {
                     model : "comp-usage",

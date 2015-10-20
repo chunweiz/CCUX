@@ -7,8 +7,8 @@
           xmlns:m="sap.m"
           xmlns:ch="nrg.module.usage.view">
 
-    <m:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
-       <ch:UsageHistoryChart id="chart" width="850" height="400"></ch:UsageHistoryChart>
+    <m:ScrollContainer id="idnrgUsg-Graph" height="100%" width="100%" horizontal="true" vertical="true" class="nrgUsg-table-Graph">
+       <ch:UsageHistoryChart id="idnrgUsg-Graph-chart" width="850" height="400"></ch:UsageHistoryChart>
+        <u:Tag id="idnrgUsg-Graph-NoData" text="No Data Available" class="nrgUsgNoData" visible="true"/>
     </m:ScrollContainer>
-
 </core:FragmentDefinition>
