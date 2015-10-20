@@ -96,31 +96,66 @@
             </ute:Tag>
             <m:ScrollContainer id="nrgChkbookScrollContainer"
                     class="nrgBilling-ppChkBk-lftDiv-scrllArea" width="768px" height="500px" horizontal="false" vertical="true">
-                <ute:Tag content="">   <!--div to put content aggregation-->
-                    <utmain:Infoline expanded="{oPaymentHdr>bExpand}"
+                <ute:Tag content="{oPpPmtHdr>/results}">   <!--div to put content aggregation-->
+                    <utmain:Infoline expanded="{oPpPmtHdr>bExpand}"
+                                     press="._onPpPmtHdrClicked"
                                      class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm">
                         <utmain:headerContent>
                             <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-hdr">
-                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
-                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
-                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
-                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
-                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
-                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
-                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="test"/>
-                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell-last" text="test"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="{oPpPmtHdr>TransactionText}"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell" text="{parts:['oPpPmtHdr>PostDate'], formatter:'._formatDate'}"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell"
+                                         text="{path: 'oPpPmtHdr>CreditAmt',
+                                                type: 'nrg.base.type.Price',
+                                                formatOptions: { currencySymbol: ''}}"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell"
+                                         text="{path: 'oPpPmtHdr>DebitAmt',
+                                                type: 'nrg.base.type.Price',
+                                                formatOptions: { currencySymbol: ''}}"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell"
+                                         text="{path: 'oPpPmtHdr>LidaAmt',
+                                                type: 'nrg.base.type.Price',
+                                                formatOptions: { currencySymbol: ''}}"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell"
+                                         text="{path: 'oPpPmtHdr>PpdBal',
+                                                type: 'nrg.base.type.Price',
+                                                formatOptions: { currencySymbol: ''}}"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell"
+                                         text="{path: 'oPpPmtHdr>PpdDppBal',
+                                                type: 'nrg.base.type.Price',
+                                                formatOptions: { currencySymbol: ''}}"/>
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-cell-last"
+                                         text="{parts:['oPpPmtHdr>DocumentDt'], formatter:'._formatDate'}"/>
                             </ute:Tag>
                         </utmain:headerContent>
                         <utmain:content>
-                            <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt">
-                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
-                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
-                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
-                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
-                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
-                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
-                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="tt"/>
-                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell-last" text="tt"/>
+                            <ute:Tag content="{oPpPmtHdr>PpPmtItmes/results}">
+                                <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt">
+                                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="{oPpPmtHdr>TransactionText}"/>
+                                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell" text="{parts:['oPpPmtHdr>PostDate'], formatter:'._formatDate'}"/>
+                                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell"
+                                             text="{path: 'oPpPmtHdr>CreditAmt',
+                                                    type: 'nrg.base.type.Price',
+                                                    formatOptions: { currencySymbol: ''}}"/>
+                                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell"
+                                             text="{path: 'oPpPmtHdr>DebitAmt',
+                                                    type: 'nrg.base.type.Price',
+                                                    formatOptions: { currencySymbol: ''}}"/>
+                                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell"
+                                             text="{path: 'oPpPmtHdr>LidaAmt',
+                                                    type: 'nrg.base.type.Price',
+                                                    formatOptions: { currencySymbol: ''}}"/>
+                                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell"
+                                             text="{path: 'oPpPmtHdr>PpdBal',
+                                                    type: 'nrg.base.type.Price',
+                                                    formatOptions: { currencySymbol: ''}}"/>
+                                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell"
+                                             text="{path: 'oPpPmtHdr>PpdDppBal',
+                                                    type: 'nrg.base.type.Price',
+                                                    formatOptions: { currencySymbol: ''}}"/>
+                                    <ute:Tag class="nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell nrgBilling-ppChkBk-lftDiv-scrllArea-lnItm-ctnt-cell-last"
+                                             text="{parts:['oPpPmtHdr>DocumentDt'], formatter:'._formatDate'}"/>
+                                </ute:Tag>
                             </ute:Tag>
                         </utmain:content>
                     </utmain:Infoline>
