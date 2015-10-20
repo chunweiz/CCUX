@@ -81,14 +81,14 @@ sap.ui.define(
         CustomController.prototype._initPpChkbookHdr = function () {
             var sPath;
 
-            sPath = '/PrePayHeaders(\'' + this._caNum + '\')';
+            sPath = '/PrePayHeaders(ContractAccountNumber=\'' + this._caNum + '\',InvNumber=\'\')';
             this._retrPpChkbookHdr(sPath);
         };
 
         CustomController.prototype._initPpPmtHdr = function () {
             var sPath;
 
-            //sPath = '/ConfBuags(\'' + this._caNum + '\')/PrePayPmtHdr';
+            //sPath = '/ConfBuags(\'' + this._caNum + '\')/PrePayPmtHdrs';
             sPath = '/PrePayPmtHdrs(ContractAccountNumber=\'' + this._caNum + '\',ActKey=\'000001\')';
 
 
