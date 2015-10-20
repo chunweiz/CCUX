@@ -21,7 +21,7 @@
                             </um:button>
                         </u:Tag>
                         <u:Tag class="nrgUsg-tier">
-                            <um:Button press=".toggleTier"
+                            <um:Button press=".toggleCheckBook"
                                 text="{comp-i18n-usage>nrgUsgLCheckBook}"
                                 design="None">
                             </um:button>
