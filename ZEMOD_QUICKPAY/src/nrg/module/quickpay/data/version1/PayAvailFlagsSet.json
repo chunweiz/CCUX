@@ -1,5 +1,7 @@
 {
    "d":{
+      "results":[
+         {
       "__metadata":{
          "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_QUICK_PAY_SRV/PayAvailFlagsSet(BP='0002473499',CA='000003040103')",
          "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_QUICK_PAY_SRV/PayAvailFlagsSet(BP='0002473499',CA='000003040103')",
@@ -16,5 +18,7 @@
       "ReliantFlag":"X",
       "ReceiptFlag":"X",
       "Message":""
+         }
+    ]
    }
 }
