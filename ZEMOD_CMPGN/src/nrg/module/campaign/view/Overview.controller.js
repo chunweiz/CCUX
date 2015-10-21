@@ -143,7 +143,7 @@ sap.ui.define(
                 //filters : aFilters,
                 success : function (oData) {
                     this.getView().byId("idCamCustReqOfferBtn").bindElement({
-                        model : "Overview-elig",
+                        model : "comp-campaign",
                         path : sEligibilityPath
                     });
 /*                    this.getView().byId("idCamAgtReqOfferBtn").bindElement({
@@ -161,7 +161,7 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sEligibilityPath, oBindingInfo);
             }
-            this.getView().setModel(oModel, "Overview-elig");
+            this.getView().setModel(oModel, "comp-campaign");
         };
         /* =========================================================== */
 		/* lifecycle method- After Rendering                          */
