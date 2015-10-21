@@ -146,10 +146,6 @@ sap.ui.define(
                         model : "comp-campaign",
                         path : sEligibilityPath
                     });
-/*                    this.getView().byId("idCamAgtReqOfferBtn").bindElement({
-                        model : "Overview-elig",
-                        path : sEligibilityPath
-                    });*/
                     oModel.updateBindings(false);
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
@@ -161,7 +157,7 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sEligibilityPath, oBindingInfo);
             }
-            this.getView().setModel(oModel, "comp-campaign");
+            //this.getView().setModel(oModel, "comp-campaign");
         };
         /* =========================================================== */
 		/* lifecycle method- After Rendering                          */
@@ -237,8 +233,8 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onAgentRequestedOffers = function (oEvent) {
-            var sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill"),
-                sInitTab = oEvent.getSource().getBindingContext("Overview-elig").getProperty("InitTab");
+            var sFirstMonthBill = oEvent.getSource().getBindingContext("comp-campaign").getProperty("FirstBill"),
+                sInitTab = oEvent.getSource().getBindingContext("comp-campaign").getProperty("InitTab");
             if ((!sInitTab) || (sInitTab === undefined) || (sInitTab === null) || (sInitTab === "")) {
                 this._sInitTab = "SE";
             } else {
@@ -261,10 +257,10 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onCustomerRequestedOffers = function (oEvent) {
-            var sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill"),
-                sCustomerEligible = oEvent.getSource().getBindingContext("Overview-elig").getProperty("CustEligFlag"),
-                sInitTab = oEvent.getSource().getBindingContext("Overview-elig").getProperty("InitTab"),
-                sPendingMoveOut = oEvent.getSource().getBindingContext("Overview-elig").getProperty("PendMvo"),
+            var sFirstMonthBill = oEvent.getSource().getBindingContext("comp-campaign").getProperty("FirstBill"),
+                sCustomerEligible = oEvent.getSource().getBindingContext("comp-campaign").getProperty("CustEligFlag"),
+                sInitTab = oEvent.getSource().getBindingContext("comp-campaign").getProperty("InitTab"),
+                sPendingMoveOut = oEvent.getSource().getBindingContext("comp-campaign").getProperty("PendMvo"),
                 _CancellationPopupHandler,
                 that = this,
                 i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
