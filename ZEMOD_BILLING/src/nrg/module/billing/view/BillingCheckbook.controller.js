@@ -99,6 +99,13 @@ sap.ui.define(
             }
         };
         CustomController.prototype._formatDppIntWte = function (sIndicator) {
+            if (sIndicator === 'W') {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        CustomController.prototype._formatDppIntWte = function (sIndicator) {
             if (sIndicator) {
                 return false;
             } else {
