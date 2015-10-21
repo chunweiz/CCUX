@@ -1,0 +1,30 @@
+{
+   "d":{
+      "results":[
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/AlertsSet(BP='0005802668',CA='000070352373',FilterType='2')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/AlertsSet(BP='0005802668',CA='000070352373',FilterType='2')",
+               "type":"ZE_CCUX_CHKBOOK_SRV.Alerts"
+            },
+            "BP":"0005802668",
+            "CA":"000070352373",
+            "Identifier":"BILLING",
+            "FilterType":"2",
+            "Message":"No Credit Cards allowed until 01/17/2015"
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/AlertsSet(BP='0005802668',CA='000070352373',FilterType='3')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/AlertsSet(BP='0005802668',CA='000070352373',FilterType='3')",
+               "type":"ZE_CCUX_CHKBOOK_SRV.Alerts"
+            },
+            "BP":"0005802668",
+            "CA":"000070352373",
+            "Identifier":"DUNNING",
+            "FilterType":"3",
+            "Message":"No Aps Allowed until 12/31/2019"
+         }
+      ]
+   }
+}

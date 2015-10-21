@@ -308,7 +308,7 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.toggleCheckBook = function (oControlEvent) {
-                this.navTo("billing.CheckBook", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
+            this.navTo("billing.CheckBook", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
         };
         /**
 		 * Handler for Side links
