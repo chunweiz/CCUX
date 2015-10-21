@@ -1152,8 +1152,9 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {  
                         // Set select key for all CAs for CA dropdown
-                        for (var j = 0; j < oData.results.length; j++) {
-                            oData.results[j].iIndex = j.toString();
+                        for (var i = 0; i < oData.results.length; i++) {
+                            oData.results[i].iIndex = i.toString();
+                            if (oData.results[i].ContractAccountID === sCaNum) iSearchedCaIndex = i;
                         }
                         // Load all the CAs for CA dropdown
                         this.getView().getModel('oAllBuags').setData(oData.results);
