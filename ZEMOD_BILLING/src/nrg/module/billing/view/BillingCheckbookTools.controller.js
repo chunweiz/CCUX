@@ -68,13 +68,14 @@ sap.ui.define(
                         for (var i = 0; i < oData.results.length; i++) {
                             var dataEntry = {};
                             dataEntry = oData.results[i];
+                            dataEntry.Period = dataEntry.Period.substring(3);
                             dataEntry.Amount = "$" + parseFloat(dataEntry.Amount);
                             dataEntry.Consumption = parseFloat(dataEntry.Consumption);
                             dataEntry.AdjAmount = "";
                             aHistoryData.push(dataEntry);
                         }
                         oHistoryModel.setData(aHistoryData);
-                        oHistoryModel.setProperty('/estAmount', "$" + parseFloat(oData.results[0].Estimate));
+                        oHistoryModel.setProperty('/estAmount', "$" + parseFloat(oData.results[0].Estimate).toFixed(2));
                     } else {
                         
                     }
@@ -298,7 +299,7 @@ sap.ui.define(
                             // Render the graph crontrol buttons
                             this._renderGraphCrontrolBtn();
                         }
-                        this._oAvgBillPopup.open();
+                        this._oAvgBillPopup.open();   
                     }
                 } else {
                     ute.ui.main.Popup.Alert({
@@ -331,9 +332,8 @@ sap.ui.define(
             if (oGraphModel.oData.data.length) {
                 for (var i = 0; i < oGraphModel.oData.data.length; i++) {
                     var parts = oGraphModel.oData.data[i].usageDate.split("/");
-                    var time = new Date(parseInt(parts[2], 10), parseInt(parts[1], 10) - 1, parseInt(parts[0], 10));
-                    if (this._aYearList.indexOf(time.getFullYear()) < 0) {
-                        this._aYearList.push(time.getFullYear());
+                    if (this._aYearList.indexOf(parts[2]) < 0) {
+                        this._aYearList.push(parts[2]);
                     }
                 }
             }

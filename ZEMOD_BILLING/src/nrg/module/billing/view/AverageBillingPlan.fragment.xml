@@ -26,12 +26,12 @@
                             text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-history-usage-LABEL}"/>
                         <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-usageChargeLabel"
                             text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-history-usageCharge-LABEL}"/>
-                        <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-avgLabel"
-                            text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-history-avg-LABEL}"/>
+                        <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-estLabel"
+                            text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-history-est-LABEL}"/>
                         <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-adjLabel"
                             text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-history-adj-LABEL}"/>
-                        <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-deferredLabel"
-                            text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-history-defferred-LABEL}"/>
+                        <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-amtUsedLabel"
+                            text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-history-amtUsed-LABEL}"/>
                     </ute:Tag>
                     <m:ScrollContainer class="nrgBilling-avgBillingPopup-amountDue-history-scrollArea" height="300px" horizontal="false" vertical="true">
                         <ute:Tag content="{oAmountHistory>/}">
@@ -42,12 +42,12 @@
                                     text="{oAmountHistory>Consumption}"/>
                                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-usageCharge"
                                     text="{oAmountHistory>Amount}"/>
-                                <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-avg"
+                                <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-est"
                                     text="{oAmountHistory>AvgEst}"/>
                                 <ute:Textfield class="nrgBilling-avgBillingPopup-amountDue-history-adj"
                                     value="{oAmountHistory>AdjAmount}"
                                     width="80px"/>                
-                                <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-deferred"
+                                <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-amtUsed"
                                     text="{oAmountHistory>DefBal}"/>
                             </ute:Tag>
                         </ute:Tag>

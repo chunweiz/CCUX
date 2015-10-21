@@ -365,6 +365,12 @@
                                                                 <ute:Tag text="{ parts:['oPaymentHdr>DueDate'], formatter:'._formatDate'}"/>
                                                                 <ute:Tag text="{path: 'oPaymentHdr>BalAftInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
                                                             </ute:Tag>
+                                                            <ute:Tag visible="{ parts:['oPaymentHdr>Color'], formatter:'._formatDppIntWte'}" class="nrgBilling-blshc2-dpInst-inst-wte">
+                                                                <ute:Tag text="{oPaymentHdr>InstlMent}"/>
+                                                                <ute:Tag text="{path: 'oPaymentHdr>AmtOfInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
+                                                                <ute:Tag text="{ parts:['oPaymentHdr>DueDate'], formatter:'._formatDate'}"/>
+                                                                <ute:Tag text="{path: 'oPaymentHdr>BalAftInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
+                                                            </ute:Tag>
                                                         </ute:Tag>
                                                     </ute:Tag>
                                                 </ute:Tag>
