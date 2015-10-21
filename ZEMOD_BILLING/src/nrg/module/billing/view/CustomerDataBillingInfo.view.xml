@@ -70,7 +70,13 @@
 
                                 </ute:Tag>
                                 <ute:Tag visible="false">
-                                    <ute:Tag id="idnrgBillingMsgsTemp" class="nrgBilling-cusDataBil-msgs-msg" text="{comp-billing>Message}"/>
+<!--                                    <ute:Tag id="idnrgBillingMsgsTemp" class="nrgBilling-cusDataBil-msgs-msg" text="{comp-billing>Message}">
+                                        <ute:Tag text="{comp-billing>Message}" />
+                                    </ute:Tag>-->
+                                <c:Label text="{comp-billing>Message}"
+                                         id="idnrgBillingMsgsTemp"
+                                         icon="sap-icon://nrg-icon/notification"
+                                         class="nrgBilling-cusDataBil-msgs-msg" />
                                 </ute:Tag>
                                 <ute:Tag class="nrgBilling-cusDataBil-date">
                                     <ute:Tag class="nrgBilling-cusDataBil-date-block">
