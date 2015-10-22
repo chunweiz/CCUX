@@ -8,10 +8,12 @@ sap.ui.define(
         'sap/ui/core/mvc/Controller',
         'sap/ui/model/json/JSONModel',
         'nrg/module/quickpay/view/QuickPayControl',
-        'nrg/base/type/Price'
+        'nrg/base/type/Price',
+        'sap/ui/model/Filter',
+        'sap/ui/model/FilterOperator'
     ],
 
-    function (jQuery, Controller, JSONModel, QuickPayControl, Type_Price) {
+    function (jQuery, Controller, JSONModel, QuickPayControl, Type_Price, Filter, FilterOperator) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.billing.view.CustomerDataBillingInfo');
@@ -35,6 +37,69 @@ sap.ui.define(
             //Starting invoices retriviging
             this._initRoutingInfo();
             this._initRetrBillInvoices();
+            this._initBillingMsgs();
+        };
+
+       /**
+		 * Iniitalize the msgs in the Billing Info Page
+		 *
+		 * @function
+		 *
+		 * @private
+		 */
+
+        CustomController.prototype._initBillingMsgs = function () {
+            var aFilterIds,
+                aFilterValues,
+                aFilters,
+                oBindingInfo1,
+                oBindingInfo2,
+                oBillingMsgTag = this.getView().byId("idnrgBillingMsgs"),
+                oBillingMsgTagTemplate = this.getView().byId("idnrgBillingMsgsTemp"),
+                oDunningMsgTag = this.getView().byId("idnrgBilDunMsgs"),
+                oDunningMsgTagTemplate = this.getView().byId("idnrgBilDunMsgsTemp"),
+                sPath = "/AlertsSet",
+                fnTableDataRecdHandler = function (oEvent) {
+                };
+            aFilterIds = ["BP", "CA", "Identifier"];
+            aFilterValues = [this._bpNum, this._caNum, "BILLING"];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            oBindingInfo1 = {
+                model : "comp-billing",
+                path : sPath,
+                template : oBillingMsgTagTemplate,
+                filters : aFilters,
+                events: {dataReceived : fnTableDataRecdHandler}
+            };
+            oBillingMsgTag.bindAggregation("content", oBindingInfo1);
+            aFilterIds = ["BP", "CA", "Identifier"];
+            aFilterValues = [this._bpNum, this._caNum, "DUNNING"];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            oBindingInfo2 = {
+                model : "comp-billing",
+                path : sPath,
+                template : oDunningMsgTagTemplate,
+                filters : aFilters,
+                events: {dataReceived : fnTableDataRecdHandler}
+            };
+            oDunningMsgTag.bindAggregation("content", oBindingInfo2);
+        };
+       /**
+		 * Assign the filter objects based on the input selection
+		 *
+		 * @function
+		 * @param {Array} aFilterIds to be used as sPath for Filters
+         * @param {Array} aFilterValues for each sPath
+		 * @private
+		 */
+        Controller.prototype._createSearchFilterObject = function (aFilterIds, aFilterValues) {
+            var aFilters = [],
+                iCount;
+
+            for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
+                aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
+            }
+            return aFilters;
         };
 
         CustomController.prototype.onAfterRendering = function () {

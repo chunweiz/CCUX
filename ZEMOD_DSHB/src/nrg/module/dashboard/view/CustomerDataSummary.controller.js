@@ -33,11 +33,12 @@ sap.ui.define(
         };
 
 		Controller.prototype.onInit = function(){
-			this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard-AcctAccessPty'),'oDataASvc');
+
 		};
 
         Controller.prototype.onBeforeRendering = function () {
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
+			this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard-AcctAccessPty'),'oDataASvc');
 
 
             //Model to keep information to show
@@ -70,7 +71,7 @@ sap.ui.define(
             //this._initRetrBpSegInf();
 
 			//retrieve the table data
-			this._retrieveTableInfo(this._bpNum);
+			this._retrieveTableInfo(this._caNum);
 
         };
 
@@ -365,27 +366,24 @@ sap.ui.define(
 
 		//method to retrieve the data for the table
 
-		 Controller.prototype._retrieveTableInfo = function (sBPNumber) {
-            var sPath = '/AcctAccessAuth',
-                aFilters = [];
-                aFilters.push(new Filter({ path: 'BPNum', operator: FilterOperator.EQ, value1: sBPNumber}));
+		 Controller.prototype._retrieveTableInfo = function (sCANumber) {
+            var sPath = '/Buags' + '(\'' + sCANumber + '\')/ThirdPartyAuth';
 
-            var oModel = this.getView().getModel('oDataASvc'),
+            var oModel = this.getView().getModel('oODataSvc'),
                 oAcctAccessModel = this.getView().getModel('oSmryAccessAuth'),
                 oAcctAccessData = [],
                 oParameters;
 
             oParameters = {
-                filters: aFilters,
                 success : function (oData) {
                     if (oData.results) {
                         for (var i = 0; i < oData.results.length; i++) {
                             var dataEntry = {};
                             var data = oData.results[i];
-                            dataEntry.AuthorizedParty = data.AuthorizedParty;
-                            dataEntry.LegalDocType = data.LegalDocType;
-                            dataEntry.ReceivedDate = data.ReceivedDate;
-							dataEntry.EffectiveDate = data.EffectiveDate;
+                            dataEntry.AuthPrtyName = data.AuthPrtyName;
+                            dataEntry.LegalDoc = data.LegalDoc;
+                            dataEntry.ReceiveDate = data.ReceiveDate;
+							dataEntry.EffDate = data.EffDate;
 							dataEntry.EndDate = data.EndDate;
 							dataEntry.Status = data.Status;
                             oAcctAccessData.push(dataEntry);
