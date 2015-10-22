@@ -47,6 +47,11 @@
                 "dashboard.VerificationWithCaCo": {
                     "pattern": "dashboard/verification/bp/{bpNum}/ca/{caNum}/co/{coNum}",
                     "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "dashboard.EmptyTools" ]
+                },
+
+                "dashboard.ServiceOrder": {
+                    "pattern": "dashboard/serviceorder/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target": [ "dashboard.ServiceOrder", "dashboard.CustomerDataSummary", "dashboard.ServiceOrderTool" ]
                 }
             },
 
@@ -64,6 +69,16 @@
                 "dashboard.CustomerDataVerification": {
                     "viewName": "nrg.module.dashboard.view.CustomerDataVerification",
                     "controlId": "idAppGeneral"
+                },
+
+                "dashboard.ServiceOrder": {
+                    "viewName": "nrg.module.dashboard.view.ServiceOrder",
+                    "controlId": "idAppGeneral"
+                },
+
+                "dashboard.ServiceOrderTool": {
+                    "viewName": "nrg.module.dashboard.view.Tools",
+                    "controlId": "idAppTools"
                 }
             }
         }
