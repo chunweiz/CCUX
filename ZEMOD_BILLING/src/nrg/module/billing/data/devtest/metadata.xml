@@ -123,7 +123,10 @@
                 <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="20" Name="FilterType" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="20" Name="Identifier" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="120" Name="Message" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="20" Name="DunningText" Nullable="false" Type="Edm.String"/>
+                <Property Name="DunningDate" Precision="7" Type="Edm.DateTimeOffset"/>
+                <Property MaxLength="40" Name="DunningReason" Type="Edm.String"/>
+                <Property Name="EnablePopup" Type="Edm.Boolean"/>
             </EntityType>
             <EntityType Name="PrePayHeader">
                 <Key>

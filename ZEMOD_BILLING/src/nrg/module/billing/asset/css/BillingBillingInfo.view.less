@@ -357,7 +357,24 @@
             min-height: 10rem;
             max-height: 10rem;
             width: 100%;
+            overflow-x: auto;
+
+    }
+    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-r > .nrgBilling-cusDataBil-r-div > .nrgBilling-cusDataBil-r-div-dunningmsgs > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg {
+            display: block;
+    }
+    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-r > .nrgBilling-cusDataBil-r-div > .nrgBilling-cusDataBil-r-div-dunningmsgs > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg-label {
             color: @nrgColor-blue-link;
+            display: block;
+    }
+    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-r > .nrgBilling-cusDataBil-r-div > .nrgBilling-cusDataBil-r-div-dunningmsgs > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg-div {
+            display: inline-block;
+            color: @nrgColor-blue-link;
+            width: 35%;
+            margin-left: 1.5rem;
+    }
+    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-r > .nrgBilling-cusDataBil-r-div > .nrgBilling-cusDataBil-r-div-dunningmsgs > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg[data-disabled="true"] > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg-label{
+           color: @nrgColor-grey-light;
     }
     & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-r > .nrgBilling-cusDataBil-r-div > .nrgBilling-cusDataBil-r-text-disconnect{
         font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;

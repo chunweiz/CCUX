@@ -73,7 +73,7 @@
 <!--                                    <ute:Tag id="idnrgBillingMsgsTemp" class="nrgBilling-cusDataBil-msgs-msg" text="{comp-billing>Message}">
                                         <ute:Tag text="{comp-billing>Message}" />
                                     </ute:Tag>-->
-                                <c:Label text="{comp-billing>Message}"
+                                <c:Label text="{comp-billing>DunningReason}"
                                          id="idnrgBillingMsgsTemp"
                                          icon="sap-icon://nrg-icon/notification"
                                          class="nrgBilling-cusDataBil-msgs-msg" />
@@ -221,7 +221,19 @@
                                                id="idnrgBilDunMsgsTemp"
                                                class="nrgBilling-cusDataBil-r-div-dunningmsgs-msg"
                                                press=".onMessages"
-                                               text="{comp-billing>Message}" />
+                                               text="{comp-billing>notitle}"
+                                               enabled="{comp-billing>EnablePopup}">
+<!--                                        <ute:Tag text="{comp-billing>DunningReason}"></ute:Tag>-->
+                                        <c:Label text="{comp-billing>DunningReason}"
+                                                 icon="sap-icon://nrg-icon/notification"
+                                                  class="nrgBilling-cusDataBil-r-div-dunningmsgs-msg-label"/>
+                                        <ute:Tag visible="{= ${comp-billing>FilterType} === '1'}"
+                                                 class="nrgBilling-cusDataBil-r-div-dunningmsgs-msg-div"
+                                                 text="{comp-billing>DunningText}"/>
+                                        <ute:Tag visible="{= ${comp-billing>FilterType} === '1'}"
+                                                 text="{path: 'comp-billing>DunningDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }"
+                                                 class="nrgBilling-cusDataBil-r-div-dunningmsgs-msg-div" />
+                                    </utmain:Button>
                                 </ute:Tag>
 
                             </ute:Tag>
