@@ -69,12 +69,28 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype._formatPostInv2V = function (sLValue, sRValue) {
-            return (!!(parseInt(sLValue, 10)) || !!parseInt(sRValue, 10));
+        CustomController.prototype._formatPostInv2VL = function (cIndicator) {
+            if (cIndicator === 'L'){
+                return true;
+            } else {
+                return false;
+            }
         };
 
-        CustomController.prototype._formatPostInv1V = function (sRonlyValue) {
-            return !!(parseInt(sRonlyValue, 10));
+        CustomController.prototype._formatPostInv2VR = function (cIndicator) {
+            if (cIndicator === 'R'){
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatPostInv1V = function (cIndicator) {
+            if (cIndicator === 'H'){
+                return true;
+            } else {
+                return false;
+            }
         };
 
         CustomController.prototype._formatDppIntGrn = function (sIndicator) {
@@ -284,6 +300,7 @@ sap.ui.define(
                 return iLfRtVal;
             }
         };
+
 
         /*****************************************************************************************************************************************************/
         /*****************************************************************************************************************************************************/
