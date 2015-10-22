@@ -347,7 +347,47 @@ sap.ui.define(
             return;
         };
 
-
+        /**
+		 * Handler for Dunning Lock Press
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onMessages = function (oEvent) {
+            var sPath,
+                oBindingInfo,
+                oDunningLocksTable,
+                oDunningLocksTemplate,
+                fnRecievedHandler,
+                that = this;
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            if (!this._oDialogFragment) {
+                this._oDialogFragment = sap.ui.xmlfragment("DunnlingLocks", "nrg.module.billing.view.DunningPopup", this);
+            }
+            if (this._oDunningDialog === undefined) {
+                this._oDunningDialog = new ute.ui.main.Popup.create({
+                    title: 'Dunning',
+                    content: this._oDialogFragment
+                });
+            }
+            sPath = oEvent.getSource().getBindingContext("comp-billing").getPath() + "/DunningLocksSet";
+            oDunningLocksTable = sap.ui.core.Fragment.byId("DunnlingLocks", "idnrgBillDn-Table");
+            oDunningLocksTemplate = sap.ui.core.Fragment.byId("DunnlingLocks", "idnrgBillDn-Row");
+            fnRecievedHandler = function () {
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
+            };
+            oBindingInfo = {
+                model : "comp-billing",
+                path : sPath,
+                template : oDunningLocksTemplate,
+                events: {dataReceived : fnRecievedHandler}
+            };
+            this.getView().addDependent(this._oDunningDialog);
+            //to get access to the global model
+            this._oDunningDialog.addStyleClass("nrgCamHis-dialog");
+            oDunningLocksTable.bindRows(oBindingInfo);
+            this._oDunningDialog.open();
+        };
         return CustomController;
     }
 );
