@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+   <edmx:DataServices m:DataServiceVersion="2.0">
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZE_CCUX_SRV" xml:lang="en" sap:schema-version="1">
+         <EntityType Name="ThirdPartyAuth" sap:content-version="1">
+            <Key>
+               <PropertyRef Name="ContractAccountNumber" />
+               <PropertyRef Name="AuthPrtyName" />
+            </Key>
+            <Property Name="ContractAccountNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="AuthPrtyName" Type="Edm.String" Nullable="false" MaxLength="80" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="LegalDoc" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="ReceiveDate" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="EffDate" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="EndDate" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <NavigationProperty Name="Buag" Relationship="ZE_CCUX_SRV.Buag_ThirdPrtyAuths" FromRole="ToRole_Buag_ThirdPrtyAuths" ToRole="FromRole_Buag_ThirdPrtyAuths" />
+         </EntityType>
+         <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/$metadata" />
+         <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/$metadata" />
+      </Schema>
+   </edmx:DataServices>
+</edmx:Edmx>

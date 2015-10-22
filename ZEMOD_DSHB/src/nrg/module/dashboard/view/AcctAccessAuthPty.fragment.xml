@@ -26,20 +26,20 @@
 						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-Status}"/>
 				</ute:Tag>
 				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-tbl">
-					<!--<ute:Tag content="{oSmryAccessAuth>/}">-->
+					<ute:Tag content="{oSmryAccessAuth>/}">
 						<ute:Tag class="nrgDashboard-AcctAccessAuthPty-tbl-row">
 							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h1-c1"
-									 text="AuthorizedParty"/>
+									 text="{oSmryAccessAuth>AuthPrtyName}"/>
 							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h2-c2"
-									 text="LegalDocType"/>
+									 text="{oSmryAccessAuth>LegalDoc}"/>
 							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h3-c3"
-									 text="ReceivedDate"/>
+									 text="{oSmryAccessAuth>ReceiveDate}"/>
 							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h4-c4"
-									 text="EffectiveDate"/>
+									 text="{oSmryAccessAuth>EffDate}"/>
 							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h5-c5"
-									 text="EndDate"/>
+									 text="oSmryAccessAuth>EndDate}"/>
 							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h6-c6"
-									 text="Status"/>
+									 text="{oSmryAccessAuth>Status}"/>
 						</ute:Tag>
 					<!--</ute:Tag>-->
 			</ute:Tag>

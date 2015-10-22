@@ -33,11 +33,12 @@ sap.ui.define(
         };
 
 		Controller.prototype.onInit = function(){
-			this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard-AcctAccessPty'),'oDataASvc');
+
 		};
 
         Controller.prototype.onBeforeRendering = function () {
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
+			this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard-AcctAccessPty'),'oDataASvc');
 
 
             //Model to keep information to show
@@ -70,7 +71,7 @@ sap.ui.define(
             //this._initRetrBpSegInf();
 
 			//retrieve the table data
-			this._retrieveTableInfo(this._bpNum);
+			this._retrieveTableInfo(this._caNum);
 
         };
 
@@ -365,10 +366,10 @@ sap.ui.define(
 
 		//method to retrieve the data for the table
 
-		 Controller.prototype._retrieveTableInfo = function (sBPNumber) {
-            var sPath = '/AcctAccessAuth',
+		 Controller.prototype._retrieveTableInfo = function (sCANumber) {
+            var sPath = '/ThirdPartyAuth',
                 aFilters = [];
-                aFilters.push(new Filter({ path: 'BPNum', operator: FilterOperator.EQ, value1: sBPNumber}));
+                aFilters.push(new Filter({ path: 'ContractAccountNumber', operator: FilterOperator.EQ, value1: sCANumber}));
 
             var oModel = this.getView().getModel('oDataASvc'),
                 oAcctAccessModel = this.getView().getModel('oSmryAccessAuth'),
