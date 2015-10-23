@@ -346,10 +346,9 @@
 					oRouter.navTo('bupa.caInfoNoCo', {bpNum: this._bpNum, caNum: this._caNum});
 				}
 			};
+			
+			/*------------------------------------------ Account Access Authorization -------------------------------------------*/
 
-			/***********************************************************************************************************************/
-			//Functions for AccAccessAuthPty.fragment.xml
-			/***********************************************************************************************************************/
 			Controller.prototype._onAuthPtyClicked = function () {
 				if (!this._oAccAuthPtyPopup) {
 					this._oAccAuthPtyPopup = ute.ui.main.Popup.create({
@@ -358,7 +357,7 @@
 					});
 					this.getView().addDependent(this._oAccAuthPtyPopup);
 				}
-
+				this._oAccAuthPtyPopup.addStyleClass('nrgDashboard-accAuthPtyPopup');
 				this._oAccAuthPtyPopup.open();
 
 				return;

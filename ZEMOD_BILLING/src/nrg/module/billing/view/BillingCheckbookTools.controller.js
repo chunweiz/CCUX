@@ -64,6 +64,7 @@ sap.ui.define(
                                 var dataEntry = {};
                                 dataEntry = oData.results[i];
                                 dataEntry.Period = dataEntry.Period.substr(0, 2) + '/' + dataEntry.Period.substr(6, 4);
+                                dataEntry.FullPeriod = dataEntry.Period;
                                 dataEntry.ActualBill = "$" + parseFloat(dataEntry.ActualBill);
                                 dataEntry.Usage = parseFloat(dataEntry.Usage);
                                 dataEntry.AdjAmount = "0.00";
@@ -176,7 +177,7 @@ sap.ui.define(
                 var basisParameterName = 'Bbs' + this._pad(i+1);
                 var adjustParameterName = 'Amt' + this._pad(i+1);
 
-                oPayload[periodParameterName] = oHistoryModel.oData[i].Period;
+                oPayload[periodParameterName] = oHistoryModel.oData[i].FullPeriod;
                 oPayload[basisParameterName] = oHistoryModel.oData[i].Basis;
                 oPayload[adjustParameterName] = (parseFloat(oHistoryModel.oData[i].AdjAmount) || 0).toString();
             }
@@ -216,7 +217,7 @@ sap.ui.define(
                     method : "POST",
                     urlParameters : {
                         "Contract": this._coNum,
-                        "Date": oHistoryModel.oData[oHistoryModel.oData.length - 1].Period
+                        "Date": oHistoryModel.oData[oHistoryModel.oData.length - 1].FullPeriod
                     },
                     success : function (oData, response) {
                         if (oData.Code === "S") {
@@ -285,26 +286,20 @@ sap.ui.define(
         Controller.prototype._onAvgBillBtnClicked = function () {
             var oEligibilityModel = this.getView().getModel('oEligibility'),
                 oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager(),
-                iDoneRetrieving = 0;
+                bDoneRetrTable = false,
+                bDoneRetrGraph = false,
+                bDoneRetrEligibility = false,
+                checkRetrTableGraphComplete;
 
             if (this._coNum) {
 
                 // Display the loading indicator
                 this.getOwnerComponent().getCcuxApp().setOccupied(true);
                 // Retrieve the eligibility for ABP
-                this._retrieveABPEligibility(this._coNum, function () {iDoneRetrieving++;});
-                // Retrieve the data for table
-                this._retrieveTableInfo(this._coNum, function () {iDoneRetrieving++;});
-                // Retrieve the data for graph
-                this._retrieveGraphInfo(this._coNum, function () {iDoneRetrieving++;});
+                this._retrieveABPEligibility(this._coNum, function () {bDoneRetrEligibility = true;});
 
-                var checkRetrComplete = setInterval(function() {
-                    if (iDoneRetrieving === 3) {
-                        // Dismiss the loading indicator
-                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
-                        clearInterval(checkRetrComplete);
-                        clearTimeout(retrTimeout);
-                        
+                var checkDoneRetrEligibility = setInterval (function () {
+                    if (bDoneRetrEligibility) {
                         // Check if the customer is eligible for ABP.
                         if (oEligibilityModel.oData.ABPElig === "Y") {
                             // Check if the customer is on ABP now
@@ -328,39 +323,63 @@ sap.ui.define(
                                         LINK_ID: "Z_AVGBIL_D"
                                     });
                                 }
+                                // Dismiss the loading indicator
+                                this.getOwnerComponent().getCcuxApp().setOccupied(false);
                             } else {
-                                if (!this._oAvgBillPopup) {
-                                    this._oAvgBillPopup = ute.ui.main.Popup.create({
-                                        content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.AverageBillingPlan", this),
-                                        title: 'AVERAGE BILLING PLAN'
-                                    });
-                                    this._oAvgBillPopup.addStyleClass('nrgBilling-avgBillingPopup');
-                                    this.getView().addDependent(this._oAvgBillPopup);
-                                    // Render the graph
-                                    this.byId("chart").setDataModel(this.getView().getModel('oUsageGraph'));
-                                    // Render the graph crontrol buttons
-                                    this._renderGraphCrontrolBtn();
-                                }
-                                this._oAvgBillPopup.open();  
+                                // Retrieve the data for table
+                                this._retrieveTableInfo(this._coNum, function () {bDoneRetrTable = true;});
+                                // Retrieve the data for graph
+                                this._retrieveGraphInfo(this._coNum, function () {bDoneRetrGraph = true;});
+
+                                checkRetrTableGraphComplete = setInterval (function () {
+                                    if (bDoneRetrTable && bDoneRetrGraph) {
+                                        // Dismiss the loading indicator
+                                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                                        // Upon successfully retrieving the data, stop checking the completion of retrieving data
+                                        clearInterval(checkRetrTableGraphComplete);
+                                        // Upon successfully retrieving the data, stop the error message timeout
+                                        clearTimeout(retrTimeout);
+                                        
+                                        if (!this._oAvgBillPopup) {
+                                            this._oAvgBillPopup = ute.ui.main.Popup.create({
+                                                content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.AverageBillingPlan", this),
+                                                title: 'AVERAGE BILLING PLAN'
+                                            });
+                                            this._oAvgBillPopup.addStyleClass('nrgBilling-avgBillingPopup');
+                                            this.getView().addDependent(this._oAvgBillPopup);
+                                            // Render the graph
+                                            this.byId("chart").setDataModel(this.getView().getModel('oUsageGraph'));
+                                            // Render the graph crontrol buttons
+                                            this._renderGraphCrontrolBtn();
+                                        }
+                                        this._oAvgBillPopup.open();  
+                                    }
+                                }.bind(this), 100);
                             }
                         } else {
                             ute.ui.main.Popup.Alert({
                                 title: 'Not Eligible',
                                 message: 'You are not eligible for Average Billing Plan.'
                             });
+                            // Dismiss the loading indicator
+                            this.getOwnerComponent().getCcuxApp().setOccupied(false);
                         }
-                    }
+
+                        clearInterval(checkDoneRetrEligibility);
+                    } 
                 }.bind(this), 100);
 
                 // Timeout function. If after 5 minutes still cannot done with retrieving data, then raise error message.
                 var retrTimeout = setTimeout(function(){
-                    // Dismiss the loading indicator
-                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     ute.ui.main.Popup.Alert({
                         title: 'Network service failed',
                         message: 'We cannot retrieve your data. Please try again later.'
                     });
-                }, 300000);
+                    // Upon error time out, stop checking the completion of retrieving data
+                    clearInterval(checkRetrTableGraphComplete);
+                    // Dismiss the loading indicator
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                }.bind(this), 300000);
 
             } else {
                 ute.ui.main.Popup.Alert({

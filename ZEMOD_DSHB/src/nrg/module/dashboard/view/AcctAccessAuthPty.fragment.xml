@@ -8,7 +8,7 @@
         xmlns:core="sap.ui.core"
         xmlns:m="sap.m">
         <ute:Tag class="nrgDashboard-AcctAccessAuthPty">
-			<ute:Tag class="nrgDashboard-AcctAccessAuthPty-RightArea">
+			<ute:Tag class="nrgDashboard-AcctAccessAuthPty-toolSec">
 				<core:Icon
                     src="sap-icon://nrg-icon/plus"
                     class="nrgDashboard-AcctAccessAuthPty-RightArea-Icon"/>
