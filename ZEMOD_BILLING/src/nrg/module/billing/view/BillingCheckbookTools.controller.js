@@ -68,10 +68,10 @@ sap.ui.define(
                         for (var i = 0; i < oData.results.length; i++) {
                             var dataEntry = {};
                             dataEntry = oData.results[i];
-                            dataEntry.Period = dataEntry.Period.substring(3);
+                            dataEntry.Period = dataEntry.Period.substr(0, 2) + '/' + dataEntry.Period.substr(6, 4);
                             dataEntry.Amount = "$" + parseFloat(dataEntry.Amount);
                             dataEntry.Consumption = parseFloat(dataEntry.Consumption);
-                            dataEntry.AdjAmount = "";
+                            dataEntry.AdjAmount = "0.00";
                             aHistoryData.push(dataEntry);
                         }
                         oHistoryModel.setData(aHistoryData);
@@ -215,9 +215,12 @@ sap.ui.define(
                     },
                     success : function (oData, response) {
                         if (oData.Code === "S") {
+                            // close the ABP pop up
+                            this._oAvgBillPopup.close();
+                            // Display the success message
                             ute.ui.main.Popup.Alert({
                                 title: 'Success',
-                                message: 'ABP enrollment success.'
+                                message: 'ABP activation success and contact log has been created.'
                             });
                             this._retrieveABPEligibility(this._coNum);
                         } else {
@@ -279,13 +282,29 @@ sap.ui.define(
                 oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
 
             if (this._coNum) {
-
-                // Check if the user is eligible for ABP.
+                // Check if the customer is eligible for ABP.
                 if (oEligibilityModel.oData.ABPElig === "Y") {
+                    // Check if the customer is on ABP now
                     if (oEligibilityModel.oData.ABPAct === "Y") {
-                        oWebUiManager.notifyWebUi('openIndex', {
-                            LINK_ID: "Z_AVGBIL_D"
-                        });
+                        // Check if there is billing history
+                        if (oEligibilityModel.oData.NoBillHistory === "X" || oEligibilityModel.oData.NoBillHistory === "x") {
+                            // Show the confirmation pop up
+                            ute.ui.main.Popup.Confirm({
+                                title: 'No Billing History',
+                                message: 'Customer has no billing history to display. Do you wish to deactivate Average Billing Plan?',
+                                callback: function (sAction) {
+                                    if (sAction === 'Yes') {
+                                        oWebUiManager.notifyWebUi('openIndex', {
+                                            LINK_ID: "Z_AVGBIL_D"
+                                        });
+                                    } 
+                                }
+                            });
+                        } else {
+                            oWebUiManager.notifyWebUi('openIndex', {
+                                LINK_ID: "Z_AVGBIL_D"
+                            });
+                        }
                     } else {
                         if (!this._oAvgBillPopup) {
                             this._oAvgBillPopup = ute.ui.main.Popup.create({
@@ -299,7 +318,7 @@ sap.ui.define(
                             // Render the graph crontrol buttons
                             this._renderGraphCrontrolBtn();
                         }
-                        this._oAvgBillPopup.open();   
+                        this._oAvgBillPopup.open();  
                     }
                 } else {
                     ute.ui.main.Popup.Alert({
