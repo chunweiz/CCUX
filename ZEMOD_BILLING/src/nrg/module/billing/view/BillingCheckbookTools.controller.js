@@ -354,6 +354,8 @@ sap.ui.define(
 
                 // Timeout function. If after 5 minutes still cannot done with retrieving data, then raise error message.
                 var retrTimeout = setTimeout(function(){
+                    // Dismiss the loading indicator
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     ute.ui.main.Popup.Alert({
                         title: 'Network service failed',
                         message: 'We cannot retrieve your data. Please try again later.'
