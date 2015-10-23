@@ -7,10 +7,12 @@
         xmlns:l="sap.ui.commons.layout"
         xmlns:core="sap.ui.core"
         xmlns:m="sap.m">
-		<!--<ute:Tag class="nrgDashboard-AcctAccessAuthPty-RightArea">
-			<m:Input placeholder="New Party"/>
-		</ute:Tag>-->
         <ute:Tag class="nrgDashboard-AcctAccessAuthPty">
+			<ute:Tag class="nrgDashboard-AcctAccessAuthPty-RightArea">
+				<core:Icon
+                    src="sap-icon://nrg-icon/plus"
+                    class="nrgDashboard-AcctAccessAuthPty-RightArea-Icon"/>
+			</ute:Tag>
 				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr">
 					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h1"
 						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-AuthParty}"/>
@@ -37,11 +39,11 @@
 							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h4-c4"
 									 text="{oSmryAccessAuth>EffDate}"/>
 							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h5-c5"
-									 text="oSmryAccessAuth>EndDate}"/>
+									 text="{oSmryAccessAuth>EndDate}"/>
 							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h6-c6"
 									 text="{oSmryAccessAuth>Status}"/>
 						</ute:Tag>
-					<!--</ute:Tag>-->
-			</ute:Tag>
+					</ute:Tag>
+				</ute:Tag>
 		</ute:Tag>
 </core:FragmentDefinition>
