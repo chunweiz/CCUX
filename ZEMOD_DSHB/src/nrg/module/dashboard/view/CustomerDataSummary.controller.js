@@ -387,8 +387,8 @@
 
 								if(ThirdPrtyAuthFlag == 1){
 
-									this.getView().byId("idBtnAuth").setVisible(true);/*
-									this.getView().byId("idBpName").removeStyleClass("nrgDashboard-cusDataSum-bpName");*/
+									this.getView().byId("idBtnAuth").setVisible(true);
+									this.getView().byId("idBpName").removeStyleClass("nrgDashboard-cusDataSum-bpName");
 									this.getView().byId("idBpName").addStyleClass("nrgDashboard-cusDataSum-bpName-AcctAccessPty");
 
 
@@ -401,18 +401,48 @@
 									oParametersTp = {
 												success : function (oData) {
 												if (oData.results) {
-													for (var i = 0; i < oData.results.length; i++) {
-														var dataEntry = {};
+													var aCurrent = [];
+													var AcctAccessfragment = sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AcctAccessAuthPty", this);
+													var TblContainer = AcctAccessfragment.getIdForLabel("idnrgDashboard-AcctAccessAuthPty-tbl");
+
+													for (var i = 0; i < oData.results.length; i++)
+													{
+
+														var TblRowContainer = new ute.ui.commons.Tag({elem: 'div'}).addStyleClass("nrgDashboard-AcctAccessAuthPty-tbl-row");
 														var data = oData.results[i];
-														dataEntry.AuthPrtyName = data.AuthPrtyName;
-														dataEntry.LegalDoc = data.LegalDoc;
-														dataEntry.ReceiveDate = data.ReceiveDate;
-														dataEntry.EffDate = data.EffDate;
-														dataEntry.EndDate = data.EndDate;
-														dataEntry.Status = data.Status;
-														oAcctAccessData.push(dataEntry);
+
+														var oPrtyNameTag = new ute.ui.commons.Tag({elem: 'div', text: oData.results[i].AuthPrtyName}).addStyleClass("nrgDashboard-AcctAccessAuthPty-hdr-h1-c1");
+														TblRowContainer.addContent(oPrtyNameTag);
+
+														var oLegalTag = new ute.ui.commons.Tag({elem: 'div', text: oData.results[i].LegalDoc}).addStyleClass("nrgDashboard-AcctAccessAuthPty-hdr-h2-c2");
+														TblRowContainer.addContent(oLegalTag);
+
+														var oReceiveDateTag = new ute.ui.commons.Tag({elem: 'div', text:this._formatDate(oData.results[i].ReceiveDate)}).addStyleClass("nrgDashboard-AcctAccessAuthPty-hdr-h3-c3");
+														TblRowContainer.addContent(oReceiveDateTag);
+
+														var oEffDateTag = new ute.ui.commons.Tag({elem: 'div', text:this._formatDate(oData.results[i].EffDate)}).addStyleClass("nrgDashboard-AcctAccessAuthPty-hdr-h4-c4");
+														TblRowContainer.addContent(oEffDateTag);
+
+														var oEndDateTag = new ute.ui.commons.Tag({elem: 'div', text:this._formatDate(oData.results[i].EndDate)}).addStyleClass("nrgDashboard-AcctAccessAuthPty-hdr-h5-c5");
+														TblRowContainer.addContent(oEndDateTag);
+
+														var Status = oData.results[i].Status;
+														var oStatusTag;
+														if(Status === "ACTIVE"){
+															oStatusTag = new ute.ui.commons.Tag({elem: 'div', text: oData.results[i].Status}).addStyleClass("nrgDashboard-AcctAccessAuthPty-hdr-h6-c6A");
+														}
+														else{
+															oStatusTag = new ute.ui.commons.Tag({elem: 'div', text: oData.results[i].Status}).addStyleClass("nrgDashboard-AcctAccessAuthPty-hdr-h6-c6I");
+														}
+
+														TblRowContainer.addContent(oStatusTag);
+
+														aCurrent.push(TblRowContainer);
+
+														TblRowContainer.placeAt(TblContainer);
+
 													}
-													oAcctAccessModel.setData(oAcctAccessData);
+
 												} else {
 											}
 										}.bind(this),
@@ -429,7 +459,7 @@
 							{
 								this.getView().byId("idBtnAuth").setVisible(false);
 								this.getView().byId("idBpName").addStyleClass("nrgDashboard-cusDataSum-bpName");
-								/*this.getView().byId("idBpName").removeStyleClass("nrgDashboard-cusDataSum-bpName-AcctAccessPty");*/
+								this.getView().byId("idBpName").removeStyleClass("nrgDashboard-cusDataSum-bpName-AcctAccessPty");
 
 							}
 					}.bind(this),
@@ -442,6 +472,14 @@
 				}
 			};
 
+
+			  Controller.prototype._formatDate = function (oDate) {
+            if (oDate) {
+                var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern:"MM/yyyy"});
+                var dateStr = dateFormat.format(new Date(oDate.getTime()));
+                return dateStr;
+            }
+        };
 			return Controller;
 		}
 	);

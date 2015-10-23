@@ -27,8 +27,8 @@
 					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h6"
 						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-Status}"/>
 				</ute:Tag>
-				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-tbl">
-					<ute:Tag content="{oSmryAccessAuth>/}">
+				<ute:Tag id="idnrgDashboard-AcctAccessAuthPty-tbl" class="nrgDashboard-AcctAccessAuthPty-tbl">
+					<!--<ute:Tag content="{oSmryAccessAuth>/}">
 						<ute:Tag class="nrgDashboard-AcctAccessAuthPty-tbl-row">
 							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h1-c1"
 									 text="{oSmryAccessAuth>AuthPrtyName}"/>
@@ -43,7 +43,7 @@
 							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h6-c6"
 									 text="{oSmryAccessAuth>Status}"/>
 						</ute:Tag>
-					</ute:Tag>
+					</ute:Tag>-->
 				</ute:Tag>
 		</ute:Tag>
 </core:FragmentDefinition>
