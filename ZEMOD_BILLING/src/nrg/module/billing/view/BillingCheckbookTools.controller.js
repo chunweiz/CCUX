@@ -69,9 +69,10 @@ sap.ui.define(
                             var dataEntry = {};
                             dataEntry = oData.results[i];
                             dataEntry.Period = dataEntry.Period.substr(0, 2) + '/' + dataEntry.Period.substr(6, 4);
-                            dataEntry.Amount = "$" + parseFloat(dataEntry.Amount);
-                            dataEntry.Consumption = parseFloat(dataEntry.Consumption);
+                            dataEntry.ActualBill = "$" + parseFloat(dataEntry.ActualBill);
+                            dataEntry.Usage = parseFloat(dataEntry.Usage);
                             dataEntry.AdjAmount = "0.00";
+                            dataEntry.AmtUsdAbp = parseFloat(dataEntry.AmtUsdAbp);
                             aHistoryData.push(dataEntry);
                         }
                         oHistoryModel.setData(aHistoryData);

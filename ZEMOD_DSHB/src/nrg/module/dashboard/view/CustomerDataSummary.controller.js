@@ -430,7 +430,6 @@
 								this.getView().byId("idBtnAuth").setVisible(false);
 								this.getView().byId("idBpName").addStyleClass("nrgDashboard-cusDataSum-bpName");
 								/*this.getView().byId("idBpName").removeStyleClass("nrgDashboard-cusDataSum-bpName-AcctAccessPty");*/
-
 							}
 					}.bind(this),
 					error: function (oError) {
