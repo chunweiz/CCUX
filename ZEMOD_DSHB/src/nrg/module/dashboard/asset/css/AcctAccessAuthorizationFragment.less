@@ -1,6 +1,12 @@
 		.nrgDashboard-AcctAccessAuthPty-RightArea{
 			width: 300px;
-			height: 30px;
+			height: 10px;
+
+			& > .nrgDashboard-AcctAccessAuthPty-RightArea-Icon{
+				margin-left: 950px;
+				font-weight: @nrgFontWeight-bold;
+				color: @nrgColor-blue-link;
+			}
 		}
 
 		.nrgDashboard-AcctAccessAuthPty{
@@ -26,7 +32,7 @@
 				margin-top: 5px;
 				padding-bottom: 8px;
 
-				> .nrgDashboard-AcctAccessAuthPty-tbl-row{
+				.nrgDashboard-AcctAccessAuthPty-tbl-row{
 					background-color: @nrgColor-grey-lightBackground;
 					padding:10px 0;
 					height: 30px;
@@ -52,8 +58,14 @@
 					}
 					.nrgDashboard-AcctAccessAuthPty-hdr-h6-c6{
 						width: 140px;
+
+						.nrgDashboard-AcctAccessAuthPty-hdr-h6-c6-cell{
+							border-radius: 50px;
+    						background: #8AC007;
+    						width: 8px;
+    						height:8px;
+						}
 					}
-				}
 			}
 			.nrgDashboard-AcctAccessAuthPty-hdr-h1{
 				width: 170px;
@@ -81,3 +93,4 @@
 			}
 
 		}
+}

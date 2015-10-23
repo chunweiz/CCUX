@@ -441,8 +441,8 @@
                 <ute:Tag content="{oPostInvoiceItems>/results}">
                     <ute:Tag>
                         <!--Normal Left and Right value cases-->
-                        <ute:Tag visible="{ parts:['oPostInvoiceItems>ValueLt', 'oPostInvoiceItems>ValueRt'],
-                                            formatter:'._formatPostInv2V'}"
+                        <ute:Tag visible="{ parts:['oPostInvoiceItems>ValuePos'],
+                                            formatter:'._formatPostInv2VL'}"
                                  class="nrgBilling-blChkBk-lftDiv-scrllArea-poInvc">
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po1"
                                      text="{parts:['oPostInvoiceItems>Date'],
@@ -452,13 +452,35 @@
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po3-1"
                                      text="{path: 'oPostInvoiceItems>ValueLt',
                                             type: 'nrg.base.type.Price',
-                                            formatOptions: { currencySymbol: ''},
-                                            formatter:'._formatLfRtZroVal'}"/>
+                                            formatOptions: { currencySymbol: ''}}"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po3-2"
+                                     text=" "/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po4"
+                                     text="{parts:['oPostInvoiceItems>DueDate'],
+                                            formatter:'._formatDate'}"/>
+                            <ute:Tag visible="{ parts:['oPostInvoiceItems>CallOutColor'],
+                                                formatter:'._formatPostClotGrn'}"
+                                     class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po5 nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po5-grn"
+                                     text="{oPostInvoiceItems>CallOut}"/>
+                            <ute:Tag visible="{ parts:['oPostInvoiceItems>CallOutColor'],
+                                                formatter:'._formatPostClotRed'}"
+                                     class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po5 nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po5-red"
+                                     text="{oPostInvoiceItems>CallOut}"/>
+                        </ute:Tag>
+                        <ute:Tag visible="{ parts:['oPostInvoiceItems>ValuePos'],
+                                            formatter:'._formatPostInv2VR'}"
+                                 class="nrgBilling-blChkBk-lftDiv-scrllArea-poInvc">
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po1"
+                                     text="{parts:['oPostInvoiceItems>Date'],
+                                            formatter:'._formatDate'}" />
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po2"
+                                     text="{oPostInvoiceItems>ItemDesc}"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po3-1"
+                                     text=" "/>
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po3-2"
                                      text="{path: 'oPostInvoiceItems>ValueRt',
                                             type: 'nrg.base.type.Price',
-                                            formatOptions: { currencySymbol: ''},
-                                            formatter:'._formatLfRtZroVal'}"/>
+                                            formatOptions: { currencySymbol: ''}}"/>
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po4"
                                      text="{parts:['oPostInvoiceItems>DueDate'],
                                             formatter:'._formatDate'}"/>
@@ -472,7 +494,7 @@
                                      text="{oPostInvoiceItems>CallOut}"/>
                         </ute:Tag>
                         <!--Post invoice item only comes with right value-->
-                        <ute:Tag visible="{ parts:['oPostInvoiceItems>ValueRightOnly'],
+                        <ute:Tag visible="{ parts:['oPostInvoiceItems>ValuePos'],
                                             formatter:'._formatPostInv1V'}"
                                  class="nrgBilling-blChkBk-lftDiv-scrllArea-poInvc">
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po1"
@@ -483,8 +505,7 @@
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po3"
                                      text="{path: 'oPostInvoiceItems>ValueRightOnly',
                                             type: 'nrg.base.type.Price',
-                                            formatOptions: { currencySymbol: ''},
-                                            formatter:'._formatLfRtZroVal'}"/>
+                                            formatOptions: { currencySymbol: ''}}"/>
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po4"
                                      text="{parts:['oPostInvoiceItems>DueDate'],
                                             formatter:'._formatDate'}"/>
