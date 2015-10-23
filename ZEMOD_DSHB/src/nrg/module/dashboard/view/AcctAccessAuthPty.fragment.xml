@@ -11,39 +11,39 @@
 			<ute:Tag class="nrgDashboard-AcctAccessAuthPty-toolSec">
 				<core:Icon
                     src="sap-icon://nrg-icon/plus"
-                    class="nrgDashboard-AcctAccessAuthPty-RightArea-Icon"/>
+                    class="nrgDashboard-AcctAccessAuthPty-plusIcon"/>
 			</ute:Tag>
-				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr">
-					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h1"
-						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-AuthParty}"/>
-					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h2"
-						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-TypeLegalDoc}"/>
-					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h3"
-						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-ReceivedData}"/>
-					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h4"
-						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-EffecDate}"/>
-					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h5"
-						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-EndDate}"/>
-					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h6"
-						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-Status}"/>
-				</ute:Tag>
-				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-tbl">
-					<ute:Tag content="{oSmryAccessAuth>/}">
-						<ute:Tag class="nrgDashboard-AcctAccessAuthPty-tbl-row">
-							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h1-c1"
-									 text="{oSmryAccessAuth>AuthPrtyName}"/>
-							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h2-c2"
-									 text="{oSmryAccessAuth>LegalDoc}"/>
-							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h3-c3"
-									 text="{parts:['oSmryAccessAuth>ReceiveDate'],type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }"/>
-							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h4-c4"
-									 text="{oSmryAccessAuth>EffDate}"/>
-							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h5-c5"
-									 text="{oSmryAccessAuth>EndDate}"/>
-							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h6-c6"
-									 text="{oSmryAccessAuth>Status}"/>
-						</ute:Tag>
+			<ute:Tag class="nrgDashboard-AcctAccessAuthPty-tableHeader">
+				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h1"
+					 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-AuthParty}"/>
+				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h2"
+					 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-TypeLegalDoc}"/>
+				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h3"
+					 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-ReceivedData}"/>
+				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h4"
+					 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-EffecDate}"/>
+				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h5"
+					 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-EndDate}"/>
+				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h6"
+					 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-Status}"/>
+			</ute:Tag>
+			<ute:Tag class="nrgDashboard-AcctAccessAuthPty-tableBody">
+				<ute:Tag content="{oSmryAccessAuth>/}">
+					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-tbl-row">
+						<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h1-c1"
+								 text="{oSmryAccessAuth>AuthPrtyName}"/>
+						<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h2-c2"
+								 text="{oSmryAccessAuth>LegalDoc}"/>
+						<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h3-c3"
+								 text="{parts:['oSmryAccessAuth>ReceiveDate'],type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }"/>
+						<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h4-c4"
+								 text="{oSmryAccessAuth>EffDate}"/>
+						<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h5-c5"
+								 text="{oSmryAccessAuth>EndDate}"/>
+						<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h6-c6"
+								 text="{oSmryAccessAuth>Status}"/>
 					</ute:Tag>
 				</ute:Tag>
+			</ute:Tag>
 		</ute:Tag>
 </core:FragmentDefinition>

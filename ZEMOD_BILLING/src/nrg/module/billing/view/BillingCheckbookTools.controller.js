@@ -62,9 +62,10 @@ sap.ui.define(
                         for (var i = 0; i < oData.results.length; i++) {
                             if (oData.results[i].Period !== "Total") {
                                 var dataEntry = {};
+                                var fullPeriod = oData.results[i].Period;
                                 dataEntry = oData.results[i];
                                 dataEntry.Period = dataEntry.Period.substr(0, 2) + '/' + dataEntry.Period.substr(6, 4);
-                                dataEntry.FullPeriod = dataEntry.Period;
+                                dataEntry.FullPeriod = fullPeriod;
                                 dataEntry.ActualBill = "$" + parseFloat(dataEntry.ActualBill);
                                 dataEntry.Usage = parseFloat(dataEntry.Usage);
                                 dataEntry.AdjAmount = "0.00";
