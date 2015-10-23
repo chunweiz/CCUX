@@ -371,7 +371,6 @@ sap.ui.define(
 
         };
 
-        
 
         Controller.prototype._pad = function (d) {
             return (d < 10) ? '0' + d.toString() : d.toString();
