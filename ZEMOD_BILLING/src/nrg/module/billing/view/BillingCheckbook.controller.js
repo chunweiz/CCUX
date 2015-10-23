@@ -69,24 +69,24 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype._formatPostInv2VL = function (cIndicator) {
-            if (cIndicator === 'L'){
+        CustomController.prototype._formatPostInv2VL = function (cIndicator, sHyperlink) {
+            if (cIndicator === 'L' && !sHyperlink) {
                 return true;
             } else {
                 return false;
             }
         };
 
-        CustomController.prototype._formatPostInv2VR = function (cIndicator) {
-            if (cIndicator === 'R'){
+        CustomController.prototype._formatPostInv2VR = function (cIndicator, sHyperlink) {
+            if (cIndicator === 'R' && !sHyperlink) {
                 return true;
             } else {
                 return false;
             }
         };
 
-        CustomController.prototype._formatPostInv1V = function (cIndicator) {
-            if (cIndicator === 'H'){
+        CustomController.prototype._formatPostInv1V = function (cIndicator, sHyperlink) {
+            if (cIndicator === 'H' && !sHyperlink) {
                 return true;
             } else {
                 return false;
