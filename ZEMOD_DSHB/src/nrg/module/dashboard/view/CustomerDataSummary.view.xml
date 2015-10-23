@@ -11,12 +11,12 @@
     <ute:Tag class="nrgDashboard-cusDataSum nrgAppMain-summaryContent nrgAppMain-summaryContent-full">
         <ute:content>
             <ute:Tag class="nrgDashboard-cusDataSum-bpArea">
-                <ute:TextView
+                <ute:TextView id="idBpName"
                     class="nrgDashboard-cusDataSum-bpName"
                     design="Large" text="{oSmryBpInf>/FullName}">
                 </ute:TextView>
                 <ute:Tag class="nrgDashboard-cusDataSum-bpAuthBtn" >
-                    <utmain:Button design="None" press="._onAuthPtyClicked">
+                    <utmain:Button id="idBtnAuth" design="None" press="._onAuthPtyClicked" visible="false">
                         <ute:Tag class="nrgDashboard-cusDataSum-bpAuthBtn-btn"/>
                     </utmain:Button>
                 </ute:Tag>

@@ -21,6 +21,7 @@
                 "RHSColor":"",
                 "DisplayName":"( 000000100738-4 ) 1209 fannin st / ALVIN TX",
                 "CheckDigit":"4",
+				"ThirdPrtyAuth":"X",
                 "ContactLogs":{
                     "__deferred":{
                         "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/Buags('100738')/ContactLogs"
@@ -97,6 +98,7 @@
                 "RHSColor":"",
                 "DisplayName":"( 2069899-9 ) 520 BROAD ST / NEWARK NJ 07102-3121",
                 "CheckDigit":"9",
+				"ThirdPrtyAuth":"",
                 "ContactLogs":{
                     "__deferred":{
                         "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Buags('2069899')/ContactLogs"
@@ -173,6 +175,7 @@
                 "RHSColor":"",
                 "DisplayName":"( 1289967-0 ) 520 BROAD ST / NEWARK NJ 07102-3121",
                 "CheckDigit":"0",
+				"ThirdPrtyAuth":"X",
                 "ContactLogs":{
                     "__deferred":{
                         "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_SRV/Buags('1289967')/ContactLogs"

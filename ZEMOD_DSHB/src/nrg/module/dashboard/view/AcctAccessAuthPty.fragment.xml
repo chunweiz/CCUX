@@ -35,7 +35,7 @@
 							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h2-c2"
 									 text="{oSmryAccessAuth>LegalDoc}"/>
 							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h3-c3"
-									 text="{oSmryAccessAuth>ReceiveDate}"/>
+									 text="{parts:['oSmryAccessAuth>ReceiveDate'],type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }"/>
 							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h4-c4"
 									 text="{oSmryAccessAuth>EffDate}"/>
 							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h5-c5"
