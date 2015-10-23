@@ -9,11 +9,14 @@
                 },
                 "Contract":"39159226",
                 "Period":"11/01/2015",
-                "Estimate":"171.00",
-                "Consumption":"1679.00",
-                "Amount":"142.14",
+                "Estimate":"0.00",
+                "Usage":"0.00",
+                "ActualBill":"142.14",
                 "CalcAmt":"0.00",
-                "Basis":"142.14"
+                "Basis":"52.94",
+                "Est":"",
+                "Adjsmnt":"52.94",
+                "AmtUsdAbp":"52.94"
             },
             {
                 "__metadata":{
@@ -23,11 +26,14 @@
                 },
                 "Contract":"39159226",
                 "Period":"10/01/2015",
-                "Estimate":"171.00",
-                "Consumption":"1737.00",
-                "Amount":"147.05",
+                "Estimate":"0.00",
+                "Usage":"0.00",
+                "ActualBill":"147.05",
                 "CalcAmt":"0.00",
-                "Basis":"147.05"
+                "Basis":"52.94",
+                "Est":"",
+                "Adjsmnt":"52.94",
+                "AmtUsdAbp":"52.94"
             },
             {
                 "__metadata":{
@@ -37,11 +43,14 @@
                 },
                 "Contract":"39159226",
                 "Period":"09/01/2015",
-                "Estimate":"171.00",
-                "Consumption":"1679.00",
-                "Amount":"142.14",
+                "Estimate":"0.00",
+                "Usage":"0.00",
+                "ActualBill":"142.14",
                 "CalcAmt":"0.00",
-                "Basis":"142.14"
+                "Basis":"52.94",
+                "Est":"",
+                "Adjsmnt":"52.94",
+                "AmtUsdAbp":"52.94"
             },
             {
                 "__metadata":{
@@ -51,11 +60,14 @@
                 },
                 "Contract":"39159226",
                 "Period":"08/01/2015",
-                "Estimate":"171.00",
-                "Consumption":"1853.00",
-                "Amount":"224.42",
+                "Estimate":"0.00",
+                "Usage":"0.00",
+                "ActualBill":"224.42",
                 "CalcAmt":"0.00",
-                "Basis":"224.42"
+                "Basis":"52.94",
+                "Est":"",
+                "Adjsmnt":"52.94",
+                "AmtUsdAbp":"52.94"
             },
             {
                 "__metadata":{
@@ -65,11 +77,14 @@
                 },
                 "Contract":"39159226",
                 "Period":"07/01/2015",
-                "Estimate":"171.00",
-                "Consumption":"1435.00",
-                "Amount":"175.77",
+                "Estimate":"0.00",
+                "Usage":"0.00",
+                "ActualBill":"175.77",
                 "CalcAmt":"0.00",
-                "Basis":"175.77"
+                "Basis":"52.94",
+                "Est":"",
+                "Adjsmnt":"52.94",
+                "AmtUsdAbp":"52.94"
             },
             {
                 "__metadata":{
@@ -79,11 +94,14 @@
                 },
                 "Contract":"39159226",
                 "Period":"06/01/2015",
-                "Estimate":"171.00",
-                "Consumption":"835.00",
-                "Amount":"104.53",
+                "Estimate":"0.00",
+                "Usage":"0.00",
+                "ActualBill":"104.53",
                 "CalcAmt":"0.00",
-                "Basis":"104.53"
+                "Basis":"52.94",
+                "Est":"",
+                "Adjsmnt":"52.94",
+                "AmtUsdAbp":"52.94"
             },
             {
                 "__metadata":{
@@ -93,11 +111,14 @@
                 },
                 "Contract":"39159226",
                 "Period":"05/01/2015",
-                "Estimate":"171.00",
-                "Consumption":"674.00",
-                "Amount":"95.47",
+                "Estimate":"0.00",
+                "Usage":"0.00",
+                "ActualBill":"95.47",
                 "CalcAmt":"0.00",
-                "Basis":"95.47"
+                "Basis":"52.94",
+                "Est":"",
+                "Adjsmnt":"52.94",
+                "AmtUsdAbp":"52.94"
             },
             {
                 "__metadata":{
@@ -107,11 +128,14 @@
                 },
                 "Contract":"39159226",
                 "Period":"04/01/2015",
-                "Estimate":"171.00",
-                "Consumption":"1291.00",
-                "Amount":"158.54",
+                "Estimate":"0.00",
+                "Usage":"0.00",
+                "ActualBill":"158.54",
                 "CalcAmt":"0.00",
-                "Basis":"158.54"
+                "Basis":"52.94",
+                "Est":"",
+                "Adjsmnt":"52.94",
+                "AmtUsdAbp":"52.94"
             },
             {
                 "__metadata":{
@@ -121,11 +145,14 @@
                 },
                 "Contract":"39159226",
                 "Period":"03/01/2015",
-                "Estimate":"171.00",
-                "Consumption":"2364.00",
-                "Amount":"285.88",
+                "Estimate":"0.00",
+                "Usage":"0.00",
+                "ActualBill":"285.88",
                 "CalcAmt":"0.00",
-                "Basis":"285.88"
+                "Basis":"52.94",
+                "Est":"",
+                "Adjsmnt":"52.94",
+                "AmtUsdAbp":"52.94"
             },
             {
                 "__metadata":{
@@ -135,11 +162,14 @@
                 },
                 "Contract":"39159226",
                 "Period":"02/01/2015",
-                "Estimate":"171.00",
-                "Consumption":"2598.00",
-                "Amount":"313.16",
+                "Estimate":"0.00",
+                "Usage":"0.00",
+                "ActualBill":"313.16",
                 "CalcAmt":"0.00",
-                "Basis":"313.16"
+                "Basis":"52.94",
+                "Est":"",
+                "Adjsmnt":"52.94",
+                "AmtUsdAbp":"52.94"
             },
             {
                 "__metadata":{
@@ -149,11 +179,14 @@
                 },
                 "Contract":"39159226",
                 "Period":"01/01/2015",
-                "Estimate":"171.00",
-                "Consumption":"1197.00",
-                "Amount":"147.15",
+                "Estimate":"0.00",
+                "Usage":"0.00",
+                "ActualBill":"147.15",
                 "CalcAmt":"0.00",
-                "Basis":"147.15"
+                "Basis":"52.94",
+                "Est":"",
+                "Adjsmnt":"52.94",
+                "AmtUsdAbp":"52.94"
             },
             {
                 "__metadata":{
@@ -163,11 +196,31 @@
                 },
                 "Contract":"39159226",
                 "Period":"12/03/2014",
-                "Estimate":"171.00",
-                "Consumption":"965.00",
-                "Amount":"119.68",
+                "Estimate":"0.00",
+                "Usage":"0.00",
+                "ActualBill":"119.68",
                 "CalcAmt":"0.00",
-                "Basis":"119.68"
+                "Basis":"119.68",
+                "Est":"",
+                "Adjsmnt":"0.00",
+                "AmtUsdAbp":"119.68"
+            },
+            {
+                "__metadata":{
+                    "id":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgAddS(Contract='39159226',Period='Total')",
+                    "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/AvgAddS(Contract='39159226',Period='Total')",
+                    "type":"ZE_CCUX_AVG_BILL_PLAN_SRV.AvgAdd"
+                },
+                "Contract":"39159226",
+                "Period":"Total",
+                "Estimate":"0.00",
+                "Usage":"0.00",
+                "ActualBill":"0.00",
+                "CalcAmt":"0.00",
+                "Basis":"806.62",
+                "Est":"",
+                "Adjsmnt":"0.00",
+                "AmtUsdAbp":"806.62"
             }
         ]
     }

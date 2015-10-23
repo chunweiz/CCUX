@@ -33,25 +33,32 @@
                         <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-amtUsedLabel"
                             text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-history-amtUsed-LABEL}"/>
                     </ute:Tag>
-                    <m:ScrollContainer class="nrgBilling-avgBillingPopup-amountDue-history-scrollArea" height="300px" horizontal="false" vertical="true">
+                    <m:ScrollContainer class="nrgBilling-avgBillingPopup-amountDue-history-scrollArea" height="200px" horizontal="false" vertical="true">
                         <ute:Tag content="{oAmountHistory>/}">
                             <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-row">
                                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-month"
                                     text="{oAmountHistory>Period}"/>
                                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-usage"
-                                    text="{oAmountHistory>Consumption}"/>
+                                    text="{oAmountHistory>Usage}"/>
                                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-usageCharge"
-                                    text="{oAmountHistory>Amount}"/>
+                                    text="{oAmountHistory>ActualBill}"/>
                                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-est"
-                                    text="{oAmountHistory>AvgEst}"/>
+                                    text="{oAmountHistory>Est}"/>
                                 <ute:Textfield class="nrgBilling-avgBillingPopup-amountDue-history-adj"
                                     value="{oAmountHistory>AdjAmount}"
-                                    width="80px"/>                
+                                    width="60px"/>
                                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-amtUsed"
-                                    text="{oAmountHistory>DefBal}"/>
+                                    text="{oAmountHistory>AmtUsdAbp}"/>
                             </ute:Tag>
                         </ute:Tag>
                     </m:ScrollContainer>
+                    <!-- Total -->
+                    <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-row">
+                        <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-total"
+                            text="TOTAL"/>
+                        <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-totalAmount"
+                            text="{oAmountHistory>/totalAmount}"/>
+                    </ute:Tag>
                 </ute:Tag>
                 <!-- Button Section -->
                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-btnSec">
