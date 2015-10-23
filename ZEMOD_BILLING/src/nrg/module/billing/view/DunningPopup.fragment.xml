@@ -7,7 +7,8 @@
 <u:Tag class="nrgBillDn-root">
     <u:Table width="50rem"
              id="idnrgBillDn-Table"
-             class="nrgBillDn-Table">
+             class="nrgBillDn-Table"
+             tableType="CampaignTable">
                     <u:columns>
                         <u:TableColumn width="14%" class="nrgBillDn-th">
                             <u:Tag text="{comp-billing>/#DunningLocks/Lotyp/@sap:label}"/>

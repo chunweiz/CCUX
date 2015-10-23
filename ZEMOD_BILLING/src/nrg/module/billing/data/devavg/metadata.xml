@@ -22,6 +22,7 @@
                 <Property Name="Contract" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Contract" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
                 <Property Name="ABPElig" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="ABP Eligibility" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
                 <Property Name="ABPAct" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="ABP Active" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="NoBillHistory" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Bill History for ABP" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
             </EntityType>
             <EntityType Name="AvgDet" sap:content-version="1">
                 <Key>
@@ -47,10 +48,13 @@
                 <Property Name="Contract" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Conract" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
                 <Property Name="Period" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
                 <Property Name="Estimate" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Estimate" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-                <Property Name="Consumption" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Consupmtion" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Usage" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Consupmtion" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="ActualBill" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
                 <Property Name="CalcAmt" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Calculated Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
                 <Property Name="Basis" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:label="Basis" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Est" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Adjsmnt" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="AmtUsdAbp" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
             </EntityType>
             <EntityType Name="ABPUpdt" sap:content-version="1">
                 <Key>
@@ -104,10 +108,35 @@
                 <FunctionImport Name="ABPCanc" ReturnType="ZE_CCUX_AVG_BILL_PLAN_SRV.Return" EntitySet="ReturnCollection" m:HttpMethod="POST">
                     <Parameter Name="Contract" Type="Edm.String" Mode="In" MaxLength="10" />
                 </FunctionImport>
-                <FunctionImport Name="ABPCrte" ReturnType="ZE_CCUX_AVG_BILL_PLAN_SRV.Return" EntitySet="ReturnCollection" m:HttpMethod="POST">
-                    <Parameter Name="Contract" Type="Edm.String" Mode="In" MaxLength="10" />
-                </FunctionImport>
                 <FunctionImport Name="ABPCalc" ReturnType="ZE_CCUX_AVG_BILL_PLAN_SRV.Return" EntitySet="ReturnCollection" m:HttpMethod="POST">
+                    <Parameter Name="Amt08" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Amt09" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Amt10" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Amt11" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Amt12" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Bbs03" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Bbs04" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Bbs05" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Bbs06" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Bbs07" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Bbs08" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Bbs09" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Bbs10" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Bbs11" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Bbs12" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Contract" Type="Edm.String" Mode="In" MaxLength="10" />
+                    <Parameter Name="Prd05" Type="Edm.String" Mode="In" MaxLength="10" />
+                    <Parameter Name="Prd06" Type="Edm.String" Mode="In" MaxLength="10" />
+                    <Parameter Name="Bbs01" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Bbs02" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Amt07" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Amt06" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Amt05" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Amt04" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Amt03" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Amt02" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Amt01" Type="Edm.String" Mode="In" MaxLength="20" />
+                    <Parameter Name="Prd12" Type="Edm.String" Mode="In" MaxLength="10" />
                     <Parameter Name="Prd01" Type="Edm.String" Mode="In" MaxLength="10" />
                     <Parameter Name="Prd02" Type="Edm.String" Mode="In" MaxLength="10" />
                     <Parameter Name="Prd03" Type="Edm.String" Mode="In" MaxLength="10" />
@@ -117,34 +146,10 @@
                     <Parameter Name="Prd09" Type="Edm.String" Mode="In" MaxLength="10" />
                     <Parameter Name="Prd10" Type="Edm.String" Mode="In" MaxLength="10" />
                     <Parameter Name="Prd11" Type="Edm.String" Mode="In" MaxLength="10" />
-                    <Parameter Name="Prd12" Type="Edm.String" Mode="In" MaxLength="10" />
-                    <Parameter Name="Amt01" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Amt02" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Amt03" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Amt04" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Amt05" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Amt06" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Amt07" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Amt08" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Amt09" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Amt10" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Amt11" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Amt12" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Bbs03" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Bbs04" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Bbs05" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Bbs06" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Bbs07" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Bbs08" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Bbs09" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Bbs10" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Bbs11" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Bbs12" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
+                </FunctionImport>
+                <FunctionImport Name="ABPCrte" ReturnType="ZE_CCUX_AVG_BILL_PLAN_SRV.Return" EntitySet="ReturnCollection" m:HttpMethod="POST">
                     <Parameter Name="Contract" Type="Edm.String" Mode="In" MaxLength="10" />
-                    <Parameter Name="Prd05" Type="Edm.String" Mode="In" MaxLength="10" />
-                    <Parameter Name="Prd06" Type="Edm.String" Mode="In" MaxLength="10" />
-                    <Parameter Name="Bbs01" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
-                    <Parameter Name="Bbs02" Type="Edm.Decimal" Mode="In" Precision="2" Scale="2" />
+                    <Parameter Name="Date" Type="Edm.String" Mode="In" MaxLength="10" />
                 </FunctionImport>
             </EntityContainer>
             <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/$metadata" />

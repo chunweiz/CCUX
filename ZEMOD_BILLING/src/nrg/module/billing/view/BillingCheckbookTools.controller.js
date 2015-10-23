@@ -35,13 +35,6 @@ sap.ui.define(
             this._bpNum = oRouteInfo.parameters.bpNum;
             this._caNum = oRouteInfo.parameters.caNum;
             this._coNum = oRouteInfo.parameters.coNum;
-
-            // Retrieve the data for table
-            this._retrieveTableInfo(this._coNum);
-            // Retrieve the data for graph
-            this._retrieveGraphInfo(this._coNum);
-            // Retrieve the eligibility for ABP
-            this._retrieveABPEligibility(this._coNum);
         };
 
         Controller.prototype.onAfterRendering = function ()
@@ -51,7 +44,7 @@ sap.ui.define(
 
         /*------------------------------------------------ Retrieve Methods -------------------------------------------------*/
 
-        Controller.prototype._retrieveTableInfo = function (sCoNumber) {
+        Controller.prototype._retrieveTableInfo = function (sCoNumber, fnCallback) {
             var sPath = '/AvgAddS',
                 aFilters = [];
                 aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNumber}));
@@ -59,6 +52,7 @@ sap.ui.define(
             var oModel = this.getView().getModel('oDataAvgSvc'),
                 oHistoryModel = this.getView().getModel('oAmountHistory'),
                 aHistoryData = [],
+                fTotalAmount,
                 oParameters;
 
             oParameters = {
@@ -66,16 +60,24 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData.results) {
                         for (var i = 0; i < oData.results.length; i++) {
-                            var dataEntry = {};
-                            dataEntry = oData.results[i];
-                            dataEntry.Period = dataEntry.Period.substr(0, 2) + '/' + dataEntry.Period.substr(6, 4);
-                            dataEntry.Amount = "$" + parseFloat(dataEntry.Amount);
-                            dataEntry.Consumption = parseFloat(dataEntry.Consumption);
-                            dataEntry.AdjAmount = "0.00";
-                            aHistoryData.push(dataEntry);
+                            if (oData.results[i].Period !== "Total") {
+                                var dataEntry = {};
+                                dataEntry = oData.results[i];
+                                dataEntry.Period = dataEntry.Period.substr(0, 2) + '/' + dataEntry.Period.substr(6, 4);
+                                dataEntry.ActualBill = "$" + parseFloat(dataEntry.ActualBill);
+                                dataEntry.Usage = parseFloat(dataEntry.Usage);
+                                dataEntry.AdjAmount = "0.00";
+                                dataEntry.AmtUsdAbp = parseFloat(dataEntry.AmtUsdAbp);
+                                aHistoryData.push(dataEntry);
+                            } else {
+                                fTotalAmount = parseFloat(oData.results[i].AmtUsdAbp);
+                            }
                         }
                         oHistoryModel.setData(aHistoryData);
+                        oHistoryModel.setProperty('/totalAmount', fTotalAmount);
                         oHistoryModel.setProperty('/estAmount', "$" + parseFloat(oData.results[0].Estimate).toFixed(2));
+
+                        if (fnCallback) fnCallback();
                     } else {
                         
                     }
@@ -90,7 +92,7 @@ sap.ui.define(
             }
         };
 
-        Controller.prototype._retrieveGraphInfo = function (sCoNumber) {
+        Controller.prototype._retrieveGraphInfo = function (sCoNumber, fnCallback) {
             var sPath = '/AvgUsgS',
                 aFilters = [];
                 aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNumber}));
@@ -111,6 +113,8 @@ sap.ui.define(
                             aGraphData.push(dataEntry);
                         }
                         oGraphModel.setProperty('/data', aGraphData);
+
+                        if (fnCallback) fnCallback();
                     } else {
                         
                     }
@@ -126,7 +130,7 @@ sap.ui.define(
             
         };
 
-        Controller.prototype._retrieveABPEligibility = function (sCoNumber) {
+        Controller.prototype._retrieveABPEligibility = function (sCoNumber, fnCallback) {
             var sPath = '/EligibilityS' + '(\'' + sCoNumber + '\')',
                 oModel = this.getView().getModel('oDataAvgSvc'),
                 oEligibilityModel = this.getView().getModel('oEligibility'),
@@ -142,6 +146,7 @@ sap.ui.define(
                         oEligibilityModel.setProperty('/Activated', false);
                         oEligibilityModel.setProperty('/NonActivated', true);
                     }
+                    if (fnCallback) fnCallback();
                 }.bind(this),
                 error: function (oError) {
                 
@@ -279,53 +284,84 @@ sap.ui.define(
 
         Controller.prototype._onAvgBillBtnClicked = function () {
             var oEligibilityModel = this.getView().getModel('oEligibility'),
-                oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+                oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager(),
+                iDoneRetrieving = 0;
 
             if (this._coNum) {
-                // Check if the customer is eligible for ABP.
-                if (oEligibilityModel.oData.ABPElig === "Y") {
-                    // Check if the customer is on ABP now
-                    if (oEligibilityModel.oData.ABPAct === "Y") {
-                        // Check if there is billing history
-                        if (oEligibilityModel.oData.NoBillHistory === "X" || oEligibilityModel.oData.NoBillHistory === "x") {
-                            // Show the confirmation pop up
-                            ute.ui.main.Popup.Confirm({
-                                title: 'No Billing History',
-                                message: 'Customer has no billing history to display. Do you wish to deactivate Average Billing Plan?',
-                                callback: function (sAction) {
-                                    if (sAction === 'Yes') {
-                                        oWebUiManager.notifyWebUi('openIndex', {
-                                            LINK_ID: "Z_AVGBIL_D"
-                                        });
-                                    } 
+
+                // Display the loading indicator
+                this.getOwnerComponent().getCcuxApp().setOccupied(true);
+                // Retrieve the eligibility for ABP
+                this._retrieveABPEligibility(this._coNum, function () {iDoneRetrieving++;});
+                // Retrieve the data for table
+                this._retrieveTableInfo(this._coNum, function () {iDoneRetrieving++;});
+                // Retrieve the data for graph
+                this._retrieveGraphInfo(this._coNum, function () {iDoneRetrieving++;});
+
+                var checkRetrComplete = setInterval(function() {
+                    if (iDoneRetrieving === 3) {
+                        // Dismiss the loading indicator
+                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                        clearInterval(checkRetrComplete);
+                        clearTimeout(retrTimeout);
+                        
+                        // Check if the customer is eligible for ABP.
+                        if (oEligibilityModel.oData.ABPElig === "Y") {
+                            // Check if the customer is on ABP now
+                            if (oEligibilityModel.oData.ABPAct === "Y") {
+                                // Check if there is billing history
+                                if (oEligibilityModel.oData.NoBillHistory === "X" || oEligibilityModel.oData.NoBillHistory === "x") {
+                                    // Show the confirmation pop up
+                                    ute.ui.main.Popup.Confirm({
+                                        title: 'No Billing History',
+                                        message: 'Customer has no billing history to display. Do you wish to deactivate Average Billing Plan?',
+                                        callback: function (sAction) {
+                                            if (sAction === 'Yes') {
+                                                oWebUiManager.notifyWebUi('openIndex', {
+                                                    LINK_ID: "Z_AVGBIL_D"
+                                                });
+                                            } 
+                                        }
+                                    });
+                                } else {
+                                    oWebUiManager.notifyWebUi('openIndex', {
+                                        LINK_ID: "Z_AVGBIL_D"
+                                    });
                                 }
-                            });
+                            } else {
+                                if (!this._oAvgBillPopup) {
+                                    this._oAvgBillPopup = ute.ui.main.Popup.create({
+                                        content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.AverageBillingPlan", this),
+                                        title: 'AVERAGE BILLING PLAN'
+                                    });
+                                    this._oAvgBillPopup.addStyleClass('nrgBilling-avgBillingPopup');
+                                    this.getView().addDependent(this._oAvgBillPopup);
+                                    // Render the graph
+                                    this.byId("chart").setDataModel(this.getView().getModel('oUsageGraph'));
+                                    // Render the graph crontrol buttons
+                                    this._renderGraphCrontrolBtn();
+                                }
+                                this._oAvgBillPopup.open();  
+                            }
                         } else {
-                            oWebUiManager.notifyWebUi('openIndex', {
-                                LINK_ID: "Z_AVGBIL_D"
+                            ute.ui.main.Popup.Alert({
+                                title: 'Not Eligible',
+                                message: 'You are not eligible for Average Billing Plan.'
                             });
                         }
-                    } else {
-                        if (!this._oAvgBillPopup) {
-                            this._oAvgBillPopup = ute.ui.main.Popup.create({
-                                content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.AverageBillingPlan", this),
-                                title: 'AVERAGE BILLING PLAN'
-                            });
-                            this._oAvgBillPopup.addStyleClass('nrgBilling-avgBillingPopup');
-                            this.getView().addDependent(this._oAvgBillPopup);
-                            // Render the graph
-                            this.byId("chart").setDataModel(this.getView().getModel('oUsageGraph'));
-                            // Render the graph crontrol buttons
-                            this._renderGraphCrontrolBtn();
-                        }
-                        this._oAvgBillPopup.open();  
                     }
-                } else {
+                }.bind(this), 100);
+
+                // Timeout function. If after 5 minutes still cannot done with retrieving data, then raise error message.
+                var retrTimeout = setTimeout(function(){
+                    // Dismiss the loading indicator
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     ute.ui.main.Popup.Alert({
-                        title: 'Not Eligible',
-                        message: 'You are not eligible for Average Billing Plan.'
+                        title: 'Network service failed',
+                        message: 'We cannot retrieve your data. Please try again later.'
                     });
-                }
+                }, 300000);
+
             } else {
                 ute.ui.main.Popup.Alert({
                     title: 'Contract Not Found',
