@@ -5,30 +5,30 @@
           xmlns:u="ute.ui.commons"
           xmlns:um="ute.ui.main">
 <u:Tag class="nrgBillDn-root">
-    <u:Table width="auto"
+    <u:Table width="50rem"
              id="idnrgBillDn-Table"
              class="nrgBillDn-Table">
                     <u:columns>
-                        <u:TableColumn width="8%" class="nrgBillDn-th">
-                            <u:Tag text="Lotyp"/>
-                        </u:TableColumn>
-                        <u:TableColumn width="33%" class="nrgBillDn-th">
-                            <u:Tag text="Proid"/>
+                        <u:TableColumn width="14%" class="nrgBillDn-th">
+                            <u:Tag text="{comp-billing>/#DunningLocks/Lotyp/@sap:label}"/>
                         </u:TableColumn>
                         <u:TableColumn width="14%" class="nrgBillDn-th">
-                            <u:Tag text="Lockr"/>
+                            <u:Tag text="{comp-billing>/#DunningLocks/Proid/@sap:label}"/>
                         </u:TableColumn>
-                        <u:TableColumn width="11%" class="nrgBillDn-th">
-                            <u:Tag text="Fdate"/>
+                        <u:TableColumn width="14%" class="nrgBillDn-th">
+                            <u:Tag text="{comp-billing>/#DunningLocks/Lockr/@sap:label}"/>
                         </u:TableColumn>
-                        <u:TableColumn width="13%" class="nrgBillDn-th">
-                            <u:Tag text="Tdate"/>
+                        <u:TableColumn width="14%" class="nrgBillDn-th">
+                            <u:Tag text="{comp-billing>/#DunningLocks/Fdate/@sap:label}"/>
                         </u:TableColumn>
-                        <u:TableColumn width="10%" class="nrgBillDn-th">
-                            <u:Tag text="Mansp"/>
+                        <u:TableColumn width="14%" class="nrgBillDn-th">
+                            <u:Tag text="{comp-billing>/#DunningLocks/Tdate/@sap:label}"/>
                         </u:TableColumn>
-                        <u:TableColumn width="11%" class="nrgBillDn-th">
-                           <u:Tag text="Stext"/>
+                        <u:TableColumn width="14%" class="nrgBillDn-th">
+                            <u:Tag text="{comp-billing>/#DunningLocks/Mansp/@sap:label}"/>
+                        </u:TableColumn>
+                        <u:TableColumn width="14%" class="nrgBillDn-th">
+                           <u:Tag text="{comp-billing>/#DunningLocks/Stext/@sap:label}"/>
                         </u:TableColumn>
                     </u:columns>
             </u:Table>
