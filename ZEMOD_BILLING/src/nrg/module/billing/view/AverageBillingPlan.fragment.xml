@@ -46,7 +46,7 @@
                                     text="{oAmountHistory>AvgEst}"/>
                                 <ute:Textfield class="nrgBilling-avgBillingPopup-amountDue-history-adj"
                                     value="{oAmountHistory>AdjAmount}"
-                                    width="80px"/>                
+                                    width="60px"/>                
                                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-amtUsed"
                                     text="{oAmountHistory>DefBal}"/>
                             </ute:Tag>
