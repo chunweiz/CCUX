@@ -59,6 +59,7 @@ sap.ui.define(
             var oModel = this.getView().getModel('oDataAvgSvc'),
                 oHistoryModel = this.getView().getModel('oAmountHistory'),
                 aHistoryData = [],
+                fTotalAmount,
                 oParameters;
 
             oParameters = {
@@ -66,16 +67,21 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData.results) {
                         for (var i = 0; i < oData.results.length; i++) {
-                            var dataEntry = {};
-                            dataEntry = oData.results[i];
-                            dataEntry.Period = dataEntry.Period.substr(0, 2) + '/' + dataEntry.Period.substr(6, 4);
-                            dataEntry.ActualBill = "$" + parseFloat(dataEntry.ActualBill);
-                            dataEntry.Usage = parseFloat(dataEntry.Usage);
-                            dataEntry.AdjAmount = "0.00";
-                            dataEntry.AmtUsdAbp = parseFloat(dataEntry.AmtUsdAbp);
-                            aHistoryData.push(dataEntry);
+                            if (oData.results[i].Period !== "Total") {
+                                var dataEntry = {};
+                                dataEntry = oData.results[i];
+                                dataEntry.Period = dataEntry.Period.substr(0, 2) + '/' + dataEntry.Period.substr(6, 4);
+                                dataEntry.ActualBill = "$" + parseFloat(dataEntry.ActualBill);
+                                dataEntry.Usage = parseFloat(dataEntry.Usage);
+                                dataEntry.AdjAmount = "0.00";
+                                dataEntry.AmtUsdAbp = parseFloat(dataEntry.AmtUsdAbp);
+                                aHistoryData.push(dataEntry);
+                            } else {
+                                fTotalAmount = parseFloat(oData.results[i].AmtUsdAbp);
+                            }
                         }
                         oHistoryModel.setData(aHistoryData);
+                        oHistoryModel.setProperty('/totalAmount', fTotalAmount);
                         oHistoryModel.setProperty('/estAmount', "$" + parseFloat(oData.results[0].Estimate).toFixed(2));
                     } else {
                         

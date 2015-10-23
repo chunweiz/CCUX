@@ -97,52 +97,60 @@
                         }
                     }
 
-                    & .nrgBilling-avgBillingPopup-amountDue-history-scrollArea {
+                    & .nrgBilling-avgBillingPopup-amountDue-history-row {
+                        padding: 10px 0;
+                        display: flex;
+                        border-bottom: 1px solid @nrgColor-grey-lightBackground;
+                        font-size: @nrgFontSize-base;
+                        align-items: center;
+                        text-align: center;
 
-                        & .nrgBilling-avgBillingPopup-amountDue-history-row {
-                            padding: 10px 0;
-                            display: flex;
-                            border-bottom: 1px solid @nrgColor-grey-lightBackground;
-                            font-size: @nrgFontSize-base;
-                            align-items: center;
-                            text-align: center;
+                        & .nrgBilling-avgBillingPopup-amountDue-history-total {
+                            width: 100px;
+                            margin-right: 395px;
+                            color: @nrgColor-grey-lighter;
+                        }
 
-                            & .nrgBilling-avgBillingPopup-amountDue-history-month {
-                                width: 100px;
-                                color: @nrgColor-grey-lighter;
-                            }
+                        & .nrgBilling-avgBillingPopup-amountDue-history-month {
+                            width: 100px;
+                            color: @nrgColor-grey-lighter;
+                        }
 
-                            & .nrgBilling-avgBillingPopup-amountDue-history-usage {
-                                width: 80px;
-                                color: @nrgColor-orange-notice;
-                            }
+                        & .nrgBilling-avgBillingPopup-amountDue-history-usage {
+                            width: 80px;
+                            color: @nrgColor-orange-notice;
+                        }
 
-                            & .nrgBilling-avgBillingPopup-amountDue-history-usageCharge {
-                                width: 110px;
-                                color: @nrgColor-green-highlight;
-                            }
+                        & .nrgBilling-avgBillingPopup-amountDue-history-usageCharge {
+                            width: 110px;
+                            color: @nrgColor-green-highlight;
+                        }
 
-                            & .nrgBilling-avgBillingPopup-amountDue-history-est {
-                                width: 80px;
-                                color: @nrgColor-green-highlight;
-                            }
+                        & .nrgBilling-avgBillingPopup-amountDue-history-est {
+                            width: 80px;
+                            color: @nrgColor-green-highlight;
+                        }
 
-                            & .nrgBilling-avgBillingPopup-amountDue-history-adj {
-                                width: 120px;
-                                min-width: 120px;
+                        & .nrgBilling-avgBillingPopup-amountDue-history-adj {
+                            width: 120px;
+                            min-width: 120px;
+                            min-height: 25px;
+
+                            & .uteTextfield-regular {
                                 min-height: 25px;
-
-                                & .uteTextfield-regular {
-                                    min-height: 25px;
-                                    font-size: @nrgFontSize-small;
-                                }
-                            }
-
-                            & .nrgBilling-avgBillingPopup-amountDue-history-amtUsed {
-                                width: 150px;
+                                font-size: @nrgFontSize-small;
                             }
                         }
+
+                        & .nrgBilling-avgBillingPopup-amountDue-history-amtUsed {
+                            width: 150px;
+                        }
+
+                        & .nrgBilling-avgBillingPopup-amountDue-history-totalAmount {
+                            width: 150px;
+                        }
                     }
+                    
                 }
 
                 & .nrgBilling-avgBillingPopup-amountDue-btnSec {
