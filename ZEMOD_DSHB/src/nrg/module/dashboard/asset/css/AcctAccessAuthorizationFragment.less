@@ -1,3 +1,79 @@
+.nrgDashboard-accAuthPtyPopup {
+	width: 1000px;
+    font-family: @nrgFontFamily;
+
+    // Header
+    & .sapUiDlgHdr {
+        height: 80px;
+        margin: 0;
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-between;
+
+        & .sapUiDlgHdrLeft {
+
+            & .sapUiDlgLabel {
+                font-size: @nrgFontSize-large;
+            }
+        }
+
+        & .sapUiDlgHdrBtns {
+            position: relative;
+            margin-right: 0;
+
+            & .sapUiDlgCloseBtn {
+                &::before {
+                    height: 20px;
+                    width: 2px;
+                    transform: translate(6px,0) rotate(45deg);
+                }
+                &::after {
+                    height: 20px;
+                    width: 2px;
+                }
+            }
+
+        }
+    }
+
+    // Separator
+    & .sapUiDlgHdrSep {
+    	display: none;
+    }
+
+    // Content
+    & .nrgDashboard-AcctAccessAuthPty {
+
+    	// Tool
+    	& .nrgDashboard-AcctAccessAuthPty-toolSec {
+    		width: 100%;
+    		display: flex;
+    		flex-direction: row-reverse;
+    		padding: 0 40px;
+
+    		& .nrgDashboard-AcctAccessAuthPty-plusIcon {
+    			font-weight: @nrgFontWeight-bold;
+				color: @nrgColor-blue-link;
+				font-size: 20px;
+    		}
+    	}
+
+    	// Table Header
+    	& .nrgDashboard-AcctAccessAuthPty-tableHeader {
+    		border-bottom: 1px dashed @nrgColor-grey-light;
+    		display: flex;
+    		font-size: @nrgFontSize-small;
+    		margin: 0 40px;
+    		padding: 10px 20px;
+    	}
+
+
+    }
+
+}
+
+
+
 		.nrgDashboard-AcctAccessAuthPty-RightArea{
 			width: 300px;
 			height: 10px;
@@ -10,7 +86,7 @@
 		}
 
 		.nrgDashboard-AcctAccessAuthPty{
-			width: 1000px;
+
 			height: 400px;
 
 			& > .nrgDashboard-AcctAccessAuthPty-hdr{

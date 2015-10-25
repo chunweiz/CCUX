@@ -347,9 +347,8 @@
 				}
 			};
 
-			/***********************************************************************************************************************/
-			//Functions for AccAccessAuthPty.fragment.xml
-			/***********************************************************************************************************************/
+			/*------------------------------------------ Account Access Authorization -------------------------------------------*/
+
 			Controller.prototype._onAuthPtyClicked = function () {
 				if (!this._oAccAuthPtyPopup) {
 					this._oAccAuthPtyPopup = ute.ui.main.Popup.create({
@@ -358,7 +357,7 @@
 					});
 					this.getView().addDependent(this._oAccAuthPtyPopup);
 				}
-
+				this._oAccAuthPtyPopup.addStyleClass('nrgDashboard-accAuthPtyPopup');
 				this._oAccAuthPtyPopup.open();
 
 				return;

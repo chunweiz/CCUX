@@ -299,12 +299,6 @@
                             <ute:Tag content="{oPaymentHdr>PaymentItems/results}"> <!--PaymentItems-->
                                 <!--For single or double underline classes add here ==> class="nrgBilling-blChkBk-lftDiv-scrllArea-snglUndrln nrgBilling-blChkBk-lftDiv-scrllArea-dblUndrln"-->
                                 <ute:Tag>
-                                <!--DPP Installment Case
-                                <ute:Tag visible="{ parts:['oPaymentHdr>HyperLinkInd'],
-                                                    formatter:'._formatBool_DPhyperLink'}">
-                                    <ute:Tag text="test"></ute:Tag>
-                                </ute:Tag>-->
-                                <!--Payment with link Case-->
                                 <ute:Tag visible="{ parts:['oPaymentHdr>HyperLinkInd'],
                                                     formatter:'._formatBoolHyperLink'}">
                                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-ctnt-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c1"
@@ -441,7 +435,7 @@
                 <ute:Tag content="{oPostInvoiceItems>/results}">
                     <ute:Tag>
                         <!--Normal Left and Right value cases-->
-                        <ute:Tag visible="{ parts:['oPostInvoiceItems>ValuePos'],
+                        <ute:Tag visible="{ parts:['oPostInvoiceItems>ValuePos', 'oPostInvoiceItems>HyperLinkInd'],
                                             formatter:'._formatPostInv2VL'}"
                                  class="nrgBilling-blChkBk-lftDiv-scrllArea-poInvc">
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po1"
@@ -467,7 +461,7 @@
                                      class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po5 nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po5-red"
                                      text="{oPostInvoiceItems>CallOut}"/>
                         </ute:Tag>
-                        <ute:Tag visible="{ parts:['oPostInvoiceItems>ValuePos'],
+                        <ute:Tag visible="{ parts:['oPostInvoiceItems>ValuePos', 'oPostInvoiceItems>HyperLinkInd'],
                                             formatter:'._formatPostInv2VR'}"
                                  class="nrgBilling-blChkBk-lftDiv-scrllArea-poInvc">
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po1"
@@ -494,7 +488,7 @@
                                      text="{oPostInvoiceItems>CallOut}"/>
                         </ute:Tag>
                         <!--Post invoice item only comes with right value-->
-                        <ute:Tag visible="{ parts:['oPostInvoiceItems>ValuePos'],
+                        <ute:Tag visible="{ parts:['oPostInvoiceItems>ValuePos', 'oPostInvoiceItems>HyperLinkInd'],
                                             formatter:'._formatPostInv1V'}"
                                  class="nrgBilling-blChkBk-lftDiv-scrllArea-poInvc">
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po1"
@@ -510,6 +504,102 @@
                                      text="{parts:['oPostInvoiceItems>DueDate'],
                                             formatter:'._formatDate'}"/>
                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po5"
+                                     text="{oPostInvoiceItems>CallOut}"/>
+                        </ute:Tag>
+                        <!--Post invoice item with links-->
+                        <ute:Tag visible="{ parts:['oPostInvoiceItems>HyperLinkInd'],
+                                            formatter:'._formatBoolHyperLink'}"
+                                 class="nrgBilling-blChkBk-lftDiv-scrllArea-poInvc">
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po1"
+                                     text="{ parts:['oPostInvoiceItems>Date'],
+                                             formatter:'._formatDate'}"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po2 nrgBilling-blChkBk-lftDiv-scrllArea-po-link"
+                                     text="{oPostInvoiceItems>ItemDesc}">
+                                <ute:tooltip>
+                                    <ute:Tooltip openDelay="100" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip">
+                                        <!--LiteUp Case-->
+                                        <ute:Tag visible="{ parts:['oPostInvoiceItems>HyperLinkInd'], formatter:'._formatBoolLP'}"
+                                                 class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-ltUp">
+                                            <ute:Tag text="{comp-i18n-billing>nrgBilling-billChkBook-LiteUp-Title}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-Title"/>
+                                            <ute:Tag text="{comp-i18n-billing>nrgBilling-billChkBook-LiteUp-TelNum}"/>
+                                            <utmain:Button design="None" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-Link"
+                                                text="{comp-i18n-billing>nrgBilling-billChkBook-LiteUp-Url}"
+                                                press="._onLiteUpLinkClicked"/>
+                                        </ute:Tag>
+                                        <!--BBP Case-->
+                                        <ute:Tag visible="{ parts:['oPostInvoiceItems>HyperLinkInd'], formatter:'._formatBoolBB'}"
+                                                 class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-ltUp">
+                                            <ute:Tag text="{comp-i18n-billing>nrgBilling-billChkBook-ABP-Title}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-Title"/>
+                                            <ute:Tag text="{oPostInvoiceItems>HyperLinkValue}"/>
+                                        </ute:Tag>
+                                        <!--DPP Case-->
+                                        <ute:Tag visible="{ parts:['oPostInvoiceItems>HyperLinkInd'], formatter:'._formatBoolDP'}"
+                                                 class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst">
+                                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-hdr">
+                                            <ute:Tag class="nrgBilling-blshc2-dpInst-hdr-cell" text="{comp-i18n-billing>nrgBilling-billChkBook-DppTbl-Installment}"/>
+                                                <ute:Tag class="nrgBilling-blshc2-dpInst-hdr-cell" text="{comp-i18n-billing>nrgBilling-billChkBook-DppTbl-AmtInstallment}"/>
+                                                <ute:Tag class="nrgBilling-blshc2-dpInst-hdr-cell" text="{comp-i18n-billing>nrgBilling-billChkBook-DppTbl-DueDate}"/>
+                                                <ute:Tag class="nrgBilling-blshc2-dpInst-hdr-cell" text="{comp-i18n-billing>nrgBilling-billChkBook-DppTbl-BalAftInstl}"/>
+                                            </ute:Tag>
+                                            <ute:Tag content="{oPostInvoiceItems>DpInstls/results}"
+                                                     class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst">
+                                                <ute:Tag>
+                                                    <ute:Tag visible="{ parts:['oPostInvoiceItems>Color'], formatter:'._formatDppIntWte'}">
+                                                        <ute:Tag text="{oPostInvoiceItems>InstlMent}"/>
+                                                        <ute:Tag text="{path: 'oPostInvoiceItems>AmtOfInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
+                                                        <ute:Tag text="{ parts:['oPostInvoiceItems>DueDate'], formatter:'._formatDate'}"/>
+                                                        <ute:Tag text="{path: 'oPostInvoiceItems>BalAftInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
+                                                    </ute:Tag>
+                                                    <ute:Tag visible="{ parts:['oPostInvoiceItems>Color'], formatter:'._formatDppIntGrn'}" class="nrgBilling-blshc2-dpInst-inst-grn">
+                                                        <ute:Tag text="{oPostInvoiceItems>InstlMent}"/>
+                                                        <ute:Tag text="{path: 'oPostInvoiceItems>AmtOfInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
+                                                        <ute:Tag text="{ parts:['oPostInvoiceItems>DueDate'], formatter:'._formatDate'}"/>
+                                                        <ute:Tag text="{path: 'oPostInvoiceItems>BalAftInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
+                                                    </ute:Tag>
+                                                    <ute:Tag visible="{ parts:['oPostInvoiceItems>Color'], formatter:'._formatDppIntYlw'}" class="nrgBilling-blshc2-dpInst-inst-ylw">
+                                                        <ute:Tag text="{oPostInvoiceItems>InstlMent}"/>
+                                                        <ute:Tag text="{path: 'oPostInvoiceItems>AmtOfInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
+                                                        <ute:Tag text="{ parts:['oPostInvoiceItems>DueDate'], formatter:'._formatDate'}"/>
+                                                        <ute:Tag text="{path: 'oPostInvoiceItems>BalAftInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
+                                                    </ute:Tag>
+                                                    <ute:Tag visible="{ parts:['oPostInvoiceItems>Color'], formatter:'._formatDppIntRed'}" class="nrgBilling-blshc2-dpInst-inst-red">
+                                                        <ute:Tag text="{oPostInvoiceItems>InstlMent}"/>
+                                                        <ute:Tag text="{path: 'oPostInvoiceItems>AmtOfInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
+                                                        <ute:Tag text="{ parts:['oPostInvoiceItems>DueDate'], formatter:'._formatDate'}"/>
+                                                        <ute:Tag text="{path: 'oPostInvoiceItems>BalAftInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
+                                                    </ute:Tag>
+                                                    <ute:Tag visible="{ parts:['oPostInvoiceItems>Color'], formatter:'._formatDppIntWte'}" class="nrgBilling-blshc2-dpInst-inst-wte">
+                                                        <ute:Tag text="{oPostInvoiceItems>InstlMent}"/>
+                                                        <ute:Tag text="{path: 'oPostInvoiceItems>AmtOfInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
+                                                        <ute:Tag text="{ parts:['oPostInvoiceItems>DueDate'], formatter:'._formatDate'}"/>
+                                                        <ute:Tag text="{path: 'oPostInvoiceItems>BalAftInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
+                                                    </ute:Tag>
+                                                </ute:Tag>
+                                            </ute:Tag>
+                                        </ute:Tag>
+                                    </ute:Tooltip>
+                                </ute:tooltip>
+                            </ute:Tag>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po3-1"
+                                     text="{path: 'oPostInvoiceItems>ValueLt',
+                                            type: 'nrg.base.type.Price',
+                                            formatOptions: { currencySymbol: ''},
+                                            formatter:'._formatLfRtZroVal'}"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po3-2"
+                                     text="{path: 'oPostInvoiceItems>ValueRt',
+                                            type: 'nrg.base.type.Price',
+                                            formatOptions: { currencySymbol: ''},
+                                            formatter:'._formatLfRtZroVal'}"/>
+                            <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po4"
+                                     text="{parts:['oPostInvoiceItems>DueDate'],
+                                            formatter:'._formatDate'}"/>
+                            <ute:Tag visible="{ parts:['oPostInvoiceItems>CallOutColor'],
+                                                formatter:'._formatPostClotGrn'}"
+                                     class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po5 nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po5-grn"
+                                     text="{oPostInvoiceItems>CallOut}"/>
+                            <ute:Tag visible="{ parts:['oPostInvoiceItems>CallOutColor'],
+                                                formatter:'._formatPostClotRed'}"
+                                     class="nrgBilling-blChkBk-lftDiv-scrllArea-po-cell nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po5 nrgBilling-blChkBk-lftDiv-scrllArea-hdr-po5-red"
                                      text="{oPostInvoiceItems>CallOut}"/>
                         </ute:Tag>
                         <!--Thick underline if the indicator shows 'X'-->

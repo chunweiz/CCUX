@@ -69,8 +69,10 @@ sap.ui.define(
                         for (var i = 0; i < oData.results.length; i++) {
                             if (oData.results[i].Period !== "Total") {
                                 var dataEntry = {};
+                                var fullPeriod = oData.results[i].Period;
                                 dataEntry = oData.results[i];
                                 dataEntry.Period = dataEntry.Period.substr(0, 2) + '/' + dataEntry.Period.substr(6, 4);
+                                dataEntry.FullPeriod = fullPeriod;
                                 dataEntry.ActualBill = "$" + parseFloat(dataEntry.ActualBill);
                                 dataEntry.Usage = parseFloat(dataEntry.Usage);
                                 dataEntry.AdjAmount = "0.00";
@@ -178,7 +180,7 @@ sap.ui.define(
                 var basisParameterName = 'Bbs' + this._pad(i+1);
                 var adjustParameterName = 'Amt' + this._pad(i+1);
 
-                oPayload[periodParameterName] = oHistoryModel.oData[i].Period;
+                oPayload[periodParameterName] = oHistoryModel.oData[i].FullPeriod;
                 oPayload[basisParameterName] = oHistoryModel.oData[i].Basis;
                 oPayload[adjustParameterName] = (parseFloat(oHistoryModel.oData[i].AdjAmount) || 0).toString();
             }
@@ -218,7 +220,7 @@ sap.ui.define(
                     method : "POST",
                     urlParameters : {
                         "Contract": this._coNum,
-                        "Date": oHistoryModel.oData[oHistoryModel.oData.length - 1].Period
+                        "Date": oHistoryModel.oData[oHistoryModel.oData.length - 1].FullPeriod
                     },
                     success : function (oData, response) {
                         if (oData.Code === "S") {
@@ -286,6 +288,7 @@ sap.ui.define(
 
         Controller.prototype._onAvgBillBtnClicked = function () {
             var oEligibilityModel = this.getView().getModel('oEligibility'),
+<<<<<<< HEAD
                 oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
 
             if (this._coNum) {
@@ -307,6 +310,79 @@ sap.ui.define(
                                     }
                                 }
                             });
+=======
+                oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager(),
+                bDoneRetrTable = false,
+                bDoneRetrGraph = false,
+                bDoneRetrEligibility = false,
+                checkRetrTableGraphComplete;
+
+            if (this._coNum) {
+
+                // Display the loading indicator
+                this.getOwnerComponent().getCcuxApp().setOccupied(true);
+                // Retrieve the eligibility for ABP
+                this._retrieveABPEligibility(this._coNum, function () {bDoneRetrEligibility = true;});
+
+                var checkDoneRetrEligibility = setInterval (function () {
+                    if (bDoneRetrEligibility) {
+                        // Check if the customer is eligible for ABP.
+                        if (oEligibilityModel.oData.ABPElig === "Y") {
+                            // Check if the customer is on ABP now
+                            if (oEligibilityModel.oData.ABPAct === "Y") {
+                                // Check if there is billing history
+                                if (oEligibilityModel.oData.NoBillHistory === "X" || oEligibilityModel.oData.NoBillHistory === "x") {
+                                    // Show the confirmation pop up
+                                    ute.ui.main.Popup.Confirm({
+                                        title: 'No Billing History',
+                                        message: 'Customer has no billing history to display. Do you wish to deactivate Average Billing Plan?',
+                                        callback: function (sAction) {
+                                            if (sAction === 'Yes') {
+                                                oWebUiManager.notifyWebUi('openIndex', {
+                                                    LINK_ID: "Z_AVGBIL_D"
+                                                });
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    oWebUiManager.notifyWebUi('openIndex', {
+                                        LINK_ID: "Z_AVGBIL_D"
+                                    });
+                                }
+                                // Dismiss the loading indicator
+                                this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                            } else {
+                                // Retrieve the data for table
+                                this._retrieveTableInfo(this._coNum, function () {bDoneRetrTable = true;});
+                                // Retrieve the data for graph
+                                this._retrieveGraphInfo(this._coNum, function () {bDoneRetrGraph = true;});
+
+                                checkRetrTableGraphComplete = setInterval (function () {
+                                    if (bDoneRetrTable && bDoneRetrGraph) {
+                                        // Dismiss the loading indicator
+                                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                                        // Upon successfully retrieving the data, stop checking the completion of retrieving data
+                                        clearInterval(checkRetrTableGraphComplete);
+                                        // Upon successfully retrieving the data, stop the error message timeout
+                                        clearTimeout(retrTimeout);
+
+                                        if (!this._oAvgBillPopup) {
+                                            this._oAvgBillPopup = ute.ui.main.Popup.create({
+                                                content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.AverageBillingPlan", this),
+                                                title: 'AVERAGE BILLING PLAN'
+                                            });
+                                            this._oAvgBillPopup.addStyleClass('nrgBilling-avgBillingPopup');
+                                            this.getView().addDependent(this._oAvgBillPopup);
+                                            // Render the graph
+                                            this.byId("chart").setDataModel(this.getView().getModel('oUsageGraph'));
+                                            // Render the graph crontrol buttons
+                                            this._renderGraphCrontrolBtn();
+                                        }
+                                        this._oAvgBillPopup.open();
+                                    }
+                                }.bind(this), 100);
+                            }
+>>>>>>> origin/master
                         } else {
                             oWebUiManager.notifyWebUi('openIndex', {
                                 LINK_ID: "Z_AVGBIL_D"
@@ -318,6 +394,7 @@ sap.ui.define(
                                 content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.AverageBillingPlan", this),
                                 title: 'AVERAGE BILLING PLAN'
                             });
+<<<<<<< HEAD
                             this._oAvgBillPopup.addStyleClass('nrgBilling-avgBillingPopup');
                             this.getView().addDependent(this._oAvgBillPopup);
                             // Render the graph
@@ -328,11 +405,32 @@ sap.ui.define(
                         this._oAvgBillPopup.open();
                     }
                 } else {
+=======
+                            // Dismiss the loading indicator
+                            this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                        }
+
+                        clearInterval(checkDoneRetrEligibility);
+                    }
+                }.bind(this), 100);
+
+                // Timeout function. If after 5 minutes still cannot done with retrieving data, then raise error message.
+                var retrTimeout = setTimeout(function(){
+>>>>>>> origin/master
                     ute.ui.main.Popup.Alert({
                         title: 'Not Eligible',
                         message: 'You are not eligible for Average Billing Plan.'
                     });
+<<<<<<< HEAD
                 }
+=======
+                    // Upon error time out, stop checking the completion of retrieving data
+                    clearInterval(checkRetrTableGraphComplete);
+                    // Dismiss the loading indicator
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                }.bind(this), 300000);
+
+>>>>>>> origin/master
             } else {
                 ute.ui.main.Popup.Alert({
                     title: 'Contract Not Found',
