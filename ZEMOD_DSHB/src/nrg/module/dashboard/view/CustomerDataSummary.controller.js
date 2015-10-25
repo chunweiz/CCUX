@@ -70,9 +70,8 @@
 				this._initRetrBpInf();
 				//this._initRetrBpSegInf();
 
-				//retrieve the table data
-				this._retrieveTableInfo(this._caNum);
-
+				// Check if Account Access Authorization has been labeled
+				this._checkThirdPartyAuth(this._caNum);
 			};
 
 			Controller.prototype.onAfterRendering = function () {
@@ -349,87 +348,102 @@
 			
 			/*------------------------------------------ Account Access Authorization -------------------------------------------*/
 
-			Controller.prototype._onAuthPtyClicked = function () {
-				if (!this._oAccAuthPtyPopup) {
-					this._oAccAuthPtyPopup = ute.ui.main.Popup.create({
-						content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AcctAccessAuthPty", this),
-						title: 'ACCOUNT ACCESS AUTHORIZATION'
-					});
-					this.getView().addDependent(this._oAccAuthPtyPopup);
-				}
-				this._oAccAuthPtyPopup.addStyleClass('nrgDashboard-accAuthPtyPopup');
-				this._oAccAuthPtyPopup.open();
+			Controller.prototype._checkThirdPartyAuth = function (sCaNumber) {
+				var sPath = '/Buags' + '(\'' + sCaNumber + '\')',
+					oModel = this.getView().getModel('oODataSvc'),
+					oParameters;
 
-				return;
+				oParameters = {
+					success : function (oData) {
+						if (oData.ThirdPrtyAuth === 'X' || oData.ThirdPrtyAuth === 'x') {
+							this.getView().byId("idBtnAuth").setVisible(true);
+							this.getView().byId("idBpName").addStyleClass("nrgDashboard-cusDataSum-bpName-AcctAccessPty");
+						} else {
+							this.getView().byId("idBtnAuth").setVisible(false);
+							this.getView().byId("idBpName").addStyleClass("nrgDashboard-cusDataSum-bpName");
+						}
+					}.bind(this),
+					error: function (oError) {
+						
+					}.bind(this)
+				};
+
+				if (oModel) {
+					oModel.read(sPath, oParameters);
+				}
+
 			};
 
-			//method to retrieve the data for the table
+			Controller.prototype._onAuthPtyClicked = function () {
+				var oThirdPrtyModel = this.getView().getModel('oSmryAccessAuth'),
+					bRetreiveComplete = false;
 
-			 Controller.prototype._retrieveTableInfo = function (sCANumber) {
+				// Display the loading indicator
+                this.getOwnerComponent().getCcuxApp().setOccupied(true);
+				// Check if we already loaded the data to the model
+				if ($.isEmptyObject(oThirdPrtyModel.oData)) {
+					// Retrieve the data for the Account Access Authorization
+					this._retrThirdPartyAuth(this._caNum, function () {bRetreiveComplete = true;});
+				} else {
+					bRetreiveComplete = true;
+				}
+				// Check the completion of retrieving data every 0.1 s
+				var checkRetrComplete = setInterval (function () {
+                    if (bRetreiveComplete) {
+                        // Dismiss the loading indicator
+                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                        // Upon successfully retrieving the data, stop checking the completion of retrieving data
+                        clearInterval(checkRetrComplete);
+                        if (!this._oAccAuthPtyPopup) {
+							this._oAccAuthPtyPopup = ute.ui.main.Popup.create({
+								content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AcctAccessAuthPty", this),
+								title: 'ACCOUNT ACCESS AUTHORIZATION'
+							});
+							this._oAccAuthPtyPopup.addStyleClass('nrgDashboard-accAuthPtyPopup');
+							this.getView().addDependent(this._oAccAuthPtyPopup);
+							// Generate the table
+							var tableContainer = this.getView().byId('nrgDashboard-AcctAccessAuthPty-tableBody');
+							for (var i = 0; i < oThirdPrtyModel.oData.length; i++) {
+								var rowElement = new ute.ui.commons.Tag({elem: 'div'}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow');
+								if ((i + 1) % 2 === 0) rowElement.addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-even');
+								rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].AuthPrtyName}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-AuthParty'));
+								rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].LegalDoc}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-TypeLegalDoc'));
+								rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].ReceiveDate}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-ReceivedDate'));
+								rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].EffDate}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-EffecDate'));
+								rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].EndDate}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-EndDate'));
+								// Different style class for different status
+								var statusElement = new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].Status}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-Status');
+								if (oThirdPrtyModel.oData[i].Status === 'ACTIVE') statusElement.addStyleClass('active');
+								if (oThirdPrtyModel.oData[i].Status === 'INACTIVE') statusElement.addStyleClass('inactive');
+								rowElement.addContent(statusElement);
 
-
-				 var sPath = '/Buags' + '(\'' + sCANumber + '\')',
-					 ThirdPrtyAuthFlag;
-
-				 var oModel = this.getView().getModel('oODataSvc'),
-					 oThrdPrtyModel = this.getView().getModel('oSmryBuagInf'),
-					 oParameters;
-
-					  oParameters = {
-						  success : function (oData) {
-
-								var data = oData.ThirdPrtyAuth;
-								if(data === 'X')
-									ThirdPrtyAuthFlag = 1;
-								else
-									ThirdPrtyAuthFlag = 0;
-
-								if(ThirdPrtyAuthFlag == 1){
-
-									this.getView().byId("idBtnAuth").setVisible(true);/*
-									this.getView().byId("idBpName").removeStyleClass("nrgDashboard-cusDataSum-bpName");*/
-									this.getView().byId("idBpName").addStyleClass("nrgDashboard-cusDataSum-bpName-AcctAccessPty");
-
-
-									var sPathTp = '/Buags' + '(\'' + sCANumber + '\')/ThirdPartyAuth';
-									var oModelTp = this.getView().getModel('oODataSvc'),
-										oAcctAccessModel = this.getView().getModel('oSmryAccessAuth'),
-										oAcctAccessData = [],
-										oParametersTp;
-
-									oParametersTp = {
-												success : function (oData) {
-												if (oData.results) {
-													for (var i = 0; i < oData.results.length; i++) {
-														var dataEntry = {};
-														var data = oData.results[i];
-														dataEntry.AuthPrtyName = data.AuthPrtyName;
-														dataEntry.LegalDoc = data.LegalDoc;
-														dataEntry.ReceiveDate = data.ReceiveDate;
-														dataEntry.EffDate = data.EffDate;
-														dataEntry.EndDate = data.EndDate;
-														dataEntry.Status = data.Status;
-														oAcctAccessData.push(dataEntry);
-													}
-													oAcctAccessModel.setData(oAcctAccessData);
-												} else {
-											}
-										}.bind(this),
-										error: function (oError) {
-
-										}.bind(this)
-									};
-
-								if (oModelTp) {
-									oModelTp.read(sPathTp, oParametersTp);
-								}
+								tableContainer.addContent(rowElement);
 							}
-							else
-							{
-								this.getView().byId("idBtnAuth").setVisible(false);
-								this.getView().byId("idBpName").addStyleClass("nrgDashboard-cusDataSum-bpName");
-								/*this.getView().byId("idBpName").removeStyleClass("nrgDashboard-cusDataSum-bpName-AcctAccessPty");*/
-							}
+						}
+						this._oAccAuthPtyPopup.open();
+                    }
+                }.bind(this), 100);
+			};
+
+			Controller.prototype._retrThirdPartyAuth = function (sCaNumber, fbCallback) {
+				var sPath = '/Buags' + '(\'' + sCaNumber + '\')/ThirdPartyAuth',
+					oModel = this.getView().getModel('oODataSvc'),
+					oThirdPrtyModel = this.getView().getModel('oSmryAccessAuth'),
+					oParameters;
+
+				oParameters = {
+					success : function (oData) {
+						if (oData.results) {
+							oThirdPrtyModel.setData(oData.results);
+
+							for (var i = 0; i < oThirdPrtyModel.oData.length; i++) {
+								oThirdPrtyModel.oData[i].ReceiveDate = this._formatThirdPartyAuthTime(oThirdPrtyModel.oData[i].ReceiveDate);
+								oThirdPrtyModel.oData[i].EffDate = this._formatThirdPartyAuthTime(oThirdPrtyModel.oData[i].EffDate);
+								oThirdPrtyModel.oData[i].EndDate = this._formatThirdPartyAuthTime(oThirdPrtyModel.oData[i].EndDate);
+							}	
+						}
+						// Execute the callback function
+						if (fbCallback) fbCallback();
 					}.bind(this),
 					error: function (oError) {
 
@@ -439,6 +453,15 @@
 					oModel.read(sPath, oParameters);
 				}
 			};
+
+			Controller.prototype._formatThirdPartyAuthTime = function (oDate) {
+	            if (oDate) {
+	                var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern:"MM/dd/yyyy"});
+	                var dateStr = dateFormat.format(new Date(oDate.getTime()));
+	                return dateStr;
+	            }
+	        };
+
 
 			return Controller;
 		}

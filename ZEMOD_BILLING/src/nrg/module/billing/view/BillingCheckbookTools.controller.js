@@ -43,7 +43,6 @@ sap.ui.define(
         };
 
         /*------------------------------------------------ Retrieve Methods -------------------------------------------------*/
-
         Controller.prototype._retrieveTableInfo = function (sCoNumber, fnCallback) {
             var sPath = '/AvgAddS',
                 aFilters = [];
