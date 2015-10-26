@@ -573,15 +573,50 @@ sap.ui.define(
         CustomController.prototype._retrPostInvoiceItems = function (sPath) {
             var oChbkOData = this.getView().getModel('oDataSvc'),
                 oParameters,
-                oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer');
+                oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer'),
+                i;
 
             oParameters = {
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oPostInvoiceItems').setData(oData);
+
+                        for (i = 0; i < oData.results.length; i = i + 1) {
+                            if (oData.results[i].HyperLinkInd === 'DP') {
+                                this._retrPostInvoiceItemDppTable(oData.results[i].InvoiceNum, oData.results[i].Opbel, '/results/' + i.toString());
+                            }
+                        }
                     }
 
                     oScrlCtaner.scrollTo(0, 1000, 1000);
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oChbkOData) {
+                oChbkOData.read(sPath, oParameters);
+            }
+        };
+
+        CustomController.prototype._retrPostInvoiceItemDppTable = function (sInvNum, sOpbel, sBindingPath) {
+            var oChbkOData = this.getView().getModel('oDataSvc'),
+                sPath,
+                oParameters;
+
+            //sPath = '/PostInvoice(ContractAccountNumber=\'\',InvoiceNum=\'' + sInvNum + '\',Opbel=\'' + sOpbel + '\')/DPPPlan';
+            sPath = '/DPPPlans(ContractAccountNumber=\'\',InvoiceNum=\'' + sInvNum + '\',Opbel=\'' + sOpbel + '\')/';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oPostInvoiceItems').setProperty(sBindingPath + '/DpInstls', {});
+                        this.getView().getModel('oPostInvoiceItems').setProperty(sBindingPath + '/DpInstls/results', {});
+                        this.getView().getModel('oPostInvoiceItems').setProperty(sBindingPath + '/DpInstls/results/0', {});
+
+                        this.getView().getModel('oPostInvoiceItems').setProperty(sBindingPath + '/DpInstls/results/0', oData);
+                    }
                 }.bind(this),
                 error: function (oError) {
                     //Need to put error message

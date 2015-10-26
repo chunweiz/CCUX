@@ -536,7 +536,7 @@
                                         <ute:Tag visible="{ parts:['oPostInvoiceItems>HyperLinkInd'], formatter:'._formatBoolDP'}"
                                                  class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst">
                                             <ute:Tag class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-hdr">
-                                            <ute:Tag class="nrgBilling-blshc2-dpInst-hdr-cell" text="{comp-i18n-billing>nrgBilling-billChkBook-DppTbl-Installment}"/>
+                                                <ute:Tag class="nrgBilling-blshc2-dpInst-hdr-cell" text="{comp-i18n-billing>nrgBilling-billChkBook-DppTbl-Installment}"/>
                                                 <ute:Tag class="nrgBilling-blshc2-dpInst-hdr-cell" text="{comp-i18n-billing>nrgBilling-billChkBook-DppTbl-AmtInstallment}"/>
                                                 <ute:Tag class="nrgBilling-blshc2-dpInst-hdr-cell" text="{comp-i18n-billing>nrgBilling-billChkBook-DppTbl-DueDate}"/>
                                                 <ute:Tag class="nrgBilling-blshc2-dpInst-hdr-cell" text="{comp-i18n-billing>nrgBilling-billChkBook-DppTbl-BalAftInstl}"/>
