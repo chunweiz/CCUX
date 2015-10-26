@@ -9,9 +9,13 @@
         xmlns:m="sap.m">
         <ute:Tag class="nrgDashboard-AcctAccessAuthPty">
 			<ute:Tag class="nrgDashboard-AcctAccessAuthPty-toolSec">
-				<core:Icon
-                    src="sap-icon://nrg-icon/plus"
-                    class="icon-plus"/>
+				<utmain:Button
+                    design="None"
+                    press="_onAddThirdPartyAuth">
+                    <core:Icon
+	                    src="sap-icon://nrg-icon/plus"
+	                    class="icon-plus"/>
+                </utmain:Button>
 			</ute:Tag>
 			<ute:Tag class="nrgDashboard-AcctAccessAuthPty-tableHeader">
 				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-tableHeader-authParty"

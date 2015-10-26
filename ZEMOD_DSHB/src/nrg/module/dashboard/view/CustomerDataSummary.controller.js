@@ -462,6 +462,13 @@
 	            }
 	        };
 
+	        Controller.prototype._onAddThirdPartyAuth = function (oEvent) {
+	        	var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+	        	
+	        	oWebUiManager.notifyWebUi('openIndex', {
+                    LINK_ID: "Z_ACC_AUTH"
+                });
+	        };
 
 			return Controller;
 		}
