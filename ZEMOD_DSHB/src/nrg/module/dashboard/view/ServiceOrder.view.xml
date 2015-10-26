@@ -8,7 +8,7 @@
     xmlns:core="sap.ui.core"
     controllerName="nrg.module.dashboard.view.ServiceOrder">
 
-	<ute:Tag class="nrgAppMain-generalContent nnrgDashboard-ServOrder">
+	<ute:Tag class="nrgAppMain-generalContent nrgDashboard-ServOrder">
 
 		<!--Service Order Status-->
 		<ute:Tag elem="span" class="nrgDashboard-ServOrder-scrnTitle"
@@ -38,6 +38,7 @@
 					 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-PendingOrder}"
 					 press="_.onPendingOrdersClicked">
 				</utmain:Button>
+			</ute:Tag>
 			<ute:Tag>
 				 <utmain:Button class="nrgDashboard-ServOrder-Orderlist-completeOrder"
 					 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-CompleteOrder}"
@@ -55,3 +56,5 @@
 		</ute:Tag>
 
 	</ute:Tag>
+
+</mvc:View>
