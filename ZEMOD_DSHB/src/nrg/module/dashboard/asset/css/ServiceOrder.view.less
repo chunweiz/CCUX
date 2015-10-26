@@ -1,49 +1,66 @@
 .nrgDashboard-ServOrder{
-//    height: 614px;
-    padding: 17px 30px 18px 25px !important;
-
 	font-family: @nrgFontFamily;
 
-	 & > .nrgDashboard-ServOrder-scrnTitle{
-        font: @nrgFontWeight-semiBold @nrgFontSize-large @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-    }
+	& .nrgDashboard-ServOrder-layout{
+		width:100%;
+		display:flex;
 
-	& > .nrgDashboard-ServOrder-horiLine-div{
-    }
+		& .nrgDashboard-ServOrder-layout-left{
+			padding: 17px 30px 18px 25px !important;
 
-    & > .nrgDashboard-ServOrder-horiLine-div > .nrgDashboard-ServOrder-horiLine{
-        border-color: @nrgColor-grey-lighter;
-        float: left;
-    }
+			& .nrgDashboard-ServOrder-scrnTitle{
+				font-weight: @nrgFontWeight-bold;
+				color: @nrgColor-grey-dark;
+				border-bottom: 1px solid @nrgColor-grey-lighter;
+			}
 
-	& .nrgDashboard-ServOrder-Orderslist{
-		width: 50px;
+			& .nrgDashboard-ServOrder-Orderslist{
+				width: 150px;
+				margin-top: 40px;
 
-		& .nrgDashboard-ServOrder-Orderlist-AllOrder{
-			color: @nrgColor-black;
-			font-size: @nrgFontSize-base;
+				& .nrgDashboard-ServOrder-Orderlist-AllOrder{
+					color: @nrgColor-black;
+					font-size: @nrgFontSize-base;
+				}
+
+				& .nrgDashboard-ServOrder-Orderlist-onholdOrder{
+					color: @nrgColor-black;
+					font-size: @nrgFontSize-base;
+				}
+
+				& .nrgDashboard-ServOrder-Orderlist-pendingOrder{
+					color: @nrgColor-black;
+					font-size: @nrgFontSize-base;
+				}
+
+				& .nrgDashboard-ServOrder-Orderlist-completeOrder{
+					color: @nrgColor-black;
+					font-size: @nrgFontSize-base;
+				}
+
+				& .nrgDashboard-ServOrder-Orderlist-expiredOrder{
+					color: @nrgColor-black;
+					font-size: @nrgFontSize-base;
+				}
+			}
 		}
 
-		& .nrgDashboard-ServOrder-Orderlist-onholdOrder{
-			color: @nrgColor-black;
-			font-size: @nrgFontSize-base;
-		}
-
-		& .nrgDashboard-ServOrder-Orderlist-pendingOrder{
-			color: @nrgColor-black;
-			font-size: @nrgFontSize-base;
-		}
-
-		& .nrgDashboard-ServOrder-Orderlist-completeOrder{
-			color: @nrgColor-black;
-			font-size: @nrgFontSize-base;
-		}
-
-		& .nrgDashboard-ServOrder-Orderlist-expiredOrder{
-			color: @nrgColor-black;
-			font-size: @nrgFontSize-base;
-		}
 	}
 
+	.nrgDashboard-ServOrder-mainlayout{
+	padding: 30px 30px 18px 25px !important;
+
+	& .nrgDashboard-ServOrder-mainlayout-heading{
+		font-weight: @nrgFontWeight-semiBold;
+	}
+	& > .nrgDashboard-ServOrder-mainlayout-heading-address{
+		font-weight: @nrgFontWeight-bold;
+	}
+	& > .nrgDashboard-ServOrder-mainlayout-heading-address-select{
+
+	}
 }
+
+}
+
+
