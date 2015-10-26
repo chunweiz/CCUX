@@ -605,17 +605,13 @@ sap.ui.define(
                 sPath,
                 oParameters;
 
-            //sPath = '/PostInvoice(ContractAccountNumber=\'\',InvoiceNum=\'' + sInvNum + '\',Opbel=\'' + sOpbel + '\')/DPPPlan';
-            sPath = '/DPPPlans(ContractAccountNumber=\'\',InvoiceNum=\'' + sInvNum + '\',Opbel=\'' + sOpbel + '\')/';
+            sPath = '/PostInvoice(ContractAccountNumber=\'\',InvoiceNum=\'' + sInvNum + '\',Opbel=\'' + sOpbel + '\')/DPPPlans';
+            //sPath = '/DPPPlans(ContractAccountNumber=\'\',InvoiceNum=\'' + sInvNum + '\',Opbel=\'' + sOpbel + '\')/';
 
             oParameters = {
                 success : function (oData) {
                     if (oData) {
-                        this.getView().getModel('oPostInvoiceItems').setProperty(sBindingPath + '/DpInstls', {});
-                        this.getView().getModel('oPostInvoiceItems').setProperty(sBindingPath + '/DpInstls/results', {});
-                        this.getView().getModel('oPostInvoiceItems').setProperty(sBindingPath + '/DpInstls/results/0', {});
-
-                        this.getView().getModel('oPostInvoiceItems').setProperty(sBindingPath + '/DpInstls/results/0', oData);
+                        this.getView().getModel('oPostInvoiceItems').setProperty(sBindingPath + '/DpInstls', oData);
                     }
                 }.bind(this),
                 error: function (oError) {
