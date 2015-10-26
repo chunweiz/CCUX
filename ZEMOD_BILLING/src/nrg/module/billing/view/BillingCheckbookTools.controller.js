@@ -67,7 +67,7 @@ sap.ui.define(
                                 dataEntry.FullPeriod = fullPeriod;
                                 dataEntry.ActualBill = "$" + parseFloat(dataEntry.ActualBill);
                                 dataEntry.Usage = parseFloat(dataEntry.Usage);
-                                dataEntry.AdjAmount = "0.00";
+                                dataEntry.AdjAmount = parseFloat(dataEntry.Adjsmnt);
                                 dataEntry.AmtUsdAbp = parseFloat(dataEntry.AmtUsdAbp);
                                 aHistoryData.push(dataEntry);
                             } else {
