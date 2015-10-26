@@ -56,6 +56,32 @@
 				color: @nrgColor-blue-link;
 				font-size: 20px;
     		}
+
+    		& .icon-plus {
+				width: 25px;
+				height: 25px;
+				cursor: pointer;
+				position: relative;
+			}
+			& .icon-plus:after {
+				background-color: @nrgColor-blue-link;
+				width: 18px;
+				height: 3px;
+				position: absolute;
+				top: 7px;
+				left: 0px;
+				content:"";
+			}
+			& .icon-plus:before {
+				background-color: @nrgColor-blue-link;
+				width: 3px;
+				height: 18px;
+				position: absolute;
+				top: 0px;
+				left: 7px;
+				content:"";
+			}
+
     	}
 
     	// Table Header
@@ -63,11 +89,92 @@
     		border-bottom: 1px dashed @nrgColor-grey-light;
     		display: flex;
     		font-size: @nrgFontSize-small;
+    		font-weight: @nrgFontWeight-semiBold;
     		margin: 0 40px;
-    		padding: 10px 20px;
+    		text-align: center;
+    		padding: 10px 0;
+
+    		& .nrgDashboard-AcctAccessAuthPty-tableHeader-authParty {
+    			flex: 3;
+    		}
+
+    		& .nrgDashboard-AcctAccessAuthPty-tableHeader-typeLegalDoc {
+    			flex: 3;
+    		}
+
+    		& .nrgDashboard-AcctAccessAuthPty-tableHeader-receiveDate {
+    			flex: 2;
+    		}
+
+    		& .nrgDashboard-AcctAccessAuthPty-tableHeader-effectiveDate {
+    			flex: 2;
+    		}
+
+    		& .nrgDashboard-AcctAccessAuthPty-tableHeader-endDate {
+    			flex: 2;
+    		}
+
+    		& .nrgDashboard-AcctAccessAuthPty-tableHeader-status {
+    			flex: 2;
+    		}
     	}
 
+    	// Table Body
+    	& .nrgDashboard-AcctAccessAuthPty-tableBody {
+    		display: flex;
+    		flex-direction: column;
+    		padding: 10px 40px;
 
+    		& .nrgDashboard-AcctAccessAuthPty-tableRow {
+    			padding: 15px 0;
+    			display: flex;
+    			text-align: center;
+
+    			& .nrgDashboard-AcctAccessAuthPty-tableRow-AuthParty {
+    				flex: 3;
+    				font-weight: @nrgFontWeight-semiBold;
+    			}
+
+    			& .nrgDashboard-AcctAccessAuthPty-tableRow-TypeLegalDoc {
+    				flex: 3;
+    				color: @nrgColor-blue-link;
+    				cursor: pointer;
+    				font-weight: @nrgFontWeight-semiBold;
+    			}
+
+    			& .nrgDashboard-AcctAccessAuthPty-tableRow-ReceivedDate {
+    				flex: 2;
+    				color: @nrgColor-grey-lighter;
+    			}
+
+    			& .nrgDashboard-AcctAccessAuthPty-tableRow-EffecDate {
+    				flex: 2;
+    				color: @nrgColor-grey-lighter;
+    			}
+
+    			& .nrgDashboard-AcctAccessAuthPty-tableRow-EndDate {
+    				flex: 2;
+    				color: @nrgColor-grey-lighter;
+    			}
+
+    			& .nrgDashboard-AcctAccessAuthPty-tableRow-Status {
+    				flex: 2;
+    				font-weight: @nrgFontWeight-semiBold;
+
+    				&.active {
+    					color: @nrgColor-green-highlight;
+    				}
+
+    				&.inactive {
+    					color: @nrgColor-red-pale;
+    				}
+    			}
+    		}
+
+    		& .nrgDashboard-AcctAccessAuthPty-tableRow-even {
+    			background-color: @nrgColor-blue-pearl;
+    		}
+    	}
     }
 
 }
