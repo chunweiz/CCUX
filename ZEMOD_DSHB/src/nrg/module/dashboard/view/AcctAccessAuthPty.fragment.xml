@@ -13,8 +13,7 @@
                     src="sap-icon://nrg-icon/plus"
                     class="nrgDashboard-AcctAccessAuthPty-plusIcon"/>
 			</ute:Tag>
-<<<<<<< HEAD
-				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr">
+				<!--<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr">
 					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h1"
 						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-AuthParty}"/>
 					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h2"
@@ -28,7 +27,7 @@
 					<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h6"
 						 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-Status}"/>
 				</ute:Tag>
-				<ute:Tag id="idnrgDashboard-AcctAccessAuthPty-tbl" class="nrgDashboard-AcctAccessAuthPty-tbl">
+				<ute:Tag id="idnrgDashboard-AcctAccessAuthPty-tbl" class="nrgDashboard-AcctAccessAuthPty-tbl">-->
 					<!--<ute:Tag content="{oSmryAccessAuth>/}">
 						<ute:Tag class="nrgDashboard-AcctAccessAuthPty-tbl-row">
 							<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h1-c1"
@@ -45,7 +44,6 @@
 									 text="{oSmryAccessAuth>Status}"/>
 						</ute:Tag>
 					</ute:Tag>-->
-=======
 			<ute:Tag class="nrgDashboard-AcctAccessAuthPty-tableHeader">
 				<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-cell nrgDashboard-AcctAccessAuthPty-hdr-h1"
 					 text="{comp-i18n-dashboard>nrgDashboard-AcctAccessAuth-Tableheader-AuthParty}"/>
@@ -76,7 +74,6 @@
 						<ute:Tag class="nrgDashboard-AcctAccessAuthPty-hdr-h6-c6"
 								 text="{oSmryAccessAuth>Status}"/>
 					</ute:Tag>
->>>>>>> origin/master
 				</ute:Tag>
 			</ute:Tag>
 		</ute:Tag>

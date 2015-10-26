@@ -51,7 +51,7 @@
 
                 "dashboard.ServiceOrder": {
                     "pattern": "dashboard/serviceorder/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target": [ "dashboard.ServiceOrder", "dashboard.CustomerDataSummary", "dashboard.ServiceOrderTool" ]
+                    "target": [ "dashboard.ServiceOrder", "dashboard.CustomerDataSummary", "dashboard.Tools" ]
                 }
             },
 

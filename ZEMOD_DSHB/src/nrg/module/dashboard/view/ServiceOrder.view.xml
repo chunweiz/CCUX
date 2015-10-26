@@ -1,0 +1,57 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:utmain="ute.ui.main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.commons"
+    xmlns:l="sap.ui.commons.layout"
+    xmlns:core="sap.ui.core"
+    controllerName="nrg.module.dashboard.view.ServiceOrder">
+
+	<ute:Tag class="nrgAppMain-generalContent nnrgDashboard-ServOrder">
+
+		<!--Service Order Status-->
+		<ute:Tag elem="span" class="nrgDashboard-ServOrder-scrnTitle"
+                 text="{comp-i18n-dashboard>nrgDashboard-ServOrder-ScrnTitle}" />
+
+		<!-- Horizontal line -->
+		<ute:Tag elem="div" class="nrgBupa-ServOrder-horiLine-div clearfix">
+            <ute:HorizontalDivider width="16%" class="nrgBupa-ServOrder-horiLine"/>
+        </ute:Tag>
+
+		<!--Different Type of Orders-->
+		<ute:Tag class="nrgDashboard-ServOrder-Orderslist">
+			<ute:Tag>
+				<utmain:Button class="nrgDashboard-ServOrder-Orderlist-AllOrder"
+					 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-AllOrder}"
+					press="_.onAllOrdersClicked">
+				</utmain:Button>
+			</ute:Tag>
+			<ute:Tag>
+				<utmain:Button class="nrgDashboard-ServOrder-Orderlist-onholdOrder"
+					 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-onHoldOrder}"
+					 press="_.onHoldOrdersClicked">
+				</utmain:Button>
+			</ute:Tag>
+			<ute:Tag>
+				<utmain:Button class="nrgDashboard-ServOrder-Orderlist-pendingOrder"
+					 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-PendingOrder}"
+					 press="_.onPendingOrdersClicked">
+				</utmain:Button>
+			<ute:Tag>
+				 <utmain:Button class="nrgDashboard-ServOrder-Orderlist-completeOrder"
+					 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-CompleteOrder}"
+					 press="_.onCompleteOrdersClicked">
+				 </utmain:Button>
+			</ute:Tag>
+			<ute:Tag>
+				<utmain:Button class="nrgDashboard-ServOrder-Orderlist-expiredOrder"
+					 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-ExpiredOrder}"
+					 press="_.onExpiredOrdersClicked">
+				</utmain:Button>
+			</ute:Tag>
+
+
+		</ute:Tag>
+
+	</ute:Tag>
