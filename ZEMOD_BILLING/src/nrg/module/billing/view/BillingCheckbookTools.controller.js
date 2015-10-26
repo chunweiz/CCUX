@@ -315,7 +315,7 @@ sap.ui.define(
                                                 oWebUiManager.notifyWebUi('openIndex', {
                                                     LINK_ID: "Z_AVGBIL_D"
                                                 });
-                                            } 
+                                            }
                                         }
                                     });
                                 } else {
@@ -339,7 +339,7 @@ sap.ui.define(
                                         clearInterval(checkRetrTableGraphComplete);
                                         // Upon successfully retrieving the data, stop the error message timeout
                                         clearTimeout(retrTimeout);
-                                        
+
                                         if (!this._oAvgBillPopup) {
                                             this._oAvgBillPopup = ute.ui.main.Popup.create({
                                                 content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.AverageBillingPlan", this),
@@ -352,7 +352,7 @@ sap.ui.define(
                                             // Render the graph crontrol buttons
                                             this._renderGraphCrontrolBtn();
                                         }
-                                        this._oAvgBillPopup.open();  
+                                        this._oAvgBillPopup.open();
                                     }
                                 }.bind(this), 100);
                             }
@@ -366,7 +366,7 @@ sap.ui.define(
                         }
 
                         clearInterval(checkDoneRetrEligibility);
-                    } 
+                    }
                 }.bind(this), 100);
 
                 // Timeout function. If after 5 minutes still cannot done with retrieving data, then raise error message.
@@ -419,7 +419,7 @@ sap.ui.define(
 
         };
 
-        
+
 
         Controller.prototype._pad = function (d) {
             return (d < 10) ? '0' + d.toString() : d.toString();

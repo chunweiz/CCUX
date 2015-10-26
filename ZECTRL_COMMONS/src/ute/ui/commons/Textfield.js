@@ -64,7 +64,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
         Textfield.prototype.onfocusin = function (oEvent) {
             oEvent.preventDefault();
             oEvent.stopPropagation();
-            
+
             this.fireFocusIn(oEvent);
         };
 

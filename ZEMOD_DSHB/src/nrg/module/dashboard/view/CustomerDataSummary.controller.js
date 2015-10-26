@@ -345,7 +345,7 @@
 					oRouter.navTo('bupa.caInfoNoCo', {bpNum: this._bpNum, caNum: this._caNum});
 				}
 			};
-			
+
 			/*------------------------------------------ Account Access Authorization -------------------------------------------*/
 
 			Controller.prototype._checkThirdPartyAuth = function (sCaNumber) {
@@ -364,7 +364,7 @@
 						}
 					}.bind(this),
 					error: function (oError) {
-						
+
 					}.bind(this)
 				};
 
@@ -440,7 +440,7 @@
 								oThirdPrtyModel.oData[i].ReceiveDate = this._formatThirdPartyAuthTime(oThirdPrtyModel.oData[i].ReceiveDate);
 								oThirdPrtyModel.oData[i].EffDate = this._formatThirdPartyAuthTime(oThirdPrtyModel.oData[i].EffDate);
 								oThirdPrtyModel.oData[i].EndDate = this._formatThirdPartyAuthTime(oThirdPrtyModel.oData[i].EndDate);
-							}	
+							}
 						}
 						// Execute the callback function
 						if (fbCallback) fbCallback();
