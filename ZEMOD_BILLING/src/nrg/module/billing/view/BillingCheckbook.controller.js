@@ -616,7 +616,7 @@ sap.ui.define(
                 oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer'),
                 oParameters;
 
-            sPath = '/PostInvoice(ContractAccountNumber=\'' + this._caNum + '\',InvoiceNum=\'\',Opbel=\'' + sOpbel + '\')/DPPPlans';
+            sPath = '/PostInvoices(ContractAccountNumber=\'' + this._caNum + '\',InvoiceNum=\'\',Opbel=\'' + sOpbel + '\')/DPPPlans';
             //sPath = '/DPPPlans(ContractAccountNumber=\'\',InvoiceNum=\'' + sInvNum + '\',Opbel=\'' + sOpbel + '\')/';
 
             oParameters = {
