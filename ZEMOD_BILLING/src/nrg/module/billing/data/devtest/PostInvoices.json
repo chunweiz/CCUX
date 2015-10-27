@@ -64,24 +64,24 @@
           "type":"ZE_CCUX_CHKBOOK_SRV.PostInvoice"
         },
         "ContractAccountNumber":"000001662926",
-        "InvoiceNum":"",
-        "ItemDesc":"Average Billing Plan Active",
+        "InvoiceNum":"122003680377",
+        "ItemDesc":"DPP somthing",
         "ValueRt":"2.0000",
         "ValueLt":"0.0000",
         "ValueRightOnly":"0.0000",
         "ValuePos":"L",
         "LineInd":"X",
         "Index":"        3",
-        "HyperLinkInd":"BB",
-        "HyperLinkValue":"12",
+        "HyperLinkInd":"DP",
+        "HyperLinkValue":"",
         "Date":null,
         "DueDate":null,
-        "Opbel":"",
+        "Opbel":"000116307728",
         "CallOut":"ABP",
         "CallOutColor":"G",
         "ConfBuag":{
           "__deferred":{
-            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PostInvoices(ContractAccountNumber='000007918731',InvoiceNum='',Opbel='')/ConfBuag"
+            "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/PostInvoices(ContractAccountNumber='000007918731',InvoiceNum='122003680377',Opbel='')/ConfBuag"
           }
         }
       }
