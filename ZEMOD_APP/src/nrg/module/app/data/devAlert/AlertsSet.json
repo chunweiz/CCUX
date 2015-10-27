@@ -8,7 +8,7 @@
                     "type":"ZE_CCUX_ALERTS_SRV.Alerts"
                 },
                 "BP":"83248",
-                "CA":"3619065",
+                "CA":"3619064",
                 "Identifier":"FOOTER",
                 "FilterType":"M2M",
                 "MessageText":"Month-2-Month Invoice"
