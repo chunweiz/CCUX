@@ -398,25 +398,33 @@
 							});
 							this._oAccAuthPtyPopup.addStyleClass('nrgDashboard-accAuthPtyPopup');
 							this.getView().addDependent(this._oAccAuthPtyPopup);
-							// Generate the table
-							var tableContainer = this.getView().byId('nrgDashboard-AcctAccessAuthPty-tableBody');
-							for (var i = 0; i < oThirdPrtyModel.oData.length; i++) {
-								var rowElement = new ute.ui.commons.Tag({elem: 'div'}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow');
-								if ((i + 1) % 2 === 0) rowElement.addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-even');
-								rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].AuthPrtyName}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-AuthParty'));
-								rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].LegalDoc}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-TypeLegalDoc'));
-								rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].ReceiveDate}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-ReceivedDate'));
-								rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].EffDate}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-EffecDate'));
-								rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].EndDate}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-EndDate'));
-								// Different style class for different status
-								var statusElement = new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].Status}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-Status');
-								if (oThirdPrtyModel.oData[i].Status === 'ACTIVE') statusElement.addStyleClass('active');
-								if (oThirdPrtyModel.oData[i].Status === 'INACTIVE') statusElement.addStyleClass('inactive');
-								rowElement.addContent(statusElement);
-
-								tableContainer.addContent(rowElement);
-							}
 						}
+
+						// Generate the table
+						var tableContainer = this.getView().byId('nrgDashboard-AcctAccessAuthPty-tableBody');
+						
+						// Remove previous content
+						for (var j = 0; j < tableContainer.getContent().length; j++) {
+							tableContainer.removeContent(j);
+						}
+
+						for (var i = 0; i < oThirdPrtyModel.oData.length; i++) {
+							var rowElement = new ute.ui.commons.Tag({elem: 'div'}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow');
+							if ((i + 1) % 2 === 0) rowElement.addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-even');
+							rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].AuthPrtyName}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-AuthParty'));
+							rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].LegalDoc}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-TypeLegalDoc'));
+							rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].ReceiveDate}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-ReceivedDate'));
+							rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].EffDate}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-EffecDate'));
+							rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].EndDate}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-EndDate'));
+							// Different style class for different status
+							var statusElement = new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].Status}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-Status');
+							if (oThirdPrtyModel.oData[i].Status === 'ACTIVE') statusElement.addStyleClass('active');
+							if (oThirdPrtyModel.oData[i].Status === 'INACTIVE') statusElement.addStyleClass('inactive');
+							rowElement.addContent(statusElement);
+
+							tableContainer.addContent(rowElement);
+						}
+
 						this._oAccAuthPtyPopup.open();
                     }
                 }.bind(this), 100);
