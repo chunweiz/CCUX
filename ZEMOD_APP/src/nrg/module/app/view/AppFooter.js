@@ -71,40 +71,71 @@ sap.ui.define(
         };
 
         AppFooter.prototype._onFooterNotificationLinkPress = function (oControlEvent) {
+        };
 
+        AppFooter.prototype._onM2mLinkPress = function (oControlEvent) {
+        };
+
+        AppFooter.prototype._onSmtpLinkPress = function (oControlEvent) {
+        };
+
+        AppFooter.prototype._onMailLinkPress = function (oControlEvent) {
+        };
+
+        AppFooter.prototype._onSmsLinkPress = function (oControlEvent) {
+        };
+
+        AppFooter.prototype._onOamLinkPress = function (oControlEvent) {
         };
 
         AppFooter.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber) {
             this._updateRouting(sBpNumber, sCaNumber, sCoNumber);
 
-            var sPath = '/AlertsSet(BP=\'' + sBpNumber + '\',CA=\'' + sCaNumber + '\')';
-                // aFilters = [];
-                // aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: sBpNumber}));
-                // aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNumber}));
+            var sPath = '/AlertsSet',
+                aFilters = [];
+                aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: sBpNumber}));
+                aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNumber}));
+                aFilters.push(new Filter({ path: 'Identifier', operator: FilterOperator.EQ, value1: 'FOOTER'}));
 
             var oModel = this._oController.getView().getModel('oNotiODataSvc'),
                 oNotificationModel = this._oController.getView().getModel('oFooterNotification'),
                 oParameters;
 
             oParameters = {
-                // filters: aFilters,
+                filters: aFilters,
                 success : function (oData) {
-                    if (oData) {
-                        oNotificationModel.setData(oData);
-                        if (!this.noificationCenter) {
-                            var notification = [];
-                            var notificationContainer = this._oController.getView().byId("nrgAppFtrDetails-notification-scrollContent");
+                    if (oData.results.length) {
+                        oNotificationModel.setData(oData.results);
+                        
+                        var notification = [],
+                            notificationLinkPressActions = {
+                                'M2M': this._onM2mLinkPress, 
+                                'SMTP': this._onSmtpLinkPress, 
+                                'MAIL': this._onMailLinkPress, 
+                                'SMS': this._onSmsLinkPress, 
+                                'OAM': this._onOamLinkPress
+                            },
+                            notificationContainer = this._oController.getView().byId("nrgAppFtrDetails-notification-scrollContent");
 
-                            if (oNotificationModel.oData.IsM2Minvoice) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Multi-month Invoice', linkPress: this._onFooterNotificationLinkPress}));
-                            if (oNotificationModel.oData.IsBadEmail) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Bad Email Address', linkPress: this._onFooterNotificationLinkPress}));
-                            if (oNotificationModel.oData.IsBadOamEmail) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Bad OAM Email Address', linkPress: this._onFooterNotificationLinkPress}));
-                            if (oNotificationModel.oData.IsInvalidMail) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Invalid Mail Address', linkPress: this._onFooterNotificationLinkPress}));
-                            if (oNotificationModel.oData.IsBadSMS) notification.push(new ute.ui.app.FooterNotificationItem({link: true, design: 'Error', text: 'Invalid SMS', linkPress: this._onFooterNotificationLinkPress}));
-
-                            this.noificationCenter = new ute.ui.app.FooterNotificationCenter("nrgAppFtrDetails-notification-notificationCenter", {content: notification});
-
-                            this.noificationCenter.placeAt(notificationContainer);
+                        for (var i = 0; i < oNotificationModel.oData.length; i++) {
+                            notification.push(
+                                new ute.ui.app.FooterNotificationItem({
+                                    link: true, 
+                                    design: 'Error', 
+                                    text: oNotificationModel.oData[i].MessageText, 
+                                    linkPress: notificationLinkPressActions[oNotificationModel.oData[i].FilterType]
+                                })
+                            );
                         }
+
+                        if (!this.noificationCenter) {
+                            // First time render goes here
+                            this.noificationCenter = new ute.ui.app.FooterNotificationCenter("nrgAppFtrDetails-notification-notificationCenter", {content: notification});
+                            this.noificationCenter.placeAt(notificationContainer);
+                        } else {
+                            // Second time render goes here
+                        }
+                        
                         this.footerElement.notiEmptySec.setVisible(false);
                         this.footerElement.notiAlertSec.setVisible(true);
                     } else {
