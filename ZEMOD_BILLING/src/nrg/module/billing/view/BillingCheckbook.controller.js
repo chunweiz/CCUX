@@ -613,9 +613,10 @@ sap.ui.define(
         CustomController.prototype._retrPostInvoiceItemDppTable = function (sInvNum, sOpbel, sBindingPath) {
             var oChbkOData = this.getView().getModel('oDataSvc'),
                 sPath,
+                oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer'),
                 oParameters;
 
-            sPath = '/PostInvoice(ContractAccountNumber=\'\',InvoiceNum=\'' + sInvNum + '\',Opbel=\'' + sOpbel + '\')/DPPPlans';
+            sPath = '/PostInvoice(ContractAccountNumber=\'' + this._caNum + '\',InvoiceNum=\'\',Opbel=\'' + sOpbel + '\')/DPPPlans';
             //sPath = '/DPPPlans(ContractAccountNumber=\'\',InvoiceNum=\'' + sInvNum + '\',Opbel=\'' + sOpbel + '\')/';
 
             oParameters = {
@@ -623,6 +624,8 @@ sap.ui.define(
                     if (oData) {
                         this.getView().getModel('oPostInvoiceItems').setProperty(sBindingPath + '/DpInstls', oData);
                     }
+
+                    oScrlCtaner.scrollTo(0, 1000, 1000);
                 }.bind(this),
                 error: function (oError) {
                     //Need to put error message
