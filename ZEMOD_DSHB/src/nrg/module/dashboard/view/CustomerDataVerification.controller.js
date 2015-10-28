@@ -1351,7 +1351,7 @@ sap.ui.define(
                 sCurrentCo = this.getView().getModel('oDtaVrfyContract').getProperty('/ContractID');
 
             if (sCurrentBp && sCurrentCa && sCurrentCo) {
-                this.getView().byId('nrgDashboard-cusDataVerify-left-usageLink').attachBrowserEvent('click', this._onMeterClick);
+                this.getView().byId('nrgDashboard-cusDataVerify-left-usageLink').attachBrowserEvent('click', this._onMeterClick.bind(this));
                 this.getView().byId('nrgDashboard-cusDataVerify-left-usageLink').addStyleClass('active');
             } else {
                 this.getView().byId('nrgDashboard-cusDataVerify-left-usageLink').detachBrowserEvent('click');
@@ -1495,12 +1495,13 @@ sap.ui.define(
         /**********************************************/
 
         Controller.prototype._onMeterClick = function () {
-            // alert('XDDDDDD');
+            var oRouter = this.getOwnerComponent().getRouter(),
+                sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+                sCurrentCo = this.getView().getModel('oDtaVrfyContract').getProperty('/ContractID');
+
+            oRouter.navTo('usage', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo, typeV: 'D'});
         };
-
-
-
-
 
         /*---------------------------------------------- CO Pagination Handlers ---------------------------------------------*/
 

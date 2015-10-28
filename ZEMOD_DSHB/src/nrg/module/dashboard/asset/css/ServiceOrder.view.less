@@ -1,49 +1,180 @@
 .nrgDashboard-ServOrder{
-//    height: 614px;
-    padding: 17px 30px 18px 25px !important;
-
 	font-family: @nrgFontFamily;
 
-	 & > .nrgDashboard-ServOrder-scrnTitle{
-        font: @nrgFontWeight-semiBold @nrgFontSize-large @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-    }
+	& .nrgDashboard-ServOrder-layout{
+		width:100%;
+		display:flex;
 
-	& > .nrgDashboard-ServOrder-horiLine-div{
-    }
+		& .nrgDashboard-ServOrder-layout-left{
+			padding: 1px 10px !important;
+			width:500px;
 
-    & > .nrgDashboard-ServOrder-horiLine-div > .nrgDashboard-ServOrder-horiLine{
-        border-color: @nrgColor-grey-lighter;
-        float: left;
-    }
+			& .nrgDashboard-ServOrder-scrnTitle{
+				width:500px !important;
+				font-weight: @nrgFontWeight-bold;
+				color: @nrgColor-grey-dark;
+				border-bottom: 1px solid @nrgColor-grey-lighter;
+			}
 
-	& .nrgDashboard-ServOrder-Orderslist{
-		width: 50px;
+			& .nrgDashboard-ServOrder-Orderslist{
+				width: 150px;
+				height: 100%;
+				margin-top: 20px;
+				border-right:2px solid @nrgColor-grey-lighter;
 
-		& .nrgDashboard-ServOrder-Orderlist-AllOrder{
-			color: @nrgColor-black;
-			font-size: @nrgFontSize-base;
+				& .nrgDashboard-ServOrder-Orderlist-AllOrder{
+					color: @nrgColor-black;
+					font-size: @nrgFontSize-large;
+					border-bottom: 1px;
+				}
+
+				& .nrgDashboard-ServOrder-Orderlist-onholdOrder{
+					color: @nrgColor-black;
+					font-size: @nrgFontSize-large;
+				}
+
+				& .nrgDashboard-ServOrder-Orderlist-pendingOrder{
+					color: @nrgColor-black;
+					font-size: @nrgFontSize-large;
+				}
+
+				& .nrgDashboard-ServOrder-Orderlist-completeOrder{
+					color: @nrgColor-black;
+					font-size: @nrgFontSize-large;
+				}
+
+				& .nrgDashboard-ServOrder-Orderlist-expiredOrder{
+					color: @nrgColor-black;
+					font-size: @nrgFontSize-large;
+				}
+			}
 		}
 
-		& .nrgDashboard-ServOrder-Orderlist-onholdOrder{
-			color: @nrgColor-black;
-			font-size: @nrgFontSize-base;
-		}
+		& .nrgDashboard-ServOrder-layout-right{
+			padding: 50px 40px !important;
 
-		& .nrgDashboard-ServOrder-Orderlist-pendingOrder{
-			color: @nrgColor-black;
-			font-size: @nrgFontSize-base;
-		}
+				& .nrgDashboard-ServOrder-mainlayout{
 
-		& .nrgDashboard-ServOrder-Orderlist-completeOrder{
-			color: @nrgColor-black;
-			font-size: @nrgFontSize-base;
-		}
+					& .nrgDashboard-ServOrder-mainlayout-heading{
+						font-weight: @nrgFontSize-large;
+						font-weight: @nrgFontWeight-bold;
+					}
+					& .nrgDashboard-ServOrder-mainlayout-heading-address{
+						margin-top: 10px;
+						margin-left: 140px;
+						font-weight: @nrgFontWeight-bold;
+					}
+					& .nrgDashboard-ServOrder-mainlayout-heading-address-select{
+						margin-top: 10px;
+						margin-left: 155px;
+						font-weight: @nrgFontWeight-regular;
 
-		& .nrgDashboard-ServOrder-Orderlist-expiredOrder{
-			color: @nrgColor-black;
-			font-size: @nrgFontSize-base;
+						& .nrgDashboard-ServOrder-mainlayout-heading-address-select-dropdown{
+							background-color: @nrgColor-blue-pearl;
+						}
+						& .nrgDashboard-ServOrder-mainlayout-heading-address-select-dropdown .uteMDdItem{
+							width:100px;
+						}
+						& .nrgDashboard-ServOrder-mainlayout-heading-address-select-dropdown > .uteMDd-hdr{
+							border: none;
+							display:flex;
+							margin-bottom: 4px;
+							cursor: pointer;
+							width: auto;
+						}
+						& .nrgDashboard-ServOrder-mainlayout-heading-address-select-dropdown > .uteMDd-hdr > .uteMDd-hdrExpander{
+							float: right;
+						}
+					}
+				}
+				& .nrgDashboard-ServOrder-mainlayout-assignmentblock{
+					width:800px;
+
+					& .nrgDashboard-ServOrder-mainlayout-assigmentblock-movein{
+						margin:6px 0 0;
+					}
+
+					& .nrgDashboard-ServOrder-mainlayout-assigmentblock-movein > .uteMIl-hdr > .uteMIl-hdrContent > .nrgDashboard-ServOrder-mainlayout-assigmentblock-movein-infoLineHeader-txt > span{
+						font: @nrgFontWeight-semiBold @nrgFontSize-base @nrgFontFamily;
+        				color: @nrgColor-white;
+					}
+
+					& .nrgDashboard-ServOrder-mainlayout-assigmentblock-movein .uteMIl-hdr{
+						background: @nrgColor-blue-header;
+						display: block;
+						position: relative;
+						border-radius: 4px;
+						padding: 6px;
+					}
+
+					& .nrgDashboard-ServOrder-mainlayout-assigmentblock-movein .uteMIl-body{
+						margin-top:20px;
+					}
+
+					& .nrgDashboard-ServOrder-mainlayout-assigmentblock-movein .uteMIl-hdrExpander{
+						float: right;
+					}
+
+					& .nrgDashboard-ServOrder-mainlayout-assigmentblock-movein > .uteMIl-body{
+						marging: 0;
+						padding: 0;
+
+					}
+
+					& .nrgDashboard-ServOrder-mainlayout-assigmentblock-movein-lnItem{
+						margin:0px 0 0;
+					}
+
+					& .nrgDashboard-ServOrder-mainlayout-assigmentblock-movein-lnItem-l{
+						padding: 8px 8px;
+						vertical-align: top !important;
+					}
+
+					& .nrgDashboard-ServOrder-mainlayout-assigmentblock-movein-lnItem-lbl{
+						font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
+        				color: @nrgColor-grey-dark;
+					}
+					& .nrgDashboard-ServOrder-mainlayout-assigmentblock-movein-lnItem-Cont{
+						font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
+        				color: @nrgColor-grey-lighter;
+						padding-left:4px;
+					}
+
+					& .nrgDashboard-ServOrder-mainlayout-assigmentblock-reconnect{
+						margin:6px 0 0;
+					}
+
+					& .nrgDashboard-ServOrder-mainlayout-assigmentblock-reconnect > .uteMIl-hdr > .uteMIl-hdrContent > .nrgDashboard-ServOrder-mainlayout-assigmentblock-reconnect-infoLineHeader-txt > span{
+						font: @nrgFontWeight-semiBold @nrgFontSize-base @nrgFontFamily;
+        				color: @nrgColor-white;
+					}
+
+					& .nrgDashboard-ServOrder-mainlayout-assigmentblock-reconnect .uteMIl-hdr{
+						background: @nrgColor-blue-header;
+						display: block;
+						position: relative;
+						border-radius: 4px;
+						padding: 6px;
+					}
+
+					& .nrgDashboard-ServOrder-mainlayout-assigmentblock-reconnect .uteMIl-body{
+						margin-top:20px;
+					}
+
+					& .nrgDashboard-ServOrder-mainlayout-assigmentblock-reconnect .uteMIl-hdrExpander{
+						float: right;
+					}
+
+					& .nrgDashboard-ServOrder-mainlayout-assigmentblock-reconnect > .uteMIl-body{
+						marging: 0;
+						padding: 0;
+
+					}
+
+
+			}
 		}
 	}
-
 }
+
+

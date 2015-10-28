@@ -380,10 +380,10 @@
 
 				// Display the loading indicator
                 this.getOwnerComponent().getCcuxApp().setOccupied(true);
-			
+
 				// Retrieve the data for the Account Access Authorization
 				this._retrThirdPartyAuth(this._caNum, function () {bRetreiveComplete = true;});
-				
+
 				// Check the completion of retrieving data every 0.1 s
 				var checkRetrComplete = setInterval (function () {
                     if (bRetreiveComplete) {
