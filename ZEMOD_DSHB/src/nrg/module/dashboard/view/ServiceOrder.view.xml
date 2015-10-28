@@ -10,39 +10,17 @@
     xmlns:m="sap.m"
     controllerName="nrg.module.dashboard.view.ServiceOrder">
 
-<<<<<<< HEAD
-=======
-	<ute:Tag class="nrgAppMain-generalContent nrgDashboard-ServOrder">
->>>>>>> origin/master
-
 	<ute:Tag class="nrgAppMain-generalContent nrgDashboard-ServOrder">
 
 		<ute:Tag class="nrgDashboard-ServOrder-layout">
 			<ute:Tag class="nrgDashboard-ServOrder-layout-left">
+
 				<!--Service Order Status-->
 				<ute:Tag elem="span" class="nrgDashboard-ServOrder-scrnTitle"
 						 text="{comp-i18n-dashboard>nrgDashboard-ServOrder-ScrnTitle}" />
 
-<<<<<<< HEAD
-				<!-- Horizontal line -->
-				<ute:Tag elem="div" class="nrgDashboard-ServOrder-horiLine-div clearfix">
-					<ute:HorizontalDivider width="16%" class="nrgServOrder-ServOrder-horiLine"/>
-				</ute:Tag>
-
 				<!--Different Type of Orders-->
 				<ute:Tag class="nrgDashboard-ServOrder-Orderslist">
-					<ute:Tag>
-						<utmain:Button design="None" class="nrgDashboard-ServOrder-Orderlist-AllOrder"
-							 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-AllOrder}"
-							press="_.onAllOrdersClicked">
-						</utmain:Button>
-					</ute:Tag>
-					<ute:Tag>
-						<utmain:Button class="nrgDashboard-ServOrder-Orderlist-onholdOrder"
-							 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-OnholdOrder}"
-							 press="_.onHoldOrdersClicked" design="None">
-						</utmain:Button>
-					</ute:Tag>
 					<ute:Tag>
 						<utmain:Button class="nrgDashboard-ServOrder-Orderlist-pendingOrder"
 							 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-PendingOrder}"
@@ -55,65 +33,139 @@
 							 press="_.onCompleteOrdersClicked" design="None">
 						 </utmain:Button>
 					</ute:Tag>
-					<ute:Tag>
-						<utmain:Button class="nrgDashboard-ServOrder-Orderlist-expiredOrder"
-							 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-ExpiredOrder}"
-							 press="_.onExpiredOrdersClicked" design="None">
-						</utmain:Button>
-					</ute:Tag>
 				</ute:Tag>
-=======
-		<!--Different Type of Orders-->
-		<ute:Tag class="nrgDashboard-ServOrder-Orderslist">
-			<ute:Tag>
-				<utmain:Button class="nrgDashboard-ServOrder-Orderlist-AllOrder"
-					 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-AllOrder}"
-					press="_.onAllOrdersClicked">
-				</utmain:Button>
 			</ute:Tag>
-			<ute:Tag>
-				<utmain:Button class="nrgDashboard-ServOrder-Orderlist-onholdOrder"
-					 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-onHoldOrder}"
-					 press="_.onHoldOrdersClicked">
-				</utmain:Button>
-			</ute:Tag>
-			<ute:Tag>
-				<utmain:Button class="nrgDashboard-ServOrder-Orderlist-pendingOrder"
-					 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-PendingOrder}"
-					 press="_.onPendingOrdersClicked">
-				</utmain:Button>
-			</ute:Tag>
-			<ute:Tag>
-				 <utmain:Button class="nrgDashboard-ServOrder-Orderlist-completeOrder"
-					 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-CompleteOrder}"
-					 press="_.onCompleteOrdersClicked">
-				 </utmain:Button>
-			</ute:Tag>
-			<ute:Tag>
-				<utmain:Button class="nrgDashboard-ServOrder-Orderlist-expiredOrder"
-					 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-ExpiredOrder}"
-					 press="_.onExpiredOrdersClicked">
-				</utmain:Button>
->>>>>>> origin/master
-			</ute:Tag>
-
 			<ute:Tag class="nrgDashboard-ServOrder-layout-right">
 				<ute:Tag class="nrgDashboard-ServOrder-mainlayout">
 					<ute:Tag class="nrgDashboard-ServOrder-mainlayout-heading">
-						<utmain:Label text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-Filterby}"/>
+						<utmain:Label text="{comp-i18n-dashboard>nrgDashboard-servOrder-Filterby}"/>
 					</ute:Tag>
+					<ute:Tag class="nrgDashboard-ServOrder-mainlayout-heading-address">
+						<utmain:Label text="{comp-i18n-dashboard>nrgDashboard-servOrder-Address}"/>
+					</ute:Tag>
+					<ute:Tag class="nrgDashboard-ServOrder-mainlayout-heading-address-select">
+						<!--<utmain:Dropdown id="ESIDaddress"
+										 class="nrgDashboard-ServOrder-mainlayout-heading-address-select-dropdown">
+                    		<utmain:DropdownItem>
+                       			<ute:Tag elem="span" text="123456789 - 105 MAIN ST UNIT 201 HOUSTON TX 77502-2027"/>
+                    		</utmain:DropdownItem>
+							<utmain:DropdownItem>
+								<ute:Tag elem="span" text="123456789 - 105 MAIN ST UNIT 201 HOUSTON TX 77502-2027"/>
+							</utmain:Dropdo-->
+                		</utmain:Dropdown>
+					</ute:Tag>
+				</ute:Tag>
+				<ute:Tag class="nrgDashboard-ServOrder-mainlayout-assignmentblock">
+					<utmain:Infoline class="nrgDashboard-ServOrder-mainlayout-assigmentblock-movein" expanded="true">
+						<utmain:headerContent>
+                			<ute:TextView class="nrgDashboard-ServOrder-mainlayout-assigmentblock-movein-infoLineHeader-txt"
+										  text="{comp-i18n-dashboard>nrgDashboard-servOrder-Moviein}"/>
+            			</utmain:headerContent>
+						<utmain:content>
+							<ute:Tag id="nrgDashboard-ServOrder-mainlayout-assignmentblock-movein-tableBody" class="nrgDashboard-ServOrder-mainlayout-assignmentblock-movein-tableBody">
+									<l:MatrixLayout columns="2" widths="500px,600px" width="100%">
+											<l:rows>
+												<l:MatrixLayoutRow>
+													<l:cells>
+														<!--Area Left-->
+														<l:MatrixLayoutCell class="nrgDashboard-ServOrder-mainlayout-assigmentblock-movein-lnItem-l">
+															<l:MatrixLayout widths="30%,70%" columns="2">
+																<l:MatrixLayoutRow>
+																	<l:MatrixLayoutCell>
+																		<ute:Tag elem="div" class="nrgDashboard-ServOrder-mainlayout-assigmentblock-movein-lnItem-lbl"
+																				 			text="{comp-i18n-dashboard>nrgDashboard-servOrder-Contact}" />
+																	</l:MatrixLayoutCell>
+																		<l:MatrixLayoutCell>
+																			<ute:TextView class="nrgDashboard-ServOrder-mainlayout-assigmentblock-movein-lnItem-Cont" text="John Doe"/>
+																		</l:MatrixLayoutCell>
+																	</l:MatrixLayoutRow>
+																</l:MatrixLayout>
+															</l:MatrixLayoutCell>
+
+															<!--Area Right-->
+															<l:MatrixLayoutCell class="nrgDashboard-ServOrder-mainlayout-assigmentblock-movein-lnItem-l">
+																<l:MatrixLayout widths="30%,70%" columns="2">
+																	<l:MatrixLayoutRow>
+																		<l:MatrixLayoutCell>
+																			<ute:Tag elem="div" class="nrgDashboard-ServOrder-mainlayout-assigmentblock-movein-lnItem-lbl"																						 																		text="{comp-i18n-dashboard>nrgDashboard-servOrder-Date}" />
+																		</l:MatrixLayoutCell>
+																		<l:MatrixLayoutCell>
+																			<ute:TextView class="nrgDashboard-ServOrder-mainlayout-assigmentblock-movein-lnItem-Cont" text="03/06/2015"/>
+																		</l:MatrixLayoutCell>
+																	</l:MatrixLayoutRow>
+																</l:MatrixLayout>
+															</l:MatrixLayoutCell>
+														</l:cells>
+													</l:MatrixLayoutRow>
+												</l:rows>
+											</l:MatrixLayout>
+
+												<!-- Second Row-->
+												<l:MatrixLayout columns="2" widths="500px,600px" width="100%">
+													<l:rows>
+														<l:MatrixLayoutRow>
+															<l:cells>
+																<!--Area Right-->
+																<l:MatrixLayoutCell class="nrgDashboard-ServOrder-mainlayout-assigmentblock-movein-lnItem-l">
+																	<l:MatrixLayout widths="30%,70%" columns="2">
+																		<l:MatrixLayoutRow>
+																			<l:MatrixLayoutCell>
+																				<ute:Tag elem="div" class="nrgDashboard-ServOrder-mainlayout-assigmentblock-movein-lnItem-lbl"
+																							 text="{comp-i18n-dashboard>nrgDashboard-servOrder-OriginalDate}" />
+																			</l:MatrixLayoutCell>
+																			<l:MatrixLayoutCell>
+																				<ute:TextView class="nrgDashboard-ServOrder-mainlayout-assigmentblock-movein-lnItem-Cont" text="03/04/2011"/>
+																		</l:MatrixLayoutCell>
+																	</l:MatrixLayoutRow>
+																</l:MatrixLayout>
+															</l:MatrixLayoutCell>
+														</l:cells>
+													</l:MatrixLayoutRow>
+												</l:rows>
+										</l:MatrixLayout>
+									<!--<ute:Tag>
+										<ute:Table width="100%">
+											<ute:columns>
+												<ute:TableColumn>
+													<utmain:Labl text="Type"/>
+												</ute:TableColumn>
+												<ute:TableColumn>
+													<utmain:Labl text="Reason"/>
+												</ute:TableColumn>
+												<ute:TableColumn>
+													<utmain:Labl text="Status"/>
+												</ute:TableColumn>
+												<ute:TableColumn>
+													<utmain:Labl text="Completed Date"/>
+												</ute:TableColumn>
+											</ute:columns>
+											<ute:rows>
+												<ute:TableRow>
+													<utmain:Label text=""/>
+													<utmain:Label text="DEPOSIT REQ HOLD - $XXX.XX"/>
+													<utmain:Label text="PAID"/>
+													<utmain:Label text="03/01/2011"/>
+												</ute:TableRow>
+											</ute:rows>
+										</ute:Table>
+									</ute:Tag>-->
+							</ute:Tag>
+						</utmain:content>
+					</utmain:Infoline>
+
+					<!--Second Assignment block-->
+					<utmain:Infoline class="nrgDashboard-ServOrder-mainlayout-assigmentblock-reconnect" expanded="true">
+						<utmain:headerContent>
+                			<ute:TextView class="nrgDashboard-ServOrder-mainlayout-assigmentblock-reconnect-infoLineHeader-txt"
+										  text="{comp-i18n-dashboard>nrgDashboard-servOrder-Reconnect}"/>
+            			</utmain:headerContent>
+						<utmain:content>
+						</utmain:content>
+					</utmain:Infoline>
 
 				</ute:Tag>
 			</ute:Tag>
 
 		</ute:Tag>
-
-
-
 	</ute:Tag>
-<<<<<<< HEAD
 </mvc:View>
-=======
-
-</mvc:View>
->>>>>>> origin/master
