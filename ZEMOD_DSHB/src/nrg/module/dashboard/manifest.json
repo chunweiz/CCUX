@@ -66,6 +66,11 @@
                     "controlId": "idAppTools"
                 },
 
+                "dashboard.Tools":{
+                    "viewName": "nrg.module.dashboard.view.Tools",
+                    "controlId": "idAppTools"
+                },
+
                 "dashboard.CustomerDataSummary": {
                     "viewName": "nrg.module.dashboard.view.CustomerDataSummary",
                     "controlId": "idAppSummary"
