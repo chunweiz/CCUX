@@ -19,9 +19,13 @@ sap.ui.define(
         var CustomController = Controller.extend('nrg.module.billing.view.CustomerDataBillingInfo');
 
         CustomController.prototype.onInit = function () {
-        };
 
+        };
+        CustomController.prototype.onAfterRendering = function () {
+             this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+        };
         CustomController.prototype.onBeforeRendering = function () {
+
             this.getOwnerComponent().getCcuxApp().setTitle('BILLING INFO');
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-billing'), 'oDataSvc');
@@ -33,6 +37,9 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPmtSummary');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPmtPayments');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPmtItems');
+
+            // Models for Invoice Select Popup
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oInvoiceSelectInfo');
 
             //Starting invoices retriviging
             this._initRoutingInfo();
@@ -242,11 +249,9 @@ sap.ui.define(
                 return true;
             }
         };
-        /*************************************************************************************************************************/
 
-        /*************************************************************************************************************************/
-        //Handlers
-        /*************************************************************************************************************************/
+        /*------------------------------------------------ UI Element Actions -----------------------------------------------*/
+
         CustomController.prototype._onInvoiceAmntClicked = function (oEvent) {
             var i18nModel =  this.getOwnerComponent().getModel('comp-i18n-billing'),
                 popupTitle = i18nModel.getProperty("nrgBilling-paymentsPopup-ACCOUNT_SUMMARY");
@@ -319,33 +324,106 @@ sap.ui.define(
 
         CustomController.prototype._onInvoiceNumClicked = function () {
             if (!this._oInvSelectPopup) {
-                this._oInvSelectPopup = sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.InvSelectPopup", this);
                 this._oInvSelectPopup = ute.ui.main.Popup.create({
-                    content: this._oInvSelectPopup,
-                    title: "INVOICE SELECTION"
+                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.InvSelectPopup", this),
+                    title: 'INVOICE SELECTION'
                 });
-
+                this._oInvSelectPopup.addStyleClass('nrgBilling-invSelectPopup');
                 this.getView().addDependent(this._oInvSelectPopup);
 
                 this.getView().byId('id_nrgBilling-invSel-stDate').attachBrowserEvent('select', this._handleDateRanggeChange, this);
                 //jQuery.sap.byId('id_nrgBilling-invSel-stDate').bind("sapfocusleave", jQuery.proxy(this.handleDateChange, this));
-            //jQuery.sap.byId(this.getView().byId('InvSelectPopup--nrgBilling-invSel-stDate')).bind("onsapfocusleave", jQuery.proxy(this.handleDateChange, this));
+                //jQuery.sap.byId(this.getView().byId('InvSelectPopup--nrgBilling-invSel-stDate')).bind("onsapfocusleave", jQuery.proxy(this.handleDateChange, this));
+            }
+            this._retrieveInvoiceInfo();
+            this._oInvSelectPopup.open();
+            this._adjustScrollContentPadding();
+        };
+
+        /*---------------------------------------------- Invoice Selection Popup --------------------------------------------*/
+
+        CustomController.prototype._retrieveInvoiceInfo = function () {
+            var oInvSelModel = this.getView().getModel('oInvoiceSelectInfo');
+            var oInvoiceSelectModel = [
+                {'Date': '09/28/14', 'Number': 123456789, 'View': false},
+                {'Date': '08/28/14', 'Number': 123456788, 'View': false},
+                {'Date': '07/28/14', 'Number': 123456787, 'View': false},
+                {'Date': '06/28/14', 'Number': 123456786, 'View': false},
+                {'Date': '05/28/14', 'Number': 123456785, 'View': false},
+                {'Date': '04/28/14', 'Number': 123456784, 'View': false},
+                {'Date': '03/28/14', 'Number': 123456783, 'View': false},
+                {'Date': '02/28/14', 'Number': 123456782, 'View': false},
+                {'Date': '01/28/14', 'Number': 123456781, 'View': false},
+                {'Date': '12/28/13', 'Number': 123456780, 'View': false},
+                {'Date': '11/28/13', 'Number': 123456779, 'View': false},
+                {'Date': '10/28/13', 'Number': 123456778, 'View': false},
+                {'Date': '09/28/13', 'Number': 123456777, 'View': false},
+                {'Date': '08/28/13', 'Number': 123456776, 'View': false},
+                {'Date': '07/28/13', 'Number': 123456775, 'View': false},
+            ];
+
+            oInvSelModel.setData(oInvoiceSelectModel);
+
+            // Generate the table
+            var tableContainer = this.getView().byId('nrgBilling-invSelPopup-tableBody');
+            
+            // Remove previous content
+            var rowNumer = tableContainer.getContent().length;
+            for (var j = 0; j < rowNumer; j++) {
+                tableContainer.removeContent(0);
             }
 
-            this._oInvSelectPopup.addStyleClass('nrgBilling-invSelPopupTop');
-            this._oInvSelectPopup.open();
+            for (var i = 0; i < oInvSelModel.oData.length; i++) {
+                var rowElement = new ute.ui.commons.Tag({elem: 'div'}).addStyleClass('nrgBilling-invSelPopup-tableRow');
+                if ((i + 1) % 2 === 0) rowElement.addStyleClass('nrgBilling-invSelPopup-tableRow-even');
+                rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oInvSelModel.oData[i].Date}).addStyleClass('nrgBilling-invSelPopup-tableRow-item'));
+                rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oInvSelModel.oData[i].Number}).addStyleClass('nrgBilling-invSelPopup-tableRow-item').addStyleClass('number'));
+                rowElement.addContent(new ute.ui.main.Checkbox({checked: oInvSelModel.oData[i].View}).addStyleClass('nrgBilling-invSelPopup-tableRow-item'));
+                tableContainer.addContent(rowElement);
+            }
+
+
         };
 
-        CustomController.prototype.onclick = function (oEvent) {
-            var tt0 = oEvent;
+        // For table alignment reason, change the padding if the scroll bar appear.
+        CustomController.prototype._adjustScrollContentPadding = function () {
+            if ($('.sapMScrollContScroll').height() > 200) {
+                $('.nrgBilling-invSelPopup-tableRow').addClass('nrgBilling-invSelPopup-tableRow-scrollBar');
+            }
         };
-        /*************************************************************************************************************************/
-
 
         CustomController.prototype._handleDateRanggeChange = function (oEvent) {
             var tt = this.getView().byId('id_nrgBilling-invSel-stDate');
             return;
         };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         /**
 		 * Handler for Dunning Lock Press
