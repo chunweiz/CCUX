@@ -1,0 +1,253 @@
+.nrgBilling-invSelectPopup {
+    width: 600px;
+    font-family: @nrgFontFamily;
+
+    // Header
+    & .sapUiDlgHdr {
+        height: 60px;
+        margin: 0;
+        padding: 20px 30px 0 30px;
+        display: flex;
+        justify-content: space-between;
+
+        & .sapUiDlgHdrLeft {
+
+            & .sapUiDlgLabel {
+                font-size: @nrgFontSize-large;
+            }
+        }
+
+        & .sapUiDlgHdrBtns {
+            position: relative;
+            margin-right: 0;
+
+            & .sapUiDlgCloseBtn {
+                &::before {
+                    height: 20px;
+                    width: 2px;
+                    transform: translate(6px,0) rotate(45deg);
+                }
+                &::after {
+                    height: 20px;
+                    width: 2px;
+                }
+            }
+
+        }
+    }
+
+    // Separator
+    & .sapUiDlgHdrSep {
+        display: none;
+    }
+
+    // Content
+    & .sapUiDlgCont {
+        margin: 0;
+        padding: 10px 0 0 0;
+
+        & .nrgBilling-invoiceSelection {
+
+            // Date Picker Area
+            & .nrgBilling-invSelPopup-datePickArea {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 15px;
+                margin-top: 10px;
+
+                & .nrgBilling-invSelPopup-datePickArea-datePicker {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                & .nrgBilling-invSelPopup-datePickArea-textTo {
+                    margin-right: 20px;
+                    margin-left: 5px;
+                }
+            }
+
+            // Filter Area
+            & .nrgBilling-invSelPopup-filterArea {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 30px;
+
+                & .nrgBilling-invSelPopup-filterArea-item {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 20px;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    & .uteMChkBox {
+                        line-height: 10px;
+                        margin-right: 5px;
+
+                        & .uteMChkBox-chk {
+                            width: 18px;
+                            height: 18px;
+                            border-radius: 2px;
+
+                            &::before {
+                                top: 3px;
+                                left: 3px;
+                                width: 4px;
+                                height: 8px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Table Content
+            & .nrgBilling-invSelPopup-tableContent {
+                padding: 30px 50px;
+                background-color: rgba(255, 255, 255, 0.3);
+                // Header
+                & .nrgBilling-invSelPopup-tableHeader {
+                    display: flex;
+                    align-items: center;
+                    padding: 0 16px 15px;
+                    border-bottom: 1px dashed @nrgColor-grey-light;
+
+                    & .nrgBilling-invSelPopup-tableHeader-item {
+                        flex: 1;
+                        color: @nrgColor-grey-dark;
+                        font-weight: @nrgFontWeight-semiBold;
+                    }
+                }
+                // Body
+                & .nrgBilling-invSelPopup-tableBody {
+                    padding: 10px 0 0 0;
+
+                    & .sapMScrollContScroll {
+                        width: 100%;
+                    
+                        & .nrgBilling-invSelPopup-tableRow {
+                            display: flex;
+                            align-items: center;
+                            padding: 10px 16px;
+
+                            &.nrgBilling-invSelPopup-tableRow-scrollBar {
+                                padding: 10px 0 10px 16px;
+                            }
+
+                            &.nrgBilling-invSelPopup-tableRow-even {
+                                background-color: @nrgColor-blue-pearl;
+                            }
+
+                            & .nrgBilling-invSelPopup-tableRow-item {
+                                flex: 1;
+                                
+                                &.number {
+                                    font-weight: @nrgFontWeight-semiBold;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            // Footer
+            & .nrgBilling-invSelPopup-footer {
+                padding: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                & .nrgBilling-invSelPopup-footer-openBtn {
+                    padding: 10px 30px;
+                    background-color: @nrgColor-blue-link;
+                    color: @nrgColor-white;
+                    font-weight: @nrgFontWeight-semiBold;
+                }
+            }
+        }
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .nrgBilling-invSelPopupTop{
+//     & .sapUiDlgCont{
+//         padding: 0px;
+//         margin: 0px;
+//     }
+// }
+
+
+// .nrgBilling-invSelPopup{
+//     width: 550px;
+
+//     & .nrgBilling-invSelPopup-datePickArea{
+//         margin-left: 80px;
+//         margin-top: 20px;
+//         margin-bottom: 10px;
+//     }
+
+//     & .nrgBilling-invSelPopup-filterArea{
+//         margin-bottom: 20px;
+//         margin-left: 100px;
+//     }
+
+//     & .nrgBilling-invSelPopup-filterArea > .nrgBilling-invSelPopup-filterArea-item{
+//         display: inline-block;
+//         width: 200px;
+//     }
+
+//     & .nrgBilling-invSelPopup-filterArea > .nrgBilling-invSelPopup-filterArea-item > div > label{
+//         margin-bottom: -2px;
+//         margin-right: 2px;
+//     }
+
+//     & .nrgBilling-invSelPopup-filterArea > .nrgBilling-invSelPopup-filterArea-filter{
+//         //padding-left: 15px;
+//     }
+
+//     & .nrgBilling-invSelPopup-datePickArea > .nrgBilling-invSelPopup-datePickArea-datePicker{
+//         padding-left: 17px;
+//     }
+
+//     & .nrgBilling-invSelPopup-datePickArea > .nrgBilling-invSelPopup-datePickArea-datePicker > input{
+//         width: 150px !important;
+//     }
+//     /*& .nrgBilling-invSelPopup-datePickArea > .nrgBilling-invSelPopup-datePickArea-datePicker > input{
+//         height: 30px;
+//         border: none;
+//         //border-top-left-radius: 5px;
+//         //border-bottom-left-radius: 5px;
+//     }
+
+//     & .nrgBilling-invSelPopup-datePickArea > .nrgBilling-invSelPopup-datePickArea-datePicker > div, & .nrgBilling-invSelPopup-datePickArea > .nrgBilling-invSelPopup-datePickArea-datePicker > div > span{
+//         height: 20px;
+//         line-height: 20px;
+//         border: none;
+//         background: transparent;
+//         //border-top-right-radius: 5px;
+//         //border-bottom-right-radius: 5px;
+//     }*/
+
+//     & .nrgBilling-invSelPopup-Ctnt{
+//         width: 100%;
+//         background-color: @nrgColor-bluePearl;
+//     }
+// }
