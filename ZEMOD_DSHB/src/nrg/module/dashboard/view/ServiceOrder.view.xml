@@ -15,6 +15,16 @@
         <ute:Tag class="nrgDashboard-cusSerOdr-ctnt">
             <!--Tab Area-->
             <ute:Tag class="nrgDashboard-cusSerOdr-lftArea">
+                <ute:Tag class="nrgDashboard-cusSerOdr-lftArea-tab">
+                    <utmain:Button class="" design="None"
+                        press=""
+                        text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-PendingOrder}"/>
+                </ute:Tag>
+                <ute:Tag class="nrgDashboard-cusSerOdr-lftArea-tab">
+                    <utmain:Button class="" design="None"
+                        press=""
+                        text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-CompleteOrder}"/>
+                </ute:Tag>
             </ute:Tag>
             <!--Detail Area-->
             <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea">
