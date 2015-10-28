@@ -335,12 +335,6 @@
                                                     <ute:Tag content="{oPaymentHdr>DpInstls/results}"
                                                              class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst">
                                                         <ute:Tag>
-                                                            <ute:Tag visible="{ parts:['oPaymentHdr>Color'], formatter:'._formatDppIntWte'}">
-                                                                <ute:Tag text="{oPaymentHdr>InstlMent}"/>
-                                                                <ute:Tag text="{path: 'oPaymentHdr>AmtOfInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
-                                                                <ute:Tag text="{ parts:['oPaymentHdr>DueDate'], formatter:'._formatDate'}"/>
-                                                                <ute:Tag text="{path: 'oPaymentHdr>BalAftInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
-                                                            </ute:Tag>
                                                             <ute:Tag visible="{ parts:['oPaymentHdr>Color'], formatter:'._formatDppIntGrn'}" class="nrgBilling-blshc2-dpInst-inst-grn">
                                                                 <ute:Tag text="{oPaymentHdr>InstlMent}"/>
                                                                 <ute:Tag text="{path: 'oPaymentHdr>AmtOfInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
@@ -544,12 +538,6 @@
                                             <ute:Tag content="{oPostInvoiceItems>DpInstls/results}"
                                                      class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-c2-PmtItmLinkTooltip-dpInst-inst">
                                                 <ute:Tag>
-                                                    <ute:Tag visible="{ parts:['oPostInvoiceItems>Color'], formatter:'._formatDppIntWte'}">
-                                                        <ute:Tag text="{oPostInvoiceItems>InstlMent}"/>
-                                                        <ute:Tag text="{path: 'oPostInvoiceItems>AmtOfInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
-                                                        <ute:Tag text="{ parts:['oPostInvoiceItems>DueDate'], formatter:'._formatDate'}"/>
-                                                        <ute:Tag text="{path: 'oPostInvoiceItems>BalAftInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
-                                                    </ute:Tag>
                                                     <ute:Tag visible="{ parts:['oPostInvoiceItems>Color'], formatter:'._formatDppIntGrn'}" class="nrgBilling-blshc2-dpInst-inst-grn">
                                                         <ute:Tag text="{oPostInvoiceItems>InstlMent}"/>
                                                         <ute:Tag text="{path: 'oPostInvoiceItems>AmtOfInstlMent', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>

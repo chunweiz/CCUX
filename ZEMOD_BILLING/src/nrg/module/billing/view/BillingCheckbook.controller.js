@@ -131,13 +131,6 @@ sap.ui.define(
                 return false;
             }
         };
-        CustomController.prototype._formatDppIntWte = function (sIndicator) {
-            if (sIndicator) {
-                return false;
-            } else {
-                return true;
-            }
-        };
 
         CustomController.prototype._formatBoolHyperLink = function (sIndicator) {
             if (sIndicator) {
