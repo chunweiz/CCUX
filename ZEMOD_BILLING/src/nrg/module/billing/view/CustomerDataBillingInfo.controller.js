@@ -19,9 +19,13 @@ sap.ui.define(
         var CustomController = Controller.extend('nrg.module.billing.view.CustomerDataBillingInfo');
 
         CustomController.prototype.onInit = function () {
-        };
 
+        };
+        CustomController.prototype.onAfterRendering = function () {
+             this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+        };
         CustomController.prototype.onBeforeRendering = function () {
+
             this.getOwnerComponent().getCcuxApp().setTitle('BILLING INFO');
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-billing'), 'oDataSvc');

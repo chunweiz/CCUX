@@ -3,12 +3,29 @@
     xmlns:ute="ute.ui.commons"
     xmlns:mvc="sap.ui.core.mvc"
     controllerName="nrg.module.billing.view.BillingCustomerJourney"
+    xmlns:sm="sap.m"
+    xmlns:tm="nrg.module.billing.view.control"
     height="100%"
     width="100%"
     displayBlock="true">
 
     <ute:Tag class="nrgAppMain-generalContent nrgDashboard-Tools">
-        <ute:Tag elem="span" class="nrgDashboard-Tools-scrnTitle" text="Tools" />
+         <sm:ScrollContainer id="content" height="100%" width="40%" horizontal="true" vertical="true">
+            <tm:CustJourneyChannelChart width="300" height="250" id="chart" totalDoublePress="._onTotalPress" sliceDoublePress="._onSlicePress">
+        </tm:CustJourneyChannelChart>
+
+    </sm:ScrollContainer>
+<!--        <tm:CustomerJourneyTimeline channel="{timeline>/data}">
+        <tm:CustomerJourneyTimelineChannel
+            topLabel="{timeline>topLabel}"
+            channelIcon="{timeline>channelIcon}"
+            rightDivider="{timeline>rightDivider}"
+            selected="{timeline>selected}"
+            press="._onPress"
+            doublePress="._onDoublePress"
+            cd:recordIndex="{timeline>recordIndex}" />
+    </tm:CustomerJourneyTimeline>-->
+
     </ute:Tag>
 
 </mvc:View>
