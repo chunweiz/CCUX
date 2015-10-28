@@ -106,6 +106,10 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData.results.length) {
                         oNotificationModel.setData(oData.results);
+
+                        if (typeof(this.noificationCenter) !== 'undefined') {
+                            this.noificationCenter.destroy();
+                        }
                         
                         var notification = [],
                             notificationLinkPressActions = {
@@ -134,6 +138,10 @@ sap.ui.define(
                             this.noificationCenter.placeAt(notificationContainer);
                         } else {
                             // Second time render goes here
+                            // this.noificationCenter.destroy();
+                            // this.noificationCenter = new ute.ui.app.FooterNotificationCenter("nrgAppFtrDetails-notification-notificationCenter", {content: notification});
+                            // this.noificationCenter.placeAt(notificationContainer);
+                            console.log('tears');
                         }
                         
                         this.footerElement.notiEmptySec.setVisible(false);

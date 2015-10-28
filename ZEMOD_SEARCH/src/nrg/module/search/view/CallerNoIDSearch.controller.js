@@ -306,7 +306,7 @@ sap.ui.define(
 
             oParameters.filters.forEach(function(filter) {
                 // These are fields that wildcard is not allowed for
-                if (filter.sPath === "BuagID" || filter.sPath === "SSN" || filter.sPath === "DL" || filter.sPath === "PartnerID" || filter.sPath === "ESID" || filter.sPath === "TaxID") {
+                if (filter.sPath === "BuagID" || filter.sPath === "SSN" || filter.sPath === "DL" || filter.sPath === "PartnerID" || filter.sPath === "ESID" || filter.sPath === "TaxID" || filter.sPath === "TelePhone" || filter.sPath === "UnitNumber") {
                     if (filter.oValue1.indexOf("*") > -1) {
                         sap.ui.commons.MessageBox.alert("Wildcard is not allowed for this search criteria.");
                         ok = false;
