@@ -98,7 +98,8 @@
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght">
                     <utmain:Button class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght-btn1"
-                                   text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-PAYMENTOPTIONS}"/>
+                                   text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-PAYMENTOPTIONS}"
+                                   press="._onPaymentOptionClick"/>
                     <utmain:Button class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght-btn2"
                                    text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-HIGHBILLFACTORS}"/>
                 </ute:Tag>

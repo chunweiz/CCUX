@@ -89,6 +89,42 @@ sap.ui.define(
         };
 
         AppFooter.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber) {
+
+                // var notificationContainer = this._oController.getView().byId("nrgAppFtrDetails-notification-scrollContent");
+
+
+                // if (!this.notificationCenter) {
+                //     // First time render goes here
+                //     this.notificationCenter = new ute.ui.app.FooterNotificationCenter("nrgAppFtrDetails-notification-notificationCenter");
+
+
+                //     this.notificationCenter.addContent(new ute.ui.app.FooterNotificationItem({
+                //         link: true, 
+                //         design: 'Error', 
+                //         text: message
+                //     }));
+                //     this.notificationCenter.placeAt(notificationContainer);
+                // } else {
+                //     // Second time render goes here
+                //     // this.notificationCenter.destroy();
+                //     // this.notificationCenter = new ute.ui.app.FooterNotificationCenter("nrgAppFtrDetails-notification-notificationCenter", {content: notification});
+                //     // this.notificationCenter.placeAt(notificationContainer);
+                //     this.notificationCenter.destroyAggregation('content', true);
+                //     this.notificationCenter.addAggregation('content', new ute.ui.app.FooterNotificationItem({
+                //         link: true, 
+                //         design: 'Error', 
+                //         text: message
+                //     }), true);
+                //     // console.log('tears');
+                // }
+
+                // this.footerElement.notiEmptySec.setVisible(false);
+                // this.footerElement.notiAlertSec.setVisible(true);
+
+
+
+
+
             this._updateRouting(sBpNumber, sCaNumber, sCoNumber);
 
             var sPath = '/AlertsSet',
@@ -106,10 +142,6 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData.results.length) {
                         oNotificationModel.setData(oData.results);
-
-                        if (typeof(this.noificationCenter) !== 'undefined') {
-                            this.noificationCenter.destroy();
-                        }
                         
                         var notification = [],
                             notificationLinkPressActions = {
@@ -132,16 +164,16 @@ sap.ui.define(
                             );
                         }
 
-                        if (!this.noificationCenter) {
+                        if (!this.notificationCenter) {
                             // First time render goes here
-                            this.noificationCenter = new ute.ui.app.FooterNotificationCenter("nrgAppFtrDetails-notification-notificationCenter", {content: notification});
-                            this.noificationCenter.placeAt(notificationContainer);
+                            this.notificationCenter = new ute.ui.app.FooterNotificationCenter("nrgAppFtrDetails-notification-notificationCenter", {content: notification});
+                            this.notificationCenter.placeAt(notificationContainer);
                         } else {
                             // Second time render goes here
-                            // this.noificationCenter.destroy();
-                            // this.noificationCenter = new ute.ui.app.FooterNotificationCenter("nrgAppFtrDetails-notification-notificationCenter", {content: notification});
-                            // this.noificationCenter.placeAt(notificationContainer);
-                            console.log('tears');
+                            this.notificationCenter.destroyAggregation('content', true);
+                            for (var j = 0; j < notification.length; j++) {
+                                this.notificationCenter.addAggregation('content', notification[j], true);
+                            }
                         }
                         
                         this.footerElement.notiEmptySec.setVisible(false);
