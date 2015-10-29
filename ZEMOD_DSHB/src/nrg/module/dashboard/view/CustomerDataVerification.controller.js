@@ -1614,7 +1614,13 @@ sap.ui.define(
             this.getView().getModel('oCoPageModel').setProperty('/paging', oPage);
         };
 
+        Controller.prototype._navToSvcOdr = function () {
+            var oRouteInfo = this.getOwnerComponent().getCcuxContextManager().getContext().oData,
+                oRouter = this.getOwnerComponent().getRouter();
 
+            oRouter.navTo('dashboard.ServiceOrder', {bpNum: oRouteInfo.bpNum, caNum: oRouteInfo.caNum, coNum: oRouteInfo.coNum});
+
+        };
 
 
 

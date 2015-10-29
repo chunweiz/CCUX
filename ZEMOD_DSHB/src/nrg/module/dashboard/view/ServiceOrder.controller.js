@@ -15,7 +15,18 @@ sap.ui.define(
         var Controller = CoreController.extend('nrg.module.dashboard.view.ServiceOrder');
 
         Controller.prototype.onInit = function () {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
 
+            if (oWebUiManager) {
+                oWebUiManager.notifyWebUi('getBusinessRole', null, this._handleBsnsRlCallback, this);
+            } else {
+                return;
+            }
+        };
+
+        Controller.prototype._handleBsnsRlCallback = function (oEvent) {
+            var oTemp = oEvent;
+            return;
         };
 
 		return Controller;
