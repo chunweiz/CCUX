@@ -14,7 +14,7 @@
         "AmtOfInstlMent":"57.5500",
         "DueDate":"\/Date(1388383201000+0000)\/",
         "BalAftInstlMent":"57.5500",
-        "Color":"G",
+        "Color":"W",
         "PaymentItem":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/DPPPlans(Opbel='000116307728',ContractAccountNumber='',InvoiceNum='122003680377')/PaymentItem"

@@ -51,13 +51,23 @@
 
                 "dashboard.ServiceOrder": {
                     "pattern": "dashboard/serviceorder/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target": [ "dashboard.ServiceOrder" , "dashboard.CustomerDataSummary", "dashboard.ServiceOrderTools" ]
+                    "target": [ "dashboard.ServiceOrder", "dashboard.CustomerDataSummary", "dashboard.Tools" ]
+                },
+
+                "dashboard.CustomerServiceOrder": {
+                    "pattern": "dashboard/customerserviceorder/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target": [ "dashboard.CustomerServiceOrder", "dashboard.CustomerDataSummary", "dashboard.Tools" ]
                 }
             },
 
             "targets": {
                 "dashboard.EmptyTools":{
                     "viewName": "nrg.module.dashboard.view.EmptyTools",
+                    "controlId": "idAppTools"
+                },
+
+                "dashboard.Tools":{
+                    "viewName": "nrg.module.dashboard.view.Tools",
                     "controlId": "idAppTools"
                 },
 
@@ -73,6 +83,11 @@
 
                 "dashboard.ServiceOrder": {
                     "viewName": "nrg.module.dashboard.view.ServiceOrder",
+                    "controlId": "idAppGeneral"
+                },
+
+                "dashboard.CustomerServiceOrder": {
+                     "viewName": "nrg.module.dashboard.view.CustomerServiceOrder",
                     "controlId": "idAppGeneral"
                 },
 

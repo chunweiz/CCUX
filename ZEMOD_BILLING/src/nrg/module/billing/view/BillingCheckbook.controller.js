@@ -134,13 +134,6 @@ sap.ui.define(
                 return false;
             }
         };
-        CustomController.prototype._formatDppIntWte = function (sIndicator) {
-            if (sIndicator) {
-                return false;
-            } else {
-                return true;
-            }
-        };
 
         CustomController.prototype._formatBoolHyperLink = function (sIndicator) {
             if (sIndicator) {
@@ -619,7 +612,7 @@ sap.ui.define(
                 oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer'),
                 oParameters;
 
-            sPath = '/PostInvoice(ContractAccountNumber=\'' + this._caNum + '\',InvoiceNum=\'\',Opbel=\'' + sOpbel + '\')/DPPPlans';
+            sPath = '/PostInvoices(ContractAccountNumber=\'' + this._caNum + '\',InvoiceNum=\'\',Opbel=\'' + sOpbel + '\')/DPPPlans';
             //sPath = '/DPPPlans(ContractAccountNumber=\'\',InvoiceNum=\'' + sInvNum + '\',Opbel=\'' + sOpbel + '\')/';
 
             oParameters = {

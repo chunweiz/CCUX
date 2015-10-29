@@ -1499,7 +1499,7 @@ sap.ui.define(
                 sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
                 sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
                 sCurrentCo = this.getView().getModel('oDtaVrfyContract').getProperty('/ContractID');
-            
+
             oRouter.navTo('usage', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo, typeV: 'D'});
         };
 
