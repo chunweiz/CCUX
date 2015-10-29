@@ -25,8 +25,7 @@ sap.ui.define(
                     { channel: 'IVR', frequency: 1 },
                     { channel: 'Webchat', frequency: 5 },
                     { channel: 'Phone', frequency: 2 },
-                    { channel: 'Survey', frequency: 6 },
-                    { channel: 'Correspondence', frequency: 4 }
+                    { channel: 'Survey', frequency: 6 }
                 ]
             }));
             this.getView().setModel(new JSONModel({
