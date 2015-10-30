@@ -402,7 +402,7 @@
 
 						// Generate the table
 						var tableContainer = this.getView().byId('nrgDashboard-AcctAccessAuthPty-tableBody');
-						
+
 						// Remove previous content
 						for (var j = 0; j < tableContainer.getContent().length; j++) {
 							tableContainer.removeContent(j);
@@ -469,7 +469,7 @@
 
 	        Controller.prototype._onAddThirdPartyAuth = function (oEvent) {
 	        	var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
-	        	
+
 	        	oWebUiManager.notifyWebUi('openIndex', {
                     LINK_ID: "Z_ACC_AUTH"
                 });

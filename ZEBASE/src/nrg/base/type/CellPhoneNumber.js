@@ -45,7 +45,7 @@ sap.ui.define(
                 return oValue;
             }
 
-            if (!oValue.match(/[\d\-]/i)) {
+            if (!oValue.match(/[\d\-]/i) && oValue !== "") {
                 jQuery.sap.log.error('Parse Exception: Invalid Cell phone number', oValue);
                 throw new ParseException('Invalid Cell phone number');
             }
@@ -56,7 +56,7 @@ sap.ui.define(
         // Model value meets constraint requirements
         CustomType.prototype.validateValue = function (oValue) {
 
-            if ((oValue === undefined || oValue === null || oValue.trim() === '') && this.oConstraints.mandatory) {
+            if ((oValue === undefined || oValue === null) && this.oConstraints.mandatory) {
                 jQuery.sap.log.error('Validate Exception: Cell phone number cannot be empty', oValue);
                 throw new ValidateException('Cell phone number cannot be empty');
             }

@@ -60,6 +60,9 @@ sap.ui.define(
         CustomController.prototype.onExit = function () {
         };
 
+        CustomController.prototype._onPaymentOptionClick = function () {
+        };
+
 
         /*****************************************************************************************************************************************************/
         //Formatter Functions

@@ -156,7 +156,7 @@ sap.ui.define(
         };
 
 
-        
+
 
 
         /*Controller.prototype._onCaChange = function (oEvent) {
@@ -301,7 +301,7 @@ sap.ui.define(
             }
         };
 
-        
+
 
 
 
@@ -1050,7 +1050,7 @@ sap.ui.define(
                 sBpNum = oRouteInfo.parameters.bpNum,
                 sCaNum = oRouteInfo.parameters.caNum,
                 sPath = '/Partners' + '(\'' + sBpNum + '\')';
-            
+
             this._retrDataVrf(sPath);
         };
 
@@ -1067,7 +1067,7 @@ sap.ui.define(
 
             oParameters = {
                 success : function (oData) {
-                    if (oData) {                
+                    if (oData) {
                         // Determine if Seibel Customer
                         if (oData.SiebelCustomer === 'X' || oData.SiebelCustomer === 'x') this._showSiebelAlert();
                         // Determine the SMS button
@@ -1150,7 +1150,7 @@ sap.ui.define(
 
             oParameters = {
                 success : function (oData) {
-                    if (oData) {  
+                    if (oData) {
                         // Set select key for all CAs for CA dropdown
                         for (var i = 0; i < oData.results.length; i++) {
                             oData.results[i].iIndex = i.toString();
@@ -1158,9 +1158,9 @@ sap.ui.define(
                         }
                         // Load all the CAs for CA dropdown
                         this.getView().getModel('oAllBuags').setData(oData.results);
-                        this.getView().getModel('oAllBuags').setProperty('/selectedKey', iSearchedCaIndex);     
+                        this.getView().getModel('oAllBuags').setProperty('/selectedKey', iSearchedCaIndex);
                         // Check and execute the callback function
-                        if (fnCallback) fnCallback();                   
+                        if (fnCallback) fnCallback();
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -1320,8 +1320,8 @@ sap.ui.define(
                 oWebUiManager = oComponent.getCcuxWebUiManager();
 
             oWebUiManager.notifyWebUi('caConfirmed', {
-                BP_NUM: sCurrentBp, 
-                CA_NUM: sCurrentCa, 
+                BP_NUM: sCurrentBp,
+                CA_NUM: sCurrentCa,
                 CO_NUM: sCurrentCo
             }, fnCallback, oListener);
         };
@@ -1461,8 +1461,8 @@ sap.ui.define(
         /************* Confirm Btn Clicked ************/
         /**********************************************/
 
-        // We now take care of the update to WebUI & CCUX automatically, 
-        // so only lead users to Billing Info page when this button clicked. 
+        // We now take care of the update to WebUI & CCUX automatically,
+        // so only lead users to Billing Info page when this button clicked.
         Controller.prototype._onGoToBillingInfo = function () {
             var oRouteInfo = this.getOwnerComponent().getCcuxContextManager().getContext().oData,
                 oRouter = this.getOwnerComponent().getRouter(),

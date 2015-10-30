@@ -11,13 +11,13 @@
     <ute:Tag class="nrgBilling-invoiceSelection">
         <!-- Date Picker Area -->
         <ute:Tag class="nrgBilling-invSelPopup-datePickArea">
-            <ute:DatePicker 
+            <ute:DatePicker
                 id="id_nrgBilling-invSel-stDate"
                 class="nrgBilling-invSelPopup-datePickArea-datePicker"/>
             <ute:Tag elem="span"
                 class="nrgBilling-invSelPopup-datePickArea-textTo"
                 text="{comp-i18n-billing>nrgBilling-invoiceSelect_TO}"/>
-            <ute:DatePicker 
+            <ute:DatePicker
                 id="id_nrgBilling-invSel-edDate"
                 class="nrgBilling-invSelPopup-datePickArea-datePicker"/>
         </ute:Tag>
@@ -64,7 +64,7 @@
                 design="None"
                 class="nrgBilling-invSelPopup-footer-openBtn"
                 press="_onOpenBtnClick">
-                <ute:Tag 
+                <ute:Tag
                     class="nrgBilling-invSelPopup-footer-openBtnText"
                     text="{comp-i18n-billing>nrgBilling-invoiceSelect_footer_openBtn_TEXT}" />
             </utmain:Button>

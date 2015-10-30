@@ -366,7 +366,7 @@ sap.ui.define(
 
             // Generate the table
             var tableContainer = this.getView().byId('nrgBilling-invSelPopup-tableBody');
-            
+
             // Remove previous content
             var rowNumer = tableContainer.getContent().length;
             for (var j = 0; j < rowNumer; j++) {
