@@ -77,6 +77,22 @@
                                     </ute:Tag>
                                 </ute:Tag>
                             </ute:Tag>
+                            <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-ctnt">
+                                <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl">
+                                    <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr">
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1"
+                                                 text="Type"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2"
+                                                 text="Reason"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3"
+                                                 text="Status"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4"
+                                                 text="Completed Date"/>
+                                    </ute:Tag>
+                                    <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-row">
+                                    </ute:Tag>
+                                </ute:Tag>
+                            </ute:Tag>
                         </ute:Tag>
                     </ute:Tag>
                 </ute:Tag>
