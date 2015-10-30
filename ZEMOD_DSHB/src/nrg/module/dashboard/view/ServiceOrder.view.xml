@@ -68,12 +68,12 @@
                                 </ute:Tag>
                                 <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-hdr-rgt">
                                     <ute:Tag>
-                                        <ute:Tag elem="span" text="Present Move-In Date:"/>
-                                        <ute:Tag elem="span" text="03/06/2013"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-labl" elem="span" text="{comp-i18n-dashboard>nrgDashboard-servOrder-pMvinDate}"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-val" elem="span" text="03/06/2013"/>
                                     </ute:Tag>
                                     <ute:Tag>
-                                        <ute:Tag elem="span" text="Original Move-In Date:"/>
-                                        <ute:Tag elem="span" text="03/04/2011"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-labl" elem="span" text="{comp-i18n-dashboard>nrgDashboard-servOrder-oMvinDate}"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-val" elem="span" text="03/04/2011"/>
                                     </ute:Tag>
                                 </ute:Tag>
                             </ute:Tag>
