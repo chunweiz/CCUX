@@ -1120,7 +1120,7 @@ sap.ui.define(
                 oReceiptDate = this.getView().byId("idnrgQPRC-RcDate"),
                 oReceiptNum = this.getView().byId("idnrgQPRC-RNum"),
                 oReceiptAmount = this.getView().byId("idnrgQPRC-Amt"),
-                oReceiptDropDown = this.getView().byId("idnrgQPCC-ReceiptDD"),
+                //oReceiptDropDown = this.getView().byId("idnrgQPCC-ReceiptDD"),
                 that = this,
                 oContactModel = this.getView().getModel("quickpay-cl");
             oMsgArea.removeStyleClass("nrgQPPay-hide");
@@ -1138,8 +1138,8 @@ sap.ui.define(
                 "BP" : this._sBP,
                 "CA" : this._sCA,
                 "ReceiptNumber" : oReceiptNum.getValue(),
-                "Amount" : oReceiptAmount.getValue(),
-                "WaiveFlag" : oReceiptDropDown.getSelectedKey()
+                "Amount" : oReceiptAmount.getValue()
+                //"WaiveFlag" : oReceiptDropDown.getSelectedKey()
             }, {
                 success : function (oData, oResponse) {
                     if (oData.Error === "") {

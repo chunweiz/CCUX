@@ -192,6 +192,7 @@
             <EntityContainer Name="ZE_CCUX_CAMPAIGN_OVW_SRV_Entities" m:IsDefaultEntityContainer="true">
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Return" Name="ReturnCollection"/>
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.LoyalPrg" Name="LoyalPrgS"/>
+                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.EFL" Name="EFLS"/>
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Script" Name="ScriptS"/>
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CpgCmpbyInv" Name="CpgCmpbyInvS"/>
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Button" Name="ButtonS"/>
@@ -205,7 +206,7 @@
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg" Name="CpgFtrS"/>
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.NNP" Name="NNPS"/>
                 <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.CustMsg" Name="CustMsgS"/>
-                <EntitySet EntityType="ZE_CCUX_CAMPAIGN_OVW_SRV.EFL" Name="EFLS"/>
+
                 <AssociationSet Association="ZE_CCUX_CAMPAIGN_OVW_SRV.Cpg_Script" Name="OvwS_ScriptS">
                     <End EntitySet="CpgOvwS" Role="FromRole_Cpg_Script"/>
                     <End EntitySet="ScriptS" Role="ToRole_Cpg_Script"/>

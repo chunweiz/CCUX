@@ -26,7 +26,10 @@
     & > div > .nrgCamHis-Div {
             margin-top: 10px;
             margin-bottom: 10px;
-            border: 1px solid @nrgColor-grey-highlight;
+            border: 2px solid @nrgColor-grey-highlight;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            text-align: right;
     }
     & > div > .nrgCamHis-Mtx{
             font-family: @nrgFontFamily;
@@ -104,6 +107,24 @@
     & > div > .nrgCamHis-table > tbody > .uteTb-row-campaign:nth-child(odd){
         background-color: transparent;
     }
+    & .nrgCamHis-table-title {
+        color: @nrgColor-blueLink;
+    }
+    & .nrgCamHis-btns {
+        background-color: @nrgColor-blue-pearl;
+        padding: 0 5px;
+        margin: 0 5px;
+    }
+    &  .nrgCamHis-btns > .uteMBtn-text {
+        padding: 4px 0;
+        font-size: @nrgFontSize-smaller;
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-blue-link;
+    }
+    & .nrgCamHis-btns:hover > .uteMBtn-text {
+        color: @nrgColor-blue-light;
+    }
+
 }
 
 

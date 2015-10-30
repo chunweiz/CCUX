@@ -42,12 +42,25 @@ sap.ui.define(
             this._initChkbookHdr();
             this._initPaymentHdr();
             this._initPostInvoiceItems();
+
+            // Retrieve routing parameters
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+            this._bpNum = oRouteInfo.parameters.bpNum;
+            this._caNum = oRouteInfo.parameters.caNum;
+            this._coNum = oRouteInfo.parameters.coNum;
         };
 
         CustomController.prototype.onAfterRendering = function () {
+            // Update Footer
+            this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum);
+            this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum);
+            this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum);
         };
 
         CustomController.prototype.onExit = function () {
+        };
+
+        CustomController.prototype._onPaymentOptionClick = function () {
         };
 
 
@@ -69,12 +82,28 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype._formatPostInv2V = function (sLValue, sRValue) {
-            return (!!(parseInt(sLValue, 10)) || !!parseInt(sRValue, 10));
+        CustomController.prototype._formatPostInv2VL = function (cIndicator, sHyperlink) {
+            if (cIndicator === 'L' && !sHyperlink) {
+                return true;
+            } else {
+                return false;
+            }
         };
 
-        CustomController.prototype._formatPostInv1V = function (sRonlyValue) {
-            return !!(parseInt(sRonlyValue, 10));
+        CustomController.prototype._formatPostInv2VR = function (cIndicator, sHyperlink) {
+            if (cIndicator === 'R' && !sHyperlink) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        CustomController.prototype._formatPostInv1V = function (cIndicator, sHyperlink) {
+            if (cIndicator === 'H' && !sHyperlink) {
+                return true;
+            } else {
+                return false;
+            }
         };
 
         CustomController.prototype._formatDppIntGrn = function (sIndicator) {
@@ -99,10 +128,10 @@ sap.ui.define(
             }
         };
         CustomController.prototype._formatDppIntWte = function (sIndicator) {
-            if (sIndicator) {
-                return false;
-            } else {
+            if (sIndicator === 'W') {
                 return true;
+            } else {
+                return false;
             }
         };
 
@@ -277,6 +306,7 @@ sap.ui.define(
                 return iLfRtVal;
             }
         };
+
 
         /*****************************************************************************************************************************************************/
         /*****************************************************************************************************************************************************/
@@ -511,8 +541,10 @@ sap.ui.define(
                             }
                             if (i !== oData.results.length - 1) {
                                 oData.results[i].bExpand = false;
+                                oData.results[i].bExpand_0 = false;
                             } else {
                                 oData.results[i].bExpand = true;
+                                oData.results[i].bExpand_0 = true;
                             }
                             oData.results[i].bRegul = true;
                             oData.results[i].bAlert = false;
@@ -547,12 +579,46 @@ sap.ui.define(
         CustomController.prototype._retrPostInvoiceItems = function (sPath) {
             var oChbkOData = this.getView().getModel('oDataSvc'),
                 oParameters,
-                oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer');
+                oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer'),
+                i;
 
             oParameters = {
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oPostInvoiceItems').setData(oData);
+
+                        for (i = 0; i < oData.results.length; i = i + 1) {
+                            if (oData.results[i].HyperLinkInd === 'DP') {
+                                this._retrPostInvoiceItemDppTable(oData.results[i].InvoiceNum, oData.results[i].Opbel, '/results/' + i.toString());
+                            }
+                        }
+                    }
+
+                    oScrlCtaner.scrollTo(0, 1000, 1000);
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oChbkOData) {
+                oChbkOData.read(sPath, oParameters);
+            }
+        };
+
+        CustomController.prototype._retrPostInvoiceItemDppTable = function (sInvNum, sOpbel, sBindingPath) {
+            var oChbkOData = this.getView().getModel('oDataSvc'),
+                sPath,
+                oScrlCtaner = this.getView().byId('nrgChkbookScrollContainer'),
+                oParameters;
+
+            sPath = '/PostInvoices(ContractAccountNumber=\'' + this._caNum + '\',InvoiceNum=\'\',Opbel=\'' + sOpbel + '\')/DPPPlans';
+            //sPath = '/DPPPlans(ContractAccountNumber=\'\',InvoiceNum=\'' + sInvNum + '\',Opbel=\'' + sOpbel + '\')/';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oPostInvoiceItems').setProperty(sBindingPath + '/DpInstls', oData);
                     }
 
                     oScrlCtaner.scrollTo(0, 1000, 1000);

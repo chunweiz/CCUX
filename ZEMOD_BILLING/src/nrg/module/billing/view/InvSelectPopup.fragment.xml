@@ -3,18 +3,25 @@
     xmlns:ute="ute.ui.commons"
     xmlns:utmain="ute.ui.main"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
     xmlns:c="sap.ui.commons"
     xmlns:l="sap.ui.commons.layout"
-    xmlns:core="sap.ui.core"
-    xmlns:m="sap.m">
-    <ute:Tag class="nrgBilling-invSelPopup">
+    xmlns:core="sap.ui.core">
+
+    <ute:Tag class="nrgBilling-invoiceSelection">
+        <!-- Date Picker Area -->
         <ute:Tag class="nrgBilling-invSelPopup-datePickArea">
-            <ute:DatePicker id="id_nrgBilling-invSel-stDate"
-                            class="nrgBilling-invSelPopup-datePickArea-datePicker"/>
-            <ute:Tag elem="span" text="{comp-i18n-billing>nrgBilling-invoiceSelect_TO}"/>
-            <ute:DatePicker id="id_nrgBilling-invSel-edDate"
-                            class="nrgBilling-invSelPopup-datePickArea-datePicker"/>
+            <ute:DatePicker
+                id="id_nrgBilling-invSel-stDate"
+                class="nrgBilling-invSelPopup-datePickArea-datePicker"/>
+            <ute:Tag elem="span"
+                class="nrgBilling-invSelPopup-datePickArea-textTo"
+                text="{comp-i18n-billing>nrgBilling-invoiceSelect_TO}"/>
+            <ute:DatePicker
+                id="id_nrgBilling-invSel-edDate"
+                class="nrgBilling-invSelPopup-datePickArea-datePicker"/>
         </ute:Tag>
+        <!-- Filter Area -->
         <ute:Tag class="nrgBilling-invSelPopup-filterArea">
             <ute:Tag class="nrgBilling-invSelPopup-filterArea-item">
                 <utmain:Checkbox id="id_InvSel_Filter_All" class="nrgBilling-invSelPopup-filterArea-filter"/>
@@ -33,9 +40,35 @@
                 <utmain:Label labelFor="id_InvSel_Filter_RevInv" text="Reversed Invoice"/>
             </ute:Tag>
         </ute:Tag>
-        <ute:Tag class="nrgBilling-invSelPopup-Ctnt" text="test">
+        <!-- Table Content -->
+        <ute:Tag class="nrgBilling-invSelPopup-tableContent">
+            <!-- Header -->
+            <ute:Tag class="nrgBilling-invSelPopup-tableHeader">
+                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_DATE}"/>
+                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_NUMBER}"/>
+                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_VIEW}"/>
+            </ute:Tag>
+            <!-- Body -->
+            <sm:ScrollContainer
+                id="nrgBilling-invSelPopup-tableBody"
+                class="nrgBilling-invSelPopup-tableBody"
+                height="200px"
+                width="100%"
+                horizontal="true"
+                vertical="true">
+            </sm:ScrollContainer>
         </ute:Tag>
-        <ute:Tag>
+        <!-- Footer -->
+        <ute:Tag class="nrgBilling-invSelPopup-footer">
+            <utmain:Button
+                design="None"
+                class="nrgBilling-invSelPopup-footer-openBtn"
+                press="_onOpenBtnClick">
+                <ute:Tag
+                    class="nrgBilling-invSelPopup-footer-openBtnText"
+                    text="{comp-i18n-billing>nrgBilling-invoiceSelect_footer_openBtn_TEXT}" />
+            </utmain:Button>
         </ute:Tag>
     </ute:Tag>
+
 </core:FragmentDefinition>

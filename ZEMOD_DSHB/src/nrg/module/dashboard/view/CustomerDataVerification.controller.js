@@ -19,13 +19,13 @@ sap.ui.define(
         var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataVerification');
 
         Controller.prototype.onInit = function () {
-            //this._beforeOpenEditAddrDialogue = false;
+
         };
 
         Controller.prototype.onBeforeRendering = function () {
 
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
-            // if (!this._beforeOpenEditAddrDialogue) {
+
             this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
@@ -37,13 +37,13 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyBuags');
 
             //Model to hold Contract
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyContracts');
-
-            //Model to hold all Buags
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllBuags');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyContract');
 
             //Model to hold all Contracts of selected Buag
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllContractsofBuag');
+
+            //Model to hold all Buags
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAllBuags');
 
             //Model to hold mailing/temp address
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');
@@ -64,7 +64,7 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEditEmailValidate');
 
             //Siebel Customer Indicator
-            this.bSiebelCustomer = false;
+            this._bSiebelCustomer = false;
 
             // Disable backspace key on this page
             $(document).on("keydown", function (e) {
@@ -85,23 +85,14 @@ sap.ui.define(
             this._initCfrmStatus();
             this._initPhnTypes();
             this._initMailAddrModels();
-                //this._initCoPageModel();
-
-                //this._searchedCaNum = null;
-/*            } else {
-                this._beforeOpenEditAddrDialogue = false;
-            }*/
         };
-        /* =========================================================== */
-        /* lifecycle method- After Rendering                          */
-        /* =========================================================== */
+
         Controller.prototype.onAfterRendering = function () {
-            /*Add Nav Button to left and right*/
+            // Add Nav Button to left and right
             this.getOwnerComponent().getCcuxApp().showNavLeft(true);
             this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
             this.getOwnerComponent().getCcuxApp().showNavRight(true);
             this.getOwnerComponent().getCcuxApp().attachNavRight(this._navRightCallBack, this);
-
 
             // Update Footer
             this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum);
@@ -156,20 +147,6 @@ sap.ui.define(
             oEvnPhnType.setProperty('/', oEvnTypes);
         };
 
-        Controller.prototype._initCoPageModel = function () {
-            var oModel = this.getView().getModel('oCoPageModel'),
-                page = [],
-                oTemp,
-                i;
-
-            for (i = 0; i < 3; i = i + 1) {
-                oTemp = {exist: false, con_ind: 0, index: i};
-                page.push(oTemp);
-            }
-            oModel.setProperty('/threeLarger', false);
-            oModel.setProperty('/paging', page);
-        };
-
         Controller.prototype._initCfrmStatus = function () {
             this.getView().getModel('oCfrmStatus').setProperty('/bEditable', true);
             this.getView().getModel('oCfrmStatus').setProperty('/ShowSMSBtn', false);
@@ -178,273 +155,15 @@ sap.ui.define(
             this.getView().byId('id_updtBtn').setEnabled(true);
         };
 
-        Controller.prototype._onBuagChange = function (iNewBuagIndex) {
-            var eventBus = sap.ui.getCore().getEventBus(),
-                oPayload = {iIndex: iNewBuagIndex};
 
 
-            eventBus.publish("nrg.module.dashoard", "eBuagChanged", oPayload);
-        };
 
-        Controller.prototype._retrUrlHash = function () {
-            //Get the hash to retrieve bp #
-            var oHashChanger = new HashChanger(),
-                sUrlHash = oHashChanger.getHash();
 
-            return sUrlHash;
-        };
-
-        Controller.prototype._initDtaVrfRetr = function () {        //Only called once when entering the verification page
-            var sPath,
-                aSplitHash,
-                iSplitHashL,
-                oRouteInfo,
-                bp;
-            oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
-            bp = oRouteInfo.parameters.bpNum;
-            aSplitHash = (this._retrUrlHash()).split('/');
-            iSplitHashL = aSplitHash.length;
-            sPath = '/Partners' + '(\'' + bp + '\')';
-
-            if (iSplitHashL === 4 && aSplitHash[iSplitHashL - 1] !== 0) {
-                this._searchedCaNum = aSplitHash[iSplitHashL - 1];
-            }
-            this._retrDataVrf(sPath);
-
-        };
-
-        Controller.prototype._retrDataVrf = function (sPath) {
-            this.getOwnerComponent().getCcuxApp().setOccupied(true);
-
-            var oModel = this.getView().getModel('oODataSvc'),
-                oParameters;
-
-            oParameters = {
-                /*urlParameters: {"$expand": "Buags"},*/
-                success : function (oData) {
-                    if (oData) {
-                        this.getView().getModel('oDtaVrfyBP').setData(oData);
-                        if (oData.PartnerID) {
-                            this._retrBuag(oData.PartnerID);
-                        }
-                        if (oData.SiebelCustomer === 'X' || oData.SiebelCustomer === 'x') {
-                            this.bSiebelCustomer = true;
-                            if (this.getView().getModel('oCfrmStatus').getProperty('/bEditable')) {
-                                this.getView().getModel('oCfrmStatus').setProperty('/bEditable', false);
-                            }
-                            this.getView().byId('id_confmBtn').setVisible(false);
-                            this.getView().byId('id_updtBtn').setVisible(false);
-
-                            // Added by Jerry
-                            ute.ui.main.Popup.Alert({
-                                title: 'Siebel Contracted Account',
-                                message: 'This is a Siebel Contracted account. Connect the caller to the CI Account Management Team for all account inquiries during their business hours of 7:30 AM to 5:30 PM, Monday through Friday (except holidays). After Hours: For service outages and Other Service Order requests, follow the defined process. For all other call types provide the customer with the CI Account Management Team’s toll free number and ask the customer to call back during business hours.'
-                            });
-                        
-                            // this._oSiebelAlertPopup = ute.ui.main.Popup.create({
-                            //     content: this.getView().byId("idSiebelAccAlert"),
-                            //     title: 'Siebel Contracted Account'
-                            // });
-                            // //this._onToggleButtonPress();
-                            // this.getView().byId("idSiebelAccAlert").setVisible(true);
-                            // //this._beforeOpenEditAddrDialogue = true;
-                            // this._oSiebelAlertPopup.open();
-
-                        }
-                        if (oData.Cell) {
-                            this.getView().getModel('oCfrmStatus').setProperty('/ShowSMSBtn', true);
-                        }
-                    }
-                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
-                }.bind(this),
-                error: function (oError) {
-                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
-                    //Need to put error message
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
-        };
-
-        Controller.prototype._retrBuag = function (sBpNum, iSelectedCA) {      //will be called whenever a different Buag is selected
-            var oModel = this.getView().getModel('oODataSvc'),
-                sPath,
-                oParameters,
-                i,
-                iPreSelCA,
-                eventBus = sap.ui.getCore().getEventBus(),
-                oPayload = {iIndex: iSelectedCA};
-
-            sPath = '/Partners' + '(\'' + sBpNum + '\')/Buags/';
-            oParameters = {
-                success : function (oData) {
-                    if (oData) {
-                        
-                        if (iSelectedCA) {
-                            iPreSelCA = iSelectedCA;
-                        } else {
-                            if (this._caNum) {
-                                // Seatch for the CA matched the designated CA number
-                                for (i = 0; i < oData.results.length; i = i + 1) {
-                                    if (oData.results[i].ContractAccountID === this._caNum) {
-                                        iPreSelCA = i;
-                                    }
-                                }
-                            } else {
-                                // If cannot find designated CA number, choose the first CA by default
-                                iPreSelCA = 0;
-                            }
-                        }
-
-                        if (oData.results[iPreSelCA]) {
-                            //If there's first record of Buags, load as default to display
-                            this.getView().getModel('oDtaVrfyBuags').setData(oData.results[iPreSelCA]);
-                            this._retrContracts(oData.results[iPreSelCA].ContractAccountID);
-                            this._retrBuagMailingAddr(sBpNum, oData.results[iPreSelCA].ContractAccountID, oData.results[iPreSelCA].FixedAddressID);
-                        }
-                        for (i = 0; i < oData.results.length; i = i + 1) {
-                            oData.results[i].iIndex = i.toString();
-                        }
-                        this.getView().getModel('oAllBuags').setData(oData.results);
-                        this.getView().getModel('oAllBuags').setProperty('/selectedKey', iPreSelCA);
-
-                        //*************************************************************************************/
-                        //Logic for search with CA
-                        if (this._searchedCaNum) {
-                            for (i = 0; i < oData.results.length; i = i + 1) {
-                                if (this.getView().getModel('oAllBuags').oData[i].ContractAccountID === this._searchedCaNum) {
-                                    this._searchedCaNum = null;
-                                    this._retrBuag(sBpNum, i);
-                                    eventBus.publish("nrg.module.dashoard", "eBuagChanged", oPayload);
-                                    return;
-                                }
-                            }
-                        }
-                        //*************************************************************************************/
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    //Need to put error message
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
-        };
-
-        Controller.prototype._retrContracts = function (sBuagNum) {
-            var oModel = this.getView().getModel('oODataSvc'),
-                oPageModel = this.getView().getModel('oCoPageModel'),
-                oPage,
-                sPath,
-                oParameters,
-                i;
-
-            sPath = '/Buags' + '(\'' + sBuagNum + '\')/Contracts/';
-            oParameters = {
-                success : function (oData) {
-                    //console.log('path', sPath);
-                    //console.log('oData', oData);
-                    if (oData) {
-                        if (oData.results[0]) {
-                            //Again if there's first record of Contracts, load as default to display
-                            this.getView().getModel('oDtaVrfyContracts').setData(oData.results[0]);
-                            this._updateUsageLink();
-                        } else {
-                            this.getView().getModel('oDtaVrfyContracts').setData(oData);
-                        }
-
-                        this._initCoPageModel();
-                        oPage = oPageModel.getProperty('/paging');
-                        for (i = 0; i < oData.results.length; i = i + 1) {
-                            oData.results[i].iIndex = i.toString();
-                            if (i < 3) {
-                                oPage[i].exist = true;
-                                oPage[i].co_ind = i + 1;
-                                oPageModel.setProperty('/threeLarger', false);
-                            } else {
-                                oPageModel.setProperty('/threeLarger', true);
-                            }
-                        }
-                        oPageModel.setProperty('/paging', oPage);
-                        this.getView().getModel('oAllContractsofBuag').setData(oData.results);
-                        this.getView().getModel('oAllContractsofBuag').setProperty('/selectedKey', '0');
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    //Need to put error message
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
-        };
-        Controller.prototype._retrBuagMailingAddr = function (sBpNum, sBuagNum, sFixedAddressID) {
-            var oModel = this.getView().getModel('oODataSvc'),
-                sPath,
-                oParameters,
-                i;
-
-            sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
-
-            oParameters = {
-                success : function (oData) {
-                    if (oData) {
-                        this.getView().getModel('oDtaVrfyMailingTempAddr').setData(oData);
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    //Need to put error message
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
-        };
-
-        Controller.prototype._onContractSelect = function (oEvent) {
-            var sSelectedKey = oEvent.getParameters().selectedKey,
-                iSelectedIndex;
-
-            if (sSelectedKey) {
-                iSelectedIndex = parseInt(sSelectedKey, 10);
-                this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
-                //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
-                this._refreshPaging();
-                this._updateUsageLink();
-            }
-        };
-
-        Controller.prototype._onBuagSelect = function (oEvent) {
-            var sSelectedKey = oEvent.getParameters().selectedKey,
-                iSelectedIndex = parseInt(sSelectedKey, 10);
-
-            //Trigger Buag Change event
-            //this._onBuagChange(this.getView().getModel('oAllBuags').oData[iSelectedIndex].ContractAccountID);
-
-            this.getView().getModel('oDtaVrfyBuags').setData(this.getView().getModel('oAllBuags').oData[iSelectedIndex]);
-            //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
-
-            //Trigger Buag Change event
-            this._onBuagChange(iSelectedIndex);
-
-            //Trigger contracts refresh
-            this._retrContracts(this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'));
-            this._retrBuagMailingAddr(this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'), this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'), this.getView().getModel('oDtaVrfyBuags').getProperty('/FixedAddressID'));
-
-            this._updateUsageLink();
-        };
-
-        /*Controller.prototype._onBuagChange = function (oEvent) {
+        /*Controller.prototype._onCaChange = function (oEvent) {
             var sNewSelectedBuagIndex;
 
             sNewSelectedBuagIndex = oEvent.getSource().getSelectedKey();
-            this._retrBuag(sNewSelectedBuagIndex);
+            this._retrAllCa(sNewSelectedBuagIndex);
         };*/
 
         Controller.prototype._onToggleButtonPress = function (oEvent) {
@@ -461,117 +180,40 @@ sap.ui.define(
 
         };
 
-        Controller.prototype._handleConfirm = function () {
-            var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
-                sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
-                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
-                sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID'),
-                oComponent = this.getOwnerComponent(),
-                oWebUiManager = oComponent.getCcuxWebUiManager(),
-                oPassingEvent; //For none IC usage
+        // Controller.prototype._handleUnConfirm = function () {
+        //     var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+        //         sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+        //         sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+        //         sCurrentCo = this.getView().getModel('oDtaVrfyContract').getProperty('/ContractID'),
+        //         oComponent = this.getOwnerComponent(),
+        //         oWebUiManager = oComponent.getCcuxWebUiManager();
 
-            if (oWebUiManager.isAvailable()) {
-                //Confirm CA to IC first
-                oComponent.getCcuxApp().setOccupied(true);
-                oWebUiManager.notifyWebUi('caConfirmed', {
-                    BP_NUM: sCurrentBp,
-                    CA_NUM: sCurrentCa,
-                    CO_NUM: sCurrentCo
-                }, this._handleCaCofirmed, this);
-            } else {
-                oPassingEvent = {
-                    BP_NUM: sCurrentBp,
-                    CA_NUM: sCurrentCa,
-                    CO_NUM: sCurrentCo,
-                    getParameters: function () {
-                        return oPassingEvent;
-                    }
-                };
-                this._handleCaCofirmed(oPassingEvent);
-            }
-        };
+        //     //UnConfirm CA to IC first
+        //     oComponent.getCcuxApp().setOccupied(true);
+        //     oWebUiManager.notifyWebUi('caUnconfirmed', {
+        //         BP_NUM: sCurrentBp,
+        //         CA_NUM: sCurrentCa
+        //     }, this._handleCaUnCofirmed, this);
+        // };
 
-        Controller.prototype._handleCaCofirmed = function (oEvent) {
-            var oStatusModel = this.getView().getModel('oCfrmStatus'),
-                oRouter = this.getOwnerComponent().getRouter(),
-                oComponent = this.getOwnerComponent(),
-                oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
-                oRouteInfo = oEvent.getParameters(),
-                sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
-                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
-                sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID'),
-                badgeSS = this.getView().getModel('oDtaVrfyBuags').getProperty('/BadgeSS'),
-                isPrepaidUser = false; // Determine if prepaid user
+        // Controller.prototype._handleCaUnCofirmed = function (oEvent) {
+        //     var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
+        //         oStatusModel = this.getView().getModel('oCfrmStatus'),
+        //         oComponent = this.getOwnerComponent();
 
-            if (badgeSS === 'x' || badgeSS === 'X') {
-                isPrepaidUser = true;
-            }
+        //     //Set Confirmed CaNum and CoNum to Component level
+        //     oComponentContextModel.setProperty('/dashboard/caNum', '');
+        //     oComponentContextModel.setProperty('/dashboard/coNum', '');
 
-            //Set Confirmed CaNum and CoNum to Component level
-            oComponentContextModel.setProperty('/caNum', sCurrentCa);
-            oComponentContextModel.setProperty('/coNum', sCurrentCo);
+        //     this.getView().byId('id_confmBtn').setVisible(true);
+        //     this.getView().byId('id_unConfmBtn').setVisible(false);
+        //     this.getView().byId('id_updtBtn').setEnabled(true);
 
-            this.getView().byId('id_confmBtn').setVisible(false);
-            this.getView().byId('id_unConfmBtn').setVisible(true);
-            this.getView().byId('id_updtBtn').setEnabled(false);
-
-            //Set the 'Editable' for all input to false to prevent changing after "Confirmed"
-            if (oStatusModel.getProperty('/bEditable')) {
-                oStatusModel.setProperty('/bEditable', false);
-            }
-
-            oComponent.getCcuxApp().setOccupied(false);
-
-            //Navigate to verification page
-            if (isPrepaidUser) {
-                if (sCurrentCo) {
-                    oRouter.navTo('billing.BillingPrePaid', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
-                } else {
-                    oRouter.navTo('billing.BillingPrePaidNoCo', {bpNum: sCurrentBp, caNum: sCurrentCa});
-                }
-            } else {
-                if (sCurrentCo) {
-                    oRouter.navTo('billing.BillingInfo', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
-                } else {
-                    oRouter.navTo('billing.BillingInfoNoCo', {bpNum: sCurrentBp, caNum: sCurrentCa});
-                }
-            }
-        };
-
-        Controller.prototype._handleUnConfirm = function () {
-            var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
-                sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
-                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
-                sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID'),
-                oComponent = this.getOwnerComponent(),
-                oWebUiManager = oComponent.getCcuxWebUiManager();
-
-            //UnConfirm CA to IC first
-            oComponent.getCcuxApp().setOccupied(true);
-            oWebUiManager.notifyWebUi('caUnconfirmed', {
-                BP_NUM: sCurrentBp,
-                CA_NUM: sCurrentCa
-            }, this._handleCaUnCofirmed, this);
-        };
-
-        Controller.prototype._handleCaUnCofirmed = function (oEvent) {
-            var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
-                oStatusModel = this.getView().getModel('oCfrmStatus'),
-                oComponent = this.getOwnerComponent();
-
-            //Set Confirmed CaNum and CoNum to Component level
-            oComponentContextModel.setProperty('/dashboard/caNum', '');
-            oComponentContextModel.setProperty('/dashboard/coNum', '');
-
-            this.getView().byId('id_confmBtn').setVisible(true);
-            this.getView().byId('id_unConfmBtn').setVisible(false);
-            this.getView().byId('id_updtBtn').setEnabled(true);
-
-            if (!oStatusModel.getProperty('/bEditable')) {
-                oStatusModel.setProperty('/bEditable', true);
-            }
-            oComponent.getCcuxApp().setOccupied(false);
-        };
+        //     if (!oStatusModel.getProperty('/bEditable')) {
+        //         oStatusModel.setProperty('/bEditable', true);
+        //     }
+        //     oComponent.getCcuxApp().setOccupied(false);
+        // };
 
         Controller.prototype._handleUpdate = function () {
             var oModel = this.getView().getModel('oODataSvc'),
@@ -659,116 +301,26 @@ sap.ui.define(
             }
         };
 
-        /*---------------------------------------------- CO Pagination Handlers ---------------------------------------------*/
-
-        Controller.prototype._onConFirst = function () {
-            var oContracts = this.getView().getModel('oAllContractsofBuag'),
-                iSelectedIndex = 0;
-
-            this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
-            //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
-            oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
-            this._refreshPaging();
-
-        };
-        Controller.prototype._onConLeft = function () {
-            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
-                oContracts = this.getView().getModel('oAllContractsofBuag'),
-                iSel_Ind = parseInt(oContracts.getProperty('/selectedKey'), 10) - 1;  //Selected is the new selected index
-
-            if (iSel_Ind > -1) {
-                this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSel_Ind]);
-                //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
-
-                oContracts.setProperty('/selectedKey', iSel_Ind.toString());
-                this._refreshPaging();
-            } else {
-                return; //do nothing if it's invalid
-            }
-        };
-        Controller.prototype._onConPone = function () {
-            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
-                oContracts = this.getView().getModel('oAllContractsofBuag'),
-                iSelectedIndex = oPage[0].co_ind - 1;
-
-            this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSelectedIndex]);
-            //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
-
-            oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
-            this._refreshPaging();
-        };
-        Controller.prototype._onConPtwo = function () {
-            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
-                oContracts = this.getView().getModel('oAllContractsofBuag'),
-                iSelectedIndex = oPage[1].co_ind - 1,
-                i;
-
-            this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSelectedIndex]);
-            //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
-
-            oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
-            this._refreshPaging();
-        };
-        Controller.prototype._onConPthree = function () {
-            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
-                oContracts = this.getView().getModel('oAllContractsofBuag'),
-                iSelectedIndex = oPage[2].co_ind - 1;
-
-            this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSelectedIndex]);
-            //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
-
-            oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
-            this._refreshPaging();
-        };
-        Controller.prototype._onConRite = function () {
-            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
-                oContracts = this.getView().getModel('oAllContractsofBuag'),
-                iSel_Ind = parseInt(oContracts.getProperty('/selectedKey'), 10) + 1;  //Selected is the new selected index
 
 
-            if (iSel_Ind < oContracts.oData.length) {
-                this.getView().getModel('oDtaVrfyContracts').setData(oContracts.oData[iSel_Ind]);
-                //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
 
-                oContracts.setProperty('/selectedKey', iSel_Ind.toString());
-                this._refreshPaging();
-            } else {
-                return; //do nothing if it's invalid
-            }
-        };
-        Controller.prototype._onConLast = function () {
-            var oContracts = this.getView().getModel('oAllContractsofBuag'),
-                iSelectedIndex = oContracts.oData.length - 1;
 
-            this.getView().getModel('oDtaVrfyContracts').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
-            //delete this.getView().getModel('oDtaVrfyContracts').oData.iIndex;
 
-            oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
-            this._refreshPaging();
-        };
 
-        Controller.prototype._refreshPaging = function () {
-            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
-                oContracts = this.getView().getModel('oAllContractsofBuag'),
-                iSel_Ind = parseInt(oContracts.getProperty('/selectedKey'), 10),
-                i;
 
-            if (iSel_Ind === 0 || oContracts.oData.length === 2) {
-                for (i = 0; i < 3; i = i + 1) {
-                    oPage[i].co_ind = i + 1;
-                }
-            } else if (iSel_Ind === (oContracts.oData.length - 1)) {
-                for (i = 0; i < 3; i = i + 1) {
-                    oPage[i].co_ind = iSel_Ind + 1 - 2 + i;
-                }
-            } else {
-                for (i = 0; i < 3; i = i + 1) {
-                    oPage[i].co_ind = iSel_Ind + i;
-                }
-            }
 
-            this.getView().getModel('oCoPageModel').setProperty('/paging', oPage);
-        };
+
+
+
+
+
+
+
+
+
+
+
+
         /*Ends Here*/
         /********************************************************************************************/
 
@@ -889,11 +441,11 @@ sap.ui.define(
                 sPath,
                 oParameters,
                 sBpNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/PartnerID'),
-                sBuagNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/ContractAccountID'),
+                sCaNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/ContractAccountID'),
                 sFixedAddressID = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/FixedAddressID');
 
 
-            sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
+            sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sCaNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
 
             oParameters = {
                 urlParameters: {},
@@ -903,7 +455,7 @@ sap.ui.define(
                         title: 'Mailing address update ',
                         message: 'Update Success'
                     });
-                    this._retrBuag(this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'),  this.getView().getModel('oAllBuags').getProperty('/selectedKey'));
+                    this._retrAllCa(this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'));
                     this._oMailEditPopup.close();
                 }.bind(this),
                 error: function (oError) {
@@ -1039,7 +591,7 @@ sap.ui.define(
                     content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AddrUpdateCaLvlPopUp", this),
                     title: 'Edit Mailing Address',
                     close: function () {
-                        this._retrBuagMailingAddr(
+                        this._retrCaMailingAddr(
                             this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'),
                             this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
                             this.getView().getModel('oDtaVrfyBuags').getProperty('/FixedAddressID')
@@ -1105,12 +657,12 @@ sap.ui.define(
                 sPath,
                 oParameters,
                 sBpNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/PartnerID'),
-                sBuagNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/ContractAccountID'),
+                sCaNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/ContractAccountID'),
                 sFixedAddressID = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/TemporaryAddrID');
 
 
 
-            sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sBuagNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
+            sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sCaNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
 
             oParameters = {
                 merge: false,
@@ -1485,17 +1037,310 @@ sap.ui.define(
             oDelEmailBox.setVisible(false);
         };
 
+
+
+
+
+
+
+        /*----------------------------------------------- Initial & Start Up ------------------------------------------------*/
+
+        Controller.prototype._initDtaVrfRetr = function () {
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
+                sBpNum = oRouteInfo.parameters.bpNum,
+                sCaNum = oRouteInfo.parameters.caNum,
+                sPath = '/Partners' + '(\'' + sBpNum + '\')';
+
+            this._retrDataVrf(sPath);
+        };
+
+        Controller.prototype._retrDataVrf = function (sPath) {
+            // Display the loading indicator
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+
+            var oModel = this.getView().getModel('oODataSvc'),
+                bCaRetrieveComplete = false,
+                bCoRetrieveComplate = false,
+                bCurrentCaNumRetrieveComplete = false,
+                sCurrentCaNumber,
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        // Determine if Seibel Customer
+                        if (oData.SiebelCustomer === 'X' || oData.SiebelCustomer === 'x') this._showSiebelAlert();
+                        // Determine the SMS button
+                        if (oData.Cell) this.getView().getModel('oCfrmStatus').setProperty('/ShowSMSBtn', true);
+                        // Load the BP info
+                        this.getView().getModel('oDtaVrfyBP').setData(oData);
+                        // 1. Retrieve all CA belong to the BP
+                        if (oData.PartnerID) this._retrAllCa(oData.PartnerID, function () {bCaRetrieveComplete = true;});
+                        // Check the completion of CA retrieval
+                        var checkCaRetrComplete = setInterval(function() {
+                            if (bCaRetrieveComplete) {
+                                // 2. Get the current selected CA number
+                                sCurrentCaNumber = this._getCurrentCaNum(function () {bCurrentCaNumRetrieveComplete = true;});
+                                clearInterval(checkCaRetrComplete);
+                            }
+                        }.bind(this), 100);
+                        // Check the completion of current CA number retrieval
+                        var checkCurCaRetrComplete = setInterval(function() {
+                            if (bCurrentCaNumRetrieveComplete) {
+                                // 3. Load the current selected CA info
+                                this._setCurrentCa(sCurrentCaNumber);
+                                // 4. Retrieve all CO belong to the selected CA
+                                this._retrAllCo(sCurrentCaNumber, function () {bCoRetrieveComplate = true;});
+                                clearInterval(checkCurCaRetrComplete);
+                            }
+                        }.bind(this), 100);
+                        // Check the completion of CO retrieval
+                        var checkCoRetrComplete = setInterval(function() {
+                            if (bCoRetrieveComplate) {
+                                // Confirm with WebUI and CCUX
+                                this._routeInfoConfirm();
+                                // Update the linkability of METER lable
+                                this._updateUsageLink();
+                                clearInterval(checkCoRetrComplete);
+                            }
+                        }.bind(this), 100);
+                    }
+                    // this._routeInfoConfirm() will dismiss the loading indicator
+                }.bind(this),
+                error: function (oError) {
+                    // Dismiss the loading indicator
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._showSiebelAlert = function () {
+            // Label the Siebel Customer
+            this._bSiebelCustomer = true;
+            // Disable the edit function
+            this.getView().getModel('oCfrmStatus').setProperty('/bEditable', false);
+            // Hide the buttons
+            this.getView().byId('id_confmBtn').setVisible(false);
+            this.getView().byId('id_updtBtn').setVisible(false);
+            // Display the alert
+            ute.ui.main.Popup.Alert({
+                title: 'Siebel Contracted Account',
+                message: 'This is a Siebel Contracted account. Connect the caller to the CI Account Management Team for all account inquiries during their business hours of 7:30 AM to 5:30 PM, Monday through Friday (except holidays). After Hours: For service outages and Other Service Order requests, follow the defined process. For all other call types provide the customer with the CI Account Management Team’s toll free number and ask the customer to call back during business hours.'
+            });
+        };
+
+
+
+
+
+        /*---------------------------------------------- Retrieve Information -----------------------------------------------*/
+
+        Controller.prototype._retrAllCa = function (sBpNum, fnCallback) {
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
+                sCaNum = oRouteInfo.parameters.caNum,
+                oModel = this.getView().getModel('oODataSvc'),
+                sPath = '/Partners' + '(\'' + sBpNum + '\')/Buags/',
+                oParameters,
+                iSearchedCaIndex = 0,
+                eventBus = sap.ui.getCore().getEventBus();
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        // Set select key for all CAs for CA dropdown
+                        for (var i = 0; i < oData.results.length; i++) {
+                            oData.results[i].iIndex = i.toString();
+                            if (oData.results[i].ContractAccountID === sCaNum) iSearchedCaIndex = i;
+                        }
+                        // Load all the CAs for CA dropdown
+                        this.getView().getModel('oAllBuags').setData(oData.results);
+                        this.getView().getModel('oAllBuags').setProperty('/selectedKey', iSearchedCaIndex);
+                        // Check and execute the callback function
+                        if (fnCallback) fnCallback();
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._getCurrentCaNum = function (fnCallback) {
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
+                sCaNum = oRouteInfo.parameters.caNum,
+                sCurrentCaNumber,
+                oAllCaModel = this.getView().getModel('oAllBuags');
+
+            if (sCaNum) {
+                // If CA number is found in the routing then we return this
+                sCurrentCaNumber = sCaNum;
+            } else {
+                // Else, we will return the first CA from the list
+                sCurrentCaNumber = oAllCaModel.oData[0].ContractAccountID;
+            }
+
+            if (fnCallback) fnCallback();
+
+            return sCurrentCaNumber;
+        };
+
+        Controller.prototype._setCurrentCa = function (sCaNum) {
+            var oAllCaModel = this.getView().getModel('oAllBuags');
+
+            for (var i = 0; i < oAllCaModel.oData.length; i++) {
+                if (oAllCaModel.oData[i].ContractAccountID === sCaNum) {
+                    // Load as default to display
+                    this.getView().getModel('oDtaVrfyBuags').setData(oAllCaModel.oData[i]);
+                    // Retrieve the Mailing Address for the selected CA
+                    this._retrCaMailingAddr(
+                        this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'),
+                        this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+                        this.getView().getModel('oDtaVrfyBuags').getProperty('/FixedAddressID')
+                    );
+                }
+            }
+        };
+
+        Controller.prototype._retrAllCo = function (sCaNum, fnCallback) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                oPageModel = this.getView().getModel('oCoPageModel'),
+                oPage,
+                sPath,
+                oParameters;
+
+            sPath = '/Buags' + '(\'' + sCaNum + '\')/Contracts/';
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        // Load the first CO to display
+                        if (oData.results[0]) this.getView().getModel('oDtaVrfyContract').setData(oData.results[0]);
+                        // Reset the CO pagination
+                        this._initCoPageModel();
+                        // Set up the CO pagination
+                        this._setUpCoPageModel(oData.results.length, oData.results);
+                        // Refresh the CO dropdown
+                        this.getView().getModel('oAllContractsofBuag').setData(oData.results);
+                        this.getView().getModel('oAllContractsofBuag').setProperty('/selectedKey', '0');
+                        // Check and execute the callback function
+                        if (fnCallback) fnCallback();
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._initCoPageModel = function () {
+            var oPageModel = this.getView().getModel('oCoPageModel'),
+                page = [],
+                oTemp;
+
+            for (var i = 0; i < 3; i++) {
+                oTemp = {exist: false, con_ind: 0, index: i};
+                page.push(oTemp);
+            }
+            oPageModel.setProperty('/threeLarger', false);
+            oPageModel.setProperty('/paging', page);
+        };
+
+        Controller.prototype._setUpCoPageModel = function (iPageNumber, aReturnedCo) {
+            var oPageModel = this.getView().getModel('oCoPageModel'),
+                oPage = oPageModel.getProperty('/paging');
+
+            for (var i = 0; i < iPageNumber; i++) {
+                aReturnedCo[i].iIndex = i.toString();
+                if (i < 3) {
+                    oPage[i].exist = true;
+                    oPage[i].co_ind = i + 1;
+                    oPageModel.setProperty('/threeLarger', false);
+                } else {
+                    oPageModel.setProperty('/threeLarger', true);
+                }
+            }
+            oPageModel.setProperty('/paging', oPage);
+        };
+
+
+
+
+
         /*----------------------------------------------- CCUX Level Methods ------------------------------------------------*/
 
-        // Notify WebUI service about the current BP, CA and CO.
-        Controller.prototype._updateWebUI = function (fnCallback) {
+        Controller.prototype._routeInfoConfirm = function () {
+            var sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+                sCurrentCo = this.getView().getModel('oDtaVrfyContract').getProperty('/ContractID'),
+                oComponent = this.getOwnerComponent(),
+                oWebUiManager = oComponent.getCcuxWebUiManager(),
+                iCompleteCheck = 0;
 
+            // Display the loading indicator
+            oComponent.getCcuxApp().setOccupied(true);
+
+            // Update WebUI
+            if (oWebUiManager.isAvailable()) {
+                this._updateWebUI(sCurrentBp, sCurrentCa, sCurrentCo, function () {
+                    iCompleteCheck += 1;
+                }, this);
+            } else {
+                iCompleteCheck += 1;
+            }
+
+            // Update CCUX
+            this._updateCcux(sCurrentBp, sCurrentCa, sCurrentCo, function () {
+                iCompleteCheck += 1;
+            });
+
+            // Check the completion of WebUI & CCUX update
+            var checkComplete = setInterval(function() {
+                if (iCompleteCheck === 2) {
+                    oComponent.getCcuxApp().setOccupied(false);
+                    clearInterval(checkComplete);
+                }
+            }, 100);
+
+        };
+
+        // Notify WebUI service about the current BP, CA and CO.
+        Controller.prototype._updateWebUI = function (sCurrentBp, sCurrentCa, sCurrentCo, fnCallback, oListener) {
+            var oComponent = this.getOwnerComponent(),
+                oWebUiManager = oComponent.getCcuxWebUiManager();
+
+            oWebUiManager.notifyWebUi('caConfirmed', {
+                BP_NUM: sCurrentBp,
+                CA_NUM: sCurrentCa,
+                CO_NUM: sCurrentCo
+            }, fnCallback, oListener);
         };
 
         // Update CCUX about the current BP, CA and CO.
-        Controller.prototype._updateCcux = function () {
+        Controller.prototype._updateCcux = function (sCurrentBp, sCurrentCa, sCurrentCo, fnCallback) {
+            var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext();
 
+            //Set Confirmed CaNum and CoNum to Component level
+            oComponentContextModel.setProperty('/bpNum', sCurrentBp);
+            oComponentContextModel.setProperty('/caNum', sCurrentCa);
+            oComponentContextModel.setProperty('/coNum', sCurrentCo);
+
+            fnCallback();
         };
+
+
+
+
 
         /*------------------------------------------- UI Style Class Manipulation -------------------------------------------*/
 
@@ -1503,10 +1348,10 @@ sap.ui.define(
         Controller.prototype._updateUsageLink = function () {
             var sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
                 sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
-                sCurrentCo = this.getView().getModel('oDtaVrfyContracts').getProperty('/ContractID');
+                sCurrentCo = this.getView().getModel('oDtaVrfyContract').getProperty('/ContractID');
 
             if (sCurrentBp && sCurrentCa && sCurrentCo) {
-                this.getView().byId('nrgDashboard-cusDataVerify-left-usageLink').attachBrowserEvent('click', this._onMeterClick);
+                this.getView().byId('nrgDashboard-cusDataVerify-left-usageLink').attachBrowserEvent('click', this._onMeterClick.bind(this));
                 this.getView().byId('nrgDashboard-cusDataVerify-left-usageLink').addStyleClass('active');
             } else {
                 this.getView().byId('nrgDashboard-cusDataVerify-left-usageLink').detachBrowserEvent('click');
@@ -1514,11 +1359,276 @@ sap.ui.define(
             }
         };
 
-        /*--------------------------------------------------- Button Press --------------------------------------------------*/
+
+
+
+
+
+        /*------------------------------------------------ UI Element Actions -----------------------------------------------*/
+
+        /**********************************************/
+        /************** CA Dropdown Select ************/
+        /**********************************************/
+
+        Controller.prototype._onCaSelect = function (oEvent) {
+            var sSelectedKey = oEvent.getParameters().selectedKey,
+                iSelectedIndex = parseInt(sSelectedKey, 10),
+                coRetrieveComplete = false;
+
+            // Load the selected CA info
+            this.getView().getModel('oDtaVrfyBuags').setData(this.getView().getModel('oAllBuags').oData[iSelectedIndex]);
+
+            // Publish the CA Change event to event bus
+            this._onCaChange(iSelectedIndex);
+
+            // Retrieve the Mailing Address for the selected CA
+            this._retrCaMailingAddr(
+                this.getView().getModel('oDtaVrfyBuags').getProperty('/PartnerID'),
+                this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+                this.getView().getModel('oDtaVrfyBuags').getProperty('/FixedAddressID')
+            );
+
+            // Trigger contracts refresh
+            this._retrAllCo(
+                this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+                function () {coRetrieveComplete = true;}
+            );
+
+            // Check the completion of CO retrieval
+            var checkComplete = setInterval(function() {
+                if (coRetrieveComplete) {
+                    // Confirm with WebUI and CCUX
+                    this._routeInfoConfirm();
+                    // Update the linkability of METER lable
+                    this._updateUsageLink();
+                    clearInterval(checkComplete);
+                }
+            }.bind(this), 100);
+        };
+
+        Controller.prototype._onCaChange = function (iNewBuagIndex) {
+            var eventBus = sap.ui.getCore().getEventBus(),
+                oPayload = {iIndex: iNewBuagIndex};
+
+            eventBus.publish("nrg.module.dashoard", "eBuagChanged", oPayload);
+        };
+
+        Controller.prototype._retrCaMailingAddr = function (sBpNum, sCaNum, sFixedAddressID) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath,
+                oParameters;
+
+            sPath = '/BuagMailingAddrs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',ContractAccountID=\'' + sCaNum + '\'' + ',FixedAddressID=\'' + sFixedAddressID + '\')';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oDtaVrfyMailingTempAddr').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        /**********************************************/
+        /************** CO Dropdown Select ************/
+        /**********************************************/
+
+        Controller.prototype._onCoSelect = function (oEvent) {
+            var sSelectedKey = oEvent.getParameters().selectedKey,
+                iSelectedIndex = parseInt(sSelectedKey, 10);
+
+            // Load the selected CO info
+            this.getView().getModel('oDtaVrfyContract').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
+
+            // Update the CO pagination
+            this._refreshPaging();
+
+            // Confirm with WebUI and CCUX
+            this._routeInfoConfirm();
+
+            // Update the linkability of METER lable
+            this._updateUsageLink();
+        };
+
+        /**********************************************/
+        /************* Confirm Btn Clicked ************/
+        /**********************************************/
+
+        // We now take care of the update to WebUI & CCUX automatically,
+        // so only lead users to Billing Info page when this button clicked.
+        Controller.prototype._onGoToBillingInfo = function () {
+            var oRouteInfo = this.getOwnerComponent().getCcuxContextManager().getContext().oData,
+                oRouter = this.getOwnerComponent().getRouter(),
+                badgeSS = this.getView().getModel('oDtaVrfyBuags').getProperty('/BadgeSS'),
+                isPrepaidUser = false;
+
+            // Determine if it is Prepaid User
+            if (badgeSS === 'x' || badgeSS === 'X') {
+                isPrepaidUser = true;
+            }
+
+            // Navigate to Billing page
+            if (isPrepaidUser) {
+                if (oRouteInfo.coNum) {
+                    oRouter.navTo('billing.BillingPrePaid', {bpNum: oRouteInfo.bpNum, caNum: oRouteInfo.caNum, coNum: oRouteInfo.coNum});
+                } else {
+                    oRouter.navTo('billing.BillingPrePaidNoCo', {bpNum: oRouteInfo.bpNum, caNum: oRouteInfo.caNum});
+                }
+            } else {
+                if (oRouteInfo.coNum) {
+                    oRouter.navTo('billing.BillingInfo', {bpNum: oRouteInfo.bpNum, caNum: oRouteInfo.caNum, coNum: oRouteInfo.coNum});
+                } else {
+                    oRouter.navTo('billing.BillingInfoNoCo', {bpNum: oRouteInfo.bpNum, caNum: oRouteInfo.caNum});
+                }
+            }
+        };
+
+        /**********************************************/
+        /************* METER Label Clicked ************/
+        /**********************************************/
 
         Controller.prototype._onMeterClick = function () {
-            // alert('XDDDDDD');
+            var oRouter = this.getOwnerComponent().getRouter(),
+                sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
+                sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
+                sCurrentCo = this.getView().getModel('oDtaVrfyContract').getProperty('/ContractID');
+
+            oRouter.navTo('usage', {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo, typeV: 'D'});
         };
+
+        /*---------------------------------------------- CO Pagination Handlers ---------------------------------------------*/
+
+        Controller.prototype._onConFirst = function () {
+            var oContracts = this.getView().getModel('oAllContractsofBuag'),
+                iSelectedIndex = 0;
+
+            this.getView().getModel('oDtaVrfyContract').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
+            //delete this.getView().getModel('oDtaVrfyContract').oData.iIndex;
+            oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
+            this._refreshPaging();
+
+        };
+        Controller.prototype._onConLeft = function () {
+            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
+                oContracts = this.getView().getModel('oAllContractsofBuag'),
+                iSel_Ind = parseInt(oContracts.getProperty('/selectedKey'), 10) - 1;  //Selected is the new selected index
+
+            if (iSel_Ind > -1) {
+                this.getView().getModel('oDtaVrfyContract').setData(oContracts.oData[iSel_Ind]);
+                //delete this.getView().getModel('oDtaVrfyContract').oData.iIndex;
+
+                oContracts.setProperty('/selectedKey', iSel_Ind.toString());
+                this._refreshPaging();
+            } else {
+                return; //do nothing if it's invalid
+            }
+        };
+        Controller.prototype._onConPone = function () {
+            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
+                oContracts = this.getView().getModel('oAllContractsofBuag'),
+                iSelectedIndex = oPage[0].co_ind - 1;
+
+            this.getView().getModel('oDtaVrfyContract').setData(oContracts.oData[iSelectedIndex]);
+            //delete this.getView().getModel('oDtaVrfyContract').oData.iIndex;
+
+            oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
+            this._refreshPaging();
+        };
+        Controller.prototype._onConPtwo = function () {
+            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
+                oContracts = this.getView().getModel('oAllContractsofBuag'),
+                iSelectedIndex = oPage[1].co_ind - 1,
+                i;
+
+            this.getView().getModel('oDtaVrfyContract').setData(oContracts.oData[iSelectedIndex]);
+            //delete this.getView().getModel('oDtaVrfyContract').oData.iIndex;
+
+            oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
+            this._refreshPaging();
+        };
+        Controller.prototype._onConPthree = function () {
+            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
+                oContracts = this.getView().getModel('oAllContractsofBuag'),
+                iSelectedIndex = oPage[2].co_ind - 1;
+
+            this.getView().getModel('oDtaVrfyContract').setData(oContracts.oData[iSelectedIndex]);
+            //delete this.getView().getModel('oDtaVrfyContract').oData.iIndex;
+
+            oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
+            this._refreshPaging();
+        };
+        Controller.prototype._onConRite = function () {
+            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
+                oContracts = this.getView().getModel('oAllContractsofBuag'),
+                iSel_Ind = parseInt(oContracts.getProperty('/selectedKey'), 10) + 1;  //Selected is the new selected index
+
+
+            if (iSel_Ind < oContracts.oData.length) {
+                this.getView().getModel('oDtaVrfyContract').setData(oContracts.oData[iSel_Ind]);
+                //delete this.getView().getModel('oDtaVrfyContract').oData.iIndex;
+
+                oContracts.setProperty('/selectedKey', iSel_Ind.toString());
+                this._refreshPaging();
+            } else {
+                return; //do nothing if it's invalid
+            }
+        };
+        Controller.prototype._onConLast = function () {
+            var oContracts = this.getView().getModel('oAllContractsofBuag'),
+                iSelectedIndex = oContracts.oData.length - 1;
+
+            this.getView().getModel('oDtaVrfyContract').setData(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
+            //delete this.getView().getModel('oDtaVrfyContract').oData.iIndex;
+
+            oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
+            this._refreshPaging();
+        };
+
+        Controller.prototype._refreshPaging = function () {
+            var oPage = this.getView().getModel('oCoPageModel').getProperty('/paging'),
+                oContracts = this.getView().getModel('oAllContractsofBuag'),
+                iSel_Ind = parseInt(oContracts.getProperty('/selectedKey'), 10),
+                i;
+
+            if (iSel_Ind === 0 || oContracts.oData.length === 2) {
+                for (i = 0; i < 3; i = i + 1) {
+                    oPage[i].co_ind = i + 1;
+                }
+            } else if (iSel_Ind === (oContracts.oData.length - 1)) {
+                for (i = 0; i < 3; i = i + 1) {
+                    oPage[i].co_ind = iSel_Ind + 1 - 2 + i;
+                }
+            } else {
+                for (i = 0; i < 3; i = i + 1) {
+                    oPage[i].co_ind = iSel_Ind + i;
+                }
+            }
+
+            this.getView().getModel('oCoPageModel').setProperty('/paging', oPage);
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         return Controller;
     }

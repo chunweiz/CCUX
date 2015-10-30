@@ -30,17 +30,20 @@
             margin-left: 1rem;
             display:inline-block;
             vertical-align: top;
-
-            & > .nrgUsg-ttl {
+            &  .nrgUsg-Table-Back {
+                    color: @nrgColor-blueLink;
+                    display:inline-block;
+                    margin-left: 40rem;
+            }
+            &  .nrgUsg-ttl {
                     margin-left: 8px;
                     font-size: @nrgFontSize-base;
                     font-weight: @nrgFontWeight-semiBold;
                     display: inline-block;
             }
             & > .nrgUsg-Radio {
-                    display: inline-block;
                     width: 10rem;
-                    float : right;
+                    margin-left: 42rem;
                     & > .nrgUsg-RadioLabel {
                         margin: 0px 5px;
                     }
@@ -105,7 +108,10 @@
             &   .nrgUsgTable-Row {
                     font-size: @nrgFontSize-small;
                     &  .nrgUsgNoData {
-                        text-align: center;
+                            text-align: center;
+                            padding-top: 20px;
+                            padding-bottom: 20px;
+                            background-color: #cacacb;
                     }
                     & .nrgUsgTable-Infoline {
                         min-width: 53rem;
@@ -138,6 +144,12 @@
                     &  .nrgUsgTable-Data-ch, .nrgUsgTable-Data-dollar, .nrgUsgTable-Data-kwh, .nrgUsgTable-Data-Ac {
                             min-width: 10%;
                             max-width: 10%;
+                    }
+                    &  .nrgUsgTable-Data-ch[data-flag="Y"] {
+                            color : @nrgColor-red-alert;
+                    }
+                    &  .nrgUsgTable-Data-ch[data-flag="N"] {
+                            color : @nrgColor-blue-link;
                     }
                     &  .nrgUsgTable-Data-Wt {
                             min-width: 18%;
@@ -181,7 +193,6 @@
                             border: 1px solid @nrgColor-grey-dark;
                     }
             }
-
             &  > .nrgUsgDropDown {
                     display: block;
                     &   .nrgUsg-DdLItem {
@@ -206,6 +217,12 @@
                             }
                     }
             }
+        & .nrgUsg-table-Graph > .nrgUsgNoData {
+                text-align: center;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                background-color: #cacacb;
+        }
     }
     &  .nrgUsg-top {
             margin-top: 10px;

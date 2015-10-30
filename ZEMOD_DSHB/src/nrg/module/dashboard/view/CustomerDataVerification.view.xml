@@ -16,14 +16,14 @@
             <ute:Tag class="nrgDashboard-cusDataVerify-left">
                 <ute:Tag class="nrgDashboard-cusDataVerify-lleft-wrap">
                     <!-- Status -->
-                    <ute:TextView text="{oDtaVrfyContracts>/ContractStatus}"
+                    <ute:TextView text="{oDtaVrfyContract>/ContractStatus}"
                         class="nrgDashboard-cusDataVerify-left-statusTitle">
                         <ute:tooltip>
                             <ute:Tooltip>
                                 <ute:TextView
                                     color="White"
                                     text="{
-                                    parts:['oDtaVrfyContracts>/HoveringStatus'],
+                                    parts:['oDtaVrfyContract>/HoveringStatus'],
                                     formatter:'._formatDate'}"/>
                             </ute:Tooltip>
                         </ute:tooltip>
@@ -37,15 +37,15 @@
                                 <ute:Tooltip>
                                     <ute:TextView
                                         color="White"
-                                        text="{oDtaVrfyContracts>/TDSPSrvPhNumber}"/>
+                                        text="{oDtaVrfyContract>/TDSPSrvPhNumber}"/>
                                     <ute:TextView
                                         color="White"
-                                        text="{oDtaVrfyContracts>/TDSPOutPhNumber}"/>
+                                        text="{oDtaVrfyContract>/TDSPOutPhNumber}"/>
                                 </ute:Tooltip>
                             </utmain:tooltip>
                         </utmain:Label>
                         <ute:TextView id="tdsp"
-                            text="{oDtaVrfyContracts>/TdspName}"
+                            text="{oDtaVrfyContract>/TdspName}"
                             class="nrgDashboard-cusDataVerify-left-tdspVal"/>
                     </ute:Tag>
                     <!-- Meter & Description -->
@@ -67,7 +67,7 @@
                                 <utmain:Checkbox id="chk_advMtr" enabled="false"
                                     class="nrgDashboard-cusDataVerify-left-meterCheckbox"
                                     checked="{
-                                        parts:['oDtaVrfyContracts>/SmartMeter'],
+                                        parts:['oDtaVrfyContract>/SmartMeter'],
                                         formatter:'._formatChecked'}"/>
                                 <utmain:Label labelFor="meter_num"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RmtMtr}"
@@ -75,7 +75,7 @@
                             </ute:Tag>
                             <!-- Value Section -->
                             <ute:TextView id="meter_num"
-                                text="{oDtaVrfyContracts>/MeterNumber}"
+                                text="{oDtaVrfyContract>/MeterNumber}"
                                 class="nrgDashboard-cusDataVerify-left-meterValue"/>
                         </ute:Tag>
                         <!-- Description -->
@@ -85,7 +85,7 @@
                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_Desc}"
                                 class="nrgDashboard-cusDataVerify-left-descrLabel"/>
                             <ute:TextView id="desp_txt"
-                                text="{oDtaVrfyContracts>/MeterDescription}"
+                                text="{oDtaVrfyContract>/MeterDescription}"
                                 class="nrgDashboard-cusDataVerify-left-descrVal"/>
                         </ute:Tag>
                     </ute:Tag>
@@ -106,7 +106,7 @@
                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RtCls}"
                                 class="nrgDashboard-cusDataVerify-left-rateLabel"/>
                             <ute:TextView id="rtcls_lbl"
-                                text="{oDtaVrfyContracts>/RateClass}"
+                                text="{oDtaVrfyContract>/RateClass}"
                                 class="nrgDashboard-cusDataVerify-left-rateVal"/>
                         </ute:Tag>
                     </ute:Tag>
@@ -117,7 +117,7 @@
                             class="nrgDashboard-cusDataVerify-left-esidLabel"/>
                         <ute:TextView id="esid_lbl"
                             class="nrgDashboard-cusDataVerify-left-esidVal"
-                            text="{oDtaVrfyContracts>/ESID}"/>
+                            text="{oDtaVrfyContract>/ESID}"/>
                     </ute:Tag>
                     <!-- DL & SSN -->
                     <ute:Tag class="nrgDashboard-cusDataVerify-left-driverSocialSection">
@@ -191,7 +191,7 @@
                             class="nrgDashboard-cusDataVerify-middle-dropdownMenu"
                             selectedKey="{oAllContractsofBuag>/selectedKey}"
                             content="{oAllContractsofBuag>/}"
-                            select="._onContractSelect" >
+                            select="._onCoSelect" >
                             <utmain:DropdownItem
                                 key="{oAllContractsofBuag>iIndex}">
                                 <ute:Tag elem="span"
@@ -203,7 +203,7 @@
                             class="nrgDashboard-cusDataVerify-middle-dropdownMenu"
                             selectedKey="{oAllBuags>/selectedKey}"
                             content="{oAllBuags>/}"
-                            select="._onBuagSelect" >
+                            select="._onCaSelect" >
                             <utmain:DropdownItem
                                 key="{oAllBuags>iIndex}">
                                 <ute:Tag elem="span"
@@ -221,7 +221,7 @@
                                 <ute:Badge id="idBadgeCI" size="30px"
                                     class="nrgDashboard-cusDataVerify-middle-addrSection-badge"
                                     visible="{
-                                        parts:['oDtaVrfyContracts>/JointAcc'],
+                                        parts:['oDtaVrfyContract>/JointAcc'],
                                         formatter:'._formatChecked'}"
                                     design="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_RHSClr}"
                                     text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_JABadge}">
@@ -229,10 +229,10 @@
                                 <ute:Tag  class="nrgDashboard-cusDataVerify-middle-addr">
                                     <ute:TextView
                                         class="nrgDashboard-cusDataVerify-mContent-add"
-                                        text="{oDtaVrfyContracts>/HouseNum1} {oDtaVrfyContracts>/Street}"/>
+                                        text="{oDtaVrfyContract>/HouseNum1} {oDtaVrfyContract>/Street}"/>
                                     <ute:TextView
                                         class="nrgDashboard-cusDataVerify-mContent-add"
-                                        text="{oDtaVrfyContracts>/City1}, {oDtaVrfyContracts>/Region} {oDtaVrfyContracts>/PostCode1}"/>
+                                        text="{oDtaVrfyContract>/City1}, {oDtaVrfyContract>/Region} {oDtaVrfyContract>/PostCode1}"/>
                                 </ute:Tag>
                             </ute:Tag>
                             <!-- Pagination for Multiple COs -->
@@ -288,7 +288,7 @@
                                 class="nrgDashboard-cusDataVerify-middel-contractNumLabel"/>
                             <ute:Textfield id="contractNum" fieldType="Underlined"
                                 editable="false"
-                                value="{oDtaVrfyContracts>/ContractID}"
+                                value="{oDtaVrfyContract>/ContractID}"
                                 class="nrgDashboard-cusDataVerify-middle-contractNumVal"/>
                         </ute:Tag>
                         <!-- ROW -->
@@ -579,7 +579,7 @@
                 <ute:Tag class="nrgDashboard-cusDataVerify-right-wrap">
                     <utmain:Button id="id_confmBtn" visible="true"
                         class="nrgDashboard-cusDataVerify-right-btn"
-                        press="._handleConfirm"
+                        press="._onGoToBillingInfo"
                         text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnConfitm}"/>
                     <utmain:Button id="id_unConfmBtn" visible="false"
                         class="nrgDashboard-cusDataVerify-right-btn"

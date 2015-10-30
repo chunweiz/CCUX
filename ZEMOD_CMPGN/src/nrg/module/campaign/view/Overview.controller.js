@@ -102,7 +102,7 @@ sap.ui.define(
                     }
                    // aContent[0].addStyleClass("nrgCamHisBut-Selected");
                     aEFLDatapaths = this.getModel("comp-campaign").getProperty(sPath + "/EFLs");
-                    if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
+                    if ((aEFLDatapaths) && (aEFLDatapaths.length > 0)) {
                         for (iCount = 0; iCount < aEFLDatapaths.length; iCount = iCount + 1) {
                             aResults.push(this.getModel("comp-campaign").getProperty("/" + aEFLDatapaths[iCount]));
                         }
@@ -127,8 +127,6 @@ sap.ui.define(
                         path : sPath
                     });
                 }
-                oBinding = oToggleContainer.getBinding("content");
-                oBinding.detachDataReceived(fnRecievedHandler);
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
             };
              // Handler function for Tab Bar Item.
@@ -145,13 +143,9 @@ sap.ui.define(
                 //filters : aFilters,
                 success : function (oData) {
                     this.getView().byId("idCamCustReqOfferBtn").bindElement({
-                        model : "Overview-elig",
+                        model : "comp-campaign",
                         path : sEligibilityPath
                     });
-/*                    this.getView().byId("idCamAgtReqOfferBtn").bindElement({
-                        model : "Overview-elig",
-                        path : sEligibilityPath
-                    });*/
                     oModel.updateBindings(false);
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
@@ -163,7 +157,7 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sEligibilityPath, oBindingInfo);
             }
-            this.getView().setModel(oModel, "Overview-elig");
+            //this.getView().setModel(oModel, "comp-campaign");
         };
         /* =========================================================== */
 		/* lifecycle method- After Rendering                          */
@@ -239,8 +233,8 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onAgentRequestedOffers = function (oEvent) {
-            var sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill"),
-                sInitTab = oEvent.getSource().getBindingContext("Overview-elig").getProperty("InitTab");
+            var sFirstMonthBill = oEvent.getSource().getBindingContext("comp-campaign").getProperty("FirstBill"),
+                sInitTab = oEvent.getSource().getBindingContext("comp-campaign").getProperty("InitTab");
             if ((!sInitTab) || (sInitTab === undefined) || (sInitTab === null) || (sInitTab === "")) {
                 this._sInitTab = "SE";
             } else {
@@ -263,10 +257,10 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onCustomerRequestedOffers = function (oEvent) {
-            var sFirstMonthBill = oEvent.getSource().getBindingContext("Overview-elig").getProperty("FirstBill"),
-                sCustomerEligible = oEvent.getSource().getBindingContext("Overview-elig").getProperty("CustEligFlag"),
-                sInitTab = oEvent.getSource().getBindingContext("Overview-elig").getProperty("InitTab"),
-                sPendingMoveOut = oEvent.getSource().getBindingContext("Overview-elig").getProperty("PendMvo"),
+            var sFirstMonthBill = oEvent.getSource().getBindingContext("comp-campaign").getProperty("FirstBill"),
+                sCustomerEligible = oEvent.getSource().getBindingContext("comp-campaign").getProperty("CustEligFlag"),
+                sInitTab = oEvent.getSource().getBindingContext("comp-campaign").getProperty("InitTab"),
+                sPendingMoveOut = oEvent.getSource().getBindingContext("comp-campaign").getProperty("PendMvo"),
                 _CancellationPopupHandler,
                 that = this,
                 i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
@@ -519,7 +513,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onAvgUsage = function (oEvent) {
-            this.navTo("usage", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
+            this.navTo("usage", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, typeV : "C"});
         };
         /**
 		 * Handler Function for the Pending Swaps Selection

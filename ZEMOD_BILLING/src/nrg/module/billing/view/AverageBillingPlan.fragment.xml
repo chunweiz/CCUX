@@ -26,38 +26,44 @@
                             text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-history-usage-LABEL}"/>
                         <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-usageChargeLabel"
                             text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-history-usageCharge-LABEL}"/>
-                        <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-avgLabel"
-                            text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-history-avg-LABEL}"/>
+                        <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-estLabel"
+                            text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-history-est-LABEL}"/>
                         <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-adjLabel"
                             text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-history-adj-LABEL}"/>
-                        <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-deferredLabel"
-                            text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-history-defferred-LABEL}"/>
+                        <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-amtUsedLabel"
+                            text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-history-amtUsed-LABEL}"/>
                     </ute:Tag>
-                    <m:ScrollContainer class="nrgBilling-avgBillingPopup-amountDue-history-scrollArea" height="250px" horizontal="false" vertical="true">
+                    <m:ScrollContainer class="nrgBilling-avgBillingPopup-amountDue-history-scrollArea" height="200px" horizontal="false" vertical="true">
                         <ute:Tag content="{oAmountHistory>/}">
                             <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-row">
                                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-month"
-                                    text="{oAmountHistory>Month}"/>
+                                    text="{oAmountHistory>Period}"/>
                                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-usage"
                                     text="{oAmountHistory>Usage}"/>
                                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-usageCharge"
-                                    text="{oAmountHistory>UsageCharge}"/>
-                                <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-avg"
-                                    text="{oAmountHistory>Avg}"/>
+                                    text="{oAmountHistory>ActualBill}"/>
+                                <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-est"
+                                    text="{oAmountHistory>Est}"/>
                                 <ute:Textfield class="nrgBilling-avgBillingPopup-amountDue-history-adj"
-                                    width="80px"
-                                    data-id="{oAmountHistory>Adj}"/>
-
-                                <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-deferred"
-                                    text="{oAmountHistory>Deferred}"/>
+                                    value="{oAmountHistory>AdjAmount}"
+                                    width="60px"/>
+                                <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-amtUsed"
+                                    text="{oAmountHistory>AmtUsdAbp}"/>
                             </ute:Tag>
                         </ute:Tag>
                     </m:ScrollContainer>
+                    <!-- Total -->
+                    <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-row">
+                        <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-total"
+                            text="TOTAL"/>
+                        <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-history-totalAmount"
+                            text="{oAmountHistory>/totalAmount}"/>
+                    </ute:Tag>
                 </ute:Tag>
                 <!-- Button Section -->
                 <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-btnSec">
                     <!-- Bill Amount -->
-                    <ute:Tag elem="sapn" text="{oAmountBtn>/amount}"
+                    <ute:Tag elem="sapn" text="{oAmountHistory>/estAmount}"
                         class="nrgBilling-avgBillingPopup-amountDue-btnSec-title"/>
                     <!-- NOTICE -->
                     <ute:Tag class="nrgBilling-avgBillingPopup-amountDue-btnSec-noticeSec">
@@ -71,6 +77,7 @@
                         <!-- Caculate Btn -->
                         <utmain:Button
                             design="None"
+                            visible="{oEligibility>/NonActivated}"
                             class="nrgBilling-avgBillingPopup-amountDue-calBtn"
                             press="_onCalBtnClick">
                             <ute:Tag
@@ -80,6 +87,7 @@
                         <!-- Set-up Btn -->
                         <utmain:Button
                             design="None"
+                            visible="{oEligibility>/NonActivated}"
                             class="nrgBilling-avgBillingPopup-amountDue-setBtn"
                             press="_onSetBtnClick">
                             <ute:Tag
@@ -89,12 +97,24 @@
                         <!-- Cancel Btn -->
                         <utmain:Button
                             design="None"
+                            visible="{oEligibility>/NonActivated}"
                             class="nrgBilling-avgBillingPopup-amountDue-cancelBtn"
                             press="_onCancelBtnClick">
                             <ute:Tag
                                 class="nrgBilling-avgBillingPopup-amountDue-cancelBtnText"
                                 text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-cancelBtn-TITLE}" />
                         </utmain:Button>
+                        <!-- De-activate Btn -->
+                        <utmain:Button
+                            design="None"
+                            visible="{oEligibility>/Activated}"
+                            class="nrgBilling-avgBillingPopup-amountDue-deactBtn"
+                            press="_onDeactBtnClick">
+                            <ute:Tag
+                                class="nrgBilling-avgBillingPopup-amountDue-deactBtnText"
+                                text="{comp-i18n-billing>nrgBilling-avgBillingPopup-amountDue-deactBtn-TITLE}" />
+                        </utmain:Button>
+
                     </ute:Tag>
 
                 </ute:Tag>
@@ -116,26 +136,26 @@
             <ute:Tag class="nrgBilling-avgBillingPopup-usage-content">
                 <!-- Graph -->
                 <ute:Tag class="nrgBilling-avgBillingPopup-usage-graph">
-                    <chart:AverageBillDetailsChart id="chart" width="700" height="250" usageTickSize="100" />
+                    <chart:AverageBillDetailsChart id="chart" width="700" height="250" usageTickSize="500" />
                 </ute:Tag>
                 <!-- Graph Legend -->
                 <ute:Tag class="nrgBilling-avgBillingPopup-usage-control">
-                    <ute:Tag class="usageChartLegend">
-                        <utmain:Checkbox id="2015" class="usageChartLegend-checkbox" checked="true" select=".onSelected" />
+                    <ute:Tag visible="false" id="nrgBilling-avgBillingPopup-graphControlBtn-0" class="usageChartLegend">
+                        <utmain:Checkbox id="nrgBilling-avgBillingPopup-graphControlChkbox-0" class="usageChartLegend-checkbox" checked="true" select=".onSelected" />
                         <utmain:Label labelFor="2015-intChk" class="usageChartLegend-label">
-                            <span>USAGE <span style="color:#F2A814;">2015</span></span>
+                            <span>USAGE <ute:Tag elem="span" id="nrgBilling-avgBillingPopup-graphControlText-0"/></span>
                         </utmain:Label>
                     </ute:Tag>
-                    <ute:Tag class="usageChartLegend">
-                        <utmain:Checkbox id="2014" class="usageChartLegend-checkbox" checked="true" select=".onSelected" />
+                    <ute:Tag visible="false" id="nrgBilling-avgBillingPopup-graphControlBtn-1" class="usageChartLegend">
+                        <utmain:Checkbox id="nrgBilling-avgBillingPopup-graphControlChkbox-1" class="usageChartLegend-checkbox" checked="true" select=".onSelected" />
                         <utmain:Label labelFor="2014-intChk" class="usageChartLegend-label">
-                            <span>USAGE <span style="color:#545A6A;">2014</span></span>
+                            <span>USAGE <ute:Tag elem="span" id="nrgBilling-avgBillingPopup-graphControlText-1"/></span>
                         </utmain:Label>
                     </ute:Tag>
-                    <ute:Tag class="usageChartLegend">
-                        <utmain:Checkbox id="2013" class="usageChartLegend-checkbox" checked="true" select=".onSelected" />
+                    <ute:Tag visible="false" id="nrgBilling-avgBillingPopup-graphControlBtn-2" class="usageChartLegend">
+                        <utmain:Checkbox id="nrgBilling-avgBillingPopup-graphControlChkbox-2" class="usageChartLegend-checkbox" checked="true" select=".onSelected" />
                         <utmain:Label labelFor="2013-intChk" class="usageChartLegend-label">
-                            <span>USAGE <span style="color:#5092CE;">2013</span></span>
+                            <span>USAGE <ute:Tag elem="span" id="nrgBilling-avgBillingPopup-graphControlText-2"/></span>
                         </utmain:Label>
                     </ute:Tag>
                 </ute:Tag>

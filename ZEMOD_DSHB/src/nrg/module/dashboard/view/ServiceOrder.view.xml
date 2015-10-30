@@ -1,0 +1,35 @@
+ <!--Routing Pattern: ServiceOrder/bp/{bpNum}/ca/{caNum}/co/{coNum}-->
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:utmain="ute.ui.main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.commons"
+    xmlns:l="sap.ui.commons.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:m="sap.m"
+    controllerName="nrg.module.dashboard.view.ServiceOrder">
+
+	<ute:Tag class="nrgAppMain-generalContent nrgDashboard-cusSerOdr">
+        <ute:Tag class="nrgDashboard-cusSerOdr-title" text="{comp-i18n-dashboard>nrgDashboard-ServOrder-ScrnTitle}"/>
+        <ute:Tag class="nrgDashboard-cusSerOdr-ctnt">
+            <!--Tab Area-->
+            <ute:Tag class="nrgDashboard-cusSerOdr-lftArea">
+                <ute:Tag class="nrgDashboard-cusSerOdr-lftArea-tab">
+                    <utmain:Button class="" design="None"
+                        press=""
+                        text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-PendingOrder}"/>
+                </ute:Tag>
+                <ute:Tag class="nrgDashboard-cusSerOdr-lftArea-tab">
+                    <utmain:Button class="" design="None"
+                        press=""
+                        text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-CompleteOrder}"/>
+                </ute:Tag>
+            </ute:Tag>
+            <!--Detail Area-->
+            <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea">
+            </ute:Tag>
+
+        </ute:Tag>
+    </ute:Tag>
+</mvc:View>

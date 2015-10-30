@@ -1,14 +1,73 @@
 <mvc:View
     xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ute="ute.ui.commons"
+    xmlns:u="ute.ui.commons"
     xmlns:mvc="sap.ui.core.mvc"
     controllerName="nrg.module.billing.view.BillingCustomerJourney"
+    xmlns:m="sap.m"
+    xmlns:ch="nrg.module.billing.view.control"
+    xmlns:um="ute.ui.main"
+    xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     height="100%"
     width="100%"
     displayBlock="true">
 
-    <ute:Tag class="nrgAppMain-generalContent nrgDashboard-Tools">
-        <ute:Tag elem="span" class="nrgDashboard-Tools-scrnTitle" text="Tools" />
-    </ute:Tag>
+    <u:Tag class="nrgAppMain-generalContent nrgDashboard-Tools nrgDashboard-Tools-CJ">
+        <u:Tag class="nrgBllCJ-header">
+            <um:Button text="{comp-i18n-billing>nrgBllCJTitle}"
+                        class="nrgBllCJ-header-btn nrgBllCJ-header-btn-sel"
+                        design="None">
+            </um:button>
+            <um:Button text="{comp-i18n-billing>nrgBllCJContactLogsTtl}"
+                        class="nrgBllCJ-header-btn"
+                        design="None">
+            </um:button>
+            <um:Button text="{comp-i18n-billing>nrgBllCJCJModuleTtl}"
+                        class="nrgBllCJ-header-btn nrgBllCJ-header-btn-rht"
+                        design="None">
+            </um:button>
+        </u:Tag>
+        <u:Tag class="nrgBllCJ-main">
+            <u:Tag class="nrgBllCJ-main-frq">
+                <u:Tag class="nrgBllCJ-main-frq-ttl" text="{comp-i18n-billing>nrgBllCJTitleFreq}"/>
+                <u:Tag height="100%" width="28%" horizontal="true" vertical="true" class="nrgBllCJ-main-frq-pie">
+                    <ch:CustJourneyChannelChart width="378" height="250" id="chart" totalDoublePress="._onTotalPress" sliceDoublePress="._onSlicePress" />
+                </u:Tag>
+            </u:Tag>
+            <u:Tag class="nrgBllCJ-main-timeline">
+                <u:Tag class="nrgBllCJ-main-timeline-details">
+                    <u:Tag class="nrgBllCJ-main-timeline-ttl" text="{comp-i18n-billing>nrgBllCJTitleTimeline}"/>
+                    <um:Button text="Last 14 Days"
+                                class="nrgBllCJ-timeline-btns"
+                                design="Default">
+                    </um:button>
+                    <um:Button text="Last 30 Days"
+                                class="nrgBllCJ-timeline-btns"
+                                design="Default">
+                    </um:button>
+                    <u:Tag class="nrgBllCJ-timeline-calendars">
+                        <u:DatePicker width="7rem" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
+                        <u:DatePicker width="7rem" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
+                    </u:Tag>
+                    <u:Tag class="nrgBllCJ-timeline-referrals">
+                        <u:Tag width="7rem" class="nrgBllCJ-timeline-referral" text="Open Issue Referral######"></u:Tag>
+                        <u:Tag width="7rem" class="nrgBllCJ-timeline-referral" text="Last Updated: mm/dd/yyyy"></u:Tag>
+                    </u:Tag>
+                </u:Tag>
+                <u:Tag class="nrgBllCJ-main-timeline-icons">
+                    <ch:CustomerJourneyTimeline channel="{timeline>/data}">
+                        <ch:CustomerJourneyTimelineChannel
+                            topLabel="{timeline>topLabel}"
+                            channelIcon="{timeline>channelIcon}"
+                            rightDivider="{timeline>rightDivider}"
+                            selected="{timeline>selected}"
+                            press="._onPress"
+                            doublePress="._onDoublePress"
+                            cd:recordIndex="{timeline>recordIndex}" />
+                     </ch:CustomerJourneyTimeline>
+                </u:Tag>
+            </u:Tag>
+
+        </u:Tag>
+    </u:Tag>
 
 </mvc:View>

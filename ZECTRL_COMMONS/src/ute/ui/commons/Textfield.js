@@ -45,7 +45,10 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
                     }
                 },
                 // Fired when the enter key got clicked 
-                enterKeyPress : {}
+                enterKeyPress : {},
+
+                // Fired when the textfield is focused
+                focusIn : {}
             }
         }
             });
@@ -56,6 +59,13 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 
             oEvent.preventDefault();
             oEvent.stopPropagation();
+        };
+
+        Textfield.prototype.onfocusin = function (oEvent) {
+            oEvent.preventDefault();
+            oEvent.stopPropagation();
+
+            this.fireFocusIn(oEvent);
         };
 
         Textfield.prototype.onsapenter = function (oEvent) {

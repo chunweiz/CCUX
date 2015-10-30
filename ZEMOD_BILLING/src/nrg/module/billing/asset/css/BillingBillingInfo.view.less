@@ -125,23 +125,36 @@
         margin-bottom: 4px;
         cursor: pointer;
      }
+    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-l > .nrgBilling-cusDataBil-l-div > .nrgBilling-cusDataBil-msgs {
+            margin-top: 10px;
+            max-height: 5rem;
+            min-height: 5rem;
+            max-width: 15rem;
 
+    }
+    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-l > .nrgBilling-cusDataBil-l-div > .nrgBilling-cusDataBil-msgs > .nrgBilling-cusDataBil-msgs-msg {
+            color: @nrgColor-grey-light;
+            font-size: @nrgFontSize-smaller;
+    }
     & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-l > .nrgBilling-cusDataBil-l-div > .nrgBilling-cusDataBil-date{
         background-color: @nrgColor-bluePearl;
         border-radius: 2px;
         width: 214px;
-        height: 140px;
-        margin-top: 10px;
+/*        height: 140px;*/
+        margin-top: 5px;
     }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-l > .nrgBilling-cusDataBil-l-div > .nrgBilling-cusDataBil-date > .nrgBilling-cusDataBil-date-label{
+    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-l > .nrgBilling-cusDataBil-l-div > .nrgBilling-cusDataBil-date > .nrgBilling-cusDataBil-date-block {
+        display: inline-block;
+        width: 50%;
+    }
+     & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-l > .nrgBilling-cusDataBil-l-div > .nrgBilling-cusDataBil-date > .nrgBilling-cusDataBil-date-block > .nrgBilling-cusDataBil-date-block-label {
         font: @nrgFontWeight-regular @nrgFontSize-small @nrgFontFamily;
         color: @nrgColor-grey-inactive;
         text-align: center;
-        padding-top: 16px;
+/*        padding-top: 16px;*/
     }
 
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-l > .nrgBilling-cusDataBil-l-div > .nrgBilling-cusDataBil-date > .nrgBilling-cusDataBil-date-value{
+    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-l > .nrgBilling-cusDataBil-l-div > .nrgBilling-cusDataBil-date > .nrgBilling-cusDataBil-date-block > .nrgBilling-cusDataBil-date-block-value{
         font: @nrgFontWeight-bold @nrgFontSize-small @nrgFontFamily;
         color: @nrgColor-grey-dark;
         text-align: center;
@@ -339,7 +352,30 @@
         margin: 0 22px;
         height: 346px;
     }
+    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-r > .nrgBilling-cusDataBil-r-div > .nrgBilling-cusDataBil-r-div-dunningmsgs {
+            margin-top: 10px;
+            min-height: 10rem;
+            max-height: 10rem;
+            width: 100%;
+            overflow-x: auto;
 
+    }
+    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-r > .nrgBilling-cusDataBil-r-div > .nrgBilling-cusDataBil-r-div-dunningmsgs > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg {
+            display: block;
+    }
+    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-r > .nrgBilling-cusDataBil-r-div > .nrgBilling-cusDataBil-r-div-dunningmsgs > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg-label {
+            color: @nrgColor-blue-link;
+            display: block;
+    }
+    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-r > .nrgBilling-cusDataBil-r-div > .nrgBilling-cusDataBil-r-div-dunningmsgs > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg-div {
+            display: inline-block;
+            color: @nrgColor-blue-link;
+            width: 35%;
+            margin-left: 1.5rem;
+    }
+    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-r > .nrgBilling-cusDataBil-r-div > .nrgBilling-cusDataBil-r-div-dunningmsgs > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg[data-disabled="true"] > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg-label{
+           color: @nrgColor-grey-light;
+    }
     & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-r > .nrgBilling-cusDataBil-r-div > .nrgBilling-cusDataBil-r-text-disconnect{
         font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
         color: @nrgColor-grey-dark;
@@ -392,71 +428,6 @@
 //    margin-top: 0;
 //    text-align: center;
 //}
-
-.nrgBilling-invSelPopupTop{
-    & .sapUiDlgCont{
-        padding: 0px;
-        margin: 0px;
-    }
-}
-
-
-.nrgBilling-invSelPopup{
-    width: 550px;
-
-    & .nrgBilling-invSelPopup-datePickArea{
-        margin-left: 80px;
-        margin-top: 20px;
-        margin-bottom: 10px;
-    }
-
-    & .nrgBilling-invSelPopup-filterArea{
-        margin-bottom: 20px;
-        margin-left: 100px;
-    }
-
-    & .nrgBilling-invSelPopup-filterArea > .nrgBilling-invSelPopup-filterArea-item{
-        display: inline-block;
-        width: 200px;
-    }
-
-    & .nrgBilling-invSelPopup-filterArea > .nrgBilling-invSelPopup-filterArea-item > div > label{
-        margin-bottom: -2px;
-        margin-right: 2px;
-    }
-
-    & .nrgBilling-invSelPopup-filterArea > .nrgBilling-invSelPopup-filterArea-filter{
-        //padding-left: 15px;
-    }
-
-    & .nrgBilling-invSelPopup-datePickArea > .nrgBilling-invSelPopup-datePickArea-datePicker{
-        padding-left: 17px;
-    }
-
-    & .nrgBilling-invSelPopup-datePickArea > .nrgBilling-invSelPopup-datePickArea-datePicker > input{
-        width: 150px !important;
-    }
-    /*& .nrgBilling-invSelPopup-datePickArea > .nrgBilling-invSelPopup-datePickArea-datePicker > input{
-        height: 30px;
-        border: none;
-        //border-top-left-radius: 5px;
-        //border-bottom-left-radius: 5px;
-    }
-
-    & .nrgBilling-invSelPopup-datePickArea > .nrgBilling-invSelPopup-datePickArea-datePicker > div, & .nrgBilling-invSelPopup-datePickArea > .nrgBilling-invSelPopup-datePickArea-datePicker > div > span{
-        height: 20px;
-        line-height: 20px;
-        border: none;
-        background: transparent;
-        //border-top-right-radius: 5px;
-        //border-bottom-right-radius: 5px;
-    }*/
-
-    & .nrgBilling-invSelPopup-Ctnt{
-        width: 100%;
-        background-color: @nrgColor-bluePearl;
-    }
-}
 
 .nrgBilling-invoicePopup{
     width: 560px;
