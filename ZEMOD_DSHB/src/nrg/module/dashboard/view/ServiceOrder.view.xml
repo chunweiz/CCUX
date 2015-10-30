@@ -15,19 +15,52 @@
         <ute:Tag class="nrgDashboard-cusSerOdr-ctnt">
             <!--Tab Area-->
             <ute:Tag class="nrgDashboard-cusSerOdr-lftArea">
-                <ute:Tag class="nrgDashboard-cusSerOdr-lftArea-tab">
+                <ute:Tag visible="{oSelectedTabs>/completeSelected}" class="nrgDashboard-cusSerOdr-lftArea-tab">
                     <utmain:Button class="" design="None"
-                        press=""
+                        press="._onPendingTabClicked"
                         text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-PendingOrder}"/>
                 </ute:Tag>
-                <ute:Tag class="nrgDashboard-cusSerOdr-lftArea-tab">
+                <ute:Tag visible="{oSelectedTabs>/pendingSelected}" class="nrgDashboard-cusSerOdr-lftArea-tab nrgDashboard-cusSerOdr-lftArea-tab-selected">
                     <utmain:Button class="" design="None"
-                        press=""
+                        text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-PendingOrder}"/>
+                </ute:Tag>
+                <ute:Tag visible="{oSelectedTabs>/pendingSelected}" class="nrgDashboard-cusSerOdr-lftArea-tab">
+                    <utmain:Button class="" design="None"
+                        press="._onCompleteTabClicked"
+                        text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-CompleteOrder}"/>
+                </ute:Tag>
+                <ute:Tag visible="{oSelectedTabs>/completeSelected}" class="nrgDashboard-cusSerOdr-lftArea-tab nrgDashboard-cusSerOdr-lftArea-tab-selected">
+                    <utmain:Button class="" design="None"
                         text="{comp-i18n-dashboard>nrgDashboard-servOrder-Orderlist-CompleteOrder}"/>
                 </ute:Tag>
             </ute:Tag>
             <!--Detail Area-->
             <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea">
+                <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-title"
+                         text="{comp-i18n-dashboard>nrgDashboard-servOrder-Filterby}"/>
+                <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-dpdwn-title">
+                    <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-dpdwn-title-lbl"
+                             text="{comp-i18n-dashboard>nrgDashboard-servOrder-Address}"/>
+                    <utmain:Dropdown id="idContractDropdown"
+                        class="nrgDashboard-cusSerOdr-rgtArea-dpdwn-title-dropdownMenu"
+                        selectedKey="1"
+                        content=""
+                        select="._onCoSelect">
+                        <utmain:DropdownItem key="1">
+                            <ute:Tag elem="span"
+                                text="ESID 123"/>
+                        </utmain:DropdownItem>
+                        <utmain:DropdownItem key="2">
+                            <ute:Tag elem="span"
+                                text="ESID 456"/>
+                        </utmain:DropdownItem>
+                    </utmain:Dropdown>
+                </ute:Tag>
+                <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt">
+                    <ute:Tag>
+                        <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-title" text="test" />
+                    </ute:Tag>
+                </ute:Tag>
             </ute:Tag>
 
         </ute:Tag>
