@@ -7,10 +7,11 @@ sap.ui.define(
     [
         'sap/ui/base/EventProvider',
         'sap/ui/model/Filter',
-        'sap/ui/model/FilterOperator'
+        'sap/ui/model/FilterOperator',
+        'nrg/module/nnp/view/NNPPopup'
     ],
 
-    function (EventProvider, Filter, FilterOperator) {
+    function (EventProvider, Filter, FilterOperator, NNPPopup) {
         'use strict';
 
         var AppFooter = EventProvider.extend('nrg.module.app.view.AppFooter', {
@@ -38,6 +39,7 @@ sap.ui.define(
         /*------------------ Footer Update ----------------*/
 
         AppFooter.prototype._initFooterContent = function () {
+            this._oController.getView().setModel(this._oController.getView().getModel('main-app'), 'oMainODataSvc');
             this._oController.getView().setModel(this._oController.getView().getModel('noti-app'), 'oNotiODataSvc');
             this._oController.getView().setModel(this._oController.getView().getModel('rhs-app'), 'oRHSODataSvc');
             this._oController.getView().setModel(this._oController.getView().getModel('comp-app'), 'oCompODataSvc');
@@ -45,6 +47,7 @@ sap.ui.define(
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterRHS');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterRouting');
+            this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterBpInfo');
 
             this.footerElement = {};
 
@@ -74,56 +77,29 @@ sap.ui.define(
         };
 
         AppFooter.prototype._onM2mLinkPress = function (oControlEvent) {
+            alert('M2M');
         };
 
         AppFooter.prototype._onSmtpLinkPress = function (oControlEvent) {
+            var eventBus = sap.ui.getCore().getEventBus(),
+                oPayload;
+
+            eventBus.publish("nrg.module.app", "eInvalidEmail", oPayload);
         };
 
         AppFooter.prototype._onMailLinkPress = function (oControlEvent) {
+            alert('Mail');
         };
 
         AppFooter.prototype._onSmsLinkPress = function (oControlEvent) {
+            alert('SMS');
         };
 
         AppFooter.prototype._onOamLinkPress = function (oControlEvent) {
+            alert('OAM');
         };
 
-        AppFooter.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber) {
-
-                // var notificationContainer = this._oController.getView().byId("nrgAppFtrDetails-notification-scrollContent");
-
-
-                // if (!this.notificationCenter) {
-                //     // First time render goes here
-                //     this.notificationCenter = new ute.ui.app.FooterNotificationCenter("nrgAppFtrDetails-notification-notificationCenter");
-
-
-                //     this.notificationCenter.addContent(new ute.ui.app.FooterNotificationItem({
-                //         link: true,
-                //         design: 'Error',
-                //         text: message
-                //     }));
-                //     this.notificationCenter.placeAt(notificationContainer);
-                // } else {
-                //     // Second time render goes here
-                //     // this.notificationCenter.destroy();
-                //     // this.notificationCenter = new ute.ui.app.FooterNotificationCenter("nrgAppFtrDetails-notification-notificationCenter", {content: notification});
-                //     // this.notificationCenter.placeAt(notificationContainer);
-                //     this.notificationCenter.destroyAggregation('content', true);
-                //     this.notificationCenter.addAggregation('content', new ute.ui.app.FooterNotificationItem({
-                //         link: true,
-                //         design: 'Error',
-                //         text: message
-                //     }), true);
-                //     // console.log('tears');
-                // }
-
-                // this.footerElement.notiEmptySec.setVisible(false);
-                // this.footerElement.notiAlertSec.setVisible(true);
-
-
-
-
+        AppFooter.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber, bNotReredner) {
 
             this._updateRouting(sBpNumber, sCaNumber, sCoNumber);
 
@@ -145,11 +121,11 @@ sap.ui.define(
 
                         var notification = [],
                             notificationLinkPressActions = {
-                                'M2M': this._onM2mLinkPress,
-                                'SMTP': this._onSmtpLinkPress,
-                                'MAIL': this._onMailLinkPress,
-                                'SMS': this._onSmsLinkPress,
-                                'OAM': this._onOamLinkPress
+                                'M2M': this._onM2mLinkPress.bind(this),
+                                'SMTP': this._onSmtpLinkPress.bind(this),
+                                'MAIL': this._onMailLinkPress.bind(this),
+                                'SMS': this._onSmsLinkPress.bind(this),
+                                'OAM': this._onOamLinkPress.bind(this)
                             },
                             notificationContainer = this._oController.getView().byId("nrgAppFtrDetails-notification-scrollContent");
 
@@ -170,9 +146,9 @@ sap.ui.define(
                             this.notificationCenter.placeAt(notificationContainer);
                         } else {
                             // Second time render goes here
-                            this.notificationCenter.destroyAggregation('content', true);
+                            this.notificationCenter.destroyAggregation('content', bNotReredner);
                             for (var j = 0; j < notification.length; j++) {
-                                this.notificationCenter.addAggregation('content', notification[j], true);
+                                this.notificationCenter.addAggregation('content', notification[j], bNotReredner);
                             }
                         }
 
@@ -271,7 +247,6 @@ sap.ui.define(
 
         AppFooter.prototype.updateFooterCampaign = function (sBpNumber, sCaNumber, sCoNumber) {
             this._updateRouting(sBpNumber, sCaNumber, sCoNumber);
-
             this._updateFooterCampaignContract(sCoNumber);
             this._updateFooterCampaignButton(sCoNumber);
         };

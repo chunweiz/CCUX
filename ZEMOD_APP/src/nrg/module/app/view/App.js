@@ -184,18 +184,18 @@ sap.ui.define(
             return this;
         };
 
-        App.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber) {
-            this._oAppFooter.updateFooterNotification(sBpNumber, sCaNumber, sCoNumber);
+        App.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber, bNotReredner) {
+            this._oAppFooter.updateFooterNotification(sBpNumber, sCaNumber, sCoNumber, bNotReredner);
             return this;
         };
 
-        App.prototype.updateFooterRHS = function (sBpNumber, sCaNumber, sCoNumber) {
-            this._oAppFooter.updateFooterRHS(sBpNumber, sCaNumber, sCoNumber);
+        App.prototype.updateFooterRHS = function (sBpNumber, sCaNumber, sCoNumber, bNotReredner) {
+            this._oAppFooter.updateFooterRHS(sBpNumber, sCaNumber, sCoNumber, bNotReredner);
             return this;
         };
 
-        App.prototype.updateFooterCampaign = function (sBpNumber, sCaNumber, sCoNumber) {
-            this._oAppFooter.updateFooterCampaign(sBpNumber, sCaNumber, sCoNumber);
+        App.prototype.updateFooterCampaign = function (sBpNumber, sCaNumber, sCoNumber, bNotReredner) {
+            this._oAppFooter.updateFooterCampaign(sBpNumber, sCaNumber, sCoNumber, bNotReredner);
             return this;
         };
 

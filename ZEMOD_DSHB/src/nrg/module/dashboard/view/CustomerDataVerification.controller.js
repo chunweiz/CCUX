@@ -95,9 +95,13 @@ sap.ui.define(
             this.getOwnerComponent().getCcuxApp().attachNavRight(this._navRightCallBack, this);
 
             // Update Footer
-            this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum);
-            this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum);
-            this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum);
+            this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum, true);
+            this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum, true);
+            this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum, true);
+
+            // Subscribe footer events
+            var oEventBus = sap.ui.getCore().getEventBus();
+            oEventBus.subscribe("nrg.module.app", "eInvalidEmail", this._handleEmailEdit, this);
         };
 
         Controller.prototype._navLeftCallBack = function () {
@@ -731,9 +735,16 @@ sap.ui.define(
                 oNNPView,
                 _handleDialogClosed;
 
-            NNPPopupControl.attachEvent("NNPCompleted", this._initDtaVrfRetr, this);
+            NNPPopupControl.attachEvent("NNPCompleted", function () {
+                // Update Footer
+                this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum, false);
+                this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum, false);
+                this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum, false);
+                this._initDtaVrfRetr();
+            }, this);
             this.getView().addDependent(NNPPopupControl);
             NNPPopupControl.openNNP(sBpNum, sBpEmail, sBpEmailConsum);
+
 /*            oNNPView = sap.ui.view({
                 type: sap.ui.core.mvc.ViewType.XML,
                 viewName: "nrg.module.nnp.view.NNP"
