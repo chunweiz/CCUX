@@ -92,9 +92,11 @@
       <EntityContainer Name="ZE_CCUX_SRV_ORD_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
         <EntitySet Name="Reconnects" EntityType="ZE_CCUX_SRV_ORD_SRV.Reconnect" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
         <EntitySet Name="PendStatS" EntityType="ZE_CCUX_SRV_ORD_SRV.PendStat" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
-        <EntitySet Name="SrvOrdS" EntityType="ZE_CCUX_SRV_ORD_SRV.SrvOrd" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+        <EntitySet Name="DiscOrdS" EntityType="ZE_CCUX_SRV_ORD_SRV.SrvOrd" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+        <EntitySet Name="ReconOrdS" EntityType="ZE_CCUX_SRV_ORD_SRV.SrvOrd" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+        <EntitySet Name="OtherOrdS" EntityType="ZE_CCUX_SRV_ORD_SRV.SrvOrd" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
         <EntitySet Name="EnrollHoldS" EntityType="ZE_CCUX_SRV_ORD_SRV.EnrollHold" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
-        <EntitySet Name="SrvAddrCollection" EntityType="ZE_CCUX_SRV_ORD_SRV.SrvAddr" sap:content-version="1" />
+        <EntitySet Name="SrvAddrS" EntityType="ZE_CCUX_SRV_ORD_SRV.SrvAddr" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
       </EntityContainer>
       <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV_ORD_SRV/$metadata" />
       <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV_ORD_SRV/$metadata" />
