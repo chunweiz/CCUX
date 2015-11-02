@@ -50,6 +50,7 @@ sap.ui.define(
             aFilterIds = ["CA"];
             aFilterValues = [this._sCA];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            aFilters.push(new Filter("CA", FilterOperator.Contains, "23", ""));
             fnRecievedHandler = function (oEvent, oData) {
                 var aContent = oServiceAddressDropDown.getContent(),
                     oBindingContext,
