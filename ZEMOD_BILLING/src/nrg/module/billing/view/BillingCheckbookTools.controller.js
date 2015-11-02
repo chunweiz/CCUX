@@ -80,11 +80,11 @@ sap.ui.define(
 
                         if (fnCallback) fnCallback();
                     } else {
-                        
+
                     }
                 }.bind(this),
                 error: function (oError) {
-                
+
                 }.bind(this)
             };
 
@@ -106,7 +106,7 @@ sap.ui.define(
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
-                    if (oData.results) {  
+                    if (oData.results) {
                         for (var i = 0; i < oData.results.length; i++) {
                             var dataEntry = {};
                             dataEntry.usageDate = oData.results[i].Period;
@@ -117,18 +117,18 @@ sap.ui.define(
 
                         if (fnCallback) fnCallback();
                     } else {
-                        
+
                     }
                 }.bind(this),
                 error: function (oError) {
-                
+
                 }.bind(this)
             };
 
             if (oModel) {
                 oModel.read(sPath, oParameters);
             }
-            
+
         };
 
         Controller.prototype._retrieveABPEligibility = function (sCoNumber, fnCallback) {
@@ -150,7 +150,7 @@ sap.ui.define(
                     if (fnCallback) fnCallback();
                 }.bind(this),
                 error: function (oError) {
-                
+
                 }.bind(this)
             };
 
@@ -402,7 +402,7 @@ sap.ui.define(
 
         Controller.prototype._renderGraphCrontrolBtn = function () {
             var oGraphModel = this.getView().getModel('oUsageGraph');
-            
+
             if (oGraphModel.oData.data.length) {
                 for (var i = 0; i < oGraphModel.oData.data.length; i++) {
                     var parts = oGraphModel.oData.data[i].usageDate.split("/");

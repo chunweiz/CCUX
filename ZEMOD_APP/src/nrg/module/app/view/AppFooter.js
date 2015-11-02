@@ -99,8 +99,8 @@ sap.ui.define(
 
 
                 //     this.notificationCenter.addContent(new ute.ui.app.FooterNotificationItem({
-                //         link: true, 
-                //         design: 'Error', 
+                //         link: true,
+                //         design: 'Error',
                 //         text: message
                 //     }));
                 //     this.notificationCenter.placeAt(notificationContainer);
@@ -111,8 +111,8 @@ sap.ui.define(
                 //     // this.notificationCenter.placeAt(notificationContainer);
                 //     this.notificationCenter.destroyAggregation('content', true);
                 //     this.notificationCenter.addAggregation('content', new ute.ui.app.FooterNotificationItem({
-                //         link: true, 
-                //         design: 'Error', 
+                //         link: true,
+                //         design: 'Error',
                 //         text: message
                 //     }), true);
                 //     // console.log('tears');
@@ -142,13 +142,13 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData.results.length) {
                         oNotificationModel.setData(oData.results);
-                        
+
                         var notification = [],
                             notificationLinkPressActions = {
-                                'M2M': this._onM2mLinkPress, 
-                                'SMTP': this._onSmtpLinkPress, 
-                                'MAIL': this._onMailLinkPress, 
-                                'SMS': this._onSmsLinkPress, 
+                                'M2M': this._onM2mLinkPress,
+                                'SMTP': this._onSmtpLinkPress,
+                                'MAIL': this._onMailLinkPress,
+                                'SMS': this._onSmsLinkPress,
                                 'OAM': this._onOamLinkPress
                             },
                             notificationContainer = this._oController.getView().byId("nrgAppFtrDetails-notification-scrollContent");
@@ -156,9 +156,9 @@ sap.ui.define(
                         for (var i = 0; i < oNotificationModel.oData.length; i++) {
                             notification.push(
                                 new ute.ui.app.FooterNotificationItem({
-                                    link: true, 
-                                    design: 'Error', 
-                                    text: oNotificationModel.oData[i].MessageText, 
+                                    link: true,
+                                    design: 'Error',
+                                    text: oNotificationModel.oData[i].MessageText,
                                     linkPress: notificationLinkPressActions[oNotificationModel.oData[i].FilterType]
                                 })
                             );
@@ -175,7 +175,7 @@ sap.ui.define(
                                 this.notificationCenter.addAggregation('content', notification[j], true);
                             }
                         }
-                        
+
                         this.footerElement.notiEmptySec.setVisible(false);
                         this.footerElement.notiAlertSec.setVisible(true);
                     } else {
