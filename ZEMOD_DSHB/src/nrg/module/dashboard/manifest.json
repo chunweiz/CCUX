@@ -15,6 +15,9 @@
                         "real": {
                             "comp-dashboard": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_SRV/"
+                            },
+                            "comp-dhsbsvcodr": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_SRV/"
                             }
                         },
                         "mock": {

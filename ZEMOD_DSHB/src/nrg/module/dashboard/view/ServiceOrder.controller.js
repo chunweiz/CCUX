@@ -28,6 +28,7 @@ sap.ui.define(
         Controller.prototype.onBeforeRendering = function () {
             var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
 
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-dhsbsvcodr'), 'oODataSvc');
 			//this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
             //this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard-AcctAccessPty'),'oDataASvc');
 
