@@ -21,6 +21,9 @@
                             },
                             "comp-billing-invoice": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_SRV/"
+                            },
+                            "comp-cj": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_CJ_SRV/"
                             }
                         },
                         "mock": {
