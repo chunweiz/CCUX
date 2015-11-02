@@ -18,6 +18,9 @@
                             },
                             "comp-billing-avgplan": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/"
+                            },
+                            "comp-billing-invoice": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_SRV/"
                             }
                         },
                         "mock": {
@@ -27,6 +30,10 @@
                             },
                             "comp-billing-avgplan": {
                                 "mockDataBaseUrl": "data/devavg/",
+                                "generateMissingMockData": true
+                            },
+                            "comp-billing-invoice": {
+                                "mockDataBaseUrl": "data/devinv/",
                                 "generateMissingMockData": true
                             }
                         }

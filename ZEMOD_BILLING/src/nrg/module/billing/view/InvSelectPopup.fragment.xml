@@ -24,7 +24,7 @@
         <!-- Filter Area -->
         <ute:Tag class="nrgBilling-invSelPopup-filterArea">
             <ute:Tag class="nrgBilling-invSelPopup-filterArea-item">
-                <utmain:Checkbox id="id_InvSel_Filter_All" class="nrgBilling-invSelPopup-filterArea-filter"/>
+                <utmain:Checkbox id="id_InvSel_Filter_All" class="nrgBilling-invSelPopup-filterArea-filter" select="_onSelectAll"/>
                 <utmain:Label labelFor="id_InvSel_Filter_All" text="Select All"/>
             </ute:Tag>
             <ute:Tag class="nrgBilling-invSelPopup-filterArea-item">
@@ -44,9 +44,10 @@
         <ute:Tag class="nrgBilling-invSelPopup-tableContent">
             <!-- Header -->
             <ute:Tag class="nrgBilling-invSelPopup-tableHeader">
-                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_DATE}"/>
-                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_NUMBER}"/>
-                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_VIEW}"/>
+                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item date" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_DATE}"/>
+                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item number" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_NUMBER}"/>
+                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item description" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_DESCRIPTION}"/>
+                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item view" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_VIEW}"/>
             </ute:Tag>
             <!-- Body -->
             <sm:ScrollContainer

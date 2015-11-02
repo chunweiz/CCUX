@@ -12,6 +12,9 @@
                     },
                     "odata": {
                         "real": {
+                            "main-app": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_SRV/"
+                            },
                             "noti-app": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_ALERTS_SRV/"
                             },
@@ -23,6 +26,10 @@
                             }
                         },
                         "mock": {
+                            "main-app": {
+                                "mockDataBaseUrl": "data/devMain/",
+                                "generateMissingMockData": true
+                            },
                             "noti-app": {
                                 "mockDataBaseUrl": "data/devAlert/",
                                 "generateMissingMockData": true

@@ -29,6 +29,7 @@ sap.ui.define(
             this.getOwnerComponent().getCcuxApp().setTitle('BILLING INFO');
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-billing'), 'oDataSvc');
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-billing-invoice'), 'oDataInvoiceSvc');
 
             //Models for BillingInvoices
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBillingInvoices');
@@ -322,7 +323,14 @@ sap.ui.define(
             }
         };
 
+        /*---------------------------------------------- Invoice Selection Popup --------------------------------------------*/
+
         CustomController.prototype._onInvoiceNumClicked = function () {
+            var bRetrieveComplete = false;
+
+            // Display the loading indicator
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+
             if (!this._oInvSelectPopup) {
                 this._oInvSelectPopup = ute.ui.main.Popup.create({
                     content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.InvSelectPopup", this),
@@ -335,66 +343,107 @@ sap.ui.define(
                 //jQuery.sap.byId('id_nrgBilling-invSel-stDate').bind("sapfocusleave", jQuery.proxy(this.handleDateChange, this));
                 //jQuery.sap.byId(this.getView().byId('InvSelectPopup--nrgBilling-invSel-stDate')).bind("onsapfocusleave", jQuery.proxy(this.handleDateChange, this));
             }
-            this._retrieveInvoiceInfo();
+
+            this._retrieveInvoiceInfo(this._caNum, function () {bRetrieveComplete = true;});
             this._oInvSelectPopup.open();
-            this._adjustScrollContentPadding();
+
+            // Check the completion of retrieving data
+            var checkRetrComplete = setInterval (function () {
+                if (bRetrieveComplete) {
+                    // Dismiss the loading indicator
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    clearInterval(checkRetrComplete);
+                }
+            }.bind(this), 100);
         };
 
-        /*---------------------------------------------- Invoice Selection Popup --------------------------------------------*/
+        CustomController.prototype._retrieveInvoiceInfo = function (sCaNumber, fnCallback) {
+            var sPath = '/InvoiceS',
+                aFilters = [];
+                aFilters.push(new Filter({ path: 'ContAccount', operator: FilterOperator.EQ, value1: sCaNumber}));
 
-        CustomController.prototype._retrieveInvoiceInfo = function () {
-            var oInvSelModel = this.getView().getModel('oInvoiceSelectInfo');
-            var oInvoiceSelectModel = [
-                {'Date': '09/28/14', 'Number': 123456789, 'View': false},
-                {'Date': '08/28/14', 'Number': 123456788, 'View': false},
-                {'Date': '07/28/14', 'Number': 123456787, 'View': false},
-                {'Date': '06/28/14', 'Number': 123456786, 'View': false},
-                {'Date': '05/28/14', 'Number': 123456785, 'View': false},
-                {'Date': '04/28/14', 'Number': 123456784, 'View': false},
-                {'Date': '03/28/14', 'Number': 123456783, 'View': false},
-                {'Date': '02/28/14', 'Number': 123456782, 'View': false},
-                {'Date': '01/28/14', 'Number': 123456781, 'View': false},
-                {'Date': '12/28/13', 'Number': 123456780, 'View': false},
-                {'Date': '11/28/13', 'Number': 123456779, 'View': false},
-                {'Date': '10/28/13', 'Number': 123456778, 'View': false},
-                {'Date': '09/28/13', 'Number': 123456777, 'View': false},
-                {'Date': '08/28/13', 'Number': 123456776, 'View': false},
-                {'Date': '07/28/13', 'Number': 123456775, 'View': false},
-            ];
+            var oModel = this.getView().getModel('oDataInvoiceSvc'),
+                oInvSelModel = this.getView().getModel('oInvoiceSelectInfo'),
+                aInvoiceData = [],
+                oParameters;
 
-            oInvSelModel.setData(oInvoiceSelectModel);
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData.results) { 
+                        
+                        oInvSelModel.setData(oData.results);
+                        
+                        // Generate the table
+                        var tableContainer = this.getView().byId('nrgBilling-invSelPopup-tableBody');
 
-            // Generate the table
-            var tableContainer = this.getView().byId('nrgBilling-invSelPopup-tableBody');
+                        // Remove previous content
+                        var rowNumer = tableContainer.getContent().length;
+                        for (var j = 0; j < rowNumer; j++) tableContainer.removeContent(0);
+                            
+                        // Process the new data                        
+                        for (var i = 0; i < oInvSelModel.oData.length; i++) {
+                            // Add self-defined attribute
+                            oInvSelModel.oData[i].View = false;
+                            // Create table row element
+                            var rowElement = new ute.ui.commons.Tag({elem: 'div'}).addStyleClass('nrgBilling-invSelPopup-tableRow');
+                            if ((i + 1) % 2 === 0) rowElement.addStyleClass('nrgBilling-invSelPopup-tableRow-even');
+                            // Insert row element childs
+                            rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oInvSelModel.oData[i].Date}).addStyleClass('nrgBilling-invSelPopup-tableRow-item').addStyleClass('date'));
+                            rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oInvSelModel.oData[i].PrintDoc}).addStyleClass('nrgBilling-invSelPopup-tableRow-item').addStyleClass('number'));
+                            rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oInvSelModel.oData[i].DataType}).addStyleClass('nrgBilling-invSelPopup-tableRow-item').addStyleClass('description'));
+                            rowElement.addContent(new ute.ui.main.Checkbox({checked: oInvSelModel.oData[i].View}).addStyleClass('nrgBilling-invSelPopup-tableRow-item').addStyleClass('view'));
+                            // Insert the row element to table
+                            tableContainer.addContent(rowElement);
+                        }
 
-            // Remove previous content
-            var rowNumer = tableContainer.getContent().length;
-            for (var j = 0; j < rowNumer; j++) {
-                tableContainer.removeContent(0);
-            }
+                        // Execute the callback function
+                        if (fnCallback) fnCallback();
 
-            for (var i = 0; i < oInvSelModel.oData.length; i++) {
-                var rowElement = new ute.ui.commons.Tag({elem: 'div'}).addStyleClass('nrgBilling-invSelPopup-tableRow');
-                if ((i + 1) % 2 === 0) rowElement.addStyleClass('nrgBilling-invSelPopup-tableRow-even');
-                rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oInvSelModel.oData[i].Date}).addStyleClass('nrgBilling-invSelPopup-tableRow-item'));
-                rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oInvSelModel.oData[i].Number}).addStyleClass('nrgBilling-invSelPopup-tableRow-item').addStyleClass('number'));
-                rowElement.addContent(new ute.ui.main.Checkbox({checked: oInvSelModel.oData[i].View}).addStyleClass('nrgBilling-invSelPopup-tableRow-item'));
-                tableContainer.addContent(rowElement);
-            }
+                    } else {
+                        
+                    }
+                }.bind(this),
+                error: function (oError) {
+                
+                }.bind(this)
+            };
 
-
-        };
-
-        // For table alignment reason, change the padding if the scroll bar appear.
-        CustomController.prototype._adjustScrollContentPadding = function () {
-            if ($('.sapMScrollContScroll').height() > 200) {
-                $('.nrgBilling-invSelPopup-tableRow').addClass('nrgBilling-invSelPopup-tableRow-scrollBar');
+            if (oModel) {
+                oModel.read(sPath, oParameters);
             }
         };
 
         CustomController.prototype._handleDateRanggeChange = function (oEvent) {
             var tt = this.getView().byId('id_nrgBilling-invSel-stDate');
             return;
+        };
+
+        CustomController.prototype._onSelectAll = function (oEvent) {
+            var oTable = this.getView().byId('nrgBilling-invSelPopup-tableBody');
+
+            for (var i = 0; i < oTable.getContent().length; i++) {                
+                var oCheckbox = oTable.getContent()[i].getContent()[3];
+                oCheckbox.setChecked(oEvent.getParameters().checked);
+            }
+        };
+
+        CustomController.prototype._onOpenBtnClick = function (oEvent) {
+            var oTable = this.getView().byId('nrgBilling-invSelPopup-tableBody'),
+                oInvSelModel = this.getView().getModel('oInvoiceSelectInfo');
+
+            for (var i = 0; i < oTable.getContent().length; i++) {                
+                var oCheckbox = oTable.getContent()[i].getContent()[3];
+                if (oCheckbox.getChecked()) {
+                    this._openNewWindowDelayed(oInvSelModel.oData[i].URL);
+                }
+            }
+        };
+
+        CustomController.prototype._openNewWindowDelayed = function (sUrl) {
+            var openNewWindow = setTimeout(function() {
+                window.open(sUrl, '_blank');
+            }, 1000);
         };
 
 
