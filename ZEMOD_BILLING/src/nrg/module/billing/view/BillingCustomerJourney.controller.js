@@ -55,7 +55,7 @@ sap.ui.define(
                     { recordIndex: '20', channelIcon: 'sap-icon://letter', topLabel: '09/21/2015' }
                 ]
             }), 'timeline');
-            this.onCustomerJourneyModule();
+
         };
 
         Controller.prototype._onTotalPress = function (oEvent) {
