@@ -153,6 +153,27 @@ sap.ui.define(
         };
 
 
+		//function to navigate to the Rate history page
+		CustomController.prototype._onRatehistory = function(){
+			var oRouter = this.getOwnerComponent().getRouter();
+
+			if(this._coNum){
+				oRouter.navTo('campaignhistory', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+			}
+		};
+
+		//function to navigate to the Usage history page
+		CustomController.prototype._onUsagehistory = function(){
+			var _coNum = "0006970391";
+			var	_typeV = "QD";
+			var oRouter = this.getOwnerComponent().getRouter();
+
+			if(this._coNum){
+				oRouter.navTo('usage', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum, typeV: this._typeV});
+			}
+		};
+
+
         return CustomController;
     }
 );

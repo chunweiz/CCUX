@@ -67,7 +67,46 @@
         }
 
 }
+.nrgCJModule-dialog {
+    width : 70rem;
+    min-height : 30rem;
+    &  .nrgCJModule {
 
+        & > .nrgCJModule-selPanel {
+            & > .nrgCJModule-selPanel-heading {
+                & > .nrgCJModule-selPanel-heading-hd {
+                        display: inline-block;
+                        width : 22%;
+                }
+            }
+            & > .nrgCJModule-selPanel-fields {
+                & > .nrgCJModule-selPanel-fields-fd {
+                        display: inline-block;
+                        width: 22%;
+                }
+            }
+        }
+        & > .nrgCJModule-table {
+
+            & > tbody > .nrgCJModule-table-Row {
+                    background-color: transparent;
+                    border: 2px solid @nrgColor-grey-highlight;
+                    line-height: 30px;
+                & > td {
+                    vertical-align: top;
+                }
+                & > td > .nrgCJModule-table-data-Infoline {
+                    &  .uteMIl-hdrContent {
+                        width : 90%;
+                    }
+                }
+                & .nrgCJModule-table--inner-Row {
+                        border: 2px solid @nrgColor-grey-highlight;
+                }
+            }
+        }
+    }
+}
 
 
 

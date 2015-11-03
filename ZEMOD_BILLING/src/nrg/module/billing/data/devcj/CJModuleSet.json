@@ -1,0 +1,86 @@
+{
+   "d":{
+      "results":[
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='01')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='01')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0000083248",
+            "CA":"000003619065",
+            "SeqNo":"01",
+            "Date":"/Date(1446482891000+0000)/",
+            "ChannelType":"WEB",
+            "SingleMessage":"Web recorded message",
+            "User":"00952808",
+            "Activity":"0900",
+            "Notes":"Web recorded message. Web recorded message. Web recorded message. Web recorded message. Web recorded message."
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='02')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='02')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0000083248",
+            "CA":"000003619065",
+            "SeqNo":"02",
+            "Date":"/Date(1446482891000+0000)/",
+            "ChannelType":"CALL",
+            "SingleMessage":"Phone Call recorded message",
+            "User":"00952808",
+            "Activity":"0901",
+            "Notes":"Phone Call recorded message, Phone Call recorded message, Phone Call recorded message"
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='03')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='03')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0000083248",
+            "CA":"000003619065",
+            "SeqNo":"03",
+            "Date":"/Date(1446482891000+0000)/",
+            "ChannelType":"EMAI",
+            "SingleMessage":"Email message",
+            "User":"00952808",
+            "Activity":"0902",
+            "Notes":"Email message. Email message, Email message. Email message, Email message"
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='04')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='04')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0000083248",
+            "CA":"000003619065",
+            "SeqNo":"04",
+            "Date":"/Date(1446482891000+0000)/",
+            "ChannelType":"CHAT",
+            "SingleMessage":"Chat Message",
+            "User":"00952808",
+            "Activity":"0903",
+            "Notes":"Chat Message. Chat Message. Chat Message. Chat Message. Chat Message"
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='05')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='05')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0000083248",
+            "CA":"000003619065",
+            "SeqNo":"05",
+            "Date":"/Date(1446482891000+0000)/",
+            "ChannelType":"IVR",
+            "SingleMessage":"IVR Self Service Session",
+            "User":"00952808",
+            "Activity":"0904",
+            "Notes":"IVR Self Service Session. IVR Self Service Session. IVR Self Service Session. IVR Self Service Session"
+         }
+      ]
+   }
+}
