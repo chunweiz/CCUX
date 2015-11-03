@@ -356,12 +356,12 @@ sap.ui.define(
                 if (bRetrieveComplete) {
                     // Dismiss the loading indicator
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    // Open the popup
+                    this._oInvSelectPopup.open();
                     // Initialize filters
                     this._initializeFilters();
                     // Initialize date ranges
                     this._initializeDateRange();
-                    // Open the popup
-                    this._oInvSelectPopup.open();
                     clearInterval(checkRetrComplete);
                 }
             }.bind(this), 100);
