@@ -46,7 +46,7 @@
                         select="._onESIDSelect">
                         <utmain:DropdownItem key="{oESIDDropdown>ESID}">
                             <ute:Tag elem="span"
-                                     text="{oESIDDropdown>CA}"/>
+                                     text="{oESIDDropdown>ESID} / {oESIDDropdown>House} {oESIDDropdown>Street} {oESIDDropdown>Apt}, {oESIDDropdown>City} {oESIDDropdown>State} {oESIDDropdown>ZIP}"/>
                         </utmain:DropdownItem>
                     </utmain:Dropdown>
                 </ute:Tag>
@@ -58,16 +58,18 @@
                             <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-hdr">
                                 <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-hdr-lft">
                                     <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-labl" elem="span" text="{comp-i18n-dashboard>nrgDashboard-servOrder-Contact}"/>
-                                    <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-val"  elem="span" text="Jogn Doe"/>
+                                    <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-val"  elem="span" text="{oEnrollHolds>/results/0/Name}"/>
                                 </ute:Tag>
                                 <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-hdr-rgt">
                                     <ute:Tag>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-labl" elem="span" text="{comp-i18n-dashboard>nrgDashboard-servOrder-pMvinDate}"/>
-                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-val" elem="span" text="03/06/2013"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-val" elem="span"
+                                                 text="{parts:['oEnrollHolds>/results/0/OrigMviDate'], formatter:'._formatDate'}"/>
                                     </ute:Tag>
                                     <ute:Tag>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-labl" elem="span" text="{comp-i18n-dashboard>nrgDashboard-servOrder-oMvinDate}"/>
-                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-val" elem="span" text="03/04/2011"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-val" elem="span"
+                                                 text="{parts:['oEnrollHolds>/results/0/CurrMviDate'], formatter:'._formatDate'}"/>
                                     </ute:Tag>
                                 </ute:Tag>
                             </ute:Tag>
@@ -75,15 +77,51 @@
                                 <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl">
                                     <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr">
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1"
-                                                 text="Type"/>
+                                                 text="{comp-i18n-dashboard>Type}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2"
-                                                 text="Reason"/>
+                                                 text="{comp-i18n-dashboard>Reason}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3"
-                                                 text="Status"/>
+                                                 text="{comp-i18n-dashboard>Status}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4"
-                                                 text="Completed Date"/>
+                                                 text="{comp-i18n-dashboard>CompleteDate}"/>
                                     </ute:Tag>
-                                    <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-row">
+                                    <ute:Tag content="{oEnrollHolds>/results}">
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-row">
+                                            <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1"
+                                                     text="{comp-i18n-dashboard>nrgDashboard-servOrder-enrl-hold}"/>
+                                            <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2"
+                                                     text="{oEnrollHolds>Reason}"/>
+                                            <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3"
+                                                     text="{oEnrollHolds>Status}"/>
+                                            <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4"
+                                                     text="{parts:['oEnrollHolds>Time'],
+                                                            formatter:'._formatDate'}"/>
+                                        </ute:Tag>
+                                    </ute:Tag>
+                                </ute:Tag>
+                                <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl">
+                                    <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr">
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1"
+                                                 text="{comp-i18n-dashboard>Type}"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2"
+                                                 text="{comp-i18n-dashboard>Reason}"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3"
+                                                 text="{comp-i18n-dashboard>Status}"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4"
+                                                 text="{comp-i18n-dashboard>CompleteDate}"/>
+                                    </ute:Tag>
+                                    <ute:Tag content="{oEnrollPndingStats>/results}">
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-row">
+                                            <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1"
+                                                     text="{comp-i18n-dashboard>nrgDashboard-servOrder-enrl-pend}"/>
+                                            <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2"
+                                                     text="{oEnrollPndingStats>DESCRIPTION}"/>
+                                            <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3"
+                                                     text="{oEnrollPndingStats>E_BPRC_LL_STATUS}"/>
+                                            <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4"
+                                                     text="{parts:['oEnrollPndingStats>E_BPRC_LLST_DATE'],
+                                                            formatter:'._formatDate'}"/>
+                                        </ute:Tag>
                                     </ute:Tag>
                                 </ute:Tag>
                             </ute:Tag>
