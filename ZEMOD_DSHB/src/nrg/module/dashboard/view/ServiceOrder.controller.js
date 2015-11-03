@@ -99,6 +99,10 @@ sap.ui.define(
             this.getView().getModel('oSelectedTabs').setProperty('/pendingSelected', false);
             this.getView().getModel('oSelectedTabs').setProperty('/completeSelected', true);
         };
+
+        Controller.prototype._onESIDSelect = function (oEvent) {
+            var temp = oEvent;
+        };
         /********************************************************************************************************************************/
 
         /********************************************************************************************************************************/
@@ -118,7 +122,9 @@ sap.ui.define(
                 filters: aFilters,
                 success : function (oData) {
                     if (oData) {
+                        oData.results.selectedKey = oData.results[0].ESID;
                         this.getView().getModel('oESIDDropdown').setData(oData);
+
                     }
                 }.bind(this),
                 error: function (oError) {

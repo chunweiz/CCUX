@@ -36,23 +36,17 @@
             </ute:Tag>
             <!--Detail Area-->
             <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea">
-                <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-title"
-                         text="{comp-i18n-dashboard>nrgDashboard-servOrder-Filterby}"/>
                 <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-dpdwn-title">
                     <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-dpdwn-title-lbl"
                              text="{comp-i18n-dashboard>nrgDashboard-servOrder-Address}"/>
-                    <utmain:Dropdown id="idContractDropdown"
+                    <utmain:Dropdown id="idESIDDropdown"
                         class="nrgDashboard-cusSerOdr-rgtArea-dpdwn-title-dropdownMenu"
-                        selectedKey="1"
-                        content=""
-                        select="._onCoSelect">
-                        <utmain:DropdownItem key="1">
+                        selectedKey="{oESIDDropdown>/results/selectedKey}"
+                        content="{oESIDDropdown>/results}"
+                        select="._onESIDSelect">
+                        <utmain:DropdownItem key="{oESIDDropdown>ESID}">
                             <ute:Tag elem="span"
-                                text="ESID 123"/>
-                        </utmain:DropdownItem>
-                        <utmain:DropdownItem key="2">
-                            <ute:Tag elem="span"
-                                text="ESID 456"/>
+                                     text="{oESIDDropdown>CA}"/>
                         </utmain:DropdownItem>
                     </utmain:Dropdown>
                 </ute:Tag>
