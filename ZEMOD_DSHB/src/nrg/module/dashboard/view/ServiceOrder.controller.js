@@ -41,6 +41,11 @@ sap.ui.define(
             //Model for ESID dropdown
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oESIDDropdown');
 
+            //Model for Movin Enroll
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEnrollHolds');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEnrollPndingStats');
+
+
             // Retrieve routing parameters
             this._bpNum = oRouteInfo.parameters.bpNum;
             this._caNum = oRouteInfo.parameters.caNum;
@@ -125,6 +130,7 @@ sap.ui.define(
                         oData.results.selectedKey = '';
                         this.getView().getModel('oESIDDropdown').setData(oData);
                         this.getView().byId('idESIDDropdown').setSelectedKey(oData.results[0].ESID);
+                        this._retrEnrollHolds(oData.results[0].ESID, oData.results[0].Contract);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -135,6 +141,37 @@ sap.ui.define(
                 oModel.read(sPath, oParameters);
             }
 
+        };
+
+        Controller.prototype._retrEnrollHolds = function (sESID, sContract) {
+            var sPath,
+                aFilters = [],
+                oParameters,
+                oModel = this.getView().getModel('oODataSvc');
+
+            aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sContract}));
+            aFilters.push(new Filter({ path: 'ESID', operator: FilterOperator.EQ, value1: sESID}));
+
+            sPath = '/EnrollHoldS';
+
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oEnrollHolds').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+
+
+            //this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEnrollHolds');
+            //this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEnrollPndingStats');
         };
         /********************************************************************************************************************************/
 
