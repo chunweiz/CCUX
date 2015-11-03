@@ -81,11 +81,11 @@
                 },
                 "billing.HighBill": {
                     "pattern": "billing/highbill/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target":["billing.HighBill", "dashboard.CustomerDataSummary", "dashboard.EmptyTools"]
+                    "target":["billing.HighBill", "dashboard.CustomerDataSummary", "billing.HighBillTools"]
                 },
                 "billing.HighBillNoCo": {
                     "pattern": "billing/highbill/bp/{bpNum}/ca/{caNum}",
-                    "target":["billing.HighBill", "dashboard.CustomerDataSummary", "dashboard.EmptyTools"]
+                    "target":["billing.HighBill", "dashboard.CustomerDataSummary", "billing.HighBillTools"]
                 }
             },
 
@@ -116,6 +116,10 @@
                 },
                 "billing.CustomerJourney": {
                     "viewName": "nrg.module.billing.view.BillingCustomerJourney",
+                    "controlId": "idAppTools"
+                },
+                "billing.HighBillTools": {
+                    "viewName": "nrg.module.billing.view.HighBillTools",
                     "controlId": "idAppTools"
                 }
             }
