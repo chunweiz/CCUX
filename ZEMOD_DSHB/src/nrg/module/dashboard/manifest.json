@@ -15,11 +15,18 @@
                         "real": {
                             "comp-dashboard": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_SRV/"
+                            },
+                            "comp-dashboard-svcodr": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_SRV_ORD_SRV/"
                             }
                         },
                         "mock": {
                             "comp-dashboard": {
                                 "mockDataBaseUrl": "data/devtest/",
+                                "generateMissingMockData": true
+                            },
+                            "comp-dashboard-svcodr":{
+                                "mockDataBaseUrl": "data/devSvcOdr/",
                                 "generateMissingMockData": true
                             },
 							"comp-dashboard-AcctAccessPty":{

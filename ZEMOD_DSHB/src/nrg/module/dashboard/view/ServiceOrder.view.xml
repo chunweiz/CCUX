@@ -36,28 +36,60 @@
             </ute:Tag>
             <!--Detail Area-->
             <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea">
-                <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-title"
-                         text="{comp-i18n-dashboard>nrgDashboard-servOrder-Filterby}"/>
                 <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-dpdwn-title">
                     <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-dpdwn-title-lbl"
                              text="{comp-i18n-dashboard>nrgDashboard-servOrder-Address}"/>
-                    <utmain:Dropdown id="idContractDropdown"
+                    <utmain:Dropdown id="idESIDDropdown"
                         class="nrgDashboard-cusSerOdr-rgtArea-dpdwn-title-dropdownMenu"
-                        selectedKey="1"
-                        content=""
-                        select="._onCoSelect">
-                        <utmain:DropdownItem key="1">
+                        selectedKey="{oESIDDropdown>/results/selectedKey}"
+                        content="{oESIDDropdown>/results}"
+                        select="._onESIDSelect">
+                        <utmain:DropdownItem key="{oESIDDropdown>ESID}">
                             <ute:Tag elem="span"
-                                text="ESID 123"/>
-                        </utmain:DropdownItem>
-                        <utmain:DropdownItem key="2">
-                            <ute:Tag elem="span"
-                                text="ESID 456"/>
+                                     text="{oESIDDropdown>CA}"/>
                         </utmain:DropdownItem>
                     </utmain:Dropdown>
                 </ute:Tag>
                 <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt">
                     <!--For Movein/Switch-->
+                    <ute:Tag visible="{parts:['oSelectedTabs>/pendingSelected', 'oPndingVisType>/visMovein'], formatter:'._formatVisPnd'}">
+                        <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-title" text="{comp-i18n-dashboard>nrgDashboard-servOrder-Moviein}" />
+                        <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail">
+                            <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-hdr">
+                                <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-hdr-lft">
+                                    <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-labl" elem="span" text="{comp-i18n-dashboard>nrgDashboard-servOrder-Contact}"/>
+                                    <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-val"  elem="span" text="Jogn Doe"/>
+                                </ute:Tag>
+                                <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-hdr-rgt">
+                                    <ute:Tag>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-labl" elem="span" text="{comp-i18n-dashboard>nrgDashboard-servOrder-pMvinDate}"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-val" elem="span" text="03/06/2013"/>
+                                    </ute:Tag>
+                                    <ute:Tag>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-labl" elem="span" text="{comp-i18n-dashboard>nrgDashboard-servOrder-oMvinDate}"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-val" elem="span" text="03/04/2011"/>
+                                    </ute:Tag>
+                                </ute:Tag>
+                            </ute:Tag>
+                            <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-ctnt">
+                                <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl">
+                                    <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr">
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1"
+                                                 text="Type"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2"
+                                                 text="Reason"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3"
+                                                 text="Status"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4"
+                                                 text="Completed Date"/>
+                                    </ute:Tag>
+                                    <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-row">
+                                    </ute:Tag>
+                                </ute:Tag>
+                            </ute:Tag>
+                        </ute:Tag>
+                    </ute:Tag>
+                    <!--For Reconnect-->
                     <ute:Tag>
                         <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-title" text="{comp-i18n-dashboard>nrgDashboard-servOrder-Moviein}" />
                         <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail">

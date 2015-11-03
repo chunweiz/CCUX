@@ -6,10 +6,12 @@
 sap.ui.define(
     [
         'nrg/base/view/BaseController',
-        'jquery.sap.global'
+        'jquery.sap.global',
+        'sap/ui/model/Filter',
+        'sap/ui/model/FilterOperator'
     ],
 
-    function (CoreController, jQuery) {
+    function (CoreController, jQuery, Filter, FilterOperator) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.dashboard.view.ServiceOrder');
@@ -28,18 +30,28 @@ sap.ui.define(
         Controller.prototype.onBeforeRendering = function () {
             var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
 
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard-svcodr'), 'oODataSvc');
 			//this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
             //this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard-AcctAccessPty'),'oDataASvc');
 
             //Model to keep information to show
 			this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSelectedTabs');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPndingVisType');
+
+            //Model for ESID dropdown
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oESIDDropdown');
 
             // Retrieve routing parameters
             this._bpNum = oRouteInfo.parameters.bpNum;
             this._caNum = oRouteInfo.parameters.caNum;
             this._coNum = oRouteInfo.parameters.coNum;
 
+            //init displaying model
             this._initSelectTab();
+            this._initPndingVisType();
+
+            //Init dropdpwn
+            this._initESIDDropdown();
 
         };
 
@@ -55,8 +67,25 @@ sap.ui.define(
             this.getView().getModel('oSelectedTabs').setProperty('/pendingSelected', true);
             this.getView().getModel('oSelectedTabs').setProperty('/completeSelected', false);
         };
+
+        Controller.prototype._initPndingVisType = function () {
+            this.getView().getModel('oPndingVisType').setProperty('/visMovein', true);
+            this.getView().getModel('oPndingVisType').setProperty('/visReconnect', true);
+            this.getView().getModel('oPndingVisType').setProperty('/visDisconnect', true);
+            this.getView().getModel('oPndingVisType').setProperty('/visOthers', true);
+        };
+
+        Controller.prototype._initESIDDropdown = function () {
+            this._retrESIDs();
+        };
         /********************************************************************************************************************************/
 
+        /********************************************************************************************************************************/
+        //Formatter functions
+        /********************************************************************************************************************************/
+        Controller.prototype._formatVisPnd = function (bPndSelected, bTypeOrder) {
+            return bPndSelected && bTypeOrder;
+        };
 
         /********************************************************************************************************************************/
         //Handler functions
@@ -70,8 +99,44 @@ sap.ui.define(
             this.getView().getModel('oSelectedTabs').setProperty('/pendingSelected', false);
             this.getView().getModel('oSelectedTabs').setProperty('/completeSelected', true);
         };
+
+        Controller.prototype._onESIDSelect = function (oEvent) {
+            var temp = oEvent;
+        };
         /********************************************************************************************************************************/
 
+        /********************************************************************************************************************************/
+        //Service call functions
+        /********************************************************************************************************************************/
+        Controller.prototype._retrESIDs = function () {
+            var sPath,
+                aFilters = [],
+                oParameters,
+                oModel = this.getView().getModel('oODataSvc');
+
+            aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: this._caNum}));
+
+            sPath = '/SrvAddrS';
+
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData) {
+                        oData.results.selectedKey = oData.results[0].ESID;
+                        this.getView().getModel('oESIDDropdown').setData(oData);
+
+                    }
+                }.bind(this),
+                error: function (oError) {
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+
+        };
+        /********************************************************************************************************************************/
 
 		return Controller;
 	}
