@@ -24,19 +24,23 @@
         <!-- Filter Area -->
         <ute:Tag class="nrgBilling-invSelPopup-filterArea">
             <ute:Tag class="nrgBilling-invSelPopup-filterArea-item">
-                <utmain:Checkbox id="id_InvSel_Filter_All" class="nrgBilling-invSelPopup-filterArea-filter" checked="{oInvoiceSelectFilters>/All}" select="_onSelectAll"/>
+                <utmain:Checkbox id="id_InvSel_Filter_All" class="nrgBilling-invSelPopup-filterArea-filter" 
+                    checked="{oInvoiceSelectFilters>/All}" select="_onSelectAll"/>
                 <utmain:Label labelFor="id_InvSel_Filter_All" text="Select All"/>
             </ute:Tag>
             <ute:Tag class="nrgBilling-invSelPopup-filterArea-item">
-                <utmain:Checkbox id="id_InvSel_Filter_DSNote" class="nrgBilling-invSelPopup-filterArea-filter" checked="{oInvoiceSelectFilters>/Disconnect}"/>
+                <utmain:Checkbox id="id_InvSel_Filter_DSNote" class="nrgBilling-invSelPopup-filterArea-filter" 
+                    checked="{oInvoiceSelectFilters>/Disconnect}" select="_onSelectDisconnect"/>
                 <utmain:Label labelFor="id_InvSel_Filter_DSNote" text="Disconection Notice"/>
             </ute:Tag>
             <ute:Tag class="nrgBilling-invSelPopup-filterArea-item">
-                <utmain:Checkbox id="id_InvSel_Filter_Inv" class="nrgBilling-invSelPopup-filterArea-filter" checked="{oInvoiceSelectFilters>/Invoice}"/>
+                <utmain:Checkbox id="id_InvSel_Filter_Inv" class="nrgBilling-invSelPopup-filterArea-filter" 
+                    checked="{oInvoiceSelectFilters>/Invoice}" select="_onSelectInvoice"/>
                 <utmain:Label labelFor="id_InvSel_Filter_Inv" text="Invoice"/>
             </ute:Tag>
             <ute:Tag class="nrgBilling-invSelPopup-filterArea-item">
-                <utmain:Checkbox id="id_InvSel_Filter_RevInv" class="nrgBilling-invSelPopup-filterArea-filter" checked="{oInvoiceSelectFilters>/Reversed}"/>
+                <utmain:Checkbox id="id_InvSel_Filter_RevInv" class="nrgBilling-invSelPopup-filterArea-filter" 
+                    checked="{oInvoiceSelectFilters>/Reversal}" select="_onSelectReversed"/>
                 <utmain:Label labelFor="id_InvSel_Filter_RevInv" text="Reversed Invoice"/>
             </ute:Tag>
         </ute:Tag>

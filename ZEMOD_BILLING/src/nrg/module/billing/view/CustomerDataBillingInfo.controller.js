@@ -349,6 +349,8 @@ sap.ui.define(
                 this.getView().byId('nrgBilling-invSel-stDate').setMinDate(minDate);
                 this.getView().byId('nrgBilling-invSel-edDate').setMinDate(minDate);
             }
+            // Open the popup
+            this._oInvSelectPopup.open();
             // Retrieve latest data
             this._retrieveInvoiceInfo(this._caNum, function () {bRetrieveComplete = true;});
             // Check the completion of retrieving data
@@ -356,8 +358,6 @@ sap.ui.define(
                 if (bRetrieveComplete) {
                     // Dismiss the loading indicator
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
-                    // Open the popup
-                    this._oInvSelectPopup.open();
                     // Initialize filters
                     this._initializeFilters();
                     // Initialize date ranges
@@ -427,10 +427,10 @@ sap.ui.define(
         CustomController.prototype._initializeFilters = function () {
             var oInvSelFiltersModel = this.getView().getModel('oInvoiceSelectFilters');
 
-            oInvSelFiltersModel.setProperty('/All', true);
-            oInvSelFiltersModel.setProperty('/Disconnect', true);
-            oInvSelFiltersModel.setProperty('/Invoice', true);
-            oInvSelFiltersModel.setProperty('/Reversed', true);
+            oInvSelFiltersModel.setProperty('/All', false);
+            oInvSelFiltersModel.setProperty('/Disconnect', false);
+            oInvSelFiltersModel.setProperty('/Invoice', false);
+            oInvSelFiltersModel.setProperty('/Reversal', false);
 
         };
 
@@ -470,7 +470,8 @@ sap.ui.define(
 
         CustomController.prototype._filterByDateRange = function () {
             var oTable = this.getView().byId('nrgBilling-invSelPopup-tableBody'),
-                oInvSelDateRangeModel = this.getView().getModel('oInvoiceSelectDateRange');
+                oInvSelDateRangeModel = this.getView().getModel('oInvoiceSelectDateRange'),
+                oInvSelFiltersModel = this.getView().getModel('oInvoiceSelectFilters');
 
             for (var i = 0; i < oTable.getContent().length; i++) {
                 var date = oTable.getContent()[i].getContent()[0].getText();
@@ -482,6 +483,13 @@ sap.ui.define(
                 }
             }
 
+            // Uncheck other type filters except 'all'
+            for (var property in oInvSelFiltersModel.oData) {
+                if (property !== 'All') {
+                    oInvSelFiltersModel.setProperty('/' + property, false);
+                }
+            }
+
         };
 
         CustomController.prototype._handleStartDateChange = function (oEvent) {
@@ -489,8 +497,6 @@ sap.ui.define(
                 startDate = this.getView().byId('nrgBilling-invSel-stDate').getValue();
             
             oInvSelDateRangeModel.setProperty('/Start', startDate);
-
-            // Apply the date ranger filter
             this._filterByDateRange();
         };
 
@@ -499,8 +505,6 @@ sap.ui.define(
                 endDate = this.getView().byId('nrgBilling-invSel-edDate').getValue();
             
             oInvSelDateRangeModel.setProperty('/End', endDate);
-
-            // Apply the date ranger filter
             this._filterByDateRange();
         };
 
@@ -508,13 +512,59 @@ sap.ui.define(
             var oTable = this.getView().byId('nrgBilling-invSelPopup-tableBody'),
                 oInvSelFiltersModel = this.getView().getModel('oInvoiceSelectFilters');
 
-            oInvSelFiltersModel.setProperty('/All', !oInvSelFiltersModel.oData.All);
-
             for (var i = 0; i < oTable.getContent().length; i++) {                
                 var oCheckbox = oTable.getContent()[i].getContent()[3];
                 oCheckbox.setChecked(oInvSelFiltersModel.oData.All);
             }
         };
+
+        CustomController.prototype._onSelectDisconnect = function (oEvent) {
+            this._applyTypeFilter('Disconnect');
+        };
+
+        CustomController.prototype._onSelectInvoice = function () {
+            this._applyTypeFilter('Invoice');
+        };
+
+        CustomController.prototype._onSelectReversed = function () {
+            this._applyTypeFilter('Reversal');
+        };
+
+        CustomController.prototype._applyTypeFilter = function (sType) {
+            var oTable = this.getView().byId('nrgBilling-invSelPopup-tableBody'),
+                oInvSelFiltersModel = this.getView().getModel('oInvoiceSelectFilters'),
+                oInvSelDateRangeModel = this.getView().getModel('oInvoiceSelectDateRange'),
+                typeCheck, dateCheck;
+
+            for (var i = 0; i < oTable.getContent().length; i++) {
+                var date = oTable.getContent()[i].getContent()[0].getText();
+                typeCheck = false;
+                dateCheck = false;
+
+                // Check the type filter
+                if (oTable.getContent()[i].getContent()[2].getText() === sType || !oInvSelFiltersModel.oData[sType]) {
+                    typeCheck = true;   
+                }
+                // Check the date filter
+                if (this._deformatInvoiceDate(date) >= this._deformatInvoiceDate(oInvSelDateRangeModel.oData.Start) &&
+                    this._deformatInvoiceDate(date) <= this._deformatInvoiceDate(oInvSelDateRangeModel.oData.End)) {
+                    dateCheck = true;
+                }
+                if (typeCheck && dateCheck) {
+                    oTable.getContent()[i].setVisible(true);
+                } else {
+                    oTable.getContent()[i].setVisible(false);
+                }
+            }
+
+            // Uncheck other type filters except 'all'
+            for (var property in oInvSelFiltersModel.oData) {
+                if (property !== 'All' && property !== sType) {
+                    oInvSelFiltersModel.setProperty('/' + property, false);
+                }
+            }
+        };
+
 
         CustomController.prototype._onOpenBtnClick = function (oEvent) {
             var oTable = this.getView().byId('nrgBilling-invSelPopup-tableBody'),
