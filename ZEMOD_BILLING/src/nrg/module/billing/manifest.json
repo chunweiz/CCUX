@@ -21,7 +21,13 @@
                             },
                             "comp-billing-invoice": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_SRV/"
-                            }
+                            },
+                            "comp-cj": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_CJ_SRV/"
+                            },
+							"comp-HighBill": {
+								"url": "sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/"
+							}
                         },
                         "mock": {
                             "comp-billing": {
@@ -35,7 +41,11 @@
                             "comp-billing-invoice": {
                                 "mockDataBaseUrl": "data/devinv/",
                                 "generateMissingMockData": true
-                            }
+                            },
+							"comp-billing-highbill":{
+								"mockDataBaseUrl": "data/devHighBill/",
+								"generateMissingMockData": true
+							}
                         }
                     }
                 }

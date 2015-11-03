@@ -298,11 +298,11 @@ sap.ui.define(
             var oModel,
                 mParameters,
                 sCampaignCode,
-                sEndDate,
+                //sEndDate,
                 sOfferCode,
                 sOfferTitle,
                 sPromo,
-                sStartDate,
+                /*sStartDate,*/
                 sContract,
                 sPath,
                 oContext,
@@ -315,17 +315,19 @@ sap.ui.define(
                 sLpCode,
                 sLpFirstName,
                 sLpLastName,
-                sLPRefId;
+                sLPRefId,
+                sEffectDate;
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             sPath = "/CpgChgOfferS(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',StartDate=" + this._sDate + ")";
             oContext = oModel.getContext(sPath);
             sCampaignCode = oContext.getProperty("Campaign");
-            sEndDate = oContext.getProperty("EndDate");
+            //sEndDate = oContext.getProperty("EndDate");
+            sEffectDate = oContext.getProperty("EffectDate");
             sOfferCode = oContext.getProperty("OfferCode");
             sOfferTitle = oContext.getProperty("OfferTitle");
             sPromo = oContext.getProperty("Promo");
-            sStartDate = oContext.getProperty("StartDate");
+            /*sStartDate = oContext.getProperty("StartDate");*/
             sContract = oContext.getProperty("Contract");
             sPromoRank = oContext.getProperty("PromoRank");
             sBrand = oContext.getProperty("Brand");
@@ -339,7 +341,7 @@ sap.ui.define(
             mParameters = {
                 method : "POST",
                 urlParameters : {"CampaignCode" : sCampaignCode,
-                                         "EndDate" : sEndDate,
+                                         "EffectDate" : sEffectDate,
                                         "LP_Code" : sLpCode,
                                         "LP_FirstName" : sLpFirstName,
                                         "LP_LastName" : sLpLastName,
@@ -347,7 +349,7 @@ sap.ui.define(
                                         "OfferCode" : sOfferCode,
                                         "OfferTitle" : sOfferTitle,
                                         "PromoCode" : sPromo,
-                                        "StartDate" : sStartDate,
+                                       /* "StartDate" : sStartDate,*/
                                         "Contract" : sContract,
                                         "PromoRank" : sPromoRank,
                                         "Brand" : sBrand,

@@ -21,7 +21,8 @@
                         class="nrgBllCJ-header-btn"
                         design="None">
             </um:button>
-            <um:Button text="{comp-i18n-billing>nrgBllCJCJModuleTtl}"
+            <um:Button  press=".onCustomerJourneyModule"
+                        text="{comp-i18n-billing>nrgBllCJCJModuleTtl}"
                         class="nrgBllCJ-header-btn nrgBllCJ-header-btn-rht"
                         design="None">
             </um:button>
