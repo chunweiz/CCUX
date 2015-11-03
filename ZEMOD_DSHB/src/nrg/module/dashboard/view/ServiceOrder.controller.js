@@ -122,9 +122,9 @@ sap.ui.define(
                 filters: aFilters,
                 success : function (oData) {
                     if (oData) {
-                        oData.results.selectedKey = oData.results[0].ESID;
+                        oData.results.selectedKey = '';
                         this.getView().getModel('oESIDDropdown').setData(oData);
-
+                        this.getView().byId('idESIDDropdown').setSelectedKey(oData.results[0].ESID);
                     }
                 }.bind(this),
                 error: function (oError) {

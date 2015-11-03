@@ -46,7 +46,7 @@
                         select="._onESIDSelect">
                         <utmain:DropdownItem key="{oESIDDropdown>ESID}">
                             <ute:Tag elem="span"
-                                     text="{oESIDDropdown>CA}"/>
+                                     text="{oESIDDropdown>ESID} / {oESIDDropdown>House} {oESIDDropdown>Street} {oESIDDropdown>Apt}, {oESIDDropdown>City} {oESIDDropdown>State} {oESIDDropdown>ZIP}"/>
                         </utmain:DropdownItem>
                     </utmain:Dropdown>
                 </ute:Tag>

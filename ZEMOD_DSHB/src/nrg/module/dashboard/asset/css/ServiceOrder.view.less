@@ -58,12 +58,12 @@
         font-weight: @nrgFontWeight-bold;
         color: @nrgColor-grey-dark;
         margin-right: 12px;
-        display: inline-block;
+        //display: inline-block;
     }
 
     & > .nrgDashboard-cusSerOdr-ctnt > .nrgDashboard-cusSerOdr-rgtArea > .nrgDashboard-cusSerOdr-rgtArea-dpdwn-title > .nrgDashboard-cusSerOdr-rgtArea-dpdwn-title-dropdownMenu {
-        width: 312px;
-        display: inline-block;
+        margin-top: 10px;
+        //display: inline-block;
         &:first-child {
             margin-right: 10px;
         }
@@ -79,10 +79,11 @@
                 overflow: hidden;
                 padding: 8px 0 8px 8px;
                 white-space: nowrap;
-                width: 290px;
+                width: 749px;
                 color: @nrgColor-grey-dark;
                 & .uteMDdItem {
-                    font-size: @nrgFontSize-small;
+                    font-size: @nrgFontSize-base;
+                    font-weight: @nrgFontWeight-semiBold;
                     overflow: hidden;
                     text-overflow: ellipsis;
                 }
@@ -96,7 +97,7 @@
         & .uteMDd-picker {
             width: 100%;
             color: @nrgColor-grey-dark;
-            max-height: 270px;
+            //max-height: 270px;
             overflow-y: auto;
             margin-top: 5px;
             & .uteMDdItem {
