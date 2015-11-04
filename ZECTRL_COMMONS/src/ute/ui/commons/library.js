@@ -91,8 +91,8 @@ sap.ui.define(
         ute.ui.commons.BadgeDesign = {
             Alert: 'Alert',
             Attention: 'Attention',
-            Regular: 'Regular'
-
+            Regular: 'Regular',
+            Warning: 'Warning'
         };
 
         ute.ui.commons.HorizontalDividerDesign = {
