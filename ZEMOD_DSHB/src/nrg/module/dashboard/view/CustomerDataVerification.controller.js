@@ -980,8 +980,7 @@ sap.ui.define(
         /*Email Edit NNP logic*/
         Controller.prototype._formatEmailAddressText = function (sEmail) {
             if ((sEmail === '') || (sEmail === undefined)) {
-                //return 'CLICK to ADD';
-				return;//changes made for the Defect #94.
+                return '';
             } else {
                 return sEmail;
             }
@@ -1082,33 +1081,33 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         // Determine if Seibel Customer
-                        if (oData.SiebelCustomer === 'X' || oData.SiebelCustomer === 'x') this._showSiebelAlert();
+                        if (oData.SiebelCustomer === 'X' || oData.SiebelCustomer === 'x') {this._showSiebelAlert(); }
                         // Determine the SMS button
-                        if (oData.Cell) this.getView().getModel('oCfrmStatus').setProperty('/ShowSMSBtn', true);
+                        if (oData.Cell) {this.getView().getModel('oCfrmStatus').setProperty('/ShowSMSBtn', true); }
                         // Load the BP info
                         this.getView().getModel('oDtaVrfyBP').setData(oData);
                         // 1. Retrieve all CA belong to the BP
-                        if (oData.PartnerID) this._retrAllCa(oData.PartnerID, function () {bCaRetrieveComplete = true;});
+                        if (oData.PartnerID) {this._retrAllCa(oData.PartnerID, function () {bCaRetrieveComplete = true; }); }
                         // Check the completion of CA retrieval
-                        var checkCaRetrComplete = setInterval(function() {
+                        var checkCaRetrComplete = setInterval(function () {
                             if (bCaRetrieveComplete) {
                                 // 2. Get the current selected CA number
-                                sCurrentCaNumber = this._getCurrentCaNum(function () {bCurrentCaNumRetrieveComplete = true;});
+                                sCurrentCaNumber = this._getCurrentCaNum(function () {bCurrentCaNumRetrieveComplete = true; });
                                 clearInterval(checkCaRetrComplete);
                             }
                         }.bind(this), 100);
                         // Check the completion of current CA number retrieval
-                        var checkCurCaRetrComplete = setInterval(function() {
+                        var checkCurCaRetrComplete = setInterval(function () {
                             if (bCurrentCaNumRetrieveComplete) {
                                 // 3. Load the current selected CA info
                                 this._setCurrentCa(sCurrentCaNumber);
                                 // 4. Retrieve all CO belong to the selected CA
-                                this._retrAllCo(sCurrentCaNumber, function () {bCoRetrieveComplate = true;});
+                                this._retrAllCo(sCurrentCaNumber, function () {bCoRetrieveComplate = true; });
                                 clearInterval(checkCurCaRetrComplete);
                             }
                         }.bind(this), 100);
                         // Check the completion of CO retrieval
-                        var checkCoRetrComplete = setInterval(function() {
+                        var checkCoRetrComplete = setInterval(function () {
                             if (bCoRetrieveComplate) {
                                 // Confirm with WebUI and CCUX
                                 this._routeInfoConfirm();

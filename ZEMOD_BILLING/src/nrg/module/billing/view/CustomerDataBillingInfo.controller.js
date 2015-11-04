@@ -543,7 +543,7 @@ sap.ui.define(
 
                 // Check the type filter
                 if (oTable.getContent()[i].getContent()[2].getText() === sType || !oInvSelFiltersModel.oData[sType]) {
-                    typeCheck = true;   
+                    typeCheck = true;
                 }
                 // Check the date filter
                 if (this._deformatInvoiceDate(date) >= this._deformatInvoiceDate(oInvSelDateRangeModel.oData.Start) &&
