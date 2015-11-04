@@ -45,6 +45,14 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEnrollHolds');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEnrollPndingStats');
 
+            //Model for Reconnect
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oReconOrds');
+
+            //Model for Disconnect
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDiscOrds');
+
+            //Model for Others
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oOtherOrds');
 
             // Retrieve routing parameters
             this._bpNum = oRouteInfo.parameters.bpNum;
@@ -74,10 +82,10 @@ sap.ui.define(
         };
 
         Controller.prototype._initPndingVisType = function () {
-            this.getView().getModel('oPndingVisType').setProperty('/visMovein', true);
-            this.getView().getModel('oPndingVisType').setProperty('/visReconnect', true);
-            this.getView().getModel('oPndingVisType').setProperty('/visDisconnect', true);
-            this.getView().getModel('oPndingVisType').setProperty('/visOthers', true);
+            this.getView().getModel('oPndingVisType').setProperty('/visMovein', false);
+            this.getView().getModel('oPndingVisType').setProperty('/visReconnect', false);
+            this.getView().getModel('oPndingVisType').setProperty('/visDisconnect', false);
+            this.getView().getModel('oPndingVisType').setProperty('/visOthers', false);
         };
 
         Controller.prototype._initESIDDropdown = function () {
@@ -142,7 +150,6 @@ sap.ui.define(
                         this.getView().getModel('oESIDDropdown').setData(oData);
                         this.getView().byId('idESIDDropdown').setSelectedKey(oData.results[0].ESID);
                         this._retrEnrollHolds(oData.results[0].ESID, oData.results[0].Contract);
-                        this._retrEnrollPndingStats(this._bpNum, this._caNum);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -169,9 +176,16 @@ sap.ui.define(
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
-                    if (oData) {
+                    if (oData.results.length > 0) {
                         this.getView().getModel('oEnrollHolds').setData(oData);
+                        this.getView().getModel('oPndingVisType').setProperty('/visMovein', true);
+                        this._retrEnrollPndingStats(this._bpNum, this._caNum);
+                    } else {
+                        sPath = 'test';
                     }
+                    //This part need to move to else later
+                    this._retrReconOrds(this._bpNum, this._caNum, sContract, sESID);
+
                 }.bind(this),
                 error: function (oError) {
                 }.bind(this)
@@ -196,8 +210,9 @@ sap.ui.define(
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
-                    if (oData) {
+                    if (oData.results.length > 0) {
                         this.getView().getModel('oEnrollPndingStats').setData(oData);
+                        this.getView().getModel('oPndingVisType').setProperty('/visMovein', true);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -208,6 +223,46 @@ sap.ui.define(
                 oModel.read(sPath, oParameters);
             }
         };
+
+        Controller.prototype._retrReconOrds = function (sBpNum, sCaNum, sCoNum, sESID) {
+            var sPath,
+                aFilters = [],
+                oParameters,
+                oModel = this.getView().getModel('oODataSvc');
+
+            aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: sBpNum}));
+            aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNum}));
+            aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNum}));
+            aFilters.push(new Filter({ path: 'ESID', operator: FilterOperator.EQ, value1: sESID}));
+
+            sPath = '/ReconOrdS';
+
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData.results.length > 0) {
+                        this.getView().getModel('oReconOrds').setData(oData);
+                        this.getView().getModel('oPndingVisType').setProperty('/visReconnect', true);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+         /*//Model for Reconnect
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), '');
+
+            //Model for Disconnect
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDiscOrds');
+
+            //Model for Others
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oOtherOrds');*/
+
         /********************************************************************************************************************************/
 
 		return Controller;
