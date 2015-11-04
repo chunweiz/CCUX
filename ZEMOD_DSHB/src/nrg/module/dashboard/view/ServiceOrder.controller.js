@@ -41,6 +41,11 @@ sap.ui.define(
             //Model for ESID dropdown
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oESIDDropdown');
 
+            //Model for Movin Enroll
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEnrollHolds');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEnrollPndingStats');
+
+
             // Retrieve routing parameters
             this._bpNum = oRouteInfo.parameters.bpNum;
             this._caNum = oRouteInfo.parameters.caNum;
@@ -87,6 +92,17 @@ sap.ui.define(
             return bPndSelected && bTypeOrder;
         };
 
+        Controller.prototype._formatDate = function (oDate) {
+            var sFormattedDate;
+
+            if (!oDate) {
+                return null;
+            } else {
+                sFormattedDate = (oDate.getMonth() + 1).toString() + '/' + oDate.getDate().toString() + '/' + oDate.getFullYear().toString().substring(2, 4);
+                return sFormattedDate;
+            }
+        };
+
         /********************************************************************************************************************************/
         //Handler functions
         /********************************************************************************************************************************/
@@ -122,9 +138,11 @@ sap.ui.define(
                 filters: aFilters,
                 success : function (oData) {
                     if (oData) {
-                        oData.results.selectedKey = oData.results[0].ESID;
+                        oData.results.selectedKey = '';
                         this.getView().getModel('oESIDDropdown').setData(oData);
-
+                        this.getView().byId('idESIDDropdown').setSelectedKey(oData.results[0].ESID);
+                        this._retrEnrollHolds(oData.results[0].ESID, oData.results[0].Contract);
+                        this._retrEnrollPndingStats(this._bpNum, this._caNum);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -135,6 +153,60 @@ sap.ui.define(
                 oModel.read(sPath, oParameters);
             }
 
+        };
+
+        Controller.prototype._retrEnrollHolds = function (sESID, sContract) {
+            var sPath,
+                aFilters = [],
+                oParameters,
+                oModel = this.getView().getModel('oODataSvc');
+
+            aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sContract}));
+            aFilters.push(new Filter({ path: 'ESID', operator: FilterOperator.EQ, value1: sESID}));
+
+            sPath = '/EnrollHoldS';
+
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oEnrollHolds').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrEnrollPndingStats = function (sBpNum, sCaNum) {
+            var sPath,
+                aFilters = [],
+                oParameters,
+                oModel = this.getView().getModel('oODataSvc');
+
+            aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: sBpNum}));
+            aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNum}));
+
+            sPath = '/PendStatS';
+
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oEnrollPndingStats').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
         };
         /********************************************************************************************************************************/
 
