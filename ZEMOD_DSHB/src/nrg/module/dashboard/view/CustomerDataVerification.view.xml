@@ -399,7 +399,7 @@
                                     <utmain:DropdownItem
                                         key="{oEvnPhoneType>Key}">
                                         <ute:Tag elem="span"
-                                             text="{oEvnPhoneType>Type}"/>
+                                                 text="{oEvnPhoneType>Type}"/>
                                     </utmain:DropdownItem>
                                 </utmain:Dropdown>
                             </ute:Tag>
@@ -413,7 +413,7 @@
                                 class="nrgDashboard-cusDataVerify-middle-emailVal"
                                 enabled="{oCfrmStatus>/bEditable}"
                                 text="{parts:['oDtaVrfyBP>/Email'],
-                                           formatter:'._formatEmailAddressText'}"
+                                       formatter:'._formatEmailAddressText'}"
                                 press="._handleEmailEdit"/>
                         </ute:Tag>
                     </ute:Tag>

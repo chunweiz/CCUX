@@ -979,8 +979,7 @@ sap.ui.define(
         /*Email Edit NNP logic*/
         Controller.prototype._formatEmailAddressText = function (sEmail) {
             if ((sEmail === '') || (sEmail === undefined)) {
-                //return 'CLICK to ADD';
-				return;//changes made for the Defect #94.
+                return '';
             } else {
                 return sEmail;
             }
