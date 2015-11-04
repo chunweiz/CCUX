@@ -979,7 +979,7 @@ sap.ui.define(
         /*Email Edit NNP logic*/
         Controller.prototype._formatEmailAddressText = function (sEmail) {
             if ((sEmail === '') || (sEmail === undefined)) {
-                return ' ';
+                return '';
             } else {
                 return sEmail;
             }
