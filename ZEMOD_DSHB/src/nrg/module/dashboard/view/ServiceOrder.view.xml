@@ -136,16 +136,6 @@
                                     <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-labl" elem="span" text="{comp-i18n-dashboard>nrgDashboard-servOrder-Contact}"/>
                                     <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-val"  elem="span" text=""/>
                                 </ute:Tag>
-                                <!--<ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-hdr-rgt">
-                                    <ute:Tag>
-                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-labl" elem="span" text="{comp-i18n-dashboard>nrgDashboard-servOrder-pMvinDate}"/>
-                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-val" elem="span" text="03/06/2013"/>
-                                    </ute:Tag>
-                                    <ute:Tag>
-                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-labl" elem="span" text="{comp-i18n-dashboard>nrgDashboard-servOrder-oMvinDate}"/>
-                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-val" elem="span" text="03/04/2011"/>
-                                    </ute:Tag>
-                                </ute:Tag>-->
                             </ute:Tag>
                             <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-ctnt">
                                 <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl">
@@ -169,6 +159,84 @@
                                                      text="{oReconOrds>Status}"/>
                                             <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4"
                                                      text="{parts:['oReconOrds>Time'],
+                                                            formatter:'._formatDate'}"/>
+                                        </ute:Tag>
+                                    </ute:Tag>
+                                </ute:Tag>
+                            </ute:Tag>
+                        </ute:Tag>
+                    </ute:Tag>
+                    <!--For Disconnect-->
+                    <ute:Tag visible="{parts:['oSelectedTabs>/pendingSelected', 'oPndingVisType>/visDisconnect'], formatter:'._formatVisPnd'}">
+                        <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-title" text="{comp-i18n-dashboard>nrgDashboard-servOrder-Disconnect}" />
+                        <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail">
+                            <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-hdr">
+                                <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-hdr-lft">
+                                    <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-labl" elem="span" text="{comp-i18n-dashboard>nrgDashboard-servOrder-Contact}"/>
+                                    <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-val"  elem="span" text=""/>
+                                </ute:Tag>
+                            </ute:Tag>
+                            <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-ctnt">
+                                <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl">
+                                    <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr">
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1"
+                                                 text="{comp-i18n-dashboard>Type}"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2"
+                                                 text="{comp-i18n-dashboard>Reason}"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3"
+                                                 text="{comp-i18n-dashboard>Status}"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4"
+                                                 text="{comp-i18n-dashboard>CompleteDate}"/>
+                                    </ute:Tag>
+                                    <ute:Tag content="{oDiscOrds>/results}">
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-row">
+                                            <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1"
+                                                     text="{oDiscOrds>Type}"/>
+                                            <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2"
+                                                     text="{oDiscOrds>QMNUM}"/>
+                                            <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3"
+                                                     text="{oDiscOrds>Status}"/>
+                                            <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4"
+                                                     text="{parts:['oDiscOrds>Time'],
+                                                            formatter:'._formatDate'}"/>
+                                        </ute:Tag>
+                                    </ute:Tag>
+                                </ute:Tag>
+                            </ute:Tag>
+                        </ute:Tag>
+                    </ute:Tag>
+                    <!--For Others-->
+                    <ute:Tag visible="{parts:['oSelectedTabs>/pendingSelected', 'oPndingVisType>/visOthers'], formatter:'._formatVisPnd'}">
+                        <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-title" text="{comp-i18n-dashboard>nrgDashboard-servOrder-Others}" />
+                        <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail">
+                            <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-hdr">
+                                <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-hdr-lft">
+                                    <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-labl" elem="span" text="{comp-i18n-dashboard>nrgDashboard-servOrder-Contact}"/>
+                                    <ute:Tag class="nrgDashboard-cusSerOdr-rcdh-val"  elem="span" text=""/>
+                                </ute:Tag>
+                            </ute:Tag>
+                            <ute:Tag class="nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-ctnt">
+                                <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl">
+                                    <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr">
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1"
+                                                 text="{comp-i18n-dashboard>Type}"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2"
+                                                 text="{comp-i18n-dashboard>Reason}"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3"
+                                                 text="{comp-i18n-dashboard>Status}"/>
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4"
+                                                 text="{comp-i18n-dashboard>CompleteDate}"/>
+                                    </ute:Tag>
+                                    <ute:Tag content="{oOtherOrds>/results}">
+                                        <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-row">
+                                            <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1"
+                                                     text="{oOtherOrds>Type}"/>
+                                            <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2"
+                                                     text="{oOtherOrds>QMNUM}"/>
+                                            <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3"
+                                                     text="{oOtherOrds>Status}"/>
+                                            <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4"
+                                                     text="{parts:['oOtherOrds>Time'],
                                                             formatter:'._formatDate'}"/>
                                         </ute:Tag>
                                     </ute:Tag>

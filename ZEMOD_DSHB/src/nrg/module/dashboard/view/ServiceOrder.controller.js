@@ -31,8 +31,6 @@ sap.ui.define(
             var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard-svcodr'), 'oODataSvc');
-			//this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
-            //this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard-AcctAccessPty'),'oDataASvc');
 
             //Model to keep information to show
 			this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSelectedTabs');
@@ -185,6 +183,8 @@ sap.ui.define(
                     }
                     //This part need to move to else later
                     this._retrReconOrds(this._bpNum, this._caNum, sContract, sESID);
+                    this._retrDiscOrds(this._bpNum, this._caNum, sContract, sESID);
+                    this._retrOtherOrds(this._bpNum, this._caNum, sContract, sESID);
 
                 }.bind(this),
                 error: function (oError) {
@@ -252,6 +252,68 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oParameters);
             }
+        };
+
+        Controller.prototype._retrDiscOrds = function (sBpNum, sCaNum, sCoNum, sESID) {
+            var sPath,
+                aFilters = [],
+                oParameters,
+                oModel = this.getView().getModel('oODataSvc');
+
+            aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: sBpNum}));
+            aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNum}));
+            aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNum}));
+            aFilters.push(new Filter({ path: 'ESID', operator: FilterOperator.EQ, value1: sESID}));
+
+            sPath = '/DiscOrdS';
+
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData.results.length > 0) {
+                        this.getView().getModel('oDiscOrds').setData(oData);
+                        this.getView().getModel('oPndingVisType').setProperty('/visDisconnect', true);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+
+        };
+
+        Controller.prototype._retrOtherOrds = function (sBpNum, sCaNum, sCoNum, sESID) {
+            var sPath,
+                aFilters = [],
+                oParameters,
+                oModel = this.getView().getModel('oODataSvc');
+
+            aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: sBpNum}));
+            aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNum}));
+            aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNum}));
+            aFilters.push(new Filter({ path: 'ESID', operator: FilterOperator.EQ, value1: sESID}));
+
+            sPath = '/OtherOrdS';
+
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData.results.length > 0) {
+                        this.getView().getModel('oOtherOrds').setData(oData);
+                        this.getView().getModel('oPndingVisType').setProperty('/visOthers', true);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+
         };
 
          /*//Model for Reconnect
