@@ -65,13 +65,11 @@
                                         text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_MtrNum}"
                                         class="nrgDashboard-cusDataVerify-left-meterLabel"/>
                                 </utmain:Button>
-                                <utmain:Checkbox id="chk_advMtr" enabled="false"
-                                    class="nrgDashboard-cusDataVerify-left-meterCheckbox"
-                                    checked="{
-                                        parts:['oDtaVrfyContract>/SmartMeter'],
-                                        formatter:'._formatChecked'}"/>
                                 <utmain:Label labelFor="meter_num"
-                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RmtMtr}"
+                                    visible="{
+                                        parts:['oDtaVrfyContract>/SmartMeter'],
+                                        formatter:'._formatRemoteLabel'}"
+                                    text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_NonRmtMtr}"
                                     class="nrgDashboard-cusDataVerify-left-meterRemote"/>
                             </ute:Tag>
                             <!-- Value Section -->
