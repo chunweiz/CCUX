@@ -77,13 +77,13 @@
                                 <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl">
                                     <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr">
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1"
-                                                 text="{comp-i18n-dashboard>Type}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Type}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2"
-                                                 text="{comp-i18n-dashboard>Reason}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Reason}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3"
-                                                 text="{comp-i18n-dashboard>Status}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Status}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4"
-                                                 text="{comp-i18n-dashboard>CompleteDate}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-CompleteDate}"/>
                                     </ute:Tag>
                                     <ute:Tag content="{oEnrollHolds>/results}">
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-row">
@@ -102,13 +102,13 @@
                                 <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl">
                                     <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr">
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1"
-                                                 text="{comp-i18n-dashboard>Type}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Type}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2"
-                                                 text="{comp-i18n-dashboard>Reason}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Reason}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3"
-                                                 text="{comp-i18n-dashboard>Status}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Status}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4"
-                                                 text="{comp-i18n-dashboard>CompleteDate}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-CompleteDate}"/>
                                     </ute:Tag>
                                     <ute:Tag content="{oEnrollPndingStats>/results}">
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-row">
@@ -141,13 +141,13 @@
                                 <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl">
                                     <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr">
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1"
-                                                 text="{comp-i18n-dashboard>Type}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Type}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2"
-                                                 text="{comp-i18n-dashboard>Reason}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Reason}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3"
-                                                 text="{comp-i18n-dashboard>Status}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Status}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4"
-                                                 text="{comp-i18n-dashboard>CompleteDate}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-CompleteDate}"/>
                                     </ute:Tag>
                                     <ute:Tag content="{oReconOrds>/results}">
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-row">
@@ -180,13 +180,13 @@
                                 <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl">
                                     <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr">
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1"
-                                                 text="{comp-i18n-dashboard>Type}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Type}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2"
-                                                 text="{comp-i18n-dashboard>Reason}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Reason}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3"
-                                                 text="{comp-i18n-dashboard>Status}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Status}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4"
-                                                 text="{comp-i18n-dashboard>CompleteDate}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-CompleteDate}"/>
                                     </ute:Tag>
                                     <ute:Tag content="{oDiscOrds>/results}">
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-row">
@@ -219,13 +219,13 @@
                                 <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl">
                                     <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr">
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1"
-                                                 text="{comp-i18n-dashboard>Type}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Type}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2"
-                                                 text="{comp-i18n-dashboard>Reason}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Reason}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3"
-                                                 text="{comp-i18n-dashboard>Status}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-Status}"/>
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-hdr-cell nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4"
-                                                 text="{comp-i18n-dashboard>CompleteDate}"/>
+                                                 text="{comp-i18n-dashboard>nrgDashboard-servOrder-CompleteDate}"/>
                                     </ute:Tag>
                                     <ute:Tag content="{oOtherOrds>/results}">
                                         <ute:Tag class="nrgDashboard-cusSerOdr-rcdc-tbl-row">
