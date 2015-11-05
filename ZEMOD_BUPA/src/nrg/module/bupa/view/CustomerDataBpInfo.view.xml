@@ -209,7 +209,7 @@
                                         <l:MatrixLayoutRow>
                                             <l:MatrixLayoutCell>
                                                 <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-lbl"
-                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-APP_UNIT}:" />
+                                                         text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-APT_UNIT}:" />
                                             </l:MatrixLayoutCell>
                                             <l:MatrixLayoutCell>
                                                 <ute:Textfield fieldType="Noborder"
