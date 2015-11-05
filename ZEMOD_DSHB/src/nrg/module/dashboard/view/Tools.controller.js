@@ -18,6 +18,7 @@ sap.ui.define(
 				    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.Reconnect", this),
 					title: 'RECONNETION'
 				});
+                this._oReconnectPopup.addStyleClass('nrgDashboard-reconnectionPopup');
 				this.getView().addDependent(this._oReconnectPopup);
             }
             this._oReconnectPopup.open();
