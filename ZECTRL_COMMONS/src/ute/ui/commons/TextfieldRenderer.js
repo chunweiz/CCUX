@@ -153,7 +153,7 @@ sap.ui.define(
                 // Attributes
                 oRm.writeAttribute('id', oTextfield.getId() + '-input');
                 oRm.writeAttribute('name', oTextfield.getName());
-                oRm.writeAttribute('required');
+                oRm.writeAttribute('required','required');
                 if (oTextfield.getValue()) {
                     oRm.writeAttribute('value', oTextfield.getValue());
                 }
