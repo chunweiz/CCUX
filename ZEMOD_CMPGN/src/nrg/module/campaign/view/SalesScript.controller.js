@@ -59,7 +59,7 @@ sap.ui.define(
             this._sDate = oRouteInfo.parameters.sDate;
             sCurrentPath = sCurrentPath + "(OfferCode='" + this._sOfferCode + "',Contract='" + this._sContract + "',StartDate=" + this._sDate + ")";
             this._bindView(sCurrentPath);
-            sCurrentPath = "/ScriptS";
+            sCurrentPath = sCurrentPath + "/Scripts";
             // Handler function for Tab Bar Item.
             aFilterIds = ["Contract", "OfferCode", "TxtName"];
             aFilterValues = [this._sContract, this._sOfferCode, 'MAND'];
@@ -196,6 +196,7 @@ sap.ui.define(
                         model : "comp-campaign",
                         path : sPath
                     });
+
                 }
                 obinding.detachDataReceived(fnRecievedHandler);
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
@@ -250,13 +251,25 @@ sap.ui.define(
         Controller.prototype.onMandLngSelected = function (oEvent) {
             var sPath,
                 oMandDiscloureTV = this.getView().byId("idCamSSMdTv"),
-                sSelectedKey;
+                sSelectedKey,
+                oModel = this.getOwnerComponent().getModel('comp-campaign'),
+                oDropDownList = this.getView().byId("idnrgCamSSDdL");
             sSelectedKey = oEvent.getSource().getProperty("selectedKey");
-            sPath = "/ScriptS(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',TxtName='MAND',TxtLang='" + sSelectedKey + "')";
-            oMandDiscloureTV.bindElement({
-                model : "comp-campaign",
-                path : sPath
-            });
+            if ((oDropDownList) && (oDropDownList.getContent())) {
+                oDropDownList.getContent().forEach(function (item) {
+                    var oContext = item.getBindingContext("comp-campaign");
+                    if (sSelectedKey === oContext.getProperty("TxtLang")) {
+                        sPath = oContext.getPath();
+                    }
+                });
+            }
+            if (sPath) {
+                oMandDiscloureTV.bindElement({
+                    model : "comp-campaign",
+                    path : sPath
+                });
+            }
+
         };
         /**
 		 * Change the binding if the language is selected for Overview script
@@ -269,9 +282,17 @@ sap.ui.define(
         Controller.prototype.onOvwLngSelected = function (oEvent) {
             var sPath,
                 oOverScriptTV = this.getView().byId("idnrgCamOvsOvTv"),
-                sSelectedKey;
+                sSelectedKey,
+                oDropDownList = this.getView().byId("idnrgCamOvsDdL");
             sSelectedKey = oEvent.getSource().getProperty("selectedKey");
-            sPath = "/ScriptS(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',TxtName='OVW',TxtLang='" + sSelectedKey + "')";
+            if ((oDropDownList) && (oDropDownList.getContent())) {
+                oDropDownList.getContent().forEach(function (item) {
+                    var oContext = item.getBindingContext("comp-campaign");
+                    if (sSelectedKey === oContext.getProperty("TxtLang")) {
+                        sPath = oContext.getPath();
+                    }
+                });
+            }
             oOverScriptTV.bindElement({
                 model : "comp-campaign",
                 path : sPath
