@@ -1,4 +1,4 @@
-/*global sap*/
+/*global sap, d3*/
 /*jslint nomen:true*/
 sap.ui.define(
     [
@@ -58,8 +58,8 @@ sap.ui.define(
             if (!this.getDataModel()) {
                 return [];
             }
-            var aData = jQuery.extend(true, [], this.getDataModel().getData().data);
-            var fnDateParser = d3.time.format('%x').parse;
+            var aData = jQuery.extend(true, [], this.getDataModel().getData().data),
+                fnDateParser = d3.time.format('%x').parse;
 
             aData.forEach(function (data) {
                 data.meterReadDate = fnDateParser(data.meterReadDate);
@@ -69,15 +69,30 @@ sap.ui.define(
         };
 
         CustomControl.prototype._createChart = function () {
-            var oMargin = { top: 50, right: 40, bottom: 100, left: 80 };
-            var iWidth = this.getWidth() - oMargin.left - oMargin.right;
-            var iHeight = this.getHeight() - oMargin.top - oMargin.bottom - 50;
-            var aDataSet = this._getDataSet();
+            var oMargin = { top: 50, right: 40, bottom: 100, left: 80 },
+                iWidth = this.getWidth() - oMargin.left - oMargin.right,
+                iHeight = this.getHeight() - oMargin.top - oMargin.bottom - 50,
+                aDataSet = this._getDataSet(),
+                oCanvas,
+                aXScaleDomain,
+                fnScaleX,
+                iYAxisTickSize,
+                iMaxKwhUsage,
+                fnScaleY,
+                iBackgroundBarWidth,
+                sOddBgGradientId,
+                sEvenBgGradientId,
+                fnConsumptionXAxis,
+                fnConsumptionYGrid,
+                fnConsumptionYAxis,
+                oConsumptionLine,
+                oConsumptionDataPoint,
+                oConsumptionDataPointTooltip;
             if (!((aDataSet) && (aDataSet.length >  0))) {
                 return;
             }
             // Create a canvas with margin
-            var oCanvas = d3.select('#' + this.getId())
+            oCanvas = d3.select('#' + this.getId())
                 .append('svg')
                     .attr('width', this.getWidth())
                     .attr('height', this.getHeight() - 50)
@@ -85,26 +100,26 @@ sap.ui.define(
                         .attr('transform', 'translate(' + [ oMargin.left, oMargin.top ] + ')');
 
             // Base X scale - meter reading date
-            var aXScaleDomain = d3.extent(aDataSet, function (data) { return data.meterReadDate; });
+            aXScaleDomain = d3.extent(aDataSet, function (data) { return data.meterReadDate; });
             aXScaleDomain[0] = new Date(aXScaleDomain[0].getFullYear(), aXScaleDomain[0].getMonth(), 1); // Beginning of month of smallest date
             aXScaleDomain[1] = new Date(aXScaleDomain[1].getFullYear(), aXScaleDomain[1].getMonth() + 1, 0); // End of month of biggest date
 
-            var fnScaleX = d3.time.scale()
+            fnScaleX = d3.time.scale()
                 .domain(aXScaleDomain)
                 .range([0, iWidth]);
 
             // Base Y scale - kwh usage
-            var iYAxisTickSize = this.getConsumptionGroup() === 'REBS' ? 1000 : 500;
-            var iMaxKwhUsage = d3.max(aDataSet, function (data) { return data.kwhUsage; });
+            iYAxisTickSize = this.getConsumptionGroup() === 'REBS' ? 1000 : 500;
+            iMaxKwhUsage = d3.max(aDataSet, function (data) { return data.kwhUsage; });
 
-            var fnScaleY = d3.scale.linear()
+            fnScaleY = d3.scale.linear()
                 .domain([0, iMaxKwhUsage + (iYAxisTickSize - (iMaxKwhUsage % iYAxisTickSize))])
                 .range([iHeight, 0]);
 
             //Background gradient
-            var iBackgroundBarWidth = iWidth / aDataSet.length;
-            var sOddBgGradientId = this.getId() + '-oddBgGradient';
-            var sEvenBgGradientId = this.getId() + '-evenBgGradient';
+            iBackgroundBarWidth = iWidth / aDataSet.length;
+            sOddBgGradientId = this.getId() + '-oddBgGradient';
+            sEvenBgGradientId = this.getId() + '-evenBgGradient';
 
             oCanvas.append('linearGradient')
                 .attr('id', sOddBgGradientId)
@@ -140,17 +155,17 @@ sap.ui.define(
                 .enter()
                 .append('rect')
                     .attr('transform', function (data, index) {
-                        return 'translate(' + index * iBackgroundBarWidth + ',0)';
-                    })
+                    return 'translate(' + index * iBackgroundBarWidth + ',0)';
+                })
                     .attr('height', iHeight)
                     .attr('width', iBackgroundBarWidth)
                     .style('fill', function (data, index) {
-                        var sId = (index + 1) % 2 === 0 ? sEvenBgGradientId : sOddBgGradientId;
-                        return 'url(#' + sId + ')';
-                    });
+                    var sId = (index + 1) % 2 === 0 ? sEvenBgGradientId : sOddBgGradientId;
+                    return 'url(#' + sId + ')';
+                });
 
             // X axis
-            var fnConsumptionXAxis = d3.svg.axis()
+            fnConsumptionXAxis = d3.svg.axis()
                 .orient('bottom')
                 .scale(fnScaleX)
                 .tickValues(aDataSet.map(function (data) { return data.meterReadDate; }))
@@ -162,10 +177,10 @@ sap.ui.define(
                 .call(fnConsumptionXAxis).selectAll("text").style("text-anchor", "middle")
                     .attr("dx", "-.5em")
                     .attr("dy", ".15em")
-                    .attr("transform", "rotate(-65)" );
+                    .attr("transform", "rotate(-65)");
 
             // Y axis
-            var fnConsumptionYAxis = d3.svg.axis()
+            fnConsumptionYAxis = d3.svg.axis()
                 .orient('left')
                 .scale(fnScaleY)
                 .ticks(Math.floor(iMaxKwhUsage / iYAxisTickSize) + 1)
@@ -191,16 +206,16 @@ sap.ui.define(
                 .append('line')
                     .attr('class', 'tmUsageHistChart-consumptionXGrid')
                     .attr('x1', function (data, index) {
-                        return index * iBackgroundBarWidth;
-                    })
+                    return index * iBackgroundBarWidth;
+                })
                     .attr('y1', 0)
                     .attr('x2', function (data, index) {
-                        return index * iBackgroundBarWidth;
-                    })
+                    return index * iBackgroundBarWidth;
+                })
                     .attr('y2', iHeight);
 
             // Y grid
-            var fnConsumptionYGrid = d3.svg.axis()
+            fnConsumptionYGrid = d3.svg.axis()
                 .orient('left')
                 .scale(fnScaleY)
                 .ticks(Math.floor(iMaxKwhUsage / iYAxisTickSize) + 1)
@@ -212,7 +227,7 @@ sap.ui.define(
                 .call(fnConsumptionYGrid);
 
             // Consumption line
-            var oConsumptionLine = d3.svg.line()
+            oConsumptionLine = d3.svg.line()
                 .x(function (data) { return fnScaleX(data.meterReadDate); })
                 .y(function (data) { return fnScaleY(data.kwhUsage); });
 
@@ -221,7 +236,7 @@ sap.ui.define(
                 .attr('class', 'tmUsageHistChart-consumptionLine');
 
             // Consumption data points
-            var oConsumptionDataPoint = oCanvas.append('g').selectAll('circle.tmUsageHistChart-consumptionPoint')
+            oConsumptionDataPoint = oCanvas.append('g').selectAll('circle.tmUsageHistChart-consumptionPoint')
                 .data(aDataSet)
                 .enter()
                 .append('circle')
@@ -231,7 +246,7 @@ sap.ui.define(
                     .attr('class', 'tmUsageHistChart-consumptionPoint');
 
             // Consumption data point tooltip
-            var oConsumptionDataPointTooltip = oCanvas.append('g')
+            oConsumptionDataPointTooltip = oCanvas.append('g')
                 .attr('class', 'tmUsageHistChart-consumptionPointTooltip')
                 .style('display', 'none');
 
@@ -265,14 +280,18 @@ sap.ui.define(
         };
 
         CustomControl.prototype._createTemperatureChart = function () {
-            var oMargin = { top: 0, right: 60, bottom: 0, left: 100 };
-            var iWidth = this.getWidth() - oMargin.left - oMargin.right;
-            var iHeight = 30;
-            var aDataSet = this._getDataSet();
+            var oMargin = { top: 0, right: 60, bottom: 0, left: 100 },
+                iWidth = this.getWidth() - oMargin.left - oMargin.right,
+                iHeight = 30,
+                aDataSet = this._getDataSet(),
+                oCanvas,
+                fnTemperatureColorScale,
+                iTemperatureBarWidth,
+                oTemperatureBar;
             if (!((aDataSet) && (aDataSet.length >  0))) {
                 return;
             }
-            var oCanvas = d3.select('#' + this.getId())
+            oCanvas = d3.select('#' + this.getId())
                 .append('svg')
                     .attr('width', this.getWidth())
                     .attr('height', iHeight);
@@ -290,22 +309,22 @@ sap.ui.define(
                 .text('Temperature');
 
             // Temperature color scale
-            var fnTemperatureColorScale = d3.scale.linear()
+            fnTemperatureColorScale = d3.scale.linear()
                 .domain([30, 100])
                 .range(['#3597ce', '#c1563f'])
                 .clamp(true);
 
             // Temperature bar
-            var iTemperatureBarWidth = iWidth / aDataSet.length;
+            iTemperatureBarWidth = iWidth / aDataSet.length;
 
-            var oTemperatureBar = oCanvas.append('g').selectAll('g.tmUsageHistChart-temperature')
+            oTemperatureBar = oCanvas.append('g').selectAll('g.tmUsageHistChart-temperature')
                 .data(aDataSet)
                 .enter()
                 .append('g')
                     .attr('class', 'tmUsageHistChart-temperature')
                     .attr('transform', function (data, index) {
-                        return 'translate(' + index * iTemperatureBarWidth + ',0)';
-                    });
+                    return 'translate(' + index * iTemperatureBarWidth + ',0)';
+                });
 
             oTemperatureBar.append('rect')
                 .attr('class', 'tmUsageHistChart-temperatureBar')
