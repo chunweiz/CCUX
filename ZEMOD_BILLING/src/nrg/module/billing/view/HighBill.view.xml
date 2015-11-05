@@ -88,12 +88,12 @@
                         design="None"
                         text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-RATE_HISTORY_BTN}"
                         class="nrgBilling-highBill-headerBtn" 
-                        press="_onRatehistory"/>
+                        press="._onRatehistory"/>
                     <utmain:Button 
                         design="None"
                         text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-USAGE_BTN}"
                         class="nrgBilling-highBill-headerBtn" 
-                        press="_onUsagehistory"/>
+                        press="._onUsagehistory"/>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-highBill-cusDriven-body">
                     <m:ScrollContainer class="nrgBilling-highBill-cusDriven-body-scrollArea" height="150px" horizontal="false" vertical="true">

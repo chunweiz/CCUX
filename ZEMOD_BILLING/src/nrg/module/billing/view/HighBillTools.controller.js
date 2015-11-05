@@ -60,7 +60,7 @@ sap.ui.define(
             //this._oApp.setHeaderMenuItemSelected(false, App.HMItemId.Index);
 
             oWebUiManager.notifyWebUi('openIndex', {
-                LINK_ID: "Z_DUNH"
+                LINK_ID: "Z_HOME_CHK"
             });
         };
         /**
@@ -156,7 +156,7 @@ sap.ui.define(
             //this._oApp.setHeaderMenuItemSelected(false, App.HMItemId.Index);
 
             oWebUiManager.notifyWebUi('openIndex', {
-                LINK_ID: "Z_REI_WEB"
+                LINK_ID: "ZVASOPTSLN"
             });
         };
         return Controller;
