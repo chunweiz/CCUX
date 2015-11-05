@@ -16,23 +16,7 @@
 
 			var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataSummary');
 
-			Controller.prototype._formatBadge = function (cIndicator) {
-				if (cIndicator === 'x' || cIndicator === 'X') {
-					return true;
-				} else {
-					return false;
-				}
-			};
-
-			Controller.prototype._formatSiebel = function (cIndicator) {
-				if (cIndicator === 'x' || cIndicator === 'X') {
-					return true;
-				} else {
-					return false;
-				}
-			};
-
-			Controller.prototype.onInit = function(){
+			Controller.prototype.onInit = function() {
 
 			};
 
@@ -40,13 +24,13 @@
 				this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
 				this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard-AcctAccessPty'),'oDataASvc');
 
-
-				//Model to keep information to show
+				// Model to keep information to show
 				this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryBpInf');
-
 				this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryBuagInf');
-
 				this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryAllBuags');
+
+				// Model to keep information of badges
+				this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryCoBadges');				
 
 				//Model to keep segmentation information
 				this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryBpSegInf');
@@ -76,8 +60,17 @@
 
 			Controller.prototype.onAfterRendering = function () {
 				var oEventBus = sap.ui.getCore().getEventBus();
+
+				// Subscribe CA change events
 				oEventBus.subscribe("nrg.module.dashoard", "eBuagChanged", this._handleBuagChanged, this);
 				oEventBus.subscribe("nrg.module.dashoard", "eBuagChangedFromCaInfo", this._handleCaInfoContractChanged, this);
+				// Subscribe CO change events
+	            oEventBus.subscribe("nrg.module.dashoard", "eCoChanged", this._handleCoChanged, this);
+			};
+
+			Controller.prototype._handleCoChanged = function (channel, event, data) {
+				var oCoBadgesModel = this.getView().getModel('oSmryCoBadges');
+				oCoBadgesModel.setData(data.coInfo.COBadges);
 			};
 
 			Controller.prototype._handleCaInfoContractChanged = function (channel, event, data) {
@@ -90,7 +83,6 @@
 						return;
 					}
 				}
-
 			};
 
 			Controller.prototype._handleBuagChanged = function (channel, event, data) {
@@ -474,6 +466,22 @@
                     LINK_ID: "Z_ACC_AUTH"
                 });
 	        };
+
+	        Controller.prototype._formatBadge = function (cIndicator) {
+				if (cIndicator === 'x' || cIndicator === 'X') {
+					return true;
+				} else {
+					return false;
+				}
+			};
+
+			Controller.prototype._formatSiebel = function (cIndicator) {
+				if (cIndicator === 'x' || cIndicator === 'X') {
+					return true;
+				} else {
+					return false;
+				}
+			};
 
 			return Controller;
 		}

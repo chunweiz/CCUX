@@ -101,6 +101,7 @@ sap.ui.define(
 
             // Subscribe footer events
             var oEventBus = sap.ui.getCore().getEventBus();
+            oEventBus.unsubscribe("nrg.module.app", "eInvalidEmail", this._handleEmailEdit, this);
             oEventBus.subscribe("nrg.module.app", "eInvalidEmail", this._handleEmailEdit, this);
         };
 
@@ -1232,7 +1233,11 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         // Load the first CO to display
-                        if (oData.results[0]) this.getView().getModel('oDtaVrfyContract').setData(oData.results[0]);
+                        if (oData.results[0]) {
+                            this.getView().getModel('oDtaVrfyContract').setData(oData.results[0]);
+                            // Publish the CO Change event to event bus
+                            this._onCoChange(oData.results[0]);
+                        }
                         // Reset the CO pagination
                         this._initCoPageModel();
                         // Set up the CO pagination
@@ -1461,11 +1466,21 @@ sap.ui.define(
             // Update the CO pagination
             this._refreshPaging();
 
+            // Publish the CO Change event to event bus
+            this._onCoChange(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
+
             // Confirm with WebUI and CCUX
             this._routeInfoConfirm();
 
             // Update the linkability of METER lable
             this._updateUsageLink();
+        };
+
+        Controller.prototype._onCoChange = function (oCoInfo) {
+            var eventBus = sap.ui.getCore().getEventBus(),
+                oPayload = {coInfo: oCoInfo};
+
+            eventBus.publish("nrg.module.dashoard", "eCoChanged", oPayload);
         };
 
         /**********************************************/
@@ -1547,7 +1562,8 @@ sap.ui.define(
                 iSelectedIndex = oPage[0].co_ind - 1;
 
             this.getView().getModel('oDtaVrfyContract').setData(oContracts.oData[iSelectedIndex]);
-            //delete this.getView().getModel('oDtaVrfyContract').oData.iIndex;
+            // Publish the CO Change event to event bus
+            this._onCoChange(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
 
             oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
             this._refreshPaging();
@@ -1559,7 +1575,8 @@ sap.ui.define(
                 i;
 
             this.getView().getModel('oDtaVrfyContract').setData(oContracts.oData[iSelectedIndex]);
-            //delete this.getView().getModel('oDtaVrfyContract').oData.iIndex;
+            // Publish the CO Change event to event bus
+            this._onCoChange(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
 
             oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
             this._refreshPaging();
@@ -1570,7 +1587,8 @@ sap.ui.define(
                 iSelectedIndex = oPage[2].co_ind - 1;
 
             this.getView().getModel('oDtaVrfyContract').setData(oContracts.oData[iSelectedIndex]);
-            //delete this.getView().getModel('oDtaVrfyContract').oData.iIndex;
+            // Publish the CO Change event to event bus
+            this._onCoChange(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
 
             oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
             this._refreshPaging();
