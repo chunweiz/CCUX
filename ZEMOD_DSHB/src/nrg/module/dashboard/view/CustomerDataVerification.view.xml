@@ -99,7 +99,7 @@
                                 text="{oDtaVrfyBuags>/ContractAccountID}-{oDtaVrfyBuags>/CheckDigit}"
                                 class="nrgDashboard-cusDataVerify-left-contractVal"/>
                         </ute:Tag>
-                        <!-- Rate -->
+                        <!-- Market Class -->
                         <ute:Tag class="nrgDashboard-cusDataVerify-left-rate">
                             <utmain:Label labelFor="rtcls_lbl"
                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_RtCls}"
