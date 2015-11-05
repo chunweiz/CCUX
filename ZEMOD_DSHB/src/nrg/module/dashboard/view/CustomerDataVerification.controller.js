@@ -282,6 +282,14 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._formatRemoteLabel = function (sIndicator) {
+            if (sIndicator === 'x' || sIndicator === 'X') {
+                return false;
+            } else {
+                return true;
+            }
+        };
+
         Controller.prototype._formatSMSBtn = function (sIndicator) {
             if (sIndicator === 'x' || sIndicator === 'X') {
                 return false;
