@@ -57,7 +57,7 @@ sap.ui.define(
             sCurrentPath = i18NModel.getProperty("nrgCpgChangeOffSet");
             sCurrentPath = "/CpgChgOfferS";
             this._sDate = oRouteInfo.parameters.sDate;
-            sCurrentPath = sCurrentPath + "(OfferCode='" + this._sOfferCode + "',Contract='" + this._sContract + "',StartDate=" + this._sDate + ")";
+            sCurrentPath = sCurrentPath + "(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',StartDate=" + this._sDate + ")";
             this._bindView(sCurrentPath);
             sCurrentPath = sCurrentPath + "/Scripts";
             // Handler function for Tab Bar Item.
@@ -178,6 +178,8 @@ sap.ui.define(
             aFilterIds = ["Contract", "OfferCode", "TxtName"];
             aFilterValues = [this._sContract, this._sOfferCode, "OVW"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            sCurrentPath = "/CpgChgOfferS";
+            sCurrentPath = sCurrentPath + "(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',StartDate=" + this._sDate + ")";
             sCurrentPath = "/ScriptS";
             this._oOverviewDialog.setWidth("750px");
             this._oOverviewDialog.setHeight("auto");
