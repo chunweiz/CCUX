@@ -553,15 +553,15 @@
                 </l:MatrixLayout>
 
                 <ute:Tag elem="div" class="nrgBupa-cusDataCaInfo-btn clearfix">
-                    <utmain:Button class="nrgBupa-cusDataCaInfo-CommBtn"
+                    <ute:Button class="nrgBupa-cusDataCaInfo-CommBtn"
                                    press="onTempAddrCancel"
                                    visible="{oCaInfoConfig>/tempAddrSaveVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataCaInfo-CANCEL}"/>
-                    <utmain:Button class="nrgBupa-cusDataCaInfo-CommBtn"
+                    <ute:Button class="nrgBupa-cusDataCaInfo-CommBtn"
                                    press="onTempAddrUpdate"
                                    visible="{oCaInfoConfig>/tempAddrAddnewVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataCaInfo-UPDATE}"/>
-                    <utmain:Button class="nrgBupa-cusDataCaInfo-CommBtn"
+                    <ute:Button class="nrgBupa-cusDataCaInfo-CommBtn"
                                    press="._onEditTempAddrClick"
                                    visible="{oCaInfoConfig>/tempAddrSaveVisible}"
                                    text="{comp-i18n-bupa>nrgBupa-cusDataCaInfo-SAVE}"/>

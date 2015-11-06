@@ -56,6 +56,8 @@
         <Property Name="CA" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Contract Account" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
         <Property Name="Contract" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Contract" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
         <Property Name="ESID" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="ESI" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+        <Property Name="Requester" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Requester" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="CreateDate" Type="Edm.DateTimeOffset" Nullable="false" Precision="0" sap:label="Create Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Disconnect/Reconnect/Other" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
         <Property Name="Status" Type="Edm.String" Nullable="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="Time" Type="Edm.DateTimeOffset" Nullable="false" Precision="0" sap:label="Timestamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
@@ -93,9 +95,10 @@
       <EntityContainer Name="ZE_CCUX_SRV_ORD_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
         <EntitySet Name="Reconnects" EntityType="ZE_CCUX_SRV_ORD_SRV.Reconnect" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
         <EntitySet Name="PendStatS" EntityType="ZE_CCUX_SRV_ORD_SRV.PendStat" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
-        <EntitySet Name="DiscOrdS" EntityType="ZE_CCUX_SRV_ORD_SRV.SrvOrd" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
         <EntitySet Name="ReconOrdS" EntityType="ZE_CCUX_SRV_ORD_SRV.SrvOrd" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+        <EntitySet Name="DiscOrdS" EntityType="ZE_CCUX_SRV_ORD_SRV.SrvOrd" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
         <EntitySet Name="OtherOrdS" EntityType="ZE_CCUX_SRV_ORD_SRV.SrvOrd" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+        <EntitySet Name="ComplOrdS" EntityType="ZE_CCUX_SRV_ORD_SRV.SrvOrd" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
         <EntitySet Name="EnrollHoldS" EntityType="ZE_CCUX_SRV_ORD_SRV.EnrollHold" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
         <EntitySet Name="SrvAddrS" EntityType="ZE_CCUX_SRV_ORD_SRV.SrvAddr" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
       </EntityContainer>
