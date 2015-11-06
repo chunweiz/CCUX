@@ -18,3 +18,84 @@
         margin-bottom: 5px;
     }
 }
+
+
+.nrgDashboard-reconnectionPopup {
+	width: 1000px;
+    font-family: @nrgFontFamily;
+
+    // Header
+    & .sapUiDlgHdr {
+        height: 60px;
+        margin: 0;
+        padding: 20px 30px 0 30px;
+        display: flex;
+        justify-content: space-between;
+
+        & .sapUiDlgHdrLeft {
+
+            & .sapUiDlgLabel {
+                font-size: @nrgFontSize-large;
+            }
+        }
+
+        & .sapUiDlgHdrBtns {
+            position: relative;
+            margin-right: 0;
+
+            & .sapUiDlgCloseBtn {
+                &::before {
+                    height: 20px;
+                    width: 2px;
+                    transform: translate(6px,0) rotate(45deg);
+                }
+                &::after {
+                    height: 20px;
+                    width: 2px;
+                }
+            }
+
+        }
+    }
+
+    & .sapUiDlgHdrSep{
+        display: none;
+    }
+
+    & .sapUiDlgCont{
+        background-color: @nrgColor-blue-pearl;
+        margin: 0px;
+        padding: 10px;
+        margin-top: 20px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt{
+        display: flex;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left{
+        flex: 1;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left > .nrgDashboard-reconnectionPopup-ctnt-left-info{
+        border-right: 1px dashed @nrgColor-grey-dark;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left > .nrgDashboard-reconnectionPopup-ctnt-left-info > .nrgDashboard-reconnectionPopup-cli-title{
+        font-size: @nrgFontSize-base;
+        font-weight: @nrgFontWeight-semiBold;
+        margin-left: 28px;
+        margin-top: 10px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left > .nrgDashboard-reconnectionPopup-ctnt-left-info > .nrgDashboard-reconnectionPopup-cli-title{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-regular;
+        margin-left: 36px;
+        margin-top: 4px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght{
+        flex: 1;
+    }
+}

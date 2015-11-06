@@ -203,7 +203,7 @@
                                         <ute:Tag id="nrgAppFtrDetails-eligibleOffers-historyItem"
                                             class="nrgAppFtrDetails-eligibleOffers-itemContent historyItem"
                                             text=""
-                                            press="_onCampaignItemClick"/>
+                                            />
                                     </utmain:Button>
                                 </ute:Tag>
                             </sm:ScrollContainer>

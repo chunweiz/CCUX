@@ -1,5 +1,5 @@
 /*global sap*/
-
+/*jslint nomen:true*/
 sap.ui.define(
     [
         'jquery.sap.global',
@@ -69,26 +69,24 @@ sap.ui.define(
         };
 
         CustomControl.prototype._scroll = function (iDelta, iDuration) {
-            var oDomRef = this.getDomRef('channelContainer');
-    		var iScrollLeft = oDomRef.scrollLeft;
-    		var iScrollTarget = iScrollLeft + iDelta;
+            var oDomRef = this.getDomRef('channelContainer'),
+                iScrollLeft = oDomRef.scrollLeft,
+                iScrollTarget = iScrollLeft + iDelta;
 
-    		jQuery(oDomRef).stop(true, true).animate({
+            jQuery(oDomRef).stop(true, true).animate({
                 scrollLeft: iScrollTarget
             }, iDuration);
         };
 
         CustomControl.prototype._checkOverflow = function () {
-            var oChannelContainerDomRef = this.getDomRef('channelContainer');
-            var oNavBack = this.$('navBack');
-            var oNavForward = this.$('navForward');
-
-            var iScrollLeft = oChannelContainerDomRef.scrollLeft;
-			var iScrollWidth = oChannelContainerDomRef.scrollWidth;
-			var iClientWidth = oChannelContainerDomRef.clientWidth;
-
-            var bScrollBack = false;
-			var bScrollForward = false;
+            var oChannelContainerDomRef = this.getDomRef('channelContainer'),
+                oNavBack = this.$('navBack'),
+                oNavForward = this.$('navForward'),
+                iScrollLeft = oChannelContainerDomRef.scrollLeft,
+			    iScrollWidth = oChannelContainerDomRef.scrollWidth,
+			    iClientWidth = oChannelContainerDomRef.clientWidth,
+                bScrollBack = false,
+			    bScrollForward = false;
 
             if (Math.abs(iScrollWidth - iClientWidth) === 1) {
 				iScrollWidth = iClientWidth;

@@ -1,5 +1,5 @@
 /*global sap*/
-
+/*jslint nomen:true*/
 sap.ui.define(
     [
         'nrg/module/billing/view/control/CustomerJourneyTimelineChannel'

@@ -7,7 +7,14 @@
     xmlns:l="sap.ui.commons.layout"
     xmlns:core="sap.ui.core"
     xmlns:m="sap.m">
-    <ute:Tag id="idAddrUpdatePopup">
-
+    <ute:Tag id="idReconnectPopup" class="nrgDashboard-reconnectionPopup-ctnt">
+        <ute:Tag class="nrgDashboard-reconnectionPopup-ctnt-left">
+            <ute:Tag class="nrgDashboard-reconnectionPopup-ctnt-left-info">
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cli-title" text="Account Information"/>
+            </ute:Tag>
+        </ute:Tag>
+        <ute:Tag class="nrgDashboard-reconnectionPopup-ctnt-rght">
+            <ute:Tag text="Test"/>
+        </ute:Tag>
     </ute:Tag>
 </core:FragmentDefinition>
