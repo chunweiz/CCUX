@@ -88,6 +88,7 @@
 			Controller.prototype._handleBuagChanged = function (channel, event, data) {
 				this._selectBuag(data.iIndex);
 			};
+			
 			Controller.prototype._initRetrBpInf = function () {
 				var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
 					//sBpNum,

@@ -38,23 +38,31 @@
                                              text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-PAY_NOW}"/>
                                 </utmain:Button>
 
-                                <ute:Tag>
+                                <!-- Invoice Selection -->
+                                <ute:Tag class="nrgBilling-cusDataBil-invoiceSec">
                                     <ute:Tag text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-INVOCE_NUM}"
-                                             class="nrgBilling-cusDataBil-referer-lbl"/>
+                                        class="nrgBilling-cusDataBil-referer-lbl"/>
                                     <utmain:Button class="nrgBilling-cusDataBil-referer-linkFirst" design="None"
-                                                   press="._onInvoiceNumClicked"
-                                                   text="{oBillingInvoices>/InvoiceNum}"/>
+                                        press="._onInvoiceNumClicked"
+                                        text="{oBillingInvoices>/InvoiceNum}"/>
+                                    <core:Icon src="sap-icon://nrg-icon/calendar"
+                                        class="nrgBilling-cusDataBil-invoiceSelect-icon"
+                                        press="._onInvoiceSelectClicked"/>
                                 </ute:Tag>
-
-                                <ute:Tag>
+                                
+                                <!-- Refer To -->
+                                <ute:Tag class="nrgBilling-cusDataBil-referSec">
                                     <ute:Tag text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-REFER_TO}"
                                              class="nrgBilling-cusDataBil-referer-lbl"/>
-                                    <utmain:Button class="nrgBilling-cusDataBil-referer-linkFirst" design="None"
-                                                   text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-CHKBOOK}"
-                                                   press="._onChkbookLnkClicked"/>
-                                    <utmain:Button class="nrgBilling-cusDataBil-referer-linkSecnd" design="None"
-                                                   text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-HighBill}"
-                                                   press="._onHighbillLnkClicked"/>
+
+                                    <ute:Tag class="nrgBilling-cusDataBil-referer-btnSec">
+                                        <utmain:Button class="nrgBilling-cusDataBil-referer-linkFirst" design="None"
+                                           text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-CHKBOOK}"
+                                           press="._onChkbookLnkClicked"/>
+                                        <utmain:Button class="nrgBilling-cusDataBil-referer-linkSecond" design="None"
+                                           text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-HighBill}"
+                                           press="._onHighbillLnkClicked"/>
+                                    </ute:Tag>
                                     <!--<utmain:Dropdown id="referer"
                                                      design="Default"
                                                      class="nrgBilling-cusDataBil-referer-dropdown"
@@ -66,6 +74,7 @@
                                         </utmain:DropdownItem>
                                     </utmain:Dropdown>-->
                                 </ute:Tag>
+
                                 <ute:Tag class="nrgBilling-cusDataBil-msgs" id="idnrgBillingMsgs">
 
                                 </ute:Tag>
