@@ -41,10 +41,10 @@
                              text="{comp-i18n-dashboard>nrgDashboard-servOrder-Address}"/>
                     <utmain:Dropdown id="idESIDDropdown"
                         class="nrgDashboard-cusSerOdr-rgtArea-dpdwn-title-dropdownMenu"
-                        selectedKey="{oESIDDropdown>/results/selectedKey}"
+                        selectedKey="{oESIDDropdown>/results/iInd}"
                         content="{oESIDDropdown>/results}"
                         select="._onESIDSelect">
-                        <utmain:DropdownItem key="{oESIDDropdown>ESID}">
+                        <utmain:DropdownItem key="{oESIDDropdown>iInd}">
                             <ute:Tag elem="span"
                                      text="{oESIDDropdown>ESID} / {oESIDDropdown>House} {oESIDDropdown>Street} {oESIDDropdown>Apt}, {oESIDDropdown>City} {oESIDDropdown>State} {oESIDDropdown>ZIP}"/>
                         </utmain:DropdownItem>
