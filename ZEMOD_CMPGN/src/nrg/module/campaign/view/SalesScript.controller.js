@@ -47,7 +47,9 @@ sap.ui.define(
                 aContent,
                 sPath,
                 oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
-                i18NModel;
+                i18NModel,
+                oContext,
+                sPromo = "";
             i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oRouteInfo.parameters.coNum;
@@ -58,11 +60,15 @@ sap.ui.define(
             sCurrentPath = "/CpgChgOfferS";
             this._sDate = oRouteInfo.parameters.sDate;
             sCurrentPath = sCurrentPath + "(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',StartDate=" + this._sDate + ")";
+            oContext = oModel.getContext(sCurrentPath);
+            if (oContext) {
+                sPromo = oContext.getProperty("Promo");
+            }
             this._bindView(sCurrentPath);
             sCurrentPath = sCurrentPath + "/Scripts";
             // Handler function for Tab Bar Item.
-            aFilterIds = ["Contract", "OfferCode", "TxtName"];
-            aFilterValues = [this._sContract, this._sOfferCode, 'MAND'];
+            aFilterIds = ["Promo", "TxtName"];
+            aFilterValues = [sPromo, 'MAND'];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oDropDownList = this.getView().byId("idnrgCamSSDdL");
             oDropDownListItemTemplate = this.getView().byId("idnrgCamSSLngLtIt").clone();
