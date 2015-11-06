@@ -327,7 +327,7 @@ sap.ui.define(
 
         /*---------------------------------------------- Invoice Selection Popup --------------------------------------------*/
 
-        CustomController.prototype._onInvoiceNumClicked = function () {
+        CustomController.prototype._onInvoiceSelectClicked = function () {
             var bRetrieveComplete = false;
 
             // Display the loading indicator
@@ -427,7 +427,8 @@ sap.ui.define(
         CustomController.prototype._initializeFilters = function () {
             var oInvSelFiltersModel = this.getView().getModel('oInvoiceSelectFilters');
 
-            oInvSelFiltersModel.setProperty('/All', false);
+            oInvSelFiltersModel.setProperty('/All', true);
+            this._onSelectAll();
             oInvSelFiltersModel.setProperty('/Disconnect', false);
             oInvSelFiltersModel.setProperty('/Invoice', false);
             oInvSelFiltersModel.setProperty('/Reversal', false);
