@@ -12,6 +12,8 @@
         "CA":"000070352880",
         "Contract":"0034910949",
         "ESID":"1008901023811218130100",
+        "Requester": "Customer",
+        "CreateDate":"\/Date(1087755729000+0000)\/",
         "Type":"Disconnection",
         "Status":"processed",
         "Time":"\/Date(1036185750000+0000)\/"
@@ -27,6 +29,8 @@
         "CA":"000070352880",
         "Contract":"0034910949",
         "ESID":"1008901023811218130100",
+        "Requester": "Customer",
+        "CreateDate":"\/Date(1087755729000+0000)\/",
         "Type":"Disconnection",
         "Status":"processed",
         "Time":"\/Date(1042123572000+0000)\/"

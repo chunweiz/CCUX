@@ -52,6 +52,9 @@ sap.ui.define(
             //Model for Others
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oOtherOrds');
 
+            //Model for Completed Orders
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCompleteOrds');
+
             // Retrieve routing parameters
             this._bpNum = oRouteInfo.parameters.bpNum;
             this._caNum = oRouteInfo.parameters.caNum;
@@ -115,15 +118,31 @@ sap.ui.define(
         Controller.prototype._onPendingTabClicked = function () {
             this.getView().getModel('oSelectedTabs').setProperty('/pendingSelected', true);
             this.getView().getModel('oSelectedTabs').setProperty('/completeSelected', false);
+            if (this.getView().getModel('oESIDDropdown').oData.results) {
+                this._retrEnrollHolds(this.getView().getModel('oESIDDropdown').oData.results[0].ESID, this.getView().getModel('oESIDDropdown').oData.results[0].Contract);
+            }
         };
 
         Controller.prototype._onCompleteTabClicked = function () {
             this.getView().getModel('oSelectedTabs').setProperty('/pendingSelected', false);
             this.getView().getModel('oSelectedTabs').setProperty('/completeSelected', true);
+            if (this.getView().getModel('oESIDDropdown').oData.results) {
+                this._retrCompleteOrds(this._bpNum, this._caNum, this.getView().getModel('oESIDDropdown').oData.results[0].Contract, this.getView().getModel('oESIDDropdown').oData.results[0].ESID);
+            }
+
+            //Controller.prototype._retrCompleteOrds = function (sBpNum, sCaNum, sCoNum, sESID) {
         };
 
         Controller.prototype._onESIDSelect = function (oEvent) {
-            var temp = oEvent;
+            if (this.getView().getModel('oSelectedTabs').getProperty('/pendingSelected')) {
+                if (this.getView().getModel('oESIDDropdown').oData.results) {
+                    this._retrEnrollHolds(this.getView().getModel('oESIDDropdown').oData.results[oEvent.mParameters.selectedKey].ESID, this.getView().getModel('oESIDDropdown').oData.results[oEvent.mParameters.selectedKey].Contract);
+                }
+            } else {
+                if (this.getView().getModel('oESIDDropdown').oData.results) {
+                    this._retrCompleteOrds(this._bpNum, this._caNum, this.getView().getModel('oESIDDropdown').oData.results[oEvent.mParameters.selectedKey].Contract, this.getView().getModel('oESIDDropdown').oData.results[oEvent.mParameters.selectedKey].ESID);
+                }
+            }
         };
         /********************************************************************************************************************************/
 
@@ -134,7 +153,8 @@ sap.ui.define(
             var sPath,
                 aFilters = [],
                 oParameters,
-                oModel = this.getView().getModel('oODataSvc');
+                oModel = this.getView().getModel('oODataSvc'),
+                i;
 
             aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: this._caNum}));
 
@@ -145,8 +165,11 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         oData.results.selectedKey = '';
+                        for (i = 0 ; i < oData.results.length; i = i + 1) {
+                            oData.results[i].iInd = i;
+                        }
                         this.getView().getModel('oESIDDropdown').setData(oData);
-                        this.getView().byId('idESIDDropdown').setSelectedKey(oData.results[0].ESID);
+                        this.getView().byId('idESIDDropdown').setSelectedKey(oData.results[0].iInd);
                         this._retrEnrollHolds(oData.results[0].ESID, oData.results[0].Contract);
                     }
                 }.bind(this),
@@ -313,17 +336,39 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oParameters);
             }
-
         };
 
-         /*//Model for Reconnect
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), '');
 
-            //Model for Disconnect
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDiscOrds');
+        Controller.prototype._retrCompleteOrds = function (sBpNum, sCaNum, sCoNum, sESID) {
+            var sPath,
+                aFilters = [],
+                oParameters,
+                oModel = this.getView().getModel('oODataSvc');
 
-            //Model for Others
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oOtherOrds');*/
+            aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: sBpNum}));
+            aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNum}));
+            aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNum}));
+            aFilters.push(new Filter({ path: 'ESID', operator: FilterOperator.EQ, value1: sESID}));
+
+            sPath = '/ComplOrdS';
+
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData.results.length > 0) {
+                        this.getView().getModel('oCompleteOrds').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+
 
         /********************************************************************************************************************************/
 

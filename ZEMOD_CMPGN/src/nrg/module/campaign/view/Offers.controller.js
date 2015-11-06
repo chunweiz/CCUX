@@ -863,7 +863,53 @@ sap.ui.define(
         Controller.prototype.backToOverview = function (oEvent) {
             this.navTo("campaign", {bpNum: this._sBP, caNum: this._sCA, coNum : this._sContract, typeV : "C"});
         };
+        /**
+		 * Reset back to original
+		 *
+		 * @function
+         *
+		 */
+        Controller.prototype.resetView = function () {
+            var oFirstCardInvoice = this.getView().byId("idnrgCamOff-firstCardI"),
+                oSecondCardInvoice = this.getView().byId("idnrgCamOff-SecondCardI"),
+                oFirstCardConsumption = this.getView().byId("idnrgCamOff-firstCardC"),
+                oSecondCardConsumption = this.getView().byId("idnrgCamOff-SecondCardC"),
+                oProactiveButton = this.getView().byId("idCamToggleBtn-P"),
+                oReactiveButton = this.getView().byId("idCamToggleBtn-R"),
+                oSaveButton = this.getView().byId("idCamToggleBtn-S"),
+                oFinalSaveButton = this.getView().byId("idCamToggleBtn-FS"),
+                oSearchButton = this.getView().byId("idCamToggleBtn-SE"),
+                oTableTag;
 
+            oFirstCardInvoice.unBindContext("comp-campaign");
+            oSecondCardInvoice.unBindContext("comp-campaign");
+            oFirstCardConsumption.unBindContext("comp-campaign");
+            oSecondCardConsumption.unBindContext("comp-campaign");
+
+            oTableTag = this.byId(sap.ui.core.Fragment.createId("Invoice1", "idnrgCamOffPriceT"));
+            if (oTableTag) {
+                oTableTag.removeAllAggregation("content");
+            }
+            oTableTag = this.byId(sap.ui.core.Fragment.createId("Invoice2", "idnrgCamOffPriceT"));
+            if (oTableTag) {
+                oTableTag.removeAllAggregation("content");
+            }
+            oTableTag = this.byId(sap.ui.core.Fragment.createId("Cons1", "idnrgCamOffPriceT"));
+            if (oTableTag) {
+                oTableTag.removeAllAggregation("content");
+            }
+            oTableTag = this.byId(sap.ui.core.Fragment.createId("Cons2", "idnrgCamOffPriceT"));
+            if (oTableTag) {
+                oTableTag.removeAllAggregation("content");
+            }
+
+
+            oProactiveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oReactiveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oSaveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oFinalSaveButton.removeStyleClass("nrgCamOff-btn-selected");
+            oSearchButton.addStyleClass("nrgCamOff-btn-selected");
+        };
         /**
 		 * Converts in to EFL Json format required by Template view.
 		 *
