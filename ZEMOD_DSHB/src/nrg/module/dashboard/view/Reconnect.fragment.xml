@@ -10,7 +10,34 @@
     <ute:Tag id="idReconnectPopup" class="nrgDashboard-reconnectionPopup-ctnt">
         <ute:Tag class="nrgDashboard-reconnectionPopup-ctnt-left">
             <ute:Tag class="nrgDashboard-reconnectionPopup-ctnt-left-info">
+                <!--Account Info-->
                 <ute:Tag class="nrgDashboard-reconnectionPopup-cli-title" text="Account Information"/>
+                <ute:Tag>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="Partner Name:"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="421820 CONG LE"/>
+                </ute:Tag>
+                <ute:Tag>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="Account Name:"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="711443600 CONG LE"/>
+                </ute:Tag>
+                <!--Meter Info-->
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cli-title nrgDashboard-reconnectionPopup-cli-title-second" text="Meter Information"/>
+                <ute:Tag>
+                    <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cli-radio"
+                            checked="true" group="Emergency"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-radiolbl" text="Standard Reconnect"/>
+                    <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cli-radio" group="Emergency"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-radiolbl" text="Emergency Reconnect"/>
+                </ute:Tag>
+                <ute:Tag>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="Disconnection Fee:"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="UP TO $61.00"/>
+                </ute:Tag>
+                <ute:Tag>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="Reconnection Fee:"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="UP TO $246.00"/>
+                </ute:Tag>
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label-ctnt" text="(will be added to your next invoice)"/>
             </ute:Tag>
         </ute:Tag>
         <ute:Tag class="nrgDashboard-reconnectionPopup-ctnt-rght">
