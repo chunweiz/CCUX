@@ -58,8 +58,9 @@ sap.ui.define(
             this.rerender();
         };
 
-        CustomControl.prototype.setDataModel = function (model) {
+        CustomControl.prototype.setDataModel = function (model, fnCallback) {
             this._oDataModel = model;
+            if (fnCallback) fnCallback();
             return this;
         };
 

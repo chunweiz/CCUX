@@ -24,11 +24,6 @@
         <!-- Filter Area -->
         <ute:Tag class="nrgBilling-invSelPopup-filterArea">
             <ute:Tag class="nrgBilling-invSelPopup-filterArea-item">
-                <utmain:Checkbox id="id_InvSel_Filter_All" class="nrgBilling-invSelPopup-filterArea-filter"
-                    checked="{oInvoiceSelectFilters>/All}" select="_onSelectAll"/>
-                <utmain:Label labelFor="id_InvSel_Filter_All" text="Select All"/>
-            </ute:Tag>
-            <ute:Tag class="nrgBilling-invSelPopup-filterArea-item">
                 <utmain:Checkbox id="id_InvSel_Filter_DSNote" class="nrgBilling-invSelPopup-filterArea-filter"
                     checked="{oInvoiceSelectFilters>/Disconnect}" select="_onSelectDisconnect"/>
                 <utmain:Label labelFor="id_InvSel_Filter_DSNote" text="Disconection Notice"/>
@@ -52,6 +47,7 @@
                 <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item number" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_NUMBER}"/>
                 <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item description" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_DESCRIPTION}"/>
                 <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item view" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_VIEW}"/>
+                <utmain:Checkbox id="id_InvSel_Filter_All" class="nrgBilling-invSelPopup-tableHeader-item" checked="{oInvoiceSelectFilters>/All}" select="_onSelectAll"/>
             </ute:Tag>
             <!-- Body -->
             <sm:ScrollContainer
