@@ -20,24 +20,6 @@
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="Account Name:"/>
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="711443600 CONG LE"/>
                 </ute:Tag>
-                <!--Disconnection/Reconnection Fee Expectations-->
-                <ute:Tag class="nrgDashboard-reconnectionPopup-cli-title nrgDashboard-reconnectionPopup-cli-title-second" text="Disconnection/Reconnection Fee Expectations"/>
-                <ute:Tag>
-                    <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cli-radio"
-                            checked="true" group="Emergency"/>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-radiolbl" text="Standard Reconnect"/>
-                    <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cli-radio" group="Emergency"/>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-radiolbl" text="Emergency Reconnect"/>
-                </ute:Tag>
-                <ute:Tag>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="Disconnection Fee:"/>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="UP TO $61.00"/>
-                </ute:Tag>
-                <ute:Tag>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="Reconnection Fee:"/>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="UP TO $246.00"/>
-                </ute:Tag>
-                <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label-ctnt" text="(will be added to your next invoice)"/>
                 <!--Power-on Expectations-->
                 <ute:Tag class="nrgDashboard-reconnectionPopup-cli-title nrgDashboard-reconnectionPopup-cli-title-second" text="Power-on Expectations"/>
                 <ute:Tag>
@@ -70,6 +52,24 @@
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="Requestor's Number:"/>
                     <ute:Textfield class="nrgDashboard-reconnectionPopup-cri-value" width="280px" value=""/>
                 </ute:Tag>
+                <!--Disconnection/Reconnection Fee Expectations-->
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cri-title nrgDashboard-reconnectionPopup-cli-title-second" text="Disconnection/Reconnection Fee Expectations"/>
+                <ute:Tag>
+                    <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio"
+                            checked="true" group="Emergency"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-radiolbl" text="Standard Reconnect"/>
+                    <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio" group="Emergency"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-radiolbl" text="Emergency Reconnect"/>
+                </ute:Tag>
+                <ute:Tag>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="Disconnection Fee:"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-value" text="UP TO $61.00"/>
+                </ute:Tag>
+                <ute:Tag>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="Reconnection Fee:"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-value" text="UP TO $246.00"/>
+                </ute:Tag>
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label-ctnt" text="(will be added to your next invoice)"/>
                 <!--Meter Information-->
                 <ute:Tag class="nrgDashboard-reconnectionPopup-cri-title nrgDashboard-reconnectionPopup-cri-title-second" text="Meter Information"/>
                 <ute:Tag>
