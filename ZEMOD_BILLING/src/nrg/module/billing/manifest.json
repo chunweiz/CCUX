@@ -25,7 +25,7 @@
                             "comp-cj": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_CJ_SRV/"
                             },
-							"comp-HighBill": {
+							"comp-highbill": {
 								"url": "sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/"
 							}
                         },
@@ -42,7 +42,7 @@
                                 "mockDataBaseUrl": "data/devinv/",
                                 "generateMissingMockData": true
                             },
-							"comp-billing-highbill":{
+							"comp-highbill":{
 								"mockDataBaseUrl": "data/devHighBill/",
 								"generateMissingMockData": true
 							}

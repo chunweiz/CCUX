@@ -66,7 +66,6 @@ sap.ui.define(
             }
             this._bindView(sCurrentPath);
             sCurrentPath = sCurrentPath + "/Scripts";
-            // Handler function for Tab Bar Item.
             aFilterIds = ["Promo", "TxtName"];
             aFilterValues = [sPromo, 'MAND'];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);

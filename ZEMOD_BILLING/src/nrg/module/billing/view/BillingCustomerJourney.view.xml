@@ -30,7 +30,7 @@
         <u:Tag class="nrgBllCJ-main">
             <u:Tag class="nrgBllCJ-main-frq">
                 <u:Tag class="nrgBllCJ-main-frq-ttl" text="{comp-i18n-billing>nrgBllCJTitleFreq}"/>
-                <u:Tag height="100%" width="28%" horizontal="true" vertical="true" class="nrgBllCJ-main-frq-pie">
+                <u:Tag class="nrgBllCJ-main-frq-pie">
                     <ch:CustJourneyChannelChart width="378" height="250" id="chart" totalDoublePress="._onTotalPress" sliceDoublePress="._onSlicePress" />
                 </u:Tag>
             </u:Tag>
