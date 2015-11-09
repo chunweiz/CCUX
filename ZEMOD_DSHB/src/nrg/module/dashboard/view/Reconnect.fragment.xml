@@ -20,8 +20,8 @@
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="Account Name:"/>
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="711443600 CONG LE"/>
                 </ute:Tag>
-                <!--Meter Info-->
-                <ute:Tag class="nrgDashboard-reconnectionPopup-cli-title nrgDashboard-reconnectionPopup-cli-title-second" text="Meter Information"/>
+                <!--Disconnection/Reconnection Fee Expectations-->
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cli-title nrgDashboard-reconnectionPopup-cli-title-second" text="Disconnection/Reconnection Fee Expectations"/>
                 <ute:Tag>
                     <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cli-radio"
                             checked="true" group="Emergency"/>
@@ -38,10 +38,53 @@
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="UP TO $246.00"/>
                 </ute:Tag>
                 <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label-ctnt" text="(will be added to your next invoice)"/>
+                <!--Power-on Expectations-->
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cli-title nrgDashboard-reconnectionPopup-cli-title-second" text="Power-on Expectations"/>
+                <ute:Tag>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-description" text="We hae issued the recoonect request: CENTERPOINT ENERGY has until 11:59PM"/>
+                </ute:Tag>
+                <!--TDSP Turndown Information-->
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cli-title nrgDashboard-reconnectionPopup-cli-title-second" text="TDSP Turndown Information"/>
+                <ute:Tag>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="Reconnect Order Issued:"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="ROI value"/>
+                </ute:Tag>
+                <ute:Tag>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="Local Utility Turdown:"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="LUT value"/>
+                </ute:Tag>
+                <ute:Tag>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-description" text="TDSP Turendown information........"/>
+                </ute:Tag>
             </ute:Tag>
         </ute:Tag>
         <ute:Tag class="nrgDashboard-reconnectionPopup-ctnt-rght">
-            <ute:Tag text="Test"/>
+            <ute:Tag class="nrgDashboard-reconnectionPopup-ctnt-rght-info">
+                <!--Requestor's Detail-->
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cri-title" text="Requestor's Detail"/>
+                <ute:Tag>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="Requestor's Name:"/>
+                    <ute:Textfield class="nrgDashboard-reconnectionPopup-cri-value" width="280px" value=""/>
+                </ute:Tag>
+                <ute:Tag>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="Requestor's Number:"/>
+                    <ute:Textfield class="nrgDashboard-reconnectionPopup-cri-value" width="280px" value=""/>
+                </ute:Tag>
+                <!--Meter Information-->
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cri-title nrgDashboard-reconnectionPopup-cri-title-second" text="Meter Information"/>
+                <ute:Tag>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="Meter Accessible:"/>
+                    <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio"
+                            checked="true" group="MtrAccess"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-radiolbl" text="Yes"/>
+                    <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio" group="MtrAccess"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-radiolbl" text="No"/>
+                </ute:Tag>
+                <ute:Tag>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-wide-label" text="Comments:"/>
+                    <ute:Tag elem="textarea" class="nrgDashboard-reconnectionPopup-cri-cmnt" text=""/>
+                </ute:Tag>
+            </ute:Tag>
         </ute:Tag>
     </ute:Tag>
 </core:FragmentDefinition>

@@ -71,6 +71,7 @@
 
     & .nrgDashboard-reconnectionPopup-ctnt{
         display: flex;
+        margin-bottom: 16px;
     }
 
     & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left{
@@ -102,7 +103,7 @@
         margin-left: 28px;
         margin-top: 6px;
         display: inline-block;
-        width: 140px;
+        width: 145px;
     }
 
     & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left > .nrgDashboard-reconnectionPopup-ctnt-left-info > .nrgDashboard-reconnectionPopup-cli-label-ctnt{
@@ -110,6 +111,17 @@
         font-weight: @nrgFontWeight-semiBold;
         margin-top: 6px;
         text-align: center;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left > .nrgDashboard-reconnectionPopup-ctnt-left-info > div > .nrgDashboard-reconnectionPopup-cli-description{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        margin-top: 6px;
+        margin-left: 26px;
+    margin-right: 32px;
+    padding: 4px;
+    text-indent: 12px;
+    border: 1px solid @nrgColor-grey-highlight;
     }
 
     & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left > .nrgDashboard-reconnectionPopup-ctnt-left-info > div > .nrgDashboard-reconnectionPopup-cli-value{
@@ -132,10 +144,84 @@
         vertical-align: top;
         font-size: @nrgFontSize-small;
         font-weight: @nrgFontWeight-semiBold;
-
     }
 
     & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght{
         flex: 1;
     }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info{
+        //border-right: 1px dashed @nrgColor-grey-dark;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info > .nrgDashboard-reconnectionPopup-cri-title{
+        border-bottom: 2px solid @nrgColor-blue-label;
+        font-size: @nrgFontSize-base;
+        font-weight: @nrgFontWeight-semiBold;
+        margin-left: 22px;
+        margin-right: 28px;
+        margin-top: 10px;
+        padding-left: 2px;
+        padding-bottom: 4px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info > .nrgDashboard-reconnectionPopup-cri-title.nrgDashboard-reconnectionPopup-cri-title-second{
+        margin-top: 24px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info > div{
+        margin-top: 6px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info .nrgDashboard-reconnectionPopup-cri-label{
+        display: inline-block;
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        margin-left: 28px;
+        display: inline-block;
+        width: 140px;
+        position: relative;
+        top: -2px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info .nrgDashboard-reconnectionPopup-cri-value{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-regular;
+        margin-left: 6px;
+        display: inline-block;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info .nrgDashboard-reconnectionPopup-cri-wide-label{
+        display: inline-block;
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        margin-left: 28px;
+        margin-bottom: 6px;
+        width: 400px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info .nrgDashboard-reconnectionPopup-cri-cmnt{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-regular;
+        margin-left: 32px;
+        margin-right: 20px;
+        width: 425px;
+        height: 80px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info > div > .nrgDashboard-reconnectionPopup-cri-radio{
+         margin-top: 10px;
+         margin-left: 28px;
+     }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info > div > .nrgDashboard-reconnectionPopup-cri-radiolbl{
+        display: inline-block;
+        margin-top: 9px;
+        margin-left: 4px;
+        vertical-align: top;
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+    }
+
+
 }
