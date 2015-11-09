@@ -92,7 +92,8 @@ sap.ui.define(
             Alert: 'Alert',
             Attention: 'Attention',
             Regular: 'Regular',
-            Warning: 'Warning'
+            Warning: 'Warning',
+            Nrg: 'Nrg'
         };
 
         ute.ui.commons.HorizontalDividerDesign = {
