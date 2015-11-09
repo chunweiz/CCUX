@@ -16,7 +16,8 @@
             <ute:Tag class="nrgDashboard-cusDataVerify-left">
                 <ute:Tag class="nrgDashboard-cusDataVerify-lleft-wrap">
                     <!-- Status -->
-                    <ute:TextView text="{oDtaVrfyContract>/ContractStatus}"
+                    <ute:TextView id="nrgDashBoard-cusDataVerify-Status"
+                        text="{oDtaVrfyContract>/ContractStatus}"
                         class="nrgDashboard-cusDataVerify-left-statusTitle">
                         <ute:tooltip>
                             <ute:Tooltip>

@@ -103,6 +103,9 @@ sap.ui.define(
             var oEventBus = sap.ui.getCore().getEventBus();
             oEventBus.unsubscribe("nrg.module.app", "eInvalidEmail", this._handleEmailEdit, this);
             oEventBus.subscribe("nrg.module.app", "eInvalidEmail", this._handleEmailEdit, this);
+
+            //Attach click event to Status
+            this.getView().byId("nrgDashBoard-cusDataVerify-Status").attachBrowserEvent("click", this._navToSvcOdr.bind(this));
         };
 
         Controller.prototype._navLeftCallBack = function () {
