@@ -7,11 +7,10 @@ sap.ui.define(
     [
         'sap/ui/base/EventProvider',
         'sap/ui/model/Filter',
-        'sap/ui/model/FilterOperator',
-        'nrg/module/nnp/view/NNPPopup'
+        'sap/ui/model/FilterOperator'
     ],
 
-    function (EventProvider, Filter, FilterOperator, NNPPopup) {
+    function (EventProvider, Filter, FilterOperator) {
         'use strict';
 
         var AppFooter = EventProvider.extend('nrg.module.app.view.AppFooter', {
