@@ -14,12 +14,17 @@ sap.ui.define(
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.billing.view.BillingCustomerJourney');
+        //TODO: Implementation required
+        Controller.prototype.onInit = function () {
 
+        };
         //TODO: Implementation required
         Controller.prototype.onAfterRendering = function () {
-            this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+            //this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+
         };
         Controller.prototype.onBeforeRendering = function () {
+            this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
             var oBindingInfo,
                 oModel = this.getOwnerComponent().getModel('comp-cj'),
                 sPath = "/CJFrequencySet",
@@ -27,10 +32,15 @@ sap.ui.define(
                 aFilterValues,
                 aFilters,
                 oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
-                oPieChart = this.getView().byId('idnrgCJPieChart');
+                oPieChart = this.getView().byId('idnrgCJPieChart'),
+                oPieChartModel;
             this._sContract = oRouteInfo.parameters.coNum;
             this._sBP = oRouteInfo.parameters.bpNum;
             this._sCA = oRouteInfo.parameters.caNum;
+
+            oPieChartModel = new sap.ui.model.json.JSONModel();
+            this.getView().setModel(oPieChartModel, 'Cj-PieChart');
+            oPieChart.setDataModel(oPieChartModel);
 /*            this.getView().byId('idnrgCJPieChart').setDataModel(new JSONModel({
                 data: [
                     { channel: 'Website', frequency: 3 },
@@ -67,13 +77,14 @@ sap.ui.define(
                 ]
             }), 'timeline');
             aFilterIds = ["BP", "CA"];
-            aFilterValues = [this._sBP, this._sCA];
+            aFilterValues = ["64041", this._sCA];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oBindingInfo = {
                 filters : aFilters,
                 success : function (oData) {
-                    oPieChart.setDataModel(new JSONModel(oData));
+                    oPieChartModel.setData(oData);
                     jQuery.sap.log.info("Odata Read Successfully:::");
+                    oPieChart.refreshChart();
                 }.bind(this),
                 error: function (oError) {
                     jQuery.sap.log.info("Odata Read Error occured");
