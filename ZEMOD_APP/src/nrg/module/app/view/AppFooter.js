@@ -7,10 +7,11 @@ sap.ui.define(
     [
         'sap/ui/base/EventProvider',
         'sap/ui/model/Filter',
-        'sap/ui/model/FilterOperator'
+        'sap/ui/model/FilterOperator',
+        'nrg/module/nnp/view/NNPPopup'
     ],
 
-    function (EventProvider, Filter, FilterOperator) {
+    function (EventProvider, Filter, FilterOperator, NNPPopup) {
         'use strict';
 
         var AppFooter = EventProvider.extend('nrg.module.app.view.AppFooter', {
@@ -47,6 +48,7 @@ sap.ui.define(
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterRouting');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterBpInfo');
+            this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBpInfo');
 
             this.footerElement = {};
 
@@ -72,7 +74,33 @@ sap.ui.define(
 
         };
 
+        /*------------------ Data Retrieve ----------------*/
+
+        AppFooter.prototype._retrieveBpInfo = function (sBpNum, fnCallback) {
+            var oModel = this._oController.getView().getModel('oMainODataSvc'),
+                oBpInfoModel = this._oController.getView().getModel('oBpInfo'),
+                sPath = '/Partners' + '(\'' + sBpNum + '\')',
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    oBpInfoModel.setData(oData);
+                    if (fnCallback) { fnCallback(); }
+                }.bind(this),
+                error: function (oError) {
+                    // Handle error
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        /*---------------- UI Element Action --------------*/
+
         AppFooter.prototype._onFooterNotificationLinkPress = function (oControlEvent) {
+
         };
 
         AppFooter.prototype._onM2mLinkPress = function (oControlEvent) {
@@ -80,10 +108,32 @@ sap.ui.define(
         };
 
         AppFooter.prototype._onSmtpLinkPress = function (oControlEvent) {
-            var eventBus = sap.ui.getCore().getEventBus(),
-                oPayload;
+            var NNPPopupControl = new NNPPopup(),
+                oRouting = this._oController.getView().getModel('oFooterRouting'),
+                bpNum = oRouting.oData.BpNumber,
+                caNum = oRouting.oData.CaNumber,
+                coNum = oRouting.oData.CoNumber,
+                oBpInfoModel = this._oController.getView().getModel('oBpInfo'),
+                bRetrBpComplete = false;
 
-            eventBus.publish("nrg.module.app", "eInvalidEmail", oPayload);
+            // Retrieve BP info
+            this._retrieveBpInfo(bpNum, function () { bRetrBpComplete = true; });
+            // Check the completion of BP info retrieval
+            var checkBpInfoRetrComplete = setInterval(function () {
+                if (bRetrBpComplete) {
+                    NNPPopupControl.attachEvent("NNPCompleted", function () {
+                        // Update Footer
+                        // this.updateFooterNotification(bpNum, caNum, coNum, false);
+                        // this.updateFooterRHS(bpNum, caNum, coNum, false);
+                        // this.updateFooterCampaign(bpNum, caNum, coNum, false);
+                        // Rerender the whole page
+                        // this._oController.getView().rerender();
+                    }, this);
+                    this._oController.getView().addDependent(NNPPopupControl);
+                    NNPPopupControl.openNNP(bpNum, oBpInfoModel.oData.Email, oBpInfoModel.oData.EmailConsum);
+                    clearInterval(checkBpInfoRetrComplete);
+                }
+            }.bind(this), 100);
         };
 
         AppFooter.prototype._onMailLinkPress = function (oControlEvent) {
