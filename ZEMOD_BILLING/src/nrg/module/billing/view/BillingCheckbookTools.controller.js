@@ -25,8 +25,7 @@ sap.ui.define(
 
         };
 
-        Controller.prototype.onAfterRendering = function ()
-		{
+        Controller.prototype.onAfterRendering = function () {
 
         };
 

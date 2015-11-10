@@ -74,6 +74,12 @@ sap.ui.define(
 
         };
 
+        AppFooter.prototype._updateAllFooterComponents = function (sBpNum, sCaNum, sCoNum, bNotReredner) {
+            this.updateFooterNotification(sBpNum, sCaNum, sCoNum, bNotReredner);
+            this.updateFooterRHS(sBpNum, sCaNum, sCoNum, bNotReredner);
+            this.updateFooterCampaign(sBpNum, sCaNum, sCoNum, bNotReredner);
+        };
+
         /*------------------ Data Retrieve ----------------*/
 
         AppFooter.prototype._retrieveBpInfo = function (sBpNum, fnCallback) {
@@ -107,6 +113,7 @@ sap.ui.define(
             alert('M2M');
         };
 
+        // Invalid Email Address
         AppFooter.prototype._onSmtpLinkPress = function (oControlEvent) {
             var NNPPopupControl = new NNPPopup(),
                 oRouting = this._oController.getView().getModel('oFooterRouting'),
@@ -123,14 +130,14 @@ sap.ui.define(
                 if (bRetrBpComplete) {
                     NNPPopupControl.attachEvent("NNPCompleted", function () {
                         // Update Footer
-                        // this.updateFooterNotification(bpNum, caNum, coNum, false);
-                        // this.updateFooterRHS(bpNum, caNum, coNum, false);
-                        // this.updateFooterCampaign(bpNum, caNum, coNum, false);
-                        // Rerender the whole page
-                        // this._oController.getView().rerender();
+                        this._updateAllFooterComponents(bpNum, caNum, coNum, false);
+                        // Dismiss the loading spinner
+                        this._oController.getOwnerComponent().getCcuxApp().setOccupied(false);
                     }, this);
+                    // Open the NNP popup
                     this._oController.getView().addDependent(NNPPopupControl);
                     NNPPopupControl.openNNP(bpNum, oBpInfoModel.oData.Email, oBpInfoModel.oData.EmailConsum);
+                    // Clear the interval check
                     clearInterval(checkBpInfoRetrComplete);
                 }
             }.bind(this), 100);
