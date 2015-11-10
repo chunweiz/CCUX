@@ -14,12 +14,17 @@ sap.ui.define(
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.billing.view.BillingCustomerJourney');
+        //TODO: Implementation required
+        Controller.prototype.onInit = function () {
 
+        };
         //TODO: Implementation required
         Controller.prototype.onAfterRendering = function () {
-            this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+            //this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+
         };
         Controller.prototype.onBeforeRendering = function () {
+            this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
             var oBindingInfo,
                 oModel = this.getOwnerComponent().getModel('comp-cj'),
                 sPath = "/CJFrequencySet",
