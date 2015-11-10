@@ -70,7 +70,7 @@ sap.ui.define(
                 iWidth = this.getWidth(),
                 iHeight = this.getHeight(),
                 iRadius = Math.min(iWidth, iHeight) / 3,
-                aData = this.getDataModel().getData().data,
+                aData,
                 oCanvas,
                 fnColor,
                 oPieRim,
@@ -85,6 +85,12 @@ sap.ui.define(
                 oLine,
                 oLineInnerPoint,
                 oLabel;
+            if (this.getDataModel() && this.getDataModel().getData() && this.getDataModel().getData().results && this.getDataModel().getData().results.length > 0) {
+                aData = this.getDataModel().getData().results;
+
+            } else {
+                return;
+            }
 
             // Create a canvas with the center as starting point
             oCanvas = d3.select('#' + this.getId())
