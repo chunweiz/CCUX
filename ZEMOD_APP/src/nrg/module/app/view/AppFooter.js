@@ -130,7 +130,9 @@ sap.ui.define(
                 if (bRetrBpComplete) {
                     NNPPopupControl.attachEvent("NNPCompleted", function () {
                         // Update Footer
-                        this._updateAllFooterComponents(bpNum, caNum, coNum, false);
+                        // this._updateAllFooterComponents(bpNum, caNum, coNum, false);
+                        // Rerender the whole page
+                        this._oController.getView().rerender();
                         // Dismiss the loading spinner
                         this._oController.getOwnerComponent().getCcuxApp().setOccupied(false);
                     }, this);
