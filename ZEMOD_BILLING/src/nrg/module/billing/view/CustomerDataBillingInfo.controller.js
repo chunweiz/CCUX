@@ -325,6 +325,14 @@ sap.ui.define(
             }
         };
 
+        CustomController.prototype._onInvoiceNumClicked = function (oEvent) {
+            var oBillingInvoiceModel = this.getView().getModel('oBillingInvoices');
+
+            if (oBillingInvoiceModel.oData.InvUrl) {
+                window.open(oBillingInvoiceModel.oData.InvUrl, '_blank');
+            }
+        };
+
         /*---------------------------------------------- Invoice Selection Popup --------------------------------------------*/
 
         CustomController.prototype._onInvoiceSelectClicked = function () {
