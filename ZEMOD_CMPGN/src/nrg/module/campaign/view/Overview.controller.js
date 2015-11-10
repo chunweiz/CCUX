@@ -24,12 +24,12 @@ sap.ui.define(
 		/* lifecycle method- Before Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onBeforeRendering = function () {
-            var oModel,
+            var oModel = this.getOwnerComponent().getModel('comp-campaign'),
                 sCurrentPath,
                 sEligibilityPath,
                 oBindingInfo,
-                oToggleContainer,
-                oToggleTemplate,
+                oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar"),
+                oToggleTemplate = this.getView().byId("idnrgCamOvr-TabItem").clone(),
                 aContent,
                 aFilters,
                 aFilterIds,
@@ -61,9 +61,6 @@ sap.ui.define(
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sCurrentPath = i18NModel.getProperty("nrgCurrentPendingSet");
             sEligibilityPath = "/ButtonS";
-            oModel = this.getOwnerComponent().getModel('comp-campaign');
-            oToggleContainer = this.getView().byId("idnrgCamOvr-TabBar");
-            oToggleTemplate = this.getView().byId("idnrgCamOvr-TabItem").clone();
             sEligibilityPath = sEligibilityPath + "('" + this._sContract + "')";
             oTemplateModel = new sap.ui.model.json.JSONModel();
             // Handler function for Tab Bar Item.
@@ -148,16 +145,17 @@ sap.ui.define(
                     });
                     oModel.updateBindings(false);
                     jQuery.sap.log.info("Odata Read Successfully:::");
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
-                    this.getOwnerComponent().getCcuxApp().setOccupied(true);
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
                     jQuery.sap.log.info("Eligibility Error occured");
                 }.bind(this)
             };
             if (oModel) {
                 oModel.read(sEligibilityPath, oBindingInfo);
             }
-            //this.getView().setModel(oModel, "comp-campaign");
+
         };
         /* =========================================================== */
 		/* lifecycle method- After Rendering                          */

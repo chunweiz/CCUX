@@ -4,16 +4,18 @@
 sap.ui.define(
     [
         'jquery.sap.global',
-        'nrg/base/view/BaseController'
+        'nrg/base/view/BaseController',
+        'sap/ui/model/Filter',
+        'sap/ui/model/FilterOperator'
     ],
 
-    function (jQuery, Controller) {
+    function (jQuery, Controller, Filter, FilterOperator) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.billing.view.HighBill');
 
         CustomController.prototype.onInit = function () {
-            var o18n = this.getOwnerComponent().getModel('comp-i18n-billing'), // Set data model for invoices
+/*            var o18n = this.getOwnerComponent().getModel('comp-i18n-billing'), // Set data model for invoices
                 oModelInvoice = new sap.ui.model.json.JSONModel(
                     [
                         {
@@ -103,14 +105,84 @@ sap.ui.define(
             this.getView().getModel('oAllInvoices').setProperty('/selectedBillCharge', this.getView().getModel('oAllInvoices').oData[0].BillCharge);
             // oData model for Customer Driven Content
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oCusDriven');
-            this.getView().getModel('oCusDriven').setData(this.getView().getModel('oAllInvoices').oData[0].CusDriven);
+            this.getView().getModel('oCusDriven').setData(this.getView().getModel('oAllInvoices').oData[0].CusDriven);*/
         };
 
+        /* =========================================================== */
+		/* lifecycle method- Before Rendering                          */
+		/* =========================================================== */
         CustomController.prototype.onBeforeRendering = function () {
-            this.getOwnerComponent().getCcuxApp().setTitle('HIGH BILL');
-            this.initRouterParameter();
-        };
 
+			var oModel = this.getOwnerComponent().getModel('comp-highbill'),
+                mParameters,
+                aFilters,
+                sCurrentPath,
+                oDropDownList = this.getView().byId("idnrgBillinvoiceDropdown"),
+                oDropDownListItemTemplate = this.getView().byId("idnrgBillDDitemTemplate").clone(),
+                aFilterIds,
+                aFilterValues,
+                fnRecievedHandler,
+                that = this,
+                oCustDriven = this.getView().byId("idnrgBillCustDriven"),
+                oCustDrivenTempl = this.getView().byId("idnrgBillCustDrivenTempl").clone();
+            this.initRouterParameter();
+            this.getOwnerComponent().getCcuxApp().setTitle('HIGH BILL');
+            //this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            sCurrentPath = "/BillWizardS";
+            aFilterIds = ["Contract"];
+            aFilterValues = [this._coNum];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            fnRecievedHandler = function (oEvent) {
+                var aContent = oDropDownList.getContent(),
+                    sPath,
+                    oContext,
+                    oBindingInfo;
+                if ((aContent !== undefined) && (aContent.length > 0)) {
+                    oContext = aContent[0].getBindingContext("comp-highbill");
+                    sPath = oContext.getPath();
+                    oDropDownList.setSelectedKey(oContext.getProperty("Begin"));
+                    that.getView().bindElement({
+                        model : "comp-highbill",
+                        path : sPath
+                    });
+                    sPath = sPath + "/ImpactS";
+                    oBindingInfo = {
+                        model : "comp-highbill",
+                        path : sPath,
+                        template : oCustDrivenTempl
+                    };
+                    oCustDriven.bindAggregation("content", oBindingInfo);
+                }
+                that.getOwnerComponent().getCcuxApp().setOccupied(false);
+            };
+            mParameters = {
+                model : "comp-highbill",
+                path : sCurrentPath,
+                template : oDropDownListItemTemplate,
+                filters : aFilters,
+                parameters : {expand : "ImpactS"},
+                events: {dataReceived : fnRecievedHandler}
+            };
+            oDropDownList.bindAggregation("content", mParameters);
+
+        };
+       /**
+		 * Assign the filter objects based on the input selection
+		 *
+		 * @function
+		 * @param {Array} aFilterIds to be used as sPath for Filters
+         * @param {Array} aFilterValues for each sPath
+		 * @private
+		 */
+        Controller.prototype._createSearchFilterObject = function (aFilterIds, aFilterValues) {
+            var aFilters = [],
+                iCount;
+
+            for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
+                aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
+            }
+            return aFilters;
+        };
         CustomController.prototype.onAfterRendering = function () {
 
         };
@@ -128,11 +200,11 @@ sap.ui.define(
         };
 
         CustomController.prototype._onInvoiceSelect = function (oEvent) {
-            var selectedIndex = parseInt(oEvent.getParameters().selectedKey, 10);
+/*            var selectedIndex = parseInt(oEvent.getParameters().selectedKey, 10);
             this.getView().getModel('oAllInvoices').setProperty('/selectedInvoiceNum', this.getView().getModel('oAllInvoices').oData[selectedIndex].InvoiceNum);
             this.getView().getModel('oAllInvoices').setProperty('/selectedBillCharge', this.getView().getModel('oAllInvoices').oData[selectedIndex].BillCharge);
             // Set model for Customer Driven Content
-            this.getView().getModel('oCusDriven').setData(this.getView().getModel('oAllInvoices').oData[selectedIndex].CusDriven);
+            this.getView().getModel('oCusDriven').setData(this.getView().getModel('oAllInvoices').oData[selectedIndex].CusDriven);*/
         };
 
         CustomController.prototype._onBackToDashboard = function () {
