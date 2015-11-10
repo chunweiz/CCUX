@@ -45,6 +45,10 @@
 							"comp-highbill":{
 								"mockDataBaseUrl": "data/devHighBill/",
 								"generateMissingMockData": true
+							},
+							"comp-cj":{
+								"mockDataBaseUrl": "data/devcj/",
+								"generateMissingMockData": true
 							}
                         }
                     }
