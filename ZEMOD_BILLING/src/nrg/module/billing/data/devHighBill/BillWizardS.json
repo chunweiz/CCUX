@@ -3,27 +3,27 @@
       "results":[
          {
             "__metadata":{
-               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/BillWizardS(Contract='0034911148',Begin='10%2F01%2F2015',End='10%2F31%2F2015')",
-               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/BillWizardS(Contract='0034911148',Begin='10%2F01%2F2015',End='10%2F31%2F2015')",
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/BillWizardS(Contract='0034911148',Begin=datetimeoffset'2015-10-01T05%3A00%3A00Z',End=datetimeoffset'2015-10-31T05%3A00%3A00Z')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/BillWizardS(Contract='0034911148',Begin=datetimeoffset'2015-10-01T05%3A00%3A00Z',End=datetimeoffset'2015-10-31T05%3A00%3A00Z')",
                "type":"ZE_CCUX_HIGH_BILL_SRV.BillWizard"
             },
             "Contract":"0034911148",
-            "Begin":"10/01/2015",
-            "End":"10/31/2015",
+            "Begin":"/Date(1443675600000+0000)/",
+            "End":"/Date(1446267600000+0000)/",
             "Invoice":"0099999999",
             "InvURL":"",
             "BillAmt":"99.02",
-            "ImpactS":{
+            "CustDrv":{
                "results":[
                   {
                      "__metadata":{
-                        "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/CustDrvImpS(Contract='0034911148',Begin='10%2F01%2F2015',End='10%2F31%2F2015',Invoice='0099999999')",
-                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/CustDrvImpS(Contract='0034911148',Begin='10%2F01%2F2015',End='10%2F31%2F2015',Invoice='0099999999')",
-                        "type":"ZE_CCUX_HIGH_BILL_SRV.Impact"
+                        "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/CustDrvImpS(Contract='0034911148',Begin=datetimeoffset'2015-10-01T05%3A00%3A00Z',End=datetimeoffset'2015-10-31T05%3A00%3A00Z',Invoice='0099999999')",
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/CustDrvImpS(Contract='0034911148',Begin=datetimeoffset'2015-10-01T05%3A00%3A00Z',End=datetimeoffset'2015-10-31T05%3A00%3A00Z',Invoice='0099999999')",
+                        "type":"ZE_CCUX_HIGH_BILL_SRV.CustDrvImpact"
                      },
                      "Contract":"0034911148",
-                     "Begin":"10/01/2015",
-                     "End":"10/31/2015",
+                     "Begin":"/Date(1443675600000+0000)/",
+                     "End":"/Date(1446267600000+0000)/",
                      "Invoice":"0099999999",
                      "Increase":false,
                      "Amount":"0.000%",
@@ -32,45 +32,50 @@
                   },
                   {
                      "__metadata":{
-                        "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/CustDrvImpS(Contract='0034911148',Begin='10%2F01%2F2015',End='10%2F31%2F2015',Invoice='0099999999')",
-                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/CustDrvImpS(Contract='0034911148',Begin='10%2F01%2F2015',End='10%2F31%2F2015',Invoice='0099999999')",
-                        "type":"ZE_CCUX_HIGH_BILL_SRV.Impact"
+                        "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/CustDrvImpS(Contract='0034911148',Begin=datetimeoffset'2015-10-01T05%3A00%3A00Z',End=datetimeoffset'2015-10-31T05%3A00%3A00Z',Invoice='0099999999')",
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/CustDrvImpS(Contract='0034911148',Begin=datetimeoffset'2015-10-01T05%3A00%3A00Z',End=datetimeoffset'2015-10-31T05%3A00%3A00Z',Invoice='0099999999')",
+                        "type":"ZE_CCUX_HIGH_BILL_SRV.CustDrvImpact"
                      },
                      "Contract":"0034911148",
-                     "Begin":"10/01/2015",
-                     "End":"10/31/2015",
+                     "Begin":"/Date(1443675600000+0000)/",
+                     "End":"/Date(1446267600000+0000)/",
                      "Invoice":"0099999999",
                      "Increase":true,
                      "Amount":"0.010p",
                      "Type":"Energy Charge",
-                     "Description":"Based on(99.02) (10/01/2015-10/31/2015) and your previous month's energy charge was(99.01) (-)"
+                     "Description":"Based on(99.02) (2015100105-2015103105) and your previous month's energy charge was(99.01) (-)"
                   }
+               ]
+            },
+            "NonCustDrv":{
+               "results":[
+
                ]
             }
          },
          {
             "__metadata":{
-               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/BillWizardS(Contract='0034911148',Begin='09%2F01%2F2015',End='09%2F30%2F2015')",
-               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/BillWizardS(Contract='0034911148',Begin='09%2F01%2F2015',End='09%2F30%2F2015')",
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/BillWizardS(Contract='0034911148',Begin=datetimeoffset'2015-09-01T05%3A00%3A00Z',End=datetimeoffset'2015-09-30T05%3A00%3A00Z')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/BillWizardS(Contract='0034911148',Begin=datetimeoffset'2015-09-01T05%3A00%3A00Z',End=datetimeoffset'2015-09-30T05%3A00%3A00Z')",
                "type":"ZE_CCUX_HIGH_BILL_SRV.BillWizard"
             },
             "Contract":"0034911148",
-            "Begin":"09/01/2015",
-            "End":"09/30/2015",
+            "Begin":"/Date(1441083600000+0000)/",
+            "End":"/Date(1443589200000+0000)/",
             "Invoice":"0099999999",
             "InvURL":"",
             "BillAmt":"99.01",
-            "ImpactS":{
+            "CustDrv":{
                "results":[
                   {
                      "__metadata":{
-                        "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/CustDrvImpS(Contract='0034911148',Begin='09%2F01%2F2015',End='09%2F30%2F2015',Invoice='0099999999')",
-                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/CustDrvImpS(Contract='0034911148',Begin='09%2F01%2F2015',End='09%2F30%2F2015',Invoice='0099999999')",
-                        "type":"ZE_CCUX_HIGH_BILL_SRV.Impact"
+                        "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/CustDrvImpS(Contract='0034911148',Begin=datetimeoffset'2015-09-01T05%3A00%3A00Z',End=datetimeoffset'2015-09-30T05%3A00%3A00Z',Invoice='0099999999')",
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/CustDrvImpS(Contract='0034911148',Begin=datetimeoffset'2015-09-01T05%3A00%3A00Z',End=datetimeoffset'2015-09-30T05%3A00%3A00Z',Invoice='0099999999')",
+                        "type":"ZE_CCUX_HIGH_BILL_SRV.CustDrvImpact"
                      },
                      "Contract":"0034911148",
-                     "Begin":"09/01/2015",
-                     "End":"09/30/2015",
+                     "Begin":"/Date(1441083600000+0000)/",
+                     "End":"/Date(1443589200000+0000)/",
                      "Invoice":"0099999999",
                      "Increase":false,
                      "Amount":"0.000%",
@@ -79,19 +84,24 @@
                   },
                   {
                      "__metadata":{
-                        "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/CustDrvImpS(Contract='0034911148',Begin='09%2F01%2F2015',End='09%2F30%2F2015',Invoice='0099999999')",
-                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/CustDrvImpS(Contract='0034911148',Begin='09%2F01%2F2015',End='09%2F30%2F2015',Invoice='0099999999')",
-                        "type":"ZE_CCUX_HIGH_BILL_SRV.Impact"
+                        "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/CustDrvImpS(Contract='0034911148',Begin=datetimeoffset'2015-09-01T05%3A00%3A00Z',End=datetimeoffset'2015-09-30T05%3A00%3A00Z',Invoice='0099999999')",
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/CustDrvImpS(Contract='0034911148',Begin=datetimeoffset'2015-09-01T05%3A00%3A00Z',End=datetimeoffset'2015-09-30T05%3A00%3A00Z',Invoice='0099999999')",
+                        "type":"ZE_CCUX_HIGH_BILL_SRV.CustDrvImpact"
                      },
                      "Contract":"0034911148",
-                     "Begin":"09/01/2015",
-                     "End":"09/30/2015",
+                     "Begin":"/Date(1441083600000+0000)/",
+                     "End":"/Date(1443589200000+0000)/",
                      "Invoice":"0099999999",
                      "Increase":false,
                      "Amount":"0.000p",
                      "Type":"Energy Charge",
-                     "Description":"Based on(99.01) (09/01/2015-09/30/2015) and your previous month's energy charge was() (-)"
+                     "Description":"Based on(99.01) (2015090105-2015093005) and your previous month's energy charge was() (-)"
                   }
+               ]
+            },
+            "NonCustDrv":{
+               "results":[
+
                ]
             }
          }
