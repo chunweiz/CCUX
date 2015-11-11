@@ -62,7 +62,26 @@ sap.ui.define(
             oDropDownList.bindAggregation("content", mParameters);
 
         };
-
+        /* =========================================================== */
+		/* lifecycle method- After Rendering                          */
+		/* =========================================================== */
+        CustomController.prototype.onAfterRendering = function () {
+            var oCustDriv = this.getView().byId("idnrgHighBill-CustDriv"),
+                oNonCustDriv = this.getView().byId("idnrgHighBill-NonCustDriv"),
+                oNoDataTag = this.getView().byId("idnrgBillNoData");
+            if ((oCustDriv) && (oCustDriv.getContent()) && (oCustDriv.getContent()[0].getContent())) {
+                if ((oCustDriv.getContent()[0].getContent().length === 0)) {
+                    oCustDriv.getContent()[0].removeAllContent();
+                    oCustDriv.getContent()[0].addContent(oNoDataTag.clone());
+                }
+            }
+            if ((oNonCustDriv) && (oNonCustDriv.getContent()) && (oNonCustDriv.getContent()[0].getContent())) {
+                if ((oNonCustDriv.getContent()[0].getContent().length === 0)) {
+                    oNonCustDriv.getContent()[0].removeAllContent();
+                    oNonCustDriv.getContent()[0].addContent(oNoDataTag.clone());
+                }
+            }
+        };
        /**
 		 * Assign the filter objects based on the input selection
 		 *
