@@ -56,10 +56,10 @@
                 <ute:Tag class="nrgDashboard-reconnectionPopup-cri-title nrgDashboard-reconnectionPopup-cri-title-second" text="{comp-i18n-dashboard>nrgDashboard-reconnect-disreconnectFee}"/>
                 <ute:Tag>
                     <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio"
-                            checked="true" group="Emergency"/>
+                            checked="{parts:['oReconnectInfo>/results/0/RecoType'], formatter:'._formatLeftRdBtnSelected'}" group="Emergency"/>
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cri-radiolbl" text="{comp-i18n-dashboard>nrgDashboard-reconnect-standardReco}"/>
                     <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio" group="Emergency"
-                            checked="false"/>
+                            checked="{parts:['oReconnectInfo>/results/0/RecoType'], formatter:'._formatRightRdBtnSelected'}"/>
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cri-radiolbl" text="{comp-i18n-dashboard>nrgDashboard-reconnect-emergencyReco}"/>
                 </ute:Tag>
                 <ute:Tag>
@@ -76,9 +76,10 @@
                 <ute:Tag>
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="{comp-i18n-dashboard>nrgDashboard-reconnect-meterAccess}"/>
                     <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio"
-                            checked="true" group="MtrAccess"/>
+                            checked="{parts:['oReconnectInfo>/results/0/AccMeter'], formatter:'._formatLeftRdBtnSelected'}" group="MtrAccess"/>
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cri-radiolbl" text="Yes"/>
-                    <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio" group="MtrAccess"/>
+                    <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio" group="MtrAccess"
+                            checked="{parts:['oReconnectInfo>/results/0/AccMeter'], formatter:'._formatRightRdBtnSelected'}"/>
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cri-radiolbl" text="No"/>
                 </ute:Tag>
                 <ute:Tag>

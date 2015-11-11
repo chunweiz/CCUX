@@ -35,6 +35,28 @@ sap.ui.define(
 
         };
 
+        /**********************************************************************************************************************/
+        //Formatter
+        /**********************************************************************************************************************/
+        Controller.prototype._formatRightRdBtnSelected = function (cIndicator) {
+            if (cIndicator === 'X' || cIndicator === 'x') {
+                return true;
+            }
+            else {
+                return false;
+            }
+        };
+
+        Controller.prototype._formatLeftRdBtnSelected = function (cIndicator) {
+            if (cIndicator === 'X' || cIndicator === 'x') {
+                return false;
+            }
+            else {
+                return true;
+            }
+        };
+
+
 
         /**********************************************************************************************************************/
         //Handlers
