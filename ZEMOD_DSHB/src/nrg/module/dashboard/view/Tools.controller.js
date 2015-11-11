@@ -75,6 +75,14 @@ sap.ui.define(
 
         };
 
+        Controller.prototype._onStandardRecoSelected = function () {
+            var oReconnectInfo = this.getView().getModel('oReconnectInfo');
+
+            if( oReconnectInfo.oData.results.length > 0){
+
+            }
+        };
+
         Controller.prototype._onReconnectClicked = function () {
 
         };

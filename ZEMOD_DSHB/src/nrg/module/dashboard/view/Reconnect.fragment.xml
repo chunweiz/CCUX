@@ -55,11 +55,11 @@
                 <!--Disconnection/Reconnection Fee Expectations-->
                 <ute:Tag class="nrgDashboard-reconnectionPopup-cri-title nrgDashboard-reconnectionPopup-cri-title-second" text="{comp-i18n-dashboard>nrgDashboard-reconnect-disreconnectFee}"/>
                 <ute:Tag>
-                    <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio"
+                    <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio" select="._onStandardRecoSelected"
                             checked="{parts:['oReconnectInfo>/results/0/RecoType'], formatter:'._formatLeftRdBtnSelected'}" group="Emergency"/>
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cri-radiolbl" text="{comp-i18n-dashboard>nrgDashboard-reconnect-standardReco}"/>
-                    <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio" group="Emergency"
-                            checked="{parts:['oReconnectInfo>/results/0/RecoType'], formatter:'._formatRightRdBtnSelected'}"/>
+                    <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio" select="._onEmergencyRecoSelected"
+                            checked="{parts:['oReconnectInfo>/results/0/RecoType'], formatter:'._formatRightRdBtnSelected'}" group="Emergency"/>
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cri-radiolbl" text="{comp-i18n-dashboard>nrgDashboard-reconnect-emergencyReco}"/>
                 </ute:Tag>
                 <ute:Tag>
