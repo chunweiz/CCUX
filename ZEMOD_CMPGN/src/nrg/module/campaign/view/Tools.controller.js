@@ -258,7 +258,7 @@ sap.ui.define(
             }
             oModel.setRefreshAfterChange(false);
 
-            this._aPendingSelPaths.map(function (sCurrentPath) {
+            this._aPendingSelPaths.forEach(function (sCurrentPath) {
                 var oContext = oModel.getContext(sCurrentPath);
                 mParameters = {
                     method : "POST",

@@ -93,6 +93,24 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oBindingInfo);
             }
+            sPath = "/CJIconsSet";
+            aFilterIds = ["BP", "CA"];
+            aFilterValues = ["64041", this._sCA];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            oBindingInfo = {
+                filters : aFilters,
+                success : function (oData) {
+                    oPieChartModel.setData(oData);
+                    jQuery.sap.log.info("Odata Read Successfully:::");
+                    oPieChart.refreshChart();
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Odata Read Error occured");
+                }.bind(this)
+            };
+            if (oModel) {
+                oModel.read(sPath, oBindingInfo);
+            }
         };
 
         Controller.prototype._onTotalPress = function (oEvent) {
@@ -171,6 +189,31 @@ sap.ui.define(
             this._oCJDialog.addStyleClass("nrgCJModule-dialog");
             oCJTable.bindRows(mParameters);
             this._oCJDialog.open();
+        };
+
+        /**
+		 * Mapping Icons with backend Data
+		 *
+		 * @function
+         * @param {string} sChanneltype from backend
+         * @return {string} sChannelIcon for backend sChanneltype
+		 */
+        Controller.prototype._onSlicePress = function (sChanneltype) {
+            var sChannelIcon;
+            switch (sChanneltype) {
+            case "website":
+                sChannelIcon = 'sap-icon://nrg-icon/website';
+                break;
+            case "webchat":
+                sChannelIcon = 'sap-icon://nrg-icon/webchat';
+                break;
+            case "survey":
+                sChannelIcon = 'sap-icon://nrg-icon/survey';
+                break;
+            case "agent":
+                sChannelIcon = 'sap-icon://nrg-icon/agent';
+                break;
+            }
         };
         return Controller;
     }

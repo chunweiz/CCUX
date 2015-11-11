@@ -100,8 +100,12 @@ sap.ui.define(
                     .append('g')
                         .attr('transform', 'translate(' + [ iWidth / 2, iHeight / 2 ] + ')');
 
-            function fnLabel(data) { return data.channel; }
-            function fnValue(data) { return data.Count; }
+            function fnLabel(data) {
+                return data.Channel;
+            }
+            function fnValue(data) {
+                return data.Count;
+            }
 
             function fnMidAngle(data) {
                 return data.startAngle + (data.endAngle - data.startAngle) / 2;
@@ -166,7 +170,7 @@ sap.ui.define(
 
             oPieSlice.on('dblclick', function (data) {
                 oCustomControl.fireSliceDoublePress({
-                    channel: data.data.channel
+                    channel: data.data.Channel
                 });
             });
 
@@ -182,7 +186,7 @@ sap.ui.define(
 
             oPieSliceText.on('dblclick', function (data) {
                 oCustomControl.fireSliceDoublePress({
-                    channel: data.data.channel
+                    channel: data.data.Channel
                 });
             });
 
