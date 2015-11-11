@@ -11,69 +11,70 @@
         <ute:Tag class="nrgDashboard-reconnectionPopup-ctnt-left">
             <ute:Tag class="nrgDashboard-reconnectionPopup-ctnt-left-info">
                 <!--Account Info-->
-                <ute:Tag class="nrgDashboard-reconnectionPopup-cli-title" text="Account Information"/>
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cli-title" text="{comp-i18n-dashboard>nrgDashboard-reconnect-accInfo}"/>
                 <ute:Tag>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="Partner Name:"/>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="421820 CONG LE"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="{comp-i18n-dashboard>nrgDashboard-reconnect-pName}"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="{oReconnectInfo>/results/0/PartnerID} {oReconnectInfo>/results/0/PName}"/>
                 </ute:Tag>
                 <ute:Tag>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="Account Name:"/>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="711443600 CONG LE"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="{comp-i18n-dashboard>nrgDashboard-reconnect-aName}"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="{oReconnectInfo>/results/0/BuagID} {oReconnectInfo>/results/0/BuagText}"/>
                 </ute:Tag>
                 <!--Power-on Expectations-->
-                <ute:Tag class="nrgDashboard-reconnectionPopup-cli-title nrgDashboard-reconnectionPopup-cli-title-second" text="Power-on Expectations"/>
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cli-title nrgDashboard-reconnectionPopup-cli-title-second" text="{comp-i18n-dashboard>nrgDashboard-reconnect-pwOnExpect}"/>
                 <ute:Tag>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-description" text="We hae issued the recoonect request: CENTERPOINT ENERGY has until 11:59PM"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-description" text="{oReconnectInfo>/results/0/PowerONText}"/>
                 </ute:Tag>
                 <!--TDSP Turndown Information-->
-                <ute:Tag class="nrgDashboard-reconnectionPopup-cli-title nrgDashboard-reconnectionPopup-cli-title-second" text="TDSP Turndown Information"/>
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cli-title nrgDashboard-reconnectionPopup-cli-title-second" text="{comp-i18n-dashboard>nrgDashboard-reconnect-tdspTD}"/>
                 <ute:Tag>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="Reconnect Order Issued:"/>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="ROI value"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="{comp-i18n-dashboard>nrgDashboard-reconnect-reconOdrIssued}"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="{oReconnectInfo>/results/0/RecoOrdTS}"/>
                 </ute:Tag>
                 <ute:Tag>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="Local Utility Turdown:"/>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="LUT value"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-label" text="{comp-i18n-dashboard>nrgDashboard-reconnect-loclUtilTdw}"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-value" text="{oReconnectInfo>/results/0/UtilTDTS}"/>
                 </ute:Tag>
                 <ute:Tag>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-description" text="TDSP Turendown information........"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cli-description" text="{oReconnectInfo>/results/0/TDSPText}"/>
                 </ute:Tag>
             </ute:Tag>
         </ute:Tag>
         <ute:Tag class="nrgDashboard-reconnectionPopup-ctnt-rght">
             <ute:Tag class="nrgDashboard-reconnectionPopup-ctnt-rght-info">
                 <!--Requestor's Detail-->
-                <ute:Tag class="nrgDashboard-reconnectionPopup-cri-title" text="Requestor's Detail"/>
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cri-title" text="{comp-i18n-dashboard>nrgDashboard-reconnect-requestorDetail}"/>
                 <ute:Tag>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="Requestor's Name:"/>
-                    <ute:Textfield class="nrgDashboard-reconnectionPopup-cri-value" width="280px" value=""/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="{comp-i18n-dashboard>nrgDashboard-reconnect-requestorName}"/>
+                    <ute:Textfield class="nrgDashboard-reconnectionPopup-cri-value" width="280px" value="{oReconnectInfo>/results/0/ReqName}"/>
                 </ute:Tag>
                 <ute:Tag>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="Requestor's Number:"/>
-                    <ute:Textfield class="nrgDashboard-reconnectionPopup-cri-value" width="280px" value=""/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="{comp-i18n-dashboard>nrgDashboard-reconnect-requestorNumber}"/>
+                    <ute:Textfield class="nrgDashboard-reconnectionPopup-cri-value" width="280px" value="{oReconnectInfo>/results/0/ReqNumber}"/>
                 </ute:Tag>
                 <!--Disconnection/Reconnection Fee Expectations-->
-                <ute:Tag class="nrgDashboard-reconnectionPopup-cri-title nrgDashboard-reconnectionPopup-cri-title-second" text="Disconnection/Reconnection Fee Expectations"/>
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cri-title nrgDashboard-reconnectionPopup-cri-title-second" text="{comp-i18n-dashboard>nrgDashboard-reconnect-disreconnectFee}"/>
                 <ute:Tag>
                     <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio"
                             checked="true" group="Emergency"/>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-radiolbl" text="Standard Reconnect"/>
-                    <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio" group="Emergency"/>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-radiolbl" text="Emergency Reconnect"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-radiolbl" text="{comp-i18n-dashboard>nrgDashboard-reconnect-standardReco}"/>
+                    <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio" group="Emergency"
+                            checked="false"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-radiolbl" text="{comp-i18n-dashboard>nrgDashboard-reconnect-emergencyReco}"/>
                 </ute:Tag>
                 <ute:Tag>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="Disconnection Fee:"/>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-value" text="UP TO $61.00"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="{comp-i18n-dashboard>nrgDashboard-reconnect-disconFee}"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-value" text="{oReconnectInfo>/results/0/DiscoFee}"/>
                 </ute:Tag>
                 <ute:Tag>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="Reconnection Fee:"/>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-value" text="UP TO $246.00"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="{comp-i18n-dashboard>nrgDashboard-reconnect-reconFee}"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-value" text="{oReconnectInfo>/results/0/RecoFee}"/>
                 </ute:Tag>
-                <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label-ctnt" text="(will be added to your next invoice)"/>
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label-ctnt" text="{comp-i18n-dashboard>nrgDashboard-reconnect-wbatuni}"/>
                 <!--Meter Information-->
-                <ute:Tag class="nrgDashboard-reconnectionPopup-cri-title nrgDashboard-reconnectionPopup-cri-title-second" text="Meter Information"/>
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cri-title nrgDashboard-reconnectionPopup-cri-title-second" text="{comp-i18n-dashboard>nrgDashboard-reconnect-meterInfo}"/>
                 <ute:Tag>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="Meter Accessible:"/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-label" text="{comp-i18n-dashboard>nrgDashboard-reconnect-meterAccess}"/>
                     <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio"
                             checked="true" group="MtrAccess"/>
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cri-radiolbl" text="Yes"/>
@@ -81,12 +82,12 @@
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cri-radiolbl" text="No"/>
                 </ute:Tag>
                 <ute:Tag>
-                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-wide-label" text="Comments:"/>
-                    <ute:Tag elem="textarea" class="nrgDashboard-reconnectionPopup-cri-cmnt" text=""/>
+                    <ute:Tag class="nrgDashboard-reconnectionPopup-cri-wide-label" text="{comp-i18n-dashboard>nrgDashboard-reconnect-comments}"/>
+                    <ute:Tag elem="textarea" class="nrgDashboard-reconnectionPopup-cri-cmnt" text="{oReconnectInfo>/results/0/AccComment}"/>
                 </ute:Tag>
                 <ute:Tag class="nrgDashboard-reconnectionPopup-cri-btn">
-                    <utmain:Button text="Reconnect"></utmain:Button>
-                    <utmain:Button text="Cancel"></utmain:Button>
+                    <utmain:Button text="Reconnect" press="._onReconnectClicked"></utmain:Button>
+                    <utmain:Button text="Cancel" press="._onReconnectCancelClicked"></utmain:Button>
                 </ute:Tag>
             </ute:Tag>
         </ute:Tag>
