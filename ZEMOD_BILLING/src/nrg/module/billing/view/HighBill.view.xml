@@ -97,7 +97,18 @@
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-highBill-cusDriven-body">
                     <m:ScrollContainer class="nrgBilling-highBill-cusDriven-body-scrollArea" height="150px" horizontal="false" vertical="true">
-                        <ute:Tag id="idnrgBillCustDriven">
+                        <ute:Tag content="{comp-highbill>CustDrv}">
+                            <ute:Tag class="nrgBilling-highBill-cusDriven-row">
+                                <ute:Tag class="nrgBilling-highBill-cusDriven-statis">
+                                    <core:Icon src="{= ${comp-highbill>Increase} ? 'sap-icon://up' : 'sap-icon://down' }"
+                                               class="nrgBilling-highBill-cusDriven-statis-icon" />
+                                    <ute:Tag class="nrgBilling-highBill-cusDriven-statis-number" text="{comp-highbill>Amount}"/>
+                                </ute:Tag>
+                                <ute:Tag class="nrgBilling-highBill-cusDriven-type"
+                                    text="{comp-highbill>Type}"/>
+                                <ute:Tag class="nrgBilling-highBill-cusDriven-descr"
+                                    text="{comp-highbill>Description}"/>
+                            </ute:Tag>
                         </ute:Tag>
                     </m:ScrollContainer>
                 </ute:Tag>
@@ -111,14 +122,10 @@
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-highBill-nonCusImpacts-body">
                     <m:ScrollContainer class="nrgBilling-highBill-nonCusImpacts-body-scrollArea" height="150px" horizontal="false" vertical="true">
-                        <ute:Tag content="{comp-highbill>ImpactS}">
+                        <ute:Tag content="{comp-highbill>NonCustDrv}">
                             <ute:Tag class="nrgBilling-highBill-nonCusImpacts-row">
                                 <ute:Tag class="nrgBilling-highBill-nonCusImpacts-statis">
-                                    <core:Icon 
-                                        src="{
-                                            parts: ['comp-highbill>Change'],
-                                            formatter: '._getArrowIcon'
-                                        }" 
+                                    <core:Icon src="{= ${comp-highbill>Increase} ? 'sap-icon://up' : 'sap-icon://down' }"
                                         class="nrgBilling-highBill-nonCusImpacts-statis-icon" />
                                     <ute:Tag class="nrgBilling-highBill-nonCusImpacts-statis-number" text="{comp-highbill>Amount}"/>
                                 </ute:Tag>
@@ -153,24 +160,10 @@
                     id="idnrgBillDDitemTemplate"
                     key="{comp-highbill>Begin}">
                     <ute:Tag elem="span"
-                        text="{comp-highbill>Begin}-{comp-highbill>End}"/>
+                        text="{path: 'comp-highbill>Begin', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }-{path: 'comp-highbill>End', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }"/>
                 </utmain:DropdownItem>
             </utmain:Dropdown>
-            <ute:Tag class="nrgBilling-highBill-cusDriven-row" id="idnrgBillCustDrivenTempl">
-                <ute:Tag class="nrgBilling-highBill-cusDriven-statis">
-                    <core:Icon
-                        src="{
-                            parts: ['comp-highbill>Change'],
-                            formatter: '._getArrowIcon'
-                        }"
-                        class="nrgBilling-highBill-cusDriven-statis-icon" />
-                    <ute:Tag class="nrgBilling-highBill-cusDriven-statis-number" text="{comp-highbill>Amount}"/>
-                </ute:Tag>
-                <ute:Tag class="nrgBilling-highBill-cusDriven-type"
-                    text="{comp-highbill>Type}"/>
-                <ute:Tag class="nrgBilling-highBill-cusDriven-descr"
-                    text="{comp-highbill>Description}"/>
-            </ute:Tag>
+
         </ute:Tag>
     </ute:Tag>
 

@@ -91,9 +91,9 @@
                 </ReferentialConstraint>
             </Association>
             <EntityContainer Name="ZE_CCUX_HIGH_BILL_SRV_Entities" m:IsDefaultEntityContainer="true">
-                <EntitySet EntityType="ZE_CCUX_HIGH_BILL_SRV.BillWizard" Name="BillWizardS"/>
                 <EntitySet EntityType="ZE_CCUX_HIGH_BILL_SRV.CustDrvImpact" Name="CustDrvImpS"/>
                 <EntitySet EntityType="ZE_CCUX_HIGH_BILL_SRV.NonCustDrvImpact" Name="NonCustDrvImpS"/>
+                <EntitySet EntityType="ZE_CCUX_HIGH_BILL_SRV.BillWizard" Name="BillWizardS"/>
                 <EntitySet EntityType="ZE_CCUX_HIGH_BILL_SRV.Notifctn" Name="NotificationS"/>
                 <AssociationSet Association="ZE_CCUX_HIGH_BILL_SRV.BillWiz_CustDrvImp" Name="BillWiz_CustDrvImpS">
                     <End EntitySet="BillWizardS" Role="FromRole_BillWiz_CustDrvImp"/>
