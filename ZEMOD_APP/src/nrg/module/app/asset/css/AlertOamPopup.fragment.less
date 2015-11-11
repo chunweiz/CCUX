@@ -1,0 +1,76 @@
+.nrgApp-oamPopup {
+	width: 600px;
+	font-family: @nrgFontFamily;
+
+	// Header
+    & .sapUiDlgHdr {
+        height: 80px;
+        margin: 0;
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-between;
+
+        & .sapUiDlgHdrLeft {
+
+            & .sapUiDlgLabel {
+                font-size: @nrgFontSize-large;
+            }
+        }
+
+        & .sapUiDlgHdrBtns {
+            position: relative;
+            margin-right: 0;
+
+            & .sapUiDlgCloseBtn {
+                &::before {
+                    height: 20px;
+                    width: 2px;
+                    transform: translate(6px,0) rotate(45deg);
+                }
+                &::after {
+                    height: 20px;
+                    width: 2px;
+                }
+            }
+
+        }
+    }
+
+    // Content
+    & .nrgApp-oamPopup-content {
+
+    	& .nrgApp-oamPopup-paragraph {
+	    	margin-bottom: 15px;	
+	    }
+
+    	// Footer
+    	& .nrgApp-oamPopup-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 20px;
+
+            & .nrgApp-oamPopup-footerBtn {
+            	width: 120px;
+                padding: 10px 0;
+                background-color: @nrgColor-blue-link;
+                color: @nrgColor-white;
+                font-size: @nrgFontSize-small;
+                border-radius: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 20px;
+
+                &:last-child {
+                	margin-right: 0;
+                }
+            }
+    	}
+
+    }
+
+
+
+
+}
