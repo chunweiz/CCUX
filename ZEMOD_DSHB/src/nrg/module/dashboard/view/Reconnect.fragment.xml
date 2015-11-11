@@ -53,7 +53,7 @@
                     <ute:Textfield class="nrgDashboard-reconnectionPopup-cri-value" width="280px" value=""/>
                 </ute:Tag>
                 <!--Disconnection/Reconnection Fee Expectations-->
-                <ute:Tag class="nrgDashboard-reconnectionPopup-cri-title nrgDashboard-reconnectionPopup-cli-title-second" text="Disconnection/Reconnection Fee Expectations"/>
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cri-title nrgDashboard-reconnectionPopup-cri-title-second" text="Disconnection/Reconnection Fee Expectations"/>
                 <ute:Tag>
                     <utmain:RadioButton class="nrgDashboard-reconnectionPopup-cri-radio"
                             checked="true" group="Emergency"/>
@@ -83,6 +83,10 @@
                 <ute:Tag>
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cri-wide-label" text="Comments:"/>
                     <ute:Tag elem="textarea" class="nrgDashboard-reconnectionPopup-cri-cmnt" text=""/>
+                </ute:Tag>
+                <ute:Tag class="nrgDashboard-reconnectionPopup-cri-btn">
+                    <utmain:Button text="Reconnect"></utmain:Button>
+                    <utmain:Button text="Cancel"></utmain:Button>
                 </ute:Tag>
             </ute:Tag>
         </ute:Tag>
