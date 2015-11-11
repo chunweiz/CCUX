@@ -36,7 +36,7 @@ sap.ui.define(
             this._registerEvents();
         };
 
-        /*------------------ Footer Update ----------------*/
+        /*----------------- Footer Initiate ---------------*/
 
         AppFooter.prototype._initFooterContent = function () {
             this._oController.getView().setModel(this._oController.getView().getModel('main-app'), 'oMainODataSvc');
@@ -74,12 +74,6 @@ sap.ui.define(
 
         };
 
-        AppFooter.prototype._updateAllFooterComponents = function (sBpNum, sCaNum, sCoNum, bNotReredner) {
-            this.updateFooterNotification(sBpNum, sCaNum, sCoNum, bNotReredner);
-            this.updateFooterRHS(sBpNum, sCaNum, sCoNum, bNotReredner);
-            this.updateFooterCampaign(sBpNum, sCaNum, sCoNum, bNotReredner);
-        };
-
         /*------------------ Data Retrieve ----------------*/
 
         AppFooter.prototype._retrieveBpInfo = function (sBpNum, fnCallback) {
@@ -105,12 +99,17 @@ sap.ui.define(
 
         /*---------------- UI Element Action --------------*/
 
-        AppFooter.prototype._onFooterNotificationLinkPress = function (oControlEvent) {
-
-        };
-
         AppFooter.prototype._onM2mLinkPress = function (oControlEvent) {
-            alert('M2M');
+            if (!this.m2mPopup) {
+                this.m2mPopup = ute.ui.main.Popup.create({
+                    content: sap.ui.xmlfragment(this._oController.getView().sId, "nrg.module.app.view.AlertM2mPopup", this),
+                    title: 'INVALID SMS NUMBER'
+                });
+                this.m2mPopup.addStyleClass('nrgApp-m2mPopup');
+                this._oController.getView().addDependent(this.m2mPopup);
+            }
+            // Open the popup
+            this.m2mPopup.open();
         };
 
         // Invalid Email Address
@@ -146,15 +145,74 @@ sap.ui.define(
         };
 
         AppFooter.prototype._onMailLinkPress = function (oControlEvent) {
-            alert('Mail');
+            if (!this.invalidMailingAddrPopup) {
+                this.invalidMailingAddrPopup = ute.ui.main.Popup.create({
+                    content: sap.ui.xmlfragment(this._oController.getView().sId, "nrg.module.app.view.AlertInvMailAddrPopup", this),
+                    title: 'INVALID MAILING ADDRESS'
+                });
+                this.invalidMailingAddrPopup.addStyleClass('nrgApp-invalidMailingAddrPopup');
+                this._oController.getView().addDependent(this.invalidMailingAddrPopup);
+            }
+            // Open the popup
+            this.invalidMailingAddrPopup.open();
         };
 
         AppFooter.prototype._onSmsLinkPress = function (oControlEvent) {
-            alert('SMS');
+            if (!this.invalidSmsPopup) {
+                this.invalidSmsPopup = ute.ui.main.Popup.create({
+                    content: sap.ui.xmlfragment(this._oController.getView().sId, "nrg.module.app.view.AlertInvSmsPopup", this),
+                    title: 'INVALID SMS NUMBER'
+                });
+                this.invalidSmsPopup.addStyleClass('nrgApp-invalidSmsPopup');
+                this._oController.getView().addDependent(this.invalidSmsPopup);
+            }
+            // Open the popup
+            this.invalidSmsPopup.open();
         };
 
         AppFooter.prototype._onOamLinkPress = function (oControlEvent) {
-            alert('OAM');
+            var oNotificationModel = this._oController.getView().getModel('oFooterNotification');
+
+            for (var i = 0; i < oNotificationModel.oData.length; i++) {
+                if (oNotificationModel.oData[i].FilterType === 'OAM') {
+                    oNotificationModel.setProperty('/ErrorMessage', oNotificationModel.oData[i].MessageText);
+                }
+            }
+
+            if (!this.oamPopup) {
+                this.oamPopup = ute.ui.main.Popup.create({
+                    content: sap.ui.xmlfragment(this._oController.getView().sId, "nrg.module.app.view.AlertOamPopup", this),
+                    title: 'INVALID OAM Email'
+                });
+                this.oamPopup.addStyleClass('nrgApp-oamPopup');
+                this._oController.getView().addDependent(this.oamPopup);
+            }
+            // Open the popup
+            this.oamPopup.open();
+        };
+
+        AppFooter.prototype._onInvMailAddrCloseClick = function (oEvent) {
+            this.invalidMailingAddrPopup.close();
+        };
+
+        AppFooter.prototype._onInvSmsCloseClick = function (oEvent) {
+            this.invalidSmsPopup.close();
+        };
+
+        AppFooter.prototype._onM2mCloseClick = function (oEvent) {
+            this.m2mPopup.close();
+        };
+
+        AppFooter.prototype._onOamCloseClick = function (oEvent) {
+            this.oamPopup.close();
+        };
+
+        /*------------------ Footer Update ----------------*/
+
+        AppFooter.prototype._updateAllFooterComponents = function (sBpNum, sCaNum, sCoNum, bNotReredner) {
+            this.updateFooterNotification(sBpNum, sCaNum, sCoNum, bNotReredner);
+            this.updateFooterRHS(sBpNum, sCaNum, sCoNum, bNotReredner);
+            this.updateFooterCampaign(sBpNum, sCaNum, sCoNum, bNotReredner);
         };
 
         AppFooter.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber, bNotReredner) {

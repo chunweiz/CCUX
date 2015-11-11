@@ -6,10 +6,11 @@ sap.ui.define(
         'jquery.sap.global',
         'nrg/base/view/BaseController',
         'sap/ui/model/Filter',
-        'sap/ui/model/FilterOperator'
+        'sap/ui/model/FilterOperator',
+        'nrg/module/billing/view/ABPPopup'
     ],
 
-    function (jQuery, Controller, Filter, FilterOperator) {
+    function (jQuery, Controller, Filter, FilterOperator, ABPPopup) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.billing.view.HighBill');
@@ -35,6 +36,7 @@ sap.ui.define(
             aFilterIds = ["Contract"];
             aFilterValues = [this._coNum];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            
             fnRecievedHandler = function (oEvent) {
                 var aContent = oDropDownList.getContent(),
                     sPath,
@@ -198,6 +200,33 @@ sap.ui.define(
 				this.navTo('usage', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum, typeV: "QD"});
 			}
 		};
+
+        /*------------------------------------------------ UI Element Actions -----------------------------------------------*/
+
+        CustomController.prototype._onRetroAverageBillingClick = function () {
+            if (!this.ABPPopupCustomControl) {
+                this.ABPPopupCustomControl = new ABPPopup();
+                this.ABPPopupCustomControl.attachEvent("ABPCompleted", function () {}, this);
+                this.getView().addDependent(this.ABPPopupCustomControl);
+            }
+            this.ABPPopupCustomControl.prepareABP();
+        };
+
+        CustomController.prototype._onAverageBillingClick = function () {
+            if (!this.ABPPopupCustomControl) {
+                this.ABPPopupCustomControl = new ABPPopup();
+                this.ABPPopupCustomControl.attachEvent("ABPCompleted", function () {}, this);
+                this.getView().addDependent(this.ABPPopupCustomControl);
+            }
+            this.ABPPopupCustomControl.prepareABP();
+        };
+
+
+
+
+
+
+
         return CustomController;
     }
 );
