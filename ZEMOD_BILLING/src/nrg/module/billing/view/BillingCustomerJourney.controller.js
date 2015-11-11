@@ -213,7 +213,20 @@ sap.ui.define(
             case "agent":
                 sChannelIcon = 'sap-icon://nrg-icon/agent';
                 break;
+            case "ivr":
+                sChannelIcon = 'sap-icon://nrg-icon/not-verified';
+                break;
+            case "phone":
+                sChannelIcon = 'sap-icon://nrg-icon/call-center';
+                break;
+            case "email":
+                sChannelIcon = 'sap-icon://email';
+                break;
+            case "mobile":
+                sChannelIcon = 'sap-icon://iphone';
+                break;
             }
+            return sChannelIcon;
         };
         return Controller;
     }
