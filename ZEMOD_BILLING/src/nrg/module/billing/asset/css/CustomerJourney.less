@@ -18,6 +18,8 @@
         & > .nrgBllCJ-main {
                 min-height: 87.5%;
                 max-height: 87.5%;
+                display: flex;
+                flex-flow: row nowrap;
             & > .nrgBllCJ-main-frq{
                     display:inline-block;
                     border-right: 2px solid @nrgColor-grey-highlight;
@@ -26,6 +28,10 @@
                             color: @nrgColor-grey-light;
                             font-size: @nrgFontSize-small;
                             font-weight: @nrgFontWeight-semiBold;
+                    }
+                    & > .nrgBllCJ-main-frq-pie {
+                            height: "100%";
+                            width: "28%";
                     }
             }
             & > .nrgBllCJ-main-timeline{

@@ -99,11 +99,6 @@ sap.ui.define(
             this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum, true);
             this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum, true);
 
-            // Subscribe footer events
-            var oEventBus = sap.ui.getCore().getEventBus();
-            oEventBus.unsubscribe("nrg.module.app", "eInvalidEmail", this._handleEmailEdit, this);
-            oEventBus.subscribe("nrg.module.app", "eInvalidEmail", this._handleEmailEdit, this);
-
             //Attach click event to Status
             this.getView().byId("nrgDashBoard-cusDataVerify-Status").attachBrowserEvent("click", this._navToSvcOdr.bind(this));
         };

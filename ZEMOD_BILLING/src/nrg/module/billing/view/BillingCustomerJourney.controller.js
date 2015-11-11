@@ -6,21 +6,42 @@ sap.ui.define(
         'nrg/base/view/BaseController',
         'sap/ui/model/json/JSONModel',
         'sap/ui/model/Filter',
-        'sap/ui/model/FilterOperator'
+        'sap/ui/model/FilterOperator',
+        'jquery.sap.global'
     ],
 
-    function (CoreController, JSONModel, Filter, FilterOperator) {
+    function (CoreController, JSONModel, Filter, FilterOperator, jQuery) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.billing.view.BillingCustomerJourney');
+        //TODO: Implementation required
+        Controller.prototype.onInit = function () {
 
+        };
         //TODO: Implementation required
         Controller.prototype.onAfterRendering = function () {
-            this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+            //this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+
         };
         Controller.prototype.onBeforeRendering = function () {
+            this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+            var oBindingInfo,
+                oModel = this.getOwnerComponent().getModel('comp-cj'),
+                sPath = "/CJFrequencySet",
+                aFilterIds,
+                aFilterValues,
+                aFilters,
+                oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
+                oPieChart = this.getView().byId('idnrgCJPieChart'),
+                oPieChartModel;
+            this._sContract = oRouteInfo.parameters.coNum;
+            this._sBP = oRouteInfo.parameters.bpNum;
+            this._sCA = oRouteInfo.parameters.caNum;
 
-            this.getView().byId('chart').setDataModel(new JSONModel({
+            oPieChartModel = new sap.ui.model.json.JSONModel();
+            this.getView().setModel(oPieChartModel, 'Cj-PieChart');
+            oPieChart.setDataModel(oPieChartModel);
+/*            this.getView().byId('idnrgCJPieChart').setDataModel(new JSONModel({
                 data: [
                     { channel: 'Website', frequency: 3 },
                     { channel: 'Mobile', frequency: 3 },
@@ -29,7 +50,7 @@ sap.ui.define(
                     { channel: 'Phone', frequency: 2 },
                     { channel: 'Survey', frequency: 6 }
                 ]
-            }));
+            }));*/
             this.getView().setModel(new JSONModel({
                 data: [
                     { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: '08/31/2014' },
@@ -55,7 +76,41 @@ sap.ui.define(
                     { recordIndex: '20', channelIcon: 'sap-icon://letter', topLabel: '09/21/2015' }
                 ]
             }), 'timeline');
-
+            aFilterIds = ["BP", "CA"];
+            aFilterValues = ["64041", this._sCA];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            oBindingInfo = {
+                filters : aFilters,
+                success : function (oData) {
+                    oPieChartModel.setData(oData);
+                    jQuery.sap.log.info("Odata Read Successfully:::");
+                    oPieChart.refreshChart();
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Odata Read Error occured");
+                }.bind(this)
+            };
+            if (oModel) {
+                oModel.read(sPath, oBindingInfo);
+            }
+            sPath = "/CJIconsSet";
+            aFilterIds = ["BP", "CA"];
+            aFilterValues = ["64041", this._sCA];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            oBindingInfo = {
+                filters : aFilters,
+                success : function (oData) {
+                    oPieChartModel.setData(oData);
+                    jQuery.sap.log.info("Odata Read Successfully:::");
+                    oPieChart.refreshChart();
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Odata Read Error occured");
+                }.bind(this)
+            };
+            if (oModel) {
+                oModel.read(sPath, oBindingInfo);
+            }
         };
 
         Controller.prototype._onTotalPress = function (oEvent) {
@@ -134,6 +189,31 @@ sap.ui.define(
             this._oCJDialog.addStyleClass("nrgCJModule-dialog");
             oCJTable.bindRows(mParameters);
             this._oCJDialog.open();
+        };
+
+        /**
+		 * Mapping Icons with backend Data
+		 *
+		 * @function
+         * @param {string} sChanneltype from backend
+         * @return {string} sChannelIcon for backend sChanneltype
+		 */
+        Controller.prototype._onSlicePress = function (sChanneltype) {
+            var sChannelIcon;
+            switch (sChanneltype) {
+            case "website":
+                sChannelIcon = 'sap-icon://nrg-icon/website';
+                break;
+            case "webchat":
+                sChannelIcon = 'sap-icon://nrg-icon/webchat';
+                break;
+            case "survey":
+                sChannelIcon = 'sap-icon://nrg-icon/survey';
+                break;
+            case "agent":
+                sChannelIcon = 'sap-icon://nrg-icon/agent';
+                break;
+            }
         };
         return Controller;
     }

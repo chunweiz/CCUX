@@ -35,29 +35,29 @@
                     <ute:Tag class="nrgBilling-highBill-mrDate">
                         <ute:Tag elem="span" class="nrgBilling-highBill-mrDate-title"
                             text="{comp-i18n-billing>nrgBilling-highBill-mrDate-TITLE}" />
-                        <utmain:Dropdown id="invoiceDropdown"
+                        <utmain:Dropdown id="idnrgBillinvoiceDropdown"
                             class="nrgBilling-highBill-mrDate-invoiceDropdown"
-                            selectedKey="{oAllInvoices>/selectedKey}"
+                            selectedKey="{comp-highbill>/selectedKey}"
                             content="{oAllInvoices>/}"
                             select="_onInvoiceSelect" >
                             <utmain:DropdownItem
                                 class="nrgBilling-highBill-mrDate-invoiceDropdownItem"
-                                key="{oAllInvoices>Index}">
+                                key="{comp-highbill>Index}">
                                 <ute:Tag elem="span"
-                                    text="{oAllInvoices>Period}"/>
+                                    text="{comp-highbill>Period}"/>
                             </utmain:DropdownItem>
                         </utmain:Dropdown>
                         <ute:Tag class="nrgBilling-highBill-mrDate-invoiceNum">
                             <ute:Tag elem="span" class="nrgBilling-highBill-mrDate-invoiceNumTitle"
                                 text="{comp-i18n-billing>nrgBilling-highBill-mrDate-INVOICE_NUM_TITLE}" />
                             <ute:Tag elem="span" class="nrgBilling-highBill-mrDate-invoiceNumValue"
-                                text="{oAllInvoices>/selectedInvoiceNum}" />
+                                text="{comp-highbill>Invoice}" />
                         </ute:Tag>
                     </ute:Tag>
                     <!-- Billing Period Charges -->
                     <ute:Tag class="nrgBilling-highBill-bpCharges">
                         <ute:Tag class="nrgBilling-highBill-bpCharges-amount"
-                            text="{oAllInvoices>/selectedBillCharge}"/>
+                            text="{comp-highbill>BillAmt}"/>
                         <ute:Tag class="nrgBilling-highBill-bpCharges-title"
                             text="{comp-i18n-billing>nrgBilling-highBill-bpCharges-TITLE}"/>
                     </ute:Tag>
@@ -68,13 +68,13 @@
                             design="None"
                             text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-RETRO_AVG}"
                             class="nrgBilling-highBill-retroAvgBilling" 
-                            press="onBackToDashboard"/>
+                            press="_onRetroAverageBillingClick"/>
                         <!-- Average Billing -->
                         <utmain:Button 
                             design="None"
                             text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-AVG}"
                             class="nrgBilling-highBill-avgBilling" 
-                            press="onBackToDashboard"/>
+                            press="_onAverageBillingClick"/>
                     </ute:Tag>
                 </ute:Tag>
             </ute:Tag>
@@ -96,22 +96,18 @@
                         press="._onUsagehistory"/>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-highBill-cusDriven-body">
-                    <m:ScrollContainer class="nrgBilling-highBill-cusDriven-body-scrollArea" height="150px" horizontal="false" vertical="true">
-                        <ute:Tag content="{oCusDriven>/}">
+                    <m:ScrollContainer class="nrgBilling-highBill-cusDriven-body-scrollArea" height="150px" horizontal="false" vertical="true" id="idnrgHighBill-CustDriv">
+                        <ute:Tag content="{comp-highbill>CustDrv}">
                             <ute:Tag class="nrgBilling-highBill-cusDriven-row">
                                 <ute:Tag class="nrgBilling-highBill-cusDriven-statis">
-                                    <core:Icon 
-                                        src="{
-                                            parts: ['oCusDriven>Change'],
-                                            formatter: '._getArrowIcon'
-                                        }" 
-                                        class="nrgBilling-highBill-cusDriven-statis-icon" />
-                                    <ute:Tag class="nrgBilling-highBill-cusDriven-statis-number" text="{oCusDriven>Amount}"/>
+                                    <core:Icon src="{= ${comp-highbill>Increase} ? 'sap-icon://up' : 'sap-icon://down' }"
+                                               class="nrgBilling-highBill-cusDriven-statis-icon" />
+                                    <ute:Tag class="nrgBilling-highBill-cusDriven-statis-number" text="{comp-highbill>Amount}"/>
                                 </ute:Tag>
                                 <ute:Tag class="nrgBilling-highBill-cusDriven-type"
-                                    text="{oCusDriven>Type}"/>
+                                    text="{comp-highbill>Type}"/>
                                 <ute:Tag class="nrgBilling-highBill-cusDriven-descr"
-                                    text="{oCusDriven>Description}"/>
+                                    text="{comp-highbill>Description}"/>
                             </ute:Tag>
                         </ute:Tag>
                     </m:ScrollContainer>
@@ -125,22 +121,18 @@
                         text="{comp-i18n-billing>nrgBilling-highBill-nonCusImpacts-TITLE}"/>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-highBill-nonCusImpacts-body">
-                    <m:ScrollContainer class="nrgBilling-highBill-nonCusImpacts-body-scrollArea" height="150px" horizontal="false" vertical="true">
-                        <ute:Tag content="{oCusDriven>/}">
+                    <m:ScrollContainer class="nrgBilling-highBill-nonCusImpacts-body-scrollArea" height="150px" horizontal="false" vertical="true" id="idnrgHighBill-NonCustDriv">
+                        <ute:Tag content="{comp-highbill>NonCustDrv}">
                             <ute:Tag class="nrgBilling-highBill-nonCusImpacts-row">
                                 <ute:Tag class="nrgBilling-highBill-nonCusImpacts-statis">
-                                    <core:Icon 
-                                        src="{
-                                            parts: ['oCusDriven>Change'],
-                                            formatter: '._getArrowIcon'
-                                        }" 
+                                    <core:Icon src="{= ${comp-highbill>Increase} ? 'sap-icon://up' : 'sap-icon://down' }"
                                         class="nrgBilling-highBill-nonCusImpacts-statis-icon" />
-                                    <ute:Tag class="nrgBilling-highBill-nonCusImpacts-statis-number" text="{oCusDriven>Amount}"/>
+                                    <ute:Tag class="nrgBilling-highBill-nonCusImpacts-statis-number" text="{comp-highbill>Amount}"/>
                                 </ute:Tag>
                                 <ute:Tag class="nrgBilling-highBill-nonCusImpacts-type"
-                                    text="{oCusDriven>Type}"/>
+                                    text="{comp-highbill>Type}"/>
                                 <ute:Tag class="nrgBilling-highBill-nonCusImpacts-descr"
-                                    text="{oCusDriven>Description}"/>
+                                    text="{comp-highbill>Description}"/>
                             </ute:Tag>
                         </ute:Tag>
                     </m:ScrollContainer>
@@ -161,7 +153,19 @@
                 text="{comp-i18n-billing>nrgBilling-highBill-NOTI_TITLE}" />
 
         </ute:Tag>
-        
+        <ute:Tag visible="false">
+            <ute:Tag id="idnrgBillNoData" text="{comp-i18n-billing>nrgUsgNoData}" />
+            <utmain:Dropdown>
+                <utmain:DropdownItem
+                    class="nrgBilling-highBill-mrDate-invoiceDropdownItem"
+                    id="idnrgBillDDitemTemplate"
+                    key="{comp-highbill>Begin}">
+                    <ute:Tag elem="span"
+                        text="{path: 'comp-highbill>Begin', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }-{path: 'comp-highbill>End', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }"/>
+                </utmain:DropdownItem>
+            </utmain:Dropdown>
+
+        </ute:Tag>
     </ute:Tag>
 
 

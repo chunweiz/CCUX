@@ -7,10 +7,11 @@ sap.ui.define(
     [
         'sap/ui/base/EventProvider',
         'sap/ui/model/Filter',
-        'sap/ui/model/FilterOperator'
+        'sap/ui/model/FilterOperator',
+        'nrg/module/nnp/view/NNPPopup'
     ],
 
-    function (EventProvider, Filter, FilterOperator) {
+    function (EventProvider, Filter, FilterOperator, NNPPopup) {
         'use strict';
 
         var AppFooter = EventProvider.extend('nrg.module.app.view.AppFooter', {
@@ -35,7 +36,7 @@ sap.ui.define(
             this._registerEvents();
         };
 
-        /*------------------ Footer Update ----------------*/
+        /*----------------- Footer Initiate ---------------*/
 
         AppFooter.prototype._initFooterContent = function () {
             this._oController.getView().setModel(this._oController.getView().getModel('main-app'), 'oMainODataSvc');
@@ -47,6 +48,7 @@ sap.ui.define(
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterRouting');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterBpInfo');
+            this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBpInfo');
 
             this.footerElement = {};
 
@@ -72,30 +74,145 @@ sap.ui.define(
 
         };
 
-        AppFooter.prototype._onFooterNotificationLinkPress = function (oControlEvent) {
+        /*------------------ Data Retrieve ----------------*/
+
+        AppFooter.prototype._retrieveBpInfo = function (sBpNum, fnCallback) {
+            var oModel = this._oController.getView().getModel('oMainODataSvc'),
+                oBpInfoModel = this._oController.getView().getModel('oBpInfo'),
+                sPath = '/Partners' + '(\'' + sBpNum + '\')',
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    oBpInfoModel.setData(oData);
+                    if (fnCallback) { fnCallback(); }
+                }.bind(this),
+                error: function (oError) {
+                    // Handle error
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
         };
+
+        /*---------------- UI Element Action --------------*/
 
         AppFooter.prototype._onM2mLinkPress = function (oControlEvent) {
-            alert('M2M');
+            if (!this.m2mPopup) {
+                this.m2mPopup = ute.ui.main.Popup.create({
+                    content: sap.ui.xmlfragment(this._oController.getView().sId, "nrg.module.app.view.AlertM2mPopup", this),
+                    title: 'INVALID SMS NUMBER'
+                });
+                this.m2mPopup.addStyleClass('nrgApp-m2mPopup');
+                this._oController.getView().addDependent(this.m2mPopup);
+            }
+            // Open the popup
+            this.m2mPopup.open();
         };
 
+        // Invalid Email Address
         AppFooter.prototype._onSmtpLinkPress = function (oControlEvent) {
-            var eventBus = sap.ui.getCore().getEventBus(),
-                oPayload;
+            var NNPPopupControl = new NNPPopup(),
+                oRouting = this._oController.getView().getModel('oFooterRouting'),
+                bpNum = oRouting.oData.BpNumber,
+                caNum = oRouting.oData.CaNumber,
+                coNum = oRouting.oData.CoNumber,
+                oBpInfoModel = this._oController.getView().getModel('oBpInfo'),
+                bRetrBpComplete = false;
 
-            eventBus.publish("nrg.module.app", "eInvalidEmail", oPayload);
+            // Retrieve BP info
+            this._retrieveBpInfo(bpNum, function () { bRetrBpComplete = true; });
+            // Check the completion of BP info retrieval
+            var checkBpInfoRetrComplete = setInterval(function () {
+                if (bRetrBpComplete) {
+                    NNPPopupControl.attachEvent("NNPCompleted", function () {
+                        // Update Footer
+                        this._updateAllFooterComponents(bpNum, caNum, coNum, false);
+                        // Rerender the whole page
+                        this._oController.getView().rerender();
+                        // Dismiss the loading spinner
+                        this._oController.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    }, this);
+                    // Open the NNP popup
+                    this._oController.getView().addDependent(NNPPopupControl);
+                    NNPPopupControl.openNNP(bpNum, oBpInfoModel.oData.Email, oBpInfoModel.oData.EmailConsum);
+                    // Clear the interval check
+                    clearInterval(checkBpInfoRetrComplete);
+                }
+            }.bind(this), 100);
         };
 
         AppFooter.prototype._onMailLinkPress = function (oControlEvent) {
-            alert('Mail');
+            if (!this.invalidMailingAddrPopup) {
+                this.invalidMailingAddrPopup = ute.ui.main.Popup.create({
+                    content: sap.ui.xmlfragment(this._oController.getView().sId, "nrg.module.app.view.AlertInvMailAddrPopup", this),
+                    title: 'INVALID MAILING ADDRESS'
+                });
+                this.invalidMailingAddrPopup.addStyleClass('nrgApp-invalidMailingAddrPopup');
+                this._oController.getView().addDependent(this.invalidMailingAddrPopup);
+            }
+            // Open the popup
+            this.invalidMailingAddrPopup.open();
         };
 
         AppFooter.prototype._onSmsLinkPress = function (oControlEvent) {
-            alert('SMS');
+            if (!this.invalidSmsPopup) {
+                this.invalidSmsPopup = ute.ui.main.Popup.create({
+                    content: sap.ui.xmlfragment(this._oController.getView().sId, "nrg.module.app.view.AlertInvSmsPopup", this),
+                    title: 'INVALID SMS NUMBER'
+                });
+                this.invalidSmsPopup.addStyleClass('nrgApp-invalidSmsPopup');
+                this._oController.getView().addDependent(this.invalidSmsPopup);
+            }
+            // Open the popup
+            this.invalidSmsPopup.open();
         };
 
         AppFooter.prototype._onOamLinkPress = function (oControlEvent) {
-            alert('OAM');
+            var oNotificationModel = this._oController.getView().getModel('oFooterNotification');
+
+            for (var i = 0; i < oNotificationModel.oData.length; i++) {
+                if (oNotificationModel.oData[i].FilterType === 'OAM') {
+                    oNotificationModel.setProperty('/ErrorMessage', oNotificationModel.oData[i].MessageText);
+                }
+            }
+
+            if (!this.oamPopup) {
+                this.oamPopup = ute.ui.main.Popup.create({
+                    content: sap.ui.xmlfragment(this._oController.getView().sId, "nrg.module.app.view.AlertOamPopup", this),
+                    title: 'INVALID OAM Email'
+                });
+                this.oamPopup.addStyleClass('nrgApp-oamPopup');
+                this._oController.getView().addDependent(this.oamPopup);
+            }
+            // Open the popup
+            this.oamPopup.open();
+        };
+
+        AppFooter.prototype._onInvMailAddrCloseClick = function (oEvent) {
+            this.invalidMailingAddrPopup.close();
+        };
+
+        AppFooter.prototype._onInvSmsCloseClick = function (oEvent) {
+            this.invalidSmsPopup.close();
+        };
+
+        AppFooter.prototype._onM2mCloseClick = function (oEvent) {
+            this.m2mPopup.close();
+        };
+
+        AppFooter.prototype._onOamCloseClick = function (oEvent) {
+            this.oamPopup.close();
+        };
+
+        /*------------------ Footer Update ----------------*/
+
+        AppFooter.prototype._updateAllFooterComponents = function (sBpNum, sCaNum, sCoNum, bNotReredner) {
+            this.updateFooterNotification(sBpNum, sCaNum, sCoNum, bNotReredner);
+            this.updateFooterRHS(sBpNum, sCaNum, sCoNum, bNotReredner);
+            this.updateFooterCampaign(sBpNum, sCaNum, sCoNum, bNotReredner);
         };
 
         AppFooter.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber, bNotReredner) {

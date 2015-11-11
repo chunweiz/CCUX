@@ -25,15 +25,14 @@ sap.ui.define(
 
         };
 
-        Controller.prototype.onAfterRendering = function ()
-		{
+        Controller.prototype.onAfterRendering = function () {
 
         };
 
         Controller.prototype._onAvgBillBtnClicked = function () {
             if (!this.ABPPopupCustomControl) {
                 this.ABPPopupCustomControl = new ABPPopup();
-                this.ABPPopupCustomControl.attachEvent("NNPCompleted", function () {}, this);
+                this.ABPPopupCustomControl.attachEvent("ABPCompleted", function () {}, this);
                 this.getView().addDependent(this.ABPPopupCustomControl);
             }
             this.ABPPopupCustomControl.prepareABP();

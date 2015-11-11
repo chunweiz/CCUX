@@ -70,6 +70,6 @@
                             <u:Tag text="{comp-usage>CDI_HDI}" class="nrgUsgTable-Data nrgUsgTable-Data-ch"/>
                             <u:Tag text="{comp-usage>CurrentCharges}" class="nrgUsgTable-Data nrgUsgTable-Data-dollar"/>
                     </u:Tag>
-           <u:Tag id="idnrgUsgNoData" text="No Data Available" class="nrgUsgNoData"/>
+           <u:Tag id="idnrgUsgNoData" text="{comp-i18n-usage>nrgUsgNoData}" class="nrgUsgNoData"/>
        </u:Tag>
 </core:FragmentDefinition>

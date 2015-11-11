@@ -38,15 +38,6 @@
                                 width="100%"
                                 horizontal="true"
                                 vertical="true">
-                                <!-- <ua:FooterNotificationCenter
-                                    id="nrgAppFtrDetails-notification-alertCenter"
-                                    content="{view-data>/notification}">
-                                    <ua:FooterNotificationItem
-                                        design="{view-data>design}"
-                                        link="{view-data>link}"
-                                        text="{view-data>text}"
-                                        linkPress="._onFooterNotificationLinkPress" />
-                                </ua:FooterNotificationCenter> -->
                             </sm:ScrollContainer>
                         </ute:Tag>
                     </ute:Tag>

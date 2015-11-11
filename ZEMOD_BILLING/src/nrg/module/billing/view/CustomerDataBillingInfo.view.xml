@@ -123,7 +123,6 @@
                                               class="nrgBilling-cusDataBillingInfo-midlbl" />
 
                                 <utmain:Button id="idinvoiceAmnt"
-                                               elem="span"
                                                design="None" visible="true"
                                                press="._onInvoiceAmntClicked"
                                                class="nrgBilling-cusDataBillingInfo-midamnt"
