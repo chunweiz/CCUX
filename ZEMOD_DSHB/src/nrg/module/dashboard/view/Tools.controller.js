@@ -41,8 +41,7 @@ sap.ui.define(
         Controller.prototype._formatPositiveX = function (cIndicator) {
             if (cIndicator === 'X' || cIndicator === 'x') {
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
         };
@@ -50,8 +49,7 @@ sap.ui.define(
         Controller.prototype._formatNegativeX = function (cIndicator) {
             if (cIndicator === 'X' || cIndicator === 'x') {
                 return false;
-            }
-            else {
+            } else {
                 return true;
             }
         };
@@ -59,8 +57,7 @@ sap.ui.define(
         Controller.prototype._formatEmergencyReco = function (cIndicator) {
             if (cIndicator === 'E' || cIndicator === 'e') {
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
         };
@@ -68,8 +65,7 @@ sap.ui.define(
         Controller.prototype._formatStandardReco = function (cIndicator) {
             if (cIndicator === 'S' || cIndicator === 's') {
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
         };
@@ -96,7 +92,7 @@ sap.ui.define(
         Controller.prototype._onStandardRecoSelected = function () {
             var oReconnectInfo = this.getView().getModel('oReconnectInfo');
 
-            if( oReconnectInfo.oData.results.length > 0){
+            if (oReconnectInfo.oData.results.length > 0) {
                 oReconnectInfo.setProperty('/results/0/RecoType', 'S');
             }
         };
@@ -104,7 +100,7 @@ sap.ui.define(
         Controller.prototype._onEmergencyRecoSelected = function () {
             var oReconnectInfo = this.getView().getModel('oReconnectInfo');
 
-            if( oReconnectInfo.oData.results.length > 0){
+            if (oReconnectInfo.oData.results.length > 0) {
                 oReconnectInfo.setProperty('/results/0/RecoType', 'E');
             }
         };
@@ -112,7 +108,7 @@ sap.ui.define(
         Controller.prototype._onMtrAcsYesSelected = function () {
             var oReconnectInfo = this.getView().getModel('oReconnectInfo');
 
-            if( oReconnectInfo.oData.results.length > 0){
+            if (oReconnectInfo.oData.results.length > 0) {
                 oReconnectInfo.setProperty('/results/0/AccMeter', 'X');
             }
         };
@@ -120,13 +116,13 @@ sap.ui.define(
         Controller.prototype._onMtrAcsNoSelected = function () {
             var oReconnectInfo = this.getView().getModel('oReconnectInfo');
 
-            if( oReconnectInfo.oData.results.length > 0){
+            if (oReconnectInfo.oData.results.length > 0) {
                 oReconnectInfo.setProperty('/results/0/AccMeter', '');
             }
         };
 
         Controller.prototype._onReconnectClicked = function () {
-
+            this._updateRecconectInfo();
         };
 
         Controller.prototype._onReconnectCancelClicked = function () {
@@ -166,8 +162,36 @@ sap.ui.define(
         };
 
         Controller.prototype._updateRecconectInfo = function () {
+            var sPath,
+                oParameters,
+                oModel = this.getView().getModel('oODataSvc'),
+                oReconnectInfo = this.getView().getModel('oReconnectInfo');
 
+            sPath = '/Reconnects(PartnerID=\'' + this._bpNum + '\',BuagID=\'' + this._caNum + '\')';
+
+            oParameters = {
+                merge: false,
+                success : function (oData) {
+                    ute.ui.main.Popup.Alert({
+                        title: 'Reconnection',
+                        message: 'Reconnection Service Order Request Successfully'
+                    });
+                    this._initDtaVrfRetr();
+                }.bind(this),
+                error: function (oError) {
+                    ute.ui.main.Popup.Alert({
+                        title: 'Reconnection',
+                        message: 'Recoonection Service Order Request Failed'
+                    });
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.update(sPath, oReconnectInfo.getProperty('/results/0/'), oParameters);
+            }
         };
+
+
 
         return Controller;
     }
