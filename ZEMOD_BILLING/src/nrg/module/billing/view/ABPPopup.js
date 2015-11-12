@@ -13,14 +13,20 @@ sap.ui.define(
         /*------------------------------------- Control for Average Billing Plan Popup --------------------------------------*/
 
         var ABPPopup = Control.extend('nrg.module.billing.view.ABPPopup', {
+            metadata: {
+                
+                properties: {
+                    title: { type: 'string', defaultValue: null }
+                }
 
+            }
         });
 
         /*-------------------------------------------- Basic Popup Configuration --------------------------------------------*/
 
         ABPPopup.prototype.init = function () {
-            this._oABPPopup = ute.ui.main.Popup.create('test-hahaha', {
-                title: 'AVERAGE BILLING PLAN',
+            this._oABPPopup = ute.ui.main.Popup.create('nrgBilling-avgBillingPopup', {
+                title: this.getTitle(),
                 close: this._onPopupClosed
             });
             this._oABPPopup.addStyleClass('nrgBilling-avgBillingPopup');
