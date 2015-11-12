@@ -16,6 +16,7 @@ sap.ui.define(
             metadata: {
                 
                 properties: {
+
                     title: { type: 'string', defaultValue: null }
                 }
 
@@ -26,7 +27,7 @@ sap.ui.define(
 
         ABPPopup.prototype.init = function () {
             this._oABPPopup = ute.ui.main.Popup.create('nrgBilling-avgBillingPopup', {
-                title: this.getTitle(),
+                title: "AVERAGE BILLING PLAN",
                 close: this._onPopupClosed
             });
             this._oABPPopup.addStyleClass('nrgBilling-avgBillingPopup');
