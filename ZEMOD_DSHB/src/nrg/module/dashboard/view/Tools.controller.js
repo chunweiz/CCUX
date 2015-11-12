@@ -38,7 +38,7 @@ sap.ui.define(
         /**********************************************************************************************************************/
         //Formatter
         /**********************************************************************************************************************/
-        Controller.prototype._formatRightRdBtnSelected = function (cIndicator) {
+        Controller.prototype._formatPositiveX = function (cIndicator) {
             if (cIndicator === 'X' || cIndicator === 'x') {
                 return true;
             }
@@ -47,12 +47,30 @@ sap.ui.define(
             }
         };
 
-        Controller.prototype._formatLeftRdBtnSelected = function (cIndicator) {
+        Controller.prototype._formatNegativeX = function (cIndicator) {
             if (cIndicator === 'X' || cIndicator === 'x') {
                 return false;
             }
             else {
                 return true;
+            }
+        };
+
+        Controller.prototype._formatEmergencyReco = function (cIndicator) {
+            if (cIndicator === 'E' || cIndicator === 'e') {
+                return true;
+            }
+            else {
+                return false;
+            }
+        };
+
+        Controller.prototype._formatStandardReco = function (cIndicator) {
+            if (cIndicator === 'S' || cIndicator === 's') {
+                return true;
+            }
+            else {
+                return false;
             }
         };
 
@@ -79,7 +97,31 @@ sap.ui.define(
             var oReconnectInfo = this.getView().getModel('oReconnectInfo');
 
             if( oReconnectInfo.oData.results.length > 0){
+                oReconnectInfo.setProperty('/results/0/RecoType', 'S');
+            }
+        };
 
+        Controller.prototype._onEmergencyRecoSelected = function () {
+            var oReconnectInfo = this.getView().getModel('oReconnectInfo');
+
+            if( oReconnectInfo.oData.results.length > 0){
+                oReconnectInfo.setProperty('/results/0/RecoType', 'E');
+            }
+        };
+
+        Controller.prototype._onMtrAcsYesSelected = function () {
+            var oReconnectInfo = this.getView().getModel('oReconnectInfo');
+
+            if( oReconnectInfo.oData.results.length > 0){
+                oReconnectInfo.setProperty('/results/0/AccMeter', 'X');
+            }
+        };
+
+        Controller.prototype._onMtrAcsNoSelected = function () {
+            var oReconnectInfo = this.getView().getModel('oReconnectInfo');
+
+            if( oReconnectInfo.oData.results.length > 0){
+                oReconnectInfo.setProperty('/results/0/AccMeter', '');
             }
         };
 
@@ -121,6 +163,10 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oParameters);
             }
+        };
+
+        Controller.prototype._updateRecconectInfo = function () {
+
         };
 
         return Controller;
