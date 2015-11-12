@@ -18,9 +18,9 @@ sap.ui.define(
 
         /*-------------------------------------------- Basic Popup Configuration --------------------------------------------*/
 
-        ABPPopup.prototype.init = function () {
+        ABPPopup.prototype.init = function (sTitle) {
             this._oABPPopup = ute.ui.main.Popup.create('test-hahaha', {
-                title: 'AVERAGE BILLING PLAN',
+                title: sTitle,
                 close: this._onPopupClosed
             });
             this._oABPPopup.addStyleClass('nrgBilling-avgBillingPopup');
