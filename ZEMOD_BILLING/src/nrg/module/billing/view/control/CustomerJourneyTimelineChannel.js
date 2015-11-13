@@ -16,15 +16,15 @@ sap.ui.define(
                     channelIcon: { type: 'sap.ui.core.URI', defaultValue: 'sap-icon://letter' },
                     topLabel: { type: 'string', defaultValue: null },
                     rightDivider: { type: 'boolean', defaultValue: false },
-                    selected: { type: 'boolean', defaultValue: false }
+                    selected: { type: 'boolean', defaultValue: false },
+                    description: { type: 'string', defaultValue: "" },
+                    channel: { type: 'string', defaultValue: "" }
                 },
-
                 events: {
                     press: {},
                     doublePress: {}
                 }
             },
-
             renderer: CustomRenderer
         });
 
@@ -54,7 +54,6 @@ sap.ui.define(
             this.$('icon').bind('click', this._onChannelClick.bind(this));
             this.$('icon').bind('dblclick', this._onChannelDoubleClick.bind(this));
         };
-
         CustomControl.prototype._onChannelClick = function (oEvent) {
             this._bDoubleClick = false;
 
@@ -77,7 +76,7 @@ sap.ui.define(
             bSelected = !!bSelected;
 
             if (bSelected) {
-                this.$().addClass('tmCJTChannel-selected');
+                this.$().addClass('nrgCJTChannel-selected');
 
                 this._aChannelRegistry.forEach(function (oChannel) {
                     if (oChannel !== this) {
@@ -85,7 +84,7 @@ sap.ui.define(
                     }
                 }, this);
             } else {
-                this.$().removeClass('tmCJTChannel-selected');
+                this.$().removeClass('nrgCJTChannel-selected');
             }
 
             this.setProperty('selected', bSelected, true);

@@ -61,9 +61,11 @@
                             channelIcon="{timeline>channelIcon}"
                             rightDivider="{timeline>rightDivider}"
                             selected="{timeline>selected}"
-                            press="._onPress"
-                            doublePress="._onDoublePress"
-                            cd:recordIndex="{timeline>recordIndex}" />
+                            channel="{timeline>channel}"
+                            description="{timeline>description}"
+                            press="._onChannelPress"
+                            doublePress="._onChannelDPress"
+                            cd:recordIndex="{timeline>key}" />
                      </ch:CustomerJourneyTimeline>
                 </u:Tag>
             </u:Tag>

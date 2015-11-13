@@ -14,11 +14,10 @@ sap.ui.define(
 
         var ABPPopup = Control.extend('nrg.module.billing.view.ABPPopup', {
             metadata: {
-                
                 properties: {
-                    title: { type: 'string', defaultValue: null }
+                    title: { type: 'string', defaultValue: null },
+                    isRetro: { type: 'boolean', defaultValue: false }
                 }
-
             }
         });
 
@@ -26,7 +25,7 @@ sap.ui.define(
 
         ABPPopup.prototype.init = function () {
             this._oABPPopup = ute.ui.main.Popup.create('nrgBilling-avgBillingPopup', {
-                title: this.getTitle(),
+                title: "AVERAGE BILLING PLAN",
                 close: this._onPopupClosed
             });
             this._oABPPopup.addStyleClass('nrgBilling-avgBillingPopup');
@@ -42,10 +41,11 @@ sap.ui.define(
                     type: sap.ui.core.mvc.ViewType.XML,
                     viewName: "nrg.module.billing.view.ABP"
                 });
-                if (this._oABPPopup.isOpen()) { return this;}    
+                // Set a variable to flag if it's retro or not
+                oABPView.getController().isRetro = this.getIsRetro();
+                if (this._oABPPopup.isOpen()) { return this;}
                 this._oABPPopup.addContent(oABPView);
             }
-
             this._oABPPopup.open();
             return this;
         };

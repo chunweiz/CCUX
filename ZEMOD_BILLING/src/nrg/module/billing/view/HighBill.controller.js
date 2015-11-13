@@ -28,7 +28,9 @@ sap.ui.define(
                 aFilterIds,
                 aFilterValues,
                 fnRecievedHandler,
-                that = this;
+                that = this,
+                oNotifications = this.getView().byId("idnrgBillNotifications"),
+                oNotificationTempl = this.getView().byId("idnrgBillNotificationsTemp");
             this.initRouterParameter();
             this.getOwnerComponent().getCcuxApp().setTitle('HIGH BILL');
             //this.getOwnerComponent().getCcuxApp().setOccupied(true);
@@ -62,6 +64,14 @@ sap.ui.define(
                 events: {dataReceived : fnRecievedHandler}
             };
             oDropDownList.bindAggregation("content", mParameters);
+            sCurrentPath = "/NotificationS";
+            mParameters = {
+                model : "comp-highbill",
+                path : sCurrentPath,
+                template : oNotificationTempl,
+                filters : aFilters
+            };
+            oNotifications.bindAggregation("content", mParameters);
 
         };
         /* =========================================================== */
@@ -205,7 +215,12 @@ sap.ui.define(
 
         CustomController.prototype._onRetroAverageBillingClick = function () {
             if (!this.ABPPopupCustomControl) {
-                this.ABPPopupCustomControl = new ABPPopup({ title: "The title you want" });
+                this.ABPPopupCustomControl = new ABPPopup({ isRetro: true });
+
+                this.ABPPopupCustomControl._oABPPopup.setTitle('RETRO AVERAGE BILLING PLAN: ACTIVATE');
+
+                //this.ABPPopupCustomControl._oABPPopup.setTitle('The title you want to change to.');
+
                 this.ABPPopupCustomControl.attachEvent("ABPCompleted", function () {}, this);
                 this.getView().addDependent(this.ABPPopupCustomControl);
             }
@@ -214,11 +229,17 @@ sap.ui.define(
 
         CustomController.prototype._onAverageBillingClick = function () {
             if (!this.ABPPopupCustomControl) {
-                this.ABPPopupCustomControl = new ABPPopup({ title: "The title you want" });
+                this.ABPPopupCustomControl = new ABPPopup({ isRetro: false });
+
+                this.ABPPopupCustomControl._oABPPopup.setTitle('AVERAGE BILLING PLAN: ACTIVATE');
+
+                //this.ABPPopupCustomControl._oABPPopup.setTitle('The title you want to change to.');
+
                 this.ABPPopupCustomControl.attachEvent("ABPCompleted", function () {}, this);
                 this.getView().addDependent(this.ABPPopupCustomControl);
             }
             this.ABPPopupCustomControl.prepareABP();
+
         };
 
 

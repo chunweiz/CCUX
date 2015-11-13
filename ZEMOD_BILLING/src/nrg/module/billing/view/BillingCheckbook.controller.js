@@ -448,8 +448,11 @@ sap.ui.define(
         CustomController.prototype._initChkbookHdr = function () {
             var sPath;
 
-            sPath = '/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'\')';
-                //'/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'008005303668\')';
+            if (this.getOwnerComponent()._oMockDataManager._aMockServers.length) {
+                sPath = '/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'8005303668\')';
+            } else {
+                sPath = '/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'\')';
+            }
 
             this._retrChkbookHdr(sPath);
         };

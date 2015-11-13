@@ -338,7 +338,8 @@ sap.ui.define(
                     method : "POST",
                     urlParameters : {
                         "Contract": this._coNum,
-                        "Date": oHistoryModel.oData[oHistoryModel.oData.length - 1].FullPeriod
+                        "Date": oHistoryModel.oData[oHistoryModel.oData.length - 1].FullPeriod,
+                        "IsRetro": this.isRetro
                     },
                     success : function (oData, response) {
                         if (oData.Code === "S") {
