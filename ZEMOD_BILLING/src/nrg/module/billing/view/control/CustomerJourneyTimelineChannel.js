@@ -16,7 +16,8 @@ sap.ui.define(
                     channelIcon: { type: 'sap.ui.core.URI', defaultValue: 'sap-icon://letter' },
                     topLabel: { type: 'string', defaultValue: null },
                     rightDivider: { type: 'boolean', defaultValue: false },
-                    selected: { type: 'boolean', defaultValue: false }
+                    selected: { type: 'boolean', defaultValue: false },
+                    description: { type: 'string', defaultValue: "" }
                 },
 
                 events: {

@@ -28,13 +28,15 @@ sap.ui.define(
                 aFilterIds,
                 aFilterValues,
                 fnRecievedHandler,
-                that = this;
+                that = this,
+                oNotifications = this.getView().byId("idnrgBillNotifications"),
+                oNotificationTempl = this.getView().byId("idnrgBillNotificationsTemp");
             this.initRouterParameter();
             this.getOwnerComponent().getCcuxApp().setTitle('HIGH BILL');
             //this.getOwnerComponent().getCcuxApp().setOccupied(true);
             sCurrentPath = "/BillWizardS";
             aFilterIds = ["Contract"];
-            aFilterValues = [this._coNum];
+            aFilterValues = ['0020663388'];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             
             fnRecievedHandler = function (oEvent) {
@@ -62,6 +64,14 @@ sap.ui.define(
                 events: {dataReceived : fnRecievedHandler}
             };
             oDropDownList.bindAggregation("content", mParameters);
+            sCurrentPath = "/NotificationS";
+            mParameters = {
+                model : "comp-highbill",
+                path : sCurrentPath,
+                template : oNotificationTempl,
+                filters : aFilters
+            };
+            oNotifications.bindAggregation("content", mParameters);
 
         };
         /* =========================================================== */

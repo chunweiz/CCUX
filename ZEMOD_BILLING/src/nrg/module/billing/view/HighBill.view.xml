@@ -151,7 +151,9 @@
             <!-- Title -->
             <ute:Tag elem="span" class="nrgBilling-highBill-notiTitle"
                 text="{comp-i18n-billing>nrgBilling-highBill-NOTI_TITLE}" />
+            <ute:Tag id="idnrgBillNotifications">
 
+            </ute:Tag>
         </ute:Tag>
         <ute:Tag visible="false">
             <ute:Tag id="idnrgBillNoData" text="{comp-i18n-billing>nrgUsgNoData}" />
@@ -164,7 +166,7 @@
                         text="{path: 'comp-highbill>Begin', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }-{path: 'comp-highbill>End', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }"/>
                 </utmain:DropdownItem>
             </utmain:Dropdown>
-
+            <ute:Tag id="idnrgBillNotificationsTemp" text="{comp-highbill>NotifMsg}"/>
         </ute:Tag>
     </ute:Tag>
 

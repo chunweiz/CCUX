@@ -20,11 +20,11 @@ sap.ui.define(
         };
         //TODO: Implementation required
         Controller.prototype.onAfterRendering = function () {
-            //this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+            this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
 
         };
         Controller.prototype.onBeforeRendering = function () {
-            this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+
             var oBindingInfo,
                 oModel = this.getOwnerComponent().getModel('comp-cj'),
                 sPath = "/CJFrequencySet",
@@ -53,27 +53,27 @@ sap.ui.define(
             }));*/
             this.getView().setModel(new JSONModel({
                 data: [
-                    { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: '08/31/2014' },
-                    { recordIndex: '1', channelIcon: 'sap-icon://ipad' },
-                    { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/not-verified', topLabel: '09/21/2014', rightDivider: true },
-                    { recordIndex: '3', channelIcon: 'sap-icon://nrg-icon/webchat' },
-                    { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/agent' },
-                    { recordIndex: '5', channelIcon: 'sap-icon://nrg-icon/survey' },
-                    { recordIndex: '6', channelIcon: 'sap-icon://letter' },
-                    { recordIndex: '7', channelIcon: 'sap-icon://nrg-icon/website' },
-                    { recordIndex: '8', channelIcon: 'sap-icon://ipad' },
-                    { recordIndex: '9', channelIcon: 'sap-icon://nrg-icon/not-verified' },
-                    { recordIndex: '10', channelIcon: 'sap-icon://nrg-icon/webchat' },
-                    { recordIndex: '11', channelIcon: 'sap-icon://nrg-icon/agent' },
-                    { recordIndex: '12', channelIcon: 'sap-icon://nrg-icon/survey' },
-                    { recordIndex: '13', channelIcon: 'sap-icon://letter' },
-                    { recordIndex: '14', channelIcon: 'sap-icon://nrg-icon/website', selected: true },
-                    { recordIndex: '15', channelIcon: 'sap-icon://ipad' },
-                    { recordIndex: '16', channelIcon: 'sap-icon://nrg-icon/not-verified' },
-                    { recordIndex: '17', channelIcon: 'sap-icon://nrg-icon/webchat' },
-                    { recordIndex: '18', channelIcon: 'sap-icon://nrg-icon/agent' },
-                    { recordIndex: '19', channelIcon: 'sap-icon://nrg-icon/survey' },
-                    { recordIndex: '20', channelIcon: 'sap-icon://letter', topLabel: '09/21/2015' }
+                    { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: '08/31/2014' , description: 'sarath'},
+                    { recordIndex: '1', channelIcon: 'sap-icon://ipad' , description: 'sarath'},
+                    { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/not-verified', topLabel: '09/21/2014', rightDivider: true , description: 'sarath'},
+                    { recordIndex: '3', channelIcon: 'sap-icon://nrg-icon/webchat' , description: 'sarath'},
+                    { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/agent' , description: 'sarath'},
+                    { recordIndex: '5', channelIcon: 'sap-icon://nrg-icon/survey' , description: 'sarath'},
+                    { recordIndex: '6', channelIcon: 'sap-icon://letter' , description: 'sarath'},
+                    { recordIndex: '7', channelIcon: 'sap-icon://nrg-icon/website' , description: 'sarath'},
+                    { recordIndex: '8', channelIcon: 'sap-icon://ipad' , description: 'sarath'},
+                    { recordIndex: '9', channelIcon: 'sap-icon://nrg-icon/not-verified' , description: 'sarath'},
+                    { recordIndex: '10', channelIcon: 'sap-icon://nrg-icon/webchat' , description: 'sarath'},
+                    { recordIndex: '11', channelIcon: 'sap-icon://nrg-icon/agent' , description: 'sarath'},
+                    { recordIndex: '12', channelIcon: 'sap-icon://nrg-icon/survey' , description: 'sarath'},
+                    { recordIndex: '13', channelIcon: 'sap-icon://letter' , description: 'sarath'},
+                    { recordIndex: '14', channelIcon: 'sap-icon://nrg-icon/website', selected: true , description: 'sarath'},
+                    { recordIndex: '15', channelIcon: 'sap-icon://ipad' , description: 'sarath'},
+                    { recordIndex: '16', channelIcon: 'sap-icon://nrg-icon/not-verified' , description: 'sarath'},
+                    { recordIndex: '17', channelIcon: 'sap-icon://nrg-icon/webchat' , description: 'sarath'},
+                    { recordIndex: '18', channelIcon: 'sap-icon://nrg-icon/agent' , description: 'sarath'},
+                    { recordIndex: '19', channelIcon: 'sap-icon://nrg-icon/survey' , description: 'sarath'},
+                    { recordIndex: '20', channelIcon: 'sap-icon://letter', topLabel: '09/21/2015' , description: 'sarath'}
                 ]
             }), 'timeline');
             aFilterIds = ["BP", "CA"];
@@ -93,16 +93,14 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oBindingInfo);
             }
-            sPath = "/CJIconsSet";
+/*            sPath = "/CJIconsSet";
             aFilterIds = ["BP", "CA"];
             aFilterValues = ["64041", this._sCA];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oBindingInfo = {
                 filters : aFilters,
                 success : function (oData) {
-                    oPieChartModel.setData(oData);
-                    jQuery.sap.log.info("Odata Read Successfully:::");
-                    oPieChart.refreshChart();
+
                 }.bind(this),
                 error: function (oError) {
                     jQuery.sap.log.info("Odata Read Error occured");
@@ -110,13 +108,42 @@ sap.ui.define(
             };
             if (oModel) {
                 oModel.read(sPath, oBindingInfo);
-            }
+            }*/
         };
 
+        /**
+		 * Handler for Channel single press action
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype._onChannelPress = function (oEvent) {
+            //console.log(oEvent);
+        };
+        /**
+		 * Handler for Channel Double press action
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype._onChannelDPress = function (oEvent) {
+            //console.log(oEvent);
+        };
+        /**
+		 * Handler for Pie-Chart Total press action
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
         Controller.prototype._onTotalPress = function (oEvent) {
             //console.log(oEvent);
         };
-
+        /**
+		 * Handler for Pie-Chart individual totals press action
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
         Controller.prototype._onSlicePress = function (oEvent) {
             //console.log(oEvent.getParameters());
         };

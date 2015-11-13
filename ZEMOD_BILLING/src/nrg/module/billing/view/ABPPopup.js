@@ -36,7 +36,7 @@ sap.ui.define(
                     type: sap.ui.core.mvc.ViewType.XML,
                     viewName: "nrg.module.billing.view.ABP"
                 });
-                if (this._oABPPopup.isOpen()) { return this;}    
+                if (this._oABPPopup.isOpen()) { return this; }
                 this._oABPPopup.addContent(oABPView);
             }
 
