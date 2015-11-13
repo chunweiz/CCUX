@@ -29,7 +29,7 @@ sap.ui.define(
             renderer: function (oRm, oCustomControl) {
                 oRm.write('<div');
                 oRm.writeControlData(oCustomControl);
-                oRm.addClass('tmCustJCChart');
+                oRm.addClass('nrgCustJCChart');
                 oRm.writeClasses();
                 oRm.write('>');
                 oRm.write('</div>');
@@ -132,16 +132,16 @@ sap.ui.define(
 
             oTotal.append('circle')
                 .attr('r', iRadius * 0.35)
-                .attr('class', 'tmCustJCChart-totalOuterBg');
+                .attr('class', 'nrgCustJCChart-totalOuterBg');
 
             oTotal.append('circle')
                 .attr('r', iRadius * 0.25)
-                .attr('class', 'tmCustJCChart-totalInnerBg');
+                .attr('class', 'nrgCustJCChart-totalInnerBg');
 
             oTotal.append('text')
                 .text(d3.sum(aData, fnValue))
                 .attr('dy', '0.35em')
-                .attr('class', 'tmCustJCChart-totalText');
+                .attr('class', 'nrgCustJCChart-totalText');
 
             oTotal.on('dblclick', function () {
                 oCustomControl.fireTotalDoublePress();
@@ -158,12 +158,12 @@ sap.ui.define(
 
             oPie = oCanvas.append('g');
 
-            oPieSlice = oPie.append('g').selectAll('path.tmCustJCChart-slice')
+            oPieSlice = oPie.append('g').selectAll('path.nrgCustJCChart-slice')
                 .data(fnPie(aData))
                 .enter()
                 .append('path')
                     .attr('d', fnPieArc)
-                    .attr('class', 'tmCustJCChart-slice')
+                    .attr('class', 'nrgCustJCChart-slice')
                     .style('fill', function (data) {
                     return fnColor(fnLabel(data.data));
                 });
@@ -175,14 +175,14 @@ sap.ui.define(
             });
 
             /* Donut chart value */
-            oPieSliceText = oPie.append('g').selectAll('text.tmCustJCChart-sliceValue')
+            oPieSliceText = oPie.append('g').selectAll('text.nrgCustJCChart-sliceValue')
                 .data(fnPie(aData))
                 .enter()
                 .append('text')
                     .text(function (data) { return fnValue(data.data); })
                     .attr('dy', '0.35em')
                     .attr('transform', function (data) { return 'translate(' + fnPieArc.centroid(data) + ')'; })
-                    .attr('class', 'tmCustJCChart-sliceValue');
+                    .attr('class', 'nrgCustJCChart-sliceValue');
 
             oPieSliceText.on('dblclick', function (data) {
                 oCustomControl.fireSliceDoublePress({
@@ -199,7 +199,7 @@ sap.ui.define(
                 .outerRadius(iRadius)
                 .innerRadius(iRadius);
 
-            oLine = oCanvas.append('g').selectAll('polyline.tmCustJCChart-line')
+            oLine = oCanvas.append('g').selectAll('polyline.nrgCustJCChart-line')
                 .data(fnPie(aData))
                 .enter()
                     .append('polyline')
@@ -212,7 +212,7 @@ sap.ui.define(
                         .attr('stroke', function (data) {
                     return fnColor(fnLabel(data.data));
                 })
-                        .attr('class', 'tmCustJCChart-line');
+                        .attr('class', 'nrgCustJCChart-line');
 
             /* Line point */
             oLineInnerPoint = oCanvas.append('g').selectAll('circle')
@@ -227,12 +227,12 @@ sap.ui.define(
                         .attr('cy', function (data) { return fnLineInnerArc.centroid(data)[1]; });
 
             /* Label */
-            oLabel = oCanvas.append('g').selectAll('text.tmCustJCChart-label')
+            oLabel = oCanvas.append('g').selectAll('text.nrgCustJCChart-label')
                 .data(fnPie(aData))
                 .enter()
                     .append('text')
                         .attr('dy', '0.35em')
-                        .attr('class', 'tmCustJCChart-text')
+                        .attr('class', 'nrgCustJCChart-text')
                         .attr('transform', function (data) {
                     var aXY = fnLineOuterArc.centroid(data);
                     aXY[0] = iRadius * 1.2 * (fnMidAngle(data) < Math.PI ? 1 : -1);
