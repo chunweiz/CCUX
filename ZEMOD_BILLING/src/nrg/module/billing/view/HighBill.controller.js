@@ -216,7 +216,11 @@ sap.ui.define(
         CustomController.prototype._onRetroAverageBillingClick = function () {
             if (!this.ABPPopupCustomControl) {
                 this.ABPPopupCustomControl = new ABPPopup({ isRetro: true });
+<<<<<<< HEAD
                 this.ABPPopupCustomControl._oABPPopup.setTitle('RETRO AVERAGE BILLING PLAN: ACTIVATE');
+=======
+                this.ABPPopupCustomControl._oABPPopup.setTitle('The title you want to change to.');
+>>>>>>> Master/master
                 this.ABPPopupCustomControl.attachEvent("ABPCompleted", function () {}, this);
                 this.getView().addDependent(this.ABPPopupCustomControl);
             }
@@ -226,7 +230,11 @@ sap.ui.define(
         CustomController.prototype._onAverageBillingClick = function () {
             if (!this.ABPPopupCustomControl) {
                 this.ABPPopupCustomControl = new ABPPopup({ isRetro: false });
+<<<<<<< HEAD
                 this.ABPPopupCustomControl._oABPPopup.setTitle('AVERAGE BILLING PLAN: ACTIVATE');
+=======
+                this.ABPPopupCustomControl._oABPPopup.setTitle('The title you want to change to.');
+>>>>>>> Master/master
                 this.ABPPopupCustomControl.attachEvent("ABPCompleted", function () {}, this);
                 this.getView().addDependent(this.ABPPopupCustomControl);
             }
