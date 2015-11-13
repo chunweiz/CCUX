@@ -92,6 +92,14 @@
         <Property Name="State" Type="Edm.String" Nullable="false" MaxLength="3" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="ZIP" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
       </EntityType>
+      <EntityType Name="RecoElig" sap:content-version="1">
+        <Key>
+          <PropertyRef Name="ContAccount" />
+        </Key>
+        <Property Name="ContAccount" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Contract Account" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="RElig" Type="Edm.Boolean" Nullable="false" sap:label="Reconnect Eligiibility" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+      </EntityType>
       <EntityContainer Name="ZE_CCUX_SRV_ORD_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
         <EntitySet Name="Reconnects" EntityType="ZE_CCUX_SRV_ORD_SRV.Reconnect" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
         <EntitySet Name="PendStatS" EntityType="ZE_CCUX_SRV_ORD_SRV.PendStat" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
@@ -101,6 +109,7 @@
         <EntitySet Name="ComplOrdS" EntityType="ZE_CCUX_SRV_ORD_SRV.SrvOrd" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
         <EntitySet Name="EnrollHoldS" EntityType="ZE_CCUX_SRV_ORD_SRV.EnrollHold" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
         <EntitySet Name="SrvAddrS" EntityType="ZE_CCUX_SRV_ORD_SRV.SrvAddr" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+        <EntitySet Name="RecoEligS" EntityType="ZE_CCUX_SRV_ORD_SRV.RecoElig" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
       </EntityContainer>
       <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV_ORD_SRV/$metadata" />
       <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV_ORD_SRV/$metadata" />

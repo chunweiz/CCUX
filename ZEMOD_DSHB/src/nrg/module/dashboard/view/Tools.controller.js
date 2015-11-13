@@ -84,9 +84,9 @@ sap.ui.define(
                 this._oReconnectPopup.addStyleClass('nrgDashboard-reconnectionPopup');
 				this.getView().addDependent(this._oReconnectPopup);
             }
-            this._oReconnectPopup.open();
-            this._retrReconnectInfo();
 
+
+            this._checkReconnectElgi();
         };
 
         Controller.prototype._onStandardRecoSelected = function () {
@@ -133,6 +133,42 @@ sap.ui.define(
         /**********************************************************************************************************************/
         //Request Functions
         /**********************************************************************************************************************/
+        Controller.prototype._checkReconnectElgi = function () {
+            var sPath,
+                oParameters,
+                oModel = this.getView().getModel('oODataSvc');
+
+            sPath = '/RecoEligS(\'' + this._caNum + '\')';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData.RElig) {
+                        if (this._oReconnectPopup) {
+                            this._oReconnectPopup.open();
+                            this._retrReconnectInfo();
+                        }
+                    } else {
+                        ute.ui.main.Popup.Alert({
+                            title: 'Reconnection',
+                            message: oData.Message
+                        });
+                        return false;
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    ute.ui.main.Popup.Alert({
+                        title: 'Reconnection',
+                        message: 'Connection error, reconnection eligible call failed.'
+                    });
+                    return false;
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
         Controller.prototype._retrReconnectInfo = function () {
             var sPath,
                 aFilters = [],
@@ -165,18 +201,21 @@ sap.ui.define(
             var sPath,
                 oParameters,
                 oModel = this.getView().getModel('oODataSvc'),
-                oReconnectInfo = this.getView().getModel('oReconnectInfo');
+                oReconnectInfo = this.getView().getModel('oReconnectInfo'),
+                sMessage;
 
-            sPath = '/Reconnects(PartnerID=\'' + this._bpNum + '\',BuagID=\'' + this._caNum + '\')';
+            sPath = '/Reconnects';
 
             oParameters = {
                 merge: false,
                 success : function (oData) {
-                    ute.ui.main.Popup.Alert({
-                        title: 'Reconnection',
-                        message: 'Reconnection Service Order Request Successfully'
-                    });
-                    this._initDtaVrfRetr();
+                    if (oData) {
+                        sMessage = 'Reconnect Notification ' + oData.RecoNumber + ' created for contract ' + oData.VERTRAG;
+                        ute.ui.main.Popup.Alert({
+                            title: 'Reconnection',
+                            message: sMessage
+                        });
+                    }
                 }.bind(this),
                 error: function (oError) {
                     ute.ui.main.Popup.Alert({
