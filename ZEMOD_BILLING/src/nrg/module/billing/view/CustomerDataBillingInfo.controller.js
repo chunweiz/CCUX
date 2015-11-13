@@ -21,9 +21,16 @@ sap.ui.define(
         CustomController.prototype.onInit = function () {
 
         };
+
         CustomController.prototype.onAfterRendering = function () {
-             this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+            this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+
+            // Update Footer
+            this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum, true);
+            this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum, true);
+            this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum, true);
         };
+
         CustomController.prototype.onBeforeRendering = function () {
 
             this.getOwnerComponent().getCcuxApp().setTitle('BILLING INFO');
@@ -48,6 +55,13 @@ sap.ui.define(
             this._initRoutingInfo();
             this._initRetrBillInvoices();
             this._initBillingMsgs();
+
+            // Disable backspace key on this page
+            $(document).on("keydown", function (e) {
+                if (e.which === 8 && !$(e.target).is("input, textarea")) {
+                    e.preventDefault();
+                }
+            });
         };
 
        /**
@@ -110,9 +124,6 @@ sap.ui.define(
                 aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
             }
             return aFilters;
-        };
-
-        CustomController.prototype.onAfterRendering = function () {
         };
 
         CustomController.prototype.onExit = function () {

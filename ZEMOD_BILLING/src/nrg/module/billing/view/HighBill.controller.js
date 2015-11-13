@@ -216,6 +216,7 @@ sap.ui.define(
         CustomController.prototype._onRetroAverageBillingClick = function () {
             if (!this.ABPPopupCustomControl) {
                 this.ABPPopupCustomControl = new ABPPopup();
+                this.ABPPopupCustomControl._oABPPopup.setTitle('The title you want to change to.');
                 this.ABPPopupCustomControl.attachEvent("ABPCompleted", function () {}, this);
                 this.getView().addDependent(this.ABPPopupCustomControl);
             }
@@ -225,10 +226,12 @@ sap.ui.define(
         CustomController.prototype._onAverageBillingClick = function () {
             if (!this.ABPPopupCustomControl) {
                 this.ABPPopupCustomControl = new ABPPopup();
+                this.ABPPopupCustomControl._oABPPopup.setTitle('The title you want to change to.');
                 this.ABPPopupCustomControl.attachEvent("ABPCompleted", function () {}, this);
                 this.getView().addDependent(this.ABPPopupCustomControl);
             }
             this.ABPPopupCustomControl.prepareABP();
+
         };
 
 

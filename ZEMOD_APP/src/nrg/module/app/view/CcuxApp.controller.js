@@ -56,6 +56,20 @@ sap.ui.define(
             this._oApp._getFooter().onCampaignItemClick(oControlEvent);
         };
 
+        CustomController.prototype._onRHS = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: "ZVASOPTSLN"
+            });
+        };
+
+        /*------------------------------ Footer ----------------------------*/
+
+
+
+
+
+
 
 
         CustomController.prototype._onQuickLinkClick = function (oControlEvent) {
