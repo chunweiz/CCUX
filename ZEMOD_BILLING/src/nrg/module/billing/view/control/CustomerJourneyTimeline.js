@@ -101,15 +101,15 @@ sap.ui.define(
             }
 
             if (bScrollBack) {
-                oNavBack.removeClass('tmCJT-navBack-hide');
+                oNavBack.removeClass('nrgCJT-navBack-hide');
             } else {
-                oNavBack.addClass('tmCJT-navBack-hide');
+                oNavBack.addClass('nrgCJT-navBack-hide');
             }
 
             if (bScrollForward) {
-                oNavForward.removeClass('tmCJT-navForward-hide');
+                oNavForward.removeClass('nrgCJT-navForward-hide');
             } else {
-                oNavForward.addClass('tmCJT-navForward-hide');
+                oNavForward.addClass('nrgCJT-navForward-hide');
             }
         };
 

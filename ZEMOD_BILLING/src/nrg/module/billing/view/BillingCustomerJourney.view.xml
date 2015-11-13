@@ -61,6 +61,7 @@
                             channelIcon="{timeline>channelIcon}"
                             rightDivider="{timeline>rightDivider}"
                             selected="{timeline>selected}"
+                            channel="{timeline>channel}"
                             description="{timeline>description}"
                             press="._onChannelPress"
                             doublePress="._onChannelDPress"

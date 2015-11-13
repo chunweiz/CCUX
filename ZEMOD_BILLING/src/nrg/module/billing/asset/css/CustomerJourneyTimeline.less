@@ -42,9 +42,12 @@
 
 .nrgCJT-channelContainer {
     width: 600px;
-    overflow: hidden;
+/*    overflow: hidden;*/
     white-space: nowrap;
     display: inline-block;
+    overflow-x: hidden;
+    overflow-y: overlay;
+	height: 222px;
 }
 
 .nrgCJTChannel {
@@ -67,25 +70,34 @@
     color: gold;
 }
 .nrgCJTChannel-desc {
-    border : 2px solid;
-    display: inline-block;
+    border: 2px solid gray;
 	position: absolute;
-	left: 0px;
-	top: 5rem;
-	width: 10rem;
+	left: -35px;
+	top: 6.5rem;
+	width: 12rem;
 	height: 7rem;
+    display:none;
+    color: @nrgColor-grey-semiDark;
 }
 .nrgCJTChannel-desc::before {
-
     content: "";
 	position: absolute;
-	left: 10px;
-	top: -9px;
+	left: 90px;
+    top: -45px;
 	display: block;
 	width: 0;
-	height: 0;
-	border-left: thick solid #ff0000;
-
+	height: 22px;
+	border-left: 1px solid gray;
+}
+.nrgCJTChannel-desc-title {
+    position: relative;
+	top: -1rem;
+	margin-left: 0em;
+	display: inline;
+	background-color: #eaeff4;
+	left: 4rem;
+	/* width: 3px; */
+	padding: 2px 8px 2px 8px;
 }
 .nrgCJTChannel .nrgCJTChannel-emblem .nrgCJTChannel-topLabel {
     display: block;

@@ -75,10 +75,20 @@ sap.ui.define(
             oRm.addClass('nrgCJTChannel-desc');
             oRm.writeClasses();
             oRm.write('>');
-
+            oRm.write('<div');
+            oRm.addClass('nrgCJTChannel-desc-title');
+            oRm.writeClasses();
+            oRm.write('>');
+            oRm.writeEscaped(oCustomControl.getChannel());
+            oRm.write('</div>');
+            oRm.write('<div');
+            oRm.addClass('nrgCJTChannel-desc-text');
+            oRm.writeClasses();
+            oRm.write('>');
             if (oCustomControl.getDescription()) {
                 oRm.writeEscaped(oCustomControl.getDescription());
             }
+            oRm.write('</div>');
             oRm.write('</div>');
         };
 

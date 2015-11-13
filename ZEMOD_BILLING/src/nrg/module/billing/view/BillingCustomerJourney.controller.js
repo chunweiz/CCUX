@@ -53,27 +53,27 @@ sap.ui.define(
             }));*/
             this.getView().setModel(new JSONModel({
                 data: [
-                    { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: '08/31/2014' , description: 'sarath'},
-                    { recordIndex: '1', channelIcon: 'sap-icon://ipad' , description: 'sarath'},
-                    { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/not-verified', topLabel: '09/21/2014', rightDivider: true , description: 'sarath'},
-                    { recordIndex: '3', channelIcon: 'sap-icon://nrg-icon/webchat' , description: 'sarath'},
-                    { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/agent' , description: 'sarath'},
-                    { recordIndex: '5', channelIcon: 'sap-icon://nrg-icon/survey' , description: 'sarath'},
-                    { recordIndex: '6', channelIcon: 'sap-icon://letter' , description: 'sarath'},
-                    { recordIndex: '7', channelIcon: 'sap-icon://nrg-icon/website' , description: 'sarath'},
-                    { recordIndex: '8', channelIcon: 'sap-icon://ipad' , description: 'sarath'},
-                    { recordIndex: '9', channelIcon: 'sap-icon://nrg-icon/not-verified' , description: 'sarath'},
-                    { recordIndex: '10', channelIcon: 'sap-icon://nrg-icon/webchat' , description: 'sarath'},
-                    { recordIndex: '11', channelIcon: 'sap-icon://nrg-icon/agent' , description: 'sarath'},
-                    { recordIndex: '12', channelIcon: 'sap-icon://nrg-icon/survey' , description: 'sarath'},
-                    { recordIndex: '13', channelIcon: 'sap-icon://letter' , description: 'sarath'},
-                    { recordIndex: '14', channelIcon: 'sap-icon://nrg-icon/website', selected: true , description: 'sarath'},
-                    { recordIndex: '15', channelIcon: 'sap-icon://ipad' , description: 'sarath'},
-                    { recordIndex: '16', channelIcon: 'sap-icon://nrg-icon/not-verified' , description: 'sarath'},
-                    { recordIndex: '17', channelIcon: 'sap-icon://nrg-icon/webchat' , description: 'sarath'},
-                    { recordIndex: '18', channelIcon: 'sap-icon://nrg-icon/agent' , description: 'sarath'},
-                    { recordIndex: '19', channelIcon: 'sap-icon://nrg-icon/survey' , description: 'sarath'},
-                    { recordIndex: '20', channelIcon: 'sap-icon://letter', topLabel: '09/21/2015' , description: 'sarath'}
+                    { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: '08/31/2014', description: 'sarath', channel: 'website'},
+                    { recordIndex: '1', channelIcon: 'sap-icon://ipad', description: 'sarath', channel: 'ipad'},
+                    { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/not-verified', topLabel: '09/21/2014', rightDivider: true, description: 'sarath', channel: 'verified'},
+                    { recordIndex: '3', channelIcon: 'sap-icon://nrg-icon/webchat', description: 'sarath', channel: 'webchat'},
+                    { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/agent', description: 'sarath', channel: 'agent'},
+                    { recordIndex: '5', channelIcon: 'sap-icon://nrg-icon/survey', description: 'sarath', channel: 'survey'},
+                    { recordIndex: '6', channelIcon: 'sap-icon://letter', description: 'sarath', channel: 'letter'},
+                    { recordIndex: '7', channelIcon: 'sap-icon://nrg-icon/website', description: 'sarath', channel: 'website'},
+                    { recordIndex: '8', channelIcon: 'sap-icon://ipad', description: 'sarath', channel: 'ipad'},
+                    { recordIndex: '9', channelIcon: 'sap-icon://nrg-icon/not-verified', description: 'sarath', channel: 'verified'},
+                    { recordIndex: '10', channelIcon: 'sap-icon://nrg-icon/webchat', description: 'sarath', channel: 'webchat'},
+                    { recordIndex: '11', channelIcon: 'sap-icon://nrg-icon/agent', description: 'sarath', channel: 'agent'},
+                    { recordIndex: '12', channelIcon: 'sap-icon://nrg-icon/survey', description: 'sarath', channel: 'survey'},
+                    { recordIndex: '13', channelIcon: 'sap-icon://letter', description: 'sarath', channel: 'letter'},
+                    { recordIndex: '14', channelIcon: 'sap-icon://nrg-icon/website', selected: true, description: 'sarath', channel: 'website'},
+                    { recordIndex: '15', channelIcon: 'sap-icon://ipad', description: 'sarath', channel: 'ipad'},
+                    { recordIndex: '16', channelIcon: 'sap-icon://nrg-icon/not-verified', description: 'sarath', channel: 'verified'},
+                    { recordIndex: '17', channelIcon: 'sap-icon://nrg-icon/webchat', description: 'sarath', channel: 'webchat'},
+                    { recordIndex: '18', channelIcon: 'sap-icon://nrg-icon/agent', description: 'sarath', channel: 'agent'},
+                    { recordIndex: '19', channelIcon: 'sap-icon://nrg-icon/survey', description: 'sarath', channel: 'survey'},
+                    { recordIndex: '20', channelIcon: 'sap-icon://letter', topLabel: '09/21/2015', description: 'sarath', channel: 'letter'}
                 ]
             }), 'timeline');
             aFilterIds = ["BP", "CA"];

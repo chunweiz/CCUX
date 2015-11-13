@@ -36,7 +36,7 @@ sap.ui.define(
             //this.getOwnerComponent().getCcuxApp().setOccupied(true);
             sCurrentPath = "/BillWizardS";
             aFilterIds = ["Contract"];
-            aFilterValues = ['0020663388'];
+            aFilterValues = [this._coNum];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             
             fnRecievedHandler = function (oEvent) {
@@ -215,8 +215,8 @@ sap.ui.define(
 
         CustomController.prototype._onRetroAverageBillingClick = function () {
             if (!this.ABPPopupCustomControl) {
-                this.ABPPopupCustomControl = new ABPPopup();
-                this.ABPPopupCustomControl._oABPPopup.setTitle('The title you want to change to.');
+                this.ABPPopupCustomControl = new ABPPopup({ isRetro: true });
+                this.ABPPopupCustomControl._oABPPopup.setTitle('RETRO AVERAGE BILLING PLAN: ACTIVATE');
                 this.ABPPopupCustomControl.attachEvent("ABPCompleted", function () {}, this);
                 this.getView().addDependent(this.ABPPopupCustomControl);
             }
@@ -225,8 +225,8 @@ sap.ui.define(
 
         CustomController.prototype._onAverageBillingClick = function () {
             if (!this.ABPPopupCustomControl) {
-                this.ABPPopupCustomControl = new ABPPopup();
-                this.ABPPopupCustomControl._oABPPopup.setTitle('The title you want to change to.');
+                this.ABPPopupCustomControl = new ABPPopup({ isRetro: false });
+                this.ABPPopupCustomControl._oABPPopup.setTitle('AVERAGE BILLING PLAN: ACTIVATE');
                 this.ABPPopupCustomControl.attachEvent("ABPCompleted", function () {}, this);
                 this.getView().addDependent(this.ABPPopupCustomControl);
             }
