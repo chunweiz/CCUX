@@ -8,10 +8,11 @@
 			'sap/ui/core/routing/HashChanger',
 			'sap/ui/model/json/JSONModel',
 			'sap/ui/model/Filter',
-			'sap/ui/model/FilterOperator'
+			'sap/ui/model/FilterOperator',
+			'nrg/module/dashboard/view/DepositToolPopup'
 		],
 
-		function (CoreController, HashChanger, JSONModel, Filter, FilterOperator) {
+		function (CoreController, HashChanger, JSONModel, Filter, FilterOperator, DepositToolPopup) {
 			'use strict';
 
 			var Controller = CoreController.extend('nrg.module.dashboard.view.CustomerDataSummary');
@@ -30,7 +31,12 @@
 				this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryAllBuags');
 
 				// Model to keep information of badges
-				this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryCoBadges');				
+				if (this.allCoBadges) {
+					this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryCoBadges');
+					this.getView().getModel('oSmryCoBadges').setData(this.allCoBadges);
+				} else {
+					this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryCoBadges');
+				}
 
 				//Model to keep segmentation information
 				this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oSmryBpSegInf');
@@ -71,6 +77,7 @@
 			Controller.prototype._handleCoChanged = function (channel, event, data) {
 				var oCoBadgesModel = this.getView().getModel('oSmryCoBadges');
 				oCoBadgesModel.setData(data.coInfo.COBadges);
+				this.allCoBadges = data.coInfo.COBadges;
 			};
 
 			Controller.prototype._handleCaInfoContractChanged = function (channel, event, data) {
@@ -337,6 +344,17 @@
 				} else {
 					oRouter.navTo('bupa.caInfoNoCo', {bpNum: this._bpNum, caNum: this._caNum});
 				}
+			};
+
+			/*------------------------------------------------ UI Element Actions -----------------------------------------------*/
+
+			Controller.prototype._onDepositToolClicked = function () {
+				if (!this.DepositToolPopupCustomControl) {
+	                this.DepositToolPopupCustomControl = new DepositToolPopup({ title: 'DEPOSIT TOOL' });
+	                this.DepositToolPopupCustomControl.attachEvent("DepositToolCompleted", function () {}, this);
+	                this.getView().addDependent(this.DepositToolPopupCustomControl);
+	            }
+	            this.DepositToolPopupCustomControl.preparePopup();
 			};
 
 			/*------------------------------------------ Account Access Authorization -------------------------------------------*/

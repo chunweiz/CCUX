@@ -1,0 +1,111 @@
+.nrgDashboard-depositToolPopup {
+    width: 800px;
+    font-family: @nrgFontFamily;
+
+    // Header
+    & .sapUiDlgHdr {
+        height: 80px;
+        margin: 0;
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-between;
+
+        & .sapUiDlgHdrLeft {
+
+            & .sapUiDlgLabel {
+                font-size: @nrgFontSize-large;
+            }
+        }
+
+        & .sapUiDlgHdrBtns {
+            position: relative;
+            margin-right: 0;
+
+            & .sapUiDlgCloseBtn {
+                &::before {
+                    height: 20px;
+                    width: 2px;
+                    transform: translate(6px,0) rotate(45deg);
+                }
+                &::after {
+                    height: 20px;
+                    width: 2px;
+                }
+            }
+
+        }
+    }
+
+    // Content
+    & .nrgDashboard-depositToolPopup-content {
+        display: flex;
+        flex-direction: column;
+        padding: 0 10px;
+
+        // Table
+        & .nrgDashboard-depositToolPopup-table {
+            display: flex;
+            flex-direction: column;
+
+            & .nrgDashboard-depositToolPopup-table-labelSec {
+                padding-right: 16px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                font-size: @nrgFontSize-base;
+                font-weight: @nrgFontWeight-semiBold;
+
+                & .nrgDashboard-depositToolPopup-table-depositLabel {
+                    width: 110px;
+                }
+
+                & .nrgDashboard-depositToolPopup-table-statusLabel {
+                    width: 100px;
+                }
+
+                & .nrgDashboard-depositToolPopup-table-typeLabel {
+                    width: 130px;
+                }
+
+                & .nrgDashboard-depositToolPopup-table-interestDateLabel {
+                    width: 170px;
+                }
+
+                & .nrgDashboard-depositToolPopup-table-receivedDateLabel {
+                    width: 212px;
+                }
+            }
+
+            & .nrgDashboard-depositToolPopup-table-row {
+                padding: 10px 0;
+                display: flex;
+                border-bottom: 1px solid @nrgColor-grey-lightBackground;
+                font-size: @nrgFontSize-base;
+                align-items: center;
+                text-align: center;
+
+                & .nrgDashboard-depositToolPopup-table-deposit {
+                    width: 110px;
+                }
+
+                & .nrgDashboard-depositToolPopup-table-status {
+                    width: 100px;
+                }
+
+                & .nrgDashboard-depositToolPopup-table-type {
+                    width: 130px;
+                }
+
+                & .nrgDashboard-depositToolPopup-table-interestDate {
+                    width: 170px;
+                }
+
+                & .nrgDashboard-depositToolPopup-table-receivedDate {
+                    width: 212px;
+                }
+            }
+        }
+
+    }
+}

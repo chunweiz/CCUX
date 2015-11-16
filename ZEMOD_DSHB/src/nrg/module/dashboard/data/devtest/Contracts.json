@@ -23,7 +23,8 @@
                     "BadgeCL":"X",
                     "CLText":"Critical Load",
                     "BadgeCRC":"X",
-                    "CRCText":"Chronic Care"
+                    "CRCText":"Chronic Care",
+                    "Deposit":"X"
                 },
                 "ContractID":"32192644",
                 "PartnerID":"0000064041",
@@ -98,7 +99,8 @@
                     "BadgeCL":"X",
                     "CLText":"Critical Load",
                     "BadgeCRC":"",
-                    "CRCText":"Chronic Care"
+                    "CRCText":"Chronic Care",
+                    "Deposit":""
                 },
                 "ContractID":"1950125",
                 "PartnerID":"0000064041",
@@ -173,7 +175,8 @@
                     "BadgeCL":"",
                     "CLText":"Critical Load",
                     "BadgeCRC":"",
-                    "CRCText":"Chronic Care"
+                    "CRCText":"Chronic Care",
+                    "Deposit":""
                 },
                 "ContractID":"222285",
                 "PartnerID":"0000064041",
