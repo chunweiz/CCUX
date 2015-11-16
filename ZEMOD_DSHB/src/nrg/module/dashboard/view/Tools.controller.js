@@ -122,13 +122,63 @@ sap.ui.define(
         };
 
         Controller.prototype._onReconnectClicked = function () {
-            this._updateRecconectInfo();
+            /*this._updateRecconectInfo();*/
+            this._confirmReconnectInput();
         };
 
         Controller.prototype._onReconnectCancelClicked = function () {
             this._oReconnectPopup.close();
         };
 
+        /**********************************************************************************************************************/
+        //Other Functions for Logic
+        /**********************************************************************************************************************/
+        Controller.prototype._confirmReconnectInput = function () {
+            var oReconnectInfo = this.getView().getModel('oReconnectInfo');
+
+            if (!oReconnectInfo.getProperty('/results/0/ReqName')) {
+                ute.ui.main.Popup.Alert({
+                    title: 'Reconnection -- Confirm',
+                    message: 'Please input requestor\'s name.'
+                });
+            } else if (!oReconnectInfo.getProperty('/results/0/ReqNumber')) {
+                ute.ui.main.Popup.Alert({
+                    title: 'Reconnection -- Confirm',
+                    message: 'Please input requestor\'s number.'
+                });
+            } else if (!oReconnectInfo.getProperty('/results/0/AccMeter') && !oReconnectInfo.getProperty('/results/0/AccComment')) {
+                ute.ui.main.Popup.Alert({
+                    title: 'Reconnection -- Confirm',
+                    message: 'Please input meter access comment.'
+                });
+            } else {
+                this._confirmMeterAccess();
+            }
+        };
+
+        Controller.prototype._confirmMeterAccess = function () {
+            ute.ui.main.Popup.Confirm({
+                title: 'Reconnection -- Confirm',
+                message: 'Have you confirmed the meter\'s accessibility?',
+                callback: function (sAction) {
+                    if (sAction === 'Yes') {
+                        this._confirmPowerOnExpect();
+                    }
+                }.bind(this)
+            });
+        };
+
+        Controller.prototype._confirmPowerOnExpect = function () {
+            ute.ui.main.Popup.Confirm({
+                title: 'Reconnection -- Confirm',
+                message: 'Please confirm that you have communicated the Power-on expectations to the customer.',
+                callback: function (sAction) {
+                    if (sAction === 'Yes') {
+                        this._updateRecconectInfo();
+                    }
+                }
+            });
+        };
 
         /**********************************************************************************************************************/
         //Request Functions
@@ -226,7 +276,7 @@ sap.ui.define(
             };
 
             if (oModel) {
-                oModel.update(sPath, oReconnectInfo.getProperty('/results/0/'), oParameters);
+                oModel.create(sPath, oReconnectInfo.getProperty('/results/0/'), oParameters);
             }
         };
 

@@ -88,7 +88,8 @@
                 </ute:Tag>
                 <ute:Tag>
                     <ute:Tag class="nrgDashboard-reconnectionPopup-cri-wide-label" text="{comp-i18n-dashboard>nrgDashboard-reconnect-comments}"/>
-                    <ute:Tag elem="textarea" class="nrgDashboard-reconnectionPopup-cri-cmnt" text="{oReconnectInfo>/results/0/AccComment}"/>
+                    <c:TextArea id="nrgDashboard-cri-acc-cmnt"
+                             class="nrgDashboard-reconnectionPopup-cri-cmnt" value="{oReconnectInfo>/results/0/AccComment}"/>
                 </ute:Tag>
                 <ute:Tag class="nrgDashboard-reconnectionPopup-cri-btn">
                     <utmain:Button text="Reconnect" press="._onReconnectClicked"></utmain:Button>
