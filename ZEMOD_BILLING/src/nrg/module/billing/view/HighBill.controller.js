@@ -36,7 +36,7 @@ sap.ui.define(
             //this.getOwnerComponent().getCcuxApp().setOccupied(true);
             sCurrentPath = "/BillWizardS";
             aFilterIds = ["Contract"];
-            aFilterValues = [this._coNum];
+            aFilterValues = ["0034910135"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             
             fnRecievedHandler = function (oEvent) {
@@ -203,11 +203,11 @@ sap.ui.define(
 		 */
 		CustomController.prototype._onUsagehistory = function () {
 			var _coNum = "0006970391",
-			    _typeV = "QD";
+			    _typeV = "B";
 			   /* oRouter = this.getOwnerComponent().getRouter();*/
 
 			if (this._coNum) {
-				this.navTo('usage', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum, typeV: "QD"});
+				this.navTo('usage', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum, typeV: "B"});
 			}
 		};
 
