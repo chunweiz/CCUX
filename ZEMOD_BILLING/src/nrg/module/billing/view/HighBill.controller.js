@@ -36,7 +36,7 @@ sap.ui.define(
             //this.getOwnerComponent().getCcuxApp().setOccupied(true);
             sCurrentPath = "/BillWizardS";
             aFilterIds = ["Contract"];
-            aFilterValues = ["0034910135"];
+            aFilterValues = [this._coNum];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             
             fnRecievedHandler = function (oEvent) {
