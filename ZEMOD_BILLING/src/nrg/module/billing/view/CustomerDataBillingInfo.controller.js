@@ -1,5 +1,6 @@
 /*globals sap*/
 /*global ute*/
+/*global $*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -64,13 +65,14 @@ sap.ui.define(
             });
         };
 
-       /**
-		 * Iniitalize the msgs in the Billing Info Page
-		 *
-		 * @function
-		 *
-		 * @private
-		 */
+        CustomController.prototype.onAfterRendering = function () {
+            // Add Nav Button to left and right
+            this.getOwnerComponent().getCcuxApp().showNavLeft(true);
+            this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
+            this.getOwnerComponent().getCcuxApp().showNavRight(true);
+            this.getOwnerComponent().getCcuxApp().attachNavRight(this._navRightCallBack, this);
+        };
+
 
         CustomController.prototype._initBillingMsgs = function () {
             var aFilterIds,
@@ -347,7 +349,9 @@ sap.ui.define(
         /*---------------------------------------------- Invoice Selection Popup --------------------------------------------*/
 
         CustomController.prototype._onInvoiceSelectClicked = function () {
-            var bRetrieveComplete = false;
+            var bRetrieveComplete = false,
+                minDate,
+                checkRetrComplete;
 
             // Display the loading indicator
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
@@ -363,7 +367,7 @@ sap.ui.define(
                 this.getView().byId('nrgBilling-invSel-stDate').attachBrowserEvent('select', this._handleStartDateChange, this);
                 this.getView().byId('nrgBilling-invSel-edDate').attachBrowserEvent('select', this._handleEndDateChange, this);
                 // Set minDate for startDate & endDate
-                var minDate = new Date();
+                minDate = new Date();
                 minDate.setMonth(minDate.getMonth() - 18);
                 this.getView().byId('nrgBilling-invSel-stDate').setMinDate(minDate);
                 this.getView().byId('nrgBilling-invSel-edDate').setMinDate(minDate);
@@ -371,9 +375,9 @@ sap.ui.define(
             // Open the popup
             this._oInvSelectPopup.open();
             // Retrieve latest data
-            this._retrieveInvoiceInfo(this._caNum, function () {bRetrieveComplete = true;});
+            this._retrieveInvoiceInfo(this._caNum, function () {bRetrieveComplete = true; });
             // Check the completion of retrieving data
-            var checkRetrComplete = setInterval (function () {
+            checkRetrComplete = setInterval(function () {
                 if (bRetrieveComplete) {
                     // Dismiss the loading indicator
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
@@ -388,35 +392,38 @@ sap.ui.define(
 
         CustomController.prototype._retrieveInvoiceInfo = function (sCaNumber, fnCallback) {
             var sPath = '/InvoiceS',
-                aFilters = [];
-                aFilters.push(new Filter({ path: 'ContAccount', operator: FilterOperator.EQ, value1: sCaNumber}));
-
-            var oModel = this.getView().getModel('oDataInvoiceSvc'),
+                aFilters = [],
+                oModel = this.getView().getModel('oDataInvoiceSvc'),
                 oInvSelModel = this.getView().getModel('oInvoiceSelectInfo'),
                 aInvoiceData = [],
-                oParameters;
+                oParameters,
+                rowNumer,
+                tableContainer,
+                j,
+                i;
+
+            aFilters.push(new Filter({ path: 'ContAccount', operator: FilterOperator.EQ, value1: sCaNumber}));
 
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
-                    if (oData.results) { 
-                        
+                    if (oData.results) {
                         oInvSelModel.setData(oData.results);
                         
                         // Generate the table
-                        var tableContainer = this.getView().byId('nrgBilling-invSelPopup-tableBody');
+                        tableContainer = this.getView().byId('nrgBilling-invSelPopup-tableBody');
 
                         // Remove previous content
-                        var rowNumer = tableContainer.getContent().length;
-                        for (var j = 0; j < rowNumer; j++) tableContainer.removeContent(0);
+                        rowNumer = tableContainer.getContent().length;
+                        for (j = 0; j < rowNumer; j = j + 1) { tableContainer.removeContent(0); }
                             
                         // Process the new data                        
-                        for (var i = 0; i < oInvSelModel.oData.length; i++) {
+                        for (i = 0; i < oInvSelModel.oData.length; i = i + 1) {
                             // Add self-defined attribute
                             oInvSelModel.oData[i].View = false;
                             // Create table row element
                             var rowElement = new ute.ui.commons.Tag({elem: 'div'}).addStyleClass('nrgBilling-invSelPopup-tableRow');
-                            if ((i + 1) % 2 === 0) rowElement.addStyleClass('nrgBilling-invSelPopup-tableRow-even');
+                            if ((i + 1) % 2 === 0) { rowElement.addStyleClass('nrgBilling-invSelPopup-tableRow-even'); }
                             // Insert row element childs
                             rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oInvSelModel.oData[i].Date}).addStyleClass('nrgBilling-invSelPopup-tableRow-item').addStyleClass('date'));
                             rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oInvSelModel.oData[i].PrintDoc}).addStyleClass('nrgBilling-invSelPopup-tableRow-item').addStyleClass('number'));
@@ -427,10 +434,8 @@ sap.ui.define(
                         }
 
                         // Execute the callback function
-                        if (fnCallback) fnCallback();
+                        if (fnCallback) { fnCallback(); }
 
-                    } else {
-                        
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -456,14 +461,16 @@ sap.ui.define(
 
         CustomController.prototype._initializeDateRange = function () {
             var oInvSelDateRangeModel = this.getView().getModel('oInvoiceSelectDateRange'),
-                today = new Date(), 
-                before = new Date();
+                today = new Date(),
+                before = new Date(),
+                endDate,
+                startDate;
 
             // Format the endDate
-            var endDate = this._formatInvoiceDate(today.getDate(), today.getMonth() + 1, today.getFullYear());
+            endDate = this._formatInvoiceDate(today.getDate(), today.getMonth() + 1, today.getFullYear());
             // Format the startDate (12 months ago)
             before.setMonth(before.getMonth() - 12);
-            var startDate = this._formatInvoiceDate(before.getDate(), before.getMonth() + 1, before.getFullYear());
+            startDate = this._formatInvoiceDate(before.getDate(), before.getMonth() + 1, before.getFullYear());
             
             this.getView().byId('nrgBilling-invSel-stDate').setDefaultDate(startDate);
             this.getView().byId('nrgBilling-invSel-edDate').setDefaultDate(endDate);
@@ -491,15 +498,16 @@ sap.ui.define(
         CustomController.prototype._filterByDateRange = function () {
             var oTable = this.getView().byId('nrgBilling-invSelPopup-tableBody'),
                 oInvSelDateRangeModel = this.getView().getModel('oInvoiceSelectDateRange'),
-                oInvSelFiltersModel = this.getView().getModel('oInvoiceSelectFilters');
+                oInvSelFiltersModel = this.getView().getModel('oInvoiceSelectFilters'),
+                i,
+                date;
 
-            for (var i = 0; i < oTable.getContent().length; i++) {
-                var date = oTable.getContent()[i].getContent()[0].getText();
-                if (this._deformatInvoiceDate(date) < this._deformatInvoiceDate(oInvSelDateRangeModel.oData.Start) || 
-                    this._deformatInvoiceDate(date) > this._deformatInvoiceDate(oInvSelDateRangeModel.oData.End)) {
+            for (i = 0; i < oTable.getContent().length; i = i + 1) {
+                date = oTable.getContent()[i].getContent()[0].getText();
+                if (this._deformatInvoiceDate(date) < this._deformatInvoiceDate(oInvSelDateRangeModel.oData.Start) || this._deformatInvoiceDate(date) > this._deformatInvoiceDate(oInvSelDateRangeModel.oData.End)) {
                     oTable.getContent()[i].setVisible(false);
                 } else {
-                    oTable.getContent()[i].setVisible(true);   
+                    oTable.getContent()[i].setVisible(true);
                 }
             }
 

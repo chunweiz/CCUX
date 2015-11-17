@@ -1081,7 +1081,9 @@ sap.ui.define(
                 bCoRetrieveComplate = false,
                 bCurrentCaNumRetrieveComplete = false,
                 sCurrentCaNumber,
-                oParameters;
+                oParameters,
+                checkCaRetrComplete,
+                checkCurCaRetrComplete;
 
             oParameters = {
                 success : function (oData) {
@@ -1095,7 +1097,7 @@ sap.ui.define(
                         // 1. Retrieve all CA belong to the BP
                         if (oData.PartnerID) {this._retrAllCa(oData.PartnerID, function () {bCaRetrieveComplete = true; }); }
                         // Check the completion of CA retrieval
-                        var checkCaRetrComplete = setInterval(function () {
+                        checkCaRetrComplete = setInterval(function () {
                             if (bCaRetrieveComplete) {
                                 // 2. Get the current selected CA number
                                 sCurrentCaNumber = this._getCurrentCaNum(function () {bCurrentCaNumRetrieveComplete = true; });
@@ -1103,7 +1105,7 @@ sap.ui.define(
                             }
                         }.bind(this), 100);
                         // Check the completion of current CA number retrieval
-                        var checkCurCaRetrComplete = setInterval(function () {
+                        checkCurCaRetrComplete = setInterval(function () {
                             if (bCurrentCaNumRetrieveComplete) {
                                 // 3. Load the current selected CA info
                                 this._setCurrentCa(sCurrentCaNumber);
@@ -1164,21 +1166,22 @@ sap.ui.define(
                 sPath = '/Partners' + '(\'' + sBpNum + '\')/Buags/',
                 oParameters,
                 iSearchedCaIndex = 0,
-                eventBus = sap.ui.getCore().getEventBus();
+                eventBus = sap.ui.getCore().getEventBus(),
+                i;
 
             oParameters = {
                 success : function (oData) {
                     if (oData) {
                         // Set select key for all CAs for CA dropdown
-                        for (var i = 0; i < oData.results.length; i++) {
+                        for (i = 0; i < oData.results.length; i = i + 1) {
                             oData.results[i].iIndex = i.toString();
-                            if (oData.results[i].ContractAccountID === sCaNum) iSearchedCaIndex = i;
+                            if (oData.results[i].ContractAccountID === sCaNum) { iSearchedCaIndex = i; }
                         }
                         // Load all the CAs for CA dropdown
                         this.getView().getModel('oAllBuags').setData(oData.results);
                         this.getView().getModel('oAllBuags').setProperty('/selectedKey', iSearchedCaIndex);
                         // Check and execute the callback function
-                        if (fnCallback) fnCallback();
+                        if (fnCallback) { fnCallback(); }
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -1205,15 +1208,16 @@ sap.ui.define(
                 sCurrentCaNumber = oAllCaModel.oData[0].ContractAccountID;
             }
 
-            if (fnCallback) fnCallback();
+            if (fnCallback) { fnCallback(); }
 
             return sCurrentCaNumber;
         };
 
         Controller.prototype._setCurrentCa = function (sCaNum) {
-            var oAllCaModel = this.getView().getModel('oAllBuags');
+            var oAllCaModel = this.getView().getModel('oAllBuags'),
+                i;
 
-            for (var i = 0; i < oAllCaModel.oData.length; i++) {
+            for (i = 0; i < oAllCaModel.oData.length; i = i + 1) {
                 if (oAllCaModel.oData[i].ContractAccountID === sCaNum) {
                     // Load as default to display
                     this.getView().getModel('oDtaVrfyBuags').setData(oAllCaModel.oData[i]);
@@ -1252,7 +1256,7 @@ sap.ui.define(
                         this.getView().getModel('oAllContractsofBuag').setData(oData.results);
                         this.getView().getModel('oAllContractsofBuag').setProperty('/selectedKey', '0');
                         // Check and execute the callback function
-                        if (fnCallback) fnCallback();
+                        if (fnCallback) { fnCallback(); }
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -1268,9 +1272,10 @@ sap.ui.define(
         Controller.prototype._initCoPageModel = function () {
             var oPageModel = this.getView().getModel('oCoPageModel'),
                 page = [],
-                oTemp;
+                oTemp,
+                i;
 
-            for (var i = 0; i < 3; i++) {
+            for (i = 0; i < 3; i = i + 1) {
                 oTemp = {exist: false, con_ind: 0, index: i};
                 page.push(oTemp);
             }
@@ -1280,9 +1285,10 @@ sap.ui.define(
 
         Controller.prototype._setUpCoPageModel = function (iPageNumber, aReturnedCo) {
             var oPageModel = this.getView().getModel('oCoPageModel'),
-                oPage = oPageModel.getProperty('/paging');
+                oPage = oPageModel.getProperty('/paging'),
+                i;
 
-            for (var i = 0; i < iPageNumber; i++) {
+            for (i = 0; i < iPageNumber; i = i + 1) {
                 aReturnedCo[i].iIndex = i.toString();
                 if (i < 3) {
                     oPage[i].exist = true;
@@ -1307,7 +1313,8 @@ sap.ui.define(
                 sCurrentCo = this.getView().getModel('oDtaVrfyContract').getProperty('/ContractID'),
                 oComponent = this.getOwnerComponent(),
                 oWebUiManager = oComponent.getCcuxWebUiManager(),
-                iCompleteCheck = 0;
+                iCompleteCheck = 0,
+                checkComplete;
 
             // Display the loading indicator
             oComponent.getCcuxApp().setOccupied(true);
@@ -1327,7 +1334,7 @@ sap.ui.define(
             });
 
             // Check the completion of WebUI & CCUX update
-            var checkComplete = setInterval(function() {
+            checkComplete = setInterval(function () {
                 if (iCompleteCheck === 2) {
                     oComponent.getCcuxApp().setOccupied(false);
                     clearInterval(checkComplete);
@@ -1395,7 +1402,8 @@ sap.ui.define(
         Controller.prototype._onCaSelect = function (oEvent) {
             var sSelectedKey = oEvent.getParameters().selectedKey,
                 iSelectedIndex = parseInt(sSelectedKey, 10),
-                coRetrieveComplete = false;
+                coRetrieveComplete = false,
+                checkComplete;
 
             // Load the selected CA info
             this.getView().getModel('oDtaVrfyBuags').setData(this.getView().getModel('oAllBuags').oData[iSelectedIndex]);
@@ -1413,11 +1421,11 @@ sap.ui.define(
             // Trigger contracts refresh
             this._retrAllCo(
                 this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
-                function () {coRetrieveComplete = true;}
+                function () {coRetrieveComplete = true; }
             );
 
             // Check the completion of CO retrieval
-            var checkComplete = setInterval(function() {
+            checkComplete = setInterval(function () {
                 if (coRetrieveComplete) {
                     // Confirm with WebUI and CCUX
                     this._routeInfoConfirm();
