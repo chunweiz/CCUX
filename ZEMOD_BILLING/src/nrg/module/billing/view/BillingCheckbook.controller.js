@@ -8,10 +8,11 @@ sap.ui.define(
     [
         'jquery.sap.global',
         'nrg/base/view/BaseController',
-        'nrg/base/type/Price'
+        'nrg/base/type/Price',
+        'nrg/module/quickpay/view/QuickPayControl'
     ],
 
-    function (jQuery, Controller, Type_Price) {
+    function (jQuery, Controller, Type_Price, QuickPayControl) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.billing.view.BillingCheckbook');
@@ -58,9 +59,6 @@ sap.ui.define(
         };
 
         CustomController.prototype.onExit = function () {
-        };
-
-        CustomController.prototype._onPaymentOptionClick = function () {
         };
 
 
@@ -320,6 +318,24 @@ sap.ui.define(
                 this._retrPayments(oPmtHdr.getProperty(sBindingPath).InvoiceNum, sBindingPath);
                 this._retrPaymentItmes(oPmtHdr.getProperty(sBindingPath).InvoiceNum, sBindingPath);
                 this._retrPaymentSumrys(oPmtHdr.getProperty(sBindingPath).InvoiceNum, sBindingPath);
+            }
+        };
+
+        CustomController.prototype._onPaymentOptionClick = function () {
+            var QuickControl = new QuickPayControl();
+            this.getView().addDependent(QuickControl);
+            if (this._coNum) {
+                QuickControl.openQuickPay(this._coNum, this.bpNum, this.caNum);
+            }
+        };
+
+        CustomController.prototype._onHighBillFactorClick = function () {
+            var oRouter = this.getOwnerComponent().getRouter();
+
+            if (this._coNum) {
+                oRouter.navTo('billing.HighBill', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('billing.HighBillNoCo', {bpNum: this._bpNum, caNum: this._caNum});
             }
         };
 
