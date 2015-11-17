@@ -232,7 +232,7 @@ sap.ui.define(
                                         // Create graph control
                                         if (!this.graphControl) {
                                             var graphContainer = this.getView().byId('nrgBilling-avgBillingPopup-usage-graph');
-                                            this.graphControl = new AverageBillDetailsChart("chart", {width: 700, height: 250, usageTickSize: 500});
+                                            this.graphControl = new AverageBillDetailsChart("chart", {width: 700, height: 250, usageTickSize: 200});
                                             this.graphControl.placeAt(graphContainer);
                                             this._ABPPopupControl.$().offset({top: ($(window).height() - this._ABPPopupControl.getDomRef().offsetHeight - 250) / 2 });
                                         }
@@ -344,7 +344,7 @@ sap.ui.define(
                     success : function (oData, response) {
                         if (oData.Code === "S") {
                             // close the ABP pop up
-                            this._oAvgBillPopup.close();
+                            this._ABPPopupControl.close();
                             // Display the success message
                             ute.ui.main.Popup.Alert({
                                 title: 'Success',
@@ -382,6 +382,9 @@ sap.ui.define(
                     },
                     success : function (oData, response) {
                         if (oData.Code === "S") {
+                            // close the ABP pop up
+                            this._ABPPopupControl.close();
+                            // Display the success message
                             ute.ui.main.Popup.Alert({
                                 title: 'Success',
                                 message: 'You have canceled the ABP successfully.'

@@ -125,12 +125,8 @@
                 text="{comp-i18n-dashboard>nrgDashboardCusDatSum_Bg_SNTxt}">
                 <ute:tooltip><c:RichTooltip text="{oSmryCoBadges>/SNText}"/></ute:tooltip>
             </ute:Badge>
-
-
-
-
-
-            <!--Badges End-->
+            
+            <!-- BP Area -->
             <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">
                 <utmain:Label
                     class="nrgDashboard-cusDataSum-bpLabel"
@@ -154,6 +150,8 @@
                     text="{comp-i18n-dashboard>nrgDashboardCusDatSum_SiebelAcc}">
                 </ute:Tag>
             </ute:Tag>
+
+            <!-- CA Area -->
             <ute:Tag class="nrgDashboard-cusDataSum-bpCaArea">
                 <utmain:Label
                     class="nrgDashboard-cusDataSum-bpLabel"
@@ -164,6 +162,15 @@
                     design="None" visible="true"
                     press="._onCaNumClicked"
                     text="{oSmryBuagInf>/ContractAccountID}-{oSmryBuagInf>/CheckDigit}"/>
+                <ute:Tag
+                    visible="{
+                        parts:['oSmryCoBadges>/Deposit'],
+                        formatter:'._formatBadge'
+                    }">
+                    <core:Icon src="sap-icon://loan"
+                        class="nrgDashboard-cusDataSum-depositTool-icon"
+                        press="._onDepositToolClicked"/>
+                </ute:Tag>
             </ute:Tag>
 
             <ute:HorizontalDivider class="nrgDashboard-cusDataSum-horiLine"/>

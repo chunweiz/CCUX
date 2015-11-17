@@ -139,11 +139,11 @@
                 </ute:Tag>
             </ute:Tag>
             <!-- Premise Attributes -->
-            <utmain:Button 
+<!--            <utmain:Button
                 design="None"
                 text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-PREMISE_ATTRIB}"
                 class="nrgBilling-highBill-premiseAttrib" 
-                press=""/>
+                press=""/>-->
         </ute:Tag>
 
         <!-- Right Section -->

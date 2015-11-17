@@ -18,6 +18,12 @@
                             },
                             "comp-dashboard-svcodr": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_SRV_ORD_SRV/"
+                            },
+                            "comp-dashboard-AcctAccessPty": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_SRV/"
+                            },
+                            "comp-dashboard-checkbook": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/"
                             }
                         },
                         "mock": {
@@ -32,7 +38,11 @@
 							"comp-dashboard-AcctAccessPty":{
 								"mockDataBaseUrl": "data/devAcctAccessPty/",
 								"generateMissingMockData": true
-							}
+							},
+                            "comp-dashboard-checkbook":{
+                                "mockDataBaseUrl": "data/devCheckbook/",
+                                "generateMissingMockData": true
+                            }
                         }
                     }
                 }

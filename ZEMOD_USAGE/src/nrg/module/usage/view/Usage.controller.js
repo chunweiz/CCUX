@@ -184,6 +184,8 @@ sap.ui.define(
                 this.navTo("campaign", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, typeV: "C"});
             } else if (this._sType ===  "H") {
                 this.onRateHistory();
+            } else if (this._sType ===  "B") {
+                this.navTo("billing.HighBill", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
             }
         };
        /**
