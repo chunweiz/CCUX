@@ -5,10 +5,11 @@ sap.ui.define(
     [
         'jquery.sap.global',
         'nrg/base/view/BaseController',
-        'nrg/base/type/Price'
+        'nrg/base/type/Price',
+        'nrg/module/quickpay/view/QuickPayControl'
     ],
 
-    function (jQuery, Controller, Type_Price) {
+    function (jQuery, Controller, Type_Price, QuickPayControl) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.billing.view.PrePayCheckbook');
@@ -44,7 +45,7 @@ sap.ui.define(
         };
 
         CustomController.prototype._formatBoolCredit = function (sAccBal) {
-            if (parseInt(sAccBal, 10) >= 0) {
+            if (parseInt(sAccBal, 10) > 0) {
                 return true;
             } else {
                 return false;
@@ -52,7 +53,7 @@ sap.ui.define(
         };
 
         CustomController.prototype._formatBoolDebit = function (sAccBal) {
-            if (parseInt(sAccBal, 10) < 0) {
+            if (parseInt(sAccBal, 10) <= 0) {
                 return true;
             } else {
                 return false;
@@ -75,7 +76,23 @@ sap.ui.define(
             return;
         };
 
+        CustomController.prototype._onPaymentOptionsClick = function () {
+            var QuickControl = new QuickPayControl();
+            this.getView().addDependent(QuickControl);
+            if (this._coNum) {
+                QuickControl.openQuickPay(this._coNum, this.bpNum, this.caNum);
+            }
+        };
 
+        CustomController.prototype._onHighBillFactorClick = function () {
+            var oRouter = this.getOwnerComponent().getRouter();
+
+            if (this._coNum) {
+                oRouter.navTo('billing.HighBill', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('billing.HighBillNoCo', {bpNum: this._bpNum, caNum: this._caNum});
+            }
+        };
 
         /**********************************************************************************************************************************************************/
         //Init functions

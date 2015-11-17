@@ -30,6 +30,11 @@ sap.ui.define(
             this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum, true);
             this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum, true);
             this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum, true);
+
+            this.getOwnerComponent().getCcuxApp().showNavLeft(true);
+            this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
+            this.getOwnerComponent().getCcuxApp().showNavRight(true);
+            this.getOwnerComponent().getCcuxApp().attachNavRight(this._navRightCallBack, this);
         };
 
         CustomController.prototype.onBeforeRendering = function () {
@@ -65,14 +70,13 @@ sap.ui.define(
             });
         };
 
-        CustomController.prototype.onAfterRendering = function () {
-            // Add Nav Button to left and right
-            this.getOwnerComponent().getCcuxApp().showNavLeft(true);
-            this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
-            this.getOwnerComponent().getCcuxApp().showNavRight(true);
-            this.getOwnerComponent().getCcuxApp().attachNavRight(this._navRightCallBack, this);
+
+        Controller.prototype._navLeftCallBack = function () {
+
         };
 
+        Controller.prototype._navRightCallBack = function () {
+        };
 
         CustomController.prototype._initBillingMsgs = function () {
             var aFilterIds,
