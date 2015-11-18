@@ -65,13 +65,20 @@ sap.ui.define(
                 }
             });
         };
-
+        CustomControl.prototype.onmouseover = function (oEvent) {
+            //this.firePress();
+        };
+        CustomControl.prototype.onfocusout = function (oEvent) {
+            this.setSelected(false);
+        };
         CustomControl.prototype._onChannelDoubleClick = function (oEvent) {
             this._bDoubleClick = true;
             this.setSelected(!this.getSelected());
             this.fireDoublePress();
         };
+        CustomControl.prototype.onShowDesc = function (oEvent) {
 
+        };
         CustomControl.prototype.setSelected = function (bSelected) {
             bSelected = !!bSelected;
 

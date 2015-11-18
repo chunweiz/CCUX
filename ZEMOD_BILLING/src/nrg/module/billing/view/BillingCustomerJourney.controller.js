@@ -118,7 +118,7 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype._onChannelPress = function (oEvent) {
-            //console.log(oEvent);
+            oEvent.getSource().setSelected(!oEvent.getSource().getSelected());
         };
         /**
 		 * Handler for Channel Double press action
