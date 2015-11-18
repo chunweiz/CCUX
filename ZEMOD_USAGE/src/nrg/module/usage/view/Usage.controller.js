@@ -186,6 +186,10 @@ sap.ui.define(
                 this.onRateHistory();
             } else if (this._sType ===  "B") {
                 this.navTo("billing.HighBill", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
+            } else {
+                this.navTo('dashboard.Bp', {
+                    bpNum: this._sBP
+                });
             }
         };
        /**
