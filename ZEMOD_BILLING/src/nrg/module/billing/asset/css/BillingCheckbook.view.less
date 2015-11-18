@@ -1,11 +1,11 @@
 @import '../../view/control/AverageBillingPlan.less';
 
-.nrgBilling-blChkBk{
+.nrgBilling-blChkBk {
     padding: 25px;
+    display: flex;
 
     & > .nrgBilling-blChkBk-lftDiv {
-        display: inline-block;
-        width: 782px;
+        flex: 0 0 782px;
         border-right: 1px solid @nrgColor-blue-darkPale;
     }
 
@@ -311,7 +311,7 @@
         margin-left: 6px;
         margin-right: 0;
         display: inline-block;
-        width: 280px;
+        width: 275px;
         color: @nrgColor-grey-dark;
         font-weight: @nrgFontWeight-semiBold;
         font-size: @nrgFontSize-base;
@@ -397,10 +397,17 @@
         font-weight: @nrgFontWeight-semiBold;
     }
 
-    & > .nrgBilling-blChkBk-rghtDiv {
-        display: inline-block;
-        width: 278px;
-        height: 50px;
+    & > .nrgBilling-billChkBook-rghtDiv {
+        width: 100%;
+        height: auto;
+        margin-left: 20px;
+        margin-top: 2px;
+
+        & > .nrgBilling-billChkBook-notiTitle {
+            color: @nrgColor-grey-lighter;
+            font-weight: @nrgFontWeight-semiBold;
+            font-size: @nrgFontSize-base;
+        }
     }
 }
 

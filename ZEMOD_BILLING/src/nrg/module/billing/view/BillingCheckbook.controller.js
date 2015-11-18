@@ -653,6 +653,11 @@ sap.ui.define(
         };
 
 
+        /*-------------------------------------- Notificatiob Area (Jerry 11/18/2015) ---------------------------------------*/
+
+        
+
+
         return CustomController;
     }
 );

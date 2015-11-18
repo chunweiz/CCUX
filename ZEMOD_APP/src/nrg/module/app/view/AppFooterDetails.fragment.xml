@@ -73,6 +73,8 @@
                                             class="nrgAppFtrDetails-rhs-currentTitle nrgAppFtrDetails-rhs-itemTitle"
                                             text="{comp-i18n-app>nrgAppFtrDetails-rhs-CURRENT_TITLE}" />
                                     </utmain:Button>
+                                    <ute:Tag id="nrgAppFtrDetails-rhs-currentItemContent" class="nrgAppFtrDetails-rhs-itemContent"
+                                        text="" />
                                 </ute:Tag>
                                 <ute:Tag class="nrgAppFtrDetails-rhs-item">
                                     <utmain:Button
