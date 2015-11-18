@@ -61,7 +61,7 @@
                                  text="{path: 'oPpChkbkHdr>/AccountBalance',
                                         type: 'nrg.base.type.Price',
                                         formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
-                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-credibit nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-credit"
+                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-debit nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-credit"
                                  text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-DEBIT}"/>
                     </ute:Tag>
                     <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-onAcc"
@@ -69,9 +69,11 @@
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-rght">
                     <utmain:Button class="nrgBilling-ppChkBk-lftDiv-qkRefArea-rght-btn1"
-                                   text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-PAYMENTOPTIONS}"/>
+                                   text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-PAYMENTOPTIONS}"
+                                   press="._onPaymentOptionsClick"/>
                     <utmain:Button class="nrgBilling-ppChkBk-lftDiv-qkRefArea-rght-btn2"
-                                   text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-HIGHBILLFACTORS}"/>
+                                   text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-HIGHBILLFACTORS}"
+                                   press="._onHighBillFactorClick"/>
                 </ute:Tag>
             </ute:Tag>
 

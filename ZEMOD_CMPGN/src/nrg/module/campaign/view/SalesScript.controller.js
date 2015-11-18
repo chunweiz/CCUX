@@ -179,12 +179,20 @@ sap.ui.define(
                 fnRecievedHandler,
                 oOverScriptTV = this.getView().byId("idnrgCamOvsOvTv"),
                 aFilterIds,
-                aFilterValues;
-            aFilterIds = ["Contract", "OfferCode", "TxtName"];
-            aFilterValues = [this._sContract, this._sOfferCode, "OVW"];
-            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+                aFilterValues,
+                oModel = this.getOwnerComponent().getModel('comp-campaign'),
+                oContext,
+                dStartDate;
+
             sCurrentPath = "/CpgChgOfferS";
             sCurrentPath = sCurrentPath + "(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',StartDate=" + this._sDate + ")";
+            oContext = oModel.getContext(sCurrentPath);
+            if (oContext) {
+                dStartDate = oContext.getProperty("StartDate");
+            }
+            aFilterIds = ["Contract", "OfferCode", "TxtName", "StartDate"];
+            aFilterValues = [this._sContract, this._sOfferCode, "OVW", dStartDate];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sCurrentPath = "/ScriptS";
             this._oOverviewDialog.setWidth("750px");
             this._oOverviewDialog.setHeight("auto");
@@ -382,11 +390,19 @@ sap.ui.define(
                                         "PromoRank" : sPromoRank,
                                         "Brand" : sBrand,
                                         "CA" : sCA,
-                                        "Type": sType},
+                                        "Type": sType,
+                                        "BP": this._sBP,
+                                        "BusinessRole" : "ZU_CALL_CTR",
+                                        "ESID": ''},
                 success : function (oData) {
+                    var oWebUiManager;
                     if ((oData !== undefined) && (oData.Code === "S")) {
                         that.getOwnerComponent().getCcuxApp().setOccupied(false);
                         sap.ui.commons.MessageBox.alert("SWAP is completed");
+                        oWebUiManager = that.getOwnerComponent().getCcuxWebUiManager();
+                        oWebUiManager.notifyWebUi('openIndex', {
+                            LINK_ID: "ZVASOPTSLN"
+                        });
                         this.navTo("campaign", {bpNum: that._sBP, caNum: that._sCA, coNum : that._sContract, typeV : "P"});
                     } else {
                         that.getOwnerComponent().getCcuxApp().setOccupied(false);
