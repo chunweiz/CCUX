@@ -310,7 +310,10 @@ sap.ui.define(
                 aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNumber}));
             var oModel = this._oController.getView().getModel('oRHSODataSvc'),
                 oRHSModel = this._oController.getView().getModel('oFooterRHS'),
-                oParameters;
+                oParameters,
+                bCurrentFlag = false,
+                bPendingFlag = false,
+                bHistoryFlag = false;
 
             oParameters = {
                 filters: aFilters,
@@ -324,6 +327,7 @@ sap.ui.define(
                             // Get all objects for Current
                             for (var i = 0; i < oData.results.length; i++) {
                                 if (oData.results[i].Type === 'C') {
+                                    bCurrentFlag = true;
                                     var oTag = new ute.ui.commons.Tag({elem: 'span', text: oData.results[i].ProdName});
                                     aCurrent.push(new ute.ui.main.DropdownItem({key: iCurrentIndex++, content: oTag}).addStyleClass("nrgAppFtrDetails-rhs-currentDropdownItem"));
                                 }
@@ -336,18 +340,31 @@ sap.ui.define(
                         for (var j = 0; j < oData.results.length; j++) {
                             // Get first object for Pending
                             if (oData.results[j].Type === 'P') {
+                                bPendingFlag = true;
                                 this._oController.getView().byId("nrgAppFtrDetails-rhs-pendingItemContent").setText(oData.results[j].ProdName);
                             }
                             // Get first object for History
                             if (oData.results[j].Type === 'H' ) {
+                                bHistoryFlag = true;
                                 this._oController.getView().byId("nrgAppFtrDetails-rhs-historyItemContent").setText(oData.results[j].ProdName);
                             }
                         }
+
+                        if (bCurrentFlag === false) { this._oController.getView().byId("nrgAppFtrDetails-rhs-currentItemContent").setText('None'); }
+                        if (bPendingFlag === false) { this._oController.getView().byId("nrgAppFtrDetails-rhs-pendingItemContent").setText('None'); }
+                        if (bHistoryFlag === false) { this._oController.getView().byId("nrgAppFtrDetails-rhs-historyItemContent").setText('None'); }
+
                         this.footerElement.rhsEmptySec.setVisible(false);
                         this.footerElement.rhsProdSec.setVisible(true);
+                        
                     } else {
-                        this.footerElement.rhsEmptySec.setVisible(true);
-                        this.footerElement.rhsProdSec.setVisible(false);
+
+                        if (bCurrentFlag === false) { this._oController.getView().byId("nrgAppFtrDetails-rhs-currentItemContent").setText('None'); }
+                        if (bPendingFlag === false) { this._oController.getView().byId("nrgAppFtrDetails-rhs-pendingItemContent").setText('None'); }
+                        if (bHistoryFlag === false) { this._oController.getView().byId("nrgAppFtrDetails-rhs-historyItemContent").setText('None'); }
+
+                        this.footerElement.rhsEmptySec.setVisible(false);
+                        this.footerElement.rhsProdSec.setVisible(true);
                     }
                 }.bind(this),
                 error: function (oError) {
