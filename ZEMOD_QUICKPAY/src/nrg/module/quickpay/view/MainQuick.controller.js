@@ -921,7 +921,7 @@ sap.ui.define(
                 "BankRouting" : sBankRouting
             }, {
                 success : function (oData, oResponse) {
-                    if((oData.Error) && (oData.Error === "X")) {
+                    if ((oData.Error) && (oData.Error === "X")) {
                         that.getView().getModel("appView").setProperty("/message", oData.Message);
                     } else {
                         that.onBankDraft();

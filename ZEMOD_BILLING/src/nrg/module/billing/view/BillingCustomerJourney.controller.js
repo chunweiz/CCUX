@@ -7,10 +7,11 @@ sap.ui.define(
         'sap/ui/model/json/JSONModel',
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
-        'jquery.sap.global'
+        'jquery.sap.global',
+        'sap/ui/core/format/DateFormat'
     ],
 
-    function (CoreController, JSONModel, Filter, FilterOperator, jQuery) {
+    function (CoreController, JSONModel, Filter, FilterOperator, jQuery, DateFormat) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.billing.view.BillingCustomerJourney');
@@ -37,7 +38,9 @@ sap.ui.define(
             this._sContract = oRouteInfo.parameters.coNum;
             this._sBP = oRouteInfo.parameters.bpNum;
             this._sCA = oRouteInfo.parameters.caNum;
-
+            this._oFormatYyyymmdd = DateFormat.getInstance({
+                pattern: 'MM/dd/yyyy'
+            });
             oPieChartModel = new sap.ui.model.json.JSONModel();
             this.getView().setModel(oPieChartModel, 'Cj-PieChart');
             oPieChart.setDataModel(oPieChartModel);
@@ -54,26 +57,13 @@ sap.ui.define(
             this.getView().setModel(new JSONModel({
                 data: [
                     { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: '08/31/2014', description: 'sarath', channel: 'website'},
-                    { recordIndex: '1', channelIcon: 'sap-icon://ipad', description: 'sarath', channel: 'ipad'},
-                    { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/not-verified', topLabel: '09/21/2014', rightDivider: true, description: 'sarath', channel: 'verified'},
-                    { recordIndex: '3', channelIcon: 'sap-icon://nrg-icon/webchat', description: 'sarath', channel: 'webchat'},
-                    { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/agent', description: 'sarath', channel: 'agent'},
-                    { recordIndex: '5', channelIcon: 'sap-icon://nrg-icon/survey', description: 'sarath', channel: 'survey'},
-                    { recordIndex: '6', channelIcon: 'sap-icon://letter', description: 'sarath', channel: 'letter'},
-                    { recordIndex: '7', channelIcon: 'sap-icon://nrg-icon/website', description: 'sarath', channel: 'website'},
-                    { recordIndex: '8', channelIcon: 'sap-icon://ipad', description: 'sarath', channel: 'ipad'},
-                    { recordIndex: '9', channelIcon: 'sap-icon://nrg-icon/not-verified', description: 'sarath', channel: 'verified'},
-                    { recordIndex: '10', channelIcon: 'sap-icon://nrg-icon/webchat', description: 'sarath', channel: 'webchat'},
-                    { recordIndex: '11', channelIcon: 'sap-icon://nrg-icon/agent', description: 'sarath', channel: 'agent'},
-                    { recordIndex: '12', channelIcon: 'sap-icon://nrg-icon/survey', description: 'sarath', channel: 'survey'},
-                    { recordIndex: '13', channelIcon: 'sap-icon://letter', description: 'sarath', channel: 'letter'},
-                    { recordIndex: '14', channelIcon: 'sap-icon://nrg-icon/website', selected: true, description: 'sarath', channel: 'website'},
-                    { recordIndex: '15', channelIcon: 'sap-icon://ipad', description: 'sarath', channel: 'ipad'},
-                    { recordIndex: '16', channelIcon: 'sap-icon://nrg-icon/not-verified', description: 'sarath', channel: 'verified'},
-                    { recordIndex: '17', channelIcon: 'sap-icon://nrg-icon/webchat', description: 'sarath', channel: 'webchat'},
-                    { recordIndex: '18', channelIcon: 'sap-icon://nrg-icon/agent', description: 'sarath', channel: 'agent'},
-                    { recordIndex: '19', channelIcon: 'sap-icon://nrg-icon/survey', description: 'sarath', channel: 'survey'},
-                    { recordIndex: '20', channelIcon: 'sap-icon://letter', topLabel: '09/21/2015', description: 'sarath', channel: 'letter'}
+                    { recordIndex: '1', channelIcon: 'sap-icon://nrg-icon/webchat', description: 'sarath', channel: 'webchat'},
+                    { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/survey', topLabel: '09/21/2014', rightDivider: true, description: 'sarath', channel: 'survey'},
+                    { recordIndex: '3', channelIcon: 'sap-icon://nrg-icon/agent', description: 'sarath', channel: 'Agent'},
+                    { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/not-verified', description: 'sarath', channel: 'ivr'},
+                    { recordIndex: '5', channelIcon: 'sap-icon://nrg-icon/call-center', description: 'sarath', channel: 'phone'},
+                    { recordIndex: '6', channelIcon: 'sap-icon://email', description: 'sarath', channel: 'letter'},
+                    { recordIndex: '7', channelIcon: 'sap-icon://iphone', description: 'sarath', channel: 'mobile'}
                 ]
             }), 'timeline');
             aFilterIds = ["BP", "CA"];
@@ -109,8 +99,54 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oBindingInfo);
             }*/
+            this._dateHandler(true, 14);
         };
-
+        /**
+		 * Central handler for dates
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype._dateHandler = function (binitial, iNumberDays) {
+            var oFromDate = this.getView().byId('idnrgBllCJ-fromDate'),
+                oToDate = this.getView().byId('idnrgBllCJ-toDate'),
+                oNewDate = new Date(),
+                oLast14DaysButton = this.getView().byId('idnrgBllCJ-l14Days'),
+                oLast30DaysButton = this.getView().byId('idnrgBllCJ-l30Days');
+            if (binitial) {
+                oToDate.setMinDate(new Date(1, 0, 1));
+                oFromDate.setMinDate(new Date(1, 0, 1));
+            }
+            if (iNumberDays === 14) {
+                oNewDate.setDate(oNewDate.getDate() - 14);
+                oLast14DaysButton.addStyleClass("nrgBllCJ-timeline-btns-sel");
+                oLast30DaysButton.removeStyleClass("nrgBllCJ-timeline-btns-sel");
+            } else {
+                oNewDate.setDate(oNewDate.getDate() - 30);
+                oLast30DaysButton.addStyleClass("nrgBllCJ-timeline-btns-sel");
+                oLast14DaysButton.removeStyleClass("nrgBllCJ-timeline-btns-sel");
+            }
+            oToDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
+            oFromDate.setDefaultDate(this._oFormatYyyymmdd.format(oNewDate, true));
+        };
+        /**
+		 * Handler for Channel single press action
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.on14Days = function (oEvent) {
+            this._dateHandler(true, 14);
+        };
+        /**
+		 * Handler for Channel single press action
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.on30Days = function (oEvent) {
+            this._dateHandler(true, 30);
+        };
         /**
 		 * Handler for Channel single press action
 		 *
