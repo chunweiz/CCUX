@@ -120,12 +120,13 @@ sap.ui.define(
                 caNum = oRouting.oData.CaNumber,
                 coNum = oRouting.oData.CoNumber,
                 oBpInfoModel = this._oController.getView().getModel('oBpInfo'),
-                bRetrBpComplete = false;
+                bRetrBpComplete = false,
+                checkBpInfoRetrComplete;
 
             // Retrieve BP info
             this._retrieveBpInfo(bpNum, function () { bRetrBpComplete = true; });
             // Check the completion of BP info retrieval
-            var checkBpInfoRetrComplete = setInterval(function () {
+            checkBpInfoRetrComplete = setInterval(function () {
                 if (bRetrBpComplete) {
                     NNPPopupControl.attachEvent("NNPCompleted", function () {
                         // Update Footer
@@ -171,9 +172,10 @@ sap.ui.define(
         };
 
         AppFooter.prototype._onOamLinkPress = function (oControlEvent) {
-            var oNotificationModel = this._oController.getView().getModel('oFooterNotification');
+            var oNotificationModel = this._oController.getView().getModel('oFooterNotification'),
+                i;
 
-            for (var i = 0; i < oNotificationModel.oData.length; i++) {
+            for (i = 0; i < oNotificationModel.oData.length; i = i + 1) {
                 if (oNotificationModel.oData[i].FilterType === 'OAM') {
                     oNotificationModel.setProperty('/ErrorMessage', oNotificationModel.oData[i].MessageText);
                 }
@@ -220,14 +222,16 @@ sap.ui.define(
             this._updateRouting(sBpNumber, sCaNumber, sCoNumber);
 
             var sPath = '/AlertsSet',
-                aFilters = [];
-                aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: sBpNumber}));
-                aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNumber}));
-                aFilters.push(new Filter({ path: 'Identifier', operator: FilterOperator.EQ, value1: 'FOOTER'}));
-
-            var oModel = this._oController.getView().getModel('oNotiODataSvc'),
+                aFilters = [],
+                oModel = this._oController.getView().getModel('oNotiODataSvc'),
                 oNotificationModel = this._oController.getView().getModel('oFooterNotification'),
-                oParameters;
+                oParameters,
+                i;
+            aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: sBpNumber}));
+            aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNumber}));
+            aFilters.push(new Filter({ path: 'Identifier', operator: FilterOperator.EQ, value1: 'FOOTER'}));
+
+
 
             oParameters = {
                 filters: aFilters,
@@ -243,9 +247,10 @@ sap.ui.define(
                                 'SMS': this._onSmsLinkPress.bind(this),
                                 'OAM': this._onOamLinkPress.bind(this)
                             },
-                            notificationContainer = this._oController.getView().byId("nrgAppFtrDetails-notification-scrollContent");
+                            notificationContainer = this._oController.getView().byId("nrgAppFtrDetails-notification-scrollContent"),
+                            j;
 
-                        for (var i = 0; i < oNotificationModel.oData.length; i++) {
+                        for (i = 0; i < oNotificationModel.oData.length; i = i + 1) {
                             notification.push(
                                 new ute.ui.app.FooterNotificationItem({
                                     link: true,
@@ -263,7 +268,7 @@ sap.ui.define(
                         } else {
                             // Second time render goes here
                             this.notificationCenter.destroyAggregation('content', bNotReredner);
-                            for (var j = 0; j < notification.length; j++) {
+                            for (j = 0; j < notification.length; j = j + 1) {
                                 this.notificationCenter.addAggregation('content', notification[j], bNotReredner);
                             }
                         }
@@ -305,31 +310,35 @@ sap.ui.define(
             this._updateRouting(sBpNumber, sCaNumber, sCoNumber);
 
             var sPath = '/FooterS',
-                aFilters = [];
-                aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: sBpNumber}));
-                aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNumber}));
-            var oModel = this._oController.getView().getModel('oRHSODataSvc'),
+                aFilters = [],
+                oModel = this._oController.getView().getModel('oRHSODataSvc'),
                 oRHSModel = this._oController.getView().getModel('oFooterRHS'),
                 oParameters,
                 bCurrentFlag = false,
                 bPendingFlag = false,
                 bHistoryFlag = false;
+            aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: sBpNumber}));
+            aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: sCaNumber}));
 
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
+                    var iCurrentIndex = 0,
+                        aCurrent = [],
+                        dropdownContainer = this._oController.getView().byId("nrgAppFtrDetails-rhs-currentItem"),
+                        i,
+                        oTag,
+                        j;
                     if (oData.results.length > 0) {
                         // Generate a dropdwon for RHS current products
                         if (!this.rhsDropdown) {
-                            var iCurrentIndex = 0;
-                            var aCurrent = [];
-                            var dropdownContainer = this._oController.getView().byId("nrgAppFtrDetails-rhs-currentItem");
+
                             // Get all objects for Current
-                            for (var i = 0; i < oData.results.length; i++) {
+                            for (i = 0; i < oData.results.length; i = i + 1) {
                                 if (oData.results[i].Type === 'C') {
                                     bCurrentFlag = true;
-                                    var oTag = new ute.ui.commons.Tag({elem: 'span', text: oData.results[i].ProdName});
-                                    aCurrent.push(new ute.ui.main.DropdownItem({key: iCurrentIndex++, content: oTag}).addStyleClass("nrgAppFtrDetails-rhs-currentDropdownItem"));
+                                    oTag = new ute.ui.commons.Tag({elem: 'span', text: oData.results[i].ProdName});
+                                    aCurrent.push(new ute.ui.main.DropdownItem({key: iCurrentIndex = iCurrentIndex + 1, content: oTag}).addStyleClass("nrgAppFtrDetails-rhs-currentDropdownItem"));
                                 }
                             }
                             this.rhsDropdown = new ute.ui.main.Dropdown("nrgAppFtrDetails-rhs-currentDropdown", {content: aCurrent, selectedKey: 0, select: this._onRhsCurrenItemSelect}).addStyleClass("nrgAppFtrDetails-rhs-itemContent");
@@ -337,14 +346,14 @@ sap.ui.define(
                             this.rhsDropdown.placeAt(dropdownContainer);
                         }
 
-                        for (var j = 0; j < oData.results.length; j++) {
+                        for (j = 0; j < oData.results.length; j = j + 1) {
                             // Get first object for Pending
                             if (oData.results[j].Type === 'P') {
                                 bPendingFlag = true;
                                 this._oController.getView().byId("nrgAppFtrDetails-rhs-pendingItemContent").setText(oData.results[j].ProdName);
                             }
                             // Get first object for History
-                            if (oData.results[j].Type === 'H' ) {
+                            if (oData.results[j].Type === 'H') {
                                 bHistoryFlag = true;
                                 this._oController.getView().byId("nrgAppFtrDetails-rhs-historyItemContent").setText(oData.results[j].ProdName);
                             }
@@ -393,18 +402,19 @@ sap.ui.define(
 
         AppFooter.prototype._updateFooterCampaignContract = function (sCoNumber) {
             var sPath = '/CpgFtrS',
-                aFilters = [];
-                aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNumber}));
-
-            var oModel = this._oController.getView().getModel('oCompODataSvc'),
+                aFilters = [],
+                oModel = this._oController.getView().getModel('oCompODataSvc'),
                 oCampaignModel = this._oController.getView().getModel('oFooterCampaign'),
                 oParameters;
+            aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNumber}));
+
 
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
+                    var i;
                     if (oData.results.length > 0) {
-                        for (var i = 0; i < oData.results.length; i++) {
+                        for (i = 0; i < oData.results.length; i = i + 1) {
                             if (oData.results[i].Type === 'C') {
                                 oCampaignModel.setProperty('/Current', oData.results[i]);
 
@@ -454,9 +464,8 @@ sap.ui.define(
         };
 
         AppFooter.prototype._updateFooterCampaignButton = function (sCoNumber) {
-            var sPath = '/ButtonS(\'' + sCoNumber + '\')';
-
-            var oModel = this._oController.getView().getModel('oCompODataSvc'),
+            var sPath = '/ButtonS(\'' + sCoNumber + '\')',
+                oModel = this._oController.getView().getModel('oCompODataSvc'),
                 oCampaignModel = this._oController.getView().getModel('oFooterCampaign'),
                 oParameters;
 
@@ -486,8 +495,8 @@ sap.ui.define(
 
         AppFooter.prototype._formatCampaignTime = function (oDate) {
             if (oDate) {
-                var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern:"MM/yyyy"});
-                var dateStr = dateFormat.format(new Date(oDate.getTime()));
+                var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern: "MM/yyyy"}),
+                    dateStr = dateFormat.format(new Date(oDate.getTime()));
                 return dateStr;
             }
         };

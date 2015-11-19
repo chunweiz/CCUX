@@ -253,7 +253,21 @@ sap.ui.define(
             oCJTable.bindRows(mParameters);
             this._oCJDialog.open();
         };
+        /**
+		 * Handler for Customer Referral Transaction launcher
+		 *
+		 * @function
+		 * @param {Event} Type Event object
+         *
+		 *
+		 */
+        Controller.prototype.onCustomerReferral = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
 
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: "Z_CUST_REF"
+            });
+        };
         /**
 		 * Mapping Icons with backend Data
 		 *
