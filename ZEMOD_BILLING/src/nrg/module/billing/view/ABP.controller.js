@@ -215,6 +215,8 @@ sap.ui.define(
                                 }
                                 // Dismiss the loading indicator
                                 this._OwnerComponent.getCcuxApp().setOccupied(false);
+                                // Close the ABP popup
+                                this._ABPPopupControl.close();
                             } else {
                                 // Retrieve the data for table
                                 this._retrieveTableInfo(this._coNum, function () {bDoneRetrTable = true;});

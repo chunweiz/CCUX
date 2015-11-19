@@ -1,6 +1,6 @@
 // temporarily added by Jerry
 
-/*globals sap*/
+/*globals sap, ute*/
 /*globals window*/
 /*jslint nomen:true*/
 
@@ -26,11 +26,15 @@ sap.ui.define(
             //var o18n = this.getOwnerComponent().getModel('comp-i18n-billing');
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-billing'), 'oDataSvc');
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-eligibility'), 'oDataEligSvc');
 
             //Model to keep checkbook header
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oChkbkHdr');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPaymentHdr');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPostInvoiceItems');
+
+            // Model for eligibility alerts
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEligibility');
 
             //Model to keep CheckBook detail data
             /*this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPayments');
@@ -45,10 +49,13 @@ sap.ui.define(
             this._initPostInvoiceItems();
 
             // Retrieve routing parameters
-            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
-            this._bpNum = oRouteInfo.parameters.bpNum;
-            this._caNum = oRouteInfo.parameters.caNum;
-            this._coNum = oRouteInfo.parameters.coNum;
+            var oRouteInfo = this.getOwnerComponent().getCcuxContextManager().getContext().oData;
+            this._bpNum = oRouteInfo.bpNum;
+            this._caNum = oRouteInfo.caNum;
+            this._coNum = oRouteInfo.coNum;
+
+
+
         };
 
         CustomController.prototype.onAfterRendering = function () {
@@ -56,6 +63,9 @@ sap.ui.define(
             this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum, true);
             this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum, true);
             this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum, true);
+
+            // Retrieve Notification
+            this._retrieveNotification();
         };
 
         CustomController.prototype.onExit = function () {
@@ -655,7 +665,84 @@ sap.ui.define(
 
         /*-------------------------------------- Notificatiob Area (Jerry 11/18/2015) ---------------------------------------*/
 
+        CustomController.prototype._retrieveNotification = function () {
+            var sPath = '/EligCheckS(\'' + this._coNum + '\')',
+                oModel = this.getView().getModel('oDataEligSvc'),
+                oEligModel = this.getView().getModel('oEligibility'),
+                oParameters,
+                alert,
+                i;
+
+            oParameters = {
+                success : function (oData) {
+                    oEligModel.setData(oData);
+                    var container = this.getView().byId('nrgBilling-billChkBook-notifications');
+                    
+                    // If already has eligibility alerts, then skip
+                    if (!this._eligibilityAlerts) {
+                        this._eligibilityAlerts = [];
+                        
+                        // Check ABP
+                        if (oData.ABPElig === 'X') {
+                            alert = new ute.ui.app.FooterNotificationItem({
+                                link: (oData.ABPActv === 'X') ? true : false,
+                                design: 'Information',
+                                text: 'Eligible for ABP',
+                                linkPress: (oData.ABPActv === 'X') ? this._openEligABPPopup : ""
+                            });
+                            this._eligibilityAlerts.push(alert);
+                        }
+
+                        // Check EXTN
+                        if (oData.EXTNElig === 'X') {
+                            alert = new ute.ui.app.FooterNotificationItem({
+                                link: (oData.EXTNActv === 'X') ? true : false,
+                                design: 'Information',
+                                text: 'Eligible for EXTN',
+                                linkPress: (oData.EXTNActv === 'X') ? this._openEligEXTNPopup : "",
+                            });
+                            this._eligibilityAlerts.push(alert);
+                        }
+
+                        // Check RBB
+                        if (oData.RBBElig === 'X') {
+                            alert = new ute.ui.app.FooterNotificationItem({
+                                link: (oData.RBBActv === 'X') ? true : false,
+                                design: 'Information',
+                                text: 'Eligible for RBB',
+                                linkPress: (oData.RBBActv === 'X') ? this._openEligRBBPopup : "",
+                            });
+                            this._eligibilityAlerts.push(alert);
+                        }
+
+                        // Insert all alerts to DOM
+                        for (i = 0; i < this._eligibilityAlerts.length; i++) {
+                            this._eligibilityAlerts[i].placeAt(container);
+                        }
+                    }
+
+                }.bind(this),
+                error: function (oError) {
+                    console.log(oError);
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        CustomController.prototype._openEligABPPopup = function () {
         
+        };
+
+        CustomController.prototype._openEligEXTNPopup = function () {
+             
+        };
+
+        CustomController.prototype._openEligRBBPopup = function () {
+
+        };
 
 
         return CustomController;
