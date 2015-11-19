@@ -16,7 +16,7 @@ sap.ui.define(
             metadata: {
                 properties: {
                     title: { type: 'string', defaultValue: null },
-                    type: { type: 'string', defaultValue: false }
+                    eligType: { type: 'string', defaultValue: "" }
                 }
             }
         });
@@ -37,21 +37,21 @@ sap.ui.define(
 
         EligPopup.prototype.prepare = function () {
             if (!this._oEligPopup.getContent().length) {
-                var oABPView = sap.ui.view({
+                var oEligView = sap.ui.view({
                     type: sap.ui.core.mvc.ViewType.XML,
-                    viewName: "nrg.module.billing.view.ABP"
+                    viewName: "nrg.module.billing.view.Elig"
                 });
-                // Set a variable to flag if it's retro or not
-                oABPView.getController().isRetro = this.getIsRetro();
+                // Set a variable for eligibility type
+                oEligView.getController().eligType = this.getEligType();
                 if (this._oEligPopup.isOpen()) { return this;}
-                this._oEligPopup.addContent(oABPView);
+                this._oEligPopup.addContent(oEligView);
             }
             this._oEligPopup.open();
             return this;
         };
 
         EligPopup.prototype._onPopupClosed = function (oEvent) {
-            this.getParent().fireEvent("ABPCompleted");
+            this.getParent().fireEvent("EligCompleted");
         };
 
         return EligPopup;

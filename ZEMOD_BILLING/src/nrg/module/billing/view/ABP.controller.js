@@ -215,6 +215,8 @@ sap.ui.define(
                                 }
                                 // Dismiss the loading indicator
                                 this._OwnerComponent.getCcuxApp().setOccupied(false);
+                                // Stop the error message timeout
+                                clearTimeout(retrTimeout);
                                 // Close the ABP popup
                                 this._ABPPopupControl.close();
                             } else {
