@@ -28,7 +28,7 @@
                 <ute:Tag class="nrgDashboard-depositToolPopup-table-receivedDateLabel"
                     text="{comp-i18n-dashboard>nrgDashboard-depositToolPopup-table-receivedDate-LABEL}"/>
             </ute:Tag>
-            <m:ScrollContainer class="nrgDashboard-depositToolPopup-table-scrollArea" height="300px" horizontal="false" vertical="true">
+            <m:ScrollContainer class="nrgDashboard-depositToolPopup-table-scrollArea" height="100px" horizontal="false" vertical="true">
                 <ute:Tag content="{oDeposit>/}">
                     <ute:Tag class="nrgDashboard-depositToolPopup-table-row">
                         <ute:Tag class="nrgDashboard-depositToolPopup-table-deposit"

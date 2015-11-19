@@ -27,7 +27,10 @@
                             },
 							"comp-highbill": {
 								"url": "sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/"
-							}
+							},
+                            "comp-eligibility": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_ELIG_SRV/"
+                            }
                         },
                         "mock": {
                             "comp-billing": {
@@ -49,7 +52,11 @@
 							"comp-cj":{
 								"mockDataBaseUrl": "data/devcj/",
 								"generateMissingMockData": true
-							}
+							},
+                            "comp-eligibility":{
+                                "mockDataBaseUrl": "data/develig/",
+                                "generateMissingMockData": true
+                            }
                         }
                     }
                 }

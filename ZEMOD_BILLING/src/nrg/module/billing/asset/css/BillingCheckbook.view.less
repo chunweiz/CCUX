@@ -398,16 +398,43 @@
         font-weight: @nrgFontWeight-semiBold;
     }
 
+    // Notification Area
     & > .nrgBilling-billChkBook-rghtDiv {
         width: 100%;
         height: auto;
         margin-left: 20px;
         margin-top: 2px;
 
+        // Title
         & > .nrgBilling-billChkBook-notiTitle {
-            color: @nrgColor-grey-lighter;
+            color: @nrgColor-grey-dark;
             font-weight: @nrgFontWeight-semiBold;
             font-size: @nrgFontSize-base;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        // Alerts
+        & > .nrgBilling-billChkBook-notifications {
+
+            & > .uteAppFtrNotifItem {
+
+                & > .uteAppFtrNotifItem-icon {
+                    font-size: 20px;
+                }
+
+                & > .uteAppFtrNotifItem-text {
+                    font-size: 15px;
+                    color: @nrgColor-grey-light;
+                }
+            }
+
+            & > .uteAppFtrNotifItem.uteAppFtrNotifItem-link {
+
+                & > .uteAppFtrNotifItem-text {
+                    color: @nrgColor-blue-link;
+                }
+            }
         }
     }
 }
