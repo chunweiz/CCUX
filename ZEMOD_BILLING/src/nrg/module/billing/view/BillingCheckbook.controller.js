@@ -699,7 +699,7 @@ sap.ui.define(
                                 link: (oData.EXTNActv === 'X') ? true : false,
                                 design: 'Information',
                                 text: 'Eligible for EXTN',
-                                linkPress: (oData.EXTNActv === 'X') ? this._openEligEXTNPopup : "",
+                                linkPress: (oData.EXTNActv === 'X') ? this._openEligEXTNPopup : ""
                             });
                             this._eligibilityAlerts.push(alert);
                         }
@@ -710,20 +710,20 @@ sap.ui.define(
                                 link: (oData.RBBActv === 'X') ? true : false,
                                 design: 'Information',
                                 text: 'Eligible for RBB',
-                                linkPress: (oData.RBBActv === 'X') ? this._openEligRBBPopup : "",
+                                linkPress: (oData.RBBActv === 'X') ? this._openEligRBBPopup : ""
                             });
                             this._eligibilityAlerts.push(alert);
                         }
 
                         // Insert all alerts to DOM
-                        for (i = 0; i < this._eligibilityAlerts.length; i++) {
+                        for (i = 0; i < this._eligibilityAlerts.length; i = i + 1) {
                             this._eligibilityAlerts[i].placeAt(container);
                         }
                     }
 
                 }.bind(this),
                 error: function (oError) {
-                    console.log(oError);
+                    //console.log(oError);
                 }.bind(this)
             };
 
