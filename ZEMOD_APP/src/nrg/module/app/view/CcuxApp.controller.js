@@ -128,7 +128,7 @@ sap.ui.define(
             oRouter = this.getOwnerComponent().getRouter();
 
             if (oContext.bpNum) {
-                oRouter.navTo('dashboard.Bp', {
+                oRouter.navTo('dashboard.Verification', {
                     bpNum: oContext.bpNum
                 });
             }
