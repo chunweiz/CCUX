@@ -178,15 +178,19 @@
                                                             <ute:Tooltip visible="{parts:['oPaymentHdr>CallOut'], formatter:'._formatBppBoolean'}"
                                                                 class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip">
                                                                 <ute:Tag>
-                                                                    <ute:Tag text="{oPaymentHdr>BBPAmt}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPAmt', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
                                                                     <ute:Tag text="{oPaymentHdr>BBPAmtAddr}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                                 </ute:Tag>
                                                                 <ute:Tag>
-                                                                    <ute:Tag text="{oPaymentHdr>BBPBal}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
-                                                                    <ute:Tag text="{oPaymentHdr>BBPBalAddr}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
+                                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPBal', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                                    <ute:Tag text="{oPaymentHdr>BBPBalAddr}"
+                                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                                 </ute:Tag>
                                                                 <ute:Tag>
-                                                                    <ute:Tag text="{oPaymentHdr>BBPDefBal}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPDefBal', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
                                                                     <ute:Tag text="{oPaymentHdr>BBPDefBalTxt}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                                 </ute:Tag>
                                                             </ute:Tooltip>
@@ -204,15 +208,18 @@
                                         <ute:Tooltip visible="{parts:['oPaymentHdr>sCallOut'], formatter:'._formatBppBoolean'}"
                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip">
                                                 <ute:Tag>
-                                                    <ute:Tag text="{oPaymentHdr>BBPAmt}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPAmt', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
                                                     <ute:Tag text="{oPaymentHdr>BBPAmtAddr}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                 </ute:Tag>
                                                     <ute:Tag>
-                                                    <ute:Tag text="{oPaymentHdr>BBPBal}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPBal', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
                                                     <ute:Tag text="{oPaymentHdr>BBPBalAddr}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                 </ute:Tag>
                                                 <ute:Tag>
-                                                    <ute:Tag text="{oPaymentHdr>BBPDefBal}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPDefBal', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
                                                     <ute:Tag text="{oPaymentHdr>BBPDefBalTxt}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                 </ute:Tag>
                                         </ute:Tooltip>
@@ -238,15 +245,18 @@
                                         <ute:Tooltip visible="{parts:['oPaymentHdr>sCallOut2'], formatter:'._formatBppBoolean'}"
                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip">
                                                 <ute:Tag>
-                                                    <ute:Tag text="{oPaymentHdr>BBPAmt}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPAmt', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
                                                     <ute:Tag text="{oPaymentHdr>BBPAmtAddr}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                 </ute:Tag>
                                                     <ute:Tag>
-                                                    <ute:Tag text="{oPaymentHdr>BBPBal}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPBal', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
                                                     <ute:Tag text="{oPaymentHdr>BBPBalAddr}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                 </ute:Tag>
                                                 <ute:Tag>
-                                                    <ute:Tag text="{oPaymentHdr>BBPDefBal}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPDefBal', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
                                                     <ute:Tag text="{oPaymentHdr>BBPDefBalTxt}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                 </ute:Tag>
                                         </ute:Tooltip>

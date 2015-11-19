@@ -229,7 +229,7 @@ sap.ui.define(
             aFilters.push(new Filter({ path: 'PartnerID', operator: FilterOperator.EQ, value1: this._bpNum}));
             aFilters.push(new Filter({ path: 'BuagID', operator: FilterOperator.EQ, value1: this._caNum}));
 
-            sPath = '/Reconnects';
+            sPath = '/Reconnects' + '(' + 'PartnerID=\'' + this._bpNum + '\'' + ',BuagID=\'' +this._caNum + '\')';
 
             oParameters = {
                 filters: aFilters,

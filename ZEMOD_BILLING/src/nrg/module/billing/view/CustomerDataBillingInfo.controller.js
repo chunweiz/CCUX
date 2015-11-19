@@ -33,8 +33,6 @@ sap.ui.define(
 
             this.getOwnerComponent().getCcuxApp().showNavLeft(true);
             this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
-            this.getOwnerComponent().getCcuxApp().showNavRight(true);
-            this.getOwnerComponent().getCcuxApp().attachNavRight(this._navRightCallBack, this);
         };
 
         CustomController.prototype.onBeforeRendering = function () {
@@ -81,10 +79,6 @@ sap.ui.define(
             } else if (!this._coNum && !this._caNum && this._bpNum) {
                 oRouter.navTo('dashboard.Verification', {bpNum: this._bpNum});
             }
-        };
-
-        Controller.prototype._navRightCallBack = function () {
-            //var oRouteManger = this.getOwnerComponent().getCcuxRouteManager();
         };
 
         CustomController.prototype._initBillingMsgs = function () {
