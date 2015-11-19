@@ -38,16 +38,20 @@
                 <u:Tag class="nrgBllCJ-main-timeline-details">
                     <u:Tag class="nrgBllCJ-main-timeline-ttl" text="{comp-i18n-billing>nrgBllCJTitleTimeline}"/>
                     <um:Button text="Last 14 Days"
-                                class="nrgBllCJ-timeline-btns"
-                                design="Default">
+                               class="nrgBllCJ-timeline-btns"
+                               design="Default"
+                               press="on14Days"
+                               id="idnrgBllCJ-l14Days">
                     </um:button>
                     <um:Button text="Last 30 Days"
-                                class="nrgBllCJ-timeline-btns"
-                                design="Default">
+                               class="nrgBllCJ-timeline-btns"
+                               design="Default"
+                               press="on30Days"
+                               id="idnrgBllCJ-l30Days">
                     </um:button>
                     <u:Tag class="nrgBllCJ-timeline-calendars">
-                        <u:DatePicker width="7rem" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
-                        <u:DatePicker width="7rem" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
+                        <u:DatePicker width="7rem" id="idnrgBllCJ-fromDate" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
+                        <u:DatePicker width="7rem" id="idnrgBllCJ-toDate" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
                     </u:Tag>
                     <u:Tag class="nrgBllCJ-timeline-referrals">
                         <u:Tag width="7rem" class="nrgBllCJ-timeline-referral" text="Open Issue Referral######"></u:Tag>
