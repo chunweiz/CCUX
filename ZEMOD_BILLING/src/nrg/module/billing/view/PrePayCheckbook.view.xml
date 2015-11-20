@@ -57,11 +57,11 @@
                                  text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-CREDIT}"/>
                     </ute:Tag>
                     <ute:Tag visible="{parts:['oPpChkbkHdr>/AccountBalance'], formatter:'._formatBoolDebit'}">
-                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-credit nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-balnum"
+                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-debit nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-balnum"
                                  text="{path: 'oPpChkbkHdr>/AccountBalance',
                                         type: 'nrg.base.type.Price',
                                         formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
-                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-debit nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-credit"
+                        <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-credibit nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-debit"
                                  text="{comp-i18n-billing>nrgBilling-prpayChkBook-Hdr-DEBIT}"/>
                     </ute:Tag>
                     <ute:Tag class="nrgBilling-ppChkBk-lftDiv-qkRefArea-mdl-onAcc"
