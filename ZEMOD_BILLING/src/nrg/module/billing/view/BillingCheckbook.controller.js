@@ -9,10 +9,11 @@ sap.ui.define(
         'jquery.sap.global',
         'nrg/base/view/BaseController',
         'nrg/base/type/Price',
-        'nrg/module/quickpay/view/QuickPayControl'
+        'nrg/module/quickpay/view/QuickPayControl',
+        'nrg/module/billing/view/EligPopup'
     ],
 
-    function (jQuery, Controller, Type_Price, QuickPayControl) {
+    function (jQuery, Controller, Type_Price, QuickPayControl, EligPopup) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.billing.view.BillingCheckbook');
@@ -683,37 +684,31 @@ sap.ui.define(
                         this._eligibilityAlerts = [];
                         
                         // Check ABP
-                        if (oData.ABPElig === 'X') {
-                            alert = new ute.ui.app.FooterNotificationItem({
-                                link: (oData.ABPActv === 'X') ? true : false,
-                                design: 'Information',
-                                text: 'Eligible for ABP',
-                                linkPress: (oData.ABPActv === 'X') ? this._openEligABPPopup : ""
-                            });
-                            this._eligibilityAlerts.push(alert);
-                        }
+                        alert = new ute.ui.app.FooterNotificationItem({
+                            link: true,
+                            design: 'Information',
+                            text: (oData.ABPElig) ? "Eligible for ABP" : "Not eligible for ABP",
+                            linkPress: this._openEligABPPopup.bind(this)
+                        });
+                        this._eligibilityAlerts.push(alert);
 
                         // Check EXTN
-                        if (oData.EXTNElig === 'X') {
-                            alert = new ute.ui.app.FooterNotificationItem({
-                                link: (oData.EXTNActv === 'X') ? true : false,
-                                design: 'Information',
-                                text: 'Eligible for EXTN',
-                                linkPress: (oData.EXTNActv === 'X') ? this._openEligEXTNPopup : "",
-                            });
-                            this._eligibilityAlerts.push(alert);
-                        }
+                        alert = new ute.ui.app.FooterNotificationItem({
+                            link: true,
+                            design: 'Information',
+                            text: (oData.EXTNElig) ? "Eligible for EXTN" : "Not eligible for EXTN",
+                            linkPress: this._openEligEXTNPopup.bind(this)
+                        });
+                        this._eligibilityAlerts.push(alert);
 
                         // Check RBB
-                        if (oData.RBBElig === 'X') {
-                            alert = new ute.ui.app.FooterNotificationItem({
-                                link: (oData.RBBActv === 'X') ? true : false,
-                                design: 'Information',
-                                text: 'Eligible for RBB',
-                                linkPress: (oData.RBBActv === 'X') ? this._openEligRBBPopup : "",
-                            });
-                            this._eligibilityAlerts.push(alert);
-                        }
+                        alert = new ute.ui.app.FooterNotificationItem({
+                            link: true,
+                            design: 'Information',
+                            text: (oData.RBBElig) ? "Eligible for RBB" : "Not eligible for RBB",
+                            linkPress: this._openEligRBBPopup.bind(this)
+                        });
+                        this._eligibilityAlerts.push(alert);
 
                         // Insert all alerts to DOM
                         for (i = 0; i < this._eligibilityAlerts.length; i++) {
@@ -733,15 +728,33 @@ sap.ui.define(
         };
 
         CustomController.prototype._openEligABPPopup = function () {
-        
+            if (!this.EligABPPopupCustomControl) {
+                this.EligABPPopupCustomControl = new EligPopup({ eligType: "ABP" });
+                this.EligABPPopupCustomControl.attachEvent("EligCompleted", function () {}, this);
+                this.getView().addDependent(this.EligABPPopupCustomControl);
+                this.EligABPPopupCustomControl._oEligPopup.setTitle('ELIGIBILITY CRITERIA - ABP');
+            }
+            this.EligABPPopupCustomControl.prepare();
         };
 
         CustomController.prototype._openEligEXTNPopup = function () {
-             
+            if (!this.EligEXTNPopupCustomControl) {
+                this.EligEXTNPopupCustomControl = new EligPopup({ eligType: "EXTN" });
+                this.EligEXTNPopupCustomControl.attachEvent("EligCompleted", function () {}, this);
+                this.getView().addDependent(this.EligEXTNPopupCustomControl);
+                this.EligEXTNPopupCustomControl._oEligPopup.setTitle('ELIGIBILITY CRITERIA - EXTN');
+            }
+            this.EligEXTNPopupCustomControl.prepare();
         };
 
         CustomController.prototype._openEligRBBPopup = function () {
-
+            if (!this.EligRBBPopupCustomControl) {
+                this.EligRBBPopupCustomControl = new EligPopup({ eligType: "RBB" });
+                this.EligRBBPopupCustomControl.attachEvent("EligCompleted", function () {}, this);
+                this.getView().addDependent(this.EligRBBPopupCustomControl);
+                this.EligRBBPopupCustomControl._oEligPopup.setTitle('ELIGIBILITY CRITERIA - RBB');
+            }
+            this.EligRBBPopupCustomControl.prepare();
         };
 
 

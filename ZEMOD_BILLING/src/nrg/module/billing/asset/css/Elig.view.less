@@ -1,0 +1,206 @@
+.nrgBilling-eligPopup {
+	width: 700px;
+    font-family: @nrgFontFamily;
+
+    // Header
+    & .sapUiDlgHdr {
+        height: 80px;
+        margin: 0;
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-between;
+
+        & .sapUiDlgHdrLeft {
+
+            & .sapUiDlgLabel {
+                font-size: @nrgFontSize-large;
+            }
+        }
+
+        & .sapUiDlgHdrBtns {
+            position: relative;
+            margin-right: 0;
+
+            & .sapUiDlgCloseBtn {
+                &::before {
+                    height: 20px;
+                    width: 2px;
+                    transform: translate(6px,0) rotate(45deg);
+                }
+                &::after {
+                    height: 20px;
+                    width: 2px;
+                }
+            }
+
+        }
+    }
+
+    // Content
+    & .nrgBilling-eligPopup-content {
+    	display: flex;
+        flex-direction: column;
+        padding: 0 10px;
+
+        // Table
+        & .nrgBilling-eligPopup-table {
+        	display: flex;
+            flex-direction: column;
+            margin-bottom: 30px;
+            margin-right: 10px;
+
+            & .nrgBilling-eligPopup-table-title {
+            	font-size: @nrgFontSize-base;
+                font-weight: @nrgFontWeight-bold;
+                margin-bottom: 10px;
+            }
+
+            & .nrgBilling-eligPopup-table-labelSec {
+                height: 30px;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                font-size: @nrgFontSize-base;
+                font-weight: @nrgFontWeight-semiBold;
+                background-color: @nrgColor-grey-lightBackground;
+
+                & .nrgBilling-eligPopup-table-paramLabel {
+                	width: 250px;
+                }
+
+                & .nrgBilling-eligPopup-table-markLabel {
+                	width: 150px;
+                }
+
+                & .nrgBilling-eligPopup-table-val1Label {
+                	width: 100px;
+                }
+
+                & .nrgBilling-eligPopup-table-val2Label {
+                	width: 100px;
+                }
+            }
+
+            & .nrgBilling-eligPopup-table-row {
+            	padding: 10px 0;
+                display: flex;
+                border-bottom: 1px solid @nrgColor-grey-lightBackground;
+                font-size: @nrgFontSize-base;
+                align-items: center;
+                text-align: center;
+
+                &:last-child {
+                	border-bottom: none;
+                }
+
+                & .nrgBilling-eligPopup-table-param {
+                	width: 250px;
+                }
+
+                // Green Checkbox
+                & .nrgBilling-eligPopup-table-mark-check {
+                	width: 150px;
+
+                	& .nrgBilling-eligPopup-table-mark-checkbox {
+                		height: 17px;
+	                    width: 17px;
+	                    margin-right: 5px;
+
+                		& .uteMChkBox-chk {
+	                        height: 17px;
+	                        width: 17px;
+	                        background-color: transparent;
+    						border: none;
+
+	                        &::before {
+	                            border-color: @nrgColor-green-highlight;
+	                            left: 2px;
+	                            top: -1px;
+	                            width: 6px;
+	                            height: 12px;
+	                        }
+	                    }
+                	}
+                }
+
+                // Red X
+                & .nrgBilling-eligPopup-table-mark-unCheck {
+                	width: 150px;
+
+                	span {
+                        display: inline-block;
+                        transform:scale(1.5,1); /* W3C */
+                        -webkit-transform:scale(1.5,1); /* Safari and Chrome */
+                        -moz-transform:scale(1.5,1); /* Firefox */
+                        -ms-transform:scale(1.5,1); /* IE 9 */
+                        -o-transform:scale(1.5,1); /* Opera */
+                        color: @nrgColor-red-pale;
+                    }
+                }
+
+                & .nrgBilling-eligPopup-table-val1 {
+                	width: 100px;
+                }
+
+                & .nrgBilling-eligPopup-table-val2 {
+                	width: 100px;
+                }
+            }
+
+            & .nrgBilling-eligPopup-table-result-row {
+            	padding: 10px 0;
+                display: flex;
+                font-size: @nrgFontSize-base;
+                align-items: center;
+                text-align: center;
+                border-top: 1px dashed @nrgColor-grey-semiDark;
+
+                // Green Checkbox
+                & .nrgBilling-eligPopup-table-mark-check {
+                	width: 150px;
+
+                	& .nrgBilling-eligPopup-table-mark-checkbox {
+                		height: 17px;
+	                    width: 17px;
+	                    margin-right: 5px;
+
+                		& .uteMChkBox-chk {
+	                        height: 17px;
+	                        width: 17px;
+	                        background-color: transparent;
+    						border: none;
+
+	                        &::before {
+	                            border-color: @nrgColor-green-highlight;
+	                            left: 2px;
+	                            top: -1px;
+	                            width: 6px;
+	                            height: 12px;
+	                        }
+	                    }
+                	}
+                }
+
+                // Red X
+                & .nrgBilling-eligPopup-table-mark-unCheck {
+                	width: 150px;
+
+                	span {
+                        display: inline-block;
+                        transform:scale(1.5,1); /* W3C */
+                        -webkit-transform:scale(1.5,1); /* Safari and Chrome */
+                        -moz-transform:scale(1.5,1); /* Firefox */
+                        -ms-transform:scale(1.5,1); /* IE 9 */
+                        -o-transform:scale(1.5,1); /* Opera */
+                        color: @nrgColor-red-pale;
+                    }
+                }
+
+                & .nrgBilling-eligPopup-table-param {
+                	width: 250px;
+                	font-weight: @nrgFontWeight-semiBold;
+                }
+            }
+        }
+    }
+}

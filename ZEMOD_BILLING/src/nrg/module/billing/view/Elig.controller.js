@@ -28,18 +28,11 @@ sap.ui.define(
             this._OwnerComponent = this.getView().getParent().getParent().getParent().getController().getOwnerComponent();
 
             // Get the ABP popup control
-            this._ABPPopupControl = this.getView().getParent();
-
-            // Set up global variables
-            this._aYearList = [];
-            this._aGraphClors = ['blue', 'gray', 'yellow'];
+            this._EligPopupControl = this.getView().getParent();
 
             // Set up models
-            this.getView().setModel(this._OwnerComponent.getModel('comp-billing-avgplan'), 'oDataAvgSvc');
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEligibility');
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oUsageGraph');
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAmountBtn');
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oAmountHistory');
+            this.getView().setModel(this._OwnerComponent.getModel('comp-eligibility'), 'oDataEligSvc');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEligCriteria');
 
             // Retrieve routing parameters
             var oRouteInfo = this._OwnerComponent.getCcuxRouteManager().getCurrentRouteInfo();
@@ -52,13 +45,101 @@ sap.ui.define(
         };
 
         /*------------------------------------------------ Retrieve Methods -------------------------------------------------*/
+        Controller.prototype._retrieveEligCrtTable = function (sEligType, fnCallback) {
+            var sPath = '/EligCriteriaS',
+                aFilters = [],
+                oModel = this.getView().getModel('oDataEligSvc'),
+                oEligCriteriaModel = this.getView().getModel('oEligCriteria'),
+                oParameters,
+                parsedData = {},
+                i;
 
-        
+            aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: this._coNum}));
+            aFilters.push(new Filter({ path: 'EligKey', operator: FilterOperator.EQ, value1: sEligType}));
+
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    
+                    // Parse the oData
+                    for (i = 0; i < oData.results.length; i++) {
+                        
+                        // Handle ABP & RBB cases
+                        if (oData.results[i].EligKey !== 'EXTN') {
+                            if (!parsedData.hasOwnProperty(oData.results[i].Category)) {
+                                parsedData[oData.results[i].Category] = {};
+                                parsedData[oData.results[i].Category].Title = "CATEGORY " + oData.results[i].Category;
+                                parsedData[oData.results[i].Category].Data = [];
+                            }
+
+                            // Parse check & uncheck flag
+                            oData.results[i].Check = oData.results[i].Mark;
+                            oData.results[i].Uncheck = !oData.results[i].Mark;
+                            delete oData.results[i].Mark;
+
+                            if (oData.results[i].Val1 === '' && oData.results[i].Val1 === '') {
+                                parsedData[oData.results[i].Category].Summary = {};
+                                parsedData[oData.results[i].Category].Summary.visible = true;
+                                parsedData[oData.results[i].Category].Summary.Check = oData.results[i].Check;
+                                parsedData[oData.results[i].Category].Summary.Uncheck = !oData.results[i].Check;
+                                parsedData[oData.results[i].Category].Summary.Message = "CATEGORY " + oData.results[i].Category + " IS " + ((oData.results[i].Check) ? "ELIGIBLE" : "NOT ELIGIBLE");
+                            } else {
+                                parsedData[oData.results[i].Category].Data.push(oData.results[i]);
+                            }
+                        }
+                        // Handle EXTN case
+                        else {
+                            if (!parsedData.EXTN) {
+                                parsedData.EXTN = {};
+                                parsedData.EXTN.Title = "EXTENSION";
+                                parsedData.EXTN.Data = [];
+                                parsedData.EXTN.Summary = {};
+                                parsedData.EXTN.Summary.visible = false;
+                            }
+
+                            // Parse check & uncheck flag
+                            oData.results[i].Check = oData.results[i].Mark;
+                            oData.results[i].Uncheck = !oData.results[i].Mark;
+                            delete oData.results[i].Mark;
+
+                            parsedData.EXTN.Data.push(oData.results[i]);
+                        }
+                    }
+
+                    oEligCriteriaModel.setData(parsedData);
+
+                    if (fnCallback) fnCallback();
+                }.bind(this),
+                error: function (oError) {
+                    if (fnCallback) fnCallback();
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
 
         /*-------------------------------------------------- Initial Check --------------------------------------------------*/
 
         Controller.prototype._initialCheck = function () {
-            
+            var bRetrEligCtrTableComplete = false;
+
+            // Display the loading indicator
+            this._OwnerComponent.getCcuxApp().setOccupied(true);
+            // Retrieve eligibility criteria table
+            this._retrieveEligCrtTable(this.eligType, function() {bRetrEligCtrTableComplete = true; });
+
+            var checkDoneEligCtrTable = setInterval (function () {
+                if (bRetrEligCtrTableComplete) {
+                    // Insert data to popup
+
+                    // Dismiss the loading indicator
+                    this._OwnerComponent.getCcuxApp().setOccupied(false);
+                    
+                    clearInterval(checkDoneEligCtrTable);
+                }
+            }.bind(this), 100);
         };
 
         /*------------------------------------------------- Button Actions --------------------------------------------------*/

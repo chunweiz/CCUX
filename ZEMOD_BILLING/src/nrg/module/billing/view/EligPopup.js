@@ -24,8 +24,8 @@ sap.ui.define(
         /*-------------------------------------------- Basic Popup Configuration --------------------------------------------*/
 
         EligPopup.prototype.init = function () {
-            this._oEligPopup = ute.ui.main.Popup.create('nrgBilling-eligPopup', {
-                title: "ELIGIBILITY",
+            this._oEligPopup = ute.ui.main.Popup.create({
+                title: "ELIGIBILITY CRITERIA",
                 close: this._onPopupClosed
             });
             this._oEligPopup.addStyleClass('nrgBilling-eligPopup');
