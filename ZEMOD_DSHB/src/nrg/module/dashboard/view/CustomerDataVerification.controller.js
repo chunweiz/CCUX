@@ -90,9 +90,9 @@ sap.ui.define(
         Controller.prototype.onAfterRendering = function () {
             // Add Nav Button to left and right
             this.getOwnerComponent().getCcuxApp().showNavLeft(true);
-            this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
+            this.getOwnerComponent().getCcuxApp().attachNavLeft(this._dhsbVerificationNavLeftCallBack, this);
             this.getOwnerComponent().getCcuxApp().showNavRight(true);
-            this.getOwnerComponent().getCcuxApp().attachNavRight(this._navRightCallBack, this);
+            this.getOwnerComponent().getCcuxApp().attachNavRight(this._dhsbVerificationNavRightCallBack, this);
 
             // Update Footer
             this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum, true);
@@ -103,7 +103,7 @@ sap.ui.define(
             this.getView().byId("nrgDashBoard-cusDataVerify-Status").attachBrowserEvent("click", this._navToSvcOdr.bind(this));
         };
 
-        Controller.prototype._navLeftCallBack = function () {
+        Controller.prototype._dhsbVerificationNavLeftCallBack = function () {
             var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
 
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
@@ -111,11 +111,11 @@ sap.ui.define(
             if (oWebUiManager.isAvailable()) {
                 oWebUiManager.notifyWebUi('clearAccount', {}, this._navLeftClearAccCallBack, this);
             } else {
-                this._navLeftClearAccCallBack();
+                this._dhsbVerificationNavLeftClearAccCallBack();
             }
         };
 
-        Controller.prototype._navLeftClearAccCallBack = function () {
+        Controller.prototype._dhsbVerificationNavLeftClearAccCallBack = function () {
             var oContext, oRouter;
 
             this.getOwnerComponent().getCcuxApp().setOccupied(false);
@@ -126,7 +126,7 @@ sap.ui.define(
             oRouter.navTo('search.SearchNoID');
         };
 
-        Controller.prototype._navRightCallBack = function () {
+        Controller.prototype._dhsbVerificationNavRightCallBack = function () {
         };
 
         Controller.prototype._initToggleArea = function () {
