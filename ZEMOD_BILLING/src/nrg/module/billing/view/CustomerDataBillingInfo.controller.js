@@ -33,8 +33,6 @@ sap.ui.define(
 
             this.getOwnerComponent().getCcuxApp().showNavLeft(true);
             this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
-            this.getOwnerComponent().getCcuxApp().showNavRight(true);
-            this.getOwnerComponent().getCcuxApp().attachNavRight(this._navRightCallBack, this);
         };
 
         CustomController.prototype.onBeforeRendering = function () {
@@ -72,10 +70,15 @@ sap.ui.define(
 
 
         Controller.prototype._navLeftCallBack = function () {
+            var oRouter = this.getOwnerComponent().getRouter();
 
-        };
-
-        Controller.prototype._navRightCallBack = function () {
+            if (this._coNum && this._caNum && this._bpNum) {
+                oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else if (!this._coNum && this._caNum && this._bpNum) {
+                oRouter.navTo('dashboard.VerificationWithCa', {bpNum: this._bpNum, caNum: this._caNum});
+            } else if (!this._coNum && !this._caNum && this._bpNum) {
+                oRouter.navTo('dashboard.Verification', {bpNum: this._bpNum});
+            }
         };
 
         CustomController.prototype._initBillingMsgs = function () {
