@@ -10,6 +10,10 @@
     xmlns:m="sap.m"
     controllerName="nrg.module.billing.view.DefferedPmtPlan">
     <ute:Tag class="nrgAppMain-generalContent nrgBilling-dPmtPln">
-        <ute:Tag text="test"/>
+        <ute:Tag class="nrgBilling-dPmtPln-lftArea">
+            <ute:Tag class="nrgBilling-dPmtPln-title" text="DEFFERED PAYMENT PLAN"/>
+        </ute:Tag>
+        <ute:Tag class="nrgBilling-dPmtPln-rgtArea" text="test">
+        </ute:Tag>
     </ute:Tag>
 </mvc:View>
