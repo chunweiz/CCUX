@@ -8,12 +8,12 @@
                     "type":"ZE_CCUX_ELIG_SRV.EligCheck"
                 },
                 "Contract":"32192644",
-                "ABPElig":"true",
-                "ABPActv":"true",
-                "RBBElig":"true",
-                "RBBActv":"true",
-                "EXTNElig":"true",
-                "EXTNActv":"true"
+                "ABPElig":true,
+                "ABPActv":true,
+                "RBBElig":false,
+                "RBBActv":true,
+                "EXTNElig":true,
+                "EXTNActv":true
             }
         ]
     }

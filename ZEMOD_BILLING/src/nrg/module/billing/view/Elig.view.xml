@@ -14,60 +14,69 @@
 
     <ute:Tag class="nrgBilling-eligPopup-content">
         
-        <!-- Eligibitlity Criteria Table -->
-        <ute:Tag class="nrgBilling-eligPopup-amountDueSec">
-            <ute:Tag
-                elem="sapn"
-                text="{comp-i18n-billing>nrgBilling-eligPopup-amountDue-TITLE}"
-                class="nrgBilling-eligPopup-amountDue-title"/>
+        <m:ScrollContainer class="nrgBilling-eligPopup-table-scrollArea" height="400px" horizontal="false" vertical="true">
+            <ute:Tag content="{oEligCriteria>/}">
 
-            <ute:Tag class="nrgBilling-eligPopup-amountDue-content">
-                <!-- Amount History -->
-                <ute:Tag class="nrgBilling-eligPopup-amountDue-history">
-                    <ute:Tag class="nrgBilling-eligPopup-amountDue-history-labelSec">
-                        <ute:Tag class="nrgBilling-eligPopup-amountDue-history-monthLabel"
-                            text="{comp-i18n-billing>nrgBilling-eligPopup-amountDue-history-month-LABEL}"/>
-                        <ute:Tag class="nrgBilling-eligPopup-amountDue-history-usageLabel"
-                            text="{comp-i18n-billing>nrgBilling-eligPopup-amountDue-history-usage-LABEL}"/>
-                        <ute:Tag class="nrgBilling-eligPopup-amountDue-history-usageChargeLabel"
-                            text="{comp-i18n-billing>nrgBilling-eligPopup-amountDue-history-usageCharge-LABEL}"/>
-                        <ute:Tag class="nrgBilling-eligPopup-amountDue-history-estLabel"
-                            text="{comp-i18n-billing>nrgBilling-eligPopup-amountDue-history-est-LABEL}"/>
-                        <ute:Tag class="nrgBilling-eligPopup-amountDue-history-adjLabel"
-                            text="{comp-i18n-billing>nrgBilling-eligPopup-amountDue-history-adj-LABEL}"/>
-                        <ute:Tag class="nrgBilling-eligPopup-amountDue-history-amtUsedLabel"
-                            text="{comp-i18n-billing>nrgBilling-eligPopup-amountDue-history-amtUsed-LABEL}"/>
+                <!-- Eligibitlity Criteria Table -->
+                <ute:Tag class="nrgBilling-eligPopup-table">
+
+                    <!-- Title -->
+                    <ute:Tag elem="span" class="nrgBilling-eligPopup-table-title" text="{oEligCriteria>Title}"/>
+
+                    <!-- Label Section -->
+                    <ute:Tag class="nrgBilling-eligPopup-table-labelSec">
+                        <ute:Tag class="nrgBilling-eligPopup-table-markLabel"
+                            text="{comp-i18n-billing>nrgBilling-eligPopup-table-mark-LABEL}"/>
+                        <ute:Tag class="nrgBilling-eligPopup-table-paramLabel"
+                            text="{comp-i18n-billing>nrgBilling-eligPopup-table-param-LABEL}"/>
+                        <ute:Tag class="nrgBilling-eligPopup-table-val1Label"
+                            text="{comp-i18n-billing>nrgBilling-eligPopup-table-val1-LABEL}"/>
+                        <ute:Tag class="nrgBilling-eligPopup-table-val2Label"
+                            text="{comp-i18n-billing>nrgBilling-eligPopup-table-val2-LABEL}"/>
                     </ute:Tag>
-                    <m:ScrollContainer class="nrgBilling-eligPopup-amountDue-history-scrollArea" height="200px" horizontal="false" vertical="true">
-                        <ute:Tag content="{oAmountHistory>/}">
-                            <ute:Tag class="nrgBilling-eligPopup-amountDue-history-row">
-                                <ute:Tag class="nrgBilling-eligPopup-amountDue-history-month"
-                                    text="{oAmountHistory>Period}"/>
-                                <ute:Tag class="nrgBilling-eligPopup-amountDue-history-usage"
-                                    text="{oAmountHistory>Usage}"/>
-                                <ute:Tag class="nrgBilling-eligPopup-amountDue-history-usageCharge"
-                                    text="{oAmountHistory>ActualBill}"/>
-                                <ute:Tag class="nrgBilling-eligPopup-amountDue-history-est"
-                                    text="{oAmountHistory>Est}"/>
-                                <ute:Textfield class="nrgBilling-eligPopup-amountDue-history-adj"
-                                    value="{oAmountHistory>AdjAmount}"
-                                    width="60px"/>
-                                <ute:Tag class="nrgBilling-eligPopup-amountDue-history-amtUsed"
-                                    text="{oAmountHistory>AmtUsdAbp}"/>
+
+                    <!-- Table Content Section -->
+                    <ute:Tag content="{oEligCriteria>Data}">
+                        <ute:Tag class="nrgBilling-eligPopup-table-row">
+                            <!-- Green Checkbox -->
+                            <ute:Tag class="nrgBilling-eligPopup-table-mark-check" visible="{oEligCriteria>Check}">
+                                <utmain:Checkbox enabled="false" checked="true"
+                                    class="nrgBilling-eligPopup-table-mark-checkbox"/>
                             </ute:Tag>
+                            <!-- Red X -->
+                            <ute:TextView text="X" class="nrgBilling-eligPopup-table-mark-unCheck"
+                                visible="{oEligCriteria>Uncheck}"/>
+                            <ute:Tag class="nrgBilling-eligPopup-table-param"
+                                text="{oEligCriteria>Param}"/>
+                            <ute:Tag class="nrgBilling-eligPopup-table-val1"
+                                text="{oEligCriteria>Val1}"/>
+                            <ute:Tag class="nrgBilling-eligPopup-table-val2"
+                                text="{oEligCriteria>Val2}"/>
                         </ute:Tag>
-                    </m:ScrollContainer>
-                    <!-- Total -->
-                    <ute:Tag class="nrgBilling-eligPopup-amountDue-history-row">
-                        <ute:Tag class="nrgBilling-eligPopup-amountDue-history-total"
-                            text="TOTAL"/>
-                        <ute:Tag class="nrgBilling-eligPopup-amountDue-history-totalAmount"
-                            text="{oAmountHistory>/totalAmount}"/>
                     </ute:Tag>
+
+                    <!-- Table Summary Row -->
+                    <ute:Tag class="nrgBilling-eligPopup-table-result-row" visible="{oEligCriteria>Summary/visible}">
+                        <!-- Green Checkbox -->
+                        <ute:Tag class="nrgBilling-eligPopup-table-mark-check" visible="{oEligCriteria>Summary/Check}">
+                            <utmain:Checkbox enabled="false" checked="true"
+                                class="nrgBilling-eligPopup-table-mark-checkbox"/>
+                        </ute:Tag>
+                        <!-- Red X -->
+                        <ute:TextView
+                            text="X"
+                            class="nrgBilling-eligPopup-table-mark-unCheck"
+                            visible="{oEligCriteria>Summary/Uncheck}"/>
+                        <!-- Message -->
+                        <ute:Tag class="nrgBilling-eligPopup-table-param"
+                            text="{oEligCriteria>Summary/Message}"/>
+                    </ute:Tag>
+
                 </ute:Tag>
-                
+
+
             </ute:Tag>
-        </ute:Tag>
+        </m:ScrollContainer>
 
 
     </ute:Tag>
