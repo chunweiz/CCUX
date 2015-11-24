@@ -17,7 +17,7 @@
                 "GTText":"Test",
                 "DisplayName":"( 000000100738-4 ) 1108 Spring green blvd / KATY TX 77494",
                 "CheckDigit":"4",
-                "ThirdPrtyAuth":"",
+                "ThirdPrtyAuth":"X",
                 "ThirdPartyAuth":{
                     "__deferred":{
                         "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/Buags('100738')/ThirdPartyAuth"

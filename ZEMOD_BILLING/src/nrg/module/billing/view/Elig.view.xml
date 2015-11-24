@@ -19,57 +19,68 @@
                     
                 <!-- Eligibitlity Criteria Table -->
                 <ute:Tag class="nrgBilling-eligPopup-table">
+                    
+                    <!-- Title Section -->
+                    <ute:Tag class="nrgBilling-eligPopup-table-titleSect">
+                        
+                        <!-- Title -->
+                        <ute:Tag elem="span" class="nrgBilling-eligPopup-table-title" text="{oEligCriteria>Title}"/>
 
-                    <!-- Title -->
-                    <ute:Tag elem="span" class="nrgBilling-eligPopup-table-title" text="{oEligCriteria>Title}"/>
-                    
-                    <!-- Label Section -->
-                    <ute:Tag class="nrgBilling-eligPopup-table-labelSec">
-                        <ute:Tag class="nrgBilling-eligPopup-table-markLabel"
-                            text="{comp-i18n-billing>nrgBilling-eligPopup-table-mark-LABEL}"/>
-                        <ute:Tag class="nrgBilling-eligPopup-table-paramLabel"
-                            text="{comp-i18n-billing>nrgBilling-eligPopup-table-param-LABEL}"/>
-                        <ute:Tag class="nrgBilling-eligPopup-table-val1Label"
-                            text="{comp-i18n-billing>nrgBilling-eligPopup-table-val1-LABEL}"/>
-                        <ute:Tag class="nrgBilling-eligPopup-table-val2Label"
-                            text="{comp-i18n-billing>nrgBilling-eligPopup-table-val2-LABEL}"/>
-                    </ute:Tag>
-                    
-                    <!-- Table Content Section -->
-                    <ute:Tag content="{oEligCriteria>Data}">
-                        <ute:Tag class="nrgBilling-eligPopup-table-row">
+                        <!-- Table Summary Row -->
+                        <ute:Tag class="nrgBilling-eligPopup-table-result-row" visible="{oEligCriteria>Summary/visible}">
+                            
                             <!-- Green Checkbox -->
-                            <ute:Tag class="nrgBilling-eligPopup-table-mark-check" visible="{oEligCriteria>Check}">
+                            <ute:Tag class="nrgBilling-eligPopup-table-mark-check" visible="{oEligCriteria>Summary/Check}">
                                 <utmain:Checkbox enabled="false" checked="true"
                                     class="nrgBilling-eligPopup-table-mark-checkbox"/>
                             </ute:Tag>
+                            
                             <!-- Red X -->
-                            <ute:TextView text="X" class="nrgBilling-eligPopup-table-mark-unCheck"
-                                visible="{oEligCriteria>Uncheck}"/>
+                            <ute:TextView
+                                text="X"
+                                class="nrgBilling-eligPopup-table-mark-unCheck"
+                                visible="{oEligCriteria>Summary/Uncheck}"/>
+                            
+                            <!-- Message -->
                             <ute:Tag class="nrgBilling-eligPopup-table-param"
-                                text="{oEligCriteria>Param}"/>
-                            <ute:Tag class="nrgBilling-eligPopup-table-val1"
-                                text="{oEligCriteria>Val1}"/>
-                            <ute:Tag class="nrgBilling-eligPopup-table-val2"
-                                text="{oEligCriteria>Val2}"/>
+                                text="{oEligCriteria>Summary/Message}"/>
                         </ute:Tag>
                     </ute:Tag>
 
-                    <!-- Table Summary Row -->
-                    <ute:Tag class="nrgBilling-eligPopup-table-result-row" visible="{oEligCriteria>Summary/visible}">
-                        <!-- Green Checkbox -->
-                        <ute:Tag class="nrgBilling-eligPopup-table-mark-check" visible="{oEligCriteria>Summary/Check}">
-                            <utmain:Checkbox enabled="false" checked="true"
-                                class="nrgBilling-eligPopup-table-mark-checkbox"/>
+                    <!-- Table Content -->
+                    <ute:Tag class="nrgBilling-eligPopup-table-content">
+                        
+                        <!-- Label Section -->
+                        <ute:Tag class="nrgBilling-eligPopup-table-labelSec">
+                            <ute:Tag class="nrgBilling-eligPopup-table-markLabel"
+                                text="{comp-i18n-billing>nrgBilling-eligPopup-table-mark-LABEL}"/>
+                            <ute:Tag class="nrgBilling-eligPopup-table-paramLabel"
+                                text="{comp-i18n-billing>nrgBilling-eligPopup-table-param-LABEL}"/>
+                            <ute:Tag class="nrgBilling-eligPopup-table-val1Label"
+                                text="{comp-i18n-billing>nrgBilling-eligPopup-table-val1-LABEL}"/>
+                            <ute:Tag class="nrgBilling-eligPopup-table-val2Label"
+                                text="{comp-i18n-billing>nrgBilling-eligPopup-table-val2-LABEL}"/>
                         </ute:Tag>
-                        <!-- Red X -->
-                        <ute:TextView
-                            text="X"
-                            class="nrgBilling-eligPopup-table-mark-unCheck"
-                            visible="{oEligCriteria>Summary/Uncheck}"/>
-                        <!-- Message -->
-                        <ute:Tag class="nrgBilling-eligPopup-table-param"
-                            text="{oEligCriteria>Summary/Message}"/>
+                        
+                        <!-- Table Content Section -->
+                        <ute:Tag content="{oEligCriteria>Data}">
+                            <ute:Tag class="nrgBilling-eligPopup-table-row">
+                                <!-- Green Checkbox -->
+                                <ute:Tag class="nrgBilling-eligPopup-table-mark-check" visible="{oEligCriteria>Check}">
+                                    <utmain:Checkbox enabled="false" checked="true"
+                                        class="nrgBilling-eligPopup-table-mark-checkbox"/>
+                                </ute:Tag>
+                                <!-- Red X -->
+                                <ute:TextView text="X" class="nrgBilling-eligPopup-table-mark-unCheck"
+                                    visible="{oEligCriteria>Uncheck}"/>
+                                <ute:Tag class="nrgBilling-eligPopup-table-param"
+                                    text="{oEligCriteria>Param}"/>
+                                <ute:Tag class="nrgBilling-eligPopup-table-val1"
+                                    text="{oEligCriteria>Val1}"/>
+                                <ute:Tag class="nrgBilling-eligPopup-table-val2"
+                                    text="{oEligCriteria>Val2}"/>
+                            </ute:Tag>
+                        </ute:Tag>
                     </ute:Tag>
 
                 </ute:Tag>

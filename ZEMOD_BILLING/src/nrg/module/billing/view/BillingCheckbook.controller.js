@@ -425,8 +425,6 @@ sap.ui.define(
                             }
                         }
                     }
-                    //oScrlCtaner.scrollTop = oScrlCtaner.scrollHeight;
-                    //oScrlCtaner.scrollTo(0, 686, 100);
                 }.bind(this),
                 error: function (oError) {
                     //Need to put error message
@@ -436,8 +434,8 @@ sap.ui.define(
             if (oChbkOData) {
                 oChbkOData.read(sPath, oParameters);
             }
-
         };
+
         CustomController.prototype._retrPaymentSumrys = function (sInvNum, sBindingPath) {
             var oChbkOData = this.getView().getModel('oDataSvc'),
                 sPath,
@@ -732,7 +730,7 @@ sap.ui.define(
                 this.EligABPPopupCustomControl = new EligPopup({ eligType: "ABP" });
                 this.EligABPPopupCustomControl.attachEvent("EligCompleted", function () {}, this);
                 this.getView().addDependent(this.EligABPPopupCustomControl);
-                this.EligABPPopupCustomControl._oEligPopup.setTitle('ELIGIBILITY CRITERIA - ABP');
+                this.EligABPPopupCustomControl._oEligPopup.setTitle('ELIGIBILITY CRITERIA - AVERAGE BILLING PLAN');
             }
             this.EligABPPopupCustomControl.prepare();
         };
@@ -742,7 +740,7 @@ sap.ui.define(
                 this.EligEXTNPopupCustomControl = new EligPopup({ eligType: "EXTN" });
                 this.EligEXTNPopupCustomControl.attachEvent("EligCompleted", function () {}, this);
                 this.getView().addDependent(this.EligEXTNPopupCustomControl);
-                this.EligEXTNPopupCustomControl._oEligPopup.setTitle('ELIGIBILITY CRITERIA - EXTN');
+                this.EligEXTNPopupCustomControl._oEligPopup.setTitle('ELIGIBILITY CRITERIA - EXTENSION');
             }
             this.EligEXTNPopupCustomControl.prepare();
         };
@@ -752,7 +750,7 @@ sap.ui.define(
                 this.EligRBBPopupCustomControl = new EligPopup({ eligType: "RBB" });
                 this.EligRBBPopupCustomControl.attachEvent("EligCompleted", function () {}, this);
                 this.getView().addDependent(this.EligRBBPopupCustomControl);
-                this.EligRBBPopupCustomControl._oEligPopup.setTitle('ELIGIBILITY CRITERIA - RBB');
+                this.EligRBBPopupCustomControl._oEligPopup.setTitle('ELIGIBILITY CRITERIA - RETRO BILLING PLAN');
             }
             this.EligRBBPopupCustomControl.prepare();
         };

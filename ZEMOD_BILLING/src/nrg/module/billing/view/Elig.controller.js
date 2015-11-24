@@ -82,7 +82,7 @@ sap.ui.define(
                                 parsedData[oData.results[i].Category].Summary.visible = true;
                                 parsedData[oData.results[i].Category].Summary.Check = oData.results[i].Check;
                                 parsedData[oData.results[i].Category].Summary.Uncheck = !oData.results[i].Check;
-                                parsedData[oData.results[i].Category].Summary.Message = "CATEGORY " + oData.results[i].Category + " IS " + ((oData.results[i].Check) ? "ELIGIBLE" : "NOT ELIGIBLE");
+                                parsedData[oData.results[i].Category].Summary.Message = (oData.results[i].Check) ? "ELIGIBLE" : "NOT ELIGIBLE";
                             } else {
                                 parsedData[oData.results[i].Category].Data.push(oData.results[i]);
                             }
