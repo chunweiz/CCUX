@@ -68,21 +68,23 @@
 				var oEventBus = sap.ui.getCore().getEventBus();
 
 				// Subscribe CA change events
+				oEventBus.unsubscribe("nrg.module.dashoard", "eBuagChanged", this._handleBuagChanged, this);
 				oEventBus.subscribe("nrg.module.dashoard", "eBuagChanged", this._handleBuagChanged, this);
+				oEventBus.unsubscribe("nrg.module.dashoard", "eBuagChangedFromCaInfo", this._handleCaInfoContractChanged, this);
 				oEventBus.subscribe("nrg.module.dashoard", "eBuagChangedFromCaInfo", this._handleCaInfoContractChanged, this);
 				// Subscribe CO change events
+	            oEventBus.unsubscribe("nrg.module.dashoard", "eCoChanged", this._handleCoChanged, this);
 	            oEventBus.subscribe("nrg.module.dashoard", "eCoChanged", this._handleCoChanged, this);
 			};
 
-			Controller.prototype._handleCoChanged = function (channel, event, data) {
-				var oCoBadgesModel = this.getView().getModel('oSmryCoBadges');
-				oCoBadgesModel.setData(data.coInfo.COBadges);
-				this.allCoBadges = data.coInfo.COBadges;
+			/*--------------------------------------------------- CA Changes ----------------------------------------------------*/
+
+			Controller.prototype._handleBuagChanged = function (channel, event, data) {
+				this._selectBuag(data.iIndex);
 			};
 
 			Controller.prototype._handleCaInfoContractChanged = function (channel, event, data) {
-				var i,
-					oAllBuags = this.getView().getModel('oSmryAllBuags');
+				var i, oAllBuags = this.getView().getModel('oSmryAllBuags');
 
 				for (i = 0; i < oAllBuags.getProperty('/results').length; i = i + 1) {
 					if (oAllBuags.getProperty('/results')[i].ContractAccountID === data.caNum) {
@@ -92,9 +94,15 @@
 				}
 			};
 
-			Controller.prototype._handleBuagChanged = function (channel, event, data) {
-				this._selectBuag(data.iIndex);
+			/*--------------------------------------------------- CO Changes ----------------------------------------------------*/
+
+			Controller.prototype._handleCoChanged = function (channel, event, data) {
+				var oCoBadgesModel = this.getView().getModel('oSmryCoBadges');
+				oCoBadgesModel.setData(data.coInfo.COBadges);
+				this.allCoBadges = data.coInfo.COBadges;
 			};
+
+			/*-------------------------------------------------- Retrieve Info --------------------------------------------------*/
 			
 			Controller.prototype._initRetrBpInf = function () {
 				var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
@@ -222,6 +230,7 @@
 					this.getView().getModel('oSmryAllBuags').setProperty('/selectedIndex', iIndex);
 					this._initRetrAssignedAccount(this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID'));
 					this._caNum = this.getView().getModel('oSmryBuagInf').getProperty('/ContractAccountID');
+					this._checkThirdPartyAuth(this._caNum);
 				}
 			};
 
@@ -362,16 +371,29 @@
 			Controller.prototype._checkThirdPartyAuth = function (sCaNumber) {
 				var sPath = '/Buags' + '(\'' + sCaNumber + '\')',
 					oModel = this.getView().getModel('oODataSvc'),
+					oThirdPrtyModel = this.getView().getModel('oSmryAccessAuth'),
+					bRetreiveComplete = false,
 					oParameters;
 
 				oParameters = {
 					success : function (oData) {
 						if (oData.ThirdPrtyAuth === 'X' || oData.ThirdPrtyAuth === 'x') {
-							this.getView().byId("idBtnAuth").setVisible(true);
+							// Retrieve the data for the Account Access Authorization
+							this._retrThirdPartyAuth(this._caNum, function () {bRetreiveComplete = true;});
+							// Check the completion of retrieving data every 0.1 s
+							var checkRetrComplete = setInterval (function () {
+			                    if (bRetreiveComplete) {
+			                    	clearInterval(checkRetrComplete);
+			                        this._setHoverAuthNames(oThirdPrtyModel);
+			                    }
+			                }.bind(this), 100);
+			                // Change the style of BP name
+			                this.getView().byId("idBtnAuth").setVisible(true);
 							this.getView().byId("idBpName").addStyleClass("nrgDashboard-cusDataSum-bpName-AcctAccessPty");
 						} else {
+							// Change the style of BP name
 							this.getView().byId("idBtnAuth").setVisible(false);
-							this.getView().byId("idBpName").addStyleClass("nrgDashboard-cusDataSum-bpName");
+							this.getView().byId("idBpName").removeStyleClass("nrgDashboard-cusDataSum-bpName-AcctAccessPty");
 						}
 					}.bind(this),
 					error: function (oError) {
@@ -383,6 +405,19 @@
 					oModel.read(sPath, oParameters);
 				}
 
+			};
+
+			Controller.prototype._setHoverAuthNames = function (oThirdPrtyModel) {
+				var aHoverAuthNames = [];
+
+				if (oThirdPrtyModel.oData.length) {
+                	for (var i = 0; i < 3; i++) {
+                    	if (oThirdPrtyModel.oData[i].AuthPrtyName) {
+                    		aHoverAuthNames.push({Name: oThirdPrtyModel.oData[i].AuthPrtyName});
+                    	}
+                    }
+                    oThirdPrtyModel.setProperty('/hoverAuthNames', aHoverAuthNames);
+                }
 			};
 
 			Controller.prototype._onAuthPtyClicked = function () {
@@ -415,8 +450,9 @@
 						var tableContainer = this.getView().byId('nrgDashboard-AcctAccessAuthPty-tableBody');
 
 						// Remove previous content
-						for (var j = 0; j < tableContainer.getContent().length; j++) {
-							tableContainer.removeContent(j);
+						var tableContentLength = tableContainer.getContent().length;
+						for (var j = 0; j < tableContentLength; j++) {
+							tableContainer.removeContent(0);
 						}
 
 						for (var i = 0; i < oThirdPrtyModel.oData.length; i++) {
@@ -451,6 +487,8 @@
 					success : function (oData) {
 						if (oData.results) {
 							oThirdPrtyModel.setData(oData.results);
+
+							this._setHoverAuthNames(oThirdPrtyModel);
 
 							for (var i = 0; i < oThirdPrtyModel.oData.length; i++) {
 								oThirdPrtyModel.oData[i].ReceiveDate = this._formatThirdPartyAuthTime(oThirdPrtyModel.oData[i].ReceiveDate);
