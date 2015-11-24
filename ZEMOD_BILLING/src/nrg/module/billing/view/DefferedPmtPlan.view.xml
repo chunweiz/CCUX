@@ -10,6 +10,34 @@
     xmlns:m="sap.m"
     controllerName="nrg.module.billing.view.DefferedPmtPlan">
     <ute:Tag class="nrgAppMain-generalContent nrgBilling-dPmtPln">
-        <ute:Tag text="test"/>
+        <ute:Tag class="nrgBilling-dPmtPln-lftArea">
+            <ute:Tag class="nrgBilling-dPmtPln-title" text="DEFFERED PAYMENT PLAN"/>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
+                    <ute:Tag class="nrgBilling-dltl-step" text="STEP 1 OF 3 - SETUP"/>
+                    <ute:Tag class="nrgBilling-dltl-reason">
+                        <ute:Tag class="nrgBilling-dltl-reason-lbl" text="Reason for DPP:"/>
+                        <utmain:Dropdown class="nrgBilling-dltl-reason-select">
+                            <utmain:DropdownItem>
+                                <ute:Tag elem="span" text="option1" />
+                            </utmain:DropdownItem>
+                            <utmain:DropdownItem>
+                                <ute:Tag elem="span" text="option2" />
+                            </utmain:DropdownItem>
+                        </utmain:Dropdown>
+                    </ute:Tag>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-m">
+                    <ute:Tag class="nrgBilling-dltm-price" text="$75.44"/>
+                    <ute:Tag class="nrgBilling-dltm-dplbl" text="Down Payment Amount"/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-r">
+                    <utmain:Button class="nrgBilling-dltr-btn" text="PAYMENT OPTIONS"/>
+                </ute:Tag>
+            </ute:Tag>
+        </ute:Tag>
+        <ute:Tag class="nrgBilling-dPmtPln-rgtArea" text="test">
+        </ute:Tag>
     </ute:Tag>
 </mvc:View>

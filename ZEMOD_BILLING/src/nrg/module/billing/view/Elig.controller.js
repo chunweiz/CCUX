@@ -60,10 +60,10 @@ sap.ui.define(
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
-                    
+
                     // Parse the oData
                     for (i = 0; i < oData.results.length; i++) {
-                        
+
                         // Handle ABP & RBB cases
                         if (oData.results[i].EligKey !== 'EXTN') {
                             if (!parsedData.hasOwnProperty(oData.results[i].Category)) {
@@ -136,7 +136,7 @@ sap.ui.define(
 
                     // Dismiss the loading indicator
                     this._OwnerComponent.getCcuxApp().setOccupied(false);
-                    
+
                     clearInterval(checkDoneEligCtrTable);
                 }
             }.bind(this), 100);
