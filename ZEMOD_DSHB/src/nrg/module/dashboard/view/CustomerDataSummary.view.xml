@@ -14,6 +14,13 @@
                 <ute:TextView id="idBpName"
                     class="nrgDashboard-cusDataSum-bpName"
                     design="Large" text="{oSmryBpInf>/FullName}">
+                    <ute:tooltip>
+                        <ute:Tooltip>
+                            <ute:Tag content="{oSmryAccessAuth>/hoverAuthNames}">
+                                <ute:TextView color="White" text="{oSmryAccessAuth>Name}"/>
+                            </ute:Tag>
+                        </ute:Tooltip>
+                    </ute:tooltip>
                 </ute:TextView>
                 <ute:Tag class="nrgDashboard-cusDataSum-bpAuthBtn" >
                     <utmain:Button id="idBtnAuth" design="None" press="._onAuthPtyClicked" visible="false">

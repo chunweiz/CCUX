@@ -753,6 +753,11 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         if (oData.PartnerID) {
+                            // Make the key of empty value as "0000", so that the dropdown can recognize it.
+                            if (oData.Title === "") oData.Title = "0000";
+                            if (oData.AcademicTitle === "") oData.AcademicTitle = "0000";
+                            if (oData.Suffix === "") oData.Suffix = "0000";
+                            
                             this.getView().getModel('ODataBpName').setData(oData);
                             this.ODataBpNameBak = jQuery.extend(true, {}, oData);
                         }
