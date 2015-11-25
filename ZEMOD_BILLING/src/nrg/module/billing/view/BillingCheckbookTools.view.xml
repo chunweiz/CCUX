@@ -11,14 +11,28 @@
         <ute:Tag class="nrgBilling-blChkBkTools-Title"
                  text="{comp-i18n-billing>nrgBilling-chkbkTools-Title}" />
         <ute:Tag class="nrgBilling-blChkBkTools-ctnt">
+            <!-- Free Adjustments -->
             <ute:Button class="nrgBilling-blChkBkTools-ctnt-btn"
                 buttonType="SpecialNav" width="220px" enabled="true"
                 text="{comp-i18n-billing>nrgBilling-chkbkTools-FreeAdj-Btn}">
             </ute:Button>
+            <!-- Average Billing -->
             <ute:Button class="nrgBilling-blChkBkTools-ctnt-btn"
                 buttonType="SpecialNav" width="220px" enabled="true"
                 press="._onAvgBillBtnClicked"
                 text="{comp-i18n-billing>nrgBilling-chkbkTools-AvgBill-Btn}">
+            </ute:Button>
+            <!-- Deffered Payment -->
+            <ute:Button class="nrgBilling-blChkBkTools-ctnt-btn"
+                buttonType="SpecialNav" width="220px" enabled="true"
+                press="._onDppBtnClicked"
+                text="{comp-i18n-billing>nrgBilling-chkbkTools-Dpp-Btn}">
+            </ute:Button>
+            <!-- Extension -->
+            <ute:Button class="nrgBilling-blChkBkTools-ctnt-btn"
+                buttonType="SpecialNav" width="220px" enabled="true"
+                press="._onExtnBtnClicked"
+                text="{comp-i18n-billing>nrgBilling-chkbkTools-Extn-Btn}">
             </ute:Button>
         </ute:Tag>
     </ute:Tag>
