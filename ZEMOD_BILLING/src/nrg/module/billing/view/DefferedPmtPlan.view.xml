@@ -36,8 +36,12 @@
                     <utmain:Button class="nrgBilling-dltr-btn" text="PAYMENT OPTIONS"/>
                 </ute:Tag>
             </ute:Tag>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt" text="test">
+            </ute:Tag>
         </ute:Tag>
-        <ute:Tag class="nrgBilling-dPmtPln-rgtArea" text="test">
+        <ute:Tag class="nrgBilling-dPmtPln-rgtArea">
+            <ute:Tag class="nrgBilling-dPmtPln-notify" text="NOTIFICATION"/>
+            <ute:Tag class="nrgBilling-dPmtPln-rgtArea-divider"/>
         </ute:Tag>
     </ute:Tag>
 </mvc:View>
