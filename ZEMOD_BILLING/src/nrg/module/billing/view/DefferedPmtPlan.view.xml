@@ -34,6 +34,7 @@
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-r">
                     <utmain:Button class="nrgBilling-dltr-btn" text="PAYMENT OPTIONS"/>
+                    <ute:Tag class="nrgBilling-dltr-dueDate" text="Due Date: 10/30/2014"/>
                 </ute:Tag>
             </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt" text="test">
