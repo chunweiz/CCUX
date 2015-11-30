@@ -10,8 +10,10 @@
     xmlns:m="sap.m"
     controllerName="nrg.module.billing.view.DefferedPmtPlan">
     <ute:Tag class="nrgAppMain-generalContent nrgBilling-dPmtPln">
+        <!--STEP 1-->
         <ute:Tag class="nrgBilling-dPmtPln-lftArea">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="DEFFERED PAYMENT PLAN"/>
+            <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
@@ -37,8 +39,52 @@
                     <ute:Tag class="nrgBilling-dltr-dueDate" text="Due Date: 10/30/2014"/>
                 </ute:Tag>
             </ute:Tag>
-            <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt" text="test">
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-hdr">
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h2" text="Description"/>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h3" text="Amount"/>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h4" text="Due Date"/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
+                    <ute:Tag class="nrgBilling-dlct-odd">
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h2" text="ABC"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h3" text="$7.50"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h4" text="10/30/2014"/>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlct-evn">
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h2" text="DEF"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h3" text="$158.18"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h4" text="10/30/2014"/>
+                    </ute:Tag>
+                </ute:Tag>
             </ute:Tag>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-dte">
+                    <ute:Tag class="nrgBilling-dlbd-left">
+                        <utmain:RadioButton class="nrgBilling-dlbd-left-elem nrgBilling-dlbd-left-radio"/>
+                        <ute:Tag class="nrgBilling-dlbd-left-elem" text="Month"/>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlbd-rght">
+                        <ute:Tag class="nrgBilling-dlbd-left-elem" text="Start Date:"/>
+
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlbd-install" text="Number of Installments:"/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-zeroDown">
+                    <utmain:CheckBox class="nrgBilling-dlbz-chk"/>
+                    <ute:Tag class="nrgBilling-dlbz-chkLabel" text="Plan with Zero Downpayment"/>
+                </ute:Tag>
+                <utmain:Button class="nrgBilling-dPmtPln-lftArea-botm-btn" text="OK"/>
+            </ute:Tag>
+        </ute:Tag>
+        <!--Step 2-->
+        <ute:Tag class="nrgBilling-dPmtPln-lftArea">
+        </ute:Tag>
+        <!--Step 3-->
+        <ute:Tag>
         </ute:Tag>
         <ute:Tag class="nrgBilling-dPmtPln-rgtArea">
             <ute:Tag class="nrgBilling-dPmtPln-notify" text="NOTIFICATION"/>
