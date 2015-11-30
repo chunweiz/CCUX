@@ -60,7 +60,7 @@ sap.ui.define(
                     { recordIndex: '1', channelIcon: 'sap-icon://nrg-icon/webchat', description: 'sarath', channel: 'webchat'},
                     { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/survey', topLabel: '09/21/2014', rightDivider: true, description: 'sarath', channel: 'survey'},
                     { recordIndex: '3', channelIcon: 'sap-icon://nrg-icon/agent', description: 'sarath', channel: 'Agent'},
-                    { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/not-verified', description: 'sarath', channel: 'ivr'},
+                    { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/ivr', description: 'sarath', channel: 'ivr'},
                     { recordIndex: '5', channelIcon: 'sap-icon://nrg-icon/call-center', description: 'sarath', channel: 'phone'},
                     { recordIndex: '6', channelIcon: 'sap-icon://email', description: 'sarath', channel: 'letter'},
                     { recordIndex: '7', channelIcon: 'sap-icon://iphone', description: 'sarath', channel: 'mobile'}
@@ -291,7 +291,7 @@ sap.ui.define(
                 sChannelIcon = 'sap-icon://nrg-icon/agent';
                 break;
             case "ivr":
-                sChannelIcon = 'sap-icon://nrg-icon/not-verified';
+                sChannelIcon = 'sap-icon://nrg-icon/ivr';
                 break;
             case "phone":
                 sChannelIcon = 'sap-icon://nrg-icon/call-center';

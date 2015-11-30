@@ -412,7 +412,7 @@
 
 				if (oThirdPrtyModel.oData.length) {
                 	for (var i = 0; i < 3; i++) {
-                    	if (oThirdPrtyModel.oData[i].AuthPrtyName) {
+                    	if (oThirdPrtyModel.oData[i]) {
                     		aHoverAuthNames.push({Name: oThirdPrtyModel.oData[i].AuthPrtyName});
                     	}
                     }
