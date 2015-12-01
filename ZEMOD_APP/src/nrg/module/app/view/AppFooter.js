@@ -103,7 +103,7 @@ sap.ui.define(
             if (!this.m2mPopup) {
                 this.m2mPopup = ute.ui.main.Popup.create({
                     content: sap.ui.xmlfragment(this._oController.getView().sId, "nrg.module.app.view.AlertM2mPopup", this),
-                    title: 'INVALID SMS NUMBER'
+                    title: 'Multi-Month Invoice'
                 });
                 this.m2mPopup.addStyleClass('nrgApp-m2mPopup');
                 this._oController.getView().addDependent(this.m2mPopup);
@@ -149,7 +149,7 @@ sap.ui.define(
             if (!this.invalidMailingAddrPopup) {
                 this.invalidMailingAddrPopup = ute.ui.main.Popup.create({
                     content: sap.ui.xmlfragment(this._oController.getView().sId, "nrg.module.app.view.AlertInvMailAddrPopup", this),
-                    title: 'INVALID MAILING ADDRESS'
+                    title: 'Invalid Mailing Address'
                 });
                 this.invalidMailingAddrPopup.addStyleClass('nrgApp-invalidMailingAddrPopup');
                 this._oController.getView().addDependent(this.invalidMailingAddrPopup);
@@ -162,7 +162,7 @@ sap.ui.define(
             if (!this.invalidSmsPopup) {
                 this.invalidSmsPopup = ute.ui.main.Popup.create({
                     content: sap.ui.xmlfragment(this._oController.getView().sId, "nrg.module.app.view.AlertInvSmsPopup", this),
-                    title: 'INVALID SMS NUMBER'
+                    title: 'Invalid SMS Number'
                 });
                 this.invalidSmsPopup.addStyleClass('nrgApp-invalidSmsPopup');
                 this._oController.getView().addDependent(this.invalidSmsPopup);
@@ -184,7 +184,7 @@ sap.ui.define(
             if (!this.oamPopup) {
                 this.oamPopup = ute.ui.main.Popup.create({
                     content: sap.ui.xmlfragment(this._oController.getView().sId, "nrg.module.app.view.AlertOamPopup", this),
-                    title: 'INVALID OAM Email'
+                    title: 'Invalid OAM Email'
                 });
                 this.oamPopup.addStyleClass('nrgApp-oamPopup');
                 this._oController.getView().addDependent(this.oamPopup);
