@@ -86,7 +86,13 @@ sap.ui.define(
         };
 
         CustomController.prototype._onHighbillLnkClicked = function () {
+            var oRouter = this.getOwnerComponent().getRouter();
 
+            if (this._coNum) {
+                oRouter.navTo('billing.HighBill', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('billing.HighBillNoCo', {bpNum: this._bpNum, caNum: this._caNum});
+            }
         };
 
         /*************************************************************************************************************************/
