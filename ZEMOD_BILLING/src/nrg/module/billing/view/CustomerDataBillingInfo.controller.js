@@ -26,14 +26,16 @@ sap.ui.define(
 
         CustomController.prototype.onAfterRendering = function () {
             this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+            
+            // Navigation arrow event handling
+            this.getOwnerComponent().getCcuxApp().showNavLeft(true);
+            this.getOwnerComponent().getCcuxApp().detachNavRightAll();
+            this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
 
             // Update Footer
             this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum, true);
             this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum, true);
             this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum, true);
-
-            this.getOwnerComponent().getCcuxApp().showNavLeft(true);
-            this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
         };
 
         CustomController.prototype.onBeforeRendering = function () {

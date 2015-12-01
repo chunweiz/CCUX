@@ -46,9 +46,11 @@ sap.ui.define(
                     'attachNavLeft',
                     'detachhNavLeft',
                     'showNavLeft',
+                    'detachNavLeftAll',
                     'attachNavRight',
                     'detachNavRight',
                     'showNavRight',
+                    'detachNavRightAll',
                     'setInEdit',
                     'isInEdit',
                     'updateFooterNotification',
@@ -143,6 +145,11 @@ sap.ui.define(
             return this;
         };
 
+        App.prototype.detachNavLeftAll = function () {
+            this._oAppBody.detachNavLeftAll();
+            return this;
+        };
+
         App.prototype.attachNavRight = function (fnCallback, oListener) {
             this._oAppBody.attachNavRight(fnCallback, oListener);
             return this;
@@ -155,6 +162,11 @@ sap.ui.define(
 
         App.prototype.showNavRight = function (bShow) {
             this._oAppBody.showNavRight(bShow);
+            return this;
+        };
+
+        App.prototype.detachNavRightAll = function () {
+            this._oAppBody.detachNavRightAll();
             return this;
         };
 
