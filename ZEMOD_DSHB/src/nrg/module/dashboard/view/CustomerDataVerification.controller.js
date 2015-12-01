@@ -91,8 +91,8 @@ sap.ui.define(
             // Add Nav Button to left and right
             this.getOwnerComponent().getCcuxApp().showNavLeft(true);
             this.getOwnerComponent().getCcuxApp().attachNavLeft(this._dhsbVerificationNavLeftCallBack, this);
-            this.getOwnerComponent().getCcuxApp().showNavRight(true);
-            this.getOwnerComponent().getCcuxApp().attachNavRight(this._dhsbVerificationNavRightCallBack, this);
+            // this.getOwnerComponent().getCcuxApp().showNavRight(true);
+            // this.getOwnerComponent().getCcuxApp().attachNavRight(this._dhsbVerificationNavRightCallBack, this);
 
             // Update Footer
             this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum, true);
@@ -108,7 +108,7 @@ sap.ui.define(
 
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
 
-            if (oWebUiManager.isAvailable()) {
+            if (true) {
                 oWebUiManager.notifyWebUi('clearAccount', {}, this._navLeftClearAccCallBack, this);
             } else {
                 this._dhsbVerificationNavLeftClearAccCallBack();
@@ -126,8 +126,8 @@ sap.ui.define(
             oRouter.navTo('search.SearchNoID');
         };
 
-        Controller.prototype._dhsbVerificationNavRightCallBack = function () {
-        };
+        // Controller.prototype._dhsbVerificationNavRightCallBack = function () {
+        // };
 
         Controller.prototype._initToggleArea = function () {
             if (!this.getView().byId('id_DshbTglBtn').getLeftSelected()) {

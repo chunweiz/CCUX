@@ -68,18 +68,22 @@ sap.ui.define(
         };
 
         AppBody.prototype.attachNavLeft = function (fnCallback, oListener) {
+            var oEventNotExist = true;
+
             this._aNavLeftListener.forEach(function (oNavLeft) {
                 if (oNavLeft.fnCallback === fnCallback && oNavLeft.oListener === oListener) {
-                    return;
+                    oEventNotExist = false;
                 }
             });
 
-            this.attachEvent(AppBody.Event.NavLeftPress, fnCallback, oListener);
+            if (oEventNotExist) {
+                this.attachEvent(AppBody.Event.NavLeftPress, fnCallback, oListener);
 
-            this._aNavLeftListener.push({
-                fnCallback: fnCallback,
-                oListener: oListener
-            });
+                this._aNavLeftListener.push({
+                    fnCallback: fnCallback,
+                    oListener: oListener
+                });
+            }
 
             return this;
         };
