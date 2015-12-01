@@ -15,9 +15,20 @@
     <ute:Tag class="nrgAppMain-generalContent nrgBilling-blChkBk">
         <!-- Left -->
         <ute:Tag class="nrgBilling-blChkBk-lftDiv">
-            <ute:Tag class="nrgBilling-blChkBk-lftDiv-pageTitle">
-                <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-pageTitleSpan"
-                         text="{comp-i18n-billing>nrgBilling-billChkBook-PAGE_TITLE}" />
+            
+            <!-- Title & Back To Dashboard -->
+            <ute:Tag class="nrgBilling-blChkBk-titleAndNav">
+                <!-- Title -->
+                <ute:Tag elem="span" class="nrgBilling-blChkBk-pageTitle" 
+                        text="{comp-i18n-billing>nrgBilling-billChkBook-PAGE_TITLE}"/>
+                <!-- Back -->
+                <ute:Tag elem="span" class="nrgBilling-blChkBk-backToDash">
+                    <utmain:Button design="None" class="" press="_onBackToDashboard">
+                        <core:Icon src="sap-icon://slim-arrow-left" class="nrgBilling-blChkBk-backIcon" />
+                        <ute:Tag elem="span" class="nrgBilling-blChkBk-backTitle"
+                                 text="{comp-i18n-billing>nrgBilling-billChkBook-BACK}" />
+                    </utmain:Button>
+                </ute:Tag>
             </ute:Tag>
 
             <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea">

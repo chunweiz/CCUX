@@ -27,9 +27,11 @@ sap.ui.define(
                     'attachNavLeft',
                     'detachNavLeft',
                     'showNavLeft',
+                    'detachNavLeftAll',
                     'attachNavRight',
                     'detachNavRight',
-                    'showNavRight'
+                    'showNavRight',
+                    'detachNavRightAll'
                 ]
             }
         });
@@ -68,18 +70,22 @@ sap.ui.define(
         };
 
         AppBody.prototype.attachNavLeft = function (fnCallback, oListener) {
+            var oEventNotExist = true;
+
             this._aNavLeftListener.forEach(function (oNavLeft) {
                 if (oNavLeft.fnCallback === fnCallback && oNavLeft.oListener === oListener) {
-                    return;
+                    oEventNotExist = false;
                 }
             });
 
-            this.attachEvent(AppBody.Event.NavLeftPress, fnCallback, oListener);
+            if (oEventNotExist) {
+                this.attachEvent(AppBody.Event.NavLeftPress, fnCallback, oListener);
 
-            this._aNavLeftListener.push({
-                fnCallback: fnCallback,
-                oListener: oListener
-            });
+                this._aNavLeftListener.push({
+                    fnCallback: fnCallback,
+                    oListener: oListener
+                });
+            }
 
             return this;
         };
@@ -91,7 +97,7 @@ sap.ui.define(
                 }
             });
 
-            this.detachEvent(AppBody.Event.NavLeftClick, fnCallback, oListener);
+            this.detachEvent(AppBody.Event.NavLeftPress, fnCallback, oListener);
 
             return this;
         };
@@ -108,19 +114,27 @@ sap.ui.define(
             return this;
         };
 
+        AppBody.prototype.detachNavLeftAll = function () {
+            this._detachAllNavLeft();
+        };
+
         AppBody.prototype.attachNavRight = function (fnCallback, oListener) {
+            var oEventNotExist = true;
+
             this._aNavRightListener.forEach(function (oNavRight) {
                 if (oNavRight.fnCallback === fnCallback && oNavRight.oListener === oListener) {
-                    return;
+                    oEventNotExist = false;
                 }
             });
 
-            this.attachEvent(AppBody.Event.NavRightPress, fnCallback, oListener);
+            if (oEventNotExist) { 
+                this.attachEvent(AppBody.Event.NavRightPress, fnCallback, oListener);
 
-            this._aNavRightListener.push({
-                fnCallback: fnCallback,
-                oListener: oListener
-            });
+                this._aNavRightListener.push({
+                    fnCallback: fnCallback,
+                    oListener: oListener
+                });
+            }
 
             return this;
         };
@@ -132,7 +146,7 @@ sap.ui.define(
                 }
             });
 
-            this.detachEvent(AppBody.Event.NavRightClick, fnCallback, oListener);
+            this.detachEvent(AppBody.Event.NavRightPress, fnCallback, oListener);
             return this;
         };
 
@@ -146,6 +160,10 @@ sap.ui.define(
             }
 
             return this;
+        };
+
+        AppBody.prototype.detachNavRightAll = function () {
+            this._detachAllNavRight();
         };
 
         AppBody.prototype._registerEvents = function () {
@@ -167,7 +185,7 @@ sap.ui.define(
 
             for (i = 0; i < this._aNavLeftListener.length; i = i + 1) {
                 this.detachEvent(
-                    AppBody.Event.NavLeftClick,
+                    AppBody.Event.NavLeftPress,
                     this._aNavLeftListener[i].fnCallback,
                     this._aNavLeftListener[i].oListener
                 );
@@ -189,7 +207,7 @@ sap.ui.define(
 
             for (i = 0; i < this._aNavRightListener.length; i = i + 1) {
                 this.detachEvent(
-                    AppBody.Event.NavRightClick,
+                    AppBody.Event.NavRightPress,
                     this._aNavRightListener[i].fnCallback,
                     this._aNavRightListener[i].oListener
                 );

@@ -62,7 +62,7 @@ sap.ui.define(
             sCurrentPath = i18NModel.getProperty("nrgCurrentPendingSet");
             sEligibilityPath = "/ButtonS";
             sEligibilityPath = sEligibilityPath + "('" + this._sContract + "')";
-            oTemplateModel = new sap.ui.model.json.JSONModel();
+            oTemplateModel = new JSONModel();
             // Handler function for Tab Bar Item.
             fnRecievedHandler = function (oEvent) {
                 var sOfferCode;
@@ -195,7 +195,7 @@ sap.ui.define(
                 oTemplateView,
                 oTemplateModel;
             sPath = oEvent.getSource().getBindingContext("comp-campaign").getPath();
-            oTemplateModel = new sap.ui.model.json.JSONModel();
+            oTemplateModel = new JSONModel();
             // aContent[0].addStyleClass("nrgCamHisBut-Selected");
             that.getView().byId('idnrgCamOvrPriceT').removeAllAggregation("content");
             aEFLDatapaths = this.getView().getModel("comp-campaign").getProperty(sPath + "/EFLs");

@@ -2,6 +2,7 @@
 /*global ute*/
 /*global $*/
 /*jslint nomen:true*/
+/*jslint forin: true */
 
 sap.ui.define(
     [
@@ -25,14 +26,16 @@ sap.ui.define(
 
         CustomController.prototype.onAfterRendering = function () {
             this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+            
+            // Navigation arrow event handling
+            this.getOwnerComponent().getCcuxApp().showNavLeft(true);
+            this.getOwnerComponent().getCcuxApp().detachNavRightAll();
+            this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
 
             // Update Footer
             this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum, true);
             this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum, true);
             this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum, true);
-
-            this.getOwnerComponent().getCcuxApp().showNavLeft(true);
-            this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
         };
 
         CustomController.prototype.onBeforeRendering = function () {
@@ -507,7 +510,8 @@ sap.ui.define(
                 oInvSelDateRangeModel = this.getView().getModel('oInvoiceSelectDateRange'),
                 oInvSelFiltersModel = this.getView().getModel('oInvoiceSelectFilters'),
                 i,
-                date;
+                date,
+                property;
 
             for (i = 0; i < oTable.getContent().length; i = i + 1) {
                 date = oTable.getContent()[i].getContent()[0].getText();
@@ -519,12 +523,11 @@ sap.ui.define(
             }
 
             // Uncheck other type filters except 'all'
-            for (var property in oInvSelFiltersModel.oData) {
+            for (property in oInvSelFiltersModel.oData) {
                 if (property !== 'All') {
                     oInvSelFiltersModel.setProperty('/' + property, false);
                 }
             }
-
         };
 
         CustomController.prototype._handleStartDateChange = function (oEvent) {
@@ -545,10 +548,12 @@ sap.ui.define(
 
         CustomController.prototype._onSelectAll = function (oEvent) {
             var oTable = this.getView().byId('nrgBilling-invSelPopup-tableBody'),
-                oInvSelFiltersModel = this.getView().getModel('oInvoiceSelectFilters');
+                oInvSelFiltersModel = this.getView().getModel('oInvoiceSelectFilters'),
+                i,
+                oCheckbox;
 
-            for (var i = 0; i < oTable.getContent().length; i++) {                
-                var oCheckbox = oTable.getContent()[i].getContent()[3];
+            for (i = 0; i < oTable.getContent().length; i = i + 1) {
+                oCheckbox = oTable.getContent()[i].getContent()[3];
                 oCheckbox.setChecked(oInvSelFiltersModel.oData.All);
             }
         };
@@ -569,10 +574,14 @@ sap.ui.define(
             var oTable = this.getView().byId('nrgBilling-invSelPopup-tableBody'),
                 oInvSelFiltersModel = this.getView().getModel('oInvoiceSelectFilters'),
                 oInvSelDateRangeModel = this.getView().getModel('oInvoiceSelectDateRange'),
-                typeCheck, dateCheck;
+                typeCheck,
+                dateCheck,
+                i,
+                date,
+                property;
 
-            for (var i = 0; i < oTable.getContent().length; i++) {
-                var date = oTable.getContent()[i].getContent()[0].getText();
+            for (i = 0; i < oTable.getContent().length; i = i + 1) {
+                date = oTable.getContent()[i].getContent()[0].getText();
                 typeCheck = false;
                 dateCheck = false;
 
@@ -582,7 +591,7 @@ sap.ui.define(
                 }
                 // Check the date filter
                 if (this._deformatInvoiceDate(date) >= this._deformatInvoiceDate(oInvSelDateRangeModel.oData.Start) &&
-                    this._deformatInvoiceDate(date) <= this._deformatInvoiceDate(oInvSelDateRangeModel.oData.End)) {
+                        this._deformatInvoiceDate(date) <= this._deformatInvoiceDate(oInvSelDateRangeModel.oData.End)) {
                     dateCheck = true;
                 }
                 if (typeCheck && dateCheck) {
@@ -593,7 +602,7 @@ sap.ui.define(
             }
 
             // Uncheck other type filters except 'all'
-            for (var property in oInvSelFiltersModel.oData) {
+            for (property in oInvSelFiltersModel.oData) {
                 if (property !== 'All' && property !== sType) {
                     oInvSelFiltersModel.setProperty('/' + property, false);
                 }
@@ -603,10 +612,12 @@ sap.ui.define(
 
         CustomController.prototype._onOpenBtnClick = function (oEvent) {
             var oTable = this.getView().byId('nrgBilling-invSelPopup-tableBody'),
-                oInvSelModel = this.getView().getModel('oInvoiceSelectInfo');
+                oInvSelModel = this.getView().getModel('oInvoiceSelectInfo'),
+                i,
+                oCheckbox;
 
-            for (var i = 0; i < oTable.getContent().length; i++) {                
-                var oCheckbox = oTable.getContent()[i].getContent()[3];
+            for (i = 0; i < oTable.getContent().length; i = i + 1) {
+                oCheckbox = oTable.getContent()[i].getContent()[3];
                 if (oCheckbox.getChecked() && oTable.getContent()[i].getVisible()) {
                     this._openNewWindowDelayed(oInvSelModel.oData[i].URL);
                 }
@@ -614,39 +625,10 @@ sap.ui.define(
         };
 
         CustomController.prototype._openNewWindowDelayed = function (sUrl) {
-            var openNewWindow = setTimeout(function() {
+            var openNewWindow = setTimeout(function () {
                 window.open(sUrl, '_blank');
             }, 1000);
         };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         /**
 		 * Handler for Dunning Lock Press
 		 *
