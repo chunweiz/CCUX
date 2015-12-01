@@ -34,7 +34,10 @@ sap.ui.define(
                 aFilters,
                 oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
                 oPieChart = this.getView().byId('idnrgCJPieChart'),
-                oPieChartModel;
+                oPieChartModel,
+                oReferral = this.getView().byId('idnrgCustomerRef'),
+                oReferralTemplate = this.getView().byId('idnrgCustomerRef-temp'),
+                fnTableDataRecdHandler;
             this._sContract = oRouteInfo.parameters.coNum;
             this._sBP = oRouteInfo.parameters.bpNum;
             this._sCA = oRouteInfo.parameters.caNum;
@@ -67,7 +70,7 @@ sap.ui.define(
                 ]
             }), 'timeline');
             aFilterIds = ["BP", "CA"];
-            aFilterValues = ["64041", this._sCA];
+            aFilterValues = ["2473499", "3040103"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oBindingInfo = {
                 filters : aFilters,
@@ -99,6 +102,17 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oBindingInfo);
             }*/
+            fnTableDataRecdHandler = function (oEvent) {
+
+            };
+            sPath = "/CJReferralSet";
+            oBindingInfo = {
+                model : "comp-cj",
+                path : sPath,
+                template : oReferralTemplate,
+                filters : aFilters
+            };
+            oReferral.bindAggregation("content", oBindingInfo);
             this._dateHandler(true, 14);
         };
         /**
@@ -173,6 +187,7 @@ sap.ui.define(
 		 */
         Controller.prototype._onTotalPress = function (oEvent) {
             //console.log(oEvent);
+            this.onCustomerJourneyModule();
         };
         /**
 		 * Handler for Pie-Chart individual totals press action
@@ -182,6 +197,7 @@ sap.ui.define(
 		 */
         Controller.prototype._onSlicePress = function (oEvent) {
             //console.log(oEvent.getParameters());
+            this.onCustomerJourneyModule();
         };
        /**
 		 * Assign the filter objects based on the input selection
@@ -262,10 +278,12 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.onCustomerReferral = function (oControlEvent) {
-            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager(),
+                oReferralId = oControlEvent.getSource().getText();
 
             oWebUiManager.notifyWebUi('openIndex', {
-                LINK_ID: "Z_CUST_REF"
+                LINK_ID: "ZEMMACASE",
+                REF_ID: oReferralId
             });
         };
         /**

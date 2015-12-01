@@ -53,10 +53,7 @@
                         <u:DatePicker width="7rem" id="idnrgBllCJ-fromDate" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
                         <u:DatePicker width="7rem" id="idnrgBllCJ-toDate" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
                     </u:Tag>
-                    <u:Tag class="nrgBllCJ-timeline-referrals">
-                        <u:Tag width="7rem" class="nrgBllCJ-timeline-referral" text="Open Issue Referral######"></u:Tag>
-                        <u:Tag width="7rem" class="nrgBllCJ-timeline-referral" text="Last Updated: mm/dd/yyyy"></u:Tag>
-                    </u:Tag>
+                    <u:Tag class="nrgBllCJ-timeline-referrals" id="idnrgCustomerRef"></u:Tag>
                 </u:Tag>
                 <u:Tag class="nrgBllCJ-main-timeline-icons">
                     <ch:CustomerJourneyTimeline channel="{timeline>/data}">
@@ -73,7 +70,19 @@
                      </ch:CustomerJourneyTimeline>
                 </u:Tag>
             </u:Tag>
-
+        </u:Tag>
+        <u:Tag visible="false">
+            <u:Tag id="idnrgCustomerRef-temp" class="nrgBllCJ-timeline-referral">
+                <u:Tag class="nrgBllCJ-timeline-referral-id">
+                    <u:Tag width="7rem"  class="nrgBllCJ-timeline-referral-id-text" text="Open Issue Referral" />
+                    <um:Button text="{comp-cj>ReferralNo}"
+                                   design="None"
+                                   class="nrgBllCJ-timeline-referral-id-value"
+                                   press="onCustomerReferral">
+                    </um:button>
+                </u:Tag>
+                <u:Tag width="7rem" class="nrgBllCJ-timeline-referral-date" text="Last Updated: {path: 'comp-cj>LastUpdateDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+            </u:Tag>
         </u:Tag>
     </u:Tag>
 

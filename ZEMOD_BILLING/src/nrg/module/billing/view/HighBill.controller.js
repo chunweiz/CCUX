@@ -33,12 +33,15 @@ sap.ui.define(
                 oNotificationTempl = this.getView().byId("idnrgBillNotificationsTemp");
             this.initRouterParameter();
             this.getOwnerComponent().getCcuxApp().setTitle('HIGH BILL');
+            this.getView().unbindElement("comp-highbill");
+            oDropDownList.unbindAggregation("content");
+            oNotifications.unbindAggregation("content");
+            //oDropDownList.updateAggregation("content");
             //this.getOwnerComponent().getCcuxApp().setOccupied(true);
             sCurrentPath = "/BillWizardS";
             aFilterIds = ["Contract"];
             aFilterValues = [this._coNum];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-            
             fnRecievedHandler = function (oEvent) {
                 var aContent = oDropDownList.getContent(),
                     sPath,
@@ -241,12 +244,6 @@ sap.ui.define(
             this.ABPPopupCustomControl.prepareABP();
 
         };
-
-
-
-
-
-
 
         return CustomController;
     }
