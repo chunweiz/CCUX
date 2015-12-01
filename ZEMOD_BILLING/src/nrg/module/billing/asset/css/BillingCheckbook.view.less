@@ -9,18 +9,34 @@
         border-right: 1px solid @nrgColor-blue-darkPale;
     }
 
-    & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-pageTitle{
-        padding-bottom: 6px;
+    & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-titleAndNav {
+        height: 50px;
+        width: 100%;
     }
 
-    & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-pageTitle > .nrgBilling-blChkBk-lftDiv-pageTitleSpan{
+    & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-titleAndNav > .nrgBilling-blChkBk-pageTitle {
+        color: @nrgColor-grey-dark;
+        font-weight: @nrgFontWeight-semiBold;
+        font-size: @nrgFontSize-large;
         padding-bottom: 6px;
         border-bottom: @nrgColor-grey-lighter;
         border-bottom-width: 1px;
         border-bottom-style: solid;
-        color: @nrgColor-grey-dark;
-        font-weight: @nrgFontWeight-semiBold;
-        font-size: @nrgFontSize-large;
+    }
+
+    & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-titleAndNav > .nrgBilling-blChkBk-backToDash {
+        float: right;
+        margin-right: 28px;
+        color: @nrgColor-grey-lighter;
+        
+        & .nrgBilling-blChkBk-backIcon {
+            margin-right: 5px;
+            font-size: 12px;
+        }
+        
+        & .nrgBilling-blChkBk-backTitle {
+
+        }
     }
 
     & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-scrllArea{

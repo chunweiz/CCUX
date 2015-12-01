@@ -60,6 +60,7 @@ sap.ui.define(
         };
 
         CustomController.prototype.onAfterRendering = function () {
+
             // Update Footer
             this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum, true);
             this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum, true);
@@ -661,6 +662,18 @@ sap.ui.define(
             }
         };
 
+        /*------------------------------------------------ UI Element Actions -----------------------------------------------*/
+        
+        CustomController.prototype._onBackToDashboard = function () {
+            var oRouter = this.getOwnerComponent().getRouter();
+
+            if (this._coNum) {
+                oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('dashboard.VerificationWithCa', {bpNum: this._bpNum, caNum: this._caNum});
+            }
+        };
+
 
         /*-------------------------------------- Notificatiob Area (Jerry 11/18/2015) ---------------------------------------*/
 
@@ -716,7 +729,7 @@ sap.ui.define(
 
                 }.bind(this),
                 error: function (oError) {
-                    console.log(oError);
+                    
                 }.bind(this)
             };
 

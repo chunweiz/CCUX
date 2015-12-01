@@ -10,7 +10,7 @@
     <!-- Content -->
     <ute:Tag class="nrgApp-oamPopup-content">
         <ute:Tag class="nrgApp-oamPopup-paragraph"
-            text="{oFooterNotification>/ErrorMessage}"/>
+            text="{comp-i18n-app>nrgApp-oamPopup-TEXT1}"/>
 
         <!-- Footer -->
         <ute:Tag class="nrgApp-oamPopup-footer">
