@@ -63,7 +63,21 @@
                             & > .nrgBllCJ-timeline-referrals {
                                     color: #4d4d4d;
                                     font-size: 10pt;
-                                    margin-left: 15px;
+                                    margin-left: 5px;
+                                    max-height: 9rem;
+                                    overflow-y: auto;
+                                    border: 1px solid @nrgColor-grey-light;
+                                    padding: 0px 10px;
+                                    & > .nrgBllCJ-timeline-referral {
+                                        & > .nrgBllCJ-timeline-referral-id {
+                                             & > .nrgBllCJ-timeline-referral-id-text {
+                                                   display: inline-block;
+                                             }
+                                             & > .nrgBllCJ-timeline-referral-id-value {
+                                                    color: @nrgColor-blue-link;
+                                             }
+                                        }
+                                    }
                             }
 
                     }
@@ -116,9 +130,6 @@
         }
     }
 }
-
-
-
 .nrgCustJCChart-text{
     font-size: @nrgFontSize-small;
 }
@@ -161,4 +172,8 @@
     text-anchor: middle;
     font-size: 1em;
     font-weight: 600;
+}
+.nrgChannelCJIcons > .nrgCJT-channelContainer{
+    width : auto;
+    height: auto;
 }
