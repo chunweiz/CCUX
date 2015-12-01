@@ -64,17 +64,21 @@
                     <!-- Links -->
                     <ute:Tag class="nrgBilling-highBill-btnLinks">
                         <!-- Retro Average Billing -->
-                        <utmain:Button 
-                            design="None"
-                            text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-RETRO_AVG}"
-                            class="nrgBilling-highBill-retroAvgBilling" 
-                            press="_onRetroAverageBillingClick"/>
+                        <ute:Tag visible="{hb-Eligiblity>/RBBElig}" class="nrgBilling-highBill-btnLinks-tag">
+                            <utmain:Button
+                                design="None"
+                                text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-RETRO_AVG}"
+                                class="nrgBilling-highBill-retroAvgBilling"
+                                press="_onRetroAverageBillingClick"/>
+                        </ute:Tag>
                         <!-- Average Billing -->
-                        <utmain:Button 
-                            design="None"
-                            text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-AVG}"
-                            class="nrgBilling-highBill-avgBilling" 
-                            press="_onAverageBillingClick"/>
+                        <ute:Tag visible="{hb-Eligiblity>/ABPElig}" class="nrgBilling-highBill-btnLinks-tag">
+                            <utmain:Button
+                                design="None"
+                                text="{comp-i18n-billing>nrgBilling-highBill-btnLinks-AVG}"
+                                class="nrgBilling-highBill-avgBilling"
+                                press="_onAverageBillingClick"/>
+                        </ute:Tag>
                     </ute:Tag>
                 </ute:Tag>
             </ute:Tag>
@@ -163,7 +167,7 @@
                     id="idnrgBillDDitemTemplate"
                     key="{comp-highbill>Begin}">
                     <ute:Tag elem="span"
-                        text="{path: 'comp-highbill>Begin', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }-{path: 'comp-highbill>End', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }"/>
+                        text="{path: 'comp-highbill>Begin', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} } - {path: 'comp-highbill>End', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }"/>
                 </utmain:DropdownItem>
             </utmain:Dropdown>
             <c:Label id="idnrgBillNotificationsTemp"

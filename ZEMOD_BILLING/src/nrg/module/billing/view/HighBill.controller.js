@@ -30,14 +30,15 @@ sap.ui.define(
                 fnRecievedHandler,
                 that = this,
                 oNotifications = this.getView().byId("idnrgBillNotifications"),
-                oNotificationTempl = this.getView().byId("idnrgBillNotificationsTemp");
+                oNotificationTempl = this.getView().byId("idnrgBillNotificationsTemp"),
+                oEligibilityModel = this.getOwnerComponent().getModel('comp-eligibility'),
+                oEligibilityJsonModel = new sap.ui.model.json.JSONModel();
+            this.getView().setModel(oEligibilityJsonModel, 'hb-Eligiblity');
             this.initRouterParameter();
             this.getOwnerComponent().getCcuxApp().setTitle('HIGH BILL');
             this.getView().unbindElement("comp-highbill");
             oDropDownList.unbindAggregation("content");
             oNotifications.unbindAggregation("content");
-            //oDropDownList.updateAggregation("content");
-            //this.getOwnerComponent().getCcuxApp().setOccupied(true);
             sCurrentPath = "/BillWizardS";
             aFilterIds = ["Contract"];
             aFilterValues = [this._coNum];
@@ -75,7 +76,17 @@ sap.ui.define(
                 filters : aFilters
             };
             oNotifications.bindAggregation("content", mParameters);
-
+            sCurrentPath = "/EligCheckS('" + this._coNum + "')";
+            mParameters = {
+                success : function (oData) {
+                    oEligibilityJsonModel.setData(oData);
+                }.bind(this),
+                error: function (oError) {
+                }.bind(this)
+            };
+            if (oEligibilityModel) {
+                oEligibilityModel.read(sCurrentPath, mParameters);
+            }
         };
         /* =========================================================== */
 		/* lifecycle method- After Rendering                          */
