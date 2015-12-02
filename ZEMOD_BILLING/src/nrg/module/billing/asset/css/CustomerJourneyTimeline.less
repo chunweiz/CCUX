@@ -57,42 +57,40 @@
     position: relative;
 }
 
-.nrgCJTChannel .nrgCJTChannel-emblem {
+.nrgCJTChannel > .nrgCJTChannel-emblem {
     display: inline-block;
     position: relative;
     width: 70px;
     height: 60px;
 }
-
-.nrgCJTChannel.nrgCJTChannel-selected .nrgCJTChannel-emblem {
-    color: hotpink;
-}
-.nrgCJTChannel.nrgCJTChannel-selected > .nrgCJTChannel-desc {
-    display:inline-block;
-}
-.nrgCJTChannel .nrgCJTChannel-emblem:hover {
-    color: gold;
-}
-.nrgCJTChannel > .nrgCJTChannel-desc {
-    border: 2px solid gray;
-	position: absolute;
-	left: -35px;
-	top: 6.5rem;
-	width: 30rem;
-	height: 7rem;
-    display:none;
-    color: @nrgColor-grey-semiDark;
-}
-.nrgCJTChannel-desc::before {
+.nrgCJTChannel-selected::after {
     content: "";
 	position: absolute;
-	left: 90px;
-    top: -45px;
+    left: 58px;
+	top: 66px;
 	display: block;
 	width: 0;
 	height: 22px;
 	border-left: 1px solid gray;
 }
+.nrgCJTChannel.nrgCJTChannel-selected > .nrgCJTChannel-emblem {
+    color: hotpink;
+}
+.nrgCJTChannel.nrgCJTChannel-selected > .nrgCJTChannel-desc {
+    display:inline-block;
+}
+.nrgCJTChannel > .nrgCJTChannel-emblem:hover {
+    color: gold;
+}
+.nrgCJTChannel > .nrgCJTChannel-desc {
+    border: 2px solid gray;
+	position: absolute;
+	width: 37rem;
+	height: 7rem;
+    display:none;
+    color: @nrgColor-grey-semiDark;
+}
+
 .nrgCJTChannel-desc-title {
     position: relative;
 	top: -1rem;
@@ -103,7 +101,7 @@
 	/* width: 3px; */
 	padding: 2px 8px 2px 8px;
 }
-.nrgCJTChannel .nrgCJTChannel-emblem .nrgCJTChannel-topLabel {
+.nrgCJTChannel > .nrgCJTChannel-emblem > .nrgCJTChannel-topLabel {
     display: block;
     width: 100%;
     height: 20px;
@@ -112,17 +110,17 @@
     text-align: center;
 }
 
-.nrgCJTChannel .nrgCJTChannel-emblem .nrgCJTChannel-icon {
+.nrgCJTChannel > .nrgCJTChannel-emblem > .nrgCJTChannel-icon {
     display: block;
     font-size: 35px;
     text-align: center;
 }
 
-.nrgCJTChannel .nrgCJTChannel-emblem .nrgCJTChannel-icon:hover {
+.nrgCJTChannel > .nrgCJTChannel-emblem > .nrgCJTChannel-icon:hover {
     cursor: pointer;
 }
 
-.nrgCJTChannel .nrgCJTChannel-line {
+.nrgCJTChannel > .nrgCJTChannel-line {
     display: inline-block;
     width: 20px;
     height: 1px;
@@ -130,15 +128,15 @@
     transform: translateY(-15px);
 }
 
-.nrgCJTChannel:first-child .nrgCJTChannel-line-left {
+.nrgCJTChannel:first-child > .nrgCJTChannel-line-left {
     display: none;
 }
 
-.nrgCJTChannel:last-child .nrgCJTChannel-line-right {
+.nrgCJTChannel:last-child > .nrgCJTChannel-line-right {
     display: none;
 }
 
-.nrgCJTChannel .nrgCJTChannel-divider {
+.nrgCJTChannel > .nrgCJTChannel-divider {
     display: inline-block;
     width: 1px;
     height: 35px;
