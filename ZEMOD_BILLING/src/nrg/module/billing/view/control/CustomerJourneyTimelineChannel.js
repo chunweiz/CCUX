@@ -76,9 +76,6 @@ sap.ui.define(
             this.setSelected(!this.getSelected());
             this.fireDoublePress();
         };
-        CustomControl.prototype.onShowDesc = function (oEvent) {
-
-        };
         CustomControl.prototype.setSelected = function (bSelected) {
             bSelected = !!bSelected;
 
@@ -95,6 +92,41 @@ sap.ui.define(
             }
 
             this.setProperty('selected', bSelected, true);
+            if (bSelected) {
+                this.adjustDescription();
+            }
+        };
+        CustomControl.prototype.adjustDescription = function (bSelected) {
+            var oDescription = this.getDomRef().firstChild.nextSibling.nextSibling,
+                oNavBackDomRef,
+                oDescriptionTitle,
+                that = this,
+                oLeft,
+                bBackHidden = false;
+            oNavBackDomRef = this.getParent().getDomRef("navBack");
+            if (oNavBackDomRef) {
+                oNavBackDomRef.classList.forEach(function (sItem) {
+                    if (sItem === "nrgCJT-navBack-hide") {
+                        bBackHidden = true;
+                        oNavBackDomRef = that._aChannelRegistry[1].getDomRef();
+                    }
+                });
+            }
+            oDescriptionTitle = oDescription.firstChild;
+            if (bBackHidden) {
+                oLeft = oNavBackDomRef.offsetLeft - this.getDomRef().offsetLeft;
+            } else {
+                oLeft = oNavBackDomRef.offsetLeft - this.getDomRef().offsetLeft + 280;
+            }
+            jQuery(oDescription).css({
+			    "top" : '6.5rem',
+			    "left" : oLeft
+		    });
+            jQuery(oDescriptionTitle).css({
+			    "top" : '-1rem',
+			    "left" : Math.abs(oDescription.offsetLeft) + 30
+		    });
+
         };
 
         return CustomControl;
