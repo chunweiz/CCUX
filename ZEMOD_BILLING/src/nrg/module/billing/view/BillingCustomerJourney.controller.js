@@ -39,7 +39,8 @@ sap.ui.define(
                 oReferralTemplate = this.getView().byId('idnrgCustomerRef-temp'),
                 fnTableDataRecdHandler,
                 oDatesJsonModel,
-                that = this;
+                that = this,
+                oTimeLineModel;
             this._sContract = oRouteInfo.parameters.coNum;
             this._sBP = oRouteInfo.parameters.bpNum;
             this._sCA = oRouteInfo.parameters.caNum;
@@ -51,6 +52,8 @@ sap.ui.define(
             oPieChart.setDataModel(oPieChartModel);
             oDatesJsonModel = new JSONModel();
             this.getView().setModel(oDatesJsonModel, 'Cj-Date');
+            oTimeLineModel = new JSONModel();
+            this.getView().setModel(oTimeLineModel, 'Cj-timeline');
 
 /*            this.getView().byId('idnrgCJPieChart').setDataModel(new JSONModel({
                 data: [
@@ -62,7 +65,7 @@ sap.ui.define(
                     { channel: 'Survey', frequency: 6 }
                 ]
             }));*/
-            this.getView().setModel(new JSONModel({
+/*            this.getView().setModel(new JSONModel({
                 data: [
                     { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: '08/31/2014', description: 'sarath', channel: 'website'},
                     { recordIndex: '1', channelIcon: 'sap-icon://nrg-icon/webchat', description: 'sarath', channel: 'webchat'},
@@ -73,7 +76,7 @@ sap.ui.define(
                     { recordIndex: '6', channelIcon: 'sap-icon://email', description: 'sarath', channel: 'letter'},
                     { recordIndex: '7', channelIcon: 'sap-icon://iphone', description: 'sarath', channel: 'mobile'}
                 ]
-            }), 'timeline');
+            }), 'timeline');*/
             aFilterIds = ["BP", "CA"];
             aFilterValues = ["2473499", "3040103"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -91,14 +94,15 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oBindingInfo);
             }
-/*            sPath = "/CJIconsSet";
+            sPath = "/CJIconsSet";
             aFilterIds = ["BP", "CA"];
-            aFilterValues = ["64041", this._sCA];
+            aFilterValues = ["2473499", "3040103"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oBindingInfo = {
                 filters : aFilters,
                 success : function (oData) {
-
+                    oTimeLineModel.convertIcons(oData.results);
+                    jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
                 error: function (oError) {
                     jQuery.sap.log.info("Odata Read Error occured");
@@ -106,7 +110,7 @@ sap.ui.define(
             };
             if (oModel) {
                 oModel.read(sPath, oBindingInfo);
-            }*/
+            }
             fnTableDataRecdHandler = function (oEvent) {
 
             };
@@ -327,7 +331,7 @@ sap.ui.define(
          * @param {string} sChanneltype from backend
          * @return {string} sChannelIcon for backend sChanneltype
 		 */
-        Controller.prototype._onSlicePress = function (sChanneltype) {
+        Controller.prototype._onSelectIcon = function (sChanneltype) {
             var sChannelIcon;
             switch (sChanneltype) {
             case "website":
@@ -356,6 +360,34 @@ sap.ui.define(
                 break;
             }
             return sChannelIcon;
+        };
+        /**;;
+		 * Converts in to EFL Json format required by Template view.
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.convertIcons = function (results) {
+            var columns = [],
+                temp,
+                tempColumns = [],
+                continueFlag = false,
+                iCount1,
+                iCount2,
+                aJsonDataNew;
+            for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+
+                temp = results[iCount1];
+                if ((temp !== undefined) && (temp.Channel !== undefined)) {
+                    temp.Channel = this._onSelectIcon(temp.Channel);
+                }
+            }
+            aJsonDataNew = {};
+            aJsonDataNew.results = {};
+            aJsonDataNew.results.columns = columns;
+            return aJsonDataNew;
         };
         return Controller;
     }

@@ -61,17 +61,17 @@
                     <u:Tag class="nrgBllCJ-timeline-referrals" id="idnrgCustomerRef"></u:Tag>
                 </u:Tag>
                 <u:Tag class="nrgBllCJ-main-timeline-icons">
-                    <ch:CustomerJourneyTimeline channel="{timeline>/data}">
+                    <ch:CustomerJourneyTimeline channel="{Cj-timeline>/data}">
                         <ch:CustomerJourneyTimelineChannel
-                            topLabel="{timeline>topLabel}"
-                            channelIcon="{timeline>channelIcon}"
-                            rightDivider="{timeline>rightDivider}"
-                            selected="{timeline>selected}"
-                            channel="{timeline>channel}"
-                            description="{timeline>description}"
+                            topLabel="{Cj-timeline>topLabel}"
+                            channelIcon="{Cj-timeline>channelIcon}"
+                            rightDivider="{Cj-timeline>rightDivider}"
+                            selected="{Cj-timeline>selected}"
+                            channel="{Cj-timeline>channel}"
+                            description="{Cj-timeline>description}"
                             press="._onChannelPress"
                             doublePress="._onChannelDPress"
-                            cd:recordIndex="{timeline>key}" />
+                            cd:recordIndex="{Cj-timeline>key}" />
                      </ch:CustomerJourneyTimeline>
                 </u:Tag>
             </u:Tag>
