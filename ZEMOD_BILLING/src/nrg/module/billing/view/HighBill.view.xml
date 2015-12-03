@@ -50,8 +50,11 @@
                         <ute:Tag class="nrgBilling-highBill-mrDate-invoiceNum">
                             <ute:Tag elem="span" class="nrgBilling-highBill-mrDate-invoiceNumTitle"
                                 text="{comp-i18n-billing>nrgBilling-highBill-mrDate-INVOICE_NUM_TITLE}" />
-                            <ute:Tag elem="span" class="nrgBilling-highBill-mrDate-invoiceNumValue"
-                                text="{comp-highbill>Invoice}" />
+                            <utmain:Button
+                                design="None"
+                                text="{comp-highbill>Invoice}"
+                                class="nrgBilling-highBill-mrDate-invoiceNumValue"
+                                press="_onShowInvoice"/>
                         </ute:Tag>
                     </ute:Tag>
                     <!-- Billing Period Charges -->

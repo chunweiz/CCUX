@@ -37,22 +37,27 @@
             <u:Tag class="nrgBllCJ-main-timeline">
                 <u:Tag class="nrgBllCJ-main-timeline-details">
                     <u:Tag class="nrgBllCJ-main-timeline-ttl" text="{comp-i18n-billing>nrgBllCJTitleTimeline}"/>
-                    <um:Button text="Last 14 Days"
+                    <um:Button text="Last {Cj-Date>/Interval1} Days"
                                class="nrgBllCJ-timeline-btns"
                                design="Default"
-                               press="on14Days"
-                               id="idnrgBllCJ-l14Days">
+                               press="onInterval1"
+                               id="idnrgBllCJ-Interval1">
                     </um:button>
-                    <um:Button text="Last 30 Days"
+                    <um:Button text="Last {Cj-Date>/Interval2} Days"
                                class="nrgBllCJ-timeline-btns"
                                design="Default"
-                               press="on30Days"
-                               id="idnrgBllCJ-l30Days">
+                               press="onInterval2"
+                               id="idnrgBllCJ-Interval2">
                     </um:button>
                     <u:Tag class="nrgBllCJ-timeline-calendars">
                         <u:DatePicker width="7rem" id="idnrgBllCJ-fromDate" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
                         <u:DatePicker width="7rem" id="idnrgBllCJ-toDate" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
                     </u:Tag>
+<!--                    <um:Button text="GO"
+                               class="nrgBllCJ-timeline-btns"
+                               design="Default"
+                               press="onInterval2">
+                    </um:button>  -->
                     <u:Tag class="nrgBllCJ-timeline-referrals" id="idnrgCustomerRef"></u:Tag>
                 </u:Tag>
                 <u:Tag class="nrgBllCJ-main-timeline-icons">
