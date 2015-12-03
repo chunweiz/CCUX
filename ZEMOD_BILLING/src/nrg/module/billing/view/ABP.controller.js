@@ -183,13 +183,13 @@ sap.ui.define(
 
             if (this._coNum) {
 
-                // Display the loading indicator
-                this._OwnerComponent.getCcuxApp().setOccupied(true);
                 // Retrieve the eligibility for ABP
                 this._retrieveABPEligibility(this._coNum, function () {bDoneRetrEligibility = true;});
 
                 var checkDoneRetrEligibility = setInterval (function () {
                     if (bDoneRetrEligibility) {
+                        // Display the loading indicator
+                        this._OwnerComponent.getCcuxApp().setOccupied(true);
                         // Check if the customer is eligible for ABP.
                         if (oEligibilityModel.oData.ABPElig === "Y") {
                             // Check if the customer is on ABP now
