@@ -81,7 +81,10 @@
                                    press="onCustomerReferral">
                     </um:button>
                 </u:Tag>
-                <u:Tag width="7rem" class="nrgBllCJ-timeline-referral-date" text="Last Updated: {path: 'comp-cj>LastUpdateDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                <u:Tag class="nrgBllCJ-timeline-referral-date">
+                    <u:Tag text="Last Updated:" class="nrgBllCJ-timeline-referral-date-text"/>
+                    <u:Tag width="7rem" class="nrgBllCJ-timeline-referral-date-value" text="{path: 'comp-cj>LastUpdateDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                </u:Tag>
             </u:Tag>
         </u:Tag>
     </u:Tag>

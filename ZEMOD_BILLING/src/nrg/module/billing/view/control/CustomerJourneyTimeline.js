@@ -67,7 +67,16 @@ sap.ui.define(
                 this._checkOverflow();
             });
         };
-
+        CustomControl.prototype._onCheckDescriptions = function (oRm, oCustomControl) {
+            var aContent = this.getAggregation("channel");
+            if (aContent) {
+                aContent.forEach(function (oitem) {
+                    if (oitem.getSelected()) {
+                        oitem.setSelected(false);
+                    }
+                });
+            }
+        };
         CustomControl.prototype._scroll = function (iDelta, iDuration) {
             var oDomRef = this.getDomRef('channelContainer'),
                 iScrollLeft = oDomRef.scrollLeft,
@@ -111,6 +120,7 @@ sap.ui.define(
             } else {
                 oNavForward.addClass('nrgCJT-navForward-hide');
             }
+            this._onCheckDescriptions();
         };
 
         return CustomControl;
