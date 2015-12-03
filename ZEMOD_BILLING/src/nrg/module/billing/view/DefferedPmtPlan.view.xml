@@ -287,7 +287,7 @@ Additional installments will be due with the following 5 subsequent invoices."/>
             </ute:Tag>
         </ute:Tag>
         <!--DPP Denied-->
-        <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="true">
+        <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="false">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-PageTitle}"/>
             <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
@@ -318,6 +318,42 @@ Additional installments will be due with the following 5 subsequent invoices."/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-btn-left">
                     <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOk}"/>
+                </ute:Tag>
+            </ute:Tag>
+        </ute:Tag>
+        <!--DPP Denied-->
+        <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="true">
+            <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-ExtTitle}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
+                    <ute:Tag class="nrgBilling-dltl-step" text="{comp-i18n-billing>nrgBilling-dpp-ExtDenied}"/>
+                </ute:Tag>
+            </ute:Tag>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-hdr">
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k2" text="{comp-i18n-billing>nrgBilling-dpp-Description}"/>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k3" text="{comp-i18n-billing>nrgBilling-dpp-Amt}"/>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k4" text="{comp-i18n-billing>nrgBilling-dpp-DueDte}"/>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k5" text="{comp-i18n-billing>nrgBilling-dpp-DefeDte}"/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
+                    <ute:Tag class="nrgBilling-dlct-odd">
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k2" text="ABC"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k3" text="$7.50"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k4" text="10/30/2014"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k5" text="10/30/2014"/>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlct-evn">
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k2" text="DEF"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k3" text="$158.18"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k4" text="10/30/2014"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k5" text="10/30/2014"/>
+                    </ute:Tag>
                 </ute:Tag>
             </ute:Tag>
         </ute:Tag>
