@@ -37,16 +37,21 @@ sap.ui.define(
                 oPieChartModel,
                 oReferral = this.getView().byId('idnrgCustomerRef'),
                 oReferralTemplate = this.getView().byId('idnrgCustomerRef-temp'),
-                fnTableDataRecdHandler;
+                fnTableDataRecdHandler,
+                oDatesJsonModel,
+                that = this;
             this._sContract = oRouteInfo.parameters.coNum;
             this._sBP = oRouteInfo.parameters.bpNum;
             this._sCA = oRouteInfo.parameters.caNum;
             this._oFormatYyyymmdd = DateFormat.getInstance({
                 pattern: 'MM/dd/yyyy'
             });
-            oPieChartModel = new sap.ui.model.json.JSONModel();
+            oPieChartModel = new JSONModel();
             this.getView().setModel(oPieChartModel, 'Cj-PieChart');
             oPieChart.setDataModel(oPieChartModel);
+            oDatesJsonModel = new JSONModel();
+            this.getView().setModel(oDatesJsonModel, 'Cj-Date');
+
 /*            this.getView().byId('idnrgCJPieChart').setDataModel(new JSONModel({
                 data: [
                     { channel: 'Website', frequency: 3 },
@@ -113,7 +118,20 @@ sap.ui.define(
                 filters : aFilters
             };
             oReferral.bindAggregation("content", oBindingInfo);
-            this._dateHandler(true, 14);
+            sPath = "/CJLifeCycleSet(BP='0002473499',CA='000003040103')";
+            oBindingInfo = {
+                success : function (oData) {
+                    oDatesJsonModel.setData(oData);
+                    that._dateHandler(true, oDatesJsonModel, false);
+                    jQuery.sap.log.info("Odata Read Successfully:::");
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Odata Read Error occured");
+                }.bind(this)
+            };
+            if (oModel) {
+                oModel.read(sPath, oBindingInfo);
+            }
         };
         /**
 		 * Central handler for dates
@@ -121,27 +139,43 @@ sap.ui.define(
 		 * @function
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
-        Controller.prototype._dateHandler = function (binitial, iNumberDays) {
+        Controller.prototype._dateHandler = function (binitial, bManualChange, bInterval1) {
             var oFromDate = this.getView().byId('idnrgBllCJ-fromDate'),
                 oToDate = this.getView().byId('idnrgBllCJ-toDate'),
-                oNewDate = new Date(),
-                oLast14DaysButton = this.getView().byId('idnrgBllCJ-l14Days'),
-                oLast30DaysButton = this.getView().byId('idnrgBllCJ-l30Days');
+                oInterval1Button = this.getView().byId('idnrgBllCJ-Interval1'),
+                oInterval2Button = this.getView().byId('idnrgBllCJ-Interval2'),
+                oDatesJsonModel = this.getView().getModel('Cj-Date'),
+                oNewDate = new Date();
             if (binitial) {
                 oToDate.setMinDate(new Date(1, 0, 1));
                 oFromDate.setMinDate(new Date(1, 0, 1));
             }
-            if (iNumberDays === 14) {
-                oNewDate.setDate(oNewDate.getDate() - 14);
-                oLast14DaysButton.addStyleClass("nrgBllCJ-timeline-btns-sel");
-                oLast30DaysButton.removeStyleClass("nrgBllCJ-timeline-btns-sel");
+            if (!bManualChange) {
+                if (oDatesJsonModel.getProperty("/FirstButtonEnabled")) {
+                    oInterval1Button.addStyleClass("nrgBllCJ-timeline-btns-sel");
+                    oInterval2Button.removeStyleClass("nrgBllCJ-timeline-btns-sel");
+                } else {
+                    oInterval2Button.addStyleClass("nrgBllCJ-timeline-btns-sel");
+                    oInterval1Button.removeStyleClass("nrgBllCJ-timeline-btns-sel");
+                }
+                oToDate.setDefaultDate(this._oFormatYyyymmdd.format(oDatesJsonModel.getProperty("/ToDate"), true));
+                oFromDate.setDefaultDate(this._oFormatYyyymmdd.format(oDatesJsonModel.getProperty("/FromDate"), true));
             } else {
-                oNewDate.setDate(oNewDate.getDate() - 30);
-                oLast30DaysButton.addStyleClass("nrgBllCJ-timeline-btns-sel");
-                oLast14DaysButton.removeStyleClass("nrgBllCJ-timeline-btns-sel");
+                if (bInterval1) {
+                    oNewDate.setDate(oNewDate.getDate() - oDatesJsonModel.getProperty("/Interval1"));
+                    oInterval1Button.addStyleClass("nrgBllCJ-timeline-btns-sel");
+                    oInterval2Button.removeStyleClass("nrgBllCJ-timeline-btns-sel");
+                    oToDate.setDefaultDate(this._oFormatYyyymmdd.format(oDatesJsonModel.getProperty("/ToDate"), true));
+                    oFromDate.setDefaultDate(this._oFormatYyyymmdd.format(oDatesJsonModel.getProperty("/FromDate"), true));
+                } else {
+                    oNewDate.setDate(oNewDate.getDate() - oDatesJsonModel.getProperty("/Interval2"));
+                    oInterval2Button.addStyleClass("nrgBllCJ-timeline-btns-sel");
+                    oInterval1Button.removeStyleClass("nrgBllCJ-timeline-btns-sel");
+                    oToDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
+                    oFromDate.setDefaultDate(this._oFormatYyyymmdd.format(oNewDate, true));
+                }
+
             }
-            oToDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
-            oFromDate.setDefaultDate(this._oFormatYyyymmdd.format(oNewDate, true));
         };
         /**
 		 * Handler for Channel single press action
@@ -149,8 +183,8 @@ sap.ui.define(
 		 * @function
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
-        Controller.prototype.on14Days = function (oEvent) {
-            this._dateHandler(true, 14);
+        Controller.prototype.onInterval1 = function (oEvent) {
+            this._dateHandler(false, true, true);
         };
         /**
 		 * Handler for Channel single press action
@@ -158,8 +192,8 @@ sap.ui.define(
 		 * @function
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
-        Controller.prototype.on30Days = function (oEvent) {
-            this._dateHandler(true, 30);
+        Controller.prototype.onInterval2 = function (oEvent) {
+            this._dateHandler(false, true, false);
         };
         /**
 		 * Handler for Channel single press action

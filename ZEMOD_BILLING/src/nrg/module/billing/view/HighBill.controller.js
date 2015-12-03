@@ -178,7 +178,18 @@ sap.ui.define(
                 });
             }
         };
-
+        /**
+		 * Handler for Invoice Select option
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        CustomController.prototype._onShowInvoice = function (oEvent) {
+            var oBindingContext = oEvent.getSource().getBindingContext("comp-highbill"),
+                sInvoiceUrl;
+            sInvoiceUrl = oBindingContext.getProperty("InvURL");
+            window.open(sInvoiceUrl);
+        };
         /**
 		 * Handler for Back to Dashboard link click
 		 *
@@ -187,7 +198,6 @@ sap.ui.define(
 		 */
         CustomController.prototype._onBackToDashboard = function () {
             var oRouter = this.getOwnerComponent().getRouter();
-
             if (this._coNum) {
                 oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
             } else {
