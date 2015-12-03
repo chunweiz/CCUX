@@ -182,9 +182,6 @@ sap.ui.define(
                 checkRetrTableGraphComplete;
 
             if (this._coNum) {
-
-                // Display the loading indicator
-                this._OwnerComponent.getCcuxApp().setOccupied(true);
                 // Retrieve the eligibility for ABP
                 this._retrieveABPEligibility(this._coNum, function () {bDoneRetrEligibility = true;});
 
