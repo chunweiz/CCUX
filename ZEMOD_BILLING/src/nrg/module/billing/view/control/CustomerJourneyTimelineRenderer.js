@@ -1,5 +1,5 @@
 /*global sap*/
-
+/*jslint nomen:true*/
 sap.ui.define(
     [
         'nrg/module/billing/view/control/CustomerJourneyTimelineChannel'
@@ -13,7 +13,7 @@ sap.ui.define(
         CustomRenderer.render = function (oRm, oCustomControl) {
             oRm.write('<div');
             oRm.writeControlData(oCustomControl);
-            oRm.addClass('tmCJT');
+            oRm.addClass('nrgCJT');
             oRm.writeClasses();
             oRm.write('>');
 
@@ -27,7 +27,7 @@ sap.ui.define(
         CustomRenderer._renderChannel = function (oRm, oCustomControl) {
             oRm.write('<div');
             oRm.writeAttribute('id', oCustomControl.getId() + '-channelContainer');
-            oRm.addClass('tmCJT-channelContainer');
+            oRm.addClass('nrgCJT-channelContainer');
             oRm.writeClasses();
             oRm.write('>');
 
@@ -41,7 +41,7 @@ sap.ui.define(
         CustomRenderer._renderNavBack = function (oRm, oCustomControl) {
             oRm.write('<div');
             oRm.writeAttribute('id', oCustomControl.getId() + '-navBack');
-            oRm.addClass('tmCJT-navBack');
+            oRm.addClass('nrgCJT-navBack');
             oRm.writeClasses();
             oRm.write('>');
 
@@ -53,7 +53,7 @@ sap.ui.define(
         CustomRenderer._renderNavForward = function (oRm, oCustomControl) {
             oRm.write('<div');
             oRm.writeAttribute('id', oCustomControl.getId() + '-navForward');
-            oRm.addClass('tmCJT-navForward');
+            oRm.addClass('nrgCJT-navForward');
             oRm.writeClasses();
             oRm.write('>');
 

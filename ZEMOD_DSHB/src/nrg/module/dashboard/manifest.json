@@ -15,6 +15,15 @@
                         "real": {
                             "comp-dashboard": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_SRV/"
+                            },
+                            "comp-dashboard-svcodr": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_SRV_ORD_SRV/"
+                            },
+                            "comp-dashboard-AcctAccessPty": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_SRV/"
+                            },
+                            "comp-dashboard-checkbook": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_CHKBOOK_SRV/"
                             }
                         },
                         "mock": {
@@ -22,10 +31,18 @@
                                 "mockDataBaseUrl": "data/devtest/",
                                 "generateMissingMockData": true
                             },
+                            "comp-dashboard-svcodr":{
+                                "mockDataBaseUrl": "data/devSvcOdr/",
+                                "generateMissingMockData": true
+                            },
 							"comp-dashboard-AcctAccessPty":{
 								"mockDataBaseUrl": "data/devAcctAccessPty/",
 								"generateMissingMockData": true
-							}
+							},
+                            "comp-dashboard-checkbook":{
+                                "mockDataBaseUrl": "data/devCheckbook/",
+                                "generateMissingMockData": true
+                            }
                         }
                     }
                 }
@@ -36,17 +53,17 @@
             "routes": {
                 "dashboard.Verification": {
                     "pattern": "dashboard/verification/bp/{bpNum}",
-                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "dashboard.EmptyTools" ]
+                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "billing.CustomerJourney" ]
                 },
 
                 "dashboard.VerificationWithCa": {
                     "pattern": "dashboard/verification/bp/{bpNum}/ca/{caNum}",
-                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "dashboard.EmptyTools" ]
+                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "billing.CustomerJourney" ]
                 },
 
                 "dashboard.VerificationWithCaCo": {
                     "pattern": "dashboard/verification/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "dashboard.EmptyTools" ]
+                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "billing.CustomerJourney" ]
                 },
 
                 "dashboard.ServiceOrder": {
@@ -80,7 +97,10 @@
                     "viewName": "nrg.module.dashboard.view.ServiceOrder",
                     "controlId": "idAppGeneral"
                 },
-
+                "billing.CustomerJourney": {
+                    "viewName": "nrg.module.billing.view.BillingCustomerJourney",
+                    "controlId": "idAppTools"
+                },
                 "dashboard.ServiceOrderTool": {
                     "viewName": "nrg.module.dashboard.view.Tools",
                     "controlId": "idAppTools"

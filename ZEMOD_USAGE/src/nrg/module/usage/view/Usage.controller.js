@@ -50,6 +50,7 @@ sap.ui.define(
             aFilterIds = ["CA"];
             aFilterValues = [this._sCA];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            aFilters.push(new Filter("CA", FilterOperator.Contains, "23", ""));
             fnRecievedHandler = function (oEvent, oData) {
                 var aContent = oServiceAddressDropDown.getContent(),
                     oBindingContext,
@@ -183,6 +184,12 @@ sap.ui.define(
                 this.navTo("campaign", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract, typeV: "C"});
             } else if (this._sType ===  "H") {
                 this.onRateHistory();
+            } else if (this._sType ===  "B") {
+                this.navTo("billing.HighBill", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
+            } else {
+                this.navTo('dashboard.Bp', {
+                    bpNum: this._sBP
+                });
             }
         };
        /**

@@ -15,7 +15,6 @@
         display: inline-block;
         border-right: 1px solid @nrgColor-grey-dark;
         width: 161px;
-        height: 608px;
     }
 
     & > .nrgDashboard-cusSerOdr-ctnt > .nrgDashboard-cusSerOdr-lftArea > .nrgDashboard-cusSerOdr-lftArea-tab{
@@ -49,7 +48,7 @@
     }
 
     & > .nrgDashboard-cusSerOdr-ctnt > .nrgDashboard-cusSerOdr-rgtArea > .nrgDashboard-cusSerOdr-rgtArea-dpdwn-title{
-        margin-top: 36px;
+        //margin-top: 36px;
         color: @nrgColor-grey-dark;
     }
 
@@ -58,12 +57,12 @@
         font-weight: @nrgFontWeight-bold;
         color: @nrgColor-grey-dark;
         margin-right: 12px;
-        display: inline-block;
+        //display: inline-block;
     }
 
     & > .nrgDashboard-cusSerOdr-ctnt > .nrgDashboard-cusSerOdr-rgtArea > .nrgDashboard-cusSerOdr-rgtArea-dpdwn-title > .nrgDashboard-cusSerOdr-rgtArea-dpdwn-title-dropdownMenu {
-        width: 312px;
-        display: inline-block;
+        margin-top: 10px;
+        //display: inline-block;
         &:first-child {
             margin-right: 10px;
         }
@@ -79,10 +78,11 @@
                 overflow: hidden;
                 padding: 8px 0 8px 8px;
                 white-space: nowrap;
-                width: 290px;
+                width: 749px;
                 color: @nrgColor-grey-dark;
                 & .uteMDdItem {
-                    font-size: @nrgFontSize-small;
+                    font-size: @nrgFontSize-base;
+                    font-weight: @nrgFontWeight-semiBold;
                     overflow: hidden;
                     text-overflow: ellipsis;
                 }
@@ -96,7 +96,7 @@
         & .uteMDd-picker {
             width: 100%;
             color: @nrgColor-grey-dark;
-            max-height: 270px;
+            //max-height: 270px;
             overflow-y: auto;
             margin-top: 5px;
             & .uteMDdItem {
@@ -124,6 +124,7 @@
     }
 
     & > .nrgDashboard-cusSerOdr-ctnt > .nrgDashboard-cusSerOdr-rgtArea > .nrgDashboard-cusSerOdr-rgtArea-ctnt .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail{
+        width: 782px;
         background-color: @nrgColor-bluePearl;
         border-bottom-left-radius: 2px;
         border-bottom-right-radius: 2px;
@@ -170,6 +171,7 @@
         margin-left: 16px;
         margin-right: 16px;
         background-color: @nrgColor-paleBlue;
+        border: 1px solid @nrgColor-grey-inactive;
     }
 
     & > .nrgDashboard-cusSerOdr-ctnt > .nrgDashboard-cusSerOdr-rgtArea > .nrgDashboard-cusSerOdr-rgtArea-ctnt .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-ctnt > .nrgDashboard-cusSerOdr-rcdc-tbl > .nrgDashboard-cusSerOdr-rcdc-tbl-hdr{
@@ -187,19 +189,36 @@
 
     }
 
-    & > .nrgDashboard-cusSerOdr-ctnt > .nrgDashboard-cusSerOdr-rgtArea > .nrgDashboard-cusSerOdr-rgtArea-ctnt .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-ctnt > .nrgDashboard-cusSerOdr-rcdc-tbl > .nrgDashboard-cusSerOdr-rcdc-tbl-hdr > .nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1{
+    & > .nrgDashboard-cusSerOdr-ctnt > .nrgDashboard-cusSerOdr-rgtArea > .nrgDashboard-cusSerOdr-rgtArea-ctnt .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-ctnt > .nrgDashboard-cusSerOdr-rcdc-tbl .nrgDashboard-cusSerOdr-rcdc-tbl-row{
+        display: inline-flex;
+        width: 100%;
+        background-color: @nrgColor-bluePearl;
+        border-top: 1px solid @nrgColor-grey-highlight;
+    }
+
+    & > .nrgDashboard-cusSerOdr-ctnt > .nrgDashboard-cusSerOdr-rgtArea > .nrgDashboard-cusSerOdr-rgtArea-ctnt .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-ctnt > .nrgDashboard-cusSerOdr-rcdc-tbl .nrgDashboard-cusSerOdr-rcdc-tbl-row > .nrgDashboard-cusSerOdr-rcdc-tbl-cell{
+        margin-left: 4px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        color: @nrgColor-grey-dark;
+        font-size: @nrgFontSize-base;
+        //font-weight: @nrgFontWeight-semiBold;
+
+    }
+
+    & > .nrgDashboard-cusSerOdr-ctnt > .nrgDashboard-cusSerOdr-rgtArea > .nrgDashboard-cusSerOdr-rgtArea-ctnt .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-ctnt > .nrgDashboard-cusSerOdr-rcdc-tbl .nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c1{
          flex: 2;
      }
 
-    & > .nrgDashboard-cusSerOdr-ctnt > .nrgDashboard-cusSerOdr-rgtArea > .nrgDashboard-cusSerOdr-rgtArea-ctnt .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-ctnt > .nrgDashboard-cusSerOdr-rcdc-tbl > .nrgDashboard-cusSerOdr-rcdc-tbl-hdr > .nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2{
+    & > .nrgDashboard-cusSerOdr-ctnt > .nrgDashboard-cusSerOdr-rgtArea > .nrgDashboard-cusSerOdr-rgtArea-ctnt .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-ctnt > .nrgDashboard-cusSerOdr-rcdc-tbl .nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c2{
         flex: 5;
     }
 
-    & > .nrgDashboard-cusSerOdr-ctnt > .nrgDashboard-cusSerOdr-rgtArea > .nrgDashboard-cusSerOdr-rgtArea-ctnt .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-ctnt > .nrgDashboard-cusSerOdr-rcdc-tbl > .nrgDashboard-cusSerOdr-rcdc-tbl-hdr > .nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3{
+    & > .nrgDashboard-cusSerOdr-ctnt > .nrgDashboard-cusSerOdr-rgtArea > .nrgDashboard-cusSerOdr-rgtArea-ctnt .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-ctnt > .nrgDashboard-cusSerOdr-rcdc-tbl .nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c3{
         flex: 3;
     }
 
-    & > .nrgDashboard-cusSerOdr-ctnt > .nrgDashboard-cusSerOdr-rgtArea > .nrgDashboard-cusSerOdr-rgtArea-ctnt .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-ctnt > .nrgDashboard-cusSerOdr-rcdc-tbl > .nrgDashboard-cusSerOdr-rcdc-tbl-hdr > .nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4{
+    & > .nrgDashboard-cusSerOdr-ctnt > .nrgDashboard-cusSerOdr-rgtArea > .nrgDashboard-cusSerOdr-rgtArea-ctnt .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail .nrgDashboard-cusSerOdr-rgtArea-ctnt-detail-ctnt > .nrgDashboard-cusSerOdr-rcdc-tbl .nrgDashboard-cusSerOdr-rcdc-tbl-hdr-c4{
         flex: 3;
     }
 }

@@ -1,6 +1,8 @@
 /*globals sap*/
 /*global ute*/
+/*global $*/
 /*jslint nomen:true*/
+/*jslint forin: true */
 
 sap.ui.define(
     [
@@ -21,14 +23,27 @@ sap.ui.define(
         CustomController.prototype.onInit = function () {
 
         };
+
         CustomController.prototype.onAfterRendering = function () {
-             this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+            this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+
+            // Navigation arrow event handling
+            this.getOwnerComponent().getCcuxApp().showNavLeft(true);
+            this.getOwnerComponent().getCcuxApp().detachNavRightAll();
+            this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
+
+            // Update Footer
+            this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum, true);
+            this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum, true);
+            this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum, true);
         };
+
         CustomController.prototype.onBeforeRendering = function () {
 
             this.getOwnerComponent().getCcuxApp().setTitle('BILLING INFO');
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-billing'), 'oDataSvc');
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-billing-invoice'), 'oDataInvoiceSvc');
 
             //Models for BillingInvoices
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBillingInvoices');
@@ -40,20 +55,34 @@ sap.ui.define(
 
             // Models for Invoice Select Popup
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oInvoiceSelectInfo');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oInvoiceSelectFilters');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oInvoiceSelectDateRange');
 
             //Starting invoices retriviging
             this._initRoutingInfo();
             this._initRetrBillInvoices();
             this._initBillingMsgs();
+
+            // Disable backspace key on this page
+            $(document).on("keydown", function (e) {
+                if (e.which === 8 && !$(e.target).is("input, textarea")) {
+                    e.preventDefault();
+                }
+            });
         };
 
-       /**
-		 * Iniitalize the msgs in the Billing Info Page
-		 *
-		 * @function
-		 *
-		 * @private
-		 */
+
+        Controller.prototype._navLeftCallBack = function () {
+            var oRouter = this.getOwnerComponent().getRouter();
+
+            if (this._coNum && this._caNum && this._bpNum) {
+                oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else if (!this._coNum && this._caNum && this._bpNum) {
+                oRouter.navTo('dashboard.VerificationWithCa', {bpNum: this._bpNum, caNum: this._caNum});
+            } else if (!this._coNum && !this._caNum && this._bpNum) {
+                oRouter.navTo('dashboard.Verification', {bpNum: this._bpNum});
+            }
+        };
 
         CustomController.prototype._initBillingMsgs = function () {
             var aFilterIds,
@@ -107,9 +136,6 @@ sap.ui.define(
                 aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
             }
             return aFilters;
-        };
-
-        CustomController.prototype.onAfterRendering = function () {
         };
 
         CustomController.prototype.onExit = function () {
@@ -322,7 +348,24 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype._onInvoiceNumClicked = function () {
+        CustomController.prototype._onInvoiceNumClicked = function (oEvent) {
+            var oBillingInvoiceModel = this.getView().getModel('oBillingInvoices');
+
+            if (oBillingInvoiceModel.oData.InvUrl) {
+                window.open(oBillingInvoiceModel.oData.InvUrl, '_blank');
+            }
+        };
+
+        /*---------------------------------------------- Invoice Selection Popup --------------------------------------------*/
+
+        CustomController.prototype._onInvoiceSelectClicked = function () {
+            var bRetrieveComplete = false,
+                minDate,
+                checkRetrComplete;
+
+            // Display the loading indicator
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            // Run for the first time
             if (!this._oInvSelectPopup) {
                 this._oInvSelectPopup = ute.ui.main.Popup.create({
                     content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.billing.view.InvSelectPopup", this),
@@ -330,101 +373,262 @@ sap.ui.define(
                 });
                 this._oInvSelectPopup.addStyleClass('nrgBilling-invSelectPopup');
                 this.getView().addDependent(this._oInvSelectPopup);
-
-                this.getView().byId('id_nrgBilling-invSel-stDate').attachBrowserEvent('select', this._handleDateRanggeChange, this);
-                //jQuery.sap.byId('id_nrgBilling-invSel-stDate').bind("sapfocusleave", jQuery.proxy(this.handleDateChange, this));
-                //jQuery.sap.byId(this.getView().byId('InvSelectPopup--nrgBilling-invSel-stDate')).bind("onsapfocusleave", jQuery.proxy(this.handleDateChange, this));
+                // Date picker event binding
+                this.getView().byId('nrgBilling-invSel-stDate').attachBrowserEvent('select', this._handleStartDateChange, this);
+                this.getView().byId('nrgBilling-invSel-edDate').attachBrowserEvent('select', this._handleEndDateChange, this);
+                // Set minDate for startDate & endDate
+                minDate = new Date();
+                minDate.setMonth(minDate.getMonth() - 18);
+                this.getView().byId('nrgBilling-invSel-stDate').setMinDate(minDate);
+                this.getView().byId('nrgBilling-invSel-edDate').setMinDate(minDate);
             }
-            this._retrieveInvoiceInfo();
+            // Open the popup
             this._oInvSelectPopup.open();
-            this._adjustScrollContentPadding();
+            // Retrieve latest data
+            this._retrieveInvoiceInfo(this._caNum, function () {bRetrieveComplete = true; });
+            // Check the completion of retrieving data
+            checkRetrComplete = setInterval(function () {
+                if (bRetrieveComplete) {
+                    // Dismiss the loading indicator
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    // Initialize filters
+                    this._initializeFilters();
+                    // Initialize date ranges
+                    this._initializeDateRange();
+                    clearInterval(checkRetrComplete);
+                }
+            }.bind(this), 100);
         };
 
-        /*---------------------------------------------- Invoice Selection Popup --------------------------------------------*/
+        CustomController.prototype._retrieveInvoiceInfo = function (sCaNumber, fnCallback) {
+            var sPath = '/InvoiceS',
+                aFilters = [],
+                oModel = this.getView().getModel('oDataInvoiceSvc'),
+                oInvSelModel = this.getView().getModel('oInvoiceSelectInfo'),
+                aInvoiceData = [],
+                oParameters,
+                rowNumer,
+                tableContainer,
+                j,
+                i;
 
-        CustomController.prototype._retrieveInvoiceInfo = function () {
-            var oInvSelModel = this.getView().getModel('oInvoiceSelectInfo');
-            var oInvoiceSelectModel = [
-                {'Date': '09/28/14', 'Number': 123456789, 'View': false},
-                {'Date': '08/28/14', 'Number': 123456788, 'View': false},
-                {'Date': '07/28/14', 'Number': 123456787, 'View': false},
-                {'Date': '06/28/14', 'Number': 123456786, 'View': false},
-                {'Date': '05/28/14', 'Number': 123456785, 'View': false},
-                {'Date': '04/28/14', 'Number': 123456784, 'View': false},
-                {'Date': '03/28/14', 'Number': 123456783, 'View': false},
-                {'Date': '02/28/14', 'Number': 123456782, 'View': false},
-                {'Date': '01/28/14', 'Number': 123456781, 'View': false},
-                {'Date': '12/28/13', 'Number': 123456780, 'View': false},
-                {'Date': '11/28/13', 'Number': 123456779, 'View': false},
-                {'Date': '10/28/13', 'Number': 123456778, 'View': false},
-                {'Date': '09/28/13', 'Number': 123456777, 'View': false},
-                {'Date': '08/28/13', 'Number': 123456776, 'View': false},
-                {'Date': '07/28/13', 'Number': 123456775, 'View': false},
-            ];
+            aFilters.push(new Filter({ path: 'ContAccount', operator: FilterOperator.EQ, value1: sCaNumber}));
 
-            oInvSelModel.setData(oInvoiceSelectModel);
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    if (oData.results) {
+                        oInvSelModel.setData(oData.results);
 
-            // Generate the table
-            var tableContainer = this.getView().byId('nrgBilling-invSelPopup-tableBody');
+                        // Generate the table
+                        tableContainer = this.getView().byId('nrgBilling-invSelPopup-tableBody');
 
-            // Remove previous content
-            var rowNumer = tableContainer.getContent().length;
-            for (var j = 0; j < rowNumer; j++) {
-                tableContainer.removeContent(0);
+                        // Remove previous content
+                        rowNumer = tableContainer.getContent().length;
+                        for (j = 0; j < rowNumer; j = j + 1) { tableContainer.removeContent(0); }
+
+                        // Process the new data
+                        for (i = 0; i < oInvSelModel.oData.length; i = i + 1) {
+                            // Add self-defined attribute
+                            oInvSelModel.oData[i].View = false;
+                            // Create table row element
+                            var rowElement = new ute.ui.commons.Tag({elem: 'div'}).addStyleClass('nrgBilling-invSelPopup-tableRow');
+                            if ((i + 1) % 2 === 0) { rowElement.addStyleClass('nrgBilling-invSelPopup-tableRow-even'); }
+                            // Insert row element childs
+                            rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oInvSelModel.oData[i].Date}).addStyleClass('nrgBilling-invSelPopup-tableRow-item').addStyleClass('date'));
+                            rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oInvSelModel.oData[i].PrintDoc}).addStyleClass('nrgBilling-invSelPopup-tableRow-item').addStyleClass('number'));
+                            rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oInvSelModel.oData[i].DataType}).addStyleClass('nrgBilling-invSelPopup-tableRow-item').addStyleClass('description'));
+                            rowElement.addContent(new ute.ui.main.Checkbox({checked: oInvSelModel.oData[i].View}).addStyleClass('nrgBilling-invSelPopup-tableRow-item').addStyleClass('view'));
+                            // Insert the row element to table
+                            tableContainer.addContent(rowElement);
+                        }
+
+                        // Execute the callback function
+                        if (fnCallback) { fnCallback(); }
+
+                    }
+                }.bind(this),
+                error: function (oError) {
+
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        CustomController.prototype._initializeFilters = function () {
+            var oInvSelFiltersModel = this.getView().getModel('oInvoiceSelectFilters');
+
+            oInvSelFiltersModel.setProperty('/All', true);
+            this._onSelectAll();
+            oInvSelFiltersModel.setProperty('/Disconnect', false);
+            oInvSelFiltersModel.setProperty('/Invoice', false);
+            oInvSelFiltersModel.setProperty('/Reversal', false);
+
+        };
+
+        CustomController.prototype._initializeDateRange = function () {
+            var oInvSelDateRangeModel = this.getView().getModel('oInvoiceSelectDateRange'),
+                today = new Date(),
+                before = new Date(),
+                endDate,
+                startDate;
+
+            // Format the endDate
+            endDate = this._formatInvoiceDate(today.getDate(), today.getMonth() + 1, today.getFullYear());
+            // Format the startDate (12 months ago)
+            before.setMonth(before.getMonth() - 12);
+            startDate = this._formatInvoiceDate(before.getDate(), before.getMonth() + 1, before.getFullYear());
+
+            this.getView().byId('nrgBilling-invSel-stDate').setDefaultDate(startDate);
+            this.getView().byId('nrgBilling-invSel-edDate').setDefaultDate(endDate);
+
+            oInvSelDateRangeModel.setProperty('/Start', startDate);
+            oInvSelDateRangeModel.setProperty('/End', endDate);
+
+            // Apply the date ranger filter
+            this._filterByDateRange();
+        };
+
+        CustomController.prototype._formatInvoiceDate = function (day, month, year) {
+            // Pad the date and month
+            if (day < 10) {day = '0' + day; }
+            if (month < 10) {month = '0' + month; }
+            // Format the startDate
+            return month + '/' + day + '/' + year;
+        };
+
+        CustomController.prototype._deformatInvoiceDate = function (formattedDate) {
+            var parts = formattedDate.split("/");
+            return new Date(parts[2], parts[0] - 1, parts[1]);
+        };
+
+        CustomController.prototype._filterByDateRange = function () {
+            var oTable = this.getView().byId('nrgBilling-invSelPopup-tableBody'),
+                oInvSelDateRangeModel = this.getView().getModel('oInvoiceSelectDateRange'),
+                oInvSelFiltersModel = this.getView().getModel('oInvoiceSelectFilters'),
+                i,
+                date,
+                property;
+
+            for (i = 0; i < oTable.getContent().length; i = i + 1) {
+                date = oTable.getContent()[i].getContent()[0].getText();
+                if (this._deformatInvoiceDate(date) < this._deformatInvoiceDate(oInvSelDateRangeModel.oData.Start) || this._deformatInvoiceDate(date) > this._deformatInvoiceDate(oInvSelDateRangeModel.oData.End)) {
+                    oTable.getContent()[i].setVisible(false);
+                } else {
+                    oTable.getContent()[i].setVisible(true);
+                }
             }
 
-            for (var i = 0; i < oInvSelModel.oData.length; i++) {
-                var rowElement = new ute.ui.commons.Tag({elem: 'div'}).addStyleClass('nrgBilling-invSelPopup-tableRow');
-                if ((i + 1) % 2 === 0) rowElement.addStyleClass('nrgBilling-invSelPopup-tableRow-even');
-                rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oInvSelModel.oData[i].Date}).addStyleClass('nrgBilling-invSelPopup-tableRow-item'));
-                rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oInvSelModel.oData[i].Number}).addStyleClass('nrgBilling-invSelPopup-tableRow-item').addStyleClass('number'));
-                rowElement.addContent(new ute.ui.main.Checkbox({checked: oInvSelModel.oData[i].View}).addStyleClass('nrgBilling-invSelPopup-tableRow-item'));
-                tableContainer.addContent(rowElement);
-            }
-
-
-        };
-
-        // For table alignment reason, change the padding if the scroll bar appear.
-        CustomController.prototype._adjustScrollContentPadding = function () {
-            if ($('.sapMScrollContScroll').height() > 200) {
-                $('.nrgBilling-invSelPopup-tableRow').addClass('nrgBilling-invSelPopup-tableRow-scrollBar');
+            // Uncheck other type filters except 'all'
+            for (property in oInvSelFiltersModel.oData) {
+                if (property !== 'All') {
+                    oInvSelFiltersModel.setProperty('/' + property, false);
+                }
             }
         };
 
-        CustomController.prototype._handleDateRanggeChange = function (oEvent) {
-            var tt = this.getView().byId('id_nrgBilling-invSel-stDate');
-            return;
+        CustomController.prototype._handleStartDateChange = function (oEvent) {
+            var oInvSelDateRangeModel = this.getView().getModel('oInvoiceSelectDateRange'),
+                startDate = this.getView().byId('nrgBilling-invSel-stDate').getValue();
+
+            oInvSelDateRangeModel.setProperty('/Start', startDate);
+            this._filterByDateRange();
+        };
+
+        CustomController.prototype._handleEndDateChange = function (oEvent) {
+            var oInvSelDateRangeModel = this.getView().getModel('oInvoiceSelectDateRange'),
+                endDate = this.getView().byId('nrgBilling-invSel-edDate').getValue();
+
+            oInvSelDateRangeModel.setProperty('/End', endDate);
+            this._filterByDateRange();
+        };
+
+        CustomController.prototype._onSelectAll = function (oEvent) {
+            var oTable = this.getView().byId('nrgBilling-invSelPopup-tableBody'),
+                oInvSelFiltersModel = this.getView().getModel('oInvoiceSelectFilters'),
+                i,
+                oCheckbox;
+
+            for (i = 0; i < oTable.getContent().length; i = i + 1) {
+                oCheckbox = oTable.getContent()[i].getContent()[3];
+                oCheckbox.setChecked(oInvSelFiltersModel.oData.All);
+            }
+        };
+
+        CustomController.prototype._onSelectDisconnect = function (oEvent) {
+            this._applyTypeFilter('Disconnect');
+        };
+
+        CustomController.prototype._onSelectInvoice = function () {
+            this._applyTypeFilter('Invoice');
+        };
+
+        CustomController.prototype._onSelectReversed = function () {
+            this._applyTypeFilter('Reversal');
+        };
+
+        CustomController.prototype._applyTypeFilter = function (sType) {
+            var oTable = this.getView().byId('nrgBilling-invSelPopup-tableBody'),
+                oInvSelFiltersModel = this.getView().getModel('oInvoiceSelectFilters'),
+                oInvSelDateRangeModel = this.getView().getModel('oInvoiceSelectDateRange'),
+                typeCheck,
+                dateCheck,
+                i,
+                date,
+                property;
+
+            for (i = 0; i < oTable.getContent().length; i = i + 1) {
+                date = oTable.getContent()[i].getContent()[0].getText();
+                typeCheck = false;
+                dateCheck = false;
+
+                // Check the type filter
+                if (oTable.getContent()[i].getContent()[2].getText() === sType || !oInvSelFiltersModel.oData[sType]) {
+                    typeCheck = true;
+                }
+                // Check the date filter
+                if (this._deformatInvoiceDate(date) >= this._deformatInvoiceDate(oInvSelDateRangeModel.oData.Start) &&
+                        this._deformatInvoiceDate(date) <= this._deformatInvoiceDate(oInvSelDateRangeModel.oData.End)) {
+                    dateCheck = true;
+                }
+                if (typeCheck && dateCheck) {
+                    oTable.getContent()[i].setVisible(true);
+                } else {
+                    oTable.getContent()[i].setVisible(false);
+                }
+            }
+
+            // Uncheck other type filters except 'all'
+            for (property in oInvSelFiltersModel.oData) {
+                if (property !== 'All' && property !== sType) {
+                    oInvSelFiltersModel.setProperty('/' + property, false);
+                }
+            }
         };
 
 
+        CustomController.prototype._onOpenBtnClick = function (oEvent) {
+            var oTable = this.getView().byId('nrgBilling-invSelPopup-tableBody'),
+                oInvSelModel = this.getView().getModel('oInvoiceSelectInfo'),
+                i,
+                oCheckbox;
 
+            for (i = 0; i < oTable.getContent().length; i = i + 1) {
+                oCheckbox = oTable.getContent()[i].getContent()[3];
+                if (oCheckbox.getChecked() && oTable.getContent()[i].getVisible()) {
+                    this._openNewWindowDelayed(oInvSelModel.oData[i].URL);
+                }
+            }
+        };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        CustomController.prototype._openNewWindowDelayed = function (sUrl) {
+            var openNewWindow = setTimeout(function () {
+                window.open(sUrl, '_blank');
+            }, 1000);
+        };
         /**
 		 * Handler for Dunning Lock Press
 		 *

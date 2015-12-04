@@ -88,31 +88,34 @@ sap.ui.define(
         };
 
         Controller.prototype.onAfterRendering = function () {
-            // Add Nav Button to left and right
+            // Navigation arrow event handling
             this.getOwnerComponent().getCcuxApp().showNavLeft(true);
-            this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
-            this.getOwnerComponent().getCcuxApp().showNavRight(true);
-            this.getOwnerComponent().getCcuxApp().attachNavRight(this._navRightCallBack, this);
+            this.getOwnerComponent().getCcuxApp().detachNavLeftAll();
+            this.getOwnerComponent().getCcuxApp().attachNavLeft(this._dhsbVerificationNavLeftCallBack, this);
 
             // Update Footer
-            this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum);
-            this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum);
-            this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum);
+            this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum, true);
+            this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum, true);
+            this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum, true);
+
+            //Attach click event to Status
+            this.getView().byId("nrgDashBoard-cusDataVerify-Status").attachBrowserEvent("click", this._navToSvcOdr.bind(this));
         };
 
-        Controller.prototype._navLeftCallBack = function () {
+
+        Controller.prototype._dhsbVerificationNavLeftCallBack = function () {
             var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
 
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
 
-            if (oWebUiManager.isAvailable()) {
+            if (true) {
                 oWebUiManager.notifyWebUi('clearAccount', {}, this._navLeftClearAccCallBack, this);
             } else {
-                this._navLeftClearAccCallBack();
+                this._dhsbVerificationNavLeftClearAccCallBack();
             }
         };
 
-        Controller.prototype._navLeftClearAccCallBack = function () {
+        Controller.prototype._dhsbVerificationNavLeftClearAccCallBack = function () {
             var oContext, oRouter;
 
             this.getOwnerComponent().getCcuxApp().setOccupied(false);
@@ -121,9 +124,6 @@ sap.ui.define(
 
             oRouter.navTo('app.refresh');
             oRouter.navTo('search.SearchNoID');
-        };
-
-        Controller.prototype._navRightCallBack = function () {
         };
 
         Controller.prototype._initToggleArea = function () {
@@ -274,6 +274,14 @@ sap.ui.define(
                 return true;
             } else {
                 return false;
+            }
+        };
+
+        Controller.prototype._formatRemoteLabel = function (sIndicator) {
+            if (sIndicator === 'x' || sIndicator === 'X') {
+                return false;
+            } else {
+                return true;
             }
         };
 
@@ -731,9 +739,16 @@ sap.ui.define(
                 oNNPView,
                 _handleDialogClosed;
 
-            NNPPopupControl.attachEvent("NNPCompleted", this._initDtaVrfRetr, this);
+            NNPPopupControl.attachEvent("NNPCompleted", function () {
+                // Update Footer
+                this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum, false);
+                this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum, false);
+                this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum, false);
+                this._initDtaVrfRetr();
+            }, this);
             this.getView().addDependent(NNPPopupControl);
             NNPPopupControl.openNNP(sBpNum, sBpEmail, sBpEmailConsum);
+
 /*            oNNPView = sap.ui.view({
                 type: sap.ui.core.mvc.ViewType.XML,
                 viewName: "nrg.module.nnp.view.NNP"
@@ -968,7 +983,7 @@ sap.ui.define(
         /*Email Edit NNP logic*/
         Controller.prototype._formatEmailAddressText = function (sEmail) {
             if ((sEmail === '') || (sEmail === undefined)) {
-                return 'CLICK to ADD';
+                return '';
             } else {
                 return sEmail;
             }
@@ -1063,39 +1078,41 @@ sap.ui.define(
                 bCoRetrieveComplate = false,
                 bCurrentCaNumRetrieveComplete = false,
                 sCurrentCaNumber,
-                oParameters;
+                oParameters,
+                checkCaRetrComplete,
+                checkCurCaRetrComplete;
 
             oParameters = {
                 success : function (oData) {
                     if (oData) {
                         // Determine if Seibel Customer
-                        if (oData.SiebelCustomer === 'X' || oData.SiebelCustomer === 'x') this._showSiebelAlert();
+                        if (oData.SiebelCustomer === 'X' || oData.SiebelCustomer === 'x') {this._showSiebelAlert(); }
                         // Determine the SMS button
-                        if (oData.Cell) this.getView().getModel('oCfrmStatus').setProperty('/ShowSMSBtn', true);
+                        if (oData.Cell) {this.getView().getModel('oCfrmStatus').setProperty('/ShowSMSBtn', true); }
                         // Load the BP info
                         this.getView().getModel('oDtaVrfyBP').setData(oData);
                         // 1. Retrieve all CA belong to the BP
-                        if (oData.PartnerID) this._retrAllCa(oData.PartnerID, function () {bCaRetrieveComplete = true;});
+                        if (oData.PartnerID) {this._retrAllCa(oData.PartnerID, function () {bCaRetrieveComplete = true; }); }
                         // Check the completion of CA retrieval
-                        var checkCaRetrComplete = setInterval(function() {
+                        checkCaRetrComplete = setInterval(function () {
                             if (bCaRetrieveComplete) {
                                 // 2. Get the current selected CA number
-                                sCurrentCaNumber = this._getCurrentCaNum(function () {bCurrentCaNumRetrieveComplete = true;});
+                                sCurrentCaNumber = this._getCurrentCaNum(function () {bCurrentCaNumRetrieveComplete = true; });
                                 clearInterval(checkCaRetrComplete);
                             }
                         }.bind(this), 100);
                         // Check the completion of current CA number retrieval
-                        var checkCurCaRetrComplete = setInterval(function() {
+                        checkCurCaRetrComplete = setInterval(function () {
                             if (bCurrentCaNumRetrieveComplete) {
                                 // 3. Load the current selected CA info
                                 this._setCurrentCa(sCurrentCaNumber);
                                 // 4. Retrieve all CO belong to the selected CA
-                                this._retrAllCo(sCurrentCaNumber, function () {bCoRetrieveComplate = true;});
+                                this._retrAllCo(sCurrentCaNumber, function () {bCoRetrieveComplate = true; });
                                 clearInterval(checkCurCaRetrComplete);
                             }
                         }.bind(this), 100);
                         // Check the completion of CO retrieval
-                        var checkCoRetrComplete = setInterval(function() {
+                        var checkCoRetrComplete = setInterval(function () {
                             if (bCoRetrieveComplate) {
                                 // Confirm with WebUI and CCUX
                                 this._routeInfoConfirm();
@@ -1146,21 +1163,22 @@ sap.ui.define(
                 sPath = '/Partners' + '(\'' + sBpNum + '\')/Buags/',
                 oParameters,
                 iSearchedCaIndex = 0,
-                eventBus = sap.ui.getCore().getEventBus();
+                eventBus = sap.ui.getCore().getEventBus(),
+                i;
 
             oParameters = {
                 success : function (oData) {
                     if (oData) {
                         // Set select key for all CAs for CA dropdown
-                        for (var i = 0; i < oData.results.length; i++) {
+                        for (i = 0; i < oData.results.length; i = i + 1) {
                             oData.results[i].iIndex = i.toString();
-                            if (oData.results[i].ContractAccountID === sCaNum) iSearchedCaIndex = i;
+                            if (oData.results[i].ContractAccountID === sCaNum) { iSearchedCaIndex = i; }
                         }
                         // Load all the CAs for CA dropdown
                         this.getView().getModel('oAllBuags').setData(oData.results);
                         this.getView().getModel('oAllBuags').setProperty('/selectedKey', iSearchedCaIndex);
                         // Check and execute the callback function
-                        if (fnCallback) fnCallback();
+                        if (fnCallback) { fnCallback(); }
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -1187,15 +1205,16 @@ sap.ui.define(
                 sCurrentCaNumber = oAllCaModel.oData[0].ContractAccountID;
             }
 
-            if (fnCallback) fnCallback();
+            if (fnCallback) { fnCallback(); }
 
             return sCurrentCaNumber;
         };
 
         Controller.prototype._setCurrentCa = function (sCaNum) {
-            var oAllCaModel = this.getView().getModel('oAllBuags');
+            var oAllCaModel = this.getView().getModel('oAllBuags'),
+                i;
 
-            for (var i = 0; i < oAllCaModel.oData.length; i++) {
+            for (i = 0; i < oAllCaModel.oData.length; i = i + 1) {
                 if (oAllCaModel.oData[i].ContractAccountID === sCaNum) {
                     // Load as default to display
                     this.getView().getModel('oDtaVrfyBuags').setData(oAllCaModel.oData[i]);
@@ -1221,7 +1240,11 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         // Load the first CO to display
-                        if (oData.results[0]) this.getView().getModel('oDtaVrfyContract').setData(oData.results[0]);
+                        if (oData.results[0]) {
+                            this.getView().getModel('oDtaVrfyContract').setData(oData.results[0]);
+                            // Publish the CO Change event to event bus
+                            this._onCoChange(oData.results[0]);
+                        }
                         // Reset the CO pagination
                         this._initCoPageModel();
                         // Set up the CO pagination
@@ -1230,7 +1253,7 @@ sap.ui.define(
                         this.getView().getModel('oAllContractsofBuag').setData(oData.results);
                         this.getView().getModel('oAllContractsofBuag').setProperty('/selectedKey', '0');
                         // Check and execute the callback function
-                        if (fnCallback) fnCallback();
+                        if (fnCallback) { fnCallback(); }
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -1246,9 +1269,10 @@ sap.ui.define(
         Controller.prototype._initCoPageModel = function () {
             var oPageModel = this.getView().getModel('oCoPageModel'),
                 page = [],
-                oTemp;
+                oTemp,
+                i;
 
-            for (var i = 0; i < 3; i++) {
+            for (i = 0; i < 3; i = i + 1) {
                 oTemp = {exist: false, con_ind: 0, index: i};
                 page.push(oTemp);
             }
@@ -1258,9 +1282,10 @@ sap.ui.define(
 
         Controller.prototype._setUpCoPageModel = function (iPageNumber, aReturnedCo) {
             var oPageModel = this.getView().getModel('oCoPageModel'),
-                oPage = oPageModel.getProperty('/paging');
+                oPage = oPageModel.getProperty('/paging'),
+                i;
 
-            for (var i = 0; i < iPageNumber; i++) {
+            for (i = 0; i < iPageNumber; i = i + 1) {
                 aReturnedCo[i].iIndex = i.toString();
                 if (i < 3) {
                     oPage[i].exist = true;
@@ -1285,7 +1310,8 @@ sap.ui.define(
                 sCurrentCo = this.getView().getModel('oDtaVrfyContract').getProperty('/ContractID'),
                 oComponent = this.getOwnerComponent(),
                 oWebUiManager = oComponent.getCcuxWebUiManager(),
-                iCompleteCheck = 0;
+                iCompleteCheck = 0,
+                checkComplete;
 
             // Display the loading indicator
             oComponent.getCcuxApp().setOccupied(true);
@@ -1305,7 +1331,7 @@ sap.ui.define(
             });
 
             // Check the completion of WebUI & CCUX update
-            var checkComplete = setInterval(function() {
+            checkComplete = setInterval(function () {
                 if (iCompleteCheck === 2) {
                     oComponent.getCcuxApp().setOccupied(false);
                     clearInterval(checkComplete);
@@ -1373,7 +1399,8 @@ sap.ui.define(
         Controller.prototype._onCaSelect = function (oEvent) {
             var sSelectedKey = oEvent.getParameters().selectedKey,
                 iSelectedIndex = parseInt(sSelectedKey, 10),
-                coRetrieveComplete = false;
+                coRetrieveComplete = false,
+                checkComplete;
 
             // Load the selected CA info
             this.getView().getModel('oDtaVrfyBuags').setData(this.getView().getModel('oAllBuags').oData[iSelectedIndex]);
@@ -1391,11 +1418,11 @@ sap.ui.define(
             // Trigger contracts refresh
             this._retrAllCo(
                 this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
-                function () {coRetrieveComplete = true;}
+                function () {coRetrieveComplete = true; }
             );
 
             // Check the completion of CO retrieval
-            var checkComplete = setInterval(function() {
+            checkComplete = setInterval(function () {
                 if (coRetrieveComplete) {
                     // Confirm with WebUI and CCUX
                     this._routeInfoConfirm();
@@ -1450,11 +1477,21 @@ sap.ui.define(
             // Update the CO pagination
             this._refreshPaging();
 
+            // Publish the CO Change event to event bus
+            this._onCoChange(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
+
             // Confirm with WebUI and CCUX
             this._routeInfoConfirm();
 
             // Update the linkability of METER lable
             this._updateUsageLink();
+        };
+
+        Controller.prototype._onCoChange = function (oCoInfo) {
+            var eventBus = sap.ui.getCore().getEventBus(),
+                oPayload = {coInfo: oCoInfo};
+
+            eventBus.publish("nrg.module.dashoard", "eCoChanged", oPayload);
         };
 
         /**********************************************/
@@ -1536,7 +1573,8 @@ sap.ui.define(
                 iSelectedIndex = oPage[0].co_ind - 1;
 
             this.getView().getModel('oDtaVrfyContract').setData(oContracts.oData[iSelectedIndex]);
-            //delete this.getView().getModel('oDtaVrfyContract').oData.iIndex;
+            // Publish the CO Change event to event bus
+            this._onCoChange(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
 
             oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
             this._refreshPaging();
@@ -1548,7 +1586,8 @@ sap.ui.define(
                 i;
 
             this.getView().getModel('oDtaVrfyContract').setData(oContracts.oData[iSelectedIndex]);
-            //delete this.getView().getModel('oDtaVrfyContract').oData.iIndex;
+            // Publish the CO Change event to event bus
+            this._onCoChange(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
 
             oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
             this._refreshPaging();
@@ -1559,7 +1598,8 @@ sap.ui.define(
                 iSelectedIndex = oPage[2].co_ind - 1;
 
             this.getView().getModel('oDtaVrfyContract').setData(oContracts.oData[iSelectedIndex]);
-            //delete this.getView().getModel('oDtaVrfyContract').oData.iIndex;
+            // Publish the CO Change event to event bus
+            this._onCoChange(this.getView().getModel('oAllContractsofBuag').oData[iSelectedIndex]);
 
             oContracts.setProperty('/selectedKey', iSelectedIndex.toString());
             this._refreshPaging();

@@ -18,6 +18,18 @@
                             },
                             "comp-billing-avgplan": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_AVG_BILL_PLAN_SRV/"
+                            },
+                            "comp-billing-invoice": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_SRV/"
+                            },
+                            "comp-cj": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_CJ_SRV/"
+                            },
+							"comp-highbill": {
+								"url": "sap/opu/odata/sap/ZE_CCUX_HIGH_BILL_SRV/"
+							},
+                            "comp-eligibility": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_ELIG_SRV/"
                             }
                         },
                         "mock": {
@@ -27,6 +39,22 @@
                             },
                             "comp-billing-avgplan": {
                                 "mockDataBaseUrl": "data/devavg/",
+                                "generateMissingMockData": true
+                            },
+                            "comp-billing-invoice": {
+                                "mockDataBaseUrl": "data/devinv/",
+                                "generateMissingMockData": true
+                            },
+							"comp-highbill":{
+								"mockDataBaseUrl": "data/devHighBill/",
+								"generateMissingMockData": true
+							},
+							"comp-cj":{
+								"mockDataBaseUrl": "data/devcj/",
+								"generateMissingMockData": true
+							},
+                            "comp-eligibility":{
+                                "mockDataBaseUrl": "data/develig/",
                                 "generateMissingMockData": true
                             }
                         }
@@ -71,11 +99,15 @@
                 },
                 "billing.HighBill": {
                     "pattern": "billing/highbill/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target":["billing.HighBill", "dashboard.CustomerDataSummary", "dashboard.EmptyTools"]
+                    "target":["billing.HighBill", "dashboard.CustomerDataSummary", "billing.HighBillTools"]
                 },
                 "billing.HighBillNoCo": {
                     "pattern": "billing/highbill/bp/{bpNum}/ca/{caNum}",
-                    "target":["billing.HighBill", "dashboard.CustomerDataSummary", "dashboard.EmptyTools"]
+                    "target":["billing.HighBill", "dashboard.CustomerDataSummary", "billing.HighBillTools"]
+                },
+                "billing.DefferedPmtPlan": {
+                    "pattern": "billing/defferedpaymentplan/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target":["billing.DefferedPmtPlan", "dashboard.CustomerDataSummary", "billing.DppTools"]
                 }
             },
 
@@ -106,6 +138,18 @@
                 },
                 "billing.CustomerJourney": {
                     "viewName": "nrg.module.billing.view.BillingCustomerJourney",
+                    "controlId": "idAppTools"
+                },
+                "billing.HighBillTools": {
+                    "viewName": "nrg.module.billing.view.HighBillTools",
+                    "controlId": "idAppTools"
+                },
+                "billing.DefferedPmtPlan": {
+                    "viewName": "nrg.module.billing.view.DefferedPmtPlan",
+                    "controlId": "idAppGeneral"
+                },
+                "billing.DppTools": {
+                    "viewName": "nrg.module.billing.view.DPPTools",
                     "controlId": "idAppTools"
                 }
             }

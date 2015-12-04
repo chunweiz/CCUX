@@ -38,15 +38,6 @@
                                 width="100%"
                                 horizontal="true"
                                 vertical="true">
-                                <!-- <ua:FooterNotificationCenter
-                                    id="nrgAppFtrDetails-notification-alertCenter"
-                                    content="{view-data>/notification}">
-                                    <ua:FooterNotificationItem
-                                        design="{view-data>design}"
-                                        link="{view-data>link}"
-                                        text="{view-data>text}"
-                                        linkPress="._onFooterNotificationLinkPress" />
-                                </ua:FooterNotificationCenter> -->
                             </sm:ScrollContainer>
                         </ute:Tag>
                     </ute:Tag>
@@ -61,8 +52,13 @@
                         <!-- Product Section -->
                         <ute:Tag id="nrgAppFtrDetails-rhs-productSection" class="nrgAppFtrDetails-rhs-productSection" visible="true">
                             <!-- Title -->
-                            <ute:Tag elem="span" class="nrgAppFtrDetails-rhs-title"
-                                text="{comp-i18n-app>nrgAppFtrDetails-rhs-TITLE}" />
+                            <utmain:Button
+                                class="nrgAppFtrDetails-rhs-title-btn"
+                                design="None"
+                                press="_onRHS">
+                                <ute:Tag elem="span" class="nrgAppFtrDetails-rhs-title"
+                                    text="{comp-i18n-app>nrgAppFtrDetails-rhs-TITLE}"/>
+                            </utmain:Button>
                             <!-- Contents -->
                             <sm:ScrollContainer
                                 id="nrgAppFtrDetails-rhs-scrollContent"
@@ -71,36 +67,32 @@
                                 width="100%"
                                 vertical="true">
                                 <ute:Tag id="nrgAppFtrDetails-rhs-currentItem" class="nrgAppFtrDetails-rhs-item">
-                                    <ute:Tag
-                                        class="nrgAppFtrDetails-rhs-currentTitle nrgAppFtrDetails-rhs-itemTitle"
-                                        text="{comp-i18n-app>nrgAppFtrDetails-rhs-CURRENT_TITLE}" />
-                                    <!-- <utmain:Dropdown
-                                        id="nrgAppFtrDetails-rhs-currentDropdown"
-                                        class="nrgAppFtrDetails-rhs-itemContent"
-                                        selectedKey="{oFooterRHS>/Current/SelectedKey}"
-                                        content="{oFooterRHS>/Current/}"
-                                        select="_onRhsCurrenItemSelect" >
-                                        <utmain:DropdownItem
-                                            class="nrgAppFtrDetails-rhs-currentDropdownItem"
-                                            key="{oFooterRHS>Index}">
-                                            <ute:Tag elem="span"
-                                                text="{oFooterRHS>ProdName}"/>
-                                        </utmain:DropdownItem>
-                                    </utmain:Dropdown> -->
+                                    <utmain:Button
+                                        class="nrgAppFtrDetails-rhs-itemTitle-btn" design="None" press="_onRHS">
+                                        <ute:Tag
+                                            class="nrgAppFtrDetails-rhs-currentTitle nrgAppFtrDetails-rhs-itemTitle"
+                                            text="{comp-i18n-app>nrgAppFtrDetails-rhs-CURRENT_TITLE}" />
+                                    </utmain:Button>
+                                    <ute:Tag id="nrgAppFtrDetails-rhs-currentItemContent" class="nrgAppFtrDetails-rhs-itemContent"
+                                        text="" />
                                 </ute:Tag>
                                 <ute:Tag class="nrgAppFtrDetails-rhs-item">
-                                    <ute:Tag class="nrgAppFtrDetails-rhs-pendingTitle nrgAppFtrDetails-rhs-itemTitle"
-                                        text="{comp-i18n-app>nrgAppFtrDetails-rhs-PENDING_TITLE}" />
+                                    <utmain:Button
+                                        class="nrgAppFtrDetails-rhs-itemTitle-btn" design="None" press="_onRHS">
+                                        <ute:Tag class="nrgAppFtrDetails-rhs-pendingTitle nrgAppFtrDetails-rhs-itemTitle"
+                                            text="{comp-i18n-app>nrgAppFtrDetails-rhs-PENDING_TITLE}" />
+                                    </utmain:Button>
                                     <ute:Tag id="nrgAppFtrDetails-rhs-pendingItemContent" class="nrgAppFtrDetails-rhs-itemContent"
                                         text="" />
-                                        <!-- text="{oFooterRHS>/Pending/ProdName}" /> -->
                                 </ute:Tag>
                                 <ute:Tag class="nrgAppFtrDetails-rhs-item">
-                                    <ute:Tag class="nrgAppFtrDetails-rhs-historyTitle nrgAppFtrDetails-rhs-itemTitle"
-                                        text="{comp-i18n-app>nrgAppFtrDetails-rhs-HISTORY_TITLE}" />
+                                    <utmain:Button
+                                        class="nrgAppFtrDetails-rhs-itemTitle-btn" design="None" press="_onRHS">
+                                        <ute:Tag class="nrgAppFtrDetails-rhs-historyTitle nrgAppFtrDetails-rhs-itemTitle"
+                                            text="{comp-i18n-app>nrgAppFtrDetails-rhs-HISTORY_TITLE}" />
+                                    </utmain:Button>
                                     <ute:Tag id="nrgAppFtrDetails-rhs-historyItemContent" class="nrgAppFtrDetails-rhs-itemContent"
                                         text="" />
-                                        <!-- text="{oFooterRHS>/History/ProdName}" /> -->
                                 </ute:Tag>
                             </sm:ScrollContainer>
                         </ute:Tag>
@@ -203,7 +195,7 @@
                                         <ute:Tag id="nrgAppFtrDetails-eligibleOffers-historyItem"
                                             class="nrgAppFtrDetails-eligibleOffers-itemContent historyItem"
                                             text=""
-                                            press="_onCampaignItemClick"/>
+                                            />
                                     </utmain:Button>
                                 </ute:Tag>
                             </sm:ScrollContainer>

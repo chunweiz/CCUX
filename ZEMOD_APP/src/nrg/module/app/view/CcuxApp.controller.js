@@ -1,4 +1,4 @@
-/*global sap*/
+/*global sap, ute*/
 /*jslint nomen:true*/
 
 sap.ui.define(
@@ -37,13 +37,13 @@ sap.ui.define(
 
         // Click the links under the Notification section in the footer
         CustomController.prototype._onFooterNotificationLinkPress = function (oControlEvent) {
-            console.log(oControlEvent.getSource());
+            //console.log(oControlEvent.getSource());
         };
 
         CustomController.prototype._formatCampaignTime = function (oDate) {
             if (oDate) {
-                var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern:"MM/yyyy"});
-                var dateStr = dateFormat.format(new Date(oDate.getTime()));
+                var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern: "MM/yyyy"}),
+                    dateStr = dateFormat.format(new Date(oDate.getTime()));
                 return dateStr;
             }
         };
@@ -56,24 +56,58 @@ sap.ui.define(
             this._oApp._getFooter().onCampaignItemClick(oControlEvent);
         };
 
+        CustomController.prototype._onRHS = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: "ZVASOPTSLN"
+            });
+        };
 
+        /*------------------------------ Footer ----------------------------*/
 
         CustomController.prototype._onQuickLinkClick = function (oControlEvent) {
             this._oApp.setHeaderMenuItemSelected(false, App.HMItemId.Menu);
 
             switch (oControlEvent.getSource().getId()) {
-              case App.QuickLinkId.Dashboard:
-                  this._onQLDashboardClick(oControlEvent);
-                  break;
-              case App.QuickLinkId.Campaign:
-                  this._onQLCampaignClick(oControlEvent);
-                  break;
-              case App.QuickLinkId.BusinessPartner:
-                  this._onQLBusinessPartnerClick(oControlEvent);
-                  break;
+            case App.QuickLinkId.Dashboard:
+                this._onQLDashboardClick(oControlEvent);
+                break;
+            case App.QuickLinkId.Campaign:
+                this._onQLCampaignClick(oControlEvent);
+                break;
+            case App.QuickLinkId.BusinessPartner:
+                this._onQLBusinessPartnerClick(oControlEvent);
+                break;
+            case App.QuickLinkId.RHS:
+                this._onQLRHSClick(oControlEvent);
+                break;
+            case App.QuickLinkId.History:
+                this._onQLHistoryClick(oControlEvent);
+                break;
             }
         };
 
+        CustomController.prototype._onQLRHSClick = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: "ZVASOPTSLN"
+            });
+        };
+        CustomController.prototype._onQLHistoryClick = function (oControlEvent) {
+            var oContext, oRouter;
+
+            oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
+            oRouter = this.getOwnerComponent().getRouter();
+
+            if (oContext.bpNum) {
+                oRouter.navTo('usage', {
+                    bpNum: oContext.bpNum,
+                    caNum: oContext.caNum,
+                    coNum: oContext.coNum,
+                    typeV : 'D'
+                });
+            }
+        };
         CustomController.prototype._onQLBusinessPartnerClick = function (oControlEvent) {
             var oContext, oRouter;
 
@@ -94,7 +128,7 @@ sap.ui.define(
             oRouter = this.getOwnerComponent().getRouter();
 
             if (oContext.bpNum) {
-                oRouter.navTo('dashboard.Bp', {
+                oRouter.navTo('dashboard.Verification', {
                     bpNum: oContext.bpNum
                 });
             }

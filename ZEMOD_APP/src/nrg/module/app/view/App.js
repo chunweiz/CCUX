@@ -46,9 +46,11 @@ sap.ui.define(
                     'attachNavLeft',
                     'detachhNavLeft',
                     'showNavLeft',
+                    'detachNavLeftAll',
                     'attachNavRight',
                     'detachNavRight',
                     'showNavRight',
+                    'detachNavRightAll',
                     'setInEdit',
                     'isInEdit',
                     'updateFooterNotification',
@@ -143,6 +145,11 @@ sap.ui.define(
             return this;
         };
 
+        App.prototype.detachNavLeftAll = function () {
+            this._oAppBody.detachNavLeftAll();
+            return this;
+        };
+
         App.prototype.attachNavRight = function (fnCallback, oListener) {
             this._oAppBody.attachNavRight(fnCallback, oListener);
             return this;
@@ -155,6 +162,11 @@ sap.ui.define(
 
         App.prototype.showNavRight = function (bShow) {
             this._oAppBody.showNavRight(bShow);
+            return this;
+        };
+
+        App.prototype.detachNavRightAll = function () {
+            this._oAppBody.detachNavRightAll();
             return this;
         };
 
@@ -184,18 +196,18 @@ sap.ui.define(
             return this;
         };
 
-        App.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber) {
-            this._oAppFooter.updateFooterNotification(sBpNumber, sCaNumber, sCoNumber);
+        App.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber, bNotReredner) {
+            this._oAppFooter.updateFooterNotification(sBpNumber, sCaNumber, sCoNumber, bNotReredner);
             return this;
         };
 
-        App.prototype.updateFooterRHS = function (sBpNumber, sCaNumber, sCoNumber) {
-            this._oAppFooter.updateFooterRHS(sBpNumber, sCaNumber, sCoNumber);
+        App.prototype.updateFooterRHS = function (sBpNumber, sCaNumber, sCoNumber, bNotReredner) {
+            this._oAppFooter.updateFooterRHS(sBpNumber, sCaNumber, sCoNumber, bNotReredner);
             return this;
         };
 
-        App.prototype.updateFooterCampaign = function (sBpNumber, sCaNumber, sCoNumber) {
-            this._oAppFooter.updateFooterCampaign(sBpNumber, sCaNumber, sCoNumber);
+        App.prototype.updateFooterCampaign = function (sBpNumber, sCaNumber, sCoNumber, bNotReredner) {
+            this._oAppFooter.updateFooterCampaign(sBpNumber, sCaNumber, sCoNumber, bNotReredner);
             return this;
         };
 

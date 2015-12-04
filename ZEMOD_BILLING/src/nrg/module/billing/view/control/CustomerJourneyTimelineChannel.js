@@ -1,5 +1,5 @@
 /*global sap*/
-
+/*jslint nomen:true*/
 sap.ui.define(
     [
         'jquery.sap.global',
@@ -16,15 +16,15 @@ sap.ui.define(
                     channelIcon: { type: 'sap.ui.core.URI', defaultValue: 'sap-icon://letter' },
                     topLabel: { type: 'string', defaultValue: null },
                     rightDivider: { type: 'boolean', defaultValue: false },
-                    selected: { type: 'boolean', defaultValue: false }
+                    selected: { type: 'boolean', defaultValue: false },
+                    description: { type: 'string', defaultValue: "" },
+                    channel: { type: 'string', defaultValue: "" }
                 },
-
                 events: {
                     press: {},
                     doublePress: {}
                 }
             },
-
             renderer: CustomRenderer
         });
 
@@ -54,7 +54,6 @@ sap.ui.define(
             this.$('icon').bind('click', this._onChannelClick.bind(this));
             this.$('icon').bind('dblclick', this._onChannelDoubleClick.bind(this));
         };
-
         CustomControl.prototype._onChannelClick = function (oEvent) {
             this._bDoubleClick = false;
 
@@ -66,18 +65,22 @@ sap.ui.define(
                 }
             });
         };
-
+        CustomControl.prototype.onmouseover = function (oEvent) {
+            //this.firePress();
+        };
+        CustomControl.prototype.onfocusout = function (oEvent) {
+            this.setSelected(false);
+        };
         CustomControl.prototype._onChannelDoubleClick = function (oEvent) {
             this._bDoubleClick = true;
             this.setSelected(!this.getSelected());
             this.fireDoublePress();
         };
-
         CustomControl.prototype.setSelected = function (bSelected) {
             bSelected = !!bSelected;
 
             if (bSelected) {
-                this.$().addClass('tmCJTChannel-selected');
+                this.$().addClass('nrgCJTChannel-selected');
 
                 this._aChannelRegistry.forEach(function (oChannel) {
                     if (oChannel !== this) {
@@ -85,10 +88,59 @@ sap.ui.define(
                     }
                 }, this);
             } else {
-                this.$().removeClass('tmCJTChannel-selected');
+                this.$().removeClass('nrgCJTChannel-selected');
             }
 
             this.setProperty('selected', bSelected, true);
+            if (bSelected) {
+                this.adjustDescription();
+            }
+        };
+        CustomControl.prototype.adjustDescription = function (bSelected) {
+            var oDescription,
+                oNavBackDomRef,
+                oDescriptionTitle,
+                that = this,
+                oLeft,
+                bBackHidden = false,
+                aClassList,
+                iCounter;
+            if ((this.getDomRef()) && (this.getDomRef().firstChild) && (this.getDomRef().firstChild) && (this.getDomRef().firstChild.nextSibling) && (this.getDomRef().firstChild.nextSibling.nextSibling)) {
+                oDescription = this.getDomRef().firstChild.nextSibling.nextSibling;
+            } else {
+                return;
+            }
+            oNavBackDomRef = this.getParent().getDomRef("navBack");
+            if (oNavBackDomRef) {
+                aClassList = oNavBackDomRef.classList;
+                if (aClassList) {
+                    for (iCounter = 0; iCounter < aClassList.length; iCounter = iCounter + 1) {
+                        if (aClassList[iCounter] === "nrgCJT-navBack-hide") {
+                            bBackHidden = true;
+                            oNavBackDomRef = that._aChannelRegistry[1].getDomRef();
+                        }
+                    }
+                }
+            }
+            if (oDescription) {
+                oDescriptionTitle = oDescription.firstChild;
+            } else {
+                return;
+            }
+            if (bBackHidden) {
+                oLeft = oNavBackDomRef.offsetLeft - this.getDomRef().offsetLeft;
+            } else {
+                oLeft = oNavBackDomRef.offsetLeft - this.getDomRef().offsetLeft + 280;
+            }
+            jQuery(oDescription).css({
+			    "top" : '6.5rem',
+			    "left" : oLeft
+		    });
+            jQuery(oDescriptionTitle).css({
+			    "top" : '-1rem',
+			    "left" : Math.abs(oDescription.offsetLeft) + 30
+		    });
+
         };
 
         return CustomControl;

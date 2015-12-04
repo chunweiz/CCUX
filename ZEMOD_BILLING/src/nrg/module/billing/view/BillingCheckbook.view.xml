@@ -15,26 +15,39 @@
     <ute:Tag class="nrgAppMain-generalContent nrgBilling-blChkBk">
         <!-- Left -->
         <ute:Tag class="nrgBilling-blChkBk-lftDiv">
-            <ute:Tag class="nrgBilling-blChkBk-lftDiv-pageTitle">
-                <ute:Tag elem="span" class="nrgBilling-blChkBk-lftDiv-pageTitleSpan"
-                         text="{comp-i18n-billing>nrgBilling-billChkBook-PAGE_TITLE}" />
+
+            <!-- Title & Back To Dashboard -->
+            <ute:Tag class="nrgBilling-blChkBk-titleAndNav">
+                <!-- Title -->
+                <ute:Tag elem="span" class="nrgBilling-blChkBk-pageTitle"
+                        text="{comp-i18n-billing>nrgBilling-billChkBook-PAGE_TITLE}"/>
+                <!-- Back -->
+                <ute:Tag elem="span" class="nrgBilling-blChkBk-backToDash">
+                    <utmain:Button design="None" class="" press="_onBackToDashboard">
+                        <core:Icon src="sap-icon://slim-arrow-left" class="nrgBilling-blChkBk-backIcon" />
+                        <ute:Tag elem="span" class="nrgBilling-blChkBk-backTitle"
+                                 text="{comp-i18n-billing>nrgBilling-billChkBook-BACK}" />
+                    </utmain:Button>
+                </ute:Tag>
             </ute:Tag>
 
             <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea">
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft">
+                    <!-- Start Date -->
                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-ctnt">
                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-lbl"
                                  text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-StaDate}"/>
                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-val"
-                                 text="{parts:['oChkbkHdr>/InvEndDate'],
-                                        formatter:'._getPreSixMonthDate'}"/>
+                                 text="{parts:['oChkbkHdr>/InvStrartDate'],
+                                        formatter:'._formatDate'}"/>
                         </ute:Tag>
+                    <!-- End Date -->
                     <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-ctnt">
                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-lbl"
                                  text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-EndDate}"/>
                         <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-lft-val"
-                                 text="{parts:['oChkbkHdr>/InvStrartDate'],
-                                        formatter:'._getCurDate'}"/>
+                                 text="{parts:['oChkbkHdr>/InvEndDate'],
+                                        formatter:'._formatDate'}"/>
                     </ute:Tag>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-blChkBk-lftDiv-qkRefArea-mdl">
@@ -101,7 +114,8 @@
                                    text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-PAYMENTOPTIONS}"
                                    press="._onPaymentOptionClick"/>
                     <utmain:Button class="nrgBilling-blChkBk-lftDiv-qkRefArea-rght-btn2"
-                                   text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-HIGHBILLFACTORS}"/>
+                                   text="{comp-i18n-billing>nrgBilling-billChkBook-Hdr-HIGHBILLFACTORS}"
+                                   press="._onHighBillFactorClick"/>
                 </ute:Tag>
             </ute:Tag>
 
@@ -175,15 +189,19 @@
                                                             <ute:Tooltip visible="{parts:['oPaymentHdr>CallOut'], formatter:'._formatBppBoolean'}"
                                                                 class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip">
                                                                 <ute:Tag>
-                                                                    <ute:Tag text="{oPaymentHdr>BBPAmt}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPAmt', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
                                                                     <ute:Tag text="{oPaymentHdr>BBPAmtAddr}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                                 </ute:Tag>
                                                                 <ute:Tag>
-                                                                    <ute:Tag text="{oPaymentHdr>BBPBal}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
-                                                                    <ute:Tag text="{oPaymentHdr>BBPBalAddr}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
+                                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPBal', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                                    <ute:Tag text="{oPaymentHdr>BBPBalAddr}"
+                                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                                 </ute:Tag>
                                                                 <ute:Tag>
-                                                                    <ute:Tag text="{oPaymentHdr>BBPDefBal}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPDefBal', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
                                                                     <ute:Tag text="{oPaymentHdr>BBPDefBalTxt}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                                 </ute:Tag>
                                                             </ute:Tooltip>
@@ -201,15 +219,18 @@
                                         <ute:Tooltip visible="{parts:['oPaymentHdr>sCallOut'], formatter:'._formatBppBoolean'}"
                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip">
                                                 <ute:Tag>
-                                                    <ute:Tag text="{oPaymentHdr>BBPAmt}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPAmt', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
                                                     <ute:Tag text="{oPaymentHdr>BBPAmtAddr}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                 </ute:Tag>
                                                     <ute:Tag>
-                                                    <ute:Tag text="{oPaymentHdr>BBPBal}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPBal', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
                                                     <ute:Tag text="{oPaymentHdr>BBPBalAddr}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                 </ute:Tag>
                                                 <ute:Tag>
-                                                    <ute:Tag text="{oPaymentHdr>BBPDefBal}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPDefBal', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
                                                     <ute:Tag text="{oPaymentHdr>BBPDefBalTxt}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                 </ute:Tag>
                                         </ute:Tooltip>
@@ -235,15 +256,18 @@
                                         <ute:Tooltip visible="{parts:['oPaymentHdr>sCallOut2'], formatter:'._formatBppBoolean'}"
                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip">
                                                 <ute:Tag>
-                                                    <ute:Tag text="{oPaymentHdr>BBPAmt}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPAmt', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
                                                     <ute:Tag text="{oPaymentHdr>BBPAmtAddr}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                 </ute:Tag>
                                                     <ute:Tag>
-                                                    <ute:Tag text="{oPaymentHdr>BBPBal}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPBal', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
                                                     <ute:Tag text="{oPaymentHdr>BBPBalAddr}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                 </ute:Tag>
                                                 <ute:Tag>
-                                                    <ute:Tag text="{oPaymentHdr>BBPDefBal}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
+                                                    <ute:Tag text="{path: 'oPaymentHdr>BBPDefBal', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"
+                                                             class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left"/>
                                                     <ute:Tag text="{oPaymentHdr>BBPDefBalTxt}" class="nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite"/>
                                                 </ute:Tag>
                                         </ute:Tooltip>
@@ -605,9 +629,14 @@
             </m:ScrollContainer>
         </ute:Tag>
 
-        <!-- Right -->
-        <ute:Tag class="nrgBilling-blChkBk-rghtDiv">
+        <!-- Notifications -->
+        <ute:Tag class="nrgBilling-billChkBook-rghtDiv">
+            <!-- Title -->
+            <ute:Tag elem="span" class="nrgBilling-billChkBook-notiTitle"
+                text="{comp-i18n-billing>nrgBilling-billChkBook-NOTI_TITLE}" />
+            <ute:Tag id="nrgBilling-billChkBook-notifications" class="nrgBilling-billChkBook-notifications">
 
+            </ute:Tag>
         </ute:Tag>
     </ute:Tag>
 

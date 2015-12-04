@@ -1,6 +1,6 @@
 // temporarily added by Jerry
 
-/*globals sap*/
+/*globals sap, ute*/
 /*globals window*/
 /*jslint nomen:true*/
 
@@ -8,10 +8,12 @@ sap.ui.define(
     [
         'jquery.sap.global',
         'nrg/base/view/BaseController',
-        'nrg/base/type/Price'
+        'nrg/base/type/Price',
+        'nrg/module/quickpay/view/QuickPayControl',
+        'nrg/module/billing/view/EligPopup'
     ],
 
-    function (jQuery, Controller, Type_Price) {
+    function (jQuery, Controller, Type_Price, QuickPayControl, EligPopup) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.billing.view.BillingCheckbook');
@@ -25,11 +27,15 @@ sap.ui.define(
             //var o18n = this.getOwnerComponent().getModel('comp-i18n-billing');
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-billing'), 'oDataSvc');
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-eligibility'), 'oDataEligSvc');
 
             //Model to keep checkbook header
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oChkbkHdr');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPaymentHdr');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPostInvoiceItems');
+
+            // Model for eligibility alerts
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEligibility');
 
             //Model to keep CheckBook detail data
             /*this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPayments');
@@ -44,23 +50,27 @@ sap.ui.define(
             this._initPostInvoiceItems();
 
             // Retrieve routing parameters
-            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
-            this._bpNum = oRouteInfo.parameters.bpNum;
-            this._caNum = oRouteInfo.parameters.caNum;
-            this._coNum = oRouteInfo.parameters.coNum;
+            var oRouteInfo = this.getOwnerComponent().getCcuxContextManager().getContext().oData;
+            this._bpNum = oRouteInfo.bpNum;
+            this._caNum = oRouteInfo.caNum;
+            this._coNum = oRouteInfo.coNum;
+
+
+
         };
 
         CustomController.prototype.onAfterRendering = function () {
+
             // Update Footer
-            this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum);
-            this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum);
-            this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum);
+            this.getOwnerComponent().getCcuxApp().updateFooterNotification(this._bpNum, this._caNum, this._coNum, true);
+            this.getOwnerComponent().getCcuxApp().updateFooterRHS(this._bpNum, this._caNum, this._coNum, true);
+            this.getOwnerComponent().getCcuxApp().updateFooterCampaign(this._bpNum, this._caNum, this._coNum, true);
+
+            // Retrieve Notification
+            this._retrieveNotification();
         };
 
         CustomController.prototype.onExit = function () {
-        };
-
-        CustomController.prototype._onPaymentOptionClick = function () {
         };
 
 
@@ -323,6 +333,24 @@ sap.ui.define(
             }
         };
 
+        CustomController.prototype._onPaymentOptionClick = function () {
+            var QuickControl = new QuickPayControl();
+            this.getView().addDependent(QuickControl);
+            if (this._coNum) {
+                QuickControl.openQuickPay(this._coNum, this.bpNum, this.caNum);
+            }
+        };
+
+        CustomController.prototype._onHighBillFactorClick = function () {
+            var oRouter = this.getOwnerComponent().getRouter();
+
+            if (this._coNum) {
+                oRouter.navTo('billing.HighBill', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('billing.HighBillNoCo', {bpNum: this._bpNum, caNum: this._caNum});
+            }
+        };
+
         CustomController.prototype._onLiteUpLinkClicked = function (oEvent) {
             var sLiteUpUrl = 'http://www.puc.state.tx.us/consumer/lowincome/Assistance.aspx';
             window.open(sLiteUpUrl);
@@ -398,8 +426,6 @@ sap.ui.define(
                             }
                         }
                     }
-                    //oScrlCtaner.scrollTop = oScrlCtaner.scrollHeight;
-                    //oScrlCtaner.scrollTo(0, 686, 100);
                 }.bind(this),
                 error: function (oError) {
                     //Need to put error message
@@ -409,8 +435,8 @@ sap.ui.define(
             if (oChbkOData) {
                 oChbkOData.read(sPath, oParameters);
             }
-
         };
+
         CustomController.prototype._retrPaymentSumrys = function (sInvNum, sBindingPath) {
             var oChbkOData = this.getView().getModel('oDataSvc'),
                 sPath,
@@ -448,8 +474,11 @@ sap.ui.define(
         CustomController.prototype._initChkbookHdr = function () {
             var sPath;
 
-            sPath = '/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'\')';
-                //'/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'008005303668\')';
+            if (this.getOwnerComponent()._oMockDataManager._aMockServers.length) {
+                sPath = '/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'8005303668\')';
+            } else {
+                sPath = '/ChkBookHdrs' + '(ContractAccountID=\'' + this._caNum + '\',InvoiceNum=\'\')';
+            }
 
             this._retrChkbookHdr(sPath);
         };
@@ -631,6 +660,112 @@ sap.ui.define(
             if (oChbkOData) {
                 oChbkOData.read(sPath, oParameters);
             }
+        };
+
+        /*------------------------------------------------ UI Element Actions -----------------------------------------------*/
+
+        CustomController.prototype._onBackToDashboard = function () {
+            var oRouter = this.getOwnerComponent().getRouter();
+
+            if (this._coNum) {
+                oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('dashboard.VerificationWithCa', {bpNum: this._bpNum, caNum: this._caNum});
+            }
+        };
+
+
+        /*-------------------------------------- Notificatiob Area (Jerry 11/18/2015) ---------------------------------------*/
+
+        CustomController.prototype._retrieveNotification = function () {
+            var sPath = '/EligCheckS(\'' + this._coNum + '\')',
+                oModel = this.getView().getModel('oDataEligSvc'),
+                oEligModel = this.getView().getModel('oEligibility'),
+                oParameters,
+                alert,
+                i;
+
+            oParameters = {
+                success : function (oData) {
+                    oEligModel.setData(oData);
+                    var container = this.getView().byId('nrgBilling-billChkBook-notifications');
+
+                    // If already has eligibility alerts, then skip
+                    if (!this._eligibilityAlerts) {
+                        this._eligibilityAlerts = [];
+
+                        // Check ABP
+                        alert = new ute.ui.app.FooterNotificationItem({
+                            link: true,
+                            design: 'Information',
+                            text: (oData.ABPElig) ? "Eligible for ABP" : "Not eligible for ABP",
+                            linkPress: this._openEligABPPopup.bind(this)
+                        });
+                        this._eligibilityAlerts.push(alert);
+
+                        // Check EXTN
+                        alert = new ute.ui.app.FooterNotificationItem({
+                            link: true,
+                            design: 'Information',
+                            text: (oData.EXTNElig) ? "Eligible for EXTN" : "Not eligible for EXTN",
+                            linkPress: this._openEligEXTNPopup.bind(this)
+                        });
+                        this._eligibilityAlerts.push(alert);
+
+                        // Check RBB
+                        alert = new ute.ui.app.FooterNotificationItem({
+                            link: true,
+                            design: 'Information',
+                            text: (oData.RBBElig) ? "Eligible for RBB" : "Not eligible for RBB",
+                            linkPress: this._openEligRBBPopup.bind(this)
+                        });
+                        this._eligibilityAlerts.push(alert);
+
+                        // Insert all alerts to DOM
+                        for (i = 0; i < this._eligibilityAlerts.length; i++) {
+                            this._eligibilityAlerts[i].placeAt(container);
+                        }
+                    }
+
+                }.bind(this),
+                error: function (oError) {
+
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        CustomController.prototype._openEligABPPopup = function () {
+            if (!this.EligABPPopupCustomControl) {
+                this.EligABPPopupCustomControl = new EligPopup({ eligType: "ABP" });
+                this.EligABPPopupCustomControl.attachEvent("EligCompleted", function () {}, this);
+                this.getView().addDependent(this.EligABPPopupCustomControl);
+                this.EligABPPopupCustomControl._oEligPopup.setTitle('ELIGIBILITY CRITERIA - AVERAGE BILLING PLAN');
+            }
+            this.EligABPPopupCustomControl.prepare();
+        };
+
+        CustomController.prototype._openEligEXTNPopup = function () {
+            if (!this.EligEXTNPopupCustomControl) {
+                this.EligEXTNPopupCustomControl = new EligPopup({ eligType: "EXTN" });
+                this.EligEXTNPopupCustomControl.attachEvent("EligCompleted", function () {}, this);
+                this.getView().addDependent(this.EligEXTNPopupCustomControl);
+                this.EligEXTNPopupCustomControl._oEligPopup.setTitle('ELIGIBILITY CRITERIA - EXTENSION');
+            }
+            this.EligEXTNPopupCustomControl.prepare();
+        };
+
+        CustomController.prototype._openEligRBBPopup = function () {
+            if (!this.EligRBBPopupCustomControl) {
+                this.EligRBBPopupCustomControl = new EligPopup({ eligType: "RBB" });
+                this.EligRBBPopupCustomControl.attachEvent("EligCompleted", function () {}, this);
+                this.getView().addDependent(this.EligRBBPopupCustomControl);
+                this.EligRBBPopupCustomControl._oEligPopup.setTitle('ELIGIBILITY CRITERIA - RETRO BILLING PLAN');
+            }
+            this.EligRBBPopupCustomControl.prepare();
         };
 
 

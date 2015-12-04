@@ -1,8 +1,250 @@
 .nrgDashboard-Tools{
-    height: 200px;
-    padding: 17px 25px 18px 25px !important;
+    height: 275px;
 
+    & > .nrgDashboard-Tools-Title{
+        font-size: @nrgFontSize-base;
+        text-align: center;
+        font-weight: @nrgFontWeight-bold;
+        padding-bottom: 10px
+    }
+
+    & > .nrgDashboard-Tools-ctnt{
+        padding-top: 5px;
+        text-align: center;
+    }
+
+    & > .nrgDashboard-Tools-ctnt > .nrgDashboard-Tools-ctnt-btn{
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+
+.nrgDashboard-reconnectionPopup {
+	width: 1000px;
     font-family: @nrgFontFamily;
+
+    // Header
+    & .sapUiDlgHdr {
+        height: 60px;
+        margin: 0;
+        padding: 20px 30px 0 30px;
+        display: flex;
+        justify-content: space-between;
+
+        & .sapUiDlgHdrLeft {
+
+            & .sapUiDlgLabel {
+                font-size: @nrgFontSize-large;
+            }
+        }
+
+        & .sapUiDlgHdrBtns {
+            position: relative;
+            margin-right: 0;
+
+            & .sapUiDlgCloseBtn {
+                &::before {
+                    height: 20px;
+                    width: 2px;
+                    transform: translate(6px,0) rotate(45deg);
+                }
+                &::after {
+                    height: 20px;
+                    width: 2px;
+                }
+            }
+
+        }
+    }
+
+    & .sapUiDlgHdrSep{
+        display: none;
+    }
+
+    & .sapUiDlgCont{
+        background-color: @nrgColor-blue-pearl;
+        margin: 0px;
+        padding: 10px;
+        margin-top: 20px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt{
+        display: flex;
+        margin-bottom: 16px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left{
+        flex: 1;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left > .nrgDashboard-reconnectionPopup-ctnt-left-info{
+        border-right: 1px dashed @nrgColor-grey-dark;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left > .nrgDashboard-reconnectionPopup-ctnt-left-info > .nrgDashboard-reconnectionPopup-cli-title{
+        border-bottom: 2px solid @nrgColor-blue-label;
+        font-size: @nrgFontSize-base;
+        font-weight: @nrgFontWeight-semiBold;
+        margin-left: 22px;
+        margin-right: 28px;
+        margin-top: 10px;
+        padding-left: 2px;
+        padding-bottom: 4px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left > .nrgDashboard-reconnectionPopup-ctnt-left-info > .nrgDashboard-reconnectionPopup-cli-title.nrgDashboard-reconnectionPopup-cli-title-second{
+        margin-top: 24px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left > .nrgDashboard-reconnectionPopup-ctnt-left-info > div > .nrgDashboard-reconnectionPopup-cli-label{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        margin-left: 28px;
+        margin-top: 6px;
+        display: inline-block;
+        width: 145px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info > .nrgDashboard-reconnectionPopup-cri-label-ctnt{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        margin-top: 6px;
+        text-align: center;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left > .nrgDashboard-reconnectionPopup-ctnt-left-info > div > .nrgDashboard-reconnectionPopup-cli-description{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        margin-top: 6px;
+        margin-left: 26px;
+        margin-right: 32px;
+        padding: 4px;
+        text-indent: 12px;
+        border: 1px solid @nrgColor-grey-highlight;
+        height: 80px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left > .nrgDashboard-reconnectionPopup-ctnt-left-info > div > .nrgDashboard-reconnectionPopup-cli-lidatxt{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        margin-top: 6px;
+        margin-left: 26px;
+        margin-right: 32px;
+        padding: 4px;
+        border: 1px solid @nrgColor-grey-highlight;
+        height: 26px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left > .nrgDashboard-reconnectionPopup-ctnt-left-info > div > .nrgDashboard-reconnectionPopup-cli-value{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-regular;
+        margin-left: 6px;
+        margin-top: 6px;
+        display: inline-block;
+    }
+
+     & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left > .nrgDashboard-reconnectionPopup-ctnt-left-info > div > .nrgDashboard-reconnectionPopup-cli-radio{
+         margin-top: 10px;
+         margin-left: 28px;
+     }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-left > .nrgDashboard-reconnectionPopup-ctnt-left-info > div > .nrgDashboard-reconnectionPopup-cli-radiolbl{
+        display: inline-block;
+        margin-top: 9px;
+        margin-left: 4px;
+        vertical-align: top;
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght{
+        flex: 1;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info{
+        //border-right: 1px dashed @nrgColor-grey-dark;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info > .nrgDashboard-reconnectionPopup-cri-title{
+        border-bottom: 2px solid @nrgColor-blue-label;
+        font-size: @nrgFontSize-base;
+        font-weight: @nrgFontWeight-semiBold;
+        margin-left: 22px;
+        margin-right: 28px;
+        margin-top: 10px;
+        padding-left: 2px;
+        padding-bottom: 4px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info > .nrgDashboard-reconnectionPopup-cri-title.nrgDashboard-reconnectionPopup-cri-title-second{
+        margin-top: 24px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info > div{
+        margin-top: 6px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info .nrgDashboard-reconnectionPopup-cri-label{
+        display: inline-block;
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        margin-left: 28px;
+        display: inline-block;
+        width: 140px;
+        position: relative;
+        top: -2px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info .nrgDashboard-reconnectionPopup-cri-value{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-regular;
+        margin-left: 6px;
+        display: inline-block;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info .nrgDashboard-reconnectionPopup-cri-wide-label{
+        display: inline-block;
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        margin-left: 28px;
+        margin-bottom: 6px;
+        width: 400px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info .nrgDashboard-reconnectionPopup-cri-btn{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+        margin-left: 28px;
+        margin-bottom: 6px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info .nrgDashboard-reconnectionPopup-cri-btn > span{
+        margin-left: 93px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info .nrgDashboard-reconnectionPopup-cri-cmnt{
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-regular;
+        margin-left: 32px;
+        margin-right: 20px;
+        width: 425px;
+        height: 80px;
+    }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info > div > .nrgDashboard-reconnectionPopup-cri-radio{
+         margin-top: 10px;
+         margin-left: 28px;
+     }
+
+    & .nrgDashboard-reconnectionPopup-ctnt > .nrgDashboard-reconnectionPopup-ctnt-rght > .nrgDashboard-reconnectionPopup-ctnt-rght-info > div > .nrgDashboard-reconnectionPopup-cri-radiolbl{
+        display: inline-block;
+        margin-top: 9px;
+        margin-left: 4px;
+        vertical-align: top;
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-semiBold;
+    }
 
 
 }

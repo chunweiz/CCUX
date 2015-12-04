@@ -12,31 +12,30 @@
         <!-- Date Picker Area -->
         <ute:Tag class="nrgBilling-invSelPopup-datePickArea">
             <ute:DatePicker
-                id="id_nrgBilling-invSel-stDate"
+                id="nrgBilling-invSel-stDate"
                 class="nrgBilling-invSelPopup-datePickArea-datePicker"/>
             <ute:Tag elem="span"
                 class="nrgBilling-invSelPopup-datePickArea-textTo"
                 text="{comp-i18n-billing>nrgBilling-invoiceSelect_TO}"/>
             <ute:DatePicker
-                id="id_nrgBilling-invSel-edDate"
+                id="nrgBilling-invSel-edDate"
                 class="nrgBilling-invSelPopup-datePickArea-datePicker"/>
         </ute:Tag>
         <!-- Filter Area -->
         <ute:Tag class="nrgBilling-invSelPopup-filterArea">
             <ute:Tag class="nrgBilling-invSelPopup-filterArea-item">
-                <utmain:Checkbox id="id_InvSel_Filter_All" class="nrgBilling-invSelPopup-filterArea-filter"/>
-                <utmain:Label labelFor="id_InvSel_Filter_All" text="Select All"/>
-            </ute:Tag>
-            <ute:Tag class="nrgBilling-invSelPopup-filterArea-item">
-                <utmain:Checkbox id="id_InvSel_Filter_DSNote" class="nrgBilling-invSelPopup-filterArea-filter"/>
+                <utmain:Checkbox id="id_InvSel_Filter_DSNote" class="nrgBilling-invSelPopup-filterArea-filter"
+                    checked="{oInvoiceSelectFilters>/Disconnect}" select="_onSelectDisconnect"/>
                 <utmain:Label labelFor="id_InvSel_Filter_DSNote" text="Disconection Notice"/>
             </ute:Tag>
             <ute:Tag class="nrgBilling-invSelPopup-filterArea-item">
-                <utmain:Checkbox id="id_InvSel_Filter_Inv" class="nrgBilling-invSelPopup-filterArea-filter"/>
+                <utmain:Checkbox id="id_InvSel_Filter_Inv" class="nrgBilling-invSelPopup-filterArea-filter"
+                    checked="{oInvoiceSelectFilters>/Invoice}" select="_onSelectInvoice"/>
                 <utmain:Label labelFor="id_InvSel_Filter_Inv" text="Invoice"/>
             </ute:Tag>
             <ute:Tag class="nrgBilling-invSelPopup-filterArea-item">
-                <utmain:Checkbox id="id_InvSel_Filter_RevInv" class="nrgBilling-invSelPopup-filterArea-filter"/>
+                <utmain:Checkbox id="id_InvSel_Filter_RevInv" class="nrgBilling-invSelPopup-filterArea-filter"
+                    checked="{oInvoiceSelectFilters>/Reversal}" select="_onSelectReversed"/>
                 <utmain:Label labelFor="id_InvSel_Filter_RevInv" text="Reversed Invoice"/>
             </ute:Tag>
         </ute:Tag>
@@ -44,9 +43,11 @@
         <ute:Tag class="nrgBilling-invSelPopup-tableContent">
             <!-- Header -->
             <ute:Tag class="nrgBilling-invSelPopup-tableHeader">
-                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_DATE}"/>
-                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_NUMBER}"/>
-                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_VIEW}"/>
+                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item date" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_DATE}"/>
+                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item number" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_NUMBER}"/>
+                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item description" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_DESCRIPTION}"/>
+                <ute:Tag class="nrgBilling-invSelPopup-tableHeader-item view" text="{comp-i18n-billing>nrgBilling-invoiceSelect_tableHeader_VIEW}"/>
+                <utmain:Checkbox id="id_InvSel_Filter_All" class="nrgBilling-invSelPopup-tableHeader-item" checked="{oInvoiceSelectFilters>/All}" select="_onSelectAll"/>
             </ute:Tag>
             <!-- Body -->
             <sm:ScrollContainer

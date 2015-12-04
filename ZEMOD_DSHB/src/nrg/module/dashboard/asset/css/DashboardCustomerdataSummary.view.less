@@ -23,16 +23,14 @@
         margin-left: 8px;
     }
 
-	& > .nrgDashboard-cusDataSum-bpArea > .nrgDashboard-cusDataSum-bpName-AcctAccessPty{
-		display: inline-block;
+	& > .nrgDashboard-cusDataSum-bpArea > .nrgDashboard-cusDataSum-bpName-AcctAccessPty {
+		cursor: pointer;
+
+        & span {
+            font-weight: @nrgFontWeight-bold;
+            color: @nrgColor-blue-link;
+        }
 	}
-	& > .nrgDashboard-cusDataSum-bpArea > .nrgDashboard-cusDataSum-bpName-AcctAccessPty > span{
-        font-weight: @nrgFontWeight-bold;
-		color: @nrgColor-blue-link;
-		&:hover{
-			font-weight: @nrgFontWeight-regular;
-		}
-    }
 
     & > .nrgDashboard-cusDataSum-bpArea > .nrgDashboard-cusDataSum-bpName{
         display: inline-block;
@@ -58,7 +56,7 @@
         color: @nrgColor-red-alert;
     }
 
-    & > .nrgDashboard-cusDataSum-bpCaArea > .nrgDashboard-cusDataSum-bpLabel > span{
+    & > .nrgDashboard-cusDataSum-bpCaArea > .nrgDashboard-cusDataSum-bpLabel > span {
         font-weight: @nrgFontWeight-bold;
         font-size: @nrgFontSize-base;
     }
@@ -72,6 +70,15 @@
 
     & > .nrgDashboard-cusDataSum-bpCaArea > span{
         padding: 0px;
+    }
+
+    & > .nrgDashboard-cusDataSum-bpCaArea > div {
+        display: inline-block;
+    }
+
+    & > .nrgDashboard-cusDataSum-bpCaArea > div > .nrgDashboard-cusDataSum-depositTool-icon {
+        color: @nrgColor-blue-link;
+        margin-left: 7px;
     }
 
     & > .nrgDashboard-cusDataSum-horiLine{

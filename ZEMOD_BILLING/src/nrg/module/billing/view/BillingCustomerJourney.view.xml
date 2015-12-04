@@ -21,7 +21,8 @@
                         class="nrgBllCJ-header-btn"
                         design="None">
             </um:button>
-            <um:Button text="{comp-i18n-billing>nrgBllCJCJModuleTtl}"
+            <um:Button  press=".onCustomerJourneyModule"
+                        text="{comp-i18n-billing>nrgBllCJCJModuleTtl}"
                         class="nrgBllCJ-header-btn nrgBllCJ-header-btn-rht"
                         design="None">
             </um:button>
@@ -29,29 +30,35 @@
         <u:Tag class="nrgBllCJ-main">
             <u:Tag class="nrgBllCJ-main-frq">
                 <u:Tag class="nrgBllCJ-main-frq-ttl" text="{comp-i18n-billing>nrgBllCJTitleFreq}"/>
-                <u:Tag height="100%" width="28%" horizontal="true" vertical="true" class="nrgBllCJ-main-frq-pie">
-                    <ch:CustJourneyChannelChart width="378" height="250" id="chart" totalDoublePress="._onTotalPress" sliceDoublePress="._onSlicePress" />
+                <u:Tag class="nrgBllCJ-main-frq-pie">
+                    <ch:CustJourneyChannelChart width="378" height="250" id="idnrgCJPieChart" totalDoublePress="._onTotalPress" sliceDoublePress="._onSlicePress" />
                 </u:Tag>
             </u:Tag>
             <u:Tag class="nrgBllCJ-main-timeline">
                 <u:Tag class="nrgBllCJ-main-timeline-details">
                     <u:Tag class="nrgBllCJ-main-timeline-ttl" text="{comp-i18n-billing>nrgBllCJTitleTimeline}"/>
-                    <um:Button text="Last 14 Days"
-                                class="nrgBllCJ-timeline-btns"
-                                design="Default">
+                    <um:Button text="Last {Cj-Date>/Interval1} Days"
+                               class="nrgBllCJ-timeline-btns"
+                               design="Default"
+                               press="onInterval1"
+                               id="idnrgBllCJ-Interval1">
                     </um:button>
-                    <um:Button text="Last 30 Days"
-                                class="nrgBllCJ-timeline-btns"
-                                design="Default">
+                    <um:Button text="Last {Cj-Date>/Interval2} Days"
+                               class="nrgBllCJ-timeline-btns"
+                               design="Default"
+                               press="onInterval2"
+                               id="idnrgBllCJ-Interval2">
                     </um:button>
                     <u:Tag class="nrgBllCJ-timeline-calendars">
-                        <u:DatePicker width="7rem" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
-                        <u:DatePicker width="7rem" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
+                        <u:DatePicker width="7rem" id="idnrgBllCJ-fromDate" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
+                        <u:DatePicker width="7rem" id="idnrgBllCJ-toDate" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
                     </u:Tag>
-                    <u:Tag class="nrgBllCJ-timeline-referrals">
-                        <u:Tag width="7rem" class="nrgBllCJ-timeline-referral" text="Open Issue Referral######"></u:Tag>
-                        <u:Tag width="7rem" class="nrgBllCJ-timeline-referral" text="Last Updated: mm/dd/yyyy"></u:Tag>
-                    </u:Tag>
+<!--                    <um:Button text="GO"
+                               class="nrgBllCJ-timeline-btns"
+                               design="Default"
+                               press="onInterval2">
+                    </um:button>  -->
+                    <u:Tag class="nrgBllCJ-timeline-referrals" id="idnrgCustomerRef"></u:Tag>
                 </u:Tag>
                 <u:Tag class="nrgBllCJ-main-timeline-icons">
                     <ch:CustomerJourneyTimeline channel="{timeline>/data}">
@@ -60,13 +67,30 @@
                             channelIcon="{timeline>channelIcon}"
                             rightDivider="{timeline>rightDivider}"
                             selected="{timeline>selected}"
-                            press="._onPress"
-                            doublePress="._onDoublePress"
-                            cd:recordIndex="{timeline>recordIndex}" />
+                            channel="{timeline>channel}"
+                            description="{timeline>description}"
+                            press="._onChannelPress"
+                            doublePress="._onChannelDPress"
+                            cd:recordIndex="{timeline>key}" />
                      </ch:CustomerJourneyTimeline>
                 </u:Tag>
             </u:Tag>
-
+        </u:Tag>
+        <u:Tag visible="false">
+            <u:Tag id="idnrgCustomerRef-temp" class="nrgBllCJ-timeline-referral">
+                <u:Tag class="nrgBllCJ-timeline-referral-id">
+                    <u:Tag width="7rem"  class="nrgBllCJ-timeline-referral-id-text" text="Open Issue Referral" />
+                    <um:Button text="{comp-cj>ReferralNo}"
+                                   design="None"
+                                   class="nrgBllCJ-timeline-referral-id-value"
+                                   press="onCustomerReferral">
+                    </um:button>
+                </u:Tag>
+                <u:Tag class="nrgBllCJ-timeline-referral-date">
+                    <u:Tag text="Last Updated:" class="nrgBllCJ-timeline-referral-date-text"/>
+                    <u:Tag width="7rem" class="nrgBllCJ-timeline-referral-date-value" text="{path: 'comp-cj>LastUpdateDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'} }" />
+                </u:Tag>
+            </u:Tag>
         </u:Tag>
     </u:Tag>
 

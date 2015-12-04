@@ -1,26 +1,42 @@
-@import '../../view/control/AverageBillDetailsChart.less';
+@import '../../view/control/AverageBillingPlan.less';
 
-.nrgBilling-blChkBk{
+.nrgBilling-blChkBk {
     padding: 25px;
+    display: flex;
 
     & > .nrgBilling-blChkBk-lftDiv {
-        display: inline-block;
-        width: 782px;
+        flex: 0 0 782px;
         border-right: 1px solid @nrgColor-blue-darkPale;
     }
 
-    & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-pageTitle{
-        padding-bottom: 6px;
+    & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-titleAndNav {
+        height: 50px;
+        width: 100%;
     }
 
-    & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-pageTitle > .nrgBilling-blChkBk-lftDiv-pageTitleSpan{
+    & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-titleAndNav > .nrgBilling-blChkBk-pageTitle {
+        color: @nrgColor-grey-dark;
+        font-weight: @nrgFontWeight-semiBold;
+        font-size: @nrgFontSize-large;
         padding-bottom: 6px;
         border-bottom: @nrgColor-grey-lighter;
         border-bottom-width: 1px;
         border-bottom-style: solid;
-        color: @nrgColor-grey-dark;
-        font-weight: @nrgFontWeight-semiBold;
-        font-size: @nrgFontSize-large;
+    }
+
+    & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-titleAndNav > .nrgBilling-blChkBk-backToDash {
+        float: right;
+        margin-right: 28px;
+        color: @nrgColor-grey-lighter;
+
+        & .nrgBilling-blChkBk-backIcon {
+            margin-right: 5px;
+            font-size: 12px;
+        }
+
+        & .nrgBilling-blChkBk-backTitle {
+
+        }
     }
 
     & > .nrgBilling-blChkBk-lftDiv > .nrgBilling-blChkBk-lftDiv-scrllArea{
@@ -91,6 +107,7 @@
 
     & > .nrgBilling-blChkBk-lftDiv .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh1.nrgBilling-blChkBk-lftDiv-scrllArea-hdr-alert{
         background-color: @nrgColor-red-alert;
+        color: @nrgColor-blue-pearl;
         font-weight: @nrgFontWeight-bold;
         padding-top: 6px !important;
         height: 32px;
@@ -311,7 +328,7 @@
         margin-left: 6px;
         margin-right: 0;
         display: inline-block;
-        width: 280px;
+        width: 275px;
         color: @nrgColor-grey-dark;
         font-weight: @nrgFontWeight-semiBold;
         font-size: @nrgFontSize-base;
@@ -397,10 +414,44 @@
         font-weight: @nrgFontWeight-semiBold;
     }
 
-    & > .nrgBilling-blChkBk-rghtDiv {
-        display: inline-block;
-        width: 278px;
-        height: 50px;
+    // Notification Area
+    & > .nrgBilling-billChkBook-rghtDiv {
+        width: 100%;
+        height: auto;
+        margin-left: 20px;
+        margin-top: 2px;
+
+        // Title
+        & > .nrgBilling-billChkBook-notiTitle {
+            color: @nrgColor-grey-dark;
+            font-weight: @nrgFontWeight-semiBold;
+            font-size: @nrgFontSize-base;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        // Alerts
+        & > .nrgBilling-billChkBook-notifications {
+
+            & > .uteAppFtrNotifItem {
+
+                & > .uteAppFtrNotifItem-icon {
+                    font-size: 20px;
+                }
+
+                & > .uteAppFtrNotifItem-text {
+                    font-size: 15px;
+                    color: @nrgColor-grey-light;
+                }
+            }
+
+            & > .uteAppFtrNotifItem.uteAppFtrNotifItem-link {
+
+                & > .uteAppFtrNotifItem-text {
+                    color: @nrgColor-blue-link;
+                }
+            }
+        }
     }
 }
 
@@ -475,23 +526,29 @@
     font-weight: @nrgFontWeight-semiBold;
 
     & > div{
-        border-left: 1px @nrgColor-grey-highlight solid;
-        border-top: 1px @nrgColor-grey-highlight solid;
+        border: 1px @nrgColor-black solid;//@nrgColor-grey-highlight solid;
+        //border-top: 1px @nrgColor-grey-highlight solid;
     }
     & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-left{
         width: 80px;
         display: inline-block;
-        border-right: 1px @nrgColor-grey-highlight solid;
-        border-bottom: 1px @nrgColor-grey-highlight solid;
+        //border-right: 1px @nrgColor-grey-highlight solid;
+        //border-bottom: 1px red solid;//@nrgColor-grey-highlight solid;
+        border: 1px @nrgColor-black solid;
         text-align: right;
         padding-right: 4px;
+        background-color: @nrgColor-blue-lightPale;
+        color: @nrgColor-grey-dark;
     }
     & .nrgBilling-blChkBk-lftDiv-scrllArea-hdr-hh5-BBPtoolltip-rite{
         padding-left: 4px;
         width: 450px;
         display: inline-block;
-        border-right: 1px @nrgColor-grey-highlight solid;
-        border-bottom: 1px @nrgColor-grey-highlight solid;
+        //border-right: 1px @nrgColor-grey-highlight solid;
+        //border-bottom: 1px @nrgColor-grey-highlight solid;
+        border: 1px @nrgColor-black solid;
+        background-color: @nrgColor-black;
+        color: @nrgColor-blue-lightPale;
     }
 }
 

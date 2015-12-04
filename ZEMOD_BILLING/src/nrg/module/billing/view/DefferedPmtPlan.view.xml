@@ -1,0 +1,367 @@
+<!--Routing Pattern: billing/highbill/bp/{bpNum}/ca/{caNum}/co/{coNum}-->
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ute="ute.ui.commons"
+    xmlns:utmain="ute.ui.main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.commons"
+    xmlns:l="sap.ui.commons.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:m="sap.m"
+    controllerName="nrg.module.billing.view.DefferedPmtPlan">
+    <ute:Tag class="nrgAppMain-generalContent nrgBilling-dPmtPln">
+        <!--STEP 1-->
+        <ute:Tag class="nrgBilling-dPmtPln-lftArea" visible="false">
+            <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-PageTitle}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
+                    <ute:Tag class="nrgBilling-dltl-step" text="{comp-i18n-billing>nrgBilling-dpp-StepOne}"/>
+                    <ute:Tag class="nrgBilling-dltl-reason">
+                        <ute:Tag class="nrgBilling-dltl-reason-lbl" text="{comp-i18n-billing>nrgBilling-dpp-ReasonDpp}"/>
+                        <utmain:Dropdown class="nrgBilling-dltl-reason-select">
+                            <utmain:DropdownItem>
+                                <ute:Tag elem="span" text="option1" />
+                            </utmain:DropdownItem>
+                            <utmain:DropdownItem>
+                                <ute:Tag elem="span" text="option2" />
+                            </utmain:DropdownItem>
+                        </utmain:Dropdown>
+                    </ute:Tag>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-m">
+                    <ute:Tag class="nrgBilling-dltm-price" text="$75.44"/>
+                    <ute:Tag class="nrgBilling-dltm-dplbl" text="{comp-i18n-billing>nrgBilling-dpp-DownPmtAmt}"/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-r">
+                    <utmain:Button class="nrgBilling-dltr-btn" text="{comp-i18n-billing>nrgBilling-dpp-PmtOptions}"/>
+                    <ute:Tag class="nrgBilling-dltr-dueDate" text="{comp-i18n-billing>nrgBilling-dpp-DueDate} 10/30/2014"/>
+                </ute:Tag>
+            </ute:Tag>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-hdr">
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h2" text="{comp-i18n-billing>nrgBilling-dpp-Description}"/>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h3" text="{comp-i18n-billing>nrgBilling-dpp-Amt}"/>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h4" text="{comp-i18n-billing>nrgBilling-dpp-DueDte}"/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
+                    <ute:Tag class="nrgBilling-dlct-odd">
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h2" text="ABC"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h3" text="$7.50"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h4" text="10/30/2014"/>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlct-evn">
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h2" text="DEF"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h3" text="$158.18"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h4" text="10/30/2014"/>
+                    </ute:Tag>
+                </ute:Tag>
+            </ute:Tag>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-dte">
+                    <ute:Tag class="nrgBilling-dlbd-left">
+                        <utmain:RadioButton class="nrgBilling-dlbd-left-elem nrgBilling-dlbd-left-radio"/>
+                        <ute:Tag class="nrgBilling-dlbd-left-elem" text="{comp-i18n-billing>nrgBilling-dpp-Mondth}"/>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlbd-rght">
+                        <ute:Tag class="nrgBilling-dlbd-left-elem" text="{comp-i18n-billing>nrgBilling-dpp-StartDate}"/>
+
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlbd-install" text="{comp-i18n-billing>nrgBilling-dpp-NmbrOfInstall}"/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-zeroDown">
+                    <utmain:CheckBox class="nrgBilling-dlbz-chk"/>
+                    <ute:Tag class="nrgBilling-dlbz-chkLabel" text="{comp-i18n-billing>nrgBilling-dpp-PlanZroDownPmt}"/>
+                </ute:Tag>
+                <utmain:Button class="nrgBilling-dPmtPln-lftArea-botm-btn" text="{comp-i18n-billing>nrgBilling-dpp-OK}"/>
+            </ute:Tag>
+        </ute:Tag>
+        <!--Step 2-->
+        <ute:Tag class="nrgBilling-dPmtPln-lftArea" visible="false">
+            <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-PageTitle}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
+                    <ute:Tag class="nrgBilling-dltl-step" text="{comp-i18n-billing>nrgBilling-dpp-StepTwo}"/>
+                </ute:Tag>
+            </ute:Tag>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-hdr">
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i2" text="{comp-i18n-billing>nrgBilling-dpp-Amt}"/>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i3" text="{comp-i18n-billing>nrgBilling-dpp-DueDte}"/>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i4" text="{comp-i18n-billing>nrgBilling-dpp-ClearDate}"/>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i5" text="{comp-i18n-billing>nrgBilling-dpp-Cleared}"/>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i6" text="{comp-i18n-billing>nrgBilling-dpp-ClearAmt}"/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
+                    <ute:Tag class="nrgBilling-dlct-odd">
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i2" text="$75.44"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i3" text="10/30/2014"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i4" text=""/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i5" text="NO"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i6" text="$00.00"/>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlct-evn">
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i2" text="$15.09"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i3" text=""/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i4" text=""/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i5" text="NO"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i6" text="$00.00"/>
+                    </ute:Tag>
+                </ute:Tag>
+            </ute:Tag>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox">
+                    <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox-icon"><ute:Tag text="{comp-i18n-billing>nrgBilling-dpp-info-i}"/></ute:Tag>
+                    <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox-txt" text="The first installment is down payment. The first installment is due on 10/30/2014
+Additional installments will be due with the following 5 subsequent invoices."/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoSum">
+                    <ute:Tag class="nrgBilling-dlbi-l">
+                        <ute:Tag class="nrgBilling-dPmtPln-dlbi-row">
+                            <ute:Tag class="nrgBilling-dlbi-lbl" text="{comp-i18n-billing>nrgBilling-dpp-TtlOutstanding}"/>
+                            <ute:Tag class="nrgBilling-dlbi-val" text="$150.87"/>
+                        </ute:Tag>
+                        <ute:Tag class="nrgBilling-dPmtPln-dlbi-row">
+                            <ute:Tag class="nrgBilling-dlbi-lbl" text="{comp-i18n-billing>nrgBilling-dpp-DppTtl}"/>
+                            <ute:Tag class="nrgBilling-dlbi-val" text="$150.87"/>
+                        </ute:Tag>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlbi-m">
+                        <ute:Tag class="nrgBilling-dlbi-l">
+                            <ute:Tag class="nrgBilling-dPmtPln-dlbi-row">
+                                <ute:Tag class="nrgBilling-dlbi-lbl" text="{comp-i18n-billing>nrgBilling-dpp-SelTtl}"/>
+                                <ute:Tag class="nrgBilling-dlbi-val" text="$150.87"/>
+                            </ute:Tag>
+                            <ute:Tag class="nrgBilling-dPmtPln-dlbi-row">
+                                <ute:Tag class="nrgBilling-dlbi-lbl" text="{comp-i18n-billing>nrgBilling-dpp-Diff}"/>
+                                <ute:Tag class="nrgBilling-dlbi-val" text="$00.00"/>
+                            </ute:Tag>
+                        </ute:Tag>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlbi-r">
+                        <utmain:Button text="{comp-i18n-billing>nrgBilling-dpp-DisDiff}"/>
+                    </ute:Tag>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-btns">
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnBack}"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnCfirm}"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnCncl}"/>
+                </ute:Tag>
+            </ute:Tag>
+        </ute:Tag>
+        <!--Step 3-->
+        <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="false">
+            <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-PageTitle}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
+                    <ute:Tag class="nrgBilling-dltl-step" text="{comp-i18n-billing>nrgBilling-dpp-StepTre}"/>
+                </ute:Tag>
+            </ute:Tag>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-corr">
+                    <ute:Tag class="nrgBilling-dlcc-chbrow">
+                        <utmain:Checkbox class="nrgBilling-dlcc-chbrow-chb"/>
+                        <utmain:Label class="nrgBilling-dlcc-chbrow-lbl" text="Via Email:"/>
+                        <utmain:Dropdown class="nrgBilling-dlcc-chbrow-sel">
+                            <utmain:DropdownItem>
+                                <ute:Tag elem="span" text="option1" />
+                            </utmain:DropdownItem>
+                            <utmain:DropdownItem>
+                                <ute:Tag elem="span" text="option2" />
+                            </utmain:DropdownItem>
+                        </utmain:Dropdown>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlcc-chbrow">
+                        <utmain:Checkbox class="nrgBilling-dlcc-chbrow-chb"/>
+                        <utmain:Label class="nrgBilling-dlcc-chbrow-lbl" text="Via Fax:"/>
+                        <utmain:Dropdown class="nrgBilling-dlcc-chbrow-sel">
+                            <utmain:DropdownItem>
+                                <ute:Tag elem="span" text="option1" />
+                            </utmain:DropdownItem>
+                            <utmain:DropdownItem>
+                                <ute:Tag elem="span" text="option2" />
+                            </utmain:DropdownItem>
+                        </utmain:Dropdown>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlcc-chbrow">
+                        <utmain:Label class="nrgBilling-dlcc-chbrow-lbl" text="In care of:"/>
+                        <ute:Tag class="nrgBilling-dlcc-chbrow-val" text="test"/>
+                    </ute:Tag>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-corr">
+                    <ute:Tag class="nrgBilling-dlcc-chbrow">
+                        <utmain:Checkbox class="nrgBilling-dlcc-chbrow-chb"/>
+                        <utmain:Label class="nrgBilling-dlcc-chbrow-lbl" text="Via Mail:"/>
+                        <utmain:Dropdown class="nrgBilling-dlcc-chbrow-sel">
+                            <utmain:DropdownItem>
+                                <ute:Tag elem="span" text="option1" />
+                            </utmain:DropdownItem>
+                            <utmain:DropdownItem>
+                                <ute:Tag elem="span" text="option2" />
+                            </utmain:DropdownItem>
+                        </utmain:Dropdown>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlcc-mail">
+                        <ute:Tag class="nrgBilling-dlcc-mail-l">
+                            <ute:Tag class="nrgBilling-dlcc-mail-row">
+                                <utmain:Label class="nrgBilling-dlcc-mail-lbl" text="In care of:"/>
+                                <ute:Textfield class="nrgBilling-dlcc-mail-val"
+                                               fieldType="Underlined" width="330px" text="test"/>
+                            </ute:Tag>
+                            <ute:Tag class="nrgBilling-dlcc-mail-row">
+                                <ute:Tag class="nrgBilling-dlcc-mail-row-column">
+                                    <utmain:Label class="nrgBilling-dlcc-mail-lbl" text="Street Number:"/>
+                                    <ute:Textfield class="nrgBilling-dlcc-mail-valCol"
+                                                   fieldType="Underlined" width="90px" text="test"/>
+                                </ute:Tag>
+                                <ute:Tag class="nrgBilling-dlcc-mail-row-column">
+                                    <utmain:Label class="nrgBilling-dlcc-mail-lbl" text="Apt./Unit:"/>
+                                    <ute:Textfield class="nrgBilling-dlcc-mail-valCol"
+                                                   fieldType="Underlined" width="120px" text="test"/>
+                                </ute:Tag>
+                            </ute:Tag>
+                            <ute:Tag class="nrgBilling-dlcc-mail-row">
+                                <ute:Tag class="nrgBilling-dlcc-mail-row-colCity">
+                                    <utmain:Label class="nrgBilling-dlcc-mail-lbl" text="City:"/>
+                                    <ute:Textfield class="nrgBilling-dlcc-mail-valCol"
+                                                   fieldType="Underlined" width="232px" text="test"/>
+                                </ute:Tag>
+                                <ute:Tag class="nrgBilling-dlcc-mail-row-colState">
+                                    <utmain:Label class="nrgBilling-dlcc-mail-lbl" text="State:"/>
+                                    <ute:Textfield class="nrgBilling-dlcc-mail-valCol"
+                                                   fieldType="Underlined" width="77px" text="test"/>
+                                </ute:Tag>
+                            </ute:Tag>
+                            <ute:Tag class="nrgBilling-dlcc-mail-row">
+                                <utmain:Label class="nrgBilling-dlcc-mail-lbl" text="Country:"/>
+                                <ute:Textfield class="nrgBilling-dlcc-mail-val"
+                                               fieldType="Underlined" width="340px" text="test"/>
+                            </ute:Tag>
+                            <ute:Tag class="nrgBilling-dlcc-mail-row">
+                                <utmain:Label class="nrgBilling-dlcc-mail-lbl" text="Address Title:"/>
+                                <ute:Textfield class="nrgBilling-dlcc-mail-val"
+                                               fieldType="Underlined" width="307px" text="test"/>
+                            </ute:Tag>
+                        </ute:Tag>
+                        <ute:Tag class="nrgBilling-dlcc-mail-r">
+                            <ute:Tag class="nrgBilling-dlcc-mail-row">
+                                <utmain:Label class="nrgBilling-dlcc-mail-lbl" text="Street Name:"/>
+                                <ute:Textfield class="nrgBilling-dlcc-mail-val"
+                                               fieldType="Underlined" width="177px" text="test"/>
+                            </ute:Tag>
+                            <ute:Tag class="nrgBilling-dlcc-mail-row">
+                                <utmain:Label class="nrgBilling-dlcc-mail-lbl" text="PO Box:"/>
+                                <ute:Textfield class="nrgBilling-dlcc-mail-val"
+                                               fieldType="Underlined" width="214px" text="test"/>
+                            </ute:Tag>
+                            <ute:Tag class="nrgBilling-dlcc-mail-row">
+                                <utmain:Label class="nrgBilling-dlcc-mail-lbl" text="ZIP:"/>
+                                <ute:Textfield class="nrgBilling-dlcc-mail-val"
+                                               fieldType="Underlined" width="243px" text="test"/>
+                            </ute:Tag>
+                        </ute:Tag>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlcc-chbrow">
+                        <utmain:Checkbox class="nrgBilling-dlcc-chbrow-chb"/>
+                        <utmain:Label class="nrgBilling-dlcc-chbrow-lbl" text="Save New Address"/>
+                    </ute:Tag>
+                </ute:Tag>
+            </ute:Tag>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-btns">
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnBack}"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnSend}"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnCncl}"/>
+                </ute:Tag>
+            </ute:Tag>
+        </ute:Tag>
+        <!--DPP Denied-->
+        <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="false">
+            <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-PageTitle}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
+                    <ute:Tag class="nrgBilling-dltl-step" text="{comp-i18n-billing>nrgBilling-dpp-DppDenied}"/>
+                </ute:Tag>
+            </ute:Tag>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-hdr">
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j1" text="{comp-i18n-billing>nrgBilling-dpp-Description}"/>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2" text="{comp-i18n-billing>nrgBilling-dpp-Amt}"/>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="{comp-i18n-billing>nrgBilling-dpp-DueDte}"/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
+                    <ute:Tag class="nrgBilling-dlct-odd">
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j1" text="ABC"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2" text="$7.50"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="10/30/2014"/>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlct-evn">
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j1" text="DEF"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2" text="$158.18"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="10/30/2014"/>
+                    </ute:Tag>
+                </ute:Tag>
+            </ute:Tag>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-btn-left">
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOk}"/>
+                </ute:Tag>
+            </ute:Tag>
+        </ute:Tag>
+        <!--DPP Denied-->
+        <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="true">
+            <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-ExtTitle}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
+                    <ute:Tag class="nrgBilling-dltl-step" text="{comp-i18n-billing>nrgBilling-dpp-ExtDenied}"/>
+                </ute:Tag>
+            </ute:Tag>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-hdr">
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k2" text="{comp-i18n-billing>nrgBilling-dpp-Description}"/>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k3" text="{comp-i18n-billing>nrgBilling-dpp-Amt}"/>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k4" text="{comp-i18n-billing>nrgBilling-dpp-DueDte}"/>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k5" text="{comp-i18n-billing>nrgBilling-dpp-DefeDte}"/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
+                    <ute:Tag class="nrgBilling-dlct-odd">
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k2" text="ABC"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k3" text="$7.50"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k4" text="10/30/2014"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k5" text="10/30/2014"/>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlct-evn">
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k2" text="DEF"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k3" text="$158.18"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k4" text="10/30/2014"/>
+                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k5" text="10/30/2014"/>
+                    </ute:Tag>
+                </ute:Tag>
+            </ute:Tag>
+        </ute:Tag>
+
+        <!--Right Notification Area-->
+        <ute:Tag class="nrgBilling-dPmtPln-rgtArea">
+            <ute:Tag class="nrgBilling-dPmtPln-notify" text="{comp-i18n-billing>nrgBilling-dpp-NOTIFICATION}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-rgtArea-divider"/>
+        </ute:Tag>
+    </ute:Tag>
+</mvc:View>

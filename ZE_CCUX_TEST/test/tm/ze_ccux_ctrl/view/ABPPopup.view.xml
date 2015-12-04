@@ -1,0 +1,14 @@
+<mvc:View
+    controllerName="test.tm.ze_ccux_ctrl.view.ABPPopup"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:sm="sap.m"
+    xmlns:tm="test.tm.ze_ccux_ctrl.view"
+    height="100%"
+    width="100%"
+    displayBlock="true">
+
+    <sm:ScrollContainer id="content" height="100%" width="100%" horizontal="true" vertical="true">
+
+    </sm:ScrollContainer>
+</mvc:View>

@@ -921,8 +921,12 @@ sap.ui.define(
                 "BankRouting" : sBankRouting
             }, {
                 success : function (oData, oResponse) {
+                    if ((oData.Error) && (oData.Error === "X")) {
+                        that.getView().getModel("appView").setProperty("/message", oData.Message);
+                    } else {
+                        that.onBankDraft();
+                    }
                     that._OwnerComponent.getCcuxApp().setOccupied(false);
-                    that.onBankDraft();
                 },
                 error : function (oError) {
                     that._OwnerComponent.getCcuxApp().setOccupied(false);

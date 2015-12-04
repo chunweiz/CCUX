@@ -1,5 +1,5 @@
 /*global sap*/
-
+/*jslint nomen:true*/
 sap.ui.define(
     [],
 
@@ -11,10 +11,10 @@ sap.ui.define(
         CustomRenderer.render = function (oRm, oCustomControl) {
             oRm.write('<div');
             oRm.writeControlData(oCustomControl);
-            oRm.addClass('tmCJTChannel');
+            oRm.addClass('nrgCJTChannel');
 
             if (oCustomControl.getSelected()) {
-                oRm.addClass('tmCJTChannel-selected');
+                oRm.addClass('nrgCJTChannel-selected');
             }
 
             oRm.writeClasses();
@@ -22,7 +22,9 @@ sap.ui.define(
 
             this._renderLeftLine(oRm, oCustomControl);
             this._renderEmblem(oRm, oCustomControl);
+            this._renderDescription(oRm, oCustomControl);
             this._renderRightLine(oRm, oCustomControl);
+
 
             if (oCustomControl.getRightDivider()) {
                 this._renderRightDivider(oRm, oCustomControl);
@@ -33,19 +35,20 @@ sap.ui.define(
 
         CustomRenderer._renderEmblem = function (oRm, oCustomControl) {
             oRm.write('<div');
-            oRm.addClass('tmCJTChannel-emblem');
+            oRm.addClass('nrgCJTChannel-emblem');
             oRm.writeClasses();
             oRm.write('>');
 
             this._renderTopLabel(oRm, oCustomControl);
             this._renderIcon(oRm, oCustomControl);
 
+
             oRm.write('</div>');
         };
 
         CustomRenderer._renderTopLabel = function (oRm, oCustomControl) {
             oRm.write('<div');
-            oRm.addClass('tmCJTChannel-topLabel');
+            oRm.addClass('nrgCJTChannel-topLabel');
             oRm.writeClasses();
             oRm.write('>');
 
@@ -59,7 +62,7 @@ sap.ui.define(
         CustomRenderer._renderIcon = function (oRm, oCustomControl) {
             oRm.write('<div');
             oRm.writeAttribute('id', oCustomControl.getId() + '-icon');
-            oRm.addClass('tmCJTChannel-icon');
+            oRm.addClass('nrgCJTChannel-icon');
             oRm.writeClasses();
             oRm.write('>');
 
@@ -67,11 +70,34 @@ sap.ui.define(
 
             oRm.write('</div>');
         };
+        CustomRenderer._renderDescription = function (oRm, oCustomControl) {
+            if (oCustomControl.getDescription()) {
+                oRm.write('<div');
+                oRm.addClass('nrgCJTChannel-desc');
+                oRm.writeClasses();
+                oRm.write('>');
+                oRm.write('<div');
+                oRm.addClass('nrgCJTChannel-desc-title');
+                oRm.writeClasses();
+                oRm.write('>');
+                oRm.writeEscaped(oCustomControl.getChannel());
+                oRm.write('</div>');
+                oRm.write('<div');
+                oRm.addClass('nrgCJTChannel-desc-text');
+                oRm.writeClasses();
+                oRm.write('>');
+                if (oCustomControl.getDescription()) {
+                    oRm.writeEscaped(oCustomControl.getDescription());
+                }
+                oRm.write('</div>');
+                oRm.write('</div>');
+            }
+        };
 
         CustomRenderer._renderLeftLine = function (oRm, oCustomControl) {
             oRm.write('<div');
-            oRm.addClass('tmCJTChannel-line');
-            oRm.addClass('tmCJTChannel-line-left');
+            oRm.addClass('nrgCJTChannel-line');
+            oRm.addClass('nrgCJTChannel-line-left');
             oRm.writeClasses();
             oRm.write('>');
             oRm.write('</div>');
@@ -79,8 +105,8 @@ sap.ui.define(
 
         CustomRenderer._renderRightLine = function (oRm, oCustomControl) {
             oRm.write('<div');
-            oRm.addClass('tmCJTChannel-line');
-            oRm.addClass('tmCJTChannel-line-right');
+            oRm.addClass('nrgCJTChannel-line');
+            oRm.addClass('nrgCJTChannel-line-right');
             oRm.writeClasses();
             oRm.write('>');
             oRm.write('</div>');
@@ -88,7 +114,7 @@ sap.ui.define(
 
         CustomRenderer._renderRightDivider = function (oRm, oCustomControl) {
             oRm.write('<div');
-            oRm.addClass('tmCJTChannel-divider');
+            oRm.addClass('nrgCJTChannel-divider');
             oRm.writeClasses();
             oRm.write('>');
 

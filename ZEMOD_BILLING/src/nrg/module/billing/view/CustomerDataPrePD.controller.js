@@ -22,7 +22,26 @@ sap.ui.define(
         };
 
         CustomController.prototype.onAfterRendering = function () {
+            this.getOwnerComponent().getCcuxApp().showNavLeft(true);
+            this.getOwnerComponent().getCcuxApp().attachNavLeft(this._navLeftCallBack, this);
+            this.getOwnerComponent().getCcuxApp().showNavRight(true);
+            this.getOwnerComponent().getCcuxApp().attachNavRight(this._navRightCallBack, this);
+        };
 
+        Controller.prototype._navLeftCallBack = function () {
+            var oRouter = this.getOwnerComponent().getRouter();
+
+            if (this._coNum && this._caNum && this._bpNum) {
+                oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else if (!this._coNum && this._caNum && this._bpNum) {
+                oRouter.navTo('dashboard.VerificationWithCa', {bpNum: this._bpNum, caNum: this._caNum});
+            } else if (!this._coNum && !this._caNum && this._bpNum) {
+                oRouter.navTo('dashboard.Verification', {bpNum: this._bpNum});
+            }
+        };
+
+        Controller.prototype._navRightCallBack = function () {
+            //var oRouteManger = this.getOwnerComponent().getCcuxRouteManager();
         };
 
         CustomController.prototype.onExit = function () {
@@ -67,7 +86,13 @@ sap.ui.define(
         };
 
         CustomController.prototype._onHighbillLnkClicked = function () {
+            var oRouter = this.getOwnerComponent().getRouter();
 
+            if (this._coNum) {
+                oRouter.navTo('billing.HighBill', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('billing.HighBillNoCo', {bpNum: this._bpNum, caNum: this._caNum});
+            }
         };
 
         /*************************************************************************************************************************/

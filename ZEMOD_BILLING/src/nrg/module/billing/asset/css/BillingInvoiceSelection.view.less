@@ -108,6 +108,7 @@
             & .nrgBilling-invSelPopup-tableContent {
                 padding: 30px 50px;
                 background-color: rgba(255, 255, 255, 0.3);
+
                 // Header
                 & .nrgBilling-invSelPopup-tableHeader {
                     display: flex;
@@ -116,9 +117,42 @@
                     border-bottom: 1px dashed @nrgColor-grey-light;
 
                     & .nrgBilling-invSelPopup-tableHeader-item {
-                        flex: 1;
                         color: @nrgColor-grey-dark;
                         font-weight: @nrgFontWeight-semiBold;
+
+                        &.date {
+                            width: 125px;
+                        }
+
+                        &.number {
+                            width: 125px;
+                        }
+
+                        &.description {
+                            width: 125px;
+                        }
+
+                        &.view {
+                            margin-right: 10px;
+                        }
+
+                        &.uteMChkBox {
+                            line-height: 10px;
+                            margin-right: 5px;
+
+                            & .uteMChkBox-chk {
+                                width: 18px;
+                                height: 18px;
+                                border-radius: 2px;
+
+                                &::before {
+                                    top: 3px;
+                                    left: 3px;
+                                    width: 4px;
+                                    height: 8px;
+                                }
+                            }
+                        }
                     }
                 }
                 // Body
@@ -142,10 +176,36 @@
                             }
 
                             & .nrgBilling-invSelPopup-tableRow-item {
-                                flex: 1;
+
+                                &.date {
+                                    width: 125px;
+                                }
 
                                 &.number {
+                                    width: 125px;
                                     font-weight: @nrgFontWeight-semiBold;
+                                }
+
+                                &.description {
+                                    width: 125px;
+                                }
+
+                                &.view {
+                                    width: 70px;
+                                    line-height: 10px;
+
+                                    & .uteMChkBox-chk {
+                                        width: 18px;
+                                        height: 18px;
+                                        border-radius: 2px;
+
+                                        &::before {
+                                            top: 3px;
+                                            left: 3px;
+                                            width: 4px;
+                                            height: 8px;
+                                        }
+                                    }
                                 }
                             }
                         }

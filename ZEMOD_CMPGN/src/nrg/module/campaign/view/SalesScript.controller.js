@@ -47,7 +47,9 @@ sap.ui.define(
                 aContent,
                 sPath,
                 oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
-                i18NModel;
+                i18NModel,
+                oContext,
+                sPromo = "";
             i18NModel = this.getOwnerComponent().getModel("comp-i18n-campaign");
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oRouteInfo.parameters.coNum;
@@ -57,12 +59,15 @@ sap.ui.define(
             sCurrentPath = i18NModel.getProperty("nrgCpgChangeOffSet");
             sCurrentPath = "/CpgChgOfferS";
             this._sDate = oRouteInfo.parameters.sDate;
-            sCurrentPath = sCurrentPath + "(OfferCode='" + this._sOfferCode + "',Contract='" + this._sContract + "',StartDate=" + this._sDate + ")";
+            sCurrentPath = sCurrentPath + "(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',StartDate=" + this._sDate + ")";
+            oContext = oModel.getContext(sCurrentPath);
+            if (oContext) {
+                sPromo = oContext.getProperty("Promo");
+            }
             this._bindView(sCurrentPath);
-            sCurrentPath = "/ScriptS";
-            // Handler function for Tab Bar Item.
-            aFilterIds = ["Contract", "OfferCode", "TxtName"];
-            aFilterValues = [this._sContract, this._sOfferCode, 'MAND'];
+            sCurrentPath = sCurrentPath + "/Scripts";
+            aFilterIds = ["Promo", "TxtName"];
+            aFilterValues = [sPromo, 'MAND'];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oDropDownList = this.getView().byId("idnrgCamSSDdL");
             oDropDownListItemTemplate = this.getView().byId("idnrgCamSSLngLtIt").clone();
@@ -174,9 +179,19 @@ sap.ui.define(
                 fnRecievedHandler,
                 oOverScriptTV = this.getView().byId("idnrgCamOvsOvTv"),
                 aFilterIds,
-                aFilterValues;
-            aFilterIds = ["Contract", "OfferCode", "TxtName"];
-            aFilterValues = [this._sContract, this._sOfferCode, "OVW"];
+                aFilterValues,
+                oModel = this.getOwnerComponent().getModel('comp-campaign'),
+                oContext,
+                dStartDate;
+
+            sCurrentPath = "/CpgChgOfferS";
+            sCurrentPath = sCurrentPath + "(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',StartDate=" + this._sDate + ")";
+            oContext = oModel.getContext(sCurrentPath);
+            if (oContext) {
+                dStartDate = oContext.getProperty("StartDate");
+            }
+            aFilterIds = ["Contract", "OfferCode", "TxtName", "StartDate"];
+            aFilterValues = [this._sContract, this._sOfferCode, "OVW", dStartDate];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sCurrentPath = "/ScriptS";
             this._oOverviewDialog.setWidth("750px");
@@ -196,6 +211,7 @@ sap.ui.define(
                         model : "comp-campaign",
                         path : sPath
                     });
+
                 }
                 obinding.detachDataReceived(fnRecievedHandler);
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
@@ -250,13 +266,25 @@ sap.ui.define(
         Controller.prototype.onMandLngSelected = function (oEvent) {
             var sPath,
                 oMandDiscloureTV = this.getView().byId("idCamSSMdTv"),
-                sSelectedKey;
+                sSelectedKey,
+                oModel = this.getOwnerComponent().getModel('comp-campaign'),
+                oDropDownList = this.getView().byId("idnrgCamSSDdL");
             sSelectedKey = oEvent.getSource().getProperty("selectedKey");
-            sPath = "/ScriptS(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',TxtName='MAND',TxtLang='" + sSelectedKey + "')";
-            oMandDiscloureTV.bindElement({
-                model : "comp-campaign",
-                path : sPath
-            });
+            if ((oDropDownList) && (oDropDownList.getContent())) {
+                oDropDownList.getContent().forEach(function (item) {
+                    var oContext = item.getBindingContext("comp-campaign");
+                    if (sSelectedKey === oContext.getProperty("TxtLang")) {
+                        sPath = oContext.getPath();
+                    }
+                });
+            }
+            if (sPath) {
+                oMandDiscloureTV.bindElement({
+                    model : "comp-campaign",
+                    path : sPath
+                });
+            }
+
         };
         /**
 		 * Change the binding if the language is selected for Overview script
@@ -269,9 +297,17 @@ sap.ui.define(
         Controller.prototype.onOvwLngSelected = function (oEvent) {
             var sPath,
                 oOverScriptTV = this.getView().byId("idnrgCamOvsOvTv"),
-                sSelectedKey;
+                sSelectedKey,
+                oDropDownList = this.getView().byId("idnrgCamOvsDdL");
             sSelectedKey = oEvent.getSource().getProperty("selectedKey");
-            sPath = "/ScriptS(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',TxtName='OVW',TxtLang='" + sSelectedKey + "')";
+            if ((oDropDownList) && (oDropDownList.getContent())) {
+                oDropDownList.getContent().forEach(function (item) {
+                    var oContext = item.getBindingContext("comp-campaign");
+                    if (sSelectedKey === oContext.getProperty("TxtLang")) {
+                        sPath = oContext.getPath();
+                    }
+                });
+            }
             oOverScriptTV.bindElement({
                 model : "comp-campaign",
                 path : sPath
@@ -298,11 +334,11 @@ sap.ui.define(
             var oModel,
                 mParameters,
                 sCampaignCode,
-                sEndDate,
+                //sEndDate,
                 sOfferCode,
                 sOfferTitle,
                 sPromo,
-                sStartDate,
+                /*sStartDate,*/
                 sContract,
                 sPath,
                 oContext,
@@ -315,17 +351,19 @@ sap.ui.define(
                 sLpCode,
                 sLpFirstName,
                 sLpLastName,
-                sLPRefId;
+                sLPRefId,
+                sEffectDate;
             oModel = this.getOwnerComponent().getModel('comp-campaign');
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             sPath = "/CpgChgOfferS(Contract='" + this._sContract + "',OfferCode='" + this._sOfferCode + "',StartDate=" + this._sDate + ")";
             oContext = oModel.getContext(sPath);
             sCampaignCode = oContext.getProperty("Campaign");
-            sEndDate = oContext.getProperty("EndDate");
+            //sEndDate = oContext.getProperty("EndDate");
+            sEffectDate = oContext.getProperty("EffectDate");
             sOfferCode = oContext.getProperty("OfferCode");
             sOfferTitle = oContext.getProperty("OfferTitle");
             sPromo = oContext.getProperty("Promo");
-            sStartDate = oContext.getProperty("StartDate");
+            /*sStartDate = oContext.getProperty("StartDate");*/
             sContract = oContext.getProperty("Contract");
             sPromoRank = oContext.getProperty("PromoRank");
             sBrand = oContext.getProperty("Brand");
@@ -339,7 +377,7 @@ sap.ui.define(
             mParameters = {
                 method : "POST",
                 urlParameters : {"CampaignCode" : sCampaignCode,
-                                         "EndDate" : sEndDate,
+                                         "EffectDate" : sEffectDate,
                                         "LP_Code" : sLpCode,
                                         "LP_FirstName" : sLpFirstName,
                                         "LP_LastName" : sLpLastName,
@@ -347,17 +385,25 @@ sap.ui.define(
                                         "OfferCode" : sOfferCode,
                                         "OfferTitle" : sOfferTitle,
                                         "PromoCode" : sPromo,
-                                        "StartDate" : sStartDate,
+                                       /* "StartDate" : sStartDate,*/
                                         "Contract" : sContract,
                                         "PromoRank" : sPromoRank,
                                         "Brand" : sBrand,
                                         "CA" : sCA,
-                                        "Type": sType},
+                                        "Type": sType,
+                                        "BP": this._sBP,
+                                        "BusinessRole" : "ZU_CALL_CTR",
+                                        "ESID": ''},
                 success : function (oData) {
+                    var oWebUiManager;
                     if ((oData !== undefined) && (oData.Code === "S")) {
                         that.getOwnerComponent().getCcuxApp().setOccupied(false);
                         sap.ui.commons.MessageBox.alert("SWAP is completed");
-                        this.navTo("campaign", {bpNum: that._sBP, caNum: that._sCA, coNum : that._sContract, typeV : "C"});
+                        oWebUiManager = that.getOwnerComponent().getCcuxWebUiManager();
+                        oWebUiManager.notifyWebUi('openIndex', {
+                            LINK_ID: "ZVASOPTSLN"
+                        });
+                        this.navTo("campaign", {bpNum: that._sBP, caNum: that._sCA, coNum : that._sContract, typeV : "P"});
                     } else {
                         that.getOwnerComponent().getCcuxApp().setOccupied(false);
                         sap.ui.commons.MessageBox.alert("SWAP Failed");

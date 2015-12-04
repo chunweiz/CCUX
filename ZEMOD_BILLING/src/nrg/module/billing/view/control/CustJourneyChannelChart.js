@@ -1,5 +1,5 @@
-/*global sap*/
-
+/*global sap , d3*/
+/*jslint nomen:true*/
 sap.ui.define(
     [
         'sap/ui/core/Control',
@@ -29,7 +29,7 @@ sap.ui.define(
             renderer: function (oRm, oCustomControl) {
                 oRm.write('<div');
                 oRm.writeControlData(oCustomControl);
-                oRm.addClass('tmCustJCChart');
+                oRm.addClass('nrgCustJCChart');
                 oRm.writeClasses();
                 oRm.write('>');
                 oRm.write('</div>');
@@ -66,33 +66,57 @@ sap.ui.define(
         };
 
         CustomControl.prototype._createChart = function () {
-            var oCustomControl = this;
-            var iWidth = this.getWidth();
-            var iHeight = this.getHeight();
-            var iRadius = Math.min(iWidth, iHeight) / 3;
-            var aData = this.getDataModel().getData().data;
+            var oCustomControl = this,
+                iWidth = this.getWidth(),
+                iHeight = this.getHeight(),
+                iRadius = Math.min(iWidth, iHeight) / 3,
+                aData,
+                oCanvas,
+                fnColor,
+                oPieRim,
+                oTotal,
+                fnPie,
+                fnPieArc,
+                oPieSlice,
+                oPie,
+                oPieSliceText,
+                fnLineInnerArc,
+                fnLineOuterArc,
+                oLine,
+                oLineInnerPoint,
+                oLabel;
+            if (this.getDataModel() && this.getDataModel().getData() && this.getDataModel().getData().results && this.getDataModel().getData().results.length > 0) {
+                aData = this.getDataModel().getData().results;
+
+            } else {
+                return;
+            }
 
             // Create a canvas with the center as starting point
-            var oCanvas = d3.select('#' + this.getId())
+            oCanvas = d3.select('#' + this.getId())
                 .append('svg')
                     .attr('width', iWidth)
                     .attr('height', iHeight)
                     .append('g')
                         .attr('transform', 'translate(' + [ iWidth / 2, iHeight / 2 ] + ')');
 
-            function fnLabel(data) { return data.channel; }
-            function fnValue(data) { return data.frequency; }
+            function fnLabel(data) {
+                return data.Channel;
+            }
+            function fnValue(data) {
+                return data.Count;
+            }
 
             function fnMidAngle(data) {
                 return data.startAngle + (data.endAngle - data.startAngle) / 2;
             }
 
-            var fnColor = d3.scale.ordinal()
+            fnColor = d3.scale.ordinal()
                 .domain(aData, fnLabel)
                 .range(['#5092ce', '#f2a814', '#c0272d', '#315952', '#f15a24', '#9C27B0', '#2e9985']);
 
             /* Donut rim */
-            var oPieRim = oCanvas.append('g');
+            oPieRim = oCanvas.append('g');
 
             oPieRim.append('circle')
                 .attr('r', iRadius * 0.95)
@@ -104,94 +128,94 @@ sap.ui.define(
                 .attr('r', iRadius * 0.8);
 
             /* Total circle */
-            var oTotal = oCanvas.append('g');
+            oTotal = oCanvas.append('g');
 
             oTotal.append('circle')
                 .attr('r', iRadius * 0.35)
-                .attr('class', 'tmCustJCChart-totalOuterBg');
+                .attr('class', 'nrgCustJCChart-totalOuterBg');
 
             oTotal.append('circle')
                 .attr('r', iRadius * 0.25)
-                .attr('class', 'tmCustJCChart-totalInnerBg');
+                .attr('class', 'nrgCustJCChart-totalInnerBg');
 
             oTotal.append('text')
                 .text(d3.sum(aData, fnValue))
                 .attr('dy', '0.35em')
-                .attr('class', 'tmCustJCChart-totalText');
+                .attr('class', 'nrgCustJCChart-totalText');
 
             oTotal.on('dblclick', function () {
                 oCustomControl.fireTotalDoublePress();
             });
 
             /* Donut chart */
-            var fnPie = d3.layout.pie()
+            fnPie = d3.layout.pie()
                 .sort(null)
                 .value(fnValue);
 
-            var fnPieArc = d3.svg.arc()
+            fnPieArc = d3.svg.arc()
                 .outerRadius(iRadius * 0.6)
                 .innerRadius(iRadius * 0.35);
 
-            var oPie = oCanvas.append('g');
+            oPie = oCanvas.append('g');
 
-            var oPieSlice = oPie.append('g').selectAll('path.tmCustJCChart-slice')
+            oPieSlice = oPie.append('g').selectAll('path.nrgCustJCChart-slice')
                 .data(fnPie(aData))
                 .enter()
                 .append('path')
                     .attr('d', fnPieArc)
-                    .attr('class', 'tmCustJCChart-slice')
+                    .attr('class', 'nrgCustJCChart-slice')
                     .style('fill', function (data) {
-                        return fnColor(fnLabel(data.data));
-                    });
+                    return fnColor(fnLabel(data.data));
+                });
 
             oPieSlice.on('dblclick', function (data) {
                 oCustomControl.fireSliceDoublePress({
-                    channel: data.data.channel
+                    channel: data.data.Channel
                 });
             });
 
             /* Donut chart value */
-            var oPieSliceText = oPie.append('g').selectAll('text.tmCustJCChart-sliceValue')
+            oPieSliceText = oPie.append('g').selectAll('text.nrgCustJCChart-sliceValue')
                 .data(fnPie(aData))
                 .enter()
                 .append('text')
                     .text(function (data) { return fnValue(data.data); })
                     .attr('dy', '0.35em')
                     .attr('transform', function (data) { return 'translate(' + fnPieArc.centroid(data) + ')'; })
-                    .attr('class', 'tmCustJCChart-sliceValue');
+                    .attr('class', 'nrgCustJCChart-sliceValue');
 
             oPieSliceText.on('dblclick', function (data) {
                 oCustomControl.fireSliceDoublePress({
-                    channel: data.data.channel
+                    channel: data.data.Channel
                 });
             });
 
             /* Line between donut chart and label */
-            var fnLineInnerArc = d3.svg.arc()
+            fnLineInnerArc = d3.svg.arc()
                 .outerRadius(iRadius * 0.7)
                 .innerRadius(iRadius * 0.7);
 
-            var fnLineOuterArc = d3.svg.arc()
+            fnLineOuterArc = d3.svg.arc()
                 .outerRadius(iRadius)
                 .innerRadius(iRadius);
 
-            var oLine = oCanvas.append('g').selectAll('polyline.tmCustJCChart-line')
+            oLine = oCanvas.append('g').selectAll('polyline.nrgCustJCChart-line')
                 .data(fnPie(aData))
                 .enter()
                     .append('polyline')
-                        .attr('points', function(data) {
-                            var aXY = fnLineOuterArc.centroid(data);
-                            aXY[0] = iRadius * 1.1 * (fnMidAngle(data) < Math.PI ? 1 : -1 );
+                        .attr('points', function (data) {
+                    var aXY = fnLineOuterArc.centroid(data);
+                    aXY[0] = iRadius * 1.1 * (fnMidAngle(data) < Math.PI ? 1 : -1);
 
-                            return [fnLineInnerArc.centroid(data), fnLineOuterArc.centroid(data), aXY];
-                        })
+                    return [fnLineInnerArc.centroid(data), fnLineOuterArc.centroid(data), aXY];
+                })
                         .attr('stroke', function (data) {
-                            return fnColor(fnLabel(data.data));
-                        })
-                        .attr('class', 'tmCustJCChart-line');
+                    return fnColor(fnLabel(data.data));
+                })
+                        .attr('class', 'nrgCustJCChart-line');
 
             /* Line point */
-            var oLineInnerPoint = oCanvas.append('g').selectAll('circle')
+            oLineInnerPoint = oCanvas.append('g').selectAll('circle')
                 .data(fnPie(aData))
                 .enter()
                     .append('circle')
@@ -203,20 +227,20 @@ sap.ui.define(
                         .attr('cy', function (data) { return fnLineInnerArc.centroid(data)[1]; });
 
             /* Label */
-            var oLabel = oCanvas.append('g').selectAll('text.tmCustJCChart-label')
+            oLabel = oCanvas.append('g').selectAll('text.nrgCustJCChart-label')
                 .data(fnPie(aData))
                 .enter()
                     .append('text')
                         .attr('dy', '0.35em')
-                        .attr('class', 'tmCustJCChart-text')
-                        .attr('transform', function(data) {
-                            var aXY = fnLineOuterArc.centroid(data);
-                            aXY[0] = iRadius * 1.2 * (fnMidAngle(data) < Math.PI ? 1 : -1 );
-                            return 'translate(' + aXY + ')';
-                        })
-                        .style('text-anchor', function(data) {
-                            return fnMidAngle(data) < Math.PI ? 'start' : 'end';
-                        })
+                        .attr('class', 'nrgCustJCChart-text')
+                        .attr('transform', function (data) {
+                    var aXY = fnLineOuterArc.centroid(data);
+                    aXY[0] = iRadius * 1.2 * (fnMidAngle(data) < Math.PI ? 1 : -1);
+                    return 'translate(' + aXY + ')';
+                })
+                        .style('text-anchor', function (data) {
+                    return fnMidAngle(data) < Math.PI ? 'start' : 'end';
+                })
                         .text(function (data) { return fnLabel(data.data); });
         };
 
