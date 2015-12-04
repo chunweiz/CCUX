@@ -757,7 +757,7 @@ sap.ui.define(
                             if (oData.Title === "") oData.Title = "0000";
                             if (oData.AcademicTitle === "") oData.AcademicTitle = "0000";
                             if (oData.Suffix === "") oData.Suffix = "0000";
-                            
+
                             this.getView().getModel('ODataBpName').setData(oData);
                             this.ODataBpNameBak = jQuery.extend(true, {}, oData);
                         }

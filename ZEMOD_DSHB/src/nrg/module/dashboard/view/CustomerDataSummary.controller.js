@@ -103,7 +103,7 @@
 			};
 
 			/*-------------------------------------------------- Retrieve Info --------------------------------------------------*/
-			
+
 			Controller.prototype._initRetrBpInf = function () {
 				var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
 					//sBpNum,

@@ -663,7 +663,7 @@ sap.ui.define(
         };
 
         /*------------------------------------------------ UI Element Actions -----------------------------------------------*/
-        
+
         CustomController.prototype._onBackToDashboard = function () {
             var oRouter = this.getOwnerComponent().getRouter();
 
@@ -689,11 +689,11 @@ sap.ui.define(
                 success : function (oData) {
                     oEligModel.setData(oData);
                     var container = this.getView().byId('nrgBilling-billChkBook-notifications');
-                    
+
                     // If already has eligibility alerts, then skip
                     if (!this._eligibilityAlerts) {
                         this._eligibilityAlerts = [];
-                        
+
                         // Check ABP
                         alert = new ute.ui.app.FooterNotificationItem({
                             link: true,
@@ -729,7 +729,7 @@ sap.ui.define(
 
                 }.bind(this),
                 error: function (oError) {
-                    
+
                 }.bind(this)
             };
 

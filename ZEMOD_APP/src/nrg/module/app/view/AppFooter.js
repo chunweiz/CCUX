@@ -365,7 +365,7 @@ sap.ui.define(
 
                         this.footerElement.rhsEmptySec.setVisible(false);
                         this.footerElement.rhsProdSec.setVisible(true);
-                        
+
                     } else {
 
                         if (bCurrentFlag === false) { this._oController.getView().byId("nrgAppFtrDetails-rhs-currentItemContent").setText('None'); }

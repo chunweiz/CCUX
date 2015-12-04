@@ -49,7 +49,7 @@
                                         class="nrgBilling-cusDataBil-invoiceSelect-icon"
                                         press="._onInvoiceSelectClicked"/>
                                 </ute:Tag>
-                                
+
                                 <!-- Refer To -->
                                 <ute:Tag class="nrgBilling-cusDataBil-referSec">
                                     <ute:Tag text="{comp-i18n-billing>nrgBilling-cusDataPrePD-l-div-REFER_TO}"

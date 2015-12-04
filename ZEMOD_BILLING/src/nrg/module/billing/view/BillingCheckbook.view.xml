@@ -15,11 +15,11 @@
     <ute:Tag class="nrgAppMain-generalContent nrgBilling-blChkBk">
         <!-- Left -->
         <ute:Tag class="nrgBilling-blChkBk-lftDiv">
-            
+
             <!-- Title & Back To Dashboard -->
             <ute:Tag class="nrgBilling-blChkBk-titleAndNav">
                 <!-- Title -->
-                <ute:Tag elem="span" class="nrgBilling-blChkBk-pageTitle" 
+                <ute:Tag elem="span" class="nrgBilling-blChkBk-pageTitle"
                         text="{comp-i18n-billing>nrgBilling-billChkBook-PAGE_TITLE}"/>
                 <!-- Back -->
                 <ute:Tag elem="span" class="nrgBilling-blChkBk-backToDash">

@@ -127,7 +127,7 @@ sap.ui.define(
                 }
             });
 
-            if (oEventNotExist) { 
+            if (oEventNotExist) {
                 this.attachEvent(AppBody.Event.NavRightPress, fnCallback, oListener);
 
                 this._aNavRightListener.push({
