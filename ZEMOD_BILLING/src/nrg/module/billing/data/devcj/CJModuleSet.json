@@ -3,83 +3,1683 @@
       "results":[
          {
             "__metadata":{
-               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='01')",
-               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='01')",
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
                "type":"ZE_CCUX_CJ_SRV.CJModule"
             },
-            "BP":"0000083248",
-            "CA":"000003619065",
-            "SeqNo":"01",
-            "Date":"/Date(1446482891000+0000)/",
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Agent proactive request of eligible offers.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Providwe the Current Amount to Ms Mata = 344.25 , Past Due Amt = 193.85 Adv this amount is on a descoenction notice due date 10/23/2015 Last Invoice Amt = 344.25 due 11/02/2015",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Agent proactive request of eligible offers.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" * Free $500 Surge Protect 12 Months Term",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" CA 000005214066 Amt: $229.00 Schd Pymt Date: 10/23/2015 R&T # 113122655, Bank Account # RACNLTY4-750",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" CA 000005214066 Amt: $229.00 posted Posting Doc No. 000423960521 Confirmation No. 000023318366",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Quoted customer balance due on account after payment of $229.00. The remaining current charges are $0.00. Combined, the total remaining balance is $0.00.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Proc. Fee Waived - Preferred customer.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Customer reactive request of eligible offers.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" $44.72 due 10/16/2015 has been extended to 10/28/2015 $38.28 due 10/16/2015 has been extended to 10/28/2015 $46.90 due 09/28/2015 has been extended to 10/28/2015 $41.10 due 09/28/2015 has been extended to 10/28/2015",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" Customer reactive request of eligible offers.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" Mailing address for requested customer during enrollment 24535 JENNS CREEK CT SPRING TX 77389-1704",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Agent proactive request of eligible offers.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" 10/14/2015 5813 SIDEWINDER TRL FORT WORTH TX 76131-1722  RE",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" PrePay Hold for payment of initial credit balance",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" 10/24/2015 43 VERSHIRE CIR MAGNOLIA TX 77354-3319  RE",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" 10/14/2015 15829 RIDGEROE LN HOUSTON TX 77053-3736  RE",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" 10/14/2015 DEPOSIT REQUESTED: 200.00 [UP FRONT] 15829 RIDGEROE LN HOUSTON TX 77053-3736 CA: 000071947093",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" 10/14/2015 714 LOWER TROY RD TROY TX 76579-2606  RE",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" 10/14/2015 714 LOWER TROY RD TROY TX 76579-2606  RE",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" ESID #10443720001024341 has now been reinstated by previous REP on 09/26. Suppressed monthly fees from 09/25 to 09/26. Due to internal error, customer is not liable for any TDSP charges. Removed IS block, invoice account to current and issued $0.07 MISC credit for TDSP charges. Issue closed. CA #11941760, EMMA Case#27646316.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Credit Card Payment Request",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Authorization 296201091437 Approved",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Quoted customer balance due on account after payment of $358.36. The remaining current charges are $0.00. Combined, the total remaining balance is $0.00.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Telephone number changed.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000071752346 Amt: $389.14 Schd Pymt Date: 10/23/2015 R&T # 313084001, Bank Account # 7J908RMM-824",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000071752346 Amt: $389.14 posted Posting Doc No. 000423957709 Confirmation No. 000023315744",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" CUSOTMER CALL IN TO CHECK OVER THE BALANCE AND IF THERE WAS A BILLL =GENERATED",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" *******ARA***** Problem: Custoemr wasnted to have DPP reinstated Cause/History: Dpp has defaulted twice and last payments was returned  Action: e$292.69xplained to customer to avoid service interruption past due amount of ANNA M BAILEY must be paid by 10/29/2015 after that payment remaining past due balance would be 183.27 and current charges od 266.13 customer understood NFAT",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000000170163 Amt: $139.00 Schd Pymt Date: 10/23/2015 R&T # 111000614, Bank Account # JRQ4OOSK-609",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000000170163 Amt: $139.00 posted Posting Doc No. 000423957722 Confirmation No. 000023315755",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000001453656 Amt: $100.98 Schd Pymt Date: 10/23/2015 R&T # 113010547, Bank Account # X5I3OMNO-831",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000001453656 Amt: $100.98 posted Posting Doc No. 000423957723 Confirmation No. 000023315756",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" Authorization 296304091642 Approved",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" Authorization 296310091644 Approved",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Agent proactive request of eligible offers.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" MVI/MVO ERROR CSMR DEPOSIT RULES",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" Authorization 296354091708 Approved",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Customer reactive request of eligible offers.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Agent proactive request of eligible offers.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Current Amount = 116.75 , Past Due Amt = 71.52 Late fee = .00 Last Invoice Amt = 116.75 due 11/02/2015",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" 10/27/2015 9415 BRUTON RD APT 3304 DALLAS TX 75217-2506  RE",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" NOTE: If your customer enrolled at one of the following addresses, DO NOT tell them a permit required:  3003 Seagler Rd, Houston 77032 - Any apartment # 12020 N. Gessner, Houston 77064 - Any apartment # 1773 Ennis Joslin Rd, Corpus Christi 78412 - Any apartment #   Note: If your customer enrolled at an address within one of the following cities and does not need a meter installed or rewiring, DO NOT tell them a permit is required.  Jamaica Beach ______________________________________________________________ - Tell customer before electricity service can begin a/an may be required by the CITY of DALLAS - Give the customer the CITY name and phone number: DALLAS, 214-948-4480 - If the customer needs information about the permit requirements and costs, ask the customer to contact the CITY of DALLAS - Tell customer if a permit is required, ONCOR ELECTRIC DELIVERY will not connect the electricity until they receive the permit information from the CITY of DALLAS. - ONCOR ELECTRIC DELIVERY wi",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Current Amount = 197.37 , Past Due Amt = 156.69 Late fee = .00 Last Invoice Amt = 197.37 due 10/29/2015",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Customer change campaign from ONC AVG@2000 13.5 WPT SEC 12 NSP $0 15A06R02V2 to ONC AVG@2000 13.7 WPT SEC 12 NSP $50 15I30R02C7. Brand: <&BRAND> RE",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" Authorization 296530125950 Approved",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" cx wanted to know if she can select the due date of her bill, i explain to cx that she can cause she has a deposit. cx can select between 7-16 cx wants to pay every 16th of the month cx will call back tomarrow.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Current Amount = 632.41 , Past Due Amt = .00 Late fee = 10.00 Last Invoice Amt = 632.41 due 11/09/2015",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Agent proactive request of eligible offers.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000071203352 Amt: $118.00 posted Posting Doc No. 000423959843 Confirmation No. 000023317893",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"IVR",
+            "SingleMessage":" Authorization 296518115846 Approved",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Telephone number changed.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Agent proactive request of eligible offers.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Received Customer's authorization for Esmeralda Muniz to act on the Customer's behalf from 10/23/2015 to 02/29/2016",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"IVR",
+            "SingleMessage":"",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"IVR",
+            "SingleMessage":" CA 000001798312 Amt: $80.00 Schd Pymt Date: 10/23/2015 R&T # 113000023, Bank Account # XIGG0ABA-253",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"IVR",
+            "SingleMessage":" CA 000001798312 Amt: $80.00 posted Posting Doc No. 000423960877 Confirmation No. 000023319085",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Customer reactive request of eligible offers.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"IVR",
+            "SingleMessage":"",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" Authorization 296363133844 Approved",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":"",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000011741728 Amt: $68.59 Schd Pymt Date: 10/23/2015 R&T # 122000661, Bank Account # 7YCMOYMC-505",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"CHAT",
+            "SingleMessage":" Current Amount = 302.27 , Past Due Amt = .00 Late fee = .00 Last Invoice Amt = 484.27 due 11/02/2015",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"CHAT",
+            "SingleMessage":" ***web  p: high bill c/h: ALYSSA wanted to inq about why her bill was so high a: adv her due to the tos the deferred amount from ab became due on the final bill",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000006389229 Amt: $443.51 Schd Pymt Date: 10/23/2015 R&T # 121000358, Bank Account # 9U6H4N9R-862",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000006389229 Amt: $443.51 posted Posting Doc No. 000423958763 Confirmation No. 000023316856",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000000840966 Amt: $224.00 Schd Pymt Date: 10/23/2015 R&T # 113011258, Bank Account # DJQG5I8F-538",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000000840966 Amt: $224.00 posted Posting Doc No. 000423958765 Confirmation No. 000023316857",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Agent proactive request of eligible offers.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" Verified Telephone number with Customer",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" Verified Telephone number with Customer",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" issue: cx asking when c urrent plan expires and rate history: plan expirtes on 5/2016 and rate is 8.5 cents actions: gave info, cx ok",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Trans to tier 2 for tos smartstart transcation for a payment on account before 2 pm",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000002156581 Amt: $209.13 Schd Pymt Date: 10/23/2015 R&T # 113024915, Bank Account # H89P4L3F-066",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000002156581 Amt: $209.13 posted Posting Doc No. 000423959061 Confirmation No. 000023317185",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" EDUCATED THE CUSTOMER ON METER READ CYCLE AND BILLING DATES",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000007910239 Amt: $70.00 Schd Pymt Date: 10/23/2015 R&T # 113000023, Bank Account # AHE8543Z-464",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Proc.Fee Waived - Manual Deposit Waiver",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Credit Card Payment Request",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" MVI/MVO ERROR",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" accepted",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Agent proactive request of eligible offers.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" Authorization 296258105628 Approved",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" Agent proactive request of eligible offers.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"IVR",
+            "SingleMessage":" Authorization 296240103742 Approved",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"IVR",
+            "SingleMessage":"",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"IVR",
+            "SingleMessage":"",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000011740448 Amt: $57.37 Schd Pymt Date: 10/23/2015 R&T # 044000037, Bank Account # YA11VP1Y-415",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000011740448 Amt: $57.37 posted Posting Doc No. 000423960942 Confirmation No. 000023319113",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":"",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"IVR",
+            "SingleMessage":" Authorization 296609134250 Approved",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000000857512 Amt: $196.83 posted Posting Doc No. 000423956151 Confirmation No. 000023314082",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" Authorization 296210065701 Approved",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000004442829 Amt: $300.00 Schd Pymt Date: 10/23/2015 R&T # 111993776, Bank Account # O7IF4K8D-275",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" CA 000004442829 Amt: $300.00 posted Posting Doc No. 000423956239 Confirmation No. 000023314205",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" Authorization 296610074044 Approved",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" Authorization 296716074145 Approved",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"WEB",
+            "SingleMessage":" Authorization 296763074219 Approved",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Move Out -Customer Requested MVO Date Request : 11/02/2015 MVO Requestors Name: DANIEL DIEP Requestors Number: 6232613699",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" 10/27/2015 423 FENN ST A HOUSTON TX 77018-4565  RE",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" NOTE: If your customer enrolled at one of the following addresses, DO NOT tell them a permit required:  3003 Seagler Rd, Houston 77032 - Any apartment # 12020 N. Gessner, Houston 77064 - Any apartment # 1773 Ennis Joslin Rd, Corpus Christi 78412 - Any apartment #   Note: If your customer enrolled at an address within one of the following cities and does not need a meter installed or rewiring, DO NOT tell them a permit is required.  Jamaica Beach ______________________________________________________________ - Tell customer before electricity service can begin a/an may be required by the CITY of HOUSTON - Give the customer the CITY name and phone number: HOUSTON, 832-394-8847 - If the customer needs information about the permit requirements and costs, ask the customer to contact the CITY of HOUSTON - Tell customer if a permit is required, CENTERPOINT ENERGY will not connect the electricity until they receive the permit information from the CITY of HOUSTON. - CENTERPOINT ENERGY will hol",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"IVR",
+            "SingleMessage":"",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"IVR",
+            "SingleMessage":"",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"IVR",
+            "SingleMessage":"",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"IVR",
+            "SingleMessage":" Authorization 296862084813 Approved",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" Agent proactive request of eligible offers.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Current Amount = 476.97 , Past Due Amt = 461.17 Late fee = .00 Last Invoice Amt = 476.97 due 10/16/2015",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Quoted customer balance due on account after payment of $461.83. The remaining current charges are $0.00. Combined, the total remaining balance is $0.00.",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Customer change campaign from DEFAULT ONLY-TNP BC=$9.95 IF <800KWH, ELSE $0 CLEA 13H27R03V2 to SAVE4 TNP AVG@2000=8.9 SECURE ADVANTAGE 12 $0 15I01R03V0. Brand: <&BRAND> RE",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"NONE",
+            "SingleMessage":" Mailing address for requested customer during enrollment 3033 CHIMNEY ROCK RD 110 HOUSTON TX 77056-6262",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1447664842000+0000)\/",
+            "ChannelType":"PHONE",
+            "SingleMessage":" Credit Card Payment Request",
+            "ColHeaders":"",
+            "ColValues":""
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0002473499',CA='000003040103',SeqNo='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJModule"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "SeqNo":"  3",
+            "Date":"\/Date(1449249775000+0000)\/",
             "ChannelType":"WEB",
             "SingleMessage":"Web recorded message",
-            "User":"00952808",
-            "Activity":"0900",
-            "Notes":"Web recorded message. Web recorded message. Web recorded message. Web recorded message. Web recorded message."
-         },
-         {
-            "__metadata":{
-               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='02')",
-               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='02')",
-               "type":"ZE_CCUX_CJ_SRV.CJModule"
-            },
-            "BP":"0000083248",
-            "CA":"000003619065",
-            "SeqNo":"02",
-            "Date":"/Date(1446482891000+0000)/",
-            "ChannelType":"CALL",
-            "SingleMessage":"Phone Call recorded message",
-            "User":"00952808",
-            "Activity":"0901",
-            "Notes":"Phone Call recorded message, Phone Call recorded message, Phone Call recorded message"
-         },
-         {
-            "__metadata":{
-               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='03')",
-               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='03')",
-               "type":"ZE_CCUX_CJ_SRV.CJModule"
-            },
-            "BP":"0000083248",
-            "CA":"000003619065",
-            "SeqNo":"03",
-            "Date":"/Date(1446482891000+0000)/",
-            "ChannelType":"EMAI",
-            "SingleMessage":"Email message",
-            "User":"00952808",
-            "Activity":"0902",
-            "Notes":"Email message. Email message, Email message. Email message, Email message"
-         },
-         {
-            "__metadata":{
-               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='04')",
-               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='04')",
-               "type":"ZE_CCUX_CJ_SRV.CJModule"
-            },
-            "BP":"0000083248",
-            "CA":"000003619065",
-            "SeqNo":"04",
-            "Date":"/Date(1446482891000+0000)/",
-            "ChannelType":"CHAT",
-            "SingleMessage":"Chat Message",
-            "User":"00952808",
-            "Activity":"0903",
-            "Notes":"Chat Message. Chat Message. Chat Message. Chat Message. Chat Message"
-         },
-         {
-            "__metadata":{
-               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='05')",
-               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJModuleSet(BP='0000083248',CA='000003619065',SeqNo='05')",
-               "type":"ZE_CCUX_CJ_SRV.CJModule"
-            },
-            "BP":"0000083248",
-            "CA":"000003619065",
-            "SeqNo":"05",
-            "Date":"/Date(1446482891000+0000)/",
-            "ChannelType":"IVR",
-            "SingleMessage":"IVR Self Service Session",
-            "User":"00952808",
-            "Activity":"0904",
-            "Notes":"IVR Self Service Session. IVR Self Service Session. IVR Self Service Session. IVR Self Service Session"
+            "ColHeaders":"CA~User~Activity(Text)~Notes",
+            "ColValues":"000003040103~00952808~0900~Web recorded message"
          }
       ]
    }

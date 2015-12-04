@@ -19,10 +19,10 @@
             </u:Tag>
             <u:Tag class="nrgCJModule-selPanel-fields">
                 <u:Tag class="nrgCJModule-selPanel-fields-fd">
-                    <u:DatePicker width="7rem" />
+                    <u:DatePicker width="7rem" id="idnrgBllCJ-fromDate"/>
                 </u:Tag>
                 <u:Tag class="nrgCJModule-selPanel-fields-fd">
-                    <u:DatePicker width="7rem" />
+                    <u:DatePicker width="7rem" id="idnrgBllCJ-toDate"/>
                 </u:Tag>
                 <um:Dropdown selectedKey="1" class="nrgCJModule-selPanel-fields-fd" placeholder="ALL" >
                     <um:DropdownItem key="1" >
@@ -57,22 +57,24 @@
 
             </u:Tag>
         </u:Tag>
-        <u:Table width="98%"
-             id="idnrgCJModule-table"
-             class="nrgCJModule-table"
-             tableType="CampaignTable" >
-                    <u:columns>
-                        <u:TableColumn width="15%" class="nrgCJModule-table-th">
-                            <u:Tag text="Date/Time" />
-                        </u:TableColumn>
-                        <u:TableColumn width="10%" class="nrgCJModule-table-th">
-                            <u:Tag text="Channel"/>
-                        </u:TableColumn>
-                        <u:TableColumn width="75%" class="nrgCJModule-table-th">
-                            <u:Tag text="Contact Details" />
-                        </u:TableColumn>
-                    </u:columns>
-        </u:Table>
+        <u:Tag class="nrgCJModule-tableTag">
+            <u:Table width="98%"
+                     id="idnrgCJModule-table"
+                     class="nrgCJModule-table"
+                     tableType="CampaignTable" >
+                            <u:columns>
+                                <u:TableColumn width="15%" class="nrgCJModule-table-th">
+                                    <u:Tag text="Date/Time" />
+                                </u:TableColumn>
+                                <u:TableColumn width="10%" class="nrgCJModule-table-th">
+                                    <u:Tag text="Channel"/>
+                                </u:TableColumn>
+                                <u:TableColumn width="75%" class="nrgCJModule-table-th">
+                                    <u:Tag text="Contact Details" />
+                                </u:TableColumn>
+                            </u:columns>
+            </u:Table>
+        </u:Tag>
         <u:Tag visible="false">
             <u:Table>
                 <u:rows>

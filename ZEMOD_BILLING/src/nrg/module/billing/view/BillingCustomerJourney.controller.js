@@ -65,20 +65,20 @@ sap.ui.define(
                     { channel: 'Survey', frequency: 6 }
                 ]
             }));*/
-/*            this.getView().setModel(new JSONModel({
+            this.getView().setModel(new JSONModel({
                 data: [
                     { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: '08/31/2014', description: 'sarath', channel: 'website'},
                     { recordIndex: '1', channelIcon: 'sap-icon://nrg-icon/webchat', description: 'sarath', channel: 'webchat'},
                     { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/survey', topLabel: '09/21/2014', rightDivider: true, description: 'sarath', channel: 'survey'},
                     { recordIndex: '3', channelIcon: 'sap-icon://nrg-icon/agent', description: 'sarath', channel: 'Agent'},
                     { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/ivr', description: 'sarath', channel: 'ivr'},
-                    { recordIndex: '5', channelIcon: 'sap-icon://nrg-icon/call-center', description: 'sarath', channel: 'phone'},
-                    { recordIndex: '6', channelIcon: 'sap-icon://email', description: 'sarath', channel: 'letter'},
-                    { recordIndex: '7', channelIcon: 'sap-icon://iphone', description: 'sarath', channel: 'mobile'}
+                    { recordIndex: '5', channelIcon: 'sap-icon://email', description: 'sarath', channel: 'letter'},
+                    { recordIndex: '6', channelIcon: 'sap-icon://iphone', description: 'sarath', channel: 'mobile'},
+                    { recordIndex: '7', channelIcon: 'sap-icon://nrg-icon/location', description: 'sarath', channel: 'phone'}
                 ]
-            }), 'timeline');*/
+            }), 'timeline');
             aFilterIds = ["BP", "CA"];
-            aFilterValues = ["2473499", "3040103"];
+            aFilterValues = ["0002473499", "000003040103"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oBindingInfo = {
                 filters : aFilters,
@@ -96,12 +96,12 @@ sap.ui.define(
             }
             sPath = "/CJIconsSet";
             aFilterIds = ["BP", "CA"];
-            aFilterValues = ["2473499", "3040103"];
+            aFilterValues = ["0002473499", "000003040103"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oBindingInfo = {
                 filters : aFilters,
                 success : function (oData) {
-                    oTimeLineModel.convertIcons(oData.results);
+                    oTimeLineModel.setData(that.convertIcons(oData.results));
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
                 error: function (oError) {
@@ -272,10 +272,13 @@ sap.ui.define(
                 aFilterValues,
                 oCJTemplate,
                 fnRecievedHandler,
-                that = this;
+                that = this,
+                oFromDate,
+                oToDate,
+                oNewDate = new Date();
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             aFilterIds = ["BP", "CA"];
-            aFilterValues = ["0000083248", "000003619065"];
+            aFilterValues = ["0002473499", "000003040103"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             if (!this._oDialogFragment) {
                 this._oDialogFragment = sap.ui.xmlfragment("CustomerJourney", "nrg.module.billing.view.CJModule", this);
@@ -290,6 +293,11 @@ sap.ui.define(
             sPath = "/CJModuleSet";
             oCJTable = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-table");
             oCJTemplate = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-RowTempl");
+            oFromDate = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgBllCJ-fromDate");
+            oToDate = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgBllCJ-toDate");
+            oNewDate.setDate(oNewDate.getDate() - 14);
+            oToDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
+            oFromDate.setDefaultDate(this._oFormatYyyymmdd.format(oNewDate, true));
             // Function received handler is used to update the view with first History campaign.---start
             fnRecievedHandler = function () {
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
@@ -325,6 +333,21 @@ sap.ui.define(
             });
         };
         /**
+		 * Handler for Customer Referral Transaction launcher
+		 *
+		 * @function
+		 * @param {Event} Type Event object
+         *
+		 *
+		 */
+        Controller.prototype.onContactLogs = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: "Z_CLFULLVW"
+            });
+        };
+        /**
 		 * Mapping Icons with backend Data
 		 *
 		 * @function
@@ -334,28 +357,28 @@ sap.ui.define(
         Controller.prototype._onSelectIcon = function (sChanneltype) {
             var sChannelIcon;
             switch (sChanneltype) {
-            case "website":
+            case "WLOG":
                 sChannelIcon = 'sap-icon://nrg-icon/website';
                 break;
-            case "webchat":
+            case "CHAT":
                 sChannelIcon = 'sap-icon://nrg-icon/webchat';
                 break;
-            case "survey":
+            case "SRVY":
                 sChannelIcon = 'sap-icon://nrg-icon/survey';
                 break;
             case "agent":
                 sChannelIcon = 'sap-icon://nrg-icon/agent';
                 break;
-            case "ivr":
+            case "IVR":
                 sChannelIcon = 'sap-icon://nrg-icon/ivr';
                 break;
-            case "phone":
+            case "PHONE":
                 sChannelIcon = 'sap-icon://nrg-icon/call-center';
                 break;
-            case "email":
+            case "CORR":
                 sChannelIcon = 'sap-icon://email';
                 break;
-            case "mobile":
+            case "MOBI":
                 sChannelIcon = 'sap-icon://iphone';
                 break;
             }
@@ -378,15 +401,13 @@ sap.ui.define(
                 iCount2,
                 aJsonDataNew;
             for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
-
-                temp = results[iCount1];
-                if ((temp !== undefined) && (temp.Channel !== undefined)) {
-                    temp.Channel = this._onSelectIcon(temp.Channel);
+                if ((results[iCount1] !== undefined) && (results[iCount1].Icon !== undefined)) {
+                    results[iCount1].Channel = results[iCount1].Icon;
+                    results[iCount1].Icon = this._onSelectIcon(results[iCount1].Icon);
                 }
             }
             aJsonDataNew = {};
-            aJsonDataNew.results = {};
-            aJsonDataNew.results.columns = columns;
+            aJsonDataNew.results = results;
             return aJsonDataNew;
         };
         return Controller;
