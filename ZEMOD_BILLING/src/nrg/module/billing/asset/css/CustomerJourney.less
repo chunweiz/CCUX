@@ -55,6 +55,10 @@
                                     margin: 5px 10px;
 	                                width: 7rem;
                             }
+                            & > .nrgBllCJ-timeline-gobtn {
+                                    margin: 5px 10px 5px 220px;
+                                    min-width: 2rem;
+                            }
                             & > .nrgBllCJ-timeline-btns.nrgBllCJ-timeline-btns-sel {
                                    background-color: @nrgColor-grey-inactive;
                             }
@@ -65,13 +69,16 @@
                                     color: #4d4d4d;
                                     font-size: 10pt;
                                     margin-left: 9px;
-                                    max-height: 9rem;
+                                    max-height: 6rem;
                                     overflow-y: auto;
                                     border: 1px solid @nrgColor-grey-light;
                                     padding: 0px 10px;
                                     width: 15.5rem;
                                     & > .nrgBllCJ-timeline-referral {
+                                                height: 2.7rem;
+	                                            border-bottom: 1px solid;
                                         & > .nrgBllCJ-timeline-referral-id {
+                                                height : 25px;
                                              & > .nrgBllCJ-timeline-referral-id-text {
                                                    display: inline-block;
                                                    width: 8rem;
@@ -81,6 +88,7 @@
                                              }
                                         }
                                         & > .nrgBllCJ-timeline-referral-date {
+                                                height : 25px;
                                              & > .nrgBllCJ-timeline-referral-date-text {
                                                    display: inline-block;
                                                    width: 8rem;
@@ -104,10 +112,8 @@
 
 }
 .nrgCJModule-dialog {
-    width : 70rem;
-    min-height : 30rem;
+    width: 70rem;
     &  .nrgCJModule {
-
         & > .nrgCJModule-selPanel {
             & > .nrgCJModule-selPanel-heading {
                 & > .nrgCJModule-selPanel-heading-hd {
@@ -122,25 +128,31 @@
                 }
             }
         }
-        & > .nrgCJModule-table {
+        & >.nrgCJModule-tableTag {
+            max-height: 25rem;
+            overflow-y: auto;
+            & > .nrgCJModule-table {
 
-            & > tbody > .nrgCJModule-table-Row {
-                    background-color: transparent;
-                    border: 2px solid @nrgColor-grey-highlight;
-                    line-height: 30px;
-                & > td {
-                    vertical-align: top;
-                }
-                & > td > .nrgCJModule-table-data-Infoline {
-                    &  .uteMIl-hdrContent {
-                        width : 90%;
-                    }
-                }
-                & .nrgCJModule-table--inner-Row {
+
+                & > tbody > .nrgCJModule-table-Row {
+                        background-color: transparent;
                         border: 2px solid @nrgColor-grey-highlight;
+                        line-height: 30px;
+                    & > td {
+                        vertical-align: top;
+                    }
+                    & > td > .nrgCJModule-table-data-Infoline {
+                        &  .uteMIl-hdrContent {
+                            width : 90%;
+                        }
+                    }
+                    & .nrgCJModule-table--inner-Row {
+                            border: 2px solid @nrgColor-grey-highlight;
+                    }
                 }
             }
         }
+
     }
 }
 .nrgCustJCChart-text{

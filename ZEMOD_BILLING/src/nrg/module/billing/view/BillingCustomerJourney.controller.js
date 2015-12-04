@@ -39,7 +39,8 @@ sap.ui.define(
                 oReferralTemplate = this.getView().byId('idnrgCustomerRef-temp'),
                 fnTableDataRecdHandler,
                 oDatesJsonModel,
-                that = this;
+                that = this,
+                oTimeLineModel;
             this._sContract = oRouteInfo.parameters.coNum;
             this._sBP = oRouteInfo.parameters.bpNum;
             this._sCA = oRouteInfo.parameters.caNum;
@@ -51,6 +52,8 @@ sap.ui.define(
             oPieChart.setDataModel(oPieChartModel);
             oDatesJsonModel = new JSONModel();
             this.getView().setModel(oDatesJsonModel, 'Cj-Date');
+            oTimeLineModel = new JSONModel();
+            this.getView().setModel(oTimeLineModel, 'Cj-timeline');
 
 /*            this.getView().byId('idnrgCJPieChart').setDataModel(new JSONModel({
                 data: [
@@ -69,13 +72,13 @@ sap.ui.define(
                     { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/survey', topLabel: '09/21/2014', rightDivider: true, description: 'sarath', channel: 'survey'},
                     { recordIndex: '3', channelIcon: 'sap-icon://nrg-icon/agent', description: 'sarath', channel: 'Agent'},
                     { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/ivr', description: 'sarath', channel: 'ivr'},
-                    { recordIndex: '5', channelIcon: 'sap-icon://nrg-icon/call-center', description: 'sarath', channel: 'phone'},
-                    { recordIndex: '6', channelIcon: 'sap-icon://email', description: 'sarath', channel: 'letter'},
-                    { recordIndex: '7', channelIcon: 'sap-icon://iphone', description: 'sarath', channel: 'mobile'}
+                    { recordIndex: '5', channelIcon: 'sap-icon://email', description: 'sarath', channel: 'letter'},
+                    { recordIndex: '6', channelIcon: 'sap-icon://iphone', description: 'sarath', channel: 'mobile'},
+                    { recordIndex: '7', channelIcon: 'sap-icon://nrg-icon/location', description: 'sarath', channel: 'phone'}
                 ]
             }), 'timeline');
             aFilterIds = ["BP", "CA"];
-            aFilterValues = ["2473499", "3040103"];
+            aFilterValues = ["0002473499", "000003040103"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oBindingInfo = {
                 filters : aFilters,
@@ -91,14 +94,15 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oBindingInfo);
             }
-/*            sPath = "/CJIconsSet";
+            sPath = "/CJIconsSet";
             aFilterIds = ["BP", "CA"];
-            aFilterValues = ["64041", this._sCA];
+            aFilterValues = ["0002473499", "000003040103"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oBindingInfo = {
                 filters : aFilters,
                 success : function (oData) {
-
+                    oTimeLineModel.setData(that.convertIcons(oData.results));
+                    jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
                 error: function (oError) {
                     jQuery.sap.log.info("Odata Read Error occured");
@@ -106,7 +110,7 @@ sap.ui.define(
             };
             if (oModel) {
                 oModel.read(sPath, oBindingInfo);
-            }*/
+            }
             fnTableDataRecdHandler = function (oEvent) {
 
             };
@@ -268,10 +272,13 @@ sap.ui.define(
                 aFilterValues,
                 oCJTemplate,
                 fnRecievedHandler,
-                that = this;
+                that = this,
+                oFromDate,
+                oToDate,
+                oNewDate = new Date();
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             aFilterIds = ["BP", "CA"];
-            aFilterValues = ["0000083248", "000003619065"];
+            aFilterValues = ["0002473499", "000003040103"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             if (!this._oDialogFragment) {
                 this._oDialogFragment = sap.ui.xmlfragment("CustomerJourney", "nrg.module.billing.view.CJModule", this);
@@ -286,6 +293,11 @@ sap.ui.define(
             sPath = "/CJModuleSet";
             oCJTable = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-table");
             oCJTemplate = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-RowTempl");
+            oFromDate = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgBllCJ-fromDate");
+            oToDate = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgBllCJ-toDate");
+            oNewDate.setDate(oNewDate.getDate() - 14);
+            oToDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
+            oFromDate.setDefaultDate(this._oFormatYyyymmdd.format(oNewDate, true));
             // Function received handler is used to update the view with first History campaign.---start
             fnRecievedHandler = function () {
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
@@ -321,41 +333,82 @@ sap.ui.define(
             });
         };
         /**
+		 * Handler for Customer Referral Transaction launcher
+		 *
+		 * @function
+		 * @param {Event} Type Event object
+         *
+		 *
+		 */
+        Controller.prototype.onContactLogs = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: "Z_CLFULLVW"
+            });
+        };
+        /**
 		 * Mapping Icons with backend Data
 		 *
 		 * @function
          * @param {string} sChanneltype from backend
          * @return {string} sChannelIcon for backend sChanneltype
 		 */
-        Controller.prototype._onSlicePress = function (sChanneltype) {
+        Controller.prototype._onSelectIcon = function (sChanneltype) {
             var sChannelIcon;
             switch (sChanneltype) {
-            case "website":
+            case "WLOG":
                 sChannelIcon = 'sap-icon://nrg-icon/website';
                 break;
-            case "webchat":
+            case "CHAT":
                 sChannelIcon = 'sap-icon://nrg-icon/webchat';
                 break;
-            case "survey":
+            case "SRVY":
                 sChannelIcon = 'sap-icon://nrg-icon/survey';
                 break;
             case "agent":
                 sChannelIcon = 'sap-icon://nrg-icon/agent';
                 break;
-            case "ivr":
+            case "IVR":
                 sChannelIcon = 'sap-icon://nrg-icon/ivr';
                 break;
-            case "phone":
+            case "PHONE":
                 sChannelIcon = 'sap-icon://nrg-icon/call-center';
                 break;
-            case "email":
+            case "CORR":
                 sChannelIcon = 'sap-icon://email';
                 break;
-            case "mobile":
+            case "MOBI":
                 sChannelIcon = 'sap-icon://iphone';
                 break;
             }
             return sChannelIcon;
+        };
+        /**;;
+		 * Converts in to EFL Json format required by Template view.
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.convertIcons = function (results) {
+            var columns = [],
+                temp,
+                tempColumns = [],
+                continueFlag = false,
+                iCount1,
+                iCount2,
+                aJsonDataNew;
+            for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+                if ((results[iCount1] !== undefined) && (results[iCount1].Icon !== undefined)) {
+                    results[iCount1].Channel = results[iCount1].Icon;
+                    results[iCount1].Icon = this._onSelectIcon(results[iCount1].Icon);
+                }
+            }
+            aJsonDataNew = {};
+            aJsonDataNew.results = results;
+            return aJsonDataNew;
         };
         return Controller;
     }
