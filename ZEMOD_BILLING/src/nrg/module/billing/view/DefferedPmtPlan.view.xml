@@ -321,7 +321,7 @@ Additional installments will be due with the following 5 subsequent invoices."/>
                 </ute:Tag>
             </ute:Tag>
         </ute:Tag>
-        <!--DPP Denied-->
+        <!--EXT Granted-->
         <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="true">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-ExtTitle}"/>
             <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
@@ -329,6 +329,25 @@ Additional installments will be due with the following 5 subsequent invoices."/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
                     <ute:Tag class="nrgBilling-dltl-step" text="{comp-i18n-billing>nrgBilling-dpp-ExtDenied}"/>
+                    <ute:Tag class="nrgBilling-dltl-reason">
+                        <ute:Tag class="nrgBilling-dltl-reason-lbl" text="{comp-i18n-billing>nrgBilling-dpp-ReasonGrant}"/>
+                        <utmain:Dropdown class="nrgBilling-dltl-reason-select">
+                            <utmain:DropdownItem>
+                                <ute:Tag elem="span" text="option1" />
+                            </utmain:DropdownItem>
+                            <utmain:DropdownItem>
+                                <ute:Tag elem="span" text="option2" />
+                            </utmain:DropdownItem>
+                        </utmain:Dropdown>
+                    </ute:Tag>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-m">
+                    <ute:Tag class="nrgBilling-dltm-price" text="$75.44"/>
+                    <ute:Tag class="nrgBilling-dltm-dplbl" text="{comp-i18n-billing>nrgBilling-dpp-DownPmtAmt}"/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-r">
+                    <utmain:Button class="nrgBilling-dltr-btn" text="{comp-i18n-billing>nrgBilling-dpp-PmtOptions}"/>
+                    <ute:Tag class="nrgBilling-dltr-dueDate" text="{comp-i18n-billing>nrgBilling-dpp-DueDate} 10/30/2014"/>
                 </ute:Tag>
             </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt">
@@ -354,6 +373,15 @@ Additional installments will be due with the following 5 subsequent invoices."/>
                         <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k4" text="10/30/2014"/>
                         <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k5" text="10/30/2014"/>
                     </ute:Tag>
+                </ute:Tag>
+            </ute:Tag>
+            <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox">
+                    <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox-icon"><ute:Tag text="{comp-i18n-billing>nrgBilling-dpp-info-i}"/></ute:Tag>
+                    <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox-txt" text="Customer still owes: "/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-btn-left">
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOk}"/>
                 </ute:Tag>
             </ute:Tag>
         </ute:Tag>
