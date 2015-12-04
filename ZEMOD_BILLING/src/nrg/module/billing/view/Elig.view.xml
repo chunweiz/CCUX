@@ -13,34 +13,34 @@
     displayBlock="true">
 
     <ute:Tag class="nrgBilling-eligPopup-content">
-        
+
         <m:ScrollContainer class="nrgBilling-eligPopup-table-scrollArea" height="400px" horizontal="false" vertical="true">
             <ute:Tag content="{oEligCriteria>/}">
-                    
+
                 <!-- Eligibitlity Criteria Table -->
                 <ute:Tag class="nrgBilling-eligPopup-table">
-                    
+
                     <!-- Title Section -->
                     <ute:Tag class="nrgBilling-eligPopup-table-titleSect">
-                        
+
                         <!-- Title -->
                         <ute:Tag elem="span" class="nrgBilling-eligPopup-table-title" text="{oEligCriteria>Title}"/>
 
                         <!-- Table Summary Row -->
                         <ute:Tag class="nrgBilling-eligPopup-table-result-row" visible="{oEligCriteria>Summary/visible}">
-                            
+
                             <!-- Green Checkbox -->
                             <ute:Tag class="nrgBilling-eligPopup-table-mark-check" visible="{oEligCriteria>Summary/Check}">
                                 <utmain:Checkbox enabled="false" checked="true"
                                     class="nrgBilling-eligPopup-table-mark-checkbox"/>
                             </ute:Tag>
-                            
+
                             <!-- Red X -->
                             <ute:TextView
                                 text="X"
                                 class="nrgBilling-eligPopup-table-mark-unCheck"
                                 visible="{oEligCriteria>Summary/Uncheck}"/>
-                            
+
                             <!-- Message -->
                             <ute:Tag class="nrgBilling-eligPopup-table-param"
                                 text="{oEligCriteria>Summary/Message}"/>
@@ -49,7 +49,7 @@
 
                     <!-- Table Content -->
                     <ute:Tag class="nrgBilling-eligPopup-table-content">
-                        
+
                         <!-- Label Section -->
                         <ute:Tag class="nrgBilling-eligPopup-table-labelSec">
                             <ute:Tag class="nrgBilling-eligPopup-table-markLabel"
@@ -61,7 +61,7 @@
                             <ute:Tag class="nrgBilling-eligPopup-table-val2Label"
                                 text="{comp-i18n-billing>nrgBilling-eligPopup-table-val2-LABEL}"/>
                         </ute:Tag>
-                        
+
                         <!-- Table Content Section -->
                         <ute:Tag content="{oEligCriteria>Data}">
                             <ute:Tag class="nrgBilling-eligPopup-table-row">
@@ -85,7 +85,7 @@
 
                 </ute:Tag>
 
-            
+
             </ute:Tag>
         </m:ScrollContainer>
 

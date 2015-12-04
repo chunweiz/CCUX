@@ -19,7 +19,7 @@ sap.ui.define(
         Controller.prototype.onInit = function () {
 
         };
-        
+
         Controller.prototype.onBeforeRendering = function () {
 
         };
@@ -240,7 +240,7 @@ sap.ui.define(
                                             this._ABPPopupControl.$().offset({top: ($(window).height() - this._ABPPopupControl.getDomRef().offsetHeight - 250) / 2 });
                                         }
                                         this.graphControl.setDataModel(this.getView().getModel('oUsageGraph'));
-                                        
+
                                         // Render the graph crontrol buttons
                                         this._renderGraphCrontrolBtn();
                                     }

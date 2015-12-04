@@ -1,7 +1,501 @@
 {
    "d":{
       "results":[
-
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%20%201')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%20%201')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":"  1",
+            "Icon":"PHONE",
+            "Channel":"PHONE",
+            "TopLabel":"",
+            "Description":"11/16/2015 03:07:22 Campaign Chg - Proactive",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%20%202')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%20%202')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":"  2",
+            "Icon":"PHONE",
+            "Channel":"PHONE",
+            "TopLabel":"",
+            "Description":"11/16/2015 03:07:22 Balance Inq.",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%20%203')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%20%203')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":"  3",
+            "Icon":"PHONE",
+            "Channel":"PHONE",
+            "TopLabel":"",
+            "Description":"11/16/2015 03:07:22 Campaign Chg - Proactive",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%20%205')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%20%205')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":"  5",
+            "Icon":"PHONE",
+            "Channel":"PHONE",
+            "TopLabel":"",
+            "Description":"11/16/2015 03:07:22 OTBD Requested",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%20%206')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%20%206')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":"  6",
+            "Icon":"PHONE",
+            "Channel":"PHONE",
+            "TopLabel":"",
+            "Description":"11/16/2015 03:07:22 OTBD Payment Posted",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%20%207')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%20%207')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":"  7",
+            "Icon":"PHONE",
+            "Channel":"PHONE",
+            "TopLabel":"",
+            "Description":"11/16/2015 03:07:22 Quoted Balance",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%20%208')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%20%208')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":"  8",
+            "Icon":"PHONE",
+            "Channel":"PHONE",
+            "TopLabel":"",
+            "Description":"11/16/2015 03:07:22 Proc. Fee Waived - Preferred customer.",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%20%209')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%20%209')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":"  9",
+            "Icon":"PHONE",
+            "Channel":"PHONE",
+            "TopLabel":"",
+            "Description":"11/16/2015 03:07:22 Campaign Chg - Reactive",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2011')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2011')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 11",
+            "Icon":"CORR",
+            "Channel":"CORR",
+            "TopLabel":"",
+            "Description":"11/20/2015 09:32:08 General Inq LTK11145025952941X",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2012')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2012')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 12",
+            "Icon":"CORR",
+            "Channel":"CORR",
+            "TopLabel":"",
+            "Description":"11/20/2015 09:32:08 Quoted Balance",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2013')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2013')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 13",
+            "Icon":"CORR",
+            "Channel":"CORR",
+            "TopLabel":"",
+            "Description":"11/20/2015 09:32:08 Email Sent to Customer LTK11145025944837X",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2014')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2014')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 14",
+            "Icon":"WLOG",
+            "Channel":"",
+            "TopLabel":"",
+            "Description":"11/20/2015 09:32:08 -",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2015')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2015')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 15",
+            "Icon":"MOBI",
+            "Channel":"",
+            "TopLabel":"",
+            "Description":"  - paybill.verifybank",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2016')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2016')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 16",
+            "Icon":"MOBI",
+            "Channel":"",
+            "TopLabel":"",
+            "Description":"  - esense.dashboard",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2017')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2017')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 17",
+            "Icon":"MOBI",
+            "Channel":"",
+            "TopLabel":"",
+            "Description":"  - esense.dashboard",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2018')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2018')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 18",
+            "Icon":"MOBI",
+            "Channel":"",
+            "TopLabel":"",
+            "Description":"  - autopay.verifycc",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2019')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2019')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 19",
+            "Icon":"MOBI",
+            "Channel":"",
+            "TopLabel":"",
+            "Description":"  - pay.billInfo",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2020')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2020')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 20",
+            "Icon":"MOBI",
+            "Channel":"",
+            "TopLabel":"",
+            "Description":"  - esense.dashboard",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2021')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2021')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 21",
+            "Icon":"MOBI",
+            "Channel":"",
+            "TopLabel":"",
+            "Description":"  - pay.billInfo",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2022')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2022')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 22",
+            "Icon":"MOBI",
+            "Channel":"",
+            "TopLabel":"",
+            "Description":"  - paybill.storedcc",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2023')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2023')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 23",
+            "Icon":"MOBI",
+            "Channel":"",
+            "TopLabel":"",
+            "Description":"  - esense.dashboard",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2024')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2024')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 24",
+            "Icon":"MOBI",
+            "Channel":"",
+            "TopLabel":"",
+            "Description":"11/20/2015 09:32:08 - paybill.confirmbank",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2025')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2025')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 25",
+            "Icon":"SRVY",
+            "Channel":"SRVY",
+            "TopLabel":"",
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:5/10\nIssue resolved?:",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2026')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2026')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 26",
+            "Icon":"MOBI",
+            "Channel":"",
+            "TopLabel":"",
+            "Description":"  - paybill.confirmbank",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2027')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2027')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 27",
+            "Icon":"SRVY",
+            "Channel":"SRVY",
+            "TopLabel":"",
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:/10\nIssue resolved?:",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2028')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2028')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 28",
+            "Icon":"SRVY",
+            "Channel":"SRVY",
+            "TopLabel":"",
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:/10\nIssue resolved?:",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2029')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2029')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 29",
+            "Icon":"SRVY",
+            "Channel":"SRVY",
+            "TopLabel":"",
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:5/10\nIssue resolved?:",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2030')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2030')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 30",
+            "Icon":"SRVY",
+            "Channel":"SRVY",
+            "TopLabel":"",
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:/10\nIssue resolved?:",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2031')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2031')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 31",
+            "Icon":"SRVY",
+            "Channel":"SRVY",
+            "TopLabel":"",
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:/10\nIssue resolved?:",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2032')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2032')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 32",
+            "Icon":"SRVY",
+            "Channel":"SRVY",
+            "TopLabel":"",
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:5/10\nIssue resolved?:",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2033')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2033')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 33",
+            "Icon":"SRVY",
+            "Channel":"SRVY",
+            "TopLabel":"",
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:/10\nIssue resolved?:",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2034')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2034')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 34",
+            "Icon":"SRVY",
+            "Channel":"SRVY",
+            "TopLabel":"",
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:/10\nIssue resolved?:",
+            "RightDivider":false
+         },
+         {
+            "__metadata":{
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2035')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2035')",
+               "type":"ZE_CCUX_CJ_SRV.CJIcons"
+            },
+            "BP":"0002473499",
+            "CA":"000003040103",
+            "key":" 35",
+            "Icon":"SRVY",
+            "Channel":"SRVY",
+            "TopLabel":"",
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:/10\nIssue resolved?:",
+            "RightDivider":false
+         }
       ]
    }
 }

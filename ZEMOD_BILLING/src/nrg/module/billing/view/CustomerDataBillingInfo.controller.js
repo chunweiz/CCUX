@@ -26,7 +26,7 @@ sap.ui.define(
 
         CustomController.prototype.onAfterRendering = function () {
             this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
-            
+
             // Navigation arrow event handling
             this.getOwnerComponent().getCcuxApp().showNavLeft(true);
             this.getOwnerComponent().getCcuxApp().detachNavRightAll();
@@ -419,15 +419,15 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData.results) {
                         oInvSelModel.setData(oData.results);
-                        
+
                         // Generate the table
                         tableContainer = this.getView().byId('nrgBilling-invSelPopup-tableBody');
 
                         // Remove previous content
                         rowNumer = tableContainer.getContent().length;
                         for (j = 0; j < rowNumer; j = j + 1) { tableContainer.removeContent(0); }
-                            
-                        // Process the new data                        
+
+                        // Process the new data
                         for (i = 0; i < oInvSelModel.oData.length; i = i + 1) {
                             // Add self-defined attribute
                             oInvSelModel.oData[i].View = false;
@@ -449,7 +449,7 @@ sap.ui.define(
                     }
                 }.bind(this),
                 error: function (oError) {
-                
+
                 }.bind(this)
             };
 
@@ -481,10 +481,10 @@ sap.ui.define(
             // Format the startDate (12 months ago)
             before.setMonth(before.getMonth() - 12);
             startDate = this._formatInvoiceDate(before.getDate(), before.getMonth() + 1, before.getFullYear());
-            
+
             this.getView().byId('nrgBilling-invSel-stDate').setDefaultDate(startDate);
             this.getView().byId('nrgBilling-invSel-edDate').setDefaultDate(endDate);
-            
+
             oInvSelDateRangeModel.setProperty('/Start', startDate);
             oInvSelDateRangeModel.setProperty('/End', endDate);
 
@@ -533,7 +533,7 @@ sap.ui.define(
         CustomController.prototype._handleStartDateChange = function (oEvent) {
             var oInvSelDateRangeModel = this.getView().getModel('oInvoiceSelectDateRange'),
                 startDate = this.getView().byId('nrgBilling-invSel-stDate').getValue();
-            
+
             oInvSelDateRangeModel.setProperty('/Start', startDate);
             this._filterByDateRange();
         };
@@ -541,7 +541,7 @@ sap.ui.define(
         CustomController.prototype._handleEndDateChange = function (oEvent) {
             var oInvSelDateRangeModel = this.getView().getModel('oInvoiceSelectDateRange'),
                 endDate = this.getView().byId('nrgBilling-invSel-edDate').getValue();
-            
+
             oInvSelDateRangeModel.setProperty('/End', endDate);
             this._filterByDateRange();
         };

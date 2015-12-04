@@ -13,7 +13,7 @@
     displayBlock="true">
 
     <ute:Tag class="nrgDashboard-depositToolPopup-content">
-        
+
        <!-- Deposit Table -->
         <ute:Tag class="nrgDashboard-depositToolPopup-table">
             <ute:Tag class="nrgDashboard-depositToolPopup-table-labelSec">

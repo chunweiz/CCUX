@@ -18,7 +18,7 @@ sap.ui.define(
         Controller.prototype.onInit = function () {
 
         };
-        
+
         Controller.prototype.onBeforeRendering = function () {
             // Get the OwenerComponent from the mother controller
             this._OwnerComponent = this.getView().getParent().getParent().getParent().getController().getOwnerComponent();
@@ -69,7 +69,7 @@ sap.ui.define(
                 oModel.read(sPath, oParameters);
             }
         };
-        
+
         /*------------------------------------------------- Button Actions --------------------------------------------------*/
 
         Controller.prototype._formatDate = function (oDate) {
@@ -86,7 +86,7 @@ sap.ui.define(
         Controller.prototype._pad = function (d) {
             return (d < 10) ? '0' + d.toString() : d.toString();
         };
-        
+
         Controller.prototype.onPopupClose = function (oEvent) {
             this._DepositToolPopupControl.close();
         };

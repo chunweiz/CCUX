@@ -110,27 +110,21 @@ sap.ui.define(
             } else {
                 return;
             }
-            oNavBackDomRef = this.getParent().getDomRef("navBack");
-            if (oNavBackDomRef) {
-                aClassList = oNavBackDomRef.classList;
-                if (aClassList) {
-                    for (iCounter = 0; iCounter < aClassList.length; iCounter = iCounter + 1) {
-                        if (aClassList[iCounter] === "nrgCJT-navBack-hide") {
-                            bBackHidden = true;
-                            oNavBackDomRef = that._aChannelRegistry[1].getDomRef();
-                        }
-                    }
-                }
-            }
-            if (oDescription) {
-                oDescriptionTitle = oDescription.firstChild;
+            oLeft = (this.getParent().getDomRef('channelContainer').scrollLeft - this.getDomRef().offsetLeft) + 600;
+            if (Math.abs(oLeft) >= 590) {
+                oLeft = -510;
+            } else if (Math.abs(oLeft) >= 490) {
+                oLeft = -410;
+            } else if (Math.abs(oLeft) >= 390) {
+                oLeft = -310;
+            } else if (Math.abs(oLeft) >= 290) {
+                oLeft = -210;
+            } else if (Math.abs(oLeft) >= 190) {
+                oLeft = -110;
+            } else if (Math.abs(oLeft) >= 90) {
+                oLeft = -10;
             } else {
-                return;
-            }
-            if (bBackHidden) {
-                oLeft = oNavBackDomRef.offsetLeft - this.getDomRef().offsetLeft;
-            } else {
-                oLeft = oNavBackDomRef.offsetLeft - this.getDomRef().offsetLeft + 280;
+                oLeft = 10;
             }
             jQuery(oDescription).css({
 			    "top" : '6.5rem',

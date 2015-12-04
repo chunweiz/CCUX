@@ -19,7 +19,8 @@
             </um:button>
             <um:Button text="{comp-i18n-billing>nrgBllCJContactLogsTtl}"
                         class="nrgBllCJ-header-btn"
-                        design="None">
+                        design="None"
+                        press=".onContactLogs">
             </um:button>
             <um:Button  press=".onCustomerJourneyModule"
                         text="{comp-i18n-billing>nrgBllCJCJModuleTtl}"
@@ -53,25 +54,25 @@
                         <u:DatePicker width="7rem" id="idnrgBllCJ-fromDate" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
                         <u:DatePicker width="7rem" id="idnrgBllCJ-toDate" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
                     </u:Tag>
-<!--                    <um:Button text="GO"
-                               class="nrgBllCJ-timeline-btns"
+                    <um:Button text="GO"
+                               class="nrgBllCJ-timeline-gobtn"
                                design="Default"
                                press="onInterval2">
-                    </um:button>  -->
+                    </um:button>
                     <u:Tag class="nrgBllCJ-timeline-referrals" id="idnrgCustomerRef"></u:Tag>
                 </u:Tag>
                 <u:Tag class="nrgBllCJ-main-timeline-icons">
-                    <ch:CustomerJourneyTimeline channel="{timeline>/data}">
+                    <ch:CustomerJourneyTimeline channel="{Cj-timeline>/results}">
                         <ch:CustomerJourneyTimelineChannel
-                            topLabel="{timeline>topLabel}"
-                            channelIcon="{timeline>channelIcon}"
-                            rightDivider="{timeline>rightDivider}"
-                            selected="{timeline>selected}"
-                            channel="{timeline>channel}"
-                            description="{timeline>description}"
+                            topLabel="{Cj-timeline>TopLabel}"
+                            channelIcon="{Cj-timeline>Icon}"
+                            rightDivider="{Cj-timeline>RightDivider}"
+                            selected="{Cj-timeline>selected}"
+                            channel="{Cj-timeline>Channel}"
+                            description="{Cj-timeline>Description}"
                             press="._onChannelPress"
                             doublePress="._onChannelDPress"
-                            cd:recordIndex="{timeline>key}" />
+                            cd:recordIndex="{Cj-timeline>key}" />
                      </ch:CustomerJourneyTimeline>
                 </u:Tag>
             </u:Tag>

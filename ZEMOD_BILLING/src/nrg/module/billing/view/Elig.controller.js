@@ -18,7 +18,7 @@ sap.ui.define(
         Controller.prototype.onInit = function () {
 
         };
-        
+
         Controller.prototype.onBeforeRendering = function () {
 
         };
@@ -144,7 +144,7 @@ sap.ui.define(
 
         /*------------------------------------------------- Button Actions --------------------------------------------------*/
 
-        
+
 
         Controller.prototype._pad = function (d) {
             return (d < 10) ? '0' + d.toString() : d.toString();
