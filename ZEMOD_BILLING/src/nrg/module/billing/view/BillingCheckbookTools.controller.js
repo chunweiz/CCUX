@@ -22,11 +22,17 @@ sap.ui.define(
         };
 
         Controller.prototype.onBeforeRendering = function () {
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-eligibility'), 'oDataEligSvc');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEligibility');
 
+            // Retrieve routing parameters
+            var oRouteInfo = this.getOwnerComponent().getCcuxContextManager().getContext().oData;
+            this._bpNum = oRouteInfo.bpNum;
+            this._caNum = oRouteInfo.caNum;
+            this._coNum = oRouteInfo.coNum;
         };
 
         Controller.prototype.onAfterRendering = function () {
-
         };
 
         Controller.prototype._onAvgBillBtnClicked = function () {
@@ -36,6 +42,66 @@ sap.ui.define(
                 this.getView().addDependent(this.ABPPopupCustomControl);
             }
             this.ABPPopupCustomControl.prepareABP();
+        };
+
+        Controller.prototype._onDppBtnClicked = function () {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager(),
+                oRouter = this.getOwnerComponent().getRouter(),
+                oRetrDone = false;
+
+            // Display the loading indicator
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            // Retrieve Notification
+            this._retrieveEligibility(function () {oRetrDone = true;});
+            // Check retrieval done
+            var checkRetrComplete = setInterval (function () {
+                if (oRetrDone) {
+                    var oEligibilityModel = this.getView().getModel('oEligibility');
+                    // Dismiss the loading indicator
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    // Upon successfully retrieving the data, stop checking the completion of retrieving data
+                    clearInterval(checkRetrComplete);
+                    // Check active or not
+                    if (!oEligibilityModel.oData.DPPActv) {
+                        // Check eligibility
+                        if (oEligibilityModel.oData.DPPActv) {
+                            // Go to set-up page
+                            oRouter.navTo('billing.DefferedPmtPlan', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+                        } else {
+                            // Go to denail page
+                            oRouter.navTo('billing.DefferedPmtPlan', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+                        }
+                    } else {
+                        // Go to transaction launcher
+                        oWebUiManager.notifyWebUi('openIndex', {
+                            LINK_ID: "Z_DPP"
+                        });
+                    }
+                }
+            }.bind(this), 100); 
+        };
+
+        Controller.prototype._retrieveEligibility = function (fnCallback) {
+            var sPath = '/EligCheckS(\'' + this._coNum + '\')',
+                oModel = this.getView().getModel('oDataEligSvc'),
+                oEligModel = this.getView().getModel('oEligibility'),
+                oParameters,
+                alert,
+                i;
+
+            oParameters = {
+                success : function (oData) {
+                    oEligModel.setData(oData);
+                    if (fnCallback) fnCallback();
+                }.bind(this),
+                error: function (oError) {
+                    
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
         };
 
         return Controller;

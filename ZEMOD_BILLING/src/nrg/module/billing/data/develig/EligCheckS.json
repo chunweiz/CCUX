@@ -13,7 +13,9 @@
                 "RBBElig":false,
                 "RBBActv":true,
                 "EXTNElig":true,
-                "EXTNActv":true
+                "EXTNActv":true,
+                "DPPElig":false,
+                "DPPActv":false
             }
         ]
     }
