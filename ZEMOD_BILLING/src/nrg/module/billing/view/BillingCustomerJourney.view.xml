@@ -38,6 +38,10 @@
             <u:Tag class="nrgBllCJ-main-timeline">
                 <u:Tag class="nrgBllCJ-main-timeline-details">
                     <u:Tag class="nrgBllCJ-main-timeline-ttl" text="{comp-i18n-billing>nrgBllCJTitleTimeline}"/>
+                    <u:Tag class="nrgBllCJ-timeline-calendars">
+                        <u:DatePicker width="7rem" id="idnrgBllCJ-fromDate" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
+                        <u:DatePicker width="7rem" id="idnrgBllCJ-toDate" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
+                    </u:Tag>
                     <um:Button text="Last {Cj-Date>/Interval1} Days"
                                class="nrgBllCJ-timeline-btns"
                                design="Default"
@@ -50,10 +54,6 @@
                                press="onInterval2"
                                id="idnrgBllCJ-Interval2">
                     </um:button>
-                    <u:Tag class="nrgBllCJ-timeline-calendars">
-                        <u:DatePicker width="7rem" id="idnrgBllCJ-fromDate" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
-                        <u:DatePicker width="7rem" id="idnrgBllCJ-toDate" class="nrgBllCJ-timeline-calendar"></u:DatePicker>
-                    </u:Tag>
                     <um:Button text="GO"
                                class="nrgBllCJ-timeline-gobtn"
                                design="Default"

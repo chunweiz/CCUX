@@ -25,7 +25,6 @@ sap.ui.define(
 
         };
         Controller.prototype.onBeforeRendering = function () {
-
             var oBindingInfo,
                 oModel = this.getOwnerComponent().getModel('comp-cj'),
                 sPath = "/CJFrequencySet",
@@ -67,14 +66,14 @@ sap.ui.define(
             }));*/
             this.getView().setModel(new JSONModel({
                 data: [
-                    { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: '08/31/2014', description: 'sarath', channel: 'website'},
-                    { recordIndex: '1', channelIcon: 'sap-icon://nrg-icon/webchat', description: 'sarath', channel: 'webchat'},
-                    { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/survey', topLabel: '09/21/2014', rightDivider: true, description: 'sarath', channel: 'survey'},
+                    { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: '08/31/2014', description: 'sarath', channel: 'Website'},
+                    { recordIndex: '1', channelIcon: 'sap-icon://nrg-icon/webchat', description: 'sarath', channel: 'Chat'},
+                    { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/survey', topLabel: '09/21/2014', rightDivider: true, description: 'sarath', channel: 'Survey'},
                     { recordIndex: '3', channelIcon: 'sap-icon://nrg-icon/agent', description: 'sarath', channel: 'Agent'},
-                    { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/ivr', description: 'sarath', channel: 'ivr'},
-                    { recordIndex: '5', channelIcon: 'sap-icon://email', description: 'sarath', channel: 'letter'},
-                    { recordIndex: '6', channelIcon: 'sap-icon://iphone', description: 'sarath', channel: 'mobile'},
-                    { recordIndex: '7', channelIcon: 'sap-icon://nrg-icon/location', description: 'sarath', channel: 'phone'}
+                    { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/ivr', description: 'sarath', channel: 'IVR'},
+                    { recordIndex: '5', channelIcon: 'sap-icon://email', description: 'sarath', channel: 'Correspondence'},
+                    { recordIndex: '6', channelIcon: 'sap-icon://iphone', description: 'sarath', channel: 'Mobile'},
+                    { recordIndex: '7', channelIcon: 'sap-icon://nrg-icon/location', description: 'sarath', channel: 'Phone'}
                 ]
             }), 'timeline');
             aFilterIds = ["BP", "CA"];
@@ -112,7 +111,6 @@ sap.ui.define(
                 oModel.read(sPath, oBindingInfo);
             }
             fnTableDataRecdHandler = function (oEvent) {
-
             };
             sPath = "/CJReferralSet";
             oBindingInfo = {
@@ -218,6 +216,24 @@ sap.ui.define(
             //console.log(oEvent);
         };
         /**
+		 * Handler for Channel Double press action
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype._onChannelSelect = function (oEvent) {
+            var sChannel = oEvent.getSource().getChannel(),
+                aFilterIds,
+                aFilterValues,
+                aFilters,
+                oCJTable = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-table");
+            oEvent.getSource().setSelected(!oEvent.getSource().getSelected());
+            aFilterIds = ["ChannelType"];
+            aFilterValues = [sChannel];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            oCJTable.getBinding("rows").filter(aFilters);
+        };
+        /**
 		 * Handler for Pie-Chart Total press action
 		 *
 		 * @function
@@ -245,9 +261,12 @@ sap.ui.define(
          * @param {Array} aFilterValues for each sPath
 		 * @private
 		 */
-        Controller.prototype._createSearchFilterObject = function (aFilterIds, aFilterValues) {
+        Controller.prototype._createSearchFilterObject = function (aFilterIds, aFilterValues, sFilterOperator) {
             var aFilters = [],
                 iCount;
+            if (!sFilterOperator) {
+                sFilterOperator = FilterOperator.EQ;
+            }
             if (aFilterIds !== undefined) {
                 for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
                     aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
@@ -275,7 +294,10 @@ sap.ui.define(
                 that = this,
                 oFromDate,
                 oToDate,
-                oNewDate = new Date();
+                oModel = this.getOwnerComponent().getModel('comp-cj'),
+                oNewDate = new Date(),
+                oCustomerJourneyModel;
+            oCustomerJourneyModel = new JSONModel();
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             aFilterIds = ["BP", "CA"];
             aFilterValues = ["0002473499", "000003040103"];
@@ -290,8 +312,10 @@ sap.ui.define(
                     content: this._oDialogFragment
                 });
             }
+            this._oDialogFragment.setModel(oCustomerJourneyModel, 'Cj-module');
             sPath = "/CJModuleSet";
             oCJTable = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-table");
+            oCJTable.setModel(oCustomerJourneyModel);
             oCJTemplate = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-RowTempl");
             oFromDate = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgBllCJ-fromDate");
             oToDate = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgBllCJ-toDate");
@@ -299,7 +323,7 @@ sap.ui.define(
             oToDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
             oFromDate.setDefaultDate(this._oFormatYyyymmdd.format(oNewDate, true));
             // Function received handler is used to update the view with first History campaign.---start
-            fnRecievedHandler = function () {
+/*            fnRecievedHandler = function (oEvent) {
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
             };
             mParameters = {
@@ -308,12 +332,28 @@ sap.ui.define(
                 filters : aFilters,
                 template : oCJTemplate,
                 events: {dataReceived : fnRecievedHandler}
+            };*/
+            mParameters = {
+                filters : aFilters,
+                success : function (oData) {
+                    oCustomerJourneyModel.setData(oData);
+                    that._oCJDialog.open();
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    jQuery.sap.log.info("Odata Read Successfully:::");
+                }.bind(this),
+                error: function (oError) {
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    jQuery.sap.log.info("Odata Read Error occured");
+                }.bind(this)
             };
+            if (oModel) {
+                oModel.read(sPath, mParameters);
+            }
             this.getView().addDependent(this._oCJDialog);
             //to get access to the global model
             this._oCJDialog.addStyleClass("nrgCJModule-dialog");
-            oCJTable.bindRows(mParameters);
-            this._oCJDialog.open();
+            //oCJTable.bindRows(mParameters);
+
         };
         /**
 		 * Handler for Customer Referral Transaction launcher
@@ -355,15 +395,15 @@ sap.ui.define(
          * @return {string} sChannelIcon for backend sChanneltype
 		 */
         Controller.prototype._onSelectIcon = function (sChanneltype) {
-            var sChannelIcon;
+            var sChannelIcon = 'sap-icon://nrg-icon/location';
             switch (sChanneltype) {
-            case "WLOG":
+            case "Website":
                 sChannelIcon = 'sap-icon://nrg-icon/website';
                 break;
-            case "CHAT":
+            case "Chat":
                 sChannelIcon = 'sap-icon://nrg-icon/webchat';
                 break;
-            case "SRVY":
+            case "Survey":
                 sChannelIcon = 'sap-icon://nrg-icon/survey';
                 break;
             case "agent":
@@ -372,20 +412,23 @@ sap.ui.define(
             case "IVR":
                 sChannelIcon = 'sap-icon://nrg-icon/ivr';
                 break;
-            case "PHONE":
-                sChannelIcon = 'sap-icon://nrg-icon/call-center';
+            case "Phone":
+                sChannelIcon = 'sap-icon://nrg-icon/agent';
                 break;
-            case "CORR":
+            case "Correspondence":
                 sChannelIcon = 'sap-icon://email';
                 break;
-            case "MOBI":
+            case "Mobile":
                 sChannelIcon = 'sap-icon://iphone';
+                break;
+            case "MISC":
+                sChannelIcon = 'sap-icon://nrg-icon/location';
                 break;
             }
             return sChannelIcon;
         };
         /**;;
-		 * Converts in to EFL Json format required by Template view.
+		 * Converts in to Icons Json format.
 		 *
 		 * @function
 		 * @param {String} Type value from the binding
@@ -409,6 +452,80 @@ sap.ui.define(
             aJsonDataNew = {};
             aJsonDataNew.results = results;
             return aJsonDataNew;
+        };
+        /**;;
+		 * Converts in to Icons Json format.
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.convertCJModuleData = function (results) {
+/*            var columns = [],
+                rows = [],
+                temp,
+                tempColumns = [],
+                continueFlag = false,
+                iCount1,
+                iCount2,
+                aJsonDataNew,
+                aHeaders,
+                aValues,
+                iCounter,
+                row = {};
+            for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+                temp = results[iCount1];
+                if ((temp !== undefined) && (temp.ColHeaders !== undefined)) {
+                    aHeaders = temp.ColHeaders.split("~");
+                    for (iCount2 = 0; iCount2 < aHeaders.length; iCount2 = iCount2 + 1) {
+                        columns.push({
+                            "headers": aHeaders[iCount2]
+                        });
+                    }
+                    results[iCount1].headers = columns;
+                    columns = [];
+                }
+                if ((temp !== undefined) && (temp.ColValues !== undefined)) {
+                    aValues = temp.ColValues.split("~");
+                    iCounter = 1;
+                    for (iCount2 = 0; iCount2 < aValues.length; iCount2 = iCount2 + 1) {
+                        row.header +""+ iCounter = aValues[iCount2];
+                    }
+                    rows.push({
+                        "headers": aHeaders[iCount2]
+                    });
+                    results[iCount1].rows = rows;
+                }
+            }
+            aJsonDataNew = {};
+            aJsonDataNew.results = {};
+            aJsonDataNew.results.columns = columns;
+            aJsonDataNew.results.rows = rows;
+            return aJsonDataNew;*/
+        };
+        /**;;
+		 * Converts in to Icons Json format.
+		 *
+		 * @function
+		 * @param {String} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.onSearch = function (oEvent) {
+            var oSearchText = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-search"),
+                oFilter1,
+                oFilter2,
+                aFilterValues,
+                aFilters,
+                oCJTable = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-table");
+/*            aFilterIds = ["SingleMessage", "ColValues"];
+            aFilterValues = [oSearchText, oSearchText];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues, FilterOperator.Contains);*/
+            oFilter1 = new sap.ui.model.Filter("SingleMessage", sap.ui.model.FilterOperator.Contains, oSearchText.getValue());
+            oFilter2 = new sap.ui.model.Filter("ColValues", sap.ui.model.FilterOperator.Contains, oSearchText.getValue());
+            aFilters = new sap.ui.model.Filter({filters: [oFilter1, oFilter2], and: false });
+            oCJTable.getBinding("rows").filter(aFilters);
         };
         return Controller;
     }

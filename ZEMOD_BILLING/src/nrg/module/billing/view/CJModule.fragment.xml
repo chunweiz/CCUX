@@ -15,53 +15,67 @@
                 <u:Tag text="From" class="nrgCJModule-selPanel-heading-hd"/>
                 <u:Tag text="To" class="nrgCJModule-selPanel-heading-hd" />
                 <u:Tag text="Channel" class="nrgCJModule-selPanel-heading-hd" />
-                <u:Tag text="Search" class="nrgCJModule-selPanel-heading-hd" />
+                <u:Tag text="" class="nrgCJModule-selPanel-heading-hd" />
+                <u:Tag text="Search" class="nrgCJModule-selPanel-heading-hd"/>
             </u:Tag>
             <u:Tag class="nrgCJModule-selPanel-fields">
-                <u:Tag class="nrgCJModule-selPanel-fields-fd">
-                    <u:DatePicker width="7rem" id="idnrgBllCJ-fromDate"/>
-                </u:Tag>
-                <u:Tag class="nrgCJModule-selPanel-fields-fd">
-                    <u:DatePicker width="7rem" id="idnrgBllCJ-toDate"/>
-                </u:Tag>
-                <um:Dropdown selectedKey="1" class="nrgCJModule-selPanel-fields-fd" placeholder="ALL" >
-                    <um:DropdownItem key="1" >
-                        <u:Tag text="ALL" />
-                    </um:DropdownItem>
-                    <um:DropdownItem key="2" >
-                        <u:Tag text="WEB" />
-                    </um:DropdownItem>
-                    <um:DropdownItem key="3">
-                        <u:Tag text="CHAT" />
-                    </um:DropdownItem>
-                    <um:DropdownItem key="4">
-                        <u:Tag text="IVR" />
-                    </um:DropdownItem>
-                    <um:DropdownItem key="5" class="nrgQPCC-DdLItem">
-                        <u:Tag text="EMAI" />
-                    </um:DropdownItem>
-                </um:Dropdown>
+                    <u:Tag class="nrgCJModule-selPanel-fields-fd">
+                        <u:DatePicker width="7rem" id="idnrgBllCJ-fromDate"/>
+                    </u:Tag>
+                    <u:Tag class="nrgCJModule-selPanel-fields-fd">
+                        <u:DatePicker width="7rem" id="idnrgBllCJ-toDate"/>
+                    </u:Tag>
+                     <um:Dropdown selectedKey="1" class="nrgCJModule-selPanel-fields-fd" placeholder="ALL" >
+                        <um:DropdownItem key="1" >
+                            <u:Tag text="ALL" />
+                        </um:DropdownItem>
+                        <um:DropdownItem key="2" >
+                            <u:Tag text="WEB" />
+                        </um:DropdownItem>
+                        <um:DropdownItem key="3">
+                            <u:Tag text="CHAT" />
+                        </um:DropdownItem>
+                        <um:DropdownItem key="4">
+                            <u:Tag text="IVR" />
+                        </um:DropdownItem>
+                        <um:DropdownItem key="5" class="nrgQPCC-DdLItem">
+                            <u:Tag text="EMAI" />
+                        </um:DropdownItem>
+                    </um:Dropdown>
+                    <u:Tag class="nrgCJModule-selPanel-fields-fd">
+                        <um:Button text="GO"
+                                   class="nrgBllCJ-timeline-gobtn"
+                                   design="Default" />
+                    </u:Tag>
                 <u:Textfield fieldType="Regular"
                              width="7rem"
                              editable="true"
-                             class="nrgCJModule-selPanel-fields-fd" />
-                <ch:CustomerJourneyTimeline channel="{timeline>/data}" class="nrgChannelCJIcons">
+                             class="nrgCJModule-selPanel-fields-fd"
+                             id="idnrgCJModule-search"/>
+                <u:Tag class="nrgCJModule-selPanel-fields-fd">
+                    <um:Button text="Search"
+                               class="nrgBllCJ-timeline-gobtn"
+                               design="Default"
+                               press=".onSearch"/>
+                </u:Tag>
+            </u:Tag>
+            <u:Tag class="nrgCJModule-selPanel-fields">
+                 <ch:CustomerJourneyTimeline channel="{timeline>/data}" class="nrgChannelCJIcons">
                     <ch:CustomerJourneyTimelineChannel
                         channelIcon="{timeline>channelIcon}"
                         selected="{timeline>selected}"
                         channel="{timeline>channel}"
-                        press="._onChannelPress"
-                        doublePress="._onChannelDPress"
+                        press="._onChannelSelect"
                         cd:recordIndex="{timeline>key}" />
                  </ch:CustomerJourneyTimeline>
-
-            </u:Tag>
-        </u:Tag>
+           </u:Tag>
+         </u:Tag>
         <u:Tag class="nrgCJModule-tableTag">
             <u:Table width="98%"
                      id="idnrgCJModule-table"
                      class="nrgCJModule-table"
-                     tableType="CampaignTable" >
+                     tableType="CampaignTable"
+                     rows="{Cj-module>/results}">
                             <u:columns>
                                 <u:TableColumn width="15%" class="nrgCJModule-table-th">
                                     <u:Tag text="Date/Time" />
@@ -73,17 +87,13 @@
                                     <u:Tag text="Contact Details" />
                                 </u:TableColumn>
                             </u:columns>
-            </u:Table>
-        </u:Tag>
-        <u:Tag visible="false">
-            <u:Table>
                 <u:rows>
                         <u:TableRow id="idnrgCJModule-RowTempl" class="nrgCJModule-table-Row" >
-                            <u:Tag text="{path: 'comp-cj>Date', type: 'sap.ui.model.type.DateTime', formatOptions:{pattern: 'MM/dd/yyyy HH:mm:ss'} }" />
-                            <u:Tag text="{comp-cj>ChannelType}" />
+                            <u:Tag text="{path: 'Cj-module>Date', type: 'sap.ui.model.type.DateTime', formatOptions:{pattern: 'MM/dd/yyyy HH:mm:ss'} }" />
+                            <u:Tag text="{Cj-module>ChannelType}" />
                             <um:Infoline design="Default" id="idnrgCJModule-infoline-tmpl" class="nrgCJModule-table-data-Infoline">
                                 <um:headerContent>
-                                    <u:Tag text="{comp-cj>SingleMessage}" />
+                                    <u:Tag text="{Cj-module>SingleMessage}" />
                                 </um:headerContent>
                                 <um:content>
                                     <u:Tag class="nrgCJModule-table-inner">
@@ -104,13 +114,15 @@
                                             </u:columns>
                                              <u:rows>
                                                 <u:TableRow class="nrgCJModule-table--inner-Row">
-                                                    <u:Tag text="{comp-cj>CA}"
+                                                    <u:Tag text="{Cj-module>column1}"
                                                         class="nrgCJModule-table-Data-row-value"/>
-                                                    <u:Tag text="{comp-cj>User}"
+                                                    <u:Tag text="{Cj-module>column2}"
                                                         class="nrgCJModule-table-Data-row-value"/>
-                                                    <u:Tag text="{comp-cj>Activity}"
+                                                    <u:Tag text="{Cj-module>column3}"
                                                         class="nrgCJModule-table-Data-row-value"/>
-                                                    <u:Tag text="{comp-cj>Notes}"
+                                                    <u:Tag text="{Cj-module>column4}"
+                                                        class="nrgCJModule-table-Data-row-value"/>
+                                                    <u:Tag text="{Cj-module>column5}"
                                                         class="nrgCJModule-table-Data-row-value"/>
                                                  </u:TableRow>
                                             </u:rows>
@@ -120,6 +132,11 @@
                             </um:Infoline>
                         </u:TableRow>
                 </u:rows>
+            </u:Table>
+        </u:Tag>
+        <u:Tag visible="false">
+            <u:Table>
+
             </u:Table>
         </u:Tag>
 
