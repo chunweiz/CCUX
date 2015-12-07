@@ -308,8 +308,8 @@ sap.ui.define(
             oContext = this.getOwnerComponent().getCcuxContextManager().resetContext();
             oRouter = this.getOwnerComponent().getRouter();
 
-            oRouter.navTo('app.refresh');
-            oRouter.navTo('search.SearchNoID');
+            oRouter.navTo('app.refresh', null, true);
+            oRouter.navTo('search.SearchNoID', null, true);
         };
 
         CustomController.prototype._onLogoffPress = function (oControlEvent) {
