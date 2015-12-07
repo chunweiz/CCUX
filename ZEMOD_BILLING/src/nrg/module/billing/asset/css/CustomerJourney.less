@@ -139,7 +139,27 @@
             max-height: 25rem;
             overflow-y: auto;
             & > .nrgCJModule-table {
-
+                & .nrgCJModule-table-th {
+                    & > .nrgCJModule-table-th-contact {
+                        cursor : pointer;
+                    }
+                    & > .nrgCJModule-table-th-contact:after {
+                        content: '';
+                        position: absolute;
+                        width: 12px;
+                        height: 12px;
+                        border: 2px solid #4d4d4d;
+                        border-top: none;
+                        border-left: none;
+                        transform: translate(13px,4px)rotate(45deg);
+                        margin-left: 18.5rem;
+                    }
+                }
+                & .nrgCJModule-table-th+.nrgCJModule-table-th-sel {
+                    & > .nrgCJModule-table-th-contact:after {
+                            transform: translate(13px, 8px) rotate(-135deg);
+                    }
+                }
 
                 & > tbody > .nrgCJModule-table-Row {
                         background-color: transparent;

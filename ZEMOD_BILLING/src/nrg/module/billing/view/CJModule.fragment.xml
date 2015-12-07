@@ -83,46 +83,34 @@
                                 <u:TableColumn width="10%" class="nrgCJModule-table-th">
                                     <u:Tag text="Channel"/>
                                 </u:TableColumn>
-                                <u:TableColumn width="75%" class="nrgCJModule-table-th">
-                                    <u:Tag text="Contact Details" />
+                                <u:TableColumn width="75%" class="nrgCJModule-table-th" sortable="true" press="onExpandAll">
+                                    <u:Tag text="Contact Details" class="nrgCJModule-table-th-contact"/>
                                 </u:TableColumn>
                             </u:columns>
                 <u:rows>
                         <u:TableRow id="idnrgCJModule-RowTempl" class="nrgCJModule-table-Row" >
                             <u:Tag text="{path: 'Cj-module>Date', type: 'sap.ui.model.type.DateTime', formatOptions:{pattern: 'MM/dd/yyyy HH:mm:ss'} }" />
                             <u:Tag text="{Cj-module>ChannelType}" />
-                            <um:Infoline design="Default" id="idnrgCJModule-infoline-tmpl" class="nrgCJModule-table-data-Infoline">
+                            <um:Infoline design="Default" id="idnrgCJModule-infoline-tmpl"
+                                         class="nrgCJModule-table-data-Infoline"
+                                         expanded="{Cj-module>expanded}">
                                 <um:headerContent>
                                     <u:Tag text="{Cj-module>SingleMessage}" />
                                 </um:headerContent>
                                 <um:content>
                                     <u:Tag class="nrgCJModule-table-inner">
-                                        <u:Table width="auto" tableType="CampaignTable">
+                                        <u:Table width="auto"
+                                                 tableType="CampaignTable"
+                                                 columns="{Cj-module>headers}"
+                                                 rows="{Cj-module>values}">
                                             <u:columns>
                                                 <u:TableColumn width="10%" class="nrgCamPds-th">
-                                                   <u:Tag text="CA" class="nrgCJModule-table-innerHeader-hd"></u:Tag>
-                                                </u:TableColumn>
-                                                <u:TableColumn width="10%" class="nrgCamPds-th">
-                                                    <u:Tag text="User" class="nrgCJModule-table-innerHeader-hd"></u:Tag>
-                                                </u:TableColumn>
-                                                <u:TableColumn width="12%" class="nrgCamPds-th">
-                                                    <u:Tag text="Activity(text)" class="nrgCJModule-table-innerHeader-hd"></u:Tag>
-                                                </u:TableColumn>
-                                                <u:TableColumn width="68%" class="nrgCamPds-th">
-                                                    <u:Tag text="Notes" class="nrgCJModule-table-innerHeader-hd"></u:Tag>
+                                                   <u:Tag text="{Cj-module>header}" class="nrgCJModule-table-innerHeader-hd"></u:Tag>
                                                 </u:TableColumn>
                                             </u:columns>
                                              <u:rows>
-                                                <u:TableRow class="nrgCJModule-table--inner-Row">
-                                                    <u:Tag text="{Cj-module>column1}"
-                                                        class="nrgCJModule-table-Data-row-value"/>
-                                                    <u:Tag text="{Cj-module>column2}"
-                                                        class="nrgCJModule-table-Data-row-value"/>
-                                                    <u:Tag text="{Cj-module>column3}"
-                                                        class="nrgCJModule-table-Data-row-value"/>
-                                                    <u:Tag text="{Cj-module>column4}"
-                                                        class="nrgCJModule-table-Data-row-value"/>
-                                                    <u:Tag text="{Cj-module>column5}"
+                                                <u:TableRow class="nrgCJModule-table--inner-Row" cells="{Cj-module>cells}">
+                                                    <u:Tag text="{Cj-module>value}"
                                                         class="nrgCJModule-table-Data-row-value"/>
                                                  </u:TableRow>
                                             </u:rows>
@@ -134,11 +122,5 @@
                 </u:rows>
             </u:Table>
         </u:Tag>
-        <u:Tag visible="false">
-            <u:Table>
-
-            </u:Table>
-        </u:Tag>
-
     </u:Tag>
 </core:FragmentDefinition>
