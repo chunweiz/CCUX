@@ -63,8 +63,10 @@ sap.ui.define(
 
         CustomControl.prototype.setExpanded = function (bValue) {
             this.$('.uteMIl-body').toggleClass('uteMIl-body-hidden');
-
             this.setProperty('expanded', bValue);
+            if ((this.getAggregation("_headerExpander")) && (this.getAggregation("_headerExpander").getChecked() !== bValue)) {
+                this.getAggregation("_headerExpander").setChecked(bValue);
+            }
             return this;
         };
 
