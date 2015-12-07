@@ -39,7 +39,10 @@ sap.ui.define(
                 fnTableDataRecdHandler,
                 oDatesJsonModel,
                 that = this,
-                oTimeLineModel;
+                oTimeLineModel,
+                oViewModel = new JSONModel({
+                    expandAll : false
+                });
             this._sContract = oRouteInfo.parameters.coNum;
             this._sBP = oRouteInfo.parameters.bpNum;
             this._sCA = oRouteInfo.parameters.caNum;
@@ -76,6 +79,7 @@ sap.ui.define(
                     { recordIndex: '7', channelIcon: 'sap-icon://nrg-icon/location', description: 'sarath', channel: 'Phone'}
                 ]
             }), 'timeline');
+            this.getView().setModel(oViewModel, 'cj-view');
             aFilterIds = ["BP", "CA"];
             aFilterValues = ["0002473499", "000003040103"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -336,7 +340,7 @@ sap.ui.define(
             mParameters = {
                 filters : aFilters,
                 success : function (oData) {
-                    oCustomerJourneyModel.setData(oData);
+                    oCustomerJourneyModel.setData(that.convertCJModuleData(oData.results));
                     that._oCJDialog.open();
                     that.getOwnerComponent().getCcuxApp().setOccupied(false);
                     jQuery.sap.log.info("Odata Read Successfully:::");
@@ -462,25 +466,24 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.convertCJModuleData = function (results) {
-/*            var columns = [],
+            var columns = [],
                 rows = [],
                 temp,
-                tempColumns = [],
-                continueFlag = false,
                 iCount1,
                 iCount2,
-                aJsonDataNew,
                 aHeaders,
                 aValues,
                 iCounter,
-                row = {};
+                row = {},
+                aJsonDataNew,
+                cells = [];
             for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
                 temp = results[iCount1];
                 if ((temp !== undefined) && (temp.ColHeaders !== undefined)) {
                     aHeaders = temp.ColHeaders.split("~");
                     for (iCount2 = 0; iCount2 < aHeaders.length; iCount2 = iCount2 + 1) {
                         columns.push({
-                            "headers": aHeaders[iCount2]
+                            "header": aHeaders[iCount2]
                         });
                     }
                     results[iCount1].headers = columns;
@@ -489,26 +492,58 @@ sap.ui.define(
                 if ((temp !== undefined) && (temp.ColValues !== undefined)) {
                     aValues = temp.ColValues.split("~");
                     iCounter = 1;
+                    cells = [];
                     for (iCount2 = 0; iCount2 < aValues.length; iCount2 = iCount2 + 1) {
-                        row.header +""+ iCounter = aValues[iCount2];
+                        cells.push({
+                            "value": aValues[iCount2]
+                        });
                     }
-                    rows.push({
-                        "headers": aHeaders[iCount2]
+                    results[iCount1].values = [];
+                    results[iCount1].values.push({
+                        "cells": cells
                     });
-                    results[iCount1].rows = rows;
                 }
+                results[iCount1].expanded = false;
             }
             aJsonDataNew = {};
-            aJsonDataNew.results = {};
-            aJsonDataNew.results.columns = columns;
-            aJsonDataNew.results.rows = rows;
-            return aJsonDataNew;*/
+            aJsonDataNew.results = results;
+            return aJsonDataNew;
         };
-        /**;;
-		 * Converts in to Icons Json format.
+        /**
+		 * Handler for Expand All
 		 *
 		 * @function
-		 * @param {String} Type value from the binding
+		 * @param {oEvent} sap.ui.event
+         *
+		 *
+		 */
+        Controller.prototype.onExpandAll = function (oEvent) {
+            var aRows = oEvent.getSource().getParent().getRows(),
+                oModel = oEvent.getSource().getParent().getModel("Cj-module"),
+                iCount,
+                oTempRow,
+                oContext,
+                sPath,
+                oViewModel = this.getView().getModel('cj-view');
+            for (iCount = 0; iCount < aRows.length; iCount = iCount + 1) {
+                oTempRow = aRows[iCount];
+                oContext = oTempRow.getBindingContext("Cj-module");
+                sPath = oContext.getPath();
+                oModel.setProperty(sPath + "/expanded", !(oContext.getProperty(sPath + "/expanded")));
+            }
+            if (!oViewModel.getProperty("/expandAll")) {
+                oEvent.getSource().addStyleClass("nrgCJModule-table-th-sel");
+                oViewModel.setProperty("/expandAll", true);
+            } else {
+                oEvent.getSource().removeStyleClass("nrgCJModule-table-th-sel");
+                oViewModel.setProperty("/expandAll", false);
+            }
+        };
+        /**
+		 * Handler for onSearch
+		 *
+		 * @function
+		 * @param {oEvent} sap.ui.event
          *
 		 *
 		 */
