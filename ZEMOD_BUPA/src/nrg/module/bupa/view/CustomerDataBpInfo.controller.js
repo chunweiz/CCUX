@@ -31,34 +31,34 @@ sap.ui.define(
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-bupa'), 'oODataSvc');
 
-            //Model to track page edit/save status
+            // Model to track page edit/save status
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBpInfoConfig');
 
-            //Model to hold BP info
+            // Model to hold BP info
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBP');
 
-            //Model to hold BpName
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'ODataBpName');
+            // Model to hold BpName
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBpName');
 
-            //Model to hold BpAddress
+            // Model to hold BpAddress
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBpAddress');
 
-            //Model to hold BpPersonal
+            // Model to hold BpPersonal
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBpPersonal');
 
-            //Model to hold BpContact
+            // Model to hold BpContact
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBpContact');
 
-            //Model to hold BpMarkPreferSet
+            // Model to hold BpMarkPreferSet
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBpMarkPreferSet');
 
-            //Model to hold all titles
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'ODataBpTitles');
+            // Model to hold all titles
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBpTitles');
 
-            //Model to hold all acdemic titles
+            // Model to hold all acdemic titles
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'ODataBpAccTitles');
 
-            //Model to hold all acdemic titles
+            // Model to hold all acdemic titles
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'ODataBpSuffixs');
 
             //Model to hold all phone types
@@ -109,19 +109,219 @@ sap.ui.define(
             });
 
             this._initBpInfoConfigModel();
-
-            this._initDataModel();
         };
 
 
 
         CustomController.prototype.onAfterRendering = function () {
-            return undefined;
+            // Retrieve routing parameters
+            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
+            
+            this._bpNum = oRouteInfo.parameters.bpNum;
+            this._caNum = oRouteInfo.parameters.caNum;
+            this._coNum = oRouteInfo.parameters.coNum;
+
+            // Initialize BP data
+            this._initBPData();
         };
 
         CustomController.prototype.onExit = function () {
             return undefined;
         };
+
+        /*------------------------------------------------ Retrieve Methods -------------------------------------------------*/
+
+        CustomController.prototype._initBPData = function () {
+            this.getView().getModel('oDataBP').setProperty('/PartnerID', true);
+            // Title Section
+            this._retrBpTitles(this._bpNum);
+            this._retrBpAccTitles();
+            this._retrBpSuffixs();
+            this._retrBpName(this._bpNum);
+            // Address Section
+            this._retrBpAddress(this._bpNum);
+            // Personal Section
+            this._retrBpPersonal(this._bpNum);
+            // Contact Section
+            this._retrBpContact(this._bpNum);
+            // Market Preference Section
+            this._retrBpMarkPrefSet(this._bpNum);
+        };
+
+        Controller.prototype._retrBpTitles = function (sBpNum) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath = '/Partners' + '(\'' + sBpNum + '\')/BpTitle/',
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData.results) {
+                        // Create a default empty entry
+                        var emptyEntry = (JSON.parse(JSON.stringify(oData.results[0])));
+                        emptyEntry.Key = '0000';
+                        emptyEntry.Partner = '';
+                        emptyEntry.PartnerID = '';
+                        emptyEntry.Value = '';
+                        oData.results.unshift(emptyEntry);
+
+                        this.getView().getModel('oDataBpTitles').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    // Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrBpAccTitles = function () {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath = '/BpAccTitles/',
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData.results) {
+                        // Create a default empty entry
+                        var emptyEntry = (JSON.parse(JSON.stringify(oData.results[0])));
+                        emptyEntry.Key = '0000';
+                        emptyEntry.Partner = '';
+                        emptyEntry.PartnerID = '';
+                        emptyEntry.Value = '';
+                        oData.results.unshift(emptyEntry);
+
+                        this.getView().getModel('ODataBpAccTitles').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    // Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrBpSuffixs = function () {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath = '/BpSuffixs/',
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData.results) {
+                        // Create a default empty 
+                        var emptyEntry = (JSON.parse(JSON.stringify(oData.results[0])));
+                        emptyEntry.Key = '0000';
+                        emptyEntry.Partner = '';
+                        emptyEntry.PartnerID = '';
+                        emptyEntry.Value = '';
+                        oData.results.unshift(emptyEntry);
+
+                        this.getView().getModel('ODataBpSuffixs').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    // Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrBpName = function (sBpNum) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath = '/Partners' + '(\'' + sBpNum + '\')/BpName/',
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData.PartnerID) {
+                        // Make the key of empty value as "0000", so that the dropdown can recognize it.
+                        if (oData.Title === "") oData.Title = "0000";
+                        if (oData.AcademicTitle === "") oData.AcademicTitle = "0000";
+                        if (oData.Suffix === "") oData.Suffix = "0000";
+
+                        this.getView().getModel('oDataBpName').setData(oData);
+                        this.oDataBpNameBak = jQuery.extend(true, {}, oData);
+
+                        // Determine BP type
+                        if (oData.PartnerType === '1') {
+                            this.getView().getModel('oDataBP').setProperty('/OrgBP', false);
+                            this.getView().getModel('oDataBP').setProperty('/PsnBP', true);
+                        } else {
+                            this.getView().getModel('oDataBP').setProperty('/OrgBP', true);
+                            this.getView().getModel('oDataBP').setProperty('/PsnBP', false);
+                        }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    // Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrBpAddress = function (sBpNum) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath = '/Partners' + '(\'' + sBpNum + '\')/BpAddress/',
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        if (oData.results[0]) {
+                            if (!this._addressID) {
+                                this._addressID = oData.results[0].AddressID;
+                            }
+                            this.getView().getModel('oDataBpAddress').setData(oData.results[0]);
+                            this.getView().getModel('oDtaAddrEdit').setData(oData.results[0]);
+                            this.oDataBpAddressBak = jQuery.extend(true, {}, oData);
+                        }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    // Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         CustomController.prototype._getMessageProcessor = function () {
             if (!this._oControlMessageProcessor) {
@@ -144,6 +344,7 @@ sap.ui.define(
 
         CustomController.prototype._initBpInfoConfigModel = function () {
             var oModel = this.getView().getModel('oBpInfoConfig');
+            
             oModel.setProperty('/titleEditVisible', true);
             oModel.setProperty('/titleSaveVisible', false);
             oModel.setProperty('/titleEditable', false);
@@ -156,6 +357,7 @@ sap.ui.define(
             oModel.setProperty('/personalInfoSaveVisible', false);
             oModel.setProperty('/personalInfoSSEditable', false);
             oModel.setProperty('/personalInfoDLEditable', false);
+            oModel.setProperty('/personalInfoEditable', false);
 
             oModel.setProperty('/contactInfoEditVisible', true);
             oModel.setProperty('/contactInfoSaveVisible', false);
@@ -180,17 +382,17 @@ sap.ui.define(
 
         CustomController.prototype.onTitleCancel = function () {    //onTitleCancel
             var oConfigModel = this.getView().getModel('oBpInfoConfig'),
-                bpTitleModel = this.getView().getModel('ODataBpName');
+                bpTitleModel = this.getView().getModel('oDataBpName');
             oConfigModel.setProperty('/titleEditVisible', true);
             oConfigModel.setProperty('/titleSaveVisible', false);
             oConfigModel.setProperty('/titleEditable', false);
 
             // Make the key of empty value as "0000", so that the dropdown can recognize it.
-            if (this.ODataBpNameBak.Title === "") this.ODataBpNameBak.Title = "0000";
-            if (this.ODataBpNameBak.AcademicTitle === "") this.ODataBpNameBak.AcademicTitle = "0000";
-            if (this.ODataBpNameBak.Suffix === "") this.ODataBpNameBak.Suffix = "0000";
+            if (this.oDataBpNameBak.Title === "") this.oDataBpNameBak.Title = "0000";
+            if (this.oDataBpNameBak.AcademicTitle === "") this.oDataBpNameBak.AcademicTitle = "0000";
+            if (this.oDataBpNameBak.Suffix === "") this.oDataBpNameBak.Suffix = "0000";
 
-            bpTitleModel.setData(jQuery.extend(true, {}, this.ODataBpNameBak));
+            bpTitleModel.setData(jQuery.extend(true, {}, this.oDataBpNameBak));
         };
 
         CustomController.prototype.onTitleEdit = function () {
@@ -214,7 +416,7 @@ sap.ui.define(
             oConfigModel.setProperty('/titleSaveVisible', false);
             oConfigModel.setProperty('/titleEditable', false);
 
-            if (JSON.stringify(this.getView().getModel('ODataBpName').oData) === JSON.stringify(this.ODataBpNameBak)) {
+            if (JSON.stringify(this.getView().getModel('oDataBpName').oData) === JSON.stringify(this.oDataBpNameBak)) {
                 sap.ui.commons.MessageBox.alert("There is no change for Title/Name.");
                 return;
             }
@@ -231,7 +433,7 @@ sap.ui.define(
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Title/Name Update Failed");
                     // If save failed, roll back to previous value
-                    this.getView().getModel('ODataBpName').setData(jQuery.extend(true, {}, this.ODataBpNameBak));
+                    this.getView().getModel('oDataBpName').setData(jQuery.extend(true, {}, this.oDataBpNameBak));
                     // Dismiss the loading indicator
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
@@ -240,11 +442,11 @@ sap.ui.define(
             if (oModel) {
 
                 // Make the key of empty value as "", so that the system can recognize it.
-                if (this.getView().getModel('ODataBpName').oData.Title === "0000") this.getView().getModel('ODataBpName').oData.Title = "";
-                if (this.getView().getModel('ODataBpName').oData.AcademicTitle === "0000") this.getView().getModel('ODataBpName').oData.AcademicTitle = "";
-                if (this.getView().getModel('ODataBpName').oData.Suffix === "0000") this.getView().getModel('ODataBpName').oData.Suffix = "";
+                if (this.getView().getModel('oDataBpName').oData.Title === "0000") this.getView().getModel('oDataBpName').oData.Title = "";
+                if (this.getView().getModel('oDataBpName').oData.AcademicTitle === "0000") this.getView().getModel('oDataBpName').oData.AcademicTitle = "";
+                if (this.getView().getModel('oDataBpName').oData.Suffix === "0000") this.getView().getModel('oDataBpName').oData.Suffix = "";
 
-                oModel.update(sPath, this.getView().getModel('ODataBpName').oData, oParameters);
+                oModel.update(sPath, this.getView().getModel('oDataBpName').oData, oParameters);
             }
         };
 
@@ -368,11 +570,12 @@ sap.ui.define(
                 bpPersonalModel = this.getView().getModel('oDataBpPersonal');
             oConfigModel.setProperty('/personalInfoEditVisible', true);
             oConfigModel.setProperty('/personalInfoSaveVisible', false);
-            oConfigModel.setProperty('/personalInfoEditable', false);
 
-            // Make DL & SSN uneditable
+            // Editability
             oConfigModel.setProperty('/personalInfoSSEditable', false);
             oConfigModel.setProperty('/personalInfoDLEditable', false);
+            oConfigModel.setProperty('/personalInfoEditable', false);
+
 
             bpPersonalModel.setData(jQuery.extend(true, {}, this.oDataBpPersonalBak));
         };
@@ -382,6 +585,9 @@ sap.ui.define(
                 oBpPersonalInfoModel = this.getView().getModel('oDataBpPersonal');
             oConfigModel.setProperty('/personalInfoEditVisible', false);
             oConfigModel.setProperty('/personalInfoSaveVisible', true);
+
+            // Editability
+            oConfigModel.setProperty('/personalInfoEditable', true);
 
             if (oBpPersonalInfoModel.getData().SSN === '') {
                 oConfigModel.setProperty('/personalInfoSSEditable', true);
@@ -402,11 +608,11 @@ sap.ui.define(
 
             oConfigModel.setProperty('/personalInfoEditVisible', true);
             oConfigModel.setProperty('/personalInfoSaveVisible', false);
-            oConfigModel.setProperty('/personalInfoEditable', false);
             
-            // Make DL & SSN uneditable
+            // Editability
             oConfigModel.setProperty('/personalInfoSSEditable', false);
             oConfigModel.setProperty('/personalInfoDLEditable', false);
+            oConfigModel.setProperty('/personalInfoEditable', false);
 
             if (JSON.stringify(bpPersonalModel.oData) === JSON.stringify(this.oDataBpPersonalBak)) {
                 sap.ui.commons.MessageBox.alert("There is no change for Personal Info.");
@@ -610,199 +816,7 @@ sap.ui.define(
             oEvnPhnType.setProperty('/', oEvnTypes);
         };
 
-        CustomController.prototype._initDataModel = function () {
-            var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
 
-            this._bpNum = oRouteInfo.parameters.bpNum;
-            this._caNum = oRouteInfo.parameters.caNum;
-            this._coNum = oRouteInfo.parameters.coNum;
-
-            this.getView().getModel('oDataBP').setProperty('/PartnerID', true);
-
-
-            this._retrAllData(this._bpNum);
-        };
-
-        Controller.prototype._retrAllData = function (bpNum) {
-            this._retrBpTitles();
-            this._retrBpAccTitles();
-            this._retrBpSuffixs();
-            //this._retrBpName(bpNum);   //Should be called after retrBpTitles is done. Moved to success function of it
-            this._retrBpAddress(bpNum);
-            this._retrBpPersonal(bpNum);
-            this._retrBpContact(bpNum);
-            this._retrBpMarkPrefSet(bpNum);
-        };
-
-        Controller.prototype._retrBpTitles = function () {
-            var oModel = this.getView().getModel('oODataSvc'),
-                sPath,
-                oParameters,
-                sBpNum = this._bpNum;
-
-            //sPath = '/BpTitles('')/';
-            sPath = '/Partners' + '(\'' + sBpNum + '\')/BpTitle/';
-
-            oParameters = {
-                success : function (oData) {
-                    if (oData) {
-                        if (oData.results) {
-
-                            // Create a default empty 
-                            var emptyEntry = (JSON.parse(JSON.stringify(oData.results[0])));
-                            emptyEntry.Key = '0000';
-                            emptyEntry.Partner = '';
-                            emptyEntry.PartnerID = '';
-                            emptyEntry.Value = '';
-                            oData.results.unshift(emptyEntry);
-
-                            this.getView().getModel('ODataBpTitles').setData(oData);
-                            this._retrBpName(sBpNum);
-                        }
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    //Need to put error message
-                    var t = 1.0;
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
-        };
-
-        Controller.prototype._retrBpAccTitles = function () {
-            var oModel = this.getView().getModel('oODataSvc'),
-                sPath,
-                oParameters;
-
-            sPath = '/BpAccTitles/';
-
-            oParameters = {
-                success : function (oData) {
-                    if (oData) {
-                        if (oData.results) {
-
-                            // Create a default empty 
-                            var emptyEntry = (JSON.parse(JSON.stringify(oData.results[0])));
-                            emptyEntry.Key = '0000';
-                            emptyEntry.Partner = '';
-                            emptyEntry.PartnerID = '';
-                            emptyEntry.Value = '';
-                            oData.results.unshift(emptyEntry);
-
-                            this.getView().getModel('ODataBpAccTitles').setData(oData);
-                        }
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    //Need to put error message
-                    var t = 1.0;
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
-        };
-
-        Controller.prototype._retrBpSuffixs = function () {
-            var oModel = this.getView().getModel('oODataSvc'),
-                sPath,
-                oParameters;
-
-            sPath = '/BpSuffixs/';
-
-            oParameters = {
-                success : function (oData) {
-                    if (oData) {
-                        if (oData.results) {
-
-                            // Create a default empty 
-                            var emptyEntry = (JSON.parse(JSON.stringify(oData.results[0])));
-                            emptyEntry.Key = '0000';
-                            emptyEntry.Partner = '';
-                            emptyEntry.PartnerID = '';
-                            emptyEntry.Value = '';
-                            oData.results.unshift(emptyEntry);
-
-                            this.getView().getModel('ODataBpSuffixs').setData(oData);
-                        }
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    //Need to put error message
-                    var t = 1.0;
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
-        };
-
-        Controller.prototype._retrBpName = function (sBpNum) {
-            var oModel = this.getView().getModel('oODataSvc'),
-                sPath,
-                oParameters;
-
-            sPath = '/Partners' + '(\'' + sBpNum + '\')/BpName/';
-
-            oParameters = {
-                success : function (oData) {
-                    if (oData) {
-                        if (oData.PartnerID) {
-                            // Make the key of empty value as "0000", so that the dropdown can recognize it.
-                            if (oData.Title === "") oData.Title = "0000";
-                            if (oData.AcademicTitle === "") oData.AcademicTitle = "0000";
-                            if (oData.Suffix === "") oData.Suffix = "0000";
-
-                            this.getView().getModel('ODataBpName').setData(oData);
-                            this.ODataBpNameBak = jQuery.extend(true, {}, oData);
-                        }
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    //Need to put error message
-                    var t = 1.0;
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
-        };
-
-        Controller.prototype._retrBpAddress = function (sBpNum) {
-            var oModel = this.getView().getModel('oODataSvc'),
-                sPath,
-                oParameters;
-
-            sPath = '/Partners' + '(\'' + sBpNum + '\')/BpAddress/';
-
-            oParameters = {
-                success : function (oData) {
-                    if (oData) {
-                        if (oData.results[0]) {
-                            if (!this._addressID) {
-                                this._addressID = oData.results[0].AddressID;
-                            }
-                            this.getView().getModel('oDataBpAddress').setData(oData.results[0]);
-                            this.getView().getModel('oDtaAddrEdit').setData(oData.results[0]);
-                            this.oDataBpAddressBak = jQuery.extend(true, {}, oData);
-                        }
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    //Need to put error message
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
-        };
 
         Controller.prototype._retrBpPersonal = function (sBpNum) {
             var oModel = this.getView().getModel('oODataSvc'),
@@ -1115,7 +1129,7 @@ sap.ui.define(
 
         };
 
-        Controller.prototype._formatVrfyMark = function (sIndicator) {
+        Controller.prototype._formatGreenCheck = function (sIndicator) {
             if (sIndicator === 'x' || sIndicator === 'X') {
                 return true;
             } else {
@@ -1123,7 +1137,7 @@ sap.ui.define(
             }
         };
 
-        Controller.prototype._formatVrfyMarkRedX = function (sIndicator, sDLSSN) {
+        Controller.prototype._formatRedX = function (sIndicator, sDLSSN) {
             if (sDLSSN) {
                 if (sIndicator === 'x' || sIndicator === 'X') {
                     return false;

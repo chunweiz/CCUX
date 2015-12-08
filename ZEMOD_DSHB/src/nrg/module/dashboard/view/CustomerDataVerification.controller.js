@@ -1311,7 +1311,8 @@ sap.ui.define(
                 oComponent = this.getOwnerComponent(),
                 oWebUiManager = oComponent.getCcuxWebUiManager(),
                 iCompleteCheck = 0,
-                checkComplete;
+                checkComplete,
+                eventBus = sap.ui.getCore().getEventBus();
 
             // Display the loading indicator
             oComponent.getCcuxApp().setOccupied(true);
@@ -1335,6 +1336,8 @@ sap.ui.define(
                 if (iCompleteCheck === 2) {
                     oComponent.getCcuxApp().setOccupied(false);
                     clearInterval(checkComplete);
+                    // Inform customer journey
+                    eventBus.publish("nrg.module.dashoard", "eAfterConfirmed", {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
                 }
             }, 100);
 

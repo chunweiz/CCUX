@@ -10,7 +10,9 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "Channel":"Chat",
-            "Count":" 50"
+            "Count":" 50",
+            "StartDate":null,
+            "EndDate":null
          },
          {
             "__metadata":{
@@ -20,8 +22,10 @@
             },
             "BP":"0002473499",
             "CA":"000003040103",
-            "Channel":"Cont",
-            "Count":"111"
+            "Channel":"Contact Logs",
+            "Count":"111",
+            "StartDate":null,
+            "EndDate":null
          },
          {
             "__metadata":{
@@ -31,8 +35,10 @@
             },
             "BP":"0002473499",
             "CA":"000003040103",
-            "Channel":"Surv",
-            "Count":"202"
+            "Channel":"Correspondence",
+            "Count":"  3",
+            "StartDate":null,
+            "EndDate":null
          },
          {
             "__metadata":{
@@ -42,8 +48,10 @@
             },
             "BP":"0002473499",
             "CA":"000003040103",
-            "Channel":"Surv",
-            "Count":"119"
+            "Channel":"Survey",
+            "Count":"119",
+            "StartDate":null,
+            "EndDate":null
          },
          {
             "__metadata":{
@@ -53,19 +61,10 @@
             },
             "BP":"0002473499",
             "CA":"000003040103",
-            "Channel":"Web",
-            "Count":" 45"
-         },
-         {
-            "__metadata":{
-               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJFrequencySet(BP='0002473499',CA='000003040103')",
-               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJFrequencySet(BP='0002473499',CA='000003040103')",
-               "type":"ZE_CCUX_CJ_SRV.CJFrequency"
-            },
-            "BP":"0002473499",
-            "CA":"000003040103",
-            "Channel":"Web",
-            "Count":" 41"
+            "Channel":"Web Logs",
+            "Count":" 45",
+            "StartDate":null,
+            "EndDate":null
          }
       ]
    }

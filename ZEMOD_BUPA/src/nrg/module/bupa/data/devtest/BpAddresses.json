@@ -3,8 +3,8 @@
         "results":[
             {
                 "__metadata":{
-                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpAddresses(PartnerID='64041',AddressID='0148580582')",
-                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpAddresses(PartnerID='64041',AddressID='0148580582')",
+                    "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpAddresses(PartnerID='64041',AddressID='0001361307')",
+                    "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpAddresses(PartnerID='64041',AddressID='0001361307')",
                     "type":"ZE_CCUX_SRV.BpAddress"
                 },
                 "AddressInfo":{
@@ -12,14 +12,15 @@
                         "type":"ZE_CCUX_SRV.AddressInfo"
                     },
                     "StandardFlag":"X",
-                    "Street":"Fannin St.",
-                    "HouseNo":"1234",
-                    "UnitNo":"10",
-                    "City":"ALVIN",
+                    "co":"TEST C/O",
+                    "Street":"",
+                    "HouseNo":"",
+                    "UnitNo":"",
+                    "City":"KATY",
                     "State":"TX",
-                    "ZipCode":"77002",
-                    "PoBox":"",
-                    "ShortForm":"1234 Fannin St., 10 / ALVIN TX 77002",
+                    "ZipCode":"77492-1123",
+                    "PoBox":"1123",
+                    "ShortForm":"PO Box 1123 / KATY TX 77492-1123",
                     "ValidFrom":null,
                     "ValidTo":null,
                     "Country":"",
@@ -48,12 +49,12 @@
                     "FooterLine3":""
                 },
                 "PartnerID":"64041",
-                "AddressID":"0148580582",
+                "AddressID":"0001361307",
                 "ChkAddr":"",
                 "AddrChkValid":"",
                 "Partner":{
                     "__deferred":{
-                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpAddresses(PartnerID='64041',AddressID='0148580582')/Partner"
+                        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/BpAddresses(PartnerID='64041',AddressID='0001361307')/Partner"
                     }
                 }
             }

@@ -1,8 +1,212 @@
-.nrgBupa-cusDataBpInfo{
-//    height: 614px;
+.nrgBupa-cusDataBpInfo {
     padding: 17px 30px 18px 25px !important;
-
     font-family: @nrgFontFamily;
+
+    // Info Line
+    & > .nrgBupa-cusDataBpInfo-infoLine {
+        margin-top: 25px;
+
+        // Header
+        & > .uteMIl-hdr {
+            background: @nrgColor-blue-pearl;
+            display: block;
+            position: relative;
+            border-radius: 4px;
+            padding: 10px;
+
+            // Text
+            & .nrgBupa-cusDataBpInfo-infoLineHeader-txt {
+
+                & span {
+                    font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
+                    color: @nrgColor-grey-dark;
+                }
+            }
+
+            // Expander
+            & .uteMChkBox-chk {
+                cursor: pointer;
+
+                &::before {
+                    height: 10px;
+                }
+
+                &::after {
+                    left: 2px;
+                    height: 10px;
+                }
+            }
+
+
+        }
+
+        // Body
+        & > .uteMIl-body {
+            margin-top:20px;
+        
+            // Content Row
+            & > .nrgBupa-cusDataBpInfo-contentRow {
+                margin-bottom: 10px;
+                display: flex;
+                align-items: center;
+
+                // Title
+                & > .nrgBupa-cusDataBpInfo-contentRow-title {
+                    font: @nrgFontWeight-semiBold @nrgFontSize-base @nrgFontFamily;
+                    color: @nrgColor-grey-dark;
+                    display: inline-block;
+                    width: 120px;
+
+                    &.short {
+                        width: auto;
+                        margin-right: 15px;
+                    }
+                }
+
+                // Input
+                & > .nrgBupa-cusDataBpInfo-contentRow-input {
+                    border-bottom:solid @nrgColor-grey-light 1px;
+                    font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
+                    color: @nrgColor-grey-dark;
+                    min-width: 0;
+
+                    &.median {
+                        width: 375px;
+                    }
+
+                    &.long {
+                        width: 426px;
+                    }
+
+                    &.verylong {
+                        width: 500px;
+                    }
+
+                    &.short {
+                        width: 205px;
+                    }
+
+                    &.veryshort {
+                        width: 250px;
+                    }
+
+                    &.supershort {
+                        width: 172px;
+                    }
+
+                    &.shortest {
+                        width: 142px;
+                    }
+                }
+
+                // Dropdown
+                & > .nrgBupa-cusDataBpInfo-dropdown {
+                    background-color: @nrgColor-blue-pearl;
+                    font: @nrgFontWeight-semiBold @nrgFontSize-small @nrgFontFamily;
+                    color: @nrgColor-blue-link;
+                    border-radius: 4px;
+                    
+                    & > .uteMDd-hdr {
+                        border: none;
+                        margin-bottom: 4px;
+                        cursor: pointer;
+                        width: 375px;
+                        height: 26px;
+
+                        & > .uteMDd-hdrExpander{
+                            float: right;
+                            padding: 13px 10px;
+                        }
+                    }
+
+                    & > .uteMDd-picker {
+                        width: 375px;
+                        margin-top: 10px;
+                        background-color: @nrgColor-blue-pearl;
+                    }
+                }
+
+                // Margin
+                & > .middle-space {
+                    margin-right: 15px;
+                }
+
+                // Green Checkbox
+                & > .nrgBupa-cusDataBpInfo-greenCheck {
+                    height: 17px;
+                    width: 17px;
+
+                    & .uteMChkBox-chk {
+                        height: 17px;
+                        width: 17px;
+                        background-color: transparent;
+                        border: none;
+
+                        &::before {
+                            border-color: @nrgColor-green-highlight;
+                            left: 0;
+                            top: 0;
+                            width: 6px;
+                            height: 12px;
+                            background-color: transparent;
+                        }
+                    }
+                }
+
+                // Red X
+                & .nrgBupa-cusDataBpInfo-redX {
+                    height: 17px;
+                    width: 17px;
+
+                    span {
+                        display: inline-block;
+                        transform:scale(1.5,1); /* W3C */
+                        -webkit-transform:scale(1.5,1); /* Safari and Chrome */
+                        -moz-transform:scale(1.5,1); /* Firefox */
+                        -ms-transform:scale(1.5,1); /* IE 9 */
+                        -o-transform:scale(1.5,1); /* Opera */
+                        color: @nrgColor-red-pale;
+                        position: relative;
+                        left: 4px;
+                        top: -2px;
+                    }
+                }
+            }
+
+            // Button Row
+            & > .nrgBupa-cusDataBpInfo-btnRow {
+                margin-bottom: 10px;
+                height: 28px;
+
+                // Button
+                & > .nrgBupa-cusDataBpInfo-btn {
+                    margin: 0;
+                    padding: 0;
+                    float: right;
+                    line-height: 27px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    & > .uteMBtn-text{
+                        font: @nrgFontWeight-regular @nrgFontSize-large @nrgFontFamily;
+                    }
+
+                    &:last-child {
+                        margin: 0 15px 0 0;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
 
     & > .nrgBupa-cusDataBpInfo-infoLine > .uteMIl-body > .clearfix:before{
         display: table;
@@ -51,27 +255,6 @@
         float: left;
     }
 
-    & > .nrgBupa-cusDataBpInfo-infoLine{
-        margin-top: 35px;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine > .uteMIl-hdr > .uteMIl-hdrContent > .nrgBupa-cusDataBpInfo-infoLineHeader-txt > span{
-        font: @nrgFontWeight-semiBold @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .uteMIl-hdr{
-        background: @nrgColor-blue-pearl;
-        display: block;
-        position: relative;
-        border-radius: 4px;
-        padding: 6px;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .uteMIl-body{
-        margin-top:20px;
-    }
-
     & > .nrgBupa-cusDataBpInfo-infoLine .uteMIl-hdrExpander{
         float: right;
     }
@@ -89,12 +272,6 @@
         margin: 0;
     }
 
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-divrow{
-        margin-bottom: 4px;
-        display: flex;
-        align-items: center;
-    }
-
     & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-l{
         padding: 0;
         margin: 0;
@@ -104,33 +281,6 @@
 
     & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-l > table{
         margin-top: 8px;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-dropdown{
-        background-color: @nrgColor-blue-pearl;
-        font: @nrgFontWeight-semiBold @nrgFontSize-small @nrgFontFamily;
-        color: @nrgColor-blue-link;
-        border-radius: 4px;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-dropdown > .uteMDd-hdr{
-        border: none;
-        margin-bottom: 4px;
-        cursor: pointer;
-        width: 355px;
-        height: 26px;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-dropdown > .uteMDd-hdr > .uteMDd-hdrExpander{
-        float: right;
-        padding: 13px 10px;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-lbl{
-        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-        display: inline-block;
-        width: 120px;
     }
 
     & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-lbl-r{
@@ -143,12 +293,6 @@
 
     & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-mktlbl{
         font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-cnt{
-        border-bottom:solid @nrgColor-grey-light 1px;
-        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
         color: @nrgColor-grey-dark;
     }
 
@@ -177,66 +321,9 @@
         min-height: 20px;
     }
 
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-cnt-sufx{
-        margin-left: 224px;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-l .nrgBupa-cusDataBpInfo-redX{
-        display: inline-block;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-l .nrgBupa-cusDataBpInfo-redX > span{
-        font-size: @nrgFontSize-base;
-        font-weight: @nrgFontWeight-semiBold;
-        color: @nrgColor-red-pale;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-l .nrgBupa-cusDataBpInfo-halChb > label{
-        border-color: @nrgColor-green-highlight;
-        top: 3px;
-        position: inherit;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-l .nrgBupa-cusDataBpInfo-halChb > label::before{
-        border-color: @nrgColor-green-highlight;
-        background-color: transparent;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-l .uteTextfield.uteTextfield-noBorder>.uteTextfield-noBorder-input {
-        width: 100% !important;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-l .uteTextfield.uteTextfield-noBorder>.uteTextfield-noBorder-input:focus {
-        background-color: @nrgColor-blue-pearl;
-    }
-
+ 
     & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-btn{
         margin-top: 15px;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-btn > .nrgBupa-cusDataBpInfo-CommBtnEdit{
-        margin: 0;
-        padding: 0;
-        // width: 110px;
-        // height: 24px;
-        float: right;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-btn > .nrgBupa-cusDataBpInfo-CommBtnEdit > .uteMBtn-text{
-        font: @nrgFontWeight-regular @nrgFontSize-large @nrgFontFamily;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-btn > .nrgBupa-cusDataBpInfo-CommBtnSave{
-        margin: 0 5px 0 0;
-        padding: 0;
-        // width: 110px;
-        // height: 24px;
-        // margin-right: 10px;
-        float: right;
-    }
-
-    & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-btn > .nrgBupa-cusDataBpInfo-CommBtnSave > .uteMBtn-text{
-        font: @nrgFontWeight-regular @nrgFontSize-large @nrgFontFamily;
     }
 
     & > .nrgBupa-cusDataBpInfo-infoLine .nrgBupa-cusDataBpInfo-l > table > tbody > tr > td > .nrgBupa-cusDataBpInfo-chb{
