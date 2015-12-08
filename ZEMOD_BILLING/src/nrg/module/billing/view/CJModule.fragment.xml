@@ -25,29 +25,29 @@
                     <u:Tag class="nrgCJModule-selPanel-fields-fd">
                         <u:DatePicker width="7rem" id="idnrgBllCJ-toDate"/>
                     </u:Tag>
-                     <um:Dropdown selectedKey="1" class="nrgCJModule-selPanel-fields-fd" placeholder="ALL" >
-                        <um:DropdownItem key="1" >
+                     <um:Dropdown selectedKey="All" class="nrgCJModule-selPanel-fields-fd" placeholder="ALL" id="idnrgCJModule-DD">
+                        <um:DropdownItem key="ALL" >
                             <u:Tag text="ALL" />
                         </um:DropdownItem>
-                        <um:DropdownItem key="2" >
+                        <um:DropdownItem key="Correspondence" >
                             <u:Tag text="Correspondence" />
                         </um:DropdownItem>
-                        <um:DropdownItem key="3">
+                        <um:DropdownItem key="Survey">
                             <u:Tag text="Survey" />
                         </um:DropdownItem>
-                        <um:DropdownItem key="4">
+                        <um:DropdownItem key="Chat">
                             <u:Tag text="Chat" />
                         </um:DropdownItem>
-                        <um:DropdownItem key="5">
+                        <um:DropdownItem key="Phone">
                             <u:Tag text="Phone" />
                         </um:DropdownItem>
-                        <um:DropdownItem key="6">
+                        <um:DropdownItem key="IVR">
                             <u:Tag text="IVR" />
                         </um:DropdownItem>
-                        <um:DropdownItem key="7">
+                        <um:DropdownItem key="Website">
                             <u:Tag text="Website" />
                         </um:DropdownItem>
-                        <um:DropdownItem key="8">
+                        <um:DropdownItem key="Mobile">
                             <u:Tag text="Mobile" />
                         </um:DropdownItem>
                     </um:Dropdown>
@@ -75,6 +75,7 @@
                         channelIcon="{timeline>channelIcon}"
                         selected="{timeline>selected}"
                         channel="{timeline>channel}"
+                        topLabel="{timeline>topLabel}"
                         press="._onChannelSelect"
                         cd:recordIndex="{timeline>key}" />
                  </ch:CustomerJourneyTimeline>
