@@ -110,7 +110,7 @@ sap.ui.define(
             } else {
                 return;
             }
-            oLeft = (this.getParent().getDomRef('channelContainer').scrollLeft - this.getDomRef().offsetLeft) + 600;
+            oLeft = (this.getParent().getDomRef('channelContainer').scrollLeft - this.getDomRef().offsetLeft) + 500;
             if (Math.abs(oLeft) >= 590) {
                 oLeft = -510;
             } else if (Math.abs(oLeft) >= 490) {

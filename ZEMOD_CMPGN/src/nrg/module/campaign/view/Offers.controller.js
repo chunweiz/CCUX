@@ -788,7 +788,7 @@ sap.ui.define(
         Controller.prototype.formatDifference = function (sCurInvoiceAmount, sEstimateInvoiceAmount) {
             if ((sCurInvoiceAmount) && (sEstimateInvoiceAmount)) {
                 if ((parseFloat(sCurInvoiceAmount)) && (parseFloat(sEstimateInvoiceAmount))) {
-                    return parseFloat(sCurInvoiceAmount) - parseFloat(sEstimateInvoiceAmount);
+                    return (parseFloat(sCurInvoiceAmount) - parseFloat(sEstimateInvoiceAmount)).toFixed(2);
                 }
             } else {
                 return "N/A";

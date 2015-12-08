@@ -12,7 +12,8 @@
                         float: right;
                 }
                 & > .nrgBllCJ-header-btn-sel {
-                        color: @nrgColor-grey-light;
+                        color: @nrgColor-grey-dark;
+                        font-weight: @nrgFontWeight-bold;
                 }
         }
         & > .nrgBllCJ-main {
@@ -25,9 +26,10 @@
                     border-right: 2px solid @nrgColor-grey-highlight;
                     & > .nrgBllCJ-main-frq-ttl {
                             display:inline-block;
-                            color: @nrgColor-grey-light;
+                            color: @nrgColor-grey-dark;
                             font-size: @nrgFontSize-small;
-                            font-weight: @nrgFontWeight-semiBold;
+                            font-weight: @nrgFontWeight-bold;
+                            margin-left: 5px;
                     }
                     & > .nrgBllCJ-main-frq-pie {
                             height: "100%";
@@ -38,45 +40,46 @@
                     display:inline-block;
                     vertical-align: top;
                     color: @nrgColor-grey-highlight;
-                	max-width: 70%;
+                    max-width: 75%;
+	                width: 75%;
                     & > .nrgBllCJ-main-timeline-details {
                             width: 30%;
                             display: inline-block;
                             vertical-align: top;
                             & > .nrgBllCJ-main-timeline-ttl {
                                     display:inline-block;
-                                    color: @nrgColor-grey-light;
+                                    color: @nrgColor-grey-dark;
                                     vertical-align: top;
                                     font-size: @nrgFontSize-small;
-                                    font-weight: @nrgFontWeight-semiBold;
+                                    font-weight: @nrgFontWeight-bold;
                                     margin: 5px;
                             }
                             & > .nrgBllCJ-timeline-btns {
-                                    margin: 5px 10px;
-	                                width: 7rem;
+                                    margin: 5px 12px;
+	                                width: 5rem;
                             }
                             & > .nrgBllCJ-timeline-gobtn {
-                                    margin: 5px 10px 5px 220px;
-                                    min-width: 2rem;
+                                    margin: 5px 10px;
+	                                min-width: 2rem;
                             }
                             & > .nrgBllCJ-timeline-btns.nrgBllCJ-timeline-btns-sel {
                                    background-color: @nrgColor-grey-inactive;
                             }
                             & > .nrgBllCJ-timeline-calendars {
-                                    margin: 5px 6px;
+                                    margin: 5px 0px 5px 5px;
                             }
                             & > .nrgBllCJ-timeline-referrals {
                                     color: #4d4d4d;
                                     font-size: 10pt;
                                     margin-left: 9px;
-                                    max-height: 6rem;
+                                    max-height: 9rem;
                                     overflow-y: auto;
                                     border: 1px solid @nrgColor-grey-light;
                                     padding: 0px 10px;
                                     width: 15.5rem;
                                     & > .nrgBllCJ-timeline-referral {
                                                 height: 2.7rem;
-	                                            border-bottom: 1px solid;
+	                                            border-bottom: 1px dashed @nrgColor-grey-light;
                                         & > .nrgBllCJ-timeline-referral-id {
                                                 height : 25px;
                                              & > .nrgBllCJ-timeline-referral-id-text {
@@ -109,6 +112,12 @@
             }
 
         }
+    & .nrgBllCj-noData {
+        display: inline-block;
+        font-size: @nrgFontSize-small;
+        font-weight: @nrgFontWeight-bold;
+        color: @nrgColor-grey-dark;
+    }
 
 }
 .nrgCJModule-dialog {
@@ -116,23 +125,48 @@
     &  .nrgCJModule {
         & > .nrgCJModule-selPanel {
             & > .nrgCJModule-selPanel-heading {
+                    height: 18px;
                 & > .nrgCJModule-selPanel-heading-hd {
                         display: inline-block;
-                        width : 22%;
+                        width : 14%;
+                        font-size: @nrgFontSize-small;
+                        margin-left: 5px;
                 }
+
             }
             & > .nrgCJModule-selPanel-fields {
                 & > .nrgCJModule-selPanel-fields-fd {
                         display: inline-block;
-                        width: 22%;
+                        width: 14.5%;
                 }
+
             }
         }
         & >.nrgCJModule-tableTag {
             max-height: 25rem;
             overflow-y: auto;
             & > .nrgCJModule-table {
-
+                & .nrgCJModule-table-th {
+                    & > .nrgCJModule-table-th-contact {
+                        cursor : pointer;
+                    }
+                    & > .nrgCJModule-table-th-contact:after {
+                        content: '';
+                        position: absolute;
+                        width: 12px;
+                        height: 12px;
+                        border: 2px solid #4d4d4d;
+                        border-top: none;
+                        border-left: none;
+                        transform: translate(13px,4px)rotate(45deg);
+                        margin-left: 18.5rem;
+                    }
+                }
+                & .nrgCJModule-table-th+.nrgCJModule-table-th-sel {
+                    & > .nrgCJModule-table-th-contact:after {
+                            transform: translate(13px, 8px) rotate(-135deg);
+                    }
+                }
 
                 & > tbody > .nrgCJModule-table-Row {
                         background-color: transparent;
@@ -153,6 +187,19 @@
             }
         }
 
+    }
+    & .nrgChannelCJIcons {
+        color: #cacacb;
+    }
+    & .nrgCJTChannel-selected::after {
+        content: "";
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        display: block;
+        width: 0;
+        height: 0px;
+        border-left: 0px;
     }
 }
 .nrgCustJCChart-text{
@@ -200,5 +247,5 @@
 }
 .nrgChannelCJIcons > .nrgCJT-channelContainer{
     width : auto;
-    height: auto;
+    height: 4rem;
 }

@@ -9,8 +9,10 @@
                 </Key>
                 <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="4" Name="Channel" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="40" Name="Channel" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="4" Name="Count" Nullable="false" Type="Edm.String"/>
+                <Property Name="StartDate" Precision="7" Type="Edm.DateTimeOffset"/>
+                <Property Name="EndDate" Precision="7" Type="Edm.DateTimeOffset"/>
             </EntityType>
             <EntityType Name="CJLifeCycle">
                 <Key>
@@ -22,8 +24,8 @@
                 <Property MaxLength="40" Name="Interval1" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="40" Name="Interval2" Nullable="false" Type="Edm.String"/>
                 <Property Name="FirstButtonEnabled" Nullable="false" Type="Edm.Boolean"/>
-                <Property Name="FromDate" Nullable="false" Precision="7" Type="Edm.DateTimeOffset"/>
-                <Property Name="ToDate" Nullable="false" Precision="7" Type="Edm.DateTimeOffset"/>
+                <Property Name="StartDate" Precision="7" Type="Edm.DateTimeOffset"/>
+                <Property Name="EndDate" Precision="7" Type="Edm.DateTimeOffset"/>
                 <NavigationProperty FromRole="FromRole_LifeCycle_Referral" Name="CJReferralSet" Relationship="ZE_CCUX_CJ_SRV.LifeCycle_Referral" ToRole="ToRole_LifeCycle_Referral"/>
             </EntityType>
             <EntityType Name="CJIcons">
@@ -35,11 +37,13 @@
                 <Property MaxLength="10" Name="BP" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="4" Name="key" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="10" Name="Icon" Nullable="false" Type="Edm.String"/>
-                <Property MaxLength="4" Name="Channel" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="40" Name="Icon" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="40" Name="Channel" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="20" Name="TopLabel" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1000" Name="Description" Nullable="false" Type="Edm.String"/>
                 <Property Name="RightDivider" Nullable="false" Type="Edm.Boolean"/>
+                <Property Name="StartDate" Precision="7" Type="Edm.DateTimeOffset"/>
+                <Property Name="EndDate" Precision="7" Type="Edm.DateTimeOffset"/>
             </EntityType>
             <EntityType Name="CJReferral">
                 <Key>
@@ -52,6 +56,8 @@
                 <Property MaxLength="4" Name="Key" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10" Name="ReferralNo" Nullable="false" Type="Edm.String"/>
                 <Property Name="LastUpdateDate" Nullable="false" Precision="7" Type="Edm.DateTimeOffset"/>
+                <Property Name="StartDate" Precision="7" Type="Edm.DateTimeOffset"/>
+                <Property Name="EndDate" Precision="7" Type="Edm.DateTimeOffset"/>
                 <NavigationProperty FromRole="ToRole_LifeCycle_Referral" Name="CJLifeCycle" Relationship="ZE_CCUX_CJ_SRV.LifeCycle_Referral" ToRole="FromRole_LifeCycle_Referral"/>
             </EntityType>
             <EntityType Name="CJModule">
@@ -64,10 +70,12 @@
                 <Property MaxLength="12" Name="CA" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="4" Name="SeqNo" Nullable="false" Type="Edm.String"/>
                 <Property Name="Date" Precision="7" Type="Edm.DateTimeOffset"/>
-                <Property MaxLength="4" Name="ChannelType" Nullable="false" Type="Edm.String"/>
+                <Property MaxLength="40" Name="ChannelType" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1000" Name="SingleMessage" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="1000" Name="ColHeaders" Nullable="false" Type="Edm.String"/>
                 <Property MaxLength="10000" Name="ColValues" Nullable="false" Type="Edm.String"/>
+                <Property Name="StartDate" Precision="7" Type="Edm.DateTimeOffset"/>
+                <Property Name="EndDate" Precision="7" Type="Edm.DateTimeOffset"/>
             </EntityType>
             <Association Name="LifeCycle_Referral">
                 <End Multiplicity="1" Role="FromRole_LifeCycle_Referral" Type="ZE_CCUX_CJ_SRV.CJLifeCycle"/>

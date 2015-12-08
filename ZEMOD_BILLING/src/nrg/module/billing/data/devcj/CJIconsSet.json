@@ -10,11 +10,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":"  1",
-            "Icon":"PHONE",
-            "Channel":"PHONE",
+            "Icon":"Phone",
+            "Channel":"Phone",
             "TopLabel":"",
             "Description":"11/16/2015 03:07:22 Campaign Chg - Proactive",
-            "RightDivider":false
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -25,11 +27,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":"  2",
-            "Icon":"PHONE",
-            "Channel":"PHONE",
+            "Icon":"Phone",
+            "Channel":"Phone",
             "TopLabel":"",
             "Description":"11/16/2015 03:07:22 Balance Inq.",
-            "RightDivider":false
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -40,11 +44,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":"  3",
-            "Icon":"PHONE",
-            "Channel":"PHONE",
+            "Icon":"Phone",
+            "Channel":"Phone",
             "TopLabel":"",
             "Description":"11/16/2015 03:07:22 Campaign Chg - Proactive",
-            "RightDivider":false
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -55,11 +61,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":"  5",
-            "Icon":"PHONE",
-            "Channel":"PHONE",
+            "Icon":"Phone",
+            "Channel":"Phone",
             "TopLabel":"",
             "Description":"11/16/2015 03:07:22 OTBD Requested",
-            "RightDivider":false
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -70,11 +78,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":"  6",
-            "Icon":"PHONE",
-            "Channel":"PHONE",
+            "Icon":"Phone",
+            "Channel":"Phone",
             "TopLabel":"",
             "Description":"11/16/2015 03:07:22 OTBD Payment Posted",
-            "RightDivider":false
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -85,11 +95,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":"  7",
-            "Icon":"PHONE",
-            "Channel":"PHONE",
+            "Icon":"Phone",
+            "Channel":"Phone",
             "TopLabel":"",
             "Description":"11/16/2015 03:07:22 Quoted Balance",
-            "RightDivider":false
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -100,11 +112,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":"  8",
-            "Icon":"PHONE",
-            "Channel":"PHONE",
+            "Icon":"Phone",
+            "Channel":"Phone",
             "TopLabel":"",
             "Description":"11/16/2015 03:07:22 Proc. Fee Waived - Preferred customer.",
-            "RightDivider":false
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -115,11 +129,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":"  9",
-            "Icon":"PHONE",
-            "Channel":"PHONE",
+            "Icon":"Phone",
+            "Channel":"Phone",
             "TopLabel":"",
             "Description":"11/16/2015 03:07:22 Campaign Chg - Reactive",
-            "RightDivider":false
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -130,11 +146,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 11",
-            "Icon":"CORR",
-            "Channel":"CORR",
+            "Icon":"Correspondence",
+            "Channel":"Correspondence",
             "TopLabel":"",
             "Description":"11/20/2015 09:32:08 General Inq LTK11145025952941X",
-            "RightDivider":false
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -145,11 +163,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 12",
-            "Icon":"CORR",
-            "Channel":"CORR",
+            "Icon":"Correspondence",
+            "Channel":"Correspondence",
             "TopLabel":"",
             "Description":"11/20/2015 09:32:08 Quoted Balance",
-            "RightDivider":false
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -160,11 +180,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 13",
-            "Icon":"CORR",
-            "Channel":"CORR",
+            "Icon":"Correspondence",
+            "Channel":"Correspondence",
             "TopLabel":"",
             "Description":"11/20/2015 09:32:08 Email Sent to Customer LTK11145025944837X",
-            "RightDivider":false
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -175,11 +197,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 14",
-            "Icon":"WLOG",
-            "Channel":"",
+            "Icon":"Mobile",
+            "Channel":"Mobile",
             "TopLabel":"",
-            "Description":"11/20/2015 09:32:08 -",
-            "RightDivider":false
+            "Description":"11/20/2015 09:32:08 - paybill.verifybank",
+            "RightDivider":false,
+            "StartDate":null,
+            "EndDate":null
          },
          {
             "__metadata":{
@@ -190,11 +214,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 15",
-            "Icon":"MOBI",
-            "Channel":"",
+            "Icon":"Mobile",
+            "Channel":"Mobile",
             "TopLabel":"",
-            "Description":"  - paybill.verifybank",
-            "RightDivider":false
+            "Description":"11/20/2015 09:32:08 - esense.dashboard",
+            "RightDivider":false,
+            "StartDate":null,
+            "EndDate":null
          },
          {
             "__metadata":{
@@ -205,11 +231,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 16",
-            "Icon":"MOBI",
-            "Channel":"",
+            "Icon":"Mobile",
+            "Channel":"Mobile",
             "TopLabel":"",
-            "Description":"  - esense.dashboard",
-            "RightDivider":false
+            "Description":"11/20/2015 09:32:08 - pay.billInfo",
+            "RightDivider":false,
+            "StartDate":null,
+            "EndDate":null
          },
          {
             "__metadata":{
@@ -220,11 +248,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 17",
-            "Icon":"MOBI",
-            "Channel":"",
+            "Icon":"Mobile",
+            "Channel":"Mobile",
             "TopLabel":"",
-            "Description":"  - esense.dashboard",
-            "RightDivider":false
+            "Description":"11/20/2015 09:32:08 - pay.billInfo",
+            "RightDivider":false,
+            "StartDate":null,
+            "EndDate":null
          },
          {
             "__metadata":{
@@ -235,11 +265,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 18",
-            "Icon":"MOBI",
-            "Channel":"",
+            "Icon":"Mobile",
+            "Channel":"Mobile",
             "TopLabel":"",
-            "Description":"  - autopay.verifycc",
-            "RightDivider":false
+            "Description":"11/20/2015 09:32:08 - esense.dashboard",
+            "RightDivider":false,
+            "StartDate":null,
+            "EndDate":null
          },
          {
             "__metadata":{
@@ -250,11 +282,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 19",
-            "Icon":"MOBI",
-            "Channel":"",
+            "Icon":"Survey",
+            "Channel":"Survey",
             "TopLabel":"",
-            "Description":"  - pay.billInfo",
-            "RightDivider":false
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor10/5\nOverall Satisfaction:5/10\nIssue resolved?:",
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -265,11 +299,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 20",
-            "Icon":"MOBI",
-            "Channel":"",
+            "Icon":"Survey",
+            "Channel":"Survey",
             "TopLabel":"",
-            "Description":"  - esense.dashboard",
-            "RightDivider":false
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor/5\nOverall Satisfaction:/10\nIssue resolved?:",
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -280,11 +316,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 21",
-            "Icon":"MOBI",
-            "Channel":"",
+            "Icon":"Survey",
+            "Channel":"Survey",
             "TopLabel":"",
-            "Description":"  - pay.billInfo",
-            "RightDivider":false
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor/5\nOverall Satisfaction:/10\nIssue resolved?:",
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -295,11 +333,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 22",
-            "Icon":"MOBI",
-            "Channel":"",
+            "Icon":"Survey",
+            "Channel":"Survey",
             "TopLabel":"",
-            "Description":"  - paybill.storedcc",
-            "RightDivider":false
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor10/5\nOverall Satisfaction:5/10\nIssue resolved?:",
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -310,11 +350,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 23",
-            "Icon":"MOBI",
-            "Channel":"",
+            "Icon":"Survey",
+            "Channel":"Survey",
             "TopLabel":"",
-            "Description":"  - esense.dashboard",
-            "RightDivider":false
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor/5\nOverall Satisfaction:/10\nIssue resolved?:",
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -325,11 +367,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 24",
-            "Icon":"MOBI",
-            "Channel":"",
+            "Icon":"Survey",
+            "Channel":"Survey",
             "TopLabel":"",
-            "Description":"11/20/2015 09:32:08 - paybill.confirmbank",
-            "RightDivider":false
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor/5\nOverall Satisfaction:/10\nIssue resolved?:",
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -340,11 +384,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 25",
-            "Icon":"SRVY",
-            "Channel":"SRVY",
+            "Icon":"Survey",
+            "Channel":"Survey",
             "TopLabel":"",
-            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:5/10\nIssue resolved?:",
-            "RightDivider":false
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor10/5\nOverall Satisfaction:5/10\nIssue resolved?:",
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -355,11 +401,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 26",
-            "Icon":"MOBI",
-            "Channel":"",
+            "Icon":"Survey",
+            "Channel":"Survey",
             "TopLabel":"",
-            "Description":"  - paybill.confirmbank",
-            "RightDivider":false
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor/5\nOverall Satisfaction:/10\nIssue resolved?:",
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -370,11 +418,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 27",
-            "Icon":"SRVY",
-            "Channel":"SRVY",
+            "Icon":"Survey",
+            "Channel":"Survey",
             "TopLabel":"",
-            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:/10\nIssue resolved?:",
-            "RightDivider":false
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor/5\nOverall Satisfaction:/10\nIssue resolved?:",
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          },
          {
             "__metadata":{
@@ -385,116 +435,13 @@
             "BP":"0002473499",
             "CA":"000003040103",
             "key":" 28",
-            "Icon":"SRVY",
-            "Channel":"SRVY",
+            "Icon":"Survey",
+            "Channel":"Survey",
             "TopLabel":"",
-            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:/10\nIssue resolved?:",
-            "RightDivider":false
-         },
-         {
-            "__metadata":{
-               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2029')",
-               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2029')",
-               "type":"ZE_CCUX_CJ_SRV.CJIcons"
-            },
-            "BP":"0002473499",
-            "CA":"000003040103",
-            "key":" 29",
-            "Icon":"SRVY",
-            "Channel":"SRVY",
-            "TopLabel":"",
-            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:5/10\nIssue resolved?:",
-            "RightDivider":false
-         },
-         {
-            "__metadata":{
-               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2030')",
-               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2030')",
-               "type":"ZE_CCUX_CJ_SRV.CJIcons"
-            },
-            "BP":"0002473499",
-            "CA":"000003040103",
-            "key":" 30",
-            "Icon":"SRVY",
-            "Channel":"SRVY",
-            "TopLabel":"",
-            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:/10\nIssue resolved?:",
-            "RightDivider":false
-         },
-         {
-            "__metadata":{
-               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2031')",
-               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2031')",
-               "type":"ZE_CCUX_CJ_SRV.CJIcons"
-            },
-            "BP":"0002473499",
-            "CA":"000003040103",
-            "key":" 31",
-            "Icon":"SRVY",
-            "Channel":"SRVY",
-            "TopLabel":"",
-            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:/10\nIssue resolved?:",
-            "RightDivider":false
-         },
-         {
-            "__metadata":{
-               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2032')",
-               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2032')",
-               "type":"ZE_CCUX_CJ_SRV.CJIcons"
-            },
-            "BP":"0002473499",
-            "CA":"000003040103",
-            "key":" 32",
-            "Icon":"SRVY",
-            "Channel":"SRVY",
-            "TopLabel":"",
-            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:5/10\nIssue resolved?:",
-            "RightDivider":false
-         },
-         {
-            "__metadata":{
-               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2033')",
-               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2033')",
-               "type":"ZE_CCUX_CJ_SRV.CJIcons"
-            },
-            "BP":"0002473499",
-            "CA":"000003040103",
-            "key":" 33",
-            "Icon":"SRVY",
-            "Channel":"SRVY",
-            "TopLabel":"",
-            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:/10\nIssue resolved?:",
-            "RightDivider":false
-         },
-         {
-            "__metadata":{
-               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2034')",
-               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2034')",
-               "type":"ZE_CCUX_CJ_SRV.CJIcons"
-            },
-            "BP":"0002473499",
-            "CA":"000003040103",
-            "key":" 34",
-            "Icon":"SRVY",
-            "Channel":"SRVY",
-            "TopLabel":"",
-            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:/10\nIssue resolved?:",
-            "RightDivider":false
-         },
-         {
-            "__metadata":{
-               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2035')",
-               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJIconsSet(BP='0002473499',CA='000003040103',key='%2035')",
-               "type":"ZE_CCUX_CJ_SRV.CJIcons"
-            },
-            "BP":"0002473499",
-            "CA":"000003040103",
-            "key":" 35",
-            "Icon":"SRVY",
-            "Channel":"SRVY",
-            "TopLabel":"",
-            "Description":"11/20/2015 CHAT survey\nNPS: Promotor\nOverall Satisfaction:/10\nIssue resolved?:",
-            "RightDivider":false
+            "Description":"11/20/2015 CHAT survey\nNPS: Promotor/5\nOverall Satisfaction:/10\nIssue resolved?:",
+            "RightDivider":false,
+            "StartDate":"\/Date(1363192537000+0000)\/",
+            "EndDate":"\/Date(1449596137000+0000)\/"
          }
       ]
    }
