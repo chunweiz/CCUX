@@ -30,22 +30,32 @@
                             <u:Tag text="ALL" />
                         </um:DropdownItem>
                         <um:DropdownItem key="2" >
-                            <u:Tag text="WEB" />
+                            <u:Tag text="Correspondence" />
                         </um:DropdownItem>
                         <um:DropdownItem key="3">
-                            <u:Tag text="CHAT" />
+                            <u:Tag text="Survey" />
                         </um:DropdownItem>
                         <um:DropdownItem key="4">
+                            <u:Tag text="Chat" />
+                        </um:DropdownItem>
+                        <um:DropdownItem key="5">
+                            <u:Tag text="Phone" />
+                        </um:DropdownItem>
+                        <um:DropdownItem key="6">
                             <u:Tag text="IVR" />
                         </um:DropdownItem>
-                        <um:DropdownItem key="5" class="nrgQPCC-DdLItem">
-                            <u:Tag text="EMAI" />
+                        <um:DropdownItem key="7">
+                            <u:Tag text="Website" />
+                        </um:DropdownItem>
+                        <um:DropdownItem key="8">
+                            <u:Tag text="Mobile" />
                         </um:DropdownItem>
                     </um:Dropdown>
                     <u:Tag class="nrgCJModule-selPanel-fields-fd">
                         <um:Button text="GO"
                                    class="nrgBllCJ-timeline-gobtn"
-                                   design="Default" />
+                                   design="Default"
+                                   press=".onModuleRefresh"/>
                     </u:Tag>
                 <u:Textfield fieldType="Regular"
                              width="7rem"

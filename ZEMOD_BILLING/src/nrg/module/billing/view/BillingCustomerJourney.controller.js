@@ -27,61 +27,88 @@ sap.ui.define(
         Controller.prototype.onBeforeRendering = function () {
             var oBindingInfo,
                 oModel = this.getOwnerComponent().getModel('comp-cj'),
-                sPath = "/CJFrequencySet",
-                aFilterIds,
-                aFilterValues,
-                aFilters,
+                sPath,
                 oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
-                oPieChart = this.getView().byId('idnrgCJPieChart'),
-                oPieChartModel,
                 oReferral = this.getView().byId('idnrgCustomerRef'),
                 oReferralTemplate = this.getView().byId('idnrgCustomerRef-temp'),
-                fnTableDataRecdHandler,
-                oDatesJsonModel,
                 that = this,
-                oTimeLineModel,
-                oViewModel = new JSONModel({
-                    expandAll : false
-                });
+                oDatesJsonModel;
             this._sContract = oRouteInfo.parameters.coNum;
             this._sBP = oRouteInfo.parameters.bpNum;
             this._sCA = oRouteInfo.parameters.caNum;
             this._oFormatYyyymmdd = DateFormat.getInstance({
                 pattern: 'MM/dd/yyyy'
             });
+            oDatesJsonModel = new JSONModel();
+            this.getView().setModel(oDatesJsonModel, 'Cj-Date');
+            sPath = "/CJLifeCycleSet(BP='0002473499',CA='000003040103')";
+            oBindingInfo = {
+                success : function (oData) {
+                    oDatesJsonModel.setData(oData);
+                    that._dateHandler(true, oDatesJsonModel, false);
+                    that._loadIcons(oData.StartDate, oData.EndDate);
+                    that._loadPieChart(oData.StartDate, oData.EndDate);
+                    that._loadReferral(oData.StartDate, oData.EndDate);
+                    jQuery.sap.log.info("Odata Read Successfully:::");
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Odata Read Error occured");
+                }.bind(this)
+            };
+            if (oModel) {
+                oModel.read(sPath, oBindingInfo);
+            }
+        };
+        /**
+		 * Handler for Referral Data loading
+		 *
+		 * @function
+         *
+		 */
+        Controller.prototype._loadReferral = function (dStartDate, dEndDate) {
+            var oDatesJsonModel,
+                sPath,
+                oBindingInfo,
+                oReferral = this.getView().byId('idnrgCustomerRef'),
+                oReferralTemplate = this.getView().byId('idnrgCustomerRef-temp'),
+                aFilterIds,
+                aFilterValues,
+                aFilters;
+            aFilterIds = ["BP", "CA", "StartDate", "EndDate"];
+            aFilterValues = ["0002473499", "000003040103", dStartDate, dEndDate];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            sPath = "/CJReferralSet";
+            oBindingInfo = {
+                model : "comp-cj",
+                path : sPath,
+                template : oReferralTemplate,
+                filters : aFilters
+            };
+            oReferral.bindAggregation("content", oBindingInfo);
+        };
+        /**
+		 * Handler for Icons loading
+		 *
+		 * @function
+         *
+		 */
+        Controller.prototype._loadPieChart = function (dStartDate, dEndDate) {
+            var sPath,
+                aFilterIds,
+                aFilterValues,
+                aFilters,
+                oBindingInfo,
+                oModel = this.getOwnerComponent().getModel('comp-cj'),
+                oPieChartModel,
+                oPieChart = this.getView().byId('idnrgCJPieChart'),
+                that = this;
+
             oPieChartModel = new JSONModel();
             this.getView().setModel(oPieChartModel, 'Cj-PieChart');
             oPieChart.setDataModel(oPieChartModel);
-            oDatesJsonModel = new JSONModel();
-            this.getView().setModel(oDatesJsonModel, 'Cj-Date');
-            oTimeLineModel = new JSONModel();
-            this.getView().setModel(oTimeLineModel, 'Cj-timeline');
-
-/*            this.getView().byId('idnrgCJPieChart').setDataModel(new JSONModel({
-                data: [
-                    { channel: 'Website', frequency: 3 },
-                    { channel: 'Mobile', frequency: 3 },
-                    { channel: 'IVR', frequency: 1 },
-                    { channel: 'Webchat', frequency: 5 },
-                    { channel: 'Phone', frequency: 2 },
-                    { channel: 'Survey', frequency: 6 }
-                ]
-            }));*/
-            this.getView().setModel(new JSONModel({
-                data: [
-                    { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: '08/31/2014', description: 'sarath', channel: 'Website'},
-                    { recordIndex: '1', channelIcon: 'sap-icon://nrg-icon/webchat', description: 'sarath', channel: 'Chat'},
-                    { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/survey', topLabel: '09/21/2014', rightDivider: true, description: 'sarath', channel: 'Survey'},
-                    { recordIndex: '3', channelIcon: 'sap-icon://nrg-icon/agent', description: 'sarath', channel: 'Agent'},
-                    { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/ivr', description: 'sarath', channel: 'IVR'},
-                    { recordIndex: '5', channelIcon: 'sap-icon://email', description: 'sarath', channel: 'Correspondence'},
-                    { recordIndex: '6', channelIcon: 'sap-icon://iphone', description: 'sarath', channel: 'Mobile'},
-                    { recordIndex: '7', channelIcon: 'sap-icon://nrg-icon/location', description: 'sarath', channel: 'Phone'}
-                ]
-            }), 'timeline');
-            this.getView().setModel(oViewModel, 'cj-view');
-            aFilterIds = ["BP", "CA"];
-            aFilterValues = ["0002473499", "000003040103"];
+            sPath = "/CJFrequencySet";
+            aFilterIds = ["BP", "CA", "StartDate", "EndDate"];
+            aFilterValues = ["0002473499", "000003040103", dStartDate, dEndDate];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oBindingInfo = {
                 filters : aFilters,
@@ -97,38 +124,32 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oBindingInfo);
             }
+        };
+        /**
+		 * Handler for Icons loading
+		 *
+		 * @function
+         *
+		 */
+        Controller.prototype._loadIcons = function (dStartDate, dEndDate) {
+            var sPath,
+                aFilterIds,
+                aFilterValues,
+                aFilters,
+                oBindingInfo,
+                oModel = this.getOwnerComponent().getModel('comp-cj'),
+                oTimeLineModel,
+                that = this;
+            oTimeLineModel = new JSONModel();
+            this.getView().setModel(oTimeLineModel, 'Cj-timeline');
             sPath = "/CJIconsSet";
-            aFilterIds = ["BP", "CA"];
-            aFilterValues = ["0002473499", "000003040103"];
+            aFilterIds = ["BP", "CA", "StartDate", "EndDate"];
+            aFilterValues = ["0002473499", "000003040103", dStartDate, dEndDate];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oBindingInfo = {
                 filters : aFilters,
                 success : function (oData) {
                     oTimeLineModel.setData(that.convertIcons(oData.results));
-                    jQuery.sap.log.info("Odata Read Successfully:::");
-                }.bind(this),
-                error: function (oError) {
-                    jQuery.sap.log.info("Odata Read Error occured");
-                }.bind(this)
-            };
-            if (oModel) {
-                oModel.read(sPath, oBindingInfo);
-            }
-            fnTableDataRecdHandler = function (oEvent) {
-            };
-            sPath = "/CJReferralSet";
-            oBindingInfo = {
-                model : "comp-cj",
-                path : sPath,
-                template : oReferralTemplate,
-                filters : aFilters
-            };
-            oReferral.bindAggregation("content", oBindingInfo);
-            sPath = "/CJLifeCycleSet(BP='0002473499',CA='000003040103')";
-            oBindingInfo = {
-                success : function (oData) {
-                    oDatesJsonModel.setData(oData);
-                    that._dateHandler(true, oDatesJsonModel, false);
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
                 error: function (oError) {
@@ -200,6 +221,22 @@ sap.ui.define(
 		 */
         Controller.prototype.onInterval2 = function (oEvent) {
             this._dateHandler(false, true, false);
+        };
+        /**
+		 * Handler when user changed dates
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        Controller.prototype.onUpdate = function (oEvent) {
+            var oFromDate = new Date(this.getView().byId('idnrgBllCJ-fromDate').getValue()),
+                oToDate = new Date(this.getView().byId('idnrgBllCJ-toDate').getValue()),
+                oDatesModel = this.getView().getModel('Cj-Date');
+            oDatesModel.setProperty("/StartDate", oFromDate);
+            oDatesModel.setProperty("/EndDate", oToDate);
+            this._loadIcons(oDatesModel.getProperty("/StartDate"), oDatesModel.getProperty("/EndDate"));
+            this._loadPieChart(oDatesModel.getProperty("/StartDate"), oDatesModel.getProperty("/EndDate"));
+            this._loadReferral(oDatesModel.getProperty("/StartDate"), oDatesModel.getProperty("/EndDate"));
         };
         /**
 		 * Handler for Channel single press action
@@ -289,22 +326,25 @@ sap.ui.define(
             var sPath,
                 mParameters,
                 oCJTable,
-                oScrollTemplate,
                 aFilters,
                 aFilterIds,
                 aFilterValues,
-                oCJTemplate,
-                fnRecievedHandler,
                 that = this,
                 oFromDate,
                 oToDate,
                 oModel = this.getOwnerComponent().getModel('comp-cj'),
                 oNewDate = new Date(),
-                oCustomerJourneyModel;
+                oCustomerJourneyModel,
+                oViewModel = new JSONModel({
+                    expandAll : false
+                }),
+                oDatesModel;
+            oDatesModel = this.getView().getModel('Cj-Date');
+            this.getView().setModel(oViewModel, 'cj-view');
             oCustomerJourneyModel = new JSONModel();
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
-            aFilterIds = ["BP", "CA"];
-            aFilterValues = ["0002473499", "000003040103"];
+            aFilterIds = ["BP", "CA", "StartDate", "EndDate"];
+            aFilterValues = ["0002473499", "000003040103", oDatesModel.getProperty("/StartDate"), oDatesModel.getProperty("/EndDate")];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             if (!this._oDialogFragment) {
                 this._oDialogFragment = sap.ui.xmlfragment("CustomerJourney", "nrg.module.billing.view.CJModule", this);
@@ -320,23 +360,23 @@ sap.ui.define(
             sPath = "/CJModuleSet";
             oCJTable = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-table");
             oCJTable.setModel(oCustomerJourneyModel);
-            oCJTemplate = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-RowTempl");
             oFromDate = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgBllCJ-fromDate");
             oToDate = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgBllCJ-toDate");
             oNewDate.setDate(oNewDate.getDate() - 14);
             oToDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
             oFromDate.setDefaultDate(this._oFormatYyyymmdd.format(oNewDate, true));
-            // Function received handler is used to update the view with first History campaign.---start
-/*            fnRecievedHandler = function (oEvent) {
-                that.getOwnerComponent().getCcuxApp().setOccupied(false);
-            };
-            mParameters = {
-                model : "comp-cj",
-                path : sPath,
-                filters : aFilters,
-                template : oCJTemplate,
-                events: {dataReceived : fnRecievedHandler}
-            };*/
+            this.getView().setModel(new JSONModel({
+                data: [
+                    { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: '08/31/2014', description: 'sarath', channel: 'Website'},
+                    { recordIndex: '1', channelIcon: 'sap-icon://nrg-icon/webchat', description: 'sarath', channel: 'Chat'},
+                    { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/survey', topLabel: '09/21/2014', rightDivider: true, description: 'sarath', channel: 'Survey'},
+                    { recordIndex: '3', channelIcon: 'sap-icon://nrg-icon/agent', description: 'sarath', channel: 'Agent'},
+                    { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/ivr', description: 'sarath', channel: 'IVR'},
+                    { recordIndex: '5', channelIcon: 'sap-icon://email', description: 'sarath', channel: 'Correspondence'},
+                    { recordIndex: '6', channelIcon: 'sap-icon://iphone', description: 'sarath', channel: 'Mobile'},
+                    { recordIndex: '7', channelIcon: 'sap-icon://nrg-icon/location', description: 'sarath', channel: 'Phone'}
+                ]
+            }), 'timeline');
             mParameters = {
                 filters : aFilters,
                 success : function (oData) {
@@ -357,6 +397,17 @@ sap.ui.define(
             //to get access to the global model
             this._oCJDialog.addStyleClass("nrgCJModule-dialog");
             //oCJTable.bindRows(mParameters);
+
+        };
+        /**
+		 * Handler for customer journey module refresh
+		 *
+		 * @function
+		 * @param {Event} Type Event object
+         *
+		 *
+		 */
+        Controller.prototype.onModuleRefresh = function (oControlEvent) {
 
         };
         /**
@@ -554,9 +605,6 @@ sap.ui.define(
                 aFilterValues,
                 aFilters,
                 oCJTable = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-table");
-/*            aFilterIds = ["SingleMessage", "ColValues"];
-            aFilterValues = [oSearchText, oSearchText];
-            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues, FilterOperator.Contains);*/
             oFilter1 = new sap.ui.model.Filter("SingleMessage", sap.ui.model.FilterOperator.Contains, oSearchText.getValue());
             oFilter2 = new sap.ui.model.Filter("ColValues", sap.ui.model.FilterOperator.Contains, oSearchText.getValue());
             aFilters = new sap.ui.model.Filter({filters: [oFilter1, oFilter2], and: false });
