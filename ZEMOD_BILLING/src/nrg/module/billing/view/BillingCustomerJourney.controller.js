@@ -32,20 +32,36 @@ sap.ui.define(
                 oReferral = this.getView().byId('idnrgCustomerRef'),
                 oReferralTemplate = this.getView().byId('idnrgCustomerRef-temp'),
                 that = this,
-                oDatesJsonModel;
+                oDatesJsonModel,
+                oViewModel = new JSONModel({
+                    expandAll : false,
+                    piechart : false,
+                    icons: false,
+                    interval1 : false,
+                    interval2: false
+                }),
+                oPieChartModel,
+                oPieChart = this.getView().byId('idnrgCJPieChart'),
+                oTimeLineModel;
+            oTimeLineModel = new JSONModel();
+            this.getView().setModel(oTimeLineModel, 'Cj-timeline');
+            oPieChartModel = new JSONModel();
+            oPieChart.setDataModel(oPieChartModel);
+            this.getView().setModel(oPieChartModel, 'Cj-PieChart');
             this._sContract = oRouteInfo.parameters.coNum;
             this._sBP = oRouteInfo.parameters.bpNum;
             this._sCA = oRouteInfo.parameters.caNum;
             this._oFormatYyyymmdd = DateFormat.getInstance({
                 pattern: 'MM/dd/yyyy'
             });
+            this.getView().setModel(oViewModel, 'cj-view');
             oDatesJsonModel = new JSONModel();
             this.getView().setModel(oDatesJsonModel, 'Cj-Date');
             sPath = "/CJLifeCycleSet(BP='0002473499',CA='000003040103')";
             oBindingInfo = {
                 success : function (oData) {
                     oDatesJsonModel.setData(oData);
-                    that._dateHandler(true, oDatesJsonModel, false);
+                    that._dateHandler(true, false, oData.FirstButtonEnabled);
                     that._loadIcons(oData.StartDate, oData.EndDate);
                     that._loadPieChart(oData.StartDate, oData.EndDate);
                     that._loadReferral(oData.StartDate, oData.EndDate);
@@ -99,13 +115,10 @@ sap.ui.define(
                 aFilters,
                 oBindingInfo,
                 oModel = this.getOwnerComponent().getModel('comp-cj'),
-                oPieChartModel,
+                oPieChartModel = this.getView().getModel('Cj-PieChart'),
                 oPieChart = this.getView().byId('idnrgCJPieChart'),
-                that = this;
-
-            oPieChartModel = new JSONModel();
-            this.getView().setModel(oPieChartModel, 'Cj-PieChart');
-            oPieChart.setDataModel(oPieChartModel);
+                that = this,
+                oViewModel = this.getView().getModel('cj-view');
             sPath = "/CJFrequencySet";
             aFilterIds = ["BP", "CA", "StartDate", "EndDate"];
             aFilterValues = ["0002473499", "000003040103", dStartDate, dEndDate];
@@ -114,6 +127,11 @@ sap.ui.define(
                 filters : aFilters,
                 success : function (oData) {
                     oPieChartModel.setData(oData);
+                    if ((oData.results) && (oData.results.length > 0)) {
+                        oViewModel.setProperty("/piechart", false);
+                    } else {
+                        oViewModel.setProperty("/piechart", true);
+                    }
                     jQuery.sap.log.info("Odata Read Successfully:::");
                     oPieChart.refreshChart();
                 }.bind(this),
@@ -138,10 +156,9 @@ sap.ui.define(
                 aFilters,
                 oBindingInfo,
                 oModel = this.getOwnerComponent().getModel('comp-cj'),
-                oTimeLineModel,
-                that = this;
-            oTimeLineModel = new JSONModel();
-            this.getView().setModel(oTimeLineModel, 'Cj-timeline');
+                oTimeLineModel = this.getView().getModel('Cj-timeline'),
+                that = this,
+                oViewModel = this.getView().getModel('cj-view');
             sPath = "/CJIconsSet";
             aFilterIds = ["BP", "CA", "StartDate", "EndDate"];
             aFilterValues = ["0002473499", "000003040103", dStartDate, dEndDate];
@@ -150,6 +167,11 @@ sap.ui.define(
                 filters : aFilters,
                 success : function (oData) {
                     oTimeLineModel.setData(that.convertIcons(oData.results));
+                    if ((oData.results) && (oData.results.length > 0)) {
+                        oViewModel.setProperty("/icons", false);
+                    } else {
+                        oViewModel.setProperty("/icons", true);
+                    }
                     jQuery.sap.log.info("Odata Read Successfully:::");
                 }.bind(this),
                 error: function (oError) {
@@ -172,34 +194,35 @@ sap.ui.define(
                 oInterval1Button = this.getView().byId('idnrgBllCJ-Interval1'),
                 oInterval2Button = this.getView().byId('idnrgBllCJ-Interval2'),
                 oDatesJsonModel = this.getView().getModel('Cj-Date'),
-                oNewDate = new Date();
+                oNewDate = new Date(),
+                oViewModel = this.getView().getModel('cj-view');
             if (binitial) {
                 oToDate.setMinDate(new Date(1, 0, 1));
                 oFromDate.setMinDate(new Date(1, 0, 1));
             }
             if (!bManualChange) {
                 if (oDatesJsonModel.getProperty("/FirstButtonEnabled")) {
-                    oInterval1Button.addStyleClass("nrgBllCJ-timeline-btns-sel");
-                    oInterval2Button.removeStyleClass("nrgBllCJ-timeline-btns-sel");
+                    oViewModel.setProperty("/interval1", true);
+                    oViewModel.setProperty("/interval2", false);
                 } else {
-                    oInterval2Button.addStyleClass("nrgBllCJ-timeline-btns-sel");
-                    oInterval1Button.removeStyleClass("nrgBllCJ-timeline-btns-sel");
+                    oViewModel.setProperty("/interval1", false);
+                    oViewModel.setProperty("/interval2", true);
                 }
-                oToDate.setDefaultDate(this._oFormatYyyymmdd.format(oDatesJsonModel.getProperty("/ToDate"), true));
-                oFromDate.setDefaultDate(this._oFormatYyyymmdd.format(oDatesJsonModel.getProperty("/FromDate"), true));
+                oToDate.setDefaultDate(this._oFormatYyyymmdd.format(oDatesJsonModel.getProperty("/EndDate"), true));
+                oFromDate.setDefaultDate(this._oFormatYyyymmdd.format(oDatesJsonModel.getProperty("/StartDate"), true));
             } else {
                 if (bInterval1) {
                     oNewDate.setDate(oNewDate.getDate() - oDatesJsonModel.getProperty("/Interval1"));
-                    oInterval1Button.addStyleClass("nrgBllCJ-timeline-btns-sel");
-                    oInterval2Button.removeStyleClass("nrgBllCJ-timeline-btns-sel");
-                    oToDate.setDefaultDate(this._oFormatYyyymmdd.format(oDatesJsonModel.getProperty("/ToDate"), true));
-                    oFromDate.setDefaultDate(this._oFormatYyyymmdd.format(oDatesJsonModel.getProperty("/FromDate"), true));
+                    oToDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
+                    oDatesJsonModel.setProperty("/EndDate", new Date());
+                    oFromDate.setDefaultDate(this._oFormatYyyymmdd.format(oNewDate, true));
+                    oDatesJsonModel.setProperty("/StartDate", oNewDate);
                 } else {
                     oNewDate.setDate(oNewDate.getDate() - oDatesJsonModel.getProperty("/Interval2"));
-                    oInterval2Button.addStyleClass("nrgBllCJ-timeline-btns-sel");
-                    oInterval1Button.removeStyleClass("nrgBllCJ-timeline-btns-sel");
                     oToDate.setDefaultDate(this._oFormatYyyymmdd.format(new Date(), true));
+                    oDatesJsonModel.setProperty("/EndDate", new Date());
                     oFromDate.setDefaultDate(this._oFormatYyyymmdd.format(oNewDate, true));
+                    oDatesJsonModel.setProperty("/StartDate", oNewDate);
                 }
 
             }
@@ -211,7 +234,14 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onInterval1 = function (oEvent) {
+            var oDatesJsonModel = this.getView().getModel('Cj-Date'),
+                oViewModel = this.getView().getModel('cj-view');
+            oViewModel.setProperty("/interval1", false);
+            oViewModel.setProperty("/interval2", true);
             this._dateHandler(false, true, true);
+            this._loadIcons(oDatesJsonModel.getProperty("/StartDate"), oDatesJsonModel.getProperty("/EndDate"));
+            this._loadPieChart(oDatesJsonModel.getProperty("/StartDate"), oDatesJsonModel.getProperty("/EndDate"));
+            this._loadReferral(oDatesJsonModel.getProperty("/StartDate"), oDatesJsonModel.getProperty("/EndDate"));
         };
         /**
 		 * Handler for Channel single press action
@@ -220,7 +250,14 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onInterval2 = function (oEvent) {
+            var oDatesJsonModel = this.getView().getModel('Cj-Date'),
+                oViewModel = this.getView().getModel('cj-view');
+            oViewModel.setProperty("/interval1", true);
+            oViewModel.setProperty("/interval2", false);
             this._dateHandler(false, true, false);
+            this._loadIcons(oDatesJsonModel.getProperty("/StartDate"), oDatesJsonModel.getProperty("/EndDate"));
+            this._loadPieChart(oDatesJsonModel.getProperty("/StartDate"), oDatesJsonModel.getProperty("/EndDate"));
+            this._loadReferral(oDatesJsonModel.getProperty("/StartDate"), oDatesJsonModel.getProperty("/EndDate"));
         };
         /**
 		 * Handler when user changed dates
@@ -231,7 +268,10 @@ sap.ui.define(
         Controller.prototype.onUpdate = function (oEvent) {
             var oFromDate = new Date(this.getView().byId('idnrgBllCJ-fromDate').getValue()),
                 oToDate = new Date(this.getView().byId('idnrgBllCJ-toDate').getValue()),
-                oDatesModel = this.getView().getModel('Cj-Date');
+                oDatesModel = this.getView().getModel('Cj-Date'),
+                oViewModel = this.getView().getModel('cj-view');
+            oViewModel.setProperty("/interval1", true);
+            oViewModel.setProperty("/interval2", true);
             oDatesModel.setProperty("/StartDate", oFromDate);
             oDatesModel.setProperty("/EndDate", oToDate);
             this._loadIcons(oDatesModel.getProperty("/StartDate"), oDatesModel.getProperty("/EndDate"));
@@ -335,12 +375,9 @@ sap.ui.define(
                 oModel = this.getOwnerComponent().getModel('comp-cj'),
                 oNewDate = new Date(),
                 oCustomerJourneyModel,
-                oViewModel = new JSONModel({
-                    expandAll : false
-                }),
                 oDatesModel;
             oDatesModel = this.getView().getModel('Cj-Date');
-            this.getView().setModel(oViewModel, 'cj-view');
+
             oCustomerJourneyModel = new JSONModel();
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             aFilterIds = ["BP", "CA", "StartDate", "EndDate"];
