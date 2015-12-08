@@ -26,7 +26,7 @@ sap.ui.define(
             renderer: CustomRenderer
         });
 
-        CustomControl.SCROLL_STEP = 360;
+        CustomControl.SCROLL_STEP = 330;
         CustomControl.SCROLL_DURATION = 500;
 
         CustomControl.prototype.exit = function () {
