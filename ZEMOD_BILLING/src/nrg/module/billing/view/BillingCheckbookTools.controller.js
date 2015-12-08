@@ -65,7 +65,7 @@ sap.ui.define(
                     if (!oEligibilityModel.oData.DPPActv) {
                         // Check eligibility
                         if (oEligibilityModel.oData.DPPActv) {
-                            // Go to set-up page
+                            // Go to DPP page
                             oRouter.navTo('billing.DefferedPmtPlan', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
                         } else {
                             // Go to denail page
