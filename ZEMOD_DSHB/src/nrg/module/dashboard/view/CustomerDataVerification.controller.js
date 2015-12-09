@@ -1091,6 +1091,14 @@ sap.ui.define(
                         if (oData.Cell) {this.getView().getModel('oCfrmStatus').setProperty('/ShowSMSBtn', true); }
                         // Load the BP info
                         this.getView().getModel('oDtaVrfyBP').setData(oData);
+                        // Determine if BP is residentail or organization
+                        if (oData.PartnerType === '1') {
+                            this.getView().getModel('oDtaVrfyBP').setProperty('/OrgBP', false);
+                            this.getView().getModel('oDtaVrfyBP').setProperty('/PsnBP', true);
+                        } else {
+                            this.getView().getModel('oDtaVrfyBP').setProperty('/OrgBP', true);
+                            this.getView().getModel('oDtaVrfyBP').setProperty('/PsnBP', false);
+                        }
                         // 1. Retrieve all CA belong to the BP
                         if (oData.PartnerID) {this._retrAllCa(oData.PartnerID, function () {bCaRetrieveComplete = true; }); }
                         // Check the completion of CA retrieval

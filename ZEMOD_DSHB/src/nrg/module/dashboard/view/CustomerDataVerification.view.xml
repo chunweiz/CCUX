@@ -119,8 +119,8 @@
                             class="nrgDashboard-cusDataVerify-left-esidVal"
                             text="{oDtaVrfyContract>/ESID}"/>
                     </ute:Tag>
-                    <!-- DL & SSN -->
-                    <ute:Tag class="nrgDashboard-cusDataVerify-left-driverSocialSection">
+                    <!-- DL & SSN (residentail BP only) -->
+                    <ute:Tag class="nrgDashboard-cusDataVerify-left-driverSocialSection" visible="{oDtaVrfyBP>/PsnBP}">
                         <ute:Tag class="nrgDashboard-cusDataVerify-left-driver">
                             <utmain:Label labelFor="dl_lbl"
                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DlNum}"
@@ -167,6 +167,31 @@
                                     visible="{
                                         parts:['oDtaVrfyBP>/SSNVerification','oDtaVrfyBP>/SSN'],
                                         formatter:'._formatVrfyMarkRedX'}"/>
+                            </ute:Tag>
+                        </ute:Tag>
+                    </ute:Tag>
+                    <!-- DUNS# & Fed Tax ID (orgnization BP only) -->
+                    <ute:Tag class="nrgDashboard-cusDataVerify-left-driverSocialSection" visible="{oDtaVrfyBP>/OrgBP}">
+                        <ute:Tag class="nrgDashboard-cusDataVerify-left-driver">
+                            <utmain:Label labelFor="dl_lbl"
+                                text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_DUNS}"
+                                class="nrgDashboard-cusDataVerify-left-driverLabel"/>
+                            <!-- Value Section -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-left-driverValSection">
+                                <ute:TextView
+                                    text="{oDtaVrfyBP>/DUNS}"
+                                    class="nrgDashboard-cusDataVerify-left-driverVal"/>
+                            </ute:Tag>
+                        </ute:Tag>
+                        <ute:Tag class="nrgDashboard-cusDataVerify-left-social">
+                            <utmain:Label labelFor="ssn_lbl"
+                                 text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_TAXID}"
+                                class="nrgDashboard-cusDataVerify-left-socialLabel"/>
+                            <!-- Value Section -->
+                            <ute:Tag class="nrgDashboard-cusDataVerify-left-socialValSection">
+                                <ute:TextView
+                                    text="{oDtaVrfyBP>/TaxID}"
+                                    class="nrgDashboard-cusDataVerify-left-socialVal"/>
                             </ute:Tag>
                         </ute:Tag>
                     </ute:Tag>
