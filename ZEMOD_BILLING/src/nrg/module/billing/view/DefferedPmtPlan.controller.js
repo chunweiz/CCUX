@@ -5,10 +5,11 @@ sap.ui.define(
         'nrg/base/view/BaseController',
         'jquery.sap.global',
         'nrg/base/type/Price',
+        'sap/ui/core/routing/HashChanger',
         "sap/ui/model/json/JSONModel"
     ],
 
-    function (CoreController, jQuery, price, JSONModel) {
+    function (CoreController, jQuery, price, HashChanger, JSONModel) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.billing.view.DefferedPmtPlan');
@@ -47,7 +48,16 @@ sap.ui.define(
         };
 
         Controller.prototype._startScrnControl = function () {
-            var oScrnControl = this.getView().getModel('oDppScrnControl');
+            var oScrnControl = this.getView().getModel('oDppScrnControl'),
+                oHashChanger = new HashChanger(),
+				sUrlHash = oHashChanger.getHash(),
+                aSplitHash = sUrlHash.split('/');
+
+            if (aSplitHash[1] == 'defferedpaymentplan') {
+                oScrnControl.setProperty('/StepOne', true);
+            } else if (aSplitHash[1] == 'defferedpaymentext') {
+                oScrnControl.setProperty('/EXTGrant', true);
+            }
 
             oScrnControl.setProperty('/StepOne', true);
         };

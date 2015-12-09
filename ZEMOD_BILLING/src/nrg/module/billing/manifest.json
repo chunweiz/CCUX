@@ -106,7 +106,11 @@
                     "target":["billing.HighBill", "dashboard.CustomerDataSummary", "billing.HighBillTools"]
                 },
                 "billing.DefferedPmtPlan": {
-                    "pattern": "billing/defferedpaymentplan/bp/{bpNum}/ca/{caNum}/co/{coNum}/ext/{isExt}",
+                    "pattern": "billing/defferedpaymentplan/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target":["billing.DefferedPmtPlan", "dashboard.CustomerDataSummary", "billing.DppTools"]
+                },
+                "billing.DefferedPmtExt": {
+                    "pattern": "billing/defferedpaymentext/bp/{bpNum}/ca/{caNum}/co/{coNum}",
                     "target":["billing.DefferedPmtPlan", "dashboard.CustomerDataSummary", "billing.DppTools"]
                 }
             },
