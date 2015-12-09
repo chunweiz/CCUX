@@ -25,7 +25,13 @@ sap.ui.define(
             this._coNum = oRouteInfo.coNum;
             this._isExt = oRouteInfo.isExt;
 
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-dppext'), 'oDataSvc');
+
+            //Model for screen control
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppScrnControl');
+
+            //Model for DPP eligibility/reason
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppEligible');
 
 
 
@@ -54,7 +60,7 @@ sap.ui.define(
                 aSplitHash = sUrlHash.split('/');
 
             if (aSplitHash[1] === 'defferedpaymentplan') {
-                oScrnControl.setProperty('/StepOne', true);
+                this._isDppElgble();
             } else if (aSplitHash[1] === 'defferedpaymentext') {
                 oScrnControl.setProperty('/EXTGrant', true);
             }
@@ -63,7 +69,9 @@ sap.ui.define(
         };
 
         Controller.prototype._selectScrn = function (sSelectedScrn) {
+            var oScrnControl = this.getView().getModel('oDppScrnControl');
 
+            oScrnControl.setProperty(sSelectedScrn, true);
         };
 
         /****************************************************************************************************************/
@@ -79,6 +87,34 @@ sap.ui.define(
         /****************************************************************************************************************/
         //OData Call
         /****************************************************************************************************************/
+        Controller.prototype._isDppElgble = function () {
+            var oODataSvc = this.getView().getModel('oDataSvc'),
+                oParameters,
+                sPath;
+
+            sPath = '/DPPElgbles(ContractAccountNumber=\'' + this._caNum + '\',DPPReason=\'1\')';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oDppEligible').setData(oData);
+
+                        if (oData.EligibleYes) {
+                            this._selectScrn('StepOne');
+                        } else {
+                            this._selectScrn('DPPDenied');
+                        }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oODataSvc) {
+                oODataSvc.read(sPath, oParameters);
+            }
+        };
 
         return Controller;
     }

@@ -30,6 +30,9 @@
 							},
                             "comp-eligibility": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_ELIG_SRV/"
+                            },
+                            "comp-dppext": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/"
                             }
                         },
                         "mock": {
@@ -55,6 +58,10 @@
 							},
                             "comp-eligibility":{
                                 "mockDataBaseUrl": "data/develig/",
+                                "generateMissingMockData": true
+                            },
+                            "comp-dppext": {
+                                "mockDataBaseUrl": "data/devdpp/",
                                 "generateMissingMockData": true
                             }
                         }
