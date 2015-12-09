@@ -66,14 +66,16 @@ sap.ui.define(
         };
 
         Manager.prototype._onRouteMatched = function (oEvent) {
-            var oApp, oWebUiManager;
+            var oApp,
+                oWebUiManager,
+                bRouteMatched = false;
 
             this._updateContext(oEvent.getParameters());
             this._updateRouteHistory(oEvent.getParameters());
-
+            bRouteMatched = this._checkLayout(oEvent.getParameters());
             oApp = this._oComponent.getCcuxApp();
             if (oApp) {
-                oApp.reset();
+                oApp.reset(bRouteMatched);
             }
 
             oWebUiManager = this._oComponent.getCcuxWebUiManager();
@@ -81,7 +83,34 @@ sap.ui.define(
                 oWebUiManager.notifyWebUi('resetTimeOut');
             }
         };
-
+        Manager.prototype._checkLayout = function (oRouteInfo) {
+            var oRouteName = oRouteInfo.name,
+                bRouteMatched = false;
+            switch (oRouteName) {
+            case "dashboard.Verification":
+                bRouteMatched = true;
+                break;
+            case "dashboard.VerificationWithCa":
+                bRouteMatched = true;
+                break;
+            case "dashboard.VerificationWithCaCo":
+                bRouteMatched = true;
+                break;
+            case "billing.BillingInfo":
+                bRouteMatched = true;
+                break;
+            case "billing.BillingInfoNoCo":
+                bRouteMatched = true;
+                break;
+            case "billing.BillingPrePaid":
+                bRouteMatched = true;
+                break;
+            case "billing.BillingPrePaidNoCo":
+                bRouteMatched = true;
+                break;
+            }
+            return bRouteMatched;
+        };
         Manager.prototype._updateContext = function (oRouteInfo) {
             var oContextData;
 
