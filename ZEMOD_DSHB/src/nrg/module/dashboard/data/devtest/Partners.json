@@ -8,7 +8,7 @@
                     "type":"ZE_CCUX_SRV.Partner"
                 },
                 "PartnerID":"64041",
-                "PartnerType":"",
+                "PartnerType":"2",
                 "SiebelCustomer":"",
                 "FullName":"ROBBYE WALDRON",
                 "AuthorisedPartyName":"",
@@ -24,14 +24,16 @@
                 "BCHover":"",
                 "DL":"7765",
                 "SSN":"8746",
+                "DUNS":"Test DUNS",
+                "TaxID":"Test Tax ID",
                 "DLVerification":"",
                 "SSNVerification":"X",
                 "Cell":"234-234-2424",
                 "CellConsum":"007",
                 "Fax":"111-111-1111",
                 "FaxConsum":"001",
-                Email: "",
-                EmailConsum: "004",
+                "Email": "",
+                "EmailConsum": "004",
                 "DayPhone":"234-567-4545",
                 "DayConsum":"008",
                 "DayPhoneExt":"234",
@@ -40,8 +42,8 @@
                 "EveConsum":"",
                 "EveningPhoneExt":"",
                 "EveningPhoneType":"",
-                SMSUrl: "http://dev1-ccrportal.reliant.com/esiidlookup/ActivateMobileServlet?businessPartner=0000100525&contractAccount=&contactNo=281-989-9312&companyCode=0121&brandId=RE",
-                IsSMS: "",
+                "SMSUrl": "http://dev1-ccrportal.reliant.com/esiidlookup/ActivateMobileServlet?businessPartner=0000100525&contractAccount=&contactNo=281-989-9312&companyCode=0121&brandId=RE",
+                "IsSMS": "",
                 "Buags":{
                     "__deferred":{
                         "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_SRV/Partners('64041')/Buags"

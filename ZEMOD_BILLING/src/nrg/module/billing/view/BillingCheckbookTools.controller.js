@@ -92,14 +92,8 @@ sap.ui.define(
                     clearInterval(checkRetrComplete);
                     // Check active or not
                     if (!oEligibilityModel.oData.DPPActv) {
-                        // Check eligibility
-                        if (oEligibilityModel.oData.DPPActv) {
-                            // Go to DPP page
-                            oRouter.navTo('billing.DefferedPmtPlan', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
-                        } else {
-                            // Go to DPP denail page
-                            oRouter.navTo('billing.DefferedPmtPlan', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
-                        }
+                        // Go to DPP page
+                        oRouter.navTo('billing.DefferedPmtPlan', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
                     } else {
                         // Go to transaction launcher
                         oWebUiManager.notifyWebUi('openIndex', {
@@ -129,14 +123,8 @@ sap.ui.define(
                     clearInterval(checkRetrComplete);
                     // Check active or not
                     if (!oEligibilityModel.oData.EXTNActv) {
-                        // Check eligibility
-                        if (oEligibilityModel.oData.EXTNElig) {
-                            // Go to DPP page
-                            oRouter.navTo('billing.DefferedPmtPlan', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
-                        } else {
-                            // Go to DPP denail page
-                            oRouter.navTo('billing.DefferedPmtPlan', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
-                        }
+                        // Go to EXTN page
+                        oRouter.navTo('billing.DefferedPmtExt', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
                     } else {
                         // Go to transaction launcher
                         oWebUiManager.notifyWebUi('openIndex', {
