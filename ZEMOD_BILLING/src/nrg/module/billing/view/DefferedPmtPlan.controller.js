@@ -65,13 +65,13 @@ sap.ui.define(
                 oScrnControl.setProperty('/EXTGrant', true);
             }
 
-            oScrnControl.setProperty('/StepOne', true);
+            //oScrnControl.setProperty('/StepOne', true);
         };
 
         Controller.prototype._selectScrn = function (sSelectedScrn) {
             var oScrnControl = this.getView().getModel('oDppScrnControl');
 
-            oScrnControl.setProperty(sSelectedScrn, true);
+            oScrnControl.setProperty('/' + sSelectedScrn, true);
         };
 
         /****************************************************************************************************************/
