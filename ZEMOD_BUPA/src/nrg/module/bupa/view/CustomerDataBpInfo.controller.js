@@ -80,7 +80,7 @@ sap.ui.define(
             //Model to hold mailing/temp address
 //            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaVrfyMailingTempAddr');    //not use this model, use 'oDataBpAddress'
             //Model for Edit Popup Screen (Use the model to show on edit screen)
-            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDtaAddrEdit');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataAddrEdit');
 
             this.getView().attachParseError(function (oEvent) {
                 this._addMessage(oEvent, 'attachParseError: ' + oEvent.getParameter('message'), sap.ui.core.MessageType.Error);
@@ -107,8 +107,6 @@ sap.ui.define(
                     }.bind(this));
                 }
             });
-
-            this._initBpInfoConfigModel();
         };
 
 
@@ -123,6 +121,9 @@ sap.ui.define(
 
             // Initialize BP data
             this._initBPData();
+
+            // Initialize BP config
+            this._initBpConfig();
         };
 
         CustomController.prototype.onExit = function () {
@@ -140,13 +141,15 @@ sap.ui.define(
             this._retrBpName(this._bpNum);
             // Address Section
             this._retrBpAddress(this._bpNum);
-            // Personal Section
+            // Personal Section & DNP Section (for organization type)
             this._retrBpPersonal(this._bpNum);
             // Contact Section
             this._retrBpContact(this._bpNum);
             // Market Preference Section
             this._retrBpMarkPrefSet(this._bpNum);
         };
+
+        /*--------------------- Title Section ---------------------*/
 
         Controller.prototype._retrBpTitles = function (sBpNum) {
             var oModel = this.getView().getModel('oODataSvc'),
@@ -271,6 +274,8 @@ sap.ui.define(
             }
         };
 
+        /*-------------------- Address Section --------------------*/
+
         Controller.prototype._retrBpAddress = function (sBpNum) {
             var oModel = this.getView().getModel('oODataSvc'),
                 sPath = '/Partners' + '(\'' + sBpNum + '\')/BpAddress/',
@@ -284,7 +289,7 @@ sap.ui.define(
                                 this._addressID = oData.results[0].AddressID;
                             }
                             this.getView().getModel('oDataBpAddress').setData(oData.results[0]);
-                            this.getView().getModel('oDtaAddrEdit').setData(oData.results[0]);
+                            this.getView().getModel('oDataAddrEdit').setData(oData.results[0]);
                             this.oDataBpAddressBak = jQuery.extend(true, {}, oData);
                         }
                     }
@@ -299,104 +304,117 @@ sap.ui.define(
             }
         };
 
+        /*----------------- Personal & DNP Section ----------------*/
 
+        Controller.prototype._retrBpPersonal = function (sBpNum) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath = '/Partners' + '(\'' + sBpNum + '\')/BpPersonal/',
+                oParameters;
 
+            oParameters = {
+                success : function (oData) {
+                    if (oData.PartnerID) {
+                        this.getView().getModel('oDataBpPersonal').setData(oData);
+                        this.oDataBpPersonalBak = jQuery.extend(true, {}, oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    // Need to put error message
+                }.bind(this)
+            };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        CustomController.prototype._getMessageProcessor = function () {
-            if (!this._oControlMessageProcessor) {
-                this._oControlMessageProcessor = new CoreControlMessageProcessor();
+            if (oModel) {
+                oModel.read(sPath, oParameters);
             }
-
-            return this._oControlMessageProcessor;
         };
 
-        CustomController.prototype._addMessage = function (oEvent, sMsg, sType) {
-            var oMsg = new CoreMessage({
-                message: sMsg,
-                type: sType,
-                target: [oEvent.getParameter('id'), oEvent.getParameter('property')].join('/'),
-                processor: this._getMessageProcessor()
-            });
+        /*--------------------- Contact Section -------------------*/
 
-            sap.ui.getCore().getMessageManager().addMessages(oMsg);
+        Controller.prototype._retrBpContact = function (sBpNum) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath = '/Partners' + '(\'' + sBpNum + '\')/BpContact/',
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData.PartnerID) {
+                        this.getView().getModel('oDataBpContact').setData(oData);
+                        this.oDataBpContactBak = jQuery.extend(true, {}, oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    // Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
         };
 
-        CustomController.prototype._initBpInfoConfigModel = function () {
+        /*---------------- Market Preference Section --------------*/
+
+        Controller.prototype._retrBpMarkPrefSet = function (sBpNum) {
+            var oModel = this.getView().getModel('oODataSvc'),
+                sPath = '/Partners' + '(\'' + sBpNum + '\')/BpMarkPreferSet/',
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData.results) {
+                        this.getView().getModel('oDataBpMarkPreferSet').setData(oData);
+                        this.oDataBpMarkPreferSetBak = jQuery.extend(true, {}, oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    // Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        /*------------------------------------------ Data Set Up & Update Methods -------------------------------------------*/
+
+        CustomController.prototype._initBpConfig = function () {
             var oModel = this.getView().getModel('oBpInfoConfig');
             
+            // Title Section
             oModel.setProperty('/titleEditVisible', true);
             oModel.setProperty('/titleSaveVisible', false);
             oModel.setProperty('/titleEditable', false);
-
+            // Address Section
             oModel.setProperty('/addrEditVisible', true);
             oModel.setProperty('/addrSaveVisible', false);
             oModel.setProperty('/addrEditable', false);
-
+            // Personal Section
             oModel.setProperty('/personalInfoEditVisible', true);
             oModel.setProperty('/personalInfoSaveVisible', false);
             oModel.setProperty('/personalInfoSSEditable', false);
             oModel.setProperty('/personalInfoDLEditable', false);
             oModel.setProperty('/personalInfoEditable', false);
-
+            // DNP Section (for organization type)
+            oModel.setProperty('/dnpEditVisible', true);
+            oModel.setProperty('/dnpSaveVisible', false);
+            oModel.setProperty('/dnpEditable', false);
+            // Contact Section
             oModel.setProperty('/contactInfoEditVisible', true);
             oModel.setProperty('/contactInfoSaveVisible', false);
             oModel.setProperty('/contactInfoEditable', false);
-
+            // Market Preference Section
             oModel.setProperty('/marketPrefEditVisible', true);
             oModel.setProperty('/marketPrefSaveVisible', false);
             oModel.setProperty('/mktPrfEditable', false);
         };
 
-        CustomController.prototype.onBackToDashboard = function () {
-            var oRouter = this.getOwnerComponent().getRouter();
-
-            if (this._coNum) {
-                oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
-            } else if (this._caNum) {
-                oRouter.navTo('dashboard.VerificationWithCa', {bpNum: this._bpNum, caNum: this._caNum});
-            } else {
-                oRouter.navTo('dashboard.Verification', {bpNum: this._bpNum});
-            }
-        };
-
-        CustomController.prototype.onTitleCancel = function () {    //onTitleCancel
-            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
-                bpTitleModel = this.getView().getModel('oDataBpName');
-            oConfigModel.setProperty('/titleEditVisible', true);
-            oConfigModel.setProperty('/titleSaveVisible', false);
-            oConfigModel.setProperty('/titleEditable', false);
-
-            // Make the key of empty value as "0000", so that the dropdown can recognize it.
-            if (this.oDataBpNameBak.Title === "") this.oDataBpNameBak.Title = "0000";
-            if (this.oDataBpNameBak.AcademicTitle === "") this.oDataBpNameBak.AcademicTitle = "0000";
-            if (this.oDataBpNameBak.Suffix === "") this.oDataBpNameBak.Suffix = "0000";
-
-            bpTitleModel.setData(jQuery.extend(true, {}, this.oDataBpNameBak));
-        };
+        /*--------------------- Title Section ---------------------*/
 
         CustomController.prototype.onTitleEdit = function () {
             var oConfigModel = this.getView().getModel('oBpInfoConfig');
+
+            // Change editability
             oConfigModel.setProperty('/titleEditVisible', false);
             oConfigModel.setProperty('/titleSaveVisible', true);
             oConfigModel.setProperty('/titleEditable', true);
@@ -404,103 +422,105 @@ sap.ui.define(
 
         CustomController.prototype.onTitleSave = function () {
             var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                oBpNameModel = this.getView().getModel('oDataBpName'),
                 oModel = this.getView().getModel('oODataSvc'),
-                sPath,
-                oParameters,
-                bpNumber = this._bpNum;
+                sPath = '/BpNames' + '(\'' + this._bpNum + '\')',
+                oParameters;
 
             // Display the loading indicator
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
-
+            // Restore editability
             oConfigModel.setProperty('/titleEditVisible', true);
             oConfigModel.setProperty('/titleSaveVisible', false);
             oConfigModel.setProperty('/titleEditable', false);
-
-            if (JSON.stringify(this.getView().getModel('oDataBpName').oData) === JSON.stringify(this.oDataBpNameBak)) {
+            // Check if there's any changes
+            if (JSON.stringify(oBpNameModel.oData) === JSON.stringify(this.oDataBpNameBak)) {
                 sap.ui.commons.MessageBox.alert("There is no change for Title/Name.");
                 return;
             }
-
-            sPath = '/BpNames' + '(\'' + bpNumber + '\')';
+            // Make the key of empty value as "", so that the system can recognize it.
+            if (oBpNameModel.oData.Title === "0000") { oBpNameModel.oData.Title = ""; }
+            if (oBpNameModel.oData.AcademicTitle === "0000") { oBpNameModel.oData.AcademicTitle = ""; }
+            if (oBpNameModel.oData.Suffix === "0000") { oBpNameModel.oData.Suffix = ""; }
+            // Update changes
             oParameters = {
                 merge: false,
                 success : function (oData) {
                     sap.ui.commons.MessageBox.alert("Title/Name Update Success");
-                    this._retrBpName(bpNumber);
+                    // Get the latest BP name info
+                    this._retrBpName(this._bpNum);
                     // Dismiss the loading indicator
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.commons.MessageBox.alert("Title/Name Update Failed");
                     // If save failed, roll back to previous value
-                    this.getView().getModel('oDataBpName').setData(jQuery.extend(true, {}, this.oDataBpNameBak));
+                    oBpNameModel.setData(jQuery.extend(true, {}, this.oDataBpNameBak));
                     // Dismiss the loading indicator
                     this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
 
             if (oModel) {
-
-                // Make the key of empty value as "", so that the system can recognize it.
-                if (this.getView().getModel('oDataBpName').oData.Title === "0000") this.getView().getModel('oDataBpName').oData.Title = "";
-                if (this.getView().getModel('oDataBpName').oData.AcademicTitle === "0000") this.getView().getModel('oDataBpName').oData.AcademicTitle = "";
-                if (this.getView().getModel('oDataBpName').oData.Suffix === "0000") this.getView().getModel('oDataBpName').oData.Suffix = "";
-
-                oModel.update(sPath, this.getView().getModel('oDataBpName').oData, oParameters);
+                oModel.update(sPath, oBpNameModel.oData, oParameters);
             }
         };
 
-        CustomController.prototype.onAddrCancel = function () {
-            this._retrBpAddress(this._bpNum);
+        CustomController.prototype.onTitleCancel = function () {
             var oConfigModel = this.getView().getModel('oBpInfoConfig'),
-                bpAddrModel = this.getView().getModel('oDataBpAddress');
-            oConfigModel.setProperty('/addrEditVisible', true);
-            oConfigModel.setProperty('/addrSaveVisible', false);
-            oConfigModel.setProperty('/addrEditable', false);
+                oBpNameModel = this.getView().getModel('oDataBpName');
 
-            bpAddrModel.setData(jQuery.extend(true, {}, this.oDataBpAddressBak));
+            // Restore editability
+            oConfigModel.setProperty('/titleEditVisible', true);
+            oConfigModel.setProperty('/titleSaveVisible', false);
+            oConfigModel.setProperty('/titleEditable', false);
+            // Make the key of empty value as "0000", so that the dropdown can recognize it.
+            if (this.oDataBpNameBak.Title === "") { this.oDataBpNameBak.Title = "0000"; }
+            if (this.oDataBpNameBak.AcademicTitle === "") { this.oDataBpNameBak.AcademicTitle = "0000"; }
+            if (this.oDataBpNameBak.Suffix === "") { this.oDataBpNameBak.Suffix = "0000"; }
+            // Roll back to previous value
+            oBpNameModel.setData(jQuery.extend(true, {}, this.oDataBpNameBak));
         };
+
+        /*-------------------- Address Section --------------------*/
 
         CustomController.prototype.onAddrEdit = function () {
             var oConfigModel = this.getView().getModel('oBpInfoConfig');
+            
+            // Change editability
             oConfigModel.setProperty('/addrEditVisible', false);
             oConfigModel.setProperty('/addrSaveVisible', true);
             oConfigModel.setProperty('/addrEditable', true);
         };
 
-        Controller.prototype._handleMailingAddrUpdate = function (oEvent) {
-            this.onAddrSave();
-        };
-
         CustomController.prototype.onAddrSave = function () {
             var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                oBpMailModel = this.getView().getModel('oDataAddrEdit'),
+                oBpAddrModel = this.getView().getModel('oDataBpAddress'),
                 oModel = this.getView().getModel('oODataSvc'),
-                sPath,
+                sPath = '/BpAddresses',
                 oParameters,
-                aFilters,
-                oMailEdit = this.getView().getModel('oDtaAddrEdit'),
+                aFilters = this._createAddrValidateFilters(),
                 tempObj2;
 
+            // Restore editability
             oConfigModel.setProperty('/addrEditVisible', true);
             oConfigModel.setProperty('/addrSaveVisible', false);
             oConfigModel.setProperty('/addrEditable', false);
-
-            if (JSON.stringify(this.getView().getModel('oDataBpAddress').oData) === JSON.stringify(this.oDataBpAddressBak.results[0])) {
+            // Check if there's any changes
+            if (JSON.stringify(oBpAddrModel.oData) === JSON.stringify(this.oDataBpAddressBak.results[0])) {
                 sap.ui.commons.MessageBox.alert("There is no change for Address.");
                 return;
             }
 
-            //sPath = '/BpAddresses' + '(PartnerID=\'' + this._bpNum + '\',AddressID=\'' + this._addressID + '\')';
-            oMailEdit.setProperty('/', this.getView().getModel('oDataBpAddress').getProperty('/'));
-            aFilters = this._createAddrValidateFilters();
-            sPath = '/BpAddresses';
+            oBpMailModel.setProperty('/', oBpAddrModel.getProperty('/'));
 
             oParameters = {
                 filters: aFilters,
                 success: function (oData) {
                     if (oData.AddrChkValid === 'X') {
                         //Validate success, update the address directly
-                        tempObj2 = this.getView().getModel('oDataBpAddress').getProperty('/');
+                        tempObj2 = oBpAddrModel.getProperty('/');
                         delete tempObj2.showVldBtns;
                         delete tempObj2.updateNotSent;
                         delete tempObj2.updateSent;
@@ -519,7 +539,7 @@ sap.ui.define(
                         this._oMailEditPopup.open();
                         this._showSuggestedAddr();
                         //oMailEdit.setProperty('/AddressInfo', oData.results[0].AddressInfo);
-                        oMailEdit.setProperty('/SuggAddrInfo', oData.results[0].TriCheck);
+                        oBpMailModel.setProperty('/SuggAddrInfo', oData.results[0].TriCheck);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -530,55 +550,21 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, oParameters);
             }
-
-            /** Original code for update address, to be removed */
-//            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
-//                oModel = this.getView().getModel('oODataSvc'),
-//                sPath,
-//                oParameters,
-//                bpNumber = this.getView().getModel('oDataBpAddress').getProperty('/results/0/PartnerID'),
-//                addressId = this.getView().getModel('oDataBpAddress').getProperty('/results/0/AddressID');
-//
-//            oConfigModel.setProperty('/addrEditVisible', true);
-//            oConfigModel.setProperty('/addrSaveVisible', false);
-//            oConfigModel.setProperty('/addrEditable', false);
-//
-//            if (JSON.stringify(this.getView().getModel('oDataBpAddress').oData.results[0]) === JSON.stringify(this.oDataBpAddressBak.results[0])) {
-//                sap.ui.commons.MessageBox.alert("There is no change for Address.");
-//                return;
-//            }
-//
-//            sPath = '/BpAddresses' + '(PartnerID=\'' + bpNumber + '\',AddressID=\'' + addressId + '\')';
-//            oParameters = {
-//                merge: false,
-//                success : function (oData) {
-//                    sap.ui.commons.MessageBox.alert("Address Update Success");
-//                    this._retrBpAddress(bpNumber);
-//                }.bind(this),
-//                error: function (oError) {
-//                    sap.ui.commons.MessageBox.alert("Address Update Failed");
-//                }.bind(this)
-//            };
-//
-//            if (oModel) {
-//                oModel.update(sPath, this.getView().getModel('oDataBpAddress').oData.results[0], oParameters);
-//            }
         };
 
-        CustomController.prototype.onPersonalInfoCancel = function () {
+        CustomController.prototype.onAddrCancel = function () {
             var oConfigModel = this.getView().getModel('oBpInfoConfig'),
-                bpPersonalModel = this.getView().getModel('oDataBpPersonal');
-            oConfigModel.setProperty('/personalInfoEditVisible', true);
-            oConfigModel.setProperty('/personalInfoSaveVisible', false);
-
-            // Editability
-            oConfigModel.setProperty('/personalInfoSSEditable', false);
-            oConfigModel.setProperty('/personalInfoDLEditable', false);
-            oConfigModel.setProperty('/personalInfoEditable', false);
-
-
-            bpPersonalModel.setData(jQuery.extend(true, {}, this.oDataBpPersonalBak));
+            oBPAddrModel = this.getView().getModel('oDataBpAddress');
+            
+            // Restore editability
+            oConfigModel.setProperty('/addrEditVisible', true);
+            oConfigModel.setProperty('/addrSaveVisible', false);
+            oConfigModel.setProperty('/addrEditable', false);
+            // Roll back to previous value
+            oBPAddrModel.setData(jQuery.extend(true, {}, this.oDataBpAddressBak));
         };
+
+        /*-------------------- Personal Section -------------------*/
 
         CustomController.prototype.onPersonalInfoEdit = function () {
             var oConfigModel = this.getView().getModel('oBpInfoConfig'),
@@ -644,15 +630,87 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype.onContactInfoCancel = function () {
+        CustomController.prototype.onPersonalInfoCancel = function () {
             var oConfigModel = this.getView().getModel('oBpInfoConfig'),
-                bpContactModel = this.getView().getModel('oDataBpContact');
-            oConfigModel.setProperty('/contactInfoEditVisible', true);
-            oConfigModel.setProperty('/contactInfoSaveVisible', false);
-            oConfigModel.setProperty('/contactInfoEditable', false);
+                bpPersonalModel = this.getView().getModel('oDataBpPersonal');
+            oConfigModel.setProperty('/personalInfoEditVisible', true);
+            oConfigModel.setProperty('/personalInfoSaveVisible', false);
 
-            bpContactModel.setData(jQuery.extend(true, {}, this.oDataBpContactBak));
+            // Editability
+            oConfigModel.setProperty('/personalInfoSSEditable', false);
+            oConfigModel.setProperty('/personalInfoDLEditable', false);
+            oConfigModel.setProperty('/personalInfoEditable', false);
+
+
+            bpPersonalModel.setData(jQuery.extend(true, {}, this.oDataBpPersonalBak));
         };
+
+        /*------------------- DNP Release Section -----------------*/
+
+        CustomController.prototype.onDnpEdit = function () {
+            var oConfigModel = this.getView().getModel('oBpInfoConfig');
+
+            // Change editability
+            oConfigModel.setProperty('/dnpEditVisible', false);
+            oConfigModel.setProperty('/dnpSaveVisible', true);
+            oConfigModel.setProperty('/dnpEditable', true);
+        };
+
+        CustomController.prototype.onDnpSave = function () {
+            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                oBpPersonalModel = this.getView().getModel('oDataBpPersonal'),
+                oModel = this.getView().getModel('oODataSvc'),
+                sPath = '/BpPersonals' + '(\'' + this._bpNum + '\')',
+                oParameters;
+
+            // Display the loading indicator
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            // Restore editability
+            oConfigModel.setProperty('/dnpEditVisible', true);
+            oConfigModel.setProperty('/dnpSaveVisible', false);
+            oConfigModel.setProperty('/dnpEditable', false);
+            // Check if there's any changes
+            if (JSON.stringify(oBpPersonalModel.oData) === JSON.stringify(this.oDataBpPersonalBak)) {
+                sap.ui.commons.MessageBox.alert("There is no change for Personal Info.");
+                return;
+            }
+            // Update changes
+            oParameters = {
+                merge: false,
+                success : function (oData) {
+                    sap.ui.commons.MessageBox.alert("Personal Info Update Success");
+                    // Get the latest BP personal info
+                    this._retrBpPersonal(this._bpNum);
+                    // Dismiss the loading indicator
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                }.bind(this),
+                error: function (oError) {
+                    sap.ui.commons.MessageBox.alert("Personal Info Update Failed");
+                    // If save failed, roll back to previous value
+                    oBpPersonalModel.setData(jQuery.extend(true, {}, this.oDataBpPersonalBak));
+                    // Dismiss the loading indicator
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.update(sPath, oBpPersonalModel.oData, oParameters);
+            }
+        };
+
+        CustomController.prototype.onDnpCancel = function () {
+            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                oBpPersonalModel = this.getView().getModel('oDataBpPersonal');
+
+            // Restore editability
+            oConfigModel.setProperty('/dnpEditVisible', true);
+            oConfigModel.setProperty('/dnpSaveVisible', false);
+            oConfigModel.setProperty('/dnpEditable', false);
+            // Roll back to previous value
+            oBpPersonalModel.setData(jQuery.extend(true, {}, this.oDataBpPersonalBak));
+        };
+
+        /*--------------------- Contact Section -------------------*/
 
         CustomController.prototype.onContactInfoEdit = function () {
             var oConfigModel = this.getView().getModel('oBpInfoConfig');
@@ -694,15 +752,17 @@ sap.ui.define(
             }
         };
 
-        CustomController.prototype.onMarketPrefCancel = function () {
+        CustomController.prototype.onContactInfoCancel = function () {
             var oConfigModel = this.getView().getModel('oBpInfoConfig'),
-                bpMarkPrefModel = this.getView().getModel('oDataBpMarkPreferSet');
-            oConfigModel.setProperty('/marketPrefEditVisible', true);
-            oConfigModel.setProperty('/marketPrefSaveVisible', false);
-            oConfigModel.setProperty('/mktPrfEditable', false);
+                bpContactModel = this.getView().getModel('oDataBpContact');
+            oConfigModel.setProperty('/contactInfoEditVisible', true);
+            oConfigModel.setProperty('/contactInfoSaveVisible', false);
+            oConfigModel.setProperty('/contactInfoEditable', false);
 
-            bpMarkPrefModel.setData(jQuery.extend(true, {}, this.oDataBpMarkPreferSetBak));
+            bpContactModel.setData(jQuery.extend(true, {}, this.oDataBpContactBak));
         };
+
+        /*---------------- Market Preference Section --------------*/
 
         CustomController.prototype.onMarketPrefEdit = function () {
             var oConfigModel = this.getView().getModel('oBpInfoConfig');
@@ -744,6 +804,112 @@ sap.ui.define(
                 this._updateSingleMarketPref(aPathUpdateReq, 0);
             }
         };
+
+        CustomController.prototype.onMarketPrefCancel = function () {
+            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
+                bpMarkPrefModel = this.getView().getModel('oDataBpMarkPreferSet');
+            oConfigModel.setProperty('/marketPrefEditVisible', true);
+            oConfigModel.setProperty('/marketPrefSaveVisible', false);
+            oConfigModel.setProperty('/mktPrfEditable', false);
+
+            bpMarkPrefModel.setData(jQuery.extend(true, {}, this.oDataBpMarkPreferSetBak));
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        CustomController.prototype._getMessageProcessor = function () {
+            if (!this._oControlMessageProcessor) {
+                this._oControlMessageProcessor = new CoreControlMessageProcessor();
+            }
+
+            return this._oControlMessageProcessor;
+        };
+
+        CustomController.prototype._addMessage = function (oEvent, sMsg, sType) {
+            var oMsg = new CoreMessage({
+                message: sMsg,
+                type: sType,
+                target: [oEvent.getParameter('id'), oEvent.getParameter('property')].join('/'),
+                processor: this._getMessageProcessor()
+            });
+
+            sap.ui.getCore().getMessageManager().addMessages(oMsg);
+        };
+
+        CustomController.prototype.onBackToDashboard = function () {
+            var oRouter = this.getOwnerComponent().getRouter();
+
+            if (this._coNum) {
+                oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else if (this._caNum) {
+                oRouter.navTo('dashboard.VerificationWithCa', {bpNum: this._bpNum, caNum: this._caNum});
+            } else {
+                oRouter.navTo('dashboard.Verification', {bpNum: this._bpNum});
+            }
+        };
+
+        
+
+    
+
+        Controller.prototype._handleMailingAddrUpdate = function (oEvent) {
+            this.onAddrSave();
+        };
+
+
+
+
+
+    
 
         Controller.prototype._updateSingleMarketPref = function (aAllMktPref, iIndex) {
             var oModel = this.getView().getModel('oODataSvc'),
@@ -817,85 +983,6 @@ sap.ui.define(
         };
 
 
-
-        Controller.prototype._retrBpPersonal = function (sBpNum) {
-            var oModel = this.getView().getModel('oODataSvc'),
-                sPath,
-                oParameters;
-
-            sPath = '/Partners' + '(\'' + sBpNum + '\')/BpPersonal/';
-
-            oParameters = {
-                success : function (oData) {
-                    if (oData) {
-                        if (oData.PartnerID) {
-                            this.getView().getModel('oDataBpPersonal').setData(oData);
-                            this.oDataBpPersonalBak = jQuery.extend(true, {}, oData);
-                        }
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    //Need to put error message
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
-        };
-
-        Controller.prototype._retrBpContact = function (sBpNum) {
-            var oModel = this.getView().getModel('oODataSvc'),
-                sPath,
-                oParameters;
-
-            sPath = '/Partners' + '(\'' + sBpNum + '\')/BpContact/';
-
-            oParameters = {
-                success : function (oData) {
-                    if (oData) {
-                        if (oData.PartnerID) {
-                            this.getView().getModel('oDataBpContact').setData(oData);
-                            this.oDataBpContactBak = jQuery.extend(true, {}, oData);
-                        }
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    //Need to put error message
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
-        };
-
-        Controller.prototype._retrBpMarkPrefSet = function (sBpNum) {
-            var oModel = this.getView().getModel('oODataSvc'),
-                sPath,
-                oParameters;
-
-            sPath = '/Partners' + '(\'' + sBpNum + '\')/BpMarkPreferSet/';
-
-            oParameters = {
-                success : function (oData) {
-                    if (oData) {
-                        if (oData.results) {
-                            this.getView().getModel('oDataBpMarkPreferSet').setData(oData);
-                            this.oDataBpMarkPreferSetBak = jQuery.extend(true, {}, oData);
-                        }
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    //Need to put error message
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }
-        };
-
         Controller.prototype.onYesSelected = function (oEvent) {
             var sPath, index, oMarkPrefModel, data;
             sPath = oEvent.getSource().oPropagatedProperties.oBindingContexts.oDataBpMarkPreferSet.sPath;
@@ -925,9 +1012,9 @@ sap.ui.define(
         };
 
         Controller.prototype._showSuggestedAddr = function () {
-            this.getView().getModel('oDtaAddrEdit').setProperty('/updateSent', true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/showVldBtns', true);
-            this.getView().getModel('oDtaAddrEdit').setProperty('/updateNotSent', false);
+            this.getView().getModel('oDataAddrEdit').setProperty('/updateSent', true);
+            this.getView().getModel('oDataAddrEdit').setProperty('/showVldBtns', true);
+            this.getView().getModel('oDataAddrEdit').setProperty('/updateNotSent', false);
         };
 
         Controller.prototype._createAddrValidateFilters = function () {
@@ -935,7 +1022,7 @@ sap.ui.define(
                 oFilterTemplate,
 //                sBpNum = this.getView().getModel('oDtaVrfyMailingTempAddr').getProperty('/PartnerID'),
                 sBpNum = this._bpNum,
-                oMailEdit = this.getView().getModel('oDtaAddrEdit'),
+                oMailEdit = this.getView().getModel('oDataAddrEdit'),
                 oMailEditAddrInfo = oMailEdit.getProperty('/AddressInfo'),
                 key,
                 //bFixAddr = oMailEdit.getProperty('/bFixAddr'),
@@ -1037,7 +1124,7 @@ sap.ui.define(
         };
 
         Controller.prototype._handleMailingAcceptBtn = function (oEvent) {
-            var oMailEdit = this.getView().getModel('oDtaAddrEdit'),
+            var oMailEdit = this.getView().getModel('oDataAddrEdit'),
                 oMailTempModel = this.getView().getModel('oDataBpAddress'),    //replace oDtaVrfyMailingTempAddr with oDataBpAddress because we submit 'oDataBpAddress' in updating call
                 tempObj,
                 tempObj2,
@@ -1069,7 +1156,7 @@ sap.ui.define(
         };
 
         Controller.prototype._handleMailingDeclineBtn = function (oEvent) {
-            var oMailEdit = this.getView().getModel('oDtaAddrEdit'),
+            var oMailEdit = this.getView().getModel('oDataAddrEdit'),
                 oMailTempModel = this.getView().getModel('oDataBpAddress'), //replace oDtaVrfyMailingTempAddr with oDataBpAddress because we submit 'oDataBpAddress' in updating call
                 tempObj,
                 tempObj2;
@@ -1087,7 +1174,7 @@ sap.ui.define(
         };
 
         Controller.prototype._handleMailingEditBtn = function (oEvent) {
-            var oEditMail = this.getView().getModel('oDtaAddrEdit');
+            var oEditMail = this.getView().getModel('oDataAddrEdit');
 
             //oEditMail.setProperty('/updateSent', false);
             oEditMail.setProperty('/showVldBtns', false);
