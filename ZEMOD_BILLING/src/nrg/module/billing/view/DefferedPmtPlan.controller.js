@@ -18,7 +18,15 @@ sap.ui.define(
 
 
         Controller.prototype.onBeforeRendering = function () {
+            var oRouteInfo = this.getOwnerComponent().getCcuxContextManager().getContext().oData;
+            this._bpNum = oRouteInfo.bpNum;
+            this._caNum = oRouteInfo.caNum;
+            this._coNum = oRouteInfo.coNum;
+            this._isExt = oRouteInfo.isExt;
+
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppScrnControl');
+
+
 
             this._initScrnControl();
             this._startScrnControl();
@@ -42,6 +50,10 @@ sap.ui.define(
             var oScrnControl = this.getView().getModel('oDppScrnControl');
 
             oScrnControl.setProperty('/StepOne', true);
+        };
+
+        Controller.prototype._selectScrn = function (sSelectedScrn) {
+
         };
 
         /****************************************************************************************************************/

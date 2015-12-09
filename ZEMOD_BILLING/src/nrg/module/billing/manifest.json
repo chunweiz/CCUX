@@ -106,7 +106,7 @@
                     "target":["billing.HighBill", "dashboard.CustomerDataSummary", "billing.HighBillTools"]
                 },
                 "billing.DefferedPmtPlan": {
-                    "pattern": "billing/defferedpaymentplan/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "pattern": "billing/defferedpaymentplan/bp/{bpNum}/ca/{caNum}/co/{coNum}/ext/{isExt}",
                     "target":["billing.DefferedPmtPlan", "dashboard.CustomerDataSummary", "billing.DppTools"]
                 }
             },
