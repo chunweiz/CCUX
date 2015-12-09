@@ -53,9 +53,9 @@ sap.ui.define(
 				sUrlHash = oHashChanger.getHash(),
                 aSplitHash = sUrlHash.split('/');
 
-            if (aSplitHash[1] == 'defferedpaymentplan') {
+            if (aSplitHash[1] === 'defferedpaymentplan') {
                 oScrnControl.setProperty('/StepOne', true);
-            } else if (aSplitHash[1] == 'defferedpaymentext') {
+            } else if (aSplitHash[1] === 'defferedpaymentext') {
                 oScrnControl.setProperty('/EXTGrant', true);
             }
 
