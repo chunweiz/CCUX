@@ -58,6 +58,10 @@
                                     margin: 5px 12px;
 	                                width: 5rem;
                             }
+                            & > .nrgBllCJ-timeline-btns[data-disabled=true] {
+                                    color: #fff;
+                                    background-color: @nrgColor-grey-light;
+                            }
                             & > .nrgBllCJ-timeline-gobtn {
                                     margin: 5px 10px;
 	                                min-width: 2rem;
@@ -126,18 +130,22 @@
         & > .nrgCJModule-selPanel {
             & > .nrgCJModule-selPanel-heading {
                     height: 18px;
+                	margin-left: 2rem;
                 & > .nrgCJModule-selPanel-heading-hd {
                         display: inline-block;
                         width : 14%;
                         font-size: @nrgFontSize-small;
                         margin-left: 5px;
                 }
-
             }
             & > .nrgCJModule-selPanel-fields {
+                    margin-left: 1rem;
                 & > .nrgCJModule-selPanel-fields-fd {
                         display: inline-block;
                         width: 14.5%;
+                    & .uteMDd-hdrContent {
+                        width: 6.5rem;
+                    }
                 }
 
             }
@@ -190,6 +198,7 @@
     }
     & .nrgChannelCJIcons {
         color: #cacacb;
+        margin-top: 10px;
     }
     & .nrgCJTChannel-selected::after {
         content: "";
@@ -246,6 +255,7 @@
     font-weight: 600;
 }
 .nrgChannelCJIcons > .nrgCJT-channelContainer{
-    width : auto;
-    height: 4rem;
+	width: auto;
+	height: 4rem;
+	max-width: 75rem;
 }

@@ -58,6 +58,11 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._onDunningBtnClicked = function () {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+
+            oWebUiManager.notifyWebUi('openIndex', {LINK_ID: 'Z_DUNH'});
+        };
 
         Controller.prototype._onAvgBillBtnClicked = function () {
             if (!this.ABPPopupCustomControl) {

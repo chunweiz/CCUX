@@ -11,7 +11,7 @@
     controllerName="nrg.module.billing.view.DefferedPmtPlan">
     <ute:Tag class="nrgAppMain-generalContent nrgBilling-dPmtPln">
         <!--STEP 1-->
-        <ute:Tag class="nrgBilling-dPmtPln-lftArea" visible="false">
+        <ute:Tag class="nrgBilling-dPmtPln-lftArea" visible="{oDppScrnControl>/StepOne}">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-PageTitle}"/>
             <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
@@ -81,7 +81,7 @@
             </ute:Tag>
         </ute:Tag>
         <!--Step 2-->
-        <ute:Tag class="nrgBilling-dPmtPln-lftArea" visible="false">
+        <ute:Tag class="nrgBilling-dPmtPln-lftArea" visible="{oDppScrnControl>/StepTwo}">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-PageTitle}"/>
             <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
@@ -159,7 +159,7 @@ Additional installments will be due with the following 5 subsequent invoices."/>
             </ute:Tag>
         </ute:Tag>
         <!--Step 3-->
-        <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="false">
+        <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="{oDppScrnControl>/StepThree}">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-PageTitle}"/>
             <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
@@ -287,7 +287,7 @@ Additional installments will be due with the following 5 subsequent invoices."/>
             </ute:Tag>
         </ute:Tag>
         <!--DPP Denied-->
-        <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="false">
+        <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="{oDppScrnControl>/DPPDenied}">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-PageTitle}"/>
             <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
@@ -322,7 +322,7 @@ Additional installments will be due with the following 5 subsequent invoices."/>
             </ute:Tag>
         </ute:Tag>
         <!--EXT Granted-->
-        <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="false">
+        <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="{oDppScrnControl>/EXTGrant}">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-ExtTitle}"/>
             <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
@@ -386,7 +386,7 @@ Additional installments will be due with the following 5 subsequent invoices."/>
             </ute:Tag>
         </ute:Tag>
         <!--EXT Denied-->
-        <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="true">
+        <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="{oDppScrnControl>/EXTDenied}">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-ExtTitle}"/>
             <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>

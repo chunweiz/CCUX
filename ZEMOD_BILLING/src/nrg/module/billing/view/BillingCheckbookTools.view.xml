@@ -34,6 +34,12 @@
                 press="._onExtnBtnClicked"
                 text="{comp-i18n-billing>nrgBilling-chkbkTools-Extn-Btn}">
             </ute:Button>
+            <!-- Dunning History Transaction Launch -->
+            <ute:Button class="nrgBilling-blChkBkTools-ctnt-btn"
+                buttonType="SpecialNav" width="220px" enabled="true"
+                press="._onDunningBtnClicked"
+                text="{comp-i18n-billing>nrgBilling-chkbkTools-Dunning-Btn}">
+            </ute:Button>
         </ute:Tag>
     </ute:Tag>
 
