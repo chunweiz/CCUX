@@ -10,14 +10,8 @@
         <Property Name="OpenItems" Type="ZE_CCUX_DPP_EXT_SRV.OpenItems" Nullable="false" />
         <Property Name="ContractAccountNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="PartnerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="SelectRow" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="200" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="DueDate" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="DPPReason" Type="Edm.String" Nullable="false" MaxLength="500" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="ReasonCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="ReasonSelect" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <Property Name="ZeroDwPay" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="ZeroDwPayAuth" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="InstlmntNo" Type="Edm.Int16" Nullable="false" sap:label="Signed INT2 / int16" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="InstlmntNoAuth" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
@@ -92,12 +86,12 @@
         <End Type="ZE_CCUX_DPP_EXT_SRV.DPPConf" Multiplicity="*" Role="ToRole_DPPSetUp_DPPConf" />
         <ReferentialConstraint>
           <Principal Role="FromRole_DPPSetUp_DPPConf">
-            <PropertyRef Name="ContractAccountNumber" />
             <PropertyRef Name="PartnerID" />
+            <PropertyRef Name="ContractAccountNumber" />
           </Principal>
           <Dependent Role="ToRole_DPPSetUp_DPPConf">
-            <PropertyRef Name="ContractAccountNumber" />
             <PropertyRef Name="PartnerID" />
+            <PropertyRef Name="ContractAccountNumber" />
           </Dependent>
         </ReferentialConstraint>
       </Association>
@@ -120,12 +114,12 @@
         <End Type="ZE_CCUX_DPP_EXT_SRV.DPPDenied" Multiplicity="*" Role="ToRole_DPPElgble_DPPDenied" />
         <ReferentialConstraint>
           <Principal Role="FromRole_DPPElgble_DPPDenied">
-            <PropertyRef Name="ContractAccountNumber" />
             <PropertyRef Name="DPPReason" />
+            <PropertyRef Name="ContractAccountNumber" />
           </Principal>
           <Dependent Role="ToRole_DPPElgble_DPPDenied">
-            <PropertyRef Name="ContractAccountNumber" />
             <PropertyRef Name="DPPReason" />
+            <PropertyRef Name="ContractAccountNumber" />
           </Dependent>
         </ReferentialConstraint>
       </Association>
@@ -151,8 +145,8 @@
           <Parameter Name="ContractAccountNumber" Type="Edm.String" Mode="In" MaxLength="12" />
         </FunctionImport>
       </EntityContainer>
-      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/$metadata" />
-      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/$metadata" />
+      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/$metadata" />
+      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/$metadata" />
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
