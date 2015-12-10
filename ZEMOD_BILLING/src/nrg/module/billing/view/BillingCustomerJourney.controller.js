@@ -201,6 +201,7 @@ sap.ui.define(
                 oTimeLineModel = this.getView().getModel('Cj-timeline'),
                 that = this,
                 oViewModel = this.getView().getModel('cj-view');
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             sPath = "/CJIconsSet";
             aFilterIds = ["BP", "CA", "StartDate", "EndDate"];
             aFilterValues = [this._sBP, this._sCA, dStartDate, dEndDate];
@@ -215,9 +216,11 @@ sap.ui.define(
                         oViewModel.setProperty("/icons", true);
                     }
                     jQuery.sap.log.info("Odata Read Successfully:::");
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
                     jQuery.sap.log.info("Odata Read Error occured");
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
             if (oModel) {
@@ -669,6 +672,7 @@ sap.ui.define(
                 oFilter1,
                 aFilters,
                 oCJTable = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-table");
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             oEvent.getSource().setSelected(!oEvent.getSource().getSelected());
             if (sChannel === "All") {
                 sChannel = "";
@@ -676,6 +680,7 @@ sap.ui.define(
             oFilter1 = new sap.ui.model.Filter("ChannelType", sap.ui.model.FilterOperator.Contains, sChannel);
             aFilters = new sap.ui.model.Filter({filters: [oFilter1], and: false });
             oCJTable.getBinding("rows").filter(aFilters);
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
         };
         /**
 		 * Handler for Expand All
@@ -722,10 +727,12 @@ sap.ui.define(
                 aFilterValues,
                 aFilters,
                 oCJTable = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-table");
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             oFilter1 = new sap.ui.model.Filter("SingleMessage", sap.ui.model.FilterOperator.Contains, oSearchText.getValue());
             oFilter2 = new sap.ui.model.Filter("ColValues", sap.ui.model.FilterOperator.Contains, oSearchText.getValue());
             aFilters = new sap.ui.model.Filter({filters: [oFilter1, oFilter2], and: false });
             oCJTable.getBinding("rows").filter(aFilters);
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
         };
         return Controller;
     }
