@@ -65,8 +65,41 @@ sap.ui.define(
                 }
             });
         };
+        CustomControl.prototype.onmouseout = function (oEvent) {
+            var bAlreadySelected = false;
+            this._aChannelRegistry.forEach(function (oChannel) {
+                if (oChannel) {
+                    if (oChannel.getSelected()) {
+                        bAlreadySelected = true;
+                    }
+                }
+            }, this);
+            if (bAlreadySelected) {
+                return;
+            }
+            this.$().removeClass('nrgCJTChannel-selected');
+        };
         CustomControl.prototype.onmouseover = function (oEvent) {
-            //this.firePress();
+            var bAlreadySelected = false;
+            this._aChannelRegistry.forEach(function (oChannel) {
+                if (oChannel) {
+                    if (oChannel.getSelected()) {
+                        bAlreadySelected = true;
+                    }
+                }
+            }, this);
+            if (bAlreadySelected) {
+                return;
+            }
+            this.$().addClass('nrgCJTChannel-selected');
+            this.adjustDescription();
+/*            this._aChannelRegistry.forEach(function (oChannel) {
+                if (oChannel !== this) {
+                    oChannel.$().removeClass('nrgCJTChannel-selected');
+                } else {
+
+                }
+            }, this);*/
         };
         CustomControl.prototype.onfocusout = function (oEvent) {
             this.setSelected(false);
@@ -96,7 +129,7 @@ sap.ui.define(
                 this.adjustDescription();
             }
         };
-        CustomControl.prototype.adjustDescription = function (bSelected) {
+        CustomControl.prototype.adjustDescription = function () {
             var oDescription,
                 oNavBackDomRef,
                 oDescriptionTitle,
@@ -104,7 +137,8 @@ sap.ui.define(
                 oLeft,
                 bBackHidden = false,
                 aClassList,
-                iCounter;
+                iCounter,
+                iDescriptionTTlLeft;
             if ((this.getDomRef()) && (this.getDomRef().firstChild) && (this.getDomRef().firstChild) && (this.getDomRef().firstChild.nextSibling) && (this.getDomRef().firstChild.nextSibling.nextSibling)) {
                 oDescription = this.getDomRef().firstChild.nextSibling.nextSibling;
             } else {
@@ -112,17 +146,23 @@ sap.ui.define(
             }
             oLeft = (this.getParent().getDomRef('channelContainer').scrollLeft - this.getDomRef().offsetLeft) + 500;
             if (Math.abs(oLeft) >= 590) {
-                oLeft = -510;
+                oLeft = -472;
+                iDescriptionTTlLeft = Math.abs(oDescription.offsetLeft);
             } else if (Math.abs(oLeft) >= 490) {
-                oLeft = -410;
+                oLeft = -372;
+                iDescriptionTTlLeft = Math.abs(oDescription.offsetLeft) + 5;
             } else if (Math.abs(oLeft) >= 390) {
-                oLeft = -310;
+                oLeft = -252;
+                iDescriptionTTlLeft = Math.abs(oDescription.offsetLeft) + 5;
             } else if (Math.abs(oLeft) >= 290) {
-                oLeft = -210;
+                oLeft = -172;
+                iDescriptionTTlLeft = Math.abs(oDescription.offsetLeft) + 5;
             } else if (Math.abs(oLeft) >= 190) {
-                oLeft = -110;
+                oLeft = -72;
+                iDescriptionTTlLeft = Math.abs(oDescription.offsetLeft) + 5;
             } else if (Math.abs(oLeft) >= 90) {
-                oLeft = -10;
+                oLeft = 30;
+                iDescriptionTTlLeft = Math.abs(oDescription.offsetLeft);
             } else {
                 oLeft = 10;
             }
@@ -130,9 +170,15 @@ sap.ui.define(
 			    "top" : '6.5rem',
 			    "left" : oLeft
 		    });
+            if (oDescription) {
+                oDescriptionTitle = oDescription.firstChild;
+            } else {
+                return;
+            }
+            //iDescriptionTTlLeft = Math.abs(oDescription.offsetLeft) + 5;
             jQuery(oDescriptionTitle).css({
 			    "top" : '-1rem',
-			    "left" : Math.abs(oDescription.offsetLeft) + 30
+			    "left" : iDescriptionTTlLeft
 		    });
 
         };

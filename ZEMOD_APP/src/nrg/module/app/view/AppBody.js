@@ -47,10 +47,15 @@ sap.ui.define(
             this._registerEvents();
         };
 
-        AppBody.prototype.reset = function () {
+        AppBody.prototype.reset = function (bfullWidth) {
             var oBodyContent = this._oController.getView().byId('appBodyContent');
 
-            oBodyContent.setLayout(AppBody.ContentLayoutType.Default);
+            if(bfullWidth) {
+                oBodyContent.setLayout(AppBody.ContentLayoutType.FullWidthTool);
+            } else {
+                oBodyContent.setLayout(AppBody.ContentLayoutType.Default);
+            }
+
 
             this.showNavLeft(false);
             this._detachAllNavLeft();
