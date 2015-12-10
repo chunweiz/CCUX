@@ -486,6 +486,7 @@ sap.ui.define(
             oPendingSwapsTable = sap.ui.core.Fragment.byId("PendingOverview", "idnrgCamPds-pendTable");
             oPendingSwapsTemplate = sap.ui.core.Fragment.byId("PendingOverview", "idnrgCamPds-pendRow");
             fnRecievedHandler = function () {
+                that._oCancelDialog.open();
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
             };
             oBindingInfo = {
@@ -499,9 +500,6 @@ sap.ui.define(
             this.getView().addDependent(this._oCancelDialog);
             //to get access to the global model
             this._oCancelDialog.addStyleClass("nrgCamHis-dialog");
-            this.getOwnerComponent().getCcuxApp().setOccupied(false);
-            this._oCancelDialog.open();
-            this.getOwnerComponent().getCcuxApp().setOccupied(true);
 
         };
         /**
