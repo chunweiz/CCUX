@@ -66,7 +66,25 @@ sap.ui.define(
             });
         };
         CustomControl.prototype.onmouseover = function (oEvent) {
-            //this.firePress();
+            var bAlreadySelected = false;
+            this._aChannelRegistry.forEach(function (oChannel) {
+                if (oChannel) {
+                    if (oChannel.getSelected()) {
+                        bAlreadySelected = true;
+                    }
+                }
+            }, this);
+            if (bAlreadySelected) {
+                return;
+            }
+            this._aChannelRegistry.forEach(function (oChannel) {
+                if (oChannel !== this) {
+                    oChannel.$().removeClass('nrgCJTChannel-selected');
+                } else {
+                    this.$().addClass('nrgCJTChannel-selected');
+                    this.adjustDescription();
+                }
+            }, this);
         };
         CustomControl.prototype.onfocusout = function (oEvent) {
             this.setSelected(false);
@@ -96,7 +114,7 @@ sap.ui.define(
                 this.adjustDescription();
             }
         };
-        CustomControl.prototype.adjustDescription = function (bSelected) {
+        CustomControl.prototype.adjustDescription = function () {
             var oDescription,
                 oNavBackDomRef,
                 oDescriptionTitle,
@@ -112,17 +130,17 @@ sap.ui.define(
             }
             oLeft = (this.getParent().getDomRef('channelContainer').scrollLeft - this.getDomRef().offsetLeft) + 500;
             if (Math.abs(oLeft) >= 590) {
-                oLeft = -510;
+                oLeft = -358;
             } else if (Math.abs(oLeft) >= 490) {
-                oLeft = -410;
+                oLeft = -258;
             } else if (Math.abs(oLeft) >= 390) {
-                oLeft = -310;
+                oLeft = -158;
             } else if (Math.abs(oLeft) >= 290) {
-                oLeft = -210;
+                oLeft = -58;
             } else if (Math.abs(oLeft) >= 190) {
-                oLeft = -110;
+                oLeft = -58;
             } else if (Math.abs(oLeft) >= 90) {
-                oLeft = -10;
+                oLeft = 30;
             } else {
                 oLeft = 10;
             }
