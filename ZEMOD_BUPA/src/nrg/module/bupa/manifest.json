@@ -15,11 +15,18 @@
                         "real": {
                             "comp-bupa": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_SRV/"
+                            },
+                            "comp-dropdown": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_DROPDOWN_SRV/"
                             }
                         },
                         "mock": {
                             "comp-bupa": {
                                 "mockDataBaseUrl": "data/devtest/",
+                                "generateMissingMockData": true
+                            },
+                            "comp-dropdown": {
+                                "mockDataBaseUrl": "data/devdropdown/",
                                 "generateMissingMockData": true
                             }
                         }

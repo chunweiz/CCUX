@@ -299,14 +299,34 @@
                 <ute:Tag class="nrgBupa-cusDataBpInfo-contentRow" visible="{oDataBP>/OrgBP}">
                     <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-contentRow-title"
                              text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-LEGAL_FORM}:" />
-                    <ute:Textfield fieldType="Noborder" class="nrgBupa-cusDataBpInfo-contentRow-input median middle-space"
+                    
+                    <!-- <ute:Textfield fieldType="Noborder" class="nrgBupa-cusDataBpInfo-contentRow-input median middle-space"
                         editable="{oBpInfoConfig>/personalInfoEditable}"
-                        value="{oDataBpPersonal>/LegalForm}"/>
-                    <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-contentRow-title"
+                        value="{oDataBpPersonal>/LegalForm}"/> -->
+
+
+                    <utmain:Dropdown design="Default" class="nrgBupa-cusDataBpInfo-dropdown middle-space"
+                        content="{oDataBpLegalForms>/results}"
+                        selectedKey="{oDataBpPersonal>/LegalForm}"
+                        select=".onSelectedLegalForm"
+                        enabled="{oBpInfoConfig>/personalInfoEditable}">
+                        <utmain:DropdownItem key="{oDataBpLegalForms>LegalEnty}">
+                           <ute:Tag text="{oDataBpLegalForms>Descr}" class="nrgBupa-cusDataBpInfo-cnt_Dropdown"/>
+                        </utmain:DropdownItem>
+                    </utmain:Dropdown>
+
+
+
+
+
+                    <!-- Industry Sector is temporarily disabled by business team requirement -->
+
+                    <!-- <ute:Tag elem="div" class="nrgBupa-cusDataBpInfo-contentRow-title"
                              text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-INDUSTRY}:" />
                     <ute:Textfield fieldType="Noborder" class="nrgBupa-cusDataBpInfo-contentRow-input median"
                         editable="{oBpInfoConfig>/personalInfoEditable}"
-                        value="{oDataBpPersonal>/Industry}"/>
+                        value="{oDataBpPersonal>/Industry}"/> -->
+
                 </ute:Tag>
                 <!-- Buttons -->
                 <ute:Tag class="nrgBupa-cusDataBpInfo-btnRow">
@@ -349,21 +369,7 @@
                         editable="{oBpInfoConfig>/dnpEditable}"
                         value="{oDataBpPersonal>/SignDt}"/>
                 </ute:Tag>
-                <!-- Buttons -->
-                <ute:Tag class="nrgBupa-cusDataBpInfo-btnRow">
-                    <ute:Button class="nrgBupa-cusDataBpInfo-btn"
-                       press="onDnpCancel"
-                       visible="{oBpInfoConfig>/dnpSaveVisible}"
-                       text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-CANCEL}"/>
-                    <ute:Button class="nrgBupa-cusDataBpInfo-btn"
-                       press="onDnpEdit"
-                       visible="{oBpInfoConfig>/dnpEditVisible}"
-                       text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-EDIT}"/>
-                    <ute:Button class="nrgBupa-cusDataBpInfo-btn"
-                       press="onDnpSave"
-                       visible="{oBpInfoConfig>/dnpSaveVisible}"
-                       text="{comp-i18n-bupa>nrgBupa-cusDataBpInfo-SAVE}"/>
-                </ute:Tag>
+                <!-- Buttons (None) -->
             </utmain:content>
         </utmain:Infoline>
 

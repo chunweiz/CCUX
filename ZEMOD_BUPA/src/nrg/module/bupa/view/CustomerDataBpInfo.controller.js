@@ -30,6 +30,7 @@ sap.ui.define(
             this.getOwnerComponent().getCcuxApp().setTitle('BUSINESS PARTNER');
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-bupa'), 'oODataSvc');
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-dropdown'), 'oODataDropdownSvc');
 
             // Model to track page edit/save status
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBpInfoConfig');
@@ -60,6 +61,9 @@ sap.ui.define(
 
             // Model to hold all acdemic titles
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'ODataBpSuffixs');
+
+            // Model to hold legal form
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDataBpLegalForms');
 
             //Model to hold all phone types
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDayPhoneType');
@@ -135,14 +139,15 @@ sap.ui.define(
         CustomController.prototype._initBPData = function () {
             this.getView().getModel('oDataBP').setProperty('/PartnerID', true);
             // Title Section
+            // Do this._retrBpSuffixs() in the callback to keep the data alignment
             this._retrBpTitles(this._bpNum);
             this._retrBpAccTitles();
             this._retrBpSuffixs();
-            this._retrBpName(this._bpNum);
             // Address Section
             this._retrBpAddress(this._bpNum);
             // Personal Section & DNP Section (for organization type)
-            this._retrBpPersonal(this._bpNum);
+            // Do this._retrBpPersonal() in the callback to keep the data alignment
+            this._retrBpLegalForm();
             // Contact Section
             this._retrBpContact(this._bpNum);
             // Market Preference Section
@@ -226,6 +231,7 @@ sap.ui.define(
                         oData.results.unshift(emptyEntry);
 
                         this.getView().getModel('ODataBpSuffixs').setData(oData);
+                        this._retrBpName(this._bpNum);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -305,6 +311,28 @@ sap.ui.define(
         };
 
         /*----------------- Personal & DNP Section ----------------*/
+
+        Controller.prototype._retrBpLegalForm = function () {
+            var oModel = this.getView().getModel('oODataDropdownSvc'),
+                sPath = '/LegalFormS',
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oDataBpLegalForms').setData(oData);
+                        this._retrBpPersonal(this._bpNum);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    // Need to put error message
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
 
         Controller.prototype._retrBpPersonal = function (sBpNum) {
             var oModel = this.getView().getModel('oODataSvc'),
@@ -647,68 +675,7 @@ sap.ui.define(
 
         /*------------------- DNP Release Section -----------------*/
 
-        CustomController.prototype.onDnpEdit = function () {
-            var oConfigModel = this.getView().getModel('oBpInfoConfig');
-
-            // Change editability
-            oConfigModel.setProperty('/dnpEditVisible', false);
-            oConfigModel.setProperty('/dnpSaveVisible', true);
-            oConfigModel.setProperty('/dnpEditable', true);
-        };
-
-        CustomController.prototype.onDnpSave = function () {
-            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
-                oBpPersonalModel = this.getView().getModel('oDataBpPersonal'),
-                oModel = this.getView().getModel('oODataSvc'),
-                sPath = '/BpPersonals' + '(\'' + this._bpNum + '\')',
-                oParameters;
-
-            // Display the loading indicator
-            this.getOwnerComponent().getCcuxApp().setOccupied(true);
-            // Restore editability
-            oConfigModel.setProperty('/dnpEditVisible', true);
-            oConfigModel.setProperty('/dnpSaveVisible', false);
-            oConfigModel.setProperty('/dnpEditable', false);
-            // Check if there's any changes
-            if (JSON.stringify(oBpPersonalModel.oData) === JSON.stringify(this.oDataBpPersonalBak)) {
-                sap.ui.commons.MessageBox.alert("There is no change for Personal Info.");
-                return;
-            }
-            // Update changes
-            oParameters = {
-                merge: false,
-                success : function (oData) {
-                    sap.ui.commons.MessageBox.alert("Personal Info Update Success");
-                    // Get the latest BP personal info
-                    this._retrBpPersonal(this._bpNum);
-                    // Dismiss the loading indicator
-                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
-                }.bind(this),
-                error: function (oError) {
-                    sap.ui.commons.MessageBox.alert("Personal Info Update Failed");
-                    // If save failed, roll back to previous value
-                    oBpPersonalModel.setData(jQuery.extend(true, {}, this.oDataBpPersonalBak));
-                    // Dismiss the loading indicator
-                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.update(sPath, oBpPersonalModel.oData, oParameters);
-            }
-        };
-
-        CustomController.prototype.onDnpCancel = function () {
-            var oConfigModel = this.getView().getModel('oBpInfoConfig'),
-                oBpPersonalModel = this.getView().getModel('oDataBpPersonal');
-
-            // Restore editability
-            oConfigModel.setProperty('/dnpEditVisible', true);
-            oConfigModel.setProperty('/dnpSaveVisible', false);
-            oConfigModel.setProperty('/dnpEditable', false);
-            // Roll back to previous value
-            oBpPersonalModel.setData(jQuery.extend(true, {}, this.oDataBpPersonalBak));
-        };
+        // DNP doesn't have update functionality
 
         /*--------------------- Contact Section -------------------*/
 
