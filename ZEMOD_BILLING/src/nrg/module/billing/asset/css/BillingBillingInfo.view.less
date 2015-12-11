@@ -206,186 +206,98 @@
         margin-top: 5px;
     }
 
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m{
+
+    /*--------------------------------------------------- Middle Section ------------------------------------------------*/
+
+    & .nrgBilling-cusDataBil-m {
         border-right: @nrgColor-grey-light;
         border-right-style: dashed;
         border-right-width: thin;
         padding: 0;
         margin: 0;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div{
-        padding:0;
-        margin: 0 22px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
         height: 346px;
+
+        & .nrgBilling-cusDataBil-m-row {
+            padding:0;
+            margin: 0 22px;
+            display: flex;
+            flex-direction: column;
+
+            &.last {
+                position: absolute;
+                bottom: 0;
+            }
+
+            & .nrgBilling-cusDataBil-m-row-titleSection {
+                display: flex;
+                align-items: center;
+
+                & .nrgBilling-cusDataBil-m-text-title {
+                    font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
+                    color: @nrgColor-grey-dark;
+                    width: 180px;
+                }
+
+                & .nrgBilling-cusDataBil-m-text-title-sub {
+                    padding: 3px 5px;
+                    font: @nrgFontWeight-semiBold @nrgFontSize-base @nrgFontFamily;
+                }
+            }
+
+            & .nrgBilling-cusDataBil-m-row-contentSection {
+                padding: 10px 0;
+                display: flex;
+                align-items: baseline;
+
+                & .nrgBilling-cusDataBillingInfo-contentTitle {
+                    width: 180px;
+
+                    & .uteMLbl-text {
+                        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
+                        color: @nrgColor-grey-dark;
+                    }
+                }
+
+                & .nrgBilling-cusDataBillingInfo-contentValue {
+                    margin-right: 20px;
+
+                    .uteMBtn-text{
+                        font: @nrgFontWeight-semiBold @nrgFontSize-base @nrgFontFamily;
+                        color: @nrgColor-blue-link;
+                        border-bottom: #5092ce;
+                        border-bottom-style: solid;
+                        border-bottom-width: thin;
+                    }
+                }
+
+                & .FooterNotificationCenter {
+                    display: flex;
+                    flex-direction: column;
+                    width: 90px;
+
+                    & .uteAppFtrNotifItem {
+                        padding: 5px 0;
+
+                        & .uteAppFtrNotifItem-icon {
+                            font-size: 15px;
+                        }
+
+                        & .uteAppFtrNotifItem-text {
+                            padding-left: 25px;
+                            color: @nrgColor-blue-link;
+                            font: @nrgFontWeight-semiBold @nrgFontSize-small @nrgFontFamily;
+                        }
+                    }
+                }
+            }
+
+        }
     }
 
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-text-amntexpln{
-        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBillingInfo-midlbl{
-        margin-top: 10px;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBillingInfo-midlbl > .uteMLbl-text{
-        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBillingInfo-midamnt{
-        float: right;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBillingInfo-midamnt > .uteMBtn-text{
-        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-blue-link;
-        border-bottom: #5092ce;
-        border-bottom-style: solid;
-        border-bottom-width: thin;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-text-postinvoice{
-        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-        margin-top: 30px;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-text-totalDue{
-
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-text-totalDue > .uteMLbl-text{
-        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-text-totalamntdue{
-        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-        float: right;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-text-current{
-        font: @nrgFontWeight-bold @nrgFontSize-small @nrgFontFamily;
-        color: @nrgColor-grey-light;
-        margin-top: 24px;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div .nrgBilling-cusDataBil-invoice-layout{
-        height: 210px;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div .nrgBilling-cusDataBil-invoice-layout .nrgBilling-cusDataBillingInfo-invoicelbl{
-        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div .nrgBilling-cusDataBil-invoice-layout .nrgBilling-cusDataBillingInfo-invoiceBtnValue{
-        float: right;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div .nrgBilling-cusDataBil-invoice-layout .nrgBilling-cusDataBillingInfo-invoiceBtnValue > .uteMBtn-text{
-        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-blue-link;
-        border-bottom: #5092ce;
-        border-bottom-style: solid;
-        border-bottom-width: thin;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div .nrgBilling-cusDataBil-invoice-layout {
-        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-matrix{
-        padding: 0;
-        margin: 24px 0 0 0;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-matrix > table > tbody > tr{
-        margin-top: 11px;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-matrix > table > tbody > tr td{
-        padding: 0;
-        margin:0;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-matrix > table > tbody > tr > td > .nrgBilling-cusDataBil-r-content-lbl{
-        font: @nrgFontWeight-regular @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-        margin-top: 12px;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-matrix > table > tbody > tr > td > .nrgBilling-cusDataBil-r-content-cnt{
-        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-        margin-left: 18px;
-        margin-top: 12px;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-matrix > table > tbody > tr > td > .nrgBilling-cusDataBil-r-content-lbl2{
-        font: @nrgFontWeight-bold @nrgFontSize-small @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-        margin-top: 12px;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-matrix > table > tbody > tr > td > .nrgBilling-cusDataBil-r-content-cnt2{
-        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-red-alert;
-        margin-left: 18px;
-        margin-top: 12px;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-matrix > .nrgBilling-cusDataBil-horDvi{
-        border-color: @nrgColor-grey-light;
-        border-style: dashed;
-        margin: 0;
-        margin-top: 4px;
-    }
-
-//    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-matrix .nrgBilling-cusDataBil-r-content-arrange-status{
-//        padding: 0;
-//        margin: 0;
-//    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-matrix > table > tbody > tr > td  .nrgBilling-cusDataBil-r-content-cnt-icon{
-        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-orangeAttention;
-        margin-top: 12px;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-matrix > table > tbody > tr > td  .nrgBilling-cusDataBil-r-content-cnt-dpp{
-        font: @nrgFontWeight-bold @nrgFontSize-base @nrgFontFamily;
-        color: @nrgColor-blue-link;
-        margin-left: 18px;
-        margin-top: 12px;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-matrix > .nrgBilling-cusDataBil-horDvi-long{
-        padding: 0;
-        margin-top: 80px;
-        border-color: @nrgColor-grey-light;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-matrix > .nrgBilling-cusDataBil-btm-label1{
-        font: @nrgFontWeight-regular @nrgFontSize-small @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-matrix > .nrgBilling-cusDataBil-btm-value{
-        margin-left: 10px;
-        font: @nrgFontWeight-bold @nrgFontSize-small @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-    }
-
-    & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-m > .nrgBilling-cusDataBil-m-div > .nrgBilling-cusDataBil-m-matrix > .nrgBilling-cusDataBil-btm-label2{
-        font: @nrgFontWeight-regular @nrgFontSize-small @nrgFontFamily;
-        color: @nrgColor-grey-dark;
-        margin-left: 38px;
-    }
+    
 
     & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-r{
         padding: 0;

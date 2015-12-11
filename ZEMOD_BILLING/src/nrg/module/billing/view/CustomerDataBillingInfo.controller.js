@@ -44,11 +44,15 @@ sap.ui.define(
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-billing'), 'oDataSvc');
             this.getView().setModel(this.getOwnerComponent().getModel('comp-billing-invoice'), 'oDataInvoiceSvc');
+            this.getView().setModel(this.getOwnerComponent().getModel('comp-eligibility'), 'oDataEligSvc');
 
-            //Models for BillingInvoices
+            // Model for Eligibility
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEligibility');
+
+            // Models for BillingInvoices
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBillingInvoices');
 
-            //Models for Invoice Details
+            // Models for Invoice Details
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPmtSummary');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPmtPayments');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oPmtItems');
@@ -58,10 +62,13 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oInvoiceSelectFilters');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oInvoiceSelectDateRange');
 
-            //Starting invoices retriviging
+            // Starting invoices retriviging
             this._initRoutingInfo();
             this._initRetrBillInvoices();
             this._initBillingMsgs();
+
+            // Get DPP/ABP/RetroABP/EXTN notification
+            this._retreInvoiceNotification();
 
             // Disable backspace key on this page
             $(document).on("keydown", function (e) {
@@ -70,6 +77,18 @@ sap.ui.define(
                 }
             });
         };
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         Controller.prototype._navLeftCallBack = function () {
@@ -356,7 +375,28 @@ sap.ui.define(
             }
         };
 
-        /*---------------------------------------------- Invoice Selection Popup --------------------------------------------*/
+        /*------------------------------------------- Retrieve Invoice Notification -----------------------------------------*/
+
+        CustomController.prototype._retreInvoiceNotification = function () {
+            var sPath = '/EligCheckS(\'' + this._coNum + '\')',
+                oModel = this.getView().getModel('oDataEligSvc'),
+                oEligModel = this.getView().getModel('oEligibility'),
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    oEligModel.setData(oData);
+                }.bind(this),
+                error: function (oError) {
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        /*------------------------------------------ Invoice Selection Popup (START) ----------------------------------------*/
 
         CustomController.prototype._onInvoiceSelectClicked = function () {
             var bRetrieveComplete = false,
@@ -629,6 +669,14 @@ sap.ui.define(
                 window.open(sUrl, '_blank');
             }, 1000);
         };
+
+        /*------------------------------------------- Invoice Selection Popup (END) -----------------------------------------*/
+
+
+
+
+
+
         /**
 		 * Handler for Dunning Lock Press
 		 *
