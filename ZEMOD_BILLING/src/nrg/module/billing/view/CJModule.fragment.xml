@@ -16,7 +16,7 @@
                 <u:Tag text="To" class="nrgCJModule-selPanel-heading-hd" />
                 <u:Tag text="Channel" class="nrgCJModule-selPanel-heading-hd" />
                 <u:Tag text="" class="nrgCJModule-selPanel-heading-hd" />
-                <u:Tag text="Search" class="nrgCJModule-selPanel-heading-hd"/>
+                <u:Tag text="Search" class="nrgCJModule-selPanel-heading-hd nrgCJModule-Search"/>
             </u:Tag>
             <u:Tag class="nrgCJModule-selPanel-fields">
                     <u:Tag class="nrgCJModule-selPanel-fields-fd">
@@ -60,7 +60,7 @@
                 <u:Textfield fieldType="Regular"
                              width="7rem"
                              editable="true"
-                             class="nrgCJModule-selPanel-fields-fd"
+                             class="nrgCJModule-selPanel-fields-fd nrgCJModule-Search"
                              id="idnrgCJModule-search"/>
                 <u:Tag class="nrgCJModule-selPanel-fields-fd">
                     <um:Button text="Search"

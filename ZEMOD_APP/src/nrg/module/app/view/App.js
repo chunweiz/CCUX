@@ -64,9 +64,9 @@ sap.ui.define(
         App.QuickLinkId = AppHeader.QuickLinkId;
         App.LayoutType = AppBody.ContentLayoutType;
 
-        App.prototype.reset = function () {
+        App.prototype.reset = function (bfullwidth) {
             this._oAppHeader.reset();
-            this._oAppBody.reset();
+            this._oAppBody.reset(bfullwidth);
             this._oAppFooter.reset();
 
             this.setInEdit(false);

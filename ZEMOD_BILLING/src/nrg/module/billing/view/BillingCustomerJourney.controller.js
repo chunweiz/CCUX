@@ -25,8 +25,9 @@ sap.ui.define(
 		/* lifecycle method- onAfterRendering                          */
 		/* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
-            this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
+            //this.getOwnerComponent().getCcuxApp().setLayout('FullWidthTool');
             var oEventBus = sap.ui.getCore().getEventBus();
+            oEventBus.unsubscribe("nrg.module.dashoard", "eAfterConfirmed", this._refreshCJ, this);
 			oEventBus.subscribe("nrg.module.dashoard", "eAfterConfirmed", this._refreshCJ, this);
 
         };
@@ -90,13 +91,15 @@ sap.ui.define(
 		 * @function
          *
 		 */
-        Controller.prototype._refreshCJ = function (oEvent) {
+        Controller.prototype._refreshCJ = function (channel, event, data) {
             var sPath,
                 oBindingInfo,
                 oDatesJsonModel = this.getView().getModel('Cj-Date'),
                 oModel = this.getOwnerComponent().getModel('comp-cj'),
                 that = this;
-            sPath = "/CJLifeCycleSet(BP='0002473499',CA='000003040103')";
+            this._sBP = data.bpNum;
+            this._sCA = data.caNum;
+            sPath = "/CJLifeCycleSet(BP='" + this._sBP + "',CA='" + this._sCA + "')";
             oBindingInfo = {
                 success : function (oData) {
                     oDatesJsonModel.setData(oData);
@@ -130,7 +133,7 @@ sap.ui.define(
                 aFilterValues,
                 aFilters;
             aFilterIds = ["BP", "CA", "StartDate", "EndDate"];
-            aFilterValues = ["0002473499", "000003040103", dStartDate, dEndDate];
+            aFilterValues = [this._sBP, this._sCA, dStartDate, dEndDate];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sPath = "/CJReferralSet";
             oBindingInfo = {
@@ -160,7 +163,7 @@ sap.ui.define(
                 oViewModel = this.getView().getModel('cj-view');
             sPath = "/CJFrequencySet";
             aFilterIds = ["BP", "CA", "StartDate", "EndDate"];
-            aFilterValues = ["0002473499", "000003040103", dStartDate, dEndDate];
+            aFilterValues = [this._sBP, this._sCA, dStartDate, dEndDate];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oBindingInfo = {
                 filters : aFilters,
@@ -198,9 +201,10 @@ sap.ui.define(
                 oTimeLineModel = this.getView().getModel('Cj-timeline'),
                 that = this,
                 oViewModel = this.getView().getModel('cj-view');
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             sPath = "/CJIconsSet";
             aFilterIds = ["BP", "CA", "StartDate", "EndDate"];
-            aFilterValues = ["0002473499", "000003040103", dStartDate, dEndDate];
+            aFilterValues = [this._sBP, this._sCA, dStartDate, dEndDate];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             oBindingInfo = {
                 filters : aFilters,
@@ -212,9 +216,11 @@ sap.ui.define(
                         oViewModel.setProperty("/icons", true);
                     }
                     jQuery.sap.log.info("Odata Read Successfully:::");
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
                     jQuery.sap.log.info("Odata Read Error occured");
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
             if (oModel) {
@@ -401,7 +407,7 @@ sap.ui.define(
             oCustomerJourneyModel = new JSONModel();
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             aFilterIds = ["BP", "CA", "StartDate", "EndDate"];
-            aFilterValues = ["0002473499", "000003040103", oDatesModel.getProperty("/StartDate"), oDatesModel.getProperty("/EndDate")];
+            aFilterValues = [this._sBP, this._sCA, oDatesModel.getProperty("/StartDate"), oDatesModel.getProperty("/EndDate")];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             if (!this._oDialogFragment) {
                 this._oDialogFragment = sap.ui.xmlfragment("CustomerJourney", "nrg.module.billing.view.CJModule", this);
@@ -412,6 +418,8 @@ sap.ui.define(
                     close: this._handleDialogClosed,
                     content: this._oDialogFragment
                 });
+                this.getView().addDependent(this._oCJDialog);
+                this._oCJDialog.addStyleClass("nrgCJModule-dialog");
             }
             this._oDialogFragment.setModel(oCustomerJourneyModel, 'Cj-module');
             sPath = "/CJModuleSet";
@@ -452,11 +460,6 @@ sap.ui.define(
             if (oModel) {
                 oModel.read(sPath, mParameters);
             }
-            this.getView().addDependent(this._oCJDialog);
-            //to get access to the global model
-            this._oCJDialog.addStyleClass("nrgCJModule-dialog");
-            //oCJTable.bindRows(mParameters);
-
         };
         /**
 		 * Handler for customer journey module refresh
@@ -669,6 +672,7 @@ sap.ui.define(
                 oFilter1,
                 aFilters,
                 oCJTable = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-table");
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             oEvent.getSource().setSelected(!oEvent.getSource().getSelected());
             if (sChannel === "All") {
                 sChannel = "";
@@ -676,6 +680,7 @@ sap.ui.define(
             oFilter1 = new sap.ui.model.Filter("ChannelType", sap.ui.model.FilterOperator.Contains, sChannel);
             aFilters = new sap.ui.model.Filter({filters: [oFilter1], and: false });
             oCJTable.getBinding("rows").filter(aFilters);
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
         };
         /**
 		 * Handler for Expand All
@@ -722,10 +727,12 @@ sap.ui.define(
                 aFilterValues,
                 aFilters,
                 oCJTable = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-table");
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
             oFilter1 = new sap.ui.model.Filter("SingleMessage", sap.ui.model.FilterOperator.Contains, oSearchText.getValue());
             oFilter2 = new sap.ui.model.Filter("ColValues", sap.ui.model.FilterOperator.Contains, oSearchText.getValue());
             aFilters = new sap.ui.model.Filter({filters: [oFilter1, oFilter2], and: false });
             oCJTable.getBinding("rows").filter(aFilters);
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
         };
         return Controller;
     }

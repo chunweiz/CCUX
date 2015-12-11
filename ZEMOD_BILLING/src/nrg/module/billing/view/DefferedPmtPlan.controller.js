@@ -33,6 +33,8 @@ sap.ui.define(
             //Model for DPP eligibility/reason
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppEligible');
 
+            //Model for DPP denied reasons
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppDeniedReason');
 
 
             this._initScrnControl();
@@ -65,13 +67,13 @@ sap.ui.define(
                 oScrnControl.setProperty('/EXTGrant', true);
             }
 
-            oScrnControl.setProperty('/StepOne', true);
+            //oScrnControl.setProperty('/StepOne', true);
         };
 
         Controller.prototype._selectScrn = function (sSelectedScrn) {
             var oScrnControl = this.getView().getModel('oDppScrnControl');
 
-            oScrnControl.setProperty(sSelectedScrn, true);
+            oScrnControl.setProperty('/' + sSelectedScrn, true);
         };
 
         /****************************************************************************************************************/
@@ -92,7 +94,7 @@ sap.ui.define(
                 oParameters,
                 sPath;
 
-            sPath = '/DPPElgbles(ContractAccountNumber=\'' + this._caNum + '\',DPPReason=\'1\')';
+            sPath = '/DPPElgbles(ContractAccountNumber=\'' + this._caNum + '\',DPPReason=\'\')';
 
             oParameters = {
                 success : function (oData) {
@@ -103,7 +105,31 @@ sap.ui.define(
                             this._selectScrn('StepOne');
                         } else {
                             this._selectScrn('DPPDenied');
+                            this._retrDppDeniedReason();
                         }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oODataSvc) {
+                oODataSvc.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrDppDeniedReason = function () {
+            var oODataSvc = this.getView().getModel('oDataSvc'),
+                oParameters,
+                sPath;
+
+            sPath = '/DPPElgbles(ContractAccountNumber=\'' + this._caNum + '\',DPPReason=\'\')/DPPDenieds';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oDppDeniedReason').setData(oData);
                     }
                 }.bind(this),
                 error: function (oError) {
