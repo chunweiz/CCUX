@@ -3,7 +3,7 @@
  *  Author      : Jerry (Ya-Chieh) Hsu
  *  Description : Provides renderer ute.ui.commons.Tooltip.
  */
-
+/*globals sap, ute*/
 sap.ui.define(
     [
         'jquery.sap.global',
@@ -11,7 +11,7 @@ sap.ui.define(
         'sap/ui/core/Renderer'
     ],
 
-    function(jQuery, CalloutBaseRenderer, Renderer) {
+    function (jQuery, CalloutBaseRenderer, Renderer) {
 
         "use strict";
 
@@ -24,13 +24,14 @@ sap.ui.define(
         /**
          * Renders the HTML for content.
          */
-        CustomRenderer.renderContent = function(oRenderManager, oControl){
+        CustomRenderer.renderContent = function (oRenderManager, oControl) {
 
-            var rm = oRenderManager;
-            var content = oControl.getContent();
+            var rm = oRenderManager,
+                content = oControl.getContent(),
+                i;
 
             // content
-            for (var i = 0; i < content.length; i++) {
+            for (i = 0; i < content.length; i = i + 1) {
                 rm.renderControl(content[i]);
             }
         };
@@ -38,21 +39,21 @@ sap.ui.define(
         /**
          * Add the root CSS class to the Control to redefine/extend CalloutBase
          */
-        CustomRenderer.addRootClasses = function(oRenderManager, oControl) {
+        CustomRenderer.addRootClasses = function (oRenderManager, oControl) {
             oRenderManager.addClass("uteCommonsTooltip");
         };
 
         /**
          * Add the content CSS class to the Control to redefine/extend CalloutBase
          */
-        CustomRenderer.addContentClasses = function(oRenderManager, oControl) {
+        CustomRenderer.addContentClasses = function (oRenderManager, oControl) {
             oRenderManager.addClass("uteCommonsTooltip-content");
         };
 
         /**
          * Add the arrow/tip CSS class to the Control to redefine/extend CalloutBase
          */
-        CustomRenderer.addArrowClasses = function(oRenderManager, oControl) {
+        CustomRenderer.addArrowClasses = function (oRenderManager, oControl) {
             oRenderManager.addClass("uteCommonsTooltip-arrow");
         };
 

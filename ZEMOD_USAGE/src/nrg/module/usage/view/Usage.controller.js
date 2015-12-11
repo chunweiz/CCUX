@@ -351,6 +351,7 @@ sap.ui.define(
                 LINK_ID: "Z_DUNH"
             });
         };
+
         /**
 		 * Format address in the drop down
 		 *
@@ -369,7 +370,7 @@ sap.ui.define(
         Controller.prototype.formatAddress = function (Contract, ESID, House, Street, Apt, City, State, ZIP) {
             var sFormattedAddress = "";
             if ((Contract) && (ESID)) {
-                sFormattedAddress += "[" + Contract + "-" + ESID + "] ";
+                sFormattedAddress += "[ ESID - " + ESID + " ] ";
             }
             if ((House)) {
                 sFormattedAddress += House;

@@ -3,13 +3,13 @@
  *  Author      : Jerry (Ya-Chieh) Hsu
  *  Description : Provides control ute.ui.commons.Tooltip.
  */
-
+/*globals sap, ute*/
 sap.ui.define(
     [
         'jquery.sap.global',
         'sap/ui/commons/CalloutBase'
     ],
-    function(jQuery, CalloutBase) {
+    function (jQuery, CalloutBase) {
 
         "use strict";
 
@@ -45,7 +45,7 @@ sap.ui.define(
                         type: 'ute.ui.commons.TooltipDesign',
                         group: 'Appearance',
                         defaultValue: 'Black'
-                    },
+                    }
                 },
 
                 aggregations : {

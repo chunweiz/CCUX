@@ -141,14 +141,15 @@
                                        text="({comp-campaign>Promo})"/>
                             </u:Tag>
                             <u:Tag class="nrgCamOff-feeinfo">
-                                <u:Tag class="nrgCamOff-Canfee" text="{comp-campaign>CncFee}" />
-                                <u:Tag class="nrgCamOff-Inc" text="{comp-campaign>Incentive}" />
+                                <u:Tag class="nrgCamOff-Canfee" text="Cancel : ${comp-campaign>CncFee}" />
+                                <u:Tag class="nrgCamOff-Inc" text="Incentive: ${comp-campaign>Incentive}" />
                             </u:Tag>
                         </u:Tag>
 
                         <u:Tag class="nrgCamOff-btnPrc" text="{path: 'comp-campaign>EFLPrice',
                                                             type: 'nrg.base.type.Price',
                                                             formatOptions: { currencySymbol: '¢', currencyAlignment: 'RHS' }}" />
+                        <u:Tag class="nrgCamOff-btnCurrent" text="{= ${comp-campaign>Type} === 'C' ? 'Current Plan' : ''}"/>
                         <u:Tag class="nrgCamOff-btnPrcLbl" text="(for {comp-campaign>EFLLevel}kWh)" />
                     </um:Button>
             </u:Tag>

@@ -39,7 +39,10 @@
                     </um:Button>
                     <u:Tag text="{comp-usage>KwhUsage}" class="nrgUsgTable-Data nrgUsgTable-Data-kwh"/>
                     <u:Tag text="{comp-usage>ConvText}" class="nrgUsgTable-Data nrgUsgTable-Data-Ac"/>
-                    <u:Tag text="High {comp-usage>HighTemp}F  Low {comp-usage>LowTemp}F " class="nrgUsgTable-Data nrgUsgTable-Data-Wt"/>
+                    <u:Tag class="nrgUsgTable-Data nrgUsgTable-Data-Wt">
+                        <u:Tag text="High {comp-usage>HighTemp}F" class="nrgUsgTable-Data-Wt-temp"/>
+                        <u:Tag text="Low {comp-usage>LowTemp}F" class="nrgUsgTable-Data-Wt-temp"/>
+                    </u:Tag>
                     <u:Tag text="{comp-usage>CDI_HDI}" class="nrgUsgTable-Data nrgUsgTable-Data-ch">
                         <u:customData>
                          <core:CustomData key="flag"
@@ -58,15 +61,18 @@
                     <u:Tag id="idnrgUsgTable-insideTmpl">
                     <u:Tag text="{= (${comp-usage>PeriodBegin} &amp;&amp; ${comp-usage>PeriodEnd}) ? ${path: 'comp-usage>PeriodBegin',
                                                                                                        type: 'sap.ui.model.type.Date',
-                                                                                                       formatOptions:{pattern: 'MM/dd/yyyy'}} + '-' + ${path: 'comp-usage>PeriodEnd',
-                                                                                                       type: 'sap.ui.model.type.Date',
-                                                                                                       formatOptions:{pattern: 'MM/dd/yyyy'}} : '' }"
+                                                                                                       formatOptions:{pattern: 'MM/dd/yyyy'}} + (${comp-usage>Type} !== 'D' ? '-' : '') + (${comp-usage>Type} !== 'D' ? ${path: 'comp-usage>PeriodEnd',
+                                        type: 'sap.ui.model.type.Date',
+                                        formatOptions:{pattern: 'MM/dd/yyyy'}} : '')  : '' }"
                            class="nrgUsgTable-Data nrgUsgTable-Data-dt"/>
                             <u:Tag text="{comp-usage>NumOfDays}" class="nrgUsgTable-Data nrgUsgTable-Data-days"/>
                             <u:Tag text="{= ${comp-usage>Reading} ? ${comp-usage>Reading} : 'Reading'}" class="nrgUsgTable-Data nrgUsgTable-hd-RDInner"/>
                             <u:Tag text="{comp-usage>KwhUsage}" class="nrgUsgTable-Data nrgUsgTable-Data-kwh"/>
                             <u:Tag text="{comp-usage>ConvText}" class="nrgUsgTable-Data nrgUsgTable-Data-Ac"/>
-                            <u:Tag text="High {comp-usage>HighTemp}F  Low {comp-usage>LowTemp}F" class="nrgUsgTable-Data nrgUsgTable-Data-Wt"/>
+                            <u:Tag class="nrgUsgTable-Data nrgUsgTable-Data-Wt">
+                                <u:Tag text="High {comp-usage>HighTemp}F" class="nrgUsgTable-Data-Wt-temp"/>
+                                <u:Tag text="Low {comp-usage>LowTemp}F" class="nrgUsgTable-Data-Wt-temp"/>
+                            </u:Tag>
                             <u:Tag text="{comp-usage>CDI_HDI}" class="nrgUsgTable-Data nrgUsgTable-Data-ch"/>
                             <u:Tag text="{comp-usage>CurrentCharges}" class="nrgUsgTable-Data nrgUsgTable-Data-dollar"/>
                     </u:Tag>
