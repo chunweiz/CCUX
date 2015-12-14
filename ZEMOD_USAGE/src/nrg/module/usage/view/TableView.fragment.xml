@@ -8,16 +8,22 @@
             <um:Dropdown placeholder="Select Service Address"
                                  class="nrgUsg-top">
                 <um:DropdownItem key="{comp-usage>Contract}" class="nrgUsg-DdLItem" id="idnrgUsgServiceAdd-DropDownItem">
-                    <u:Tag
-                     text="{parts:[{path:'comp-usage>Contract'},
-                                        {path:'comp-usage>ESID'},
-                                 {path:'comp-usage>House'},
-                                 {path:'comp-usage>Street'},
-                                 {path:'comp-usage>Apt'},
-                                 {path:'comp-usage>City'},
-                                 {path:'comp-usage>State'},
-                                 {path:'comp-usage>ZIP'}],
-                                                    formatter:'.formatAddress'}"/>
+                    <u:Tag>
+                        <u:Tag
+                         text="{parts:[{path:'comp-usage>Contract'},
+                                            {path:'comp-usage>ESID'}],
+                                                        formatter:'.formatESID'}"
+                          class="nrgusg-DdlItem-text1"/>
+                        <u:Tag
+                         text="{parts:[{path:'comp-usage>House'},
+                                     {path:'comp-usage>Street'},
+                                     {path:'comp-usage>Apt'},
+                                     {path:'comp-usage>City'},
+                                     {path:'comp-usage>State'},
+                                     {path:'comp-usage>ZIP'}],
+                                                        formatter:'.formatAddress'}"
+                          class="nrgusg-DdlItem-text2"/>
+                    </u:Tag>
                 </um:DropdownItem>
             </um:Dropdown>
             <um:Infoline design="None" id="idnrgUsgRow-Infoline" class="nrgUsgTable-Infoline">

@@ -50,7 +50,7 @@ sap.ui.define(
             aFilterIds = ["CA"];
             aFilterValues = [this._sCA];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-            aFilters.push(new Filter("CA", FilterOperator.Contains, "23", ""));
+            //aFilters.push(new Filter("CA", FilterOperator.Contains, "23", ""));
             fnRecievedHandler = function (oEvent, oData) {
                 var aContent = oServiceAddressDropDown.getContent(),
                     oBindingContext,
@@ -367,11 +367,30 @@ sap.ui.define(
          *
 		 *
 		 */
-        Controller.prototype.formatAddress = function (Contract, ESID, House, Street, Apt, City, State, ZIP) {
+        Controller.prototype.formatESID = function (Contract, ESID) {
             var sFormattedAddress = "";
             if ((Contract) && (ESID)) {
                 sFormattedAddress += "[ ESID - " + ESID + " ] ";
             }
+            return sFormattedAddress;
+        };
+        /**
+		 * Format address in the drop down
+		 *
+		 * @function
+		 * @param {Contract} Type value from the binding
+         * @param {ESID} Type value from the binding
+         * @param {House} Type value from the binding
+         * @param {Street} Type value from the binding
+         * @param {Apt} Type value from the binding
+         * @param {City} Type value from the binding
+         * @param {State} Type value from the binding
+         * @param {ZIP} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.formatAddress = function (House, Street, Apt, City, State, ZIP) {
+            var sFormattedAddress = "";
             if ((House)) {
                 sFormattedAddress += House;
             }
