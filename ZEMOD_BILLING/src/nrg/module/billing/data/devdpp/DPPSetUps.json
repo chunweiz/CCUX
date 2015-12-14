@@ -3,20 +3,20 @@
     "results":[
       {
         "__metadata":{
-          "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPSetUps(ContractAccountNumber='',PartnerID='')",
-          "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPSetUps(ContractAccountNumber='',PartnerID='')",
+          "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPSetUps(ContractAccountNumber='100738',PartnerID='')",
+          "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPSetUps(ContractAccountNumber='100738',PartnerID='')",
           "type":"ZE_CCUX_DPP_EXT_SRV.DPPSetUp"
         },
         "OpenItems":{
           "__metadata":{
             "type":"ZE_CCUX_DPP_EXT_SRV.OpenItems"
           },
-          "Description":"",
+          "Description":"Orange",
           "Amount":"53.0400",
           "DueDate":"\/Date(1430456401000+0000)\/",
           "DisplayOnlyRow":true
         },
-        "ContractAccountNumber":"",
+        "ContractAccountNumber":"100738",
         "PartnerID":"",
         "DPPReason":"",
         "ReasonCode":"",
@@ -26,31 +26,31 @@
         "StartDate":"\/Date(1449813601000+0000)\/",
         "DPPElgble":{
           "__deferred":{
-            "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPSetUps(ContractAccountNumber='',PartnerID='')/DPPElgble"
+            "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPSetUps(ContractAccountNumber='100738',PartnerID='')/DPPElgble"
           }
         },
         "DPPConfSets":{
           "__deferred":{
-            "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPSetUps(ContractAccountNumber='',PartnerID='')/DPPConfSets"
+            "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPSetUps(ContractAccountNumber='100738',PartnerID='')/DPPConfSets"
           }
         }
       },
       {
         "__metadata":{
-          "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPSetUps(ContractAccountNumber='',PartnerID='')",
-          "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPSetUps(ContractAccountNumber='',PartnerID='')",
+          "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPSetUps(ContractAccountNumber='100738',PartnerID='')",
+          "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPSetUps(ContractAccountNumber='100738',PartnerID='')",
           "type":"ZE_CCUX_DPP_EXT_SRV.DPPSetUp"
         },
         "OpenItems":{
           "__metadata":{
             "type":"ZE_CCUX_DPP_EXT_SRV.OpenItems"
           },
-          "Description":"",
+          "Description":"Apple",
           "Amount":"48.6100",
           "DueDate":"\/Date(1430110801000+0000)\/",
           "DisplayOnlyRow":true
         },
-        "ContractAccountNumber":"",
+        "ContractAccountNumber":"100738",
         "PartnerID":"",
         "DPPReason":"",
         "ReasonCode":"",
@@ -60,12 +60,12 @@
         "StartDate":"\/Date(1449813601000+0000)\/",
         "DPPElgble":{
           "__deferred":{
-            "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPSetUps(ContractAccountNumber='',PartnerID='')/DPPElgble"
+            "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPSetUps(ContractAccountNumber='100738',PartnerID='')/DPPElgble"
           }
         },
         "DPPConfSets":{
           "__deferred":{
-            "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPSetUps(ContractAccountNumber='',PartnerID='')/DPPConfSets"
+            "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPSetUps(ContractAccountNumber='100738',PartnerID='')/DPPConfSets"
           }
         }
       }

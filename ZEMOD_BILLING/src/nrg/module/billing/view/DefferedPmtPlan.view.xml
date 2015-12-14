@@ -46,18 +46,26 @@
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h3" text="{comp-i18n-billing>nrgBilling-dpp-Amt}"/>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h4" text="{comp-i18n-billing>nrgBilling-dpp-DueDte}"/>
                 </ute:Tag>
-                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
-                    <ute:Tag class="nrgBilling-dlct-odd">
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h2" text="ABC"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h3" text="$7.50"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h4" text="10/30/2014"/>
-                    </ute:Tag>
-                    <ute:Tag class="nrgBilling-dlct-evn">
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h2" text="DEF"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h3" text="$158.18"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h4" text="10/30/2014"/>
+                <ute:Tag content="{oDppSetUps>/results}" class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
+                    <ute:Tag>
+                        <ute:Tag class="nrgBilling-dlct-odd"
+                                 visible="{parts:['oDppSetUps>iIndex'], formatter:'._isOdd'}">
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h2" text="{oDppSetUps>OpenItems/Description}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h3"
+                                     text="{path: 'oDppSetUps>OpenItems/Amount', type: 'nrg.base.type.Price',
+                                            formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h4" text="{parts:['oDppSetUps>OpenItems/DueDate'], formatter:'._formatDate'}"/>
+                        </ute:Tag>
+                        <ute:Tag class="nrgBilling-dlct-evn"
+                                 visible="{parts:['oDppSetUps>iIndex'], formatter:'._isEven'}">
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h2" text="{oDppSetUps>OpenItems/Description}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h3"
+                                     text="{path: 'oDppSetUps>OpenItems/Amount', type: 'nrg.base.type.Price',
+                                            formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h4" text="{parts:['oDppSetUps>OpenItems/DueDate'], formatter:'._formatDate'}"/>
+                        </ute:Tag>
                     </ute:Tag>
                 </ute:Tag>
             </ute:Tag>
@@ -68,13 +76,17 @@
                         <ute:Tag class="nrgBilling-dlbd-left-elem" text="{comp-i18n-billing>nrgBilling-dpp-Mondth}"/>
                     </ute:Tag>
                     <ute:Tag class="nrgBilling-dlbd-rght">
-                        <ute:Tag class="nrgBilling-dlbd-left-elem" text="{comp-i18n-billing>nrgBilling-dpp-StartDate}"/>
+                        <ute:Tag class="nrgBilling-dlbd-left-elem" text="{comp-i18n-billing>nrgBilling-dpp-StartDate} "/>
+                        <ute:Tag class="nrgBilling-dlbd-left-elem-date" text="{parts:['oDppSetUps>/results/0/StartDate'], formatter:'._formatDate'}"/>
+
 
                     </ute:Tag>
                     <ute:Tag class="nrgBilling-dlbd-install" text="{comp-i18n-billing>nrgBilling-dpp-NmbrOfInstall}"/>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-zeroDown">
-                    <utmain:CheckBox class="nrgBilling-dlbz-chk"/>
+                    <utmain:CheckBox class="nrgBilling-dlbz-chk"
+                                     enabled="{parts:['oDppSetUps>/results/0/ZeroDwPayAuth'],
+                                               formatter:'._postiveFormatter'}"/>
                     <ute:Tag class="nrgBilling-dlbz-chkLabel" text="{comp-i18n-billing>nrgBilling-dpp-PlanZroDownPmt}"/>
                 </ute:Tag>
                 <utmain:Button class="nrgBilling-dPmtPln-lftArea-botm-btn" text="{comp-i18n-billing>nrgBilling-dpp-OK}"/>
@@ -317,7 +329,8 @@ Additional installments will be due with the following 5 subsequent invoices."/>
             </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-btn-left">
-                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOk}"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOk}"
+                                   press="._onDppDeniedOkClick"/>
                 </ute:Tag>
             </ute:Tag>
         </ute:Tag>
