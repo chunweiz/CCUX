@@ -464,7 +464,10 @@ sap.ui.define(
         };
 
         AppFooter.prototype._updateFooterCampaignButton = function (sCoNumber) {
-            var sPath = '/ButtonS(\'' + sCoNumber + '\')',
+            if (!sCoNumber) {
+                return;
+            }
+            var sPath = '/ButtonS(' + sCoNumber + ')',
                 oModel = this._oController.getView().getModel('oCompODataSvc'),
                 oCampaignModel = this._oController.getView().getModel('oFooterCampaign'),
                 oParameters;
