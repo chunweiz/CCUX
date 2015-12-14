@@ -351,19 +351,35 @@ sap.ui.define(
                 LINK_ID: "Z_DUNH"
             });
         };
-
+        /**
+		 * Format Date column in inner table
+		 *
+		 * @function
+		 * @param {Contract} Type value from the binding
+         * @param {ESID} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.formatDateColumn = function (sType, sStartDate, sEndDate) {
+            var sFormattedDate = "";
+            if ((sStartDate)) {
+                sFormattedDate += sStartDate;
+            } else {
+                return;
+            }
+            if ((sEndDate)) {
+                if (sType !== 'D') {
+                    sFormattedDate += " - " + sEndDate;
+                }
+            }
+            return sFormattedDate;
+        };
         /**
 		 * Format address in the drop down
 		 *
 		 * @function
 		 * @param {Contract} Type value from the binding
          * @param {ESID} Type value from the binding
-         * @param {House} Type value from the binding
-         * @param {Street} Type value from the binding
-         * @param {Apt} Type value from the binding
-         * @param {City} Type value from the binding
-         * @param {State} Type value from the binding
-         * @param {ZIP} Type value from the binding
          *
 		 *
 		 */
@@ -378,8 +394,6 @@ sap.ui.define(
 		 * Format address in the drop down
 		 *
 		 * @function
-		 * @param {Contract} Type value from the binding
-         * @param {ESID} Type value from the binding
          * @param {House} Type value from the binding
          * @param {Street} Type value from the binding
          * @param {Apt} Type value from the binding

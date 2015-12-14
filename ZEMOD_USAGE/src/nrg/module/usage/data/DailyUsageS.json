@@ -7,7 +7,7 @@
                "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HISTORY_SRV/DailyUsageS(Contract='0021625184',PeriodBegin=datetime'2011-12-01T00%3A00%3A00',PeriodEnd=datetime'2011-12-01T00%3A00%3A00')",
                "type":"ZE_CCUX_HISTORY_SRV.Usage"
             },
-            "Contract":"0034908779",
+            "Contract":"0006970391",
             "PeriodBegin":"/Date(1404172800000)/",
             "PeriodEnd":"/Date(1409184000000)/",
             "Reading":"",
@@ -29,7 +29,7 @@
                "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HISTORY_SRV/DailyUsageS(Contract='0021625184',PeriodBegin=datetime'2011-12-03T00%3A00%3A00',PeriodEnd=datetime'2011-12-03T00%3A00%3A00')",
                "type":"ZE_CCUX_HISTORY_SRV.Usage"
             },
-            "Contract":"0034908779",
+            "Contract":"0006970391",
             "PeriodBegin":"/Date(1404172800000)/",
             "PeriodEnd":"/Date(1409184000000)/",
             "Reading":"",
@@ -51,7 +51,7 @@
                "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HISTORY_SRV/DailyUsageS(Contract='0021625184',PeriodBegin=datetime'2011-12-04T00%3A00%3A00',PeriodEnd=datetime'2011-12-04T00%3A00%3A00')",
                "type":"ZE_CCUX_HISTORY_SRV.Usage"
             },
-            "Contract":"0034908779",
+            "Contract":"0006970391",
             "PeriodBegin":"/Date(1404172800000)/",
             "PeriodEnd":"/Date(1409184000000)/",
             "Reading":"",
@@ -73,7 +73,7 @@
                "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_HISTORY_SRV/DailyUsageS(Contract='0021625184',PeriodBegin=datetime'2011-12-05T00%3A00%3A00',PeriodEnd=datetime'2011-12-05T00%3A00%3A00')",
                "type":"ZE_CCUX_HISTORY_SRV.Usage"
             },
-            "Contract":"0034908779",
+            "Contract":"0006970391",
             "PeriodBegin":"/Date(1404172800000)/",
             "PeriodEnd":"/Date(1409184000000)/",
             "Reading":"",
