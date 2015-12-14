@@ -50,7 +50,7 @@ sap.ui.define(
         AppBody.prototype.reset = function (bfullWidth) {
             var oBodyContent = this._oController.getView().byId('appBodyContent');
 
-            if(bfullWidth) {
+            if (bfullWidth) {
                 oBodyContent.setLayout(AppBody.ContentLayoutType.FullWidthTool);
             } else {
                 oBodyContent.setLayout(AppBody.ContentLayoutType.Default);

@@ -50,7 +50,7 @@ sap.ui.define(
             aFilterIds = ["CA"];
             aFilterValues = [this._sCA];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-            aFilters.push(new Filter("CA", FilterOperator.Contains, "23", ""));
+            //aFilters.push(new Filter("CA", FilterOperator.Contains, "23", ""));
             fnRecievedHandler = function (oEvent, oData) {
                 var aContent = oServiceAddressDropDown.getContent(),
                     oBindingContext,
@@ -351,13 +351,49 @@ sap.ui.define(
                 LINK_ID: "Z_DUNH"
             });
         };
-
+        /**
+		 * Format Date column in inner table
+		 *
+		 * @function
+		 * @param {Contract} Type value from the binding
+         * @param {ESID} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.formatDateColumn = function (sType, sStartDate, sEndDate) {
+            var sFormattedDate = "";
+            if ((sStartDate)) {
+                sFormattedDate += sStartDate;
+            } else {
+                return;
+            }
+            if ((sEndDate)) {
+                if (sType !== 'D') {
+                    sFormattedDate += " - " + sEndDate;
+                }
+            }
+            return sFormattedDate;
+        };
         /**
 		 * Format address in the drop down
 		 *
 		 * @function
 		 * @param {Contract} Type value from the binding
          * @param {ESID} Type value from the binding
+         *
+		 *
+		 */
+        Controller.prototype.formatESID = function (Contract, ESID) {
+            var sFormattedAddress = "";
+            if ((Contract) && (ESID)) {
+                sFormattedAddress += "[ ESID - " + ESID + " ] ";
+            }
+            return sFormattedAddress;
+        };
+        /**
+		 * Format address in the drop down
+		 *
+		 * @function
          * @param {House} Type value from the binding
          * @param {Street} Type value from the binding
          * @param {Apt} Type value from the binding
@@ -367,11 +403,8 @@ sap.ui.define(
          *
 		 *
 		 */
-        Controller.prototype.formatAddress = function (Contract, ESID, House, Street, Apt, City, State, ZIP) {
+        Controller.prototype.formatAddress = function (House, Street, Apt, City, State, ZIP) {
             var sFormattedAddress = "";
-            if ((Contract) && (ESID)) {
-                sFormattedAddress += "[ ESID - " + ESID + " ] ";
-            }
             if ((House)) {
                 sFormattedAddress += House;
             }
