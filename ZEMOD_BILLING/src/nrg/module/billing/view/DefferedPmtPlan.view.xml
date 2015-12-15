@@ -50,7 +50,8 @@
                     <ute:Tag>
                         <ute:Tag class="nrgBilling-dlct-odd"
                                  visible="{parts:['oDppSetUps>iIndex'], formatter:'._isOdd'}">
-                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox checked="{oDppSetUps>OpenItems/bSelected}"/></ute:Tag>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1">
+                                <utmain:Checkbox checked="{oDppSetUps>OpenItems/bSelected}" select="._onOneItemCheck"/></ute:Tag>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h2" text="{oDppSetUps>OpenItems/Description}"/>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h3"
                                      text="{path: 'oDppSetUps>OpenItems/Amount', type: 'nrg.base.type.Price',
@@ -72,7 +73,7 @@
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-dte">
                     <ute:Tag class="nrgBilling-dlbd-left">
-                        <utmain:RadioButton class="nrgBilling-dlbd-left-elem nrgBilling-dlbd-left-radio"/>
+                        <utmain:RadioButton class="nrgBilling-dlbd-left-elem nrgBilling-dlbd-left-radio" checked="true"/>
                         <ute:Tag class="nrgBilling-dlbd-left-elem" text="{comp-i18n-billing>nrgBilling-dpp-Mondth}"/>
                     </ute:Tag>
                     <ute:Tag class="nrgBilling-dlbd-rght">
@@ -91,10 +92,11 @@
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-zeroDown">
                     <utmain:CheckBox class="nrgBilling-dlbz-chk"
                                      enabled="{parts:['oDppSetUps>/results/0/ZeroDwPayAuth'],
-                                               formatter:'._postiveXFormatter'}"/>
+                                               formatter:'._postiveXFormatter'}"
+                                     checked="{oDppStepOnePost>/ZeroDwPay}"/>
                     <ute:Tag class="nrgBilling-dlbz-chkLabel" text="{comp-i18n-billing>nrgBilling-dpp-PlanZroDownPmt}"/>
                 </ute:Tag>
-                <utmain:Button class="nrgBilling-dPmtPln-lftArea-botm-btn" text="{comp-i18n-billing>nrgBilling-dpp-OK}"/>
+                <utmain:Button class="nrgBilling-dPmtPln-lftArea-botm-btn" text="{comp-i18n-billing>nrgBilling-dpp-OK}" press="._onDppSetUpOk"/>
             </ute:Tag>
         </ute:Tag>
         <!--Step 2-->

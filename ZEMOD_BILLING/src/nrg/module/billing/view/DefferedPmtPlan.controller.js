@@ -40,6 +40,7 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppReasons');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppSetUps');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppStepOnePost');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppStepOneSelectedData');
 
 
             this._initScrnControl();
@@ -154,15 +155,39 @@ sap.ui.define(
             var oSetUps = this.getView().getModel('oDppSetUps'),
                 i;
 
-            if (oEvent.checked) {
-                for (i = 0; i < oSetUps.getData().results.length; i = i + 1) {
-                    oSetUps.setProperty('/results/' + i + '/OpenItems/bSelected', false);
-                }
-            } else {
+            if (oEvent.mParameters.checked) {
                 for (i = 0; i < oSetUps.getData().results.length; i = i + 1) {
                     oSetUps.setProperty('/results/' + i + '/OpenItems/bSelected', true);
                 }
+            } else {
+                for (i = 0; i < oSetUps.getData().results.length; i = i + 1) {
+                    oSetUps.setProperty('/results/' + i + '/OpenItems/bSelected', false);
+                }
             }
+        };
+
+        Controller.prototype._onOneItemCheck = function (oEvent) {
+            if (!oEvent.mParameters.checked) {
+                this.getView().getModel('oDppSetUps').setProperty('/results/bSelectedAll', false);
+            }
+        };
+
+        Controller.prototype._onDppSetUpOk = function () {
+            var oSetUps = this.getView().getModel('oDppSetUps'),
+                i,
+                oSetUpsPost = this.getView().getModel('oDppStepOnePost'),
+                aSelectedInd = [];
+
+            oSetUpsPost.setProperty('/InstlmntNo', oSetUps.getProperty('/results/0/InstlmntNo'));
+            for (i = 0; i < oSetUps.getData().results.length; i = i + 1) {
+                if (oSetUps.getProperty('/results/' + i + '/OpenItems/bSelected')) {
+                    aSelectedInd.push({Ind: oSetUps.getProperty('/results/' + i + '/OpenItems/ItemNumber')});
+                }
+            }
+            oSetUpsPost.setProperty('/SelectedIndices', aSelectedInd);
+            this.getView().getModel('oDppStepOneSelectedData').setProperty('/SelectedData', oSetUpsPost.getProperty('/SelectedIndices'));
+
+            this._retrDPPConf();    //Initiating step 2
         };
 
 
@@ -261,12 +286,13 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         for (i = 0; i < oData.results.length; i = i + 1) {
-                            oData.results[i].iIndex = i + 1;
+                            //oData.results[i].iIndex = i + 1;
                             oData.results[i].bSelected = false;
                         }
                         this.getView().getModel('oDppSetUps').setData(oData);
                         this.getView().getModel('oDppSetUps').setProperty('/results/bSelectedAll', false);
                         this.getView().getModel('oDppStepOnePost').setProperty('/InstlmntNo', this.getView().getModel('oDppSetUps').getProperty('/results/0/InstlmntNo'));
+                        this.getView().getModel('oDppStepOnePost').setProperty('/ZeroDwPay', false);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -277,6 +303,10 @@ sap.ui.define(
             if (oODataSvc) {
                 oODataSvc.read(sPath, oParameters);
             }
+        };
+
+        Controller.prototype._retrDppConf = function () {
+
         };
 
         return Controller;
