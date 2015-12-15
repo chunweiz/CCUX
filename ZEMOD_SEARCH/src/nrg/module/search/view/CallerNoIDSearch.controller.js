@@ -35,6 +35,15 @@ sap.ui.define(
             this._initSearchCaModel();
             this._initSearchFilterModel();
             this._initSearchResultModel();
+            this._closeAllOpenedWindows();  //Close all launched transaction launchers before returing to search page.
+        };
+
+        Controller.prototype._closeAllOpenedWindows = function () {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+
+            if (oWebUiManager.isAvailable()) {
+                oWebUiManager.notifyWebUi('gotoSearch');  //Tell CCUX.js the app is back to search,
+            }
         };
 
         Controller.prototype._initSearchCaModel = function () {

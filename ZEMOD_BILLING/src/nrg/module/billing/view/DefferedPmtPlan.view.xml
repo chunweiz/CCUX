@@ -20,12 +20,12 @@
                     <ute:Tag class="nrgBilling-dltl-step" text="{comp-i18n-billing>nrgBilling-dpp-StepOne}"/>
                     <ute:Tag class="nrgBilling-dltl-reason">
                         <ute:Tag class="nrgBilling-dltl-reason-lbl" text="{comp-i18n-billing>nrgBilling-dpp-ReasonDpp}"/>
-                        <utmain:Dropdown class="nrgBilling-dltl-reason-select">
-                            <utmain:DropdownItem>
-                                <ute:Tag elem="span" text="option1" />
-                            </utmain:DropdownItem>
-                            <utmain:DropdownItem>
-                                <ute:Tag elem="span" text="option2" />
+                        <utmain:Dropdown class="nrgBilling-dltl-reason-select"
+                                         selectedKey="{oDppReasons>/selectedKey}"
+                                         content="{oDppReasons>/}"
+                                         select="._onReasonSelect" >
+                            <utmain:DropdownItem key="{oDppReasons>ReasonCode}">
+                                <ute:Tag elem="span" text="{oDppReasons>Reason}" />
                             </utmain:DropdownItem>
                         </utmain:Dropdown>
                     </ute:Tag>
@@ -41,7 +41,7 @@
             </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-hdr">
-                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox checked="{oDppSetUps>/results/bSelectedAll}" select="._onSelectAllCheck"/></ute:Tag>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h2" text="{comp-i18n-billing>nrgBilling-dpp-Description}"/>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h3" text="{comp-i18n-billing>nrgBilling-dpp-Amt}"/>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h4" text="{comp-i18n-billing>nrgBilling-dpp-DueDte}"/>
@@ -50,7 +50,7 @@
                     <ute:Tag>
                         <ute:Tag class="nrgBilling-dlct-odd"
                                  visible="{parts:['oDppSetUps>iIndex'], formatter:'._isOdd'}">
-                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox checked="{oDppSetUps>OpenItems/bSelected}"/></ute:Tag>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h2" text="{oDppSetUps>OpenItems/Description}"/>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h3"
                                      text="{path: 'oDppSetUps>OpenItems/Amount', type: 'nrg.base.type.Price',
@@ -59,7 +59,7 @@
                         </ute:Tag>
                         <ute:Tag class="nrgBilling-dlct-evn"
                                  visible="{parts:['oDppSetUps>iIndex'], formatter:'._isEven'}">
-                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox checked="{oDppSetUps>OpenItems/bSelected}"/></ute:Tag>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h2" text="{oDppSetUps>OpenItems/Description}"/>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h3"
                                      text="{path: 'oDppSetUps>OpenItems/Amount', type: 'nrg.base.type.Price',
@@ -81,12 +81,17 @@
 
 
                     </ute:Tag>
-                    <ute:Tag class="nrgBilling-dlbd-install" text="{comp-i18n-billing>nrgBilling-dpp-NmbrOfInstall}"/>
+                    <ute:Tag class="nrgBilling-dlbd-install">
+                        <ute:Tag elem="span" text="{comp-i18n-billing>nrgBilling-dpp-NmbrOfInstall}"/>
+                        <ute:Textfield class="nrgBilling-dlbd-install-Num" fieldType="Underlined" width="22px"
+                                       editable="{parts:['oDppSetUps>/results/0/InstlmntNoAuth'], formatter:'._postiveXFormatter'}"
+                                       value="{oDppStepOnePost>/InstlmntNo}"/>
+                    </ute:Tag>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-zeroDown">
                     <utmain:CheckBox class="nrgBilling-dlbz-chk"
                                      enabled="{parts:['oDppSetUps>/results/0/ZeroDwPayAuth'],
-                                               formatter:'._postiveFormatter'}"/>
+                                               formatter:'._postiveXFormatter'}"/>
                     <ute:Tag class="nrgBilling-dlbz-chkLabel" text="{comp-i18n-billing>nrgBilling-dpp-PlanZroDownPmt}"/>
                 </ute:Tag>
                 <utmain:Button class="nrgBilling-dPmtPln-lftArea-botm-btn" text="{comp-i18n-billing>nrgBilling-dpp-OK}"/>

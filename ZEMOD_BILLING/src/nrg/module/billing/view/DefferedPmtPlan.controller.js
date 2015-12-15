@@ -37,7 +37,9 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppDeniedReason');
 
             //Model for SetUp (DPP Step I)
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppReasons');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppSetUps');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppStepOnePost');
 
 
             this._initScrnControl();
@@ -67,7 +69,7 @@ sap.ui.define(
             if (aSplitHash[1] === 'defferedpaymentplan') {
                 this._isDppElgble();
             } else if (aSplitHash[1] === 'defferedpaymentext') {
-                oScrnControl.setProperty('/EXTGrant', true);
+                this._selectScrn('EXTGrant');
             }
 
             //oScrnControl.setProperty('/StepOne', true);
@@ -76,13 +78,30 @@ sap.ui.define(
         Controller.prototype._selectScrn = function (sSelectedScrn) {
             var oScrnControl = this.getView().getModel('oDppScrnControl');
 
+            oScrnControl.setProperty('/StepOne', false);
+            oScrnControl.setProperty('/StepTwo', false);
+            oScrnControl.setProperty('/StepThree', false);
+            oScrnControl.setProperty('/DPPDenied', false);
+            oScrnControl.setProperty('/EXTGrant', false);
+            oScrnControl.setProperty('/EXTDenied', false);
             oScrnControl.setProperty('/' + sSelectedScrn, true);
+
+            if (sSelectedScrn === 'StepOne') {
+                this._retrDppSetUp();
+                this._retrDppReason();
+            } else if (sSelectedScrn === 'StepTwo') {
+
+            } else if (sSelectedScrn === 'StepThree') {
+
+            } else if (sSelectedScrn === 'DPPDenied') {
+                this._retrDppDeniedReason();
+            }
         };
 
         /****************************************************************************************************************/
         //Formatter
         /****************************************************************************************************************/
-        Controller.prototype._postiveFormatter = function (cIndicator) {
+        Controller.prototype._postiveXFormatter = function (cIndicator) {
             if (cIndicator === 'X' || cIndicator === 'x') {
                 return true;
             } else {
@@ -124,10 +143,26 @@ sap.ui.define(
             var oScrnControl = this.getView().getModel('oDppScrnControl');
 
             //Go to Setup STEP I
-            oScrnControl.setProperty('/StepOne', true);
-            oScrnControl.setProperty('/DPPDenied', false);
+            this._selectScrn('StepOne');
+        };
 
-            this._retrDppSetUp();
+        Controller.prototype._onReasonSelect = function () {
+            //this.getView().getModel('oDppReasons').setData(oData);
+        };
+
+        Controller.prototype._onSelectAllCheck = function (oEvent) {
+            var oSetUps = this.getView().getModel('oDppSetUps'),
+                i;
+
+            if (oEvent.checked) {
+                for (i = 0; i < oSetUps.getData().results.length; i = i + 1) {
+                    oSetUps.setProperty('/results/' + i + '/OpenItems/bSelected', false);
+                }
+            } else {
+                for (i = 0; i < oSetUps.getData().results.length; i = i + 1) {
+                    oSetUps.setProperty('/results/' + i + '/OpenItems/bSelected', true);
+                }
+            }
         };
 
 
@@ -150,7 +185,6 @@ sap.ui.define(
                             this._selectScrn('StepOne');
                         } else {
                             this._selectScrn('DPPDenied');
-                            this._retrDppDeniedReason();
                         }
                     }
                 }.bind(this),
@@ -187,11 +221,39 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._retrDppReason = function () {
+            var oODataSvc = this.getView().getModel('oDataSvc'),
+                oParameters,
+                sPath;
+
+            sPath = '/DPPReasons';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oDppReasons').setData(oData.results);
+                        this.getView().getModel('oDppReasons').setProperty('/selectedKey', '3400');
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oODataSvc) {
+                oODataSvc.read(sPath, oParameters);
+            }
+        };
+
         Controller.prototype._retrDppSetUp = function () {
             var oODataSvc = this.getView().getModel('oDataSvc'),
                 oParameters,
                 sPath,
                 i;
+
+            //Model created for later posting
+            this.getView().getModel('oDppStepOnePost').setData({});
+
 
             sPath = '/DPPElgbles(ContractAccountNumber=\'' + this._caNum + '\',DPPReason=\'\')/DPPSetUps';
 
@@ -200,8 +262,11 @@ sap.ui.define(
                     if (oData) {
                         for (i = 0; i < oData.results.length; i = i + 1) {
                             oData.results[i].iIndex = i + 1;
+                            oData.results[i].bSelected = false;
                         }
                         this.getView().getModel('oDppSetUps').setData(oData);
+                        this.getView().getModel('oDppSetUps').setProperty('/results/bSelectedAll', false);
+                        this.getView().getModel('oDppStepOnePost').setProperty('/InstlmntNo', this.getView().getModel('oDppSetUps').getProperty('/results/0/InstlmntNo'));
                     }
                 }.bind(this),
                 error: function (oError) {
