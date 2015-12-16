@@ -145,10 +145,10 @@ sap.ui.define(
                     });
                     oModel.updateBindings(false);
                     jQuery.sap.log.info("Odata Read Successfully:::");
-                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this),
                 error: function (oError) {
-                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
                     jQuery.sap.log.info("Eligibility Error occured");
                 }.bind(this)
             };
@@ -416,12 +416,18 @@ sap.ui.define(
                 if ((temp !== undefined) && (temp.EFLLevel !== undefined)) {
 
                     if (temp.EFLType === "BR") {
+                        if (temp.EFLPrice) {
+                            temp.EFLPrice = parseFloat((temp.EFLPrice)).toFixed(1);
+                        }
                         oBRCells.push({
                             "EFLPrice": temp.EFLPrice
                         });
                     }
 
                     if (temp.EFLType === "CE") {
+                        if (temp.EFLPrice) {
+                            temp.EFLPrice = parseFloat((temp.EFLPrice)).toFixed(1);
+                        }
                         oCECells.push({
                             "EFLPrice": temp.EFLPrice
                         });

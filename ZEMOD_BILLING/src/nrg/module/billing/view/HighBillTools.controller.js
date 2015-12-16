@@ -128,7 +128,7 @@ sap.ui.define(
             //this._oApp.setHeaderMenuItemSelected(false, App.HMItemId.Index);
 
             oWebUiManager.notifyWebUi('openIndex', {
-                LINK_ID: "Z_REI_WEB"
+                LINK_ID: "Z_REI_SAVE"
             });
         };
         /**

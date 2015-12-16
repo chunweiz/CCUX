@@ -23,26 +23,42 @@
             </u:Tag>
             <u:Tag class="nrgCamOff-mtx nrgCamOff-top">
                 <u:Tag class="nrgCamOff-mtxRow">
-                    <u:Tag text="Monthly Consumption" class="nrgCamOff-mtxFstCell"/>
+                    <u:Tag text="Monthly Consumption" class="nrgCamOff-mtxFstCellMonthly"/>
+                    <u:Textfield fieldType="Float"
+                                 width="5rem"
+                                 editable="true"
+                                 class="nrgCamOffCons"
+                                 enterKeyPress="onEnterKeyPress"
+                                 value="{comp-campaign>CurrCons}"
+                                 id="idnrgCamOffCons"
+                                 placeholder="kWh"/>
+                    <um:Button press=".updateConsCmp"
+                               class="nrgCamoff-goBtn"
+                               design="Default"
+                               text="{comp-campaign>CurrCon}">
+                        <u:Tag text="Go" class="nrgCamoff-goBtn-text"/>
+                    </um:button>
                     <u:Tag text="{parts:[{path:'comp-campaign>CurrInvAmt'},{path:'comp-campaign>SimCurrInv'}],
                                                     formatter:'.formatCurrentConsAmount'}"
-                           class="nrgCamOff-mtxSndCell"/>
+                           class="nrgCamOff-mtxSndCell" id="idnrgCamOffCurrAm"/>
                 </u:Tag>
                 <u:Tag class="nrgCamOff-mtxRow">
                     <u:Tag text="Monthly Consumption @ Campaign Estimation" class="nrgCamOff-mtxFstCell"/>
-                    <u:Tag text="{= ${comp-campaign>EstInvAmt} ? ${comp-campaign>EstInvAmt} : 'N/A' }"
-                           class="nrgCamOff-mtxSndCell"/>
+                    <u:Tag text="$ {comp-campaign>EstInvAmt}"
+                           class="nrgCamOff-mtxSndCell" id="idnrgCamOffEstAmt"/>
                 </u:Tag>
                 <u:Tag class="nrgCamOff-mtxRow">
                     <u:Tag text="Estimated Difference" class="nrgCamOff-mtxFstCell"/>
                     <u:Tag text="{parts:[{path:'comp-campaign>CurrInvAmt'},{path:'comp-campaign>EstInvAmt'}],
                                                     formatter:'.formatDifference'}"
-                           class="nrgCamOff-mtxSndCell"/>
+                           class="nrgCamOff-mtxSndCell" id="idnrgCamOffEstDiff"/>
                 </u:Tag>
                 <u:Tag class="nrgCamOff-mtxRow">
                     <u:Tag text="Estimated Cents per kWh" class="nrgCamOff-mtxFstCell"/>
-                    <u:Tag text="{= ${comp-campaign>EstCents} ? ${comp-campaign>EstCents} : 'N/A' }"
-                           class="nrgCamOff-mtxSndCell">
+                    <u:Tag text="{path: 'comp-campaign>EstCents',
+                                                            type: 'sap.ui.model.type.Float',
+                                                            formatOptions: { minFractionDigits: '1', maxFractionDigits: '1'}} ¢/kWh"
+                           class="nrgCamOff-mtxSndCell" id="idnrgCamOffEstcents">
                         <u:customData>
                              <core:CustomData key="flag"
                                                value="X"

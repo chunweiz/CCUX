@@ -24,12 +24,12 @@
             <u:Tag class="nrgCamOff-mtx nrgCamOff-top">
                 <u:Tag class="nrgCamOff-mtxRow">
                     <u:Tag text="September Invoice" class="nrgCamOff-mtxFstCell"/>
-                    <u:Tag text="{= ${comp-campaign>CurrInvAmt} ? ${comp-campaign>CurrInvAmt} : 'N/A' }"
+                    <u:Tag text="$ {comp-campaign>CurrInvAmt}"
                            class="nrgCamOff-mtxSndCell"/>
                 </u:Tag>
                 <u:Tag class="nrgCamOff-mtxRow">
                     <u:Tag text="September Invoice @ Campaign Estimation" class="nrgCamOff-mtxFstCell"/>
-                    <u:Tag text="{= ${comp-campaign>EstInvAmt} ? ${comp-campaign>EstInvAmt} : 'N/A' }"
+                    <u:Tag text="$ {comp-campaign>EstInvAmt}"
                            class="nrgCamOff-mtxSndCell"/>
                 </u:Tag>
                 <u:Tag class="nrgCamOff-mtxRow">
@@ -40,7 +40,9 @@
                 </u:Tag>
                 <u:Tag class="nrgCamOff-mtxRow">
                     <u:Tag text="Estimated Cents per kWh" class="nrgCamOff-mtxFstCell"/>
-                    <u:Tag text="{= ${comp-campaign>EstCents} ? ${comp-campaign>EstCents} : 'N/A' }"
+                    <u:Tag text="{path: 'comp-campaign>EstCents',
+                                                            type: 'sap.ui.model.type.Float',
+                                                            formatOptions: { minFractionDigits: '1', maxFractionDigits: '1'}} ¢/kWh"
                            class="nrgCamOff-mtxSndCell">
                         <u:customData>
                              <core:CustomData key="flag"

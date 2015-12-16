@@ -84,9 +84,33 @@ sap.ui.define(
             case App.QuickLinkId.History:
                 this._onQLHistoryClick(oControlEvent);
                 break;
+            case App.QuickLinkId.HighBill:
+                this._onQLHighBillClick(oControlEvent);
+                break;
+            case App.QuickLinkId.ContactLog:
+                this._onQLContactLogClick(oControlEvent);
+                break;
             }
         };
+        CustomController.prototype._onQLContactLogClick = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: "Z_CLFULLVW"
+            });
+        };
+        CustomController.prototype._onQLHighBillClick = function (oControlEvent) {
+            var oContext, oRouter;
 
+            oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
+            oRouter = this.getOwnerComponent().getRouter();
+
+            if (oContext.bpNum) {
+                oRouter.navTo('billing.HighBillNoCo', {
+                    bpNum: oContext.bpNum,
+                    caNum: oContext.caNum
+                });
+            }
+        };
         CustomController.prototype._onQLRHSClick = function (oControlEvent) {
             var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
             oWebUiManager.notifyWebUi('openIndex', {

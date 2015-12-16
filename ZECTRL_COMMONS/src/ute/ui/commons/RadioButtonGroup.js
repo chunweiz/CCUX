@@ -6,6 +6,7 @@ HJL
 */
 
 /*global sap*/
+/*jslint nomen:true*/
 sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/core/delegate/ItemNavigation'],
 	function (jQuery, library, Control, ItemNavigation) {
 	    "use strict";
@@ -50,7 +51,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
             }
 	    }});
 
-        RadioButtonGroup.prototype.onBeforeRendering = function() {
+        RadioButtonGroup.prototype.onBeforeRendering = function () {
             if (this.getSelectedIndex() > this.getItems().length) {
                 // SelectedIndex is > than number of items -> select the first one
                 jQuery.sap.log.warning("Invalid index, set to 0");
@@ -58,12 +59,12 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
             }
         };
 
-        RadioButtonGroup.prototype.onAfterRendering = function() {
-
+        RadioButtonGroup.prototype.onAfterRendering = function () {
+            var i;
             this.initItemNavigation();
 
             // update ARIA information of RadioButtons
-            for (var i = 0; i < this.aRBs.length; i++) {
+            for (i = 0; i < this.aRBs.length; i = i + 1) {
                 this.aRBs[i].$().attr("aria-posinset", i + 1).attr("aria-setsize", this.aRBs.length);
             }
         };
@@ -73,14 +74,17 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
          * TabIndexes are set by ItemNavigation
          * @private
          */
-        RadioButtonGroup.prototype.initItemNavigation = function(){
+        RadioButtonGroup.prototype.initItemNavigation = function () {
 
             // Collect items for ItemNavigation
-            var aDomRefs = [];
+            var aDomRefs = [],
+                aActiveItems,
+                bEnabled,
+                i;
             this._aActiveItems = [];
-            var aActiveItems = this._aActiveItems;
-            var bEnabled = false;
-            for (var i = 0; i < this.aRBs.length; i++) {
+            aActiveItems = this._aActiveItems;
+            bEnabled = false;
+            for (i = 0; i < this.aRBs.length; i = i + 1) {
                 aActiveItems[aDomRefs.length] = i;
                 aDomRefs.push(this.aRBs[i].getDomRef());
                 if (!bEnabled && this.aRBs[i].getEnabled()) {
@@ -123,7 +127,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
          * Set selected RadioButton via Index
          * @public
          */
-        RadioButtonGroup.prototype.setSelectedIndex = function(iSelectedIndex) {
+        RadioButtonGroup.prototype.setSelectedIndex = function (iSelectedIndex) {
 
             var iIndexOld = this.getSelectedIndex();
 
@@ -136,7 +140,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
             this.setProperty("selectedIndex", iSelectedIndex, true); // no re-rendering
 
             // deselect old RadioButton
-            if ( !isNaN(iIndexOld) && this.aRBs && this.aRBs[iIndexOld]) {
+            if (!isNaN(iIndexOld) && this.aRBs && this.aRBs[iIndexOld]) {
                 this.aRBs[iIndexOld].setSelected(false);
             }
 
@@ -169,10 +173,10 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
          * @public
          * @ui5-metamodel This method also will be described in the UI5 (legacy) designtime metamodel
          */
-        RadioButtonGroup.prototype.setSelectedItem = function(iSelectedItem) {
-
-            for (var i = 0; i < this.getItems().length; i++) {
-                if (iSelectedItem.getId() == this.getItems()[i].getId()) {
+        RadioButtonGroup.prototype.setSelectedItem = function (iSelectedItem) {
+            var i;
+            for (i = 0; i < this.getItems().length; i = i + 1) {
+                if (iSelectedItem.getId() === this.getItems()[i].getId()) {
                     this.setSelectedIndex(i);
                     break;
                 }
@@ -191,7 +195,7 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
          * @public
          * @ui5-metamodel This method also will be described in the UI5 (legacy) designtime metamodel
          */
-        RadioButtonGroup.prototype.getSelectedItem = function() {
+        RadioButtonGroup.prototype.getSelectedItem = function () {
             return this.getItems()[this.getSelectedIndex()];
         };
 
@@ -200,10 +204,11 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
          * On SELECT event of single Radio Buttons fire Select Event for group
          * @private
          */
-        RadioButtonGroup.prototype.handleRBSelect = function(oControlEvent){
+        RadioButtonGroup.prototype.handleRBSelect = function (oControlEvent) {
+            var i;
             // find RadioButton in Array to get Index
-            for (var i = 0; i < this.aRBs.length; i++) {
-                if (this.aRBs[i].getId() == oControlEvent.getParameter("id")) {
+            for (i = 0; i < this.aRBs.length; i = i + 1) {
+                if (this.aRBs[i].getId() === oControlEvent.getParameter("id")) {
                     this.setSelectedIndex(i);
                     this.oItemNavigation.setSelectedIndex(i);
                     this.oItemNavigation.setFocusedIndex(i);
@@ -217,4 +222,4 @@ sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/
 
         return RadioButtonGroup;
 
-}, /* bExport= */ true);
+    }, /* bExport= */ true);
