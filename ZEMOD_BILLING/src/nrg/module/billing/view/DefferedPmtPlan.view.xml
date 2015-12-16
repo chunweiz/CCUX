@@ -321,16 +321,22 @@ Additional installments will be due with the following 5 subsequent invoices."/>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2" text="{comp-i18n-billing>nrgBilling-dpp-Amt}"/>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="{comp-i18n-billing>nrgBilling-dpp-DueDte}"/>
                 </ute:Tag>
-                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
-                    <ute:Tag class="nrgBilling-dlct-odd">
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j1" text="ABC"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2" text="$7.50"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="10/30/2014"/>
-                    </ute:Tag>
-                    <ute:Tag class="nrgBilling-dlct-evn">
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j1" text="DEF"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2" text="$158.18"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="10/30/2014"/>
+                <ute:Tag content="{oDppDeniedReason>/results}" class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
+                    <ute:Tag>
+                        <ute:Tag class="nrgBilling-dlct-odd" visible="{parts:['oDppDeniedReason>DPPDenyed/iIndex'], formatter:'._isOdd'}">
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j1" text="{oDppDeniedReason>DPPDenyed/Description}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2"
+                                     text="{path: 'oDppDeniedReason>DPPDenyed/Amount', type: 'nrg.base.type.Price',
+                                            formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="{parts:['oDppDeniedReason>DPPDenyed/DueDate'], formatter:'._formatDate'}"/>
+                        </ute:Tag>
+                        <ute:Tag class="nrgBilling-dlct-evn" visible="{parts:['oDppDeniedReason>DPPDenyed/iIndex'], formatter:'._isEven'}">
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j1" text="{oDppDeniedReason>DPPDenyed/Description}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2"
+                                     text="{path: 'oDppDeniedReason>DPPDenyed/Amount', type: 'nrg.base.type.Price',
+                                            formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="{parts:['oDppDeniedReason>DPPDenyed/DueDate'], formatter:'._formatDate'}"/>
+                        </ute:Tag>
                     </ute:Tag>
                 </ute:Tag>
             </ute:Tag>

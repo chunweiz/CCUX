@@ -226,13 +226,17 @@ sap.ui.define(
         Controller.prototype._retrDppDeniedReason = function () {
             var oODataSvc = this.getView().getModel('oDataSvc'),
                 oParameters,
-                sPath;
+                sPath,
+                i;
 
             sPath = '/DPPElgbles(ContractAccountNumber=\'' + this._caNum + '\',DPPReason=\'\')/DPPDenieds';
 
             oParameters = {
                 success : function (oData) {
                     if (oData) {
+                        for (i = 0; i < oData.results.length; i++) {
+                            oData.results[i].DPPDenyed.iIndex = i + 1;
+                        }
                         this.getView().getModel('oDppDeniedReason').setData(oData);
                     }
                 }.bind(this),
