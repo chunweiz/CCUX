@@ -165,7 +165,7 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         oData.results.selectedKey = '';
-                        for (i = 0 ; i < oData.results.length; i = i + 1) {
+                        for (i = 0; i < oData.results.length; i = i + 1) {
                             oData.results[i].iInd = i;
                         }
                         this.getView().getModel('oESIDDropdown').setData(oData);

@@ -608,7 +608,6 @@
                         text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnConfitm}"/>
                     <utmain:Button id="id_unConfmBtn" visible="false"
                         class="nrgDashboard-cusDataVerify-right-btn"
-                        press="._handleUnConfirm"
                         text="{comp-i18n-dashboard>nrgDashboardCusDatVrf_BtnUnConfirm}"/>
                     <utmain:Button id="id_updtBtn" enabled="true"
                         class="nrgDashboard-cusDataVerify-right-btn noBtmMargin"
