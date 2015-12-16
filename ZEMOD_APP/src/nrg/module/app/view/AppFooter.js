@@ -43,12 +43,15 @@ sap.ui.define(
             this._oController.getView().setModel(this._oController.getView().getModel('noti-app'), 'oNotiODataSvc');
             this._oController.getView().setModel(this._oController.getView().getModel('rhs-app'), 'oRHSODataSvc');
             this._oController.getView().setModel(this._oController.getView().getModel('comp-app'), 'oCompODataSvc');
+            this._oController.getView().setModel(this._oController.getView().getModel('elig-app'), 'oDataEligSvc');
+
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterNotification');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterRHS');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterCampaign');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterRouting');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oFooterBpInfo');
             this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oBpInfo');
+            this._oController.getView().setModel(new sap.ui.model.json.JSONModel(), 'oEligibility');
 
             this.footerElement = {};
 
@@ -97,19 +100,77 @@ sap.ui.define(
             }
         };
 
+        AppFooter.prototype._retrieveEligibility = function (fnCallback) {
+            var oRouting = this._oController.getView().getModel('oFooterRouting'),
+                sPath = '/EligCheckS(\'' + oRouting.oData.CoNumber + '\')',
+                oModel = this._oController.getView().getModel('oDataEligSvc'),
+                oEligModel = this._oController.getView().getModel('oEligibility'),
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    oEligModel.setData(oData);
+                    if (fnCallback) fnCallback();
+                }.bind(this),
+                error: function (oError) {
+                    
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
         /*---------------- UI Element Action --------------*/
 
         AppFooter.prototype._onM2mLinkPress = function (oControlEvent) {
-            if (!this.m2mPopup) {
-                this.m2mPopup = ute.ui.main.Popup.create({
-                    content: sap.ui.xmlfragment(this._oController.getView().sId, "nrg.module.app.view.AlertM2mPopup", this),
-                    title: 'Multi-Month Invoice'
-                });
-                this.m2mPopup.addStyleClass('nrgApp-m2mPopup');
-                this._oController.getView().addDependent(this.m2mPopup);
-            }
-            // Open the popup
-            this.m2mPopup.open();
+            // if (!this.m2mPopup) {
+            //     this.m2mPopup = ute.ui.main.Popup.create({
+            //         content: sap.ui.xmlfragment(this._oController.getView().sId, "nrg.module.app.view.AlertM2mPopup", this),
+            //         title: 'Multi-Month Invoice'
+            //     });
+            //     this.m2mPopup.addStyleClass('nrgApp-m2mPopup');
+            //     this._oController.getView().addDependent(this.m2mPopup);
+            // }
+            // // Open the popup
+            // this.m2mPopup.open();
+
+
+
+
+
+
+
+            var oWebUiManager = this._oController.getOwnerComponent().getCcuxWebUiManager(),
+                oRouter = this._oController.getOwnerComponent().getRouter(),
+                oRouting = this._oController.getView().getModel('oFooterRouting'),
+                oRetrDone = false;
+
+            // Display the loading indicator
+            this._oController.getOwnerComponent().getCcuxApp().setOccupied(true);
+            // Retrieve Notification
+            this._retrieveEligibility(function () {oRetrDone = true;});
+            // Check retrieval done
+            var checkRetrComplete = setInterval (function () {
+                if (oRetrDone) {
+                    var oEligibilityModel = this._oController.getView().getModel('oEligibility');
+                    // Dismiss the loading indicator
+                    this._oController.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    // Upon successfully retrieving the data, stop checking the completion of retrieving data
+                    clearInterval(checkRetrComplete);
+                    // Check active or not
+                    if (!oEligibilityModel.oData.DPPActv) {
+                        // Go to DPP page
+                        oRouter.navTo('billing.DefferedPmtPlan', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber});
+                    } else {
+                        // Go to transaction launcher
+                        oWebUiManager.notifyWebUi('openIndex', {
+                            LINK_ID: "Z_DPP"
+                        });
+                    }
+                }
+            }.bind(this), 100); 
         };
 
         // Invalid Email Address
