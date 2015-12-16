@@ -1,4 +1,4 @@
-/*global sap*/
+/*global sap, ute*/
 
 sap.ui.define(
     [

@@ -1,4 +1,5 @@
 // Provides default renderer for control sap.ui.commons.TextView
+/*global sap*/
 sap.ui.define(['jquery.sap.global', 'sap/ui/core/Renderer'],
 	function (jQuery, Renderer) {
 	    "use strict";
