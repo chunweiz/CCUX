@@ -235,12 +235,18 @@ sap.ui.define(
                 if ((temp !== undefined) && (temp.EFLLevel !== undefined)) {
 
                     if (temp.EFLType === "BR") {
+                        if (temp.EFLPrice) {
+                            temp.EFLPrice = parseFloat((temp.EFLPrice)).toFixed(1);
+                        }
                         oBRCells.push({
                             "EFLPrice": temp.EFLPrice
                         });
                     }
 
                     if (temp.EFLType === "CE") {
+                        if (temp.EFLPrice) {
+                            temp.EFLPrice = parseFloat((temp.EFLPrice)).toFixed(1);
+                        }
                         oCECells.push({
                             "EFLPrice": temp.EFLPrice
                         });

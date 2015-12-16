@@ -93,7 +93,7 @@ sap.ui.define(
                     oNoDataTag.addStyleClass("nrgCamOff-hide");
                     oTileContainer.removeStyleClass("nrgCamOff-hide");
                     aFilterIds = ["Type", "Type"];
-                    aFilterValues = ["C", this._sType];
+                    aFilterValues = ["C", that._sType];
                     aFilters = that._createSearchFilterObject(aFilterIds, aFilterValues);
                     oBinding.sOperationMode = "Client";
                     oBinding.aAllKeys = oEvent.getSource().aKeys;
@@ -134,7 +134,7 @@ sap.ui.define(
             oTileContainer.bindAggregation("content", mParameters);
             sCurrentPath = "/CustMsgS";
             fnTagDataRecHandler = function (oEvent) {
-                jQuery.sap.log.info("Odata Read Successfully:::");
+                //jQuery.sap.log.info("Odata Read Successfully:::");
             };
             mParameters = {
                 model : "comp-campaign",
@@ -159,7 +159,9 @@ sap.ui.define(
                 iCount;
 
             for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
-                aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
+                if (aFilterIds[iCount] && aFilterValues[iCount]) {
+                    aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
+                }
             }
             return aFilters;
         };
@@ -256,6 +258,14 @@ sap.ui.define(
                     if (oSelectedObject) {
                         oSelectedObject.removeStyleClass("nrgCamOff-btnSelected");
                         item.removeStyleClass("nrgCamOff-btnSelected");
+                    }
+                    this._aSelectedComparisionCards[index] = item;
+                    if (this._aSelectedComparisionCards[index]) {
+                        item.addStyleClass("nrgCamOff-btnSelected");
+                    }
+                } else {
+                    if (!this._aSelectedComparisionCards) {
+                        this._aSelectedComparisionCards = [];
                     }
                     this._aSelectedComparisionCards[index] = item;
                     if (this._aSelectedComparisionCards[index]) {
@@ -769,7 +779,7 @@ sap.ui.define(
 		 */
         Controller.prototype.formatCurrentConsAmount = function (sCurInvoiceAmount, sSimulateInvoiceAmount) {
             if (sSimulateInvoiceAmount || sCurInvoiceAmount) {
-                return sSimulateInvoiceAmount || sCurInvoiceAmount;
+                return "$ " + (sSimulateInvoiceAmount || sCurInvoiceAmount);
             } else {
                 return "N/A";
             }
@@ -786,7 +796,9 @@ sap.ui.define(
         Controller.prototype.formatDifference = function (sCurInvoiceAmount, sEstimateInvoiceAmount) {
             if ((sCurInvoiceAmount) && (sEstimateInvoiceAmount)) {
                 if ((parseFloat(sCurInvoiceAmount)) && (parseFloat(sEstimateInvoiceAmount))) {
-                    return (parseFloat(sCurInvoiceAmount) - parseFloat(sEstimateInvoiceAmount)).toFixed(2);
+                    return "$ " + (parseFloat(sCurInvoiceAmount) - parseFloat(sEstimateInvoiceAmount)).toFixed(2);
+                } else {
+                    return "$ " + "0.0";
                 }
             } else {
                 return "N/A";
@@ -836,9 +848,9 @@ sap.ui.define(
                     if (oData.Code === "E") {
                         oLoyalModel.setProperty("/message", "Please enter correct Reference Id");
                         that.getOwnerComponent().getCcuxApp().setOccupied(false);
-                        jQuery.sap.log.info("Odata Read Successfully:::");
+                        //jQuery.sap.log.info("Odata Read Successfully:::");
                     } else if (oData.Code === "S") {
-                        jQuery.sap.log.info("Odata Read Successfully:::");
+                        //jQuery.sap.log.info("Odata Read Successfully:::");
                         that.getOwnerComponent().getCcuxApp().setOccupied(false);
                         that._oLoyalityDialog.close();
                         that.getOwnerComponent().setModel(oLoyalModel, 'comp-campLocal');
@@ -846,7 +858,7 @@ sap.ui.define(
                     }
                 }.bind(this),
                 error: function (oError) {
-                    jQuery.sap.log.info("Eligibility Error occured");
+                    //jQuery.sap.log.info("Eligibility Error occured");
                     that.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
@@ -960,12 +972,17 @@ sap.ui.define(
                 if ((temp !== undefined) && (temp.EFLLevel !== undefined)) {
 
                     if (temp.EFLType === "BR") {
+                        if (temp.EFLPrice) {
+                            temp.EFLPrice = parseFloat((temp.EFLPrice)).toFixed(1);
+                        }
                         oBRCells.push({
                             "EFLPrice": temp.EFLPrice
                         });
                     }
-
                     if (temp.EFLType === "CE") {
+                        if (temp.EFLPrice) {
+                            temp.EFLPrice = parseFloat((temp.EFLPrice)).toFixed(1);
+                        }
                         oCECells.push({
                             "EFLPrice": temp.EFLPrice
                         });
@@ -984,6 +1001,93 @@ sap.ui.define(
             });
 
             return aJsonDataNew;
+        };
+        // Fire search function when detect user hit the enter key in the search textfields
+        Controller.prototype.onEnterKeyPress = function (oEvent) {
+            this._updateConsCmp(oEvent.getSource().getBindingContext("comp-campaign"));
+        };
+        // Fire search function when detect user hit the enter key in the search textfields
+        Controller.prototype.updateCmp = function (oEvent) {
+            this._updateConsCmp(oEvent.getSource().getBindingContext("comp-campaign"));
+        };
+        // Fire search function when detect user hit the enter key in the search textfields
+        Controller.prototype._updateConsCmp = function (oContext) {
+            var sSelectedPath,
+                oViewModel = this.getView().getModel("localModel"),
+                that = this,
+                bFirstCard = true,
+                oCurrentAmount,
+                oEstAmount,
+                oDifference,
+                oEstCents,
+                sContract,
+                sRateCategory,
+                sConsValue,
+                oConsAmountField,
+                oModel = this.getOwnerComponent().getModel('comp-campaign'),
+                oBindingInfo;
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            sSelectedPath = oContext.getPath();
+            this._aSelectedComparisionCards.forEach(function (oSelectedContent, index) {
+                var oContext,
+                    sPath;
+                if (oSelectedContent) {
+                    oContext = oSelectedContent.getBindingContext("comp-campaign");
+                    if (oContext) {
+                        sPath = oContext.getPath();
+                        if (sSelectedPath === sPath) {
+                            if (index === 0) {
+                                bFirstCard = true;
+                            } else { //if Second Card and invoice
+                                bFirstCard = false;
+                            }
+                        }
+                    }
+                }
+            });
+            if (bFirstCard) {
+                oCurrentAmount = that.byId(sap.ui.core.Fragment.createId("Cons1", "idnrgCamOffCurrAm"));
+                oEstAmount = that.byId(sap.ui.core.Fragment.createId("Cons1", "idnrgCamOffEstAmt"));
+                oDifference = that.byId(sap.ui.core.Fragment.createId("Cons1", "idnrgCamOffEstDiff"));
+                oEstCents = that.byId(sap.ui.core.Fragment.createId("Cons1", "idnrgCamOffEstcents"));
+                oConsAmountField = that.byId(sap.ui.core.Fragment.createId("Cons1", "idnrgCamOffCons"));
+            } else {
+                oCurrentAmount = that.byId(sap.ui.core.Fragment.createId("Cons2", "idnrgCamOffCurrAm"));
+                oEstAmount = that.byId(sap.ui.core.Fragment.createId("Cons2", "idnrgCamOffEstAmt"));
+                oDifference = that.byId(sap.ui.core.Fragment.createId("Cons2", "idnrgCamOffEstDiff"));
+                oEstCents = that.byId(sap.ui.core.Fragment.createId("Cons2", "idnrgCamOffEstcents"));
+                oConsAmountField = that.byId(sap.ui.core.Fragment.createId("Cons2", "idnrgCamOffCons"));
+            }
+            sContract = oContext.getProperty("Contract");
+            sRateCategory = oContext.getProperty("RateCat");
+            sConsValue =  oConsAmountField.getValue();
+            if (sContract && sRateCategory && sConsValue) {
+                sSelectedPath = "/CpgCmpbyConsS(Contract='" + sContract + "',RateCat='" + sRateCategory + "',Consumption=" + sConsValue + ")";
+                oBindingInfo = {
+                    //filters : aFilters,
+                    success : function (oData) {
+                        if (oData) {
+                            oCurrentAmount.setText(("$ " + oData.SimCurrInv)  || "");
+                            oEstAmount.setText(("$ " + oData.EstInvAmt) || "");
+                            oEstCents.setText((oData.EstCents || "") + " ¢/kWh");
+                            if (oData.SimCurrInv && oData.EstInvAmt) {
+                                oDifference.setText("$ " + (parseFloat(oData.SimCurrInv) - parseFloat(oData.EstInvAmt)).toFixed(2));
+                            }
+                        }
+                        that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                        //jQuery.sap.log.info("Odata Read Successfully:::");
+                    }.bind(this),
+                    error: function (oError) {
+                        that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                        //jQuery.sap.log.info("Eligibility Error occured");
+                    }.bind(this)
+                };
+                if (oModel) {
+                    oModel.read(sSelectedPath, oBindingInfo);
+                }
+            } else {
+                this.getOwnerComponent().getCcuxApp().setOccupied(false);
+            }
         };
         return Controller;
     }

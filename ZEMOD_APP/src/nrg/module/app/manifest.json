@@ -23,6 +23,9 @@
                             },
                             "comp-app": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_CAMPAIGN_SRV/"
+                            },
+                            "elig-app": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_ELIG_SRV/"
                             }
                         },
                         "mock": {
@@ -40,6 +43,10 @@
                             },
                             "comp-app": {
                                 "mockDataBaseUrl": "data/devCamp/",
+                                "generateMissingMockData": true
+                            },
+                            "elig-app":{
+                                "mockDataBaseUrl": "data/devElig/",
                                 "generateMissingMockData": true
                             }
                         }

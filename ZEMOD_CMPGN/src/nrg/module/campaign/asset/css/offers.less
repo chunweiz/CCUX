@@ -18,6 +18,7 @@
                     width:10%;
                     float:left;
                     display:inline-block;
+                    margin-top: 10px;
             }
             & > .nrgCmpOff-tiers > .nrgCmpOff-tier {
                     color: @nrgColor-blueLink;
@@ -42,7 +43,7 @@
                     width: 268px;
                     height:126px;
                     margin:3px 3px 3px 3px;
-                    background-color: @nrgColor-grey-highlight;
+                    background-color: @nrgColor-green-lightMint;
                     color:@nrgColor-green-pale;
                     float:left;
 
@@ -91,21 +92,23 @@
                     }
 
                     & > .nrgCamOff-btnPrc{
-                            font-size: @nrgFontSize-largest;
+                            font-size: @nrgFontSize-veryJumbo;
                             font-weight: @nrgFontWeight-regular;
-                            margin-left: 10px;
-                            margin-top: 10px;
-                            text-align: left;
+                            margin-left: 45px;
+                            margin-top: 0px;
+                            line-height: 32px;
                     }
                     & > .nrgCamOff-btnPrcLbl{
                             font-size: @nrgFontSize-small;
                             font-weight: @nrgFontWeight-regular;
                             display: inline-block;
                             float: right;
+                            margin-top: 10px;
                     }
                     & > .nrgCamOff-btnCurrent{
                             display: inline-block;
-                            color: @nrgColor-green-highlight;
+                            color: @nrgColor-white;
+                            margin-top: 10px;
                     }
 
             }
@@ -199,6 +202,8 @@
                                                     }
                                                     &  .nrgCamOff-prcTbl {
                                                             margin:5px 0px 0px 0px;
+                                                            height: 3rem;
+                                                            max-height: 3rem;
                                                             &  .uteTb {
                                                                 margin: 0px;
                                                             }
@@ -233,6 +238,8 @@
                                                     }
                                                     &  .nrgCamOff-prcTbl {
                                                             margin:5px 0px 0px 0px;
+                                                            height: 3rem;
+                                                            max-height: 3rem;
                                                             &  .uteTb {
                                                                 margin: 0px;
                                                             }
@@ -247,18 +254,41 @@
                                     &   .nrgCamOff-mtx {
                                             font-size: @nrgFontSize-small;
                                             font-weight: @nrgFontWeight-semiBold;
-
                                             &  > .nrgCamOff-mtxRow {
                                                     border-bottom:  1px dashed @nrgColor-grey-highlight;
-                                                    line-height: 25px;
+                                                    margin-top: 8px;
                                                     & > .nrgCamOff-mtxFstCell {
                                                             width:80%;
                                                             display:inline-block;
+                                                    }
+                                                    & > .nrgCamOff-mtxFstCellMonthly {
+                                                            width:32%;
+                                                            display:inline-block;
+                                                    }
+                                                    & > .uteTextfield.uteTextfield-float {
+                                                            margin: 0px 2px 2px 0px;
+                                                            vertical-align: bottom;
+                                                            min-width: 120px;
+                                                    }
+                                                    & > .uteTextfield.uteTextfield-float > .uteTextfield-float-input {
+                                                            padding: 5px 5px;
+                                                    }
+                                                    & > .uteMBtn-design-default {
+                                                            min-width: 30px;
+                                                    }
+                                                    & > .nrgCamoff-goBtn {
+                                                            width: auto;
+                                                            margin-right: 45px;
+	                                                        margin-bottom: 2px;
+                                                        & > .nrgCamoff-goBtn-text {
+                                                            padding: 5px;
+                                                        }
                                                     }
                                                     & > .nrgCamOff-mtxSndCell {
                                                             display:inline-block;
                                                             font-size: @nrgFontSize-base;
                                                             color: @nrgColor-green-highlight;
+                                                            overflow: hidden;
                                                     }
                                                     & > .nrgCamOff-mtxSndCell[data-flag="X"] {
                                                             color: @nrgColor-orange-attention;
@@ -270,10 +300,9 @@
             }
     }
     & > .nrgCamOff-disc {
-            font-size: @nrgFontSize-small;
+            font-size: @nrgFontSize-base;
             font-weight: @nrgFontWeight-semiBold;
             width: 86%;
-            margin-top: 2px;
             margin-left: 12%;
     }
     & > .nrgCamOff-searchArea {

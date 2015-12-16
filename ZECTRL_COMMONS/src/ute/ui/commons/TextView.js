@@ -1,4 +1,5 @@
 // Provides control sap.ui.commons.TextView.
+/*global sap, ute*/
 sap.ui.define(['jquery.sap.global', './library', 'sap/ui/core/Control', 'sap/ui/core/Popup'],
 	function (jQuery, library, Control, Popup) {
 	    "use strict";
