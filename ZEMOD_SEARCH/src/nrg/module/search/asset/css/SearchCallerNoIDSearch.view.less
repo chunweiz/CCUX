@@ -4,6 +4,7 @@
     & > .nrgSearch-calrNoIDSearch-title{
         margin-left: 8px;
         font-weight: @nrgFontWeight-semiBold;
+        display: inline-block;
     }
 
     & > .nrgSearch-calrNoIDSearch-title > .nrgSearch-calrNoIDSearch-titleSpan{
@@ -17,10 +18,14 @@
         color: @nrgColor-red-alert;
     }
 
-    & > .nrgSearch-calrNoIDSearch-textfield{
+    & > .nrgSearch-calrNoIDSearch-textfield {
         font-size: @nrgFontSize-small;
-        margin-top: 25px;
-        margin-bottom: 25px;
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+
+    & > .nrgSearch-calrNoIDSearch-textfield > .nrgSearch-calrNoIDSearch-textfield-input {
+        margin: 0 5px;
     }
 
     & > .nrgSearch-calrNoIDSearch-textfield > .nrgSearch-calrNoIDSearch-textfield-input > input{
@@ -31,8 +36,9 @@
     }
 
     & > .nrgCallerNoIDSearch-sbtn{
-        margin-top: 25px;
-        margin-left: 900px;
+        display: inline-block;
+        float: right;
+        margin-right: 25px;
     }
 
 
