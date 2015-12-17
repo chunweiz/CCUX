@@ -235,7 +235,7 @@ sap.ui.define(
                 oParameters,
                 sPath;
 
-            sPath = '/ExtElgbles(ContractAccountNumber=\'' + this._caNum + '\'')';
+            sPath = '/ExtElgbles(ContractAccountNumber=\'' + this._caNum + '\')';
 
             oParameters = {
                 success : function (oData) {
