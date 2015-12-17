@@ -82,17 +82,20 @@
                         <ua:general>
                             <ua:Tag id="idAppGeneral"></ua:Tag>
                         </ua:general>
+                        <ua:footer>
+                            <ua:Tag id="idAppFooter"></ua:Tag>
+                        </ua:footer>
                     </ua:BodyContent>
                 </ua:content>
             </ua:Body>
         </ua:body>
-        <ua:footer>
+        <!-- <ua:footer>
             <ua:Footer id="appFtr">
                 <ua:EventArea id="appFtrCaret" class="nrgU-right">
                     <div class="nrgAppFtr-caret"></div>
                 </ua:EventArea>
             </ua:Footer>
-        </ua:footer>
+        </ua:footer> -->
     </ua:App>
 
 </mvc:View>

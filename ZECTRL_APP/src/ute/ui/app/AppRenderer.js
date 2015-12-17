@@ -18,7 +18,7 @@ sap.ui.define(
 
             this._renderHeader(oRm, oCustomControl);
             this._renderBody(oRm, oCustomControl);
-            this._renderFooter(oRm, oCustomControl);
+            // this._renderFooter(oRm, oCustomControl);
 
             oRm.write('</div>');
         };

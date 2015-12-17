@@ -123,12 +123,12 @@
 
     & .nrgAppMain-summaryPanel {
         max-height: @maxHeight-summaryPanel;
-//        overflow: hidden;
+        //overflow: hidden;
     }
 
     & .nrgAppMain-toolsPanel {
         max-height: @maxHeight-toolsPanel;
-//        overflow: hidden;
+        //overflow: hidden;
     }
 
     & .nrgAppMain-generalContent,
@@ -159,5 +159,63 @@
 
     & .nrgAppMain-toolsContent.nrgAppMain-toolsContent-full {
         height: @maxHeight-toolsPanel;
+    }
+
+    & .nrgAppMain-footerCaret {
+
+        // when footer is expanded
+        &.open {
+            
+            & .nrgAppMain-footerCaret {
+                margin-top: -20px;
+
+                &::before {
+                    transform: translate(35px,2px) rotate(-135deg);
+                }
+            }
+
+            & .nrgAppMain-footerContentWrap {
+                display: block;
+            }
+        }
+
+        & .nrgAppMain-footerCaret {
+            height: 25px;
+            float: right;
+            background-color: @nrgColor-white;
+            width: 80px;
+            border-radius: 5px 0 0 0;
+            cursor: pointer;
+            margin-top: 0;
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                border: 1px solid #5092ce;
+                border-bottom: none;
+                border-right: none;
+                transform: translate(35px,8px) rotate(45deg);
+            }
+        }
+
+        & .nrgAppMain-footerContentWrap {
+            display: none;
+            height: 295px;
+            width: 100%;
+            background-color: @nrgColor-white;
+            padding: 0 40px;
+
+            & .nrgAppMain-footerContent {
+                margin: 0 auto;
+                width: 1440px;
+                padding: 15px 40px;
+
+                & .nrgAppMain-footerFlexbox {
+                    display: flex;
+                }
+            }
+        }
     }
 }
