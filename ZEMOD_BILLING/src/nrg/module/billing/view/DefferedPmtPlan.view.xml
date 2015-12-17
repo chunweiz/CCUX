@@ -344,6 +344,8 @@ Additional installments will be due with the following 5 subsequent invoices."/>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-btn-left">
                     <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOk}"
                                    press="._onDppDeniedOkClick"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOver}"
+                                   press="._onDppDeniedOkClick"/>
                 </ute:Tag>
             </ute:Tag>
         </ute:Tag>
@@ -414,7 +416,7 @@ Additional installments will be due with the following 5 subsequent invoices."/>
         <!--EXT Denied-->
         <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="{oDppScrnControl>/EXTDenied}">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-ExtTitle}"/>
-            <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
+            <ute:Tag class="nrgBilling-dPmtExtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
@@ -443,6 +445,8 @@ Additional installments will be due with the following 5 subsequent invoices."/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-btn-left">
                     <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOk}"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOver}"
+                                   press="._onDppDeniedOkClick"/>
                 </ute:Tag>
             </ute:Tag>
         </ute:Tag>

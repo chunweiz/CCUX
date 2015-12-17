@@ -58,8 +58,8 @@
         <Property Name="ReasonCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="DPPActive" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="DPPReasonYes" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <NavigationProperty Name="DPPDenieds" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPElgble_DPPDenied" FromRole="FromRole_DPPElgble_DPPDenied" ToRole="ToRole_DPPElgble_DPPDenied" />
         <NavigationProperty Name="DPPSetUps" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPElgble_DPPSetUp" FromRole="FromRole_DPPElgble_DPPSetUp" ToRole="ToRole_DPPElgble_DPPSetUp" />
+        <NavigationProperty Name="DPPDenieds" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPElgble_DPPDenied" FromRole="FromRole_DPPElgble_DPPDenied" ToRole="ToRole_DPPElgble_DPPDenied" />
       </EntityType>
       <EntityType Name="DPPConf" sap:content-version="1">
         <Key>
