@@ -383,7 +383,9 @@ sap.ui.define(
                 oCECells = [],
                 iCount1,
                 iCount2,
-                aJsonDataNew;
+                aJsonDataNew,
+                aTypes = [],
+                tempTypes = [];
             for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
 
                 temp = results[iCount1];
@@ -413,38 +415,48 @@ sap.ui.define(
             for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
 
                 temp = results[iCount1];
-                if ((temp !== undefined) && (temp.EFLLevel !== undefined)) {
+                if ((temp !== undefined) && (temp.EFLType !== undefined)) {
 
-                    if (temp.EFLType === "BR") {
-                        if (temp.EFLPrice) {
-                            temp.EFLPrice = parseFloat((temp.EFLPrice)).toFixed(1);
+                  // Columns Assignment.
+                    if (tempTypes !== undefined) {
+
+                        for (iCount2 = 0; iCount2 < tempTypes.length; iCount2  = iCount2 + 1) {
+                            if (temp.EFLType === tempTypes[iCount2]) {
+                                continueFlag = true;
+                                break;
+                            }
                         }
-                        oBRCells.push({
-                            "EFLPrice": temp.EFLPrice
-                        });
+                        if (continueFlag) {
+                            continueFlag = false;
+                        } else {
+                            tempTypes.push(temp.EFLType);
+                        }
                     }
 
-                    if (temp.EFLType === "CE") {
-                        if (temp.EFLPrice) {
-                            temp.EFLPrice = parseFloat((temp.EFLPrice)).toFixed(1);
-                        }
-                        oCECells.push({
-                            "EFLPrice": temp.EFLPrice
-                        });
-                    }
+                    // Columns Assignment.
                 }
             }
             aJsonDataNew = {};
             aJsonDataNew.results = {};
             aJsonDataNew.results.columns = columns;
             aJsonDataNew.results.rows = [];
-            aJsonDataNew.results.rows.push({
-                "cells" : oBRCells
-            });
-            aJsonDataNew.results.rows.push({
-                "cells" : oCECells
-            });
+            for (iCount2 = 0; iCount2 < tempTypes.length; iCount2  = iCount2 + 1) {
+                oBRCells = [];
+                for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+                    temp = results[iCount1];
+                    if ((temp !== undefined) && (temp.EFLLevel !== undefined) && (temp.EFLType !== undefined)) {
+                        if (temp.EFLType === tempTypes[iCount2]) {
+                            oBRCells.push({
+                                "EFLPrice": temp.EFLPrice
+                            });
+                        }
 
+                    }
+                }
+                aJsonDataNew.results.rows.push({
+                    "cells" : oBRCells
+                });
+            }
             return aJsonDataNew;
         };
         /**
