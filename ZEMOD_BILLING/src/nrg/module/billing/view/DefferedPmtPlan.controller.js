@@ -70,7 +70,8 @@ sap.ui.define(
             if (aSplitHash[1] === 'defferedpaymentplan') {
                 this._isDppElgble();
             } else if (aSplitHash[1] === 'defferedpaymentext') {
-                this._selectScrn('EXTGrant');
+                //this._selectScrn('EXTGrant');
+                this._isExtElgble();
             }
 
             //oScrnControl.setProperty('/StepOne', true);
@@ -96,6 +97,12 @@ sap.ui.define(
 
             } else if (sSelectedScrn === 'DPPDenied') {
                 this._retrDppDeniedReason();
+            } else if (sSelectedScrn === 'EXTGrant') {
+
+            } else if (sSelectedScrn === 'EXTDenied') {
+
+            } else {
+                return;
             }
         };
 
@@ -223,16 +230,49 @@ sap.ui.define(
             }
         };
 
-        Controller.prototype._retrDppDeniedReason = function () {
+        Controller.prototype._isExtElgble = function () {
             var oODataSvc = this.getView().getModel('oDataSvc'),
                 oParameters,
                 sPath;
+
+            sPath = '/ExtElgbles(ContractAccountNumber=\'' + this._caNum + '\'')';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oDppEligible').setData(oData);
+
+                        if (oData.EligibleYes) {
+                            this._selectScrn('EXTGrant');
+                        } else {
+                            this._selectScrn('EXTDenied');
+                        }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oODataSvc) {
+                oODataSvc.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrDppDeniedReason = function () {
+            var oODataSvc = this.getView().getModel('oDataSvc'),
+                oParameters,
+                sPath,
+                i;
 
             sPath = '/DPPElgbles(ContractAccountNumber=\'' + this._caNum + '\',DPPReason=\'\')/DPPDenieds';
 
             oParameters = {
                 success : function (oData) {
                     if (oData) {
+                        for (i = 0; i < oData.results.length; i++) {
+                            oData.results[i].DPPDenyed.iIndex = i + 1;
+                        }
                         this.getView().getModel('oDppDeniedReason').setData(oData);
                     }
                 }.bind(this),

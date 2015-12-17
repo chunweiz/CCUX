@@ -1,0 +1,20 @@
+{
+  "d":{
+    "__metadata":{
+      "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/ExtElgbles('100738')",
+      "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/ExtElgbles('100738')",
+      "type":"ZE_CCUX_DPP_EXT_SRV.ExtElgble"
+    },
+    "ContractAccountNumber":"100738",
+    "EligibleYes":false,
+    "ExtReason":"",
+    "ReasonCode":"",
+    "ExtActive":false,
+    "ExtReasonYes":false,
+    "ExtensionSet":{
+      "__deferred":{
+        "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/ExtElgbles('100738')/ExtensionSet"
+      }
+    }
+  }
+}
