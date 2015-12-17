@@ -13,13 +13,15 @@
         <ute:Tag id="idnrgDB-EmailBox" visible="true"
             class="nrgNnp-Nnp">
             <ute:Tag class="nrgNnp-Nnp-desc">
-                <ute:TextView
-                    text="{oEditEmailNNP>/Script}"/>
+<!--                <ute:TextView
+                    text="{oEditEmailNNP>/Script}"/>-->
+                <core:HTML content='&lt;div class=&quot;nrgNnp-Nnp-desc-text&quot;&gt;{oEditEmailNNP>/Script}&lt;/div&gt;'>
+              </core:HTML>
             </ute:Tag>
             <ute:Tag class="nrgNnp-Nnp-inputArea">
                 <ute:Textfield fieldType="Underlined"
                     label="{comp-i18n-nnp>nrgNnpCusDatVrf_EmlPup_Email}"
-                    editable="true" width="200px"
+                    editable="true" width="250px"
                     value="{oEditEmailNNP>/Email}"/>
                  <utmain:Button class="nrgNnp-Nnp-inputArea-btn nrgDashboard-cusDataVerify-alignCenBtn"
                     text="{comp-i18n-nnp>nrgNnpCusDatVrf_EmlPup_VlBtn}"
