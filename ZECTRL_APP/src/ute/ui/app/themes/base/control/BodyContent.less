@@ -17,6 +17,11 @@
         position: relative;
     }
 
+    & .uteAppBodyCnt-footer {
+        min-height: 25px;
+        border-bottom: 6px solid #FFF;
+    }
+
     &.uteAppBodyCnt-layout-default {
         & .uteAppBodyCnt-leftSection {
             display: inline-block;
@@ -44,6 +49,14 @@
             & .uteAppBodyCnt-general {
                 display: block;
             }
+        }
+
+        & .uteAppBodyCnt-footerSection {
+            display: inline-block;
+            position: fixed;
+            left: 0;
+            width: 100%;
+            bottom: 0;
         }
     }
 
@@ -78,6 +91,14 @@
             & .uteAppBodyCnt-tool {
                 display: block;
             }
+        }
+
+        & .uteAppBodyCnt-footerSection {
+            display: inline-block;
+            position: fixed;
+            left: 0;
+            width: 100%;
+            bottom: 0;
         }
     }
 }

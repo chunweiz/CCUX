@@ -75,6 +75,19 @@ sap.ui.define(
             oRm.write('</div>');
         };
 
+        CustomRenderer._renderFooter = function (oRm, oCustomControl) {
+            oRm.write('<div');
+            oRm.addClass('uteAppBodyCnt-footer');
+            oRm.writeClasses();
+            oRm.write('>');
+
+            oCustomControl.getFooter().forEach(function (oGeneral) {
+                oRm.renderControl(oGeneral);
+            }.bind(this));
+
+            oRm.write('</div>');
+        };
+
         CustomRenderer._renderDefaultLayout = function (oRm, oCustomControl) {
             oRm.write('<div');
             oRm.addClass('uteAppBodyCnt-leftSection');
@@ -92,6 +105,15 @@ sap.ui.define(
             oRm.write('>');
 
             this._renderGeneral(oRm, oCustomControl);
+
+            oRm.write('</div>');
+
+            oRm.write('<div');
+            oRm.addClass('uteAppBodyCnt-footerSection');
+            oRm.writeClasses();
+            oRm.write('>');
+
+            this._renderFooter(oRm, oCustomControl);
 
             oRm.write('</div>');
         };
@@ -113,6 +135,15 @@ sap.ui.define(
             oRm.write('>');
 
             this._renderTool(oRm, oCustomControl);
+
+            oRm.write('</div>');
+
+            oRm.write('<div');
+            oRm.addClass('uteAppBodyCnt-footerSection');
+            oRm.writeClasses();
+            oRm.write('>');
+
+            this._renderFooter(oRm, oCustomControl);
 
             oRm.write('</div>');
         };

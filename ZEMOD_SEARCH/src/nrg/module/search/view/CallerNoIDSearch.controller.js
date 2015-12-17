@@ -257,6 +257,10 @@ sap.ui.define(
                 filters : aFilters,
                 success : function (oData) {
                     if (oData.results) {
+                        
+                        // Scroll down
+                        $('.uteApp-body').animate({scrollTop: $(document).height()}, 'slow');
+
                         if (oData.results.length === 1) {
                             //oComponentContextModel.setProperty('/dashboard/bpNum', oData.results[0].PartnerID);
                             //oRouter.navTo('dashboard.Bp', {bpNum: oData.results[0].PartnerID});
