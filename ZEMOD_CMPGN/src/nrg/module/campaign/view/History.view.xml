@@ -14,7 +14,7 @@
    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
       <u:Tag id="idnrgCamHis" class="nrgCamHis">
             <div>
-                <u:Tag class="nrgCamOff-ttl" text="{comp-i18n-campaign>nrgCmpOffTtl}" />
+                <u:Tag class="nrgCamOff-ttl" text="{comp-i18n-campaign>nrgCmpHisTtl}" />
                  <um:Button press=".backToOverview"
                             text="{comp-i18n-campaign>nrgCmpBckOverview}"
                             class="nrgCamOff-Back"

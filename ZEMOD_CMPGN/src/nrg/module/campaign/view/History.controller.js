@@ -24,10 +24,8 @@ sap.ui.define(
 		/* lifecycle method- Before Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onBeforeRendering = function () {
-            var oModel,
-                sPath,
+            var sPath,
                 mParameters,
-                oHistoryView,
                 oHistoryTable,
                 oHistoryRowTemplate,
                 aFilters,
@@ -59,7 +57,6 @@ sap.ui.define(
             aFilterValues = [this._sContract, "H"];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sPath = this._i18NModel.getProperty("nrgHistorySet");
-            oModel = this.getOwnerComponent().getModel('comp-campaign');
             oHistoryTable = this.getView().byId("idnrgCamHis-table");
             oHistoryRowTemplate = this.getView().byId("idnrgCamHis-row").clone();
             oDataTag = this.getView().byId("idnrgCamHisData");
