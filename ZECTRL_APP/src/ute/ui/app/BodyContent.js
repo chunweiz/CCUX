@@ -19,7 +19,8 @@ sap.ui.define(
                 aggregations: {
                     general: { type: 'sap.ui.core.Control', multiple: true, singularName: 'general' },
                     summary: { type: 'sap.ui.core.Control', multiple: true, singularName: 'summary' },
-                    tool: { type: 'sap.ui.core.Control', multiple: true, singularName: 'tool' }
+                    tool: { type: 'sap.ui.core.Control', multiple: true, singularName: 'tool' },
+                    footer: { type: 'sap.ui.core.Control', multiple: true, singularName: 'footer' }
                 },
 
                 defaultAggregation: 'general'

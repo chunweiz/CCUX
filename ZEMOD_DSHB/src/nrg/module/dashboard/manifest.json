@@ -35,10 +35,10 @@
                                 "mockDataBaseUrl": "data/devSvcOdr/",
                                 "generateMissingMockData": true
                             },
-							"comp-dashboard-AcctAccessPty":{
-								"mockDataBaseUrl": "data/devAcctAccessPty/",
-								"generateMissingMockData": true
-							},
+                            "comp-dashboard-AcctAccessPty":{
+                                "mockDataBaseUrl": "data/devAcctAccessPty/",
+                                "generateMissingMockData": true
+                            },
                             "comp-dashboard-checkbook":{
                                 "mockDataBaseUrl": "data/devCheckbook/",
                                 "generateMissingMockData": true
@@ -53,22 +53,22 @@
             "routes": {
                 "dashboard.Verification": {
                     "pattern": "dashboard/verification/bp/{bpNum}",
-                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "billing.CustomerJourney" ]
+                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "billing.CustomerJourney", "app.Footer" ]
                 },
 
                 "dashboard.VerificationWithCa": {
                     "pattern": "dashboard/verification/bp/{bpNum}/ca/{caNum}",
-                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "billing.CustomerJourney" ]
+                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "billing.CustomerJourney", "app.Footer" ]
                 },
 
                 "dashboard.VerificationWithCaCo": {
                     "pattern": "dashboard/verification/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "billing.CustomerJourney" ]
+                    "target": [ "dashboard.CustomerDataVerification", "dashboard.CustomerDataSummary", "billing.CustomerJourney", "app.Footer" ]
                 },
 
                 "dashboard.ServiceOrder": {
                     "pattern": "dashboard/serviceorder/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target": [ "dashboard.ServiceOrder", "dashboard.CustomerDataSummary", "dashboard.Tools" ]
+                    "target": [ "dashboard.ServiceOrder", "dashboard.CustomerDataSummary", "dashboard.Tools", "app.Footer" ]
                 }
             },
 
@@ -104,6 +104,10 @@
                 "dashboard.ServiceOrderTool": {
                     "viewName": "nrg.module.dashboard.view.Tools",
                     "controlId": "idAppTools"
+                },
+                "app.Footer": {
+                    "viewName": "nrg.module.app.view.Footer",
+                    "controlId": "idAppFooter"
                 }
             }
         }

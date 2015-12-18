@@ -27,8 +27,8 @@ sap.ui.define(
                 this._oAppBody = new AppBody(oController, this);
                 this._oAppBody.init();
 
-                this._oAppFooter = new AppFooter(oController, this);
-                this._oAppFooter.init();
+                // this._oAppFooter = new AppFooter(oController, this);
+                // this._oAppFooter.init();
             },
 
             metadata: {
@@ -41,8 +41,8 @@ sap.ui.define(
                     'isHeaderMenuItemEnabled',
                     'setTitle',
                     'setLayout',
-                    'setFooterExpanded',
-                    'isFooterExpanded',
+                    // 'setFooterExpanded',
+                    // 'isFooterExpanded',
                     'attachNavLeft',
                     'detachhNavLeft',
                     'showNavLeft',
@@ -53,6 +53,7 @@ sap.ui.define(
                     'detachNavRightAll',
                     'setInEdit',
                     'isInEdit',
+                    'updateFooter',
                     'updateFooterNotification',
                     'updateFooterRHS',
                     'updateFooterCampaign'
@@ -67,7 +68,7 @@ sap.ui.define(
         App.prototype.reset = function (bfullwidth) {
             this._oAppHeader.reset();
             this._oAppBody.reset(bfullwidth);
-            this._oAppFooter.reset();
+            // this._oAppFooter.reset();
 
             this.setInEdit(false);
         };
@@ -170,14 +171,14 @@ sap.ui.define(
             return this;
         };
 
-        App.prototype.setFooterExpanded = function (bExpanded) {
-            this._oAppFooter.setExpanded(bExpanded);
-            return this;
-        };
+        // App.prototype.setFooterExpanded = function (bExpanded) {
+        //     this._oAppFooter.setExpanded(bExpanded);
+        //     return this;
+        // };
 
-        App.prototype.isFooterExpanded = function () {
-            return this._oAppFooter.isExpanded();
-        };
+        // App.prototype.isFooterExpanded = function () {
+        //     return this._oAppFooter.isExpanded();
+        // };
 
         App.prototype._getHeader = function () {
             return this._oAppHeader;
@@ -187,27 +188,32 @@ sap.ui.define(
             return this._oAppBody;
         };
 
-        App.prototype._getFooter = function () {
-            return this._oAppFooter;
-        };
+        // App.prototype._getFooter = function () {
+        //     return this._oAppFooter;
+        // };
 
-        App.prototype._initFooterContent = function () {
-            this._oAppFooter._initFooterContent();
+        // App.prototype._initFooterContent = function () {
+        //     this._oAppFooter._initFooterContent();
+        //     return this;
+        // };
+
+        App.prototype.updateFooter = function (sBpNumber, sCaNumber, sCoNumber) {
+            sap.ui.getCore().getEventBus().publish("nrg.module.appFooter", "eUpdateFooter", {bpNum: sBpNumber, caNum: sCaNumber, coNum: sCoNumber});
             return this;
         };
 
-        App.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber, bNotReredner) {
-            this._oAppFooter.updateFooterNotification(sBpNumber, sCaNumber, sCoNumber, bNotReredner);
+        App.prototype.updateFooterNotification = function (sBpNumber, sCaNumber, sCoNumber) {
+            sap.ui.getCore().getEventBus().publish("nrg.module.appFooter", "eUpdateNotification", {bpNum: sBpNumber, caNum: sCaNumber, coNum: sCoNumber});
             return this;
         };
 
-        App.prototype.updateFooterRHS = function (sBpNumber, sCaNumber, sCoNumber, bNotReredner) {
-            this._oAppFooter.updateFooterRHS(sBpNumber, sCaNumber, sCoNumber, bNotReredner);
+        App.prototype.updateFooterRHS = function (sBpNumber, sCaNumber, sCoNumber) {
+            sap.ui.getCore().getEventBus().publish("nrg.module.appFooter", "eUpdateRhs", {bpNum: sBpNumber, caNum: sCaNumber, coNum: sCoNumber});
             return this;
         };
 
-        App.prototype.updateFooterCampaign = function (sBpNumber, sCaNumber, sCoNumber, bNotReredner) {
-            this._oAppFooter.updateFooterCampaign(sBpNumber, sCaNumber, sCoNumber, bNotReredner);
+        App.prototype.updateFooterCampaign = function (sBpNumber, sCaNumber, sCoNumber) {
+            sap.ui.getCore().getEventBus().publish("nrg.module.appFooter", "eUpdateCampaign", {bpNum: sBpNumber, caNum: sCaNumber, coNum: sCoNumber});
             return this;
         };
 
