@@ -42,10 +42,19 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppStepOnePost');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppStepOneSelectedData');
 
+            //Model for Ext Function (EXT Step I)
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtExtensions');
+
 
             this._initScrnControl();
             this._startScrnControl();
         };
+
+        Controller.prototype.onAfterRendering = function () {
+            this.getView().byId('nrgBilling-dpp-ExtNewDate-id').attachBrowserEvent('select', this._handleExtDateChange, this);
+        };
+
+
 
         /****************************************************************************************************************/
         //Init Functions
@@ -98,7 +107,7 @@ sap.ui.define(
             } else if (sSelectedScrn === 'DPPDenied') {
                 this._retrDppDeniedReason();
             } else if (sSelectedScrn === 'EXTGrant') {
-
+                this._retrExtensions();
             } else if (sSelectedScrn === 'EXTDenied') {
 
             } else {
@@ -144,14 +153,33 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._formatInvoiceDate = function (day, month, year) {
+            // Pad the date and month
+            if (day < 10) {day = '0' + day; }
+            if (month < 10) {month = '0' + month; }
+            // Format the startDate
+            return month + '/' + day + '/' + year;
+        };
+
         /****************************************************************************************************************/
         //Handler
         /****************************************************************************************************************/
         Controller.prototype._onDppDeniedOkClick = function () {    //Navigate to DPP setup if 'OK' is clicked
-            var oScrnControl = this.getView().getModel('oDppScrnControl');
+            var oRouter = this.getOwnerComponent().getRouter();
 
-            //Go to Setup STEP I
+            if (this._coNum) {
+                oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('dashboard.VerificationWithCa', {bpNum: this._bpNum, caNum: this._caNum});
+            }
+        };
+
+        Controller.prototype._onDppOverrideClick = function () {
             this._selectScrn('StepOne');
+        };
+
+        Controller.prototype._onExtOverrideClick = function () {
+            this._selectScrn('EXTGrant');
         };
 
         Controller.prototype._onReasonSelect = function () {
@@ -197,6 +225,16 @@ sap.ui.define(
             this._retrDPPConf();    //Initiating step 2
         };
 
+        Controller.prototype._handleExtDateChange = function (oEvent) {
+            var extDate = new Date(this.getView().byId('nrgBilling-dpp-ExtNewDate-id').getValue()),
+                oExtensions = this.getView().getModel('oExtExtensions'),
+                i;
+
+            for (i = 0; i < oExtensions.oData.results.length; i = i + 1) {
+                oExtensions.setProperty('/results/' + i + '/OpenItems/DefferalDate', extDate);
+            }
+            //this.getView().byId('nrgBilling-dpp-ExtNewDate-id')
+        };
 
         /****************************************************************************************************************/
         //OData Call
@@ -270,7 +308,7 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     if (oData) {
-                        for (i = 0; i < oData.results.length; i++) {
+                        for (i = 0; i < oData.results.length; i = i + 1) {
                             oData.results[i].DPPDenyed.iIndex = i + 1;
                         }
                         this.getView().getModel('oDppDeniedReason').setData(oData);
@@ -347,6 +385,33 @@ sap.ui.define(
 
         Controller.prototype._retrDppConf = function () {
 
+        };
+
+        Controller.prototype._retrExtensions = function () {
+            var oODataSvc = this.getView().getModel('oDataSvc'),
+                oParameters,
+                sPath,
+                i,
+                extDate;
+
+            sPath = '/ExtElgbles(ContractAccountNumber=\'' + this._caNum + '\')/ExtensionSet';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oExtExtensions').setData(oData);
+                        extDate = this._formatInvoiceDate(oData.results[0].OpenItems.DefferalDate.getDate(), oData.results[0].OpenItems.DefferalDate.getMonth() + 1, oData.results[0].OpenItems.DefferalDate.getFullYear());
+                        this.getView().byId('nrgBilling-dpp-ExtNewDate-id').setDefaultDate(extDate);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oODataSvc) {
+                oODataSvc.read(sPath, oParameters);
+            }
         };
 
         return Controller;

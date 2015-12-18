@@ -1,0 +1,42 @@
+{
+  "d":{
+    "results":[
+      {
+        "__metadata":{
+          "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/ExtReasons('2800')",
+          "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/ExtReasons('2800')",
+          "type":"ZE_CCUX_DPP_EXT_SRV.ExtReason"
+        },
+        "ReasonCode":"2800",
+        "Reason":"Extension Granted - Customer Request"
+      },
+      {
+        "__metadata":{
+          "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/ExtReasons('2900')",
+          "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/ExtReasons('2900')",
+          "type":"ZE_CCUX_DPP_EXT_SRV.ExtReason"
+        },
+        "ReasonCode":"2900",
+        "Reason":"Extension Granted - Investigation"
+      },
+      {
+        "__metadata":{
+          "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/ExtReasons('3000')",
+          "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/ExtReasons('3000')",
+          "type":"ZE_CCUX_DPP_EXT_SRV.ExtReason"
+        },
+        "ReasonCode":"3000",
+        "Reason":"Extension Granted - Payment Received"
+      },
+      {
+        "__metadata":{
+          "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/ExtReasons('3100')",
+          "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/ExtReasons('3100')",
+          "type":"ZE_CCUX_DPP_EXT_SRV.ExtReason"
+        },
+        "ReasonCode":"3100",
+        "Reason":"Extension Granted - Social Agency"
+      }
+    ]
+  }
+}

@@ -8,7 +8,7 @@
           "type":"ZE_CCUX_DPP_EXT_SRV.ExtElgble"
         },
         "ContractAccountNumber":"100738",
-        "EligibleYes":false,
+        "EligibleYes":true,
         "ExtReason":"",
         "ReasonCode":"",
         "ExtActive":false,
