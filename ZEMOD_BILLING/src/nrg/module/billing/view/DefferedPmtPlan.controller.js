@@ -44,6 +44,7 @@ sap.ui.define(
 
             //Model for Ext Function (EXT Step I)
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtExtensions');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtExtReasons');
 
 
             this._initScrnControl();
@@ -107,6 +108,7 @@ sap.ui.define(
             } else if (sSelectedScrn === 'DPPDenied') {
                 this._retrDppDeniedReason();
             } else if (sSelectedScrn === 'EXTGrant') {
+                this._retrExtReasons();
                 this._retrExtensions();
             } else if (sSelectedScrn === 'EXTDenied') {
 
@@ -273,7 +275,7 @@ sap.ui.define(
                 oParameters,
                 sPath;
 
-            sPath = '/ExtElgbles(ContractAccountNumber=\'' + this._caNum + '\')';
+            sPath = '/ExtElgbles(ContractAccountNumber=\'' + this._caNum + '\',ExtActive=false)';
 
             oParameters = {
                 success : function (oData) {
@@ -387,6 +389,31 @@ sap.ui.define(
 
         };
 
+        Controller.prototype._retrExtReasons = function () {
+            var oODataSvc = this.getView().getModel('oDataSvc'),
+                oParameters,
+                sPath,
+                i;
+
+            sPath = '/ExtReasons';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oExtExtReasons').setData(oData);
+                        this.getView().getModel('oExtExtReasons').setProperty('/selectedKey', '2800');
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oODataSvc) {
+                oODataSvc.read(sPath, oParameters);
+            }
+        };
+
         Controller.prototype._retrExtensions = function () {
             var oODataSvc = this.getView().getModel('oDataSvc'),
                 oParameters,
@@ -394,7 +421,7 @@ sap.ui.define(
                 i,
                 extDate;
 
-            sPath = '/ExtElgbles(ContractAccountNumber=\'' + this._caNum + '\')/ExtensionSet';
+            sPath = '/ExtElgbles(ContractAccountNumber=\'' + this._caNum + '\',ExtActive=false)/ExtensionSet';
 
             oParameters = {
                 success : function (oData) {

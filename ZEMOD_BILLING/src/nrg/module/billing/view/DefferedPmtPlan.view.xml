@@ -359,24 +359,18 @@ Additional installments will be due with the following 5 subsequent invoices."/>
                     <ute:Tag class="nrgBilling-dltl-step" text="{comp-i18n-billing>nrgBilling-dpp-ExtDenied}"/>
                     <ute:Tag class="nrgBilling-dltl-reason">
                         <ute:Tag class="nrgBilling-dltl-reason-lbl" text="{comp-i18n-billing>nrgBilling-dpp-ReasonGrant}"/>
-                        <utmain:Dropdown class="nrgBilling-dltl-reason-select">
-                            <utmain:DropdownItem>
-                                <ute:Tag elem="span" text="option1" />
-                            </utmain:DropdownItem>
-                            <utmain:DropdownItem>
-                                <ute:Tag elem="span" text="option2" />
+                        <utmain:Dropdown class="nrgBilling-dltl-reason-select"
+                                         content="{oExtExtReasons>/results}"
+                                         selectedKey="{oExtExtReasons>/selectedKey}"
+                                         select="._onExtReasonSelect">
+                            <utmain:DropdownItem key="{oExtExtReasons>ReasonCode}">
+                                <ute:Tag elem="span" text="{oExtExtReasons>Reason}" />
                             </utmain:DropdownItem>
                         </utmain:Dropdown>
                     </ute:Tag>
                 </ute:Tag>
-                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-m">
-                    <ute:Tag class="nrgBilling-dltm-price" text="$75.44"/>
-                    <ute:Tag class="nrgBilling-dltm-dplbl" text="{comp-i18n-billing>nrgBilling-dpp-DownPmtAmt}"/>
-                </ute:Tag>
-                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-r">
-                    <utmain:Button class="nrgBilling-dltr-btn" text="{comp-i18n-billing>nrgBilling-dpp-PmtOptions}"/>
-                    <ute:Tag class="nrgBilling-dltr-dueDate" text="{comp-i18n-billing>nrgBilling-dpp-DueDate} 10/30/2014"/>
-                </ute:Tag>
+                <!--<ute:Tag class="nrgBilling-dPmtPln-lftArea-top-m"/>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-r"/>-->
             </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-hdr">
@@ -406,9 +400,24 @@ Additional installments will be due with the following 5 subsequent invoices."/>
                     </ute:Tag>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-newdate">
-                    <ute:Tag elem="span" class=""
+                    <ute:Tag elem="span" class="nrgBilling-dlcn-lbl"
                         text="{comp-i18n-billing>nrgBilling-dpp-ExtNewDate}"/>
                     <ute:DatePicker id="nrgBilling-dpp-ExtNewDate-id"/>
+                </ute:Tag>
+                <ute:Tag visible="{parts:['oExtExtensions>OpenItems/DownPayAuth'], formatter:'._postiveXFormatter'}"
+                         class="nrgBilling-dPmtPln-lftArea-ctnt-newdate">
+                    <ute:Tag class="nrgBilling-dlcn-mgn">
+                        <ute:Tag elem="span" class="nrgBilling-dlcn-lbl"
+                            text="{comp-i18n-billing>nrgBilling-dpp-dwnPayAmt}"/>
+                        <ute:Textfield class="nrgBilling-dlbd-install-Num" fieldType="Underlined" width="50px"
+                                           editable="true"
+                                           value="test"/>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlcn-mgn">
+                        <ute:Tag elem="span" class="nrgBilling-dlcn-lbl"
+                            text="{comp-i18n-billing>nrgBilling-dpp-dwnPayDueDate}"/>
+                        <ute:DatePicker id="nrgBilling-dpp-dwnPayDueDate-id"/>
+                    </ute:Tag>
                 </ute:Tag>
             </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm">
