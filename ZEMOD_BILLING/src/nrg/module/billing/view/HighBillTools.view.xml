@@ -8,48 +8,47 @@
     <u:Tag class="nrgToolsEmpty nrgAppMain-toolsContent nrgAppMain-toolsContent-full">
         <u:Tag class="nrgHighBill" >
             <u:Tag class="nrgHighBill-ttl" text="{comp-i18n-billing>nrgHighBill-ttl}" />
-            <u:Tag class="nrgHighBill-btnTag nrgHighBill-top" >
-                <u:Button
+            <u:Tag class="nrgHighBill-btnTag" >
+                <u:Button buttonType="SpecialNav" width="220px" enabled="true"
+                    text="{comp-i18n-billing>nrgHighBillHomeEnergy}"
+                    class="nrgHighBill-btn"
+                    press=".onHomeEnergy">
+                </u:Button>
+                <u:Button buttonType="SpecialNav" width="220px" enabled="true"
+                    text="{comp-i18n-billing>nrgHighBillWeekly}"
+                    class="nrgHighBill-btn"
+                    press=".onWeekly">
+                </u:Button>
+                <u:Button buttonType="SpecialNav" width="220px" enabled="true"
+                    text="{comp-i18n-billing>nrgHighBillProject}"
+                    class="nrgHighBill-btn"
+                    press=".onProjectBill">
+                </u:Button>
+                <u:Button buttonType="SpecialNav" width="220px" enabled="true"
+                    text="{comp-i18n-billing>nrgHighBillSmartMeter}"
+                    class="nrgHighBill-btn"
+                    press=".onSmartMeter">
+                </u:Button>
+<!--                <u:Button
+                    text="{comp-i18n-billing>nrgHighBillRhs}"
+                    class=" nrgHighBill-btn"
+                    press=".onRHS">
+                </u:Button>-->
+                <u:Button buttonType="SpecialNav" width="220px" enabled="true"
+                    text="{comp-i18n-billing>nrgHighBillEnergyEff}"
+                    class="nrgHighBill-btn"
+                    press=".onEngergyEff">
+                </u:Button>
+                <u:Button buttonType="SpecialNav" width="220px" enabled="true"
+                    text="{comp-i18n-billing>nrgHighBillChangeCmp}"
+                    class="nrgHighBill-btn"
+                    press=".onChangeCampaign">
+                </u:Button>
+                <u:Button buttonType="SpecialNav" width="220px" enabled="true"
                     class="nrgHighBill-btn"
                     text="{comp-i18n-billing>nrgHighBillMeterTest}"
                     press=".onMeterTest">
                 </u:Button>
-                <u:Button
-                    text="{comp-i18n-billing>nrgHighBillHomeEnergy}"
-                    class="nrgHighBill-top nrgHighBill-btn"
-                    press=".onHomeEnergy">
-                </u:Button>
-                <u:Button
-                    text="{comp-i18n-billing>nrgHighBillWeekly}"
-                    class="nrgHighBill-top nrgHighBill-btn"
-                    press=".onWeekly">
-                </u:Button>
-                <u:Button
-                    text="{comp-i18n-billing>nrgHighBillProject}"
-                    class="nrgHighBill-top nrgHighBill-btn"
-                    press=".onProjectBill">
-                </u:Button>
-                <u:Button
-                    text="{comp-i18n-billing>nrgHighBillSmartMeter}"
-                    class="nrgHighBill-top nrgHighBill-btn"
-                    press=".onSmartMeter">
-                </u:Button>
-                <u:Button
-                    text="{comp-i18n-billing>nrgHighBillRhs}"
-                    class="nrgHighBill-top nrgHighBill-btn"
-                    press=".onRHS">
-                </u:Button>
-                <u:Button
-                    text="{comp-i18n-billing>nrgHighBillEnergyEff}"
-                    class="nrgHighBill-top nrgHighBill-btn"
-                    press=".onEngergyEff">
-                </u:Button>
-                <u:Button
-                    text="{comp-i18n-billing>nrgHighBillChangeCmp}"
-                    class="nrgHighBill-top nrgHighBill-btn"
-                    press=".onChangeCampaign">
-                </u:Button>
-
             </u:Tag>
         </u:Tag>
     </u:Tag>
