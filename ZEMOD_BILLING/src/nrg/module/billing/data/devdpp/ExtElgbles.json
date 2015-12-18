@@ -11,7 +11,7 @@
         "EligibleYes":true,
         "ExtReason":"",
         "ReasonCode":"",
-        "ExtActive":false,
+        "ExtActive":true,
         "ExtReasonYes":false,
         "ExtensionSet":{
           "__deferred":{

@@ -45,6 +45,7 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppStepOneSelectedData');
 
             //Model for Ext Function (EXT Step I)
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtEligible');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtExtensions');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtExtReasons');
 
@@ -134,6 +135,22 @@ sap.ui.define(
             return !bIndicator;
         };
 
+        Controller.prototype._formatShowChangeExt = function (sDwnPay, bExtActive) {
+            if (sDwnPay === 'X' || sDwnPay === 'x') {
+                if (bExtActive) { return true; } else { return false; }
+            } else {
+                return false;
+            }
+        };
+
+        Controller.prototype._formatShowChangDwnPmt = function (sDwnPay, bExtActive) {
+            if (sDwnPay === 'X' || sDwnPay === 'x') {
+                if (!bExtActive) { return true; } else { return false; }
+            } else {
+                return false;
+            }
+        };
+
         Controller.prototype._isOdd = function (iIndex) {
             if (iIndex % 2 === 0) {
                 return false;
@@ -202,6 +219,17 @@ sap.ui.define(
 
         Controller.prototype._onExtOverrideClick = function () {
             this._selectScrn('EXTGrant');
+        };
+
+        Controller.prototype._onDppExtChangeClick = function () {
+            //Show Ext Edit Screen
+            var oExtElgble = this.getView().getModel('oExtEligible');
+
+            oExtElgble.setProperty('/ExtActive', false);
+        };
+
+        Controller.prototype._onDppExtConfirmClick = function () {
+            //Send the Extension request out.
         };
 
         Controller.prototype._onReasonSelect = function () {
@@ -307,9 +335,9 @@ sap.ui.define(
                 filters : aFilters,
                 success : function (oData) {
                     if (oData.results[0]) {
-                        this.getView().getModel('oDppEligible').setData(oData.results[0]);
+                        this.getView().getModel('oExtEligible').setData(oData.results[0]);
 
-                        if (this.getView().getModel('oDppEligible').getProperty('/EligibleYes')) {
+                        if (this.getView().getModel('oExtEligible').getProperty('/EligibleYes')) {
                             this._selectScrn('EXTGrant');
                         } else {
                             this._selectScrn('EXTDenied');

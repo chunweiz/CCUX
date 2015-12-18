@@ -356,8 +356,11 @@ Additional installments will be due with the following 5 subsequent invoices."/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
-                    <ute:Tag class="nrgBilling-dltl-step" text="{comp-i18n-billing>nrgBilling-dpp-ExtGranted}"/>
-                    <ute:Tag class="nrgBilling-dltl-reason">
+                    <ute:Tag class="nrgBilling-dltl-step" text="{comp-i18n-billing>nrgBilling-dpp-ExtDisplay}"
+                             visible="{oExtEligible>/ExtActive}"/>
+                    <ute:Tag class="nrgBilling-dltl-step" text="{comp-i18n-billing>nrgBilling-dpp-ExtGranted}"
+                             visible="{parts:['oExtEligible>/ExtActive'], formatter:'._reverseBooleanFormatter'}"/>
+                    <ute:Tag class="nrgBilling-dltl-reason" visible="{parts:['oExtEligible>/ExtActive'], formatter:'._reverseBooleanFormatter'}">
                         <ute:Tag class="nrgBilling-dltl-reason-lbl" text="{comp-i18n-billing>nrgBilling-dpp-ReasonGrant}"/>
                         <utmain:Dropdown class="nrgBilling-dltl-reason-select"
                                          content="{oExtExtReasons>/results}"
@@ -399,13 +402,13 @@ Additional installments will be due with the following 5 subsequent invoices."/>
                         </ute:Tag>
                     </ute:Tag>
                 </ute:Tag>
-                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-newdate">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-newdate" visible="{parts:['oExtEligible>/ExtActive'], formatter:'._reverseBooleanFormatter'}">
                     <ute:Tag elem="span" class="nrgBilling-dlcn-lbl"
                         text="{comp-i18n-billing>nrgBilling-dpp-ExtNewDate}"/>
                     <ute:DatePicker id="nrgBilling-dpp-ExtNewDate-id"/>
                 </ute:Tag>
-                <ute:Tag visible="{parts:['oExtExtensions>OpenItems/DownPayAuth'], formatter:'._postiveXFormatter'}"
-                         class="nrgBilling-dPmtPln-lftArea-ctnt-newdate">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-newdate"
+                         visible="{parts:['oExtExtensions>/results/0/DownPayAuth', 'oExtEligible>/ExtActive'], formatter:'._formatShowChangDwnPmt'}">
                     <ute:Tag class="nrgBilling-dlcn-mgn">
                         <ute:Tag elem="span" class="nrgBilling-dlcn-lbl"
                             text="{comp-i18n-billing>nrgBilling-dpp-dwnPayAmt}"/>
@@ -421,12 +424,23 @@ Additional installments will be due with the following 5 subsequent invoices."/>
                 </ute:Tag>
             </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm">
-                <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox" visible="{parts:['oExtEligible>/ExtActive'], formatter:'._reverseBooleanFormatter'}">
                     <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox-icon"><ute:Tag text="{comp-i18n-billing>nrgBilling-dpp-info-i}"/></ute:Tag>
                     <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox-txt" text="Customer still owes: "/>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-btn-left">
-                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOk}"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOk}"
+                                   visible="{oExtEligible>/ExtActive}"
+                                   press="._onDppDeniedOkClick"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnCfirm}"
+                                   visible="{parts:['oExtEligible>/ExtActive'], formatter:'._reverseBooleanFormatter'}"
+                                   press="._onDppExtConfirmClick"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnCncl}"
+                                   visible="{parts:['oExtEligible>/ExtActive'], formatter:'._reverseBooleanFormatter'}"
+                                   press="._onDppDeniedOkClick"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnChangeExt}"
+                                   visible="{parts:['oExtExtensions>/results/0/DownPayAuth', 'oExtEligible>/ExtActive'], formatter:'._formatShowChangeExt'}"
+                                   press="._onDppExtChangeClick"/>
                 </ute:Tag>
             </ute:Tag>
         </ute:Tag>
