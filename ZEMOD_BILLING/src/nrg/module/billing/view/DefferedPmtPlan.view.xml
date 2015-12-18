@@ -420,7 +420,7 @@ Additional installments will be due with the following 5 subsequent invoices."/>
                             text="{comp-i18n-billing>nrgBilling-dpp-dwnPayAmt}"/>
                         <ute:Textfield class="nrgBilling-dlbd-install-Num" fieldType="Underlined" width="50px"
                                            editable="true"
-                                           value="test"/>
+                                           value="{oExtExtensions>/results/0/iDwnPay}"/>
                     </ute:Tag>
                     <ute:Tag class="nrgBilling-dlcn-mgn">
                         <ute:Tag elem="span" class="nrgBilling-dlcn-lbl"

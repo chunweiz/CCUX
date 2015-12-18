@@ -48,6 +48,7 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtEligible');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtExtensions');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtExtReasons');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtPostRequest');
 
 
             this._initScrnControl();
@@ -83,7 +84,6 @@ sap.ui.define(
             if (aSplitHash[1] === 'defferedpaymentplan') {
                 this._isDppElgble();
             } else if (aSplitHash[1] === 'defferedpaymentext') {
-                //this._selectScrn('EXTGrant');
                 this._isExtElgble();
             }
 
@@ -219,6 +219,7 @@ sap.ui.define(
 
         Controller.prototype._onExtOverrideClick = function () {
             this._selectScrn('EXTGrant');
+            this._bOverRide = true;
         };
 
         Controller.prototype._onDppExtChangeClick = function () {
@@ -235,6 +236,10 @@ sap.ui.define(
 
         Controller.prototype._onReasonSelect = function () {
             //this.getView().getModel('oDppReasons').setData(oData);
+        };
+
+        Controller.prototype._onExtReasonSelect = function (oEvent){
+            this._extReason = oEvent.mParameters.Reason;
         };
 
         Controller.prototype._onSelectAllCheck = function (oEvent) {
@@ -491,6 +496,7 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oExtExtensions').setData(oData);
+                        this.getView().getModel('oExtExtensions').setProperty('/results/0/iDwnPay', 0);
                         extDate = this._formatInvoiceDate(oData.results[0].OpenItems.DefferalDate.getDate(), oData.results[0].OpenItems.DefferalDate.getMonth() + 1, oData.results[0].OpenItems.DefferalDate.getFullYear());
                         this.getView().byId('nrgBilling-dpp-ExtNewDate-id').setDefaultDate(extDate);
                     }
@@ -503,6 +509,60 @@ sap.ui.define(
             if (oODataSvc) {
                 oODataSvc.read(sPath, oParameters);
             }
+        };
+
+        Controller.prototype._postExtRequest = function () {
+            var oODataSvc = this.getView().getModel('oDataSvc'),
+                oPost = this.getView().getModel('oExtPostRequest'),
+                oExt = this.getView().getModel('oExtExtensions'),
+                oEligble = this.getView().getModel('oExtEligible'),
+                oReason = this.getView().getModel('oExtExtReasons'),
+                oDwnPayDate = new Date(this.getView().byId('nrgBilling-dpp-dwnPayDueDate').getValue()),
+                sPath,
+                oParameters;
+
+            oPost.setProperty('/ContractAccountNumber', this._caNum);
+            oPost.setProperty('/PartnerID', oExt.getProperty('/results/0/PartnerID'));
+            oPost.setProperty('/DefDtNew', oExt.getProperty('/results/0/OpenItems/DefferalDate'));
+            oPost.setProperty('/DefDtOld', null);
+            oPost.setProperty('/Message', '');
+            oPost.setProperty('/Error', '');
+            oPost.setProperty('/SelectedData', '');
+            if (this._bOverRide) {
+                oPost.setProperty('/OverRide', 'X');
+            } else {
+                oPost.setProperty('/OverRide', '');
+            }
+            oPost.setProperty('/DwnPay', oExt.getProperty('/results/0/iDwnPay'));
+            oPost.setProperty('/DwnPayDate', oDwnPayDate);
+            oPost.setProperty('/ExtReason', oReason.getProperty());
+            oPost.setProperty('/ExtReason', this._extReason);
+            oPost.setProperty('/ExtActive': false);
+            oPost.setProperty('/ChgOpt': false);
+
+            sPath = '/ExtConfs';
+
+            oParameters = {
+                merge: false,
+                success : function (oData) {
+                    ute.ui.main.Popup.Alert({
+                        title: 'Extension',
+                        message: 'Extension request success'
+                    });
+                    this._selectScrn('EXTGrant');
+                }.bind(this),
+                error: function (oError) {
+                    ute.ui.main.Popup.Alert({
+                        title: 'Extension',
+                        message: 'Extension request failed'
+                    });
+                }.bind(this)
+            };
+
+            if (oODataSvc) {
+                oODataSvc.update(sPath, oPost.oData, oParameters);
+            }
+
         };
 
         return Controller;
