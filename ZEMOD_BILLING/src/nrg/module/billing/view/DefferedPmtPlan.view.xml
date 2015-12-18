@@ -376,6 +376,12 @@ Additional installments will be due with the following 5 subsequent invoices."/>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-r"/>-->
             </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-dueAmt">
+                    <ute:Tag elem="span" class="nrgBilling-dlcd-lbl" text="{comp-i18n-billing>nrgBilling-dpp-CurAmtDue}"/>
+                    <ute:Tag elem="span" class="nrgBilling-dlcd-val"
+                             text="{path: 'oExtExtensions>/results/0/OpenItems/CurrAmtDue', type: 'nrg.base.type.Price',
+                                    formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                </ute:Tag>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-hdr">
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k2" text="{comp-i18n-billing>nrgBilling-dpp-Description}"/>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k3" text="{comp-i18n-billing>nrgBilling-dpp-Amt}"/>
@@ -460,16 +466,22 @@ Additional installments will be due with the following 5 subsequent invoices."/>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2" text="{comp-i18n-billing>nrgBilling-dpp-Amt}"/>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="{comp-i18n-billing>nrgBilling-dpp-DueDte}"/>
                 </ute:Tag>
-                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
-                    <ute:Tag class="nrgBilling-dlct-odd">
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j1" text="ABC"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2" text="$7.50"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="10/30/2014"/>
-                    </ute:Tag>
-                    <ute:Tag class="nrgBilling-dlct-evn">
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j1" text="DEF"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2" text="$158.18"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="10/30/2014"/>
+                <ute:Tag content="{oExtExtensions>/results}" class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
+                    <ute:Tag>
+                        <ute:Tag class="nrgBilling-dlct-odd"
+                                 visible="{parts:['oExtExtensions>OpenItems/ItemNumber'], formatter:'._isOdd'}">
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j1" text="{oExtExtensions>OpenItems/Description}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2" text="{path: 'oExtExtensions>OpenItems/Amount', type: 'nrg.base.type.Price',
+                                            formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="{parts:['oExtExtensions>OpenItems/DueDate'], formatter:'._formatDate'}"/>
+                        </ute:Tag>
+                        <ute:Tag class="nrgBilling-dlct-evn"
+                                 visible="{parts:['oExtExtensions>OpenItems/ItemNumber'], formatter:'._isEven'}">
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j1" text="{oExtExtensions>OpenItems/Description}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2" text="{path: 'oExtExtensions>OpenItems/Amount', type: 'nrg.base.type.Price',
+                                            formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="{parts:['oExtExtensions>OpenItems/DueDate'], formatter:'._formatDate'}"/>
+                        </ute:Tag>
                     </ute:Tag>
                 </ute:Tag>
             </ute:Tag>

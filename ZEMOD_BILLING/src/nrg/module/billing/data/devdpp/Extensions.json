@@ -23,7 +23,7 @@
         "ExtActive":false,
         "Override":"",
         "InitialDate":null,
-        "DownPayAuth":"X",
+        "DownPayAuth":"",
         "CurrAmtDue":"0.0000",
         "ChgOpt":false,
         "PendDwnPay":false,

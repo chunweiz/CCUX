@@ -114,7 +114,7 @@ sap.ui.define(
                 this._retrExtReasons();
                 this._retrExtensions();
             } else if (sSelectedScrn === 'EXTDenied') {
-
+                this._retrExtensions();
             } else {
                 return;
             }
@@ -230,6 +230,7 @@ sap.ui.define(
 
         Controller.prototype._onDppExtConfirmClick = function () {
             //Send the Extension request out.
+            this._postExtRequest();
         };
 
         Controller.prototype._onReasonSelect = function () {
