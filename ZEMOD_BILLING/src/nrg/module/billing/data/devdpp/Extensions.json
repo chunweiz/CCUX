@@ -12,10 +12,10 @@
             "type":"ZE_CCUX_DPP_EXT_SRV.ExtOpenItems"
           },
           "ItemNumber":1,
-          "Description":"",
+          "Description":"TEST",
           "Amount":"0.0000",
-          "DueDate":null,
-          "DefferalDate":null,
+          "DueDate":"\/Date(1450764001000+0000)\/",
+          "DefferalDate":"\/Date(1450764001000+0000)\/",
           "DisplayOnlyRow":false
         },
         "ContractAccountNumber":"100738",
@@ -49,10 +49,10 @@
             "type":"ZE_CCUX_DPP_EXT_SRV.ExtOpenItems"
           },
           "ItemNumber":2,
-          "Description":"",
-          "Amount":"0.0000",
-          "DueDate":null,
-          "DefferalDate":null,
+          "Description":"TEST2",
+          "Amount":"30.0000",
+          "DueDate":"\/Date(1450764001000+0000)\/",
+          "DefferalDate":"\/Date(1450764001000+0000)\/",
           "DisplayOnlyRow":false
         },
         "ContractAccountNumber":"100738",
@@ -61,7 +61,7 @@
         "Override":"",
         "InitialDate":null,
         "DownPayAuth":"",
-        "CurrAmtDue":"0.0000",
+        "CurrAmtDue":"20.0000",
         "ChgOpt":false,
         "PendDwnPay":false,
         "ExtElgble":{

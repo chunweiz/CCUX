@@ -6,10 +6,12 @@ sap.ui.define(
         'jquery.sap.global',
         'nrg/base/type/Price',
         'sap/ui/core/routing/HashChanger',
-        "sap/ui/model/json/JSONModel"
+        "sap/ui/model/json/JSONModel",
+        'sap/ui/model/Filter',
+        'sap/ui/model/FilterOperator'
     ],
 
-    function (CoreController, jQuery, price, HashChanger, JSONModel) {
+    function (CoreController, jQuery, price, HashChanger, JSONModel, Filter, FilterOperator) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.billing.view.DefferedPmtPlan');
@@ -128,6 +130,10 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._reverseBooleanFormatter = function (bIndicator) {
+            return !bIndicator;
+        };
+
         Controller.prototype._isOdd = function (iIndex) {
             if (iIndex % 2 === 0) {
                 return false;
@@ -161,6 +167,20 @@ sap.ui.define(
             if (month < 10) {month = '0' + month; }
             // Format the startDate
             return month + '/' + day + '/' + year;
+        };
+
+        Controller.prototype._createSearchFilterObject = function (aFilterIds, aFilterValues, sFilterOperator) {
+            var aFilters = [],
+                iCount;
+            if (!sFilterOperator) {
+                sFilterOperator = FilterOperator.EQ;
+            }
+            if (aFilterIds !== undefined) {
+                for (iCount = 0; iCount < aFilterIds.length; iCount = iCount + 1) {
+                    aFilters.push(new Filter(aFilterIds[iCount], FilterOperator.EQ, aFilterValues[iCount], ""));
+                }
+            }
+            return aFilters;
         };
 
         /****************************************************************************************************************/
@@ -273,16 +293,23 @@ sap.ui.define(
         Controller.prototype._isExtElgble = function () {
             var oODataSvc = this.getView().getModel('oDataSvc'),
                 oParameters,
-                sPath;
+                sPath,
+                aFilters,
+                aFilterValues,
+                aFilterIds;
 
-            sPath = '/ExtElgbles(ContractAccountNumber=\'' + this._caNum + '\',ExtActive=false)';
+            aFilterIds = ["ContractAccountNumber"];
+            aFilterValues = [this._caNum];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            sPath = '/ExtElgbles';  //(ContractAccountNumber=\'' + this._caNum + '\',ExtActive=false)';
 
             oParameters = {
+                filters : aFilters,
                 success : function (oData) {
-                    if (oData) {
-                        this.getView().getModel('oDppEligible').setData(oData);
+                    if (oData.results[0]) {
+                        this.getView().getModel('oDppEligible').setData(oData.results[0]);
 
-                        if (oData.EligibleYes) {
+                        if (this.getView().getModel('oDppEligible').getProperty('/EligibleYes')) {
                             this._selectScrn('EXTGrant');
                         } else {
                             this._selectScrn('EXTDenied');
@@ -419,11 +446,19 @@ sap.ui.define(
                 oParameters,
                 sPath,
                 i,
-                extDate;
+                extDate,
+                aFilters,
+                aFilterValues,
+                aFilterIds;
 
-            sPath = '/ExtElgbles(ContractAccountNumber=\'' + this._caNum + '\',ExtActive=false)/ExtensionSet';
+            aFilterIds = ["ContractAccountNumber"];
+            aFilterValues = [this._caNum];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+
+            sPath = '/Extensions';//(ContractAccountNumber=\'' + this._caNum + '\',ExtActive=false)/ExtensionSet';
 
             oParameters = {
+                filters: aFilters,
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oExtExtensions').setData(oData);
