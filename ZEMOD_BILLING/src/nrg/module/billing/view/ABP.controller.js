@@ -56,23 +56,24 @@ sap.ui.define(
 
         Controller.prototype._retrieveTableInfo = function (sCoNumber, fnCallback) {
             var sPath = '/AvgAddS',
-                aFilters = [];
-                aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNumber}));
-
-            var oModel = this.getView().getModel('oDataAvgSvc'),
+                aFilters = [],
+                oModel = this.getView().getModel('oDataAvgSvc'),
                 oHistoryModel = this.getView().getModel('oAmountHistory'),
                 aHistoryData = [],
                 fTotalAmount,
-                oParameters;
-
+                oParameters,
+                i,
+                dataEntry,
+                fullPeriod;
+            aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNumber}));
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
                     if (oData.results) {
-                        for (var i = 0; i < oData.results.length; i++) {
+                        for (i = 0; i < oData.results.length; i = i + 1) {
                             if (oData.results[i].Period !== "Total") {
-                                var dataEntry = {};
-                                var fullPeriod = oData.results[i].Period;
+                                dataEntry = {};
+                                fullPeriod = oData.results[i].Period;
                                 dataEntry = oData.results[i];
                                 dataEntry.Period = dataEntry.Period.substr(0, 2) + '/' + dataEntry.Period.substr(6, 4);
                                 dataEntry.FullPeriod = fullPeriod;
@@ -89,9 +90,9 @@ sap.ui.define(
                         oHistoryModel.setProperty('/totalAmount', fTotalAmount);
                         oHistoryModel.setProperty('/estAmount', "$" + parseFloat(oData.results[0].Estimate).toFixed(2));
 
-                        if (fnCallback) fnCallback();
-                    } else {
-
+                        if (fnCallback) {
+                            fnCallback();
+                        }
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -106,29 +107,29 @@ sap.ui.define(
 
         Controller.prototype._retrieveGraphInfo = function (sCoNumber, fnCallback) {
             var sPath = '/AvgUsgS',
-                aFilters = [];
-                aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNumber}));
-
-            var oModel = this.getView().getModel('oDataAvgSvc'),
+                aFilters = [],
+                oModel = this.getView().getModel('oDataAvgSvc'),
                 oGraphModel = this.getView().getModel('oUsageGraph'),
                 aGraphData = [],
-                oParameters;
-
+                oParameters,
+                i,
+                dataEntry;
+            aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNumber}));
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
                     if (oData.results) {
-                        for (var i = 0; i < oData.results.length; i++) {
-                            var dataEntry = {};
+                        for (i = 0; i < oData.results.length; i = i + 1) {
+                            dataEntry = {};
                             dataEntry.usageDate = oData.results[i].Period;
-                            dataEntry.usage = parseInt(oData.results[i].Consumption);
+                            dataEntry.usage = parseInt(oData.results[i].Consumption, 10);
                             aGraphData.push(dataEntry);
                         }
                         oGraphModel.setProperty('/data', aGraphData);
 
-                        if (fnCallback) fnCallback();
-                    } else {
-
+                        if (fnCallback) {
+                            fnCallback();
+                        }
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -158,11 +159,15 @@ sap.ui.define(
                         oEligibilityModel.setProperty('/Activated', false);
                         oEligibilityModel.setProperty('/NonActivated', true);
                     }
-                    if (fnCallback) fnCallback();
+                    if (fnCallback) {
+                        fnCallback();
+                    }
                 }.bind(this),
                 error: function (oError) {
                     oEligibilityModel.setProperty('/ABPElig', 'N');
-                    if (fnCallback) fnCallback();
+                    if (fnCallback) {
+                        fnCallback();
+                    }
                 }.bind(this)
             };
 
@@ -179,13 +184,15 @@ sap.ui.define(
                 bDoneRetrTable = false,
                 bDoneRetrGraph = false,
                 bDoneRetrEligibility = false,
-                checkRetrTableGraphComplete;
+                checkRetrTableGraphComplete,
+                checkDoneRetrEligibility,
+                retrTimeout;
 
             if (this._coNum) {
                 // Retrieve the eligibility for ABP
-                this._retrieveABPEligibility(this._coNum, function () {bDoneRetrEligibility = true;});
+                this._retrieveABPEligibility(this._coNum, function () {bDoneRetrEligibility = true; });
 
-                var checkDoneRetrEligibility = setInterval (function () {
+                checkDoneRetrEligibility = setInterval(function () {
                     if (bDoneRetrEligibility) {
                         // Display the loading indicator
                         this._OwnerComponent.getCcuxApp().setOccupied(true);
@@ -220,11 +227,11 @@ sap.ui.define(
                                 this._ABPPopupControl.close();
                             } else {
                                 // Retrieve the data for table
-                                this._retrieveTableInfo(this._coNum, function () {bDoneRetrTable = true;});
+                                this._retrieveTableInfo(this._coNum, function () {bDoneRetrTable = true; });
                                 // Retrieve the data for graph
-                                this._retrieveGraphInfo(this._coNum, function () {bDoneRetrGraph = true;});
+                                this._retrieveGraphInfo(this._coNum, function () {bDoneRetrGraph = true; });
 
-                                checkRetrTableGraphComplete = setInterval (function () {
+                                checkRetrTableGraphComplete = setInterval(function () {
                                     if (bDoneRetrTable && bDoneRetrGraph) {
                                         // Dismiss the loading indicator
                                         this._OwnerComponent.getCcuxApp().setOccupied(false);
@@ -237,7 +244,7 @@ sap.ui.define(
                                             var graphContainer = this.getView().byId('nrgBilling-avgBillingPopup-usage-graph');
                                             this.graphControl = new AverageBillDetailsChart("chart", {width: 700, height: 250, usageTickSize: 200});
                                             this.graphControl.placeAt(graphContainer);
-                                            this._ABPPopupControl.$().offset({top: ($(window).height() - this._ABPPopupControl.getDomRef().offsetHeight - 250) / 2 });
+                                            this._ABPPopupControl.$().offset({top: (jQuery(window).height() - this._ABPPopupControl.getDomRef().offsetHeight - 250) / 2 });
                                         }
                                         this.graphControl.setDataModel(this.getView().getModel('oUsageGraph'));
 
@@ -264,7 +271,7 @@ sap.ui.define(
                 }.bind(this), 100);
 
                 // Timeout function. If after 30 seconds still cannot done with retrieving data, then raise error message.
-                var retrTimeout = setTimeout(function(){
+                retrTimeout = setTimeout(function () {
                     ute.ui.main.Popup.Alert({
                         title: 'Network service failed',
                         message: 'We cannot retrieve your data. Please try again later.'
@@ -293,13 +300,17 @@ sap.ui.define(
             var oModel = this.getView().getModel('oDataAvgSvc'),
                 oHistoryModel = this.getView().getModel('oAmountHistory'),
                 oPayload = {},
-                mParameters;
+                mParameters,
+                i,
+                periodParameterName,
+                basisParameterName,
+                adjustParameterName;
 
             oPayload.Contract = this._coNum;
-            for (var i = 0; i < oHistoryModel.oData.length; i++) {
-                var periodParameterName = 'Prd' + this._pad(i+1);
-                var basisParameterName = 'Bbs' + this._pad(i+1);
-                var adjustParameterName = 'Amt' + this._pad(i+1);
+            for (i = 0; i < oHistoryModel.oData.length; i = i + 1) {
+                periodParameterName = 'Prd' + this._pad(i + 1);
+                basisParameterName = 'Bbs' + this._pad(i + 1);
+                adjustParameterName = 'Amt' + this._pad(i + 1);
 
                 oPayload[periodParameterName] = oHistoryModel.oData[i].FullPeriod;
                 oPayload[basisParameterName] = oHistoryModel.oData[i].Basis;
@@ -413,7 +424,7 @@ sap.ui.define(
 
         Controller.prototype.onSelected = function (oEvent) {
             var oCheckbox = oEvent.getSource(),
-                sYear = this._aYearList[parseInt(oCheckbox.getId().replace(this.getView().getId() + '--' + 'nrgBilling-avgBillingPopup-graphControlChkbox-', ''))].toString(),
+                sYear = this._aYearList[parseInt(oCheckbox.getId().replace(this.getView().getId() + '--' + 'nrgBilling-avgBillingPopup-graphControlChkbox-', ''), 10)].toString(),
                 bHide = oCheckbox.getChecked(),
                 oChart = this.graphControl;
 
@@ -423,18 +434,21 @@ sap.ui.define(
         };
 
         Controller.prototype._renderGraphCrontrolBtn = function () {
-            var oGraphModel = this.getView().getModel('oUsageGraph');
+            var oGraphModel = this.getView().getModel('oUsageGraph'),
+                i,
+                j,
+                parts;
 
             if (oGraphModel.oData.data.length) {
-                for (var i = 0; i < oGraphModel.oData.data.length; i++) {
-                    var parts = oGraphModel.oData.data[i].usageDate.split("/");
+                for (i = 0; i < oGraphModel.oData.data.length; i = i + 1) {
+                    parts = oGraphModel.oData.data[i].usageDate.split("/");
                     if (this._aYearList.indexOf(parts[2]) < 0) {
                         this._aYearList.push(parts[2]);
                     }
                 }
             }
 
-            for (var j = 0; j < this._aYearList.length; j++) {
+            for (j = 0; j < this._aYearList.length; j = j + 1) {
                 this.getView().byId("nrgBilling-avgBillingPopup-graphControlBtn-" + j).setVisible(true);
                 this.getView().byId("nrgBilling-avgBillingPopup-graphControlText-" + j).setText(this._aYearList[j]).addStyleClass("usageChartLegend-label-" + this._aGraphClors[j]);
             }

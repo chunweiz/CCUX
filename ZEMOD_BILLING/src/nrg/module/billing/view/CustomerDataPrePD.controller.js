@@ -6,7 +6,7 @@ sap.ui.define(
         'jquery.sap.global',
         'sap/ui/core/mvc/Controller',
         'sap/ui/model/json/JSONModel',
-        'nrg/module/quickpay/view/QuickPayControl',
+        'nrg/module/quickpay/view/QuickPayControl'
     ],
 
     function (jQuery, Controller, JSONModel, QuickPayControl) {

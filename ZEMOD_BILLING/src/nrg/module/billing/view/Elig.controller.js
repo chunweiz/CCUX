@@ -62,7 +62,7 @@ sap.ui.define(
                 success : function (oData) {
 
                     // Parse the oData
-                    for (i = 0; i < oData.results.length; i++) {
+                    for (i = 0; i < oData.results.length; i = i + 1) {
 
                         // Handle ABP & RBB cases
                         if (oData.results[i].EligKey !== 'EXTN') {
@@ -77,7 +77,7 @@ sap.ui.define(
                             oData.results[i].Uncheck = !oData.results[i].Mark;
                             delete oData.results[i].Mark;
 
-                            if (oData.results[i].Val1 === '' && oData.results[i].Val1 === '') {
+                            if ((oData.results[i].Val1 === '')) {
                                 parsedData[oData.results[i].Category].Summary = {};
                                 parsedData[oData.results[i].Category].Summary.visible = true;
                                 parsedData[oData.results[i].Category].Summary.Check = oData.results[i].Check;
@@ -86,9 +86,7 @@ sap.ui.define(
                             } else {
                                 parsedData[oData.results[i].Category].Data.push(oData.results[i]);
                             }
-                        }
-                        // Handle EXTN case
-                        else {
+                        } else { // Handle EXTN case
                             if (!parsedData.EXTN) {
                                 parsedData.EXTN = {};
                                 parsedData.EXTN.Title = "EXTENSION";
@@ -108,10 +106,14 @@ sap.ui.define(
 
                     oEligCriteriaModel.setData(parsedData);
 
-                    if (fnCallback) fnCallback();
+                    if (fnCallback) {
+                        fnCallback();
+                    }
                 }.bind(this),
                 error: function (oError) {
-                    if (fnCallback) fnCallback();
+                    if (fnCallback) {
+                        fnCallback();
+                    }
                 }.bind(this)
             };
 
@@ -123,14 +125,15 @@ sap.ui.define(
         /*-------------------------------------------------- Initial Check --------------------------------------------------*/
 
         Controller.prototype._initialCheck = function () {
-            var bRetrEligCtrTableComplete = false;
+            var bRetrEligCtrTableComplete = false,
+                checkDoneEligCtrTable;
 
             // Display the loading indicator
             this._OwnerComponent.getCcuxApp().setOccupied(true);
             // Retrieve eligibility criteria table
-            this._retrieveEligCrtTable(this.eligType, function() {bRetrEligCtrTableComplete = true; });
+            this._retrieveEligCrtTable(this.eligType, function () {bRetrEligCtrTableComplete = true; });
 
-            var checkDoneEligCtrTable = setInterval (function () {
+            checkDoneEligCtrTable = setInterval(function () {
                 if (bRetrEligCtrTableComplete) {
                     // Insert data to popup
 
