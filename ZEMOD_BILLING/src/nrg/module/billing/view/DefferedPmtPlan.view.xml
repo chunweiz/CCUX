@@ -379,7 +379,7 @@ Additional installments will be due with the following 5 subsequent invoices."/>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-dueAmt">
                     <ute:Tag elem="span" class="nrgBilling-dlcd-lbl" text="{comp-i18n-billing>nrgBilling-dpp-CurAmtDue}"/>
                     <ute:Tag elem="span" class="nrgBilling-dlcd-val"
-                             text="{path: 'oExtExtensions>/results/0/OpenItems/CurrAmtDue', type: 'nrg.base.type.Price',
+                             text="{path: 'oExtExtensions>/results/0/CurrAmtDue', type: 'nrg.base.type.Price',
                                     formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-hdr">

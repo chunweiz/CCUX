@@ -238,7 +238,7 @@ sap.ui.define(
             //this.getView().getModel('oDppReasons').setData(oData);
         };
 
-        Controller.prototype._onExtReasonSelect = function (oEvent){
+        Controller.prototype._onExtReasonSelect = function (oEvent) {
             this._extReason = oEvent.mParameters.Reason;
         };
 
@@ -517,7 +517,7 @@ sap.ui.define(
                 oExt = this.getView().getModel('oExtExtensions'),
                 oEligble = this.getView().getModel('oExtEligible'),
                 oReason = this.getView().getModel('oExtExtReasons'),
-                oDwnPayDate = new Date(this.getView().byId('nrgBilling-dpp-dwnPayDueDate').getValue()),
+                sDwnPayDate = this.getView().byId('nrgBilling-dpp-dwnPayDueDate-id').getValue(),
                 sPath,
                 oParameters;
 
@@ -534,11 +534,15 @@ sap.ui.define(
                 oPost.setProperty('/OverRide', '');
             }
             oPost.setProperty('/DwnPay', oExt.getProperty('/results/0/iDwnPay'));
-            oPost.setProperty('/DwnPayDate', oDwnPayDate);
+            if (sDwnPayDate) {
+                oPost.setProperty('/DwnPayDate', new Date(sDwnPayDate));
+            } else {
+                oPost.setProperty('/DwnPayDate', null);
+            }
             oPost.setProperty('/ExtReason', oReason.getProperty());
             oPost.setProperty('/ExtReason', this._extReason);
-            oPost.setProperty('/ExtActive': false);
-            oPost.setProperty('/ChgOpt': false);
+            oPost.setProperty('/ExtActive', false);
+            oPost.setProperty('/ChgOpt', false);
 
             sPath = '/ExtConfs';
 
@@ -560,7 +564,7 @@ sap.ui.define(
             };
 
             if (oODataSvc) {
-                oODataSvc.update(sPath, oPost.oData, oParameters);
+                oODataSvc.create(sPath, oPost.oData, oParameters);
             }
 
         };
