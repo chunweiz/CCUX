@@ -90,7 +90,7 @@
                     </ute:Tag>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-zeroDown">
-                    <utmain:CheckBox class="nrgBilling-dlbz-chk"
+                    <utmain:Checkbox class="nrgBilling-dlbz-chk"
                                      enabled="{parts:['oDppSetUps>/results/0/ZeroDwPayAuth'],
                                                formatter:'._postiveXFormatter'}"
                                      checked="{oDppStepOnePost>/ZeroDwPay}"/>

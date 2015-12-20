@@ -109,8 +109,9 @@ sap.ui.define(
                 oRouter = this.getOwnerComponent().getRouter(),
                 oRetrDone = false;
 
+            oRouter.navTo('billing.DefferedPmtExt', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
             // Display the loading indicator
-            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            /*this.getOwnerComponent().getCcuxApp().setOccupied(true);
             // Retrieve Notification
             this._retrieveEligibility(function () {oRetrDone = true;});
             // Check retrieval done
@@ -132,7 +133,7 @@ sap.ui.define(
                         });
                     }
                 }
-            }.bind(this), 100); 
+            }.bind(this), 100); */
         };
 
         return Controller;
