@@ -44,6 +44,10 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppStepOnePost');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppStepOneSelectedData');
 
+            //Model for DppConf (DPP Step II)
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppConfs');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppConfsChecked');
+
             //Model for Ext Function (EXT Step I)
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtEligible');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtExtensions');
@@ -105,7 +109,7 @@ sap.ui.define(
                 this._retrDppSetUp();
                 this._retrDppReason();
             } else if (sSelectedScrn === 'StepTwo') {
-
+                this._retrDPPConf();
             } else if (sSelectedScrn === 'StepThree') {
 
             } else if (sSelectedScrn === 'DPPDenied') {
@@ -257,6 +261,47 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._onDppConfAllCheck = function (oEvent) {
+            var oDppConfs = this.getView().getModel('oDppConfs'),
+                i;
+
+            if (oEvent.mParameters.checked) {
+                for (i = 0; i < oDppConfs.getData().results.length; i = i + 1) {
+                    oDppConfs.setProperty('/results/' + i + '/Checked', true);
+                }
+            } else {
+                for (i = 0; i < oDppConfs.getData().results.length; i = i + 1) {
+                    oDppConfs.setProperty('/results/' + i + '/Checked', false);
+                }
+            }
+        };
+
+        Controller.prototype._onDistributeDiffClick = function (oEvent) {
+            var oDppConfs = this.getView().getModel('oDppConfs'),
+                i,
+                iSelSum = 0,
+                iSelNum;
+
+            for (i = 0; i < oDppConfs.getData().results.length; i = i + 1) {
+                if (oDppConfs.getProperty('/results/' + i + '/Checked')) {
+                    iSelSum = iSelSum + oDppConfs.getProperty('/results/' + i + 'ConfirmdItems/mount');
+                    iSelNum = i + 1;
+                }
+            }
+
+            for (i = 0; i < oDppConfs.getData().results.length; i = i + 1) {
+                if (oDppConfs.getProperty('/results/' + i + '/Checked')) {
+                    oDppConfs.setProperty('/results/' + i + 'ConfirmdItems/mount', parseFloat(iSelSum) / parseFloat(iSelNum));
+                }
+            }
+
+            for (i = 0; i < oDppConfs.getData().results.length; i = i + 1) {
+                oDppConfs.setProperty('/results/' + i + '/Checked', false);
+            }
+            oDppConfs.setProperty('/AllChecked', false);
+
+        };
+
         Controller.prototype._onOneItemCheck = function (oEvent) {
             if (!oEvent.mParameters.checked) {
                 this.getView().getModel('oDppSetUps').setProperty('/results/bSelectedAll', false);
@@ -272,13 +317,13 @@ sap.ui.define(
             oSetUpsPost.setProperty('/InstlmntNo', oSetUps.getProperty('/results/0/InstlmntNo'));
             for (i = 0; i < oSetUps.getData().results.length; i = i + 1) {
                 if (oSetUps.getProperty('/results/' + i + '/OpenItems/bSelected')) {
-                    aSelectedInd.push({Ind: oSetUps.getProperty('/results/' + i + '/OpenItems/ItemNumber')});
+                    aSelectedInd.push({IND: oSetUps.getProperty('/results/' + i + '/OpenItems/ItemNumber')});
                 }
             }
             oSetUpsPost.setProperty('/SelectedIndices', aSelectedInd);
-            this.getView().getModel('oDppStepOneSelectedData').setProperty('/SelectedData', oSetUpsPost.getProperty('/SelectedIndices'));
+            this.getView().getModel('oDppStepOneSelectedData').setProperty('/SELECTEDDATA', oSetUpsPost.getProperty('/SelectedIndices'));
 
-            this._retrDPPConf();    //Initiating step 2
+            this._selectScrn('StepTwo');//Initiating step 2
         };
 
         Controller.prototype._handleExtDateChange = function (oEvent) {
@@ -295,6 +340,41 @@ sap.ui.define(
         /****************************************************************************************************************/
         //OData Call
         /****************************************************************************************************************/
+        Controller.prototype._retrDPPConf = function () {
+            var oODataSvc = this.getView().getModel('oDataSvc'),
+                oParameters,
+                sPath,
+                aFilters,
+                aFilterValues,
+                aFilterIds,
+                i;
+
+            aFilterIds = ["ContractAccountNumber", "SelectedData", "InstlmntNo", "ZeroDwnPay"];
+            aFilterValues = [this._caNum, this.getView().getModel('oDppStepOneSelectedData').getJSON(), this.getView().getModel('oDppStepOnePost').getProperty('/InstlmntNo'), this.getView().getModel('oDppStepOnePost').getProperty('/ZeroDwPay')];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+
+            sPath = '/DPPConfs';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oDppConfs').setData(oData);
+                        for (i = 0; i < oData.results.length; i = i + 1) {
+                            this.getView().getModel('oDppConfs').setProperty('/results/' + i + '/Checked', false);
+                        }
+                        this.getView().getModel('oDppConfs').setProperty('/results/AllChecked', false);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oODataSvc) {
+                oODataSvc.read(sPath, oParameters);
+            }
+        };
+
         Controller.prototype._isDppElgble = function () {
             var oODataSvc = this.getView().getModel('oDataSvc'),
                 oParameters,
