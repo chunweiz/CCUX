@@ -71,6 +71,7 @@ sap.ui.define(
             oRm.write('</div>');
         };
         CustomRenderer._renderDescription = function (oRm, oCustomControl) {
+            var aDescriptionList = [];
             if (oCustomControl.getDescription()) {
                 oRm.write('<div');
                 oRm.addClass('nrgCJTChannel-desc');
@@ -87,7 +88,17 @@ sap.ui.define(
                 oRm.writeClasses();
                 oRm.write('>');
                 if (oCustomControl.getDescription()) {
-                    oRm.writeEscaped(oCustomControl.getDescription());
+                    aDescriptionList = oCustomControl.getDescription().split("~");
+                    if ((aDescriptionList) && (aDescriptionList.length > 0)) {
+                        oRm.write('<ul>');
+                        aDescriptionList.forEach(function (sDesc) {
+                            oRm.write('<li>');
+                            oRm.writeEscaped(sDesc);
+                            oRm.write('</li>');
+
+                        });
+                        oRm.write('</ul>');
+                    }
                 }
                 oRm.write('</div>');
                 oRm.write('</div>');
