@@ -44,6 +44,9 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppStepOnePost');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppStepOneSelectedData');
 
+            //Model for DppConf (DPP Step II)
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppConfs');
+
             //Model for Ext Function (EXT Step I)
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtEligible');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtExtensions');
@@ -105,7 +108,7 @@ sap.ui.define(
                 this._retrDppSetUp();
                 this._retrDppReason();
             } else if (sSelectedScrn === 'StepTwo') {
-
+                this._retrDPPConf();
             } else if (sSelectedScrn === 'StepThree') {
 
             } else if (sSelectedScrn === 'DPPDenied') {
@@ -272,13 +275,13 @@ sap.ui.define(
             oSetUpsPost.setProperty('/InstlmntNo', oSetUps.getProperty('/results/0/InstlmntNo'));
             for (i = 0; i < oSetUps.getData().results.length; i = i + 1) {
                 if (oSetUps.getProperty('/results/' + i + '/OpenItems/bSelected')) {
-                    aSelectedInd.push({Ind: oSetUps.getProperty('/results/' + i + '/OpenItems/ItemNumber')});
+                    aSelectedInd.push({IND: oSetUps.getProperty('/results/' + i + '/OpenItems/ItemNumber')});
                 }
             }
             oSetUpsPost.setProperty('/SelectedIndices', aSelectedInd);
-            this.getView().getModel('oDppStepOneSelectedData').setProperty('/SelectedData', oSetUpsPost.getProperty('/SelectedIndices'));
+            this.getView().getModel('oDppStepOneSelectedData').setProperty('/SELECTEDDATA', oSetUpsPost.getProperty('/SelectedIndices'));
 
-            this._retrDPPConf();    //Initiating step 2
+            this._selectScrn('StepTwo');//Initiating step 2
         };
 
         Controller.prototype._handleExtDateChange = function (oEvent) {
@@ -295,6 +298,36 @@ sap.ui.define(
         /****************************************************************************************************************/
         //OData Call
         /****************************************************************************************************************/
+        Controller.prototype._retrDPPConf = function () {
+            var oODataSvc = this.getView().getModel('oDataSvc'),
+                oParameters,
+                sPath,
+                aFilters,
+                aFilterValues,
+                aFilterIds;
+
+            aFilterIds = ["ContractAccountNumber", "SelectedData", "InstlmntNo", "ZeroDwnPay"];
+            aFilterValues = [this._caNum, this.getView().getModel('oDppStepOneSelectedData').getJSON(), this.getView().getModel('oDppStepOnePost').getProperty('/InstlmntNo'), this.getView().getModel('oDppStepOnePost').getProperty('/ZeroDwPay')];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+
+            sPath = '/DPPConfs';
+
+             oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                       this.getView().getModel('oDppConfs').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oODataSvc) {
+                oODataSvc.read(sPath, oParameters);
+            }
+        };
+
         Controller.prototype._isDppElgble = function () {
             var oODataSvc = this.getView().getModel('oDataSvc'),
                 oParameters,
