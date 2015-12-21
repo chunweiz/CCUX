@@ -17,8 +17,7 @@
         <ute:Tag class="nrgAppMain-footerContentWrap">
             <ute:Tag class="nrgAppMain-footerContent">
                 <ute:Tag class="nrgAppMain-footerFlexbox">
-
-
+                    
                     <!-- Notifications (BP and CA Level)-->
                     <ute:Tag class="nrgAppFtrDetails-notification">
                         <!-- Default Empty View -->
@@ -40,24 +39,19 @@
                                 width="100%"
                                 horizontal="true"
                                 vertical="true">
-
                                 <ua:FooterNotificationCenter
                                     id="nrgAppFtrDetails-notification-notificationCenter"
                                     content="{oFooterNotification>/}">
-
                                     <ua:FooterNotificationItem
                                         link="true"
                                         design="Error"
                                         text="{oFooterNotification>MessageText}"
                                         linkPress=".onNotiLinkPress"/>
-                                            
-
                                 </ua:FooterNotificationCenter>
-
                             </sm:ScrollContainer>
                         </ute:Tag>
                     </ute:Tag>
-
+                    
                     <!-- RHS (BP and CA Level)-->
                     <ute:Tag id="nrgAppFtrDetails-rhs" class="nrgAppFtrDetails-rhs">
                         <!-- Default Empty View -->
@@ -80,9 +74,10 @@
                             <sm:ScrollContainer
                                 id="nrgAppFtrDetails-rhs-scrollContent"
                                 class="nrgAppFtrDetails-rhs-content"
-                                height="230px"
+                                height="235px"
                                 width="100%"
                                 vertical="true">
+                                <!-- Current Item -->
                                 <ute:Tag id="nrgAppFtrDetails-rhs-currentItem" class="nrgAppFtrDetails-rhs-item">
                                     <utmain:Button
                                         class="nrgAppFtrDetails-rhs-itemTitle-btn" design="None" press="_onRHS">
@@ -90,9 +85,23 @@
                                             class="nrgAppFtrDetails-rhs-currentTitle nrgAppFtrDetails-rhs-itemTitle"
                                             text="{comp-i18n-app>nrgAppFtrDetails-rhs-CURRENT_TITLE}" />
                                     </utmain:Button>
+                                    <utmain:Dropdown id="nrgAppFtrDetails-rhs-currentDropdown" class="nrgAppFtrDetails-rhs-itemContent"
+                                        visible="{oFooterRHS>/DropdownVis}"
+                                        content="{oFooterRHS>/Current}"
+                                        selectedKey="{oFooterRHS>/DropdownDefautKey}"
+                                        select="._onRhsCurrenItemSelect">
+                                        <utmain:DropdownItem class="nrgAppFtrDetails-rhs-currentDropdownItem"
+                                            key="{oFooterRHS>key}">
+                                            <ute:Tag 
+                                                elem="span"
+                                                text="{oFooterRHS>ProdName}"/>
+                                        </utmain:DropdownItem>
+                                    </utmain:Dropdown>
                                     <ute:Tag id="nrgAppFtrDetails-rhs-currentItemContent" class="nrgAppFtrDetails-rhs-itemContent"
-                                        text="" />
+                                        visible="{oFooterRHS>/NoneVis}"
+                                        text="None" />
                                 </ute:Tag>
+                                <!-- Pending Item -->
                                 <ute:Tag class="nrgAppFtrDetails-rhs-item">
                                     <utmain:Button
                                         class="nrgAppFtrDetails-rhs-itemTitle-btn" design="None" press="_onRHS">
@@ -102,6 +111,7 @@
                                     <ute:Tag id="nrgAppFtrDetails-rhs-pendingItemContent" class="nrgAppFtrDetails-rhs-itemContent"
                                         text="" />
                                 </ute:Tag>
+                                <!-- History Item -->
                                 <ute:Tag class="nrgAppFtrDetails-rhs-item">
                                     <utmain:Button
                                         class="nrgAppFtrDetails-rhs-itemTitle-btn" design="None" press="_onRHS">
@@ -118,14 +128,12 @@
                     <!-- Campaign Section -->
                     <ute:Tag class="nrgAppFtrDetails-campaignSection">
                         <!-- Default Empty View -->
-                        <!-- <ute:Tag class="nrgAppFtrDetails-eligibleOffers-emptySection" visible="{oFooterCampaign>/EmptyAvailable}"> -->
                         <ute:Tag id="nrgAppFtrDetails-eligibleOffers-emptySection" class="nrgAppFtrDetails-eligibleOffers-emptySection" visible="true">
                             <ute:TextView
                                 text="{comp-i18n-app>nrgAppFtrDetails-empty-camp-TITLE}"
                                 class="nrgAppFtrDetails-noAvailableData"/>
                         </ute:Tag>
                         <!-- Eligible Offers (CO Level)-->
-                        <!-- <ute:Tag class="nrgAppFtrDetails-eligibleOffers" visible="{oFooterCampaign>/CampaignAvailable}"> -->
                         <ute:Tag id="nrgAppFtrDetails-eligibleOffers" class="nrgAppFtrDetails-eligibleOffers" visible="true">
                             <!-- Title -->
                             <ute:Tag elem="span" class="nrgAppFtrDetails-eligibleOffers-title"
@@ -144,12 +152,9 @@
                                         design="None"
                                         class="nrgAppFtrDetails-eligibleOffers-itemContentBtn"
                                         press="_onCampaignItemClick">
-                                        <!-- <ute:Tag id="nrgAppFtrDetails-eligibleOffers-currentItem"
-                                            class="nrgAppFtrDetails-eligibleOffers-itemContent currentItem"
-                                            text="{oFooterCampaign>/Current/OfferTitle}" /> -->
                                         <ute:Tag id="nrgAppFtrDetails-eligibleOffers-currentItem"
                                             class="nrgAppFtrDetails-eligibleOffers-itemContent currentItem"
-                                            text="" />
+                                            text="{oFooterCampaign>/Current/OfferTitle}" />
                                     </utmain:Button>
                                     <!-- Time Period -->
                                     <ute:Tag class="nrgAppFtrDetails-eligibleOffers-timePeriod">
@@ -157,29 +162,21 @@
                                         <ute:Tag class="nrgAppFtrDetails-eligibleOffers-startDate">
                                             <ute:Tag class="nrgAppFtrDetails-eligibleOffers-startDateTitle"
                                                 text="{comp-i18n-app>nrgAppFtrDetails-eligibleOffers-START_DATE_TITLE}" />
-                                            <!-- <ute:Tag class="nrgAppFtrDetails-eligibleOffers-startDateValue"
+                                            <ute:Tag class="nrgAppFtrDetails-eligibleOffers-startDateValue"
                                                 text="{
                                                     parts:['oFooterCampaign>/Current/StartDate'],
                                                     formatter:'._formatCampaignTime'
-                                                }"/> -->
-                                            <ute:Tag
-                                                id="nrgAppFtrDetails-eligibleOffers-startDateValue"
-                                                class="nrgAppFtrDetails-eligibleOffers-startDateValue"
-                                                text=""/>
+                                                }"/>
                                         </ute:Tag>
                                         <!-- End Date -->
                                         <ute:Tag class="nrgAppFtrDetails-eligibleOffers-endDate">
                                             <ute:Tag class="nrgAppFtrDetails-eligibleOffers-endDateTitle"
                                                 text="{comp-i18n-app>nrgAppFtrDetails-eligibleOffers-END_DATE_TITLE}" />
-                                            <!-- <ute:Tag class="nrgAppFtrDetails-eligibleOffers-endDateValue"
+                                            <ute:Tag class="nrgAppFtrDetails-eligibleOffers-endDateValue"
                                                 text="{
                                                     parts:['oFooterCampaign>/Current/EndDate'],
                                                     formatter:'._formatCampaignTime'
-                                                }"/> -->
-                                            <ute:Tag
-                                                id="nrgAppFtrDetails-eligibleOffers-endDateValue"
-                                                class="nrgAppFtrDetails-eligibleOffers-endDateValue"
-                                                text=""/>
+                                                }"/>
                                         </ute:Tag>
                                     </ute:Tag>
                                 </ute:Tag>
@@ -190,12 +187,9 @@
                                         design="None"
                                         class="nrgAppFtrDetails-eligibleOffers-itemContentBtn"
                                         press="_onCampaignItemClick">
-                                        <!-- <ute:Tag id="nrgAppFtrDetails-eligibleOffers-pendingItem"
-                                            class="nrgAppFtrDetails-eligibleOffers-itemContent pendingItem"
-                                            text="{oFooterCampaign>/Pending/OfferTitle}" /> -->
                                         <ute:Tag id="nrgAppFtrDetails-eligibleOffers-pendingItem"
                                             class="nrgAppFtrDetails-eligibleOffers-itemContent pendingItem"
-                                            text="" />
+                                            text="{oFooterCampaign>/Pending/OfferTitle}" />
                                     </utmain:Button>
                                 </ute:Tag>
                                 <ute:Tag class="nrgAppFtrDetails-eligibleOffers-item">
@@ -205,41 +199,29 @@
                                         design="None"
                                         class="nrgAppFtrDetails-eligibleOffers-itemContentBtn"
                                         press="_onCampaignItemClick">
-                                        <!-- <ute:Tag id="nrgAppFtrDetails-eligibleOffers-historyItem"
-                                            class="nrgAppFtrDetails-eligibleOffers-itemContent historyItem"
-                                            text="{oFooterCampaign>/History/OfferTitle}"
-                                            press="_onCampaignItemClick"/> -->
                                         <ute:Tag id="nrgAppFtrDetails-eligibleOffers-historyItem"
                                             class="nrgAppFtrDetails-eligibleOffers-itemContent historyItem"
-                                            text=""
-                                            />
+                                            text="{oFooterCampaign>/History/OfferTitle}"/>
                                     </utmain:Button>
                                 </ute:Tag>
                             </sm:ScrollContainer>
                         </ute:Tag>
                         <!-- Campaign Button -->
-                        <!-- <ute:Tag class="nrgAppFtrDetails-campaignButton" visible="{oFooterCampaign>/CampaignAvailable}"> -->
                         <ute:Tag id="nrgAppFtrDetails-campaignButton" class="nrgAppFtrDetails-campaignButton" visible="true">
                             <utmain:Button
                                 design="None"
                                 class="nrgAppFtrDetails-campaignButton-item"
                                 press="_onCampaignBtnClick">
-                               <!--  <ute:Tag class="nrgAppFtrDetails-campaignButton-itemTitle"
-                                    text="{oFooterCampaign>/CampaignButtonText}" /> -->
-                                <ute:Tag
-                                    id="nrgAppFtrDetails-campaignButton-itemTitle"
-                                    class="nrgAppFtrDetails-campaignButton-itemTitle"
-                                    text="" />
+                                <ute:Tag class="nrgAppFtrDetails-campaignButton-itemTitle"
+                                    text="{oFooterCampaign>/CampaignButtonText}" />
                                 <ute:Tag class="nrgAppFtrDetails-campaignButton-itemText"
                                     text="{comp-i18n-app>nrgAppFtrDetails-campaignButton_TEXT}" />
                             </utmain:Button>
                         </ute:Tag>
                     </ute:Tag>
 
-
                 </ute:Tag>
             </ute:Tag>
         </ute:Tag>
     </ute:Tag>
-
 </mvc:View>

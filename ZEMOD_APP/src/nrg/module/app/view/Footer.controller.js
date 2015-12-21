@@ -13,7 +13,11 @@ sap.ui.define(
     function (CoreController, Filter, FilterOperator, NNPPopup) {
         'use strict';
 
-        var Controller = CoreController.extend('nrg.module.app.view.Footer');
+        var Controller = CoreController.extend('nrg.module.app.view.Footer', {
+            constructor: function () {
+                this.bFirstTimeRender = true;
+            }
+        });
 
         /*---------------------------------------------- Controller Life Cycle ----------------------------------------------*/
 
@@ -39,15 +43,16 @@ sap.ui.define(
 
             // Get the routing info
             var oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo();
-            this._bpNum = oRouteInfo.parameters.bpNum;
-            this._caNum = oRouteInfo.parameters.caNum;
-            this._coNum = oRouteInfo.parameters.coNum;
+            this._updateRouting(oRouteInfo.parameters.bpNum, oRouteInfo.parameters.caNum, oRouteInfo.parameters.coNum);
 
             // Subscribe to the update events
-            sap.ui.getCore().getEventBus().subscribe("nrg.module.appFooter", "eUpdateFooter", this.updateFooter, this);
-            sap.ui.getCore().getEventBus().subscribe("nrg.module.appFooter", "eUpdateNotification", this.updateFooterNotification, this);
-            sap.ui.getCore().getEventBus().subscribe("nrg.module.appFooter", "eUpdateRhs", this.updateFooterRhs, this);
-            sap.ui.getCore().getEventBus().subscribe("nrg.module.appFooter", "eUpdateCampaign", this.updateFooterCampaign, this);
+            if (this.bFirstTimeRender) {
+                this.bFirstTimeRender = false;
+                sap.ui.getCore().getEventBus().subscribe("nrg.module.appFooter", "eUpdateFooter", this.updateFooter, this);
+                sap.ui.getCore().getEventBus().subscribe("nrg.module.appFooter", "eUpdateNotification", this.updateFooterNotification, this);
+                sap.ui.getCore().getEventBus().subscribe("nrg.module.appFooter", "eUpdateRhs", this.updateFooterRhs, this);
+                sap.ui.getCore().getEventBus().subscribe("nrg.module.appFooter", "eUpdateCampaign", this.updateFooterCampaign, this);
+            }
         };
 
         Controller.prototype.onAfterRendering = function () {
@@ -81,6 +86,28 @@ sap.ui.define(
                 }.bind(this),
                 error: function (oError) {
                     // Handle error
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._retrieveEligibility = function (fnSuccess, fnFail) {
+            var oRouting = this.getView().getModel('oFooterRouting'),
+                sPath = '/EligCheckS(\'' + oRouting.oData.CoNumber + '\')',
+                oModel = this.getView().getModel('oDataEligSvc'),
+                oEligModel = this.getView().getModel('oEligibility'),
+                oParameters;
+
+            oParameters = {
+                success : function (oData) {
+                    oEligModel.setData(oData);
+                    if (fnSuccess) fnSuccess();
+                }.bind(this),
+                error: function (oError) {
+                    if (fnFail) fnFail();
                 }.bind(this)
             };
 
@@ -133,17 +160,19 @@ sap.ui.define(
             this.updateFooterNotification(channel, event, data);
             this.updateFooterRhs(channel, event, data);
             this.updateFooterCampaign(channel, event, data);
-
-            // data.bpNum data.caNum data.coNum
         };
+
+        /*--------------------------- Notification ---------------------------*/
 
         Controller.prototype.updateFooterNotification = function (channel, event, data) {
             var oModel = this.getView().getModel('oNotiODataSvc'),
-                oNotificationModel = this.getView().getModel('oFooterNotification'),
                 sPath = '/AlertsSet',
                 aFilters = [],
                 oParameters,
                 i;
+
+            // If there's no BP & CA number, then do nothing
+            if (!data.bpNum || !data.caNum) { return; }
             
             // Update footer local routing
             this._updateRouting(data.bpNum, data.caNum, data.coNum);
@@ -156,10 +185,8 @@ sap.ui.define(
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
-                    if (oData.results.length) {
-                        oNotificationModel.setData(oData.results);
-                        this.footerElement.notiEmptySec.setVisible(false);
-                        this.footerElement.notiAlertSec.setVisible(true);
+                    if (oData.results.length) {                        
+                        this.getView().getModel('oFooterNotification').setData(oData.results);
                         this.notificationLinkPressActions = {};
                         for (i = 0; i < oData.results.length; i++) {
                             if (oData.results[i].FilterType === 'M2M') { this.notificationLinkPressActions[oData.results[i].MessageText] = this._onM2mLinkPress.bind(this); }
@@ -168,6 +195,8 @@ sap.ui.define(
                             if (oData.results[i].FilterType === 'SMS') { this.notificationLinkPressActions[oData.results[i].MessageText] = this._onSmsLinkPress.bind(this); }
                             if (oData.results[i].FilterType === 'OAM') { this.notificationLinkPressActions[oData.results[i].MessageText] = this._onOamLinkPress.bind(this); }
                         }
+                        this.footerElement.notiEmptySec.setVisible(false);
+                        this.footerElement.notiAlertSec.setVisible(true);
                     } else {
                         this.footerElement.notiEmptySec.setVisible(true);
                         this.footerElement.notiAlertSec.setVisible(false);
@@ -184,12 +213,259 @@ sap.ui.define(
             }
         };
 
+        /*-------------------------------- RHS -------------------------------*/
+
         Controller.prototype.updateFooterRhs = function (channel, event, data) {
-            console.log('222');
+            var sPath = '/FooterS',
+                aFilters = [],
+                oModel = this.getView().getModel('oRHSODataSvc'),
+                oParameters,
+                bCurrentFlag = false,
+                bPendingFlag = false,
+                bHistoryFlag = false;
+
+            // If there's no BP & CA number, then do nothing
+            if (!data.bpNum || !data.caNum) { return; }
+            
+            // Update footer local routing
+            this._updateRouting(data.bpNum, data.caNum, data.coNum);
+
+            // Set up filters
+            aFilters.push(new Filter({ path: 'BP', operator: FilterOperator.EQ, value1: data.bpNum}));
+            aFilters.push(new Filter({ path: 'CA', operator: FilterOperator.EQ, value1: data.caNum}));
+
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    var oRhsModel = this.getView().getModel('oFooterRHS'),
+                        iCurrentIndex = 0,
+                        aCurrent = [],
+                        dropdownContainer = this.getView().byId("nrgAppFtrDetails-rhs-currentItem"),
+                        i, j,
+                        oTag;
+
+                    if (oData.results.length > 0) {                        
+                        // Get all objects for Current and generate a dropdwon
+                        for (i = 0; i < oData.results.length; i = i + 1) {
+                            if (oData.results[i].Type === 'C') {
+                                bCurrentFlag = true;
+                                oData.results[i].key = iCurrentIndex = iCurrentIndex + 1;
+                                aCurrent.push(oData.results[i]);
+                            }
+                        }
+                        oRhsModel.setProperty('/DropdownVis', bCurrentFlag);
+                        oRhsModel.setProperty('/NoneVis', !bCurrentFlag);
+                        oRhsModel.setProperty('/Current', aCurrent);
+                        oRhsModel.setProperty('/DropdownDefautKey', 1);
+                        
+                        // Listen to click event to handle the UI change when dropdown list is open
+                        this.getView().byId('nrgAppFtrDetails-rhs-currentDropdown').attachBrowserEvent("click", this._onRhsCurrenDropdownClick.bind(this));
+
+                        for (j = 0; j < oData.results.length; j = j + 1) {
+                            // Get first object for Pending
+                            if (oData.results[j].Type === 'P') {
+                                bPendingFlag = true;
+                                this.getView().byId("nrgAppFtrDetails-rhs-pendingItemContent").setText(oData.results[j].ProdName);
+                            }
+                            // Get first object for History
+                            if (oData.results[j].Type === 'H') {
+                                bHistoryFlag = true;
+                                this.getView().byId("nrgAppFtrDetails-rhs-historyItemContent").setText(oData.results[j].ProdName);
+                            }
+                        }
+
+                        if (bCurrentFlag === false) { this.getView().byId("nrgAppFtrDetails-rhs-currentItemContent").setText('None'); }
+                        if (bPendingFlag === false) { this.getView().byId("nrgAppFtrDetails-rhs-pendingItemContent").setText('None'); }
+                        if (bHistoryFlag === false) { this.getView().byId("nrgAppFtrDetails-rhs-historyItemContent").setText('None'); }
+
+                        this.footerElement.rhsEmptySec.setVisible(false);
+                        this.footerElement.rhsProdSec.setVisible(true);
+
+                    } else {
+
+                        if (bCurrentFlag === false) { this.getView().byId("nrgAppFtrDetails-rhs-currentItemContent").setText('None'); }
+                        if (bPendingFlag === false) { this.getView().byId("nrgAppFtrDetails-rhs-pendingItemContent").setText('None'); }
+                        if (bHistoryFlag === false) { this.getView().byId("nrgAppFtrDetails-rhs-historyItemContent").setText('None'); }
+
+                        this.footerElement.rhsEmptySec.setVisible(false);
+                        this.footerElement.rhsProdSec.setVisible(true);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    this.footerElement.rhsEmptySec.setVisible(true);
+                    this.footerElement.rhsProdSec.setVisible(false);
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
         };
 
+        Controller.prototype._onRhsCurrenItemSelect = function (oControlEvent) {
+
+        }.bind(this);
+
+        Controller.prototype._onRhsCurrenDropdownClick = function (oControlEvent) {
+            var rhsSection = $('.nrgAppFtrDetails-rhs');
+            if (rhsSection.find('.uteMDd-picker').height() > 170) {
+                if (rhsSection.hasClass('scrollBarAppear')) {
+                    rhsSection.removeClass('scrollBarAppear');
+                } else {
+                    rhsSection.addClass('scrollBarAppear');
+                }
+            }
+        };
+
+        Controller.prototype._onRHS = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: "ZVASOPTSLN"
+            });
+        };
+
+        /*----------------------------- Campaign -----------------------------*/
+
         Controller.prototype.updateFooterCampaign = function (channel, event, data) {
-            console.log('333');
+            // Update footer local routing
+            this._updateRouting(data.bpNum, data.caNum, data.coNum);
+            // Update contract part
+            this._updateFooterCampaignContract(data.coNum);
+            // Update button part
+            this._updateFooterCampaignButton(data.coNum);
+        };
+
+        Controller.prototype._updateFooterCampaignContract = function (sCoNumber) {
+            var sPath = '/CpgFtrS',
+                aFilters = [],
+                oModel = this.getView().getModel('oCompODataSvc'),
+                oParameters;
+            
+            // If there's no CO number, then do nothing
+            if (!sCoNumber) { return; }
+
+            // Set up filters
+            aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNumber}));
+
+            oParameters = {
+                filters: aFilters,
+                success : function (oData) {
+                    var oCampaignModel = this.getView().getModel('oFooterCampaign'), i;
+                    if (oData.results.length > 0) {
+                        for (i = 0; i < oData.results.length; i = i + 1) {
+                            // Current
+                            if (oData.results[i].Type === 'C') {
+                                oCampaignModel.setProperty('/Current', oData.results[i]);
+                                if (oCampaignModel.oData.Current.OfferTitle !== 'None' && oCampaignModel.oData.Current.OfferTitle !== '') {
+                                    this.getView().byId('nrgAppFtrDetails-eligibleOffers-currentItem').addStyleClass('hasValue');
+                                }
+                            }
+                            // Pending
+                            if (oData.results[i].Type === 'PE') {
+                                oCampaignModel.setProperty('/Pending', oData.results[i]);
+                                if (oCampaignModel.oData.Pending.OfferTitle !== 'None' && oCampaignModel.oData.Pending.OfferTitle !== '') {
+                                    this.getView().byId('nrgAppFtrDetails-eligibleOffers-pendingItem').addStyleClass('hasValue');
+                                }
+                            }
+                            // History
+                            if (oData.results[i].Type === 'H') {
+                                oCampaignModel.setProperty('/History', oData.results[i]);
+                                if (oCampaignModel.oData.History.OfferTitle !== 'None' && oCampaignModel.oData.History.OfferTitle !== '') {
+                                    this.getView().byId('nrgAppFtrDetails-eligibleOffers-historyItem').addStyleClass('hasValue');
+                                }
+                            }
+                        }
+                        this.footerElement.campEmptySec.setVisible(false);
+                        this.footerElement.campOfferSec.setVisible(true);
+                        this.footerElement.campBtnSec.setVisible(true);
+                    } else {
+                        this.footerElement.campEmptySec.setVisible(true);
+                        this.footerElement.campOfferSec.setVisible(false);
+                        this.footerElement.campBtnSec.setVisible(false);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    this.footerElement.campEmptySec.setVisible(true);
+                    this.footerElement.campOfferSec.setVisible(false);
+                    this.footerElement.campBtnSec.setVisible(false);
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._updateFooterCampaignButton = function (sCoNumber) {
+            var sPath = '/ButtonS(\'' + sCoNumber + '\')',
+                oModel = this.getView().getModel('oCompODataSvc'),
+                oParameters;
+
+            // If there's no CO number, then do nothing
+            if (!sCoNumber) { return; }
+
+            oParameters = {
+                success : function (oData) {
+                    var oCampaignModel = this.getView().getModel('oFooterCampaign');
+                    if (oData.Contract) {
+                        if (oData.FirstBill === 'x' || oData.FirstBill === 'X') {
+                            oCampaignModel.setProperty('/CampaignButtonText', 'Eligible offers Available');
+                            oCampaignModel.setProperty('/CampaignFirstBill', true);
+                        } else {
+                            oCampaignModel.setProperty('/CampaignButtonText', 'No Eligible offers Available');
+                            oCampaignModel.setProperty('/CampaignFirstBill', false);
+                        }
+                        oCampaignModel.setProperty('/CampaignButtonType', oData.InitTab);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, oParameters);
+            }
+        };
+
+        Controller.prototype._formatCampaignTime = function (oDate) {
+            if (oDate) {
+                var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern: "MM/yyyy"}),
+                    dateStr = dateFormat.format(new Date(oDate.getTime()));
+                return dateStr;
+            }
+        };
+
+        Controller.prototype._onCampaignItemClick = function (oControlEvent) {
+            var oRouter = this.getOwnerComponent().getRouter(),
+                oRouting = this.getView().getModel('oFooterRouting'),
+                item = oControlEvent.getSource().getDomRef().childNodes[0];
+
+            if ($(item).hasClass('currentItem') && $(item).hasClass('hasValue')) {
+                oRouter.navTo('campaign', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber, typeV: 'C'});
+            }
+
+            if ($(item).hasClass('pendingItem') && $(item).hasClass('hasValue')) {
+                oRouter.navTo('campaign', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber, typeV: 'PE'});
+            }
+
+            if ($(item).hasClass('historyItem') && $(item).hasClass('hasValue')) {
+                oRouter.navTo('campaignhistory', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber});
+            }
+        };
+
+        Controller.prototype._onCampaignBtnClick = function () {
+            var oCampaignModel = this.getView().getModel('oFooterCampaign'),
+                oRouter = this.getOwnerComponent().getRouter(),
+                oRouting = this.getView().getModel('oFooterRouting');
+
+            if (oCampaignModel.getProperty('/CampaignFirstBill')) {
+                oRouter.navTo('campaignoffers', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber, typeV: oCampaignModel.getProperty('/CampaignButtonType')});
+            } else {
+                ute.ui.main.Popup.Alert({
+                    title: 'No First Bill',
+                    message: 'Customer has to completed at least One Month Invoice'
+                });
+            }
         };
 
         /*---------------------------------------------- Footer Alert Methods -----------------------------------------------*/
@@ -197,6 +473,8 @@ sap.ui.define(
         Controller.prototype.onNotiLinkPress = function (oControlEvent, a, b, c) {
             this.notificationLinkPressActions[oControlEvent.getSource().getProperty('text')]();
         };
+
+        /*------------------------------- M2M --------------------------------*/
 
         Controller.prototype._onM2mLinkPress = function (oControlEvent) {
             if (!this.m2mPopup) {
@@ -210,6 +488,58 @@ sap.ui.define(
             // Open the popup
             this.m2mPopup.open();
         };
+
+        Controller.prototype._onM2mAcceptClick = function (oEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager(),
+                oRouter = this.getOwnerComponent().getRouter(),
+                oRouting = this.getView().getModel('oFooterRouting'),
+                sRetrStatus;
+
+            // Display the loading indicator
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            // Retrieve Notification
+            this._retrieveEligibility(function () {sRetrStatus = 'success';}, function () {sRetrStatus = 'fail';} );
+            // Check retrieval done
+            var checkRetrComplete = setInterval (function () {
+                // Succeeded
+                if (sRetrStatus === 'success') {
+                    var oEligibilityModel = this.getView().getModel('oEligibility');
+                    // Dismiss the loading indicator
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    // Upon successfully retrieving the data, stop checking the completion of retrieving data
+                    clearInterval(checkRetrComplete);
+                    // Close popup
+                    this.m2mPopup.close();
+                    // Check active or not
+                    if (!oEligibilityModel.oData.DPPActv) {
+                        // Go to DPP page
+                        oRouter.navTo('billing.DefferedPmtPlan', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber});
+                    } else {
+                        // Go to transaction launcher
+                        oWebUiManager.notifyWebUi('openIndex', {
+                            LINK_ID: "Z_DPP"
+                        });
+                    }
+                }
+                // Failed
+                if (sRetrStatus === 'fail') {
+                    // Dismiss the loading indicator
+                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    // Stop checking the completion of retrieving data
+                    clearInterval(checkRetrComplete);
+                    // Close popup
+                    this.m2mPopup.close();
+                    // Display error message
+                    ute.ui.main.Popup.Alert({ title: 'Retrieve Error', message: 'We cannot retrieve the eligibility data of DPP. Please check the Contract number or network and try again later.'});
+                }
+            }.bind(this), 100); 
+        };
+
+        Controller.prototype._onM2mCloseClick = function (oEvent) {
+            this.m2mPopup.close();
+        };
+
+        /*------------------------------- SMTP -------------------------------*/
 
         Controller.prototype._onSmtpLinkPress = function (oControlEvent) {
             var NNPPopupControl = new NNPPopup(),
@@ -241,18 +571,7 @@ sap.ui.define(
             }.bind(this), 100);
         };
 
-        Controller.prototype._onMailLinkPress = function (oControlEvent) {
-            if (!this.invalidMailingAddrPopup) {
-                this.invalidMailingAddrPopup = ute.ui.main.Popup.create({
-                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.app.view.AlertInvMailAddrPopup", this),
-                    title: 'Invalid Mailing Address'
-                });
-                this.invalidMailingAddrPopup.addStyleClass('nrgApp-invalidMailingAddrPopup');
-                this.getView().addDependent(this.invalidMailingAddrPopup);
-            }
-            // Open the popup
-            this.invalidMailingAddrPopup.open();
-        };
+        /*------------------------------- SMS --------------------------------*/
 
         Controller.prototype._onSmsLinkPress = function (oControlEvent) {
             if (!this.invalidSmsPopup) {
@@ -266,6 +585,12 @@ sap.ui.define(
             // Open the popup
             this.invalidSmsPopup.open();
         };
+
+        Controller.prototype._onInvSmsCloseClick = function (oEvent) {
+            this.invalidSmsPopup.close();
+        };
+
+        /*------------------------------- OAM --------------------------------*/
 
         Controller.prototype._onOamLinkPress = function (oControlEvent) {
             var oNotificationModel = this.getView().getModel('oFooterNotification'),
@@ -289,30 +614,28 @@ sap.ui.define(
             this.oamPopup.open();
         };
 
-        Controller.prototype._onInvMailAddrCloseClick = function (oEvent) {
-            this.invalidMailingAddrPopup.close();
-        };
-
-        Controller.prototype._onInvSmsCloseClick = function (oEvent) {
-            this.invalidSmsPopup.close();
-        };
-
-        Controller.prototype._onM2mCloseClick = function (oEvent) {
-            this.m2mPopup.close();
-        };
-
         Controller.prototype._onOamCloseClick = function (oEvent) {
             this.oamPopup.close();
         };
 
+        /*--------------------- Invalid Mailing Address ----------------------*/
 
+        Controller.prototype._onMailLinkPress = function (oControlEvent) {
+            if (!this.invalidMailingAddrPopup) {
+                this.invalidMailingAddrPopup = ute.ui.main.Popup.create({
+                    content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.app.view.AlertInvMailAddrPopup", this),
+                    title: 'Invalid Mailing Address'
+                });
+                this.invalidMailingAddrPopup.addStyleClass('nrgApp-invalidMailingAddrPopup');
+                this.getView().addDependent(this.invalidMailingAddrPopup);
+            }
+            // Open the popup
+            this.invalidMailingAddrPopup.open();
+        };
 
-
-
-
-
-
-
+        Controller.prototype._onInvMailAddrCloseClick = function (oEvent) {
+            this.invalidMailingAddrPopup.close();
+        };
 
         return Controller;
     }

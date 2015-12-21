@@ -11,9 +11,29 @@
     <ute:Tag class="nrgApp-m2mPopup-content">
         <ute:Tag class="nrgApp-m2mPopup-paragraph"
             text="{comp-i18n-app>nrgApp-m2mPopup-TEXT1}"/>
+        <ute:Tag class="nrgApp-m2mPopup-paragraph"
+            text="{comp-i18n-app>nrgApp-m2mPopup-TEXT2}"/>
+        <ute:Tag class="nrgApp-m2mPopup-paragraph"
+            text="{comp-i18n-app>nrgApp-m2mPopup-TEXT3}"/>
 
         <!-- Footer -->
         <ute:Tag class="nrgApp-m2mPopup-footer">
+            <utmain:Button
+                design="None"
+                class="nrgApp-m2mPopup-footerBtn"
+                press="_onM2mAcceptClick">
+                <ute:Tag
+                    class="nrgApp-m2mPopup-footerBtn-continue"
+                    text="{comp-i18n-app>nrgApp-m2mPopup-footerBtn-ACCEPTED}" />
+            </utmain:Button>
+            <utmain:Button
+                design="None"
+                class="nrgApp-m2mPopup-footerBtn"
+                press="_onM2mDeclineClick">
+                <ute:Tag
+                    class="nrgApp-m2mPopup-footerBtn-continue"
+                    text="{comp-i18n-app>nrgApp-m2mPopup-footerBtn-DECLINED}" />
+            </utmain:Button>
             <utmain:Button
                 design="None"
                 class="nrgApp-m2mPopup-footerBtn"

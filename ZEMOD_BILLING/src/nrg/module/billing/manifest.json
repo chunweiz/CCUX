@@ -74,51 +74,51 @@
             "routes": {
                 "billing.CheckBook": {
                     "pattern": "billing/checkbook/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target":["billing.Checkbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
+                    "target":["billing.Checkbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools", "app.Footer"]
                 },
                 "billing.CheckBookNoCo": {
                     "pattern": "billing/checkbook/bp/{bpNum}/ca/{caNum}",
-                    "target":["billing.Checkbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
+                    "target":["billing.Checkbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools", "app.Footer"]
                 },
                 "billing.PrePayCheckBook": {
                     "pattern": "billing/prepaycheckbook/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target":["billing.PrePayCheckbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
+                    "target":["billing.PrePayCheckbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools", "app.Footer"]
                 },
                 "billing.PrePayCheckBookNoCo": {
                     "pattern": "billing/prepaycheckbook/bp/{bpNum}/ca/{caNum}",
-                    "target":["billing.PrePayCheckbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools"]
+                    "target":["billing.PrePayCheckbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools", "app.Footer"]
                 },
                 "billing.BillingInfo": {
                     "pattern": "billing/billinginfo/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target":["billing.CustomerDataBillingInfo", "dashboard.CustomerDataSummary", "billing.CustomerJourney"]
+                    "target":["billing.CustomerDataBillingInfo", "dashboard.CustomerDataSummary", "billing.CustomerJourney", "app.Footer"]
                 },
                 "billing.BillingInfoNoCo": {
                     "pattern": "billing/billinginfo/bp/{bpNum}/ca/{caNum}",
-                    "target":["billing.CustomerDataBillingInfo", "dashboard.CustomerDataSummary", "billing.CustomerJourney"]
+                    "target":["billing.CustomerDataBillingInfo", "dashboard.CustomerDataSummary", "billing.CustomerJourney", "app.Footer"]
                 },
                 "billing.BillingPrePaid": {
                     "pattern": "billing/billingprepaid/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target":["billing.CustomerDataPrePD", "dashboard.CustomerDataSummary", "billing.CustomerJourney"]
+                    "target":["billing.CustomerDataPrePD", "dashboard.CustomerDataSummary", "billing.CustomerJourney", "app.Footer"]
                 },
                 "billing.BillingPrePaidNoCo": {
                     "pattern": "billing/billingprepaid/bp/{bpNum}/ca/{caNum}",
-                    "target":["billing.CustomerDataPrePD", "dashboard.CustomerDataSummary", "billing.CustomerJourney"]
+                    "target":["billing.CustomerDataPrePD", "dashboard.CustomerDataSummary", "billing.CustomerJourney", "app.Footer"]
                 },
                 "billing.HighBill": {
                     "pattern": "billing/highbill/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target":["billing.HighBill", "dashboard.CustomerDataSummary", "billing.HighBillTools"]
+                    "target":["billing.HighBill", "dashboard.CustomerDataSummary", "billing.HighBillTools", "app.Footer"]
                 },
                 "billing.HighBillNoCo": {
                     "pattern": "billing/highbill/bp/{bpNum}/ca/{caNum}",
-                    "target":["billing.HighBill", "dashboard.CustomerDataSummary", "billing.HighBillTools"]
+                    "target":["billing.HighBill", "dashboard.CustomerDataSummary", "billing.HighBillTools", "app.Footer"]
                 },
                 "billing.DefferedPmtPlan": {
                     "pattern": "billing/defferedpaymentplan/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target":["billing.DefferedPmtPlan", "dashboard.CustomerDataSummary", "billing.DppTools"]
+                    "target":["billing.DefferedPmtPlan", "dashboard.CustomerDataSummary", "billing.DppTools", "app.Footer"]
                 },
                 "billing.DefferedPmtExt": {
                     "pattern": "billing/defferedpaymentext/bp/{bpNum}/ca/{caNum}/co/{coNum}",
-                    "target":["billing.DefferedPmtPlan", "dashboard.CustomerDataSummary", "billing.DppTools"]
+                    "target":["billing.DefferedPmtPlan", "dashboard.CustomerDataSummary", "billing.DppTools", "app.Footer"]
                 }
             },
 
@@ -162,6 +162,10 @@
                 "billing.DppTools": {
                     "viewName": "nrg.module.billing.view.DPPTools",
                     "controlId": "idAppTools"
+                },
+                "app.Footer": {
+                    "viewName": "nrg.module.app.view.Footer",
+                    "controlId": "idAppFooter"
                 }
             }
         }

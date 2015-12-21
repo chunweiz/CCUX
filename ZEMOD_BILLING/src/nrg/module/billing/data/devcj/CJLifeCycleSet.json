@@ -3,12 +3,12 @@
       "results":[
          {
             "__metadata":{
-               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJLifeCycleSet(BP='0002473499',CA='000003040103')",
-               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJLifeCycleSet(BP='0002473499',CA='000003040103')",
+               "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJLifeCycleSet(BP='0007672597',CA='000011608439')",
+               "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJLifeCycleSet(BP='0007672597',CA='000011608439')",
                "type":"ZE_CCUX_CJ_SRV.CJLifeCycle"
             },
-            "BP":"0002473499",
-            "CA":"000003040103",
+            "BP":"0007672597",
+            "CA":"000011608439",
             "Interval1":"14",
             "Interval2":"30",
             "FirstButtonEnabled":false,
@@ -16,7 +16,7 @@
             "EndDate":"\/Date(1449596137000+0000)\/",
             "CJReferralSet":{
                "__deferred":{
-                  "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJLifeCycleSet(BP='0002473499',CA='000003040103')/CJReferralSet"
+                  "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_CJ_SRV/CJLifeCycleSet(BP='0007672597',CA='000011608439')/CJReferralSet"
                }
             }
          }
