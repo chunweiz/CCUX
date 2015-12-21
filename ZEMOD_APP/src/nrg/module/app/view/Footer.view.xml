@@ -4,17 +4,19 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:utmain="ute.ui.main"
     xmlns:ua="ute.ui.app"
+    xmlns:core="sap.ui.core"
     xmlns:sm="sap.m"
     controllerName="nrg.module.app.view.Footer"
     height="100%"
     width="100%"
     displayBlock="true">
 
-    <ute:Tag class="nrgAppMain-footerCaret" id="nrgAppMain-footerWrap">
+    <ute:Tag class="nrgAppMain-footerSection" id="nrgAppMain-footerWrap">
         <!-- Footer Caret -->
         <ute:Tag class="nrgAppMain-footerCaret" id="nrgAppMain-footerCaret"></ute:Tag>
         <!-- Footer Content -->
         <ute:Tag class="nrgAppMain-footerContentWrap">
+            
             <ute:Tag class="nrgAppMain-footerContent">
                 <ute:Tag class="nrgAppMain-footerFlexbox">
                     
@@ -222,6 +224,18 @@
 
                 </ute:Tag>
             </ute:Tag>
+
+            <ute:Tag class="nrgAppMain-footerTool">
+                <!-- Contact Log Full View -->
+                <core:Icon src="sap-icon://nrg-icon/contact-log"
+                    class="nrgAppFtrDetails-tool-icon"
+                    press="onContactLog"/>
+                <!-- Create Inquiry Contact Log -->
+                <core:Icon src="sap-icon://nrg-icon/notes"
+                    class="nrgAppFtrDetails-tool-icon"
+                    press="onCreateLog"/>
+            </ute:Tag>
+
         </ute:Tag>
     </ute:Tag>
 </mvc:View>

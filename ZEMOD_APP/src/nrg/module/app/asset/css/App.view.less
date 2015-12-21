@@ -161,7 +161,7 @@
         height: @maxHeight-toolsPanel;
     }
 
-    & .nrgAppMain-footerCaret {
+    & .nrgAppMain-footerSection {
 
         // when footer is expanded
         &.open {
@@ -214,6 +214,32 @@
 
                 & .nrgAppMain-footerFlexbox {
                     display: flex;
+                }
+            }
+
+            & .nrgAppMain-footerTool {
+                float: right;
+                top: 0;
+                position: absolute;
+                right: 0px;
+                width: 80px;
+                height: 100%;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+
+                & .nrgAppFtrDetails-tool-icon {
+                    width: 100%;
+                    font-size: 35px;
+                    margin-bottom: 30px;
+                    color: @nrgColor-blue-link;
+                    cursor: pointer;
+                
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
                 }
             }
         }
