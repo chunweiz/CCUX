@@ -1344,6 +1344,8 @@ sap.ui.define(
                     clearInterval(checkComplete);
                     // Inform customer journey
                     eventBus.publish("nrg.module.dashoard", "eAfterConfirmed", {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
+                    // Update Footer
+                    oComponent.getCcuxApp().updateFooter(sCurrentBp, sCurrentCa, sCurrentCo);
                 }
             }, 100);
 

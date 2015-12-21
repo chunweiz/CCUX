@@ -448,17 +448,17 @@ sap.ui.define(
             }
         };
 
-        AppFooter.prototype.updateFooterCampaign = function (sBpNumber, sCaNumber, sCoNumber) {
-            this._updateRouting(sBpNumber, sCaNumber, sCoNumber);
-            this._updateFooterCampaignContract(sCoNumber);
-            this._updateFooterCampaignButton(sCoNumber);
-        };
-
         AppFooter.prototype._updateRouting = function (sBpNumber, sCaNumber, sCoNumber) {
             var oRouting = this._oController.getView().getModel('oFooterRouting');
             oRouting.setProperty('/BpNumber', sBpNumber);
             oRouting.setProperty('/CaNumber', sCaNumber);
             oRouting.setProperty('/CoNumber', sCoNumber);
+        };
+
+        AppFooter.prototype.updateFooterCampaign = function (sBpNumber, sCaNumber, sCoNumber) {
+            this._updateRouting(sBpNumber, sCaNumber, sCoNumber);
+            this._updateFooterCampaignContract(sCoNumber);
+            this._updateFooterCampaignButton(sCoNumber);
         };
 
         AppFooter.prototype._updateFooterCampaignContract = function (sCoNumber) {
