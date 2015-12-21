@@ -30,14 +30,14 @@
                         </utmain:Dropdown>
                     </ute:Tag>
                 </ute:Tag>
-                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-m">
+                <!--<ute:Tag class="nrgBilling-dPmtPln-lftArea-top-m">
                     <ute:Tag class="nrgBilling-dltm-price" text="$75.44"/>
                     <ute:Tag class="nrgBilling-dltm-dplbl" text="{comp-i18n-billing>nrgBilling-dpp-DownPmtAmt}"/>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-r">
                     <utmain:Button class="nrgBilling-dltr-btn" text="{comp-i18n-billing>nrgBilling-dpp-PmtOptions}"/>
                     <ute:Tag class="nrgBilling-dltr-dueDate" text="{comp-i18n-billing>nrgBilling-dpp-DueDate} 10/30/2014"/>
-                </ute:Tag>
+                </ute:Tag>-->
             </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-hdr">
@@ -49,7 +49,7 @@
                 <ute:Tag content="{oDppSetUps>/results}" class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
                     <ute:Tag>
                         <ute:Tag class="nrgBilling-dlct-odd"
-                                 visible="{parts:['oDppSetUps>iIndex'], formatter:'._isOdd'}">
+                                 visible="{parts:['oDppSetUps>OpenItems/ItemNumber'], formatter:'._isOdd'}">
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1">
                                 <utmain:Checkbox checked="{oDppSetUps>OpenItems/bSelected}" select="._onOneItemCheck"/></ute:Tag>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h2" text="{oDppSetUps>OpenItems/Description}"/>
@@ -59,7 +59,7 @@
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h4" text="{parts:['oDppSetUps>OpenItems/DueDate'], formatter:'._formatDate'}"/>
                         </ute:Tag>
                         <ute:Tag class="nrgBilling-dlct-evn"
-                                 visible="{parts:['oDppSetUps>iIndex'], formatter:'._isEven'}">
+                                 visible="{parts:['oDppSetUps>OpenItems/ItemNumber'], formatter:'._isEven'}">
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox checked="{oDppSetUps>OpenItems/bSelected}"/></ute:Tag>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h2" text="{oDppSetUps>OpenItems/Description}"/>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h3"
