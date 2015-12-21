@@ -55,9 +55,9 @@
                         </um:button>
                     </u:Tag>
                     <u:Tag class="nrgUsg-Radio">
-                        <um:RadioButton id="idnrgUsgRadioweekly" design="Default" class="nrgUsg-RadioLabel" group="nrgUsg" checked="true" enabled="true"/>
+                        <um:RadioButton id="idnrgUsgRadioweekly" design="Default" class="nrgUsg-RadioLabel" group="nrgUsg" checked="true" enabled="true" select=".onExpandType"/>
                         <um:Label text="Weekly" labelFor="idnrgUsgRadioweekly-intRb" class="nrgUsg-RadioLabel"/>
-                        <um:RadioButton id="idnrgUsgRadiodaily" design="Default" class="nrgUsg-RadioLabel" group="nrgUsg" enabled="true"/>
+                        <um:RadioButton id="idnrgUsgRadiodaily" design="Default" class="nrgUsg-RadioLabel" group="nrgUsg" enabled="true" select=".onExpandType"/>
                         <um:Label text="Daily" labelFor="idnrgUsgRadiodaily-intRb" class="nrgUsg-RadioLabel" />
                     </u:Tag>
                     <um:Dropdown id="idnrgUsgServiceAdd-DropDown"
