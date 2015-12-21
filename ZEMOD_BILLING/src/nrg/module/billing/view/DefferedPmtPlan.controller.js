@@ -46,6 +46,7 @@ sap.ui.define(
 
             //Model for DppConf (DPP Step II)
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppConfs');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppConfsChecked');
 
             //Model for Ext Function (EXT Step I)
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtEligible');
@@ -260,6 +261,47 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._onDppConfAllCheck = function (oEvent) {
+            var oDppConfs = this.getView().getModel('oDppConfs'),
+                i;
+
+            if (oEvent.mParameters.checked) {
+                for (i = 0; i < oDppConfs.getData().results.length; i = i + 1) {
+                    oDppConfs.setProperty('/results/' + i + '/Checked', true);
+                }
+            } else {
+                for (i = 0; i < oDppConfs.getData().results.length; i = i + 1) {
+                    oDppConfs.setProperty('/results/' + i + '/Checked', false);
+                }
+            }
+        };
+
+        Controller.prototype._onDistributeDiffClick = function (oEvent) {
+            var oDppConfs = this.getView().getModel('oDppConfs'),
+                i,
+                iSelSum = 0,
+                iSelNum;
+
+            for (i = 0; i < oDppConfs.getData().results.length; i = i + 1) {
+                if (oDppConfs.getProperty('/results/' + i + '/Checked')) {
+                    iSelSum = iSelSum + oDppConfs.getProperty('/results/' + i + 'ConfirmdItems/mount');
+                    iSelNum = i + 1;
+                }
+            }
+
+            for (i = 0; i < oDppConfs.getData().results.length; i = i + 1) {
+                if (oDppConfs.getProperty('/results/' + i + '/Checked')) {
+                    oDppConfs.setProperty('/results/' + i + 'ConfirmdItems/mount', parseFloat(iSelSum) / parseFloat(iSelNum));
+                }
+            }
+
+            for (i = 0; i < oDppConfs.getData().results.length; i = i + 1) {
+                oDppConfs.setProperty('/results/' + i + '/Checked', false);
+            }
+            oDppConfs.setProperty('/AllChecked', false);
+
+        };
+
         Controller.prototype._onOneItemCheck = function (oEvent) {
             if (!oEvent.mParameters.checked) {
                 this.getView().getModel('oDppSetUps').setProperty('/results/bSelectedAll', false);
@@ -304,7 +346,8 @@ sap.ui.define(
                 sPath,
                 aFilters,
                 aFilterValues,
-                aFilterIds;
+                aFilterIds,
+                i;
 
             aFilterIds = ["ContractAccountNumber", "SelectedData", "InstlmntNo", "ZeroDwnPay"];
             aFilterValues = [this._caNum, this.getView().getModel('oDppStepOneSelectedData').getJSON(), this.getView().getModel('oDppStepOnePost').getProperty('/InstlmntNo'), this.getView().getModel('oDppStepOnePost').getProperty('/ZeroDwPay')];
@@ -312,10 +355,14 @@ sap.ui.define(
 
             sPath = '/DPPConfs';
 
-             oParameters = {
+            oParameters = {
                 success : function (oData) {
                     if (oData) {
-                       this.getView().getModel('oDppConfs').setData(oData);
+                        this.getView().getModel('oDppConfs').setData(oData);
+                        for (i = 0; i < oData.results.length; i = i + 1) {
+                            this.getView().getModel('oDppConfs').setProperty('/results/' + i + '/Checked', false);
+                        }
+                        this.getView().getModel('oDppConfs').setProperty('/results/AllChecked', false);
                     }
                 }.bind(this),
                 error: function (oError) {

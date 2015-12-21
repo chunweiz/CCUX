@@ -111,7 +111,7 @@
             </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-hdr">
-                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox checked="{oDppConfs>/AllChecked}" select="._onDppConfAllCheck"/></ute:Tag>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i2" text="{comp-i18n-billing>nrgBilling-dpp-Amt}"/>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i3" text="{comp-i18n-billing>nrgBilling-dpp-DueDte}"/>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i4" text="{comp-i18n-billing>nrgBilling-dpp-ClearDate}"/>
@@ -122,7 +122,9 @@
                     <ute:Tag>
                         <ute:Tag class="nrgBilling-dlct-odd"
                                  visible="{parts:['oDppConfs>ConfirmdItems/ItemNumber'], formatter:'._isOdd'}">
-                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1">
+                                <utmain:Checkbox checked="{oDppConfs>Checked}" select="._onDppConfAllCheck"/>
+                            </ute:Tag>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i2"
                                      text="{path: 'oDppConfs>ConfirmdItems/Amount', type: 'nrg.base.type.Price',
                                             formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
@@ -135,7 +137,7 @@
                         </ute:Tag>
                         <ute:Tag class="nrgBilling-dlct-evn"
                                  visible="{parts:['oDppConfs>ConfirmdItems/ItemNumber'], formatter:'._isEven'}">
-                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox checked="{oDppConfs>Checked}"/></ute:Tag>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i2"
                                      text="{path: 'oDppConfs>ConfirmdItems/Amount', type: 'nrg.base.type.Price',
                                             formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
@@ -153,10 +155,11 @@
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox">
                     <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox-icon"><ute:Tag text="{comp-i18n-billing>nrgBilling-dpp-info-i}"/></ute:Tag>
                     <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox-txt">
-                        <ute:Tag elem="span" text="{comp-i18n-billing>nrgBilling-dpp-info-first} "/>
-                        <ute:Tag elem="span" text="{oDppConfs>/results/ConfirmdItems/DueDate} "/>
+                        <ute:Tag visible="{oDppStepOnePost>/ZeroDwPay}"
+                                 elem="span" text="{comp-i18n-billing>nrgBilling-dpp-info-first} "/>
+                        <ute:Tag elem="span" text="{parts:['oDppConfs>/results/0/ConfirmdItems/DueDate'], formatter:'._formatDate'}"/>
                         <ute:Tag elem="span" text="{comp-i18n-billing>nrgBilling-dpp-info-second} "/>
-                        <ute:Tag elem="span" text="5 "/>
+                        <ute:Tag elem="span" text="{oDppStepOnePost>/InstlmntNo} "/>
                         <ute:Tag elem="span" text=" {comp-i18n-billing>nrgBilling-dpp-info-third}"/>
 
                     </ute:Tag>
@@ -165,31 +168,39 @@
                     <ute:Tag class="nrgBilling-dlbi-l">
                         <ute:Tag class="nrgBilling-dPmtPln-dlbi-row">
                             <ute:Tag class="nrgBilling-dlbi-lbl" text="{comp-i18n-billing>nrgBilling-dpp-TtlOutstanding}"/>
-                            <ute:Tag class="nrgBilling-dlbi-val" text="$150.87"/>
+                            <ute:Tag class="nrgBilling-dlbi-val"
+                                     text="{path: 'oDppConfs>/results/0/TotOutStd', type: 'nrg.base.type.Price',
+                                            formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
                         </ute:Tag>
                         <ute:Tag class="nrgBilling-dPmtPln-dlbi-row">
                             <ute:Tag class="nrgBilling-dlbi-lbl" text="{comp-i18n-billing>nrgBilling-dpp-DppTtl}"/>
-                            <ute:Tag class="nrgBilling-dlbi-val" text="$150.87"/>
+                            <ute:Tag class="nrgBilling-dlbi-val"
+                                     text="{path: 'oDppConfs>/results/0/DppTot', type: 'nrg.base.type.Price',
+                                            formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
                         </ute:Tag>
                     </ute:Tag>
                     <ute:Tag class="nrgBilling-dlbi-m">
                         <ute:Tag class="nrgBilling-dlbi-l">
                             <ute:Tag class="nrgBilling-dPmtPln-dlbi-row">
                                 <ute:Tag class="nrgBilling-dlbi-lbl" text="{comp-i18n-billing>nrgBilling-dpp-SelTtl}"/>
-                                <ute:Tag class="nrgBilling-dlbi-val" text="$150.87"/>
+                                <ute:Tag class="nrgBilling-dlbi-val"
+                                         text="{path: 'oDppConfs>/results/0/SelTot', type: 'nrg.base.type.Price',
+                                                formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
                             </ute:Tag>
                             <ute:Tag class="nrgBilling-dPmtPln-dlbi-row">
                                 <ute:Tag class="nrgBilling-dlbi-lbl" text="{comp-i18n-billing>nrgBilling-dpp-Diff}"/>
-                                <ute:Tag class="nrgBilling-dlbi-val" text="$00.00"/>
+                                <ute:Tag class="nrgBilling-dlbi-val"
+                                         text="{path: 'oDppConfs>/results/0/DiffTot', type: 'nrg.base.type.Price',
+                                                formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
                             </ute:Tag>
                         </ute:Tag>
                     </ute:Tag>
                     <ute:Tag class="nrgBilling-dlbi-r">
-                        <utmain:Button text="{comp-i18n-billing>nrgBilling-dpp-DisDiff}"/>
+                        <utmain:Button text="{comp-i18n-billing>nrgBilling-dpp-DisDiff}" press="._onDistributeDiffClick"/>
                     </ute:Tag>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-btns">
-                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnBack}"/>
+                    <!--<utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnBack}"/>-->
                     <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnCfirm}"/>
                     <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnCncl}"/>
                 </ute:Tag>
