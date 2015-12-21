@@ -41,6 +41,7 @@ sap.ui.define(
                 oGraph = this.getView().byId('idnrgUsg-Graph-chart'),
                 oGraphNoData = this.getView().byId('idnrgUsg-Graph-NoData'),
                 oNoDataTag = this.getView().byId("idnrgUsgNoData").clone();
+            this._SelectedInfoLines = [];
             that._oGraphModel = new JSONModel();
             that.getOwnerComponent().getCcuxApp().setOccupied(true);
             this._sContract = oRouteInfo.parameters.coNum;
@@ -116,6 +117,18 @@ sap.ui.define(
             }
             return aFilters;
         };
+        /**
+		 * Handler when user toggled between Daily and weekly
+		 *
+		 * @function
+		 * @param {Event} oEvent object
+		 */
+        Controller.prototype.onExpandType = function (oEvent) {
+            var that = this;
+            this._SelectedInfoLines.forEach(function (oCurrent) {
+                that._bindInfoLine(oCurrent);
+            });
+        };
        /**
 		 * Handler when user expanded Info line for each row
 		 *
@@ -126,52 +139,69 @@ sap.ui.define(
 		 */
         Controller.prototype.expandInfoline = function (oEvent) {
             var oCurrentInfoLine = oEvent.getSource().getParent(),
-                oInsideTableTag,
-                oBindingInfo,
+                iIndex,
+                sTemp;
+
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            oCurrentInfoLine.setExpanded(!(oCurrentInfoLine.getExpanded()));
+            iIndex = this._SelectedInfoLines.indexOf(oCurrentInfoLine);
+            if (oCurrentInfoLine.getExpanded()) {
+                sTemp = iIndex < 0 && this._SelectedInfoLines.push(oCurrentInfoLine);
+            } else {
+                sTemp = iIndex > -1 && this._SelectedInfoLines.splice(iIndex, 1);
+            }
+            if (oCurrentInfoLine.getExpanded()) {
+                this._bindInfoLine(oCurrentInfoLine);
+            } else {
+                oCurrentInfoLine.removeStyleClass("nrgUsgTable-InfolineSelected");
+                this.getOwnerComponent().getCcuxApp().setOccupied(false);
+            }
+        };
+        /**
+		 * Central Handler for inner Table accesing and binding data.
+		 *
+		 * @function
+		 * @param {Event} oEvent object
+		 */
+        Controller.prototype._bindInfoLine = function (oCurrentInfoLine) {
+            var oRadioWeekly = this.getView().byId("idnrgUsgRadioweekly"),
                 sPath,
+                fnRecievedHandler,
+                oInsideTableTag,
                 oInsideTableTemplate = this.getView().byId("idnrgUsgTable-insideTmpl"),
+                that = this,
                 aFilterIds,
                 aFilterValues,
                 aFilters,
                 oBindingContext,
-                oRadioWeekly = this.getView().byId("idnrgUsgRadioweekly"),
-                fnRecievedHandler,
                 oNoDataTag = this.getView().byId("idnrgUsgNoData").clone(),
-                that = this;
-
-            that.getOwnerComponent().getCcuxApp().setOccupied(true);
+                oBindingInfo;
             if ((oRadioWeekly) && (oRadioWeekly.getChecked())) {
                 sPath = "/WeeklyUsageS";
             } else {
                 sPath = "/DailyUsageS";
             }
-            oCurrentInfoLine.setExpanded(!(oCurrentInfoLine.getExpanded()));
-            if (oCurrentInfoLine.getExpanded()) {
-                oEvent.getSource().getParent().addStyleClass("nrgUsgTable-InfolineSelected");
-                fnRecievedHandler = function (oEvent, oData) {
-                    var aContent = oInsideTableTag.getContent();
-                    if ((aContent) && (aContent.length === 0)) {
-                        oInsideTableTag.addContent(oNoDataTag);
-                    }
-                    that.getOwnerComponent().getCcuxApp().setOccupied(false);
-                };
-                oBindingContext = oEvent.getSource().getBindingContext("comp-usage");
-                aFilterIds = ["Contract", "PeriodBegin", "PeriodEnd"];
-                aFilterValues = [oBindingContext.getProperty("Contract"), oBindingContext.getProperty("PeriodBegin"), oBindingContext.getProperty("PeriodEnd")];
-                aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
-                oInsideTableTag = oCurrentInfoLine.getContent().pop();
-                oBindingInfo = {
-                    model : "comp-usage",
-                    path : sPath,
-                    template : oInsideTableTemplate,
-                    filters : aFilters,
-                    events: {dataReceived : fnRecievedHandler}
-                };
-                oInsideTableTag.bindAggregation("content", oBindingInfo);
-            } else {
-                oEvent.getSource().getParent().removeStyleClass("nrgUsgTable-InfolineSelected");
+            oCurrentInfoLine.addStyleClass("nrgUsgTable-InfolineSelected");
+            fnRecievedHandler = function (oEvent, oData) {
+                var aContent = oInsideTableTag.getContent();
+                if ((aContent) && (aContent.length === 0)) {
+                    oInsideTableTag.addContent(oNoDataTag);
+                }
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
-            }
+            };
+            oBindingContext = oCurrentInfoLine.getBindingContext("comp-usage");
+            aFilterIds = ["Contract", "PeriodBegin", "PeriodEnd"];
+            aFilterValues = [oBindingContext.getProperty("Contract"), oBindingContext.getProperty("PeriodBegin"), oBindingContext.getProperty("PeriodEnd")];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            oInsideTableTag = oCurrentInfoLine.getContent().pop();
+            oBindingInfo = {
+                model : "comp-usage",
+                path : sPath,
+                template : oInsideTableTemplate,
+                filters : aFilters,
+                events: {dataReceived : fnRecievedHandler}
+            };
+            oInsideTableTag.bindAggregation("content", oBindingInfo);
         };
        /**
 		 * Handler when user clicked on Back
@@ -192,6 +222,7 @@ sap.ui.define(
                 });
             }
         };
+
        /**
 		 * Handler when user expanded Info line for each row
 		 *

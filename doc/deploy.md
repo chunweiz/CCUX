@@ -36,6 +36,8 @@ Eclipse reads SAP logon information from your **SAP GUI Local Configuration File
 
 ![SAP GUI Local Configuration Files](img/deploy.016.png)
 
+If you have local configurations files configured but still not able to see SAP Logon information in your Eclipse, please make sure that your local configuration files are populated with SAP login information.
+
 ***
 ## Grunt deploy tasks ##
 Grunt deploy tasks are being used to copy the generated build folders from CCUX to the corresponding Eclipse projects. The tasks are divided into four main scenarios and are maintained at:

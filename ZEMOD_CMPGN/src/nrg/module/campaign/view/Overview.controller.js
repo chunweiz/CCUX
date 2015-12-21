@@ -383,7 +383,36 @@ sap.ui.define(
                 oCECells = [],
                 iCount1,
                 iCount2,
-                aJsonDataNew;
+                aJsonDataNew,
+                aTypes = [],
+                tempTypes = [];
+
+            // First check how many types are availble in the result list
+            for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+
+                temp = results[iCount1];
+                if ((temp !== undefined) && (temp.EFLType !== undefined)) {
+
+                  // Columns Assignment.
+                    if (tempTypes !== undefined) {
+
+                        for (iCount2 = 0; iCount2 < tempTypes.length; iCount2  = iCount2 + 1) {
+                            if (temp.EFLType === tempTypes[iCount2]) {
+                                continueFlag = true;
+                                break;
+                            }
+                        }
+                        if (continueFlag) {
+                            continueFlag = false;
+                        } else {
+                            tempTypes.push(temp.EFLType);
+                        }
+                    }
+
+                    // Columns Assignment.
+                }
+            }
+            // Take out EFL levels which are columns
             for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
 
                 temp = results[iCount1];
@@ -410,41 +439,29 @@ sap.ui.define(
                     // Columns Assignment.
                 }
             }
-            for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
 
-                temp = results[iCount1];
-                if ((temp !== undefined) && (temp.EFLLevel !== undefined)) {
-
-                    if (temp.EFLType === "BR") {
-                        if (temp.EFLPrice) {
-                            temp.EFLPrice = parseFloat((temp.EFLPrice)).toFixed(1);
-                        }
-                        oBRCells.push({
-                            "EFLPrice": temp.EFLPrice
-                        });
-                    }
-
-                    if (temp.EFLType === "CE") {
-                        if (temp.EFLPrice) {
-                            temp.EFLPrice = parseFloat((temp.EFLPrice)).toFixed(1);
-                        }
-                        oCECells.push({
-                            "EFLPrice": temp.EFLPrice
-                        });
-                    }
-                }
-            }
             aJsonDataNew = {};
             aJsonDataNew.results = {};
             aJsonDataNew.results.columns = columns;
             aJsonDataNew.results.rows = [];
-            aJsonDataNew.results.rows.push({
-                "cells" : oBRCells
-            });
-            aJsonDataNew.results.rows.push({
-                "cells" : oCECells
-            });
+             // convert the data in to rows.
+            for (iCount2 = 0; iCount2 < tempTypes.length; iCount2  = iCount2 + 1) {
+                oBRCells = [];
+                for (iCount1 = 0; iCount1 < results.length; iCount1 = iCount1 + 1) {
+                    temp = results[iCount1];
+                    if ((temp !== undefined) && (temp.EFLLevel !== undefined) && (temp.EFLType !== undefined)) {
+                        if (temp.EFLType === tempTypes[iCount2]) {
+                            oBRCells.push({
+                                "EFLPrice": temp.EFLPrice
+                            });
+                        }
 
+                    }
+                }
+                aJsonDataNew.results.rows.push({
+                    "cells" : oBRCells
+                });
+            }
             return aJsonDataNew;
         };
         /**

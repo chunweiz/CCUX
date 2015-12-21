@@ -110,7 +110,9 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     oEligModel.setData(oData);
-                    if (fnCallback) fnCallback();
+                    if (fnCallback) {
+                        fnCallback();
+                    }
                 }.bind(this),
                 error: function (oError) {
                     
@@ -145,14 +147,15 @@ sap.ui.define(
             var oWebUiManager = this._oController.getOwnerComponent().getCcuxWebUiManager(),
                 oRouter = this._oController.getOwnerComponent().getRouter(),
                 oRouting = this._oController.getView().getModel('oFooterRouting'),
-                oRetrDone = false;
+                oRetrDone = false,
+                checkRetrComplete;
 
             // Display the loading indicator
             this._oController.getOwnerComponent().getCcuxApp().setOccupied(true);
             // Retrieve Notification
-            this._retrieveEligibility(function () {oRetrDone = true;});
+            this._retrieveEligibility(function () {oRetrDone = true; });
             // Check retrieval done
-            var checkRetrComplete = setInterval (function () {
+            checkRetrComplete = setInterval(function () {
                 if (oRetrDone) {
                     var oEligibilityModel = this._oController.getView().getModel('oEligibility');
                     // Dismiss the loading indicator
@@ -170,7 +173,7 @@ sap.ui.define(
                         });
                     }
                 }
-            }.bind(this), 100); 
+            }.bind(this), 100);
         };
 
         // Invalid Email Address
@@ -467,6 +470,9 @@ sap.ui.define(
                 oModel = this._oController.getView().getModel('oCompODataSvc'),
                 oCampaignModel = this._oController.getView().getModel('oFooterCampaign'),
                 oParameters;
+            if (!sCoNumber) {
+                return;
+            }
             aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: sCoNumber}));
 
 

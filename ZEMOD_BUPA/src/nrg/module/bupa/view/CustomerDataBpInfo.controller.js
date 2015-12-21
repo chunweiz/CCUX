@@ -71,8 +71,8 @@ sap.ui.define(
             this._initPhnTypes();
 
             // Disable backspace key on this page
-            $(document).on("keydown", function (e) {
-                if (e.which === 8 && !$(e.target).is("input, textarea")) {
+            jQuery(document).on("keydown", function (e) {
+                if (e.which === 8 && !jQuery(e.target).is("input, textarea")) {
                     e.preventDefault();
                 }
             });
@@ -253,9 +253,15 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData.PartnerID) {
                         // Make the key of empty value as "0000", so that the dropdown can recognize it.
-                        if (oData.Title === "") oData.Title = "0000";
-                        if (oData.AcademicTitle === "") oData.AcademicTitle = "0000";
-                        if (oData.Suffix === "") oData.Suffix = "0000";
+                        if (oData.Title === "") {
+                            oData.Title = "0000";
+                        }
+                        if (oData.AcademicTitle === "") {
+                            oData.AcademicTitle = "0000";
+                        }
+                        if (oData.Suffix === "") {
+                            oData.Suffix = "0000";
+                        }
 
                         this.getView().getModel('oDataBpName').setData(oData);
                         this.oDataBpNameBak = jQuery.extend(true, {}, oData);
@@ -582,7 +588,7 @@ sap.ui.define(
 
         CustomController.prototype.onAddrCancel = function () {
             var oConfigModel = this.getView().getModel('oBpInfoConfig'),
-            oBPAddrModel = this.getView().getModel('oDataBpAddress');
+                oBPAddrModel = this.getView().getModel('oDataBpAddress');
             
             // Restore editability
             oConfigModel.setProperty('/addrEditVisible', true);

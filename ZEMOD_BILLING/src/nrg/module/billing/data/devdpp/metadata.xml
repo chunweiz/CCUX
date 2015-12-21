@@ -16,8 +16,8 @@
         <Property Name="InstlmntNo" Type="Edm.Int16" Nullable="false" sap:label="Signed INT2 / int16" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="InstlmntNoAuth" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="StartDate" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <NavigationProperty Name="DPPElgble" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPElgble_DPPSetUp" FromRole="ToRole_DPPElgble_DPPSetUp" ToRole="FromRole_DPPElgble_DPPSetUp" />
         <NavigationProperty Name="DPPConfSets" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPSetUp_DPPConf" FromRole="FromRole_DPPSetUp_DPPConf" ToRole="ToRole_DPPSetUp_DPPConf" />
+        <NavigationProperty Name="DPPElgble" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPElgble_DPPSetUp" FromRole="ToRole_DPPElgble_DPPSetUp" ToRole="FromRole_DPPElgble_DPPSetUp" />
       </EntityType>
       <EntityType Name="DPPReason" sap:content-version="1">
         <Key>
@@ -45,6 +45,11 @@
         <Property Name="Error" Type="Edm.String" Nullable="false" MaxLength="15" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="SelectedData" Type="Edm.String" Nullable="false" MaxLength="9000" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="OverRide" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="DwnPay" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="DwnPayDate" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ExtReason" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ExtActive" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ChgOpt" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <NavigationProperty Name="Extensions" Relationship="ZE_CCUX_DPP_EXT_SRV.Extension_Extconf" FromRole="ToRole_Extension_Extconf" ToRole="FromRole_Extension_Extconf" />
       </EntityType>
       <EntityType Name="DPPElgble" sap:content-version="1">
@@ -58,8 +63,8 @@
         <Property Name="ReasonCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="DPPActive" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="DPPReasonYes" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <NavigationProperty Name="DPPDenieds" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPElgble_DPPDenied" FromRole="FromRole_DPPElgble_DPPDenied" ToRole="ToRole_DPPElgble_DPPDenied" />
         <NavigationProperty Name="DPPSetUps" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPElgble_DPPSetUp" FromRole="FromRole_DPPElgble_DPPSetUp" ToRole="ToRole_DPPElgble_DPPSetUp" />
+        <NavigationProperty Name="DPPDenieds" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPElgble_DPPDenied" FromRole="FromRole_DPPElgble_DPPDenied" ToRole="ToRole_DPPElgble_DPPDenied" />
       </EntityType>
       <EntityType Name="DPPConf" sap:content-version="1">
         <Key>
@@ -98,18 +103,26 @@
         <Key>
           <PropertyRef Name="ContractAccountNumber" />
           <PropertyRef Name="PartnerID" />
+          <PropertyRef Name="ExtActive" />
+          <PropertyRef Name="ChgOpt" />
         </Key>
         <Property Name="OpenItems" Type="ZE_CCUX_DPP_EXT_SRV.ExtOpenItems" Nullable="false" />
         <Property Name="ContractAccountNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="PartnerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ExtActive" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="Override" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="InitialDate" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="DownPayAuth" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="CurrAmtDue" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ChgOpt" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="PendDwnPay" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <NavigationProperty Name="ExtElgble" Relationship="ZE_CCUX_DPP_EXT_SRV.ExtElgble_Extension" FromRole="ToRole_ExtElgble_Extension" ToRole="FromRole_ExtElgble_Extension" />
         <NavigationProperty Name="ExtConfs" Relationship="ZE_CCUX_DPP_EXT_SRV.Extension_Extconf" FromRole="FromRole_Extension_Extconf" ToRole="ToRole_Extension_Extconf" />
       </EntityType>
       <EntityType Name="ExtElgble" sap:content-version="1">
         <Key>
           <PropertyRef Name="ContractAccountNumber" />
+          <PropertyRef Name="ExtActive" />
         </Key>
         <Property Name="ContractAccountNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="EligibleYes" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
@@ -161,9 +174,11 @@
         <End Type="ZE_CCUX_DPP_EXT_SRV.Extension" Multiplicity="*" Role="ToRole_ExtElgble_Extension" />
         <ReferentialConstraint>
           <Principal Role="FromRole_ExtElgble_Extension">
+            <PropertyRef Name="ExtActive" />
             <PropertyRef Name="ContractAccountNumber" />
           </Principal>
           <Dependent Role="ToRole_ExtElgble_Extension">
+            <PropertyRef Name="ExtActive" />
             <PropertyRef Name="ContractAccountNumber" />
           </Dependent>
         </ReferentialConstraint>
@@ -201,12 +216,16 @@
         <End Type="ZE_CCUX_DPP_EXT_SRV.ExtConf" Multiplicity="*" Role="ToRole_Extension_Extconf" />
         <ReferentialConstraint>
           <Principal Role="FromRole_Extension_Extconf">
+            <PropertyRef Name="ExtActive" />
             <PropertyRef Name="PartnerID" />
             <PropertyRef Name="ContractAccountNumber" />
+            <PropertyRef Name="ChgOpt" />
           </Principal>
           <Dependent Role="ToRole_Extension_Extconf">
+            <PropertyRef Name="ExtActive" />
             <PropertyRef Name="PartnerID" />
             <PropertyRef Name="ContractAccountNumber" />
+            <PropertyRef Name="ChgOpt" />
           </Dependent>
         </ReferentialConstraint>
       </Association>
@@ -244,8 +263,8 @@
           <Parameter Name="ContractAccountNumber" Type="Edm.String" Mode="In" MaxLength="12" />
         </FunctionImport>
       </EntityContainer>
-      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/$metadata" />
-      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/$metadata" />
+      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/$metadata" />
+      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/$metadata" />
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>

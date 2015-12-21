@@ -90,7 +90,7 @@
                     </ute:Tag>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-zeroDown">
-                    <utmain:CheckBox class="nrgBilling-dlbz-chk"
+                    <utmain:Checkbox class="nrgBilling-dlbz-chk"
                                      enabled="{parts:['oDppSetUps>/results/0/ZeroDwPayAuth'],
                                                formatter:'._postiveXFormatter'}"
                                      checked="{oDppStepOnePost>/ZeroDwPay}"/>
@@ -344,77 +344,116 @@ Additional installments will be due with the following 5 subsequent invoices."/>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-btn-left">
                     <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOk}"
                                    press="._onDppDeniedOkClick"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOver}"
+                                   press="._onDppOverrideClick"/>
                 </ute:Tag>
             </ute:Tag>
         </ute:Tag>
         <!--EXT Granted-->
         <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="{oDppScrnControl>/EXTGrant}">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-ExtTitle}"/>
-            <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
+            <ute:Tag class="nrgBilling-dPmtExtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
-                    <ute:Tag class="nrgBilling-dltl-step" text="{comp-i18n-billing>nrgBilling-dpp-ExtDenied}"/>
-                    <ute:Tag class="nrgBilling-dltl-reason">
+                    <ute:Tag class="nrgBilling-dltl-step" text="{comp-i18n-billing>nrgBilling-dpp-ExtDisplay}"
+                             visible="{oExtEligible>/ExtActive}"/>
+                    <ute:Tag class="nrgBilling-dltl-step" text="{comp-i18n-billing>nrgBilling-dpp-ExtGranted}"
+                             visible="{parts:['oExtEligible>/ExtActive'], formatter:'._reverseBooleanFormatter'}"/>
+                    <ute:Tag class="nrgBilling-dltl-reason" visible="{parts:['oExtEligible>/ExtActive'], formatter:'._reverseBooleanFormatter'}">
                         <ute:Tag class="nrgBilling-dltl-reason-lbl" text="{comp-i18n-billing>nrgBilling-dpp-ReasonGrant}"/>
-                        <utmain:Dropdown class="nrgBilling-dltl-reason-select">
-                            <utmain:DropdownItem>
-                                <ute:Tag elem="span" text="option1" />
-                            </utmain:DropdownItem>
-                            <utmain:DropdownItem>
-                                <ute:Tag elem="span" text="option2" />
+                        <utmain:Dropdown class="nrgBilling-dltl-reason-select"
+                                         content="{oExtExtReasons>/results}"
+                                         selectedKey="{oExtExtReasons>/selectedKey}"
+                                         select="._onExtReasonSelect">
+                            <utmain:DropdownItem key="{oExtExtReasons>ReasonCode}">
+                                <ute:Tag elem="span" text="{oExtExtReasons>Reason}" />
                             </utmain:DropdownItem>
                         </utmain:Dropdown>
                     </ute:Tag>
                 </ute:Tag>
-                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-m">
-                    <ute:Tag class="nrgBilling-dltm-price" text="$75.44"/>
-                    <ute:Tag class="nrgBilling-dltm-dplbl" text="{comp-i18n-billing>nrgBilling-dpp-DownPmtAmt}"/>
-                </ute:Tag>
-                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-r">
-                    <utmain:Button class="nrgBilling-dltr-btn" text="{comp-i18n-billing>nrgBilling-dpp-PmtOptions}"/>
-                    <ute:Tag class="nrgBilling-dltr-dueDate" text="{comp-i18n-billing>nrgBilling-dpp-DueDate} 10/30/2014"/>
-                </ute:Tag>
+                <!--<ute:Tag class="nrgBilling-dPmtPln-lftArea-top-m"/>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-r"/>-->
             </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-dueAmt">
+                    <ute:Tag elem="span" class="nrgBilling-dlcd-lbl" text="{comp-i18n-billing>nrgBilling-dpp-CurAmtDue}"/>
+                    <ute:Tag elem="span" class="nrgBilling-dlcd-val"
+                             text="{path: 'oExtExtensions>/results/0/CurrAmtDue', type: 'nrg.base.type.Price',
+                                    formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                </ute:Tag>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-hdr">
-                    <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k2" text="{comp-i18n-billing>nrgBilling-dpp-Description}"/>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k3" text="{comp-i18n-billing>nrgBilling-dpp-Amt}"/>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k4" text="{comp-i18n-billing>nrgBilling-dpp-DueDte}"/>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k5" text="{comp-i18n-billing>nrgBilling-dpp-DefeDte}"/>
                 </ute:Tag>
-                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
-                    <ute:Tag class="nrgBilling-dlct-odd">
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k2" text="ABC"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k3" text="$7.50"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k4" text="10/30/2014"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k5" text="10/30/2014"/>
+                <ute:Tag content="{oExtExtensions>/results}" class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
+                    <ute:Tag>
+                        <ute:Tag class="nrgBilling-dlct-odd"
+                                 visible="{parts:['oExtExtensions>OpenItems/ItemNumber'], formatter:'._isOdd'}">
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k2" text="{oExtExtensions>OpenItems/Description}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k3" text="{path: 'oExtExtensions>OpenItems/Amount', type: 'nrg.base.type.Price',
+                                            formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k4" text="{parts:['oExtExtensions>OpenItems/DueDate'], formatter:'._formatDate'}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k5" text="{parts:['oExtExtensions>OpenItems/DefferalDate'], formatter:'._formatDate'}"/>
+                        </ute:Tag>
+                        <ute:Tag class="nrgBilling-dlct-evn"
+                                 visible="{parts:['oExtExtensions>OpenItems/ItemNumber'], formatter:'._isEven'}">
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k2" text="{oExtExtensions>OpenItems/Description}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k3" text="{path: 'oExtExtensions>OpenItems/Amount', type: 'nrg.base.type.Price',
+                                            formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k4" text="{parts:['oExtExtensions>OpenItems/DueDate'], formatter:'._formatDate'}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k5" text="{parts:['oExtExtensions>OpenItems/DefferalDate'], formatter:'._formatDate'}"/>
+                        </ute:Tag>
                     </ute:Tag>
-                    <ute:Tag class="nrgBilling-dlct-evn">
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1"><utmain:Checkbox/></ute:Tag>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k2" text="DEF"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k3" text="$158.18"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k4" text="10/30/2014"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-k5" text="10/30/2014"/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-newdate" visible="{parts:['oExtEligible>/ExtActive'], formatter:'._reverseBooleanFormatter'}">
+                    <ute:Tag elem="span" class="nrgBilling-dlcn-lbl"
+                        text="{comp-i18n-billing>nrgBilling-dpp-ExtNewDate}"/>
+                    <ute:DatePicker id="nrgBilling-dpp-ExtNewDate-id"/>
+                </ute:Tag>
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-newdate"
+                         visible="{parts:['oExtExtensions>/results/0/DownPayAuth', 'oExtEligible>/ExtActive'], formatter:'._formatShowChangDwnPmt'}">
+                    <ute:Tag class="nrgBilling-dlcn-mgn">
+                        <ute:Tag elem="span" class="nrgBilling-dlcn-lbl"
+                            text="{comp-i18n-billing>nrgBilling-dpp-dwnPayAmt}"/>
+                        <ute:Textfield class="nrgBilling-dlbd-install-Num" fieldType="Underlined" width="50px"
+                                           editable="true"
+                                           value="{oExtExtensions>/results/0/iDwnPay}"/>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dlcn-mgn">
+                        <ute:Tag elem="span" class="nrgBilling-dlcn-lbl"
+                            text="{comp-i18n-billing>nrgBilling-dpp-dwnPayDueDate}"/>
+                        <ute:DatePicker id="nrgBilling-dpp-dwnPayDueDate-id"/>
                     </ute:Tag>
                 </ute:Tag>
             </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm">
-                <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox">
+                <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox" visible="{parts:['oExtEligible>/ExtActive'], formatter:'._reverseBooleanFormatter'}">
                     <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox-icon"><ute:Tag text="{comp-i18n-billing>nrgBilling-dpp-info-i}"/></ute:Tag>
                     <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox-txt" text="Customer still owes: "/>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-btn-left">
-                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOk}"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOk}"
+                                   visible="{oExtEligible>/ExtActive}"
+                                   press="._onDppDeniedOkClick"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnCfirm}"
+                                   visible="{parts:['oExtEligible>/ExtActive'], formatter:'._reverseBooleanFormatter'}"
+                                   press="._onDppExtConfirmClick"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnCncl}"
+                                   visible="{parts:['oExtEligible>/ExtActive'], formatter:'._reverseBooleanFormatter'}"
+                                   press="._onDppDeniedOkClick"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnChangeExt}"
+                                   visible="{parts:['oExtExtensions>/results/0/DownPayAuth', 'oExtEligible>/ExtActive'], formatter:'._formatShowChangeExt'}"
+                                   press="._onDppExtChangeClick"/>
                 </ute:Tag>
             </ute:Tag>
         </ute:Tag>
         <!--EXT Denied-->
         <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="{oDppScrnControl>/EXTDenied}">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-ExtTitle}"/>
-            <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
+            <ute:Tag class="nrgBilling-dPmtExtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
@@ -427,22 +466,31 @@ Additional installments will be due with the following 5 subsequent invoices."/>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2" text="{comp-i18n-billing>nrgBilling-dpp-Amt}"/>
                     <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="{comp-i18n-billing>nrgBilling-dpp-DueDte}"/>
                 </ute:Tag>
-                <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
-                    <ute:Tag class="nrgBilling-dlct-odd">
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j1" text="ABC"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2" text="$7.50"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="10/30/2014"/>
-                    </ute:Tag>
-                    <ute:Tag class="nrgBilling-dlct-evn">
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j1" text="DEF"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2" text="$158.18"/>
-                        <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="10/30/2014"/>
+                <ute:Tag content="{oExtExtensions>/results}" class="nrgBilling-dPmtPln-lftArea-ctnt-tbl">
+                    <ute:Tag>
+                        <ute:Tag class="nrgBilling-dlct-odd"
+                                 visible="{parts:['oExtExtensions>OpenItems/ItemNumber'], formatter:'._isOdd'}">
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j1" text="{oExtExtensions>OpenItems/Description}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2" text="{path: 'oExtExtensions>OpenItems/Amount', type: 'nrg.base.type.Price',
+                                            formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="{parts:['oExtExtensions>OpenItems/DueDate'], formatter:'._formatDate'}"/>
+                        </ute:Tag>
+                        <ute:Tag class="nrgBilling-dlct-evn"
+                                 visible="{parts:['oExtExtensions>OpenItems/ItemNumber'], formatter:'._isEven'}">
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j1" text="{oExtExtensions>OpenItems/Description}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j2" text="{path: 'oExtExtensions>OpenItems/Amount', type: 'nrg.base.type.Price',
+                                            formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-j3" text="{parts:['oExtExtensions>OpenItems/DueDate'], formatter:'._formatDate'}"/>
+                        </ute:Tag>
                     </ute:Tag>
                 </ute:Tag>
             </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-btn-left">
-                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOk}"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOk}"
+                                   press="_onExtOverrideClick"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnOver}"
+                                   press="._onExtOverrideClick"/>
                 </ute:Tag>
             </ute:Tag>
         </ute:Tag>
