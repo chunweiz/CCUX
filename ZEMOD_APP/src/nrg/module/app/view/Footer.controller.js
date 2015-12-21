@@ -317,6 +317,13 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._onRHS = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: "ZVASOPTSLN"
+            });
+        };
+
         /*----------------------------- Campaign -----------------------------*/
 
         Controller.prototype.updateFooterCampaign = function (channel, event, data) {
