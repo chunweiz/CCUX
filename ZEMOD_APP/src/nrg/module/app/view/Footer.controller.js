@@ -301,6 +301,9 @@ sap.ui.define(
                         if (bPendingFlag === false) { this.getView().byId("nrgAppFtrDetails-rhs-pendingItemContent").setText('None'); }
                         if (bHistoryFlag === false) { this.getView().byId("nrgAppFtrDetails-rhs-historyItemContent").setText('None'); }
 
+                        oRhsModel.setProperty('/DropdownVis', false);
+                        oRhsModel.setProperty('/NoneVis', true);
+
                         this.footerElement.rhsEmptySec.setVisible(false);
                         this.footerElement.rhsProdSec.setVisible(true);
                     }
