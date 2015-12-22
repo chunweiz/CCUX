@@ -47,6 +47,8 @@ sap.ui.define(
             //Model for DppConf (DPP Step II)
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppConfs');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppConfsChecked');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppStepTwoPost');
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppStepTwoConfirmdData');
 
             //Model for Ext Function (EXT Step I)
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtEligible');
@@ -284,14 +286,14 @@ sap.ui.define(
 
             for (i = 0; i < oDppConfs.getData().results.length; i = i + 1) {
                 if (oDppConfs.getProperty('/results/' + i + '/Checked')) {
-                    iSelSum = iSelSum + oDppConfs.getProperty('/results/' + i + 'ConfirmdItems/mount');
+                    iSelSum = parseFloat(iSelSum) + parseFloat(oDppConfs.getProperty('/results/' + i + '/ConfirmdItems/Amount'));
                     iSelNum = i + 1;
                 }
             }
 
             for (i = 0; i < oDppConfs.getData().results.length; i = i + 1) {
                 if (oDppConfs.getProperty('/results/' + i + '/Checked')) {
-                    oDppConfs.setProperty('/results/' + i + 'ConfirmdItems/mount', parseFloat(iSelSum) / parseFloat(iSelNum));
+                    oDppConfs.setProperty('/results/' + i + '/ConfirmdItems/Amount', parseFloat(iSelSum) / parseFloat(iSelNum));
                 }
             }
 
@@ -299,7 +301,58 @@ sap.ui.define(
                 oDppConfs.setProperty('/results/' + i + '/Checked', false);
             }
             oDppConfs.setProperty('/AllChecked', false);
+        };
 
+        Controller.prototype._onDppConfItemCheck = function (oEvent) {
+            var oDppConfs = this.getView().getModel('oDppConfs'),
+                i,
+                iSelTol = 0,
+                iDiffTot = 0;
+
+            for (i = 0; i < oDppConfs.getData().results.length; i = i + 1) {
+                if (oDppConfs.getProperty('/results/' + i + '/Checked')) {
+                    iSelTol = parseFloat(iSelTol) + parseFloat(oDppConfs.getProperty('/results/' + i + '/ConfirmdItems/Amount'));
+                }
+            }
+
+            iDiffTot =  parseFloat(oDppConfs.getProperty('/results/0/DppTot')) - iSelTol;
+
+            oDppConfs.setProperty('/results/0/SelTot', iSelTol.toString());
+            oDppConfs.setProperty('/results/0/DiffTot', iDiffTot.toString());
+        };
+
+        Controller.prototype._onDppConfConfirmClick = function (oEvent) {
+            var oConf = this.getView().getModel('oDppConfs'),
+                i,
+                oConfPost = this.getView().getModel('oDppStepTwoPost'),
+                aConfirmData = [];
+
+            oConfPost.setProperty('/ContractAccountNumber', oConf.oData.results[0].ContractAccountNumber);
+            oConfPost.setProperty('/PartnerID', oConf.oData.results[0].PartnerID);
+            oConfPost.setProperty('/SelectedData', oConf.oData.results[0].SelectedData);
+            oConfPost.setProperty('/InstlmntNo', oConf.oData.results[0].InstlmntNo);
+            oConfPost.setProperty('/ZeroDwnPay', oConf.oData.results[0].ZeroDwnPay);
+            oConfPost.setProperty('/InitialDate', oConf.oData.results[0].InitialDate);
+            oConfPost.setProperty('/ReasonCode', oConf.oData.results[0].ReasonCode);
+            oConfPost.setProperty('/Reason', oConf.oData.results[0].Reason);
+
+            for (i = 0; i < oConf.getData().results.length; i = i + 1) {
+                aConfirmData.push({IND: oConf.getData().results[i].ConfirmdItems.ItemNumber, AMT: oConf.getData().results[i].ConfirmdItems.Amount, DUEDATE: oConf.getData().results[i].ConfirmdItems.DueDate, CLRDT: oConf.getData().results[i].ConfirmdItems.ClearDate, CLRED: oConf.getData().results[i].ConfirmdItems.Cleared, CLRAMT: oConf.getData().results[i].ConfirmdItems.ClearedAmt, OPBEL: oConf.getData().results[i].ConfirmdItems.Opbel, OPUPW: oConf.getData().results[i].ConfirmdItems.Opupw, OPUPK: oConf.getData().results[i].ConfirmdItems.Opupk, HVORG: oConf.getData().results[i].ConfirmdItems.Hvorg});
+            }
+            this.getView().getModel('oDppStepTwoConfirmdData').setProperty('/CONFIRMDATA', aConfirmData);
+            oConfPost.setProperty('/ConfirmData', this.getView().getModel('oDppStepTwoConfirmdData').getJSON());
+
+            this._postDPPConfRequest();
+        };
+
+        Controller.prototype._onDppConfCancelClick = function (oEvent) {
+            var oRouter = this.getOwnerComponent().getRouter();
+
+            if (this._coNum) {
+                oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+            } else {
+                oRouter.navTo('dashboard.VerificationWithCa', {bpNum: this._bpNum, caNum: this._caNum});
+            }
         };
 
         Controller.prototype._onOneItemCheck = function (oEvent) {
@@ -363,6 +416,7 @@ sap.ui.define(
                             this.getView().getModel('oDppConfs').setProperty('/results/' + i + '/Checked', false);
                         }
                         this.getView().getModel('oDppConfs').setProperty('/results/AllChecked', false);
+                        this.getView().getModel('oDppConfs').setProperty('/results/0/SelTot', 0);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -373,6 +427,48 @@ sap.ui.define(
             if (oODataSvc) {
                 oODataSvc.read(sPath, oParameters);
             }
+        };
+
+        Controller.prototype._postDPPConfRequest = function () {
+            var oODataSvc = this.getView().getModel('oDataSvc'),
+                oConf = this.getView().getModel('oDppConfs'),
+                sPath,
+                oParameters,
+                i,
+                oConfPost = this.getView().getModel('oDppStepTwoPost');
+
+            sPath = '/DPPConfs';
+
+            delete oConf.oData.results.AllChecked;
+            for (i = 0; i < oConf.oData.results.length; i = i + 1) {
+                delete oConf.oData.results[i].Checked;
+            }
+
+            oParameters = {
+                merge: false,
+                success : function (oData) {
+                    ute.ui.main.Popup.Confirm({
+                        title: 'DISCLOSURE',
+                        message: 'Confrim Message to be Added',
+                        callback: function (sAction) {
+                            if (sAction === 'Yes') {
+                            }
+                        }
+                    });
+                    this._selectScrn('');
+                }.bind(this),
+                error: function (oError) {
+                    ute.ui.main.Popup.Alert({
+                        title: 'DEFFERED PAYMENT PLAN',
+                        message: 'DEFFERED PAYMENT PLAN request failed'
+                    });
+                }.bind(this)
+            };
+
+            if (oODataSvc) {
+                oODataSvc.create(sPath, oConf, oParameters);
+            }
+
         };
 
         Controller.prototype._isDppElgble = function () {
@@ -495,7 +591,8 @@ sap.ui.define(
             var oODataSvc = this.getView().getModel('oDataSvc'),
                 oParameters,
                 sPath,
-                i;
+                i,
+                sStartDate;
 
             //Model created for later posting
             this.getView().getModel('oDppStepOnePost').setData({});
@@ -514,6 +611,8 @@ sap.ui.define(
                         this.getView().getModel('oDppSetUps').setProperty('/results/bSelectedAll', false);
                         this.getView().getModel('oDppStepOnePost').setProperty('/InstlmntNo', this.getView().getModel('oDppSetUps').getProperty('/results/0/InstlmntNo'));
                         this.getView().getModel('oDppStepOnePost').setProperty('/ZeroDwPay', false);
+                        sStartDate = this._formatInvoiceDate(this.getView().getModel('oDppSetUps').getProperty('/results/0/StartDate').getDate(), this.getView().getModel('oDppSetUps').getProperty('/results/0/StartDate').getMonth() + 1, this.getView().getModel('oDppSetUps').getProperty('/results/0/StartDate').getFullYear());
+                        this.getView().byId('nrgBilling-dpp-DppStartDate-id').setDefaultDate(sStartDate);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -524,10 +623,6 @@ sap.ui.define(
             if (oODataSvc) {
                 oODataSvc.read(sPath, oParameters);
             }
-        };
-
-        Controller.prototype._retrDppConf = function () {
-
         };
 
         Controller.prototype._retrExtReasons = function () {
