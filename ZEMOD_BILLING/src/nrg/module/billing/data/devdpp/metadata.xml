@@ -52,6 +52,26 @@
         <Property Name="ChgOpt" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <NavigationProperty Name="Extensions" Relationship="ZE_CCUX_DPP_EXT_SRV.Extension_Extconf" FromRole="ToRole_Extension_Extconf" ToRole="FromRole_Extension_Extconf" />
       </EntityType>
+      <EntityType Name="DPPDisclo" sap:content-version="1">
+        <Key>
+          <PropertyRef Name="Message" />
+          <PropertyRef Name="ContractAccountNumber" />
+        </Key>
+        <Property Name="Format" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="Message" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ContractAccountNumber" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+      </EntityType>
+      <EntityType Name="DPPCorresp" sap:content-version="1">
+        <Key>
+          <PropertyRef Name="ContractAccountNumber" />
+          <PropertyRef Name="PartnerID" />
+        </Key>
+        <Property Name="Address" Type="ZE_CCUX_DPP_EXT_SRV.Address" Nullable="false" />
+        <Property Name="ContractAccountNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="PartnerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="eMail" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="Fax" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+      </EntityType>
       <EntityType Name="DPPElgble" sap:content-version="1">
         <Key>
           <PropertyRef Name="ContractAccountNumber" />
@@ -86,6 +106,10 @@
         <Property Name="InstlmntNo" Type="Edm.Int16" Nullable="false" sap:label="Signed INT2 / int16" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="ZeroDwnPay" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="DPPError" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="Reason" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ReasonCode" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ConfirmData" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="InitialDate" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <NavigationProperty Name="DPPSetUpSet" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPSetUp_DPPConf" FromRole="ToRole_DPPSetUp_DPPConf" ToRole="FromRole_DPPSetUp_DPPConf" />
       </EntityType>
       <EntityType Name="DPPDenied" sap:content-version="1">
@@ -154,18 +178,40 @@
         <Property Name="ClearDate" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="Cleared" Type="Edm.String" Nullable="false" MaxLength="3" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="ClearedAmt" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="Opbel" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="Opupw" Type="Edm.Int16" Nullable="false" sap:label="Signed INT2 / int16" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="Opupk" Type="Edm.Int16" Nullable="false" sap:label="Signed INT2 / int16" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="Opupz" Type="Edm.Int16" Nullable="false" sap:label="Signed INT2 / int16" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+      </ComplexType>
+      <ComplexType Name="Address">
+        <Property Name="StandardFlag" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Standard Flag" sap:sortable="false" sap:filterable="false" />
+        <Property Name="co" Type="Edm.String" MaxLength="40" sap:sortable="false" sap:filterable="false" />
+        <Property Name="Street" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="Street" sap:sortable="false" sap:filterable="false" />
+        <Property Name="HouseNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="House Number" sap:sortable="false" sap:filterable="false" />
+        <Property Name="UnitNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Unit Number" sap:sortable="false" sap:filterable="false" />
+        <Property Name="City" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="City" sap:sortable="false" sap:filterable="false" />
+        <Property Name="State" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="State" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ZipCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Zip Code" sap:sortable="false" sap:filterable="false" />
+        <Property Name="PoBox" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ShortForm" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Address in Short form" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ValidFrom" Type="Edm.DateTimeOffset" Precision="7" sap:label="Valid From" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="ValidTo" Type="Edm.DateTimeOffset" Precision="7" sap:label="Valid To" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Country" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="CityCode" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="City code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="Supplement" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="House number 2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="AddrLine" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
       </ComplexType>
       <Association Name="DPPSetUp_DPPConf" sap:content-version="1">
         <End Type="ZE_CCUX_DPP_EXT_SRV.DPPSetUp" Multiplicity="*" Role="FromRole_DPPSetUp_DPPConf" />
         <End Type="ZE_CCUX_DPP_EXT_SRV.DPPConf" Multiplicity="*" Role="ToRole_DPPSetUp_DPPConf" />
         <ReferentialConstraint>
           <Principal Role="FromRole_DPPSetUp_DPPConf">
-            <PropertyRef Name="PartnerID" />
             <PropertyRef Name="ContractAccountNumber" />
+            <PropertyRef Name="PartnerID" />
           </Principal>
           <Dependent Role="ToRole_DPPSetUp_DPPConf">
-            <PropertyRef Name="PartnerID" />
             <PropertyRef Name="ContractAccountNumber" />
+            <PropertyRef Name="PartnerID" />
           </Dependent>
         </ReferentialConstraint>
       </Association>
@@ -174,12 +220,12 @@
         <End Type="ZE_CCUX_DPP_EXT_SRV.Extension" Multiplicity="*" Role="ToRole_ExtElgble_Extension" />
         <ReferentialConstraint>
           <Principal Role="FromRole_ExtElgble_Extension">
-            <PropertyRef Name="ExtActive" />
             <PropertyRef Name="ContractAccountNumber" />
+            <PropertyRef Name="ExtActive" />
           </Principal>
           <Dependent Role="ToRole_ExtElgble_Extension">
-            <PropertyRef Name="ExtActive" />
             <PropertyRef Name="ContractAccountNumber" />
+            <PropertyRef Name="ExtActive" />
           </Dependent>
         </ReferentialConstraint>
       </Association>
@@ -188,12 +234,12 @@
         <End Type="ZE_CCUX_DPP_EXT_SRV.DPPSetUp" Multiplicity="*" Role="ToRole_DPPElgble_DPPSetUp" />
         <ReferentialConstraint>
           <Principal Role="FromRole_DPPElgble_DPPSetUp">
-            <PropertyRef Name="DPPReason" />
             <PropertyRef Name="ContractAccountNumber" />
+            <PropertyRef Name="DPPReason" />
           </Principal>
           <Dependent Role="ToRole_DPPElgble_DPPSetUp">
-            <PropertyRef Name="DPPReason" />
             <PropertyRef Name="ContractAccountNumber" />
+            <PropertyRef Name="DPPReason" />
           </Dependent>
         </ReferentialConstraint>
       </Association>
@@ -202,12 +248,12 @@
         <End Type="ZE_CCUX_DPP_EXT_SRV.DPPDenied" Multiplicity="*" Role="ToRole_DPPElgble_DPPDenied" />
         <ReferentialConstraint>
           <Principal Role="FromRole_DPPElgble_DPPDenied">
-            <PropertyRef Name="DPPReason" />
             <PropertyRef Name="ContractAccountNumber" />
+            <PropertyRef Name="DPPReason" />
           </Principal>
           <Dependent Role="ToRole_DPPElgble_DPPDenied">
-            <PropertyRef Name="DPPReason" />
             <PropertyRef Name="ContractAccountNumber" />
+            <PropertyRef Name="DPPReason" />
           </Dependent>
         </ReferentialConstraint>
       </Association>
@@ -216,16 +262,16 @@
         <End Type="ZE_CCUX_DPP_EXT_SRV.ExtConf" Multiplicity="*" Role="ToRole_Extension_Extconf" />
         <ReferentialConstraint>
           <Principal Role="FromRole_Extension_Extconf">
-            <PropertyRef Name="ExtActive" />
-            <PropertyRef Name="PartnerID" />
-            <PropertyRef Name="ContractAccountNumber" />
             <PropertyRef Name="ChgOpt" />
+            <PropertyRef Name="ContractAccountNumber" />
+            <PropertyRef Name="PartnerID" />
+            <PropertyRef Name="ExtActive" />
           </Principal>
           <Dependent Role="ToRole_Extension_Extconf">
-            <PropertyRef Name="ExtActive" />
-            <PropertyRef Name="PartnerID" />
-            <PropertyRef Name="ContractAccountNumber" />
             <PropertyRef Name="ChgOpt" />
+            <PropertyRef Name="ContractAccountNumber" />
+            <PropertyRef Name="PartnerID" />
+            <PropertyRef Name="ExtActive" />
           </Dependent>
         </ReferentialConstraint>
       </Association>
@@ -234,6 +280,8 @@
         <EntitySet Name="DPPReasons" EntityType="ZE_CCUX_DPP_EXT_SRV.DPPReason" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
         <EntitySet Name="ExtReasons" EntityType="ZE_CCUX_DPP_EXT_SRV.ExtReason" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
         <EntitySet Name="ExtConfs" EntityType="ZE_CCUX_DPP_EXT_SRV.ExtConf" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+        <EntitySet Name="DPPDisclos" EntityType="ZE_CCUX_DPP_EXT_SRV.DPPDisclo" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+        <EntitySet Name="DPPCorresps" EntityType="ZE_CCUX_DPP_EXT_SRV.DPPCorresp" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
         <EntitySet Name="DPPElgbles" EntityType="ZE_CCUX_DPP_EXT_SRV.DPPElgble" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
         <EntitySet Name="DPPConfs" EntityType="ZE_CCUX_DPP_EXT_SRV.DPPConf" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
         <EntitySet Name="DPPDenieds" EntityType="ZE_CCUX_DPP_EXT_SRV.DPPDenied" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />

@@ -50,6 +50,9 @@ sap.ui.define(
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppStepTwoPost');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppStepTwoConfirmdData');
 
+            //Model for DppComunication (DPPIII)
+            this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oDppStepThreeCom');
+
             //Model for Ext Function (EXT Step I)
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtEligible');
             this.getView().setModel(new sap.ui.model.json.JSONModel(), 'oExtExtensions');
@@ -112,8 +115,9 @@ sap.ui.define(
                 this._retrDppReason();
             } else if (sSelectedScrn === 'StepTwo') {
                 this._retrDPPConf();
+                this._retrDisclosureMessage();
             } else if (sSelectedScrn === 'StepThree') {
-
+                this._retrDppComunication();
             } else if (sSelectedScrn === 'DPPDenied') {
                 this._retrDppDeniedReason();
             } else if (sSelectedScrn === 'EXTGrant') {
@@ -329,7 +333,7 @@ sap.ui.define(
 
             oConfPost.setProperty('/ContractAccountNumber', oConf.oData.results[0].ContractAccountNumber);
             oConfPost.setProperty('/PartnerID', oConf.oData.results[0].PartnerID);
-            oConfPost.setProperty('/SelectedData', oConf.oData.results[0].SelectedData);
+            oConfPost.setProperty('/SelectedData', oConf.oData.results[0].SelectedData.replace(/"/g, '\''));
             oConfPost.setProperty('/InstlmntNo', oConf.oData.results[0].InstlmntNo);
             oConfPost.setProperty('/ZeroDwnPay', oConf.oData.results[0].ZeroDwnPay);
             oConfPost.setProperty('/InitialDate', oConf.oData.results[0].InitialDate);
@@ -337,10 +341,10 @@ sap.ui.define(
             oConfPost.setProperty('/Reason', oConf.oData.results[0].Reason);
 
             for (i = 0; i < oConf.getData().results.length; i = i + 1) {
-                aConfirmData.push({IND: oConf.getData().results[i].ConfirmdItems.ItemNumber, AMT: oConf.getData().results[i].ConfirmdItems.Amount, DUEDATE: oConf.getData().results[i].ConfirmdItems.DueDate, CLRDT: oConf.getData().results[i].ConfirmdItems.ClearDate, CLRED: oConf.getData().results[i].ConfirmdItems.Cleared, CLRAMT: oConf.getData().results[i].ConfirmdItems.ClearedAmt, OPBEL: oConf.getData().results[i].ConfirmdItems.Opbel, OPUPW: oConf.getData().results[i].ConfirmdItems.Opupw, OPUPK: oConf.getData().results[i].ConfirmdItems.Opupk, HVORG: oConf.getData().results[i].ConfirmdItems.Hvorg});
+                aConfirmData.push({IND: oConf.getData().results[i].ConfirmdItems.ItemNumber, AMT: oConf.getData().results[i].ConfirmdItems.Amount, DUEDATE: oConf.getData().results[i].ConfirmdItems.DueDate, CLRDT: oConf.getData().results[i].ConfirmdItems.ClearDate, CLRED: oConf.getData().results[i].ConfirmdItems.Cleared, CLRAMT: oConf.getData().results[i].ConfirmdItems.ClearedAmt, OPBEL: oConf.getData().results[i].ConfirmdItems.Opbel, OPUPW: oConf.getData().results[i].ConfirmdItems.Opupw, OPUPK: oConf.getData().results[i].ConfirmdItems.Opupk, OPUPZ: oConf.getData().results[i].ConfirmdItems.Opupz});
             }
             this.getView().getModel('oDppStepTwoConfirmdData').setProperty('/CONFIRMDATA', aConfirmData);
-            oConfPost.setProperty('/ConfirmData', this.getView().getModel('oDppStepTwoConfirmdData').getJSON());
+            oConfPost.setProperty('/ConfirmData', this.getView().getModel('oDppStepTwoConfirmdData').getJSON().replace(/"/g, '\''));
 
             this._postDPPConfRequest();
         };
@@ -429,6 +433,31 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._retrDisclosureMessage = function () {
+            var oODataSvc = this.getView().getModel('oDataSvc'),
+                oParameters,
+                sPath;
+
+            sPath = '/DPPDisclos';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.sDisCloseMessage = oData.results[0].Message;
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oODataSvc) {
+                oODataSvc.read(sPath, oParameters);
+            }
+
+
+        };
+
         Controller.prototype._postDPPConfRequest = function () {
             var oODataSvc = this.getView().getModel('oDataSvc'),
                 oConf = this.getView().getModel('oDppConfs'),
@@ -447,27 +476,33 @@ sap.ui.define(
             oParameters = {
                 merge: false,
                 success : function (oData) {
-                    ute.ui.main.Popup.Confirm({
-                        title: 'DISCLOSURE',
-                        message: 'Confrim Message to be Added',
-                        callback: function (sAction) {
-                            if (sAction === 'Yes') {
-                            }
-                        }
+                    ute.ui.main.Popup.Alert({
+                        title: 'DEFFERED PAYMENT PLAN',
+                        message: 'DEFFERED PAYMENT PLAN request Success'
                     });
-                    this._selectScrn('');
+                    this._selectScrn('StepThree');
                 }.bind(this),
                 error: function (oError) {
                     ute.ui.main.Popup.Alert({
                         title: 'DEFFERED PAYMENT PLAN',
                         message: 'DEFFERED PAYMENT PLAN request failed'
                     });
+                    this._selectScrn('StepThree');
                 }.bind(this)
             };
 
-            if (oODataSvc) {
-                oODataSvc.create(sPath, oConf, oParameters);
-            }
+            ute.ui.main.Popup.Confirm({
+                title: 'DISCLOSURE',
+                message: this.sDisCloseMessage,
+                callback: function (sAction) {
+                    if (sAction === 'Yes') {
+                        if (oODataSvc) {
+                            oODataSvc.create(sPath, oConf, oParameters);
+                        }
+                    }
+                }
+            });
+
 
         };
 
