@@ -3,8 +3,8 @@
     "results":[
       {
         "__metadata":{
-          "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPCorresps(ContractAccountNumber='006009252104',PartnerID='70352375')",
-          "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPCorresps(ContractAccountNumber='006009252104',PartnerID='70352375')",
+          "id":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPCorresps(ContractAccountNumber='100738',PartnerID='64041')",
+          "uri":"http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPCorresps(ContractAccountNumber='100738',PartnerID='64041')",
           "type":"ZE_CCUX_DPP_EXT_SRV.DPPCorresp"
         },
         "Address":{
@@ -13,12 +13,12 @@
           },
           "StandardFlag":"",
           "co":"",
-          "Street":"",
-          "HouseNo":"",
-          "UnitNo":"",
-          "City":"",
-          "State":"",
-          "ZipCode":"",
+          "Street":"Fannin St",
+          "HouseNo":"1211",
+          "UnitNo":"300",
+          "City":"Houston",
+          "State":"TX",
+          "ZipCode":"77479",
           "PoBox":"",
           "ShortForm":"",
           "ValidFrom":null,
@@ -28,11 +28,11 @@
           "Supplement":"",
           "AddrLine":""
         },
-        "ContractAccountNumber":"006009252104",
-        "PartnerID":"70352375",
+        "ContractAccountNumber":"100738",
+        "PartnerID":"64041",
         "Contract":"",
-        "eMail":"",
-        "Fax":""
+        "eMail":"test@nrg.com",
+        "Fax":"713-345-9875"
       }
     ]
   }

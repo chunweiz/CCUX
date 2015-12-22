@@ -128,6 +128,15 @@ sap.ui.define(
             } else {
                 return;
             }
+
+            oScrnControl.setProperty('/StepOne', false);
+            oScrnControl.setProperty('/StepTwo', false);
+            oScrnControl.setProperty('/StepThree', false);
+            oScrnControl.setProperty('/DPPDenied', false);
+            oScrnControl.setProperty('/EXTGrant', false);
+            oScrnControl.setProperty('/EXTDenied', false);
+            oScrnControl.setProperty('/' + 'StepThree', true);
+            this._retrDppComunication();
         };
 
         /****************************************************************************************************************/
@@ -397,6 +406,29 @@ sap.ui.define(
         /****************************************************************************************************************/
         //OData Call
         /****************************************************************************************************************/
+        Controller.prototype._retrDppComunication = function () {
+            var oODataSvc = this.getView().getModel('oDataSvc'),
+                oParameters,
+                sPath;
+
+            sPath = '/DPPCorresps(ContractAccountNumber=\'' + this._caNum + '\',PartnerID=\'' + this._bpNum + '\')';
+
+            oParameters = {
+                success : function (oData) {
+                    if (oData) {
+                        this.getView().getModel('oDppStepThreeCom').setData(oData);
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    //Need to put error message
+                }.bind(this)
+            };
+
+            if (oODataSvc) {
+                oODataSvc.read(sPath, oParameters);
+            }
+        };
+
         Controller.prototype._retrDPPConf = function () {
             var oODataSvc = this.getView().getModel('oDataSvc'),
                 oParameters,
