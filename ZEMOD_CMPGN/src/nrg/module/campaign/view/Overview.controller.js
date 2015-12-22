@@ -65,7 +65,8 @@ sap.ui.define(
             oTemplateModel = new JSONModel();
             // Handler function for Tab Bar Item.
             fnRecievedHandler = function (oEvent) {
-                var sOfferCode;
+                var sOfferCode,
+                    oToggleContainerBinding = oToggleContainer.getBinding("content");
                 aContent = oToggleContainer.getContent();
                 if ((aContent !== undefined) && (aContent.length > 0)) {
                     if ((that._sFlag) && ((that._sFlag === "PE") || (that._sFlag === "P"))) {  // For pending Campaign check whether there is any data
@@ -125,6 +126,9 @@ sap.ui.define(
                     });
                 }
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                if (oToggleContainerBinding) {
+                    oToggleContainerBinding.detachDataReceived(fnRecievedHandler);
+                }
             };
              // Handler function for Tab Bar Item.
             oBindingInfo = {
@@ -509,8 +513,12 @@ sap.ui.define(
             oPendingSwapsTable = sap.ui.core.Fragment.byId("PendingOverview", "idnrgCamPds-pendTable");
             oPendingSwapsTemplate = sap.ui.core.Fragment.byId("PendingOverview", "idnrgCamPds-pendRow");
             fnRecievedHandler = function () {
+                var oBinding = oPendingSwapsTable.getBinding("rows");
                 that._oCancelDialog.open();
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                if (oBinding) {
+                    oBinding.detachDataReceived(fnRecievedHandler);
+                }
             };
             oBindingInfo = {
                 model : "comp-campaign",

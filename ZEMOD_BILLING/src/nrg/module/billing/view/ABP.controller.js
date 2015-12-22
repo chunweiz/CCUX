@@ -287,6 +287,9 @@ sap.ui.define(
                     title: 'Contract Not Found',
                     message: 'Contract number is not found in the routing.'
                 });
+                
+                // Close the ABP popup
+                this._ABPPopupControl.close();
             }
         };
 

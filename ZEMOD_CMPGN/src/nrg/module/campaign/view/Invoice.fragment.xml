@@ -23,12 +23,12 @@
             </u:Tag>
             <u:Tag class="nrgCamOff-mtx nrgCamOff-top">
                 <u:Tag class="nrgCamOff-mtxRow">
-                    <u:Tag text="September Invoice" class="nrgCamOff-mtxFstCell"/>
+                    <u:Tag text="{comp-campaign>BillMonth} Invoice" class="nrgCamOff-mtxFstCell"/>
                     <u:Tag text="$ {comp-campaign>CurrInvAmt}"
                            class="nrgCamOff-mtxSndCell"/>
                 </u:Tag>
                 <u:Tag class="nrgCamOff-mtxRow">
-                    <u:Tag text="September Invoice @ Campaign Estimation" class="nrgCamOff-mtxFstCell"/>
+                    <u:Tag text="{comp-campaign>BillMonth} Invoice @ Campaign Estimation" class="nrgCamOff-mtxFstCell"/>
                     <u:Tag text="$ {comp-campaign>EstInvAmt}"
                            class="nrgCamOff-mtxSndCell"/>
                 </u:Tag>

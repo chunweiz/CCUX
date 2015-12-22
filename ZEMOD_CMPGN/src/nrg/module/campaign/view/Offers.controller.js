@@ -121,6 +121,9 @@ sap.ui.define(
                     oTileContainer.addStyleClass("nrgCamOff-hide");
                 }
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                if (oBinding) {
+                    oBinding.detachDataReceived(fnRecievedHandler);
+                }
             };
             mParameters = {
                 model : "comp-campaign",
@@ -140,8 +143,8 @@ sap.ui.define(
                 model : "comp-campaign",
                 path : sCurrentPath,
                 template : oTagTemplate,
-                filters : aFilters,
-                events: {dataReceived : fnTagDataRecHandler}
+                filters : aFilters
+               /* events: {dataReceived : fnTagDataRecHandler}*/
             };
             oTagContainer.bindAggregation("content", mParameters);
             //}
@@ -570,6 +573,9 @@ sap.ui.define(
                         oTileContainer.addStyleClass("nrgCamOff-hide");
                     }
                     that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    if (oBinding) {
+                        oBinding.detachDataReceived(fnRecievedHandler);
+                    }
                 };
                 mParameters = {
                     model : "comp-campaign",
