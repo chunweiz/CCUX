@@ -154,6 +154,20 @@ sap.ui.define(
             this.footerElement.campBtnSec.setVisible(false);
         };
 
+        Controller.prototype.onContactLog = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: "Z_CLFULLVW"
+            });
+        };
+
+        Controller.prototype.onCreateLog = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: "Z_CLOG_CRE"
+            });
+        };
+
         /*-------------------------------------------------- Update Footer --------------------------------------------------*/
 
         Controller.prototype.updateFooter = function (channel, event, data) {
@@ -286,6 +300,9 @@ sap.ui.define(
                         if (bCurrentFlag === false) { this.getView().byId("nrgAppFtrDetails-rhs-currentItemContent").setText('None'); }
                         if (bPendingFlag === false) { this.getView().byId("nrgAppFtrDetails-rhs-pendingItemContent").setText('None'); }
                         if (bHistoryFlag === false) { this.getView().byId("nrgAppFtrDetails-rhs-historyItemContent").setText('None'); }
+
+                        oRhsModel.setProperty('/DropdownVis', false);
+                        oRhsModel.setProperty('/NoneVis', true);
 
                         this.footerElement.rhsEmptySec.setVisible(false);
                         this.footerElement.rhsProdSec.setVisible(true);
