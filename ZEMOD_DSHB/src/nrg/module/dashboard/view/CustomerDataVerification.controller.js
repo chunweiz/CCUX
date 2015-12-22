@@ -1304,10 +1304,6 @@ sap.ui.define(
             oPageModel.setProperty('/paging', oPage);
         };
 
-
-
-
-
         /*----------------------------------------------- CCUX Level Methods ------------------------------------------------*/
 
         Controller.prototype._routeInfoConfirm = function () {
