@@ -162,8 +162,12 @@ sap.ui.define(
             oPendingSwapsTemplate = sap.ui.core.Fragment.byId("PendingSwaps", "idnrgCamPds-pendRow");
             // Function received handler is used to update the view with first History campaign.---start
             fnRecievedHandler = function () {
+                var oTableBinding = oPendingSwapsTable.getBinding("rows");
                 that._oCancelDialog.open();
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                if (oTableBinding) {
+                    oTableBinding.detachDataReceived(fnRecievedHandler);
+                }
             };
             mParameters = {
                 model : "comp-campaign",

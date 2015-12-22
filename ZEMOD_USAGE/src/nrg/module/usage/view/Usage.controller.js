@@ -54,34 +54,41 @@ sap.ui.define(
             //aFilters.push(new Filter("CA", FilterOperator.Contains, "23", ""));
             fnRecievedHandler = function (oEvent, oData) {
                 var aContent = oServiceAddressDropDown.getContent(),
-                    oBindingContext,
                     sContentPath,
                     aFilterIds,
                     aFilterValues,
                     aFilters,
                     sPath = "/UsageS",
-                    fnTableDataRecdHandler;
+                    fnTableDataRecdHandler,
+                    oBinding = oUsageTable.getBinding("content");
                 fnTableDataRecdHandler = function (oEvent) {
+                    var oTableBinding = oServiceAddressDropDown.getBinding("content");
                     oGraphNoData.setVisible(false);
                     that._oGraphModel.setData(that.convertEFLJson(oEvent.mParameters.data.results.reverse()));
                     oGraph.setDataModel(that._oGraphModel);
+                    if (oTableBinding) {
+                        oTableBinding.detachDataReceived(fnTableDataRecdHandler);
+                    }
                 };
                 if ((aContent) && (aContent.length > 0)) {
-                    oServiceAddressDropDown.setSelectedKey(aContent[0].getKey());
-                    oBindingContext = aContent[0].getBindingContext("comp-usage");
-                    if (oBindingContext) {
-                        aFilterIds = ["Contract"];
-                        aFilterValues = [oBindingContext.getProperty("Contract")];
-                        aFilters = that._createSearchFilterObject(aFilterIds, aFilterValues);
-                        oBindingInfo = {
-                            model : "comp-usage",
-                            path : sPath,
-                            template : oUsageTableRowTemplate,
-                            filters : aFilters,
-                            events: {dataReceived : fnTableDataRecdHandler}
-                        };
-                        oUsageTable.bindAggregation("content", oBindingInfo);
-                    }
+                    aContent.forEach(function (oItem) {
+                        var oBindingContext = oItem.getBindingContext("comp-usage");
+                        if (that._sContract === oBindingContext.getProperty("Contract")) {
+                            oServiceAddressDropDown.setSelectedKey(oItem.getKey());
+                        }
+                    });
+                    aFilterIds = ["Contract"];
+                    aFilterValues = [that._sContract];
+                    aFilters = that._createSearchFilterObject(aFilterIds, aFilterValues);
+                    oBindingInfo = {
+                        model : "comp-usage",
+                        path : sPath,
+                        template : oUsageTableRowTemplate,
+                        filters : aFilters,
+                        events: {dataReceived : fnTableDataRecdHandler}
+                    };
+                    oUsageTable.bindAggregation("content", oBindingInfo);
+
                 } else {
                     if (oUsageTable) {
                         oUsageTable.removeAllContent();
@@ -89,6 +96,10 @@ sap.ui.define(
                     }
                 }
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                if (oBinding) {
+                    oBinding.detachDataReceived(fnRecievedHandler);
+                }
+
             };
             sPath = "/SrvAddrS";
             oBindingInfo = {
@@ -183,11 +194,15 @@ sap.ui.define(
             }
             oCurrentInfoLine.addStyleClass("nrgUsgTable-InfolineSelected");
             fnRecievedHandler = function (oEvent, oData) {
-                var aContent = oInsideTableTag.getContent();
+                var aContent = oInsideTableTag.getContent(),
+                    oTableBinding = oInsideTableTag.getBinding("content");
                 if ((aContent) && (aContent.length === 0)) {
                     oInsideTableTag.addContent(oNoDataTag);
                 }
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
+                if (oTableBinding) {
+                    oTableBinding.detachDataReceived(fnRecievedHandler);
+                }
             };
             oBindingContext = oCurrentInfoLine.getBindingContext("comp-usage");
             aFilterIds = ["Contract", "PeriodBegin", "PeriodEnd"];
@@ -278,6 +293,7 @@ sap.ui.define(
                 sKey,
                 oGraphNoData = this.getView().byId('idnrgUsg-Graph-NoData'),
                 aDummyArray = [];
+            this._SelectedInfoLines = [];
             aContent = oServiceAddressDropDown.getContent();
             sKey = oServiceAddressDropDown.getSelectedKey();
             aContent.forEach(function (oContent) {
@@ -292,8 +308,12 @@ sap.ui.define(
                 aFilterValues = [oBindingContext.getProperty("Contract")];
                 aFilters = that._createSearchFilterObject(aFilterIds, aFilterValues);
                 fnTableDataRecdHandler = function (oEvent) {
-                    that._oGraphModel.setData()(that.convertEFLJson(oEvent.mParameters.data.results.reverse()));
+                    var oTableBinding = oUsageTable.getBinding("content");
+                    that._oGraphModel.setData(that.convertEFLJson(oEvent.mParameters.data.results.reverse()));
                     oGraphNoData.setVisible(false);
+                    if (oTableBinding) {
+                        oTableBinding.detachDataReceived(fnTableDataRecdHandler);
+                    }
                 };
                 oBindingInfo = {
                     model : "comp-usage",
