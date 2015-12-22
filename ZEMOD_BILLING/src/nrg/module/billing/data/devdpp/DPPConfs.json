@@ -16,7 +16,11 @@
           "DueDate":"\/Date(1450764001000+0000)\/",
           "ClearDate":null,
           "Cleared":"NO",
-          "ClearedAmt":"0.0000"
+          "ClearedAmt":"0.0000",
+          "Opbel":"321",
+          "Opupw":123,
+          "Opupk":456,
+          "Hvorg":"654"
         },
         "ContractAccountNumber":"100738",
         "PartnerID":"64041",
@@ -29,6 +33,10 @@
         "InstlmntNo":5,
         "ZeroDwnPay":"",
         "DPPError":"",
+        "InitialDate":"\/Date(1450764001000+0000)\/",
+        "ReasonCode":3405,
+        "Reason":"testReason",
+        "ConfirmData":null,
         "DPPSetUpSet":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPConfs(ContractAccountNumber='100738',PartnerID='64041',SelectedData='%7B%22SELECTEDDATA%22%3A%5B%7B%22IND%22%3A%221%22%7D%5D%7D',InstlmntNo=5,ZeroDwnPay='')/DPPSetUpSet"
@@ -50,7 +58,11 @@
           "DueDate":"\/Date(1453442401000+0000)\/",
           "ClearDate":null,
           "Cleared":"NO",
-          "ClearedAmt":"0.0000"
+          "ClearedAmt":"0.0000",
+          "Opbel":"321",
+          "Opupw":123,
+          "Opupk":456,
+          "Hvorg":"654"
         },
         "ContractAccountNumber":"100738",
         "PartnerID":"64041",
@@ -63,6 +75,10 @@
         "InstlmntNo":5,
         "ZeroDwnPay":"",
         "DPPError":"",
+        "InitialDate":"\/Date(1450764001000+0000)\/",
+        "ReasonCode":3405,
+        "Reason":"testReason",
+        "ConfirmData":null,
         "DPPSetUpSet":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPConfs(ContractAccountNumber='100738',PartnerID='64041',SelectedData='%7B%22SELECTEDDATA%22%3A%5B%7B%22IND%22%3A%221%22%7D%5D%7D',InstlmntNo=5,ZeroDwnPay='')/DPPSetUpSet"
@@ -84,7 +100,11 @@
           "DueDate":"\/Date(1456120801000+0000)\/",
           "ClearDate":null,
           "Cleared":"NO",
-          "ClearedAmt":"0.0000"
+          "ClearedAmt":"0.0000",
+          "Opbel":"321",
+          "Opupw":123,
+          "Opupk":456,
+          "Hvorg":"654"
         },
         "ContractAccountNumber":"100738",
         "PartnerID":"64041",
@@ -97,6 +117,10 @@
         "InstlmntNo":5,
         "ZeroDwnPay":"",
         "DPPError":"",
+        "InitialDate":"\/Date(1450764001000+0000)\/",
+        "ReasonCode":3405,
+        "Reason":"testReason",
+        "ConfirmData":null,
         "DPPSetUpSet":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPConfs(ContractAccountNumber='100738',PartnerID='64041',SelectedData='%7B%22SELECTEDDATA%22%3A%5B%7B%22IND%22%3A%221%22%7D%5D%7D',InstlmntNo=5,ZeroDwnPay='')/DPPSetUpSet"
@@ -118,7 +142,11 @@
           "DueDate":"\/Date(1458622801000+0000)\/",
           "ClearDate":null,
           "Cleared":"NO",
-          "ClearedAmt":"0.0000"
+          "ClearedAmt":"0.0000",
+          "Opbel":"321",
+          "Opupw":123,
+          "Opupk":456,
+          "Hvorg":"654"
         },
         "ContractAccountNumber":"100738",
         "PartnerID":"64041",
@@ -131,6 +159,10 @@
         "InstlmntNo":5,
         "ZeroDwnPay":"",
         "DPPError":"",
+        "InitialDate":"\/Date(1450764001000+0000)\/",
+        "ReasonCode":3405,
+        "Reason":"testReason",
+        "ConfirmData":null,
         "DPPSetUpSet":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPConfs(ContractAccountNumber='100738',PartnerID='64041',SelectedData='%7B%22SELECTEDDATA%22%3A%5B%7B%22IND%22%3A%221%22%7D%5D%7D',InstlmntNo=5,ZeroDwnPay='')/DPPSetUpSet"
@@ -152,7 +184,11 @@
           "DueDate":"\/Date(1461301201000+0000)\/",
           "ClearDate":null,
           "Cleared":"NO",
-          "ClearedAmt":"0.0000"
+          "ClearedAmt":"0.0000",
+          "Opbel":"321",
+          "Opupw":123,
+          "Opupk":456,
+          "Hvorg":"654"
         },
         "ContractAccountNumber":"100738",
         "PartnerID":"64041",
@@ -165,6 +201,10 @@
         "InstlmntNo":5,
         "ZeroDwnPay":"",
         "DPPError":"",
+        "InitialDate":"\/Date(1450764001000+0000)\/",
+        "ReasonCode":3405,
+        "Reason":"testReason",
+        "ConfirmData":null,
         "DPPSetUpSet":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPConfs(ContractAccountNumber='100738',PartnerID='64041',SelectedData='%7B%22SELECTEDDATA%22%3A%5B%7B%22IND%22%3A%221%22%7D%5D%7D',InstlmntNo=5,ZeroDwnPay='')/DPPSetUpSet"
@@ -186,7 +226,11 @@
           "DueDate":"\/Date(1463979601000+0000)\/",
           "ClearDate":null,
           "Cleared":"NO",
-          "ClearedAmt":"0.0000"
+          "ClearedAmt":"0.0000",
+          "Opbel":"321",
+          "Opupw":123,
+          "Opupk":456,
+          "Hvorg":"654"
         },
         "ContractAccountNumber":"100738",
         "PartnerID":"64041",
@@ -199,6 +243,10 @@
         "InstlmntNo":5,
         "ZeroDwnPay":"",
         "DPPError":"",
+        "InitialDate":"\/Date(1450764001000+0000)\/",
+        "ReasonCode":3405,
+        "Reason":"testReason",
+        "ConfirmData":null,
         "DPPSetUpSet":{
           "__deferred":{
             "uri":"http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/DPPConfs(ContractAccountNumber='100738',PartnerID='64041',SelectedData='%7B%22SELECTEDDATA%22%3A%5B%7B%22IND%22%3A%221%22%7D%5D%7D',InstlmntNo=5,ZeroDwnPay='')/DPPSetUpSet"
