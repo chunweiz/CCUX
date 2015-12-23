@@ -222,13 +222,15 @@
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-corr">
                     <ute:Tag class="nrgBilling-dlcc-chbrow">
-                        <utmain:Checkbox class="nrgBilling-dlcc-chbrow-chb"/>
+                        <utmain:Checkbox class="nrgBilling-dlcc-chbrow-chb"
+                                         checked="{oDppStepThreeCom>/eMailCheck}" select="._onComEmailCheck"/>
                         <utmain:Label class="nrgBilling-dlcc-chbrow-lbl" text="{comp-i18n-billing>nrgBilling-dpp-viaEmail}"/>
                         <ute:Textfield class="nrgBilling-dlcc-mail-val"
                                        fieldType="Underlined" width="200px" value="{oDppStepThreeCom>/eMail}"/>
                     </ute:Tag>
                     <ute:Tag class="nrgBilling-dlcc-chbrow">
-                        <utmain:Checkbox class="nrgBilling-dlcc-chbrow-chb"/>
+                        <utmain:Checkbox class="nrgBilling-dlcc-chbrow-chb"
+                                         checked="{oDppStepThreeCom>/FaxCheck}" select="._onComFaxCheck"/>
                         <utmain:Label class="nrgBilling-dlcc-chbrow-lbl" text="{comp-i18n-billing>nrgBilling-dpp-viaFax}"/>
                         <ute:Textfield class="nrgBilling-dlcc-mail-val"
                                        fieldType="Underlined" width="200px" value="{oDppStepThreeCom>/Fax}"/>
@@ -241,7 +243,8 @@
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-ctnt-corr">
                     <ute:Tag class="nrgBilling-dlcc-chbrow">
-                        <utmain:Checkbox class="nrgBilling-dlcc-chbrow-chb"/>
+                        <utmain:Checkbox class="nrgBilling-dlcc-chbrow-chb"
+                                         checked="{oDppStepThreeCom>/eAddrCheck}" select="._onComAddrCheck"/>
                         <utmain:Label class="nrgBilling-dlcc-chbrow-lbl" text="{comp-i18n-billing>nrgBilling-dpp-viaMail}"/>
                         <!--<utmain:Dropdown class="nrgBilling-dlcc-chbrow-sel">
                             <utmain:DropdownItem>
@@ -320,9 +323,11 @@
             </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-btns">
-                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnBack}"/>
-                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnSend}"/>
-                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnCncl}"/>
+                    <!--<utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnBack}"/>-->
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnSend}"
+                                   press="._onDPPThirdStepSend"/>
+                    <utmain:Button class="nrgBilling-dlbb-btn" text="{comp-i18n-billing>nrgBilling-dpp-BtnCncl}"
+                                   press="._onDppDeniedOkClick"/>
                 </ute:Tag>
             </ute:Tag>
         </ute:Tag>

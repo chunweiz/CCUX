@@ -32,7 +32,10 @@
         "PartnerID":"64041",
         "Contract":"",
         "eMail":"test@nrg.com",
-        "Fax":"713-345-9875"
+        "Fax":"713-345-9875",
+        "eMailCheck":null,
+        "eAddrCheck":null,
+        "FaxCheck":null
       }
     ]
   }

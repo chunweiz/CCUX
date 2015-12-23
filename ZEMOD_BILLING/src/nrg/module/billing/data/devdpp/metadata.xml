@@ -16,8 +16,8 @@
         <Property Name="InstlmntNo" Type="Edm.Int16" Nullable="false" sap:label="Signed INT2 / int16" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="InstlmntNoAuth" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="StartDate" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <NavigationProperty Name="DPPConfSets" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPSetUp_DPPConf" FromRole="FromRole_DPPSetUp_DPPConf" ToRole="ToRole_DPPSetUp_DPPConf" />
         <NavigationProperty Name="DPPElgble" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPElgble_DPPSetUp" FromRole="ToRole_DPPElgble_DPPSetUp" ToRole="FromRole_DPPElgble_DPPSetUp" />
+        <NavigationProperty Name="DPPConfSets" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPSetUp_DPPConf" FromRole="FromRole_DPPSetUp_DPPConf" ToRole="ToRole_DPPSetUp_DPPConf" />
       </EntityType>
       <EntityType Name="DPPReason" sap:content-version="1">
         <Key>
@@ -69,8 +69,14 @@
         <Property Name="Address" Type="ZE_CCUX_DPP_EXT_SRV.Address" Nullable="false" />
         <Property Name="ContractAccountNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="PartnerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="Contract" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="eMail" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="Fax" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="Message" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="Error" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="eMailCheck" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="FaxCheck" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="AddrCheck" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
       </EntityType>
       <EntityType Name="DPPElgble" sap:content-version="1">
         <Key>
@@ -311,8 +317,8 @@
           <Parameter Name="ContractAccountNumber" Type="Edm.String" Mode="In" MaxLength="12" />
         </FunctionImport>
       </EntityContainer>
-      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/$metadata" />
-      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://sapcmq02.retail.nrgenergy.com:8001/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/$metadata" />
+      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/$metadata" />
+      <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://sapcmd02.retail.nrgenergy.com:8000/sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/$metadata" />
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>

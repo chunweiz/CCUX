@@ -222,6 +222,30 @@ sap.ui.define(
         /****************************************************************************************************************/
         //Handler
         /****************************************************************************************************************/
+        Controller.prototype._onComEmailCheck = function () {
+            var oDPPComunication = this.getView().getModel('oDppStepThreeCom');
+
+            oDPPComunication.setProperty('/eMailCheck', true);
+            oDPPComunication.setProperty('/FaxCheck', false);
+            oDPPComunication.setProperty('/eAddrCheck', false);
+        };
+
+        Controller.prototype._onComFaxCheck = function () {
+            var oDPPComunication = this.getView().getModel('oDppStepThreeCom');
+
+            oDPPComunication.setProperty('/eMailCheck', false);
+            oDPPComunication.setProperty('/FaxCheck', true);
+            oDPPComunication.setProperty('/eAddrCheck', false);
+        };
+
+        Controller.prototype._onComAddrCheck = function () {
+            var oDPPComunication = this.getView().getModel('oDppStepThreeCom');
+
+            oDPPComunication.setProperty('/eMailCheck', false);
+            oDPPComunication.setProperty('/FaxCheck', false);
+            oDPPComunication.setProperty('/eAddrCheck', true);
+        };
+
         Controller.prototype._onDppDeniedOkClick = function () {    //Navigate to DPP setup if 'OK' is clicked
             var oRouter = this.getOwnerComponent().getRouter();
 
@@ -251,6 +275,10 @@ sap.ui.define(
         Controller.prototype._onDppExtConfirmClick = function () {
             //Send the Extension request out.
             this._postExtRequest();
+        };
+
+        Controller.prototype._onDPPThirdStepSend = function () {
+            this._postDPPCommunication();
         };
 
         Controller.prototype._onReasonSelect = function () {
@@ -406,6 +434,35 @@ sap.ui.define(
         /****************************************************************************************************************/
         //OData Call
         /****************************************************************************************************************/
+        Controller.prototype._postDPPCommunication = function () {
+            var oODataSvc = this.getView().getModel('oDataSvc'),
+                oParameters,
+                sPath,
+                oDPPComunication = this.getView().getModel('oDppStepThreeCom');
+
+            sPath = '/DPPCorresps';
+
+            oParameters = {
+                merge: false,
+                success : function (oData) {
+                    ute.ui.main.Popup.Alert({
+                        title: 'DEFFERED PAYMENT PLAN',
+                        message: 'Correspondence Successfully Sent.'
+                    });
+                }.bind(this),
+                error: function (oError) {
+                    ute.ui.main.Popup.Alert({
+                        title: 'DEFFERED PAYMENT PLAN',
+                        message: 'Correspondence Failed'
+                    });
+                }.bind(this)
+            };
+
+            if (oODataSvc) {
+                oODataSvc.create(sPath, oDPPComunication, oParameters);
+            }
+        };
+
         Controller.prototype._retrDppComunication = function () {
             var oODataSvc = this.getView().getModel('oDataSvc'),
                 oParameters,
@@ -417,6 +474,9 @@ sap.ui.define(
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oDppStepThreeCom').setData(oData);
+                        this.getView().getModel('oDppStepThreeCom').setProperty('/eMailCheck', true);
+                        this.getView().getModel('oDppStepThreeCom').setProperty('/FaxCheck', false);
+                        this.getView().getModel('oDppStepThreeCom').setProperty('/eAddrCheck', false);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -534,8 +594,6 @@ sap.ui.define(
                     }
                 }
             });
-
-
         };
 
         Controller.prototype._isDppElgble = function () {
