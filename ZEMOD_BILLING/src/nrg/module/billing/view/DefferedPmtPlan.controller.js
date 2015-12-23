@@ -128,15 +128,6 @@ sap.ui.define(
             } else {
                 return;
             }
-
-            oScrnControl.setProperty('/StepOne', false);
-            oScrnControl.setProperty('/StepTwo', false);
-            oScrnControl.setProperty('/StepThree', false);
-            oScrnControl.setProperty('/DPPDenied', false);
-            oScrnControl.setProperty('/EXTGrant', false);
-            oScrnControl.setProperty('/EXTDenied', false);
-            oScrnControl.setProperty('/' + 'StepThree', true);
-            this._retrDppComunication();
         };
 
         /****************************************************************************************************************/
