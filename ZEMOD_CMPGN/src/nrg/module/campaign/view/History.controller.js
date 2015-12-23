@@ -67,7 +67,7 @@ sap.ui.define(
             oTemplateModel = new sap.ui.model.json.JSONModel();
             // Function received handler is used to update the view with first History campaign.---start
             fnRecievedHandler = function () {
-                var oBinding;
+                var oBinding = oHistoryTable.getBinding("rows");
                 aRows = oHistoryTable.getRows();
                 if ((aRows !== undefined) && (aRows.length > 0)) {
                     sPath = aRows[0].getBindingContext("comp-campaign").getPath();
@@ -109,7 +109,9 @@ sap.ui.define(
                     oNoDataTag.removeStyleClass("nrgCamHis-hide");
                 }
                 that.getOwnerComponent().getCcuxApp().setOccupied(false);
-
+                if (oBinding) {
+                    oBinding.detachDataReceived(fnRecievedHandler);
+                }
             };
             // Function received handler is used to update the view with first History campaign.---end
             mParameters = {
