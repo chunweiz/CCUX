@@ -226,14 +226,14 @@
             </ute:Tag>
 
             <ute:Tag class="nrgAppMain-footerTool">
-                <!-- Contact Log Full View -->
+                <!-- Create Inquiry Contact Log -->
                 <core:Icon src="sap-icon://nrg-icon/contact-log"
                     class="nrgAppFtrDetails-tool-icon"
-                    press="onContactLog"/>
-                <!-- Create Inquiry Contact Log -->
+                    press="onCreateLog"/>
+                <!-- Contact Log Full View -->
                 <core:Icon src="sap-icon://nrg-icon/notes"
                     class="nrgAppFtrDetails-tool-icon"
-                    press="onCreateLog"/>
+                    press="onContactLog"/>
             </ute:Tag>
 
         </ute:Tag>
