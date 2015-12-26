@@ -90,6 +90,22 @@ sap.ui.define(
             case App.QuickLinkId.ContactLog:
                 this._onQLContactLogClick(oControlEvent);
                 break;
+            case App.QuickLinkId.Billing:
+                this._onQLBillingClick(oControlEvent);
+                break;
+            }
+        };
+        CustomController.prototype._onQLBillingClick = function (oControlEvent) {
+            var oContext, oRouter;
+
+            oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
+            oRouter = this.getOwnerComponent().getRouter();
+
+            if (oContext.bpNum) {
+                oRouter.navTo('billing.BillingInfoNoCo', {
+                    bpNum: oContext.bpNum,
+                    caNum: oContext.caNum
+                });
             }
         };
         CustomController.prototype._onQLContactLogClick = function (oControlEvent) {

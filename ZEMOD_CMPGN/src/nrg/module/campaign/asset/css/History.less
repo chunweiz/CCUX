@@ -23,13 +23,30 @@
     &   .nrgCamHis-top {
             margin-top: 5px;
     }
-    & > div > .nrgCamHis-Div {
+    & > .nrgCamHis-Div {
             margin-top: 10px;
             margin-bottom: 10px;
             border: 2px solid @nrgColor-grey-highlight;
             padding-top: 5px;
             padding-bottom: 5px;
             text-align: right;
+            background-color: @nrgColor-grey-highlight;
+
+        & > .nrgCamHis-btns {
+            background-color: @nrgColor-blue-pearl;
+               & > .uteMBtn-text {
+                        padding: 4px 0;
+                        font-size: @nrgFontSize-small;
+                        font-weight: @nrgFontWeight-semiBold;
+                        color: @nrgColor-blue-link;
+                    }
+        }
+        & > .nrgCamHis-btns:hover {
+                background-color: @nrgColor-blue-pearl;
+               & > .uteMBtn-text {
+                        color: @nrgColor-blue-light;
+                    }
+        }
     }
     & > div > .nrgCamHis-Mtx{
             font-family: @nrgFontFamily;

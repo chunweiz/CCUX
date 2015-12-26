@@ -71,12 +71,14 @@ sap.ui.define(
                     }
                 };
                 if ((aContent) && (aContent.length > 0)) {
-                    aContent.forEach(function (oItem) {
-                        var oBindingContext = oItem.getBindingContext("comp-usage");
-                        if (that._sContract === oBindingContext.getProperty("Contract")) {
-                            oServiceAddressDropDown.setSelectedKey(oItem.getKey());
-                        }
-                    });
+                    if (that._sContract) {
+                        aContent.forEach(function (oItem) {
+                            var oBindingContext = oItem.getBindingContext("comp-usage");
+                            if (parseInt(that._sContract, 10) === parseInt(oBindingContext.getProperty("Contract"), 10)) {
+                                oServiceAddressDropDown.setSelectedKey(oItem.getKey());
+                            }
+                        });
+                    }
                     aFilterIds = ["Contract"];
                     aFilterValues = [that._sContract];
                     aFilters = that._createSearchFilterObject(aFilterIds, aFilterValues);
@@ -261,6 +263,15 @@ sap.ui.define(
                     { meterReadDate: '12/11/2014', kwhUsage: 200, avgHighTemp: 70 }
                 ]
             }));*/
+        };
+        /**
+		 * Handler when user clicked on Billing
+		 *
+		 * @function
+		 * @param {Event} oEvent object
+		 */
+        Controller.prototype.onBilling = function (oEvent) {
+            this.navTo("billing.BillingInfo", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
         };
        /**
 		 * Handler when user clicked on rate history

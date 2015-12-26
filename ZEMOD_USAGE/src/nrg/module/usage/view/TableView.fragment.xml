@@ -70,7 +70,7 @@
                                           {path: 'comp-usage>PeriodEnd', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'}}],
                                           formatter:'.formatDateColumn'}"
                             class="nrgUsgTable-Data nrgUsgTable-Data-dt"/>-->
-                            <u:Tag text="{parts:[{path: 'comp-usage>PeriodBegin', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'}},
+                            <u:Tag text="{parts:[{path: 'comp-usage>Type'}, {path: 'comp-usage>PeriodBegin', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'}},
                                      {path: 'comp-usage>PeriodEnd', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MM/dd/yyyy'}}],
                                                         formatter:'.formatDateColumn'}"
                                    class="nrgUsgTable-Data nrgUsgTable-Data-dt"/>
