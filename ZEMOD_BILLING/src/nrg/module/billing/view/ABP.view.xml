@@ -143,7 +143,7 @@
                 <ute:Tag id="nrgBilling-avgBillingPopup-usage-graph" class="nrgBilling-avgBillingPopup-usage-graph">
                 </ute:Tag>
                 <!-- Graph Legend -->
-                <ute:Tag class="nrgBilling-avgBillingPopup-usage-control">
+                <ute:Tag id="nrgBilling-avgBillingPopup-usage-control" class="nrgBilling-avgBillingPopup-usage-control">
                     <ute:Tag visible="false" id="nrgBilling-avgBillingPopup-graphControlBtn-0" class="usageChartLegend">
                         <utmain:Checkbox id="nrgBilling-avgBillingPopup-graphControlChkbox-0" class="usageChartLegend-checkbox" checked="true" select=".onSelected" />
                         <utmain:Label labelFor="2015-intChk" class="usageChartLegend-label">

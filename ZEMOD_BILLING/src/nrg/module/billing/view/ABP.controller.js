@@ -193,6 +193,8 @@ sap.ui.define(
                 this._retrieveABPEligibility(this._coNum, function () {bDoneRetrEligibility = true; });
 
                 checkDoneRetrEligibility = setInterval(function () {
+                    var i, graphControlBtn;
+
                     if (bDoneRetrEligibility) {
                         // Display the loading indicator
                         this._OwnerComponent.getCcuxApp().setOccupied(true);
@@ -230,6 +232,11 @@ sap.ui.define(
                                 this._retrieveTableInfo(this._coNum, function () {bDoneRetrTable = true; });
                                 // Retrieve the data for graph
                                 this._retrieveGraphInfo(this._coNum, function () {bDoneRetrGraph = true; });
+                                // Check all graph control checkboxes
+                                for (i = 0; i < this.getView().byId('nrgBilling-avgBillingPopup-usage-control').getContent().length; i++) {
+                                    graphControlBtn = this.getView().byId('nrgBilling-avgBillingPopup-usage-control').getContent()[i];
+                                    graphControlBtn.getContent()[0].setChecked(true);
+                                }
 
                                 checkRetrTableGraphComplete = setInterval(function () {
                                     if (bDoneRetrTable && bDoneRetrGraph) {
