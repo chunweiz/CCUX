@@ -227,7 +227,7 @@ sap.ui.define(
 
             oDPPComunication.setProperty('/eMailCheck', true);
             oDPPComunication.setProperty('/FaxCheck', false);
-            oDPPComunication.setProperty('/eAddrCheck', false);
+            oDPPComunication.setProperty('/AddrCheck', false);
         };
 
         Controller.prototype._onComFaxCheck = function () {
@@ -235,7 +235,7 @@ sap.ui.define(
 
             oDPPComunication.setProperty('/eMailCheck', false);
             oDPPComunication.setProperty('/FaxCheck', true);
-            oDPPComunication.setProperty('/eAddrCheck', false);
+            oDPPComunication.setProperty('/AddrCheck', false);
         };
 
         Controller.prototype._onComAddrCheck = function () {
@@ -243,7 +243,7 @@ sap.ui.define(
 
             oDPPComunication.setProperty('/eMailCheck', false);
             oDPPComunication.setProperty('/FaxCheck', false);
-            oDPPComunication.setProperty('/eAddrCheck', true);
+            oDPPComunication.setProperty('/AddrCheck', true);
         };
 
         Controller.prototype._onDppDeniedOkClick = function () {    //Navigate to DPP setup if 'OK' is clicked
@@ -578,7 +578,7 @@ sap.ui.define(
                         this.getView().getModel('oDppStepThreeCom').setData(oData);
                         this.getView().getModel('oDppStepThreeCom').setProperty('/eMailCheck', true);
                         this.getView().getModel('oDppStepThreeCom').setProperty('/FaxCheck', false);
-                        this.getView().getModel('oDppStepThreeCom').setProperty('/eAddrCheck', false);
+                        this.getView().getModel('oDppStepThreeCom').setProperty('/AddrCheck', false);
                     }
                 }.bind(this),
                 error: function (oError) {
