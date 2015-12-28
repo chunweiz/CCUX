@@ -21,6 +21,15 @@
                             design="None">
                 </um:button>
             </div>
+            <u:Tag class="nrgCamHis-Div">
+                <um:Button text="{comp-i18n-campaign>nrgCmpHisLBilling}"
+                            class="nrgCamHis-btns"
+                            design="None" />
+                <um:Button text="{comp-i18n-campaign>nrgCmpHisLUsage}"
+                           press=".onAvgUsage"
+                           class="nrgCamHis-btns"
+                           design="None" />
+            </u:Tag>
               <u:Tag id="idnrgCamHisData">
                 <l:MatrixLayout class="nrgCamHis-Mtx nrgCamHis-top">
                     <l:MatrixLayoutRow>
@@ -70,15 +79,7 @@
                         </u:TableRow>
                     </u:rows>
                 </u:Table>
-                <u:Tag class="nrgCamHis-Div">
-                    <um:Button text="{comp-i18n-campaign>nrgCmpHisLBilling}"
-                                class="nrgCamHis-btns"
-                                design="None" />
-                    <um:Button text="{comp-i18n-campaign>nrgCmpHisLUsage}"
-                               press=".onAvgUsage"
-                               class="nrgCamHis-btns"
-                               design="None" />
-                </u:Tag>
+
                 <u:Table width="100%"
                          class="nrgCamHis-table"
                          tableType="CampaignTable"

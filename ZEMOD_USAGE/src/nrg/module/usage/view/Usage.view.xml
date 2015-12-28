@@ -44,6 +44,12 @@
                                 design="None">
                             </um:button>
                         </u:Tag>
+                        <u:Tag class="nrgUsg-tier">
+                            <um:Button press=".onBilling"
+                                text="{comp-i18n-usage>nrgUsgBilling}"
+                                design="None">
+                            </um:button>
+                        </u:Tag>
                     </u:Tag>
                 <u:Tag class="nrgUsg-Table">
                     <u:Tag>

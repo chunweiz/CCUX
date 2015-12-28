@@ -112,39 +112,7 @@ sap.ui.define(
             }
             fnColor = d3.scale.ordinal()
                 .domain(aData, fnLabel)
-                .range(function (sChanneltype) {
-                    var sColor = '#2AA6DF';
-                    switch (sChanneltype) {
-                    case "Website":
-                        sColor = '#2AA6DF';
-                        break;
-                    case "Chat":
-                        sColor = '#FDD20A';
-                        break;
-                    case "Survey":
-                        sColor = '#E80E89';
-                        break;
-                    case "agent":
-                        sColor = '#a6df2a';
-                        break;
-                    case "IVR":
-                        sColor = '#59308c';
-                        break;
-                    case "Phone":
-                        sColor = '#449646';
-                        break;
-                    case "Correspondence":
-                        sColor = '#f15a24';
-                        break;
-                    case "Mobile":
-                        sColor = '#a6df2a';
-                        break;
-                    case "MISC":
-                        sColor = 'sap-icon://nrg-icon/location';
-                        break;
-                    }
-                    return sColor;
-                });
+                .range(['#2AA6DF', '#FDD20A', '#E80E89', '#a6df2a', '#59308c', '#449646', '#f15a24']);
 
             /* Donut rim */
             oPieRim = oCanvas.append('g');
