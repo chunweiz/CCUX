@@ -366,7 +366,14 @@ sap.ui.define(
             var oConf = this.getView().getModel('oDppConfs'),
                 i,
                 oConfPost = this.getView().getModel('oDppStepTwoPost'),
-                aConfirmData = [];
+                aConfirmData = [],
+                sTempDueDate,
+                sTempClearDate;
+
+            /*for (i = 0; i < oConf.getData().results.length; i = i + 1) {
+                //oConf.getData().results[i].ConfirmdItems.DueDate
+                oConf.setProperty('/results/' + i + '/ConfirmdItems/DueDate', oConf.getData().results[i].ConfirmdItems.DueDate.getFullYear().toString() + '-' + (oConf.getData().results[i].ConfirmdItems.DueDate.getMonth() + 1).toString() + '-' + (oConf.getData().results[i].ConfirmdItems.DueDate.getDate()).toString());
+            }*/
 
             oConfPost.setProperty('/ContractAccountNumber', oConf.oData.results[0].ContractAccountNumber);
             oConfPost.setProperty('/PartnerID', oConf.oData.results[0].PartnerID);
@@ -378,7 +385,18 @@ sap.ui.define(
             oConfPost.setProperty('/Reason', oConf.oData.results[0].Reason);
 
             for (i = 0; i < oConf.getData().results.length; i = i + 1) {
-                aConfirmData.push({IND: oConf.getData().results[i].ConfirmdItems.ItemNumber, AMT: oConf.getData().results[i].ConfirmdItems.Amount, DUEDATE: oConf.getData().results[i].ConfirmdItems.DueDate, CLRDT: oConf.getData().results[i].ConfirmdItems.ClearDate, CLRED: oConf.getData().results[i].ConfirmdItems.Cleared, CLRAMT: oConf.getData().results[i].ConfirmdItems.ClearedAmt, OPBEL: oConf.getData().results[i].ConfirmdItems.Opbel, OPUPW: oConf.getData().results[i].ConfirmdItems.Opupw, OPUPK: oConf.getData().results[i].ConfirmdItems.Opupk, OPUPZ: oConf.getData().results[i].ConfirmdItems.Opupz});
+                if (oConf.getData().results[i].ConfirmdItems.DueDate) {
+                    sTempDueDate = oConf.getData().results[i].ConfirmdItems.DueDate.getFullYear().toString() + '-' + (oConf.getData().results[i].ConfirmdItems.DueDate.getMonth() + 1).toString() + '-' + (oConf.getData().results[i].ConfirmdItems.DueDate.getDate()).toString();
+                } else {
+                    sTempDueDate = null;
+                }
+                if (oConf.getData().results[i].ConfirmdItems.ClearDate) {
+                    sTempClearDate = oConf.getData().results[i].ConfirmdItems.ClearDate.getFullYear().toString() + '-' + (oConf.getData().results[i].ConfirmdItems.ClearDate.getMonth() + 1).toString() + '-' + (oConf.getData().results[i].ConfirmdItems.ClearDate.getDate()).toString();
+                } else {
+                    sTempClearDate = null;
+                }
+
+                aConfirmData.push({IND: oConf.getData().results[i].ConfirmdItems.ItemNumber, AMT: oConf.getData().results[i].ConfirmdItems.Amount, DUEDATE: sTempDueDate, CLRDT: sTempClearDate, CLRED: oConf.getData().results[i].ConfirmdItems.Cleared, CLRAMT: oConf.getData().results[i].ConfirmdItems.ClearedAmt, OPBEL: oConf.getData().results[i].ConfirmdItems.Opbel, OPUPW: oConf.getData().results[i].ConfirmdItems.Opupw, OPUPK: oConf.getData().results[i].ConfirmdItems.Opupk, OPUPZ: oConf.getData().results[i].ConfirmdItems.Opupz});
             }
             this.getView().getModel('oDppStepTwoConfirmdData').setProperty('/CONFIRMDATA', aConfirmData);
             oConfPost.setProperty('/ConfirmData', this.getView().getModel('oDppStepTwoConfirmdData').getJSON().replace(/"/g, '\''));
@@ -505,7 +523,7 @@ sap.ui.define(
             sPath = '/DPPConfs';
 
             oParameters = {
-                filters: aFilters,
+                //filters: aFilters,
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oDppConfs').setData(oData);
@@ -553,7 +571,7 @@ sap.ui.define(
 
         Controller.prototype._postDPPConfRequest = function () {
             var oODataSvc = this.getView().getModel('oDataSvc'),
-                oConf = this.getView().getModel('oDppConfs'),
+                //oConf = this.getView().getModel('oDppConfs'),
                 sPath,
                 oParameters,
                 i,
@@ -561,10 +579,10 @@ sap.ui.define(
 
             sPath = '/DPPConfs';
 
-            delete oConf.oData.results.AllChecked;
+            /*delete oConf.oData.results.AllChecked;
             for (i = 0; i < oConf.oData.results.length; i = i + 1) {
                 delete oConf.oData.results[i].Checked;
-            }
+            }*/
 
             oParameters = {
                 merge: false,
@@ -590,7 +608,7 @@ sap.ui.define(
                 callback: function (sAction) {
                     if (sAction === 'Yes') {
                         if (oODataSvc) {
-                            oODataSvc.create(sPath, oConf, oParameters);
+                            oODataSvc.create(sPath, oConfPost, oParameters);
                         }
                     }
                 }
