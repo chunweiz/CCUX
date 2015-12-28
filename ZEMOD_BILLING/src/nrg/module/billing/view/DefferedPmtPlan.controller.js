@@ -141,6 +141,15 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._negativeXFormatter = function (cIndicator) {
+            if (cIndicator === 'X' || cIndicator === 'x') {
+                return false;
+            } else {
+                return true;
+            }
+        };
+
+
         Controller.prototype._reverseBooleanFormatter = function (bIndicator) {
             return !bIndicator;
         };
@@ -490,12 +499,13 @@ sap.ui.define(
                 i;
 
             aFilterIds = ["ContractAccountNumber", "SelectedData", "InstlmntNo", "ZeroDwnPay"];
-            aFilterValues = [this._caNum, this.getView().getModel('oDppStepOneSelectedData').getJSON(), this.getView().getModel('oDppStepOnePost').getProperty('/InstlmntNo'), this.getView().getModel('oDppStepOnePost').getProperty('/ZeroDwPay')];
+            aFilterValues = [this._caNum, this.getView().getModel('oDppStepOneSelectedData').getJSON(), this.getView().getModel('oDppStepOnePost').getProperty('/InstlmntNo'), this.getView().getModel('oDppStepOnePost').getProperty('/ZeroDwnPay')];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
 
             sPath = '/DPPConfs';
 
             oParameters = {
+                filters: aFilters,
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oDppConfs').setData(oData);
@@ -726,7 +736,7 @@ sap.ui.define(
                         this.getView().getModel('oDppSetUps').setData(oData);
                         this.getView().getModel('oDppSetUps').setProperty('/results/bSelectedAll', false);
                         this.getView().getModel('oDppStepOnePost').setProperty('/InstlmntNo', this.getView().getModel('oDppSetUps').getProperty('/results/0/InstlmntNo'));
-                        this.getView().getModel('oDppStepOnePost').setProperty('/ZeroDwPay', false);
+                        this.getView().getModel('oDppStepOnePost').setProperty('/ZeroDwnPay', '');
                         sStartDate = this._formatInvoiceDate(this.getView().getModel('oDppSetUps').getProperty('/results/0/StartDate').getDate(), this.getView().getModel('oDppSetUps').getProperty('/results/0/StartDate').getMonth() + 1, this.getView().getModel('oDppSetUps').getProperty('/results/0/StartDate').getFullYear());
                         this.getView().byId('nrgBilling-dpp-DppStartDate-id').setDefaultDate(sStartDate);
                     }
