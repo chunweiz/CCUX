@@ -523,7 +523,7 @@ sap.ui.define(
             sPath = '/DPPConfs';
 
             oParameters = {
-                //filters: aFilters,
+                filters: aFilters,
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oDppConfs').setData(oData);
@@ -608,7 +608,7 @@ sap.ui.define(
                 callback: function (sAction) {
                     if (sAction === 'Yes') {
                         if (oODataSvc) {
-                            oODataSvc.create(sPath, oConfPost, oParameters);
+                            oODataSvc.create(sPath, oConfPost.oData, oParameters);
                         }
                     }
                 }
