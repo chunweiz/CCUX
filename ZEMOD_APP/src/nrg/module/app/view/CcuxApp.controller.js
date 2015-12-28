@@ -120,10 +120,11 @@ sap.ui.define(
             oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
             oRouter = this.getOwnerComponent().getRouter();
 
-            if (oContext.bpNum) {
-                oRouter.navTo('billing.HighBillNoCo', {
+            if (oContext.bpNum && oContext.coNum && oContext.caNum) {
+                oRouter.navTo('billing.HighBill', {
                     bpNum: oContext.bpNum,
-                    caNum: oContext.caNum
+                    caNum: oContext.caNum,
+                    coNum: oContext.coNum
                 });
             }
         };
@@ -139,7 +140,7 @@ sap.ui.define(
             oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
             oRouter = this.getOwnerComponent().getRouter();
 
-            if (oContext.bpNum) {
+            if (oContext.bpNum && oContext.coNum && oContext.caNum) {
                 oRouter.navTo('usage', {
                     bpNum: oContext.bpNum,
                     caNum: oContext.caNum,
@@ -180,7 +181,7 @@ sap.ui.define(
             oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
             oRouter = this.getOwnerComponent().getRouter();
 
-            if (oContext.coNum) {
+            if (oContext.bpNum && oContext.coNum && oContext.caNum) {
                 oRouter.navTo('campaign', {
                     bpNum: oContext.bpNum,
                     caNum: oContext.caNum,

@@ -152,6 +152,11 @@
                         </ute:Tag>
                     </ute:Tag>
                 </ute:Tag>
+                <!--<ute:Tag class="nrgBilling-dlbd-rght">
+                        <ute:Tag class="nrgBilling-dlbd-left-elem" text="{comp-i18n-billing>nrgBilling-dpp-StartDate} "/>
+                        <!--<ute:Tag class="nrgBilling-dlbd-left-elem-date" text="{parts:['oDppSetUps>/results/0/StartDate'], formatter:'._formatDate'}"/>-
+                        <ute:DatePicker id="nrgBilling-dpp-DppDueDate-id"/>
+                </ute:Tag>-->
             </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-botm-infoBox">
