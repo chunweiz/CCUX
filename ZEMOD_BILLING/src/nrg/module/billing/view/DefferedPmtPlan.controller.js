@@ -368,7 +368,9 @@ sap.ui.define(
                 oConfPost = this.getView().getModel('oDppStepTwoPost'),
                 aConfirmData = [],
                 sTempDueDate,
-                sTempClearDate;
+                sTempClearDate,
+                sTempAmt,
+                sTempClrAmt;
 
             /*for (i = 0; i < oConf.getData().results.length; i = i + 1) {
                 //oConf.getData().results[i].ConfirmdItems.DueDate
@@ -395,8 +397,18 @@ sap.ui.define(
                 } else {
                     sTempClearDate = null;
                 }
+                if (oConf.getData().results[i].ConfirmdItems.Amount) {
+                    sTempAmt = parseFloat(oConf.getData().results[i].ConfirmdItems.Amount).toString();
+                } else {
+                    sTempAmt = '0.00';
+                }
+                if (oConf.getData().results[i].ConfirmdItems.ClearedAmt) {
+                    sTempClrAmt = parseFloat(oConf.getData().results[i].ConfirmdItems.ClearedAmt).toString();
+                } else {
+                    sTempClrAmt = '0.00';
+                }
 
-                aConfirmData.push({IND: oConf.getData().results[i].ConfirmdItems.ItemNumber, AMT: oConf.getData().results[i].ConfirmdItems.Amount, DUEDATE: sTempDueDate, CLRDT: sTempClearDate, CLRED: oConf.getData().results[i].ConfirmdItems.Cleared, CLRAMT: oConf.getData().results[i].ConfirmdItems.ClearedAmt, OPBEL: oConf.getData().results[i].ConfirmdItems.Opbel, OPUPW: oConf.getData().results[i].ConfirmdItems.Opupw, OPUPK: oConf.getData().results[i].ConfirmdItems.Opupk, OPUPZ: oConf.getData().results[i].ConfirmdItems.Opupz});
+                aConfirmData.push({IND: oConf.getData().results[i].ConfirmdItems.ItemNumber, AMT: sTempAmt, DUEDATE: sTempDueDate, CLRDT: sTempClearDate, CLRED: oConf.getData().results[i].ConfirmdItems.Cleared, CLRAMT: sTempClrAmt, OPBEL: oConf.getData().results[i].ConfirmdItems.Opbel, OPUPW: oConf.getData().results[i].ConfirmdItems.Opupw, OPUPK: oConf.getData().results[i].ConfirmdItems.Opupk, OPUPZ: oConf.getData().results[i].ConfirmdItems.Opupz});
             }
             this.getView().getModel('oDppStepTwoConfirmdData').setProperty('/CONFIRMDATA', aConfirmData);
             oConfPost.setProperty('/ConfirmData', this.getView().getModel('oDppStepTwoConfirmdData').getJSON().replace(/"/g, '\''));
@@ -523,7 +535,7 @@ sap.ui.define(
             sPath = '/DPPConfs';
 
             oParameters = {
-                filters: aFilters,
+                //filters: aFilters,
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oDppConfs').setData(oData);
