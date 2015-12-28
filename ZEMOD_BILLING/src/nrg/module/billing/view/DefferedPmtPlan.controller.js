@@ -608,7 +608,7 @@ sap.ui.define(
             sPath = '/DPPConfs';
 
             oParameters = {
-                //filters: aFilters,
+                filters: aFilters,
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oDppConfs').setData(oData);
