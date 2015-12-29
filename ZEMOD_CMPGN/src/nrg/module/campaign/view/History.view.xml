@@ -44,7 +44,7 @@
                 <u:Tag class="nrgCamHisPriceT nrgCamHis-top" id="idnrgCamHisPriceT">
                 <!-- EFL Data Table is dynamically inserted here with XML templating -->
                 </u:Tag>
-                <um:Infoline expanded="false">
+                <um:Infoline expanded="true">
                     <um:headerContent>
                         <c:Label id="idCamChgDscLbl"
                             text="{comp-i18n-campaign>nrgCmpChgDscbl}"

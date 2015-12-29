@@ -76,6 +76,10 @@
                     "pattern": "billing/checkbook/bp/{bpNum}/ca/{caNum}/co/{coNum}",
                     "target":["billing.Checkbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools", "app.Footer"]
                 },
+                "billing.feeAdjs": {
+                    "pattern": "billing/feeadjs/bp/{bpNum}/ca/{caNum}/co/{coNum}",
+                    "target":["billing.feeAdjs", "dashboard.CustomerDataSummary", "billing.CheckbookTools", "app.Footer"]
+                },
                 "billing.CheckBookNoCo": {
                     "pattern": "billing/checkbook/bp/{bpNum}/ca/{caNum}",
                     "target":["billing.Checkbook", "dashboard.CustomerDataSummary", "billing.CheckbookTools", "app.Footer"]
@@ -125,6 +129,10 @@
             "targets":{
                 "billing.Checkbook": {
                     "viewName": "nrg.module.billing.view.BillingCheckbook",
+                    "controlId": "idAppGeneral"
+                },
+                "billing.feeAdjs": {
+                    "viewName": "nrg.module.billing.view.FeeAdjustments",
                     "controlId": "idAppGeneral"
                 },
                 "billing.PrePayCheckbook": {

@@ -2,15 +2,10 @@
 /*jslint nomen:true*/
 sap.ui.define(
     [
-        'nrg/base/view/BaseController',
-        'sap/ui/model/Filter',
-        'sap/ui/model/FilterOperator',
-        'jquery.sap.global',
-        'nrg/base/type/Price',
-        "sap/ui/model/json/JSONModel"
+        'nrg/base/view/BaseController'
     ],
 
-    function (CoreController, Filter, FilterOperator, jQuery, price, JSONModel) {
+    function (CoreController) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.billing.view.HighBillTools');

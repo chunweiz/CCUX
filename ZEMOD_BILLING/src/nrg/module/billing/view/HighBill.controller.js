@@ -3,14 +3,13 @@
 
 sap.ui.define(
     [
-        'jquery.sap.global',
         'nrg/base/view/BaseController',
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
         'nrg/module/billing/view/ABPPopup'
     ],
 
-    function (jQuery, Controller, Filter, FilterOperator, ABPPopup) {
+    function (Controller, Filter, FilterOperator, ABPPopup) {
         'use strict';
 
         var CustomController = Controller.extend('nrg.module.billing.view.HighBill');
@@ -35,7 +34,7 @@ sap.ui.define(
                 oEligibilityJsonModel = new sap.ui.model.json.JSONModel();
             this.getView().setModel(oEligibilityJsonModel, 'hb-Eligiblity');
             this.initRouterParameter();
-            this.getOwnerComponent().getCcuxApp().setTitle('HIGH BILL');
+            this.getOwnerComponent().getCcuxApp().setTitle('BILL WIZARD');
             this.getView().unbindElement("comp-highbill");
             oDropDownList.unbindAggregation("content");
             oNotifications.unbindAggregation("content");
