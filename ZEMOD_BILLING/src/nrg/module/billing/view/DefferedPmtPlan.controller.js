@@ -540,7 +540,8 @@ sap.ui.define(
             var oODataSvc = this.getView().getModel('oDataSvc'),
                 oParameters,
                 sPath,
-                oDPPComunication = this.getView().getModel('oDppStepThreeCom');
+                oDPPComunication = this.getView().getModel('oDppStepThreeCom'),
+                oRouter = this.getOwnerComponent().getRouter();
 
             sPath = '/DPPCorresps';
 
@@ -551,6 +552,11 @@ sap.ui.define(
                         title: 'DEFFERED PAYMENT PLAN',
                         message: 'Correspondence Successfully Sent.'
                     });
+                    if (this._coNum) {
+                        oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+                    } else {
+                        oRouter.navTo('dashboard.VerificationWithCa', {bpNum: this._bpNum, caNum: this._caNum});
+                    }
                 }.bind(this),
                 error: function (oError) {
                     ute.ui.main.Popup.Alert({
@@ -561,7 +567,7 @@ sap.ui.define(
             };
 
             if (oODataSvc) {
-                oODataSvc.create(sPath, oDPPComunication, oParameters);
+                oODataSvc.create(sPath, oDPPComunication.oData, oParameters);
             }
         };
 
