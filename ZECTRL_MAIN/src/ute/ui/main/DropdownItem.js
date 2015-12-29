@@ -31,7 +31,7 @@ sap.ui.define(
         });
 
         CustomControl.prototype.onclick = function (oEvent) {
-            if(this.getEnabled()) {
+            if (this.getEnabled()) {
                 this.firePress();
             }
         };

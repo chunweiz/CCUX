@@ -153,7 +153,7 @@
                     </ute:Tag>
                 </ute:Tag>
                 <ute:Tag class="nrgBilling-dlct-date">
-                        <ute:Tag class="nrgBilling-dlct-date-lbl" text="{comp-i18n-billing>nrgBilling-dpp-StartDate} "/>
+                        <ute:Tag class="nrgBilling-dlct-date-lbl" text="{comp-i18n-billing>nrgBilling-dpp-FirstInstlDate} "/>
                         <ute:DatePicker id="nrgBilling-dpp-DppDueDate-id"/>
                 </ute:Tag>
             </ute:Tag>

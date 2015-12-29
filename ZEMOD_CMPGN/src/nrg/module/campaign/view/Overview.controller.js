@@ -161,12 +161,6 @@ sap.ui.define(
             }
 
         };
-        /* =========================================================== */
-		/* lifecycle method- After Rendering                          */
-		/* =========================================================== */
-        Controller.prototype.onAfterRendering = function () {
-
-        };
        /**
 		 * Assign the filter objects based on the input selection
 		 *

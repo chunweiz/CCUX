@@ -67,6 +67,7 @@ sap.ui.define(
         Controller.prototype.onAfterRendering = function () {
             this.getView().byId('nrgBilling-dpp-ExtNewDate-id').attachBrowserEvent('select', this._handleExtDateChange, this);
             this.getView().byId('nrgBilling-dpp-DppStartDate-id').attachBrowserEvent('select', this._handleDppStartDateChange, this);
+            this.getView().byId('nrgBilling-dpp-DppDueDate-id').attachBrowserEvent('select', this._handleDppFirstDueDateChange, this);
         };
 
 
@@ -363,6 +364,13 @@ sap.ui.define(
             oDppConfs.setProperty('/results/0/DiffTot', iDiffTot.toString());
         };
 
+        Controller.prototype._formatPadZero = function (sNum, iSize) {
+            while (sNum.length < iSize) {
+                sNum = '0' + sNum;
+            }
+            return sNum;
+        };
+
         Controller.prototype._onDppConfConfirmClick = function (oEvent) {
             var oConf = this.getView().getModel('oDppConfs'),
                 i,
@@ -406,13 +414,13 @@ sap.ui.define(
                 }
 
                 if (oConf.getData().results[i].ConfirmdItems.DueDate) {
-                    sTempDueDate = oConf.getData().results[i].ConfirmdItems.DueDate.getFullYear().toString() + (oConf.getData().results[i].ConfirmdItems.DueDate.getMonth() + 1).toString() + (oConf.getData().results[i].ConfirmdItems.DueDate.getDate()).toString();
+                    sTempDueDate = oConf.getData().results[i].ConfirmdItems.DueDate.getFullYear().toString() + this._formatPadZero(((oConf.getData().results[i].ConfirmdItems.DueDate.getMonth() + 1).toString()), 2) + this._formatPadZero(((oConf.getData().results[i].ConfirmdItems.DueDate.getDate()).toString()), 2);
                 } else {
                     sTempDueDate = 'null';
                 }
 
                 if (oConf.getData().results[i].ConfirmdItems.ClearDate) {
-                    sTempClearDate = oConf.getData().results[i].ConfirmdItems.ClearDate.getFullYear().toString() + (oConf.getData().results[i].ConfirmdItems.ClearDate.getMonth() + 1).toString() + (oConf.getData().results[i].ConfirmdItems.ClearDate.getDate()).toString();
+                    sTempClearDate = oConf.getData().results[i].ConfirmdItems.ClearDate.getFullYear().toString() + this._formatPadZero(((oConf.getData().results[i].ConfirmdItems.ClearDate.getMonth() + 1).toString()), 2) + this._formatPadZero(((oConf.getData().results[i].ConfirmdItems.ClearDate.getDate()).toString()), 2);
                 } else {
                     sTempClearDate = 'null';
                 }
@@ -454,7 +462,16 @@ sap.ui.define(
                 }
 
                 if (i === oConf.getData().results.length - 1) {
-                    i = i + 1;
+                    sCItemNum = sCItemNum + oConf.getData().results[i].ConfirmdItems.ItemNumber.toString();
+                    sCAmt = sCAmt + sTempAmt;
+                    sCDueDate = sCDueDate + sTempDueDate;
+                    sCClearDate = sCClearDate + sTempClearDate;
+                    sCCleared = sCCleared + sTempCleared;
+                    sCClearedAmt = sCClearedAmt + sTempClrAmt;
+                    sCOpbel = sCOpbel + sTempCOpbel;
+                    sCOpupw = sCOpupw + sTempCOpupw;
+                    sCOpupk = sCOpupk + sTempCOpupk;
+                    sCOpupz = sCOpupz + sTempCOpupz;
                 } else {
                     sCItemNum = sCItemNum + oConf.getData().results[i].ConfirmdItems.ItemNumber.toString() + ',';
                     sCAmt = sCAmt + sTempAmt + ',';
@@ -540,6 +557,12 @@ sap.ui.define(
             this.getView().getModel('oDppSetUps').setProperty('/results/0/StartDate', oDppStartDate);
         };
 
+        Controller.prototype._handleDppFirstDueDateChange = function (oEvent) {
+            var oDppFirstInslDate = new Date(this.getView().byId('nrgBilling-dpp-DppDueDate-id').getValue());
+
+            this.getView().getModel('oDppConfs').setProperty('/results/0/ConfirmdItems/DueDate', oDppFirstInslDate);
+        };
+
         /****************************************************************************************************************/
         //OData Call
         /****************************************************************************************************************/
@@ -616,7 +639,11 @@ sap.ui.define(
                 oSelectedStartDate;
 
             //oSelectedStartDate = this.getView().byId('nrgBilling-dpp-DppStartDate-id')._oDate;
-            oSelectedStartDate = this.getView().getModel('oDppSetUps').getProperty('/results/0/StartDate');
+            if (oSelectedStartDate) {
+                oSelectedStartDate = this.getView().getModel('oDppSetUps').getProperty('/results/0/StartDate');
+            } else {
+                oSelectedStartDate = new Date();
+            }
 
             aFilterIds = ["ContractAccountNumber", "SelectedData", "InstlmntNo", "ZeroDwnPay", "InitialDate"];
             aFilterValues = [this._caNum, this.getView().getModel('oDppStepOneSelectedData').getJSON(), this.getView().getModel('oDppStepOnePost').getProperty('/InstlmntNo'), this.getView().getModel('oDppStepOnePost').getProperty('/ZeroDwnPay'), oSelectedStartDate];
@@ -635,7 +662,7 @@ sap.ui.define(
                         this.getView().getModel('oDppConfs').setProperty('/results/AllChecked', false);
                         this.getView().getModel('oDppConfs').setProperty('/results/0/SelTot', 0);
 
-                        sDueDate = this._formatInvoiceDate(this.getView().getModel('oDppConfs').getProperty('/results/0/InitialDate').getDate(), this.getView().getModel('oDppConfs').getProperty('/results/0/InitialDate').getMonth() + 1, this.getView().getModel('oDppConfs').getProperty('/results/0/InitialDate').getFullYear());
+                        sDueDate = this._formatInvoiceDate(this.getView().getModel('oDppConfs').getProperty('/results/0/ConfirmdItems/DueDate').getDate(), this.getView().getModel('oDppConfs').getProperty('/results/0/ConfirmdItems/DueDate').getMonth() + 1, this.getView().getModel('oDppConfs').getProperty('/results/0/ConfirmdItems/DueDate').getFullYear());
                         this.getView().byId('nrgBilling-dpp-DppDueDate-id').setDefaultDate(sDueDate);
                     }
                 }.bind(this),
@@ -822,8 +849,14 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     if (oData) {
+                        oData.results.push({ReasonCode: '0000', Reason: ''});
                         this.getView().getModel('oDppReasons').setData(oData.results);
-                        this.getView().getModel('oDppReasons').setProperty('/selectedKey', '3400');
+                        if (this.getView().getModel('oDppEligible').getProperty('/ReasonCode')) {
+                            this.getView().getModel('oDppReasons').setProperty('/selectedKey', this.getView().getModel('oDppEligible').getProperty('/ReasonCode'));
+                        } else {
+                            this.getView().getModel('oDppReasons').setProperty('/selectedKey', '0000');
+                        }
+                        /*this.getView().getModel('oDppReasons').setProperty('/selectedKey', '3400');*/
                     }
                 }.bind(this),
                 error: function (oError) {
