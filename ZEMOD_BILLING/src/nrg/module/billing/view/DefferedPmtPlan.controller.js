@@ -461,8 +461,17 @@ sap.ui.define(
                     sTempCOpupz = '0';
                 }
 
-                if (i === oConf.getData().results.length) {
-                    i = i + 1;
+                if (i === oConf.getData().results.length - 1) {
+                    sCItemNum = sCItemNum + oConf.getData().results[i].ConfirmdItems.ItemNumber.toString();
+                    sCAmt = sCAmt + sTempAmt;
+                    sCDueDate = sCDueDate + sTempDueDate;
+                    sCClearDate = sCClearDate + sTempClearDate;
+                    sCCleared = sCCleared + sTempCleared;
+                    sCClearedAmt = sCClearedAmt + sTempClrAmt;
+                    sCOpbel = sCOpbel + sTempCOpbel;
+                    sCOpupw = sCOpupw + sTempCOpupw;
+                    sCOpupk = sCOpupk + sTempCOpupk;
+                    sCOpupz = sCOpupz + sTempCOpupz;
                 } else {
                     sCItemNum = sCItemNum + oConf.getData().results[i].ConfirmdItems.ItemNumber.toString() + ',';
                     sCAmt = sCAmt + sTempAmt + ',';
@@ -643,7 +652,7 @@ sap.ui.define(
             sPath = '/DPPConfs';
 
             oParameters = {
-                //filters: aFilters,
+                filters: aFilters,
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oDppConfs').setData(oData);
