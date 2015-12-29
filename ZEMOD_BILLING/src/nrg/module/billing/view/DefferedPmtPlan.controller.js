@@ -227,7 +227,7 @@ sap.ui.define(
 
             oDPPComunication.setProperty('/eMailCheck', true);
             oDPPComunication.setProperty('/FaxCheck', false);
-            oDPPComunication.setProperty('/eAddrCheck', false);
+            oDPPComunication.setProperty('/AddrCheck', false);
         };
 
         Controller.prototype._onComFaxCheck = function () {
@@ -235,7 +235,7 @@ sap.ui.define(
 
             oDPPComunication.setProperty('/eMailCheck', false);
             oDPPComunication.setProperty('/FaxCheck', true);
-            oDPPComunication.setProperty('/eAddrCheck', false);
+            oDPPComunication.setProperty('/AddrCheck', false);
         };
 
         Controller.prototype._onComAddrCheck = function () {
@@ -243,7 +243,7 @@ sap.ui.define(
 
             oDPPComunication.setProperty('/eMailCheck', false);
             oDPPComunication.setProperty('/FaxCheck', false);
-            oDPPComunication.setProperty('/eAddrCheck', true);
+            oDPPComunication.setProperty('/AddrCheck', true);
         };
 
         Controller.prototype._onDppDeniedOkClick = function () {    //Navigate to DPP setup if 'OK' is clicked
@@ -367,15 +367,26 @@ sap.ui.define(
                 i,
                 oConfPost = this.getView().getModel('oDppStepTwoPost'),
                 aConfirmData = [],
+                sCItemNum = '',
+                sCAmt = '',
+                sCDueDate = '',
+                sCClearDate = '',
+                sCCleared = '',
+                sCClearedAmt = '',
+                sCOpbel = '',
+                sCOpupw = '',
+                sCOpupk = '',
+                sCOpupz = '',
+                sTempAmt,
                 sTempDueDate,
                 sTempClearDate,
-                sTempAmt,
-                sTempClrAmt;
+                sTempCleared,
+                sTempClrAmt,
+                sTempCOpbel,
+                sTempCOpupw,
+                sTempCOpupk,
+                sTempCOpupz;
 
-            /*for (i = 0; i < oConf.getData().results.length; i = i + 1) {
-                //oConf.getData().results[i].ConfirmdItems.DueDate
-                oConf.setProperty('/results/' + i + '/ConfirmdItems/DueDate', oConf.getData().results[i].ConfirmdItems.DueDate.getFullYear().toString() + '-' + (oConf.getData().results[i].ConfirmdItems.DueDate.getMonth() + 1).toString() + '-' + (oConf.getData().results[i].ConfirmdItems.DueDate.getDate()).toString());
-            }*/
 
             oConfPost.setProperty('/ContractAccountNumber', oConf.oData.results[0].ContractAccountNumber);
             oConfPost.setProperty('/PartnerID', oConf.oData.results[0].PartnerID);
@@ -387,31 +398,92 @@ sap.ui.define(
             oConfPost.setProperty('/Reason', oConf.oData.results[0].Reason);
 
             for (i = 0; i < oConf.getData().results.length; i = i + 1) {
-                if (oConf.getData().results[i].ConfirmdItems.DueDate) {
-                    sTempDueDate = oConf.getData().results[i].ConfirmdItems.DueDate.getFullYear().toString() + '-' + (oConf.getData().results[i].ConfirmdItems.DueDate.getMonth() + 1).toString() + '-' + (oConf.getData().results[i].ConfirmdItems.DueDate.getDate()).toString();
-                } else {
-                    sTempDueDate = null;
-                }
-                if (oConf.getData().results[i].ConfirmdItems.ClearDate) {
-                    sTempClearDate = oConf.getData().results[i].ConfirmdItems.ClearDate.getFullYear().toString() + '-' + (oConf.getData().results[i].ConfirmdItems.ClearDate.getMonth() + 1).toString() + '-' + (oConf.getData().results[i].ConfirmdItems.ClearDate.getDate()).toString();
-                } else {
-                    sTempClearDate = null;
-                }
                 if (oConf.getData().results[i].ConfirmdItems.Amount) {
                     sTempAmt = parseFloat(oConf.getData().results[i].ConfirmdItems.Amount).toString();
                 } else {
                     sTempAmt = '0.00';
                 }
+
+                if (oConf.getData().results[i].ConfirmdItems.DueDate) {
+                    sTempDueDate = oConf.getData().results[i].ConfirmdItems.DueDate.getFullYear().toString() + (oConf.getData().results[i].ConfirmdItems.DueDate.getMonth() + 1).toString() + (oConf.getData().results[i].ConfirmdItems.DueDate.getDate()).toString();
+                } else {
+                    sTempDueDate = 'null';
+                }
+
+                if (oConf.getData().results[i].ConfirmdItems.ClearDate) {
+                    sTempClearDate = oConf.getData().results[i].ConfirmdItems.ClearDate.getFullYear().toString() + (oConf.getData().results[i].ConfirmdItems.ClearDate.getMonth() + 1).toString() + (oConf.getData().results[i].ConfirmdItems.ClearDate.getDate()).toString();
+                } else {
+                    sTempClearDate = 'null';
+                }
+
+                if (oConf.getData().results[i].ConfirmdItems.Cleared) {
+                    sTempCleared = oConf.getData().results[i].ConfirmdItems.Cleared;
+                } else {
+                    sTempCleared = 'null';
+                }
+
                 if (oConf.getData().results[i].ConfirmdItems.ClearedAmt) {
                     sTempClrAmt = parseFloat(oConf.getData().results[i].ConfirmdItems.ClearedAmt).toString();
                 } else {
                     sTempClrAmt = '0.00';
                 }
 
-                aConfirmData.push({IND: oConf.getData().results[i].ConfirmdItems.ItemNumber, AMT: sTempAmt, DUEDATE: sTempDueDate, CLRDT: sTempClearDate, CLRED: oConf.getData().results[i].ConfirmdItems.Cleared, CLRAMT: sTempClrAmt, OPBEL: oConf.getData().results[i].ConfirmdItems.Opbel, OPUPW: oConf.getData().results[i].ConfirmdItems.Opupw, OPUPK: oConf.getData().results[i].ConfirmdItems.Opupk, OPUPZ: oConf.getData().results[i].ConfirmdItems.Opupz});
+                if (oConf.getData().results[i].ConfirmdItems.Opbel) {
+                    sTempCOpbel = oConf.getData().results[i].ConfirmdItems.Opbel;
+                } else {
+                    sTempCOpbel = 'null';
+                }
+
+                if (oConf.getData().results[i].ConfirmdItems.Opupw) {
+                    sTempCOpupw = parseInt(oConf.getData().results[i].ConfirmdItems.Opupw, 10).toString();
+                } else {
+                    sTempCOpupw = '0';
+                }
+
+                if (oConf.getData().results[i].ConfirmdItems.Opupk) {
+                    sTempCOpupk = parseInt(oConf.getData().results[i].ConfirmdItems.Opupk, 10).toString();
+                } else {
+                    sTempCOpupk = '0';
+                }
+
+                if (oConf.getData().results[i].ConfirmdItems.Opupz) {
+                    sTempCOpupz = parseInt(oConf.getData().results[i].ConfirmdItems.Opupz, 10).toString();
+                } else {
+                    sTempCOpupz = '0';
+                }
+
+                if (i === oConf.getData().results.length - 1) {
+                    i = i + 1;
+                } else {
+                    sCItemNum = sCItemNum + oConf.getData().results[i].ConfirmdItems.ItemNumber.toString() + ',';
+                    sCAmt = sCAmt + sTempAmt + ',';
+                    sCDueDate = sCDueDate + sTempDueDate + ',';
+                    sCClearDate = sCClearDate + sTempClearDate + ',';
+                    sCCleared = sCCleared + sTempCleared + ',';
+                    sCClearedAmt = sCClearedAmt + sTempClrAmt + ',';
+                    sCOpbel = sCOpbel + sTempCOpbel + ',';
+                    sCOpupw = sCOpupw + sTempCOpupw + ',';
+                    sCOpupk = sCOpupk + sTempCOpupk + ',';
+                    sCOpupz = sCOpupz + sTempCOpupz + ',';
+                }
+
+                /*aConfirmData.push({IND: oConf.getData().results[i].ConfirmdItems.ItemNumber, AMT: sTempAmt, DUEDATE: sTempDueDate, CLRDT: sTempClearDate, CLRED: oConf.getData().results[i].ConfirmdItems.Cleared, CLRAMT: sTempClrAmt, OPBEL: oConf.getData().results[i].ConfirmdItems.Opbel, OPUPW: oConf.getData().results[i].ConfirmdItems.Opupw, OPUPK: oConf.getData().results[i].ConfirmdItems.Opupk, OPUPZ: oConf.getData().results[i].ConfirmdItems.Opupz});*/
             }
-            this.getView().getModel('oDppStepTwoConfirmdData').setProperty('/CONFIRMDATA', aConfirmData);
-            oConfPost.setProperty('/ConfirmData', this.getView().getModel('oDppStepTwoConfirmdData').getJSON().replace(/"/g, '\''));
+
+            oConfPost.setProperty('/CItemNum', sCItemNum);
+            oConfPost.setProperty('/CAmt', sCAmt);
+            oConfPost.setProperty('/CDueDate', sCDueDate);
+            oConfPost.setProperty('/CClearDate', sCClearDate);
+            oConfPost.setProperty('/CCleared', sCCleared);
+            oConfPost.setProperty('/CClearedAmt', sCClearedAmt);
+            oConfPost.setProperty('/COpbel', sCOpbel);
+            oConfPost.setProperty('/COpupw', sCOpupw);
+            oConfPost.setProperty('/COpupk', sCOpupk);
+            oConfPost.setProperty('/COpupz', sCOpupz);
+
+
+            //this.getView().getModel('oDppStepTwoConfirmdData').setProperty('/CONFIRMDATA', aConfirmData);
+            //oConfPost.setProperty('/ConfirmData', this.getView().getModel('oDppStepTwoConfirmdData').getJSON().replace(/"/g, '\''));
 
             this._postDPPConfRequest();
         };
@@ -468,7 +540,8 @@ sap.ui.define(
             var oODataSvc = this.getView().getModel('oDataSvc'),
                 oParameters,
                 sPath,
-                oDPPComunication = this.getView().getModel('oDppStepThreeCom');
+                oDPPComunication = this.getView().getModel('oDppStepThreeCom'),
+                oRouter = this.getOwnerComponent().getRouter();
 
             sPath = '/DPPCorresps';
 
@@ -479,6 +552,11 @@ sap.ui.define(
                         title: 'DEFFERED PAYMENT PLAN',
                         message: 'Correspondence Successfully Sent.'
                     });
+                    if (this._coNum) {
+                        oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+                    } else {
+                        oRouter.navTo('dashboard.VerificationWithCa', {bpNum: this._bpNum, caNum: this._caNum});
+                    }
                 }.bind(this),
                 error: function (oError) {
                     ute.ui.main.Popup.Alert({
@@ -489,7 +567,7 @@ sap.ui.define(
             };
 
             if (oODataSvc) {
-                oODataSvc.create(sPath, oDPPComunication, oParameters);
+                oODataSvc.create(sPath, oDPPComunication.oData, oParameters);
             }
         };
 
@@ -506,7 +584,7 @@ sap.ui.define(
                         this.getView().getModel('oDppStepThreeCom').setData(oData);
                         this.getView().getModel('oDppStepThreeCom').setProperty('/eMailCheck', true);
                         this.getView().getModel('oDppStepThreeCom').setProperty('/FaxCheck', false);
-                        this.getView().getModel('oDppStepThreeCom').setProperty('/eAddrCheck', false);
+                        this.getView().getModel('oDppStepThreeCom').setProperty('/AddrCheck', false);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -526,7 +604,8 @@ sap.ui.define(
                 aFilters,
                 aFilterValues,
                 aFilterIds,
-                i;
+                i,
+                sDueDate;
 
             aFilterIds = ["ContractAccountNumber", "SelectedData", "InstlmntNo", "ZeroDwnPay"];
             aFilterValues = [this._caNum, this.getView().getModel('oDppStepOneSelectedData').getJSON(), this.getView().getModel('oDppStepOnePost').getProperty('/InstlmntNo'), this.getView().getModel('oDppStepOnePost').getProperty('/ZeroDwnPay')];
@@ -544,6 +623,9 @@ sap.ui.define(
                         }
                         this.getView().getModel('oDppConfs').setProperty('/results/AllChecked', false);
                         this.getView().getModel('oDppConfs').setProperty('/results/0/SelTot', 0);
+
+                        sDueDate = this._formatInvoiceDate(this.getView().getModel('oDppConfs').getProperty('/results/0/InitialDate').getDate(), this.getView().getModel('oDppConfs').getProperty('/results/0/InitialDate').getMonth() + 1, this.getView().getModel('oDppConfs').getProperty('/results/0/InitialDate').getFullYear());
+                        this.getView().byId('nrgBilling-dpp-DppDueDate-id').setDefaultDate(sDueDate);
                     }
                 }.bind(this),
                 error: function (oError) {

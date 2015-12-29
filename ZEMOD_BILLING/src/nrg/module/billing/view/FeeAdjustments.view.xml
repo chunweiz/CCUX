@@ -1,0 +1,19 @@
+<mvc:View
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:u="ute.ui.commons"
+    xmlns:um="ute.ui.main"
+    xmlns:c="sap.ui.commons"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="nrg.module.billing.view.FeeAdjustments">
+    <u:Tag class="nrgToolsEmpty nrgAppMain-toolsContent nrgAppMain-toolsContent-full">
+        <u:Tag class="nrgFeeAdj">
+            <u:Tag class="nrgFeeAdj-Title" text="{comp-i18n-billing>nrgFeeAdjTtl}" />
+            <u:Tag class="nrgFeeAdj-Tires">
+                <u:Tag class="nrgFeeAdj-Tire" text="{comp-i18n-billing>nrgFeeAdj-DiscNoticeFee}" />
+                <u:Tag class="nrgFeeAdj-Tire" text="{comp-i18n-billing>nrgFeeAdj-DiscRecovFee}" />
+                <u:Tag class="nrgFeeAdj-Tire" text="{comp-i18n-billing>nrgFeeAdj-LateFee}" />
+                <u:Tag class="nrgFeeAdj-Tire" text="{comp-i18n-billing>nrgFeeAdj-ReconnectFee}" />
+            </u:Tag>
+        </u:Tag>
+    </u:Tag>
+</mvc:View>

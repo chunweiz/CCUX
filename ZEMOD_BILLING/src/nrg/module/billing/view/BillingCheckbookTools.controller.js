@@ -46,7 +46,9 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     oEligModel.setData(oData);
-                    if (fnCallback) fnCallback();
+                    if (fnCallback) {
+                        fnCallback();
+                    }
                 }.bind(this),
                 error: function (oError) {
                     
@@ -64,6 +66,17 @@ sap.ui.define(
             oWebUiManager.notifyWebUi('openIndex', {LINK_ID: 'Z_DUNH'});
         };
 
+        /**
+		 * Handler for Fee Adjustments Button.
+		 *
+		 * @function
+		 * @param {oEvent} Type Event object
+         *
+		 *
+		 */
+        Controller.prototype._onFeeAdjBtnClicked = function (oEvent) {
+            this.getOwnerComponent().getRouter().navTo("billing.feeAdjs", {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+        };
         Controller.prototype._onAvgBillBtnClicked = function () {
             if (!this.ABPPopupCustomControl) {
                 this.ABPPopupCustomControl = new ABPPopup({ isRetro: false });
@@ -76,14 +89,15 @@ sap.ui.define(
         Controller.prototype._onDppBtnClicked = function () {
             var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager(),
                 oRouter = this.getOwnerComponent().getRouter(),
-                oRetrDone = false;
+                oRetrDone = false,
+                checkRetrComplete;
 
             // Display the loading indicator
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             // Retrieve Notification
-            this._retrieveEligibility(function () {oRetrDone = true;});
+            this._retrieveEligibility(function () {oRetrDone = true; });
             // Check retrieval done
-            var checkRetrComplete = setInterval (function () {
+            checkRetrComplete = setInterval(function () {
                 if (oRetrDone) {
                     var oEligibilityModel = this.getView().getModel('oEligibility');
                     // Dismiss the loading indicator
@@ -101,7 +115,7 @@ sap.ui.define(
                         });
                     }
                 }
-            }.bind(this), 100); 
+            }.bind(this), 100);
         };
 
         Controller.prototype._onExtnBtnClicked = function () {

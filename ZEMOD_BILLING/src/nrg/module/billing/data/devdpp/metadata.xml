@@ -16,8 +16,8 @@
         <Property Name="InstlmntNo" Type="Edm.Int16" Nullable="false" sap:label="Signed INT2 / int16" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="InstlmntNoAuth" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="StartDate" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
-        <NavigationProperty Name="DPPElgble" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPElgble_DPPSetUp" FromRole="ToRole_DPPElgble_DPPSetUp" ToRole="FromRole_DPPElgble_DPPSetUp" />
         <NavigationProperty Name="DPPConfSets" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPSetUp_DPPConf" FromRole="FromRole_DPPSetUp_DPPConf" ToRole="ToRole_DPPSetUp_DPPConf" />
+        <NavigationProperty Name="DPPElgble" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPElgble_DPPSetUp" FromRole="ToRole_DPPElgble_DPPSetUp" ToRole="FromRole_DPPElgble_DPPSetUp" />
       </EntityType>
       <EntityType Name="DPPReason" sap:content-version="1">
         <Key>
@@ -116,6 +116,16 @@
         <Property Name="ReasonCode" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="ConfirmData" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <Property Name="InitialDate" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="CItemNum" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="CAmt" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="CDueDate" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="CClearDate" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="CCleared" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="CClearedAmt" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="COpbel" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="COpupw" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="COpupk" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+        <Property Name="COpupz" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
         <NavigationProperty Name="DPPSetUpSet" Relationship="ZE_CCUX_DPP_EXT_SRV.DPPSetUp_DPPConf" FromRole="ToRole_DPPSetUp_DPPConf" ToRole="FromRole_DPPSetUp_DPPConf" />
       </EntityType>
       <EntityType Name="DPPDenied" sap:content-version="1">
