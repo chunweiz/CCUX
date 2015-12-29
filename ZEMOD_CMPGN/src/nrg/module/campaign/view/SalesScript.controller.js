@@ -23,12 +23,13 @@ sap.ui.define(
         Controller.prototype.onInit = function () {
         };
 
-       /* =========================================================== */
-		/* lifecycle method- After Rendering                           */
+        /* =========================================================== */
+		/* lifecycle method- After Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onAfterRendering = function () {
+            // Update Footer
+            this.getOwnerComponent().getCcuxApp().updateFooter(this._sBP, this._sCA, this._sContract);
         };
-
         /* =========================================================== */
 		/* lifecycle method- Before Rendering                          */
 		/* =========================================================== */

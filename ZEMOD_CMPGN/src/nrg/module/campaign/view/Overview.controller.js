@@ -21,6 +21,13 @@ sap.ui.define(
             this._aPendingSelPaths = []; // Array for Pending Swaps Selected
         };
         /* =========================================================== */
+		/* lifecycle method- After Rendering                          */
+		/* =========================================================== */
+        Controller.prototype.onAfterRendering = function () {
+            // Update Footer
+            this.getOwnerComponent().getCcuxApp().updateFooter(this._sBP, this._sCA, this._sContract);
+        };
+        /* =========================================================== */
 		/* lifecycle method- Before Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onBeforeRendering = function () {
