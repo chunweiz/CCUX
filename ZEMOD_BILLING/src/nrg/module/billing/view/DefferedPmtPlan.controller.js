@@ -605,10 +605,14 @@ sap.ui.define(
                 aFilterValues,
                 aFilterIds,
                 i,
-                sDueDate;
+                sDueDate,
+                oSelectedStartDate;
 
-            aFilterIds = ["ContractAccountNumber", "SelectedData", "InstlmntNo", "ZeroDwnPay"];
-            aFilterValues = [this._caNum, this.getView().getModel('oDppStepOneSelectedData').getJSON(), this.getView().getModel('oDppStepOnePost').getProperty('/InstlmntNo'), this.getView().getModel('oDppStepOnePost').getProperty('/ZeroDwnPay')];
+            oSelectedStartDate = this.getView().byId('nrgBilling-dpp-DppStartDate-id')._oDate;
+            //oSelectedStartDate = new Date(2015, 12, 30);oSelectedStartDate._oDate
+
+            aFilterIds = ["ContractAccountNumber", "SelectedData", "InstlmntNo", "ZeroDwnPay", "InitialDate"];
+            aFilterValues = [this._caNum, this.getView().getModel('oDppStepOneSelectedData').getJSON(), this.getView().getModel('oDppStepOnePost').getProperty('/InstlmntNo'), this.getView().getModel('oDppStepOnePost').getProperty('/ZeroDwnPay'), oSelectedStartDate];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
 
             sPath = '/DPPConfs';
