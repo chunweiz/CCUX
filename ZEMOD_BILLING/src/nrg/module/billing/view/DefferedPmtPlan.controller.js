@@ -66,6 +66,7 @@ sap.ui.define(
 
         Controller.prototype.onAfterRendering = function () {
             this.getView().byId('nrgBilling-dpp-ExtNewDate-id').attachBrowserEvent('select', this._handleExtDateChange, this);
+            this.getView().byId('nrgBilling-dpp-DppStartDate-id').attachBrowserEvent('select', this._handleDppStartDateChange, this);
         };
 
 
@@ -533,6 +534,12 @@ sap.ui.define(
             //this.getView().byId('nrgBilling-dpp-ExtNewDate-id')
         };
 
+        Controller.prototype._handleDppStartDateChange = function (oEvent) {
+            var oDppStartDate = new Date(this.getView().byId('nrgBilling-dpp-DppStartDate-id').getValue());
+
+            this.getView().getModel('oDppSetUps').setProperty('/results/0/StartDate', oDppStartDate);
+        };
+
         /****************************************************************************************************************/
         //OData Call
         /****************************************************************************************************************/
@@ -605,10 +612,14 @@ sap.ui.define(
                 aFilterValues,
                 aFilterIds,
                 i,
-                sDueDate;
+                sDueDate,
+                oSelectedStartDate;
 
-            aFilterIds = ["ContractAccountNumber", "SelectedData", "InstlmntNo", "ZeroDwnPay"];
-            aFilterValues = [this._caNum, this.getView().getModel('oDppStepOneSelectedData').getJSON(), this.getView().getModel('oDppStepOnePost').getProperty('/InstlmntNo'), this.getView().getModel('oDppStepOnePost').getProperty('/ZeroDwnPay')];
+            //oSelectedStartDate = this.getView().byId('nrgBilling-dpp-DppStartDate-id')._oDate;
+            oSelectedStartDate = this.getView().getModel('oDppSetUps').getProperty('/results/0/StartDate');
+
+            aFilterIds = ["ContractAccountNumber", "SelectedData", "InstlmntNo", "ZeroDwnPay", "InitialDate"];
+            aFilterValues = [this._caNum, this.getView().getModel('oDppStepOneSelectedData').getJSON(), this.getView().getModel('oDppStepOnePost').getProperty('/InstlmntNo'), this.getView().getModel('oDppStepOnePost').getProperty('/ZeroDwnPay'), oSelectedStartDate];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
 
             sPath = '/DPPConfs';
