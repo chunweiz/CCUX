@@ -24,8 +24,6 @@ sap.ui.define(
 
         Controller.prototype.onBeforeRendering = function () {
 
-            // this.getOwnerComponent().getCcuxApp().setOccupied(true);
-
             this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-dashboard'), 'oODataSvc');
@@ -177,41 +175,6 @@ sap.ui.define(
             }
 
         };
-
-        // Controller.prototype._handleUnConfirm = function () {
-        //     var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
-        //         sCurrentBp = this.getView().getModel('oDtaVrfyBP').getProperty('/PartnerID'),
-        //         sCurrentCa = this.getView().getModel('oDtaVrfyBuags').getProperty('/ContractAccountID'),
-        //         sCurrentCo = this.getView().getModel('oDtaVrfyContract').getProperty('/ContractID'),
-        //         oComponent = this.getOwnerComponent(),
-        //         oWebUiManager = oComponent.getCcuxWebUiManager();
-
-        //     //UnConfirm CA to IC first
-        //     oComponent.getCcuxApp().setOccupied(true);
-        //     oWebUiManager.notifyWebUi('caUnconfirmed', {
-        //         BP_NUM: sCurrentBp,
-        //         CA_NUM: sCurrentCa
-        //     }, this._handleCaUnCofirmed, this);
-        // };
-
-        // Controller.prototype._handleCaUnCofirmed = function (oEvent) {
-        //     var oComponentContextModel = this.getOwnerComponent().getCcuxContextManager().getContext(),
-        //         oStatusModel = this.getView().getModel('oCfrmStatus'),
-        //         oComponent = this.getOwnerComponent();
-
-        //     //Set Confirmed CaNum and CoNum to Component level
-        //     oComponentContextModel.setProperty('/dashboard/caNum', '');
-        //     oComponentContextModel.setProperty('/dashboard/coNum', '');
-
-        //     this.getView().byId('id_confmBtn').setVisible(true);
-        //     this.getView().byId('id_unConfmBtn').setVisible(false);
-        //     this.getView().byId('id_updtBtn').setEnabled(true);
-
-        //     if (!oStatusModel.getProperty('/bEditable')) {
-        //         oStatusModel.setProperty('/bEditable', true);
-        //     }
-        //     oComponent.getCcuxApp().setOccupied(false);
-        // };
 
         Controller.prototype._handleUpdate = function () {
             var oModel = this.getView().getModel('oODataSvc'),
@@ -746,67 +709,6 @@ sap.ui.define(
             }, this);
             this.getView().addDependent(NNPPopupControl);
             NNPPopupControl.openNNP(sBpNum, sBpEmail, sBpEmailConsum);
-
-/*            oNNPView = sap.ui.view({
-                type: sap.ui.core.mvc.ViewType.XML,
-                viewName: "nrg.module.nnp.view.NNP"
-            });
-            _handleDialogClosed = function (oEvent) {
-                this.getParent().getController()._initDtaVrfRetr();
-            };
-            oNNPView.getController()._sPartnerID = sBpNum;
-            oNNPView.getController()._sEmail = sBpEmail;
-            oNNPView.getController()._sEmailConsum = sBpEmailConsum;
-            this._oNNPPopup = ute.ui.main.Popup.create({
-                title: 'Email Address and Preferences',
-                content: oNNPView,
-                close: _handleDialogClosed
-            });
-            this.getView().addDependent(this._oNNPPopup);
-            this._oNNPPopup.open();*/
-
-/*            //Preapre Popup for Email Edit to show
-            if (!this._oPopupContent) {
-                this._oPopupContent = sap.ui.xmlfragment("EmailEditPopup", "nrg.module.dashboard.view.CustomerVerificationPopup", this);
-            }
-            oEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-EmailBox");
-            oDelEmailBox = sap.ui.core.Fragment.byId("EmailEditPopup", "idnrgDB-DelEmailBox");
-            oEmailBox.setVisible(true);
-            oDelEmailBox.setVisible(false);
-            this._oEmailEditPopup = ute.ui.main.Popup.create({
-                //close: this._handleEditMailPopupClose,
-                content: this._oPopupContent,
-                title: 'Email Address and Preferences'
-            });
-            this._oEmailEditPopup.setShowCloseButton(false);
-            this.getView().addDependent(this._oEmailEditPopup);
-            this._oEmailEditPopup.open();
-            this.getOwnerComponent().getCcuxApp().setOccupied(true);*/
-
-            //Start loading NNP logics and settings
-/*            sPath = '/EmailNNPs' + '(' + 'PartnerID=\'' + sBpNum + '\'' + ',Email=\'' + sBpEmail + '\'' + ',EmailConsum=\'' + sBpEmailConsum + '\')';
-            oParameters = {
-                urlParameters: {"$expand": "Buags"},
-                success : function (oData) {
-                    if (oData) {
-                        this._beforeOpenEditAddrDialogue = true;
-                        this.getView().getModel('oEditEmailNNP').setData(oData);
-                        this.getOwnerComponent().getCcuxApp().setOccupied(false);
-                    }
-                }.bind(this),
-                error: function (oError) {
-                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
-                    this._oEmailEditPopup.close();
-                    ute.ui.main.Popup.Alert({
-                        title: 'Email edit',
-                        message: 'NNP Entity Service Error'
-                    });
-                }.bind(this)
-            };
-
-            if (oModel) {
-                oModel.read(sPath, oParameters);
-            }*/
         };
 
         Controller.prototype._onValidateEmailAddress = function (oEvent) {
@@ -1068,8 +970,6 @@ sap.ui.define(
         };
 
         Controller.prototype._retrDataVrf = function (sPath) {
-            // Display the loading indicator
-            // this.getOwnerComponent().getCcuxApp().setOccupied(true);
 
             var oModel = this.getView().getModel('oODataSvc'),
                 bCaRetrieveComplete = false,
@@ -1128,11 +1028,9 @@ sap.ui.define(
                             }
                         }.bind(this), 100);
                     }
-                    // this._routeInfoConfirm() will dismiss the loading indicator
                 }.bind(this),
                 error: function (oError) {
-                    // Dismiss the loading indicator
-                    // this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    
                 }.bind(this)
             };
 
@@ -1363,6 +1261,9 @@ sap.ui.define(
             oComponentContextModel.setProperty('/bpNum', sCurrentBp);
             oComponentContextModel.setProperty('/caNum', sCurrentCa);
             oComponentContextModel.setProperty('/coNum', sCurrentCo);
+
+            // Update Footer
+            this.getOwnerComponent().getCcuxApp().updateFooter(sCurrentBp, sCurrentCa, sCurrentCo);
 
             fnCallback();
         };
