@@ -630,7 +630,11 @@ sap.ui.define(
                 oSelectedStartDate;
 
             //oSelectedStartDate = this.getView().byId('nrgBilling-dpp-DppStartDate-id')._oDate;
-            oSelectedStartDate = this.getView().getModel('oDppSetUps').getProperty('/results/0/StartDate');
+            if (oSelectedStartDate) {
+                oSelectedStartDate = this.getView().getModel('oDppSetUps').getProperty('/results/0/StartDate');
+            } else {
+                oSelectedStartDate = new Date();
+            }
 
             aFilterIds = ["ContractAccountNumber", "SelectedData", "InstlmntNo", "ZeroDwnPay", "InitialDate"];
             aFilterValues = [this._caNum, this.getView().getModel('oDppStepOneSelectedData').getJSON(), this.getView().getModel('oDppStepOnePost').getProperty('/InstlmntNo'), this.getView().getModel('oDppStepOnePost').getProperty('/ZeroDwnPay'), oSelectedStartDate];
