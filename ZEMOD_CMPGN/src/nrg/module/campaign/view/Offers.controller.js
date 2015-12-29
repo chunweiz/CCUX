@@ -56,6 +56,7 @@ sap.ui.define(
 			    }),
                 bInvoiceFirstCard = true,
                 fnTagDataRecHandler;
+            this.resetView();
             this._aSelectedComparisionCards = [];
             this._bSearchEnabled = false;
             this.getView().setModel(oViewModel, "localModel");
@@ -264,7 +265,9 @@ sap.ui.define(
                     }
                     this._aSelectedComparisionCards[index] = item;
                     if (this._aSelectedComparisionCards[index]) {
-                        item.addStyleClass("nrgCamOff-btnSelected");
+                        this._aSelectedComparisionCards.forEach(function (oSelectedContent) {
+                            oSelectedContent.addStyleClass("nrgCamOff-btnSelected");
+                        });
                     }
                 } else {
                     if (!this._aSelectedComparisionCards) {
