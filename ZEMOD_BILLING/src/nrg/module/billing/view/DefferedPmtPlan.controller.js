@@ -849,8 +849,14 @@ sap.ui.define(
             oParameters = {
                 success : function (oData) {
                     if (oData) {
+                        oData.results.push({ReasonCode: '0000', Reason: ''});
                         this.getView().getModel('oDppReasons').setData(oData.results);
-                        this.getView().getModel('oDppReasons').setProperty('/selectedKey', '3400');
+                        if (this.getView().getModel('oDppEligible').getProperty('/ReasonCode')) {
+                            this.getView().getModel('oDppReasons').setProperty('/selectedKey', this.getView().getModel('oDppEligible').getProperty('/ReasonCode'));
+                        } else {
+                            this.getView().getModel('oDppReasons').setProperty('/selectedKey', '0000');
+                        }
+                        /*this.getView().getModel('oDppReasons').setProperty('/selectedKey', '3400');*/
                     }
                 }.bind(this),
                 error: function (oError) {
