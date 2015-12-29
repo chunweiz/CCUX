@@ -24,7 +24,7 @@ sap.ui.define(
 
         Controller.prototype.onBeforeRendering = function () {
 
-            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            // this.getOwnerComponent().getCcuxApp().setOccupied(true);
 
             this.getOwnerComponent().getCcuxApp().setTitle('CUSTOMER DATA');
 
@@ -1069,7 +1069,7 @@ sap.ui.define(
 
         Controller.prototype._retrDataVrf = function (sPath) {
             // Display the loading indicator
-            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            // this.getOwnerComponent().getCcuxApp().setOccupied(true);
 
             var oModel = this.getView().getModel('oODataSvc'),
                 bCaRetrieveComplete = false,
@@ -1132,7 +1132,7 @@ sap.ui.define(
                 }.bind(this),
                 error: function (oError) {
                     // Dismiss the loading indicator
-                    this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                    // this.getOwnerComponent().getCcuxApp().setOccupied(false);
                 }.bind(this)
             };
 
@@ -1316,9 +1316,6 @@ sap.ui.define(
                 checkComplete,
                 eventBus = sap.ui.getCore().getEventBus();
 
-            // Display the loading indicator
-            oComponent.getCcuxApp().setOccupied(true);
-
             // Update WebUI
             if (oWebUiManager.isAvailable()) {
                 this._updateWebUI(sCurrentBp, sCurrentCa, sCurrentCo, function () {
@@ -1336,7 +1333,6 @@ sap.ui.define(
             // Check the completion of WebUI & CCUX update
             checkComplete = setInterval(function () {
                 if (iCompleteCheck === 2) {
-                    oComponent.getCcuxApp().setOccupied(false);
                     clearInterval(checkComplete);
                     // Inform customer journey
                     eventBus.publish("nrg.module.dashoard", "eAfterConfirmed", {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
