@@ -14,7 +14,8 @@
             <!-- Free Adjustments -->
             <ute:Button class="nrgBilling-blChkBkTools-ctnt-btn"
                 buttonType="SpecialNav" width="220px" enabled="true"
-                text="{comp-i18n-billing>nrgBilling-chkbkTools-FreeAdj-Btn}">
+                text="{comp-i18n-billing>nrgBilling-chkbkTools-FreeAdj-Btn}"
+                press="._onFeeAdjBtnClicked">
             </ute:Button>
             <!-- Average Billing -->
             <ute:Button class="nrgBilling-blChkBkTools-ctnt-btn"

@@ -1317,7 +1317,7 @@ sap.ui.define(
                 eventBus = sap.ui.getCore().getEventBus();
 
             // Display the loading indicator
-            oComponent.getCcuxApp().setOccupied(true);
+            // oComponent.getCcuxApp().setOccupied(true);
 
             // Update WebUI
             if (oWebUiManager.isAvailable()) {
@@ -1336,7 +1336,7 @@ sap.ui.define(
             // Check the completion of WebUI & CCUX update
             checkComplete = setInterval(function () {
                 if (iCompleteCheck === 2) {
-                    oComponent.getCcuxApp().setOccupied(false);
+                    // oComponent.getCcuxApp().setOccupied(false);
                     clearInterval(checkComplete);
                     // Inform customer journey
                     eventBus.publish("nrg.module.dashoard", "eAfterConfirmed", {bpNum: sCurrentBp, caNum: sCurrentCa, coNum: sCurrentCo});
