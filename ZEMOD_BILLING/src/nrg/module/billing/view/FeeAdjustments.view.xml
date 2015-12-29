@@ -5,14 +5,69 @@
     xmlns:c="sap.ui.commons"
     xmlns:mvc="sap.ui.core.mvc"
     controllerName="nrg.module.billing.view.FeeAdjustments">
-    <u:Tag class="nrgToolsEmpty nrgAppMain-toolsContent nrgAppMain-toolsContent-full">
+    <u:Tag class="nrgAppMain-generalContent nrgAppMain-generalContent-full">
         <u:Tag class="nrgFeeAdj">
             <u:Tag class="nrgFeeAdj-Title" text="{comp-i18n-billing>nrgFeeAdjTtl}" />
             <u:Tag class="nrgFeeAdj-Tires">
-                <u:Tag class="nrgFeeAdj-Tire" text="{comp-i18n-billing>nrgFeeAdj-DiscNoticeFee}" />
-                <u:Tag class="nrgFeeAdj-Tire" text="{comp-i18n-billing>nrgFeeAdj-DiscRecovFee}" />
-                <u:Tag class="nrgFeeAdj-Tire" text="{comp-i18n-billing>nrgFeeAdj-LateFee}" />
-                <u:Tag class="nrgFeeAdj-Tire" text="{comp-i18n-billing>nrgFeeAdj-ReconnectFee}" />
+                <um:Button  press=".onDiscNoticeFee"
+                            text="{comp-i18n-billing>nrgFeeAdj-DiscNoticeFee}"
+                            class="nrgFeeAdj-Tire"
+                            design="None"
+                            enabled="{comp-feeAdj>/discNoticefee}"/>
+                <um:Button  press=".onDiscRecovFee"
+                            text="{comp-i18n-billing>nrgFeeAdj-DiscRecovFee}"
+                            class="nrgFeeAdj-Tire"
+                            design="None"
+                            enabled="{comp-feeAdj>/discRecovfee}"/>
+                <um:Button  press=".onLateFee"
+                            text="{comp-i18n-billing>nrgFeeAdj-LateFee}"
+                            class="nrgFeeAdj-Tire"
+                            design="None"
+                            enabled="{comp-feeAdj>/Latefee}"/>
+                <um:Button  press=".onReconnectFee"
+                            text="{comp-i18n-billing>nrgFeeAdj-ReconnectFee}"
+                            class="nrgFeeAdj-Tire"
+                            design="None"
+                            enabled="{comp-feeAdj>/Reconnectfee}"/>
+            </u:Tag>
+            <u:Tag class="nrgFeeAdj-mainArea">
+               <u:Tag class="nrgFeeAdj-mainArea-div" visible="{comp-feeAdj>/feeDateDD}">
+                    <um:Dropdown id="idnrgFeeAdj-DropDownDate"
+                                     placeholder="CHOOSE THE FEE DATE"
+                                     class="nrgFeeAdj-mainArea-DD">
+                        <um:DropdownItem key="1" class="nrgFeeAdj-DdLItem">
+                            <u:Tag text="text1">
+                            </u:Tag>
+                        </um:DropdownItem>
+                    </um:Dropdown>
+                </u:Tag>
+                <u:Tag class="nrgFeeAdj-mainArea-div" visible="{comp-feeAdj>/reasonDD}">
+                    <um:Dropdown id="idnrgFeeAdj-DropDownReason"
+                                     placeholder="REASON"
+                                     class="nrgFeeAdj-mainArea-DD">
+                        <um:DropdownItem key="1" class="nrgFeeAdj-DdLItem" >
+                            <u:Tag text="text1">
+                            </u:Tag>
+                        </um:DropdownItem>
+                    </um:Dropdown>
+                 </u:Tag>
+                <u:TextArea value="Notes" class="nrgFeeAdj-textArea" width="40rem" height="200px"></u:TextArea>
+            </u:Tag>
+            <u:Tag class="nrgFeeAdj-CAArea">
+                <um:Dropdown id="idnrgFeeAdj-DropDownCA"
+                                 placeholder="3040103"
+                                 class="nrgFeeAdj-CAArea-DD">
+                    <um:DropdownItem key="1" class="nrgFeeAdj-DdLItem" >
+                        <u:Tag text="text1">
+                        </u:Tag>
+                    </um:DropdownItem>
+                </um:Dropdown>
+                <u:Button buttonType="SpecialNav" width="100px" enabled="{comp-feeAdj>/ok}"
+                    text="OK"
+                    class="nrgFeeAdj-btn"/>
+                <u:Button buttonType="SpecialNav" width="100px" enabled="true"
+                    text="CANCEL"
+                    class="nrgFeeAdj-btn"/>
             </u:Tag>
         </u:Tag>
     </u:Tag>

@@ -55,7 +55,7 @@ sap.ui.define(
 
                     oModel = new ODataModel(sServiceUrl, {
                         defaultCountMode: CountMode.None,
-                        useBatch: false
+                        useBatch: true
                     });
 
                     this._oComponent.setModel(oModel, sDataReal);

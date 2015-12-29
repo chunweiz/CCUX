@@ -3,10 +3,122 @@
 
     }
     & > .nrgFeeAdj-Tires {
+            margin: 50px 5px 5px 0px;
         & > .nrgFeeAdj-Tire {
                 display: inline-block;
                 color: @nrgColor-blue-link;
+                margin: 5px 45px 5px 0px;
+                font-weight: @nrgFontWeight-semiBold;
+        }
+        & > .nrgFeeAdj-Tire[data-disabled="true"] {
+                color: @nrgColor-grey-inactive;
+        }
+    }
+    & > .nrgFeeAdj-mainArea {
+            display: inline-block;
+            width: 70%;
+        & > .nrgFeeAdj-mainArea-div {
+            & > .nrgFeeAdj-mainArea-DD {
+                            flex: 1;
+                            margin: 2px;
+                            font-size: @nrgFontSize-small;
+                            font-weight: @nrgFontWeight-semiBold;
+                            &:first-child {
+                                margin-right: 10px;
+                            }
+                            & .uteMDd-hdr {
+                                display: flex;
+                                border: none;
+                                margin: 0;
+                                background-color: @nrgColor-bluePearl;
+                                & .uteMDd-hdrContent {
+                                    height: 40px;
+                                    overflow: hidden;
+                                    padding: 8px 0 8px 8px;
+                                    white-space: nowrap;
+                                    width: 38rem;
 
+                                    & .uteMDdItem {
+                                        font-size: @nrgFontSize-small;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+                                    }
+                                }
+                                & .uteMDd-hdrExpander {
+                                    padding: 15px;
+                                }
+                            }
+                            & .uteMDd-picker {
+                                width: 100%;
+                                max-height: 270px;
+                                overflow-y: auto;
+                                margin-top: 5px;
+
+                                & .uteMDdItem {
+                                    font-size: @nrgFontSize-small;
+                                }
+                            }
+            }
+        }
+        & > .nrgFeeAdj-textArea >.uteTextfield-regular {
+                background-color: @nrgColor-bluePearl;
+                border-color: transparent;
+        }
+    }
+    & > .nrgFeeAdj-CAArea {
+            display: inline-block;
+            width: 30%;
+            vertical-align: top;
+        & > .nrgFeeAdj-CAArea-DD {
+                flex: 1;
+                margin: 50px 2px 2px 2px;
+                font-size: @nrgFontSize-base;
+                font-weight: @nrgFontWeight-semiBold;
+                color: @nrgColor-blue-label;
+                &:first-child {
+                    margin-right: 10px;
+                }
+                & .uteMDd-hdr {
+                    display: flex;
+                    border: none;
+                    margin: 0;
+                    background-color: transparent;
+                    & .uteMDd-hdrContent {
+                        height: 40px;
+                        overflow: hidden;
+                        padding: 8px 0 8px 8px;
+                        white-space: nowrap;
+                        width: 10rem;
+
+                        & .uteMDdItem {
+                            font-size: @nrgFontSize-small;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                    & .uteMDd-hdrExpander {
+                        padding: 15px;
+                    }
+                }
+                & .uteMDd-picker {
+                    width: 100%;
+                    max-height: 270px;
+                    overflow-y: auto;
+                    margin-top: 5px;
+
+                    & .uteMDdItem {
+                        font-size: @nrgFontSize-small;
+                    }
+                }
+        }
+        & > .nrgFeeAdj-btn {
+            min-width: 100px;
+        }
+        & > .nrgFeeAdj-btn:hover {
+            min-width: 100px;
+        }
+        & > .nrgFeeAdj-btn[data-disabled="true"] {
+                color: @nrgColor-grey-inactive;
         }
     }
 }

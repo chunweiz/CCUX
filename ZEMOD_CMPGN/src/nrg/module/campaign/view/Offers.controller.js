@@ -24,6 +24,14 @@ sap.ui.define(
 
         };
         /* =========================================================== */
+		/* lifecycle method- After Rendering                          */
+		/* =========================================================== */
+        Controller.prototype.onAfterRendering = function () {
+            // Update Footer
+            this.getOwnerComponent().getCcuxApp().updateFooter(this._sBP, this._sCA, this._sContract);
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
+        };
+        /* =========================================================== */
 		/* lifecycle method- Before Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onBeforeRendering = function () {
@@ -56,6 +64,7 @@ sap.ui.define(
 			    }),
                 bInvoiceFirstCard = true,
                 fnTagDataRecHandler;
+            this.resetView();
             this._aSelectedComparisionCards = [];
             this._bSearchEnabled = false;
             this.getView().setModel(oViewModel, "localModel");
@@ -264,7 +273,9 @@ sap.ui.define(
                     }
                     this._aSelectedComparisionCards[index] = item;
                     if (this._aSelectedComparisionCards[index]) {
-                        item.addStyleClass("nrgCamOff-btnSelected");
+                        this._aSelectedComparisionCards.forEach(function (oSelectedContent) {
+                            oSelectedContent.addStyleClass("nrgCamOff-btnSelected");
+                        });
                     }
                 } else {
                     if (!this._aSelectedComparisionCards) {
