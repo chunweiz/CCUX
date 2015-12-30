@@ -104,6 +104,8 @@ sap.ui.define(
         Controller.prototype._selectScrn = function (sSelectedScrn) {
             var oScrnControl = this.getView().getModel('oDppScrnControl');
 
+            sSelectedScrn = 'StepTwo';
+
             oScrnControl.setProperty('/StepOne', false);
             oScrnControl.setProperty('/StepTwo', false);
             oScrnControl.setProperty('/StepThree', false);
@@ -330,6 +332,21 @@ sap.ui.define(
             }
         };
 
+        Controller.prototype._onStepTwoInstlChange = function (oEvent) {
+            var oDppConfs = this.getView().getModel('oDppConfs'),
+                iTempTol = 0,
+                iDifTol = 0,
+                i;
+
+            for (i = 0; i < oDppConfs.getData().results.length; i = i + 1) {
+                iTempTol = iTempTol + parseFloat(oDppConfs.getProperty('/results/' + i + '/ConfirmdItems/Amount'));
+            }
+
+            iDifTol = parseFloat(oDppConfs.getProperty('/results/0/TotOutStd')) - iTempTol;
+            oDppConfs.setProperty('/results/0/DiffTot', iDifTol.toString());
+            oDppConfs.setProperty('/results/0/DppTot', iTempTol.toString());
+        };
+
         Controller.prototype._onDistributeDiffClick = function (oEvent) {
             var oDppConfs = this.getView().getModel('oDppConfs'),
                 i,
@@ -367,10 +384,10 @@ sap.ui.define(
                 }
             }
 
-            iDiffTot =  parseFloat(oDppConfs.getProperty('/results/0/DppTot')) - iSelTol;
+            //iDiffTot =  parseFloat(oDppConfs.getProperty('/results/0/DppTot')) - iSelTol;
 
             oDppConfs.setProperty('/results/0/SelTot', iSelTol.toString());
-            oDppConfs.setProperty('/results/0/DiffTot', iDiffTot.toString());
+            //oDppConfs.setProperty('/results/0/DiffTot', iDiffTot.toString());
         };
 
         Controller.prototype._formatPadZero = function (sNum, iSize) {
@@ -671,12 +688,13 @@ sap.ui.define(
             sPath = '/DPPConfs';
 
             oParameters = {
-                filters: aFilters,
+                //filters: aFilters,
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oDppConfs').setData(oData);
                         for (i = 0; i < oData.results.length; i = i + 1) {
                             this.getView().getModel('oDppConfs').setProperty('/results/' + i + '/Checked', false);
+                            this.getView().getModel('oDppConfs').setProperty('/results/' + i + '/ConfirmdItems/Amount', parseFloat(this.getView().getModel('oDppConfs').getProperty('/results/' + i + '/ConfirmdItems/Amount')));
                         }
                         this.getView().getModel('oDppConfs').setProperty('/results/AllChecked', false);
                         this.getView().getModel('oDppConfs').setProperty('/results/0/SelTot', 0);
