@@ -121,11 +121,16 @@ sap.ui.define(
             oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
             oRouter = this.getOwnerComponent().getRouter();
 
-            if (oContext.bpNum && oContext.coNum && oContext.caNum) {
+            if (oContext.bpNum && oContext.caNum && oContext.coNum) {
                 oRouter.navTo('billing.HighBill', {
                     bpNum: oContext.bpNum,
                     caNum: oContext.caNum,
                     coNum: oContext.coNum
+                });
+            } else if (oContext.bpNum && oContext.caNum) {
+                oRouter.navTo('billing.HighBillNoCo', {
+                    bpNum: oContext.bpNum,
+                    caNum: oContext.caNum
                 });
             }
         };
@@ -168,8 +173,18 @@ sap.ui.define(
 
             oContext = this.getOwnerComponent().getCcuxContextManager().getContext().getData();
             oRouter = this.getOwnerComponent().getRouter();
-
-            if (oContext.bpNum) {
+            if (oContext.bpNum && oContext.caNum && oContext.coNum) {
+                oRouter.navTo('dashboard.VerificationWithCaCo', {
+                    bpNum: oContext.bpNum,
+                    caNum: oContext.caNum,
+                    coNum: oContext.coNum
+                });
+            } else if (oContext.bpNum && oContext.caNum) {
+                oRouter.navTo('dashboard.VerificationWithCa', {
+                    bpNum: oContext.bpNum,
+                    caNum: oContext.caNum
+                });
+            } else if (oContext.bpNum) {
                 oRouter.navTo('dashboard.Verification', {
                     bpNum: oContext.bpNum
                 });
