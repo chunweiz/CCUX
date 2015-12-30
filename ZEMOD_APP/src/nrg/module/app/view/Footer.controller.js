@@ -433,6 +433,7 @@ sap.ui.define(
                             oCampaignModel.setProperty('/CampaignFirstBill', false);
                         }
                         oCampaignModel.setProperty('/CampaignButtonType', oData.InitTab);
+                        oCampaignModel.setProperty('/CampaignButtonMoveOut', oData.PendMvo);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -472,9 +473,9 @@ sap.ui.define(
 
         Controller.prototype._onCampaignBtnClick = function () {
             var oCampaignModel = this.getView().getModel('oFooterCampaign'),
-                sFirstMonthBill = oCampaignModel.getProperty("FirstBill"),
-                sPendingMoveOut = oCampaignModel.getProperty("PendMvo"),
-                sInitTab = oCampaignModel.getProperty("InitTab"),
+                sFirstMonthBill = oCampaignModel.getProperty("CampaignFirstBill"),
+                sPendingMoveOut = oCampaignModel.getProperty("CampaignButtonMoveOut"),
+                sInitTab = oCampaignModel.getProperty("CampaignButtonType"),
                 oRouter = this.getOwnerComponent().getRouter(),
                 oRouting = this.getView().getModel('oFooterRouting');
 
