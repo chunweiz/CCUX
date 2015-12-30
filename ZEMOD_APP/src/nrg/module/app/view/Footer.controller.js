@@ -433,6 +433,7 @@ sap.ui.define(
                             oCampaignModel.setProperty('/CampaignFirstBill', false);
                         }
                         oCampaignModel.setProperty('/CampaignButtonType', oData.InitTab);
+                        oCampaignModel.setProperty('/CampaignButtonMoveOut', oData.PendMvo);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -472,17 +473,34 @@ sap.ui.define(
 
         Controller.prototype._onCampaignBtnClick = function () {
             var oCampaignModel = this.getView().getModel('oFooterCampaign'),
+                sFirstMonthBill = oCampaignModel.getProperty("/CampaignFirstBill"),
+                sPendingMoveOut = oCampaignModel.getProperty("/CampaignButtonMoveOut"),
+                sInitTab = oCampaignModel.getProperty("/CampaignButtonType"),
                 oRouter = this.getOwnerComponent().getRouter(),
                 oRouting = this.getView().getModel('oFooterRouting');
 
-            if (oCampaignModel.getProperty('/CampaignFirstBill')) {
-                oRouter.navTo('campaignoffers', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber, typeV: oCampaignModel.getProperty('/CampaignButtonType')});
-            } else {
+            // Check first month bill
+            if (!sFirstMonthBill) {
                 ute.ui.main.Popup.Alert({
-                    title: 'No First Bill',
-                    message: 'Customer has to completed at least One Month Invoice'
+                    title: 'Information',
+                    message: 'Customer has to completed at least One Month Invoice.'
                 });
+                return;
             }
+            // Check pending move out
+            if (sPendingMoveOut) {
+                ute.ui.main.Popup.Alert({
+                    title: 'Information',
+                    message: 'We are unable to process your campaign change request because you have already requested a move out.'
+                });
+                return;
+            }
+            // Check and parse initTab
+            if ((!sInitTab) || (sInitTab === undefined) || (sInitTab === null) || (sInitTab === "")) {
+                sInitTab = "SE";
+            }
+            // If all ok, go to change campaign page
+            oRouter.navTo('campaignoffers', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber, typeV: sInitTab});
         };
 
         /*---------------------------------------------- Footer Alert Methods -----------------------------------------------*/

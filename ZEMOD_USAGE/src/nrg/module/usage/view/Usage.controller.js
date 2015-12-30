@@ -46,7 +46,9 @@ sap.ui.define(
                 oUsageTableRowTemplate = this.getView().byId("idnrgUsgRow-Infoline"),
                 oGraph = this.getView().byId('idnrgUsg-Graph-chart'),
                 oGraphNoData = this.getView().byId('idnrgUsg-Graph-NoData'),
-                oNoDataTag = this.getView().byId("idnrgUsgNoData").clone();
+                oNoDataTag = this.getView().byId("idnrgUsgNoData").clone(),
+                oRadioWeekly = this.getView().byId("idnrgUsgRadioweekly");
+            oRadioWeekly.setChecked(true);
             this._SelectedInfoLines = [];
             that._oGraphModel = new JSONModel();
             that.getOwnerComponent().getCcuxApp().setOccupied(true);
@@ -240,9 +242,7 @@ sap.ui.define(
             } else if (this._sType ===  "B") {
                 this.navTo("billing.HighBill", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
             } else {
-                this.navTo('dashboard.Bp', {
-                    bpNum: this._sBP
-                });
+                this.navTo("dashboard.VerificationWithCaCo", {bpNum: this._sBP, caNum: this._sCA, coNum: this._sContract});
             }
         };
 
@@ -393,14 +393,12 @@ sap.ui.define(
          *
 		 *
 		 */
-        Controller.prototype.toggleTier = function (oControlEvent) {
-            //var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
-
-            //this._oApp.setHeaderMenuItemSelected(false, App.HMItemId.Index);
-
-/*            oWebUiManager.notifyWebUi('openIndex', {
-                LINK_ID: "Z_DUNH"
-            });*/
+        Controller.prototype.toggleBillWizard = function (oControlEvent) {
+            this.navTo('billing.HighBill', {
+                bpNum: this._sBP,
+                caNum: this._sCA,
+                coNum: this._sContract
+            });
         };
         /**
 		 * Handler for Dunning History Transaction launcher
