@@ -167,9 +167,12 @@ sap.ui.define(
                         oData.results.selectedKey = '';
                         for (i = 0; i < oData.results.length; i = i + 1) {
                             oData.results[i].iInd = i;
+                            // Select the CO passed from dashboard
+                            if (oData.results[i].Contract.trim() === this._coNum) {
+                                this.getView().byId('idESIDDropdown').setSelectedKey(oData.results[i].iInd);
+                            }
                         }
                         this.getView().getModel('oESIDDropdown').setData(oData);
-                        this.getView().byId('idESIDDropdown').setSelectedKey(oData.results[0].iInd);
                         this._retrEnrollHolds(oData.results[0].ESID, oData.results[0].Contract);
                     }
                 }.bind(this),
