@@ -473,9 +473,9 @@ sap.ui.define(
 
         Controller.prototype._onCampaignBtnClick = function () {
             var oCampaignModel = this.getView().getModel('oFooterCampaign'),
-                sFirstMonthBill = oCampaignModel.getProperty("CampaignFirstBill"),
-                sPendingMoveOut = oCampaignModel.getProperty("CampaignButtonMoveOut"),
-                sInitTab = oCampaignModel.getProperty("CampaignButtonType"),
+                sFirstMonthBill = oCampaignModel.getProperty("/CampaignFirstBill"),
+                sPendingMoveOut = oCampaignModel.getProperty("/CampaignButtonMoveOut"),
+                sInitTab = oCampaignModel.getProperty("/CampaignButtonType"),
                 oRouter = this.getOwnerComponent().getRouter(),
                 oRouting = this.getView().getModel('oFooterRouting');
 
