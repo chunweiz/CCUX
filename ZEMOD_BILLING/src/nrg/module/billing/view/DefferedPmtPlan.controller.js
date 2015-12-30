@@ -104,8 +104,6 @@ sap.ui.define(
         Controller.prototype._selectScrn = function (sSelectedScrn) {
             var oScrnControl = this.getView().getModel('oDppScrnControl');
 
-            sSelectedScrn = 'StepTwo';
-
             oScrnControl.setProperty('/StepOne', false);
             oScrnControl.setProperty('/StepTwo', false);
             oScrnControl.setProperty('/StepThree', false);
@@ -688,7 +686,7 @@ sap.ui.define(
             sPath = '/DPPConfs';
 
             oParameters = {
-                //filters: aFilters,
+                filters: aFilters,
                 success : function (oData) {
                     if (oData) {
                         this.getView().getModel('oDppConfs').setData(oData);
