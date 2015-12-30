@@ -201,7 +201,7 @@ sap.ui.define(
                 oTimeLineModel = this.getView().getModel('Cj-timeline'),
                 that = this,
                 oViewModel = this.getView().getModel('cj-view');
-            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+            //this.getOwnerComponent().getCcuxApp().setOccupied(true);
             sPath = "/CJIconsSet";
             aFilterIds = ["BP", "CA", "StartDate", "EndDate"];
             aFilterValues = [this._sBP, this._sCA, dStartDate, dEndDate];
@@ -486,7 +486,7 @@ sap.ui.define(
                 oFilter1;
             this.getOwnerComponent().getCcuxApp().setOccupied(true);
             aFilterIds = ["BP", "CA", "StartDate", "EndDate"];
-            aFilterValues = ["0002473499", "000003040103", (new Date(oFromDate.getValue())), (new Date(oToDate.getValue()))];
+            aFilterValues = [this._sBP, this._sCA, (new Date(oFromDate.getValue())), (new Date(oToDate.getValue()))];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sChannel =  oCJDropDown.getSelectedKey();
             if (sChannel === "All") {

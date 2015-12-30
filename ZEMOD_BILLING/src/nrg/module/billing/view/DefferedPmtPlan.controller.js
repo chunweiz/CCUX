@@ -283,8 +283,17 @@ sap.ui.define(
             this._postDPPCommunication();
         };
 
-        Controller.prototype._onReasonSelect = function () {
+        Controller.prototype._onReasonSelect = function (oEvent) {
             //this.getView().getModel('oDppReasons').setData(oData);
+            //this.getView().getModel('oDppReasons').setProperty('/selectedKey', '0000');
+            var oDppReason = this.getView().getModel('oDppReasons'),
+                i;
+
+            for (i = 0; i < oDppReason.oData.length; i = i + 1) {
+                if (oDppReason.oData[i].ReasonCode === oEvent.mParameters.selectedKey) {
+                    oDppReason.setProperty('/selectedReason', oDppReason.oData[i].Reason);
+                }
+            }
         };
 
         Controller.prototype._onExtReasonSelect = function (oEvent) {
@@ -403,8 +412,10 @@ sap.ui.define(
             oConfPost.setProperty('/InstlmntNo', oConf.oData.results[0].InstlmntNo);
             oConfPost.setProperty('/ZeroDwnPay', oConf.oData.results[0].ZeroDwnPay);
             oConfPost.setProperty('/InitialDate', oConf.oData.results[0].InitialDate);
-            oConfPost.setProperty('/ReasonCode', oConf.oData.results[0].ReasonCode);
-            oConfPost.setProperty('/Reason', oConf.oData.results[0].Reason);
+            oConfPost.setProperty('/ReasonCode', this.getView().getModel('oDppReasons').getProperty('/selectedKey'));
+            oConfPost.setProperty('/Reason', this.getView().getModel('oDppReasons').setProperty('/selectedReason'));
+            /*oConfPost.setProperty('/ReasonCode', oConf.oData.results[0].ReasonCode);
+            oConfPost.setProperty('/Reason', oConf.oData.results[0].Reason);*/
 
             for (i = 0; i < oConf.getData().results.length; i = i + 1) {
                 if (oConf.getData().results[i].ConfirmdItems.Amount) {
@@ -526,18 +537,26 @@ sap.ui.define(
             var oSetUps = this.getView().getModel('oDppSetUps'),
                 i,
                 oSetUpsPost = this.getView().getModel('oDppStepOnePost'),
-                aSelectedInd = [];
+                aSelectedInd = [],
+                oDppReason = this.getView().getModel('oDppReasons');
 
-            oSetUpsPost.setProperty('/InstlmntNo', oSetUps.getProperty('/results/0/InstlmntNo'));
-            for (i = 0; i < oSetUps.getData().results.length; i = i + 1) {
-                if (oSetUps.getProperty('/results/' + i + '/OpenItems/bSelected')) {
-                    aSelectedInd.push({IND: oSetUps.getProperty('/results/' + i + '/OpenItems/ItemNumber')});
+            if (oDppReason.getProperty('/selectedReason')) {
+                oSetUpsPost.setProperty('/InstlmntNo', oSetUps.getProperty('/results/0/InstlmntNo'));
+                for (i = 0; i < oSetUps.getData().results.length; i = i + 1) {
+                    if (oSetUps.getProperty('/results/' + i + '/OpenItems/bSelected')) {
+                        aSelectedInd.push({IND: oSetUps.getProperty('/results/' + i + '/OpenItems/ItemNumber')});
+                    }
                 }
-            }
-            oSetUpsPost.setProperty('/SelectedIndices', aSelectedInd);
-            this.getView().getModel('oDppStepOneSelectedData').setProperty('/SELECTEDDATA', oSetUpsPost.getProperty('/SelectedIndices'));
+                oSetUpsPost.setProperty('/SelectedIndices', aSelectedInd);
+                this.getView().getModel('oDppStepOneSelectedData').setProperty('/SELECTEDDATA', oSetUpsPost.getProperty('/SelectedIndices'));
 
-            this._selectScrn('StepTwo');//Initiating step 2
+                this._selectScrn('StepTwo');//Initiating step 2
+            } else {
+                ute.ui.main.Popup.Alert({
+                    title: 'DPP REASON',
+                    message: 'Please Select DPP Setup Reason'
+                });
+            }
         };
 
         Controller.prototype._handleExtDateChange = function (oEvent) {
@@ -750,16 +769,25 @@ sap.ui.define(
         Controller.prototype._isDppElgble = function () {
             var oODataSvc = this.getView().getModel('oDataSvc'),
                 oParameters,
-                sPath;
+                sPath,
+                aFilters,
+                aFilterValues,
+                aFilterIds;
 
-            sPath = '/DPPElgbles(ContractAccountNumber=\'' + this._caNum + '\',DPPReason=\'\')';
+            aFilterIds = ["ContractAccountNumber"];
+            aFilterValues = [this._caNum];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            sPath = '/DPPElgbles';
+
+            //sPath = '/DPPElgbles(ContractAccountNumber=\'' + this._caNum + '\',DPPReason=\'\')';
 
             oParameters = {
+                filters : aFilters,
                 success : function (oData) {
-                    if (oData) {
-                        this.getView().getModel('oDppEligible').setData(oData);
+                    if (oData.results[0]) {
+                        this.getView().getModel('oDppEligible').setData(oData.results[0]);
 
-                        if (oData.EligibleYes) {
+                        if (oData.results[0].EligibleYes) {
                             this._selectScrn('StepOne');
                         } else {
                             this._selectScrn('DPPDenied');
@@ -816,11 +844,20 @@ sap.ui.define(
             var oODataSvc = this.getView().getModel('oDataSvc'),
                 oParameters,
                 sPath,
-                i;
+                i,
+                aFilters,
+                aFilterValues,
+                aFilterIds;
 
-            sPath = '/DPPElgbles(ContractAccountNumber=\'' + this._caNum + '\',DPPReason=\'\')/DPPDenieds';
+            aFilterIds = ["ContractAccountNumber"];
+            aFilterValues = [this._caNum];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            sPath = '/DPPDenieds';
+
+            //sPath = '/DPPElgbles(ContractAccountNumber=\'' + this._caNum + '\',DPPReason=\'\')/DPPDenieds';
 
             oParameters = {
+                filters : aFilters,
                 success : function (oData) {
                     if (oData) {
                         for (i = 0; i < oData.results.length; i = i + 1) {
@@ -851,10 +888,12 @@ sap.ui.define(
                     if (oData) {
                         oData.results.push({ReasonCode: '0000', Reason: ''});
                         this.getView().getModel('oDppReasons').setData(oData.results);
-                        if (this.getView().getModel('oDppEligible').getProperty('/ReasonCode')) {
-                            this.getView().getModel('oDppReasons').setProperty('/selectedKey', this.getView().getModel('oDppEligible').getProperty('/ReasonCode'));
+                        if (this.getView().getModel('oDppEligible').getProperty('/DPPReasonYes')) {
+                            this.getView().getModel('oDppReasons').setProperty('/selectedKey', '0000');
+                            this.getView().getModel('oDppReasons').setProperty('/selectedReason', this.getView().getModel('oDppEligible').getProperty('/DPPReason'));
                         } else {
                             this.getView().getModel('oDppReasons').setProperty('/selectedKey', '0000');
+                            this.getView().getModel('oDppReasons').setProperty('/selectedReason', '');
                         }
                         /*this.getView().getModel('oDppReasons').setProperty('/selectedKey', '3400');*/
                     }
@@ -874,15 +913,23 @@ sap.ui.define(
                 oParameters,
                 sPath,
                 i,
-                sStartDate;
+                sStartDate,
+                aFilters,
+                aFilterValues,
+                aFilterIds;
 
             //Model created for later posting
             this.getView().getModel('oDppStepOnePost').setData({});
 
+            aFilterIds = ["ContractAccountNumber"];
+            aFilterValues = [this._caNum];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            sPath = '/DPPSetUps';
 
-            sPath = '/DPPElgbles(ContractAccountNumber=\'' + this._caNum + '\',DPPReason=\'\')/DPPSetUps';
+            //sPath = '/DPPElgbles(ContractAccountNumber=\'' + this._caNum + '\',DPPReason=\'\')/DPPSetUps';
 
             oParameters = {
+                filters : aFilters,
                 success : function (oData) {
                     if (oData) {
                         for (i = 0; i < oData.results.length; i = i + 1) {

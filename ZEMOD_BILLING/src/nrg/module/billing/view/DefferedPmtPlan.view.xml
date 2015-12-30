@@ -18,7 +18,7 @@
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
                     <ute:Tag class="nrgBilling-dltl-step" text="{comp-i18n-billing>nrgBilling-dpp-StepOne}"/>
-                    <ute:Tag class="nrgBilling-dltl-reason">
+                    <ute:Tag class="nrgBilling-dltl-reason" visible="{parts:['oDppEligible>/DPPReasonYes'], formatter:'._reverseBooleanFormatter'}">
                         <ute:Tag class="nrgBilling-dltl-reason-lbl" text="{comp-i18n-billing>nrgBilling-dpp-ReasonDpp}"/>
                         <utmain:Dropdown class="nrgBilling-dltl-reason-select"
                                          selectedKey="{oDppReasons>/selectedKey}"
@@ -28,6 +28,10 @@
                                 <ute:Tag elem="span" text="{oDppReasons>Reason}" />
                             </utmain:DropdownItem>
                         </utmain:Dropdown>
+                    </ute:Tag>
+                    <ute:Tag class="nrgBilling-dltl-reason" visible="{oDppEligible>/DPPReasonYes}">
+                        <ute:Tag class="nrgBilling-dltl-reason-lbl" text="{comp-i18n-billing>nrgBilling-dpp-ReasonDpp}"/>
+                        <ute:Tag class="nrgBilling-dltl-reason-lbl" text="{comp-i18n-billing>nrgBilling-dpp-ReasonDpp}"/>
                     </ute:Tag>
                 </ute:Tag>
                 <!--<ute:Tag class="nrgBilling-dPmtPln-lftArea-top-m">
@@ -152,7 +156,7 @@
                         </ute:Tag>
                     </ute:Tag>
                 </ute:Tag>
-                <ute:Tag class="nrgBilling-dlct-date">
+                <ute:Tag class="nrgBilling-dlct-date" visible="{parts:['oDppStepOnePost>/ZeroDwnPay'], formatter:'._negativeXFormatter'}">
                         <ute:Tag class="nrgBilling-dlct-date-lbl" text="{comp-i18n-billing>nrgBilling-dpp-FirstInstlDate} "/>
                         <ute:DatePicker id="nrgBilling-dpp-DppDueDate-id"/>
                 </ute:Tag>

@@ -21,6 +21,14 @@ sap.ui.define(
         Controller.prototype.onInit = function () {
         };
         /* =========================================================== */
+		/* lifecycle method- After Rendering                          */
+		/* =========================================================== */
+        Controller.prototype.onAfterRendering = function () {
+            // Update Footer
+            this.getOwnerComponent().getCcuxApp().updateFooter(this._sBP, this._sCA, this._sContract);
+            this.getOwnerComponent().getCcuxApp().setOccupied(false);
+        };
+        /* =========================================================== */
 		/* lifecycle method- Before Rendering                          */
 		/* =========================================================== */
         Controller.prototype.onBeforeRendering = function () {
@@ -71,12 +79,6 @@ sap.ui.define(
             that.getView().byId('idnrgCamChgPriceT').removeAllAggregation("content");
             that.getView().byId('idnrgCamChgPriceT').addContent(oTemplateView);
             jQuery.sap.log.info("Odata Read Successfully:::");
-        };
-        /* =========================================================== */
-		/* lifecycle method- After Rendering                          */
-		/* =========================================================== */
-        Controller.prototype.onAfterRendering = function () {
-            this.getOwnerComponent().getCcuxApp().setOccupied(false);
         };
         /**
 		 * Binds the view to the object path. Makes sure that view displays
