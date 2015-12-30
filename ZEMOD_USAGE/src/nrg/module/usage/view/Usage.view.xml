@@ -27,7 +27,7 @@
                             </um:button>
                         </u:Tag>
                         <u:Tag class="nrgUsg-tier">
-                            <um:Button press=".toggleTier"
+                            <um:Button press=".toggleBillWizard"
                                 text="{comp-i18n-usage>nrgUsgLBillWizard}"
                                 design="None">
                             </um:button>

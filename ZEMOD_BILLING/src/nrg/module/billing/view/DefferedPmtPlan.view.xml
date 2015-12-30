@@ -129,9 +129,11 @@
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1">
                                 <utmain:Checkbox checked="{oDppConfs>Checked}" select="._onDppConfItemCheck"/>
                             </ute:Tag>
-                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i2"
-                                     text="{path: 'oDppConfs>ConfirmdItems/Amount', type: 'nrg.base.type.Price',
-                                            formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i2">
+                                <ute:Tag elem="span" text="$"/>
+                                <ute:Textfield fieldType="Noborder" width="100px" value="{oDppConfs>ConfirmdItems/Amount}"
+                                               change="._onStepTwoInstlChange"/>
+                            </ute:Tag>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i3" text="{parts:['oDppConfs>ConfirmdItems/DueDate'], formatter:'._formatDate'}"/>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i4" text="{parts:['oDppConfs>ConfirmdItems/ClearDate'], formatter:'._formatDate'}"/>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i5" text="{oDppConfs>ConfirmdItems/Cleared}"/>
@@ -144,9 +146,11 @@
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1">
                                 <utmain:Checkbox checked="{oDppConfs>Checked}" select="._onDppConfItemCheck"/>
                             </ute:Tag>
-                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i2"
-                                     text="{path: 'oDppConfs>ConfirmdItems/Amount', type: 'nrg.base.type.Price',
-                                            formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i2">
+                                <ute:Tag elem="span" text="$"/>
+                                <ute:Textfield fieldType="Noborder" width="100px" value="{oDppConfs>ConfirmdItems/Amount}"
+                                               change="._onStepTwoInstlChange"/>
+                            </ute:Tag>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i3" text="{parts:['oDppConfs>ConfirmdItems/DueDate'], formatter:'._formatDate'}"/>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i4" text="{parts:['oDppConfs>ConfirmdItems/ClearDate'], formatter:'._formatDate'}"/>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i5" text="{oDppConfs>ConfirmdItems/Cleared}"/>
