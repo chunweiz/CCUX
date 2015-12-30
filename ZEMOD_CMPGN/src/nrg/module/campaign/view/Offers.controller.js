@@ -29,7 +29,6 @@ sap.ui.define(
         Controller.prototype.onAfterRendering = function () {
             // Update Footer
             this.getOwnerComponent().getCcuxApp().updateFooter(this._sBP, this._sCA, this._sContract);
-            this.getOwnerComponent().getCcuxApp().setOccupied(false);
         };
         /* =========================================================== */
 		/* lifecycle method- Before Rendering                          */
@@ -908,11 +907,18 @@ sap.ui.define(
                 oSearchButton = this.getView().byId("idCamToggleBtn-SE"),
                 oTableTag;
 
-            oFirstCardInvoice.unBindContext("comp-campaign");
-            oSecondCardInvoice.unBindContext("comp-campaign");
-            oFirstCardConsumption.unBindContext("comp-campaign");
-            oSecondCardConsumption.unBindContext("comp-campaign");
-
+            if(oFirstCardInvoice.getBindingContext("comp-campaign")) {
+                oFirstCardInvoice.unbindElement("comp-campaign");
+            }
+            if(oSecondCardInvoice.getBindingContext("comp-campaign")) {
+                oSecondCardInvoice.unbindElement("comp-campaign");
+            }
+            if(oFirstCardConsumption.getBindingContext("comp-campaign")) {
+                oFirstCardConsumption.unbindElement("comp-campaign");
+            }
+            if(oSecondCardConsumption.getBindingContext("comp-campaign")) {
+                oSecondCardConsumption.unbindElement("comp-campaign");
+            }
             oTableTag = this.byId(sap.ui.core.Fragment.createId("Invoice1", "idnrgCamOffPriceT"));
             if (oTableTag) {
                 oTableTag.removeAllAggregation("content");
@@ -929,13 +935,11 @@ sap.ui.define(
             if (oTableTag) {
                 oTableTag.removeAllAggregation("content");
             }
-
-
             oProactiveButton.removeStyleClass("nrgCamOff-btn-selected");
             oReactiveButton.removeStyleClass("nrgCamOff-btn-selected");
             oSaveButton.removeStyleClass("nrgCamOff-btn-selected");
             oFinalSaveButton.removeStyleClass("nrgCamOff-btn-selected");
-            oSearchButton.addStyleClass("nrgCamOff-btn-selected");
+            oSearchButton.removeStyleClass("nrgCamOff-btn-selected");
         };
         /**
 		 * Converts in to EFL Json format required by Template view.

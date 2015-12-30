@@ -102,9 +102,10 @@ sap.ui.define(
             oRouter = this.getOwnerComponent().getRouter();
 
             if (oContext.bpNum) {
-                oRouter.navTo('billing.BillingInfoNoCo', {
+                oRouter.navTo('billing.BillingInfo', {
                     bpNum: oContext.bpNum,
-                    caNum: oContext.caNum
+                    caNum: oContext.caNum,
+                    coNum: oContext.coNum
                 });
             }
         };
