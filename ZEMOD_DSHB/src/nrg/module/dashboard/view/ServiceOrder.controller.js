@@ -168,7 +168,7 @@ sap.ui.define(
                         for (i = 0; i < oData.results.length; i = i + 1) {
                             oData.results[i].iInd = i;
                             // Select the CO passed from dashboard
-                            if (oData.results[i].Contract.trim() === this._coNum) {
+                            if (oData.results[i].Contract.trim() === this._coNum.trim()) {
                                 this.getView().byId('idESIDDropdown').setSelectedKey(oData.results[i].iInd);
                             }
                         }
