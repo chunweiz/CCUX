@@ -13,7 +13,9 @@
         <!--STEP 1-->
         <ute:Tag class="nrgBilling-dPmtPln-lftArea" visible="{oDppScrnControl>/StepOne}">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-PageTitle}"/>
-            <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-link">
+                <utmain:Button text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}" design="None" press="._onDppConfCancelClick"/>
+            </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
@@ -106,7 +108,9 @@
         <!--Step 2-->
         <ute:Tag class="nrgBilling-dPmtPln-lftArea" visible="{oDppScrnControl>/StepTwo}">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-PageTitle}"/>
-            <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-link">
+                <utmain:Button text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}" design="None" press="._onDppConfCancelClick"/>
+            </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
@@ -129,9 +133,11 @@
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1">
                                 <utmain:Checkbox checked="{oDppConfs>Checked}" select="._onDppConfItemCheck"/>
                             </ute:Tag>
-                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i2"
-                                     text="{path: 'oDppConfs>ConfirmdItems/Amount', type: 'nrg.base.type.Price',
-                                            formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i2">
+                                <ute:Tag elem="span" text="$"/>
+                                <ute:Textfield fieldType="Noborder" width="100px" value="{oDppConfs>ConfirmdItems/Amount}"
+                                               change="._onStepTwoInstlChange"/>
+                            </ute:Tag>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i3" text="{parts:['oDppConfs>ConfirmdItems/DueDate'], formatter:'._formatDate'}"/>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i4" text="{parts:['oDppConfs>ConfirmdItems/ClearDate'], formatter:'._formatDate'}"/>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i5" text="{oDppConfs>ConfirmdItems/Cleared}"/>
@@ -144,9 +150,11 @@
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-h1">
                                 <utmain:Checkbox checked="{oDppConfs>Checked}" select="._onDppConfItemCheck"/>
                             </ute:Tag>
-                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i2"
-                                     text="{path: 'oDppConfs>ConfirmdItems/Amount', type: 'nrg.base.type.Price',
-                                            formatOptions: { currencySymbol: '$' , currencyAlignment: 'LHS' }}"/>
+                            <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i2">
+                                <ute:Tag elem="span" text="$"/>
+                                <ute:Textfield fieldType="Noborder" width="100px" value="{oDppConfs>ConfirmdItems/Amount}"
+                                               change="._onStepTwoInstlChange"/>
+                            </ute:Tag>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i3" text="{parts:['oDppConfs>ConfirmdItems/DueDate'], formatter:'._formatDate'}"/>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i4" text="{parts:['oDppConfs>ConfirmdItems/ClearDate'], formatter:'._formatDate'}"/>
                             <ute:Tag class="nrgBilling-dlc-cell nrgBilling-dlch-i5" text="{oDppConfs>ConfirmdItems/Cleared}"/>
@@ -220,7 +228,9 @@
         <!--Step 3-->
         <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="{oDppScrnControl>/StepThree}">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-PageTitle}"/>
-            <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-link">
+                <utmain:Button text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}" design="None" press="._onDppConfCancelClick"/>
+            </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
@@ -342,7 +352,9 @@
         <!--DPP Denied-->
         <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="{oDppScrnControl>/DPPDenied}">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-PageTitle}"/>
-            <ute:Tag class="nrgBilling-dPmtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-link">
+                <utmain:Button text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}" design="None" press="._onDppConfCancelClick"/>
+            </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
@@ -386,7 +398,9 @@
         <!--EXT Granted-->
         <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="{oDppScrnControl>/EXTGrant}">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-ExtTitle}"/>
-            <ute:Tag class="nrgBilling-dPmtExtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-link">
+                <utmain:Button text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}" design="None" press="._onDppConfCancelClick"/>
+            </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">
@@ -487,7 +501,9 @@
         <!--EXT Denied-->
         <ute:Tag class="nrgBilling-dPmtPln-lftArea"  visible="{oDppScrnControl>/EXTDenied}">
             <ute:Tag class="nrgBilling-dPmtPln-title" text="{comp-i18n-billing>nrgBilling-dpp-ExtTitle}"/>
-            <ute:Tag class="nrgBilling-dPmtExtPln-link" text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}"/>
+            <ute:Tag class="nrgBilling-dPmtPln-link">
+                <utmain:Button text="{comp-i18n-billing>nrgBilling-dpp-LinkMain}" design="None" press="._onDppConfCancelClick"/>
+            </ute:Tag>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-divider"/>
             <ute:Tag class="nrgBilling-dPmtPln-lftArea-top">
                 <ute:Tag class="nrgBilling-dPmtPln-lftArea-top-l">

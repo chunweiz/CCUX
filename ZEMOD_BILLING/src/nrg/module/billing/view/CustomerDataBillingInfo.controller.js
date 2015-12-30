@@ -167,6 +167,7 @@ sap.ui.define(
                     if (oData) {
                         this.getView().getModel('oBillingInvoices').setData(oData);
                         this._curInvNum = oData.InvoiceNum;
+                        this._initRetrInvoiceDetail(this._curInvNum);
                     }
                 }.bind(this),
                 error: function (oError) {

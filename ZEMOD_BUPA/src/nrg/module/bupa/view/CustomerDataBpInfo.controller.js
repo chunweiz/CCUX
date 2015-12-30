@@ -639,12 +639,21 @@ sap.ui.define(
                 return;
             }
 
+            // Flag SSN update
             if (bpPersonalModel.oData.SSN !== this.oDataBpPersonalBak.SSN) {
                 bpPersonalModel.oData.SSNUpd = 'X';
             }
-
+            // Flag DL update
             if (bpPersonalModel.oData.DL !== this.oDataBpPersonalBak.DL) {
                 bpPersonalModel.oData.DLUpd = 'X';
+            }
+            // Flag PIN update
+            if (bpPersonalModel.oData.PIN !== this.oDataBpPersonalBak.PIN) {
+                bpPersonalModel.oData.PINUpd = 'X';
+            }
+            // Flag TaxID update
+            if (bpPersonalModel.oData.TaxID !== this.oDataBpPersonalBak.TaxID) {
+                bpPersonalModel.oData.TaxIDUpd = 'X';
             }
 
             sPath = '/BpPersonals' + '(\'' + bpNumber + '\')';
