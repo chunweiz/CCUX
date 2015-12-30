@@ -165,7 +165,7 @@
                                         design="None" visible="true"
                                         press="._onPaymentsClicked"
                                         class="nrgBilling-cusDataBillingInfo-contentValue"
-                                        text="74.02"/>
+                                        text="{path: 'oPmtPayments>/results/0/Paidamt', type: 'nrg.base.type.Price', formatOptions: { currencySymbol: ''}}"/>
                                 </ute:Tag>
                             </ute:Tag>
                             <!-- Total Amount Due -->

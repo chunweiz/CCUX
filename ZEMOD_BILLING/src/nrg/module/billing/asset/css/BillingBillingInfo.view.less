@@ -387,7 +387,7 @@
 //}
 
 .nrgBilling-invoicePopup{
-    width: 560px;
+    width: 400px;
     background-color: @nrgColor-bluePearl;
 
     & .floatRight{
@@ -406,8 +406,19 @@
         margin-bottom: 5px;
         margin-left: 10px;
         margin-right: 10px;
-        width: 400px;
+        width: 200px;
         height: 20px;
+    }
+
+    & .nrgBilling-invoicePopup-span{
+        display: inline-block;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        height: 20px;
+        font-weight: @nrgFontWeight-semiBold;
+        color: @nrgColor-grey-inactive;
     }
 
     & .nrgBilling-invoicePopup-label > span{
@@ -417,6 +428,9 @@
     }
 
     & .nrgBilling-invoicePopup-value{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-right: 10px;
     }
 
     & .nrgBilling-invoicePopup-value-Lt{
