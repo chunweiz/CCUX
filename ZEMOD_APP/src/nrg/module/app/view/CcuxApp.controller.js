@@ -158,7 +158,7 @@ sap.ui.define(
 
             if (oContext.bpNum) {
                 oRouter.navTo('dashboard.BpInfo', {
-                    bpNum: oContext.pNum
+                    bpNum: oContext.bpNum
                 });
             }
         };
