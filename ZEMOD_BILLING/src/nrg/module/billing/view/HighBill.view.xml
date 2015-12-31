@@ -22,7 +22,7 @@
                              text="{comp-i18n-billing>nrgBilling-highBill-PAGE_TITLE}" />
                     <!-- Back -->
                     <ute:Tag elem="span" class="nrgBilling-highBill-backToDash">
-                        <utmain:Button design="None" class="" press="_onBackToDashboard">
+                        <utmain:Button design="None" class="" press="_onBackToCheckBook">
                             <core:Icon src="sap-icon://slim-arrow-left" class="nrgBilling-highBill-backIcon" />
                             <ute:Tag elem="span" class="nrgBilling-highBill-backTitle"
                                      text="{comp-i18n-billing>nrgBilling-highBill-BACK}" />

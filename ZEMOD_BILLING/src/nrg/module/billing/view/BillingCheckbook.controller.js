@@ -664,13 +664,18 @@ sap.ui.define(
 
         /*------------------------------------------------ UI Element Actions -----------------------------------------------*/
 
-        CustomController.prototype._onBackToDashboard = function () {
+        /**
+		 * Handler for Back to Dashboard link click
+		 *
+		 * @function
+         * @param {sap.ui.base.Event} oEvent pattern match event
+		 */
+        CustomController.prototype._onBackToCheckBook = function () {
             var oRouter = this.getOwnerComponent().getRouter();
-
             if (this._coNum) {
-                oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+                oRouter.navTo('billing.CheckBook', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
             } else {
-                oRouter.navTo('dashboard.VerificationWithCa', {bpNum: this._bpNum, caNum: this._caNum});
+                oRouter.navTo('billing.CheckBookNoCo', {bpNum: this._bpNum, caNum: this._caNum});
             }
         };
 

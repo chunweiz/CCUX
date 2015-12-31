@@ -26,7 +26,7 @@ sap.ui.define(
 
         CustomController.prototype.onBeforeRendering = function () {
 
-            this.getOwnerComponent().getCcuxApp().setTitle('BILLING INFO');
+            this.getOwnerComponent().getCcuxApp().setTitle('BILLING');
 
             this.getView().setModel(this.getOwnerComponent().getModel('comp-billing'), 'oDataSvc');
             this.getView().setModel(this.getOwnerComponent().getModel('comp-billing-invoice'), 'oDataInvoiceSvc');

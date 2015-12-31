@@ -23,7 +23,7 @@
                         text="{comp-i18n-billing>nrgBilling-billChkBook-PAGE_TITLE}"/>
                 <!-- Back -->
                 <ute:Tag elem="span" class="nrgBilling-blChkBk-backToDash">
-                    <utmain:Button design="None" class="" press="_onBackToDashboard">
+                    <utmain:Button design="None" class="" press="_onBackToCheckBook">
                         <core:Icon src="sap-icon://slim-arrow-left" class="nrgBilling-blChkBk-backIcon" />
                         <ute:Tag elem="span" class="nrgBilling-blChkBk-backTitle"
                                  text="{comp-i18n-billing>nrgBilling-billChkBook-BACK}" />

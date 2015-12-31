@@ -53,7 +53,8 @@ sap.ui.define(
             RHS: 'rhs',
             ContactLog: 'contactLog',
             Billing: 'billing',
-            BusinessPartner: 'bupa'
+            BusinessPartner: 'bupa',
+            Referral: 'Ref'
         };
 
         AppHeader.prototype.init = function () {

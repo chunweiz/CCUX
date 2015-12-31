@@ -62,7 +62,7 @@
                              id="idnrgQPCC-zipcode"
                              class="nrgQPCC-zipcode"
                              width="5rem"
-                             placeholder="PINCODE">
+                             placeholder="ZIPCODE">
                 </u:Textfield>
             </u:Tag>
         </u:Tag>

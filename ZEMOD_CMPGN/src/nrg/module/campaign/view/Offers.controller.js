@@ -330,6 +330,12 @@ sap.ui.define(
                 oSelectedObject = this.getView().byId("idnrgCamOff-SecondCardC");
                 oTableTag = that.byId(sap.ui.core.Fragment.createId("Cons2", "idnrgCamOffPriceT"));
             }
+            if (oTableTag) {
+                oTableTag.removeAllAggregation("content");
+            }
+            if (oSelectedObject.getBindingContext("comp-campaign")) {
+                oSelectedObject.unbindElement("comp-campaign");
+            }
            // aContent[0].addStyleClass("nrgCamHisBut-Selected");
             aEFLDatapaths = oModel.getProperty(sPath + "/EFLs");
             if ((aEFLDatapaths !== undefined) && (aEFLDatapaths.length > 0)) {
