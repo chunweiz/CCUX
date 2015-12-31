@@ -716,7 +716,7 @@ sap.ui.define(
                         alert = new ute.ui.app.FooterNotificationItem({
                             link: true,
                             design: 'Information',
-                            text: (oData.RBBElig) ? "Eligible for RBB" : "Not eligible for RBB",
+                            text: (oData.RBBElig) ? "Eligible for Retro-AB" : "Not eligible for Retro-AB",
                             linkPress: this._openEligRBBPopup.bind(this)
                         });
                         this._eligibilityAlerts.push(alert);
