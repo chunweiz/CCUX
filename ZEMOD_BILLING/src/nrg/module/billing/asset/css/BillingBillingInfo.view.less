@@ -322,13 +322,14 @@
     }
     & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-r > .nrgBilling-cusDataBil-r-div > .nrgBilling-cusDataBil-r-div-dunningmsgs > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg-label {
             color: @nrgColor-blue-link;
-            display: block;
+            display: inline-block;
     }
     & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-r > .nrgBilling-cusDataBil-r-div > .nrgBilling-cusDataBil-r-div-dunningmsgs > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg-div {
             display: inline-block;
             color: @nrgColor-blue-link;
-            width: 35%;
-            margin-left: 1.5rem;
+            max-width: 16rem;
+	        margin-left: 1.5rem;
+	        overflow: hidden;
     }
     & > .nrgBilling-cusDataBil-layout > tbody > tr > .nrgBilling-cusDataBil-r > .nrgBilling-cusDataBil-r-div > .nrgBilling-cusDataBil-r-div-dunningmsgs > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg[data-disabled="true"] > .nrgBilling-cusDataBil-r-div-dunningmsgs-msg-label{
            color: @nrgColor-grey-light;

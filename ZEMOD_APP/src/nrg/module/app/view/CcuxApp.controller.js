@@ -93,6 +93,9 @@ sap.ui.define(
             case App.QuickLinkId.Billing:
                 this._onQLBillingClick(oControlEvent);
                 break;
+            case App.QuickLinkId.Referral:
+                this._onQLReferralClick(oControlEvent);
+                break;
             }
         };
         CustomController.prototype._onQLBillingClick = function (oControlEvent) {
@@ -108,6 +111,12 @@ sap.ui.define(
                     coNum: oContext.coNum
                 });
             }
+        };
+        CustomController.prototype._onQLReferralClick = function (oControlEvent) {
+            var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();
+            oWebUiManager.notifyWebUi('openIndex', {
+                LINK_ID: "Z_SENDREF"
+            });
         };
         CustomController.prototype._onQLContactLogClick = function (oControlEvent) {
             var oWebUiManager = this.getOwnerComponent().getCcuxWebUiManager();

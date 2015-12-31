@@ -57,9 +57,9 @@
                         <core:Icon src="sap-icon://nrg-icon/billing" class="nrgAppHdrMenu-linkIcon" />
                         <ua:Text text="{comp-i18n-app>nrgAppHdrMenuBilling}" class="nrgAppHdrMenu-linkText" />
                     </ua:EventArea>
-                    <ua:EventArea id="bupa" class="nrgAppHdrMenu-link" click="._onQuickLinkClick">
+                    <ua:EventArea id="Ref" class="nrgAppHdrMenu-link" click="._onQuickLinkClick">
                         <core:Icon src="sap-icon://nrg-icon/bp" class="nrgAppHdrMenu-linkIcon" />
-                        <ua:Text text="{comp-i18n-app>nrgAppHdrMenuBupa}" class="nrgAppHdrMenu-linkText" />
+                        <ua:Text text="{comp-i18n-app>nrgAppHdrMenuReferral}" class="nrgAppHdrMenu-linkText" />
                     </ua:EventArea>
                 </span>
             </div>

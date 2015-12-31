@@ -24,7 +24,9 @@ sap.ui.define(
                     Reconnectfee : true,
                     feeDateDD : true,
                     reasonDD: false,
-                    ok: false
+                    ok: false,
+                    feeSelected : false,
+                    textArea : false
 			    }),
                 oRouteInfo = this.getOwnerComponent().getCcuxRouteManager().getCurrentRouteInfo(),
                 oCADropDown = this.getView().byId("idnrgFeeAdj-DropDownCA"),
@@ -97,13 +99,17 @@ sap.ui.define(
 		 */
         Controller.prototype.onSubmit = function (oEvent) {
             var oModel = this.getOwnerComponent().getModel('comp-feeAdjs'),
+                oCADropDown = this.getView().byId("idnrgFeeAdj-DropDownCA"),
+                oTextArea = this.getView().byId("idnrgFeeAdj-textArea"),
+                oDateDropDown = this.getView().byId("idnrgFeeAdj-DropDownDate"),
+                oReasonDropDown = this.getView().byId("idnrgFeeAdj-DropDownReason"),
                 mParameters = {
                     method : "POST",
-                    urlParameters : {"Amount" : "",
-                                             "CA" : "",
-                                            "DocNum" : "",
-                                            "Reason" : "",
-                                            "Text" : ""},
+                    urlParameters : {"Amount" : "25",
+                                             "CA" : oCADropDown.getSelectedKey(),
+                                            "DocNum" : oDateDropDown.getSelectedKey(),
+                                            "Reason" : oReasonDropDown.getSelectedKey(),
+                                            "Text" : oTextArea.getValue()},
                     success : function (oData) {
                     }.bind(this),
                     error: function (oError) {
@@ -119,11 +125,32 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onDiscNoticeFee = function (oEvent) {
-            var oViewModel = this.getView().getModel("view-feeAdj");
+            var oViewModel = this.getView().getModel("view-feeAdj"),
+                aFilterIds,
+                aFilterValues,
+                aFilters,
+                sPath,
+                oBindingInfo,
+                oDisconnectDropDown = this.getView().byId("idnrgFeeAdj-DropDownDate"),
+                oDisconnectTemplate = this.getView().byId("idnrgFeeAdj-DropDownDate-temp"),
+                oCADropDown = this.getView().byId("idnrgFeeAdj-DropDownCA");
             oViewModel.setProperty("/discNoticefee", false);
             oViewModel.setProperty("/discRecovfee", true);
             oViewModel.setProperty("/Latefee", true);
             oViewModel.setProperty("/Reconnectfee", true);
+            oViewModel.setProperty("/reasonDD", false);
+            aFilterIds = ["CA"];
+            aFilterValues = [oCADropDown.getSelectedKey()];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            sPath = "/DiscNoticeFeeS";
+            oBindingInfo = {
+                model : "comp-feeAdjs",
+                path : sPath,
+                template : oDisconnectTemplate,
+                filters : aFilters
+            };
+            oDisconnectDropDown.bindAggregation("content", oBindingInfo);
+
         };
         /**
 		 * Clicked on Disconnect Recovery Fee
@@ -132,11 +159,31 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onDiscRecovFee = function (oEvent) {
-            var oViewModel = this.getView().getModel("view-feeAdj");
+            var oViewModel = this.getView().getModel("view-feeAdj"),
+                aFilterIds,
+                aFilterValues,
+                aFilters,
+                sPath,
+                oBindingInfo,
+                oDisconnectDropDown = this.getView().byId("idnrgFeeAdj-DropDownDate"),
+                oDisconnectTemplate = this.getView().byId("idnrgFeeAdj-DropDownDate-temp"),
+                oCADropDown = this.getView().byId("idnrgFeeAdj-DropDownCA");
             oViewModel.setProperty("/discNoticefee", true);
             oViewModel.setProperty("/discRecovfee", false);
             oViewModel.setProperty("/Latefee", true);
             oViewModel.setProperty("/Reconnectfee", true);
+            oViewModel.setProperty("/reasonDD", false);
+            aFilterIds = ["CA"];
+            aFilterValues = [oCADropDown.getSelectedKey()];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            sPath = "/DiscRecovFeeS";
+            oBindingInfo = {
+                model : "comp-feeAdjs",
+                path : sPath,
+                template : oDisconnectTemplate,
+                filters : aFilters
+            };
+            oDisconnectDropDown.bindAggregation("content", oBindingInfo);
         };
         /**
 		 * Clicked on Late Fee
@@ -145,11 +192,40 @@ sap.ui.define(
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
         Controller.prototype.onLateFee = function (oEvent) {
-            var oViewModel = this.getView().getModel("view-feeAdj");
+            var oViewModel = this.getView().getModel("view-feeAdj"),
+                aFilterIds,
+                aFilterValues,
+                aFilters,
+                sPath,
+                oBindingInfo,
+                oDisconnectDropDown = this.getView().byId("idnrgFeeAdj-DropDownDate"),
+                oDisconnectTemplate = this.getView().byId("idnrgFeeAdj-DropDownDate-temp"),
+                oCADropDown = this.getView().byId("idnrgFeeAdj-DropDownCA"),
+                oReasonDropDown = this.getView().byId("idnrgFeeAdj-DropDownReason"),
+                oReasonDropDownTemplate = this.getView().byId("idnrgFeeAdj-DropDownReason-temp");
             oViewModel.setProperty("/discNoticefee", true);
             oViewModel.setProperty("/discRecovfee", true);
             oViewModel.setProperty("/Latefee", false);
             oViewModel.setProperty("/Reconnectfee", true);
+            oViewModel.setProperty("/reasonDD", true);
+            aFilterIds = ["CA"];
+            aFilterValues = [oCADropDown.getSelectedKey()];
+            aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
+            sPath = "/LateFeeS";
+            oBindingInfo = {
+                model : "comp-feeAdjs",
+                path : sPath,
+                template : oDisconnectTemplate,
+                filters : aFilters
+            };
+            oDisconnectDropDown.bindAggregation("content", oBindingInfo);
+            sPath = "/RemovalReasonS";
+            oBindingInfo = {
+                model : "comp-feeAdjs",
+                path : sPath,
+                template : oReasonDropDownTemplate
+            };
+            oReasonDropDown.bindAggregation("content", oBindingInfo);
         };
         /**
 		 * Clicked on Reconnect Fee
@@ -163,6 +239,7 @@ sap.ui.define(
             oViewModel.setProperty("/discRecovfee", true);
             oViewModel.setProperty("/Latefee", true);
             oViewModel.setProperty("/Reconnectfee", false);
+            oViewModel.setProperty("/reasonDD", false);
         };
         return Controller;
     }
