@@ -721,6 +721,15 @@ sap.ui.define(
                         });
                         this._eligibilityAlerts.push(alert);
 
+                        // Check DPP
+                        alert = new ute.ui.app.FooterNotificationItem({
+                            link: true,
+                            design: 'Information',
+                            text: (oData.DPPElig) ? "Eligible for DPP" : "Not eligible for DPP",
+                            linkPress: null
+                        });
+                        this._eligibilityAlerts.push(alert);
+
                         // Insert all alerts to DOM
                         for (i = 0; i < this._eligibilityAlerts.length; i = i + 1) {
                             this._eligibilityAlerts[i].placeAt(container);
