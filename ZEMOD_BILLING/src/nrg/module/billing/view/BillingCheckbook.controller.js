@@ -664,10 +664,9 @@ sap.ui.define(
 
         /*------------------------------------------------ UI Element Actions -----------------------------------------------*/
 
-        CustomController.prototype._onBackToDashboard = function () {
-            //Chnage to back to billing info page 2015/12/31
-            var oRouter = this.getOwnerComponent().getRouter();
 
+        CustomController.prototype._onBackToBilling = function () {
+            var oRouter = this.getOwnerComponent().getRouter();
             if (this._coNum) {
                 oRouter.navTo('billing.BillingInfo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
             } else {
