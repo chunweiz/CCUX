@@ -7,10 +7,11 @@ sap.ui.define(
         'nrg/base/view/BaseController',
         'sap/ui/model/Filter',
         'sap/ui/model/FilterOperator',
-        'nrg/module/nnp/view/NNPPopup'
+        'nrg/module/nnp/view/NNPPopup',
+        'jquery.sap.global'
     ],
 
-    function (CoreController, Filter, FilterOperator, NNPPopup) {
+    function (CoreController, Filter, FilterOperator, NNPPopup, jQuery) {
         'use strict';
 
         var Controller = CoreController.extend('nrg.module.app.view.Footer', {
@@ -425,13 +426,12 @@ sap.ui.define(
                 success : function (oData) {
                     var oCampaignModel = this.getView().getModel('oFooterCampaign');
                     if (oData.Contract) {
-                        if (oData.FirstBill === 'x' || oData.FirstBill === 'X') {
+                        if (oData.InitTab) {
                             oCampaignModel.setProperty('/CampaignButtonText', 'Eligible offers Available');
-                            oCampaignModel.setProperty('/CampaignFirstBill', true);
                         } else {
                             oCampaignModel.setProperty('/CampaignButtonText', 'No Eligible offers Available');
-                            oCampaignModel.setProperty('/CampaignFirstBill', false);
                         }
+                        oCampaignModel.setProperty('/CampaignFirstBill', oData.FirstBill);
                         oCampaignModel.setProperty('/CampaignButtonType', oData.InitTab);
                         oCampaignModel.setProperty('/CampaignButtonMoveOut', oData.PendMvo);
                     }
@@ -471,7 +471,7 @@ sap.ui.define(
             }
         };
 
-        Controller.prototype._onCampaignBtnClick = function () {
+        Controller.prototype._onCampaignBtnClick = function (oEvent) {
             var oCampaignModel = this.getView().getModel('oFooterCampaign'),
                 sFirstMonthBill = oCampaignModel.getProperty("/CampaignFirstBill"),
                 sPendingMoveOut = oCampaignModel.getProperty("/CampaignButtonMoveOut"),
@@ -479,14 +479,6 @@ sap.ui.define(
                 oRouter = this.getOwnerComponent().getRouter(),
                 oRouting = this.getView().getModel('oFooterRouting');
 
-            // Check first month bill
-            if (!sFirstMonthBill) {
-                ute.ui.main.Popup.Alert({
-                    title: 'Information',
-                    message: 'Customer has to completed at least One Month Invoice.'
-                });
-                return;
-            }
             // Check pending move out
             if (sPendingMoveOut) {
                 ute.ui.main.Popup.Alert({
@@ -495,12 +487,103 @@ sap.ui.define(
                 });
                 return;
             }
+            // Check first month bill
+            if (!sFirstMonthBill) {
+                ute.ui.main.Popup.Alert({
+                    title: 'Information',
+                    message: 'Customer has to completed at least One Month Invoice.'
+                });
+                return;
+            }
             // Check and parse initTab
             if ((!sInitTab) || (sInitTab === undefined) || (sInitTab === null) || (sInitTab === "")) {
                 sInitTab = "SE";
             }
             // If all ok, go to change campaign page
-            oRouter.navTo('campaignoffers', {bpNum: oRouting.oData.BpNumber, caNum: oRouting.oData.CaNumber, coNum: oRouting.oData.CoNumber, typeV: sInitTab});
+            this._getPendingSwapsCount(oRouting.oData.BpNumber, oRouting.oData.CaNumber, oRouting.oData.CoNumber, sInitTab);
+        };
+
+
+        Controller.prototype._getPendingSwapsCount = function (BpNumber, CaNumber, CoNumber, sInitTab) {
+            var oRouter = this.getOwnerComponent().getRouter(),
+                oRouting = this.getView().getModel('oFooterRouting'),
+                sPath = '/PendSwapS/$count',
+                aFilters = [],
+                oModel = this.getView().getModel('oCompODataSvc'),
+                mParameters;
+
+            // Set up filters
+            aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: oRouting.oData.CoNumber}));
+
+            mParameters = {
+                filters : aFilters,
+                success : function (oData) {
+                    if (oData) {
+                        jQuery.sap.log.info("Odata Read Successfully:::");
+                        if ((parseInt(oData, 10)) > 0) {
+                            this._showPendingSwaps();
+                        } else {
+                            oRouter.navTo("campaignoffers", {bpNum: BpNumber, caNum: CaNumber, coNum: CoNumber, typeV: sInitTab});
+                        }
+                    }
+                }.bind(this),
+                error: function (oError) {
+                    jQuery.sap.log.info("Odata Failed:::" + oError);
+                }.bind(this)
+            };
+
+            if (oModel) {
+                oModel.read(sPath, mParameters);
+            }
+        };
+
+        Controller.prototype._showPendingSwaps = function () {
+            var oRouting = this.getView().getModel('oFooterRouting'),
+                sPath = "/PendSwapS",
+                oBindingInfo,
+                aFilters = [],
+                oPendingSwapsTable,
+                oPendingSwapsTemplate,
+                fnRecievedHandler;
+
+            // Display loading indicator
+            this.getOwnerComponent().getCcuxApp().setOccupied(true);
+
+            // Set up filters
+            aFilters.push(new Filter({ path: 'Contract', operator: FilterOperator.EQ, value1: oRouting.oData.CoNumber}));
+
+            // Initiate dialogs
+            if (!this._oPedingSwapsDialog) { this._oPedingSwapsDialog = sap.ui.xmlfragment("FooterPendingSwaps", "nrg.module.app.view.FooterPendingSwaps", this); }
+            if (!this._oCancelDialog) {
+                this._oCancelDialog = new ute.ui.main.Popup.create({
+                    title: 'Change Campaign - Cancel',
+                    close: this._handleDialogClosed,
+                    content: this._oPedingSwapsDialog
+                });
+                this._oCancelDialog.addStyleClass("nrgCamHis-dialog");
+            }
+            
+            oPendingSwapsTable = sap.ui.core.Fragment.byId("FooterPendingSwaps", "idnrgCamPds-pendTable");
+            oPendingSwapsTemplate = sap.ui.core.Fragment.byId("FooterPendingSwaps", "idnrgCamPds-pendRow");
+            
+            fnRecievedHandler = function () {
+                var oBinding = oPendingSwapsTable.getBinding("rows");
+                this._oCancelDialog.open();
+                this.getOwnerComponent().getCcuxApp().setOccupied(false);
+                if (oBinding) {
+                    oBinding.detachDataReceived(fnRecievedHandler);
+                }
+            }.bind(this);
+
+            oBindingInfo = {
+                model : "comp-app",
+                path : sPath,
+                filters : aFilters,
+                template : oPendingSwapsTemplate,
+                events: {dataReceived : fnRecievedHandler}
+            };
+            oPendingSwapsTable.bindRows(oBindingInfo);
+            this.getView().addDependent(this._oCancelDialog);
         };
 
         /*---------------------------------------------- Footer Alert Methods -----------------------------------------------*/
