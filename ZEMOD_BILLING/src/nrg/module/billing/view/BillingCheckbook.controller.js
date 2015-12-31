@@ -725,9 +725,9 @@ sap.ui.define(
                         alert = new ute.ui.app.FooterNotificationItem({
                             link: true,
                             design: 'Information',
-                            text: (oData.DPPElig) ? "Eligible for DPP" : "Not eligible for DPP",
-                            linkPress: null
+                            text: (oData.DPPElig) ? "Eligible for DPP" : "Not eligible for DPP"
                         });
+                        
                         this._eligibilityAlerts.push(alert);
 
                         // Insert all alerts to DOM
