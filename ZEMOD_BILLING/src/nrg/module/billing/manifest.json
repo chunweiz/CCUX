@@ -33,6 +33,9 @@
                             },
                             "comp-dppext": {
                                 "url": "sap/opu/odata/sap/ZE_CCUX_DPP_EXT_SRV/"
+                            },
+                            "comp-feeAdjs": {
+                                "url": "sap/opu/odata/sap/ZE_CCUX_BILLING_SRV/"
                             }
                         },
                         "mock": {
@@ -62,6 +65,10 @@
                             },
                             "comp-dppext": {
                                 "mockDataBaseUrl": "data/devdpp/",
+                                "generateMissingMockData": true
+                            },
+                            "comp-feeAdjs": {
+                                "mockDataBaseUrl": "data/devfee/",
                                 "generateMissingMockData": true
                             }
                         }

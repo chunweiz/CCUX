@@ -163,16 +163,19 @@ sap.ui.define(
             oParameters = {
                 filters: aFilters,
                 success : function (oData) {
+                    var defaultContractItem = 0;
+
                     if (oData) {
                         oData.results.selectedKey = '';
                         for (i = 0; i < oData.results.length; i = i + 1) {
                             oData.results[i].iInd = i;
                             // Select the CO passed from dashboard
-                            if (oData.results[i].Contract.trim() === this._coNum) {
-                                this.getView().byId('idESIDDropdown').setSelectedKey(oData.results[i].iInd);
+                            if (oData.results[i].Contract.replace(/^0+/, '') === this._coNum) {
+                                defaultContractItem = oData.results[i].iInd;
                             }
                         }
                         this.getView().getModel('oESIDDropdown').setData(oData);
+                        this.getView().byId('idESIDDropdown').setSelectedKey(defaultContractItem);
                         this._retrEnrollHolds(oData.results[0].ESID, oData.results[0].Contract);
                     }
                 }.bind(this),
