@@ -665,12 +665,13 @@ sap.ui.define(
         /*------------------------------------------------ UI Element Actions -----------------------------------------------*/
 
         CustomController.prototype._onBackToDashboard = function () {
+            //Chnage to back to billing info page 2015/12/31
             var oRouter = this.getOwnerComponent().getRouter();
 
             if (this._coNum) {
-                oRouter.navTo('dashboard.VerificationWithCaCo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+                oRouter.navTo('billing.BillingInfo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
             } else {
-                oRouter.navTo('dashboard.VerificationWithCa', {bpNum: this._bpNum, caNum: this._caNum});
+                oRouter.navTo('billing.BillingInfoNoCo', {bpNum: this._bpNum, caNum: this._caNum});
             }
         };
 
