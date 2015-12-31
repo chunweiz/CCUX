@@ -670,12 +670,12 @@ sap.ui.define(
 		 * @function
          * @param {sap.ui.base.Event} oEvent pattern match event
 		 */
-        CustomController.prototype._onBackToCheckBook = function () {
+        CustomController.prototype._onBackToBilling = function () {
             var oRouter = this.getOwnerComponent().getRouter();
             if (this._coNum) {
-                oRouter.navTo('billing.CheckBook', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
+                oRouter.navTo('billing.BillingInfo', {bpNum: this._bpNum, caNum: this._caNum, coNum: this._coNum});
             } else {
-                oRouter.navTo('billing.CheckBookNoCo', {bpNum: this._bpNum, caNum: this._caNum});
+                oRouter.navTo('billing.BillingInfoNoCo', {bpNum: this._bpNum, caNum: this._caNum});
             }
         };
 
