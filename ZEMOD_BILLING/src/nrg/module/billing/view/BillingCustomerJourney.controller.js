@@ -691,7 +691,7 @@ sap.ui.define(
 		 *
 		 */
         Controller.prototype.onExpandAll = function (oEvent) {
-            var aRows = oEvent.getSource().getParent().getRows(),
+            var aRows = sap.ui.core.Fragment.byId("CustomerJourney", "idnrgCJModule-table").getRows(),
                 oModel = oEvent.getSource().getParent().getModel("Cj-module"),
                 iCount,
                 oTempRow,
@@ -705,10 +705,10 @@ sap.ui.define(
                 oModel.setProperty(sPath + "/expanded", !(oContext.getProperty(sPath + "/expanded")));
             }
             if (!oViewModel.getProperty("/expandAll")) {
-                oEvent.getSource().addStyleClass("nrgCJModule-table-th-sel");
+                oEvent.getSource().addStyleClass("nrgCJModule-table-th-contactsel");
                 oViewModel.setProperty("/expandAll", true);
             } else {
-                oEvent.getSource().removeStyleClass("nrgCJModule-table-th-sel");
+                oEvent.getSource().removeStyleClass("nrgCJModule-table-th-contactsel");
                 oViewModel.setProperty("/expandAll", false);
             }
         };

@@ -81,6 +81,14 @@
                  </ch:CustomerJourneyTimeline>
            </u:Tag>
          </u:Tag>
+       <u:Tag class="nrgCJModule-tableTag-cols">
+            <u:Tag text="Date/Time" class="nrgCJModule-tableTag-cols-col nrgCJModule-tableTag-cols-col-Date" />
+            <u:Tag text="Channel" class="nrgCJModule-tableTag-cols-col nrgCJModule-tableTag-cols-col-Channel" />
+            <um:Button text="Contact Details"
+                           class="nrgCJModule-tableTag-cols-col nrgCJModule-tableTag-cols-col-Contact"
+                           design="None"
+                           press=".onExpandAll"/>
+        </u:Tag>
         <u:Tag class="nrgCJModule-tableTag">
             <u:Table width="98%"
                      id="idnrgCJModule-table"
@@ -100,8 +108,8 @@
                             </u:columns>
                 <u:rows>
                         <u:TableRow id="idnrgCJModule-RowTempl" class="nrgCJModule-table-Row" >
-                            <u:Tag text="{path: 'Cj-module>Date', type: 'sap.ui.model.type.DateTime', formatOptions:{pattern: 'MM/dd/yyyy HH:mm:ss'} }" />
-                            <u:Tag text="{Cj-module>ChannelType}" />
+                            <u:Tag text="{path: 'Cj-module>Date', type: 'sap.ui.model.type.DateTime', formatOptions:{pattern: 'MM/dd/yyyy HH:mm:ss'} }" class="nrgCJModule-table-Row-1"/>
+                            <u:Tag text="{Cj-module>ChannelType}" class="nrgCJModule-table-Row-1"/>
                             <um:Infoline design="Default" id="idnrgCJModule-infoline-tmpl"
                                          class="nrgCJModule-table-data-Infoline"
                                          expanded="{Cj-module>expanded}">

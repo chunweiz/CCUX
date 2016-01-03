@@ -157,10 +157,53 @@
 
             }
         }
+        & > .nrgCJModule-tableTag-cols {
+                background-color: #989898;
+                line-height: 20px;
+                font-weight: @nrgFontWeight-semiBold;
+                width: 98%;
+                margin: 2px 2px 2px 9px;
+                border-radius: 2px;
+                font-family: @nrgFontFamily;
+                & > .nrgCJModule-tableTag-cols-col {
+                        display: inline-block;
+                        text-align: center;
+                }
+                & > .nrgCJModule-tableTag-cols-col-Date {
+                        width: 15%;
+                        border-right: 1px solid @nrgColor-white;
+                }
+                & > .nrgCJModule-tableTag-cols-col-Channel {
+                        width: 15%;
+                        border-right: 1px solid @nrgColor-white;
+                }
+                & > .nrgCJModule-tableTag-cols-col-Contact {
+                        width: 70%;
+                }
+                & > .nrgCJModule-tableTag-cols-col-Contact > .uteMBtn-text:after {
+                    content: '';
+                    position: absolute;
+                    width: 12px;
+                    height: 12px;
+                    border: 2px solid #4d4d4d;
+                    border-top: none;
+                    border-left: none;
+                    transform: translate(13px,0px)rotate(45deg);
+                    margin-left: 17.5rem;
+                }
+                & > .nrgCJModule-table-th-contactsel > .uteMBtn-text:after {
+                        transform: translate(13px, 8px) rotate(-135deg);
+                }
+        }
         & >.nrgCJModule-tableTag {
-            max-height: 25rem;
-            overflow-y: auto;
+                    max-height: 25rem;
+                    overflow-y: auto;
+
             & > .nrgCJModule-table {
+
+                & > tbody >.uteTb-column-campaign {
+                    display: none;
+                }
                 & .nrgCJModule-table-th {
                     & > .nrgCJModule-table-th-contact {
                         cursor : pointer;
@@ -182,15 +225,19 @@
                             transform: translate(13px, 8px) rotate(-135deg);
                     }
                 }
-
+                &  .nrgCJModule-table-Row-1 {
+                       width: 9.6rem;
+                }
                 & > tbody > .nrgCJModule-table-Row {
                         background-color: transparent;
                         border: 2px solid @nrgColor-grey-highlight;
                         line-height: 30px;
                     & > td {
                         vertical-align: top;
+
                     }
                     & > td > .nrgCJModule-table-data-Infoline {
+                        	width: 46rem;
                         &  .uteMIl-hdrContent {
                             width : 90%;
                         }
