@@ -81,9 +81,9 @@ sap.ui.define(
                     jQuery.sap.log.info("Odata Read Error occured");
                 }.bind(this)
             };
-            if (oModel) {
-                oModel.read(sPath, oBindingInfo);
-            }
+            //if (oModel) {
+                //oModel.read(sPath, oBindingInfo);
+            //}
         };
         /**
 		 * Handler for Customer Journey Refresh
@@ -136,6 +136,7 @@ sap.ui.define(
             aFilterValues = [this._sBP, this._sCA, dStartDate, dEndDate];
             aFilters = this._createSearchFilterObject(aFilterIds, aFilterValues);
             sPath = "/CJReferralSet";
+            oReferral.removeAllAggregation("content");
             oBindingInfo = {
                 model : "comp-cj",
                 path : sPath,
@@ -418,7 +419,7 @@ sap.ui.define(
                     close: this._handleDialogClosed,
                     content: this._oDialogFragment
                 });
-                this.getView().addDependent(this._oCJDialog);
+                //this.getView().addDependent(this._oCJDialog);
                 this._oCJDialog.addStyleClass("nrgCJModule-dialog");
             }
             this._oDialogFragment.setModel(oCustomerJourneyModel, 'Cj-module');
@@ -431,7 +432,7 @@ sap.ui.define(
             oFromDate.setMinDate(new Date(1, 0, 1));
             oToDate.setDefaultDate(this._oFormatYyyymmdd.format(oDatesModel.getProperty("/EndDate"), true));
             oFromDate.setDefaultDate(this._oFormatYyyymmdd.format(oDatesModel.getProperty("/StartDate"), true));
-            this.getView().setModel(new JSONModel({
+            this._oDialogFragment.setModel(new JSONModel({
                 data: [
                     { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: 'Website', channel: 'Website'},
                     { recordIndex: '1', channelIcon: 'sap-icon://nrg-icon/webchat', topLabel: 'Chat', channel: 'Chat'},
