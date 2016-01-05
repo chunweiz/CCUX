@@ -175,7 +175,7 @@
             </utmain:Dropdown>
             <c:Label id="idnrgBillNotificationsTemp"
                      text="{comp-highbill>NotifMsg}"
-                     icon="sap-icon://nrg-icon/notification"
+                     icon="sap-icon://ute-icon/notification"
                      class="nrgBilling-highBill-notifications-msgs"
                       />
         </ute:Tag>

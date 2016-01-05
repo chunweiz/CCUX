@@ -434,14 +434,14 @@ sap.ui.define(
             oFromDate.setDefaultDate(this._oFormatYyyymmdd.format(oDatesModel.getProperty("/StartDate"), true));
             this._oDialogFragment.setModel(new JSONModel({
                 data: [
-                    { recordIndex: '0', channelIcon: 'sap-icon://nrg-icon/website', topLabel: 'Website', channel: 'Website'},
-                    { recordIndex: '1', channelIcon: 'sap-icon://nrg-icon/webchat', topLabel: 'Chat', channel: 'Chat'},
-                    { recordIndex: '2', channelIcon: 'sap-icon://nrg-icon/survey', topLabel: 'Survey', channel: 'Survey'},
-                    { recordIndex: '3', channelIcon: 'sap-icon://nrg-icon/agent', topLabel: 'Phone', channel: 'Phone'},
-                    { recordIndex: '4', channelIcon: 'sap-icon://nrg-icon/ivr', topLabel: 'IVR', channel: 'IVR'},
+                    { recordIndex: '0', channelIcon: 'sap-icon://ute-icon/website', topLabel: 'Website', channel: 'Website'},
+                    { recordIndex: '1', channelIcon: 'sap-icon://ute-icon/webchat', topLabel: 'Chat', channel: 'Chat'},
+                    { recordIndex: '2', channelIcon: 'sap-icon://ute-icon/survey', topLabel: 'Survey', channel: 'Survey'},
+                    { recordIndex: '3', channelIcon: 'sap-icon://ute-icon/agent', topLabel: 'Phone', channel: 'Phone'},
+                    { recordIndex: '4', channelIcon: 'sap-icon://ute-icon/ivr', topLabel: 'IVR', channel: 'IVR'},
                     { recordIndex: '5', channelIcon: 'sap-icon://email', topLabel: 'Correspondence', channel: 'Correspondence'},
                     { recordIndex: '6', channelIcon: 'sap-icon://iphone', topLabel: 'Mobile', channel: 'Mobile'},
-                    { recordIndex: '7', channelIcon: 'sap-icon://nrg-icon/location', topLabel: 'Misc', channel: 'Misc'},
+                    { recordIndex: '7', channelIcon: 'sap-icon://ute-icon/location', topLabel: 'Misc', channel: 'Misc'},
                     { recordIndex: '7', channelIcon: 'sap-icon://multi-select', topLabel: 'All', channel: 'All'}
                 ]
             }), 'timeline');
@@ -552,25 +552,25 @@ sap.ui.define(
          * @return {string} sChannelIcon for backend sChanneltype
 		 */
         Controller.prototype._onSelectIcon = function (sChanneltype) {
-            var sChannelIcon = 'sap-icon://nrg-icon/location';
+            var sChannelIcon = 'sap-icon://ute-icon/location';
             switch (sChanneltype) {
             case "Website":
-                sChannelIcon = 'sap-icon://nrg-icon/website';
+                sChannelIcon = 'sap-icon://ute-icon/website';
                 break;
             case "Chat":
-                sChannelIcon = 'sap-icon://nrg-icon/webchat';
+                sChannelIcon = 'sap-icon://ute-icon/webchat';
                 break;
             case "Survey":
-                sChannelIcon = 'sap-icon://nrg-icon/survey';
+                sChannelIcon = 'sap-icon://ute-icon/survey';
                 break;
             case "agent":
-                sChannelIcon = 'sap-icon://nrg-icon/agent';
+                sChannelIcon = 'sap-icon://ute-icon/agent';
                 break;
             case "IVR":
-                sChannelIcon = 'sap-icon://nrg-icon/ivr';
+                sChannelIcon = 'sap-icon://ute-icon/ivr';
                 break;
             case "Phone":
-                sChannelIcon = 'sap-icon://nrg-icon/agent';
+                sChannelIcon = 'sap-icon://ute-icon/agent';
                 break;
             case "Correspondence":
                 sChannelIcon = 'sap-icon://email';
@@ -579,7 +579,7 @@ sap.ui.define(
                 sChannelIcon = 'sap-icon://iphone';
                 break;
             case "MISC":
-                sChannelIcon = 'sap-icon://nrg-icon/location';
+                sChannelIcon = 'sap-icon://ute-icon/location';
                 break;
             }
             return sChannelIcon;

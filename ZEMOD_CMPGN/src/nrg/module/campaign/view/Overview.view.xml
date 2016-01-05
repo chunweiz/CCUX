@@ -40,14 +40,14 @@
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
                         <c:Label text="{comp-i18n-campaign>nrgCmpOvrTtllbl}"
-                                 icon="sap-icon://nrg-icon/tag"
+                                 icon="sap-icon://ute-icon/tag"
                                  class="nrgCamOvr-lbl"
                                  labelFor="idCamTitleTv"  />
 
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
                         <c:Label text="{comp-i18n-campaign>nrgCmpOvrAUlbl}"
-                                 icon="sap-icon://nrg-icon/bulb"
+                                 icon="sap-icon://ute-icon/bulb"
                                  class="nrgCamOvr-lbl"
                                  labelFor="idCamAvgUsgTv"  />
                     </l:MatrixLayoutCell>
@@ -70,7 +70,7 @@
             </l:MatrixLayout>
             <u:Tag class="nrgCamPriceT" id="nrgCamPriceT">
                 <c:Label text="{comp-i18n-campaign>nrgCmpOvrPrclbl}"
-                         icon="sap-icon://nrg-icon/dollar"
+                         icon="sap-icon://ute-icon/dollar"
                          class="nrgCamOvr-lbl nrgCamOvr-top"
                          labelFor="idCamPriceTbl"  />
                 <u:Tag class="nrgCamOvrPriceT nrgCamOvr-left nrgCamOvr-top" id="idnrgCamOvrPriceT">
@@ -82,7 +82,7 @@
                 <um:headerContent>
                     <c:Label
                         text="{comp-i18n-campaign>nrgCmpOvrDsclbl}"
-                        icon="sap-icon://nrg-icon/description"
+                        icon="sap-icon://ute-icon/description"
                         class="nrgCamOvr-lbl nrgCamOvr-desc"
                         labelFor="idCamDescTv" />
                 </um:headerContent>

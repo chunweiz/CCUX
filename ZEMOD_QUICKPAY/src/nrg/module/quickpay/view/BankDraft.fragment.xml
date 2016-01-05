@@ -31,7 +31,7 @@
                                  id="idnrgQPBD-BankAccounts">
                         <um:DropdownItem key="1" class="nrgQPCC-DdLItem">
                             <u:Tag class="nrgQPCC-DDI">
-                               <core:Icon src="sap-icon://nrg-icon/cc-visa" />
+                               <core:Icon src="sap-icon://ute-icon/cc-visa" />
                                 <u:Tag text="{parts:[{path:'comp-quickpay>BankAccNum'}],
                                                     formatter:'.formatAccountNumber'}"  class="nrgQPCC-DdlValue"/>
                             </u:Tag>

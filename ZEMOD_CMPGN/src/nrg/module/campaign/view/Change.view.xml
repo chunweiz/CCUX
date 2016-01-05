@@ -22,13 +22,13 @@
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
                         <c:Label text="{comp-i18n-campaign>nrgCmpChgTtllbl}"
-                                 icon="sap-icon://nrg-icon/tag"
+                                 icon="sap-icon://ute-icon/tag"
                                  class="nrgCamChg-lbl"
                                  labelFor="idCamChgTtlTv"  />
                     </l:MatrixLayoutCell>
                     <l:MatrixLayoutCell>
                         <c:Label text="{comp-i18n-campaign>nrgCmpChgAUlbl}"
-                                 icon="sap-icon://nrg-icon/bulb"
+                                 icon="sap-icon://ute-icon/bulb"
                                  class="nrgCamChg-lbl"
                                  labelFor="idCamChgAUTv"  />
                     </l:MatrixLayoutCell>
@@ -49,7 +49,7 @@
                 </l:MatrixLayoutRow>
             </l:MatrixLayout>
             <u:Tag class="nrgCamChgPrcT">
-                <c:Label id="idCamPrcLbl" text="{comp-i18n-campaign>nrgCmpChgPrcbl}" icon="sap-icon://nrg-icon/dollar" class="nrgCamChg-lbl nrgCamChg-top" labelFor="idCamChgPrcTbl"  />
+                <c:Label id="idCamPrcLbl" text="{comp-i18n-campaign>nrgCmpChgPrcbl}" icon="sap-icon://ute-icon/dollar" class="nrgCamChg-lbl nrgCamChg-top" labelFor="idCamChgPrcTbl"  />
                 <u:Tag class="nrgCamChgPriceT" id="idnrgCamChgPriceT">
                     <!-- EFL Data Table is dynamically inserted here with XML templating -->
                 </u:Tag>
@@ -58,7 +58,7 @@
                 <um:headerContent>
                     <c:Label id="idCamChgDscLbl"
                         text="{comp-i18n-campaign>nrgCmpChgDscbl}"
-                        icon="sap-icon://nrg-icon/description"
+                        icon="sap-icon://ute-icon/description"
                         class="nrgCamChg-lbl"
                         labelFor="idCamDescTv" />
                 </um:headerContent>

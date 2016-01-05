@@ -64,7 +64,7 @@ Add custom icons from `ZEBASE/build/nrg/base/asset/css/base.css` based on [OpenU
 ***
 **nrg.base.component.IconManager.addIcons**
 
-Assign [Private Use Area](https://en.wikipedia.org/wiki/Private_Use_Areas#Private_Use_Areas) from loaded icon font file to OpenUI5 icon collection `nrg-icon` so that they can be referenced through [[OpenUI5 icon protocol](https://openui5.hana.ondemand.com/#docs/guide/21ea0ea94614480d9a910b2e93431291.html)].
+Assign [Private Use Area](https://en.wikipedia.org/wiki/Private_Use_Areas#Private_Use_Areas) from loaded icon font file to OpenUI5 icon collection `ute-icon` so that they can be referenced through [[OpenUI5 icon protocol](https://openui5.hana.ondemand.com/#docs/guide/21ea0ea94614480d9a910b2e93431291.html)].
 
 ***
 ### nrg.base.component.MockDataManager

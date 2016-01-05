@@ -14,7 +14,7 @@ sap.ui.define(
 
                 properties: {
                     design: { type: 'ute.ui.app.FooterNotificationItemDesign', defaultValue: ute.ui.app.FooterNotificationItemDesign.Information },
-                    customIcon: { type: 'sap.ui.core.Icon', defaultValue: 'sap-icon://nrg-icon/notification' },
+                    customIcon: { type: 'sap.ui.core.Icon', defaultValue: 'sap-icon://ute-icon/notification' },
                     text: { type: 'string', defaultValue: null },
                     link: { type: 'boolean', defaultValue: false }
                 },

@@ -48,7 +48,7 @@
                     <um:headerContent>
                         <c:Label id="idCamChgDscLbl"
                             text="{comp-i18n-campaign>nrgCmpChgDscbl}"
-                            icon="sap-icon://nrg-icon/description"
+                            icon="sap-icon://ute-icon/description"
                             class="nrgCamChg-lbl"
                             labelFor="idCamDescTv" />
                     </um:headerContent>

@@ -444,12 +444,12 @@ sap.ui.define(
                             content: sap.ui.xmlfragment(this.getView().sId, "nrg.module.dashboard.view.AcctAccessAuthPty", this),
                             title: 'ACCOUNT ACCESS AUTHORIZATION'
                         });
-                        this._oAccAuthPtyPopup.addStyleClass('nrgDashboard-accAuthPtyPopup');
+                        this._oAccAuthPtyPopup.addStyleClass('uteDashboard-accAuthPtyPopup');
                         this.getView().addDependent(this._oAccAuthPtyPopup);
                     }
 
                     // Generate the table
-                    var tableContainer = this.getView().byId('nrgDashboard-AcctAccessAuthPty-tableBody'),
+                    var tableContainer = this.getView().byId('uteDashboard-AcctAccessAuthPty-tableBody'),
                         tableContentLength,
                         j,
                         i,
@@ -463,17 +463,17 @@ sap.ui.define(
                     }
 
                     for (i = 0; i < oThirdPrtyModel.oData.length; i = i + 1) {
-                        rowElement = new ute.ui.commons.Tag({elem: 'div'}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow');
+                        rowElement = new ute.ui.commons.Tag({elem: 'div'}).addStyleClass('uteDashboard-AcctAccessAuthPty-tableRow');
                         if ((i + 1) % 2 === 0) {
-                            rowElement.addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-even');
+                            rowElement.addStyleClass('uteDashboard-AcctAccessAuthPty-tableRow-even');
                         }
-                        rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].AuthPrtyName}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-AuthParty'));
-                        rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].LegalDoc}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-TypeLegalDoc'));
-                        rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].ReceiveDate}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-ReceivedDate'));
-                        rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].EffDate}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-EffecDate'));
-                        rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].EndDate}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-EndDate'));
+                        rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].AuthPrtyName}).addStyleClass('uteDashboard-AcctAccessAuthPty-tableRow-AuthParty'));
+                        rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].LegalDoc}).addStyleClass('uteDashboard-AcctAccessAuthPty-tableRow-TypeLegalDoc'));
+                        rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].ReceiveDate}).addStyleClass('uteDashboard-AcctAccessAuthPty-tableRow-ReceivedDate'));
+                        rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].EffDate}).addStyleClass('uteDashboard-AcctAccessAuthPty-tableRow-EffecDate'));
+                        rowElement.addContent(new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].EndDate}).addStyleClass('uteDashboard-AcctAccessAuthPty-tableRow-EndDate'));
                         // Different style class for different status
-                        statusElement = new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].Status}).addStyleClass('nrgDashboard-AcctAccessAuthPty-tableRow-Status');
+                        statusElement = new ute.ui.commons.Tag({elem: 'div', text: oThirdPrtyModel.oData[i].Status}).addStyleClass('uteDashboard-AcctAccessAuthPty-tableRow-Status');
                         if (oThirdPrtyModel.oData[i].Status === 'ACTIVE') {
                             statusElement.addStyleClass('active');
                         }
