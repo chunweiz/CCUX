@@ -8,14 +8,14 @@
     controllerName="nrg.module.search.view.CallerNoIDSearch"
     displayBlock="true">
 
-    <ute:Tag class="nrgAppMain-generalContent nrgSearch-calrNoIDSearch">
+    <ute:Tag class="nrgAppMain-generalContent uteSearch-calrNoIDSearch">
         <ute:content>
 
-            <ute:Tag class="nrgSearch-calrNoIDSearch-title">
+            <ute:Tag class="uteSearch-calrNoIDSearch-title">
                 <core:Icon src="sap-icon://nrg-icon/notification"
-                           class="nrgSearch-calrNoIDSearch-titleIcon"/>
-                <ute:Tag elem="span" class="nrgSearch-calrNoIDSearch-titleSpan"
-                     text="{comp-i18n-search>nrgSearchCallerNoIDSearchTitle}">
+                           class="uteSearch-calrNoIDSearch-titleIcon"/>
+                <ute:Tag elem="span" class="uteSearch-calrNoIDSearch-titleSpan"
+                     text="{comp-i18n-search>uteSearchCallerNoIDSearchTitle}">
                 </ute:Tag>
             </ute:Tag>
 
@@ -28,7 +28,7 @@
             </ute:Tag>
 
             <!-- First Section -->
-            <ute:Tag class="nrgSearch-calrNoIDSearch-textfield">
+            <ute:Tag class="uteSearch-calrNoIDSearch-textfield">
                 
                 <!--type:'nrg.util.type.ContractAccountNumber'-->
                 <ute:Textfield
@@ -37,8 +37,8 @@
                         type: 'nrg.base.type.ContractAccountNumber'
                     }"
                     id="idSearchCa"
-                    class="nrgSearch-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-search>nrgSearchClrNid_CaNumPh}"
+                    class="uteSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>uteSearchClrNid_CaNumPh}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
@@ -52,8 +52,8 @@
                     value="{
                         path:'oSearchFilters>/searchTextFields/sSsn'}"
                     id="idSearchSsn"
-                    class="nrgSearch-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-search>nrgSearchClrNid_Ssn}"
+                    class="uteSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>uteSearchClrNid_Ssn}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
@@ -67,8 +67,8 @@
                     value="{
                         path:'oSearchFilters>/searchTextFields/sDl'}"
                     id="idSearchDl"
-                    class="nrgSearch-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-search>nrgSearchClrNid_Dl}"
+                    class="uteSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>uteSearchClrNid_Dl}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
@@ -80,8 +80,8 @@
                 <ute:Textfield
                     value="{
                         path:'oSearchFilters>/searchTextFields/sBpNum'}"
-                    class="nrgSearch-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-search>nrgSearchClrNid_BpNum}"
+                    class="uteSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>uteSearchClrNid_BpNum}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
@@ -91,14 +91,14 @@
                 </ute:Textfield>
             </ute:Tag>
             <!-- Second Section -->
-            <ute:Tag class="nrgSearch-calrNoIDSearch-textfield">
+            <ute:Tag class="uteSearch-calrNoIDSearch-textfield">
                 <!--type:'nrg.util.type.ESID'-->
                 <ute:Textfield
                     value="{
                         path:'oSearchFilters>/searchTextFields/sEsid'}"
                     id="idSearchEsid"
-                    class="nrgSearch-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-search>nrgSearchClrNid_Esid}"
+                    class="uteSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>uteSearchClrNid_Esid}"
                     change="onTextFieldChange"
                     fieldType="Float"
                     enterKeyPress="onEnterKeyPress"
@@ -109,8 +109,8 @@
                     value="{
                         path:'oSearchFilters>/searchTextFields/sPhnNum'}"
                     id="idSearchPhnNum"
-                    class="nrgSearch-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-search>nrgSearchClrNid_PhnNum}"
+                    class="uteSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>uteSearchClrNid_PhnNum}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     fieldType="Float"
@@ -122,8 +122,8 @@
                     value="{
                         path:'oSearchFilters>/searchTextFields/sFiName'}"
                     id="idSearchFiName"
-                    class="nrgSearch-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-search>nrgSearchClrNid_FiName}"
+                    class="uteSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>uteSearchClrNid_FiName}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     fieldType="Float"
@@ -134,8 +134,8 @@
                     value="{
                         path:'oSearchFilters>/searchTextFields/sLaName'}"
                     id="idSearchLaName"
-                    class="nrgSearch-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-search>nrgSearchClrNid_LaName}"
+                    class="uteSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>uteSearchClrNid_LaName}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     fieldType="Float"
@@ -146,8 +146,8 @@
                     value="{
                         path:'oSearchFilters>/searchTextFields/sTaxID'}"
                     id="idSearchTaxID"
-                    class="nrgSearch-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-search>nrgSearchClrNid_TaxID}"
+                    class="uteSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>uteSearchClrNid_TaxID}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     fieldType="Float"
@@ -155,12 +155,12 @@
                 </ute:Textfield>
             </ute:Tag>
             <!-- Third Section -->
-            <ute:Tag class="nrgSearch-calrNoIDSearch-textfield">
+            <ute:Tag class="uteSearch-calrNoIDSearch-textfield">
                 <ute:Textfield
                     value="{
                         path:'oSearchFilters>/searchTextFields/sHousNum'}"
-                    class="nrgSearch-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-search>nrgSearchClrNid_HouseNum}"
+                    class="uteSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>uteSearchClrNid_HouseNum}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
@@ -170,8 +170,8 @@
                 <ute:Textfield
                     value="{
                         path:'oSearchFilters>/searchTextFields/sStreetNum'}"
-                    class="nrgSearch-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-search>nrgSearchClrNid_Street}"
+                    class="uteSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>uteSearchClrNid_Street}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
@@ -181,8 +181,8 @@
                 <ute:Textfield
                     value="{
                         path:'oSearchFilters>/searchTextFields/sUnitNum'}"
-                    class="nrgSearch-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-search>nrgSearchClrNid_UnitNum}"
+                    class="uteSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>uteSearchClrNid_UnitNum}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     fieldType="Float"
@@ -192,8 +192,8 @@
                 <ute:Textfield
                     value="{
                         path:'oSearchFilters>/searchTextFields/sCityNum'}"
-                    class="nrgSearch-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-search>nrgSearchClrNid_City}"
+                    class="uteSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>uteSearchClrNid_City}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
@@ -203,8 +203,8 @@
                 <ute:Textfield
                     value="{
                         path:'oSearchFilters>/searchTextFields/sStateNum'}"
-                    class="nrgSearch-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-search>nrgSearchClrNid_State}"
+                    class="uteSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>uteSearchClrNid_State}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
@@ -214,8 +214,8 @@
                 <ute:Textfield
                     value="{
                         path:'oSearchFilters>/searchTextFields/sZipNum'}"
-                    class="nrgSearch-calrNoIDSearch-textfield-input"
-                    placeholder="{comp-i18n-search>nrgSearchClrNid_ZipCode}"
+                    class="uteSearch-calrNoIDSearch-textfield-input"
+                    placeholder="{comp-i18n-search>uteSearchClrNid_ZipCode}"
                     change="onTextFieldChange"
                     enterKeyPress="onEnterKeyPress"
                     label="Title"
@@ -227,27 +227,27 @@
         </ute:content>
     </ute:Tag>
 
-    <ute:Tag class="nrgSearch-calrNoIDSearch nrgSearch-calrNoIDSearch-transSpace">
+    <ute:Tag class="uteSearch-calrNoIDSearch uteSearch-calrNoIDSearch-transSpace">
     </ute:Tag>
 
-    <ute:Tag class="nrgAppMain-generalContent nrgSearch-calrNoIDSearch">
-        <ute:Tag class="nrgSearch-calrNoIDSearch-resultTitle"
-                 text="{comp-i18n-search>nrgSearchCallerNoIDSearchResultTitle}">
-            <ute:Tag elem="span" class="nrgSearch-calrNoIDSearch-resultCount"
+    <ute:Tag class="nrgAppMain-generalContent uteSearch-calrNoIDSearch">
+        <ute:Tag class="uteSearch-calrNoIDSearch-resultTitle"
+                 text="{comp-i18n-search>uteSearchCallerNoIDSearchResultTitle}">
+            <ute:Tag elem="span" class="uteSearch-calrNoIDSearch-resultCount"
                 visible="{oBpSearchCount>/searchCountBelow100}"
-                text="{comp-i18n-search>nrgSearchClrNid_ResultCountStart} {oBpSearchCount>/searchCount} {comp-i18n-search>nrgSearchClrNid_ResultCountEnd}" >
+                text="{comp-i18n-search>uteSearchClrNid_ResultCountStart} {oBpSearchCount>/searchCount} {comp-i18n-search>uteSearchClrNid_ResultCountEnd}" >
             </ute:Tag>
-            <ute:Tag elem="span" class="nrgSearch-calrNoIDSearch-resultCount"
+            <ute:Tag elem="span" class="uteSearch-calrNoIDSearch-resultCount"
                 visible="{oBpSearchCount>/searchCountOver100}"
-                text="{comp-i18n-search>nrgSearchClrNid_ResultCountOver100}" >
+                text="{comp-i18n-search>uteSearchClrNid_ResultCountOver100}" >
             </ute:Tag>
         </ute:Tag>
 
-        <ute:Tag class="nrgSearch-calrNoIDSearch-resultTitle"
+        <ute:Tag class="uteSearch-calrNoIDSearch-resultTitle"
                  text="{oBpSearchResult>/BpSearchs('1121')/PartnerID}">
         </ute:Tag>
 
-        <ute:Tag class="nrgSearch-calrNoIDSearch-resultTableTitle">
+        <ute:Tag class="uteSearch-calrNoIDSearch-resultTableTitle">
             <l:MatrixLayout
                 width="100%"
                 columns="8"
@@ -289,7 +289,7 @@
             </l:MatrixLayout>
         </ute:Tag>
 
-        <ute:Tag class="nrgSearch-calrNoIDSearch-resultTable">
+        <ute:Tag class="uteSearch-calrNoIDSearch-resultTable">
             <ute:ScrollContainer
                 height="250px"
                 width="100%"
