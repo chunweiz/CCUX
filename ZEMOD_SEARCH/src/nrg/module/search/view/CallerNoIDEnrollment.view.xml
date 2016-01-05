@@ -5,7 +5,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     controllerName="nrg.module.search.view.CallerNoIDEnrollment">
 
-    <ute:Tag class="uteSearch-calrNoIDEnrol nrgAppMain-summaryContent nrgAppMain-summaryContent-full">
+    <ute:Tag class="uteSearch-calrNoIDEnrol uteAppMain-summaryContent uteAppMain-summaryContent-full">
         <ute:content>
             <ute:Tag elem="h1"
                 class="uteSearch-calrNoIDEnrol-hdr"

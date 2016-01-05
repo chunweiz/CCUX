@@ -245,3 +245,251 @@
         }
     }
 }
+
+.uteApp {
+    background: data-uri('../img/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    // Header
+    & .uteAppHMItem-spacer {
+        position: relative;
+        display: inline-block;
+        width: 1px;
+        height: 12pt;
+        background-color: transparent;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    & .uteAppHMItem-divider {
+        position: relative;
+        display: inline-block;
+        width: 1px;
+        height: 8pt;
+        background-color: @nrgColor-grey-dark;
+        margin-left: 15px;
+        margin-right: 15px;
+        transform: translateY(-1px);
+    }
+
+    & .uteAppHMItem.uteAppHMItem {
+        margin-top: 40px;
+    }
+
+    & .uteAppHMItem .uteAppHMItem-hdr {
+        margin-bottom: 10px;
+    }
+
+    & .uteAppHMItem-attention .uteAppHMItem-hdr:hover {
+        color: @nrgColor-orange-attention;
+    }
+
+    & .uteAppBanner-logo {
+        display: block;
+        float: left;
+        margin-top: 15px;
+        background: data-uri('../../../../../../../ZEBASE/src/nrg/base/asset/img/nrg-logo.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 70px;
+        height: 50px;
+    }
+
+    & .uteAppBanner-title {
+        display: inline-block;
+        padding-top: 32px;
+        padding-left: 10px;
+        cursor: default;
+    }
+
+    // Body
+    /*& .uteAppBody {
+        & .uteAppBodyBanner-title {
+            display: inline-block;
+            position: relative;
+            transform: translateY(100%);
+        }
+
+        & .uteAppBody-navLeft {
+            width: 0;
+            height: 0;
+            border-top: 16px solid transparent;
+            border-bottom: 16px solid transparent;
+            border-right: 16px solid @nrgColor-grey-dark;
+        }
+
+        & .uteAppBody-navLeft:hover {
+            border-right-color: @nrgColor-blue-link;
+        }
+
+        .uteAppBody-navRight {
+            width: 0;
+            height: 0;
+            border-top: 16px solid transparent;
+            border-bottom: 16px solid transparent;
+            border-left: 16px solid @nrgColor-grey-dark;
+        }
+
+        & .uteAppBody-navRight:hover {
+            border-left-color: @nrgColor-blue-link;
+        }
+    }*/
+
+    // Footer
+    // & .uteAppFtr-caret {
+    //     display: inline-block;
+    //     position: relative;
+    //     border-top-left-radius: 4px;
+    //     width: 80px;
+    //     height: 19px;
+    //     background-color: @nrgColor-white;
+    //     cursor: pointer;
+    // }
+
+    // & .uteAppFtr-caret::before {
+    //     content: '';
+    //     position: absolute;
+    //     width: 10px;
+    //     height: 10px;
+    //     border: 1px solid @nrgColor-blue-link;
+    //     border-bottom: none;
+    //     border-right: none;
+    //     transform: translate(35px, 8px) rotate(45deg);
+    // }
+
+    // To be removed later - migration to control
+    @maxHeight-summaryPanel: 400px;
+    @maxHeight-toolsPanel: 273px;
+    @minHeight-generalPanel: 686px;
+
+    & .uteAppMain-summaryPanel,
+    & .uteAppMain-toolsPanel,
+    & .uteAppMain-generalPanel {
+        height: 100%;
+    }
+
+    & .uteAppMain-summaryPanel {
+        max-height: @maxHeight-summaryPanel;
+        //overflow: hidden;
+    }
+
+    & .uteAppMain-toolsPanel {
+        max-height: @maxHeight-toolsPanel;
+        //overflow: hidden;
+    }
+
+    & .uteAppMain-generalContent,
+    & .uteAppMain-summaryContent,
+    & .uteAppMain-toolsContent {
+        width: 100%;
+        border-radius: 2px;
+        background-color: @nrgColor-blue-lightPale;
+        padding: 25px 14px 20px 14px;
+    }
+
+    & .uteAppMain-generalContent {
+        padding: 25px 28px 25px 28px;
+    }
+
+    & .uteAppMain-generalContent:last-child {
+        margin-bottom: 30px;
+    }
+
+    & .uteAppMain-generalContent.uteAppMain-generalContent-full {
+        min-height: @minHeight-generalPanel;
+        height: 100%;
+    }
+
+    & .uteAppMain-summaryContent.uteAppMain-summaryContent-full {
+        height: @maxHeight-summaryPanel;
+    }
+
+    & .uteAppMain-toolsContent.uteAppMain-toolsContent-full {
+        height: @maxHeight-toolsPanel;
+    }
+
+    & .uteAppMain-footerSection {
+
+        // when footer is expanded
+        &.open {
+
+            & .uteAppMain-footerCaret {
+                margin-top: -20px;
+
+                &::before {
+                    transform: translate(35px,2px) rotate(-135deg);
+                }
+            }
+
+            & .uteAppMain-footerContentWrap {
+                display: block;
+            }
+        }
+
+        & .uteAppMain-footerCaret {
+            height: 25px;
+            float: right;
+            background-color: @nrgColor-white;
+            width: 80px;
+            border-radius: 5px 0 0 0;
+            cursor: pointer;
+            margin-top: 0;
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                border: 1px solid #5092ce;
+                border-bottom: none;
+                border-right: none;
+                transform: translate(35px,8px) rotate(45deg);
+            }
+        }
+
+        & .uteAppMain-footerContentWrap {
+            display: none;
+            height: 295px;
+            width: 100%;
+            background-color: @nrgColor-white;
+            padding: 0 40px;
+
+            & .uteAppMain-footerContent {
+                margin: 0 auto;
+                width: 1440px;
+                padding: 15px 40px;
+
+                & .uteAppMain-footerFlexbox {
+                    display: flex;
+                }
+            }
+
+            & .uteAppMain-footerTool {
+                float: right;
+                top: 0;
+                position: absolute;
+                right: 0px;
+                width: 80px;
+                height: 100%;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+
+                & .uteAppFtrDetails-tool-icon {
+                    width: 100%;
+                    font-size: 35px;
+                    margin-bottom: 30px;
+                    color: @nrgColor-blue-link;
+                    cursor: pointer;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
