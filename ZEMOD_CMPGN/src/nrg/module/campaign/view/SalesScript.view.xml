@@ -22,7 +22,7 @@
                 <l:MatrixLayoutRow>
                     <l:MatrixLayoutCell>
                         <c:Label text="{comp-i18n-campaign>nrgCmpSSTtllbl}"
-                                 icon="sap-icon://nrg-icon/tag"
+                                 icon="sap-icon://ute-icon/tag"
                                  class="nrgCamSS-lbl"
                                  labelFor="idCamSSTtlTv"  />
                     </l:MatrixLayoutCell>

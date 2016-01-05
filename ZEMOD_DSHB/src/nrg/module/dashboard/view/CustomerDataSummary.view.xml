@@ -147,7 +147,7 @@
                 <core:Icon visible="{
                         parts:['oSmryBpInf>/SiebelCustomer'],
                         formatter:'._formatSiebel'}"
-                    src="sap-icon://nrg-icon/notification"
+                    src="sap-icon://ute-icon/notification"
                     class="nrgDashboard-cusDataSum-bpCaArea-SiebelIcon"/>
                 <ute:Tag visible="{
                         parts:['oSmryBpInf>/SiebelCustomer'],
@@ -190,7 +190,7 @@
                             <l:MatrixLayoutCell>
                                 <core:Icon
                                     class="nrgDashboard-cusDataSum-weatherLeft"
-                                    src="sap-icon://nrg-icon/weather-cloud"/>
+                                    src="sap-icon://ute-icon/weather-cloud"/>
                             </l:MatrixLayoutCell>
                             <l:MatrixLayoutCell>
                                 <ute:TextView text="Houston, TX"

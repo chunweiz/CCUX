@@ -13,11 +13,11 @@
         <ute:Tag id="idAddrUpdatePopup-HdrLn" visible="{oDtaAddrEdit>/updateSent}"
             class="nrgBupa-cusDataVerifyEditMail-hdr">
             <ute:Tag>
-                <core:Icon src="sap-icon://nrg-icon/notification"/>
+                <core:Icon src="sap-icon://ute-icon/notification"/>
                 <ute:TextView text="{oDtaAddrEdit>/SuggAddrInfo/HeaderText1}"/>
             </ute:Tag>
             <ute:Tag>
-                <core:Icon src="sap-icon://nrg-icon/notification"/>
+                <core:Icon src="sap-icon://ute-icon/notification"/>
                 <ute:TextView text="{oDtaAddrEdit>/SuggAddrInfo/HeaderText2}"/>
             </ute:Tag>
         </ute:Tag>

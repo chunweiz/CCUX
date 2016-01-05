@@ -42,7 +42,7 @@
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-spacer" />
                         <ua:HeaderMenuItem id="appHMItemRefresh" class="nrgAppHMItem">
-                            <core:Icon src="sap-icon://nrg-icon/refresh" />
+                            <core:Icon src="sap-icon://ute-icon/refresh" />
                         </ua:HeaderMenuItem>
                         <span class="nrgAppHMItem-spacer" />
                         <ua:HeaderMenuItem id="appHMItemClearAcc" class="nrgAppHMItem nrgAppHMItem-attention">

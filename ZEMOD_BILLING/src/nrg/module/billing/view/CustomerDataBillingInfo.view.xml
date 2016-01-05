@@ -46,7 +46,7 @@
                                     <utmain:Button class="nrgBilling-cusDataBil-referer-linkFirst" design="None"
                                         press="._onInvoiceNumClicked"
                                         text="{oBillingInvoices>/InvoiceNum}"/>
-                                    <core:Icon src="sap-icon://nrg-icon/calendar"
+                                    <core:Icon src="sap-icon://ute-icon/calendar"
                                         class="nrgBilling-cusDataBil-invoiceSelect-icon"
                                         press="._onInvoiceSelectClicked"/>
                                 </ute:Tag>
@@ -85,7 +85,7 @@
                                     </ute:Tag>-->
                                 <c:Label text="{comp-billing>DunningReason}"
                                          id="idnrgBillingMsgsTemp"
-                                         icon="sap-icon://nrg-icon/notification"
+                                         icon="sap-icon://ute-icon/notification"
                                          class="nrgBilling-cusDataBil-msgs-msg" />
                                 </ute:Tag>
                                 <ute:Tag class="nrgBilling-cusDataBil-date">
@@ -248,7 +248,7 @@
                                                enabled="{comp-billing>EnablePopup}">
 <!--                                        <ute:Tag text="{comp-billing>DunningReason}"></ute:Tag>-->
                                         <c:Label text="{comp-billing>DunningReason}"
-                                                 icon="sap-icon://nrg-icon/notification"
+                                                 icon="sap-icon://ute-icon/notification"
                                                   class="nrgBilling-cusDataBil-r-div-dunningmsgs-msg-label"/>
                                         <ute:Tag visible="{= ${comp-billing>FilterType} === '1'}"
                                                  class="nrgBilling-cusDataBil-r-div-dunningmsgs-msg-div"

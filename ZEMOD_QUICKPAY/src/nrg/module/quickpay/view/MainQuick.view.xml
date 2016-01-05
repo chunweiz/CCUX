@@ -38,7 +38,7 @@
                           <um:Button press=".onStopRec"
                                          class="nrgQPPay-stopRec"
                                        id="idnrgQPPayBt-stopRec" design="None">
-                             <core:Icon src="sap-icon://nrg-icon/handset" class="nrgQPPay-handset" />
+                             <core:Icon src="sap-icon://ute-icon/handset" class="nrgQPPay-handset" />
                              <u:Tag text="{comp-i18n-quickpay>nrgQPStopRecording}" class="nrgQPPay-text"/>
                          </um:Button>
                     </u:Tag>
@@ -83,7 +83,7 @@
                         </um:DropdownItem>
                         <um:DropdownItem key="{comp-quickpay>BankKey}" class="nrgQPCC-DdLItem" id="idnrgQPCC-BankDraftItem">
                             <u:Tag class="nrgQPCC-DDI">
-                               <core:Icon src="sap-icon://nrg-icon/dollar" />
+                               <core:Icon src="sap-icon://ute-icon/dollar" />
                                 <u:Tag text="{parts:[{path:'comp-quickpay>BankAccNum'}],
                                                     formatter:'.formatAccountNumber'}"  class="nrgQPCC-DdlValue"/>
                             </u:Tag>
@@ -95,7 +95,7 @@
                           <um:Button press=".onContactLog"
                                      class="nrgQPPay-stopRec"
                                      design="None">
-                             <core:Icon src="sap-icon://nrg-icon/verified" class="nrgQPPay-verified" />
+                             <core:Icon src="sap-icon://ute-icon/verified" class="nrgQPPay-verified" />
                              <u:Tag text="{comp-i18n-quickpay>nrgQPPaymentAccepted}" class="nrgQPPay-verText"/>
                          </um:Button>
                     </u:Tag>

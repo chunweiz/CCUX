@@ -639,7 +639,7 @@
                 visible="{
                     parts:['oEditEmailValidate>/Valid'],
                     formatter:'._formatNegativeX'}">
-                <core:Icon src="sap-icon://nrg-icon/notification"
+                <core:Icon src="sap-icon://ute-icon/notification"
                     visible="{
                         parts:['oEditEmailValidate>/ColorIcon'],
                         formatter:'._formatEmailMkt'}"/>

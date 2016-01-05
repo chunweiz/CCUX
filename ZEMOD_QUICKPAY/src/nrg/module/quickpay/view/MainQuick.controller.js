@@ -1221,13 +1221,13 @@ sap.ui.define(
         Controller.prototype.formatCCType = function (sCCType) {
             if ((sCCType !== undefined) && (sCCType !== null) && (sCCType !== "")) {
                 if (sCCType === "ZVIS") {
-                    return "sap-icon://nrg-icon/cc-visa";
+                    return "sap-icon://ute-icon/cc-visa";
                 } else if (sCCType === "ZDSC") {
-                    return "sap-icon://nrg-icon/cc-discover";
+                    return "sap-icon://ute-icon/cc-discover";
                 } else if (sCCType === "ZMCD") {
-                    return "sap-icon://nrg-icon/cc-mastercard";
+                    return "sap-icon://ute-icon/cc-mastercard";
                 } else if (sCCType === "ZATM") {
-                    return "sap-icon://nrg-icon/cc-visa";
+                    return "sap-icon://ute-icon/cc-visa";
                 }
             } else {
                 return "";
