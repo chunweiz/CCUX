@@ -182,7 +182,7 @@
             'clean',
             'copy',
             'less',
-            'uglify',
+           'uglify',
             'json-minify'
         ]);
     };

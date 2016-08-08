@@ -249,7 +249,7 @@
             'concat',
             'less',
             'uglify',
-            'json-minify',
+           'json-minify',
             'htmlmin'
         ]);
     };
